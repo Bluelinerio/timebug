@@ -1,0 +1,14 @@
+{
+  "expo": {
+    "name": "2020",
+    "version": "1.0.0",
+    "slug": "2020",
+    "sdkVersion": "20.0.0",
+    "ios": {
+      "bundleIdentifier": "com.tunegov.2020"
+    },
+    "android": {
+      "package": "com.tunegov.2020"
+    }
+  }
+}
