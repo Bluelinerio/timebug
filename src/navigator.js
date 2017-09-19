@@ -1,6 +1,6 @@
 import React from 'react';
 import {StackNavigator,} from 'react-navigation';
-import CardStackStyleInterpolator from 'react-navigation/src/views/CardStackStyleInterpolator'
+import CardStackStyleInterpolator from 'react-navigation/src/views/CardStack/CardStackStyleInterpolator'
 import FirstScreen from "./screens/FirstScreen";
 import DayIntroducing from "./screens/DayIntroducing";
 import DayAssignments from "./screens/DayAssignments";

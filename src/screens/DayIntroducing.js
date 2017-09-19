@@ -84,29 +84,41 @@ export default class DayIntroducing extends Component {
     return (
       <View style={styles.screen}>
         {day.icon && <Image style={styles.image} source={{uri: getImageUrl(day.icon)}}/>}
-        <Text style={[styles.text, styles.subtitle]}>{day.subtitle}</Text>
-        <Text style={[styles.text, styles.title]}>{day.title}</Text>
-        <ScrollView style={styles.description}>
+        <Text
+          testID="subtitle"
+          style={[styles.text, styles.subtitle]}>
+          {day.subtitle}
+        </Text>
+        <Text
+          testID="title"
+          style={[styles.text, styles.title]}>
+          {day.title}
+        </Text>
+        <ScrollView
+          style={styles.description}
+          testID="introducing_text"
+        >
           <Markdown
             markdownStyles={{
-            u: {
-              fontWeight: 'bold',
-            },
-            block: {
-              textAlign: 'center',
-              alignSelf: 'center',
-              fontSize: 14,
-              marginBottom: 15,
-              flexWrap: 'wrap',
-              flexDirection: 'row'
-            }
-          }}>
+              u: {
+                fontWeight: 'bold',
+              },
+              block: {
+                textAlign: 'center',
+                alignSelf: 'center',
+                fontSize: 14,
+                marginBottom: 15,
+                flexWrap: 'wrap',
+                flexDirection: 'row'
+              }
+            }}>
             {day.description}
           </Markdown>
         </ScrollView>
 
         <View style={styles.buttonWrapper}>
           <Button containerStyle={styles.wideButton}
+                  testID="begin_button"
                   onPress={() => this.props.navigation.navigate('DayAssignments', {assignments: day.refAssignment.map(item => item.fields)})}>
             <Text style={styles.wideButtonText}>BEGIN</Text>
           </Button>

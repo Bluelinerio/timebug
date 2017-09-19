@@ -5,10 +5,18 @@
     "slug": "2020",
     "sdkVersion": "20.0.0",
     "ios": {
-      "bundleIdentifier": "com.tunegov.2020"
+      "bundleIdentifier": "com.tunegov.2020",
+      "publishBundlePath": "ios/2020/Supporting/shell-app.bundle",
+      "publishManifestPath": "ios/2020/Supporting/shell-app-manifest.json"
     },
     "android": {
       "package": "com.tunegov.2020"
+    },
+    "isDetached": true,
+    "detach": {
+      "scheme": "exp7c7ce7bc6c2a4d2b844756fc90a7a68e",
+      "iosExpoViewUrl": "https://s3.amazonaws.com/exp-exponent-view-code/ios-v1.19.2-sdk20.0.0-71c3afdd-3b31-4722-9657-bbf07ea645d8.tar.gz",
+      "androidExpoViewUrl": "https://s3.amazonaws.com/exp-exponent-view-code/android-v1.19.1-sdk20.0.0-5b613054-1239-439f-9c3a-0aad67cbe39a.tar.gz"
     }
   }
 }

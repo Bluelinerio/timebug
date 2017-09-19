@@ -15,6 +15,7 @@ export default class SecondScreen extends React.Component {
     return (
       <View style={styles.container}>
         <TouchableOpacity
+          testID="day_1"
           onPress={() => {this.props.navigation.navigate('DayIntroducing');}}>
           <Text>Get Day 1</Text>
         </TouchableOpacity>
