@@ -1,0 +1,5 @@
+export const SUCCEEDED = '_SUCCEEDED';
+export const FAILED = '_FAILED';
+
+export const GET_ALL_STEPS_FROM_CMS = 'GET_ALL_STEPS_FROM_CMS';
+export const GET_STEPS_FROM_CMS_BY_DAY = 'GET_STEPS_FROM_CMS_BY_DAY';

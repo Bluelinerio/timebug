@@ -1,4 +1,6 @@
-import React, {Component} from 'react';
+// @flow
+
+import React from 'react';
 import {
   StyleSheet,
   Text,
@@ -10,22 +12,18 @@ import {
 import Swiper from 'react-native-swiper';
 import Button from 'react-native-button';
 import Markdown from 'react-native-easy-markdown';
-import getImageUrl from "../utils/getImageUrl";
+import {IAssignment} from "../../../interfaces/IAssignment";
+import getImageUrl from "../../../utils/getImageUrl";
 
+type Props = {
+  assignments: IAssignment[]
+}
 
-const windowWidth = Dimensions.get('window').width;
+type State = {
+  currentSlide: number
+}
 
-
-export default class DayAssignments extends Component {
-  static navigationOptions = {
-    title: 'DAY 1 ASSIGNMENTS',
-    headerTitleStyle: {textAlign: 'center', alignSelf: 'center'},
-    headerStyle: {
-      backgroundColor: '#00D2F5',
-    },
-    headerTintColor: 'white',
-  };
-
+export default class AssignmentsScreen extends React.Component<Props, State> {
   constructor() {
     super();
 
@@ -34,34 +32,29 @@ export default class DayAssignments extends Component {
     }
   }
 
-  onIndexChanged(index) {
+  onIndexChanged(index: number) {
     this.setState({
       currentSlide: index
     })
   }
 
   onNextButtonPressed() {
-    const {assignments} = this.props.navigation.state.params;
-    const { dispatch } = this.props.navigation;
+    const {assignments} = this.props;
+    const { dispatch } = this.props;
 
     if (this.state.currentSlide !== assignments.length - 1) {
       this.refs.swiper.scrollBy(1)
     } else {
-      dispatch({type:'Navigation/RESET', actions: [{ type: 'Navigate', routeName: 'DayIntroducing'}], index: 0 })
+      dispatch({type:'Navigation/RESET', actions: [{ type: 'Navigate', routeName: 'TextScreen'}], index: 0 })
     }
   }
 
   render() {
-    const {state} = this.props.navigation;
-
-    if (!state.params || !state.params.assignments) {
-      return <ActivityIndicator size="large"/>;
-    }
-
-    let slides = state.params.assignments.map((assignment, i) => {
+    const {assignments} = this.props;
+    let slides = assignments.map((assignment, i) => {
       return (
         <View style={styles.slide} key={i}>
-          <Image style={styles.image} source={{uri: getImageUrl(assignment.icon)}}/>
+          {assignment.icon.fields && <Image style={styles.image} source={{uri: getImageUrl(assignment.icon)}}/>}
           <Markdown markdownStyles={{
             u: {fontWeight: 'bold'},
             block: {

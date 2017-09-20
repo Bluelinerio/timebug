@@ -1,23 +1,27 @@
+// @flow
+
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {IStep} from "../../../interfaces";
 
-export default class SecondScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Welcome',
-    headerTitleStyle: {textAlign: 'center', alignSelf: 'center'},
-    headerStyle: {
-      backgroundColor: '#00D2F5',
-    },
-    headerTintColor: 'white',
-  };
+type Props = {
+  allSteps: IStep[],
+  currentStep: IStep,
+  navigate(): any
+}
 
+type State = {
+
+}
+
+export default class HomeScreen extends React.Component<Props, State> {
   render() {
     return (
       <View style={styles.container}>
         <TouchableOpacity
           testID="day_1"
-          onPress={() => {this.props.navigation.navigate('DayIntroducing');}}>
-          <Text>Get Day 1</Text>
+          onPress={() => {this.props.navigate('TextScreen');}}>
+          <Text>Get STEP #{this.props.currentStep.number}/{this.props.allSteps.length}</Text>
         </TouchableOpacity>
       </View>
 

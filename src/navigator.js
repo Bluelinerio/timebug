@@ -1,14 +1,14 @@
 import React from 'react';
 import {StackNavigator,} from 'react-navigation';
 import CardStackStyleInterpolator from 'react-navigation/src/views/CardStack/CardStackStyleInterpolator'
-import FirstScreen from "./screens/FirstScreen";
-import DayIntroducing from "./screens/DayIntroducing";
-import DayAssignments from "./screens/DayAssignments";
+import HomeScreen from "./screens/HomeScreen";
+import TextScreen from "./screens/TextScreen";
+import AssignmentsScreen from "./screens/AssignmentsScreen";
 
 const Navigator = StackNavigator({
-    Home: {screen: FirstScreen},
-    DayIntroducing: {screen: DayIntroducing},
-    DayAssignments: {screen: DayAssignments}
+    HomeScreen,
+    TextScreen,
+    AssignmentsScreen
   },
   {
     cardStyle: {
@@ -17,7 +17,7 @@ const Navigator = StackNavigator({
     },
     transitionConfig: () => ({
       screenInterpolator: (sceneProps) => {
-        if (['DayAssignments'].indexOf(sceneProps.navigation.state.routes[sceneProps.navigation.state.routes.length - 1].routeName) !== -1) {
+        if (['AssignmentsScreen'].indexOf(sceneProps.navigation.state.routes[sceneProps.navigation.state.routes.length - 1].routeName) !== -1) {
           return CardStackStyleInterpolator.forVertical(sceneProps)
         }
         return CardStackStyleInterpolator.forHorizontal(sceneProps)
