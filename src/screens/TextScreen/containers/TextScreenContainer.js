@@ -6,7 +6,6 @@ import {
   StyleSheet
 } from 'react-native'
 import {connect} from 'react-redux'
-import SplashScreen from 'react-native-splash-screen'
 import TextScreen from "../components/TextScreen"
 import {IStep} from "../../../interfaces"
 import DefaultIndicator from "../../../components/DefaultIndicator";
