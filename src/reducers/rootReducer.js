@@ -7,6 +7,7 @@ import debounce from 'redux-storage-decorator-debounce'
 import {createLogger} from 'redux-logger';
 import steps from './steps';
 import error from './error';
+import login from './login';
 import rootSaga from '../sagas/rootSagas'
 
 const sagaMiddleware = createSagaMiddleware();
@@ -33,7 +34,8 @@ const createStoreWithMiddleware = compose(applyMiddleware(loggerMiddleWare, saga
 const reducer = storage.reducer(combineReducers(
   {
     steps,
-    error
+    error,
+    login
   }));
 
 export const store = createStoreWithMiddleware(reducer);
