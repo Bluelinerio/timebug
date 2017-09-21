@@ -12,7 +12,8 @@ import {
 import Swiper from 'react-native-swiper';
 import Button from 'react-native-button';
 import Markdown from 'react-native-easy-markdown';
-import {IAssignment} from "../../../interfaces/IAssignment";
+import autobind from 'autobind-decorator';
+import {IAssignment} from "../../../interfaces";
 import getImageUrl from "../../../utils/getImageUrl";
 
 type Props = {
@@ -32,12 +33,14 @@ export default class AssignmentsScreen extends React.Component<Props, State> {
     }
   }
 
+  @autobind
   onIndexChanged(index: number) {
     this.setState({
       currentSlide: index
     })
   }
 
+  @autobind
   onNextButtonPressed() {
     const {assignments} = this.props;
     const { dispatch } = this.props;
@@ -69,7 +72,7 @@ export default class AssignmentsScreen extends React.Component<Props, State> {
           </Markdown>
           <Button
             containerStyle={styles.wideButton}
-            onPress={this.onNextButtonPressed.bind(this)}
+            onPress={this.onNextButtonPressed}
           >
             <Text style={styles.wideButtonText}>NEXT</Text>
           </Button>
@@ -81,7 +84,7 @@ export default class AssignmentsScreen extends React.Component<Props, State> {
       <Swiper
         ref="swiper"
         index={this.state.index}
-        onIndexChanged={this.onIndexChanged.bind(this)}
+        onIndexChanged={this.onIndexChanged}
         style={styles.wrapper}
         activeDotColor="#FF008F"
         loop={false}

@@ -42,12 +42,7 @@ const mapStateToProps = (state) => {
 })
 class HomeScreenContainer extends React.Component<Props, State> {
   static navigationOptions = {
-    title: 'Welcome',
-    headerTitleStyle: {textAlign: 'center', alignSelf: 'center'},
-    headerStyle: {
-      backgroundColor: '#00D2F5',
-    },
-    headerTintColor: 'white',
+    header: null
   };
 
   componentDidMount() {
