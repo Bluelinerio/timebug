@@ -7,7 +7,6 @@ import {
   StyleSheet
 } from 'react-native'
 import HomeScreen from '../components/HomeScreen'
-import SplashScreen from 'react-native-splash-screen'
 import {
   getAllStepsFromCMS,
   getStepFromCMSByDay
@@ -46,7 +45,9 @@ class HomeScreenContainer extends React.Component<Props, State> {
   };
 
   componentDidMount() {
-    this.props.getStepFromCMSByDay(1);
+    if (!this.props.currentStep.number) {
+      this.props.getStepFromCMSByDay(1);
+    }
     this.props.getAllStepsFromCMS();
   }
 

@@ -7,7 +7,8 @@ import {
   Dimensions,
   View,
   ActivityIndicator,
-  Image
+  Image,
+  ScrollView
 } from 'react-native';
 import Swiper from 'react-native-swiper';
 import Button from 'react-native-button';
@@ -34,73 +35,66 @@ export default class AssignmentsScreen extends React.Component<Props, State> {
   }
 
   @autobind
-  onIndexChanged(index: number) {
-    this.setState({
-      currentSlide: index
-    })
-  }
-
-  @autobind
-  onNextButtonPressed() {
-    const {assignments} = this.props;
-    const { dispatch } = this.props;
-
-    if (this.state.currentSlide !== assignments.length - 1) {
-      this.refs.swiper.scrollBy(1)
-    } else {
-      dispatch({type:'Navigation/RESET', actions: [{ type: 'Navigate', routeName: 'TextScreen'}], index: 0 })
+  goToNextDay() {
+    let {number} = this.props.currentStep;
+    let {length} = this.props.allSteps;
+    let nextDay = number + 1;
+    if (nextDay <= length) {
+      this.props.getStepFromCMSByDay(nextDay);
     }
+    this.props.navigate('HomeScreen', {number})
   }
 
   render() {
     const {assignments} = this.props;
-    let slides = assignments.map((assignment, i) => {
+    let steps = assignments.map((assignment, i) => {
+      let isLastItem = i !== assignments.length - 1;
       return (
         <View style={styles.slide} key={i}>
-          {assignment.icon.fields && <Image style={styles.image} source={{uri: getImageUrl(assignment.icon)}}/>}
+          {assignment.icon.fields && isLastItem &&
+          <Image style={styles.image} source={{uri: getImageUrl(assignment.icon)}}/>}
           <Markdown markdownStyles={{
             u: {fontWeight: 'bold'},
             block: {
-              textAlign: 'center',
+              textAlign: 'justify',
               alignSelf: 'center',
               fontSize: 14,
               marginBottom: 15,
-              paddingVertical: 20
+              paddingVertical: 20,
+              width: Dimensions.get('window').width - (isLastItem ? 130 : 30),
+
             }
           }}>
             {assignment.content}
           </Markdown>
-          <Button
-            containerStyle={styles.wideButton}
-            onPress={this.onNextButtonPressed}
-          >
-            <Text style={styles.wideButtonText}>NEXT</Text>
-          </Button>
         </View>
       )
     });
 
     return (
-      <Swiper
-        ref="swiper"
-        index={this.state.index}
-        onIndexChanged={this.onIndexChanged}
-        style={styles.wrapper}
-        activeDotColor="#FF008F"
-        loop={false}
-      >
-        {slides}
-      </Swiper>
+      <ScrollView contentContainerStyle={styles.container}>
+        {steps}
+        <Button
+          containerStyle={styles.wideButton}
+          onPress={this.goToNextDay}
+        >
+          <Text style={styles.wideButtonText}>BEGIN</Text>
+        </Button>
+      </ScrollView>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flexGrow: 1,
+    alignItems: 'center',
+  },
   slide: {
-    flex: 1,
+    flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 20,
-    paddingTop: 60
+    paddingTop: 30
   },
   text: {
     color: '#000000',
@@ -110,24 +104,24 @@ const styles = StyleSheet.create({
   image: {
     alignSelf: 'center',
     justifyContent: 'center',
-    width: 200,
-    height: 200
+    width: 100,
+    height: 100
   },
   wideButton: {
-    borderWidth: 2,
-    borderColor: '#00D2F5',
+    backgroundColor: '#6EBDDC',
     height: 50,
-    minWidth: 200,
+    minWidth: 250,
     paddingHorizontal: 50,
+    marginBottom: 30,
     borderRadius: 150,
     alignSelf: 'center',
     justifyContent: 'center',
     overflow: 'hidden'
   },
   wideButtonText: {
-    color: '#00D2F5',
+    color: 'white',
     fontSize: 22,
-    fontWeight: '500',
+    fontWeight: '700',
     textAlign: 'center',
   },
 });

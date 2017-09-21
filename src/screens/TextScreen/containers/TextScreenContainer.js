@@ -28,14 +28,14 @@ const mapStateToProps = (state) => {
 
 @connect(mapStateToProps)
 class TextScreenContainer extends React.Component<Props, State> {
-  static navigationOptions = {
-    title: 'STEP 1',
+  static navigationOptions = ({navigation: {state: {params}}}) => ({
+    title: params ? 'STEP ' + params.number : '',
     headerTitleStyle: {textAlign: 'center', alignSelf: 'center'},
     headerStyle: {
-      backgroundColor: '#00D2F5',
+      backgroundColor: '#6EBDDC',
     },
     headerTintColor: 'white',
-  };
+  });
 
   render() {
     if (this.props.currentStep) {

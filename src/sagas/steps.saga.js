@@ -30,12 +30,12 @@ function* getAllStepsFromCMS(){
   }
 }
 
-function* getStepsFromCMSByDay(day: number) {
+function* getStepsFromCMSByDay(action: any) {
   try {
     yield networkState.haveConnection();
 
     let response = yield contentfulClient.getEntries({
-      'fields.number': day,
+      'fields.number': action.day,
       content_type: CONTENTFUL_CONTENT_STEP
     });
 

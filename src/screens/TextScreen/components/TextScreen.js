@@ -61,7 +61,7 @@ export default class TextScreen extends React.Component<Props, State> {
         <View style={styles.buttonWrapper}>
           <Button containerStyle={styles.wideButton}
                   testID="begin_button"
-                  onPress={() => this.props.navigate('AssignmentsScreen')}>
+                  onPress={() => this.props.navigate('AssignmentsScreen', {number: currentStep.number})}>
             <Text style={styles.wideButtonText}>BEGIN</Text>
           </Button>
         </View>
