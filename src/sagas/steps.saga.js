@@ -5,7 +5,7 @@ import {
   FAILED,
   SUCCEEDED,
   GET_ALL_STEPS_FROM_CMS,
-  GET_STEPS_FROM_CMS_BY_DAY
+	GET_STEPS_FROM_CMS_BY_DAY,
 } from '../constants/actionTypes';
 import {contentfulClient} from "../contentful";
 import networkState from '../utils/networkState';
@@ -54,5 +54,4 @@ export function* getAllStepsSaga() {
 export function* getStepByDaySaga() {
   yield takeLatest(GET_STEPS_FROM_CMS_BY_DAY, getStepsFromCMSByDay);
 }
-
 

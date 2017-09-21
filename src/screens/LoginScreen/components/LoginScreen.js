@@ -10,6 +10,13 @@ import {
 	ScrollView,
 	Modal} from 'react-native';
 import Button from 'react-native-button';
+import Markdown from 'react-native-easy-markdown';
+import { ILogin } from "../../../interfaces";
+
+type Props = {
+	about: ILogin,
+	navigate(): any
+}
 
 type State = {
 
@@ -25,6 +32,7 @@ export default class LoginScreen extends React.Component<Props, State> {
 	}
 	
 	render() {
+		let {about} = this.props.about.about;
 		return (
 			<View style={styles.screen}>
 				<View style={styles.container}>
@@ -59,27 +67,22 @@ export default class LoginScreen extends React.Component<Props, State> {
 								style={styles.description}
 								testID="about_text"
 							>
-									<Text style={styles.about_text}>
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-										tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-										quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-										consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-										cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-										proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-										
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-										tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-										quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-										consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-										cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-										proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-									</Text>
+								<Markdown
+									markdownStyles={{
+										u: {},
+										block: {
+											alignSelf: 'center',
+											marginBottom: 15,
+											flexWrap: 'wrap',
+											flexDirection: 'row'
+										}
+									}}>
+									{about}
+								</Markdown>
 							</ScrollView>
 						</View>
 					</View>
 				</Modal>
-			
-				
 			</View>
 		)
 	}
@@ -100,7 +103,8 @@ const styles = StyleSheet.create({
 	container2: {
 		flex: 2,
 		alignItems: 'center',
-		justifyContent: 'flex-end'
+		justifyContent: 'flex-end',
+		paddingBottom: 10
 	},
 	wideButton: {
 		flex: -1,
@@ -122,7 +126,8 @@ const styles = StyleSheet.create({
 	},
 	description: {
 		flex: 1,
-		paddingBottom: 350
+		paddingBottom: 500,
+		paddingHorizontal: 20
 	},
 	about_text: {
 		textAlign: 'center',
@@ -135,9 +140,9 @@ const styles = StyleSheet.create({
 	},
 	close: {
 		fontWeight: 'bold',
-		fontSize: 20,
-		marginBottom: 20,
-		marginLeft: 20,
-		marginTop: 20
+		fontSize: 15,
+		marginBottom: 10,
+		marginLeft: 10,
+		marginTop: 7
 	}
 });

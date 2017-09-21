@@ -3,11 +3,13 @@ import {
   getAllStepsSaga,
   getStepByDaySaga
 } from './steps.saga'
+import { getAboutInfoSaga } from './login.saga';
 // ...
 
 export default function* rootSaga() {
   yield all([
     getAllStepsSaga(),
-    getStepByDaySaga()
+    getStepByDaySaga(),
+		getAboutInfoSaga()
   ])
 }
