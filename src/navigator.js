@@ -11,6 +11,7 @@ const Navigator = StackNavigator({
     AssignmentsScreen
   },
   {
+    headerMode: 'screen',
     cardStyle: {
       backgroundColor: 'white',
       opacity: 1

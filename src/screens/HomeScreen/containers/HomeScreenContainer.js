@@ -7,7 +7,6 @@ import {
   StyleSheet
 } from 'react-native'
 import HomeScreen from '../components/HomeScreen'
-import SplashScreen from 'react-native-splash-screen'
 import {
   getAllStepsFromCMS,
   getStepFromCMSByDay
@@ -42,16 +41,13 @@ const mapStateToProps = (state) => {
 })
 class HomeScreenContainer extends React.Component<Props, State> {
   static navigationOptions = {
-    title: 'Welcome',
-    headerTitleStyle: {textAlign: 'center', alignSelf: 'center'},
-    headerStyle: {
-      backgroundColor: '#00D2F5',
-    },
-    headerTintColor: 'white',
+    header: null
   };
 
   componentDidMount() {
-    this.props.getStepFromCMSByDay(1);
+    if (!this.props.currentStep.number) {
+      this.props.getStepFromCMSByDay(1);
+    }
     this.props.getAllStepsFromCMS();
   }
 
