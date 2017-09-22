@@ -9,11 +9,11 @@ import {
   Image, ScrollView
 } from 'react-native';
 import Markdown from 'react-native-easy-markdown';
-import Button from 'react-native-button';
 import ScrollableHeader from "../../../components/ScrollableHeader";
 import GradientBackground from "../../../components/GradientBackground";
 import getImageUrl from "../../../utils/getImageUrl";
 import {IStep} from "../../../interfaces";
+import Button from "../../../components/Button";
 
 type Props = {
   currentStep: IStep
@@ -25,24 +25,13 @@ type State = {
 }
 
 const MAX_HEIGHT = 250;
-const backgroundGradient = require('../../../resources/images/backgroundGradient2.png');
 
 export default class TextScreen extends React.Component<Props, State> {
-  state = {
-    colorTop: '#79bddd',
-    colorBottom: '#ffffff',
-  };
-	componentDidMount() {
-		this.setState({
-			colorTop: '#79bddd',
-			colorBottom: '#ffffff'
-		});
-	}
   render() {
     let {currentStep} = this.props;
     return(
 				<ScrollableHeader
-					headerImage={backgroundGradient}
+					headerComponent={<GradientBackground/>}
 					header={
 						<View style={styles.header}>
 					
@@ -88,13 +77,11 @@ export default class TextScreen extends React.Component<Props, State> {
 									{currentStep.description}
 								</Markdown>
 							</ScrollView>
-							<View style={styles.buttonWrapper}>
-								<Button containerStyle={styles.wideButton}
-												testID="begin_button"
-												onPress={() => this.props.navigate ( 'AssignmentsScreen', { number: currentStep.number } )}>
-									<Text style={styles.wideButtonText}>BEGIN</Text>
+								<Button
+									onPress={() => this.props.navigate ( 'AssignmentsScreen', { number: currentStep.number } )}
+									text="ASSIGNMENTS"
+								>
 								</Button>
-							</View>
 						</View>
 					}
 				/>
@@ -130,8 +117,7 @@ const styles = StyleSheet.create({
 		alignSelf: 'flex-end'
 	},
 	content: {
-    marginTop: MAX_HEIGHT + 2,
-		paddingHorizontal: 20
+    marginTop: 2,
   },
   text: {
     color: '#000000',
@@ -164,24 +150,6 @@ const styles = StyleSheet.create({
     height: 120,
 		bottom: 20
   },
-  wideButton: {
-    position: 'absolute',
-    borderWidth: 2,
-    borderColor: '#00D2F5',
-    height: 50,
-    minWidth: 200,
-    paddingHorizontal: 50,
-    borderRadius: 150,
-    alignSelf: 'center',
-    justifyContent: 'center',
-    overflow: 'hidden'
-  },
-  wideButtonText: {
-    color: '#00D2F5',
-    fontSize: 22,
-    fontWeight: '500',
-    textAlign: 'center',
-  },
   buttonWrapper: {
     flex: 1,
     // position: 'absolute',
@@ -198,7 +166,8 @@ const styles = StyleSheet.create({
     paddingBottom: 300
   },
 	scrollView: {
-  	flex: 1
+  	flex: 1,
+		paddingHorizontal: 20
 	},
 	gradient: {
 		height: 200,

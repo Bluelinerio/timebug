@@ -64,7 +64,7 @@ export default class ScrollableHeader extends Component<Props, State> {
             {this.props.content}
           </View>
         </ScrollView>
-        <Animated.View style={[styles.header, {height: headerHeight}]}>
+        <Animated.View style={[styles.header, {height: headerHeight, backgroundColor: headerHeight === HEADER_MIN_HEIGHT ? 'black' : 'transparent'}]}>
           {
             this.props.headerImage ?
               <Animated.Image
@@ -78,7 +78,7 @@ export default class ScrollableHeader extends Component<Props, State> {
                 <Animated.View
                   style={[
                     styles.backgroundContent,
-                    {opacity: imageOpacity, transform: [{translateY: imageTranslate}]},
+                    {transform: [{translateY: imageTranslate}]},
                   ]}
                 >
                   {this.props.headerComponent}
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
     right: 0,
-    backgroundColor: '#79bddd',
+    backgroundColor: 'transparent',
     overflow: 'hidden',
   },
   bar: {
