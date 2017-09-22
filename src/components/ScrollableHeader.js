@@ -17,6 +17,7 @@ const HEADER_SCROLL_DISTANCE = HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT;
 type Props = {
   content: ReactElement,
   headerImage: ReactElement,
+  headerComponent: ReactElement,
   header: ReactElement
 }
 
@@ -31,18 +32,6 @@ export default class ScrollableHeader extends Component<Props, State> {
     this.state = {
       scrollY: new Animated.Value(0),
     };
-  }
-  _renderScrollViewContent() {
-    const data = Array.from({length: 30});
-    return (
-      <View style={styles.scrollViewContent}>
-        {data.map((_, i) =>
-          <View key={i} style={styles.row}>
-            <Text>STEP #{i + 1}</Text>
-          </View>
-        )}
-      </View>
-    );
   }
 
   render() {
@@ -71,16 +60,31 @@ export default class ScrollableHeader extends Component<Props, State> {
             [{nativeEvent: {contentOffset: {y: this.state.scrollY}}}]
           )}
         >
-          {this.props.content || this._renderScrollViewContent()}
+          <View style={styles.scrollViewContent}>
+            {this.props.content}
+          </View>
         </ScrollView>
         <Animated.View style={[styles.header, {height: headerHeight}]}>
-          <Animated.Image
-            style={[
-              styles.backgroundImage,
-              {opacity: imageOpacity, transform: [{translateY: imageTranslate}]},
-            ]}
-            source={this.props.headerImage}
-          />
+          {
+            this.props.headerImage ?
+              <Animated.Image
+                style={[
+                  styles.backgroundImage,
+                  {opacity: imageOpacity, transform: [{translateY: imageTranslate}]},
+                ]}
+                source={this.props.headerImage}
+              /> :
+              this.props.headerComponent ?
+                <Animated.View
+                  style={[
+                    styles.backgroundContent,
+                    {opacity: imageOpacity, transform: [{translateY: imageTranslate}]},
+                  ]}
+                >
+                  {this.props.headerComponent}
+                </Animated.View>: null
+          }
+
           <Animated.View style={styles.bar}>
             {this.props.header}
           </Animated.View>
@@ -131,5 +135,13 @@ const styles = StyleSheet.create({
     width: null,
     height: HEADER_MAX_HEIGHT,
     resizeMode: 'cover',
+  },
+  backgroundContent: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    width: null,
+    height: HEADER_MAX_HEIGHT,
   },
 });

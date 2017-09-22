@@ -20,6 +20,7 @@
     "react-native-linear-gradient": "^2.3.0",
     "react-native-markdown-syntax": "^0.1.0",
     "react-native-swiper": "^1.5.12",
+    "react-native-vector-icons": "^4.4.0",
     "react-navigation": "^1.0.0-beta.11",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
