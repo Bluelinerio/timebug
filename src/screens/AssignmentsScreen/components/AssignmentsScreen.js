@@ -11,7 +11,7 @@ import {
   ScrollView
 } from 'react-native';
 import Swiper from 'react-native-swiper';
-import Button from 'react-native-button';
+import Button from '../../../components/Button'
 import Markdown from 'react-native-easy-markdown';
 import autobind from 'autobind-decorator';
 import {IAssignment} from "../../../interfaces";
@@ -75,10 +75,9 @@ export default class AssignmentsScreen extends React.Component<Props, State> {
       <ScrollView contentContainerStyle={styles.container}>
         {steps}
         <Button
-          containerStyle={styles.wideButton}
           onPress={this.goToNextDay}
+          text="BEGIN"
         >
-          <Text style={styles.wideButtonText}>BEGIN</Text>
         </Button>
       </ScrollView>
     );
@@ -106,22 +105,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: 100,
     height: 100
-  },
-  wideButton: {
-    backgroundColor: '#6EBDDC',
-    height: 50,
-    minWidth: 250,
-    paddingHorizontal: 50,
-    marginBottom: 30,
-    borderRadius: 150,
-    alignSelf: 'center',
-    justifyContent: 'center',
-    overflow: 'hidden'
-  },
-  wideButtonText: {
-    color: 'white',
-    fontSize: 22,
-    fontWeight: '700',
-    textAlign: 'center',
-  },
+  }
 });

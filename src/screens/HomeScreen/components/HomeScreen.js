@@ -17,6 +17,7 @@ import {IStep} from "../../../interfaces";
 import getImageUrl from "../../../utils/getImageUrl";
 import Button from "react-native-button";
 import ScrollableHeader from "../../../components/ScrollableHeader";
+import UselessTextInput from "../../../components/Input";
 
 
 type Props = {

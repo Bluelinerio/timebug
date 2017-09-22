@@ -56,7 +56,7 @@ export default class LoginScreen extends React.Component<Props, State> {
 					visible={this.state.modalVisible}
 					onRequestClose={() => {alert("Modal has been closed.")}}
 				>
-					<View style={{marginTop: 10}}>
+					<View style={{marginTop: 30}}>
 						<View>
 							<TouchableHighlight onPress={() => {
 								this.setModalVisible(!this.state.modalVisible)
