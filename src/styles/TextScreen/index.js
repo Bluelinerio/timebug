@@ -13,7 +13,7 @@ theme.add({
     width: Dimensions.get('window').width,
     alignItems: 'center',
     // backgroundColor: '#6EBDDC',
-    paddingTop: Platform.OS === 'ios' ? 20 : 0,
+    paddingTop: Platform.OS === 'ios' ? 28 : 0,
     // opacity: 0.9
   },
   textScreenHeaderTitleContainer: {
