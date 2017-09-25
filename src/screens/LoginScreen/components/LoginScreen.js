@@ -12,10 +12,13 @@ import {
 import Button from 'react-native-button';
 import Markdown from 'react-native-easy-markdown';
 import { ILogin } from "../../../interfaces";
+import autobind from 'autobind-decorator';
+
 
 type Props = {
 	about: ILogin,
-	navigate(): any
+	navigate(): any,
+  fbAction(): any,
 }
 
 type State = {
@@ -30,6 +33,11 @@ export default class LoginScreen extends React.Component<Props, State> {
 	setModalVisible(visible) {
 		this.setState({modalVisible: visible});
 	}
+
+	@autobind
+	onPressLogin() {
+    this.props.fbLogin()
+	}
 	
 	render() {
 		let {about} = this.props.about.about;
@@ -38,7 +46,7 @@ export default class LoginScreen extends React.Component<Props, State> {
 				<View style={styles.container}>
 					<Button containerStyle={styles.wideButton}
 									testID="login_button"
-									onPress={() => {this.props.navigate('HomeScreen')}}>
+									onPress={this.onPressLogin}>
 						<Text style={styles.wideButtonText}>Login with FB</Text>
 					</Button>
 				</View>
