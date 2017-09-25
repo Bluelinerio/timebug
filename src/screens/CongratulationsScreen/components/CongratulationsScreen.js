@@ -2,7 +2,6 @@
 
 import React from 'react';
 import {
-	StyleSheet,
 	Text,
 	View,
 	Image
@@ -10,7 +9,7 @@ import {
 import Button from '../../../components/Button'
 import autobind from 'autobind-decorator';
 import {IStep} from "../../../interfaces";
-
+import {styles} from 'react-native-theme'
 type Props = {
 	allSteps: IStep[],
 	currentStep: IStep,
@@ -31,21 +30,22 @@ export default class CongratulationsScreen extends React.Component<Props, State>
 	}
 	render() {
 		return (
-			<View style={styles.container}>
-				<View style={styles.messageContainer}>
+			<View style={styles.congratulationsScreenContainer}>
+				<View style={styles.congratulationsScreenMessageContainer}>
 					<Text>See you soon in</Text>
-					<Text style={styles.currentStep}>STEP {this.props.currentStep.number + 1}!</Text>
-					<View style={styles.timerContainer}>
-						<Image source={buttonIcon} style={styles.buttonImage}/>
-						<Text style={[styles.durationText]}>{this.props.currentStep.duration} min</Text>
+					<Text style={[styles.congratulationsScreenCurrentStep, styles.congratulationsScreenTextColor]}>STEP {this.props.currentStep.number + 1}!</Text>
+					<View style={styles.congratulationsScreenTimerContainer}>
+						<Image source={buttonIcon} style={styles.congratulationsScreenButtonImage}/>
+						<Text style={[styles.congratulationsScreenDurationText, styles.congratulationsScreenTextColor]}>{this.props.currentStep.duration} min</Text>
 					</View>
 					
 				</View>
-				<View style={[styles.buttonContainer, styles.absoluteContainer]}>
+				<View style={[styles.buttonContainer, styles.congratulationsScreenAbsoluteContainer]}>
 					<Button
 						onPress={this.goToNextDay}
 						text="DONE"
 						side="left"
+						withArrow
 					>
 					</Button>
 				</View>
@@ -53,48 +53,3 @@ export default class CongratulationsScreen extends React.Component<Props, State>
 		);
 	}
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		alignItems: 'center',
-		justifyContent: 'space-between'
-	},
-	timerContainer: {
-		flex: 0,
-		flexDirection: 'row'
-	},
-	messageContainer: {
-		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'center',
-		top: 100
-	},
-	text: {
-		color: '#000000',
-		fontSize: 10,
-		fontWeight: 'bold',
-	},
-	absoluteContainer: {
-		flex: 1,
-		flexDirection: 'row',
-		alignItems: 'flex-end'
-	},
-	currentStep: {
-		color: '#48D0F1',
-		fontSize: 28,
-		fontWeight: 'bold'
-	},
-	buttonImage: {
-		width: 10,
-		height: 10,
-		marginRight: 5,
-		marginTop: 2
-	},
-	durationText: {
-		color: '#48D0F1',
-		fontWeight: '600',
-		fontSize: 10,
-		alignSelf: 'flex-end'
-	}
-});

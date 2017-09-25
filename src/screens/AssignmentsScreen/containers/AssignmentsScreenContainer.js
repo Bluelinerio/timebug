@@ -1,6 +1,7 @@
 // @flow
 
 import React from 'react'
+import {StyleSheet} from 'react-native';
 import {connect} from 'react-redux'
 import theme, {styles} from 'react-native-theme';
 import AssignmentsScreen from "../components/AssignmentsScreen"

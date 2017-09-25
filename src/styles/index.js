@@ -1,6 +1,7 @@
 export * from './HomeScreen'
 export * from './AssignmentsScreen'
 export * from './TextScreen'
+export * from './CongratulationsScreen'
 export * from './LoginScreen'
 export * from './components'
 export * from './containers'

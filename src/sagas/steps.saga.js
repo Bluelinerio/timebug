@@ -49,6 +49,9 @@ function* setColorsForCurrentStep(colors: IColors, step: IStep) {
     },
     gradientTopColor: {
       color
+    },
+    congratulationsScreenTextColor: {
+      color
     }
   }, 'custom');
   theme.active('custom')

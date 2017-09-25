@@ -1,7 +1,9 @@
 // @flow
 
 import React from 'react';
+import {StyleSheet} from 'react-native';
 import {connect} from 'react-redux'
+import theme, {styles} from 'react-native-theme';
 import {getStepFromCMSByDay, getAllStepsFromCMS} from "../../../actions/steps";
 import {IStep} from "../../../interfaces";
 import CongratulationsScreen from '../components/CongratulationsScreen';
@@ -33,7 +35,7 @@ class CongratulationsScreenContainer extends React.Component<Props, State> {
 	static navigationOptions = ({navigation: {state: {params}}}) => ({
 		headerTitleStyle: {textAlign: 'center', alignSelf: 'center'},
 		headerStyle: {
-			backgroundColor: '#6EBDDC',
+      backgroundColor: StyleSheet.flatten(styles.headerColor).backgroundColor,
 		},
 		headerTintColor: 'white',
 		headerLeft: null
@@ -46,8 +48,12 @@ class CongratulationsScreenContainer extends React.Component<Props, State> {
 		}
 		this.props.getAllStepsFromCMS();
 	}
-	
-	render () {
+
+  componentWillMount() {
+    theme.setRoot(this)
+  }
+
+  render () {
 			return (
 				<CongratulationsScreen
 					getStepFromCMSByDay={this.props.getStepFromCMSByDay}
