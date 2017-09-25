@@ -1,22 +1,14 @@
 // @flow
 import React from 'react'
-import {
-  ActivityIndicator,
-  StyleSheet
-} from "react-native"
+import {ActivityIndicator} from "react-native"
+import {styles} from 'react-native-theme';
+
 
 export default ({size}) => {
   return (
     <ActivityIndicator
-      style={styles.indicator}
+      style={styles.defaultIndicator}
       size={size}/>
   )
 }
 
-const styles = StyleSheet.create({
-  indicator: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

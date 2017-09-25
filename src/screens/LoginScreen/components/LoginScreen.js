@@ -11,6 +11,8 @@ import {
 	Modal} from 'react-native';
 import Button from 'react-native-button';
 import Markdown from 'react-native-easy-markdown';
+import { styles } from 'react-native-theme';
+
 import { ILogin } from "../../../interfaces";
 import autobind from 'autobind-decorator';
 
@@ -42,19 +44,19 @@ export default class LoginScreen extends React.Component<Props, State> {
 	render() {
 		let {about} = this.props.about.about;
 		return (
-			<View style={styles.screen}>
-				<View style={styles.container}>
-					<Button containerStyle={styles.wideButton}
+			<View style={styles.loginScreenScreen}>
+				<View style={styles.loginScreenContainer}>
+					<Button containerStyle={styles.loginScreenWideButton}
 									testID="login_button"
 									onPress={this.onPressLogin}>
-						<Text style={styles.wideButtonText}>Login with FB</Text>
+						<Text style={styles.loginScreenWideButtonText}>Login with FB</Text>
 					</Button>
 				</View>
-				<View style={styles.container2}>
+				<View style={styles.loginScreenContainer2}>
 					<TouchableHighlight onPress={() => {
 						this.setModalVisible(true)
 					}}>
-						<Text style={styles.wideButtonText}>About</Text>
+						<Text style={styles.loginScreenWideButtonText}>About</Text>
 					</TouchableHighlight>
 				</View>
 				
@@ -69,10 +71,10 @@ export default class LoginScreen extends React.Component<Props, State> {
 							<TouchableHighlight onPress={() => {
 								this.setModalVisible(!this.state.modalVisible)
 							}}>
-								<Text style={styles.close}>X</Text>
+								<Text style={styles.loginScreenClose}>X</Text>
 							</TouchableHighlight>
 							<ScrollView
-								style={styles.description}
+								style={styles.loginScreenDescription}
 								testID="about_text"
 							>
 								<Markdown
@@ -96,61 +98,3 @@ export default class LoginScreen extends React.Component<Props, State> {
 	}
 }
 
-const styles = StyleSheet.create({
-	screen: {
-		flex: 1,
-		flexDirection: 'column',
-		justifyContent: 'space-between'
-	},
-	container: {
-		flex: 1,
-		backgroundColor: '#3B7288',
-		alignItems: 'center',
-		justifyContent: 'flex-end'
-	},
-	container2: {
-		flex: 2,
-		alignItems: 'center',
-		justifyContent: 'flex-end',
-		paddingBottom: 10
-	},
-	wideButton: {
-		flex: -1,
-		justifyContent: 'center',
-		alignItems: 'center',
-		height: 40,
-		bottom: 10,
-		borderWidth: 0,
-		backgroundColor: '#ffffff',
-		minWidth: 150,
-		paddingHorizontal: 45,
-		borderRadius: 150,
-	},
-	wideButtonText: {
-		color: '#000000',
-		fontSize: 14,
-		fontWeight: '400',
-		textAlign: 'center',
-	},
-	description: {
-		flex: 1,
-		paddingBottom: 500,
-		paddingHorizontal: 20
-	},
-	about_text: {
-		textAlign: 'center',
-		paddingHorizontal: 20,
-		alignSelf: 'center',
-		fontSize: 18,
-		marginBottom: 15,
-		flexWrap: 'wrap',
-		flexDirection: 'row'
-	},
-	close: {
-		fontWeight: 'bold',
-		fontSize: 15,
-		marginBottom: 10,
-		marginLeft: 10,
-		marginTop: 7
-	}
-});

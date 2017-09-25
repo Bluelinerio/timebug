@@ -8,8 +8,8 @@ import AssignmentsScreen from "./screens/AssignmentsScreen";
 import CongratulationsScreen from "./screens/CongratulationsScreen";
 
 const Navigator = StackNavigator({
-    LoginScreen,
     HomeScreen,
+    LoginScreen,
     TextScreen,
     AssignmentsScreen,
 		CongratulationsScreen

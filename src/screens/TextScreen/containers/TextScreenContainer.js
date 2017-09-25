@@ -1,12 +1,11 @@
 // @flow
 
 import React from 'react'
-import {
-  ActivityIndicator,
-  StyleSheet
-} from 'react-native'
+import {ActivityIndicator} from 'react-native'
 import {connect} from 'react-redux'
 import TextScreen from "../components/TextScreen"
+import theme from 'react-native-theme';
+
 import {IStep} from "../../../interfaces"
 import DefaultIndicator from "../../../components/DefaultIndicator";
 
@@ -29,13 +28,11 @@ const mapStateToProps = (state) => {
 class TextScreenContainer extends React.Component<Props, State> {
   static navigationOptions = ({navigation: {state: {params}}}) => ({
     header: false
-    // title: params ? 'STEP ' + params.number : '',
-    // headerTitleStyle: {textAlign: 'center', alignSelf: 'center'},
-    // headerStyle: {
-    //   backgroundColor: '#6EBDDC',
-    // },
-    // headerTintColor: 'white',
   });
+
+  componentWillMount() {
+    theme.setRoot(this)
+  }
 
   render() {
     if (this.props.currentStep) {
