@@ -66,3 +66,4 @@ local.properties
 
 /coverage
 /third-party
+*.xcuserstate
