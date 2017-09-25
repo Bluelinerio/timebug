@@ -5,10 +5,8 @@ import {
   Image,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
   Dimensions,
-  RefreshControl,
   Platform
 } from 'react-native';
 import {Header} from 'react-navigation';
