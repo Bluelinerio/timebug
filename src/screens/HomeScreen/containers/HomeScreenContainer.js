@@ -2,10 +2,6 @@
 
 import React from 'react'
 import { connect } from 'react-redux'
-import {
-  ActivityIndicator,
-  StyleSheet
-} from 'react-native'
 import HomeScreen from '../components/HomeScreen'
 import {
   getAllStepsFromCMS,

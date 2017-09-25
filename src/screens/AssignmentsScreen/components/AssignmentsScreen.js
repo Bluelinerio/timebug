@@ -3,17 +3,13 @@
 import React from 'react';
 import {
   StyleSheet,
-  Text,
   Dimensions,
   View,
-  ActivityIndicator,
   Image,
   ScrollView
 } from 'react-native';
-import Swiper from 'react-native-swiper';
 import Button from '../../../components/Button'
 import Markdown from 'react-native-easy-markdown';
-import autobind from 'autobind-decorator';
 import {IAssignment} from "../../../interfaces";
 import getImageUrl from "../../../utils/getImageUrl";
 
@@ -33,18 +29,7 @@ export default class AssignmentsScreen extends React.Component<Props, State> {
       currentSlide: 0
     }
   }
-
-  @autobind
-  goToNextDay() {
-    let {number} = this.props.currentStep;
-    let {length} = this.props.allSteps;
-    let nextDay = number + 1;
-    if (nextDay <= length) {
-      this.props.getStepFromCMSByDay(nextDay);
-    }
-    this.props.navigate('HomeScreen', {number})
-  }
-
+  
   render() {
     const {assignments} = this.props;
     let steps = assignments.map((assignment, i) => {
@@ -75,7 +60,7 @@ export default class AssignmentsScreen extends React.Component<Props, State> {
       <ScrollView contentContainerStyle={styles.container}>
         {steps}
         <Button
-          onPress={this.goToNextDay}
+          onPress={() => this.props.navigate('CongratulationsScreen')}
           text="BEGIN"
         >
         </Button>

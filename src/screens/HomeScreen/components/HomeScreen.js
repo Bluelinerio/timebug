@@ -5,20 +5,14 @@ import {
   Image,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
   Dimensions,
-  RefreshControl,
   Platform
 } from 'react-native';
-import {Header} from 'react-navigation';
-import autobind from 'autobind-decorator';
 import {IStep} from "../../../interfaces";
 import getImageUrl from "../../../utils/getImageUrl";
 import Button from "react-native-button";
 import ScrollableHeader from "../../../components/ScrollableHeader";
-import UselessTextInput from "../../../components/Input";
-
 
 type Props = {
   allSteps: IStep[],

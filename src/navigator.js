@@ -5,12 +5,14 @@ import LoginScreen from "./screens/LoginScreen";
 import HomeScreen from "./screens/HomeScreen";
 import TextScreen from "./screens/TextScreen";
 import AssignmentsScreen from "./screens/AssignmentsScreen";
+import CongratulationsScreen from "./screens/CongratulationsScreen";
 
 const Navigator = StackNavigator({
     LoginScreen,
     HomeScreen,
     TextScreen,
-    AssignmentsScreen
+    AssignmentsScreen,
+		CongratulationsScreen
   },
   {
     headerMode: 'screen',

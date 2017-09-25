@@ -146,8 +146,8 @@ const styles = StyleSheet.create({
     flex: 1,
     alignSelf: 'flex-start',
     // justifyContent: 'center',
-    width: 120,
-    height: 120,
+    width: 135,
+    height: 135,
 		bottom: 20
   },
   buttonWrapper: {
