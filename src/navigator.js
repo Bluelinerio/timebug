@@ -8,7 +8,7 @@ import AssignmentsScreen from "./screens/AssignmentsScreen";
 import CongratulationsScreen from "./screens/CongratulationsScreen";
 
 const Navigator = StackNavigator({
-    LoginScreen,
+    LoginScreen, //TODO comment that line to skip login
     HomeScreen,
     TextScreen,
     AssignmentsScreen,

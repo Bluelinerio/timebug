@@ -70,4 +70,9 @@ theme.add({
     flex: 1,
     paddingHorizontal: 20
   },
+  textScreenBackButton: {
+    position: 'absolute',
+    top: 30,
+    left: 10
+  }
 });
