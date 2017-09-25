@@ -6,6 +6,7 @@ import DefaultIndicator from "../../../components/DefaultIndicator";
 import { getAboutInfoFromCMS } from "../../../actions/login";
 import { ILogin } from "../../../interfaces"
 import LoginScreen from '../components/LoginScreen';
+import FBAction from '../../../actions/FBAction'
 
 type Props = {
 	getAboutInfoFromCMS(): any,
@@ -24,7 +25,8 @@ const mapStateToProps = (state) => {
 };
 
 @connect(mapStateToProps, {
-	getAboutInfoFromCMS
+	getAboutInfoFromCMS,
+	FBAction
 })
 
 class LoginScreenContainer extends React.Component<Props, State> {
@@ -42,6 +44,7 @@ class LoginScreenContainer extends React.Component<Props, State> {
 				<LoginScreen
 					about={this.props.about}
 					navigate={this.props.navigation.navigate}
+					fbLogin={this.props.FBAction}
 				/>
 			)
 		} else {
