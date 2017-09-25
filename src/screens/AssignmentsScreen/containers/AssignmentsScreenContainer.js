@@ -1,10 +1,6 @@
 // @flow
 
 import React from 'react'
-import {
-  ActivityIndicator,
-  StyleSheet
-} from 'react-native'
 import {connect} from 'react-redux'
 import AssignmentsScreen from "../components/AssignmentsScreen"
 import {IAssignment} from "../../../interfaces";
