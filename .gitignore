@@ -67,3 +67,4 @@ local.properties
 /coverage
 /third-party
 *.xcuserstate
+ios/build/Build/
