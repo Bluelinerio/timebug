@@ -7,8 +7,8 @@ import TextScreen from "./screens/TextScreen";
 import AssignmentsScreen from "./screens/AssignmentsScreen";
 
 const Navigator = StackNavigator({
-    LoginScreen,
     HomeScreen,
+    LoginScreen,
     TextScreen,
     AssignmentsScreen
   },

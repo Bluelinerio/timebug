@@ -7,6 +7,7 @@ import { getAboutInfoFromCMS } from "../../../actions/login";
 import { ILogin } from "../../../interfaces"
 import LoginScreen from '../components/LoginScreen';
 import FBAction from '../../../actions/FBAction'
+import theme from 'react-native-theme';
 
 type Props = {
 	getAboutInfoFromCMS(): any,
@@ -37,7 +38,11 @@ class LoginScreenContainer extends React.Component<Props, State> {
 	componentDidMount() {
 		this.props.getAboutInfoFromCMS();
 	}
-	
+
+  componentWillMount() {
+    theme.setRoot(this)
+  }
+
 	render () {
 		if (this.props.about) {
 			return (

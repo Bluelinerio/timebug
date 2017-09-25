@@ -9,6 +9,7 @@ import {
   Text,
   View
 } from 'react-native';
+import {styles} from 'react-native-theme';
 
 const HEADER_MAX_HEIGHT = 250;
 const HEADER_MIN_HEIGHT = 60;
@@ -52,24 +53,27 @@ export default class ScrollableHeader extends Component<Props, State> {
     });
 
     return (
-      <View style={styles.fill}>
+      <View style={styles.scrollableHeaderFill}>
         <ScrollView
-          style={styles.fill}
+          style={styles.scrollableHeaderFill}
           scrollEventThrottle={16}
           onScroll={Animated.event(
             [{nativeEvent: {contentOffset: {y: this.state.scrollY}}}]
           )}
         >
-          <View style={styles.scrollViewContent}>
+          <View style={styles.scrollableHeaderScrollViewContent}>
             {this.props.content}
           </View>
         </ScrollView>
-        <Animated.View style={[styles.header, {height: headerHeight, backgroundColor: headerHeight === HEADER_MIN_HEIGHT ? 'black' : 'transparent'}]}>
+        <Animated.View style={[styles.scrollableHeaderHeader, {
+          height: headerHeight,
+          backgroundColor: headerHeight === HEADER_MIN_HEIGHT ? 'black' : 'transparent'
+        }]}>
           {
             this.props.headerImage ?
               <Animated.Image
                 style={[
-                  styles.backgroundImage,
+                  styles.scrollableHeaderBackgroundImage,
                   {opacity: imageOpacity, transform: [{translateY: imageTranslate}]},
                 ]}
                 source={this.props.headerImage}
@@ -77,15 +81,15 @@ export default class ScrollableHeader extends Component<Props, State> {
               this.props.headerComponent ?
                 <Animated.View
                   style={[
-                    styles.backgroundContent,
+                    styles.scrollableHeaderBackgroundContent,
                     {transform: [{translateY: imageTranslate}]},
                   ]}
                 >
                   {this.props.headerComponent}
-                </Animated.View>: null
+                </Animated.View> : null
           }
 
-          <Animated.View style={styles.bar}>
+          <Animated.View style={styles.scrollableHeaderBar}>
             {this.props.header}
           </Animated.View>
         </Animated.View>
@@ -93,55 +97,3 @@ export default class ScrollableHeader extends Component<Props, State> {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  fill: {
-    flex: 1,
-  },
-  row: {
-    height: 40,
-    margin: 16,
-    backgroundColor: '#D3D3D3',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  header: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    backgroundColor: 'transparent',
-    overflow: 'hidden',
-  },
-  bar: {
-    marginTop: 28,
-    height: 32,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    backgroundColor: 'transparent',
-    color: 'white',
-    fontSize: 18,
-  },
-  scrollViewContent: {
-    marginTop: HEADER_MAX_HEIGHT,
-  },
-  backgroundImage: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    width: null,
-    height: HEADER_MAX_HEIGHT,
-    resizeMode: 'cover',
-  },
-  backgroundContent: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    width: null,
-    height: HEADER_MAX_HEIGHT,
-  },
-});

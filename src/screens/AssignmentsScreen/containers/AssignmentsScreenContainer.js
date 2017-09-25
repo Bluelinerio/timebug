@@ -6,6 +6,7 @@ import {
   StyleSheet
 } from 'react-native'
 import {connect} from 'react-redux'
+import theme, {styles} from 'react-native-theme';
 import AssignmentsScreen from "../components/AssignmentsScreen"
 import {IAssignment} from "../../../interfaces";
 import DefaultIndicator from "../../../components/DefaultIndicator";
@@ -37,15 +38,21 @@ const mapStateToProps = (state) => {
   getStepFromCMSByDay
 })
 class AssignmentsScreenContainer extends React.Component<Props, State> {
-  static navigationOptions = ({navigation: {state: {params}}}) => ({
-    title: params ? `DAY ${params.number} ASSIGNMENT` : 'ASSIGNMENT',
+  static navigationOptions = ({navigation: {state: {params}}}) => {
+    return ({
+      title: params ? `DAY ${params.number} ASSIGNMENT` : 'ASSIGNMENT',
       headerTitleStyle: {textAlign: 'center', alignSelf: 'center'},
       headerStyle: {
-        backgroundColor: '#6EBDDC',
+        backgroundColor: StyleSheet.flatten(styles.headerColor).backgroundColor,
       },
       headerTintColor: 'white',
 
-  });
+    });
+  };
+
+  componentWillMount() {
+    theme.setRoot(this)
+  }
 
   render() {
     if (this.props.assignments) {

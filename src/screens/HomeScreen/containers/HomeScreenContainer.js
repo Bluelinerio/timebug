@@ -6,6 +6,7 @@ import {
   ActivityIndicator,
   StyleSheet
 } from 'react-native'
+import theme from 'react-native-theme';
 import HomeScreen from '../components/HomeScreen'
 import {
   getAllStepsFromCMS,
@@ -49,6 +50,10 @@ class HomeScreenContainer extends React.Component<Props, State> {
       this.props.getStepFromCMSByDay(1);
     }
     this.props.getAllStepsFromCMS();
+  }
+
+  componentWillMount() {
+    theme.setRoot(this)
   }
 
   render () {
