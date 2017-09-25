@@ -5,6 +5,7 @@ import android.app.Application;
 import com.facebook.react.ReactApplication;
 import com.facebook.FacebookSdk;
 import com.facebook.CallbackManager;
+import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import com.facebook.appevents.AppEventsLogger;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.facebook.react.ReactNativeHost;
@@ -19,24 +20,24 @@ import com.BV.LinearGradient.LinearGradientPackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
-  private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
-    @Override
-    public boolean getUseDeveloperSupport() {
-      return BuildConfig.DEBUG;
-    }
-
     private static CallbackManager mCallbackManager = CallbackManager.Factory.create();
 
       protected static CallbackManager getCallbackManager() {
         return mCallbackManager;
       }
 
+  private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
+    @Override
+    public boolean getUseDeveloperSupport() {
+      return BuildConfig.DEBUG;
+    }
+
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
             new MainReactPackage(),
             new FBSDKPackage(mCallbackManager),
-            new VectorIconsPackage()
+            new VectorIconsPackage(),
             new LinearGradientPackage()
       );
     }
@@ -53,9 +54,4 @@ public class MainApplication extends Application implements ReactApplication {
     SoLoader.init(this, /* native exopackage */ false);
   }
 
-  @Override
-  public void onActivityResult(int requestCode, int resultCode, Intent data) {
-      super.onActivityResult(requestCode, resultCode, data);
-      MainApplication.getCallbackManager().onActivityResult(requestCode, resultCode, data);
-  }
 }
