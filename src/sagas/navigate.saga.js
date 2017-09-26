@@ -6,7 +6,7 @@ import {
   GO_TO_HOME_SCREEN,
   GO_TO_TEXT_SCREEN,
   GO_TO_ASSIGNMENTS_SCREEN,
-  GO_TO_FORM_SCREEN,
+  GO_TO_WORKBOOK_SCREEN,
   GO_TO_CONGRATULATIONS_SCREEN
 } from '../constants/actionTypes';
 import {reset, navigate} from '../HOC/navigation'
@@ -26,8 +26,8 @@ export function* goToAssignmentsScreen(){
   yield takeLatest(GO_TO_ASSIGNMENTS_SCREEN, (action: {number: number, assignments: IAssignment[]}) => navigate('AssignmentsScreen', action));
 }
 
-export function* goToFormScreen(){
-  yield takeLatest(GO_TO_FORM_SCREEN, (action: {number: number}) => navigate('HomeScreen', action));
+export function* goToWorkBookScreen(){
+  yield takeLatest(GO_TO_WORKBOOK_SCREEN, (action: {number: number}) => navigate('WorkBookScreen', action));
 }
 
 export function* goToCongratulationsScreen(){

@@ -13,9 +13,10 @@ import {
   goToHomeScreen,
   goToTextScreen,
   goToAssignmentsScreen,
-  goToFormScreen,
+  goToWorkBookScreen,
   goToCongratulationsScreen
 } from './navigate.saga';
+import {userProgressSaga} from "./user.saga";
 
 export default function* rootSaga() {
   yield all([
@@ -26,7 +27,8 @@ export default function* rootSaga() {
     goToHomeScreen(),
     goToTextScreen(),
     goToAssignmentsScreen(),
-    goToFormScreen(),
-    goToCongratulationsScreen()
+    goToWorkBookScreen(),
+    goToCongratulationsScreen(),
+    userProgressSaga()
   ])
 }

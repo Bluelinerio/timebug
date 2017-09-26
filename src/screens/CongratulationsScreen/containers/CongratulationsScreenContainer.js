@@ -34,14 +34,13 @@ const mapStateToProps = (state) => {
 	goToHomeScreen
 })
 class CongratulationsScreenContainer extends React.Component<Props, State> {
-	static navigationOptions = ({navigation: {state: {params}}}) => ({
+	static navigationOptions = () => ({
 		headerTitleStyle: {textAlign: 'center', alignSelf: 'center'},
 		headerStyle: {
       backgroundColor: StyleSheet.flatten(styles.headerColor).backgroundColor,
 		},
 		headerTintColor: 'white',
 		headerLeft: null
-
 	});
 	
 	componentDidMount() {

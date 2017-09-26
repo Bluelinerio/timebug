@@ -29,7 +29,7 @@ export default ({text, onPress, side, withArrow}: Props) => {
         onPress={onPress}
       >
         {
-          side && side === 'right' && withArrow &&
+          side && side === 'left' && withArrow &&
           <Icon
             style={styles.buttonIconRight}
             name="ios-arrow-back-outline"
@@ -39,7 +39,7 @@ export default ({text, onPress, side, withArrow}: Props) => {
         }
         <Text style={styles.wideButtonText}>{text}</Text>
         {
-          side && side === 'left' && withArrow &&
+          side && side === 'right' && withArrow &&
           <Icon
             style={styles.buttonIconLeft}
             name="ios-arrow-forward-outline"

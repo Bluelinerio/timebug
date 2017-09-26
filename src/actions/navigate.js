@@ -3,7 +3,7 @@ import {
   GO_TO_HOME_SCREEN,
   GO_TO_TEXT_SCREEN,
   GO_TO_ASSIGNMENTS_SCREEN,
-  GO_TO_FORM_SCREEN,
+  GO_TO_WORKBOOK_SCREEN,
   GO_TO_CONGRATULATIONS_SCREEN
 } from '../constants/actionTypes';
 
@@ -28,9 +28,9 @@ export function goToAssignmentsScreen(props){
   }
 }
 
-export function goToFormScreen(props){
+export function goToWorkBookScreen(props){
   return {
-    type: GO_TO_FORM_SCREEN,
+    type: GO_TO_WORKBOOK_SCREEN,
     ...props
   }
 }

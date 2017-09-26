@@ -26,11 +26,11 @@ theme.add({
     backgroundColor: '#6EBDDC',
   },
   left: {
-    justifyContent: 'flex-end',
+    justifyContent: 'flex-start',
     paddingHorizontal: 10,
   },
   right: {
-    justifyContent: 'flex-start',
+    justifyContent: 'flex-end',
     paddingHorizontal: 10,
   },
   wideButtonText: {

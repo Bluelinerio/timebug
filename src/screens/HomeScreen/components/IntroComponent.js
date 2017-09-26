@@ -10,11 +10,11 @@ import {
 	ScrollView,
 	Modal} from 'react-native';
 import Button from 'react-native-button';
+import autobind from 'autobind-decorator';
 import Markdown from 'react-native-easy-markdown';
 import { styles } from 'react-native-theme';
 
 import { ILogin } from "../../../interfaces/index";
-import autobind from 'autobind-decorator';
 
 
 type Props = {

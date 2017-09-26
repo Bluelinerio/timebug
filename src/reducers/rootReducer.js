@@ -10,6 +10,7 @@ import error from './error';
 import login from './login';
 import network from './network';
 import rootSaga from '../sagas/rootSagas'
+import user from "./user";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -37,7 +38,8 @@ const reducer = storage.reducer(combineReducers(
     steps,
     error,
     login,
-    network
+    network,
+    user
   }));
 
 export const store = createStoreWithMiddleware(reducer);

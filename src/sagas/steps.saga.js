@@ -8,7 +8,7 @@ import {
   FAILED,
   SUCCEEDED,
   GET_ALL_STEPS_FROM_CMS,
-  GET_STEPS_FROM_CMS_BY_DAY, PENDING_START, PENDING_END,
+  GET_STEPS_FROM_CMS_BY_DAY, PENDING_START, PENDING_END, GET_USER_PROGRESS,
 } from '../constants/actionTypes';
 import {contentfulClient} from "../contentful";
 import networkState from '../utils/networkState';
@@ -99,6 +99,16 @@ function* getStepsFromCMSByDay(action: { day: number }) {
 
     let colors = yield getColorsFromCMS();
     yield setColorsForCurrentStep(colors, step);
+
+    if (action.day === 2) {
+      yield put({
+        type: GET_USER_PROGRESS + SUCCEEDED,
+        progress: {
+          step: 'step_2',
+          formStep: 1,
+        }
+      });
+    }
 
     yield put({type: GET_STEPS_FROM_CMS_BY_DAY + SUCCEEDED, step});
 

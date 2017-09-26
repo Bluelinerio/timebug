@@ -17,7 +17,7 @@ import getImageUrl from "../../../utils/getImageUrl";
 
 type Props = {
   assignments: IAssignment[],
-  goToCongratulationsScreen(): any
+  goToWorkBookScreen(): any
 }
 
 type State = {
@@ -62,7 +62,7 @@ export default class AssignmentsScreen extends React.Component<Props, State> {
       <ScrollView contentContainerStyle={styles.assignmentsScreenContainer}>
         {steps}
         <Button
-          onPress={() => this.props.goToCongratulationsScreen({})}
+          onPress={() => this.props.goToWorkBookScreen({})}
           text="BEGIN"
         >
         </Button>

@@ -44,7 +44,7 @@ export default class CongratulationsScreen extends React.Component<Props, State>
 					<Button
 						onPress={this.goToNextDay}
 						text="DONE"
-						side="left"
+						side="right"
 						withArrow
 					>
 					</Button>

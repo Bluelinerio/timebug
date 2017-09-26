@@ -67,8 +67,8 @@ class HomeScreenContainer extends React.Component<Props, State> {
     } else {
       if (!this.props.currentStep.number) {
         this.props.getStepFromCMSByDay(1);
-        this.props.getAllStepsFromCMS();
       }
+      this.props.getAllStepsFromCMS();
     }
   }
 

@@ -10,7 +10,7 @@ import {
   GET_ABOUT_INFO_FROM_CMS,
   FACEBOOK_LOGIN,
   PENDING_START,
-  PENDING_END
+  PENDING_END, GET_USER_PROGRESS
 } from '../constants/actionTypes';
 import {CONTENTFUL_CONTENT_LOGIN} from "../constants/constants";
 
@@ -31,7 +31,7 @@ function* getAboutInfoFromCMS() {
       content_type: CONTENTFUL_CONTENT_LOGIN
     });
 
-    const about: ILogin = response.items.map((item) => item.fields)[0].about;
+    const about: string  = response.items.map((item) => item.fields)[0].about;
 
     yield put({type: GET_ABOUT_INFO_FROM_CMS + SUCCEEDED, about});
 
@@ -50,13 +50,14 @@ function* loginWithFB() {
 
     let result = yield LoginManager.logInWithReadPermissions(['public_profile', 'email', 'user_friends']);
     if (result.isCancelled) {
-      alert('canceled')
+      alert('canceled');
+      yield put({type: PENDING_END});
     } else {
       let data = yield AccessToken.getCurrentAccessToken();
-      console.log(data);
 
       //send data to BE
 
+      yield put({type: GET_USER_PROGRESS, userID: data.userID});
       yield put({type: FACEBOOK_LOGIN + SUCCEEDED});
       yield reset('HomeScreen');
 
@@ -67,6 +68,9 @@ function* loginWithFB() {
     yield put({type: PENDING_END});
 
   }
+  // yield put({type: FACEBOOK_LOGIN + SUCCEEDED});
+  // yield reset('HomeScreen');
+
 }
 
 export function* getAboutInfoSaga() {
