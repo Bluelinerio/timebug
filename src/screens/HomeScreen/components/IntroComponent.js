@@ -13,22 +13,20 @@ import Button from 'react-native-button';
 import Markdown from 'react-native-easy-markdown';
 import { styles } from 'react-native-theme';
 
-import { ILogin } from "../../../interfaces";
+import { ILogin } from "../../../interfaces/index";
 import autobind from 'autobind-decorator';
 
 
 type Props = {
-	about: ILogin,
-	navigate(): any,
-  fbAction(): any,
+	about: string,
+  loginWithFB(): any,
 }
 
 type State = {
-
+  modalVisible: boolean
 }
 
-const window = Dimensions.get('window');
-export default class LoginScreen extends React.Component<Props, State> {
+export default class IntroComponent extends React.Component<Props, State> {
 	state = {
 		modalVisible: false
 	};
@@ -38,11 +36,11 @@ export default class LoginScreen extends React.Component<Props, State> {
 
 	@autobind
 	onPressLogin() {
-    this.props.fbLogin()
+    this.props.loginWithFB()
 	}
 	
 	render() {
-		let {about} = this.props.about.about;
+		let {about} = this.props;
 		return (
 			<View style={styles.loginScreenScreen}>
 				<View style={styles.loginScreenContainer}>
