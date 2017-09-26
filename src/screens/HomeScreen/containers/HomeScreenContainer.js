@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import theme from 'react-native-theme';
 
-import HomeScreen from '../components/DashboardComponent';
+import DashboardComponent from '../components/DashboardComponent';
 import IntroComponent from "../components/IntroComponent";
 import DefaultIndicator from "../../../components/DefaultIndicator";
 
@@ -20,6 +20,7 @@ import {getAboutInfoFromCMS} from "../../../actions/login";
 import {loginWithFB} from "../../../actions/FBAction";
 
 import type {IStep} from "../../../interfaces";
+import {goToTextScreen} from "../../../actions/navigate";
 
 type Props = {
   allSteps: IStep[],
@@ -52,7 +53,8 @@ const mapStateToProps = (state) => {
   getStepFromCMSByDay,
   getAllStepsFromCMS,
   getAboutInfoFromCMS,
-  loginWithFB
+  loginWithFB,
+  goToTextScreen
 })
 class HomeScreenContainer extends React.Component<Props, State> {
   static navigationOptions = {
@@ -65,8 +67,8 @@ class HomeScreenContainer extends React.Component<Props, State> {
     } else {
       if (!this.props.currentStep.number) {
         this.props.getStepFromCMSByDay(1);
+        this.props.getAllStepsFromCMS();
       }
-      this.props.getAllStepsFromCMS();
     }
   }
 
@@ -82,7 +84,7 @@ class HomeScreenContainer extends React.Component<Props, State> {
       loginWithFB,
       currentStep,
       allSteps,
-      navigation
+      goToTextScreen
     } = this.props;
 
     if (!isPending && !isLoggedIn) {
@@ -94,10 +96,10 @@ class HomeScreenContainer extends React.Component<Props, State> {
       )
     } else if (!isPending && isLoggedIn && currentStep.number && allSteps.length) {
       return (
-        <HomeScreen
+        <DashboardComponent
           currentStep={currentStep}
-          allSteps={allSteps}
-          navigate={navigation.navigate}
+          totalNumberOfSteps={allSteps.length}
+          goToTextScreen={goToTextScreen}
         />
       )
     } else {

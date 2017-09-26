@@ -1,13 +1,14 @@
 // @flow
 
-import {put, takeLatest} from 'redux-saga/effects';
+import {put, takeLatest, call} from 'redux-saga/effects';
+import {delay} from 'redux-saga'
 import theme from 'react-native-theme';
 
 import {
   FAILED,
   SUCCEEDED,
   GET_ALL_STEPS_FROM_CMS,
-  GET_STEPS_FROM_CMS_BY_DAY,
+  GET_STEPS_FROM_CMS_BY_DAY, PENDING_START, PENDING_END,
 } from '../constants/actionTypes';
 import {contentfulClient} from "../contentful";
 import networkState from '../utils/networkState';
@@ -54,12 +55,15 @@ function* setColorsForCurrentStep(colors: IColors, step: IStep) {
       color
     }
   }, 'custom');
-  theme.active('custom')
-
+  theme.active('custom');
+  // delay for theme applying
+  yield call(delay, 500);
 }
 
 function* getAllStepsFromCMS() {
   try {
+    yield put({type: PENDING_START});
+
     yield networkState.haveConnection();
 
     let response = yield contentfulClient.getEntries({
@@ -71,13 +75,19 @@ function* getAllStepsFromCMS() {
     });
 
     yield put({type: GET_ALL_STEPS_FROM_CMS + SUCCEEDED, steps});
+
+    yield put({type: PENDING_END});
   } catch (e) {
     yield put({type: GET_ALL_STEPS_FROM_CMS + FAILED, message: e.message});
+
+    yield put({type: PENDING_END});
   }
 }
 
 function* getStepsFromCMSByDay(action: { day: number }) {
   try {
+    yield put({type: PENDING_START});
+
     yield networkState.haveConnection();
 
     let response = yield contentfulClient.getEntries({
@@ -91,8 +101,12 @@ function* getStepsFromCMSByDay(action: { day: number }) {
     yield setColorsForCurrentStep(colors, step);
 
     yield put({type: GET_STEPS_FROM_CMS_BY_DAY + SUCCEEDED, step});
+
+    yield put({type: PENDING_END});
   } catch (e) {
     yield put({type: GET_STEPS_FROM_CMS_BY_DAY + FAILED, message: e.message});
+
+    yield put({type: PENDING_END});
   }
 }
 

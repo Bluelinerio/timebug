@@ -8,6 +8,7 @@ import AssignmentsScreen from "../components/AssignmentsScreen"
 import {IAssignment} from "../../../interfaces";
 import DefaultIndicator from "../../../components/DefaultIndicator";
 import {getStepFromCMSByDay} from "../../../actions/steps";
+import {goToCongratulationsScreen} from "../../../actions/navigate";
 
 type Props = {
   assignments: IAssignment,
@@ -32,18 +33,18 @@ const mapStateToProps = (state) => {
 };
 
 @connect(mapStateToProps, {
-  getStepFromCMSByDay
+  getStepFromCMSByDay,
+  goToCongratulationsScreen
 })
 class AssignmentsScreenContainer extends React.Component<Props, State> {
   static navigationOptions = ({navigation: {state: {params}}}) => {
     return ({
-      title: params ? `DAY ${params.number} ASSIGNMENT` : 'ASSIGNMENT',
+      title: params ? `STEP ${params.number} ASSIGNMENT` : 'ASSIGNMENT',
       headerTitleStyle: {textAlign: 'center', alignSelf: 'center'},
       headerStyle: {
         backgroundColor: StyleSheet.flatten(styles.headerColor).backgroundColor,
       },
       headerTintColor: 'white',
-
     });
   };
 
@@ -59,7 +60,7 @@ class AssignmentsScreenContainer extends React.Component<Props, State> {
           assignments={this.props.assignments}
           currentStep={this.props.currentStep}
           allSteps={this.props.allSteps}
-          navigate={this.props.navigation.navigate}
+          goToCongratulationsScreen={this.props.goToCongratulationsScreen}
           dispatch={this.props.navigation.dispatch}
         />
       )

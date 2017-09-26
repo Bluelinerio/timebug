@@ -26,7 +26,7 @@ export default class CongratulationsScreen extends React.Component<Props, State>
 		if (nextDay <= length) {
 			this.props.getStepFromCMSByDay(nextDay);
 		}
-		this.props.navigate('HomeScreen', number)
+		this.props.goToHomeScreen({})
 	}
 	render() {
 		return (

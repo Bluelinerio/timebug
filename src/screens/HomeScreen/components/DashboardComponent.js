@@ -31,9 +31,12 @@ type State = {
 const headerBackground = require('../../../resources/images/home_background.jpg');
 const buttonIcon = require('../../../resources/images/clock_icon.png');
 
-export default class HomeScreen extends React.Component<Props, State> {
+export default class DashboardComponent extends React.Component<Props, State> {
   render() {
-    let {currentStep} = this.props;
+    let {
+      currentStep,
+      totalNumberOfSteps
+    } = this.props;
 
     return <ScrollableHeader
       headerImage={headerBackground}
@@ -45,16 +48,14 @@ export default class HomeScreen extends React.Component<Props, State> {
             <View>
               <View style={styles.HomeScreenFirstPartTitle}>
                 <Text style={[styles.HomeScreenText, styles.HomeScreenBoldText]}>{currentStep.type}</Text>
-                <Text style={[styles.HomeScreenText, styles.HomeScreenBoldText]}>STEP # {currentStep.number}/{this.props.allSteps.length}</Text>
+                <Text style={[styles.HomeScreenText, styles.HomeScreenBoldText]}>STEP # {currentStep.number}/{totalNumberOfSteps}</Text>
               </View>
               <Text style={[styles.HomeScreenText, styles.HomeScreenLittleText]}>{currentStep.title}</Text>
             </View>
           </View>
           <Button
             containerStyle={styles.HomeScreenWideButton}
-            onPress={() => {
-              this.props.navigate('TextScreen', {number: currentStep.number});
-            }}
+            onPress={() => this.props.goToTextScreen({number: currentStep.number})}
           >
             <View style={styles.HomeScreenAbsoluteContainer}>
               <Image source={buttonIcon} style={styles.HomeScreenButtonImage}/>

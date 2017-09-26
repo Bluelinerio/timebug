@@ -16,7 +16,8 @@ import {IAssignment} from "../../../interfaces";
 import getImageUrl from "../../../utils/getImageUrl";
 
 type Props = {
-  assignments: IAssignment[]
+  assignments: IAssignment[],
+  goToCongratulationsScreen(): any
 }
 
 type State = {
@@ -61,7 +62,7 @@ export default class AssignmentsScreen extends React.Component<Props, State> {
       <ScrollView contentContainerStyle={styles.assignmentsScreenContainer}>
         {steps}
         <Button
-          onPress={() => this.props.navigate('CongratulationsScreen')}
+          onPress={() => this.props.goToCongratulationsScreen({})}
           text="BEGIN"
         >
         </Button>
