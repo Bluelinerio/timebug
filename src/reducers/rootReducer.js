@@ -8,6 +8,7 @@ import {createLogger} from 'redux-logger';
 import steps from './steps';
 import error from './error';
 import login from './login';
+import network from './network';
 import rootSaga from '../sagas/rootSagas'
 
 const sagaMiddleware = createSagaMiddleware();
@@ -35,7 +36,8 @@ const reducer = storage.reducer(combineReducers(
   {
     steps,
     error,
-    login
+    login,
+    network
   }));
 
 export const store = createStoreWithMiddleware(reducer);

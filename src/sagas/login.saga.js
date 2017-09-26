@@ -26,7 +26,7 @@ function* getAboutInfoFromCMS() {
       content_type: CONTENTFUL_CONTENT_LOGIN
     });
 
-    const about: ILogin = response.items.map((item) => item.fields)[0];
+    const about: ILogin = response.items.map((item) => item.fields)[0].about;
 
     yield put({type: GET_ABOUT_INFO_FROM_CMS + SUCCEEDED, about});
   } catch (e) {
@@ -47,6 +47,7 @@ function* loginWithFB() {
 
       //send data to BE
 
+      yield put({type: FACEBOOK_LOGIN + SUCCEEDED});
       yield reset('HomeScreen')
     }
   } catch (e) {

@@ -1,6 +1,7 @@
 // @flow
 
-import {IAssignment} from "./IAssignment";
+import type {IAssignment} from "./IAssignment";
+import type {IIcon} from "./IIcon";
 
 export interface IStep {
   number: number,
