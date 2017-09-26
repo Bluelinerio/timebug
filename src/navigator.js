@@ -20,7 +20,7 @@ const Navigator = StackNavigator({
     },
     transitionConfig: () => ({
       screenInterpolator: (sceneProps) => {
-        if (['AssignmentsScreen'].indexOf(sceneProps.navigation.state.routes[sceneProps.navigation.state.routes.length - 1].routeName) !== -1) {
+        if (['TextScreen', 'HomeScreen'].indexOf(sceneProps.navigation.state.routes[sceneProps.navigation.state.routes.length - 1].routeName) !== -1) {
           return CardStackStyleInterpolator.forVertical(sceneProps)
         }
         return CardStackStyleInterpolator.forHorizontal(sceneProps)

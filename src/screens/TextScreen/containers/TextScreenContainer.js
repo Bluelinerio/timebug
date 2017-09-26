@@ -8,12 +8,14 @@ import theme from 'react-native-theme';
 
 import {IStep} from "../../../interfaces"
 import DefaultIndicator from "../../../components/DefaultIndicator";
+import {goToAssignmentsScreen} from "../../../actions/navigate";
 
 type Props = {
   currentStep: IStep,
   navigation: {
     navigate(): any
-  }
+  },
+  goToAssignmentsScreen(): any
 };
 
 type State = {}
@@ -24,7 +26,9 @@ const mapStateToProps = (state) => {
   }
 };
 
-@connect(mapStateToProps)
+@connect(mapStateToProps, {
+  goToAssignmentsScreen
+})
 class TextScreenContainer extends React.Component<Props, State> {
   static navigationOptions = ({navigation: {state: {params}}}) => ({
     header: false
@@ -39,7 +43,7 @@ class TextScreenContainer extends React.Component<Props, State> {
       return (
         <TextScreen
           currentStep={this.props.currentStep}
-          navigate={this.props.navigation.navigate}
+          goToAssignmentsScreen={this.props.goToAssignmentsScreen}
         />
       )
     } else {

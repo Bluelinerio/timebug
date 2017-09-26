@@ -17,7 +17,7 @@ export function navigate(routeName, params) {
 
 export function goBack() {
   if (config.navigator) {
-    let action = NavigationActions.back({});
+    let action = NavigationActions.back();
     config.navigator.dispatch(action);
   }
 }

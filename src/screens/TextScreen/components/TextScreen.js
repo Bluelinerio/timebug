@@ -9,15 +9,17 @@ import {
   Image, ScrollView,
   TouchableOpacity
 } from 'react-native';
-import Markdown from 'react-native-easy-markdown';
 import {styles} from 'react-native-theme';
+import Markdown from 'react-native-easy-markdown';
+import Icon from 'react-native-vector-icons/Ionicons';
+
+import Button from "../../../components/Button";
 import ScrollableHeader from "../../../components/ScrollableHeader";
 import GradientBackground from "../../../components/GradientBackground";
-import getImageUrl from "../../../utils/getImageUrl";
+
 import {IStep} from "../../../interfaces";
-import Button from "../../../components/Button";
-import Icon from 'react-native-vector-icons/Ionicons';
-import * as navigation from "../../../HOC/navigation";
+import getImageUrl from "../../../utils/getImageUrl";
+import {goBack} from "../../../HOC/navigation";
 
 type Props = {
   currentStep: IStep
@@ -38,10 +40,10 @@ export default class TextScreen extends React.Component<Props, State> {
           <View style={styles.textScreenHeader}>
             <TouchableOpacity
               style={styles.textScreenBackButton}
-              onPress={navigation.goBack}
+              onPress={goBack}
             >
               <Icon
-                name="ios-arrow-back-outline"
+                name="ios-close"
                 size={35}
                 color="white"
               />
@@ -90,7 +92,7 @@ export default class TextScreen extends React.Component<Props, State> {
               </Markdown>
             </ScrollView>
             <Button
-              onPress={() => this.props.navigate('AssignmentsScreen', {number: currentStep.number})}
+              onPress={() => this.props.goToAssignmentsScreen({number: currentStep.number})}
               text="ASSIGNMENTS"
             >
             </Button>
