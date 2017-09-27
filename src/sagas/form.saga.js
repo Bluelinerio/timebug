@@ -11,7 +11,7 @@ import {
   GET_USER_PROGRESS,
 }                          from '../constants/actionTypes';
 import networkState        from '../utils/networkState';
-import formConfig          from '../screens/WorkBookScreen/forms';
+import formConfig          from '../screens/WorkBookScreen/components/forms';
 import { goBack }          from '../HOC/navigation';
 
 function* getNextForm(action) {
