@@ -1,5 +1,5 @@
 // @flow
-import {PENDING_END, PENDING_START} from '../constants/actionTypes';
+import { PENDING_END, PENDING_START } from '../constants/actionTypes';
 
 interface NetworkState {
   isPending: boolean,
@@ -7,26 +7,32 @@ interface NetworkState {
 }
 
 interface NetworkAction {
-	type: string
+  type: string
 }
 
 const initialState: NetworkState = {
   isPending: false,
-	requestsCount: 0
+  requestsCount: 0,
 };
 
 export default function (state: NetworkState = initialState, action: NetworkAction) {
-	switch (action.type) {
+  switch (action.type) {
 
-		case PENDING_START: {
-			return {isPending: true, requestsCount: state.requestsCount + 1}
-		}
-		case PENDING_END: {
-			let requestsCount = state.requestsCount - 1;
-			let isPending = requestsCount > 0;
-			return {isPending, requestsCount}
-		}
-		default:
-			return state;
-	}
+    case PENDING_START: {
+      return {
+        isPending: true,
+        requestsCount: state.requestsCount + 1,
+      }
+    }
+    case PENDING_END: {
+      let requestsCount = state.requestsCount - 1;
+      let isPending     = requestsCount > 0;
+      return {
+        isPending,
+        requestsCount,
+      }
+    }
+    default:
+      return state;
+  }
 }

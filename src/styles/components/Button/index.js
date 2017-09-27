@@ -6,13 +6,13 @@ theme.add({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    width: window.width
+    width: window.width,
   },
   buttonIconLeft: {
-    marginLeft: 10
+    marginLeft: 10,
   },
   buttonIconRight: {
-    marginRight: 10
+    marginRight: 10,
   },
   wideButton: {
     height: 50,

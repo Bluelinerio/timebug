@@ -1,26 +1,20 @@
 // @flow
 
-import React from 'react';
-import {connect} from 'react-redux';
+import React, { Component }    from 'react';
+import { connect }             from 'react-redux';
+import theme                   from 'react-native-theme';
+import DashboardComponent      from '../components/DashboardComponent';
+import IntroComponent          from "../components/IntroComponent";
+import DefaultIndicator        from "../../../components/DefaultIndicator";
 import {
-  ActivityIndicator,
-  StyleSheet
-} from 'react-native';
-import theme from 'react-native-theme';
-
-import DashboardComponent from '../components/DashboardComponent';
-import IntroComponent from "../components/IntroComponent";
-import DefaultIndicator from "../../../components/DefaultIndicator";
-
-import {
-getAllStepsFromCMS,
-getStepFromCMSByDay
-} from "../../../actions/steps";
-import {getAboutInfoFromCMS} from "../../../actions/login";
-import {loginWithFB} from "../../../actions/FBAction";
-
-import type {IStep} from "../../../interfaces";
-import {goToTextScreen} from "../../../actions/navigate";
+  getAllStepsFromCMS,
+  getStepFromCMSByDay,
+}                              from "../../../actions/steps";
+import { getAboutInfoFromCMS } from "../../../actions/login";
+import { loginWithFB }         from "../../../actions/FBAction";
+import type { IStep }          from "../../../interfaces";
+import { goToTextScreen }      from "../../../actions/navigate";
+import { getUserProgress }     from "../../../actions/user";
 
 type Props = {
   allSteps: IStep[],
@@ -45,7 +39,7 @@ const mapStateToProps = (state) => {
     currentStep: state.steps.currentStep,
     about: state.login.about,
     isLoggedIn: state.login.isLoggedIn,
-    isPending: state.network.isPending
+    isPending: state.network.isPending,
   }
 };
 
@@ -54,11 +48,12 @@ const mapStateToProps = (state) => {
   getAllStepsFromCMS,
   getAboutInfoFromCMS,
   loginWithFB,
-  goToTextScreen
+  goToTextScreen,
+  getUserProgress
 })
-class HomeScreenContainer extends React.Component<Props, State> {
+class HomeScreenContainer extends Component<Props, State> {
   static navigationOptions = {
-    header: null
+    header: null,
   };
 
   componentDidMount() {
@@ -78,14 +73,14 @@ class HomeScreenContainer extends React.Component<Props, State> {
 
   render() {
     let {
-      isPending,
-      isLoggedIn,
-      about,
-      loginWithFB,
-      currentStep,
-      allSteps,
-      goToTextScreen
-    } = this.props;
+          isPending,
+          isLoggedIn,
+          about,
+          loginWithFB,
+          currentStep,
+          allSteps,
+          goToTextScreen,
+        } = this.props;
 
     if (!isPending && !isLoggedIn) {
       return (

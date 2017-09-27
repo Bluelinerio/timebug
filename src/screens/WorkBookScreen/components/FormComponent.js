@@ -1,51 +1,70 @@
 // @flow
 
-import React from 'react';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
 import {
-  ActivityIndicator, ScrollView,
-  StyleSheet, Text, View
-} from 'react-native';
-import autobind from 'autobind-decorator';
-import Button from "../../../components/Button";
+  ScrollView,
+  Text,
+  View,
+  TouchableHighlight,
+}                           from 'react-native';
+import autobind             from 'autobind-decorator';
+import t                    from 'tcomb-form-native';
+import { styles }           from 'react-native-theme';
+import Button               from "../../../components/Button";
 
-import formConfig from '../forms'
+const Form = t.form.Form;
 
-type Props = {};
+type Props = {
+  progress: {
+    step: string,
+    formStep: number
+  },
+  goToCongratulationsScreen(): any
+};
 
 type State = {}
 
-class FormComponent extends React.Component<Props, State> {
-  componentDidMount() {
-  }
+class FormComponent extends Component<Props, State> {
 
   @autobind
-  getFormModel() {
-    let {progress: {step, formStep}} = this.props;
-    if (step && formStep && formConfig[step] && formConfig[step][formStep]) {
-      let currentForm = formConfig[step][formStep];
-      return (
-        <Text>
-          {currentForm.title}
-        </Text>
-      )
+  onPress() {
+    let value = this.refs.form.getValue();
+    if (value) {
+      console.log(value);
     }
-
-    return null;
-
   }
 
-
   render() {
+
+    let {
+          getNextForm,
+          model,
+          progress: { step, formStep },
+        } = this.props;
+
     return (
-      <ScrollView style={{flex: 1}}>
-        <Button
-          onPress={() => this.props.goToCongratulationsScreen({})}
-          text="Next"
-          side="right"
-          withArrow
-        />
-        {this.getFormModel()}
+      <ScrollView style={{ flex: 1, padding: 10 }}>
+        <View style={styles.workBookFormContainer}>
+          <Text style={styles.workBookFormTitle}>{model.title.toUpperCase()}</Text>
+          <Form
+            ref="form"
+            type={model.type}
+            options={model.options}
+          />
+          <TouchableHighlight style={styles.button} onPress={this.onPress} underlayColor='#99d9f4'>
+            <Text style={styles.buttonText}>Save</Text>
+          </TouchableHighlight>
+        </View>
+        <View
+          style={[ styles.buttonContainer, styles.workBookNextButtonContainer ]}>
+          <Button
+            onPress={() => getNextForm(step, formStep)}
+            text="Next"
+            side="right"
+            withArrow
+          />
+        </View>
+
       </ScrollView>
     )
   }

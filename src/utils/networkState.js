@@ -1,38 +1,40 @@
 // @flow
 import { NetInfo, Alert, Platform } from 'react-native';
-import { NETWORK_ALERT_TIME } from '../constants/constants';
+import { NETWORK_ALERT_TIME }       from '../constants/constants';
+
 /**
  * check network connection
  */
 class NetworkState {
   constructor() {
     this.currentState = null;
-    this.offlineMode = false;
-    this.isInProgres = false;
+    this.offlineMode  = false;
+    this.isInProgres  = false;
   }
+
   _alert(resolve, reject, dontWorkOffline: boolean) {
     if (!this.offlineMode) {
-        Alert.alert('An internet connection is required to use some of this app\'s functionality', '', [{
-          text: 'Try again',
-          onPress: () => {
-            setTimeout(() => {
-              this._checkConnection(resolve, reject, dontWorkOffline);
-            }, NETWORK_ALERT_TIME);
-          }
-        },{
-          text: 'OK'
-        }]);
-    } else if (dontWorkOffline) {
-      Alert.alert('An internet connection is required to use some of this app\'s functionality', '', [{
+      Alert.alert('An internet connection is required to use some of this app\'s functionality', '', [ {
         text: 'Try again',
         onPress: () => {
           setTimeout(() => {
             this._checkConnection(resolve, reject, dontWorkOffline);
           }, NETWORK_ALERT_TIME);
-        }
-      },{
-        text: 'OK'
-      }]);
+        },
+      }, {
+        text: 'OK',
+      } ]);
+    } else if (dontWorkOffline) {
+      Alert.alert('An internet connection is required to use some of this app\'s functionality', '', [ {
+        text: 'Try again',
+        onPress: () => {
+          setTimeout(() => {
+            this._checkConnection(resolve, reject, dontWorkOffline);
+          }, NETWORK_ALERT_TIME);
+        },
+      }, {
+        text: 'OK',
+      } ]);
     }
   }
 
@@ -69,13 +71,13 @@ class NetworkState {
               this.offlineMode = false;
             }
             this.currentState = reach;
-            this.isInProgres = false;
+            this.isInProgres  = false;
           });
       }
       if (this.currentState === 'wifi' || this.currentState === 'cell') {
         resolve();
       }
-      if (this.currentState === 'none' || this.currentState === 'unknown')  {
+      if (this.currentState === 'none' || this.currentState === 'unknown') {
         this._alert(resolve, reject, dontWorkOffline);
       }
     }

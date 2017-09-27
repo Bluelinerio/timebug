@@ -1,13 +1,9 @@
 // @flow
-import React from 'react';
-import {
-  ActivityIndicator,
-  StyleSheet, Text,
-  View, Dimensions
-} from "react-native";
-import { styles } from 'react-native-theme';
-import Button from "react-native-button";
-import Icon from 'react-native-vector-icons/Ionicons';
+import React                       from 'react';
+import { Dimensions, Text, View, } from "react-native";
+import Button                      from "react-native-button";
+import { styles }                  from 'react-native-theme';
+import Icon                        from 'react-native-vector-icons/Ionicons';
 
 type Props = {
   text: string,
@@ -18,14 +14,16 @@ type Props = {
 
 const window = Dimensions.get('window');
 
-
-export default ({text, onPress, side, withArrow}: Props) => {
-  let minWidth = side ? 50 : 250;
+export default ({ text, onPress, side, withArrow }: Props) => {
+  let minWidth          = side ? 50 : 250;
   let paddingHorizontal = side ? 25 : 50;
   return (
-    <View style={[{minWidth}, styles.buttonContainer, (side ? styles[side] : null)]}>
+    <View style={[ { minWidth }, styles.buttonContainer, ( side ? styles[ side ] : null ) ]}>
       <Button
-        containerStyle={[styles.wideButton, styles.wideButtonBackground, {minWidth, paddingHorizontal}]}
+        containerStyle={[ styles.wideButton, styles.wideButtonBackground, {
+          minWidth,
+          paddingHorizontal,
+        } ]}
         onPress={onPress}
       >
         {

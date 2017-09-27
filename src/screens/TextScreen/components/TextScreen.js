@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
@@ -7,19 +7,19 @@ import {
   Platform,
   ActivityIndicator,
   Image, ScrollView,
-  TouchableOpacity
-} from 'react-native';
-import {styles} from 'react-native-theme';
-import Markdown from 'react-native-easy-markdown';
-import Icon from 'react-native-vector-icons/Ionicons';
+  TouchableOpacity,
+}                           from 'react-native';
+import { styles }           from 'react-native-theme';
+import Markdown             from 'react-native-easy-markdown';
+import Icon                 from 'react-native-vector-icons/Ionicons';
 
-import Button from "../../../components/Button";
-import ScrollableHeader from "../../../components/ScrollableHeader";
+import Button             from "../../../components/Button";
 import GradientBackground from "../../../components/GradientBackground";
+import ScrollableHeader   from "../../../components/ScrollableHeader";
+import { goBack }         from "../../../HOC/navigation";
 
-import {IStep} from "../../../interfaces";
+import { IStep }   from "../../../interfaces";
 import getImageUrl from "../../../utils/getImageUrl";
-import {goBack} from "../../../HOC/navigation";
 
 type Props = {
   currentStep: IStep
@@ -30,9 +30,9 @@ type State = {
   colorBottom: string
 }
 
-export default class TextScreen extends React.Component<Props, State> {
+export default class TextScreen extends Component<Props, State> {
   render() {
-    let {currentStep} = this.props;
+    let { currentStep } = this.props;
     return (
       <ScrollableHeader
         headerComponent={<GradientBackground/>}
@@ -54,10 +54,10 @@ export default class TextScreen extends React.Component<Props, State> {
 
             <View style={styles.textScreenScreen}>
               {currentStep.icon &&
-              <Image style={styles.textScreenImage} source={{uri: getImageUrl(currentStep.icon)}}/>}
+              <Image style={styles.textScreenImage} source={{ uri: getImageUrl(currentStep.icon) }}/>}
               <Text
                 testID="title"
-                style={[styles.textScreenText, styles.textScreenTitle]}>
+                style={[ styles.textScreenText, styles.textScreenTitle ]}>
                 {currentStep.title}
               </Text>
             </View>
@@ -69,7 +69,7 @@ export default class TextScreen extends React.Component<Props, State> {
           <View style={styles.textScreenContent}>
             <Text
               testID="subtitle"
-              style={[styles.textScreenText, styles.textScreenSubtitle]}>
+              style={[ styles.textScreenText, styles.textScreenSubtitle ]}>
               {currentStep.subtitle}
             </Text>
             <ScrollView style={styles.textScreenScrollView}>
@@ -77,7 +77,7 @@ export default class TextScreen extends React.Component<Props, State> {
                 markdownStyles={{
                   u: {
                     fontWeight: 'bold',
-                    color: '#000000'
+                    color: '#000000',
                   },
                   block: {
                     textAlign: 'center',
@@ -85,14 +85,14 @@ export default class TextScreen extends React.Component<Props, State> {
                     fontSize: 14,
                     marginBottom: 15,
                     flexWrap: 'wrap',
-                    flexDirection: 'row'
-                  }
+                    flexDirection: 'row',
+                  },
                 }}>
                 {currentStep.description}
               </Markdown>
             </ScrollView>
             <Button
-              onPress={() => this.props.goToAssignmentsScreen({number: currentStep.number})}
+              onPress={() => this.props.goToAssignmentsScreen({ number: currentStep.number })}
               text="ASSIGNMENTS"
             >
             </Button>

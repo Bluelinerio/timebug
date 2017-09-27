@@ -4,19 +4,19 @@ theme.add({
   loginScreenScreen: {
     flex: 1,
     flexDirection: 'column',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
   loginScreenContainer: {
     flex: 1,
     backgroundColor: '#3B7288',
     alignItems: 'center',
-    justifyContent: 'flex-end'
+    justifyContent: 'flex-end',
   },
   loginScreenContainer2: {
     flex: 2,
     alignItems: 'center',
     justifyContent: 'flex-end',
-    paddingBottom: 10
+    paddingBottom: 10,
   },
   loginScreenWideButton: {
     flex: -1,
@@ -39,13 +39,13 @@ theme.add({
   loginScreenDescription: {
     flex: 1,
     paddingBottom: 500,
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
   },
   loginScreenClose: {
     fontWeight: 'bold',
     fontSize: 15,
     marginBottom: 10,
     marginLeft: 10,
-    marginTop: 7
-  }
+    marginTop: 7,
+  },
 });

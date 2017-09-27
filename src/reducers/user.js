@@ -1,7 +1,5 @@
 // @flow
-import {
-  GET_USER_PROGRESS, SUCCEEDED
-} from '../constants/actionTypes';
+import { GET_USER_PROGRESS, SUCCEEDED, } from '../constants/actionTypes';
 
 interface UserState {
   userID: string,
@@ -22,14 +20,14 @@ interface UserAction {
 
 const initialState: UserState = {
   userID: null,
-  progress: null
+  progress: null,
 };
 
 export default function (state: UserState = initialState, action: UserAction) {
   switch (action.type) {
     case GET_USER_PROGRESS + SUCCEEDED:
-      let {type, ...newState} = action;
-      return {...state, ...newState};
+      let { type, ...newState } = action;
+      return { ...state, ...newState };
     default:
       return state;
   }

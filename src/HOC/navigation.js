@@ -10,7 +10,10 @@ export function setNavigator(nav) {
 
 export function navigate(routeName, params) {
   if (config.navigator && routeName) {
-    let action = NavigationActions.navigate({ routeName, params });
+    let action = NavigationActions.navigate({
+      routeName,
+      params,
+    });
     config.navigator.dispatch(action);
   }
 }
@@ -27,8 +30,11 @@ export function reset(routeName, params) {
     const resetAction = NavigationActions.reset({
       index: 0,
       actions: [
-        NavigationActions.navigate({ routeName, params})
-      ]
+        NavigationActions.navigate({
+          routeName,
+          params,
+        }),
+      ],
     });
     config.navigator.dispatch(resetAction);
   }
