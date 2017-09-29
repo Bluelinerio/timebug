@@ -42,7 +42,9 @@ class WorkBookScreenContainer extends Component<Props, State> {
         backgroundColor: StyleSheet.flatten(styles.headerColor).backgroundColor,
       },
       headerTintColor: 'white',
-      headerLeft: <HeaderBackButton onPress={() => {
+      headerLeft: <HeaderBackButton
+        tintColor="white"
+        onPress={() => {
         let state              = store.getState();
         let { step, formStep } = state.user.progress;
         let { number } = state.steps.currentStep;
