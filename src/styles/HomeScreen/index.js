@@ -1,5 +1,5 @@
-import {Dimensions, Platform} from 'react-native';
-import theme from 'react-native-theme';
+import { Dimensions, Platform } from 'react-native';
+import theme                    from 'react-native-theme';
 
 theme.add({
   HomeScreenHeader: {
@@ -8,17 +8,17 @@ theme.add({
     width: Dimensions.get('window').width,
     alignItems: 'center',
     paddingTop: Platform.OS === 'ios' ? 20 : 0,
-    opacity: 0.9
+    opacity: 0.9,
   },
   HomeScreenHeaderTitle: {
     color: 'white',
     paddingTop: 10,
     paddingBottom: 30,
-    fontSize: 16
+    fontSize: 16,
   },
   HomeScreenHeaderImage: {
     width: 40,
-    height: 40
+    height: 40,
   },
   HomeScreenChallengeInfo: {
     width: Dimensions.get('window').width,
@@ -27,20 +27,20 @@ theme.add({
     justifyContent: 'space-around',
   },
   HomeScreenText: {
-    color: 'white'
+    color: 'white',
   },
   HomeScreenFirstPartTitle: {
     width: Dimensions.get('window').width - 90,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingVertical: 3
+    paddingVertical: 3,
   },
   HomeScreenBoldText: {
     fontSize: 16,
-    fontWeight: '500'
+    fontWeight: '500',
   },
   HomeScreenLittleText: {
-    fontSize: 13
+    fontSize: 13,
   },
   HomeScreenWideButton: {
     marginTop: 75,
@@ -51,7 +51,7 @@ theme.add({
     borderRadius: 150,
     alignSelf: 'center',
     justifyContent: 'center',
-    overflow: 'hidden'
+    overflow: 'hidden',
   },
   HomeScreenWideButtonText: {
     color: '#0e3fa8',
@@ -59,20 +59,20 @@ theme.add({
     fontWeight: '700',
     textAlign: 'left',
     flex: 2,
-    marginLeft: 15
+    marginLeft: 15,
   },
   HomeScreenAbsoluteContainer: {
     flex: 1,
     flexDirection: 'row',
-    alignItems: 'flex-end'
+    alignItems: 'flex-end',
   },
   HomeScreenButtonImage: {
     width: 30,
-    height: 30
+    height: 30,
   },
   HomeScreenDurationText: {
     color: '#0e3fa8',
     fontWeight: '600',
-    fontSize: 12
-  }
+    fontSize: 12,
+  },
 });

@@ -1,32 +1,34 @@
-import { all } from 'redux-saga/effects';
-
+import { all }              from 'redux-saga/effects';
 import {
-  getAllStepsSaga,
-  getStepByDaySaga
-} from './steps.saga';
-
+  fbLoginSaga,
+  getAboutInfoSaga,
+}                           from './login.saga';
 import {
-  fbLoginSaga, getAboutInfoSaga
-} from './login.saga';
-
-import {
+  goToAssignmentsScreen,
+  goToCongratulationsScreen,
   goToHomeScreen,
   goToTextScreen,
-  goToAssignmentsScreen,
-  goToFormScreen,
-  goToCongratulationsScreen
-} from './navigate.saga';
+  goToWorkBookScreen,
+}                           from './navigate.saga';
+import {
+  getAllStepsSaga,
+  getStepByDaySaga,
+}                           from './steps.saga';
+import { userProgressSaga } from "./user.saga";
+import { formLoaderSaga }   from "./form.saga";
 
 export default function* rootSaga() {
   yield all([
     getAllStepsSaga(),
     getStepByDaySaga(),
-		getAboutInfoSaga(),
+    getAboutInfoSaga(),
     fbLoginSaga(),
     goToHomeScreen(),
     goToTextScreen(),
     goToAssignmentsScreen(),
-    goToFormScreen(),
-    goToCongratulationsScreen()
+    goToWorkBookScreen(),
+    goToCongratulationsScreen(),
+    userProgressSaga(),
+    formLoaderSaga()
   ])
 }

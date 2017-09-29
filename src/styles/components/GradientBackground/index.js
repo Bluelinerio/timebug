@@ -17,12 +17,12 @@ theme.add({
     height: 200,
     flex: 1,
     flexDirection: 'row',
-    alignSelf: 'stretch'
+    alignSelf: 'stretch',
   },
   gradientTopColor: {
-    color: '#79bddd'
+    color: '#79bddd',
   },
   gradientBottomColor: {
-    color: '#ffffff'
-  }
+    color: '#ffffff',
+  },
 });

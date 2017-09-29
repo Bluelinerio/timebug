@@ -1,7 +1,7 @@
-import {FACEBOOK_LOGIN} from "../constants/actionTypes";
+import { FACEBOOK_LOGIN } from "../constants/actionTypes";
 
-export function loginWithFB () {
+export function loginWithFB() {
   return {
-    type: FACEBOOK_LOGIN
+    type: FACEBOOK_LOGIN,
   }
 }

@@ -12,7 +12,7 @@ type ErrorAction = {
 
 const initialState: ErrorState = {
   isError: false,
-  message: ''
+  message: '',
 };
 
 export default function (state: ErrorState = initialState, action: ErrorAction) {
@@ -20,7 +20,7 @@ export default function (state: ErrorState = initialState, action: ErrorAction) 
     case String(action.type.match(/.+FAILED/)):
       return {
         isError: true,
-        message: action.message
+        message: action.message,
       };
     default:
       return state;

@@ -1,4 +1,3 @@
-import {Dimensions, Platform} from 'react-native';
 import theme from 'react-native-theme';
 
 theme.add({
@@ -10,12 +9,12 @@ theme.add({
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 20,
-    paddingTop: 30
+    paddingTop: 30,
   },
   assignmentsScreenImage: {
     alignSelf: 'center',
     justifyContent: 'center',
     width: 100,
-    height: 100
-  }
+    height: 100,
+  },
 });

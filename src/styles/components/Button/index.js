@@ -6,13 +6,13 @@ theme.add({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    width: window.width
+    width: window.width,
   },
   buttonIconLeft: {
-    marginLeft: 10
+    marginLeft: 10,
   },
   buttonIconRight: {
-    marginRight: 10
+    marginRight: 10,
   },
   wideButton: {
     height: 50,
@@ -26,11 +26,11 @@ theme.add({
     backgroundColor: '#6EBDDC',
   },
   left: {
-    justifyContent: 'flex-end',
+    justifyContent: 'flex-start',
     paddingHorizontal: 10,
   },
   right: {
-    justifyContent: 'flex-start',
+    justifyContent: 'flex-end',
     paddingHorizontal: 10,
   },
   wideButtonText: {
