@@ -90,8 +90,8 @@ android {
         applicationId "com.book2020.v1"
         minSdkVersion 19
         targetSdkVersion 19
-        versionCode 3
-        versionName "1.0.3"
+        versionCode 7
+        versionName "1.1.1"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }

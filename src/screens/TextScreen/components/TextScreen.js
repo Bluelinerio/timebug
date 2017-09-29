@@ -1,25 +1,21 @@
 import React, { Component } from 'react';
 import {
-  StyleSheet,
   Text,
   View,
-  Dimensions,
-  Platform,
-  ActivityIndicator,
   Image, ScrollView,
   TouchableOpacity,
 }                           from 'react-native';
 import { styles }           from 'react-native-theme';
 import Markdown             from 'react-native-easy-markdown';
 import Icon                 from 'react-native-vector-icons/Ionicons';
-
-import Button             from "../../../components/Button";
-import GradientBackground from "../../../components/GradientBackground";
-import ScrollableHeader   from "../../../components/ScrollableHeader";
-import { goBack }         from "../../../HOC/navigation";
+import Button               from "../../../components/Button";
+import GradientBackground   from "../../../components/GradientBackground";
+import ScrollableHeader     from "../../../components/ScrollableHeader";
+import { goBack }           from "../../../HOC/navigation";
 
 import { IStep }   from "../../../interfaces";
 import getImageUrl from "../../../utils/getImageUrl";
+import CustomImage from "../../../components/CustomImage";
 
 type Props = {
   currentStep: IStep
@@ -54,7 +50,10 @@ export default class TextScreen extends Component<Props, State> {
 
             <View style={styles.textScreenScreen}>
               {currentStep.icon &&
-              <Image style={styles.textScreenImage} source={{ uri: getImageUrl(currentStep.icon) }}/>}
+              <CustomImage
+                style={styles.textScreenImage}
+                imageUri={getImageUrl(currentStep.icon)}
+              />}
               <Text
                 testID="title"
                 style={[ styles.textScreenText, styles.textScreenTitle ]}>

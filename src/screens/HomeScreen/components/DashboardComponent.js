@@ -3,20 +3,16 @@
 import React, { Component } from 'react';
 import {
   Image,
-  StyleSheet,
   Text,
   View,
-  Dimensions,
-  Platform,
 }                           from 'react-native';
-import { Header }           from 'react-navigation';
-import autobind             from 'autobind-decorator';
-import theme, { styles }    from 'react-native-theme';
+import { styles }           from 'react-native-theme';
+import Button               from "react-native-button";
+import SVGImage             from 'react-native-svg-image';
 import { IStep }            from "../../../interfaces";
 import getImageUrl          from "../../../utils/getImageUrl";
-import Button               from "react-native-button";
 import ScrollableHeader     from "../../../components/ScrollableHeader";
-import UselessTextInput     from "../../../components/Input";
+import CustomImage          from "../../../components/CustomImage";
 
 type Props = {
   allSteps: IStep[],
@@ -44,14 +40,17 @@ export default class DashboardComponent extends Component<Props, State> {
         <View style={[ styles.HomeScreenHeader, styles.headerColor ]}>
           <Text style={styles.HomeScreenHeaderTitle}>Next challenge</Text>
           <View style={styles.HomeScreenChallengeInfo}>
-            <Image source={{ uri: getImageUrl(currentStep.icon) }} style={styles.HomeScreenHeaderImage}/>
+            <CustomImage
+              style={styles.HomeScreenHeaderImage}
+              imageUri={getImageUrl(currentStep.shortIcon)}
+            />
             <View>
               <View style={styles.HomeScreenFirstPartTitle}>
                 <Text style={[ styles.HomeScreenText, styles.HomeScreenBoldText ]}>{currentStep.type}</Text>
                 <Text style={[ styles.HomeScreenText, styles.HomeScreenBoldText ]}>STEP
                   # {currentStep.number}/{totalNumberOfSteps}</Text>
               </View>
-              <Text style={[ styles.HomeScreenText, styles.HomeScreenLittleText ]}>{currentStep.title}</Text>
+              <Text style={[ styles.HomeScreenText, styles.HomeScreenLittleText ]}>{currentStep.stepScreenDescription}</Text>
             </View>
           </View>
           <Button

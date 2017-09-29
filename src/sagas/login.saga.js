@@ -50,41 +50,41 @@ function* getAboutInfoFromCMS() {
 }
 
 function* loginWithFB() {
-  try {
-    yield put({ type: PENDING_START });
-    yield networkState.haveConnection();
-
-    let result = yield LoginManager.logInWithReadPermissions([ 'public_profile', 'email', 'user_friends' ]);
-    if (result.isCancelled) {
-      alert('canceled');
-      yield put({ type: PENDING_END });
-    } else {
-      let data = yield AccessToken.getCurrentAccessToken();
-
-      //send data to BE
-
-      yield put({
-        type: GET_USER_PROGRESS,
-        userID: data.userID,
-      });
-      yield put({ type: FACEBOOK_LOGIN + SUCCEEDED });
-      yield reset('HomeScreen');
-
-      yield put({ type: PENDING_END });
-    }
-  } catch (e) {
-    console.log(e);
-    yield put({ type: PENDING_END });
-
-  }
+  // try {
+  //   yield put({ type: PENDING_START });
+  //   yield networkState.haveConnection();
+  //
+  //   let result = yield LoginManager.logInWithReadPermissions([ 'public_profile', 'email', 'user_friends' ]);
+  //   if (result.isCancelled) {
+  //     alert('canceled');
+  //     yield put({ type: PENDING_END });
+  //   } else {
+  //     let data = yield AccessToken.getCurrentAccessToken();
+  //
+  //     //send data to BE
+  //
+  //     yield put({
+  //       type: GET_USER_PROGRESS,
+  //       userID: data.userID,
+  //     });
+  //     yield put({ type: FACEBOOK_LOGIN + SUCCEEDED });
+  //     yield reset('HomeScreen');
+  //
+  //     yield put({ type: PENDING_END });
+  //   }
+  // } catch (e) {
+  //   console.log(e);
+  //   yield put({ type: PENDING_END });
+  //
+  // }
 
   // TODO uncomment to skip FB login
-  // yield put({
-  //   type: GET_USER_PROGRESS,
-  //   userID: 'qwe',
-  // });
-  // yield put({type: FACEBOOK_LOGIN + SUCCEEDED});
-  // yield reset('HomeScreen');
+  yield put({
+    type: GET_USER_PROGRESS,
+    userID: 'qwe',
+  });
+  yield put({type: FACEBOOK_LOGIN + SUCCEEDED});
+  yield reset('HomeScreen');
 
 }
 
