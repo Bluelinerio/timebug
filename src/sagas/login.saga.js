@@ -18,6 +18,7 @@ import { CONTENTFUL_CONTENT_LOGIN } from "../constants/constants";
 import { contentfulClient }         from "../contentful";
 import networkState                 from '../utils/networkState';
 import { reset }                    from '../HOC/navigation'
+import { AsyncStorage }             from "react-native";
 
 const { LoginManager, AccessToken } = FBSDK;
 
@@ -62,6 +63,8 @@ function* loginWithFB() {
       let data = yield AccessToken.getCurrentAccessToken();
 
       //send data to BE
+
+      yield AsyncStorage.setItem('@2020:userId',  data.userID);
 
       yield put({
         type: GET_USER_PROGRESS,

@@ -1,5 +1,10 @@
 // @flow
-import { FACEBOOK_LOGIN, GET_ABOUT_INFO_FROM_CMS, SUCCEEDED, } from '../constants/actionTypes';
+import {
+  FACEBOOK_LOGIN,
+  GET_ABOUT_INFO_FROM_CMS,
+  SUCCEEDED,
+  GET_TOKEN_FROM_STORAGE
+} from '../constants/actionTypes';
 
 interface LoginState {
   about: string,
@@ -24,6 +29,11 @@ export default function (state: LoginState = initialState, action: LoginAction) 
         about: action.about,
       };
     case FACEBOOK_LOGIN + SUCCEEDED:
+      return {
+        ...state,
+        isLoggedIn: true,
+      };
+    case GET_TOKEN_FROM_STORAGE + SUCCEEDED:
       return {
         ...state,
         isLoggedIn: true,

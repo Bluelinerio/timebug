@@ -1,20 +1,21 @@
 // @flow
 
-import React, { Component }    from 'react';
-import { connect }             from 'react-redux';
-import theme                   from 'react-native-theme';
-import DashboardComponent      from '../components/DashboardComponent';
-import IntroComponent          from "../components/IntroComponent";
-import DefaultIndicator        from "../../../components/DefaultIndicator";
+import React, { Component }             from 'react';
+import { connect }                      from 'react-redux';
+import theme                            from 'react-native-theme';
+import DashboardComponent               from '../components/DashboardComponent';
+import IntroComponent                   from "../components/IntroComponent";
+import DefaultIndicator                 from "../../../components/DefaultIndicator";
 import {
   getAllStepsFromCMS,
   getStepFromCMSByDay,
-}                              from "../../../actions/steps";
-import { getAboutInfoFromCMS } from "../../../actions/login";
-import { loginWithFB }         from "../../../actions/FBAction";
-import type { IStep }          from "../../../interfaces";
-import { goToTextScreen }      from "../../../actions/navigate";
-import { getUserProgress }     from "../../../actions/user";
+}                                       from "../../../actions/steps";
+import { getAboutInfoFromCMS }          from "../../../actions/login";
+import { loginWithFB }                  from "../../../actions/FBAction";
+import type { IStep }                   from "../../../interfaces";
+import { goToTextScreen }               from "../../../actions/navigate";
+import { getUserProgress, onAppLoaded } from "../../../actions/user";
+import { AsyncStorage }                 from "react-native";
 
 type Props = {
   allSteps: IStep[],
@@ -49,7 +50,8 @@ const mapStateToProps = (state) => {
   getAboutInfoFromCMS,
   loginWithFB,
   goToTextScreen,
-  getUserProgress
+  getUserProgress,
+  onAppLoaded,
 })
 class HomeScreenContainer extends Component<Props, State> {
   static navigationOptions = {
@@ -57,14 +59,13 @@ class HomeScreenContainer extends Component<Props, State> {
   };
 
   componentDidMount() {
-    if (!this.props.isPending && !this.props.isLoggedIn) {
-      this.props.getAboutInfoFromCMS();
-    } else {
-      if (!this.props.currentStep.number) {
-        this.props.getStepFromCMSByDay(1);
-      }
-      this.props.getAllStepsFromCMS();
+    this.props.onAppLoaded();
+
+    if (!this.props.currentStep.number) {
+      this.props.getStepFromCMSByDay(1);
     }
+    this.props.getAllStepsFromCMS();
+
   }
 
   componentWillMount() {
