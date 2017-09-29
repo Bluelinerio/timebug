@@ -7,6 +7,7 @@ import Button                                  from '../../../components/Button'
 import Markdown                                from 'react-native-easy-markdown';
 import { IAssignment }                         from "../../../interfaces";
 import getImageUrl                             from "../../../utils/getImageUrl";
+import CustomImage                             from "../../../components/CustomImage";
 
 type Props = {
   assignments: IAssignment[],
@@ -30,10 +31,15 @@ export default class AssignmentsScreen extends Component<Props, State> {
     const { assignments } = this.props;
     let steps             = assignments.map((assignment, i) => {
       let isLastItem = i !== assignments.length - 1;
+      let isWithImage = assignment.icon && assignment.icon.fields && isLastItem;
       return (
         <View style={styles.assignmentsScreenSlide} key={i}>
-          {assignment.icon.fields && isLastItem &&
-          <Image style={styles.assignmentsScreenImage} source={{ uri: getImageUrl(assignment.icon) }}/>}
+          {isWithImage &&
+          <CustomImage
+            style={styles.assignmentsScreenImage}
+            imageUri={getImageUrl(assignment.icon)}
+          />
+          }
           <Markdown markdownStyles={{
             u: { fontWeight: 'bold' },
             block: {
@@ -42,7 +48,7 @@ export default class AssignmentsScreen extends Component<Props, State> {
               fontSize: 14,
               marginBottom: 15,
               paddingVertical: 20,
-              width: Dimensions.get('window').width - ( isLastItem ? 130 : 30 ),
+              width: Dimensions.get('window').width - ( isWithImage ? 130 : 30 ),
             },
           }}>
             {assignment.content}

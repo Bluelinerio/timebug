@@ -13,6 +13,6 @@ export interface IStep {
   type: string,
   color: ?string,
   duration: number,
-  step_screen_description: string,
-  short_icon: IIcon
+  stepScreenDescription: string,
+  shortIcon: IIcon
 }
