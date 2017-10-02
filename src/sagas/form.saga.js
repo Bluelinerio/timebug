@@ -24,6 +24,7 @@ function* getNextForm(action) {
           currentForm,
           withoutRedirect,
           isGoBack,
+          value,
         } = action;
 
     if (isGoBack) {
@@ -37,6 +38,10 @@ function* getNextForm(action) {
       yield put({
         type: SET_NEXT_FORM,
         model,
+        value,
+        isGoBack,
+        currentStep,
+        currentForm: currentForm - 1
       });
       yield put({
         type: GET_USER_PROGRESS + SUCCEEDED,

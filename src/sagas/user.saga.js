@@ -7,9 +7,11 @@ import {
   PENDING_END,
   PENDING_START,
   SUCCEEDED,
-} from '../constants/actionTypes';
-import networkState        from '../utils/networkState';
-import { AsyncStorage }    from "react-native";
+}                                   from '../constants/actionTypes';
+import networkState                 from '../utils/networkState';
+import { AsyncStorage }             from "react-native";
+import { client }                   from '../mutations/config'
+import { loginFacebook, test }               from "../mutations/user";
 
 function* getUserProgress(action) {
   try {
@@ -28,6 +30,7 @@ function* getUserProgress(action) {
 
     yield put({ type: PENDING_END });
   } catch (e) {
+    console.error(e);
     yield put({ type: PENDING_END });
   }
 }
@@ -38,17 +41,34 @@ function* onAppLoaded() {
     yield networkState.haveConnection();
 
 
+    // let data = yield client.mutate({
+    //   mutation: loginFacebook,
+    //   variables: {
+    //     token: 'qweqwe'
+    //   }
+    // });
+
+    let data = yield client.query({
+      query: test
+    })
+
+    console.warn('QEEQEQEEQ', data);
+
     let userID = yield AsyncStorage.getItem('@2020:userId');
 
     if (!userID) {
       yield put({ type: GET_ABOUT_INFO_FROM_CMS });
     } else {
-      yield put({type: GET_TOKEN_FROM_STORAGE + SUCCEEDED});
-      yield put({type: GET_USER_PROGRESS, userID});
+      yield put({ type: GET_TOKEN_FROM_STORAGE + SUCCEEDED });
+      yield put({
+        type: GET_USER_PROGRESS,
+        userID,
+      });
     }
 
     yield put({ type: PENDING_END });
   } catch (e) {
+    console.error(e);
     yield put({ type: PENDING_END });
   }
 }
