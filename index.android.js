@@ -6,9 +6,11 @@ import Navigator              from './src/navigator'
 import * as NavigationService from './src/HOC/navigation'
 import './src/styles';
 
-XMLHttpRequest = GLOBAL.originalXMLHttpRequest ?
-                 GLOBAL.originalXMLHttpRequest :
-                 GLOBAL.XMLHttpRequest;
+if (__DEV__) {
+  XMLHttpRequest = GLOBAL.originalXMLHttpRequest ?
+                   GLOBAL.originalXMLHttpRequest :
+                   GLOBAL.XMLHttpRequest;
+}
 
 export default class TwentyTwenty extends React.Component {
 

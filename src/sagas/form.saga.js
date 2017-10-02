@@ -1,21 +1,21 @@
 // @flow
 
-import { AsyncStorage }  from "react-native";
-import { put, takeLatest, select } from 'redux-saga/effects';
+import { AsyncStorage }                       from "react-native";
+import { put, takeLatest, select, cancelled } from 'redux-saga/effects';
 import {
-GET_NEXT_FORM,
-SET_NEXT_FORM,
-PENDING_END,
-PENDING_START,
-GO_TO_CONGRATULATIONS_SCREEN,
-GO_TO_WORKBOOK_SCREEN, SUCCEEDED,
-GET_USER_PROGRESS,
-}                        from '../constants/actionTypes';
-import networkState      from '../utils/networkState';
-import formConfig        from '../screens/WorkBookScreen/components/forms';
-import { goBack }        from '../HOC/navigation';
-import { addStep } from "../mutations/user";
-import { client }        from "../mutations/config";
+  GET_NEXT_FORM,
+  SET_NEXT_FORM,
+  PENDING_END,
+  PENDING_START,
+  GO_TO_CONGRATULATIONS_SCREEN,
+  GO_TO_WORKBOOK_SCREEN, SUCCEEDED,
+  GET_USER_PROGRESS,
+}                                             from '../constants/actionTypes';
+import networkState                           from '../utils/networkState';
+import formConfig                             from '../screens/WorkBookScreen/components/forms';
+import { goBack }                             from '../HOC/navigation';
+import { addStep }                            from "../mutations/user";
+import { client }                             from "../mutations/config";
 
 function* getNextForm(action) {
   try {
@@ -44,7 +44,7 @@ function* getNextForm(action) {
         value,
         isGoBack,
         currentStep,
-        currentForm: currentForm - 1
+        currentForm: currentForm - 1,
       });
       yield put({
         type: GET_USER_PROGRESS + SUCCEEDED,
@@ -64,7 +64,7 @@ function* getNextForm(action) {
         model: null,
         value,
         currentStep,
-        currentForm: currentForm - 1
+        currentForm: currentForm - 1,
       });
 
       if (isGoBack) {
@@ -80,12 +80,11 @@ function* getNextForm(action) {
             userId: userID,
             step: {
               stepId: currentStep,
-              data: formData
+              data: formData,
             },
 
-          }
+          },
         });
-
         yield put({ type: GO_TO_CONGRATULATIONS_SCREEN });
       }
     }
@@ -93,6 +92,9 @@ function* getNextForm(action) {
     yield put({ type: PENDING_END });
   } catch (e) {
     yield put({ type: PENDING_END });
+  } finally {
+    if (yield cancelled())
+      yield put({ type: PENDING_END });
   }
 }
 

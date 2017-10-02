@@ -1,6 +1,6 @@
 // @flow
 
-import { call, put, takeLatest }                              from 'redux-saga/effects';
+import { call, cancelled, put, takeLatest }                   from 'redux-saga/effects';
 import { delay }                                              from 'redux-saga'
 import theme                                                  from 'react-native-theme';
 import {
@@ -14,7 +14,7 @@ import {
 }                                                             from '../constants/actionTypes';
 import { contentfulClient }                                   from "../contentful";
 import networkState                                           from '../utils/networkState';
-import { IColors, IStep, IColorSchema }                                     from "../interfaces";
+import { IColors, IStep, IColorSchema }                       from "../interfaces";
 import { CONTENTFUL_CONTENT_COLORS, CONTENTFUL_CONTENT_STEP } from "../constants/constants";
 
 
@@ -89,6 +89,9 @@ function* getAllStepsFromCMS() {
     });
 
     yield put({ type: PENDING_END });
+  } finally {
+    if (yield cancelled())
+      yield put({ type: PENDING_END });
   }
 }
 
@@ -121,6 +124,9 @@ function* getStepsFromCMSByDay(action: { day: number }) {
     });
 
     yield put({ type: PENDING_END });
+  } finally {
+    if (yield cancelled())
+      yield put({ type: PENDING_END });
   }
 }
 

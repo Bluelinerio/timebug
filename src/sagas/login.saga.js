@@ -2,6 +2,7 @@
 
 import FBSDK                        from 'react-native-fbsdk';
 import {
+  cancelled,
   put,
   takeLatest,
 }                                   from 'redux-saga/effects';
@@ -49,6 +50,9 @@ function* getAboutInfoFromCMS() {
     });
 
     yield put({ type: PENDING_END });
+  } finally {
+    if (yield cancelled())
+      yield put({ type: PENDING_END });
   }
 }
 
@@ -67,18 +71,18 @@ function* loginWithFB() {
       let graphResponse = yield client.mutate({
         mutation: loginFacebook,
         variables: {
-          token: fbData.accessToken
-        }
+          token: fbData.accessToken,
+        },
       });
 
-      let userID =  graphResponse.data.loginFacebook.user._id;
+      let userID = graphResponse.data.loginFacebook.user._id;
 
-      yield AsyncStorage.setItem('@2020:userId',  userID);
+      yield AsyncStorage.setItem('@2020:userId', userID);
 
       yield put({
         type: GET_USER_PROGRESS,
         userID,
-        loadSteps: true
+        loadSteps: true,
       });
       yield put({ type: FACEBOOK_LOGIN + SUCCEEDED });
       yield reset('HomeScreen');
@@ -88,7 +92,9 @@ function* loginWithFB() {
   } catch (e) {
     console.log(e);
     yield put({ type: PENDING_END });
-
+  } finally {
+    if (yield cancelled())
+      yield put({ type: PENDING_END });
   }
 
   // TODO uncomment to skip FB login
