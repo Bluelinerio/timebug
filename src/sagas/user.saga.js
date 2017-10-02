@@ -63,7 +63,7 @@ function* onAppLoaded() {
     if (!userID) {
       yield put({ type: GET_ABOUT_INFO_FROM_CMS });
     } else {
-      yield put({ type: GET_TOKEN_FROM_STORAGE + SUCCEEDED });
+      yield put({ type: GET_TOKEN_FROM_STORAGE + SUCCEEDED, userID });
       yield put({
         type: GET_USER_PROGRESS,
         userID,

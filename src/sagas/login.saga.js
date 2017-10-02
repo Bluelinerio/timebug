@@ -78,6 +78,7 @@ function* loginWithFB() {
       yield put({
         type: GET_USER_PROGRESS,
         userID,
+        loadSteps: true
       });
       yield put({ type: FACEBOOK_LOGIN + SUCCEEDED });
       yield reset('HomeScreen');

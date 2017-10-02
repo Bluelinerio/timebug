@@ -108,16 +108,6 @@ function* getStepsFromCMSByDay(action: { day: number }) {
     let colors = yield getColorsFromCMS();
     yield setColorsForCurrentStep(colors, step);
 
-    if (action.day > 1) {
-      yield put({
-        type: GET_USER_PROGRESS + SUCCEEDED,
-        progress: {
-          step: action.day,
-          formStep: 1,
-        },
-      });
-    }
-
     yield put({
       type: GET_STEPS_FROM_CMS_BY_DAY + SUCCEEDED,
       step,
