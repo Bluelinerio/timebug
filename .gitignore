@@ -58,7 +58,7 @@ node_modules
 
 /coverage
 /third-party
-ios/build/Build/
+ios/build
 ios/Frameworks/
 ios/New Group/
 yarn.lock
