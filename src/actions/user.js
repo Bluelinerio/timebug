@@ -8,8 +8,9 @@ export function getUserProgress(userID) {
   }
 }
 
-export function onAppLoaded() {
+export function onAppLoaded(request) {
   return {
-    type: ON_APP_LOADED
+    type: ON_APP_LOADED,
+    request
   }
 }

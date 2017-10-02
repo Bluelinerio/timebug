@@ -23,6 +23,7 @@ const mapStateToProps = (state) => {
   return {
     progress: state.user.progress,
     model: state.form.model,
+    formData: state.form.data,
     isPending: state.network.isPending,
   }
 };
@@ -32,7 +33,6 @@ const mapStateToProps = (state) => {
 })
 class WorkBookScreenContainer extends Component<Props, State> {
   static navigationOptions = ({ navigation }) => {
-    console.log(navigation);
     return ( {
       headerTitleStyle: {
         textAlign: 'center',
@@ -77,6 +77,7 @@ class WorkBookScreenContainer extends Component<Props, State> {
           getNextForm,
           model,
           progress,
+          formData
         } = this.props;
 
     if (!isPending && model && progress) {
@@ -84,6 +85,7 @@ class WorkBookScreenContainer extends Component<Props, State> {
         getNextForm={getNextForm}
         model={model}
         progress={progress}
+        formData={formData}
       />
     } else {
       return <DefaultIndicator size="large"/>

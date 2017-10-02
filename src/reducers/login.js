@@ -28,12 +28,11 @@ export default function (state: LoginState = initialState, action: LoginAction) 
         ...state,
         about: action.about,
       };
-    case FACEBOOK_LOGIN + SUCCEEDED:
-      return {
-        ...state,
-        isLoggedIn: true,
-      };
+    case 'APOLLO_MUTATION_INIT':
+      console.log(action);
+      return state;
     case GET_TOKEN_FROM_STORAGE + SUCCEEDED:
+    case FACEBOOK_LOGIN + SUCCEEDED:
       return {
         ...state,
         isLoggedIn: true,

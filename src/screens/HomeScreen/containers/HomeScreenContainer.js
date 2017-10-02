@@ -2,6 +2,7 @@
 
 import React, { Component }             from 'react';
 import { connect }                      from 'react-redux';
+import { AsyncStorage }                 from "react-native";
 import theme                            from 'react-native-theme';
 import DashboardComponent               from '../components/DashboardComponent';
 import IntroComponent                   from "../components/IntroComponent";
@@ -15,7 +16,6 @@ import { loginWithFB }                  from "../../../actions/FBAction";
 import type { IStep }                   from "../../../interfaces";
 import { goToTextScreen }               from "../../../actions/navigate";
 import { getUserProgress, onAppLoaded } from "../../../actions/user";
-import { AsyncStorage }                 from "react-native";
 
 type Props = {
   allSteps: IStep[],
@@ -59,11 +59,9 @@ class HomeScreenContainer extends Component<Props, State> {
   };
 
   componentDidMount() {
+    //AsyncStorage.clear();
     this.props.onAppLoaded();
 
-    if (!this.props.currentStep.number) {
-      this.props.getStepFromCMSByDay(1);
-    }
     this.props.getAllStepsFromCMS();
 
   }
@@ -82,7 +80,6 @@ class HomeScreenContainer extends Component<Props, State> {
           allSteps,
           goToTextScreen,
         } = this.props;
-
     if (!isPending && !isLoggedIn) {
       return (
         <IntroComponent

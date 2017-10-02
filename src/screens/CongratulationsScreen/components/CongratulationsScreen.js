@@ -22,12 +22,6 @@ export default class CongratulationsScreen extends Component<Props, State> {
 
   @autobind
   goToNextDay() {
-    let { number } = this.props.currentStep;
-    let { length } = this.props.allSteps;
-    let nextDay    = number + 1;
-    if (nextDay <= length) {
-      this.props.getStepFromCMSByDay(nextDay);
-    }
     this.props.goToHomeScreen({})
   }
 

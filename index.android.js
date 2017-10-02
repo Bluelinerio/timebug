@@ -1,12 +1,17 @@
 import React                  from 'react';
-import { Provider }           from 'react-redux';
-import { store }              from './src/reducers/rootReducer';
+import { ApolloProvider } from 'react-apollo';
+import { store, client }              from './src/reducers/rootReducer';
 import { AppRegistry }        from 'react-native';
 import Navigator              from './src/navigator'
 import * as NavigationService from './src/HOC/navigation'
 import './src/styles';
 
-export default class book2020 extends React.Component {
+XMLHttpRequest = GLOBAL.originalXMLHttpRequest ?
+                 GLOBAL.originalXMLHttpRequest :
+                 GLOBAL.XMLHttpRequest;
+
+export default class TwentyTwenty extends React.Component {
+
 
   componentDidMount() {
     NavigationService.setNavigator(this.navigator);
@@ -14,14 +19,14 @@ export default class book2020 extends React.Component {
 
   render() {
     return (
-      <Provider store={store}>
+      <ApolloProvider store={store} client={client}>
         <Navigator ref={nav => {
           this.navigator = nav;
         }}/>
-      </Provider>
+      </ApolloProvider>
     )
   }
 
 }
 
-AppRegistry.registerComponent('book2020', () => book2020);
+AppRegistry.registerComponent('2020', () => TwentyTwenty);
