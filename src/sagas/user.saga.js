@@ -2,28 +2,46 @@
 
 import { put, takeLatest, select, } from 'redux-saga/effects';
 import {
-  GET_ABOUT_INFO_FROM_CMS, GET_TOKEN_FROM_STORAGE,
+  GET_ABOUT_INFO_FROM_CMS, GET_STEPS_FROM_CMS_BY_DAY, GET_TOKEN_FROM_STORAGE,
   GET_USER_PROGRESS, ON_APP_LOADED,
   PENDING_END,
   PENDING_START,
   SUCCEEDED,
-}                                   from '../constants/actionTypes';
+} from '../constants/actionTypes';
 import networkState                 from '../utils/networkState';
 import { AsyncStorage }             from "react-native";
 import { client }                   from '../mutations/config'
-import { loginFacebook, test }               from "../mutations/user";
+import { getUser }   from "../mutations/user";
 
 function* getUserProgress(action) {
   try {
     yield put({ type: PENDING_START });
     yield networkState.haveConnection();
 
+    let graphResponse = yield client.query({
+      query: getUser,
+      variables: {
+        id: action.userID
+      }
+    });
+
+    let currentStep = 1;
+    if (graphResponse.data.getUser.steps[0]) {
+      currentStep = graphResponse.data.getUser.steps[0].stepId + 1;
+    }
+
+    if (action.loadSteps) {
+      yield put({
+        type: GET_STEPS_FROM_CMS_BY_DAY,
+        day: currentStep
+      });
+    }
 
     yield put({
       type: GET_USER_PROGRESS + SUCCEEDED,
       userID: action.userID,
       progress: {
-        step: 'step_1',
+        step: currentStep,
         formStep: 1,
       },
     });
@@ -40,20 +58,6 @@ function* onAppLoaded() {
     yield put({ type: PENDING_START });
     yield networkState.haveConnection();
 
-
-    // let data = yield client.mutate({
-    //   mutation: loginFacebook,
-    //   variables: {
-    //     token: 'qweqwe'
-    //   }
-    // });
-
-    let data = yield client.query({
-      query: test
-    })
-
-    console.warn('QEEQEQEEQ', data);
-
     let userID = yield AsyncStorage.getItem('@2020:userId');
 
     if (!userID) {
@@ -63,6 +67,7 @@ function* onAppLoaded() {
       yield put({
         type: GET_USER_PROGRESS,
         userID,
+        loadSteps: true
       });
     }
 

@@ -33,7 +33,6 @@ const mapStateToProps = (state) => {
 })
 class WorkBookScreenContainer extends Component<Props, State> {
   static navigationOptions = ({ navigation }) => {
-    console.log(navigation);
     return ( {
       headerTitleStyle: {
         textAlign: 'center',
@@ -78,6 +77,7 @@ class WorkBookScreenContainer extends Component<Props, State> {
           getNextForm,
           model,
           progress,
+          formData
         } = this.props;
 
     if (!isPending && model && progress) {

@@ -36,15 +36,20 @@ export default function (state: FormState = initialState, action: FormAction) {
             currentForm
           } = action;
       if (!isGoBack) {
+        let data = {...state.data};
+        if (value) {
+           data = {
+            ...state.data,
+            [ currentStep ]: {
+              ...state.data[ currentStep ],
+              [ currentForm ]: value
+            }
+          };
+        }
         return {
           ...state,
           model,
-          data: {
-            ...state.data,
-            [currentStep]: {
-              [currentForm]: value
-            }
-          }
+          data
         };
       }
         return {

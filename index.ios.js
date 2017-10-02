@@ -10,7 +10,7 @@ XMLHttpRequest = GLOBAL.originalXMLHttpRequest ?
                  GLOBAL.originalXMLHttpRequest :
                  GLOBAL.XMLHttpRequest;
 
-export default class book2020 extends React.Component {
+export default class TwentyTwenty extends React.Component {
 
 
   componentDidMount() {
@@ -29,4 +29,4 @@ export default class book2020 extends React.Component {
 
 }
 
-AppRegistry.registerComponent('TwentyTwenty', () => book2020);
+AppRegistry.registerComponent('2020', () => TwentyTwenty);

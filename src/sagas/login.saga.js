@@ -19,6 +19,8 @@ import { contentfulClient }         from "../contentful";
 import networkState                 from '../utils/networkState';
 import { reset }                    from '../HOC/navigation'
 import { AsyncStorage }             from "react-native";
+import { loginFacebook }            from "../mutations/user";
+import { client }                   from '../mutations/config'
 
 const { LoginManager, AccessToken } = FBSDK;
 
@@ -60,15 +62,22 @@ function* loginWithFB() {
       alert('canceled');
       yield put({ type: PENDING_END });
     } else {
-      let data = yield AccessToken.getCurrentAccessToken();
+      let fbData = yield AccessToken.getCurrentAccessToken();
 
-      //send data to BE
+      let graphResponse = yield client.mutate({
+        mutation: loginFacebook,
+        variables: {
+          token: fbData.accessToken
+        }
+      });
 
-      yield AsyncStorage.setItem('@2020:userId',  data.userID);
+      let userID =  graphResponse.data.loginFacebook.user._id;
+
+      yield AsyncStorage.setItem('@2020:userId',  userID);
 
       yield put({
         type: GET_USER_PROGRESS,
-        userID: data.userID,
+        userID,
       });
       yield put({ type: FACEBOOK_LOGIN + SUCCEEDED });
       yield reset('HomeScreen');

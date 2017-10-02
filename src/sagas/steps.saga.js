@@ -112,7 +112,7 @@ function* getStepsFromCMSByDay(action: { day: number }) {
       yield put({
         type: GET_USER_PROGRESS + SUCCEEDED,
         progress: {
-          step: 'step_' + action.day,
+          step: action.day,
           formStep: 1,
         },
       });

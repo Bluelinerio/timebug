@@ -38,7 +38,7 @@ class FormComponent extends Component<Props, State> {
     if (value) {
       console.log(value);
 
-      getNextForm(step, formStep, value)
+      getNextForm(step, formStep, false, value)
     }
   }
 
@@ -74,14 +74,11 @@ class FormComponent extends Component<Props, State> {
             value={this.getDefaultValue()}
             options={model.options}
           />
-          <TouchableHighlight style={styles.button} onPress={this.onPress} underlayColor='#99d9f4'>
-            <Text style={styles.buttonText}>Save</Text>
-          </TouchableHighlight>
         </View>
         <View
           style={[ styles.buttonContainer, styles.workBookNextButtonContainer ]}>
           <Button
-            onPress={() => this.onPress()}
+            onPress={this.onPress}
             text="Next"
             side="right"
             withArrow

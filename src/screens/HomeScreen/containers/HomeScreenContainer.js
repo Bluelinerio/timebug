@@ -59,12 +59,9 @@ class HomeScreenContainer extends Component<Props, State> {
   };
 
   componentDidMount() {
-    //AsyncStorage.clear()
+    //AsyncStorage.clear();
     this.props.onAppLoaded();
 
-    if (!this.props.currentStep.number) {
-      this.props.getStepFromCMSByDay(1);
-    }
     this.props.getAllStepsFromCMS();
 
   }

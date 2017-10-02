@@ -4,7 +4,7 @@ import { customList } from "./templates/index";
 
 
 export default {
-  'step_1': {
+  1: {
     1: {
       title: 'Personal Information',
       type: t.struct({
@@ -61,7 +61,7 @@ export default {
       },
     },
   },
-  'step_2': {
+  2: {
     1: {
       title: 'Hello world step 2',
       type: t.struct({
