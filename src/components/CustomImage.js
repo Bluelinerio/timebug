@@ -12,7 +12,7 @@ export default ({ style, imageUri }: Props) => {
 
   if (imageUri && imageUri.endsWith('svg'))
     return <SVGImage
-      style={style}
+      style={[style, {backgroundColor: 'transparent'}]}
       source={{ uri: imageUri }}
     />;
   return <Image source={{ uri: imageUri }} style={style}/>
