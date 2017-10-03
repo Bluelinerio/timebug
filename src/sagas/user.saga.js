@@ -20,6 +20,7 @@ function* getUserProgress(action) {
 
     let graphResponse = yield client.query({
       query: getUser,
+      fetchPolicy: 'network-only',
       variables: {
         id: action.userID,
       },
