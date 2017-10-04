@@ -49,8 +49,8 @@
     "specs": "__e2e__",
     "configurations": {
       "ios.sim.debug": {
-        "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/book2020.app",
-        "build": "xcodebuild -project ios/book2020.xcodeproj -scheme book2020 -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
+        "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/2020.app",
+        "build": "xcodebuild -project ios/2020.xcodeproj -scheme 2020 -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
         "type": "ios.simulator",
         "name": "iPhone 5s"
       }

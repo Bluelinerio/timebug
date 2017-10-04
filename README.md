@@ -7,7 +7,7 @@ iOS >= 8, Android >= 4.4
 * `git clone`
 * `yarn`
 * `react-native link`
-* to run for iOS open `ios/book2020.xcodeproj` in XCode and press START button
+* to run for iOS open `ios/2020.xcodeproj` in XCode and press START button
 * to run for Android run `react-native start`, open emulator and run `react-native run-android`
 
 ##How to test:
