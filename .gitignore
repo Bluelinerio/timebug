@@ -41,7 +41,9 @@ buck-out
 .gradle
 local.properties
 *.iml
-/android/
+android/app/build/
+android/build/generated/
+android/build/intermediates/
 
 # Node
 node_modules
@@ -61,3 +63,7 @@ node_modules
 ios/build
 ios/Frameworks/
 ios/New Group/
+
+android/app/src/main/assets/index.android.bundle
+
+android/app/src/main/assets/index.android.bundle.meta

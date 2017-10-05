@@ -1,6 +1,6 @@
 import React                  from 'react';
-import { ApolloProvider } from 'react-apollo';
-import { store, client }              from './src/reducers/rootReducer';
+import { ApolloProvider }     from 'react-apollo';
+import { store, client }      from './src/reducers/rootReducer';
 import { AppRegistry }        from 'react-native';
 import Navigator              from './src/navigator'
 import * as NavigationService from './src/HOC/navigation'
@@ -31,4 +31,4 @@ export default class TwentyTwenty extends React.Component {
 
 }
 
-AppRegistry.registerComponent('2020', () => TwentyTwenty);
+AppRegistry.registerComponent('lifevision', () => TwentyTwenty);
