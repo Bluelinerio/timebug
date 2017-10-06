@@ -1,3 +1,7 @@
 import theme from 'react-native-theme';
 
-theme.add({});
+theme.add({
+  textNormal: {
+    color: '#fff'
+  }
+});

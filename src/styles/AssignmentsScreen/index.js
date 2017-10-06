@@ -11,10 +11,22 @@ theme.add({
     paddingHorizontal: 20,
     paddingTop: 30,
   },
-  assignmentsScreenImage: {
-    alignSelf: 'center',
+  assignmentsScreenNumber: {
+    borderWidth: 1,
+    alignItems: 'center',
     justifyContent: 'center',
-    width: 100,
-    height: 100,
+    width: 60,
+    height: 60,
+    borderRadius: 100,
+    marginRight: 30
   },
+  assignmentsScreenNumberColors: {
+    backgroundColor: '#6EBDDC',
+    borderColor: '#6EBDDC'
+  },
+  assignmentsScreenNumberText: {
+    color: 'white',
+    fontSize: 20,
+    fontWeight: '600'
+  }
 });
