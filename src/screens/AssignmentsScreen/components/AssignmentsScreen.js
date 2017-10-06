@@ -1,13 +1,12 @@
 // @flow
 
-import React, { Component }                    from 'react';
-import { Dimensions, Image, ScrollView, View } from 'react-native';
-import { styles }                              from 'react-native-theme';
-import Button                                  from '../../../components/Button'
-import Markdown                                from 'react-native-easy-markdown';
-import { IAssignment }                         from "../../../interfaces";
-import getImageUrl                             from "../../../utils/getImageUrl";
-import CustomImage                             from "../../../components/CustomImage";
+import React, { Component }             from 'react';
+import { Dimensions, ScrollView, View } from 'react-native';
+import { styles }                       from 'react-native-theme';
+import Button                           from '../../../components/Button'
+import Markdown                         from 'react-native-easy-markdown';
+import { IAssignment }                  from "../../../interfaces";
+import AssignmentNumber                 from "./AssignmentNumber";
 
 type Props = {
   assignments: IAssignment[],
@@ -30,14 +29,12 @@ export default class AssignmentsScreen extends Component<Props, State> {
   render() {
     const { assignments } = this.props;
     let steps             = assignments.map((assignment, i) => {
-      let isLastItem = i !== assignments.length - 1;
-      let isWithImage = assignment.icon && assignment.icon.fields && isLastItem;
+      let isLastItem = i === assignments.length - 1;
       return (
         <View style={styles.assignmentsScreenSlide} key={i}>
-          {isWithImage &&
-          <CustomImage
-            style={styles.assignmentsScreenImage}
-            imageUri={getImageUrl(assignment.icon)}
+          {!isLastItem &&
+          <AssignmentNumber
+            number={assignment.order}
           />
           }
           <Markdown markdownStyles={{
@@ -48,7 +45,7 @@ export default class AssignmentsScreen extends Component<Props, State> {
               fontSize: 14,
               marginBottom: 15,
               paddingVertical: 20,
-              width: Dimensions.get('window').width - ( isWithImage ? 130 : 30 ),
+              width: Dimensions.get('window').width - ( !isLastItem ? 130 : 30 ),
             },
           }}>
             {assignment.content}

@@ -56,6 +56,10 @@ function* setColorsForCurrentStep(colors: IColors, step: IStep) {
     congratulationsScreenTextColor: {
       color,
     },
+    themeBackgroundColor: {
+      backgroundColor: color,
+      borderColor: color
+    },
   }, 'custom');
   theme.active('custom');
   // delay for theme applying
