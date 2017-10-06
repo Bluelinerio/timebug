@@ -14,6 +14,7 @@ export default ({ style, imageUri }: Props) => {
     return <SVGImage
       style={[style, {backgroundColor: 'transparent'}]}
       source={{ uri: imageUri }}
+      scrollEnabled={false}
     />;
   return <Image source={{ uri: imageUri }} style={style}/>
 
