@@ -14,6 +14,7 @@ import * as storage                     from 'redux-storage';
 import filter                           from 'redux-storage-decorator-filter';
 import debounce                         from 'redux-storage-decorator-debounce';
 import createEngine                     from 'redux-storage-engine-reactnativeasyncstorage';
+import { composeWithDevTools }          from 'remote-redux-devtools';
 
 import steps    from './steps';
 import error    from './error';
@@ -21,6 +22,7 @@ import login    from './login';
 import network  from './network';
 import user     from "./user";
 import form     from "./form";
+import nav      from "./navigation";
 import rootSaga from '../sagas/rootSagas';
 
 const sagaMiddleware = createSagaMiddleware();
@@ -53,7 +55,7 @@ engine = debounce(engine, 500);
 const middleware                = storage.createMiddleware(engine);
 export const load               = storage.createLoader(engine);
 const loggerMiddleWare          = createLogger();
-const createStoreWithMiddleware = compose(applyMiddleware(loggerMiddleWare, sagaMiddleware, middleware, client.middleware()))(createStore);
+const createStoreWithMiddleware = composeWithDevTools(applyMiddleware(loggerMiddleWare, sagaMiddleware, middleware, client.middleware()))(createStore);
 const reducer                   = storage.reducer(combineReducers(
   {
     steps,
@@ -62,6 +64,7 @@ const reducer                   = storage.reducer(combineReducers(
     network,
     user,
     form,
+    nav,
     apollo: client.reducer(),
   }));
 
