@@ -2,7 +2,7 @@ import React                  from 'react';
 import { ApolloProvider }     from 'react-apollo';
 import { store, client }      from './src/reducers/rootReducer';
 import { AppRegistry }        from 'react-native';
-import Navigator              from './src/navigator'
+import ReduxNavigator         from './src/navigation/reduxNavigator'
 import * as NavigationService from './src/HOC/navigation'
 import './src/styles';
 
@@ -22,9 +22,7 @@ export default class TwentyTwenty extends React.Component {
   render() {
     return (
       <ApolloProvider store={store} client={client}>
-        <Navigator ref={nav => {
-          this.navigator = nav;
-        }}/>
+        <ReduxNavigator />
       </ApolloProvider>
     )
   }

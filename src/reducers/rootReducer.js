@@ -22,6 +22,7 @@ import login    from './login';
 import network  from './network';
 import user     from "./user";
 import form     from "./form";
+import nav      from "./navigation";
 import rootSaga from '../sagas/rootSagas';
 
 const sagaMiddleware = createSagaMiddleware();
@@ -63,6 +64,7 @@ const reducer                   = storage.reducer(combineReducers(
     network,
     user,
     form,
+    nav,
     apollo: client.reducer(),
   }));
 

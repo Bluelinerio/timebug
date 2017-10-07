@@ -1,11 +1,13 @@
 import React                      from 'react';
 import { StackNavigator, }        from 'react-navigation';
 import CardStackStyleInterpolator from 'react-navigation/src/views/CardStack/CardStackStyleInterpolator'
-import HomeScreen                 from "./screens/HomeScreen";
-import TextScreen                 from "./screens/TextScreen";
-import AssignmentsScreen          from "./screens/AssignmentsScreen";
-import CongratulationsScreen      from "./screens/CongratulationsScreen";
-import WorkBookScreen             from "./screens/WorkBookScreen";
+import HomeScreen                 from "../screens/HomeScreen";
+import TextScreen                 from "../screens/TextScreen";
+import AssignmentsScreen          from "../screens/AssignmentsScreen";
+import CongratulationsScreen      from "../screens/CongratulationsScreen";
+import WorkBookScreen             from "../screens/WorkBookScreen";
+
+export const initialRouteName = 'HomeScreen';
 
 const Navigator = StackNavigator({
     HomeScreen,
@@ -15,6 +17,7 @@ const Navigator = StackNavigator({
     WorkBookScreen,
   },
   {
+    initialRouteName,
     headerMode: 'screen',
     mode: 'modal',
     cardStyle: {
