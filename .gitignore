@@ -63,6 +63,7 @@ node_modules
 ios/build
 ios/Frameworks/
 ios/New Group/
+ios/Pods
 
 android/app/src/main/assets/index.android.bundle
 
