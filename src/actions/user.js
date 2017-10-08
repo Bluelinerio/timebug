@@ -1,9 +1,9 @@
 // @flow
-import { GET_USER_PROGRESS, ON_APP_LOADED } from '../constants/actionTypes';
+import { GET_USER_PROGRESS, ON_APP_LOADED, REQUEST } from '../constants/actionTypes';
 
 export function getUserProgress(userID) {
   return {
-    type: GET_USER_PROGRESS,
+    type: GET_USER_PROGRESS[REQUEST],
     userID
   }
 }

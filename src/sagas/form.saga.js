@@ -8,7 +8,8 @@ import {
   PENDING_END,
   PENDING_START,
   GO_TO_CONGRATULATIONS_SCREEN,
-  GO_TO_WORKBOOK_SCREEN, SUCCEEDED,
+  GO_TO_WORKBOOK_SCREEN,
+  SUCCESS,
   GET_USER_PROGRESS,
 }                                             from '../constants/actionTypes';
 import networkState                           from '../utils/networkState';
@@ -47,7 +48,7 @@ function* getNextForm(action) {
         currentForm: currentForm - 1,
       });
       yield put({
-        type: GET_USER_PROGRESS + SUCCEEDED,
+        type: GET_USER_PROGRESS[SUCCESS],
         progress: {
           step: currentStep,
           formStep: currentForm,

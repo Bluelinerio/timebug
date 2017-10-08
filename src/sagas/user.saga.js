@@ -2,11 +2,12 @@
 
 import { put, takeLatest, cancelled, } from 'redux-saga/effects';
 import {
+  REQUEST,
   GET_ABOUT_INFO_FROM_CMS, GET_STEPS_FROM_CMS_BY_DAY, GET_TOKEN_FROM_STORAGE,
   GET_USER_PROGRESS, ON_APP_LOADED,
   PENDING_END,
   PENDING_START,
-  SUCCEEDED,
+  SUCCESS,
 }                                      from '../constants/actionTypes';
 import networkState                    from '../utils/networkState';
 import { AsyncStorage }                from "react-native";
@@ -33,13 +34,13 @@ function* getUserProgress(action) {
 
     if (action.loadSteps) {
       yield put({
-        type: GET_STEPS_FROM_CMS_BY_DAY,
+        type: GET_STEPS_FROM_CMS_BY_DAY[REQUEST],
         day: currentStep,
       });
     }
 
     yield put({
-      type: GET_USER_PROGRESS + SUCCEEDED,
+      type: GET_USER_PROGRESS[SUCCESS],
       userID: action.userID,
       progress: {
         step: currentStep,
@@ -65,14 +66,14 @@ function* onAppLoaded() {
     let userID = yield AsyncStorage.getItem('@2020:userId');
 
     if (!userID) {
-      yield put({ type: GET_ABOUT_INFO_FROM_CMS });
+      yield put({ type: GET_ABOUT_INFO_FROM_CMS[SUCCESS] });
     } else {
       yield put({
-        type: GET_TOKEN_FROM_STORAGE + SUCCEEDED,
+        type: GET_TOKEN_FROM_STORAGE[SUCCESS],
         userID,
       });
       yield put({
-        type: GET_USER_PROGRESS,
+        type: GET_USER_PROGRESS[REQUEST],
         userID,
         loadSteps: true,
       });
@@ -90,7 +91,7 @@ function* onAppLoaded() {
 
 
 export function* userProgressSaga() {
-  yield takeLatest(GET_USER_PROGRESS, getUserProgress);
+  yield takeLatest(GET_USER_PROGRESS[REQUEST], getUserProgress);
 }
 
 export function* onAppLoadedSaga() {

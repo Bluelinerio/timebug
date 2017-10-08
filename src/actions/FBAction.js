@@ -1,7 +1,7 @@
-import { FACEBOOK_LOGIN } from "../constants/actionTypes";
+import { LOGIN_WITH_FACEBOOK, REQUEST } from "../constants/actionTypes";
 
 export function loginWithFB() {
   return {
-    type: FACEBOOK_LOGIN,
+    type: LOGIN_WITH_FACEBOOK[REQUEST],
   }
 }

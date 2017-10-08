@@ -4,11 +4,11 @@ import { call, cancelled, put, takeLatest }                   from 'redux-saga/e
 import { delay }                                              from 'redux-saga'
 import theme                                                  from 'react-native-theme';
 import {
-  FAILED,
-  SUCCEEDED,
+  REQUEST,
+  SUCCESS,
+  FAILURE,
   GET_ALL_STEPS_FROM_CMS,
   GET_STEPS_FROM_CMS_BY_DAY,
-  GET_USER_PROGRESS,
   PENDING_END,
   PENDING_START,
 }                                                             from '../constants/actionTypes';
@@ -81,14 +81,14 @@ function* getAllStepsFromCMS() {
     });
 
     yield put({
-      type: GET_ALL_STEPS_FROM_CMS + SUCCEEDED,
+      type: GET_ALL_STEPS_FROM_CMS[SUCCESS],
       steps,
     });
 
     yield put({ type: PENDING_END });
   } catch (e) {
     yield put({
-      type: GET_ALL_STEPS_FROM_CMS + FAILED,
+      type: GET_ALL_STEPS_FROM_CMS[FAILURE],
       message: e.message,
     });
 
@@ -116,14 +116,14 @@ function* getStepsFromCMSByDay(action: { day: number }) {
     yield setColorsForCurrentStep(colors, step);
 
     yield put({
-      type: GET_STEPS_FROM_CMS_BY_DAY + SUCCEEDED,
+      type: GET_STEPS_FROM_CMS_BY_DAY[SUCCESS],
       step,
     });
 
     yield put({ type: PENDING_END });
   } catch (e) {
     yield put({
-      type: GET_STEPS_FROM_CMS_BY_DAY + FAILED,
+      type: GET_STEPS_FROM_CMS_BY_DAY[FAILURE],
       message: e.message,
     });
 
@@ -135,10 +135,10 @@ function* getStepsFromCMSByDay(action: { day: number }) {
 }
 
 export function* getAllStepsSaga() {
-  yield takeLatest(GET_ALL_STEPS_FROM_CMS, getAllStepsFromCMS);
+  yield takeLatest(GET_ALL_STEPS_FROM_CMS[REQUEST], getAllStepsFromCMS);
 }
 
 export function* getStepByDaySaga() {
-  yield takeLatest(GET_STEPS_FROM_CMS_BY_DAY, getStepsFromCMSByDay);
+  yield takeLatest(GET_STEPS_FROM_CMS_BY_DAY[REQUEST], getStepsFromCMSByDay);
 }
 
