@@ -15,7 +15,7 @@ import { getAboutInfoFromCMS }          from "../../../actions/login";
 import { loginWithFB }                  from "../../../actions/FBAction";
 import type { IStep }                   from "../../../interfaces";
 import { goToTextScreen }               from "../../../actions/navigate";
-import { onAppLoaded } from "../../../actions/user";
+import { onAppLoaded }                  from "../../../actions/user";
 
 type Props = {
   allSteps: IStep[],
