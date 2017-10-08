@@ -1,7 +1,13 @@
-import { LOGIN_WITH_FACEBOOK, REQUEST } from "../constants/actionTypes";
+import { action }      from '../utils/actions';
+import {
+  REQUEST,
+  SUCCESS,
+  FAILURE,
+  LOGIN_WITH_FACEBOOK,
+}                      from '../constants/actionTypes';
 
-export function loginWithFB() {
-  return {
-    type: LOGIN_WITH_FACEBOOK[REQUEST],
-  }
+export const loginWithFB = {
+  request: () => action(LOGIN_WITH_FACEBOOK[REQUEST]),
+  success: () => action(LOGIN_WITH_FACEBOOK[SUCCESS]),
+  failure: (message: string) => action(LOGIN_WITH_FACEBOOK[FAILURE], { message }),
 }

@@ -1,16 +1,18 @@
 // @flow
-import { GET_USER_PROGRESS, ON_APP_LOADED, REQUEST } from '../constants/actionTypes';
+import { action }    from '../utils/actions';
+import {
+  REQUEST,
+  SUCCESS,
+  FAILURE,
+  GET_USER_PROGRESS,
+  ON_APP_LOADED,
+}                    from '../constants/actionTypes';
+import { UserState } from '../reducers/user';
 
-export function getUserProgress(userID) {
-  return {
-    type: GET_USER_PROGRESS[REQUEST],
-    userID
-  }
+export const getUserProgress = {
+  request: (userID: UserState.userID, loadSteps: boolean) => action(GET_USER_PROGRESS[REQUEST], { userID, loadSteps }),
+  success: (progress: UserState.progress) => action(GET_USER_PROGRESS[SUCCESS], { progress }),
+  failure: (message: string) => action(GET_USER_PROGRESS[FAILURE], { message }),
 }
 
-export function onAppLoaded(request) {
-  return {
-    type: ON_APP_LOADED,
-    request
-  }
-}
+export const onAppLoaded = (request) => action(ON_APP_LOADED, request);

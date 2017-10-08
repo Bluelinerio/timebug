@@ -1,7 +1,7 @@
 // @flow
 import { GET_TOKEN_FROM_STORAGE, GET_USER_PROGRESS, SUCCESS } from '../constants/actionTypes'; 
 
-interface UserState {
+export interface UserState {
   userID: string,
   progress: {
     step: string,

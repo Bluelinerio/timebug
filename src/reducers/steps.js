@@ -1,5 +1,5 @@
 // @flow
-import { GET_ALL_STEPS_FROM_CMS, GET_STEPS_FROM_CMS_BY_DAY, SUCCESS, } from '../constants/actionTypes';
+import { GET_ALL_STEPS_FROM_CMS, GET_STEP_FROM_CMS_BY_DAY, SUCCESS, } from '../constants/actionTypes';
 import { IStep }                                                         from "../interfaces/IStep";
 
 interface StepsState {
@@ -25,7 +25,7 @@ export default function (state: StepsState = initialState, action: StepsAction) 
         ...state,
         allSteps: action.steps,
       };
-    case GET_STEPS_FROM_CMS_BY_DAY[SUCCESS]:
+    case GET_STEP_FROM_CMS_BY_DAY[SUCCESS]:
       return {
         ...state,
         currentStep: action.step,
