@@ -11,7 +11,10 @@ import {
   goToWorkBookScreen,
   goToCongratulationsScreen,
 }                                             from '../actions/navigate';
-import { startRequest, finishRequest }        from '../actions/network';
+import {
+  incrementRequestCount,
+  decrementRequestCount
+}                                             from '../actions/network';
 import { setNextForm }                        from '../actions/form';
 import networkState                           from '../utils/networkState';
 import formConfig                             from '../screens/WorkBookScreen/components/forms';
@@ -21,7 +24,7 @@ import { client }                             from "../mutations/config";
 
 function* getNextForm(action) {
   try {
-    yield put(startRequest());
+    yield put(incrementRequestCount());
     yield networkState.haveConnection();
 
     let {
@@ -87,12 +90,12 @@ function* getNextForm(action) {
       }
     }
 
-    yield put(finishRequest());
+    yield put(decrementRequestCount());
   } catch (e) {
-    yield put(finishRequest());
+    yield put(decrementRequestCount());
   } finally {
     if (yield cancelled())
-      yield put(finishRequest());
+      yield put(decrementRequestCount());
   }
 }
 

@@ -1,9 +1,9 @@
 // @flow
 import { action }               from '../utils/actions';
 import {
-  START_REQUEST,
-  FINISH_REQUEST,
+  INCREMENT_REQUEST_COUNT,
+  DECREMENT_REQUEST_COUNT,
 }                               from '../constants/actionTypes';
 
-export const startRequest  = () => action(START_REQUEST);
-export const finishRequest = () => action(FINISH_REQUEST);
+export const incrementRequestCount  = () => action(INCREMENT_REQUEST_COUNT);
+export const decrementRequestCount = () => action(DECREMENT_REQUEST_COUNT);

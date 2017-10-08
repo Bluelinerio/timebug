@@ -13,7 +13,10 @@ import {
 }                                      from '../constants/actionTypes';
 import { loginWithFB }                 from '../actions/FBAction';
 import { getAboutInfoFromCMS }         from '../actions/login';
-import { startRequest, finishRequest } from '../actions/network';
+import {
+  incrementRequestCount,
+  decrementRequestCount
+}                                      from '../actions/network';
 import { getUserProgress }             from '../actions/user';
 import { CONTENTFUL_CONTENT_LOGIN }    from "../constants/constants";
 import { contentfulClient }            from "../contentful";
@@ -27,7 +30,7 @@ const { LoginManager, AccessToken } = FBSDK;
 
 function* getAboutInfoFromCMSWorker() {
   try {
-    yield put(startRequest());
+    yield put(incrementRequestCount());
 
     yield networkState.haveConnection();
 
@@ -39,26 +42,26 @@ function* getAboutInfoFromCMSWorker() {
 
     yield put(getAboutInfoFromCMS.success(about));
 
-    yield put(finishRequest());
+    yield put(decrementRequestCount());
   } catch (e) {
     yield put(getAboutInfoFromCMS.failure(e.message));
 
-    yield put(finishRequest());
+    yield put(decrementRequestCount());
   } finally {
     if (yield cancelled())
-      yield put(finishRequest());
+      yield put(decrementRequestCount());
   }
 }
 
 function* loginWithFBWorker() {
   try {
-    yield put(startRequest());
+    yield put(incrementRequestCount());
     yield networkState.haveConnection();
 
     let result = yield LoginManager.logInWithReadPermissions([ 'public_profile', 'email', 'user_friends' ]);
     if (result.isCancelled) {
       alert('canceled');
-      yield put(finishRequest());
+      yield put(decrementRequestCount());
     } else {
       let fbData = yield AccessToken.getCurrentAccessToken();
 
@@ -76,14 +79,14 @@ function* loginWithFBWorker() {
       yield put(getUserProgress.request(userID, true));
       yield put(loginWithFB.success());
       yield reset('HomeScreen');
-      yield put(finishRequest());
+      yield put(decrementRequestCount());
     }
   } catch (e) {
     console.log(e);
-    yield put(finishRequest());
+    yield put(decrementRequestCount());
   } finally {
     if (yield cancelled())
-      yield put(finishRequest());
+      yield put(decrementRequestCount());
   }
 
   // TODO uncomment to skip FB login

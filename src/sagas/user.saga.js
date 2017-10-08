@@ -6,7 +6,10 @@ import {
   GET_USER_PROGRESS,
   ON_APP_LOADED,
 }                                      from '../constants/actionTypes';
-import { startRequest, finishRequest } from '../actions/network';
+import {
+  incrementRequestCount,
+  decrementRequestCount
+}                                      from '../actions/network';
 import {
   getAboutInfoFromCMS,
   getTokenFromStorage
@@ -20,7 +23,7 @@ import { getUser }                     from "../mutations/user";
 
 function* getUserProgressWorker(action) {
   try {
-    yield put(startRequest());
+    yield put(incrementRequestCount());
     yield networkState.haveConnection();
 
     let graphResponse = yield client.query({
@@ -46,19 +49,19 @@ function* getUserProgressWorker(action) {
     };
 
     yield put(getUserProgress.success(progress));
-    yield put(finishRequest());
+    yield put(decrementRequestCount());
   } catch (e) {
     console.error(e);
-    yield put(finishRequest());
+    yield put(decrementRequestCount());
   } finally {
     if (yield cancelled())
-      yield put(finishRequest());
+      yield put(decrementRequestCount());
   }
 }
 
 function* onAppLoaded() {
   try {
-    yield put(startRequest());
+    yield put(incrementRequestCount());
     yield networkState.haveConnection();
 
     let userID = yield AsyncStorage.getItem('@2020:userId');
@@ -70,13 +73,13 @@ function* onAppLoaded() {
       yield put(getUserProgress.request(userID, true));
     }
 
-    yield put(finishRequest());
+    yield put(decrementRequestCount());
   } catch (e) {
     console.error(e);
-    yield put(finishRequest());
+    yield put(decrementRequestCount());
   } finally {
     if (yield cancelled())
-      yield put(finishRequest());
+      yield put(decrementRequestCount());
   }
 }
 

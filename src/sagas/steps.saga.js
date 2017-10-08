@@ -8,7 +8,10 @@ import {
   GET_ALL_STEPS_FROM_CMS,
   GET_STEP_FROM_CMS_BY_DAY,
 }                                                             from '../constants/actionTypes';
-import { startRequest, finishRequest }                        from '../actions/network';
+import {
+  incrementRequestCount,
+  decrementRequestCount
+}                                                             from '../actions/network';
 import { getAllStepsFromCMS, getStepFromCMSByDay }            from '../actions/steps';
 import { contentfulClient }                                   from "../contentful";
 import networkState                                           from '../utils/networkState';
@@ -66,7 +69,7 @@ function* setColorsForCurrentStep(colors: IColors, step: IStep) {
 
 function* getAllStepsFromCMSWorker() {
   try {
-    yield put(startRequest());
+    yield put(incrementRequestCount());
 
     yield networkState.haveConnection();
 
@@ -80,20 +83,20 @@ function* getAllStepsFromCMSWorker() {
 
     yield put(getAllStepsFromCMS.success(steps));
 
-    yield put(finishRequest());
+    yield put(decrementRequestCount());
   } catch (e) {
     yield put(getAllStepsFromCMS.failure(e.message));
 
-    yield put(finishRequest());
+    yield put(decrementRequestCount());
   } finally {
     if (yield cancelled())
-      yield put(finishRequest());
+      yield put(decrementRequestCount());
   }
 }
 
 function* getStepFromCMSByDayWorker(action: { day: number }) {
   try {
-    yield put(startRequest());
+    yield put(incrementRequestCount());
 
     yield networkState.haveConnection();
 
@@ -109,14 +112,14 @@ function* getStepFromCMSByDayWorker(action: { day: number }) {
 
     yield put(getStepFromCMSByDay.success(step));
 
-    yield put(finishRequest());
+    yield put(decrementRequestCount());
   } catch (e) {
     yield put(getStepFromCMSByDay.failure(e.message));
 
-    yield put(finishRequest());
+    yield put(decrementRequestCount());
   } finally {
     if (yield cancelled())
-      yield put(finishRequest());
+      yield put(decrementRequestCount());
   }
 }
 
