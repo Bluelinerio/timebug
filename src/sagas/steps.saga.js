@@ -5,13 +5,11 @@ import { delay }                                              from 'redux-saga'
 import theme                                                  from 'react-native-theme';
 import {
   REQUEST,
-  SUCCESS,
-  FAILURE,
   GET_ALL_STEPS_FROM_CMS,
-  GET_STEPS_FROM_CMS_BY_DAY,
-  PENDING_END,
-  PENDING_START,
+  GET_STEP_FROM_CMS_BY_DAY,
 }                                                             from '../constants/actionTypes';
+import { startRequest, finishRequest }                        from '../actions/network';
+import { getAllStepsFromCMS, getStepFromCMSByDay }            from '../actions/steps';
 import { contentfulClient }                                   from "../contentful";
 import networkState                                           from '../utils/networkState';
 import { IColors, IStep, IColorSchema }                       from "../interfaces";
@@ -66,9 +64,9 @@ function* setColorsForCurrentStep(colors: IColors, step: IStep) {
   yield call(delay, 500);
 }
 
-function* getAllStepsFromCMS() {
+function* getAllStepsFromCMSWorker() {
   try {
-    yield put({ type: PENDING_START });
+    yield put(startRequest());
 
     yield networkState.haveConnection();
 
@@ -80,28 +78,22 @@ function* getAllStepsFromCMS() {
       return step.fields;
     });
 
-    yield put({
-      type: GET_ALL_STEPS_FROM_CMS[SUCCESS],
-      steps,
-    });
+    yield put(getAllStepsFromCMS.success(steps));
 
-    yield put({ type: PENDING_END });
+    yield put(finishRequest());
   } catch (e) {
-    yield put({
-      type: GET_ALL_STEPS_FROM_CMS[FAILURE],
-      message: e.message,
-    });
+    yield put(getAllStepsFromCMS.failure(e.message));
 
-    yield put({ type: PENDING_END });
+    yield put(finishRequest());
   } finally {
     if (yield cancelled())
-      yield put({ type: PENDING_END });
+      yield put(finishRequest());
   }
 }
 
-function* getStepsFromCMSByDay(action: { day: number }) {
+function* getStepFromCMSByDayWorker(action: { day: number }) {
   try {
-    yield put({ type: PENDING_START });
+    yield put(startRequest());
 
     yield networkState.haveConnection();
 
@@ -115,30 +107,24 @@ function* getStepsFromCMSByDay(action: { day: number }) {
     let colors = yield getColorsFromCMS();
     yield setColorsForCurrentStep(colors, step);
 
-    yield put({
-      type: GET_STEPS_FROM_CMS_BY_DAY[SUCCESS],
-      step,
-    });
+    yield put(getStepFromCMSByDay.success(step));
 
-    yield put({ type: PENDING_END });
+    yield put(finishRequest());
   } catch (e) {
-    yield put({
-      type: GET_STEPS_FROM_CMS_BY_DAY[FAILURE],
-      message: e.message,
-    });
+    yield put(getStepFromCMSByDay.failure(e.message));
 
-    yield put({ type: PENDING_END });
+    yield put(finishRequest());
   } finally {
     if (yield cancelled())
-      yield put({ type: PENDING_END });
+      yield put(finishRequest());
   }
 }
 
 export function* getAllStepsSaga() {
-  yield takeLatest(GET_ALL_STEPS_FROM_CMS[REQUEST], getAllStepsFromCMS);
+  yield takeLatest(GET_ALL_STEPS_FROM_CMS[REQUEST], getAllStepsFromCMSWorker);
 }
 
 export function* getStepByDaySaga() {
-  yield takeLatest(GET_STEPS_FROM_CMS_BY_DAY[REQUEST], getStepsFromCMSByDay);
+  yield takeLatest(GET_STEP_FROM_CMS_BY_DAY[REQUEST], getStepFromCMSByDayWorker);
 }
 

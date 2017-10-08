@@ -9,8 +9,7 @@ import {
   GO_TO_WORKBOOK_SCREEN,
 }                           from '../constants/actionTypes';
 import { navigate }         from '../HOC/navigation'
-import type { IAssignment } from "../interfaces";
-
+import type { IAssignment } from '../interfaces';
 
 export function* goToHomeScreen() {
   yield takeLatest(GO_TO_HOME_SCREEN, (action: { number: number }) => navigate('HomeScreen', action));
