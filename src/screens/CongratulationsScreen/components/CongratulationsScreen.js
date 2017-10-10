@@ -22,7 +22,7 @@ export default class CongratulationsScreen extends Component<Props, State> {
 
   @autobind
   goToNextDay() {
-    this.props.goToHomeScreen({})
+    this.props.resetToHomeScreen({})
   }
 
   render() {

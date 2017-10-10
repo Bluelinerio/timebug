@@ -5,7 +5,15 @@ import {
   GO_TO_HOME_SCREEN,
   GO_TO_TEXT_SCREEN,
   GO_TO_WORKBOOK_SCREEN,
+  RESET_TO_HOME_SCREEN
 } from '../constants/actionTypes';
+
+export function resetToHomeScreen(props) {
+  return {
+    type: RESET_TO_HOME_SCREEN,
+    ...props
+  }
+}
 
 export function goToHomeScreen(props) {
   return {
