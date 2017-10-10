@@ -1,4 +1,5 @@
-import theme from 'react-native-theme';
+import theme          from 'react-native-theme';
+import { Dimensions } from "react-native";
 
 theme.add({
   buttonContainer: {
@@ -6,8 +7,8 @@ theme.add({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    width: window.width,
-  },
+    width: Dimensions.get('window').width,
+},
   buttonIconLeft: {
     marginLeft: 10,
   },
@@ -15,12 +16,12 @@ theme.add({
     marginRight: 10,
   },
   wideButton: {
-    height: 50,
-    marginBottom: 30,
-    borderRadius: 150,
+    height: 45,
+    borderRadius: 50,
     alignSelf: 'center',
     justifyContent: 'center',
     overflow: 'hidden',
+    marginHorizontal: 10
   },
   wideButtonBackground: {
     backgroundColor: '#6EBDDC',
@@ -34,9 +35,10 @@ theme.add({
     paddingHorizontal: 10,
   },
   wideButtonText: {
-    color: 'white',
-    fontSize: 22,
-    fontWeight: '700',
-    textAlign: 'center',
+    fontFamily: "Helvetica",
+    fontSize: 15,
+    fontWeight: "bold",
+    textAlign: "center",
+    color: "#ffffff"
   },
 });

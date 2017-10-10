@@ -20,14 +20,18 @@ theme.add({
     alignItems: 'center',
   },
   textScreenHeaderTitle: {
-    color: 'white',
     paddingTop: 10,
     paddingBottom: 30,
-    fontSize: 16,
+    fontFamily: "Helvetica",
+    fontSize: 18,
+    fontWeight: "bold",
+    textAlign: "center",
+    color: "#ffffff",
     alignSelf: 'flex-end',
   },
   textScreenContent: {
     marginTop: 2,
+    marginBottom: 30
   },
   textScreenText: {
     color: '#000000',
@@ -35,17 +39,18 @@ theme.add({
     textAlign: 'center',
   },
   textScreenSubtitle: {
-    color: '#797979',
+    fontFamily: "Helvetica",
+    fontSize: 24,
+    fontWeight: "300",
+    color: "#4a4a4a",
     textAlign: 'left',
     paddingHorizontal: 35,
     paddingVertical: 20,
-    fontSize: 20,
   },
   textScreenTitle: {
-    color: '#103682',
-    fontSize: 25,
-    paddingBottom: 20,
-    // fontWeight: 'bold',
+    fontFamily: "Helvetica",
+    fontSize: 32,
+    color: "#003681",
     alignSelf: 'flex-end',
     flex: 1,
     justifyContent: 'center',
@@ -54,10 +59,8 @@ theme.add({
   },
   textScreenImage: {
     flex: 1,
-    alignSelf: 'flex-start',
-    // justifyContent: 'center',
-    width: 135,
-    height: 135,
+    width: 175,
+    height: 185,
     bottom: 20,
   },
   textScreenDescription: {
@@ -70,7 +73,7 @@ theme.add({
   },
   textScreenBackButton: {
     position: 'absolute',
-    top: 30,
-    left: 10,
+    top: 35,
+    left: 15,
   },
 });

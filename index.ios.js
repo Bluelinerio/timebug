@@ -1,9 +1,8 @@
 import React                  from 'react';
 import { ApolloProvider }     from 'react-apollo';
-import { store, client }      from './src/reducers/rootReducer';
 import { AppRegistry }        from 'react-native';
+import { store, client }      from './src/reducers/rootReducer';
 import ReduxNavigator         from './src/navigation/reduxNavigator'
-import * as NavigationService from './src/HOC/navigation'
 import './src/styles';
 
 if (__DEV__) {
@@ -13,11 +12,6 @@ if (__DEV__) {
 }
 
 export default class TwentyTwenty extends React.Component {
-
-
-  componentDidMount() {
-    NavigationService.setNavigator(this.navigator);
-  }
 
   render() {
     return (

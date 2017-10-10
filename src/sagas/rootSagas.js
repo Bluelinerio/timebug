@@ -9,7 +9,6 @@ import {
   goToHomeScreen,
   goToTextScreen,
   goToWorkBookScreen,
-  resetToHomeScreen,
 }                                            from './navigate.saga';
 import {
   getAllStepsSaga,
@@ -29,7 +28,6 @@ export default function* rootSaga() {
     goToAssignmentsScreen(),
     goToWorkBookScreen(),
     goToCongratulationsScreen(),
-    resetToHomeScreen(),
     userProgressSaga(),
     formLoaderSaga(),
     onAppLoadedSaga()

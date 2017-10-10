@@ -39,10 +39,12 @@ const mapStateToProps = (state) => {
 class AssignmentsScreenContainer extends Component<Props, State> {
   static navigationOptions = ({ navigation: { state: { params } } }) => {
     return ( {
-      title: params ? `STEP ${params.number} ASSIGNMENT` : 'ASSIGNMENT',
+      title: 'ASSIGNMENT',
       headerTitleStyle: {
         textAlign: 'center',
         alignSelf: 'center',
+        fontFamily: "Helvetica",
+        fontSize: 20.5,
       },
       headerStyle: {
         backgroundColor: StyleSheet.flatten(styles.headerColor).backgroundColor,

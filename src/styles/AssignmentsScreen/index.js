@@ -4,10 +4,10 @@ theme.add({
   assignmentsScreenContainer: {
     flexGrow: 1,
     alignItems: 'center',
+    marginBottom: 30
   },
   assignmentsScreenSlide: {
     flexDirection: 'row',
-    alignItems: 'center',
     paddingHorizontal: 20,
     paddingTop: 30,
   },
@@ -15,18 +15,19 @@ theme.add({
     borderWidth: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    width: 60,
-    height: 60,
+    width: 52,
+    height: 52,
     borderRadius: 100,
-    marginRight: 30
+    marginRight: 21
   },
   assignmentsScreenNumberColors: {
     backgroundColor: '#6EBDDC',
     borderColor: '#6EBDDC'
   },
   assignmentsScreenNumberText: {
-    color: 'white',
-    fontSize: 20,
-    fontWeight: '600'
+    fontFamily: "Helvetica",
+    fontSize: 24,
+    textAlign: "center",
+    color: "#ffffff"
   }
 });

@@ -12,15 +12,13 @@ type Props = {
   oPress(): any
 }
 
-const window = Dimensions.get('window');
-
 export default ({ text, onPress, side, withArrow }: Props) => {
-  let minWidth          = side ? 50 : 250;
+  let minWidth          = side ? 128 : 240;
   let paddingHorizontal = side ? 25 : 50;
   return (
-    <View style={[ { minWidth }, styles.buttonContainer, ( side ? styles[ side ] : null ) ]}>
+    <View style={[ styles.buttonContainer, ( side ? styles[ side ] : null ) ]}>
       <Button
-        containerStyle={[ styles.wideButton, styles.wideButtonBackground, {
+        containerStyle={[ { minWidth }, styles.wideButton, styles.wideButtonBackground, {
           minWidth,
           paddingHorizontal,
         } ]}

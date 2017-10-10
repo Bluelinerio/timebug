@@ -25,23 +25,33 @@ theme.add({
     flex: 1,
     flexDirection: 'row',
     alignItems: 'flex-end',
+    marginBottom: 30
   },
   congratulationsScreenCurrentStep: {
-    fontSize: 28,
-    fontWeight: 'bold',
+    fontFamily: "Helvetica",
+    fontSize: 40,
+    fontWeight: "bold",
   },
   congratulationsScreenButtonImage: {
-    width: 10,
-    height: 10,
+    width: 11.5,
+    height: 11.5,
     marginRight: 5,
     marginTop: 2,
   },
   congratulationsScreenDurationText: {
-    fontWeight: '600',
-    fontSize: 10,
+    fontFamily: "Helvetica",
+    fontSize: 12,
+    fontWeight: "bold",
+    textAlign: "center",
     alignSelf: 'flex-end',
   },
   congratulationsScreenTextColor: {
     color: '#48D0F1',
   },
+  congratulationsScreenMessageText: {
+    fontFamily: "Helvetica",
+    fontSize: 20,
+    fontWeight: "300",
+    textAlign: "center",
+  }
 });

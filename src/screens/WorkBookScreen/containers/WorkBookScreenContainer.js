@@ -2,13 +2,24 @@
 
 import React, { Component } from 'react';
 import { connect }          from 'react-redux';
-import { StyleSheet }       from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableHighlight,
+  Platform,
+  ScrollView,
+
+}                           from 'react-native';
 import theme, { styles }    from 'react-native-theme';
 import { HeaderBackButton } from "react-navigation";
-import { getNextForm }      from "../../../actions/form";
-import FormComponent        from "../components/FormComponent";
+import autobind             from "autobind-decorator";
+import KeyboardSpacer       from "react-native-keyboard-spacer";
 import DefaultIndicator     from "../../../components/DefaultIndicator";
+import Button               from "../../../components/Button";
+import { getNextForm }      from "../../../actions/form";
 import { store }            from '../../../reducers/rootReducer';
+import FormComponent        from "../components/FormComponent";
 import { GET_NEXT_FORM }    from "../../../constants/actionTypes";
 
 type Props = {
@@ -17,7 +28,9 @@ type Props = {
   },
 };
 
-type State = {}
+type State = {
+  keyboardSpace: 0
+}
 
 const mapStateToProps = (state) => {
   return {
@@ -45,20 +58,28 @@ class WorkBookScreenContainer extends Component<Props, State> {
       headerLeft: <HeaderBackButton
         tintColor="white"
         onPress={() => {
-        let state              = store.getState();
-        let { step, formStep } = state.user.progress;
-        let { number } = state.steps.currentStep;
-        store.dispatch({
-          type: GET_NEXT_FORM,
-          currentForm: formStep,
-          currentStep: step,
-          isGoBack: true,
-          numberOFDay: number
-        })
-      }}/>,
+          let state              = store.getState();
+          let { step, formStep } = state.user.progress;
+          let { number }         = state.steps.currentStep;
+          store.dispatch({
+            type: GET_NEXT_FORM,
+            currentForm: formStep,
+            currentStep: step,
+            isGoBack: true,
+            numberOFDay: number,
+          })
+        }}/>,
 
     } )
   };
+
+  constructor() {
+    super();
+
+    this.state = {
+      keyboardSpace: 0,
+    }
+  }
 
   componentDidMount() {
     let { progress, model, getNextForm, isPending } = this.props;
@@ -71,22 +92,62 @@ class WorkBookScreenContainer extends Component<Props, State> {
     theme.setRoot(this)
   }
 
+
+  @autobind
+  onToggle(keyboardSpace) {
+    if (Platform.OS === 'ios') {
+      this.setState({ keyboardSpace });
+    }
+  }
+
+  @autobind
+  onPress() {
+    let {
+          getNextForm,
+          progress: { step, formStep },
+        }     = this.props;
+    let value = this.form.refs.form.getValue();
+    if (value) {
+      console.log(value);
+
+      getNextForm(step, formStep, false, value)
+    }
+  }
+
   render() {
     let {
           isPending,
-          getNextForm,
           model,
           progress,
-          formData
+          formData,
         } = this.props;
 
     if (!isPending && model && progress) {
-      return <FormComponent
-        getNextForm={getNextForm}
-        model={model}
-        progress={progress}
-        formData={formData}
-      />
+      return <View style={{ flex: 1 }}>
+        <ScrollView style={{
+          padding: 10,
+        }}>
+          <View style={styles.workBookFormContainer}>
+            <Text style={styles.workBookFormTitle}>{model.title.toUpperCase()}</Text>
+            <FormComponent
+              ref={(form) => this.form = form}
+              model={model}
+              formData={formData}
+              progress={progress}
+            />
+          </View>
+          {Platform.OS === 'ios' &&
+          <KeyboardSpacer onToggle={(keyboardState, keyboardSpace) => this.onToggle(keyboardSpace)}/>}
+        </ScrollView>
+        <View style={[ styles.workBookNextButton, this.state.keyboardSpace && { bottom: this.state.keyboardSpace } ]}>
+          <Button
+            onPress={this.onPress}
+            text="NEXT"
+            side="right"
+            withArrow
+          />
+        </View>
+      </View>
     } else {
       return <DefaultIndicator size="large"/>
     }

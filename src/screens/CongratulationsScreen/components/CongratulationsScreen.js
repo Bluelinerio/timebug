@@ -22,14 +22,14 @@ export default class CongratulationsScreen extends Component<Props, State> {
 
   @autobind
   goToNextDay() {
-    this.props.resetToHomeScreen({})
+    this.props.goToHomeScreen({reset: true, direction: 'back'})
   }
 
   render() {
     return (
       <View style={styles.congratulationsScreenContainer}>
         <View style={styles.congratulationsScreenMessageContainer}>
-          <Text>See you soon in</Text>
+          <Text style={styles.congratulationsScreenMessageText}>See you soon in</Text>
           <Text
             style={[ styles.congratulationsScreenCurrentStep, styles.congratulationsScreenTextColor ]}>STEP {this.props.currentStep.number + 1}!</Text>
           <View style={styles.congratulationsScreenTimerContainer}>
@@ -39,12 +39,11 @@ export default class CongratulationsScreen extends Component<Props, State> {
           </View>
 
         </View>
-        <View style={[ styles.buttonContainer, styles.congratulationsScreenAbsoluteContainer ]}>
+        <View style={[ styles.congratulationsScreenAbsoluteContainer ]}>
           <Button
             onPress={this.goToNextDay}
             text="DONE"
             side="right"
-            withArrow
           >
           </Button>
         </View>

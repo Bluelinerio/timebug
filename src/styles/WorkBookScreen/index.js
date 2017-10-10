@@ -1,4 +1,5 @@
 import theme from 'react-native-theme';
+import './templates';
 
 theme.add({
   workBookFormContainer: {
@@ -14,5 +15,15 @@ theme.add({
     flexDirection: 'row',
     alignItems: 'flex-end',
   },
-
+  workBookNextButton: {
+    flex: 1,
+    height: 90,
+    backgroundColor: 'transparent',
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    justifyContent: 'center',
+    zIndex: 999
+  }
 });

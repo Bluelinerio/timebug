@@ -4,30 +4,40 @@ import theme                    from 'react-native-theme';
 theme.add({
   HomeScreenHeader: {
     top: 80,
-    height: 252,
+    height: 282,
     width: Dimensions.get('window').width,
     alignItems: 'center',
-    paddingTop: Platform.OS === 'ios' ? 20 : 0,
+    paddingTop: Platform.OS === 'ios' ? 60 : 40,
     opacity: 0.9,
   },
   HomeScreenHeaderTitle: {
-    color: 'white',
-    paddingTop: 10,
-    paddingBottom: 30,
-    fontSize: 16,
+    fontFamily: "Helvetica",
+    fontSize: 9,
+    fontWeight: "300",
+    fontStyle: "italic",
+    color: "#ffffff",
+    paddingBottom: 17,
   },
   HomeScreenHeaderImage: {
-    width: 40,
-    height: 40,
+    marginTop: 30,
+    width: 50,
+    height: 50,
+    marginHorizontal: 10
   },
   HomeScreenChallengeInfo: {
     width: Dimensions.get('window').width,
-    paddingHorizontal: 10,
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
+    alignItems: 'center'
   },
-  HomeScreenText: {
-    color: 'white',
+  HomeScreenHeaderText: {
+    width: Dimensions.get('window').width - 70,
+  },
+  HomeScreenTitle: {
+    fontFamily: "Helvetica",
+    fontSize: 24,
+    fontWeight: "bold",
+    color: "#ffffff"
   },
   HomeScreenFirstPartTitle: {
     width: Dimensions.get('window').width - 90,
@@ -35,15 +45,22 @@ theme.add({
     justifyContent: 'space-between',
     paddingVertical: 3,
   },
-  HomeScreenBoldText: {
-    fontSize: 16,
-    fontWeight: '500',
+  HomeScreenStep: {
+    fontFamily: "Helvetica",
+    fontSize: 10,
+    fontWeight: "bold",
+    color: "#ffffff",
+    marginTop: 10
   },
   HomeScreenLittleText: {
-    fontSize: 13,
+    fontFamily: "Helvetica",
+    fontSize: 16,
+    fontWeight: "300",
+    color: "rgba(255, 255, 255, 0.9)",
+    paddingTop: 3
   },
   HomeScreenWideButton: {
-    marginTop: 75,
+    marginTop: 40,
     backgroundColor: 'white',
     height: 45,
     minWidth: 240,
@@ -54,10 +71,11 @@ theme.add({
     overflow: 'hidden',
   },
   HomeScreenWideButtonText: {
-    color: '#0e3fa8',
-    fontSize: 18,
-    fontWeight: '700',
-    textAlign: 'left',
+    fontFamily: "Helvetica",
+    fontSize: 15.5,
+    fontWeight: "bold",
+    textAlign: "left",
+    color: "#003681",
     flex: 2,
     marginLeft: 15,
   },

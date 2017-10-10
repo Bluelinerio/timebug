@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {
   Text,
   View,
-  Image, ScrollView,
+  ScrollView,
   TouchableOpacity,
 }                           from 'react-native';
 import { styles }           from 'react-native-theme';
@@ -12,10 +12,9 @@ import Button               from "../../../components/Button";
 import GradientBackground   from "../../../components/GradientBackground";
 import ScrollableHeader     from "../../../components/ScrollableHeader";
 import { goBack }           from "../../../HOC/navigation";
-
-import { IStep }   from "../../../interfaces";
-import getImageUrl from "../../../utils/getImageUrl";
-import CustomImage from "../../../components/CustomImage";
+import { IStep }            from "../../../interfaces";
+import getImageUrl          from "../../../utils/getImageUrl";
+import CustomImage          from "../../../components/CustomImage";
 
 type Props = {
   currentStep: IStep
@@ -39,13 +38,13 @@ export default class TextScreen extends Component<Props, State> {
               onPress={goBack}
             >
               <Icon
-                name="ios-close"
-                size={35}
+                name="md-close"
+                size={30}
                 color="white"
               />
             </TouchableOpacity>
             <View style={styles.textScreenHeaderTitleContainer}>
-              <Text style={styles.textScreenHeaderTitle}>STEP # {currentStep.number}</Text>
+              <Text style={styles.textScreenHeaderTitle}>STEP {currentStep.number}</Text>
             </View>
 
             <View style={styles.textScreenScreen}>
@@ -76,13 +75,14 @@ export default class TextScreen extends Component<Props, State> {
                 markdownStyles={{
                   u: {
                     fontWeight: 'bold',
-                    color: '#000000',
+                    fontFamily: "Helvetica",
+                    color: 'rgba(236, 0, 140, 0.72)',
                   },
                   block: {
-                    textAlign: 'center',
-                    alignSelf: 'center',
-                    fontSize: 14,
-                    marginBottom: 15,
+                    textAlign: 'left',
+                    fontFamily: "Helvetica",
+                    fontSize: 18,
+                    marginBottom: 20,
                     flexWrap: 'wrap',
                     flexDirection: 'row',
                   },

@@ -38,19 +38,19 @@ export default class DashboardComponent extends Component<Props, State> {
       headerImage={headerBackground}
       header={
         <View style={[ styles.HomeScreenHeader, styles.headerColor ]}>
-          <Text style={styles.HomeScreenHeaderTitle}>Next challenge</Text>
           <View style={styles.HomeScreenChallengeInfo}>
             <CustomImage
               style={styles.HomeScreenHeaderImage}
               imageUri={getImageUrl(currentStep.shortIcon)}
             />
-            <View>
-              <View style={styles.HomeScreenFirstPartTitle}>
-                <Text style={[ styles.HomeScreenText, styles.HomeScreenBoldText ]}>{currentStep.type}</Text>
-                <Text style={[ styles.HomeScreenText, styles.HomeScreenBoldText ]}>STEP
-                  # {currentStep.number}/{totalNumberOfSteps}</Text>
-              </View>
-              <Text style={[ styles.HomeScreenText, styles.HomeScreenLittleText ]}>{currentStep.stepScreenDescription}</Text>
+            <View style={styles.HomeScreenHeaderText}>
+              <Text style={styles.HomeScreenHeaderTitle}>Next challenge</Text>
+              <Text style={[ styles.HomeScreenTitle ]}>{currentStep.type}</Text>
+              <Text style={[ styles.HomeScreenLittleText ]}>
+                {currentStep.stepScreenDescription}
+              </Text>
+              <Text style={[ styles.HomeScreenStep ]}>STEP
+                # {currentStep.number}/{totalNumberOfSteps}</Text>
             </View>
           </View>
           <Button
@@ -59,7 +59,7 @@ export default class DashboardComponent extends Component<Props, State> {
           >
             <View style={styles.HomeScreenAbsoluteContainer}>
               <Image source={buttonIcon} style={styles.HomeScreenButtonImage}/>
-              <Text style={[ styles.HomeScreenDurationText ]}>{currentStep.duration} min</Text>
+              <Text style={[ styles.HomeScreenDurationText ]}>{currentStep.duration}min</Text>
 
             </View>
             <Text style={styles.HomeScreenWideButtonText}>START</Text>
