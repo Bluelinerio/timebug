@@ -7,9 +7,14 @@ import {
   GO_TO_HOME_SCREEN,
   GO_TO_TEXT_SCREEN,
   GO_TO_WORKBOOK_SCREEN,
+  RESET_TO_HOME_SCREEN
 }                           from '../constants/actionTypes';
 import { navigate }         from '../HOC/navigation'
 import type { IAssignment } from '../interfaces';
+
+export function* resetToHomeScreen() {
+  yield takeLatest(RESET_TO_HOME_SCREEN, (action: { number: number }) => reset('HomeScreen', action));
+}
 
 export function* goToHomeScreen() {
   yield takeLatest(GO_TO_HOME_SCREEN, (action: { number: number }) => navigate('HomeScreen', action));
