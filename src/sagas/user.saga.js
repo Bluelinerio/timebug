@@ -67,7 +67,7 @@ function* onAppLoaded() {
     let userID = yield AsyncStorage.getItem('@2020:userId');
 
     if (!userID) {
-      yield put({ type: getAboutInfoFromCMS.request() });
+      yield put(getAboutInfoFromCMS.request());
     } else {
       yield put(getTokenFromStorage(userID));
       yield put(getUserProgress.request(userID, true));
