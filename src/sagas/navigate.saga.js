@@ -9,9 +9,8 @@ import {
   GO_TO_WORKBOOK_SCREEN,
   RESET_TO_HOME_SCREEN
 }                           from '../constants/actionTypes';
-import { navigate, reset }         from '../HOC/navigation'
-import type { IAssignment } from "../interfaces";
-
+import { navigate }         from '../HOC/navigation'
+import type { IAssignment } from '../interfaces';
 
 export function* resetToHomeScreen() {
   yield takeLatest(RESET_TO_HOME_SCREEN, (action: { number: number }) => reset('HomeScreen', action));

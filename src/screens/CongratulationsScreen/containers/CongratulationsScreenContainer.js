@@ -15,8 +15,8 @@ type Props = {
   navigation: {
     navigate(): any
   },
-  getStepFromCMSByDay(): any,
-  getAllStepsFromCMS(): any
+  getStepFromCMSByDay: any,
+  getAllStepsFromCMS: any
 };
 
 type State = {}
@@ -29,9 +29,9 @@ const mapStateToProps = (state) => {
 };
 
 @connect(mapStateToProps, {
-  getStepFromCMSByDay,
-  getAllStepsFromCMS,
-  resetToHomeScreen,
+  getStepFromCMSByDay: getStepFromCMSByDay.request,
+  getAllStepsFromCMS: getAllStepsFromCMS.request,
+  goToHomeScreen,
 })
 class CongratulationsScreenContainer extends Component<Props, State> {
   static navigationOptions = () => ( {

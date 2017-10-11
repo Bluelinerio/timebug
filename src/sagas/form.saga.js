@@ -4,13 +4,18 @@ import { AsyncStorage }                       from "react-native";
 import { put, takeLatest, select, cancelled } from 'redux-saga/effects';
 import {
   GET_NEXT_FORM,
-  SET_NEXT_FORM,
-  PENDING_END,
-  PENDING_START,
-  GO_TO_CONGRATULATIONS_SCREEN,
-  GO_TO_WORKBOOK_SCREEN, SUCCEEDED,
-  GET_USER_PROGRESS,
+  SUCCESS,
 }                                             from '../constants/actionTypes';
+import { getUserProgress }                    from '../actions/user';
+import {
+  goToWorkBookScreen,
+  goToCongratulationsScreen,
+}                                             from '../actions/navigate';
+import {
+  incrementRequestCount,
+  decrementRequestCount
+}                                             from '../actions/network';
+import { setNextForm }                        from '../actions/form';
 import networkState                           from '../utils/networkState';
 import formConfig                             from '../screens/WorkBookScreen/components/forms';
 import { goBack }                             from '../HOC/navigation';
@@ -19,7 +24,7 @@ import { client }                             from "../mutations/config";
 
 function* getNextForm(action) {
   try {
-    yield put({ type: PENDING_START });
+    yield put(incrementRequestCount());
     yield networkState.haveConnection();
 
     let {
@@ -38,34 +43,30 @@ function* getNextForm(action) {
 
     if (currentStep && currentForm && formConfig[ currentStep ] && formConfig[ currentStep ][ currentForm ]) {
       let model = formConfig[ currentStep ][ currentForm ];
-      yield put({
-        type: SET_NEXT_FORM,
+      yield put(setNextForm({
         model,
         value,
         isGoBack,
         currentStep,
         currentForm: currentForm - 1,
-      });
-      yield put({
-        type: GET_USER_PROGRESS + SUCCEEDED,
-        progress: {
-          step: currentStep,
-          formStep: currentForm,
-        },
-      });
+      }));
+      const progress = {
+        step: currentStep,
+        formStep: currentForm,
+      };
+      yield put(getUserProgress.success(progress));
 
       if (isGoBack) {
         goBack()
-      } else if (!withoutRedirect) yield put({ type: GO_TO_WORKBOOK_SCREEN });
+      } else if (!withoutRedirect) yield put(goToWorkBookScreen());
 
     } else {
-      yield put({
-        type: SET_NEXT_FORM,
+      yield put(setNextForm({
         model: null,
         value,
         currentStep,
         currentForm: currentForm - 1,
-      });
+      }));
 
       if (isGoBack) {
         goBack()
@@ -85,16 +86,16 @@ function* getNextForm(action) {
 
           },
         });
-        yield put({ type: GO_TO_CONGRATULATIONS_SCREEN });
+        yield put(goToCongratulationsScreen());
       }
     }
 
-    yield put({ type: PENDING_END });
+    yield put(decrementRequestCount());
   } catch (e) {
-    yield put({ type: PENDING_END });
+    yield put(decrementRequestCount());
   } finally {
     if (yield cancelled())
-      yield put({ type: PENDING_END });
+      yield put(decrementRequestCount());
   }
 }
 

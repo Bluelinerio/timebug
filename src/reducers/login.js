@@ -1,8 +1,8 @@
 // @flow
 import {
-  FACEBOOK_LOGIN,
+  LOGIN_WITH_FACEBOOK,
   GET_ABOUT_INFO_FROM_CMS,
-  SUCCEEDED,
+  SUCCESS,
   GET_TOKEN_FROM_STORAGE
 } from '../constants/actionTypes';
 
@@ -23,7 +23,7 @@ const initialState: LoginState = {
 
 export default function (state: LoginState = initialState, action: LoginAction) {
   switch (action.type) {
-    case GET_ABOUT_INFO_FROM_CMS + SUCCEEDED:
+    case GET_ABOUT_INFO_FROM_CMS[SUCCESS]:
       return {
         ...state,
         about: action.about,
@@ -31,8 +31,8 @@ export default function (state: LoginState = initialState, action: LoginAction) 
     case 'APOLLO_MUTATION_INIT':
       console.log(action);
       return state;
-    case GET_TOKEN_FROM_STORAGE + SUCCEEDED:
-    case FACEBOOK_LOGIN + SUCCEEDED:
+    case GET_TOKEN_FROM_STORAGE[SUCCESS]:
+    case LOGIN_WITH_FACEBOOK[SUCCESS]:
       return {
         ...state,
         isLoggedIn: true,

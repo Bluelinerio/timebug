@@ -15,7 +15,7 @@ import { getAboutInfoFromCMS }          from "../../../actions/login";
 import { loginWithFB }                  from "../../../actions/FBAction";
 import type { IStep }                   from "../../../interfaces";
 import { goToTextScreen }               from "../../../actions/navigate";
-import { getUserProgress, onAppLoaded } from "../../../actions/user";
+import { onAppLoaded }                  from "../../../actions/user";
 
 type Props = {
   allSteps: IStep[],
@@ -23,10 +23,9 @@ type Props = {
   about: string,
   isLoggedIn: boolean,
   isPending: boolean,
-  getStepFromCMSByDay(): any,
-  getAllStepsFromCMS(): any,
-  getAboutInfoFromCMS(): any,
-  loginWithFB(): any,
+  getAllStepsFromCMS: any,
+  getAboutInfoFromCMS: any,
+  loginWithFB: any,
   navigation: {
     navigate(): any
   },
@@ -45,12 +44,10 @@ const mapStateToProps = (state) => {
 };
 
 @connect(mapStateToProps, {
-  getStepFromCMSByDay,
-  getAllStepsFromCMS,
-  getAboutInfoFromCMS,
-  loginWithFB,
+  getAllStepsFromCMS: getAllStepsFromCMS.request,
+  getAboutInfoFromCMS: getAboutInfoFromCMS.request,
+  loginWithFB: loginWithFB.request,
   goToTextScreen,
-  getUserProgress,
   onAppLoaded,
 })
 class HomeScreenContainer extends Component<Props, State> {

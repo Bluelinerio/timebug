@@ -1,33 +1,36 @@
 // @flow
 
-import FBSDK                        from 'react-native-fbsdk';
+import FBSDK                           from 'react-native-fbsdk';
 import {
   cancelled,
   put,
   takeLatest,
-}                                   from 'redux-saga/effects';
+}                                      from 'redux-saga/effects';
 import {
-  FACEBOOK_LOGIN,
-  FAILED,
-  SUCCEEDED,
+  LOGIN_WITH_FACEBOOK,
+  REQUEST,
   GET_ABOUT_INFO_FROM_CMS,
-  GET_USER_PROGRESS,
-  PENDING_END,
-  PENDING_START,
-}                                   from '../constants/actionTypes';
-import { CONTENTFUL_CONTENT_LOGIN } from "../constants/constants";
-import { contentfulClient }         from "../contentful";
-import networkState                 from '../utils/networkState';
-import { reset }                    from '../HOC/navigation'
-import { AsyncStorage }             from "react-native";
-import { loginFacebook }            from "../mutations/user";
-import { client }                   from '../mutations/config'
+}                                      from '../constants/actionTypes';
+import { loginWithFB }                 from '../actions/FBAction';
+import { getAboutInfoFromCMS }         from '../actions/login';
+import {
+  incrementRequestCount,
+  decrementRequestCount
+}                                      from '../actions/network';
+import { getUserProgress }             from '../actions/user';
+import { CONTENTFUL_CONTENT_LOGIN }    from "../constants/constants";
+import { contentfulClient }            from "../contentful";
+import networkState                    from '../utils/networkState';
+import { reset }                       from '../HOC/navigation'
+import { AsyncStorage }                from "react-native";
+import { loginFacebook }               from "../mutations/user";
+import { client }                      from '../mutations/config'
 
 const { LoginManager, AccessToken } = FBSDK;
 
-function* getAboutInfoFromCMS() {
+function* getAboutInfoFromCMSWorker() {
   try {
-    yield put({ type: PENDING_START });
+    yield put(incrementRequestCount());
 
     yield networkState.haveConnection();
 
@@ -37,34 +40,28 @@ function* getAboutInfoFromCMS() {
 
     const about: string = response.items.map((item) => item.fields)[ 0 ].about;
 
-    yield put({
-      type: GET_ABOUT_INFO_FROM_CMS + SUCCEEDED,
-      about,
-    });
+    yield put(getAboutInfoFromCMS.success(about));
 
-    yield put({ type: PENDING_END });
+    yield put(decrementRequestCount());
   } catch (e) {
-    yield put({
-      type: GET_ABOUT_INFO_FROM_CMS + FAILED,
-      message: e.message,
-    });
+    yield put(getAboutInfoFromCMS.failure(e.message));
 
-    yield put({ type: PENDING_END });
+    yield put(decrementRequestCount());
   } finally {
     if (yield cancelled())
-      yield put({ type: PENDING_END });
+      yield put(decrementRequestCount());
   }
 }
 
-function* loginWithFB() {
+function* loginWithFBWorker() {
   try {
-    yield put({ type: PENDING_START });
+    yield put(incrementRequestCount());
     yield networkState.haveConnection();
 
     let result = yield LoginManager.logInWithReadPermissions([ 'public_profile', 'email', 'user_friends' ]);
     if (result.isCancelled) {
       alert('canceled');
-      yield put({ type: PENDING_END });
+      yield put(decrementRequestCount());
     } else {
       let fbData = yield AccessToken.getCurrentAccessToken();
 
@@ -79,39 +76,31 @@ function* loginWithFB() {
 
       yield AsyncStorage.setItem('@2020:userId', userID);
 
-      yield put({
-        type: GET_USER_PROGRESS,
-        userID,
-        loadSteps: true,
-      });
-      yield put({ type: FACEBOOK_LOGIN + SUCCEEDED });
+      yield put(getUserProgress.request(userID, true));
+      yield put(loginWithFB.success());
       yield reset('HomeScreen');
-
-      yield put({ type: PENDING_END });
+      yield put(decrementRequestCount());
     }
   } catch (e) {
     console.log(e);
-    yield put({ type: PENDING_END });
+    yield put(decrementRequestCount());
   } finally {
     if (yield cancelled())
-      yield put({ type: PENDING_END });
+      yield put(decrementRequestCount());
   }
 
   // TODO uncomment to skip FB login
-  // yield put({
-  //   type: GET_USER_PROGRESS,
-  //   userID: 'qwe',
-  // });
-  // yield put({type: FACEBOOK_LOGIN + SUCCEEDED});
+  // yield put(getUserProgress.request('qwe');
+  // yield put(loginWithFB.success());
   // yield reset('HomeScreen');
 
 }
 
 export function* getAboutInfoSaga() {
-  yield takeLatest(GET_ABOUT_INFO_FROM_CMS, getAboutInfoFromCMS);
+  yield takeLatest(GET_ABOUT_INFO_FROM_CMS[REQUEST], getAboutInfoFromCMSWorker);
 }
 
 export function* fbLoginSaga() {
-  yield takeLatest(FACEBOOK_LOGIN, loginWithFB);
+  yield takeLatest(LOGIN_WITH_FACEBOOK[REQUEST], loginWithFBWorker);
 }
 
