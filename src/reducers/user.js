@@ -1,7 +1,7 @@
 // @flow
-import { GET_TOKEN_FROM_STORAGE, GET_USER_PROGRESS, SUCCEEDED, } from '../constants/actionTypes';
+import { GET_TOKEN_FROM_STORAGE, GET_USER_PROGRESS, SUCCESS } from '../constants/actionTypes'; 
 
-interface UserState {
+export interface UserState {
   userID: string,
   progress: {
     step: string,
@@ -25,10 +25,10 @@ const initialState: UserState = {
 
 export default function (state: UserState = initialState, action: UserAction) {
   switch (action.type) {
-    case GET_USER_PROGRESS + SUCCEEDED:
+    case GET_USER_PROGRESS[SUCCESS]:
       let { type, ...newState } = action;
       return { ...state, ...newState };
-    case  GET_TOKEN_FROM_STORAGE + SUCCEEDED:
+    case  GET_TOKEN_FROM_STORAGE[SUCCESS]:
       return {
         ...state,
         userID: action.userID,

@@ -2,20 +2,28 @@
 
 import { put, takeLatest, cancelled, } from 'redux-saga/effects';
 import {
-  GET_ABOUT_INFO_FROM_CMS, GET_STEPS_FROM_CMS_BY_DAY, GET_TOKEN_FROM_STORAGE,
-  GET_USER_PROGRESS, ON_APP_LOADED,
-  PENDING_END,
-  PENDING_START,
-  SUCCEEDED,
+  REQUEST,
+  GET_USER_PROGRESS,
+  ON_APP_LOADED,
 }                                      from '../constants/actionTypes';
+import {
+  incrementRequestCount,
+  decrementRequestCount
+}                                      from '../actions/network';
+import {
+  getAboutInfoFromCMS,
+  getTokenFromStorage
+}                                      from '../actions/login';
+import { getUserProgress }             from '../actions/user';
+import { getStepFromCMSByDay }         from '../actions/steps';
 import networkState                    from '../utils/networkState';
 import { AsyncStorage }                from "react-native";
 import { client }                      from '../mutations/config'
 import { getUser }                     from "../mutations/user";
 
-function* getUserProgress(action) {
+function* getUserProgressWorker(action) {
   try {
-    yield put({ type: PENDING_START });
+    yield put(incrementRequestCount());
     yield networkState.haveConnection();
 
     let graphResponse = yield client.query({
@@ -32,68 +40,54 @@ function* getUserProgress(action) {
     }
 
     if (action.loadSteps) {
-      yield put({
-        type: GET_STEPS_FROM_CMS_BY_DAY,
-        day: currentStep,
-      });
+      yield put(getStepFromCMSByDay.request(currentStep));
     }
 
-    yield put({
-      type: GET_USER_PROGRESS + SUCCEEDED,
-      userID: action.userID,
-      progress: {
-        step: currentStep,
-        formStep: 1,
-      },
-    });
+    const progress = {
+      step: currentStep,
+      formStep: 1,
+    };
 
-    yield put({ type: PENDING_END });
+    yield put(getUserProgress.success(progress));
+    yield put(decrementRequestCount());
   } catch (e) {
     console.error(e);
-    yield put({ type: PENDING_END });
+    yield put(decrementRequestCount());
   } finally {
     if (yield cancelled())
-      yield put({ type: PENDING_END });
+      yield put(decrementRequestCount());
   }
 }
 
 function* onAppLoaded() {
   try {
-    yield put({ type: PENDING_START });
+    yield put(incrementRequestCount());
     yield networkState.haveConnection();
 
     let userID = yield AsyncStorage.getItem('@2020:userId');
 
     if (!userID) {
-      yield put({ type: GET_ABOUT_INFO_FROM_CMS });
+      yield put({ type: getAboutInfoFromCMS.request() });
     } else {
-      yield put({
-        type: GET_TOKEN_FROM_STORAGE + SUCCEEDED,
-        userID,
-      });
-      yield put({
-        type: GET_USER_PROGRESS,
-        userID,
-        loadSteps: true,
-      });
+      yield put(getTokenFromStorage(userID));
+      yield put(getUserProgress.request(userID, true));
     }
 
-    yield put({ type: PENDING_END });
+    yield put(decrementRequestCount());
   } catch (e) {
     console.error(e);
-    yield put({ type: PENDING_END });
+    yield put(decrementRequestCount());
   } finally {
     if (yield cancelled())
-      yield put({ type: PENDING_END });
+      yield put(decrementRequestCount());
   }
 }
 
 
 export function* userProgressSaga() {
-  yield takeLatest(GET_USER_PROGRESS, getUserProgress);
+  yield takeLatest(GET_USER_PROGRESS[REQUEST], getUserProgressWorker);
 }
 
 export function* onAppLoadedSaga() {
   yield takeLatest(ON_APP_LOADED, onAppLoaded);
 }
-

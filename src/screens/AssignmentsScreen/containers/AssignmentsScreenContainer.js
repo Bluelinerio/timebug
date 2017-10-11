@@ -1,6 +1,6 @@
 // @flow
 
-import React, {Component}                   from 'react'
+import React, {Component}      from 'react'
 import { StyleSheet }          from 'react-native';
 import { connect }             from 'react-redux'
 import theme, { styles }       from 'react-native-theme';
@@ -15,7 +15,7 @@ type Props = {
   navigation: {
     navigate(): any
   },
-  getStepFromCMSByDay(): any,
+  getStepFromCMSByDay: any,
   goToWorkBookScreen(): any
 };
 
@@ -33,7 +33,7 @@ const mapStateToProps = (state) => {
 };
 
 @connect(mapStateToProps, {
-  getStepFromCMSByDay,
+  getStepFromCMSByDay: getStepFromCMSByDay.request,
   goToWorkBookScreen,
 })
 class AssignmentsScreenContainer extends Component<Props, State> {
