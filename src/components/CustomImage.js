@@ -1,7 +1,7 @@
 // @flow
 import React      from 'react';
 import { Image, } from "react-native";
-import SVGImage   from "react-native-svg-image";
+import SVGImage   from "./SVGImage";
 
 type Props = {
   styles: any,

@@ -1,6 +1,6 @@
 import theme from 'react-native-theme';
 
-const HEADER_MAX_HEIGHT = 250;
+const HEADER_MAX_HEIGHT = 263;
 
 theme.add({
   scrollableHeaderFill: {

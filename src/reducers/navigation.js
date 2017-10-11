@@ -1,7 +1,7 @@
 import navigator, { initialRouteName } from '../navigation/navigator';
 
 const initialState = navigator.router.getStateForAction(
-    navigator.router.getActionForPathAndParams(initialRouteName)
+  navigator.router.getActionForPathAndParams(initialRouteName)
 );
 
 export default function (state = initialState, action) {

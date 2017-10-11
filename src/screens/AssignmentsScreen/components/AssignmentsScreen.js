@@ -34,17 +34,20 @@ export default class AssignmentsScreen extends Component<Props, State> {
         <View style={styles.assignmentsScreenSlide} key={i}>
           {!isLastItem &&
           <AssignmentNumber
-            number={assignment.order}
+            number={i + 1}
           />
           }
           <Markdown markdownStyles={{
-            u: { fontWeight: 'bold' },
+            u: {
+              fontWeight: 'bold',
+              fontFamily: "Helvetica",
+              color: 'rgba(236, 0, 140, 0.72)',
+            },
             block: {
-              textAlign: 'justify',
-              alignSelf: 'center',
-              fontSize: 14,
+              textAlign: 'left',
+              fontFamily: "Helvetica",
+              fontSize: 18,
               marginBottom: 15,
-              paddingVertical: 20,
               width: Dimensions.get('window').width - ( !isLastItem ? 130 : 30 ),
             },
           }}>

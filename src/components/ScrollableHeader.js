@@ -4,7 +4,7 @@ import React, { Component }            from 'react';
 import { Animated, ScrollView, View, } from 'react-native';
 import { styles }                      from 'react-native-theme';
 
-const HEADER_MAX_HEIGHT      = 250;
+const HEADER_MAX_HEIGHT      = 280;
 const HEADER_MIN_HEIGHT      = 65;
 const HEADER_SCROLL_DISTANCE = HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT;
 

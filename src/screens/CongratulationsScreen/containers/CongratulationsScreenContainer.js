@@ -7,7 +7,7 @@ import theme, { styles }                           from 'react-native-theme';
 import { getStepFromCMSByDay, getAllStepsFromCMS } from "../../../actions/steps";
 import { IStep }                                   from "../../../interfaces";
 import CongratulationsScreen                       from '../components/CongratulationsScreen';
-import { resetToHomeScreen }                          from "../../../actions/navigate";
+import { goToHomeScreen }                          from "../../../actions/navigate";
 
 type Props = {
   allSteps: IStep[],
@@ -61,7 +61,7 @@ class CongratulationsScreenContainer extends Component<Props, State> {
     return (
       <CongratulationsScreen
         getStepFromCMSByDay={this.props.getStepFromCMSByDay}
-        resetToHomeScreen={this.props.resetToHomeScreen}
+        goToHomeScreen={this.props.goToHomeScreen}
         allSteps={this.props.allSteps}
         currentStep={this.props.currentStep}
       />

@@ -1,40 +1,56 @@
-import React          from 'react';
-import t              from 'tcomb-form-native';
-import { customList } from "./templates/index";
-
+import React from 'react';
+import t     from "./templates";
 
 export default {
   1: {
     1: {
+      focusField: 'name',
       title: 'Personal Information',
       type: t.struct({
         name: t.String,
         age: t.Number,
-        date: t.Date
+        date: t.Date,
       }),
-      options: {},
+      options: {
+        fields: {
+          name: {
+            auto: 'placeholders',
+            error: 'Field this field'
+          },
+          age: {
+            auto: 'placeholders',
+            error: 'Field this field'
+
+          },
+        },
+      },
     },
     2: {
       title: 'Write down your best life memories (up to 3)',
       type: t.struct({
         field: t.list(
           t.struct({
-            value: t.maybe(t.String)
-          })
-        )
+            value: t.maybe(t.String),
+            number: t.maybe(t.Number),
+            date: t.maybe(t.Date),
+            enum: t.enums({
+              M: 'Male',
+              F: 'Female',
+            }),
+          }),
+        ),
       }),
       options: {
         fields: {
           field: {
-            auto: 'none',
+            auto: 'placeholders',
             disableOrder: true,
             maxLines: 3,
-            template: customList,
             config: {
-              maxLines: 3
-            }
-          }
-        }
+              maxLines: 3,
+            },
+          },
+        },
       },
     },
     3: {
@@ -42,34 +58,45 @@ export default {
       type: t.struct({
         field: t.list(
           t.struct({
-            value: t.maybe(t.String)
-          })
-        )
+            value: t.maybe(t.String),
+          }),
+        ),
       }),
       options: {
         fields: {
           field: {
-            auto: 'none',
+            auto: 'placeholders',
             disableOrder: true,
             maxLines: 3,
-            template: customList,
             config: {
-              maxLines: 3
-            }
-          }
-        }
+              maxLines: 3,
+            },
+          },
+        },
       },
     },
   },
   2: {
     1: {
-      title: 'Hello world step 2',
+      focusField: 'name',
+      title: 'Personal Information',
       type: t.struct({
-        name: t.String,              // a required string
-        surname: t.maybe(t.String),  // an optional string
-        age: t.Number,               // a required number
+        name: t.String,
+        age: t.Number,
+        date: t.Date,
       }),
-      options: {},
+      options: {
+        fields: {
+          name: {
+            auto: 'placeholders',
+            error: 'Field this field'
+          },
+          age: {
+            auto: 'placeholders',
+            error: 'Field this field'
+          },
+        },
+      },
     },
   },
 }

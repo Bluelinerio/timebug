@@ -1,6 +1,6 @@
 import React                      from 'react';
 import { StackNavigator, }        from 'react-navigation';
-import CardStackStyleInterpolator from 'react-navigation/src/views/CardStack/CardStackStyleInterpolator'
+import CardStackStyleInterpolator from '../utils/CustomCardStackStyleInterpolator'
 import HomeScreen                 from "../screens/HomeScreen";
 import TextScreen                 from "../screens/TextScreen";
 import AssignmentsScreen          from "../screens/AssignmentsScreen";

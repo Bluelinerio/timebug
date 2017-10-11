@@ -34,7 +34,7 @@ function renderRow(item, stylesheet) {
   );
 }
 
-export function customList(locals) {
+export default function customList(locals) {
   if (locals.hidden) {
     return null;
   }
@@ -53,9 +53,7 @@ export function customList(locals) {
 
   let itemsCount = locals.items.length;
 
-  let rows = locals.items.map(function (item) {
-    return item.buttons.length === 0 ? renderRowWithoutButtons(item) : renderRow(item, stylesheet);
-  });
+  let rows = locals.items.map((item) => renderRowWithoutButtons(item));
 
   let addButton = itemsCount && itemsCount >= locals.config.maxLines ? null :  locals.add ? renderRowButton(locals.add, stylesheet) : null;
 
