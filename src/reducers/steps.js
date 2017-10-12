@@ -1,5 +1,5 @@
 // @flow
-import { GET_ALL_STEPS_FROM_CMS, GET_STEP_FROM_CMS_BY_DAY, GET_STEP_COLORS, SUCCESS, } 
+import { GET_ALL_STEPS_FROM_CMS, GET_STEP_FROM_CMS_BY_STEP, GET_STEP_COLORS, SUCCESS, } 
                                                             from '../constants/actionTypes';
 import { IStep }                                            from "../interfaces/IStep";
 import { IColors }                                          from "../interfaces/IColors";
@@ -35,7 +35,7 @@ export default function (state: StepsState = initialState, action: StepsAction) 
         ...state,
         colors: action.colors
       }
-    case GET_STEP_FROM_CMS_BY_DAY[SUCCESS]:
+    case GET_STEP_FROM_CMS_BY_STEP[SUCCESS]:
       return {
         ...state,
         currentStep: action.step,

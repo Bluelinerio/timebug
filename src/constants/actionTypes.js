@@ -11,7 +11,7 @@ export const DECREMENT_REQUEST_COUNT = 'DECREMENT_REQUEST_COUNT';
 
 //fetching
 export const GET_ALL_STEPS_FROM_CMS    = createRequestTypes('GET_ALL_STEPS_FROM_CMS');
-export const GET_STEP_FROM_CMS_BY_DAY  = createRequestTypes('GET_STEP_FROM_CMS_BY_DAY');
+export const GET_STEP_FROM_CMS_BY_STEP  = createRequestTypes('GET_STEP_FROM_CMS_BY_STEP');
 export const GET_STEP_COLORS           = createRequestTypes('GET_STEP_COLORS');
 export const GET_ABOUT_INFO_FROM_CMS   = createRequestTypes('GET_ABOUT_INFO_FROM_CMS');
 export const GET_USER_PROGRESS         = createRequestTypes('GET_USER_PROGRESS');

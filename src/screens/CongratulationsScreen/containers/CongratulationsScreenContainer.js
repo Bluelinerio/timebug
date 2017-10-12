@@ -4,7 +4,7 @@ import React, { Component }                        from 'react';
 import { StyleSheet }                              from 'react-native';
 import { connect }                                 from 'react-redux'
 import theme, { styles }                           from 'react-native-theme';
-import { getStepFromCMSByDay, getAllStepsFromCMS } from "../../../actions/steps";
+import { getStepFromCMSByStep, getAllStepsFromCMS } from "../../../actions/steps";
 import { IStep }                                   from "../../../interfaces";
 import CongratulationsScreen                       from '../components/CongratulationsScreen';
 import { goToHomeScreen }                          from "../../../actions/navigate";
@@ -12,24 +12,27 @@ import { goToHomeScreen }                          from "../../../actions/naviga
 type Props = {
   allSteps: IStep[],
   currentStep: IStep,
-  navigation: {
-    navigate(): any
-  },
-  getStepFromCMSByDay: any,
+  currentStepColor: string,
+  getStepFromCMSByStep: any,
   getAllStepsFromCMS: any
 };
 
 type State = {}
 
 const mapStateToProps = (state) => {
+  const allSteps = state.steps.allSteps;
+  const currentStep = state.steps.currentStep;
+  const currentStepColor = state.steps.colors.steps[currentStep.number];
+  debugger;
   return {
-    allSteps: state.steps.allSteps,
-    currentStep: state.steps.currentStep,
+    allSteps,
+    currentStep,
+    currentStepColor
   }
 };
 
 @connect(mapStateToProps, {
-  getStepFromCMSByDay: getStepFromCMSByDay.request,
+  getStepFromCMSByStep: getStepFromCMSByStep.request,
   getAllStepsFromCMS: getAllStepsFromCMS.request,
   goToHomeScreen,
 })
@@ -48,7 +51,7 @@ class CongratulationsScreenContainer extends Component<Props, State> {
 
   componentDidMount() {
     if (!this.props.currentStep.number) {
-      this.props.getStepFromCMSByDay(1);
+      this.props.getStepFromCMSByStep(1);
     }
     this.props.getAllStepsFromCMS();
   }
@@ -60,10 +63,10 @@ class CongratulationsScreenContainer extends Component<Props, State> {
   render() {
     return (
       <CongratulationsScreen
-        getStepFromCMSByDay={this.props.getStepFromCMSByDay}
-        goToHomeScreen={this.props.goToHomeScreen}
-        allSteps={this.props.allSteps}
-        currentStep={this.props.currentStep}
+        done={() => this.props.goToHomeScreen({reset: true, direction: 'back'})}
+        number={this.props.currentStep.number}
+        duration={this.props.currentStep.duration}
+        color={this.props.currentStepColor}
       />
     )
   }

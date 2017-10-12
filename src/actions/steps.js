@@ -5,7 +5,7 @@ import {
   SUCCESS,
   FAILURE,
   GET_ALL_STEPS_FROM_CMS,
-  GET_STEP_FROM_CMS_BY_DAY,
+  GET_STEP_FROM_CMS_BY_STEP,
   GET_STEP_COLORS
 }                               from '../constants/actionTypes';
 import type { IStep, IColors }  from '../interfaces';
@@ -23,9 +23,9 @@ export const getStepsColorFromCMS = {
 }
 
 
-export const getStepFromCMSByDay = {
-  request: (day: number) => action(GET_STEP_FROM_CMS_BY_DAY[REQUEST], { day }),
-  success: (step: IStep) => action(GET_STEP_FROM_CMS_BY_DAY[SUCCESS], { step }),
-  failure: (message: string) => action(GET_STEP_FROM_CMS_BY_DAY[FAILURE], { message }),
+export const getStepFromCMSByStep = {
+  request: (number: number) => action(GET_STEP_FROM_CMS_BY_STEP[REQUEST], { number }),
+  success: (step: IStep) => action(GET_STEP_FROM_CMS_BY_STEP[SUCCESS], { step }),
+  failure: (message: string) => action(GET_STEP_FROM_CMS_BY_STEP[FAILURE], { message }),
 }
 

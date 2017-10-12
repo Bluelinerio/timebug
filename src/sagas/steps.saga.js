@@ -1,18 +1,18 @@
 // @flow
 
-import { call, cancelled, put, takeLatest }                   from 'redux-saga/effects';
+import { call, cancelled, put, takeLatest, select}            from 'redux-saga/effects';
 import { delay }                                              from 'redux-saga'
 import theme                                                  from 'react-native-theme';
 import {
   REQUEST,
   GET_ALL_STEPS_FROM_CMS,
-  GET_STEP_FROM_CMS_BY_DAY,
+  GET_STEP_FROM_CMS_BY_STEP,
 }                                                             from '../constants/actionTypes';
 import {
   incrementRequestCount,
   decrementRequestCount
 }                                                             from '../actions/network';
-import { getAllStepsFromCMS, getStepFromCMSByDay, getStepsColorFromCMS }
+import { getAllStepsFromCMS, getStepFromCMSByStep, getStepsColorFromCMS }
                                                               from '../actions/steps';
 import { contentfulClient }                                   from "../contentful";
 import networkState                                           from '../utils/networkState';
@@ -57,7 +57,6 @@ function setColorToTheme(color) {
 }
 
 function setColorsForCurrentStep(colors: IColors, step: IStep) {
-  debugger;
   let color = null;
   if (colors.steps[ step.number ]) {
     color = colors.steps[ step.number ]
@@ -95,14 +94,21 @@ function* getAllStepsFromCMSWorker() {
   }
 }
 
-function* getStepFromCMSByDayWorker(action: { day: number }) {
+function* getStepFromCMSByStepWorker(action: { number: number }) {
+  const maxStep = yield select(state => {
+    return state.steps.allSteps.length;
+  });
+  if (action.number === maxStep) {
+    yield put(getStepFromCMSByStep.failure("last step reached"));
+    return
+  }
   try {
     yield put(incrementRequestCount());
 
     yield networkState.haveConnection();
 
     let response = yield contentfulClient.getEntries({
-      'fields.number': action.day,
+      'fields.number': action.number,
       content_type: CONTENTFUL_CONTENT_STEP,
     });
 
@@ -112,17 +118,17 @@ function* getStepFromCMSByDayWorker(action: { day: number }) {
     const color = setColorsForCurrentStep(colors, step);
     setColorToTheme(color);
     yield put(getStepsColorFromCMS.success(colors));
-    yield put(getStepFromCMSByDay.success(step));
+    yield put(getStepFromCMSByStep.success(step));
     
     // wait!
     // delay for theme applying
     yield call(delay, 500);
 
-    yield put(getStepFromCMSByDay.success(step));
+    yield put(getStepFromCMSByStep.success(step));
 
     yield put(decrementRequestCount());
   } catch (e) {
-    yield put(getStepFromCMSByDay.failure(e.message));
+    yield put(getStepFromCMSByStep.failure(e.message));
 
     yield put(decrementRequestCount());
   } finally {
@@ -136,6 +142,6 @@ export function* getAllStepsSaga() {
 }
 
 export function* getStepByDaySaga() {
-  yield takeLatest(GET_STEP_FROM_CMS_BY_DAY[REQUEST], getStepFromCMSByDayWorker);
+  yield takeLatest(GET_STEP_FROM_CMS_BY_STEP[REQUEST], getStepFromCMSByStepWorker);
 }
 

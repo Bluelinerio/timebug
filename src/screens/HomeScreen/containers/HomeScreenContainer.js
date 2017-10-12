@@ -9,7 +9,7 @@ import IntroComponent                   from "../components/IntroComponent";
 import DefaultIndicator                 from "../../../components/DefaultIndicator";
 import {
   getAllStepsFromCMS,
-  getStepFromCMSByDay,
+  getStepFromCMSByStep,
 }                                       from "../../../actions/steps";
 import { getAboutInfoFromCMS }          from "../../../actions/login";
 import { loginWithFB }                  from "../../../actions/FBAction";
