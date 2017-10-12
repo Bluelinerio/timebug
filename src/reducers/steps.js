@@ -1,6 +1,10 @@
 // @flow
-import { GET_ALL_STEPS_FROM_CMS, GET_STEP_FROM_CMS_BY_DAY, SUCCESS, } from '../constants/actionTypes';
-import { IStep }                                                         from "../interfaces/IStep";
+import { GET_ALL_STEPS_FROM_CMS, GET_STEP_FROM_CMS_BY_STEP, GET_STEP_COLORS, SUCCESS, } 
+                                                            from '../constants/actionTypes';
+import { IStep }                                            from "../interfaces/IStep";
+import { IColors }                                          from "../interfaces/IColors";
+import { colors }                                           from '../constants/CMSData';
+
 
 interface StepsState {
   allSteps: IStep[],
@@ -10,12 +14,13 @@ interface StepsState {
 interface StepsAction {
   type: string,
   steps: ?IStep[],
-  step: ?IStep
+  colors: ?IColors
 }
 
 const initialState: StepsState = {
   allSteps: [],
   currentStep: {},
+  colors
 };
 
 export default function (state: StepsState = initialState, action: StepsAction) {
@@ -25,7 +30,12 @@ export default function (state: StepsState = initialState, action: StepsAction) 
         ...state,
         allSteps: action.steps,
       };
-    case GET_STEP_FROM_CMS_BY_DAY[SUCCESS]:
+    case GET_STEP_COLORS[SUCCESS]: 
+      return {
+        ...state,
+        colors: action.colors
+      }
+    case GET_STEP_FROM_CMS_BY_STEP[SUCCESS]:
       return {
         ...state,
         currentStep: action.step,

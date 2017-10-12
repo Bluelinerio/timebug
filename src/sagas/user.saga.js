@@ -15,7 +15,7 @@ import {
   getTokenFromStorage
 }                                      from '../actions/login';
 import { getUserProgress }             from '../actions/user';
-import { getStepFromCMSByDay }         from '../actions/steps';
+import { getStepFromCMSByStep }         from '../actions/steps';
 import networkState                    from '../utils/networkState';
 import { AsyncStorage }                from "react-native";
 import { client }                      from '../mutations/config'
@@ -40,7 +40,7 @@ function* getUserProgressWorker(action) {
     }
 
     if (action.loadSteps) {
-      yield put(getStepFromCMSByDay.request(currentStep));
+      yield put(getStepFromCMSByStep.request(currentStep));
     }
 
     const progress = {

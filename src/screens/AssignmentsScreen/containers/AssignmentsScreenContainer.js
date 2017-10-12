@@ -7,7 +7,7 @@ import theme, { styles }       from 'react-native-theme';
 import AssignmentsScreen       from "../components/AssignmentsScreen"
 import { IAssignment }         from "../../../interfaces";
 import DefaultIndicator        from "../../../components/DefaultIndicator";
-import { getStepFromCMSByDay } from "../../../actions/steps";
+import { getStepFromCMSByStep } from "../../../actions/steps";
 import { goToWorkBookScreen }  from "../../../actions/navigate";
 
 type Props = {
@@ -15,7 +15,7 @@ type Props = {
   navigation: {
     navigate(): any
   },
-  getStepFromCMSByDay: any,
+  getStepFromCMSByStep: any,
   goToWorkBookScreen(): any
 };
 
@@ -33,7 +33,7 @@ const mapStateToProps = (state) => {
 };
 
 @connect(mapStateToProps, {
-  getStepFromCMSByDay: getStepFromCMSByDay.request,
+  getStepFromCMSByStep: getStepFromCMSByStep.request,
   goToWorkBookScreen,
 })
 class AssignmentsScreenContainer extends Component<Props, State> {
@@ -61,7 +61,7 @@ class AssignmentsScreenContainer extends Component<Props, State> {
     if (this.props.assignments) {
       return (
         <AssignmentsScreen
-          getStepFromCMSByDay={this.props.getStepFromCMSByDay}
+          getStepFromCMSByStep={this.props.getStepFromCMSByStep}
           assignments={this.props.assignments}
           currentStep={this.props.currentStep}
           allSteps={this.props.allSteps}
