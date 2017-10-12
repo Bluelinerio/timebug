@@ -50,6 +50,14 @@ export default class AssignmentsScreen extends Component<Props, State> {
               marginBottom: 15,
               width: Dimensions.get('window').width - ( !isLastItem ? 130 : 30 ),
             },
+            list: {
+              width: Dimensions.get('window').width - ( !isLastItem ? 130 : 30 ),
+            },
+            listItemContent: {
+              textAlign: 'left',
+              fontFamily: "Helvetica",
+              fontSize: 18,
+            }
           }}>
             {assignment.content}
           </Markdown>
