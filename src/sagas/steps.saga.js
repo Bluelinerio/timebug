@@ -12,12 +12,13 @@ import {
   incrementRequestCount,
   decrementRequestCount
 }                                                             from '../actions/network';
-import { getAllStepsFromCMS, getStepFromCMSByDay }            from '../actions/steps';
+import { getAllStepsFromCMS, getStepFromCMSByDay, getStepsColorFromCMS }
+                                                              from '../actions/steps';
 import { contentfulClient }                                   from "../contentful";
 import networkState                                           from '../utils/networkState';
 import { IColors, IStep, IColorSchema }                       from "../interfaces";
 import { CONTENTFUL_CONTENT_COLORS, CONTENTFUL_CONTENT_STEP } from "../constants/constants";
-
+import { colors } from '../constants/CMSData';
 
 function* getColorsFromCMS() {
   yield networkState.haveConnection();
@@ -33,17 +34,7 @@ function* getColorsFromCMS() {
   return colors.schema.colors;
 }
 
-function* setColorsForCurrentStep(colors: IColors, step: IStep) {
-  let color = null;
-  if (colors.days[ step.number ]) {
-    color = colors.days[ step.number ]
-  }
-  if (!color) {
-    color = colors.types[ step.type ]
-  }
-  if (!color) return null;
-
-
+function setColorToTheme(color) {
   theme.add({
     headerColor: {
       backgroundColor: color,
@@ -63,8 +54,18 @@ function* setColorsForCurrentStep(colors: IColors, step: IStep) {
     },
   }, 'custom');
   theme.active('custom');
-  // delay for theme applying
-  yield call(delay, 500);
+}
+
+function setColorsForCurrentStep(colors: IColors, step: IStep) {
+  debugger;
+  let color = null;
+  if (colors.steps[ step.number ]) {
+    color = colors.steps[ step.number ]
+  }
+  if (!color) {
+    color = colors.phases[ step.type ]
+  }
+  return color;
 }
 
 function* getAllStepsFromCMSWorker() {
@@ -107,8 +108,15 @@ function* getStepFromCMSByDayWorker(action: { day: number }) {
 
     const step: IStep = response.items.map((s) => s.fields)[ 0 ];
 
-    let colors = yield getColorsFromCMS();
-    yield setColorsForCurrentStep(colors, step);
+    //const colors = yield getColorsFromCMS();
+    const color = setColorsForCurrentStep(colors, step);
+    setColorToTheme(color);
+    yield put(getStepsColorFromCMS.success(colors));
+    yield put(getStepFromCMSByDay.success(step));
+    
+    // wait!
+    // delay for theme applying
+    yield call(delay, 500);
 
     yield put(getStepFromCMSByDay.success(step));
 
