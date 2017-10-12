@@ -12,7 +12,6 @@ import * as navigation from '../HOC/navigation';
 import type, { IAssignment } from '../interfaces';
 
 const _goToHomeScreen = (action: { reset: boolean, number: number }) => {
-	debugger;
 	if (action.reset) {
 		navigation.reset('HomeScreen', action);
 	} else {

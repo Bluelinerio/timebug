@@ -23,7 +23,6 @@ const mapStateToProps = (state) => {
   const allSteps = state.steps.allSteps;
   const currentStep = state.steps.currentStep;
   const currentStepColor = state.steps.colors.steps[currentStep.number];
-  debugger;
   return {
     allSteps,
     currentStep,
