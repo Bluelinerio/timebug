@@ -10,13 +10,13 @@ import Button               from '../../../components/Button'
 import autobind             from 'autobind-decorator';
 import { IStep }            from "../../../interfaces";
 import { styles }           from 'react-native-theme';
+import Feather from "react-native-vector-icons/MaterialCommunityIcons";
 
 type Props = {
   allSteps: IStep[],
   currentStep: IStep,
   navigate(): any
 }
-const buttonIcon = require('../../../resources/images/clock_icon_bold.png');
 
 export default class CongratulationsScreen extends Component<Props, State> {
 
@@ -33,7 +33,14 @@ export default class CongratulationsScreen extends Component<Props, State> {
           <Text
             style={[ styles.congratulationsScreenCurrentStep, styles.congratulationsScreenTextColor ]}>STEP {this.props.currentStep.number + 1}!</Text>
           <View style={styles.congratulationsScreenTimerContainer}>
-            <Image source={buttonIcon} style={styles.congratulationsScreenButtonImage}/>
+            <Feather
+              name="clock"
+              size={34}
+              style={{
+                color: "#48D0F1",
+                marginTop: 2
+              }}
+            />
             <Text
               style={[ styles.congratulationsScreenDurationText, styles.congratulationsScreenTextColor ]}>{this.props.currentStep.duration} min</Text>
           </View>

@@ -7,7 +7,7 @@ import {
 }                           from 'react-native';
 import { styles }           from 'react-native-theme';
 import Button               from "react-native-button";
-import SVGImage             from 'react-native-svg-image';
+import Feather              from 'react-native-vector-icons/MaterialCommunityIcons'
 import { IStep }            from "../../../interfaces";
 import getImageUrl          from "../../../utils/getImageUrl";
 import ScrollableHeader     from "../../../components/ScrollableHeader";
