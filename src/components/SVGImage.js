@@ -29,14 +29,15 @@ export default class SVGImage extends Component {
         <head>
           <style type="text/css">
             img {
-              width: 100vw;
-              height: (${height}/${width} * 100)vw;
-              max-height: 100vh;
-              max-width: (${width}/${height} * 100)vh;
+              width: 100%;
+              height: 100%;
             }
             div {
-              width: ${width ? width + 'vw' : 'auto'};
-              height: ${height ? height + 'vh' : 'auto'};
+              position: fixed;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
             }
             body {
               margin: 0;
@@ -55,7 +56,7 @@ export default class SVGImage extends Component {
       <WebView
         startInLoadingState={showWebviewLoader}
         renderLoading={showWebviewLoader ? this.renderLoader : null}
-        scalesPageToFit={false}
+        scalesPageToFit={true}
         style={style}
         {...restOfProps}
         source={{ html }}
