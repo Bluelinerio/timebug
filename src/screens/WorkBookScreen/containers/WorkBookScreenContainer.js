@@ -16,7 +16,7 @@ import { HeaderBackButton } from "react-navigation";
 import autobind             from "autobind-decorator";
 import KeyboardSpacer       from "react-native-keyboard-spacer";
 import DefaultIndicator     from "../../../components/DefaultIndicator";
-import Button               from "../../../components/Button";
+import CustomButton         from "../../../components/Button";
 import { getNextForm }      from "../../../actions/form";
 import { store }            from '../../../reducers/rootReducer';
 import FormComponent        from "../components/FormComponent";
@@ -29,7 +29,8 @@ type Props = {
 };
 
 type State = {
-  keyboardSpace: 0
+  keyboardSpace: number,
+  isInvalid: boolean
 }
 
 const mapStateToProps = (state) => {
@@ -78,6 +79,7 @@ class WorkBookScreenContainer extends Component<Props, State> {
 
     this.state = {
       keyboardSpace: 0,
+      isInvalid: true,
     }
   }
 
@@ -91,7 +93,6 @@ class WorkBookScreenContainer extends Component<Props, State> {
   componentWillMount() {
     theme.setRoot(this)
   }
-
 
   @autobind
   onToggle(keyboardSpace) {
@@ -108,10 +109,16 @@ class WorkBookScreenContainer extends Component<Props, State> {
         }     = this.props;
     let value = this.form.refs.form.getValue();
     if (value) {
-      console.log(value);
-
       getNextForm(step, formStep, false, value)
     }
+  }
+
+  @autobind
+  onChange() {
+    let value = this.form.refs.form.getValue();
+    this.setState({
+      isInvalid: !value,
+    })
   }
 
   render() {
@@ -134,13 +141,15 @@ class WorkBookScreenContainer extends Component<Props, State> {
               model={model}
               formData={formData}
               progress={progress}
+              onChange={this.onChange}
             />
           </View>
-          {Platform.OS === 'ios' &&
-          <KeyboardSpacer onToggle={(keyboardState, keyboardSpace) => this.onToggle(keyboardSpace)}/>}
+          {/*{Platform.OS === 'ios' &&*/}
+          {/*<KeyboardSpacer onToggle={(keyboardState, keyboardSpace) => this.onToggle(keyboardSpace)}/>}*/}
         </ScrollView>
         <View style={[ styles.workBookNextButton, this.state.keyboardSpace && { bottom: this.state.keyboardSpace } ]}>
-          <Button
+          <CustomButton
+            disabled={this.state.isInvalid}
             onPress={this.onPress}
             text="NEXT"
             side="right"
