@@ -12,7 +12,6 @@ import { styles }           from 'react-native-theme';
 import Feather              from "react-native-vector-icons/MaterialCommunityIcons";
 
 export default (props) => {
-  debugger;
   const {duration, number, color, done} = props;
   return (
     <View style={styles.congratulationsScreenContainer}>
@@ -25,7 +24,7 @@ export default (props) => {
             name="clock"
             size={34}
             style={{
-              color: currentStepColor,
+              color: color,
               marginTop: 2
             }}
           />
@@ -36,7 +35,7 @@ export default (props) => {
       </View>
       <View style={[ styles.congratulationsScreenAbsoluteContainer ]}>
         <Button
-          onPress={goToHomeScreen}
+          onPress={done}
           text="DONE"
           side="right"
         >
