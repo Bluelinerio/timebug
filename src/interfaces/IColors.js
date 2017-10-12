@@ -1,12 +1,12 @@
 // @flow
 
 export interface IColors {
-  types: {
+  phases: {
     "MEDITATION": string,
     "SELF-ASSESSMENT": string,
     "VISION CREATIO": string
   },
-  days: {
+  steps: {
     1: ?string,
     2: ?string,
     3: ?string,

@@ -41,4 +41,9 @@ theme.add({
     textAlign: "center",
     color: "#ffffff"
   },
+  buttonGroup: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  }
 });

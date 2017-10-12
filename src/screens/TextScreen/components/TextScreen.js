@@ -25,11 +25,14 @@ type State = {
   colorBottom: string
 }
 
+const headerBackground = require('../../../resources/images/sandClockConfetti.png');
+
 export default class TextScreen extends Component<Props, State> {
   render() {
     let { currentStep } = this.props;
     return (
       <ScrollableHeader
+        headerImage={headerBackground}
         headerComponent={<GradientBackground/>}
         header={
           <View style={styles.textScreenHeader}>

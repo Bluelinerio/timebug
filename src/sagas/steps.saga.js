@@ -35,11 +35,11 @@ function* getColorsFromCMS() {
 
 function* setColorsForCurrentStep(colors: IColors, step: IStep) {
   let color = null;
-  if (colors.days[ step.number ]) {
-    color = colors.days[ step.number ]
+  if (colors.steps[ step.number ]) {
+    color = colors.steps[ step.number ]
   }
   if (!color) {
-    color = colors.types[ step.type ]
+    color = colors.phases[ step.type ]
   }
   if (!color) return null;
 

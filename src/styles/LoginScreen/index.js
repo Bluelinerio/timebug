@@ -1,3 +1,4 @@
+import { Dimensions, Platform } from 'react-native';
 import theme from 'react-native-theme';
 
 theme.add({
@@ -5,47 +6,45 @@ theme.add({
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'space-between',
+    alignItems: 'center',
+    zIndex: 999
   },
-  loginScreenContainer: {
+  loginScreenTitle: {
+    paddingTop: 39,
+    fontFamily: "HelveticaNeue",
+    fontSize: 24,
+    fontWeight: "bold",
+    textAlign: "center",
+    color: "#000a8b",
+    backgroundColor: 'transparent'
+  },
+  loginScreenBackgroundImage: {
     flex: 1,
-    backgroundColor: '#3B7288',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-  },
-  loginScreenContainer2: {
-    flex: 2,
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    paddingBottom: 10,
+    position: 'absolute',
+    zIndex: 1,
+    resizeMode: Platform.OS === 'ios' ? 'repeat' : 'cover',
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
   },
   loginScreenWideButton: {
-    flex: -1,
+    width: 240,
     justifyContent: 'center',
     alignItems: 'center',
-    height: 40,
-    bottom: 10,
-    borderWidth: 0,
-    backgroundColor: '#ffffff',
+    height: 45.5,
+    bottom: 36.5,
     minWidth: 150,
     paddingHorizontal: 45,
-    borderRadius: 150,
+    borderRadius: 50,
+    backgroundColor: "#fcfcfc",
+    borderStyle: "solid",
+    borderWidth: 1,
+    borderColor: "#003681"
   },
   loginScreenWideButtonText: {
-    color: '#000000',
-    fontSize: 14,
-    fontWeight: '400',
-    textAlign: 'center',
-  },
-  loginScreenDescription: {
-    flex: 1,
-    paddingBottom: 500,
-    paddingHorizontal: 20,
-  },
-  loginScreenClose: {
-    fontWeight: 'bold',
-    fontSize: 15,
-    marginBottom: 10,
-    marginLeft: 10,
-    marginTop: 7,
+    fontFamily: "Helvetica",
+    fontSize: 15.5,
+    fontWeight: "bold",
+    textAlign: "center",
+    color: "#003681"
   },
 });

@@ -59,15 +59,44 @@ theme.add({
     color: "rgba(255, 255, 255, 0.9)",
     paddingTop: 3
   },
+  HomeScreenWideButton: {
+    marginTop: 40,
+    backgroundColor: 'white',
+    height: 45,
+    minWidth: 240,
+    paddingHorizontal: 10,
+    borderRadius: 150,
+    alignSelf: 'center',
+    justifyContent: 'center',
+    overflow: 'hidden',
+  },
+  HomeScreenWideButtonText: {
+    fontFamily: "Helvetica",
+    fontSize: 15.5,
+    fontWeight: "bold",
+    textAlign: "left",
+    color: "#003681",
+    flex: 2,
+    marginLeft: 15,
+    backgroundColor: 'transparent',
+  },
   HomeScreenAbsoluteContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'flex-end',
   },
   HomeScreenButtonImage: {
-    color: "#003681",
+    bottom: -1
   },
   HomeScreenDurationText: {
-    fontFamily: "Helvetica",
-    color: "#003681",    
-    fontWeight: "bold",
-    fontSize: 10,
+    color: '#0e3fa8',
+    fontWeight: '600',
+    fontSize: 12,
+    bottom: 4,
+    backgroundColor: 'transparent',
   },
+  HomeScreenStartButtonBackground: {
+    position: 'absolute',
+    top: 0,
+  }
 });

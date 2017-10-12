@@ -58,7 +58,7 @@ export default class AssignmentsScreen extends Component<Props, State> {
     });
 
     return (
-      <ScrollView contentContainerStyle={styles.assignmentsScreenContainer}>
+      <ScrollView contentContainerStyle={[styles.assignmentsScreenContainer, {paddingBottom: 30}]}>
         {steps}
         <Button
           onPress={() => this.props.goToWorkBookScreen({})}

@@ -26,7 +26,6 @@ type State = {
 
 const headerBackground = require('../../../resources/images/sandClockConfetti.png');
 const startBackground  = require('../../../resources/images/sandClockConfetti.png');
-const buttonIcon       = require('../../../resources/images/clock_icon.png');
 
 export default class DashboardComponent extends Component<Props, State> {
   render() {
