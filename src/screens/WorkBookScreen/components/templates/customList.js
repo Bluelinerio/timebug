@@ -1,36 +1,25 @@
-import React                              from 'react';
-import { View, Text, TouchableHighlight } from 'react-native';
+import React                                                from 'react';
+import { View, Text, TouchableHighlight, TouchableOpacity } from 'react-native';
+import Icon                                                 from 'react-native-vector-icons/MaterialIcons';
+import { styles }                                           from 'react-native-theme';
 
 function renderRowWithoutButtons(item) {
   return <View key={item.key}>{item.input}</View>;
 }
 
-function renderRowButton(button, stylesheet, style) {
+function renderRowButton(button) {
   return (
-    <TouchableHighlight key={button.type} style={[ stylesheet.button, style, {marginLeft: 15} ]} onPress={button.click}>
-      <Text style={stylesheet.buttonText}>{button.label}</Text>
-    </TouchableHighlight>
-  );
-}
-
-function renderButtonGroup(buttons, stylesheet) {
-  return (
-    <View style={{ flexDirection: 'row' }}>
-      {buttons.map(button => renderRowButton(button, stylesheet, { width: 50 }))}
-    </View>
-  );
-}
-
-function renderRow(item, stylesheet) {
-  return (
-    <View key={item.key} style={{ flexDirection: 'row' }}>
-      <View style={{ flex: 3 }}>
-        {item.input}
-      </View>
-      <View style={{ flex: 1 }}>
-        {renderButtonGroup(item.buttons, stylesheet)}
-      </View>
-    </View>
+    <TouchableOpacity
+      key={button.type}
+      style={styles.customListAddButton}
+      onPress={button.click}
+    >
+      <Icon
+        name="add"
+        size={16}
+        color="black"
+      />
+    </TouchableOpacity>
   );
 }
 
@@ -55,7 +44,7 @@ export default function customList(locals) {
 
   let rows = locals.items.map((item) => renderRowWithoutButtons(item));
 
-  let addButton = itemsCount && itemsCount >= locals.config.maxLines ? null :  locals.add ? renderRowButton(locals.add, stylesheet) : null;
+  let addButton = itemsCount && itemsCount >= locals.config.maxLines ? null : locals.add ? renderRowButton(locals.add, stylesheet) : null;
 
   return (
     <View style={fieldsetStyle}>

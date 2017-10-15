@@ -5,7 +5,6 @@ import {
   ScrollView,
   Text,
   View,
-  TouchableHighlight,
   Platform,
 }                           from 'react-native';
 import autobind             from 'autobind-decorator';
@@ -19,6 +18,7 @@ type Props = {
     step: string,
     formStep: number
   },
+  onChange(): any,
   formData: any,
   getNextForm(): any,
   goToCongratulationsScreen(): any
@@ -61,6 +61,7 @@ class FormComponent extends Component<Props, State> {
         type={model.type}
         value={this.getDefaultValue()}
         options={model.options}
+        onChange={this.props.onChange}
       />
     )
   }

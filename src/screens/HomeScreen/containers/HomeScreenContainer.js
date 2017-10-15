@@ -4,7 +4,7 @@ import React, { Component }             from 'react';
 import { connect }                      from 'react-redux';
 import { AsyncStorage }                 from "react-native";
 import theme                            from 'react-native-theme';
-import DashboardComponent               from '../components/DashboardComponent';
+import DashboardContainer               from './DashboardContainer';
 import IntroComponent                   from "../components/IntroComponent";
 import DefaultIndicator                 from "../../../components/DefaultIndicator";
 import {
@@ -58,9 +58,7 @@ class HomeScreenContainer extends Component<Props, State> {
   componentDidMount() {
     //AsyncStorage.clear();
     this.props.onAppLoaded();
-
     this.props.getAllStepsFromCMS();
-
   }
 
   componentWillMount() {
@@ -86,7 +84,7 @@ class HomeScreenContainer extends Component<Props, State> {
       )
     } else if (!isPending && isLoggedIn && currentStep.number && allSteps.length) {
       return (
-        <DashboardComponent
+        <DashboardContainer
           currentStep={currentStep}
           totalNumberOfSteps={allSteps.length}
           goToTextScreen={goToTextScreen}

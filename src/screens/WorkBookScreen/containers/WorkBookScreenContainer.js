@@ -9,7 +9,6 @@ import {
   TouchableHighlight,
   Platform,
   ScrollView,
-
 }                           from 'react-native';
 import theme, { styles }    from 'react-native-theme';
 import { HeaderBackButton } from "react-navigation";
@@ -29,7 +28,8 @@ type Props = {
 };
 
 type State = {
-  keyboardSpace: 0
+  keyboardSpace: number,
+  isInvalid: boolean
 }
 
 const mapStateToProps = (state) => {
@@ -78,6 +78,7 @@ class WorkBookScreenContainer extends Component<Props, State> {
 
     this.state = {
       keyboardSpace: 0,
+      isInvalid: true,
     }
   }
 
@@ -91,7 +92,6 @@ class WorkBookScreenContainer extends Component<Props, State> {
   componentWillMount() {
     theme.setRoot(this)
   }
-
 
   @autobind
   onToggle(keyboardSpace) {
@@ -108,10 +108,16 @@ class WorkBookScreenContainer extends Component<Props, State> {
         }     = this.props;
     let value = this.form.refs.form.getValue();
     if (value) {
-      console.log(value);
-
       getNextForm(step, formStep, false, value)
     }
+  }
+
+  @autobind
+  onChange() {
+    let value = this.form.refs.form.getValue();
+    this.setState({
+      isInvalid: !value,
+    })
   }
 
   render() {
@@ -134,13 +140,15 @@ class WorkBookScreenContainer extends Component<Props, State> {
               model={model}
               formData={formData}
               progress={progress}
+              onChange={this.onChange}
             />
           </View>
-          {Platform.OS === 'ios' &&
-          <KeyboardSpacer onToggle={(keyboardState, keyboardSpace) => this.onToggle(keyboardSpace)}/>}
+          {/*{Platform.OS === 'ios' &&*/}
+          {/*<KeyboardSpacer onToggle={(keyboardState, keyboardSpace) => this.onToggle(keyboardSpace)}/>}*/}
         </ScrollView>
         <View style={[ styles.workBookNextButton, this.state.keyboardSpace && { bottom: this.state.keyboardSpace } ]}>
           <Button
+            disabled={this.state.isInvalid}
             onPress={this.onPress}
             text="NEXT"
             side="right"
