@@ -1,6 +1,6 @@
 // @flow
 import React                      from 'react';
-import { Text, TouchableOpacity } from "react-native";
+import { Text, View } from "react-native";
 import { styles }                 from 'react-native-theme';
 
 type Props = {
@@ -10,11 +10,11 @@ type Props = {
 export default ({ number }: Props) => {
 
   return (
-    <TouchableOpacity
+    <View
       style={[styles.assignmentsScreenNumber, styles.assignmentsScreenNumberColors]}
     >
       <Text style={styles.assignmentsScreenNumberText}>{number}</Text>
-    </TouchableOpacity>
+    </View>
   )
 
 }
