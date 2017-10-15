@@ -4,7 +4,7 @@ import React, { Component }            from 'react';
 import { Animated, ScrollView, View, } from 'react-native';
 import { styles }                      from 'react-native-theme';
 
-const HEADER_MAX_HEIGHT      = 280;
+const HEADER_MAX_HEIGHT      = 260;
 const HEADER_MIN_HEIGHT      = 65;
 const HEADER_SCROLL_DISTANCE = HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT;
 
@@ -58,28 +58,32 @@ export default class ScrollableHeader extends Component<Props, State> {
             {this.props.content}
           </View>
         </ScrollView>
-        <Animated.View style={[ styles.scrollableHeaderHeader, {
+        <Animated.View style={[ styles.scrollableHeaderHeader, this.props.headerStyles, {
           height: headerHeight,
-          backgroundColor: headerHeight === HEADER_MIN_HEIGHT ? 'black' : 'transparent',
         } ]}>
           {
             this.props.headerImage ? <Animated.Image
-              style={[
-                styles.scrollableHeaderBackgroundImage,
-                {
-                  opacity: imageOpacity,
-                  transform: [ { translateY: imageTranslate } ],
-                },
-              ]}
-              source={this.props.headerImage}
-            /> : this.props.headerComponent ? <Animated.View
-              style={[
-                styles.scrollableHeaderBackgroundContent,
-                { transform: [ { translateY: imageTranslate } ] },
-              ]}
-            >
-              {this.props.headerComponent}
-            </Animated.View> : null
+                                     style={[
+                                       styles.scrollableHeaderBackgroundImage,
+                                       {
+                                         opacity: imageOpacity,
+                                         transform: [ { translateY: imageTranslate } ],
+                                       },
+                                     ]}
+                                     source={this.props.headerImage}
+                                   />
+              : null
+          }
+          {
+            this.props.headerComponent ? <Animated.View
+                                             style={[
+                                               styles.scrollableHeaderBackgroundContent,
+                                               { transform: [ { translateY: imageTranslate } ] },
+                                             ]}
+                                           >
+                                             {this.props.headerComponent}
+                                           </Animated.View>
+              : null
           }
 
           <Animated.View style={styles.scrollableHeaderBar}>

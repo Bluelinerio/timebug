@@ -50,6 +50,14 @@ export default class AssignmentsScreen extends Component<Props, State> {
               marginBottom: 15,
               width: Dimensions.get('window').width - ( !isLastItem ? 130 : 30 ),
             },
+            list: {
+              width: Dimensions.get('window').width - ( !isLastItem ? 130 : 30 ),
+            },
+            listItemContent: {
+              textAlign: 'left',
+              fontFamily: "Helvetica",
+              fontSize: 18,
+            }
           }}>
             {assignment.content}
           </Markdown>
@@ -58,7 +66,7 @@ export default class AssignmentsScreen extends Component<Props, State> {
     });
 
     return (
-      <ScrollView contentContainerStyle={styles.assignmentsScreenContainer}>
+      <ScrollView contentContainerStyle={[styles.assignmentsScreenContainer, {paddingBottom: 30}]}>
         {steps}
         <Button
           onPress={() => this.props.goToWorkBookScreen({})}
