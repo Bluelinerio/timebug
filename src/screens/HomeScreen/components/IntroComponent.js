@@ -8,15 +8,15 @@ import {
   View,
   TouchableHighlight,
   ScrollView,
-  Modal,
+  Image,
 }                           from 'react-native';
 import Button               from 'react-native-button';
 import autobind             from 'autobind-decorator';
 import Markdown             from 'react-native-easy-markdown';
 import { styles }           from 'react-native-theme';
+import { ILogin }           from "../../../interfaces/index";
 
-import { ILogin } from "../../../interfaces/index";
-
+const backgroundImage = require('../../../resources/images/sandClockConfetti.png');
 
 type Props = {
   about: string,
@@ -28,13 +28,6 @@ type State = {
 }
 
 export default class IntroComponent extends Component<Props, State> {
-  state = {
-    modalVisible: false,
-  };
-
-  setModalVisible(visible) {
-    this.setState({ modalVisible: visible });
-  }
 
   @autobind
   onPressLogin() {
@@ -45,54 +38,36 @@ export default class IntroComponent extends Component<Props, State> {
     let { about } = this.props;
     return (
       <View style={styles.loginScreenScreen}>
-        <View style={styles.loginScreenContainer}>
-          <Button containerStyle={styles.loginScreenWideButton}
-                  testID="login_button"
-                  onPress={this.onPressLogin}>
-            <Text style={styles.loginScreenWideButtonText}>Login with FB</Text>
+        <Image source={backgroundImage} style={styles.loginScreenBackgroundImage}/>
+        <View style={styles.loginScreenScreen}>
+          <Text style={styles.loginScreenTitle}>Welcome</Text>
+          <Markdown
+            markdownStyles={{
+              block: {
+                alignSelf: 'center',
+                marginBottom: 15,
+                flexWrap: 'wrap',
+                flexDirection: 'row',
+                fontFamily: "Helvetica",
+                fontSize: 24,
+                fontWeight: "300",
+                fontStyle: "italic",
+                textAlign: "center",
+                color: "rgba(236, 0, 140, 0.72)",
+                marginHorizontal: 15.5,
+                backgroundColor: 'transparent'
+              },
+            }}>
+            {about}
+          </Markdown>
+          <Button
+            containerStyle={styles.loginScreenWideButton}
+            testID="login_button"
+            onPress={this.onPressLogin}
+          >
+            <Text style={styles.loginScreenWideButtonText}>LOGIN</Text>
           </Button>
         </View>
-        <View style={styles.loginScreenContainer2}>
-          <TouchableHighlight onPress={() => {
-            this.setModalVisible(true)
-          }}>
-            <Text style={styles.loginScreenWideButtonText}>About</Text>
-          </TouchableHighlight>
-        </View>
-
-        <Modal
-          animationType="slide"
-          transparent={false}
-          visible={this.state.modalVisible}
-          onRequestClose={() => {alert("Modal has been closed.")}}
-        >
-          <View style={{ marginTop: 30 }}>
-            <View>
-              <TouchableHighlight onPress={() => {
-                this.setModalVisible(!this.state.modalVisible)
-              }}>
-                <Text style={styles.loginScreenClose}>X</Text>
-              </TouchableHighlight>
-              <ScrollView
-                style={styles.loginScreenDescription}
-                testID="about_text"
-              >
-                <Markdown
-                  markdownStyles={{
-                    u: {},
-                    block: {
-                      alignSelf: 'center',
-                      marginBottom: 15,
-                      flexWrap: 'wrap',
-                      flexDirection: 'row',
-                    },
-                  }}>
-                  {about}
-                </Markdown>
-              </ScrollView>
-            </View>
-          </View>
-        </Modal>
       </View>
     )
   }

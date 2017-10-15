@@ -19,7 +19,6 @@ const Navigator = StackNavigator({
   {
     initialRouteName,
     headerMode: 'screen',
-    mode: 'modal',
     cardStyle: {
       backgroundColor: 'white',
       opacity: 1,
