@@ -8,7 +8,7 @@ import {
 import { styles }           from 'react-native-theme';
 import Markdown             from 'react-native-easy-markdown';
 import Icon                 from 'react-native-vector-icons/Ionicons';
-import Button               from "../../../components/Button";
+import Button               from '../../../components/StepButton';
 import GradientBackground   from "../../../components/GradientBackground";
 import ScrollableHeader     from "../../../components/ScrollableHeader";
 import { goBack }           from "../../../HOC/navigation";

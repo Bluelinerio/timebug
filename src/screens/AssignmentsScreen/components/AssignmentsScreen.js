@@ -3,7 +3,7 @@
 import React, { Component }             from 'react';
 import { Dimensions, ScrollView, View } from 'react-native';
 import { styles }                       from 'react-native-theme';
-import Button                           from '../../../components/Button'
+import Button                           from '../../../components/StepButton'
 import Markdown                         from 'react-native-easy-markdown';
 import { IAssignment }                  from "../../../interfaces";
 import AssignmentNumber                 from "./AssignmentNumber";
