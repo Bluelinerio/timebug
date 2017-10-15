@@ -22,11 +22,14 @@ type Props = {
 type State = {}
 
 const mapStateToProps = (state) => {
-  let { allSteps }    = state.steps;
-  let { currentStep } = state.steps;
-  let assignments     = currentStep.refAssignment ? currentStep.refAssignment.map(i => i.fields) : [];
+  const { allSteps }    = state.steps;
+  const { currentStep } = state.steps;
+  debugger;
+  const color = state.steps.colors.steps[currentStep.number];
+  const assignments     = currentStep.refAssignment ? currentStep.refAssignment.map(i => i.fields) : [];
   return {
     currentStep,
+    color,
     allSteps,
     assignments,
   }
@@ -58,15 +61,25 @@ class AssignmentsScreenContainer extends Component<Props, State> {
   }
 
   render() {
-    if (this.props.assignments) {
+    const { getStepFromCMSByStep,
+      assignments,
+      currentStep,
+      color,
+      allSteps,
+      goToWorkBookScreen,
+      navigation 
+    } = this.props;
+      
+    if (assignments) {
       return (
         <AssignmentsScreen
-          getStepFromCMSByStep={this.props.getStepFromCMSByStep}
-          assignments={this.props.assignments}
-          currentStep={this.props.currentStep}
-          allSteps={this.props.allSteps}
-          goToWorkBookScreen={this.props.goToWorkBookScreen}
-          dispatch={this.props.navigation.dispatch}
+          getStepFromCMSByStep={getStepFromCMSByStep}
+          assignments={assignments}
+          currentStep={currentStep}
+          color={color}
+          allSteps={allSteps}
+          goToWorkBookScreen={goToWorkBookScreen}
+          dispatch={navigation.dispatch}
         />
       )
     } else {
