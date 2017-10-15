@@ -26,6 +26,8 @@ theme.add({
     height: 32,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: 'transparent',
+    zIndex: 11
   },
   scrollableHeaderTitle: {
     backgroundColor: 'transparent',
@@ -42,7 +44,7 @@ theme.add({
     right: 0,
     width: null,
     height: HEADER_MAX_HEIGHT,
-    resizeMode: 'cover',
+    zIndex: 10,
   },
   scrollableHeaderBackgroundContent: {
     position: 'absolute',
@@ -51,5 +53,6 @@ theme.add({
     right: 0,
     width: null,
     height: HEADER_MAX_HEIGHT,
+    zIndex: 9
   },
 });

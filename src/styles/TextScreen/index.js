@@ -6,6 +6,7 @@ theme.add({
     flex: 1,
     flexDirection: 'row',
     paddingHorizontal: 25,
+    marginBottom: 30
   },
   textScreenHeader: {
     top: 80,
