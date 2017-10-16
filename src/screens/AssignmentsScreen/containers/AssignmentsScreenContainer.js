@@ -24,7 +24,6 @@ type State = {}
 const mapStateToProps = (state) => {
   const { allSteps }    = state.steps;
   const { currentStep } = state.steps;
-  debugger;
   const color = state.steps.colors.steps[currentStep.number];
   const assignments     = currentStep.refAssignment ? currentStep.refAssignment.map(i => i.fields) : [];
   return {
