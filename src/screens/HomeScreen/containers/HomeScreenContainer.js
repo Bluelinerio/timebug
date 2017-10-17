@@ -34,7 +34,7 @@ type State = {};
 const mapStateToProps = state => {
 	const allSteps = state.steps.allSteps;
 	const currentStep = state.steps.currentStep;
-	const color = state.steps.colors.steps[currentStep.number];
+	const color = currentStep ? state.steps.colors.steps[currentStep.number] : 'white';
 	const about = state.login.about;
 	const isLoggedIn = state.login.isLoggedIn;
 	const isPending = state.network.isPendin;
@@ -73,7 +73,8 @@ class HomeScreenContainer extends Component<Props, State> {
 		let { isPending, isLoggedIn, about, loginWithFB, currentStep, allSteps, goToTextScreen, color } = this.props;
 		if (isPending) {
 			return <DefaultIndicator size="large" />;
-		} else if (isLoggedIn) {
+		} else if (currentStep) {
+			debugger;
 			return (
 				<ScrollView color={color || 'white'} automaticallyAdjustContentInsets={true}>
 					<StepComponent

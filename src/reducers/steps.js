@@ -8,7 +8,7 @@ import { colors }                                           from '../constants/C
 
 interface StepsState {
   allSteps: IStep[],
-  currentStep: IStep,
+  currentStep: ?IStep,
 }
 
 interface StepsAction {
@@ -19,7 +19,7 @@ interface StepsAction {
 
 const initialState: StepsState = {
   allSteps: [],
-  currentStep: {},
+  currentStep: null,
   colors
 };
 
