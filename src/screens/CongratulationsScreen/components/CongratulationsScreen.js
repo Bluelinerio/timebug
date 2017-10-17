@@ -6,7 +6,7 @@ import {
   View,
   Image,
 }                           from 'react-native';
-import Button               from '../../../components/StepButton'
+import Button               from '../../../components/Button'
 import { IStep }            from "../../../interfaces";
 import { styles }           from 'react-native-theme';
 import Feather              from "react-native-vector-icons/MaterialCommunityIcons";

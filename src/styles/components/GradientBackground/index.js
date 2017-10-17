@@ -23,6 +23,6 @@ theme.add({
     color: '#79bddd',
   },
   gradientBottomColor: {
-    color: '#ffffff',
+    color: 'white',
   },
 });

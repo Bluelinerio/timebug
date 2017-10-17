@@ -1,41 +1,96 @@
 import React, { Component } from 'react';
-import { Image, Text, View } from 'react-native';
-import { styles } from 'react-native-theme';
-import Button from 'react-native-button';
+import { Dimensions, Platform, Image, Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { IStep } from '../../../interfaces';
 import getImageUrl from '../../../utils/getImageUrl';
 import CustomImage from '../../../components/CustomImage';
+import StartButton from './StartButton';
+import { headerBackgroundImage, startButtonBackgroundImage } from '../../../resources/images/';
+import { white90 } from '../../../constants/colors';
 
-const headerBackground = require('../../../resources/images/sandClockConfetti.png');
-const startBackground = require('../../../resources/images/sandClockConfetti.png');
-
-//:{ type, shortIcon, stepScreenDescription, number, duration}
-export default ({totalNumberOfSteps, currentStep, buttonAction}) => {
+export default ({ totalNumberOfSteps, currentStep, color, buttonAction }) => {
+  const { shortIcon, type, stepScreenDescription, number, duration } = currentStep;
 	return (
-		<Image style={styles.HomeScreenHeader} source={headerBackground}>
-			<View style={styles.HomeScreenChallengeInfo}>
-				<CustomImage style={styles.HomeScreenHeaderImage} imageUri={getImageUrl(currentStep.shortIcon)} />
-				<View style={styles.HomeScreenHeaderText}>
-					<Text style={styles.HomeScreenHeaderTitle}>Next challenge</Text>
-					<Text style={[styles.HomeScreenTitle]}>{currentStep.type}</Text>
-					<Text style={[styles.HomeScreenLittleText]}>{currentStep.stepScreenDescription}</Text>
-					<Text style={[styles.HomeScreenStep]}>
-						STEP # {currentStep.number}/{totalNumberOfSteps}
+		<Image style={[style.header, { backgroundColor: color }]} source={headerBackgroundImage}>
+      <View style={style.challengeInfo}>
+				<CustomImage style={style.headerImage} imageUri={getImageUrl(shortIcon)} />
+				<View style={style.headerText}>
+          <Text style={style.headerTitle}>Next challenge</Text>
+          <Text style={[style.title]}>{type}</Text>
+					<Text style={[style.littleText]}>{stepScreenDescription}</Text>
+					<Text style={[style.step]}>
+						STEP # {number}/{totalNumberOfSteps}
 					</Text>
 				</View>
 			</View>
-			<Button
-				containerStyle={styles.HomeScreenWideButton}
-				onPress={buttonAction}
-			>
-				<View style={styles.HomeScreenAbsoluteContainer}>
-					<Image source={startBackground} style={styles.HomeScreenStartButtonBackground} />
-					<Icon name="md-time" size={34} color="#0e3fa8" style={styles.HomeScreenButtonImage} />
-					<Text style={[styles.HomeScreenDurationText]}>{currentStep.Buttonduration}min</Text>
-				</View>
-				<Text style={styles.HomeScreenWideButtonText}>START</Text>
-			</Button>
+			<StartButton duration={duration} onPress={buttonAction} />
 		</Image>
 	);
+};
+
+const style = {
+	header: {
+		top: 0,
+		height: Dimensions.get('window').width * 0.75,
+		width: Dimensions.get('window').width,
+		alignItems: 'center',
+    paddingTop: Platform.OS === 'ios' ? 0 : 40,
+    opacity: 1.0,
+    justifyContent: 'space-between',
+	},
+	headerTitle: {
+		fontFamily: 'Helvetica',
+		fontSize: 9,
+		fontWeight: '300',
+		fontStyle: 'italic',
+    color: 'white',
+    backgroundColor: 'transparent',
+    paddingTop: 16,
+		paddingBottom: 8
+	},
+	headerImage: {
+		marginTop: 16,
+		width: 46,
+		height: 46,
+		marginHorizontal: 10
+	},
+	challengeInfo: {
+		marginTop: 40,
+		width: Dimensions.get('window').width,
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+		alignItems: 'center'
+	},
+	headerText: {
+		width: Dimensions.get('window').width - 70
+	},
+	title: {
+		fontFamily: 'Helvetica',
+		fontSize: 24,
+		fontWeight: 'bold',
+		color: 'white',
+    backgroundColor: 'transparent',
+  },
+	firstPartTitle: {
+		width: Dimensions.get('window').width - 90,
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+		paddingVertical: 3,
+    backgroundColor: 'transparent',
+  	},
+	step: {
+		fontFamily: 'Helvetica',
+		fontSize: 10,
+		fontWeight: 'bold',
+    color: 'white',
+    backgroundColor: 'transparent',
+		marginTop: 10
+	},
+	littleText: {
+		fontFamily: 'Helvetica',
+		fontSize: 16,
+		fontWeight: '300',
+		color: white90,
+    backgroundColor: 'transparent',
+		paddingTop: 3
+	}
 };

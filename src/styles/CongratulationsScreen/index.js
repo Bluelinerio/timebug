@@ -1,4 +1,5 @@
 import theme from 'react-native-theme';
+import { lightBlue } from '../../constants/colors';
 
 theme.add({
   congratulationsScreenContainer: {
@@ -46,7 +47,7 @@ theme.add({
     alignSelf: 'flex-end',
   },
   congratulationsScreenTextColor: {
-    color: '#48D0F1',
+    color: lightBlue,
   },
   congratulationsScreenMessageText: {
     fontFamily: "Helvetica",

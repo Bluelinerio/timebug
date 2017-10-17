@@ -20,10 +20,6 @@ theme.add({
     borderRadius: 100,
     marginRight: 21
   },
-  assignmentsScreenNumberColors: {
-    backgroundColor: '#6EBDDC',
-    borderColor: '#6EBDDC'
-  },
   assignmentsScreenNumberText: {
     fontFamily: "Helvetica",
     fontSize: 24,

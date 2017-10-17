@@ -1,5 +1,7 @@
 import { Dimensions, Platform } from 'react-native';
 import theme                    from 'react-native-theme';
+import { darkishBlue }       from '../../constants/colors';
+import { STATUSBAR_HEIGHT, APPBAR_HEIGHT} from '../../constants/';
 
 theme.add({
   textScreenScreen: {
@@ -9,7 +11,7 @@ theme.add({
     marginBottom: 30
   },
   textScreenHeader: {
-    top: 80,
+    top: STATUSBAR_HEIGHT + APPBAR_HEIGHT,
     height: 252,
     width: Dimensions.get('window').width,
     alignItems: 'center',
@@ -51,7 +53,7 @@ theme.add({
   textScreenTitle: {
     fontFamily: "Helvetica",
     fontSize: 32,
-    color: "#003681",
+    color: darkishBlue,
     alignSelf: 'flex-end',
     flex: 1,
     justifyContent: 'center',
@@ -60,8 +62,7 @@ theme.add({
   },
   textScreenImage: {
     flex: 1,
-    width: 175,
-    height: 185,
+    height: Dimensions.get('window').width * 0.4,
     bottom: 20,
   },
   textScreenDescription: {

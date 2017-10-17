@@ -1,96 +1,127 @@
 // @flow
 
-import React, { Component }            from 'react';
-import { Animated, ScrollView, View, } from 'react-native';
-import { styles }                      from 'react-native-theme';
-
-const HEADER_MAX_HEIGHT      = 260;
-const HEADER_MIN_HEIGHT      = 65;
-const HEADER_SCROLL_DISTANCE = HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT;
+import React, { Component } from 'react';
+import { Animated, ScrollView, View } from 'react-native';
 
 type Props = {
-  content: ReactElement,
-  headerImage: ReactElement,
-  headerComponent: ReactElement,
-  header: ReactElement
-}
+	content: ReactElement,
+	headerImage: ReactElement,
+	headerComponent: ReactElement,
+	header: ReactElement,
+	headerMaxHeight: number,
+	headerMinHeight: number
+};
 
 type State = {
-  scrollY: number
-}
+	scrollY: number
+};
 
 export default class ScrollableHeader extends Component<Props, State> {
-  constructor(props) {
-    super(props);
+	constructor(props) {
+		super(props);
 
-    this.state = {
-      scrollY: new Animated.Value(0),
-    };
-  }
+		this.state = {
+			scrollY: new Animated.Value(0)
+		};
+	}
+	render() {
+		const { content, headerStyles, headerImage, headerComponent, header } = this.props;
+		let { headerMinHeight, headerMaxHeight } = this.props;
+		if (!headerMinHeight) {
+			headerMinHeight = 65;
+		}
+		if (!headerMaxHeight) {
+			headerMaxHeight = 260;
+		}
+		const headerScrollDistance = headerMaxHeight - headerMinHeight;
 
-  render() {
-    const headerHeight   = this.state.scrollY.interpolate({
-      inputRange: [ 0, HEADER_SCROLL_DISTANCE ],
-      outputRange: [ HEADER_MAX_HEIGHT, HEADER_MIN_HEIGHT ],
-      extrapolate: 'clamp',
-    });
-    const imageOpacity   = this.state.scrollY.interpolate({
-      inputRange: [ 0, HEADER_SCROLL_DISTANCE / 2, HEADER_SCROLL_DISTANCE ],
-      outputRange: [ 1, 1, 0 ],
-      extrapolate: 'clamp',
-    });
-    const imageTranslate = this.state.scrollY.interpolate({
-      inputRange: [ 0, HEADER_SCROLL_DISTANCE ],
-      outputRange: [ 0, -50 ],
-      extrapolate: 'clamp',
-    });
+		const headerHeight = this.state.scrollY.interpolate({
+			inputRange: [0, headerScrollDistance],
+			outputRange: [headerMaxHeight, headerMinHeight],
+			extrapolate: 'clamp'
+		});
+		const imageOpacity = this.state.scrollY.interpolate({
+			inputRange: [0, headerScrollDistance / 2, headerScrollDistance],
+			outputRange: [1, 1, 0],
+			extrapolate: 'clamp'
+		});
+		const imageTranslate = this.state.scrollY.interpolate({
+			inputRange: [0, headerScrollDistance],
+			outputRange: [0, -50],
+			extrapolate: 'clamp'
+		});
 
-    return (
-      <View style={styles.scrollableHeaderFill}>
-        <ScrollView
-          style={styles.scrollableHeaderFill}
-          scrollEventThrottle={16}
-          onScroll={Animated.event(
-            [ { nativeEvent: { contentOffset: { y: this.state.scrollY } } } ],
-          )}
-        >
-          <View style={styles.scrollableHeaderScrollViewContent}>
-            {this.props.content}
-          </View>
-        </ScrollView>
-        <Animated.View style={[ styles.scrollableHeaderHeader, this.props.headerStyles, {
-          height: headerHeight,
-        } ]}>
-          {
-            this.props.headerImage ? <Animated.Image
-                                     style={[
-                                       styles.scrollableHeaderBackgroundImage,
-                                       {
-                                         opacity: imageOpacity,
-                                         transform: [ { translateY: imageTranslate } ],
-                                       },
-                                     ]}
-                                     source={this.props.headerImage}
-                                   />
-              : null
-          }
-          {
-            this.props.headerComponent ? <Animated.View
-                                             style={[
-                                               styles.scrollableHeaderBackgroundContent,
-                                               { transform: [ { translateY: imageTranslate } ] },
-                                             ]}
-                                           >
-                                             {this.props.headerComponent}
-                                           </Animated.View>
-              : null
-          }
+		return (
+			<View style={{ flex: 1 }}>
+				<ScrollView
+					style={{ flex: 1 }}
+					scrollEventThrottle={16}
+					automaticallyAdjustContentInsets={false}
+					onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: this.state.scrollY } } }])}
+				>
+					<View style={{ marginTop: headerMaxHeight }}>{content}</View>
+				</ScrollView>
+				<Animated.View
+					style={[
+						headerStyles,
+						{
+							position: 'absolute',
+							top: 0,
+							left: 0,
+							right: 0,
+							backgroundColor: 'transparent',
+							overflow: 'hidden',
+							height: headerHeight
+						}
+					]}
+				>
+					{headerImage ? (
+						<Animated.Image
+							style={{
+								position: 'absolute',
+								top: 0,
+								left: 0,
+								right: 0,
+								width: null,
+								height: headerMaxHeight,
+								zIndex: 10,
+								opacity: imageOpacity,
+								transform: [{ translateY: imageTranslate }]
+							}}
+							source={headerImage}
+						/>
+					) : null}
+					{headerComponent ? (
+						<Animated.View
+							style={{
+								position: 'absolute',
+								top: 0,
+								left: 0,
+								right: 0,
+								width: null,
+								height: headerMaxHeight,
+								zIndex: 9,
+								transform: [{ translateY: imageTranslate }]
+							}}
+						>
+							{headerComponent}
+						</Animated.View>
+					) : null}
 
-          <Animated.View style={styles.scrollableHeaderBar}>
-            {this.props.header}
-          </Animated.View>
-        </Animated.View>
-      </View>
-    );
-  }
+					<Animated.View
+						style={{
+							marginTop: 28,
+							height: 32,
+							alignItems: 'center',
+							justifyContent: 'center',
+							backgroundColor: 'transparent',
+							zIndex: 11
+						}}
+					>
+						{header}
+					</Animated.View>
+				</Animated.View>
+			</View>
+		);
+	}
 }

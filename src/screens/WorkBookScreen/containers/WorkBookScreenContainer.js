@@ -15,7 +15,7 @@ import { HeaderBackButton } from "react-navigation";
 import autobind             from "autobind-decorator";
 import KeyboardSpacer       from "react-native-keyboard-spacer";
 import DefaultIndicator     from "../../../components/DefaultIndicator";
-import Button               from '../../../components/StepButton';
+import Button               from '../../../components/Button';
 import { getNextForm }      from "../../../actions/form";
 import { store }            from '../../../reducers/rootReducer';
 import FormComponent        from "../components/FormComponent";

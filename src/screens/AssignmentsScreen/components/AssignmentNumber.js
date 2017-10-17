@@ -16,7 +16,7 @@ export default ({ number, color }) => {
 				borderRadius: 100,
 				marginRight: 21,
 				backgroundColor: color,
-				borderColor: '#ffffff'
+				borderColor: 'white'
 			}}
 		>
 			<Text
@@ -24,7 +24,7 @@ export default ({ number, color }) => {
 					fontFamily: 'Helvetica',
 					fontSize: 24,
 					textAlign: 'center',
-					color: '#ffffff'
+					color: 'white'
 				}}
 			>
 				{number}

@@ -1,21 +1,27 @@
 // @flow
 import React from 'react';
 import { Dimensions, Text, View, TouchableHighlight } from 'react-native';
-import { styles } from 'react-native-theme';
 import Icon from 'react-native-vector-icons/Ionicons';
+import DefaultStyle from '../styles/components/StepButton';
 
 type Props = {
 	text: string,
 	side: string,
 	withArrow: boolean,
-	disabled: boolean,
+    disabled: boolean,
+    styles: {},
 	oPress(): any
 };
 
-export default ({ text, onPress, side, withArrow, disabled }: Props) => {
+export default ({ text, onPress, side, withArrow, disabled, styles }: Props) => {
 	let minWidth = side ? 128 : 240;
 	let paddingHorizontal = side ? 35 : 50;
 	let opacity = disabled ? 0.5 : 1;
+	styles = {
+		...DefaultStyle,
+		...(styles || null)
+	}
+	
 	return (
 		<View style={[styles.buttonContainer, side ? styles[side] : null]}>
 			<TouchableHighlight

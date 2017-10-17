@@ -16,18 +16,19 @@ type Props = {
   goToAssignmentsScreen(): any
 };
 
-type State = {}
-
 const mapStateToProps = (state) => {
+  const currentStep = state.steps.currentStep;
+	const color = state.steps.colors.steps[currentStep.number];
   return {
-    currentStep: state.steps.currentStep,
+    currentStep,
+    color
   }
 };
 
 @connect(mapStateToProps, {
   goToAssignmentsScreen,
 })
-class TextScreenContainer extends Component<Props, State> {
+class TextScreenContainer extends Component<Props> {
   static navigationOptions = ({ navigation: { state: { params } } }) => ( {
     header: false,
   } );
@@ -37,10 +38,12 @@ class TextScreenContainer extends Component<Props, State> {
   }
 
   render() {
-    if (this.props.currentStep) {
+    const { currentStep, step, color } = this.props;
+    if (currentStep) {
       return (
         <TextScreen
-          currentStep={this.props.currentStep}
+          step={currentStep}
+          color={color}
           goToAssignmentsScreen={this.props.goToAssignmentsScreen}
         />
       )

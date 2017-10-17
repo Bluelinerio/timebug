@@ -1,8 +1,8 @@
 import theme from 'react-native-theme';
 import { Dimensions } from 'react-native';
-import { darkishBlue } from '../../../constants/colors';
+import { darkishBlue, deepBlue } from '../../../constants/colors';
 
-const style = {
+const styles = {
 	buttonContainer: {
 		flex: 1,
 		flexDirection: 'row',
@@ -22,10 +22,12 @@ const style = {
 		alignSelf: 'center',
 		justifyContent: 'center',
 		overflow: 'hidden',
-		marginHorizontal: 10
+        marginHorizontal: 10,
+        borderWidth: 1,
+        borderColor: darkishBlue
 	},
 	wideButtonBackground: {
-		backgroundColor: darkishBlue
+		backgroundColor: 'white'
 	},
 	left: {
 		justifyContent: 'flex-start',
@@ -40,7 +42,7 @@ const style = {
 		fontSize: 15,
 		fontWeight: 'bold',
 		textAlign: 'center',
-		color: '#ffffff'
+		color: darkishBlue
 	},
 	buttonGroup: {
 		flexDirection: 'row',
@@ -48,6 +50,5 @@ const style = {
 		alignItems: 'center'
 	}
 }
-theme.add(style);
 
-export default style;
+export default styles;
