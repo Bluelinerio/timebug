@@ -8,6 +8,7 @@ import {
   GO_TO_WORKBOOK_SCREEN,
 }                               from '../constants/actionTypes';
 
+export const doneWithCongratsScreen    = () => action(GO_TO_HOME_SCREEN, { reset: true, direction: "back" });
 export const goToHomeScreen            = props => action(GO_TO_HOME_SCREEN, props);
 export const goToTextScreen            = props => action(GO_TO_TEXT_SCREEN, props);
 export const goToWorkBookScreen        = props => action(GO_TO_WORKBOOK_SCREEN, props);

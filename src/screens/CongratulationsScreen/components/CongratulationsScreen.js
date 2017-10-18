@@ -1,46 +1,66 @@
 // @flow
 
-import React, { Component } from 'react';
-import {
-  Text,
-  View,
-  Image,
-}                           from 'react-native';
-import Button               from '../../../components/Button'
-import { IStep }            from "../../../interfaces";
-import { styles }           from 'react-native-theme';
-import Feather              from "react-native-vector-icons/MaterialCommunityIcons";
+import React, { Component } from "react";
+import { Text, View, Image } from "react-native";
+import Button from "../../../components/Button";
+import { IStep } from "../../../interfaces";
+import { styles } from "react-native-theme";
+import Feather from "react-native-vector-icons/MaterialCommunityIcons";
 
-export default (props) => {
-  const {duration, number, color, done} = props;
+const NextStep = ({nextStepNumber, nextStepColor, nextStepDuration}) => (
+  <View style={styles.congratulationsScreenMessageContainer}>
+    <Text style={styles.congratulationsScreenMessageText}>See you soon in</Text>
+    <Text
+      style={[
+        styles.congratulationsScreenCurrentStep,
+        styles.congratulationsScreenTextColor
+      ]}
+    >
+      STEP {nextStepNumber}!
+    </Text>
+    <View style={styles.congratulationsScreenTimerContainer}>
+      <Feather
+        name="clock"
+        size={34}
+        style={{
+          color: nextStepColor,
+          marginTop: 2
+        }}
+      />
+      <Text
+        style={[
+          styles.congratulationsScreenDurationText,
+          styles.congratulationsScreenTextColor
+        ]}
+      >
+        {nextStepDuration} min
+      </Text>
+    </View>
+  </View>
+);
+export default ({
+  currentStepNumber,
+  currentStepColor,
+  nextStepDuration,
+  nextStepNumber,
+  nextStepColor,
+  done
+}) => {
   return (
     <View style={styles.congratulationsScreenContainer}>
-      <View style={styles.congratulationsScreenMessageContainer}>
-        <Text style={styles.congratulationsScreenMessageText}>See you soon in</Text>
-        <Text
-          style={[ styles.congratulationsScreenCurrentStep, styles.congratulationsScreenTextColor ]}>STEP {number + 1}!</Text>
-        <View style={styles.congratulationsScreenTimerContainer}>
-          <Feather
-            name="clock"
-            size={34}
-            style={{
-              color: color,
-              marginTop: 2
-            }}
-          />
-          <Text
-            style={[ styles.congratulationsScreenDurationText, styles.congratulationsScreenTextColor ]}>{duration} min</Text>
-        </View>
-
-      </View>
-      <View style={[ styles.congratulationsScreenAbsoluteContainer ]}>
+      <NextStep nextStepNumber={nextStepNumber} nextStepColor={nextStepColor} nextStepDuration={nextStepDuration}/>
+      <View style={[styles.congratulationsScreenAbsoluteContainer]}>
         <Button
           onPress={done}
           text="DONE"
           side="right"
-        >
-        </Button>
+          styles={{
+            wideButtonBackground: {
+              backgroundColor: currentStepColor
+            }
+          }}
+        />
       </View>
     </View>
   );
-}
+};

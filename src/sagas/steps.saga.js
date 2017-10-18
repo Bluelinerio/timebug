@@ -52,8 +52,8 @@ function setColorToTheme(color) {
       backgroundColor: color,
       borderColor: color
     },
-  }, 'custom');
-  theme.active('custom');
+  }, color);
+  theme.active(color);
 }
 
 function setColorsForCurrentStep(colors: IColors, step: IStep) {
