@@ -1,94 +1,135 @@
 // @flow
 
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { ScrollView } from 'react-native';
-import theme from 'react-native-theme';
-import DashboardContainer from './DashboardContainer';
-import IntroComponent from '../components/IntroComponent';
-import StepComponent from '../components/StepComponent';
-import DefaultIndicator from '../../../components/DefaultIndicator';
-import { getAllStepsFromCMS, getStepFromCMSByStep } from '../../../actions/steps';
-import { getAboutInfoFromCMS } from '../../../actions/login';
-import { loginWithFB } from '../../../actions/FBAction';
-import type { IStep } from '../../../interfaces';
-import { goToTextScreen } from '../../../actions/navigate';
-import { onAppLoaded } from '../../../actions/user';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { ScrollView } from "react-native";
+import theme from "react-native-theme";
+import DashboardContainer from "./DashboardContainer";
+import IntroComponent from "../components/IntroComponent";
+import StepComponent from "../components/StepComponent";
+import DefaultIndicator from "../../../components/DefaultIndicator";
+import {
+  getAllStepsFromCMS,
+  getStepFromCMSByStep
+} from "../../../actions/steps";
+import { getAboutInfoFromCMS } from "../../../actions/login";
+import { loginWithFB } from "../../../actions/FBAction";
+import type { IStep } from "../../../interfaces";
+import { goToTextScreen } from "../../../actions/navigate";
+import { onAppLoaded } from "../../../actions/user";
 
-type Props = {
-	allSteps: IStep[],
-	currentStep: IStep,
-	about: string,
-	isLoggedIn: boolean,
-	isPending: boolean,
-	getAllStepsFromCMS: any,
-	getAboutInfoFromCMS: any,
-	loginWithFB: any,
-	navigation: {
-		navigate(): any
-	}
+type HomeScreenStep = {
+  allSteps: IStep[],
+  currentStep: IStep
+};
+type HomeScreenInro = {
+  about: string
 };
 
-type State = {};
+const LOADING = "LOADING";
+const INTRO = "INTRO";
+const STEP = "STEP";
+type HomeScreenState =
+  | { type: LOADING }
+  | { type: INTRO, component: HomeScreenInro }
+  | { type: STEP, component: HomeScreenStep };
+
+type Props = {
+  state: HomeScreenState,
+  loginWithFB: any,
+  getAllStepsFromCMS: any,
+  getAboutInfoFromCMS: any
+};
 
 const mapStateToProps = state => {
-	const allSteps = state.steps.allSteps;
-	const currentStep = state.steps.currentStep;
-	const color = currentStep ? state.steps.colors.steps[currentStep.number] : 'white';
-	const about = state.login.about;
-	const isLoggedIn = state.login.isLoggedIn;
-	const isPending = state.network.isPendin;
-	return {
-		allSteps,
-		currentStep,
-		color,
-		about,
-		isLoggedIn,
-		isPending
-	};
+  const isPending = state.network.isPending;
+  if (isPending) {
+    return {
+      state: { type: LOADING }
+    };
+  }
+  const isLoggedIn = state.login.isLoggedIn;
+
+  if (isLoggedIn === true) {
+    steps = state.steps;
+    const allSteps = steps.allSteps;
+    const currentStep = steps.currentStep;
+    const color = steps.colors.steps[currentStep.number];
+
+    if (!allSteps || !currentStep || !color) {
+      throw "missing currentStep or allSteps or color" + state.steps;
+    }
+    return {
+      state: {
+        type: STEP,
+        component: {
+          allSteps,
+          currentStep,
+          color
+        }
+      }
+    };
+  }
+
+  return {
+    state: {
+      type: INTRO,
+      component: {
+        about: state.login.about
+      }
+    }
+  };
 };
 
 @connect(mapStateToProps, {
-	getAllStepsFromCMS: getAllStepsFromCMS.request,
-	getAboutInfoFromCMS: getAboutInfoFromCMS.request,
-	loginWithFB: loginWithFB.request,
-	goToTextScreen,
-	onAppLoaded
+  getAllStepsFromCMS: getAllStepsFromCMS.request,
+  getAboutInfoFromCMS: getAboutInfoFromCMS.request,
+  loginWithFB: loginWithFB.request,
+  goToTextScreen,
+  onAppLoaded
 })
-class HomeScreenContainer extends Component<Props, State> {
-	static navigationOptions = {
-		header: null
-	};
+class HomeScreenContainer extends Component<Props> {
+  static navigationOptions = {
+    header: null
+  };
 
-	componentDidMount() {
-		this.props.onAppLoaded();
-		this.props.getAllStepsFromCMS();
-	}
+  componentDidMount() {
+    this.props.onAppLoaded();
+    this.props.getAllStepsFromCMS();
+  }
 
-	componentWillMount() {
-		theme.setRoot(this);
-	}
+  componentWillMount() {
+    theme.setRoot(this);
+  }
 
-	render() {
-		let { isPending, isLoggedIn, about, loginWithFB, currentStep, allSteps, goToTextScreen, color } = this.props;
-		if (isPending) {
-			return <DefaultIndicator size="large" />;
-		} else if (currentStep) {
-			debugger;
-			return (
-				<ScrollView color={color || 'white'} automaticallyAdjustContentInsets={true}>
-					<StepComponent
-						currentStep={currentStep}
-						color={color}
-						totalNumberOfSteps={allSteps.length}
-						buttonAction={() => goToTextScreen({ number: currentStep.number })}
-					/>
-				</ScrollView>
-			);
-		} else {
-			return <IntroComponent about={about} onPress={loginWithFB} />;
-		}
-	}
+  render() {
+    let { state, loginWithFB, goToTextScreen } = this.props;
+    switch (state.type) {
+      case LOADING:
+        return <DefaultIndicator size="large" />;
+      case INTRO:
+        return (
+          <IntroComponent loginWithFB={loginWithFB} {...state.component} />
+        );
+      case STEP:
+        const { currentStep, color, allSteps} = state.component;
+        return (
+          <ScrollView
+            color={color || "white"}
+            automaticallyAdjustContentInsets={true}
+          >
+            <StepComponent
+              currentStep={currentStep}
+              color={color}
+              totalNumberOfSteps={allSteps.length}
+              buttonAction={() =>
+                goToTextScreen({ number: currentStep.number })}
+            />
+          </ScrollView>
+        );
+    }
+    throw 'this should not hapen';
+  }
 }
 
 export default HomeScreenContainer;
