@@ -16,7 +16,7 @@ type Props = {
 export default ({ text, onPress, side, withArrow, disabled, styles }: Props) => {
 	let minWidth = side ? 128 : 240;
 	let paddingHorizontal = side ? 35 : 50;
-	let opacity = disabled ? 0.5 : 1;
+	let opacity = disabled ? 0.1 : 1;
 	styles = {
 		...DefaultStyle,
 		...(styles || null)
