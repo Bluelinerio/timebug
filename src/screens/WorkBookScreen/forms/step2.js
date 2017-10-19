@@ -1,24 +1,95 @@
 import t from "../components/templates";
-import { AreaOfLife } from "./contents";
+import { LifeCategory, AreaOfLife} from "./contents";
 
 export default {
   1: {
-    focusField: "name",
     title: "How do you spend a typical 168 hour week right now?",
     type: t.struct({
-      name: t.String,
-      age: t.Number,
-      date: t.Date
+      field: t.list(
+        t.struct({
+          category: LifeCategory,
+          hours: t.Number
+        })
+      )
     }),
     options: {
       fields: {
-        name: {
-          auto: "placeholders",
-          error: "Field this field"
+        field: {
+          auto: 'placeholders',
+          disableOrder: true,
+          maxLines: 10,
+          config: {
+            maxLines: 10,
+          },
         },
-        age: {
-          auto: "placeholders",
-          error: "Field this field"
+      }
+    }
+  },
+  2: {
+    title: "If you could make any changes that you wanted to?",
+    type: t.struct({
+      field: t.list(
+        t.struct({
+          category: LifeCategory,
+          hours: t.Number
+        })
+      )
+    }),
+    options: {
+      fields: {
+        field: {
+          auto: 'placeholders',
+          disableOrder: true,
+          maxLines: 3,
+          config: {
+            maxLines: 3,
+          },
+        },
+      }
+    }
+  },
+  3: {
+    title: "Write down at least 3 things that you want to DO LESS of in general (ie. Watching TV).",
+    type: t.struct({
+      field: t.list(
+        t.struct({
+          thing: t.String,
+          areaOfLife: t.maybe(AreaOfLife),
+        })
+      )
+    }),
+    options: {
+      fields: {
+        field: {
+          auto: 'placeholders',
+          disableOrder: true,
+          maxLines: 10,
+          config: {
+            maxLines: 10,
+          },
+        }
+      }
+    }
+  },
+  4: {
+    title: "Write down at least 3 things that you want to DO MORE of, in your ideal life setup.",
+    type: t.struct({
+      field: t.list(
+        t.struct({
+          thing: t.String,
+          areaOfLife: t.maybe(AreaOfLife),
+        })
+      )
+    }),
+    options: {
+      fields: {
+        field: {
+          auto: 'placeholders',
+          disableOrder: true,
+          maxLines: 10,
+          config: {
+            maxLines: 10,
+          },
         }
       }
     }
