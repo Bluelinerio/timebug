@@ -109,7 +109,7 @@ class HomeScreenContainer extends Component<Props> {
         return <DefaultIndicator size="large" />;
       case INTRO:
         return (
-          <IntroComponent loginWithFB={loginWithFB} {...state.component} />
+          <IntroComponent onPress={loginWithFB} {...state.component} />
         );
       case STEP:
         const { currentStep, color, allSteps} = state.component;
@@ -128,7 +128,7 @@ class HomeScreenContainer extends Component<Props> {
           </ScrollView>
         );
     }
-    throw 'this should not hapen';
+    throw 'this should not happen';
   }
 }
 
