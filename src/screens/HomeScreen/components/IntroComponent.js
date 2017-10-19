@@ -15,7 +15,6 @@ import markdownStyles from '../../../styles/Markdown/intro';
 
 const Header = () => (
 	<View style={styles.header}>
-		<Text style={styles.title}>Welcome</Text>
 	</View>
 );
 
@@ -29,7 +28,7 @@ const Content = ({ onPress, about }) => (
 		>
 			<Markdown markdownStyles={markdownStyles}>{about}</Markdown>
 		</ScrollView>
-		<Button onPress={onPress} text={'LOGIN'} styles={LoginButtonStyles}/>
+		<Button onPress={onPress} text={'LOGIN WITH FACEBOOK'} styles={LoginButtonStyles}/>
 	</View>
 );
 
@@ -37,9 +36,8 @@ export default ({ about, onPress }) => {
 	if (about) {
 		return (
 			<ScrollableHeader
-				headerMaxHeight={APPBAR_HEIGHT + STATUSBAR_HEIGHT}
+				headerMaxHeight={STATUSBAR_HEIGHT}
 				headerMinHeight={STATUSBAR_HEIGHT}
-				headerImage={headerBackground}
 				header={<Header />}
 				content={<Content onPress={onPress} about={about} />}
 			/>
@@ -53,7 +51,8 @@ styles = {
 	header: {
 		flex: 1,
 		justifyContent: 'space-between',
-		alignItems: 'center'
+		alignItems: 'center',
+		backgroundColor: 'white'
 	},
 	title: {
 		paddingTop: 0,
