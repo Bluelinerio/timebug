@@ -3,7 +3,7 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import { styles } from 'react-native-theme';
 
-const CicleWidth = 52
+const CicleWidth = 32
 export default ({ number, color }) => {
 	return (
 		<View
@@ -13,8 +13,8 @@ export default ({ number, color }) => {
 				justifyContent: 'center',
 				width: CicleWidth,
 				height: CicleWidth,
-				borderRadius: 100,
-				marginRight: 21,
+				borderRadius: 32,
+				marginRight: 10,
 				backgroundColor: color,
 				borderColor: 'white'
 			}}
@@ -22,7 +22,7 @@ export default ({ number, color }) => {
 			<Text
 				style={{
 					fontFamily: 'Helvetica',
-					fontSize: 24,
+					fontSize: 18,
 					textAlign: 'center',
 					color: 'white'
 				}}

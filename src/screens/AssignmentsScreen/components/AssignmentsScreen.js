@@ -24,10 +24,10 @@ const AssignmentComponent = ({ assignment, index, color, isLastItem }) => (
 				...markdownStyles,
 				block: {
 					...markdownStyles.block,
-					width: Dimensions.get('window').width - (!isLastItem ? 130 : 30)
+					width: Dimensions.get('window').width - (!isLastItem ? 70 : 30)
 				},
 				list: {
-					width: Dimensions.get('window').width - (!isLastItem ? 130 : 30)
+					width: Dimensions.get('window').width - (!isLastItem ? 70 : 30)
 				}
 			}}
 		>
