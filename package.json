@@ -21,6 +21,7 @@
     "react-native-easy-markdown": "^1.1.8",
     "react-native-fbsdk": "0.6.0",
     "react-native-image-header-scroll-view": "^0.6.1",
+    "react-native-keyboard-aware-scroll-view": "^0.3.0",
     "react-native-keyboard-spacer": "^0.4.1",
     "react-native-linear-gradient": "^2.3.0",
     "react-native-markdown-syntax": "^0.1.0",
