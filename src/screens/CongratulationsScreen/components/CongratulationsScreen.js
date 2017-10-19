@@ -7,6 +7,19 @@ import { IStep } from "../../../interfaces";
 import { styles } from "react-native-theme";
 import Feather from "react-native-vector-icons/MaterialCommunityIcons";
 
+const DoneButton = ({ color, onPress }) => (
+	<Button
+		onPress={onPress}
+    text="DONE"
+    side="right"
+    styles={{
+			wideButtonBackground: {
+				backgroundColor: color
+			}
+		}}
+	/>
+);
+
 const NextStep = ({nextStepNumber, nextStepColor, nextStepDuration}) => (
   <View style={styles.congratulationsScreenMessageContainer}>
     <Text style={styles.congratulationsScreenMessageText}>See you soon in</Text>
@@ -50,15 +63,9 @@ export default ({
     <View style={styles.congratulationsScreenContainer}>
       <NextStep nextStepNumber={nextStepNumber} nextStepColor={nextStepColor} nextStepDuration={nextStepDuration}/>
       <View style={[styles.congratulationsScreenAbsoluteContainer]}>
-        <Button
+        <DoneButton
           onPress={done}
-          text="DONE"
-          side="right"
-          styles={{
-            wideButtonBackground: {
-              backgroundColor: currentStepColor
-            }
-          }}
+          color={nextStepColor}
         />
       </View>
     </View>
