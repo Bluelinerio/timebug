@@ -13,6 +13,7 @@ import {
 import theme, { styles } from "react-native-theme";
 import { HeaderBackButton } from "react-navigation";
 import autobind from "autobind-decorator";
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import KeyboardSpacer from "react-native-keyboard-spacer";
 import DefaultIndicator from "../../../components/DefaultIndicator";
 import Button from "../../../components/Button";
@@ -131,7 +132,7 @@ class WorkBookScreenContainer extends Component<Props, State> {
     if (!isPending && model && progress) {
       return (
         <View style={{ flex: 1 }}>
-          <ScrollView
+          <KeyboardAwareScrollView
             style={{
               padding: 10
             }}
@@ -150,7 +151,7 @@ class WorkBookScreenContainer extends Component<Props, State> {
             </View>
             {/*{Platform.OS === 'ios' &&*/}
             {/*<KeyboardSpacer onToggle={(keyboardState, keyboardSpace) => this.onToggle(keyboardSpace)}/>}*/}
-          </ScrollView>
+          </KeyboardAwareScrollView>
           <View
             style={[
               styles.workBookNextButton,
