@@ -11,6 +11,7 @@ import { backgroundImage, headerBackground } from '../../../resources/images/';
 import { whiteTwo, darkishBlue, deepBlue, hotPink } from '../../../constants/colors';
 import { APPBAR_HEIGHT, STATUSBAR_HEIGHT, TITLE_OFFSET } from '../../../constants';
 import LoginButtonStyles from '../../../styles/components/LoginButton';
+import markdownStyles from '../../../styles/Markdown/intro';
 
 const Header = () => (
 	<View style={styles.header}>
@@ -45,23 +46,6 @@ export default ({ about, onPress }) => {
 		);
 	} else {
 		return <DefaultIndicator size="large" />;
-	}
-};
-
-const markdownStyles = {
-	block: {
-		alignSelf: 'center',
-		marginBottom: 15,
-		flexWrap: 'wrap',
-		flexDirection: 'row',
-		fontFamily: 'Helvetica',
-		fontSize: 24,
-		fontWeight: '300',
-		fontStyle: 'italic',
-		textAlign: 'center',
-		color: 'rgba(236, 0, 140, 0.72)',
-		marginHorizontal: 15.5,
-		backgroundColor: 'transparent'
 	}
 };
 

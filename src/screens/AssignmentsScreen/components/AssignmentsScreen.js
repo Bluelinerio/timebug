@@ -7,6 +7,7 @@ import Markdown from 'react-native-easy-markdown';
 import Button from '../../../components/Button';
 import { IAssignment, IStep } from '../../../interfaces';
 import AssignmentNumber from './AssignmentNumber';
+import markdownStyles from '../../../styles/Markdown/assignment';
 
 type Props = {
 	assignments: IAssignment[],
@@ -20,25 +21,13 @@ const AssignmentComponent = ({ assignment, index, color, isLastItem }) => (
 		{!isLastItem && <AssignmentNumber number={index + 1} color={color} />}
 		<Markdown
 			markdownStyles={{
-				u: {
-					fontWeight: 'bold',
-					fontFamily: 'Helvetica',
-					color: 'rgba(236, 0, 140, 0.72)'
-				},
+				...markdownStyles,
 				block: {
-					textAlign: 'left',
-					fontFamily: 'Helvetica',
-					fontSize: 18,
-					marginBottom: 15,
+					...markdownStyles.block,
 					width: Dimensions.get('window').width - (!isLastItem ? 130 : 30)
 				},
 				list: {
 					width: Dimensions.get('window').width - (!isLastItem ? 130 : 30)
-				},
-				listItemContent: {
-					textAlign: 'left',
-					fontFamily: 'Helvetica',
-					fontSize: 18
 				}
 			}}
 		>

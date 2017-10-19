@@ -12,6 +12,7 @@ import getImageUrl from '../../../utils/getImageUrl';
 import CustomImage from '../../../components/CustomImage';
 import { headerBackground } from '../../../resources/images';
 import { APPBAR_HEIGHT, STATUSBAR_HEIGHT} from '../../../constants';
+import markdownStyles from '../../../styles/Markdown/assignment';
 
 type Props = {
 	step: IStep
@@ -41,21 +42,7 @@ const Content = ({ subtitle, description, onPress, color }) => (
 		</Text>
 		<ScrollView style={styles.textScreenScrollView}>
 			<Markdown
-				markdownStyles={{
-					u: {
-						fontWeight: 'bold',
-						fontFamily: 'Helvetica',
-						color: 'rgba(236, 0, 140, 0.72)'
-					},
-					block: {
-						textAlign: 'left',
-						fontFamily: 'Helvetica',
-						fontSize: 18,
-						marginBottom: 20,
-						flexWrap: 'wrap',
-						flexDirection: 'row'
-					}
-				}}
+				markdownStyles={markdownStyles}
 			>
 				{description}
 			</Markdown>
