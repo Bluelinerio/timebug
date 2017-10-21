@@ -1,9 +1,9 @@
 // @flow
 
 import { createClient }                               from 'contentful'
-import { CONTENTFUL_ACCESS_TOKEN, CONTENTFUL_SPACE, } from "./constants/config"
+import { CONTENT_DELIVERY_API_ACCESS_TOKEN, CONTENTFUL_SPACE, } from "./constants/config"
 
 export const contentfulClient = createClient({
-  accessToken: CONTENTFUL_ACCESS_TOKEN,
+  accessToken: CONTENT_DELIVERY_API_ACCESS_TOKEN,
   space: CONTENTFUL_SPACE,
 });
