@@ -14,7 +14,7 @@ import {
 }                                                             from '../actions/network';
 import { getAllStepsFromCMS, getStepFromCMSByStep, getStepsColorFromCMS }
                                                               from '../actions/steps';
-import { contentfulClient }                                   from "../contentful";
+import { contentfulClient }                                   from "../clients/contentful";
 import networkState                                           from '../utils/networkState';
 import { IColors, IStep, IColorSchema }                       from "../interfaces";
 import { CONTENTFUL_CONTENT_COLORS, CONTENTFUL_CONTENT_STEP } from "../constants/constants";

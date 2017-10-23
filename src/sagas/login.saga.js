@@ -19,7 +19,7 @@ import {
 }                                      from '../actions/network';
 import { getUserProgress }             from '../actions/user';
 import { CONTENTFUL_CONTENT_LOGIN }    from "../constants/constants";
-import { contentfulClient }            from "../contentful";
+import { contentfulClient }            from '../clients/contentful';
 import networkState                    from '../utils/networkState';
 import { reset }                       from '../HOC/navigation'
 import { AsyncStorage }                from "react-native";
