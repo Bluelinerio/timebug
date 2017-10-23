@@ -18,13 +18,12 @@ import {
   decrementRequestCount
 }                                      from '../actions/network';
 import { getUserProgress }             from '../actions/user';
-import { CONTENTFUL_CONTENT_LOGIN }    from "../constants/constants";
-import { contentfulClient }            from '../clients/contentful';
+import { contentfulClient, CONTENTFUL_CONTENT_LOGIN }           
+                                       from '../clients/contentful';
 import networkState                    from '../utils/networkState';
 import { reset }                       from '../HOC/navigation'
 import { AsyncStorage }                from "react-native";
-import { loginFacebook }               from "../mutations/user";
-import { client }                      from '../clients/apollo'
+import { client, loginFacebook }       from '../clients/apollo'
 
 const { LoginManager, AccessToken } = FBSDK;
 

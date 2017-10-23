@@ -19,8 +19,7 @@ import { setNextForm }                        from '../actions/form';
 import networkState                           from '../utils/networkState';
 import formConfig                             from '../screens/WorkBookScreen/forms';
 import { goBack }                             from '../HOC/navigation';
-import { addStep }                            from "../mutations/user";
-import { client }                             from '../clients/apollo'
+import { client, addStep }                    from '../clients/apollo'
 
 function* getNextForm(action) {
   try {

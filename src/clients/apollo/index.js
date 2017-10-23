@@ -2,7 +2,10 @@ import {
   ApolloClient,
   createNetworkInterface
 } from 'react-apollo';
-import { APOLLO_CONFIG } from '../constants/config';
+import { APOLLO_CONFIG } from '../../constants/config';
+
+
+export * from './mutations/user';
 
 export const networkInterface = createNetworkInterface(APOLLO_CONFIG);
 

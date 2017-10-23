@@ -19,8 +19,7 @@ import {
 import { getUserProgress }             from '../actions/user';
 import { getStepFromCMSByStep }        from '../actions/steps';
 import networkState                    from '../utils/networkState';
-import { getUser }                     from "../mutations/user";
-import { client }                      from '../clients/apollo'
+import { client, getUser }             from '../clients/apollo'
 
 function* getUserProgressWorker(action) {
   try {
