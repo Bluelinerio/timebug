@@ -1,6 +1,8 @@
 // @flow
 
 import { put, takeLatest, cancelled, } from 'redux-saga/effects';
+import { AsyncStorage }                from 'react-native';
+
 import {
   REQUEST,
   GET_USER_PROGRESS,
@@ -15,11 +17,10 @@ import {
   getTokenFromStorage
 }                                      from '../actions/login';
 import { getUserProgress }             from '../actions/user';
-import { getStepFromCMSByStep }         from '../actions/steps';
+import { getStepFromCMSByStep }        from '../actions/steps';
 import networkState                    from '../utils/networkState';
-import { AsyncStorage }                from "react-native";
-import { client }                      from '../mutations/config'
 import { getUser }                     from "../mutations/user";
+import { client }                      from '../clients/apollo'
 
 function* getUserProgressWorker(action) {
   try {

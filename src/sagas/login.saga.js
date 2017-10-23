@@ -24,7 +24,7 @@ import networkState                    from '../utils/networkState';
 import { reset }                       from '../HOC/navigation'
 import { AsyncStorage }                from "react-native";
 import { loginFacebook }               from "../mutations/user";
-import { client }                      from '../mutations/config'
+import { client }                      from '../clients/apollo'
 
 const { LoginManager, AccessToken } = FBSDK;
 

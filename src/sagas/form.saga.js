@@ -20,7 +20,7 @@ import networkState                           from '../utils/networkState';
 import formConfig                             from '../screens/WorkBookScreen/forms';
 import { goBack }                             from '../HOC/navigation';
 import { addStep }                            from "../mutations/user";
-import { client }                             from "../mutations/config";
+import { client }                             from '../clients/apollo'
 
 function* getNextForm(action) {
   try {

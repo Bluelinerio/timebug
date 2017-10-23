@@ -24,19 +24,9 @@ import user     from "./user";
 import form     from "./form";
 import nav      from "./navigation";
 import rootSaga from '../sagas/rootSagas';
+import {client }from '../clients/apollo';
 
 const sagaMiddleware = createSagaMiddleware();
-
-const networkInterface = createNetworkInterface({
-  uri: 'http://2020-test.local.zaraffasoft.com/',
-  opts: {
-    mode: 'no-cors',
-  },
-});
-
-export const client = new ApolloClient({
-  networkInterface: networkInterface
-});
 
 let engine = createEngine('2020-cache');
 

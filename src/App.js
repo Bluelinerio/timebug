@@ -1,7 +1,8 @@
 import React                        from 'react';
 import { ApolloProvider }           from 'react-apollo';
 import { AppRegistry, Platform }    from 'react-native';
-import { store, client }            from './reducers/rootReducer';
+import { store }                    from './reducers/rootReducer';
+import { client }                   from './clients/apollo';
 import ReduxNavigator               from './navigation/reduxNavigator';
 import { APP_NAME }                 from './constants';
 import                                  './styles';
