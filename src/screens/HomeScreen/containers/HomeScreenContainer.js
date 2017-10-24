@@ -4,7 +4,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { ScrollView } from "react-native";
 import theme from "react-native-theme";
-import DashboardContainer from "./DashboardContainer";
 import IntroComponent from "../components/IntroComponent";
 import StepComponent from "../components/StepComponent";
 import DefaultIndicator from "../../../components/DefaultIndicator";
