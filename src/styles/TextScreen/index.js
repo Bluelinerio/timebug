@@ -12,7 +12,6 @@ theme.add({
   },
   textScreenHeader: {
     top: STATUSBAR_HEIGHT + APPBAR_HEIGHT,
-    height: 252,
     width: Dimensions.get('window').width,
     alignItems: 'center',
     paddingTop: Platform.OS === 'ios' ? 28 : 0,
