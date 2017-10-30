@@ -4,24 +4,24 @@ import { darkishBlue }       from '../../constants/colors';
 import { STATUSBAR_HEIGHT, APPBAR_HEIGHT} from '../../constants/';
 
 theme.add({
-  textScreenScreen: {
+  stepScreenScreen: {
     flex: 1,
     flexDirection: 'row',
     paddingHorizontal: 25,
     marginBottom: 30
   },
-  textScreenHeader: {
+  stepScreenHeader: {
     top: STATUSBAR_HEIGHT + APPBAR_HEIGHT,
     width: Dimensions.get('window').width,
     alignItems: 'center',
     paddingTop: Platform.OS === 'ios' ? 28 : 0,
   },
-  textScreenHeaderTitleContainer: {
+  stepScreenHeaderTitleContainer: {
     flex: 1,
     justifyContent: 'space-between',
     alignItems: 'center',
   },
-  textScreenHeaderTitle: {
+  stepScreenHeaderTitle: {
     paddingTop: 10,
     paddingBottom: 30,
     fontFamily: "Helvetica",
@@ -31,16 +31,16 @@ theme.add({
     color: "#ffffff",
     alignSelf: 'flex-end',
   },
-  textScreenContent: {
+  stepScreenContent: {
     marginTop: 2,
     marginBottom: 30
   },
-  textScreenText: {
+  stepScreenText: {
     color: '#000000',
     fontSize: 12,
     textAlign: 'center',
   },
-  textScreenSubtitle: {
+  stepScreenSubtitle: {
     fontFamily: "Helvetica",
     fontSize: 24,
     fontWeight: "300",
@@ -49,7 +49,7 @@ theme.add({
     paddingHorizontal: 35,
     paddingVertical: 20,
   },
-  textScreenTitle: {
+  stepScreenTitle: {
     fontFamily: "Helvetica",
     fontSize: 32,
     color: darkishBlue,
@@ -59,20 +59,20 @@ theme.add({
     paddingHorizontal: 20,
     textAlign: 'left',
   },
-  textScreenImage: {
+  stepScreenImage: {
     flex: 1,
     height: Dimensions.get('window').width * 0.4,
     bottom: 20,
   },
-  textScreenDescription: {
+  stepScreenDescription: {
     flex: 1,
     paddingBottom: 300,
   },
-  textScreenScrollView: {
+  stepScreenScrollView: {
     flex: 1,
     paddingHorizontal: 20,
   },
-  textScreenBackButton: {
+  stepScreenBackButton: {
     position: 'absolute',
     top: 35,
     left: 15,

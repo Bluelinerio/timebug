@@ -45,14 +45,14 @@ const AssignmentButton = ({ color, onPress }) => (
 );
 
 const Content = ({ subtitle, description, onPress, color }) => (
-  <View style={styles.textScreenContent}>
+  <View style={styles.stepScreenContent}>
     <Text
       testID="subtitle"
-      style={[styles.textScreenText, styles.textScreenSubtitle]}
+      style={[styles.stepScreenText, styles.stepScreenSubtitle]}
     >
       {subtitle}
     </Text>
-    <ScrollView style={styles.textScreenScrollView}>
+    <ScrollView style={styles.stepScreenScrollView}>
       <Markdown markdownStyles={markdownStyles}>{description}</Markdown>
     </ScrollView>
     <AssignmentButton onPress={onPress} color={color} />
@@ -61,7 +61,7 @@ const Content = ({ subtitle, description, onPress, color }) => (
 
 
 const Header = ({ goBack, imageUri, title, number }) => (
-  <View style={[styles.textScreenHeader, { height: HEADER_HEIGHT}]}>
+  <View style={[styles.stepScreenHeader, { height: HEADER_HEIGHT}]}>
     <TouchableOpacity style={{
       position: 'absolute',
       top: 50,
@@ -102,7 +102,7 @@ const Header = ({ goBack, imageUri, title, number }) => (
       )}
       <Text
         testID="title"
-        style={[styles.textScreenTitle, { 
+        style={[styles.stepScreenTitle, { 
           top: STATUSBAR_HEIGHT + APPBAR_HEIGHT, 
         }]}
       >

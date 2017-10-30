@@ -14,7 +14,7 @@ import {
 import { getAboutInfoFromCMS } from "../../../actions/login";
 import { loginWithFB } from "../../../actions/FBAction";
 import type { IStep } from "../../../interfaces";
-import { goToTextScreen } from "../../../actions/navigate";
+import { goToStepScreen } from "../../../actions/navigate";
 import { onAppLoaded } from "../../../actions/user";
 
 type HomeScreenStep = {
@@ -84,7 +84,7 @@ const mapStateToProps = state => {
   getAllStepsFromCMS: getAllStepsFromCMS.request,
   getAboutInfoFromCMS: getAboutInfoFromCMS.request,
   loginWithFB: loginWithFB.request,
-  goToTextScreen,
+  goToStepScreen,
   onAppLoaded
 })
 class HomeScreenContainer extends Component<Props> {
@@ -102,7 +102,7 @@ class HomeScreenContainer extends Component<Props> {
   }
 
   render() {
-    let { state, loginWithFB, goToTextScreen } = this.props;
+    let { state, loginWithFB, goToStepScreen } = this.props;
     switch (state.type) {
       case LOADING:
         return <DefaultIndicator size="large" />;
@@ -122,7 +122,7 @@ class HomeScreenContainer extends Component<Props> {
               color={color}
               totalNumberOfSteps={allSteps.length}
               buttonAction={() =>
-                goToTextScreen({ number: currentStep.number })}
+                goToStepScreen({ number: currentStep.number })}
             />
           </ScrollView>
         );

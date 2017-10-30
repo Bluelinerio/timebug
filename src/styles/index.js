@@ -1,5 +1,5 @@
 export * from './AssignmentsScreen'
-export * from './TextScreen'
+export * from './StepScreen'
 export * from './CongratulationsScreen'
 export * from './WorkBookScreen'
 export * from './components'
