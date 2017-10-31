@@ -59,12 +59,14 @@ renderHeader = () => {
         </View> 
       </View>
     )
-  }```
+  }
+```
 
 ### responsiveFontSize function
 React has several issues with responsive text for ios android platforms. To present a better behavior to the users was necessary to create a function that change the text font size based on the text length.
 
-```  responsiveFontSize = (title)=> {
+```
+  responsiveFontSize = (title)=> {
     const size = title.length || 0;
     if (size < 40) {
       return 32
