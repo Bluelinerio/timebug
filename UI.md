@@ -4,7 +4,7 @@
 The TextScreen.js is a screen component that present to the user a parallax view to the user. The parallax view is scrollable and have a header with background image and responsive text.
 
 ## Expected Behavior
-http://recordit.co/qiuhVh621G/gif/notify
+http://g.recordit.co/qiuhVh621G.gif
 
 
 ### render function
