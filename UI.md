@@ -36,7 +36,8 @@ The code was standardized to be clear and easy to understand.
 ### renderHeader function
 The renderHeader function is passed as a prop called renderForeground to the ParallaxScrollView component
 
-```  renderHeader = () => {
+```
+renderHeader = () => {
     const { step, goToAssignmentsScreen, color } = this.props;
     const { icon, title, number } = step;
     const imageUri = getImageUrl(icon);
@@ -62,6 +63,7 @@ The renderHeader function is passed as a prop called renderForeground to the Par
 
 ### responsiveFontSize function
 React has several issues with responsive text for ios android platforms. To present a better behavior to the users was necessary to create a function that change the text font size based on the text length.
+
 ```  responsiveFontSize = (title)=> {
     const size = title.length || 0;
     if (size < 40) {
