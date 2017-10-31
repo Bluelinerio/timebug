@@ -7,6 +7,8 @@ The TextScreen.js is a screen component that present to the user a parallax view
 http://g.recordit.co/qiuhVh621G.gif
 
 
+## Code
+
 ### render function
 The render funcion was rewrited to use a common component called `react-native-parallax-scroll-view`. It can be found at https://github.com/i6mi6/react-native-parallax-scroll-view.
 The code was standardized to be clear and easy to understand.
