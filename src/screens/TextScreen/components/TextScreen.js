@@ -136,10 +136,10 @@ class TextScreenParallax extends PureComponent {
         renderForeground={this.renderHeader}
     >
       <Content
-      subtitle={step.subtitle}
-      description={step.description}
-      color={color}
-      onPress={() => goToAssignmentsScreen({ number: step.number })} />
+        subtitle={step.subtitle}
+        description={step.description}
+        color={color}
+        onPress={() => goToAssignmentsScreen({ number: step.number })} />
     </ParallaxScrollView>    
     );
   }
