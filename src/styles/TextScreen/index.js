@@ -53,11 +53,6 @@ theme.add({
     fontFamily: "Helvetica",
     fontSize: 32,
     color: darkishBlue,
-    alignSelf: 'flex-end',
-    flex: 1,
-    justifyContent: 'center',
-    paddingHorizontal: 20,
-    textAlign: 'left',
   },
   textScreenImage: {
     flex: 1,
