@@ -8,6 +8,7 @@ http://g.recordit.co/qiuhVh621G.gif
 
 
 ## Code
+As good practice I've remove all render logic and extract to functions that are easier to maintain.
 
 ### render function
 The render funcion was rewrited to use a common component called `react-native-parallax-scroll-view`. It can be found at https://github.com/i6mi6/react-native-parallax-scroll-view.
@@ -83,4 +84,3 @@ React has several issues with responsive text for ios android platforms. To pres
     }
   }
 ```
-As good practice I've remove all render logic and extract to functions that are easier to maintain.
