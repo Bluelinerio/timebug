@@ -106,7 +106,7 @@ class TextScreenParallax extends PureComponent {
 				<Nav goBack={goBack} stepNumber={number} />
 				<View style={styles.headerDirection}>
 					<View style={{ width: '40%' }}>{this.renderHeaderImg(imageUri)}</View>
-					<Text testID="title" style={[styles.textScreenTitle, { width: '60%', fontSize: titleFontSize }]}>
+					<Text numberOfLines={4} ellipsizeMode='tail' testID="title" style={[styles.textScreenTitle, { width: '60%', fontSize: titleFontSize }]}>
 						{title}
 					</Text>
 				</View>
