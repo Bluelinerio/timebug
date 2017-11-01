@@ -61,7 +61,9 @@ const BeginButton = ({ color, onPress }) => (
 
 export default ({ assignments, color, goToWorkBookScreen }) => {
 	return (
-		<ScrollView contentContainerStyle={[styles.assignmentsScreenContainer, { paddingBottom: 30 }]}>
+		<ScrollView 
+			contentContainerStyle={[styles.assignmentsScreenContainer, { paddingBottom: 30 }]}
+			automaticallyAdjustContentInsets={true}>
 			{assignments.map((assignment, index) =>
 				AssignmentComponent({
 					isLastItem: index === assignments.length - 1,
