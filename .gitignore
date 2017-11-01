@@ -22,6 +22,7 @@ DerivedData
 project.xcworkspace
 
 # Gradle
+android/gradle.properties
 /build/
 /RNTester/android/app/build/
 /RNTester/android/app/gradle/
@@ -64,6 +65,21 @@ ios/build
 ios/New Group/
 ios/Pods
 
+# react-native bundle
 android/app/src/main/assets/index.android.bundle
-
 android/app/src/main/assets/index.android.bundle.meta
+ios/main.jsbundle
+
+# Android assets
+android/app/src/main/res/raw/*
+android/app/src/main/res/drawable-mdpi/*
+
+
+
+
+# Andorid key
+android/app/my-release-key.keystore
+# API Keys
+ios/keys.xcconfig
+android/app/keys.properties
+
