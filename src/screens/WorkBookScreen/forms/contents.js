@@ -81,3 +81,33 @@ export const Emotions = t.enums.of([
   'Perceptive',
   'Stupid',
 ], 'Emotions');
+
+export const CharachterStrengths = t.enums.of([
+  'Honesty',
+  'Bravery',
+  'Loyalty',
+  'Discipline',
+  'Compassion',
+  'Open-Heartedness',
+  'Sympathy',
+  'Empathy',
+  'Sense of Humor',
+  'Adventurous',
+  'Intelligent',
+  'Clever',
+], 'CharachterStrengths');
+
+export const CharachterWeaknesses = t.enums.of([
+  'Fear',
+  'Laziness',
+  'Self-doubt',
+  'Dishonesty',
+  'Self-centerdness',
+  'Narcissism',
+  'Impatience',
+  'Disorganized',
+  'Short sightedness',
+  'Shyness',
+  'Closed mindedness'
+
+], 'CharachterWeaknesses');
