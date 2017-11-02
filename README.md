@@ -44,7 +44,11 @@ iOS >= 8, Android >= 4.4
 * `yarn start` in one tab of terminal
 * `yarn test-e2e` in another tab
 
-
+## Once server deployment changes
+* Clear cache and Data for the app (Android)
+* I believe this should work as well on ios
+This is to clear the store that currently holds your key, and skips login, whereas on a new deployment your key is not registered.
+This should be set up as a new issue
 ## How to deploy (Android):
  react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/
  Android Studio > Build > Generate Signed APK
