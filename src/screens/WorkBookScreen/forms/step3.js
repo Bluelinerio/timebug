@@ -7,6 +7,8 @@ export default {
     type: t.struct({
       field: t.list(
         t.struct({
+          strengthsSelfView: CharachterStrengths,
+          resultingGoalsAchieved: t.String
          })
       )
     }),
