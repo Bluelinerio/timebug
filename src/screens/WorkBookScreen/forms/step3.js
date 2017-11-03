@@ -62,21 +62,17 @@ export default {
           },
           strengthFriendView: {
             label:"Select 3-5 charachter strengths from your friend or family member's point of view.",
-            minLines:3,
             maxLines: 5,
             config: {
-              minLines:3,
               maxLines: 5,
             },
             
         },
           weaknessFriendView: {
             label:"Select 3-5 charachter weaknesses from your friend or family member's point of view.",
-            minLines:3,
             maxLines: 5,
             config: {
               minLines:3,
-              maxLines: 5,
             },
           }
         }

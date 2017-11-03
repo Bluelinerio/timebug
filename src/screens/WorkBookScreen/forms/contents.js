@@ -119,3 +119,23 @@ export const InteractionFrequency = t.enums.of([
   'Bi-Monthly',
   'Yearly'
 ], 'InteractionFrequency');
+
+export const GoalTypes = t.enums.of([
+  'Energy & Time Allocation',
+  'Achievement & Skills',
+  'Health Indicators',
+  'Internal Qualities',
+  'Place & Environment',
+  'Material Outcomes',
+  'Relationship Quality'
+], 'GoalTypes');
+
+export const CommonGoalOutcomes = t.enums.of([
+  'Bench Warmer',
+  'Fast Starter',
+  'Breeze Through',
+  '(Self?) Sabotage',
+  'Not For Lack Of Effort',
+  'Right On Point',
+  'Latency Effect'
+], 'CommonGoalOutcomes');
