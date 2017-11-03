@@ -111,3 +111,11 @@ export const CharachterWeaknesses = t.enums.of([
   'Closed mindedness'
 
 ], 'CharachterWeaknesses');
+
+export const InteractionFrequency = t.enums.of([
+  'Daily',
+  'Weekly',
+  'Monthly',
+  'Bi-Monthly',
+  'Yearly'
+], 'InteractionFrequency');
