@@ -21,17 +21,17 @@ const DoneButton = ({ color, onPress }) => (
 );
 
 const NextStep = ({nextStepNumber, nextStepColor, nextStepDuration}) => (
-  <View style={styles.congratulationsScreenMessageContainer}>
-    <Text style={styles.congratulationsScreenMessageText}>See you soon in</Text>
+  <View style={styles.assignmentDoneScreenMessageContainer}>
+    <Text style={styles.assignmentDoneScreenMessageText}>See you soon in</Text>
     <Text
       style={[
-        styles.congratulationsScreenCurrentStep,
-        styles.congratulationsScreenTextColor
+        styles.assignmentDoneScreenCurrentStep,
+        styles.assignmentDoneScreenTextColor
       ]}
     >
       STEP {nextStepNumber}!
     </Text>
-    <View style={styles.congratulationsScreenTimerContainer}>
+    <View style={styles.assignmentDoneScreenTimerContainer}>
       <Feather
         name="clock"
         size={34}
@@ -42,8 +42,8 @@ const NextStep = ({nextStepNumber, nextStepColor, nextStepDuration}) => (
       />
       <Text
         style={[
-          styles.congratulationsScreenDurationText,
-          styles.congratulationsScreenTextColor
+          styles.assignmentDoneScreenDurationText,
+          styles.assignmentDoneScreenTextColor
         ]}
       >
         {nextStepDuration} min
@@ -60,9 +60,9 @@ export default ({
   done
 }) => {
   return (
-    <View style={styles.congratulationsScreenContainer}>
+    <View style={styles.assignmentDoneScreenContainer}>
       <NextStep nextStepNumber={nextStepNumber} nextStepColor={nextStepColor} nextStepDuration={nextStepDuration}/>
-      <View style={[styles.congratulationsScreenAbsoluteContainer]}>
+      <View style={[styles.assignmentDoneScreenAbsoluteContainer]}>
         <DoneButton
           onPress={done}
           color={nextStepColor}

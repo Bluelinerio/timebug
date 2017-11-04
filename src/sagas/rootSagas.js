@@ -5,7 +5,7 @@ import {
 }                                            from './login.saga';
 import {
   goToAssignmentLeadInScreen,
-  goToCongratulationsScreen,
+  goToAssignmentDoneScreen,
   goToHomeScreen,
   goToStepScreen,
   goToWorkBookScreen,
@@ -27,7 +27,7 @@ export default function* rootSaga() {
     goToStepScreen(),
     goToAssignmentLeadInScreen(),
     goToWorkBookScreen(),
-    goToCongratulationsScreen(),
+    goToAssignmentDoneScreen(),
     userProgressSaga(),
     formLoaderSaga(),
     onAppLoadedSaga()

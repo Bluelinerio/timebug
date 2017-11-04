@@ -2,54 +2,54 @@ import theme from 'react-native-theme';
 import { lightBlue } from '../../constants/colors';
 
 theme.add({
-  congratulationsScreenContainer: {
+  assignmentDoneScreenContainer: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-  congratulationsScreenTimerContainer: {
+  assignmentDoneScreenTimerContainer: {
     flex: 0,
     flexDirection: 'row',
   },
-  congratulationsScreenMessageContainer: {
+  assignmentDoneScreenMessageContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     top: 100,
   },
-  congratulationsScreenText: {
+  assignmentDoneScreenText: {
     color: '#000000',
     fontSize: 10,
     fontWeight: 'bold',
   },
-  congratulationsScreenAbsoluteContainer: {
+  assignmentDoneScreenAbsoluteContainer: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'flex-end',
     marginBottom: 30
   },
-  congratulationsScreenCurrentStep: {
+  assignmentDoneScreenCurrentStep: {
     fontFamily: "Helvetica",
     fontSize: 40,
     fontWeight: "bold",
   },
-  congratulationsScreenButtonImage: {
+  assignmentDoneScreenButtonImage: {
     width: 11.5,
     height: 11.5,
     marginRight: 5,
     marginTop: 2,
   },
-  congratulationsScreenDurationText: {
+  assignmentDoneScreenDurationText: {
     fontFamily: "Helvetica",
     fontSize: 12,
     fontWeight: "bold",
     textAlign: "center",
     alignSelf: 'flex-end',
   },
-  congratulationsScreenTextColor: {
+  assignmentDoneScreenTextColor: {
     color: lightBlue,
   },
-  congratulationsScreenMessageText: {
+  assignmentDoneScreenMessageText: {
     fontFamily: "Helvetica",
     fontSize: 20,
     fontWeight: "300",

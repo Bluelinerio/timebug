@@ -1,6 +1,6 @@
 export * from './AssignmentLeadInScreen'
 export * from './StepScreen'
-export * from './CongratulationsScreen'
+export * from './AssignmentDoneScreen'
 export * from './WorkBookScreen'
 export * from './components'
 export * from './containers'

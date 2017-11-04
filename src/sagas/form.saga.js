@@ -9,7 +9,7 @@ import {
 import { getUserProgress }                    from '../actions/user';
 import {
   goToWorkBookScreen,
-  goToCongratulationsScreen,
+  goToAssignmentDoneScreen,
 }                                             from '../actions/navigate';
 import {
   incrementRequestCount,
@@ -85,7 +85,7 @@ function* getNextForm(action) {
 
           },
         });
-        yield put(goToCongratulationsScreen());
+        yield put(goToAssignmentDoneScreen());
       }
     }
 

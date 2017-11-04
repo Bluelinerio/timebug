@@ -4,7 +4,7 @@ import CardStackStyleInterpolator from "../utils/CustomCardStackStyleInterpolato
 import HomeScreen from "../screens/HomeScreen";
 import StepScreen from "../screens/StepScreen";
 import AssignmentLeadInScreen from "../screens/AssignmentLeadInScreen";
-import CongratulationsScreen from "../screens/CongratulationsScreen";
+import AssignmentDoneScreen from "../screens/AssignmentDoneScreen";
 import WorkBookScreen from "../screens/WorkBookScreen";
 
 export const initialRouteName = "HomeScreen";
@@ -27,8 +27,8 @@ const Navigator = StackNavigator(
       screen: WorkBookScreen.screen,
       path: 'step/workbook/:number'
     },
-    CongratulationsScreen: {
-      screen: CongratulationsScreen.screen,
+    AssignmentDoneScreen: {
+      screen: AssignmentDoneScreen.screen,
       path: 'step/finished/:number'
     },
   },

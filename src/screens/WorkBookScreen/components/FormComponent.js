@@ -21,7 +21,7 @@ type Props = {
   onChange(): any,
   formData: any,
   getNextForm(): any,
-  goToCongratulationsScreen(): any
+  goToAssignmentDoneScreen(): any
 };
 
 type State = {}

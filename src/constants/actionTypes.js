@@ -23,7 +23,7 @@ export const GO_TO_HOME_SCREEN                   = 'GO_TO_HOME_SCREEN';
 export const GO_TO_STEP_SCREEN                   = 'GO_TO_STEP_SCREEN';
 export const GO_TO_ASSIGNMENT_LEAD_IN_SCREEN     = 'GO_TO_ASSIGNMENT_LEAD_IN_SCREEN';
 export const GO_TO_WORKBOOK_SCREEN               = 'GO_TO_WORKBOOK_SCREEN';
-export const GO_TO_CONGRATULATIONS_SCREEN        = 'GO_TO_CONGRATULATIONS_SCREEN';
+export const GO_TO_ASSIGNMENT_DONE_SCREEN        = 'GO_TO_ASSIGNMENT_DONE_SCREEN';
 
 //forms
 export const GET_NEXT_FORM = 'GET_NEXT_FORM';

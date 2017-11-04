@@ -9,7 +9,7 @@ import {
   getAllStepsFromCMS
 } from "../../../actions/steps";
 import { IStep } from "../../../interfaces";
-import CongratulationsScreen from "../components/CongratulationsScreen";
+import AssignmentDoneScreen from "../components/AssignmentDoneScreen";
 import { doneWithCongratsScreen } from "../../../actions/navigate";
 
 type Props = {
@@ -56,7 +56,7 @@ const mapStateToProps = state => {
   getAllStepsFromCMS: getAllStepsFromCMS.request,
   done: doneWithCongratsScreen
 })
-class CongratulationsScreenContainer extends Component<Props, State> {
+class AssignmentDoneScreenContainer extends Component<Props, State> {
   static navigationOptions = () => ({
     headerTitleStyle: {
       textAlign: "center",
@@ -90,7 +90,7 @@ class CongratulationsScreenContainer extends Component<Props, State> {
       done
     } = this.props;
     return (
-      <CongratulationsScreen
+      <AssignmentDoneScreen
         done={done}
         currentStepNumber={currentStepNumber}
         nextStepDuration={nextStepDuration}
@@ -102,4 +102,4 @@ class CongratulationsScreenContainer extends Component<Props, State> {
   }
 }
 
-export default CongratulationsScreenContainer;
+export default AssignmentDoneScreenContainer;
