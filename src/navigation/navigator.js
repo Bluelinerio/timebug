@@ -10,11 +10,8 @@ import WorkBookScreen from "../screens/WorkBookScreen";
 export const initialRouteName = "HomeScreen";
 
 // TODO: there's an issue with moving from the current setup where the import of each screen gets you an object that looks like { screen: } rather than a component, so I added 
-const Navigator = StackNavigator(
+const AssignmentFlowNavigator = StackNavigator(
   {
-    HomeScreen : {
-      screen: HomeScreen.screen,
-    },
     StepScreen: {
       screen: StepScreen.screen,
       path: 'step/:number'
@@ -33,7 +30,6 @@ const Navigator = StackNavigator(
     },
   },
   {
-    initialRouteName,
     headerMode: "screen",
     cardStyle: {
       backgroundColor: "white",
@@ -42,7 +38,40 @@ const Navigator = StackNavigator(
     transitionConfig: () => ({
       screenInterpolator: sceneProps => {
         if (
-          ["StepScreen", "HomeScreen"].indexOf(
+          ["StepScreen", "AssignmentFlow"].indexOf(
+            sceneProps.navigation.state.routes[
+              sceneProps.navigation.state.routes.length - 1
+            ].routeName
+          ) !== -1
+        ) {
+          return CardStackStyleInterpolator.forVertical(sceneProps);
+        }
+        return CardStackStyleInterpolator.forHorizontal(sceneProps);
+      }
+    })
+  }
+)
+
+const Navigator = StackNavigator(
+  {
+    HomeScreen : {
+      screen: HomeScreen.screen,
+    },
+    AssignmentFlow: {
+      screen: AssignmentFlowNavigator,
+    }
+  },
+  {
+    initialRouteName,
+    headerMode: 'none',
+    cardStyle: {
+      backgroundColor: "white",
+      opacity: 1
+    },
+    transitionConfig: () => ({
+      screenInterpolator: sceneProps => {
+        if (
+          ["HomeScreen"].indexOf(
             sceneProps.navigation.state.routes[
               sceneProps.navigation.state.routes.length - 1
             ].routeName
