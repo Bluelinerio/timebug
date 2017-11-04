@@ -5,7 +5,7 @@ import {
 	GO_TO_ASSIGNMENTS_SCREEN,
 	GO_TO_CONGRATULATIONS_SCREEN,
 	GO_TO_HOME_SCREEN,
-	GO_TO_TEXT_SCREEN,
+	GO_TO_STEP_SCREEN,
 	GO_TO_WORKBOOK_SCREEN
 } from '../constants/actionTypes';
 import * as navigation from '../HOC/navigation';
@@ -23,8 +23,8 @@ export function* goToHomeScreen() {
 	yield takeLatest(GO_TO_HOME_SCREEN, _goToHomeScreen);
 }
 
-export function* goToTextScreen() {
-	yield takeLatest(GO_TO_TEXT_SCREEN, (action: { number: number }) => navigation.navigate('TextScreen', action));
+export function* goToStepScreen() {
+	yield takeLatest(GO_TO_STEP_SCREEN, (action: { number: number }) => navigation.navigate('StepScreen', action));
 }
 
 export function* goToAssignmentsScreen() {

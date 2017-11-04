@@ -20,7 +20,7 @@ export const GET_TOKEN_FROM_STORAGE    = createRequestTypes('GET_TOKEN_FROM_STOR
 
 //navigation
 export const GO_TO_HOME_SCREEN            = 'GO_TO_HOME_SCREEN';
-export const GO_TO_TEXT_SCREEN            = 'GO_TO_TEXT_SCREEN';
+export const GO_TO_STEP_SCREEN            = 'GO_TO_STEP_SCREEN';
 export const GO_TO_ASSIGNMENTS_SCREEN     = 'GO_TO_ASSIGNMENTS_SCREEN';
 export const GO_TO_WORKBOOK_SCREEN        = 'GO_TO_WORKBOOK_SCREEN';
 export const GO_TO_CONGRATULATIONS_SCREEN = 'GO_TO_CONGRATULATIONS_SCREEN';

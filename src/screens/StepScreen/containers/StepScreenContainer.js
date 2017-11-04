@@ -5,7 +5,7 @@ import theme                     from 'react-native-theme';
 import { connect }               from 'react-redux'
 import DefaultIndicator          from "../../../components/DefaultIndicator";
 import { goToAssignmentsScreen } from "../../../actions/navigate";
-import TextScreen                from "../components/TextScreen"
+import StepScreen                from "../components/StepScreen"
 import { IStep }                 from "../../../interfaces"
 
 type Props = {
@@ -28,7 +28,7 @@ const mapStateToProps = (state) => {
 @connect(mapStateToProps, {
   goToAssignmentsScreen,
 })
-class TextScreenContainer extends Component<Props> {
+class StepScreenContainer extends Component<Props> {
   static navigationOptions = ({ navigation: { state: { params } } }) => ( {
     header: false,
   } );
@@ -41,7 +41,7 @@ class TextScreenContainer extends Component<Props> {
     const { currentStep, step, color } = this.props;
     if (currentStep) {
       return (
-        <TextScreen
+        <StepScreen
           step={currentStep}
           color={color}
           goToAssignmentsScreen={this.props.goToAssignmentsScreen}
@@ -54,4 +54,4 @@ class TextScreenContainer extends Component<Props> {
   }
 }
 
-export default TextScreenContainer
+export default StepScreenContainer
