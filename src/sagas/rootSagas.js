@@ -4,7 +4,7 @@ import {
   getAboutInfoSaga,
 }                                            from './login.saga';
 import {
-  goToAssignmentsScreen,
+  goToAssignmentLeadInScreen,
   goToCongratulationsScreen,
   goToHomeScreen,
   goToStepScreen,
@@ -25,7 +25,7 @@ export default function* rootSaga() {
     fbLoginSaga(),
     goToHomeScreen(),
     goToStepScreen(),
-    goToAssignmentsScreen(),
+    goToAssignmentLeadInScreen(),
     goToWorkBookScreen(),
     goToCongratulationsScreen(),
     userProgressSaga(),

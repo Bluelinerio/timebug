@@ -112,7 +112,7 @@ const Header = ({ goBack, imageUri, title, number }) => (
   </View>
 );
 
-export default ({ step, goToAssignmentsScreen, color }) => (
+export default ({ step, goToAssignmentLeadInScreen, color }) => (
   <ScrollableHeader
     headerMaxHeight={HEADER_HEIGHT}
     headerMinHeight={STATUSBAR_HEIGHT}
@@ -131,7 +131,7 @@ export default ({ step, goToAssignmentsScreen, color }) => (
         subtitle={step.subtitle}
         description={step.description}
         color={color}
-        onPress={() => goToAssignmentsScreen({ number: step.number })}
+        onPress={() => goToAssignmentLeadInScreen({ number: step.number })}
       />
     }
   />

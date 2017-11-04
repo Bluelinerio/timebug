@@ -3,7 +3,7 @@ import React from "react";
 import CardStackStyleInterpolator from "../utils/CustomCardStackStyleInterpolator";
 import HomeScreen from "../screens/HomeScreen";
 import StepScreen from "../screens/StepScreen";
-import AssignmentsScreen from "../screens/AssignmentsScreen";
+import AssignmentLeadInScreen from "../screens/AssignmentLeadInScreen";
 import CongratulationsScreen from "../screens/CongratulationsScreen";
 import WorkBookScreen from "../screens/WorkBookScreen";
 
@@ -14,22 +14,22 @@ const Navigator = StackNavigator(
   {
     HomeScreen : {
       screen: HomeScreen.screen,
-    } ,
+    },
     StepScreen: {
       screen: StepScreen.screen,
       path: 'step/:number'
     },
-    AssignmentsScreen: {
-      screen: AssignmentsScreen.screen,
+    AssignmentLeadInScreen: {
+      screen: AssignmentLeadInScreen.screen,
       path: 'step/leadin/:number'
-    },
-    CongratulationsScreen: {
-      screen: CongratulationsScreen.screen,
-      path: 'step/finished/:number'
     },
     WorkBookScreen: {
       screen: WorkBookScreen.screen,
       path: 'step/workbook/:number'
+    },
+    CongratulationsScreen: {
+      screen: CongratulationsScreen.screen,
+      path: 'step/finished/:number'
     },
   },
   {

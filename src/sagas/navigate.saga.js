@@ -2,7 +2,7 @@
 
 import { takeLatest } from 'redux-saga/effects';
 import {
-	GO_TO_ASSIGNMENTS_SCREEN,
+	GO_TO_ASSIGNMENT_LEAD_IN_SCREEN,
 	GO_TO_CONGRATULATIONS_SCREEN,
 	GO_TO_HOME_SCREEN,
 	GO_TO_STEP_SCREEN,
@@ -27,9 +27,9 @@ export function* goToStepScreen() {
 	yield takeLatest(GO_TO_STEP_SCREEN, (action: { number: number }) => navigation.navigate('StepScreen', action));
 }
 
-export function* goToAssignmentsScreen() {
-	yield takeLatest(GO_TO_ASSIGNMENTS_SCREEN, (action: { number: number, assignments: IAssignment[] }) =>
-		navigation.navigate('AssignmentsScreen', action)
+export function* goToAssignmentLeadInScreen() {
+	yield takeLatest(GO_TO_ASSIGNMENT_LEAD_IN_SCREEN, (action: { number: number, assignments: IAssignment[] }) =>
+		navigation.navigate('AssignmentLeadInScreen', action)
 	);
 }
 

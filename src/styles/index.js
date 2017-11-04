@@ -1,4 +1,4 @@
-export * from './AssignmentsScreen'
+export * from './AssignmentLeadInScreen'
 export * from './StepScreen'
 export * from './CongratulationsScreen'
 export * from './WorkBookScreen'
