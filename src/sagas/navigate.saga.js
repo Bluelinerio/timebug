@@ -29,7 +29,7 @@ export function* goToStepScreen() {
 }
 
 export function* goToAssignmentFlow(){
-	yield takeLatest(GO_TO_ASSIGNMENT_FLOW, (action: { number: number }) => navigation.navigateToStack('AssignmentFlow', action))
+	yield takeLatest(GO_TO_ASSIGNMENT_FLOW, (action: { number: number }) => navigation.navigateToStack('AssignmentFlow', action, 'StepScreen'))
 }
 
 export function* goToAssignmentLeadInScreen() {

@@ -19,12 +19,12 @@ export function navigate(routeName, params) {
 }
 
 //TODO: Refactor
-export function navigateToStack(routeName, params) {
+export function navigateToStack(navigator, params, routeName) {
   if (config.navigator && routeName) {
     let action = NavigationActions.navigate({
-      routeName,
+      routeName: navigator,
       params,
-      action: NavigationActions.init({ routeName: 'StepScreen'}, params)
+      action: NavigationActions.init({ routeName }, params)
     });
     config.navigator.dispatch(action);
   }
