@@ -6,7 +6,8 @@ import {
 	GO_TO_ASSIGNMENT_DONE_SCREEN,
 	GO_TO_HOME_SCREEN,
 	GO_TO_STEP_SCREEN,
-	GO_TO_WORKBOOK_SCREEN
+	GO_TO_WORKBOOK_SCREEN,
+	GO_TO_ASSIGNMENT_FLOW
 } from '../constants/actionTypes';
 import * as navigation from '../HOC/navigation';
 import type, { IAssignment } from '../interfaces';
@@ -25,6 +26,10 @@ export function* goToHomeScreen() {
 
 export function* goToStepScreen() {
 	yield takeLatest(GO_TO_STEP_SCREEN, (action: { number: number }) => navigation.navigate('StepScreen', action));
+}
+
+export function* goToAssignmentFlow(){
+	yield takeLatest(GO_TO_ASSIGNMENT_FLOW, (action: { number: number }) => navigation.navigateToStack('AssignmentFlow', action))
 }
 
 export function* goToAssignmentLeadInScreen() {

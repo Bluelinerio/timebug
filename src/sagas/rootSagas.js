@@ -9,6 +9,7 @@ import {
   goToHomeScreen,
   goToStepScreen,
   goToWorkBookScreen,
+  goToAssignmentFlow
 }                                            from './navigate.saga';
 import {
   getAllStepsSaga,
@@ -25,6 +26,7 @@ export default function* rootSaga() {
     fbLoginSaga(),
     goToHomeScreen(),
     goToStepScreen(),
+    goToAssignmentFlow(),
     goToAssignmentLeadInScreen(),
     goToWorkBookScreen(),
     goToAssignmentDoneScreen(),

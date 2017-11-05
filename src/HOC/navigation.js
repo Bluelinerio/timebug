@@ -18,6 +18,18 @@ export function navigate(routeName, params) {
   }
 }
 
+//TODO: Refactor
+export function navigateToStack(routeName, params) {
+  if (config.navigator && routeName) {
+    let action = NavigationActions.navigate({
+      routeName,
+      params,
+      action: NavigationActions.init({ routeName: 'StepScreen'}, params)
+    });
+    config.navigator.dispatch(action);
+  }
+}
+
 export function goBack() {
   if (config.navigator) {
     let action = NavigationActions.back();
@@ -29,6 +41,7 @@ export function reset(routeName, params) {
   if (config.navigator) {
     const resetAction = NavigationActions.reset({
       index: 0,
+      key: null,
       actions: [
         NavigationActions.navigate({
           routeName,
@@ -37,5 +50,7 @@ export function reset(routeName, params) {
       ],
     });
     config.navigator.dispatch(resetAction);
+
   }
 }
+
