@@ -117,7 +117,9 @@ export const InteractionFrequency = t.enums.of([
   'Weekly',
   'Monthly',
   'Bi-Monthly',
-  'Yearly'
+  'Yearly',
+  'Rarely',
+  'Never'
 ], 'InteractionFrequency');
 
 export const GoalTypes = t.enums.of([

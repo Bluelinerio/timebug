@@ -7,6 +7,10 @@ import step4 from './step4';
 import step5 from './step5';
 import step6 from './step6';
 import step7 from './step7';
+import step8 from './step8';
+import step9 from './step9';
+import step10 from './step10';
+import step11 from './step11';
 
 export default {
   1: step1,
@@ -15,5 +19,9 @@ export default {
   4: step4,
   5: step5,
   6: step6,
-  7: step7
+  7: step7,
+  8: step8,
+  9: step9,
+  10: step10,
+  11: step11
 }
