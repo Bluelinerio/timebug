@@ -15,11 +15,11 @@ export default {
           label: "At what stage of your life was it?"
         },
         memory: {
-          label: "Describe what happend",
+          label: "Describe what happened",
           numberOfLines: 3
         },
         areaOfLife: {
-          label: "What Area Of Life does this belong to?"
+          label: "What area of life does this belong to?"
         },
       }
     }

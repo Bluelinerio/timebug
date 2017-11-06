@@ -8,7 +8,7 @@ export default {
         type: t.struct({
           field: t.list(
             t.struct({
-              boardMembers: t.String,
+              boardMember: t.String,
               lifeCategory: LifeCategory,
               interactionFrequency: InteractionFrequency
              })

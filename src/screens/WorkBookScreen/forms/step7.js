@@ -35,9 +35,8 @@ export default {
         options: {
           fields: {
             observations: {
-                 type: 'textarea' 
-            },
-            field: {
+           
+                 type: 'textarea', 
               auto:'placeholders',
               disableOrder: true,
             },

@@ -8,7 +8,7 @@ export default {
       field: t.list(
         t.struct({
           strengthsSelfView: CharachterStrengths,
-          resultingGoalsAchieved: t.String
+          resultingGoalAchieved: t.String
          })
       )
     }),
@@ -31,7 +31,7 @@ export default {
       field: t.list(
         t.struct({
           weaknessSelfView: CharachterWeaknesses,
-          goalsNotReached: t.String
+          goalNotReached: t.String
          })
       )
     }),

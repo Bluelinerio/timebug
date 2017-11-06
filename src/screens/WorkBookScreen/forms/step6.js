@@ -10,19 +10,19 @@ export default {
                     significantOther: t.String,
                             goalOne:t.String,
                             goalOneSupportPlan: t.String,
-                            goalOneTime: t.String,
+                            goalOneTimeRequired: t.String,
                             goalTwo:t.String,
                             goalTwoSupportPlan: t.String,
-                            goalTwoTime: t.String,
+                            goalTwoTimeRequired: t.String,
                             goalThree:t.String,
                             goalThreeSupportPlan: t.String,
-                            goalThreeTime: t.String,
+                            goalThreeTimeRequired: t.String,
                             goalFour: t.maybe(t.String),
                             goalFourSupportPlan: t.maybe(t.String),
-                            goalFourTime: t.maybe(t.String),
+                            goalFourTimeRequired: t.maybe(t.String),
                             goalFive: t.maybe(t.String),
                             goalFiveSupportPlan: t.maybe(t.String),
-                            goalFiveTime: t.maybe(t.String)
+                            goalFiveTimeRequired: t.maybe(t.String)
                            
                  })
               )
