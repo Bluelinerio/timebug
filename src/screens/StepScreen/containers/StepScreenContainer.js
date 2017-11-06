@@ -1,19 +1,19 @@
 // @flow
 
-import React, { Component }      from 'react'
-import theme                     from 'react-native-theme';
-import { connect }               from 'react-redux'
-import DefaultIndicator          from "../../../components/DefaultIndicator";
-import { goToAssignmentsScreen } from "../../../actions/navigate";
-import TextScreen                from "../components/TextScreen"
-import { IStep }                 from "../../../interfaces"
+import React, { Component } from 'react'
+import theme from 'react-native-theme';
+import { connect } from 'react-redux'
+import DefaultIndicator from "../../../components/DefaultIndicator";
+import { goToAssignmentLeadInScreen } from "../../../actions/navigate";
+import StepScreen from "../components/StepScreen"
+import { IStep } from "../../../interfaces"
 
 type Props = {
   currentStep: IStep,
   navigation: {
     navigate(): any
   },
-  goToAssignmentsScreen(): any
+  goToAssignmentLeadInScreen(): any
 };
 
 const mapStateToProps = (state) => {
@@ -26,9 +26,9 @@ const mapStateToProps = (state) => {
 };
 
 @connect(mapStateToProps, {
-  goToAssignmentsScreen,
+  goToAssignmentLeadInScreen,
 })
-class TextScreenContainer extends Component<Props> {
+class StepScreenContainer extends Component<Props> {
   static navigationOptions = ({ navigation: { state: { params } } }) => ( {
     header: false,
   } );
@@ -41,10 +41,10 @@ class TextScreenContainer extends Component<Props> {
     const { currentStep, step, color } = this.props;
     if (currentStep) {
       return (
-        <TextScreen
+        <StepScreen
           step={currentStep}
           color={color}
-          goToAssignmentsScreen={this.props.goToAssignmentsScreen}
+          goToAssignmentLeadInScreen={this.props.goToAssignmentLeadInScreen}
         />
       )
     } else {
@@ -54,4 +54,4 @@ class TextScreenContainer extends Component<Props> {
   }
 }
 
-export default TextScreenContainer
+export default StepScreenContainer

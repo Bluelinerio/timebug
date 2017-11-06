@@ -45,7 +45,7 @@ function setColorToTheme(color) {
     gradientTopColor: {
       color,
     },
-    congratulationsScreenTextColor: {
+    assignmentDoneScreenTextColor: {
       color,
     },
     themeBackgroundColor: {
