@@ -85,6 +85,7 @@ export default {
         pastFiveYears: {
           auto:'none',
           label:'How did you feel about your work over the past 5 years?',
+          fields: {
           twentyEleven: {
               placeholder:'2011'
           },
@@ -100,6 +101,7 @@ export default {
           twentyFifteen: {
               placeholder:'2015'
           }
+        }
         },
         motivationLevel: {
             label: 'What is your motivation level at work right now?'
@@ -119,6 +121,35 @@ export default {
 
                 }
             }
+        }
+    }
+    }
+  },
+  3: {
+    title: "Take some time to evaluate your shortcomings at work",
+    type: t.struct({
+      whatBossSays: t.String,
+      whatMentorSays: t.maybe(t.String),
+      whatYouSay: t.String,
+      whatPricePaid: t.String
+    }),
+    options: {
+      fields: {
+        whatBossSays: {
+          auto:'none',
+          label:'What would your boss/peer say about your workplace performance?'
+        },
+        whatMentorSays: {
+          auto:'none',
+          label:'What does your work mentor(assuming it is not your boss, otherwise skip this question) think about your workplace performance?'
+        },
+        whatYouSay: {
+            auto:'none',
+            label: 'What do you say, now for yourself - what were your shortcomings over these 5 years?'
+        },
+        whatPricePaid: {
+            auto:'none',
+            label: 'What price did you pay for your self-recognized or boss/colleague-perceived weaknesses over the past 5 years? (can be from multiple jobs)'
         }
     }
     }
