@@ -17,7 +17,7 @@ type Props = {
 };
 
 const AssignmentComponent = ({ assignment, index, color, isLastItem }) => (
-	<View style={styles.assignmentsScreenSlide} key={index}>
+	<View style={styles.assignmentLeadInScreenSlide} key={index}>
 		{!isLastItem && <AssignmentNumber number={index + 1} color={color} />}
 		<Markdown
 			markdownStyles={{
@@ -62,7 +62,7 @@ const BeginButton = ({ color, onPress }) => (
 export default ({ assignments, color, goToWorkBookScreen }) => {
 	return (
 		<ScrollView 
-			contentContainerStyle={[styles.assignmentsScreenContainer, { paddingBottom: 30 }]}
+			contentContainerStyle={[styles.assignmentLeadInScreenContainer, { paddingBottom: 30 }]}
 			automaticallyAdjustContentInsets={true}>
 			{assignments.map((assignment, index) =>
 				AssignmentComponent({

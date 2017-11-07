@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import theme, { styles } from 'react-native-theme';
-import AssignmentsScreen from '../components/AssignmentsScreen';
+import AssignmentLeadInScreen from '../components/AssignmentLeadInScreen';
 import { IAssignment } from '../../../interfaces';
 import DefaultIndicator from '../../../components/DefaultIndicator';
 import { getStepFromCMSByStep } from '../../../actions/steps';
@@ -39,7 +39,7 @@ const mapStateToProps = state => {
 	getStepFromCMSByStep: getStepFromCMSByStep.request,
 	goToWorkBookScreen
 })
-class AssignmentsScreenContainer extends Component<Props, State> {
+class AssignmentLeadInScreenContainer extends Component<Props, State> {
 	static navigationOptions = ({ navigation: { state: { params } } }) => {
 		return {
 			title: 'ASSIGNMENT',
@@ -73,7 +73,7 @@ class AssignmentsScreenContainer extends Component<Props, State> {
       
 		if (assignments) {
 			return (
-				<AssignmentsScreen
+				<AssignmentLeadInScreen
 					getStepFromCMSByStep={getStepFromCMSByStep}
 					assignments={assignments}
 					currentStep={currentStep}
@@ -89,4 +89,4 @@ class AssignmentsScreenContainer extends Component<Props, State> {
 	}
 }
 
-export default AssignmentsScreenContainer;
+export default AssignmentLeadInScreenContainer;

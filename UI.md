@@ -16,7 +16,7 @@ The code was standardized to be clear and easy to understand.
 
 ```
   render() {
-    const { step, goToAssignmentsScreen, color } = this.props;
+    const { step, goToAssignmentLeadInScreen, color } = this.props;
     const headerHeight = Math.round(screen.height * 0.3);
     const imageUri = getImageUrl(step.icon);
 
@@ -34,7 +34,7 @@ The code was standardized to be clear and easy to understand.
         subtitle={step.subtitle}
         description={step.description}
         color={color}
-        onPress={() => goToAssignmentsScreen({ number: step.number })} />
+        onPress={() => goToAssignmentLeadInScreen({ number: step.number })} />
     </ParallaxScrollView>    
     );
   }
@@ -45,7 +45,7 @@ The renderHeader function is passed as a prop called renderForeground to the Par
 
 ```
 renderHeader = () => {
-    const { step, goToAssignmentsScreen, color } = this.props;
+    const { step, goToAssignmentLeadInScreen, color } = this.props;
     const { icon, title, number } = step;
     const imageUri = getImageUrl(icon);
     const titleFontSize = this.responsiveFontSize(title);

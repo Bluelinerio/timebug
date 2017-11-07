@@ -4,11 +4,12 @@ import {
   getAboutInfoSaga,
 }                                            from './login.saga';
 import {
-  goToAssignmentsScreen,
-  goToCongratulationsScreen,
+  goToAssignmentLeadInScreen,
+  goToAssignmentDoneScreen,
   goToHomeScreen,
-  goToTextScreen,
+  goToStepScreen,
   goToWorkBookScreen,
+  goToAssignmentFlow
 }                                            from './navigate.saga';
 import {
   getAllStepsSaga,
@@ -24,10 +25,11 @@ export default function* rootSaga() {
     getAboutInfoSaga(),
     fbLoginSaga(),
     goToHomeScreen(),
-    goToTextScreen(),
-    goToAssignmentsScreen(),
+    goToStepScreen(),
+    goToAssignmentFlow(),
+    goToAssignmentLeadInScreen(),
     goToWorkBookScreen(),
-    goToCongratulationsScreen(),
+    goToAssignmentDoneScreen(),
     userProgressSaga(),
     formLoaderSaga(),
     onAppLoadedSaga()

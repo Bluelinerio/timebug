@@ -78,3 +78,19 @@ You will notice that RCTFBSDK will look for dependencies in one of two locations
 The second option is the correct option for continuous integration systems like buddybuild.
 
 ---- 
+
+----
+
+`symbolicate json.parse error EPIPE on Windows`
+    Replace on react-native/packager/src/Server/symbolicate/symbolicate.js
+    
+    const socket = xpipe.eq(temp.path(affixes));
+
+    with:
+
+
+    const socket = process.platform === 'win32'
+      ? 34712
+      : xpipe.eq(temp.path(affixes));
+
+----
