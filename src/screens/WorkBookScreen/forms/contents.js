@@ -141,3 +141,19 @@ export const CommonGoalOutcomes = t.enums.of([
   'Right On Point',
   'Latency Effect'
 ], 'CommonGoalOutcomes');
+
+export const MajorLifeEvents = t.enums.of([
+  'Got married',
+  'Got divorced',
+  'Had a Child',
+  'Graduated From school',
+  'Dropped out of school',
+  'Got a new job',
+  'Got fired from your job',
+  'Moved to a new place',
+  'Major injury or surgery',
+  'Loss of loved one',
+  'Started a company',
+  'Sold a company',
+  'Other'
+], 'MajorLifeEvents');
