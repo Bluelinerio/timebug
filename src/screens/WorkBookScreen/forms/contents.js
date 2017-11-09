@@ -117,8 +117,66 @@ export const InteractionFrequency = t.enums.of([
   'Weekly',
   'Monthly',
   'Bi-Monthly',
-  'Yearly'
+  'Yearly',
+  'Rarely',
+  'Never'
 ], 'InteractionFrequency');
+
+export const ExerciseFrequency = t.enums.of([
+  'Daily',
+  'Weekly',
+  'Bi-Weekly',
+  'Never'
+], 'ExerciseFrequency');
+
+export const EatingFrequency = t.enums.of([
+  'Once per day',
+  'Twice per day',
+  'Three times per day',
+  'Four times per day',
+  'More than four times per day'
+], 'EatingFrequency');
+
+export const HoursSleep = t.enums.of([
+  'Less than 4',
+  '4-5',
+  '5-6',
+  '6-7',
+  '7-8',
+  'More than 8'
+], 'HoursSleep');
+
+export const BedTimes = t.enums.of([
+  'Before 9 PM',
+  '9-10 PM',
+  '10-11 PM',
+  '11 PM - 12 AM',
+  '12 - 1 AM',
+  'After 1 AM'
+], 'BedTimes');
+
+export const CarryStress = t.enums.of([
+  'Neck',
+  'Shoulders',
+  'Upper Back',
+  'Lower Back',
+  'Glutes',
+  'Other'
+], 'CarryStress');
+
+export const ExerciseTypes = t.enums.of([
+  'Team Sports',
+  'Weights',
+  'Aerobics',
+  'Interval Training',
+  'Yoga',
+  'Martial Arts',
+  'Pilates',
+  'Running',
+  'Other'
+], 'ExerciseTypes');
+
+
 
 export const GoalTypes = t.enums.of([
   'Energy & Time Allocation',
@@ -139,3 +197,27 @@ export const CommonGoalOutcomes = t.enums.of([
   'Right On Point',
   'Latency Effect'
 ], 'CommonGoalOutcomes');
+
+export const MajorLifeEvents = t.enums.of([
+  'Got married',
+  'Got divorced',
+  'Had a Child',
+  'Graduated From school',
+  'Dropped out of school',
+  'Got a new job',
+  'Got fired from your job',
+  'Moved to a new place',
+  'Major injury or surgery',
+  'Loss of loved one',
+  'Started a company',
+  'Sold a company',
+  'Other'
+], 'MajorLifeEvents');
+
+export const PriorityLevels = t.enums.of([
+  'Very High',
+  'High',
+  'Medium',
+  'Low',
+  'Very Low'
+], 'PriorityLevels');
