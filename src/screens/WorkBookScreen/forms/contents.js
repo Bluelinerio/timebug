@@ -221,3 +221,13 @@ export const PriorityLevels = t.enums.of([
   'Low',
   'Very Low'
 ], 'PriorityLevels');
+
+export const AssessmentTypes = t.enums.of([
+  'Career',
+  'Personality & Hobbies',
+  'Health',
+  'Financial',
+  'Relationship',
+  'Place & Environment',
+  'Spirituality'
+], 'AssessmentTypes');
