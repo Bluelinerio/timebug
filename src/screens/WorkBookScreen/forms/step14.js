@@ -173,7 +173,7 @@ export default {
         ),
         totalExpenses: t.Number
       }),
-      net: t.Number
+      net: t.maybe(t.Number)
     }),
     options: {
       fields : {
