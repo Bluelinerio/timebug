@@ -15,7 +15,11 @@ export default {
       })
     ),
     peopleLoved: t.Number,
+<<<<<<< HEAD
     peopleTreatedContempt: t.Number
+=======
+    peopleTreatedContempt: t.maybe(t.Number)
+>>>>>>> develop
       }),
       options:{
         fields:{
@@ -74,7 +78,11 @@ export default {
       ),
       offeredGifts: t.String,
       rememberFeel: t.String,
+<<<<<<< HEAD
       nextTimeReceive: t.String
+=======
+      nextTimeReceive: t.maybe(t.String)
+>>>>>>> develop
      }),
      options: {
        fields: {

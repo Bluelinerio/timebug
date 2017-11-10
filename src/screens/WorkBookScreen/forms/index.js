@@ -43,4 +43,8 @@ export default {
   18: step18,
   19: step19,
   20: step20
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> develop

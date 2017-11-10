@@ -54,7 +54,11 @@ export default {
             beyondOuterForm:t.String,
             karma:t.String,
             destinyDeterminedBy:t.String,
+<<<<<<< HEAD
             healedEmotionalWoundsFrom:t.String
+=======
+            healedEmotionalWoundsFrom:t.maybe(t.String)
+>>>>>>> develop
           })
         )
       }),

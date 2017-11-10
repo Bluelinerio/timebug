@@ -59,6 +59,7 @@ export default {
             item: {
                 fields:{
                     goal:{
+<<<<<<< HEAD
                         placeholder:'Goal'
                     },
                     degreeMet:{
@@ -66,6 +67,15 @@ export default {
                     },
                     why:{
                         placeholder:'Why?'
+=======
+                        label:'Goal'
+                    },
+                    degreeMet:{
+                        label:'To what degree did you meet the goal on a scale of 1-10'
+                    },
+                    why:{
+                        label:'Why?'
+>>>>>>> develop
                     }
                 }
 

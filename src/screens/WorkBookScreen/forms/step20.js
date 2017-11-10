@@ -1,4 +1,5 @@
 import t from "../components/templates";
+<<<<<<< HEAD
 import { AssessmentTypes } from "./contents";
 
 export default {
@@ -72,3 +73,13 @@ export default {
       })
     }
 }
+=======
+
+
+export default {
+    1:{ 
+
+      
+    }
+};
+>>>>>>> develop

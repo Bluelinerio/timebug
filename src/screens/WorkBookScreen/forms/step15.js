@@ -12,7 +12,11 @@ export default {
           timeChange: t.String,
           whatAchieved: t.String,
           activityFeelings: t.String,
+<<<<<<< HEAD
           aloneOrPartner: t.String
+=======
+          aloneOrPartner: t.maybe(t.String)
+>>>>>>> develop
         })
       )      
     }),

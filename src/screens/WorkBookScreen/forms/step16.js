@@ -53,7 +53,11 @@ export default {
           label: 'What type of exercise do you do?'
         },
         topFitnessGoals: {
+<<<<<<< HEAD
           label:"What were your top 3 fitness goals in 2011-201 5and how did you do with them?(Refer to Day 7's typical outcomes",
+=======
+          label:"What were your top 3 fitness goals in 2011-201 5and how did you do with them?(Refer to Day 7's typical outcomes)",
+>>>>>>> develop
           item: {
             fields: {
               auto: 'placeholders'
@@ -111,7 +115,11 @@ export default {
           }
         },
         takeSupplements: {
+<<<<<<< HEAD
           label:'Do you take supplements?(Vitamins, protein shakes, etc',
+=======
+          label:'Do you take supplements?(Vitamins, protein shakes, etc)',
+>>>>>>> develop
           fields: {
             auto: 'labels'
           }
@@ -148,7 +156,11 @@ export default {
       sleepQuality: t.Number,
       sleepIssues: t.String,
       bedTimes: BedTimes,
+<<<<<<< HEAD
       takeEnergizer: t.String
+=======
+      takeEnergizer: t.maybe(t.String)
+>>>>>>> develop
 
     }),
     options: {
@@ -202,7 +214,11 @@ export default {
           label:'Do you have any notable health issues? '
         },
         howProminent: {
+<<<<<<< HEAD
           label:'How prominent are the yin your life?(Using a 10pt scale with 1=very little effect to 10=a daily challenge)'
+=======
+          label:'How prominent are they in your life?(Using a 10pt scale with 1=very little effect to 10=a daily challenge)'
+>>>>>>> develop
         },
         sickDays: {
           label:'How often do you get sick(# of days per year on average from 2011-2015)'
@@ -242,13 +258,21 @@ export default {
       awareness: t.struct({
         example1: t.String,
         example2: t.String,
+<<<<<<< HEAD
         example3: t.String
+=======
+        example3: t.maybe(t.String)
+>>>>>>> develop
       })
     }),
     options:{
     fields: {
       stressRange: {
+<<<<<<< HEAD
         label:'What is the range of your stress levels throughout a typical week?(Using a 10pt scale, Choose a number for the low-end and another for the high-end, with 1=total tranquility and 10=major nervous breakdown)',
+=======
+        label:'What is the range of your stress levels throughout a typical week?(Using a 10pt scale;Choose a number for the low-end and another for the high-end, with 1=total tranquility and 10=major nervous breakdown',
+>>>>>>> develop
         fields: {
           lowEnd: {
             placeholder:'Low-End'
