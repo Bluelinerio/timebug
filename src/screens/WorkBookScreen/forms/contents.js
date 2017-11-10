@@ -220,7 +220,6 @@ export const PriorityLevels = t.enums.of([
   'Medium',
   'Low',
   'Very Low'
-<<<<<<< HEAD
 ], 'PriorityLevels');
 
 export const AssessmentTypes = t.enums.of([
@@ -232,6 +231,3 @@ export const AssessmentTypes = t.enums.of([
   'Place & Environment',
   'Spirituality'
 ], 'AssessmentTypes');
-=======
-], 'PriorityLevels');
->>>>>>> develop

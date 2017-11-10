@@ -1,5 +1,4 @@
 import t from "../components/templates";
-<<<<<<< HEAD
 import { AssessmentTypes } from "./contents";
 
 export default {
@@ -69,17 +68,62 @@ export default {
         rank4:AssessmentTypes,
         rank5:AssessmentTypes,
         rank6:AssessmentTypes,
-        rank7:AssessmentTypes
-      })
-    }
-}
-=======
-
-
-export default {
-    1:{ 
-
-      
-    }
+        rank7:AssessmentTypes,
+        career: t.Number,
+        personalityAndHobbies: t.Number,
+        health: t.Number,
+        relationship:t.Number,
+        financial:t.Number,
+        placeAndEnvironment:t.Number,
+        spirituality:t.Number
+      }),
+      options:{
+        fields: {
+        rank1:{
+            label: 'Rank the 7 Areas in terms of the order of importance you gave them over the past 5 years.'
+            
+        },
+        rank2:{
+          auto:'labels'
+        },
+        rank3:{
+          auto:'labels'
+        },
+        rank4:{
+          auto:'labels'
+        },
+        rank5:{
+          auto:'labels'
+        },
+        rank6:{
+          auto:'labels'
+        },
+        rank7:{
+          auto:'labels'
+        },
+        career: {
+          label: 'If the 7 areas were a pie, how would you slice up your energy and motivation level?(Total should = 100%)'
+        },
+        personalityAndHobbies:{
+          auto:'placeholders'
+        },
+        health:{
+          auto:'placeholders'
+        },
+        relationship:{
+          auto:'placeholders'
+        },
+        financial:{
+          auto:'placeholders'
+        },
+        placeAndEnvironment:{
+          auto:'placeholders'
+        },
+        spirituality:{
+          auto:'placeholders'
+        }
+        }
+          }
+      }
+          
 };
->>>>>>> develop
