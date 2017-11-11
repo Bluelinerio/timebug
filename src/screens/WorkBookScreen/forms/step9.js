@@ -11,7 +11,7 @@ export default {
                     roleModel: t.String,
                     lifeCategory: LifeCategory,
                     interactionFrequency: InteractionFrequency,
-                    why: t.String
+                    why: t.maybe(t.String)
                  })
               )
         }),

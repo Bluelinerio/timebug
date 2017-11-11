@@ -131,7 +131,7 @@ export default {
       whatBossSays: t.String,
       whatMentorSays: t.maybe(t.String),
       whatYouSay: t.String,
-      whatPricePaid: t.String
+      whatPricePaid: t.maybe(t.String)
     }),
     options: {
       fields: {
