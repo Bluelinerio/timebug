@@ -6,9 +6,22 @@ export default {
   1:{
     title:'The first way I want to encourage a healthier flow of giving and receiving is to take deep, proactive breaths. As you breathe IN, you receive. As you breathe OUT, you assert or give back to life. So take a deep breath in the nose, filling up the lower belly. Then breathe fully out of the mouth with an open, dropped jaw. Do this fully in both directions. This will show your nervous system how safe you are do engage in the act of giving and receiving. This is the foundational work. Did you do this?',
     type:t.struct({
+      id:t.String,
       yes:t.Boolean,
       no:t.Boolean
-    })
+    }),
+    options: {
+      fields: {
+        id:{
+          hidden: true
+        }
+      }
+    },
+    value : {
+      fields: {
+        id: 'step27+v0.0.0.1'
+      }
+    }
     
   },
   2:{
@@ -106,17 +119,17 @@ export default {
     type:t.struct({
        people:t.list(
          t.struct({
-         person:t.string
+         person:t.String
          })
        ),
        thingsValued:t.list(
         t.struct({
-        thing:t.string
+        thing:t.String
         })
       ),
       relationshipState:t.list(
         t.struct({
-        thing:t.string
+        thing:t.String
         })
       )
     }),
@@ -198,7 +211,7 @@ export default {
     title:'Start with naming ONE need. Are you willing to communicate this need to another person, allowing yourself to receive the support? Start with simple things, to build up confidence. (i.e. I need help with moving some furniture around in my living room. I need a shoulder rub. I need someone to listen while I vent about something that just happened.) Once YOU identify the need, then you can look to your support structure to begin to practice mutual giving and receiving.',
     type:t.struct({
       need:t.String,
-      communicate:t.Struct({
+      communicate:t.struct({
         yes:t.Boolean,
         no:t.Boolean
       })

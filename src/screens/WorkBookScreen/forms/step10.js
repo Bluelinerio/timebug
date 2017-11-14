@@ -6,6 +6,7 @@ export default {
   1: {
     title: "Identify 5-10 different I's. Note how strong each I is for you(on a 1-10 scales with 1=weakest and 10=strongest), and what I would say in a few words.",
     type: t.struct({
+      id:t.String,
       field: t.list(
         t.struct({
           i: t.String,
@@ -16,6 +17,9 @@ export default {
     }),
     options: {
       fields: {
+        id:{
+          hidden: true
+        },
         field: {
           item: {
             fields: {
@@ -51,6 +55,11 @@ export default {
             maxLines: 10,
           },
         },
+      }
+    },
+    value : {
+      fields: {
+        id: 'step10+v0.0.0.1'
       }
     }
   },

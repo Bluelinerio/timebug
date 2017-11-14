@@ -5,6 +5,7 @@ export default {
     1:{ 
         title:'Imagine different areas of your garden, as in the Life Categories which you have created back on Day 2. Who planted most of the seeds in your garden over the course of your life?',
         type: t.struct({
+           id:t.String,
            garden:t.list(
                t.struct({
                    areaOfGarden:LifeCategory,
@@ -15,6 +16,9 @@ export default {
         }),
         options:{
             fields:{
+                id:{
+                    hidden: true
+                },
                 garden:{
                     item:{
                         fields:{
@@ -30,7 +34,13 @@ export default {
                     }
                 }
             }
+        },
+        value : {
+          fields: {
+            id: 'step21+v0.0.0.1'
+          }
         }
+
     },
     2:{
         title:'Are you committed to taking full ownership of your life garden going forward?',

@@ -6,6 +6,7 @@ export default {
     1: {
         title: "Using the same Day 5 goals, make a list of 10-15 goals and classify them according to the 7 Outcomes.",
         type: t.struct({
+          id: t.String,
             field: t.list(
                 t.struct({
                     goal: t.String,
@@ -15,6 +16,9 @@ export default {
         }),
         options: {
           fields: {
+            id: {
+              hidden: true
+            },
             field: {
               auto:'placeholders',
               disableOrder: true,
@@ -23,6 +27,11 @@ export default {
                 maxLines: 15,
               },
             },
+          }
+        },
+        value: {
+          fields: {
+            id:'step7+v0.0.0.1'
           }
         }
       },

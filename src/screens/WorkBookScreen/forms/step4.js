@@ -6,6 +6,7 @@ export default {
     1: {
         title: "List 3-15 potential Board members who can positively impact different areas of your life.",
         type: t.struct({
+          id:t.String,
           field: t.list(
             t.struct({
               boardMember: t.String,
@@ -16,6 +17,9 @@ export default {
         }),
         options: {
           fields: {
+            id: {
+              hidden: true
+            },
             field: {
               auto: 'placeholders',
               disableOrder: true,
@@ -24,6 +28,11 @@ export default {
                 maxLines: 15,
               },
             },
+          }
+        },
+        value: {
+          fields: {
+            id:'step4+v0.0.0.1'
           }
         }
       },

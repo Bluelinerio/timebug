@@ -5,6 +5,7 @@ export default {
     1:{
       title:'Reflect back on your Day 11 Worksheet (The 5-Year Life Report), and make refinements or additional notes, given what you have seen here. Be more technical than before, especially when it comes to how you spent your Time & Energy.',
       type: t.struct({
+        id:t.String,
         topGoals:t.list(
           t.struct({
           goal: t.String,
@@ -15,6 +16,9 @@ export default {
       }),
       options: {
         fields: {
+          id: {
+            hidden: true
+          },
           topGoals: {
             item: {
               fields: {
@@ -33,6 +37,11 @@ export default {
               }
             }
           }
+        }
+      },
+      value : {
+        fields: {
+          id: 'step20+v0.0.0.1'
         }
       }
 

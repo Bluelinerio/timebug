@@ -6,6 +6,7 @@ export default {
       1: {
         title: "Make a list of 2-10 role models and note their influencial life category, the degree to which you know/interact with them personally and the reason for why you look up to them.",
         type: t.struct({
+            id: t.String,
             field: t.list(
                 t.struct({
                     roleModel: t.String,
@@ -17,6 +18,9 @@ export default {
         }),
         options: {
           fields: {
+            id: {
+              hidden: true
+            },
               
             field: {
                 
@@ -27,6 +31,11 @@ export default {
                 maxLines: 10,
               },
             },
+          }
+        },
+        value : {
+          fields: {
+            id: 'step9+v0.0.0.1'
           }
         }
       }

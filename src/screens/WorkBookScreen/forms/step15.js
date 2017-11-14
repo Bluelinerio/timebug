@@ -5,6 +5,7 @@ export default {
   1: {
     title: 'Gather all of your previous goal data, including time spent, and key achievements ove rthe past 5 years. You can start with 2015 if you feel overwhelmed assesing all 5 years.',
     type: t.struct({
+      id:t.String,
       personalAimsAndHobbies:t.list(
         t.struct({
           personalAimHobby: t.String,
@@ -18,6 +19,9 @@ export default {
     }),
     options:{
       fields:{
+        id: {
+          hidden: true
+        },
         personalAimsAndHobbies:{
           label: 'Top 10 Personal Aims/Hobbies',
           item:{
@@ -44,7 +48,12 @@ export default {
           }
         }
       }
-    } 
+    },
+    value : {
+      fields: {
+        id: 'step15+v0.0.0.1'
+      }
+    }
   },
   2:{
     title:'',

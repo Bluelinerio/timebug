@@ -5,6 +5,7 @@ export default {
   1: {
     title: "How do you spend a typical 168 hour week right now?",
     type: t.struct({
+      id:t.String,
       field: t.list(
         t.struct({
           category: LifeCategory,
@@ -14,6 +15,9 @@ export default {
     }),
     options: {
       fields: {
+        id: {
+          hidden: true
+        },
         field: {
           auto: 'placeholders',
           disableOrder: true,
@@ -22,6 +26,11 @@ export default {
             maxLines: 10,
           },
         },
+      }
+    },
+    value: {
+      fields: {
+        id:'step2+v0.0.0.1'
       }
     }
   },

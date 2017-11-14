@@ -6,6 +6,7 @@ export default {
   1: {
     title: "Take some time to evaluate your salary and compensation over the past 5 years.",
     type: t.struct({
+        id:t.String,
       salaryGrowth: t.struct({
           jan2011Salary: t.Number,
           Dec2015Salary: t.Number
@@ -24,6 +25,9 @@ export default {
     }),
     options: {
       fields: {
+          id:{
+              hidden: true
+          },
         salaryGrowth: {
             label:'How has your salary grown(or not) from 01/11 to 12/15(5 full years)?'
         }, 
@@ -53,6 +57,11 @@ export default {
         }, 
          auto: 'none'
             },
+          },
+          value : {
+            fields: {
+              id: 'step13+v0.0.0.1'
+            }
           }
         },
   2: {

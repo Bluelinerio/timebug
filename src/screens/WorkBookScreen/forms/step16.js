@@ -5,12 +5,16 @@ export default {
   1: {
     title:'Take time to evaluate your general health status',
     type: t.struct({
+      id: t.String,
       priority:PriorityLevels,
       feelNow: t.Number,
       healthyPerson: t.Number
     }),
     options:{ 
       fields: {
+        id:{
+          hidden: true
+        },
         priority: {
           label:'How much of a priority has health been for you?'
         },
@@ -21,6 +25,11 @@ export default {
           label:'Do you think you are a healthy person? (Using a 10pt scale with 1=not very healthy to 10=extremely healthy).'
         }
 
+      }
+    },
+    value : {
+      fields: {
+        id: 'step16+v0.0.0.1'
       }
     }
     

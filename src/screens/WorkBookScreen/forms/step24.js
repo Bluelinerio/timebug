@@ -6,11 +6,22 @@ export default {
     1:{ 
         title:'Did you do your MANTRA today(assigned on Day 21)?',
         type:t.struct({
+          id:t.String,
           yes:t.Boolean,
           no:t.Boolean
         }),
         options: {
+          fields: {
+            id: {
+              hidden: true
+            }
+          },
           auto:'labels'
+        },
+        value : {
+          fields: {
+            id: 'step24+v0.0.0.1'
+          }
         }
     },
     2:{ 

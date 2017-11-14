@@ -5,6 +5,7 @@ export default {
     1:{
        title: 'Take the time to evaluate your spiritual views',
        type: t.struct ({
+         id:t.String,
          currentViews: t.String,
          spiritualInfluence: t.String,
          currentMentors: t.String
@@ -12,6 +13,9 @@ export default {
        }),
        options: {
          fields: {
+           id:{
+             hidden:true
+           },
            currentViews: {
              label: 'What are your current views and feelings about Spirituality? What does it mean to you?',
            },
@@ -23,6 +27,11 @@ export default {
            }
          }
 
+       },
+       value : {
+         fields: {
+           id: 'step19+v0.0.0.1'
+         }
        }
 
     },

@@ -5,6 +5,7 @@ export default {
     1: {
         title: "Choose 3-5 people who you really care about and write down 3-5 of their goals. Determine how you can support them and how much time you estimate it will require.",
         type: t.struct({
+            id:t.String,
             field: t.list(
                 t.struct({
                     significantOther: t.String,
@@ -30,6 +31,9 @@ export default {
 }),
         options: {
           fields: {
+            id: {
+              hidden: true
+            },
             field: {
               auto:'placeholders',
               disableOrder: true,
@@ -39,6 +43,9 @@ export default {
               },
             },
           }
+        },
+        value: {
+          id:'step6+v0.0.0.1'
         }
       }
 };

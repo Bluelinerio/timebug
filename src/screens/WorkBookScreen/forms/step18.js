@@ -4,7 +4,22 @@ import t from "../components/templates";
 export default {
     1: { 
         title:'What changes have taken place in your PE since 2011?(i.e. you moved, downsized your home, moved in with a new roommate, bought more plants for the house, etc).',
-        type: t.String
+        type: t.struct({
+            id:t.String,
+            field:t.String
+        }),
+        options:{
+            fields:{
+                id:{
+                    hidden:true
+                }
+            }
+        },
+        value : {
+          fields: {
+            id: 'step18+v0.0.0.1'
+          }
+        }
     },
     2: {
         title:'Who do you live with right now, and how does that effect your lifestyle and motivation?.',

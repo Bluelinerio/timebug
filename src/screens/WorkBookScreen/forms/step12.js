@@ -6,6 +6,7 @@ export default {
   1: {
     title: "Specify what MLEs took placer over the past 5 years. Working with your Day 2 worksheet,specify how your time was generally shifted as a result.",
     type: t.struct({
+      id:t.String,
       field: t.list(
         t.struct({
           majorLifeEvent: MajorLifeEvents,
@@ -15,6 +16,9 @@ export default {
     }),
     options: {
       fields: {
+        id: {
+          hidden:true
+        },
         field: {
           item: {
             fields: {
@@ -36,6 +40,11 @@ export default {
             maxLines: 15,
           },
         },
+      }
+    },
+    value : {
+      fields: {
+        id: 'step12+v0.0.0.1'
       }
     }
   },

@@ -6,6 +6,7 @@ export default {
 	1: {
 		title: "Gather all of your previous goal data, including time spent and key achievements over the past 5 years. You can start with 2015 if you feel overwhelmed assessing all 5 years.",
 		type: t.struct({
+			id:t.String,
 			field: t.list(
 				t.struct({
 					goal: t.String,
@@ -19,6 +20,9 @@ export default {
 		}),
 		options: {
 			fields: {
+				id: {
+					hidden: true
+				},
 				field: {
 					item: {
 						fields: {
@@ -49,6 +53,11 @@ export default {
 						maxLines: 15,
 					},
 				},
+			}
+		},
+		value : {
+			fields: {
+				id: 'step11+v0.0.0.1'
 			}
 		}
 	},

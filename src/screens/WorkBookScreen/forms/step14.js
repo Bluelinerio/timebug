@@ -5,11 +5,15 @@ export default {
   1: {
     title: "Please evaluate your relationship with money.",
     type: t.struct({
+      id:t.String,
       selfView: t.String,
       othersView: t.String
     }),
     options: {
       fields: {
+        id: {
+          hidden: true
+        },
         selfView: {
           label: "How do you feel about your relationship with money today(emotionally and psychologically?)"
         },
@@ -17,6 +21,11 @@ export default {
           label: "How do others perceive your relationship to money?(Ok to ask another person)"
 
         }
+      }
+    },
+    value : {
+      fields: {
+        id: 'step14+v0.0.0.1'
       }
     }
   },
