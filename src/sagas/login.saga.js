@@ -64,6 +64,7 @@ function* loginWithFBWorker() {
     } else {
       let fbData = yield AccessToken.getCurrentAccessToken();
 
+      //TODO: this one to authenticate
       let graphResponse = yield client.mutate({
         mutation: loginFacebook,
         variables: {

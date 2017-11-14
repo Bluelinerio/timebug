@@ -26,6 +26,11 @@ function* getUserProgressWorker(action) {
     yield put(incrementRequestCount());
     yield networkState.haveConnection();
 
+    //Here is the offending code
+    // client.query executes with an ID comming from asynch storage
+    // since on every new deployment db is clean, searching for an user by id throws error "User not found"
+    // this error could be caught, and instead yield getAboutInfoFromCMS so app progresses to login
+    //TODO: getUser Graphcool
     let graphResponse = yield client.query({
       query: getUser,
       fetchPolicy: 'network-only',
