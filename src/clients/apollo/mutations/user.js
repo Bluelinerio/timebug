@@ -1,15 +1,12 @@
 import gql from 'graphql-tag';
 
 export const loginFacebook = gql`
-  mutation loginFacebook($token: String!) {
-    loginFacebook(facebookToken: $token) {
-      token,
-      user {
-        _id
-        name
-      }
-    }
+query{
+  authenticate(facebookToken: String!){
+    token
+    user
   }
+}
 `;
 
 export const getUser = gql`

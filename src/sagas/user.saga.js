@@ -35,6 +35,7 @@ function* getUserProgressWorker(action) {
     });
 
     let currentStep = 1;
+    console.log(graphResponse)
     if (graphResponse.data.getUser.steps[ 0 ]) {
       currentStep = graphResponse.data.getUser.steps[ 0 ].stepId + 1;
     }

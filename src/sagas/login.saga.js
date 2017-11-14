@@ -71,6 +71,8 @@ function* loginWithFBWorker() {
         },
       });
 
+      console.log(graphResponse)
+      
       let userID = graphResponse.data.loginFacebook.user._id;
 
       yield AsyncStorage.setItem('@2020:userId', userID);
