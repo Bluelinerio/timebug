@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 
 export const loginFacebook = gql`
-query{
-  authenticate(facebookToken: String!){
+query auth($token:String!){
+  authenticate(facebookToken:$token ){
     token
     user
   }
