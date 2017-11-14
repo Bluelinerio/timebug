@@ -28,6 +28,8 @@ import step25 from './step25';
 import step26 from './step26';
 import step27 from './step27';
 import step28 from './step28';
+import step29 from './step29';
+import step30 from './step30';
 
 
 export default {
@@ -57,5 +59,9 @@ export default {
   24: step24,
   25: step25,
   26: step26,
-  27: step28
+  27: step27,
+  28: step28,
+  29: step29,
+  30: step30
+
 }
