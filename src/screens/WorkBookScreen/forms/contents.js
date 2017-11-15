@@ -231,3 +231,30 @@ export const AssessmentTypes = t.enums.of([
   'Place & Environment',
   'Spirituality'
 ], 'AssessmentTypes');
+
+
+export const MeditationTypes = t.enums.of([
+  'Silent Meditation',
+  'Visualization',
+  'Yoga',
+  'Religious',
+  'Prayer',
+  'Other'
+], 'MeditationTypes')
+
+export const TimesOfDay = t.enums.of([
+  'Early Morning',
+  'Morning',
+  'Afternoon',
+  'Late Afternoon',
+  'Early Evening',
+  'Late Night'
+], 'TimesOfDay')
+
+export const AloneOrOthers = t.enums.of([
+  'Alone',
+  'With Others'
+], 'AloneOrOthers')
+
+
+

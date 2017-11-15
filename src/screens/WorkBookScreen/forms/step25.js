@@ -6,7 +6,7 @@ export default {
   1: {
     title: 'Did you do your MANTRA today(assigned on Day 21)?',
     type: t.struct({
-      id: t.String,
+      id:t.maybe(t.String),
       yes: t.Boolean,
       no: t.Boolean
     }),

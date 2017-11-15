@@ -5,7 +5,7 @@ export default {
     1: {
         title: "Choose 3-5 people who you really care about and write down 3-5 of their goals. Determine how you can support them and how much time you estimate it will require.",
         type: t.struct({
-            id:t.String,
+          id:t.maybe(t.String),
             field: t.list(
                 t.struct({
                     significantOther: t.String,

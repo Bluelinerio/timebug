@@ -5,7 +5,7 @@ export default {
   1: {
     title:'Take time to evaluate your general health status',
     type: t.struct({
-      id: t.String,
+      id:t.maybe(t.String),
       priority:PriorityLevels,
       feelNow: t.Number,
       healthyPerson: t.Number
@@ -19,7 +19,7 @@ export default {
           label:'How much of a priority has health been for you?'
         },
         feelNow: {
-          label:'How do you feel now, physical health-wise?(Using a 10pt scale with 1=not very food to 10-excellent'
+          label:'How do you feel now, physical health-wise?(Using a 10pt scale with 1=not very good to 10-excellent'
         },
         healthyPerson: {
           label:'Do you think you are a healthy person? (Using a 10pt scale with 1=not very healthy to 10=extremely healthy).'
@@ -105,7 +105,7 @@ export default {
           label:'What is your typical diet?'
         },
         healthyDiet: {
-          label:'How health is your diet? (Using a 10pt scale with 1=not very healthy to 10=extremely healthy)'
+          label:'How healthy is your diet? (Using a 10pt scale with 1=not very healthy to 10=extremely healthy)'
         },
         eatingFrequency: {
           label:'How often do you eat?'
@@ -260,9 +260,11 @@ export default {
         label:'What is the range of your stress levels throughout a typical week?(Using a 10pt scale, Choose a number for the low-end and another for the high-end, with 1=total tranquility and 10=major nervous breakdown)',
         fields: {
           lowEnd: {
+            auto:'none',
             placeholder:'Low-End'
           },
           highEnd: {
+            auto:'none',
             placeholder:'High-End'
           }
         }

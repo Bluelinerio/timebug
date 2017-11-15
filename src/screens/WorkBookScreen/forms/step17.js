@@ -5,7 +5,7 @@ export default {
   1: { 
       title:'Take time to evaluate your relationship with yourself.',
       type:t.struct({
-        id: t.String,
+        id:t.maybe(t.String),
         selfTreatment: t.Number,
         selfTreatmentLearningCurve: t.Number,
         messagesInHead: t.String,
@@ -46,7 +46,9 @@ export default {
          peopleLoved: {
            label: 'How many of these people do you love, based on their weight or waist size?'
          },
-         peopleTreatedContempt: 'How many of these people do you treat with the same contempt and impatience that you have described about yourself?'
+         peopleTreatedContempt: {
+           label: 'How many of these people do you treat with the same contempt and impatience that you have described about yourself?'
+         }
         }
       },
       value : {

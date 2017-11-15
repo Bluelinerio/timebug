@@ -5,7 +5,7 @@ export default {
   1: {
     title: "Write your best life memory",
     type: t.struct({
-      id:t.String,
+      id:t.maybe(t.String),
       memory: t.String,
       areaOfLife: t.maybe(AreaOfLife),
       stageOfLife: t.maybe(StageOfLife)

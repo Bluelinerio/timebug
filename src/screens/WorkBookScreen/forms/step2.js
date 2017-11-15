@@ -5,7 +5,7 @@ export default {
   1: {
     title: "How do you spend a typical 168 hour week right now?",
     type: t.struct({
-      id:t.String,
+      id:t.maybe(t.String),
       field: t.list(
         t.struct({
           category: LifeCategory,

@@ -5,13 +5,16 @@ export default {
     1: { 
         title:'What changes have taken place in your PE since 2011?(i.e. you moved, downsized your home, moved in with a new roommate, bought more plants for the house, etc).',
         type: t.struct({
-            id:t.String,
+            id:t.maybe(t.String),
             field:t.String
         }),
         options:{
             fields:{
                 id:{
                     hidden:true
+                },
+                field:{
+                    auto:'none'
                 }
             }
         },

@@ -6,7 +6,7 @@ export default {
   1: {
     title: "Identify 5-10 different I's. Note how strong each I is for you(on a 1-10 scales with 1=weakest and 10=strongest), and what I would say in a few words.",
     type: t.struct({
-      id:t.String,
+      id:t.maybe(t.String),
       field: t.list(
         t.struct({
           i: t.String,

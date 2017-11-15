@@ -5,7 +5,7 @@ export default {
     1:{
        title: 'Take the time to evaluate your spiritual views',
        type: t.struct ({
-         id:t.String,
+        id:t.maybe(t.String),
          currentViews: t.String,
          spiritualInfluence: t.String,
          currentMentors: t.String
@@ -70,7 +70,7 @@ export default {
       options: {
         fields:{
           internalQualities: {
-            label: 'What internal qualities(Iqs: Goal Type 4) have been influences - positively or negatively - by Spiritual practices - or lack thereof?',
+            label: 'What internal qualities(Iqs: Goal Type 4) have been influenced - positively or negatively - by Spiritual practices - or lack thereof?',
           },
           insights: {
             item: {

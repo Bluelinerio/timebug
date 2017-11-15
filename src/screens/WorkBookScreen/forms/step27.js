@@ -6,7 +6,7 @@ export default {
   1:{
     title:'The first way I want to encourage a healthier flow of giving and receiving is to take deep, proactive breaths. As you breathe IN, you receive. As you breathe OUT, you assert or give back to life. So take a deep breath in the nose, filling up the lower belly. Then breathe fully out of the mouth with an open, dropped jaw. Do this fully in both directions. This will show your nervous system how safe you are do engage in the act of giving and receiving. This is the foundational work. Did you do this?',
     type:t.struct({
-      id:t.String,
+      id:t.maybe(t.String),
       yes:t.Boolean,
       no:t.Boolean
     }),
@@ -30,7 +30,7 @@ export default {
      inventory:t.String,
      reality2020:t.String,
      replacements:t.String,
-     relationshipToSelf:t.String
+     relationshipToSelf:t.maybe(t.String)
     }),
     options:{
       fields:{
@@ -54,7 +54,7 @@ export default {
     type:t.struct({
       field1:t.String,
       field2:t.String,
-      field3:t.String
+      field3:t.maybe(t.String)
     }),
     options:{
       fields:{
@@ -76,7 +76,7 @@ export default {
     type:t.struct({
       day1:t.String,
       day2:t.String,
-      day3:t.String
+      day3:t.maybe(t.String)
     }),
     options:{
       auto:'labels'
@@ -87,7 +87,7 @@ export default {
     type:t.struct({
       feeling1:t.String,
       feeling2:t.String,
-      feeling3:t.String
+      feeling3:t.maybe(t.String)
     }),
     options:{
       auto:'labels'
@@ -98,7 +98,7 @@ export default {
     type:t.struct({
       field1:t.String,
       field2:t.String,
-      field3:t.String
+      field3:t.maybe(t.String)
     }),
     options:{
       fields:{
@@ -162,7 +162,7 @@ export default {
       mental3:t.String,
       emotional:t.String,
       emotional2:t.String,
-      emotional3:t.String
+      emotional3:t.maybe(t.String)
     }),
     options:{
       physical1:{

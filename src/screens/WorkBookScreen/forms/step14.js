@@ -5,7 +5,7 @@ export default {
   1: {
     title: "Please evaluate your relationship with money.",
     type: t.struct({
-      id:t.String,
+      id:t.maybe(t.String),
       selfView: t.String,
       othersView: t.String
     }),

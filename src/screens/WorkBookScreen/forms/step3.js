@@ -5,7 +5,7 @@ export default {
   1: {
     title: "List 3-5 Charachter Strengths of yours, and the resulting goals that you achieved.",
     type: t.struct({
-      id:t.String,
+      id:t.maybe(t.String),
       field: t.list(
         t.struct({
           strengthsSelfView: CharachterStrengths,

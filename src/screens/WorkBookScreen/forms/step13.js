@@ -6,19 +6,19 @@ export default {
   1: {
     title: "Take some time to evaluate your salary and compensation over the past 5 years.",
     type: t.struct({
-        id:t.String,
+        id:t.maybe(t.String),
       salaryGrowth: t.struct({
           jan2011Salary: t.Number,
           Dec2015Salary: t.Number
         }),
         paidFairly: t.struct({
-            beyondFair: t.maybe(t.Boolean),
-            notFair: t.maybe(t.Boolean),
-            justRight: t.maybe(t.Boolean)
+            beyondFair: t.Boolean,
+            notFair:t.Boolean,
+            justRight: t.Boolean
           }),
           compensationGoals: t.struct({
-            yes: t.maybe(t.Boolean),
-            no: t.maybe(t.Boolean)
+            yes: t.Boolean,
+            no: t.Boolean
           }),
           hoursPerWeek: t.Number,
           hoursChanged: t.maybe(t.String)

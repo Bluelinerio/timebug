@@ -6,7 +6,7 @@ export default {
     1:{ 
         title:'Did you do your MANTRA today(assigned on Day 21)?',
         type:t.struct({
-          id:t.String,
+          id:t.maybe(t.String),
           yes:t.Boolean,
           no:t.Boolean
         }),
@@ -95,7 +95,7 @@ export default {
   title:'For the remainder of the program (8 Nights of Dreaming), try to remember and write your dreams down first thing in the morning – or even if you wake up in the middle of the night, the way Jason described his experience in the video.',
   type:t.list(
     t.struct({
-      dream:t.String
+      dream:t.maybe(t.String)
     })
   ),
   options: {
@@ -111,7 +111,7 @@ export default {
 },
 6: {
   title:'What are your life dreams? This doesn’t have to be restricted to what your literal dreams (during sleep) are. Right now, go beyond 2020 and even your 20/20 BHAGs (from Day 21’s Assignment)... and allow yourself to dream, in this moment, about everything you want your life to be. Anything is possible. Describe what you see.',
-  type:t.String,
+  type:t.maybe(t.String),
   options:{
     auto: 'none'
   }

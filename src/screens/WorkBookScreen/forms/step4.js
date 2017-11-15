@@ -6,7 +6,7 @@ export default {
     1: {
         title: "List 3-15 potential Board members who can positively impact different areas of your life.",
         type: t.struct({
-          id:t.String,
+          id:t.maybe(t.String),
           field: t.list(
             t.struct({
               boardMember: t.String,
@@ -21,6 +21,20 @@ export default {
               hidden: true
             },
             field: {
+              item: {
+                fields:{
+                  boardMember:{
+                    auto:'labels'
+                  },
+                  lifeCategory:{
+                    auto:'labels'
+                  },
+                  interactionFrequency:{
+                    auto:'labels'
+                  }
+                }
+
+              },
               auto: 'placeholders',
               disableOrder: true,
               maxLines: 15,

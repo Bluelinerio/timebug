@@ -6,7 +6,7 @@ export default {
       1: {
         title: "Make a list of 2-10 role models and note their influencial life category, the degree to which you know/interact with them personally and the reason for why you look up to them.",
         type: t.struct({
-            id: t.String,
+          id:t.maybe(t.String),
             field: t.list(
                 t.struct({
                     roleModel: t.String,
@@ -21,10 +21,20 @@ export default {
             id: {
               hidden: true
             },
-              
+            
             field: {
+              item:{
+                fields:{
+                  lifeCategory:{
+                    auto:'labels'
+                  },
+                  interactionFrequency:{
+                    auto:'labels'
+                  }
+                }
+              },
                 
-              auto: 'placeholders',
+              auto: 'labels',
               disableOrder: true,
               maxLines: 10,
               config: {

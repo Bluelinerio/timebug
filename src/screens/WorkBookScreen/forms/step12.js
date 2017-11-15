@@ -6,7 +6,7 @@ export default {
   1: {
     title: "Specify what MLEs took placer over the past 5 years. Working with your Day 2 worksheet,specify how your time was generally shifted as a result.",
     type: t.struct({
-      id:t.String,
+      id:t.maybe(t.String),
       field: t.list(
         t.struct({
           majorLifeEvent: MajorLifeEvents,
