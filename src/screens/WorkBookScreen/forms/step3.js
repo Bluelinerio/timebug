@@ -5,15 +5,19 @@ export default {
   1: {
     title: "List 3-5 Charachter Strengths of yours, and the resulting goals that you achieved.",
     type: t.struct({
+      id:t.maybe(t.String),
       field: t.list(
         t.struct({
           strengthsSelfView: CharachterStrengths,
-          resultingGoalsAchieved: t.String
+          resultingGoalAchieved: t.String
          })
       )
     }),
     options: {
       fields: {
+        id: {
+          hidden:true
+        },
         field: {
           auto: 'placeholders',
           disableOrder: true,
@@ -22,6 +26,11 @@ export default {
             maxLines: 10,
           },
         },
+      },
+      value: {
+        fields: {
+          id:'step3+v0.0.0.1'
+        }
       }
     }
   },
@@ -31,7 +40,7 @@ export default {
       field: t.list(
         t.struct({
           weaknessSelfView: CharachterWeaknesses,
-          goalsNotReached: t.String
+          goalNotReached: t.String
          })
       )
     }),

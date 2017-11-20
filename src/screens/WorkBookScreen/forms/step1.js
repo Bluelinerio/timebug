@@ -5,23 +5,32 @@ export default {
   1: {
     title: "Write your best life memory",
     type: t.struct({
+      id:t.maybe(t.String),
       memory: t.String,
       areaOfLife: t.maybe(AreaOfLife),
       stageOfLife: t.maybe(StageOfLife)
     }),
     options: {
       fields: {
+        id: {
+          hidden: true
+        },
         stageOfLife: {
           label: "At what stage of your life was it?"
         },
         memory: {
-          label: "Describe what happend",
+          label: "Describe what happened",
           numberOfLines: 3
         },
         areaOfLife: {
-          label: "What Area Of Life does this belong to?"
+          label: "What area of life does this belong to?"
         },
       }
+    },
+    value: {
+     fields: {
+       id:'step1+v0.0.0.1'
+     }
     }
   },
   2: {
