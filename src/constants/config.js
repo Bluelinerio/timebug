@@ -4,8 +4,9 @@ export const CONTENTFUL_CREDENTIALS = {
 };
 
 //https://api.graph.cool/simple/v1/cj9w55w851t2l015262zjbauu
-export const APOLLO_ENDPOINT = 'https://server-2020.herokuapp.com/'; 
+export const APOLLO_ENDPOINT = 'https://api.graph.cool/simple/v1/cj9w55w851t2l015262zjbauu'; 
 // 'http://localhost:3000/'
+// /https://server-2020.herokuapp.com/
 // 'http://2020-test.local.zaraffasoft.com/'
 
 

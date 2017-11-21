@@ -64,17 +64,14 @@ function* loginWithFBWorker() {
     } else {
       let fbData = yield AccessToken.getCurrentAccessToken();
 
-      //TODO: this one to authenticate
-      let graphResponse = yield client.mutate({
-        mutation: loginFacebook,
+      let graphResponse = yield client.query({
+        query: loginFacebook,
         variables: {
           token: fbData.accessToken,
         },
       });
 
-      console.log(graphResponse)
-      
-      let userID = graphResponse.data.loginFacebook.user._id;
+      let userID = graphResponse.data.authenticate.user.id;
 
       yield AsyncStorage.setItem('@2020:userId', userID);
 
@@ -84,7 +81,7 @@ function* loginWithFBWorker() {
       yield put(decrementRequestCount());
     }
   } catch (e) {
-    console.log(e);
+    console.error(e)
     yield put(decrementRequestCount());
   } finally {
     if (yield cancelled())
