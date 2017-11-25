@@ -1,25 +1,22 @@
 import gql from 'graphql-tag';
 
 export const loginFacebook = gql`
-  mutation loginFacebook($token: String!) {
-    loginFacebook(facebookToken: $token) {
-      token,
-      user {
-        _id
-        name
-      }
+  query auth($token:String!){
+    authenticate(facebookToken:$token ){
+      token
+      user
     }
   }
 `;
 
 export const getUser = gql`
-  query getUser($id: String!) {
-    getUser(id: $id) {
-      _id
-      name
+  query getUser($id:ID!){
+    User(id:$id){
+      id
       facebookId
-      steps(type: "LAST") {
-        _id
+      name
+      steps(orderBy:stepId_DESC,first:1){
+        id
         stepId
         data
       }
@@ -28,16 +25,10 @@ export const getUser = gql`
 `;
 
 export const addStep = gql`
-  mutation addStep($userId: String!, $step: InputStep!) {
-    addStep(userId: $userId, step: $step) {
-      _id
-      name
-      facebookId
-      steps {
-        _id
-        stepId
-        data
-      }
+  mutation add($userId: ID!, $stepInput: Json!) {
+    addStep(userId: $userId, stepInput: $stepInput) {
+      message
+      user
     }
   }
 `;

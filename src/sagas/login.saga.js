@@ -61,6 +61,15 @@ function* loginWithFBWorker() {
     if(ENVIRONMENT === "TEST"){
       const userID = '1234';
 
+      let graphResponse = yield client.query({
+        query: loginFacebook,
+        variables: {
+          token: fbData.accessToken,
+        },
+      });
+
+      let userID = graphResponse.data.authenticate.user.id;
+
       yield AsyncStorage.setItem('@2020:userId', userID);
 
       yield put(getUserProgress.request(userID, true));
@@ -94,7 +103,7 @@ function* loginWithFBWorker() {
       }
     }
   } catch (e) {
-    console.log(e);
+    console.error(e)
     yield put(decrementRequestCount());
   } finally {
     if (yield cancelled())
