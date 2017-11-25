@@ -14,3 +14,8 @@ export const APOLLO_CONFIG = {
     mode: 'no-cors',
   },
 }
+
+export const ENVIRONMENT = "TEST"
+//DEVELOP
+//PRODUCTION
+//TEST

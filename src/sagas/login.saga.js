@@ -24,6 +24,7 @@ import networkState                    from '../utils/networkState';
 import { reset }                       from '../HOC/navigation'
 import { AsyncStorage }                from "react-native";
 import { client, loginFacebook }       from '../clients/apollo'
+import { ENVIRONMENT } from './../constants/config';
 
 const { LoginManager, AccessToken } = FBSDK;
 
@@ -57,21 +58,8 @@ function* loginWithFBWorker() {
     yield put(incrementRequestCount());
     yield networkState.haveConnection();
 
-    let result = yield LoginManager.logInWithReadPermissions([ 'public_profile', 'email', 'user_friends' ]);
-    if (result.isCancelled) {
-      alert('canceled');
-      yield put(decrementRequestCount());
-    } else {
-      let fbData = yield AccessToken.getCurrentAccessToken();
-
-      let graphResponse = yield client.mutate({
-        mutation: loginFacebook,
-        variables: {
-          token: fbData.accessToken,
-        },
-      });
-
-      let userID = graphResponse.data.loginFacebook.user._id;
+    if(ENVIRONMENT === "TEST"){
+      const userID = '1234';
 
       yield AsyncStorage.setItem('@2020:userId', userID);
 
@@ -79,6 +67,31 @@ function* loginWithFBWorker() {
       yield put(loginWithFB.success());
       yield reset('HomeScreen');
       yield put(decrementRequestCount());
+    }
+    else{
+      let result = yield LoginManager.logInWithReadPermissions([ 'public_profile', 'email', 'user_friends' ]);
+      if (result.isCancelled) {
+        alert('canceled');
+        yield put(decrementRequestCount());
+      } else {
+        let fbData = yield AccessToken.getCurrentAccessToken();
+  
+        let graphResponse = yield client.mutate({
+          mutation: loginFacebook,
+          variables: {
+            token: fbData.accessToken,
+          },
+        });
+  
+        let userID = graphResponse.data.loginFacebook.user._id;
+  
+        yield AsyncStorage.setItem('@2020:userId', userID);
+  
+        yield put(getUserProgress.request(userID, true));
+        yield put(loginWithFB.success());
+        yield reset('HomeScreen');
+        yield put(decrementRequestCount());
+      }
     }
   } catch (e) {
     console.log(e);
