@@ -43,7 +43,7 @@
   },
   "devDependencies": {
     "babel-preset-react-native": "1.9.2",
-    "detox": "5.3.0",
+    "detox": "^5.10.0",
     "flow-bin": "^0.55.0",
     "mocha": "^3.5.3",
     "react-test-renderer": "16.0.0-alpha.6",
@@ -57,6 +57,12 @@
         "build": "xcodebuild -project ios/2020.xcodeproj -scheme 2020 -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
         "type": "ios.simulator",
         "name": "iPhone 5s"
+      },
+      "android.emu.debug": {
+        "binaryPath": "android/app/build/outputs/apk/app-debug.apk",
+        "build": "pushd android && gradlew assembleDebug assembleAndroidTest -DtestBuildType=debug && popd",
+        "type": "android.emulator",
+        "name": "Nexus_5_API_25"
       }
     }
   }
