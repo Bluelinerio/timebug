@@ -39,11 +39,29 @@ iOS >= 8, Android >= 4.4
 * run `react-native run-android`
 
 
-## How to test:
+## How to test on IOS:
 * [install requirements for detox](https://github.com/wix/detox/blob/master/docs/Introduction.GettingStarted.md)
 * `yarn start` in one tab of terminal
 * `yarn test-e2e` in another tab
 
+## How to test on Android:
+*Fullfill all requirements for detox mentioned above
+    - NOTE: Detox is not fully supportive of android yet, but it has enough support to run as is, in order to run, a few hard changes had to be made to android gradle files and project files, these changes have to be watched for future use, specially if we upgrade RN version.
+
+In order to run detox you have to run a few commands (does not work on windows unless you modify detox/scripts code):
+* `yarn start` in one tab of terminal
+* `detox build -c android.emu.debug` in another tab
+* `detox test -c android.emu.debug`
+    
+It is recommended to run both commands with a log level of verbose
+
+It should be noted that the current spec for tests is not working and wont get through login
+
+If you have a different device, other than the nexus 5, you can add any emulated device you have running, just add it's name in package.json
+To find the name use
+* `emulator -list-avds`
+
+On a final note, detox does NOT support physical devices, and it's on a shaky support of genymotion emulator.
 ## Once server deployment changes
 * Clear cache and Data for the app (Android)
 * I believe this should work as well on ios
