@@ -24,7 +24,7 @@ import networkState                    from '../utils/networkState';
 import { reset }                       from '../HOC/navigation'
 import { AsyncStorage }                from "react-native";
 import { client, loginFacebook }       from '../clients/apollo'
-import { ENVIRONMENT } from './../constants/config';
+import { ENVIRONMENT, USER_ID } from './../constants/config';
 
 const { LoginManager, AccessToken } = FBSDK;
 
@@ -59,18 +59,8 @@ function* loginWithFBWorker() {
     yield networkState.haveConnection();
 
     if(ENVIRONMENT === "TEST"){
-      const userID = '1234';
-
-      let graphResponse = yield client.query({
-        query: loginFacebook,
-        variables: {
-          token: fbData.accessToken,
-        },
-      });
-
-      let userID = graphResponse.data.authenticate.user.id;
-
-      yield AsyncStorage.setItem('@2020:userId', userID);
+      //this is a test user ID do not use for any other purpose
+      const userID = USER_ID;
 
       yield put(getUserProgress.request(userID, true));
       yield put(loginWithFB.success());
@@ -85,14 +75,14 @@ function* loginWithFBWorker() {
       } else {
         let fbData = yield AccessToken.getCurrentAccessToken();
   
-        let graphResponse = yield client.mutate({
-          mutation: loginFacebook,
+        let graphResponse = yield client.query({
+          query: loginFacebook,
           variables: {
             token: fbData.accessToken,
           },
         });
   
-        let userID = graphResponse.data.loginFacebook.user._id;
+        let userID = graphResponse.data.authenticate.user.id; 
   
         yield AsyncStorage.setItem('@2020:userId', userID);
   

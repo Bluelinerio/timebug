@@ -1,0 +1,10 @@
+{
+    "ENV": "TEST",
+    "TESTUSERID": "some user id from graphcool"
+}
+
+//Valid ENV values
+
+//DEVELOP
+//TEST
+//PRODUCTION
