@@ -92,6 +92,7 @@ android {
         targetSdkVersion 19
         versionCode 21
         
+        //REQUIRED FOR DETOX DO NOT REMOVE
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         
         versionName "1.3.7"
@@ -127,6 +128,7 @@ android {
         }
     }
 
+    //Required to solve duplicate files error on detox
     packagingOptions {
         exclude 'META-INF/LICENSE'
     }
@@ -142,10 +144,13 @@ dependencies {
 
      compile 'com.facebook.android:facebook-android-sdk:4.22.1)'
     
+    //Required for detox, if this project's RN version is 0.46 or above,
+    //Remove oldOkhttpDebug and replace with newOkhttpDebug
     androidTestCompile(project(path: ":detox", configuration: "oldOkhttpDebug"), {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
+    //Uncomment if some sort of incompatibility surges with jackson
 //     androidTestCompile(project(path: ":detox", configuration: "oldOkhttpDebug"), {
 //      exclude group: 'com.android.support', module: 'support-annotations'
 //      exclude group: 'com.fasterxml.jackson.core', module: 'jackson-core'
