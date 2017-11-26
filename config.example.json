@@ -1,6 +1,6 @@
 {
-    "ENV": "TEST",
-    "TESTUSERID": "some user id from graphcool"
+    "ENV": "DEVELOP",
+    "TESTUSERID": ""
 }
 
 //Valid ENV values
