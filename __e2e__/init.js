@@ -1,4 +1,5 @@
 require('babel-polyfill');
+const apollo = require('apollo-client')
 const detox = require('detox');
 const config = require('../package.json').detox;
 
@@ -7,7 +8,8 @@ before(async () => {
 });
 
 after(async () => {
-  await detox.cleanup();
+  //comment for windows use
+  // await detox.cleanup();
 });
 
 beforeEach(async () => {

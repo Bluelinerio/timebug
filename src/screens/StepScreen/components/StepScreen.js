@@ -36,6 +36,7 @@ const AssignmentButton = ({ color, onPress }) => (
   <Button
     onPress={onPress}
     text="ASSIGNMENTS"
+    buttonTestId={'step_to_assignment_button'}
     styles={{
       wideButtonBackground: {
         backgroundColor: color
@@ -47,12 +48,12 @@ const AssignmentButton = ({ color, onPress }) => (
 const Content = ({ subtitle, description, onPress, color }) => (
   <View style={styles.stepScreenContent}>
     <Text
-      testID="subtitle"
+      testID={"step_subtitle"}
       style={[styles.stepScreenText, styles.stepScreenSubtitle]}
     >
       {subtitle}
     </Text>
-    <ScrollView style={styles.stepScreenScrollView}>
+    <ScrollView style={styles.stepScreenScrollView} testID={"step_content_scrollable"}>
       <Markdown markdownStyles={markdownStyles}>{description}</Markdown>
     </ScrollView>
     <AssignmentButton onPress={onPress} color={color} />
@@ -101,7 +102,6 @@ const Header = ({ goBack, imageUri, title, number }) => (
         />
       )}
       <Text
-        testID="title"
         style={[styles.stepScreenTitle, { 
           top: STATUSBAR_HEIGHT + APPBAR_HEIGHT, 
         }]}
