@@ -67,7 +67,8 @@ const Header = ({ goBack, imageUri, title, number }) => (
       position: 'absolute',
       top: 50,
       left: 15,
-    }} onPress={goBack}>
+    }} onPress={goBack}
+      testID={'step_screen_close_icon'}>
       <Icon name="md-close" size={30} color="white" />
     </TouchableOpacity>
     <View style={{
@@ -84,7 +85,9 @@ const Header = ({ goBack, imageUri, title, number }) => (
         textAlign: "center",
         color: "#ffffff",
         alignSelf: 'flex-end',
-      }}>
+      }}
+        testID={'step_screen_step_number'}
+      >
         STEP {number}
       </Text>
     </View>
