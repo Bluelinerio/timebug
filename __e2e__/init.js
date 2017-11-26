@@ -9,3 +9,7 @@ before(async () => {
 after(async () => {
   await detox.cleanup();
 });
+
+beforeEach(async () => {
+  await device.reloadReactNative();
+})

@@ -4,9 +4,16 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "build-e2e": "detox build",
-    "test-e2e": "detox test",
-    "test": "yarn build-e2e && yarn test-e2e"
+    "build-e2e:ios": "detox build -c ios.sim.debug",
+    "test-e2e:ios": "detox test -c ios.sim.debug -l verbose",
+    "build-e2e:android": "yarn clean:android && detox build -c android.emu.debug",
+    "test-e2e:android": "detox test -c android.emu.debug -l verbose",
+    "test-env":"cp config.test.example.json config.json",
+    "test:ios": "yarn test-env && yarn build-e2e:ios && yarn test-e2e:ios",
+    "test:android": "yarn test-env && yarn test-e2e:android",
+    "run:android": "cp config.example.json config.json && node node_modules/react-native/local-cli/cli.js run-android",
+    "run:ios": "cp config.example.json config.json && node node_modules/react-native/local-cli/cli.js run-ios",
+    "clean:android": "cd android && gradlew clean"
   },
   "dependencies": {
     "apollo-client": "^1.9.3",

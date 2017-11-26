@@ -1,1 +1,1 @@
---recursive --timeout 200000 --bail --watch
+--recursive --timeout 120000 --bail --watch
