@@ -63,7 +63,8 @@ export default ({ assignments, color, goToWorkBookScreen }) => {
 	return (
 		<ScrollView 
 			contentContainerStyle={[styles.assignmentLeadInScreenContainer, { paddingBottom: 30 }]}
-			automaticallyAdjustContentInsets={true}>
+			automaticallyAdjustContentInsets={true}
+			testID={"assignment_scrollable"}>
 			{assignments.map((assignment, index) =>
 				AssignmentComponent({
 					isLastItem: index === assignments.length - 1,

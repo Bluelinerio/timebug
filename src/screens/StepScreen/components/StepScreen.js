@@ -53,7 +53,7 @@ const Content = ({ subtitle, description, onPress, color }) => (
     >
       {subtitle}
     </Text>
-    <ScrollView style={styles.stepScreenScrollView} testID={"step_content_scrollable"}>
+    <ScrollView style={styles.stepScreenScrollView}>
       <Markdown markdownStyles={markdownStyles}>{description}</Markdown>
     </ScrollView>
     <AssignmentButton onPress={onPress} color={color} />

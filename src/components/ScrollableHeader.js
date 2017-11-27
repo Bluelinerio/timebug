@@ -53,7 +53,7 @@ export default class ScrollableHeader extends Component<Props, State> {
 
 		return (
 			<View style={{ flex: 1 }}>
-				<ScrollView
+				<ScrollView  testID={"step_content_scrollable"}
 					style={{ flex: 1 }}
 					scrollEventThrottle={16}
 					automaticallyAdjustContentInsets={false}

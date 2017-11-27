@@ -1,5 +1,4 @@
 require('babel-polyfill');
-const apollo = require('apollo-client')
 const detox = require('detox');
 const config = require('../package.json').detox;
 
