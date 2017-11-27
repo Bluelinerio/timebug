@@ -8,7 +8,7 @@ before(async () => {
 
 after(async () => {
   //comment for windows use
-  // await detox.cleanup();
+  await detox.cleanup();
 });
 
 beforeEach(async () => {
