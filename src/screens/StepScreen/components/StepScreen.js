@@ -7,7 +7,7 @@ import {
   TouchableOpacity
 } from "react-native";
 import { styles } from "react-native-theme";
-import Markdown from "react-native-easy-markdown";
+import Markdown from '../../../Modules/Markdown';
 import Icon from "react-native-vector-icons/Ionicons";
 
 import Button from "../../../components/Button";

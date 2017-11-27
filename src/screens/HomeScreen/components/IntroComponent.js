@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import { Platform, Text, Dimensions, View, TouchableHighlight, ScrollView, Image } from 'react-native';
-import Markdown from 'react-native-easy-markdown';
+import Markdown from '../../../Modules/Markdown';
 import LinearGradient from 'react-native-linear-gradient';
 import Button 	from '../../../components/Button';
 import ScrollableHeader from '../../../components/ScrollableHeader';
