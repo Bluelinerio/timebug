@@ -7,5 +7,10 @@ before(async () => {
 });
 
 after(async () => {
+  //comment for windows use
   await detox.cleanup();
 });
+
+beforeEach(async () => {
+  await device.reloadReactNative();
+})

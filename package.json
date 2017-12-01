@@ -4,9 +4,16 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "build-e2e": "detox build",
-    "test-e2e": "detox test",
-    "test": "yarn build-e2e && yarn test-e2e"
+    "build-e2e:ios": "detox build -c ios.sim.debug",
+    "test-e2e:ios": "detox test -c ios.sim.debug -l verbose",
+    "build-e2e:android": "yarn clean:android && detox build -c android.emu.debug",
+    "test-e2e:android": "detox test -c android.emu.debug -l verbose",
+    "test-env":"cp config.test.example.json config.json",
+    "test:ios": "yarn test-env && yarn build-e2e:ios && yarn test-e2e:ios",
+    "test:android": "yarn test-env && yarn test-e2e:android",
+    "run:android": "cp config.example.json config.json && node node_modules/react-native/local-cli/cli.js run-android",
+    "run:ios": "cp config.example.json config.json && node node_modules/react-native/local-cli/cli.js run-ios",
+    "clean:android": "cd android && gradlew clean"
   },
   "dependencies": {
     "apollo-client": "^1.9.3",
@@ -43,7 +50,7 @@
   },
   "devDependencies": {
     "babel-preset-react-native": "1.9.2",
-    "detox": "5.3.0",
+    "detox": "^5.10.0",
     "flow-bin": "^0.55.0",
     "mocha": "^3.5.3",
     "react-test-renderer": "16.0.0-alpha.6",
@@ -57,6 +64,12 @@
         "build": "xcodebuild -project ios/2020.xcodeproj -scheme 2020 -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
         "type": "ios.simulator",
         "name": "iPhone 5s"
+      },
+      "android.emu.debug": {
+        "binaryPath": "android/app/build/outputs/apk/app-debug.apk",
+        "build": "pushd android && gradlew assembleDebug assembleAndroidTest -DtestBuildType=debug && popd",
+        "type": "android.emulator",
+        "name": "Nexus_5_API_25"
       }
     }
   }

@@ -74,15 +74,15 @@ function* getNextForm(action) {
 
         let formData = yield select((state) => state.form.data);
 
+        //TODO: Add step mutation to new graphcool mutation
         yield client.mutate({
           mutation: addStep,
           variables: {
             userId: userID,
-            step: {
+            stepInput: JSON.stringify({
               stepId: currentStep,
               data: formData,
-            },
-
+            }),
           },
         });
         yield put(goToAssignmentDoneScreen());
