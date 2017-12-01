@@ -24,6 +24,16 @@ export const getUser = gql`
   }
 `;
 
+export const testUser = gql`
+  query testUser($id:ID!){
+    User(id: $id){
+      id
+      name
+      facebookId
+    }
+  }
+`
+
 export const addStep = gql`
   mutation add($userId: ID!, $stepInput: Json!) {
     addStep(userId: $userId, stepInput: $stepInput) {

@@ -13,7 +13,7 @@
     "test:android": "yarn test-env && yarn test-e2e:android",
     "run:android": "cp config.example.json config.json && node node_modules/react-native/local-cli/cli.js run-android",
     "run:ios": "cp config.example.json config.json && node node_modules/react-native/local-cli/cli.js run-ios",
-    "clean:android": "cd android && gradlew clean"
+    "clean:android": "cd android && gradlew clean && cd .."
   },
   "dependencies": {
     "apollo-client": "^1.9.3",

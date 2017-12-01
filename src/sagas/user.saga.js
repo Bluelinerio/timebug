@@ -19,18 +19,13 @@ import {
 import { getUserProgress }             from '../actions/user';
 import { getStepFromCMSByStep }        from '../actions/steps';
 import networkState                    from '../utils/networkState';
-import { client, getUser }             from '../clients/apollo'
+import { client, getUser, testUser }             from '../clients/apollo'
 
 function* getUserProgressWorker(action) {
   try {
     yield put(incrementRequestCount());
     yield networkState.haveConnection();
 
-    //Here is the offending code
-    // client.query executes with an ID comming from asynch storage
-    // since on every new deployment db is clean, searching for an user by id throws error "User not found"
-    // this error could be caught, and instead yield getAboutInfoFromCMS so app progresses to login
-    //TODO: getUser Graphcool
     let graphResponse = yield client.query({
       query: getUser,
       fetchPolicy: 'network-only',
@@ -72,7 +67,21 @@ function* onAppLoaded() {
 
     let userID = yield AsyncStorage.getItem('@2020:userId');
 
-    if (!userID) {
+    let User = null
+
+    if(userID){
+      let graphResponse = yield client.query({
+        query: testUser,
+        fetchPolicy: 'network-only',
+        variables: {
+          id: userID,
+        },
+      });
+  
+      User = graphResponse.data.User
+    }
+
+    if (!User) {
       yield put(getAboutInfoFromCMS.request());
     } else {
       yield put(getTokenFromStorage(userID));
