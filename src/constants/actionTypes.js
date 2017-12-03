@@ -31,3 +31,5 @@ export const GET_NEXT_FORM = 'GET_NEXT_FORM';
 export const SET_NEXT_FORM = 'SET_NEXT_FORM';
 
 export const ON_APP_LOADED = 'ON_APP_LOADED';
+
+export const USER_FINISHED = 'USER_FINISHED';

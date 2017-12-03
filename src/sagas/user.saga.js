@@ -1,12 +1,13 @@
 // @flow
 
-import { put, takeLatest, cancelled, } from 'redux-saga/effects';
+import { put, takeLatest, cancelled, select } from 'redux-saga/effects';
 import { AsyncStorage }                from 'react-native';
 
 import {
   REQUEST,
   GET_USER_PROGRESS,
   ON_APP_LOADED,
+  USER_FINISHED
 }                                      from '../constants/actionTypes';
 import {
   incrementRequestCount,
@@ -16,7 +17,7 @@ import {
   getAboutInfoFromCMS,
   getTokenFromStorage
 }                                      from '../actions/login';
-import { getUserProgress }             from '../actions/user';
+import { getUserProgress, userFinished }             from '../actions/user';
 import { getStepFromCMSByStep }        from '../actions/steps';
 import networkState                    from '../utils/networkState';
 import { client, getUser, testUser }             from '../clients/apollo'
@@ -36,8 +37,15 @@ function* getUserProgressWorker(action) {
 
     let currentStep = 1;
     
+    const maxStep = yield select(state => {
+      return state.steps.allSteps.length;
+    });
+
+    //Restarting if its 30, something smarter should be done
     if (graphResponse.data.User.steps[ 0 ]) {
-      currentStep = graphResponse.data.User.steps[ 0 ].stepId + 1;
+      lastStepSaved = graphResponse.data.User.steps[ 0 ].stepId
+      // currentStep =  lastStepSaved >= maxStep ? 1: lastStepSaved + 1;
+      currentStep = lastStepSaved + 1
     }
 
     if (action.loadSteps) {
@@ -49,7 +57,7 @@ function* getUserProgressWorker(action) {
       formStep: 1,
     };
 
-    yield put(getUserProgress.success(progress));
+    lastStepSaved === maxStep ? yield put(userFinished.finish()) : yield put(getUserProgress.success(progress));
     yield put(decrementRequestCount());
   } catch (e) {
     console.error(e);

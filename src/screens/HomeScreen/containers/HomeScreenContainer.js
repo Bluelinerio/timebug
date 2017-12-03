@@ -6,6 +6,7 @@ import { ScrollView } from "react-native";
 import theme from "react-native-theme";
 import IntroComponent from "../components/IntroComponent";
 import StepComponent from "../components/StepComponent";
+import FinishedComponent from '../components/FinishedComponent';
 import DefaultIndicator from "../../../components/DefaultIndicator";
 import {
   getAllStepsFromCMS,
@@ -25,17 +26,24 @@ type HomeScreenInro = {
   about: string
 };
 
+type HomeScreenFinished = {
+  finished: boolean
+}
+
 const LOADING = "LOADING";
 const INTRO = "INTRO";
 const STEP = "STEP";
+const FINISHED = "FINISHED"
 type HomeScreenState =
   | { type: LOADING }
   | { type: INTRO, component: HomeScreenInro }
-  | { type: STEP, component: HomeScreenStep };
+  | { type: STEP, component: HomeScreenStep }
+  | { type: FINISHED, component: HomeScreenFinished };
 
 type Props = {
   state: HomeScreenState,
   loginWithFB: any,
+  user: any,
   getAllStepsFromCMS: any,
   getAboutInfoFromCMS: any
 };
@@ -49,10 +57,21 @@ const mapStateToProps = state => {
   }
   const isLoggedIn = state.login.isLoggedIn;
 
+  const { finished } = state.user;
+  if( finished ){
+    return {
+      state: {
+        type: FINISHED,
+        component: {
+          finished
+        }
+      }
+    };
+  };
   if (isLoggedIn === true) {
     steps = state.steps;
     const allSteps = steps.allSteps;
-    const currentStep = steps.currentStep;
+    const currentStep = steps.currentStep ? steps.currentStep : { number: 1};
     const color = steps.colors.steps[currentStep.number];
 
     if (!allSteps || !currentStep || !color) {
@@ -111,6 +130,10 @@ class HomeScreenContainer extends Component<Props> {
         return (
           <IntroComponent onPress={loginWithFB} {...state.component} />
         );
+      case FINISHED:
+        return (
+          <FinishedComponent /> 
+        )
       case STEP:
         const { currentStep, color, allSteps} = state.component;
         return (

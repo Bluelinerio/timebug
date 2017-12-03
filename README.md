@@ -121,6 +121,7 @@ The second option is the correct option for continuous integration systems like 
 ----
 
 `symbolicate json.parse error EPIPE on Windows`
+```
     Replace on react-native/packager/src/Server/symbolicate/symbolicate.js
     
     const socket = xpipe.eq(temp.path(affixes));
@@ -132,4 +133,12 @@ The second option is the correct option for continuous integration systems like 
       ? 34712
       : xpipe.eq(temp.path(affixes));
 
+```
 ----
+
+Grammar mistakes:
+
+- Emotion instead of emotions at the last form in step 1
+- All initials uppercased at the title of step 2
+- Life catego- ries at step 2 description
+- Talking t oabout your goals and ... description step 4

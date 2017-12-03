@@ -98,42 +98,41 @@ function* getStepFromCMSByStepWorker(action: { number: number }) {
   const maxStep = yield select(state => {
     return state.steps.allSteps.length;
   });
-  if (action.number === maxStep) {
+  if (action.number > maxStep) {
     yield put(getStepFromCMSByStep.failure("last step reached"));
-    return
   }
-  try {
-    yield put(incrementRequestCount());
-
-    yield networkState.haveConnection();
-
-    let response = yield contentfulClient.getEntries({
-      'fields.number': action.number,
-      content_type: CONTENTFUL_CONTENT_STEP,
-    });
-
-    const step: IStep = response.items.map((s) => s.fields)[ 0 ];
-
-    //const colors = yield getColorsFromCMS();
-    const color = setColorsForCurrentStep(colors, step);
-    setColorToTheme(color);
-    yield put(getStepsColorFromCMS.success(colors));
-    yield put(getStepFromCMSByStep.success(step));
-    
-    // wait!
-    // delay for theme applying
-    yield call(delay, 500);
-
-    yield put(getStepFromCMSByStep.success(step));
-
-    yield put(decrementRequestCount());
-  } catch (e) {
-    yield put(getStepFromCMSByStep.failure(e.message));
-
-    yield put(decrementRequestCount());
-  } finally {
-    if (yield cancelled())
+  else{
+    try {
+      yield put(incrementRequestCount());
+  
+      yield networkState.haveConnection();
+  
+      let response = yield contentfulClient.getEntries({
+        'fields.number': action.number,
+        content_type: CONTENTFUL_CONTENT_STEP,
+      });
+  
+      const step: IStep = response.items.map((s) => s.fields)[ 0 ];
+  
+      //const colors = yield getColorsFromCMS();
+      const color = setColorsForCurrentStep(colors, step);
+      setColorToTheme(color);
+      yield put(getStepsColorFromCMS.success(colors));
+      yield put(getStepFromCMSByStep.success(step));
+      // wait!
+      // delay for theme applying
+      yield call(delay, 500);
+  
+      yield put(getStepFromCMSByStep.success(step));
+  
       yield put(decrementRequestCount());
+    } catch (e) {
+      yield put(getStepFromCMSByStep.failure(e.message));
+      yield put(decrementRequestCount());
+    } finally {
+      if (yield cancelled())
+        yield put(decrementRequestCount());
+    }
   }
 }
 
