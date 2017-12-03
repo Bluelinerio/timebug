@@ -7,14 +7,15 @@ import CustomImage from '../../../components/CustomImage';
 import { startButtonBackgroundImage }   from '../../../resources/images/';
 import { darkishBlue } from '../../../constants/colors';
 
-export default ({duration, onPress}) => (
+export default ({duration, onPress, buttonTestId, timeTestId}) => (
+	// buttonTestId={'step_start_button'} timeTestId={'step_time_text'}
 	<Button containerStyle={style.wideButton} onPress={onPress}>
-		<View style={style.absoluteContainer}>
+		<View style={style.absoluteContainer}  testID={buttonTestId}>
 			<Image source={startButtonBackgroundImage} style={style.startButtonBackground} />
 			<Icon name="md-time" size={34} color="#0e3fa8" style={style.buttonImage} />
 			<Text style={[style.durationText]}>{duration}min</Text>
 		</View>
-		<Text style={style.wideButtonText}>START</Text>
+		<Text style={style.wideButtonText} testID={timeTestId}>START</Text>
 	</Button>
 );
 

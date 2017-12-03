@@ -14,15 +14,15 @@ export default ({ totalNumberOfSteps, currentStep, color, buttonAction }) => {
       <View style={style.challengeInfo}>
 				<CustomImage style={style.headerImage} imageUri={getImageUrl(shortIcon)} />
 				<View style={style.headerText}>
-          <Text style={style.headerTitle}>Next challenge</Text>
-          <Text style={[style.title]}>{type}</Text>
-					<Text style={[style.littleText]}>{stepScreenDescription}</Text>
+          <Text style={style.headerTitle} testID={'step_header_title'}>Next challenge</Text>
+          <Text style={[style.title]} testID={'step_title'}>{type}</Text>
+					<Text style={[style.littleText]} testID={'step_description'}>{stepScreenDescription}</Text>
 					<Text style={[style.step]}>
 						STEP # {number}/{totalNumberOfSteps}
 					</Text>
 				</View>
 			</View>
-			<StartButton duration={duration} onPress={buttonAction} />
+			<StartButton buttonTestId={'step_start_button'} timeTestId={'step_time_text'} duration={duration} onPress={buttonAction} />
 		</Image>
 	);
 };

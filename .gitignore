@@ -83,3 +83,5 @@ android/app/my-release-key.keystore
 ios/keys.xcconfig
 android/app/keys.properties
 
+# Config
+config.json

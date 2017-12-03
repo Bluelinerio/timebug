@@ -28,7 +28,7 @@ const Content = ({ onPress, about }) => (
 		>
 			<Markdown markdownStyles={markdownStyles}>{about}</Markdown>
 		</ScrollView>
-		<Button onPress={onPress} text={'LOGIN WITH FACEBOOK'} styles={LoginButtonStyles}/>
+		<Button onPress={onPress} textTestId={'login_text'} buttonTestId={'login_button'} text={'LOGIN WITH FACEBOOK'} styles={LoginButtonStyles}/>
 	</View>
 );
 

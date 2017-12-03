@@ -74,15 +74,15 @@ function* getNextForm(action) {
 
         let formData = yield select((state) => state.form.data);
 
+        //TODO: Force a type on stepInput, it cannot be handled on graphcool but it can here to avoid erros
         yield client.mutate({
           mutation: addStep,
           variables: {
             userId: userID,
-            step: {
+            stepInput: JSON.stringify({
               stepId: currentStep,
               data: formData,
-            },
-
+            }),
           },
         });
         yield put(goToAssignmentDoneScreen());

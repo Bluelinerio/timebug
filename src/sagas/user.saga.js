@@ -19,7 +19,7 @@ import {
 import { getUserProgress }             from '../actions/user';
 import { getStepFromCMSByStep }        from '../actions/steps';
 import networkState                    from '../utils/networkState';
-import { client, getUser }             from '../clients/apollo'
+import { client, getUser, testUser }             from '../clients/apollo'
 
 function* getUserProgressWorker(action) {
   try {
@@ -35,8 +35,9 @@ function* getUserProgressWorker(action) {
     });
 
     let currentStep = 1;
-    if (graphResponse.data.getUser.steps[ 0 ]) {
-      currentStep = graphResponse.data.getUser.steps[ 0 ].stepId + 1;
+    
+    if (graphResponse.data.User.steps[ 0 ]) {
+      currentStep = graphResponse.data.User.steps[ 0 ].stepId + 1;
     }
 
     if (action.loadSteps) {
@@ -66,7 +67,21 @@ function* onAppLoaded() {
 
     let userID = yield AsyncStorage.getItem('@2020:userId');
 
-    if (!userID) {
+    let User = null
+
+    if(userID){
+      let graphResponse = yield client.query({
+        query: testUser,
+        fetchPolicy: 'network-only',
+        variables: {
+          id: userID,
+        },
+      });
+  
+      User = graphResponse.data.User
+    }
+
+    if (!User) {
       yield put(getAboutInfoFromCMS.request());
     } else {
       yield put(getTokenFromStorage(userID));

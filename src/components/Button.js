@@ -7,13 +7,15 @@ import DefaultStyle from '../styles/components/StepButton';
 type Props = {
 	text: string,
 	side: string,
+	buttonTestId: string,
+	textTestId: string,
 	withArrow: boolean,
     disabled: boolean,
     styles: {},
-	oPress(): any
+	oPress(): any,
 };
 
-export default ({ text, onPress, side, withArrow, disabled, styles }: Props) => {
+export default ({ text, onPress, side, withArrow, disabled, styles, buttonTestId, textTestId }: Props) => {
 	let minWidth = side ? 128 : 240;
 	let paddingHorizontal = side ? 35 : 50;
 	let opacity = disabled ? 0.1 : 1;
@@ -21,7 +23,7 @@ export default ({ text, onPress, side, withArrow, disabled, styles }: Props) => 
 		...DefaultStyle,
 		...(styles || null)
 	}
-	
+
 	return (
 		<View style={[styles.buttonContainer, side ? styles[side] : null]}>
 			<TouchableHighlight
@@ -38,6 +40,7 @@ export default ({ text, onPress, side, withArrow, disabled, styles }: Props) => 
 				onPress={onPress}
 				disabled={disabled}
 				underlayColor={'#c0c0c0'}
+				testID={buttonTestId}
 			>
 				<View style={[side && styles.buttonGroup]}>
 					{side &&
@@ -50,7 +53,7 @@ export default ({ text, onPress, side, withArrow, disabled, styles }: Props) => 
 								color="white"
 							/>
 						)}
-					<Text style={styles.wideButtonText}>{text}</Text>
+					<Text style={styles.wideButtonText} testID={textTestId} >{text}</Text>
 					{side &&
 						side === 'right' &&
 						withArrow && (
