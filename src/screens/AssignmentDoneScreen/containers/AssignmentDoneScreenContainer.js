@@ -47,7 +47,7 @@ const mapStateToProps = state => {
     currentStep,
     currentStepColor,
     nextStepNumber: 0,
-    nextStepColor: null
+    nextStepColor: currentStepColor
   }
 };
 

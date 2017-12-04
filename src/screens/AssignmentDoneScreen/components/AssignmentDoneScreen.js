@@ -29,26 +29,32 @@ const NextStep = ({nextStepNumber, nextStepColor, nextStepDuration}) => (
         styles.assignmentDoneScreenTextColor
       ]}
     >
-      STEP {nextStepNumber}!
+      {
+        (() => nextStepNumber === 0 ? `Our next journey!` : `STEP ${nextStepNumber}!`)()
+      }
     </Text>
-    <View style={styles.assignmentDoneScreenTimerContainer}>
-      <Feather
-        name="clock"
-        size={34}
-        style={{
-          color: nextStepColor,
-          marginTop: 2
-        }}
-      />
-      <Text
-        style={[
-          styles.assignmentDoneScreenDurationText,
-          styles.assignmentDoneScreenTextColor
-        ]}
-      >
-        {nextStepDuration} min
-      </Text>
-    </View>
+      {
+        nextStepNumber === 0 ? null : (
+        <View style={styles.assignmentDoneScreenTimerContainer}>
+            <Feather
+              name="clock"
+              size={34}
+              style={{
+                color: nextStepColor,
+                marginTop: 2
+              }}
+            />
+            <Text
+              style={[
+                styles.assignmentDoneScreenDurationText,
+                styles.assignmentDoneScreenTextColor
+              ]}
+            >
+              {nextStepDuration} min
+            </Text>  
+        </View>
+        )
+      }
   </View>
 );
 export default ({
