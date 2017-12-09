@@ -5,8 +5,7 @@ import { StyleSheet } from "react-native";
 import { connect } from "react-redux";
 import theme, { styles } from "react-native-theme";
 import {
-  getStepFromCMSByStep,
-  getAllStepsFromCMS
+  getStepFromCMSByStep
 } from "../../../actions/steps";
 import { IStep } from "../../../interfaces";
 import AssignmentDoneScreen from "../components/AssignmentDoneScreen";
@@ -16,8 +15,7 @@ type Props = {
   allSteps: IStep[],
   currentStep: IStep,
   currentStepColor: string,
-  getStepFromCMSByStep: any,
-  getAllStepsFromCMS: any
+  getStepFromCMSByStep: any
 };
 
 type State = {};
@@ -53,7 +51,6 @@ const mapStateToProps = state => {
 
 @connect(mapStateToProps, {
   getStepFromCMSByStep: getStepFromCMSByStep.request,
-  getAllStepsFromCMS: getAllStepsFromCMS.request,
   done: doneWithCongratsScreen
 })
 class AssignmentDoneScreenContainer extends Component<Props, State> {
@@ -73,7 +70,6 @@ class AssignmentDoneScreenContainer extends Component<Props, State> {
     if (!this.props.currentStep.number) {
       this.props.getStepFromCMSByStep(1);
     }
-    this.props.getAllStepsFromCMS();
   }
 
   componentWillMount() {
