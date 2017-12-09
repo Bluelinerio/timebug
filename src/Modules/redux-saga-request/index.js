@@ -9,7 +9,7 @@ type RequestActionType<M> = { type: String, meta?: M }
 type RequestActionSuccessType<P, M> = { type: String, payload: P, meta?: M }
 type RequestActionErrorType<M> = { type: String, error: any, meta?: M }
 
-type Request<P, M> = {
+export type Request<P, M> = {
 	BASE: string,
 	STARTED: string,
 	SUCCEEDED: string,
@@ -60,7 +60,7 @@ export function createRequest<P, M>(type: string): Request<P, M> {
 	const CANCELLED = `${type}_CANCELLED`
 	const start = (meta?: M) => ({ type: STARTED, meta })
 	const success = (payload: P, meta?: M) => ({ type: SUCCEEDED, payload, meta })
-	const error = (error: any, meta?: M) => ({ type: ERRORED, meta })
+	const error = (error: any, meta?: M) => ({ type: ERRORED, error, meta })
 	const cancel = (meta?: M) => ({ type: CANCELLED, meta })
 
 	return {
@@ -85,7 +85,7 @@ export function* requestSaga<P, M>(type: Request<P, M>, func: () => Promise<P>, 
 
 	try {
 		// Attempt to call the promise.
-		const payload: P = yield call(...func)
+		const payload: P = yield call(func)
 
 		// If it's successful put the succeeded type.
 		return yield put(success(payload, meta))

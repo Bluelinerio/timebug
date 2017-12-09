@@ -10,7 +10,7 @@ export const INCREMENT_REQUEST_COUNT = 'INCREMENT_REQUEST_COUNT';
 export const DECREMENT_REQUEST_COUNT = 'DECREMENT_REQUEST_COUNT';
 
 //fetching
-export const GET_ALL_STEPS_FROM_CMS    = createRequestTypes('GET_ALL_STEPS_FROM_CMS');
+export const GET_ALL_STEPS_FROM_CMS    = 'GET_ALL_STEPS_FROM_CMS';
 export const GET_STEP_FROM_CMS_BY_STEP = createRequestTypes('GET_STEP_FROM_CMS_BY_STEP');
 export const GET_STEP_COLORS           = createRequestTypes('GET_STEP_COLORS');
 export const GET_ABOUT_INFO_FROM_CMS   = createRequestTypes('GET_ABOUT_INFO_FROM_CMS');

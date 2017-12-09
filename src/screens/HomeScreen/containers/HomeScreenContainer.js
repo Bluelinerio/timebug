@@ -36,7 +36,7 @@ type HomeScreenState =
 type Props = {
   state: HomeScreenState,
   loginWithFB: any,
-  getAllStepsFromCMS: any,
+  getAllStepsFromCMS: () => void,
   getAboutInfoFromCMS: any
 };
 
@@ -50,10 +50,8 @@ const mapStateToProps = state => {
   const isLoggedIn = state.login.isLoggedIn;
 
   if (isLoggedIn === true) {
-    steps = state.steps;
-    const allSteps = steps.allSteps;
-    const currentStep = steps.currentStep;
-    const color = steps.colors.steps[currentStep.number];
+    const { allSteps, currentStep, colors } = state.steps
+    const color = colors.steps[currentStep.number];
 
     if (!allSteps || !currentStep || !color) {
       throw "missing currentStep or allSteps or color" + state.steps;
@@ -81,7 +79,7 @@ const mapStateToProps = state => {
 };
 
 @connect(mapStateToProps, {
-  getAllStepsFromCMS: getAllStepsFromCMS.request,
+  getAllStepsFromCMS: getAllStepsFromCMS.start,
   getAboutInfoFromCMS: getAboutInfoFromCMS.request,
   loginWithFB: loginWithFB.request,
   goToStepScreen,
