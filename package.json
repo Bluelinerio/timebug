@@ -44,7 +44,7 @@
   "devDependencies": {
     "babel-preset-react-native": "1.9.2",
     "detox": "5.3.0",
-    "flow-bin": "^0.55.0",
+    "flow-bin": "0.60.1",
     "mocha": "^3.5.3",
     "react-test-renderer": "16.0.0-alpha.6",
     "remote-redux-devtools": "^0.5.12"
