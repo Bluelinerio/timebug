@@ -82,7 +82,7 @@ function* loginWithFBWorker() {
           },
         });
   
-        let userID = graphResponse.data.authenticate.user.id; 
+        let userID = graphResponse.data.authenticateFB.user.id; 
   
         yield AsyncStorage.setItem('@2020:userId', userID);
   
