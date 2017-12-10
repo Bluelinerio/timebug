@@ -6,11 +6,9 @@ import { NETWORK_ALERT_TIME }       from '../constants/constants';
  * check network connection
  */
 class NetworkState {
-  constructor() {
-    this.currentState = null;
-    this.offlineMode  = false;
-    this.isInProgres  = false;
-  }
+  currentState: ?string = null
+  offlineMode: boolean = false
+  isInProgres: boolean = false
 
   _alert(resolve, reject, dontWorkOffline: boolean) {
     if (!this.offlineMode) {
@@ -38,7 +36,7 @@ class NetworkState {
     }
   }
 
-  _checkConnection(resolve, reject, dontWorkOffline: ?boolean) {
+  _checkConnection(resolve, reject, dontWorkOffline: boolean = false) {
     if (this.isInProgres) {
       resolve();
       return;
@@ -83,11 +81,11 @@ class NetworkState {
     }
   }
 
-  haveConnection(dontWorkOffline: boolean): Promise {
+  haveConnection(dontWorkOffline: boolean): Promise<void> {
     this.isInProgres = true;
-    return new Promise((resolve, reject) => {
-      this._checkConnection(resolve, reject, dontWorkOffline);
-    });
+    const p:Promise<void> = new Promise(({resolve, reject}) => 
+      this._checkConnection(resolve, reject, dontWorkOffline));
+    return p;
   }
 }
 
