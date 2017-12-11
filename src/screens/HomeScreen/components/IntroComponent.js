@@ -1,7 +1,7 @@
 // @flow
 
 import React, { Component } from 'react';
-import { Platform, Text, Dimensions, View, TouchableHighlight, ScrollView, Image } from 'react-native';
+import { StyleSheet, Platform, Text, Dimensions, View, TouchableHighlight, ScrollView, Image } from 'react-native';
 import Markdown from '../../../Modules/Markdown';
 import LinearGradient from 'react-native-linear-gradient';
 import FBButton from '../containers/FBButton'
@@ -41,7 +41,7 @@ export default () =>
 		content={<Content />}
 	/>
 
-styles = {
+const styles = StyleSheet.create({
 	header: {
 		flex: 1,
 		justifyContent: 'space-between',
@@ -65,4 +65,4 @@ styles = {
 		marginTop: 30,
 		marginBottom: 30
 	}
-};
+});
