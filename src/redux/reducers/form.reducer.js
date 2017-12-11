@@ -28,11 +28,9 @@ const initialState: FormState = {
 };
 
 const populate = (action: PopulateFormValueAction, state:FormState):FormState => {
-  debugger;
   const { progress, value } = action
   const { step, form } = action.progress
   const data = state.data || {}
-  debugger;
   return {
     ...state,
     data: {
