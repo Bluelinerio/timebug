@@ -22,7 +22,8 @@ import network  from './reducers/network.reducer'
 import user     from './reducers/user.reducer'
 import form     from './reducers/form.reducer'
 import nav      from './reducers/nav.reducer'
-
+import localStorage
+                from './reducers/storage.reducer'
 import rootSaga from './sagas/rootSagas'
 import {client }from '../services/apollo'
 
@@ -34,7 +35,7 @@ let engine = createEngine('2020-cache');
 engine = filter(engine,
   [
     // white list
-    'cms',
+    'form'
   ],
   [],
 );
@@ -53,7 +54,8 @@ const reducer = storage.reducer(
 		network,
 		user,
 		form,
-		nav,
+    nav,
+    localStorage,
 		apollo: client.reducer()
 	})
 )
@@ -64,3 +66,4 @@ sagaMiddleware.run(rootSaga);
 
 export const getUserState = state => state.user
 export const getCms = state => state.cms;
+export const getStorageLoaded = state => state.localStorage.loaded;

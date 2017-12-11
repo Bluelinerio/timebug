@@ -1,7 +1,7 @@
-import { all }                               from 'redux-saga/effects';
+import { call, all }                                from 'redux-saga/effects';
 import {
   loginFlowSaga,
-}                                            from './auth.saga';
+}                                             from './auth.saga';
 import {
   goToAssignmentLeadInScreen,
   goToAssignmentDoneScreen,
@@ -9,16 +9,16 @@ import {
   goToStepScreen,
   goToWorkBookScreen,
   goToAssignmentFlow
-}                                            from './navigate.saga';
-import {
-  getAllStepsSaga,
-}                                            from './steps.saga';
-import { onAppLoadedSaga, watchForGetUseSaga } from "./user.saga";
-import { formLoaderSaga }                    from "./form.saga";
+}                                             from './navigate.saga';
+import cmsSaga                                from './cms.saga';
+import { onAppLoadedSaga, watchForGetUseSaga } 
+                                              from "./user.saga";
+import { formLoaderSaga }                     from "./form.saga";
+import loadStorage                            from '../sagas/storage.saga'
 
-export default function* rootSaga() {
+function * appSaga() {
   yield all([
-    getAllStepsSaga(),
+    cmsSaga(),
     loginFlowSaga(),
     goToHomeScreen(),
     goToStepScreen(),
@@ -30,4 +30,8 @@ export default function* rootSaga() {
     formLoaderSaga(),
     onAppLoadedSaga()
   ])
+}
+export default function* rootSaga() {
+  yield call(loadStorage);
+  yield call(appSaga)
 }

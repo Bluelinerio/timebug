@@ -1,8 +1,9 @@
 // @flow
 
-import { call, cancelled, put, takeLatest, select } from 'redux-saga/effects'
+import { throttle, fork, call, cancelled, put, takeLatest, select } from 'redux-saga/effects'
 import { delay } from 'redux-saga'
 import theme from 'react-native-theme'
+import { REFRESH_CMS } from '../actions'
 import { incrementRequestCount, decrementRequestCount } from '../actions/network.actions'
 import { FETCH_STEPS, getStepsColorFromCMS } from '../actions/cms.actions'
 import { contentfulClient, fetchColors, CONTENTFUL_CONTENT_STEP } from '../../services/contentful'
@@ -47,6 +48,15 @@ function setColorsForCurrentStep(colors: Colors, step: Step) {
 	return color
 }
 
-export function* getAllStepsSaga() {
-	yield request(FETCH_STEPS, fetchSteps)
+function * _fetchCms() {
+	return yield request(FETCH_STEPS, fetchSteps)
+}
+
+function * watchFetchSteps() {
+	yield throttle(500, REFRESH_CMS.type, _fetchCms)
+}
+
+export default function* cmsSaga() {
+	yield fork(watchFetchSteps)
+	yield put(REFRESH_CMS);
 }

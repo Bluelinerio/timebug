@@ -17,7 +17,7 @@ export const updateProgress = ({ withProgress, UPDATE: 'UPDATE_PROGRESS' })
 
 // LOGOUT
 export type LogoutAction = { type: 'LOGOUT' }
-export const LOGOUT = runnableAction('LOGOUT');
+export const LOGOUT = action('LOGOUT');
 
 //onAppLoaded
 export const onAppLoaded = request => action(ON_APP_LOADED, request)

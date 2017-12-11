@@ -7,9 +7,7 @@ import theme from "react-native-theme";
 import IntroComponent from "../components/IntroComponent";
 import StepComponent from "../components/StepComponent";
 import DefaultIndicator from "../../../components/DefaultIndicator";
-import {
-  FETCH_STEPS
-} from "../../../redux/actions/cms.actions";
+import LogoutButton from '../containers/LogoutButton'
 import type { Step } from "../../../services/cms";
 import { goToAssignmentFlow } from "../../../redux/actions/nav.actions";
 import { onAppLoaded } from "../../../redux/actions/user.actions";
@@ -38,9 +36,12 @@ type Props = {
 };
 
 const mapStateToProps = state => {
-  const isFetching = selectors.isCMSLoading(state) && !selectors.isUserStateDetermind(state);
-
-  if (isFetching) {
+  const isStorageNotLoaded = !selectors.isStorageLoaded(state);
+  const isCMSLoading = selectors.isCMSLoading(state);
+  const isUserStateUNDETERMINED = selectors.isUserStateUNDETERMINED(state)
+  const showLoading = isStorageNotLoaded || isCMSLoading || isUserStateUNDETERMINED;
+  
+  if (showLoading) {
     return {
       state: { type: LOADING }
     };
@@ -78,7 +79,6 @@ const mapStateToProps = state => {
 };
 
 @connect(mapStateToProps, {
-  getAllStepsFromCMS: FETCH_STEPS.start,
   goToAssignmentFlow,
   onAppLoaded
 })
@@ -89,7 +89,7 @@ class HomeScreenContainer extends Component<Props> {
 
   componentDidMount() {
     this.props.onAppLoaded();
-    this.props.getAllStepsFromCMS();
+    //this.props.getAllStepsFromCMS();
   }
 
   componentWillMount() {
@@ -119,6 +119,7 @@ class HomeScreenContainer extends Component<Props> {
               buttonAction={() =>
                 goToAssignmentFlow({ number: currentStep.number })}
             />
+            <LogoutButton />
           </ScrollView>
         );
     }
