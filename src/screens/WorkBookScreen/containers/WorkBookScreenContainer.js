@@ -16,7 +16,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import KeyboardSpacer from "react-native-keyboard-spacer";
 import DefaultIndicator from "../../../components/DefaultIndicator";
 import Button from "../../../components/Button";
-import { getNextForm } from "../../../redux/actions/form.actions";
+import { populateCurrentFormValue } from '../../../redux/actions/form.actions';
 import { store } from "../../../redux/rootReducer";
 import FormComponent from "../components/FormComponent";
 import { GET_NEXT_FORM } from "../../../redux/actionTypes";
@@ -27,52 +27,41 @@ type Props = {
   progress: Progress, 
   model: any, 
   formData: any,
-  isPending: boolean,
-  color: string,
-  getNextForm: () => void, 
+  isFetching: boolean,
+  color: string, 
+  populateCurrentFormValue: (any) => void, 
 };
 
 type State = {
   keyboardSpace: number,
-  isInvalid: boolean
+  isInvalid: boolean,
+  form?: any
 };
 
 const mapStateToProps = state => {
-  const progress = selectors.user(state).progress;
+  const progress = selectors.progress(state);
   const model = state.form.model;
   const formData = state.form.data;
-  const isPending = state.network.isPending;
+  const isFetching = state.network > 0
   const color = selectors.currentStepColor(state);
   return {
     progress,
     model,
     formData,
-    isPending,
+    isFetching,
     color
   };
 };
 
-@connect(mapStateToProps, {
-  getNextForm
-})
+@connect(mapStateToProps, { populateCurrentFormValue })
 class WorkBookScreenContainer extends Component<Props, State> {
-  constructor() {
-    super();
-
-    this.state = {
-      keyboardSpace: 0,
-      isInvalid: true
-    };
+  state = {
+    keyboardSpace: 0,
+    isInvalid: true,
+    form: null
   }
 
-  componentDidMount() {
-    const { progress, model, getNextForm, isPending } = this.props;
-    if (progress && !model && !isPending) {
-      getNextForm(progress.step, 0, true);
-    }
-  }
-
-  componentWillMount() {
+  componentWillMount  = () => {
     theme.setRoot(this);
   }
 
@@ -83,10 +72,9 @@ class WorkBookScreenContainer extends Component<Props, State> {
   }
 
   onPress = () => {
-    const { getNextForm, progress: { step, formStep } } = this.props;
     const value = this.form.refs.form.getValue();
     if (value) {
-      getNextForm(step, formStep, false, value);
+      this.props.populateCurrentFormValue(value);
     }
   }
 
@@ -97,14 +85,13 @@ class WorkBookScreenContainer extends Component<Props, State> {
     });
   }
 
-  render() {
-    let { color, isPending, model, progress, formData } = this.props;
+  render = () => {
+    const { color, isFetching, model, progress, formData } = this.props;
 
-    if( isPending) {
-      return <DefaultIndicator size="large" />;
+    if(isFetching) {
+      return <DefaultIndicator size='large' />
     }
-    if (model && progress) {
-      return (
+    return (
         <View style={{ flex: 1 }}>
           <KeyboardAwareScrollView
             style={{
@@ -147,9 +134,6 @@ class WorkBookScreenContainer extends Component<Props, State> {
           </View>
         </View>
       );
-    } else {
-      
-    }
   }
 }
 
@@ -167,12 +151,12 @@ WorkBookScreenContainer.navigationOptions = ({ navigation }) => {
         <HeaderBackButton
           tintColor="white"
           onPress={() => {
-            let state = store.getState();
-            let { step, formStep } = selectors.progress(state);
-            let { number } = state.steps.currentStep;
+            const state = store.getState();
+            const { step, form } = selectors.progress(state);
+            const { number } = state.steps.currentStep;
             store.dispatch({
               type: GET_NEXT_FORM,
-              currentForm: formStep,
+              currentForm: form,
               currentStep: step,
               isGoBack: true,
               numberOFDay: number

@@ -1,9 +1,8 @@
 // @flow
 import { action }                       from '../utils';
-import { GET_NEXT_FORM, SET_NEXT_FORM } from '../actionTypes';
+import { POPULATE_CURRENT_FORM_VALUE, POPULATE_FORM_VALUE, SET_FORM } from '../actionTypes';
+import type { Progress } from '../../services/apollo/models.js'
 
-export const getNextForm = (currentStep, currentForm, withoutRedirect, value) => {
-  return action(GET_NEXT_FORM, { currentStep, currentForm, withoutRedirect, value });
-};
-
-export const setNextForm = (form) => action(SET_NEXT_FORM, form);
+export const populateCurrentFormValue = (value: any) => action(POPULATE_CURRENT_FORM_VALUE, { value });
+export const populateFormValue = (value: any, progress: Progress) => action(POPULATE_FORM_VALUE, { value, progress });
+export const setForm = (model:any) => action(SET_FORM, { model });

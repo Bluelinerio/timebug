@@ -26,7 +26,8 @@ export const GO_TO_ASSIGNMENT_DONE_SCREEN        = 'GO_TO_ASSIGNMENT_DONE_SCREEN
 export const GO_TO_ASSIGNMENT_FLOW               = 'GO_TO_ASSIGNMENT_FLOW';
 
 //forms
-export const GET_NEXT_FORM = 'GET_NEXT_FORM';
-export const SET_NEXT_FORM = 'SET_NEXT_FORM';
+export const POPULATE_FORM_VALUE          = 'POPULATE_FORM_VALUE';
+export const POPULATE_CURRENT_FORM_VALUE  = 'POPULATE_CURRENT_FORM_VALUE';
+export const SET_FORM                     = 'SET_FORM';
 
 export const ON_APP_LOADED = 'ON_APP_LOADED';

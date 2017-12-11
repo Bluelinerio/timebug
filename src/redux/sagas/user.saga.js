@@ -20,17 +20,17 @@ function* _fetchUserWorker() {
 		}
 
 		yield call(networkState.haveConnection)
-		yield put(incrementRequestCount())
+		yield put(incrementRequestCount)
 		const user = requestSaga(GET_USER, () => fetchUserWithId(userId) )
 
-		yield put(decrementRequestCount())
+		yield put(decrementRequestCount)
 	} catch (e) {
 		console.error(e)
 		yield put(GET_USER.error(e))
-		yield put(decrementRequestCount())
+		yield put(decrementRequestCount)
 	} finally {
 		if (yield cancelled()) yield put(GET_USER.cancel())
-		yield put(decrementRequestCount())
+		yield put(decrementRequestCount)
 	}
 }
 

@@ -38,9 +38,9 @@ type Props = {
 };
 
 const mapStateToProps = state => {
-  const isPending = selectors.isCMSLoading(state) && !selectors.isUserStateDetermind(state);
+  const isFetching = selectors.isCMSLoading(state) && !selectors.isUserStateDetermind(state);
 
-  if (isPending) {
+  if (isFetching) {
     return {
       state: { type: LOADING }
     };

@@ -1,61 +1,57 @@
 // @flow
-import { SET_NEXT_FORM } from '../actionTypes';
+import { POPULATE_FORM_VALUE, SET_FORM } from '../actionTypes';
+import type { Progress } from '../../services/apollo/models';
 
-interface FormState {
-  model: any,
-  data: {
+type FormState = {
+  model?: any,
+  data?: {
     [key: string]: any
   }
 }
 
-interface FormAction {
-  type: string,
-  model: null,
-  value: any,
-  iaGoBack: boolean,
-  currentStep: string,
-  currentForm: number
+type PopulateFormValueAction = {
+  type: POPULATE_FORM_VALUE.type,
+  progress: Progress,
+  value: any
 }
+
+type SetFormAction = {
+  type: SET_FORM,
+  model: any
+}
+
+type FormAction = PopulateFormValueAction | SetFormAction;
 
 const initialState: FormState = {
   model: null,
   data: {},
-  currentStep: null,
-  currentForm: null,
-  isGoBack: false,
 };
+
+const populate = (action: PopulateFormValueAction, state:FormState):FormState => {
+  debugger;
+  const { progress, value } = action
+  const { step, form } = action.progress
+  const data = state.data || {}
+  debugger;
+  return {
+    ...state,
+    data: {
+      ...data,
+      [ step ]: {
+        ...data[ step ],
+        [ form ]: value
+      }
+    }
+  }
+}
+const setForm = (action: SetFormAction, state: FormState):FormState => ({...state, model:action.model})
 
 export default function (state: FormState = initialState, action: FormAction) {
   switch (action.type) {
-    case SET_NEXT_FORM:
-      let {
-            model,
-            isGoBack,
-            value,
-            currentStep,
-            currentForm
-          } = action;
-      if (!isGoBack) {
-        let data = {...state.data};
-        if (value) {
-           data = {
-            ...state.data,
-            [ currentStep ]: {
-              ...state.data[ currentStep ],
-              [ currentForm ]: value
-            }
-          };
-        }
-        return {
-          ...state,
-          model,
-          data
-        };
-      }
-        return {
-          ...state,
-          model,
-        };
+    case POPULATE_FORM_VALUE:
+      return populate(action, state);
+    case SET_FORM:
+      return setForm(action, state);
     default:
       return state;
   }

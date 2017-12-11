@@ -5,5 +5,5 @@ import {
   DECREMENT_REQUEST_COUNT,
 }                               from '../actionTypes';
 
-export const incrementRequestCount  = () => action(INCREMENT_REQUEST_COUNT);
-export const decrementRequestCount = () => action(DECREMENT_REQUEST_COUNT);
+export const incrementRequestCount  = action(INCREMENT_REQUEST_COUNT);
+export const decrementRequestCount = action(DECREMENT_REQUEST_COUNT);

@@ -22,8 +22,8 @@ export type AuthState = {
 }
 
 export type Progress = {
-	+step: string,
-	+formStep: number
+	+step: number,
+	+form: number
 }
 
 export type User = {

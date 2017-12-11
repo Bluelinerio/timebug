@@ -43,7 +43,7 @@ export const authenticateWithFBToken = (fbToken: string): Auth =>
 
 const fixMissingProgressInUser = (user: User) => {
 	const step = user.steps[0] ? user.steps[0].stepId + 1 : 1
-	const progress = { step, formStep: 1 }
+	const progress = { step, form: 1 }
 	return { ...user, progress }
 }
 

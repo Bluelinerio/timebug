@@ -15,34 +15,34 @@ const Form = t.form.Form;
 type Props = {
 	progress: Progress,
 	onChange(): any,
-	formData: any,
-	getNextForm(): any,
-	goToAssignmentDoneScreen(): any
+  formData: any,
+  model: {
+    focusField: boolean,
+    type: string, 
+    options: Object
+  }
 }
 
-type State = {}
+class FormComponent extends Component<Props> {
 
-class FormComponent extends Component<Props, State> {
-
-  componentDidMount() {
-    let { model } = this.props;
+  componentDidMount = () => {
+    const { model } = this.props;
     if (model && model.focusField) {
       this.refs.form.getComponent(model.focusField).refs.input.focus();
     }
   }
 
-  shouldComponentUpdate(nextProps) {
+  shouldComponentUpdate = (nextProps:Props):boolean => {
     return nextProps.model.type !== this.props.model.type
   }
 
-
-  getDefaultValue = () => {
-    let {
-          formData,
-          progress: { step, formStep },
-        } = this.props;
-    if (formData && formData[ step ] && formData[ step ][ formStep ]) {
-      return formData[ step ][ formStep ]
+  getDefaultValue = (): ?any => {
+    const {
+      formData,
+      progress: { step, form },
+    } = this.props;
+    if (formData && formData[ step ] && formData[ step ][ form ]) {
+      return formData[ step ][ form ]
     }
     return undefined;
   }

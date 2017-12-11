@@ -1,11 +1,10 @@
 // @flow
 import type { UserStateAction } from '../actions'
 import { SET_USER_STATE } from '../actions'
-import { LOGOUT } from '../actions/user.actions';
 import type { User, UserState } from '../../services/apollo/models'
 import { ANONYMOUS, UNDETERMINED } from '../../services/apollo/models'
-import { GET_USER, updateProgress } from '../actions/user.actions'
 import type { UpdateProgressAction, LogoutAction } from '../actions/user.actions'
+import { GET_USER, updateProgress, LOGOUT } from '../actions/user.actions'
 export const userFromResponse = (response: any): User => response.data.User
 
 type Action = UserStateAction | UpdateProgressAction | LogoutAction
