@@ -8,6 +8,7 @@ import { call, cancelled as cancelledSaga, put } from 'redux-saga/effects'
 type RequestActionType<M> = { type: String, meta?: M }
 type RequestActionSuccessType<P, M> = { type: String, payload: P, meta?: M }
 type RequestActionErrorType<M> = { type: String, error: any, meta?: M }
+type AllAction<M> = RequestActionType<M> | RequestActionSuccessType<M> | RequestActionErrorType<M>
 
 export type Request<P, M> = {
 	BASE: string,
@@ -76,7 +77,7 @@ export function createRequest<P, M>(type: string): Request<P, M> {
 	}
 }
 
-export function* requestSaga<P, M>(type: Request<P, M>, func: () => Promise<P>, meta?: M): void {
+export function* requestSaga<P, M>(type: Request<P, M>, func: () => Promise<P>, meta?: M): AllAction<M> {
 	// Get the request event types for this type.
 	const { start, success, error, cancel } = type
 
@@ -85,7 +86,7 @@ export function* requestSaga<P, M>(type: Request<P, M>, func: () => Promise<P>, 
 
 	try {
 		// Attempt to call the promise.
-		const payload: P = yield call(func)
+		var payload: P | Promise<P> = yield call(func)
 
 		// If it's successful put the succeeded type.
 		return yield put(success(payload, meta))

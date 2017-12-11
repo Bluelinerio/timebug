@@ -12,20 +12,24 @@ import {
 } from "react-native";
 import theme, { styles } from "react-native-theme";
 import { HeaderBackButton } from "react-navigation";
-import autobind from "autobind-decorator";
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import KeyboardSpacer from "react-native-keyboard-spacer";
 import DefaultIndicator from "../../../components/DefaultIndicator";
 import Button from "../../../components/Button";
-import { getNextForm } from "../../../actions/form";
-import { store } from "../../../reducers/rootReducer";
+import { getNextForm } from "../../../redux/actions/form.actions";
+import { store } from "../../../redux/rootReducer";
 import FormComponent from "../components/FormComponent";
-import { GET_NEXT_FORM } from "../../../constants/actionTypes";
+import { GET_NEXT_FORM } from "../../../redux/actionTypes";
+import selectors from '../../../redux/selectors'
+import type { Progress } from '../../../services/apollo/models';
 
 type Props = {
-  navigation: {
-    navigate(): any
-  }
+  progress: Progress, 
+  model: any, 
+  formData: any,
+  isPending: boolean,
+  color: string,
+  getNextForm: () => void, 
 };
 
 type State = {
@@ -34,11 +38,11 @@ type State = {
 };
 
 const mapStateToProps = state => {
-  const progress = state.user.progress;
+  const progress = selectors.user(state).progress;
   const model = state.form.model;
   const formData = state.form.data;
   const isPending = state.network.isPending;
-  const color = state.steps.colors.steps[state.steps.currentStep.number];
+  const color = selectors.currentStepColor(state);
   return {
     progress,
     model,
@@ -52,36 +56,6 @@ const mapStateToProps = state => {
   getNextForm
 })
 class WorkBookScreenContainer extends Component<Props, State> {
-  static navigationOptions = ({ navigation }) => {
-    return {
-      headerTitleStyle: {
-        textAlign: "center",
-        alignSelf: "center"
-      },
-      headerStyle: {
-        backgroundColor: StyleSheet.flatten(styles.headerColor).backgroundColor
-      },
-      headerTintColor: "white",
-      headerLeft: (
-        <HeaderBackButton
-          tintColor="white"
-          onPress={() => {
-            let state = store.getState();
-            let { step, formStep } = state.user.progress;
-            let { number } = state.steps.currentStep;
-            store.dispatch({
-              type: GET_NEXT_FORM,
-              currentForm: formStep,
-              currentStep: step,
-              isGoBack: true,
-              numberOFDay: number
-            });
-          }}
-        />
-      )
-    };
-  };
-
   constructor() {
     super();
 
@@ -92,7 +66,7 @@ class WorkBookScreenContainer extends Component<Props, State> {
   }
 
   componentDidMount() {
-    let { progress, model, getNextForm, isPending } = this.props;
+    const { progress, model, getNextForm, isPending } = this.props;
     if (progress && !model && !isPending) {
       getNextForm(progress.step, 0, true);
     }
@@ -102,24 +76,21 @@ class WorkBookScreenContainer extends Component<Props, State> {
     theme.setRoot(this);
   }
 
-  @autobind
-  onToggle(keyboardSpace) {
+  onToggle = (keyboardSpace) => {
     if (Platform.OS === "ios") {
       this.setState({ keyboardSpace });
     }
   }
 
-  @autobind
-  onPress() {
-    let { getNextForm, progress: { step, formStep } } = this.props;
-    let value = this.form.refs.form.getValue();
+  onPress = () => {
+    const { getNextForm, progress: { step, formStep } } = this.props;
+    const value = this.form.refs.form.getValue();
     if (value) {
       getNextForm(step, formStep, false, value);
     }
   }
 
-  @autobind
-  onChange() {
+  onChange = () => {
     let value = this.form.refs.form.getValue();
     this.setState({
       isInvalid: !value
@@ -129,7 +100,10 @@ class WorkBookScreenContainer extends Component<Props, State> {
   render() {
     let { color, isPending, model, progress, formData } = this.props;
 
-    if (!isPending && model && progress) {
+    if( isPending) {
+      return <DefaultIndicator size="large" />;
+    }
+    if (model && progress) {
       return (
         <View style={{ flex: 1 }}>
           <KeyboardAwareScrollView
@@ -174,9 +148,39 @@ class WorkBookScreenContainer extends Component<Props, State> {
         </View>
       );
     } else {
-      return <DefaultIndicator size="large" />;
+      
     }
   }
 }
+
+WorkBookScreenContainer.navigationOptions = ({ navigation }) => {
+    return {
+      headerTitleStyle: {
+        textAlign: "center",
+        alignSelf: "center"
+      },
+      headerStyle: {
+        backgroundColor: StyleSheet.flatten(styles.headerColor).backgroundColor
+      },
+      headerTintColor: "white",
+      headerLeft: (
+        <HeaderBackButton
+          tintColor="white"
+          onPress={() => {
+            let state = store.getState();
+            let { step, formStep } = selectors.progress(state);
+            let { number } = state.steps.currentStep;
+            store.dispatch({
+              type: GET_NEXT_FORM,
+              currentForm: formStep,
+              currentStep: step,
+              isGoBack: true,
+              numberOFDay: number
+            });
+          }}
+        />
+      )
+    };
+  };
 
 export default WorkBookScreenContainer;

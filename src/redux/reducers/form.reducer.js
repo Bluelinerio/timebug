@@ -1,0 +1,62 @@
+// @flow
+import { SET_NEXT_FORM } from '../actionTypes';
+
+interface FormState {
+  model: any,
+  data: {
+    [key: string]: any
+  }
+}
+
+interface FormAction {
+  type: string,
+  model: null,
+  value: any,
+  iaGoBack: boolean,
+  currentStep: string,
+  currentForm: number
+}
+
+const initialState: FormState = {
+  model: null,
+  data: {},
+  currentStep: null,
+  currentForm: null,
+  isGoBack: false,
+};
+
+export default function (state: FormState = initialState, action: FormAction) {
+  switch (action.type) {
+    case SET_NEXT_FORM:
+      let {
+            model,
+            isGoBack,
+            value,
+            currentStep,
+            currentForm
+          } = action;
+      if (!isGoBack) {
+        let data = {...state.data};
+        if (value) {
+           data = {
+            ...state.data,
+            [ currentStep ]: {
+              ...state.data[ currentStep ],
+              [ currentForm ]: value
+            }
+          };
+        }
+        return {
+          ...state,
+          model,
+          data
+        };
+      }
+        return {
+          ...state,
+          model,
+        };
+    default:
+      return state;
+  }
+}

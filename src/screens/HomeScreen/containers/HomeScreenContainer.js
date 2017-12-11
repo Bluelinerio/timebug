@@ -2,24 +2,23 @@
 
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { ScrollView } from "react-native";
+import { ScrollView, View } from "react-native";
 import theme from "react-native-theme";
 import IntroComponent from "../components/IntroComponent";
 import StepComponent from "../components/StepComponent";
 import DefaultIndicator from "../../../components/DefaultIndicator";
 import {
-  getAllStepsFromCMS,
-  getStepFromCMSByStep
-} from "../../../actions/steps";
-import { getAboutInfoFromCMS } from "../../../actions/login";
-import { loginWithFB } from "../../../actions/FBAction";
-import type { IStep } from "../../../interfaces";
-import { goToStepScreen, goToAssignmentFlow } from "../../../actions/navigate";
-import { onAppLoaded } from "../../../actions/user";
+  FETCH_STEPS
+} from "../../../redux/actions/cms.actions";
+import type { Step } from "../../../services/cms";
+import { goToAssignmentFlow } from "../../../redux/actions/nav.actions";
+import { onAppLoaded } from "../../../redux/actions/user.actions";
+import selectors from '../../../redux/selectors'
 
 type HomeScreenStep = {
-  allSteps: IStep[],
-  currentStep: IStep
+  allSteps: Array<Step>,
+  currentStep: Step,
+  color: string
 };
 type HomeScreenInro = {
   about: string
@@ -35,27 +34,27 @@ type HomeScreenState =
 
 type Props = {
   state: HomeScreenState,
-  loginWithFB: any,
   getAllStepsFromCMS: () => void,
-  getAboutInfoFromCMS: any
 };
 
 const mapStateToProps = state => {
-  const isPending = state.network.isPending;
+  const isPending = selectors.isCMSLoading(state) && !selectors.isUserStateDetermind(state);
+
   if (isPending) {
     return {
       state: { type: LOADING }
     };
   }
-  const isLoggedIn = state.login.isLoggedIn;
+  const isLoggedIn = selectors.isLoggedIn(state);
 
   if (isLoggedIn === true) {
-    const { allSteps, currentStep, colors } = state.steps
-    const color = colors.steps[currentStep.number];
-
+    const allSteps = selectors.steps(state);
+    const currentStep = selectors.currentStep(state)
+    const color = selectors.currentStepColor(state);
     if (!allSteps || !currentStep || !color) {
-      throw "missing currentStep or allSteps or color" + state.steps;
+      throw "missing currentStep or allSteps or color" + state.cms;
     }
+    
     return {
       state: {
         type: STEP,
@@ -72,17 +71,14 @@ const mapStateToProps = state => {
     state: {
       type: INTRO,
       component: {
-        about: state.login.about
+        about: ''
       }
     }
   };
 };
 
 @connect(mapStateToProps, {
-  getAllStepsFromCMS: getAllStepsFromCMS.start,
-  getAboutInfoFromCMS: getAboutInfoFromCMS.request,
-  loginWithFB: loginWithFB.request,
-  goToStepScreen,
+  getAllStepsFromCMS: FETCH_STEPS.start,
   goToAssignmentFlow,
   onAppLoaded
 })
@@ -101,19 +97,19 @@ class HomeScreenContainer extends Component<Props> {
   }
 
   render() {
-    let { state, loginWithFB, goToAssignmentFlow } = this.props;
+    const { state, goToAssignmentFlow } = this.props;
     switch (state.type) {
       case LOADING:
-        return <DefaultIndicator size="large" />;
+        return <DefaultIndicator size='large' />;
       case INTRO:
         return (
-          <IntroComponent onPress={loginWithFB} {...state.component} />
+          <IntroComponent {...state.component} />
         );
       case STEP:
         const { currentStep, color, allSteps} = state.component;
         return (
           <ScrollView
-            color={color || "white"}
+            color={color || 'white' }
             automaticallyAdjustContentInsets={true}
           >
             <StepComponent
@@ -126,7 +122,6 @@ class HomeScreenContainer extends Component<Props> {
           </ScrollView>
         );
     }
-    throw 'this should not happen';
   }
 }
 

@@ -4,30 +4,27 @@ import React, { Component } from "react";
 import { StyleSheet } from "react-native";
 import { connect } from "react-redux";
 import theme, { styles } from "react-native-theme";
-import {
-  getStepFromCMSByStep
-} from "../../../actions/steps";
-import { IStep } from "../../../interfaces";
+import type { Step } from "../../../services/cms";
 import AssignmentDoneScreen from "../components/AssignmentDoneScreen";
-import { doneWithCongratsScreen } from "../../../actions/navigate";
+import { doneWithCongratsScreen } from '../../../redux/actions/nav.actions';
+import selectors from '../../../redux/selectors'
+
 
 type Props = {
-  allSteps: IStep[],
-  currentStep: IStep,
-  currentStepColor: string,
-  getStepFromCMSByStep: any
+  currentStep: Step,
+  currentStepColor: string
 };
 
 type State = {};
 
 const mapStateToProps = state => {
-  const allSteps = state.steps.allSteps;
-  const currentStep = state.steps.currentStep;
-  const currentStepNumber = currentStep.number;
-  const currentStepColor = state.steps.colors.steps[currentStep.number];
+  const { allSteps, totalNumberOfSteps, colors } = state.cms;
+	const currentStepNumber = selectors.currentStepNumber(state);
+  const currentStep = allSteps[currentStepNumber];
+  const currentStepColor = colors.steps[currentStepNumber]
   const nextStepNumber = currentStepNumber + 1;
-  if (nextStepNumber < allSteps.length) {
-    const nextStepColor = state.steps.colors.steps[nextStepNumber] ;
+  if (nextStepNumber < totalNumberOfSteps) {
+    const nextStepColor = colors.steps[nextStepNumber] ;
     const nextStep = allSteps[nextStepNumber];
     const nextStepDuration = nextStep.duration;
     
@@ -50,7 +47,6 @@ const mapStateToProps = state => {
 };
 
 @connect(mapStateToProps, {
-  getStepFromCMSByStep: getStepFromCMSByStep.request,
   done: doneWithCongratsScreen
 })
 class AssignmentDoneScreenContainer extends Component<Props, State> {
@@ -65,12 +61,6 @@ class AssignmentDoneScreenContainer extends Component<Props, State> {
     headerTintColor: "white",
     headerLeft: null
   });
-
-  componentDidMount() {
-    if (!this.props.currentStep.number) {
-      this.props.getStepFromCMSByStep(1);
-    }
-  }
 
   componentWillMount() {
     theme.setRoot(this);

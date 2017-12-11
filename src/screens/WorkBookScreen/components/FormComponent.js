@@ -7,22 +7,18 @@ import {
   View,
   Platform,
 }                           from 'react-native';
-import autobind             from 'autobind-decorator';
 import t                    from 'tcomb-form-native';
-
+import type { Progress } from '../../../services/apollo/models';
 
 const Form = t.form.Form;
 
 type Props = {
-  progress: {
-    step: string,
-    formStep: number
-  },
-  onChange(): any,
-  formData: any,
-  getNextForm(): any,
-  goToAssignmentDoneScreen(): any
-};
+	progress: Progress,
+	onChange(): any,
+	formData: any,
+	getNextForm(): any,
+	goToAssignmentDoneScreen(): any
+}
 
 type State = {}
 
@@ -39,8 +35,8 @@ class FormComponent extends Component<Props, State> {
     return nextProps.model.type !== this.props.model.type
   }
 
-  @autobind
-  getDefaultValue() {
+
+  getDefaultValue = () => {
     let {
           formData,
           progress: { step, formStep },

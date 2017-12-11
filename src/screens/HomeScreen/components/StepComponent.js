@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Dimensions, Platform, Image, Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import getImageUrl from '../../../utils/getImageUrl';
+import { getImageUrl } from '../../../services/cms';
 import CustomImage from '../../../components/CustomImage';
 import StartButton from './StartButton';
 import { headerBackgroundImage, startButtonBackgroundImage } from '../../../resources/images/';

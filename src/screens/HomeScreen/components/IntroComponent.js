@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { Platform, Text, Dimensions, View, TouchableHighlight, ScrollView, Image } from 'react-native';
 import Markdown from '../../../Modules/Markdown';
 import LinearGradient from 'react-native-linear-gradient';
-import Button 	from '../../../components/Button';
+import FBButton from '../containers/FBButton'
 import ScrollableHeader from '../../../components/ScrollableHeader';
 import DefaultIndicator from '../../../components/DefaultIndicator';
 import { backgroundImage, headerBackground } from '../../../resources/images/';
@@ -18,7 +18,8 @@ const Header = () => (
 	</View>
 );
 
-const Content = ({ onPress, about }) => (
+
+const Content = () => (
 	<View style={styles.content}>
 		<ScrollView
 			style={{
@@ -26,26 +27,19 @@ const Content = ({ onPress, about }) => (
 				paddingHorizontal: 20
 			}}
 		>
-			<Markdown markdownStyles={markdownStyles}>{about}</Markdown>
+			<Markdown markdownStyles={markdownStyles}>{'about'}</Markdown>
 		</ScrollView>
-		<Button onPress={onPress} text={'LOGIN WITH FACEBOOK'} styles={LoginButtonStyles}/>
+		<FBButton />
 	</View>
-);
+)
 
-export default ({ about, onPress }) => {
-	if (about) {
-		return (
-			<ScrollableHeader
-				headerMaxHeight={STATUSBAR_HEIGHT}
-				headerMinHeight={STATUSBAR_HEIGHT}
-				header={<Header />}
-				content={<Content onPress={onPress} about={about} />}
-			/>
-		);
-	} else {
-		return <DefaultIndicator size="large" />;
-	}
-};
+export default () => 			
+	<ScrollableHeader
+		headerMaxHeight={STATUSBAR_HEIGHT}
+		headerMinHeight={STATUSBAR_HEIGHT}
+		header={<Header />}
+		content={<Content />}
+	/>
 
 styles = {
 	header: {
