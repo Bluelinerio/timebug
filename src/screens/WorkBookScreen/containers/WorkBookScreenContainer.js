@@ -58,7 +58,6 @@ class WorkBookScreenContainer extends Component<Props, State> {
   state = {
     keyboardSpace: 0,
     isInvalid: true,
-    form: null
   }
 
   componentWillMount  = () => {
