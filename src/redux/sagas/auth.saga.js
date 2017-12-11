@@ -58,32 +58,6 @@ function* _fetchUser(userId: string): { user: User } | ErrorResponse {
 type SuccessfulUserRefresh = { user: User, token: string }
 type RefreshUserResult = SuccessfulUserRefresh | { error: any } | {}
 
-function* refreshUser(): RefreshUserResult {
-	const { token, userId } = yield call(AuthStorage.getTokenAndUserId)
-	const user: ?User = yield select(selectors.user);
-	if (user && token) {
-		return { user, token }
-	}
-	if (userId && token) {
-		const response: User | ErrorResponse = yield call(_fetchUser, userId)
-		if (response.error && response.cancel) {
-			return response
-		}
-		const result = yield call(refreshUser)
-		return result
-	}
-	const fbToken: ?string = yield call(facebook.getToken)
-	if (fbToken) {
-		const authenticateWithFBTokenResult: any = yield call(_authenticateWithFBToken, fbToken)
-		if (authenticateWithFBTokenResult.error || authenticateWithFBTokenResult.cancel) {
-			return authenticateWithFBTokenResult
-		} else {
-			return yield call(refreshUser);
-		}
-	}
-	yield put(actions.setUserAnonymous());
-	return {}
-}
 
 function* _logout(): LogoutResult {
 	yield all([call(AuthStorage.wipeStorage)])
@@ -91,6 +65,32 @@ function* _logout(): LogoutResult {
 }
 
 function* refreshUserOrLogout(): RefreshUserResult | LogoutResult {
+	function* refreshUser(): RefreshUserResult {
+		const { token, userId } = yield call(AuthStorage.getTokenAndUserId)
+		const user: ?User = yield select(selectors.user);
+		if (user && token) {
+			return { user, token }
+		}
+		if (userId && token) {
+			const response: User | ErrorResponse = yield call(_fetchUser, userId)
+			if (response.error && response.cancel) {
+				return response
+			}
+			const result = yield call(refreshUser)
+			return result
+		}
+		const fbToken: ?string = yield call(facebook.getToken)
+		if (fbToken) {
+			const authenticateWithFBTokenResult: any = yield call(_authenticateWithFBToken, fbToken)
+			if (authenticateWithFBTokenResult.error || authenticateWithFBTokenResult.cancel) {
+				return authenticateWithFBTokenResult
+			} else {
+				return yield call(refreshUser);
+			}
+		}
+		yield put(actions.setUserAnonymous());
+		return {}
+	}
 	const winner = yield race({
 		logout: take(LOGOUT.type),
 		refresh: call(refreshUser)
