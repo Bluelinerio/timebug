@@ -1,12 +1,15 @@
 // @flow
 import { throttle, select, take, race, call, cancelled, put, takeLatest } from 'redux-saga/effects'
+
+import { LOGIN_WITH_FB_BUTTON_PRESSED } from '../actionTypes';
 import { incrementRequestCount, decrementRequestCount } from '../actions/network.actions'
 import * as actions from '../actions'
-import { LOGOUT, GET_USER } from '../actions/user.actions'
+import { GET_USER } from '../actions/user.actions'
+import { LOGOUT } from '../actionTypes';
 import { AUTHENTICATE_FB } from '../actions/';
 import selectors from '../selectors'
 import type { Auth, AuthUser, User, UserState, ErrorResponse } from '../../services/apollo/models'
-import { authenticateWithFBToken, fetchUserWithId } from '../../services/apollo'
+import { authenticateWithFBToken, fetchUserWithId, resetStore } from '../../services/apollo'
 import facebook from '../../services/facebook'
 import type { OpenFBLoginResult } from '../../services/facebook'
 import AuthStorage from '../../services/authStorage'
@@ -43,7 +46,7 @@ function * _authenticateWithFBToken(fbToken: string) {
 	const result = yield call(requestSaga, authenticateFbPromise);
 	const auth = (result.payload: Auth);
 	if (auth) {
-		yield call(AuthStorage.setTokenAndUserId,auth.token, auth.user.id);
+		yield call(AuthStorage.setTokenAndUserId, auth.token, auth.user.id);
 		return auth;
 	}
 	return result;
@@ -60,8 +63,11 @@ type RefreshUserResult = SuccessfulUserRefresh | { error: any } | {}
 
 
 function* _logout(): LogoutResult {
-	yield all([call(AuthStorage.wipeStorage)])
-	return true
+	yield call(AuthStorage.wipeStorage)
+	debugger;
+	yield call(facebook.logOut)
+	yield call(resetStore)
+	debugger;
 }
 
 function* refreshUserOrLogout(): RefreshUserResult | LogoutResult {
@@ -92,7 +98,7 @@ function* refreshUserOrLogout(): RefreshUserResult | LogoutResult {
 		return {}
 	}
 	const winner = yield race({
-		logout: take(LOGOUT.type),
+		logout: take(LOGOUT),
 		refresh: call(refreshUser)
 	})
 	if (winner.logout) {
@@ -122,8 +128,8 @@ export function* loginFlowSaga() {
 	// yield call(AuthStorage.wipeStorage);
 	const result: { user?: User } = yield call(refreshUserOrLogout)
 	if (!result.user) {
-		yield throttle(500, actions.LOGIN_WITH_FB_BUTTON_PRESSED.type, _loginOrRegisterWithFacebook)
+		yield throttle(500, LOGIN_WITH_FB_BUTTON_PRESSED, _loginOrRegisterWithFacebook)
 	} else {
-		yield throttle(500, LOGOUT.type, _logout)
+		yield throttle(500, LOGOUT, _logout)
 	}
 }

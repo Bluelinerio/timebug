@@ -1,11 +1,15 @@
 // @flow
 import type { UserStateAction } from '../actions'
 import { SET_USER_STATE } from '../actions'
-import type { User, UserState } from '../../services/apollo/models'
+import type { User, UserState , Progress} from '../../services/apollo/models'
 import { ANONYMOUS, UNDETERMINED } from '../../services/apollo/models'
-import type { UpdateProgressAction, LogoutAction } from '../actions/user.actions'
-import { GET_USER, updateProgress, LOGOUT } from '../actions/user.actions'
+import { GET_USER, updateProgress } from '../actions/user.actions'
+import { LOGOUT, UPDATE_PROGRESS } from '../actionTypes'
+
 export const userFromResponse = (response: any): User => response.data.User
+
+type LogoutAction = { type: LOGOUT }
+type UpdateProgressAction = { type: UPDATE_PROGRESS, progress: Progress }
 
 type Action = UserStateAction | UpdateProgressAction | LogoutAction
 
@@ -19,7 +23,7 @@ export default function(state: UserState = UNDETERMINED, action: Action) {
       const { progress } = action;
       const user = state.user;
 			return { ...state, user: { ...user, progress } }
-		case LOGOUT.type:
+		case LOGOUT:
 			return ANONYMOUS
 		default:
 			return state

@@ -7,7 +7,7 @@ export type RunnableActionType = {
 }
 
 export const runnableAction = (type: string): RunnableActionType => ({
-	action,
+	action: () => action(type),
 	type
 })
 

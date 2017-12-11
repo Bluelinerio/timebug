@@ -33,9 +33,12 @@ const openFBLogin = (): Promise < OpenFBLoginResult > => LoginManager.logInWithR
 		}))
 	})
 
+const logOut = (): Promise<void> => LoginManager.logOut()
+
 export default {
 	openFBLogin,
-	getToken
+	getToken,
+	logOut
 }
 
 

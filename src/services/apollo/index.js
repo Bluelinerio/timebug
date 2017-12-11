@@ -25,6 +25,8 @@ const _parse = <T>(key: string, graphResponse: GraphResponse): T => {
 
 const parse = <T>(key: string) => (graphResponse: GraphResponse): T => _parse(key, graphResponse)
 
+export const resetStore = client.resetStore;
+
 export const authenticateWithFBToken = (fbToken: string): Auth =>
 	client
 		.query({

@@ -5,10 +5,11 @@ import { fork, call, put, takeLatest, select, cancelled } from 'redux-saga/effec
 import {
   GET_NEXT_FORM,
   SUCCESS,
-  POPULATE_CURRENT_FORM_VALUE
+  POPULATE_CURRENT_FORM_VALUE,
+  LOGOUT
 }                                             from '../actionTypes';
 import { SET_USER_STATE }                     from '../actions'
-import { GET_USER, updateProgress, LOGOUT }   from '../actions/user.actions'
+import { GET_USER, updateProgress }           from '../actions/user.actions'
 import {
   goToWorkBookScreen,
   goToAssignmentDoneScreen,
@@ -31,9 +32,9 @@ const STEP_CHANGE_DOWN = 'STEP_CHANGE_DOWN'
 const FORM_CHANGE_UP = 'FORM_CHANGE_UP'
 const FORM_CHANGE_DOWN = 'FORM_CHANGE_DOWN'
 const NO_CHANGE = 'NO_CHANGE'
+
 type ProgressChange = STEP_CHANGE_UP | STEP_CHANGE_DOWN | FORM_CHANGE_UP | FORM_CHANGE_DOWN | NO_CHANGE;
 type FormModel = any;
-
 
 
 const getFormModel = (progress:Progress): ?FormModel => {
@@ -222,7 +223,7 @@ function * watchPopulateCurrentFormValue() {
 }
 
 function * watchForUpdateInUserProgress() {
-  yield takeLatest([SET_USER_STATE, GET_USER.SUCCEEDED, updateProgress.UPDATE, LOGOUT.type], updateFormAfterChangeInProgress) 
+  yield takeLatest([SET_USER_STATE, GET_USER.SUCCEEDED, updateProgress.UPDATE, LOGOUT], updateFormAfterChangeInProgress) 
 }
 
 export function* formLoaderSaga() {

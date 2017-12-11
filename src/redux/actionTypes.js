@@ -18,6 +18,8 @@ export const GET_STEP_COLORS           = createRequestTypes('GET_STEP_COLORS');
 export const GET_ABOUT_INFO_FROM_CMS   = createRequestTypes('GET_ABOUT_INFO_FROM_CMS');
 
 //navigation
+export const LOGIN_WITH_FB_BUTTON_PRESSED        = 'LOGIN_WITH_FB_BUTTON_PRESSED';
+export const LOGOUT                              = 'LOGOUT';
 export const GO_TO_HOME_SCREEN                   = 'GO_TO_HOME_SCREEN';
 export const GO_TO_STEP_SCREEN                   = 'GO_TO_STEP_SCREEN';
 export const GO_TO_ASSIGNMENT_LEAD_IN_SCREEN     = 'GO_TO_ASSIGNMENT_LEAD_IN_SCREEN';
