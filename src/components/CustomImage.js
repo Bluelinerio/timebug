@@ -4,7 +4,7 @@ import { Image, } from "react-native";
 import SVGImage   from "./SVGImage";
 
 type Props = {
-  styles: any,
+  style: any,
   imageUri: string,
 }
 

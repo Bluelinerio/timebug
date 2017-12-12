@@ -12,10 +12,7 @@ const FBButton = ({ loginWithFbButtonPressed, ...rest }) => (
 		buttonTestId={'login_button'}
 		text={'LOGIN WITH FACEBOOK'}
 		styles={styles}
-		onPress={() => {
-			debugger;
-			loginWithFbButtonPressed();
-		}}
+		onPress={loginWithFbButtonPressed}
 		{...rest}
 	/>
 )

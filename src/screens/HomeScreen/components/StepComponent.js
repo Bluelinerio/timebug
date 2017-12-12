@@ -1,18 +1,27 @@
+// @flow
 import React, { Component } from 'react';
 import { Dimensions, Platform, Image, Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { getImageUrl } from '../../../services/cms';
 import CustomImage from '../../../components/CustomImage';
 import StartButton from './StartButton';
 import { headerBackgroundImage, startButtonBackgroundImage } from '../../../resources/images/';
 import { white90 } from '../../../constants/colors';
+import type { Step } from '../../../services/cms';
 
-export default ({ totalNumberOfSteps, currentStep, color, buttonAction }) => {
-  const { shortIcon, type, stepScreenDescription, number, duration } = currentStep;
+export type Props = { 
+	totalNumberOfSteps: number, 
+	currentStep: Step, 
+	color: string,
+	goToAssignmentFlow: ({number : number}) => void,
+	imageUri:string
+}
+
+export default ({ totalNumberOfSteps, currentStep, color, goToAssignmentFlow, imageUri }: Props) => {
+  const { type, stepScreenDescription, number, duration } = currentStep;
 	return (
 		<Image style={[style.header, { backgroundColor: color }]} source={headerBackgroundImage}>
       <View style={style.challengeInfo}>
-				<CustomImage style={style.headerImage} imageUri={getImageUrl(shortIcon)} />
+			<CustomImage style={style.headerImage} imageUri={imageUri} />
 				<View style={style.headerText}>
           <Text style={style.headerTitle}>Next challenge</Text>
           <Text style={[style.title]}>{type}</Text>
@@ -22,10 +31,10 @@ export default ({ totalNumberOfSteps, currentStep, color, buttonAction }) => {
 					</Text>
 				</View>
 			</View>
-			<StartButton duration={duration} onPress={buttonAction} />
+			<StartButton duration={duration} onPress={() => goToAssignmentFlow({ number }) } />
 		</Image>
 	);
-};
+}
 
 const style = {
 	header: {
