@@ -5,7 +5,7 @@ import { Dimensions, ScrollView, View } from 'react-native';
 import { styles } from 'react-native-theme';
 import Markdown from '../../../Modules/Markdown';
 import Button from '../../../components/Button';
-import type { Assignment, Step } from '../../../services/apollo/models';
+import type { Assignment, Step } from '../../../services/cms';
 import AssignmentNumber from './AssignmentNumber';
 import markdownStyles from '../../../styles/Markdown/assignment';
 
