@@ -1,5 +1,5 @@
 // @flow
-import { throttle, select, take, race, call, cancelled, put, takeLatest } from 'redux-saga/effects'
+import { throttle, select, take, race, call, all, cancelled, put, takeLatest } from 'redux-saga/effects'
 
 import { LOGIN_WITH_FB_BUTTON_PRESSED } from '../actionTypes';
 import { incrementRequestCount, decrementRequestCount } from '../actions/network.actions'
@@ -63,11 +63,12 @@ type RefreshUserResult = SuccessfulUserRefresh | { error: any } | {}
 
 
 function* _logout(): LogoutResult {
-	yield call(AuthStorage.wipeStorage)
-	debugger;
-	yield call(facebook.logOut)
-	yield call(resetStore)
-	debugger;
+	yield all([
+		call(AuthStorage.wipeStorage),
+		call(facebook.logOut),
+		call(resetStore),
+	])
+	return true
 }
 
 function* refreshUserOrLogout(): RefreshUserResult | LogoutResult {
