@@ -14,15 +14,15 @@ import Button from "../../../components/Button";
 import GradientBackground from "../../../components/GradientBackground";
 import ScrollableHeader from "../../../components/ScrollableHeader";
 import { goBack } from "../../../HOC/navigation";
-import { IStep } from "../../../interfaces";
-import getImageUrl from "../../../utils/getImageUrl";
+import type { Step } from "../../../services/cms";
+import { getImageUrl } from "../../../services/cms";
 import CustomImage from "../../../components/CustomImage";
 import { headerBackground } from "../../../resources/images";
 import { APPBAR_HEIGHT, STATUSBAR_HEIGHT } from "../../../constants";
 import markdownStyles from "../../../styles/Markdown/assignment";
 
 type Props = {
-  step: IStep
+  step: Step
 };
 
 type State = {

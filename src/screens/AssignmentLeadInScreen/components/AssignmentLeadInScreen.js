@@ -5,13 +5,12 @@ import { Dimensions, ScrollView, View } from 'react-native';
 import { styles } from 'react-native-theme';
 import Markdown from '../../../Modules/Markdown';
 import Button from '../../../components/Button';
-import { IAssignment, IStep } from '../../../interfaces';
+import type { Assignment, Step } from '../../../services/apollo/models';
 import AssignmentNumber from './AssignmentNumber';
 import markdownStyles from '../../../styles/Markdown/assignment';
 
 type Props = {
-	assignments: IAssignment[],
-	currentStep: IStep,
+	assignments: Array<Assignment>,
 	color: string,
 	goToWorkBookScreen(): any
 };

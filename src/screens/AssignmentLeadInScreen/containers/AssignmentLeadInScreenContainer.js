@@ -5,28 +5,27 @@ import { StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import theme, { styles } from 'react-native-theme';
 import AssignmentLeadInScreen from '../components/AssignmentLeadInScreen';
-import { IAssignment } from '../../../interfaces';
+import type { Assignment } from '../../../services/cms';
 import DefaultIndicator from '../../../components/DefaultIndicator';
-import { getStepFromCMSByStep } from '../../../actions/steps';
-import { goToWorkBookScreen } from '../../../actions/navigate';
+import { goToWorkBookScreen } from '../../../redux/actions/nav.actions';
 import StepButtonStyle from '../../../styles/components/StepButton';
+import selectors from '../../../redux/selectors';
 
 type Props = {
-	assignments: IAssignment,
+	assignments: Assignment,
 	navigation: {
 		navigate(): any
 	},
-	getStepFromCMSByStep: any,
 	goToWorkBookScreen(): any
 };
 
 type State = {};
 
 const mapStateToProps = state => {
-	const { allSteps } = state.steps;
-	const { currentStep } = state.steps;
-	const color = state.steps.colors.steps[currentStep.number];
-  const assignments = currentStep.refAssignment ? currentStep.refAssignment.map(i => i.fields) : [];
+	const allSteps = selectors.steps(state)
+	const currentStep = selectors.currentStep(state)
+	const color = selectors.currentStepColor(state)
+  const assignments = selectors.assignments(state)
 	return {
 		currentStep,
 		color,
@@ -36,7 +35,6 @@ const mapStateToProps = state => {
 };
 
 @connect(mapStateToProps, {
-	getStepFromCMSByStep: getStepFromCMSByStep.request,
 	goToWorkBookScreen
 })
 class AssignmentLeadInScreenContainer extends Component<Props, State> {
@@ -62,7 +60,6 @@ class AssignmentLeadInScreenContainer extends Component<Props, State> {
 
 	render() {
 		const {
-			getStepFromCMSByStep,
 			assignments,
 			currentStep,
 			color,
@@ -74,7 +71,6 @@ class AssignmentLeadInScreenContainer extends Component<Props, State> {
 		if (assignments) {
 			return (
 				<AssignmentLeadInScreen
-					getStepFromCMSByStep={getStepFromCMSByStep}
 					assignments={assignments}
 					currentStep={currentStep}
 					color={color}

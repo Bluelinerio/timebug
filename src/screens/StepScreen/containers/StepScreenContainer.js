@@ -3,13 +3,14 @@
 import React, { Component } from 'react'
 import theme from 'react-native-theme';
 import { connect } from 'react-redux'
-import DefaultIndicator from "../../../components/DefaultIndicator";
-import { goToAssignmentLeadInScreen } from "../../../actions/navigate";
-import StepScreen from "../components/StepScreen"
-import { IStep } from "../../../interfaces"
+import DefaultIndicator from '../../../components/DefaultIndicator';
+import { goToAssignmentLeadInScreen } from '../../../redux/actions/nav.actions';
+import StepScreen from '../components/StepScreen'
+import selectors from '../../../redux/selectors'
+import { Step } from '../../../services/cms';
 
 type Props = {
-  currentStep: IStep,
+  currentStep: Step,
   navigation: {
     navigate(): any
   },
@@ -17,8 +18,8 @@ type Props = {
 };
 
 const mapStateToProps = (state) => {
-  const currentStep = state.steps.currentStep;
-	const color = state.steps.colors.steps[currentStep.number];
+  const currentStep = selectors.currentStep(state);
+	const color = selectors.currentStepColor(state);
   return {
     currentStep,
     color

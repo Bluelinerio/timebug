@@ -6,8 +6,7 @@ import * as NavigationService from '../HOC/navigation'
 
 const mapStateToProps = state => ({ nav: state.nav });
 
-const ReduxNavigator = (props) => {
-  const { dispatch, nav } = props;
+const ReduxNavigator = ({ dispatch, nav }) => {
   const navigation = ReactNavigation.addNavigationHelpers({
     dispatch,
     state: nav,
