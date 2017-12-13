@@ -8,6 +8,7 @@ import Button from '../../../components/Button';
 import type { Assignment, Step } from '../../../services/cms';
 import AssignmentNumber from './AssignmentNumber';
 import markdownStyles from '../../../styles/Markdown/assignment';
+import BeginButton from '../containers/BeginButton';
 
 type Props = {
 	assignments: Array<Assignment>,
@@ -46,18 +47,6 @@ const createSteps = (assignments, color) => {
 	);
 };
 
-const BeginButton = ({ color, onPress }) => (
-	<Button
-		onPress={onPress}
-		text="BEGIN"
-		styles={{
-			wideButtonBackground: {
-				backgroundColor: color
-			}
-		}}
-	/>
-);
-
 export default ({ assignments, color, goToWorkBookScreen }) => {
 	return (
 		<ScrollView 
@@ -71,7 +60,7 @@ export default ({ assignments, color, goToWorkBookScreen }) => {
 					index
 				})
 			)}
-			<BeginButton onPress={() => goToWorkBookScreen({})} color={color} />
+			<BeginButton />
 		</ScrollView>
 	);
 };
