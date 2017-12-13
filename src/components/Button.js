@@ -20,7 +20,6 @@ export default ({ text, onPress, side, withArrow=false, disabled=false, styles, 
 	const minWidth = side ? 128 : 240;
 	const paddingHorizontal = side ? 35 : 50;
 	const opacity = disabledStyle ? 1 : disabled ? 0.1 : 1;// set alpha to 0.1 when disabled and disabledStyle not provided
-	debugger;
 	styles = {
 		...DefaultStyle,
 		...styles,
