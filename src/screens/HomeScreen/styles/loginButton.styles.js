@@ -7,6 +7,7 @@ export default StyleSheet.create({
 		flexDirection: 'row',
 		alignItems: 'center',
 		justifyContent: 'center',
+		backgroundColor: 'white',
 		width: Dimensions.get('window').width
 	},
 	buttonIconLeft: {
@@ -24,9 +25,6 @@ export default StyleSheet.create({
 		marginHorizontal: 10,
 		borderWidth: 1,
 		borderColor: darkishBlue
-	},
-	wideButtonBackground: {
-		backgroundColor: 'white'
 	},
 	left: {
 		justifyContent: 'flex-start',

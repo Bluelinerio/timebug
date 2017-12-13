@@ -36,11 +36,7 @@ const AssignmentButton = ({ color, onPress }) => (
   <Button
     onPress={onPress}
     text="ASSIGNMENTS"
-    styles={{
-      wideButtonBackground: {
-        backgroundColor: color
-      }
-    }}
+    backgroundColor={color}
   />
 );
 
