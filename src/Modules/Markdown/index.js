@@ -265,7 +265,7 @@ class Markdown extends Component {
             console.log('\n\n==== LOGGING NODE TREE ===');
             Utils.logDebug(content);
         }
-
+        //debugger;
         return(
             <View {...this.props}>
                 {content}

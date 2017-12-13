@@ -22,12 +22,9 @@ const styles = {
 		alignSelf: 'center',
 		justifyContent: 'center',
 		overflow: 'hidden',
-        marginHorizontal: 10,
-        borderWidth: 1,
-        borderColor: darkishBlue
-	},
-	wideButtonBackground: {
-		backgroundColor: 'white'
+		marginHorizontal: 10,
+		borderWidth: 1,
+		borderColor: darkishBlue
 	},
 	left: {
 		justifyContent: 'flex-start',

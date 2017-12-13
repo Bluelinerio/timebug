@@ -4,22 +4,25 @@ import { Dimensions, Text, View, TouchableHighlight } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import DefaultStyle from '../styles/components/StepButton';
 
+type Side = 'left' | 'right' | null
 type Props = {
 	text: string,
-	side: string,
-	withArrow: boolean,
-    disabled: boolean,
-    styles: {},
-	oPress(): any
-};
+	onPress:() => void,
+	side?: Side,
+	withArrow?: boolean,
+	disabled?: boolean,
+	styles?: {},
+	disabledStyle?:{},
+	backgroundColor?: string,
+}
 
-export default ({ text, onPress, side, withArrow, disabled, styles }: Props) => {
-	let minWidth = side ? 128 : 240;
-	let paddingHorizontal = side ? 35 : 50;
-	let opacity = disabled ? 0.1 : 1;
+export default ({ text, onPress, side, withArrow=false, disabled=false, styles, disabledStyle, backgroundColor }: Props) => {
+	const minWidth = side ? 128 : 240;
+	const paddingHorizontal = side ? 35 : 50;
+	const opacity = disabledStyle ? 1 : disabled ? 0.1 : 1;// set alpha to 0.1 when disabled and disabledStyle not provided
 	styles = {
 		...DefaultStyle,
-		...(styles || null)
+		...styles,
 	}
 	
 	return (
@@ -27,11 +30,11 @@ export default ({ text, onPress, side, withArrow, disabled, styles }: Props) => 
 			<TouchableHighlight
 				style={[
 					styles.wideButton,
-					styles.wideButtonBackground,
 					{
 						minWidth,
 						paddingHorizontal,
-						opacity
+						opacity,
+						backgroundColor
 					}
 				]}
 				activeOpacity={opacity}
