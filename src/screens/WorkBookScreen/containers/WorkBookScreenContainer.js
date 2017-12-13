@@ -124,11 +124,7 @@ class WorkBookScreenContainer extends Component<Props, State> {
               text="NEXT"
               side="right"
               withArrow
-              styles={{
-                wideButtonBackground: {
-                  backgroundColor: color
-                }
-              }}
+              backgroundColor={color}
             />
           </View>
         </View>
