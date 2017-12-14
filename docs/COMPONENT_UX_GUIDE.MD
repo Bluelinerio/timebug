@@ -19,7 +19,6 @@ The app uses react-native and [tcomb-form-native](https://github.com/gcanti/tcom
 - Short Text 
     - Subtypes:
         - Email validation
-        - 
 - Long Text
     - min/max characters.
 - Yes/no 
@@ -34,11 +33,6 @@ The app uses react-native and [tcomb-form-native](https://github.com/gcanti/tcom
 - Pickers:
 - Statement (no entry text component)
 
-The top level Component that presents the Form contains the Four basic types of components needed:
--Text inputs
--Textarea inputs
--Lists
--Submit buttons
 
 *** ALL components must hold state, at least between sessions - this is an app that ideally engages the user for 5 years, and they must be able to retreieve previous forms and edit their answers if necessary.
 
@@ -57,34 +51,50 @@ t.struct({
                     date: t.Date
                  })
 ```
-2)Short text: tcomb type 'String'
-- A submit or 'ok' button can appear once the input is valid(seperate from the submit button for the entire form) We can check for validation using tcomb-validation(https://github.com/gcanti/tcomb-validation/blob/master/README.md). See typeform text inputs for an example of how this works.
 
-3)Long text: tcomb type 'String', or custom type TBD
-- Must behave and function exactly like Text input, but larger space. This does not appear to be available by default in tcomb-react-native library(tcomb documentation says this is possible by setting an option 'type: textarea' but this has not worked for me.)
-
-4)List Entry: tcomb type 'list'
-- List of items, each item must contain a select box(options popualted by const of t-comb type enums generated in forms/contents.js), a '+' button for adding list items and a '-' button for removing.
+2)List Entry: tcomb type 'list'
+- List of items, can contain any type, or a group entry. Must contain a '+' button for adding list items and a '-' button for removing.
 - Must always hold state - should maintain value after entered, including in between sessions, so a user can always go back and edit. Options are generated from const of type enums - in some forms, options should not be reusable.
   - Example - Step 3(form 1):
      The select box populates options from const CharachterStrengths defined in contens.js of forms directory. When a charachter strength is selected, it should not be available in further list items - this component should contain an onChange prop which updates state and removes previously selected options from the list.
-- Must have an option for min and max items.
-- Must have a placeholder option of null value.
+- Must have an option for min and max items. **Needs research**
+- Must have a placeholder option of null value. **Needs research**
 
-5)Multiple Choice: tcomb types 'struct', 'boolean'
+3)Short text: tcomb type 'String'
+- A submit or 'ok' button can appear once the input is valid(seperate from the submit button for the entire form) We can check for validation using tcomb-validation(https://github.com/gcanti/tcomb-validation/blob/master/README.md). See typeform text inputs for an example of how this works.
+
+4)Long text: tcomb type 'String'
+-single text field, textarea is passed as type in options field: ```{ type: 'textarea' }``` **Needs research**
+- Must behave and function exactly like Text input, but larger space. 
+
+5)Yes/no tcomb type 'boolean'
+-single boolean field, label is passed as option field: ```{ label: 'label' }```
+
+6)Multiple Choice: tcomb types 'struct', 'boolean'
 - Multiple choice will be written as a t-comb type 'struct' with choices nested in the struct as t-comb type 'booleans', which display as iOS switches. Can have the following parameters. 
     - Required  (yes/no): By default, all fields required, so at least one multiple choice value must be selected for the form to validate. **BUG:** User can un-select a field after selecting and form is still valid with no fields selected.
-    - Multiple selections (yes/no): By default, multiple selections are disabled. To disable, we must pass an onChange prop which invalidates other fields once one is selected. See: https://github.com/gcanti/tcomb-form-native#disable-a-field-based-on-another-fields-value
-    - randomize order (yes/no): This is not a default option in tcomb
+    - Multiple selections (yes/no): By default, multiple selections are enabled. To disable, we must pass an onChange prop which invalidates other fields once one is selected. See: https://github.com/gcanti/tcomb-form-native#disable-a-field-based-on-another-fields-value **(prototype this?)**
+    - randomize order (yes/no): **needs research**
     - Add 'other' (yes/no):Can have a boolean field 'other', which can conditionally enable a text field if desired. See:
-   https://github.com/gcanti/tcomb-form-native#disable-a-field-based-on-another-fields-value
+   https://github.com/gcanti/tcomb-form-native#disable-a-field-based-on-another-fields-value **needs research**
 
-6)Drop down: tcomb type enums https://github.com/gcanti/tcomb-form-native#enums
+7)Number: tcomb type 'Number'
+- looks/behaves exactly like short text, only accepts number. **Possible Alternative:** Drop down of numbers from type 'enums'.
+
+8)Drop down: tcomb type enums https://github.com/gcanti/tcomb-form-native#enums
+- generates select from tcomb type 'enums'
+
+9)Pickers
 - date: tcomb type Date
 - time: tcomb type Date with option ``` { mode: 'time' } ```
-- range: ?  duration?
+- more options https://github.com/gcanti/tcomb-form-native/blob/master/README.md#datepicker-component
 
-7)Submit Button
-- Text should read "SKIP" if entire form is invalid, and "NEXT". We can check this using getValue() (https://github.com/gcanti/tcomb-form/blob/master/GUIDE.md#getvalue).
+10)Statement (no entry text component)
+- passed as title attribute of each form, e.g.: 
+``` 1: { title: "Make a list of 2-10 role models and note their influencial life category, the degree to which you know/interact with them personally and the reason for why you look up to them.", type: ... ```
+
+
+
+
 
 
