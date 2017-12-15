@@ -1,4 +1,5 @@
 // @flow
+// TODO: this file is conflicted, check sibling file and delete
 import { action }    from '../utils/actions';
 import {
   REQUEST,

@@ -1,4 +1,5 @@
 // @flow
+// TODO: this file is conflicted, check sibling file and delete
 import { GET_TOKEN_FROM_STORAGE, GET_USER_PROGRESS, SUCCESS, USER_FINISHED } from '../constants/actionTypes'; 
 
 export interface UserState {

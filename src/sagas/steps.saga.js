@@ -1,4 +1,5 @@
 // @flow
+// TODO: this file is conflicted, check sibling file and delete
 
 import { call, cancelled, put, takeLatest, select}            from 'redux-saga/effects';
 import { delay }                                              from 'redux-saga'

@@ -30,7 +30,10 @@ const Content = () => (
 			<Markdown markdownStyles={markdownStyles}>{'about'}</Markdown>
 		</ScrollView>
 		<FBButton />
-		<Button onPress={onPress} textTestId={'login_text'} buttonTestId={'login_button'} text={'LOGIN WITH FACEBOOK'} styles={LoginButtonStyles}/>
+		
+		{/* TODO: Add textId and buttontestId for fb Button 
+		<Button onPress={onPress} textTestId={'login_text'} buttonTestId={'login_button'} text={'LOGIN WITH FACEBOOK'} styles={LoginButtonStyles}/> 
+		*/}
 	</View>
 )
 

@@ -1,5 +1,5 @@
 import gql from 'graphql-tag';
-
+// TODO: this file is conflicted, check sibling file and delete
 export const loginFacebook = gql`
   query auth($token:String!){
     authenticateFB(facebookToken:$token ){

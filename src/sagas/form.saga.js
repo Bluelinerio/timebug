@@ -1,4 +1,5 @@
 // @flow
+// TODO: this file is conflicted, check sibling file and delete
 
 import { AsyncStorage }                       from "react-native";
 import { put, takeLatest, select, cancelled } from 'redux-saga/effects';
