@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Dimensions, Platform, Image, Text, View } from 'react-native';
 import Button from 'react-native-button';
 import Icon from 'react-native-vector-icons/Ionicons';
-import getImageUrl from '../../../utils/getImageUrl';
+import {getImageUrl } from '../../../services/cms';
 import CustomImage from '../../../components/CustomImage';
 import { startButtonBackgroundImage }   from '../../../resources/images/';
 import { darkishBlue } from '../../../constants/colors';

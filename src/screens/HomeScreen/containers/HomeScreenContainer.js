@@ -2,59 +2,34 @@
 
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { ScrollView } from "react-native";
+import { ScrollView, View } from "react-native";
 import theme from "react-native-theme";
 import IntroComponent from "../components/IntroComponent";
-import StepComponent from "../components/StepComponent";
+import StepContainer from "../containers/StepContainer";
 import FinishedComponent from '../components/FinishedComponent';
 import DefaultIndicator from "../../../components/DefaultIndicator";
-import {
-  getAllStepsFromCMS,
-  getStepFromCMSByStep
-} from "../../../actions/steps";
-import { getAboutInfoFromCMS } from "../../../actions/login";
-import { loginWithFB } from "../../../actions/FBAction";
-import type { IStep } from "../../../interfaces";
-import { goToStepScreen, goToAssignmentFlow } from "../../../actions/navigate";
-import { onAppLoaded } from "../../../actions/user";
-
-type HomeScreenStep = {
-  allSteps: IStep[],
-  currentStep: IStep
-};
-type HomeScreenInro = {
-  about: string
-};
-
-type HomeScreenFinished = {
-  finished: boolean
-}
-
-const LOADING = "LOADING";
-const INTRO = "INTRO";
-const STEP = "STEP";
-const FINISHED = "FINISHED"
-type HomeScreenState =
-  | { type: LOADING }
-  | { type: INTRO, component: HomeScreenInro }
-  | { type: STEP, component: HomeScreenStep }
-  | { type: FINISHED, component: HomeScreenFinished };
+import LogoutButton from '../containers/LogoutButton'
+import type { Step } from "../../../services/cms";
+import { onAppLoaded } from "../../../redux/actions/user.actions";
+import selectors from '../../../redux/selectors'
 
 type Props = {
-  state: HomeScreenState,
-  loginWithFB: any,
-  user: any,
-  getAllStepsFromCMS: any,
-  getAboutInfoFromCMS: any
-};
+  showLoading: boolean,
+  isLoggedIn: boolean
+}
 
-const mapStateToProps = state => {
-  const isPending = state.network.isPending;
-  if (isPending) {
-    return {
-      state: { type: LOADING }
-    };
+const mapStateToProps = (state: any) : Props => {
+  const isHomeScreenLoading = (state) => {
+    const isStorageNotLoaded = !selectors.isStorageLoaded(state)
+    const isCMSLoading = selectors.isCMSLoading(state)
+    const isUserStateUNDETERMINED = selectors.isUserStateUNDETERMINED(state)
+    return isStorageNotLoaded || isCMSLoading || isUserStateUNDETERMINED 
   }
+  const showLoading = isHomeScreenLoading(state)
+  const isLoggedIn = selectors.isLoggedIn(state);
+  return { 
+    showLoading,
+    isLoggedIn
   const isLoggedIn = state.login.isLoggedIn;
 
   const { finished } = state.user;
@@ -88,25 +63,16 @@ const mapStateToProps = state => {
       }
     };
   }
-
-  return {
-    state: {
-      type: INTRO,
-      component: {
-        about: state.login.about
-      }
-    }
-  };
 };
 
-@connect(mapStateToProps, {
-  getAllStepsFromCMS: getAllStepsFromCMS.request,
-  getAboutInfoFromCMS: getAboutInfoFromCMS.request,
-  loginWithFB: loginWithFB.request,
-  goToStepScreen,
-  goToAssignmentFlow,
-  onAppLoaded
-})
+const Content = () =>           
+  <ScrollView
+    automaticallyAdjustContentInsets={true}
+  >
+    <StepContainer />
+    <LogoutButton />
+  </ScrollView>
+
 class HomeScreenContainer extends Component<Props> {
   static navigationOptions = {
     header: null
@@ -114,7 +80,6 @@ class HomeScreenContainer extends Component<Props> {
 
   componentDidMount() {
     this.props.onAppLoaded();
-    this.props.getAllStepsFromCMS();
   }
 
   componentWillMount() {
@@ -122,37 +87,15 @@ class HomeScreenContainer extends Component<Props> {
   }
 
   render() {
-    let { state, loginWithFB, goToAssignmentFlow } = this.props;
-    switch (state.type) {
-      case LOADING:
-        return <DefaultIndicator size="large" />;
-      case INTRO:
-        return (
-          <IntroComponent onPress={loginWithFB} {...state.component} />
-        );
-      case FINISHED:
-        return (
-          <FinishedComponent /> 
-        )
-      case STEP:
-        const { currentStep, color, allSteps} = state.component;
-        return (
-          <ScrollView
-            color={color || "white"}
-            automaticallyAdjustContentInsets={true}
-          >
-            <StepComponent
-              currentStep={currentStep}
-              color={color}
-              totalNumberOfSteps={allSteps.length}
-              buttonAction={() =>
-                goToAssignmentFlow({ number: currentStep.number })}
-            />
-          </ScrollView>
-        );
+    const {showLoading, isLoggedIn} = this.props;
+    if (showLoading) {
+      return <DefaultIndicator size='large' />;
+    } if (isLoggedIn) {
+      return <Content /> 
+    } else {
+      return <IntroComponent />
     }
-    throw 'this should not happen';
   }
 }
 
-export default HomeScreenContainer;
+export default connect(mapStateToProps, {onAppLoaded})(HomeScreenContainer);

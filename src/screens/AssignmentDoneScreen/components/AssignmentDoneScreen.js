@@ -1,22 +1,18 @@
 // @flow
 
-import React, { Component } from "react";
-import { Text, View, Image } from "react-native";
-import Button from "../../../components/Button";
-import { IStep } from "../../../interfaces";
-import { styles } from "react-native-theme";
-import Feather from "react-native-vector-icons/MaterialCommunityIcons";
+import React, { Component } from 'react';
+import { Text, View, Image } from 'react-native';
+import { styles } from 'react-native-theme';
+import Feather from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const DoneButton = ({ color, onPress }) => (
+import Button from '../../../components/Button';
+import type { Step } from '../../../services/cms';
+
+const DoneButton = (props) => (
 	<Button
-		onPress={onPress}
-    text="DONE"
-    side="right"
-    styles={{
-			wideButtonBackground: {
-				backgroundColor: color
-			}
-		}}
+    text='DONE'
+    side='right'
+    {...props}
 	/>
 );
 
@@ -57,6 +53,7 @@ const NextStep = ({nextStepNumber, nextStepColor, nextStepDuration}) => (
       }
   </View>
 );
+
 export default ({
   currentStepNumber,
   currentStepColor,
@@ -71,7 +68,7 @@ export default ({
       <View style={[styles.assignmentDoneScreenAbsoluteContainer]}>
         <DoneButton
           onPress={done}
-          color={nextStepColor}
+          backgroundColor={nextStepColor}
         />
       </View>
     </View>
