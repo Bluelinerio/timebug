@@ -20,9 +20,8 @@ export default function(state: UserState = UNDETERMINED, action: Action) {
 		case GET_USER.SUCCEEDED:
 			return action.payload
     case updateProgress.UPDATE:
-      const { progress } = action;
-      const user = state.user;
-			return { ...state, user: { ...user, progress } }
+			const { progress } = action;
+			return { ...state, progress }
 		case LOGOUT:
 			return ANONYMOUS
 		default:
