@@ -128,6 +128,11 @@
       "scale" : "2x"
     },
     {
+      "idiom" : "ios-marketing",
+      "size" : "1024x1024",
+      "scale" : "1x"
+    },
+    {
       "filename" : "Icon-29.png",
       "unassigned" : true
     },
