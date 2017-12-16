@@ -17,6 +17,9 @@ export const fetchColors = () : Promise<Colors> => contentfulClient.getEntries({
 		content_type: CONTENTFUL_CONTENT_COLORS
 	}).then(response => response.items.map(i => i.fields)[0])
 
+function sortSteps(a, b) {
+	return a.number - b.number;
+}
 export const fetchSteps = () : Promise<Array<Step>>=>
 	contentfulClient
 		.getEntries({

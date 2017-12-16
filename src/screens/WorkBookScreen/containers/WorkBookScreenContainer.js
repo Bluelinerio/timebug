@@ -38,6 +38,13 @@ type State = {
   form?: any
 };
 
+type FormChange = {
+  fieldName: string,
+  fieldValue: any,
+  path: [String],
+  value: any,
+}
+
 const mapStateToProps = state => {
   const progress = selectors.progress(state);
   const model = state.form.model;
@@ -77,7 +84,7 @@ class WorkBookScreenContainer extends Component<Props, State> {
     }
   }
 
-  onChange = () => {
+  onChange = (formChange: FormChange) => {
     let value = this.form.refs.form.getValue();
     this.setState({
       isInvalid: !value
@@ -124,11 +131,7 @@ class WorkBookScreenContainer extends Component<Props, State> {
               text="NEXT"
               side="right"
               withArrow
-              styles={{
-                wideButtonBackground: {
-                  backgroundColor: color
-                }
-              }}
+              backgroundColor={color}
             />
           </View>
         </View>

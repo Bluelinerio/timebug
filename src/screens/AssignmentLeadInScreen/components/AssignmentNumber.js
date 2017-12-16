@@ -8,7 +8,6 @@ export default ({ number, color }) => {
 	return (
 		<View
 			style={{
-				borderWidth: 1,
 				alignItems: 'center',
 				justifyContent: 'center',
 				width: CicleWidth,
@@ -16,7 +15,6 @@ export default ({ number, color }) => {
 				borderRadius: 32,
 				marginRight: 10,
 				backgroundColor: color,
-				borderColor: 'white'
 			}}
 		>
 			<Text

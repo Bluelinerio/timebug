@@ -7,9 +7,10 @@ theme.add({
     marginBottom: 30
   },
   assignmentLeadInScreenSlide: {
-    flexDirection: 'row',
+    flexDirection: 'column',
+    justifyContent:'space-between',
     paddingHorizontal: 20,
-    paddingTop: 30,
+    paddingTop: 200,
   },
   assignmentLeadInScreenNumber: {
     borderWidth: 1,

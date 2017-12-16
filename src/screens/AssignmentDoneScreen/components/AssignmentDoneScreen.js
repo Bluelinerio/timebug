@@ -8,16 +8,11 @@ import Feather from 'react-native-vector-icons/MaterialCommunityIcons';
 import Button from '../../../components/Button';
 import type { Step } from '../../../services/cms';
 
-const DoneButton = ({ color, onPress }) => (
+const DoneButton = (props) => (
 	<Button
-		onPress={onPress}
-    text="DONE"
-    side="right"
-    styles={{
-			wideButtonBackground: {
-				backgroundColor: color
-			}
-		}}
+    text='DONE'
+    side='right'
+    {...props}
 	/>
 );
 
@@ -52,6 +47,7 @@ const NextStep = ({nextStepNumber, nextStepColor, nextStepDuration}) => (
     </View>
   </View>
 );
+
 export default ({
   currentStepNumber,
   currentStepColor,
@@ -66,7 +62,7 @@ export default ({
       <View style={[styles.assignmentDoneScreenAbsoluteContainer]}>
         <DoneButton
           onPress={done}
-          color={nextStepColor}
+          backgroundColor={nextStepColor}
         />
       </View>
     </View>
