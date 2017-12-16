@@ -22,4 +22,4 @@ export const fetchSteps = () : Promise<Array<Step>>=>
 		.getEntries({
 			content_type: CONTENTFUL_CONTENT_STEP
 		})
-		.then(response => response.items.map(step => step.fields))
+		.then(response => response.items.reduce((steps, step) => ({ ...steps, [step.fields.number]: step.fields }), {}))
