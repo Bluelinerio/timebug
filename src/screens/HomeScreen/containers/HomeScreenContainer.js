@@ -27,11 +27,11 @@ const mapStateToProps = (state: any) : Props => {
   }
   const showLoading = isHomeScreenLoading(state)
   const isLoggedIn = selectors.isLoggedIn(state);
-  const finished  = isLoggedIn && selectors.currentStepNumber(state) > selectors.totalNumberOfSteps(state)
+  const isFinished  = isLoggedIn && selectors.currentStepNumber(state) > selectors.totalNumberOfSteps(state)
   return { 
     showLoading,
     isLoggedIn,
-    finished
+    isFinished
   }
 };
 
@@ -57,12 +57,12 @@ class HomeScreenContainer extends Component<Props> {
   }
 
   render() {
-    const {showLoading, isLoggedIn, finished} = this.props;
+    const {showLoading, isLoggedIn, isFinished} = this.props;
     if (showLoading) {
       return <DefaultIndicator size='large' />;
-    } if (isLoggedIn && !finished) {
+    } if (isLoggedIn && !isFinished) {
       return <Content /> 
-    } else if(finished){
+    } else if(isFinished){
       return <FinishedComponent />
     } else {
       return <IntroComponent />
