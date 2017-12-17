@@ -44,12 +44,14 @@ export const authenticateWithFBToken = (fbToken: string): Auth =>
 		.then(parse('authenticateFB'))
 
 const fixMissingProgressInUser = (user: User) => {
+	// TODO: please review this, before it was step + 1 but I did not understand why, since ser steps start at index 1
 	const step = user.steps[0] ? user.steps[0].stepId : 1
 	const progress = { step, form: 1 }
 	return { ...user, progress }
 }
 
 const fixUserFinished = (user: User) => {
+	// This is the same thing as above, but only to check if  it's finished
 	const step = user.steps[0] ? user.steps[0].stepId : 1
 	const finished = step === 30 ? true : false
 	return {...user, finished}
