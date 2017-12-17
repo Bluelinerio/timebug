@@ -22,6 +22,8 @@ import FormComponent from "../components/FormComponent";
 import { GET_NEXT_FORM } from "../../../redux/actionTypes";
 import selectors from '../../../redux/selectors'
 import type { Progress } from '../../../services/apollo/models';
+import { updateProgress } from '../../../redux/actions/user.actions'
+import * as NavigationService from '../../../HOC/navigation'
 
 type Props = {
   progress: Progress, 
@@ -66,6 +68,41 @@ class WorkBookScreenContainer extends Component<Props, State> {
     keyboardSpace: 0,
     isInvalid: true,
   }
+
+  static navigationOptions = () => {
+		return {
+			title: 'ASSIGNMENT',
+			headerTitleStyle: {
+				textAlign: 'center',
+				alignSelf: 'center',
+				fontFamily: 'Helvetica',
+				fontSize: 20.5
+			},
+			headerStyle: {
+				backgroundColor: StyleSheet.flatten(styles.headerColor).backgroundColor
+			},
+      headerTintColor: 'white',
+      headerLeft: (
+        <HeaderBackButton
+          tintColor="white"
+          onPress={() => {
+            const state = store.getState();
+            const { step, form } = selectors.progress(state);
+            if (form > 1) {
+              store.dispatch(
+                updateProgress.withProgress({
+                  step: step,
+                  form: form - 1
+                })
+              );
+            } else {
+              NavigationService.goBack();
+            }
+          }}
+        />
+      )
+		};
+	};
 
   componentWillMount  = () => {
     theme.setRoot(this);
@@ -138,35 +175,5 @@ class WorkBookScreenContainer extends Component<Props, State> {
       );
   }
 }
-
-WorkBookScreenContainer.navigationOptions = ({ navigation }) => {
-    return {
-      headerTitleStyle: {
-        textAlign: "center",
-        alignSelf: "center"
-      },
-      headerStyle: {
-        backgroundColor: StyleSheet.flatten(styles.headerColor).backgroundColor
-      },
-      headerTintColor: "white",
-      headerLeft: (
-        <HeaderBackButton
-          tintColor="white"
-          onPress={() => {
-            const state = store.getState();
-            const { step, form } = selectors.progress(state);
-            const { number } = state.steps.currentStep;
-            store.dispatch({
-              type: GET_NEXT_FORM,
-              currentForm: form,
-              currentStep: step,
-              isGoBack: true,
-              numberOFDay: number
-            });
-          }}
-        />
-      )
-    };
-  };
 
 export default WorkBookScreenContainer;
