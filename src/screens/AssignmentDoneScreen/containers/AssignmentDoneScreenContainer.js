@@ -19,7 +19,7 @@ type State = {};
 
 const mapStateToProps = state => {
   const { allSteps, totalNumberOfSteps, colors } = state.cms;
-	const currentStepNumber = selectors.currentStepNumber(state);
+	const currentStepNumber = selectors.currentStepNumber(state) - 1;
   const currentStep = allSteps[currentStepNumber];
   const currentStepColor = colors.steps[currentStepNumber]
   const nextStepNumber = currentStepNumber + 1;

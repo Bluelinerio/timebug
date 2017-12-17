@@ -5,6 +5,12 @@ import gql from 'graphql-tag'
 import { APOLLO_CONFIG } from '../../constants/config'
 import type { Auth, User, GraphErrors, GraphResponse, ErrorResponse } from './models'
 
+type AddStepArgs = {
+	userId: string,
+	stepId: number,
+	data: any
+}
+
 const reduxRootSelector = state => {
 	return state
 }
@@ -81,7 +87,7 @@ export const fetchUserWithId = (id: string): User =>
 		.then(fixMissingProgressInUser)
 		.then(fixUserFinished)
 
-export const addStep = ({userId: string, stepId: number, data: any}): any =>
+export const addStep = ({ userId, stepId, data } : AddStepArgs): any =>
 	client
 		.mutate({
 			mutation: gql`
