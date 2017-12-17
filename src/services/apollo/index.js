@@ -109,6 +109,11 @@ export const testUser = ({ userId }): any =>
 						id
 						name
 						facebookId
+						steps(orderBy: stepId_DESC, first: 1) {
+							id
+							stepId
+							data
+						}
 					}
 				}
 			`,
