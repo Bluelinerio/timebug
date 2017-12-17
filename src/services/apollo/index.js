@@ -58,8 +58,8 @@ const fixMissingProgressInUser = (user: User) => {
 
 const fixUserFinished = (user: User) => {
 	// This is the same thing as above, but only to check if  it's finished
-	const step = user.steps[0] ? user.steps[0].stepId : 1
-	const finished = step === 30 ? true : false
+	const step = user.steps[0] ? user.steps[0].stepId + 1 : 1
+	const finished = step === 31 ? true : false
 	return {...user, finished}
 }
 
