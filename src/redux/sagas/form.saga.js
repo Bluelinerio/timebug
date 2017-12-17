@@ -67,34 +67,6 @@ function * getNextFormModelIfAvailableForCurrentStep() : ?{ nextFormModelForThis
   return null;
 }
 
-function * getPreviousFormModelIfAvailableForCurrentStep() : ?{ nextFormModelForThisStep:FormModel, newProgress:Progress } {
-  const user : ?User = yield select(selectors.user);
-  const totalNumberOfSteps = yield select(selectors.totalNumberOfSteps);
-  if(!user || !totalNumberOfSteps) {
-    return null;
-  }
-  const { step, form} = user.progress;
-  if(form > 1) {
-    const nextForm = form - 1;
-      const nextFormModelForThisStep = getFormModel({step, form:nextForm});
-      if (nextFormModelForThisStep) {
-        const newProgress = {step, form: nextForm }
-        return {
-          nextFormModelForThisStep,
-          newProgress
-        }
-     }
-  }
-  return null
-}
-
-
-function * submit() {
-  const { id , progress} = yield select(state => state.user);
-  const formData = yield select((state) => state.form.data);
-  yield call( addStep, { userId:id, stepId:progress.step, data:formData} );
-}
-
 function * updateFormAfterChangeInProgress() {
   const isLoggedIn = yield select(selectors.isLoggedIn);
   if (!isLoggedIn) {
@@ -124,20 +96,6 @@ function * getNextProgress(): { newProgress: Progress, change:ProgressChange } {
   }
 }
 
-function * getPreviousProgress(goBackInSteps : boolean = false): { newProgress: Progress, change:ProgressChange } {
-  const { nextFormModelForThisStep, newProgress } = yield call(getPreviousFormModelIfAvailableForCurrentStep);
-  if (nextFormModelForThisStep) {
-    return { change: FORM_CHANGE_DOWN, newProgress }
-  }
-  const progress = yield select(selectors.progress);
-  const { step, form } = progress;
-  if (goBackInSteps && step > 1) {
-    return { change: STEP_CHANGE_DOWN, newProgress: { step: step - 1, form }}
-  }
-  return { newProgress: progress, change: NO_CHANGE };
-}
-
-
 function * selectProgressAndSubmitValue(action: {value : any }) {
   const progress = yield select(state => state.user.progress);
   yield put(populateFormValue(action.value, progress));
@@ -150,6 +108,8 @@ function * selectProgressAndSubmitValue(action: {value : any }) {
   switch (change) {
     case STEP_CHANGE_UP:
       yield put(goToAssignmentDoneScreen());
+      const user = yield select(selectors.user);
+      yield call( addStep, { userId: user.id, stepId: progress.step, data: action.value } ); 
     case STEP_CHANGE_DOWN:
     case FORM_CHANGE_UP:
     case FORM_CHANGE_DOWN:
@@ -160,6 +120,19 @@ function * selectProgressAndSubmitValue(action: {value : any }) {
       break;
   }
 }
+
+// const formReducerSaga = (action:FormChangeAcion, state:FormState)
+// {
+//   const {field, form, step, value } = action;
+//   yield put(incrementLoadingIndicator())
+//   const generator:FormReducerGenerator = yield findReducerGenerator(action);
+//   const result = yield call(generator, action, state);
+//   yield put(decrementLoadingIndicator())
+//   if(result.error) {
+      
+//   }
+//   yield put(updateFormState(result.newState))
+// }
 
 function * watchPopulateCurrentFormValue() {
   yield takeLatest(POPULATE_CURRENT_FORM_VALUE, selectProgressAndSubmitValue) 
@@ -172,5 +145,6 @@ function * watchForUpdateInUserProgress() {
 export function* formLoaderSaga() {
   yield fork(watchForUpdateInUserProgress)
   yield fork(watchPopulateCurrentFormValue)
+  // yield fork(watchForChangesInForm)
 }
 
