@@ -88,8 +88,7 @@ class WorkBookScreenContainer extends Component<Props, State> {
           onPress={() => {
             const state = store.getState();
             const { step, form } = selectors.progress(state);
-            console.log(step, form)
-            if (form >= 1) {
+            if (form > 1) {
               store.dispatch(
                 updateProgress.withProgress({
                   step: step,
