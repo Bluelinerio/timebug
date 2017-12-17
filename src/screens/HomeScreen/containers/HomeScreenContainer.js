@@ -27,41 +27,11 @@ const mapStateToProps = (state: any) : Props => {
   }
   const showLoading = isHomeScreenLoading(state)
   const isLoggedIn = selectors.isLoggedIn(state);
+  const { finished } = isLoggedIn ? selectors.user(state) : { finished: false }
   return { 
     showLoading,
-    isLoggedIn
-  const isLoggedIn = state.login.isLoggedIn;
-
-  const { finished } = state.user;
-  if( finished ){
-    return {
-      state: {
-        type: FINISHED,
-        component: {
-          finished
-        }
-      }
-    };
-  };
-  if (isLoggedIn === true) {
-    steps = state.steps;
-    const allSteps = steps.allSteps;
-    const currentStep = steps.currentStep ? steps.currentStep : { number: 1};
-    const color = steps.colors.steps[currentStep.number];
-
-    if (!allSteps || !currentStep || !color) {
-      throw "missing currentStep or allSteps or color" + state.steps;
-    }
-    return {
-      state: {
-        type: STEP,
-        component: {
-          allSteps,
-          currentStep,
-          color
-        }
-      }
-    };
+    isLoggedIn,
+    finished
   }
 };
 
@@ -87,11 +57,13 @@ class HomeScreenContainer extends Component<Props> {
   }
 
   render() {
-    const {showLoading, isLoggedIn} = this.props;
+    const {showLoading, isLoggedIn, finished} = this.props;
     if (showLoading) {
       return <DefaultIndicator size='large' />;
-    } if (isLoggedIn) {
+    } if (isLoggedIn && !finished) {
       return <Content /> 
+    } else if(finished){
+      return <FinishedComponent />
     } else {
       return <IntroComponent />
     }

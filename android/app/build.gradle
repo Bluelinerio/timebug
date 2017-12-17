@@ -146,7 +146,7 @@ dependencies {
     
     //Required for detox, if this project's RN version is 0.46 or above,
     //Remove oldOkhttpDebug and replace with newOkhttpDebug
-    androidTestCompile(project(path: ":detox", configuration: "oldOkhttpDebug"), {
+    androidTestCompile(project(path: ":detox", configuration: "newOkhttpDebug"), {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 

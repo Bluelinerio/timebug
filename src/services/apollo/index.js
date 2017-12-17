@@ -44,9 +44,15 @@ export const authenticateWithFBToken = (fbToken: string): Auth =>
 		.then(parse('authenticateFB'))
 
 const fixMissingProgressInUser = (user: User) => {
-	const step = user.steps[0] ? user.steps[0].stepId + 1 : 1
+	const step = user.steps[0] ? user.steps[0].stepId : 1
 	const progress = { step, form: 1 }
 	return { ...user, progress }
+}
+
+const fixUserFinished = (user: User) => {
+	const step = user.steps[0] ? user.steps[0].stepId : 1
+	const finished = step === 30 ? true : false
+	return {...user, finished}
 }
 
 export const fetchUserWithId = (id: string): User =>
@@ -71,6 +77,7 @@ export const fetchUserWithId = (id: string): User =>
 		})
 		.then(parse('User'))
 		.then(fixMissingProgressInUser)
+		.then(fixUserFinished)
 
 export const addStep = ({userId: string, stepId: number, data: any}): any =>
 	client
@@ -92,3 +99,21 @@ export const addStep = ({userId: string, stepId: number, data: any}): any =>
 			}
 		})
 		.then(parse('addStep'))
+
+export const testUser = ({ userId }): any =>
+	client
+		.query({
+			query: gql`
+				query testUser($id:ID!){
+					User(id: $id){
+						id
+						name
+						facebookId
+					}
+				}
+			`,
+			variables: {
+				userId: userId,
+			}
+		})
+		.then(parse('User'))
