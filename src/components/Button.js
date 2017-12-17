@@ -14,9 +14,11 @@ type Props = {
 	styles?: {},
 	disabledStyle?:{},
 	backgroundColor?: string,
+	textTestId: string,
+	buttonTestId: string,
 }
 
-export default ({ text, onPress, side, withArrow=false, disabled=false, styles, disabledStyle, backgroundColor }: Props) => {
+export default ({ text, onPress, side, withArrow=false, disabled=false, styles, disabledStyle, backgroundColor, buttonTestId, textTestId }: Props) => {
 	const minWidth = side ? 128 : 240;
 	const paddingHorizontal = side ? 35 : 50;
 	const opacity = disabledStyle ? 1 : disabled ? 0.1 : 1;// set alpha to 0.1 when disabled and disabledStyle not provided
@@ -24,7 +26,7 @@ export default ({ text, onPress, side, withArrow=false, disabled=false, styles, 
 		...DefaultStyle,
 		...styles,
 	}
-	
+
 	return (
 		<View style={[styles.buttonContainer, side ? styles[side] : null]}>
 			<TouchableHighlight
@@ -41,6 +43,7 @@ export default ({ text, onPress, side, withArrow=false, disabled=false, styles, 
 				onPress={onPress}
 				disabled={disabled}
 				underlayColor={'#c0c0c0'}
+				testID={buttonTestId}
 			>
 				<View style={[side && styles.buttonGroup]}>
 					{side &&
@@ -53,7 +56,7 @@ export default ({ text, onPress, side, withArrow=false, disabled=false, styles, 
 								color="white"
 							/>
 						)}
-					<Text style={styles.wideButtonText}>{text}</Text>
+					<Text style={styles.wideButtonText} testID={textTestId} >{text}</Text>
 					{side &&
 						side === 'right' &&
 						withArrow && (

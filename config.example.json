@@ -1,0 +1,10 @@
+{
+    "ENV": "DEVELOP",
+    "TESTUSERID": ""
+}
+
+//Valid ENV values
+
+//DEVELOP
+//TEST
+//PRODUCTION

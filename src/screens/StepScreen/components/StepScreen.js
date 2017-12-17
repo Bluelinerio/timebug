@@ -37,13 +37,14 @@ const AssignmentButton = ({ color, onPress }) => (
     onPress={onPress}
     text="ASSIGNMENTS"
     backgroundColor={color}
+    buttonTestId={'step_to_assignment_button'}
   />
 );
 
 const Content = ({ subtitle, description, onPress, color }) => (
   <View style={styles.stepScreenContent}>
     <Text
-      testID="subtitle"
+      testID={"step_subtitle"}
       style={[styles.stepScreenText, styles.stepScreenSubtitle]}
     >
       {subtitle}
@@ -62,7 +63,8 @@ const Header = ({ goBack, imageUri, title, number }) => (
       position: 'absolute',
       top: 50,
       left: 15,
-    }} onPress={goBack}>
+    }} onPress={goBack}
+      testID={'step_screen_close_icon'}>
       <Icon name="md-close" size={30} color="white" />
     </TouchableOpacity>
     <View style={{
@@ -79,7 +81,9 @@ const Header = ({ goBack, imageUri, title, number }) => (
         textAlign: "center",
         color: "#ffffff",
         alignSelf: 'flex-end',
-      }}>
+      }}
+        testID={'step_screen_step_number'}
+      >
         STEP {number}
       </Text>
     </View>
@@ -97,7 +101,6 @@ const Header = ({ goBack, imageUri, title, number }) => (
         />
       )}
       <Text
-        testID="title"
         style={[styles.stepScreenTitle, { 
           top: STATUSBAR_HEIGHT + APPBAR_HEIGHT, 
         }]}

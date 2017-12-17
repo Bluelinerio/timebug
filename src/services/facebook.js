@@ -24,7 +24,7 @@ const getToken = (): Promise <?string> => AccessToken.getCurrentAccessToken().th
 
 const openFBLogin = (): Promise < OpenFBLoginResult > => LoginManager.logInWithReadPermissions(['public_profile', 'email', 'user_friends']).then(result => {
 		if (result.isCancelled) {
-			throw {
+			return {
 				error: 'User cancelled Facebook login'
 			}
 		}
