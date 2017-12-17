@@ -51,7 +51,7 @@ export const authenticateWithFBToken = (fbToken: string): Auth =>
 
 const fixMissingProgressInUser = (user: User) => {
 	// TODO: please review this, before it was step + 1 but I did not understand why, since ser steps start at index 1
-	const step = user.steps[0] ? user.steps[0].stepId : 1
+	const step = user.steps[0] ? user.steps[0].stepId + 1 : 1
 	const progress = { step, form: 1 }
 	return { ...user, progress }
 }
