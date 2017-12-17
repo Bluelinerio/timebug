@@ -18,8 +18,7 @@ const isLoggedIn = (state: any) : boolean => !!user(state)
 
 const progress = (state: any): ?Progress => user(state) ? user(state).progress : null;
 const currentStepNumber = (state: any): number => progress(state) ? progress(state).step : 0;
-// TODO: remove 0 indexed solution in pro of a better and more developer friendly solution
-const currentStep = (state: any): Step => steps(state)[currentStepNumber(state) - 1 ];
+const currentStep = (state: any): Step => steps(state)[currentStepNumber(state)];
 const currentStepColor = (state: any) => stepColors(state)[currentStepNumber(state)];
 const assignments = (state: any) => currentStep(state).refAssignment.map(i => i.fields);
 
