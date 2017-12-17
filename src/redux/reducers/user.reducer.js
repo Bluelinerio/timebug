@@ -4,7 +4,7 @@ import { SET_USER_STATE } from '../actions'
 import type { User, UserState , Progress} from '../../services/apollo/models'
 import { ANONYMOUS, UNDETERMINED } from '../../services/apollo/models'
 import { GET_USER, updateProgress } from '../actions/user.actions'
-import { LOGOUT, UPDATE_PROGRESS, USER_FINISHED } from '../actionTypes'
+import { LOGOUT, UPDATE_PROGRESS } from '../actionTypes'
 
 export const userFromResponse = (response: any): User => response.data.User
 
@@ -24,8 +24,6 @@ export default function(state: UserState = UNDETERMINED, action: Action) {
 			return { ...state, progress }
 		case LOGOUT:
 			return ANONYMOUS
-		case USER_FINISHED:
-			return { ...state, finished: true}
 		default:
 			return state
 	}

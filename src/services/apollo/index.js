@@ -56,13 +56,6 @@ const fixMissingProgressInUser = (user: User) => {
 	return { ...user, progress }
 }
 
-const fixUserFinished = (user: User) => {
-	// This is the same thing as above, but only to check if  it's finished
-	const step = user.steps[0] ? user.steps[0].stepId + 1 : 1
-	const finished = step === 31 ? true : false
-	return {...user, finished}
-}
-
 export const fetchUserWithId = (id: string): User =>
 	client
 		.query({
@@ -85,7 +78,6 @@ export const fetchUserWithId = (id: string): User =>
 		})
 		.then(parse('User'))
 		.then(fixMissingProgressInUser)
-		.then(fixUserFinished)
 
 export const addStep = ({ userId, stepId, data } : AddStepArgs): any =>
 	client

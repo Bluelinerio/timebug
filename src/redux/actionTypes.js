@@ -33,5 +33,3 @@ export const POPULATE_CURRENT_FORM_VALUE  = 'POPULATE_CURRENT_FORM_VALUE';
 export const SET_FORM                     = 'SET_FORM';
 
 export const ON_APP_LOADED = 'ON_APP_LOADED';
-
-export const USER_FINISHED = 'USER_FINISHED';

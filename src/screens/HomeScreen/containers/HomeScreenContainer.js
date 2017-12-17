@@ -27,7 +27,7 @@ const mapStateToProps = (state: any) : Props => {
   }
   const showLoading = isHomeScreenLoading(state)
   const isLoggedIn = selectors.isLoggedIn(state);
-  const { finished } = isLoggedIn ? selectors.user(state) : { finished: false }
+  const finished  = isLoggedIn && selectors.currentStepNumber(state) > selectors.totalNumberOfSteps(state)
   return { 
     showLoading,
     isLoggedIn,
