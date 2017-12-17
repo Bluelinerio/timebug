@@ -109,9 +109,9 @@ function * updateFormAfterChangeInProgress() {
 
 
 function * getNextProgress(): { newProgress: Progress, change:ProgressChange } {
-  const { nextFormModelForThisStep, newProgress } = yield call(getNextFormModelIfAvailableForCurrentStep);
-  if (nextFormModelForThisStep) {
-    return { change: FORM_CHANGE_UP, newProgress }
+  const res = yield call(getNextFormModelIfAvailableForCurrentStep);
+  if (res && res.nextFormModelForThisStep) {
+    return { change: FORM_CHANGE_UP, newProgress: res.newProgress }
   } else {
     const totalNumberOfSteps = yield select(selectors.totalNumberOfSteps);
     const progress = yield select(selectors.progress);
@@ -141,80 +141,23 @@ function * getPreviousProgress(goBackInSteps : boolean = false): { newProgress: 
 function * selectProgressAndSubmitValue(action: {value : any }) {
   const progress = yield select(state => state.user.progress);
   yield put(populateFormValue(action.value, progress));
-  const { newProgress, change } = yield getNextProgress();
+  const res = yield getNextProgress();
+  if (!res) {
+    return;
+  }
+
+  const { newProgress, change } = res;
   switch (change) {
     case STEP_CHANGE_UP:
+      yield put(goToAssignmentDoneScreen());
     case STEP_CHANGE_DOWN:
     case FORM_CHANGE_UP:
     case FORM_CHANGE_DOWN:
       yield put(updateProgress.withProgress(newProgress));
       break;
     case NO_CHANGE:
-
     default:
       break;
-  }
-}
-
-function* _getNextForm() {
-  try {
-    yield put(incrementRequestCount)
-    yield call(networkState.haveConnection);
-    const {
-      step,
-      form,
-    } = yield select(state => state.user.progress);
-    const current = getFormModel({step, form});
-    const next = getFormModel({step, form});
-    const { model, data } = yield select(state => state.form)
-
-
-    if (currentStep && currentForm && formConfig[ currentStep ] && formConfig[ currentStep ][ currentForm ]) {
-      let model = formConfig[ currentStep ][ currentForm ];
-      yield put(setNextForm({
-        model,
-        value,
-        isGoBack,
-        currentStep,
-        currentForm: currentForm - 1,
-      }));
-      yield put(updateProgress.withProgress({
-        step: currentStep,
-        form: currentForm,
-      }));
-
-      if (isGoBack) {
-        goBack()
-      } else if (!withoutRedirect) {
-        yield put(goToWorkBookScreen())
-      }
-
-    } else {
-      yield put(setNextForm({
-        model: null,
-        value,
-        currentStep,
-        currentForm: currentForm - 1,
-      }));
-
-      if (isGoBack) {
-        goBack()
-      } else {
-        let userId = yield AsyncStorage.getItem('@2020:userId');
-
-        let formData = yield select((state) => state.form.data);
-
-        yield call( addStep, {userId, stepId:currentStep, data:formData} );
-        yield put(goToAssignmentDoneScreen());
-      }
-    }
-
-    yield put(decrementRequestCount);
-  } catch (e) {
-    yield put(decrementRequestCount);
-  } finally {
-    if (yield cancelled())
-      yield put(decrementRequestCount);
   }
 }
 
@@ -229,6 +172,5 @@ function * watchForUpdateInUserProgress() {
 export function* formLoaderSaga() {
   yield fork(watchForUpdateInUserProgress)
   yield fork(watchPopulateCurrentFormValue)
-  //yield takeLatest(GET_NEXT_FORM, _getNextForm)
 }
 
