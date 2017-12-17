@@ -16,6 +16,7 @@ type Props = {
 	progress: Progress,
 	onChange(): any,
   formData: any,
+  formRef(): any,
   model: {
     focusField: boolean,
     type: string, 
@@ -28,7 +29,7 @@ class FormComponent extends Component<Props> {
   componentDidMount = () => {
     const { model } = this.props;
     if (model && model.focusField) {
-      this.refs.form.getComponent(model.focusField).refs.input.focus();
+      this.form.getComponent(model.focusField).refs.input.focus();
     }
   }
 
@@ -47,13 +48,18 @@ class FormComponent extends Component<Props> {
     return undefined;
   }
 
+  handleFormRef = (ref) => {
+    this.form = ref;
+    this.props.formRef(ref);
+  }
+
   render() {
 
     let { model } = this.props;
 
     return (
       <Form
-        ref="form"
+        ref={this.handleFormRef}
         type={model.type}
         value={this.getDefaultValue()}
         options={model.options}

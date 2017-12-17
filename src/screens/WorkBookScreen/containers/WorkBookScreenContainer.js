@@ -115,14 +115,14 @@ class WorkBookScreenContainer extends Component<Props, State> {
   }
 
   onPress = () => {
-    const value = this.form.refs.form.getValue();
+    const value = this.form.getValue();
     if (value) {
       this.props.populateCurrentFormValue(value);
     }
   }
 
   onChange = (formChange: FormChange) => {
-    let value = this.form.refs.form.getValue();
+    let value = this.form.getValue();
     this.setState({
       isInvalid: !value
     });
@@ -146,7 +146,7 @@ class WorkBookScreenContainer extends Component<Props, State> {
                 {model.title.toUpperCase()}
               </Text>
               <FormComponent
-                ref={form => (this.form = form)}
+                formRef={form => (this.form = form)}
                 model={model}
                 formData={formData}
                 progress={progress}

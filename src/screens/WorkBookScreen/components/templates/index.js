@@ -19,19 +19,6 @@ t.form.Form.templates  = customTemplates;
 t.form.Form.stylesheet = customStylesheet;
 t.form.Form.i18n       = i18n;
 
-t.form.Struct.prototype.onChange = function (fieldName, fieldValue, path) {
-  const value = t.mixin({}, this.state.value);
-  value[fieldName] = fieldValue;
-  this.setState({value}, () => {
-    this.props.onChange({
-      value,
-      path,
-      fieldName,
-      fieldValue
-    });
-  });
-}
-
 t.form.Form.defaultProps = {
   templates: customTemplates,
   stylesheet: customStylesheet,
