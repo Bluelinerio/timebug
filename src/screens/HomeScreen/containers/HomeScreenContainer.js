@@ -6,6 +6,7 @@ import { ScrollView, View } from "react-native";
 import theme from "react-native-theme";
 import IntroComponent from "../components/IntroComponent";
 import StepContainer from "../containers/StepContainer";
+import FinishedComponent from '../components/FinishedComponent';
 import DefaultIndicator from "../../../components/DefaultIndicator";
 import LogoutButton from '../containers/LogoutButton'
 import type { Step } from "../../../services/cms";
@@ -26,9 +27,11 @@ const mapStateToProps = (state: any) : Props => {
   }
   const showLoading = isHomeScreenLoading(state)
   const isLoggedIn = selectors.isLoggedIn(state);
+  const isFinished  = isLoggedIn && selectors.currentStepNumber(state) > selectors.totalNumberOfSteps(state)
   return { 
     showLoading,
-    isLoggedIn
+    isLoggedIn,
+    isFinished
   }
 };
 
@@ -54,11 +57,13 @@ class HomeScreenContainer extends Component<Props> {
   }
 
   render() {
-    const {showLoading, isLoggedIn} = this.props;
+    const {showLoading, isLoggedIn, isFinished} = this.props;
     if (showLoading) {
       return <DefaultIndicator size='large' />;
-    } if (isLoggedIn) {
+    } if (isLoggedIn && !isFinished) {
       return <Content /> 
+    } else if(isFinished){
+      return <FinishedComponent />
     } else {
       return <IntroComponent />
     }

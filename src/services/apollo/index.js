@@ -50,6 +50,7 @@ export const authenticateWithFBToken = (fbToken: string): Auth =>
 		.then(parse('authenticateFB'))
 
 const fixMissingProgressInUser = (user: User) => {
+	// TODO: please review this, before it was step + 1 but I did not understand why, since ser steps start at index 1
 	const step = user.steps[0] ? user.steps[0].stepId + 1 : 1
 	const progress = { step, form: 1 }
 	return { ...user, progress }
@@ -98,3 +99,26 @@ export const addStep = ({ userId, stepId, data } : AddStepArgs): any =>
 			}
 		})
 		.then(parse('addStep'))
+
+export const testUser = ({ userId }): any =>
+	client
+		.query({
+			query: gql`
+				query testUser($id:ID!){
+					User(id: $id){
+						id
+						name
+						facebookId
+						steps(orderBy: stepId_DESC, first: 1) {
+							id
+							stepId
+							data
+						}
+					}
+				}
+			`,
+			variables: {
+				userId: userId,
+			}
+		})
+		.then(parse('User'))

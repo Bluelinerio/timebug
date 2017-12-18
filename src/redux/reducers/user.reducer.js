@@ -19,7 +19,7 @@ export default function(state: UserState = UNDETERMINED, action: Action) {
 			return action.state;
 		case GET_USER.SUCCEEDED:
 			return action.payload
-    case updateProgress.UPDATE:
+    	case updateProgress.UPDATE:
 			const { progress } = action;
 			return { ...state, progress }
 		case LOGOUT:

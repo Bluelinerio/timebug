@@ -1,10 +1,10 @@
 // @flow
 
 import React, { Component } from 'react';
-import { StyleSheet, Platform, Text, Dimensions, View, TouchableHighlight, ScrollView, Image } from 'react-native';
+import { Platform, Text, Dimensions, View, TouchableHighlight, ScrollView, Image } from 'react-native';
 import Markdown from '../../../Modules/Markdown';
 import LinearGradient from 'react-native-linear-gradient';
-import FBButton from '../containers/FBButton'
+import Button 	from '../../../components/Button';
 import ScrollableHeader from '../../../components/ScrollableHeader';
 import DefaultIndicator from '../../../components/DefaultIndicator';
 import { backgroundImage, headerBackground } from '../../../resources/images/';
@@ -18,8 +18,7 @@ const Header = () => (
 	</View>
 );
 
-
-const Content = () => (
+const Content = ({ about }) => (
 	<View style={styles.content}>
 		<ScrollView
 			style={{
@@ -27,25 +26,25 @@ const Content = () => (
 				paddingHorizontal: 20
 			}}
 		>
-			<Markdown markdownStyles={markdownStyles}>{'about'}</Markdown>
+			<Markdown markdownStyles={markdownStyles}>{about}</Markdown>
 		</ScrollView>
-		<FBButton />
-		
-		{/* TODO: Add textId and buttontestId for fb Button 
-		<Button onPress={onPress} textTestId={'login_text'} buttonTestId={'login_button'} text={'LOGIN WITH FACEBOOK'} styles={LoginButtonStyles}/> 
-		*/}
 	</View>
-)
+);
 
-export default () => 			
-	<ScrollableHeader
-		headerMaxHeight={STATUSBAR_HEIGHT}
-		headerMinHeight={STATUSBAR_HEIGHT}
-		header={<Header />}
-		content={<Content />}
-	/>
+export default () => {
+    const about= `You have finnally finished this journey. . .
+    Take a moment to review the app and help others achieve their goals`
+    return (
+        <ScrollableHeader
+            headerMaxHeight={STATUSBAR_HEIGHT}
+            headerMinHeight={STATUSBAR_HEIGHT}
+            header={<Header />}
+            content={<Content about={about} />}
+        />
+    );
+};
 
-const styles = StyleSheet.create({
+styles = {
 	header: {
 		flex: 1,
 		justifyContent: 'space-between',
@@ -69,4 +68,4 @@ const styles = StyleSheet.create({
 		marginTop: 30,
 		marginBottom: 30
 	}
-});
+};

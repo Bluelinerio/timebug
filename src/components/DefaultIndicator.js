@@ -11,7 +11,8 @@ export default ({ size }: Props) => {
   return (
     <ActivityIndicator
       style={styles.defaultIndicator}
-      size={size}/>
+      size={size}
+      testID='activity_indicator'/>
   )
 }
 
