@@ -25,6 +25,8 @@ import type { Progress } from '../../../services/apollo/models';
 import { updateProgress } from '../../../redux/actions/user.actions'
 import * as NavigationService from '../../../HOC/navigation'
 
+var buttonText = 'SKIP';
+
 type Props = {
   progress: Progress, 
   model: any, 
@@ -116,6 +118,7 @@ class WorkBookScreenContainer extends Component<Props, State> {
 
   onPress = () => {
     const value = this.form.refs.form.getValue();
+    buttonText = 'SKIP';
     if (value) {
       this.props.populateCurrentFormValue(value);
     }
@@ -126,6 +129,13 @@ class WorkBookScreenContainer extends Component<Props, State> {
     this.setState({
       isInvalid: !value
     });
+
+    if(value) {
+      buttonText = 'NEXT'
+    } else {
+      buttonText = 'SKIP'
+    }
+
   }
 
   render = () => {
@@ -163,9 +173,9 @@ class WorkBookScreenContainer extends Component<Props, State> {
             ]}
           >
             <Button
-              disabled={this.state.isInvalid}
+              //disabled={this.state.isInvalid}
               onPress={this.onPress}
-              text="NEXT"
+              text= { buttonText }
               side="right"
               withArrow
               backgroundColor={color}
