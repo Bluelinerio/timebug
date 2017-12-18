@@ -31,5 +31,7 @@ export const GO_TO_ASSIGNMENT_FLOW               = 'GO_TO_ASSIGNMENT_FLOW';
 export const POPULATE_FORM_VALUE          = 'POPULATE_FORM_VALUE';
 export const POPULATE_CURRENT_FORM_VALUE  = 'POPULATE_CURRENT_FORM_VALUE';
 export const SET_FORM                     = 'SET_FORM';
+export const UPDATE_FORM                  = 'UPDATE_FORM';
+export const CHANGE_FORM_VALUE            = 'CHANGE_FORM_VALUE';
 
 export const ON_APP_LOADED = 'ON_APP_LOADED';

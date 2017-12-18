@@ -16,7 +16,8 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import KeyboardSpacer from "react-native-keyboard-spacer";
 import DefaultIndicator from "../../../components/DefaultIndicator";
 import Button from "../../../components/Button";
-import { populateCurrentFormValue } from '../../../redux/actions/form.actions';
+import { populateCurrentFormValue, changeFormValue } from '../../../redux/actions/form.actions';
+import type { FormChange } from '../../../redux/actions/form.actions';
 import { store } from "../../../redux/rootReducer";
 import FormComponent from "../components/FormComponent";
 import { GET_NEXT_FORM } from "../../../redux/actionTypes";
@@ -31,7 +32,8 @@ type Props = {
   formData: any,
   isFetching: boolean,
   color: string, 
-  populateCurrentFormValue: (any) => void, 
+  populateCurrentFormValue: (any) => void,
+  changeFormValue: (change : FormChange) => void
 };
 
 type State = {
@@ -39,13 +41,6 @@ type State = {
   isInvalid: boolean,
   form?: any
 };
-
-type FormChange = {
-  fieldName: string,
-  fieldValue: any,
-  path: [String],
-  value: any,
-}
 
 const mapStateToProps = state => {
   const progress = selectors.progress(state);
@@ -62,7 +57,7 @@ const mapStateToProps = state => {
   };
 };
 
-@connect(mapStateToProps, { populateCurrentFormValue })
+@connect(mapStateToProps, { populateCurrentFormValue, changeFormValue })
 class WorkBookScreenContainer extends Component<Props, State> {
   state = {
     keyboardSpace: 0,
@@ -121,10 +116,20 @@ class WorkBookScreenContainer extends Component<Props, State> {
     }
   }
 
-  onChange = (formChange: FormChange) => {
-    let value = this.form.getValue();
+  onChange = (value: any, path: [string]) => {
+    const { step, form } = this.props.progress;
+    const fieldName = path[path.length - 1];
+    const fieldValue = path.reduce((struct: {}, field) => struct[field], value)
+    this.props.changeFormValue({
+      fieldName,
+      fieldValue,
+      value,
+      path,
+      step,
+      form
+    });
     this.setState({
-      isInvalid: !value
+      isInvalid: !this.form.getValue()
     });
   }
 

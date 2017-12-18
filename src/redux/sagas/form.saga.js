@@ -6,7 +6,8 @@ import {
   GET_NEXT_FORM,
   SUCCESS,
   POPULATE_CURRENT_FORM_VALUE,
-  LOGOUT
+  LOGOUT,
+  CHANGE_FORM_VALUE
 }                                             from '../actionTypes';
 import { SET_USER_STATE }                     from '../actions'
 import { GET_USER, updateProgress }           from '../actions/user.actions'
@@ -18,14 +19,18 @@ import {
   incrementRequestCount,
   decrementRequestCount
 }                                             from '../actions/network.actions';
-import { setForm, populateFormValue }         from '../actions/form.actions';
+import {
+  setForm,
+  updateForm,
+  populateFormValue
+}                                             from '../actions/form.actions';
 import networkState                           from '../../utils/networkState';
 import formConfig                             from '../../screens/WorkBookScreen/forms';
 import { goBack }                             from '../../HOC/navigation';
 import { addStep }                            from '../../services/apollo'
 import selectors                              from '../selectors';
 import type { Progress, User }                from "../../services/apollo/models";
-
+import allFormBusinessLogic                   from '../../screens/WorkBookScreen/forms/businessLogic';
 
 const STEP_CHANGE_UP = 'STEP_CHANGE_UP'
 const STEP_CHANGE_DOWN = 'STEP_CHANGE_DOWN'
@@ -35,7 +40,6 @@ const NO_CHANGE = 'NO_CHANGE'
 
 type ProgressChange = STEP_CHANGE_UP | STEP_CHANGE_DOWN | FORM_CHANGE_UP | FORM_CHANGE_DOWN | NO_CHANGE;
 type FormModel = any;
-
 
 const getFormModel = (progress:Progress): ?FormModel => {
   const getFormsForStep = (s: number) : ?Object => formConfig[ s ]
@@ -121,18 +125,44 @@ function * selectProgressAndSubmitValue(action: {value : any }) {
   }
 }
 
-// const formReducerSaga = (action:FormChangeAcion, state:FormState)
-// {
-//   const {field, form, step, value } = action;
-//   yield put(incrementLoadingIndicator())
-//   const generator:FormReducerGenerator = yield findReducerGenerator(action);
-//   const result = yield call(generator, action, state);
-//   yield put(decrementLoadingIndicator())
-//   if(result.error) {
-      
-//   }
-//   yield put(updateFormState(result.newState))
-// }
+function * findReducerGenerator(action) {
+  let generator = null;
+  let businessLogic = allFormBusinessLogic;
+
+  for (let i = 0; i < action.path.length + 2; i++) {
+    if(!businessLogic) {
+      break;
+    } else if (i === 0) {
+      businessLogic = businessLogic[action.step];
+    } else if (i === 1) {
+      businessLogic = businessLogic[action.form];
+    } else {
+      const field = action.path[i - 2];
+      if (i - 2 < action.path.length - 1 && typeof businessLogic[field] === 'object') {
+        businessLogic = businessLogic[field];
+      } else if (i - 2 === action.path.length - 1 && typeof businessLogic[field] === 'function') {
+        generator = businessLogic[field];
+      } else {
+        break;
+      }
+    }
+  }
+
+  return generator;
+}
+
+function * formReducerSaga(action) {
+  yield put(incrementRequestCount());
+  // Remove list indexes from path, can be modified in the future if business logic needs the index
+  const path = action.path.filter(field => typeof field !== 'number');
+  const generator = yield findReducerGenerator({...action, path});
+  if (generator) {
+    const result = yield call(generator, action, );
+    yield put(updateForm(result.model));
+  }
+
+  yield put(decrementRequestCount());
+}
 
 function * watchPopulateCurrentFormValue() {
   yield takeLatest(POPULATE_CURRENT_FORM_VALUE, selectProgressAndSubmitValue) 
@@ -142,9 +172,13 @@ function * watchForUpdateInUserProgress() {
   yield takeLatest([SET_USER_STATE, GET_USER.SUCCEEDED, updateProgress.UPDATE, LOGOUT], updateFormAfterChangeInProgress) 
 }
 
+function * watchForChangesInForm() {
+  yield takeLatest(CHANGE_FORM_VALUE, formReducerSaga) 
+}
+
 export function* formLoaderSaga() {
   yield fork(watchForUpdateInUserProgress)
   yield fork(watchPopulateCurrentFormValue)
-  // yield fork(watchForChangesInForm)
+  yield fork(watchForChangesInForm)
 }
 
