@@ -40,11 +40,26 @@ See docs/COMPONENT_UX_GUIDE.MD for further reference/details on individual __com
     * Observations is a __long text__.
     * Field is required.
 
-## Step 8 '
+## Step 8
   * 1) On a 1-10 scale, write down your Physical, Mental and Emotional energy levels during different times ofthe day (Morning, Afternoon, Evening) on a typical day.
 
+...WIP
 
-
+## Step 15
+* 1) Gather all of your previous goal data, including time spent, and key achievements ove rthe past 5 years. You can start with 2015 if you feel overwhelmed assesing all 5 years.
+  * 10 entry __list entry__ of __group entries__. Group struct consists of:
+    * Personal Aim/Hobby(__short text__) AUTO
+    * Est. time spent each month(__short text__) AUTO
+    * How has time increased/decreased since 2011?(__short text__) AUTO
+    * What have you achieved in this area since 2011?(__long text__)
+    * How do engaging in these activities make you feel?(__long text__)
+    * Do you do this activity alone/with another? If so, who?(__dropdown__)
+  * 10 items required
+  * Each list entry should be a collapsible element, revealing group entry when expanded.
+* 2A) Which of these hobbies, if any, would you be willing to give up if some huge new priority came along, and required more of your time?
+  * Can be __short text__ OR dynamically populated __dropdown__ from list entries in step 1. 
+* 2B)Which would you NOT give up under (almost)any circumstance?'
+  * Can be __short text__ OR dynamically populated __dropdown__ from list entries in step 1.
 
 
 
