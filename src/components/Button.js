@@ -7,7 +7,8 @@ import DefaultStyle from '../styles/components/StepButton';
 type Side = 'left' | 'right' | null
 type Props = {
 	text: string,
-	onPress:() => void,
+	onPress?:() => void,
+	onPressWithProps?:(props:Props) => void,
 	side?: Side,
 	withArrow?: boolean,
 	disabled?: boolean,
@@ -18,7 +19,10 @@ type Props = {
 	buttonTestId: string,
 }
 
-export default ({ text, onPress, side, withArrow=false, disabled=false, styles, disabledStyle, backgroundColor, buttonTestId, textTestId }: Props) => {
+export default (props: Props) => {
+	const { text, onPressWithProps, side, withArrow=false, disabled=false, disabledStyle, backgroundColor, buttonTestId, textTestId } = props;
+	let { styles, onPress } = props;
+
 	const minWidth = side ? 128 : 240;
 	const paddingHorizontal = side ? 35 : 50;
 	const opacity = disabledStyle ? 1 : disabled ? 0.1 : 1;// set alpha to 0.1 when disabled and disabledStyle not provided
@@ -26,6 +30,10 @@ export default ({ text, onPress, side, withArrow=false, disabled=false, styles, 
 		...DefaultStyle,
 		...styles,
 	}
+
+	if(!onPress && onPressWithProps) {
+		onPress = () => onPressWithProps(props);
+	} 
 
 	return (
 		<View style={[styles.buttonContainer, side ? styles[side] : null]}>
