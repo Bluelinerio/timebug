@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { startButtonBackgroundImage }   from '../../../resources/images/';
 import { darkishBlue } from '../../../constants/colors';
 
-export default ({text, , onPress, buttonTestId, timeTestId}) => (
+export default ({duration, onPress, buttonTestId, timeTestId}) => (
 	<Button containerStyle={style.wideButton} onPress={onPress}>
 		<View style={style.absoluteContainer}  testID={buttonTestId}>
 			<Image source={startButtonBackgroundImage} style={style.startButtonBackground} />
