@@ -20,6 +20,7 @@ import { headerBackground } from "../../../resources/images";
 import { APPBAR_HEIGHT, STATUSBAR_HEIGHT } from "../../../constants";
 import markdownStyles from "../../../styles/Markdown/assignment";
 import ThemedGradientBackground from '../containers/ThemedGradientBackground'
+import AssignmentButtonContainer from '../containers/AssignmentButtonContainer';
 
 type Props = {
   step: Step
@@ -32,16 +33,7 @@ type State = {
 
 const HEADER_HEIGHT = 282;
 
-const AssignmentButton = ({ color, onPress }) => (
-  <Button
-    onPress={onPress}
-    text="ASSIGNMENTS"
-    backgroundColor={color}
-    buttonTestId={'step_to_assignment_button'}
-  />
-);
-
-const Content = ({ subtitle, description, onPress, color }) => (
+const Content = ({ subtitle, description, color }) => (
   <View style={styles.stepScreenContent}>
     <Text
       testID={"step_subtitle"}
@@ -52,7 +44,7 @@ const Content = ({ subtitle, description, onPress, color }) => (
     <ScrollView style={styles.stepScreenScrollView}>
       <Markdown markdownStyles={markdownStyles}>{description}</Markdown>
     </ScrollView>
-    <AssignmentButton onPress={onPress} color={color} />
+    <AssignmentButtonContainer />
   </View>
 );
 

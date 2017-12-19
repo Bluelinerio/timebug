@@ -3,12 +3,8 @@ import {
   loginFlowSaga,
 }                                             from './auth.saga';
 import {
-  goToAssignmentLeadInScreen,
-  goToAssignmentDoneScreen,
   goToHomeScreen,
-  goToStepScreen,
-  goToWorkBookScreen,
-  goToAssignmentFlow
+  watchForsagaNavigate
 }                                             from './navigate.saga';
 import cmsSaga                                from './cms.saga';
 import { onAppLoadedSaga, watchForGetUseSaga } 
@@ -21,11 +17,7 @@ function * appSaga() {
     cmsSaga(),
     loginFlowSaga(),
     goToHomeScreen(),
-    goToStepScreen(),
-    goToAssignmentFlow(),
-    goToAssignmentLeadInScreen(),
-    goToWorkBookScreen(),
-    goToAssignmentDoneScreen(),
+    watchForsagaNavigate(),
     watchForGetUseSaga(),
     formLoaderSaga(),
     onAppLoadedSaga()

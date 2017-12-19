@@ -34,7 +34,7 @@ export default ({ totalNumberOfSteps, currentStep, color, goToAssignmentFlow, im
 					</Text>
 				</View>
 			</View>
-			<StartButton buttonTestId={'step_start_button'} timeTestId={'step_time_text'} duration={duration} onPress={() => goToAssignmentFlow({ number }) } />
+			<StartButton buttonTestId={'step_start_button'} timeTestId={'step_time_text'} duration={duration} onPress={() => goToAssignmentFlow(number) } />
 			{
 				/* 
 				Todo: Check if this works with detox
