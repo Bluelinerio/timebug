@@ -12,7 +12,6 @@ import type { GradientBackgroundProps } from '../../../components/GradientWithTw
 const mapStateToProps = (state: any) => {
   const gradientTopColor = selectors.currentStepColor(state);
   const gradientBottomColor = 'white'
-  debugger;
   return {
     gradientTopColor,
     gradientBottomColor

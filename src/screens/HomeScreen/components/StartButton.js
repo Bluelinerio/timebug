@@ -1,18 +1,15 @@
 import React, { Component } from 'react';
-import { Dimensions, Platform, Image, Text, View } from 'react-native';
+import { Image, Text, View } from 'react-native';
 import Button from 'react-native-button';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {getImageUrl } from '../../../services/cms';
-import CustomImage from '../../../components/CustomImage';
 import { startButtonBackgroundImage }   from '../../../resources/images/';
 import { darkishBlue } from '../../../constants/colors';
 
 export default ({duration, onPress, buttonTestId, timeTestId}) => (
-	// buttonTestId={'step_start_button'} timeTestId={'step_time_text'}
 	<Button containerStyle={style.wideButton} onPress={onPress}>
 		<View style={style.absoluteContainer}  testID={buttonTestId}>
 			<Image source={startButtonBackgroundImage} style={style.startButtonBackground} />
-			<Icon name="md-time" size={34} color="#0e3fa8" style={style.buttonImage} />
+			<Icon name="md-time" size={34} color={darkishBlue} style={style.buttonImage} />
 			<Text style={[style.durationText]}>{duration}min</Text>
 		</View>
 		<Text style={style.wideButtonText} testID={timeTestId}>START</Text>
@@ -50,7 +47,7 @@ const style = {
 		bottom: -1
 	},
 	durationText: {
-		color: '#0e3fa8',
+		color: darkishBlue,
 		fontWeight: '600',
 		fontSize: 12,
 		bottom: 4,

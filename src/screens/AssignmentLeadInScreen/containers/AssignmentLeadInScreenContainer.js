@@ -7,7 +7,6 @@ import theme, { styles } from 'react-native-theme';
 import AssignmentLeadInScreen from '../components/AssignmentLeadInScreen';
 import type { Assignment } from '../../../services/cms';
 import DefaultIndicator from '../../../components/DefaultIndicator';
-import { goToWorkBookScreen } from '../../../redux/actions/nav.actions';
 import StepButtonStyle from '../../../styles/components/StepButton';
 import selectors from '../../../redux/selectors';
 
@@ -16,7 +15,6 @@ type Props = {
 	navigation: {
 		navigate(): any
 	},
-	goToWorkBookScreen(): any
 };
 
 type State = {};
@@ -34,9 +32,7 @@ const mapStateToProps = state => {
 	};
 };
 
-@connect(mapStateToProps, {
-	goToWorkBookScreen
-})
+@connect(mapStateToProps)
 class AssignmentLeadInScreenContainer extends Component<Props, State> {
 	static navigationOptions = ({ navigation: { state: { params } } }) => {
 		return {
@@ -64,7 +60,6 @@ class AssignmentLeadInScreenContainer extends Component<Props, State> {
 			currentStep,
 			color,
 			allSteps,
-			goToWorkBookScreen,
 			navigation
     } = this.props;
       
@@ -75,7 +70,6 @@ class AssignmentLeadInScreenContainer extends Component<Props, State> {
 					currentStep={currentStep}
 					color={color}
 					allSteps={allSteps}
-					goToWorkBookScreen={goToWorkBookScreen}
 					dispatch={navigation.dispatch}
 				/>
 			);

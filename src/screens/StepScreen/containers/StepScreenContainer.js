@@ -1,16 +1,13 @@
 // @flow
 
 import React, { Component } from 'react'
-import theme from 'react-native-theme';
 import { connect } from 'react-redux'
-import DefaultIndicator from '../../../components/DefaultIndicator';
-import { goToAssignmentLeadInScreen } from '../../../redux/actions/nav.actions';
 import StepScreen from '../components/StepScreen'
 import selectors from '../../../redux/selectors'
 import { Step } from '../../../services/cms';
 
 type Props = {
-  currentStep: Step,
+  step: Step,
   navigation: {
     navigate(): any
   },
@@ -18,41 +15,14 @@ type Props = {
 };
 
 const mapStateToProps = (state) => {
-  const currentStep = selectors.currentStep(state);
+  const step = selectors.currentStep(state);
 	const color = selectors.currentStepColor(state);
   return {
-    currentStep,
+    step,
     color
   }
 };
 
-@connect(mapStateToProps, {
-  goToAssignmentLeadInScreen,
-})
-class StepScreenContainer extends Component<Props> {
-  static navigationOptions = ({ navigation: { state: { params } } }) => ( {
-    header: false,
-  } );
-
-  componentWillMount() {
-    theme.setRoot(this)
-  }
-
-  render() {
-    const { currentStep, step, color } = this.props;
-    if (currentStep) {
-      return (
-        <StepScreen
-          step={currentStep}
-          color={color}
-          goToAssignmentLeadInScreen={this.props.goToAssignmentLeadInScreen}
-        />
-      )
-    } else {
-      return <DefaultIndicator size="large"/>
-
-    }
-  }
-}
+const StepScreenContainer = connect(mapStateToProps, null)(StepScreen)
 
 export default StepScreenContainer
