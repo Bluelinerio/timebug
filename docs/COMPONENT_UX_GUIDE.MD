@@ -60,6 +60,7 @@ t.struct({
 - Must have an option for min and max items. Min number of items should be displayed by default on the screen. **Needs research**
 - Must have a placeholder option of null value. **Needs research**
 - For lists of group entries, should collapse to title/first field and show all data in a pop up when clicked. **Needs research**
+- Need Sub-Lists - should be passed as an option or stylesheet which indents the list and gives smaller text.
 
 3)Short text: tcomb type 'String'
 - A submit or 'ok' button can appear once the input is valid(seperate from the submit button for the entire form) We can check for validation using tcomb-validation(https://github.com/gcanti/tcomb-validation/blob/master/README.md). See typeform text inputs for an example of how this works.

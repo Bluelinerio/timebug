@@ -9,7 +9,14 @@ export default {
             field: t.list(
                 t.struct({
                     significantOther: t.String,
-                            goalOne:t.String,
+                    goals: t.list(
+                      t.struct({
+                        goal: t.String,
+                        supportPlan: t.String,
+                        timeRequired: t.String
+                      })
+                    )
+                            /*goalOne:t.String,
                             goalOneSupportPlan: t.String,
                             goalOneTimeRequired: t.String,
                             goalTwo:t.String,
@@ -23,7 +30,7 @@ export default {
                             goalFourTimeRequired: t.maybe(t.String),
                             goalFive: t.maybe(t.String),
                             goalFiveSupportPlan: t.maybe(t.String),
-                            goalFiveTimeRequired: t.maybe(t.String)
+                            goalFiveTimeRequired: t.maybe(t.String)*/
                            
                  })
               )
