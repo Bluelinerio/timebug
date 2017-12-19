@@ -40,6 +40,9 @@ See docs/COMPONENT_UX_GUIDE.MD for further reference/details on individual __com
     * Observations is a __long text__.
     * Field is required.
 
+## Step 8 '
+  * 1) On a 1-10 scale, write down your Physical, Mental and Emotional energy levels during different times ofthe day (Morning, Afternoon, Evening) on a typical day.
+
 
 
 
