@@ -24,7 +24,7 @@ export default ({ totalNumberOfSteps, currentStep, color, goToAssignmentFlow, im
 				...StyleSheet.absoluteFillObject
 			}}/>
       <View style={style.challengeInfo}>
-			<CustomImage style={style.headerImage} imageUri={imageUri} />
+			<CustomImage style={style.headerImage} imageUri={imageUri} testID={'step_picture'}/>
 				<View style={style.headerText}>
           <Text style={style.headerTitle} testID={'step_header_title'}>Next challenge</Text>
           <Text style={[style.title]} testID={'step_title'}>{type}</Text>
