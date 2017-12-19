@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from 'react';
-import { Dimensions, Platform, Image, Text, View } from 'react-native';
+import { Dimensions, StyleSheet, Platform, Image, Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import CustomImage from '../../../components/CustomImage';
 import StartButton from './StartButton';
@@ -19,7 +19,10 @@ export type Props = {
 export default ({ totalNumberOfSteps, currentStep, color, goToAssignmentFlow, imageUri }: Props) => {
   const { type, stepScreenDescription, number, duration } = currentStep;
 	return (
-		<Image style={[style.header, { backgroundColor: color }]} source={headerBackgroundImage}>
+		<View style={[style.header, { backgroundColor: color }]}>
+			<Image source={headerBackgroundImage} style={{
+				...StyleSheet.absoluteFillObject
+			}}/>
       <View style={style.challengeInfo}>
 			<CustomImage style={style.headerImage} imageUri={imageUri} />
 				<View style={style.headerText}>
@@ -38,7 +41,7 @@ export default ({ totalNumberOfSteps, currentStep, color, goToAssignmentFlow, im
 				<StartButton buttonTestId={'step_start_button'} timeTestId={'step_time_text'} duration={duration} onPress={buttonAction} /> 
 				*/
 			}
-		</Image>
+		</View>
 	);
 }
 
