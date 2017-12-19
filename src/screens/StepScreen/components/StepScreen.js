@@ -97,6 +97,7 @@ const Header = ({ goBack, imageUri, title, number }) => (
         <CustomImage style={{
           backgroundColor: 'green'
         }}
+          testID={'step_picture'}
           imageUri={imageUri}
         />
       )}
