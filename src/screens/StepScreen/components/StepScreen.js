@@ -11,7 +11,6 @@ import Markdown from '../../../Modules/Markdown';
 import Icon from "react-native-vector-icons/Ionicons";
 
 import Button from "../../../components/Button";
-import GradientBackground from "../../../components/GradientBackground";
 import ScrollableHeader from "../../../components/ScrollableHeader";
 import { goBack } from "../../../HOC/navigation";
 import type { Step } from "../../../services/cms";
@@ -20,6 +19,7 @@ import CustomImage from "../../../components/CustomImage";
 import { headerBackground } from "../../../resources/images";
 import { APPBAR_HEIGHT, STATUSBAR_HEIGHT } from "../../../constants";
 import markdownStyles from "../../../styles/Markdown/assignment";
+import ThemedGradientBackground from '../containers/ThemedGradientBackground'
 
 type Props = {
   step: Step
@@ -117,7 +117,7 @@ export default ({ step, goToAssignmentLeadInScreen, color }) => (
     headerMaxHeight={HEADER_HEIGHT}
     headerMinHeight={STATUSBAR_HEIGHT}
     headerImage={headerBackground}
-    headerComponent={<GradientBackground />}
+    headerComponent={<ThemedGradientBackground />}
     header={
       <Header
         goBack={goBack}
