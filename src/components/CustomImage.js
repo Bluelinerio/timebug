@@ -8,14 +8,12 @@ type Props = {
   imageUri: string,
 }
 
-export default ({ style, imageUri }: Props) => {
-  const testID= 'step_picture'
-  if (imageUri && imageUri.endsWith('svg'))
-    return <SVGImage
-      style={[style, {backgroundColor: 'transparent'}]}
+export default (props: Props) => {
+  const { imageUri, style, ...rest } = props;
+  return (imageUri && imageUri.endsWith('svg')) ? <SVGImage
+      style={[style, { backgroundColor: 'transparent'}]}
       source={{ uri: imageUri }}
       scrollEnabled={false}
-      testID={testID}
-    />;
-      return <Image source={{ uri: imageUri }} style={style} testID={testID} />
+      {...rest}
+    /> : <Image source={{ uri: imageUri }} style={style} {...rest} />
 }

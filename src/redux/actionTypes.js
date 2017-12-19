@@ -21,11 +21,7 @@ export const GET_ABOUT_INFO_FROM_CMS   = createRequestTypes('GET_ABOUT_INFO_FROM
 export const LOGIN_WITH_FB_BUTTON_PRESSED        = 'LOGIN_WITH_FB_BUTTON_PRESSED';
 export const LOGOUT                              = 'LOGOUT';
 export const GO_TO_HOME_SCREEN                   = 'GO_TO_HOME_SCREEN';
-export const GO_TO_STEP_SCREEN                   = 'GO_TO_STEP_SCREEN';
-export const GO_TO_ASSIGNMENT_LEAD_IN_SCREEN     = 'GO_TO_ASSIGNMENT_LEAD_IN_SCREEN';
-export const GO_TO_WORKBOOK_SCREEN               = 'GO_TO_WORKBOOK_SCREEN';
-export const GO_TO_ASSIGNMENT_DONE_SCREEN        = 'GO_TO_ASSIGNMENT_DONE_SCREEN';
-export const GO_TO_ASSIGNMENT_FLOW               = 'GO_TO_ASSIGNMENT_FLOW';
+export const SAGA_NAVIGATE                       = 'SAGA_NAVIGATE';
 
 //forms
 export const POPULATE_FORM_VALUE          = 'POPULATE_FORM_VALUE';

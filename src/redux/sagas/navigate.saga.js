@@ -1,16 +1,30 @@
 // @flow
 
-import { takeLatest } from 'redux-saga/effects';
+import { put, select, takeLatest } from 'redux-saga/effects';
 import {
-	GO_TO_ASSIGNMENT_LEAD_IN_SCREEN,
-	GO_TO_ASSIGNMENT_DONE_SCREEN,
 	GO_TO_HOME_SCREEN,
-	GO_TO_STEP_SCREEN,
-	GO_TO_WORKBOOK_SCREEN,
-	GO_TO_ASSIGNMENT_FLOW
+	SAGA_NAVIGATE
 } from '../actionTypes';
+import { NavigationActions } from 'react-navigation';
 import * as navigation from '../../HOC/navigation';
 import type, { Assignment } from '../../services/cms';
+
+
+type SelectForNavigation = (state: any) => ({ action:any , params: any, routeName: string })
+
+function * onNavigate(action) {
+	try {
+		const to = yield select(action.createNavigationAction);
+		yield put(NavigationActions.navigate(to));
+	} catch (error) {
+		console.log(error);
+	}
+}
+
+export function * watchForsagaNavigate() {
+	yield takeLatest(SAGA_NAVIGATE, onNavigate)
+}
+
 
 const _goToHomeScreen = (action: { reset: boolean, number: number }) => {
 	if (action.reset) {
@@ -20,32 +34,7 @@ const _goToHomeScreen = (action: { reset: boolean, number: number }) => {
 	}
 };
 
+
 export function* goToHomeScreen() {
 	yield takeLatest(GO_TO_HOME_SCREEN, _goToHomeScreen);
-}
-
-export function* goToStepScreen() {
-	yield takeLatest(GO_TO_STEP_SCREEN, (action: { number: number }) => navigation.navigate('StepScreen', action));
-}
-
-export function* goToAssignmentFlow(){
-	yield takeLatest(GO_TO_ASSIGNMENT_FLOW, (action: { number: number }) => navigation.navigateToStack('AssignmentFlow', action, 'StepScreen'))
-}
-
-export function* goToAssignmentLeadInScreen() {
-	yield takeLatest(GO_TO_ASSIGNMENT_LEAD_IN_SCREEN, (action: { number: number, assignments: Array<Assignment> }) =>
-		navigation.navigate('AssignmentLeadInScreen', action)
-	);
-}
-
-export function* goToWorkBookScreen() {
-	yield takeLatest(GO_TO_WORKBOOK_SCREEN, (action: { number: number }) =>
-		navigation.navigate('WorkBookScreen', action)
-	);
-}
-
-export function* goToAssignmentDoneScreen() {
-	yield takeLatest(GO_TO_ASSIGNMENT_DONE_SCREEN, (action: { number: number }) =>
-		navigation.navigate('AssignmentDoneScreen', action)
-	);
 }

@@ -21,11 +21,15 @@ const currentStepNumber = (state: any): number => progress(state) ? progress(sta
 const currentStep = (state: any): Step => steps(state)[currentStepNumber(state)];
 const currentStepColor = (state: any) => stepColors(state)[currentStepNumber(state)];
 const assignments = (state: any) => currentStep(state).refAssignment.map(i => i.fields);
+const colorForStep = (step: number) => (state:any) => stepColors(state)[step]
+const step = (number: number) => (state:any) => steps(state)[number]
 
 export default {
 	isStorageLoaded,
 	getCms,
 	steps,
+	colorForStep,
+	step,
 	isCMSLoading,
 	totalNumberOfSteps,
 	currentStepNumber,

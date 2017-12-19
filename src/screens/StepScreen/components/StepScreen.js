@@ -11,7 +11,6 @@ import Markdown from '../../../Modules/Markdown';
 import Icon from "react-native-vector-icons/Ionicons";
 
 import Button from "../../../components/Button";
-import GradientBackground from "../../../components/GradientBackground";
 import ScrollableHeader from "../../../components/ScrollableHeader";
 import { goBack } from "../../../HOC/navigation";
 import type { Step } from "../../../services/cms";
@@ -20,6 +19,8 @@ import CustomImage from "../../../components/CustomImage";
 import { headerBackground } from "../../../resources/images";
 import { APPBAR_HEIGHT, STATUSBAR_HEIGHT } from "../../../constants";
 import markdownStyles from "../../../styles/Markdown/assignment";
+import ThemedGradientBackground from '../containers/ThemedGradientBackground'
+import AssignmentButtonContainer from '../containers/AssignmentButtonContainer';
 
 type Props = {
   step: Step
@@ -32,16 +33,7 @@ type State = {
 
 const HEADER_HEIGHT = 282;
 
-const AssignmentButton = ({ color, onPress }) => (
-  <Button
-    onPress={onPress}
-    text="ASSIGNMENTS"
-    backgroundColor={color}
-    buttonTestId={'step_to_assignment_button'}
-  />
-);
-
-const Content = ({ subtitle, description, onPress, color }) => (
+const Content = ({ subtitle, description, color }) => (
   <View style={styles.stepScreenContent}>
     <Text
       testID={"step_subtitle"}
@@ -52,7 +44,7 @@ const Content = ({ subtitle, description, onPress, color }) => (
     <ScrollView style={styles.stepScreenScrollView}>
       <Markdown markdownStyles={markdownStyles}>{description}</Markdown>
     </ScrollView>
-    <AssignmentButton onPress={onPress} color={color} />
+    <AssignmentButtonContainer />
   </View>
 );
 
@@ -97,6 +89,7 @@ const Header = ({ goBack, imageUri, title, number }) => (
         <CustomImage style={{
           backgroundColor: 'green'
         }}
+          testID={'step_picture'}
           imageUri={imageUri}
         />
       )}
@@ -116,7 +109,7 @@ export default ({ step, goToAssignmentLeadInScreen, color }) => (
     headerMaxHeight={HEADER_HEIGHT}
     headerMinHeight={STATUSBAR_HEIGHT}
     headerImage={headerBackground}
-    headerComponent={<GradientBackground />}
+    headerComponent={<ThemedGradientBackground />}
     header={
       <Header
         goBack={goBack}

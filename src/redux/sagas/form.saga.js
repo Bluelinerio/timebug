@@ -12,7 +12,6 @@ import {
 import { SET_USER_STATE }                     from '../actions'
 import { GET_USER, updateProgress }           from '../actions/user.actions'
 import {
-  goToWorkBookScreen,
   goToAssignmentDoneScreen,
 }                                             from '../actions/nav.actions';
 import {
