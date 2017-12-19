@@ -30,11 +30,9 @@ const navigateWith = ({routeName, props}) => {
 }
 
 const navigateToStep = ({number, routeName}) => {
-  debugger;
   const createNavigationAction  = (state: any) => {
     const stepColor = selectors.colorForStep(number)(state)
     const step = selectors.step(number)(state);
-    debugger;
     return {
       routeName,
       params : { 
