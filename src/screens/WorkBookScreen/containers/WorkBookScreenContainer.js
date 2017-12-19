@@ -39,7 +39,8 @@ type Props = {
 type State = {
   keyboardSpace: number,
   isInvalid: boolean,
-  form?: any
+  form?: any,
+  value?: any
 };
 
 const mapStateToProps = state => {
@@ -59,9 +60,13 @@ const mapStateToProps = state => {
 
 @connect(mapStateToProps, { populateCurrentFormValue, changeFormValue })
 class WorkBookScreenContainer extends Component<Props, State> {
-  state = {
-    keyboardSpace: 0,
-    isInvalid: true,
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      keyboardSpace: 0,
+      isInvalid: true,
+      value: this.getDefaultValue()
+    }
   }
 
   static navigationOptions = () => {
@@ -103,6 +108,17 @@ class WorkBookScreenContainer extends Component<Props, State> {
     theme.setRoot(this);
   }
 
+  getDefaultValue = (): ?any => {
+    const {
+      formData,
+      progress: { step, form },
+    } = this.props;
+    if (formData && formData[ step ] && formData[ step ][ form ]) {
+      return formData[ step ][ form ]
+    }
+    return undefined;
+  }
+
   onToggle = (keyboardSpace) => {
     if (Platform.OS === "ios") {
       this.setState({ keyboardSpace });
@@ -129,7 +145,8 @@ class WorkBookScreenContainer extends Component<Props, State> {
       form
     });
     this.setState({
-      isInvalid: !this.form.getValue()
+      isInvalid: !this.form.getValue(),
+      value
     });
   }
 
@@ -155,6 +172,7 @@ class WorkBookScreenContainer extends Component<Props, State> {
                 model={model}
                 formData={formData}
                 progress={progress}
+                value={this.state.value}
                 onChange={this.onChange}
               />
             </View>

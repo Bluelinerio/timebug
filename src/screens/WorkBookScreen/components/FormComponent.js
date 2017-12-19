@@ -25,7 +25,6 @@ type Props = {
 }
 
 class FormComponent extends Component<Props> {
-
   componentDidMount = () => {
     const { model } = this.props;
     if (model && model.focusField) {
@@ -35,17 +34,6 @@ class FormComponent extends Component<Props> {
 
   shouldComponentUpdate = (nextProps:Props):boolean => {
     return nextProps.model.type !== this.props.model.type
-  }
-
-  getDefaultValue = (): ?any => {
-    const {
-      formData,
-      progress: { step, form },
-    } = this.props;
-    if (formData && formData[ step ] && formData[ step ][ form ]) {
-      return formData[ step ][ form ]
-    }
-    return undefined;
   }
 
   handleFormRef = (ref) => {
@@ -61,7 +49,7 @@ class FormComponent extends Component<Props> {
       <Form
         ref={this.handleFormRef}
         type={model.type}
-        value={this.getDefaultValue()}
+        value={this.props.value}
         options={model.options}
         onChange={this.props.onChange}
       />
