@@ -124,4 +124,73 @@ See docs/COMPONENT_UX_GUIDE.MD for further reference/details on individual __com
       * Example 2(__long text__)
       * Example 3(__long text__)
     * Example 1, 2 and 3 should be collapsible.
+
+## Step 17
+  * 1)Take time to evaluate your relationship with yourself.
+    * How do you typically treat yourself? (__Number__, 1-10 scale)
+    * How do you treat yourself in the process of having a learning curve, which inevitably involves making mistakes and learning from failures.(Using a 10-pt Scale with 1=little patience to 10=very patient and nurturing). (__Number__, 1-10 scale).
+    * What message run in your head about yourself on a daily basis? (__long text__)
+    * What are some of the typical main messages that you have used to judge or shame yourself? (__long text__)
+    * Name 5 specific people whom you truly value. (__list entry__).
+      * 5 required people valued(__short text__)
+    * How many of these people do you love based on their weight or waist size? (__Number__)
+    * How many of these people do you treat with the same contempt and impatience that you have described about yourself? (__Number__)
+  * 2)Take time to evaluate your relationship to others.
+    * __Group entry__, struct:
+      * How comfortable do you feel giving to others in your daily life?(Using a 10-pt scale with 1=not at all comfortable and 10=very much comfortable). (__Number__, 1-10 scale)
+      * Do you trust the value of what you have to offer or do you tend to second guess your choices? (Using a 10 pt scale with 1=no true value and 10=trusting and valueing what you give fully). (__Number__, 1-10 scale)
+      * How comfortable do you feel receiving from others in your daily life? (Using a 10-pt scale with 1=not at all comfortable and 10=very much comfortable). (__Number__, 1-10 scale)
+      * Do you feel worthy and comfortable, even with compliments or acknowledgments that come your way? Or do you deflect and belittle the moment in some way? (Using a 10-pt Scale with 1=fully valuing and  appreciating what has been shared to 10=deep discomfort with the whole thing) (__Number__, 1-10 scale)
+      *relationshipQualityGoals: t.list(
+        t.struct({
+          goal: t.String,
+          goalOutcome: CommonGoalOutcomes
+        })
+      * What goals have you had in terms of Relationship Quality (RQ) over the past five years? (__list entry__ of __group entries__), struct:
+        * Goal(__short text__)
+        * Goal Outcome (__dropdown__ of enums _CommonGoalOutcomes_)
+      * Have you had an intimate, committed relationship over the past 5 years?(__yes/no__)
+      * If yes, how would you evaluate the quality of the connection and communication, on the whole? (Using a 10-pt Scale with 1= a major struggle to 10= the ultimate connection)(__Number__, 1-10 scale)
+      * Name 2-3 people whose relationships to you improved over the past 5 years.(__list entry__ of __group entries__). Struct:
+        * Person (__short text__)
+        * How did it improve? (__long text__)
+      * Think of some moments in your history when you have offered gifts (whether material things or time and energy invested) that you were most excited to give. (__long text__)
+      * Now remember how it made YOU feel to be able to touch someone's life in a meaningful way. It most likely opened your heart and created very pleasureable feelings, adding to a sense of having value to add to someone's life. (__long text__
+      * Next time you face the opportunity of receiving, whether it is a physical gift, a compliment or an investment of time and energy into your life... remember that the other person has the opportunity to experience the same pleasure and trust that they have something of value to offer. (__long text__)
+
+
+
+      
+
+
+
+
+
+
+    type:t.struct({
+      givingToOthers:t.Number,
+      trustValue: t.Number,
+      comfortableReceiving: t.Number,
+      worthyAndComfortable: t.Number,
+      relationshipQualityGoals: t.list(
+        t.struct({
+          goal: t.String,
+          goalOutcome: CommonGoalOutcomes
+        })
+      ),
+      intimateRelationship: t.struct({
+        yes: t.Boolean,
+        no: t.Boolean
+      }),
+      communicationEval: t.Number,
+      relationshipsImproved: t.list(
+        t.struct({
+          person:t.String,
+          how:t.String
+        })  
+      ),
+      offeredGifts: t.String,
+      rememberFeel: t.String,
+      nextTimeReceive: t.maybe(t.String)
+     }),
   

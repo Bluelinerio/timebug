@@ -90,7 +90,7 @@ export default {
      options: {
        fields: {
          givingToOthers: {
-           label: 'How comfortable do you feel giving to others in your faily life?(Using a 10-pt scale with 1=not at all comfortable and 10=very much comfortable).'
+           label: 'How comfortable do you feel giving to others in your daily life?(Using a 10-pt scale with 1=not at all comfortable and 10=very much comfortable).'
          },
          trustValue: {
            label: 'Do you trust the value of what you have to offer or do you tend to second guess your choices? (Using a 10 pt scale with 1=no true value and 10=trusting and valueing what you give fully).'
