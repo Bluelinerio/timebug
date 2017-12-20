@@ -158,39 +158,33 @@ See docs/COMPONENT_UX_GUIDE.MD for further reference/details on individual __com
       * Now remember how it made YOU feel to be able to touch someone's life in a meaningful way. It most likely opened your heart and created very pleasureable feelings, adding to a sense of having value to add to someone's life. (__long text__
       * Next time you face the opportunity of receiving, whether it is a physical gift, a compliment or an investment of time and energy into your life... remember that the other person has the opportunity to experience the same pleasure and trust that they have something of value to offer. (__long text__)
 
+## Step 18
+  1) What changes have taken place in your PE since 2011?(i.e. you moved, downsized your home, moved in with a new roommate, bought more plants for the house, etc). (__Long Text__)
+  2) Who do you live with right now, and how does that effect your lifestyle and motivation?. (__Long Text__)
+  3) Are you truly happy where you are or do you stay there because you are afraid of change (or because this is all you’ve ever known)? (__Long Text__)
+  4) Do you authentically connect to the culture in your town or city? (__Yes/No__)
+  5) Do you feel like you’re surrounded by like minded people or that you can get your social needs met in this environment (depending on which ones are priority) in terms of (friends, family, dating life, night life, hobbies, nature, music/art scene, affordability, etc)? (__Yes/No__)
+  6) Do the climate elements(i.e. humid, dry, rainy, etc) suit you here, physically and mentally)? (__Yes/No__)
+  7) What goals did you have for PE since 2011?(List up to 5.)
+   * (__List Entry__) of (__Group Entries__), struct:
+    * Goal(__short text__)
+    * To what degree did you meet the goal on a scale of 1-10(__Number__, 1-10 scale)
+    * Why?(__long text__)
+   * List items should be collapsible
+
+## Step 19
+  1)
+
+
+
+
+
+
+
+
+
 
 
       
 
 
-
-
-
-
-    type:t.struct({
-      givingToOthers:t.Number,
-      trustValue: t.Number,
-      comfortableReceiving: t.Number,
-      worthyAndComfortable: t.Number,
-      relationshipQualityGoals: t.list(
-        t.struct({
-          goal: t.String,
-          goalOutcome: CommonGoalOutcomes
-        })
-      ),
-      intimateRelationship: t.struct({
-        yes: t.Boolean,
-        no: t.Boolean
-      }),
-      communicationEval: t.Number,
-      relationshipsImproved: t.list(
-        t.struct({
-          person:t.String,
-          how:t.String
-        })  
-      ),
-      offeredGifts: t.String,
-      rememberFeel: t.String,
-      nextTimeReceive: t.maybe(t.String)
-     }),
-  
