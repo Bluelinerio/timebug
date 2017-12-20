@@ -136,17 +136,19 @@ class WorkBookScreenContainer extends Component<Props, State> {
     const { step, form } = this.props.progress;
     const fieldName = path[path.length - 1];
     const fieldValue = path.reduce((struct: {}, field) => struct[field], value)
-    this.props.changeFormValue({
-      fieldName,
-      fieldValue,
-      value,
-      path,
-      step,
-      form
-    });
+    
     this.setState({
       isInvalid: !this.form.getValue(),
       value
+    }, () => {
+      this.props.changeFormValue({
+        fieldName,
+        fieldValue,
+        value,
+        path,
+        step,
+        form
+      });
     });
   }
 
