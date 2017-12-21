@@ -29,13 +29,13 @@ export default function customTextBox(locals) {
     textboxViewStyle = stylesheet.textboxView.notEditable;
   }
 
-  let label = locals.label ? <Text style={controlLabelStyle}>{locals.label}</Text> : null;
+  let label = locals.label ? <Text style={[controlLabelStyle, {textAlign: 'center'}]}>{locals.label}</Text> : null;
   let help  = locals.help ? <Text style={helpBlockStyle}>{locals.help}</Text> : null;
   let error = locals.hasError && locals.error ?
               <Text accessibilityLiveRegion="polite" style={errorBlockStyle}>{locals.error}</Text> : null;
 
   return (
-    <View style={formGroupStyle}>
+    <View style={[formGroupStyle, { flex: 1,  justifyContent: 'center'}]}>
       {label}
       <View style={textboxViewStyle}>
         <TextInput
