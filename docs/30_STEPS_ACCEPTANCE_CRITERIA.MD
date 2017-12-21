@@ -169,18 +169,5 @@ See docs/COMPONENT_UX_GUIDE.MD for further reference/details on individual __com
 
 ## Step 19
   1) Take the time to evaluate your spiritual views
-  *  
-
-
-
-
-
-
-
-
-
-
 
       
-
-
