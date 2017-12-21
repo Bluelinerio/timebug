@@ -141,11 +141,6 @@ See docs/COMPONENT_UX_GUIDE.MD for further reference/details on individual __com
       * Do you trust the value of what you have to offer or do you tend to second guess your choices? (Using a 10 pt scale with 1=no true value and 10=trusting and valueing what you give fully). (__Number__, 1-10 scale)
       * How comfortable do you feel receiving from others in your daily life? (Using a 10-pt scale with 1=not at all comfortable and 10=very much comfortable). (__Number__, 1-10 scale)
       * Do you feel worthy and comfortable, even with compliments or acknowledgments that come your way? Or do you deflect and belittle the moment in some way? (Using a 10-pt Scale with 1=fully valuing and  appreciating what has been shared to 10=deep discomfort with the whole thing) (__Number__, 1-10 scale)
-      *relationshipQualityGoals: t.list(
-        t.struct({
-          goal: t.String,
-          goalOutcome: CommonGoalOutcomes
-        })
       * What goals have you had in terms of Relationship Quality (RQ) over the past five years? (__list entry__ of __group entries__), struct:
         * Goal(__short text__)
         * Goal Outcome (__dropdown__ of enums _CommonGoalOutcomes_)
@@ -173,7 +168,8 @@ See docs/COMPONENT_UX_GUIDE.MD for further reference/details on individual __com
    * List items should be collapsible
 
 ## Step 19
-  1)
+  1) Take the time to evaluate your spiritual views
+  *  
 
 
 
