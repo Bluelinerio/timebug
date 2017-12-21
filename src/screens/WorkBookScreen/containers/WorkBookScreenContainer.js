@@ -16,7 +16,8 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import KeyboardSpacer from "react-native-keyboard-spacer";
 import DefaultIndicator from "../../../components/DefaultIndicator";
 import Button from "../../../components/Button";
-import { populateCurrentFormValue } from '../../../redux/actions/form.actions';
+import { populateCurrentFormValue, changeFormValue } from '../../../redux/actions/form.actions';
+import type { FormChange } from '../../../redux/actions/form.actions';
 import { store } from "../../../redux/rootReducer";
 import FormComponent from "../components/FormComponent";
 import { GET_NEXT_FORM } from "../../../redux/actionTypes";
@@ -31,21 +32,16 @@ type Props = {
   formData: any,
   isFetching: boolean,
   color: string, 
-  populateCurrentFormValue: (any) => void, 
+  populateCurrentFormValue: (any) => void,
+  changeFormValue: (change : FormChange) => void
 };
 
 type State = {
   keyboardSpace: number,
   isInvalid: boolean,
-  form?: any
+  form?: any,
+  value?: any
 };
-
-type FormChange = {
-  fieldName: string,
-  fieldValue: any,
-  path: [String],
-  value: any,
-}
 
 const mapStateToProps = state => {
   const progress = selectors.progress(state);
@@ -62,11 +58,15 @@ const mapStateToProps = state => {
   };
 };
 
-@connect(mapStateToProps, { populateCurrentFormValue })
+@connect(mapStateToProps, { populateCurrentFormValue, changeFormValue })
 class WorkBookScreenContainer extends Component<Props, State> {
-  state = {
-    keyboardSpace: 0,
-    isInvalid: true,
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      keyboardSpace: 0,
+      isInvalid: true,
+      value: this.getDefaultValue()
+    }
   }
 
   static navigationOptions = () => {
@@ -108,6 +108,17 @@ class WorkBookScreenContainer extends Component<Props, State> {
     theme.setRoot(this);
   }
 
+  getDefaultValue = (): ?any => {
+    const {
+      formData,
+      progress: { step, form },
+    } = this.props;
+    if (formData && formData[ step ] && formData[ step ][ form ]) {
+      return formData[ step ][ form ]
+    }
+    return undefined;
+  }
+
   onToggle = (keyboardSpace) => {
     if (Platform.OS === "ios") {
       this.setState({ keyboardSpace });
@@ -115,16 +126,29 @@ class WorkBookScreenContainer extends Component<Props, State> {
   }
 
   onPress = () => {
-    const value = this.form.refs.form.getValue();
+    const value = this.form.getValue();
     if (value) {
       this.props.populateCurrentFormValue(value);
     }
   }
 
-  onChange = (formChange: FormChange) => {
-    let value = this.form.refs.form.getValue();
+  onChange = (value: any, path: [string]) => {
+    const { step, form } = this.props.progress;
+    const fieldName = path[path.length - 1];
+    const fieldValue = path.reduce((struct: {}, field) => struct[field], value)
+    
     this.setState({
-      isInvalid: !value
+      isInvalid: !this.form.getValue(),
+      value
+    }, () => {
+      this.props.changeFormValue({
+        fieldName,
+        fieldValue,
+        value,
+        path,
+        step,
+        form
+      });
     });
   }
 
@@ -146,10 +170,11 @@ class WorkBookScreenContainer extends Component<Props, State> {
                 {model.title.toUpperCase()}
               </Text>
               <FormComponent
-                ref={form => (this.form = form)}
+                formRef={form => (this.form = form)}
                 model={model}
                 formData={formData}
                 progress={progress}
+                value={this.state.value}
                 onChange={this.onChange}
               />
             </View>
