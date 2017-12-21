@@ -3,7 +3,7 @@ import './templates';
 
 theme.add({
   workBookFormContainer: {
-    padding: 20
+    flex: 1,
   },
   workBookFormTitle: {
     textAlign: 'center',
@@ -16,13 +16,9 @@ theme.add({
     alignItems: 'flex-end',
   },
   workBookNextButton: {
-    flex: 1,
-    height: 90,
+    flex: 0,
+    height: 60,
     backgroundColor: 'transparent',
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
     justifyContent: 'center',
     zIndex: 999
   }

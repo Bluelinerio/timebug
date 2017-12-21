@@ -8,11 +8,11 @@ import {
   View,
   TouchableHighlight,
   Platform,
-  ScrollView
+  ScrollView,
+  KeyboardAvoidingView
 } from "react-native";
 import theme, { styles } from "react-native-theme";
 import { HeaderBackButton } from "react-navigation";
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import KeyboardSpacer from "react-native-keyboard-spacer";
 import DefaultIndicator from "../../../components/DefaultIndicator";
 import Button from "../../../components/Button";
@@ -136,15 +136,15 @@ class WorkBookScreenContainer extends Component<Props, State> {
     }
     return (
         <View style={{ flex: 1 }}>
-          <KeyboardAwareScrollView
+          <KeyboardAvoidingView
+            contentContainerStyle={{
+              flex: 1
+            }}
             style={{
-              padding: 10
+              flex: 1,
             }}
           >
             <View style={styles.workBookFormContainer}>
-              <Text style={styles.workBookFormTitle}>
-                {model.title.toUpperCase()}
-              </Text>
               <FormComponent
                 ref={form => (this.form = form)}
                 model={model}
@@ -155,13 +155,12 @@ class WorkBookScreenContainer extends Component<Props, State> {
             </View>
             {/*{Platform.OS === 'ios' &&*/}
             {/*<KeyboardSpacer onToggle={(keyboardState, keyboardSpace) => this.onToggle(keyboardSpace)}/>}*/}
-          </KeyboardAwareScrollView>
-          <View
-            style={[
-              styles.workBookNextButton,
-              this.state.keyboardSpace && { bottom: this.state.keyboardSpace }
-            ]}
-          >
+            <View
+              style={[
+                styles.workBookNextButton,
+                this.state.keyboardSpace && { bottom: this.state.keyboardSpace }
+              ]}
+            >
             <Button
               disabled={this.state.isInvalid}
               onPress={this.onPress}
@@ -171,6 +170,7 @@ class WorkBookScreenContainer extends Component<Props, State> {
               backgroundColor={color}
             />
           </View>
+          </KeyboardAvoidingView>
         </View>
       );
   }
