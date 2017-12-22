@@ -3,7 +3,6 @@ import { PriorityLevels, ExerciseFrequency, ExerciseTypes, CarryStress, CommonGo
 
 export default {
   1: {
-    title:'Take time to evaluate your general health status',
     type: t.struct({
       id:t.maybe(t.String),
       priority:PriorityLevels,
@@ -11,6 +10,7 @@ export default {
       healthyPerson: t.Number
     }),
     options:{ 
+      label:'Take time to evaluate your general health status',
       fields: {
         id:{
           hidden: true
@@ -36,7 +36,6 @@ export default {
 
   },
   2: {
-    title:'Take time to evaluate your Fitness and Exercise behavior',
     type:t.struct({
       doYouExercise: t.String,
       exerciseFrequency: ExerciseFrequency,
@@ -47,10 +46,9 @@ export default {
           goalOutcome: CommonGoalOutcomes
         })
       )
-
-
     }),
     options: {
+      label:'Take time to evaluate your Fitness and Exercise behavior',
       fields: {
         doYouExercise: {
           label: 'Do you exercise? If not, why?'
@@ -73,7 +71,6 @@ export default {
     }
   },
   3:{
-    title: 'Take time to evaluate your nutrition & diet',
     type: t.struct({
       typicalDiet: t.String,
       healthyDiet: t.Number,
@@ -96,10 +93,10 @@ export default {
         c:t.Boolean,
         d:t.Boolean,
         e:t.Boolean
-
       })
     }),
     options: {
+      label: 'Take time to evaluate your nutrition & diet',
       fields: {
         typicalDiet: {
           label:'What is your typical diet?'
@@ -150,7 +147,6 @@ export default {
     }
   },
   4: {
-    title:'Take tmie to evaluate your Sleep pattern.',
     type:t.struct({
       hoursSleep: HoursSleep,
       isEnough: t.String,
@@ -161,6 +157,7 @@ export default {
 
     }),
     options: {
+      label:'Take tmie to evaluate your Sleep pattern.',
       fields: {
         hoursSleep: {
           label:'How many hours do you typically sleep?'
@@ -184,7 +181,6 @@ export default {
     }
   },
   5: {
-    title: 'Take time to evaluate your Body Care',
     type:t.struct({
       takeCare: t.String,
       carryStress: CarryStress,
@@ -200,6 +196,7 @@ export default {
       })
     }),
     options: {
+      label: 'Take time to evaluate your Body Care',
       fields: {
         takeCare: {
           label:'What do you do to physically take care of yourself? How often per month?'
@@ -240,7 +237,6 @@ export default {
     }
   },
   6: {
-    title: 'Take time to evaluate your Mental & Emotional Health',
     type:t.struct({
       stressRange: t.struct({
         lowEnd:t.Number,
@@ -255,6 +251,7 @@ export default {
       })
     }),
     options:{
+    label: 'Take time to evaluate your Mental & Emotional Health',
     fields: {
       stressRange: {
         label:'What is the range of your stress levels throughout a typical week?(Using a 10pt scale, Choose a number for the low-end and another for the high-end, with 1=total tranquility and 10=major nervous breakdown)',

@@ -3,7 +3,6 @@ import t from "../components/templates";
 
 export default {
     1:{
-       title: 'Take the time to evaluate your spiritual views',
        type: t.struct ({
         id:t.maybe(t.String),
          currentViews: t.String,
@@ -12,6 +11,7 @@ export default {
 
        }),
        options: {
+         label: 'Take the time to evaluate your spiritual views',
          fields: {
            id:{
              hidden:true
@@ -36,13 +36,13 @@ export default {
 
     },
     2:{
-      title: 'Take time to evaluate your spiritual practices',
       type: t.struct({
         timeSpentSpirutality: t.String,
         spiritualityChanged: t.String
 
       }),
       options: {
+        label: 'Take time to evaluate your spiritual practices',
         fields:{
           timeSpentSpirutality: {
             label: 'How much time do you spend specifically, each week, on Spiritual practices, Interactions, reading, writing, etc.?'
@@ -54,7 +54,6 @@ export default {
       }
     },
     3:{
-      title:'Take time to evaluate your Spiritual Insights & Growth',
       type:t.struct({
         internalQualities:t.String,
         insights:t.list(
@@ -68,6 +67,7 @@ export default {
         )
       }),
       options: {
+        label:'Take time to evaluate your Spiritual Insights & Growth',
         fields:{
           internalQualities: {
             label: 'What internal qualities(Iqs: Goal Type 4) have been influenced - positively or negatively - by Spiritual practices - or lack thereof?',

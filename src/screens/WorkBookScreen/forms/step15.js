@@ -3,7 +3,6 @@ import t from "../components/templates";
 
 export default {
   1: {
-    title: 'Gather all of your previous goal data, including time spent, and key achievements ove rthe past 5 years. You can start with 2015 if you feel overwhelmed assesing all 5 years.',
     type: t.struct({
       id:t.maybe(t.String),
       personalAimsAndHobbies:t.list(
@@ -18,6 +17,7 @@ export default {
       )      
     }),
     options:{
+      label: 'Gather all of your previous goal data, including time spent, and key achievements ove rthe past 5 years. You can start with 2015 if you feel overwhelmed assesing all 5 years.',
       fields:{
         id: {
           hidden: true
@@ -56,12 +56,12 @@ export default {
     }
   },
   2:{
-    title:'',
     type:t.struct({
       giveUp: t.String,
       notGiveUp: t.String
     }),
     options:{
+      label: '', //TODO: Add label
       fields: {
         giveUp: {
           label: '2A)Which of these hobbies, if any, would you be willing to give up if some huge new priority came along, and required more of your time?'
@@ -72,11 +72,8 @@ export default {
       }
 
     }
-
-
   },
   3:{ 
-    title:'What Personal Aims and Hobbies were you not able to get going over the past 5 years, that you really wanted to do? (List up to 5)',
     type:t.struct({
       aimsAndHobbies:t.list(
         t.struct({
@@ -86,6 +83,7 @@ export default {
     )
     }),
     options:{
+      label:'What Personal Aims and Hobbies were you not able to get going over the past 5 years, that you really wanted to do? (List up to 5)',
       fields:{
         aimsAndHobbies:{
           item:{
@@ -104,6 +102,4 @@ export default {
       }
     }
   }
-
-  
 };

@@ -4,13 +4,13 @@ import t from "../components/templates";
 
 export default {
     1:{ 
-        title:'Did you do your MANTRA today(assigned on Day 21)?',
         type:t.struct({
           id:t.maybe(t.String),
           yes:t.Boolean,
           no:t.Boolean
         }),
         options: {
+          label:'Did you do your MANTRA today(assigned on Day 21)?',
           fields:{
             id: {
               hidden: true
@@ -25,27 +25,26 @@ export default {
         }
     },
     2:{ 
-      title:'Did you EXERCISE and meditate yet today(assigned on Day 8)?',
       type:t.struct({
         yes:t.Boolean,
         no:t.Boolean
       }),
       options: {
+        label:'Did you EXERCISE and meditate yet today(assigned on Day 8)?',
         auto:'labels'
       }
   },
   3:{ 
-    title:'Did you MEDITATE yet today(assigned on Day 8)?',
     type:t.struct({
       yes:t.Boolean,
       no:t.Boolean
     }),
     options: {
+      label:'Did you MEDITATE yet today(assigned on Day 8)?',
       auto:'labels'
     }
 },
 4:{
-  title:'What do you dream about?',
   type:t.struct({
     dreamsDescribe:t.String,
     dreamsRemember:t.struct({
@@ -61,6 +60,7 @@ export default {
       }),
     }),
     options:{
+      label:'What do you dream about?',
       fields: {
         dreamsDescribe: {
           label:'Describe the general themes, quality and lucidity of your dreams'
@@ -92,27 +92,32 @@ export default {
     }
 },
 5: {
-  title:'For the remainder of the program (8 Nights of Dreaming), try to remember and write your dreams down first thing in the morning – or even if you wake up in the middle of the night, the way Jason described his experience in the video.',
-  type:t.list(
-    t.struct({
-      dream:t.maybe(t.String)
-    })
-  ),
+  type: t.struct({
+    id:t.maybe(t.String),
+    field: t.list(
+      t.struct({
+        dream:t.maybe(t.String)
+      })
+    ),
+  }),
   options: {
-    label: 'Be sure to note what themes, characters, settings, fears, hopes and aspirations were present.',
-    item: {
-      fields: {
-        dream: {
-          label: 'Dream'
+    label:'For the remainder of the program (8 Nights of Dreaming), try to remember and write your dreams down first thing in the morning – or even if you wake up in the middle of the night, the way Jason described his experience in the video.',
+    field: {
+      label: 'Be sure to note what themes, characters, settings, fears, hopes and aspirations were present.',
+      item: {
+        fields: {
+          dream: {
+            label: 'Dream'
+          }
         }
       }
     }
   }
 },
 6: {
-  title:'What are your life dreams? This doesn’t have to be restricted to what your literal dreams (during sleep) are. Right now, go beyond 2020 and even your 20/20 BHAGs (from Day 21’s Assignment)... and allow yourself to dream, in this moment, about everything you want your life to be. Anything is possible. Describe what you see.',
   type:t.maybe(t.String),
   options:{
+    label:'What are your life dreams? This doesn’t have to be restricted to what your literal dreams (during sleep) are. Right now, go beyond 2020 and even your 20/20 BHAGs (from Day 21’s Assignment)... and allow yourself to dream, in this moment, about everything you want your life to be. Anything is possible. Describe what you see.',
     auto: 'none'
   }
 }

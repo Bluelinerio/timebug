@@ -3,7 +3,6 @@ import { CharachterStrengths, CharachterWeaknesses } from "./contents";
 
 export default {
   1: {
-    title: "List 3-5 Charachter Strengths of yours, and the resulting goals that you achieved.",
     type: t.struct({
       id:t.maybe(t.String),
       field: t.list(
@@ -14,6 +13,7 @@ export default {
       )
     }),
     options: {
+      label: "List 3-5 Charachter Strengths of yours, and the resulting goals that you achieved.",
       fields: {
         id: {
           hidden:true
@@ -35,7 +35,6 @@ export default {
     }
   },
   2: {
-    title: "List 3-5 Charachter Traits that have held you back from achieving your goals.",
     type: t.struct({
       field: t.list(
         t.struct({
@@ -45,6 +44,7 @@ export default {
       )
     }),
     options: {
+      label: "List 3-5 Charachter Traits that have held you back from achieving your goals.",
       fields: {
         field: {
           auto: 'placeholders',
@@ -58,13 +58,13 @@ export default {
     }
   },
   3: {
-    title: "List 3-5 Charachter Strengths from a friend or family member's point of view.",
     type: t.struct({
         friendsName: t.String,
         strengthFriendView: t.list(CharachterStrengths),
         weaknessFriendView: t.list(CharachterWeaknesses)
       }),
       options: {
+        label: "List 3-5 Charachter Strengths from a friend or family member's point of view.",
         fields: {
           friendsName: {
             label: "Write down your friend or family member's name."

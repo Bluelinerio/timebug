@@ -1,15 +1,14 @@
 import t from "../components/templates";
 
-
 export default {
   1: {
-    title: "Please evaluate your relationship with money.",
     type: t.struct({
       id:t.maybe(t.String),
       selfView: t.String,
       othersView: t.String
     }),
     options: {
+      label: "Please evaluate your relationship with money.",
       fields: {
         id: {
           hidden: true
@@ -30,12 +29,12 @@ export default {
     }
   },
   2: {
-    title: "What is your credit score?",
     type: t.struct({
       dec15: t.Number,
       jan11: t.Number
     }),
     options: {
+      label: "What is your credit score?",
       fields: {
         dec15: {
           label: "Dec '15"
@@ -47,13 +46,13 @@ export default {
     }
   },
   3: {
-    title: "",
     type: t.struct({
       whyChange: t.String,
       bestAchievement: t.String,
       biggestDissapointment: t.String
     }),
     options: {
+      label: "", // TODO: Add label
       fields: {
         whyChange: {
           label: "Why did it change?"
@@ -68,7 +67,6 @@ export default {
     }
   },
   4: {
-    title: "Create a quick personal Balance Sheet using the 20/20 Worksheet as a guide.",
     type: t.struct({
       reflection: t.String,
       compare1: t.String,
@@ -81,6 +79,7 @@ export default {
       })
     }),
     options: {
+      label: "Create a quick personal Balance Sheet using the 20/20 Worksheet as a guide.",
       fields: {
         reflection: {
           label: "Reflecting on your Balance Sheet, how do you feel?(Use keywords or phrases)"
@@ -113,7 +112,6 @@ export default {
 
   },
   5: {
-    title: "Create a quick personal Profit & Loss Statement using the 20/20 Worksheet as a guide. It is your choice as to whether to focus on your own individual P&L versus as a couple, if you are married.",
     type: t.struct({
       assets: t.struct({
         liquidAssets: t.list(
@@ -185,6 +183,7 @@ export default {
       net: t.maybe(t.Number)
     }),
     options: {
+      label: "Create a quick personal Profit & Loss Statement using the 20/20 Worksheet as a guide. It is your choice as to whether to focus on your own individual P&L versus as a couple, if you are married.",
       fields : {
         plSheetReflection: {
           label:'Take some time to reflect on your P&L sheet',

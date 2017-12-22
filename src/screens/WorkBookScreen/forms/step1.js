@@ -3,7 +3,6 @@ import { AreaOfLife, StageOfLife, Emotions } from "./contents";
 
 export default {
   1: {
-    title: "Write your best life memory",
     type: t.struct({
       id:t.maybe(t.String),
       memory: t.String,
@@ -11,6 +10,7 @@ export default {
       stageOfLife: t.maybe(StageOfLife)
     }),
     options: {
+      label: "Write your best life memory",
       fields: {
         id: {
           hidden: true
@@ -34,13 +34,13 @@ export default {
     }
   },
   2: {
-    title: "What are some of your regrets?",
     type: t.struct({
       regret: t.String,
       areaOfLife: t.maybe(AreaOfLife),
       stageOfLife: t.maybe(StageOfLife),
     }),
     options: {
+      label: "What are some of your regrets?",
       fields: {
         stageOfLife: {
           label: "At what stage of your life was it?"
@@ -55,7 +55,6 @@ export default {
     }
   },
   3: {
-    title: "What are your defining moments?",
     type: t.struct({
       field: t.list(
         t.struct({
@@ -64,6 +63,7 @@ export default {
       )
     }),
     options: {
+      label: "What are your defining moments?",
       fields: {
         moments: {
           label: "How would you describe this moment?"
@@ -80,7 +80,6 @@ export default {
     }
   },
   4: {
-    title: "When you were in that 90 year old’s body and mind",
     type: t.struct({
       text: t.maybe(t.String),
       emotions:t.list(
@@ -90,6 +89,7 @@ export default {
       )
     }),
     options: {
+      label: "When you were in that 90 year old’s body and mind",
       fields: {
         emotions: {
           label: "What were some of the emotion you felt?"
