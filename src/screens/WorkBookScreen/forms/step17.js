@@ -3,7 +3,6 @@ import { CommonGoalOutcomes } from "./contents";
 
 export default {
   1: { 
-      title:'Take time to evaluate your relationship with yourself.',
       type:t.struct({
         id:t.maybe(t.String),
         selfTreatment: t.Number,
@@ -19,6 +18,7 @@ export default {
     peopleTreatedContempt: t.maybe(t.Number)
       }),
       options:{
+        label:'Take time to evaluate your relationship with yourself.',
         fields:{
           id: {
             hidden: true

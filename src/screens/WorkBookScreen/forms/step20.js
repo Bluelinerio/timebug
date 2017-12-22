@@ -3,7 +3,6 @@ import { AssessmentTypes } from "./contents";
 
 export default {
     1:{
-      title:'Reflect back on your Day 11 Worksheet (The 5-Year Life Report), and make refinements or additional notes, given what you have seen here. Be more technical than before, especially when it comes to how you spent your Time & Energy.',
       type: t.struct({
         id:t.maybe(t.String),
         topGoals:t.list(
@@ -15,6 +14,7 @@ export default {
         )
       }),
       options: {
+        label:'Reflect back on your Day 11 Worksheet (The 5-Year Life Report), and make refinements or additional notes, given what you have seen here. Be more technical than before, especially when it comes to how you spent your Time & Energy.',
         fields: {
           id: {
             hidden: true
@@ -47,13 +47,13 @@ export default {
 
     },
     2:{
-      title:'Reflect back on your Day 2 Worksheet (More or Less Time), and make refinements or additional notes, in relation to how your time allocation has changed over the past 5 years; and how you ideally would like to make changes in the current breakdown across Life Categories.',
       type: t.struct({
           lifeCategoryBreakdown: t.String,
           thingsDoLess: t.String,
           thingsDoMore: t.maybe(t.String)
       }),
       options: {
+        label:'Reflect back on your Day 2 Worksheet (More or Less Time), and make refinements or additional notes, in relation to how your time allocation has changed over the past 5 years; and how you ideally would like to make changes in the current breakdown across Life Categories.',
         fields: {
           lifeCategoryBreakdown: {
             label:'a)Has anything changed with your life category breakdown?'
@@ -69,7 +69,6 @@ export default {
 
     },
     3: {
-      title: 'Reflect back on your 7 Assessments [Days 13-19]',
       type:t.struct({
         rank1:AssessmentTypes,
         rank2:AssessmentTypes,
@@ -87,6 +86,7 @@ export default {
         spirituality:t.maybe(t.Number)
       }),
       options:{
+        label: 'Reflect back on your 7 Assessments [Days 13-19]',
         fields: {
         rank1:{
             label: 'Rank the 7 Areas in terms of the order of importance you gave them over the past 5 years.\nRank 1:'
@@ -136,7 +136,6 @@ export default {
           }
       },
       4: {
-        title:'Give yourself a final evaluation for each of the past 5-years, as well as an overall 5-Year Score(1-10 score per year, for a total maximum high score of 50/50, per each of the 7 Areas that were assessed).',
         type:t.struct({
           career2011:t.Number,
           personalityAndHobbies2011:t.Number,
@@ -182,6 +181,7 @@ export default {
           spiritualityOverall:t.maybe(t.Number)
          }),
          options: {
+           label:'Give yourself a final evaluation for each of the past 5-years, as well as an overall 5-Year Score(1-10 score per year, for a total maximum high score of 50/50, per each of the 7 Areas that were assessed).',
            fields: {
              
              career2011:{
@@ -368,7 +368,6 @@ export default {
 
       },
       5:{
-        title:'Have one other person(per Area) - be it a family member or friend, and preferably one of your CEO of Me Board Members - give you a Score for the past 5 years(on a 1-10 scale), and then multiply that number by 5, to arrive at your 3rd Party Rating(this number will be between 5-50; and you should have one for each of the 7 Assessment Areas).',
         type:t.struct({
           career2011:t.Number,
           personalityAndHobbies2011:t.Number,
@@ -414,6 +413,7 @@ export default {
           spiritualityOverall:t.maybe(t.Number)
          }),
          options: {
+           label:'Have one other person(per Area) - be it a family member or friend, and preferably one of your CEO of Me Board Members - give you a Score for the past 5 years(on a 1-10 scale), and then multiply that number by 5, to arrive at your 3rd Party Rating(this number will be between 5-50; and you should have one for each of the 7 Assessment Areas).',
            fields: {
              
              career2011:{
