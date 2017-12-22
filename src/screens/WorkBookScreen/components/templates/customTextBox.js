@@ -35,7 +35,7 @@ export default function customTextBox(locals) {
               <Text accessibilityLiveRegion="polite" style={errorBlockStyle}>{locals.error}</Text> : null;
 
   return (
-    <View style={[formGroupStyle, { flex: 1,  justifyContent: 'center'}]}>
+    <View style={[formGroupStyle, { flexDirection: 'row', flex: 1}]}>
       {label}
       <View style={textboxViewStyle}>
         <TextInput
