@@ -8,6 +8,7 @@ type Props = {
 	headerImage: ReactElement,
 	headerComponent: ReactElement,
 	header: ReactElement,
+	headerStyles: any,
 	headerMaxHeight: number,
 	headerMinHeight: number
 };
@@ -17,13 +18,8 @@ type State = {
 };
 
 export default class ScrollableHeader extends Component<Props, State> {
-	constructor(props) {
-		super(props);
+	state = { scrollY: new Animated.Value(0) }
 
-		this.state = {
-			scrollY: new Animated.Value(0)
-		};
-	}
 	render() {
 		const { content, headerStyles, headerImage, headerComponent, header } = this.props;
 		let { headerMinHeight, headerMaxHeight } = this.props;
