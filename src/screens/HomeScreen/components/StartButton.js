@@ -20,7 +20,7 @@ const style = {
 	wideButton: {
 		marginBottom: 40,
 		backgroundColor: 'white',
-		height: 45,
+		height: 44,
 		minWidth: 240,
 		paddingHorizontal: 10,
 		borderRadius: 150,
