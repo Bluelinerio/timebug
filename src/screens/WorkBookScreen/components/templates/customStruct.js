@@ -31,7 +31,7 @@ function struct(locals) {
       {label}
       {error}
       {locals.path.length > 1 ? (
-        <View style={{flex: 1, alignItems: 'center', alignContent: 'center', justifyContent: 'center', justifyItems: 'center'}}>
+        <View style={{flex: 1, justifyContent: 'center'}}>
           {rows}
         </View>
       ) : (
