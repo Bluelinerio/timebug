@@ -4,7 +4,7 @@ import Icon                                                 from 'react-native-v
 import { styles }                                           from 'react-native-theme';
 
 function renderRowWithoutButtons(item) {
-  return <View key={item.key}>{item.input}</View>;
+  return <View style={{ flex: 1 }} key={item.key}>{item.input}</View>;
 }
 
 function renderRowButton(button) {
@@ -47,7 +47,7 @@ export default function customList(locals) {
   let addButton = itemsCount && itemsCount >= locals.config.maxLines ? null : locals.add ? renderRowButton(locals.add, stylesheet) : null;
 
   return (
-    <View style={fieldsetStyle}>
+    <View style={[fieldsetStyle, { flex: 1 }]}>
       {label}
       {error}
       {rows}
