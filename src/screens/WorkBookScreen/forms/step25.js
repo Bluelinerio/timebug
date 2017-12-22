@@ -75,7 +75,7 @@ export default {
       fields: {
         id: {
           hidden: true
-        }
+        },
         field: {
           item: {
             fields: {
@@ -104,7 +104,7 @@ export default {
       fields: {
         id: {
           hidden: true
-        }
+        },
         field: {
           auto: "placeholders"
         }
