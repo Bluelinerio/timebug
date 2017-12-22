@@ -3,13 +3,13 @@ import t from "../components/templates";
 
 export default {
   1: {
-    title: 'Did you do your MANTRA today(assigned on Day 21)?',
     type: t.struct({
       id:t.maybe(t.String),
       yes: t.Boolean,
       no: t.Boolean
     }),
     options: {
+      label: 'Did you do your MANTRA today(assigned on Day 21)?',
       fields: {
         id: {
           hidden: true
@@ -19,27 +19,26 @@ export default {
     }
   },
   2: {
-    title: 'Did you EXERCISE and meditate yet today(assigned on Day 8)?',
     type: t.struct({
       yes: t.Boolean,
       no: t.Boolean
     }),
     options: {
+      label: 'Did you EXERCISE and meditate yet today(assigned on Day 8)?',
       auto: 'labels'
     }
   },
   3: {
-    title: 'Did you MEDITATE yet today(assigned on Day 8)?',
     type: t.struct({
       yes: t.Boolean,
       no: t.Boolean
     }),
     options: {
+      label: 'Did you MEDITATE yet today(assigned on Day 8)?',
       auto: 'labels'
     }
   },
   4: {
-    title:'List 3-10 Spiritual “teammates”,and write a few notes about how you plan to connect with them this coming year.',
     type:t.list(
       t.struct({
         teammate:t.String,
@@ -47,6 +46,7 @@ export default {
       })
     ),
     options:{
+      label:'List 3-10 Spiritual “teammates”,and write a few notes about how you plan to connect with them this coming year.',
       item:{
         fields:{
           teammate:{
@@ -60,15 +60,16 @@ export default {
     }
   },
   5:{
-    title:'What major goals [BHAGs] do you envision for yourself by 2020? [i.e. doing a 10-day meditation retreat; fasting for 30 days; writing down your deepest feelings and thoughts in a journal every day for a whole year, etc.].',
     type:t.list(
       t.struct({
         goal:t.String
       })
-    )
+    ),
+    options: {
+      label:'What major goals [BHAGs] do you envision for yourself by 2020? [i.e. doing a 10-day meditation retreat; fasting for 30 days; writing down your deepest feelings and thoughts in a journal every day for a whole year, etc.].',
+    }
   },
   6:{
-    title:'List out up to 10 items for your 2020 Spirituality Bucket List [i.e. reading specific philosophy, self-help or religious books; visiting sacred sites; etc].',
     type:t.list(
       t.struct({
         bucketPEBHAG:t.String,
@@ -77,6 +78,7 @@ export default {
       })
     ),
     options:{
+      label:'List out up to 10 items for your 2020 Spirituality Bucket List [i.e. reading specific philosophy, self-help or religious books; visiting sacred sites; etc].',
       item:{
         fields:{
           bucketPEBHAG:{
@@ -91,10 +93,8 @@ export default {
         }
       }
     }
-    
   },
   7:{
-    title:'List out up to 10 items for your 2020 Spirituality Bucket List [i.e. reading specific philosophy, self-help or religious books; visiting sacred sites; etc].',
     type:t.list(
       t.struct({
         i:t.String,
@@ -104,6 +104,7 @@ export default {
       })
     ),
     options:{
+      label:'List out up to 10 items for your 2020 Spirituality Bucket List [i.e. reading specific philosophy, self-help or religious books; visiting sacred sites; etc].',
       item:{
         fields:{
           i:{
@@ -123,37 +124,37 @@ export default {
     }
   },
   8:{
-    title:'Think about one other person in your life, who you want to see enjoy a major transformation or sense of peace and internal happiness in their lives. Who is it?',
     type:t.String,
     options:{
+      label:'Think about one other person in your life, who you want to see enjoy a major transformation or sense of peace and internal happiness in their lives. Who is it?',
       auto:'none'
     }
   },
   9:{
-    title:'How do you want to see them attain those inner journey goals, making it happen by 2020?',
     type:t.String,
     options:{
+      label:'How do you want to see them attain those inner journey goals, making it happen by 2020?',
       auto:'none'
     }
   },
   10:{
-    title:'How can you help them achieve their Spiritual goals?',
     type:t.String,
     options:{
+      label:'How can you help them achieve their Spiritual goals?',
       auto:'none'
     }
   },
   11:{
-    title:'List one wish that you have for the world or a particular sector of the world when it comes to Spirituality (i.e. World Inner Peace).',
     type:t.String,
     options:{
+      label:'List one wish that you have for the world or a particular sector of the world when it comes to Spirituality (i.e. World Inner Peace).',
       auto:'none'
     }
   },
   12:{
-    title:'How can you help, be it in any small way, to see this goal be achieved? (Hint: start with yourself and in  your own circle of family  and friends, with things that you have direct influence on).',
     type:t.String,
     options:{
+      label:'How can you help, be it in any small way, to see this goal be achieved? (Hint: start with yourself and in  your own circle of family  and friends, with things that you have direct influence on).',
       auto:'none'
     }
   }

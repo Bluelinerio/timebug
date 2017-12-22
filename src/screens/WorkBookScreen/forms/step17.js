@@ -56,11 +56,8 @@ export default {
           id: 'step17+v0.0.0.1'
         }
       }
-
-
   },
   2:{
-    title:'Take time to evaluate your relationship to others.',
     type:t.struct({
       givingToOthers:t.Number,
       trustValue: t.Number,
@@ -88,6 +85,7 @@ export default {
       nextTimeReceive: t.maybe(t.String)
      }),
      options: {
+      label:'Take time to evaluate your relationship to others.',
        fields: {
          givingToOthers: {
            label: 'How comfortable do you feel giving to others in your faily life?(Using a 10-pt scale with 1=not at all comfortable and 10=very much comfortable).'

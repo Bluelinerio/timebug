@@ -3,7 +3,6 @@ import { LifeCategory,CharachterStrengths } from "./contents";
 
 export default {
     1:{ 
-        title:'Imagine different areas of your garden, as in the Life Categories which you have created back on Day 2. Who planted most of the seeds in your garden over the course of your life?',
         type: t.struct({
             id:t.maybe(t.String),
            garden:t.list(
@@ -15,6 +14,7 @@ export default {
            )
         }),
         options:{
+            label:'Imagine different areas of your garden, as in the Life Categories which you have created back on Day 2. Who planted most of the seeds in your garden over the course of your life?',
             fields:{
                 id:{
                     hidden: true
@@ -43,14 +43,15 @@ export default {
 
     },
     2:{
-        title:'Are you committed to taking full ownership of your life garden going forward?',
         type: t.struct({
             yes:t.Boolean,
             no:t.Boolean
-        }) 
+        }),
+        options: {
+            label:'Are you committed to taking full ownership of your life garden going forward?',
+        }
      },
      3:{
-         title:'Reflecting on the 7 Self-Assessments from days 13-19, list two BHAGs for 2020',
          type:t.struct({
              careerShortcoming:t.String,
              careerBHAG:t.String,
@@ -68,6 +69,7 @@ export default {
              spiritualityBHAG:t.maybe(t.String)
          }),
          options: {
+             label:'Reflecting on the 7 Self-Assessments from days 13-19, list two BHAGs for 2020',
              fields:{
                  careerShortcoming:{
                      label:'Career \n\nA failure or shortcoming that you experienced over the last 5 years',
@@ -129,7 +131,6 @@ export default {
          }
      },
      4:{
-         title:'Think about how strong your current tools(skills,approach,etc) are for tending to your garden - Strengths & Weaknesses from Day 3 is a useful review.',
          type: t.struct({
              skills:t.list(
                  t.struct({
@@ -141,6 +142,7 @@ export default {
             )
          }),
          options:{
+             label:'Think about how strong your current tools(skills,approach,etc) are for tending to your garden - Strengths & Weaknesses from Day 3 is a useful review.',
              fields:{
                  skills:{
                      item:{
