@@ -8,11 +8,11 @@ import {
   View,
   TouchableHighlight,
   Platform,
-  ScrollView
+  ScrollView,
+  KeyboardAvoidingView
 } from "react-native";
 import theme, { styles } from "react-native-theme";
 import { HeaderBackButton } from "react-navigation";
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import KeyboardSpacer from "react-native-keyboard-spacer";
 import DefaultIndicator from "../../../components/DefaultIndicator";
 import Button from "../../../components/Button";
@@ -164,27 +164,18 @@ class WorkBookScreenContainer extends Component<Props, State> {
     }
     return (
         <View style={{ flex: 1 }}>
-          <KeyboardAwareScrollView
-            style={{
-              padding: 10
-            }}
-          >
-            <View style={styles.workBookFormContainer}>
-              <Text style={styles.workBookFormTitle}>
-                {model.title.toUpperCase()}
-              </Text>
-              <FormComponent
-                formRef={form => (this.form = form)}
-                model={model}
-                formData={formData}
-                progress={progress}
-                value={this.state.value}
-                onChange={this.onChange}
-              />
-            </View>
+          <View style={styles.workBookFormContainer}>
+            <FormComponent
+              formRef={form => (this.form = form)}
+              model={model}
+              formData={formData}
+              progress={progress}
+              value={this.state.value}
+              onChange={this.onChange}
+            />
+          </View>
             {/*{Platform.OS === 'ios' &&*/}
             {/*<KeyboardSpacer onToggle={(keyboardState, keyboardSpace) => this.onToggle(keyboardSpace)}/>}*/}
-          </KeyboardAwareScrollView>
           <View
             style={[
               styles.workBookNextButton,
