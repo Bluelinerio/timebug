@@ -4,7 +4,6 @@ import { GoalTypes } from "./contents";
 export default {
 
     1: {
-        title: "Make a list of 10 recent goals and classify them according to the 7 Goal Types",
         type: t.struct({
           id:t.maybe(t.String),
             field: t.list(
@@ -15,6 +14,7 @@ export default {
               )
         }),
         options: {
+          label: "Make a list of 10 recent goals and classify them according to the 7 Goal Types",
           fields: {
             id: {
               hidden:true

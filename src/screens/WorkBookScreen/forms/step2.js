@@ -3,7 +3,6 @@ import { LifeCategory, AreaOfLife} from "./contents";
 
 export default {
   1: {
-    title: "How do you spend a typical 168 hour week right now?",
     type: t.struct({
       id:t.maybe(t.String),
       field: t.list(
@@ -14,6 +13,7 @@ export default {
       )
     }),
     options: {
+      label: "How do you spend a typical 168 hour week right now?",
       fields: {
         id: {
           hidden: true
@@ -35,7 +35,6 @@ export default {
     }
   },
   2: {
-    title: "If you could make any changes that you wanted to?",
     type: t.struct({
       field: t.list(
         t.struct({
@@ -45,6 +44,7 @@ export default {
       )
     }),
     options: {
+      label: "If you could make any changes that you wanted to?",
       fields: {
         field: {
           auto: 'placeholders',
@@ -58,7 +58,6 @@ export default {
     }
   },
   3: {
-    title: "Write down at least 3 things that you want to DO LESS of in general (ie. Watching TV).",
     type: t.struct({
       field: t.list(
         t.struct({
@@ -68,6 +67,7 @@ export default {
       )
     }),
     options: {
+      label: "Write down at least 3 things that you want to DO LESS of in general (ie. Watching TV).",
       fields: {
         field: {
           auto: 'placeholders',
@@ -81,7 +81,6 @@ export default {
     }
   },
   4: {
-    title: "Write down at least 3 things that you want to DO MORE of, in your ideal life setup.",
     type: t.struct({
       field: t.list(
         t.struct({
@@ -91,6 +90,7 @@ export default {
       )
     }),
     options: {
+      label: "Write down at least 3 things that you want to DO MORE of, in your ideal life setup.",
       fields: {
         field: {
           auto: 'placeholders',

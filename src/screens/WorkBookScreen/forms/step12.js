@@ -4,7 +4,6 @@ import { MajorLifeEvents } from "./contents";
 export default {
 
   1: {
-    title: "Specify what MLEs took placer over the past 5 years. Working with your Day 2 worksheet,specify how your time was generally shifted as a result.",
     type: t.struct({
       id:t.maybe(t.String),
       field: t.list(
@@ -15,6 +14,7 @@ export default {
       )
     }),
     options: {
+      label: "Specify what MLEs took placer over the past 5 years. Working with your Day 2 worksheet,specify how your time was generally shifted as a result.",
       fields: {
         id: {
           hidden:true
@@ -49,12 +49,12 @@ export default {
     }
   },
   2: {
-    title: "Building on or refining Question 1 form Day 11, how did those MLEs factor in - positively and negatively - to your goals over the past 5 years?",
     type: t.struct({
       emotionalResponse: t.String,
       internalEnergyInfluence: t.String
     }),
     options: {
+      label: "Building on or refining Question 1 form Day 11, how did those MLEs factor in - positively and negatively - to your goals over the past 5 years?",
       fields: {
         emotionalResponse: {
           auto:'none',
@@ -64,7 +64,7 @@ export default {
           auto:'none',
           label:'Internal Energy Influence'
         },
-    }
+      }
     }
   }
 

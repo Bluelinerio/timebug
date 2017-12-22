@@ -2,9 +2,7 @@ import t from "../components/templates";
 import { ExerciseTypes, TimesOfDay, MeditationTypes, AloneOrOthers } from "./contents";
 
 export default {
-
     1: {
-      title:'On a 1-10 scale, write down your Physical, Mental and Emotional energy levels during different times ofthe day (Morning, Afternoon, Evening) on a typical day.',
       type: t.struct({
         id:t.maybe(t.String),
         weekday:t.struct({
@@ -48,6 +46,7 @@ export default {
         })
       }),
       options:{
+        label:'On a 1-10 scale, write down your Physical, Mental and Emotional energy levels during different times ofthe day (Morning, Afternoon, Evening) on a typical day.',
         fields:{
           id:{
             hidden:true
@@ -162,7 +161,6 @@ export default {
       }
       },
       2:{
-        title:'Please answer the following questions regarding your typical exercise habits.',
         type:t.struct({
           timesPerWeek:t.String,
           howLong:t.String,
@@ -171,6 +169,7 @@ export default {
           timeOfDay:t.maybe(TimesOfDay)
         }),
         options: {
+          label:'Please answer the following questions regarding your typical exercise habits.',
           fields:{
             timesPerWeek: {
               auto:'labels'
@@ -193,7 +192,6 @@ export default {
         }
       },
       3:{
-          title:'Please answer the following questions regarding your typical meditation habits.',
           type:t.struct({
             timesPerWeek:t.String,
             howLong:t.String,
@@ -202,6 +200,7 @@ export default {
             timeOfDay:t.maybe(TimesOfDay)
           }),
           options: {
+            label:'Please answer the following questions regarding your typical meditation habits.',
             fields:{
               timesPerWeek: {
                 auto:'labels'
@@ -224,10 +223,12 @@ export default {
           }
         },
         4:{
-          title:'Are you committed to exercising and meditating for at least 20 mins daily from now until the end of the 20/20 Life Vision Challenge?',
           type:t.struct({
             yes:t.Boolean,
             no:t.Boolean
-          })
+          }),
+          option: {
+            label:'Are you committed to exercising and meditating for at least 20 mins daily from now until the end of the 20/20 Life Vision Challenge?',
+          }
         }
        };
