@@ -27,15 +27,19 @@ function struct(locals) {
   })
 
   return (
-    <View style={{ flex: 1, backgroundColor: '#CCC' }}>
+    <View style={{ flex: 1 }}>
       {label}
       {error}
-      {locals.path.length > 1 ? (
+      {locals.path.length > 0 ? (
         <View style={{flex: 1, justifyContent: 'center'}}>
           {rows}
         </View>
       ) : (
-        <Pages horizontal={false} containerStyle={{ padding: 20}}>
+        <Pages
+          horizontal={false}
+          containerStyle={{ padding: 20}}
+          indicatorColor="#CCC"
+        >
           {filteredRows}
         </Pages>
       )}
