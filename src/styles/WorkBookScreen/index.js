@@ -5,11 +5,6 @@ theme.add({
   workBookFormContainer: {
     flex: 1,
   },
-  workBookFormTitle: {
-    textAlign: 'center',
-    fontSize: 26,
-    paddingVertical: 20,
-  },
   workBookNextButtonContainer: {
     flex: 1,
     flexDirection: 'row',

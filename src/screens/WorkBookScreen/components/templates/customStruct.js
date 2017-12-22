@@ -26,25 +26,33 @@ function struct(locals) {
     return !input.props.options || (input.props.options && !input.props.options.hidden);
   })
 
-  return (
-    <View style={{ flex: 1 }}>
-      {label}
-      {error}
-      {locals.path.length > 0 ? (
+  if(locals.path.length > 0) {
+    return (
+      <View style={{ flex: 1 }}>
+        {label}
+        {error}
         <View style={{flex: 1, justifyContent: 'center'}}>
           {rows}
         </View>
-      ) : (
-        <Pages
-          horizontal={false}
-          containerStyle={{ padding: 20}}
-          indicatorColor="#CCC"
-        >
-          {filteredRows}
-        </Pages>
-      )}
-    </View>
-  );
+      </View>
+    );
+  } else {
+    return (
+      <View style={{ flex: 1 }}>
+        {error}
+        {locals.label ? (
+          <Pages horizontal={false} containerStyle={{ padding: 20}} indicatorColor="#CCC">
+            <Text style={stylesheet.formLabel}>{locals.label}</Text>
+            {filteredRows}
+          </Pages>
+        ) : (
+          <Pages horizontal={false} containerStyle={{ padding: 20}} indicatorColor="#CCC">
+            {filteredRows}
+          </Pages>
+        )}
+      </View>
+    );
+  }
 }
 
 module.exports = struct;

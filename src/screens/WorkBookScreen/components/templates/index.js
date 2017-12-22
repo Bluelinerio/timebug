@@ -5,7 +5,7 @@ import i18n          from "tcomb-form-native/lib/i18n/en";
 import customList    from './customList';
 import customTextBox from './customTextBox';
 import customStruct from './customStruct';
-import { Animated, View } from 'react-native';
+import { Animated, KeyboardAvoidingView } from 'react-native';
 import { Pages } from 'react-native-pages';
 import React, { Children } from 'react';
 
@@ -22,9 +22,9 @@ Pages.prototype.renderPage = function(page, index) {
   progress = Animated.add(progress, -index);
 
   return (
-    <View style={[{ width, height, justifyContent: 'center' }, pageStyle]}>
+    <KeyboardAvoidingView style={[{ width, height, justifyContent: 'center' }, pageStyle]}>
       {React.cloneElement(page, { index, pages, progress })}
-    </View>
+    </KeyboardAvoidingView>
   );
 }
 
@@ -37,6 +37,11 @@ const customTemplates = {
 
 const customStylesheet= {
   ...stylesheet,
+  formLabel: {
+    textAlign: 'center',
+    fontSize: 26,
+    paddingVertical: 20,
+  }
 };
 
 t.form.Form.templates  = customTemplates;

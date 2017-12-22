@@ -164,24 +164,16 @@ class WorkBookScreenContainer extends Component<Props, State> {
     }
     return (
         <View style={{ flex: 1 }}>
-          <KeyboardAvoidingView
-            contentContainerStyle={{
-              flex: 1
-            }}
-            style={{
-              flex: 1,
-            }}
-          >
-            <View style={styles.workBookFormContainer}>
-              <FormComponent
-                formRef={form => (this.form = form)}
-                model={model}
-                formData={formData}
-                progress={progress}
-                value={this.state.value}
-                onChange={this.onChange}
-              />
-            </View>
+          <View style={styles.workBookFormContainer}>
+            <FormComponent
+              formRef={form => (this.form = form)}
+              model={model}
+              formData={formData}
+              progress={progress}
+              value={this.state.value}
+              onChange={this.onChange}
+            />
+          </View>
             {/*{Platform.OS === 'ios' &&*/}
             {/*<KeyboardSpacer onToggle={(keyboardState, keyboardSpace) => this.onToggle(keyboardSpace)}/>}*/}
           <View
@@ -197,7 +189,6 @@ class WorkBookScreenContainer extends Component<Props, State> {
               backgroundColor={color}
             />
           </View>
-          </KeyboardAvoidingView>
         </View>
       );
   }
