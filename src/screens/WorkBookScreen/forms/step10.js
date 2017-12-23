@@ -4,7 +4,6 @@ import { LifeCategory, InteractionFrequency } from "./contents";
 export default {
 
   1: {
-    title: "Identify 5-10 different I's. Note how strong each I is for you(on a 1-10 scales with 1=weakest and 10=strongest), and what I would say in a few words.",
     type: t.struct({
       id:t.maybe(t.String),
       field: t.list(
@@ -16,6 +15,7 @@ export default {
       )
     }),
     options: {
+      label: "Identify 5-10 different I's. Note how strong each I is for you(on a 1-10 scales with 1=weakest and 10=strongest), and what I would say in a few words.",
       fields: {
         id:{
           hidden: true
@@ -64,7 +64,6 @@ export default {
     }
   },
   2: {
-    title: "Reflecting back on the day 5 list of Goals, pick several and briefly note how your ego aspects either hindered or aided you.",
     type: t.struct({
       field: t.list(
         t.struct({
@@ -74,6 +73,7 @@ export default {
       )
     }),
     options: {
+      label: "Reflecting back on the day 5 list of Goals, pick several and briefly note how your ego aspects either hindered or aided you.",
       fields: {
         field: {
           auto: 'placeholders',

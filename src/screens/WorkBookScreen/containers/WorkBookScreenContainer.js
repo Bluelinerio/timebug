@@ -8,11 +8,11 @@ import {
   View,
   TouchableHighlight,
   Platform,
-  ScrollView
+  ScrollView,
+  KeyboardAvoidingView
 } from "react-native";
 import theme, { styles } from "react-native-theme";
 import { HeaderBackButton } from "react-navigation";
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import KeyboardSpacer from "react-native-keyboard-spacer";
 import DefaultIndicator from "../../../components/DefaultIndicator";
 import Button from "../../../components/Button";
@@ -25,7 +25,9 @@ import type { Progress } from '../../../services/apollo/models';
 import { updateProgress } from '../../../redux/actions/user.actions'
 import * as NavigationService from '../../../HOC/navigation'
 
-var buttonText = 'SKIP';
+const NextButtonContainer = (props) => <Button {...props} side="right" withArrow />
+
+const SKIPP_ENABLED = true;
 
 type Props = {
   progress: Progress, 
@@ -117,19 +119,12 @@ class WorkBookScreenContainer extends Component<Props, State> {
   }
 
   onPress = () => {
-    const value = this.form.refs.form.getValue();
-    buttonText = 'SKIP';
-    if (value) {
+    const value = this.form.getValue();
+    if (value || SKIPP_ENABLED) {
       this.props.populateCurrentFormValue(value);
     }
   }
 
-<<<<<<< HEAD
-  onChange = (formChange: FormChange) => {
-    let value = this.form.refs.form.getValue();
-    this.setState({
-      isInvalid: !value
-=======
   onChange = (value: any, path: [string]) => {
     const { step, form } = this.props.progress;
     const fieldName = path[path.length - 1];
@@ -147,7 +142,6 @@ class WorkBookScreenContainer extends Component<Props, State> {
         step,
         form
       });
->>>>>>> origin
     });
 
     if(value) {
@@ -166,38 +160,28 @@ class WorkBookScreenContainer extends Component<Props, State> {
     }
     return (
         <View style={{ flex: 1 }}>
-          <KeyboardAwareScrollView
-            style={{
-              padding: 10
-            }}
-          >
-            <View style={styles.workBookFormContainer}>
-              <Text style={styles.workBookFormTitle}>
-                {model.title.toUpperCase()}
-              </Text>
-              <FormComponent
-                ref={form => (this.form = form)}
-                model={model}
-                formData={formData}
-                progress={progress}
-                onChange={this.onChange}
-              />
-            </View>
+          <View style={styles.workBookFormContainer}>
+            <FormComponent
+              formRef={form => (this.form = form)}
+              model={model}
+              formData={formData}
+              progress={progress}
+              value={this.state.value}
+              onChange={this.onChange}
+            />
+          </View>
             {/*{Platform.OS === 'ios' &&*/}
             {/*<KeyboardSpacer onToggle={(keyboardState, keyboardSpace) => this.onToggle(keyboardSpace)}/>}*/}
-          </KeyboardAwareScrollView>
           <View
             style={[
               styles.workBookNextButton,
               this.state.keyboardSpace && { bottom: this.state.keyboardSpace }
             ]}
           >
-            <Button
-              //disabled={this.state.isInvalid}
+            <NextButtonContainer
+              disabled={SKIPP_ENABLED ? false : this.state.isInvalid}
               onPress={this.onPress}
-              text= { buttonText }
-              side="right"
-              withArrow
+              text= { SKIPP_ENABLED ? 'SKIP' : 'NEXT' }
               backgroundColor={color}
             />
           </View>

@@ -10,7 +10,6 @@ theme.add({
     flexDirection: 'column',
     justifyContent:'space-between',
     paddingHorizontal: 20,
-    paddingTop: 200,
   },
   assignmentLeadInScreenNumber: {
     borderWidth: 1,

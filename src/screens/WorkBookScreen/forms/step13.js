@@ -4,10 +4,9 @@ import t from "../components/templates";
 export default {
 
   1: {
-    title: "Take some time to evaluate your salary and compensation over the past 5 years.",
     type: t.struct({
         id:t.maybe(t.String),
-      salaryGrowth: t.struct({
+        salaryGrowth: t.struct({
           jan2011Salary: t.Number,
           Dec2015Salary: t.Number
         }),
@@ -24,6 +23,7 @@ export default {
           hoursChanged: t.maybe(t.String)
     }),
     options: {
+      label: "Take some time to evaluate your salary and compensation over the past 5 years.",
       fields: {
           id:{
               hidden: true
@@ -65,7 +65,6 @@ export default {
           }
         },
   2: {
-    title: "Take some time to evaluate your fulfillment with what you are doing in the workplace using a 10pt scale(1=hate it vs 10=love it, and 1=not motivated vs 10=highly motivated)",
     type: t.struct({
         fulfillment: t.Number,
         pastFiveYears:
@@ -86,6 +85,7 @@ export default {
         
     }),
     options: {
+      label: "Take some time to evaluate your fulfillment with what you are doing in the workplace using a 10pt scale(1=hate it vs 10=love it, and 1=not motivated vs 10=highly motivated)",
       fields: {
         fulfillment: {
           auto:'none',
@@ -135,7 +135,6 @@ export default {
     }
   },
   3: {
-    title: "Take some time to evaluate your shortcomings at work",
     type: t.struct({
       whatBossSays: t.String,
       whatMentorSays: t.maybe(t.String),
@@ -143,6 +142,7 @@ export default {
       whatPricePaid: t.maybe(t.String)
     }),
     options: {
+      label: "Take some time to evaluate your shortcomings at work",
       fields: {
         whatBossSays: {
           auto:'none',

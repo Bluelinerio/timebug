@@ -3,13 +3,13 @@ import t from "../components/templates";
 
 export default {
   1: {
-    title: 'Did you do your MANTRA today(assigned on Day 21)?',
     type: t.struct({
       id:t.maybe(t.String),
       yes: t.Boolean,
       no: t.Boolean
     }),
     options: {
+      label: 'Did you do your MANTRA today(assigned on Day 21)?',
       fields: {
         id: {
           hidden: true
@@ -24,35 +24,36 @@ export default {
     }
   },
   2: {
-    title: 'Did you EXERCISE and meditate yet today(assigned on Day 8)?',
     type: t.struct({
       yes: t.Boolean,
       no: t.Boolean
     }),
     options: {
+      label: 'Did you EXERCISE and meditate yet today(assigned on Day 8)?',
       auto: 'labels'
     }
   },
   3: {
-    title: 'Did you MEDITATE yet today(assigned on Day 8)?',
     type: t.struct({
       yes: t.Boolean,
       no: t.Boolean
     }),
     options: {
+      label: 'Did you MEDITATE yet today(assigned on Day 8)?',
       auto: 'labels'
     }
   },
   4: {
-    title:'What major P&E goals [BHAGs] do you envision or yourself by 2020?',
     type:t.list(
       t.struct({
         goal:t.String
       })
-    )
+    ),
+    options: {
+      label:'What major P&E goals [BHAGs] do you envision or yourself by 2020?',
+    }
   },
   5:{
-    title:'Your Bucket List can include simple goals as well – not everything has to be a monumental BHAG List out up to 10 items for your 2020 PE Bucket List',
     type:t.list(
       t.struct({
         bucketPEBHAG:t.String,
@@ -61,6 +62,7 @@ export default {
       })
     ),
     options:{
+      label:'Your Bucket List can include simple goals as well – not everything has to be a monumental BHAG List out up to 10 items for your 2020 PE Bucket List',
       item:{
         fields:{
           bucketPEBHAG:{
@@ -77,13 +79,13 @@ export default {
     }
   },
   6:{
-    title:'Think about one other person in your life, who you want to see enjoy a major transformation in their PE surroundings.',
     type:t.struct({
       who:t.String,
       howAttain:t.String,
       howHelp:t.String
     }),
     options:{
+      label:'Think about one other person in your life, who you want to see enjoy a major transformation in their PE surroundings.',
       fields:{
         who:{
           label:'Who?'
@@ -98,30 +100,30 @@ export default {
     }
   },
   7:{
-    title:'What have you done by 2020 to heal and repair the relationships that you noted have regressed in the Day 17 Assignment?',
     type:t.String,
     options:{
+      label:'What have you done by 2020 to heal and repair the relationships that you noted have regressed in the Day 17 Assignment?',
       auto:'none'
     }
   },
   8:{
-    title:'List one wish that you have for the world or a particular sector of the world when it comes to personal aims and hobbies.',
     type:t.String,
     options:{
+      label:'List one wish that you have for the world or a particular sector of the world when it comes to personal aims and hobbies.',
       auto:'none'
     }
   },
   9:{
-    title:'What advice would you give people who are on board with your wish – how can we all work together towards this aim in our personal lives?',
     type:t.String,
     options:{
+      label:'What advice would you give people who are on board with your wish – how can we all work together towards this aim in our personal lives?',
       auto:'none'
     }
   },
   10:{
-    title:'How can you help, be it in any small way, to see this goal be achieved?',
     type:t.String,
     options:{
+      label:'How can you help, be it in any small way, to see this goal be achieved?',
       auto:'none'
     }
   }

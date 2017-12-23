@@ -4,7 +4,6 @@ import { LifeCategory, InteractionFrequency } from "./contents";
 export default {
 
 	1: {
-		title: "Gather all of your previous goal data, including time spent and key achievements over the past 5 years. You can start with 2015 if you feel overwhelmed assessing all 5 years.",
 		type: t.struct({
 			id:t.maybe(t.String),
 			field: t.list(
@@ -19,6 +18,7 @@ export default {
 			)
 		}),
 		options: {
+			label: "Gather all of your previous goal data, including time spent and key achievements over the past 5 years. You can start with 2015 if you feel overwhelmed assessing all 5 years.",
 			fields: {
 				id: {
 					hidden: true
@@ -62,7 +62,6 @@ export default {
 		}
 	},
 	2: {
-		title: "Outline the Goal-Setting & Tracking Process that you have followed over the past 5 years.",
 		type: t.struct({
 			list1: t.struct({
 				option1: t.maybe(t.Boolean),
@@ -87,6 +86,7 @@ export default {
 
 		}),
 		options: {
+			label: "Outline the Goal-Setting & Tracking Process that you have followed over the past 5 years.",
 			fields: {
 				list1: {
 					label: 'How do you describe the process?(Check one)',
@@ -151,12 +151,20 @@ export default {
 		}
 	},
 	3: {
-		title: "In a few sentences, and descriptive key words, assess how your life has been, and how you have done over the past 5  years.",
-		type: t.String,
+		type: t.struct({
+			id:t.maybe(t.String),
+			description: t.String
+		}),
 		options: {
+			label: "In a few sentences, and descriptive key words, assess how your life has been, and how you have done over the past 5  years.",
 			auto: 'none',
 			type: 'textarea',
-			disableOrder: true
+			disableOrder: true,
+			fields: {
+				id: {
+					hidden: true
+				}
+			}
 		}
 	}
 
