@@ -112,7 +112,7 @@ function * selectProgressAndSubmitValue(action: {value : any }) {
     case STEP_CHANGE_UP:
       yield put(goToAssignmentDoneScreen(newProgress));
       const user = yield select(selectors.user);
-      yield call( addStep, { userId: user.id, stepId: progress.step, data: action.value } ); 
+      yield call( addStep, { userId: user.id, stepId: progress.step, data: action.value || {} } );
     case STEP_CHANGE_DOWN:
     case FORM_CHANGE_UP:
     case FORM_CHANGE_DOWN:
