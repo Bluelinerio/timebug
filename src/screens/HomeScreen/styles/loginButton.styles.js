@@ -17,7 +17,7 @@ export default StyleSheet.create({
 		marginRight: 10
 	},
 	wideButton: {
-		height: 45,
+		height: 44,
 		borderRadius: 50,
 		alignSelf: 'center',
 		justifyContent: 'center',

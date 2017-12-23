@@ -1,18 +1,18 @@
 import React, { Component } from "react";
 import {
+  Platform,
+  StyleSheet,
   Dimensions,
   Text,
   View,
   ScrollView,
   TouchableOpacity
 } from "react-native";
-import { styles } from "react-native-theme";
 import Markdown from '../../../Modules/Markdown';
 import Icon from "react-native-vector-icons/Ionicons";
-
+import styles from '../styles';
 import Button from "../../../components/Button";
 import ScrollableHeader from "../../../components/ScrollableHeader";
-import { goBack } from "../../../HOC/navigation";
 import type { Step } from "../../../services/cms";
 import { getImageUrl } from "../../../services/cms";
 import CustomImage from "../../../components/CustomImage";
@@ -48,55 +48,21 @@ const Content = ({ subtitle, description, color }) => (
   </View>
 );
 
-
-const Header = ({ goBack, imageUri, title, number }) => (
-  <View style={[styles.stepScreenHeader, { height: HEADER_HEIGHT}]}>
-    <TouchableOpacity style={{
-      position: 'absolute',
-      top: 50,
-      left: 15,
-    }} onPress={goBack}
-      testID={'step_screen_close_icon'}>
-      <Icon name="md-close" size={30} color="white" />
-    </TouchableOpacity>
+const Header = ({ imageUri, title, number }) => (
+  <View style={[styles.stepScreenHeader]}>
+    <ThemedGradientBackground/>
     <View style={{
-      flex: 1,
-      justifyContent: 'space-between',
-      alignItems: 'center',
-    }}>
-      <Text style={{
-        paddingTop: 28,
-        paddingBottom: 30,
-        fontFamily: "Helvetica",
-        fontSize: 18,
-        fontWeight: "bold",
-        textAlign: "center",
-        color: "#ffffff",
-        alignSelf: 'flex-end',
-      }}
-        testID={'step_screen_step_number'}
-      >
-        STEP {number}
-      </Text>
-    </View>
-    <View style={{
-      flex: 2,
+      flex:1,
       flexDirection: 'row',
-      paddingHorizontal: 25,
-      marginBottom: 30
     }}>
       {imageUri && (
-        <CustomImage style={{
-          backgroundColor: 'green'
-        }}
+        <CustomImage style={styles.stepScreenImage}
           testID={'step_picture'}
           imageUri={imageUri}
         />
       )}
       <Text
-        style={[styles.stepScreenTitle, { 
-          top: STATUSBAR_HEIGHT + APPBAR_HEIGHT, 
-        }]}
+        style={[styles.stepScreenTitle]}
       >
         {title}
       </Text>
@@ -107,12 +73,10 @@ const Header = ({ goBack, imageUri, title, number }) => (
 export default ({ step, goToAssignmentLeadInScreen, color }) => (
   <ScrollableHeader
     headerMaxHeight={HEADER_HEIGHT}
-    headerMinHeight={STATUSBAR_HEIGHT}
+    headerMinHeight={0}
     headerImage={headerBackground}
-    headerComponent={<ThemedGradientBackground />}
-    header={
+    headerComponent={
       <Header
-        goBack={goBack}
         title={step.title}
         number={step.number}
         imageUri={getImageUrl(step.icon)}
