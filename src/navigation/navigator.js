@@ -1,13 +1,14 @@
-import { StackNavigator } from "react-navigation";
-import React from "react";
-import CardStackStyleInterpolator from "../utils/CustomCardStackStyleInterpolator";
-import HomeScreen from "../screens/HomeScreen";
-import StepScreen from "../screens/StepScreen";
-import AssignmentLeadInScreen from "../screens/AssignmentLeadInScreen";
-import AssignmentDoneScreen from "../screens/AssignmentDoneScreen";
-import WorkBookScreen from "../screens/WorkBookScreen";
+import { Platform } from 'react-native'
+import { StackNavigator } from 'react-navigation'
+import React from 'react'
+import CardStackStyleInterpolator from '../utils/CustomCardStackStyleInterpolator'
+import HomeScreen from '../screens/HomeScreen'
+import StepScreen from '../screens/StepScreen'
+import AssignmentLeadInScreen from '../screens/AssignmentLeadInScreen'
+import AssignmentDoneScreen from '../screens/AssignmentDoneScreen'
+import WorkBookScreen from '../screens/WorkBookScreen'
 
-export const initialRouteName = "HomeScreen";
+export const initialRouteName = 'HomeScreen'
 
 // TODO: there's an issue with moving from the current setup where the import of each screen gets you an object that looks like { screen: } rather than a component, so I added 
 const AssignmentFlowNavigator = StackNavigator(
@@ -30,9 +31,9 @@ const AssignmentFlowNavigator = StackNavigator(
     },
   },
   {
-    headerMode: "screen",
+    headerMode: 'screen',
     cardStyle: {
-      backgroundColor: "white",
+      backgroundColor: 'white',
       opacity: 1
     },
     transitionConfig: () => ({
@@ -63,15 +64,21 @@ const Navigator = StackNavigator(
   },
   {
     initialRouteName,
+		mode: Platform.OS === 'ios' ? 'modal' : 'card',
     headerMode: 'none',
     cardStyle: {
       backgroundColor: "white",
       opacity: 1
     },
-    transitionConfig: () => ({
+  }
+);
+
+export default Navigator;
+
+const transitionConfig = () => ({
       screenInterpolator: sceneProps => {
         if (
-          ["HomeScreen"].indexOf(
+          ['HomeScreen', 'AssignmentFlow'].indexOf(
             sceneProps.navigation.state.routes[
               sceneProps.navigation.state.routes.length - 1
             ].routeName
@@ -82,7 +89,3 @@ const Navigator = StackNavigator(
         return CardStackStyleInterpolator.forHorizontal(sceneProps);
       }
     })
-  }
-);
-
-export default Navigator;
