@@ -13,7 +13,6 @@ import Icon from "react-native-vector-icons/Ionicons";
 import styles from '../styles';
 import Button from "../../../components/Button";
 import ScrollableHeader from "../../../components/ScrollableHeader";
-import { goBack } from "../../../HOC/navigation";
 import type { Step } from "../../../services/cms";
 import { getImageUrl } from "../../../services/cms";
 import CustomImage from "../../../components/CustomImage";
@@ -49,7 +48,7 @@ const Content = ({ subtitle, description, color }) => (
   </View>
 );
 
-const Header = ({ goBack, imageUri, title, number }) => (
+const Header = ({ imageUri, title, number }) => (
   <View style={[styles.stepScreenHeader]}>
     <ThemedGradientBackground/>
     <View style={{
@@ -78,7 +77,6 @@ export default ({ step, goToAssignmentLeadInScreen, color }) => (
     headerImage={headerBackground}
     headerComponent={
       <Header
-        goBack={goBack}
         title={step.title}
         number={step.number}
         imageUri={getImageUrl(step.icon)}
