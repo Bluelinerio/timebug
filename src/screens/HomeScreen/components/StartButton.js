@@ -5,14 +5,14 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { startButtonBackgroundImage }   from '../../../resources/images/';
 import { darkishBlue } from '../../../constants/colors';
 
-export default ({duration, onPress, buttonTestId, timeTestId}) => (
+export default ({ text, durationText, onPress, buttonTestId, timeTestId}) => (
 	<Button containerStyle={style.wideButton} onPress={onPress}>
 		<View style={style.absoluteContainer}  testID={buttonTestId}>
 			<Image source={startButtonBackgroundImage} style={style.startButtonBackground} />
 			<Icon name="md-time" size={34} color={darkishBlue} style={style.buttonImage} />
-			<Text style={[style.durationText]}>{duration}min</Text>
+			<Text style={[style.durationText]}>{durationText}</Text>
 		</View>
-		<Text style={style.wideButtonText} testID={timeTestId}>START</Text>
+		<Text style={style.wideButtonText} testID={timeTestId}>{text}</Text>
 	</Button>
 );
 

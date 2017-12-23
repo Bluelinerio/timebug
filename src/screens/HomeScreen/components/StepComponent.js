@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import { Dimensions, StyleSheet, Platform, Image, Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import CustomImage from '../../../components/CustomImage';
-import StartButton from './StartButton';
-import { headerBackgroundImage, startButtonBackgroundImage } from '../../../resources/images/';
+import StartButtonContainer from '../containers/StartButtonContiner';
+import { headerBackgroundImage } from '../../../resources/images/';
 import { white90 } from '../../../constants/colors';
 import type { Step } from '../../../services/cms';
 
@@ -34,7 +34,7 @@ export default ({ totalNumberOfSteps, currentStep, color, goToAssignmentFlow, im
 					</Text>
 				</View>
 			</View>
-			<StartButton buttonTestId={'step_start_button'} timeTestId={'step_time_text'} duration={duration} onPress={() => goToAssignmentFlow(number) } />
+			<StartButtonContainer buttonTestId={'step_start_button'} timeTestId={'step_time_text'} />
 			{
 				/* 
 				Todo: Check if this works with detox
