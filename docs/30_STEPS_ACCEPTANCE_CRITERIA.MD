@@ -169,5 +169,32 @@ See docs/COMPONENT_UX_GUIDE.MD for further reference/details on individual __com
 
 ## Step 19
   1) Take the time to evaluate your spiritual views
+  * What are your current views and feelings about Spirituality? What does it mean to you? (__Long text__)
+  * Who and what influenced your Spiritual views early on in life? (__Long text__)
+  * Who are your current role models or mentors in this area? Why do you admire their approach to and views on life? (__Long text__)
+  2) Take time to evaluate your spiritual practices
+  * How much time do you spend specifically, each week, on Spiritual practices, Interactions, reading, writing, etc.?(__Long text__)
+  * How have your Spiritual practices and/or beliefs changed in the past 5 years?(__Long text__)
+  3) Take time to evaluate your Spiritual Insights & Growth
+  * What internal qualities(Iqs: Goal Type 4) have been influenced - positively or negatively - by Spiritual practices - or lack thereof?
+  * List 5-10 insights that you have gained, in relation to the 5 components of Spirituality noted above, over the past 5 years? (__List entry__ of __group entries__)
+    * What Is My Purpose On Earth? (__long text__)
+    * Beyond My Outer Form, What Am I? (__long text__)
+    * My Karma Has Shown Me... (__long text__)
+    * I have healed emotional wounds from...(__long text__)
+     
+## Step 20
+  1)Reflect back on your Day 11 Worksheet (The 5-Year Life Report), and make refinements or additional notes, given what you have seen here. Be more technical than before, especially when it comes to how you spent your Time & Energy.
+  * Review your goals, time spent, and key achievements listed on Day 11. What, if anything, has changed with your time and energy allotment?(__list entry__ of __group entries__). Struct:
+    * New insights(be as technical as you can)(__long text__)
+    * Specific changes to make to previous wk(__long text__)
+  2)Reflect back on your Day 2 Worksheet (More or Less Time), and make refinements or additional notes, in relation to how your time allocation has changed over the past 5 years; and how you ideally would like to make changes in the current breakdown across Life Categories.
+  * Reflect back on your Day 2 Worksheet (More or Less Time), and make refinements or additional notes, in relation to how your time allocation has changed over the past 5 years; and how you ideally would like to make changes in the current breakdown across Life Categories.
+    * a)Has anything changed with your life category breakdown?(__long text__)
+    * b)Has anything changed with your 3 things that you want to DO LESS of in general(i.e. "Watching TV")?(__long text__)
+    * c)Has anything changed with your 3 things that you want to DO MORE of in general(i.e. "Exercising")?(__long text__)
+
+
+
 
       
