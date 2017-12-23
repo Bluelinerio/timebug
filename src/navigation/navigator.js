@@ -35,21 +35,7 @@ const AssignmentFlowNavigator = StackNavigator(
     cardStyle: {
       backgroundColor: 'white',
       opacity: 1
-    },
-    transitionConfig: () => ({
-      screenInterpolator: sceneProps => {
-        if (
-          ["StepScreen", "AssignmentFlow"].indexOf(
-            sceneProps.navigation.state.routes[
-              sceneProps.navigation.state.routes.length - 1
-            ].routeName
-          ) !== -1
-        ) {
-          return CardStackStyleInterpolator.forVertical(sceneProps);
-        }
-        return CardStackStyleInterpolator.forHorizontal(sceneProps);
-      }
-    })
+    }
   }
 )
 
