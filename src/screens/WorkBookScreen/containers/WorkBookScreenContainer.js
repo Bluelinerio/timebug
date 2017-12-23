@@ -14,6 +14,7 @@ import {
 import theme, { styles } from "react-native-theme";
 import { HeaderBackButton } from "react-navigation";
 import KeyboardSpacer from "react-native-keyboard-spacer";
+import t from 'tcomb-form-native';
 import DefaultIndicator from "../../../components/DefaultIndicator";
 import Button from "../../../components/Button";
 import { populateCurrentFormValue, changeFormValue } from '../../../redux/actions/form.actions';
@@ -66,10 +67,13 @@ const mapStateToProps = state => {
 class WorkBookScreenContainer extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
+    const { progress: { step, form } } = props;
+    const value = this.getDefaultValue(step, form);
+    const type = props.model && props.model.type;
     this.state = {
       keyboardSpace: 0,
-      isInvalid: true,
-      value: this.getDefaultValue()
+      isInvalid: type ? !t.validate(value, type).isValid() : true,
+      value
     }
   }
 
@@ -112,11 +116,35 @@ class WorkBookScreenContainer extends Component<Props, State> {
     theme.setRoot(this);
   }
 
-  getDefaultValue = (): ?any => {
-    const {
-      formData,
-      progress: { step, form },
-    } = this.props;
+  componentWillReceiveProps(nextProps: Props) {
+    const { progress: { form: nextForm } } = nextProps;
+    const { progress: { step, form } } = this.props;
+    if (form !== nextForm) {
+      const value = this.getDefaultValue(step, nextForm);
+      this.setState({
+        value
+      })
+    }
+  }
+
+  componentDidUpdate(prevProps: Props) {
+    // Can be validated in componentWillReceiveProps but does not mark input with errors in the UI
+    // TODO: Merge with componentWillReceiveProps and achieve same functionality for best performance
+    const { progress: { form: prevForm } } = prevProps;
+    const { progress: { form } } = this.props;
+    if (form !== prevForm) {
+      this.setState(state => ({
+        isInvalid: state.value ? !this.form.validate().isValid() : true,
+      }))
+    }
+  }
+
+  getDefaultValue = (step: number, form: number): ?any => {
+    const { formData } = this.props;
+    if (!step || !form) {
+      step = this.props.progress.step;
+      form = this.props.progress.form;
+    }
     if (formData && formData[ step ] && formData[ step ][ form ]) {
       return formData[ step ][ form ]
     }
@@ -130,9 +158,8 @@ class WorkBookScreenContainer extends Component<Props, State> {
   }
 
   onPress = () => {
-    const value = this.form.getValue();
-    if (value || SKIPP_ENABLED) {
-      this.props.populateCurrentFormValue(value);
+    if (SKIPP_ENABLED) {
+      this.props.populateCurrentFormValue(this.state.value);
     }
   }
 
@@ -142,7 +169,7 @@ class WorkBookScreenContainer extends Component<Props, State> {
     const fieldValue = path.reduce((struct: {}, field) => struct[field], value)
     
     this.setState({
-      isInvalid: !this.form.getValue(),
+      isInvalid: !this.form.validate().isValid(),
       value
     }, () => {
       this.props.changeFormValue({
@@ -158,7 +185,10 @@ class WorkBookScreenContainer extends Component<Props, State> {
 
   render = () => {
     const { color, isFetching, model, progress, formData } = this.props;
-
+    let nextButtonText = 'SKIP';
+    if (!SKIPP_ENABLED || (SKIPP_ENABLED && !this.state.isInvalid)) {
+      nextButtonText = 'NEXT'
+    }
     if(isFetching) {
       return <DefaultIndicator size='large' />
     }
@@ -185,7 +215,7 @@ class WorkBookScreenContainer extends Component<Props, State> {
             <NextButtonContainer
               disabled={SKIPP_ENABLED ? false : this.state.isInvalid}
               onPress={this.onPress}
-              text= { SKIPP_ENABLED ? 'SKIP' : 'NEXT' }
+              text={nextButtonText}
               backgroundColor={color}
             />
           </View>
