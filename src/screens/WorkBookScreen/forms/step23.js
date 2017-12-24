@@ -61,47 +61,14 @@ export default {
 
 },
 6:{
-  type:t.struct({
-    careerBHAG1:t.String,
-    careerBHAG2:t.String,
-    careerBHAG3:t.String,
-    careerBHAG4:t.String,
-    careerBHAG5:t.String,
-    careerBHAG6:t.maybe(t.String),
-    careerBHAG7:t.maybe(t.String)
-  }),
+  type:t.list(
+    t.struct({
+    careerBHAG:t.String,
+    MLA:t.Number
+  })
+  ),
   options:{
     label:'Back on Day 21, you were asked to list 2 BHAGs (Big Hairy Audacious Goals) for Career and 6 other areas of life. Focusing on Career only now, take that a step further, by adding 3-5 more Career BHAGs (so you should now have 5-7 Career BHAGs).',
-    fields: {
-      careerBHAG1: {
-        label:'Career BHAG 1',
-        placeholder:'MLA(Minimum Level of Achievement)'
-      },
-      careerBHAG2: {
-        label:'Career BHAG 2',
-        placeholder:'MLA(Minimum Level of Achievement)'
-      },
-      careerBHAG3: {
-        label:'Career BHAG 3',
-        placeholder:'MLA(Minimum Level of Achievement)'
-      },
-      careerBHAG4: {
-        label:'Career BHAG 4',
-        placeholder:'MLA(Minimum Level of Achievement)'
-      },
-      careerBHAG5: {
-        label:'Career BHAG 5',
-        placeholder:'MLA(Minimum Level of Achievement)'
-      },
-      careerBHAG6: {
-        label:'Career BHAG 6',
-        placeholder:'MLA(Minimum Level of Achievement)'
-      },
-      careerBHAG7: {
-        label:'Career BHAG 7',
-        placeholder:'MLA(Minimum Level of Achievement)'
-      }
-    }
 }
 },
 7:{

@@ -256,5 +256,13 @@ export const AloneOrOthers = t.enums.of([
   'With Others'
 ], 'AloneOrOthers')
 
+export const DreamsRemember = t.enums.of([
+'Daily',
+'Most of the time,',
+'Occasionally',
+'Rarely',
+'Never'
+],'DreamsRemember')
+
 
 

@@ -255,7 +255,86 @@ See docs/COMPONENT_UX_GUIDE.MD for further reference/details on individual __com
   * What improvements needs to happen for you to reach your aspirational 2020 level?(__long text__)
 * Each __List entry__ should be a collapisble element labeled by Skill
 * Skill __dropdown__ must dynamically repopulate options, any category selected should not be available again unless unselected.
-             
+4) Think about how strong your current tools(skills,approach,etc) are for tending to your garden - Strengths & Weaknesses from Day 3 is a useful review.
+* __List entry__ of __group entries__, struct:
+  * Skill(__dropdown__ of enums _CharachterStrength_)
+  * Proficiency Level(Using a 10pt Scale with 1=beginner to 10=master)(__number__, min_value:1, max_value:10)
+  * Aspiration Level(__number__, min_value:1, max_value:10)
+  * What improvements needs to happen for you to reach your aspirational 2020 level?(__long text__)
+* Each __List entry__ should be a collapisble element labeled by Skill
+* Skill __dropdown__ must dynamically repopulate options, any category selected should not be available again unless unselected.
+
+## Step 22
+1) Did you do your MANTRA today(assigned on Day 21)?
+* __Yes/No__
+2) Did you EXERCISE and meditate yet today(assigned on Day 8)?
+* __Yes/No__
+3) Did you MEDITATE yet today(assigned on Day 8)?
+* __Yes/No__
+4) What do you dream about?
+* Describe the general themes, quality and lucidity of your dreams(__long text__)
+* How often do you remember your dreams?(__dropdown__ of enums _DreamsRemember_)
+* Have your dreams ever come true (i.e., you dreamt about something and then it happened(__yes/no__)
+5) For the remainder of the program (8 Nights of Dreaming), try to remember and write your dreams down first thing in the morning – or even if you wake up in the middle of the night, the way Jason described his experience in the video. ( __List entry__ of __long texts__)
+* Required entries:8
+6) What are your life dreams? This doesn’t have to be restricted to what your literal dreams (during sleep) are. Right now, go beyond 2020 and even your 20/20 BHAGs (from Day 21’s Assignment)... and allow yourself to dream, in this moment, about everything you want your life to be. Anything is possible. Describe what you see.(__long text__)
+
+## Step 23
+1) Did you do your MANTRA today(assigned on Day 21)?(__Yes/No__)
+2) Did you EXERCISE and meditate yet today(assigned on Day 8)?(__Yes/No__)
+3) Did you MEDITATE yet today(assigned on Day 8)?(__Yes/No__)
+4) If you could change jobs, and do something totally new, what would it be?(__Long text__)
+5) Reflecting back on Day 13’s Assignment – particularly the questions on Fulfillment – what changes would you need to make in your career to get both answers (on Fulfillment and Motivation) to 10 on the scale?(__Long text__)
+6) Back on Day 21, you were asked to list 2 BHAGs (Big Hairy Audacious Goals) for Career and 6 other areas of life. Focusing on Career only now, take that a step further, by adding 3-5 more Career BHAGs (so you should now have 5-7 Career BHAGs).(__List entry__ of __long text__)
+* Min items:3, Max:
+7)Also on Day 21, Question 3 asked about specific skills that you are looking to build over the next 5 years. Go deeper into that now, with a career focus, making sure you have 3-5 career specific skills that you plan to develop. #Skillbug
+* __List entry__ of __group entries__, struct:
+  * Skill(__Short text__)
+  * What will you do in 2017 to develop this skill? (__Long text__)
+  * How much time per week will you dedicate to this? (__Long text__)
+8) The average worker spends 40 hrs * 50 weeks working = 2,000 hours. How many hours will you spend working in 2016? #Workbug(__Number__)
+
+## Step 24
+1) Did you do your MANTRA today(assigned on Day 21)?(__Yes/No__)
+2) Did you EXERCISE and meditate yet today(assigned on Day 8)?(__Yes/No__)
+3) Did you MEDITATE yet today(assigned on Day 8)?(__Yes/No__)
+4) The year is 2020. How much money does you bank have in it? Take a picture or screenshot of your current bank account balance, print it out, and edit the date and cash balance, writing in 12/31/2020 and your desired number.(__Number__)
+5) Write a short story about what it will take for you to achieve your Money BHAG? (__Long text__)
+6) Who is your “finance team” that has helped you to not only attain but also manage your financial success?
+* __List entry__ of __short text__
+7) What do you plan to do with any excess money that you come into by 2020?(__Long text__)
+8) Describe how your life will be different in 2020, as a result of the achievement of your Money BHAG.(__Long text__)
+9) How much more or less will you work as a result? (__Long text__)
+10) How many days a year will you be off or on vacation? (__Short text__)
+11) What additional material things will you have or have access to that you now don’t? (__Long text__)
+12) How will you feel, that is different than what you feel now? (__Long text__)
+13) Think about one other person in your life, who you want to see succeed with and change their relationship to money. Who is it?(__Short text__)
+14) How do you want to see them change their financial fortunes by 2020?(__Long text__)
+15) How can you help them achieve this goal?(__Long text__)
+16) List one wish that you have for the world or a particular sector of the world when it comes to money. (__Long text__)
+17) What group of people or country can be most influential in helping this goal be attained?(__long text__)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

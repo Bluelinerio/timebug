@@ -1,4 +1,5 @@
 import t from "../components/templates";
+import { DreamsRemember } from "./contents";
 
 
 
@@ -47,13 +48,7 @@ export default {
 4:{
   type:t.struct({
     dreamsDescribe:t.String,
-    dreamsRemember:t.struct({
-        a:t.Boolean,
-        b:t.Boolean,
-        c:t.Boolean,
-        d:t.Boolean,
-        e:t.Boolean
-      }),
+    dreamsRemember:DreamsRemember,
     dreamsComeTrue:t.struct({
         yes:t.Boolean,
         no:t.Boolean
