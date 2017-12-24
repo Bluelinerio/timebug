@@ -90,9 +90,9 @@ function * getNextProgress(): { newProgress: Progress, change:ProgressChange } {
   } else {
     const totalNumberOfSteps = yield select(selectors.totalNumberOfSteps);
     const progress = yield select(selectors.progress);
-    const { step, form } = progress;
+    const { step } = progress;
     if (step < totalNumberOfSteps) {
-      return { change: STEP_CHANGE_UP, newProgress: { step: step + 1, form} }
+      return { change: STEP_CHANGE_UP, newProgress: { step: step + 1, form: 1 } }
     } else {
       return { change: NO_CHANGE, newProgress: progress }
     }
@@ -110,9 +110,11 @@ function * selectProgressAndSubmitValue(action: {value : any }) {
   const { newProgress, change } = res;
   switch (change) {
     case STEP_CHANGE_UP:
-      yield put(goToAssignmentDoneScreen());
+      yield put(updateProgress.withProgress(newProgress));
+      yield put(goToAssignmentDoneScreen(newProgress));
       const user = yield select(selectors.user);
-      yield call( addStep, { userId: user.id, stepId: progress.step, data: action.value } ); 
+      yield call( addStep, { userId: user.id, stepId: progress.step, data: action.value || {} } );
+      break;
     case STEP_CHANGE_DOWN:
     case FORM_CHANGE_UP:
     case FORM_CHANGE_DOWN:

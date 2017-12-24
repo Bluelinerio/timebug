@@ -8,8 +8,9 @@ theme.add({
   },
   assignmentLeadInScreenSlide: {
     flexDirection: 'column',
-    justifyContent:'space-between',
+    justifyContent:'center',
     paddingHorizontal: 20,
+    flex: 1
   },
   assignmentLeadInScreenNumber: {
     borderWidth: 1,
