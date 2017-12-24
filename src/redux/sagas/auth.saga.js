@@ -111,10 +111,8 @@ function* refreshUserOrLogout(): RefreshUserResult | LogoutResult {
 }
 
 function* _handleUserError(){
-	console.warn("this")
 	const result = yield call(_logout) 
 	yield put(actions.setUserAnonymous());
-	console.warn("anonymous")
 }
 
 
@@ -142,9 +140,6 @@ export function* loginFlowSaga() {
 	// yield call(AuthStorage.wipeStorage);
 	yield fork(userErroredSaga)
 	const result: { user?: User } = yield call(refreshUserOrLogout)
-	if (!result.user) {
-		yield throttle(500, LOGIN_WITH_FB_BUTTON_PRESSED, _loginOrRegisterWithFacebook)
-	} else {
-		yield throttle(500, LOGOUT, _logout)
-	}
+	yield throttle(500, LOGIN_WITH_FB_BUTTON_PRESSED, _loginOrRegisterWithFacebook)
+	yield throttle(500, LOGOUT, _logout)
 }
