@@ -11,7 +11,7 @@ const getTokenAndUserId = (): ({ token?: string, userId?: string }) =>
 
 const setToken = (token: string) => AsyncStorage.setItem(TOKEN_KEY, token)
 const setUserId = (userId: string) => AsyncStorage.setItem(USER_ID_KEY, userId)
-const setTokenAndUserId = (token: string, userId: string) => Promise.all([setToken(token), setUserId(userId)])
+const setTokenAndUserId = (token: string, userId: string) => AsyncStorage.multiSet([[TOKEN_KEY, token], [USER_ID_KEY, userId]])
 
 // const FBTOKEN_KEY = '@2020-FBToken'
 // const setFBToken = (token: string) => AsyncStorage.setItem(FBTOKEN_KEY, token)
