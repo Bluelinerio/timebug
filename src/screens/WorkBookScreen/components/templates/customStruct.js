@@ -1,6 +1,40 @@
-import React from 'react';
-import { View, Text, Animated } from 'react-native';
+import React, { Children } from 'react';
+import { View, Text, Animated, KeyboardAvoidingView } from 'react-native';
 import { Pages } from 'react-native-pages';
+
+class FormPages extends Pages {
+  componentWillReceiveProps(props) {
+    let { progress, page } = props;
+  
+    if (progress !== this.props.progress) {
+      progress.setValue(this.progress);
+      this.setState({ progress });
+    }
+    
+    if (props.page !== null && this.props.page !== props.page) {
+      this.scrollToPage(props.page);
+    }
+  }
+
+  renderPage(page, index) {
+    let { width, height, progress } = this.state;
+    let { children, horizontal, rtl } = this.props;
+    let pages = Children.count(children);
+  
+    let pageStyle = (horizontal && rtl)?
+      styles.rtl:
+      null;
+  
+    /* Adjust progress by page index */
+    progress = Animated.add(progress, -index);
+  
+    return (
+      <KeyboardAvoidingView style={[{ width, height, justifyContent: 'center' }, pageStyle]}>
+        {React.cloneElement(page, { index, pages, progress })}
+      </KeyboardAvoidingView>
+    );
+  }
+}
 
 function struct(locals) {
   let pagesRef = null;
@@ -47,14 +81,14 @@ function struct(locals) {
       <View style={{ flex: 1 }}>
         {error}
         {locals.label ? (
-          <Pages page={page} horizontal={false} containerStyle={{ padding: 20}} indicatorColor="#CCC">
+          <FormPages page={page} horizontal={false} containerStyle={{ padding: 20}} indicatorColor="#CCC">
             <Text style={stylesheet.formLabel}>{locals.label}</Text>
             {filteredRows}
-          </Pages>
+          </FormPages>
         ) : (
-          <Pages page={page} horizontal={false} containerStyle={{ padding: 20}} indicatorColor="#CCC">
+          <FormPages page={page} horizontal={false} containerStyle={{ padding: 20}} indicatorColor="#CCC">
             {filteredRows}
-          </Pages>
+          </FormPages>
         )}
       </View>
     );
