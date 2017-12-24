@@ -20,13 +20,12 @@ export const networkInterface = createNetworkInterface(APOLLO_CONFIG)
 export const client = new ApolloClient({ networkInterface })
 
 const _parse = <T>(key: string, graphResponse: GraphResponse): T => {
-	const { data } = graphResponse
+	const { data, error } = graphResponse
 	const value: T = data[key]
 	if (value) {
 		return value
 	}
-	const error: ErrorResponse = { error: data.errors }
-	throw error
+	throw { error: error | 'User not found'}
 }
 
 const parse = <T>(key: string) => (graphResponse: GraphResponse): T => _parse(key, graphResponse)
@@ -50,10 +49,13 @@ export const authenticateWithFBToken = (fbToken: string): Auth =>
 		.then(parse('authenticateFB'))
 
 const fixMissingProgressInUser = (user: User) => {
-	// TODO: please review this, before it was step + 1 but I did not understand why, since ser steps start at index 1
 	const step = user.steps[0] ? user.steps[0].stepId + 1 : 1
 	const progress = { step, form: 1 }
 	return { ...user, progress }
+}
+
+const handleErrorGettingUser = (errorResponse: ErrorResponse) => {
+	throw errorResponse
 }
 
 export const fetchUserWithId = (id: string): User =>
@@ -78,6 +80,7 @@ export const fetchUserWithId = (id: string): User =>
 		})
 		.then(parse('User'))
 		.then(fixMissingProgressInUser)
+		.catch(handleErrorGettingUser)
 
 export const addStep = ({ userId, stepId, data } : AddStepArgs): any =>
 	client

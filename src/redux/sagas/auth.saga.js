@@ -71,7 +71,7 @@ function* _logout(): LogoutResult {
 	return true
 }
 
-function* refreshUserOrLogout(): RefreshUserResult | LogoutResult {
+function* refreshUserOrLogout(): RefreshUserResult | LogoutResult {	
 	function* refreshUser(): RefreshUserResult {
 		const { token, userId } = yield call(AuthStorage.getTokenAndUserId)
 		const user: ?User = yield select(selectors.user);
@@ -80,8 +80,10 @@ function* refreshUserOrLogout(): RefreshUserResult | LogoutResult {
 		}
 		if (userId && token) {
 			const response: User | ErrorResponse = yield call(_fetchUser, userId)
-			if (response.error && response.cancel) {
-				return response
+			if (response.error || response.cancel) {
+				const result = yield call(_logout) 
+				yield put(actions.setUserAnonymous());
+				return result
 			}
 			const result = yield call(refreshUser)
 			return result
@@ -89,6 +91,7 @@ function* refreshUserOrLogout(): RefreshUserResult | LogoutResult {
 		const fbToken: ?string = yield call(facebook.getToken)
 		if (fbToken) {
 			const authenticateWithFBTokenResult: any = yield call(_authenticateWithFBToken, fbToken)
+			console.warn(JSON.stringify(authenticateWithFBToken))
 			if (authenticateWithFBTokenResult.error || authenticateWithFBTokenResult.cancel) {
 				return authenticateWithFBTokenResult
 			} else {
