@@ -193,6 +193,78 @@ See docs/COMPONENT_UX_GUIDE.MD for further reference/details on individual __com
     * a)Has anything changed with your life category breakdown?(__long text__)
     * b)Has anything changed with your 3 things that you want to DO LESS of in general(i.e. "Watching TV")?(__long text__)
     * c)Has anything changed with your 3 things that you want to DO MORE of in general(i.e. "Exercising")?(__long text__)
+  3) Reflect back on your 7 Assessments [Days 13-19]
+  * Rank the 7 Areas in terms of the order of importance you gave them over the past 5 years.
+    * 7 __dropdowns__ of enums _AssesmentTypes_, labeled rank 1,rank 2.....rank 7
+      * __dropdown__ must hold state, once an option is selected, it should not be available for selection in other fields
+  4) If the 7 areas were a pie, how would you slice up your energy and motivation level?(Total should = 100%)
+   * 7 __number__ inputs labeled: Career, Personality & Hobbies, Health, Relationship, Financial, Place & Environment, Spirituality
+    * All inputs combined must have a max value of 100.
+    * A floating bank should appear, or a meter, displaying how much 'percentage' user has left.
+    * Error msg to appear if user inputs over 100% 'Please remove x percent'
+    * Pie graph to dynamically generate based on input?
+  5) Give yourself a final evaluation for each of the past 5-years, as well as an overall 5-Year Score(1-10 score per year, for a total maximum high score of 50/50, per each of the 7 Areas that were assessed).
+  * __group entry__, struct(repeates for every year through 2015):
+    * Career 2011(__Number__)  
+    * Personality and Hobbies 2011(__Number__)  
+    * Health 2011 (__Number__)  
+    * Relationships 2011 (__Number__)  
+    * Financial 2011(__Number__)  
+    * Place and Environment 2011(__Number__)  
+    * Spirituality 2011(__Number__)
+  * each year/sub-sctruct should be a collapsible element.
+  * min value = 1, max value= 10 for each input.
+  * At the bottom of the page, there should be inputs that dynamically calculate total school for each category over all 5 years.
+  6) Have one other person(per Area) - be it a family member or friend, and preferably one of your CEO of Me Board Members - give you a Score for the past 5 years(on a 1-10 scale), and then multiply that number by 5, to arrive at your 3rd Party Rating(this number will be between 5-50; and you should have one for each of the 7 Assessment Areas).
+  * __group entry__, struct(repeates for every year through 2015):
+    * Career 2011(__Number__)  
+    * Personality and Hobbies 2011(__Number__)  
+    * Health 2011 (__Number__)  
+    * Relationships 2011 (__Number__)  
+    * Financial 2011(__Number__)  
+    * Place and Environment 2011(__Number__)  
+    * Spirituality 2011(__Number__)
+  * each year/sub-sctruct should be a collapsible element.
+  * min value = 1, max value= 10 for each input.
+  * At the bottom of the page, there should be inputs that dynamically calculate total school for each category over all 5 years.
+
+## Step 21
+1)Imagine different areas of your garden, as in the Life Categories which you have created back on Day 2. Who planted most of the seeds in your garden over the course of your life?
+* __List entry__ of __group entries__, struct:
+  * Area Of Garden(__dropdown__ of enums _LifeCategory_)
+  * Self Influence (__Number__, max value 100(%))
+  * Other Influence ( __Number__, max value 100(%))          
+  * Name of Other (__Short text__)
+* min entries: 9(one for each _LifeCategory_)
+* Each life category should be a collapsible element
+* Self influence + Other influence must = 100%
+* Area Of Garden __dropdown__ must dynamically repopulate select options - any category selected should not be available again unless unselected.
+2) Are you committed to taking full ownership of your life garden going forward?
+* __Yes/No__
+3) Reflecting on the 7 Self-Assessments from days 13-19, list two BHAGs for 2020
+* __group entry__, struct:
+   * Career Shortcoming: __long text__ 
+   * Career BHAG: __long text__
+   -- repeats for all 7 Categories - Career, Personality and Hobbies, Health, Relationships, Financial, Place and Environment, Spirituality
+* All categories should be collapisble elements.
+4) Think about how strong your current tools(skills,approach,etc) are for tending to your garden - Strengths & Weaknesses from Day 3 is a useful review.
+* __List entry__ of __group entries__, struct:
+  * Skill(__dropdown__ of enums _CharachterStrength_)
+  * Proficiency Level(Using a 10pt Scale with 1=beginner to 10=master)(__number__, min_value:1, max_value:10)
+  * Aspiration Level(__number__, min_value:1, max_value:10)
+  * What improvements needs to happen for you to reach your aspirational 2020 level?(__long text__)
+* Each __List entry__ should be a collapisble element labeled by Skill
+* Skill __dropdown__ must dynamically repopulate options, any category selected should not be available again unless unselected.
+             
+
+
+
+
+
+
+
+
+
 
 
 

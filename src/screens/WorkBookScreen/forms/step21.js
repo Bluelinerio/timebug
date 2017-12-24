@@ -9,7 +9,8 @@ export default {
                t.struct({
                    areaOfGarden:LifeCategory,
                    selfInfluence:t.Number,
-                   otherInfluence:t.maybe(t.Number)
+                   otherInfluence:t.maybe(t.Number),
+                   nameOfOther:t.String
                })
            )
         }),
@@ -37,7 +38,7 @@ export default {
         },
         value : {
           fields: {
-            id: 'step21+v0.0.0.1'
+            id: 'step21+v0.0.0.2'
           }
         }
 
