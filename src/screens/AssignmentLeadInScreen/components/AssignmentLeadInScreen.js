@@ -3,7 +3,7 @@
 import React, { Component, PureComponent } from 'react';
 import { Dimensions, ScrollView, View, Animated} from 'react-native';
 import { styles } from 'react-native-theme';
-import { Pages } from 'react-native-pages'; // 0.6.1
+import { Pages } from 'react-native-pages';
 
 import Markdown from '../../../Modules/Markdown';
 import Button from '../../../components/Button';
@@ -40,39 +40,41 @@ const AssignmentComponent = ({ assignment, index, color, isLastItem, progress }:
 			style: styles.assignmentLeadInScreenSlide
 		})} 
 		>	
-			<View style={{
-				flexDirection: 'column',
-			}}
-			>
-				{!isLastItem && <AssignmentNumber number={index + 1} color={color} />}
-				{false &&<AnimatedMarkdown
-					markdownStyles={{
-						...markdownStyles,
-						block: {
-							...markdownStyles.block,
-							width: Dimensions.get('window').width - (!isLastItem ? 70 : 30)
-						},
-						list: {
-							width: Dimensions.get('window').width - (!isLastItem ? 70 : 30)
+			<View>
+				<View style={{
+					flexDirection: 'column',
+				}}
+				>
+					{!isLastItem && <AssignmentNumber number={index + 1} color={color} />}
+					{false &&<AnimatedMarkdown
+						markdownStyles={{
+							...markdownStyles,
+							block: {
+								...markdownStyles.block,
+								width: Dimensions.get('window').width - (!isLastItem ? 70 : 30)
+							},
+							list: {
+								width: Dimensions.get('window').width - (!isLastItem ? 70 : 30)
+							}
+						}}
+					>
+						{assignment.content}
+					</AnimatedMarkdown>}
+					<Animated.Text style={animateStyle({
+						progress, 
+						effect:'rise', 
+						style:{
+							backgroundColor: 'transparent',
+							textAlign: 'left',
+							fontSize: 20,
 						}
-					}}
-				>
-					{assignment.content}
-				</AnimatedMarkdown>}
-				<Animated.Text style={animateStyle({
-					progress, 
-					effect:'rise', 
-					style:{
-						backgroundColor: 'transparent',
-						textAlign: 'left',
-						fontSize: 20,
-					}
-				})}
-				>
-					{assignment.content}
-				</Animated.Text>
+					})}
+					>
+						{assignment.content}
+					</Animated.Text>
+				</View>
+				{isLastItem && <BeginButton color={color} />}
 			</View>
-		{isLastItem && <BeginButton color={color} />}
 	</View>)
 }
 
