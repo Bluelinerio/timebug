@@ -14,7 +14,6 @@ const getUserId = (): Promise<string> => AsyncStorage.getItem('@2020:userId')
 
 function* _fetchUserWorker() {
 	try {
-		console.warn("E")
 		const userId = yield call(getUserId)
 		if (userId) {
 			return yield put(GET_USER.cancel());
