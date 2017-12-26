@@ -158,10 +158,75 @@ See docs/COMPONENT_UX_GUIDE.MD for further reference/details on individual __com
   * How has your salary grown(or not) from 01/11 to 12/15(5 full years)?(__Group entry__), struct:
     * Jan 2011 Salary(__Number__)
     * Dec 2015 Salary(__Number__)
-* Do you feel like you are being paid fairly for what you offer?(__Dropdown__ of enums _PaidFairly_)
-* Did you meet whatever compensation goals you had set for 2015, anytime in 2011-2014?(__Yes/No__)
-* How many hours do you work on average per week?(__Number__)
-* How have your work week hours changed since 2011?(__Long text__)
+  * Do you feel like you are being paid fairly for what you offer?(__Dropdown__ of enums _PaidFairly_)
+  * Did you meet whatever compensation goals you had set for 2015, anytime in 2011-2014?(__Yes/No__)
+  * How many hours do you work on average per week?(__Number__)
+  * How have your work week hours changed since 2011?(__Long text__)
+2)Take some time to evaluate your fulfillment with what you are doing in the workplace using a 10pt scale(1=hate it vs 10=love it, and 1=not motivated vs 10=highly motivated)
+* __Group entry__, struct:
+  * How fulfilling is your work?(__Number__, 1-10 scale)
+  * How did you feel about your work over the past 5 years?(__Group entry__, struct:)
+    * 2011(__Number__ 1-10 scale)
+    * 2012(__Number__ 1-10 scale)
+    * 2013(__Number__ 1-10 scale)
+    * 2014(__Number__ 1-10 scale)
+    * 2015(__Number__ 1-10 scale)
+      * Each 'year' long text should live inside of a collapsible element.
+      * Each 'year' input should display inline
+  * What is your motivation level at work right now?(__Number__ 1-10 scale)
+  * List up to 5 meaningful achievements that you have had at work over the past 5 years(__list entry__ of __group entries__), struct:
+    * Meaningful Achievement(__Short text__)
+    * What changed, if anything?(__Long text__)
+3) Take some time to evaluate your shortcomings at work.
+  * __Group entry__, struct:
+    * What would your boss/peer say about your workplace performance?(__Long text__)
+    * What does your work mentor(assuming it is not your boss, otherwise skip this question) think about your workplace performance?(__Long text__)
+      * Not required
+    * What do you say, now for yourself - what were your shortcomings over these 5 years?(__Long text__)
+    * What price did you pay for your self-recognized or boss/colleague-perceived weaknesses over the past 5 years? (can be from multiple jobs)(__Long text__)
+
+## Step 14
+1)Please evaluate your relationship with money.
+* __Group Entry__, struct:
+  * How do you feel about your relationship with money today(emotionally and psychologically?)(__Long text__)
+  * How do others perceive your relationship to money?(Ok to ask another person)(__Long text__)
+2) What is your credit score?
+* __Group Entry__, struct:
+  * Dec '15(__Number__)
+  * Jan '11(__Number__)
+3)//TODO: Add label, or combine with no.2
+* __Group entry__, struct:
+  * Why did it change?(__Long text__)
+  * What is your best achievement in this area over the past 5 years?(__Long text__)
+  * What is your biggest dissapointment over the past 5 years?(__Long text__)
+    * Each __Long text__ should live inside of a collapsible element
+4)Create a quick personal Balance Sheet using the 20/20 Worksheet as a guide.
+* __Group entry__, struct: 
+  * Reflecting on your Balance Sheet, how do you feel?(Use keywords or phrases)(__Long text__)
+  * How does this picture compare to where you stood in 2011?(__Long text__)
+  * Where do you stand today compared to what you had envisioned for yourself?(__Dropdown__ of enums _WhereStandToday_)
+5)Create a quick personal Profit & Loss Statement using the 20/20 Worksheet as a guide. It is your choice as to whether to focus on your own individual P&L versus as a couple, if you are married.
+* __Group entry__, struct: 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -285,6 +285,13 @@ export const PaidFairly = t.enums.of([
       'Just Right'
       ],'PaidFairly')
 
+export const WhereStandToday = t.enums.of([
+      'I am way behind where I wanted to be',
+      'I am a little behind but close',
+      'I am right where I need to be',
+      'I am a little ahead',
+      'I am way ahread of where I imagined I would be'
+      ],'WhereStandToday')      
 
 
 

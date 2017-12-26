@@ -1,4 +1,5 @@
 import t from "../components/templates";
+import { WhereStandToday } from "./contents";
 
 export default {
   1: {
@@ -70,13 +71,7 @@ export default {
     type: t.struct({
       reflection: t.String,
       compare1: t.String,
-      compare2: t.struct({
-        a: t.Boolean,
-        b: t.Boolean,
-        c: t.Boolean,
-        d: t.Boolean,
-        e: t.Boolean
-      })
+      compare2: WhereStandToday
     }),
     options: {
       label: "Create a quick personal Balance Sheet using the 20/20 Worksheet as a guide.",
@@ -89,23 +84,6 @@ export default {
         },
         compare2: {
           label:'Where do you stand today compared to what you had envisioned for yourself?',
-          fields: {
-            a: {
-              label: "a) I am way behind where I wanted to be"
-            },
-            b: {
-              label: "b) I am a little behind but close"
-            },
-            c: {
-              label: "c) I am right where I need to be"
-            },
-            d: {
-              label: "d)I am a little ahead"
-            },
-            e: {
-              label: "e)I am way ahread of where I imagined I would be"
-            }
-          }
         }
       }
     }
