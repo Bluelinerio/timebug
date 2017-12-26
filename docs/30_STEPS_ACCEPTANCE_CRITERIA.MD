@@ -352,12 +352,61 @@ See docs/COMPONENT_UX_GUIDE.MD for further reference/details on individual __com
   * Mental & Emotional Health(__Long text__)
 * All __long text__ elements should live inside collapsible accordion component.
 5) Think about one other person in your life, who you want to see make drastic improvements in their physical health.
-* Who is it?(__Short text__)
-* How should they change by 2020?(__Long text__)
-* How can you help?(__Long text__)
+* __Group Entry__, struct:
+  * Who is it?(__Short text__)
+  * How should they change by 2020?(__Long text__)
+  * How can you help?(__Long text__)
 6) List one wish that you have for the world or a particular sector of the world when it comes to Health.(__Long text__)
 7) What group of people or country can be most influential in helping this goal be attained?(__Short text__)
 8) How can you help, be it in any small way, to see this goal be achieved?(__Long text__)
+
+## Step 27
+1)The first way I want to encourage a healthier flow of giving and receiving is to take deep, proactive breaths. As you breathe IN, you receive. As you breathe OUT, you assert or give back to life. So take a deep breath in the nose, filling up the lower belly. Then breathe fully out of the mouth with an open, dropped jaw. Do this fully in both directions. This will show your nervous system how safe you are do engage in the act of giving and receiving. This is the foundational work. Did you do this?(__Yes/No__)
+2)Now ask yourself what you discovered in the first inventory about how you have typically treated yourself in the last five years?
+* __Group Entry__, struct:
+  * Inventory Summary(__Long text__)
+  * Is that reality where you want to find yourself in 2020?(__Yes/No__)
+  * If no, list out a few of those replacement self-thoughts that you intend to actualize going forward(__Long text__)
+  * Describe your relationship to self in 2020. (__Long text__)
+3)Replacing your habitual negative thinking (internal messages) with purposely looking for things to acknowledge about yourself. This can be simply, small things. So scan your life and get in a daily practice of acknowledging yourself. Find things that encourage a consistent, positive, and self-affirming view of yourself.
+* __Group Entry__, struct:
+  * I am proud of myself for _________ that I took(at some point)(__Short Text__)
+  * I feel great that I chose ________ or that I treated someone well or _________ (__Short text__)
+  * I want to acknowledge my gift/talent/ability _________ (__Short text__)
+* These should all be "Fill in the blank components", to be researched/discussed/developed
+4) Write a few down several days in a row. Repeat that for several weeks, until it becomes a more natural part of your life. This is GIVING to self... and letting yourself feel the impact of those positive, honest messages will enhance how you receive.
+* __Group Entry__, struct:
+  * Day 1(__Long text__)
+  * Day 2(__Long text__)
+  * Day 3(__Long text__)
+5) Final piece of your relationship to self. Get used to stopping several times a day to ask yourself: “What are 3 feelings that I am feeling right now in this moment?” To get a list of feelings with some wonderful clues, visit http://www.ronbaker.net/feelings/'
+* __Group Entry__, struct:
+  * Feeling 1(__Short text__)
+  * Feeling 2(__Short text__)
+  * Feeling 3(__Short text__)
+* Need clickable links in t-comb labels
+6) What did you discover from your first inventory about giving and receiving with others from the last 5 years?
+* __Group Entry__, struct:
+  * Write down your thoughts from your first inventory about giving and receiving with others(__Long text__)
+  * Is that where you would like to find yourself in 2020?(__Yes/No__)
+  * If not, then are you willing to interrupt old choices that no longer serve you AND replace them with healthier alternatives?(__Yes/No__)
+7) PREPARE for moments to come with your various relationships, by making yourself aware of some of the things you value and appreciate about others. Remember, when you have a moment of connection with each of those people, be willing to share out loud ONE thing that you appreciate about them.
+* __Group Entry__, struct:
+  * Name 3 different people you value(__Group entry__ of 3 __short text__ components)
+  * Name 3 specific things you appreciate and value about each one(__Group entry__ of 3 __short text__ components)
+
+
+
+
+  
+
+
+
+
+
+
+
+
 
 
 

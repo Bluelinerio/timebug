@@ -27,7 +27,7 @@ export default {
   2:{
     type:t.struct({
      inventory:t.String,
-     reality2020:t.String,
+     reality2020:t.Boolean,
      replacements:t.String,
      relationshipToSelf:t.maybe(t.String)
     }),
@@ -96,8 +96,8 @@ export default {
   6:{
     type:t.struct({
       field1:t.String,
-      field2:t.String,
-      field3:t.maybe(t.String)
+      field2:t.Boolean,
+      field3:t.maybe(t.Boolean)
     }),
     options:{
       label:'What did you discover from your first inventory about giving and receiving with others from the last 5 years?',
@@ -115,35 +115,20 @@ export default {
     }
   },
   7:{
-    type:t.struct({
-       people:t.list(
+    title:'PREPARE for moments to come with your various relationships, by making yourself aware of some of the things you value and appreciate about others.',
+    type:t.maybe(t.list(
          t.struct({
-         person:t.String
+         person:t.String,
+         thingsValued:t.String,
+         relationshipState:t.String
          })
-       ),
-       thingsValued:t.list(
-        t.struct({
-        thing:t.String
-        })
-      ),
-      relationshipState:t.list(
-        t.struct({
-        thing:t.String
-        })
-      )
-    }),
+       )),
     options:{
-      label:'PREPARE for moments to come with your various relationships, by making yourself aware of some of the things you value and appreciate about others. Remember, when you have a moment of connection with each of those people, be willing to share out loud ONE thing that you appreciate about them.',
-      fields:{
-        people:{
-         label:'Name 3 different people you value.'
+      label:'Name 3 different people you value, 3 specific things you appreciate and value about each one, and the state of your relationship in 2020.',
+      fields: {
+        item:{
+          auto:'placeholders'
         },
-        thingsValued:{
-          label:'Name 3 specific things you appreciate and value about each one.'
-        },
-        relationshipState:{
-          label:'Describe the state of your relationships in 2020'
-        }
       }
     }
   },
