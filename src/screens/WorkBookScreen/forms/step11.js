@@ -12,7 +12,7 @@ export default {
 					percentGoalCompleted: t.Number,
 					satisfactionLevel: t.Number,
 					investedTimeEnergy: t.Number,
-					requiredTimeEnergy: t.maybe(t.Number)
+					requiredTimeEnergy: t.maybe(t.String)
 
 				})
 			)

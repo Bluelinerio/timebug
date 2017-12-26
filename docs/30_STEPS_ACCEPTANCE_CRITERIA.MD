@@ -79,6 +79,63 @@ See docs/COMPONENT_UX_GUIDE.MD for further reference/details on individual __com
 * _Weekday_, _Weekend_ and _Now_ should paginate, each getting it's own page.
 * Morning, Afternoon and Evening should be collapsible elements containing requisite sub-structs
 2)Please answer the following questions regarding your typical exercise habits.
+* __Group entry__, struct:
+  * Times per week(__Short text__)
+  * For how long?(__Short text__)
+  * What type of exercise?(__Dropdown__ of enums _ExerciseTypes_)
+  * Alone or with others?(__Dropdown__ of enums _AloneOrOthers_)
+  * What time of day?(__Dropdown__ of enums _TimesOfDay_)
+3)Please answer the following questions regarding your typical meditation habits.
+* __Group entry__, struct:
+  * Times per week(__Short text__)
+  * For how long?(__Short text__)
+  * What type of exercise?(__Dropdown__ of enums _MeditationTypes_)
+  * Alone or with others?(__Dropdown__ of enums _AloneOrOthers_)
+  * What time of day?(__Dropdown__ of enums _TimesOfDay_)
+4)Are you committed to exercising and meditating for at least 20 mins daily from now until the end of the 20/20 Life Vision Challenge?(__Yes/No__)
+
+## Step 9
+1) Make a list of 2-10 role models and note their influencial life category, the degree to which you know/interact with them personally and the reason for why you look up to them.
+* __List entry__ of __group entries__, struct:
+  * Role Model(__Short text__)
+  * Life Category(__Dropdown__ of enums _LifeCategory_)
+  * Interaction Frequency(__Dropdown__ of enums _InteractionFrequency_)
+  * Why(__Long text__)
+* Min items:2, max:10 for __list entry__
+* Each list entry should be a collapsible element, revealing group entry when expanded.
+
+##Step 10
+1) Identify 5-10 different I's. Note how strong each I is for you(on a 1-10 scales with 1=weakest and 10=strongest), and what I would say in a few words.
+* __List entries__ of __group entries__, Struct:
+  * I(__Short text__)
+  * Strength Of "I"(scale of 1-10)(__Number__)
+  * What I would say(__Long text__)
+* Min items:5, max:10 for __list entry__
+* Each list entry should be a collapsible element, revealing group entry when expanded.
+2) Reflecting back on the day 5 list of Goals, pick several and briefly note how your ego aspects either hindered or aided you.
+* __List entries__ of __group entries__, Struct:
+  * Goal(__Short text__)
+  * Ego Influence(__Long Text__)
+
+##Step 11
+1)Gather all of your previous goal data, including time spent and key achievements over the past 5 years. You can start with 2015 if you feel overwhelmed assessing all 5 years.
+* __List entries__ of __group entries__, Struct:
+  * Goal(__Short text__)
+  * % of Goal Completed(__Number__, max value:100, min value:0)
+  * Satisfaction Level(__Number__, 1-10 scale)
+  * Invested Time/Energy(__Number__, 1-10 scale)
+  * Required Time/Energy(__Short text__)
+* Each list entry should be a collapsible element, revealing group entry when expanded.
+2) Outline the Goal-Setting & Tracking Process that you have followed over the past 5 years.
+* __Group entry__, struct:
+  
+
+
+
+
+
+
+
 
 
 

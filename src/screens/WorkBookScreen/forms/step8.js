@@ -178,8 +178,8 @@ export default {
               auto:'none',
               label:'For how long?'
             },
-            meditationType:{
-              label:'What type of meditation?'
+            exerciseType:{
+              label:'What type of Exercise?'
             },
             aloneOrOthers:{
               label:'Alone or with others?'
