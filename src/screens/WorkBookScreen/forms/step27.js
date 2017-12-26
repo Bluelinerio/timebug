@@ -140,57 +140,12 @@ export default {
   },
   9:{
     type:t.struct({
-      physical1:t.String,
-      physical2:t.String,
-      physical3:t.String,
-      mental1:t.String,
-      mental2:t.String,
-      mental3:t.String,
-      emotional:t.String,
-      emotional2:t.String,
-      emotional3:t.maybe(t.String)
+      physicalNeeds:t.list(t.struct({physicalNeed:t.String})),
+      mentalNeeds:t.list(t.struct({mentalNeed:t.String})),
+      emotionalNeeds:t.list(t.struct({emotionallNeed:t.String}))
     }),
     options:{
       label:'In order to create a balance of what you give, what specific needs are you aware of that you have in your life (physical, emotional or mental needs)? List them here, at least 3 for each category (physical, mental, emotional). As you learn to identify those needs, it becomes safe to then communicate them one at a time to others.',
-      physical1:{
-        label:'Physical',
-        placeholder:'Physical Need',
-        auto:'none'
-      },
-      physical2:{
-        auto:'none',
-        placeholder:'Physical Need'
-      },
-      physical3:{
-        auto:'none',
-        placeholder:'Physical Need'
-      },
-      mental1:{
-        auto:'none',
-        label:'Mental',
-        placeholder:'Mental Need'
-      },
-      mental2:{
-        auto:'none',
-        placeholder:'Mental Need'
-      },
-      physical3:{
-        auto:'none',
-        placeholder:'Mental Need'
-      },
-      emotional:{
-        auto:'none',
-        label:'Emotional',
-        placeholder:'Emotional Need'
-      },
-      emotional2:{
-        auto:'none',
-        placeholder:'Emotional Need'
-      },
-      emotional3:{
-        auto:'none',
-        placeholder:'Emotional Need'
-      }
     }
 
   },

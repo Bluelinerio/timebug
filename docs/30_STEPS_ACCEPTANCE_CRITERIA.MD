@@ -391,9 +391,55 @@ See docs/COMPONENT_UX_GUIDE.MD for further reference/details on individual __com
   * Is that where you would like to find yourself in 2020?(__Yes/No__)
   * If not, then are you willing to interrupt old choices that no longer serve you AND replace them with healthier alternatives?(__Yes/No__)
 7) PREPARE for moments to come with your various relationships, by making yourself aware of some of the things you value and appreciate about others. Remember, when you have a moment of connection with each of those people, be willing to share out loud ONE thing that you appreciate about them.
-* __Group Entry__, struct:
-  * Name 3 different people you value(__Group entry__ of 3 __short text__ components)
-  * Name 3 specific things you appreciate and value about each one(__Group entry__ of 3 __short text__ components)
+* __List Entry__ of __group entries__, struct:
+  * Name 3 different people you value(__Group entry__ of 3 __short text__ elements)
+  * Name 3 specific things you appreciate and value about each one(__Group entry__ of 3 __short text__ elements)
+  * Describe the state of your relationships in 2020
+* All list entries should live inside of collapsible elements.
+8) What have you done by 2020 to heal and repair the relationships that you noted have regressed in the Day 17 Assignment? (__Long text__)
+9) In order to create a balance of what you give, what specific needs are you aware of that you have in your life (physical, emotional or mental needs)? List them here, at least 3 for each category (physical, mental, emotional). As you learn to identify those needs, it becomes safe to then communicate them one at a time to others.
+* __Group entry__, struct:
+  * Physical Needs(__List entry__ of __short texts__)
+  * Mental Needs(__List entry__ of __short texts__)
+  * Emotional Needs(__List entry__ of __short texts__)
+* All list entries should be collapsible elements
+* Min items 3 for all __list entries__
+10) Start with naming ONE need. Are you willing to communicate this need to another person, allowing yourself to receive the support? Start with simple things, to build up confidence. (i.e. I need help with moving some furniture around in my living room. I need a shoulder rub. I need someone to listen while I vent about something that just happened.) Once YOU identify the need, then you can look to your support structure to begin to practice mutual giving and receiving.
+*__group entry__, struct:
+  * Name of need(__short text__)
+  * Willing to communicate this to another person?(__Yes/no__)
+11)Meditate on and come up with one 20/20 Relationship Vision for the world. This could revolve around how people all over the world treat each other, or deal with groups of people (i.e. families, specific societies/cities, countries), internally or externally (i.e. foreign relations).(__Long text__)
+12)If you simply ask yourself, would I be willing to offer the same thing to this friend/loved one in a similar way to how I am asking them to help support me?(__Yes/no__)
+
+##Step 28
+1) Did you do your MANTRA today(assigned on Day 21)?(__Yes/No__)
+2) Did you EXERCISE and meditate yet today(assigned on Day 8)?(__Yes/No__)
+3) Did you MEDITATE yet today(assigned on Day 8)?(__Yes/No__)
+4) What major P&E goals [BHAGs] do you envision or yourself by 2020?
+* __List entry__ of goals(__short text__)
+5) Your Bucket List can include simple goals as well – not everything has to be a monumental BHAG List out up to 10 items for your 2020 PE Bucket List
+* __List entry__ of __group entries__, struct:
+  * Bucket PE BHAGs(__short text__)
+  * Prioritize your BHAG with 1= most important, 2= second most important (__number__)
+  * Estimate how much time per year (2016-2020) you plan to spend on avg working toward this BHAG(__short text__)
+* All list entries should be collapsible elements
+6) Think about one other person in your life, who you want to see enjoy a major transformation in their PE surroundings.
+* __Group entry__, struct:
+  * Who?(__Short text__)
+  * How do you want to see them attain those PE goals, making it happen by 2020?(__Long text__)
+  * How can you help them achieve their PE goals?(__Long text__)
+7) What have you done by 2020 to heal and repair the relationships that you noted have regressed in the Day 17 Assignment?(__Long text__)
+8) List one wish that you have for the world or a particular sector of the world when it comes to personal aims and hobbies.(__Long text__)
+9) What advice would you give people who are on board with your wish – how can we all work together towards this aim in our personal lives?(__Long text__)
+10)How can you help, be it in any small way, to see this goal be achieved?(__Long text__)
+
+
+
+
+
+
+ 
+
 
 
 
