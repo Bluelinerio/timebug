@@ -5,11 +5,14 @@ import type { Progress } from '../services/apollo/models';
 import type { Colors, Step } from '../services/cms';
 import type { StepsState } from './reducers/cms.reducer'
 
+const sortSteps = (a: Step, b: Step) => a.number - b.number
 const isStorageLoaded = (state: any):boolean => getStorageLoaded(state);
-const steps = (state: any) :[Step] => getCms(state).allSteps;
+const steps = (state) => getCms(state).steps
+const sortedSteps = (state: any) :[Step] => Object.values( steps(state) ).sort(sortSteps) 
 const stepColors = (state: any):Colors => getCms(state).colors.steps;
 const isCMSLoading = (state: any) => getCms(state).requestCount > 0
 const totalNumberOfSteps = (state: any) => getCms(state).totalNumberOfSteps
+const colors = (state:any) => getCms(state).colors
 
 const user = (state: any): ?User =>
 	typeof getUserState(state) === 'string' ? null : getUserState(state)
@@ -28,9 +31,10 @@ const step = (number: number) => (state:any) => steps(state)[number]
 export default {
 	isStorageLoaded,
 	getCms,
-	steps,
+	sortedSteps,
 	colorForStep,
 	step,
+	colors,
 	isCMSLoading,
 	totalNumberOfSteps,
 	currentStepNumber,
