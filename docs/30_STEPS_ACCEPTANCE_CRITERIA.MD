@@ -207,49 +207,36 @@ See docs/COMPONENT_UX_GUIDE.MD for further reference/details on individual __com
   * Where do you stand today compared to what you had envisioned for yourself?(__Dropdown__ of enums _WhereStandToday_)
 5)Create a quick personal Profit & Loss Statement using the 20/20 Worksheet as a guide. It is your choice as to whether to focus on your own individual P&L versus as a couple, if you are married.
 * __Group entry__, struct: 
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  * Assets(__group entry__, struct):
+    * Liquid Assets(__List entry__ of Liquid Assets(__short text__))
+    * Properties(__List entry__ of Properties(__short text__))
+    * Total Assets(__Number__)
+      * Should auto calculate as Liquid assets + Properties
+  * Liabilities(__group entry__, struct):
+    * Short term debts(__List entry__ of Short term debts(__short text__))
+    * Long term debts(__List entry__ of long term debts(__short text__))
+    * Total Liabilities(__Number__)
+      * Should auto calculate as Short term debts + Long term debts
+  * Total Personal Equity(__Number__)
+    * Should auto calculate as Assets - Liabilities
+  * Take some time to reflect on your P&L sheet(__Group entry__, struct:)
+    * How do you feel?(__Long text__)
+    * How does this picture compare to where you stood in 2011?(__Long text__)
+    * Where do you stand today compared to what you had envisioned for yourself?(__Dropdown__ of enums _WhereStandToday_)
+  * Profit/Loss Statement (__Group entry__, struct:)
+    * Income (__Group entry__, struct:)
+      * Income 2015(__List entry__ of Income(__short text__)
+      * Savings and Investments (__List Entry__ of Savings and Investments(__short text__))
+      * Total Income(__Number__)
+        * Should auto calculate as all list entries in Income 2015 + all Savings and Investments
+  * Expenses (__Group entry__, struct:)
+    * Expenses Non Discretionary(__List entry__ of Expenses(__short text__)
+    * Expenses Discretionary(__List entry__ of Expenses(__short text__)
+    * Total Expenses(__Number__)
+        * Should auto calculate as all list entries in Expenses Non Discretionary + Expenses Discretionary
+  * Net (__Number__, should auto calculate as Income - Expenses)
   
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    * Assets, Liabilities, Total Personal Equity, P&L Sheet, Profit/Loss Statement, and Expenses should live inside of collapsible elements.
 
 ## Step 15
 * 1) Gather all of your previous goal data, including time spent, and key achievements ove rthe past 5 years. You can start with 2015 if you feel overwhelmed assesing all 5 years.
