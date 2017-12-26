@@ -60,18 +60,3 @@ const Navigator = StackNavigator(
 );
 
 export default Navigator;
-
-const transitionConfig = () => ({
-      screenInterpolator: sceneProps => {
-        if (
-          ['HomeScreen', 'AssignmentFlow'].indexOf(
-            sceneProps.navigation.state.routes[
-              sceneProps.navigation.state.routes.length - 1
-            ].routeName
-          ) !== -1
-        ) {
-          return CardStackStyleInterpolator.forVertical(sceneProps);
-        }
-        return CardStackStyleInterpolator.forHorizontal(sceneProps);
-      }
-    })
