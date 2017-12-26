@@ -1,5 +1,5 @@
 // @flow
-import { throttle, select, take, race, call, all, cancelled, put, takeLatest } from 'redux-saga/effects'
+import { throttle, select, take, race, call, all, cancelled, put, takeLatest, fork } from 'redux-saga/effects'
 
 import { LOGIN_WITH_FB_BUTTON_PRESSED } from '../actionTypes';
 import { incrementRequestCount, decrementRequestCount } from '../actions/network.actions'
@@ -71,7 +71,7 @@ function* _logout(): LogoutResult {
 	return true
 }
 
-function* refreshUserOrLogout(): RefreshUserResult | LogoutResult {
+function* refreshUserOrLogout(): RefreshUserResult | LogoutResult {	
 	function* refreshUser(): RefreshUserResult {
 		const { token, userId } = yield call(AuthStorage.getTokenAndUserId)
 		const user: ?User = yield select(selectors.user);
@@ -79,13 +79,14 @@ function* refreshUserOrLogout(): RefreshUserResult | LogoutResult {
 			return { user, token }
 		}
 		if (userId && token) {
+			
 			const response: User | ErrorResponse = yield call(_fetchUser, userId)
-			if (response.error && response.cancel) {
+			if (response.error || response.cancel) {
 				return response
 			}
 			const result = yield call(refreshUser)
 			return result
-		}
+		}		
 		const fbToken: ?string = yield call(facebook.getToken)
 		if (fbToken) {
 			const authenticateWithFBTokenResult: any = yield call(_authenticateWithFBToken, fbToken)
@@ -109,6 +110,16 @@ function* refreshUserOrLogout(): RefreshUserResult | LogoutResult {
 	return winner.refresh
 }
 
+function* _handleUserError(){
+	const result = yield call(_logout) 
+	yield put(actions.setUserAnonymous());
+}
+
+
+function* userErroredSaga() {
+	yield takeLatest(GET_USER.ERRORED,_handleUserError)
+}
+
 function* _loginOrRegisterWithFacebook(): RefreshUserResult | LogoutResult {
 	const result = yield call(refreshUserOrLogout)
 	if (!result.user) {
@@ -127,10 +138,8 @@ function* _loginOrRegisterWithFacebook(): RefreshUserResult | LogoutResult {
 
 export function* loginFlowSaga() {
 	// yield call(AuthStorage.wipeStorage);
+	yield fork(userErroredSaga)
 	const result: { user?: User } = yield call(refreshUserOrLogout)
-	if (!result.user) {
-		yield throttle(500, LOGIN_WITH_FB_BUTTON_PRESSED, _loginOrRegisterWithFacebook)
-	} else {
-		yield throttle(500, LOGOUT, _logout)
-	}
+	yield throttle(500, LOGIN_WITH_FB_BUTTON_PRESSED, _loginOrRegisterWithFacebook)
+	yield throttle(500, LOGOUT, _logout)
 }
