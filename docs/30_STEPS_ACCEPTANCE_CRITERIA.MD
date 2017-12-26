@@ -128,7 +128,54 @@ See docs/COMPONENT_UX_GUIDE.MD for further reference/details on individual __com
 * Each list entry should be a collapsible element, revealing group entry when expanded.
 2) Outline the Goal-Setting & Tracking Process that you have followed over the past 5 years.
 * __Group entry__, struct:
+  * How do you describe the process?(Select one)(__Dropdown__ of enums _DescribeProcess_)
+  * Have you written down your goals annually?(Check each year that you have done this for)(__Group entry__), struct:
+    * 2011(__Boolean__)
+    * 2012(__Boolean__)
+    * 2013(__Boolean__)
+    * 2014(__Boolean__)
+    * 2015(__Boolean__)
+  * Do you use wearable teach, websites and/or spreadsheets to manage your time and goals?(select one)(__Dropdown__ of enums _UseWearableTech_)
+3)In a few sentences, and descriptive key words, assess how your life has been, and how you have done over the past 5 years.(__Long text__)
+
+## Step 12
+1) Specify what MLEs took placer over the past 5 years. Working with your Day 2 worksheet,specify how your time was generally shifted as a result.
+* __List entry__ of __Group entries__, struct:
+  * Major Life Event(__Dropdown__ of enums _MajorLifeEvents_)
+  * How did this shift your time? (__Long Text__)
+* Each list entry should be a collapsible element, revealing group entry when expanded.
+* User should be able easily able to access dashboard, or some other way to access step 2 information, without leaving the screen or with links easily connecting the information.
+
+2) Building on or refining Question 1 form Day 11, how did those MLEs factor in - positively and negatively - to your goals over the past 5 years?
+* __Group entry__, struct:
+  * Emotional/Mental Response(__Long text__)
+  * Internal Energy Influence(__Long text__)
+* User should be able easily able to access dashboard, or some other way to access step 11 information, without leaving the screen or with links easily connecting the information.
+
+## Step 13
+1)Take some time to evaluate your salary and compensation over the past 5 years.
+* __Group entry__, struct:
+  * How has your salary grown(or not) from 01/11 to 12/15(5 full years)?(__Group entry__), struct:
+    * Jan 2011 Salary(__Number__)
+    * Dec 2015 Salary(__Number__)
+* Do you feel like you are being paid fairly for what you offer?(__Dropdown__ of enums _PaidFairly_)
+* Did you meet whatever compensation goals you had set for 2015, anytime in 2011-2014?(__Yes/No__)
+* How many hours do you work on average per week?(__Number__)
+* How have your work week hours changed since 2011?(__Long text__)
+
+
+
   
+  
+
+
+
+
+
+
+
+
+
 
 
 

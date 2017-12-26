@@ -264,5 +264,29 @@ export const DreamsRemember = t.enums.of([
 'Never'
 ],'DreamsRemember')
 
+export const DescribeProcess = t.enums.of([
+  "I haven't done anything",
+  'Ad Hoc',
+  'Good at setting but not tracking',
+  'Super detailed and consistent',
+  'Thorough + working with a coach or peer group'
+  ],'DescribeProcess')
+
+export const UseWearableTech = t.enums.of([
+    'Never',
+    'Sometimes',
+    'Often',
+    'Always'
+    ],'UseWearableTech')
+
+export const PaidFairly = t.enums.of([
+      'Beyond Fair',
+      'Not Fair',
+      'Just Right'
+      ],'PaidFairly')
+
+
+
+
 
 
