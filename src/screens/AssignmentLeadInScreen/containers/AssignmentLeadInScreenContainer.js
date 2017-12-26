@@ -20,14 +20,12 @@ type Props = {
 type State = {};
 
 const mapStateToProps = state => {
-	const allSteps = selectors.steps(state)
 	const currentStep = selectors.currentStep(state)
 	const color = selectors.currentStepColor(state)
   const assignments = selectors.assignments(state)
 	return {
 		currentStep,
 		color,
-		allSteps,
 		assignments
 	};
 };
@@ -59,7 +57,6 @@ class AssignmentLeadInScreenContainer extends Component<Props, State> {
 			assignments,
 			currentStep,
 			color,
-			allSteps,
 			navigation
     } = this.props;
       
@@ -69,7 +66,6 @@ class AssignmentLeadInScreenContainer extends Component<Props, State> {
 					assignments={assignments}
 					currentStep={currentStep}
 					color={color}
-					allSteps={allSteps}
 					dispatch={navigation.dispatch}
 				/>
 			);
