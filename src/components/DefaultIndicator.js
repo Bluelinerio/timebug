@@ -4,7 +4,7 @@ import { ActivityIndicator } from "react-native"
 import { styles }            from 'react-native-theme';
 
 type Props = {
-  size: number
+  size: 'large' | 'small'
 }
 
 export default ({ size }: Props) => {
