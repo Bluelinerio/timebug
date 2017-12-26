@@ -34,6 +34,7 @@
     "react-native-markdown-syntax": "^0.1.0",
     "react-native-pages": "^0.6.1",
     "react-native-parallax-scroll-view": "^0.20.1",
+    "react-native-snap-carousel": "^3.4.0",
     "react-native-svg-image": "^2.0.0",
     "react-native-swiper": "^1.5.12",
     "react-native-theme": "^0.1.8",
