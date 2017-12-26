@@ -1,5 +1,5 @@
 import { Platform, StyleSheet, StatusBar } from 'react-native'
-import { colors as topColors } from '../../../components/styles'
+import { colors as topColors } from '../../../constants/colors';
 
 export const colors = {
 	black: '#1a1917',
