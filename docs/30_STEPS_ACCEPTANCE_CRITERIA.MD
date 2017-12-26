@@ -44,9 +44,43 @@ See docs/COMPONENT_UX_GUIDE.MD for further reference/details on individual __com
     * Field is required.
 
 ## Step 8
-  * 1) On a 1-10 scale, write down your Physical, Mental and Emotional energy levels during different times ofthe day (Morning, Afternoon, Evening) on a typical day.
+1) On a 1-10 scale, write down your Physical, Mental and Emotional energy levels during different times ofthe day (Morning, Afternoon, Evening) on a typical day.
+* __Group entry__, struct:
+  * Weekday(__group entry__), struct:
+    * Morning(__group entry__), struct:
+      * Physical(__number__)
+      * Mental(__number__)
+      * Emotional(__number__)
+    * Afternoon(__group entry__), struct:
+      * Physical(__number__)
+      * Mental(__number__)
+      * Emotional(__number__)
+    * Evening(__group entry__), 
+      * Physical(__number__)
+      * Mental(__number__)
+      * Emotional(__number__)
+  * Weekend(__group entry__), struct:
+    * Morning(__group entry__), struct:
+      * Physical(__number__)
+      * Mental(__number__)
+      * Emotional(__number__)
+    * Afternoon(__group entry__), struct:
+      * Physical(__number__)
+      * Mental(__number__)
+      * Emotional(__number__)
+    * Evening(__group entry__), 
+      * Physical(__number__)
+      * Mental(__number__)
+      * Emotional(__number__)
+  * Now(__group entry__), struct:
+      * Physical(__number__)
+      * Mental(__number__)
+      * Emotional(__number__)
+* _Weekday_, _Weekend_ and _Now_ should paginate, each getting it's own page.
+* Morning, Afternoon and Evening should be collapsible elements containing requisite sub-structs
+2)Please answer the following questions regarding your typical exercise habits.
 
-...WIP
+
 
 ## Step 15
 * 1) Gather all of your previous goal data, including time spent, and key achievements ove rthe past 5 years. You can start with 2015 if you feel overwhelmed assesing all 5 years.
@@ -71,7 +105,7 @@ See docs/COMPONENT_UX_GUIDE.MD for further reference/details on individual __com
     * Each list entry should be a collapsible element, revealing group entry when expanded.
 
 ## Step 16
-* 1)Take time to evaluate your general health status
+1)Take time to evaluate your general health status
   * __Group entry__, struct consits of:
     * How much of a priority has health been for you?(__dropdown__ of enums _PriorityLevels_)
     * How do you feel now,physical health wise ?(1-10 scale , __number__)
@@ -432,6 +466,43 @@ See docs/COMPONENT_UX_GUIDE.MD for further reference/details on individual __com
 8) List one wish that you have for the world or a particular sector of the world when it comes to personal aims and hobbies.(__Long text__)
 9) What advice would you give people who are on board with your wish – how can we all work together towards this aim in our personal lives?(__Long text__)
 10)How can you help, be it in any small way, to see this goal be achieved?(__Long text__)
+
+## Step 29
+1) Did you do your MANTRA today(assigned on Day 21)?(__Yes/No__)
+2) Did you EXERCISE and meditate yet today(assigned on Day 8)?(__Yes/No__)
+3) Did you MEDITATE yet today(assigned on Day 8)?(__Yes/No__)
+4) List 3-10 Spiritual “teammates”, and write a few notes about how you plan to connect with them this coming year.
+* __List entry__ of __group entries__, struct:
+  * Spiritual teammate(__short text__)
+  * How will you connect with him/her(__long text__)
+* All list entries should be collapsible elements
+5) What major goals [BHAGs] do you envision for yourself by 2020? [i.e. doing a 10-day meditation retreat; fasting for 30 days; writing down your deepest feelings and thoughts in a journal every day for a whole year, etc.].
+* __List entry__ of goals(__short text__)
+6) List out up to 10 items for your 2020 Spirituality Bucket List [i.e. reading specific philosophy, self-help or religious books; visiting sacred sites; etc].
+* __List entry__ of __group entries__, struct:
+  * Spirituality bucket list(__short text__)
+  * Prioritize your Spirtuality BHAG with 1= most important, 2= second most important (__number__)
+  * Estimate how much time per year (2016-2020) you plan to spend on avg working toward this BHAG(__short text__)
+* All list entries should be collapsible elements
+7) List out up to 10 items for your 2020 Spirituality Bucket List [i.e. reading specific philosophy, self-help or religious books; visiting sacred sites; etc].
+* __List entry__ of __group entries__, struct:
+  * I(ego Aspect)(__short text__)
+  * How will this I evolve in 2020? (__long text__)
+  * What this I says now(__long text__)
+  * What this I will say in 2020(__long text__)
+8) Think about one other person in your life, who you want to see enjoy a major transformation or sense of peace and internal happiness in their lives. Who is it?(__short text__)
+9) How do you want to see them attain those inner journey goals, making it happen by 2020?(__long text__)
+10) How can you help them achieve their Spiritual goals?(__long text__)
+11) List one wish that you have for the world or a particular sector of the world when it comes to Spirituality (i.e. World Inner Peace).(__short text__)
+12) How can you help, be it in any small way, to see this goal be achieved? (Hint: start with yourself and in  your own circle of family  and friends, with things that you have direct influence on).(__long text__)
+
+
+
+
+
+
+
+
 
 
 
