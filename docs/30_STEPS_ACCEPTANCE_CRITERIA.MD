@@ -314,6 +314,55 @@ See docs/COMPONENT_UX_GUIDE.MD for further reference/details on individual __com
 16) List one wish that you have for the world or a particular sector of the world when it comes to money. (__Long text__)
 17) What group of people or country can be most influential in helping this goal be attained?(__long text__)
 
+## Step 25
+1) Did you do your MANTRA today(assigned on Day 21)?(__Yes/No__)
+2) Did you EXERCISE and meditate yet today(assigned on Day 8)?(__Yes/No__)
+3) Did you MEDITATE yet today(assigned on Day 8)?(__Yes/No__)
+4) The Year is 2020. Reflect on Day 15's assignment (Q3), and the Personal Aims that you were not able to achieve.
+* __Group entry__, struct:
+  * Were those Aims on your 2020 Bucket List?(__long text__)
+  * Why were you able to attain those goals and make time for those hobbies?(__long text__)
+* User should be able easily able to access dashboard, or some other way to access step 15 information, without leaving the screen or with links easily connecting the information.
+5) List any other new goals for your 2020 List
+* __List entry__ of goals(__short text__).
+6) Prioritize the items of the list using 1= the most important, 2= second most important etc.
+* __Group entry__, struct:  
+  * Bucket List Priority(__short text__)
+  * Importance Level(1-10 scale , __number__)
+  * Time Spent(__short text__)
+7) Looking back from 2020 to 2016, which areas in your personal time have you cut down on or out completely? (__Long text__)
+8) Think about one other person in your life, who you want to see enjoy more time for themselves, doing the things that you know would make them happy. Who is it? (__short text__)
+9) How do you want to see them attain those personal goals, making it happen by 2020?(__Long text__)
+10) How can you help him/her achieve his/her personal goals?(__Long text__)
+11) List one wish that you have for the world or a particular sector of the world when it comes to personal aims and hobbies.(__Long text__)
+12) What advice would you give people who are on board with your wish- how can we all work together towards this aim in our personal lives?(__Long text__)
+13) How can you help, be it in any small way, to see this goal be achieved? (__Long Text__)
+
+## Step 26
+1) Did you do your MANTRA today(assigned on Day 21)?(__Yes/No__)
+2) Did you EXERCISE and meditate yet today(assigned on Day 8)?(__Yes/No__)
+3) Did you MEDITATE yet today(assigned on Day 8)?(__Yes/No__)
+4) The year is 2020. You have achieved all of your health goals and feel on top of the world, physically, mentally and emotionally. Describe what changes you made in your life to reach this state.  What changes and achievements did you make across the following areas:
+* __Group entry__, struct:
+  * Prioritizing your Health Goals vs. other Areas(__Long text__)
+  * Fitness & Exercise(__Long text__)
+  * Nutrition & Diet(__Long text__)
+  * Sleep(__Long text__)
+  * Body Care(__Long text__)
+  * Mental & Emotional Health(__Long text__)
+* All __long text__ elements should live inside collapsible accordion component.
+5) Think about one other person in your life, who you want to see make drastic improvements in their physical health.
+* Who is it?(__Short text__)
+* How should they change by 2020?(__Long text__)
+* How can you help?(__Long text__)
+6) List one wish that you have for the world or a particular sector of the world when it comes to Health.(__Long text__)
+7) What group of people or country can be most influential in helping this goal be attained?(__Short text__)
+8) How can you help, be it in any small way, to see this goal be achieved?(__Long text__)
+
+
+
+
+
 
 
 
