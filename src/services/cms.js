@@ -70,3 +70,17 @@ export type IStep = {
 }
 
 export const getImageUrl = (icon: Icon): string => (icon.url || icon.fields.file.url || '').replace('//', 'https://')
+
+export const colorForStep = cmsColors => {
+	return {
+		colorStart: step => cmsColors.steps[step + 1],
+		colorEnd: step => {
+			const phase = Math.ceil((step + 1) / 10) % 4;
+			return cmsColors.phases[phase + 1];
+		}
+	};
+};
+
+export const fixMisingProgressFromServer = items => items
+
+export const sortSteps = (a:Step, b:Step) => a.number - b.number

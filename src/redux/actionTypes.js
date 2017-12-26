@@ -13,10 +13,6 @@ export const DECREMENT_REQUEST_COUNT = 'DECREMENT_REQUEST_COUNT';
 
 // global
 
-//fetching
-export const GET_STEP_COLORS           = createRequestTypes('GET_STEP_COLORS');
-export const GET_ABOUT_INFO_FROM_CMS   = createRequestTypes('GET_ABOUT_INFO_FROM_CMS');
-
 //navigation
 export const LOGIN_WITH_FB_BUTTON_PRESSED        = 'LOGIN_WITH_FB_BUTTON_PRESSED';
 export const LOGOUT                              = 'LOGOUT';
