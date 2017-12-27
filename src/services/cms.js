@@ -15,7 +15,7 @@ export type Assignment = {
 
 // @flow
 export type StepNumber = 1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30;
-export type IColors = {
+export type Colors = {
   phases: {
     MEDITATION: string,
     SELF_ASSESSMENT: string,
@@ -55,7 +55,7 @@ export type IColors = {
   }
 }
 
-export type IStep = {
+export type Step = {
   number: number,
   title: string,
   subtitle: string,
@@ -89,7 +89,7 @@ export const PHASES = ['MEDITATION' , 'SELF_ASSESSMENT', 'VISION_CREATION'];
 export const NUMBER_OF_STEP_FOR_PHASES = 10;
 export const STEP_START_INDEX = 1;
 
-const phaseForStep = (step:number) => PHASES[Math.floor((step) / NUMBER_OF_STEP_FOR_PHASES) % (PHASES.length)]
+const phaseForStep = (step: number) => PHASES[Math.floor((step) / NUMBER_OF_STEP_FOR_PHASES) % (PHASES.length)]
 
 export const gradientBackground_ColorForStepIndex = (colors: Colors) => {
   const fn =  ({
