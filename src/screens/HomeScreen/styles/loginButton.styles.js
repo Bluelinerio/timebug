@@ -1,5 +1,5 @@
 import { Dimensions, StyleSheet } from 'react-native';
-import { colors } from './index.styles';
+import { colors } from './index';
 
 export default StyleSheet.create({
 	buttonContainer: {

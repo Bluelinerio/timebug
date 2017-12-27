@@ -52,32 +52,6 @@ export default StyleSheet.create({
 		fontStyle: 'italic',
 		textAlign: 'center'
 	},
-	rowItem: {
-		paddingHorizontal: 16,
-		paddingVertical: 12
-	},
-	rowItemContainer: {
-		borderBottomWidth: StyleSheet.hairlineWidth,
-		borderBottomColor: colors.borderColor,
-		padding: 20
-	},
-	rowTitle: {
-		paddingHorizontal: 30,
-		backgroundColor: 'transparent',
-		color: colors.rowTitleColor,
-		fontSize: 20,
-		fontWeight: 'bold',
-		textAlign: 'center'
-	},
-	rowSubtitle: {
-		marginTop: 5,
-		paddingHorizontal: 30,
-		backgroundColor: 'transparent',
-		color: colors.rowSubtitleColor,
-		fontSize: 13,
-		fontStyle: 'italic',
-		textAlign: 'center'
-	},
 	bannerContainer: {
 		backgroundColor: colors.background1,
 		paddingTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight

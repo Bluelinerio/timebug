@@ -1,14 +1,20 @@
 import React, { PureComponent } from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { ParallaxImage } from 'react-native-snap-carousel';
-import CustomeImage from '../../../components/CustomImage';
+import CustomImage from '../../../components/CustomImage';
 import styles, { spinnerEvenColor, spinnerUnEvenColor } from '../styles/SliderEntry.style';
-import type { Step, Icon } from '../../../models/cms.models';
-import { getImageUrl } from '../../../models/cms.models';
+import type { Step, Icon } from '../../../services/cms';
+import { getImageUrl } from '../../../services/cms'
 import TouchableBounce from 'react-native/Libraries/Components/Touchable/TouchableBounce'
 
+export type Item = {
+	title:string, 
+	subtitle:string,
+	sourceImage:string
+}
+
 type Prop = {
-	data: Step,
+	data: Item,
 	even: boolean,
 	parallax: boolean,
 	parallaxProps: object,
@@ -19,11 +25,10 @@ type Prop = {
 
 export default class SliderEntry extends PureComponent<Prop> {
 	get image() {
-		const { data: { icon }, parallax, parallaxProps, even } = this.props;
-
+		const { data: { sourceImage }, parallax, parallaxProps, even } = this.props;
 		return parallax ? (
-			<CustomeImage
-				source={{ uri: getImageUrl(icon) }}
+			<CustomImage
+				imageUri={sourceImage}
 				containerStyle={[styles.imageContainer, even ? styles.imageContainerEven : {}]}
 				style={styles.svg}
 				showSpinner={true}
@@ -31,12 +36,12 @@ export default class SliderEntry extends PureComponent<Prop> {
 				{...parallaxProps}
 			/>
 		) : (
-			<CustomeImage source={{ uri: getImageUrl(icon) }} style={styles.svg} />
+			<CustomImage imageUri={sourceImage} style={styles.svg} />
 		);
 	}
 
 	render() {
-		const { onPress, data: { title, subtitle }, even } = this.props;
+		const { onPress, data: {title, subtitle}, even } = this.props;
 		const uppercaseTitle = title ? (
 			<Text style={[styles.title, even ? styles.titleEven : {}]} numberOfLines={3}>
 				{title.toUpperCase()}

@@ -84,3 +84,24 @@ export const colorForStep = cmsColors => {
 export const fixMisingProgressFromServer = items => items
 
 export const sortSteps = (a:Step, b:Step) => a.number - b.number
+
+export const PHASES = ['MEDITATION' , 'SELF_ASSESSMENT', 'VISION_CREATION'];
+export const NUMBER_OF_STEP_FOR_PHASES = 10;
+export const STEP_START_INDEX = 1;
+
+const phaseForStep = (step:number) => PHASES[Math.floor((step) / NUMBER_OF_STEP_FOR_PHASES) % (PHASES.length)]
+
+export const gradientBackground_ColorForStepIndex = (colors: Colors) => {
+  const fn =  ({
+		colorStart: (step:number) => colors.steps[step + 1],
+		colorEnd: (step:number) => {
+			const phase = phaseForStep(step)
+			return colors.phases[phase];
+		}
+  })
+  return (step: number) => {
+    const colorStart = fn.colorStart(step)
+    const colorEnd = fn.colorEnd(step)
+    return { colorStart, colorEnd}
+  }
+}

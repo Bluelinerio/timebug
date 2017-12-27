@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { LinearGradient } from 'expo';
-import styles, { colors } from '../styles/index.styles';
+import styles, { colors } from '../styles';
+import LinearGradient from 'react-native-linear-gradient'
 
 const StartEndGradient = ({ colorStart = colors.startGradientColor, colorEnd = colors.endGradientColor, style }) => (
 	<LinearGradient

@@ -70,7 +70,9 @@ const Header = ({ imageUri, title, number }) => (
   </View>
 );
 
-export default ({ step, goToAssignmentLeadInScreen, color }) => (
+export default ({ navigation, step, goToAssignmentLeadInScreen, color }) => {
+  debugger
+  return  (
   <ScrollableHeader
     headerMaxHeight={HEADER_HEIGHT}
     headerMinHeight={0}
@@ -91,4 +93,5 @@ export default ({ step, goToAssignmentLeadInScreen, color }) => (
       />
     }
   />
-);
+)
+}

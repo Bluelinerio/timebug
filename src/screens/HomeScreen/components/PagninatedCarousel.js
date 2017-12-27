@@ -4,19 +4,20 @@ import React, { PureComponent } from 'react';
 import { View, Text, Platform } from 'react-native';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 import styles, { colors } from '../styles/PagninatedCarousel.style';
-import StepGradient from '../containers/StepGradient';
+import StepGradientBackground from '../containers/StepGradientBackground';
 import StepCarouselGreet from '../containers/StepCarouselGreet';
 import VerticalGradient from './VerticalGradient';
 import SliderEntry from './SliderEntry';
-import type { Step } from '../../../models/cms.models';
+import type { Item } from './SliderEntry';
+import { NUMBER_OF_STEP_FOR_PHASES /* 10 */ } from '../../../services/cms';
 
 const SLIDER_1_FIRST_ITEM = 0;
 type Props = {
-	steps: Array<Step>,
+	items: Array<Item>,
 	sliderWidth: number,
 	itemWidth: number,
 	snap: number => void,
-	onPress: Function
+	onPress: (item:Item, index:number) => void
 };
 
 type State = {
@@ -25,15 +26,18 @@ type State = {
 };
 
 export default class PagninatedCarousel extends PureComponent<Props, State> {
+
 	state = { activeSliderIndex: SLIDER_1_FIRST_ITEM, activeSliderRef: null };
 
 	render() {
-		const { steps, sliderWidth, itemWidth, snap, onPress } = this.props;
+		const { items, sliderWidth, itemWidth, snap, onPress } = this.props;
 		const { activeSliderRef, activeSliderIndex } = this.state;
+
+
 		return (
 			<View style={styles.paginatedCarouselContainer}>
 				<VerticalGradient />
-				<StepGradient step={activeSliderIndex} />
+				<StepGradientBackground step={activeSliderIndex} />
 				<StepCarouselGreet step={activeSliderIndex} />
 				<Carousel
 					ref={c => {
@@ -41,7 +45,7 @@ export default class PagninatedCarousel extends PureComponent<Props, State> {
 							this.setState({ activeSliderRef: c });
 						}
 					}}
-					data={steps}
+					data={items}
 					renderItem={({ item, index }, parallaxProps) => (
 						<SliderEntry
 							data={item}
@@ -77,8 +81,8 @@ export default class PagninatedCarousel extends PureComponent<Props, State> {
 					}}
 				/>
 				<Pagination
-					dotsLength={Math.min(steps.length, 10)}
-					activeDotIndex={activeSliderIndex % 10}
+					dotsLength={Math.min(items.length, NUMBER_OF_STEP_FOR_PHASES)}
+					activeDotIndex={activeSliderIndex % NUMBER_OF_STEP_FOR_PHASES}
 					containerStyle={styles.paginationContainer}
 					dotColor={colors.dotColor}
 					dotStyle={styles.paginationDot}

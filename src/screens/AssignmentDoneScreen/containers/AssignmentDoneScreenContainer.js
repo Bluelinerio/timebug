@@ -18,18 +18,18 @@ type Props = {
 type State = {};
 
 const mapStateToProps = state => {
-  const { allSteps, totalNumberOfSteps, colors } = state.cms;
+  const { steps, totalNumberOfSteps, colors } = state.cms;
   const nextStepNumber = selectors.currentStepNumber(state);
 	const currentStepNumber = nextStepNumber - 1;
-  const currentStep = allSteps[currentStepNumber];
+  const currentStep = steps[currentStepNumber];
   const currentStepColor = colors.steps[currentStepNumber]
   if (nextStepNumber < totalNumberOfSteps) {
     const nextStepColor = colors.steps[nextStepNumber] ;
-    const nextStep = allSteps[nextStepNumber];
+    const nextStep = steps[nextStepNumber];
     const nextStepDuration = nextStep.duration;
     
     return {
-      allSteps,
+      steps,
       currentStep,
       currentStepColor,
       nextStepDuration,
@@ -38,7 +38,7 @@ const mapStateToProps = state => {
     };
   }
   return {
-    allSteps,
+    steps,
     currentStep,
     currentStepColor,
     nextStepNumber: 0,

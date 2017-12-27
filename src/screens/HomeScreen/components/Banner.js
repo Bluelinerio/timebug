@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Image, Platform, Text, View, SafeAreaView } from 'react-native';
-import styles from '../styles/index.styles'
+import styles from '../styles'
 import VerticalGradient from './VerticalGradient';
 import Logo from './Logo';
 

@@ -12,11 +12,10 @@ export type Props = {
 	totalNumberOfSteps: number, 
 	currentStep: Step, 
 	color: string,
-	goToAssignmentFlow: ({number : number}) => void,
 	imageUri:string
 }
 
-export default ({ totalNumberOfSteps, currentStep, color, goToAssignmentFlow, imageUri }: Props) => {
+export default ({ totalNumberOfSteps, currentStep, color, imageUri }: Props) => {
   const { type, stepScreenDescription, number, duration } = currentStep;
 	return (
 		<View style={[style.header, { backgroundColor: color }]}>

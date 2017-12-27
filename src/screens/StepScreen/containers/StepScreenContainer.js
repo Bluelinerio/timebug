@@ -15,13 +15,9 @@ type Props = {
 };
 
 const mapStateToProps = (state) => {
-  const step = selectors.currentStep(state);
-	const color = selectors.currentStepColor(state);
-  return {
-    step,
-    color
-  }
-};
+  const steps = selectors.sortedSteps(state);
+  return { steps }
+}
 
 const StepScreenContainer = connect(mapStateToProps, null)(StepScreen)
 
