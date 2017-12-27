@@ -13,7 +13,9 @@
     "test:android": "yarn test-env && yarn test-e2e:android",
     "run:android": "cp config.example.json config.json && node node_modules/react-native/local-cli/cli.js run-android",
     "run:ios": "cp config.example.json config.json && node node_modules/react-native/local-cli/cli.js run-ios",
-    "clean:android": "cd android && gradlew clean && cd .."
+    "clean:android": "cd android && gradlew clean && cd ..",
+    "fetch-cms-static": "node scripts/contentful-fetch.js --exec babel-node --presets es2015, stage-2"
+
   },
   "dependencies": {
     "apollo-client": "^1.9.3",

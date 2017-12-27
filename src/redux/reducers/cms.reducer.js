@@ -1,7 +1,8 @@
 // @flow
 import { FETCH_CMS } from '../actions/cms.actions'
 import type { Step, Colors, } from '../../services/cms'
-import { colors, steps } from '../../static/CMSData'
+const { steps, colors, about} = require('../../static/cms.json');
+
 
 export type StepsState = {
 	requestCount: number,
@@ -21,7 +22,8 @@ const initialState: StepsState = {
 	requestCount: 0,
 	lastFetchDate: null,
 	totalNumberOfSteps: 30,
-	steps: [],
+	about,
+	steps,
 	colors,
 	error: null
 }
