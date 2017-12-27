@@ -6,6 +6,68 @@ See docs/COMPONENT_UX_GUIDE.MD for further reference/details on individual __com
 #General UX Rules
 * All fields required unless otherwise noted
 
+## Step 1
+1) Write your best life memory
+* __Group entry__, struct:
+  * Describe what happened(__long text__)
+  * What area of life does this belong to?(__Dropdown__ of enums _AreaOfLife_)
+  * At what stage of your life was it?(__Dropdown__ of enums _StageOfLife_)
+2) What are some of your regrets?
+* __Group entry__, struct:
+  * Describe what happened(__long text__)
+  * What area of life does this belong to?(__Dropdown__ of enums _AreaOfLife_)
+  * At what stage of your life was it?(__Dropdown__ of enums _StageOfLife_)
+3) What are your defining moments?(__List entry__ of moments(__short text__))
+4) When you were in that 90 year old’s body and mind
+* __Group entry__, struct:
+  * Reflecting back on your life, what did you feel?(__Long text__)
+  * What were some of the emotions you felt?(__List Entry__ of emotions(__dropdown__ of enums _Emotions_))
+
+## Step 2
+1) How do you spend a typical 168 hour week right now?
+* (__List entry__ of __Group entries__), struct:
+  * Category(__Dropdown__ of enums _LifeCategory_)
+  * Hours (__Number__)
+    * All "hours" fields should not be able to surpass total of 168
+    * Floating bank of 'hours' should let the user know how many they have left(168-total entered)
+    * Life category __dropdown__ must repopulate options with every list entry - previously selected LifeCategories should not be available
+    * All list entries should display Life Category and Hours inline
+2) If you could make any changes that you wanted to?
+* (__List entry__ of __Group entries__), struct: 
+  * Category(__Dropdown__ of enums _LifeCategory_)
+  * Hours (__Number__)
+    * All "hours" fields should not be able to surpass total of 168
+    * Floating bank of 'hours' should let the user know how many they have left(168-total entered)
+    * Life category __dropdown__ must repopulate options with every list entry - previously selected LifeCategories should not be available
+    * All list entries should display Life Category and Hours inline, and below should display the 'currently spent' hours from step question 1. 
+3) Write down at least 3 things that you want to DO LESS of in general (ie. Watching TV).
+* (__List entry__ of __Group entries__), struct:
+  * Thing(__Short text__)
+  * Area Of Life(__Dropdown__ of enums _AreaOfLife_)
+    * Min entries: 3, Max entries: 10
+4) Write down at least 3 things that you want to DO MORE of, in your ideal life setup.
+* (__List entry__ of __Group entries__), struct:
+  * Thing(__Short text__)
+  * Area Of Life(__Dropdown__ of enums _AreaOfLife_)
+    * Min entries: 3, Max entries: 10
+
+## Step 3
+1) List 3-5 Charachter Strengths of yours, and the resulting goals that you achieved.
+* (__List entry__ of __Group entries__), struct:
+  * Strengths Self View(__Dropdown__ of enums _CharachterStrengths_)
+  * Resulting Goal Achieved(__Short Text__)
+    * Min entries: 3, Max entries: 5
+2) List 3-5 Charachter Traits that have held you back from achieving your goals.
+* (__List entry__ of __Group entries__), struct:
+  * Weakness Self View(__Dropdown__ of enums _CharachterWeaknesses_)
+  * Goal Not Reached(__Short Text__)
+    * Min entries: 3, Max entries: 5
+3) List 3-5 Charachter Strengths and Weaknesses from a friend or family member's point of view. (__Group Entry__, struct:)
+  * Write down your friend or family member's name.(__Short text__)
+  * Select 3-5 charachter strengths from your friend or family member's point of view.(__List Entry__ of __Dropdowns__ of enums _CharachterStrengths_)
+  * Select 3-5 charachter weaknesses from your friend or family member's point of view.(__List Entry__ of __Dropdowns__ of enums _weaknessFriendView_)
+
+
 ## Step 4
   * 1) List 3-15 potential Board members who can positively impact different areas of your life.
     * Each Board Member is a __list entry__ of __group entries__. Group struct consists of a Board Member(__short text__), Life Category(__dropdown__ of enums _LifeCategory_), and Interaction Frequency (__dropdown__ of enums _InteractionFrequency_).
