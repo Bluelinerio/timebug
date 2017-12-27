@@ -37,8 +37,8 @@ export default class PagninatedCarousel extends PureComponent<Props, State> {
 		return (
 			<View style={styles.paginatedCarouselContainer}>
 				<VerticalGradient />
-				<StepGradientBackground step={activeSliderIndex} />
-				<StepCarouselGreet step={activeSliderIndex} />
+				<StepGradientBackground index={activeSliderIndex} />
+				<StepCarouselGreet index={activeSliderIndex} />
 				<Carousel
 					ref={c => {
 						if (!this.state.activeSliderRef) {

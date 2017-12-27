@@ -11,8 +11,8 @@ const mapStateToProps = (state) => {
 	return ({ gradientColorForStepFn })
 }
 
-const StepGradient = ({ step, gradientColorForStepFn, ...restOfProps }) => {
-	const { colorStart, colorEnd } = gradientColorForStepFn(step);
+const StepGradient = ({ index, gradientColorForStepFn, ...restOfProps }) => {
+	const { colorStart, colorEnd } = gradientColorForStepFn(index);
 	return (<StartEndGradient
 		colorStart={colorStart}
 		colorEnd={colorEnd}

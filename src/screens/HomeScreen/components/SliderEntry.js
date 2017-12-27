@@ -58,7 +58,7 @@ export default class SliderEntry extends PureComponent<Prop> {
 				</View>
 				<View style={[styles.textContainer, even ? styles.textContainerEven : {}]}>
 					{uppercaseTitle}
-					<Text style={[styles.subtitle, even ? styles.subtitleEven : {}]} numberOfLines={2}>
+					<Text style={[styles.subtitle, even ? styles.subtitleEven : {}]} numberOfLines={1}>
 						{subtitle}
 					</Text>
 				</View>
