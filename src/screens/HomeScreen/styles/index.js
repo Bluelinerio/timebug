@@ -27,7 +27,7 @@ export default StyleSheet.create({
 	},
 	gradient: {
 		...StyleSheet.absoluteFillObject,
-		opacity: 0.8
+		opacity: 1
 	},
 	scrollview: {
 		flex: 1
