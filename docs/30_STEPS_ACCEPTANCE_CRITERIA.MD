@@ -714,6 +714,27 @@ See docs/COMPONENT_UX_GUIDE.MD for further reference/details on individual __com
 11) List one wish that you have for the world or a particular sector of the world when it comes to Spirituality (i.e. World Inner Peace).(__short text__)
 12) How can you help, be it in any small way, to see this goal be achieved? (Hint: start with yourself and in  your own circle of family  and friends, with things that you have direct influence on).(__long text__)
 
+##Step 30
+1) Did you do your MANTRA today(assigned on Day 21)?(__Yes/No__)
+2) Did you EXERCISE and meditate yet today(assigned on Day 8)?(__Yes/No__)
+3) Did you MEDITATE yet today(assigned on Day 8)?(__Yes/No__)
+4) Start from 8,784 (8,760 hours in a typical year + 24 hours for the leap year of 2016). Map out how you would ideally spend and account for every single one of these hours.(__Group entry__, struct:)
+  * Basics (__List entry__ of __group entries__, struct:)
+    * Category Responsibility(__Dropdown__ enums _LifeCategory_)
+    * Life Category Classification(__Dropdown__ of enums _AreaOfLife_)
+    * Timebug Category(__Dropdown__ of enums _AssessmentTypes_)
+  * Home (__List entry__ of __group entries__, struct:)
+    * Category Responsibility(__Dropdown__ enums _LifeCategory_)
+    * Life Category Classification(__Dropdown__ of enums _AreaOfLife_)
+    * Timebug Category(__Dropdown__ of enums _AssessmentTypes_)
+  * Work (__List entry__ of __group entries__, struct:)
+    * Category Responsibility(__Dropdown__ enums _LifeCategory_)
+    * Life Category Classification(__Dropdown__ of enums _AreaOfLife_)
+    * Timebug Category(__Dropdown__ of enums _AssessmentTypes_)  
+      * Basics, home and Work should be collapsible elements containing sub structs.
+    
+
+
 
 
 
