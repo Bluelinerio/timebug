@@ -12,7 +12,7 @@ export const colors = {
 	white: '#fff',
 	borderColor: '#ddd',
 	startGradientColor: 'white',
-	endGradientColor: 'rgba(220, 220, 220, 1.0)',
+	endGradientColor: '#f8f8f8',
 	...topColors
 }
 
