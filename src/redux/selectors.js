@@ -13,6 +13,7 @@ const stepColors = (state: any):Colors => getCms(state).colors.steps;
 const isCMSLoading = (state: any) => getCms(state).requestCount > 0
 const totalNumberOfSteps = (state: any) => getCms(state).totalNumberOfSteps
 const colors = (state:any) => getCms(state).colors
+const aboutText = (state:any) => getCms(state).about
 
 const user = (state: any): ?User =>
 	typeof getUserState(state) === 'string' ? null : getUserState(state)
@@ -33,6 +34,7 @@ export default {
 	getCms,
 	sortedSteps,
 	colorForStep,
+	aboutText,
 	step,
 	colors,
 	isCMSLoading,
