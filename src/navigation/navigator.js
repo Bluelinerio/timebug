@@ -7,7 +7,7 @@ import StepScreen from '../screens/StepScreen'
 import AssignmentLeadInScreen from '../screens/AssignmentLeadInScreen'
 import AssignmentDoneScreen from '../screens/AssignmentDoneScreen'
 import WorkBookScreen from '../screens/WorkBookScreen'
-
+import { uriPrefix } from '../constants'
 export const initialRouteName = 'HomeScreen'
 
 // TODO: there's an issue with moving from the current setup where the import of each screen gets you an object that looks like { screen: } rather than a component, so I added 
@@ -39,10 +39,11 @@ const AssignmentFlowNavigator = StackNavigator(
   }
 )
 
+
 const Navigator = StackNavigator(
   {
     HomeScreen : {
-      screen: HomeScreen.screen,
+      screen: () => (<HomeScreen prefix={uriPrefix} />),
     },
     AssignmentFlow: {
       screen: AssignmentFlowNavigator,

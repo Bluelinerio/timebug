@@ -79,8 +79,4 @@ const mapStateToProps = (state: any) => {
 };
 
 
-const screen = connect(mapStateToProps)(HomeScreen);
-
-export default {
-  screen
-}
+export default connect(mapStateToProps)(HomeScreen)
