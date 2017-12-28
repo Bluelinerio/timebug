@@ -5,7 +5,7 @@ export const APP_NAME = Platform.select({
 	android: 'lifevision'
 });
 
-const uriPrefix = Platform.select({
+export const uriPrefix = Platform.select({
 	android: 'lifevision://lifevision/',
 	ios: 'lifevision://'
 });
