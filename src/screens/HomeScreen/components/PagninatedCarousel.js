@@ -60,7 +60,7 @@ export default class PagninatedCarousel extends PureComponent<Props, State> {
 					)}
 					sliderWidth={sliderWidth}
 					itemWidth={itemWidth}
-					hasParallaxImages={true}
+					hasParallaxImages={false}
 					firstItem={SLIDER_1_FIRST_ITEM}
 					inactiveSlideScale={0.95}
 					inactiveSlideOpacity={0.75}
@@ -88,7 +88,7 @@ export default class PagninatedCarousel extends PureComponent<Props, State> {
 					dotStyle={styles.paginationDot}
 					inactiveDotColor={colors.inactiveDotColor}
 					inactiveDotOpacity={0.4}
-					inactiveDotScale={0.6}
+					inactiveDotScale={0.5}
 					carouselRef={activeSliderRef}
 					tappableDots={!!activeSliderRef}
 				/>

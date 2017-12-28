@@ -53,15 +53,15 @@ const mapStateToProps = state => {
   const model = state.form.model;
   const formData = state.form.data;
   const isFetching = state.network > 0
-  const color = selectors.currentStepColor(state);
+  const colors = selectors.stepColors(state);
   return {
     progress,
     model,
     formData,
     isFetching,
-    color
+    colors
   };
-};
+}
 
 @connect(mapStateToProps, { populateCurrentFormValue, changeFormValue })
 class WorkBookScreenContainer extends Component<Props, State> {
@@ -77,7 +77,7 @@ class WorkBookScreenContainer extends Component<Props, State> {
     }
   }
 
-  static navigationOptions = () => {
+  static navigationOptions = ({ navigation: { state: { params: {color, step } } } }) => {
 		return {
 			title: 'ASSIGNMENT',
 			headerTitleStyle: {
@@ -87,7 +87,7 @@ class WorkBookScreenContainer extends Component<Props, State> {
 				fontSize: 20.5
 			},
 			headerStyle: {
-				backgroundColor: StyleSheet.flatten(styles.headerColor).backgroundColor
+  			backgroundColor: color || StyleSheet.flatten(styles.headerColor).backgroundColor
 			},
       headerTintColor: 'white',
       headerLeft: (
