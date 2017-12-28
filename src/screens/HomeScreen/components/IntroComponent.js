@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Platform, Text, Dimensions, View, TouchableHighlight, ScrollView, Image } from 'react-native';
 import Markdown from '../../../Modules/Markdown';
 import LinearGradient from 'react-native-linear-gradient';
-import FBButton from '../containers/FBButton'
+import FBLoginButton from '../containers/FBLoginButton'
 import ScrollableHeader from '../../../components/ScrollableHeader';
 import DefaultIndicator from '../../../components/DefaultIndicator';
 import { backgroundImage, headerBackground } from '../../../resources/images/';
@@ -29,7 +29,7 @@ const Content = () => (
 		>
 			<Markdown markdownStyles={markdownStyles}>{'about'}</Markdown>
 		</ScrollView>
-		<FBButton />
+		<FBLoginButton />
 		
 		{/* TODO: Add textId and buttontestId for fb Button 
 		<Button onPress={onPress} textTestId={'login_text'} buttonTestId={'login_button'} text={'LOGIN WITH FACEBOOK'} styles={LoginButtonStyles}/> 

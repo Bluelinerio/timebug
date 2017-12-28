@@ -8,7 +8,6 @@ import LinearGradient from 'react-native-linear-gradient';
 import PagninatedCarousel from './components/PagninatedCarousel';
 import PagninatedCarouselContainer from './containers/PagninatedCarouselContainer';
 import Banner from './components/Banner';
-import FacebookButton from './containers/FacebookButton';
 import DefaultIndicator from '../../components/DefaultIndicator.js';
 import Error from '../../components/Error';
 import styles, { colors } from './styles';
@@ -53,7 +52,6 @@ class HomeScreen extends PureComponent<Props, State> {
 							alert(`You've clicked index:${index}\n'${item.title}'`);
 						}}
 					/>
-					{ !user && <FacebookButton /> }
 				</ScrollView>
 			</View>
 		);

@@ -6,7 +6,7 @@ import styles from '../styles'
 import VerticalGradient from './VerticalGradient';
 import Logo from './Logo';
 
-const Banner = ({ title = 'Test' } : {title: string }) => (
+const Banner = ({ title = 'Welcome' } : {title: string }) => (
 	<SafeAreaView style={[styles.bannerContainer]} forceInset={{ vertical: 'never' }}>
 		<View style={styles.banner}>
 			<VerticalGradient />

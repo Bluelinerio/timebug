@@ -1,5 +1,5 @@
 import { Dimensions, StyleSheet } from 'react-native';
-import { colors } from './index';
+import { deepBlue } from '../constants/colors';
 
 export default StyleSheet.create({
 	buttonContainer: {
@@ -23,7 +23,7 @@ export default StyleSheet.create({
 		overflow: 'hidden',
 		marginHorizontal: 10,
 		borderWidth: 1,
-		borderColor: colors.darkishBlue
+		borderColor: deepBlue
 	},
 	wideButtonBackground: {
 		backgroundColor: 'white'
@@ -41,7 +41,7 @@ export default StyleSheet.create({
 		fontSize: 15,
 		fontWeight: 'bold',
 		textAlign: 'center',
-		color: colors.darkishBlue
+		color: deepBlue
 	},
 	buttonGroup: {
 		flexDirection: 'row',

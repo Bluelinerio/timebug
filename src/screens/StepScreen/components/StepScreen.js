@@ -12,6 +12,7 @@ import Markdown from '../../../Modules/Markdown';
 import Icon from "react-native-vector-icons/Ionicons";
 import styles from '../styles';
 import Button from "../../../components/Button";
+import GradientWithTwoColors from '../../../components/GradientWithTwoColors'
 import ScrollableHeader from "../../../components/ScrollableHeader";
 import type { Step } from "../../../services/cms";
 import { getImageUrl } from "../../../services/cms";
@@ -19,21 +20,21 @@ import CustomImage from "../../../components/CustomImage";
 import { headerBackground } from "../../../resources/images";
 import { APPBAR_HEIGHT, STATUSBAR_HEIGHT } from "../../../constants";
 import markdownStyles from "../../../styles/Markdown/assignment";
-import ThemedGradientBackground from '../containers/ThemedGradientBackground'
 import AssignmentButtonContainer from '../containers/AssignmentButtonContainer';
 
-type Props = {
-  step: Step
-};
-
-type State = {
-  colorTop: string,
-  colorBottom: string
+export type Props = {
+  title: string, 
+  subtitle: string, 
+  description: string, 
+  number:number, 
+  imageUri:string, 
+  color: string, 
+  onPress: () => void
 };
 
 const HEADER_HEIGHT = 282;
 
-const Content = ({ subtitle, description, color }) => (
+const Content = ({ subtitle, description, color, number }) => (
   <View style={styles.stepScreenContent}>
     <Text
       testID={"step_subtitle"}
@@ -44,13 +45,13 @@ const Content = ({ subtitle, description, color }) => (
     <ScrollView style={styles.stepScreenScrollView}>
       <Markdown markdownStyles={markdownStyles}>{description}</Markdown>
     </ScrollView>
-    <AssignmentButtonContainer />
+    <AssignmentButtonContainer number={number} />
   </View>
 );
 
-const Header = ({ imageUri, title, number }) => (
+const Header = ({ imageUri, title, number, color}) => (
   <View style={[styles.stepScreenHeader]}>
-    <ThemedGradientBackground/>
+    <GradientWithTwoColors gradientTopColor={color} gradientBottomColor={'white'} />
     <View style={{
       flex:1,
       flexDirection: 'row',
@@ -70,28 +71,27 @@ const Header = ({ imageUri, title, number }) => (
   </View>
 );
 
-export default ({ navigation, step, goToAssignmentLeadInScreen, color }) => {
-  debugger
-  return  (
+export default ({ title, subtitle, description, number, imageUri, color, onPress }) => (
   <ScrollableHeader
     headerMaxHeight={HEADER_HEIGHT}
     headerMinHeight={0}
     headerImage={headerBackground}
     headerComponent={
       <Header
-        title={step.title}
-        number={step.number}
-        imageUri={getImageUrl(step.icon)}
+        color={color}
+        title={title}
+        number={number}
+        imageUri={imageUri}
       />
     }
     content={
       <Content
-        subtitle={step.subtitle}
-        description={step.description}
+        number={number}
+        subtitle={subtitle}
+        description={description}
         color={color}
-        onPress={() => goToAssignmentLeadInScreen({ number: step.number })}
+        onPress={onPress}
       />
     }
   />
 )
-}
