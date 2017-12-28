@@ -4,8 +4,8 @@ import { Dimensions, Text, View, TouchableHighlight } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import DefaultStyle from '../styles/components/StepButton';
 
-type Side = 'left' | 'right' | null
-type Props = {
+export type Side = 'left' | 'right' | null
+export type Props = {
 	text: string,
 	onPress?:() => void,
 	onPressWithProps?:(props:Props) => void,
