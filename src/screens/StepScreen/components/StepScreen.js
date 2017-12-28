@@ -38,7 +38,7 @@ const Content = ({ subtitle, description, color, number }) => (
   <View style={styles.stepScreenContent}>
     <Text
       testID={"step_subtitle"}
-      style={[styles.stepScreenText, styles.stepScreenSubtitle]}
+      style={[styles.stepScreenSubtitle]}
     >
       {subtitle}
     </Text>

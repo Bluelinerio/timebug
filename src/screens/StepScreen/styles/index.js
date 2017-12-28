@@ -58,6 +58,7 @@ export default StyleSheet.create({
     fontFamily: "Helvetica",
     fontSize: 32,
     color: darkishBlue,
+    marginRight:10
   },
   stepScreenImage: {
     flex: 1,

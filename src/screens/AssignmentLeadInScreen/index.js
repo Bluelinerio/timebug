@@ -1,6 +1,6 @@
 import screen from './containers/AssignmentsLeadInScreenContainer';
 
-screen.navigationOptions = ({ navigation: { state: { params:{color, step } } } }) => {
+screen.navigationOptions = ({ navigation: { state: { params: {color, step } } } }) => {
 	return {
 		title: 'ASSIGNMENT',
 		headerTitleStyle: {
