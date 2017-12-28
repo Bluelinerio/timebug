@@ -1,19 +1,39 @@
 import React                  from 'react';
 import * as ReactNavigation   from 'react-navigation';
-import { BackHandler }        from "react-native";
+import { BackHandler, Linking }
+                              from "react-native";
 import { connect }            from 'react-redux';
 import Navigator              from './navigator';
 import * as NavigationService from '../HOC/navigation'
+import { uriPrefix }          from '../constants'
 
 const mapStateToProps = state => ({ nav: state.nav });
 
 class ReduxNavigation extends React.Component {
   componentDidMount() {
     BackHandler.addEventListener("hardwareBackPress", this.onBackPress);
+    Linking.addEventListener('url', ({ url }: {url: string}) => {
+      this.handleUrl(url);
+    });
+    
+    Linking.getInitialURL().then(
+      (url: string) => url && this.handleUrl(url)
+    );
   }
   componentWillUnmount() {
     BackHandler.removeEventListener("hardwareBackPress", this.onBackPress);
+    Linking.removeEventListener('url', this.handleOpenURL);
   }
+  
+  handleUrl(url) {
+    const { dispatch } = this.props;
+    const path = url.split(uriPrefix)[1] || url;
+    const action = Navigator.router.getActionForPathAndParams(path);
+    if (action) {
+      dispatch(action);
+    }
+  }
+
   onBackPress = () => {
     const { dispatch, nav } = this.props;
     if (nav.index === 0) {
@@ -22,6 +42,7 @@ class ReduxNavigation extends React.Component {
     dispatch(NavigationActions.back());
     return true;
   }
+
   render() {
     const { dispatch, nav } = this.props;
     const navigation = ReactNavigation.addNavigationHelpers({
