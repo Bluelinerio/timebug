@@ -1,5 +1,4 @@
 export * from './AssignmentLeadInScreen'
-export * from './StepScreen'
 export * from './AssignmentDoneScreen'
 export * from './WorkBookScreen'
 export * from './components'
