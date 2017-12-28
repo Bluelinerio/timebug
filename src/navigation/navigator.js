@@ -8,26 +8,24 @@ import AssignmentLeadInScreen from '../screens/AssignmentLeadInScreen'
 import AssignmentDoneScreen from '../screens/AssignmentDoneScreen'
 import WorkBookScreen from '../screens/WorkBookScreen'
 import { uriPrefix } from '../constants'
-export const initialRouteName = 'HomeScreen'
 
 // TODO: there's an issue with moving from the current setup where the import of each screen gets you an object that looks like { screen: } rather than a component, so I added 
 const AssignmentFlowNavigator = StackNavigator(
   {
     StepScreen: {
       screen: StepScreen.screen,
-      path: 'step/:number'
     },
     AssignmentLeadInScreen: {
       screen: AssignmentLeadInScreen.screen,
-      path: 'step/leadin/:number'
+      path: 'leadin/:number'
     },
     WorkBookScreen: {
       screen: WorkBookScreen.screen,
-      path: 'step/workbook/:number'
+      path: 'workbook/:number'
     },
     AssignmentDoneScreen: {
       screen: AssignmentDoneScreen.screen,
-      path: 'step/finished/:number'
+      path: 'finished/:number'
     },
   },
   {
@@ -40,17 +38,19 @@ const AssignmentFlowNavigator = StackNavigator(
 )
 
 
-const Navigator = StackNavigator(
+export const initialRouteName = 'HomeScreen'
+const Main = StackNavigator(
   {
     HomeScreen : {
-      screen: () => (<HomeScreen prefix={uriPrefix} />),
+      screen: HomeScreen,
     },
     AssignmentFlow: {
       screen: AssignmentFlowNavigator,
+      path: 'step'
     }
   },
   {
-    initialRouteName,
+    initialRouteName:HomeScreen,
 		mode: Platform.OS === 'ios' ? 'modal' : 'card',
     headerMode: 'none',
     cardStyle: {
@@ -60,4 +60,25 @@ const Navigator = StackNavigator(
   }
 );
 
-export default Navigator;
+const previousGetActionForPathAndParams = Main.router.getActionForPathAndParams;
+
+Object.assign(Main.router, {
+  getActionForPathAndParams(path, params) {
+     const key = path.split('/')[1]
+    if (key === 'step') {
+      return NavigationActions.navigate({
+        routeName: 'Profile',
+        action: NavigationActions.navigate({
+          // This child action will get passed to the child router
+          // ProfileScreen.router.getStateForAction to get the child
+          // navigation state.
+          routeName: 'Friends',
+        }),
+      });
+    }
+    return previousGetActionForPathAndParams(path, params);
+  },
+});
+
+
+export default Main;
