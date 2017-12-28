@@ -64,7 +64,7 @@ export default {
         weaknessFriendView: t.list(CharachterWeaknesses)
       }),
       options: {
-        label: "List 3-5 Charachter Strengths from a friend or family member's point of view.",
+        label: "List 3-5 Charachter Strengths and Weaknesses from a friend or family member's point of view.",
         fields: {
           friendsName: {
             label: "Write down your friend or family member's name."

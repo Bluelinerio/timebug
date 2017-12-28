@@ -49,7 +49,7 @@ export default {
           label: "What Area Of Life does this belong to?"
         },
         regret: {
-          label: "Describe what happend"
+          label: "Describe what happened"
         }
       }
     }

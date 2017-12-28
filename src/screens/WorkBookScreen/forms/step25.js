@@ -50,9 +50,11 @@ export default {
       abletoAttain: t.String
     }),
     options: {
+
+      auto:'none',
       label: "The Year is 2020. Reflect on Day 15's assignment (Q3), and the Personal Aims that you were not able to achieve.",
       fields: {
-        aim: {
+        aims: {
           label: 'Were those Aims on your 2020 Bucket List?'
         },
         abletoAttain: {
@@ -94,7 +96,7 @@ export default {
       field: t.list(
         t.struct({
           bucketListPriorty: t.String,
-          importanceLevel: t.String,
+          importanceLevel: t.Number,
           timeSpent: t.String
         })
       ),
@@ -144,7 +146,7 @@ export default {
   12: {
     type: t.String,
     options: {
-      label: 'What advice would you give people who are on board with your wish- how can we all work together towards this aim in our personal lives.',
+      label: 'What advice would you give people who are on board with your wish- how can we all work together towards this aim in our personal lives?',
     }
   },
   13: {

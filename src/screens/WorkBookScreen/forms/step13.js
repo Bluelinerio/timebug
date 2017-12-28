@@ -1,4 +1,5 @@
 import t from "../components/templates";
+import { PaidFairly } from "./contents";
 
 
 export default {
@@ -10,17 +11,13 @@ export default {
           jan2011Salary: t.Number,
           Dec2015Salary: t.Number
         }),
-        paidFairly: t.struct({
-            beyondFair: t.Boolean,
-            notFair:t.Boolean,
-            justRight: t.Boolean
-          }),
-          compensationGoals: t.struct({
+        paidFairly: PaidFairly,
+        compensationGoals: t.struct({
             yes: t.Boolean,
             no: t.Boolean
           }),
-          hoursPerWeek: t.Number,
-          hoursChanged: t.maybe(t.String)
+        hoursPerWeek: t.Number,
+        hoursChanged: t.maybe(t.String)
     }),
     options: {
       label: "Take some time to evaluate your salary and compensation over the past 5 years.",
@@ -40,19 +37,8 @@ export default {
         hoursPerWeek: {
             label:'How many hours do you work on average per week?'
         }, 
-        salaryGrowth: {
+        hoursChanged: {
             label:'How have your work week hours changed since 2011?',
-            fields: {
-            jan2011Salary: {
-                placeholder: 'Jan 2011 salary',
-                auto: 'none'
-            },
-            Dec2015Salary: {
-                placeholder: 'Dec 2015 Salary',
-                auto: 'none'
-            }
-            
-          }
 
         }, 
          auto: 'none'

@@ -54,11 +54,13 @@ t.struct({
 
 2)List Entry: tcomb type 'list'
 - List of items, can contain any type, or a group entry. Must contain a '+' button for adding list items and a '-' button for removing.
-- Must always hold state - should maintain value after entered, including in between sessions, so a user can always go back and edit. Options are generated from const of type enums - in some forms, options should not be reusable.
+- Must always hold state - should maintain value after entered, including in between sessions, so a user can always go back and edit. Particular to list items that contain select components, options are generated from const of type enums - in some forms, options should not be reusable.
   - Example - Step 3(form 1):
      The select box populates options from const CharachterStrengths defined in contens.js of forms directory. When a charachter strength is selected, it should not be available in further list items - this component should contain an onChange prop which updates state and removes previously selected options from the list.
-- Must have an option for min and max items. **Needs research**
+- Must have an option for min and max items. Min number of items should be displayed by default on the screen. **Needs research**
 - Must have a placeholder option of null value. **Needs research**
+- For lists of group entries, should collapse to title/first field and show all data in a pop up when clicked. **Needs research**
+- Need Sub-Lists - should be passed as an option or stylesheet which indents the list and gives smaller text. ex: /docs/30_STEPS_ACCEPTANCE_CRITERIA.MD - Step 6
 
 3)Short text: tcomb type 'String'
 - A submit or 'ok' button can appear once the input is valid(seperate from the submit button for the entire form) We can check for validation using tcomb-validation(https://github.com/gcanti/tcomb-validation/blob/master/README.md). See typeform text inputs for an example of how this works.
@@ -92,7 +94,6 @@ t.struct({
 10)Statement (no entry text component)
 - passed as title attribute of each form, e.g.: 
 ``` 1: { title: "Make a list of 2-10 role models and note their influencial life category, the degree to which you know/interact with them personally and the reason for why you look up to them.", type: ... ```
-
 
 
 

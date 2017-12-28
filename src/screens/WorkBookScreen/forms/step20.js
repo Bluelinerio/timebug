@@ -59,10 +59,10 @@ export default {
             label:'a)Has anything changed with your life category breakdown?'
           },
           thingsDoLess: {
-            label:'Has anything changed with your 3 things that you want to DO LESS of in general(i.e. "Watching TV")?'
+            label:'b)Has anything changed with your 3 things that you want to DO LESS of in general(i.e. "Watching TV")?'
           },
           thingsDoMore: {
-            label:'Has anything changed with your 3 things that you want to DO MORE of in general(i.e. "Exercising")?'
+            label:'c)Has anything changed with your 3 things that you want to DO MORE of in general(i.e. "Exercising")?'
           }
         }
       }

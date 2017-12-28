@@ -6,6 +6,68 @@ See docs/COMPONENT_UX_GUIDE.MD for further reference/details on individual __com
 #General UX Rules
 * All fields required unless otherwise noted
 
+## Step 1
+1) Write your best life memory
+* __Group entry__, struct:
+  * Describe what happened(__long text__)
+  * What area of life does this belong to?(__Dropdown__ of enums _AreaOfLife_)
+  * At what stage of your life was it?(__Dropdown__ of enums _StageOfLife_)
+2) What are some of your regrets?
+* __Group entry__, struct:
+  * Describe what happened(__long text__)
+  * What area of life does this belong to?(__Dropdown__ of enums _AreaOfLife_)
+  * At what stage of your life was it?(__Dropdown__ of enums _StageOfLife_)
+3) What are your defining moments?(__List entry__ of moments(__short text__))
+4) When you were in that 90 year old’s body and mind
+* __Group entry__, struct:
+  * Reflecting back on your life, what did you feel?(__Long text__)
+  * What were some of the emotions you felt?(__List Entry__ of emotions(__dropdown__ of enums _Emotions_))
+
+## Step 2
+1) How do you spend a typical 168 hour week right now?
+* (__List entry__ of __Group entries__), struct:
+  * Category(__Dropdown__ of enums _LifeCategory_)
+  * Hours (__Number__)
+    * All "hours" fields should not be able to surpass total of 168
+    * Floating bank of 'hours' should let the user know how many they have left(168-total entered)
+    * Life category __dropdown__ must repopulate options with every list entry - previously selected LifeCategories should not be available
+    * All list entries should display Life Category and Hours inline
+2) If you could make any changes that you wanted to?
+* (__List entry__ of __Group entries__), struct: 
+  * Category(__Dropdown__ of enums _LifeCategory_)
+  * Hours (__Number__)
+    * All "hours" fields should not be able to surpass total of 168
+    * Floating bank of 'hours' should let the user know how many they have left(168-total entered)
+    * Life category __dropdown__ must repopulate options with every list entry - previously selected LifeCategories should not be available
+    * All list entries should display Life Category and Hours inline, and below should display the 'currently spent' hours from step question 1. 
+3) Write down at least 3 things that you want to DO LESS of in general (ie. Watching TV).
+* (__List entry__ of __Group entries__), struct:
+  * Thing(__Short text__)
+  * Area Of Life(__Dropdown__ of enums _AreaOfLife_)
+    * Min entries: 3, Max entries: 10
+4) Write down at least 3 things that you want to DO MORE of, in your ideal life setup.
+* (__List entry__ of __Group entries__), struct:
+  * Thing(__Short text__)
+  * Area Of Life(__Dropdown__ of enums _AreaOfLife_)
+    * Min entries: 3, Max entries: 10
+
+## Step 3
+1) List 3-5 Charachter Strengths of yours, and the resulting goals that you achieved.
+* (__List entry__ of __Group entries__), struct:
+  * Strengths Self View(__Dropdown__ of enums _CharachterStrengths_)
+  * Resulting Goal Achieved(__Short Text__)
+    * Min entries: 3, Max entries: 5
+2) List 3-5 Charachter Traits that have held you back from achieving your goals.
+* (__List entry__ of __Group entries__), struct:
+  * Weakness Self View(__Dropdown__ of enums _CharachterWeaknesses_)
+  * Goal Not Reached(__Short Text__)
+    * Min entries: 3, Max entries: 5
+3) List 3-5 Charachter Strengths and Weaknesses from a friend or family member's point of view. (__Group Entry__, struct:)
+  * Write down your friend or family member's name.(__Short text__)
+  * Select 3-5 charachter strengths from your friend or family member's point of view.(__List Entry__ of __Dropdowns__ of enums _CharachterStrengths_)
+  * Select 3-5 charachter weaknesses from your friend or family member's point of view.(__List Entry__ of __Dropdowns__ of enums _weaknessFriendView_)
+
+
 ## Step 4
   * 1) List 3-15 potential Board members who can positively impact different areas of your life.
     * Each Board Member is a __list entry__ of __group entries__. Group struct consists of a Board Member(__short text__), Life Category(__dropdown__ of enums _LifeCategory_), and Interaction Frequency (__dropdown__ of enums _InteractionFrequency_).
@@ -44,9 +106,199 @@ See docs/COMPONENT_UX_GUIDE.MD for further reference/details on individual __com
     * Field is required.
 
 ## Step 8
-  * 1) On a 1-10 scale, write down your Physical, Mental and Emotional energy levels during different times ofthe day (Morning, Afternoon, Evening) on a typical day.
+1) On a 1-10 scale, write down your Physical, Mental and Emotional energy levels during different times ofthe day (Morning, Afternoon, Evening) on a typical day.
+* __Group entry__, struct:
+  * Weekday(__group entry__), struct:
+    * Morning(__group entry__), struct:
+      * Physical(__number__)
+      * Mental(__number__)
+      * Emotional(__number__)
+    * Afternoon(__group entry__), struct:
+      * Physical(__number__)
+      * Mental(__number__)
+      * Emotional(__number__)
+    * Evening(__group entry__), 
+      * Physical(__number__)
+      * Mental(__number__)
+      * Emotional(__number__)
+  * Weekend(__group entry__), struct:
+    * Morning(__group entry__), struct:
+      * Physical(__number__)
+      * Mental(__number__)
+      * Emotional(__number__)
+    * Afternoon(__group entry__), struct:
+      * Physical(__number__)
+      * Mental(__number__)
+      * Emotional(__number__)
+    * Evening(__group entry__), 
+      * Physical(__number__)
+      * Mental(__number__)
+      * Emotional(__number__)
+  * Now(__group entry__), struct:
+      * Physical(__number__)
+      * Mental(__number__)
+      * Emotional(__number__)
+* _Weekday_, _Weekend_ and _Now_ should paginate, each getting it's own page.
+* Morning, Afternoon and Evening should be collapsible elements containing requisite sub-structs
+2)Please answer the following questions regarding your typical exercise habits.
+* __Group entry__, struct:
+  * Times per week(__Short text__)
+  * For how long?(__Short text__)
+  * What type of exercise?(__Dropdown__ of enums _ExerciseTypes_)
+  * Alone or with others?(__Dropdown__ of enums _AloneOrOthers_)
+  * What time of day?(__Dropdown__ of enums _TimesOfDay_)
+3)Please answer the following questions regarding your typical meditation habits.
+* __Group entry__, struct:
+  * Times per week(__Short text__)
+  * For how long?(__Short text__)
+  * What type of exercise?(__Dropdown__ of enums _MeditationTypes_)
+  * Alone or with others?(__Dropdown__ of enums _AloneOrOthers_)
+  * What time of day?(__Dropdown__ of enums _TimesOfDay_)
+4)Are you committed to exercising and meditating for at least 20 mins daily from now until the end of the 20/20 Life Vision Challenge?(__Yes/No__)
 
-...WIP
+## Step 9
+1) Make a list of 2-10 role models and note their influencial life category, the degree to which you know/interact with them personally and the reason for why you look up to them.
+* __List entry__ of __group entries__, struct:
+  * Role Model(__Short text__)
+  * Life Category(__Dropdown__ of enums _LifeCategory_)
+  * Interaction Frequency(__Dropdown__ of enums _InteractionFrequency_)
+  * Why(__Long text__)
+* Min items:2, max:10 for __list entry__
+* Each list entry should be a collapsible element, revealing group entry when expanded.
+
+##Step 10
+1) Identify 5-10 different I's. Note how strong each I is for you(on a 1-10 scales with 1=weakest and 10=strongest), and what I would say in a few words.
+* __List entries__ of __group entries__, Struct:
+  * I(__Short text__)
+  * Strength Of "I"(scale of 1-10)(__Number__)
+  * What I would say(__Long text__)
+* Min items:5, max:10 for __list entry__
+* Each list entry should be a collapsible element, revealing group entry when expanded.
+2) Reflecting back on the day 5 list of Goals, pick several and briefly note how your ego aspects either hindered or aided you.
+* __List entries__ of __group entries__, Struct:
+  * Goal(__Short text__)
+  * Ego Influence(__Long Text__)
+
+##Step 11
+1)Gather all of your previous goal data, including time spent and key achievements over the past 5 years. You can start with 2015 if you feel overwhelmed assessing all 5 years.
+* __List entries__ of __group entries__, Struct:
+  * Goal(__Short text__)
+  * % of Goal Completed(__Number__, max value:100, min value:0)
+  * Satisfaction Level(__Number__, 1-10 scale)
+  * Invested Time/Energy(__Number__, 1-10 scale)
+  * Required Time/Energy(__Short text__)
+* Each list entry should be a collapsible element, revealing group entry when expanded.
+2) Outline the Goal-Setting & Tracking Process that you have followed over the past 5 years.
+* __Group entry__, struct:
+  * How do you describe the process?(Select one)(__Dropdown__ of enums _DescribeProcess_)
+  * Have you written down your goals annually?(Check each year that you have done this for)(__Group entry__), struct:
+    * 2011(__Boolean__)
+    * 2012(__Boolean__)
+    * 2013(__Boolean__)
+    * 2014(__Boolean__)
+    * 2015(__Boolean__)
+  * Do you use wearable teach, websites and/or spreadsheets to manage your time and goals?(select one)(__Dropdown__ of enums _UseWearableTech_)
+3)In a few sentences, and descriptive key words, assess how your life has been, and how you have done over the past 5 years.(__Long text__)
+
+## Step 12
+1) Specify what MLEs took placer over the past 5 years. Working with your Day 2 worksheet,specify how your time was generally shifted as a result.
+* __List entry__ of __Group entries__, struct:
+  * Major Life Event(__Dropdown__ of enums _MajorLifeEvents_)
+  * How did this shift your time? (__Long Text__)
+* Each list entry should be a collapsible element, revealing group entry when expanded.
+* User should be able easily able to access dashboard, or some other way to access step 2 information, without leaving the screen or with links easily connecting the information.
+
+2) Building on or refining Question 1 form Day 11, how did those MLEs factor in - positively and negatively - to your goals over the past 5 years?
+* __Group entry__, struct:
+  * Emotional/Mental Response(__Long text__)
+  * Internal Energy Influence(__Long text__)
+* User should be able easily able to access dashboard, or some other way to access step 11 information, without leaving the screen or with links easily connecting the information.
+
+## Step 13
+1)Take some time to evaluate your salary and compensation over the past 5 years.
+* __Group entry__, struct:
+  * How has your salary grown(or not) from 01/11 to 12/15(5 full years)?(__Group entry__), struct:
+    * Jan 2011 Salary(__Number__)
+    * Dec 2015 Salary(__Number__)
+  * Do you feel like you are being paid fairly for what you offer?(__Dropdown__ of enums _PaidFairly_)
+  * Did you meet whatever compensation goals you had set for 2015, anytime in 2011-2014?(__Yes/No__)
+  * How many hours do you work on average per week?(__Number__)
+  * How have your work week hours changed since 2011?(__Long text__)
+2)Take some time to evaluate your fulfillment with what you are doing in the workplace using a 10pt scale(1=hate it vs 10=love it, and 1=not motivated vs 10=highly motivated)
+* __Group entry__, struct:
+  * How fulfilling is your work?(__Number__, 1-10 scale)
+  * How did you feel about your work over the past 5 years?(__Group entry__, struct:)
+    * 2011(__Number__ 1-10 scale)
+    * 2012(__Number__ 1-10 scale)
+    * 2013(__Number__ 1-10 scale)
+    * 2014(__Number__ 1-10 scale)
+    * 2015(__Number__ 1-10 scale)
+      * Each 'year' long text should live inside of a collapsible element.
+      * Each 'year' input should display inline
+  * What is your motivation level at work right now?(__Number__ 1-10 scale)
+  * List up to 5 meaningful achievements that you have had at work over the past 5 years(__list entry__ of __group entries__), struct:
+    * Meaningful Achievement(__Short text__)
+    * What changed, if anything?(__Long text__)
+3) Take some time to evaluate your shortcomings at work.
+  * __Group entry__, struct:
+    * What would your boss/peer say about your workplace performance?(__Long text__)
+    * What does your work mentor(assuming it is not your boss, otherwise skip this question) think about your workplace performance?(__Long text__)
+      * Not required
+    * What do you say, now for yourself - what were your shortcomings over these 5 years?(__Long text__)
+    * What price did you pay for your self-recognized or boss/colleague-perceived weaknesses over the past 5 years? (can be from multiple jobs)(__Long text__)
+
+## Step 14
+1)Please evaluate your relationship with money.
+* __Group Entry__, struct:
+  * How do you feel about your relationship with money today(emotionally and psychologically?)(__Long text__)
+  * How do others perceive your relationship to money?(Ok to ask another person)(__Long text__)
+2) What is your credit score?
+* __Group Entry__, struct:
+  * Dec '15(__Number__)
+  * Jan '11(__Number__)
+3)//TODO: Add label, or combine with no.2
+* __Group entry__, struct:
+  * Why did it change?(__Long text__)
+  * What is your best achievement in this area over the past 5 years?(__Long text__)
+  * What is your biggest dissapointment over the past 5 years?(__Long text__)
+    * Each __Long text__ should live inside of a collapsible element
+4)Create a quick personal Balance Sheet using the 20/20 Worksheet as a guide.
+* __Group entry__, struct: 
+  * Reflecting on your Balance Sheet, how do you feel?(Use keywords or phrases)(__Long text__)
+  * How does this picture compare to where you stood in 2011?(__Long text__)
+  * Where do you stand today compared to what you had envisioned for yourself?(__Dropdown__ of enums _WhereStandToday_)
+5)Create a quick personal Profit & Loss Statement using the 20/20 Worksheet as a guide. It is your choice as to whether to focus on your own individual P&L versus as a couple, if you are married.
+* __Group entry__, struct: 
+  * Assets(__group entry__, struct):
+    * Liquid Assets(__List entry__ of Liquid Assets(__short text__))
+    * Properties(__List entry__ of Properties(__short text__))
+    * Total Assets(__Number__)
+      * Should auto calculate as Liquid assets + Properties
+  * Liabilities(__group entry__, struct):
+    * Short term debts(__List entry__ of Short term debts(__short text__))
+    * Long term debts(__List entry__ of long term debts(__short text__))
+    * Total Liabilities(__Number__)
+      * Should auto calculate as Short term debts + Long term debts
+  * Total Personal Equity(__Number__)
+    * Should auto calculate as Assets - Liabilities
+  * Take some time to reflect on your P&L sheet(__Group entry__, struct:)
+    * How do you feel?(__Long text__)
+    * How does this picture compare to where you stood in 2011?(__Long text__)
+    * Where do you stand today compared to what you had envisioned for yourself?(__Dropdown__ of enums _WhereStandToday_)
+  * Profit/Loss Statement (__Group entry__, struct:)
+    * Income (__Group entry__, struct:)
+      * Income 2015(__List entry__ of Income(__short text__)
+      * Savings and Investments (__List Entry__ of Savings and Investments(__short text__))
+      * Total Income(__Number__)
+        * Should auto calculate as all list entries in Income 2015 + all Savings and Investments
+  * Expenses (__Group entry__, struct:)
+    * Expenses Non Discretionary(__List entry__ of Expenses(__short text__)
+    * Expenses Discretionary(__List entry__ of Expenses(__short text__)
+    * Total Expenses(__Number__)
+        * Should auto calculate as all list entries in Expenses Non Discretionary + Expenses Discretionary
+  * Net (__Number__, should auto calculate as Income - Expenses)
+  
+    * Assets, Liabilities, Total Personal Equity, P&L Sheet, Profit/Loss Statement, and Expenses should live inside of collapsible elements.
 
 ## Step 15
 * 1) Gather all of your previous goal data, including time spent, and key achievements ove rthe past 5 years. You can start with 2015 if you feel overwhelmed assesing all 5 years.
@@ -71,7 +323,7 @@ See docs/COMPONENT_UX_GUIDE.MD for further reference/details on individual __com
     * Each list entry should be a collapsible element, revealing group entry when expanded.
 
 ## Step 16
-* 1)Take time to evaluate your general health status
+1)Take time to evaluate your general health status
   * __Group entry__, struct consits of:
     * How much of a priority has health been for you?(__dropdown__ of enums _PriorityLevels_)
     * How do you feel now,physical health wise ?(1-10 scale , __number__)
@@ -169,5 +421,385 @@ See docs/COMPONENT_UX_GUIDE.MD for further reference/details on individual __com
 
 ## Step 19
   1) Take the time to evaluate your spiritual views
+  * What are your current views and feelings about Spirituality? What does it mean to you? (__Long text__)
+  * Who and what influenced your Spiritual views early on in life? (__Long text__)
+  * Who are your current role models or mentors in this area? Why do you admire their approach to and views on life? (__Long text__)
+  2) Take time to evaluate your spiritual practices
+  * How much time do you spend specifically, each week, on Spiritual practices, Interactions, reading, writing, etc.?(__Long text__)
+  * How have your Spiritual practices and/or beliefs changed in the past 5 years?(__Long text__)
+  3) Take time to evaluate your Spiritual Insights & Growth
+  * What internal qualities(Iqs: Goal Type 4) have been influenced - positively or negatively - by Spiritual practices - or lack thereof?
+  * List 5-10 insights that you have gained, in relation to the 5 components of Spirituality noted above, over the past 5 years? (__List entry__ of __group entries__)
+    * What Is My Purpose On Earth? (__long text__)
+    * Beyond My Outer Form, What Am I? (__long text__)
+    * My Karma Has Shown Me... (__long text__)
+    * I have healed emotional wounds from...(__long text__)
+     
+## Step 20
+  1)Reflect back on your Day 11 Worksheet (The 5-Year Life Report), and make refinements or additional notes, given what you have seen here. Be more technical than before, especially when it comes to how you spent your Time & Energy.
+  * Review your goals, time spent, and key achievements listed on Day 11. What, if anything, has changed with your time and energy allotment?(__list entry__ of __group entries__). Struct:
+    * New insights(be as technical as you can)(__long text__)
+    * Specific changes to make to previous wk(__long text__)
+  2)Reflect back on your Day 2 Worksheet (More or Less Time), and make refinements or additional notes, in relation to how your time allocation has changed over the past 5 years; and how you ideally would like to make changes in the current breakdown across Life Categories.
+  * Reflect back on your Day 2 Worksheet (More or Less Time), and make refinements or additional notes, in relation to how your time allocation has changed over the past 5 years; and how you ideally would like to make changes in the current breakdown across Life Categories.
+    * a)Has anything changed with your life category breakdown?(__long text__)
+    * b)Has anything changed with your 3 things that you want to DO LESS of in general(i.e. "Watching TV")?(__long text__)
+    * c)Has anything changed with your 3 things that you want to DO MORE of in general(i.e. "Exercising")?(__long text__)
+  3) Reflect back on your 7 Assessments [Days 13-19]
+  * Rank the 7 Areas in terms of the order of importance you gave them over the past 5 years.
+    * 7 __dropdowns__ of enums _AssesmentTypes_, labeled rank 1,rank 2.....rank 7
+      * __dropdown__ must hold state, once an option is selected, it should not be available for selection in other fields
+  4) If the 7 areas were a pie, how would you slice up your energy and motivation level?(Total should = 100%)
+   * 7 __number__ inputs labeled: Career, Personality & Hobbies, Health, Relationship, Financial, Place & Environment, Spirituality
+    * All inputs combined must have a max value of 100.
+    * A floating bank should appear, or a meter, displaying how much 'percentage' user has left.
+    * Error msg to appear if user inputs over 100% 'Please remove x percent'
+    * Pie graph to dynamically generate based on input?
+  5) Give yourself a final evaluation for each of the past 5-years, as well as an overall 5-Year Score(1-10 score per year, for a total maximum high score of 50/50, per each of the 7 Areas that were assessed).
+  * __group entry__, struct(repeates for every year through 2015):
+    * Career 2011(__Number__)  
+    * Personality and Hobbies 2011(__Number__)  
+    * Health 2011 (__Number__)  
+    * Relationships 2011 (__Number__)  
+    * Financial 2011(__Number__)  
+    * Place and Environment 2011(__Number__)  
+    * Spirituality 2011(__Number__)
+  * each year/sub-sctruct should be a collapsible element.
+  * min value = 1, max value= 10 for each input.
+  * At the bottom of the page, there should be inputs that dynamically calculate total school for each category over all 5 years.
+  6) Have one other person(per Area) - be it a family member or friend, and preferably one of your CEO of Me Board Members - give you a Score for the past 5 years(on a 1-10 scale), and then multiply that number by 5, to arrive at your 3rd Party Rating(this number will be between 5-50; and you should have one for each of the 7 Assessment Areas).
+  * __group entry__, struct(repeates for every year through 2015):
+    * Career 2011(__Number__)  
+    * Personality and Hobbies 2011(__Number__)  
+    * Health 2011 (__Number__)  
+    * Relationships 2011 (__Number__)  
+    * Financial 2011(__Number__)  
+    * Place and Environment 2011(__Number__)  
+    * Spirituality 2011(__Number__)
+  * each year/sub-sctruct should be a collapsible element.
+  * min value = 1, max value= 10 for each input.
+  * At the bottom of the page, there should be inputs that dynamically calculate total school for each category over all 5 years.
+
+## Step 21
+1)Imagine different areas of your garden, as in the Life Categories which you have created back on Day 2. Who planted most of the seeds in your garden over the course of your life?
+* __List entry__ of __group entries__, struct:
+  * Area Of Garden(__dropdown__ of enums _LifeCategory_)
+  * Self Influence (__Number__, max value 100(%))
+  * Other Influence ( __Number__, max value 100(%))          
+  * Name of Other (__Short text__)
+* min entries: 9(one for each _LifeCategory_)
+* Each life category should be a collapsible element
+* Self influence + Other influence must = 100%
+* Area Of Garden __dropdown__ must dynamically repopulate select options - any category selected should not be available again unless unselected.
+2) Are you committed to taking full ownership of your life garden going forward?
+* __Yes/No__
+3) Reflecting on the 7 Self-Assessments from days 13-19, list two BHAGs for 2020
+* __group entry__, struct:
+   * Career Shortcoming: __long text__ 
+   * Career BHAG: __long text__
+   -- repeats for all 7 Categories - Career, Personality and Hobbies, Health, Relationships, Financial, Place and Environment, Spirituality
+* All categories should be collapisble elements.
+4) Think about how strong your current tools(skills,approach,etc) are for tending to your garden - Strengths & Weaknesses from Day 3 is a useful review.
+* __List entry__ of __group entries__, struct:
+  * Skill(__dropdown__ of enums _CharachterStrength_)
+  * Proficiency Level(Using a 10pt Scale with 1=beginner to 10=master)(__number__, min_value:1, max_value:10)
+  * Aspiration Level(__number__, min_value:1, max_value:10)
+  * What improvements needs to happen for you to reach your aspirational 2020 level?(__long text__)
+* Each __List entry__ should be a collapisble element labeled by Skill
+* Skill __dropdown__ must dynamically repopulate options, any category selected should not be available again unless unselected.
+4) Think about how strong your current tools(skills,approach,etc) are for tending to your garden - Strengths & Weaknesses from Day 3 is a useful review.
+* __List entry__ of __group entries__, struct:
+  * Skill(__dropdown__ of enums _CharachterStrength_)
+  * Proficiency Level(Using a 10pt Scale with 1=beginner to 10=master)(__number__, min_value:1, max_value:10)
+  * Aspiration Level(__number__, min_value:1, max_value:10)
+  * What improvements needs to happen for you to reach your aspirational 2020 level?(__long text__)
+* Each __List entry__ should be a collapisble element labeled by Skill
+* Skill __dropdown__ must dynamically repopulate options, any category selected should not be available again unless unselected.
+
+## Step 22
+1) Did you do your MANTRA today(assigned on Day 21)?
+* __Yes/No__
+2) Did you EXERCISE and meditate yet today(assigned on Day 8)?
+* __Yes/No__
+3) Did you MEDITATE yet today(assigned on Day 8)?
+* __Yes/No__
+4) What do you dream about?
+* Describe the general themes, quality and lucidity of your dreams(__long text__)
+* How often do you remember your dreams?(__dropdown__ of enums _DreamsRemember_)
+* Have your dreams ever come true (i.e., you dreamt about something and then it happened(__yes/no__)
+5) For the remainder of the program (8 Nights of Dreaming), try to remember and write your dreams down first thing in the morning – or even if you wake up in the middle of the night, the way Jason described his experience in the video. ( __List entry__ of __long texts__)
+* Required entries:8
+6) What are your life dreams? This doesn’t have to be restricted to what your literal dreams (during sleep) are. Right now, go beyond 2020 and even your 20/20 BHAGs (from Day 21’s Assignment)... and allow yourself to dream, in this moment, about everything you want your life to be. Anything is possible. Describe what you see.(__long text__)
+
+## Step 23
+1) Did you do your MANTRA today(assigned on Day 21)?(__Yes/No__)
+2) Did you EXERCISE and meditate yet today(assigned on Day 8)?(__Yes/No__)
+3) Did you MEDITATE yet today(assigned on Day 8)?(__Yes/No__)
+4) If you could change jobs, and do something totally new, what would it be?(__Long text__)
+5) Reflecting back on Day 13’s Assignment – particularly the questions on Fulfillment – what changes would you need to make in your career to get both answers (on Fulfillment and Motivation) to 10 on the scale?(__Long text__)
+6) Back on Day 21, you were asked to list 2 BHAGs (Big Hairy Audacious Goals) for Career and 6 other areas of life. Focusing on Career only now, take that a step further, by adding 3-5 more Career BHAGs (so you should now have 5-7 Career BHAGs).(__List entry__ of __long text__)
+* Min items:3, Max:
+7)Also on Day 21, Question 3 asked about specific skills that you are looking to build over the next 5 years. Go deeper into that now, with a career focus, making sure you have 3-5 career specific skills that you plan to develop. #Skillbug
+* __List entry__ of __group entries__, struct:
+  * Skill(__Short text__)
+  * What will you do in 2017 to develop this skill? (__Long text__)
+  * How much time per week will you dedicate to this? (__Long text__)
+8) The average worker spends 40 hrs * 50 weeks working = 2,000 hours. How many hours will you spend working in 2016? #Workbug(__Number__)
+
+## Step 24
+1) Did you do your MANTRA today(assigned on Day 21)?(__Yes/No__)
+2) Did you EXERCISE and meditate yet today(assigned on Day 8)?(__Yes/No__)
+3) Did you MEDITATE yet today(assigned on Day 8)?(__Yes/No__)
+4) The year is 2020. How much money does you bank have in it? Take a picture or screenshot of your current bank account balance, print it out, and edit the date and cash balance, writing in 12/31/2020 and your desired number.(__Number__)
+5) Write a short story about what it will take for you to achieve your Money BHAG? (__Long text__)
+6) Who is your “finance team” that has helped you to not only attain but also manage your financial success?
+* __List entry__ of __short text__
+7) What do you plan to do with any excess money that you come into by 2020?(__Long text__)
+8) Describe how your life will be different in 2020, as a result of the achievement of your Money BHAG.(__Long text__)
+9) How much more or less will you work as a result? (__Long text__)
+10) How many days a year will you be off or on vacation? (__Short text__)
+11) What additional material things will you have or have access to that you now don’t? (__Long text__)
+12) How will you feel, that is different than what you feel now? (__Long text__)
+13) Think about one other person in your life, who you want to see succeed with and change their relationship to money. Who is it?(__Short text__)
+14) How do you want to see them change their financial fortunes by 2020?(__Long text__)
+15) How can you help them achieve this goal?(__Long text__)
+16) List one wish that you have for the world or a particular sector of the world when it comes to money. (__Long text__)
+17) What group of people or country can be most influential in helping this goal be attained?(__long text__)
+
+## Step 25
+1) Did you do your MANTRA today(assigned on Day 21)?(__Yes/No__)
+2) Did you EXERCISE and meditate yet today(assigned on Day 8)?(__Yes/No__)
+3) Did you MEDITATE yet today(assigned on Day 8)?(__Yes/No__)
+4) The Year is 2020. Reflect on Day 15's assignment (Q3), and the Personal Aims that you were not able to achieve.
+* __Group entry__, struct:
+  * Were those Aims on your 2020 Bucket List?(__long text__)
+  * Why were you able to attain those goals and make time for those hobbies?(__long text__)
+* User should be able easily able to access dashboard, or some other way to access step 15 information, without leaving the screen or with links easily connecting the information.
+5) List any other new goals for your 2020 List
+* __List entry__ of goals(__short text__).
+6) Prioritize the items of the list using 1= the most important, 2= second most important etc.
+* __Group entry__, struct:  
+  * Bucket List Priority(__short text__)
+  * Importance Level(1-10 scale , __number__)
+  * Time Spent(__short text__)
+7) Looking back from 2020 to 2016, which areas in your personal time have you cut down on or out completely? (__Long text__)
+8) Think about one other person in your life, who you want to see enjoy more time for themselves, doing the things that you know would make them happy. Who is it? (__short text__)
+9) How do you want to see them attain those personal goals, making it happen by 2020?(__Long text__)
+10) How can you help him/her achieve his/her personal goals?(__Long text__)
+11) List one wish that you have for the world or a particular sector of the world when it comes to personal aims and hobbies.(__Long text__)
+12) What advice would you give people who are on board with your wish- how can we all work together towards this aim in our personal lives?(__Long text__)
+13) How can you help, be it in any small way, to see this goal be achieved? (__Long Text__)
+
+## Step 26
+1) Did you do your MANTRA today(assigned on Day 21)?(__Yes/No__)
+2) Did you EXERCISE and meditate yet today(assigned on Day 8)?(__Yes/No__)
+3) Did you MEDITATE yet today(assigned on Day 8)?(__Yes/No__)
+4) The year is 2020. You have achieved all of your health goals and feel on top of the world, physically, mentally and emotionally. Describe what changes you made in your life to reach this state.  What changes and achievements did you make across the following areas:
+* __Group entry__, struct:
+  * Prioritizing your Health Goals vs. other Areas(__Long text__)
+  * Fitness & Exercise(__Long text__)
+  * Nutrition & Diet(__Long text__)
+  * Sleep(__Long text__)
+  * Body Care(__Long text__)
+  * Mental & Emotional Health(__Long text__)
+* All __long text__ elements should live inside collapsible accordion component.
+5) Think about one other person in your life, who you want to see make drastic improvements in their physical health.
+* __Group Entry__, struct:
+  * Who is it?(__Short text__)
+  * How should they change by 2020?(__Long text__)
+  * How can you help?(__Long text__)
+6) List one wish that you have for the world or a particular sector of the world when it comes to Health.(__Long text__)
+7) What group of people or country can be most influential in helping this goal be attained?(__Short text__)
+8) How can you help, be it in any small way, to see this goal be achieved?(__Long text__)
+
+## Step 27
+1)The first way I want to encourage a healthier flow of giving and receiving is to take deep, proactive breaths. As you breathe IN, you receive. As you breathe OUT, you assert or give back to life. So take a deep breath in the nose, filling up the lower belly. Then breathe fully out of the mouth with an open, dropped jaw. Do this fully in both directions. This will show your nervous system how safe you are do engage in the act of giving and receiving. This is the foundational work. Did you do this?(__Yes/No__)
+2)Now ask yourself what you discovered in the first inventory about how you have typically treated yourself in the last five years?
+* __Group Entry__, struct:
+  * Inventory Summary(__Long text__)
+  * Is that reality where you want to find yourself in 2020?(__Yes/No__)
+  * If no, list out a few of those replacement self-thoughts that you intend to actualize going forward(__Long text__)
+  * Describe your relationship to self in 2020. (__Long text__)
+3)Replacing your habitual negative thinking (internal messages) with purposely looking for things to acknowledge about yourself. This can be simply, small things. So scan your life and get in a daily practice of acknowledging yourself. Find things that encourage a consistent, positive, and self-affirming view of yourself.
+* __Group Entry__, struct:
+  * I am proud of myself for _________ that I took(at some point)(__Short Text__)
+  * I feel great that I chose ________ or that I treated someone well or _________ (__Short text__)
+  * I want to acknowledge my gift/talent/ability _________ (__Short text__)
+* These should all be "Fill in the blank components", to be researched/discussed/developed
+4) Write a few down several days in a row. Repeat that for several weeks, until it becomes a more natural part of your life. This is GIVING to self... and letting yourself feel the impact of those positive, honest messages will enhance how you receive.
+* __Group Entry__, struct:
+  * Day 1(__Long text__)
+  * Day 2(__Long text__)
+  * Day 3(__Long text__)
+5) Final piece of your relationship to self. Get used to stopping several times a day to ask yourself: “What are 3 feelings that I am feeling right now in this moment?” To get a list of feelings with some wonderful clues, visit http://www.ronbaker.net/feelings/'
+* __Group Entry__, struct:
+  * Feeling 1(__Short text__)
+  * Feeling 2(__Short text__)
+  * Feeling 3(__Short text__)
+* Need clickable links in t-comb labels
+6) What did you discover from your first inventory about giving and receiving with others from the last 5 years?
+* __Group Entry__, struct:
+  * Write down your thoughts from your first inventory about giving and receiving with others(__Long text__)
+  * Is that where you would like to find yourself in 2020?(__Yes/No__)
+  * If not, then are you willing to interrupt old choices that no longer serve you AND replace them with healthier alternatives?(__Yes/No__)
+7) PREPARE for moments to come with your various relationships, by making yourself aware of some of the things you value and appreciate about others. Remember, when you have a moment of connection with each of those people, be willing to share out loud ONE thing that you appreciate about them.
+* __List Entry__ of __group entries__, struct:
+  * Name 3 different people you value(__Group entry__ of 3 __short text__ elements)
+  * Name 3 specific things you appreciate and value about each one(__Group entry__ of 3 __short text__ elements)
+  * Describe the state of your relationships in 2020
+* All list entries should live inside of collapsible elements.
+8) What have you done by 2020 to heal and repair the relationships that you noted have regressed in the Day 17 Assignment? (__Long text__)
+9) In order to create a balance of what you give, what specific needs are you aware of that you have in your life (physical, emotional or mental needs)? List them here, at least 3 for each category (physical, mental, emotional). As you learn to identify those needs, it becomes safe to then communicate them one at a time to others.
+* __Group entry__, struct:
+  * Physical Needs(__List entry__ of __short texts__)
+  * Mental Needs(__List entry__ of __short texts__)
+  * Emotional Needs(__List entry__ of __short texts__)
+* All list entries should be collapsible elements
+* Min items 3 for all __list entries__
+10) Start with naming ONE need. Are you willing to communicate this need to another person, allowing yourself to receive the support? Start with simple things, to build up confidence. (i.e. I need help with moving some furniture around in my living room. I need a shoulder rub. I need someone to listen while I vent about something that just happened.) Once YOU identify the need, then you can look to your support structure to begin to practice mutual giving and receiving.
+*__group entry__, struct:
+  * Name of need(__short text__)
+  * Willing to communicate this to another person?(__Yes/no__)
+11)Meditate on and come up with one 20/20 Relationship Vision for the world. This could revolve around how people all over the world treat each other, or deal with groups of people (i.e. families, specific societies/cities, countries), internally or externally (i.e. foreign relations).(__Long text__)
+12)If you simply ask yourself, would I be willing to offer the same thing to this friend/loved one in a similar way to how I am asking them to help support me?(__Yes/no__)
+
+##Step 28
+1) Did you do your MANTRA today(assigned on Day 21)?(__Yes/No__)
+2) Did you EXERCISE and meditate yet today(assigned on Day 8)?(__Yes/No__)
+3) Did you MEDITATE yet today(assigned on Day 8)?(__Yes/No__)
+4) What major P&E goals [BHAGs] do you envision or yourself by 2020?
+* __List entry__ of goals(__short text__)
+5) Your Bucket List can include simple goals as well – not everything has to be a monumental BHAG List out up to 10 items for your 2020 PE Bucket List
+* __List entry__ of __group entries__, struct:
+  * Bucket PE BHAGs(__short text__)
+  * Prioritize your BHAG with 1= most important, 2= second most important (__number__)
+  * Estimate how much time per year (2016-2020) you plan to spend on avg working toward this BHAG(__short text__)
+* All list entries should be collapsible elements
+6) Think about one other person in your life, who you want to see enjoy a major transformation in their PE surroundings.
+* __Group entry__, struct:
+  * Who?(__Short text__)
+  * How do you want to see them attain those PE goals, making it happen by 2020?(__Long text__)
+  * How can you help them achieve their PE goals?(__Long text__)
+7) What have you done by 2020 to heal and repair the relationships that you noted have regressed in the Day 17 Assignment?(__Long text__)
+8) List one wish that you have for the world or a particular sector of the world when it comes to personal aims and hobbies.(__Long text__)
+9) What advice would you give people who are on board with your wish – how can we all work together towards this aim in our personal lives?(__Long text__)
+10)How can you help, be it in any small way, to see this goal be achieved?(__Long text__)
+
+## Step 29
+1) Did you do your MANTRA today(assigned on Day 21)?(__Yes/No__)
+2) Did you EXERCISE and meditate yet today(assigned on Day 8)?(__Yes/No__)
+3) Did you MEDITATE yet today(assigned on Day 8)?(__Yes/No__)
+4) List 3-10 Spiritual “teammates”, and write a few notes about how you plan to connect with them this coming year.
+* __List entry__ of __group entries__, struct:
+  * Spiritual teammate(__short text__)
+  * How will you connect with him/her(__long text__)
+* All list entries should be collapsible elements
+5) What major goals [BHAGs] do you envision for yourself by 2020? [i.e. doing a 10-day meditation retreat; fasting for 30 days; writing down your deepest feelings and thoughts in a journal every day for a whole year, etc.].
+* __List entry__ of goals(__short text__)
+6) List out up to 10 items for your 2020 Spirituality Bucket List [i.e. reading specific philosophy, self-help or religious books; visiting sacred sites; etc].
+* __List entry__ of __group entries__, struct:
+  * Spirituality bucket list(__short text__)
+  * Prioritize your Spirtuality BHAG with 1= most important, 2= second most important (__number__)
+  * Estimate how much time per year (2016-2020) you plan to spend on avg working toward this BHAG(__short text__)
+* All list entries should be collapsible elements
+7) List out up to 10 items for your 2020 Spirituality Bucket List [i.e. reading specific philosophy, self-help or religious books; visiting sacred sites; etc].
+* __List entry__ of __group entries__, struct:
+  * I(ego Aspect)(__short text__)
+  * How will this I evolve in 2020? (__long text__)
+  * What this I says now(__long text__)
+  * What this I will say in 2020(__long text__)
+8) Think about one other person in your life, who you want to see enjoy a major transformation or sense of peace and internal happiness in their lives. Who is it?(__short text__)
+9) How do you want to see them attain those inner journey goals, making it happen by 2020?(__long text__)
+10) How can you help them achieve their Spiritual goals?(__long text__)
+11) List one wish that you have for the world or a particular sector of the world when it comes to Spirituality (i.e. World Inner Peace).(__short text__)
+12) How can you help, be it in any small way, to see this goal be achieved? (Hint: start with yourself and in  your own circle of family  and friends, with things that you have direct influence on).(__long text__)
+
+## Step 30
+1) Did you do your MANTRA today(assigned on Day 21)?(__Yes/No__)
+2) Did you EXERCISE and meditate yet today(assigned on Day 8)?(__Yes/No__)
+3) Did you MEDITATE yet today(assigned on Day 8)?(__Yes/No__)
+4) Start from 8,784 (8,760 hours in a typical year + 24 hours for the leap year of 2016). Map out how you would ideally spend and account for every single one of these hours.(__Group entry__, struct:)
+  * Basics (__List entry__ of __group entries__, struct:)
+    * Category Responsibility(__Dropdown__ enums _LifeCategory_)
+    * Life Category Classification(__Dropdown__ of enums _AreaOfLife_)
+    * Timebug Category(__Dropdown__ of enums _AssessmentTypes_)
+  * Home (__List entry__ of __group entries__, struct:)
+    * Category Responsibility(__Dropdown__ enums _LifeCategory_)
+    * Life Category Classification(__Dropdown__ of enums _AreaOfLife_)
+    * Timebug Category(__Dropdown__ of enums _AssessmentTypes_)
+  * Work (__List entry__ of __group entries__, struct:)
+    * Category Responsibility(__Dropdown__ enums _LifeCategory_)
+    * Life Category Classification(__Dropdown__ of enums _AreaOfLife_)
+    * Timebug Category(__Dropdown__ of enums _AssessmentTypes_)  
+      * Basics, home and Work should be collapsible elements containing sub structs.
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       

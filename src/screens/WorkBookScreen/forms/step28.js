@@ -66,7 +66,7 @@ export default {
       item:{
         fields:{
           bucketPEBHAG:{
-            label:'Bucket PE BHAGs'
+            label:'Bucket PE BHAG'
           },
           priority:{
             label:'Prioritize your BHAG with 1= most important, 2= second most important'

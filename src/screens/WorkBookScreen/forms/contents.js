@@ -256,5 +256,44 @@ export const AloneOrOthers = t.enums.of([
   'With Others'
 ], 'AloneOrOthers')
 
+export const DreamsRemember = t.enums.of([
+'Daily',
+'Most of the time,',
+'Occasionally',
+'Rarely',
+'Never'
+],'DreamsRemember')
+
+export const DescribeProcess = t.enums.of([
+  "I haven't done anything",
+  'Ad Hoc',
+  'Good at setting but not tracking',
+  'Super detailed and consistent',
+  'Thorough + working with a coach or peer group'
+  ],'DescribeProcess')
+
+export const UseWearableTech = t.enums.of([
+    'Never',
+    'Sometimes',
+    'Often',
+    'Always'
+    ],'UseWearableTech')
+
+export const PaidFairly = t.enums.of([
+      'Beyond Fair',
+      'Not Fair',
+      'Just Right'
+      ],'PaidFairly')
+
+export const WhereStandToday = t.enums.of([
+      'I am way behind where I wanted to be',
+      'I am a little behind but close',
+      'I am right where I need to be',
+      'I am a little ahead',
+      'I am way ahread of where I imagined I would be'
+      ],'WhereStandToday')      
+
+
+
 
 

@@ -73,6 +73,7 @@ export default {
             label: 'What internal qualities(Iqs: Goal Type 4) have been influenced - positively or negatively - by Spiritual practices - or lack thereof?',
           },
           insights: {
+            label: 'List 5-10 insights that you have gained, in relation to the 5 components of Spirituality noted above, over the past 5 years?',
             item: {
               fields:{
                 purposeOnEarth: {
