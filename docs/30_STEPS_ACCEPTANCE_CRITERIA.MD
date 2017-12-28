@@ -714,7 +714,7 @@ See docs/COMPONENT_UX_GUIDE.MD for further reference/details on individual __com
 11) List one wish that you have for the world or a particular sector of the world when it comes to Spirituality (i.e. World Inner Peace).(__short text__)
 12) How can you help, be it in any small way, to see this goal be achieved? (Hint: start with yourself and in  your own circle of family  and friends, with things that you have direct influence on).(__long text__)
 
-##Step 30
+## Step 30
 1) Did you do your MANTRA today(assigned on Day 21)?(__Yes/No__)
 2) Did you EXERCISE and meditate yet today(assigned on Day 8)?(__Yes/No__)
 3) Did you MEDITATE yet today(assigned on Day 8)?(__Yes/No__)
