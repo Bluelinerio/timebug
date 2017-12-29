@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import selectors from '../../../redux/selectors';
 import { goToWorkBookScreen } from '../../../redux/actions/nav.actions';
 import { loginWithFbButtonPressed } from '../../../redux/actions'
+import { deepBlue } from '../../../constants/colors'
 
 const mapStateToProps = state => {
   const steps = selectors.steps(state);
@@ -22,7 +23,7 @@ const buttonTestId= 'step_to_workbook_button'
 const merge = (stateProps, dispatchProps, ownProps): Props => {
   const { colors, steps, needsLogin } = stateProps
   const { number } = ownProps
-  const backgroundColor = colors[number]
+  const backgroundColor = needsLogin? deepBlue : colors[number]
   const text = needsLogin? 'Login with Facebook to start' : 'BEGIN';
   const { loginWithFbButtonPressed, goToWorkBookScreen } = dispatchProps;
   const onPressWithProps = needsLogin ? loginWithFbButtonPressed : goToWorkBookScreen
