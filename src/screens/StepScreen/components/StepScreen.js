@@ -19,7 +19,7 @@ import { getImageUrl } from "../../../services/cms";
 import CustomImage from "../../../components/CustomImage";
 import { headerBackground } from "../../../resources/images";
 import { APPBAR_HEIGHT, STATUSBAR_HEIGHT } from "../../../constants";
-import markdownStyles from "../../../styles/Markdown/assignment";
+import markdownStyles from "../../../styles/Markdown/stepScreen";
 import AssignmentButtonContainer from '../containers/AssignmentButtonContainer';
 
 export type Props = {

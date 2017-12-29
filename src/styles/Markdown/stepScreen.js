@@ -10,9 +10,9 @@ export default {
   },
   block: {
     textAlign: 'left',
-    fontWeight: '300',
+    fontWeight: '100',
     fontFamily: 'Helvetica',
-    fontSize: 25,
+    fontSize: 18,
     marginBottom: 15,
   },
   listItemContent: {
