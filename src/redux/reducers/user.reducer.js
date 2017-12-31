@@ -2,7 +2,7 @@
 import type { UserStateAction } from '../actions'
 import { SET_USER_STATE } from '../actions'
 import type { User, UserState , Progress} from '../../services/apollo/models'
-import { ANONYMOUS, UNDETERMINED } from '../../services/apollo/models'
+import { ANONYMOUS, UNDETERMINED, AUTHENTICATING } from '../../services/apollo/models'
 import { GET_USER, updateProgress } from '../actions/user.actions'
 import { LOGOUT, UPDATE_PROGRESS } from '../actionTypes'
 
@@ -17,6 +17,8 @@ export default function(state: UserState = UNDETERMINED, action: Action) {
 	switch (action.type) {
 		case SET_USER_STATE:
 			return action.state;
+		case GET_USER.STARTED:
+			return AUTHENTICATING
 		case GET_USER.SUCCEEDED:
 			return action.payload
     	case updateProgress.UPDATE:
