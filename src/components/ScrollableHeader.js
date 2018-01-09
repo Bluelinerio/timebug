@@ -38,12 +38,22 @@ export default class ScrollableHeader extends Component<Props, State> {
 		});
 		const imageOpacity = this.state.scrollY.interpolate({
 			inputRange: [0, headerScrollDistance / 2, headerScrollDistance],
-			outputRange: [1, 1, 0],
+			outputRange: [1, 1, 1],
 			extrapolate: 'clamp'
 		});
 		const imageTranslate = this.state.scrollY.interpolate({
 			inputRange: [0, headerScrollDistance],
 			outputRange: [0, -50],
+			extrapolate: 'clamp'
+		});
+		const headerOpacity = this.state.scrollY.interpolate({
+			inputRange: [0, headerScrollDistance / 2, headerScrollDistance],
+			outputRange: [0, 1, 1],
+			extrapolate: 'clamp'
+		});
+		const contentOpacity = this.state.scrollY.interpolate({
+			inputRange: [0, headerScrollDistance / 2, headerScrollDistance],
+			outputRange: [1, 0, 0],
 			extrapolate: 'clamp'
 		});
 
@@ -81,7 +91,6 @@ export default class ScrollableHeader extends Component<Props, State> {
 								width: null,
 								height: headerMaxHeight,
 								zIndex: 10,
-								opacity: imageOpacity,
 								transform: [{ translateY: imageTranslate }]
 							}}
 							source={headerImage}
@@ -95,23 +104,27 @@ export default class ScrollableHeader extends Component<Props, State> {
 								left: 0,
 								right: 0,
 								width: null,
-								height: headerMaxHeight,
+								height: headerHeight,
 								zIndex: 9,
-								transform: [{ translateY: imageTranslate }]
+								opacity: contentOpacity,
+								transform: [{ translateY: imageTranslate }],
 							}}
 						>
 							{headerComponent}
 						</Animated.View>
 					) : null}
-
 					<Animated.View
 						style={{
-							marginTop: 28,
-							height: 32,
+							position: 'absolute',
+							top: 0,
+							left: 0,
+							right: 0,
+							height: headerMaxHeight -10,
 							alignItems: 'center',
 							justifyContent: 'center',
 							backgroundColor: 'transparent',
-							zIndex: 11
+							opacity: headerOpacity,
+							zIndex: 11,
 						}}
 					>
 						{header}

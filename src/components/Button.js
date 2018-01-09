@@ -2,10 +2,10 @@
 import React from 'react';
 import { Dimensions, Text, View, TouchableHighlight } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import DefaultStyle from '../styles/components/StepButton';
+import defaultStyle from '../styles/components/Button';
 
-type Side = 'left' | 'right' | null
-type Props = {
+export type Side = 'left' | 'right' | null
+export type Props = {
 	text: string,
 	onPress?:() => void,
 	onPressWithProps?:(props:Props) => void,
@@ -27,7 +27,7 @@ export default (props: Props) => {
 	const paddingHorizontal = side ? 35 : 50;
 	const opacity = disabledStyle ? 1 : disabled ? 0.1 : 1;// set alpha to 0.1 when disabled and disabledStyle not provided
 	styles = {
-		...DefaultStyle,
+		...defaultStyle,
 		...styles,
 	}
 

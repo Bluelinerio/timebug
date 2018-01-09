@@ -1,15 +1,16 @@
 // @flow
-import { GET_STEP_COLORS, SUCCESS } from '../actionTypes'
-import { FETCH_STEPS } from '../actions/cms.actions'
+import { FETCH_CMS } from '../actions/cms.actions'
 import type { Step, Colors, } from '../../services/cms'
-import { colors } from '../../static/CMSData'
+const { steps, colors, about} = require('../../static/cms.json');
 
-export type StepsState = {
+
+export type CMSState = {
 	requestCount: number,
 	lastFetchDate: ?number,
 	totalNumberOfSteps: number,
-	allSteps: Array<Step>,
-	colors: Colors
+	steps: Array<Step>,
+	colors: Colors,
+	error: ?string
 }
 
 type StepsAction = {
@@ -17,30 +18,30 @@ type StepsAction = {
 	payload?: Array<Step> | Colors
 }
 
-const initialState: StepsState = {
+const initialState: CMSState = {
 	requestCount: 0,
 	lastFetchDate: null,
 	totalNumberOfSteps: 30,
-	allSteps: [],
-	colors
+	about,
+	steps,
+	colors,
+	error: null
 }
 
-export default function(state: StepsState = initialState, action: StepsAction) {
+export default function(state: CMSState = initialState, action: StepsAction) {
 	switch (action.type) {
-		case FETCH_STEPS.STARTED:
+		case FETCH_CMS.STARTED:
 			return { ...state, requestCount: state.requestCount + 1 }
-		case FETCH_STEPS.SUCCEEDED:
+			case FETCH_CMS.SUCCEEDED:
 			return {
 				...state,
-				allSteps: action.payload,
+				...action.payload,
 				lastFetchDate: Date.now(),
 				requestCount: state.requestCount - 1
 			}
-		case (FETCH_STEPS.CANCELLED, FETCH_STEPS.ERRORED):
-			return { ...state, requestCount: state.requestCount - 1 }
-		case GET_STEP_COLORS[SUCCESS]:
-			return { ...state, colors: action.colors }
-		default:
+			case (FETCH_CMS.CANCELLED, FETCH_CMS.ERRORED):
+			return { ...state, requestCount: state.requestCount - 1, error: action.error || null }
+			default:
 			return state
 	}
 }

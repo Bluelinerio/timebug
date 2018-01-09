@@ -36,8 +36,8 @@ export default StyleSheet.create({
     alignSelf: 'flex-end',
   },
   stepScreenContent: {
-    marginTop: 2,
-    marginBottom: 30
+    marginTop: 20,
+    marginBottom: 30,
   },
   stepScreenText: {
     color: '#000000',
@@ -47,17 +47,19 @@ export default StyleSheet.create({
   stepScreenSubtitle: {
     fontFamily: "Helvetica",
     fontSize: 24,
-    fontWeight: "300",
-    color: "#4a4a4a",
+    fontWeight: "500",
+    color: darkishBlue,
     textAlign: 'left',
     paddingHorizontal: 35,
     paddingVertical: 20,
   },
   stepScreenTitle: {
-    flex:3,
+    flex:1,
     fontFamily: "Helvetica",
     fontSize: 32,
+    fontWeight: "bold",
     color: darkishBlue,
+    marginRight:10
   },
   stepScreenImage: {
     flex: 1,

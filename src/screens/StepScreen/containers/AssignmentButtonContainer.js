@@ -2,19 +2,17 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Button from '../../../components/Button'
+import type { Props, Side } from '../../../components/Button'
 import selectors from '../../../redux/selectors'
 import { navigateToAssignmentLeadInScreen as onPressWithProps} from '../../../redux/actions/nav.actions';
 import LoginButtonStyles from '../../../styles/components/LoginButton'
-import { compose, withProps, withHandlers } from 'recompose';
-
-
 
 const mapStateToProps = state => {
-  const step = selectors.currentStep(state);
-  const backgroundColor = selectors.currentStepColor(state);
+  const steps = selectors.steps(state);
+  const colors = selectors.stepColors(state);
   return {
-    step,
-    backgroundColor,
+    steps,
+    colors
   }
 }
 
@@ -22,12 +20,19 @@ const textTestId= 'step_to_assignment_text'
 const buttonTestId= 'step_to_assignment_button'
 const text = "ASSIGNMENTS"
 
-
-export default compose(
-  connect(mapStateToProps, ({onPressWithProps})),
-  withProps({
+const merge = (stateProps, dispatchProps, ownProps): Props => {
+  const { colors, steps } = stateProps
+  const { onPressWithProps } = dispatchProps
+  const { number } = ownProps
+  const backgroundColor = colors[number];
+  return {
+    ...ownProps,
+    onPressWithProps,
     textTestId,
     buttonTestId,
-    text
-  })
-)(Button)
+    text,
+    backgroundColor
+  }
+}
+
+export default connect(mapStateToProps, ({onPressWithProps}), merge)(Button)

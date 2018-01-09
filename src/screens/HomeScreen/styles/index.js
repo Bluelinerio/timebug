@@ -1,5 +1,5 @@
 import { Platform, StyleSheet, StatusBar } from 'react-native'
-import { colors as topColors } from '../../../components/styles'
+import { colors as topColors } from '../../../constants/colors';
 
 export const colors = {
 	black: '#1a1917',
@@ -12,7 +12,7 @@ export const colors = {
 	white: '#fff',
 	borderColor: '#ddd',
 	startGradientColor: 'white',
-	endGradientColor: 'rgba(220, 220, 220, 1.0)',
+	endGradientColor: '#f8f8f8',
 	...topColors
 }
 
@@ -27,7 +27,7 @@ export default StyleSheet.create({
 	},
 	gradient: {
 		...StyleSheet.absoluteFillObject,
-		opacity: 0.8
+		opacity: 1
 	},
 	scrollview: {
 		flex: 1
@@ -48,32 +48,6 @@ export default StyleSheet.create({
 		paddingHorizontal: 30,
 		backgroundColor: 'transparent',
 		color: colors.subtitleColor,
-		fontSize: 13,
-		fontStyle: 'italic',
-		textAlign: 'center'
-	},
-	rowItem: {
-		paddingHorizontal: 16,
-		paddingVertical: 12
-	},
-	rowItemContainer: {
-		borderBottomWidth: StyleSheet.hairlineWidth,
-		borderBottomColor: colors.borderColor,
-		padding: 20
-	},
-	rowTitle: {
-		paddingHorizontal: 30,
-		backgroundColor: 'transparent',
-		color: colors.rowTitleColor,
-		fontSize: 20,
-		fontWeight: 'bold',
-		textAlign: 'center'
-	},
-	rowSubtitle: {
-		marginTop: 5,
-		paddingHorizontal: 30,
-		backgroundColor: 'transparent',
-		color: colors.rowSubtitleColor,
 		fontSize: 13,
 		fontStyle: 'italic',
 		textAlign: 'center'

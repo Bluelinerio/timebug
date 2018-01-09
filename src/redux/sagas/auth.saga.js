@@ -129,7 +129,7 @@ function* _loginOrRegisterWithFacebook(): RefreshUserResult | LogoutResult {
 			return fbTokenOrError
 		}
 
-		const refreshedUserOrLogout = yield call(refreshUserOrLogout)
+		const refreshedUserOrLogout = yield call(refreshUserOrLogout)		
 		if (refreshedUserOrLogout.logout || refreshedUserOrLogout.error) {
 			return refreshedUserOrLogout
 		}

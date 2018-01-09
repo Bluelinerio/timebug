@@ -11,6 +11,7 @@
 
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
+#import <React/RCTLinkingManager.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 
@@ -45,8 +46,11 @@
   BOOL handled = [[FBSDKApplicationDelegate sharedInstance] application:application
     openURL:url
     sourceApplication:sourceApplication
-    annotation:annotation
-  ];
+    annotation:annotation]
+  ||
+  [RCTLinkingManager application:application openURL:url
+                                             sourceApplication:sourceApplication annotation:annotation];
+
   // Add any custom logic here.
   return handled;
 }

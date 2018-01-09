@@ -1,7 +1,7 @@
 import React                                                from 'react';
 import { View, Text, TouchableHighlight, TouchableOpacity } from 'react-native';
 import Icon                                                 from 'react-native-vector-icons/MaterialIcons';
-import { styles }                                           from 'react-native-theme';
+import styles                                               from '../../styles/templates';
 
 function renderRowWithoutButtons(item) {
   return <View style={{ flex: 1 }} key={item.key}>{item.input}</View>;

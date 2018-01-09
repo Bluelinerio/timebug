@@ -7,16 +7,14 @@ import {
   View,
   Platform,
 }                           from 'react-native';
-import t                    from 'tcomb-form-native';
-import type { Progress } from '../../../services/apollo/models';
+import t                    from './templates';
 
 const Form = t.form.Form;
 
 type Props = {
-	progress: Progress,
 	onChange(): any,
-  formData: any,
   formRef(): any,
+  value?: any,
   model: {
     focusField: boolean,
     type: string, 
@@ -33,7 +31,7 @@ class FormComponent extends Component<Props> {
   }
 
   shouldComponentUpdate = (nextProps:Props):boolean => {
-    return nextProps.model.type !== this.props.model.type
+    return nextProps.model.type !== this.props.model.type || nextProps.value !== this.props.value
   }
 
   handleFormRef = (ref) => {
@@ -42,16 +40,14 @@ class FormComponent extends Component<Props> {
   }
 
   render() {
-
-    let { model } = this.props;
-
+    const { model: { type, options }, value, onChange } = this.props;
     return (
       <Form
         ref={this.handleFormRef}
-        type={model.type}
-        value={this.props.value}
-        options={model.options}
-        onChange={this.props.onChange}
+        type={type}
+        value={value}
+        options={options}
+        onChange={onChange}
       />
     )
   }

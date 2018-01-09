@@ -20,11 +20,10 @@ type Props = {
 
 const mapStateToProps = (state: any) : Props => {
   const isHomeScreenLoading = (state) => {
-    const isStorageNotLoaded = !selectors.isStorageLoaded(state)
     const isCMSLoading = selectors.isCMSLoading(state)
     const isUserStateUNDETERMINED = selectors.isUserStateUNDETERMINED(state)
     const isUserStateAUTHENTICATING = selectors.isUserStateAUTHENTICATING(state)
-    return isStorageNotLoaded || isCMSLoading || isUserStateUNDETERMINED || isUserStateAUTHENTICATING
+    return isCMSLoading || isUserStateUNDETERMINED || isUserStateAUTHENTICATING
   }
   const showLoading = isHomeScreenLoading(state)
   const isLoggedIn = selectors.isLoggedIn(state);

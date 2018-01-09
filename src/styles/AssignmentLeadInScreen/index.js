@@ -7,7 +7,6 @@ theme.add({
     marginBottom: 30
   },
   assignmentLeadInScreenSlide: {
-    flexDirection: 'column',
     justifyContent:'center',
     paddingHorizontal: 20,
     flex: 1

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Dimensions, StyleSheet, Platform, Image, Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import CustomImage from '../../../components/CustomImage';
-import StartButtonContainer from '../containers/StartButtonContiner';
+import StartButtonContainer from '../containers/StartButtonContainer';
 import { headerBackgroundImage } from '../../../resources/images/';
 import { white90 } from '../../../constants/colors';
 import type { Step } from '../../../services/cms';
@@ -12,11 +12,10 @@ export type Props = {
 	totalNumberOfSteps: number, 
 	currentStep: Step, 
 	color: string,
-	goToAssignmentFlow: ({number : number}) => void,
 	imageUri:string
 }
 
-export default ({ totalNumberOfSteps, currentStep, color, goToAssignmentFlow, imageUri }: Props) => {
+export default ({ totalNumberOfSteps, currentStep, color, imageUri }: Props) => {
   const { type, stepScreenDescription, number, duration } = currentStep;
 	return (
 		<View style={[style.header, { backgroundColor: color }]}>

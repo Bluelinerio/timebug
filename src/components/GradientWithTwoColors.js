@@ -7,7 +7,7 @@ import LinearGradient from 'react-native-linear-gradient'
 
 
 export type GradientBackgroundProps = {
-  styles: {
+  style: {
     container: LayoutStyle,
     gradient?:LayoutStyle
   },
@@ -17,32 +17,15 @@ export type GradientBackgroundProps = {
 }
 
 const GradientWithTwoColors = (props: GradientBackgroundProps) =>
-  <View style={props.styles.container}>
-    <LinearGradient
-      colors={[
-        props.gradientTopColor,
-        props.gradientBottomColor,
-      ]}
-      style={[{opacity:props.opacity, ...StyleSheet.absoluteFillObject}, props.styles.gradient]}/>
-  </View>
+  <LinearGradient
+    colors={[
+      props.gradientTopColor,
+      props.gradientBottomColor,
+    ]}
+    style={[{...StyleSheet.absoluteFillObject}, { opacity: props.opacity }]}
+  />
 
 GradientWithTwoColors.defaultProps = {
-  styles: {
-    container: {
-      height: 200,
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      right: 0,
-      borderWidth: 0,
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    gradient:{
-      ...StyleSheet.absoluteFillObject
-    }
-  },
   gradientTopColor:'#79bddd',
   gradientBottomColor: 'white',
   opacity: 1
