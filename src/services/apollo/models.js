@@ -13,6 +13,7 @@ export type ErrorResponse = {
 
 export const UNDETERMINED = 'UNDETERMINED'
 export const ANONYMOUS = 'ANONYMOUS'
+export const AUTHENTICATING = 'AUTHENTICATING'
 
 export type UserState = { +user: User } | ANONYMOUS | UNDETERMINED
 
