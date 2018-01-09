@@ -5,9 +5,15 @@ import {
 	getCms,
 	getForms,
 	getFormData
+<<<<<<< HEAD
 import { getUserState, getCms, getStorageLoaded } from './rootReducer';
 import { UNDETERMINED, ANONYMOUS, AUTHENTICATING } from '../services/apollo/models';
 import type { Progress } from '../services/apollo/models';
+=======
+} from './rootReducer';
+import { UNDETERMINED, ANONYMOUS, AUTHENTICATING } from '../services/apollo/models';
+import type { Progress, User } from '../services/apollo/models';
+>>>>>>> Merge with !49
 import type { Colors, Step } from '../services/cms';
 
 // CMS
@@ -66,7 +72,7 @@ export default {
 	user,
 	isLoggedIn,
 	isUserStateUNDETERMINED,
-	isUserStateAUTHENTICATING
+	isUserStateAUTHENTICATING,
 	isAnonymous,
 	getFormModels,
 	fetchingFormModels,
