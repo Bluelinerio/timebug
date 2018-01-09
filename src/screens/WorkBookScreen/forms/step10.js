@@ -15,12 +15,13 @@ export default {
       )
     }),
     options: {
-      label: "Identify 5-10 different I's. Note how strong each I is for you(on a 1-10 scales with 1=weakest and 10=strongest), and what I would say in a few words.",
       fields: {
         id:{
           hidden: true
         },
         field: {
+          label: "Identify 5-10 different I's. Note how strong each I is for you(on a 1-10 scales with 1=weakest and 10=strongest), and what I would say in a few words.",
+          
           item: {
             fields: {
 
@@ -73,9 +74,9 @@ export default {
       )
     }),
     options: {
-      label: "Reflecting back on the day 5 list of Goals, pick several and briefly note how your ego aspects either hindered or aided you.",
       fields: {
         field: {
+          label: "Reflecting back on the day 5 list of Goals, pick several and briefly note how your ego aspects either hindered or aided you.",          
           auto: 'placeholders',
           disableOrder: true,
           maxLines: 10,

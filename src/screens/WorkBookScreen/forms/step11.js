@@ -18,7 +18,8 @@ export default {
 			)
 		}),
 		options: {
-			label: "Gather all of your previous goal data, including time spent and key achievements over the past 5 years. You can start with 2015 if you feel overwhelmed assessing all 5 years.",
+			label: "Gather all of your previous goal data, including time spent and key achievements over the past 5 years. You can start with 2015 if you feel overwhelmed assessing all 5 years.",					
+			
 			fields: {
 				id: {
 					hidden: true
@@ -26,6 +27,7 @@ export default {
 				field: {
 					item: {
 						fields: {
+							
 
 							goal: {
 								placeholder: 'Goal'
@@ -111,13 +113,16 @@ export default {
 			description: t.String
 		}),
 		options: {
-			label: "In a few sentences, and descriptive key words, assess how your life has been, and how you have done over the past 5  years.",
 			auto: 'none',
 			type: 'textarea',
 			disableOrder: true,
 			fields: {
 				id: {
 					hidden: true
+				},
+				description: {
+					label: "In a few sentences, and descriptive key words, assess how your life has been, and how you have done over the past 5  years."
+					
 				}
 			}
 		}

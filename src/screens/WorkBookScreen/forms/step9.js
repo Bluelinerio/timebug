@@ -15,13 +15,14 @@ export default {
               )
         }),
         options: {
-          label: "Make a list of 2-10 role models and note their influencial life category, the degree to which you know/interact with them personally and the reason for why you look up to them.",
-          fields: {
+                    fields: {
             id: {
               hidden: true
             },
             
             field: {
+              label: "Make a list of 2-10 role models and note their influencial life category, the degree to which you know/interact with them personally and the reason for why you look up to them.",
+              
               item:{
                 fields:{
                   lifeCategory:{
