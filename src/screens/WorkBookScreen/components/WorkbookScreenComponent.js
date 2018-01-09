@@ -19,7 +19,7 @@ import type { FormChange }  from '../../../redux/actions/forms.actions';
 import type { Progress }    from '../../../services/apollo/models';
 import styles                from '../styles';
 
-const SKIPP_ENABLED = true;
+const SKIPP_ENABLED = false;
 
 export type Props = {
   progress: Progress, 
