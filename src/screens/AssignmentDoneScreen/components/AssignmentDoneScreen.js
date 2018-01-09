@@ -2,11 +2,9 @@
 
 import React, { Component } from 'react';
 import { Text, View, Image } from 'react-native';
-import { styles } from 'react-native-theme';
 import Feather from 'react-native-vector-icons/MaterialCommunityIcons';
-
+import styles from '../styles';
 import Button from '../../../components/Button';
-import type { Step } from '../../../services/cms';
 
 const DoneButton = (props) => (
 	<Button
@@ -16,12 +14,12 @@ const DoneButton = (props) => (
 	/>
 );
 
-const NextStep = ({nextStepNumber, nextStepColor, nextStepDuration}) => (
+const NextStep = ({ nextStepNumber, nextStepColor, nextStepDuration}) => (
   <View style={styles.assignmentDoneScreenMessageContainer}>
     <Text style={styles.assignmentDoneScreenMessageText}>See you soon in</Text>
     <Text
       style={[
-        styles.assignmentDoneScreenCurrentStep,
+        styles.assignmentDoneScreenDoneStep,
         styles.assignmentDoneScreenTextColor
       ]}
     >
@@ -54,21 +52,22 @@ const NextStep = ({nextStepNumber, nextStepColor, nextStepDuration}) => (
   </View>
 );
 
-export default ({
-  currentStepNumber,
-  currentStepColor,
-  nextStepDuration,
-  nextStepNumber,
-  nextStepColor,
-  done
-}) => {
+export type Props = {
+  doneStepNumber: number,
+  doneStepColor: string,
+  nextStepDuration: number,
+  nextStepNumber: number,
+  nextStepColor: string,
+}
+
+export default (props: Props) => {
   return (
     <View style={styles.assignmentDoneScreenContainer}>
-      <NextStep nextStepNumber={nextStepNumber} nextStepColor={nextStepColor} nextStepDuration={nextStepDuration}/>
+      <NextStep {...props} />
       <View style={[styles.assignmentDoneScreenAbsoluteContainer]}>
         <DoneButton
-          onPress={done}
-          backgroundColor={nextStepColor}
+          onPress={props.done}
+          backgroundColor={props.nextStepColor}
         />
       </View>
     </View>

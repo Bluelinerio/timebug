@@ -30,10 +30,6 @@ const isAnonymous = (state: any) : boolean => getUserState(state) === ANONYMOUS
 
 
 // CMS+Pgroess
-const progress = (state: any): ?Progress => user(state) ? user(state).progress : null;
-const currentStepNumber = (state: any): number => progress(state) ? progress(state).step : 0;
-const currentStep = (state: any): Step => steps(state)[currentStepNumber(state)];
-const currentStepColor = (state: any) => stepColors(state)[currentStepNumber(state)];
 const assignmentsForStep = (state: any) => (step: number) => steps(state)[step].refAssignment.map(i => i.fields);
 const colorForStep = (step: number) => (state:any) => stepColors(state)[step]
 const step = (number: number) => (state:any) => steps(state)[number]
@@ -58,11 +54,7 @@ export default {
 	stepColors,
 	isCMSLoading,
 	totalNumberOfSteps,
-	currentStepNumber,
-	currentStep,
-	progress,
 	assignmentsForStep,
-	currentStepColor,
 	user,
 	isLoggedIn,
 	isUserStateUNDETERMINED,
