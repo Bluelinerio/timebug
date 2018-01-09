@@ -172,20 +172,25 @@ export default {
           label:'Please answer the following questions regarding your typical exercise habits.',
           fields:{
             timesPerWeek: {
-              auto:'labels'
+              auto:'labels',
+              error:'Please fill out this field.'
             },
             howLong:{
               auto:'none',
-              label:'For how long?'
+              label:'For how long?',
+              error:'Please fill out this field.'
             },
             exerciseType:{
-              label:'What type of Exercise?'
+              label:'What type of Exercise?',
+              error:'Please fill out this field.'
             },
             aloneOrOthers:{
-              label:'Alone or with others?'
+              label:'Alone or with others?',
+              error:'Please fill out this field.'
             },
             timeOfDay:{
-              label:'What time of day?'
+              label:'What time of day?',
+              error:'Please fill out this field.'
             }
           }
 
@@ -207,16 +212,20 @@ export default {
               },
               howLong:{
                 auto:'none',
-                label:'For how long?'
+                label:'For how long?',
+                error:'Please fill out this field.'
               },
               meditationType:{
-                label:'What type of meditation?'
+                label:'What type of meditation?',
+                error:'Please fill out this field.'
               },
               aloneOrOthers:{
-                label:'Alone or with others?'
+                label:'Alone or with others?',
+                error:'Please fill out this field.'
               },
               timeOfDay:{
-                label:'What time of day?'
+                label:'What time of day?',
+                error:'Please fill out this field.'
               }
             }
 
@@ -224,11 +233,14 @@ export default {
         },
         4:{
           type:t.struct({
-            yes:t.Boolean,
-            no:t.Boolean
+            commitmentAnswer:t.Boolean
           }),
-          option: {
+          options: {
+            fields: {
+              commitmentAnswer: {
             label:'Are you committed to exercising and meditating for at least 20 mins daily from now until the end of the 20/20 Life Vision Challenge?',
           }
+        }
+        }
         }
        };

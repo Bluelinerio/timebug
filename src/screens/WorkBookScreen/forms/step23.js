@@ -4,47 +4,31 @@ import t from "../components/templates";
 
 export default {
     1:{ 
-        type:t.struct({
-          id:t.maybe(t.String),
-          yes:t.Boolean,
-          no:t.Boolean
-        }),
-        options: {
-          label:'Did you do your MANTRA today(assigned on Day 21)?',
-          fields: {
-            id: {
-              hidden: true
-            }
-          },
-          auto:'labels'
-        },
-        value: {
-          fields: {
-            id: 'step23+v0.0.0.1'
-          }
-        }
-    },
-    2:{ 
-      type:t.struct({
-        yes:t.Boolean,
-        no:t.Boolean
+      type: t.struct({
+        id: t.maybe(t.String),
+        mantraAnswer: t.Boolean,
+        exerciseAnswer: t.Boolean,
+        meditateAnswer: t.Boolean,
       }),
       options: {
-        label:'Did you EXERCISE and meditate yet today(assigned on Day 8)?',
-        auto:'labels'
-      }
-  },
-  3:{ 
-    type:t.struct({
-      yes:t.Boolean,
-      no:t.Boolean
-    }),
-    options: {
-      label:'Did you MEDITATE yet today(assigned on Day 8)?',
-      auto:'labels'
-    }
-},
-4:{
+        label: 'Let us reiew your progress quick...',
+        fields: {
+          id: {
+            hidden: true
+          },
+          mantraAnswer: {
+            label: 'Did you do your mantra today (assigned on Day 21)?'
+          },
+          exerciseAnswer: {
+            label: 'Did you exercise and meditate yet today(assigned on Day 8)?',
+          },
+          meditateAnswer: {
+            label: 'Did you MEDITATE yet today(assigned on Day 8)?'
+          }
+        },
+      },
+    },
+2:{
     type:t.String,
     options: {
       label:'If you could change jobs, and do something totally new, what would it be?',
@@ -52,7 +36,7 @@ export default {
     }
 
 },
-5:{
+3:{
   type:t.String,
   options: {
     label:'Reflecting back on Day 13’s Assignment – particularly the questions on Fulfillment – what changes would you need to make in your career to get both answers (on Fulfillment and Motivation) to 10 on the scale?',
@@ -60,7 +44,7 @@ export default {
   }
 
 },
-6:{
+4:{
   type:t.list(
     t.struct({
     careerBHAG:t.String,
@@ -71,7 +55,7 @@ export default {
     label:'Back on Day 21, you were asked to list 2 BHAGs (Big Hairy Audacious Goals) for Career and 6 other areas of life. Focusing on Career only now, take that a step further, by adding 3-5 more Career BHAGs (so you should now have 5-7 Career BHAGs).',
 }
 },
-7:{
+5:{
   type: t.struct({
     id:t.maybe(t.String),
     field:t.list(
@@ -109,7 +93,7 @@ export default {
     }
    }
 },
-8: {
+6: {
   type:t.Number,
   options:{
     label:'The average worker spends 40 hrs * 50 weeks working = 2,000 hours. How many hours will you spend working in 2016? #Workbug',

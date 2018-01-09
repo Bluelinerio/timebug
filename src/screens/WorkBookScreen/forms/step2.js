@@ -19,6 +19,7 @@ export default {
           hidden: true
         },
         field: {
+          label: "Enter how many hours you spend weekly on each life category.",
           auto: 'placeholders',
           disableOrder: true,
           maxLines: 10,
@@ -43,10 +44,12 @@ export default {
         })
       )
     }),
-    options: {
-      label: "If you could make any changes that you wanted to?",
+    options:  {
       fields: {
+        label: "If you could make any changes that you wanted to?",
         field: {
+          
+          label: "Enter how many hours you WOULD LIKE to spend weekly on each life category.",
           auto: 'placeholders',
           disableOrder: true,
           maxLines: 3,
@@ -67,9 +70,9 @@ export default {
       )
     }),
     options: {
-      label: "Write down at least 3 things that you want to DO LESS of in general (ie. Watching TV).",
       fields: {
         field: {
+          label: "Enter at least 3 things that you want to DO LESS of in general (ie. Watching TV).",
           auto: 'placeholders',
           disableOrder: true,
           maxLines: 10,
@@ -90,9 +93,10 @@ export default {
       )
     }),
     options: {
-      label: "Write down at least 3 things that you want to DO MORE of, in your ideal life setup.",
+      
       fields: {
         field: {
+          label: "Enter at least 3 things that you want to DO MORE of, in your ideal life setup.",
           auto: 'placeholders',
           disableOrder: true,
           maxLines: 10,

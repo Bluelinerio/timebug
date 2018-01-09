@@ -27,12 +27,12 @@ export default {
             )
         }),
         options: {
-          label: "Choose 3-5 people who you really care about and write down 3-5 of their goals. Determine how you can support them and how much time you estimate it will require.",
           fields: {
             id: {
               hidden: true
             },
             field: {
+              label: "Choose 3-5 people who you really care about and write down 3-5 of their goals. Determine how you can support them and how much time you estimate it will require.",              
               auto:'placeholders',
               disableOrder: true,
               maxLines: 5,

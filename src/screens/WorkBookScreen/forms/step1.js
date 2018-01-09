@@ -6,8 +6,8 @@ export default {
     type: t.struct({
       id:t.maybe(t.String),
       memory: t.String,
-      areaOfLife: t.maybe(AreaOfLife),
-      stageOfLife: t.maybe(StageOfLife)
+      areaOfLife: AreaOfLife,
+      stageOfLife: StageOfLife
     }),
     options: {
       label: "Write your best life memory",
@@ -58,17 +58,18 @@ export default {
     type: t.struct({
       field: t.list(
         t.struct({
-          moments: t.maybe(t.String)
+          moments: t.String
         })
       )
     }),
     options: {
-      label: "What are your defining moments?",
+      
       fields: {
         moments: {
           label: "How would you describe this moment?"
         },
         field: {
+          label: "What are your defining moments?",
           auto: 'placeholders',
           disableOrder: true,
           maxLines: 3,

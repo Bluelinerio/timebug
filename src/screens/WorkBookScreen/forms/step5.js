@@ -14,12 +14,13 @@ export default {
               )
         }),
         options: {
-          label: "Make a list of 10 recent goals and classify them according to the 7 Goal Types",
           fields: {
             id: {
               hidden:true
             },
             field: {
+              error: 'Without an email address how are you going to reset your password when you forget it?',
+              label: "Make a list of 10 recent goals and classify them according to the 7 Goal Types",              
               item:{
                 goal:{auto:'labels'},
                 goalTypes:{auto:'labels'}

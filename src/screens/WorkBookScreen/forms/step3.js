@@ -13,12 +13,12 @@ export default {
       )
     }),
     options: {
-      label: "List 3-5 Charachter Strengths of yours, and the resulting goals that you achieved.",
       fields: {
         id: {
           hidden:true
         },
         field: {
+          label: "List 3-5 Charachter Strengths of yours, and the resulting goals that you achieved.",
           auto: 'placeholders',
           disableOrder: true,
           maxLines: 10,
