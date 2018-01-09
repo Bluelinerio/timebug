@@ -20,10 +20,14 @@ export const GO_TO_HOME_SCREEN                   = 'GO_TO_HOME_SCREEN';
 export const SAGA_NAVIGATE                       = 'SAGA_NAVIGATE';
 
 //forms
-export const POPULATE_FORM_VALUE          = 'POPULATE_FORM_VALUE';
-export const POPULATE_CURRENT_FORM_VALUE  = 'POPULATE_CURRENT_FORM_VALUE';
+export const SUBMIT_FORM_VALUE          = 'SUBMIT_FORM_VALUE';
 export const SET_FORM                     = 'SET_FORM';
 export const UPDATE_FORM                  = 'UPDATE_FORM';
-export const CHANGE_FORM_VALUE            = 'CHANGE_FORM_VALUE';
+export const PERSISTE_FORM_VALUE            = 'PERSISTE_FORM_VALUE';
+export const INCREMENT_FORM_QUEUE         = 'INCREMENT_FORM_QUEUE';
+export const DECREMENT_FORM_QUEUE         = 'DECREMENT_FORM_QUEUE';
+export const INCREMENT_FORM_DATA_QUEUE    = 'CREMENT_FORM_DATA_QUEUE';
+export const DECREMENT_FORM_DATA_QUEUE    = 'DECREMENT_FORM_DATA_QUEUE';
+
 
 export const ON_APP_LOADED = 'ON_APP_LOADED';

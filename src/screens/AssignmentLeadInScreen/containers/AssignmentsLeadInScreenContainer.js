@@ -8,7 +8,7 @@ import AssignmentsPages from '../components/AssignmentsPages';
 import type { Props } from '../components/AssignmentsPages';
 import type { Assignment } from '../../../services/cms';
 import DefaultIndicator from '../../../components/DefaultIndicator';
-import StepButtonStyle from '../../../styles/components/StepButton';
+import StepButtonStyle from '../../../styles/components/Button';
 import selectors from '../../../redux/selectors';
 
 const mapStateToProps = (state) => {

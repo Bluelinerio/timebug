@@ -1,13 +1,15 @@
 import React                                           from 'react';
 import { View, Text, TextInput, Platform, PixelRatio } from 'react-native';
-import { styles }                                      from 'react-native-theme';
+import styles                                          from '../../styles/templates';
+
+if(!styles ) {
+  throw 'did not find stlye file'
+}
 
 export default function customTextBox(locals) {
   if (locals.hidden) {
     return null;
   }
-
-
   let stylesheet        = locals.stylesheet;
   let formGroupStyle    = stylesheet.formGroup.normal;
   let controlLabelStyle = stylesheet.controlLabel.normal;

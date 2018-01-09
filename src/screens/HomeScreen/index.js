@@ -60,10 +60,9 @@ class HomeScreen extends PureComponent<Props, State> {
 
 const mapStateToProps = (state: any) => {
   const isHomeScreenLoading = (state) => {
-    const isStorageNotLoaded = !selectors.isStorageLoaded(state)
     const isCMSLoading = selectors.isCMSLoading(state)
     const isUserStateUNDETERMINED = selectors.isUserStateUNDETERMINED(state)
-    return isStorageNotLoaded || isCMSLoading || isUserStateUNDETERMINED 
+    return isCMSLoading || isUserStateUNDETERMINED
   }
   const showLoading = isHomeScreenLoading(state)
   const user = selectors.user(state)

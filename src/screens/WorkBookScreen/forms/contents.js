@@ -26,9 +26,9 @@ export const LifeCategory = t.enums.of([
   'Work Life',
   'Special Projects',
   'Skills & Education',
-  'Personal life Me Time',
-  'Personal life Me Time family time',
-  'Personal life Me Time hobbies',
+  'Me Time',
+  'Family time',
+  'Hobbies',
   'Basic Needs',
   'Health & Wellness'
 ], 'LifeCategory');

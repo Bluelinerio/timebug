@@ -5,18 +5,27 @@ import { LifeCategory, AreaOfLife, AssessmentTypes } from "./contents";
 export default {
   1: {
     type: t.struct({
-      id:t.maybe(t.String),
-      yes: t.Boolean,
-      no: t.Boolean
+      id: t.maybe(t.String),
+      mantraAnswer: t.Boolean,
+      exerciseAnswer: t.Boolean,
+      meditateAnswer: t.Boolean,
     }),
     options: {
-      label: 'Did you do your MANTRA today(assigned on Day 21)?',
+      label: 'Let us reiew your progress quick...',
       fields: {
         id: {
           hidden: true
+        },
+        mantraAnswer: {
+          label: 'Did you do your mantra today (assigned on Day 21)?'
+        },
+        exerciseAnswer: {
+          label: 'Did you exercise and meditate yet today(assigned on Day 8)?',
+        },
+        meditateAnswer: {
+          label: 'Did you MEDITATE yet today(assigned on Day 8)?'
         }
       },
-      auto: 'labels'
     },
     value : {
       fields: {
@@ -26,45 +35,25 @@ export default {
   },
   2: {
     type: t.struct({
-      yes: t.Boolean,
-      no: t.Boolean
-    }),
-    options: {
-      label: 'Did you EXERCISE and meditate yet today(assigned on Day 8)?',
-      auto: 'labels'
-    }
-  },
-  3: {
-    type: t.struct({
-      yes: t.Boolean,
-      no: t.Boolean
-    }),
-    options: {
-      label: 'Did you MEDITATE yet today(assigned on Day 8)?',
-      auto: 'labels'
-    }
-  },
-  4: {
-    type: t.struct({
       basics:t.list(
         t.struct({
-        categoryResponsiblity:LifeCategory,
-        lifeCategoryClassification:AreaOfLife,
-        timebugCategory:AssessmentTypes
+          categoryResponsiblity: LifeCategory,
+          lifeCategoryClassification:AreaOfLife,
+          timebugCategory: AssessmentTypes
         })
       ),
       home:t.list(
         t.struct({
-          categoryResponsiblity:LifeCategory,
-          lifeCategoryClassification:LifeCategory,
-          timebugCategory:AssessmentTypes
+            categoryResponsiblity: LifeCategory,
+            lifeCategoryClassification: LifeCategory,
+            timebugCategory: AssessmentTypes
         })
       ),
       work:t.list(
         t.struct({
-          categoryResponsiblity:LifeCategory,
-          lifeCategoryClassification:AreaOfLife,
-          timebugCategory:AssessmentTypes
+            categoryResponsiblity: LifeCategory,
+            lifeCategoryClassification:AreaOfLife,
+            timebugCategory: AssessmentTypes
         })
       )
     }),

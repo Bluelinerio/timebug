@@ -4,7 +4,7 @@ import type { Step, Colors, } from '../../services/cms'
 const { steps, colors, about} = require('../../static/cms.json');
 
 
-export type StepsState = {
+export type CMSState = {
 	requestCount: number,
 	lastFetchDate: ?number,
 	totalNumberOfSteps: number,
@@ -18,7 +18,7 @@ type StepsAction = {
 	payload?: Array<Step> | Colors
 }
 
-const initialState: StepsState = {
+const initialState: CMSState = {
 	requestCount: 0,
 	lastFetchDate: null,
 	totalNumberOfSteps: 30,
@@ -28,7 +28,7 @@ const initialState: StepsState = {
 	error: null
 }
 
-export default function(state: StepsState = initialState, action: StepsAction) {
+export default function(state: CMSState = initialState, action: StepsAction) {
 	switch (action.type) {
 		case FETCH_CMS.STARTED:
 			return { ...state, requestCount: state.requestCount + 1 }

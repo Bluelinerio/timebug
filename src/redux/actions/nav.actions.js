@@ -1,6 +1,8 @@
 // @flow
 import { NavigationActions }    from 'react-navigation'
 import { action }               from '../utils'
+import type { SelectPutActionFnType } from '../selectPutAction'
+import { selectPutAction }            from '../selectPutAction';
 import {
   GO_TO_HOME_SCREEN,
   SAGA_NAVIGATE
@@ -53,3 +55,24 @@ export const goToWorkBookScreen               = (props: any) => navigateWith({ p
 export const goToAssignmentLeadInScreen       = (props: any) => navigateWith({ props, routeName:'AssignmentLeadInScreen' })
 export const goToAssignmentDoneScreen         = (props: any) => navigateWith({ props, routeName:'AssignmentDoneScreen' })
 export const goToAssignmentFlow               = (number:number) => navigateToStep({ number, routeName: 'AssignmentFlow' })
+export const previousFormOrBack               = selectPutAction((state: any) => {
+  debugger;
+  const lastRoute = state.nav.routes.find(
+    /* $FlowFixMe */
+    (route: *) => route.key === action.key
+  );
+  if(!lastRoute) {
+    throw 'unexpected result could not find lastRoute';
+  }
+  const { step } = lastRoute.params;
+  const form = lastRoute.params.form || 0;
+
+  if (form > 1) {
+    return NavigationActions.setParams({
+      step: progress.step,
+      form: progress.form - 1
+    })
+  } else {
+    return NavigationActions.back();
+  }
+});

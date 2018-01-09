@@ -51,7 +51,7 @@ const Content = ({ subtitle, description, color, number }) => (
 
 const Header = ({ imageUri, title, number, color}) => (
   <View style={[styles.stepScreenHeader]}>
-    <GradientWithTwoColors gradientTopColor={color} gradientBottomColor={'white'} />
+    <GradientWithTwoColors gradientTopColor={color} gradientBottomColor={'white'}/>
     <View style={{
       flex:1,
       flexDirection: 'row',
@@ -83,6 +83,9 @@ export default ({ title, subtitle, description, number, imageUri, color, onPress
         number={number}
         imageUri={imageUri}
       />
+    }
+    header={
+        <GradientWithTwoColors gradientTopColor={color} gradientBottomColor={'white'}/>
     }
     content={
       <Content

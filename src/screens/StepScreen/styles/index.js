@@ -36,8 +36,8 @@ export default StyleSheet.create({
     alignSelf: 'flex-end',
   },
   stepScreenContent: {
-    marginTop: 2,
-    marginBottom: 30
+    marginTop: 20,
+    marginBottom: 30,
   },
   stepScreenText: {
     color: '#000000',

@@ -1,7 +1,9 @@
-import theme from 'react-native-theme';
-import './templates';
+// @flow
+import { StyleSheet } from 'react-native'
+import styles from '../styles';
 
-theme.add({
+export default StyleSheet.create({
+  ...styles,
   workBookFormContainer: {
     flex: 1,
   },

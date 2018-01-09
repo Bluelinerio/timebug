@@ -3,15 +3,14 @@ import type { UserStateAction } from '../actions'
 import { SET_USER_STATE } from '../actions'
 import type { User, UserState , Progress} from '../../services/apollo/models'
 import { ANONYMOUS, UNDETERMINED, AUTHENTICATING } from '../../services/apollo/models'
-import { GET_USER, updateProgress } from '../actions/user.actions'
-import { LOGOUT, UPDATE_PROGRESS } from '../actionTypes'
+import { GET_USER } from '../actions/user.actions'
+import { LOGOUT } from '../actionTypes'
 
 export const userFromResponse = (response: any): User => response.data.User
 
 type LogoutAction = { type: LOGOUT }
-type UpdateProgressAction = { type: UPDATE_PROGRESS, progress: Progress }
 
-type Action = UserStateAction | UpdateProgressAction | LogoutAction
+type Action = UserStateAction | LogoutAction
 
 export default function(state: UserState = UNDETERMINED, action: Action) {
 	switch (action.type) {
@@ -21,9 +20,6 @@ export default function(state: UserState = UNDETERMINED, action: Action) {
 			return AUTHENTICATING
 		case GET_USER.SUCCEEDED:
 			return action.payload
-    	case updateProgress.UPDATE:
-			const { progress } = action;
-			return { ...state, progress }
 		case LOGOUT:
 			return ANONYMOUS
 		default:

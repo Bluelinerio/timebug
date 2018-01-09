@@ -1,69 +1,28 @@
-import {
-  createStore,
-  combineReducers,
-  applyMiddleware,
-  compose,
-}                                       from 'redux'
-import createSagaMiddleware             from 'redux-saga'
-import {
-  ApolloClient,
-  createNetworkInterface
-} from 'react-apollo'
-import { createLogger }                 from 'redux-logger'
-import * as storage                     from 'redux-storage'
-import filter                           from 'redux-storage-decorator-filter'
-import debounce                         from 'redux-storage-decorator-debounce'
-import createEngine                     from 'redux-storage-engine-reactnativeasyncstorage'
-import { composeWithDevTools }          from 'remote-redux-devtools'
-
 import cms      from './reducers/cms.reducer'
 import error    from './reducers/error.reducer'
 import network  from './reducers/network.reducer'
 import user     from './reducers/user.reducer'
-import form     from './reducers/form.reducer'
+import forms    from './reducers/forms.reducer'
+import formData from './reducers/formData.reducer'
 import nav      from './reducers/nav.reducer'
-import localStorage
-                from './reducers/storage.reducer'
-import rootSaga from './sagas/rootSagas'
-import {client }from '../services/apollo'
 
-const sagaMiddleware = createSagaMiddleware();
+export const rootReducer = {
+  cms,
+  error,
+  network,
+  user,
+  forms,
+  formData,
+  nav
+}
 
-let engine = createEngine('2020-cache');
+// @flow
+import type { CMSState }        from './reducers/cms.reducer'
+import type { FormDataState }   from './reducers/forms.reducer'
+import type { FormModelsState } from './reducers/formData.reducer'
+import type { UserState}        from '../../services/apollo/models'
 
-//here we tell redux-storage to save only cms
-engine = filter(engine,
-  [
-    // white list
-    'form'
-  ],
-  [],
-);
-
-//here we specify the amount of time that must pass since the last change in store before it will be saved to a storage
-engine = debounce(engine, 500);
-
-const middleware                = storage.createMiddleware(engine);
-export const load               = storage.createLoader(engine);
-const loggerMiddleWare          = createLogger();
-const createStoreWithMiddleware = composeWithDevTools(applyMiddleware(loggerMiddleWare, sagaMiddleware, middleware, client.middleware()))(createStore);
-const reducer = storage.reducer(
-	combineReducers({
-		cms,
-		error,
-		network,
-		user,
-		form,
-    nav,
-    localStorage,
-		apollo: client.reducer()
-	})
-)
-
-export const store = createStoreWithMiddleware(reducer);
-
-sagaMiddleware.run(rootSaga);
-
-export const getUserState = state => state.user
-export const getCms = state => state.cms;
-export const getStorageLoaded = state => state.localStorage.loaded;
+export const getUserState = (state: any):UserState => state.user
+export const getCms = (state: any):CMSState => state.cms;
+export const getForms = (state: any):FormModelsState => state.forms;
+export const getFormData = (state: any):FormDataState => state.formData;

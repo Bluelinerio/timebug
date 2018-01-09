@@ -1,32 +1,40 @@
 // @flow
 import React from 'react';
-import { Text, View } from 'react-native';
-import { styles } from 'react-native-theme';
+import { Animated, Text, View } from 'react-native';
 
 const CicleWidth = 32
-export default ({ number, color }) => {
+
+type Props = {
+	number: number,
+	color: string,
+	animatedStyle: any
+}
+
+export default ({ number, color, animatedStyle }: Props) => {
 	return (
-		<View
-			style={{
+		<Animated.View
+			style={[{
 				alignItems: 'center',
 				justifyContent: 'center',
 				width: CicleWidth,
 				height: CicleWidth,
-				borderRadius: 32,
+				borderRadius: CicleWidth,
 				marginRight: 10,
+				marginVertical: 10,
 				backgroundColor: color,
-			}}
+			}, animatedStyle ]}
 		>
-			<Text
-				style={{
+			<Animated.Text
+				style={[{
 					fontFamily: 'Helvetica',
-					fontSize: 18,
+					fontSize: Math.ceil(CicleWidth * 0.55),
 					textAlign: 'center',
-					color: 'white'
-				}}
+					color: 'white',
+					backgroundColor: 'transparent'
+				}]}
 			>
 				{number}
-			</Text>
-		</View>
+			</Animated.Text>
+		</Animated.View>
 	);
 };
