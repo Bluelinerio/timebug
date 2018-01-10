@@ -54,7 +54,7 @@ class WorkBookScreenContainer extends Component<Props, State> {
       value
     }
   }
-  
+
   componentWillFocus() {
     const { model } = this.state;
     if (model && model.focusField) {
@@ -119,7 +119,7 @@ class WorkBookScreenContainer extends Component<Props, State> {
     const fieldValue = path.reduce((struct: {}, field) => struct[field], value)
     
     this.setState({
-      isInvalid: t.validate(value, type).isValid() === false,
+      isInvalid: this.form.validate().isValid() === false,
       value
     }, () => {
       this.props.persisteFormValue({
