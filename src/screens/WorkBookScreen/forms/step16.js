@@ -124,7 +124,7 @@ export default {
 
     }),
     options: {
-      label:'Take tmie to evaluate your Sleep pattern.',
+      label:'Take time to evaluate your Sleep pattern.',
       fields: {
         hoursSleep: {
           label:'How many hours do you typically sleep?'

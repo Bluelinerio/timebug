@@ -20,10 +20,10 @@ export default {
             hidden: true
           },
           topGoals: {
+            label:'Review your goals, time spent, and key achievements listed on Day 11. What, if anything, has changed with your time and energy allotment?',            
             item: {
               fields: {
                 goal: {
-                  label:'Review your goals, time spent, and key achievements listed on Day 11. What, if anything, has changed with your time and energy allotment?',
                   auto:'placerholders'
                 },
                 newInsights: {

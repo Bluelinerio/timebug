@@ -69,10 +69,7 @@ export default {
           goalOutcome: CommonGoalOutcomes
         })
       ),
-      intimateRelationship: t.struct({
-        yes: t.Boolean,
-        no: t.Boolean
-      }),
+      intimateRelationship: t.Boolean,
       communicationEval: t.Number,
       relationshipsImproved: t.list(
         t.struct({
@@ -99,7 +96,7 @@ export default {
          worthyAndComfortable : {
            label: 'Do you feel worthy and comfortable, even with compliments or acknowledgments that come your way? Or do you deflect and belittle the moment in some way? (Using a 10-pt Scale with 1=fully valuing and  appreciating what has been shared to 10=deep discomfort with the whole thing)'
           },
-          relationshipQualityGoal:{
+          relationshipQualityGoals:{
             label: 'What goals have you had in terms of Relationship Quality(RQ) over the past five years?',
             item: {
               fields: {
