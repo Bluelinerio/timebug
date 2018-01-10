@@ -2,6 +2,7 @@ import React                                                from 'react';
 import { View, Text, TouchableHighlight, TouchableOpacity } from 'react-native';
 import Icon                                                 from 'react-native-vector-icons/MaterialIcons';
 import styles                                               from '../../styles/templates';
+import { withStyle, scrollViewWithStyle } from './utils';
 
 function renderRowWithoutButtons(item) {
   return <View style={{ flex: 1 }} key={item.key}>{item.input}</View>;
@@ -46,13 +47,15 @@ export default function customList(locals) {
 
   let addButton = itemsCount && itemsCount >= locals.config.maxLines ? null : locals.add ? renderRowButton(locals.add, stylesheet) : null;
 
+  const Container = scrollViewWithStyle([fieldsetStyle, { flex:1 }])
+
   return (
-    <View style={[fieldsetStyle, { flex: 1 }]}>
+    <Container>
       {label}
       {error}
-      {rows}
       {addButton}
-    </View>
+      {rows}
+    </Container>
   );
 }
 

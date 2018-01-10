@@ -81,7 +81,14 @@ function struct(locals) {
       <View style={{ flex: 1 }}>
         {error}
         {locals.label ? (
-          <FormPages page={page} horizontal={false} containerStyle={{ padding: 20}} indicatorColor="#CCC">
+          <FormPages 
+            page={page} 
+            horizontal={false} 
+            containerStyle={{ 
+              padding: 
+              20}} 
+            indicatorColor="#CCC"
+          >
             <Text style={stylesheet.formLabel}>{locals.label}</Text>
             {filteredRows}
           </FormPages>
