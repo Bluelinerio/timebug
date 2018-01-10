@@ -5,6 +5,8 @@ import selectors from '../../../redux/selectors';
 import { goToWorkBookScreen } from '../../../redux/actions/nav.actions';
 import { loginWithFbButtonPressed } from '../../../redux/actions'
 import { deepBlue } from '../../../constants/colors'
+import loginButtonStyle from '../../../styles/components/LoginButton';
+import regularButtonStyle from '../../../styles/components/Button';
 
 const mapStateToProps = state => {
   const steps = selectors.steps(state);
@@ -25,10 +27,11 @@ const buttonTestId= 'step_to_workbook_button'
 const merge = (stateProps, dispatchProps, ownProps): Props => {
   const { colors, steps, needsLogin, authenticating } = stateProps
   const { number } = ownProps
-  const backgroundColor = needsLogin? deepBlue : colors[number]
-  const text = needsLogin? 'Login with Facebook to start' : authenticating? 'Loading...' : 'BEGIN';
+  const backgroundColor = needsLogin? 'white' : colors[number]
+  const text = needsLogin ? 'Login with Facebook to start' : authenticating? 'Loading...' : 'BEGIN';
   const { loginWithFbButtonPressed, goToWorkBookScreen } = dispatchProps;
   const onPressWithProps = needsLogin ? loginWithFbButtonPressed : goToWorkBookScreen
+  const styles = needsLogin ? loginButtonStyle : null;
   return {
     ...ownProps,
     onPressWithProps,
@@ -36,6 +39,7 @@ const merge = (stateProps, dispatchProps, ownProps): Props => {
     buttonTestId,
 		text,
     backgroundColor,
+    styles,
     disabled: authenticating === true
   }
 }
