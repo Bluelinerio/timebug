@@ -3,20 +3,27 @@ import t from "../components/templates";
 
 
 export default {
-  1: {
-    type: t.struct({
-      id:t.maybe(t.String),
-      yes: t.Boolean,
-      no: t.Boolean
+  1: { type: t.struct({
+    id: t.maybe(t.String),
+    mantraAnswer: t.Boolean,
+    exerciseAnswer: t.Boolean,
+    meditateAnswer: t.Boolean,
     }),
     options: {
-      label: 'Did you do your MANTRA today(assigned on Day 21)?',
       fields: {
         id: {
           hidden: true
+        },
+        mantraAnswer: {
+          label: 'Did you do your mantra today (assigned on Day 21)?'
+        },
+        exerciseAnswer: {
+          label: 'Did you exercise and meditate yet today(assigned on Day 8)?',
+        },
+        meditateAnswer: {
+          label: 'Did you MEDITATE yet today(assigned on Day 8)?'
         }
       },
-      auto: 'labels'
     },
     value : {
       fields: {
@@ -24,27 +31,7 @@ export default {
       }
     }
   },
-  2: {
-    type: t.struct({
-      yes: t.Boolean,
-      no: t.Boolean
-    }),
-    options: {
-      label: 'Did you EXERCISE and meditate yet today(assigned on Day 8)?',
-      auto: 'labels'
-    }
-  },
-  3: {
-    type: t.struct({
-      yes: t.Boolean,
-      no: t.Boolean
-    }),
-    options: {
-      label: 'Did you MEDITATE yet today(assigned on Day 8)?',
-      auto: 'labels'
-    }
-  },
-  4:{
+  2:{
     type:t.struct({
       priorities:t.String,
       fitnessExercise:t.String,
@@ -78,7 +65,7 @@ export default {
     }
 
   },
-  5:{
+  3:{
     type:t.struct({
       who:t.String,
       howChange:t.String,
@@ -99,21 +86,21 @@ export default {
       }
     }
   },
-  6:{
+  4:{
     type:t.String,
     options:{
       label:'List one wish that you have for the world or a particular sector of the world when it comes to Health.',
       auto:'none'
     }
   },
-  7:{
+  5:{
     type:t.String,
     options:{
       label:'What group of people or country can be most influential in helping this goal be attained?',
       auto:'none'
     }
   },
-  8:{
+  6:{
     type:t.String,
     options:{
       label:'How can you help, be it in any small way, to see this goal be achieved?',

@@ -2,20 +2,27 @@ import t from "../components/templates";
 
 
 export default {
-  1: {
-    type: t.struct({
-      id:t.maybe(t.String),
-      yes: t.Boolean,
-      no: t.Boolean
+  1: { type: t.struct({
+    id: t.maybe(t.String),
+    mantraAnswer: t.Boolean,
+    exerciseAnswer: t.Boolean,
+    meditateAnswer: t.Boolean,
     }),
     options: {
-      label: 'Did you do your MANTRA today(assigned on Day 21)?',
       fields: {
         id: {
           hidden: true
+        },
+        mantraAnswer: {
+          label: 'Did you do your mantra today (assigned on Day 21)?'
+        },
+        exerciseAnswer: {
+          label: 'Did you exercise and meditate yet today(assigned on Day 8)?',
+        },
+        meditateAnswer: {
+          label: 'Did you MEDITATE yet today(assigned on Day 8)?'
         }
       },
-      auto: 'labels'
     },
     value : {
       fields: {
@@ -24,26 +31,6 @@ export default {
     }
   },
   2: {
-    type: t.struct({
-      yes: t.Boolean,
-      no: t.Boolean
-    }),
-    options: {
-      label: 'Did you EXERCISE and meditate yet today(assigned on Day 8)?',
-      auto: 'labels'
-    }
-  },
-  3: {
-    type: t.struct({
-      yes: t.Boolean,
-      no: t.Boolean
-    }),
-    options: {
-      label: 'Did you MEDITATE yet today(assigned on Day 8)?',
-      auto: 'labels'
-    }
-  },
-  4: {
     type:t.list(
       t.struct({
         goal:t.String
@@ -53,7 +40,7 @@ export default {
       label:'What major P&E goals [BHAGs] do you envision or yourself by 2020?',
     }
   },
-  5:{
+  3:{
     type:t.list(
       t.struct({
         bucketPEBHAG:t.String,
@@ -78,7 +65,7 @@ export default {
       }
     }
   },
-  6:{
+  4:{
     type:t.struct({
       who:t.String,
       howAttain:t.String,
@@ -99,28 +86,28 @@ export default {
       }
     }
   },
-  7:{
+  5:{
     type:t.String,
     options:{
       label:'What have you done by 2020 to heal and repair the relationships that you noted have regressed in the Day 17 Assignment?',
       auto:'none'
     }
   },
-  8:{
+  6:{
     type:t.String,
     options:{
       label:'List one wish that you have for the world or a particular sector of the world when it comes to personal aims and hobbies.',
       auto:'none'
     }
   },
-  9:{
+  7:{
     type:t.String,
     options:{
       label:'What advice would you give people who are on board with your wish – how can we all work together towards this aim in our personal lives?',
       auto:'none'
     }
   },
-  10:{
+  8:{
     type:t.String,
     options:{
       label:'How can you help, be it in any small way, to see this goal be achieved?',
