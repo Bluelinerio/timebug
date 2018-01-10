@@ -3,13 +3,13 @@ import { Image, Text, View } from 'react-native';
 import Button from 'react-native-button';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { startButtonBackgroundImage }   from '../../../resources/images/';
-import { darkishBlue } from '../../../constants/colors';
+import { deepBlue } from '../../../constants/colors';
 
 export default ({ text, durationText, onPress, buttonTestId, timeTestId}) => (
 	<Button containerStyle={style.wideButton} onPress={onPress}>
 		<View style={style.absoluteContainer}  testID={buttonTestId}>
 			<Image source={startButtonBackgroundImage} style={style.startButtonBackground} />
-			<Icon name="md-time" size={34} color={darkishBlue} style={style.buttonImage} />
+			<Icon name="md-time" size={34} color={deepBlue} style={style.buttonImage} />
 			<Text style={[style.durationText]}>{durationText}</Text>
 		</View>
 		<Text style={style.wideButtonText} testID={timeTestId}>{text}</Text>
@@ -33,7 +33,7 @@ const style = {
 		fontSize: 15.5,
 		fontWeight: 'bold',
 		textAlign: 'left',
-		color: darkishBlue,
+		color: deepBlue,
 		flex: 2,
 		marginLeft: 15,
 		backgroundColor: 'transparent'
@@ -47,7 +47,7 @@ const style = {
 		bottom: -1
 	},
 	durationText: {
-		color: darkishBlue,
+		color: deepBlue,
 		fontWeight: '600',
 		fontSize: 12,
 		bottom: 4,

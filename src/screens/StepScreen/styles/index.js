@@ -3,7 +3,7 @@ import {
   StyleSheet,
   Dimensions,
 } from "react-native";
-import { darkishBlue }       from '../../../constants/colors'
+import { deepBlue }       from '../../../constants/colors'
 import { STATUSBAR_HEIGHT, APPBAR_HEIGHT} from '../../../constants'
 
 export default StyleSheet.create({
@@ -48,7 +48,7 @@ export default StyleSheet.create({
     fontFamily: "Helvetica",
     fontSize: 24,
     fontWeight: "500",
-    color: darkishBlue,
+    color: deepBlue,
     textAlign: 'left',
     paddingHorizontal: 35,
     paddingVertical: 20,
@@ -58,7 +58,7 @@ export default StyleSheet.create({
     fontFamily: "Helvetica",
     fontSize: 32,
     fontWeight: "bold",
-    color: darkishBlue,
+    color: deepBlue,
     marginRight:10
   },
   stepScreenImage: {
