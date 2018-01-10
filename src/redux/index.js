@@ -1,39 +1,43 @@
+// @flow
 import {
   createStore,
   applyMiddleware,
-  combineReducers,
   compose,
-}                                       from 'redux'
-import createSagaMiddleware             from 'redux-saga'
-import { offline }                      from '@redux-offline/redux-offline';
-import offlineConfig                    from '@redux-offline/redux-offline/lib/defaults';
+}                                               from 'redux'
+import createSagaMiddleware                     from 'redux-saga'
+import { persistStore, persistCombineReducers } from 'redux-persist'
+import { AsyncStorage }                         from 'react-native'
+import rootSaga           from './rootSagas'
+import { rootReducer }    from './rootReducer';
+import { persistConfig }  from '../constants/config';
 
-import rootSaga       from './rootSagas'
-import { rootReducer }from './rootReducer';
+type Props = {
+  whitelist: Array<string>,
+  blacklist: Array<string>,
+}
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
 export default () => {
+
   const sagaMiddleware = createSagaMiddleware();
   const store = createStore(
-    combineReducers({
-    ...rootReducer,
-    }), 
+    persistCombineReducers({
+      ...persistConfig,
+      storage: AsyncStorage,
+    }, rootReducer), 
     composeEnhancers(
       applyMiddleware(
         sagaMiddleware, 
-      ),
-      offline({
-        offlineConfig,
-        whitelist: ['formData', 'cms' ],
-        blacklist: ['forms']
-      })
+      )
     )
   );
+  const persistor = persistStore(store);
 
   sagaMiddleware.run(rootSaga);
 
   return {
+    persistor,
     store
   }
 }
+

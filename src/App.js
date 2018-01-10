@@ -1,11 +1,13 @@
 import React                        from 'react';
 import { ApolloProvider }           from 'react-apollo';
 import { Provider }                 from 'react-redux';
-import { AppRegistry, Platform }    from 'react-native';
+import { AppRegistry }              from 'react-native';
+import { PersistGate }              from 'redux-persist/es/integration/react'
 import setup                        from './redux';
 import { client }                   from './services/apollo';
 import ReduxNavigator               from './navigation/reduxNavigator';
 import { APP_NAME }                 from './constants';
+import DefaultIndicator             from './components/DefaultIndicator'
 import                                  './styles';
 
 if (__DEV__) {
@@ -14,18 +16,24 @@ if (__DEV__) {
                    GLOBAL.XMLHttpRequest;
 }
 export default class App extends React.Component {
-
   render() {
-    const { store } = setup();
+    const { persistor, store } = setup();
     return (
       <ApolloProvider client={client}>
         <Provider store={store}>
-          <ReduxNavigator />
+          <PersistGate
+            loading={ <DefaultIndicator />}
+            onBeforeLift={() => {
+              
+            }}
+            persistor={persistor}
+          >
+            <ReduxNavigator />
+          </PersistGate>
         </Provider>
       </ApolloProvider>
     )
   }
-
 }
 
 AppRegistry.registerComponent(APP_NAME, () => App);
