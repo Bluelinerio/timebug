@@ -11,7 +11,6 @@ export default {
         meditateAnswer: t.Boolean,
       }),
       options: {
-        label: 'Let us reiew your progress quick...',
         fields: {
           id: {
             hidden: true
@@ -27,6 +26,11 @@ export default {
           }
         },
       },
+      value : {
+        fields: {
+          id: 'step23+v0.0.0.1'
+        }
+      }
     },
 2:{
     type:t.String,

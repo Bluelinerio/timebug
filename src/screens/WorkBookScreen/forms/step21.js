@@ -44,10 +44,7 @@ export default {
 
     },
     2:{
-        type: t.struct({
-            yes:t.Boolean,
-            no:t.Boolean
-        }),
+        type: t.Boolean,
         options: {
             label:'Are you committed to taking full ownership of your life garden going forward?',
         }
@@ -73,59 +70,59 @@ export default {
              label:'Reflecting on the 7 Self-Assessments from days 13-19, list two BHAGs for 2020',
              fields:{
                  careerShortcoming:{
-                     label:'Career \n\nA failure or shortcoming that you experienced over the last 5 years',
+                     label:'Career: A failure or shortcoming that you experienced over the last 5 years',
                      auto:'none'
                  },
                  careerBHAG:{
-                     label:'Something completely new',
+                     label:'Career: Something completely new',
                      auto:'none'
                  },
                  personalityAndHobbiesShortcoming:{
-                    label:'Personality And Hobbies \n\nA failure or shortcoming that you experienced over the last 5 years',
+                    label:'Personality And Hobbies: A failure or shortcoming that you experienced over the last 5 years',
                     auto:'none'
                 },
                 personalityAndHobbiesBHAG:{
-                    label:'Something completely new',
+                    label:'Personality And Hobbies: Something completely new',
                     auto:'none'
                 },
                 healthShortcoming:{
-                    label:'Health \n\nA failure or shortcoming that you experienced over the last 5 years',
+                    label:'Health: A failure or shortcoming that you experienced over the last 5 years',
                     auto:'none'
                 },
                 healthBHAG:{
-                    label:'Something completely new',
+                    label:'Health: Something completely new',
                     auto:'none'
                 },
                 relationshipShortcoming:{
-                    label:'Relationships \n\nA failure or shortcoming that you experienced over the last 5 years',
+                    label:'Relationships: A failure or shortcoming that you experienced over the last 5 years',
                     auto:'none'
                 },
                 relationshipBHAG:{
-                    label:'Something completely new',
+                    label:'Relationships: Something completely new',
                     auto:'none'
                 },
                 financialShortcoming:{
-                    label:'Financial \n\nA failure or shortcoming that you experienced over the last 5 years',
+                    label:'Financial: A failure or shortcoming that you experienced over the last 5 years',
                     auto:'none'
                 },
                 financialBHAG:{
-                    label:'Something completely new',
+                    label:'Financial: Something completely new',
                     auto:'none'
                 },
                 PEShortcoming:{
-                    label:'Place And Environment \n\nA failure or shortcoming that you experienced over the last 5 years',
+                    label:'Place And Environment: A failure or shortcoming that you experienced over the last 5 years',
                     auto:'none'
                 },
                 PEBHAG:{
-                    label:'Something completely new',
+                    label:'Place And Environment: Something completely new',
                     auto:'none'
                 },
                 spiritualityShortcoming:{
-                    label:'Spirituality \n\nA failure or shortcoming that you experienced over the last 5 years',
+                    label:'Spirituality: A failure or shortcoming that you experienced over the last 5 years',
                     auto:'none'
                 },
                 spiritualityBHAG:{
-                    label:'Something completely new',
+                    label:'Spirituality: Something completely new',
                     auto:'none'
                 }
              }

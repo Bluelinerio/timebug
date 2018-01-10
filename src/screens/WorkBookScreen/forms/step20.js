@@ -76,14 +76,7 @@ export default {
         rank4:AssessmentTypes,
         rank5:AssessmentTypes,
         rank6:AssessmentTypes,
-        rank7:AssessmentTypes,
-        career: t.Number,
-        personalityAndHobbies: t.Number,
-        health: t.Number,
-        relationship:t.Number,
-        financial:t.Number,
-        placeAndEnvironment:t.Number,
-        spirituality:t.maybe(t.Number)
+        rank7:AssessmentTypes
       }),
       options:{
         label: 'Reflect back on your 7 Assessments [Days 13-19]',
@@ -109,33 +102,47 @@ export default {
         },
         rank7:{
           auto:'labels'
-        },
-        career: {
-          label: 'If the 7 areas were a pie, how would you slice up your energy and motivation level?(Total should = 100%)',
-          placeholder:'Career'
-        },
-        personalityAndHobbies:{
-          auto:'placeholders'
-        },
-        health:{
-          auto:'placeholders'
-        },
-        relationship:{
-          auto:'placeholders'
-        },
-        financial:{
-          auto:'placeholders'
-        },
-        placeAndEnvironment:{
-          auto:'placeholders'
-        },
-        spirituality:{
-          auto:'placeholders'
         }
         }
           }
       },
-      4: {
+      4 : {
+        type:t.struct ({
+          career: t.Number,
+          personalityAndHobbies: t.Number,
+          health: t.Number,
+          relationship:t.Number,
+          financial:t.Number,
+          placeAndEnvironment:t.Number,
+          spirituality:t.maybe(t.Number)
+        }),
+        options: {
+          career: {
+            label: 'If the 7 areas were a pie, how would you slice up your energy and motivation level?(Total should = 100%)',
+            placeholder:'Career'
+          },
+          personalityAndHobbies:{
+            auto:'placeholders'
+          },
+          health:{
+            auto:'placeholders'
+          },
+          relationship:{
+            auto:'placeholders'
+          },
+          financial:{
+            auto:'placeholders'
+          },
+          placeAndEnvironment:{
+            auto:'placeholders'
+          },
+          spirituality:{
+            auto:'placeholders'
+          }
+        }
+
+      },
+      5: {
         type:t.struct({
           career2011:t.Number,
           personalityAndHobbies2011:t.Number,
@@ -367,7 +374,7 @@ export default {
          }
 
       },
-      5:{
+      6:{
         type:t.struct({
           career2011:t.Number,
           personalityAndHobbies2011:t.Number,

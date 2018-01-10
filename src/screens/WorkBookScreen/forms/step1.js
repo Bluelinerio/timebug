@@ -16,14 +16,17 @@ export default {
           hidden: true
         },
         stageOfLife: {
-          label: "At what stage of your life was it?"
+          label: "At what stage of your life was it?",
+          error: "Please fill out this field.",
         },
         memory: {
           label: "Describe what happened",
+          error: "Please fill out this field.",
           numberOfLines: 3
         },
         areaOfLife: {
-          label: "What area of life does this belong to?"
+          label: "What area of life does this belong to?",
+          error: "Please fill out this field.",
         },
       }
     },
@@ -43,13 +46,16 @@ export default {
       label: "What are some of your regrets?",
       fields: {
         stageOfLife: {
-          label: "At what stage of your life was it?"
+          label: "At what stage of your life was it?",
+          error: "Please fill out this field."
         },
         areaOfLife: {
-          label: "What Area Of Life does this belong to?"
+          label: "What Area Of Life does this belong to?",
+          error: "Please fill out this field."
         },
         regret: {
-          label: "Describe what happened"
+          label: "Describe what happened",
+          error: "Please fill out this field."
         }
       }
     }
@@ -66,7 +72,7 @@ export default {
       
       fields: {
         moments: {
-          label: "How would you describe this moment?"
+          label: "How would you describe this moment?",
         },
         field: {
           label: "What are your defining moments?",
