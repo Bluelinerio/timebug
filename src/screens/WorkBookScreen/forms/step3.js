@@ -44,9 +44,9 @@ export default {
       )
     }),
     options: {
-      label: "List 3-5 Charachter Traits that have held you back from achieving your goals.",
       fields: {
         field: {
+          label: "List 3-5 Charachter Traits that have held you back from achieving your goals.",
           auto: 'placeholders',
           disableOrder: true,
           maxLines: 5,

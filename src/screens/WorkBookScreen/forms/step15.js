@@ -83,9 +83,9 @@ export default {
     )
     }),
     options:{
-      label:'What Personal Aims and Hobbies were you not able to get going over the past 5 years, that you really wanted to do? (List up to 5)',
       fields:{
         aimsAndHobbies:{
+          label:'What Personal Aims and Hobbies were you not able to get going over the past 5 years, that you really wanted to do? (List up to 5)',          
           item:{
             fields:{
               personalAimHobby:{

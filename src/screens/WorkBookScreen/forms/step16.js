@@ -1,5 +1,5 @@
 import t from "../components/templates";
-import { PriorityLevels, ExerciseFrequency, ExerciseTypes, CarryStress, CommonGoalOutcomes, BedTimes, EatingFrequency, HoursSleep } from "./contents";
+import { PriorityLevels, IndulgeFrequency, TakeEnergizers, ExerciseFrequency, ExerciseTypes, CarryStress, CommonGoalOutcomes, BedTimes, EatingFrequency, HoursSleep } from "./contents";
 
 export default {
   1: {
@@ -75,25 +75,10 @@ export default {
       typicalDiet: t.String,
       healthyDiet: t.Number,
       eatingFrequency: EatingFrequency,
-      makeYourOwnMeals: t.struct({
-        yes:t.Boolean,
-        no:t.Boolean
-      }),
-      eatOrganic: t.struct({
-        yes:t.Boolean,
-        no:t.Boolean
-      }),
-      takeSupplements: t.struct({
-        yes:t.Boolean,
-        no:t.Boolean
-      }),
-      indluge: t.struct({
-        a:t.Boolean,
-        b:t.Boolean,
-        c:t.Boolean,
-        d:t.Boolean,
-        e:t.Boolean
-      })
+      makeYourOwnMeals: t.Boolean,
+      eatOrganic: t.Boolean, 
+      takeSupplements: t.Boolean,
+      indulgeFrequency: IndulgeFrequency
     }),
     options: {
       label: 'Take time to evaluate your nutrition & diet',
@@ -122,26 +107,8 @@ export default {
             auto: 'labels'
           }
         },
-        indluge: {
-          label:'How often do you over-indulge with emotional eating(by eating too much or eating too much junk food excessively?)',
-          fields: {
-            a:{
-              label:'a) Daily'
-            },
-            b:{
-              label:'b) 1-2x/wk'
-            },
-            c:{
-              label:'c) Occasionally(1-2x/mo)'
-            },
-            d:{
-              label:'d) Rarely'
-            },
-            e:{
-              label:'e) Never'
-            },
-
-          }
+        indulgeFrequency: {
+          label:'How often do you over-indulge with emotional eating(by eating too much or eating too much junk food excessively?)'
         }
       }
     }
@@ -187,13 +154,7 @@ export default {
       healthIssues: t.String,
       howProminent: t.Number,
       sickDays: t.Number,
-      takeEnergizer: t.struct({
-        a: t.Boolean,
-        b: t.Boolean,
-        c: t.Boolean,
-        d: t.Boolean,
-        e: t.Boolean,
-      })
+      takeEnergizers: TakeEnergizers
     }),
     options: {
       label: 'Take time to evaluate your Body Care',
@@ -213,25 +174,8 @@ export default {
         sickDays: {
           label:'How often do you get sick(# of days per year on average from 2011-2015)'
         },
-        takeEnergizer: {
+        takeEnergizers: {
           label:'Do you drink coffee or take anything to stay awake or energized daily?',
-          fields: {
-            a: {
-              label:'a)Never'
-            },
-            b: {
-              label:'b)Only When Really Sick'
-            },
-            c: {
-              label:'c)Occasionally'
-            },
-            d: {
-              label:'d)Frequently'
-            },
-            e: {
-              label:'e)Daily'
-            }
-          }
         }
       }
     }
@@ -247,7 +191,7 @@ export default {
       awareness: t.struct({
         example1: t.String,
         example2: t.String,
-        example3: t.maybe(t.String)
+        example3: t.String
       })
     }),
     options:{

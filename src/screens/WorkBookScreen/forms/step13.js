@@ -12,10 +12,7 @@ export default {
           Dec2015Salary: t.Number
         }),
         paidFairly: PaidFairly,
-        compensationGoals: t.struct({
-            yes: t.Boolean,
-            no: t.Boolean
-          }),
+        compensationGoals: t.Boolean,
         hoursPerWeek: t.Number,
         hoursChanged: t.maybe(t.String)
     }),
@@ -125,7 +122,7 @@ export default {
       whatBossSays: t.String,
       whatMentorSays: t.maybe(t.String),
       whatYouSay: t.String,
-      whatPricePaid: t.maybe(t.String)
+      whatPricePaid: t.String
     }),
     options: {
       label: "Take some time to evaluate your shortcomings at work",

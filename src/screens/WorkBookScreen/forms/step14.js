@@ -53,7 +53,6 @@ export default {
       biggestDissapointment: t.String
     }),
     options: {
-      label: "", // TODO: Add label
       fields: {
         whyChange: {
           label: "Why did it change?"

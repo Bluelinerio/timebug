@@ -14,12 +14,12 @@ export default {
       )
     }),
     options: {
-      label: "Specify what MLEs took placer over the past 5 years. Working with your Day 2 worksheet,specify how your time was generally shifted as a result.",
-      fields: {
+     fields: {
         id: {
           hidden:true
         },
         field: {
+          label: "Specify what MLEs took placer over the past 5 years. Working with your Day 2 worksheet,specify how your time was generally shifted as a result.",          
           item: {
             fields: {
 
