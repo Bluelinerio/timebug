@@ -25,6 +25,16 @@ export default {
           config: {
             maxLines: 10,
           },
+          item: {
+            fields: {
+              strengthsSelfView: {
+                error: "Please select a value."
+              },
+                resultingGoalAchieved:{
+                  error: "Please fill out this field."
+                }
+            }
+          }
         },
       },
       value: {
@@ -53,6 +63,16 @@ export default {
           config: {
             maxLines: 5,
           },
+          item: {
+            fields: {
+              weaknessSelfView: {
+                error: "Please select a value."
+              },
+              goalNotReached:{
+                  error: "Please fill out this field."
+                }
+            }
+          }
         },
       }
     }
@@ -67,19 +87,16 @@ export default {
         label: "List 3-5 Charachter Strengths and Weaknesses from a friend or family member's point of view.",
         fields: {
           friendsName: {
+            error: "Please fill out this field.",
             label: "Write down your friend or family member's name."
           },
           strengthFriendView: {
             label:"Select 3-5 charachter strengths from your friend or family member's point of view.",
-            maxLines: 5,
-            config: {
-              maxLines: 5,
-            },
-            
+            error:"Please select a value."
         },
           weaknessFriendView: {
             label:"Select 3-5 charachter weaknesses from your friend or family member's point of view.",
-            maxLines: 5,
+            error:"Please select a value.",
             config: {
               minLines:3,
             },

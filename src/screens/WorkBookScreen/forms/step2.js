@@ -18,6 +18,7 @@ export default {
         id: {
           hidden: true
         },
+        
         field: {
           label: "Enter how many hours you spend weekly on each life category.",
           auto: 'placeholders',
@@ -26,6 +27,16 @@ export default {
           config: {
             maxLines: 10,
           },
+          item: {
+            fields: {
+              category: {
+                error: "Please fill out this field."
+              },
+                hours:{
+                  error: "Please fill out this field."
+                }
+            }
+          }
         },
       }
     },
@@ -56,6 +67,16 @@ export default {
           config: {
             maxLines: 3,
           },
+          item: {
+            fields: {
+              category: {
+                error: "Please fill out this field."
+              },
+                hours:{
+                  error: "Please fill out this field."
+                }
+            }
+          }
         },
       }
     }
@@ -79,6 +100,16 @@ export default {
           config: {
             maxLines: 10,
           },
+          item: {
+            fields: {
+              thing: {
+                error: "Please fill out this field."
+              },
+                areaOfLife:{
+                  error: "Please fill out this field."
+                }
+            }
+          }
         }
       }
     }
@@ -103,6 +134,16 @@ export default {
           config: {
             maxLines: 10,
           },
+          item: {
+            fields: {
+              thing: {
+                error: "Please fill out this field."
+              },
+                areaOfLife:{
+                  error: "Please fill out this field."
+                }
+            }
+          }
         }
       }
     }

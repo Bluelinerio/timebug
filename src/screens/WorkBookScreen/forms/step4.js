@@ -25,13 +25,16 @@ export default {
               item: {
                 fields:{
                   boardMember:{
-                    auto:'placeholders'
+                    auto:'placeholders',
+                    error:'Please fill out this field'
                   },
                   lifeCategory:{
-                    auto:'labels'
+                    auto:'labels',
+                    error:'Please select a value'
                   },
                   interactionFrequency:{
-                    auto:'labels'
+                    auto:'labels',
+                    error:'Please select a value'
                   }
                 }
 
@@ -71,6 +74,16 @@ export default {
               config: {
                 maxLines: 10,
               },
+              item: {
+                fields: {
+                  supportGroup: {
+                    error: "Please fill out this field."
+                  },
+                    lifeCategory:{
+                      error: "Please select a value."
+                    }
+                }
+              }
             },
           }
         }

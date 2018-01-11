@@ -17,7 +17,7 @@ export default {
         },
         stageOfLife: {
           label: "At what stage of your life was it?",
-          error: "Please fill out this field.",
+          error: "Please fill out this field."
         },
         memory: {
           label: "Describe what happened",
@@ -73,6 +73,7 @@ export default {
       fields: {
         moments: {
           label: "How would you describe this moment?",
+          error: "Please fill out this field."
         },
         field: {
           label: "What are your defining moments?",
@@ -99,10 +100,12 @@ export default {
       label: "When you were in that 90 year old’s body and mind",
       fields: {
         emotions: {
-          label: "What were some of the emotion you felt?"
+          label: "What were some of the emotion you felt?",
+          error: "Please fill out this field."
         },
         text: {
-          label: "reflecting back on your life, what did you feel?"
+          label: "reflecting back on your life, what did you feel?",
+          error: "Please fill out this field."
         }
       }
     }
