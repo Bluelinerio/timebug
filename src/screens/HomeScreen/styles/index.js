@@ -1,5 +1,15 @@
 import { Platform, StyleSheet, StatusBar } from 'react-native'
 import { colors as topColors } from '../../../constants/colors';
+import {
+  iOSColors,
+  human,
+  iOSUIKit,
+  systemWeights
+} from "react-native-typography";
+
+if(!iOSColors || !human || !iOSUIKit || !systemWeights) {
+	throw  'missing react-native-typography'
+}
 
 export const colors = {
 	black: '#1a1917',
@@ -47,6 +57,7 @@ export default StyleSheet.create({
 		marginTop: 5,
 		paddingHorizontal: 30,
 		backgroundColor: 'transparent',
+		backgroundColor: 'transparent',
 		color: colors.subtitleColor,
 		fontSize: 13,
 		fontStyle: 'italic',
@@ -56,6 +67,26 @@ export default StyleSheet.create({
 		backgroundColor: colors.background1,
 		paddingTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight
 	},
+	header: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
+		marginHorizontal: 16,
+		paddingTop:16,
+    paddingBottom: 8,
+    borderBottomWidth: 1,
+    borderColor: iOSColors.customGray
+	},
+	headerDate: {
+    ...iOSUIKit.footnoteEmphasizedObject,
+    color: iOSColors.gray
+	},
+	headerAvatar: {
+    height: 43,
+    width: 43,
+    borderRadius: 43 / 2
+	},
+	bannerHeaderTitle: iOSUIKit.largeTitleEmphasized,
 	banner: {
 		flexDirection: 'row',
 		alignItems: 'center',
