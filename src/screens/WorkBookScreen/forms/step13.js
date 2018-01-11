@@ -12,12 +12,9 @@ export default {
           Dec2015Salary: t.Number
         }),
         paidFairly: PaidFairly,
-        compensationGoals: t.struct({
-            yes: t.Boolean,
-            no: t.Boolean
-          }),
+        compensationGoals: t.Boolean,
         hoursPerWeek: t.Number,
-        hoursChanged: t.maybe(t.String)
+        hoursChanged: t.String
     }),
     options: {
       label: "Take some time to evaluate your salary and compensation over the past 5 years.",
@@ -26,19 +23,26 @@ export default {
               hidden: true
           },
         salaryGrowth: {
-            label:'How has your salary grown(or not) from 01/11 to 12/15(5 full years)?'
+            label:'How has your salary grown(or not) from 01/11 to 12/15(5 full years)?',
+            fields: {
+                jan2011Salary: {error:'Please fill out this field.'},
+                Dec2015Salary: {error:'Please fill out this field.'}
+            }
         }, 
         paidFairly: {
-            label:'Do you feel like you are being paid fairly for what you offer?'
+            label:'Do you feel like you are being paid fairly for what you offer?',
+            error:'Please select a value.'
         }, 
         compensationGoals: {
             label:'Did you meet whatever compensation goals you had set for 2015, anytime in 2011-2014?'
         }, 
         hoursPerWeek: {
-            label:'How many hours do you work on average per week?'
+            label:'How many hours do you work on average per week?',
+            error:'Please fill out this field.'
         }, 
         hoursChanged: {
             label:'How have your work week hours changed since 2011?',
+            error:'Please fill out this field.'
 
         }, 
          auto: 'none'
@@ -82,35 +86,43 @@ export default {
           label:'How did you feel about your work over the past 5 years?',
           fields: {
           twentyEleven: {
-              placeholder:'2011'
+              placeholder:'2011',
+              error:'Please fill out this field.'
           },
           twentyTwelve: {
-            placeholder:'2012'
+            placeholder:'2012',
+            error:'Please fill out this field.'
           },
           twentyThirteen: {
-            placeholder:'2013'
+            placeholder:'2013',
+            error:'Please fill out this field.'
           },
           twentyFourteen: {
-              placeholder:'2014'
+              placeholder:'2014',
+              error:'Please fill out this field.'
           },
           twentyFifteen: {
-              placeholder:'2015'
+              placeholder:'2015',
+              error:'Please fill out this field.'
           }
         }
         },
         motivationLevel: {
-            label: 'What is your motivation level at work right now?'
+            label: 'What is your motivation level at work right now?',
+            error:'Please fill out this field.'
         },
         meaningfulAchievements : {
             label: 'List up to 5 meaningful achievements that you have had at work over the past 5 years',
             item: {
                 fields: {
                     meaningfulAchievement: {
-                        placeholder: 'Meaningful Achievement'
+                        placeholder: 'Meaningful Achievement',
+                        error:'Please fill out this field.'
 
                     },
                     whatChanged: {
-                        placeholder: 'What changed, if anything?'
+                        placeholder: 'What changed, if anything?',
+                        error:'Please fill out this field.'
 
                     }
 
@@ -125,25 +137,29 @@ export default {
       whatBossSays: t.String,
       whatMentorSays: t.maybe(t.String),
       whatYouSay: t.String,
-      whatPricePaid: t.maybe(t.String)
+      whatPricePaid: t.String
     }),
     options: {
       label: "Take some time to evaluate your shortcomings at work",
       fields: {
         whatBossSays: {
           auto:'none',
-          label:'What would your boss/peer say about your workplace performance?'
+          label:'What would your boss/peer say about your workplace performance?',
+          error:'Please fill out this field.'
         },
         whatMentorSays: {
           auto:'none',
+          error:'Please fill out this field.',
           label:'What does your work mentor(assuming it is not your boss, otherwise skip this question) think about your workplace performance?'
         },
         whatYouSay: {
             auto:'none',
-            label: 'What do you say, now for yourself - what were your shortcomings over these 5 years?'
+            label: 'What do you say, now for yourself - what were your shortcomings over these 5 years?',
+            error:'Please fill out this field.'
         },
         whatPricePaid: {
             auto:'none',
+            error:'Please fill out this field.',
             label: 'What price did you pay for your self-recognized or boss/colleague-perceived weaknesses over the past 5 years? (can be from multiple jobs)'
         }
     }

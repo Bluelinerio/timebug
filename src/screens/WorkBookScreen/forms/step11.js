@@ -12,13 +12,12 @@ export default {
 					percentGoalCompleted: t.Number,
 					satisfactionLevel: t.Number,
 					investedTimeEnergy: t.Number,
-					requiredTimeEnergy: t.maybe(t.String)
-
+					requiredTimeEnergy: t.String
 				})
 			)
 		}),
 		options: {
-			label: "Gather all of your previous goal data, including time spent and key achievements over the past 5 years. You can start with 2015 if you feel overwhelmed assessing all 5 years.",
+			label: "Gather all of your previous goal data, including time spent and key achievements over the past 5 years. You can start with 2015 if you feel overwhelmed assessing all 5 years.",					
 			fields: {
 				id: {
 					hidden: true
@@ -26,21 +25,26 @@ export default {
 				field: {
 					item: {
 						fields: {
-
 							goal: {
-								placeholder: 'Goal'
+								placeholder: 'Goal',
+								error:'Please fill out this field.'
+
 							},
 							percentGoalCompleted: {
-								placeholder: '% of Goal Completed'
+								placeholder: '% of Goal Completed',
+								error:'Please fill out this field.'
 							},
 							satisfactionLevel: {
-								placeholder: 'Satisfaction Level(1-10 scale)'
+								placeholder: 'Satisfaction Level(1-10 scale)',
+								error:'Please fill out this field.'
 							},
 							investedTimeEnergy: {
-								placeholder: 'Invested Time/Energy(1-10 scale)'
+								placeholder: 'Invested Time/Energy(1-10 scale)',
+								error:'Please fill out this field.'
 							},
 							requiredTimeEnergy: {
-								placeholder: 'Required Time/Energy'
+								placeholder: 'Required Time/Energy',
+								error:'Please fill out this field.'
 							},
 
 						},
@@ -77,7 +81,8 @@ export default {
 			label: "Outline the Goal-Setting & Tracking Process that you have followed over the past 5 years.",
 			fields: {
 					describeProcess: {
-						label: 'How do you describe the process?(Select one)'
+						label: 'How do you describe the process?(Select one)',
+						error:'Please fill out this field.'
 					},			
 					goalYears: {
 						label: 'Have you written down your goals annually?(Check each year that you have done this for)',
@@ -100,7 +105,8 @@ export default {
 						}
 					},		
 					useWearableTech: {
-						label: 'Do you use wearable teach, websites and/or spreadsheets to manage your time and goals?(select one)'
+						label: 'Do you use wearable teach, websites and/or spreadsheets to manage your time and goals?(select one)',
+						error:'Please select a value.'
 					}
 			},
 		}
@@ -111,13 +117,16 @@ export default {
 			description: t.String
 		}),
 		options: {
-			label: "In a few sentences, and descriptive key words, assess how your life has been, and how you have done over the past 5  years.",
 			auto: 'none',
 			type: 'textarea',
 			disableOrder: true,
 			fields: {
 				id: {
 					hidden: true
+				},
+				description: {
+					label: "In a few sentences, and descriptive key words, assess how your life has been, and how you have done over the past 5  years.",
+					error:'Please fill out this field.'
 				}
 			}
 		}

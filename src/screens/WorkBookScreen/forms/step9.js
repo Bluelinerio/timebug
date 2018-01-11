@@ -10,25 +10,34 @@ export default {
                     roleModel: t.String,
                     lifeCategory: LifeCategory,
                     interactionFrequency: InteractionFrequency,
-                    why: t.maybe(t.String)
+                    why: t.String
                  })
               )
         }),
         options: {
-          label: "Make a list of 2-10 role models and note their influencial life category, the degree to which you know/interact with them personally and the reason for why you look up to them.",
-          fields: {
+                    fields: {
             id: {
               hidden: true
             },
             
             field: {
+              label: "Make a list of 2-10 role models and note their influencial life category, the degree to which you know/interact with them personally and the reason for why you look up to them.",
+              
               item:{
                 fields:{
+                  roleModel: {
+                    error:'Please fill out this field.'
+                  },
                   lifeCategory:{
-                    auto:'labels'
+                    auto:'labels',
+                    error: 'Please select a value.'
                   },
                   interactionFrequency:{
-                    auto:'labels'
+                    auto:'labels',
+                    error: 'Please select a value.'
+                  },
+                  why: {
+                    error:'Please fill out this field.'
                   }
                 }
               },

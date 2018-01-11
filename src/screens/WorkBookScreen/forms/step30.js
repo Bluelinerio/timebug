@@ -59,6 +59,53 @@ export default {
     }),
     options: {
       label:'Start from 8,784 (8,760 hours in a typical year + 24 hours for the leap year of 2016). Map out how you would ideally spend and account for every single one of these hours.',
+      fields: {
+        basics: {
+          item: {
+            fields: {
+              categoryResponsiblity: {
+                error: 'Please select a value.'
+              },
+              lifeCategoryClassification: {
+                error: 'Please select a value.'
+              },
+              timebugCategory: {
+                error: 'Please select a value.'
+              }
+            }
+          }
+        },
+        home: {
+          item: {
+            fields: {
+              categoryResponsiblity: {
+                error: 'Please select a value.'
+              },
+              lifeCategoryClassification: {
+                error: 'Please select a value.'
+              },
+              timebugCategory: {
+                error: 'Please select a value.'
+              }
+            }
+          }
+        },
+        work: {
+          item: {
+            fields: {
+              categoryResponsiblity: {
+                error: 'Please select a value.'
+              },
+              lifeCategoryClassification: {
+                error: 'Please select a value.'
+              },
+              timebugCategory: {
+                error: 'Please select a value.'
+              }
+            }
+          }
+        }
+      }
     }
   }
 };

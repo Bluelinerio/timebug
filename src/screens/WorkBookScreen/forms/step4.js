@@ -15,22 +15,26 @@ export default {
           )
         }),
         options: {
-          label: "List 3-15 potential Board members who can positively impact different areas of your life.",
           fields: {
             id: {
               hidden: true
             },
             field: {
+              label: "List 3-15 potential Board members who can positively impact different areas of your life.",
+              
               item: {
                 fields:{
                   boardMember:{
-                    auto:'labels'
+                    auto:'placeholders',
+                    error:'Please fill out this field'
                   },
                   lifeCategory:{
-                    auto:'labels'
+                    auto:'labels',
+                    error:'Please select a value'
                   },
                   interactionFrequency:{
-                    auto:'labels'
+                    auto:'labels',
+                    error:'Please select a value'
                   }
                 }
 
@@ -60,15 +64,26 @@ export default {
           )
         }),
         options: {
-          label: "Make a list (up to 10) of any current or potential support groups and meetups, formal or informal,  that are a source of positive energy for you, in one or more domains of life.",
           fields: {
             field: {
+              label: "Make a list (up to 10) of any current or potential support groups and meetups, formal or informal,  that are a source of positive energy for you, in one or more domains of life.",   
+              
               auto: 'placeholders',
               disableOrder: true,
               maxLines: 10,
               config: {
                 maxLines: 10,
               },
+              item: {
+                fields: {
+                  supportGroup: {
+                    error: "Please fill out this field."
+                  },
+                    lifeCategory:{
+                      error: "Please select a value."
+                    }
+                }
+              }
             },
           }
         }

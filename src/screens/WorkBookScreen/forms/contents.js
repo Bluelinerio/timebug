@@ -290,10 +290,23 @@ export const WhereStandToday = t.enums.of([
       'I am a little behind but close',
       'I am right where I need to be',
       'I am a little ahead',
-      'I am way ahread of where I imagined I would be'
+      'I am way ahead of where I imagined I would be'
       ],'WhereStandToday')      
 
-
-
-
-
+export const IndulgeFrequency = t.enums.of([
+        'Daily',
+        '1-2x/wk',
+        'I am right where I need to be',
+        'Occasionally(1-2x/mo)',
+        'Rarely',
+        'Never'
+        ],'IndulgeFrequency')     
+        
+        
+export const TakeEnergizers = t.enums.of([
+          'Never',
+          'Only when really sick',
+          'Occasionally',
+          'Frequently',
+          'Daily'
+          ],'TakeEnergizers')    

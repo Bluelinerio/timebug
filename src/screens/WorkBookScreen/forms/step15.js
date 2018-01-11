@@ -12,7 +12,7 @@ export default {
           timeChange: t.String,
           whatAchieved: t.String,
           activityFeelings: t.String,
-          aloneOrPartner: t.maybe(t.String)
+          aloneOrPartner: t.String
         })
       )      
     }),
@@ -27,22 +27,28 @@ export default {
           item:{
             fields:{
               personalAimHobby: {
-                label:'Personal Aim/Hobby'
+                label:'Personal Aim/Hobby',
+                error:'Please fill out this field'
               },
               timeSpentMonth: {
-                label:'Est. time spent each month'
+                label:'Est. time spent each month',
+                error:'Please fill out this field'
               },
               timeChange: {
-                label:'How has time increased/decreased since 2011?'
+                label:'How has time increased/decreased since 2011?',
+                error:'Please fill out this field'
               },
               whatAchieved: {
-                label: 'What have you achieved in this area since 2011?'
+                label: 'What have you achieved in this area since 2011?',
+                error:'Please fill out this field'
               },
               activityFeelings: {
-                label: 'How do engaging in these activities make you feel?'
+                label: 'How do engaging in these activities make you feel?',
+                error:'Please fill out this field'
               },
               aloneOrPartner: {
-                label: 'Do you do this activity alone/with another? If so, who?'
+                label: 'Do you do this activity alone/with another? If so, who?',
+                error:'Please fill out this field'
               }
             }
           }
@@ -64,10 +70,12 @@ export default {
       label: '', //TODO: Add label
       fields: {
         giveUp: {
-          label: '2A)Which of these hobbies, if any, would you be willing to give up if some huge new priority came along, and required more of your time?'
+          label: '2A)Which of these hobbies, if any, would you be willing to give up if some huge new priority came along, and required more of your time?',
+          error:'Please fill out this field'
         },
         notGiveUp: {
-          label: '2B)Which would you NOT give up under (almost)any circumstance?'
+          label: '2B)Which would you NOT give up under (almost)any circumstance?',
+          error:'Please fill out this field'
         }
       }
 
@@ -83,16 +91,18 @@ export default {
     )
     }),
     options:{
-      label:'What Personal Aims and Hobbies were you not able to get going over the past 5 years, that you really wanted to do? (List up to 5)',
       fields:{
         aimsAndHobbies:{
+          label:'What Personal Aims and Hobbies were you not able to get going over the past 5 years, that you really wanted to do? (List up to 5)',          
           item:{
             fields:{
               personalAimHobby:{
-                placeholder: 'Personal Aim/Hobby'
+                placeholder: 'Personal Aim/Hobby',
+                error:'Please fill out this field'
               },
               why: {
-                placeholder: 'Why?'
+                placeholder: 'Why?',
+                error:'Please fill out this field'
               }
             }
           }

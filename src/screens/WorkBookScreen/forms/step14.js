@@ -15,10 +15,12 @@ export default {
           hidden: true
         },
         selfView: {
-          label: "How do you feel about your relationship with money today(emotionally and psychologically?)"
+          label: "How do you feel about your relationship with money today(emotionally and psychologically?)",
+          error:'Please fill out this field.'
         },
         othersView: {
-          label: "How do others perceive your relationship to money?(Ok to ask another person)"
+          label: "How do others perceive your relationship to money?(Ok to ask another person)",
+          error:'Please fill out this field.'
 
         }
       }
@@ -38,10 +40,12 @@ export default {
       label: "What is your credit score?",
       fields: {
         dec15: {
-          label: "Dec '15"
+          label: "Dec '15",
+          error:'Please fill out this field.'
         },
         jan11: {
-          label: "Jan '11"
+          label: "Jan '11",
+          error:'Please fill out this field.'
         }
       }
     }
@@ -53,16 +57,18 @@ export default {
       biggestDissapointment: t.String
     }),
     options: {
-      label: "", // TODO: Add label
       fields: {
         whyChange: {
-          label: "Why did it change?"
+          label: "Why did it change?",
+          error:'Please fill out this field.'
         },
         bestAchievement: {
-          label: "What is your best achievement in this area over the past 5 years?"
+          label: "What is your best achievement in this area over the past 5 years?",
+          error:'Please fill out this field.'
         },
         biggestDissapointment: {
-          label: "What is your biggest dissapointment over the past 5 years?"
+          label: "What is your biggest dissapointment over the past 5 years?",
+          error:'Please fill out this field.'
         }
       }
     }
@@ -77,13 +83,16 @@ export default {
       label: "Create a quick personal Balance Sheet using the 20/20 Worksheet as a guide.",
       fields: {
         reflection: {
-          label: "Reflecting on your Balance Sheet, how do you feel?(Use keywords or phrases)"
+          label: "Reflecting on your Balance Sheet, how do you feel?(Use keywords or phrases)",
+          error:'Please fill out this field.'
         },
         compare1: {
-          label: "How does this picture compare to where you stood in 2011?"
+          label: "How does this picture compare to where you stood in 2011?",
+          error:'Please fill out this field.'
         },
         compare2: {
           label:'Where do you stand today compared to what you had envisioned for yourself?',
+          error:'Please fill out this field.'
         }
       }
     }
@@ -151,29 +160,121 @@ export default {
         ),
         totalExpenses: t.Number
       }),
-      net: t.maybe(t.Number)
+      net: t.Number
     }),
     options: {
       label: "Create a quick personal Profit & Loss Statement using the 20/20 Worksheet as a guide. It is your choice as to whether to focus on your own individual P&L versus as a couple, if you are married.",
+      error: "Please fill out all the fields.",
       fields : {
         plSheetReflection: {
           label:'Take some time to reflect on your P&L sheet',
           fields: {
             reflection: {
-              label:'How do you feel?[Use a few keywords of phrases]'
+              label:'How do you feel?[Use a few keywords of phrases]',
+              error:'Please fill out this field.'
               
             },
             compare1: {
-              label:'How does this picture compare to where you stood in 2011?'
+              label:'How does this picture compare to where you stood in 2011?',
+              error:'Please fill out this field.'
 
             },
             compare2: {
               label:'Where do you stand today compared to what you had envisioned for yourself?',
+              error:'Please fill out this field.'
 
             }
+            }
+          },
+          expenses: {
+            fields: {
+              expensesNonDiscretionary: {
+                item: {
+                  fields: {
+                    expense: {
+                      error:'Please fill out this field.'
+                    }
+                  }
+                }
+              },
+              expensesDiscretionary: {
+                item: {
+                  fields: {
+                    expense: {
+                      error:'Please fill out this field.'
+                    }
+                  }
+                }
+              }
+        }
+      },
+      assets: {
+        fields: {
+          liquidAssets: {
+            item: {
+              fields: {
+                liquidAsset: {
+                  error:'Please fill out this field.'
+                }
+              }
+            }
+          },
+          properties: {
+            item: {
+              fields: {
+                property: {
+                  error:'Please fill out this field.'
+                }
+              }
+            }
+          }
+    }
+  },
+  liabilities: {
+    fields: {
+      shortTermDebts: {
+        item: {
+          fields: {
+            shortTermDebt: {
+              error:'Please fill out this field.'
+            }
+          }
+        }
+      },
+      longTermDebts: {
+        item: {
+          fields: {
+            longTermDebt: {
+              error:'Please fill out this field.'
             }
           }
         }
       }
+}
+},
+profitLossStatement: {
+  fields: {
+    income2015: {
+      item: {
+        fields: {
+          income: {
+            error:'Please fill out this field.'
+          }
+        }
+      }
+    },
+    savingsAndInvestments: {
+      item: {
+        fields: {
+          savingsOrInvestment: {
+            error:'Please fill out this field.'
+          }
+        }
+      }
     }
+}
+}
+    }
+  }
+}
 };

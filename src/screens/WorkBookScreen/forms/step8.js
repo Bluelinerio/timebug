@@ -56,39 +56,48 @@ export default {
               morning:{
                 fields:{
                   physical:{
-                    auto:'placeholders'
+                    auto:'placeholders',
+                    error: 'Please fill out this field.'
                   },
                   mental:{
-                    auto:'placeholders'
+                    auto:'placeholders',
+                    error: 'Please fill out this field.'
                   },
                   emotional:{
-                    auto:'placeholders'
+                    auto:'placeholders',
+                    error: 'Please fill out this field.'
                   }
                 }
               },
               afternoon:{
                 fields:{
                   physical:{
-                    auto:'placeholders'
+                    auto:'placeholders',
+                    error: 'Please fill out this field.'
                   },
                   mental:{
-                    auto:'placeholders'
+                    auto:'placeholders',
+                    error: 'Please fill out this field.'
                   },
                   emotional:{
-                    auto:'placeholders'
+                    auto:'placeholders',
+                    error: 'Please fill out this field.'
                   }
                 }
               },
               evening:{
                 fields:{
                   physical:{
-                    auto:'placeholders'
+                    auto:'placeholders',
+                    error: 'Please fill out this field.'
                   },
                   mental:{
-                    auto:'placeholders'
+                    auto:'placeholders',
+                    error: 'Please fill out this field.'
                   },
                   emotional:{
-                    auto:'placeholders'
+                    auto:'placeholders',
+                    error: 'Please fill out this field.'
                   }
                 }
               }
@@ -99,39 +108,48 @@ export default {
               morning:{
                 fields:{
                   physical:{
-                    auto:'placeholders'
+                    auto:'placeholders',
+                    error: 'Please fill out this field.'
                   },
                   mental:{
-                    auto:'placeholders'
+                    auto:'placeholders',
+                    error: 'Please fill out this field.'
                   },
                   emotional:{
-                    auto:'placeholders'
+                    auto:'placeholders',
+                    error: 'Please fill out this field.'
                   }
                 }
               },
               afternoon:{
                 fields:{
                   physical:{
-                    auto:'placeholders'
+                    auto:'placeholders',
+                    error: 'Please fill out this field.'
                   },
                   mental:{
-                    auto:'placeholders'
+                    auto:'placeholders',
+                    error: 'Please fill out this field.'
                   },
                   emotional:{
-                    auto:'placeholders'
+                    auto:'placeholders',
+                    error: 'Please fill out this field.'
                   }
                 }
               },
               evening:{
                 fields:{
                   physical:{
-                    auto:'placeholders'
+                    auto:'placeholders',
+                    error: 'Please fill out this field.'
                   },
                   mental:{
-                    auto:'placeholders'
+                    auto:'placeholders',
+                    error: 'Please fill out this field.'
                   },
                   emotional:{
-                    auto:'placeholders'
+                    auto:'placeholders',
+                    error: 'Please fill out this field.'
                   }
                 }
               }
@@ -140,13 +158,16 @@ export default {
           now:{
             fields:{
               physical:{
-                auto:'placeholders'
+                auto:'placeholders',
+                error: 'Please fill out this field.'
               },
               mental:{
-                auto:'placeholders'
+                auto:'placeholders',
+                error: 'Please fill out this field.'
               },
               emotional:{
-                auto:'placeholders'
+                auto:'placeholders',
+                error: 'Please fill out this field.'
               }
             }
             
@@ -166,26 +187,31 @@ export default {
           howLong:t.String,
           exerciseType:ExerciseTypes,
           aloneOrOthers:AloneOrOthers,
-          timeOfDay:t.maybe(TimesOfDay)
+          timeOfDay:TimesOfDay
         }),
         options: {
           label:'Please answer the following questions regarding your typical exercise habits.',
           fields:{
             timesPerWeek: {
-              auto:'labels'
+              auto:'labels',
+              error:'Please fill out this field.'
             },
             howLong:{
               auto:'none',
-              label:'For how long?'
+              label:'For how long?',
+              error:'Please fill out this field.'
             },
             exerciseType:{
-              label:'What type of Exercise?'
+              label:'What type of Exercise?',
+              error:'Please select a value.'
             },
             aloneOrOthers:{
-              label:'Alone or with others?'
+              label:'Alone or with others?',
+              error:'Please select a value.'
             },
             timeOfDay:{
-              label:'What time of day?'
+              label:'What time of day?',
+              error:'Please select a value.'
             }
           }
 
@@ -197,7 +223,7 @@ export default {
             howLong:t.String,
             meditationType:MeditationTypes,
             aloneOrOthers:AloneOrOthers,
-            timeOfDay:t.maybe(TimesOfDay)
+            timeOfDay:TimesOfDay
           }),
           options: {
             label:'Please answer the following questions regarding your typical meditation habits.',
@@ -207,16 +233,20 @@ export default {
               },
               howLong:{
                 auto:'none',
-                label:'For how long?'
+                label:'For how long?',
+                error:'Please fill out this field.'
               },
               meditationType:{
-                label:'What type of meditation?'
+                label:'What type of meditation?',
+                error:'Please select a value.'
               },
               aloneOrOthers:{
-                label:'Alone or with others?'
+                label:'Alone or with others?',
+                error:'Please select a value.'
               },
               timeOfDay:{
-                label:'What time of day?'
+                label:'What time of day?',
+                error:'Please select a value.'
               }
             }
 
@@ -224,11 +254,14 @@ export default {
         },
         4:{
           type:t.struct({
-            yes:t.Boolean,
-            no:t.Boolean
+            commitmentAnswer:t.Boolean
           }),
-          option: {
+          options: {
+            fields: {
+              commitmentAnswer: {
             label:'Are you committed to exercising and meditating for at least 20 mins daily from now until the end of the 20/20 Life Vision Challenge?',
           }
+        }
+        }
         }
        };

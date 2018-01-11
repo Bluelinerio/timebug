@@ -6,8 +6,8 @@ export default {
     type: t.struct({
       id:t.maybe(t.String),
       memory: t.String,
-      areaOfLife: t.maybe(AreaOfLife),
-      stageOfLife: t.maybe(StageOfLife)
+      areaOfLife: AreaOfLife,
+      stageOfLife: StageOfLife
     }),
     options: {
       label: "Write your best life memory",
@@ -16,14 +16,17 @@ export default {
           hidden: true
         },
         stageOfLife: {
-          label: "At what stage of your life was it?"
+          label: "At what stage of your life was it?",
+          error: "Please fill out this field."
         },
         memory: {
           label: "Describe what happened",
+          error: "Please fill out this field.",
           numberOfLines: 3
         },
         areaOfLife: {
-          label: "What area of life does this belong to?"
+          label: "What area of life does this belong to?",
+          error: "Please fill out this field.",
         },
       }
     },
@@ -43,13 +46,16 @@ export default {
       label: "What are some of your regrets?",
       fields: {
         stageOfLife: {
-          label: "At what stage of your life was it?"
+          label: "At what stage of your life was it?",
+          error: "Please fill out this field."
         },
         areaOfLife: {
-          label: "What Area Of Life does this belong to?"
+          label: "What Area Of Life does this belong to?",
+          error: "Please fill out this field."
         },
         regret: {
-          label: "Describe what happened"
+          label: "Describe what happened",
+          error: "Please fill out this field."
         }
       }
     }
@@ -58,17 +64,19 @@ export default {
     type: t.struct({
       field: t.list(
         t.struct({
-          moments: t.maybe(t.String)
+          moments: t.String
         })
       )
     }),
     options: {
-      label: "What are your defining moments?",
+      
       fields: {
         moments: {
-          label: "How would you describe this moment?"
+          label: "How would you describe this moment?",
+          error: "Please fill out this field."
         },
         field: {
+          label: "What are your defining moments?",
           auto: 'placeholders',
           disableOrder: true,
           maxLines: 3,
@@ -92,10 +100,12 @@ export default {
       label: "When you were in that 90 year old’s body and mind",
       fields: {
         emotions: {
-          label: "What were some of the emotion you felt?"
+          label: "What were some of the emotion you felt?",
+          error: "Please fill out this field."
         },
         text: {
-          label: "reflecting back on your life, what did you feel?"
+          label: "reflecting back on your life, what did you feel?",
+          error: "Please fill out this field."
         }
       }
     }

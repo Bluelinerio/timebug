@@ -4,81 +4,51 @@ import { DreamsRemember } from "./contents";
 
 
 export default {
-    1:{ 
-        type:t.struct({
-          id:t.maybe(t.String),
-          yes:t.Boolean,
-          no:t.Boolean
-        }),
-        options: {
-          label:'Did you do your MANTRA today(assigned on Day 21)?',
-          fields:{
-            id: {
-              hidden: true
-            }
+    1:{
+      type: t.struct({
+        id: t.maybe(t.String),
+        mantraAnswer: t.Boolean,
+        exerciseAnswer: t.Boolean,
+        meditateAnswer: t.Boolean,
+      }),
+      options: {
+        fields: {
+          id: {
+            hidden: true
           },
-          auto:'labels'
+          mantraAnswer: {
+            label: 'Did you do your mantra today (assigned on Day 21)?'
+          },
+          exerciseAnswer: {
+            label: 'Did you exercise and meditate yet today(assigned on Day 8)?',
+          },
+          meditateAnswer: {
+            label: 'Did you MEDITATE yet today(assigned on Day 8)?'
+          }
         },
+      },
         value : {
           fields: {
             id: 'step22+v0.0.0.1'
           }
         }
     },
-    2:{ 
-      type:t.struct({
-        yes:t.Boolean,
-        no:t.Boolean
-      }),
-      options: {
-        label:'Did you EXERCISE and meditate yet today(assigned on Day 8)?',
-        auto:'labels'
-      }
-  },
-  3:{ 
-    type:t.struct({
-      yes:t.Boolean,
-      no:t.Boolean
-    }),
-    options: {
-      label:'Did you MEDITATE yet today(assigned on Day 8)?',
-      auto:'labels'
-    }
-},
-4:{
+2:{
   type:t.struct({
     dreamsDescribe:t.String,
     dreamsRemember:DreamsRemember,
-    dreamsComeTrue:t.struct({
-        yes:t.Boolean,
-        no:t.Boolean
-      }),
+    dreamsComeTrue:t.Boolean
     }),
     options:{
       label:'What do you dream about?',
       fields: {
         dreamsDescribe: {
-          label:'Describe the general themes, quality and lucidity of your dreams'
+          label:'Describe the general themes, quality and lucidity of your dreams',
+          error: 'Please fill out this field.'
         },
         dreamsRemember:{
           label:'How often do you remember your dreams?',
-          fields: {
-            a:{
-              label:'a)Daily'
-            },
-            b:{
-              label:'b)Most of the time'
-            },
-            c:{
-              label:'c)Occasionally'
-            },
-            d:{
-              label:'d)Rarely'
-            },
-            e:{
-              label:'e)Never'
-            }
-          }
+          error: 'Please select a value.'
         },
         dreamsComeTrue: {
           label:'Have your dreams ever come true (i.e., you dreamt about something and then it happened)'
@@ -86,34 +56,36 @@ export default {
       }
     }
 },
-5: {
+3: {
   type: t.struct({
-    id:t.maybe(t.String),
     field: t.list(
       t.struct({
-        dream:t.maybe(t.String)
+        dream:t.String
       })
     ),
   }),
   options: {
-    label:'For the remainder of the program (8 Nights of Dreaming), try to remember and write your dreams down first thing in the morning – or even if you wake up in the middle of the night, the way Jason described his experience in the video.',
+    fields : {
     field: {
-      label: 'Be sure to note what themes, characters, settings, fears, hopes and aspirations were present.',
+      label: 'For the remainder of the program (8 Nights of Dreaming), try to remember and write your dreams down first thing in the morning – or even if you wake up in the middle of the night, the way Jason described his experience in the video. Be sure to note what themes, characters, settings, fears, hopes and aspirations were present.',
       item: {
         fields: {
           dream: {
-            label: 'Dream'
+            label: 'Dream',
+            error: 'Please fill out this field.'
           }
         }
       }
     }
   }
+}
 },
-6: {
-  type:t.maybe(t.String),
+4: {
+  type:t.String,
   options:{
     label:'What are your life dreams? This doesn’t have to be restricted to what your literal dreams (during sleep) are. Right now, go beyond 2020 and even your 20/20 BHAGs (from Day 21’s Assignment)... and allow yourself to dream, in this moment, about everything you want your life to be. Anything is possible. Describe what you see.',
-    auto: 'none'
+    auto: 'none',
+    error: 'Please fill out this field.'
   }
 }
 };

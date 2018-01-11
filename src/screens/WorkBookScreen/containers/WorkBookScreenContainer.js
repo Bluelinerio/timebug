@@ -10,7 +10,7 @@ import selectors from '../../../redux/selectors'
 import type { Progress }        from '../../../services/apollo/models';
 import type Props               from '../components/WorkbookScreenComponent';
 import WorkbookScreenComponent  from '../components/WorkbookScreenComponent';
-const SKIPP_ENABLED = true;
+const SKIPP_ENABLED = false;
 
 const mapStateToProps = (state) => {
   const steps = selectors.steps(state);

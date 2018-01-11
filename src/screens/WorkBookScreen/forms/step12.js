@@ -9,25 +9,27 @@ export default {
       field: t.list(
         t.struct({
           majorLifeEvent: MajorLifeEvents,
-          timeShift: t.String
+          timeShift: t.String,
         })
       )
     }),
     options: {
-      label: "Specify what MLEs took placer over the past 5 years. Working with your Day 2 worksheet,specify how your time was generally shifted as a result.",
-      fields: {
+     fields: {
         id: {
           hidden:true
         },
         field: {
+          label: "Specify what MLEs took placer over the past 5 years. Working with your Day 2 worksheet,specify how your time was generally shifted as a result.",          
           item: {
             fields: {
 
               timeShift: {
-                placeholder: 'How did this shift your time?'
+                placeholder: 'How did this shift your time?',
+                error:'Please fill out this field.'
               },
               majorLifeEvent: {
-                label: 'Major Life Event'
+                label: 'Major Life Event',
+                error:'Please select a value'
               },
 
 
@@ -58,11 +60,13 @@ export default {
       fields: {
         emotionalResponse: {
           auto:'none',
-          label:'Emotional/Mental Response'
+          label:'Emotional/Mental Response',
+          error:'Please fill out this field.'
         },
         internalEnergyInfluence: {
           auto:'none',
-          label:'Internal Energy Influence'
+          label:'Internal Energy Influence',
+          error:'Please fill out this field.'
         },
       }
     }

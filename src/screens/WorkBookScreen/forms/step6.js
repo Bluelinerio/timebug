@@ -27,18 +27,32 @@ export default {
             )
         }),
         options: {
-          label: "Choose 3-5 people who you really care about and write down 3-5 of their goals. Determine how you can support them and how much time you estimate it will require.",
           fields: {
             id: {
               hidden: true
             },
             field: {
+              label: "Choose 3-5 people who you really care about and write down 3-5 of their goals. Determine how you can support them and how much time you estimate it will require.",              
               auto:'placeholders',
               disableOrder: true,
               maxLines: 5,
               config: {
                 maxLines: 5,
               },
+              item: {
+                fields: {
+                  significantOther: {error: 'Please fill out this field.'},
+                  goalOne:{error: 'Please fill out this field.'},
+                  goalOneSupportPlan: {error: 'Please fill out this field.'},
+                  goalOneTimeRequired: {error: 'Please fill out this field.'},
+                  goalTwo:{error: 'Please fill out this field.'},
+                  goalTwoSupportPlan: {error: 'Please fill out this field.'},
+                  goalTwoTimeRequired: {error: 'Please fill out this field.'},
+                  goalThree:{error: 'Please fill out this field.'},
+                  goalThreeSupportPlan: {error: 'Please fill out this field.'},
+                  goalThreeTimeRequired: {error: 'Please fill out this field.'}
+                }
+              }
             },
           }
         },
