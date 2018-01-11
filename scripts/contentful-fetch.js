@@ -55,13 +55,13 @@ const jsfilename = path.join(__dirname, '../src/static/cms.js')
 const jsonfilename = path.join(__dirname, '../src/static/cms.json')
 
 const writeJSONFile = (content) => jsonfile.writeFile(jsonfilename, content, (err) => {
-  console.error(err)
+  console.error(err ? err : 'sucess')
 })
 const writeFile = (content) => fs.writeFile(jsfilename, util.inspect(content['1']['refAssignment'], {
   depth: null,
   maxArrayLength: null
 }), 'utf-8');
 
-const justLog = (contnet => {console.log(content) })
+const justLog = contnet => { console.log('result: \n' + JSON.stringify(contnet)); return contnet}
 
-refreshCMS().then(writeJSONFile);
+refreshCMS().then(writeJSONFile)
