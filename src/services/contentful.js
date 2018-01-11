@@ -14,7 +14,7 @@ export const fetchAbout = (): Promise<any> => contentfulClient
 				.getEntries({ content_type: CONTENTFUL_CONTENT_LOGIN })
 				.then(response => response.items.map(item => item.fields)[0].about);
 
-const colorsFromResponse = response => response.items[0].fields.schema.colors
+const colorsFromResponse = response => response.items[0].fields.schema
 const stepsFromResponse = response => response.items
 			.reduce((steps, step) => ({ ...steps, [step.fields.number]: step.fields }), {});
 

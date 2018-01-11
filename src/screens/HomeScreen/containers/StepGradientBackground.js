@@ -11,13 +11,16 @@ const mapStateToProps = (state) => {
 	return ({ gradientColorForStepFn })
 }
 
-const StepGradient = ({ index, gradientColorForStepFn, ...restOfProps }) => {
+const merge = (stateProps, dispatchProps, ownProps): Props => {
+	const { gradientColorForStepFn } = stateProps
+	const { index } = ownProps;
 	const { colorStart, colorEnd } = gradientColorForStepFn(index);
-	return (<StartEndGradient
-		colorStart={colorStart}
-		colorEnd={colorEnd}
-		{...restOfProps}
-	/>)
+	return {
+		...stateProps, 
+		...dispatchProps, ...ownProps,
+		colorStart,
+		colorEnd
+	}
 }
 
-export default connect(mapStateToProps)(StepGradient)
+export default connect(mapStateToProps, null, merge)(StartEndGradient)
