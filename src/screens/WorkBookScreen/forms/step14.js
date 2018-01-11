@@ -229,7 +229,51 @@ export default {
             }
           }
     }
-  }
+  },
+  liabilities: {
+    fields: {
+      shortTermDebts: {
+        item: {
+          fields: {
+            shortTermDebt: {
+              error:'Please fill out this field.'
+            }
+          }
+        }
+      },
+      longTermDebts: {
+        item: {
+          fields: {
+            longTermDebt: {
+              error:'Please fill out this field.'
+            }
+          }
+        }
+      }
+}
+},
+profitLossStatement: {
+  fields: {
+    income2015: {
+      item: {
+        fields: {
+          income: {
+            error:'Please fill out this field.'
+          }
+        }
+      }
+    },
+    savingsAndInvestments: {
+      item: {
+        fields: {
+          savingsOrInvestment: {
+            error:'Please fill out this field.'
+          }
+        }
+      }
+    }
+}
+}
     }
   }
 }

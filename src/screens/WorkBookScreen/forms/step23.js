@@ -36,7 +36,8 @@ export default {
     type:t.String,
     options: {
       label:'If you could change jobs, and do something totally new, what would it be?',
-      auto: 'none'
+      auto: 'none',
+      error: 'Please fill out this field.'
     }
 
 },
@@ -44,7 +45,8 @@ export default {
   type:t.String,
   options: {
     label:'Reflecting back on Day 13’s Assignment – particularly the questions on Fulfillment – what changes would you need to make in your career to get both answers (on Fulfillment and Motivation) to 10 on the scale?',
-    auto: 'none'
+    auto: 'none',
+    error: 'Please fill out this field.'
   }
 
 },
@@ -57,6 +59,16 @@ export default {
   ),
   options:{
     label:'Back on Day 21, you were asked to list 2 BHAGs (Big Hairy Audacious Goals) for Career and 6 other areas of life. Focusing on Career only now, take that a step further, by adding 3-5 more Career BHAGs (so you should now have 5-7 Career BHAGs).',
+    item:{
+      fields: {
+        careerBHAG: {
+          error: 'Please fill out this field.'
+        },
+        MLA: {
+          error: 'Please fill out this field.'
+        }
+      }
+    }
 }
 },
 5:{
@@ -66,7 +78,7 @@ export default {
       t.struct({
         skill: t.String,
         whatWillYouDo: t.String,
-        timePerWeek: t.maybe(t.String)
+        timePerWeek: t.String
       }),
     ),
   }),
@@ -81,15 +93,18 @@ export default {
           fields:{
             skill: {
               label:'Skill',
-              auto: 'none'
+              auto: 'none',
+              error: 'Please fill out this field.'
             },
             whatWillYouDo: {
               label: 'What will you do in 2017 to develop this skill?',
-              auto: 'none'
+              auto: 'none',
+              error: 'Please fill out this field.'
             },
             timePerWeek: {
               label: 'How much time per week will you dedicate to this?',
-              auto: 'none'
+              auto: 'none',
+              error: 'Please fill out this field.'
             }
           }
         }
@@ -101,7 +116,8 @@ export default {
   type:t.Number,
   options:{
     label:'The average worker spends 40 hrs * 50 weeks working = 2,000 hours. How many hours will you spend working in 2016? #Workbug',
-    placeholder:'Number of hours'
+    placeholder:'Number of hours',
+    error: 'Please fill out this field.'
   }
 }
 };

@@ -16,13 +16,16 @@ export default {
           hidden: true
         },
         priority: {
-          label:'How much of a priority has health been for you?'
+          label:'How much of a priority has health been for you?',
+          error:'Please select a value'
         },
         feelNow: {
-          label:'How do you feel now, physical health-wise?(Using a 10pt scale with 1=not very good to 10-excellent'
+          label:'How do you feel now, physical health-wise?(Using a 10pt scale with 1=not very good to 10-excellent',
+          error:'Please fill out this field'
         },
         healthyPerson: {
-          label:'Do you think you are a healthy person? (Using a 10pt scale with 1=not very healthy to 10=extremely healthy).'
+          label:'Do you think you are a healthy person? (Using a 10pt scale with 1=not very healthy to 10=extremely healthy).',
+          error:'Please fill out this field'
         }
 
       }
@@ -51,19 +54,28 @@ export default {
       label:'Take time to evaluate your Fitness and Exercise behavior',
       fields: {
         doYouExercise: {
-          label: 'Do you exercise? If not, why?'
+          label: 'Do you exercise? If not, why?',
+          error:'Please fill out this field.'
         },
         exerciseFrequency: {
-          label: 'How often do you exercise?'
+          label: 'How often do you exercise?',
+          error:'Please select a value.'
         },
         exerciseTypes: {
-          label: 'What type of exercise do you do?'
+          label: 'What type of exercise do you do?',
+          error:'Please select a value.'
         },
         topFitnessGoals: {
-          label:"What were your top 3 fitness goals in 2011-201 5and how did you do with them?(Refer to Day 7's typical outcomes)",
+          label:"What were your top 3 fitness goals in 2011-2015 and how did you do with them?(Refer to Day 7's typical outcomes)",
           item: {
             fields: {
-              auto: 'placeholders'
+              auto: 'placeholders',
+              goal: {
+                error:'Please fill out this field'
+              },
+              goalOutcome: {
+                error:'Please select a value.'
+              }
             }
           }
         }
@@ -84,13 +96,16 @@ export default {
       label: 'Take time to evaluate your nutrition & diet',
       fields: {
         typicalDiet: {
-          label:'What is your typical diet?'
+          label:'What is your typical diet?',
+          error: 'Please fill out the field.'
         },
         healthyDiet: {
-          label:'How healthy is your diet? (Using a 10pt scale with 1=not very healthy to 10=extremely healthy)'
+          label:'How healthy is your diet? (Using a 10pt scale with 1=not very healthy to 10=extremely healthy)',
+          error: 'Please fill out the field.'
         },
         eatingFrequency: {
-          label:'How often do you eat?'
+          label:'How often do you eat?',
+          error: 'Please select a value.'
         },
         makeYourOwnMeals: {
           label:'Do you make your own meals?'
@@ -108,7 +123,8 @@ export default {
           }
         },
         indulgeFrequency: {
-          label:'How often do you over-indulge with emotional eating(by eating too much or eating too much junk food excessively?)'
+          label:'How often do you over-indulge with emotional eating(by eating too much or eating too much junk food excessively?)',
+          error: 'Please select a value.'
         }
       }
     }
@@ -120,29 +136,35 @@ export default {
       sleepQuality: t.Number,
       sleepIssues: t.String,
       bedTimes: BedTimes,
-      takeEnergizer: t.maybe(t.String)
+      takeEnergizer: t.String
 
     }),
     options: {
       label:'Take time to evaluate your Sleep pattern.',
       fields: {
         hoursSleep: {
-          label:'How many hours do you typically sleep?'
+          label:'How many hours do you typically sleep?',
+          error: 'Please select a value.'
         },
         isEnough: {
-          label:'Is that enough? If not, how many hours do you really need?'
+          label:'Is that enough? If not, how many hours do you really need?',
+          error: 'Please fill out the field.'
         },
         sleepQuality: {
-          label: 'What is the quality of your sleep(Using a 10pt scale with 1=poor and 10-great'
+          label: 'What is the quality of your sleep(Using a 10pt scale with 1=poor and 10-great',
+          error: 'Please fill out the field.'
         },
         sleepIssues: {
-          label:'Do you have sleep issues? If so, why?'
+          label:'Do you have sleep issues? If so, why?',
+          error: 'Please fill out the field.'
         },
         bedTimes: {
-          label:'What time do you generally go to bed?'
+          label:'What time do you generally go to bed?',
+          error: 'Please select a value.'
         },
         takeEnergizer: {
-          label:'Do you drink coffee or take anything to stay awake or energized daily?'
+          label:'Do you drink coffee or take anything to stay awake or energized daily?',
+          error: 'Please fill out the field.'
         }
       }
     }
@@ -160,22 +182,28 @@ export default {
       label: 'Take time to evaluate your Body Care',
       fields: {
         takeCare: {
-          label:'What do you do to physically take care of yourself? How often per month?'
+          label:'What do you do to physically take care of yourself? How often per month?',
+          error: 'Please fill out the field.'
         },
         carryStress: {
-          label:'Where in your body to you carry stress or tension?'
+          label:'Where in your body to you carry stress or tension?',
+          error: 'Please select a value.'
         },
         healthIssues: {
-          label:'Do you have any notable health issues? '
+          label:'Do you have any notable health issues?',
+          error: 'Please fill out the field.'
         },
         howProminent: {
-          label:'How prominent are they in your life?(Using a 10pt scale with 1=very little effect to 10=a daily challenge)'
+          label:'How prominent are they in your life?(Using a 10pt scale with 1=very little effect to 10=a daily challenge)',
+          error: 'Please fill out the field.'
         },
         sickDays: {
-          label:'How often do you get sick(# of days per year on average from 2011-2015)'
+          label:'How often do you get sick(# of days per year on average from 2011-2015)',
+          error: 'Please fill out the field.'
         },
         takeEnergizers: {
           label:'Do you drink coffee or take anything to stay awake or energized daily?',
+          error: 'Please select a value.'
         }
       }
     }
@@ -202,24 +230,37 @@ export default {
         fields: {
           lowEnd: {
             auto:'none',
-            placeholder:'Low-End'
+            placeholder:'Low-End',
+            error: 'Please fill out the field.'
           },
           highEnd: {
             auto:'none',
-            placeholder:'High-End'
+            placeholder:'High-End',
+            error: 'Please fill out the field.'
           }
         }
       },
      dealWithStress: {
-       label: 'How do you deal with stress?'
+       label: 'How do you deal with stress?',
+       error: 'Please fill out the field.'
      },
      expressAbility: {
-       label:'Are you able to express your emotions in a healthy way? How do you communicate your feelings?'
+       label:'Are you able to express your emotions in a healthy way? How do you communicate your feelings?',
+       error: 'Please fill out the field.'
      },
      awareness: {
        label:'Are you aware of how stressful situations impact your health and life? Give 3 examples.',
        fields: {
-         auto:'placeholders'
+         auto:'placeholders',
+         example1: {
+          error: 'Please fill out the field.'
+         },
+         example2: {
+          error: 'Please fill out the field.'
+         },
+         example3: {
+          error: 'Please fill out the field.'
+         }
        }
      }
     }

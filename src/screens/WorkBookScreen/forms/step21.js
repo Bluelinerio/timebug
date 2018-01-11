@@ -23,13 +23,19 @@ export default {
                 garden:{
                     item:{
                         fields:{
+                            areaOfGarden: {
+                                error:'Please select a value.'
+                            },
                             selfInfluence: {
                                 placeholder:'Self Influence(%)',
-                                auto:'none'
+                                error: 'Please fill out this field.'
                             },
                             otherInfluence: {
                                 placeholder:'Other Influence(%)',
                                 auto:'none'
+                            },
+                            nameOfOther: {
+                                error: 'Please fill out this field.'
                             }
                         }
                     }
@@ -64,66 +70,80 @@ export default {
              PEShortcoming:t.String,
              PEBHAG:t.String,
              spiritualityShortcoming:t.String,
-             spiritualityBHAG:t.maybe(t.String)
+             spiritualityBHAG:t.String
          }),
          options: {
              label:'Reflecting on the 7 Self-Assessments from days 13-19, list two BHAGs for 2020',
              fields:{
                  careerShortcoming:{
                      label:'Career: A failure or shortcoming that you experienced over the last 5 years',
-                     auto:'none'
+                     auto:'none',
+                     error: 'Please fill out this field.'
                  },
                  careerBHAG:{
                      label:'Career: Something completely new',
-                     auto:'none'
+                     auto:'none',
+                     error: 'Please fill out this field.'
                  },
                  personalityAndHobbiesShortcoming:{
                     label:'Personality And Hobbies: A failure or shortcoming that you experienced over the last 5 years',
-                    auto:'none'
+                    auto:'none',
+                    error: 'Please fill out this field.'
                 },
                 personalityAndHobbiesBHAG:{
                     label:'Personality And Hobbies: Something completely new',
-                    auto:'none'
+                    auto:'none',
+                    error: 'Please fill out this field.'
                 },
                 healthShortcoming:{
                     label:'Health: A failure or shortcoming that you experienced over the last 5 years',
-                    auto:'none'
+                    auto:'none',
+                    error: 'Please fill out this field.'
                 },
                 healthBHAG:{
                     label:'Health: Something completely new',
-                    auto:'none'
+                    auto:'none',
+                    error: 'Please fill out this field.'
                 },
                 relationshipShortcoming:{
                     label:'Relationships: A failure or shortcoming that you experienced over the last 5 years',
-                    auto:'none'
+                    auto:'none',
+                    error: 'Please fill out this field.'
                 },
                 relationshipBHAG:{
                     label:'Relationships: Something completely new',
-                    auto:'none'
+                    auto:'none',
+                    error: 'Please fill out this field.'
                 },
                 financialShortcoming:{
                     label:'Financial: A failure or shortcoming that you experienced over the last 5 years',
-                    auto:'none'
+                    auto:'none',
+                    error: 'Please fill out this field.'
                 },
                 financialBHAG:{
                     label:'Financial: Something completely new',
-                    auto:'none'
+                    auto:'none',
+                    error: 'Please fill out this field.'
                 },
                 PEShortcoming:{
                     label:'Place And Environment: A failure or shortcoming that you experienced over the last 5 years',
-                    auto:'none'
+                    auto:'none',
+                    error: 'Please fill out this field.'
                 },
                 PEBHAG:{
                     label:'Place And Environment: Something completely new',
-                    auto:'none'
+                    auto:'none',
+                    error: 'Please fill out this field.'
                 },
                 spiritualityShortcoming:{
                     label:'Spirituality: A failure or shortcoming that you experienced over the last 5 years',
-                    auto:'none'
+                    auto:'none',
+                    error: 'Please fill out this field.'
                 },
                 spiritualityBHAG:{
                     label:'Spirituality: Something completely new',
-                    auto:'none'
+                    auto:'none',
+                    error: 'Please fill out this field.'
                 }
              }
          }
@@ -135,7 +155,7 @@ export default {
                     skill:CharachterStrengths,
                     proficiencyLevel:t.Number,
                     aspirationLevel:t.Number,
-                    improvements:t.maybe(t.String)
+                    improvements:t.String
                  })
             )
          }),
@@ -147,19 +167,23 @@ export default {
                          fields:{
                              skill:{
                                  label:'Skill',
-                                 auto:'none'
+                                 auto:'none',
+                                 error: 'Please select a value.'
                              },
                              proficiencyLevel:{
                                  label:'Proficiency Level(Using a 10pt Scale with 1=beginner to 10=master)',
-                                 auto:'none'
+                                 auto:'none',
+                                 error: 'Please fill out this field.'
                              },
                              aspirationLevel:{
                                  label:'Aspiration level in 2020',
-                                 auto:'none'
+                                 auto:'none',
+                                 error: 'Please fill out this field.'
                              },
                              improvements:{
                                  label:'What improvements needs to happen for you to reach your aspirational 2020 level?',
-                                 auto:'none'
+                                 auto:'none',
+                                 error: 'Please fill out this field.'
                              }
                          }
                      }

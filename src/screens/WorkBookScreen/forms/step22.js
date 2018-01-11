@@ -43,10 +43,12 @@ export default {
       label:'What do you dream about?',
       fields: {
         dreamsDescribe: {
-          label:'Describe the general themes, quality and lucidity of your dreams'
+          label:'Describe the general themes, quality and lucidity of your dreams',
+          error: 'Please fill out this field.'
         },
         dreamsRemember:{
-          label:'How often do you remember your dreams?'
+          label:'How often do you remember your dreams?',
+          error: 'Please select a value.'
         },
         dreamsComeTrue: {
           label:'Have your dreams ever come true (i.e., you dreamt about something and then it happened)'
@@ -58,7 +60,7 @@ export default {
   type: t.struct({
     field: t.list(
       t.struct({
-        dream:t.maybe(t.String)
+        dream:t.String
       })
     ),
   }),
@@ -69,7 +71,8 @@ export default {
       item: {
         fields: {
           dream: {
-            label: 'Dream'
+            label: 'Dream',
+            error: 'Please fill out this field.'
           }
         }
       }
@@ -81,7 +84,8 @@ export default {
   type:t.String,
   options:{
     label:'What are your life dreams? This doesn’t have to be restricted to what your literal dreams (during sleep) are. Right now, go beyond 2020 and even your 20/20 BHAGs (from Day 21’s Assignment)... and allow yourself to dream, in this moment, about everything you want your life to be. Anything is possible. Describe what you see.',
-    auto: 'none'
+    auto: 'none',
+    error: 'Please fill out this field.'
   }
 }
 };
