@@ -6,86 +6,50 @@ import { connect } from "react-redux";
 import theme, { styles } from "react-native-theme";
 import type { Step } from "../../../services/cms";
 import AssignmentDoneScreen from "../components/AssignmentDoneScreen";
-import { doneWithCongratsScreen } from '../../../redux/actions/nav.actions';
+import type { Prop } from "../components/AssignmentDoneScreen";
+import { doneWithCongratsScreen as done } from '../../../redux/actions/nav.actions';
 import selectors from '../../../redux/selectors'
 
+const mapStateToProps = (state) => {
+  const steps = selectors.steps(state);
+  const colors = selectors.stepColors(state);
+  return { steps, colors }
+}
+const merge = (stateProps, dispatchProps, ownProps): Props => {
+  const { colors, steps} = stateProps;
+  const { goToAssignmentLeadInScreen } = dispatchProps
+  const { navigation: {state:{ params: { step }}}} = ownProps;
 
-type Props = {
-  currentStep: Step,
-  currentStepColor: string
-};
+  const doneStep = steps[step];
+  const doneStepColor = colors[step]
+  const nextStepNumber = step + 1;
 
-type State = {};
-
-const mapStateToProps = state => {
-  const { steps, totalNumberOfSteps, colors } = state.cms;
-  const nextStepNumber = selectors.currentStepNumber(state);
-	const currentStepNumber = nextStepNumber - 1;
-  const currentStep = steps[currentStepNumber];
-  const currentStepColor = colors.steps[currentStepNumber]
-  if (nextStepNumber < totalNumberOfSteps) {
-    const nextStepColor = colors.steps[nextStepNumber] ;
+  if (nextStepNumber < steps.length) {
+    const nextStepColor = colors[nextStepNumber];
     const nextStep = steps[nextStepNumber];
     const nextStepDuration = nextStep.duration;
-    
     return {
+      ...stateProps, 
+      ...dispatchProps, 
+      ...ownProps,
       steps,
-      currentStep,
-      currentStepColor,
+      doneStep,
+      doneStepColor,
       nextStepDuration,
       nextStepNumber,
       nextStepColor
     };
   }
   return {
+    ...stateProps, 
+    ...dispatchProps, 
+    ...ownProps,
     steps,
-    currentStep,
-    currentStepColor,
+    doneStep,
+    doneStepColor,
     nextStepNumber: 0,
-    nextStepColor: currentStepColor
-  }
-};
-
-@connect(mapStateToProps, {
-  done: doneWithCongratsScreen
-})
-class AssignmentDoneScreenContainer extends Component<Props, State> {
-  static navigationOptions = () => ({
-    headerTitleStyle: {
-      textAlign: "center",
-      alignSelf: "center"
-    },
-    headerStyle: {
-      backgroundColor: StyleSheet.flatten(styles.headerColor).backgroundColor
-    },
-    headerTintColor: "white",
-    headerLeft: null
-  });
-
-  componentWillMount() {
-    theme.setRoot(this);
-  }
-
-  render() {
-    const {
-      currentStepNumber,
-      currentStepColor,
-      nextStepDuration,
-      nextStepNumber,
-      nextStepColor,
-      done
-    } = this.props;
-    return (
-      <AssignmentDoneScreen
-        done={done}
-        currentStepNumber={currentStepNumber}
-        nextStepDuration={nextStepDuration}
-        color={currentStepColor}
-        nextStepNumber={nextStepNumber}
-        nextStepColor={nextStepColor}
-      />
-    );
+    nextStepColor: doneStepColor
   }
 }
 
-export default AssignmentDoneScreenContainer;
+export default connect(mapStateToProps, ({done}), merge)(AssignmentDoneScreen);

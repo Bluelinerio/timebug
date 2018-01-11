@@ -1,6 +1,6 @@
 import theme from 'react-native-theme';
 import { Dimensions } from 'react-native';
-import { darkishBlue } from '../../../constants/colors';
+import { deepBlue } from '../../../constants/colors';
 
 const style = {
 	buttonContainer: {
@@ -25,7 +25,7 @@ const style = {
 		marginHorizontal: 10
 	},
 	wideButtonBackground: {
-		backgroundColor: darkishBlue
+		backgroundColor: deepBlue
 	},
 	left: {
 		justifyContent: 'flex-start',

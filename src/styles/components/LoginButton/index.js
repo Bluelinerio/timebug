@@ -1,6 +1,6 @@
 import theme from 'react-native-theme';
 import { Dimensions } from 'react-native';
-import { darkishBlue, deepBlue } from '../../../constants/colors';
+import { facebookColor } from '../../../constants/colors';
 
 const styles = {
 	buttonContainer: {
@@ -24,7 +24,7 @@ const styles = {
 		overflow: 'hidden',
 		marginHorizontal: 10,
 		borderWidth: 1,
-		borderColor: darkishBlue
+		borderColor: facebookColor
 	},
 	left: {
 		justifyContent: 'flex-start',
@@ -39,7 +39,7 @@ const styles = {
 		fontSize: 15,
 		fontWeight: 'bold',
 		textAlign: 'center',
-		color: darkishBlue
+		color: facebookColor
 	},
 	buttonGroup: {
 		flexDirection: 'row',

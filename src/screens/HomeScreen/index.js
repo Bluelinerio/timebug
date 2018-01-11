@@ -66,7 +66,7 @@ const mapStateToProps = (state: any) => {
   }
   const showLoading = isHomeScreenLoading(state)
   const user = selectors.user(state)
-	const userFinishedAllSteps  = !!user && selectors.currentStepNumber(state) > selectors.totalNumberOfSteps(state)
+	const userFinishedAllSteps  = false; //!!user && selectors.currentStepNumber(state) > selectors.totalNumberOfSteps(state)
 
   return { 
     showLoading,

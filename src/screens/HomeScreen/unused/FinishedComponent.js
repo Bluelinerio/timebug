@@ -8,7 +8,7 @@ import Button 	from '../../../components/Button';
 import ScrollableHeader from '../../../components/ScrollableHeader';
 import DefaultIndicator from '../../../components/DefaultIndicator';
 import { backgroundImage, headerBackground } from '../../../resources/images/';
-import { whiteTwo, darkishBlue, deepBlue, hotPink } from '../../../constants/colors';
+import { whiteTwo, deepBlue, hotPink } from '../../../constants/colors';
 import { APPBAR_HEIGHT, STATUSBAR_HEIGHT, TITLE_OFFSET } from '../../../constants';
 import LoginButtonStyles from '../../../styles/components/LoginButton';
 import markdownStyles from '../../../styles/Markdown/intro';

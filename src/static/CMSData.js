@@ -32,8 +32,9 @@ export const colors = {
     30: "#E46F62"
   },
   phases: {
-    MEDITATION: "#6ebddc",
-    VISION_CREATION: "#EEB858",
-    SELF_ASSESSMENT: "#E46F62"
+    MEDITATION: "#6AC2ED",
+    VISION_CREATION: "#F89A1F",
+    SELF_ASSESSMENT: "#20B89D"
   }
 };
+

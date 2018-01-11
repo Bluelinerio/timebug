@@ -1,7 +1,7 @@
-import theme from 'react-native-theme';
-import { lightBlue } from '../../constants/colors';
+import { StyleSheet } from 'react-native'
+import { lightBlue } from '../../../constants/colors';
 
-theme.add({
+export default StyleSheet.create({
   assignmentDoneScreenContainer: {
     flex: 1,
     alignItems: 'center',
@@ -28,7 +28,7 @@ theme.add({
     alignItems: 'flex-end',
     marginBottom: 30
   },
-  assignmentDoneScreenDoneStep: {
+  assignmentDoneScreenCurrentStep: {
     fontFamily: "Helvetica",
     fontSize: 40,
     fontWeight: "bold",

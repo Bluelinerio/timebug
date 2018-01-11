@@ -10,16 +10,15 @@ import {
   KeyboardAvoidingView
 } from "react-native";
 import KeyboardSpacer from "react-native-keyboard-spacer";
-import t from 'tcomb-form-native';
-
+import t                    from './templates';
 import DefaultIndicator     from "../../../components/DefaultIndicator";
-import FormComponent        from "../components/FormComponent";
 import Button               from "../../../components/Button";
 import type { FormChange }  from '../../../redux/actions/forms.actions';
 import type { Progress }    from '../../../services/apollo/models';
-import styles                from '../styles';
+import styles               from '../styles';
 
-const SKIPP_ENABLED = true;
+const Form = t.form.Form;
+const SKIPP_ENABLED = false;
 
 export type Props = {
   progress: Progress, 
@@ -35,28 +34,46 @@ export type Props = {
 type State = {
   keyboardSpace: number,
   isInvalid: boolean,
-  value?: any
+  value: any,
+  model: {
+    type: any,
+    options: any
+  }
 };
 
 class WorkBookScreenContainer extends Component<Props, State> {
+
   constructor(props: Props) {
     super(props);
     const { progress: { step, form } } = props;
-    const { value, model:{ type } } = props.getModelForForm(form);
+    const { value, model } = props.getModelForForm(form);
     this.state = {
       keyboardSpace: 0,
-      isInvalid: t.validate(value, type).isValid() === false,
+      isInvalid: false,
+      model,
       value
     }
   }
 
+  componentWillFocus() {
+    const { model } = this.state;
+    if (model && model.focusField) {
+      this.form.getComponent(model.focusField).refs.input.focus();
+    }
+    this.setState(state => ({
+      isInvalid: this.form.validate().isValid() === false,
+    }))
+  }
+
   componentWillReceiveProps(nextProps: Props) {
+    // update state with the new model & value so we can run this.form.valudate() on componentDidUpdate.
     const { progress: { form: nextForm } } = nextProps;
-    const { progress: { step, form } } = this.props;
+    const { progress: { form } } = this.props;
     if (form !== nextForm) {
-      const value = nextProps.getModelForForm(nextForm);
+      const { value, model } = nextProps.getModelForForm(nextForm);
       this.setState({
         value,
+        model,
       })
     }
   }
@@ -68,9 +85,13 @@ class WorkBookScreenContainer extends Component<Props, State> {
     const { progress: { form } } = this.props;
     if (form !== prevForm) {
       this.setState(state => ({
-        isInvalid: state.value ? !this.form.validate().isValid() : true,
+        isInvalid: this.form.validate().isValid() === false,
       }))
     }
+  }
+
+  shouldComponentUpdate = (nextProps:Props):boolean => {
+    return nextProps.progress.form !== this.props.progress.form
   }
 
   onToggle = (keyboardSpace) => {
@@ -93,11 +114,12 @@ class WorkBookScreenContainer extends Component<Props, State> {
 
   onChange = (value: any, path: [string]) => {
     const { step, form } = this.props.progress;
+    const { model : { type }} = this.state;
     const fieldName = path[path.length - 1];
     const fieldValue = path.reduce((struct: {}, field) => struct[field], value)
     
     this.setState({
-      isInvalid: !this.form.validate().isValid(),
+      isInvalid: this.form.validate().isValid() === false,
       value
     }, () => {
       this.props.persisteFormValue({
@@ -111,22 +133,26 @@ class WorkBookScreenContainer extends Component<Props, State> {
     });
   }
 
+  handleFormRef = (ref) => {
+    this.form = ref;
+  }
+
   render = () => {
-    const { color, isFetching, progress, getModelForForm, buttonMessage } = this.props;
-    const { isInvalid, value, keyboardSpace } = this.state;
+    const { color, isFetching, progress, buttonMessage } = this.props;
+    const { model: { options, type }, isInvalid, value, keyboardSpace } = this.state;
 
     if(isFetching) {
       return <DefaultIndicator size='large' />
     }
-    const { model } = getModelForForm(progress.form);
 
     return (
         <View style={{ flex: 1 }}>
           <View style={styles.workBookFormContainer}>
-            <FormComponent
-              formRef={form => (this.form = form)}
-              model={model}
+            <Form
+              type={type}
               progress={progress}
+              ref={this.handleFormRef}
+              options={options}
               value={value}
               onChange={this.onChange}
             />

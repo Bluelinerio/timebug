@@ -56,7 +56,6 @@ export const goToAssignmentLeadInScreen       = (props: any) => navigateWith({ p
 export const goToAssignmentDoneScreen         = (props: any) => navigateWith({ props, routeName:'AssignmentDoneScreen' })
 export const goToAssignmentFlow               = (number:number) => navigateToStep({ number, routeName: 'AssignmentFlow' })
 export const previousFormOrBack               = selectPutAction((state: any) => {
-  debugger;
   const lastRoute = state.nav.routes.find(
     /* $FlowFixMe */
     (route: *) => route.key === action.key
