@@ -25,6 +25,12 @@ export default {
               config: {
                 maxLines: 15,
               },
+              item: {
+               fields: {
+                 goal:{error: 'Please fill out this field.'},
+                 commonGoalOutcomes:{error: 'Please select a value.'}
+               } 
+              }
             },
           }
         },
@@ -41,11 +47,10 @@ export default {
         options: {
           fields: {
             observations: {
-              label:"Write down a few observations about any patterns that emerge, and what you believe is behind them.",
-              
-                 type: 'textarea', 
+              error: 'Please fill out this field.',
+              label:"Write down a few observations about any patterns that emerge, and what you believe is behind them.",       
               auto:'placeholders',
-              disableOrder: true,
+              disableOrder: true
             },
           }
         }

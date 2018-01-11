@@ -39,6 +39,20 @@ export default {
               config: {
                 maxLines: 5,
               },
+              item: {
+                fields: {
+                  significantOther: {error: 'Please fill out this field.'},
+                  goalOne:{error: 'Please fill out this field.'},
+                  goalOneSupportPlan: {error: 'Please fill out this field.'},
+                  goalOneTimeRequired: {error: 'Please fill out this field.'},
+                  goalTwo:{error: 'Please fill out this field.'},
+                  goalTwoSupportPlan: {error: 'Please fill out this field.'},
+                  goalTwoTimeRequired: {error: 'Please fill out this field.'},
+                  goalThree:{error: 'Please fill out this field.'},
+                  goalThreeSupportPlan: {error: 'Please fill out this field.'},
+                  goalThreeTimeRequired: {error: 'Please fill out this field.'}
+                }
+              }
             },
           }
         },
