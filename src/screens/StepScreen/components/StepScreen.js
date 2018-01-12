@@ -32,7 +32,7 @@ export type Props = {
   onPress: () => void
 };
 
-const HEADER_HEIGHT = 282;
+const HEADER_HEIGHT = Dimensions.get('window').height * 0.4
 
 const Content = ({ subtitle, description, color, number }) => (
   <View style={styles.stepScreenContent}>
@@ -49,8 +49,9 @@ const Content = ({ subtitle, description, color, number }) => (
   </View>
 );
 
+
 const Header = ({ imageUri, title, number, color}) => (
-  <View style={[styles.stepScreenHeader]}>
+  <View style={styles.stepScreenHeader}>
     <GradientWithTwoColors gradientTopColor={color} gradientBottomColor={'white'}/>
     <View style={{
       flex:1,
@@ -74,7 +75,7 @@ const Header = ({ imageUri, title, number, color}) => (
 export default ({ title, subtitle, description, number, imageUri, color, onPress }) => (
   <ScrollableHeader
     headerMaxHeight={HEADER_HEIGHT}
-    headerMinHeight={0}
+    headerMinHeight={STATUSBAR_HEIGHT}
     headerImage={headerBackground}
     headerComponent={
       <Header

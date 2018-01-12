@@ -20,8 +20,9 @@ const mapStateToProps = (state) => {
 const merge = (stateProps, dispatchProps, ownProps): Props => {
   const { colors, assignmentsForStep } = stateProps
 	const { navigation: {state:{ params:{ step }}}} = ownProps
-	const assignments = assignmentsForStep(step);
+  const assignments = assignmentsForStep(step);
   const color = colors[step];
+  console.log('assignments: ' + assignments);
   return {
     ...ownProps,
 		assignments,

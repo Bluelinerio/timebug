@@ -23,9 +23,6 @@ export default class ScrollableHeader extends Component<Props, State> {
 	render() {
 		const { content, headerStyles, headerImage, headerComponent, header } = this.props;
 		let { headerMinHeight, headerMaxHeight } = this.props;
-		if (!headerMinHeight) {
-			headerMinHeight = 65;
-		}
 		if (!headerMaxHeight) {
 			headerMaxHeight = 260;
 		}

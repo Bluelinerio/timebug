@@ -2,14 +2,12 @@
 
 import React, { Component, PureComponent } from 'react';
 import { Dimensions, ScrollView, View, Animated} from 'react-native';
-import { styles } from 'react-native-theme';
-import Markdown from '../../../Modules/Markdown';
-import AssignmentNumber from './AssignmentNumber';
-import BeginWorkbookButton from '../containers/BeginWorkbookButton';
-import markdownStyles from '../../../styles/Markdown/assignment'
-import { animateStyle } from '../../../animations'
-
-//const Markdown = Animated.createAnimatedComponent(MyMarkdown)
+import styles 							from '../styles';
+import Markdown  						from '../../../Modules/Markdown';
+import AssignmentNumber 		from './AssignmentNumber';
+import BeginWorkbookButton 	from '../containers/BeginWorkbookButton';
+import markdownStyles 			from '../../../styles/Markdown/assignment'
+import { animateStyle } 		from '../../../animations'
 
 class AnimateWrapper extends PureComponent {
   render() {
@@ -31,16 +29,30 @@ export type Props = {
 const SHOW_MARKUP = true;
 
 export default ({ assignment, index, color, isLastItem, step, progress }: Props) => {
-	const animatedStyle = animateStyle({
-		progress, 
-		effect: 'rise', 
-		style:{}
+
+	const transform = [{
+		translateY: progress.interpolate({
+			inputRange: [-0.5, 0, 0.5],
+			outputRange: [50, 0, -50],
+		}),
+	}]
+	const opacity = progress.interpolate({
+		inputRange: [-0.5, 0, 0.5],
+		outputRange: [0, 1, 0],
 	})
+
+	const animatedStyle =  {
+		transform,
+		opacity,		
+	}
+
 	return (
-	<View 
-		style={[styles.assignmentLeadInScreenSlide]} 
-		>	
-			{!isLastItem && <AssignmentNumber number={index + 1} color={color} animatedStyle={animatedStyle} />}
+		<View 
+			style={styles.assignmentLeadInScreenSlide}
+			>	
+			{!isLastItem && 
+				<AssignmentNumber number={index + 1} color={color} animatedStyle={animatedStyle} />
+			}
 			{SHOW_MARKUP ? 
 				<Markdown
 					markdownStyles={{

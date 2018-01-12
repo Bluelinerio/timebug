@@ -1,4 +1,3 @@
-export * from './AssignmentLeadInScreen'
 export * from './AssignmentDoneScreen'
 export * from './navigation'
 export * from './navigation'

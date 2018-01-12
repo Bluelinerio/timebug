@@ -5,8 +5,13 @@ import {
 } from "react-native";
 import { deepBlue }       from '../../../constants/colors'
 import { STATUSBAR_HEIGHT, APPBAR_HEIGHT} from '../../../constants'
+import normalize from '../../../utils/normalizeText';
 
 export default StyleSheet.create({
+  rowContainer: {
+    flex:1,
+    flexDirection: 'row',
+  },
   stepScreenScreen: {
     flex: 1,
     flexDirection: 'row',
@@ -29,7 +34,7 @@ export default StyleSheet.create({
     paddingTop: 10,
     paddingBottom: 30,
     fontFamily: "Helvetica",
-    fontSize: 18,
+    fontSize: normalize(18),
     fontWeight: "bold",
     textAlign: "center",
     color: "#ffffff",
@@ -41,12 +46,12 @@ export default StyleSheet.create({
   },
   stepScreenText: {
     color: '#000000',
-    fontSize: 12,
+    fontSize: normalize(12),
     textAlign: 'center',
   },
   stepScreenSubtitle: {
     fontFamily: "Helvetica",
-    fontSize: 24,
+    fontSize: normalize(24),
     fontWeight: "500",
     color: deepBlue,
     textAlign: 'left',
@@ -56,7 +61,7 @@ export default StyleSheet.create({
   stepScreenTitle: {
     flex:1,
     fontFamily: "Helvetica",
-    fontSize: 32,
+    fontSize: normalize(28),
     fontWeight: "bold",
     color: deepBlue,
     marginRight:10
