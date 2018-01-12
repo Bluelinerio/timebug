@@ -34,8 +34,13 @@ export type Props = {
 
 const HEADER_HEIGHT = Dimensions.get('window').height * 0.4
 
-const Content = ({ subtitle, description, color, number }) => (
+const Content = ({ title, subtitle, description, color, number }) => (
   <View style={styles.stepScreenContent}>
+    <Text
+      style={[styles.stepScreenTitle]}
+    >
+      {title}
+    </Text>
     <Text
       testID={"step_subtitle"}
       style={[styles.stepScreenSubtitle]}
@@ -53,22 +58,10 @@ const Content = ({ subtitle, description, color, number }) => (
 const Header = ({ imageUri, title, number, color}) => (
   <View style={styles.stepScreenHeader}>
     <GradientWithTwoColors gradientTopColor={color} gradientBottomColor={'white'}/>
-    <View style={{
-      flex:1,
-      flexDirection: 'row',
-    }}>
-      {imageUri && (
-        <CustomImage style={styles.stepScreenImage}
-          testID={'step_picture'}
-          imageUri={imageUri}
-        />
-      )}
-      <Text
-        style={[styles.stepScreenTitle]}
-      >
-        {title}
-      </Text>
-    </View>
+    <CustomImage style={styles.stepScreenImage}
+      testID={'step_picture'}
+      imageUri={imageUri}
+    />
   </View>
 );
 
@@ -80,7 +73,6 @@ export default ({ title, subtitle, description, number, imageUri, color, onPress
     headerComponent={
       <Header
         color={color}
-        title={title}
         number={number}
         imageUri={imageUri}
       />
@@ -91,6 +83,7 @@ export default ({ title, subtitle, description, number, imageUri, color, onPress
     content={
       <Content
         number={number}
+        title={title}
         subtitle={subtitle}
         description={description}
         color={color}

@@ -55,7 +55,7 @@ export default StyleSheet.create({
     fontWeight: "500",
     color: deepBlue,
     textAlign: 'left',
-    paddingHorizontal: 35,
+    paddingHorizontal: 20,
     paddingVertical: 20,
   },
   stepScreenTitle: {
@@ -64,7 +64,8 @@ export default StyleSheet.create({
     fontSize: normalize(28),
     fontWeight: "bold",
     color: deepBlue,
-    marginRight:10
+    paddingHorizontal: 20,
+    paddingVertical: 20,
   },
   stepScreenImage: {
     flex: 1,
