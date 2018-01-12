@@ -49,7 +49,7 @@ class WorkBookScreenContainer extends Component<Props, State> {
     const { value, model } = props.getModelForForm(form);
     this.state = {
       keyboardSpace: 0,
-      isInvalid: false,
+      isInvalid: true,
       model,
       value
     }
@@ -60,9 +60,12 @@ class WorkBookScreenContainer extends Component<Props, State> {
     if (model && model.focusField) {
       this.form.getComponent(model.focusField).refs.input.focus();
     }
-    this.setState(state => ({
-      isInvalid: this.form.validate().isValid() === false,
-    }))
+    const isInvalid = this.form.validate().isValid() === false
+    if(isInvalid !== this.state.isInvalid) {
+      this.setState(state => ({
+        isInvalid,
+      }))
+    }
   }
 
   componentWillReceiveProps(nextProps: Props) {
@@ -84,15 +87,17 @@ class WorkBookScreenContainer extends Component<Props, State> {
     const { progress: { form: prevForm } } = prevProps;
     const { progress: { form } } = this.props;
     if (form !== prevForm) {
-      this.setState(state => ({
-        isInvalid: this.form.validate().isValid() === false,
-      }))
+
+      const isInvalid = this.form.validate().isValid() === false
+      if (this.state.isInvalid !== isInvalid) {
+        this.setState(state => ({
+          isInvalid
+        }))
+      }
     }
   }
 
-  shouldComponentUpdate = (nextProps:Props):boolean => {
-    return nextProps.progress.form !== this.props.progress.form
-  }
+  // a note about - shouldComponentUpdate: I think customizing this typicall needs to user an instance flag variable, as it needs to incorporate both changes in state and pros.
 
   onToggle = (keyboardSpace) => {
     if (Platform.OS === "ios") {
@@ -117,20 +122,13 @@ class WorkBookScreenContainer extends Component<Props, State> {
     const { model : { type }} = this.state;
     const fieldName = path[path.length - 1];
     const fieldValue = path.reduce((struct: {}, field) => struct[field], value)
-    
-    this.setState({
-      isInvalid: this.form.validate().isValid() === false,
-      value
-    }, () => {
-      this.props.persisteFormValue({
-        fieldName,
-        fieldValue,
-        value,
-        path,
-        step,
-        form
+    const isInvalid = this.form.validate().isValid() === false;
+    if(this.state.isInvalid !== isInvalid || this.state.value !== value) {
+      this.setState({
+        isInvalid,
+        value
       });
-    });
+    }
   }
 
   handleFormRef = (ref) => {
@@ -144,7 +142,6 @@ class WorkBookScreenContainer extends Component<Props, State> {
     if(isFetching) {
       return <DefaultIndicator size='large' />
     }
-
     return (
         <View style={{ flex: 1 }}>
           <View style={styles.workBookFormContainer}>
