@@ -6,6 +6,7 @@ import i18n          from "tcomb-form-native/lib/i18n/en";
 import customList    from './customList';
 import customTextBox from './customTextBox';
 import customStruct from './customStruct';
+import customSelect from './customSelect';
 import { Animated, KeyboardAvoidingView } from 'react-native';
 import { Pages } from 'react-native-pages';
 import React, { Children } from 'react';
@@ -35,6 +36,7 @@ const customTemplates = {
   list: customList,
   textbox: customTextBox,
   struct: customStruct,
+  select: customSelect
 };
 
 const customStylesheet= {
