@@ -15,9 +15,11 @@ if (__DEV__) {
                    GLOBAL.originalXMLHttpRequest :
                    GLOBAL.XMLHttpRequest;
 }
+
+const { persistor, store } = setup();
+
 export default class App extends React.Component {
   render() {
-    const { persistor, store } = setup();
     return (
       <ApolloProvider client={client}>
         <Provider store={store}>
