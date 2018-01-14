@@ -3258,6 +3258,10 @@ react-native-parallax-scroll-view@^0.20.1:
   dependencies:
     prop-types "^15.6.0"
 
+react-native-select-input-ios@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/react-native-select-input-ios/-/react-native-select-input-ios-1.1.4.tgz#2c0389f3ef039e45910f90aceaa4d281946a8909"
+
 react-native-snap-carousel@^3.4.0:
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/react-native-snap-carousel/-/react-native-snap-carousel-3.4.0.tgz#00e221497263b686187f475725687d1841c5506e"

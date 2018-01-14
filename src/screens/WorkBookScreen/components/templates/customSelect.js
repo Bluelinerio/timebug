@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, Picker } from 'react-native';
+import SelectInput from 'react-native-select-input-ios';
 
 function select(locals) {
   if (locals.hidden) {
@@ -7,6 +8,7 @@ function select(locals) {
   }
 
   const stylesheet = locals.stylesheet;
+  const pickerLabelStyle = stylesheet.pickerLabelStyle.normal;
   let formGroupStyle = stylesheet.formGroup.normal;
   let controlLabelStyle = stylesheet.controlLabel.normal;
   let selectStyle = Object.assign(
@@ -20,7 +22,7 @@ function select(locals) {
   if (locals.hasError) {
     formGroupStyle = stylesheet.formGroup.error;
     controlLabelStyle = stylesheet.controlLabel.error;
-    selectStyle = stylesheet.select.error;
+    selectStyle = stylesheet.pickerContainer.error;
     helpBlockStyle = stylesheet.helpBlock.error;
   }
 
@@ -38,25 +40,19 @@ function select(locals) {
     ) : null;
 
   const options = locals.options.map(({ value, text }) => (
-    <Picker.Item key={value} value={value} label={text} />
+    { value, label: text }
   ));
 
   return (
     <View style={formGroupStyle}>
       {label}
-      <Picker
-        accessibilityLabel={locals.label}
+      <SelectInput
+        value={locals.value}
         style={selectStyle}
-        selectedValue={locals.value}
-        onValueChange={locals.onChange}
-        help={locals.help}
-        enabled={locals.enabled}
-        mode={locals.mode}
-        prompt={locals.prompt}
-        itemStyle={locals.itemStyle}
-      >
-        {options}
-      </Picker>
+        labelStyle={pickerLabelStyle}
+        options={options}
+        onSubmitEditing={locals.onChange}
+      />
       {help}
       {error}
     </View>
@@ -64,3 +60,12 @@ function select(locals) {
 }
 
 export default select;
+
+
+
+// style={selectStyle}
+// help={locals.help}
+// enabled={locals.enabled}
+// mode={locals.mode}
+// prompt={locals.prompt}
+// itemStyle={locals.itemStyle}

@@ -45,6 +45,33 @@ const customStylesheet= {
     textAlign: 'center',
     fontSize: 26,
     paddingVertical: 20,
+  },
+  pickerContainer: {
+    normal: {
+      flexDirection: 'row',
+      height: 48,
+      borderWidth: 1,
+      borderRadius: 4,
+      borderColor: '#CCC',
+      padding: 8,
+      backgroundColor: '#FFFFFF',
+    },
+    error: {
+      flexDirection: 'row',
+      height: 48,
+      borderWidth: 1,
+      borderRadius: 4,
+      borderColor: '#a94442',
+      padding: 8,
+      backgroundColor: '#FFFFFF',
+    },
+    open: { }
+  },
+  pickerLabelStyle: {
+    normal: {
+      fontSize: 17,
+      alignSelf: 'center',
+    }
   }
 };
 
