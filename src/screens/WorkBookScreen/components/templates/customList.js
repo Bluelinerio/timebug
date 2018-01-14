@@ -1,10 +1,11 @@
 import React                                                from 'react';
-import { View, Text, TouchableHighlight, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableHighlight, TouchableOpacity, } from 'react-native';
 import Icon                                                 from 'react-native-vector-icons/MaterialIcons';
 import styles                                               from '../../styles/templates';
+import FormPages                                            from '../FormPages';
 
 function renderRowWithoutButtons(item) {
-  return <View style={{ flex: 1 }} key={item.key}>{item.input}</View>;
+  return <View style={{ flex: 1, justifyContent: 'center' }} key={item.key}>{item.input}</View>;
 }
 
 function renderRowButton(button) {
@@ -51,7 +52,19 @@ export default function customList(locals) {
       {label}
       {error}
       {addButton}
-      {rows}
+      <FormPages
+        page={0}
+        horizontal={false} 
+        containerStyle={{ 
+          flex: 1,
+          borderRadius: 5,
+          borderWidth: 1,
+          borderColor: '#CCC'
+        }} 
+        indicatorPosition="none"
+      >
+        {rows}
+      </FormPages>
     </View>
   );
 }
