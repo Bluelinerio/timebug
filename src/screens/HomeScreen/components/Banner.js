@@ -32,10 +32,10 @@ const Banner = ({ date='Monday, 27 November', user }) =>
 				<Text style={styles.headerDate}>{moment().format("dddd DD MMM")}</Text>
 				<Text style={iOSUIKit.largeTitleEmphasized}>{`Welcome`}</Text>
 			</View>
-			{user &&
+			{user && user.email && 
 				<TouchableOpacity>
 					<GravatrImage 
-							email={user && user.email ? user.email : 'amosel@gmail.com'} 
+							email={user.email} 
 							style={styles.headerAvatar}
 						/>
 				</TouchableOpacity>

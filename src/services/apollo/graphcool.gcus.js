@@ -66,6 +66,7 @@ export const fetchUserWithId = (id: string): User =>
 						id
 						facebookId
 						name
+						email
 						steps(orderBy: stepId_DESC, first: 1) {
 							id
 							stepId

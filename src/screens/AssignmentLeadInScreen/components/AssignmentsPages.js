@@ -13,17 +13,19 @@ export type Props = {
 
 export default ({ assignments, color, step }: Props) => (
   <View style={{ flex: 1 }}>
-    <Pages horizontal={false}>
-      {assignments.map((assignment , index) => 
-        (<AssignmentLeadInPageComponent
-          key={index}
-          isLastItem={index === assignments.length - 1}
-          assignment={assignment}
-          color={color}
-          index={index}
-          step={step}
-        />))
-      }
-    </Pages>
+    { assignments && 
+      <Pages horizontal={false}>
+        {assignments.map((assignment , index) => 
+          (<AssignmentLeadInPageComponent
+            key={index}
+            isLastItem={index === assignments.length - 1}
+            assignment={assignment}
+            color={color}
+            index={index}
+            step={step}
+          />))
+        }
+      </Pages>
+    }
   </View>
 )

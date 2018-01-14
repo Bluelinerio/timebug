@@ -1,6 +1,6 @@
-import theme from 'react-native-theme';
+import { StyleSheet } from 'react-native';
 
-theme.add({
+export default StyleSheet.create({
   assignmentLeadInScreenContainer: {
     flexGrow: 1,
     alignItems: 'center',
