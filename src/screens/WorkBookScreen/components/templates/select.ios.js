@@ -23,8 +23,6 @@ export default function select(props) {
   ));
 
   const text = options.find(option => option.value === value).text;
-
-  debugger;
   return (
     <View
       style={
