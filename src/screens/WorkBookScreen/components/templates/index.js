@@ -5,7 +5,8 @@ import stylesheet    from "tcomb-form-native/lib/stylesheets/bootstrap";
 import i18n          from "tcomb-form-native/lib/i18n/en";
 import customList    from './customList';
 import customTextBox from './customTextBox';
-import customStruct from './customStruct';
+import customStruct  from './customStruct';
+import select        from './select';
 import { Animated, KeyboardAvoidingView } from 'react-native';
 import { Pages } from 'react-native-pages';
 import React, { Children } from 'react';
@@ -35,6 +36,7 @@ const customTemplates = {
   list: customList,
   textbox: customTextBox,
   struct: customStruct,
+  select
 };
 
 const customStylesheet= {
@@ -43,6 +45,33 @@ const customStylesheet= {
     textAlign: 'center',
     fontSize: 26,
     paddingVertical: 20,
+  },
+  pickerContainer: {
+    normal: {
+      flexDirection: 'row',
+      height: 48,
+      borderWidth: 1,
+      borderRadius: 4,
+      borderColor: '#CCC',
+      padding: 8,
+      backgroundColor: '#FFFFFF',
+    },
+    error: {
+      flexDirection: 'row',
+      height: 48,
+      borderWidth: 1,
+      borderRadius: 4,
+      borderColor: '#a94442',
+      padding: 8,
+      backgroundColor: '#FFFFFF',
+    },
+    open: { }
+  },
+  pickerLabelStyle: {
+    normal: {
+      fontSize: 17,
+      alignSelf: 'center',
+    }
   }
 };
 
