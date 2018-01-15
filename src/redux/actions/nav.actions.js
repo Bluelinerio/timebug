@@ -10,17 +10,23 @@ import {
 import type  { Step }           from '../../services/cms'
 import selectors                from '../selectors'
 
+const testStep = (step: ?number) => {
+  if(!step) {
+    throw 'could not get step'
+  } else if (step < 1 || step > 30) {
+    throw 'step out of bound expected value between 1 and 30'
+  }
+}
+
 export const doneWithCongratsScreen     = () => action(GO_TO_HOME_SCREEN, { reset: true, direction: "back" });
 export const goToHomeScreen             = (props: any) => action(GO_TO_HOME_SCREEN, props);
 
 const navigateWith = ({ routeName, props }) => {
-  const step: ?number = props.step ? props.step.number
+  const step: number = props.step ? props.step.number
     : (props.navigation && props.navigation.state && props.navigation.state.params) ? props.navigation.state.params.step 
-    : props.number || null
+    : props.number;
 
-  if(!step) {
-    throw 'could not get step'
-  }
+  testStep(step);
 
   const createNavigationAction  = (state: any) => {
     const color = selectors.colorForStep(step)(state)
@@ -36,6 +42,7 @@ const navigateWith = ({ routeName, props }) => {
 }
 
 const navigateToStep = ({ number, routeName}) => {
+  testStep(number);
   const createNavigationAction  = (state: any) => {
     const color = selectors.colorForStep(number)(state)
     return {
@@ -64,12 +71,13 @@ export const previousFormOrBack               = selectPutAction((state: any) => 
     throw 'unexpected result could not find lastRoute';
   }
   const { step } = lastRoute.params;
+  testStep(step);
   const form = lastRoute.params.form || 0;
 
   if (form > 1) {
     return NavigationActions.setParams({
-      step: progress.step,
-      form: progress.form - 1
+      step: step,
+      form: form - 1
     })
   } else {
     return NavigationActions.back();
