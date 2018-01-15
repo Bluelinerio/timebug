@@ -110,7 +110,7 @@ function* refreshUserOrLogout(): RefreshUserResult | LogoutResult {
 	return winner.refresh
 }
 
-function* _handleUserError(){
+function* _handleUserError() {
 	const result = yield call(_logout) 
 	yield put(actions.setUserAnonymous());
 }
@@ -121,18 +121,15 @@ function* userErroredSaga() {
 }
 
 function* _loginOrRegisterWithFacebook(): RefreshUserResult | LogoutResult {
-	const result = yield call(refreshUserOrLogout)
-	if (!result.user) {
-		// if it is NOT SuccessfulUserRefresh try loggin in with fb
-		const fbTokenOrError: OpenFBLoginResult = yield call(facebook.openFBLogin)
-		if (fbTokenOrError.error) {
-			return fbTokenOrError
-		}
+	const fbTokenOrError: OpenFBLoginResult = yield call(facebook.openFBLogin)
+	if (fbTokenOrError.error) {
+		yield put({type:GET_USER.ERRORED});
+		return fbTokenOrError
+	}
 
-		const refreshedUserOrLogout = yield call(refreshUserOrLogout)		
-		if (refreshedUserOrLogout.logout || refreshedUserOrLogout.error) {
-			return refreshedUserOrLogout
-		}
+	const refreshedUserOrLogout = yield call(refreshUserOrLogout)		
+	if (refreshedUserOrLogout.logout || refreshedUserOrLogout.error) {
+		return refreshedUserOrLogout
 	}
 }
 
