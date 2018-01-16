@@ -8,15 +8,9 @@ import screen                 from './containers/WorkBookScreenContainer';
 import { previousFormOrBack } from '../../redux/actions/nav.actions';
 
 screen.navigationOptions = ({ navigation: { previous, dispatch, state: { key, params } } }) => {
-  const { color, form } = params;
+  const { color, form, step } = params;
   return {
-    title: 'ASSIGNMENT',
-    headerTitleStyle: {
-      textAlign: 'center',
-      alignSelf: 'center',
-      fontFamily: 'Helvetica',
-      fontSize: 20.5
-    },
+    title: `Workbook #${step}`,
     headerStyle: {
       backgroundColor: color
     },
