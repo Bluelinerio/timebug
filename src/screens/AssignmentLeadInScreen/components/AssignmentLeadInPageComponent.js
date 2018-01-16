@@ -2,6 +2,7 @@
 
 import React, { Component, PureComponent } from 'react';
 import { Dimensions, ScrollView, View, Animated} from 'react-native';
+import TouchableBounce 			from 'react-native/Libraries/Components/Touchable/TouchableBounce'
 import styles 							from '../styles';
 import Markdown  						from '../../../Modules/Markdown';
 import AssignmentNumber 		from './AssignmentNumber';
@@ -23,12 +24,13 @@ export type Props = {
 	index: number, 
 	color:string, 
 	isLastItem:bool, 
-	progress:Animated.Value 
+	progress:Animated.Value,
+	scrollToPage:(number) => void
 }
 
 const SHOW_MARKUP = true;
 
-export default ({ assignment, index, color, isLastItem, step, progress }: Props) => {
+export default ({ assignment, index, color, isLastItem, step, progress, scrollToPage }: Props) => {
 
 	const transform = [{
 		translateY: progress.interpolate({
@@ -46,10 +48,13 @@ export default ({ assignment, index, color, isLastItem, step, progress }: Props)
 		opacity,		
 	}
 
+	const jumpToNext = () => isLastItem === false && scrollToPage(index+1)
 	return (
-		<View 
-			style={styles.assignmentLeadInScreenSlide}
-			>	
+		<TouchableBounce 
+			disabled={isLastItem}
+			onPress={jumpToNext}
+			style={[styles.assignmentLeadInScreenSlide]}
+			>
 			{!isLastItem && 
 				<AssignmentNumber number={index + 1} color={color} animatedStyle={animatedStyle} />
 			}
@@ -83,5 +88,5 @@ export default ({ assignment, index, color, isLastItem, step, progress }: Props)
 			{isLastItem && 
 				<BeginWorkbookButton number={step} />
 			}
-	</View>)
+	</TouchableBounce>)
 }
