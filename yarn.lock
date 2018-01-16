@@ -3224,12 +3224,6 @@ react-native-pages@^0.6.1:
   dependencies:
     prop-types "^15.5.9"
 
-react-native-parallax-scroll-view@^0.20.1:
-  version "0.20.1"
-  resolved "https://registry.yarnpkg.com/react-native-parallax-scroll-view/-/react-native-parallax-scroll-view-0.20.1.tgz#7fad3411df8632b7c99fed5d0a5c0a8f97007b38"
-  dependencies:
-    prop-types "^15.6.0"
-
 react-native-select-input-ios@^1.1.4:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/react-native-select-input-ios/-/react-native-select-input-ios-1.1.4.tgz#2c0389f3ef039e45910f90aceaa4d281946a8909"
