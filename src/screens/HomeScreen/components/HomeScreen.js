@@ -47,10 +47,7 @@ export default class HomeScreen extends PureComponent<Props, State> {
 						itemWidth={itemWidth}
 						sliderWidth={sliderWidth}
 						snap={index => this.setState({ stepIndexInFocus: index })}
-						onPress={(item, index) => {
-							alert(`You've clicked index:${index}\n'${item.title}'`);
-						}}
-					/>
+          />
 				</ScrollView>
 			</View>
 		);
