@@ -40,7 +40,6 @@ const merge = (stateProps, dispatchProps, ownProps): Props => {
 		text,
     backgroundColor,
     styles,
-    disabled: authenticating === true
   }
 }
 
