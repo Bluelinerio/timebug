@@ -17,9 +17,10 @@ export const APOLLO_CONFIG = {
   },
 }
 
+// There will be a race condition between fetching the cms and the previous version, but we assume that it's going to be faster to rehydrate than to call the cms.
 export const persistConfig = {
-  key: 'beta',
-  whitelist: ['formData', 'nav' ],
+  key: 'beta1',
+  whitelist: ['formData', 'nav' , 'cms' ],
 }
 
 // type PersistConfig = {
