@@ -20,6 +20,9 @@ const merge = (stateProps, dispatchProps, ownProps): Props => {
   const { navigation: {state:{ params:{ step }}}} = ownProps;
 
   const _step = steps[step];
+  if(!_step) {
+    throw `did not find step with number ${step} in steps: ${steps}`;
+  }
   const title = _step.title
   const subtitle = _step.subtitle
   const description = _step.description
