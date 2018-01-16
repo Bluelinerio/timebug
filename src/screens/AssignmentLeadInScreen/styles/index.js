@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 
 export default StyleSheet.create({
   assignmentLeadInScreenContainer: {
@@ -7,9 +7,10 @@ export default StyleSheet.create({
     marginBottom: 30
   },
   assignmentLeadInScreenSlide: {
-    justifyContent:'center',
-    paddingHorizontal: 20,
-    flex: 1
+    flex: 1,
+    justifyContent:'flex-start',
+    marginTop: Dimensions.get('window').height * 0.4,
+    paddingHorizontal: 20
   },
   assignmentLeadInScreenNumber: {
     borderWidth: 1,
