@@ -68,7 +68,7 @@ const Header = ({ imageUri, title, number, color}) => (
 export default ({ title, subtitle, description, number, imageUri, color, onPress }) => (
   <ScrollableHeader
     headerMaxHeight={HEADER_HEIGHT}
-    headerMinHeight={STATUSBAR_HEIGHT}
+    headerMinHeight={APPBAR_HEIGHT + STATUSBAR_HEIGHT}
     headerImage={headerBackground}
     headerComponent={
       <Header
