@@ -51,8 +51,8 @@ export default StyleSheet.create({
   },
   stepScreenSubtitle: {
     fontFamily: "Helvetica",
-    fontSize: normalize(24),
-    fontWeight: "500",
+    fontSize: normalize(20),
+    fontWeight: "200",
     color: deepBlue,
     textAlign: 'left',
     paddingHorizontal: 20,

@@ -37,15 +37,15 @@ const HEADER_HEIGHT = Dimensions.get('window').height * 0.4
 const Content = ({ title, subtitle, description, color, number }) => (
   <View style={styles.stepScreenContent}>
     <Text
+    testID={"step_subtitle"}
+    style={[styles.stepScreenSubtitle]}
+    >
+    {subtitle}
+    </Text>
+    <Text
       style={[styles.stepScreenTitle]}
     >
       {title}
-    </Text>
-    <Text
-      testID={"step_subtitle"}
-      style={[styles.stepScreenSubtitle]}
-    >
-      {subtitle}
     </Text>
     <ScrollView style={styles.stepScreenScrollView}>
       <Markdown markdownStyles={markdownStyles}>{description}</Markdown>
