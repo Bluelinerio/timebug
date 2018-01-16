@@ -16,12 +16,11 @@ function struct(locals) {
     controlLabelStyle = stylesheet.controlLabel.error;
   }
 
-  const label = locals.label ? <Text style={controlLabelStyle}>{locals.label}</Text> : null;
-  const error = locals.hasError && locals.error ? <Text accessibilityLiveRegion="polite" style={stylesheet.errorBlock}>{locals.error}</Text> : null;
+  const label = locals.label ? <Text style={locals.hasError ? stylesheet.controlLabel.error : stylesheet.controlLabel.normal}>{locals.label}</Text> : null;
 
-  const rows = locals.order.map(function (name) {
-    return locals.inputs[name];
-  });
+  const error = locals.hasError && locals.error ? <Text accessibilityLiveRegion='polite' style={stylesheet.errorBlock}>{locals.error}</Text> : null;
+
+  const rows = locals.order.map(name =>  locals.inputs[name] )
 
   const filteredRows = rows.filter(input => {
     return !input.props.options || (input.props.options && !input.props.options.hidden);
