@@ -7,7 +7,8 @@ import {
   TouchableHighlight,
   Platform,
   ScrollView,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
+  Keyboard
 } from "react-native";
 import KeyboardSpacer from "react-native-keyboard-spacer";
 import t                    from './templates';
@@ -18,7 +19,6 @@ import type { Progress }    from '../../../services/apollo/models';
 import styles               from '../styles';
 
 const Form = t.form.Form;
-const SKIPP_ENABLED = false;
 
 export type Props = {
   progress: Progress, 
@@ -41,6 +41,31 @@ type State = {
   }
 };
 
+type NextButtonProps = { 
+  isInvalid: boolean, 
+  onPress: () => void, 
+  buttonMessage:string, 
+  backgroundColor:string
+};
+
+const SKIPP_ENABLED = false;
+const NextButton = (props:NextButtonProps) => {
+  const { isInvalid, onPress, buttonMessage, backgroundColor} = props;
+  const active = isInvalid === false || SKIPP_ENABLED
+  if (active) {
+    return (
+      <Button
+        onPress={() => active ? onPress() : null }
+        text={SKIPP_ENABLED ? 'SKIP' : buttonMessage}
+        backgroundColor={backgroundColor}
+        side='right' 
+        withArrow
+    />)
+  } else {
+    return null;
+  }
+}
+
 class WorkBookScreenContainer extends Component<Props, State> {
 
   constructor(props: Props) {
@@ -56,6 +81,7 @@ class WorkBookScreenContainer extends Component<Props, State> {
   }
 
   componentWillFocus() {
+    Keyboard.dismiss(); // police keyboard is always off, when starting (specially with android.)
     const { model } = this.state;
     if (model && model.focusField) {
       this.form.getComponent(model.focusField).refs.input.focus();
@@ -108,7 +134,7 @@ class WorkBookScreenContainer extends Component<Props, State> {
   onPress = () => {
     const { value } = this.state;
     const { progress, next } = this.props;
-    if (value || SKIPP_ENABLED) {
+    if (value) {
       this.props.submitFormValue({
         value,
         progress
@@ -138,7 +164,6 @@ class WorkBookScreenContainer extends Component<Props, State> {
   render = () => {
     const { color, isFetching, progress, buttonMessage } = this.props;
     const { model: { options, type }, isInvalid, value, keyboardSpace } = this.state;
-
     if(isFetching) {
       return <DefaultIndicator size='large' />
     }
@@ -162,14 +187,12 @@ class WorkBookScreenContainer extends Component<Props, State> {
               keyboardSpace && { bottom: keyboardSpace }
             ]}
           >
-            <Button
-              disabled={SKIPP_ENABLED ? false : isInvalid}
-              onPress={this.onPress}
-              text={isInvalid && SKIPP_ENABLED ? 'SKIP' : buttonMessage}
-              backgroundColor={color}
-              side='right' 
-              withArrow
-            />
+          <NextButton
+            isInvalid={isInvalid}
+            onPress={this.onPress}
+            buttonMessage={buttonMessage}
+            backgroundColor={color}
+          />
           </View>
         </View>
       );
