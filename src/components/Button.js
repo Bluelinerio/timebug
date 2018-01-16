@@ -19,6 +19,23 @@ export type Props = {
 	buttonTestId: string,
 }
 
+const ArrowBack = ({props}) => (
+	<Icon
+		name="ios-arrow-back-outline"
+		size={30}
+		color="white"
+		{...props}
+	/>
+)
+const ArrowForward = ({props}) => (
+	<Icon
+		name="ios-arrow-forward-outline"
+		size={30}
+		color="white"
+		{...props}
+	/>
+)
+
 export default (props: Props) => {
 	const { text, onPressWithProps, side, withArrow=false, disabled=false, disabledStyle, backgroundColor, buttonTestId, textTestId } = props;
 	let { styles, onPress } = props;
@@ -35,46 +52,59 @@ export default (props: Props) => {
 		onPress = () => onPressWithProps(props);
 	} 
 
+	const containerStyle = [
+		styles.buttonContainer,
+		side ? styles[side] : null,
+		{
+			borderWidth:1, borderColor:'green'
+		}
+	];
+	const touchableStyle = [
+		styles.wideButton,
+		{
+			minWidth,
+			paddingHorizontal,
+			opacity,
+			backgroundColor
+		}
+	]
+	const touchableHighlightProps = {
+		style: touchableStyle,
+		activeOpacity: opacity,
+		onPress: onPress,
+		disabled: disabled,
+		underlayColor: '#c0c0c0',
+		testID: buttonTestId,
+	}
+
+	const buttonGroupProps = {
+		style: [side && styles.buttonGroup]
+	}
+
 	return (
-		<View style={[styles.buttonContainer, side ? styles[side] : null]}>
+		<View style={containerStyle}>
 			<TouchableHighlight
-				style={[
-					styles.wideButton,
-					{
-						minWidth,
-						paddingHorizontal,
-						opacity,
-						backgroundColor
-					}
-				]}
-				activeOpacity={opacity}
-				onPress={onPress}
-				disabled={disabled}
-				underlayColor={'#c0c0c0'}
-				testID={buttonTestId}
+				{...touchableHighlightProps}
 			>
-				<View style={[side && styles.buttonGroup]}>
-					{side &&
-						side === 'left' &&
-						withArrow && (
-							<Icon
-								style={styles.buttonIconRight}
-								name="ios-arrow-back-outline"
-								size={30}
-								color="white"
-							/>
-						)}
-					<Text style={styles.wideButtonText} testID={textTestId} >{text}</Text>
-					{side &&
-						side === 'right' &&
-						withArrow && (
-							<Icon
-								style={styles.buttonIconLeft}
-								name="ios-arrow-forward-outline"
-								size={30}
-								color="white"
-							/>
-						)}
+				<View 
+					{...buttonGroupProps}
+				>
+					{side && side === 'left' && withArrow && (
+						<ArrowBack
+							style={styles.buttonIconRight}
+						/>
+					)}
+					<Text 
+						style={styles.wideButtonText} 
+						testID={textTestId}
+					>
+						{text}
+					</Text>
+					{side && side === 'right' && withArrow &&  (
+						<ArrowForward
+							style={styles.buttonIconLeft}
+						/>
+					)}
 				</View>
 			</TouchableHighlight>
 		</View>
