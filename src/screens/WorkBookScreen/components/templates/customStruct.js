@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Keyboard } from 'react-native';
 import FormPages from '../FormPages'
 
 function struct(locals) {
@@ -42,12 +42,19 @@ function struct(locals) {
             padding: 
             20}} 
           indicatorColor="#CCC"
+          onScrollEnd={(index) => Keyboard.dismiss() }
         >
           <Text style={stylesheet.formLabel}>{locals.label}</Text>
           {filteredRows}
         </FormPages>
       ) : (
-        <FormPages page={page} horizontal={false} containerStyle={{ padding: 20}} indicatorColor="#CCC">
+        <FormPages 
+          page={page}
+          horizontal={false}
+          containerStyle={{ padding: 20}}
+          indicatorColor="#CCC"
+          onScrollEnd={(index) => Keyboard.dismiss() }
+        >
           {filteredRows}
         </FormPages>
       )}

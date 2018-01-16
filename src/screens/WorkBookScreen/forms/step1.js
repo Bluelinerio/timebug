@@ -21,6 +21,7 @@ export default {
         },
         memory: {
           label: "Describe what happened",
+          numberOfLines: 3,
           error: "Please fill out this field.",
           numberOfLines: 3
         },

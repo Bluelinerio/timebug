@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import { Animated, Text, View } from 'react-native';
+import styles from '../styles';
 
 const CicleWidth = 32
 
@@ -13,25 +14,16 @@ type Props = {
 export default ({ number, color, animatedStyle }: Props) => {
 	return (
 		<Animated.View
-			style={[{
-				alignItems: 'center',
-				justifyContent: 'center',
-				width: CicleWidth,
-				height: CicleWidth,
-				borderRadius: CicleWidth,
-				marginRight: 10,
-				marginVertical: 10,
-				backgroundColor: color,
-			}, animatedStyle ]}
+			style={[
+				styles.assignmentLeadInScreenNumberContainer, 
+				{
+					backgroundColor: color,
+				},
+				animatedStyle 
+			]}
 		>
 			<Animated.Text
-				style={[{
-					fontFamily: 'Helvetica',
-					fontSize: Math.ceil(CicleWidth * 0.55),
-					textAlign: 'center',
-					color: 'white',
-					backgroundColor: 'transparent'
-				}]}
+				style={[styles.assignmentLeadInScreenNumberText]}
 			>
 				{number}
 			</Animated.Text>

@@ -7,7 +7,7 @@ const HELP_COLOR = '#999999';
 const BORDER_COLOR = '#cccccc';
 const DISABLED_COLOR = '#777777';
 const DISABLED_BACKGROUND_COLOR = '#eeeeee';
-const FONT_SIZE = 17;
+const FONT_SIZE = 20;
 const FONT_WEIGHT = '500';
 
 export default StyleSheet.create({

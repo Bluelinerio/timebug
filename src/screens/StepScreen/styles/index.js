@@ -59,7 +59,6 @@ export default StyleSheet.create({
     paddingVertical: 20,
   },
   stepScreenTitle: {
-    flex:1,
     fontFamily: "Helvetica",
     fontSize: normalize(28),
     fontWeight: "bold",

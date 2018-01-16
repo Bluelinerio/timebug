@@ -19,7 +19,7 @@ export type Props = {
 	buttonTestId: string,
 }
 
-const ArrowBack = ({props}) => (
+const ArrowBack = (props) => (
 	<Icon
 		name="ios-arrow-back-outline"
 		size={30}
@@ -27,7 +27,7 @@ const ArrowBack = ({props}) => (
 		{...props}
 	/>
 )
-const ArrowForward = ({props}) => (
+const ArrowForward = (props) => (
 	<Icon
 		name="ios-arrow-forward-outline"
 		size={30}
@@ -37,33 +37,35 @@ const ArrowForward = ({props}) => (
 )
 
 export default (props: Props) => {
-	const { text, onPressWithProps, side, withArrow=false, disabled=false, disabledStyle, backgroundColor, buttonTestId, textTestId } = props;
-	let { styles, onPress } = props;
+	const { 
+		text,
+		onPressWithProps,
+		side,
+		withArrow=false,
+		disabled=false,
+		disabledStyle,
+		backgroundColor,
+		buttonTestId,
+		textTestId 
+	} = props;
+	
+	const onPress = onPressWithProps ? () => onPressWithProps(props) : props.onPress;
 
-	const minWidth = side ? 128 : 240;
-	const paddingHorizontal = side ? 35 : 50;
-	const opacity = disabledStyle ? 1 : disabled ? 0.1 : 1;// set alpha to 0.1 when disabled and disabledStyle not provided
-	styles = {
+	const styles = {
 		...defaultStyle,
-		...styles,
+		...props.styles,
 	}
-
-	if(!onPress && onPressWithProps) {
-		onPress = () => onPressWithProps(props);
-	} 
+	const opacity = disabledStyle ? 1 : disabled ? 0.1 : 1;// set alpha to 0.1 when disabled and disabledStyle not provided
 
 	const containerStyle = [
 		styles.buttonContainer,
-		side ? styles[side] : null,
-		{
-			borderWidth:1, borderColor:'green'
-		}
+		side && styles[side],
 	];
+	
 	const touchableStyle = [
 		styles.wideButton,
+		side && styles.makeWideButtonNarrow,
 		{
-			minWidth,
-			paddingHorizontal,
 			opacity,
 			backgroundColor
 		}

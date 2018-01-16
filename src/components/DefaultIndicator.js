@@ -1,18 +1,19 @@
 // @flow
 import React                 from 'react'
-import { ActivityIndicator } from "react-native"
-import { styles }            from 'react-native-theme';
+import { View, ActivityIndicator, StyleSheet } from "react-native"
+import styles            from '../styles/components/DefaultIndicator';
 
 type Props = {
   size: 'small' | 'large'
 }
 
-export default ({ size }: Props) => {
-  return (
-    <ActivityIndicator
-      style={styles.defaultIndicator}
-      size={size}
-      testID='activity_indicator'/>
-  )
-}
+export default ({ size, color}: Props) => (
+  <View style={styles.container}>
+    <ActivityIndicator 
+      size={size || 'large'} 
+      color={color || StyleSheet.flatten(styles.activityIndicator).color} 
+    />
+  </View>
 
+  
+)

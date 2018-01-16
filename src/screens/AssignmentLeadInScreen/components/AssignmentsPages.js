@@ -1,13 +1,12 @@
 // @flow
 import React, { Component, PureComponent } from 'react';
-import { View} from 'react-native';
+import { View } from 'react-native';
 import { Pages } from 'react-native-pages';
-import type { Assignment, Step } from '../../../services/cms';
+import type { Assignment } from '../../../services/cms';
 import AssignmentLeadInPageComponent from './AssignmentLeadInPageComponent'
-import BeginWorkbookButton 	from '../containers/BeginWorkbookButton';
 
 export type Props = {
-	assignments: Array<Assignment>,
+	assignments: [Assignment],
   color: string,
   step: number
 };
@@ -15,15 +14,11 @@ export type Props = {
 type State = {
   index:number
 }
-export default class PageWrapper extends Component<Props, State> {
+export default class AssignmentsPages extends PureComponent<Props, State> {
   pages:Pages = null
-  state = {
-    index:0
-  }
+  state = { index:0 }
   render() {
-    debugger
     const {	assignments, color, step } = this.props;
-    const { page } = this.state;
     return (
       <View style={{ flex: 1 }}>
         {assignments && 

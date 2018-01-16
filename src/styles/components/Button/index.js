@@ -1,46 +1,58 @@
-import theme from 'react-native-theme';
 import { Dimensions } from 'react-native';
-import { deepBlue } from '../../../constants/colors';
+import { deepBlue, white } from '../../../constants/colors';
 
+const buttonHeight = 44;
+const marginHorizontal = 10;
+const marginBottom = 20
+const paddingHorizontal = {
+	sides: 10,
+	wide: 50,
+	narrow: 35
+}
 const style = {
 	buttonContainer: {
-		flex: 1,
 		flexDirection: 'row',
 		alignItems: 'center',
 		justifyContent: 'center',
-		width: Dimensions.get('window').width
+		marginBottom,
+		paddingVertical: 4,
+		// borderWidth: 1,
+		// borderColor:'green'
 	},
 	buttonIconLeft: {
-		marginLeft: 10
+		marginLeft: marginHorizontal
 	},
 	buttonIconRight: {
-		marginRight: 10
+		marginRight: marginHorizontal
 	},
 	wideButton: {
-		height: 44,
-		borderRadius: 50,
+		height: buttonHeight,
+		borderRadius: buttonHeight,
 		alignSelf: 'center',
 		justifyContent: 'center',
 		overflow: 'hidden',
-		marginHorizontal: 10
+		marginHorizontal,
+		minWidth: 240,
+		paddingHorizontal: paddingHorizontal.wide,
 	},
-	wideButtonBackground: {
-		backgroundColor: deepBlue
+	makeWideButtonNarrow: {
+		minWidth: 128,
+		paddingHorizontal: paddingHorizontal.narrow,
 	},
 	left: {
 		justifyContent: 'flex-start',
-		paddingHorizontal: 10
+		paddingHorizontal: paddingHorizontal.sides
 	},
 	right: {
 		justifyContent: 'flex-end',
-		paddingHorizontal: 10
+		paddingHorizontal: paddingHorizontal.sides
 	},
 	wideButtonText: {
 		fontFamily: 'Helvetica',
 		fontSize: 15,
 		fontWeight: 'bold',
 		textAlign: 'center',
-		color: '#ffffff'
+		color: white
 	},
 	buttonGroup: {
 		flexDirection: 'row',
@@ -48,6 +60,5 @@ const style = {
 		alignItems: 'center'
 	}
 }
-theme.add(style);
 
 export default style;

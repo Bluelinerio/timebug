@@ -5,7 +5,6 @@ import Button from '../../../components/Button'
 import type { Props, Side } from '../../../components/Button'
 import selectors from '../../../redux/selectors'
 import { navigateToAssignmentLeadInScreen as onPressWithProps} from '../../../redux/actions/nav.actions';
-import LoginButtonStyles from '../../../styles/components/LoginButton'
 
 const mapStateToProps = state => {
   const steps = selectors.steps(state);

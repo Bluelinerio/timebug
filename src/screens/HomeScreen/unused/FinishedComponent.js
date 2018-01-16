@@ -10,7 +10,6 @@ import DefaultIndicator from '../../../components/DefaultIndicator';
 import { backgroundImage, headerBackground } from '../../../resources/images/';
 import { whiteTwo, deepBlue, hotPink } from '../../../constants/colors';
 import { APPBAR_HEIGHT, STATUSBAR_HEIGHT, TITLE_OFFSET } from '../../../constants';
-import LoginButtonStyles from '../../../styles/components/LoginButton';
 import markdownStyles from '../../../styles/Markdown/intro';
 
 const Header = () => (

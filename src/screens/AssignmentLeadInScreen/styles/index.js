@@ -1,30 +1,32 @@
 import { StyleSheet, Dimensions } from 'react-native';
 
+const CicleWidth = 32
+
 export default StyleSheet.create({
-  assignmentLeadInScreenContainer: {
-    flexGrow: 1,
-    alignItems: 'center',
-    marginBottom: 30
-  },
-  assignmentLeadInScreenSlide: {
+  assignmentLeadInScreenSlideContainer: {
     flex: 1,
-    justifyContent:'flex-start',
-    marginTop: Dimensions.get('window').height * 0.4,
-    paddingHorizontal: 20
+    justifyContent:'space-between',
+    paddingVertical: 30,
+    paddingHorizontal: 20,
   },
-  assignmentLeadInScreenNumber: {
-    borderWidth: 1,
+  assignmentLeadInScreenSlideText : {
+    flex: 1,
+    justifyContent:'center',
+  },
+  assignmentLeadInScreenNumberContainer: {
     alignItems: 'center',
     justifyContent: 'center',
-    width: 52,
-    height: 52,
-    borderRadius: 100,
-    marginRight: 21
+    width: CicleWidth,
+    height: CicleWidth,
+    borderRadius: CicleWidth,
+    marginRight: 10,
+    marginVertical: 10,
   },
   assignmentLeadInScreenNumberText: {
-    fontFamily: "Helvetica",
-    fontSize: 24,
-    textAlign: "center",
-    color: "#ffffff"
+    fontFamily: 'Helvetica',
+    fontSize: Math.ceil(CicleWidth * 0.55),
+    textAlign: 'center',
+    color: 'white',
+    backgroundColor: 'transparent'
   }
 });

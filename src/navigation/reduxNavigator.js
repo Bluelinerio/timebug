@@ -1,7 +1,7 @@
 import React                  from 'react';
 import { 
   addNavigationHelpers, 
-  NavigationActions 
+  NavigationActions
 }                             from 'react-navigation';
 import { BackHandler, Linking }
                               from "react-native";

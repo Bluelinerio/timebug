@@ -2,7 +2,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Button from '../../../components/Button'
-import styles from '../../../styles/loginButton.styles'
+import styles from '../../../styles/components/Button'
 import { loginWithFbButtonPressed } from '../../../redux/actions'
 
 const FBLoginButton = ({ loginWithFbButtonPressed, ...rest }) => (

@@ -23,7 +23,6 @@ type Props = {
 type State = {
 	activeSliderIndex: number,
 	activeSliderRef: ?number,
-	isInFocus: boolean
 };
 
 export default class PagninatedCarousel extends PureComponent<Props, State> {
@@ -31,25 +30,10 @@ export default class PagninatedCarousel extends PureComponent<Props, State> {
 	state = { 
 		activeSliderIndex: SLIDER_1_FIRST_ITEM, 
 		activeSliderRef: null,
-		isInFocus: true
 	};
-
-	componentWillBlur() {
-		this.setState({
-			isInFocus:false
-		})
-
-	}
-	componentWillFocus() {
-		this.setState({
-			isInFocus:true
-		})
-	}
 	render() {
 		const { items, sliderWidth, itemWidth, snap, onPress } = this.props;
-		const { activeSliderRef, activeSliderIndex, isInFocus } = this.state;
-
-
+		const { activeSliderRef, activeSliderIndex } = this.state;
 		return (
 			<View style={styles.paginatedCarouselContainer}>
 				<VerticalGradient />
@@ -84,9 +68,9 @@ export default class PagninatedCarousel extends PureComponent<Props, State> {
 					lockScrollWhileSnapping={Platform.OS !== 'ios'}
 					containerCustomStyle={styles.slider}
 					contentContainerCustomStyle={styles.sliderContentContainer}
-					loop={false}
+					loop={true}
 					loopClonesPerSide={2}
-					autoplay={Platform.OS === 'ios' ? isInFocus : false }
+					autoplay={Platform.OS === 'ios'}
 					autoplayDelay={2000}
 					autoplayInterval={6000}
 					onSnapToItem={(index: number) => {

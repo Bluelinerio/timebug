@@ -7,10 +7,9 @@ import {
   TouchableHighlight,
   Platform,
   ScrollView,
-  KeyboardAvoidingView,
   Keyboard
 } from "react-native";
-import KeyboardSpacer from "react-native-keyboard-spacer";
+import KeyboardSpacer       from 'react-native-keyboard-spacer'
 import t                    from './templates';
 import DefaultIndicator     from "../../../components/DefaultIndicator";
 import Button               from "../../../components/Button";
@@ -125,8 +124,8 @@ class WorkBookScreenContainer extends Component<Props, State> {
 
   // a note about - shouldComponentUpdate: I think customizing this typicall needs to user an instance flag variable, as it needs to incorporate both changes in state and pros.
 
-  onToggle = (keyboardSpace) => {
-    if (Platform.OS === "ios") {
+  onToggle = (keyboardSpace: number) => {
+    if (Platform.OS === 'ios') {
       this.setState({ keyboardSpace });
     }
   }
@@ -179,20 +178,24 @@ class WorkBookScreenContainer extends Component<Props, State> {
               onChange={this.onChange}
             />
           </View>
-            {/*{Platform.OS === 'ios' &&*/}
-            {/*<KeyboardSpacer onToggle={(keyboardState, keyboardSpace) => this.onToggle(keyboardSpace)}/>}*/}
+          {
+            // Platform.OS === 'ios' &&
+            // <KeyboardSpacer 
+            //   onToggle={(keyboardState, keyboardSpace) => this.onToggle(keyboardSpace)}
+            // />
+          }
           <View
             style={[
               styles.workBookNextButton,
               keyboardSpace && { bottom: keyboardSpace }
             ]}
           >
-          <NextButton
-            isInvalid={isInvalid}
-            onPress={this.onPress}
-            buttonMessage={buttonMessage}
-            backgroundColor={color}
-          />
+            <NextButton
+              isInvalid={isInvalid}
+              onPress={this.onPress}
+              buttonMessage={buttonMessage}
+              backgroundColor={color}
+            />
           </View>
         </View>
       );

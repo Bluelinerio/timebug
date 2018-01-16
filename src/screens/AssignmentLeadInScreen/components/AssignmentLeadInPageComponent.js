@@ -30,6 +30,35 @@ export type Props = {
 
 const SHOW_MARKUP = true;
 
+const TextRenderer = ({text, animatedStyle, width}) => (
+	SHOW_MARKUP ? 
+		<Markdown
+			markdownStyles={{
+				...markdownStyles,
+				block: {
+					...markdownStyles.block,
+					width
+				},
+				list: {
+					width
+				}
+			}}
+		>
+			{text}
+		</Markdown>
+		:
+		<Animated.Text style={[{
+				backgroundColor: 'transparent',
+				textAlign: 'left',
+				fontSize: 20,
+			},
+			animatedStyle
+		]}
+		>
+			{text}
+		</Animated.Text>
+)
+
 export default ({ assignment, index, color, isLastItem, step, progress, scrollToPage }: Props) => {
 
 	const transform = [{
@@ -53,38 +82,19 @@ export default ({ assignment, index, color, isLastItem, step, progress, scrollTo
 		<TouchableBounce 
 			disabled={isLastItem}
 			onPress={jumpToNext}
-			style={[styles.assignmentLeadInScreenSlide]}
+			style={styles.assignmentLeadInScreenSlideContainer}
+			>
+			<View style={styles.assignmentLeadInScreenSlideText}
 			>
 			{!isLastItem && 
 				<AssignmentNumber number={index + 1} color={color} animatedStyle={animatedStyle} />
 			}
-			{SHOW_MARKUP ? 
-				<Markdown
-					markdownStyles={{
-						...markdownStyles,
-						block: {
-							...markdownStyles.block,
-							width: Dimensions.get('window').width - (!isLastItem ? 70 : 30)
-						},
-						list: {
-							width: Dimensions.get('window').width - (!isLastItem ? 70 : 30)
-						}
-					}}
-				>
-					{assignment.content}
-				</Markdown>
-				:
-				<Animated.Text style={[{
-						backgroundColor: 'transparent',
-						textAlign: 'left',
-						fontSize: 20,
-					},
-					animatedStyle
-				]}
-				>
-					{assignment.content}
-				</Animated.Text>
-			}
+			<TextRenderer 
+				text={assignment.content} 
+				animatedStyle={animatedStyle}
+				width={Dimensions.get('window').width - (!isLastItem ? 70 : 30)}
+			/>
+			</View>
 			{isLastItem && 
 				<BeginWorkbookButton number={step} />
 			}

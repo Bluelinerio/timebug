@@ -5,7 +5,7 @@ import selectors from '../../../redux/selectors';
 import { goToWorkBookScreen } from '../../../redux/actions/nav.actions';
 import { loginWithFbButtonPressed } from '../../../redux/actions'
 import { deepBlue } from '../../../constants/colors'
-import loginButtonStyle from '../../../styles/components/LoginButton';
+import loginButtonStyle from '../../../styles/components/Button/login';
 import regularButtonStyle from '../../../styles/components/Button';
 
 const mapStateToProps = state => {

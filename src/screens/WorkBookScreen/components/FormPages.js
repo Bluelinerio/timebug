@@ -1,6 +1,7 @@
 import React, { Children } from 'react';
 import { Animated, KeyboardAvoidingView } from 'react-native';
 import { Pages } from 'react-native-pages';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 export default class FormPages extends Pages {
   componentWillReceiveProps(props) {
@@ -29,9 +30,11 @@ export default class FormPages extends Pages {
     progress = Animated.add(progress, -index);
   
     return (
-      <KeyboardAvoidingView style={[{ width, height, justifyContent: 'center' }, pageStyle]}>
+      <KeyboardAwareScrollView 
+        contentContainerStyle={[{ width, height, justifyContent: 'center' }, pageStyle]}
+      >
         {React.cloneElement(page, { index, pages, progress })}
-      </KeyboardAvoidingView>
+      </KeyboardAwareScrollView>
     );
   }
 }
