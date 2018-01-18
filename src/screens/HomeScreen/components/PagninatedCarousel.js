@@ -68,7 +68,7 @@ export default class PagninatedCarousel extends PureComponent<Props, State> {
 					lockScrollWhileSnapping={Platform.OS !== 'ios'}
 					containerCustomStyle={styles.slider}
 					contentContainerCustomStyle={styles.sliderContentContainer}
-					loop={true}
+					loop={false}
 					loopClonesPerSide={2}
 					autoplay={Platform.OS === 'ios'}
 					autoplayDelay={2000}
