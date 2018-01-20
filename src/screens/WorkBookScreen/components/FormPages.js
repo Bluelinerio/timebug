@@ -31,8 +31,8 @@ export default class FormPages extends Pages {
   
     return (
       <KeyboardAvoidingView 
-        style={[{ width, height, justifyContent: 'center', borderWidth: 1, borderColor:'green' }, pageStyle]}
-        contentContainerStyle={[{ width, height, justifyContent: 'center', borderWidth: 1, borderColor:'green' }, pageStyle]}
+        style={[{ width, height, justifyContent: 'center' }, pageStyle]}
+        contentContainerStyle={[{ width, height, justifyContent: 'center' }, pageStyle]}
       >
         {React.cloneElement(page, { index, pages, progress })}
       </KeyboardAvoidingView>
