@@ -21,7 +21,8 @@ const initialState: CMSState = {
 	requestCount: 0,
 	lastFetchDate: null,
 	totalNumberOfSteps: 30,
-	error: null
+	error: null,
+	steps, colors, about
 }
 
 function cmsReducer(state: CMSState = initialState, action: StepsAction) {
