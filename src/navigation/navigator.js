@@ -1,5 +1,5 @@
 import { Platform } from 'react-native'
-import { StackNavigator } from 'react-navigation'
+import { StackNavigator, NavigationActions } from 'react-navigation'
 import React from 'react'
 import CardStackStyleInterpolator from '../utils/CustomCardStackStyleInterpolator'
 import HomeScreen from '../screens/HomeScreen'
@@ -59,6 +59,12 @@ const Main = StackNavigator(
     },
   }
 );
+
+// fix for debouncing
+import { fixDebounce } from './util';
+fixDebounce(Main)
+fixDebounce(AssignmentFlowNavigator);
+// remove once fixed...
 
 const previousGetActionForPathAndParams = Main.router.getActionForPathAndParams;
 
