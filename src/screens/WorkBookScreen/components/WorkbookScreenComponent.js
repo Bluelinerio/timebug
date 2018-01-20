@@ -9,7 +9,6 @@ import {
   ScrollView,
   Keyboard
 } from "react-native";
-import KeyboardSpacer       from 'react-native-keyboard-spacer'
 import t                    from './templates';
 import DefaultIndicator     from "../../../components/DefaultIndicator";
 import Button               from "../../../components/Button";
@@ -31,7 +30,6 @@ export type Props = {
 };
 
 type State = {
-  keyboardSpace: number,
   isInvalid: boolean,
   value: any,
   model: {
@@ -72,7 +70,6 @@ class WorkBookScreenContainer extends Component<Props, State> {
     const { progress: { step, form } } = props;
     const { value, model } = props.getModelForForm(form);
     this.state = {
-      keyboardSpace: 0,
       isInvalid: true,
       model,
       value
@@ -124,12 +121,6 @@ class WorkBookScreenContainer extends Component<Props, State> {
 
   // a note about - shouldComponentUpdate: I think customizing this typicall needs to user an instance flag variable, as it needs to incorporate both changes in state and pros.
 
-  onToggle = (keyboardSpace: number) => {
-    if (Platform.OS === 'ios') {
-      this.setState({ keyboardSpace });
-    }
-  }
-
   onPress = () => {
     const { value } = this.state;
     const { progress, next } = this.props;
@@ -162,7 +153,7 @@ class WorkBookScreenContainer extends Component<Props, State> {
 
   render = () => {
     const { color, isFetching, progress, buttonMessage } = this.props;
-    const { model: { options, type }, isInvalid, value, keyboardSpace } = this.state;
+    const { model: { options, type }, isInvalid, value } = this.state;
     if(isFetching) {
       return <DefaultIndicator size='large' />
     }
@@ -178,17 +169,8 @@ class WorkBookScreenContainer extends Component<Props, State> {
               onChange={this.onChange}
             />
           </View>
-          {
-            // Platform.OS === 'ios' &&
-            // <KeyboardSpacer 
-            //   onToggle={(keyboardState, keyboardSpace) => this.onToggle(keyboardSpace)}
-            // />
-          }
           <View
-            style={[
-              styles.workBookNextButton,
-              keyboardSpace && { bottom: keyboardSpace }
-            ]}
+            style={styles.workBookNextButton}
           >
             <NextButton
               isInvalid={isInvalid}
