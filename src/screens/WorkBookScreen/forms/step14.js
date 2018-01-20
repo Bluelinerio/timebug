@@ -1,74 +1,89 @@
 import t from "../components/templates";
-import { WhereStandToday } from "./contents";
+import { WhereStandToday, Emotion, CreditScore, ChangeKind, EffortEvaluation } from "./contents";
 
 export default {
   1: {
     type: t.struct({
-      id:t.maybe(t.String),
+      id: t.maybe(t.String),
+      emotion: Emotion,
       selfView: t.String,
-      othersView: t.String
+      othersView: t.maybe(t.Boolean)
     }),
     options: {
-      label: "Please evaluate your relationship with money.",
+      label: "Let's do some work about your relationship with money...",
       fields: {
         id: {
           hidden: true
         },
+        emotion: {
+          label: "What is the primatry emotion that comes up for you about money today?",
+          error: 'Emotions are hard for some and easy for others. Just pick the first thing that comes to mind.'          
+        },
         selfView: {
-          label: "How do you feel about your relationship with money today(emotionally and psychologically?)",
-          error:'Please fill out this field.'
+          label: "In one or two sentences, describe your attitude towards money today",
+          error: 'Even one words will work...'
         },
         othersView: {
-          label: "How do others perceive your relationship to money?(Ok to ask another person)",
-          error:'Please fill out this field.'
-
+          label: "How do others perceive your relationship to money can be help you work through it. Would you like to try engage someone with that questions?",
         }
       }
     },
     value : {
       fields: {
-        id: 'step14+v0.0.0.1'
+        id: 'step14+v0.0.0.1',
+        othersView: true,
       }
     }
   },
   2: {
     type: t.struct({
-      dec15: t.Number,
-      jan11: t.Number
+      today: CreditScore,
+      aYearAgo: CreditScore,
+      aYearFromNow: CreditScore,
+      change: ChangeKind,
+      effort: EffortEvaluation
     }),
     options: {
-      label: "What is your credit score?",
+      label: "Credit scores \n💳",
       fields: {
-        dec15: {
-          label: "Dec '15",
-          error:'Please fill out this field.'
+        today: {
+          label: "What is your credit score today?",
+          error:'Choose one'
         },
-        jan11: {
-          label: "Jan '11",
-          error:'Please fill out this field.'
-        }
+        aYearAgo: {
+          label: "What was your credit score same time last year?",
+          error:'Choose one'
+        },
+        aYearFromNow: {
+          label: "What credit would you like to have same time next year?",
+          error:'Choose one'
+        },
+        change: {
+          label: "What kind of change is required for the change you want to see in next year's score?",
+          error:'Choose one'
+        },
+        effort: {
+          label: "Estimate the kind of effort to make this change a reaclity",
+          error:'Choose one'
+        },
       }
     }
   },
   3: {
     type: t.struct({
-      whyChange: t.String,
       bestAchievement: t.String,
       biggestDissapointment: t.String
     }),
     options: {
+      label: "The state of Successes 🎊 and Failures 💩 in my Financials",
       fields: {
-        whyChange: {
-          label: "Why did it change?",
-          error:'Please fill out this field.'
-        },
         bestAchievement: {
-          label: "What is your best achievement in this area over the past 5 years?",
-          error:'Please fill out this field.'
+          label: "🎊\n\nWhat is your biggest financial achievement the past 5 years?",
+          error: 'Write a sentence or two describing your biggest success'
         },
         biggestDissapointment: {
-          label: "What is your biggest dissapointment over the past 5 years?",
-          error:'Please fill out this field.'
+          label: "💩\n\nWhat is your biggest dissapointment over the past 5 years?",
+          error: 'Can you sum it up in a word or two?'
         }
       }
     }

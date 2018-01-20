@@ -1,5 +1,5 @@
 import t from "../components/templates";
-import { AreaOfLife, StageOfLife, Emotions } from "./contents";
+import { AreaOfLife, StageOfLife, Emotion } from "./contents";
 
 export default {
   1: {
@@ -93,7 +93,7 @@ export default {
       text: t.maybe(t.String),
       emotions:t.list(
         t.struct({
-          emotion: Emotions
+          emotion: Emotion
         })
       )
     }),
@@ -110,6 +110,5 @@ export default {
         }
       }
     }
-
   }
 };

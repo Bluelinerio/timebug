@@ -33,7 +33,7 @@ export const LifeCategory = t.enums.of([
   'Health & Wellness'
 ], 'LifeCategory');
 
-export const Emotions = t.enums.of([
+export const Emotion = t.enums.of([
   'Happy',
   'Sad',
   'Excited',
@@ -80,7 +80,7 @@ export const Emotions = t.enums.of([
   'Creative',
   'Perceptive',
   'Stupid',
-], 'Emotions');
+], 'Emotion');
 
 export const CharachterStrengths = t.enums.of([
   'Honesty',
@@ -271,6 +271,29 @@ export const DescribeProcess = t.enums.of([
   'Super detailed and consistent',
   'Thorough + working with a coach or peer group'
   ],'DescribeProcess')
+
+export const ChangeKind = t.enums.of([
+  'Same',
+  'Small Change',
+  'No Change needed',
+  'No Change',
+], 'ChangeKind');
+
+export const EffortEvaluation = t.enums.of([
+  'Significant Effort',
+  'Mild Effort',
+  'Easy!',
+  'No Change needed',
+  'No Change',
+], 'EffortEvaluation');
+
+export const CreditScore = t.enums.of([
+  'Excellent - 750 and above',
+  'Good - 700 to 749',
+  'Fair - 650 to 699',
+  'Poor - 551 to 649',
+  'Bad - 550 and below'
+], 'CreditScore' );
 
 export const UseWearableTech = t.enums.of([
     'Never',
