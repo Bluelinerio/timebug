@@ -16,20 +16,16 @@ export default {
           hidden: true
         },
         stageOfLife: {
-          label: "At what stage of your life was it?",
-          error: "Please fill out this field."
+          error: "At what stage of your life was it?"
         },
         memory: {
           label: "Describe what happened",
           numberOfLines: 3,
-          help: "Try to be as descriptive as possible.",
-          error: "Please fill out this field.",
-          numberOfLines: 3
+          error: "Try to be as descriptive as possible."
         },
         areaOfLife: {
           label: "What area of life does this belong to?",
-          help: "Assign this memory to one of the 7 Timebug Life Categories. This will be help us with later steps of Assessment and Vision Creation.",
-          error: "Please select a value"
+          error: "Assign this memory to one of the 7 Timebug Life Categories. This will be help us with later steps of Assessment and Vision Creation."
           
         },
       }

@@ -21,7 +21,7 @@ export default {
             field: {
               label: "Make a list of 10 recent goals and classify them according to the 7 Goal Types",              
               item:{
-                goal:{auto:'labels', error:'Please fill out this field'},
+                goal:{auto:'labels', error:'Please enter a goal'},
                 goalTypes:{auto:'labels', error:'Please select a Goal Type'}
               },
               auto:'placeholders',

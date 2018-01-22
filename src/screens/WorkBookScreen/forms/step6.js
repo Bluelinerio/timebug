@@ -8,21 +8,8 @@ export default {
             field: t.list(
               t.struct({
                 significantOther: t.String,
-                goalOne:t.String,
-                goalOneSupportPlan: t.String,
-                goalOneTimeRequired: t.String,
-                goalTwo:t.String,
-                goalTwoSupportPlan: t.String,
-                goalTwoTimeRequired: t.String,
-                goalThree:t.String,
-                goalThreeSupportPlan: t.String,
-                goalThreeTimeRequired: t.String,
-                goalFour: t.maybe(t.String),
-                goalFourSupportPlan: t.maybe(t.String),
-                goalFourTimeRequired: t.maybe(t.String),
-                goalFive: t.maybe(t.String),
-                goalFiveSupportPlan: t.maybe(t.String),
-                goalFiveTimeRequired: t.maybe(t.String)
+                goals:t.String,
+                supportPlan: t.String
               })
             )
         }),
@@ -41,16 +28,9 @@ export default {
               },
               item: {
                 fields: {
-                  significantOther: {help: 'Choose someone in your life who you want to, and are able to help.', error: 'Please enter a name.'},
-                  goalOne:{error: 'Please enter a goal.'},
-                  goalOneSupportPlan: {help:'How will you help this goal to be achieved?', error: 'Please fill out this field.'},
-                  goalOneTimeRequired: {help:'How much time will it require on your end?', error: 'Please fill out this field.'},
-                  goalTwo:{error: 'Please enter a goal.'},
-                  goalTwoSupportPlan: {help:'How will you help this goal to be achieved?',error: 'Please fill out this field.'},
-                  goalTwoTimeRequired: {error: 'How much time will it require on your end?'},
-                  goalThree:{error: 'Please enter a goal.'},
-                  goalThreeSupportPlan: {help:'How will you help this goal to be achieved?',error: 'Please fill out this field.'},
-                  goalThreeTimeRequired: {error: 'How much time will it require on your end?'}
+                  significantOther: {error: 'Choose someone in your life who you want to, and are able to help.'},
+                  goals:{error:'Think about 3-5 goals you would like to help this person with.'},
+                  supportPlan: {error:'How will you help with these goals, and how much time will it require?'}
                 }
               }
             },

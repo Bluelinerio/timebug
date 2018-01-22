@@ -26,18 +26,15 @@ export default {
                 fields:{
                   boardMember:{
                     auto:'placeholders',
-                    help: "Think about someone who's advice you would value regarding big decisions",
-                    error:'Please fill out this field'
+                    error: "Think about someone who's advice you would value regarding big decisions"
                   },
                   lifeCategory:{
                     auto:'labels',
-                    help: 'Assign this person to one of the 7 Timebug Life Categories',
-                    error:'Please select a Life Category'
+                    error: 'Assign this person to one of the 7 Timebug Life Categories'
                   },
                   interactionFrequency:{
                     auto:'labels',
-                    help: "How often do you interact with this person?",
-                    error:'Please select a value'
+                    error: "How often do you interact with this person?"
                   }
                 }
 

@@ -333,3 +333,17 @@ export const TakeEnergizers = t.enums.of([
           'Frequently',
           'Daily'
           ],'TakeEnergizers')    
+
+
+export const oneToTenScale = t.enums.of([
+          '1',
+          '2',
+          '3',
+          '4',
+          '5',
+          '6',
+          '7',
+          '8',
+          '9',
+          '10'
+            ],'oneToTenScale')    

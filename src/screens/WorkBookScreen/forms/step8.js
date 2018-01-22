@@ -1,5 +1,5 @@
 import t from "../components/templates";
-import { ExerciseTypes, TimesOfDay, MeditationTypes, AloneOrOthers } from "./contents";
+import { ExerciseTypes, TimesOfDay, MeditationTypes, AloneOrOthers,oneToTenScale } from "./contents";
 
 export default {
     1: {
@@ -7,42 +7,42 @@ export default {
         id:t.maybe(t.String),
         weekday:t.struct({
           morning:t.struct({
-            physical:t.Number,
-            mental:t.Number,
-            emotional:t.Number
+            physical:oneToTenScale,
+            mental:oneToTenScale,
+            emotional:oneToTenScale
           }),
           afternoon:t.struct({
-            physical:t.Number,
-            mental:t.Number,
-            emotional:t.Number
+            physical:oneToTenScale,
+            mental:oneToTenScale,
+            emotional:oneToTenScale
           }),
           evening:t.struct({
-            physical:t.Number,
-            mental:t.Number,
-            emotional:t.Number
+            physical:oneToTenScale,
+            mental:oneToTenScale,
+            emotional:oneToTenScale
           })
         }),
         weekend:t.struct({
           morning:t.struct({
-            physical:t.Number,
-            mental:t.Number,
-            emotional:t.Number
+            physical:oneToTenScale,
+            mental:oneToTenScale,
+            emotional:oneToTenScale
           }),
           afternoon:t.struct({
-            physical:t.Number,
-            mental:t.Number,
-            emotional:t.Number
+            physical:oneToTenScale,
+            mental:oneToTenScale,
+            emotional:oneToTenScale
           }),
           evening:t.struct({
-            physical:t.Number,
-            mental:t.Number,
-            emotional:t.Number
+            physical:oneToTenScale,
+            mental:oneToTenScale,
+            emotional:oneToTenScale
           })
         }),
         now:t.struct({
-          physical:t.Number,
-          mental:t.Number,
-          emotional:t.maybe(t.Number)
+          physical:oneToTenScale,
+          mental:oneToTenScale,
+          emotional:oneToTenScale
         })
       }),
       options:{
@@ -56,48 +56,48 @@ export default {
               morning:{
                 fields:{
                   physical:{
-                    auto:'placeholders',
-                    error: 'Please fill out this field.'
+                    label:'Weekday morning: physical',
+                    error: 'What is your typical physical energy level on a weekday morning?'
                   },
                   mental:{
-                    auto:'placeholders',
-                    error: 'Please fill out this field.'
+                    label:'Weekday morning: mental',
+                    eerror: 'What is your typical mental energy level on a weekday morning?'
                   },
                   emotional:{
-                    auto:'placeholders',
-                    error: 'Please fill out this field.'
+                    label:'Weekday morning: emotional',
+                    error: 'What is your typical emotional energy level on a weekday morning?'
                   }
                 }
               },
               afternoon:{
                 fields:{
                   physical:{
-                    auto:'placeholders',
-                    error: 'Please fill out this field.'
+                    label:'Weekday afternoon: physical',
+                    error: 'What is your typical physical energy level on a weekday afternoon?'
                   },
                   mental:{
-                    auto:'placeholders',
-                    error: 'Please fill out this field.'
+                    label:'Weekday afternoon: mental',
+                    eerror: 'What is your typical mental energy level on a weekday afternoon?'
                   },
                   emotional:{
-                    auto:'placeholders',
-                    error: 'Please fill out this field.'
+                    label:'Weekday afternoon: emotional',
+                    error: 'What is your typical emotional energy level on a weekday afternoon?'
                   }
                 }
               },
               evening:{
                 fields:{
                   physical:{
-                    auto:'placeholders',
-                    error: 'Please fill out this field.'
+                    label:'Weekday evening: physical',
+                    error: 'What is your typical physical energy level on a weekday evening?'
                   },
                   mental:{
-                    auto:'placeholders',
-                    error: 'Please fill out this field.'
+                    label:'Weekday evening: mental',
+                    eerror: 'What is your typical mental energy level on a weekday evening?'
                   },
                   emotional:{
-                    auto:'placeholders',
-                    error: 'Please fill out this field.'
+                    label:'Weekday evening: emotional',
+                    error: 'What is your typical emotional energy level on a weekday evening?'
                   }
                 }
               }
@@ -108,48 +108,48 @@ export default {
               morning:{
                 fields:{
                   physical:{
-                    auto:'placeholders',
-                    error: 'Please fill out this field.'
+                    label:'Weekend morning: physical',
+                    error: 'What is your typical physical energy level on a weekend morning?'
                   },
                   mental:{
-                    auto:'placeholders',
-                    error: 'Please fill out this field.'
+                    label:'Weekend morning: mental',
+                    eerror: 'What is your typical mental energy level on a weekend morning?'
                   },
                   emotional:{
-                    auto:'placeholders',
-                    error: 'Please fill out this field.'
+                    label:'Weekend morning: emotional',
+                    error: 'What is your typical emotional energy level on a weekend morning?'
                   }
                 }
               },
               afternoon:{
                 fields:{
                   physical:{
-                    auto:'placeholders',
-                    error: 'Please fill out this field.'
+                    label:'Weekend afternoon: physical',
+                    error: 'What is your typical physical energy level on a weekend afternoon?'
                   },
                   mental:{
-                    auto:'placeholders',
-                    error: 'Please fill out this field.'
+                    label:'Weekend afternoon: mental',
+                    eerror: 'What is your typical mental energy level on a weekend afternoon?'
                   },
                   emotional:{
-                    auto:'placeholders',
-                    error: 'Please fill out this field.'
+                    label:'Weekend afternoon: emotional',
+                    error: 'What is your typical emotional energy level on a weekend afternoon?'
                   }
                 }
               },
               evening:{
                 fields:{
                   physical:{
-                    auto:'placeholders',
-                    error: 'Please fill out this field.'
+                    label:'Weekend evening: physical',
+                    error: 'What is your typical physical energy level on a weekend evening?'
                   },
                   mental:{
-                    auto:'placeholders',
-                    error: 'Please fill out this field.'
+                    label:'Weekend evening: mental',
+                    eerror: 'What is your typical mental energy level on a weekend evening?'
                   },
                   emotional:{
-                    auto:'placeholders',
-                    error: 'Please fill out this field.'
+                    label:'Weekend evening: emotional',
+                    error: 'What is your typical emotional energy level on a weekend evening?'
                   }
                 }
               }
@@ -158,16 +158,16 @@ export default {
           now:{
             fields:{
               physical:{
-                auto:'placeholders',
-                error: 'Please fill out this field.'
+                label:'Right now: physical',
+                error: 'What is your  physical energy level right now?'
               },
               mental:{
-                auto:'placeholders',
-                error: 'Please fill out this field.'
+                label:'Right now: mental',
+                error: 'What is your  mental energy level right now?'
               },
               emotional:{
-                auto:'placeholders',
-                error: 'Please fill out this field.'
+                label:'Right now: emotional',
+                error: 'What is your emotional energy level right now?'
               }
             }
             
@@ -193,7 +193,7 @@ export default {
           label:'Please answer the following questions regarding your typical exercise habits.',
           fields:{
             timesPerWeek: {
-              auto:'labels',
+              label:'How many times per week do you exercise?',
               error:'Please fill out this field.'
             },
             howLong:{
@@ -203,14 +203,14 @@ export default {
             },
             exerciseType:{
               label:'What type of Exercise?',
-              error:'Please select a value.'
+              error:'Please select an exercise type.'
             },
             aloneOrOthers:{
               label:'Alone or with others?',
               error:'Please select a value.'
             },
             timeOfDay:{
-              label:'What time of day?',
+              label:'At what time of day do you generally exercise',
               error:'Please select a value.'
             }
           }
@@ -233,7 +233,7 @@ export default {
               },
               howLong:{
                 auto:'none',
-                label:'For how long?',
+                label:'For how long do you usually meditate?',
                 error:'Please fill out this field.'
               },
               meditationType:{
@@ -245,7 +245,7 @@ export default {
                 error:'Please select a value.'
               },
               timeOfDay:{
-                label:'What time of day?',
+                label:'At what time of day do you generally meditate?',
                 error:'Please select a value.'
               }
             }
