@@ -38,7 +38,9 @@ const populate = (action: PopulateFormAction, state:FormDataState):FormDataState
     data: {
       ...data,
       [ step ]: {
-        ...value
+        [ form ] : {
+          ...value
+        }
       }
     }
   }

@@ -32,7 +32,7 @@ const merge = (stateProps, dispatchProps, ownProps): Props => {
   const buttonMessage = form + 1 === numberOfForms ? 'SUBMIT' : 'NEXT';
   const formData = stateProps.getFormData(step) || {};
   const getModelForForm = (form: number) => ({
-    model: models[form + 1], value: formData[form + 1]
+    model: models[form + 1], value: formData[form]
   })
   const isFetching = !models ? true : stateProps.network > 0
 
