@@ -1,5 +1,5 @@
 import t from "../components/templates";
-import { PaidFairly } from "./contents";
+import { PaidFairly,HoursChanged,HoursPerWeek,OneToTenScale,InternalExternal } from "./contents";
 
 
 export default {
@@ -8,25 +8,25 @@ export default {
     type: t.struct({
         id:t.maybe(t.String),
         salaryGrowth: t.struct({
-          jan2011Salary: t.Number,
-          Dec2015Salary: t.Number
+          lastYearSalary: t.Number,
+          currentSalary: t.Number
         }),
         paidFairly: PaidFairly,
         compensationGoals: t.Boolean,
-        hoursPerWeek: t.Number,
-        hoursChanged: t.String
+        hoursPerWeek: HoursPerWeek,
+        hoursChanged: HoursChanged
     }),
     options: {
-      label: "Take some time to evaluate your salary and compensation over the past 5 years.",
+      label: "Take some time to evaluate your salary and compensation.",
       fields: {
           id:{
               hidden: true
           },
         salaryGrowth: {
-            label:'How has your salary grown(or not) from 01/11 to 12/15(5 full years)?',
+            label:'How has your salary grown(or not) over the past year?',
             fields: {
-                jan2011Salary: {error:'Please fill out this field.'},
-                Dec2015Salary: {error:'Please fill out this field.'}
+                lastYearSalary: {placeholder:"Last year's salary", error:'What was your salary one year ago today?'},
+                currentSalary: {placeholder:"Current salary", error:'What is your current salary?'},
             }
         }, 
         paidFairly: {
@@ -34,15 +34,15 @@ export default {
             error:'Please select a value.'
         }, 
         compensationGoals: {
-            label:'Did you meet whatever compensation goals you had set for 2015, anytime in 2011-2014?'
+            label:'Did you meet whatever compensation goals you had set for this year, anytime in the last few years?'
         }, 
         hoursPerWeek: {
             label:'How many hours do you work on average per week?',
-            error:'Please fill out this field.'
+            error:'Please select how many hours per week.'
         }, 
         hoursChanged: {
-            label:'How have your work week hours changed since 2011?',
-            error:'Please fill out this field.'
+            label:'How have your work week hours changed since last year?',
+            error:'Please select how your work hours have changed.'
 
         }, 
          auto: 'none'
@@ -56,19 +56,20 @@ export default {
         },
   2: {
     type: t.struct({
-        fulfillment: t.Number,
+        fulfillment: OneToTenScale,
         pastFiveYears:
             t.struct({
-                twentyEleven: t.Number,
-                twentyTwelve: t.Number,
-                twentyThirteen: t.Number,
-                twentyFourteen: t.Number,
-                twentyFifteen: t.Number
+                yearOne: OneToTenScale,
+                yearTwo: OneToTenScale,
+                yearThree: OneToTenScale,
+                yearFour: OneToTenScale,
+                yearFive: OneToTenScale
             }),
-        motivationLevel: t.Number,
+        motivationLevel: OneToTenScale,
         meaningfulAchievements: t.list(
             t.struct({
                 meaningfulAchievement: t.String,
+                internalExternal: InternalExternal,
                 whatChanged: t.String
              })
         )
@@ -78,37 +79,37 @@ export default {
       label: "Take some time to evaluate your fulfillment with what you are doing in the workplace using a 10pt scale(1=hate it vs 10=love it, and 1=not motivated vs 10=highly motivated)",
       fields: {
         fulfillment: {
-          auto:'none',
-          label:'How fulfilling is your work?'
+          error:'Please select a value',
+          label:'How fulfilling is your work on a scale of 1 to 10?'
         },
         pastFiveYears: {
           auto:'none',
-          label:'How did you feel about your work over the past 5 years?',
+          label:'On a scale of 1 to 10, how did you feel about your work over the past 5 years?',
           fields: {
-          twentyEleven: {
-              placeholder:'2011',
+          yearOne: {
+              placeholder:'2013',
               error:'Please fill out this field.'
           },
-          twentyTwelve: {
-            placeholder:'2012',
+          yearTwo: {
+            placeholder:'2014',
             error:'Please fill out this field.'
           },
-          twentyThirteen: {
-            placeholder:'2013',
+          yearThree: {
+            placeholder:'2015',
             error:'Please fill out this field.'
           },
-          twentyFourteen: {
-              placeholder:'2014',
+          yearFour: {
+              placeholder:'2016',
               error:'Please fill out this field.'
           },
-          twentyFifteen: {
-              placeholder:'2015',
+          yearFive: {
+              placeholder:'2017',
               error:'Please fill out this field.'
           }
         }
         },
         motivationLevel: {
-            label: 'What is your motivation level at work right now?',
+            label: 'What is your motivation level at work right now?(On a scale of 1 to 10).',
             error:'Please fill out this field.'
         },
         meaningfulAchievements : {
@@ -117,12 +118,17 @@ export default {
                 fields: {
                     meaningfulAchievement: {
                         placeholder: 'Meaningful Achievement',
-                        error:'Please fill out this field.'
+                        error:'Describe the achievement in a few words, not more'
 
                     },
                     whatChanged: {
-                        placeholder: 'What changed, if anything?',
-                        error:'Please fill out this field.'
+                        placeholder: 'What Changed?',
+                        error:'Describe the change in a sentence or two.'
+
+                    },
+                    internalExternal: {
+                        label: 'How would you describe the change?',
+                        error:'Please select a value.'
 
                     }
 

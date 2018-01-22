@@ -368,3 +368,37 @@ export const PercentCompleted = t.enums.of([
               '80-90%',
               '90-100%'
               ],'PercentCompleted')  
+ 
+export const TimeShift = t.enums.of([
+                'A lot less free time',
+                'A little less free time',
+                'No signifcant change',
+                'A little more free time',
+                'A lot more free time'
+                ],'TimeShift')  
+
+
+export const HoursPerWeek = t.enums.of([
+               'Less than 20',
+               '20-30',
+               '30-40',
+               '40-50',
+               'More Than 50'
+                   ],'HoursPerWeek') 
+                   
+                   
+
+export const HoursChanged = t.enums.of([
+  'Decreased by more than 10 hours',
+  'Decreased by 0-10 hours',
+  'No significant change',
+  'Increased by 0-10 hours',
+  'Increased by more than 10 hours'
+      ],'HoursChanged') 
+      
+      
+export const InternalExternal = t.enums.of([
+        'Internal',
+        'External',
+        'Both'
+            ],'InternalExternal')  

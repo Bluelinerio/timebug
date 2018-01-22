@@ -38,7 +38,7 @@ export default {
                     error: 'How often do you interact with this person?'
                   },
                   why: {
-                    label:'Why?'
+                    label:'Why?',
                     error:'Why would this person make a good role model for you?'
                   }
                 }

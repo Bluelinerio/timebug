@@ -1,5 +1,5 @@
 import t from "../components/templates";
-import { MajorLifeEvents } from "./contents";
+import { MajorLifeEvents, TimeShift } from "./contents";
 
 export default {
 
@@ -9,7 +9,7 @@ export default {
       field: t.list(
         t.struct({
           majorLifeEvent: MajorLifeEvents,
-          timeShift: t.String,
+          timeShift: TimeShift
         })
       )
     }),
@@ -24,13 +24,12 @@ export default {
             fields: {
 
               timeShift: {
-                placeholder: 'How did this shift your time?',
-                error:'Please fill out this field.'
+                error:'How did the event shift your time?'
               },
               majorLifeEvent: {
                 label: 'Major Life Event',
                 error:'Please select a Major Life Event'
-              },
+              }
 
 
             },
