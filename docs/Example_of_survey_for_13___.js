@@ -23,5 +23,16 @@
     1. How would you evaluate ${name}s relationship their physical health?(Great, Good, Ok, Fair, Poor)
     2. Do you think ${name} spends enough time exercising? (Too much time, A little too much, Just the right amount, Could use a little more, Could use a lot more)(Too much time, A little too much, Just the right amount, Could use a little more, Could use a lot more)
     3. How would you evaluate ${name}s diet?(Great, Good, Ok, Fair, Poor)
-    4. Would you make any reccomendations would you make for ${name} regaring diet? If so, what?
-    5. Would you make any reccomendations for ${name} regaring physical exercise? If so, what?
+    4. In your opinion, does ${name} deal well with stress?
+    5. Would you make any reccomendations would you make for ${name} regaring diet? If so, what?
+    6. Would you make any reccomendations for ${name} regaring physical exercise? If so, what?
+    7. Would you make any reccomendations for ${name} regaring emotional well-being? If so, what?
+17. Relationships
+    1. Do you think ${name} is too hard on themselves?(yes/no)
+    1a. Care to elaborate?
+    2. Do you think ${name} is disciplined and hard working?(yes/no)
+    2a. Care to elaborate?
+    3. Can you elaborate on a moment in your relationship with ${name} where you felt very supported?
+    4. Has there been a time in your relationship with ${name} where you felt your needs were ignored?
+    5. Name one goal you have for your relationship with ${name} over the next year.
+

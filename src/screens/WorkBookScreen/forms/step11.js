@@ -1,5 +1,5 @@
 import t from "../components/templates";
-import { LifeCategory, InteractionFrequency, GoalYears, UseWearableTech, DescribeProcess } from "./contents";
+import { LifeCategory, InteractionFrequency, GoalYears, PercentCompleted, OneToTenScale, UseWearableTech, DescribeProcess } from "./contents";
 
 export default {
 
@@ -9,15 +9,15 @@ export default {
 			field: t.list(
 				t.struct({
 					goal: t.String,
-					percentGoalCompleted: t.Number,
-					satisfactionLevel: t.Number,
-					investedTimeEnergy: t.Number,
-					requiredTimeEnergy: t.String
+					percentCompleted: PercentCompleted,
+					satisfactionLevel: OneToTenScale,
+					investedTimeEnergy: OneToTenScale,
+					requiredTimeEnergy: OneToTenScale
 				})
 			)
 		}),
 		options: {
-			label: "Gather all of your previous goal data, including time spent and key achievements over the past 5 years. You can start with 2015 if you feel overwhelmed assessing all 5 years.",					
+			label: "Gather all of your previous goal data, including time spent and key achievements over the past 5 years. You can start with last year if you feel overwhelmed assessing all 5 years.",					
 			fields: {
 				id: {
 					hidden: true
@@ -27,24 +27,23 @@ export default {
 						fields: {
 							goal: {
 								placeholder: 'Goal',
-								error:'Please fill out this field.'
+								error:'Please enter a goal.'
 
 							},
-							percentGoalCompleted: {
-								placeholder: '% of Goal Completed',
-								error:'Please fill out this field.'
+							percentCompleted: {
+								error:'How far along are you to completing this goal?'
 							},
 							satisfactionLevel: {
 								placeholder: 'Satisfaction Level(1-10 scale)',
-								error:'Please fill out this field.'
+								error:'How satisfied are you with your progress?'
 							},
 							investedTimeEnergy: {
 								placeholder: 'Invested Time/Energy(1-10 scale)',
-								error:'Please fill out this field.'
+								error:'How much time and energy have you invested?'
 							},
 							requiredTimeEnergy: {
 								placeholder: 'Required Time/Energy',
-								error:'Please fill out this field.'
+								error:'How much time and energy is required?'
 							},
 
 						},
@@ -82,7 +81,7 @@ export default {
 			fields: {
 					describeProcess: {
 						label: 'How do you describe the process?(Select one)',
-						error:'Please fill out this field.'
+						error:'Please select a value.'
 					},			
 					goalYears: {
 						label: 'Have you written down your goals annually?(Check each year that you have done this for)',
@@ -118,15 +117,14 @@ export default {
 		}),
 		options: {
 			auto: 'none',
-			type: 'textarea',
 			disableOrder: true,
 			fields: {
 				id: {
 					hidden: true
 				},
 				description: {
-					label: "In a few sentences, and descriptive key words, assess how your life has been, and how you have done over the past 5  years.",
-					error:'Please fill out this field.'
+					label: "In a few sentences, and descriptive key words, assess how your life has been, and how you have done over the past 5 years.",
+					error:'This will help you to reflect on your strongest areas, and areas where improvement is needed.'
 				}
 			}
 		}

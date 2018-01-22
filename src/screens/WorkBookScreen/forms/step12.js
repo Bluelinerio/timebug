@@ -29,7 +29,7 @@ export default {
               },
               majorLifeEvent: {
                 label: 'Major Life Event',
-                error:'Please select a value'
+                error:'Please select a Major Life Event'
               },
 
 

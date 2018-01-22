@@ -335,7 +335,7 @@ export const TakeEnergizers = t.enums.of([
           ],'TakeEnergizers')    
 
 
-export const oneToTenScale = t.enums.of([
+export const OneToTenScale = t.enums.of([
           '1',
           '2',
           '3',
@@ -346,4 +346,25 @@ export const oneToTenScale = t.enums.of([
           '8',
           '9',
           '10'
-            ],'oneToTenScale')    
+            ],'OneToTenScale')  
+            
+export const StrengthOfI = t.enums.of([        
+              'Very Strong',
+              'Strong',
+              'Mid Line',
+              'Weak',
+              'Very Weak'
+            ],'StrengthOfI')
+
+export const PercentCompleted = t.enums.of([
+              '0-10%',
+              '10-20%',
+              '20-30%',
+              '30-40%',
+              '40-50%',
+              '50-60%',
+              '60-70%',
+              '70-80%',
+              '80-90%',
+              '90-100%'
+              ],'PercentCompleted')  

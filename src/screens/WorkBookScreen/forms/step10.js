@@ -1,5 +1,5 @@
 import t from "../components/templates";
-import { LifeCategory, InteractionFrequency } from "./contents";
+import { LifeCategory, InteractionFrequency,StrengthOfI } from "./contents";
 
 export default {
 
@@ -9,19 +9,13 @@ export default {
       field: t.list(
         t.struct({
           i: t.String,
-          strengthOfI: t.enums.of([
-            'Very Strong',
-            'Strong',
-            'Mid Line',
-            'Weak',
-            'Very Weak'
-          ]),
-          whatIWouldSay: t.maybe(t.String)
+          strengthOfI: StrengthOfI,
+          whatIWouldSay: t.String
         })
       )
     }),
     options: {
-      label: "Identify 5-10 different I's.\n How strong each I is for you?\n(on a scale from strongest to weakest). \nWhat I would say in a few words?",
+      label: "Identify 5-10 different I's.\n How strong is each I for you?\n(on a scale from strongest to weakest). \nWhat I would say in a few words?",
       fields: {
         id: {
           hidden: true
@@ -35,7 +29,7 @@ export default {
                 error: 'For example \'I procrastinate\'.'
               },
               strengthOfI: {
-                placeholder: 'Strength Of "I" (scale of 1-10)',
+                placeholder: 'Strength Of "I"',
                 error: 'How strong is it for you?.'
               },
               whatIWouldSay: {
@@ -82,10 +76,10 @@ export default {
           item: {
             fields: {
               goal: {
-                error:'Please fill out this field.'
+                error:'Please enter a goal'
               },
               egoInfluence: {
-                error:'Please fill out this field.'
+                error:'How did a particular ego aspect help or hinder you in pursuit of this goal?'
               }
             }
           }
