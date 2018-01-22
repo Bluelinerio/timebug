@@ -136,9 +136,26 @@ The second option is the correct option for continuous integration systems like 
 ```
 ----
 
-Grammar mistakes:
+react-native-svg:
+----
+ Added and linked. Upped 
 
-- Emotion instead of emotions at the last form in step 1
-- All initials uppercased at the title of step 2
-- Life catego- ries at step 2 description
-- Talking t oabout your goals and ... description step 4
+``` diff
+diff --git a/android/app/build.gradle b/android/app/build.gradle
+index 5720c4b..032bc9f 100755
+--- a/android/app/build.gradle
++++ b/android/app/build.gradle
+@@ -83,13 +83,13 @@ def enableSeparateBuildPerCPUArchitecture = false def enableProguardInReleaseBuilds = false
+ android {
+-    compileSdkVersion 23
++    compileSdkVersion 27
+     buildToolsVersion "23.0.1"
+ 
+     defaultConfig {
+         applicationId "com.timebug.lifevision"
+         minSdkVersion 19
+-        targetSdkVersion 19
++        targetSdkVersion 27
+         versionCode 21
+```
+

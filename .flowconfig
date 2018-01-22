@@ -18,9 +18,13 @@
 
 ; Ignore duplicate module providers
 .*/node_modules/fbemitter/lib/*
+; Ignore the Dangerfile
+<PROJECT_ROOT>/node_modules/react-native/danger/dangerfile.js
 
 ; Ignore misbehaving dev-dependencies
 .*/node_modules/xdl/build/*
+; Ignore Fbemitter
+<PROJECT_ROOT>/node_modules/fbemitter/.*
 .*/node_modules/reqwest/tests/*
 
 ; Ignore missing expo-sdk dependencies (temporarily)

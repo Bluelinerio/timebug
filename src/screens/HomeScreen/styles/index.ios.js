@@ -86,7 +86,7 @@ export default StyleSheet.create({
     width: 43,
     borderRadius: 43 / 2
 	},
-	bannerHeaderTitle: iOSUIKit.largeTitleEmphasized,
+	bannerHeaderTitle: iOSUIKit.largeTitleEmphasizedObject,
 	banner: {
 		flexDirection: 'row',
 		alignItems: 'center',

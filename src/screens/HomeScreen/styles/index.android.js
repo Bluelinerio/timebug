@@ -26,7 +26,7 @@ export const colors = {
 	...topColors
 }
 
-const obj = {
+export default StyleSheet.create({
 	container: {
 		flex: 1,
 		backgroundColor: colors.background1
@@ -86,7 +86,7 @@ const obj = {
     width: 43,
     borderRadius: 43 / 2
 	},
-	bannerHeaderTitle: iOSUIKit.largeTitleEmphasized,
+	bannerHeaderTitle: iOSUIKit.largeTitleEmphasizedObject,
 	banner: {
 		flexDirection: 'row',
 		alignItems: 'center',
@@ -108,5 +108,4 @@ const obj = {
 		textAlign: 'left',
 		backgroundColor: 'transparent'
 	}
-}
-export default StyleSheet.create(obj);
+})

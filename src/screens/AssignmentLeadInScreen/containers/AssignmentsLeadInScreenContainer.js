@@ -3,7 +3,6 @@
 import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
-import theme, { styles } from 'react-native-theme';
 import AssignmentsPages from '../components/AssignmentsPages';
 import type { Props } from '../components/AssignmentsPages';
 import type { Assignment } from '../../../services/cms';

@@ -1,7 +1,6 @@
 import React, { Children } from 'react';
 import { Animated, KeyboardAvoidingView, View } from 'react-native';
 import { Pages } from 'react-native-pages';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 export default class FormPages extends Pages {
   componentWillReceiveProps(props) {
