@@ -83,13 +83,13 @@ def enableSeparateBuildPerCPUArchitecture = false
 def enableProguardInReleaseBuilds = false
 
 android {
-    compileSdkVersion 23
+    compileSdkVersion 27
     buildToolsVersion "23.0.1"
 
     defaultConfig {
         applicationId "com.timebug.lifevision"
         minSdkVersion 19
-        targetSdkVersion 19
+        targetSdkVersion 27
         versionCode 21
         
         //REQUIRED FOR DETOX DO NOT REMOVE
@@ -135,6 +135,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-svg')
     compile project(':react-native-fbsdk')
     compile project(':react-native-vector-icons')
     compile fileTree(dir: "libs", include: ["*.jar"])
