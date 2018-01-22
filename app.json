@@ -1,16 +1,16 @@
 {
   "expo": {
-    "name": "2020",
+    "name": "Lifevision",
     "version": "1.0.0",
-    "slug": "2020",
+    "slug": "Lifevision",
     "sdkVersion": "20.0.0",
     "ios": {
-      "bundleIdentifier": "com.tunegov.2020",
-      "publishBundlePath": "ios/2020/Supporting/shell-app.bundle",
-      "publishManifestPath": "ios/2020/Supporting/shell-app-manifest.json"
+      "bundleIdentifier": "com.tunegov.Lifevision",
+      "publishBundlePath": "ios/Lifevision/Supporting/shell-app.bundle",
+      "publishManifestPath": "ios/Lifevision/Supporting/shell-app-manifest.json"
     },
     "android": {
-      "package": "com.tunegov.2020"
+      "package": "com.tunegov.Lifevision"
     },
     "isDetached": true,
     "detach": {

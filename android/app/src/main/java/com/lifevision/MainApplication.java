@@ -1,4 +1,4 @@
-package com.timebug.lifevision;
+package com.lifevision;
 
 import android.app.Application;
 

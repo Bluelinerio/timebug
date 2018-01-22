@@ -87,7 +87,7 @@ android {
     buildToolsVersion "23.0.1"
 
     defaultConfig {
-        applicationId "com.timebug.lifevision"
+        applicationId "com.lifevision"
         minSdkVersion 19
         targetSdkVersion 27
         versionCode 21
