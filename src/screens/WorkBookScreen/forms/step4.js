@@ -26,14 +26,17 @@ export default {
                 fields:{
                   boardMember:{
                     auto:'placeholders',
+                    help: "Think about someone who's advice you would value regarding big decisions",
                     error:'Please fill out this field'
                   },
                   lifeCategory:{
                     auto:'labels',
-                    error:'Please select a value'
+                    help: 'Assign this person to one of the 7 Timebug Life Categories',
+                    error:'Please select a Life Category'
                   },
                   interactionFrequency:{
                     auto:'labels',
+                    help: "How often do you interact with this person?",
                     error:'Please select a value'
                   }
                 }
@@ -77,10 +80,10 @@ export default {
               item: {
                 fields: {
                   supportGroup: {
-                    error: "Please fill out this field."
+                    error: "Please enter the name of a support group"
                   },
                     lifeCategory:{
-                      error: "Please select a value."
+                      error: "Please select a Life Category."
                     }
                 }
               }

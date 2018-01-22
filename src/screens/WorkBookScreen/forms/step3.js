@@ -28,9 +28,10 @@ export default {
           item: {
             fields: {
               strengthsSelfView: {
-                error: "Please select a value."
+                error: "Please select a charachter strength."
               },
                 resultingGoalAchieved:{
+                  help: "What is a goal that you achieved as a result of this strength of yours?",
                   error: "Please fill out this field."
                 }
             }
@@ -66,9 +67,10 @@ export default {
           item: {
             fields: {
               weaknessSelfView: {
-                error: "Please select a value."
+                error: "Please select a charachter weakness."
               },
               goalNotReached:{
+                  help: "What was one of your goals that you were not able to achieve as a result?",
                   error: "Please fill out this field."
                 }
             }
@@ -84,19 +86,20 @@ export default {
         weaknessFriendView: t.list(CharachterWeaknesses)
       }),
       options: {
-        label: "List 3-5 Charachter Strengths and Weaknesses from a friend or family member's point of view.",
+        label: "List 3-5 Charachter Strengths and Weaknesses from a friend or family member's point of view. You may directly engage someone through your TEAM dashboard.",
         fields: {
           friendsName: {
             error: "Please fill out this field.",
-            label: "Write down your friend or family member's name."
+            label: "Write down your friend or family member's name.",
+            help: "The best person to help you with this exercise is someone who you trust to me completely honest without being judgemental."
           },
           strengthFriendView: {
             label:"Select 3-5 charachter strengths from your friend or family member's point of view.",
-            error:"Please select a value."
+            error:"Please select a charachter strength."
         },
           weaknessFriendView: {
             label:"Select 3-5 charachter weaknesses from your friend or family member's point of view.",
-            error:"Please select a value.",
+            error:"Please select a charachter weakness.",
             config: {
               minLines:3,
             },

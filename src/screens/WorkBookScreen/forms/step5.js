@@ -19,11 +19,10 @@ export default {
               hidden:true
             },
             field: {
-              error: 'Without an email address how are you going to reset your password when you forget it?',
               label: "Make a list of 10 recent goals and classify them according to the 7 Goal Types",              
               item:{
                 goal:{auto:'labels', error:'Please fill out this field'},
-                goalTypes:{auto:'labels', error:'Please select a value'}
+                goalTypes:{auto:'labels', error:'Please select a Goal Type'}
               },
               auto:'placeholders',
               disableOrder: true,

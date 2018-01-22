@@ -30,9 +30,11 @@ export default {
           item: {
             fields: {
               category: {
-                error: "Please fill out this field."
+                error: "Please select a Life category."
               },
                 hours:{
+                  help: "How many hours out of a 168 hour week do you spend on this category?",
+                  
                   error: "Please fill out this field."
                 }
             }
@@ -70,10 +72,11 @@ export default {
           item: {
             fields: {
               category: {
-                error: "Please fill out this field."
+                error: "Please select a Life category."
               },
                 hours:{
-                  error: "Please fill out this field."
+                  error: "Please fill out this field.",
+                  help: "How many hours out of a 168 hour week would you ideally spend on this category?",
                 }
             }
           }
@@ -103,10 +106,12 @@ export default {
           item: {
             fields: {
               thing: {
+                help: "What's something you would like to do less of in the coming years?",
                 error: "Please fill out this field."
               },
                 areaOfLife:{
-                  error: "Please fill out this field."
+                  help: "What Timebug Life Category does this thing fit into?",    
+                  error: "Please select an Area of Life"
                 }
             }
           }
@@ -137,10 +142,12 @@ export default {
           item: {
             fields: {
               thing: {
+                help: "What's something you would like to do less of in the coming years?",
                 error: "Please fill out this field."
               },
                 areaOfLife:{
-                  error: "Please fill out this field."
+                  help: "What Timebug Life Category does this thing fit into?",    
+                  error: "Please select an Area of Life"
                 }
             }
           }

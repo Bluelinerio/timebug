@@ -41,16 +41,16 @@ export default {
               },
               item: {
                 fields: {
-                  significantOther: {error: 'Please fill out this field.'},
-                  goalOne:{error: 'Please fill out this field.'},
-                  goalOneSupportPlan: {error: 'Please fill out this field.'},
-                  goalOneTimeRequired: {error: 'Please fill out this field.'},
-                  goalTwo:{error: 'Please fill out this field.'},
-                  goalTwoSupportPlan: {error: 'Please fill out this field.'},
-                  goalTwoTimeRequired: {error: 'Please fill out this field.'},
-                  goalThree:{error: 'Please fill out this field.'},
-                  goalThreeSupportPlan: {error: 'Please fill out this field.'},
-                  goalThreeTimeRequired: {error: 'Please fill out this field.'}
+                  significantOther: {help: 'Choose someone in your life who you want to, and are able to help.', error: 'Please enter a name.'},
+                  goalOne:{error: 'Please enter a goal.'},
+                  goalOneSupportPlan: {help:'How will you help this goal to be achieved?', error: 'Please fill out this field.'},
+                  goalOneTimeRequired: {help:'How much time will it require on your end?', error: 'Please fill out this field.'},
+                  goalTwo:{error: 'Please enter a goal.'},
+                  goalTwoSupportPlan: {help:'How will you help this goal to be achieved?',error: 'Please fill out this field.'},
+                  goalTwoTimeRequired: {error: 'How much time will it require on your end?'},
+                  goalThree:{error: 'Please enter a goal.'},
+                  goalThreeSupportPlan: {help:'How will you help this goal to be achieved?',error: 'Please fill out this field.'},
+                  goalThreeTimeRequired: {error: 'How much time will it require on your end?'}
                 }
               }
             },
