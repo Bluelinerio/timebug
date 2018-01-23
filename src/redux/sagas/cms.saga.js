@@ -7,12 +7,13 @@ import { incrementRequestCount, decrementRequestCount } from '../actions/network
 import { FETCH_CMS } from '../actions/cms.actions'
 import { refreshCMS, testContentFromCMS } from '../../services/contentful';
 import networkState from '../../utils/networkState'
-import { Colors, Step } from '../../services/cms'
+import type { Colors, Step } from '../../services/cms'
 import { request } from '../../Modules/redux-saga-request'
 
 function * _fetchCms() {
 	if(__DEV__) {
-		return yield request(FETCH_CMS, refreshCMS.then(testContentFromCMS))
+		const cms = yield request(FETCH_CMS, () => refreshCMS().then(testContentFromCMS) )
+		
 	}
 	return yield request(FETCH_CMS, refreshCMS)
 }
