@@ -1,4 +1,6 @@
 import t from "../components/templates";
+import { TimeSpentMonth, TimeChanged } from "./contents";
+
 
 
 export default {
@@ -8,8 +10,8 @@ export default {
       personalAimsAndHobbies:t.list(
         t.struct({
           personalAimHobby: t.String,
-          timeSpentMonth: t.String,
-          timeChange: t.String,
+          timeSpentMonth: TimeSpentMonth,
+          timeChanged: TimeChanged,
           whatAchieved: t.String,
           activityFeelings: t.String,
           aloneOrPartner: t.String
@@ -17,7 +19,7 @@ export default {
       )      
     }),
     options:{
-      label: 'Gather all of your previous goal data, including time spent, and key achievements ove rthe past 5 years. You can start with 2015 if you feel overwhelmed assesing all 5 years.',
+      label: 'Gather all of your previous goal data, including time spent, and key achievements over the past 5 years. You can start with 2015 if you feel overwhelmed assesing all 5 years.',
       fields:{
         id: {
           hidden: true
@@ -28,18 +30,18 @@ export default {
             fields:{
               personalAimHobby: {
                 label:'Personal Aim/Hobby',
-                error:'Please fill out this field'
+                error:'Please add a hobby'
               },
               timeSpentMonth: {
-                label:'Est. time spent each month',
-                error:'Please fill out this field'
+                label:'Estimated time spent each month',
+                error:'Please select a value'
               },
-              timeChange: {
-                label:'How has time increased/decreased since 2011?',
-                error:'Please fill out this field'
+              timeChanged: {
+                label:'How has time spent increased/decreased since last year?',
+                error:'Please select a value'
               },
               whatAchieved: {
-                label: 'What have you achieved in this area since 2011?',
+                label: 'What have you achieved in this area since last year?',
                 error:'Please fill out this field'
               },
               activityFeelings: {
@@ -71,11 +73,11 @@ export default {
       fields: {
         giveUp: {
           label: '2A)Which of these hobbies, if any, would you be willing to give up if some huge new priority came along, and required more of your time?',
-          error:'Please fill out this field'
+          error:'Please enter a hobby'
         },
         notGiveUp: {
           label: '2B)Which would you NOT give up under (almost)any circumstance?',
-          error:'Please fill out this field'
+          error:'Please enter a hobby'
         }
       }
 
@@ -98,11 +100,11 @@ export default {
             fields:{
               personalAimHobby:{
                 placeholder: 'Personal Aim/Hobby',
-                error:'Please fill out this field'
+                error:'Please add a hobby'
               },
               why: {
                 placeholder: 'Why?',
-                error:'Please fill out this field'
+                error:'Why did you have trouble finding time for this hobby?'
               }
             }
           }

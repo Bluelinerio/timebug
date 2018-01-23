@@ -1,5 +1,5 @@
 import t from "../components/templates";
-import { PaidFairly,HoursChanged,HoursPerWeek,OneToTenScale,InternalExternal } from "./contents";
+import { PaidFairly,TimeChanged,HoursPerWeek,OneToTenScale,InternalExternal } from "./contents";
 
 
 export default {
@@ -14,7 +14,7 @@ export default {
         paidFairly: PaidFairly,
         compensationGoals: t.Boolean,
         hoursPerWeek: HoursPerWeek,
-        hoursChanged: HoursChanged
+        timeChanged: TimeChanged
     }),
     options: {
       label: "Take some time to evaluate your salary and compensation.",
@@ -40,7 +40,7 @@ export default {
             label:'How many hours do you work on average per week?',
             error:'Please select how many hours per week.'
         }, 
-        hoursChanged: {
+        timeChanged: {
             label:'How have your work week hours changed since last year?',
             error:'Please select how your work hours have changed.'
 

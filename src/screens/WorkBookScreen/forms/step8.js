@@ -1,5 +1,5 @@
 import t from "../components/templates";
-import { ExerciseTypes, TimesOfDay, MeditationTypes, AloneOrOthers,oneToTenScale } from "./contents";
+import { ExerciseTypes, TimesOfDay, MeditationTypes, AloneOrOthers,OneToTenScale } from "./contents";
 
 export default {
     1: {
@@ -7,42 +7,42 @@ export default {
         id:t.maybe(t.String),
         weekday:t.struct({
           morning:t.struct({
-            physical:oneToTenScale,
-            mental:oneToTenScale,
-            emotional:oneToTenScale
+            physical:OneToTenScale,
+            mental:OneToTenScale,
+            emotional:OneToTenScale
           }),
           afternoon:t.struct({
-            physical:oneToTenScale,
-            mental:oneToTenScale,
-            emotional:oneToTenScale
+            physical:OneToTenScale,
+            mental:OneToTenScale,
+            emotional:OneToTenScale
           }),
           evening:t.struct({
-            physical:oneToTenScale,
-            mental:oneToTenScale,
-            emotional:oneToTenScale
+            physical:OneToTenScale,
+            mental:OneToTenScale,
+            emotional:OneToTenScale
           })
         }),
         weekend:t.struct({
           morning:t.struct({
-            physical:oneToTenScale,
-            mental:oneToTenScale,
-            emotional:oneToTenScale
+            physical:OneToTenScale,
+            mental:OneToTenScale,
+            emotional:OneToTenScale
           }),
           afternoon:t.struct({
-            physical:oneToTenScale,
-            mental:oneToTenScale,
-            emotional:oneToTenScale
+            physical:OneToTenScale,
+            mental:OneToTenScale,
+            emotional:OneToTenScale
           }),
           evening:t.struct({
-            physical:oneToTenScale,
-            mental:oneToTenScale,
-            emotional:oneToTenScale
+            physical:OneToTenScale,
+            mental:OneToTenScale,
+            emotional:OneToTenScale
           })
         }),
         now:t.struct({
-          physical:oneToTenScale,
-          mental:oneToTenScale,
-          emotional:oneToTenScale
+          physical:OneToTenScale,
+          mental:OneToTenScale,
+          emotional:OneToTenScale
         })
       }),
       options:{

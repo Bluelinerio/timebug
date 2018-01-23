@@ -388,13 +388,13 @@ export const HoursPerWeek = t.enums.of([
                    
                    
 
-export const HoursChanged = t.enums.of([
+export const TimeChanged = t.enums.of([
   'Decreased by more than 10 hours',
   'Decreased by 0-10 hours',
   'No significant change',
   'Increased by 0-10 hours',
   'Increased by more than 10 hours'
-      ],'HoursChanged') 
+      ],'TimeChanged') 
       
       
 export const InternalExternal = t.enums.of([
@@ -402,3 +402,24 @@ export const InternalExternal = t.enums.of([
         'External',
         'Both'
             ],'InternalExternal')  
+
+      
+ export const TimeSpentMonth = t.enums.of([
+        'Less than an hour',
+        '1-3 hours',
+        '3-6 hours',
+        '6-10 hours',
+        'More than 10 hours'
+            ],'TimeSpentMonth')  
+
+
+export const IsSleepEnough = t.enums.of([
+         'I get enough sleep',
+         'I need another hour per night',
+         'I need another two hours per night',
+         'I need another three hours per night',
+         'I need another four hours per night'
+           ],'IsSleepEnough')  
+
+            
+            

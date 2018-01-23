@@ -10,7 +10,7 @@ export default {
       othersView: t.maybe(t.Boolean)
     }),
     options: {
-      label: "Let's do some work about your relationship with money...",
+      label: "Let's do some work regarding your relationship with money...",
       fields: {
         id: {
           hidden: true
@@ -24,7 +24,7 @@ export default {
           error: 'Even one or two words will work...'
         },
         othersView: {
-          label: "How do others perceive your relationship to money can be help you work through it. Would you like to try engage someone with that questions?",
+          label: "Knowing how others perceive your relationship with money could be helpful. Would you like to try engage someone to find out?",
         }
       }
     },
@@ -51,11 +51,11 @@ export default {
           error:'Choose one'
         },
         aYearAgo: {
-          label: "What was your credit score same time last year?",
+          label: "What was your credit score one year ago today?",
           error:'Choose one'
         },
         aYearFromNow: {
-          label: "What credit would you like to have same time next year?",
+          label: "What credit would you like to have one year in the future?",
           error:'Choose one'
         },
         change: {
@@ -63,7 +63,7 @@ export default {
           error:'Choose one'
         },
         effort: {
-          label: "Estimate the kind of effort to make this change a reaclity",
+          label: "Estimate the kind of effort to make this change a reality",
           error:'Choose one'
         },
       }
@@ -78,11 +78,11 @@ export default {
       label: "The state of Successes 🎊 and Failures 💩 in my Financials",
       fields: {
         bestAchievement: {
-          label: "🎊\n\nWhat is your biggest financial achievement the past 5 years?",
+          label: "🎊\n\nWhat was your biggest financial achievement the past 5 years?",
           error: 'Write a sentence or two describing your biggest success'
         },
         biggestDissapointment: {
-          label: "💩\n\nWhat is your biggest dissapointment over the past 5 years?",
+          label: "💩\n\nWhat was your biggest dissapointment over the past 5 years?",
           error: 'Can you sum it up in a word or two?'
         }
       }
@@ -207,7 +207,7 @@ export default {
                 item: {
                   fields: {
                     expense: {
-                      error:'Please fill out this field.'
+                      error:'Please enter a non-discretionary expenses.'
                     }
                   }
                 }
@@ -216,7 +216,7 @@ export default {
                 item: {
                   fields: {
                     expense: {
-                      error:'Please fill out this field.'
+                      error:'Please enter a discretionary expense'
                     }
                   }
                 }
@@ -228,8 +228,7 @@ export default {
           liquidAssets: {
             item: {
               fields: {
-                liquidAsset: {
-                  error:'Please fill out this field.'
+                liquidAsset: 'Please enter your liquid assets.'
                 }
               }
             }
@@ -238,7 +237,7 @@ export default {
             item: {
               fields: {
                 property: {
-                  error:'Please fill out this field.'
+                  error:'Please enter a property'
                 }
               }
             }
@@ -251,7 +250,7 @@ export default {
         item: {
           fields: {
             shortTermDebt: {
-              error:'Please fill out this field.'
+              error:'Please enter a short term debt.'
             }
           }
         }
@@ -260,7 +259,7 @@ export default {
         item: {
           fields: {
             longTermDebt: {
-              error:'Please fill out this field.'
+              error:'Please enter a long term debt.'
             }
           }
         }
@@ -273,7 +272,7 @@ profitLossStatement: {
       item: {
         fields: {
           income: {
-            error:'Please fill out this field.'
+            error:'Please enter an income.'
           }
         }
       }
@@ -282,7 +281,7 @@ profitLossStatement: {
       item: {
         fields: {
           savingsOrInvestment: {
-            error:'Please fill out this field.'
+            error:'Please enter a savings or investment.'
           }
         }
       }
@@ -291,5 +290,4 @@ profitLossStatement: {
 }
     }
   }
-}
 };
