@@ -1,5 +1,5 @@
 import t from "../components/templates";
-import { LifeCategory,CharachterStrengths } from "./contents";
+import { LifeCategory,CharachterStrengths, PercentSelector,OneToTenScale } from "./contents";
 
 export default {
     1:{ 
@@ -8,8 +8,8 @@ export default {
            garden:t.list(
                t.struct({
                    areaOfGarden:LifeCategory,
-                   selfInfluence:t.Number,
-                   otherInfluence:t.maybe(t.Number),
+                   selfInfluence:PercentSelector,
+                   otherInfluence:PercentSelector,
                    nameOfOther:t.String
                })
            )
@@ -24,18 +24,18 @@ export default {
                     item:{
                         fields:{
                             areaOfGarden: {
-                                error:'Please select a value.'
+                                error:'Please select a Life category.'
                             },
                             selfInfluence: {
-                                placeholder:'Self Influence(%)',
-                                error: 'Please fill out this field.'
+                                label:'Self Influence(%)',
+                                error: 'What percentage of the seeds in this garden were planted by you?'
                             },
                             otherInfluence: {
-                                placeholder:'Other Influence(%)',
-                                auto:'none'
+                                label:'Other Influence(%)',
+                                error: 'What percentage of the seeds in this garden were planted by someone else?'
                             },
                             nameOfOther: {
-                                error: 'Please fill out this field.'
+                                error: 'Who planted the most?'
                             }
                         }
                     }
@@ -77,73 +77,63 @@ export default {
              fields:{
                  careerShortcoming:{
                      label:'Career: A failure or shortcoming that you experienced over the last 5 years',
-                     auto:'none',
-                     error: 'Please fill out this field.'
+                     error: 'What is something you would like to correct?'
                  },
                  careerBHAG:{
                      label:'Career: Something completely new',
-                     auto:'none',
-                     error: 'Please fill out this field.'
+                     error: 'Reach for the stars!'
                  },
                  personalityAndHobbiesShortcoming:{
                     label:'Personality And Hobbies: A failure or shortcoming that you experienced over the last 5 years',
-                    auto:'none',
-                    error: 'Please fill out this field.'
+                    error: 'What is something you would like to correct?'
                 },
                 personalityAndHobbiesBHAG:{
                     label:'Personality And Hobbies: Something completely new',
-                    auto:'none',
-                    error: 'Please fill out this field.'
+                    error: 'Reach for the stars!'
                 },
                 healthShortcoming:{
                     label:'Health: A failure or shortcoming that you experienced over the last 5 years',
-                    auto:'none',
-                    error: 'Please fill out this field.'
+                    error: 'What is something you would like to correct?'
                 },
                 healthBHAG:{
                     label:'Health: Something completely new',
-                    auto:'none',
-                    error: 'Please fill out this field.'
+                    error: 'Reach for the stars!'
                 },
                 relationshipShortcoming:{
                     label:'Relationships: A failure or shortcoming that you experienced over the last 5 years',
-                    auto:'none',
-                    error: 'Please fill out this field.'
+                
+                    error: 'What is something you would like to correct?'
                 },
                 relationshipBHAG:{
                     label:'Relationships: Something completely new',
-                    auto:'none',
-                    error: 'Please fill out this field.'
+                    error: 'Reach for the stars!'
                 },
                 financialShortcoming:{
                     label:'Financial: A failure or shortcoming that you experienced over the last 5 years',
-                    auto:'none',
-                    error: 'Please fill out this field.'
+                 
+                    error: 'What is something you would like to correct?'
                 },
                 financialBHAG:{
                     label:'Financial: Something completely new',
-                    auto:'none',
-                    error: 'Please fill out this field.'
+                    error: 'Reach for the stars!'
                 },
                 PEShortcoming:{
                     label:'Place And Environment: A failure or shortcoming that you experienced over the last 5 years',
-                    auto:'none',
-                    error: 'Please fill out this field.'
+                
+                    error: 'What is something you would like to correct?'
                 },
                 PEBHAG:{
                     label:'Place And Environment: Something completely new',
-                    auto:'none',
-                    error: 'Please fill out this field.'
+                    error: 'Reach for the stars!'
                 },
                 spiritualityShortcoming:{
                     label:'Spirituality: A failure or shortcoming that you experienced over the last 5 years',
-                    auto:'none',
-                    error: 'Please fill out this field.'
+                    
+                    error: 'What is something you would like to correct?'
                 },
                 spiritualityBHAG:{
                     label:'Spirituality: Something completely new',
-                    auto:'none',
-                    error: 'Please fill out this field.'
+                    error: 'Reach for the stars!'
                 }
              }
          }
@@ -153,8 +143,8 @@ export default {
              skills:t.list(
                  t.struct({
                     skill:CharachterStrengths,
-                    proficiencyLevel:t.Number,
-                    aspirationLevel:t.Number,
+                    proficiencyLevel:OneToTenScale,
+                    aspirationLevel:OneToTenScale,
                     improvements:t.String
                  })
             )
@@ -167,23 +157,19 @@ export default {
                          fields:{
                              skill:{
                                  label:'Skill',
-                                 auto:'none',
-                                 error: 'Please select a value.'
+                                 error: 'Please select a Charachter Strength.'
                              },
                              proficiencyLevel:{
                                  label:'Proficiency Level(Using a 10pt Scale with 1=beginner to 10=master)',
-                                 auto:'none',
-                                 error: 'Please fill out this field.'
+                                 error: 'Please select a value.'
                              },
                              aspirationLevel:{
                                  label:'Aspiration level in 2020',
-                                 auto:'none',
-                                 error: 'Please fill out this field.'
+                                 error: 'Please select a value.'
                              },
                              improvements:{
                                  label:'What improvements needs to happen for you to reach your aspirational 2020 level?',
-                                 auto:'none',
-                                 error: 'Please fill out this field.'
+                                 error: "Think about your past goals, things you'd like to do more and less of, etc..."
                              }
                          }
                      }

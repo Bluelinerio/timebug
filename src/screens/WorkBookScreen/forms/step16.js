@@ -1,4 +1,4 @@
-wimport t from "../components/templates";
+import t from "../components/templates";
 import { OneToTenScale, IsSleepEnough, PriorityLevels, IndulgeFrequency, TakeEnergizers, ExerciseFrequency, ExerciseTypes, CarryStress, CommonGoalOutcomes, BedTimes, EatingFrequency, HoursSleep } from "./contents";
 
 export default {

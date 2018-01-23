@@ -1,5 +1,5 @@
 import t from "../components/templates";
-import { LifeCategory, InteractionFrequency, GoalYears, PercentCompleted, OneToTenScale, UseWearableTech, DescribeProcess } from "./contents";
+import { LifeCategory, InteractionFrequency, GoalYears, PercentSelector, OneToTenScale, UseWearableTech, DescribeProcess } from "./contents";
 
 export default {
 
@@ -9,7 +9,7 @@ export default {
 			field: t.list(
 				t.struct({
 					goal: t.String,
-					percentCompleted: PercentCompleted,
+					percentCompleted: PercentSelector,
 					satisfactionLevel: OneToTenScale,
 					investedTimeEnergy: OneToTenScale,
 					requiredTimeEnergy: OneToTenScale

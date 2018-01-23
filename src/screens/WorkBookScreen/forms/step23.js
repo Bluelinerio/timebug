@@ -1,4 +1,5 @@
 import t from "../components/templates";
+import { OneToTenScale,TimeSpent } from "./contents";
 
 
 
@@ -36,8 +37,7 @@ export default {
     type:t.String,
     options: {
       label:'If you could change jobs, and do something totally new, what would it be?',
-      auto: 'none',
-      error: 'Please fill out this field.'
+      error: "Be honest with yourself - if you're totally happy, then you can say so!"
     }
 
 },
@@ -45,8 +45,7 @@ export default {
   type:t.String,
   options: {
     label:'Reflecting back on Day 13’s Assignment – particularly the questions on Fulfillment – what changes would you need to make in your career to get both answers (on Fulfillment and Motivation) to 10 on the scale?',
-    auto: 'none',
-    error: 'Please fill out this field.'
+    error: 'Where should you spend more time? Less time?'
   }
 
 },
@@ -54,7 +53,7 @@ export default {
   type:t.list(
     t.struct({
     careerBHAG:t.String,
-    MLA:t.Number
+    MLA:OneToTenScale
   })
   ),
   options:{
@@ -62,10 +61,10 @@ export default {
     item:{
       fields: {
         careerBHAG: {
-          error: 'Please fill out this field.'
+          error: 'Please enter a BHAG.'
         },
         MLA: {
-          error: 'Please fill out this field.'
+          error: 'Please select a value.'
         }
       }
     }
@@ -78,7 +77,7 @@ export default {
       t.struct({
         skill: t.String,
         whatWillYouDo: t.String,
-        timePerWeek: t.String
+        timePerWeek: TimeSpent
       }),
     ),
   }),
@@ -93,18 +92,15 @@ export default {
           fields:{
             skill: {
               label:'Skill',
-              auto: 'none',
-              error: 'Please fill out this field.'
+              error: 'What is a skill you need to develop?'
             },
             whatWillYouDo: {
-              label: 'What will you do in 2017 to develop this skill?',
-              auto: 'none',
-              error: 'Please fill out this field.'
+              label: 'What will you do this year to develop this skill?',
+              error: 'Think big and believe in yourself!'
             },
             timePerWeek: {
               label: 'How much time per week will you dedicate to this?',
-              auto: 'none',
-              error: 'Please fill out this field.'
+              error: 'Please select a value'
             }
           }
         }

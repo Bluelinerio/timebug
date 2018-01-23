@@ -1,5 +1,5 @@
 import t from "../components/templates";
-import { AssessmentTypes } from "./contents";
+import { AssessmentTypes, TimeSpentProgress, OneToTenScale, OverallScore } from "./contents";
 
 export default {
     1:{
@@ -24,17 +24,17 @@ export default {
             item: {
               fields: {
                 goal: {
-                  auto:'placerholders',
-                  error:'Please fill out this field.'
+                  placeholder: 'Goal',
+                  error:'Please enter a goal.'
                 },
                 newInsights: {
-                  placeholder:'New insights(be as technical as you can)',
-                  error:'Please fill out this field.',
+                  placeholder:'New insights',
+                  error:'Be as technical as you can, regarding new insights towards this goal.',
                   auto:'none'
                 },
                 specificChanges: {
                   placeholder: 'Specific changes to make',
-                  error:'Please fill out this field.',
+                  error:'What specific changes do you need to make in the coming year in order to make significant progress towards this goal?',
                   auto:'none'
                 }
               }
@@ -52,23 +52,23 @@ export default {
     2:{
       type: t.struct({
           lifeCategoryBreakdown: t.String,
-          thingsDoLess: t.String,
-          thingsDoMore: t.String
+          thingsDoLess: TimeSpentProgress,
+          thingsDoMore: TimeSpentProgress
       }),
       options: {
         label:'Reflect back on your Day 2 Worksheet (More or Less Time), and make refinements or additional notes, in relation to how your time allocation has changed over the past 5 years; and how you ideally would like to make changes in the current breakdown across Life Categories.',
         fields: {
           lifeCategoryBreakdown: {
-            label:'a)Has anything changed with your life category breakdown?',
-            error: 'Please fill out this field.'
+            label:'Has anything changed with your life category breakdown?',
+            error: "Maybe you're spending more time with certain categories and less with others? Is this a good thing?."
           },
           thingsDoLess: {
-            label:'b)Has anything changed with your 3 things that you want to DO LESS of in general(i.e. "Watching TV")?',
-            error: 'Please fill out this field.'
+            label:'Has anything changed with your 3 things that you want to DO LESS of in general(i.e. "Watching TV")?',
+            error: 'Please select a value.'
           },
           thingsDoMore: {
             label:'c)Has anything changed with your 3 things that you want to DO MORE of in general(i.e. "Exercising")?',
-            error: 'Please fill out this field.'
+            error: 'Please select a value.'
           }
         }
       }
@@ -89,32 +89,32 @@ export default {
         fields: {
         rank1:{
             label: 'Rank the 7 Areas in terms of the order of importance you gave them over the past 5 years.\nRank 1:',
-            error: 'Please select a value'
+            error: 'Which assesment type is most important to you?'
             
         },
         rank2:{
           auto:'labels',
-          error: 'Please select a value'
+          error: 'Which assesment type is 2nd most important to you?'
         },
         rank3:{
           auto:'labels',
-          error: 'Please select a value'
+          error: 'Which assesment type is 3rd most important to you?'
         },
         rank4:{
           auto:'labels',
-          error: 'Please select a value'
+          error: 'Which assesment type is 4th most important to you?'
         },
         rank5:{
           auto:'labels',
-          error: 'Please select a value'
+          error: 'Which assesment type is 5th most important to you?'
         },
         rank6:{
           auto:'labels',
-          error: 'Please select a value'
+          error: 'Which assesment type is 6th most important to you?'
         },
         rank7:{
           auto:'labels',
-          error: 'Please select a value'
+          error: 'Which assesment type is least important to you?'
         }
         }
           }
@@ -164,265 +164,227 @@ export default {
       },
       5: {
         type:t.struct({
-          career2011:t.Number,
-          personalityAndHobbies2011:t.Number,
-          health2011:t.Number,
-          relationship2011:t.Number,
-          financial2011:t.Number,
-          placeAndEnvironment2011:t.Number,
-          spirituality2011:t.Number,
-          career2012:t.Number,
-          personalityAndHobbies2012:t.Number,
-          health2012:t.Number,
-          relationship2012:t.Number,
-          financial2012:t.Number,
-          placeAndEnvironment2012:t.Number,
-          spirituality2012:t.Number,
-          career2013:t.Number,
-          personalityAndHobbies2013:t.Number,
-          health2013:t.Number,
-          relationship2013:t.Number,
-          financial2013:t.Number,
-          placeAndEnvironment2013:t.Number,
-          spirituality2013:t.Number,
-          career2014:t.Number,
-          personalityAndHobbies2014:t.Number,
-          health2014:t.Number,
-          relationship2014:t.Number,
-          financial2014:t.Number,
-          placeAndEnvironment2014:t.Number,
-          spirituality2014:t.Number,
-          career2015:t.Number,
-          personalityAndHobbies2015:t.Number,
-          health2015:t.Number,
-          relationship2015:t.Number,
-          financial2015:t.Number,
-          placeAndEnvironment2015:t.Number,
-          spirituality2015:t.Number,
-          careerOverall:t.Number,
-          personalityAndHobbiesOverall:t.Number,
-          healthOverall:t.Number,
-          relationshipOverall:t.Number,
-          financialOverall:t.Number,
-          placeAndEnvironmentOverall:t.Number,
-          spiritualityOverall:t.Number
+          careerYear1:OneToTenScale,
+          personalityAndHobbiesYear1:OneToTenScale,
+          healthYear1:OneToTenScale, 
+          relationshipYear1:OneToTenScale,
+          financialYear1:OneToTenScale,
+          placeAndEnvironmentYear1:OneToTenScale,
+          spiritualityYear1:OneToTenScale,
+          careerYear2:OneToTenScale,
+          personalityAndHobbiesYear2:OneToTenScale,
+          healthYear2:OneToTenScale,
+          relationshipYear2:OneToTenScale,
+          financialYear2:OneToTenScale,
+          placeAndEnvironmentYear2:OneToTenScale,
+          spiritualityYear2:OneToTenScale,
+          careerYear3:OneToTenScale,
+          personalityAndHobbiesYear3:OneToTenScale,
+          healthYear3:OneToTenScale,
+          relationshipYear3:OneToTenScale,
+          financialYear3:OneToTenScale,
+          placeAndEnvironmentYear3:OneToTenScale,
+          spiritualityYear3:OneToTenScale,
+          careerYear4:OneToTenScale,
+          personalityAndHobbiesYear4:OneToTenScale,
+          healthYear4:OneToTenScale,
+          relationshipYear4:OneToTenScale,
+          financialYear4:OneToTenScale,
+          placeAndEnvironmentYear4:OneToTenScale,
+          spiritualityYear4:OneToTenScale,
+          careerYear5:OneToTenScale,
+          personalityAndHobbiesYear5:OneToTenScale,
+          healthYear5:OneToTenScale,
+          relationshipYear5:OneToTenScale,
+          financialYear5:OneToTenScale,
+          placeAndEnvironmentYear5:OneToTenScale,
+          spiritualityYear5:OneToTenScale,
+          careerOverall:OverallScore,
+          personalityAndHobbiesOverall:OverallScore,
+          healthOverall:OverallScore,
+          relationshipOverall:OverallScore,
+          financialOverall:OverallScore,
+          placeAndEnvironmentOverall:OverallScore,
+          spiritualityOverall:OverallScore
          }),
          options: {
            label:'Give yourself a final evaluation for each of the past 5-years, as well as an overall 5-Year Score(1-10 score per year, for a total maximum high score of 50/50, per each of the 7 Areas that were assessed).',
            fields: {
              
-             career2011:{
-               label:'2011',
-               placeholder:'Career 2011',
-               error: 'Please fill out this field.'
+             careerYear1:{
+               labels:'auto',
+               error: 'Give yourself a score'
              },
-             personalityAndHobbies2011: {
-               placeholder:'Personality/Hobbies 2011',
-               auto:'none',
-               error: 'Please fill out this field.'
+             personalityAndHobbiesYear1: {
+              labels:'auto',
+              error: 'Give yourself a score'
              },
-             health2011: {
+             healthYear1: {
              
-               placeholder:'Health 2011',
-               auto:'none',
-               error: 'Please fill out this field.'
+              labels:'auto',
+              error: 'Give yourself a score'
              },
-             relationship2011: {
+             relationshipYear1: {
         
-              placeholder:'Relationship 2011',
-              auto:'none',
-              error: 'Please fill out this field.'
+              labels:'auto',
+              error: 'Give yourself a score'
             },
-            financial2011: {
-              
-              placeholder:'Financial 2011',
-              auto:'none',
-              error: 'Please fill out this field.'
+            financialYear1: {        
+              labels:'auto',
+              error: 'Give yourself a score'
             },
-            placeAndEnvironment2011: {
+            placeAndEnvironmentYear1: {
            
-              placeholder:'P & E 2011',
-              auto:'none',
-              error: 'Please fill out this field.'
+              labels:'auto',
+              error: 'Give yourself a score'
             },
-            spirituality2011: {
+            spiritualityYear1: {
 
-              placeholder:'Spirituality 2011',
-              auto:'none',
-              error: 'Please fill out this field.'
+              labels:'auto',
+              error: 'Give yourself a score'
             },
-             career2012:{
-              label:'2012',
-              placeholder:'Career 2012',
-              error: 'Please fill out this field.'
+             careerYear2:{
+              labels:'auto',
+              error: 'Give yourself a score'
             },
-            personalityAndHobbies2012: {
-              placeholder:'Personality/Hobbies 2012',
-              auto:'none',
-              error: 'Please fill out this field.'
+            personalityAndHobbiesYear2: {
+              labels:'auto',
+              error: 'Give yourself a score'
             },
-            health2012: {
-              placeholder:'Health 2012',
-              auto:'none',
-              error: 'Please fill out this field.'
+            healthYear2: {
+              labels:'auto',
+              error: 'Give yourself a score'
             },
-            relationship2012: {
-              placeholder:'Relationship 2012',
-              auto:'none',
-              error: 'Please fill out this field.'
+            relationshipYear2: {
+              labels:'auto',
+              error: 'Give yourself a score'
            },
-           financial2012: {
-            placeholder:'Financial 2012',
-            auto:'none',
-            error: 'Please fill out this field.'
+           financialYear2: {
+            labels:'auto',
+            error: 'Give yourself a score'
            },
-           placeAndEnvironment2012: {
-            placeholder:'P & E 2012',
-            auto:'none',
-            error: 'Please fill out this field.'
+           placeAndEnvironmentYear2: {
+            labels:'auto',
+            error: 'Give yourself a score'
            },
-           spirituality2012: {
-            placeholder:'Spirituality 2012',
-            auto:'none',
-            error: 'Please fill out this field.'
+           spiritualityYear2: {
+            labels:'auto',
+            error: 'Give yourself a score'
            },
-            career2013:{
-              label:'2013',
-              placeholder:'Career 2013',
-              error: 'Please fill out this field.'
+            careerYear3:{
+              labels:'auto',
+              error: 'Give yourself a score'
             },
-            personalityAndHobbies2013: {
+            personalityAndHobbiesYear3: {
              
-              placeholder:'Personality/Hobbies 2013',
-              auto:'none',
-              error: 'Please fill out this field.'
+              labels:'auto',
+              error: 'Give yourself a score'
             },
-            health2013: {
-     
-              placeholder:'Health 2013',
-              auto:'none',
-              error: 'Please fill out this field.'
+            healthYear3: {
+              labels:'auto',
+              error: 'Give yourself a score'
             },
-            relationship2013: {
+            relationshipYear3: {
          
-             placeholder:'Relationship 2013',
-             auto:'none',
-             error: 'Please fill out this field.'
+              labels:'auto',
+              error: 'Give yourself a score'
            },
-           financial2013: {
-      
-             placeholder: 'Financial 2013',
-             auto:'none',
-             error: 'Please fill out this field.'
+           financialYear3: {
+            labels:'auto',
+            error: 'Give yourself a score'
            },
-           placeAndEnvironment2013: {
-             placeholder: 'P & E 2013',
-             auto:'none'
-             
+           placeAndEnvironmentYear3: {
+            labels:'auto',
+            error: 'Give yourself a score'
            },
-           spirituality2013: {
-             placeholder: 'Spirituality 2013',
-             auto:'none',
-             error: 'Please fill out this field.'
+           spiritualityYear3: {
+            labels:'auto',
+            error: 'Give yourself a score'
            },
-            career2014:{
-              label:'2014',
-              placeholder:'Career 2014',
-              error: 'Please fill out this field.'
+            careerYear4:{
+              labels:'auto',
+              error: 'Give yourself a score'
             },
-            personalityAndHobbies2014: {
-              placeholder:'Personality/Hobbies 2014',
-              auto:'none',
-              error: 'Please fill out this field.'
+            personalityAndHobbiesYear4: {
+              labels:'auto',
+              error: 'Give yourself a score'
             },
-            health2014: {
-              placeholder:'Health 2014',
-              auto:'none',
-              error: 'Please fill out this field.'
+            healthYear4: {
+              labels:'auto',
+              error: 'Give yourself a score'
             },
-            relationship2014: {
-              placeholder:'Relationship 2014',
-              auto:'none',
-              error: 'Please fill out this field.'
+            relationshipYear4: {
+              labels:'auto',
+              error: 'Give yourself a score'
            },
-           financial2014: {
-            placeholder:'Financial 2014',
-            auto:'none',
-            error: 'Please fill out this field.'
+           financialYear4: {
+            labels:'auto',
+            error: 'Give yourself a score'
            },
-           placeAndEnvironment2014: {
-            placeholder:'P & E 2014',
-            auto:'none',
-            error: 'Please fill out this field.'
+           placeAndEnvironmentYear4: {
+            labels:'auto',
+            error: 'Give yourself a score'
            },
-           spirituality2014: {
-            placeholder:'Spirituality 2014',
-            auto:'none',
-            error: 'Please fill out this field.'
+           spiritualityYear4: {
+            labels:'auto',
+            error: 'Give yourself a score'
            },
-            career2015:{
-              label:'2015',
-              placeholder:'Career 2015',
-              error: 'Please fill out this field.'
+            careerYear5:{
+              labels:'auto',
+              error: 'Give yourself a score'
             },
-            personalityAndHobbies2015: {
-              placeholder:'Personality/Hobbies 2015',
-              auto:'none',
-              error: 'Please fill out this field.'
+            personalityAndHobbiesYear5: {
+              labels:'auto',
+              error: 'Give yourself a score'
             },
-            health2015: {
-              placeholder:'Health 2015',
-              auto:'none',
-              error: 'Please fill out this field.'
+            healthYear5: {
+              labels:'auto',
+              error: 'Give yourself a score'
             },
-            relationship2015: {
-              placeholder:'Relationship 2015',
-              auto:'none',
-              error: 'Please fill out this field.'
+            relationshipYear5: {
+              labels:'auto',
+              error: 'Give yourself a score'
            },
-           financial2015: {
-            placeholder:'Financial 2015',
-            auto:'none',
-            error: 'Please fill out this field.'
+           financialYear5: {
+            labels:'auto',
+            error: 'Give yourself a score'
            },
-           placeAndEnvironment2015: {
-            placeholder:'P & E 2015',
-            auto:'none',
-            error: 'Please fill out this field.'
+           placeAndEnvironmentYear5: {
+            labels:'auto',
+            error: 'Give yourself a score'
            },
-           spirituality2015: {
-            placeholder:'Spirituality 2015',
-            auto:'none',
-            error: 'Please fill out this field.'
+           spiritualityYear5: {
+            labels:'auto',
+            error: 'Give yourself a score'
            },
             careerOverall:{
-              label:'Overall',
-              placeholder:'Career Overall'
+              labels:'auto',
+              error: 'Add up your give year career score'
             },
             personalityAndHobbiesOverall:{
-              placeholder:'Personality/Hobbies Overall',
-              auto:'none',
+              label:'Personality & Hobbies Overall',
+              error:'Add up your five year personality & hobbies score'
               
             },
             healthOverall: {
-              placeholder:'Health Overall',
-              auto:'none'
+              label:'Health Overall',
+              error:'Add up your five year health score'
             },
             relationshipOverall: {
-              placeholder:'Relationship Overall',
-              auto:'none'
+              label:'Relationships Overall',
+              error:'Add up your five year relationship score'
             },
             financialOverall: {
-              placeholder:'Financial Overall',
-              auto:'none'
+              label:'Financial Overall',
+              error:'Add up your five year financial score'
             },
             placeAndEnvironmentOverall: {
-              placeholder:'P & E Overall',
-              auto:'none'
+              label:'P & E Overall',
+              error:'Add up your five year P & E score'
             },
             spiritualityOverall: {
-              placeholder:'Spirituality Overall',
-              auto:'none'
+              label:'Spirituality Overall',
+              error:'Add up your five year spirituality score'
             }
 
            }
@@ -431,272 +393,222 @@ export default {
       },
       6:{
         type:t.struct({
-          career2011:t.Number,
-          personalityAndHobbies2011:t.Number,
-          health2011:t.Number,
-          relationship2011:t.Number,
-          financial2011:t.Number,
-          placeAndEnvironment2011:t.Number,
-          spirituality2011:t.Number,
-          career2012:t.Number,
-          personalityAndHobbies2012:t.Number,
-          health2012:t.Number,
-          relationship2012:t.Number,
-          financial2012:t.Number,
-          placeAndEnvironment2012:t.Number,
-          spirituality2012:t.Number,
-          career2013:t.Number,
-          personalityAndHobbies2013:t.Number,
-          health2013:t.Number,
-          relationship2013:t.Number,
-          financial2013:t.Number,
-          placeAndEnvironment2013:t.Number,
-          spirituality2013:t.Number,
-          career2014:t.Number,
-          personalityAndHobbies2014:t.Number,
-          health2014:t.Number,
-          relationship2014:t.Number,
-          financial2014:t.Number,
-          placeAndEnvironment2014:t.Number,
-          spirituality2014:t.Number,
-          career2015:t.Number,
-          personalityAndHobbies2015:t.Number,
-          health2015:t.Number,
-          relationship2015:t.Number,
-          financial2015:t.Number,
-          placeAndEnvironment2015:t.Number,
-          spirituality2015:t.Number,
-          careerOverall:t.Number,
-          personalityAndHobbiesOverall:t.Number,
-          healthOverall:t.Number,
-          relationshipOverall:t.Number,
-          financialOverall:t.Number,
-          placeAndEnvironmentOverall:t.Number,
-          spiritualityOverall:t.Number
+          careerYear1:OneToTenScale,
+          personalityAndHobbiesYear1:OneToTenScale,
+          healthYear1:OneToTenScale,
+          relationshipYear1:OneToTenScale,
+          financialYear1:OneToTenScale,
+          placeAndEnvironmentYear1:OneToTenScale,
+          spiritualityYear1:OneToTenScale,
+          careerYear2:OneToTenScale,
+          personalityAndHobbiesYear2:OneToTenScale,
+          healthYear2:OneToTenScale,
+          relationshipYear2:OneToTenScale,
+          financialYear2:OneToTenScale,
+          placeAndEnvironmentYear2:OneToTenScale,
+          spiritualityYear2:OneToTenScale,
+          careerYear3:OneToTenScale,
+          personalityAndHobbiesYear3:OneToTenScale,
+          healthYear3:OneToTenScale,
+          relationshipYear3:OneToTenScale,
+          financialYear3:OneToTenScale,
+          placeAndEnvironmentYear3:OneToTenScale,
+          spiritualityYear3:OneToTenScale,
+          careerYear4:OneToTenScale,
+          personalityAndHobbiesYear4:OneToTenScale,
+          healthYear4:OneToTenScale,
+          relationshipYear4:OneToTenScale,
+          financialYear4:OneToTenScale,
+          placeAndEnvironmentYear4:OneToTenScale,
+          spiritualityYear4:OneToTenScale,
+          careerYear5:OneToTenScale,
+          personalityAndHobbiesYear5:OneToTenScale,
+          healthYear5:OneToTenScale,
+          relationshipYear5:OneToTenScale,
+          financialYear5:OneToTenScale,
+          placeAndEnvironmentYear5:OneToTenScale,
+          spiritualityYear5:OneToTenScale,
+          careerOverall:OverallScore,
+          personalityAndHobbiesOverall:OverallScore,
+          healthOverall:OverallScore,
+          relationshipOverall:OverallScore,
+          financialOverall:OverallScore,
+          placeAndEnvironmentOverall:OverallScore,
+          spiritualityOverall:OverallScore
          }),
          options: {
-           label:'Have one other person(per Area) - be it a family member or friend, and preferably one of your CEO of Me Board Members - give you a Score for the past 5 years(on a 1-10 scale), and then multiply that number by 5, to arrive at your 3rd Party Rating(this number will be between 5-50; and you should have one for each of the 7 Assessment Areas).',
+           label:'Have one other person(per Area) - be it a family member or friend, and preferably one of your CEO of Me Board Members - give you a Score for the past 5 years(on a 1-10 scale), to arrive at an overall 5 year score for each of the 7 assessment areas. Would you like to engage someone to help you do this?',
            fields: {
              
-             career2011:{
-               label:'2011',
-               placeholder:'Career 2011',
-               error: 'Please fill out this field.'
+             careerYear1:{
+              labels:'auto',
+              error: 'What was your 3rd party score for this area/year?'
              },
-             personalityAndHobbies2011: {
-               placeholder:'Personality/Hobbies 2011',
-               auto:'none',
-               error: 'Please fill out this field.'
+             personalityAndHobbiesYear1: {
+              labels:'auto',
+              error: 'What was your 3rd party score for this area/year?'
              },
-             health2011: {
-             
-               placeholder:'Health 2011',
-               auto:'none',
-               error: 'Please fill out this field.'
+             healthYear1: {
+              labels:'auto',
+              error: 'What was your 3rd party score for this area/year?'
              },
-             relationship2011: {
+             relationshipYear1: {
         
-              placeholder:'Relationship 2011',
-              auto:'none',
-              error: 'Please fill out this field.'
+              labels:'auto',
+              error: 'What was your 3rd party score for this area/year?'
             },
-            financial2011: {
-              
-              placeholder:'Financial 2011',
-              auto:'none',
-              error: 'Please fill out this field.'
+            financialYear1: {
+              labels:'auto',
+              error: 'What was your 3rd party score for this area/year?'
             },
-            placeAndEnvironment2011: {
-           
-              placeholder:'P & E 2011',
-              auto:'none',
-              error: 'Please fill out this field.'
+            placeAndEnvironmentYear1: {
+              labels:'auto',
+              error: 'What was your 3rd party score for this area/year?'
             },
-            spirituality2011: {
-
-              placeholder:'Spirituality 2011',
-              auto:'none',
-              error: 'Please fill out this field.'
+            spiritualityYear1: {
+              labels:'auto',
+              error: 'What was your 3rd party score for this area/year?'
             },
-             career2012:{
-              label:'2012',
-              placeholder:'Career 2012',
-              error: 'Please fill out this field.'
+             careerYear2:{
+              labels:'auto',
+              error: 'What was your 3rd party score for this area/year?'
             },
-            personalityAndHobbies2012: {
-              placeholder:'Personality/Hobbies 2012',
-              error: 'Please fill out this field.',
-              auto:'none'
+            personalityAndHobbiesYear2: {
+              labels:'auto',
+              error: 'What was your 3rd party score for this area/year?'
             },
-            health2012: {
-              placeholder:'Health 2012',
-              auto:'none',
-              error: 'Please fill out this field.'
+            healthYear2: {
+              labels:'auto',
+              error: 'What was your 3rd party score for this area/year?'
             },
-            relationship2012: {
-              placeholder:'Relationship 2012',
-              auto:'none',
-              error: 'Please fill out this field.'
+            relationshipYear2: {
+              labels:'auto',
+              error: 'What was your 3rd party score for this area/year?'
            },
-           financial2012: {
-            placeholder:'Financial 2012',
-            auto:'none',
-            error: 'Please fill out this field.'
+           financialYear2: {
+            labels:'auto',
+            error: 'What was your 3rd party score for this area/year?'
            },
-           placeAndEnvironment2012: {
-            placeholder:'P & E 2012',
-            auto:'none',
-            error: 'Please fill out this field.'
+           placeAndEnvironmentYear2: {
+            labels:'auto',
+            error: 'What was your 3rd party score for this area/year?'
            },
-           spirituality2012: {
-            placeholder:'Spirituality 2012',
-            auto:'none',
-            error: 'Please fill out this field.'
+           spiritualityYear2: {
+            labels:'auto',
+            error: 'What was your 3rd party score for this area/year?'
            },
-            career2013:{
-              label:'2013',
-              placeholder:'Career 2013',
-              error: 'Please fill out this field.'
+            careerYear3:{
+              labels:'auto',
+              error: 'What was your 3rd party score for this area/year?'
             },
-            personalityAndHobbies2013: {
-             
-              placeholder:'Personality/Hobbies 2013',
-              auto:'none',
-              error: 'Please fill out this field.'
+            personalityAndHobbiesYear3: {
+              labels:'auto',
+              error: 'What was your 3rd party score for this area/year?'
             },
-            health2013: {
-     
-              placeholder:'Health 2013',
-              auto:'none',
-              error: 'Please fill out this field.'
+            healthYear3: {
+              labels:'auto',
+              error: 'What was your 3rd party score for this area/year?'
             },
-            relationship2013: {
-         
-             placeholder:'Relationship 2013',
-             auto:'none',
-             error: 'Please fill out this field.'
+            relationshipYear3: {
+              labels:'auto',
+              error: 'What was your 3rd party score for this area/year?'
            },
-           financial2013: {
-      
-             placeholder: 'Financial 2013',
-             auto:'none',
-             error: 'Please fill out this field.'
+           financialYear3: {
+            labels:'auto',
+            error: 'What was your 3rd party score for this area/year?'
            },
-           placeAndEnvironment2013: {
-             placeholder: 'P & E 2013',
-             auto:'none',
-             error: 'Please fill out this field.'
+           placeAndEnvironmentYear3: {
+            labels:'auto',
+            error: 'What was your 3rd party score for this area/year?'
              
            },
-           spirituality2013: {
-             placeholder: 'Spirituality 2013',
-             auto:'none',
-             error: 'Please fill out this field.'
+           spiritualityYear3: {
+            labels:'auto',
+            error: 'What was your 3rd party score for this area/year?'
            },
-            career2014:{
-              label:'2014',
-              placeholder:'Career 2014',
-              error: 'Please fill out this field.'
+            careerYear4:{
+              labels:'auto',
+              error: 'What was your 3rd party score for this area/year?'
             },
-            personalityAndHobbies2014: {
-              placeholder:'Personality/Hobbies 2014',
-              auto:'none',
-              error: 'Please fill out this field.'
+            personalityAndHobbiesYear4: {
+              labels:'auto',
+              error: 'What was your 3rd party score for this area/year?'
             },
-            health2014: {
-              placeholder:'Health 2014',
-              auto:'none',
-              error: 'Please fill out this field.'
+            healthYear4: {
+              labels:'auto',
+              error: 'What was your 3rd party score for this area/year?'
             },
-            relationship2014: {
-              placeholder:'Relationship 2014',
-              auto:'none',
-              error: 'Please fill out this field.'
+            relationshipYear4: {
+              labels:'auto',
+              error: 'What was your 3rd party score for this area/year?'
            },
-           financial2014: {
-            placeholder:'Financial 2014',
-            auto:'none',
-            error: 'Please fill out this field.'
+           financialYear4: {
+            labels:'auto',
+            error: 'What was your 3rd party score for this area/year?'
            },
-           placeAndEnvironment2014: {
-            placeholder:'P & E 2014',
-            auto:'none',
-            error: 'Please fill out this field.'
+           placeAndEnvironmentYear4: {
+            labels:'auto',
+            error: 'What was your 3rd party score for this area/year?'
            },
-           spirituality2014: {
-            placeholder:'Spirituality 2014',
-            auto:'none',
-            error: 'Please fill out this field.'
+           spiritualityYear4: {
+            labels:'auto',
+            error: 'What was your 3rd party score for this area/year?'
            },
-            career2015:{
-              label:'2015',
-              placeholder:'Career 2015',
-              error: 'Please fill out this field.'
+            careerYear5:{
+              labels:'auto',
+              error: 'What was your 3rd party score for this area/year?'
             },
-            personalityAndHobbies2015: {
-              placeholder:'Personality/Hobbies 2015',
-              auto:'none',
-              error: 'Please fill out this field.'
+            personalityAndHobbiesYear5: {
+              labels:'auto',
+              error: 'What was your 3rd party score for this area/year?'
             },
-            health2015: {
-              placeholder:'Health 2015',
-              auto:'none',
-              error: 'Please fill out this field.'
+            healthYear5: {
+              labels:'auto',
+              error: 'What was your 3rd party score for this area/year?'
             },
-            relationship2015: {
-              placeholder:'Relationship 2015',
-              auto:'none',
-              error: 'Please fill out this field.'
+            relationshipYear5: {
+              labels:'auto',
+              error: 'What was your 3rd party score for this area/year?'
            },
-           financial2015: {
-            placeholder:'Financial 2015',
-            auto:'none',
-            error: 'Please fill out this field.'
+           financialYear5: {
+            labels:'auto',
+            error: 'What was your 3rd party score for this area/year?'
            },
-           placeAndEnvironment2015: {
-            placeholder:'P & E 2015',
-            auto:'none',
-            error: 'Please fill out this field.'
+           placeAndEnvironmentYear5: {
+            labels:'auto',
+            error: 'What was your 3rd party score for this area/year?'
            },
-           spirituality2015: {
-            placeholder:'Spirituality 2015',
-            auto:'none',
-            error: 'Please fill out this field.'
+           spiritualityYear5: {
+            labels:'auto',
+            error: 'What was your 3rd party score for this area/year?'
            },
             careerOverall:{
-              label:'Overall',
-              placeholder:'Career Overall',
-              error: 'Please fill out this field.'
+              labels:'auto',
+              error: 'What was your 3rd party score for this area/year?'
             },
             personalityAndHobbiesOverall:{
-              placeholder:'Personality/Hobbies Overall',
-              auto:'none',
-              error: 'Please fill out this field.'
+              labels:'auto',
+              error: 'What was your 3rd party score for this area/year?'
             },
             healthOverall: {
-              placeholder:'Health Overall',
-              auto:'none',
-              error: 'Please fill out this field.'
+              labels:'auto',
+              error: 'What was your overall 3rd party score for this area?'
             },
             relationshipOverall: {
-              placeholder:'Relationship Overall',
-              auto:'none',
-              error: 'Please fill out this field.'
+              labels:'auto',
+              error: 'What was your overall 3rd party score for this area?'
             },
             financialOverall: {
-              placeholder:'Financial Overall',
-              auto:'none',
-              error: 'Please fill out this field.'
+              labels:'auto',
+              error: 'What was your overall 3rd party score for this area?'
             },
             placeAndEnvironmentOverall: {
-              placeholder:'P & E Overall',
-              auto:'none',
-              error: 'Please fill out this field.'
+              labels:'auto',
+              error: 'What was your overall 3rd party score for this area?'
             },
             spiritualityOverall: {
-              placeholder:'Spirituality Overall',
-              auto:'none',
-              error: 'Please fill out this field.'
+              labels:'auto',
+              error: 'What was your overall 3rd party score for this area?'
             }
 
            }

@@ -1,5 +1,5 @@
 import t from "../components/templates";
-import { TimeSpentMonth, TimeChanged } from "./contents";
+import { TimeSpent, TimeChanged, ActivityFeelings } from "./contents";
 
 
 
@@ -10,10 +10,10 @@ export default {
       personalAimsAndHobbies:t.list(
         t.struct({
           personalAimHobby: t.String,
-          timeSpentMonth: TimeSpentMonth,
+          timeSpentMonth: TimeSpent,
           timeChanged: TimeChanged,
           whatAchieved: t.String,
-          activityFeelings: t.String,
+          activityFeelings: ActivityFeelings,
           aloneOrPartner: t.String
         })
       )      
@@ -32,7 +32,7 @@ export default {
                 label:'Personal Aim/Hobby',
                 error:'Please add a hobby'
               },
-              timeSpentMonth: {
+              TimeSpent: {
                 label:'Estimated time spent each month',
                 error:'Please select a value'
               },
@@ -42,11 +42,11 @@ export default {
               },
               whatAchieved: {
                 label: 'What have you achieved in this area since last year?',
-                error:'Please fill out this field'
+                error:"Even with personal aims and hobbies that we do for fun, it can be very fulfilling to have specific progress goals"
               },
               activityFeelings: {
                 label: 'How do engaging in these activities make you feel?',
-                error:'Please fill out this field'
+                error:'E.g., if you are learning a musical instrument, how is it going?'
               },
               aloneOrPartner: {
                 label: 'Do you do this activity alone/with another? If so, who?',

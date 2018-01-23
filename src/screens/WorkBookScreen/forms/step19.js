@@ -1,11 +1,12 @@
 import t from "../components/templates";
+import { TimeSpent, SpiritualViews } from "./contents";
 
 
 export default {
     1:{
        type: t.struct ({
         id:t.maybe(t.String),
-         currentViews: t.String,
+         spiritualViews: SpiritualViews,
          spiritualInfluence: t.String,
          currentMentors: t.String
 
@@ -17,13 +18,16 @@ export default {
              hidden:true
            },
            currentViews: {
-             label: 'What are your current views and feelings about Spirituality? What does it mean to you?',
+             label: 'Which statement best reflects your current views and feelings about spirituality?',
+             error: 'Please select the statement that generally matches your feelings.'
            },
            spiritualInfluence: {
-             label: 'Who and what influenced your Spiritual views early on in life?'
+             label: 'Who and what influenced your Spiritual views early on in life?',
+             error: 'It can be someone in your inner circle, or current/historical spiritual leader whose work you admire'
            },
            currentMentors: {
-             label: 'Who are your current role models or mentors in this area? Why do you admire their approach to and views on life?'
+             label: 'Who are your current role models or mentors in this area? Why do you admire their approach to and views on life?',
+             error: "If you don't know anyone personally, is there anyone whose work in this area inspires you?"
            }
          }
 
@@ -37,7 +41,7 @@ export default {
     },
     2:{
       type: t.struct({
-        timeSpentSpirutality: t.String,
+        timeSpentSpirutality: TimeSpent,
         spiritualityChanged: t.String
 
       }),
@@ -45,10 +49,11 @@ export default {
         label: 'Take time to evaluate your spiritual practices',
         fields:{
           timeSpentSpirutality: {
-            label: 'How much time do you spend specifically, each week, on Spiritual practices, Interactions, reading, writing, etc.?'
+            label: 'How much time do you spend specifically, each week, on Spiritual practices, interactions, reading, writing, etc.?',
+            error:'Please select a value.'
           },
           spiritualityChanged: {
-            label: 'How have your Spiritual practices and/or beliefs changed in the past 5 years?'
+            label: 'How have your Spiritual practices and/or beliefs changed over the past 5 years?'
           }
         }
       }
@@ -77,16 +82,20 @@ export default {
             item: {
               fields:{
                 purposeOnEarth: {
-                  label:'What Is My Purpose On Earth?'
+                  label:'What Is My Purpose On Earth?',
+                  error:'Dream big!'
                 },
                 beyondOuterForm: {
-                  label: 'Beyond My Outer Form, What Am I?'
+                  label: 'Beyond My Outer Form, What Am I?',
+                  error: 'Are you only your body? Or is there more to you than just your physical existence?'
                 },
                 karma: {
-                  label: 'My Karma Has Shown Me...'
+                  label: 'My Karma Has Shown Me...',
+                  error: 'What does karma mean to you? Has the old addage "What goes around comes around" manifested in your life?'
                 },
                 healedEmotionalWoundsFrom: {
-                  label: 'I have healed emotional wounds from...'
+                  label: 'I have healed emotional wounds from...',
+                  error: 'What parts of your past have you had to work through in order to become the you that you are today? Are there any remaining that you need to work through to move past?'
                 }
               }
             }
