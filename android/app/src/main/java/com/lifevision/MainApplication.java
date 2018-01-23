@@ -1,8 +1,9 @@
-package com.timebug.lifevision;
+package com.lifevision;
 
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.horcrux.svg.SvgPackage;
 import com.facebook.FacebookSdk;
 import com.facebook.CallbackManager;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
@@ -36,6 +37,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
             new MainReactPackage(),
+            new SvgPackage(),
             new FBSDKPackage(mCallbackManager),
             new VectorIconsPackage(),
             new LinearGradientPackage()

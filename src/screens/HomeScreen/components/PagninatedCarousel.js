@@ -70,7 +70,7 @@ export default class PagninatedCarousel extends PureComponent<Props, State> {
 					contentContainerCustomStyle={styles.sliderContentContainer}
 					loop={false}
 					loopClonesPerSide={2}
-					autoplay={Platform.OS === 'ios'}
+					autoplay={false}
 					autoplayDelay={2000}
 					autoplayInterval={6000}
 					onSnapToItem={(index: number) => {
