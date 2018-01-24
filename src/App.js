@@ -1,3 +1,4 @@
+// @flow
 import React                        from 'react';
 import { ApolloProvider }           from 'react-apollo';
 import { Provider }                 from 'react-redux';
@@ -8,8 +9,8 @@ import { client }                   from './services/apollo';
 import ReduxNavigator               from './navigation/reduxNavigator';
 import { APP_NAME }                 from './constants';
 import DefaultIndicator             from './components/DefaultIndicator'
+import Error                        from './components/Error'
 import                                  './styles';
-
 if (__DEV__) {
   XMLHttpRequest = GLOBAL.originalXMLHttpRequest ?
                    GLOBAL.originalXMLHttpRequest :
@@ -18,8 +19,25 @@ if (__DEV__) {
 
 const { persistor, store } = setup();
 
-export default class App extends React.Component {
+type State = {
+  error?: any
+}
+export default class App extends React.Component<{},State> {
+
+  state:State = {
+    error: null
+  }
+  componentDidCatch(error:any) {
+    this.setState({
+      error
+    })
+  }
+
   render() {
+    const { error } = this.state;
+    if(error) {
+      <Error message={error} />
+    } 
     return (
       <ApolloProvider client={client}>
         <Provider store={store}>
