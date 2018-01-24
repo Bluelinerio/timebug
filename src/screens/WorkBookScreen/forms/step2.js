@@ -30,10 +30,10 @@ export default {
           item: {
             fields: {
               category: {
-                error: "Please fill out this field."
+                error: "Please select a Life category."
               },
                 hours:{
-                  error: "Please fill out this field."
+                  error: "How many hours out of a 168 hour week do you spend on this category?"
                 }
             }
           }
@@ -70,10 +70,11 @@ export default {
           item: {
             fields: {
               category: {
-                error: "Please fill out this field."
+                error: "Please select a Life category."
               },
                 hours:{
-                  error: "Please fill out this field."
+                  
+                  error: "How many hours out of a 168 hour week would you ideally spend on this category?"
                 }
             }
           }
@@ -103,10 +104,10 @@ export default {
           item: {
             fields: {
               thing: {
-                error: "Please fill out this field."
+                error: "What's something you would like to do less of in the coming years?"
               },
                 areaOfLife:{
-                  error: "Please fill out this field."
+                  error: "What Timebug Life Category does this thing fit into?"
                 }
             }
           }
@@ -137,10 +138,10 @@ export default {
           item: {
             fields: {
               thing: {
-                error: "Please fill out this field."
+                error: "What's something you would like to do less of in the coming years?"
               },
                 areaOfLife:{
-                  error: "Please fill out this field."
+                  error: "What Timebug Life Category does this thing fit into?"
                 }
             }
           }

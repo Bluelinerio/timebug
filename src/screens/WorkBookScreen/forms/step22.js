@@ -44,7 +44,7 @@ export default {
       fields: {
         dreamsDescribe: {
           label:'Describe the general themes, quality and lucidity of your dreams',
-          error: 'Please fill out this field.'
+          error: 'Do they feel "More real than reality itself?"...or hazy and hard to remember?'
         },
         dreamsRemember:{
           label:'How often do you remember your dreams?',
@@ -72,7 +72,7 @@ export default {
         fields: {
           dream: {
             label: 'Dream',
-            error: 'Please fill out this field.'
+            error: "Write down your dream - it's good to write down as many details as you can remember, being very specific with key words"
           }
         }
       }
@@ -83,9 +83,8 @@ export default {
 4: {
   type:t.String,
   options:{
-    label:'What are your life dreams? This doesn’t have to be restricted to what your literal dreams (during sleep) are. Right now, go beyond 2020 and even your 20/20 BHAGs (from Day 21’s Assignment)... and allow yourself to dream, in this moment, about everything you want your life to be. Anything is possible. Describe what you see.',
-    auto: 'none',
-    error: 'Please fill out this field.'
+    label:'What are your life dreams? This doesn’t have to be restricted to what your literal dreams (during sleep) are. Right now, go beyond 2020 and even your 20/20 BHAGs (from Day 21’s Assignment)',
+    error: 'Allow yourself to dream, in this moment, about everything you want your life to be. Anything is possible. Describe what you see..'
   }
 }
 };

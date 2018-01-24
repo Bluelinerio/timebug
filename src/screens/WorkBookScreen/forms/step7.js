@@ -27,8 +27,8 @@ export default {
               },
               item: {
                fields: {
-                 goal:{error: 'Please fill out this field.'},
-                 commonGoalOutcomes:{error: 'Please select a value.'}
+                 goal:{error: 'Please enter a goal.'},
+                 commonGoalOutcomes:{error: 'Please select a Goal Outcome.'}
                } 
               }
             },
@@ -41,18 +41,10 @@ export default {
         }
       },
     2: {
-        type: t.struct({
-                observations: t.String              
-        }),
+        type:  t.String,
         options: {
-          fields: {
-            observations: {
               error: 'Please fill out this field.',
-              label:"Write down a few observations about any patterns that emerge, and what you believe is behind them.",       
-              auto:'placeholders',
-              disableOrder: true
+              label:"Write down a few observations about any patterns that emerge, and what you believe is behind them."
             },
-          }
-        }
-      }  
+          }  
 };

@@ -26,18 +26,20 @@ export default {
               item:{
                 fields:{
                   roleModel: {
-                    error:'Please fill out this field.'
+                    auto:'labels',
+                    error:'Please enter the name of a Role Model.'
                   },
                   lifeCategory:{
                     auto:'labels',
-                    error: 'Please select a value.'
+                    error: 'Please select a Life Category.'
                   },
                   interactionFrequency:{
                     auto:'labels',
-                    error: 'Please select a value.'
+                    error: 'How often do you interact with this person?'
                   },
                   why: {
-                    error:'Please fill out this field.'
+                    label:'Why?',
+                    error:'Why would this person make a good role model for you?'
                   }
                 }
               },

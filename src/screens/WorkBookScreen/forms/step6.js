@@ -8,21 +8,8 @@ export default {
             field: t.list(
               t.struct({
                 significantOther: t.String,
-                goalOne:t.String,
-                goalOneSupportPlan: t.String,
-                goalOneTimeRequired: t.String,
-                goalTwo:t.String,
-                goalTwoSupportPlan: t.String,
-                goalTwoTimeRequired: t.String,
-                goalThree:t.String,
-                goalThreeSupportPlan: t.String,
-                goalThreeTimeRequired: t.String,
-                goalFour: t.maybe(t.String),
-                goalFourSupportPlan: t.maybe(t.String),
-                goalFourTimeRequired: t.maybe(t.String),
-                goalFive: t.maybe(t.String),
-                goalFiveSupportPlan: t.maybe(t.String),
-                goalFiveTimeRequired: t.maybe(t.String)
+                goals:t.String,
+                supportPlan: t.String
               })
             )
         }),
@@ -41,16 +28,9 @@ export default {
               },
               item: {
                 fields: {
-                  significantOther: {error: 'Please fill out this field.'},
-                  goalOne:{error: 'Please fill out this field.'},
-                  goalOneSupportPlan: {error: 'Please fill out this field.'},
-                  goalOneTimeRequired: {error: 'Please fill out this field.'},
-                  goalTwo:{error: 'Please fill out this field.'},
-                  goalTwoSupportPlan: {error: 'Please fill out this field.'},
-                  goalTwoTimeRequired: {error: 'Please fill out this field.'},
-                  goalThree:{error: 'Please fill out this field.'},
-                  goalThreeSupportPlan: {error: 'Please fill out this field.'},
-                  goalThreeTimeRequired: {error: 'Please fill out this field.'}
+                  significantOther: {error: 'Choose someone in your life who you want to, and are able to help.'},
+                  goals:{error:'Think about 3-5 goals you would like to help this person with.'},
+                  supportPlan: {error:'How will you help with these goals, and how much time will it require?'}
                 }
               }
             },

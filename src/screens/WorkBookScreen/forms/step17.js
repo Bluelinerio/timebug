@@ -1,12 +1,12 @@
 import t from "../components/templates";
-import { CommonGoalOutcomes } from "./contents";
+import { CommonGoalOutcomes, OneToTenScale } from "./contents";
 
 export default {
   1: { 
       type:t.struct({
         id:t.maybe(t.String),
-        selfTreatment: t.Number,
-        selfTreatmentLearningCurve: t.Number,
+        selfTreatment: OneToTenScale,
+        selfTreatmentLearningCurve: OneToTenScale,
         messagesInHead: t.String,
         messagesJudgeSelf: t.String,
         peopleValued: t.list(
@@ -25,12 +25,12 @@ export default {
           },
           selfTreatment:{
             label:'How do you typically treat yourself?(Using a 10-pt scale with 1=no value at all to 10=tremendous)',
-            error: 'Please fill out the field.'
+            error: 'Please select a value.'
             
           },
           selfTreatmentLearningCurve: {
             label: 'How do you treat yourself in the process of having a learning curve, which inevitably involves making mistakes and learning from failures.(Using a 10-pt Scale with 1=little patience to 10=very patient and nurturing).',
-            error: 'Please fill out the field.'
+            error: 'Please select a value.'
           },
          messagesInHead: {
            label: 'What messages run in your head on a daily basis about yourself',
@@ -69,10 +69,10 @@ export default {
   },
   2:{
     type:t.struct({
-      givingToOthers:t.Number,
-      trustValue: t.Number,
-      comfortableReceiving: t.Number,
-      worthyAndComfortable: t.Number,
+      givingToOthers:OneToTenScale,
+      trustValue: OneToTenScale,
+      comfortableReceiving: OneToTenScale,
+      worthyAndComfortable: OneToTenScale,
       relationshipQualityGoals: t.list(
         t.struct({
           goal: t.String,
@@ -80,7 +80,7 @@ export default {
         })
       ),
       intimateRelationship: t.Boolean,
-      communicationEval: t.Number,
+      communicationEval: OneToTenScale,
       relationshipsImproved: t.list(
         t.struct({
           person:t.String,
@@ -89,26 +89,26 @@ export default {
       ),
       offeredGifts: t.String,
       rememberFeel: t.String,
-      nextTimeReceive: t.maybe(t.String)
+      nextTimeReceive: t.String
      }),
      options: {
       label:'Take time to evaluate your relationship to others.',
        fields: {
          givingToOthers: {
            label: 'How comfortable do you feel giving to others in your daily life?(Using a 10-pt scale with 1=not at all comfortable and 10=very much comfortable).',
-           error: 'Please fill out the field.'
+           error: 'Please select a value.'
          },
          trustValue: {
            label: 'Do you trust the value of what you have to offer or do you tend to second guess your choices? (Using a 10 pt scale with 1=no true value and 10=trusting and valueing what you give fully).',
-           error: 'Please fill out the field.'
+           error: 'Please select a value.'
          },
          comfortableReceiving: {
            label: 'How comfortable do you feel receiving from others in your daily life?(Using a 10-pt scale with 1=not at all comfortable and 10=very much comfortable).',
-           error: 'Please fill out the field.'
+           error: 'Please select a value.'
          },
          worthyAndComfortable: {
            label: 'Do you feel worthy and comfortable, even with compliments or acknowledgments that come your way? Or do you deflect and belittle the moment in some way? (Using a 10-pt Scale with 1=fully valuing and  appreciating what has been shared to 10=deep discomfort with the whole thing)',
-           error: 'Please fill out the field.'
+           error: 'Please select a value.'
           },
           relationshipQualityGoals:{
             label: 'What goals have you had in terms of Relationship Quality(RQ) over the past five years?',
@@ -125,12 +125,11 @@ export default {
             }
           },
           intimateRelationship: {
-            label: 'Have you had an intimate, committed relationship over the past 5 years?',
-            error: 'Please fill out this field.'
+            label: 'Have you had an intimate, committed relationship over the past 5 years?'
           },
           communicationEval: {
             label: 'If yes, how would you evaluate the quality of the connection and communication, on the whole? (Using a 10-pt Scale with 1= a major struggle to 10= the ultimate connection)',
-            error: 'Please fill out the field.'
+            error: 'Please select a value.'
             
           },
           relationshipsImproved: {
@@ -139,26 +138,26 @@ export default {
               fields: {
                 person: {
                   placeholder: 'Person',
-                  error: 'Please fill out the field.'
+                  error: "Please enter a person's name"
                 },
                 how: {
-                  placeholder: 'How so?',
-                  error: 'Please fill out the field.'
+                  placeholder: 'I made an effort to spend more time...',
+                  error: 'How did this relationship improve?'
                 }
               }
             }
           },
           offeredGifts: {
             label: 'Think of some moments in your history when you have offered gifts (whether material things or time and energy invested) that you were most excited to give.',
-            error: 'Please fill out the field.'
+            error: 'Briefly describe each event in 3-5 words.'
           },
           rememberFeel: {
             label: "Now remember how it made YOU feel to be able to touch someone's life in a meaningful way. It most likely opened your heart and created very pleasureable feelings, adding to a sense of having value to add to someone's life.",
-            error: 'Please fill out the field.'
+            error: 'Try to use key words and specific emotions.'
           },
           nextTimeReceive : {
             label:'Next time you face the opportunity of receiving, whether it is a physical gift, a compliment or an investment of time and energy into your life... remember that the other person has the opportunity to experience the same pleasure and trust that they have something of value to offer.',
-            error: 'Please fill out the field.'
+            error: 'In a sentence or two, write down your reaction to this statement.'
           }
        }
      }

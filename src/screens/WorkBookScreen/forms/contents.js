@@ -339,9 +339,174 @@ export const IndulgeFrequency = t.enums.of([
         
         
 export const TakeEnergizers = t.enums.of([
-  'Never',
-  'Only when really sick',
-  'Occasionally',
-  'Frequently',
-  'Daily'
-  ],'TakeEnergizers')    
+          'Never',
+          'Only when really sick',
+          'Occasionally',
+          'Frequently',
+          'Daily'
+          ],'TakeEnergizers')    
+
+
+export const OneToTenScale = t.enums.of([
+          '1',
+          '2',
+          '3',
+          '4',
+          '5',
+          '6',
+          '7',
+          '8',
+          '9',
+          '10'
+            ],'OneToTenScale')  
+
+export const OverallScore = t.enums.of([
+              '5',
+              '6',
+              '7',
+              '8',
+              '9',
+              '10',
+              '11',
+              '12',
+              '13',
+              '14',
+              '15',
+              '16',
+              '17',
+              '18',
+              '19',
+              '20',
+              '21',
+              '22',
+              '23',
+              '24',
+              '25',
+              '26',
+              '27',
+              '28',
+              '29',
+              '30',
+              '31',
+              '32',
+              '33',
+              '34',
+              '35',
+              '36',
+              '37',
+              '38',
+              '39',
+              '40',
+              '41',
+              '42',
+              '43',
+              '44',
+              '45',
+              '46',
+              '47',
+              '48',
+              '49',
+              '50'
+                ],'OneToTenScale')  
+            
+export const StrengthOfI = t.enums.of([        
+              'Very Strong',
+              'Strong',
+              'Mid Line',
+              'Weak',
+              'Very Weak'
+            ],'StrengthOfI')
+
+export const PercentCompleted = t.enums.of([
+              '0-10%',
+              '10-20%',
+              '20-30%',
+              '30-40%',
+              '40-50%',
+              '50-60%',
+              '60-70%',
+              '70-80%',
+              '80-90%',
+              '90-100%'
+              ],'PercentCompleted')  
+ 
+export const TimeShift = t.enums.of([
+                'A lot less free time',
+                'A little less free time',
+                'No signifcant change',
+                'A little more free time',
+                'A lot more free time'
+                ],'TimeShift')  
+
+
+export const HoursPerWeek = t.enums.of([
+               'Less than 20',
+               '20-30',
+               '30-40',
+               '40-50',
+               'More Than 50'
+                   ],'HoursPerWeek') 
+                   
+                   
+
+export const TimeChanged = t.enums.of([
+  'Decreased by more than 10 hours',
+  'Decreased by 0-10 hours',
+  'No significant change',
+  'Increased by 0-10 hours',
+  'Increased by more than 10 hours'
+      ],'TimeChanged') 
+      
+      
+export const InternalExternal = t.enums.of([
+        'Internal',
+        'External',
+        'Both'
+            ],'InternalExternal')  
+
+      
+ export const TimeSpent = t.enums.of([
+        'Less than an hour',
+        '1-3 hours',
+        '3-6 hours',
+        '6-10 hours',
+        'More than 10 hours'
+            ],'TimeSpentMonth')  
+
+
+export const IsSleepEnough = t.enums.of([
+         'I get enough sleep',
+         'I need another hour per night',
+         'I need another two hours per night',
+         'I need another three hours per night',
+         'I need another four hours per night'
+           ],'IsSleepEnough')  
+
+
+export const SpiritualViews = t.enums.of([
+          "I have strong spiritual beliefs, and regular spiritual practice(s)",
+          "I have strong spiritual beliefs, but don't have a regular spiritual practice",
+          "I have beliefs/interest, but I haven't yet made much time in my life for this",
+          "I have difficulty or am uninterested in this aspect of life"
+              ],'SpiritualViews')  
+
+export const TimeSpentProgress = t.enums.of([
+            "I made progress with some of my goals",
+            "I made progress with all of my goals",
+            "I reached all of my goals",
+            "I haven't made any progress"
+                 ],'TimeSpentProgress')  
+
+
+export const ActivityFeelings = t.enums.of([
+                  "I'm completely fulfilled",
+                  "I'm partially fulfilled but could challenge myself more",
+                  "I have fun and I'm not interested in challenging myself",
+                  "I want to progress and am frustrated with my inability to do so",
+                  "I'm bored by this activity"
+                       ],'ActivityFeelings')  
+                 
+            
+
+
+           
