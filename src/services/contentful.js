@@ -1,8 +1,13 @@
 // @flow
 
+// testing the API : https://npm.runkit.com/contentful
 import { createClient } from 'contentful'
-import { CONTENTFUL_CREDENTIALS } from '../constants/config'
 import type { Step, Colors } from './cms'
+
+export const CONTENTFUL_CREDENTIALS = {
+  "accessToken": 'c139e7f2a7a86fc0813e71fbb18bb7b1921189ce4d7cc58c7f0ccc0022adee5f',
+  "space": '1gbed7lrsmj4' 
+};
 
 export const CONTENTFUL_CONTENT_STEP = 'day'
 export const CONTENTFUL_CONTENT_LOGIN = 'login'
@@ -18,8 +23,19 @@ const colorsFromResponse = response => ({
 	colors: response.items[0].fields.schema
 })
 
+const AddWorkbookDurationMinValueIfNotPopulated = (step: Step) => ({
+	...step,
+	workbookDurationMin: step.workbookDurationMin || 15,
+	duration: step.duration || 15
+})
+
+const unlinkStepField = (items) => items.reduce((steps, step) => ({ 
+	...steps, 
+	[step.fields.number]: AddWorkbookDurationMinValueIfNotPopulated(step.fields)
+}), {});
+
 const stepsFromResponse = response => ({
-	steps: response.items.reduce((steps, step) => ({ ...steps, [step.fields.number]: step.fields }), {})
+	steps: unlinkStepField(response.items)
 });
 
 export const fetchAbout = () => contentfulClient
@@ -43,15 +59,13 @@ export const refreshCMS = () => Promise.all([
 	...responses[1],
 	...responses[2]
 })
-).then(test);
+)
 
-
-const test = (object) => {
-	if(__DEV__) {
-		if(!object.colors.steps) { throw 'failed validating contenful response' }
-		if(!object.colors.phases) { throw 'failed validating contenful response' } 
-		const steps = Object.values(object.steps)
-		if(steps.length !== 30) { throw 'failed validating contenful response' }
+export const testContentFromCMS = (object) => {
+	if( !object.colors.steps) { throw 'failed validating contenful response' }
+	if(!object.colors.phases) { throw 'failed validating contenful response' } 
+	const steps = Object.values(object.steps)
+	if(steps.length !== 30) { throw 'failed validating contenful response' }
 		for (let index = 1; index < 31; index++) {
 			const number = index.toString()
 			const step = object.steps[number];
@@ -59,6 +73,5 @@ const test = (object) => {
 				throw `failed validating contenful response step ${index}`;
 			}
 		}
-	}
 	return object;
 }

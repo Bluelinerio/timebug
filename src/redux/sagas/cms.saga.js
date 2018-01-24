@@ -5,12 +5,16 @@ import { delay } from 'redux-saga'
 import { REFRESH_CMS } from '../actions'
 import { incrementRequestCount, decrementRequestCount } from '../actions/network.actions'
 import { FETCH_CMS } from '../actions/cms.actions'
-import { refreshCMS } from '../../services/contentful';
+import { refreshCMS, testContentFromCMS } from '../../services/contentful';
 import networkState from '../../utils/networkState'
-import { Colors, Step } from '../../services/cms'
+import type { Colors, Step } from '../../services/cms'
 import { request } from '../../Modules/redux-saga-request'
 
 function * _fetchCms() {
+	if(__DEV__) {
+		const cms = yield request(FETCH_CMS, () => refreshCMS().then(testContentFromCMS) )
+		
+	}
 	return yield request(FETCH_CMS, refreshCMS)
 }
 

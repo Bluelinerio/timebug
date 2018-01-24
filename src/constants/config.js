@@ -1,19 +1,4 @@
 import { ENV, TESTUSERID } from '../../config.json'
-export const CONTENTFUL_CREDENTIALS = {
-  accessToken: 'c139e7f2a7a86fc0813e71fbb18bb7b1921189ce4d7cc58c7f0ccc0022adee5f',
-  space: '1gbed7lrsmj4',  
-};
-
-export const APOLLO_ENDPOINT = 'https://api.graph.cool/simple/v1/cj9w55w851t2l015262zjbauu';
-// 'http://localhost:3000/'
-
-
-export const APOLLO_CONFIG = {
-  uri: APOLLO_ENDPOINT,
-  opts: {
-    mode: 'no-cors',
-  },
-}
 
 // There will be a race condition between fetching the cms and the previous version, but we assume that it's going to be faster to rehydrate than to call the cms.
 export const persistConfig = {
