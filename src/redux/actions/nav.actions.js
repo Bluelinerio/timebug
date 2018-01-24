@@ -61,7 +61,7 @@ export const navigateToAssignmentLeadInScreen = (props: any) => navigateWith({ p
 export const goToWorkBookScreen               = (props: any) => navigateWith({ props, routeName:'WorkBookScreen' })
 export const goToAssignmentLeadInScreen       = (props: any) => navigateWith({ props, routeName:'AssignmentLeadInScreen' })
 export const goToAssignmentDoneScreen         = (props: any) => navigateWith({ props, routeName:'AssignmentDoneScreen' })
-export const goToAssignmentFlow               = (number:number) => navigateToStep({ number, routeName: 'AssignmentFlow' })
+export const goToAssignmentFlow               = (number: number) => navigateToStep({ number, routeName: 'AssignmentFlow' })
 export const previousFormOrBack               = selectPutAction((state: any) => {
   const lastRoute = state.nav.routes.find(
     /* $FlowFixMe */

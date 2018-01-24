@@ -38,9 +38,8 @@ const AssignmentFlowNavigator = StackNavigator(
 )
 
 
-export const initialRouteName = 'HomeScreen'
-const Main = StackNavigator(
-  {
+export const root = {
+  screens: {
     HomeScreen : {
       screen: HomeScreen,
     },
@@ -49,8 +48,8 @@ const Main = StackNavigator(
       path: 'step'
     }
   },
-  {
-    initialRouteName:HomeScreen,
+  options: {
+    initialRouteName: 'HomeScreen',
 		mode: Platform.OS === 'ios' ? 'modal' : 'card',
     headerMode: 'none',
     cardStyle: {
@@ -58,17 +57,20 @@ const Main = StackNavigator(
       opacity: 1
     },
   }
-);
+}
+
+export const RootNavigator = StackNavigator(root.screens, root.options)
+
 
 // fix for debouncing
 import { fixDebounce } from './util';
-fixDebounce(Main)
+fixDebounce(RootNavigator)
 fixDebounce(AssignmentFlowNavigator);
 // remove once fixed...
 
-const previousGetActionForPathAndParams = Main.router.getActionForPathAndParams;
+const previousGetActionForPathAndParams = RootNavigator.router.getActionForPathAndParams;
 
-Object.assign(Main.router, {
+Object.assign(RootNavigator.router, {
   getActionForPathAndParams(path, params) {
      const key = path.split('/')[1]
     if (key === 'step') {
@@ -85,6 +87,3 @@ Object.assign(Main.router, {
     return previousGetActionForPathAndParams(path, params);
   },
 });
-
-
-export default Main;

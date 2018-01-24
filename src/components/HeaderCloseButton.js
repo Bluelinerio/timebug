@@ -30,6 +30,7 @@ class HeaderCloseButton extends React.PureComponent<DefaultProps, Props, State> 
     pressColorAndroid: 'rgba(0, 0, 0, .32)',
     tintColor: Platform.select({
       ios: '#037aff',
+      android: 'white'
     })
   }
 
@@ -60,8 +61,8 @@ class HeaderCloseButton extends React.PureComponent<DefaultProps, Props, State> 
           <Icon 
             style={styles.icon}
             name={'md-close'} 
-            size={width} 
-            color={tintColor || white} 
+            size={width || StyleSheet.flatten(styles.icon).width} 
+            color={tintColor} 
           />
         </View>
       </TouchableItem>
@@ -78,17 +79,17 @@ const styles = StyleSheet.create({
   icon:
     Platform.OS === 'ios'
       ? {
-          height: 21,
-          width: 13,
-          marginLeft: 10,
-          marginRight: 22,
-          marginVertical: 12,
+          height: 24,
+          width: 24,
+          marginLeft: 15,
+          marginRight: 17,
+          marginVertical: 7,
           transform: [{ scaleX: I18nManager.isRTL ? -1 : 1 }],
         }
       : {
           height: 24,
           width: 24,
-          margin: 16,
+          padding: 16,
           transform: [{ scaleX: I18nManager.isRTL ? -1 : 1 }],
         }
       })

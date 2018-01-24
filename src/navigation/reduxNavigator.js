@@ -6,8 +6,7 @@ import {
 import { BackHandler, Linking }
                               from "react-native";
 import { connect }            from 'react-redux';
-import Navigator              from './navigator';
-import * as NavigationService from '../HOC/navigation'
+import { RootNavigator }      from './navigation';
 import { uriPrefix }          from '../constants'
 
 const mapStateToProps = state => ({ nav: state.nav });
@@ -31,7 +30,7 @@ class ReduxNavigation extends React.Component {
   handleUrl(url) {
     const { dispatch } = this.props;
     const path = url.split(uriPrefix)[1] || url;
-    const action = Navigator.router.getActionForPathAndParams(path);
+    const action = RootNavigator.router.getActionForPathAndParams(path);
     if (action) {
       dispatch(action);
     }
@@ -52,8 +51,7 @@ class ReduxNavigation extends React.Component {
       dispatch,
       state: nav
     });
-    NavigationService.setNavigator(navigation);
-    return <Navigator navigation={navigation} />;
+    return <RootNavigator navigation={navigation} />;
   }
 }
 

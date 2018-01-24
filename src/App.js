@@ -10,7 +10,7 @@ import ReduxNavigator               from './navigation/reduxNavigator';
 import { APP_NAME }                 from './constants';
 import DefaultIndicator             from './components/DefaultIndicator'
 import Error                        from './components/Error'
-import                                  './styles';
+
 if (__DEV__) {
   XMLHttpRequest = GLOBAL.originalXMLHttpRequest ?
                    GLOBAL.originalXMLHttpRequest :

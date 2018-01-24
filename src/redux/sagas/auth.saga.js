@@ -18,9 +18,6 @@ import type { Request } from '../../Modules/redux-saga-request'
 import { CANCELLED_ERROR } from './globals'
 import type { ErrorActionType } from './globals'
 
-//import { reset } from '../../HOC/navigation'
-// yield reset('HomeScreen')
-
 type TokenResultType = { token: string }
 type LogoutResult = boolean
 const GOT_NULL_USER_ERROR = { error: 'got null user' }

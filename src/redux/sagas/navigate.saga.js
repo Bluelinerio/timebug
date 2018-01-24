@@ -6,7 +6,6 @@ import {
 	SAGA_NAVIGATE
 } from '../actionTypes';
 import { NavigationActions } from 'react-navigation';
-import * as navigation from '../../HOC/navigation';
 import type, { Assignment } from '../../services/cms';
 
 
@@ -28,9 +27,9 @@ export function * watchForsagaNavigate() {
 
 const _goToHomeScreen = (action: { reset: boolean, number: number }) => {
 	if (action.reset) {
-		navigation.reset('HomeScreen', action);
+		return NavigationActions.reset('HomeScreen', action);
 	} else {
-		navigation.navigate('HomeScreen', action);
+		return NavigationActions.navigate('HomeScreen', action);
 	}
 };
 

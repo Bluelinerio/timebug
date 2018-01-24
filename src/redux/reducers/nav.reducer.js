@@ -1,10 +1,10 @@
-import navigator, { initialRouteName } from '../../navigation/navigator';
+import { RootNavigator, root } from '../../navigation/navigation';
 
-const initialState = navigator.router.getStateForAction(
-  navigator.router.getActionForPathAndParams(initialRouteName)
+const initialState = RootNavigator.router.getStateForAction(
+  RootNavigator.router.getActionForPathAndParams(root.options.initialRouteName)
 );
 
 export default function (state = initialState, action) {
-  const newState = navigator.router.getStateForAction(action, state);
+  const newState = RootNavigator.router.getStateForAction(action, state);
   return newState || state;
 }
