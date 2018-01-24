@@ -9,10 +9,11 @@ import {
 import cmsSaga                                from './sagas/cms.saga';
 import { formLoaderSaga }                     from './sagas/forms.saga';
 import { watchForSelectPutAction }            from './selectPutAction';
+import { appStateSagaWatcher }                from './sagas/appState.saga'
 import { watchForThrottleAction }             from './throttle';
-
 function * appSaga() {
   yield all([
+    appStateSagaWatcher(),
     watchForSelectPutAction(),
     watchForThrottleAction(),
     cmsSaga(),
