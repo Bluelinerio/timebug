@@ -3490,9 +3490,9 @@ react-native-svg-image@^2.0.0:
     color "^2.0.1"
     lodash "^4.16.6"
 
-react-native-swiper@^1.5.12:
-  version "1.5.12"
-  resolved "https://registry.yarnpkg.com/react-native-swiper/-/react-native-swiper-1.5.12.tgz#fe040e19d936304013f1671dd83f7e25ee3c4d83"
+react-native-swiper@^1.5.13:
+  version "1.5.13"
+  resolved "https://registry.yarnpkg.com/react-native-swiper/-/react-native-swiper-1.5.13.tgz#fa695cd4ab77b9a9df2d2bfee38ea7274dd07a2e"
   dependencies:
     prop-types "^15.5.10"
 
