@@ -48,7 +48,9 @@ export default function customList(locals) {
   let addButton = itemsCount && itemsCount >= locals.config.maxLines ? null : locals.add ? renderRowButton(locals.add, stylesheet) : null;
 
   return (
-    <View style={[fieldsetStyle, { flex:1 }]}>
+    <View style={[fieldsetStyle, { 
+      flex:1
+    }]}>
       {label}
       {error}
       {addButton}

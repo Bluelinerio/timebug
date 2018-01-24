@@ -34,6 +34,7 @@ export const LifeCategory = t.enums.of([
 ], 'LifeCategory');
 
 export const Emotion = t.enums.of([
+  'Awesome',
   'Happy',
   'Sad',
   'Excited',
@@ -176,8 +177,6 @@ export const ExerciseTypes = t.enums.of([
   'Other'
 ], 'ExerciseTypes');
 
-
-
 export const GoalTypes = t.enums.of([
   'Energy & Time Allocation',
   'Achievement & Skills',
@@ -257,12 +256,12 @@ export const AloneOrOthers = t.enums.of([
 ], 'AloneOrOthers')
 
 export const DreamsRemember = t.enums.of([
-'Daily',
-'Most of the time,',
-'Occasionally',
-'Rarely',
-'Never'
-],'DreamsRemember')
+  'Daily',
+  'Most of the time,',
+  'Occasionally',
+  'Rarely',
+  'Never'
+  ],'DreamsRemember')
 
 export const DescribeProcess = t.enums.of([
   "I haven't done anything",
@@ -271,6 +270,18 @@ export const DescribeProcess = t.enums.of([
   'Super detailed and consistent',
   'Thorough + working with a coach or peer group'
   ],'DescribeProcess')
+
+export const SatiffactionFromCurrentResult = t.enums.of([
+  'Far better!',
+  'Better.',
+  'It has improved, more needed',
+  'It has improved slightly, much work is needed',
+  'Same',
+  'Not as good',
+  'It degraded slightly',
+  'It had Gotten much worst!',
+
+], 'SatiffactionFromCurrentResult');
 
 export const ChangeKind = t.enums.of([
   'Same',
@@ -292,44 +303,45 @@ export const CreditScore = t.enums.of([
   'Good - 700 to 749',
   'Fair - 650 to 699',
   'Poor - 551 to 649',
-  'Bad - 550 and below'
+  'Bad - 550 and below',
+  'I do not know.'
 ], 'CreditScore' );
 
 export const UseWearableTech = t.enums.of([
-    'Never',
-    'Sometimes',
-    'Often',
-    'Always'
-    ],'UseWearableTech')
+  'Never',
+  'Sometimes',
+  'Often',
+  'Always'
+  ],'UseWearableTech')
 
 export const PaidFairly = t.enums.of([
-      'Beyond Fair',
-      'Not Fair',
-      'Just Right'
-      ],'PaidFairly')
+  'Beyond Fair',
+  'Not Fair',
+  'Just Right'
+  ],'PaidFairly')
 
 export const WhereStandToday = t.enums.of([
-      'I am way behind where I wanted to be',
-      'I am a little behind but close',
-      'I am right where I need to be',
-      'I am a little ahead',
-      'I am way ahead of where I imagined I would be'
-      ],'WhereStandToday')      
+  'I am way behind where I wanted to be',
+  'I am a little behind but close',
+  'I am right where I need to be',
+  'I am a little ahead',
+  'I am way ahead of where I imagined I would be'
+  ],'WhereStandToday')      
 
 export const IndulgeFrequency = t.enums.of([
-        'Daily',
-        '1-2x/wk',
-        'I am right where I need to be',
-        'Occasionally(1-2x/mo)',
-        'Rarely',
-        'Never'
-        ],'IndulgeFrequency')     
+  'Daily',
+  '1-2x/wk',
+  'I am right where I need to be',
+  'Occasionally(1-2x/mo)',
+  'Rarely',
+  'Never'
+  ],'IndulgeFrequency')     
         
         
 export const TakeEnergizers = t.enums.of([
-          'Never',
-          'Only when really sick',
-          'Occasionally',
-          'Frequently',
-          'Daily'
-          ],'TakeEnergizers')    
+  'Never',
+  'Only when really sick',
+  'Occasionally',
+  'Frequently',
+  'Daily'
+  ],'TakeEnergizers')    

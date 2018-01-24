@@ -1,5 +1,12 @@
 import t from "../components/templates";
-import { WhereStandToday, Emotion, CreditScore, ChangeKind, EffortEvaluation } from "./contents";
+import { 
+  WhereStandToday, 
+  Emotion, 
+  CreditScore, 
+  ChangeKind, 
+  EffortEvaluation, 
+  SatiffactionFromCurrentResult 
+} from "./contents";
 
 export default {
   1: {
@@ -10,7 +17,7 @@ export default {
       othersView: t.maybe(t.Boolean)
     }),
     options: {
-      label: "Let's do some work about your relationship with money...",
+      label: "💵\n\nLet's do some work about your relationship with money...",
       fields: {
         id: {
           hidden: true
@@ -21,7 +28,7 @@ export default {
         },
         selfView: {
           label: "In one or two sentences, describe your attitude towards money today",
-          error: 'Even one words will work...'
+          error: 'One or two words will work too...'
         },
         othersView: {
           label: "How do others perceive your relationship to money can be help you work through it. Would you like to try engage someone with that questions?",
@@ -90,24 +97,24 @@ export default {
   },
   4: {
     type: t.struct({
-      reflection: t.String,
-      compare1: t.String,
-      compare2: WhereStandToday
+      reflection: Emotion,
+      compare1: WhereStandToday,
+      compare2: SatiffactionFromCurrentResult,
     }),
     options: {
-      label: "Create a quick personal Balance Sheet using the 20/20 Worksheet as a guide.",
+      label: "📊\n\nLet's create a quick personal Balance Sheet",
       fields: {
         reflection: {
-          label: "Reflecting on your Balance Sheet, how do you feel?(Use keywords or phrases)",
-          error:'Please fill out this field.'
+          label: "Reflecting on your Balance Sheet, how do you feel?",
+          error:'Choose one'
         },
         compare1: {
-          label: "How does this picture compare to where you stood in 2011?",
-          error:'Please fill out this field.'
+          label: 'Where do you stand today compared to what you had envisioned for yourself?',
+          error: 'Please fill out this field.'
         },
         compare2: {
-          label:'Where do you stand today compared to what you had envisioned for yourself?',
-          error:'Please fill out this field.'
+          label: "How does this picture compares with where you stood 4 years ago?",
+          error: 'Choose one'
         }
       }
     }
@@ -116,10 +123,8 @@ export default {
   5: {
     type: t.struct({
       assets: t.struct({
-        liquidAssets: t.list(
-          t.struct({
-            liquidAsset: t.String
-          })
+        liquidAssets:t.list(
+          t.String
         ),
         properties: t.list(
           t.struct({
@@ -129,16 +134,8 @@ export default {
         totalAssets: t.Number
       }),
       liabilities: t.struct({
-        shortTermDebts: t.list(
-          t.struct({
-            shortTermDebt: t.String
-          })
-        ),
-        longTermDebts: t.list(
-          t.struct({
-            longTermDebt: t.String
-          })
-        ),
+        shortTermDebts: t.list(t.String),
+        longTermDebts: t.list(t.String),
         totalLiabilities: t.Number
       }),
       totalPersonalEquity: t.Number,
@@ -178,16 +175,15 @@ export default {
       net: t.Number
     }),
     options: {
-      label: "Create a quick personal Profit & Loss Statement using the 20/20 Worksheet as a guide. It is your choice as to whether to focus on your own individual P&L versus as a couple, if you are married.",
+      label: "📊\n\nLet's create a quick personal Profit & Loss Statement \nIt is your choice as to whether to focus on your own individual P&L versus as a couple, if you are married.",
       error: "Please fill out all the fields.",
       fields : {
         plSheetReflection: {
           label:'Take some time to reflect on your P&L sheet',
           fields: {
             reflection: {
-              label:'How do you feel?[Use a few keywords of phrases]',
-              error:'Please fill out this field.'
-              
+              label:'\nUse a few keywords of phrases to describe how you feel',
+              error:''
             },
             compare1: {
               label:'How does this picture compare to where you stood in 2011?',
@@ -226,12 +222,10 @@ export default {
       assets: {
         fields: {
           liquidAssets: {
+            label: 'Add your Liquid Assets to this list',
             item: {
-              fields: {
-                liquidAsset: {
-                  error:'Please fill out this field.'
-                }
-              }
+              label: 'What is this asset?',
+              error: 'two three words are expected.'
             }
           },
           properties: {
@@ -249,20 +243,14 @@ export default {
     fields: {
       shortTermDebts: {
         item: {
-          fields: {
-            shortTermDebt: {
-              error:'Please fill out this field.'
-            }
-          }
+          label: 'What is this debt?',
+          error: 'two three words are expected.'
         }
       },
       longTermDebts: {
         item: {
-          fields: {
-            longTermDebt: {
-              error:'Please fill out this field.'
-            }
-          }
+          label: 'How would you call or name it?',
+          error:'Please fill out this field.'
         }
       }
 }
