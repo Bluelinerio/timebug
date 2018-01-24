@@ -8,7 +8,6 @@ import Markdown  						from '../../../Modules/Markdown';
 import AssignmentNumber 		from './AssignmentNumber';
 import BeginWorkbookButton 	from '../containers/BeginWorkbookButton';
 import markdownStyles 			from '../../../styles/Markdown/assignment'
-import { animateStyle } 		from '../../../animations'
 
 class AnimateWrapper extends PureComponent {
   render() {
