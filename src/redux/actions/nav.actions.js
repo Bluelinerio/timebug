@@ -22,9 +22,14 @@ export const doneWithCongratsScreen     = () => action(GO_TO_HOME_SCREEN, { rese
 export const goToHomeScreen             = (props: any) => action(GO_TO_HOME_SCREEN, props);
 
 const navigateWith = ({ routeName, props }) => {
-  const step: number = props.step ? props.step.number
-    : (props.navigation && props.navigation.state && props.navigation.state.params) ? props.navigation.state.params.step 
-    : props.number;
+  const step: number = props.step 
+    ? props.step.number
+    : 
+      props.navigation 
+      && props.navigation.state 
+      && props.navigation.state.params 
+      && props.navigation.state.params.step 
+      || props.number;
 
   testStep(step);
 

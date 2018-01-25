@@ -1,6 +1,7 @@
 // @flow
 import React, { PureComponent } from 'react';
-import { View, ScrollView, Text, StatusBar, SafeAreaView } from 'react-native';
+import { View, Text, ScrollView, TouchableHighlight } from 'react-native';
+import { NavigationAction } 				from 'react-navigation'
 
 import styles, { colors }           from '../styles';
 import { sliderWidth, itemWidth }   from '../styles/SliderEntry.style';
@@ -47,8 +48,12 @@ export default class HomeScreen extends PureComponent<Props, State> {
 						itemWidth={itemWidth}
 						sliderWidth={sliderWidth}
 						snap={index => this.setState({ stepIndexInFocus: index })}
-          />
+					/>
+
 				</ScrollView>
+				<TouchableHighlight onPress={() => navigation.navigate('Walkthrough')}>
+					<Text> About </Text>
+				</TouchableHighlight>
 			</View>
 		);
 	}

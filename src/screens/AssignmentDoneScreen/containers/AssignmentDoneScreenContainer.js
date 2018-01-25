@@ -5,7 +5,7 @@ import { StyleSheet } from "react-native";
 import { connect } from "react-redux";
 import type { Step } from "../../../services/cms";
 import AssignmentDoneScreen from "../components/AssignmentDoneScreen";
-import type { Prop } from "../components/AssignmentDoneScreen";
+import type { Props } from "../components/AssignmentDoneScreen";
 import { doneWithCongratsScreen as done } from '../../../redux/actions/nav.actions';
 import selectors from '../../../redux/selectors'
 
@@ -15,6 +15,7 @@ const mapStateToProps = (state) => {
   return { steps, colors }
 }
 const merge = (stateProps, dispatchProps, ownProps): Props => {
+  debugger;
   const { colors, steps} = stateProps;
   const { goToAssignmentLeadInScreen } = dispatchProps
   const { navigation: {state:{ params: { step }}}} = ownProps;

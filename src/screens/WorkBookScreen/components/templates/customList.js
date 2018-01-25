@@ -74,8 +74,6 @@ export default function customList(locals) {
         horizontal={false} 
         containerStyle={{ 
           // flex: 1,
-          borderWidth:1,
-          borderColor:'green'
         }} 
         indicatorPosition="none"
         onScrollEnd={(index) => Keyboard.dismiss() }

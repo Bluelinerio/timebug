@@ -58,6 +58,7 @@ export type Props = {
   nextStepDuration: number,
   nextStepNumber: number,
   nextStepColor: string,
+  done:() => void
 }
 
 export default (props: Props) => {

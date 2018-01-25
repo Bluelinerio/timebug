@@ -61,8 +61,6 @@ export default function customTextBox(locals) {
       flex:1,
       marginTop: 22,
       marginBottom:10,
-      borderColor: 'green',
-      borderWidth:1
     }]}>
       {label}
       <View style={[{

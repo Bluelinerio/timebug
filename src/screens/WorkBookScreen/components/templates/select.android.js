@@ -42,16 +42,16 @@ function select(locals) {
   ));
 
   return (
-    <View style={formGroupStyle}>
+    <View style={[formGroupStyle, {
+      borderRadius: 6,
+      borderWidth: 1,
+      borderColor: '#ccc',
+    }]}>
       {label}
       <Picker
         accessibilityLabel={locals.label}
         ref="input"
-        style={[selectStyle,{
-          borderRadius: 5,
-          borderWidth: 1,
-          borderColor: 'green',
-        }]}
+        style={selectStyle}
         selectedValue={locals.value}
         onValueChange={locals.onChange}
         help={locals.help}
