@@ -31,13 +31,31 @@ export default function customTextBox(locals) {
     textboxViewStyle = stylesheet.textboxView.notEditable;
   }
 
-  let label = locals.label ? <Text style={[controlLabelStyle, {textAlign: 'center'}]}>{locals.label}</Text> : null;
-  let help  = locals.help ? <Text style={helpBlockStyle}>{locals.help}</Text> : null;
+  let label = locals.label &&  
+    <Text 
+      style={[controlLabelStyle, {
+        textAlign: 'center'
+      }]}
+    >
+      {locals.label}
+    </Text>
+  
+  const help  = locals.help && 
+    <Text style={[helpBlockStyle, {
+      marginTop:2,
+      paddingHorizontal: 7
+    }]}>
+      {locals.help}
+    </Text>
+
   let error = locals.hasError && locals.error ?
               <Text accessibilityLiveRegion="polite" style={errorBlockStyle}>{locals.error}</Text> : null;
 
   return (
-    <View style={formGroupStyle}>
+    <View style={[formGroupStyle, {
+      marginTop: 10,
+      marginBottom:10
+    }]}>
       {label}
       <View style={textboxViewStyle}>
         <TextInput
@@ -74,7 +92,11 @@ export default function customTextBox(locals) {
           onChangeText={(value) => locals.onChange(value)}
           onChange={locals.onChangeNative}
           placeholder={locals.placeholder}
-          style={textboxStyle}
+          style={[textboxStyle, {
+            borderRadius: 5,
+            borderWidth: 1,
+            borderColor: '#CCC'
+        }]}
           value={locals.value}
         />
       </View>
