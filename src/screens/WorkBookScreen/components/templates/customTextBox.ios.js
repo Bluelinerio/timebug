@@ -7,6 +7,10 @@ if(!styles ) {
   throw 'did not find stlye file'
 }
 
+const PlaformTextInput = (props) => Platform.OS === 'ios' 
+  ? <ExpandingTextInput {...props} /> 
+  : <TextInput  {...props} /> 
+
 export default function customTextBox(locals) {
   if (locals.hidden) {
     return null;
@@ -54,8 +58,11 @@ export default function customTextBox(locals) {
 
   return (
     <View style={[formGroupStyle, {
+      flex:1,
       marginTop: 22,
-      marginBottom:10
+      marginBottom:10,
+      borderColor: 'green',
+      borderWidth:1
     }]}>
       {label}
       <View style={[{
@@ -65,9 +72,9 @@ export default function customTextBox(locals) {
         marginTop: 10,
         justifyContent:'flex-end'
       }]}>
-        <ExpandingTextInput
+        <PlaformTextInput
           accessibilityLabel={locals.label}
-          ref="input"
+          //ref="input"
           autoCapitalize={locals.autoCapitalize}
           autoCorrect={locals.autoCorrect}
           autoFocus={locals.autoFocus}

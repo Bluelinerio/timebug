@@ -47,7 +47,11 @@ function select(locals) {
       <Picker
         accessibilityLabel={locals.label}
         ref="input"
-        style={selectStyle}
+        style={[selectStyle,{
+          borderRadius: 5,
+          borderWidth: 1,
+          borderColor: 'green',
+        }]}
         selectedValue={locals.value}
         onValueChange={locals.onChange}
         help={locals.help}

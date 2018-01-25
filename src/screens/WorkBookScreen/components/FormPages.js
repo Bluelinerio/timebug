@@ -1,6 +1,14 @@
 import React, { Children } from 'react';
-import { Animated, KeyboardAvoidingView, View } from 'react-native';
+import { Animated, KeyboardAvoidingView, View, Platform } from 'react-native';
 import { Pages } from 'react-native-pages';
+
+const Container = (props) => {
+  if(Platform.OS === 'ios') {
+    return <KeyboardAvoidingView {...props} />
+  } else {
+    return <View {...props} />
+  }
+}
 
 export default class FormPages extends Pages {
   componentWillReceiveProps(props) {
@@ -29,12 +37,13 @@ export default class FormPages extends Pages {
     progress = Animated.add(progress, -index);
   
     return (
-      <KeyboardAvoidingView 
+      
+      <Container 
         style={[{ width, height, justifyContent: 'center' }, pageStyle]}
         contentContainerStyle={[{ width, height, justifyContent: 'center' }, pageStyle]}
       >
         {React.cloneElement(page, { index, pages, progress })}
-      </KeyboardAvoidingView>
+      </Container>
     );
   }
 }

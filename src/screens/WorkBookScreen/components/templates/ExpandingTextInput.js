@@ -1,6 +1,6 @@
 // @flow
 import React from 'react'
-import { TextInput } from 'react-native'
+import { TextInput, Modal } from 'react-native'
 
 type State = {
   height: number
@@ -24,6 +24,9 @@ export default class ExpandingTextInput extends React.Component<Props,State> {
     return (
       <TextInput
         {...this.props}
+        onFocus={() => {
+
+        }}
         ref={(c) => (this.textInput = c)}
         multiline
         onContentSizeChange={(event) => {
