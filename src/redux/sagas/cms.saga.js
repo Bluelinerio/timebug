@@ -13,9 +13,9 @@ import { request } from '../../Modules/redux-saga-request'
 function * _fetchCms() {
 	if(__DEV__) {
 		const cms = yield request(FETCH_CMS, () => refreshCMS().then(testContentFromCMS) )
-		
+	} else {
+		return yield request(FETCH_CMS, refreshCMS)
 	}
-	return yield request(FETCH_CMS, refreshCMS)
 }
 
 function * watchFetchSteps() {
