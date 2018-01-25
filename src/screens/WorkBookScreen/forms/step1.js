@@ -71,12 +71,13 @@ export default {
       )
     }),
     options: {
+      label: "What are your defining moments?",        
       fields: {
         field: {
-          label: "What are your defining moments?",        
           auto: 'placeholders',
           disableOrder: true,
           maxLines: 3,
+          label: "Descibe at least one defining moment in a few words",        
           config: {
             maxLines: 3,
           },
