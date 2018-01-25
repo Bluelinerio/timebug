@@ -71,7 +71,6 @@ export default {
       )
     }),
     options: {
-      
       fields: {
         field: {
           label: "What are your defining moments?",        
@@ -86,9 +85,8 @@ export default {
             moments: {
               label: "How would you describe this moment?",
               help: "Think about events/moments that changed the course of your life.",
-              //error: "Please fill out this field."
-        }
-      }
+              }
+            }
           }
         }
       }
@@ -97,19 +95,17 @@ export default {
   4: {
     type: t.struct({
       text: t.maybe(t.String),
-      emotions:t.list(
-        t.struct({
-          emotion: Emotion
-        })
-      )
+      emotions:t.list(Emotion)
     }),
     options: {
       label: "When you were in that 90 year old’s body and mind",
       fields: {
         emotions: {
-          label: "What were some of the emotion you felt?",
-          help: 'Emotions are hard for some and easy for others. Just pick the first thing that comes to mind.',          
-          error: "Please fill out this field."
+          item: {
+            label: "What were some of the emotion you felt?",
+            help: 'Emotions are hard for some and easy for others. Just pick the first thing that comes to mind.',          
+            error: "Please fill out this field."
+          }
         },
         text: {
           label: "reflecting back on your life, what did you feel?",
