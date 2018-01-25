@@ -106,16 +106,11 @@ class WorkBookScreenContainer extends Component<Props, State> {
   componentDidUpdate(prevProps: Props) {
     // Can be validated in componentWillReceiveProps but does not mark input with errors in the UI
     // TODO: Merge with componentWillReceiveProps and achieve same functionality for best performance
-    const { progress: { form: prevForm } } = prevProps;
-    const { progress: { form } } = this.props;
-    if (form !== prevForm) {
-
-      const isInvalid = this.form.validate().isValid() === false
-      if (this.state.isInvalid !== isInvalid) {
-        this.setState(state => ({
-          isInvalid
-        }))
-      }
+    const isInvalid = this.form.validate().isValid() === false
+    if (this.state.isInvalid !== isInvalid) {
+      this.setState(state => ({
+        isInvalid
+      }))
     }
   }
 

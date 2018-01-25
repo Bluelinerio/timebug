@@ -4,9 +4,18 @@ import Icon                                                 from 'react-native-v
 import styles                                               from '../../styles/templates';
 import FormPages                                            from '../FormPages';
 
-function renderRowWithoutButtons(item) {
-  return <View style={{ flex: 1, justifyContent: 'center' }} key={item.key}>{item.input}</View>;
-}
+const renderRowWithoutButtons = (item) => (
+  <View 
+    style={{ 
+      flex: 1, 
+      justifyContent: 'flex-start',
+      marginVertical: 10
+    }} 
+    key={item.key}
+  >
+    {item.input}
+  </View>
+)
 
 function renderRowButton(button) {
   return (
@@ -43,7 +52,7 @@ export default function customList(locals) {
 
   let itemsCount = locals.items.length;
 
-  let rows = locals.items.map((item) => renderRowWithoutButtons(item));
+  let rows = locals.items.map(renderRowWithoutButtons);
 
   let addButton = itemsCount && itemsCount >= locals.config.maxLines ? null : locals.add ? renderRowButton(locals.add, stylesheet) : null;
 
@@ -53,20 +62,17 @@ export default function customList(locals) {
     }]}>
       {label}
       {error}
-      {addButton}
       <FormPages
-        page={0}
-        horizontal={false} 
-        containerStyle={{ 
-          flex: 1,
-          borderRadius: 5,
-          borderWidth: 1,
-          borderColor: '#CCC'
-        }} 
-        indicatorPosition="none"
+      page={0}
+      horizontal={false} 
+      containerStyle={{ 
+        flex: 1,
+      }} 
+      indicatorPosition="none"
       >
-        {rows}
+      {rows}
       </FormPages>
+      {addButton}
     </View>
   );
 }

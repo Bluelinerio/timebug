@@ -1,6 +1,7 @@
 import React                                           from 'react';
 import { View, Text, TextInput, Platform, PixelRatio } from 'react-native';
 import styles                                          from '../../styles/templates';
+import ExpandingTextInput                              from './ExpandingTextInput'
 
 if(!styles ) {
   throw 'did not find stlye file'
@@ -53,12 +54,18 @@ export default function customTextBox(locals) {
 
   return (
     <View style={[formGroupStyle, {
-      marginTop: 10,
+      marginTop: 22,
       marginBottom:10
     }]}>
       {label}
-      <View style={textboxViewStyle}>
-        <TextInput
+      <View style={[{
+        borderRadius: 5,
+        borderWidth: 1,
+        borderColor: '#f8f8f8',
+        marginTop: 10,
+        justifyContent:'flex-end'
+      }]}>
+        <ExpandingTextInput
           accessibilityLabel={locals.label}
           ref="input"
           autoCapitalize={locals.autoCapitalize}
@@ -92,11 +99,7 @@ export default function customTextBox(locals) {
           onChangeText={(value) => locals.onChange(value)}
           onChange={locals.onChangeNative}
           placeholder={locals.placeholder}
-          style={[textboxStyle, {
-            borderRadius: 5,
-            borderWidth: 1,
-            borderColor: '#CCC'
-        }]}
+          style={[textboxStyle]}
           value={locals.value}
         />
       </View>

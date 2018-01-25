@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { NavigationActions } from 'react-navigation';
 
 import { submitFormValue, persisteFormValue } from '../../../redux/actions/formData.actions';
-import { doneWithCongratsScreen } from '../../../redux/actions/nav.actions';
+import { goToAssignmentDoneScreen } from '../../../redux/actions/nav.actions';
 import selectors from '../../../redux/selectors'
 import type { Progress }        from '../../../services/apollo/models';
 import type Props               from '../components/WorkbookScreenComponent';
@@ -58,7 +58,14 @@ const merge = (stateProps, dispatchProps, ownProps): Props => {
   */
   const next = () => {
     if(form + 1 === numberOfForms) {
-      doneWithCongratsScreen()
+      ownProps.navigation.dispatch(NavigationActions.navigate({
+        route:'AssignmentDoneScreen',
+        params: {
+          step,
+          form,
+          color
+        }
+      }))
     } else {
       const state = cloneStateWithForm(form + 1)
       ownProps.navigation.dispatch(NavigationActions.setParams(state))
@@ -77,5 +84,5 @@ const merge = (stateProps, dispatchProps, ownProps): Props => {
   }
 }
 
-export default connect(mapStateToProps, { submitFormValue, persisteFormValue, doneWithCongratsScreen }, merge)(WorkbookScreenComponent)
+export default connect(mapStateToProps, { submitFormValue, persisteFormValue }, merge)(WorkbookScreenComponent)
 
