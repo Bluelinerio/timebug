@@ -19,10 +19,16 @@ const { title, subtitle } = {
 
 //	const aboutText = selectors.aboutText(state) 
 
-const Greet = ({ index, stepForIndex }) => (
+const Greet = ({ index, stepForIndex, snippets }) => (
 	<View>
-		<Text style={styles.title} numberOfLines={1}>{stepForIndex(index) ? stepForIndex(index).stepScreenDescription : title }</Text>
-		<Text style={styles.subtitle} numberOfLines={3}>{subtitle} </Text>
+		<Text style={styles.title} numberOfLines={1}>
+			{stepForIndex(index) ? stepForIndex(index).stepScreenDescription : title }
+		</Text>
+		<Text 
+			style={styles.subtitle} 
+			numberOfLines={3}>
+			{stepForIndex(index) ? stepForIndex(index).snippet : ''}
+		</Text>
 	</View>
 );
 
