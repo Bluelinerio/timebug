@@ -64,17 +64,12 @@ export default {
   },
   3: {
     type: t.struct({
-      field: t.list(
-        t.struct({
-          moments: t.String
-        })
-      )
+      field: t.list(t.String)
     }),
     options: {
       label: "What are your defining moments?",        
       fields: {
         field: {
-          auto: 'placeholders',
           disableOrder: true,
           maxLines: 3,
           label: "Descibe at least one defining moment in a few words",        
@@ -82,12 +77,9 @@ export default {
             maxLines: 3,
           },
           item: {
-            fields:{
-            moments: {
               label: "How would you describe this moment?",
               help: "Think about events/moments that changed the course of your life.",
-              }
-            }
+              placeholder: 'birthing my first child.'
           }
         }
       }
