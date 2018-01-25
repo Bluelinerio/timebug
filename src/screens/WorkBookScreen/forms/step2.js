@@ -1,5 +1,5 @@
 import t from "../components/templates";
-import { LifeCategory, AreaOfLife} from "./contents";
+import { LifeCategory, AreaOfLife, HoursPerMonth} from "./contents";
 
 export default {
   1: {
@@ -8,7 +8,7 @@ export default {
       field: t.list(
         t.struct({
           category: LifeCategory,
-          hours: t.Number
+          hours: HoursPerMonth
         })
       )
     }),

@@ -518,8 +518,8 @@ export const PercentSelector = t.enums.of([
   '90%',
   '100'
 ], 'PercentSelector')
-                 
-            
-
+  
+const hours = Array(138).fill().map( (v,i) => i.toString());
+export const HoursPerMonth = t.enums.of(hours , 'HoursPerMonth');
 
            
