@@ -4,11 +4,19 @@ import {
   Text, 
   TouchableHighlight, 
   TouchableOpacity, 
-  Keyboard
+  Keyboard,
+  Platform,
+  ScrollView
 } from 'react-native';
 import Icon                                                 from 'react-native-vector-icons/MaterialIcons';
 import styles                                               from '../../styles/templates';
 import FormPages                                            from '../FormPages';
+
+// const Form = (props) => Platform === 'ios' 
+//   ? <FormPages {...props} /> 
+//   : <ScrollView {...props} />
+
+const Form = (props) => (<FormPages {...props} />)
 
 const renderRowWithoutButtons = (item) => (
   <View 
@@ -63,23 +71,11 @@ export default function customList(locals) {
   let addButton = itemsCount && itemsCount >= locals.config.maxLines ? null : locals.add ? renderRowButton(locals.add, stylesheet) : null;
 
   return (
-    <View style={[fieldsetStyle, { 
-      flex:1
-    }]}>
+    <View style={[fieldsetStyle, { flex:1 }]}>
       {label}
       {error}
       {addButton}
-      <FormPages
-        page={0}
-        horizontal={false} 
-        containerStyle={{ 
-          // flex: 1,
-        }} 
-        indicatorPosition="none"
-        onScrollEnd={(index) => Keyboard.dismiss() }
-      >
-        {rows}
-      </FormPages>
+      {rows}
     </View>
   );
 }
