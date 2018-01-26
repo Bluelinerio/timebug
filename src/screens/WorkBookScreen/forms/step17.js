@@ -1,6 +1,11 @@
 import t from "../components/templates";
 import { CommonGoalOutcomes, OneToTenScale } from "./contents";
 
+const stylesheet = _.cloneDeep(t.form.Form.stylesheet);
+
+// overriding the text color
+stylesheet.textbox.normal.textAlign = 'left';
+
 export default {
   1: { 
       type:t.struct({
@@ -9,13 +14,9 @@ export default {
         selfTreatmentLearningCurve: OneToTenScale,
         messagesInHead: t.String,
         messagesJudgeSelf: t.String,
-        peopleValued: t.list(
-          t.struct({
-          personValued: t.String
-      })
-    ),
-    peopleLoved: t.Number,
-    peopleTreatedContempt: t.Number
+        peopleValued: t.list(t.String),
+        peopleLoved: t.Number,
+        peopleTreatedContempt: t.Number
       }),
       options:{
         label:'Take time to evaluate your relationship with yourself.',
@@ -43,12 +44,7 @@ export default {
          peopleValued: {
            label: 'Name 5 specific people whom you truly value.',
            item: {
-             fields: {
-               auto:'placeholders',
-               personValued: {
-                error: 'Please fill out the field.'
-               }
-             }
+             label: 'name',
            }
          },
          peopleLoved: {
