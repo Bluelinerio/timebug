@@ -1,7 +1,13 @@
-import React                                           from 'react';
-import { View, Text, TextInput, Platform, PixelRatio } from 'react-native';
-import styles                                          from '../../styles/templates';
-import ExpandingTextInput                              from './ExpandingTextInput'
+import React from 'react';
+import { 
+  View, 
+  Text, 
+  TextInput, 
+  Platform, 
+  PixelRatio 
+} from 'react-native';
+import styles from '../../../styles/templates';
+import ExpandingTextInput from './ExpandingTextInput'
 
 if(!styles ) {
   throw 'did not find stlye file'
@@ -60,7 +66,7 @@ export default function customTextBox(locals) {
     <View style={[formGroupStyle, {
       flex:1,
       marginTop: 22,
-      marginBottom:10,
+      marginBottom:22,
     }]}>
       {label}
       <View style={[{

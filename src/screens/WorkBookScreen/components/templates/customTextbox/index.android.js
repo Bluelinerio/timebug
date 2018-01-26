@@ -1,11 +1,17 @@
 import React                                           from 'react';
-import { View, Text, TextInput, Platform, PixelRatio } from 'react-native';
-import styles                                          from '../../styles/templates';
-
+import { 
+  View, 
+  Text, 
+  TextInput, 
+  Platform, 
+  PixelRatio  
+}
+from 'react-native';
+import styles from '../../../styles/templates';
+import MyComponent from './ModalComponent'
 if(!styles ) {
   throw 'did not find stlye file'
 }
-
 class FocusedTextInput extends React.Component {
   state = {
     focus:false
@@ -109,4 +115,3 @@ export default function customTextBox(locals) {
     <FocusedTextInput locals={locals} />
   )
 }
-

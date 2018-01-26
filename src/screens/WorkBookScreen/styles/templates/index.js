@@ -12,8 +12,8 @@ const FONT_WEIGHT = '500';
 
 export default StyleSheet.create({
   customListAddButton: {
-    width: 24,
-    height: 24,
+    width: 44,
+    height: 44,
     padding: 3,
     borderRadius: 50,
     borderWidth: 1,
