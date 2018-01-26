@@ -31,6 +31,10 @@ function struct(locals) {
     page = 0;
   }
 
+  const containerStyle = {
+    paddingHorizontal: 20,
+    top: 20
+  }
   return (
     <View style={{ flex: 1 }}>
       {error}
@@ -38,9 +42,7 @@ function struct(locals) {
         <FormPages 
           page={page} 
           horizontal={false} 
-          containerStyle={{ 
-            padding: 
-            20}} 
+          containerStyle={containerStyle} 
           indicatorColor="#CCC"
           onScrollEnd={(index) => Keyboard.dismiss() }
         >
@@ -51,7 +53,7 @@ function struct(locals) {
         <FormPages 
           page={page}
           horizontal={false}
-          containerStyle={{ padding: 20}}
+          containerStyle={containerStyle}
           indicatorColor="#CCC"
           onScrollEnd={(index) => Keyboard.dismiss() }
         >

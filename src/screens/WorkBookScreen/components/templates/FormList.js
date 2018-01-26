@@ -4,11 +4,12 @@ import {
   Text, 
   TouchableHighlight, 
   TouchableOpacity, 
-  Keyboard
+  Keyboard,
+  Platform
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import styles from '../../../styles'
-import FormPages from '../../FormPages';
+import styles from '../../styles'
+import FormPages from '../FormPages';
 
 const renderRowWithoutButtons = ({key, input}) => (
   <View 
@@ -46,7 +47,7 @@ const renderRowButton = ({key, onPress}) => (
   </TouchableOpacity>
 )
 
-export default class FormListIOS extends React.Component {
+export default class FormList extends React.Component {
 
   formPages:?FormPages = null
 
@@ -108,8 +109,8 @@ export default class FormListIOS extends React.Component {
     return (
       <View style={[styles.fieldset, { 
         flex:1,
-        borderWidth:1,
-        borderColor: 'green'
+        // borderWidth:1,
+        // borderColor: 'green'
       }]}>
         {labelComponent}
         {errorComponent}
@@ -119,7 +120,7 @@ export default class FormListIOS extends React.Component {
           horizontal={false} 
           ref={ref => this.formPages = ref }
           containerStyle={{ 
-            // flex: 1,
+            flex: 1,
           }} 
           indicatorPosition="none"
           onScrollEnd={(index) => Keyboard.dismiss() }

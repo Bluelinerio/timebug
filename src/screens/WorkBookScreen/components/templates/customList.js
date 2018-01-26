@@ -5,10 +5,12 @@ export default function customList({stylesheet, config, ...rest}) {
   if (rest.hidden) {
     return null;
   }
-  return <FormList {...{
-    ...rest,
-    ...config,
-    styles: stylesheet,
-  }} />
+  return (
+    <FormList {...{
+      ...rest,
+      ...config,
+      styles: stylesheet,
+    }} />
+  )
 }
 
