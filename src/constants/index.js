@@ -6,8 +6,8 @@ export const APP_NAME = Platform.select({
 });
 
 export const uriPrefix = Platform.select({
-	android: 'lifevision://lifevision/',
-	ios: 'lifevision://'
+	android: 'lifevisionapp://lifevisionapp/',
+	ios: 'lifevisionapp://'
 });
 
 export const APPBAR_HEIGHT = Platform.OS === 'ios' ? 44 : 56;
