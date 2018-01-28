@@ -4,7 +4,7 @@ import templates     from "tcomb-form-native/lib/templates/bootstrap/index";
 import stylesheet    from "tcomb-form-native/lib/stylesheets/bootstrap";
 import i18n          from "tcomb-form-native/lib/i18n/en";
 import customList    from './customList';
-import customTextBox from './customTextBox';
+import customTextBox from './customTextbox';
 import customStruct  from './customStruct';
 import select        from './select';
 import { Animated, KeyboardAvoidingView } from 'react-native';
