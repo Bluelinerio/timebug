@@ -5,7 +5,6 @@ import { Image, Platform, Text, View, SafeAreaView, TouchableOpacity } from 'rea
 import { connect } from 'react-redux';
 import VerticalGradient from './VerticalGradient';
 import styles from '../styles'
-import Logo from './Logo';
 import md5 from 'md5';
 import selectors from '../../../redux/selectors'
 import {
@@ -48,13 +47,3 @@ const Banner = ({ date='Monday, 27 November', user }) =>
 	)
 
 export default connect(mapStateToProps)(Banner);
-
-// export default ({ title = 'Welcome' } : {title: string }) => (
-// 	<SafeAreaView style={styles.header} forceInset={{ vertical: 'never' }}>
-// 		<View style={styles.banner}>
-// 			<VerticalGradient />
-// 			<Logo />
-// 			<Text style={styles.bannerTitle}>{title}</Text>
-// 		</View>
-// 	</SafeAreaView>
-// );
