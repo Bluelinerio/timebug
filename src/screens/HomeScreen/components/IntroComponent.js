@@ -7,7 +7,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import FBLoginButton from '../containers/FBLoginButton'
 import ScrollableHeader from '../../../components/ScrollableHeader';
 import DefaultIndicator from '../../../components/DefaultIndicator';
-import { backgroundImage, headerBackground } from '../../../resources/images/';
+import { backgroundImage } from '../../../resources/images/';
 import { whiteTwo, deepBlue, hotPink } from '../../../constants/colors';
 import { APPBAR_HEIGHT, STATUSBAR_HEIGHT, TITLE_OFFSET } from '../../../constants';
 import LoginButtonStyles from '../../../styles/components/Button/login';

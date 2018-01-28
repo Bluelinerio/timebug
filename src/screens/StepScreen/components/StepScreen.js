@@ -69,7 +69,7 @@ export default ({ title, subtitle, description, number, imageUri, color, onPress
   <ScrollableHeader
     headerMaxHeight={HEADER_HEIGHT}
     headerMinHeight={APPBAR_HEIGHT + STATUSBAR_HEIGHT}
-    headerImage={headerBackground}
+    headerImage={headerBackground(number)}
     headerComponent={
       <Header
         color={color}
