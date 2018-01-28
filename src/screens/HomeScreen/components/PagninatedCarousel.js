@@ -13,6 +13,7 @@ import { NUMBER_OF_STEP_FOR_PHASES /* 10 */ } from '../../../services/cms';
 
 const SLIDER_1_FIRST_ITEM = 0;
 type Props = {
+	backgroundColorAtIndex: (step:number) => string,
 	items: Array<Item>,
 	sliderWidth: number,
 	itemWidth: number,
@@ -32,12 +33,23 @@ export default class PagninatedCarousel extends PureComponent<Props, State> {
 		activeSliderRef: null,
 	};
 	render() {
-		const { items, sliderWidth, itemWidth, snap, onPress } = this.props;
+		const { items, backgroundColorAtIndex, sliderWidth, itemWidth, snap, onPress } = this.props;
 		const { activeSliderRef, activeSliderIndex } = this.state;
 		return (
 			<View style={styles.paginatedCarouselContainer}>
 				<VerticalGradient />
-				<StepGradientBackground index={activeSliderIndex} />
+				<View style={{
+					position: 'absolute',
+					top: 16,
+					left:16,
+					right:16,
+					bottom:16,
+					paddingVertical: 20,
+					borderRadius: 20,
+					backgroundColor: backgroundColorAtIndex(activeSliderIndex)
+				}}
+				>
+					</View>
 				<StepCarouselGreet index={activeSliderIndex} />
 				<Carousel
 					ref={c => {

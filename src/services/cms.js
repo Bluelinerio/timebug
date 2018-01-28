@@ -96,7 +96,7 @@ export const NUMBER_OF_STEPS = 30;
 export const NUMBER_OF_STEP_FOR_PHASES = 10;
 export const STEP_START_INDEX = 1;
 
-const phaseForStepAtIndex = (step: number) => {
+export const phaseForStepAtIndex = (step: number) => {
   switch(true) {
     case (step >= 0 && step < 10):
       return MEDITATION

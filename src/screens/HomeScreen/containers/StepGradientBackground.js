@@ -17,7 +17,8 @@ const merge = (stateProps, dispatchProps, ownProps): Props => {
 	const { colorStart, colorEnd } = gradientColorForStepFn(index);
 	return {
 		...stateProps, 
-		...dispatchProps, ...ownProps,
+		...dispatchProps, 
+		...ownProps,
 		colorStart,
 		colorEnd
 	}

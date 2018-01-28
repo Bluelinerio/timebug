@@ -14,7 +14,9 @@ import type { Colors, Step } from '../services/cms';
 const sortSteps = (a: Step, b: Step) => a.number - b.number
 const steps = (state: any) => getCms(state).steps
 const sortedSteps = (state: any) :[Step] => Object.values( steps(state) ).sort(sortSteps) 
-const stepColors = (state: any):Colors => getCms(state).colors.steps;
+const stepColors = (state: any):{ number : string } => getCms(state).colors.steps;
+const phaseColors = (state: any):{ number : string } => getCms(state).colors.phases;
+
 const isCMSLoading = (state: any) => getCms(state).requestCount > 0
 const totalNumberOfSteps = (state: any) => getCms(state).totalNumberOfSteps
 const colors = (state:any) => getCms(state).colors
@@ -48,6 +50,7 @@ export default {
 	sortedSteps,
 	steps,
 	colorForStep,
+	phaseColors,
 	aboutText,
 	step,
 	colors,

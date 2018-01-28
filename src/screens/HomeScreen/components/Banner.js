@@ -26,20 +26,24 @@ const GravatrImage = ({ email, style}) => (
 
 const Banner = ({ date='Monday, 27 November', user }) => 
   (
-		<View style={styles.header}>
+		<View>
 			<VerticalGradient />
-			<View>
-				<Text style={styles.headerDate}>{moment().format("dddd DD MMM")}</Text>
-				<Text style={iOSUIKit.largeTitleEmphasized}>{`Welcome`}</Text>
+			<View style={styles.header}>
+				<View>
+					<Text style={styles.headerDate}>
+						{moment().format("dddd DD MMM").toUpperCase()}
+					</Text>
+					<Text style={iOSUIKit.largeTitleEmphasized}>{`Welcome`}</Text>
+				</View>
+				{user && user.email && 
+					<TouchableOpacity>
+						<GravatrImage 
+								email={user.email} 
+								style={styles.headerAvatar}
+							/>
+					</TouchableOpacity>
+					}
 			</View>
-			{user && user.email && 
-				<TouchableOpacity>
-					<GravatrImage 
-							email={user.email} 
-							style={styles.headerAvatar}
-						/>
-				</TouchableOpacity>
-				}
 		</View>
 	)
 
