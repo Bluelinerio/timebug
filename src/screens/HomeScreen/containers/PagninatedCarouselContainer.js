@@ -12,7 +12,11 @@ import { goToAssignmentFlow } from '../../../redux/actions/nav.actions';
 
 const mapStateToProps = (state:any) => {
 	const steps:[Step] = selectors.sortedSteps(state)
-	const items: [Item] = steps.map(step => ({ ...step, sourceImage: getImageUrl(step.icon) }) )
+	const items: [Item] = steps.map(step => ({ 
+		...step, 
+		subtitle: `Step ${step.number}, Phase: ${step.type}`,
+		sourceImage: getImageUrl(step.icon) 
+	}))
 	return ({items})
 }
 
