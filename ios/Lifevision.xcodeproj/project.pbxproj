@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -48,6 +47,7 @@
 		5868E8CD5BC14D0BB40B6A13 /* Roboto_medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F9075118CA04F0382E88C0E /* Roboto_medium.ttf */; };
 		588FBD6AC5D8471997B72308 /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 573073BF8E7147C9AF6BF4BA /* libRCTFBSDK.a */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
+		6C5CA0B9201EF6C9007A4AC5 /* libRNDeviceInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C7CA87D20183A76009E848B /* libRNDeviceInfo.a */; };
 		6C61C0C5201574BD00FDC618 /* libRNSVG.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C61C0C12015746700FDC618 /* libRNSVG.a */; };
 		81F2C17FE35E435DA7239F85 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB7A9F0628F3499BB20FA071 /* Ionicons.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
@@ -451,6 +451,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C5CA0B9201EF6C9007A4AC5 /* libRNDeviceInfo.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
