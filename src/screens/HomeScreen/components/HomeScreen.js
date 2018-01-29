@@ -15,6 +15,7 @@ import Error                        			from '../../../components/Error';
 
 import PagninatedCarouselContainer  			from '../containers/PagninatedCarouselContainer';
 import LifevisionDashoboardCellContainer	from '../containers/LifevisionDashoboardCellContainer';
+import Version														from '../containers/Version'
 import styles	           									from '../styles';
 import { sliderWidth, itemWidth }   			from '../styles/SliderEntry.style';
 import PagninatedCarousel           			from './PagninatedCarousel';
@@ -82,6 +83,7 @@ export default class HomeScreen extends PureComponent<Props, State> {
 							opacity={0.5}
 						/>
 					</View>
+					<Version />
 				</ScrollView>
 			</View>
 		);
