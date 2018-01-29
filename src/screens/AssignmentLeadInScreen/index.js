@@ -2,7 +2,7 @@ import screen from './containers/AssignmentsLeadInScreenContainer';
 
 screen.navigationOptions = ({ navigation: { state: { params: { color, step } } } }) => {
 	return {
-		title: 'Assignment',
+		title: 'Exercise',
 		headerStyle: {
 			backgroundColor: color || StyleSheet.flatten(styles.headerColor).backgroundColor
 		},

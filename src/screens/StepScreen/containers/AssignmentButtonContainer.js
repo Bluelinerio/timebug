@@ -17,7 +17,7 @@ const mapStateToProps = state => {
 
 const textTestId= 'step_to_assignment_text'
 const buttonTestId= 'step_to_assignment_button'
-const text = "ASSIGNMENTS"
+const text = "Exercise".toUpperCase()
 
 const merge = (stateProps, dispatchProps, ownProps): Props => {
   const { colors, steps } = stateProps
