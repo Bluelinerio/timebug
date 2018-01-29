@@ -1,5 +1,6 @@
 import React, { Children } from 'react';
 import { Animated, KeyboardAvoidingView, View, Platform } from 'react-native';
+import TouchableBounce from 'react-native/Libraries/Components/Touchable/TouchableBounce'
 import { Pages } from 'react-native-pages';
 
 const Container = (props) => {
@@ -28,21 +29,35 @@ export default class FormPages extends Pages {
     let { width, height, progress } = this.state;
     let { children, horizontal, rtl } = this.props;
     let pages = Children.count(children);
-  
+    let lastPageIndex = pages - 1
     let pageStyle = (horizontal && rtl)?
       styles.rtl:
       null;
   
     /* Adjust progress by page index */
     progress = Animated.add(progress, -index);
-  
+    const onPress = index !== lastPageIndex ? () => this.scrollToPage(index + 1) : null;
+
     return (
-      
       <Container 
         style={[{ width, height, justifyContent: 'center' }, pageStyle]}
         contentContainerStyle={[{ width, height, justifyContent: 'center' }, pageStyle]}
       >
-        {React.cloneElement(page, { index, pages, progress })}
+        <TouchableBounce 
+          key={index}
+          onPress={onPress}
+          style={{    
+            flex: 1,
+            justifyContent:'space-between',
+          }}
+          >
+          <View style={{
+            flex: 1,
+            justifyContent:'center',
+          }}>
+            {React.cloneElement(page, { index, pages, progress })}
+          </View>
+        </TouchableBounce>
       </Container>
     );
   }

@@ -10,8 +10,11 @@ import {
   Keyboard
 } from "react-native";
 import t                    from './templates';
-import DefaultIndicator     from "../../../components/DefaultIndicator";
-import Button               from "../../../components/Button";
+import NextButton           from '../components/NextButton'
+import type {
+  NextButtonProps
+}                           from '../components/NextButton'
+import DefaultIndicator     from '../../../components/DefaultIndicator';
 import type { FormChange }  from '../../../redux/actions/forms.actions';
 import type { Progress }    from '../../../services/apollo/models';
 import styles               from '../styles';
@@ -37,31 +40,6 @@ type State = {
     options: any
   }
 };
-
-type NextButtonProps = { 
-  isInvalid: boolean, 
-  onPress: () => void, 
-  buttonMessage:string, 
-  backgroundColor:string
-};
-
-const SKIPP_ENABLED = false;
-const NextButton = (props:NextButtonProps) => {
-  const { isInvalid, onPress, buttonMessage, backgroundColor} = props;
-  const active = isInvalid === false || SKIPP_ENABLED
-  if (active) {
-    return (
-      <Button
-        onPress={() => active ? onPress() : null }
-        text={SKIPP_ENABLED ? 'SKIP' : buttonMessage}
-        backgroundColor={backgroundColor}
-        side='right' 
-        withArrow
-    />)
-  } else {
-    return null;
-  }
-}
 
 class WorkBookScreenContainer extends Component<Props, State> {
 
@@ -119,13 +97,11 @@ class WorkBookScreenContainer extends Component<Props, State> {
   onPress = () => {
     const { value } = this.state;
     const { progress, next } = this.props;
-    if (value) {
-      this.props.submitFormValue({
-        value,
-        progress
-      });
-      next()
-    }
+    this.props.submitFormValue({
+      value,
+      progress
+    });
+    next()
   }
 
   onChange = (value: any, path: [string]) => {

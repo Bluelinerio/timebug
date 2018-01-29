@@ -88,7 +88,6 @@ class FocusedTextInput extends React.Component {
             underlineColorAndroid={locals.underlineColorAndroid}
             clearButtonMode={locals.clearButtonMode}
             clearTextOnFocus={locals.clearTextOnFocus}
-            enablesReturnKeyAutomatically={locals.enablesReturnKeyAutomatically}
             keyboardAppearance={locals.keyboardAppearance}
             onKeyPress={locals.onKeyPress}
             returnKeyType={locals.returnKeyType}

@@ -29,7 +29,8 @@ const merge = (stateProps, dispatchProps, ownProps): Props => {
   const progress = { step, form }
   const models = stateProps.getFormModels(step);
   const numberOfForms = Object.entries(models).length;
-  const buttonMessage = form + 1 === numberOfForms ? 'SUBMIT' : 'NEXT';
+  const isFinalForm = form + 1 === numberOfForms
+  const buttonMessage = isFinalForm ? 'SUBMIT' : 'NEXT';
   const formData = stateProps.getFormData(step) || {};
   const getModelForForm = (form: number) => ({
     model: models[form + 1], value: formData[form]
@@ -56,21 +57,19 @@ const merge = (stateProps, dispatchProps, ownProps): Props => {
     }
   }
   */
-  const next = () => {
-    if(form + 1 === numberOfForms) {
-      ownProps.navigation.dispatch(NavigationActions.navigate({
-        route:'AssignmentDoneScreen',
+  const nextAction = isFinalForm 
+    ? NavigationActions.navigate({
+        routeName:'AssignmentDoneScreen',
         params: {
           step,
           form,
           color
         }
-      }))
-    } else {
-      const state = cloneStateWithForm(form + 1)
-      ownProps.navigation.dispatch(NavigationActions.setParams(state))
-    }
-  }
+      })
+    : NavigationActions.setParams(cloneStateWithForm(form + 1))
+  
+  const next = () => ownProps.navigation.dispatch(nextAction);
+
   return {
     ...ownProps,
     ...dispatchProps,

@@ -13,7 +13,7 @@ if(!styles ) {
   throw 'did not find stlye file'
 }
 
-const PlaformTextInput = (props) => Platform.OS === 'ios' 
+const PlaformTextInput = (props) => Platform.OS
   ? <ExpandingTextInput {...props} /> 
   : <TextInput  {...props} /> 
 
@@ -45,17 +45,14 @@ export default function customTextBox(locals) {
   let label = locals.label &&  
     <Text 
       style={[controlLabelStyle, {
-        textAlign: 'center'
+        textAlign: 'auto'
       }]}
     >
       {locals.label}
     </Text>
   
   const help  = locals.help && 
-    <Text style={[helpBlockStyle, {
-      marginTop:2,
-      paddingHorizontal: 7
-    }]}>
+    <Text style={[helpBlockStyle]}>
       {locals.help}
     </Text>
 
@@ -72,13 +69,13 @@ export default function customTextBox(locals) {
       <View style={[{
         borderRadius: 5,
         borderWidth: 1,
-        borderColor: '#f8f8f8',
-        marginTop: 10,
+        borderColor: '#ccc',
+        marginVertical: 10,
         justifyContent:'flex-end'
       }]}>
         <PlaformTextInput
           accessibilityLabel={locals.label}
-          //ref="input"
+          autoGrow={true}
           autoCapitalize={locals.autoCapitalize}
           autoCorrect={locals.autoCorrect}
           autoFocus={locals.autoFocus}
@@ -102,7 +99,7 @@ export default function customTextBox(locals) {
           underlineColorAndroid={locals.underlineColorAndroid}
           clearButtonMode={locals.clearButtonMode}
           clearTextOnFocus={locals.clearTextOnFocus}
-          enablesReturnKeyAutomatically={locals.enablesReturnKeyAutomatically}
+          enablesReturnKeyAutomatically={locals.enablesReturnKeyAutomatically || true}
           keyboardAppearance={locals.keyboardAppearance}
           onKeyPress={locals.onKeyPress}
           returnKeyType={locals.returnKeyType}
