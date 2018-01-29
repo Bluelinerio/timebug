@@ -1,1 +1,2 @@
-export * from './graphcool.gcus';
+export * from './graphcool.GC2020';
+

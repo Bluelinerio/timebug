@@ -17,10 +17,6 @@ const testStep = (step: ?number) => {
     throw 'step out of bound expected value between 1 and 30'
   }
 }
-
-export const doneWithCongratsScreen     = () => action(GO_TO_HOME_SCREEN, { reset: true, direction: "back" });
-export const goToHomeScreen             = (props: any) => action(GO_TO_HOME_SCREEN, props);
-
 const navigateWith = ({ routeName, props }) => {
   const step: number = props.step 
     ? props.step.number

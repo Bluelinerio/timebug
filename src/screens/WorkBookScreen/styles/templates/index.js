@@ -12,12 +12,13 @@ const FONT_WEIGHT = '500';
 
 export default StyleSheet.create({
   customListAddButton: {
-    width: 44,
     height: 44,
     padding: 3,
-    borderRadius: 50,
+    borderRadius: 4,
     borderWidth: 1,
-    borderColor: '#ccc'
+    borderColor: '#ccc',
+    flexDirection: 'row',
+    alignItems:'center'
   },
   formsTextBoxNormal: {
     color: INPUT_COLOR,

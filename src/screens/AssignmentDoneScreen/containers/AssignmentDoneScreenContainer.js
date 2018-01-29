@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import type { Step } from "../../../services/cms";
 import AssignmentDoneScreen from "../components/AssignmentDoneScreen";
 import type { Props } from "../components/AssignmentDoneScreen";
-import { doneWithCongratsScreen as done } from '../../../redux/actions/nav.actions';
+import { resetAction } from '../../../navigation/helpers'
 import selectors from '../../../redux/selectors'
 
 const mapStateToProps = (state) => {
@@ -51,5 +51,7 @@ const merge = (stateProps, dispatchProps, ownProps): Props => {
     nextStepColor: doneStepColor
   }
 }
+
+const done = () => resetAction('HomeScreen');
 
 export default connect(mapStateToProps, ({done}), merge)(AssignmentDoneScreen);

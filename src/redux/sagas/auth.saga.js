@@ -1,12 +1,15 @@
 // @flow
 import { throttle, select, take, race, call, all, cancelled, put, takeLatest, fork } from 'redux-saga/effects'
 
-import { LOGIN_WITH_FB_BUTTON_PRESSED } from '../actionTypes';
-import { incrementRequestCount, decrementRequestCount } from '../actions/network.actions'
+import { 
+	LOGIN_WITH_FB_BUTTON_PRESSED,
+	FB_LOGIN_DIALOG_RESPONDED,
+	LOGOUT
+} from '../actionTypes';
+import { incrementRequestCount, decrementRequestCount } 
+	from '../actions/network.actions'
 import * as actions from '../actions'
 import { GET_USER } from '../actions/user.actions'
-import { LOGOUT } from '../actionTypes';
-import { AUTHENTICATE_FB } from '../actions/';
 import selectors from '../selectors'
 import type { Auth, AuthUser, User, UserState, ErrorResponse } from '../../services/apollo/models'
 import { authenticateWithFBToken, fetchUserWithId, resetStore } from '../../services/apollo'
@@ -119,11 +122,11 @@ function* userErroredSaga() {
 
 function* _loginOrRegisterWithFacebook(): RefreshUserResult | LogoutResult {
 	const fbTokenOrError: OpenFBLoginResult = yield call(facebook.openFBLogin)
+	yield put({type: FB_LOGIN_DIALOG_RESPONDED, payload: fbTokenOrError });
 	if (fbTokenOrError.error) {
-		yield put({type:GET_USER.ERRORED});
+		yield put({type: GET_USER.ERRORED});
 		return fbTokenOrError
 	}
-
 	const refreshedUserOrLogout = yield call(refreshUserOrLogout)		
 	if (refreshedUserOrLogout.logout || refreshedUserOrLogout.error) {
 		return refreshedUserOrLogout
@@ -131,7 +134,7 @@ function* _loginOrRegisterWithFacebook(): RefreshUserResult | LogoutResult {
 }
 
 export function* loginFlowSaga() {
-	// yield call(AuthStorage.wipeStorage);
+	//yield put({ type:LOGOUT });
 	yield fork(userErroredSaga)
 	const result: { user?: User } = yield call(refreshUserOrLogout)
 	yield throttle(500, LOGIN_WITH_FB_BUTTON_PRESSED, _loginOrRegisterWithFacebook)

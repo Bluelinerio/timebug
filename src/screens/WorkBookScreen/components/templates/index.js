@@ -1,15 +1,20 @@
-import t             from 'tcomb-form-native/lib';
-import { getTypeInfo} from 'tcomb-form-native/lib/util';
-import templates     from "tcomb-form-native/lib/templates/bootstrap/index";
-import stylesheet    from "tcomb-form-native/lib/stylesheets/bootstrap";
-import i18n          from "tcomb-form-native/lib/i18n/en";
-import customList    from './customList';
-import customTextBox from './customTextbox';
-import customStruct  from './customStruct';
-import select        from './select';
-import { Animated, KeyboardAvoidingView } from 'react-native';
+import { 
+  Animated, 
+  KeyboardAvoidingView 
+} from 'react-native';
 import { Pages } from 'react-native-pages';
 import React, { Children } from 'react';
+
+import t                from 'tcomb-form-native/lib';
+import { getTypeInfo}   from 'tcomb-form-native/lib/util';
+import templates        from "tcomb-form-native/lib/templates/bootstrap/index";
+import stylesheet       from "tcomb-form-native/lib/stylesheets/bootstrap";
+import i18n             from "tcomb-form-native/lib/i18n/en";
+
+import customList       from './customList';
+import customTextBox    from './customTextbox';
+import customStruct     from './customStruct';
+import select           from './select';
 
 Pages.prototype.renderPage = function(page, index) {
   let { width, height, progress } = this.state;
@@ -45,6 +50,20 @@ const customStylesheet= {
     textAlign: 'center',
     fontSize: 26,
     paddingVertical: 20,
+  },
+  helpBlock: {
+    normal: {
+      ...stylesheet.helpBlock.normal,
+      marginTop:4,
+      paddingHorizontal: 7,
+      fontStyle:'italic'
+    },
+    error: {
+      ...stylesheet.helpBlock.normal,
+      marginTop:4,
+      paddingHorizontal: 7,
+      fontStyle:'italic'
+    }
   },
   pickerContainer: {
     normal: {

@@ -8,7 +8,7 @@ import {
   Platform
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import styles from '../../styles'
+import styles from '../../styles/templates'
 import FormPages from '../FormPages';
 
 const renderRowWithoutButtons = ({key, input}) => (
@@ -31,9 +31,11 @@ const renderErrorLabel = ({style, text}) => (
   </Text> 
 )
 
+const renderLabel = ({style, text}) => (<Text style={style}>{text}</Text>)
+
 const renderHelpLabel = ({style, text}) => (<Text style={style}>{text}</Text>)
 
-const renderRowButton = ({key, onPress}) => (
+const renderRowAddButton = ({key, text, onPress}) => (
   <TouchableOpacity
     key={key}
     style={styles.customListAddButton}
@@ -41,9 +43,15 @@ const renderRowButton = ({key, onPress}) => (
   >
     <Icon
       name="add"
-      size={44}
+      size={32}
       color="black"
     />
+    <Text style={{
+
+    }}
+    >
+      {text}
+    </Text>
   </TouchableOpacity>
 )
 
@@ -72,6 +80,7 @@ export default class FormList extends React.Component {
       error,
       add,
       label,
+      help,
       maxLines, // config
       config
     } = this.props;
@@ -79,13 +88,22 @@ export default class FormList extends React.Component {
     const { index, pages } = this.state;
 
     const labelComponent = label 
-      ? renderHelpLabel({
+      ? renderLabel({
         style:hasError 
           ? styles.controlLabel.error 
           : styles.controlLabel.normal, 
         text:label
       })
       : null;
+    const helpComponent = help
+      ? renderHelpLabel({
+        style:hasError 
+          ? styles.helpBlock.error 
+          : styles.helpBlock.normal, 
+        text:label
+      })
+      : null;
+
     const errorComponent = hasError && error 
       ? renderErrorLabel({
           style: styles.errorBlock,
@@ -95,8 +113,9 @@ export default class FormList extends React.Component {
 
     const addButton = pages < (maxLines || 10) &&
       (add && add.type && add.click)
-        ? renderRowButton({ 
+        ? renderRowAddButton({ 
             key:add.type, 
+            text: pages === 0 ? 'Create First' : `Add (currently: ${items.length})`,
             onPress:() => {
               add.click()
               this.setState({
@@ -113,6 +132,7 @@ export default class FormList extends React.Component {
         // borderColor: 'green'
       }]}>
         {labelComponent}
+        {helpComponent}
         {errorComponent}
         {addButton}
         <FormPages

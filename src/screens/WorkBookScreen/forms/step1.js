@@ -16,16 +16,16 @@ export default {
           hidden: true
         },
         stageOfLife: {
-          error: "At what stage of your life was it?"
+          help: "At what stage of your life was it?"
         },
         memory: {
           label: "Describe what happened",
           numberOfLines: 3,
-          error: "Try to be as descriptive as possible."
+          help: "Try to be as descriptive as possible."
         },
         areaOfLife: {
           label: "What area of life does this belong to?",
-          error: "Assign this memory to one of the 7 Timebug Life Categories. This will be help us with later steps of Assessment and Vision Creation."
+          help: "Assign this memory to one of the 7 Timebug Life Categories. This will be help us with later steps of Assessment and Vision Creation."
           
         },
       }
@@ -47,16 +47,16 @@ export default {
       fields: {
         stageOfLife: {
           label: "At what stage of your life was it?",
-          error: "Please select a value"
+          help: "Please select a value"
         },
         areaOfLife: {
           label: "What Area Of Life does this belong to?",
           help: "Assign this memory to one of the 7 Timebug Life Categories. This will be help us with later steps of Assessment and Vision Creation.",          
-          error: "Please fill out this field."
+          help: "Please fill out this field."
         },
         regret: {
           label: "Describe what happened",
-          error: "Please fill out this field.",
+          help: "Please fill out this field.",
           help: "Try to be as descriptive as possible."
         }
       }
@@ -69,17 +69,17 @@ export default {
     options: {
       label: "What are your defining moments?",        
       fields: {
+        placeholder: 'birthing my first child.',
         field: {
           disableOrder: true,
           maxLines: 3,
-          label: "Descibe at least one defining moment in a few words",        
+          label: "Create your defining moments",        
           config: {
             maxLines: 3,
           },
           item: {
-              label: "How would you describe this moment?",
-              help: "Think about events/moments that changed the course of your life.",
-              placeholder: 'birthing my first child.'
+            label: "How would you name this moment?",
+            help: "Think about events/moments that changed the course of your life.",
           }
         }
       }
@@ -97,13 +97,11 @@ export default {
           item: {
             label: "What were some of the emotion you felt?",
             help: 'Emotions are hard for some and easy for others. Just pick the first thing that comes to mind.',          
-            error: "Please fill out this field."
           }
         },
         text: {
           label: "reflecting back on your life, what did you feel?",
           help: "Be completely honest with yourself. This is an exercise to help us determine what we want to keep doing well, and what we need to imrprove on as we walk down the path to 2020.",
-          error: "Please fill out this field."
         }
       }
     }

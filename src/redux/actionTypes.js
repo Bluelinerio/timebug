@@ -15,6 +15,7 @@ export const DECREMENT_REQUEST_COUNT = 'DECREMENT_REQUEST_COUNT';
 
 //navigation
 export const LOGIN_WITH_FB_BUTTON_PRESSED        = 'LOGIN_WITH_FB_BUTTON_PRESSED';
+export const FB_LOGIN_DIALOG_RESPONDED           = 'FB_LOGIN_DIALOG_RESPONDED';
 export const LOGOUT                              = 'LOGOUT';
 export const GO_TO_HOME_SCREEN                   = 'GO_TO_HOME_SCREEN';
 export const SAGA_NAVIGATE                       = 'SAGA_NAVIGATE';

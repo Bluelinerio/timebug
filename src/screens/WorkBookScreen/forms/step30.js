@@ -65,13 +65,13 @@ export default {
           item: {
             fields: {
               categoryResponsiblity: {
-                error: 'Please select a value.'
+                help: 'Please choose a Category.'
               },
               lifeCategoryClassification: {
-                error: 'Please select a value.'
+                help: 'Please choose a Classification.'
               },
               timebugCategory: {
-                error: 'Please select a value.'
+                help: 'Please select a value.'
               }
             }
           }
