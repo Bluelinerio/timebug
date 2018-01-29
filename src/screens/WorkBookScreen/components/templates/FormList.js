@@ -115,7 +115,7 @@ export default class FormList extends React.Component {
       (add && add.type && add.click)
         ? renderRowAddButton({ 
             key:add.type, 
-            text: pages === 0 ? 'Create First' : `Add (currently: ${items.length})`,
+            text: pages === 0 ? 'Create First' : `(${items.length})`,
             onPress:() => {
               add.click()
               this.setState({
