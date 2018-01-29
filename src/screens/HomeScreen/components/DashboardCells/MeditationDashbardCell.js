@@ -39,11 +39,7 @@ const HighlighText = ({children}) => (
   </GradientWithTwoColors>
 )
 
-export default class Meditation extends React.PureComponent<{},{ meditator:string }> {
-  state = {
-    meditator
-  }
-
+export default class Meditation extends React.PureComponent<> {
   render() {
     return (
       <Card>
