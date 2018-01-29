@@ -1,22 +1,28 @@
 // @flow
 import React, { PureComponent } from 'react';
 import { 
-	View, 
+	View,
 	Text, 
 	ScrollView, 
 	TouchableHighlight, 
-	Image,
-	StyleSheet 
 } from 'react-native';
 import { NavigationAction } 				from 'react-navigation'
-import GradientWithTwoColors				from '../../../components/GradientWithTwoColors';
-import styles, { colors }           from '../styles';
-import { sliderWidth, itemWidth }   from '../styles/SliderEntry.style';
-import PagninatedCarousel           from './PagninatedCarousel';
-import Banner                       from './Banner';
-import PagninatedCarouselContainer  from '../containers/PagninatedCarouselContainer';
-import DefaultIndicator             from '../../../components/DefaultIndicator.js';
-import Error                        from '../../../components/Error';
+
+//// begining
+import GradientWithTwoColors							from '../../../components/GradientWithTwoColors';
+import DefaultIndicator             			from '../../../components/DefaultIndicator.js';
+import Error                        			from '../../../components/Error';
+
+import PagninatedCarouselContainer  			from '../containers/PagninatedCarouselContainer';
+import LifevisionDashoboardCellContainer	from '../containers/LifevisionDashoboardCellContainer';
+import styles	           									from '../styles';
+import { sliderWidth, itemWidth }   			from '../styles/SliderEntry.style';
+import PagninatedCarousel           			from './PagninatedCarousel';
+import Banner                       			from './Banner';
+
+/// end other.
+
+import MeditationDashobardCellContainer		from '../containers/MeditationDashobardCellContainer';
 
 export type Props = {
 	navigation: any,
@@ -62,6 +68,8 @@ export default class HomeScreen extends PureComponent<Props, State> {
 					<TouchableHighlight onPress={() => navigation.navigate('Walkthrough')}>
 						<Text> About </Text>
 					</TouchableHighlight>
+					<LifevisionDashoboardCellContainer />
+					<MeditationDashobardCellContainer />
 					<View style={{
 						height:300,
 						flexDirection: 'row',
@@ -79,3 +87,4 @@ export default class HomeScreen extends PureComponent<Props, State> {
 		);
 	}
 }
+
