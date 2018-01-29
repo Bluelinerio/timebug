@@ -23,7 +23,7 @@ export default {
           hidden: true
         },
         emotion: {
-          label: "What is the primatry emotion that comes up for you about money today?",
+          label: "What is the primary emotion that comes up for you about money today?",
           error: 'Emotions are hard for some and easy for others. Just pick the first thing that comes to mind.'          
         },
         selfView: {
