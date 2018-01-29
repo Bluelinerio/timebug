@@ -13,7 +13,9 @@
 #import <React/RCTRootView.h>
 #import <React/RCTLinkingManager.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
-
+#if RCT_DEV
+#import <React/RCTDevLoadingView.h>
+#endif
 
 @implementation AppDelegate
 
@@ -22,6 +24,16 @@
   NSURL *jsCodeLocation;
 
   jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
+
+  // The following two blocks of code (+ #import <React/RCTDevLoadingView.h> above) after seeing the 'RCTBridge required dispatch_sync to load RCTDevLoadingView. This may lead to deadlocks' warning. It stopped showing up after I brought back localhost to NSExceptionDomains this doesn't seem to show again. Leaving this here for now.
+  // Previous to that, googling seems connected to react-native-device-info. A comment by devburmistro on https://github.com/facebook/react-native/issues/16376 suggested this fix.
+
+//  RCTBridge *bridge = [[RCTBridge alloc] initWithBundleURL:jsCodeLocation
+//                                            moduleProvider:nil
+//                                             launchOptions:launchOptions];
+//#if RCT_DEV
+//  [bridge moduleForClass:[RCTDevLoadingView class]];
+//#endif
 
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
                                                       moduleName:@"Lifevision"
