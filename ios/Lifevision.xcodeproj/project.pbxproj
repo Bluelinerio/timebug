@@ -41,7 +41,6 @@
 		2DCD954D1E0B4F2C00145EB5 /* LifevisionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* LifevisionTests.m */; };
 		39313EC2D23145FAB69AFFE9 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9ECBC182F77B49BAB3C9758F /* Zocial.ttf */; };
 		3EBB27C84DF6410689CA8023 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4497000DBE624C758DC7A878 /* MaterialIcons.ttf */; };
-		3FFB523DF5D24F1EAAE22128 /* libRNDeviceInfo-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45C7FD8C56B74DD488C34A19 /* libRNDeviceInfo-tvOS.a */; };
 		46D14DA937DF43C2A823CB5B /* libBVLinearGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 56FDBAD7257D4E77A3E66AEE /* libBVLinearGradient.a */; };
 		4C86EBED2FF24676A5CA700C /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 59E8B0D07AF9487CB038CC25 /* Feather.ttf */; };
 		517D1EFF7E904F0C834E5891 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3B57CFBA68B74889A8B8662E /* EvilIcons.ttf */; };
@@ -50,7 +49,6 @@
 		588FBD6AC5D8471997B72308 /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 573073BF8E7147C9AF6BF4BA /* libRCTFBSDK.a */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		6C61C0C5201574BD00FDC618 /* libRNSVG.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C61C0C12015746700FDC618 /* libRNSVG.a */; };
-		73DA34A5DC8B4257B6AED202 /* libRNDeviceInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF18CA9A0CB24B5988C4F9D9 /* libRNDeviceInfo.a */; };
 		81F2C17FE35E435DA7239F85 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB7A9F0628F3499BB20FA071 /* Ionicons.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		8C1267ABE7914ACFB0BA3062 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EA2659C3B484CB68F1CC4DA /* FBSDKCoreKit.framework */; };
@@ -471,8 +469,6 @@
 				BCB2A6B019084F50B39072C3 /* FBSDKShareKit.framework in Frameworks */,
 				8CC27DE8F6594EE39DC76EB5 /* FBSDKLoginKit.framework in Frameworks */,
 				588FBD6AC5D8471997B72308 /* libRCTFBSDK.a in Frameworks */,
-				73DA34A5DC8B4257B6AED202 /* libRNDeviceInfo.a in Frameworks */,
-				3FFB523DF5D24F1EAAE22128 /* libRNDeviceInfo-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1517,7 +1513,6 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
-					"$(SRCROOT)/../node_modules/react-native-device-info/RNDeviceInfo",
 				);
 				INFOPLIST_FILE = Lifevision/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1552,7 +1547,6 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
-					"$(SRCROOT)/../node_modules/react-native-device-info/RNDeviceInfo",
 				);
 				INFOPLIST_FILE = Lifevision/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1628,7 +1622,6 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
-					"$(SRCROOT)/../node_modules/react-native-device-info/RNDeviceInfo",
 				);
 				INFOPLIST_FILE = Lifevision/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
