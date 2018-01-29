@@ -121,20 +121,23 @@ function* userErroredSaga() {
 }
 
 function* _loginOrRegisterWithFacebook(): RefreshUserResult | LogoutResult {
-	const fbTokenOrError: OpenFBLoginResult = yield call(facebook.openFBLogin)
-	yield put({type: FB_LOGIN_DIALOG_RESPONDED, payload: fbTokenOrError });
-	if (fbTokenOrError.error) {
-		yield put({type: GET_USER.ERRORED});
-		return fbTokenOrError
-	}
-	const refreshedUserOrLogout = yield call(refreshUserOrLogout)		
-	if (refreshedUserOrLogout.logout || refreshedUserOrLogout.error) {
-		return refreshedUserOrLogout
+	try {
+		const success = yield call(facebook.openFBLogin)
+		yield put({type: FB_LOGIN_DIALOG_RESPONDED, payload: success });
+	} catch(error) {
+		yield put({type:FB_LOGIN_DIALOG_RESPONDED + 'FAILD', message: error})
+		yield put({type: GET_USER.ERRORED, error});
+		return error
+	} finally {
+		const refreshedUserOrLogout = yield call(refreshUserOrLogout)		
+		if (refreshedUserOrLogout.logout || refreshedUserOrLogout.error) {
+			return refreshedUserOrLogout
+		}
 	}
 }
 
 export function* loginFlowSaga() {
-	//yield put({ type:LOGOUT });
+	//yield put({ type: LOGOUT });
 	yield fork(userErroredSaga)
 	const result: { user?: User } = yield call(refreshUserOrLogout)
 	yield throttle(500, LOGIN_WITH_FB_BUTTON_PRESSED, _loginOrRegisterWithFacebook)
