@@ -66,6 +66,12 @@ let share: Share;
 
 const slides = [
     {
+        title: 'Welcome',
+        description: 'Welcome TextWelcome TextWelcome TextWelcome TextWelcome TextWelcome TextWelcome TextWelcome TextWelcome TextWelcome TextWelcome Text',
+        icon: <Share ref={ref => ref ? share = ref : undefined} />,
+        makeVisible: () => share.makeVisible()
+    },
+    {
         title: 'Get Motivated',
         description: 'A slide about the content: a. 30 steps, b. creating the expectation of the user for motivational content that allow them to see new growth opportunities..',
         icon: <Connect />,
@@ -82,8 +88,13 @@ const slides = [
         description: 'Fill in the forms, unlock achievement engage with the dashboard and engage others, in do it in your own way, your own where ever you want',
         icon: <Share ref={ref => ref ? share = ref : undefined} />,
         makeVisible: () => share.makeVisible()
-    }
-];
+    },
+    {
+        title: 'Engage',
+        description: 'Fill in the forms, unlock achievement engage with the dashboard and engage others, in do it in your own way, your own where ever you want',
+        icon: <Share ref={ref => ref ? share = ref : undefined} />,
+        makeVisible: () => share.makeVisible()
+    }];
 const styles = StyleSheet.create({
     container: {
         flex: 1
