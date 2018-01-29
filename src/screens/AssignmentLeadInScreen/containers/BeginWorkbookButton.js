@@ -32,6 +32,7 @@ const merge = (stateProps, dispatchProps, ownProps): Props => {
   const { loginWithFbButtonPressed, goToWorkBookScreen } = dispatchProps;
   const onPressWithProps = needsLogin ? loginWithFbButtonPressed : goToWorkBookScreen
   const styles = needsLogin ? loginButtonStyle : null;
+  const disabled = authenticating;
   return {
     ...ownProps,
     onPressWithProps,
