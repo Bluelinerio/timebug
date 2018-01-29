@@ -28,7 +28,7 @@ export default {
         },
         selfView: {
           label: "In one or two sentences, describe your attitude towards money today",
-          error: 'Even one or two words will work...'
+          error: 'One or two words will work too...'
         },
         othersView: {
           label: "Knowing how others perceive your relationship with money could be helpful. Would you like to try engage someone to find out?",
