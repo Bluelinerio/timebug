@@ -12,6 +12,7 @@
     "test:ios": "yarn test-env && yarn build-e2e:ios && yarn test-e2e:ios",
     "test:android": "yarn test-env && yarn test-e2e:android",
     "run:android": "cp config.example.json config.json && node node_modules/react-native/local-cli/cli.js run-android",
+    "run:android:release": "cp config.example.json config.json && node node_modules/react-native/local-cli/cli.js run-android --configuration=release",
     "run:ios": "cp config.example.json config.json && node node_modules/react-native/local-cli/cli.js run-ios",
     "clean:android": "cd android && gradlew clean && cd ..",
     "fetch-cms-static": "babel-node scripts/contentful-fetch.js --output '../src/static/cms.json' --presets es2015,stage-2,react-native"
