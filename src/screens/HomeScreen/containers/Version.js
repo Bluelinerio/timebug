@@ -12,6 +12,6 @@ export default () => (
     textAlign:'center',
     fontSize:10
   }}>
-  {`version:${DeviceInfo.getVersion()} build:${DeviceInfo.getBuildNumber()} Lifevision © blabsventures 2018`}
+  {`Version:${DeviceInfo.getVersion()} build:${DeviceInfo.getBuildNumber()} Lifevision © blabsventures 2018`}
   </Text>
 )

@@ -5,12 +5,13 @@ import {
   View,
   Text
 } from 'react-native'
-import TouchableBounce 			from 'react-native/Libraries/Components/Touchable/TouchableBounce'
+import TouchableBounce 			  from 'react-native/Libraries/Components/Touchable/TouchableBounce'
 import glamorous              from 'glamorous-native'
 import LinearGradient         from 'react-native-linear-gradient';
 
 import styles                 from '../../styles/dashbaord.styles'
 import TouchableRoundedImage  from '../../../../components/TouchableRoundedImage';
+import MeditatorComponent     from '../../../../components/Meditator';
 
 const Card = glamorous(TouchableBounce)(styles.dashboardCard);
 const Row = glamorous.view(styles.suggestionRow);
@@ -38,23 +39,6 @@ const HighlighText = ({children}) => (
   </GradientWithTwoColors>
 )
 
-const meditators = [
-  `🧘‍♂️`,
-  `🧘🏻‍♂️`,
-  `🧘🏼‍♂️`,
-  `🧘🏽‍♂️`,
-  `🧘🏾‍♂️`,
-  `🧘🏿‍♂️`,
-  `🧘‍♀️`,
-  `🧘🏻‍♀️`,
-  `🧘🏼‍♀️`,
-  `🧘🏽‍♀️`,
-  `🧘🏾‍♀️`,
-  `🧘🏿‍♀️`
-];
-
-const meditator = meditators[Math.floor(Math.random() * meditators.length)]
-
 export default class Meditation extends React.PureComponent<{},{ meditator:string }> {
   state = {
     meditator
@@ -65,9 +49,7 @@ export default class Meditation extends React.PureComponent<{},{ meditator:strin
       <Card>
         <Row>
           <HighlighText> 
-            <Text style={styles.emogi}>
-              {`${this.state.meditator}`}
-            </Text>
+            <MeditatorComponent />
             <Text style={[styles.suggestionText, styles.strong, { 
               textAlign: 'center', 
               color: '#FF24D8' 

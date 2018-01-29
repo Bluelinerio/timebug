@@ -64,8 +64,8 @@ const Header = ({date, source, title, titleColor, avatar}) => (
   </CardHeader>
 )
 
-RowContent = () => (
-  <Highlight startColor={'white'} endColor={'#ccc'}> 
+const RowContent = () => (
+  <View> 
     <Text style={[styles.suggestionText], { paddingVertical: 10}}>
       <Text style={styles.bold} >{`The below text is an example of a woring protoype of the Lifevision Cell Content.`}</Text>
       {`\n---\n`}
@@ -85,7 +85,7 @@ RowContent = () => (
       <Text style={styles.bold} >{`Meditation Phase`}</Text>
       {`\nYou are have just crossed the a third of your journey!`}
     </Text>
-  </Highlight>
+  </View>
 )
 
 export default () => (
@@ -96,25 +96,7 @@ export default () => (
     />
     <Card>
       <Row>
-        <Highlight startColor={'white'} endColor={'#ccc'}> 
-          <Text style={[styles.suggestionText], { paddingVertical: 10}}>
-            {`\nAwesome! Over the last week you have completed `}
-            <Text style={styles.bold} >{`3`}</Text>
-            {` workbooks! \nyou spent `}
-            <Text style={styles.bold} >{`35min`}</Text>
-            {` time on this month, (for each phase completed)`} 
-            {`you have completed`}
-            <Text style={styles.bold} >{`x`}</Text>
-            {` froms in the `}
-            <Text style={[styles.strong, {color: '#F89A1F'}]} >{`Self Assesment`}</Text>
-            
-            {` phase.\nYou are `}
-            <Text style={styles.bold} >{`54%`}</Text>
-            {`  through your journey.\n\n`}
-            <Text style={styles.bold} >{`Meditation Phase`}</Text>
-            {`\nYou are have just crossed the a third of your journey!`}
-          </Text>
-        </Highlight>
+        <RowContent />
       </Row>
       <BottomRow>
       </BottomRow>
