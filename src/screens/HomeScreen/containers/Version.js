@@ -10,8 +10,10 @@ import DeviceInfo from 'react-native-device-info';
 export default () => (
   <Text style={{
     textAlign:'center',
-    fontSize:10
+    fontSize: 10,
+    color:'#ccc',
+    marginBottom:2
   }}>
-  {`Version:${DeviceInfo.getVersion()} build:${DeviceInfo.getBuildNumber()} Lifevision © blabsventures 2018`}
+  {`2020 Lifevision © blabsventures 2018\nVersion:${DeviceInfo.getVersion()} build:${DeviceInfo.getBuildNumber()} `}
   </Text>
 )
