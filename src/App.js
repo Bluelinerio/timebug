@@ -4,6 +4,8 @@ import { ApolloProvider }           from 'react-apollo';
 import { Provider }                 from 'react-redux';
 import { AppRegistry }              from 'react-native';
 import { PersistGate }              from 'redux-persist/es/integration/react'
+import codePush                     from "react-native-code-push";
+
 import setup                        from './redux';
 import { client }                   from './services/apollo';
 import ReduxNavigator               from './navigation/reduxNavigator';
@@ -55,5 +57,11 @@ export default class App extends React.Component<{},State> {
     )
   }
 }
+const codePushConfigurations = { 
+  checkFrequency: codePush.CheckFrequency.ON_APP_RESUME, 
+  installMode: codePush.InstallMode.ON_NEXT_RESUME 
+}
+
+App = codePush(codePushConfigurations)(App);
 
 AppRegistry.registerComponent(APP_NAME, () => App);

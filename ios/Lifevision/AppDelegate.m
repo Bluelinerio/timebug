@@ -8,6 +8,7 @@
  */
 
 #import "AppDelegate.h"
+#import <CodePush/CodePush.h>
 
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
@@ -23,7 +24,12 @@
 {
   NSURL *jsCodeLocation;
 
-  jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
+  
+    #ifdef DEBUG
+        jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
+    #else
+        jsCodeLocation = [CodePush bundleURL];
+    #endif
 
   // The following two blocks of code (+ #import <React/RCTDevLoadingView.h> above) after seeing the 'RCTBridge required dispatch_sync to load RCTDevLoadingView. This may lead to deadlocks' warning. It stopped showing up after I brought back localhost to NSExceptionDomains this doesn't seem to show again. Leaving this here for now.
   // Previous to that, googling seems connected to react-native-device-info. A comment by devburmistro on https://github.com/facebook/react-native/issues/16376 suggested this fix.

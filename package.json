@@ -33,6 +33,7 @@
     "react": "16.2.0",
     "react-apollo": "^2.0.4",
     "react-native": "0.50.1",
+    "react-native-code-push": "^5.2.1",
     "react-native-device-info": "^0.13.0",
     "react-native-fbsdk": "0.6.3",
     "react-native-linear-gradient": "^2.4.0",
