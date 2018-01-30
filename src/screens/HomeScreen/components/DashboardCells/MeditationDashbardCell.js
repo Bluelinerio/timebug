@@ -50,8 +50,14 @@ export default class Meditation extends React.PureComponent<> {
               textAlign: 'center', 
               color: '#FF24D8' 
             }]}>
-              {`\nDid you meditate today?\n`}
+              {`\Have you meditated today?\n`}
             </Text>
+            <Text style={{
+              alignSelf:'center', 
+              marginBottom: 10
+            }}>
+              {'Yes/No'}
+              </Text>
           </HighlighText>
         </Row>
       </Card>

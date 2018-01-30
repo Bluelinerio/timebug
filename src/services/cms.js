@@ -1,5 +1,17 @@
 // @flow
 
+export const MEDITATION = 'MEDITATION'
+export const SELF_ASSESSMENT = 'SELF_ASSESSMENT'
+export const VISION_CREATION = 'VISION_CREATION'
+export const COMPLETE = 'COMPLETE';
+
+export const PHASES = {
+  MEDITATION,
+  SELF_ASSESSMENT,
+  VISION_CREATION,
+  COMPLETE,
+}
+
 export type Icon = {
   fields: {
     file: {
@@ -14,6 +26,8 @@ export type Assignment = {
   content: string,
   icon: Icon
 }
+
+export type Phase = MEDITATION | SELF_ASSESSMENT | SELF_ASSESSMENT | COMPLETE
 
 // @flow
 export type StepNumber = 1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30;
@@ -86,11 +100,6 @@ export const colorForStep = cmsColors => {
 export const fixMisingProgressFromServer = items => items
 
 export const sortSteps = (a:Step, b:Step) => a.number - b.number
-
-const MEDITATION = 'MEDITATION'
-const SELF_ASSESSMENT = 'SELF_ASSESSMENT'
-const VISION_CREATION = 'VISION_CREATION'
-const COMPLETE = 'COMPLETE';
 
 export const NUMBER_OF_STEPS = 30;
 export const NUMBER_OF_STEP_FOR_PHASES = 10;

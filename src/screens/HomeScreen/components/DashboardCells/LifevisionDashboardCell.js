@@ -1,3 +1,4 @@
+// @flow
 import * as React from 'react'
 import {
   Image,
@@ -13,6 +14,12 @@ import styles                 from '../../styles/dashbaord.styles'
 import PhaseProgress          from '../../../../components/PhaseProgress'
 import TouchableRoundedImage  from '../../../../components/TouchableRoundedImage';
 import OnLayout               from '../../../../components/OnLayout';
+import { 
+  MEDITATION,
+  SELF_ASSESSMENT,
+  VISION_CREATION,
+  COMPLETE,
+}                             from '../../../../services/cms'
 
 const Container = glamorous.view(styles.dashboardContainer);
 const Card = glamorous(TouchableBounce)(styles.dashboardCardWide);
@@ -64,7 +71,17 @@ const Header = ({date, source, title, titleColor, avatar}) => (
   </CardHeader>
 )
 
-const RowContent = () => (
+
+export type Props = { 
+  phaseColors: { 
+    [MEDITATION]: string,
+	  [SELF_ASSESSMENT]: string,
+	  [VISION_CREATION]: string,
+	  [COMPLETE]: string
+  }
+}
+
+const RowContent = ({ phaseColors } : Props) => (
   <View> 
     <Text style={[styles.suggestionText], { paddingVertical: 10}}>
       <Text style={styles.bold} >{`The below text is an example of a woring protoype of the Lifevision Cell Content.`}</Text>
@@ -73,22 +90,30 @@ const RowContent = () => (
       <Text style={styles.bold} >{`3`}</Text>
       {` workbooks! \nyou spent `}
       <Text style={styles.bold} >{`35min`}</Text>
-      {` time on this month, (for each phase completed)`} 
-      {`you have completed`}
+      {` time on this month, (for each phase completed)\n`} 
+      {`You have completed `}
       <Text style={styles.bold} >{`x`}</Text>
-      {` froms in the `}
-      <Text style={[styles.strong, {color: '#F89A1F'}]} >{`Self Assesment`}</Text>
+      {` workbooks in the `}
+      <Text style={[styles.strong, {
+        color: phaseColors[SELF_ASSESSMENT]}
+      ]}>
+        {`Self Assesment Phase`}
+      </Text>
       
       {` phase.\nYou are `}
       <Text style={styles.bold} >{`54%`}</Text>
       {`  through your journey.\n\n`}
-      <Text style={styles.bold} >{`Meditation Phase`}</Text>
-      {`\nYou are have just crossed the a third of your journey!`}
+      <Text style={[styles.bold, {
+        color: phaseColors[MEDITATION]}
+      ]}>
+        {`Meditation Phase`}
+      </Text>
+      {`\nYou just crossed a third of your journey! Congratulations!\n`}
     </Text>
   </View>
 )
 
-export default () => (
+export default (props : Props) => (
   <Container style={{flex:1}} >
     <Header 
       title='Lifevision' 
@@ -96,13 +121,16 @@ export default () => (
     />
     <Card>
       <Row>
-        <RowContent />
+        <RowContent {...props}/>
       </Row>
       <BottomRow>
       </BottomRow>
         <OnLayout 
           render={({width}) => width && <PhaseProgress width={width} /> || null }
         />
+        <Text style={[styles.suggestionText], { paddingVertical: 12, fontStyle:'italic', color:'#ccc'}}>
+          {`The legend of your progress through your journey`}
+        </Text>
     </Card>
   </Container>
 )

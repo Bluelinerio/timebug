@@ -15,7 +15,7 @@ const sortSteps = (a: Step, b: Step) => a.number - b.number
 const steps = (state: any) => getCms(state).steps
 const sortedSteps = (state: any) :[Step] => Object.values( steps(state) ).sort(sortSteps) 
 const stepColors = (state: any):{ number : string } => getCms(state).colors.steps;
-const phaseColors = (state: any):{ number : string } => getCms(state).colors.phases;
+const phaseColors = (state: any):{ string : string } => getCms(state).colors.phases;
 
 const isCMSLoading = (state: any) => getCms(state).requestCount > 0
 const totalNumberOfSteps = (state: any) => getCms(state).totalNumberOfSteps
