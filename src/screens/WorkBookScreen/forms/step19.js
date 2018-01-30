@@ -1,5 +1,5 @@
 import t from "../components/templates";
-import { TimeSpent, SpiritualViews } from "./contents";
+import { TimeSpent, SpiritualViews, SpiritualPactices } from "./contents";
 
 
 export default {
@@ -7,27 +7,59 @@ export default {
        type: t.struct ({
         id:t.maybe(t.String),
          spiritualViews: SpiritualViews,
-         spiritualInfluence: t.String,
-         currentMentors: t.String
+         spiritualPractices: t.maybe(SpiritualPactices),
+         spiritualInfluence: t.list(t.struct({
+            name:t.String,
+            what:t.maybe(t.String)
+         })),
+         currentMentors: t.list(t.struct({
+           name:t.String,
+           why:t.maybe(t.String)
+         }))
 
        }),
        options: {
-         label: 'Take the time to evaluate your spiritual views',
+         label: 'Take the time to anotate your spiritual views and practices',
          fields: {
            id:{
              hidden:true
            },
-           currentViews: {
-             label: 'Which statement best reflects your current views and feelings about spirituality?',
-             error: 'Please select the statement that generally matches your feelings.'
+           spiritualViews: {
+             label: 'Which statement you feel reflects your current views and feelings about spirituality?',
+             help: 'Select the one that is the closest to how you are feeling about it.'
+           },
+           spiritualPractices: {
+             label: 'Which statement is the closest to where you are in your practice of spiritualiy?',
+             help: 'You do not have to be spiritual to practice meditation...'
            },
            spiritualInfluence: {
-             label: 'Who and what influenced your Spiritual views early on in life?',
-             error: 'It can be someone in your inner circle, or current/historical spiritual leader whose work you admire'
+             label: 'Who influenced my Spiritual views early on in life?',
+             item: {
+               fields:{
+                name: {
+                  label: 'What is was their name?',
+                    help: 'For some, it can be people in their own inner circle, for some it can be current or historical spiritual leaders whose work they admire'
+                },
+                what: {
+                  label: 'Write something about how or why did they became influential on you'
+                }
+               }
+             }
            },
            currentMentors: {
-             label: 'Who are your current role models or mentors in this area? Why do you admire their approach to and views on life?',
-             error: "If you don't know anyone personally, is there anyone whose work in this area inspires you?"
+             label: 'Who are your spiritual role models and mentors?',
+             item: {
+                fields: {
+                  name: {
+                    label: 'What is their name?',
+                    help: 'If you do not know anyone personally, is there anyone whose work in this area inspires you?'
+                  },
+                  why: {
+                    label: 'Write something about what they mean to you',
+                    help: 'for instance, why do you admire their approach or views on life?',
+                  }                  
+                }
+             }
            }
          }
 

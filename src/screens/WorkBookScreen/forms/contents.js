@@ -484,11 +484,23 @@ export const IsSleepEnough = t.enums.of([
 
 
 export const SpiritualViews = t.enums.of([
-  "I have strong spiritual beliefs, and regular spiritual practice(s)",
-  "I have strong spiritual beliefs, but don't have a regular spiritual practice",
-  "I have beliefs/interest, but I haven't yet made much time in my life for this",
-  "I have difficulty or am uninterested in this aspect of life"
+  "I have deep spiritual beliefs",
+  "I am a spiritual novice",
+  "I recognize the its importance",
+  "I have difficulty with spirituality",
+  "I was turned off by religion expriences",
+  "I am uninterested in this aspect of life",
+  "None of the above"
 ],'SpiritualViews')  
+
+export const SpiritualPactices = t.enums.of([
+  "I have an established spiritual practice",
+  "I have do not have regular practice",
+  "I am a novice practitioner",
+  "It hasn't yet become a priority",
+  "I have difficulty or am uninterested in it"
+],'SpiritualPactices')  
+
 
 export const TimeSpentProgress = t.enums.of([
   "I made progress with some of my goals",

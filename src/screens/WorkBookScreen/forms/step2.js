@@ -13,7 +13,7 @@ export default {
       )
     }),
     options: {
-      label: "How do you spend a typical 168 hour week right now?",
+      label: "⏳\n\nHow do you spend a typical 168 hour week right now?",
       fields: {
         id: {
           hidden: true
