@@ -123,6 +123,10 @@ export default StyleSheet.create({
 		marginHorizontal: 16,
     borderBottomWidth: 1,
     borderColor: iOSColors.customGray
-  },
+	},
+	headerDate: {
+    ...iOSUIKit.footnoteEmphasizedObject,
+    color: iOSColors.gray
+	}
 });
 
