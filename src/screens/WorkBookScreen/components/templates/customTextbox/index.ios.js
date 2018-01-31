@@ -45,7 +45,7 @@ export default function customTextBox(locals) {
   let label = locals.label &&  
     <Text 
       style={[controlLabelStyle, {
-        textAlign: 'auto'
+        textAlign: 'auto',
       }]}
     >
       {locals.label}
@@ -63,16 +63,17 @@ export default function customTextBox(locals) {
     <View style={[formGroupStyle, {
       flex:1,
       marginTop: 22,
-      marginBottom:22,
+      marginBottom: 22,
     }]}>
-      {label}
       <View style={[{
-        borderRadius: 5,
+        borderRadius: 6,
         borderWidth: 1,
         borderColor: '#ccc',
-        marginVertical: 10,
+        paddingVertical: 10,
+        paddingHorizontal: 7,
         justifyContent:'flex-end'
       }]}>
+        {label}
         <PlaformTextInput
           accessibilityLabel={locals.label}
           autoGrow={true}

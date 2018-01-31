@@ -54,14 +54,14 @@ const customStylesheet= {
   helpBlock: {
     normal: {
       ...stylesheet.helpBlock.normal,
-      marginTop:4,
-      paddingHorizontal: 7,
+      marginTop: 4,
+      paddingHorizontal: 4,
       fontStyle:'italic'
     },
     error: {
       ...stylesheet.helpBlock.normal,
       marginTop:4,
-      paddingHorizontal: 7,
+      paddingHorizontal: 4,
       fontStyle:'italic'
     }
   },

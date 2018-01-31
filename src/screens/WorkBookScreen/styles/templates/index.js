@@ -10,6 +10,8 @@ const DISABLED_BACKGROUND_COLOR = '#eeeeee';
 const FONT_SIZE = 20;
 const FONT_WEIGHT = '500';
 
+//#E6E5ED
+
 export default StyleSheet.create({
   customListAddButton: {
     height: 44,
@@ -24,7 +26,7 @@ export default StyleSheet.create({
     color: INPUT_COLOR,
     fontSize: FONT_SIZE,
     height: 46,
-    textAlign: 'center'
+    textAlign: 'left',
   },
   formsTextBoxError: {
     color: ERROR_COLOR,
