@@ -135,7 +135,10 @@ class WorkBookScreenContainer extends Component<Props, State> {
               type={type}
               progress={progress}
               ref={this.handleFormRef}
-              options={options}
+              options={{
+                ...options,
+                topLevel:true
+              }}
               value={value}
               onChange={this.onChange}
             />

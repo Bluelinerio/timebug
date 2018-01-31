@@ -7,6 +7,7 @@ import styles from '../../styles';
 import buttonStyles from '../../../../styles/components/Button/workbook';
 import TouchableBounce 			from 'react-native/Libraries/Components/Touchable/TouchableBounce'
 
+// indicatorPosition: `none`, `top`, `right`, `bottom` and `left`
 export default class StrucFormPage extends React.Component {
   state: {
     index: number
@@ -44,12 +45,13 @@ export default class StrucFormPage extends React.Component {
     const children = [(label ? [label] : []), ...rows]
     const { changedPage } = this.props;
     const { index } = this.state;
+    const topLevel = this.props.topLevel || false
     const rest = {
       ref: (ref) => this.form = ref,
       page: changedPage ? 0 : index,
       horizontal:false,
       containerStyle: {
-        paddingHorizontal: 20,
+        paddingHorizontal: topLevel ? 20 : 0,
         top: 20
       },
       indicatorColor:"#CCC",
@@ -67,6 +69,7 @@ export default class StrucFormPage extends React.Component {
       <View style={{ flex: 1 }}>
         {error}
         <FormPages 
+          indicatorPosition={topLevel ? `right` : `none`}
           {...rest}
         >
           {children}

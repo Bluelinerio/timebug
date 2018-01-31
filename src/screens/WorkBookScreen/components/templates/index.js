@@ -139,6 +139,7 @@ t.form.Struct.prototype.getChangedPage = function() {
 t.form.Struct.prototype.getLocals = function() {
   const templates = this.getTemplates();
   const locals = {
+    topLevel: this.props.options.topLevel || false,
     path: this.props.ctx.path,
     error: this.getError(),
     hasError: this.hasError(),
