@@ -14,19 +14,22 @@ const mapStateToProps = (state) => {
 
 const { title, subtitle } = {
 	title: 'Welcome Nice to Meet!',
-	subtitle: 'No momentum | Loop | Autoplay | Parallax | Scale | Opacity | Pagination with tappable dots'
+	subtitle: 'No it has been a while since we have last met each other'
 };
 
 //	const aboutText = selectors.aboutText(state) 
 
 const Greet = ({ index, stepForIndex, snippets }) => (
 	<View>
-		<Text style={styles.title} numberOfLines={1}>
+		<Text style={styles.title} 
+			numberOfLines={1}
+		>
 			{stepForIndex(index) ? stepForIndex(index).stepScreenDescription : title }
 		</Text>
 		<Text 
 			style={styles.subtitle} 
-			numberOfLines={3}>
+			numberOfLines={2}
+		>
 			{stepForIndex(index) ? stepForIndex(index).snippet : ''}
 		</Text>
 	</View>
