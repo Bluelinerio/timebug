@@ -8,6 +8,7 @@ import Slide from './Slide';
 import Connect from './Connect';
 import Chat from './Chat';
 import Share from './Share';
+import Logo from './Logo'
 
 import Button from './components/Button'
 import { resetAction } from '../../navigation/helpers'
@@ -63,13 +64,14 @@ export default withNavigation(Walkthrough)
 */
 let chat: Chat;
 let share: Share;
+let logo: Logo;
 
 const slides = [
     {
-        title: 'Welcome',
-        description: 'Welcome TextWelcome TextWelcome TextWelcome TextWelcome TextWelcome TextWelcome TextWelcome TextWelcome TextWelcome TextWelcome Text',
-        icon: <Share ref={ref => ref ? share = ref : undefined} />,
-        makeVisible: () => share.makeVisible()
+        title: 'Welcome to Lifevision',
+        description: 'Welcome 2020 Life Vision Challenge! This app is designed around contemplation and self-discovery. Expect to gain renewed energy, propelling you into a new life plan.\nYou will review your major goals, strengths, weaknesses, support networks and more! Let’s get started!',
+        icon: <Logo />,
+        makeVisible: () => logo.makeVisible()
     },
     {
         title: 'Get Motivated',

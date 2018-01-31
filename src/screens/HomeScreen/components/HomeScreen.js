@@ -66,9 +66,6 @@ export default class HomeScreen extends PureComponent<Props, State> {
 						sliderWidth={sliderWidth}
 						snap={index => this.setState({ stepIndexInFocus: index })}
 					/>
-					<TouchableHighlight onPress={() => navigation.navigate('Walkthrough')}>
-						<Text> About </Text>
-					</TouchableHighlight>
 					<LifevisionDashoboardCellContainer />
 					<MeditationDashobardCellContainer />
 					<View style={{

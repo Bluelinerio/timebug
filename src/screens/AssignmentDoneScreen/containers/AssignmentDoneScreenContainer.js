@@ -15,7 +15,6 @@ const mapStateToProps = (state) => {
   return { steps, colors }
 }
 const merge = (stateProps, dispatchProps, ownProps): Props => {
-  debugger;
   const { colors, steps} = stateProps;
   const { goToAssignmentLeadInScreen } = dispatchProps
   const { navigation: {state:{ params: { step }}}} = ownProps;

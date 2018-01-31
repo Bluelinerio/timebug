@@ -12,7 +12,7 @@ type SlideProps = {
 }
 
 const {height} = Dimensions.get('window')
-const TopHeight = 0.62;
+const TopHeight = 0.9;
 
 export default class Slide extends React.Component<SlideProps> {
 
@@ -25,8 +25,10 @@ export default class Slide extends React.Component<SlideProps> {
                     barStyle="light-content"
                     backgroundColor={'white'}
                 />
-                <LinearGradient colors={['#0059FF', '#00AAFF']} 
-                  style={{ height: height * 0.62 }}>
+                <LinearGradient colors={['#008EBC', '#005587']} 
+                  style={{ 
+                      height: height * TopHeight 
+                  }}>
                   <SafeAreaView style={styles.container}>
                     <View style={styles.slide}>
                         <Text type='header2' style={styles.title}>{title}</Text>
@@ -35,7 +37,11 @@ export default class Slide extends React.Component<SlideProps> {
                   </SafeAreaView>
                 </LinearGradient>
                 <View style={styles.description}>
-                    <Text >{description}</Text>
+										<Text type='header3' style={{
+											color: '#CCC'
+										}}>
+											{description}
+										</Text>
                 </View>
             </View>
         )
@@ -55,7 +61,7 @@ const styles = StyleSheet.create({
         color: 'white'
     },
     description: {
-        height: height * 0.38,
+        height: height * (1-TopHeight),
         paddingHorizontal: Theme.spacing.base * 2,
         justifyContent: 'center'
     },

@@ -6,3 +6,4 @@ export const backgroundImage = sandClockConfetti;
 export const headerBackgroundImage = sandClockConfetti;
 
 export const headerBackground = () => sandClockConfetti
+export const icon = require('./AppIcon-Web.png')
