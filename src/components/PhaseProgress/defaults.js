@@ -29,10 +29,11 @@ import type {
 const state = [0,3,0,0,0,0,0,0,0,3,0,0,0,0,0,0,2,0,2,2,0,1,0,1,0,1,0,0,1,1,]
 const colors = [
   "#E9E9E9",
-  "#6AC2ED",
+  "#005587",
   "#F89A1F",
-  "#20B89D",
+  "#00B896"
 ]
+
 
 export const renderContainer = (props: GridContainerProps) => (
   <Svg width={props.width} height={props.height} style={props.style || {}}>
@@ -52,13 +53,15 @@ export const renderRect = (props: GridItemProps) => (
   />
 )
 
+const circle = 0.3
+const circleRatio = 0.4
 export const renderCircle = (props: GridItemProps) => (
   <Circle 
     key={props.index.toString()} 
     id={props.index.toString()} 
-    cx={(props.x + (props.width * 0.4)).toString()}
-    cy={(props.y + (props.height * 0.4)).toString()}
-    r={ (Math.min(props.width, props.height) * 0.4* (state[props.index] === 0 ? 0.5 : 1)).toString() }
+    cx={(props.x + (props.width * circle)).toString()}
+    cy={(props.y + (props.height * circle)).toString()}
+    r={ (Math.min(props.width, props.height) * circle * (state[props.index] === 0 ? circleRatio : 1)).toString() }
     fill={colors[state[props.index]]}
   />
 )

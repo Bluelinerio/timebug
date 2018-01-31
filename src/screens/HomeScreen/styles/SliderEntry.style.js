@@ -8,8 +8,9 @@ function wp (percentage) {
     return Math.round(value);
 }
 
+const percentage = 85;
 const slideHeight = viewportHeight * 0.4;
-const slideWidth = wp(70);
+const slideWidth = wp(percentage);
 const itemHorizontalMargin = wp(2);
 
 export const sliderWidth = viewportWidth;
@@ -17,18 +18,32 @@ export const itemWidth = slideWidth + itemHorizontalMargin * 2;
 export const spinnerEvenColor = 'rgba(255, 255, 255, 0.4)';
 export const spinnerUnEvenColor = 'rgba(0, 0, 0, 0.25)';
 
-const entryBorderRadius = 14;
+const entryBorderRadius = 16;
+
 
 export default StyleSheet.create({
     slideInnerContainer: {
         width: itemWidth,
         height: slideHeight,
         paddingHorizontal: itemHorizontalMargin,
-        paddingBottom: 18, // needed for shadow
+        marginVertical: 30, // needed for shadow
+		borderRadius: 6,
+		...Platform.select({
+			android: { elevation: 10 },
+			ios: {
+				shadowColor: "black",
+				shadowOffset: {
+					width: 0,
+					height: 10
+				},
+				shadowOpacity: 0.2,
+				shadowRadius: 10
+			}
+		})
     },
     imageContainer: {
         flex: 1,
-        paddingTop: 20,
+        marginVertical: entryBorderRadius, // needed for shadow
         backgroundColor: 'white',
         borderTopLeftRadius: entryBorderRadius,
         borderTopRightRadius: entryBorderRadius
@@ -40,7 +55,7 @@ export default StyleSheet.create({
         ...StyleSheet.absoluteFillObject,
         borderRadius: Platform.OS === 'ios' ? entryBorderRadius : 0,
         borderTopLeftRadius: entryBorderRadius,
-        borderTopRightRadius: entryBorderRadius
+        borderTopRightRadius: entryBorderRadius,
     },
     image: {
         ...StyleSheet.absoluteFillObject,

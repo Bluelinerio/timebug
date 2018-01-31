@@ -45,7 +45,7 @@ export default class PagninatedCarousel extends PureComponent<Props, State> {
 					right:16,
 					bottom:16,
 					paddingVertical: 20,
-					borderRadius: 20,
+					borderRadius: 24,
 					backgroundColor: backgroundColorAtIndex(activeSliderIndex)
 				}}
 				>
@@ -75,8 +75,8 @@ export default class PagninatedCarousel extends PureComponent<Props, State> {
 					hasParallaxImages={false}
 					firstItem={SLIDER_1_FIRST_ITEM}
 					inactiveSlideScale={0.95}
-					inactiveSlideOpacity={0.75}
-					enableMomentum={false}
+					inactiveSlideOpacity={0.9}
+					enableMomentum={Platform.OS !== 'ios'}
 					lockScrollWhileSnapping={Platform.OS !== 'ios'}
 					containerCustomStyle={styles.slider}
 					contentContainerCustomStyle={styles.sliderContentContainer}

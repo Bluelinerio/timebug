@@ -5,6 +5,8 @@ import {
   View,
   Text,
   TouchableOpacity,
+  Platform,
+  ScrollView
 } from 'react-native'
 import TouchableBounce 			  from 'react-native/Libraries/Components/Touchable/TouchableBounce'
 import glamorous              from 'glamorous-native'
@@ -41,12 +43,17 @@ const GradientWithTwoColors = ({startColor='#FF24D8', endColor ='#6AC2ED', child
   </LinearGradient>
 );
 
-const Highlight = ({children, startColor='#FF24D8', endColor ='#6AC2ED'}) => (
-  <GradientWithTwoColors style={styles.bigSuggestionWithText} startColor={startColor} endColor={endColor}>
+const Highlight = ({children, startColor='white', endColor ='#f8f8f8', gradientStyle}) => (
+  <LinearGradient
+    style={gradientStyle || { flex: 1 }}
+    colors={[startColor, endColor]}
+    start={{ x: 1, y: 0 }}
+		end={{ x: 0, y: 1 }}
+  >
     <View>
       {children}
     </View>
-  </GradientWithTwoColors>
+  </LinearGradient>
 )
 
 const BackgroundImage = glamorous.image(styles.backgroundImage, (props) => ({
@@ -81,10 +88,27 @@ export type Props = {
   }
 }
 
+import Markdown from '../../../../Modules/Markdown';
+  // <Highlight> 
+  //   <Markdown
+	// 		markdownStyles={{
+	// 			...markdownStyles,
+	// 			block: {
+	// 				...markdownStyles.block,
+	// 				width
+	// 			},
+	// 			list: {
+	// 				width
+	// 			}
+	// 		}}
+	// 	>
+	// 		{text}
+	// 	</Markdown>
+
 const RowContent = ({ phaseColors } : Props) => (
   <View> 
-    <Text style={[styles.suggestionText], { paddingVertical: 10}}>
-      <Text style={styles.bold} >{`The below text is an example of a woring protoype of the Lifevision Cell Content.`}</Text>
+    <Text style={[styles.suggestionText,{ color: '#ccc'}], { paddingVertical: 10}}>
+      <Text style={styles.bold} >{`The below is an example of a how a Dashboard Cell Content will look like when you start using the app.`}</Text>
       {`\n---\n`}
       {`\nAwesome! Over the last week you have completed `}
       <Text style={styles.bold} >{`3`}</Text>
@@ -113,24 +137,72 @@ const RowContent = ({ phaseColors } : Props) => (
   </View>
 )
 
+    // <Row>
+    //   <RowContent {...props}/>
+    // </Row>
+import { Pages } from 'react-native-pages';
+import { Array } from 'tcomb-validation';
+
+const horizontalPadding = 16;
+
 export default (props : Props) => (
-  <Container style={{flex:1}} >
+  <View style={{
+		...Platform.select({
+			android: { elevation: 16 },
+			ios: {
+				shadowColor: "black",
+				shadowOffset: {
+					width: 0,
+					height: 16
+				},
+				shadowOpacity: 0.2,
+				shadowRadius: 16
+			}
+		})
+  }}>
     <Header 
-      title='Lifevision' 
+      title='Life Vision' 
       titleColor="black"
     />
+    <ScrollView 
+      style={{ 
+        marginTop: 20
+      }}
+      horizontal={true}
+      contentInset={{
+        top:0,
+        bottom:0,
+        left:horizontalPadding,
+        right:0
+      }}
+      contentOffset={{
+        x:-horizontalPadding,
+        y:0
+      }}
+      contentContainerStyle={{}}
+    >  
+      {
+        [1,2].map((value, index ) => (
+          <Highlight
+            gradientStyle={{
+              marginRight: 10,
+              paddingTop:10,
+              marginBottom:10,
+              borderRadius: 6
+            }} 
+            key={index}
+          >
+            <OnLayout 
+              render={({width}) => width && <PhaseProgress width={width} /> || null }
+            />
+            <Text style={[styles.suggestionText,{ color: '#ccc'}]}>
+              {`The legend of your progress through your journey`}
+            </Text>
+          </Highlight>
+        ))
+      }
+    </ScrollView>
     <Card>
-      <Row>
-        <RowContent {...props}/>
-      </Row>
-      <BottomRow>
-      </BottomRow>
-        <OnLayout 
-          render={({width}) => width && <PhaseProgress width={width} /> || null }
-        />
-        <Text style={[styles.suggestionText], { paddingVertical: 12, fontStyle:'italic', color:'#ccc'}}>
-          {`The legend of your progress through your journey`}
-        </Text>
     </Card>
-  </Container>
+  </View>
 )

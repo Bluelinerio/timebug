@@ -117,8 +117,10 @@ export default StyleSheet.create({
 	header: {
     flexDirection: "row",
     justifyContent: "space-between",
-    alignItems: "flex-start",
-    paddingBottom: 8,
+		alignItems: "flex-start",
+		paddingTop: 16,
+		paddingBottom: 8,
+		marginHorizontal: 16,
     borderBottomWidth: 1,
     borderColor: iOSColors.customGray
   },

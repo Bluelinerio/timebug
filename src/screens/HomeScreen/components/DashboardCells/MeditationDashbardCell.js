@@ -13,7 +13,7 @@ import styles                 from '../../styles/dashbaord.styles'
 import TouchableRoundedImage  from '../../../../components/TouchableRoundedImage';
 import MeditatorComponent     from '../../../../components/Meditator';
 
-const Card = glamorous(TouchableBounce)(styles.dashboardCard);
+const Card = glamorous(View/*TouchableBounce*/)(styles.dashboardCard);
 const Row = glamorous.view(styles.suggestionRow);
 const BottomRow = glamorous.view(styles.suggestionRowBottom);
 
