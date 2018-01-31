@@ -16,6 +16,8 @@ import styles                 from '../../styles/dashbaord.styles'
 import PhaseProgress          from '../../../../components/PhaseProgress'
 import TouchableRoundedImage  from '../../../../components/TouchableRoundedImage';
 import OnLayout               from '../../../../components/OnLayout';
+import PhaseProgressContainer from '../../../../containers/PhaseProgressContainer'
+
 import { 
   MEDITATION,
   SELF_ASSESSMENT,
@@ -188,12 +190,32 @@ export default (props : Props) => (
               marginRight: 10,
               paddingTop:10,
               marginBottom:10,
-              borderRadius: 6
+              borderRadius: 6,
+              ...Platform.select({
+                android: { elevation: 2 },
+                ios: {
+                  shadowColor: "black",
+                  shadowOffset: {
+                    width: 0,
+                    height: 2
+                  },
+                  shadowOpacity: 0.2,
+                  shadowRadius: 2
+                }
+              }) 
             }} 
             key={index}
           >
             <OnLayout 
-              render={({width}) => width && <PhaseProgress width={width} /> || null }
+              render={({width}) => width 
+                ? (
+                    <PhaseProgressContainer 
+                        width={width} 
+                        useDummyData
+                    />
+                  ) 
+                : null 
+              }
             />
             <Text style={[styles.suggestionText,{ color: '#ccc'}]}>
               {`The legend of your progress through your journey`}

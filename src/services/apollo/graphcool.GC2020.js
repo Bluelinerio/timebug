@@ -31,7 +31,7 @@ const _parse = <T>(key: string, graphResponse: GraphResponse): T => {
 		endpoint:endpoints.simple
 	}
 	if (value) {
-		return value
+		return temporaryUserAdditions(value)
 	}
 	throw { error: error | 'User not found'}
 }

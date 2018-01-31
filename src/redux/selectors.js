@@ -29,7 +29,7 @@ const isUserStateUNDETERMINED = (state: any): boolean => getUserState(state) ===
 const isUserStateAUTHENTICATING = (state: any): boolean => getUserState(state) === AUTHENTICATING
 const isLoggedIn = (state: any) : boolean => !!user(state)
 const isAnonymous = (state: any) : boolean => getUserState(state) === ANONYMOUS
-
+const completedSteps = (state: any) => user(state) && user(state).completedSteps.keys() || []
 
 // CMS+Pgroess
 const assignmentsForStep = (state: any) => (step: number) => steps(state)[step].refAssignment.map(i => i.fields);
@@ -63,6 +63,7 @@ export default {
 	isUserStateUNDETERMINED,
 	isUserStateAUTHENTICATING,
 	isAnonymous,
+	completedSteps,
 	getFormModels,
 	fetchingFormModels,
 	getFormData: _getFormData,

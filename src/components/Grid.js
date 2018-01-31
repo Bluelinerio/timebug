@@ -42,7 +42,8 @@ export type GridProps = {
   options?: {
     spaceX?: getSpaceXFn, 
     spaceY?: getSpaceYFn,
-    renderItem?: preRenderItemProps
+    renderItem?: preRenderItemProps,
+    appendToItem?: () => [{}]
   },
   renderContainer: RenderContainerFnType,
   renderItem: RenderItemFnType
@@ -77,6 +78,10 @@ export default (props: GridProps) => {
     })
     : null
 
+  const appendToItem = (props.options && props.options.appendToItem) 
+    ? props.options.appendToItem() 
+    : []
+
   const containerHeight = tileHeight * props.rows;
   
   const component = props.renderContainer({
@@ -91,6 +96,7 @@ export default (props: GridProps) => {
       x: ((index % props.columns) * tileWidth) + (spaceX * 0.5),
       y: (Math.floor(index / props.columns) * tileHeight) + (spaceY * 0.5),
       ...options,
+      ...(appendToItem[index] || {})
     }))
   })
 

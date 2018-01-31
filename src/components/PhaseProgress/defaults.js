@@ -55,6 +55,7 @@ export const renderRect = (props: GridItemProps) => (
 
 const circle = 0.3
 const circleRatio = 0.4
+
 export const renderCircle = (props: GridItemProps) => (
   <Circle 
     key={props.index.toString()} 
@@ -70,7 +71,7 @@ type Props = GridProps & {
   width: nummber,
 }
 
-export const defaultProps:GridProps = {
+export const defaultProps: GridProps = {
   columns:10,
   rows: 3,
   width: Dimensions.get('window').width,
