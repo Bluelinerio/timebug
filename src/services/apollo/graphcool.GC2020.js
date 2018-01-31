@@ -22,9 +22,14 @@ export const client = new ApolloClient({
   cache: new InMemoryCache()
 });
 
+import { temporaryUserAdditions } from './tmp';
+
 const _parse = <T>(key: string, graphResponse: GraphResponse): T => {
 	const { data, error } = graphResponse
-	const value: T = data[key]
+	const value: T = {
+		...data[key],
+		endpoint:endpoints.simple
+	}
 	if (value) {
 		return value
 	}

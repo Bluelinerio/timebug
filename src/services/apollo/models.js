@@ -33,7 +33,8 @@ export type User = {
 	+name: string,
 	+steps: ?Array<Object>, /** Meta information about the query. */
 	+progress :Progress,
-	+finished: boolean
+	+finished: boolean,
+	+endpoint: string
 }
 
 export type AuthUser = {
