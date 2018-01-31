@@ -26,7 +26,7 @@ export default class OnLayout extends React.Component<{render:(OnLayoutState) =>
     })
   }
   render () {
-    const { render, ...props } = this.props
+    const { render, style, ...props } = this.props
     const { layout } = this.state
     return (
       <View style={{flex: 1, alignSelf: 'stretch'}} {...props} onLayout={this.onLayout} >
