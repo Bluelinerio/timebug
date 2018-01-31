@@ -1,8 +1,11 @@
 import { RootNavigator, root } from '../../navigation/navigation';
 
-const initialState = RootNavigator.router.getStateForAction(
+const HomeScreenState = RootNavigator.router.getStateForAction(
   RootNavigator.router.getActionForPathAndParams(root.options.initialRouteName)
 );
+const initialState = RootNavigator.router.getStateForAction(
+  RootNavigator.router.getActionForPathAndParams('Walkthrough'), HomeScreenState
+)
 
 function navReducer(state = initialState, action) {
   const newState = RootNavigator.router.getStateForAction(action, state);
@@ -15,7 +18,9 @@ import { persistReducer } from 'redux-persist';
 
 const persistConfig = {
 	key:'nav',
-	storage: storage,
+  storage: storage,
+  //migrate: (state) => Promise.resolve(initialState)
 };
+
 
 export default persistReducer(persistConfig, navReducer);
