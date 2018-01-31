@@ -3,6 +3,7 @@
   "version": "0.0.2",
   "private": true,
   "scripts": {
+    "codepush" : "code-push release-react Lifevision-1 Android -d Production & code-push release-react Lifevision iOS -d Production",
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "build-e2e:ios": "detox build -c ios.sim.debug",
     "test-e2e:ios": "detox test -c ios.sim.debug -l verbose",
