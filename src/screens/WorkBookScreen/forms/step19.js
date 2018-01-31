@@ -33,7 +33,9 @@ export default {
              help: 'You do not have to be spiritual to practice meditation...'
            },
            spiritualInfluence: {
-             label: 'Who influenced my Spiritual views early on in life?',
+             field: {
+               label: 'Who influenced my Spiritual views early on in life?',
+             },
              item: {
                fields:{
                 name: {
