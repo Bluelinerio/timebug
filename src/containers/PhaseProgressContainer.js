@@ -14,7 +14,7 @@ import type { GridProps }       from '../components/Grid';
 
 const circle = 0.3
 const circleRatio = 0.4
-const spaceXRatio = 0.1
+const spaceXRatio = 0.2
 const spaceYRatio = 0.1
 const cornerRadiusRatio = 0.5
 

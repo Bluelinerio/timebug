@@ -17,7 +17,7 @@ import PhaseProgress          from '../../../../components/PhaseProgress'
 import TouchableRoundedImage  from '../../../../components/TouchableRoundedImage';
 import OnLayout               from '../../../../components/OnLayout';
 import PhaseProgressContainer from '../../../../containers/PhaseProgressContainer'
-
+import User                   from '../../../../containers/User'
 import { 
   MEDITATION,
   SELF_ASSESSMENT,
@@ -25,7 +25,6 @@ import {
   COMPLETE,
 }                             from '../../../../services/cms'
 
-const Container = glamorous.view(styles.dashboardContainer);
 const Card = glamorous(TouchableBounce)(styles.dashboardCardWide);
 const CardHeader = glamorous.view(styles.header)
 const Row = glamorous.view(styles.suggestionRow);
@@ -91,7 +90,7 @@ export type Props = {
 }
 
 import Markdown from '../../../../Modules/Markdown';
-  // <Highlight> 
+  // <DashboardHightlight> 
   //   <Markdown
 	// 		markdownStyles={{
 	// 			...markdownStyles,
@@ -138,35 +137,30 @@ const RowContent = ({ phaseColors } : Props) => (
     </Text>
   </View>
 )
+// <Row>
+//   <RowContent {...props}/>
+// </Row>
 
-    // <Row>
-    //   <RowContent {...props}/>
-    // </Row>
-import { Pages } from 'react-native-pages';
-import { Array } from 'tcomb-validation';
 
 const horizontalPadding = 16;
 
-export default (props : Props) => (
-  <View style={{
-		...Platform.select({
-			android: { elevation: 16 },
-			ios: {
-				shadowColor: "black",
-				shadowOffset: {
-					width: 0,
-					height: 16
-				},
-				shadowOpacity: 0.2,
-				shadowRadius: 16
-			}
-		})
-  }}>
-    <Header 
-      title='Life Vision' 
-      titleColor="black"
-    />
-    <ScrollView 
+const Container = glamorous.view({
+    ...Platform.select({
+      android: { elevation: 16 },
+      ios: {
+        shadowColor: "black",
+        shadowOffset: {
+          width: 0,
+          height: 16
+        },
+        shadowOpacity: 0.2,
+        shadowRadius: 16
+      }
+    })
+})
+
+const HorizontalScrollView = (props) => (
+  <ScrollView 
       style={{ 
         marginTop: 20
       }}
@@ -182,49 +176,75 @@ export default (props : Props) => (
         y:0
       }}
       contentContainerStyle={{}}
-    >  
+      {...props}
+    />
+)
+
+const DashboardHightlight = (props) => (
+  <Highlight
+    gradientStyle={{
+      marginRight: 10,
+      paddingTop:10,
+      marginBottom:10,
+      borderRadius: 6,
+      ...Platform.select({
+        android: { elevation: 2 },
+        ios: {
+          shadowColor: "black",
+          shadowOffset: {
+            width: 0,
+            height: 2
+          },
+          shadowOpacity: 0.2,
+          shadowRadius: 2
+        }
+      }) 
+    }} 
+    {...props}
+  />
+)
+
+const Main = (props) => (
+  <Container>
+    <Header 
+      title='Life Vision' 
+      titleColor="black"
+    />
+    <HorizontalScrollView>  
       {
         [1,2].map((value, index ) => (
-          <Highlight
-            gradientStyle={{
-              marginRight: 10,
-              paddingTop:10,
-              marginBottom:10,
-              borderRadius: 6,
-              ...Platform.select({
-                android: { elevation: 2 },
-                ios: {
-                  shadowColor: "black",
-                  shadowOffset: {
-                    width: 0,
-                    height: 2
-                  },
-                  shadowOpacity: 0.2,
-                  shadowRadius: 2
-                }
-              }) 
-            }} 
+          <DashboardHightlight 
             key={index}
           >
             <OnLayout 
               render={({width}) => width > 0
                 ? (
+                  <View>
                     <PhaseProgressContainer 
-                        width={width} 
-                        useDummyData
+                      width={width} 
+                      useDummyData
                     />
+                  </View>
                   ) 
                 : null 
               }
             />
-            <Text style={[styles.suggestionText,{ color: '#ccc'}]}>
+            <Text style={[styles.suggestionText,{ 
+              color: '#ccc'
+            }]}
+            >
               {`The legend of your progress through your journey`}
             </Text>
-          </Highlight>
+          </DashboardHightlight>
         ))
       }
-    </ScrollView>
-    <Card>
-    </Card>
-  </View>
+    </HorizontalScrollView>
+  </Container>
+)
+
+export default (props : Props) => (
+  <User 
+    renderWithState={() =>(<Main />)}
+    renderWithUser={() =>(<Main />)}
+  />
 )

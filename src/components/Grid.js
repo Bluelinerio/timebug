@@ -49,6 +49,8 @@ export type GridProps = {
   renderItem: RenderItemFnType
 }
 
+const defaulSpacingRatio = 0.1
+
 export default (props: GridProps) => {
   const containerWidth = props.width || Dimensions.get('window').width;
 
@@ -59,7 +61,7 @@ export default (props: GridProps) => {
       ? props.options.spaceX({
         tileWidth: tileWidth,
       }) 
-    : Math.max(Math.floor(tileWidth * 0.1), 1)
+    : Math.max(Math.floor(tileWidth * defaulSpacingRatio), 1)
   const width = tileWidth - spaceX
 
   const height = width * props.aspectRatio
@@ -69,7 +71,7 @@ export default (props: GridProps) => {
       ? props.options.spaceY({
         height,
       }) 
-      : Math.max(Math.floor(height * 0.1), 1)
+      : Math.max(Math.floor(height * defaulSpacingRatio), 1)
   const tileHeight = height + spaceY;
   const options = (props.options && props.options.renderItem)
     ? props.options.renderItem({
