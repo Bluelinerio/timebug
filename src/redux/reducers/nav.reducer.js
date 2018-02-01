@@ -29,7 +29,9 @@ const persistConfig = {
 	key:'nav',
   storage: storage,
   version: 1,
-  migrate: createMigrate(migrations, { debug: true }),
+  //migrate: (state) => Promise.resolve(initialState)
+
 }
+// migrate: createMigrate(migrations, { debug: true }),
 
 export default persistReducer(persistConfig, navReducer);

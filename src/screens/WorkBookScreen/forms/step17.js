@@ -1,11 +1,6 @@
 import t from "../components/templates";
 import { CommonGoalOutcomes, OneToTenScale } from "./contents";
 
-const stylesheet = _.cloneDeep(t.form.Form.stylesheet);
-
-// overriding the text color
-stylesheet.textbox.normal.textAlign = 'left';
-
 export default {
   1: { 
       type:t.struct({

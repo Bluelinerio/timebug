@@ -15,26 +15,16 @@ import customList       from './customList';
 import customTextBox    from './customTextbox';
 import customStruct     from './customStruct';
 import select           from './select';
+import customStylesheet from '../../styles/templates/index'
 
-Pages.prototype.renderPage = function(page, index) {
-  let { width, height, progress } = this.state;
-  let { children, horizontal, rtl } = this.props;
-  let pages = Children.count(children);
-
-  let pageStyle = (horizontal && rtl)?
-    styles.rtl:
-    null;
-
-  /* Adjust progress by page index */
-  progress = Animated.add(progress, -index);
-
-  return (
-    <KeyboardAvoidingView style={[{ width, height, justifyContent: 'center' }, pageStyle]}>
-      {React.cloneElement(page, { index, pages, progress })}
-    </KeyboardAvoidingView>
-  );
+if(__DEV__) {
+  function assert(condition, error) {
+    if(!condition) throw error
+  }
+  assert(typeof customStylesheet.textbox.normal === 'object', 'error');
+  assert(typeof customStylesheet.textbox.error === 'object', 'error');
+  assert(typeof customStylesheet.textbox.notEditable === 'object', 'error');
 }
-
 
 const customTemplates = {
   ...templates,
@@ -42,56 +32,6 @@ const customTemplates = {
   textbox: customTextBox,
   struct: customStruct,
   select
-};
-
-const customStylesheet= {
-  ...stylesheet,
-  formLabel: {
-    textAlign: 'center',
-    fontSize: 26,
-    paddingVertical: 20,
-  },
-  helpBlock: {
-    normal: {
-      ...stylesheet.helpBlock.normal,
-      marginTop: 4,
-      paddingHorizontal: 4,
-      fontStyle:'italic'
-    },
-    error: {
-      ...stylesheet.helpBlock.normal,
-      marginTop:4,
-      paddingHorizontal: 4,
-      fontStyle:'italic'
-    }
-  },
-  pickerContainer: {
-    normal: {
-      flexDirection: 'row',
-      height: 48,
-      borderWidth: 1,
-      borderRadius: 4,
-      borderColor: '#CCC',
-      padding: 8,
-      backgroundColor: '#FFFFFF',
-    },
-    error: {
-      flexDirection: 'row',
-      height: 48,
-      borderWidth: 1,
-      borderRadius: 4,
-      borderColor: '#a94442',
-      padding: 8,
-      backgroundColor: '#FFFFFF',
-    },
-    open: { }
-  },
-  pickerLabelStyle: {
-    normal: {
-      fontSize: 17,
-      alignSelf: 'center',
-    }
-  }
 };
 
 t.form.Form.templates  = customTemplates;
@@ -106,7 +46,6 @@ t.form.Form.defaultProps = {
 
 
 // Override Struct methods to reset to page 0 after changing form
-
 t.form.Struct.prototype.shouldComponentUpdate = function(nextProps, nextState) {
   const should =
     nextState.value !== this.state.value ||

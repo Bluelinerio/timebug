@@ -25,16 +25,16 @@ class FocusedTextInput extends React.Component {
     let stylesheet        = locals.stylesheet;
     let formGroupStyle    = stylesheet.formGroup.normal;
     let controlLabelStyle = stylesheet.controlLabel.normal;
-    let textboxStyle      = styles.formsTextBoxNormal;
-    let textboxViewStyle  = styles.formsTextBoxView;
+    let textboxStyle      = styles.textBox.normal;
+    let textboxViewStyle  = styles.textBoxView;
     let helpBlockStyle    = stylesheet.helpBlock.normal;
     let errorBlockStyle   = stylesheet.errorBlock;
 
     if (locals.hasError) {
       formGroupStyle    = stylesheet.formGroup.error;
       controlLabelStyle = stylesheet.controlLabel.error;
-      textboxStyle      = styles.formsTextBoxError;
-      textboxViewStyle  = styles.formsTextBoxViewError;
+      textboxStyle      = styles.textBox.error;
+      textboxViewStyle  = styles.textBoxView.error;
       helpBlockStyle    = stylesheet.helpBlock.error;
     }
 

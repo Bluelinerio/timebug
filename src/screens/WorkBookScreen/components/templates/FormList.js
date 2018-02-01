@@ -38,7 +38,7 @@ const renderHelpLabel = ({style, text}) => (<Text style={style}>{text}</Text>)
 const renderRowAddButton = ({key, text, onPress}) => (
   <TouchableOpacity
     key={key}
-    style={styles.customListAddButton}
+    style={styles.listAddButton}
     onPress={onPress}
   >
     <Icon

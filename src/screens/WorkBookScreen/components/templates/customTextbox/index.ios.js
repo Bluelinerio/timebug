@@ -2,119 +2,22 @@ import React from 'react';
 import { 
   View, 
   Text, 
-  TextInput, 
   Platform, 
   PixelRatio 
 } from 'react-native';
 import styles from '../../../styles/templates';
-import ExpandingTextInput from './ExpandingTextInput'
+import TextInput from './TextInput'
 
-if(!styles ) {
-  throw 'did not find stlye file'
-}
-
-const PlaformTextInput = (props) => Platform.OS
-  ? <ExpandingTextInput {...props} /> 
-  : <TextInput  {...props} /> 
-
-export default function customTextBox(locals) {
-  if (locals.hidden) {
+export default function customTextBox({stylesheet, ...rest}) {
+  if (rest.hidden) {
     return null;
   }
-  let stylesheet        = locals.stylesheet;
-  let formGroupStyle    = stylesheet.formGroup.normal;
-  let controlLabelStyle = stylesheet.controlLabel.normal;
-  let textboxStyle      = styles.formsTextBoxNormal;
-  let textboxViewStyle  = styles.formsTextBoxView;
-  let helpBlockStyle    = stylesheet.helpBlock.normal;
-  let errorBlockStyle   = stylesheet.errorBlock;
-
-  if (locals.hasError) {
-    formGroupStyle    = stylesheet.formGroup.error;
-    controlLabelStyle = stylesheet.controlLabel.error;
-    textboxStyle      = styles.formsTextBoxError;
-    textboxViewStyle  = styles.formsTextBoxViewError;
-    helpBlockStyle    = stylesheet.helpBlock.error;
-  }
-
-  if (locals.editable === false) {
-    textboxStyle     = stylesheet.textbox.notEditable;
-    textboxViewStyle = stylesheet.textboxView.notEditable;
-  }
-
-  let label = locals.label &&  
-    <Text 
-      style={[controlLabelStyle, {
-        textAlign: 'auto',
-      }]}
-    >
-      {locals.label}
-    </Text>
-  
-  const help  = locals.help && 
-    <Text style={[helpBlockStyle]}>
-      {locals.help}
-    </Text>
-
-  let error = locals.hasError && locals.error ?
-              <Text accessibilityLiveRegion="polite" style={errorBlockStyle}>{locals.error}</Text> : null;
-
   return (
-    <View style={[formGroupStyle, {
-      flex:1,
-      marginTop: 22,
-      marginBottom: 22,
-    }]}>
-      <View style={[{
-        borderRadius: 6,
-        borderWidth: 1,
-        borderColor: '#ccc',
-        paddingVertical: 10,
-        paddingHorizontal: 7,
-        justifyContent:'flex-end'
-      }]}>
-        {label}
-        <PlaformTextInput
-          accessibilityLabel={locals.label}
-          autoGrow={true}
-          autoCapitalize={locals.autoCapitalize}
-          autoCorrect={locals.autoCorrect}
-          autoFocus={locals.autoFocus}
-          blurOnSubmit={locals.blurOnSubmit}
-          editable={locals.editable}
-          keyboardType={locals.keyboardType}
-          maxLength={locals.maxLength}
-          multiline={locals.multiline}
-          onBlur={locals.onBlur}
-          onEndEditing={locals.onEndEditing}
-          onFocus={locals.onFocus}
-          onLayout={locals.onLayout}
-          onSelectionChange={locals.onSelectionChange}
-          onSubmitEditing={locals.onSubmitEditing}
-          onContentSizeChange={locals.onContentSizeChange}
-          placeholderTextColor={locals.placeholderTextColor}
-          secureTextEntry={locals.secureTextEntry}
-          selectTextOnFocus={locals.selectTextOnFocus}
-          selectionColor={locals.selectionColor}
-          numberOfLines={locals.numberOfLines}
-          underlineColorAndroid={locals.underlineColorAndroid}
-          clearButtonMode={locals.clearButtonMode}
-          clearTextOnFocus={locals.clearTextOnFocus}
-          enablesReturnKeyAutomatically={locals.enablesReturnKeyAutomatically || true}
-          keyboardAppearance={locals.keyboardAppearance}
-          onKeyPress={locals.onKeyPress}
-          returnKeyType={locals.returnKeyType}
-          selectionState={locals.selectionState}
-          onChangeText={(value) => locals.onChange(value)}
-          onChange={locals.onChangeNative}
-          placeholder={locals.placeholder}
-          style={[textboxStyle]}
-          value={locals.value}
-        />
-      </View>
-      {help}
-      {error}
-    </View>
-  );
+    <TextInput {...{
+      ...rest,
+      styles: stylesheet,
+    }} 
+    />
+  )
 }
 

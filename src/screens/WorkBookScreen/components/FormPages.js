@@ -10,7 +10,6 @@ const Container = (props) => {
     return <View {...props} />
   }
 }
-
 export default class FormPages extends Pages {
   componentWillReceiveProps(props) {
     let { progress, page } = props;
