@@ -27,6 +27,30 @@ export type Progress = {
 	+form: number
 }
 
+export type Form = {
+  id: string,
+  stepId: number,
+  data: {},
+  createdAt: number,
+  updatedAt: number,
+}
+
+
+export type AchievementUpdate = {
+	id: string,
+	createdAt: number,
+	value: {}
+}
+
+export type Achievement = {
+  id: string,
+  createdAt: number,
+  updatedAt: number,
+  tagName: string,
+  updates: [AchievementUpdate]
+}
+
+
 export type User = {
 	+facebookId: string,
 	+id: string,
@@ -34,7 +58,9 @@ export type User = {
 	+steps: ?Array<Object>, /** Meta information about the query. */
 	+progress :Progress,
 	+finished: boolean,
-	+endpoint: string
+	+endpoint: string,
+	+forms:[Form],
+	+achievements:[Achievement]
 }
 
 export type AuthUser = {

@@ -74,6 +74,11 @@ export const fetchUserWithId = (id: string): User =>
 							tagName
 							updatedAt
 							createdAt
+							updates {
+								id
+								createdAt
+								value
+							}
 						}
 						forms(orderBy: stepId_DESC, first: 20) {
 							id
