@@ -207,7 +207,7 @@ export default (props : Props) => (
             key={index}
           >
             <OnLayout 
-              render={({width}) => width 
+              render={({width}) => width > 0
                 ? (
                     <PhaseProgressContainer 
                         width={width} 

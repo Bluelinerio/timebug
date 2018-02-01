@@ -29,7 +29,11 @@ const isUserStateUNDETERMINED = (state: any): boolean => getUserState(state) ===
 const isUserStateAUTHENTICATING = (state: any): boolean => getUserState(state) === AUTHENTICATING
 const isLoggedIn = (state: any) : boolean => !!user(state)
 const isAnonymous = (state: any) : boolean => getUserState(state) === ANONYMOUS
-const completedSteps = (state: any) => user(state) && user(state).completedSteps.keys() || []
+const completedSteps = (state: any) => Object.keys(
+	user(state) && user(state).completedSteps 
+	? user(state).completedSteps 
+	: {}
+)
 
 // CMS+Pgroess
 const assignmentsForStep = (state: any) => (step: number) => steps(state)[step].refAssignment.map(i => i.fields);
