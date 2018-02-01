@@ -14,13 +14,22 @@ function navReducer(state = initialState, action) {
 
 
 import storage from 'redux-persist/lib/storage';
-import { persistReducer } from 'redux-persist';
+import { persistReducer, createMigrate } from 'redux-persist';
+
+const migrate = (state) => {
+    debugger
+    return initialState
+}
+const migrations = {
+  0: migrate,
+  1: migrate
+}
 
 const persistConfig = {
 	key:'nav',
   storage: storage,
-  migrate: (state) => Promise.resolve(initialState)
-};
-
+  version: 1,
+  migrate: createMigrate(migrations, { debug: true }),
+}
 
 export default persistReducer(persistConfig, navReducer);
