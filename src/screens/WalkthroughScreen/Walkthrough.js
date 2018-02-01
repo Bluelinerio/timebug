@@ -1,10 +1,10 @@
 // @flow
 import * as React from 'react';
-import {View, StyleSheet, SafeAreaView, Dimensions, StatusBar } from 'react-native';
+import {View, Image, StyleSheet, SafeAreaView, Dimensions, StatusBar } from 'react-native';
 import Swiper from 'react-native-swiper';
 import LinearGradient from 'react-native-linear-gradient'
 
-import type { Intro, Slide }from '../../services/cms';
+import type { Slide }       from '../../services/cms';
 import Theme                from './components/Theme'
 import Text                 from './components/Text'
 import Button               from './components/Button'
@@ -14,11 +14,12 @@ type Props = ScreenProps & {
   slides:[Slide],
   dismiss:() => void
 }
-export default class Walkthrough extends React.Component<> {
+
+export default class Walkthrough extends React.Component<Props> {
   onIndexChanged = (index: number) => {
       //slides[index].makeVisible();
   }
-  renderSlide = (props, index) => (
+  renderSlide = (slide: Slide, index: number) => (
     <LinearGradient
       key={index}
       colors={['#008EBC', '#005587']} 
@@ -34,14 +35,19 @@ export default class Walkthrough extends React.Component<> {
       <SafeAreaView >
         <View style={styles.slide} >
           <Text type='header2' style={styles.title} theme={theme}>
-            {props.title}
+            {slide.title}
           </Text>
-          <Text 
-            type='header3' 
-            style={styles.description}
-          >
-            {props.description}
-          </Text>
+          {slide.description && 
+            <Text 
+              type='header3' 
+              style={styles.description}
+            >
+              {slide.description}
+            </Text>
+          }
+          {slide.image && 
+            <Image source={slide.image} />
+          }
         </View>
       </SafeAreaView>
     </LinearGradient>
@@ -50,6 +56,7 @@ export default class Walkthrough extends React.Component<> {
   render(): React.Node {
     const { renderPagination, onIndexChanged} = this;
     const { slides } = this.props
+    debugger;
     return (
       <Swiper loop={false} {...{ renderPagination, onIndexChanged }} >
         { slides.map(this.renderSlide) }

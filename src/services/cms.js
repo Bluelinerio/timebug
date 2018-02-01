@@ -85,7 +85,8 @@ export type Step = {
   shortIcon: Icon
 }
 
-export type Intro = {
+export type OnobardingPage = {
+  title: string,
   slides:[Slide]
 }
 

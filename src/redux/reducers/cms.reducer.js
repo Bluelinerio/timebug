@@ -1,9 +1,7 @@
 // @flow
 import { FETCH_CMS } from '../actions/cms.actions'
-import type { Step, Colors, Intro } from '../../services/cms'
-const { steps, colors, about } = require('../../static/cms.json');
-const intro = require('../../static/intro.json')
-
+import type { Step, Colors, OnobardingPage } from '../../services/cms'
+const { steps, colors, about, onboardingPages } = require('../../static/cms.json');
 
 export type CMSState = {
 	requestCount: number,
@@ -11,7 +9,7 @@ export type CMSState = {
 	totalNumberOfSteps: number,
 	steps: Array<Step>,
 	colors: Colors,
-	intro: Intro,
+	onboardingPages: OnobardingPage,
 	error: ?string
 }
 
@@ -25,7 +23,7 @@ const initialState: CMSState = {
 	lastFetchDate: null,
 	totalNumberOfSteps: 30,
 	error: null,
-	steps, colors, about, intro
+	steps, colors, about, onboardingPages
 }
 
 function cmsReducer(state: CMSState = initialState, action: StepsAction) {

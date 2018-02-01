@@ -14,6 +14,6 @@ export default () => (
     color:'#ccc',
     marginBottom:2
   }}>
-  {`2020 Lifevision © blabsventures 2018\nVersion:${DeviceInfo.getVersion()} build:${DeviceInfo.getBuildNumber()} `}
+  {`20/20 Lifevision © blabsventures 2018\nVersion:${DeviceInfo.getVersion()} build:${DeviceInfo.getBuildNumber()} `}
   </Text>
 )

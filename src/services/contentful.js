@@ -1,9 +1,7 @@
 // @flow
-
 // testing the API : https://npm.runkit.com/contentful
 import { createClient } from 'contentful'
 import type { Step, Colors } from './cms'
-
 export const CONTENTFUL_CREDENTIALS = {
   "accessToken": 'c139e7f2a7a86fc0813e71fbb18bb7b1921189ce4d7cc58c7f0ccc0022adee5f',
   "space": '1gbed7lrsmj4' 
@@ -12,8 +10,44 @@ export const CONTENTFUL_CREDENTIALS = {
 export const CONTENTFUL_CONTENT_STEP = 'day'
 export const CONTENTFUL_CONTENT_LOGIN = 'login'
 export const CONTENTFUL_CONTENT_COLORS = 'colors'
+export const CONTENTFUL_ONBOARDING_PAGE = 'onboardingPage'
 
 export const contentfulClient = createClient(CONTENTFUL_CREDENTIALS)
+
+const getImageUrl = (icon: Icon): {uri: string} => ({
+	uri: (icon.url || icon.fields.file.url || '').replace('//', 'https://')
+})
+
+const onboardingPagesFromResponse = response => {
+	const mapOnboardingSlide = ({
+		fields: {
+			title,
+			description,
+			image
+		}
+	}) => ({
+		title,
+		description,
+		image: image 
+			? getImageUrl(image)
+			: null
+	})
+	return ({
+	onboardingPages: response.items.reduce( (items, { 
+			fields: {
+				name, 
+				slides,
+				title
+			}, 
+		}) => ({ 
+			...items, 
+			[name]: {
+				title,
+				slides: slides.map(mapOnboardingSlide)
+			}
+		}), {})
+	})
+}
 
 const aboutFromResponse = response => ({ 
 	about: response.items.map(item => item.fields)[0].about
@@ -50,16 +84,17 @@ export const fetchSteps = () => contentfulClient
 	.getEntries({ content_type: CONTENTFUL_CONTENT_STEP })
 	.then(stepsFromResponse)
 
+export const fetchonboardingPages = () => contentfulClient
+	.getEntries({ content_type: CONTENTFUL_ONBOARDING_PAGE })
+	.then(onboardingPagesFromResponse)
+
 export const refreshCMS = () => Promise.all([
 	fetchSteps(),
 	fetchColors(),
-	fetchAbout()
-]).then(responses => ({
-	...responses[0],
-	...responses[1],
-	...responses[2]
-})
-)
+	fetchAbout(),
+	fetchonboardingPages(),
+]).then(responses => Object.assign(...responses))
+
 
 export const testContentFromCMS = (object) => {
 	if( !object.colors.steps) { throw 'failed validating contenful response' }

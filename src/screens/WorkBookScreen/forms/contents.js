@@ -459,9 +459,9 @@ export const TimeChanged = t.enums.of([
       
       
 export const InternalExternal = t.enums.of([
-        'Internal',
-        'External',
-        'Both'
+  'Internal',
+  'External',
+  'Both'
 ],'InternalExternal')  
 
       
@@ -532,9 +532,9 @@ export const PercentSelector = t.enums.of([
 ], 'PercentSelector')
 
 export const EnumWithNumberRange = ({start, end, name}) => t.enums.of(
-    Array(end - start).fill().map( (v,i) => (i + start).toString() ), 
-    name
-  );
+  Array(end - start).fill().map( (v,i) => (i + start).toString() ), 
+  name
+);
 
 export const HoursPerMonth = EnumWithNumberRange({
   start:1, 
