@@ -85,6 +85,18 @@ export type Step = {
   shortIcon: Icon
 }
 
+export type Intro = {
+  slides:[Slide]
+}
+
+export type Slide = {
+	title: string,
+	description: string,
+	image: string,
+	order: string,
+}
+
+
 export const getImageUrl = (icon: Icon): string => (icon.url || icon.fields.file.url || '').replace('//', 'https://')
 
 export const colorForStep = cmsColors => {

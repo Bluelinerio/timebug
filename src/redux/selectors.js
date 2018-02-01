@@ -8,13 +8,14 @@ import {
 } from './rootReducer';
 import { UNDETERMINED, ANONYMOUS, AUTHENTICATING } from '../services/apollo/models';
 import type { Progress, User } from '../services/apollo/models';
-import type { Colors, Step } from '../services/cms';
+import type { Colors, Step, Slide } from '../services/cms';
 
 // CMS
 const sortSteps = (a: Step, b: Step) => a.number - b.number
 const steps = (state: any) => getCms(state).steps
 const sortedSteps = (state: any) :[Step] => Object.values( steps(state) ).sort(sortSteps) 
 const stepColors = (state: any):{ number : string } => getCms(state).colors.steps;
+const introSlides = (state: any): [Slide] => getCms(state).intro.slides;
 const phaseColors = (state: any):{ string : string } => getCms(state).colors.phases;
 
 const isCMSLoading = (state: any) => getCms(state).requestCount > 0
@@ -56,6 +57,7 @@ export default {
 	colorForStep,
 	phaseColors,
 	aboutText,
+	introSlides,
 	step,
 	colors,
 	stepColors,

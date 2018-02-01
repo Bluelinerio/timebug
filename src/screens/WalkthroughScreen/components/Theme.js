@@ -1,13 +1,13 @@
 // @flow
-type Typography = {
+export type Typography = {
     fontFamily: string,
     fontSize: number,
     lineHeight: number
 };
 
-type Color = string;
+export type Color = string;
 
-type Theme = {
+export type ThemeProps = {
     palette: {
         primary: Color,
         info: Color,

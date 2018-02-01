@@ -1,12 +1,12 @@
 // @flow
 import * as React from "react";
 import { Text as RNText } from "react-native";
-
 import { Theme } from "./Theme";
-
+import type { ThemeProps } from "./Theme";
 import type { BaseProps } from "./Types";
 
 type TypographyProps = BaseProps & {
+  theme: ThemeProps,
   type:
     "header1"
     | "header2"
@@ -22,22 +22,23 @@ type TypographyProps = BaseProps & {
 
 export default class Text extends React.Component<TypographyProps> {
   static defaultProps = {
-    type: "regular"
+    type: "regular",
+    theme: Theme
   };
 
   render(): React.Node {
-    const { type, style, numberOfLines, gutterBottom, children } = this.props;
+    const { type, style, numberOfLines, gutterBottom, children, theme } = this.props;
     const defaultStyle = [
-      Theme.typography[type],
+      theme.typography[type],
       { backgroundColor: "transparent" }
     ];
     const isHeader = type.startsWith("header");
     defaultStyle.push({
       color: isHeader
         ? "black"
-        : type === "large" ? Theme.palette.lightGray : Theme.typography.color,
+        : type === "large" ? theme.palette.lightGray : theme.typography.color,
       marginBottom: gutterBottom
-        ? isHeader ? Theme.spacing.base : Theme.spacing.small
+        ? isHeader ? theme.spacing.base : theme.spacing.small
         : 0
     });
     defaultStyle.push(style);

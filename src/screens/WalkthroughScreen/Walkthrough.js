@@ -1,109 +1,165 @@
 // @flow
 import * as React from 'react';
-import {View, StyleSheet, SafeAreaView} from 'react-native';
-import { withNavigation } from 'react-navigation'
+import {View, StyleSheet, SafeAreaView, Dimensions, StatusBar } from 'react-native';
 import Swiper from 'react-native-swiper';
+import LinearGradient from 'react-native-linear-gradient'
 
-import Slide from './Slide';
-import Connect from './Connect';
-import Chat from './Chat';
-import Share from './Share';
-import Logo from './Logo'
-
-import Button from './components/Button'
-import { resetAction } from '../../navigation/helpers'
-import { Theme } from './components/Theme';
+import type { Intro, Slide }from '../../services/cms';
+import Theme                from './components/Theme'
+import Text                 from './components/Text'
+import Button               from './components/Button'
 import type { ScreenProps } from './components/Types';
 
+type Props = ScreenProps & {
+  slides:[Slide],
+  dismiss:() => void
+}
+export default class Walkthrough extends React.Component<> {
+  onIndexChanged = (index: number) => {
+      //slides[index].makeVisible();
+  }
+  renderSlide = (props, index) => (
+    <LinearGradient
+      key={index}
+      colors={['#008EBC', '#005587']} 
+      style={StyleSheet.absoluteFillObject, {
+        height, 
+      }}
+    >
+      <StatusBar 
+        translucent 
+        barStyle="light-content"
+        backgroundColor={'white'}
+      />
+      <SafeAreaView >
+        <View style={styles.slide} >
+          <Text type='header2' style={styles.title} theme={theme}>
+            {props.title}
+          </Text>
+          <Text 
+            type='header3' 
+            style={styles.description}
+          >
+            {props.description}
+          </Text>
+        </View>
+      </SafeAreaView>
+    </LinearGradient>
+  )
 
-class Walkthrough extends React.Component<ScreenProps<>> {
-
-    home = () => {
-        const { navigation } = this.props;
-        navigation.dispatch(resetAction('HomeScreen'))
-    }
-
-    renderPagination = (index: number, total: number, context: Swiper): React.Node => {
-        const isFirst = index === 0;
-        const isLast = index === total - 1;
-        const back = () => context.scrollBy(-1);
-        return (
-            <SafeAreaView style={styles.footer}>
-                <Button label={isFirst ? 'Close' : 'Back'} onPress={isFirst ? this.home : back } />
-                <Button 
-                    label={isLast ? 'Start' : 'Next'} 
-                    onPress={isLast ? this.home : () => context.scrollBy(1)} 
-                    primary={true} 
-                    transparent={true} />
-            </SafeAreaView>
-        );
-    }
-
-    onIndexChanged = (index: number) => {
-        slides[index].makeVisible();
-    }
-
-    render(): React.Node {
-        const {renderPagination, onIndexChanged} = this;
-        return (
-            <Swiper loop={false} {...{ renderPagination, onIndexChanged }}>
-                {
-                    slides.map(slide => (
-                        <View key={slide.title}>
-                            <Slide {...slide} />
-                        </View>
-                    ))
-                }
-            </Swiper>
-        );
-    }
+  render(): React.Node {
+    const { renderPagination, onIndexChanged} = this;
+    const { slides } = this.props
+    return (
+      <Swiper loop={false} {...{ renderPagination, onIndexChanged }} >
+        { slides.map(this.renderSlide) }
+      </Swiper>
+    );
+  }
+  renderPagination = (index: number, total: number, context: Swiper): React.Node => {
+      const isFirst = index === 0;
+      const isLast = index === total - 1;
+      const { dismiss } = this.props
+      const goBack = () => context.scrollBy(-1);
+      const goForward = () => context.scrollBy(1);
+      const leftButtoOnPress = isFirst ? dismiss : goBack
+      const rightButtonOnPress = isLast ? dismiss : goForward
+      return (
+        <View style={styles.footer} >
+          <Button 
+            label={isFirst ? 'Close' : 'Back'} 
+            onPress={leftButtoOnPress} 
+          />
+          <Button 
+            label={isLast ? 'Start' : 'Next'} 
+            onPress={rightButtonOnPress} 
+            primary={true} 
+            transparent={true} 
+          />
+        </View>
+      );
+  }
 }
 
-export default withNavigation(Walkthrough)
-/*
-*/
-let chat: Chat;
-let share: Share;
-let logo: Logo;
+const height = Dimensions.get('window').height
+const width = Dimensions.get('window').width
+const baseSpacing = Math.floor(width * 0.065)
+const largeVerticalSpacing  = Math.floor(height * 0.1)
 
-const slides = [
-    {
-        title: 'Welcome to Lifevision',
-        description: 'Welcome 2020 Life Vision Challenge! This app is designed around contemplation and self-discovery. Expect to gain renewed energy, propelling you into a new life plan.\nYou will review your major goals, strengths, weaknesses, support networks and more! Let’s get started!',
-        icon: <Logo />,
-        makeVisible: () => logo.makeVisible()
-    },
-    {
-        title: 'Get Motivated',
-        description: 'A slide about the content: a. 30 steps, b. creating the expectation of the user for motivational content that allow them to see new growth opportunities..',
-        icon: <Connect />,
-        makeVisible: () => true
-    },
-    {
-        title: 'Meditate',
-        description: 'A slide about cultivating an open minded, positive approach moving through the guidebook and workbook',
-        icon: <Chat ref={ref => ref ? chat = ref : undefined} />,
-        makeVisible: () => chat.makeVisible()
-    },
-    {
-        title: 'Engage',
-        description: 'Fill in the forms, unlock achievement engage with the dashboard and engage others, in do it in your own way, your own where ever you want',
-        icon: <Share ref={ref => ref ? share = ref : undefined} />,
-        makeVisible: () => share.makeVisible()
-    },
-    {
-        title: 'Engage',
-        description: 'Fill in the forms, unlock achievement engage with the dashboard and engage others, in do it in your own way, your own where ever you want',
-        icon: <Share ref={ref => ref ? share = ref : undefined} />,
-        makeVisible: () => share.makeVisible()
-    }];
 const styles = StyleSheet.create({
-    container: {
-        flex: 1
+  container: {
+    flex: 1
+  },
+  footer: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      marginHorizontal: baseSpacing
+  },
+  slide: {
+    paddingHorizontal: baseSpacing,
+    marginTop: largeVerticalSpacing + StatusBar.currentHeight,
+    flexGrow: 1
+  },
+  title: {
+    marginTop: largeVerticalSpacing,
+    marginBottom: height * 0.2,
+    color: 'white'
+  },
+  description: {
+    justifyContent: 'center',
+    color: 'white'
+  }
+})
+
+const theme = {
+  ...Theme,
+  typography: {
+    color: "#666666",
+    bold: "Helvetica-Bold",
+    semibold: "Helvetica",
+    normal: "Helvetica-Medium",
+    light: "Helvetica-Light",
+    header1: {
+      fontSize: 48,
+      lineHeight: 58,
+      fontFamily: "Helvetica"
     },
-    footer: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        marginHorizontal: Theme.spacing.base
+    header2: {
+      fontSize: Math.ceil(height * 0.035),
+      lineHeight: 43,
+      fontFamily: "Helvetica-Bold"
+    },
+    header3: {
+      fontSize: Math.ceil(height * 0.03),
+      lineHeight: 28,//standard
+      fontFamily: "Helvetica-Bold"
+    },
+    large: {
+      fontSize: 14,
+      lineHeight: 21,
+      fontFamily: "Helvetica"
+    },
+    regular: {
+      fontSize: 14,
+      lineHeight: 21,
+      fontFamily: "Helvetica"
+    },
+    small: {
+      fontSize: 14,
+      lineHeight: 18,
+      fontFamily: "Helvetica"
+    },
+    micro: {
+      fontSize: 8,
+      lineHeight: 8,
+      fontFamily: "Helvetica"
     }
-});
+  },
+  spacing: {
+    tiny: 8,
+    small: 16,
+    base: 24,
+    large: 48,
+    xLarge: 64
+  }
+}

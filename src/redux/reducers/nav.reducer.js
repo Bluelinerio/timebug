@@ -19,7 +19,7 @@ import { persistReducer } from 'redux-persist';
 const persistConfig = {
 	key:'nav',
   storage: storage,
-  //migrate: (state) => Promise.resolve(initialState)
+  migrate: (state) => Promise.resolve(initialState)
 };
 
 
