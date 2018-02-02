@@ -51,7 +51,7 @@ export default {
       field: t.list(
         t.struct({
           category: LifeCategory,
-          hours: t.Number
+          hours: HoursPerMonth
         })
       )
     }),
