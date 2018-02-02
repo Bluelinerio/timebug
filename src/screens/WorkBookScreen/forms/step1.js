@@ -21,6 +21,7 @@ export default {
         memory: {
           label: "Describe what happened",
           numberOfLines: 3,
+          multiline: true,
           help: "Try to be as descriptive as possible."
         },
         areaOfLife: {
