@@ -22,8 +22,6 @@ export const SAGA_NAVIGATE                       = 'SAGA_NAVIGATE';
 
 //forms
 export const SUBMIT_FORM_VALUE          = 'SUBMIT_FORM_VALUE';
-export const SET_FORM                     = 'SET_FORM';
-export const UPDATE_FORM                  = 'UPDATE_FORM';
 export const PERSISTE_FORM_VALUE            = 'PERSISTE_FORM_VALUE';
 export const INCREMENT_FORM_QUEUE         = 'INCREMENT_FORM_QUEUE';
 export const DECREMENT_FORM_QUEUE         = 'DECREMENT_FORM_QUEUE';

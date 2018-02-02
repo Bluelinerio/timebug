@@ -15,7 +15,7 @@ const SKIPP_ENABLED = false;
 const mapStateToProps = (state) => {
   const steps = selectors.steps(state);
   const colors = selectors.stepColors(state);
-  const fetching = selectors.fetchingFormData(state) || selectors.fetchingFormModels(state);
+  const fetching = selectors.fetchingFormData(state);
   const getFormData = selectors.getFormData(state);
   const getFormModels = selectors.getFormModels(state);
   return { steps, colors, fetching, getFormData, getFormModels }

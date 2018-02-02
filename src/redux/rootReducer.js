@@ -2,7 +2,6 @@ import cms          from './reducers/cms.reducer'
 import error        from './reducers/error.reducer'
 import network      from './reducers/network.reducer'
 import user         from './reducers/user.reducer'
-import forms        from './reducers/forms.reducer'
 import formData     from './reducers/formData.reducer'
 import nav          from './reducers/nav.reducer'
 import appState     from './reducers/appState.reducer'
@@ -13,7 +12,6 @@ export const rootReducer = {
   error,
   network,
   user,
-  forms,
   formData,
   nav,
   appState,
@@ -22,7 +20,6 @@ export const rootReducer = {
 
 // @flow
 import type { CMSState }        from './reducers/cms.reducer'
-import type { FormDataState }   from './reducers/forms.reducer'
 import type { FormModelsState } from './reducers/formData.reducer'
 import type { UserState }       from '../../services/apollo/models'
 import type { AppState }        from './reducers/appState.reducer'

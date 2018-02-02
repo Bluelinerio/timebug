@@ -15,7 +15,7 @@ import type {
   NextButtonProps
 }                           from '../components/NextButton'
 import DefaultIndicator     from '../../../components/DefaultIndicator';
-import type { FormChange }  from '../../../redux/actions/forms.actions';
+import type { FormChange }  from '../../../redux/actions/formData.actions';
 import type { Progress }    from '../../../services/apollo/models';
 import styles               from '../styles';
 

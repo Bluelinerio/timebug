@@ -19,8 +19,8 @@ const spaceYRatio = 0.1
 const cornerRadiusRatio = 0.5
 
 const mapStateToProps = (state) => ({
-  completedSteps: selectors.completedSteps(state),
-  dummyCompletedSteps: [0,1,2,3,4,9, 10, 23, 23],
+  completedStepIndices: selectors.completedStepIds(state).map(i => i-1),
+  dummyCompletedStepIndices: [0,1,2,3,4,9, 10, 23, 23],
   phaseColors: selectors.phaseColors(state)
 })
 
@@ -56,8 +56,8 @@ const merge = (stateProps, dispatchProps, ownProps): GridProps => ({
         * circle 
         * (
             (ownProps.useDummyData 
-              ? stateProps.dummyCompletedSteps 
-              : stateProps.completedSteps
+              ? stateProps.dummyCompletedStepIndices 
+              : stateProps.completedStepIndices
             ).includes(props.index) 
           ? 1 
           : circleRatio
@@ -67,8 +67,8 @@ const merge = (stateProps, dispatchProps, ownProps): GridProps => ({
       fill={(
         (
           ownProps.useDummyData 
-          ? stateProps.dummyCompletedSteps 
-          : stateProps.completedSteps
+          ? stateProps.dummyCompletedStepIndices 
+          : stateProps.completedStepIndices
         ).includes(props.index) 
           ? stateProps.phaseColors[phaseForStepAtIndex(props.index)] 
           : '#E9E9E9' 

@@ -13,11 +13,35 @@ import { goToAssignmentFlow } from '../../../redux/actions/nav.actions';
 const mapStateToProps = (state:any) => {
 	const phaseColors = selectors.phaseColors(state);
 	const backgroundColorAtIndex = (step:number) => phaseColors[phaseForStepAtIndex(step)]
-	const steps:[Step] = selectors.sortedSteps(state)
-	const items: [Item] = steps.map(step => ({ 
+	const completedForms = selectors.completedForms(state);
+	const getFormData = selectors.getFormData(state);
+	const isLoggedIn = selectors.isLoggedIn(state)
+	const steps:[Step] = selectors.sortedSteps(state).map(step => {
+		if(!isLoggedIn) return step
+
+		const form = completedForms.find(form => form.stepId === step.number)
+		const lastUpdate = form && form.updatedAt || 0
+		const draft = getFormData(step.number);
+		return ({
+			...step,
+			iconName: (lastUpdate !== 0 
+				? "check" 
+				: draft
+					? 'progress-one'
+					: null
+			),
+			progress: {
+				lastUpdate,
+				draft
+			}
+		})
+	})
+
+	const items: [Item] = steps.map((step,index) => ({ 
 		...step, 
 		subtitle: `Step ${step.number}, Phase: ${step.type}`,
-		sourceImage: getImageUrl(step.icon) 
+		sourceImage: getImageUrl(step.icon),
+		color:backgroundColorAtIndex(index)
 	}))
 	return ({
 		backgroundColorAtIndex,

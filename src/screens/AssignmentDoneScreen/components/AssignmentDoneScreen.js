@@ -9,14 +9,15 @@ import Button from '../../../components/Button';
 const DoneButton = (props) => (
 	<Button
     text='DONE'
-    side='right'
     {...props}
 	/>
 );
 
 const NextStep = ({ nextStepNumber, nextStepColor, nextStepDuration}) => (
   <View style={styles.assignmentDoneScreenMessageContainer}>
-    <Text style={styles.assignmentDoneScreenMessageText}>See you soon in</Text>
+    <Text style={styles.assignmentDoneScreenMessageText}>
+      {`See you soon in`}
+    </Text>
     <Text
       style={[
         styles.assignmentDoneScreenDoneStep,

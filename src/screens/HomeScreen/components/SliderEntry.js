@@ -6,6 +6,7 @@ import styles, { spinnerEvenColor, spinnerUnEvenColor } from '../styles/SliderEn
 import type { Step, Icon } from '../../../services/cms';
 import { getImageUrl } from '../../../services/cms'
 import TouchableBounce from 'react-native/Libraries/Components/Touchable/TouchableBounce'
+import Entypo from 'react-native-vector-icons/Entypo'
 
 export type Item = {
 	title:string, 
@@ -20,7 +21,8 @@ type Prop = {
 	parallaxProps: object,
 	width: number,
 	height: number,
-	onPress: Function
+	onPress: Function,
+	color: string,
 };
 
 export default class SliderEntry extends PureComponent<Prop> {
@@ -41,7 +43,7 @@ export default class SliderEntry extends PureComponent<Prop> {
 	}
 
 	render() {
-		const { onPress, data: {title, subtitle}, even } = this.props;
+		const { onPress, data: {title, subtitle, color, iconName }, even } = this.props;
 		const uppercaseTitle = title ? (
 			<Text style={[styles.title, even ? styles.titleEven : {}]} numberOfLines={3}>
 				{title.toUpperCase()}
@@ -53,6 +55,26 @@ export default class SliderEntry extends PureComponent<Prop> {
 		return (
 			<TouchableBounce style={[styles.slideInnerContainer]} onPress={onPress}>
 				<View style={[styles.imageContainer, even ? styles.imageContainerEven : {}]}>
+				{iconName && 
+					<View style={{
+						position: 'absolute',
+						right:0,
+						top:0,
+						backgroundColor: color,
+						borderRadius: 15,
+						height:30,
+						width: 60,
+						justifyContent:'center',
+						alignItems: 'center',
+						flexDirection: 'row'
+					}}>
+						<Entypo
+							name={iconName}
+							size={20}
+							color="white"
+						/>
+					</View>
+				}
 					{this.image}
 					<View style={[styles.radiusMask, even ? styles.radiusMaskEven : {}]} />
 				</View>

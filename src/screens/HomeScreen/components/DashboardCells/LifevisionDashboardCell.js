@@ -212,31 +212,18 @@ const Main = (props) => (
     />
     <HorizontalScrollView>  
       {
-        [1,2].map((value, index ) => (
-          <DashboardHightlight 
-            key={index}
+        <DashboardHightlight>
+          <OnLayout 
+            render={({width}) => width > 0 ? (<PhaseProgressContainer width={width} />) : null }
+          />
+          <Text style={[styles.suggestionText,{ 
+            color: '#ccc'
+          }]}
           >
-            <OnLayout 
-              render={({width}) => width > 0
-                ? (
-                  <View>
-                    <PhaseProgressContainer 
-                      width={width} 
-                      useDummyData
-                    />
-                  </View>
-                  ) 
-                : null 
-              }
-            />
-            <Text style={[styles.suggestionText,{ 
-              color: '#ccc'
-            }]}
-            >
-              {`The legend of your progress through your journey`}
-            </Text>
-          </DashboardHightlight>
-        ))
+            {`The legend of your progress through your journey`}
+          </Text>
+        </DashboardHightlight>
+
       }
     </HorizontalScrollView>
   </Container>

@@ -46,7 +46,7 @@ export default StyleSheet.create({
         marginVertical: entryBorderRadius, // needed for shadow
         backgroundColor: 'white',
         borderTopLeftRadius: entryBorderRadius,
-        borderTopRightRadius: entryBorderRadius
+        borderTopRightRadius: entryBorderRadius,
     },
     imageContainerEven: {
         backgroundColor: colors.black
