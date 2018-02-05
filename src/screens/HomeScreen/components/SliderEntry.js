@@ -7,7 +7,7 @@ import type { Step, Icon } from '../../../services/cms';
 import { getImageUrl } from '../../../services/cms'
 import TouchableBounce from 'react-native/Libraries/Components/Touchable/TouchableBounce'
 import Entypo from 'react-native-vector-icons/Entypo'
-
+import { deepBlue } from '../../../constants/colors'
 export type Item = {
 	title:string, 
 	subtitle:string,
@@ -60,8 +60,10 @@ export default class SliderEntry extends PureComponent<Prop> {
 						position: 'absolute',
 						right:0,
 						top:0,
-						backgroundColor: color,
-						borderRadius: 15,
+						backgroundColor: 'transparent',
+						borderRadius: 14,
+						borderWidth:0,
+						borderColor: deepBlue,
 						height:30,
 						width: 60,
 						justifyContent:'center',
@@ -71,7 +73,7 @@ export default class SliderEntry extends PureComponent<Prop> {
 						<Entypo
 							name={iconName}
 							size={20}
-							color="white"
+							color={deepBlue}
 						/>
 					</View>
 				}
