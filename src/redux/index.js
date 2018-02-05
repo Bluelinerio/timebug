@@ -9,8 +9,10 @@ import createSagaMiddleware                     from 'redux-saga'
 import { persistStore }                         from 'redux-persist'
 import { AsyncStorage }                         from 'react-native'
 import applyAppStateListener                    from 'redux-enhancer-react-native-appstate';
-import rootSaga           from './rootSagas'
-import { rootReducer }    from './rootReducer';
+import rootSaga                                 from './rootSagas'
+import { rootReducer }                          from './rootReducer';
+import { reactNavigationMiddleware }            from './middlewares';
+
 
 type Props = {
   whitelist: Array<string>,
@@ -24,7 +26,8 @@ export default () => {
   const store = createStore(combineReducers(rootReducer),
     composeEnhancers(
       applyAppStateListener(),
-      applyMiddleware(sagaMiddleware)
+      applyMiddleware(sagaMiddleware),
+      applyMiddleware(reactNavigationMiddleware)
     )
   );
   const persistor = persistStore(store);
