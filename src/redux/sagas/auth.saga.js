@@ -74,10 +74,6 @@ function* _logout(): LogoutResult {
 function* refreshUserOrLogout(): RefreshUserResult | LogoutResult {	
 	function* refreshUser(): RefreshUserResult {
 		const { token, userId } = yield call(AuthStorage.getTokenAndUserId)
-		const user: ?User = yield select(selectors.user);
-		if (user && token) {
-			return { user, token }
-		}
 		if (userId && token) {
 			
 			const response: User | ErrorResponse = yield call(_fetchUser, userId)
