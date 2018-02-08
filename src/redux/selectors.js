@@ -25,6 +25,7 @@ const aboutText = (state:any) => getCms(state).about
 // User
 const user = (state: any): ?User =>
 	typeof getUserState(state) === 'string' ? null : getUserState(state)
+const userId = (state: any) => user(state) && user(state).id
 const isUserStateUNDETERMINED = (state: any): boolean => getUserState(state) === UNDETERMINED
 const isUserStateAUTHENTICATING = (state: any): boolean => getUserState(state) === AUTHENTICATING
 const isLoggedIn = (state: any) : boolean => !!user(state)
@@ -51,8 +52,9 @@ import models from '../screens/WorkBookScreen/forms';
 const getFormModels = (state: any) => (step: number) => models[step]
 
 //
-const _getFormData = (state: any) => (step: number) => getFormData(state).data[step]
-const fetchingFormData = (state: any) => getFormData(state).requestCount > 0
+const formData = (state: any) => getFormData(state).data
+const _getFormData = (state: any) => (step: number) => formData(state)[step]
+const synchingFormData = (state: any) => getFormData(state).requestCount > 0
 
 export default {
 	getCms,
@@ -69,6 +71,7 @@ export default {
 	totalNumberOfSteps,
 	assignmentsForStep,
 	user,
+	userId,
 	isLoggedIn,
 	isUserStateUNDETERMINED,
 	isUserStateAUTHENTICATING,
@@ -78,5 +81,6 @@ export default {
 	completedStepIds,
 	getFormModels,
 	getFormData: _getFormData,
-	fetchingFormData
+	formData,
+	synchingFormData
 }

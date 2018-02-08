@@ -3,7 +3,7 @@ import screen from './containers/AssignmentDoneScreenContainer';
 
 screen.navigationOptions = ({ navigation: { state: { params: { color, step } } } }) => {
 	return {
-		title: 'Exercise',
+		title: `Exercise ${step}`,
 		headerStyle: {
 			backgroundColor: color
 		},

@@ -1,40 +1,37 @@
 // @flow
 import { AsyncStorage } from 'react-native'
 
-const TOKEN_KEY = '@2020-Token'
-const USER_ID_KEY = '@2020-UserId'
+// older tokens we want to erase...
+const OLD_TOKEN_KEY = '@2020-Token'
+const OLD_USER_ID_KEY = '@2020-UserId'
+//
+const TOKEN_KEY = 'lifevision-1';
 
-const getUserId = () => AsyncStorage.getItem(USER_ID_KEY)
-const getToken = () => AsyncStorage.getItem(TOKEN_KEY)
-const getTokenAndUserId = (): ({ token?: string, userId?: string }) =>
-	Promise.all([getToken(), getUserId()]).then(results => ({ token: results[0], userId: results[1] })).catch(err => {
-		console.warn(JSON.stringify(err))
-	})
-
-const setToken = (token: string) => AsyncStorage.setItem(TOKEN_KEY, token)
-const setUserId = (userId: string) => AsyncStorage.setItem(USER_ID_KEY, userId)
-const setTokenAndUserId = (token: string, userId: string) => Promise.all([setToken(token), setUserId(userId)]).catch(err => {
-	console.warn(JSON.stringify(err))
-})
-
-// const FBTOKEN_KEY = '@2020-FBToken'
-// const setFBToken = (token: string) => AsyncStorage.setItem(FBTOKEN_KEY, token)
-// AsyncStorage.removeItem(FBTOKEN_KEY)
-
-const wipeStorage = () => Promise.all([
-		AsyncStorage.removeItem(TOKEN_KEY),
-		AsyncStorage.removeItem(USER_ID_KEY),
-		
-	])
+export type TokenAndUserIdType = { 
+	token: string, 
+	userId: string, 
+	endpoint:string 
+}
 	
-export default {
-	getUserId,
-	getToken,
-	getTokenAndUserId,
+const emptyTokenAndUserId = {
+	token: null, 
+	userId: null, 
+	endpoint:null 
+}
 
-	setToken,
-	setUserId,
-	setTokenAndUserId,
-//	setFBToken,
-	wipeStorage
+const wipeOldTokens = Promise.all([
+	AsyncStorage.removeItem(OLD_TOKEN_KEY),
+	AsyncStorage.removeItem(OLD_USER_ID_KEY)
+]);
+
+export default {
+	getTokenAndUserId: (): ?TokenAndUserIdType => wipeOldTokens
+		.then(AsyncStorage.getItem(TOKEN_KEY))
+		.then(stringifed => stringifed && JSON.parse(stringifed) || emptyTokenAndUserId )
+		.catch(error => emptyTokenAndUserId),
+	setTokenAndUserId: (tokenAndUserId: TokenAndUserIdType) => wipeOldTokens
+		.then(AsyncStorage.setItem(TOKEN_KEY, JSON.stringify(tokenAndUserId))),
+	wipeStorage: () => Promise.all([
+		AsyncStorage.removeItem(TOKEN_KEY),
+	])
 }

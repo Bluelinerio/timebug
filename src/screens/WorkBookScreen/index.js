@@ -10,7 +10,7 @@ import { previousFormOrBack } from '../../redux/actions/nav.actions';
 screen.navigationOptions = ({ navigation: { previous, dispatch, state: { key, params } } }) => {
   const { color, form, step } = params;
   return {
-    title: `Workbook #${step}`,
+    title: `Exercise ${step}`,
     headerStyle: {
       backgroundColor: color
     },

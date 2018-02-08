@@ -67,4 +67,17 @@ export type AuthUser = {
 	name: string,
 	id: string
 }
+
+export type CreateFormArgs = {
+	userId: string,
+	stepId: number,
+	data: any
+}
+
+export type UpdateormArgs = {
+	userId: string,
+	id: string,
+	data: any
+}
+
 export type Auth = { token: string, user: AuthUser }

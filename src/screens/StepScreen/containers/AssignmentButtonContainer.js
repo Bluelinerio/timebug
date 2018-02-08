@@ -17,13 +17,14 @@ const mapStateToProps = state => {
 
 const textTestId= 'step_to_assignment_text'
 const buttonTestId= 'step_to_assignment_button'
-const text = "Exercise".toUpperCase()
 
 const merge = (stateProps, dispatchProps, ownProps): Props => {
   const { colors, steps } = stateProps
   const { onPressWithProps } = dispatchProps
   const { number } = ownProps
   const backgroundColor = colors[number];
+  const text = `EXERCISE ${number}`
+
   return {
     ...ownProps,
     onPressWithProps,

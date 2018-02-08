@@ -25,9 +25,9 @@ const mapStateToProps = (state:any) => {
 		return ({
 			...step,
 			iconName: (lastUpdate !== 0 
-				? "check" 
+				? 'check'
 				: draft
-					? 'progress-one'
+					? 'edit'
 					: null
 			),
 			progress: {

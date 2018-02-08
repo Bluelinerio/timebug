@@ -27,8 +27,7 @@ export type Props = {
   next: () => void,
   buttonMessage:string,
   color: string, 
-  submitFormValue: ({ value: any, progress: Progress}) => void,
-  persisteFormValue: (change : FormChange) => void,
+  submit: ({progress: Progress, value: any}) => void,
   isFetching: boolean
 };
 
@@ -54,7 +53,7 @@ class WorkBookScreenContainer extends Component<Props, State> {
     }
   }
 
-  componentWillFocus() {
+  componentDidMount() {
     Keyboard.dismiss(); // police keyboard is always off, when starting (specially with android.)
     const { model } = this.state;
     if (model && model.focusField) {
@@ -97,10 +96,7 @@ class WorkBookScreenContainer extends Component<Props, State> {
   onPress = () => {
     const { value } = this.state;
     const { progress, next } = this.props;
-    this.props.submitFormValue({
-      value,
-      progress
-    });
+    this.props.submit({progress, value});
     next()
   }
 

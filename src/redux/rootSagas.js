@@ -10,6 +10,7 @@ import cmsSaga                                from './sagas/cms.saga';
 import { formLoaderSaga }                     from './sagas/forms.saga';
 import { watchForSelectPutAction }            from './selectPutAction';
 import { appStateSagaWatcher }                from './sagas/appState.saga'
+import { watchSyncFormData }                  from './sagas/formData.saga'
 import { watchForThrottleAction }             from './throttle';
 function * appSaga() {
   yield all([
@@ -21,6 +22,7 @@ function * appSaga() {
     goToHomeScreen(),
     watchForsagaNavigate(),
     formLoaderSaga(),
+    watchSyncFormData(),
   ])
 }
 export default function* rootSaga() {

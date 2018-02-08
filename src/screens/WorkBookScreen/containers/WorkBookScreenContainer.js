@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { NavigationActions } from 'react-navigation';
 
-import { submitFormValue, persisteFormValue } from '../../../redux/actions/formData.actions';
+import { submitFormValue as submit, syncFormData } from '../../../redux/actions/formData.actions';
 import { goToAssignmentDoneScreen } from '../../../redux/actions/nav.actions';
 import selectors from '../../../redux/selectors'
 import type { Progress }        from '../../../services/apollo/models';
@@ -15,7 +15,7 @@ const SKIPP_ENABLED = false;
 const mapStateToProps = (state) => {
   const steps = selectors.steps(state);
   const colors = selectors.stepColors(state);
-  const fetching = selectors.fetchingFormData(state);
+  const fetching = selectors.synchingFormData(state);
   const getFormData = selectors.getFormData(state);
   const getFormModels = selectors.getFormModels(state);
   return { steps, colors, fetching, getFormData, getFormModels }
@@ -57,18 +57,21 @@ const merge = (stateProps, dispatchProps, ownProps): Props => {
     }
   }
   */
-  const nextAction = isFinalForm 
-    ? NavigationActions.navigate({
+  const nextActions = isFinalForm 
+    ? [
+      NavigationActions.navigate({
         routeName:'AssignmentDoneScreen',
         params: {
           step,
           form,
           color
         }
-      })
-    : NavigationActions.setParams(cloneStateWithForm(form + 1))
+      }), 
+      syncFormData()
+    ]
+    : [NavigationActions.setParams(cloneStateWithForm(form + 1))]
   
-  const next = () => ownProps.navigation.dispatch(nextAction);
+  const next = () => nextActions.forEach(action => ownProps.navigation.dispatch(action) )
 
   return {
     ...ownProps,
@@ -83,5 +86,5 @@ const merge = (stateProps, dispatchProps, ownProps): Props => {
   }
 }
 
-export default connect(mapStateToProps, { submitFormValue, persisteFormValue }, merge)(WorkbookScreenComponent)
+export default connect(mapStateToProps, { submit }, merge)(WorkbookScreenComponent)
 

@@ -6,7 +6,6 @@
 //   GET_NEXT_FORM,
 //   SUCCESS,
 //   LOGOUT,
-//   PERSISTE_FORM_VALUE,
 //   SUBMIT_FORM_VALUE,
 // }                                             from '../actionTypes';
 // import { SET_USER_STATE }                     from '../actions'
@@ -183,9 +182,6 @@
 //   yield takeLatest([SET_USER_STATE, GET_USER.SUCCEEDED, LOGOUT], updateFormAfterChangeInProgress) 
 // }
 
-// function * watchForChangesInForm() {
-//   yield takeLatest(PERSISTE_FORM_VALUE, formReducerSaga) 
-// }
 
 export function* formLoaderSaga() {
   // yield fork(watchForUpdateInUserProgress)

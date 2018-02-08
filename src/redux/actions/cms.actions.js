@@ -1,5 +1,4 @@
 // @flow
-import { action } from '../utils'
 import {
 	REQUEST,
 	SUCCESS,

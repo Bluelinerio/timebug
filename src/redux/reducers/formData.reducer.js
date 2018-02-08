@@ -1,7 +1,6 @@
 // @flow
 import { 
   SUBMIT_FORM_VALUE,
-  PERSISTE_FORM_VALUE,
   INCREMENT_FORM_DATA_QUEUE,
   DECREMENT_FORM_DATA_QUEUE,
 } 
@@ -38,6 +37,7 @@ const populate = (action: PopulateFormAction, state:FormDataState):FormDataState
     data: {
       ...data,
       [ step ]: {
+        ...(data[ step ] || null),
         [ form ] : {
           ...value
         }
@@ -56,7 +56,7 @@ const decrement = (state:FormDataState):FormDataState => ({
   requestCount: state.requestCount - 1
 })
 
-export default function (state: FormDataState = initialState, action: FormAction) {
+function formDataReducer(state: FormDataState = initialState, action: FormAction) {
   switch (action.type) {
     case SUBMIT_FORM_VALUE:
       return populate(action, state);
@@ -68,3 +68,14 @@ export default function (state: FormDataState = initialState, action: FormAction
       return state;
   }
 }
+
+import storage from 'redux-persist/lib/storage';
+import { persistReducer } from 'redux-persist';
+
+const persistConfig = {
+	key:'formData',
+	storage: storage,
+  blacklist: ['requestCount'],
+};
+
+export default persistReducer(persistConfig, formDataReducer);
