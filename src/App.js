@@ -29,11 +29,11 @@ export default class App extends React.Component<{},State> {
   state:State = {
     error: null
   }
-  componentDidCatch(error:any) {
-    this.setState({
-      error
-    })
-  }
+  // componentDidCatch(error:any) {
+  //   this.setState({
+  //     error
+  //   })
+  // }
 
   render() {
     const { error } = this.state;
