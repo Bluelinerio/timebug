@@ -28,7 +28,7 @@ export const SUBMIT_FORM_VALUE                   = 'SUBMIT_FORM_VALUE';
 export const SYNC_FORM_DATA                      = 'SYNC_FORM_DATA';
 export const INCREMENT_FORM_QUEUE                = 'INCREMENT_FORM_QUEUE';
 export const DECREMENT_FORM_QUEUE                = 'DECREMENT_FORM_QUEUE';
-export const INCREMENT_FORM_DATA_QUEUE           = 'CREMENT_FORM_DATA_QUEUE';
+export const INCREMENT_FORM_DATA_QUEUE           = 'INCREMENT_FORM_DATA_QUEUE';
 export const DECREMENT_FORM_DATA_QUEUE           = 'DECREMENT_FORM_DATA_QUEUE';
 
 
