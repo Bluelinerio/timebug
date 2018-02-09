@@ -3,7 +3,11 @@ import { throttle, fork, call, cancelled, put, take, takeLatest, select } from '
 import { delay } from 'redux-saga'
 
 import { createForm, updateForm }               from '../../services/apollo'
-import type { CreateFormArgs, UpdateormArgs }   from '../../services/apollo/models'
+import type { 
+  CreateFormArgs, 
+  UpdateormArgs,
+  Form
+} from '../../services/apollo/models'
 import { request }                              from '../../Modules/redux-saga-request'
 
 import { 
@@ -26,8 +30,9 @@ import { diffObjs } from '../utils/diffObjs'
 
 
 export const UPDATE_AND_CREATE_FORMS = 'UPDATE_AND_CREATE_FORMS';
-export const LOG = 'LOG';
-const log = payload => put({ type: LOG,  payload });
+// export const LOG = 'LOG';
+//const log = payload => yield put({ type: LOG,  payload });
+const log = payload => console.log(payload);
 
 function * mySelectors(props) {
   const keys = Object.keys(props)
@@ -47,7 +52,7 @@ const formDataFromForm = (forms:[Form]) => forms.reduce((forms, form) => ({
 
 function * reviewCurrentUserFormsAndFormDataCompareAndUpfateToState() {
   //const userId = yield select(selectors.userId)
-  yield log({
+  log({
     info: 'Started reviewing differences between form data and user forms'
   })
 
@@ -66,7 +71,7 @@ function * reviewCurrentUserFormsAndFormDataCompareAndUpfateToState() {
     if(__DEV__) {
       throw error
     } else {
-      yield log({
+      log({
         info: 'Compelted reviewing differences between form data and user forms',
         error,
       })
@@ -75,7 +80,7 @@ function * reviewCurrentUserFormsAndFormDataCompareAndUpfateToState() {
   
   const { difference, onlyOnLeft } = diffObjs(formData, formDataFromForm(completedForms))
   if(!difference && !onlyOnLeft) {
-    yield log({
+    log({
       info: 'Compelted reviewing differences between form data and user forms. No sync is needed'
     })
     return;
@@ -108,7 +113,7 @@ function * reviewCurrentUserFormsAndFormDataCompareAndUpfateToState() {
     ]
   }, [])
 
-  yield log({
+  log({
     info: 'Commencing with sync request after reviewing differences between form data and user forms',
     creates,
     updates,
@@ -129,11 +134,13 @@ export function * watchSyncFormData() {
 
 export function * watchFormDataAndUserFormCompareAndUpdateState() {
   // here the assumptions is that the formData reducer will always Hydrate before the GET_USER action return, becuase we never
-  debugger;
-  yield take([GET_USER.SUCCEEDED, SYNC_FORM_DATA])
-  yield call(delay, 1)
-  yield fork(watchForSyncRequests)
-  yield call(reviewCurrentUserFormsAndFormDataCompareAndUpfateToState)
+  while(true) {
+    debugger;
+    yield take([GET_USER.SUCCEEDED, SYNC_FORM_DATA])
+    yield call(delay, 1)
+    yield fork(watchForSyncRequests)
+    yield call(reviewCurrentUserFormsAndFormDataCompareAndUpfateToState)
+  }
 }
 
 function * watchForSyncRequests() {
@@ -191,12 +198,12 @@ function * watchForSyncRequests() {
     if(__DEV__) {
       throw error
     } else {
-      yield log({
+      log({
         info: 'Compelted synching differences between form data and user forms.'
       })
     }
   } else {
-    yield log({
+    log({
       info: 'Compelted synching differences between form data and user forms.'
     })
   }

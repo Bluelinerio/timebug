@@ -14,6 +14,6 @@ export const AUTHENTICATE_FB: Request<any, any> = createRequest('AUTHENTICATE_FB
 export const refreshUser = () => ({ type: REFRESH_USER });
 
 //onAppLoaded
-export const onAppLoaded = request => action(ON_APP_LOADED, request)
+export const onAppLoaded = (request: any )=> action(ON_APP_LOADED, request)
 
-export const updateUser = (payload: any) => { type: UPDATE_USER, payload }
+export const updateUser = (payload: any) => action(UPDATE_USER, payload)

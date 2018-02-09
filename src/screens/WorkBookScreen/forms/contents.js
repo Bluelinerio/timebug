@@ -9,6 +9,15 @@ export const AreaOfLife = t.enums.of([
   'Spirituality',
 ], 'AreaOfLife');
 
+export const TimesPerWeek = t.enums.of([
+  'Every Day',
+  'Every other Day',
+  'Once',
+  'Twice',
+  'Once over the weekend',
+  '3 to 5 times a week'
+], 'TimesPerWeek');
+
 export const StageOfLife = t.enums.of([
   'Infancy (Ages 0-3)',
   'Early Childhood (Ages 3-6)',
@@ -238,16 +247,19 @@ export const MeditationTypes = t.enums.of([
   'Yoga',
   'Religious',
   'Prayer',
+  'My own personal practice',
+  'Sadhana',
   'Other'
 ], 'MeditationTypes')
 
 export const TimesOfDay = t.enums.of([
-  'Early Morning',
+  'Early in the Morning',
   'Morning',
   'Afternoon',
   'Late Afternoon',
   'Early Evening',
-  'Late Night'
+  'Late Night',
+  'Dusk'
 ], 'TimesOfDay')
 
 export const AloneOrOthers = t.enums.of([
@@ -446,8 +458,14 @@ export const HoursPerWeek = t.enums.of([
   '40-50',
   'More Than 50'
 ],'HoursPerWeek') 
-                   
-                   
+
+export const ExerciseLength = t.enums.of([
+  'Less than 30 min',
+  'About an hour',
+  'Between an hour to two',
+  'More than Two hours, less than 4',
+  'More than 4 hours'
+])
 
 export const TimeChanged = t.enums.of([
   'Decreased by more than 10 hours',

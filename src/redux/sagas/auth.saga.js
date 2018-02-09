@@ -58,12 +58,12 @@ function* refreshUserOrLogout() {
 		} else if (fbToken) {
 			yield fork(requestSaga, AUTHENTICATE_FB, () => authenticateWithFBToken(fbToken), { fbToken } )
 			const result = yield take([
-					AUTHENTICATE_FB.ERRORED,
-					AUTHENTICATE_FB.SUCCEEDED,
-					AUTHENTICATE_FB.CANCELLED
+				AUTHENTICATE_FB.ERRORED,
+				AUTHENTICATE_FB.SUCCEEDED,
+				AUTHENTICATE_FB.CANCELLED
 			])
 			if (result.type === AUTHENTICATE_FB.SUCCEEDED) {
-				const {token, user:{ id }, endpoint }= result.payload
+				const {token, user:{ id }, endpoint } = result.payload
 				yield call(AuthStorage.setTokenAndUserId, {token, userId: id, endpoint})
 				return yield call(_fetchUserWithId, id)
 			}

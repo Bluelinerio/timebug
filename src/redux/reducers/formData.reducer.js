@@ -63,7 +63,7 @@ function formDataReducer(state: FormDataState = initialState, action: FormAction
     case INCREMENT_FORM_DATA_QUEUE:
       return increment(state)
     case DECREMENT_FORM_DATA_QUEUE:
-      return increment(state)
+      return decrement(state)
     default:
       return state;
   }
