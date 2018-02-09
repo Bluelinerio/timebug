@@ -233,7 +233,7 @@ export default {
       },
       3: {
           type:t.struct({
-            timesPerWeek:t.String,
+            timesPerWeek: TimesPerWeek,
             howLong: ExerciseLength,
             meditationType: MeditationTypes,
             aloneOrOthers: AloneOrOthers,
