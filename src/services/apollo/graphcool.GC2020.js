@@ -147,7 +147,7 @@ export const createForm = ({ userId, stepId, data } : CreateFormArgs): any =>
 			variables: {
 				userId,
 				stepId,
-				data: JSON.stringify(data)
+				data
 			}
 		})
 		.then(parse('createForm'))
@@ -168,7 +168,7 @@ export const updateForm = ({ userId, id, data } : UpdateormArgs): any =>
 			variables: {
 				userId,
 				id,
-				data: JSON.stringify(data)
+				data
 			}
 		})
 		.then(parse('updateForm'))
