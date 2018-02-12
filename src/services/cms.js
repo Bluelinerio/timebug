@@ -73,6 +73,7 @@ export type Colors = {
 
 export type Step = {
   number: number,
+  stepId: string,
   title: string,
   subtitle: string,
   description: string,
@@ -96,7 +97,6 @@ export type Slide = {
 	image: string,
 	order: string,
 }
-
 
 export const getImageUrl = (icon: Icon): string => (icon.url || icon.fields.file.url || '').replace('//', 'https://')
 

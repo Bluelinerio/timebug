@@ -59,6 +59,7 @@ const colorsFromResponse = response => ({
 
 const AddWorkbookDurationMinValueIfNotPopulated = (step: Step) => ({
 	...step,
+	stepId: step.number, 
 	workbookDurationMin: step.workbookDurationMin || 15,
 	duration: step.duration || 15
 })
