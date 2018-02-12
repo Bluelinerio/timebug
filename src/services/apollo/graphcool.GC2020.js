@@ -104,7 +104,19 @@ const userFragments = gql`
 			}
 			aprovedAt
 			sentAt
-			status
+			interactions {
+				survey {
+					sentAt
+					aprovedAt
+					templateId
+					id
+				}
+				state
+				aprovedAt
+				status
+				id
+			}
+			templateId
 		}
 	}`
 
