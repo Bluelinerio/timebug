@@ -17,18 +17,18 @@ const mapStateToProps = (state) => {
 const merge = (stateProps, dispatchProps, ownProps): Props => {
   const { colors, steps} = stateProps;
   const { goToAssignmentLeadInScreen } = dispatchProps
-  const { navigation: {state:{ params:{ step }}}} = ownProps;
+  const { navigation: {state:{ params:{ stepId }}}} = ownProps;
 
-  const _step = steps[step];
-  if(!_step) {
-    throw `did not find step with number ${step} in steps: ${steps}`;
+  const step = steps[stepId];
+  if(!step) {
+    throw `did not find step with number ${stepId} in steps: ${steps}`;
   }
-  const title = _step.title
-  const subtitle = _step.subtitle
-  const description = _step.description
-  const number = _step.number
-  const imageUri = getImageUrl(_step.icon)
-  const color = colors[step]
+  const title = step.title
+  const subtitle = step.subtitle
+  const description = step.description
+  const number = step.number
+  const imageUri = getImageUrl(step.icon)
+  const color = step.color;
   const onPress = () => goToAssignmentLeadInScreen(ownProps);
   return {
     title,

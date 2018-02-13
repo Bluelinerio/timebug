@@ -65,9 +65,7 @@ export default class PagninatedCarousel extends PureComponent<Props, State> {
 							parallax={true}
 							parallaxProps={parallaxProps}
 							width={sliderWidth}
-							onPress={() => {
-								onPress(item, index);
-							}}
+							onPress={() => onPress(item, index)}
 						/>
 					)}
 					sliderWidth={sliderWidth}
