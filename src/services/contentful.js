@@ -64,6 +64,16 @@ const AddWorkbookDurationMinValueIfNotPopulated = (step: Step) => ({
 	duration: step.duration || 15
 })
 
+const updateStepColors = ({steps, colors}) => ({
+	steps: Object.keys(steps).reduce((sum, stepId) => ({
+		...sum,
+		[stepId]: {
+			...steps[stepId],
+			color: colors.steps[stepId]
+		}
+	}), {})
+})
+
 const unlinkStepField = (items) => items.reduce((steps, step) => ({ 
 	...steps, 
 	[step.fields.number]: AddWorkbookDurationMinValueIfNotPopulated(step.fields)
@@ -95,6 +105,10 @@ export const refreshCMS = () => Promise.all([
 	fetchAbout(),
 	fetchonboardingPages(),
 ]).then(responses => Object.assign(...responses))
+	.then(cmsData => ({
+		...cmsData,
+		...(updateStepColors(cmsData))
+	}))
 
 
 export const testContentFromCMS = (object) => {
