@@ -58,10 +58,12 @@ function * reviewCurrentUserFormsAndFormDataCompareAndUpfateToState() {
   const { 
     userId, 
     completedFormsData,
-    formData 
+    formData,
+    formWithStepId
   } = yield call(mySelectors, ({
     userId: selectors.userId,
     completedFormsData: selectors.completedFormsData,
+    formWithStepId: selectors.formWithStepId,
     formData: selectors.formData
   }))
  
@@ -85,11 +87,9 @@ function * reviewCurrentUserFormsAndFormDataCompareAndUpfateToState() {
     return;
   }
 
-  const findFormWithStepId = (stepId: number) => completedForms.find(f => f.stepId === stepId);
-
   const updates = difference && Object.keys(difference).reduce((payload, key) => {
     const stepId = parseInt(key);
-    const id = findFormWithStepId(stepId).id
+    const id = formWithStepId(stepId).id
     const data = difference[key].leftValue
     return [...payload, {
         id,

@@ -57,6 +57,8 @@ const sortedCompletedForms = (state: any): [Form] => completedForms(state).sort(
 
 const completedStepIds = (state: any): [string] => completedForms(state).map(f => f.stepId)
 
+const formWithStepId = (state: any) => (stepId:string) : Form => completedForms(state).find(f => f.stepId)
+
 // CMS
 const assignmentsForStepId = (state: any) => (stepId: string) => steps(state)[stepId].assignments
 const colorForStepWithId = (state:any) => (stepId: string) => stepColors(state)[stepId]
@@ -133,6 +135,7 @@ export default {
 	sortedCompletedForms,
 	completedFormsData,
 	completedStepIds,
+	formWithStepId,
 	modelsAndDataForExercise,
 	formData,
 	incompleteFormsData,
