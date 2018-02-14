@@ -3,7 +3,8 @@ import React from 'react'
 import { View, TextInput, Text } from 'react-native'
 
 type State = {
-  height: number
+  height: number,
+  text: string
 }
 type Props = any & {
   style: any,
@@ -12,7 +13,8 @@ type Props = any & {
 
 export default class CustomTextInput extends React.Component<Props,State> {
   state:State = {
-    height: 0
+    height: 0,
+    text: ''
   }
   textInput:?TextInput = null
 
@@ -57,7 +59,16 @@ export default class CustomTextInput extends React.Component<Props,State> {
       : null  
   }
 
-  onContentSizeChange= (event:any) => {
+  onChangeText = (text: string) => {
+    const then = this.props.onChange 
+      ? () => this.props.onChange(text) 
+      : null
+    this.setState({
+      text
+    }, then)
+  }
+
+  onContentSizeChange = (event:any) => {
     const { nativeEvent:{ contentSize:{ height }}} = event;
     if (height !== this.state.height) {
       this.setState({
@@ -74,7 +85,7 @@ export default class CustomTextInput extends React.Component<Props,State> {
         ? this.onContentSizeChange 
         : this.props.onContentSizeChange
       }
-      onChangeText={this.props.onChange}
+      onChangeText={this.onChangeText}
       onChange={this.props.onChangeNative}
       accessibilityLabel={this.props.label}
       autoGrow={true}
@@ -124,7 +135,8 @@ export default class CustomTextInput extends React.Component<Props,State> {
       editable
     } = this.props;
 
-    const formGroupStyle    = hasError 
+    const { text } = this.state;
+    const formGroupStyle = hasError 
       ? styles.formGroup.error
       : styles.formGroup.normal;
 
@@ -134,7 +146,7 @@ export default class CustomTextInput extends React.Component<Props,State> {
         ? styles.textBoxView.normal 
         : styles.textBoxView.notEditable
         
-  const label = this.label()  
+  const label = text.length > 0 ? null : this.label()  
   const help  = this.help()
   const error = this.error()
   const textInput = this.renderTextInput();

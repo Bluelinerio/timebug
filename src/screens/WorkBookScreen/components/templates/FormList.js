@@ -55,9 +55,29 @@ const renderRowAddButton = ({key, text, onPress}) => (
   </TouchableOpacity>
 )
 
+const Container = ({ items }) => (
+  <View>
+    {items.map(renderRowWithoutButtons)}
+  </View>
+)
+
+// ref => this.formPages = ref
+// const Container = ({ref, items }) => (
+//   <FormPages
+//     page={index}
+//     horizontal={false} 
+//     ref={ref}
+//     containerStyle={{ flex: 1,}} 
+//     indicatorPosition="none"
+//     onScrollEnd={(index) => Keyboard.dismiss() }
+//   >
+//     {items.map(renderRowWithoutButtons)}
+//   </FormPages>
+// )
+
 export default class FormList extends React.Component {
 
-  formPages:?FormPages = null
+  //formPages:?FormPages = null
 
   state = {
     index: -1,
@@ -135,18 +155,7 @@ export default class FormList extends React.Component {
         {helpComponent}
         {errorComponent}
         {addButton}
-        <FormPages
-          page={index}
-          horizontal={false} 
-          ref={ref => this.formPages = ref }
-          containerStyle={{ 
-            flex: 1,
-          }} 
-          indicatorPosition="none"
-          onScrollEnd={(index) => Keyboard.dismiss() }
-        >
-          {items.map(renderRowWithoutButtons)}
-        </FormPages>
+        <Container items={items} /> 
       </View>
     );
     
