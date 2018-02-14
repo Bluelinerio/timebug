@@ -43,11 +43,17 @@ const isAnonymous = (state: any) : boolean => getUserState(state) === ANONYMOUS
 
 const sortForms = (a: Form, b: Form) => a.stepId - b.stepId
 
+// stepId on the server is an Int!. A clear idea how to 
+const completedFormsData = (state: any) => completedForms(state).reduce((forms, form) => ({
+  ...forms,
+  [form.stepId]: form.data
+}), {})
+
 const completedForms = (state: any): [Form] => user(state) 
 	? user(state).forms
 	: []
 
-const sortedCompletedForms = (state: any) => completedForms(state).sort(sortForms);
+const sortedCompletedForms = (state: any): [Form] => completedForms(state).sort(sortForms);
 
 const completedStepIds = (state: any): [string] => completedForms(state).map(f => f.stepId)
 
@@ -60,7 +66,7 @@ const step = (number: number) => (state:any) => steps(state)[number]
 import workbooks from '../screens/WorkBookScreen/forms';
 // form data
 const formData = (state: any) => getFormData(state).data
-const incompleteForms = (state: any) => (stepId:string) => getFormData(state).data[stepId]
+const incompleteFormsData = (state: any) => getFormData(state).data
 
 const modelsAndDataForExercise = (state: any) => (stepId: string) => {
 	//TComb Forms helpers
@@ -125,9 +131,10 @@ export default {
 	isAnonymous,
 	completedForms,
 	sortedCompletedForms,
+	completedFormsData,
 	completedStepIds,
 	modelsAndDataForExercise,
 	formData,
-	incompleteForms,
+	incompleteFormsData,
 	isSynchingFormData
 }

@@ -57,11 +57,11 @@ function * reviewCurrentUserFormsAndFormDataCompareAndUpfateToState() {
 
   const { 
     userId, 
-    completedForms,
+    completedFormsData,
     formData 
   } = yield call(mySelectors, ({
     userId: selectors.userId,
-    completedForms: selectors.completedForms,
+    completedFormsData: selectors.completedFormsData,
     formData: selectors.formData
   }))
  
@@ -77,7 +77,7 @@ function * reviewCurrentUserFormsAndFormDataCompareAndUpfateToState() {
     }
   }
   
-  const { difference, onlyOnLeft } = diffObjs(formData, formDataFromForm(completedForms))
+  const { difference, onlyOnLeft } = diffObjs(formData, completedFormsData)
   if(!difference && !onlyOnLeft) {
     log({
       info: 'Compelted reviewing differences between form data and user forms. No sync is needed'
