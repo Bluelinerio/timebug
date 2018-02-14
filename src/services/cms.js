@@ -13,12 +13,7 @@ export const PHASES = {
 }
 
 export type Icon = {
-  fields: {
-    file: {
-      url: string
-    }
-  },
-  url?: string
+  uri: string
 }
 
 export type Assignment = {
@@ -77,7 +72,7 @@ export type Step = {
   title: string,
   subtitle: string,
   description: string,
-  refAssignment: Array<Assignment>,
+  assignments: [Assignment],
   icon: Icon,
   type: string,
   color: ?string,
@@ -99,20 +94,6 @@ export type Slide = {
 }
 
 export const getImageUrl = (icon: Icon): string => (icon.url || icon.fields.file.url || '').replace('//', 'https://')
-
-export const colorForStep = cmsColors => {
-	return {
-		colorStart: step => cmsColors.steps[step + 1],
-		colorEnd: step => {
-			const phase = Math.ceil((step + 1) / 10) % 4;
-			return cmsColors.phases[phase + 1];
-		}
-	};
-};
-
-export const fixMisingProgressFromServer = items => items
-
-export const sortSteps = (a:Step, b:Step) => a.number - b.number
 
 export const NUMBER_OF_STEPS = 30;
 export const NUMBER_OF_STEP_FOR_PHASES = 10;

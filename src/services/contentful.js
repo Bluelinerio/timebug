@@ -49,6 +49,10 @@ const onboardingPagesFromResponse = response => {
 	})
 }
 
+const unlinkFields = (name) => (response) => ({
+	[name]: response.items.map(i => i.fields)
+})
+
 const aboutFromResponse = response => ({ 
 	about: response.items.map(item => item.fields)[0].about
 })
@@ -57,31 +61,26 @@ const colorsFromResponse = response => ({
 	colors: response.items[0].fields.schema
 })
 
-const AddWorkbookDurationMinValueIfNotPopulated = (step: Step) => ({
-	...step,
-	stepId: step.number, 
-	workbookDurationMin: step.workbookDurationMin || 15,
-	duration: step.duration || 15
-})
+const stepsFromResponse = unlinkFields('steps')
 
-const updateStepColors = ({steps, colors}) => ({
-	steps: Object.keys(steps).reduce((sum, stepId) => ({
+const nomrmalizeSteps = ({ steps, colors}) => ({
+	steps: steps.reduce((sum, step) => ({
 		...sum,
-		[stepId]: {
-			...steps[stepId],
-			color: colors.steps[stepId]
+		[step.number]: {
+			...step,
+			refAssignment: [],
+			assignments: step.refAssignment.map(i => ({
+				...i.fields,
+				icon: i.icon ? getImageUrl(i.icon) : null
+			})),
+			icon: step.icon ? getImageUrl(step.icon) : null,
+			stepId: step.number.toString(),
+			workbookDurationMin: step.workbookDurationMin || 15,
+			duration: step.duration || 15,
+			color: colors.steps[step.number]
 		}
 	}), {})
 })
-
-const unlinkStepField = (items) => items.reduce((steps, step) => ({ 
-	...steps, 
-	[step.fields.number]: AddWorkbookDurationMinValueIfNotPopulated(step.fields)
-}), {});
-
-const stepsFromResponse = response => ({
-	steps: unlinkStepField(response.items)
-});
 
 export const fetchAbout = () => contentfulClient
 	.getEntries({ content_type: CONTENTFUL_CONTENT_LOGIN })
@@ -107,7 +106,7 @@ export const refreshCMS = () => Promise.all([
 ]).then(responses => Object.assign(...responses))
 	.then(cmsData => ({
 		...cmsData,
-		...(updateStepColors(cmsData))
+		...(nomrmalizeSteps(cmsData))
 	}))
 
 
