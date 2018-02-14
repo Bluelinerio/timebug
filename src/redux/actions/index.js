@@ -16,7 +16,7 @@ export const setUser = (user: User): UserStateAction => ({ type: SET_USER_STATE,
 export const setUserAnonymous = (): UserStateAction => ({ type: SET_USER_STATE, payload: ANONYMOUS })
 
 
-const loginWithFbButtonPressed = action(LOGIN_WITH_FB_BUTTON_PRESSED)
+export const loginWithFbButtonPressed = () => action(LOGIN_WITH_FB_BUTTON_PRESSED)
 // LOGOUT
 export function logoutButtonPressed() {
 	return {

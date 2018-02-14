@@ -1,7 +1,7 @@
 // @flow
 import type { UserStateAction } from '../actions'
 import { SET_USER_STATE } from '../actions'
-import type { User, UserState , Progress} from '../../services/apollo/models'
+import type { User, UserState} from '../../services/apollo/models'
 import { ANONYMOUS, UNDETERMINED, AUTHENTICATING } from '../../services/apollo/models'
 import { GET_USER, AUTHENTICATE_FB } from '../actions/user.actions'
 import { 

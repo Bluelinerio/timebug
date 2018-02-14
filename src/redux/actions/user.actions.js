@@ -6,7 +6,7 @@ import {
 } from '../actionTypes'
 import { createRequest } from '../../Modules/redux-saga-request'
 import type { Request } from '../../Modules/redux-saga-request'
-import type { UserState, Progress } from '../../services/apollo/models'
+import type { UserState } from '../../services/apollo/models'
 import { action, runnableAction } from '../utils';
 
 export const GET_USER: Request<any, any> = createRequest('GET_USER')

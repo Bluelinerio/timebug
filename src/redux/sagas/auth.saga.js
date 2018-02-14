@@ -1,40 +1,54 @@
 // @flow
 import { throttle, select, take, race, call, all, cancelled, put, takeLatest, fork } from 'redux-saga/effects'
-
+import { requestSaga } from '../../Modules/redux-saga-request'
+import type { Request } from '../../Modules/redux-saga-request'
+// actions:
 import { 
 	LOGIN_WITH_FB_BUTTON_PRESSED,
 	FB_LOGIN_DIALOG_RESPONDED,
 	LOGOUT,
 	REFRESH_USER
 } from '../actionTypes'
-import { incrementRequestCount, decrementRequestCount } 
-	from '../actions/network.actions'
 import * as actions from '../actions'
+import { 
+	incrementRequestCount, 
+	decrementRequestCount 
+} from '../actions/network.actions'
 import { 
 	GET_USER,
 	AUTHENTICATE_FB,
 	refreshUser
 } from '../actions/user.actions'
 import selectors from '../selectors'
-import type { Auth, AuthUser, User, UserState, ErrorResponse } from '../../services/apollo/models'
-import { authenticateWithFBToken,fetchUserWithId , resetStore } from '../../services/apollo'
+// models
+import type { 
+	Auth, 
+	AuthUser, 
+	User, 
+	UserState, 
+	ErrorResponse 
+} from '../../services/apollo/models'
+// 
+import { 
+	authenticateWithFBToken, 
+	fetchUserWithId , 
+	resetStore
+} from '../../services/apollo'
 import facebook from '../../services/facebook'
-import type { OpenFBLoginResult } from '../../services/facebook'
 import AuthStorage from '../../services/authStorage'
-import { requestSaga } from '../../Modules/redux-saga-request'
-import type { Request } from '../../Modules/redux-saga-request'
-import { CANCELLED_ERROR } from './globals'
-import type { ErrorActionType } from './globals'
 
-type LogoutResult = boolean
-
-function* _logout(): LogoutResult {
+function * unlinkUser() {
 	yield all([
 		call(AuthStorage.wipeStorage),
 		call(facebook.logOut),
+	])
+}
+
+function* _logout() {
+	yield all([
+		call(unlinkUser),
 		call(resetStore),
 	])
-	return true
 }
 
 function* _handleUserError() {
@@ -51,8 +65,8 @@ function * _fetchUserWithId(userId) {
 function* refreshUserOrLogout() {
 	function * refreshUser() {
 		const { token, userId, endpoint } = yield call(AuthStorage.getTokenAndUserId)
+		// customizatio point in case we change enpoints...
 		const fbToken: ?string = yield call(facebook.getToken)
-		debugger;
 		if (userId && token) {
 			return yield call(_fetchUserWithId, userId)
 		} else if (fbToken) {
@@ -63,8 +77,12 @@ function* refreshUserOrLogout() {
 				AUTHENTICATE_FB.CANCELLED
 			])
 			if (result.type === AUTHENTICATE_FB.SUCCEEDED) {
-				const {token, user:{ id }, endpoint } = result.payload
-				yield call(AuthStorage.setTokenAndUserId, {token, userId: id, endpoint})
+				const {token, user: { id }, endpoint }= result.payload
+				// FIXME: this call still doesn't work:
+				yield call(AuthStorage.setTokenAndUserId, { 
+					token, 
+					userId: id, 
+					endpoint})
 				return yield call(_fetchUserWithId, id)
 			}
 		}
@@ -104,6 +122,7 @@ export function* loginFlowSaga() {
 	//yield put({ type: LOGOUT })
 	yield fork(watchForUserErroredSaga)
 	yield fork(watchForRefreshUserOrLogout)
+	//yield call(_logout)
 	yield put(refreshUser())
 	yield throttle(500, LOGIN_WITH_FB_BUTTON_PRESSED, _loginOrRegisterWithFacebook)
 	yield throttle(500, LOGOUT, _logout)
