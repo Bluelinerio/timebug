@@ -15,25 +15,27 @@ const mapStateToProps = (state:any) => {
 	const phaseColors = selectors.phaseColors(state);
 	const backgroundColorAtIndex = (step: number) => phaseColors[phaseForStepAtIndex(step)]
 	const completedForms = selectors.completedForms(state);
-	const modelsAndDataForExercise = selectors.modelsAndDataForExercise(state);
+	const incompleteForms = selectors.incompleteForms(state);
 	const isLoggedIn = selectors.isLoggedIn(state)
+
 	const steps:[Step] = selectors.sortedSteps(state).map(step => {
+		
 		if(!isLoggedIn) return step
 
-		const form = completedForms.find(form => form.stepId === step.stepId)
-		const lastUpdate = form && form.updatedAt || 0
-		const { formData } = modelsAndDataForExercise(step.stepId);
+		const completedForm = completedForms.find(form => form.stepId === step.stepId)
+		const lastUpdate = completedForm && completedForm.updatedAt || 0
+		const incompleteForm = incompleteForms(step.stepId);
 		return ({
 			...step,
 			iconName: (lastUpdate !== 0 
 				? 'check'
-				: formData
+				: incompleteForm
 					? 'edit'
 					: null
 			),
 			progress: {
 				lastUpdate,
-				formData
+				incompleteForm
 			}
 		})
 	})

@@ -60,6 +60,8 @@ const step = (number: number) => (state:any) => steps(state)[number]
 import workbooks from '../screens/WorkBookScreen/forms';
 // form data
 const formData = (state: any) => getFormData(state).data
+const incompleteForms = (state: any) => (stepId:string) => getFormData(state).data[stepId]
+
 const modelsAndDataForExercise = (state: any) => (stepId: string) => {
 	//TComb Forms helpers
 	const isValueAValidTCombType = (value, type) => type.is(value) ? value : null
@@ -126,5 +128,6 @@ export default {
 	completedStepIds,
 	modelsAndDataForExercise,
 	formData,
+	incompleteForms,
 	isSynchingFormData
 }
