@@ -17,15 +17,16 @@ const mapStateToProps = (state) => {
 const merge = (stateProps, dispatchProps, ownProps): Props => {
   const { colors, steps} = stateProps;
   const { goToAssignmentLeadInScreen } = dispatchProps
-  const { navigation: {state:{ params: { step }}}} = ownProps;
+  const { navigation: {state:{ params: { stepId }}}} = ownProps;
 
-  const doneStep = steps[step];
-  const doneStepColor = colors[step]
-  const nextStepNumber = step + 1;
+  const doneStep: Step = steps[stepId];
+  const doneStepColor = colors[stepId]
+  const nextStepNumber = doneStep.number + 1;
 
   if (nextStepNumber < steps.length) {
-    const nextStepColor = colors[nextStepNumber];
-    const nextStep = steps[nextStepNumber];
+    // this is required in case we change how stepId work...
+    const nextStep = steps.find(s => s.number === nextStepNumber);
+    const nextStepColor = nextStep.color;
     const nextStepDuration = nextStep.duration;
     return {
       ...stateProps, 

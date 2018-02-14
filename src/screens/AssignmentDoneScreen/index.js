@@ -1,11 +1,11 @@
 import React from 'react'
 import screen from './containers/AssignmentDoneScreenContainer';
 
-screen.navigationOptions = ({ navigation: { state: { params: { color, step } } } }) => {
+screen.navigationOptions = ({ navigation: { state: { params: { stepColor, stepNumber } } } }) => {
 	return {
-		title: `Exercise ${step}`,
+		title: `Exercise ${stepNumber}`,
 		headerStyle: {
-			backgroundColor: color
+			backgroundColor: stepColor
 		},
 		headerTintColor: 'white',
     headerLeft: null
@@ -13,6 +13,5 @@ screen.navigationOptions = ({ navigation: { state: { params: { color, step } } }
 }
 
 export default {
-  screen,
-
+  screen
 }
