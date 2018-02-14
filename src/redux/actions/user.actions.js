@@ -16,4 +16,4 @@ export const refreshUser = () => ({ type: REFRESH_USER });
 //onAppLoaded
 export const onAppLoaded = (request: any )=> action(ON_APP_LOADED, request)
 
-export const updateUser = (payload: any) => action(UPDATE_USER, payload)
+export const updateUser = (payload: any) => ({type: UPDATE_USER, payload: payload})
