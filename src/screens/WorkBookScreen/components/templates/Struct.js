@@ -43,9 +43,10 @@ export default class Struct extends React.Component {
     const rows = this.rows()
     const label = this.label()
     const children = [(label ? [label] : []), ...rows]
+    const topLevel = this.props.topLevel || false
     return (
       <ScrollView style={{ 
-        paddingHorizontal: 20,
+        paddingHorizontal: topLevel ? 20 : 0,
         top: 20,
         flex: 1 
       }}>
