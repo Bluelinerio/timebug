@@ -8,6 +8,7 @@ import Markdown  						from '../../../Modules/Markdown';
 import AssignmentNumber 		from './AssignmentNumber';
 import BeginWorkbookButton 	from '../containers/BeginWorkbookButton';
 import markdownStyles 			from '../../../styles/Markdown/assignment'
+import type { Assignment} 	from '../../../services/cms'
 
 class AnimateWrapper extends PureComponent {
   render() {
@@ -19,7 +20,6 @@ const Animate = Animated.createAnimatedComponent(AnimateWrapper);
 
 export type Props = { 
 	assignment: Assignment, 
-	step: number,
 	index: number, 
 	color:string, 
 	isLastItem:bool, 
@@ -58,7 +58,7 @@ const TextRenderer = ({text, animatedStyle, width}) => (
 		</Animated.Text>
 )
 
-export default ({ assignment, index, color, isLastItem, step, progress, scrollToPage }: Props) => {
+export default ({ assignment, index, color, isLastItem, progress, scrollToPage }: Props) => {
 
 	const transform = [{
 		translateY: progress.interpolate({
@@ -95,7 +95,7 @@ export default ({ assignment, index, color, isLastItem, step, progress, scrollTo
 			/>
 			</View>
 			{isLastItem && 
-				<BeginWorkbookButton number={step} />
+				<BeginWorkbookButton />
 			}
 	</TouchableBounce>)
 }

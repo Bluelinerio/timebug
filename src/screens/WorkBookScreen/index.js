@@ -1,35 +1,27 @@
 // @flow
 import React from 'react'
-import { StyleSheet } from 'react-native';
-import { HeaderBackButton } from "react-navigation";
-import { NavigationActions } from 'react-navigation';
+import { 
+  HeaderBackButton, 
+  NavigationActions 
+} from 'react-navigation';
+import screen from './containers/WorkBookScreenContainer';
 
-import screen                 from './containers/WorkBookScreenContainer';
-import { previousFormOrBack } from '../../redux/actions/nav.actions';
 
-screen.navigationOptions = ({ navigation: { previous, dispatch, state: { key, params } } }) => {
-  const { color, form, step } = params;
+screen.navigationOptions = ({ navigation: { dispatch, state: { key, params } } }) => {
+  const { stepColor, stepNumber, backAction } = params;
   return {
-    title: `Exercise ${step}`,
+    title: `Exercise ${stepNumber}`,
     headerStyle: {
-      backgroundColor: color
+      backgroundColor: stepColor
     },
     headerTintColor: 'white',
     headerLeft: (
       <HeaderBackButton
         tintColor="white"
-        onPress={() => {
-          if (!form || form === 0) {
-            dispatch(NavigationActions.back())
-          } else {
-            dispatch(NavigationActions.setParams({
-              key,
-              params: {
-                ...params,
-                form: form - 1
-              }
-            }))
-          }
+        onPress={ () => {
+          backAction 
+            ? backAction()
+            : dispatch( NavigationActions.back() )
         }}
       />
     )

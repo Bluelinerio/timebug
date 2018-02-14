@@ -13,7 +13,7 @@ export type NextButtonProps = {
 };
 
 const SKIPP_ENABLED = false;
-export default (props:NextButtonProps) => {
+export default (props: NextButtonProps) => {
   const { isInvalid, onPress, buttonMessage, backgroundColor} = props;
   const active = isInvalid === false || SKIPP_ENABLED
   if (active) {

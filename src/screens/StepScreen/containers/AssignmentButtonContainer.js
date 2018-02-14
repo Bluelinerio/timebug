@@ -1,6 +1,7 @@
 // @flow
 import React from 'react'
 import { connect } from 'react-redux'
+import { withNavigation } from 'react-navigation'
 import Button from '../../../components/Button'
 import type { Props, Side } from '../../../components/Button'
 import selectors from '../../../redux/selectors'
@@ -35,4 +36,4 @@ const merge = (stateProps, dispatchProps, ownProps): Props => {
   }
 }
 
-export default connect(mapStateToProps, ({onPressWithProps}), merge)(Button)
+export default withNavigation(connect(mapStateToProps, ({onPressWithProps}), merge)(Button))

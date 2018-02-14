@@ -22,11 +22,6 @@ export type AuthState = {
 	+isLoading: boolean
 }
 
-export type Progress = {
-	+step: number,
-	+form: number
-}
-
 export type Form = {
   id: string,
   stepId: number,
@@ -56,7 +51,6 @@ export type User = {
 	+id: string,
 	+name: string,
 	+steps: ?Array<Object>, /** Meta information about the query. */
-	+progress :Progress,
 	+finished: boolean,
 	+endpoint: string,
 	+forms:[Form],

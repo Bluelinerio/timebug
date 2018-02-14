@@ -2,89 +2,97 @@
 
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { NavigationActions } from 'react-navigation';
+import { NavigationActions, withNavigation } from 'react-navigation';
 
-import { submitFormValue as submit, syncFormData } from '../../../redux/actions/formData.actions';
+import { submitFormValue, syncFormData } from '../../../redux/actions/formData.actions';
 import { goToAssignmentDoneScreen } from '../../../redux/actions/nav.actions';
 import selectors from '../../../redux/selectors'
-import type { Progress }        from '../../../services/apollo/models';
 import type Props               from '../components/WorkbookScreenComponent';
 import WorkbookScreenComponent  from '../components/WorkbookScreenComponent';
-const SKIPP_ENABLED = false;
+import DefaultUserContainer     from '../../../containers/DefaultUserContainer';
 
 const mapStateToProps = (state) => {
   const steps = selectors.steps(state);
-  const colors = selectors.stepColors(state);
-  const fetching = selectors.synchingFormData(state);
-  const getFormData = selectors.getFormData(state);
-  const getFormModels = selectors.getFormModels(state);
-  return { steps, colors, fetching, getFormData, getFormModels }
+  const fetching = selectors.isSynchingFormData(state);
+  const modelsAndDataForExercise = selectors.modelsAndDataForExercise(state);
+  return { steps, fetching, modelsAndDataForExercise }
 }
 
 const merge = (stateProps, dispatchProps, ownProps): Props => {
+
   const { colors, steps} = stateProps;
   const { goToAssignmentLeadInScreen } = dispatchProps
-  const { step, color } = ownProps.navigation.state.params;
-  const form = ownProps.navigation.state.params.form || 0;
-  const progress = { step, form }
-  const models = stateProps.getFormModels(step);
+  const { navigation: {state:{ params:{ stepId, formId, stepColor }}}} = ownProps
+
+  const { models, formData } = stateProps.modelsAndDataForExercise(stepId)
+  if(Object.keys(models).includes(formId) === false) {
+    throw `did not find model for formId ${formId} for stepId:${stepId}`
+  }
+
   const numberOfForms = Object.entries(models).length;
-  const isFinalForm = form + 1 === numberOfForms
+  const formIdIndex = Object.keys(models).indexOf(formId)
+  const isFinalForm = numberOfForms - 1 === formIdIndex;
+  const ifFirstForm = formIdIndex === 0;
   const buttonMessage = isFinalForm ? 'SUBMIT' : 'NEXT';
-  const formData = stateProps.getFormData(step) || {};
-  const getModelForForm = (form: number) => ({
-    model: models[form + 1], value: formData[form]
-  })
+  
+  const model = models[formId];
+  const value = formData[formId]
+
   const isFetching = !models ? true : stateProps.network > 0
 
-  const cloneStateWithForm = (form) => ({
+  const cloneStateWithForm = (formId) => ({
     ...ownProps.navigation.state, // basically taking the 'key'
     params : {
       ...ownProps.navigation.state.params,
-      form
+      formId
     }
   })
-
-
-  /*
-  // unused:
-  const previous = () => {
-    if (form === 0) {
-      ownProps.dispatch(NavigationActions.back())
-    } else {
-      const state = cloneStateWithForm(form - 1)
-      ownProps.navigation.dispatch(NavigationActions.setParams(state))
-    }
-  }
-  */
   const nextActions = isFinalForm 
     ? [
-      NavigationActions.navigate({
-        routeName:'AssignmentDoneScreen',
-        params: {
-          step,
-          form,
-          color
-        }
-      }), 
-      syncFormData()
-    ]
-    : [NavigationActions.setParams(cloneStateWithForm(form + 1))]
-  
+        goToAssignmentDoneScreen(ownProps), 
+        syncFormData()
+      ]
+    : [
+        NavigationActions.setParams(cloneStateWithForm( Object.keys(models)[formIdIndex + 1] ))
+      ]
+
+  const previousAction = ifFirstForm 
+    ? NavigationActions.back()
+    : NavigationActions.setParams(cloneStateWithForm( Object.keys(models)[formIdIndex - 1] ))
+
   const next = () => nextActions.forEach(action => ownProps.navigation.dispatch(action) )
+  const previous = () => ownProps.navigation.dispatch(previousAction);
+
+  const submit = (value) => ownProps.navigation.dispatch(submitFormValue({
+      formId,
+      stepId,
+      value
+    })
+  )
 
   return {
     ...ownProps,
     ...dispatchProps,
-    progress,
-    getModelForForm,
+    stepColor,
+    value,
+    model,
+    next,
+    previous,
+    buttonMessage,
+    formId,
     numberOfForms,
     isFetching,
-    color,
-    next,
-    buttonMessage,
+    submit,
   }
 }
 
-export default connect(mapStateToProps, { submit }, merge)(WorkbookScreenComponent)
+
+const WorkBookScreenContainer = withNavigation(connect(mapStateToProps, null, merge)(WorkbookScreenComponent))
+
+ export default () => (
+    <DefaultUserContainer 
+      renderWithUser={() => (<WorkBookScreenContainer />)}
+      anonymousMessage={'You need to be logged in to be able to do the exercises. Please go back and log in again.'}
+    />
+  )
 

@@ -6,12 +6,12 @@ import {
 	getFormData
 } from './rootReducer';
 import { UNDETERMINED, ANONYMOUS, AUTHENTICATING } from '../services/apollo/models';
-import type { Progress, User, Form } from '../services/apollo/models';
+import type { User, Form } from '../services/apollo/models';
 import type { Colors, Step, Slide } from '../services/cms';
 
 // CMS
 const sortSteps = (a: Step, b: Step) => a.number - b.number
-const steps = (state: any) => getCms(state).steps
+const steps = (state: any): [Step] => getCms(state).steps
 const sortedSteps = (state: any) :[Step] => Object.values( steps(state) ).sort(sortSteps) 
 const stepColors = (state: any):{ number : string } => getCms(state).colors.steps;
 const introSlides = (state: any): [Slide] => getCms(state).onboardingPages.intro.slides;
@@ -51,26 +51,60 @@ const sortedCompletedForms = (state: any) => completedForms(state).sort(sortForm
 
 const completedStepIds = (state: any): [string] => completedForms(state).map(f => f.stepId)
 
-
-// CMS+Pgroess
-const assignmentsForStep = (state: any) => (step: number) => steps(state)[step].refAssignment.map(i => i.fields);
-const colorForStep = (step: number) => (state:any) => stepColors(state)[step]
+// CMS
+const assignmentsForStepId = (state: any) => (stepId: string) => steps(state)[stepId].assignments
+const colorForStepWithId = (state:any) => (stepId: string) => stepColors(state)[stepId]
 const step = (number: number) => (state:any) => steps(state)[number]
 
-//
-import models from '../screens/WorkBookScreen/forms';
-const getFormModels = (state: any) => (step: number) => models[step]
-
-//
+// models
+import workbooks from '../screens/WorkBookScreen/forms';
+// form data
 const formData = (state: any) => getFormData(state).data
-const _getFormData = (state: any) => (step: number) => formData(state)[step]
-const synchingFormData = (state: any) => getFormData(state).requestCount > 0
+const modelsAndDataForExercise = (state: any) => (stepId: string) => {
+	//TComb Forms helpers
+	const isValueAValidTCombType = (value, type) => type.is(value) ? value : null
+	const removeIvalidValuesInsteadOfDoingAnyMigrationForNow = (model, value) => Object
+		.keys(model.type.meta.props).reduce( (sum, key) => ({
+			...sum,
+			...(isValueAValidTCombType(value[key], model.type.meta.props[key]) && {
+				[key]: value[key]
+			})
+		}), {})
+
+	const models = workbooks[stepId];
+	const localData = getFormData(state).data[stepId]
+
+	if(!localData) {
+		return ({
+			models,
+			formData: {}
+		})
+	}
+
+	const mergeForm = (sum, formKey) => ({
+		...sum,
+		...(localData[formKey] && {
+			[formKey] : removeIvalidValuesInsteadOfDoingAnyMigrationForNow(
+				models[formKey],
+				localData[formKey]
+			)
+		})
+	})
+	const formData = Object.keys(models).reduce(mergeForm, {});
+
+	return ({
+		models,
+		formData	
+	})
+}
+
+const isSynchingFormData = (state: any) => getFormData(state).requestCount > 0
 
 export default {
 	getCms,
 	sortedSteps,
 	steps,
-	colorForStep,
+	colorForStepWithId,
 	phaseColors,
 	aboutText,
 	introSlides,
@@ -79,7 +113,7 @@ export default {
 	stepColors,
 	isCMSLoading,
 	totalNumberOfSteps,
-	assignmentsForStep,
+	assignmentsForStepId,
 	user,
 	userId,
 	isLoggedIn,
@@ -90,8 +124,7 @@ export default {
 	completedForms,
 	sortedCompletedForms,
 	completedStepIds,
-	getFormModels,
-	getFormData: _getFormData,
+	modelsAndDataForExercise,
 	formData,
-	synchingFormData
+	isSynchingFormData
 }

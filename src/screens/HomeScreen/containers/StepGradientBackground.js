@@ -7,14 +7,14 @@ import { gradientBackground_ColorForStepIndex } from '../../../services/cms'
 
 const mapStateToProps = (state) => {
 	const colors = selector.colors(state);
-	const gradientColorForStepFn = gradientBackground_ColorForStepIndex(colors)
+	const gradientColorForStepIndexFn = gradientBackground_ColorForStepIndex(colors)
 	return ({ gradientColorForStepFn })
 }
 
 const merge = (stateProps, dispatchProps, ownProps): Props => {
 	const { gradientColorForStepFn } = stateProps
 	const { index } = ownProps;
-	const { colorStart, colorEnd } = gradientColorForStepFn(index);
+	const { colorStart, colorEnd } = gradientColorForStepIndexFn(index);
 	return {
 		...stateProps, 
 		...dispatchProps, 

@@ -5,7 +5,6 @@ import {
   DECREMENT_FORM_DATA_QUEUE,
 } 
   from '../actionTypes';
-import type { Progress } from '../../services/apollo/models';
 
 export type FormDataState = {
   data: {
@@ -17,28 +16,30 @@ export type FormDataState = {
 type PopulateFormAction = {
   type: SUBMIT_FORM_VALUE.type,
   payload: {
-    progress: Progress,
+    stepId: string,
+    formId: string,
     value: any,
   }
 }
 
 type FormAction = PopulateFormAction;
 
+const initialSDataState = {};
 const initialState: FormDataState = {
-  data: {},
+  data: initialSDataState,
   requestCount: 0
 };
 
 const populate = (action: PopulateFormAction, state:FormDataState):FormDataState => {
-  const { progress: { step, form}, value } = action.payload
+  const { stepId, formId, value } = action.payload
   const data = state.data || {}
   return {
     ...state,
     data: {
       ...data,
-      [ step ]: {
-        ...(data[ step ] || null),
-        [ form ] : {
+      [ stepId ]: {
+        ...(data[ stepId ] || null),
+        [ formId ] : {
           ...value
         }
       }
@@ -70,12 +71,38 @@ function formDataReducer(state: FormDataState = initialState, action: FormAction
 }
 
 import storage from 'redux-persist/lib/storage';
-import { persistReducer } from 'redux-persist';
+import { persistReducer, createMigrate } from 'redux-persist';
+
+const mapDataWithStepIndicesToDataWithStepIds = (state) => {
+  if (!state.data || Object.keys(state.data).length === 0) {
+    return initialSDataState
+  }
+
+  const data = state.data;
+  return Object
+    .keys(data)
+    .reduce((sum, stepIndex) => ({
+      ...sum,
+      [(stepIndex + 1).toString()] : data[stepIndex]
+    }), 
+  {})
+}
+
+
+const migrations = {
+  0: (state) => ({
+    ...state,
+    data: mapDataWithStepIndicesToDataWithStepIds(state.data)
+  }),
+  1: (state) => state
+}
 
 const persistConfig = {
 	key:'formData',
 	storage: storage,
   blacklist: ['requestCount'],
+  version: 1,
+  migrate: createMigrate(migrations, { debug: true })
 };
 
 export default persistReducer(persistConfig, formDataReducer);

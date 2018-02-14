@@ -1,11 +1,13 @@
 import { RootNavigator, root } from '../../navigation/navigation';
 
-const HomeScreenState = RootNavigator.router.getStateForAction(
+const homeScreenState = RootNavigator.router.getStateForAction(
   RootNavigator.router.getActionForPathAndParams(root.options.initialRouteName)
 );
-const initialState = RootNavigator.router.getStateForAction(
-  RootNavigator.router.getActionForPathAndParams('Walkthrough'), HomeScreenState
+const walkthroughState = RootNavigator.router.getStateForAction(
+  RootNavigator.router.getActionForPathAndParams('Walkthrough'), homeScreenState
 )
+
+const initialState = walkthroughState;
 
 function navReducer(state = initialState, action) {
   const newState = RootNavigator.router.getStateForAction(action, state);
@@ -16,22 +18,18 @@ function navReducer(state = initialState, action) {
 import storage from 'redux-persist/lib/storage';
 import { persistReducer, createMigrate } from 'redux-persist';
 
-const migrate = (state) => {
-    debugger
-    return initialState
-}
-const migrations = {
-  0: migrate,
-  1: migrate
-}
-
+const thisVersion = 8
 const persistConfig = {
 	key:'nav',
   storage: storage,
-  version: 1,
-  //migrate: (state) => Promise.resolve(initialState)
-
+  version: thisVersion,
+  migrate: (state, version) => {
+    const assignmentFlow = state.routes.find(route => route.routeName === root.routes.AssignmentFlow)
+    if(assignmentFlow && !assignmentFlow.params.stepId) {
+      return Promise.resolve(homeScreenState)
+    }
+    return Promise.resolve(state)    
+  }
 }
-// migrate: createMigrate(migrations, { debug: true }),
 
 export default persistReducer(persistConfig, navReducer);

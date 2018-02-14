@@ -7,8 +7,7 @@ import AssignmentLeadInPageComponent from './AssignmentLeadInPageComponent'
 
 export type Props = {
 	assignments: [Assignment],
-  color: string,
-  step: number
+  color: string
 };
 
 type State = {
@@ -18,7 +17,7 @@ export default class AssignmentsPages extends PureComponent<Props, State> {
   pages:Pages = null
   state = { index:0 }
   render() {
-    const {	assignments, color, step } = this.props;
+    const {	assignments, color } = this.props;
     return (
       <View style={{ flex: 1 }}>
         {assignments && 
@@ -34,7 +33,6 @@ export default class AssignmentsPages extends PureComponent<Props, State> {
               assignment={assignment}
               color={color}
               index={index}
-              step={step}
               scrollToPage={index => this.pages && this.pages.scrollToPage(index) }
             />))
           }

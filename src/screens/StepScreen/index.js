@@ -1,10 +1,8 @@
 import React from 'react';
-import { TouchableHighlight } from 'react-native'
+import { StyleSheet } from 'react-native'
 import { NavigationActions } from 'react-navigation'
 import screen from './containers/StepScreenContainer';
 import HeaderCloseButton from '../../components/HeaderCloseButton'
-
-if (!HeaderCloseButton) { throw 'did not find headerCloseButton' }
 
 // look at the 'styles' in react-navigation/src/views/Header/Header.js
 const headerStyle = { 
@@ -19,16 +17,15 @@ const headerStyle = {
   shadowColor: 'transparent' 
 }
 
-screen.navigationOptions = ({ navigation }) => ( { 
+screen.navigationOptions = ({ navigation:{ dispatch } }) => ( { 
   headerStyle,
   headerLeft: 
     <HeaderCloseButton
       testID={'step_screen_close_icon'} 
-      onPress={() => navigation.dispatch(NavigationActions.back())}
+      onPress={() => dispatch(NavigationActions.back())}
       pressColorAndroid={'white'}
       tintColor={'white'}
     />
-
 } );
 
 export default {

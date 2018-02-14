@@ -25,7 +25,6 @@ import {
   client
 } from '../../services/apollo'
 import selectors from '../selectors'
-import type { Progress } from '../../services/apollo/models'
 import { diffObjs } from '../utils/diffObjs'
 
 
@@ -89,7 +88,6 @@ function * reviewCurrentUserFormsAndFormDataCompareAndUpfateToState() {
   const findFormWithStepId = (stepId: number) => completedForms.find(f => f.stepId === stepId);
 
   const updates = difference && Object.keys(difference).reduce((payload, key) => {
-    debugger;
     const stepId = parseInt(key);
     const id = findFormWithStepId(stepId).id
     const data = difference[key].leftValue
@@ -102,7 +100,6 @@ function * reviewCurrentUserFormsAndFormDataCompareAndUpfateToState() {
   },[])
 
   const creates = onlyOnLeft && Object.keys(onlyOnLeft).reduce((payload, key) => {
-    debugger;
     const stepId = parseInt(key);
     const data = onlyOnLeft[key]
     return [...payload, {
@@ -135,7 +132,6 @@ export function * watchSyncFormData() {
 export function * watchFormDataAndUserFormCompareAndUpdateState() {
   // here the assumptions is that the formData reducer will always Hydrate before the GET_USER action return, becuase we never
   while(true) {
-    debugger;
     yield take([GET_USER.SUCCEEDED, SYNC_FORM_DATA])
     yield call(delay, 1)
     yield fork(watchForSyncRequests)
@@ -166,7 +162,6 @@ function * watchForSyncRequests() {
       const { user } = yield call(updateForm, {...update, userId});
       _user = user;
       yield put(decrementFormDataQueue())
-      debugger
     }
   }
   if(creates && creates.length) {
@@ -179,7 +174,6 @@ function * watchForSyncRequests() {
       const { user } = yield call(createForm, {...create, userId});
       _user = user;
       yield put(decrementFormDataQueue())
-      debugger
     }
   }
 
@@ -208,36 +202,6 @@ function * watchForSyncRequests() {
     })
   }
 }
-
-
-function * submit(progress: { step: number, form: number}) {
-  const forms = yield select(selectors.completedForms);
-  const data = yield select(selectors.getFormData)(step);
-  const userId = yield select(selectors.user).id
-  const stesId = step
-
-  const existing = forms[step];
-
-  if(existing) {
-    const payload = {
-      userId,
-      stepId: step,
-      data: {
-        ...existing.data,
-        data
-      }
-    }
-    yield call(updateForm, payload);
-  } else {
-    const payload = {
-      userId,
-      stepId: step,
-      data
-    }
-    yield call(addForm,payload)
-  }
-}
-
 
 const testCreate = (create) => {
   if(!create.stepId || create.stepId < 0 || create.stepId > 30) {

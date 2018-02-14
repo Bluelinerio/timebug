@@ -12,20 +12,19 @@ import selectors from '../../../redux/selectors';
 
 const mapStateToProps = (state) => {
   const colors = selectors.stepColors(state);
-  const assignmentsForStep = selectors.assignmentsForStep(state)
-  return { colors, assignmentsForStep, }
+  const assignmentsForStepId = selectors.assignmentsForStepId(state)
+  return { colors, assignmentsForStepId, }
 }
 
 const merge = (stateProps, dispatchProps, ownProps): Props => {
-  const { colors, assignmentsForStep } = stateProps
-	const { navigation: {state:{ params:{ step }}}} = ownProps
-  const assignments = assignmentsForStep(step);
-  const color = colors[step];
+  const { colors, assignmentsForStepId } = stateProps
+  const { navigation: {state:{ params:{ stepId }}}} = ownProps
+  const assignments = assignmentsForStepId(stepId);
+  const color = colors[stepId];
   return {
     ...ownProps,
 		assignments,
-    color,
-    step
+    color
   }
 }
 

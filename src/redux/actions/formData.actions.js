@@ -6,20 +6,11 @@ import {
   SUBMIT_FORM_VALUE,
   SYNC_FORM_DATA,
 } from '../actionTypes';
-import type { Progress }      from '../../services/apollo/models.js'
 import { throttleAction }     from '../throttle';
 
-export type FormChange = {
-  fieldName: string,
-  fieldValue: any,
-  path: [string],
-  value: any,
-  step: number,
-  form: number
-}
-
 export type SubmitAction = { 
-  progress: Progress,
+  formId: string,
+  stepId: string,
   value?: any
 }
 
