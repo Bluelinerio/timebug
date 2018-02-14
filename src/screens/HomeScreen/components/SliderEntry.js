@@ -8,10 +8,11 @@ import { getImageUrl } from '../../../services/cms'
 import TouchableBounce from 'react-native/Libraries/Components/Touchable/TouchableBounce'
 import Entypo from 'react-native-vector-icons/Entypo'
 import { deepBlue } from '../../../constants/colors'
+
 export type Item = {
 	title:string, 
 	subtitle:string,
-	sourceImage:string
+	icon: {uri : string}
 }
 
 type Prop = {
@@ -27,10 +28,10 @@ type Prop = {
 
 export default class SliderEntry extends PureComponent<Prop> {
 	get image() {
-		const { data: { sourceImage }, parallax, parallaxProps, even } = this.props;
+		const { data: { icon }, parallax, parallaxProps, even } = this.props;
 		return parallax ? (
 			<CustomImage
-				imageUri={sourceImage}
+				source={icon}
 				containerStyle={[styles.imageContainer, even ? styles.imageContainerEven : {}]}
 				style={styles.svg}
 				showSpinner={true}
@@ -38,7 +39,7 @@ export default class SliderEntry extends PureComponent<Prop> {
 				{...parallaxProps}
 			/>
 		) : (
-			<CustomImage imageUri={sourceImage} style={styles.svg} />
+			<CustomImage source={icon} style={styles.svg} />
 		);
 	}
 

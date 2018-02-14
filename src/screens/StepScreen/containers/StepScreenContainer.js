@@ -27,7 +27,7 @@ const merge = (stateProps, dispatchProps, ownProps): Props => {
   const subtitle = step.subtitle
   const description = step.description
   const number = step.number
-  const imageUri = getImageUrl(step.icon)
+  const icon = step.icon
   const color = step.color;
   const onPress = () => goToAssignmentLeadInScreen(ownProps);
   return {
@@ -35,7 +35,7 @@ const merge = (stateProps, dispatchProps, ownProps): Props => {
     subtitle,
     description,
     number,
-    imageUri,
+    icon,
     color,
     onPress,
   }

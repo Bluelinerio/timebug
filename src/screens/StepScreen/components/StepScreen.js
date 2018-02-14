@@ -28,7 +28,7 @@ export type Props = {
   subtitle: string, 
   description: string, 
   number:number, 
-  imageUri:string, 
+  icon:{ uri: string }, 
   color: string, 
   onPress: () => void
 };
@@ -61,17 +61,17 @@ const Content = ({ title, subtitle, description, color, number }) => (
 );
 
 
-const Header = ({ imageUri, title, number, color}) => (
+const Header = ({ icon, title, number, color}) => (
   <View style={styles.stepScreenHeader}>
     <GradientWithTwoColors gradientTopColor={color} gradientBottomColor={'white'}/>
     <CustomImage style={styles.stepScreenImage}
       testID={'step_picture'}
-      imageUri={imageUri}
+      source={icon}
     />
   </View>
 );
 
-export default ({ title, subtitle, description, number, imageUri, color, onPress }) => (
+export default ({ title, subtitle, description, number, icon, color, onPress }) => (
   <ScrollableHeader
     headerMaxHeight={HEADER_HEIGHT}
     headerMinHeight={APPBAR_HEIGHT + STATUSBAR_HEIGHT}
@@ -80,7 +80,7 @@ export default ({ title, subtitle, description, number, imageUri, color, onPress
       <Header
         color={color}
         number={number}
-        imageUri={imageUri}
+        icon={icon}
       />
     }
     header={

@@ -5,15 +5,18 @@ import SVGImage   from "./SVGImage";
 
 type Props = {
   style: any,
-  imageUri: string,
+  source: { 'uri': string }
 }
 
 export default (props: Props) => {
-  const { imageUri, style, ...rest } = props;
-  return (imageUri && imageUri.endsWith('svg')) ? <SVGImage
+  const { source, style, ...rest } = props;
+  if(!source.uri) {
+    debugger;
+  }
+  return (source && source.uri.endsWith('svg')) ? <SVGImage
       style={[style, { backgroundColor: 'transparent'}]}
-      source={{ uri: imageUri }}
+      source={source}
       scrollEnabled={false}
       {...rest}
-    /> : <Image source={{ uri: imageUri }} style={style} {...rest} />
+    /> : <Image source={source} style={style} {...rest} />
 }

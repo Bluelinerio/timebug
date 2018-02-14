@@ -18,12 +18,6 @@ const writeJSONFile = (content) => jsonfile.writeFile(jsonfilename, content, (er
   console.error(err ? err : 'sucecss wriging CMS data into ' + jsonfilename)
 })
 
-// const jsfilename = path.join(__dirname, '../src/static/cms.js')
-// const writeFile = (content) => fs.writeFile(jsfilename, util.inspect(content['1']['refAssignment'], {
-//   depth: null,
-//   maxArrayLength: null
-// }), 'utf-8');
-
 const justLog = contnet => { console.log('result: \n' + JSON.stringify(contnet)); return contnet}
 
 refreshCMS().then(testContentFromCMS).then(justLog).then(writeJSONFile)
