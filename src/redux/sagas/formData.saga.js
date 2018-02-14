@@ -158,10 +158,8 @@ function * watchForSyncRequests() {
       if(__DEV__) {
         testUpdate(update)
       }
-      yield put(incrementFormDataQueue())
       const { user } = yield call(updateForm, {...update, userId});
       _user = user;
-      yield put(decrementFormDataQueue())
     }
   }
   if(creates && creates.length) {
@@ -170,10 +168,8 @@ function * watchForSyncRequests() {
       if(__DEV__) {
         testCreate(create)
       }
-      yield put(incrementFormDataQueue())
       const { user } = yield call(createForm, {...create, userId});
       _user = user;
-      yield put(decrementFormDataQueue())
     }
   }
 
