@@ -40,19 +40,27 @@ const AssignmentFlowNavigator = StackNavigator(
 )
 
 
+const routes = {
+  HomeScreen: 'HomeScreen',
+  AssignmentFlow: 'AssignmentFlow',
+  Walkthrough: 'Walkthrough',
+  Dashboard: 'Dashboard',
+};
+
 export const root = {
+  routes,
   screens: {
-    HomeScreen : {
+    [routes.HomeScreen]: {
       screen: HomeScreen,
     },
-    AssignmentFlow: {
+    [routes.AssignmentFlow]: {
       screen: AssignmentFlowNavigator,
       path: 'step'
     },
-    Walkthrough: { 
+    [routes.Walkthrough]: { 
       screen: WalkthroughScreen
     },
-    Dashboard: {
+    [routes.Dashboard]: {
       screen: DashboardScreen,
       path: 'dashboard'
     }
