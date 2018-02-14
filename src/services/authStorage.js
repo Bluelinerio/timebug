@@ -24,6 +24,7 @@ const wipeOldTokens = Promise.all([
 	AsyncStorage.removeItem(OLD_USER_ID_KEY)
 ]);
 
+// todo: this isn't working needs fixing:
 export default {
 	getTokenAndUserId: (): ?TokenAndUserIdType => wipeOldTokens
 		.then(AsyncStorage.getItem(TOKEN_KEY))
