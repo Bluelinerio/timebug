@@ -7,7 +7,6 @@ import {
   watchForsagaNavigate
 }                                             from './sagas/navigate.saga';
 import cmsSaga                                from './sagas/cms.saga';
-import { formLoaderSaga }                     from './sagas/forms.saga';
 import { watchForSelectPutAction }            from './selectPutAction';
 import { appStateSagaWatcher }                from './sagas/appState.saga'
 import { watchSyncFormData }                  from './sagas/formData.saga'
@@ -21,7 +20,6 @@ function * appSaga() {
     loginFlowSaga(),
     goToHomeScreen(),
     watchForsagaNavigate(),
-    formLoaderSaga(),
     watchSyncFormData(),
   ])
 }
