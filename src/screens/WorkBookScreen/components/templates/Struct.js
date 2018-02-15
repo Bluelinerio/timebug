@@ -46,9 +46,9 @@ export default class Struct extends React.Component {
     const topLevel = this.props.topLevel || false
     return (
       <ScrollView style={{ 
-        paddingHorizontal: topLevel ? 20 : 0,
-        top: 20,
-        flex: 1 
+        paddingHorizontal: topLevel ? 16 : 0,
+        paddingVertical: 20,
+        flex: 1
       }}>
         {error}
         {children}
