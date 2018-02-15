@@ -15,6 +15,7 @@ export type Props = {
 	styles?: {},
 	disabledStyle?:{},
 	backgroundColor?: string,
+	textColor?:string,
 	textTestId: string,
 	buttonTestId: string,
 }
@@ -45,6 +46,7 @@ export default (props: Props) => {
 		disabled=false,
 		disabledStyle,
 		backgroundColor,
+		textColor,
 		buttonTestId,
 		textTestId 
 	} = props;
@@ -97,7 +99,9 @@ export default (props: Props) => {
 						/>
 					)}
 					<Text 
-						style={styles.wideButtonText} 
+						style={[styles.wideButtonText, textColor && {
+							color: textColor
+						}]} 
 						testID={textTestId}
 					>
 						{text}
