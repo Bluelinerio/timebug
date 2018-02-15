@@ -4,6 +4,9 @@ import {
   View
 } from "react-native";
 import Button               from "../../../components/Button";
+import {
+  Alert // for future user in case we want users to get error as alert.
+} from 'react-native'
 
 export type NextButtonProps = { 
   isInvalid: boolean, 
@@ -13,19 +16,16 @@ export type NextButtonProps = {
 };
 
 const SKIPP_ENABLED = false;
+const ALWAYS_PPOGRESS = true;
 export default (props: NextButtonProps) => {
   const { isInvalid, onPress, buttonMessage, backgroundColor} = props;
   const active = isInvalid === false || SKIPP_ENABLED
-  if (active) {
-    return (
-      <Button
-        onPress={() => active ? onPress() : null }
-        text={SKIPP_ENABLED ? 'SKIP' : buttonMessage}
-        backgroundColor={backgroundColor}
-        side='right' 
-        withArrow
+  return (
+    <Button
+      onPress={() => ALWAYS_PPOGRESS ? onPress() : active ? onPress() : null }
+      text={SKIPP_ENABLED ? 'SKIP' : buttonMessage}
+      backgroundColor={backgroundColor}
+      side='right' 
+      withArrow
     />)
-  } else {
-    return null;
-  }
 }

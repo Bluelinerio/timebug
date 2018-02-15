@@ -10,10 +10,10 @@ import {
   Keyboard
 } from "react-native";
 import t                    from './templates';
-import NextButton           from '../components/NextButton'
+import WorkbookNextButton           from '../components/WorkbookNextButton'
 import type {
   NextButtonProps
-}                           from '../components/NextButton'
+}                           from '../components/WorkbookNextButton'
 import DefaultIndicator     from '../../../components/DefaultIndicator';
 import styles               from '../styles';
 
@@ -149,7 +149,7 @@ class WorkBookScreenContainer extends Component<Props, State> {
         <View
           style={styles.workBookNextButton}
         >
-          <NextButton
+          <WorkbookNextButton
             isInvalid={isInvalid}
             onPress={this.onPress}
             buttonMessage={buttonMessage}
