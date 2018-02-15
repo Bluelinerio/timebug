@@ -89,7 +89,7 @@ export type OnobardingPage = {
 export type Slide = {
 	title: string,
 	description: string,
-	image: string,
+	image: Icon,
 	order: string,
 }
 
