@@ -2,16 +2,16 @@ import React                  from 'react';
 import { 
   addNavigationHelpers, 
   NavigationActions
-}                             from 'react-navigation';
+}                             from 'react-navigation'
 import { BackHandler, Linking }
-                              from "react-native";
-import { connect }            from 'react-redux';
-import { RootNavigator }      from './navigation';
+                              from "react-native"
+import { connect }            from 'react-redux'
 import { uriPrefix }          from '../constants'
+import { RootNavigator }      from './index'
 
 const mapStateToProps = state => ({ nav: state.nav });
 
-class ReduxNavigation extends React.Component {
+class AppNavigation extends React.Component {
   componentDidMount() {
     BackHandler.addEventListener("hardwareBackPress", this.onBackPress);
     Linking.addEventListener('url', ({ url }: {url: string}) => {
@@ -55,4 +55,4 @@ class ReduxNavigation extends React.Component {
   }
 }
 
-export default connect(mapStateToProps)(ReduxNavigation);
+export default connect(mapStateToProps)(AppNavigation);

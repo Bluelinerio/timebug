@@ -1,7 +1,7 @@
-import { RootNavigator, root } from '../../navigation/navigation';
+import { RootNavigator, rootConfiguration } from '../../navigation';
 
 const homeScreenState = RootNavigator.router.getStateForAction(
-  RootNavigator.router.getActionForPathAndParams(root.options.initialRouteName)
+  RootNavigator.router.getActionForPathAndParams(rootConfiguration.routes.initialRouteName)
 );
 const walkthroughState = RootNavigator.router.getStateForAction(
   RootNavigator.router.getActionForPathAndParams('Walkthrough'), homeScreenState
@@ -24,8 +24,15 @@ const persistConfig = {
   storage: storage,
   version: thisVersion,
   migrate: (state, version) => {
-    const assignmentFlow = state.routes.find(route => route.routeName === root.routes.AssignmentFlow)
-    if(assignmentFlow && !assignmentFlow.params.stepId) {
+    // prevent from any navigation issue that may arise to override that the root view is always home:
+    const initialRouteName = state.routes[0].routeName
+    if(!initialRouteName /* this can happen sometimes! */ 
+        || initialRouteName !== rootConfiguration.routes.initialRouteName) {
+      return Promise.resolve(homeScreenState)
+    }
+    // validate assignment flow:
+    const assignmentFlow = state.routes.find(route => route.routeName === rootConfiguration.routes.AssignmentFlow)
+    if (assignmentFlow && !assignmentFlow.params.stepId) {
       return Promise.resolve(homeScreenState)
     }
     return Promise.resolve(state)    

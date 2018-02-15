@@ -1,31 +1,37 @@
 import { Platform } from 'react-native'
 import { StackNavigator, NavigationActions } from 'react-navigation'
 import React from 'react'
-import CardStackStyleInterpolator from '../utils/CustomCardStackStyleInterpolator'
-import HomeScreen from '../screens/HomeScreen'
-import StepScreen from '../screens/StepScreen'
-import AssignmentLeadInScreen from '../screens/AssignmentLeadInScreen'
-import AssignmentDoneScreen from '../screens/AssignmentDoneScreen'
-import WorkBookScreen from '../screens/WorkBookScreen'
-import WalkthroughScreen from '../screens/WalkthroughScreen';
-import DashboardScreen from '../screens/Dashboard'
-import { uriPrefix } from '../constants'
+
+import CardStackStyleInterpolator         from '../utils/CustomCardStackStyleInterpolator'
+import HomeScreen                         from '../screens/HomeScreen'
+import StepScreen                         from '../screens/StepScreen'
+import AssignmentLeadInScreen             from '../screens/AssignmentLeadInScreen'
+import AssignmentDoneScreen               from '../screens/AssignmentDoneScreen'
+import WorkBookScreen                     from '../screens/WorkBookScreen'
+import WalkthroughScreen                  from '../screens/WalkthroughScreen';
+import DashboardScreen                    from '../screens/Dashboard'
+import { uriPrefix }                      from '../constants'
+import routes                             from './routes';
+
+if(!routes || !routes.root ||!routes.root.initialRouteName || !routes.step) { 
+  throw 'missing routes or nested fields ' + JSON.stringify(routes) 
+}
 
 // TODO: there's an issue with moving from the current setup where the import of each screen gets you an object that looks like { screen: } rather than a component, so I added 
 const AssignmentFlowNavigator = StackNavigator(
   {
-    StepScreen: {
+    [routes.step.StepScreen]: {
       screen: StepScreen.screen,
     },
-    AssignmentLeadInScreen: {
+    [routes.step.AssignmentLeadInScreen]: {
       screen: AssignmentLeadInScreen.screen,
       path: 'leadin/:number'
     },
-    WorkBookScreen: {
+    [routes.step.WorkBookScreen]: {
       screen: WorkBookScreen.screen,
       path: 'workbook/:number'
     },
-    AssignmentDoneScreen: {
+    [routes.step.AssignmentDoneScreen]: {
       screen: AssignmentDoneScreen.screen,
       path: 'finished/:number'
     },
@@ -39,34 +45,26 @@ const AssignmentFlowNavigator = StackNavigator(
   }
 )
 
-
-const routes = {
-  HomeScreen: 'HomeScreen',
-  AssignmentFlow: 'AssignmentFlow',
-  Walkthrough: 'Walkthrough',
-  Dashboard: 'Dashboard',
-};
-
-export const root = {
-  routes,
+export const rootConfiguration = {
+  routes: routes.root,
   screens: {
-    [routes.HomeScreen]: {
+    [routes.root.HomeScreen]: {
       screen: HomeScreen,
     },
-    [routes.AssignmentFlow]: {
+    [routes.root.AssignmentFlow]: {
       screen: AssignmentFlowNavigator,
       path: 'step'
     },
-    [routes.Walkthrough]: { 
+    [routes.root.Walkthrough]: { 
       screen: WalkthroughScreen
     },
-    [routes.Dashboard]: {
+    [routes.root.Dashboard]: {
       screen: DashboardScreen,
       path: 'dashboard'
     }
   },
   options: {
-    initialRouteName: 'HomeScreen',
+    initialRouteName: routes.root.initialRouteName,
 		mode: Platform.OS === 'ios' ? 'modal' : 'card',
     headerMode: 'none',
     cardStyle: {
@@ -76,7 +74,9 @@ export const root = {
   }
 }
 
-export const RootNavigator = StackNavigator(root.screens, root.options)
+console.log(rootConfiguration);
+
+export const RootNavigator = StackNavigator(rootConfiguration.screens, rootConfiguration.options)
 
 
 // fix for debouncing

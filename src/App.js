@@ -8,7 +8,7 @@ import codePush                     from "react-native-code-push";
 
 import setup                        from './redux';
 import { client }                   from './services/apollo';
-import ReduxNavigator               from './navigation/reduxNavigator';
+import AppNavigation                from './navigation/app';
 import { APP_NAME }                 from './constants';
 import DefaultIndicator             from './components/DefaultIndicator'
 import Error                        from './components/Error'
@@ -50,7 +50,7 @@ export default class App extends React.Component<{},State> {
             }}
             persistor={persistor}
           >
-            <ReduxNavigator />
+            <AppNavigation />
           </PersistGate>
         </Provider>
       </ApolloProvider>
