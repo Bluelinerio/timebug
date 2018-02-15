@@ -16,7 +16,7 @@ import type {
 
 
 export const endpoints = {
-	simple: 'https://api.graph.cool/simple/v1/cjcngby1o2n9r0177p3htvfag'
+	simple: 'https://api.graph.cool/simple/v1/cjdowhhkd5x86012230izght0'
 }
 
 export const client = new ApolloClient({
@@ -26,8 +26,7 @@ export const client = new ApolloClient({
 
 import { temporaryUserAdditions } from './tmp';
 
-const _parse = <T>(key: 
-	string, graphResponse: GraphResponse): T => {
+const _parse = <T>(key: string, graphResponse: GraphResponse): T => {
 	const { data, error } = graphResponse
 	const value: T = {
 		...data[key],
@@ -36,7 +35,7 @@ const _parse = <T>(key:
 	if (value) {
 		return temporaryUserAdditions(value)
 	}
-	throw { error: error | 'User not found'}
+	throw { error: error || 'User not found'}
 }
 
 const parse = <T>(key: string) => (graphResponse: GraphResponse): T => _parse(key, graphResponse)
@@ -96,29 +95,7 @@ const userFragments = gql`
 			}
 		}
 	}
-	fragment UserInteractionRequests on User {
-		interactionRequests {
-			requestedUser {
-				facebookId
-				name
-			}
-			aprovedAt
-			sentAt
-			interactions {
-				survey {
-					sentAt
-					aprovedAt
-					templateId
-					id
-				}
-				state
-				aprovedAt
-				status
-				id
-			}
-			templateId
-		}
-	}`
+`
 
 
 export const fetchUserWithId = (id: string): User =>
@@ -133,7 +110,6 @@ export const fetchUserWithId = (id: string): User =>
 						email
 						...UserAchievements
 						...SortedForms
-						...UserInteractionRequests
 					}
 				}
 				${userFragments}
