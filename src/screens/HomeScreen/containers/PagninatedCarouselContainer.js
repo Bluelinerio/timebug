@@ -14,17 +14,17 @@ const mapStateToProps = (state:any) => {
 
 	const phaseColors = selectors.phaseColors(state);
 	const backgroundColorAtIndex = (step: number) => phaseColors[phaseForStepAtIndex(step)]
-	const completedForms = selectors.completedForms(state);
-	const incompleteForms = selectors.incompleteForms(state);
 	const isLoggedIn = selectors.isLoggedIn(state)
+	const completedFormsData = isLoggedIn ? selectors.completedFormsData(state) : {}
+	const incompleteFormsData = isLoggedIn ? selectors.incompleteFormsData(state) : {}
 
 	const steps:[Step] = selectors.sortedSteps(state).map(step => {
 		
 		if(!isLoggedIn) return step
-
-		const completedForm = completedForms.find(form => form.stepId === step.stepId)
+		
+		const completedForm = completedFormsData[step.stepId]
 		const lastUpdate = completedForm && completedForm.updatedAt || 0
-		const incompleteForm = incompleteForms(step.stepId);
+		const incompleteForm = incompleteFormsData[step.stepId]
 		return ({
 			...step,
 			iconName: (lastUpdate !== 0 
