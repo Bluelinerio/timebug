@@ -21,6 +21,21 @@ export default Object.freeze({
     fontSize: 26,
     paddingVertical: 20,
   },
+  controlLabel: {
+    normal: {
+      color: LABEL_COLOR,
+      fontSize: FONT_SIZE,
+      marginBottom: 7,
+      fontWeight: FONT_WEIGHT
+    },
+    // the style applied when a validation error occours
+    error: {
+      color: LABEL_COLOR,
+      fontSize: FONT_SIZE,
+      marginBottom: 7,
+      fontWeight: FONT_WEIGHT
+    }
+  },
   helpBlock: {
     normal: {
       ...stylesheet.helpBlock.normal,
