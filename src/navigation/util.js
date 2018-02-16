@@ -10,7 +10,10 @@ export const navigateOnce = (getStateForAction) => (action, state) => {
   return (
     state &&
     type === NavigationActions.NAVIGATE &&
-    routeName === state.routes[state.routes.length - 1].routeName
+    routeName === state.routes[state.routes.length - 1].routeName && 
+    state.routes[state.routes.length - 1].params 
+      ? state.routes[state.routes.length - 1].params === action.params
+      : !action.params
   ) ? null : getStateForAction(action, state);
   // you might want to replace 'null' with 'state' if you're using redux (see comments below)
 };
