@@ -6,14 +6,11 @@ import { NavigationActions, StateUtils } from 'react-navigation';
 export const fixDebounce = (navigator) => navigator.router.getStateForAction = navigateOnce(navigator.router.getStateForAction);
 
 export const navigateOnce = (getStateForAction) => (action, state) => {
-  const {type, routeName} = action;
+  const {type, routeName, params } = action;
   return (
     state &&
     type === NavigationActions.NAVIGATE &&
-    routeName === state.routes[state.routes.length - 1].routeName && 
-    state.routes[state.routes.length - 1].params 
-      ? state.routes[state.routes.length - 1].params === action.params
-      : !action.params
+    isEqualRoute({routeName, params}, state.routes[state.routes.length - 1])
   ) ? null : getStateForAction(action, state);
   // you might want to replace 'null' with 'state' if you're using redux (see comments below)
 };
