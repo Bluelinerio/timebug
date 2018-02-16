@@ -34,13 +34,18 @@ export default class Walkthrough extends React.Component<Props> {
       />
       <SafeAreaView >
         <View style={styles.slide} >
-          <Text type='header2' style={styles.title} theme={theme}>
+          <Text 
+            type='header2' 
+            style={styles.title} 
+            theme={theme}
+          >
             {slide.title}
           </Text>
           {slide.description && 
             <Text 
               type='header3' 
               style={styles.description}
+              theme={theme}
             >
               {slide.description}
             </Text>
@@ -56,7 +61,6 @@ export default class Walkthrough extends React.Component<Props> {
   render(): React.Node {
     const { renderPagination, onIndexChanged} = this;
     const { slides } = this.props
-    debugger;
     return (
       <Swiper loop={false} {...{ renderPagination, onIndexChanged }} >
         { slides.map(this.renderSlide) }
@@ -90,8 +94,8 @@ export default class Walkthrough extends React.Component<Props> {
 
 const height = Dimensions.get('window').height
 const width = Dimensions.get('window').width
-const baseSpacing = Math.floor(width * 0.065)
-const largeVerticalSpacing  = Math.floor(height * 0.1)
+const baseSpacing = Math.floor(width * 0.06)
+const largeVerticalSpacing  = Math.floor(height * 0.06)
 
 const styles = StyleSheet.create({
   container: {
@@ -109,11 +113,10 @@ const styles = StyleSheet.create({
   },
   title: {
     marginTop: largeVerticalSpacing,
-    marginBottom: height * 0.2,
     color: 'white'
   },
   description: {
-    justifyContent: 'center',
+    marginTop:largeVerticalSpacing,
     color: 'white'
   }
 })
@@ -132,14 +135,15 @@ const theme = {
       fontFamily: "Helvetica"
     },
     header2: {
-      fontSize: Math.ceil(height * 0.035),
+      fontSize: Math.ceil(height * 0.04),
       lineHeight: 43,
       fontFamily: "Helvetica-Bold"
     },
     header3: {
-      fontSize: Math.ceil(height * 0.03),
+      fontSize: Math.ceil(height * 0.027),
       lineHeight: 28,//standard
-      fontFamily: "Helvetica-Bold"
+      fontFamily: 'HelveticaNeue',
+      fontWeight: 'bold',
     },
     large: {
       fontSize: 14,
