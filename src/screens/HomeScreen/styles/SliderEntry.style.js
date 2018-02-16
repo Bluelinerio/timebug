@@ -25,12 +25,17 @@ export default StyleSheet.create({
     slideInnerContainer: {
         width: itemWidth,
         height: slideHeight,
-        paddingHorizontal: itemHorizontalMargin,
-        marginVertical: 30, // needed for shadow
-		borderRadius: 6,
 		...Platform.select({
-			android: { elevation: 10 },
+			android: { 
+                paddingHorizontal: itemHorizontalMargin,
+                backgroundColor: 'white',
+                borderRadius: entryBorderRadius,
+                marginVertical: 0, // needed for shadow
+                elevation: 4,
+            },
 			ios: {
+                marginVertical: 30, // needed for shadow
+                borderRadius: 6,
 				shadowColor: "black",
 				shadowOffset: {
 					width: 0,

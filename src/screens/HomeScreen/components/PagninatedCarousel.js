@@ -73,7 +73,7 @@ export default class PagninatedCarousel extends PureComponent<Props, State> {
 					hasParallaxImages={false}
 					firstItem={SLIDER_1_FIRST_ITEM}
 					inactiveSlideScale={0.95}
-					inactiveSlideOpacity={0.9}
+					inactiveSlideOpacity={Platform.OS === 'ios' ? 0.9 : 1.0 }
 					enableMomentum={Platform.OS !== 'ios'}
 					lockScrollWhileSnapping={Platform.OS !== 'ios'}
 					containerCustomStyle={styles.slider}
