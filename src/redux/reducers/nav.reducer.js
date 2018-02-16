@@ -4,13 +4,20 @@ import {
   assignmentFlowConfiguration
 } from '../../navigation';
 
-const homeScreenState = RootNavigator.router.getStateForAction(
+debugger;
+const initialRouteState = RootNavigator.router.getStateForAction(
   RootNavigator.router.getActionForPathAndParams(rootConfiguration.routes.initialRouteName)
 );
 const walkthroughState = RootNavigator.router.getStateForAction(
-  RootNavigator.router.getActionForPathAndParams('Walkthrough'), homeScreenState
+  RootNavigator.router.getActionForPathAndParams(rootConfiguration.routes.Walkthrough), initialRouteState
 )
 
+if(
+  !initialRouteState ||
+  !walkthroughState
+) {
+  throw 'nav reducer --expect state to be not nil'
+}
 const initialState = walkthroughState;
 
 function navReducer(state = initialState, action) {
@@ -28,19 +35,22 @@ const persistConfig = {
   storage: storage,
   version: thisVersion,
   migrate: (state, version) => {
-    if(state) {
+    if (state) {
+      if(!state.routes) {
+        return Promise.resolve(initialRouteState)
+      }
       // prevent from any navigation issue that may arise to override that the root view is always home:
       const initialRouteName = state.routes[0].routeName
       if(!initialRouteName /* this can happen sometimes! */ 
           || initialRouteName !== rootConfiguration.routes.initialRouteName) {
-        return Promise.resolve(homeScreenState)
+        return Promise.resolve(initialRouteState)
       }
       // validate assignment flow:
       const assignmentFlow = state.routes.find(route => route.routeName === rootConfiguration.routes.AssignmentFlow)
-
+      
       if (assignmentFlow) {
         if(!assignmentFlow.params.stepId) {
-          return Promise.resolve(homeScreenState)
+          return Promise.resolve(initialRouteState)
         }
         // instead of migrating screen names, reset!
         const unregisteredRouteNames = assignmentFlow.routes.
@@ -48,7 +58,7 @@ const persistConfig = {
             .includes(route.routeName) === false 
           )
         if (unregisteredRouteNames) {
-          return Promise.resolve(homeScreenState)
+          return Promise.resolve(initialRouteState)
         }
       }
     }
