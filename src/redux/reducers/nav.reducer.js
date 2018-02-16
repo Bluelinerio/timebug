@@ -28,26 +28,28 @@ const persistConfig = {
   storage: storage,
   version: thisVersion,
   migrate: (state, version) => {
-    // prevent from any navigation issue that may arise to override that the root view is always home:
-    const initialRouteName = state.routes[0].routeName
-    if(!initialRouteName /* this can happen sometimes! */ 
-        || initialRouteName !== rootConfiguration.routes.initialRouteName) {
-      return Promise.resolve(homeScreenState)
-    }
-    // validate assignment flow:
-    const assignmentFlow = state.routes.find(route => route.routeName === rootConfiguration.routes.AssignmentFlow)
-
-    if (assignmentFlow) {
-      if(!assignmentFlow.params.stepId) {
+    if(state) {
+      // prevent from any navigation issue that may arise to override that the root view is always home:
+      const initialRouteName = state.routes[0].routeName
+      if(!initialRouteName /* this can happen sometimes! */ 
+          || initialRouteName !== rootConfiguration.routes.initialRouteName) {
         return Promise.resolve(homeScreenState)
       }
-      // instead of migrating screen names, reset!
-      const unregisteredRouteNames = assignmentFlow.routes.
-        find(route => Object.keys(assignmentFlowConfiguration.screens)
-          .includes(route.routeName) === false 
-        )
-      if (unregisteredRouteNames) {
-        return Promise.resolve(homeScreenState)
+      // validate assignment flow:
+      const assignmentFlow = state.routes.find(route => route.routeName === rootConfiguration.routes.AssignmentFlow)
+
+      if (assignmentFlow) {
+        if(!assignmentFlow.params.stepId) {
+          return Promise.resolve(homeScreenState)
+        }
+        // instead of migrating screen names, reset!
+        const unregisteredRouteNames = assignmentFlow.routes.
+          find(route => Object.keys(assignmentFlowConfiguration.screens)
+            .includes(route.routeName) === false 
+          )
+        if (unregisteredRouteNames) {
+          return Promise.resolve(homeScreenState)
+        }
       }
     }
     return Promise.resolve(state)    
