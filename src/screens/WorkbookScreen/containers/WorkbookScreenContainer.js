@@ -62,10 +62,9 @@ const merge = (stateProps, dispatchProps, ownProps): Props => {
           formId: Object.keys(models)[formIdIndex + 1]
         })
       ]
-  const previousAction = NavigationActions.back()
+
 
   const next = () => nextActions.forEach(action => ownProps.navigation.dispatch(action) )
-  const previous = () => ownProps.navigation.dispatch(previousAction);
 
   const submit = (value) => ownProps.navigation.dispatch(submitFormValue({
       formId,
@@ -81,7 +80,6 @@ const merge = (stateProps, dispatchProps, ownProps): Props => {
     value,
     model,
     next,
-    previous,
     buttonMessage,
     formId,
     numberOfForms,

@@ -28,7 +28,6 @@ export type Props = {
   value: any,
   model: Model,
   next: () => void,
-  previous: () => void,
   buttonMessage:string,
   stepColor: string, 
   submit: (value: any) => void,
@@ -58,13 +57,6 @@ class WorkbookScreenContainer extends Component<Props, State> {
 
   componentDidMount() {
     Keyboard.dismiss(); // police keyboard is always off, when starting (specially with android.)
-    const { navigation } = this.props;
-    if(navigation) {
-      navigation.setParams({
-        ...navigation.state.params,
-        backAction: this.props.previous
-      })
-    }
     const { model } = this.state
 
     if (model && model.focusField) {

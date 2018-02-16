@@ -8,7 +8,7 @@ import screen from './containers/WorkbookScreenContainer';
 
 
 screen.navigationOptions = ({ navigation: { dispatch, state: { key, params } } }) => {
-  const { stepColor, stepNumber, backAction } = params;
+  const { stepColor, stepNumber } = params;
   return {
     title: `Exercise ${stepNumber}`,
     headerStyle: {
@@ -18,11 +18,7 @@ screen.navigationOptions = ({ navigation: { dispatch, state: { key, params } } }
     headerLeft: (
       <HeaderBackButton
         tintColor="white"
-        onPress={ () => {
-          backAction 
-            ? backAction()
-            : dispatch( NavigationActions.back() )
-        }}
+        onPress={ () => dispatch( NavigationActions.back()) }
       />
     )
   };
