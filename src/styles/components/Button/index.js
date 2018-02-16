@@ -1,14 +1,28 @@
-import { Dimensions } from 'react-native';
+import { Dimensions, Platform } from 'react-native';
 import { deepBlue, white } from '../../../constants/colors';
+import {
+	human,
+	systemWeights,
+	iOSColors,
+	iOSUIKit,
+	material,
+  sanFranciscoWeights,
+	robotoWeights
+} from "react-native-typography";
 
-const buttonHeight = 44;
-const marginHorizontal = 10;
+const buttonHeight = 44
+const marginHorizontal = 10
 const marginBottom = 20
+const minWidthWide = 240
+const minWidthNarrow = 128
+const buttonTextSize = 15
+
 const paddingHorizontal = {
 	sides: 10,
 	wide: 50,
 	narrow: 35
 }
+
 const style = {
 	buttonContainer: {
 		flexDirection: 'row',
@@ -30,11 +44,11 @@ const style = {
 		justifyContent: 'center',
 		overflow: 'hidden',
 		marginHorizontal,
-		minWidth: 240,
+		minWidth: minWidthWide,
 		paddingHorizontal: paddingHorizontal.wide,
 	},
 	makeWideButtonNarrow: {
-		minWidth: 128,
+		minWidth: minWidthNarrow,
 		paddingHorizontal: paddingHorizontal.narrow,
 	},
 	left: {
@@ -47,8 +61,9 @@ const style = {
 	},
 	wideButtonText: {
 		fontFamily: 'Helvetica',
-		fontSize: 15,
 		fontWeight: 'bold',
+		textAlign: 'center',
+		fontSize: buttonTextSize,
 		textAlign: 'center',
 		color: white
 	},
@@ -58,5 +73,4 @@ const style = {
 		alignItems: 'center'
 	}
 }
-
 export default style;

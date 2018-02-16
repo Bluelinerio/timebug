@@ -65,7 +65,7 @@ const colorForStepWithId = (state:any) => (stepId: string) => stepColors(state)[
 const step = (number: number) => (state:any) => steps(state)[number]
 
 // models
-import workbooks from '../screens/WorkBookScreen/forms';
+import workbooks from '../screens/WorkbookScreen/forms';
 // form data
 const formData = (state: any) => getFormData(state).data
 const incompleteFormsData = (state: any) => getFormData(state).data

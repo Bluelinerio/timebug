@@ -4,15 +4,15 @@ import styles from '../styles';
 
 export default StyleSheet.create({
   ...styles,
-  workBookFormContainer: {
+  workbookFormContainer: {
     flex: 1,
   },
-  workBookNextButtonContainer: {
+  workbookNextButtonContainer: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'flex-end',
   },
-  workBookNextButton: {
+  workbookNextButton: {
     flex: 0,
     height: 60,
     backgroundColor: 'transparent',

@@ -6,8 +6,8 @@ import CardStackStyleInterpolator         from '../utils/CustomCardStackStyleInt
 import HomeScreen                         from '../screens/HomeScreen'
 import StepScreen                         from '../screens/StepScreen'
 import AssignmentLeadInScreen             from '../screens/AssignmentLeadInScreen'
-import AssignmentDoneScreen               from '../screens/AssignmentDoneScreen'
-import WorkBookScreen                     from '../screens/WorkBookScreen'
+import WorkbookDoneScreen                 from '../screens/WorkbookDoneScreen'
+import WorkbookScreen                     from '../screens/WorkbookScreen'
 import WalkthroughScreen                  from '../screens/WalkthroughScreen';
 import DashboardScreen                    from '../screens/Dashboard'
 import { uriPrefix }                      from '../constants'
@@ -18,8 +18,9 @@ if(!routes || !routes.root ||!routes.root.initialRouteName || !routes.step) {
 }
 
 // TODO: there's an issue with moving from the current setup where the import of each screen gets you an object that looks like { screen: } rather than a component, so I added 
-const AssignmentFlowNavigator = StackNavigator(
-  {
+export const assignmentFlowConfiguration = {
+  routes: routes.step,
+  screens: {
     [routes.step.StepScreen]: {
       screen: StepScreen.screen,
     },
@@ -27,22 +28,27 @@ const AssignmentFlowNavigator = StackNavigator(
       screen: AssignmentLeadInScreen.screen,
       path: 'leadin/:number'
     },
-    [routes.step.WorkBookScreen]: {
-      screen: WorkBookScreen.screen,
+    [routes.step.WorkbookScreen]: {
+      screen: WorkbookScreen.screen,
       path: 'workbook/:number'
     },
-    [routes.step.AssignmentDoneScreen]: {
-      screen: AssignmentDoneScreen.screen,
+    [routes.step.WorkbookDoneScreen]: {
+      screen: WorkbookDoneScreen.screen,
       path: 'finished/:number'
     },
   },
-  {
+  options: {
     headerMode: 'screen',
     cardStyle: {
       backgroundColor: 'white',
       opacity: 1
     }
   }
+}
+
+const AssignmentFlowNavigator = StackNavigator(
+  assignmentFlowConfiguration.screens,
+  assignmentFlowConfiguration.options
 )
 
 export const rootConfiguration = {
@@ -74,10 +80,10 @@ export const rootConfiguration = {
   }
 }
 
-console.log(rootConfiguration);
-
-export const RootNavigator = StackNavigator(rootConfiguration.screens, rootConfiguration.options)
-
+export const RootNavigator = StackNavigator(
+  rootConfiguration.screens, 
+  rootConfiguration.options
+)
 
 // fix for debouncing
 import { fixDebounce } from './util';

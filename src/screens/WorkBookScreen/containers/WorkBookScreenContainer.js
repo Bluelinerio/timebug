@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { NavigationActions, withNavigation } from 'react-navigation';
 
 import { submitFormValue, syncFormData } from '../../../redux/actions/formData.actions';
-import { goToAssignmentDoneScreen } from '../../../redux/actions/nav.actions';
+import { goToWorkbookDoneScreen } from '../../../redux/actions/nav.actions';
 import selectors from '../../../redux/selectors'
 import type Props               from '../components/WorkbookScreenComponent';
 import WorkbookScreenComponent  from '../components/WorkbookScreenComponent';
@@ -49,7 +49,7 @@ const merge = (stateProps, dispatchProps, ownProps): Props => {
   })
   const nextActions = isFinalForm 
     ? [
-        goToAssignmentDoneScreen(ownProps), 
+        goToWorkbookDoneScreen(ownProps), 
         syncFormData()
       ]
     : [
@@ -87,11 +87,11 @@ const merge = (stateProps, dispatchProps, ownProps): Props => {
 }
 
 
-const WorkBookScreenContainer = withNavigation(connect(mapStateToProps, null, merge)(WorkbookScreenComponent))
+const WorkbookScreenContainer = withNavigation(connect(mapStateToProps, null, merge)(WorkbookScreenComponent))
 
  export default () => (
     <DefaultUserContainer 
-      renderWithUser={() => (<WorkBookScreenContainer />)}
+      renderWithUser={() => (<WorkbookScreenContainer />)}
       anonymousMessage={'You need to be logged in to be able to do the exercises. Please go back and log in again.'}
     />
   )

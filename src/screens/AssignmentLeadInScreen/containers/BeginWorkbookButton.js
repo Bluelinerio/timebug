@@ -3,7 +3,7 @@ import { withNavigation } from 'react-navigation'
 import Button                       from '../../../components/Button';
 import type { Props }               from '../../../components/Button'
 import selectors                    from '../../../redux/selectors';
-import { goToWorkBookScreen }       from '../../../redux/actions/nav.actions';
+import { goToWorkbookScreen }       from '../../../redux/actions/nav.actions';
 import { loginWithFbButtonPressed } from '../../../redux/actions'
 import { deepBlue }                 from '../../../constants/colors'
 import loginButtonStyle             from '../../../styles/components/Button/login';
@@ -38,8 +38,8 @@ const merge = (stateProps, dispatchProps, ownProps): Props => {
       ? 'Loading...' 
       : 'BEGIN';
 
-  const { loginWithFbButtonPressed, goToWorkBookScreen } = dispatchProps;
-  const onPressWithProps = needsLogin ? loginWithFbButtonPressed : goToWorkBookScreen
+  const { loginWithFbButtonPressed, goToWorkbookScreen } = dispatchProps;
+  const onPressWithProps = needsLogin ? loginWithFbButtonPressed : goToWorkbookScreen
   const styles = needsLogin ? loginButtonStyle : null;
   const disabled = authenticating;
   return {
@@ -53,4 +53,4 @@ const merge = (stateProps, dispatchProps, ownProps): Props => {
   }
 }
 
-export default withNavigation(connect(mapStateToProps,({ goToWorkBookScreen, loginWithFbButtonPressed}), merge)(Button));
+export default withNavigation(connect(mapStateToProps,({ goToWorkbookScreen, loginWithFbButtonPressed}), merge)(Button));

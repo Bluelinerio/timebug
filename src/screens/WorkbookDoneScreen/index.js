@@ -1,5 +1,5 @@
 import React from 'react'
-import screen from './containers/AssignmentDoneScreenContainer';
+import screen from './containers/WorkbookDoneScreenContainer';
 import Icon from 'react-native-vector-icons/Entypo'
 import { reset } from '../../redux/actions/nav.actions';
 

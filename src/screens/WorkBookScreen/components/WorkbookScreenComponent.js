@@ -44,7 +44,7 @@ type State = {
   }
 };
 
-class WorkBookScreenContainer extends Component<Props, State> {
+class WorkbookScreenContainer extends Component<Props, State> {
 
   constructor(props: Props) {
     super(props);
@@ -134,7 +134,7 @@ class WorkBookScreenContainer extends Component<Props, State> {
 
     return (
       <View style={{ flex: 1 }}>
-        <View style={styles.workBookFormContainer}>
+        <View style={styles.workbookFormContainer}>
           <Form
             type={type}
             ref={this.handleFormRef}
@@ -147,7 +147,7 @@ class WorkBookScreenContainer extends Component<Props, State> {
           />
         </View>
         <View
-          style={styles.workBookNextButton}
+          style={styles.workbookNextButton}
         >
           <WorkbookNextButton
             isInvalid={isInvalid}
@@ -161,4 +161,4 @@ class WorkBookScreenContainer extends Component<Props, State> {
   }
 }
 
-export default WorkBookScreenContainer;
+export default WorkbookScreenContainer;

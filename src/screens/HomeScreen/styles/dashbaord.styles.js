@@ -85,7 +85,7 @@ export default StyleSheet.create({
 		marginTop: 4
 	},
 	smallSuggestionMarginLeft: {
-			marginLeft: 4
+		marginLeft: 4
 	},
 	smallSuggestion: {
 		flex: 1,

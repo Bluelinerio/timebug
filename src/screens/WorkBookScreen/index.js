@@ -4,7 +4,7 @@ import {
   HeaderBackButton, 
   NavigationActions 
 } from 'react-navigation';
-import screen from './containers/WorkBookScreenContainer';
+import screen from './containers/WorkbookScreenContainer';
 
 
 screen.navigationOptions = ({ navigation: { dispatch, state: { key, params } } }) => {

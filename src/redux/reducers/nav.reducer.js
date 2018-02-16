@@ -1,4 +1,8 @@
-import { RootNavigator, rootConfiguration } from '../../navigation';
+import { 
+  RootNavigator, 
+  rootConfiguration,
+  assignmentFlowConfiguration
+} from '../../navigation';
 
 const homeScreenState = RootNavigator.router.getStateForAction(
   RootNavigator.router.getActionForPathAndParams(rootConfiguration.routes.initialRouteName)
@@ -32,8 +36,19 @@ const persistConfig = {
     }
     // validate assignment flow:
     const assignmentFlow = state.routes.find(route => route.routeName === rootConfiguration.routes.AssignmentFlow)
-    if (assignmentFlow && !assignmentFlow.params.stepId) {
-      return Promise.resolve(homeScreenState)
+
+    if (assignmentFlow) {
+      if(!assignmentFlow.params.stepId) {
+        return Promise.resolve(homeScreenState)
+      }
+      // instead of migrating screen names, reset!
+      const unregisteredRouteNames = assignmentFlow.routes.
+        find(route => Object.keys(assignmentFlowConfiguration.screens)
+          .includes(route.routeName) === false 
+        )
+      if (unregisteredRouteNames) {
+        return Promise.resolve(homeScreenState)
+      }
     }
     return Promise.resolve(state)    
   }

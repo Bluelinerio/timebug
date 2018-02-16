@@ -59,15 +59,15 @@ export default class SliderEntry extends PureComponent<Prop> {
 				{iconName && 
 					<View style={{
 						position: 'absolute',
-						right:0,
-						top:0,
+						right: 0,
+						top: 0,
 						backgroundColor: 'transparent',
 						borderRadius: 14,
-						borderWidth:0,
+						borderWidth: 0,
 						borderColor: deepBlue,
-						height:30,
+						height: 30,
 						width: 60,
-						justifyContent:'center',
+						justifyContent: 'center',
 						alignItems: 'center',
 						flexDirection: 'row'
 					}}>

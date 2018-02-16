@@ -54,9 +54,9 @@ export const restartStepAction = (step: Step) => NavigationActions.reset({
 
 export const goToStepScreen                   = (props: any) => navigateWith({ props, routeName:'StepScreen' });
 export const navigateToAssignmentLeadInScreen = (props: any) => navigateWith({ props, routeName:'AssignmentLeadInScreen' })
-export const goToWorkBookScreen               = (props: any) => navigateWith({ props, routeName:'WorkBookScreen' })
+export const goToWorkbookScreen               = (props: any) => navigateWith({ props, routeName:'WorkbookScreen' })
 export const goToAssignmentLeadInScreen       = (props: any) => navigateWith({ props, routeName:'AssignmentLeadInScreen' })
-export const goToAssignmentDoneScreen         = (props: any) => navigateWith({ props, routeName:'AssignmentDoneScreen' })
+export const goToWorkbookDoneScreen         = (props: any) => navigateWith({ props, routeName:'WorkbookDoneScreen' })
 export const goToAssignmentFlow               = ({ step } : { step: Step}) => NavigationActions.navigate({ 
   routeName: routes.root.AssignmentFlow,
   params: {
