@@ -16,8 +16,6 @@ const style = {
 		justifyContent: 'center',
 		marginBottom,
 		paddingVertical: 4,
-		// borderWidth: 1,
-		// borderColor:'green'
 	},
 	buttonIconLeft: {
 		marginLeft: marginHorizontal
