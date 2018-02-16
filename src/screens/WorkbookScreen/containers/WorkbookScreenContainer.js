@@ -5,7 +5,10 @@ import { connect } from "react-redux";
 import { NavigationActions, withNavigation } from 'react-navigation';
 
 import { submitFormValue, syncFormData } from '../../../redux/actions/formData.actions';
-import { goToWorkbookDoneScreen } from '../../../redux/actions/nav.actions';
+import { 
+  goToWorkbookDoneScreen,
+  goToWorkbookScreenWithParams,
+} from '../../../redux/actions/nav.actions';
 import selectors from '../../../redux/selectors'
 import type Props               from '../components/WorkbookScreenComponent';
 import WorkbookScreenComponent  from '../components/WorkbookScreenComponent';
@@ -22,7 +25,8 @@ const merge = (stateProps, dispatchProps, ownProps): Props => {
 
   const { colors, steps} = stateProps;
   const { goToAssignmentLeadInScreen } = dispatchProps
-  const { navigation: {state:{ params:{ stepId, formId, stepColor }}}} = ownProps
+  const { navigation: {state: { params }}} = ownProps
+  const { stepId, formId, stepColor } = params;
 
   const { models, formData } = stateProps.modelsAndDataForExercise(stepId)
   if(Object.keys(models).includes(formId) === false) {
@@ -43,22 +47,22 @@ const merge = (stateProps, dispatchProps, ownProps): Props => {
   const cloneStateWithForm = (formId) => ({
     ...ownProps.navigation.state, // basically taking the 'key'
     params : {
-      ...ownProps.navigation.state.params,
+      ...params,
       formId
     }
   })
   const nextActions = isFinalForm 
     ? [
-        goToWorkbookDoneScreen(ownProps), 
-        syncFormData()
+        syncFormData(),
+        goToWorkbookDoneScreen(ownProps)
       ]
     : [
-        NavigationActions.setParams(cloneStateWithForm( Object.keys(models)[formIdIndex + 1] ))
+        goToWorkbookScreenWithParams({
+          ...params,
+          formId: Object.keys(models)[formIdIndex + 1]
+        })
       ]
-
-  const previousAction = ifFirstForm 
-    ? NavigationActions.back()
-    : NavigationActions.setParams(cloneStateWithForm( Object.keys(models)[formIdIndex - 1] ))
+  const previousAction = NavigationActions.back()
 
   const next = () => nextActions.forEach(action => ownProps.navigation.dispatch(action) )
   const previous = () => ownProps.navigation.dispatch(previousAction);

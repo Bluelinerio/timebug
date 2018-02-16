@@ -63,3 +63,7 @@ export const goToAssignmentFlow               = ({ step } : { step: Step}) => Na
     ...(stepInfoForStep(step)),
   }
 })
+export const goToWorkbookScreenWithParams = (params: StepInfo) => NavigationActions.navigate({ 
+  routeName: routes.step.WorkbookScreen,
+  params
+})
