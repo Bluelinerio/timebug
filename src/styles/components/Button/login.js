@@ -5,6 +5,7 @@ const styles = {
 	...style,
 	wideButton: {
 		...style.wideButton,
+		borderWidth: 1,
 		borderColor: facebookColor,
 	},
 	wideButtonText: {
