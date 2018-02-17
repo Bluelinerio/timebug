@@ -10,31 +10,42 @@ import TouchableBounce 			from 'react-native/Libraries/Components/Touchable/Touc
 export default class Struct extends React.Component {
   
   error = () => {
-    return this.props.hasError && this.props.error 
-      ? <Text 
-          key={this.props.error} 
-          accessibilityLiveRegion='polite'
-          style={props.styles.errorBlock}
-        >
-          {this.props.error}
-        </Text>
-      : null;
+    const {
+      hasError,
+      error,
+      styles,
+    } = this.props
+
+    return hasError && error &&
+      <Text 
+        key={error} 
+        accessibilityLiveRegion='polite'
+        style={styles.errorBlock}
+      >
+        {error}
+      </Text>
   }
   label = () => {
-    if(!this.props.label) return null
-    return (
+    const {
+      label,
+      styles
+    } = this.props;
+    return label && 
       <Text 
-        key={this.props.label} 
-        style={this.props.styles.formLabel}
+        key={label} 
+        style={styles.formLabel}
       >
-        {this.props.label}
+        {label}
       </Text> 
-    )
   }
 
   rows = () => {
-    return this.props.order && this.props.order
-      .map(name => this.props.inputs[name])
+    const {
+      order,
+      inputs,
+    } = this.props
+    return order && order
+      .map(name => inputs[name])
       .filter(input => !input.props.options || (input.props.options && !input.props.options.hidden))
   }
 
@@ -44,15 +55,19 @@ export default class Struct extends React.Component {
     const label = this.label()
     const children = [(label ? [label] : []), ...rows]
     const topLevel = this.props.topLevel || false
-    return (
-      <ScrollView style={{ 
-        paddingHorizontal: topLevel ? 16 : 0,
-        paddingVertical: 20,
-        flex: 1
-      }}>
-        {error}
-        {children}
-      </ScrollView>
-    )
-  }
+    const { fieldset } = this.props.styles;
+    if (topLevel) {
+      return (
+        <ScrollView style={fieldset.topLevel}>
+          {error}
+          {children}
+        </ScrollView>
+      )
+    } else {
+        <View style={fieldset.normal}>
+          {error}
+          {children}
+        </View>
+    }
+ }
 }

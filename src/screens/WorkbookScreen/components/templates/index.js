@@ -21,9 +21,14 @@ if(__DEV__) {
   function assert(condition, error) {
     if(!condition) throw error
   }
-  assert(typeof customStylesheet.textbox.normal === 'object', 'error');
-  assert(typeof customStylesheet.textbox.error === 'object', 'error');
-  assert(typeof customStylesheet.textbox.notEditable === 'object', 'error');
+  const message = (name) => `expected ${name} in customStylesheet`;
+  assert(typeof customStylesheet.textbox.normal === 'object', message('textbox.normal'));
+  assert(typeof customStylesheet.textbox.error === 'object', message('textbox.error'));
+  assert(typeof customStylesheet.textbox.notEditable === 'object', message('textbox.notEditable'));
+  assert(typeof customStylesheet.fieldset.topLevel === 'object', message('fieldset.topLevel'));
+  assert(typeof customStylesheet.fieldset.normal === 'object', message('fieldset.normal'));
+  assert(typeof customStylesheet.textBoxView.normal === 'object', message('textBoxView.normal'));
+  assert(typeof customStylesheet.textBoxView.error === 'object', message('textBoxView.error'));
 }
 
 const customTemplates = {
