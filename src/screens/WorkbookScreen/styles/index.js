@@ -8,12 +8,13 @@ export default StyleSheet.create({
     flex: 1,
   },
   workbookNextButtonContainer: {
-    flex: 1,
-    flexDirection: 'row',
+    height: 60,
+    backgroundColor: 'transparent',
+    justifyContent: 'center',
     alignItems: 'flex-end',
+    zIndex: 999,
   },
   workbookNextButton: {
-    flex: 0,
     height: 60,
     backgroundColor: 'transparent',
     justifyContent: 'center',

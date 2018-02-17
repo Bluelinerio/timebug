@@ -139,7 +139,7 @@ class WorkbookScreenContainer extends Component<Props, State> {
           />
         </View>
         <View
-          style={styles.workbookNextButton}
+          style={styles.workbookNextButtonContainer}
         >
           <WorkbookNextButton
             isInvalid={isInvalid}
