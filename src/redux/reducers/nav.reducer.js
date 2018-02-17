@@ -4,7 +4,6 @@ import {
   assignmentFlowConfiguration
 } from '../../navigation';
 
-debugger;
 const initialRouteState = RootNavigator.router.getStateForAction(
   RootNavigator.router.getActionForPathAndParams(rootConfiguration.routes.initialRouteName)
 );
