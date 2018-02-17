@@ -59,13 +59,13 @@ const completedStepIds = (state: any): [string] => completedForms(state).map(f =
 
 const formWithStepId = (state: any) => (stepId:string) : Form => completedForms(state).find(f => f.stepId)
 
-// CMS
+// CMS`
 const assignmentsForStepId = (state: any) => (stepId: string) => steps(state)[stepId].assignments
 const colorForStepWithId = (state:any) => (stepId: string) => stepColors(state)[stepId]
 const step = (number: number) => (state:any) => steps(state)[number]
 
 // models
-import workbooks from '../screens/WorkBookScreen/forms';
+import workbooks from '../screens/WorkbookScreen/forms';
 // form data
 const formData = (state: any) => getFormData(state).data
 const incompleteFormsData = (state: any) => getFormData(state).data
