@@ -7,7 +7,7 @@ import HomeScreen                         from '../screens/HomeScreen'
 import StepScreen                         from '../screens/StepScreen'
 import AssignmentLeadInScreen             from '../screens/AssignmentLeadInScreen'
 import WorkbookDoneScreen                 from '../screens/WorkbookDoneScreen'
-import WorkbookScreen                     from '../screens/WorkbookScreen'
+import WorkbookScreen                     from '../screens/WorkBookScreen'
 import WalkthroughScreen                  from '../screens/WalkthroughScreen';
 import DashboardScreen                    from '../screens/Dashboard'
 import { uriPrefix }                      from '../constants'
