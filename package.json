@@ -3,7 +3,7 @@
   "version": "0.0.2",
   "private": true,
   "scripts": {
-    "codepush" : "code-push release-react Lifevision-1 Android -d Production & code-push release-react Lifevision iOS -d Production",
+    "codepush": "code-push release-react Lifevision-1 Android -d Production & code-push release-react Lifevision iOS -d Production",
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "build-e2e:ios": "detox build -c ios.sim.debug",
     "test-e2e:ios": "detox test -c ios.sim.debug -l verbose",
@@ -34,7 +34,7 @@
     "ramda": "^0.25.0",
     "react": "16.2.0",
     "react-apollo": "^2.0.4",
-    "react-native": "0.50.1",
+    "react-native": "0.53.0",
     "react-native-code-push": "^5.2.1",
     "react-native-device-info": "^0.13.0",
     "react-native-fbsdk": "0.6.3",
@@ -69,6 +69,11 @@
     "flow-bin": "0.60.1",
     "mocha": "^3.5.3",
     "react-test-renderer": "16.0.0-alpha.6"
+  },
+  "rnpm": {
+      "assets": [
+        "./src/resources"
+      ]
   },
   "detox": {
     "specs": "__e2e__",

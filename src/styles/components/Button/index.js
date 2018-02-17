@@ -60,7 +60,7 @@ const style = {
 		paddingHorizontal: paddingHorizontal.sides
 	},
 	wideButtonText: {
-		fontFamily: 'Helvetica',
+		fontFamily: 'Metropolis',
 		fontWeight: 'bold',
 		textAlign: 'center',
 		fontSize: buttonTextSize,
