@@ -83,13 +83,17 @@ const styles = StyleSheet.create({
           width: 24,
           marginLeft: 15,
           marginRight: 17,
-          marginVertical: 7,
+          marginTop: 7,
+          marginBottom: 0,
           transform: [{ scaleX: I18nManager.isRTL ? -1 : 1 }],
         }
       : {
           height: 24,
           width: 24,
-          padding: 16,
+          marginLeft: 16,
+          marginRight: 16,
+          marginTop: 7,
+          marginBottom: 0,
           transform: [{ scaleX: I18nManager.isRTL ? -1 : 1 }],
         }
       })
