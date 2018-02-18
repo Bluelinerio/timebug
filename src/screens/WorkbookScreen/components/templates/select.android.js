@@ -6,47 +6,45 @@ function select(locals) {
     return null;
   }
 
-  var stylesheet = locals.stylesheet;
-  var formGroupStyle = stylesheet.formGroup.normal;
-  var controlLabelStyle = stylesheet.controlLabel.normal;
-  var selectStyle = Object.assign(
-    {},
-    stylesheet.select.normal,
-    stylesheet.pickerContainer.normal
-  );
-  var helpBlockStyle = stylesheet.helpBlock.normal;
-  var errorBlockStyle = stylesheet.errorBlock;
+  const stylesheet = locals.stylesheet;
+  const formGroupStyle = locals.hasError 
+    ? stylesheet.formGroup.error 
+    : stylesheet.formGroup.normal
+  const controlLabelStyle = locals.hasError 
+    ? stylesheet.controlLabel.error 
+    : stylesheet.controlLabel.normal
 
-  if (locals.hasError) {
-    formGroupStyle = stylesheet.formGroup.error;
-    controlLabelStyle = stylesheet.controlLabel.error;
-    selectStyle = stylesheet.select.error;
-    helpBlockStyle = stylesheet.helpBlock.error;
+  const selectStyle = locals.hasError 
+    ? stylesheet.select.error
+    : {
+        ...stylesheet.select.normal,
+        ...stylesheet.pickerContainer.normal
   }
 
-  var label = locals.label ? (
+  const helpBlockStyle = locals.hasError
+    ? stylesheet.helpBlock.normal
+    : stylesheet.helpBlock.error
+
+  const errorBlockStyle = stylesheet.errorBlock;
+
+  const label = locals.label ? (
     <Text style={controlLabelStyle}>{locals.label}</Text>
   ) : null;
-  var help = locals.help ? (
-    <Text style={helpBlockStyle}>{locals.help}</Text>
-  ) : null;
-  var error =
-    locals.hasError && locals.error ? (
-      <Text accessibilityLiveRegion="polite" style={errorBlockStyle}>
-        {locals.error}
-      </Text>
-    ) : null;
+  const help = locals.help && locals.showHelp 
+    && <Text style={helpBlockStyle}>{locals.help}</Text>
+  const error = locals.hasError && locals.error && locals.showError 
+    && (
+        <Text accessibilityLiveRegion="polite" style={errorBlockStyle}>
+          {locals.error}
+        </Text>
+    )
 
-  var options = locals.options.map(({ value, text }) => (
+  const options = locals.options.map(({ value, text }) => (
     <Picker.Item key={value} value={value} label={text} />
   ));
 
   return (
-    <View style={[formGroupStyle, {
-      borderRadius: 6,
-      borderWidth: 1,
-      borderColor: '#ccc',
-    }]}>
+    <View style={formGroupStyle}>
       {label}
       <Picker
         accessibilityLabel={locals.label}

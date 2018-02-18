@@ -71,9 +71,9 @@
     "react-test-renderer": "16.0.0-alpha.6"
   },
   "rnpm": {
-      "assets": [
-        "./src/resources"
-      ]
+    "assets": [
+      "./src/resources"
+    ]
   },
   "detox": {
     "specs": "__e2e__",

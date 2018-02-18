@@ -50,6 +50,15 @@ t.form.Form.defaultProps = {
 };
 
 
+t.String.getValidationErrorMessage = (actual, path, context) => {
+  if(!actual && context && context.options && context.options.label) {
+    return `${context.options.label} is a required, ${context.options.help || ''}`
+  } else {
+    const to = path.length ? '/' + path.join('/') + ': ' : '';
+    return 'Invalid value ' + t.stringify(actual) + ' supplied to ' + to;
+  }
+}
+
 // Override Struct methods to reset to page 0 after changing form
 t.form.Struct.prototype.shouldComponentUpdate = function(nextProps, nextState) {
   const should =

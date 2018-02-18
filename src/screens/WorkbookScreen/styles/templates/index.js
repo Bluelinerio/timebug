@@ -119,10 +119,10 @@ export default Object.freeze({
       textAlign: 'left',
     },
     error : {
-      color: ERROR_COLOR,
+      color: INPUT_COLOR,
       fontSize: FONT_SIZE,
       height: 46,
-      textAlign: 'center'
+      textAlign: 'left',
     }
   },
   textBoxView: {
@@ -143,7 +143,7 @@ export default Object.freeze({
 
         },
         android: {
-          borderBottomColor: ERROR_COLOR,
+          borderBottomColor: INPUT_COLOR,
           borderBottomWidth: 1 / PixelRatio.get(),
         }
       }))

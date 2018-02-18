@@ -43,10 +43,12 @@ class FocusedTextInput extends React.Component {
       textboxViewStyle = stylesheet.textboxView.notEditable;
     }
 
-    let label = locals.label ? <Text style={[controlLabelStyle, {textAlign: 'center'}]}>{locals.label}</Text> : null;
-    let help  = locals.help ? <Text style={helpBlockStyle}>{locals.help}</Text> : null;
-    let error = locals.hasError && locals.error ?
-                <Text accessibilityLiveRegion="polite" style={errorBlockStyle}>{locals.error}</Text> : null;
+    let label = locals.label 
+      && <Text style={controlLabelStyle}>{locals.label}</Text>;
+    let help  = locals.help && locals.showHelp 
+      && <Text style={helpBlockStyle}>{locals.help}</Text>
+    let error = locals.hasError && locals.error && locals.showError 
+      && <Text accessibilityLiveRegion="polite" style={errorBlockStyle}>{locals.error}</Text>
 
     return (
       <View style={formGroupStyle}>

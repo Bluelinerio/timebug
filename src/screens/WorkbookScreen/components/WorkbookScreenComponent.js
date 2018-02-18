@@ -7,7 +7,8 @@ import {
   TouchableHighlight,
   Platform,
   ScrollView,
-  Keyboard
+  Keyboard,
+  Alert // for future user in case we want users to get error as alert.
 } from "react-native";
 import t                    from './templates';
 import WorkbookNextButton           from '../components/WorkbookNextButton'
@@ -45,6 +46,8 @@ type State = {
 
 class WorkbookScreenContainer extends Component<Props, State> {
 
+  form:?Form = null
+
   constructor(props: Props) {
     super(props);
     const { value, model } = props
@@ -57,13 +60,12 @@ class WorkbookScreenContainer extends Component<Props, State> {
 
   componentDidMount() {
     Keyboard.dismiss(); // police keyboard is always off, when starting (specially with android.)
-    const { model } = this.state
+    const { model: { focusField, type } , value } = this.state
 
-    if (model && model.focusField) {
-      this.form.getComponent(model.focusField).refs.input.focus();
+    if (focusField) {
+      this.form.getComponent(focusField).refs.input.focus();
     }
-
-    const isInvalid = this.form.validate().isValid() === false
+    const isInvalid = t.validate(value, type).isValid() === false
     if(isInvalid !== this.state.isInvalid) {
       this.setState(state => ({
         isInvalid,
@@ -71,40 +73,41 @@ class WorkbookScreenContainer extends Component<Props, State> {
     }
   }
 
-  componentWillReceiveProps(nextProps: Props) {
-    // update state with the new model & value so we can run this.form.valudate() on componentDidUpdate.
-    const { value, model } = nextProps;
-    this.setState({
-      value,
-      model,
-    })
-  }
-  
-  componentDidUpdate(prevProps: Props) {
-    // Can be validated in componentWillReceiveProps but does not mark input with errors in the UI
-    // TODO: Merge with componentWillReceiveProps and achieve same functionality for best performance
-    const isInvalid = this.form.validate().isValid() === false
-    if (this.state.isInvalid !== isInvalid) {
-      this.setState(state => ({
-        isInvalid
-      }))
+  onPress = () => {
+    const { errors, value } = this.form.validate()
+    if( errors.length > 0 ) {
+      const { message, path } = errors[0]
+      Alert.alert(
+        message, 
+        '', 
+        [ 
+          /* this is for later ideally working with react-native-keyboard-aware-scroll-view
+          {
+            text: 'Show me',
+            onPress: () => {
+              const component = this.form.getComponent(path)
+              const ref = component.refs.input
+              input.focus()
+            },
+          },
+          */
+          {
+            text: 'OK',
+          } ]
+      )
+    } else {
+      const { next , submit } = this.props; 
+      submit(value);
+      next()
     }
   }
   
-  // a note about - shouldComponentUpdate: I think customizing this typicall needs to user an instance flag variable, as it needs to incorporate both changes in state and pros.
-  
-  onPress = () => {
-    const { value } = this.state;
-    const { next } = this.props;
-    this.props.submit(value);
-    next()
-  }
   
   onChange = (value: any, path: [string]) => {
     const { model : { type }} = this.state;
     const fieldName = path[path.length - 1];
     const fieldValue = path.reduce((struct: {}, field) => struct[field], value)
-    const isInvalid = this.form.validate().isValid() === false;
+    const isInvalid = t.validate(value, type).isValid() === false;
     if(this.state.isInvalid !== isInvalid || this.state.value !== value) {
       this.setState({
         isInvalid,
@@ -126,8 +129,7 @@ class WorkbookScreenContainer extends Component<Props, State> {
 
     return (
       <View style={{ flex: 1 }}>
-        <View style={styles.workbookFormContainer}>
-          <Form
+        <Form
             type={type}
             ref={this.handleFormRef}
             options={{
@@ -137,7 +139,6 @@ class WorkbookScreenContainer extends Component<Props, State> {
             value={value}
             onChange={this.onChange}
           />
-        </View>
         <View
           style={styles.workbookNextButtonContainer}
         >

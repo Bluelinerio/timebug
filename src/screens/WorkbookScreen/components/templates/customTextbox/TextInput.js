@@ -1,10 +1,12 @@
 // @flow
 import React from 'react'
-import { View, TextInput, Text } from 'react-native'
+import { View, TextInput, Text, Animated } from 'react-native'
 
 type State = {
   height: number,
-  text: string
+  fieldFocused: boolean,
+  value: String,
+  fadeAnim: Animated.AnimatedValue,
 }
 type Props = any & {
   style: any,
@@ -12,16 +14,8 @@ type Props = any & {
 }
 
 export default class CustomTextInput extends React.Component<Props,State> {
-  state:State = {
-    height: 0,
-    text: ''
-  }
-  textInput:?TextInput = null
 
-  focus () {
-    this.textInput && this.textInput.focus()
-  }
-
+  input: ?TextInput = null
   error() {
     const { error, hasError, styles:{ errorBlockStyle } } = this.props;
     error && hasError
@@ -44,6 +38,28 @@ export default class CustomTextInput extends React.Component<Props,State> {
       : null
   }
 
+  floatingLabel() {
+    const { label, hasError, styles } = this.props;
+    const { fadeAnim } = this.state;
+    return label 
+      ? (
+        <Animated.Text 
+            style={[ hasError ? styles.controlLabel.error : styles.controlLabel.normal, {
+              textAlign: 'auto',
+              opacity: fadeAnim,
+              transform: [{
+                translateY: fadeAnim.interpolate({
+                  inputRange: [0, 1],
+                  outputRange: [10, 0]
+                }),
+              }]
+          }]}
+        >
+          {label}
+        </Animated.Text>
+      )
+      : null  
+  }
   label() {
     const { label, hasError, styles } = this.props;
     return label 
@@ -59,6 +75,51 @@ export default class CustomTextInput extends React.Component<Props,State> {
       : null  
   }
 
+  constructor (props) {
+    super(props);
+    this.state = {
+      height: 0,
+      fieldFocused: (props.value) ? true : false,
+      text: (props.value) ? String(props.value) : '',
+      fadeAnim: (props.value) ? new Animated.Value(1) : new Animated.Value(0),
+    };
+  }
+
+  focus () {
+    this.input && this.input.focus()
+  }
+
+  onFocus = () => {
+    const { fadeAnim } = this.state
+    Animated.spring(
+      fadeAnim,
+      {
+        toValue: 1, 
+        friction: 5
+      },
+    ).start();
+    this.setState({
+      fieldFocused: true,
+    });
+    this.props.onFocus && this.props.onFocus();
+  }
+
+  onBlur = () => {
+    const { text , fadeAnim } = this.state;
+    if (!text || !text.length) {
+      Animated.timing(
+        fadeAnim,
+        {
+          toValue: 0
+        },
+      ).start();
+    }
+    this.setState({
+      fieldFocused: false,
+    });
+    this.props.onBlur && this.props.onBlur()
+  }
+
   onChangeText = (text: string) => {
     const then = this.props.onChange 
       ? () => this.props.onChange(text) 
@@ -68,7 +129,7 @@ export default class CustomTextInput extends React.Component<Props,State> {
     }, then)
   }
 
-  onContentSizeChange = (event:any) => {
+  onContentSizeChange = (event: any) => {
     const { nativeEvent:{ contentSize:{ height }}} = event;
     if (height !== this.state.height) {
       this.setState({
@@ -80,11 +141,15 @@ export default class CustomTextInput extends React.Component<Props,State> {
 
   renderTextInput = () => (
     <TextInput
-      ref={(c) => (this.textInput = c)}
+      ref={(c) => (this.input = c)}
       onContentSizeChange={ this.props.multiline && this.props.multiline === true 
         ? this.onContentSizeChange 
         : this.props.onContentSizeChange
       }
+      onBlur={this.onBlur}
+      onFocus={this.onFocus}
+      textAlign={this.props.textAlign}
+      bufferDelay={this.props.bufferDelay}
       onChangeText={this.onChangeText}
       onChange={this.props.onChangeNative}
       accessibilityLabel={this.props.label}
@@ -97,9 +162,7 @@ export default class CustomTextInput extends React.Component<Props,State> {
       keyboardType={this.props.keyboardType}
       maxLength={this.props.maxLength}
       multiline={this.props.multiline}
-      onBlur={this.props.onBlur}
       onEndEditing={this.props.onEndEditing}
-      onFocus={this.props.onFocus}
       onLayout={this.props.onLayout}
       onSelectionChange={this.props.onSelectionChange}
       onSubmitEditing={this.props.onSubmitEditing}
@@ -132,7 +195,8 @@ export default class CustomTextInput extends React.Component<Props,State> {
     const {
       styles,
       hasError,
-      editable
+      editable,
+      floatingLabel
     } = this.props;
 
     const { text } = this.state;
@@ -146,7 +210,7 @@ export default class CustomTextInput extends React.Component<Props,State> {
         ? styles.textBoxView.normal 
         : styles.textBoxView.notEditable
         
-  const label = text.length > 0 ? null : this.label()  
+  const label = floatingLabel ? this.floatingLabel() : this.label() // text.length > 0 ? null : 
   const help  = this.help()
   const error = this.error()
   const textInput = this.renderTextInput();
@@ -157,6 +221,7 @@ export default class CustomTextInput extends React.Component<Props,State> {
       marginTop: 22,
       marginBottom: 22,
     }]}>
+      {label}
       <View style={[{
         borderRadius: 6,
         borderWidth: 1,
@@ -165,7 +230,6 @@ export default class CustomTextInput extends React.Component<Props,State> {
         paddingHorizontal: 7,
         justifyContent:'flex-end'
       }]}>
-        {label}
         {textInput}
       </View>
       {help}
