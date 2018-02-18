@@ -146,10 +146,8 @@ export default class FormList extends React.Component {
         : null;
 
     return (
-      <View style={[styles.fieldset, { 
+      <View style={[styles.fieldset.normal, { 
         flex:1,
-        // borderWidth:1,
-        // borderColor: 'green'
       }]}>
         {labelComponent}
         {helpComponent}
