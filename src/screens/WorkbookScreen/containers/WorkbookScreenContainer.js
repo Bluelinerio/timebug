@@ -4,15 +4,16 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { NavigationActions, withNavigation } from 'react-navigation';
 
-import { submitFormValue, syncFormData } from '../../../redux/actions/formData.actions';
+import { headerBackgrounds }                from '../../../resources/images'
+import { submitFormValue, syncFormData }    from '../../../redux/actions/formData.actions';
 import { 
   goToWorkbookDoneScreen,
   goToWorkbookScreenWithParams,
-} from '../../../redux/actions/nav.actions';
-import selectors from '../../../redux/selectors'
-import type Props               from '../components/WorkbookScreenComponent';
-import WorkbookScreenComponent  from '../components/WorkbookScreenComponent';
-import DefaultUserContainer     from '../../../containers/DefaultUserContainer';
+}                                           from '../../../redux/actions/nav.actions';
+import selectors                            from '../../../redux/selectors'
+import type Props                           from '../components/WorkbookScreenComponent';
+import WorkbookScreenComponent              from '../components/WorkbookScreenComponent';
+import DefaultUserContainer                 from '../../../containers/DefaultUserContainer';
 
 const mapStateToProps = (state) => {
   const steps = selectors.steps(state);
@@ -43,14 +44,9 @@ const merge = (stateProps, dispatchProps, ownProps): Props => {
   const value = formData[formId]
 
   const isFetching = !models ? true : stateProps.network > 0
-
-  const cloneStateWithForm = (formId) => ({
-    ...ownProps.navigation.state, // basically taking the 'key'
-    params : {
-      ...params,
-      formId
-    }
-  })
+    
+  const backgroundImage = headerBackgrounds[stepId];
+  
   const nextActions = isFinalForm 
     ? [
         syncFormData(),
@@ -85,6 +81,7 @@ const merge = (stateProps, dispatchProps, ownProps): Props => {
     numberOfForms,
     isFetching,
     submit,
+    backgroundImage
   }
 }
 

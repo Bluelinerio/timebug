@@ -6,6 +6,7 @@ import { withNavigation } from 'react-navigation';
 
 import StepScreen                     from '../components/StepScreen'
 import type Props                     from '../components/StepScreen'
+import { headerBackgrounds }          from '../../../resources/images';
 import { getImageUrl }                from "../../../services/cms"
 import selectors                      from '../../../redux/selectors'
 import type { Step }                  from '../../../services/cms'
@@ -41,6 +42,8 @@ const merge = (stateProps, dispatchProps, ownProps): Props => {
   const number = step.number
   const icon = step.icon
   const color = step.color;
+  const image = headerBackgrounds[stepId]
+
   const onPress = () => goToAssignmentLeadInScreen(ownProps);
   return {
     title,
@@ -50,6 +53,7 @@ const merge = (stateProps, dispatchProps, ownProps): Props => {
     icon,
     color,
     onPress,
+    image
   }
 }
 

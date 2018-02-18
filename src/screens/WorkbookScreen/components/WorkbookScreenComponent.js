@@ -8,16 +8,17 @@ import {
   Platform,
   ScrollView,
   Keyboard,
+  Image,
+  Dimensions,
   Alert // for future user in case we want users to get error as alert.
 } from "react-native";
 import t                    from './templates';
-import WorkbookNextButton           from '../components/WorkbookNextButton'
+import WorkbookNextButton   from '../components/WorkbookNextButton'
 import type {
   NextButtonProps
 }                           from '../components/WorkbookNextButton'
 import DefaultIndicator     from '../../../components/DefaultIndicator';
 import styles               from '../styles';
-
 const Form = t.form.Form;
 
 export type Model = {
@@ -121,7 +122,7 @@ class WorkbookScreenContainer extends Component<Props, State> {
   }
   
   render = () => {
-    const { stepColor, isFetching, buttonMessage } = this.props;
+    const { stepColor, isFetching, buttonMessage, backgroundImage } = this.props;
     const { model: { options, type }, isInvalid, value } = this.state;
     if(isFetching) {
       return <DefaultIndicator size='large' />
@@ -129,16 +130,25 @@ class WorkbookScreenContainer extends Component<Props, State> {
 
     return (
       <View style={{ flex: 1 }}>
-        <Form
-            type={type}
-            ref={this.handleFormRef}
-            options={{
-              ...options,
-              topLevel:true
-            }}
-            value={value}
-            onChange={this.onChange}
+        <ScrollView style={{ flex: 1 }}>
+          <Form
+              type={type}
+              ref={this.handleFormRef}
+              options={{
+                ...options,
+                topLevel:true
+              }}
+              value={value}
+              onChange={this.onChange}
+            />
+          <Image 
+            resizeMode='cover'
+            style={[styles.image, {
+              tintColor:stepColor,
+            }]} 
+              source={backgroundImage}
           />
+        </ScrollView>
         <View
           style={styles.workbookNextButtonContainer}
         >

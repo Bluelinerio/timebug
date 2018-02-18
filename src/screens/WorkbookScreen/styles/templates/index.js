@@ -5,16 +5,16 @@ import {
 } from 'react-native';
 import stylesheet                 from "tcomb-form-native/lib/stylesheets/bootstrap";
 
-const LABEL_COLOR = '#000000';
-const INPUT_COLOR = '#000000';
-const ERROR_COLOR = '#a94442';
-const HELP_COLOR = '#999999';
-const BORDER_COLOR = '#cccccc';
-const DISABLED_COLOR = '#777777';
-const DISABLED_BACKGROUND_COLOR = '#eeeeee';
-const BACKGROUND_COLOR = '#FAFAFA' //'#FFFFFF';
-const FONT_SIZE = 20;
-const FONT_WEIGHT = '500';
+export const LABEL_COLOR = '#000000';
+export const INPUT_COLOR = '#000000';
+export const ERROR_COLOR = '#a94442';
+export const HELP_COLOR = '#999999';
+export const BORDER_COLOR = '#cccccc';
+export const DISABLED_COLOR = '#777777';
+export const DISABLED_BACKGROUND_COLOR = '#eeeeee';
+export const BACKGROUND_COLOR = '#FAFAFA' //'#FFFFFF';
+export const FONT_SIZE = 20;
+export const FONT_WEIGHT = '500';
 
 //#E6E5ED
 // from  https://material.io/guidelines/components/text-fields.html#text-fields-layout

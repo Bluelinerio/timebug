@@ -18,7 +18,6 @@ import ScrollableHeader from "../../../components/ScrollableHeader";
 import type { Step } from "../../../services/cms";
 import { getImageUrl } from "../../../services/cms";
 import CustomImage from "../../../components/CustomImage";
-import { headerBackground } from "../../../resources/images";
 import { APPBAR_HEIGHT, STATUSBAR_HEIGHT } from "../../../constants";
 import markdownStyles from "../../../styles/Markdown/stepScreen";
 import AssignmentButtonContainer from '../containers/AssignmentButtonContainer';
@@ -73,11 +72,11 @@ const Header = ({ icon, title, number, color}) => (
   </View>
 );
 
-export default ({ title, subtitle, description, number, icon, color, onPress }) => (
+export default ({ title, subtitle, description, number, icon, color, onPress, image }) => (
   <ScrollableHeader
     headerMaxHeight={HEADER_HEIGHT}
     headerMinHeight={APPBAR_HEIGHT + STATUSBAR_HEIGHT}
-    headerImage={headerBackground(number)}
+    headerImage={image}
     headerComponent={
       <Header
         color={color}

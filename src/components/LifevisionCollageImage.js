@@ -1,7 +1,6 @@
 import * as React from 'react'
 import {
   Image,
-  ImageBackground,
   StyleSheet
 } from 'react-native'
 import { lifevisionCollage, backgroundImage } from '../resources/images'

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, Text, Keyboard } from 'react-native';
+import { View, Text, Keyboard } from 'react-native';
 import Button from '../../../../components/Button'
 import { deepBlue } from '../../../../constants/colors'
 import styles from '../../styles';
@@ -56,18 +56,11 @@ export default class Struct extends React.Component {
     const children = [(label ? [label] : []), ...rows]
     const topLevel = this.props.topLevel || false
     const { fieldset } = this.props.styles;
-    if (topLevel) {
-      return (
-        <ScrollView style={fieldset.topLevel}>
-          {error}
-          {children}
-        </ScrollView>
-      )
-    } else {
-        <View style={fieldset.normal}>
-          {error}
-          {children}
-        </View>
-    }
+    return (
+      <View style={topLevel ? fieldset.topLevel : fieldset.normal}>
+        {error}
+        {children}
+      </View>
+    )
  }
 }
