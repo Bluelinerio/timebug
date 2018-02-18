@@ -78,8 +78,8 @@ const normalize = size => {
     if (deviceHeight >= 667 && deviceHeight <= 735) {
       return size * 1.25;
     }
-    // catch larger phablet devices
-    return size * 1.4;
+    // iphone x device:
+    return size * 1.25;
   }
   // if older device ie pixelRatio !== 2 || 3 || 3.5
   return size;
