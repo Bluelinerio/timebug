@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "postversion": "react-native-version",
-    "postinstall": "rm ./node_modules/react-native/local-cli/core/__fixtures__/files/package.json",
+    "postinstall": "rm -f ./node_modules/react-native/local-cli/core/__fixtures__/files/package.json",
     "codepush": "code-push release-react Lifevision-1 Android -d Production & code-push release-react Lifevision iOS -d Production",
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "build-e2e:ios": "detox build -c ios.sim.debug",
