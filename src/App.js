@@ -6,6 +6,10 @@ import { AppRegistry }              from 'react-native';
 import { PersistGate }              from 'redux-persist/es/integration/react'
 import codePush                     from "react-native-code-push";
 
+import { 
+  isNativeUpdateRequired,
+  NativeUpdateRequired
+} from './containers/VersionGate'
 import setup                        from './redux';
 import { client }                   from './services/apollo';
 import AppNavigation                from './navigation/app';
@@ -29,17 +33,20 @@ export default class App extends React.Component<{},State> {
   state:State = {
     error: null
   }
-  // componentDidCatch(error:any) {
-  //   this.setState({
-  //     error
-  //   })
-  // }
-
+  componentDidCatch(error:any) {
+    this.setState({
+      error
+    })
+  }
   render() {
     const { error } = this.state;
     if(error) {
-      <Error message={error} />
+      return <Error message={error} />
     } 
+    if(isNativeUpdateRequired()) {
+      return <NativeUpdateRequired />
+    }
+
     return (
       <ApolloProvider client={client}>
         <Provider store={store}>
