@@ -28,14 +28,27 @@ function navReducer(state = initialState, action) {
 import storage from 'redux-persist/lib/storage';
 import { persistReducer, createMigrate } from 'redux-persist';
 
-const thisVersion = 8
+const isRouteInvalid = route => {
+  if(!route.routeName) return true
+  if(route.routes) return allRoutesAreValid(route.routes) === false;
+  return false 
+}
+const allRoutesAreValid = (routes) => {
+  return routes.find(isRouteInvalid) ? false : true
+}
+
+const thisVersion = 9
 const persistConfig = {
 	key:'nav',
   storage: storage,
   version: thisVersion,
   migrate: (state, version) => {
     if (state) {
-      if(!state.routes) {
+      debugger;
+      if(!state.routes || !allRoutesAreValid(state.routes)) {
+        return Promise.resolve(initialRouteState)
+      }
+      if(version < thisVersion) {
         return Promise.resolve(initialRouteState)
       }
       // prevent from any navigation issue that may arise to override that the root view is always home:
