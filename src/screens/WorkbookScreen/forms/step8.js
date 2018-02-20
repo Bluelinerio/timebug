@@ -108,11 +108,10 @@ export default {
               morning: {
                 fields: {
                   physical: {
-                    label:'Weekend morning: physical',
                                         label: 'What is your typical physical energy level on a weekend morning?'
                   },
                   mental: {
-                    eerror: 'What is your typical mental energy level on a weekend morning?'
+                    label: 'What is your typical mental energy level on a weekend morning?'
                   },
                   emotional: {
                     label: 'What is your typical emotional energy level on a weekend morning?'

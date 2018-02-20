@@ -123,7 +123,6 @@ export default {
     options: {
       label: 'How do you want to help further spirituality in the world 5 years from now?',
       auto: 'none'
-      error:'Please fill out this field'
     }
   }
 };
