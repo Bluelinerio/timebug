@@ -10,9 +10,6 @@ type Props = {
 
 export default (props: Props) => {
   const { source, style, ...rest } = props;
-  if(!source.uri) {
-    debugger;
-  }
   return (source && source.uri.endsWith('svg')) ? <SVGImage
       style={[style, { backgroundColor: 'transparent'}]}
       source={source}
