@@ -3,6 +3,7 @@
   "version": "0.0.2",
   "private": true,
   "scripts": {
+    "postversion": "react-native-version",
     "postinstall": "rm ./node_modules/react-native/local-cli/core/__fixtures__/files/package.json",
     "codepush": "code-push release-react Lifevision-1 Android -d Production & code-push release-react Lifevision iOS -d Production",
     "start": "node node_modules/react-native/local-cli/cli.js start",
@@ -69,6 +70,7 @@
     "detox": "^5.10.0",
     "flow-bin": "0.60.1",
     "mocha": "^3.5.3",
+    "react-native-version": "^2.4.1",
     "react-test-renderer": "16.0.0-alpha.6"
   },
   "rnpm": {
