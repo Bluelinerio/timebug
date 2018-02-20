@@ -14,10 +14,21 @@ export default StyleSheet.create({
   workbookFormContainer: {
     flex: 1,
   },
+  fullScreenScrollView: { 
+    position:'absolute',
+    top:0,
+    left:0,
+    right:0,
+    bottom:0, 
+  },
+  
+  flexibleHeightView: {
+    backgroundColor: BACKGROUND_COLOR,
+  },
   image: {
     width: null,
-    height: Dimensions.get('window').width * 0.7,
-    backgroundColor:BACKGROUND_COLOR
+    height: Dimensions.get('window').height * 0.3,
+    backgroundColor: BACKGROUND_COLOR
   },
   workbookNextButtonContainer: {
     position: 'absolute',

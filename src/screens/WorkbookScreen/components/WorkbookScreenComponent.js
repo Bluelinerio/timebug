@@ -10,7 +10,7 @@ import {
   Keyboard,
   Image,
   Dimensions,
-  Alert // for future user in case we want users to get error as alert.
+  Alert
 } from "react-native";
 import t                    from './templates';
 import WorkbookNextButton   from '../components/WorkbookNextButton'
@@ -36,13 +36,24 @@ export type Props = {
   isFetching: boolean
 };
 
+type Layout = {
+  height: number,
+  width: number,
+  x: number,
+  y: number
+}
+
 type State = {
   isInvalid: boolean,
   value: any,
   model: {
     type: any,
     options: any
-  }
+  },
+  formLayout: ?Layout,
+  containerLayout: ?Layout,
+  bufferViewHeight : number,
+  layoutReady: boolean
 };
 
 class WorkbookScreenContainer extends Component<Props, State> {
@@ -55,7 +66,9 @@ class WorkbookScreenContainer extends Component<Props, State> {
     this.state = {
       isInvalid: true,
       model,
-      value
+      value,
+      bufferViewHeight : 0,
+      layoutReady: false
     }
   }
 
@@ -120,18 +133,68 @@ class WorkbookScreenContainer extends Component<Props, State> {
   handleFormRef = (ref) => {
     this.form = ref;
   }
-  
+
+  // this is an implmentation of ajustment of a growing/shrinking view makin sure the the minimal height of the scroll view content is at least the height of the scroll view itself. (its container)
+  layout = () => {
+    const { containerLayout, formLayout, bufferViewHeight } = this.state
+    if( containerLayout && formLayout ) {
+      const newHeight = containerLayout.height - formLayout.height;
+      if (!bufferViewHeight) {
+        this.setState({
+          layoutReady: true,
+          bufferViewHeight: newHeight
+        })
+      } else if (newHeight !== 0) {
+        this.setState({
+          layoutReady: true,
+          bufferViewHeight: Math.max(0, bufferViewHeight + newHeight)
+        })
+      } else {
+        this.setState({
+          layoutReady: true,
+        })
+      }
+    } else {
+      this.setState({
+        layoutReady: false
+      })
+    }
+  }
+
+  onLayout = ({ nativeEvent: { layout }}) => {
+    const { formLayout } = this.state
+    this.setState({
+      containerLayout: layout,
+    }, this.layout)
+  } 
+  onFormLayout = ({ nativeEvent:{ layout }}) => {
+    this.setState({
+      formLayout:layout,
+    }, this.layout)
+  }
+
   render = () => {
     const { stepColor, isFetching, buttonMessage, backgroundImage } = this.props;
-    const { model: { options, type }, isInvalid, value } = this.state;
+    const { model: { options, type }, isInvalid, value, layoutReady, bufferViewHeight } = this.state;
     if(isFetching) {
       return <DefaultIndicator size='large' />
     }
-
+  
     return (
-      <View style={{ flex: 1 }}>
-        <ScrollView style={{ flex: 1 }}>
-          <Form
+      <View 
+        onLayout={this.onLayout}
+        style={{ flex: 1 }} 
+      >
+        <ScrollView 
+          style={styles.fullScreenScrollView}
+        >
+          <View
+            onLayout={this.onFormLayout}
+            style={{
+              opacity: layoutReady ? 1 : 0
+            }}
+          >
+            <Form 
               type={type}
               ref={this.handleFormRef}
               options={{
@@ -141,13 +204,19 @@ class WorkbookScreenContainer extends Component<Props, State> {
               value={value}
               onChange={this.onChange}
             />
-          <Image 
-            resizeMode='cover'
-            style={[styles.image, {
-              tintColor:stepColor,
-            }]} 
-              source={backgroundImage}
-          />
+            <View style={[styles.flexibleHeightView, 
+              bufferViewHeight 
+                ? { height: bufferViewHeight}
+                : {}
+            ]}/>
+            <Image 
+              resizeMode='cover'
+              style={[styles.image, {
+                tintColor: stepColor,
+              }]} 
+                source={backgroundImage}
+            />
+          </View>
         </ScrollView>
         <View
           style={styles.workbookNextButtonContainer}
