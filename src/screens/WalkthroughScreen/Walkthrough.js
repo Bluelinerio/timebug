@@ -50,9 +50,15 @@ export default class Walkthrough extends React.Component<Props> {
               {slide.description}
             </Text>
           }
+          <View style={styles.slideImage}>
           {slide.image && 
-            <Image source={slide.image} />
+            <Image 
+            source={slide.image}
+            resizeMode='cover'
+            style={{width: 180 , height: 310, marginTop:50}}
+             />
           }
+          </View>
         </View>
       </SafeAreaView>
     </LinearGradient>
@@ -111,6 +117,10 @@ const styles = StyleSheet.create({
     marginTop: largeVerticalSpacing + StatusBar.currentHeight,
     flexGrow: 1
   },
+  slideImage: {
+    justifyContent: 'center',
+    alignItems:'center'
+  },
   title: {
     marginTop: largeVerticalSpacing,
     color: 'white'
@@ -143,7 +153,7 @@ const theme = {
       fontSize: Math.ceil(height * 0.027),
       lineHeight: 28,//standard
       fontFamily: 'HelveticaNeue',
-      fontWeight: 'bold',
+      fontWeight: 'bold'
     },
     large: {
       fontSize: 14,
