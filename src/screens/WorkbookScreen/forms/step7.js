@@ -46,8 +46,10 @@ export default {
     }),
     options: {
       fields: {
-        label:"Have you noticed any patterns? Have any guesses as to the reasons underlying such patterns?",
-        multiline: true
+        patterns: {
+          label: " Have you noticed any patterns? Have any guesses as to the reasons underlying such patterns?",
+          multiline: true
+        }
       }
     }
   }  
