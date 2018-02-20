@@ -57,7 +57,7 @@ function* _handleUserError() {
 }
 
 function * _fetchUserWithId(userId) {
-	yield({ type: 'FETCH_USER_WITH_ID', payload: userId });
+	yield put({ type: 'FETCH_USER_WITH_ID', payload: userId });
 	yield call(requestSaga, GET_USER, () => fetchUserWithId(userId), {userId} )
 	// if GET_USER.ERRORED it will be handled by _handleUserError
 }
@@ -83,7 +83,8 @@ function* refreshUserOrLogout() {
 					token, 
 					userId: id, 
 					endpoint})
-				return yield call(_fetchUserWithId, id)
+				yield call(_fetchUserWithId, id)
+				return;
 			}
 		}
 		yield put(actions.setUserAnonymous())
