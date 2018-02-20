@@ -1,5 +1,5 @@
 import t from "../components/templates";
-import { PillarsOfLife,CharachterStrengths, PercentSelector,OneToTenScale } from "./contents";
+import { PillarsOfLife,Strengths, PercentSelector,OneToTenScale } from "./contents";
 
 export default {
     1:{ 
@@ -112,7 +112,7 @@ export default {
          type: t.struct({
              skills:t.list(
                  t.struct({
-                    skill:CharachterStrengths,
+                    skill:Strengths,
                     proficiencyLevel:OneToTenScale,
                     aspirationLevel:OneToTenScale,
                     improvements:t.String

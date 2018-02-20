@@ -6,7 +6,7 @@ import {
   CreditScore, 
   ChangeKind, 
   EffortEvaluation, 
-  SatiffactionFromCurrentResult ,
+  SatisfactionFromCurrentResult ,
   CreditScoreChange,
   OneToTenScale
 } from "./contents";

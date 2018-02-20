@@ -1,5 +1,5 @@
 import t from "../components/templates";
-import { AreaOfLife, StageOfLife, Emotion } from "./contents";
+import { AreaOfLife, LifeStages, Emotion } from "./contents";
 
 export default {
   1: {
@@ -7,14 +7,14 @@ export default {
       id:t.maybe(t.String),
       memory: t.String,
       areaOfLife: AreaOfLife,
-      stageOfLife: StageOfLife
+      lifeStages: LifeStages
     }),
     options: {
       fields: {
         id: {
           hidden: true
         },
-        stageOfLife: {
+        lifeStages: {
           label:'Which stage of life does this belong to?'
         },
         memory: {
@@ -38,7 +38,7 @@ export default {
     type: t.struct({
       regret: t.String,
       areaOfLife: t.maybe(AreaOfLife),
-      stageOfLife: t.maybe(StageOfLife),
+      lifeStages: t.maybe(LifeStages),
     }),
     options: {
       fields: {

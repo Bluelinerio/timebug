@@ -9,7 +9,7 @@ export default {
           field: t.list(
             t.struct({
               boardMember: t.String,
-              pillarsOfLife: PillarsOfLife,
+              PillarsOfLife: PillarsOfLife,
               interactionFrequency: InteractionFrequency
              })
           )
@@ -28,7 +28,7 @@ export default {
                     auto:'placeholders',
                     //error: "Think about someone who's advice you would value regarding big decisions"
                   },
-                  pillarsOfLife:{
+                  PillarsOfLife:{
                     auto:'labels',
                     //error: 'Assign this person to one of the 7 Timebug Life Categories'
                   },
@@ -59,7 +59,7 @@ export default {
           field: t.list(
             t.struct({
               supportGroup: t.String,
-              pillarsOfLife: PillarsOfLife
+              PillarsOfLife: PillarsOfLife
              })
           )
         }),
@@ -79,7 +79,7 @@ export default {
                     auto: 'placeholders'
                     //error: "Please enter the name of a support group"
                   },
-                    pillarsOfLife:{
+                    PillarsOfLife:{
                       auto: 'labels'
                       //error: "Please select a Life Category."
                     }

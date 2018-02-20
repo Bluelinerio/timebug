@@ -8,7 +8,7 @@ export default {
             field: t.list(
                 t.struct({
                     roleModel: t.String,
-                    pillarsOfLife: PillarsOfLife,
+                    PillarsOfLife: PillarsOfLife,
                     interactionFrequency: InteractionFrequency,
                     why: t.String
                  })
@@ -28,7 +28,7 @@ export default {
                     auto:'labels',
                   //  error:'Please enter the name of a Role Model.'
                   },
-                  pillarsOfLife:{
+                  PillarsOfLife:{
                     label:'What Life Category does he/she primarily influence?',
                     //error: 'Please select a Life Category.'
                   },

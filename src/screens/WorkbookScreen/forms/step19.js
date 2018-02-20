@@ -1,5 +1,5 @@
 import t from "../components/templates";
-import { TimeSpent, SpiritualViews, SpiritualPactices } from "./contents";
+import { TimeSpent, SpiritualViews, SpiritualPractices } from "./contents";
 
 
 export default {

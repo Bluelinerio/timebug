@@ -1,5 +1,5 @@
 import t from "../components/templates";
-import { CharachterStrengths, CharachterWeaknesses } from "./contents";
+import { Strengths, Weaknesses } from "./contents";
 
 export default {
   1: {
@@ -7,7 +7,7 @@ export default {
       id:t.maybe(t.String),
       field: t.list(
         t.struct({
-          strengthsSelfView: CharachterStrengths,
+          strengthsSelfView: Strengths,
           resultingGoalAchieved: t.String
          })
       )
@@ -48,7 +48,7 @@ export default {
     type: t.struct({
       field: t.list(
         t.struct({
-          weaknessSelfView: CharachterWeaknesses,
+          weaknessSelfView: Weaknesses,
           goalNotReached: t.String
          })
       )
@@ -81,8 +81,8 @@ export default {
   3: {
     type: t.struct({
         friendsName: t.String,
-        strengthFriendView: t.list(CharachterStrengths),
-        weaknessFriendView: t.list(CharachterWeaknesses)
+        strengthFriendView: t.list(Strengths),
+        weaknessFriendView: t.list(Weaknesses)
       }),
       options: {
         fields: {
