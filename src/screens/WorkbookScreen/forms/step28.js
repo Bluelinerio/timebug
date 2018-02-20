@@ -37,11 +37,11 @@ export default {
       })
     ),
     options: {
-      label:'What major P&E goals [BHAGs] do you envision or yourself by 2020?',
+      label:'What major goals [BHAGs] do you envision for yourself 5 years from now?',
       item: {
         fields: {
           goal: {
-            error:'Please fill out this field'
+            auto:'Placeholders'
           }
         }
       }
@@ -56,20 +56,17 @@ export default {
       })
     ),
     options:{
-      label:'Your Bucket List can include simple goals as well – not everything has to be a monumental BHAG List out up to 10 items for your 2020 PE Bucket List',
+      label:"What's on your 2020 place and environment bucket list?",
       item:{
         fields:{
           bucketPEBHAG:{
-            label:'Bucket PE BHAG',
-            error:'Please fill out this field'
+            label:'Bucket PE BHAG'
           },
           priority:{
-            label:'Prioritize your BHAG with 1= most important, 2= second most important',
-            error:'Please fill out this field'
+            label:'How do you rank each bucket list item in terms of priority (1= Low priority and 10= High priority)?'
           },
           timeSpent:{
-            label:'Estimate how much time per year (2016-2020) you plan to spend on avg working toward this BHAG',
-            error:'Please fill out this field'
+            label:'How much time per year (for each of the next 5 years) will you spend, on average, working towards this goal?'
           }
         }
       }
@@ -82,19 +79,15 @@ export default {
       howHelp:t.String
     }),
     options:{
-      label:'Think about one other person in your life, who you want to see enjoy a major transformation in their PE surroundings.',
       fields:{
         who:{
-          label:'Who?',
-          error:'Please fill out this field'
+          label:'Who in your life do you want to enjoy a major transformation in their place and environment surroundings?'
         },
         howAttain:{
-          label:'How do you want to see them attain those PE goals, making it happen by 2020?',
-          error:'Please fill out this field'
+          label:'What do you want them to accomplish 5 years from now?'
         },
         howHelp:{
-          label:'How can you help them achieve their PE goals?',
-          error:'Please fill out this field'
+          label:'How will you help them make it happen by Year 5?'
         }
       }
     }
@@ -102,33 +95,17 @@ export default {
   5:{
     type:t.String,
     options:{
-      label:'What have you done by 2020 to heal and repair the relationships that you noted have regressed in the Day 17 Assignment?',
+      label:'What’s your place and environment wish for the world or a particular sector of the world?',
       auto:'none',
-      error:'Please fill out this field'
+
     }
   },
   6:{
     type:t.String,
     options:{
-      label:'List one wish that you have for the world or a particular sector of the world when it comes to personal aims and hobbies.',
+      label:'How can you help, be it in any small way, accomplish this goal?',
       auto:'none',
-      error:'Please fill out this field'
-    }
-  },
-  7:{
-    type:t.String,
-    options:{
-      label:'What advice would you give people who are on board with your wish – how can we all work together towards this aim in our personal lives?',
-      auto:'none',
-      error:'Please fill out this field'
-    }
-  },
-  8:{
-    type:t.String,
-    options:{
-      label:'How can you help, be it in any small way, to see this goal be achieved?',
-      auto:'none',
-      error:'Please fill out this field'
+      multiline:true
     }
   }
 };

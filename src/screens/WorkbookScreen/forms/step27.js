@@ -1,20 +1,21 @@
 import t from "../components/templates";
-
+import { Emotion } from "./contents";
 
 
 export default {
   1:{
     type:t.struct({
       id:t.maybe(t.String),
-      yesNo:t.Boolean
+      breath:t.String
     }),
     options: {
       fields: {
         id:{
           hidden: true
         },
-        yesNo: {
-          label:'The first way I want to encourage a healthier flow of giving and receiving is to take deep, proactive breaths. As you breathe IN, you receive. As you breathe OUT, you assert or give back to life. So take a deep breath in the nose, filling up the lower belly. Then breathe fully out of the mouth with an open, dropped jaw. Do this fully in both directions. This will show your nervous system how safe you are do engage in the act of giving and receiving. This is the foundational work. Did you do this?',          
+        breath: {
+          label:'Take in a deep breath. Then, breathe fully out of the mouth. What does your nervous system think about this receiving and giving of breath?',          
+          multiline: true
         }
       }
     },
@@ -27,149 +28,48 @@ export default {
   },
   2:{
     type:t.struct({
-     inventory:t.String,
-     reality2020:t.Boolean,
+
      replacements:t.String,
      relationshipToSelf:t.String
     }),
     options:{
-      label:'Now ask yourself what you discovered in the first inventory about how you have typically treated yourself in the last five years?',
       fields:{
-        inventory:{
-          label:'Inventory Summary',
-          error: 'Please fill out this field.'
-        },
-        reality2020:{
-          label:'Is that reality where you want to find yourself in 2020?'
-        },
         replacements:{
-          label:'If no, list out a few of those replacement self-thoughts that you intend to actualize going forward',
-          error: 'Please fill out this field.'
+          label:'What old thoughts will you replace with new ones that will create new trust and a new experience?',
+          help: '(e.g., Old Thinking = “Missed another workout today. I am so lazy.” vs. New Thinking = “Maybe I’m not getting enough rest. I’m going to take it easy on myself today."',
+          multiline: true
         },
         relationshipToSelf:{
-          label:'Describe your relationship to self in 2020.',
-          error: 'Please fill out this field.'
+          label:'What will your relationship to self look like in 5 years?',
+          multiline: true
+          
         }
       }
     }
   },
   3:{
-    type:t.struct({
-      field1:t.String,
-      field2:t.String,
-      field3:t.String
-    }),
+    type:t.list(Emotion),
     options:{
-      label:'Replacing your habitual negative thinking (internal messages) with purposely looking for things to acknowledge about yourself. This can be simply, small things. So scan your life and get in a daily practice of acknowledging yourself. Find things that encourage a consistent, positive, and self-affirming view of yourself.',
-      fields:{
-        field1:{
-          label:'I am proud of myself for _________ that I took(at some point)',
-          error: 'Please fill out this field.'
-        },
-        field2:{
-          label:'I feel great that I chose ________ or that I treated someone well or _________',
-          error: 'Please fill out this field.'
-        },
-        field3:{
-          label:'I want to acknowledge my gift/talent/ability _________',
-          error: 'Please fill out this field.'
-        }
-      }
-    }
-    
-  },
-  4:{
-    type:t.struct({
-      day1:t.String,
-      day2:t.String,
-      day3:t.String
-    }),
-    options:{
-      label:'Write a few down several days in a row. Repeat that for several weeks, until it becomes a more natural part of your life. This is GIVING to self... and letting yourself feel the impact of those positive, honest messages will enhance how you receive.',
-      auto:'labels',
-      fields: {
-        day1: {
-          error: 'Please fill out this field.'
-        },
-        day2: {
-          error: 'Please fill out this field.'
-        },
-        day3: {
-          error: 'Please fill out this field.'
-        }
-      }
-    }
-  },
-  5:{
-    type:t.struct({
-      feeling1:t.String,
-      feeling2:t.String,
-      feeling3:t.String
-    }),
-    options:{
-      label:'Final piece of your relationship to self. Get used to stopping several times a day to ask yourself: “What are 3 feelings that I am feeling right now in this moment?” To get a list of feelings with some wonderful clues, visit http://www.ronbaker.net/feelings/',
-      auto:'labels',
-      fields: {
-        feeling1: {
-          error: 'Please fill out this field.'
-        },
-        feeling2: {
-          error: 'Please fill out this field.'
-        },
-        feeling3: {
-          error: 'Please fill out this field.'
-        }
-      }
-    }
-  },
-  6:{
-    type:t.struct({
-      field1:t.String,
-      field2:t.Boolean,
-      field3:t.Boolean
-    }),
-    options:{
-      label:'What did you discover from your first inventory about giving and receiving with others from the last 5 years?',
-      fields:{
-        field1:{
-          label:'Write down your thoughts from your first inventory about giving and receiving with others',
-          error:'Please fill out this field'
-        },
-        field2:{
-          label:'Is that where you would like to find yourself in 2020?'
-        },
-        field3:{
-          label:'If not, then are you willing to interrupt old choices that no longer serve you AND replace them with healthier alternatives?'
-        }
-      }
-    }
+      label:'What are 3 feelings that you will feel about yourself 5 years from now?',
+      maxLines:3
+      }   
   },
   7:{
-    title:'PREPARE for moments to come with your various relationships, by making yourself aware of some of the things you value and appreciate about others.',
     type:t.list(
          t.struct({
          person:t.String,
-         thingsValued:t.String,
-         relationshipState:t.String
          })
        ),
     options:{
-      label:'Name 3 different people you value, 3 specific things you appreciate and value about each one, and the state of your relationship in 2020.',
+      label:'Who are 3 different people you will value or value more than you do now?',
       item: {
         fields:{
           auto:'placeholders',
           person: {
-            error:'Please fill out this field'
           },
-          thingsValued: {
-            error:'Please fill out this field'
-          },
-          relationshipState: {
-            error:'Please fill out this field'
-          }
-
         },
-      }
+      },
+      maxLines:3
     }
   },
   8:{
@@ -180,47 +80,30 @@ export default {
     }
   },
   9:{
-    type:t.struct({
-      physicalNeeds:t.list(t.struct({physicalNeed:t.String})),
-      mentalNeeds:t.list(t.struct({mentalNeed:t.String})),
-      emotionalNeeds:t.list(t.struct({emotionallNeed:t.String}))
-    }),
+    type:t.list(t.String),
     options:{
-      label:'In order to create a balance of what you give, what specific needs are you aware of that you have in your life (physical, emotional or mental needs)? List them here, at least 3 for each category (physical, mental, emotional). As you learn to identify those needs, it becomes safe to then communicate them one at a time to others.',
+      label:'What 3 needs (physical, emotional or mental) will you have in your life 5 years from now? ',
+      placeholder: 'Needs',
+      maxLines:3
     }
 
   },
   10:{
-    type:t.struct({
-      need:t.String,
-      communicate:t.Boolean
-    }),
+    type:t.Boolean,
     options:{
-      label:'Start with naming ONE need. Are you willing to communicate this need to another person, allowing yourself to receive the support? Start with simple things, to build up confidence. (i.e. I need help with moving some furniture around in my living room. I need a shoulder rub. I need someone to listen while I vent about something that just happened.) Once YOU identify the need, then you can look to your support structure to begin to practice mutual giving and receiving.',
-      fields: {
-        need:{
-          label:'Name of need',
-          error:'Please fill out this field'
-        },
-        communicate:{
-          label:'Willing to communicate this to another person?',
-          error:'Please fill out this field'
-        }
-      }
+      label:'Are you willing to communicate these needs to another person in the spirit of mutual giving?',
     }
   },
   11:{
     type:t.String,
     options: {
-      label:'Meditate on and come up with one 20/20 Relationship Vision for the world. This could revolve around how people all over the world treat each other, or deal with groups of people (i.e. families, specific societies/cities, countries), internally or externally (i.e. foreign relations).',
-      error:'Please fill out this field'
+      label:'What do you want to give more of to others in 5 years?',
     }
   },
   12:{
     type:t.Boolean,
     options: {
-      label:'If you simply ask yourself, would I be willing to offer the same thing to this friend/loved one in a similar way to how I am asking them to help support me?',
-      error:'Please fill out this field'
+      label:'What do you want to receive more of from others in 5 years?'
     }
   }
 };

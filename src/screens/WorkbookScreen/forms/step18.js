@@ -1,5 +1,5 @@
 import t from "../components/templates";
-import { OneToTenScale } from "./contents";
+import { OneToTenScale,CommonGoalOutcomes } from "./contents";
 
 
 
@@ -15,8 +15,7 @@ export default {
                     hidden:true
                 },
                 field:{
-                    label:'What changes have taken place in your PE in the last few years?',                    
-                    error: 'Did you move? Downsized your home? Moved in with a new roommate? Bought more plants for the house? etc...'
+                    label:'What changes have taken place in your place and environment since Year 1? '                    
                 }
             }
         },
@@ -29,59 +28,50 @@ export default {
     2: {
         type: t.String,
         options: {
-          label:'Who do you live with right now, and how does that effect your lifestyle and motivation?.',
-          error: 'Please name who you live with, if anyone.'
+          label:'Who do you live with right now, and how does that effect your lifestyle choices?.'
         }
     },
     3: {
         type: t.String,
         options: {
-          label:'Are you truly happy where you are or do you stay there because you are afraid of change? (or because this is all you’ve ever known)?',
-          error: "Maybe you've lived in one place your entire life? Or have you moved often trying to find the right place?"
+          label:'Are you truly happy where you are or do you stay there because you are afraid of change? (or because this is all you’ve ever known)?'
         }
     },
     4: {
         type: t.Boolean,
         options: {
-            label: 'Do you authentically connect to the culture in your town or city?',
-            error: 'Do you feel at home, or do you often imagine what life would be like elsewhere?'
-        }
+            label: 'Do you authentically connect to the culture in your town or city?'
+                }
     },
     5: {
         type: t.Boolean,
          options: {
-            label: 'Do you feel like you’re surrounded by like minded people or that you can get your social needs met in this environment (depending on which ones are priority) in terms of (friends, family, dating life, night life, hobbies, nature, music/art scene, affordability, etc)?'
+            label: 'Are you surrounded by like minded people? Are your social needs met?'
          }
     },
     6: {
         type: t.Boolean,
          options: {
-             label: 'Do the climate elements(ie. humid, dry, rainy, etc) suit you here, physically and mentally)?'
+             label: 'Do the climate elements(ie. humid, dry, rainy, etc) suit you physically and mentally)?'
          }
     },
     7: {
         type: t.list(
             t.struct({
                 goal:t.String,
-                degreeMet:OneToTenScale,
-                why:t.String
+                commonGoalOutcomes:CommonGoalOutcomes
             })
         ),
         options:{
-            label: 'What goals did you have for PE since 2011?(List up to 5)',
+            label: 'What were your place and environment goals since Year 1? ',
             item: {
                 fields:{
                     goal:{
-                        label:'Goal',
-                        error: 'Please enter a goal.'
+                        label:'Goal'
                     },
-                    degreeMet:{
-                        label:'To what degree did you meet the goal on a scale of 1-10',
-                        error: 'Please select a value.'
-                    },
-                    why:{
-                        label:'Why?',
-                        error: 'Specifically, what factors aided or inhibited your progress?'
+                    commonGoalOutcomes:{
+                        label:'Goal Outcome',
+                        help:'Classify your goal according to the 7 Goal Outcomes.'
                     }
                 }
 

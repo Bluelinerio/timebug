@@ -10,14 +10,13 @@ export default {
       healthyPerson: OneToTenScale
     }),
     options:{ 
-      label:'Take time to evaluate your general health status',
       fields: {
         id:{
           hidden: true
         },
         priority: {
-          label:'How much of a priority has health been for you?',
-          error:'Please select a value'
+          label:'- How much of a priority was your health over the past 5 years?'
+          //error:'Please select a value'
         },
         feelNow: {
           label:'How do you feel now, physical health-wise?(Using a 10pt scale with 1=not very good to 10-excellent',

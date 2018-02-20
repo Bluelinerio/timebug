@@ -18,7 +18,7 @@ export default {
               hidden: true
             },
             field: {
-              label: "Using the same Day 5 goals, make a list of 10-15 goals and classify them according to the 7 Outcomes.",              
+              label: "What are 5 of your goals from the past 5 years?",              
               auto:'placeholders',
               disableOrder: true,
               maxLines: 15,
@@ -27,8 +27,8 @@ export default {
               },
               item: {
                fields: {
-                 goal:{error: 'Please enter a goal.'},
-                 commonGoalOutcomes:{error: 'Please select a Goal Outcome.'}
+                 //goal:{error: 'Please enter a goal.'},
+                 commonGoalOutcomes:{label: 'Classify this goal according to the 7 Common Goal Outcomes listed below.'}
                } 
               }
             },
@@ -44,7 +44,8 @@ export default {
         type:  t.String,
         options: {
               error: 'Please fill out this field.',
-              label:"Write down a few observations about any patterns that emerge, and what you believe is behind them."
+              label:"Have you noticed any patterns? Have any guesses as to the reasons underlying such patterns?",
+              multiline:true
             },
           }  
 };

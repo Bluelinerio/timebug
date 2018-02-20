@@ -1,5 +1,5 @@
 import t from "../components/templates";
-import { LifeCategory, InteractionFrequency,StrengthOfI } from "./contents";
+import { PillarsOfLife, InteractionFrequency,OneToTenScale } from "./contents";
 
 export default {
 
@@ -9,37 +9,36 @@ export default {
       field: t.list(
         t.struct({
           i: t.String,
-          strengthOfI: StrengthOfI,
+          strengthOfI: OneToTenScale,
           whatIWouldSay: t.String
         })
       )
     }),
     options: {
-      label: "Identify 5-10 different I's.\n How strong is each I for you?\n(on a scale from strongest to weakest). \nWhat I would say in a few words?",
       fields: {
         id: {
           hidden: true
         },
         field: {
+          label:'What are 5-15 different Is that you feel are a part of yourself? (e.g., “Lazy I” could resemble “Procrastinating I”)',
           item: {
             fields: {
               i: {
-                label: 'Write down your \'I\'',
-                placeholder: 'procrastinate',
-                error: 'For example \'I procrastinate\'.'
+                //label: 'Write down your \'I\'',
+                help: 'e.g., “Lazy I”'
+               // error: 'For example \'I procrastinate\'.'
               },
               strengthOfI: {
-                placeholder: 'Strength Of "I"',
-                error: 'How strong is it for you?.'
+                label: 'How strong is each I (1 = Weakest and 10 = Strongest)?',
+               // error: 'How strong is it for you?.'
               },
               whatIWouldSay: {
-                placeholder: 'What I would say',
-                error:'Write a few words of reflection'
+                help: 'e.g., Angry I – "LEAVE ME ALONE!! STOP BOTHERING ME!”',
+                label:'What would this "I" say in a few words?'
               }
             },
           },
           auto: 'none',
-          label: "Different I's",
           disableOrder: true,
           maxLines: 10,
           config: {
@@ -76,10 +75,10 @@ export default {
           item: {
             fields: {
               goal: {
-                error:'Please enter a goal'
+                auto:'labels'
               },
               egoInfluence: {
-                error:'How did a particular ego aspect help or hinder you in pursuit of this goal?'
+                label:'How did a particular ego aspect help or hinder you in pursuit of this goal?'
               }
             }
           }

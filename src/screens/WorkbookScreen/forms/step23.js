@@ -36,16 +36,14 @@ export default {
 2:{
     type:t.String,
     options: {
-      label:'If you could change jobs, and do something totally new, what would it be?',
-      error: "Be honest with yourself - if you're totally happy, then you can say so!"
+      label:'If you could change jobs, and do something totally new, what would it be?'
     }
 
 },
 3:{
   type:t.String,
   options: {
-    label:'Reflecting back on Day 13’s Assignment – particularly the questions on Fulfillment – what changes would you need to make in your career to get both answers (on Fulfillment and Motivation) to 10 on the scale?',
-    error: 'Where should you spend more time? Less time?'
+    label:'Reflecting back on exercise 13, what changes would you need to make in your career to increase your fulfillment and motivation levels to 10 (Extremely fufilled/motivated)?'
   }
 
 },
@@ -57,14 +55,11 @@ export default {
   })
   ),
   options:{
-    label:'Back on Day 21, you were asked to list 2 BHAGs (Big Hairy Audacious Goals) for Career and 6 other areas of life. Focusing on Career only now, take that a step further, by adding 3-5 more Career BHAGs (so you should now have 5-7 Career BHAGs).',
     item:{
       fields: {
+        label:'Back on Step 21, you were asked to list your Big Hairy Audacious Goals (BHAGs). Focusing on Career only now, take that a step further by adding 3-5 more Career BHAGs.',
         careerBHAG: {
-          error: 'Please enter a BHAG.'
-        },
-        MLA: {
-          error: 'Please select a value.'
+          auto:'labels'
         }
       }
     }
@@ -82,8 +77,8 @@ export default {
     ),
   }),
    options:{
-     label:'Also on Day 21, Question 3 asked about specific skills that you are looking to build over the next 5 years. Go deeper into that now, with a career focus, making sure you have 3-5 career specific skills that you plan to develop. #Skillbug',
-     fields: {
+         fields: {
+           label:'Also on Step 21, you thought about the specific skills that you are looking to build over the next 5 years. Go deeper now, with a career focus, what 3-5 career specific skills do you plan to develop?',
       id: {
         hidden: true
       },
@@ -91,17 +86,11 @@ export default {
         item:{
           fields:{
             skill: {
-              label:'Skill',
-              error: 'What is a skill you need to develop?'
-            },
+              label:'Skill'            },
             whatWillYouDo: {
-              label: 'What will you do this year to develop this skill?',
-              error: 'Think big and believe in yourself!'
-            },
+              label: 'What will you do this year to develop this skill?'            },
             timePerWeek: {
-              label: 'How much time per week will you dedicate to this?',
-              error: 'Please select a value'
-            }
+              label: 'How much time per week will you dedicate to this?'            }
           }
         }
       }
@@ -111,9 +100,8 @@ export default {
 6: {
   type:t.Number,
   options:{
-    label:'The average worker spends 40 hrs * 50 weeks working = 2,000 hours. How many hours will you spend working in 2016? #Workbug',
-    placeholder:'Number of hours',
-    error: 'Please fill out this field.'
+    label:'The average worker spends 40 hrs * 50 weeks working = 2,000 hours. How many hours will you spend working this year? #Workbug',
+    placeholder:'Number of hours'
   }
 }
 };

@@ -1,5 +1,5 @@
 import t from "../components/templates";
-import { LifeCategory, InteractionFrequency } from "./contents";
+import { PillarsOfLife, InteractionFrequency } from "./contents";
 
 export default {
       1: {
@@ -8,7 +8,7 @@ export default {
             field: t.list(
                 t.struct({
                     roleModel: t.String,
-                    lifeCategory: LifeCategory,
+                    pillarsOfLife: PillarsOfLife,
                     interactionFrequency: InteractionFrequency,
                     why: t.String
                  })
@@ -21,30 +21,28 @@ export default {
             },
             
             field: {
-              label: "Make a list of 2-10 role models and note their influencial life category, the degree to which you know/interact with them personally and the reason for why you look up to them.",
-              
-              item:{
+              label: 'Who are your current role models?',
+               item:{
                 fields:{
                   roleModel: {
                     auto:'labels',
-                    error:'Please enter the name of a Role Model.'
+                  //  error:'Please enter the name of a Role Model.'
                   },
-                  lifeCategory:{
-                    auto:'labels',
-                    error: 'Please select a Life Category.'
+                  pillarsOfLife:{
+                    label:'What Life Category does he/she primarily influence?',
+                    //error: 'Please select a Life Category.'
                   },
                   interactionFrequency:{
-                    auto:'labels',
-                    error: 'How often do you interact with this person?'
+                    label:'To what degree do you know and interact with this Advisor personally?',
+                    //error: 'How often do you interact with this person?'
                   },
                   why: {
-                    label:'Why?',
-                    error:'Why would this person make a good role model for you?'
+                    label:'Why do you look up to this Advisor? What do you want to learn from them?',
+                    multiline:true
+                    //error:'Why would this person make a good role model for you?'
                   }
                 }
-              },
-                
-              auto: 'labels',
+              },               
               disableOrder: true,
               maxLines: 10,
               config: {

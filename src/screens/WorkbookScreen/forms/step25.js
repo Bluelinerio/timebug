@@ -1,5 +1,5 @@
 import t from "../components/templates";
-
+import { OneToTenScale } from "./contents";
 
 
 export default {
@@ -34,51 +34,6 @@ export default {
   },
   2: {
     type: t.struct({
-      aims: t.String,
-      abletoAttain: t.String
-    }),
-    options: {
-
-      auto:'none',
-      label: "The Year is 2020. Reflect on Day 15's assignment (Q3), and the Personal Aims that you were not able to achieve.",
-      fields: {
-        aims: {
-          label: 'Were those Aims on your 2020 Bucket List?',
-          error: 'Please fill out this field.'
-        },
-        abletoAttain: {
-          label: 'Why were you able to attain those goals and make time for those hobbies?',
-          error: 'Please fill out this field.'
-        }
-      }
-    }
-  },
-  3: {
-    type: t.struct({
-      field: t.list(
-        t.struct({
-          goal: t.String
-        })
-      ),
-    }),
-    options: {
-      fields: {
-        field: {
-          label: 'List any other new goals for your 2020 List',
-          item: {
-            fields: {
-              goal: {
-                placeholder: 'Goal',
-                error: 'Please fill out this field.'
-              }
-            }
-          }
-        }
-      },
-    }
-  },
-  4: {
-    type: t.struct({
       field: t.list(
         t.struct({
           bucketListPriorty: t.String,
@@ -90,18 +45,17 @@ export default {
     options: {
       fields: {
         field: {
-          label: 'Prioritize the items of the list using 1 = the most important, 2 = second most important etc.',          
-          auto: "placeholders",
-          item: {
+          label:'What activity and hobby goals will you achieve 5 years from now?',
+            item: {         
             fields: {
-              bucketListPriorty: {
-                error: 'Please fill out this field.'
+              goals: {
+                label: 'Goal'
               },
               importanceLevel: {
-                error: 'Please fill out this field.'
+             label: 'Prioritize the items of the list using 1 = the most important, 2 = second most important etc.',          
               },
               timeSpent: {
-                error: 'Please fill out this field.'
+                label: 'How many hours per month do you plan to spend, on average, on this activity?'
               }
             }
           }
@@ -109,53 +63,48 @@ export default {
       },
     }
   },
+  3: {
+    type: t.String,
+    options: {
+      label: 'Which areas in your personal time will you cut down on or out completely?'
+    }
+  },
+  4: {
+    type: t.String,
+    options: {
+      label: 'Who you want to see enjoy more time for themselves, doing the things that you know would make them happy?'
+    }
+  },
   5: {
     type: t.String,
     options: {
-      label: 'Looking back from 2020 to 2016, which areas in your personal time have you cut down on or out completely?',
-      error: 'Please fill out this field.'
+      label: 'How will you help them attain those personal goals 5 years from now?',
+      multiline: true
     }
   },
   6: {
     type: t.String,
-    options: {
-      label: 'Think about one other person in your life, who you want to see enjoy more time for themselves, doing the things that you know would make them happy. Who is it?',
-      error: 'Please fill out this field.'
+    options :{
+      label: "What's one wish that you have for the world or a particular sector of the world relating to personal aims and hobbies?"
     }
   },
   7: {
-    type: t.String,
-    options: {
-      label: 'How do you want to see them attain those personal goals, making it happen by 2020?',
-      error: 'Please fill out this field.'
-    }
-  },
-  8: {
-    type: t.String,
-    options: {
-      label: 'How can you help him/her achieve his/her personal goals?',
-      error: 'Please fill out this field.'
-    }
-  },
-  9: {
-    type: t.String,
-    options :{
-      label: 'List one wish that you have for the world or a particular sector of the world when it comes to personal aims and hobbies.',
-      error: 'Please fill out this field.'
-    }
-  },
-  10: {
     type: t.String,
     options: {
       label: 'What advice would you give people who are on board with your wish- how can we all work together towards this aim in our personal lives?',
       error: 'Please fill out this field.'
     }
   },
-  11: {
+  8: {
     type: t.String,
     options: {
-      label: 'How can you help, be it in any small way, to see this goal be achieved?',
-      error: 'Please fill out this field.'
+      label: 'How can you help encourage others to help actualize this world goal?'
+    }
+  },
+  9: {
+    type: t.String,
+    options: {
+      label: 'How can you help, be it in any small way, to see this goal be achieved?'
     }
   }
 };

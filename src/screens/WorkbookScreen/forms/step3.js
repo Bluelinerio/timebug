@@ -18,7 +18,7 @@ export default {
           hidden:true
         },
         field: {
-          label: "List 3-5 Charachter Strengths of yours, and the resulting goals that you achieved.",
+          label: "What are your strengths?",
           auto: 'placeholders',
           disableOrder: true,
           maxLines: 10,
@@ -56,7 +56,7 @@ export default {
     options: {
       fields: {
         field: {
-          label: "List 3-5 Charachter Traits that have held you back from achieving your goals.",
+          label: "What are your weaknesses?",
           auto: 'placeholders',
           disableOrder: true,
           maxLines: 5,
@@ -66,10 +66,11 @@ export default {
           item: {
             fields: {
               weaknessSelfView: {
-                error: "Please select a charachter weakness."
+               // error: "Please select a charachter weakness."
               },
               goalNotReached:{
-                  error: "What was one of your goals that you were not able to achieve as a result?"
+                label:"What is a goal that you haven't been able to reach as a result?"
+                 // error: "What was one of your goals that you were not able to achieve as a result?"
                 }
             }
           }
@@ -84,18 +85,17 @@ export default {
         weaknessFriendView: t.list(CharachterWeaknesses)
       }),
       options: {
-        label: "List 3-5 Charachter Strengths and Weaknesses from a friend or family member's point of view. You may directly engage someone through your TEAM dashboard.",
         fields: {
           friendsName: {
-            label: "Write down your friend or family member's name.",
+            label: "Write down a friend or family member's name.",
             error: "The best person to help you with this exercise is someone who you trust to me completely honest without being judgemental."
           },
           strengthFriendView: {
-            label:"Select 3-5 charachter strengths from your friend or family member's point of view.",
+            label:"What does a close friend or family member, an objective one, think of your strengths?",
             error:"Please select a charachter strength."
         },
           weaknessFriendView: {
-            label:"Select 3-5 charachter weaknesses from your friend or family member's point of view.",
+            label:"What does a close friend or family member, an objective one, think of your weaknesses?",
             error:"Please select a charachter weakness.",
             config: {
               minLines:3,

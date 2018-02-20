@@ -19,7 +19,7 @@ export default {
               hidden: true
             },
             field: {
-              label: "Choose 3-5 people who you really care about and write down 3-5 of their goals. Determine how you can support them and how much time you estimate it will require.",              
+              label: "Who do you really care about (up to 3 people)?What are their goals (up to 5)? If you aren't sure, ask them.",              
               auto:'placeholders',
               disableOrder: true,
               maxLines: 5,
@@ -28,9 +28,9 @@ export default {
               },
               item: {
                 fields: {
-                  significantOther: {error: 'Choose someone in your life who you want to, and are able to help.'},
-                  goals:{error:'Think about 3-5 goals you would like to help this person with.'},
-                  supportPlan: {error:'How will you help with these goals, and how much time will it require?'}
+                  significantOther: {/*error: 'Choose someone in your life who you want to, and are able to help.'*/},
+                goals:{/*error:'Think about 3-5 goals you would like to help this person with.'*/},
+                  supportPlan: {label:'How do you plan to support them?'}
                 }
               }
             },

@@ -37,21 +37,19 @@ export default {
   type:t.struct({
     dreamsDescribe:t.String,
     dreamsRemember:DreamsRemember,
-    dreamsComeTrue:t.Boolean
+    dreamsComeTrue:t.String
     }),
     options:{
-      label:'What do you dream about?',
       fields: {
+        label:'What do you dream about?',
         dreamsDescribe: {
-          label:'Describe the general themes, quality and lucidity of your dreams',
-          error: 'Do they feel "More real than reality itself?"...or hazy and hard to remember?'
+          label:'Any general themes?'
         },
         dreamsRemember:{
-          label:'How often do you remember your dreams?',
-          error: 'Please select a value.'
+          label:'How often do you remember your dreams?'
         },
         dreamsComeTrue: {
-          label:'Have your dreams ever come true (i.e., you dreamt about something and then it happened)'
+          label:'Have your dreams ever come true – as in, you dreamt about something and then it happened? If so, list an instance when that happened.'
         }
       }
     }
@@ -67,13 +65,11 @@ export default {
   options: {
     fields : {
     field: {
-      label: 'For the remainder of the program (8 Nights of Dreaming), try to remember and write your dreams down first thing in the morning – or even if you wake up in the middle of the night, the way Jason described his experience in the video. Be sure to note what themes, characters, settings, fears, hopes and aspirations were present.',
+      label: 'For the remainder of the program [8 Nights of Dreaming], try to remember and write your dreams down first thing in the morning – or even if you wake up in the middle of the night, the way Jason described his experience in the video. Note what themes, characters, settings, fears, hopes and aspirations were present.',
       item: {
         fields: {
           dream: {
-            label: 'Dream',
-            error: "Write down your dream - it's good to write down as many details as you can remember, being very specific with key words"
-          }
+            label: 'Dream'          }
         }
       }
     }
@@ -83,8 +79,6 @@ export default {
 4: {
   type:t.String,
   options:{
-    label:'What are your life dreams? This doesn’t have to be restricted to what your literal dreams (during sleep) are. Right now, go beyond 2020 and even your 20/20 BHAGs (from Day 21’s Assignment)',
-    error: 'Allow yourself to dream, in this moment, about everything you want your life to be. Anything is possible. Describe what you see..'
-  }
+    label:'In this moment, dream about everything you want your life to be. Anything is possible. Describe what you see. What are your life dreams?'  }
 }
 };

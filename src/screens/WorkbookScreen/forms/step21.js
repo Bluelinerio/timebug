@@ -1,5 +1,5 @@
 import t from "../components/templates";
-import { LifeCategory,CharachterStrengths, PercentSelector,OneToTenScale } from "./contents";
+import { PillarsOfLife,CharachterStrengths, PercentSelector,OneToTenScale } from "./contents";
 
 export default {
     1:{ 
@@ -7,7 +7,7 @@ export default {
             id:t.maybe(t.String),
            garden:t.list(
                t.struct({
-                   areaOfGarden:LifeCategory,
+                   areaOfGarden:PillarsOfLife,
                    selfInfluence:PercentSelector,
                    otherInfluence:PercentSelector,
                    nameOfOther:t.String
@@ -15,8 +15,9 @@ export default {
            )
         }),
         options:{
-            label:'Imagine different areas of your garden, as in the Life Categories which you have created back on Day 2. Who planted most of the seeds in your garden over the course of your life?',
+
             fields:{
+                label:'Imagine different areas of your garden.',
                 id:{
                     hidden: true
                 },
@@ -24,7 +25,7 @@ export default {
                     item:{
                         fields:{
                             areaOfGarden: {
-                                error:'Please select a Life category.'
+                                auto:'labels'
                             },
                             selfInfluence: {
                                 label:'Self Influence(%)',
@@ -35,7 +36,7 @@ export default {
                                 error: 'What percentage of the seeds in this garden were planted by someone else?'
                             },
                             nameOfOther: {
-                                error: 'Who planted the most?'
+                                error: 'Who planted most of the seeds in your garden over the course of your life? '
                             }
                         }
                     }
@@ -57,84 +58,53 @@ export default {
      },
      3:{
          type:t.struct({
-             careerShortcoming:t.String,
-             careerBHAG:t.String,
-             personalityAndHobbiesShortcoming:t.String,
-             personalityAndHobbiesBHAG:t.String,
-             healthShortcoming:t.String,
+            careerBHAG1:t.String,
+            careerBHAG2:t.String,
+            personalityAndHobbiesBHAG:t.String,
+             personalityAndHobbiesBHAG2:t.String,
              healthBHAG:t.String,
-             relationshipShortcoming:t.String,
+             healthBHAG2:t.String,
              relationshipBHAG:t.String,
-             financialShortcoming:t.String,
+             relationshipBHAG2:t.String,
              financialBHAG:t.String,
-             PEShortcoming:t.String,
+             financialBHAG2:t.String,
              PEBHAG:t.String,
-             spiritualityShortcoming:t.String,
-             spiritualityBHAG:t.String
+             PEBHAG2:t.String,
+             spiritualityBHAG:t.String,
+             spiritualityBHAG2:t.String
          }),
          options: {
-             label:'Reflecting on the 7 Self-Assessments from days 13-19, list two BHAGs for 2020',
              fields:{
-                 careerShortcoming:{
-                     label:'Career: A failure or shortcoming that you experienced over the last 5 years',
-                     error: 'What is something you would like to correct?'
+                label:"Reflecting on the 7 Self-assessments over Steps 13-19, list two Big Hairy Audacious Goals (BHAGs) that you'd like to plant for this next year.",
+                careerBHAG:{
+                     auto:'labels'
                  },
-                 careerBHAG:{
-                     label:'Career: Something completely new',
-                     error: 'Reach for the stars!'
-                 },
-                 personalityAndHobbiesShortcoming:{
-                    label:'Personality And Hobbies: A failure or shortcoming that you experienced over the last 5 years',
-                    error: 'What is something you would like to correct?'
-                },
-                personalityAndHobbiesBHAG:{
-                    label:'Personality And Hobbies: Something completely new',
-                    error: 'Reach for the stars!'
-                },
-                healthShortcoming:{
-                    label:'Health: A failure or shortcoming that you experienced over the last 5 years',
-                    error: 'What is something you would like to correct?'
-                },
-                healthBHAG:{
-                    label:'Health: Something completely new',
-                    error: 'Reach for the stars!'
-                },
-                relationshipShortcoming:{
-                    label:'Relationships: A failure or shortcoming that you experienced over the last 5 years',
-                
-                    error: 'What is something you would like to correct?'
-                },
-                relationshipBHAG:{
-                    label:'Relationships: Something completely new',
-                    error: 'Reach for the stars!'
-                },
-                financialShortcoming:{
-                    label:'Financial: A failure or shortcoming that you experienced over the last 5 years',
-                 
-                    error: 'What is something you would like to correct?'
-                },
-                financialBHAG:{
-                    label:'Financial: Something completely new',
-                    error: 'Reach for the stars!'
-                },
-                PEShortcoming:{
-                    label:'Place And Environment: A failure or shortcoming that you experienced over the last 5 years',
-                
-                    error: 'What is something you would like to correct?'
-                },
-                PEBHAG:{
-                    label:'Place And Environment: Something completely new',
-                    error: 'Reach for the stars!'
-                },
-                spiritualityShortcoming:{
-                    label:'Spirituality: A failure or shortcoming that you experienced over the last 5 years',
-                    
-                    error: 'What is something you would like to correct?'
-                },
-                spiritualityBHAG:{
-                    label:'Spirituality: Something completely new',
-                    error: 'Reach for the stars!'
-                }
+                 careerBHAG2:{
+                    auto:'labels'                 },
+                    personalityAndHobbiesBHAG:{
+                    auto:'labels'                },
+                personalityAndHobbiesBHAG2:{
+                    auto:'labels'                },
+                    healthBHAG:{
+                    auto:'labels'                },
+                healthBHAG2:{
+                    auto:'labels'                },
+                    relationshipBHAG:{
+                    auto:'labels'                },
+                relationshipBHAG2:{
+                    auto:'labels'                },
+                    financialBHAG:{
+                    auto:'labels'                },
+                financialBHAG2:{
+                    auto:'labels'                },
+                    placeAndEnvironmentBHAG:{
+                    auto:'labels'                },
+                placeAndEnvironmentBHAG2:{
+                    auto:'labels'                },
+                    spiritualityBHAG:{
+                    auto:'labels'                },
+                spiritualityBHAG2:{
+                    auto:'labels'                }
              }
          }
      },

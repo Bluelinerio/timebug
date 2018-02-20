@@ -1,5 +1,5 @@
 import t from "../components/templates";
-import { LifeCategory, InteractionFrequency } from "./contents";
+import { PillarsOfLife, InteractionFrequency } from "./contents";
 
 export default {
 
@@ -9,7 +9,7 @@ export default {
           field: t.list(
             t.struct({
               boardMember: t.String,
-              lifeCategory: LifeCategory,
+              pillarsOfLife: PillarsOfLife,
               interactionFrequency: InteractionFrequency
              })
           )
@@ -20,21 +20,21 @@ export default {
               hidden: true
             },
             field: {
-              label: "List 3-15 potential Board members who can positively impact different areas of your life.",
+              label: "Who is on your Board of Advisors?",
               
               item: {
                 fields:{
                   boardMember:{
                     auto:'placeholders',
-                    error: "Think about someone who's advice you would value regarding big decisions"
+                    //error: "Think about someone who's advice you would value regarding big decisions"
                   },
-                  lifeCategory:{
+                  pillarsOfLife:{
                     auto:'labels',
-                    error: 'Assign this person to one of the 7 Timebug Life Categories'
+                    //error: 'Assign this person to one of the 7 Timebug Life Categories'
                   },
                   interactionFrequency:{
                     auto:'labels',
-                    error: "How often do you interact with this person?"
+                    //error: "How often do you interact with this person?"
                   }
                 }
 
@@ -59,15 +59,14 @@ export default {
           field: t.list(
             t.struct({
               supportGroup: t.String,
-              lifeCategory: LifeCategory
+              pillarsOfLife: PillarsOfLife
              })
           )
         }),
         options: {
           fields: {
             field: {
-              label: "Make a list (up to 10) of any current or potential support groups and meetups, formal or informal,  that are a source of positive energy for you, in one or more domains of life.",   
-              
+              label: "List any current or potential support groups and meetups, formal or informal, that are a source of positive energy for you, in one or more domains of life.",        
               auto: 'placeholders',
               disableOrder: true,
               maxLines: 10,
@@ -77,10 +76,12 @@ export default {
               item: {
                 fields: {
                   supportGroup: {
-                    error: "Please enter the name of a support group"
+                    auto: 'placeholders'
+                    //error: "Please enter the name of a support group"
                   },
-                    lifeCategory:{
-                      error: "Please select a Life Category."
+                    pillarsOfLife:{
+                      auto: 'labels'
+                      //error: "Please select a Life Category."
                     }
                 }
               }

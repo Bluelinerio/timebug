@@ -35,24 +35,18 @@ export default {
     type: t.struct({
       field: t.list(
         t.struct({
-          teammate: t.String,
-          howConnect: t.String
+          teammate: t.String
         })
       )
     }),
     options: {
       fields: {
         field: {
-          label:'List 3-10 Spiritual “teammates”,and write a few notes about how you plan to connect with them this coming year.',          
+          label:'Who are your spiritual “teammates” in 5 years from now? ',          
           item: {
             fields: {
               teammate: {
                 label: 'Spiritual Teammate',
-                error:'Please fill out this field'
-              },
-              howConnect: {
-                label: 'How will you connect with him/her?',
-                error:'Please fill out this field'
               }
             }
           }
@@ -62,24 +56,6 @@ export default {
     }
   },
   3: {
-    type:
-    t.struct({
-      field: t.list(
-        t.struct({
-          goal: t.String
-        })
-      )
-    }),
-    options: {
-      fields: {
-        field: {
-          label: 'What major goals [BHAGs] do you envision for yourself by 2020? [i.e. doing a 10-day meditation retreat; fasting for 30 days; writing down your deepest feelings and thoughts in a journal every day for a whole year, etc.].',   
-          error:'Please fill out this field'       
-        }
-      }
-    }
-  },
-  4: {
     type: t.list(
       t.struct({
         bucketPEBHAG: t.String,
@@ -88,95 +64,65 @@ export default {
       })
     ),
     options: {
-      label: 'List out up to 10 items for your 2020 Spirituality Bucket List [i.e. reading specific philosophy, self-help or religious books; visiting sacred sites; etc].',
       item: {
         fields: {
           bucketPEBHAG: {
-            label: 'Spirituality Bucket List',
-            error:'Please fill out this field'
+            label: 'What major Spirituality goals (BHAGs) do you envision for yourself by year 5?'
           },
           priority: {
-            label: 'Prioritize your Spirituality BHAG with 1= most important, 2= second most important',
-            error:'Please fill out this field'
+            label: 'How will you prioritize your list items? (1= Low priority and 10= High priority)'
           },
           timeSpent: {
-            label: 'Estimate how much time per year (2016-2020) you plan to spend on avg working toward this BHAG',
-            error:'Please fill out this field'
+            label: 'How much time per week do you plan to spend on this spirituality BHAG per week?'
+          }
+        }
+      }
+    }
+  },
+  4: {
+    type: t.list(
+      t.struct({
+        i: t.String,
+        willEvolve: t.String,
+        willSay: t.String
+      })
+    ),
+    options: {
+      label: 'Remember Step 10 ("Mapping Out Your Internal World")?How will each of your listed Is (ego aspects) evolve by Year 5?',
+      item: {
+        fields: {
+          i: {
+            label: 'I(ego Aspect)'
+          },
+          willEvolve: {
+            label: "How will this 'I' evolve?"
+          },
+          willSay: {
+            label: "What is this 'I' saying in Year 5 that they it doesn't now?"
           }
         }
       }
     }
   },
   5: {
-    type: t.list(
-      t.struct({
-        i: t.String,
-        willEvolve: t.String,
-        saysNow: t.String,
-        willSay: t.String
-      })
-    ),
+    type: t.String,
     options: {
-      label: 'List out up to 10 items for your 2020 Spirituality Bucket List [i.e. reading specific philosophy, self-help or religious books; visiting sacred sites; etc].',
-      item: {
-        fields: {
-          i: {
-            label: 'I(ego Aspect)',
-            error:'Please fill out this field'
-          },
-          willEvolve: {
-            label: 'How will this I evolve in 2020?',
-            error:'Please fill out this field'
-          },
-          saysNow: {
-            label: 'What this I says now',
-            error:'Please fill out this field'
-          },
-          willSay: {
-            label: 'What this I will say in 2020',
-            error:'Please fill out this field'
-          }
-        }
-      }
+      label: 'Who do you want to enjoy a major transformation or sense of peace and internal happiness in their lives? How will you help him/her? ',
+      auto: 'none'
     }
   },
   6: {
     type: t.String,
     options: {
-      label: 'Think about one other person in your life, who you want to see enjoy a major transformation or sense of peace and internal happiness in their lives. Who is it?',
-      auto: 'none',
-      error:'Please fill out this field'
+      label: 'How will you want help him/her attain those inner journey goals by Year 5?',
+      auto: 'none'
     }
   },
   7: {
     type: t.String,
     options: {
-      label: 'How do you want to see them attain those inner journey goals, making it happen by 2020?',
-      auto: 'none',
-      error:'Please fill out this field'
-    }
-  },
-  8: {
-    type: t.String,
-    options: {
-      label: 'How can you help them achieve their Spiritual goals?',
-      auto: 'none',
-      error:'Please fill out this field'
-    }
-  },
-  9: {
-    type: t.String,
-    options: {
-      label: 'List one wish that you have for the world or a particular sector of the world when it comes to Spirituality (i.e. World Inner Peace).',
-      auto: 'none',
-      error:'Please fill out this field'
-    }
-  },
-  10: {
-    type: t.String,
-    options: {
-      label: 'How can you help, be it in any small way, to see this goal be achieved? (Hint: start with yourself and in  your own circle of family  and friends, with things that you have direct influence on).',
-      auto: 'none',
+      label: 'How do you want to help further spirituality in the world 5 years from now?',
+      auto: 'none'
       error:'Please fill out this field'
     }
   }

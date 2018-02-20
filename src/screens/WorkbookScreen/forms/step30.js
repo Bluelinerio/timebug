@@ -1,5 +1,5 @@
 import t from "../components/templates";
-import { LifeCategory, AreaOfLife, AssessmentTypes } from "./contents";
+import { PillarsOfLife, AreaOfLife, AssessmentTypes } from "./contents";
 
 
 export default {
@@ -33,80 +33,17 @@ export default {
       }
     }
   },
-  2: {
-    type: t.struct({
-      basics:t.list(
-        t.struct({
-          categoryResponsiblity: LifeCategory,
-          lifeCategoryClassification:AreaOfLife,
-          timebugCategory: AssessmentTypes
-        })
-      ),
-      home:t.list(
-        t.struct({
-            categoryResponsiblity: LifeCategory,
-            lifeCategoryClassification: LifeCategory,
-            timebugCategory: AssessmentTypes
-        })
-      ),
-      work:t.list(
-        t.struct({
-            categoryResponsiblity: LifeCategory,
-            lifeCategoryClassification:AreaOfLife,
-            timebugCategory: AssessmentTypes
-        })
-      )
-    }),
+  2:{
+    type:t.Boolean,
     options: {
-      label:'Start from 8,784. Map out how you would ideally spend and account for every single one of these hours.',
-      fields: {
-        basics: {
-          label: 'text',
-          item: {
-            fields: {
-              categoryResponsiblity: {
-                help: 'Please choose a Category.'
-              },
-              lifeCategoryClassification: {
-                help: 'Please choose a Classification.'
-              },
-              timebugCategory: {
-                help: 'Please select a value.'
-              }
-            }
-          }
-        },
-        home: {
-          item: {
-            fields: {
-              categoryResponsiblity: {
-                error: 'Please select a value.'
-              },
-              lifeCategoryClassification: {
-                error: 'Please select a value.'
-              },
-              timebugCategory: {
-                error: 'Please select a value.'
-              }
-            }
-          }
-        },
-        work: {
-          item: {
-            fields: {
-              categoryResponsiblity: {
-                error: 'Please select a value.'
-              },
-              lifeCategoryClassification: {
-                error: 'Please select a value.'
-              },
-              timebugCategory: {
-                error: 'Please select a value.'
-              }
-            }
-          }
-        }
-      }
+      label:'Over the past 7 Steps of Vision Creation, you were asked to apply emotions, thoughts and hours to various goals and bucket list items. Did you do it?',
+      help:'If not, bring those details in now, classifying each goal/item under one of your 5-10 Life Categories.'
+    }
+  },
+  3:{
+    type:t.String,
+    options: {
+      label:'Now, I challenge you to review what you’ve put down in this workbook. What emotions, thoughts or hours jump out to you, and why? Think about what you can do in the now and in the future to harness these features of your past and present life to make positive change in your future life.'
     }
   }
 };

@@ -19,10 +19,12 @@ export default {
               hidden:true
             },
             field: {
-              label: "Make a list of 10 recent goals and classify them according to the 7 Goal Types",              
+              label: "What are some of your recent goals? Classify them according to the 7 Goal Types.",              
               item:{
-                goal:{auto:'labels', error:'Please enter a goal'},
-                goalTypes:{auto:'labels', error:'Please select a Goal Type'}
+                fields:{
+                goal:{auto:'labels'}, //error:'Please enter a goal'},
+                goalTypes:{auto:'labels'} //error:'Please select a Goal Type'}
+                }
               },
               auto:'placeholders',
               disableOrder: true,

@@ -1,5 +1,5 @@
 import t from "../components/templates";
-import { MajorLifeEvents, TimeShift } from "./contents";
+import { MajorLifeEvents, TimeShift, IncreaseDecrease } from "./contents";
 
 export default {
 
@@ -9,7 +9,8 @@ export default {
       field: t.list(
         t.struct({
           majorLifeEvent: MajorLifeEvents,
-          timeShift: TimeShift
+          postiveOrNegative: t.String,
+          increaseDecrease:IncreaseDecrease
         })
       )
     }),
@@ -19,16 +20,20 @@ export default {
           hidden:true
         },
         field: {
-          label: "Specify what MLEs took placer over the past 5 years. Working with your Day 2 worksheet,specify how your time was generally shifted as a result.",          
+          label: "What MLEs happened to you over the past 5 years?",          
           item: {
             fields: {
 
-              timeShift: {
-                error:'How did the event shift your time?'
+              postiveOrNegative: {
+                label:'How did those MLEs factor in – positively and negatively – to your goals over the past 5 years?'
               },
               majorLifeEvent: {
-                label: 'Major Life Event',
-                error:'Please select a Major Life Event'
+                label: 'Major Life Event'
+                //error:'Please select a Major Life Event'
+              },
+              increaseDecrease: {
+                label:'Did these MLEs increase, decrease or do nothing to your Internal Energy Production?',
+      
               }
 
 
@@ -46,27 +51,6 @@ export default {
     value : {
       fields: {
         id: 'step12+v0.0.0.1'
-      }
-    }
-  },
-  2: {
-    type: t.struct({
-      emotionalResponse: t.String,
-      internalEnergyInfluence: t.String
-    }),
-    options: {
-      label: "Building on or refining Question 1 form Day 11, how did those MLEs factor in - positively and negatively - to your goals over the past 5 years?",
-      fields: {
-        emotionalResponse: {
-          auto:'none',
-          label:'Emotional/Mental Response',
-          error:'Please fill out this field.'
-        },
-        internalEnergyInfluence: {
-          auto:'none',
-          label:'Internal Energy Influence',
-          error:'Please fill out this field.'
-        },
       }
     }
   }

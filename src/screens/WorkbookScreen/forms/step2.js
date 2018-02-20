@@ -1,5 +1,5 @@
 import t from "../components/templates";
-import { LifeCategory, AreaOfLife, HoursPerMonth} from "./contents";
+import { PillarsOfLife, AreaOfLife, HoursPerMonth} from "./contents";
 
 export default {
   1: {
@@ -7,20 +7,18 @@ export default {
       id:t.maybe(t.String),
       field: t.list(
         t.struct({
-          category: LifeCategory,
+          category: PillarsOfLife,
           hours: HoursPerMonth
         })
       )
     }),
     options: {
-      label: "⏳\n\nHow do you spend a typical 168 hour week right now?",
       fields: {
         id: {
           hidden: true
-        },
-        
+        },        
         field: {
-          label: "Enter how many hours you spend weekly on each life category.",
+          label: "Break down a typical 168 hour week according to the 7 Pillars Of Life.",
           auto: 'placeholders',
           disableOrder: true,
           maxLines: 10,
@@ -30,10 +28,10 @@ export default {
           item: {
             fields: {
               category: {
-                error: "Please select a Life category."
+                //error: "Please select a Life category."
               },
                 hours:{
-                  error: "How many hours out of a 168 hour week do you spend on this category?"
+                  //error: "How many hours out of a 168 hour week do you spend on this category?"
                 }
             }
           }
@@ -50,17 +48,16 @@ export default {
     type: t.struct({
       field: t.list(
         t.struct({
-          category: LifeCategory,
+          category: PillarsOfLife,
           hours: HoursPerMonth
         })
       )
     }),
     options:  {
       fields: {
-        label: "If you could make any changes that you wanted to?",
         field: {
           
-          label: "Enter how many hours you WOULD LIKE to spend weekly on each life category.",
+          label: "How many hours do you ideally want to spend in each activity?",
           auto: 'placeholders',
           disableOrder: true,
           maxLines: 3,
@@ -70,11 +67,11 @@ export default {
           item: {
             fields: {
               category: {
-                error: "Please select a Life category."
+                //error: "Please select a Life category."
               },
                 hours:{
                   
-                  error: "How many hours out of a 168 hour week would you ideally spend on this category?"
+                  //error: "How many hours out of a 168 hour week would you ideally spend on this category?"
                 }
             }
           }
@@ -94,7 +91,7 @@ export default {
     options: {
       fields: {
         field: {
-          label: "Enter at least 3 things that you want to DO LESS of in general (ie. Watching TV).",
+          label: "What activities do you ideally want to engage in less?",
           auto: 'placeholders',
           disableOrder: true,
           maxLines: 10,
@@ -104,10 +101,10 @@ export default {
           item: {
             fields: {
               thing: {
-                error: "What's something you would like to do less of in the coming years?"
+                //error: "What's something you would like to do less of in the coming years?"
               },
                 areaOfLife:{
-                  error: "What Timebug Life Category does this thing fit into?"
+                  //error: "What Timebug Life Category does this thing fit into?"
                 }
             }
           }
@@ -128,7 +125,7 @@ export default {
       
       fields: {
         field: {
-          label: "Enter at least 3 things that you want to DO MORE of, in your ideal life setup.",
+          label: "What activities do you ideally want to engage in more?",
           auto: 'placeholders',
           disableOrder: true,
           maxLines: 10,
@@ -138,10 +135,10 @@ export default {
           item: {
             fields: {
               thing: {
-                error: "What's something you would like to do less of in the coming years?"
+                //error: "What's something you would like to do less of in the coming years?"
               },
                 areaOfLife:{
-                  error: "What Timebug Life Category does this thing fit into?"
+                  //error: "What Timebug Life Category does this thing fit into?"
                 }
             }
           }

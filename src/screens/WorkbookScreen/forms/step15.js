@@ -19,38 +19,27 @@ export default {
       )      
     }),
     options:{
-      label: 'Gather all of your previous goal data, including time spent, and key achievements over the past 5 years. You can start with 2015 if you feel overwhelmed assesing all 5 years.',
-      fields:{
+            fields:{
         id: {
           hidden: true
         },
         personalAimsAndHobbies:{
-          label: 'Top 10 Personal Aims/Hobbies',
           item:{
             fields:{
               personalAimHobby: {
                 label:'Personal Aim/Hobby',
-                error:'Please add a hobby'
               },
               TimeSpent: {
-                label:'Estimated time spent each month',
-                error:'Please select a value'
+                label:'How much time does this hobby take up a month?'
               },
               timeChanged: {
-                label:'How has time spent increased/decreased since last year?',
-                error:'Please select a value'
-              },
-              whatAchieved: {
-                label: 'What have you achieved in this area since last year?',
-                error:"Even with personal aims and hobbies that we do for fun, it can be very fulfilling to have specific progress goals"
+                label:'Has this amount of time increased or decreased since Year 1?'
               },
               activityFeelings: {
-                label: 'How do engaging in these activities make you feel?',
-                error:'E.g., if you are learning a musical instrument, how is it going?'
+                label: 'How does this activity make you feel?'
               },
               aloneOrPartner: {
-                label: 'Do you do this activity alone/with another? If so, who?',
-                error:'Please fill out this field'
+                label: 'Do you engage in this activity alone or with others? And if so, with whom generally?'
               }
             }
           }
@@ -95,7 +84,7 @@ export default {
     options:{
       fields:{
         aimsAndHobbies:{
-          label:'What Personal Aims and Hobbies were you not able to get going over the past 5 years, that you really wanted to do? (List up to 5)',          
+          label:"Were there any  aims & hobbies that you weren't able to accomplish that you really wanted to over the past 5 years?",          
           item:{
             fields:{
               personalAimHobby:{
@@ -103,8 +92,8 @@ export default {
                 error:'Please add a hobby'
               },
               why: {
-                placeholder: 'Why?',
-                error:'Why did you have trouble finding time for this hobby?'
+                placeholder: 'What stopped you from initiating or continuing these hobbies?',
+                //error:'Why did you have trouble finding time for this hobby?'
               }
             }
           }

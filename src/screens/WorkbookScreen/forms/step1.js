@@ -10,24 +10,21 @@ export default {
       stageOfLife: StageOfLife
     }),
     options: {
-      label: "Let's talk about your best life memory...",
       fields: {
         id: {
           hidden: true
         },
         stageOfLife: {
-          help: "At what stage of your life was it?"
+          label:'Which stage of life does this belong to?'
         },
         memory: {
-          label: "Describe what happened",
-          numberOfLines: 3,
+          label: "What are your best memories?",
           multiline: true,
-          help: "Try to be as descriptive as possible."
+          //help: "Try to be as descriptive as possible."
         },
         areaOfLife: {
-          label: "What area of life does this belong to?",
-          help: "Assign this memory to one of the 7 Timebug Life Categories. This will be help us with later steps of Assessment and Vision Creation."
-          
+          label: "Which of the 7 Pillars of Life does this belong to?",
+          //help: "Assign this memory to one of the 7 Timebug Life Categories. This will be help us with later steps of Assessment and Vision Creation."     
         },
       }
     },
@@ -44,21 +41,20 @@ export default {
       stageOfLife: t.maybe(StageOfLife),
     }),
     options: {
-      label: "What are some of your regrets?",
       fields: {
         stageOfLife: {
-          label: "At what stage of your life was it?",
-          help: "Please select a value"
+          label:'Which stage of life does this belong to?'
+         // help: "Please select a value"
         },
         areaOfLife: {
-          label: "What Area Of Life does this belong to?",
-          help: "Assign this memory to one of the 7 Timebug Life Categories. This will be help us with later steps of Assessment and Vision Creation.",          
-          help: "Please fill out this field."
+          label: "Which of the 7 Pillars of Life does this belong to?",
+          //help: "Assign this memory to one of the 7 Timebug Life Categories. This will be help us with later steps of Assessment and Vision Creation.",          
+          //help: "Please fill out this field."
         },
         regret: {
-          label: "Describe what happened",
-          help: "Please fill out this field.",
-          help: "Try to be as descriptive as possible."
+          label: "What are your main regrets?",
+         // help: "Please fill out this field.",
+          //help: "Try to be as descriptive as possible."
         }
       }
     }
@@ -68,19 +64,20 @@ export default {
       field: t.list(t.String)
     }),
     options: {
-      label: "What are your defining moments?",        
       fields: {
-        placeholder: 'birthing my first child.',
+        
+        //placeholder: 'birthing my first child.',
         field: {
+          label: "What are your defining life moments?(e.g. marriage, birth of a child, career awards, etc.)",        
+          
           disableOrder: true,
-          maxLines: 3,
-          label: "Create your defining moments",        
+          maxLines: 3,      
           config: {
             maxLines: 3,
           },
           item: {
-            label: "How would you name this moment?",
-            help: "Think about events/moments that changed the course of your life.",
+            placeholder: "Defining moment",
+            //help: "Think about events/moments that changed the course of your life.",
           }
         }
       }
@@ -88,17 +85,11 @@ export default {
   },
   4: {
     type: t.struct({
-      text: t.maybe(t.String),
-      emotions:t.list(Emotion)
+      text: t.maybe(t.String)
     }),
     options: {
       label: "When you were in that 90 year old’s body and mind",
       fields: {
-        emotions: {
-          item: {
-            label: "What were some of the emotion you felt?",
-            help: 'Emotions are hard for some and easy for others. Just pick the first thing that comes to mind.',          
-          }
         },
         text: {
           label: "reflecting back on your life, what did you feel?",

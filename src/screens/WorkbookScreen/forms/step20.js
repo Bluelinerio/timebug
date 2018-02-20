@@ -14,28 +14,22 @@ export default {
         )
       }),
       options: {
-        label:'Reflect back on your Day 11 Worksheet (The 5-Year Life Report), and make refinements or additional notes, given what you have seen here. Be more technical than before, especially when it comes to how you spent your Time & Energy.',
         fields: {
           id: {
             hidden: true
           },
           topGoals: {
-            label:'Review your goals, time spent, and key achievements listed on Day 11. What, if anything, has changed with your time and energy allotment?',            
+            label:'Reflect on your Step 11 entry (The 5-Year Life Report) and make refinements or additional notes. Be more technical and detailed, especially about how you spent your Time & Energy.',            
             item: {
               fields: {
                 goal: {
-                  placeholder: 'Goal',
-                  error:'Please enter a goal.'
+                  placeholder: 'Goal'
                 },
                 newInsights: {
-                  placeholder:'New insights',
-                  error:'Be as technical as you can, regarding new insights towards this goal.',
-                  auto:'none'
+                  placeholder:'New insights'
                 },
                 specificChanges: {
-                  placeholder: 'Specific changes to make',
-                  error:'What specific changes do you need to make in the coming year in order to make significant progress towards this goal?',
-                  auto:'none'
+                  placeholder: 'Specific changes to make'
                 }
               }
             }
@@ -51,70 +45,67 @@ export default {
     },
     2:{
       type: t.struct({
-          lifeCategoryBreakdown: t.String,
+          pillarsOfLifeBreakdown: t.String,
           thingsDoLess: TimeSpentProgress,
           thingsDoMore: TimeSpentProgress
       }),
       options: {
-        label:'Reflect back on your Day 2 Worksheet (More or Less Time), and make refinements or additional notes, in relation to how your time allocation has changed over the past 5 years; and how you ideally would like to make changes in the current breakdown across Life Categories.',
         fields: {
-          lifeCategoryBreakdown: {
-            label:'Has anything changed with your life category breakdown?',
-            error: "Maybe you're spending more time with certain categories and less with others? Is this a good thing?."
+          label:'Reflect back on your Step 2 entry (More or Less Time) and refine your vision on how you want to spend your time over the next 5 years.',         
+          pillarsOfLifeBreakdown: {
+            label:'Has anything changed with your life category breakdown?'
           },
           thingsDoLess: {
-            label:'Has anything changed with your 3 things that you want to DO LESS of in general(i.e. "Watching TV")?',
-            error: 'Please select a value.'
+            label:'Has anything changed with your 3 things that you want to DO LESS of in general(i.e. "Watching TV")?'
           },
           thingsDoMore: {
-            label:'c)Has anything changed with your 3 things that you want to DO MORE of in general(i.e. "Exercising")?',
-            error: 'Please select a value.'
+            label:'c)Has anything changed with your 3 things that you want to DO MORE of in general(i.e. "Exercising")?'
           }
         }
       }
 
     },
     3: {
+
       type:t.struct({
-        rank1:AssessmentTypes,
-        rank2:AssessmentTypes,
-        rank3:AssessmentTypes,
-        rank4:AssessmentTypes,
-        rank5:AssessmentTypes,
-        rank6:AssessmentTypes,
-        rank7:AssessmentTypes
+        career:OneToTenScale,
+        personalityAndHobbies:OneToTenScale,
+        health:OneToTenScale,
+        financial:OneToTenScale,
+        relationship:OneToTenScale,
+        placeAndEnvironment:OneToTenScale,
+        spirituality:OneToTenScale
       }),
       options:{
-        label: 'Reflect back on your 7 Assessments [Days 13-19]',
         fields: {
-        rank1:{
-            label: 'Rank the 7 Areas in terms of the order of importance you gave them over the past 5 years.\nRank 1:',
-            error: 'Which assesment type is most important to you?'
-            
-        },
-        rank2:{
+          label: 'Rank each of the 7 Life Categories in order of importance to you over the past 5 years.',            
+          
+          career:{
           auto:'labels',
-          error: 'Which assesment type is 2nd most important to you?'
+          help:'(10= Very Important and 1= Not important at all)'
         },
-        rank3:{
+        personalityAndHobbies:{
           auto:'labels',
-          error: 'Which assesment type is 3rd most important to you?'
+          help:'(10= Very Important and 1= Not important at all)'
         },
-        rank4:{
+        health:{
           auto:'labels',
-          error: 'Which assesment type is 4th most important to you?'
+          help:'(10= Very Important and 1= Not important at all)'
         },
-        rank5:{
+        financial:{
           auto:'labels',
-          error: 'Which assesment type is 5th most important to you?'
+          help:'(10= Very Important and 1= Not important at all)',
+          relationship:{
+          auto:'labels',
+          help:'(10= Very Important and 1= Not important at all)'
         },
-        rank6:{
+        placeAndEnvironment:{
           auto:'labels',
-          error: 'Which assesment type is 6th most important to you?'
+          help:'(10= Very Important and 1= Not important at all)'
         },
-        rank7:{
+        spirituality:{
           auto:'labels',
-          error: 'Which assesment type is least important to you?'
+          help:'(10= Very Important and 1= Not important at all)'
         }
         }
           }
@@ -130,35 +121,30 @@ export default {
           spirituality:t.Number
         }),
         options: {
+          fields: {
+            label:"How would you divide your energy and motivation level as a percent of a pie for each Category?",
           career: {
-            label: 'If the 7 areas were a pie, how would you slice up your energy and motivation level?(Total should = 100%)',
-            placeholder:'Career',
-            error: 'Please fill out this field.'
-          },
+            auto:'placeholders'
+                    },
           personalityAndHobbies:{
-            auto:'placeholders',
-            error: 'Please fill out this field.'
+            auto:'placeholders'
           },
           health:{
-            auto:'placeholders',
-            error: 'Please fill out this field.'
+            auto:'placeholders'
           },
           relationship:{
-            auto:'placeholders',
-            error: 'Please fill out this field.'
+            auto:'placeholders'
           },
           financial:{
-            auto:'placeholders',
-            error: 'Please fill out this field.'
+            auto:'placeholders'
           },
           placeAndEnvironment:{
-            auto:'placeholders',
-            error: 'Please fill out this field.'
+            auto:'placeholders'
           },
           spirituality:{
-            auto:'placeholders',
-            error: 'Please fill out this field.'
+            auto:'placeholders'
           }
+        }
         }
 
       },
@@ -208,154 +194,154 @@ export default {
           spiritualityOverall:OverallScore
          }),
          options: {
-           label:'Give yourself a final evaluation for each of the past 5-years, as well as an overall 5-Year Score(1-10 score per year, for a total maximum high score of 50/50, per each of the 7 Areas that were assessed).',
+           label:'Give yourself a final evaluation for each of the past 5 Years, as well as an overall 5-Year Score (1-10 score per year per Life Category for a total maximum high score of 50/50).',
            fields: {
              
              careerYear1:{
-               labels:'auto',
-               error: 'Give yourself a score'
+               labels:'auto'
+               
              },
              personalityAndHobbiesYear1: {
-              labels:'auto',
-              error: 'Give yourself a score'
+              labels:'auto'
+              
              },
              healthYear1: {
              
-              labels:'auto',
-              error: 'Give yourself a score'
+              labels:'auto'
+              
              },
              relationshipYear1: {
         
-              labels:'auto',
-              error: 'Give yourself a score'
+              labels:'auto'
+              
             },
             financialYear1: {        
-              labels:'auto',
-              error: 'Give yourself a score'
+              labels:'auto'
+              
             },
             placeAndEnvironmentYear1: {
            
-              labels:'auto',
-              error: 'Give yourself a score'
+              labels:'auto'
+              
             },
             spiritualityYear1: {
 
-              labels:'auto',
-              error: 'Give yourself a score'
+              labels:'auto'
+              
             },
              careerYear2:{
-              labels:'auto',
-              error: 'Give yourself a score'
+              labels:'auto'
+              
             },
             personalityAndHobbiesYear2: {
-              labels:'auto',
-              error: 'Give yourself a score'
+              labels:'auto'
+              
             },
             healthYear2: {
-              labels:'auto',
-              error: 'Give yourself a score'
+              labels:'auto'
+              
             },
             relationshipYear2: {
-              labels:'auto',
-              error: 'Give yourself a score'
+              labels:'auto'
+              
            },
            financialYear2: {
-            labels:'auto',
-            error: 'Give yourself a score'
+            labels:'auto'
+            
            },
            placeAndEnvironmentYear2: {
-            labels:'auto',
-            error: 'Give yourself a score'
+            labels:'auto'
+            
            },
            spiritualityYear2: {
-            labels:'auto',
-            error: 'Give yourself a score'
+            labels:'auto'
+            
            },
             careerYear3:{
-              labels:'auto',
-              error: 'Give yourself a score'
+              labels:'auto'
+              
             },
             personalityAndHobbiesYear3: {
              
-              labels:'auto',
-              error: 'Give yourself a score'
+              labels:'auto'
+              
             },
             healthYear3: {
-              labels:'auto',
-              error: 'Give yourself a score'
+              labels:'auto'
+              
             },
             relationshipYear3: {
          
-              labels:'auto',
-              error: 'Give yourself a score'
+              labels:'auto'
+              
            },
            financialYear3: {
-            labels:'auto',
-            error: 'Give yourself a score'
+            labels:'auto'
+            
            },
            placeAndEnvironmentYear3: {
-            labels:'auto',
-            error: 'Give yourself a score'
+            labels:'auto'
+            
            },
            spiritualityYear3: {
-            labels:'auto',
-            error: 'Give yourself a score'
+            labels:'auto'
+            
            },
             careerYear4:{
-              labels:'auto',
-              error: 'Give yourself a score'
+              labels:'auto'
+              
             },
             personalityAndHobbiesYear4: {
-              labels:'auto',
-              error: 'Give yourself a score'
+              labels:'auto'
+              
             },
             healthYear4: {
-              labels:'auto',
-              error: 'Give yourself a score'
+              labels:'auto'
+              
             },
             relationshipYear4: {
-              labels:'auto',
-              error: 'Give yourself a score'
+              labels:'auto'
+              
            },
            financialYear4: {
-            labels:'auto',
-            error: 'Give yourself a score'
+            labels:'auto'
+            
            },
            placeAndEnvironmentYear4: {
-            labels:'auto',
-            error: 'Give yourself a score'
+            labels:'auto'
+            
            },
            spiritualityYear4: {
-            labels:'auto',
-            error: 'Give yourself a score'
+            labels:'auto'
+            
            },
             careerYear5:{
-              labels:'auto',
-              error: 'Give yourself a score'
+              labels:'auto'
+              
             },
             personalityAndHobbiesYear5: {
-              labels:'auto',
-              error: 'Give yourself a score'
+              labels:'auto'
+              
             },
             healthYear5: {
-              labels:'auto',
-              error: 'Give yourself a score'
+              labels:'auto'
+              
             },
             relationshipYear5: {
-              labels:'auto',
-              error: 'Give yourself a score'
+              labels:'auto'
+              
            },
            financialYear5: {
-            labels:'auto',
-            error: 'Give yourself a score'
+            labels:'auto'
+            
            },
            placeAndEnvironmentYear5: {
-            labels:'auto',
-            error: 'Give yourself a score'
+            labels:'auto'
+            
            },
            spiritualityYear5: {
-            labels:'auto',
-            error: 'Give yourself a score'
+            labels:'auto'
+            
            },
             careerOverall:{
               labels:'auto',
@@ -441,179 +427,179 @@ export default {
            fields: {
              
              careerYear1:{
-              labels:'auto',
-              error: 'What was your 3rd party score for this area/year?'
+              labels:'auto'
+               
              },
              personalityAndHobbiesYear1: {
-              labels:'auto',
-              error: 'What was your 3rd party score for this area/year?'
+              labels:'auto'
+               
              },
              healthYear1: {
-              labels:'auto',
-              error: 'What was your 3rd party score for this area/year?'
+              labels:'auto'
+               
              },
              relationshipYear1: {
         
-              labels:'auto',
-              error: 'What was your 3rd party score for this area/year?'
+              labels:'auto'
+               
             },
             financialYear1: {
-              labels:'auto',
-              error: 'What was your 3rd party score for this area/year?'
+              labels:'auto'
+               
             },
             placeAndEnvironmentYear1: {
-              labels:'auto',
-              error: 'What was your 3rd party score for this area/year?'
+              labels:'auto'
+               
             },
             spiritualityYear1: {
-              labels:'auto',
-              error: 'What was your 3rd party score for this area/year?'
+              labels:'auto'
+               
             },
              careerYear2:{
-              labels:'auto',
-              error: 'What was your 3rd party score for this area/year?'
+              labels:'auto'
+               
             },
             personalityAndHobbiesYear2: {
-              labels:'auto',
-              error: 'What was your 3rd party score for this area/year?'
+              labels:'auto'
+               
             },
             healthYear2: {
-              labels:'auto',
-              error: 'What was your 3rd party score for this area/year?'
+              labels:'auto'
+               
             },
             relationshipYear2: {
-              labels:'auto',
-              error: 'What was your 3rd party score for this area/year?'
+              labels:'auto'
+               
            },
            financialYear2: {
-            labels:'auto',
-            error: 'What was your 3rd party score for this area/year?'
+            labels:'auto'
+             
            },
            placeAndEnvironmentYear2: {
-            labels:'auto',
-            error: 'What was your 3rd party score for this area/year?'
+            labels:'auto'
+             
            },
            spiritualityYear2: {
-            labels:'auto',
-            error: 'What was your 3rd party score for this area/year?'
+            labels:'auto'
+             
            },
             careerYear3:{
-              labels:'auto',
-              error: 'What was your 3rd party score for this area/year?'
+              labels:'auto'
+               
             },
             personalityAndHobbiesYear3: {
-              labels:'auto',
-              error: 'What was your 3rd party score for this area/year?'
+              labels:'auto'
+               
             },
             healthYear3: {
-              labels:'auto',
-              error: 'What was your 3rd party score for this area/year?'
+              labels:'auto'
+               
             },
             relationshipYear3: {
-              labels:'auto',
-              error: 'What was your 3rd party score for this area/year?'
+              labels:'auto'
+               
            },
            financialYear3: {
-            labels:'auto',
-            error: 'What was your 3rd party score for this area/year?'
+            labels:'auto'
+             
            },
            placeAndEnvironmentYear3: {
-            labels:'auto',
-            error: 'What was your 3rd party score for this area/year?'
+            labels:'auto'
+             
              
            },
            spiritualityYear3: {
-            labels:'auto',
-            error: 'What was your 3rd party score for this area/year?'
+            labels:'auto'
+             
            },
             careerYear4:{
-              labels:'auto',
-              error: 'What was your 3rd party score for this area/year?'
+              labels:'auto'
+               
             },
             personalityAndHobbiesYear4: {
-              labels:'auto',
-              error: 'What was your 3rd party score for this area/year?'
+              labels:'auto'
+               
             },
             healthYear4: {
-              labels:'auto',
-              error: 'What was your 3rd party score for this area/year?'
+              labels:'auto'
+               
             },
             relationshipYear4: {
-              labels:'auto',
-              error: 'What was your 3rd party score for this area/year?'
+              labels:'auto'
+               
            },
            financialYear4: {
-            labels:'auto',
-            error: 'What was your 3rd party score for this area/year?'
+            labels:'auto'
+             
            },
            placeAndEnvironmentYear4: {
-            labels:'auto',
-            error: 'What was your 3rd party score for this area/year?'
+            labels:'auto'
+             
            },
            spiritualityYear4: {
-            labels:'auto',
-            error: 'What was your 3rd party score for this area/year?'
+            labels:'auto'
+             
            },
             careerYear5:{
-              labels:'auto',
-              error: 'What was your 3rd party score for this area/year?'
+              labels:'auto'
+               
             },
             personalityAndHobbiesYear5: {
-              labels:'auto',
-              error: 'What was your 3rd party score for this area/year?'
+              labels:'auto'
+               
             },
             healthYear5: {
-              labels:'auto',
-              error: 'What was your 3rd party score for this area/year?'
+              labels:'auto'
+               
             },
             relationshipYear5: {
-              labels:'auto',
-              error: 'What was your 3rd party score for this area/year?'
+              labels:'auto'
+               
            },
            financialYear5: {
-            labels:'auto',
-            error: 'What was your 3rd party score for this area/year?'
+            labels:'auto'
+             
            },
            placeAndEnvironmentYear5: {
-            labels:'auto',
-            error: 'What was your 3rd party score for this area/year?'
+            labels:'auto'
+             
            },
            spiritualityYear5: {
-            labels:'auto',
-            error: 'What was your 3rd party score for this area/year?'
+            labels:'auto'
+             
            },
             careerOverall:{
-              labels:'auto',
-              error: 'What was your 3rd party score for this area/year?'
+              labels:'auto'
+               
             },
             personalityAndHobbiesOverall:{
-              labels:'auto',
-              error: 'What was your 3rd party score for this area/year?'
+              labels:'auto'
+               
             },
             healthOverall: {
-              labels:'auto',
-              error: 'What was your overall 3rd party score for this area?'
+              labels:'auto'
+  
             },
             relationshipOverall: {
-              labels:'auto',
-              error: 'What was your overall 3rd party score for this area?'
+              labels:'auto'
+  
             },
             financialOverall: {
-              labels:'auto',
-              error: 'What was your overall 3rd party score for this area?'
+              labels:'auto'
+  
             },
             placeAndEnvironmentOverall: {
-              labels:'auto',
-              error: 'What was your overall 3rd party score for this area?'
+              labels:'auto'
+  
             },
             spiritualityOverall: {
-              labels:'auto',
-              error: 'What was your overall 3rd party score for this area?'
+              labels:'auto'
+  
             }
 
            }
          }
 
       }
-          
+    }
 };

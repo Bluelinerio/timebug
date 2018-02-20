@@ -41,31 +41,31 @@ export default {
       mentalEmotional:t.String
     }),
     options:{
-      label:'The year is 2020. You have achieved all of your health goals and feel on top of the world, physically, mentally and emotionally. Describe what changes you made in your life to reach this state.  What changes and achievements did you make across the following areas:',
       fields:{
+        label:'What changes and achievements will you make across the following areas?',
         priorities:{
           label:'Prioritizing your Health Goals vs. other Areas',
-          error: 'Please fill out this field.'
+          multiline: true
         },
         fitnessExercise:{
           label:'Fitness & Exercise',
-          error: 'Please fill out this field.'
+          multiline: true
         },
         nutritionDiet:{
           label:'Nutrition & Diet',
-          error: 'Please fill out this field.'
+          multiline: true
         },
         sleep:{
           label:'Sleep',
-          error: 'Please fill out this field.'
+          multiline: true
         },
         bodyCare:{
           label:'Body Care',
-          error: 'Please fill out this field.'
+          multiline: true
         },
         mentalEmotional:{
           label:'Mental & Emotional Health',
-          error: 'Please fill out this field.'
+          multiline: true
         }
       }
     }
@@ -78,19 +78,18 @@ export default {
       howHelp:t.String
     }),
     options:{
-      label:'Think about one other person in your life, who you want to see make drastic improvements in their physical health.',
       fields:{
         who:{
-          label:'Who is it?',
-          error: 'Please fill out this field.'
+          label:'Who you want to make drastic improvements in their physical health?',
         },
         howChange:{
-          label:'How should they change by 2020?',
-          error: 'Please fill out this field.'
+          label:'How exactly do you want them to change?',
+          multiline: true
         },
         howHelp:{
-          label:'How can you help?',
-          error: 'Please fill out this field.'
+          label:'How can you help them achieve this goal?',
+          multiline: true
+          
         }
       }
     }
@@ -99,24 +98,22 @@ export default {
     type:t.String,
     options:{
       label:'List one wish that you have for the world or a particular sector of the world when it comes to Health.',
-      auto:'none',
-      error: 'Please fill out this field.'
+      auto:'none'
     }
   },
   5:{
     type:t.String,
     options:{
-      label:'What group of people or country can be most influential in helping this goal be attained?',
-      auto:'none',
-      error: 'Please fill out this field.'
+      label:'What group of people or country can be most influential in helping to attain this goal?',
+      auto:'none'
     }
   },
   6:{
     type:t.String,
     options:{
-      label:'How can you help, be it in any small way, to see this goal be achieved?',
+      label:'How can you help, even in a small way, to acheive this goal?',
       auto:'none',
-      error: 'Please fill out this field.'
+      multiline:true
     }
   }
 

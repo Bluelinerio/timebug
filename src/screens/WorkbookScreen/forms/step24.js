@@ -35,104 +35,92 @@ export default {
 2:{ 
   type:t.String,
   options: {
-    label:'The year is 2020. How much money does you bank have in it? Take a picture or screenshot of your current bank account balance, print it out, and edit the date and cash balance, writing in 12/31/2020 and your desired number.',
-    error: 'Please fill out this field.'
+    label:'Five years from now, how much money will you have in the bank?' 
+    
+
   }
 },
-2:{
-  type:t.String,
-  options: {
-    label:'Write a short story about what it will take for you to achieve your Money BHAG?',
-    error: 'Please fill out this field.'
-  }
-},
-4:{
+3:{
   type:t.list(
     t.String
   ),
   options:{
-    label:'Who is your “finance team” that has helped you to not only attain but also manage your financial success?',
+    label:'Who is your “finance team” that helped you not only to attain but also manage your financial success?',
     item:{
-      placeholder:'Person',
-      error: 'Please fill out this field.'
+      placeholder:'Person'
     }
+  }
+},
+4:{
+  type:t.String,
+  options: {
+    label:'What do you plan to do with any excess money that you come into over the next 5 years?'
   }
 },
 5:{
   type:t.String,
   options: {
-    label:'What do you plan to do with any excess money that you come into by 2020?',
-    error: 'Please fill out this field.'
+    label:'How will your life differ 5 years from now due to your  money BHAG acheivements?'
   }
 },
 6:{
   type:t.String,
   options: {
-    label:'Describe how your life will be different in 2020, as a result of the achievement of your Money BHAG.',
-    error: 'Please fill out this field.'
+    label:'How much more or less will you work as a result?'
   }
 },
 7:{
   type:t.String,
   options: {
-    label:'How much more or less will you work as a result?',
-    error: 'Please fill out this field.'
+    label:'How many days a year will you take off for vacation?'
   }
 },
 8:{
-  type:t.Number,
+  type:t.String,
   options: {
-    label:'How many days a year will you be off or on vacation?',
-    error: 'Please fill out this field.'
+    label:'What additional material things will you have or have access to that you now don’t?'
   }
 },
 9:{
   type:t.String,
   options: {
-    label:'What additional material things will you have or have access to that you now don’t?',
-    error: 'Please fill out this field.'
+    label:"what emotions will you feel as a result that you don't feel now?"
   }
 },
 10:{
   type:t.String,
   options: {
-    label:'How will you feel, that is different than what you feel now?',
-    error: 'Please fill out this field.'
+    label:'Who do you want to succeed with or change his / her relationship to money?'
   }
 },
 11:{
   type:t.String,
   options: {
-    label:'Think about one other person in your life, who you want to see succeed with and change their relationship to money. Who is it?',
-    error: 'Please fill out this field.'
+    label:'How do you want them change his/her financial fortunes in 5 years?'
   }
 },
 12:{
   type:t.String,
   options: {
-    label:'How do you want to see them change their financial fortunes by 2020?',
-    error: 'Please fill out this field.'
+    label:'How can you help him/her achieve this goal? '
   }
 },
 13:{
   type:t.String,
   options: {
-    label:'How can you help them achieve this goal?',
-    error: 'Please fill out this field.'
+    label:'What one wish do you have for the world or a particular sector of the world relating to money?'
   }
 },
 14:{
   type:t.String,
   options: {
-    label:'List one wish that you have for the world or a particular sector of the world when it comes to money.',
-    error: 'Please fill out this field.'
+    label:'What group of people or country can be most influential in helping this goal be attained?'
   }
 },
 15:{
   type:t.String,
   options: {
-    label:'What group of people or country can be most influential in helping this goal be attained?',
-    error: 'Please fill out this field.'
+    label:'How can you help, be it in any small way, to see this goal achieved?'
   }
 }
 };

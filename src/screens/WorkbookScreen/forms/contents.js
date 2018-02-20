@@ -2,11 +2,13 @@
 import t     from '../components/templates';
 
 export const AreaOfLife = t.enums.of([
-  'Personal Finances',
-  'Place & Environment ',
-  'Relationships',
-  'Health & Wellness',
-  'Spirituality',
+  'Career',
+  'Personality & Hobbies',
+  'Health',
+  'Financial',
+  'Relationship',
+  'Place & Environment',
+  'Spirituality'
 ], 'AreaOfLife');
 
 export const TimesPerWeek = t.enums.of([
@@ -30,17 +32,15 @@ export const StageOfLife = t.enums.of([
   'Late Adulthood (Age 80+)'
 ], 'StageOfLife');
 
-export const LifeCategory = t.enums.of([
-  'Spirituality',
-  'Work Life',
-  'Special Projects',
-  'Skills & Education',
-  'Me Time',
-  'Family time',
-  'Hobbies',
-  'Basic Needs',
-  'Health & Wellness'
-], 'LifeCategory');
+export const PillarsOfLife = t.enums.of([
+  'Career',
+  'Personality & Hobbies',
+  'Health',
+  'Financial',
+  'Relationship',
+  'Place & Environment',
+  'Spirituality'
+], 'PillarsOfLife');
 
 export const Emotion = t.enums.of([
   'Awesome',
@@ -295,6 +295,16 @@ export const SatiffactionFromCurrentResult = t.enums.of([
 
 ], 'SatiffactionFromCurrentResult');
 
+
+
+export const CreditScoreChange = t.enums.of([
+  'Gotten much better',
+  'Gotten a bit better',
+  'No major change',
+  'Gotten a bit worse',
+  'Gotten much worse'
+], 'CreditScoreChange');
+
 export const ChangeKind = t.enums.of([
   'Same',
   'Small Change',
@@ -327,9 +337,9 @@ export const UseWearableTech = t.enums.of([
 ],'UseWearableTech')
 
 export const PaidFairly = t.enums.of([
-  'Beyond Fair',
-  'Not Fair',
-  'Just Right'
+  'Yes',
+  'No',
+  "I'm Not Sure"
 ],'PaidFairly')
 
 export const WhereStandToday = t.enums.of([
@@ -358,6 +368,13 @@ export const TakeEnergizers = t.enums.of([
   'Daily'
 ],'TakeEnergizers')    
 
+export const GoalProcess = t.enums.of([
+'I haven’t done anything',
+ 'Ad hoc and random',
+  'Good at setting but not tracking',
+   'Super detailed and consistent',
+   'Thorough + working with a coach or peer group'
+],'GoalProcess')
 
 export const OneToTenScale = t.enums.of([
   '1',
@@ -428,6 +445,14 @@ export const StrengthOfI = t.enums.of([
   'Weak',
   'Very Weak'
 ],'StrengthOfI')
+
+export const IncreaseDecrease = t.enums.of([        
+  'Strongly increased',
+  'Mildly increased',
+  'Did nothing',
+  'Mildly decreased',
+  'Strongly decreased'
+],'IncreaseDecrease')
 
 export const PercentCompleted = t.enums.of([
   '0-10%',
