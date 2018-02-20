@@ -90,7 +90,6 @@ export default {
     options: {
       label: "When you were in that 90 year old’s body and mind",
       fields: {
-        },
         text: {
           label: "reflecting back on your life, what did you feel?",
           help: "Be completely honest with yourself. This is an exercise to help us determine what we want to keep doing well, and what we need to imrprove on as we walk down the path to 2020.",
