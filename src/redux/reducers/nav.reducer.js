@@ -44,7 +44,6 @@ const persistConfig = {
   version: thisVersion,
   migrate: (state, version) => {
     if (state) {
-      debugger;
       if(!state.routes || !allRoutesAreValid(state.routes)) {
         return Promise.resolve(initialRouteState)
       }
