@@ -6,7 +6,7 @@ export default {
     1: {
         type: t.struct({
           id:t.maybe(t.String),
-            field: t.list(
+            goals: t.list(
                 t.struct({
                     goal: t.String,
                     goalTypes: GoalTypes
@@ -14,19 +14,18 @@ export default {
               )
         }),
         options: {
+          label: "What are some of your recent goals? Classify them according to the 7 Goal Types.",                        
           fields: {
             id: {
               hidden:true
             },
-            field: {
-              label: "What are some of your recent goals? Classify them according to the 7 Goal Types.",              
+            goals: {
               item:{
                 fields:{
                 goal:{auto:'labels'}, //error:'Please enter a goal'},
                 goalTypes:{auto:'labels'} //error:'Please select a Goal Type'}
                 }
               },
-              auto:'placeholders',
               disableOrder: true,
               maxLines: 10,
               config: {

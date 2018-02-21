@@ -5,21 +5,21 @@ export default {
   1: {
     type: t.struct({
       id:t.maybe(t.String),
-      field: t.list(
+      pillar: t.list(
         t.struct({
-          category: PillarsOfLife,
+          pillarsOfLife: PillarsOfLife,
           hours: HoursPerMonth
         })
       )
     }),
     options: {
+      label: "Break down a typical 168 hour week according to the 7 Pillars Of Life.",
+      
       fields: {
         id: {
           hidden: true
         },        
-        field: {
-          label: "Break down a typical 168 hour week according to the 7 Pillars Of Life.",
-          auto: 'placeholders',
+        pillarOfLife: {
           disableOrder: true,
           maxLines: 10,
           config: {
@@ -27,7 +27,7 @@ export default {
           },
           item: {
             fields: {
-              category: {
+              pillarsOfLife: {
                 //error: "Please select a Life category."
               },
                 hours:{
@@ -46,19 +46,18 @@ export default {
   },
   2: {
     type: t.struct({
-      field: t.list(
+      pillar: t.list(
         t.struct({
-          category: PillarsOfLife,
+          pillarsOfLife: PillarsOfLife,
           hours: HoursPerMonth
         })
       )
     }),
     options:  {
+      label: "How many hours do you ideally want to spend on each activity?",
+      
       fields: {
-        field: {
-          
-          label: "How many hours do you ideally want to spend in each activity?",
-          auto: 'placeholders',
+        pillar: {
           disableOrder: true,
           maxLines: 3,
           config: {
@@ -66,7 +65,7 @@ export default {
           },
           item: {
             fields: {
-              category: {
+              pillarsOfLife: {
                 //error: "Please select a Life category."
               },
                 hours:{
@@ -81,18 +80,17 @@ export default {
   },
   3: {
     type: t.struct({
-      field: t.list(
+      activities: t.list(
         t.struct({
-          thing: t.String,
-          areaOfLife: t.maybe(AreaOfLife),
+          activity: t.String,
+          pillarsOfLife: t.maybe(PillarsOfLife),
         })
       )
     }),
     options: {
-      fields: {
-        field: {
-          label: "What activities do you ideally want to engage in less?",
-          auto: 'placeholders',
+      label: "What activities do you ideally want to engage in less?",
+            fields: {
+              activities: {
           disableOrder: true,
           maxLines: 10,
           config: {
@@ -100,7 +98,7 @@ export default {
           },
           item: {
             fields: {
-              thing: {
+              activity: {
                 //error: "What's something you would like to do less of in the coming years?"
               },
                 areaOfLife:{
@@ -114,19 +112,17 @@ export default {
   },
   4: {
     type: t.struct({
-      field: t.list(
+      activities: t.list(
         t.struct({
-          thing: t.String,
-          areaOfLife: t.maybe(AreaOfLife),
+          activity: t.String,
+          pillarsOfLife: t.maybe(PillarsOfLife),
         })
       )
     }),
     options: {
-      
+      label: "What activities do you ideally want to engage in more?",      
       fields: {
-        field: {
-          label: "What activities do you ideally want to engage in more?",
-          auto: 'placeholders',
+        activities: {
           disableOrder: true,
           maxLines: 10,
           config: {
@@ -134,10 +130,10 @@ export default {
           },
           item: {
             fields: {
-              thing: {
+              activity: {
                 //error: "What's something you would like to do less of in the coming years?"
               },
-                areaOfLife:{
+              pillarsOfLife:{
                   //error: "What Timebug Life Category does this thing fit into?"
                 }
             }

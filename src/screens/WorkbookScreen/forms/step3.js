@@ -5,21 +5,21 @@ export default {
   1: {
     type: t.struct({
       id:t.maybe(t.String),
-      field: t.list(
+      charachterStrengths: t.list(
         t.struct({
-          strengthsSelfView: Strengths,
+          strengths: Strengths,
           resultingGoalAchieved: t.String
          })
       )
     }),
-    options: {
+    options: {          
+      label: "What are your strengths?",
+    
       fields: {
         id: {
           hidden:true
         },
-        field: {
-          label: "What are your strengths?",
-          auto: 'placeholders',
+        charachterStrengths: {
           disableOrder: true,
           maxLines: 10,
           config: {
@@ -27,11 +27,12 @@ export default {
           },
           item: {
             fields: {
-              strengthsSelfView: {
+              strengths: {
+                auto:'labels',
                 error: "Please select a charachter strength."
               },
                 resultingGoalAchieved:{
-                  error: "What is a goal that you achieved as a result of this strength of yours?"
+                  label: "What is a goal that you achieved as a result of this strength of yours?"
                 }
             }
           }
@@ -46,18 +47,17 @@ export default {
   },
   2: {
     type: t.struct({
-      field: t.list(
+      charachterWeaknesses: t.list(
         t.struct({
-          weaknessSelfView: Weaknesses,
+          weaknesses: Weaknesses,
           goalNotReached: t.String
          })
       )
     }),
     options: {
+      label: "What are your weaknesses?",
       fields: {
-        field: {
-          label: "What are your weaknesses?",
-          auto: 'placeholders',
+        charachterWeaknesses: {
           disableOrder: true,
           maxLines: 5,
           config: {
@@ -65,7 +65,8 @@ export default {
           },
           item: {
             fields: {
-              weaknessSelfView: {
+              weaknesses: {
+                auto:'labels'
                // error: "Please select a charachter weakness."
               },
               goalNotReached:{
@@ -81,21 +82,22 @@ export default {
   3: {
     type: t.struct({
         friendsName: t.String,
-        strengthFriendView: t.list(Strengths),
-        weaknessFriendView: t.list(Weaknesses)
+        strengths: t.list(Strengths),
+        weaknesses: t.list(Weaknesses)
       }),
       options: {
+        label:"What does a close friend or family member, an objective one, think of your strengths & weaknesses?",        
         fields: {
           friendsName: {
             label: "Write down a friend or family member's name.",
             error: "The best person to help you with this exercise is someone who you trust to me completely honest without being judgemental."
           },
-          strengthFriendView: {
-            label:"What does a close friend or family member, an objective one, think of your strengths?",
+          strengths: {
+            label:'Strengths',
             error:"Please select a charachter strength."
         },
-          weaknessFriendView: {
-            label:"What does a close friend or family member, an objective one, think of your weaknesses?",
+        weaknesses: {
+            label:"Weaknesses",
             error:"Please select a charachter weakness.",
             config: {
               minLines:3,

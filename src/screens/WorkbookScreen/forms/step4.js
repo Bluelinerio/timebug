@@ -6,29 +6,29 @@ export default {
     1: {
         type: t.struct({
           id:t.maybe(t.String),
-          field: t.list(
+          advisors: t.list(
             t.struct({
               boardMember: t.String,
-              PillarsOfLife: PillarsOfLife,
+              pillarsOfLife: PillarsOfLife,
               interactionFrequency: InteractionFrequency
              })
           )
         }),
         options: {
+          label: "Who is on your Board of Advisors?",          
           fields: {
             id: {
               hidden: true
             },
-            field: {
-              label: "Who is on your Board of Advisors?",
+            advisors: {
               
               item: {
                 fields:{
                   boardMember:{
-                    auto:'placeholders',
+                    auto:'labels',
                     //error: "Think about someone who's advice you would value regarding big decisions"
                   },
-                  PillarsOfLife:{
+                  pillarsOfLife:{
                     auto:'labels',
                     //error: 'Assign this person to one of the 7 Timebug Life Categories'
                   },
@@ -39,7 +39,6 @@ export default {
                 }
 
               },
-              auto: 'placeholders',
               disableOrder: true,
               maxLines: 15,
               config: {
@@ -56,18 +55,17 @@ export default {
       },
       2: {
         type: t.struct({
-          field: t.list(
+          supportGroups: t.list(
             t.struct({
               supportGroup: t.String,
-              PillarsOfLife: PillarsOfLife
+              pillarsOfLife: PillarsOfLife
              })
           )
         }),
         options: {
-          fields: {
-            field: {
-              label: "List any current or potential support groups and meetups, formal or informal, that are a source of positive energy for you, in one or more domains of life.",        
-              auto: 'placeholders',
+          label: "List any current or potential support groups and meetups, formal or informal, that are a source of positive energy for you, in one or more domains of life.",        
+                    fields: {
+            supportGroups: {
               disableOrder: true,
               maxLines: 10,
               config: {
@@ -76,10 +74,10 @@ export default {
               item: {
                 fields: {
                   supportGroup: {
-                    auto: 'placeholders'
+                    auto: 'labels'
                     //error: "Please enter the name of a support group"
                   },
-                    PillarsOfLife:{
+                  pillarsOfLife:{
                       auto: 'labels'
                       //error: "Please select a Life Category."
                     }

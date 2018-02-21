@@ -15,21 +15,22 @@ export default {
       )
     }),
     options: {
+      label:'What are 5-15 different Is that you feel are a part of yourself? (e.g., “Lazy I” could resemble “Procrastinating I”)',      
       fields: {
         id: {
           hidden: true
         },
         field: {
-          label:'What are 5-15 different Is that you feel are a part of yourself? (e.g., “Lazy I” could resemble “Procrastinating I”)',
           item: {
             fields: {
               i: {
                 //label: 'Write down your \'I\'',
-                help: 'e.g., “Lazy I”'
+                label:'What would you name this I?',
+                placeholder:'e.g. "Lazy I"'
                // error: 'For example \'I procrastinate\'.'
               },
               strengthOfI: {
-                label: 'How strong is each I (1 = Weakest and 10 = Strongest)?',
+                label: 'How strong is this "I" (1 = Weakest and 10 = Strongest)?',
                // error: 'How strong is it for you?.'
               },
               whatIWouldSay: {
@@ -55,18 +56,17 @@ export default {
   },
   2: {
     type: t.struct({
-      field: t.list(
+      egoInfluence: t.list(
         t.struct({
           goal: t.String,
-          egoInfluence: t.String
+          helpOrHinder: t.String
         })
       )
     }),
     options: {
+      label: "Reflecting back on the day 5 list of Goals, pick several and briefly note how your ego aspects either hindered or aided you.",      
       fields: {
-        label: "Reflecting back on the day 5 list of Goals, pick several and briefly note how your ego aspects either hindered or aided you.",
-        field: {
-          auto: 'placeholders',
+        egoInfluence: {
           disableOrder: true,
           maxLines: 10,
           config: {
@@ -77,7 +77,7 @@ export default {
               goal: {
                 auto:'labels'
               },
-              egoInfluence: {
+              helpOrHinder: {
                 label:'How did a particular ego aspect help or hinder you in pursuit of this goal?'
               }
             }
