@@ -9,14 +9,10 @@ export default {
          spiritualViews: SpiritualViews,
          spiritualInfluence: t.list(t.struct({
             name:t.String
-         })),
-         currentMentors: t.list(t.struct({
-           name:t.String,
-           why:t.String
          }))
-
        }),
        options: {
+         label: 'Spirituality Assessment',
          fields: {
            id:{
              hidden:true
@@ -38,20 +34,7 @@ export default {
                }
              }
            },
-           currentMentors: {
-             label: 'Who are your current role models or mentors in this area? ',
-             item: {
-                fields: {
-                  name: {
-                    label: 'What is their name?',
-                    help: 'If you do not know anyone personally, is there anyone whose work in this area inspires you?'
-                  },
-                  why: {
-                    label: 'Why do you admire their approach to and views on life? '
-                  }                  
-                }
-             }
-           }
+ 
          }
 
        },
@@ -63,12 +46,38 @@ export default {
 
     },
     2:{
+    type: t.struct ({
+      currentMentors: t.list(t.struct({
+          name:t.String,
+          why:t.String
+       }))
+     }),
+    options:{
+      label: 'Who are your current role models or mentors in this area? ',
+      
+      fields:{
+        currentMentors: {
+          item: {
+             fields: {
+               why: {
+                 label: 'Why do you admire their approach to and views on life? '
+               }                  
+             }
+          }
+        }
+
+      }
+
+    }
+    },
+    3:{
       type: t.struct({
         timeSpentSpirutality: TimeSpent,
         spiritualityChanged: t.String
 
       }),
       options: {
+        label: 'Spirituality Assessment',
         fields:{
           timeSpentSpirutality: {
             label: 'How much time do you spend each week on spiritual practices, interactions, reading, writing, etc.?'
@@ -79,7 +88,7 @@ export default {
         }
       }
     },
-    3:{
+    4:{
       type:t.struct({
         internalQualities:t.String,
         insights:t.struct({
@@ -91,6 +100,7 @@ export default {
           })
       }),
       options: {
+        label: 'Spirituality Assessment',
         fields:{
           internalQualities: {
             label: 'What internal qualities(Iqs: Goal Type 4) have been influenced - positively or negatively - by Spiritual practices - or lack thereof?',
