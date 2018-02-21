@@ -55,7 +55,7 @@ export default class Walkthrough extends React.Component<Props> {
             <Image 
             source={slide.image}
             resizeMode='cover'
-            style={{width: 180 , height: 310, marginTop:50}}
+            style={{width: 240 , height: 410, marginTop:20}}
              />
           }
           </View>
