@@ -122,7 +122,6 @@ export function * watchChangesInFormsAndUpdateAchievements() {
         tagName,
         userId
       })
-      debugger;
       if( res.user ) {
         // an FYI put:
         yield put({ type: CREATE_ACHIEVEMENT, payload })
@@ -133,7 +132,6 @@ export function * watchChangesInFormsAndUpdateAchievements() {
     } else if(payload.deleteAchievement) {
       const { achievementId } = payload.deleteAchievement;
       const res = yield call(deleteAchievement, achievementId)
-      debugger;
       if( res.user ) {
         yield put(updateUser(res.user))
       } else {
