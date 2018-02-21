@@ -38,7 +38,7 @@ export const PillarsOfLife = t.enums.of([
   'Health',
   'Financial',
   'Relationship',
-  'Place & Environment',
+  'Environment',
   'Spirituality'
 ], 'PillarsOfLife');
 
