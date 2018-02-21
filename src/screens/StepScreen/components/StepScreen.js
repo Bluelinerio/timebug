@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   Platform,
   StyleSheet,
@@ -8,19 +8,22 @@ import {
   ScrollView,
   TouchableOpacity,
   StatusBar
-} from "react-native";
-import Markdown from '../../../Modules/Markdown';
-import Icon from "react-native-vector-icons/Ionicons";
-import styles from '../styles';
-import Button from "../../../components/Button";
-import GradientWithTwoColors from '../../../components/GradientWithTwoColors'
-import ScrollableHeader from "../../../components/ScrollableHeader";
-import type { Step } from "../../../services/cms";
-import { getImageUrl } from "../../../services/cms";
-import CustomImage from "../../../components/CustomImage";
-import { APPBAR_HEIGHT, STATUSBAR_HEIGHT } from "../../../constants";
-import markdownStyles from "../../../styles/Markdown/stepScreen";
-import AssignmentButtonContainer from '../containers/AssignmentButtonContainer';
+} from 'react-native';
+import Icon                       from 'react-native-vector-icons/Ionicons';
+import Markdown                   from '../../../Modules/Markdown';
+import Button                     from '../../../components/Button';
+import GradientWithTwoColors      from '../../../components/GradientWithTwoColors'
+import ScrollableHeader           from '../../../components/ScrollableHeader';
+import CustomImage                from '../../../components/CustomImage';
+import type { Step }              from '../../../services/cms';
+import { getImageUrl }            from '../../../services/cms';
+import styles                     from '../styles';
+import { 
+  APPBAR_HEIGHT, 
+  STATUSBAR_HEIGHT 
+}                                 from '../../../constants';
+import markdownStyles             from '../../../styles/Markdown/stepScreen';
+import StepScreenButtonContainer  from '../containers/StepScreenButtonContainer';
 
 export type Props = {
   title: string, 
@@ -39,12 +42,12 @@ const Content = ({ title, subtitle, description, color, number }) => (
     {Platform.OS === 'ios' &&
       <StatusBar 
         translucent 
-        barStyle="light-content"
+        barStyle='light-content'
         backgroundColor={'white'}
       /> 
     }
     <Text
-    testID={"step_subtitle"}
+    testID={'step_subtitle'}
     style={[styles.stepScreenSubtitle]}
     >
     {subtitle}
@@ -57,7 +60,7 @@ const Content = ({ title, subtitle, description, color, number }) => (
     <ScrollView style={styles.stepScreenScrollView}>
       <Markdown markdownStyles={markdownStyles}>{description}</Markdown>
     </ScrollView>
-    <AssignmentButtonContainer number={number} />
+    <StepScreenButtonContainer number={number} />
   </View>
 );
 
