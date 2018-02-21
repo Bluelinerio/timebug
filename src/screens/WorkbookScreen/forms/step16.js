@@ -10,12 +10,13 @@ export default {
       healthyPerson: OneToTenScale
     }),
     options:{ 
+      label:'Health Assessment',
       fields: {
         id:{
           hidden: true
         },
         priority: {
-          label:'- How much of a priority was your health over the past 5 years?'
+          label:'How much of a priority was your health over the past 5 years?'
           //error:'Please select a value'
         },
         feelNow: {

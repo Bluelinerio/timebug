@@ -11,7 +11,7 @@ export default {
       meditateAnswer: t.Boolean,
     }),
     options: {
-      label: 'Let us reiew your progress quick...',
+      label: '20/20 Life Vision Check-in',
       fields: {
         id: {
           hidden: true
@@ -34,16 +34,27 @@ export default {
     }
   },
   2:{
-    type:t.Boolean,
+    type:t.struct({commitment1:t.Boolean}),
     options: {
       label:'Over the past 7 Steps of Vision Creation, you were asked to apply emotions, thoughts and hours to various goals and bucket list items. Did you do it?',
-      help:'If not, bring those details in now, classifying each goal/item under one of your 5-10 Life Categories.'
+      auto:'none',
+      fields:{
+        commitment1:{
+          help:'If not, bring those details in now, classifying each goal/item under one of your 5-10 Life Categories.'          
+        }
+      }
     }
   },
   3:{
-    type:t.String,
+    type:t.struct({challenge:t.String}),
     options: {
-      label:'Now, I challenge you to review what you’ve put down in this workbook. What emotions, thoughts or hours jump out to you, and why? Think about what you can do in the now and in the future to harness these features of your past and present life to make positive change in your future life.'
+      label:'Now, I challenge you to review what you’ve put down in this workbook. What emotions, thoughts or hours jump out to you, and why? Think about what you can do in the now and in the future to harness these features of your past and present life to make positive change in your future life.',
+      fields:{
+        challenge:{
+          multiline:true,
+          numberOfLines:5
+        }
+      }
     }
   }
 };
