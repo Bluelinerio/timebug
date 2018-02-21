@@ -1,5 +1,8 @@
 // @flow
-import { AsyncStorage } from 'react-native'
+import { 
+	AsyncStorage,
+	Platform
+} from 'react-native'
 
 // older tokens we want to erase...
 const OLD_TOKEN_KEY = '@2020-Token'
@@ -24,8 +27,12 @@ const wipeOldTokens = Promise.all([
 	AsyncStorage.removeItem(OLD_USER_ID_KEY)
 ]);
 
-// todo: this isn't working needs fixing:
-export default {
+const android = {
+	getTokenAndUserId: (): ?TokenAndUserIdType => ({}),
+	setTokenAndUserId: () => null
+}
+
+const ios = {
 	getTokenAndUserId: (): ?TokenAndUserIdType => wipeOldTokens
 		.then(AsyncStorage.getItem(TOKEN_KEY))
 		.then(stringifed => stringifed && JSON.parse(stringifed) || emptyTokenAndUserId )
@@ -36,3 +43,11 @@ export default {
 		AsyncStorage.removeItem(TOKEN_KEY),
 	])
 }
+
+
+export default Platform.select({
+	ios,
+	android
+})
+
+// todo: this isn't working needs fixing:

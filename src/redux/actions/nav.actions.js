@@ -1,4 +1,7 @@
 // @flow
+import {
+  Platform
+} from 'react-native';
 import { NavigationActions }    from 'react-navigation'
 import { action }               from '../utils'
 import type { SelectPutActionFnType } from '../selectPutAction'
@@ -31,27 +34,37 @@ export const navigateWith = ({ routeName, props: { navigation : { state: { param
   params
 })
 
+const navigateToInitialRoute = () => NavigationActions.navigate({ 
+  routeName: routes.root.initialRouteName 
+})
+
 export const reset = () => NavigationActions.reset({
   index: 0,
   key: null,
   actions: [
-      NavigationActions.navigate({ 
-        routeName: routes.root.initialRouteName 
-      })
+    navigateToInitialRoute()
   ]
 })
 
-export const restartStepAction = (step: Step) => NavigationActions.reset({
-  index: 0,
-  key: null,
-  actions: [
-    NavigationActions.navigate({
-      routeName: routes.root.initialRouteName
-    }),
-    goToAssignmentFlow({step})
-  ]
-})
+export const restartStepAction = (step: Step) => {
+  // fix unclear bug where in android goToAssignmentFlow() does somethign wierd to the screen manager.
+  const actions = Platform.select({
+    ios: [
+      navigateToInitialRoute(),
+      goToAssignmentFlow({ step })
+    ],
+    android: [
+      navigateToInitialRoute()
+    ]
+  })
+  return NavigationActions.reset({
+    index: 1,
+    key: null,
+    actions 
+  })
+}
 
+// TODO remove static string and use params (routes.step.StepScreen ... )
 export const goToStepScreen                   = (props: any) => navigateWith({ props, routeName:'StepScreen' });
 export const navigateToAssignmentLeadInScreen = (props: any) => navigateWith({ props, routeName:'AssignmentLeadInScreen' })
 export const goToWorkbookScreen               = (props: any) => navigateWith({ props, routeName:'WorkbookScreen' })
