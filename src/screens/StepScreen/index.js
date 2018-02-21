@@ -1,8 +1,9 @@
 import React from 'react';
 import { StyleSheet } from 'react-native'
 import { NavigationActions } from 'react-navigation'
-import screen from './containers/StepScreenContainer';
-import HeaderCloseButton from '../../components/HeaderCloseButton'
+import screen                 from './containers/StepScreenContainer';
+import HeaderCloseButton      from '../../components/HeaderCloseButton'
+import Logo                   from '../../components/Logo'
 
 // look at the 'styles' in react-navigation/src/views/Header/Header.js
 const headerStyle = { 
@@ -19,6 +20,7 @@ const headerStyle = {
 
 screen.navigationOptions = ({ navigation:{ dispatch } }) => ( { 
   headerStyle,
+  headerTitle: <Logo height={30} width={30}/>,
   headerLeft: 
     <HeaderCloseButton
       testID={'step_screen_close_icon'} 
