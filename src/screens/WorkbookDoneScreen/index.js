@@ -4,6 +4,10 @@ import {
 	Text,
 	SafeAreaView
 } from 'react-native'
+import { 
+  HeaderBackButton, 
+  NavigationActions 
+} from 'react-navigation';
 import screen from './containers/WorkbookDoneScreenContainer';
 import { reset } from '../../redux/actions/nav.actions';
 
@@ -39,7 +43,14 @@ screen.navigationOptions = ({ navigation: { dispatch, state: { params: { stepCol
 			shadowColor: 'transparent' 
 		},
 		headerTintColor: 'white',
-    headerLeft: null
+    headerLeft: (
+			<SafeAreaView>
+				<HeaderBackButton
+					tintColor="white"
+					onPress={ () => dispatch( NavigationActions.back()) }
+				/>
+			</SafeAreaView>
+    )
 	}
 }
 
