@@ -45,7 +45,7 @@ export const resetStore = client.resetStore;
 export const authenticateWithFBToken = (fbToken: string): Auth =>
 	client
 		.query({
-			query: gql`
+			query:gql`
 				query auth($token: String!) {
 					authenticateFB(facebookToken: $token) {
 						token
@@ -62,7 +62,7 @@ const handleErrorGettingUser = (errorResponse: ErrorResponse) => {
 	throw errorResponse
 }
 
-const userSortedFormFragment = gql`
+const userSortedFormFragment =gql`
 	fragment SortedForms on User {
 		forms(orderBy: stepId_DESC, first: 20) {
 			id
@@ -73,7 +73,23 @@ const userSortedFormFragment = gql`
 		}
 	}
 `
-const userFragments = gql`
+const userAchievementsFragment =gql`
+	fragment UserAchievements on User {
+		achievements {
+			tagName
+			id
+			updatedAt
+			createdAt
+			updates {
+				id
+				createdAt
+				value
+			}
+		}
+	}
+`
+
+const userFragments =gql`
 	fragment SortedForms on User {
 		forms(orderBy: stepId_DESC, first: 20) {
 			id
@@ -86,6 +102,7 @@ const userFragments = gql`
 	fragment UserAchievements on User {
 		achievements {
 			tagName
+			id
 			updatedAt
 			createdAt
 			updates {
@@ -101,7 +118,7 @@ const userFragments = gql`
 export const fetchUserWithId = (id: string): User =>
 	client
 		.query({
-			query: gql`
+			query:gql`
 				query getUser($id: ID!) {
 					User(id: $id) {
 						id
@@ -123,14 +140,15 @@ export const fetchUserWithId = (id: string): User =>
 export const createForm = ({ userId, stepId, data } : CreateFormArgs): any =>
 	client
 		.mutate({
-			mutation: gql`mutation create($userId: ID!, $stepId: Int!, $data: Json! ) {
-				createForm(userId: $userId, stepId: $stepId, data: $data), {
-						user {
-							...SortedForms
+			mutation:gql`
+				mutation create($userId: ID!, $stepId: Int!, $data: Json! ) {
+					createForm(userId: $userId, stepId: $stepId, data: $data), {
+							user {
+								...SortedForms
+							}
 						}
 					}
-				}
-				${userSortedFormFragment}
+					${userSortedFormFragment}
 				`,
 			variables: {
 				userId,
@@ -143,7 +161,7 @@ export const createForm = ({ userId, stepId, data } : CreateFormArgs): any =>
 export const updateForm = ({ userId, id, data } : UpdateormArgs): any =>
 	client
 		.mutate({
-			mutation: gql`
+			mutation:gql`
 				mutation update($userId:ID!, $id:ID!, $data:Json!) {
 					updateForm(userId:$userId, id:$id, data:$data) {
 						user {
@@ -162,11 +180,53 @@ export const updateForm = ({ userId, id, data } : UpdateormArgs): any =>
 		.then(parse('updateForm'))
 
 
+export const createAchievement = ({ userId, tagName }) => 
+	client.mutate({
+		mutation:gql`
+			mutation create($userId:ID!, $tagName:String!) {
+				createAchievement(tagName:$tagName, userId:$userId) {
+					id 
+					createdAt
+					tagName
+					user {
+						...UserAchievements
+					}
+				}
+			}
+			${userAchievementsFragment}
+		`,
+		variables: {
+			userId,
+			tagName,
+		}
+	})
+	.then(parse('createAchievement'))
+
+export const deleteAchievement = (achievementId) => 
+	client.mutate({
+		mutation:gql`
+			mutation delete($achievementId:ID) {
+				deleteAchievement(id:$achievementId) {
+					id
+					tagName
+					user {
+						...UserAchievements
+					}
+				}
+			}
+			${userAchievementsFragment}
+		`,
+		variables: {
+			achievementId
+		}
+	})
+	.then(parse('deleteAchievement'))
+
 export const testUser = ({ userId }): any =>
 	client
 		.query({
-			query: gql`
-				query testUser($id:ID!){
+			query:gql`
+				query testUser($id:ID!) {
 					User(id: $id){
 						id
 						name
