@@ -23,7 +23,6 @@ import { reset } from '../../redux/actions/nav.actions';
 screen.navigationOptions = ({ navigation: { dispatch, state: { params: { stepColor, stepNumber } } } }) => {
 	return {
 		headerRight: (
-			<SafeAreaView style={{flexDirection: 'row'}}>
 				<Button
 					title={'Done'}
 					color={'white'}
@@ -34,7 +33,6 @@ screen.navigationOptions = ({ navigation: { dispatch, state: { params: { stepCol
 						paddingHorizontal: 16,
 					}}
 				/>
-			</SafeAreaView>
 		),
 		headerStyle: {
 			backgroundColor: stepColor,
@@ -44,12 +42,10 @@ screen.navigationOptions = ({ navigation: { dispatch, state: { params: { stepCol
 		},
 		headerTintColor: 'white',
     headerLeft: (
-			<SafeAreaView>
 				<HeaderBackButton
 					tintColor="white"
 					onPress={ () => dispatch( NavigationActions.back()) }
 				/>
-			</SafeAreaView>
     )
 	}
 }
