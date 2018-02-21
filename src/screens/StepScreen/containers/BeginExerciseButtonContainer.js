@@ -23,7 +23,6 @@ const merge = (stateProps, dispatchProps, ownProps): Props => {
   const { colors, steps } = stateProps
   const { navigation: {state: { params:{ stepId }}}} = ownProps
   const backgroundColor = colors[stepId]
-  debugger;
   return {
     ...stateProps,
     ...dispatchProps,
