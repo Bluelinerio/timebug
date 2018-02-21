@@ -34,9 +34,9 @@ export const LifeStages = t.enums.of([
 
 export const PillarsOfLife = t.enums.of([
   'Finances',
- 'Environment ',
- 'Aims & Hobbies ',
- 'Career ',
+ 'Environment',
+ 'Aims & Hobbies',
+ 'Career',
  'Relationships',
  'Health & Wellness',
  'Spirituality',
