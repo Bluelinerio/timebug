@@ -62,7 +62,7 @@ export default {
     materialThings:t.String
   }),
   options: {
-    label:"Money Dreams"
+    label:"Money Dreams",
     fields: {
       moneyPlans:{
     label:'What do you plan to do with any excess money that you come into over the next 5 years?'
