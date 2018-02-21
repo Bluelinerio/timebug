@@ -11,6 +11,7 @@ export default {
         meditateAnswer: t.Boolean,
       }),
       options: {
+        label:'20/20 Life Vision Check-in', 
         fields: {
           id: {
             hidden: true
@@ -33,7 +34,7 @@ export default {
       }
     },
 2:{ 
-  type:t.String,
+  type:t.struct({money:t.String}),
   options: {
     label:'Five years from now, how much money will you have in the bank?' 
     
@@ -41,44 +42,47 @@ export default {
   }
 },
 3:{
-  type:t.list(
+  type:t.struct({financeTeam:t.list(
     t.String
-  ),
+  )
+}),
   options:{
     label:'Who is your “finance team” that helped you not only to attain but also manage your financial success?',
     item:{
-      placeholder:'Person'
+      label:'Person'
     }
   }
 },
 4:{
-  type:t.String,
+  type:t.struct({
+    moneyPlans:t.String,
+    lifeDiffer: t.String,
+    workMoreOrLess: t.String,
+    vacationDays:t.String,
+    materialThings:t.String
+  }),
   options: {
+    label:"Money Dreams"
+    fields: {
+      moneyPlans:{
     label:'What do you plan to do with any excess money that you come into over the next 5 years?'
-  }
-},
-5:{
-  type:t.String,
-  options: {
-    label:'How will your life differ 5 years from now due to your  money BHAG acheivements?'
-  }
-},
-6:{
-  type:t.String,
-  options: {
-    label:'How much more or less will you work as a result?'
-  }
-},
-7:{
-  type:t.String,
-  options: {
-    label:'How many days a year will you take off for vacation?'
-  }
-},
-8:{
-  type:t.String,
-  options: {
-    label:'What additional material things will you have or have access to that you now don’t?'
+      },
+      lifeDiffer:{
+        label:'How will your life differ 5 years from now due to your  money BHAG acheivements?'
+        
+      },
+      workMoreOrLess: {
+        label:'How much more or less will you work as a result?'
+        
+      },
+      vacationDays: {
+        label:'How many days a year will you take off for vacation?'
+        
+      },
+      materialThings: {
+        label:'What additional material things will you have or have access to that you now don’t?'
+        }
+    }
   }
 },
 9:{
