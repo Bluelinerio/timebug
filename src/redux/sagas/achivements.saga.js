@@ -4,11 +4,15 @@ import {
 } from '../actionTypes';
 import {
   GET_USER,
-  updateUser
+  updateUser,
 } from '../actions/user.actions';
 import selectors from '../selectors'
 import achievementsList from '../../static/bot/surveyAchievements'
-import { createAchievement, deleteAchievement } from '../../services/apollo'
+import { 
+  createAchievement, 
+  deleteAchievement, 
+  fetchUserAchievementsWithUserId
+} from '../../services/apollo'
 
 const achievements = {
   AREAS_OF_LIFE: 'Areas Of Life',
@@ -113,6 +117,8 @@ export function * watchChangesInFormsAndUpdateAchievements() {
   const requestChan = yield actionChannel([GET_USER.SUCCEEDED, UPDATE_USER])
   while(true) {
     yield take(requestChan)
+    const number = Math.random();
+    console.log('enter: ' + number);
     const user = yield select(selectors.user)
     const payload = nextRequiredUpdateForUser(user);
     if(payload.createAchievement) {
@@ -129,14 +135,18 @@ export function * watchChangesInFormsAndUpdateAchievements() {
       } else {
         //fail silently
       }
-    } else if(payload.deleteAchievement) {
+    } else if (payload.deleteAchievement) {
       const { achievementId } = payload.deleteAchievement;
       const res = yield call(deleteAchievement, achievementId)
-      if( res.user ) {
-        yield put(updateUser(res.user))
+      if( res.id ) {
+        debugger;
+        yield put(updateUser({
+          achievements: user.achievements.filter(a => a.id !== res.id)
+        }))
       } else {
         //fail silently
       }
     }
+    console.log('exit: ' + number);
   }
 }
