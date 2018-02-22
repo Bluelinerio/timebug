@@ -139,7 +139,6 @@ export function * watchChangesInFormsAndUpdateAchievements() {
       const { achievementId } = payload.deleteAchievement;
       const res = yield call(deleteAchievement, achievementId)
       if( res.id ) {
-        debugger;
         yield put(updateUser({
           achievements: user.achievements.filter(a => a.id !== res.id)
         }))
