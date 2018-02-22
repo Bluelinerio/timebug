@@ -66,10 +66,13 @@ const Content = ({ title, subtitle, description, color, number }) => (
 
 
 const Header = ({ icon, title, number, color}) => (
-  <View style={styles.stepScreenHeader}>
-    <GradientWithTwoColors gradientTopColor={color} gradientBottomColor={'#F2F2F2'}/>
+  <View style={[styles.stepScreenHeader, {
+    backgroundColor: color
+  }]}>
     {icon && 
-      <CustomImage style={styles.stepScreenImage}
+      <CustomImage 
+        backgroundColor={color}
+        style={styles.stepScreenImage}
         testID={'step_picture'}
         source={icon}
       />
@@ -90,7 +93,10 @@ export default ({ title, subtitle, description, number, icon, color, onPress, im
       />
     }
     header={
-        <GradientWithTwoColors gradientTopColor={color} gradientBottomColor={'white'}/>
+      <View style={{
+        ...StyleSheet.absoluteFillObject,
+        backgroundColor: color
+      }}/>
     }
     content={
       <Content
