@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import {View, Image, StyleSheet, SafeAreaView, Dimensions, StatusBar } from 'react-native';
+import {View, Image, StyleSheet, SafeAreaView, ScrollView, Dimensions, StatusBar } from 'react-native';
 import Swiper from 'react-native-swiper';
 import LinearGradient from 'react-native-linear-gradient'
 
@@ -32,7 +32,7 @@ export default class Walkthrough extends React.Component<Props> {
         barStyle="light-content"
         backgroundColor={'white'}
       />
-      <SafeAreaView >
+      <SafeAreaView style={styles.fullHeightView}>
         <View style={styles.slide} >
           <Text 
             type='header2' 
@@ -50,16 +50,17 @@ export default class Walkthrough extends React.Component<Props> {
               {slide.description}
             </Text>
           }
+          </View>
           <View style={styles.slideImage}>
           {slide.image && 
             <Image 
             source={slide.image}
             resizeMode='cover'
-            style={{width: 240 , height: 410, marginTop:20}}
+            style={{width: 240 , height: 410}}
              />
           }
           </View>
-        </View>
+        
       </SafeAreaView>
     </LinearGradient>
   )
@@ -115,11 +116,19 @@ const styles = StyleSheet.create({
   slide: {
     paddingHorizontal: baseSpacing,
     marginTop: largeVerticalSpacing + StatusBar.currentHeight,
-    flexGrow: 1
+    //flexGrow: 1
   },
   slideImage: {
     justifyContent: 'center',
-    alignItems:'center'
+    alignItems:'center',
+    position:'absolute',
+    bottom:60,
+    left:0,
+    right:0
+  },
+  fullHeightView: {
+    height: Dimensions.get('window').height
+    
   },
   title: {
     marginTop: largeVerticalSpacing,
