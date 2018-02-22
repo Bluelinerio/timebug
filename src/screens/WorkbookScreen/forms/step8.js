@@ -265,12 +265,9 @@ export default {
     type: t.struct({
       commitmentAnswer: t.Boolean
     }),
-    options: {
-      fields: {
-        commitmentAnswer: {
-          label: 'Exercise and meditate daily from here on out through the rest of the 20/20 Life Vision Challenge, for at least 20 minutes combined. Are you committed to this?'
-        }
-      }
+    options: {         
+       label: 'Exercise and meditate daily from here on out through the rest of the 20/20 Life Vision Challenge, for at least 20 minutes combined. Are you committed to this?',
+       auto:'none'
     }
   }
 };
