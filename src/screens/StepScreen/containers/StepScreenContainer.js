@@ -37,7 +37,7 @@ const merge = (stateProps, dispatchProps, ownProps): Props => {
     throw `did not find step with number ${stepId} in steps: ${steps}`;
   }
   const title = step.title
-  const subtitle = step.subtitle
+  const subtitle = `Step ${step.number}`
   const description = step.description
   const number = step.number
   const icon = step.icon

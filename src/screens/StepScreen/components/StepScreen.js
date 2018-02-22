@@ -48,7 +48,9 @@ const Content = ({ title, subtitle, description, color, number }) => (
     }
     <Text
     testID={'step_subtitle'}
-    style={[styles.stepScreenSubtitle]}
+    style={[styles.stepScreenSubtitle, {
+      color
+    }]}
     >
     {subtitle}
     </Text>
