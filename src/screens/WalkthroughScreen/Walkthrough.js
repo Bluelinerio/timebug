@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
   slide: {
     paddingHorizontal: baseSpacing,
     marginTop: largeVerticalSpacing + StatusBar.currentHeight,
-    //flexGrow: 1
+    flexGrow: 1
   },
   slideImage: {
     justifyContent: 'center',
