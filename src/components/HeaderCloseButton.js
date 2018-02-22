@@ -57,14 +57,12 @@ class HeaderCloseButton extends React.PureComponent<DefaultProps, Props, State> 
         style={styles.container}
         borderless
       >
-        <View style={styles.container}>
-          <Icon 
-            style={styles.icon}
-            name={'md-close'} 
-            size={width || StyleSheet.flatten(styles.icon).width} 
-            color={tintColor} 
-          />
-        </View>
+        <Icon 
+          style={styles.icon}
+          name={'md-close'} 
+          size={24}
+          color={tintColor} 
+        />
       </TouchableItem>
     )
   }
@@ -73,29 +71,17 @@ class HeaderCloseButton extends React.PureComponent<DefaultProps, Props, State> 
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
+    justifyContent: 'center',
     flexDirection: 'row',
-    backgroundColor: 'transparent',
+    backgroundColor: '#E4E4E452',
+    borderRadius: 24,
+    marginRight: 16,
+    marginLeft: 16,
+    padding: 2,
   },
-  icon:
-    Platform.OS === 'ios'
-      ? {
-          height: 24,
-          width: 24,
-          marginLeft: 15,
-          marginRight: 17,
-          marginTop: 7,
-          marginBottom: 0,
-          transform: [{ scaleX: I18nManager.isRTL ? -1 : 1 }],
-        }
-      : {
-          height: 24,
-          width: 24,
-          marginLeft: 16,
-          marginRight: 16,
-          marginTop: 7,
-          marginBottom: 0,
-          transform: [{ scaleX: I18nManager.isRTL ? -1 : 1 }],
-        }
-      })
+  icon:{
+    marginHorizontal: 6
+  }
+})
 
 export default HeaderCloseButton

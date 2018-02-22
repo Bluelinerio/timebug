@@ -1,9 +1,9 @@
 // @flow
-import { AsyncStorage } from 'react-native'
+import { 
+	AsyncStorage,
+	Platform
+} from 'react-native'
 
-// older tokens we want to erase...
-const OLD_TOKEN_KEY = '@2020-Token'
-const OLD_USER_ID_KEY = '@2020-UserId'
 //
 const TOKEN_KEY = 'lifevision-1';
 
@@ -19,20 +19,59 @@ const emptyTokenAndUserId = {
 	endpoint:null 
 }
 
-const wipeOldTokens = Promise.all([
-	AsyncStorage.removeItem(OLD_TOKEN_KEY),
-	AsyncStorage.removeItem(OLD_USER_ID_KEY)
-]);
+const wipeOldTokens = () => { 
+	// older tokens we want to erase...
+	const OLD_TOKEN_KEY = '@2020-Token'
+	const OLD_USER_ID_KEY = '@2020-UserId'
+	return Promise.all([
+		AsyncStorage.removeItem(OLD_TOKEN_KEY),
+		AsyncStorage.removeItem(OLD_USER_ID_KEY)
+	]);
+}
+
+const android = {
+	getTokenAndUserId: (): ?TokenAndUserIdType => ({}),
+	setTokenAndUserId: () => null
+}
+
+async function getTokenAndUserId() {
+	const keys = await AsyncStorage.getAllKeys();
+	if(keys && keys.includes(TOKEN_KEY)) {
+		try {
+			const data = await AsyncStorage.getItem(TOKEN_KEY)
+			return JSON.parse(data)
+		} catch (e) {
+			return null
+		}
+	} else {
+		return emptyTokenAndUserId;
+	}
+}
+
+async function setTokenAndUserId(data: TokenAndUserIdType) {
+	try {
+		await AsyncStorage.setItem(TOKEN_KEY, JSON.stringify(data))
+	} catch (e) {
+	}
+}
+
+async function wipeStorage() {
+	try {
+		await AsyncStorage.removeItem(TOKEN_KEY)
+	} catch (e) {
+	}
+}
+
+const ios = {
+	getTokenAndUserId,
+	setTokenAndUserId,
+	wipeStorage
+}
+
+
+export default Platform.select({
+	ios,
+	android
+})
 
 // todo: this isn't working needs fixing:
-export default {
-	getTokenAndUserId: (): ?TokenAndUserIdType => wipeOldTokens
-		.then(AsyncStorage.getItem(TOKEN_KEY))
-		.then(stringifed => stringifed && JSON.parse(stringifed) || emptyTokenAndUserId )
-		.catch(error => emptyTokenAndUserId),
-	setTokenAndUserId: (tokenAndUserId: TokenAndUserIdType) => wipeOldTokens
-		.then(AsyncStorage.setItem(TOKEN_KEY, JSON.stringify(tokenAndUserId))),
-	wipeStorage: () => Promise.all([
-		AsyncStorage.removeItem(TOKEN_KEY),
-	])
-}

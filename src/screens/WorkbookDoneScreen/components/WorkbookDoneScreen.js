@@ -7,13 +7,15 @@ import styles from '../styles';
 import Button from '../../../components/Button';
 
 export type Props = {
+  title: string,
+  buttonTitle: string,
   doneStepNumber: number,
   doneStepColor: string,
   nextStepDuration: number,
   nextStepNumber: number,
   nextStepColor: string,
   done:() => void,
-  goToNextStep: () => void
+  buttonOnPress: () => void
 }
 
 export default ({ 
@@ -23,7 +25,9 @@ export default ({
   nextStepNumber,
   nextStepColor,
   done,
-  goToNextStep
+  title,
+  buttonTitle,
+  buttonOnPress
 }: Props) => {
   return (
     <View style={[styles.container, {
@@ -31,13 +35,13 @@ export default ({
     }]}>
       <View style={styles.messageContainer}>
         <Text style={[styles.title, styles.strong, { color: 'white' }]}>
-          {`Step ${doneStepNumber} is complete!`}
+          {title}
         </Text>
       </View>
       <View style={[styles.absoluteContainer]}>
         <Button
-          onPress={goToNextStep}
-          text={`Start Step ${nextStepNumber}`.toUpperCase()}
+          onPress={buttonOnPress}
+          text={buttonTitle}
           backgroundColor={'white'}
           textColor={nextStepColor}
         />
