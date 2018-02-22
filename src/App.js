@@ -16,8 +16,10 @@ import AppNavigation                from './navigation/app';
 import { APP_NAME }                 from './constants';
 import DefaultIndicator             from './components/DefaultIndicator'
 import Error                        from './components/Error'
+import                                   './reactotron';
 
 if (__DEV__) {
+  //Show network requests such as fetch, WebSocket etc. in chrome dev tools:
   XMLHttpRequest = GLOBAL.originalXMLHttpRequest ?
                    GLOBAL.originalXMLHttpRequest :
                    GLOBAL.XMLHttpRequest;

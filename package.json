@@ -71,7 +71,8 @@
     "flow-bin": "0.60.1",
     "mocha": "^3.5.3",
     "react-native-version": "^2.4.1",
-    "react-test-renderer": "16.0.0-alpha.6"
+    "react-test-renderer": "16.0.0-alpha.6",
+    "reactotron-react-native": "^2.0.0-alpha.1"
   },
   "rnpm": {
     "assets": [
