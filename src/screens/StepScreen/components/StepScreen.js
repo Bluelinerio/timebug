@@ -67,7 +67,7 @@ const Content = ({ title, subtitle, description, color, number }) => (
 
 const Header = ({ icon, title, number, color}) => (
   <View style={styles.stepScreenHeader}>
-    <GradientWithTwoColors gradientTopColor={color} gradientBottomColor={'white'}/>
+    <GradientWithTwoColors gradientTopColor={color} gradientBottomColor={'#F2F2F2'}/>
     {icon && 
       <CustomImage style={styles.stepScreenImage}
         testID={'step_picture'}
