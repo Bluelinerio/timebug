@@ -39,13 +39,11 @@ const HEADER_HEIGHT = Dimensions.get('window').height * 0.4
 
 const Content = ({ title, subtitle, description, color, number }) => (
   <View style={styles.stepScreenContent}>
-    {Platform.OS === 'ios' &&
-      <StatusBar 
-        translucent 
-        barStyle='light-content'
-        backgroundColor={'white'}
-      /> 
-    }
+    <StatusBar 
+      translucent 
+      barStyle='light-content'
+      backgroundColor={'transparent'}
+    /> 
     <Text
     testID={'step_subtitle'}
     style={[styles.stepScreenSubtitle, {
