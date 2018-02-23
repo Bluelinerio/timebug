@@ -6,21 +6,25 @@ import {
   Dimensions,
   StyleSheet
 } from 'react-native'
-import Button                       from '../../../components/Button';
-import type { Props }               from '../../../components/Button'
-import { loginWithFbButtonPressed } from '../../../redux/actions'
-import { heavyGray, lightGray }      from '../../../constants/colors'
-
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Entypo from 'react-native-vector-icons/Entypo';
 
-const FBButton = ({ onPress, advisoryText=`We don't post anything to faecbook` }) => (
+import Button                       from '../components/Button';
+import type { Props }               from '../components/Button'
+import { 
+  heavyGray, 
+  lightGray, 
+  facebookColor 
+}                                   from '../constants/colors'
+
+
+export default ({ onPress, advisoryText=`We don't post anything to Facebook` }) => (
   <View 
     style={styles.container}
   >
       <Icon.Button 
         name="facebook" 
-        backgroundColor="#3b5998" 
+        backgroundColor={facebookColor} 
         onPress={onPress}
         style={styles.facebookButton}
       >
@@ -40,11 +44,6 @@ const FBButton = ({ onPress, advisoryText=`We don't post anything to faecbook` }
   </View>
 );
 
-export default connect(
-  null, 
-  ({ onPress: loginWithFbButtonPressed })
-)(FBButton)
-
 const styles = StyleSheet.create({
   container: {
     alignSelf: 'center',
@@ -52,7 +51,7 @@ const styles = StyleSheet.create({
     marginVertical: Dimensions.get('window').height * 0.05,
   },
   facebookButton: {
-    marginHorizontal:10
+    paddingHorizontal: 10,
   },
   advisoryContainer: {
     marginTop: 10,

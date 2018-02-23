@@ -10,3 +10,4 @@ export const hotPink = '#EB008B';
 export const facebookColor = '#3b5998';
 export const heavyGray = '#717171'
 export const lightGray = '#AAAAAA'
+
