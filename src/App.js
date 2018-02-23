@@ -2,7 +2,11 @@
 import React                        from 'react';
 import { ApolloProvider }           from 'react-apollo';
 import { Provider }                 from 'react-redux';
-import { AppRegistry }              from 'react-native';
+import { 
+  AppRegistry,
+  Platform,
+  View
+}                                   from 'react-native';
 import { PersistGate }              from 'redux-persist/es/integration/react'
 import codePush                     from "react-native-code-push";
 
@@ -49,22 +53,31 @@ export default class App extends React.Component<{},State> {
     if(isNativeUpdateRequired()) {
       return <NativeUpdateRequired />
     }
-
-    return (
-      <ApolloProvider client={client}>
-        <Provider store={store}>
-          <PersistGate
-            loading={ <DefaultIndicator />}
-            onBeforeLift={() => {
-              
-            }}
-            persistor={persistor}
-          >
+    if(Platform.OS === 'ios') {
+      return (
+        <ApolloProvider client={client}>
+          <Provider store={store}>
+            <AppPersistorGate
+              loading={ <DefaultIndicator />}
+              onBeforeLift={() => {
+                
+              }}
+              persistor={persistor}
+            >
+              <AppNavigation />
+            </AppPersistorGate>
+          </Provider>
+        </ApolloProvider>
+      )
+    } else {
+      return (
+        <ApolloProvider client={client}>
+          <Provider store={store}>
             <AppNavigation />
-          </PersistGate>
-        </Provider>
-      </ApolloProvider>
-    )
+          </Provider>
+        </ApolloProvider>
+      )
+    }
   }
 }
 const codePushConfigurations = { 
