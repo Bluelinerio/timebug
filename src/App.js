@@ -57,7 +57,7 @@ export default class App extends React.Component<{},State> {
       return (
         <ApolloProvider client={client}>
           <Provider store={store}>
-            <AppPersistorGate
+            <PersistGate
               loading={ <DefaultIndicator />}
               onBeforeLift={() => {
                 
@@ -65,7 +65,7 @@ export default class App extends React.Component<{},State> {
               persistor={persistor}
             >
               <AppNavigation />
-            </AppPersistorGate>
+            </PersistGate>
           </Provider>
         </ApolloProvider>
       )
