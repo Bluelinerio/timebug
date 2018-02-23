@@ -4117,6 +4117,10 @@ react-native-snap-carousel@^3.4.0:
     prop-types "^15.5.10"
     react-addons-shallow-compare "15.6.0"
 
+react-native-sound@^0.10.7:
+  version "0.10.7"
+  resolved "https://registry.yarnpkg.com/react-native-sound/-/react-native-sound-0.10.7.tgz#136c4cfc349b33c7b57bf30f10b598ada9fe2897"
+
 react-native-svg-image@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/react-native-svg-image/-/react-native-svg-image-2.0.0.tgz#cc2db4407752e93440ad9e417d0c665130235c42"
@@ -4415,6 +4419,10 @@ redux-enhancer-react-native-appstate@^0.3.0:
 redux-persist@^5.4.0:
   version "5.4.0"
   resolved "https://registry.yarnpkg.com/redux-persist/-/redux-persist-5.4.0.tgz#a1062313546a9d4ca6f9271464d18f736e8ca394"
+
+redux-reset@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/redux-reset/-/redux-reset-0.3.0.tgz#ab80795b410d5b28689986eac40cb847a69cd012"
 
 redux-saga@1.0.0-beta.0:
   version "1.0.0-beta.0"
