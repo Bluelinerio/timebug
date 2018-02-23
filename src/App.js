@@ -9,14 +9,15 @@ import codePush                     from "react-native-code-push";
 import { 
   isNativeUpdateRequired,
   NativeUpdateRequired
-} from './containers/VersionGate'
+}                                   from './containers/VersionGate'
+import                                   './reactotron';
 import setup                        from './redux';
 import { client }                   from './services/apollo';
+import                                   './services/sentry';
 import AppNavigation                from './navigation/app';
 import { APP_NAME }                 from './constants';
 import DefaultIndicator             from './components/DefaultIndicator'
 import Error                        from './components/Error'
-import                                   './reactotron';
 
 if (__DEV__) {
   //Show network requests such as fetch, WebSocket etc. in chrome dev tools:
