@@ -91,12 +91,12 @@ android {
         applicationId "com.lifevision"
         minSdkVersion 19
         targetSdkVersion 27
-        versionCode 31
+        versionCode 32
         
         //REQUIRED FOR DETOX DO NOT REMOVE
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         
-        versionName "0.0.3"
+        versionName "1.4.0"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
