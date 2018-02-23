@@ -13,7 +13,7 @@ Issues
       - https://stackoverflow.com/questions/3011625/git-mv-and-only-change-case-of-directory
       - https://stackoverflow.com/questions/10523849/changing-capitalization-of-filenames-in-git/16071375
 
-
+- Redux-Persist on Android when reloading doesn't rehydrates. [link](https://github.com/rt2zz/redux-persist/issues/102)
 
 
 Compiling
