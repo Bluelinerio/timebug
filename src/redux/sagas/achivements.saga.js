@@ -1,4 +1,4 @@
-import { take, put, actionChannel, select, call } from 'redux-saga/effects'
+import { take, put, putResolve, actionChannel, select, call } from 'redux-saga/effects'
 import {
   UPDATE_USER
 } from '../actionTypes';
@@ -118,7 +118,6 @@ export function * watchChangesInFormsAndUpdateAchievements() {
   while(true) {
     yield take(requestChan)
     const number = Math.random();
-    console.log('enter: ' + number);
     const user = yield select(selectors.user)
     const payload = nextRequiredUpdateForUser(user);
     if(payload.createAchievement) {
@@ -131,7 +130,7 @@ export function * watchChangesInFormsAndUpdateAchievements() {
       if( res.user ) {
         // an FYI put:
         yield put({ type: CREATE_ACHIEVEMENT, payload })
-        yield put(updateUser(res.user))
+        yield putResolve(updateUser(res.user))
       } else {
         //fail silently
       }
@@ -139,13 +138,12 @@ export function * watchChangesInFormsAndUpdateAchievements() {
       const { achievementId } = payload.deleteAchievement;
       const res = yield call(deleteAchievement, achievementId)
       if( res.id ) {
-        yield put(updateUser({
+        yield putResolve(updateUser({
           achievements: user.achievements.filter(a => a.id !== res.id)
         }))
       } else {
         //fail silently
       }
     }
-    console.log('exit: ' + number);
   }
 }
