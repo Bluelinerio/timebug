@@ -12,6 +12,7 @@ export default {
         meditateAnswer: t.Boolean,
       }),
       options: {
+        label:'20/20 Life Vision Check-in',
         fields: {
           id: {
             hidden: true
@@ -40,8 +41,8 @@ export default {
     dreamsComeTrue:t.String
     }),
     options:{
+      label:'What do you dream about?',
       fields: {
-        label:'What do you dream about?',
         dreamsDescribe: {
           label:'Any general themes?'
         },
@@ -56,20 +57,20 @@ export default {
 },
 3: {
   type: t.struct({
-    field: t.list(
+    dreams: t.list(
       t.struct({
         dream:t.String
       })
     ),
   }),
   options: {
+    label: 'For the remainder of the program [8 Nights of Dreaming], try to remember and write your dreams down first thing in the morning – or even if you wake up in the middle of the night, the way Jason described his experience in the video. Note what themes, characters, settings, fears, hopes and aspirations were present.',    
     fields : {
-    field: {
-      label: 'For the remainder of the program [8 Nights of Dreaming], try to remember and write your dreams down first thing in the morning – or even if you wake up in the middle of the night, the way Jason described his experience in the video. Note what themes, characters, settings, fears, hopes and aspirations were present.',
+    dreams: {
       item: {
         fields: {
           dream: {
-            label: 'Dream'          }
+            label: 'Dream'}
         }
       }
     }
@@ -77,8 +78,17 @@ export default {
 }
 },
 4: {
-  type:t.String,
+  type:t.struct({
+    lifeDreams:t.String
+  }),
   options:{
-    label:'In this moment, dream about everything you want your life to be. Anything is possible. Describe what you see. What are your life dreams?'  }
+    label:'In this moment, dream about everything you want your life to be. Anything is possible. Describe what you see. What are your life dreams?',
+    auto:'none',
+    fields: {
+      lifeDreams: {
+        multiline:true
+      }
+    }
+  }
 }
 };

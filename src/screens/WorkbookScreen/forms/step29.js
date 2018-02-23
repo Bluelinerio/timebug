@@ -10,6 +10,7 @@ export default {
       meditateAnswer: t.Boolean,
     }),
     options: {
+      label: '20/20 Life Vision Check-in',
       fields: {
         id: {
           hidden: true
@@ -33,16 +34,16 @@ export default {
   },
   2: {
     type: t.struct({
-      field: t.list(
+      spiritualTeammates: t.list(
         t.struct({
           teammate: t.String
         })
       )
     }),
     options: {
+      label:'Who are your spiritual “teammates” in 5 years from now? ',                
       fields: {
         field: {
-          label:'Who are your spiritual “teammates” in 5 years from now? ',          
           item: {
             fields: {
               teammate: {
@@ -56,17 +57,22 @@ export default {
     }
   },
   3: {
-    type: t.list(
+    type: t.struct({
+    goals:t.list(
       t.struct({
-        bucketPEBHAG: t.String,
+        spiritualityBHAG: t.String,
         priority: t.Number,
         timeSpent: t.String
       })
-    ),
+    )
+  }),
     options: {
+      label:'Vision Creation:Spirituality',
+      fields:{
+        goals:{
       item: {
         fields: {
-          bucketPEBHAG: {
+          spiritualityBHAG: {
             label: 'What major Spirituality goals (BHAGs) do you envision for yourself by year 5?'
           },
           priority: {
@@ -77,18 +83,24 @@ export default {
           }
         }
       }
+      }
+    }
     }
   },
   4: {
-    type: t.list(
+    type: t.struct({
+    egoAspects:t.list(
       t.struct({
         i: t.String,
         willEvolve: t.String,
         willSay: t.String
       })
-    ),
+    )
+  }),
     options: {
       label: 'Remember Step 10 ("Mapping Out Your Internal World")?How will each of your listed Is (ego aspects) evolve by Year 5?',
+      fields: {
+        egoAspects: {
       item: {
         fields: {
           i: {
@@ -103,26 +115,33 @@ export default {
         }
       }
     }
+  }
+    }
   },
   5: {
-    type: t.String,
+    type: t.struct({
+    whoHelp:t.String,
+    howHelp:t.String,
+    howFurtherSpirituality:t.String
+    }),
     options: {
-      label: 'Who do you want to enjoy a major transformation or sense of peace and internal happiness in their lives? How will you help him/her? ',
-      auto: 'none'
-    }
-  },
-  6: {
-    type: t.String,
-    options: {
-      label: 'How will you want help him/her attain those inner journey goals by Year 5?',
-      auto: 'none'
-    }
-  },
-  7: {
-    type: t.String,
-    options: {
-      label: 'How do you want to help further spirituality in the world 5 years from now?',
-      auto: 'none'
+      label:'Vision Creation: Spirituality',
+      fields:{
+        whoHelp:{
+          label: 'Who do you want to enjoy a major transformation or sense of peace and internal happiness in their lives? How will you help him/her? ',
+          
+        },
+        howHelp:{
+          label: 'How will you want help him/her attain those inner journey goals by Year 5?',
+          
+        },
+        howFurtherSpirituality: {
+          label: 'How do you want to help further spirituality in the world 5 years from now?',
+          
+        }
+
+      }
     }
   }
+  
 };
