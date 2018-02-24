@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
-    backgroundColor: '#E4E4E452',
+    backgroundColor: 'transparent',
     borderRadius: 24,
     marginRight: 16,
     marginLeft: 16,

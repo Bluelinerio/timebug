@@ -13,7 +13,7 @@ export const BORDER_COLOR = '#cccccc';
 export const DISABLED_COLOR = '#777777';
 export const DISABLED_BACKGROUND_COLOR = '#eeeeee';
 export const BACKGROUND_COLOR = '#FAFAFA' //'#FFFFFF';
-export const FONT_SIZE = 20;
+export const FONT_SIZE = 18;
 export const FONT_WEIGHT = '500';
 
 //#E6E5ED
@@ -43,9 +43,11 @@ export default Object.freeze({
   },
   formLabel: {
     textAlign: 'center',
-    fontSize: 26,
+    fontSize: 22,
     paddingVertical: 20,
+    fontWeight: '700'
   },
+  
   controlLabel: {
     normal: {
       color: LABEL_COLOR,
@@ -114,7 +116,7 @@ export default Object.freeze({
   textBox: {
     normal: {
       color: INPUT_COLOR,
-      fontSize: FONT_SIZE,
+      fontSize: 16,
       height: 46,
       textAlign: 'left',
     },

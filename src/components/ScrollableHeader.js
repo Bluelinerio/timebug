@@ -40,17 +40,17 @@ export default class ScrollableHeader extends Component<Props, State> {
 		});
 		const imageTranslate = this.state.scrollY.interpolate({
 			inputRange: [0, headerScrollDistance],
-			outputRange: [0, -50],
+			outputRange: [0, -100],
 			extrapolate: 'clamp'
 		});
 		const headerOpacity = this.state.scrollY.interpolate({
-			inputRange: [0, headerScrollDistance / 2, headerScrollDistance],
-			outputRange: [0, 1, 1],
+			inputRange: [0, 0, headerScrollDistance],
+			outputRange: [0, 0, 1],
 			extrapolate: 'clamp'
 		});
 		const contentOpacity = this.state.scrollY.interpolate({
-			inputRange: [0, headerScrollDistance / 2, headerScrollDistance],
-			outputRange: [1, 0, 0],
+			inputRange: [0, 1, headerScrollDistance],
+			outputRange: [1, 1, 0],
 			extrapolate: 'clamp'
 		});
 
@@ -88,6 +88,7 @@ export default class ScrollableHeader extends Component<Props, State> {
 								width: null,
 								height: headerMaxHeight,
 								zIndex: 10,
+								opacity: 0.9,
 								transform: [{ translateY: imageTranslate }]
 							}}
 							source={headerImage}
@@ -103,7 +104,7 @@ export default class ScrollableHeader extends Component<Props, State> {
 								width: null,
 								height: headerMaxHeight,
 								zIndex: 9,
-								opacity: contentOpacity,
+								opacity: 1,
 								transform: [{ translateY: imageTranslate }],
 							}}
 						>

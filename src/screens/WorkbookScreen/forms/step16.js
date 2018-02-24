@@ -10,12 +10,13 @@ export default {
       healthyPerson: OneToTenScale
     }),
     options:{ 
+      label:'Health Assessment',
       fields: {
         id:{
           hidden: true
         },
         priority: {
-          label:'- How much of a priority was your health over the past 5 years?'
+          label:'How much of a priority was your health over the past 5 years?'
           //error:'Please select a value'
         },
         feelNow: {
@@ -137,23 +138,23 @@ export default {
       fields: {
         hoursSleep: {
           label:'How many hours do you typically sleep?',
-          error: 'Please select a value.'
+          //error: 'Please select a value.'
         },
         isSleepEnough: {
           label:'Is that enough? If not, how many hours do you really need?',
-          error: 'How many hours of sleep do you need?'
+          //error: 'How many hours of sleep do you need?'
         },
         sleepQuality: {
           label: 'What is the quality of your sleep(Using a 10pt scale with 1=poor and 10-great',
-          error: 'Please select a value.'
+          //error: 'Please select a value.'
         },
         sleepIssues: {
           label:'Do you have sleep issues? If so, why?',
-          error: 'Think about any sleep issues that you are consistently dealing with'
+          //error: 'Think about any sleep issues that you are consistently dealing with'
         },
         bedTimes: {
           label:'What time do you generally go to bed?',
-          error: 'Please select a bed time'
+          //error: 'Please select a bed time'
         },
         takeEnergizer: {
           label:'Do you drink coffee or take anything to stay awake or energized daily?'

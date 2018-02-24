@@ -1,12 +1,27 @@
-import React, { Component }                                       from 'react';
-import { View, Platform, WebView, ActivityIndicator, StyleSheet } from 'react-native';
+// @flow
+import * as React from 'react';
+import { 
+  View, 
+  Platform, 
+  WebView, 
+  ActivityIndicator, 
+  StyleSheet 
+} from 'react-native';
 
-export default class SVGImage extends Component {
+type Icon = {
+  uri:string
+}
+
+type Props = {
+  style: {},
+  source: Icon,
+  showWebviewLoader: boolean,
+}
+export default class SVGImage extends React.Component<Props> {
   static defaultProps = {
     style: {},
     source: { uri: '' },
     showWebviewLoader: Platform.OS === 'android',
-    height: null,
   };
 
   renderLoader = () => (
@@ -14,15 +29,13 @@ export default class SVGImage extends Component {
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center',
-    } ]}>
+    }]}>
       <ActivityIndicator/>
     </View>
   );
 
   render() {
     const { showWebviewLoader, source: { uri }, style, ...restOfProps } = this.props;
-    const { height, width }                                             = StyleSheet.flatten(style || []);
-
     const html = `
       <!DOCTYPE html>\n
       <html>

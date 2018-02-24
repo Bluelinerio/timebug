@@ -1,15 +1,15 @@
-import React                  from 'react';
+import React                            from 'react';
 import { 
   addNavigationHelpers, 
   NavigationActions
-}                             from 'react-navigation'
-import { BackHandler, Linking }
-                              from "react-native"
-import { connect }            from 'react-redux'
-import { uriPrefix }          from '../constants'
-import { RootNavigator }      from './index'
+}                                       from 'react-navigation'
+import { createReduxBoundAddListener }  from 'react-navigation-redux-helpers';
+import { BackHandler, Linking }         from "react-native"
+import { connect }                      from 'react-redux'
+import { uriPrefix }                    from '../constants'
+import { RootNavigator }                from './index'
 
-const mapStateToProps = state => ({ nav: state.nav });
+const addListener = createReduxBoundAddListener('root');
 
 class AppNavigation extends React.Component {
   componentDidMount() {
@@ -49,10 +49,13 @@ class AppNavigation extends React.Component {
     const { dispatch, nav } = this.props;
     const navigation = addNavigationHelpers({
       dispatch,
-      state: nav
+      state: nav,
+      addListener
     });
     return <RootNavigator navigation={navigation} />;
   }
 }
+
+const mapStateToProps = state => ({ nav: state.nav });
 
 export default connect(mapStateToProps)(AppNavigation);

@@ -5,7 +5,7 @@ export default {
   1: {
     type: t.struct({
       id:t.maybe(t.String),
-        field: t.list(
+        goals: t.list(
             t.struct({
                 goal: t.String,
                 commonGoalOutcomes: CommonGoalOutcomes
@@ -13,22 +13,21 @@ export default {
           )
     }),
     options: {
+      label: "What are 5 of your goals from the past 5 years?",              
+      
       fields: {
         id: {
           hidden: true
         },
-        field: {
-          label: "What are 5 of your goals from the past 5 years?",              
-          auto:'placeholders',
+        goals: {
           disableOrder: true,
-          maxLines: 15,
+          maxLines: 5,
           config: {
-            maxLines: 15,
+            maxLines: 5,
           },
           item: {
             fields: {
-              //goal:{error: 'Please enter a goal.'},
-              commonGoalOutcomes:{label: 'Classify this goal according to the 7 Common Goal Outcomes listed below.'}
+              commonGoalOutcomes:{label: 'Classify this goal according to the 7 Common Goal Outcomes.'}
             } 
           }
         },
@@ -45,9 +44,10 @@ export default {
       patterns: t.String
     }),
     options: {
+      label: "Have you noticed any patterns? Have any guesses as to the reasons underlying such patterns?",
+      
       fields: {
         patterns: {
-          label: " Have you noticed any patterns? Have any guesses as to the reasons underlying such patterns?",
           multiline: true
         }
       }

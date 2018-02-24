@@ -43,11 +43,13 @@
           <action android:name="android.intent.action.MAIN" />
           <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
-        <intent-filter android:label="filter_deeplinks">
+        <intent-filter android:label="Lifevision">
           <action android:name="android.intent.action.VIEW" />
           <category android:name="android.intent.category.DEFAULT" />
           <category android:name="android.intent.category.BROWSABLE" />
-          <data android:scheme="lifevisionApp" android:host="app" /> // A
+          <data android:scheme="lifevision" android:host="lifevision.app" />
+          <data android:scheme="http" android:host="lifevisionapp.io" />
+          <data android:scheme="https" android:host="lifevisionapp.io" />       
         </intent-filter>
       </activity>
       <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />

@@ -1,5 +1,5 @@
 // @flow
-import { throttle, fork, call, cancelled, put, take, takeLatest, select } from 'redux-saga/effects'
+import { throttle, actionChannel, fork, call, cancelled, put, putResolve, take, takeLatest, select } from 'redux-saga/effects'
 import { delay } from 'redux-saga'
 
 import { createForm, updateForm }               from '../../services/apollo'
@@ -126,22 +126,24 @@ function * reviewCurrentUserFormsAndFormDataCompareAndUpfateToState() {
 }
 
 export function * watchSyncFormData() {
-  yield fork(watchFormDataAndUserFormCompareAndUpdateState)
-}
-
-export function * watchFormDataAndUserFormCompareAndUpdateState() {
   // here the assumptions is that the formData reducer will always Hydrate before the GET_USER action return, becuase we never
+  const requestChan = yield actionChannel([GET_USER.SUCCEEDED, SYNC_FORM_DATA])
   while(true) {
-    yield take([GET_USER.SUCCEEDED, SYNC_FORM_DATA])
-    yield call(delay, 1)
-    yield fork(watchForSyncRequests)
-    yield call(reviewCurrentUserFormsAndFormDataCompareAndUpfateToState)
+    yield take(requestChan)
+    const payload = yield call(reviewCurrentUserFormsAndFormDataCompareAndUpfateToState)
+    if (payload && (payload.updates || payload.creates)) {
+        yield put({
+          type: UPDATE_AND_CREATE_FORMS, 
+          payload
+        })
+        call(syncRequests, paylload);
+    }
   }
 }
 
-function * watchForSyncRequests() {
+function * syncRequests(payload) {
 
-  const { payload: { updates, creates}} = yield take(UPDATE_AND_CREATE_FORMS)
+  const { updates, creates} = payload
 
   yield delay(1)
   
@@ -149,7 +151,7 @@ function * watchForSyncRequests() {
   if (!userId) return;
   
   // run serially, ideally we want to be able to compose those requests, and send them in one go...
-  yield put(incrementFormDataQueue())
+  yield putResolve(incrementFormDataQueue())
 
   let _user = null;
   if(updates && updates.length) {
@@ -174,10 +176,10 @@ function * watchForSyncRequests() {
   }
 
   if(_user) {
-    yield put(updateUser(_user))
+    yield putResolve(updateUser(_user))
   }
 
-  yield put(decrementFormDataQueue())
+  yield putResolve(decrementFormDataQueue())
 
   
 

@@ -39,16 +39,16 @@ const HEADER_HEIGHT = Dimensions.get('window').height * 0.4
 
 const Content = ({ title, subtitle, description, color, number }) => (
   <View style={styles.stepScreenContent}>
-    {Platform.OS === 'ios' &&
-      <StatusBar 
-        translucent 
-        barStyle='light-content'
-        backgroundColor={'white'}
-      /> 
-    }
+    <StatusBar 
+      translucent 
+      barStyle='light-content'
+      backgroundColor={'transparent'}
+    /> 
     <Text
     testID={'step_subtitle'}
-    style={[styles.stepScreenSubtitle]}
+    style={[styles.stepScreenSubtitle, {
+      color
+    }]}
     >
     {subtitle}
     </Text>
@@ -66,10 +66,13 @@ const Content = ({ title, subtitle, description, color, number }) => (
 
 
 const Header = ({ icon, title, number, color}) => (
-  <View style={styles.stepScreenHeader}>
-    <GradientWithTwoColors gradientTopColor={color} gradientBottomColor={'white'}/>
+  <View style={[styles.stepScreenHeader, {
+    backgroundColor: color
+  }]}>
     {icon && 
-      <CustomImage style={styles.stepScreenImage}
+      <CustomImage 
+        backgroundColor={color}
+        style={styles.stepScreenImage}
         testID={'step_picture'}
         source={icon}
       />
@@ -90,7 +93,10 @@ export default ({ title, subtitle, description, number, icon, color, onPress, im
       />
     }
     header={
-        <GradientWithTwoColors gradientTopColor={color} gradientBottomColor={'white'}/>
+      <View style={{
+        ...StyleSheet.absoluteFillObject,
+        backgroundColor: color
+      }}/>
     }
     content={
       <Content
