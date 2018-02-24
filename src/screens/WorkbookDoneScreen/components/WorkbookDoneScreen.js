@@ -15,7 +15,7 @@ export type Props = {
   nextStepNumber: number,
   nextStepColor: string,
   done:() => void,
-  goToNextStep: () => void
+  buttonOnPress: () => void
 }
 
 export default ({ 
@@ -25,7 +25,6 @@ export default ({
   nextStepNumber,
   nextStepColor,
   done,
-  goToNextStep,
   title,
   buttonTitle,
   buttonOnPress
@@ -41,7 +40,7 @@ export default ({
       </View>
       <View style={[styles.absoluteContainer]}>
         <Button
-          onPress={goToNextStep}
+          onPress={buttonOnPress}
           text={buttonTitle}
           backgroundColor={'white'}
           textColor={nextStepColor}

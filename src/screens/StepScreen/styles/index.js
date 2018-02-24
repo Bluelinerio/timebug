@@ -82,4 +82,16 @@ export default StyleSheet.create({
     top: 35,
     left: 15,
   },
+  // look at the 'styles' in react-navigation/src/views/Header/Header.js
+  navigationOptionHeaderStyle : { 
+    position: 'absolute', 
+    backgroundColor: 'transparent', 
+    zIndex: 100, 
+    top: 0, 
+    left: 0, 
+    right: 0, 
+    borderBottomColor: 'transparent', 
+    shadowOpacity: 0, 
+    shadowColor: 'transparent' 
+  }
 });

@@ -1,7 +1,7 @@
 import * as React                   from 'react'
 import Button                       from '../../../components/Button'
 import User                         from '../../../containers/User'
-import LoginWithFbButtonContainer   from './LoginWithFbButtonContainer';
+import LoginWithFbButtonContainer   from '../../../containers/LoginWithFbButtonContainer';
 import BeginExerciseButtonContainer from './BeginExerciseButtonContainer'
 
 export default () => (

@@ -66,6 +66,7 @@ import com.android.build.OutputFile
  */
 
 apply from: "../../node_modules/react-native/react.gradle"
+apply from: "../../node_modules/react-native-sentry/sentry.gradle"
 apply from: "../../node_modules/react-native-code-push/android/codepush.gradle"
 
 /**
@@ -91,12 +92,12 @@ android {
         applicationId "com.lifevision"
         minSdkVersion 19
         targetSdkVersion 27
-        versionCode 31
+        versionCode 32
         
         //REQUIRED FOR DETOX DO NOT REMOVE
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         
-        versionName "0.0.3"
+        versionName "1.4.0"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
@@ -147,6 +148,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-sentry')
     compile project(':react-native-code-push')
     compile project(':react-native-device-info')
     compile project(':react-native-svg')

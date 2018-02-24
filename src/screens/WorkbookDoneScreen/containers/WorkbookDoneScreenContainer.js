@@ -37,8 +37,7 @@ const merge = (stateProps, dispatchProps, ownProps): Props => {
   
   const doneStep: Step = steps[stepId];
   const doneStepColor = doneStep.color;
-  debugger;
-  const formData = completedForms.find(form => form.stepId === doneStep.stepId);
+  //const formData = completedForms[doneStep.stepId];
   const numberOfSteps = Object.values(steps).length;
   const doneStepNumber = doneStep.number
   const nextStepNumber = doneStep.number + 1;

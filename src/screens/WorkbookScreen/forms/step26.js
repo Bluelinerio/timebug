@@ -3,13 +3,15 @@ import t from "../components/templates";
 
 
 export default {
-  1: { type: t.struct({
-    id: t.maybe(t.String),
-    mantraAnswer: t.Boolean,
-    exerciseAnswer: t.Boolean,
-    meditateAnswer: t.Boolean,
+  1: {
+    type: t.struct({
+      id: t.maybe(t.String),
+      mantraAnswer: t.Boolean,
+      exerciseAnswer: t.Boolean,
+      meditateAnswer: t.Boolean,
     }),
     options: {
+      label: '20/20 Life Vision Check-in',
       fields: {
         id: {
           hidden: true
@@ -25,96 +27,99 @@ export default {
         }
       },
     },
-    value : {
+    value: {
       fields: {
         id: 'step26+v0.0.0.1'
       }
     }
   },
-  2:{
-    type:t.struct({
-      priorities:t.String,
-      fitnessExercise:t.String,
-      nutritionDiet:t.String,
-      sleep:t.String,
-      bodyCare:t.String,
-      mentalEmotional:t.String
+  2: {
+    type: t.struct({
+      priorities: t.String,
+      fitnessExercise: t.String,
+      nutritionDiet: t.String,
+      sleep: t.String,
+      bodyCare: t.String,
+      mentalEmotional: t.String
     }),
-    options:{
-      fields:{
-        label:'What changes and achievements will you make across the following areas?',
-        priorities:{
-          label:'Prioritizing your Health Goals vs. other Areas',
+    options: {
+      label: 'What changes and achievements will you make across the following areas?',
+      fields: {
+        priorities: {
+          label: 'Prioritizing your Health Goals vs. other Areas',
           multiline: true
         },
-        fitnessExercise:{
-          label:'Fitness & Exercise',
+        fitnessExercise: {
+          label: 'Fitness & Exercise',
           multiline: true
         },
-        nutritionDiet:{
-          label:'Nutrition & Diet',
+        nutritionDiet: {
+          label: 'Nutrition & Diet',
           multiline: true
         },
-        sleep:{
-          label:'Sleep',
+        sleep: {
+          label: 'Sleep',
           multiline: true
         },
-        bodyCare:{
-          label:'Body Care',
+        bodyCare: {
+          label: 'Body Care',
           multiline: true
         },
-        mentalEmotional:{
-          label:'Mental & Emotional Health',
+        mentalEmotional: {
+          label: 'Mental & Emotional Health',
           multiline: true
         }
       }
     }
 
   },
-  3:{
-    type:t.struct({
-      who:t.String,
-      howChange:t.String,
-      howHelp:t.String
+  3: {
+    type: t.struct({
+      who: t.String,
+      howChange: t.String,
+      howHelp: t.String
     }),
-    options:{
-      fields:{
-        who:{
-          label:'Who you want to make drastic improvements in their physical health?',
+    options: {
+      label: 'Vision Creation: Health and Wellness',
+      fields: {
+        who: {
+          label: 'Who you want to make drastic improvements in their physical health?',
         },
-        howChange:{
-          label:'How exactly do you want them to change?',
+        howChange: {
+          label: 'How exactly do you want them to change?',
           multiline: true
         },
-        howHelp:{
-          label:'How can you help them achieve this goal?',
+        howHelp: {
+          label: 'How can you help them achieve this goal?',
           multiline: true
-          
+
         }
       }
     }
   },
-  4:{
-    type:t.String,
-    options:{
-      label:'List one wish that you have for the world or a particular sector of the world when it comes to Health.',
-      auto:'none'
-    }
-  },
-  5:{
-    type:t.String,
-    options:{
-      label:'What group of people or country can be most influential in helping to attain this goal?',
-      auto:'none'
-    }
-  },
-  6:{
-    type:t.String,
-    options:{
-      label:'How can you help, even in a small way, to acheive this goal?',
-      auto:'none',
-      multiline:true
+  4: {
+    type: t.struct({
+      oneWish: t.String,
+      whatGroup: t.String,
+      howHelp: t.String,
+    }),
+    options: {
+      label: 'Vision Creation: Health and Wellness',
+
+      fields: {
+        oneWish: {
+          label: 'List one wish that you have for the world or a particular sector of the world when it comes to Health.',
+          auto: 'none'
+        },
+        whatGroup: {
+          label: 'What group of people or country can be most influential in helping to attain this goal?',
+
+        },
+        howHelp: {
+          label: 'How can you help, even in a small way, to acheive this goal?',
+
+        }
+      }
     }
   }
-
 };

@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import styles from '../../styles/templates'
-import FormPages from '../FormPages';
 
 const renderRowWithoutButtons = ({key, input}) => (
   <View 
@@ -61,19 +60,6 @@ const Container = ({ items }) => (
   </View>
 )
 
-// ref => this.formPages = ref
-// const Container = ({ref, items }) => (
-//   <FormPages
-//     page={index}
-//     horizontal={false} 
-//     ref={ref}
-//     containerStyle={{ flex: 1,}} 
-//     indicatorPosition="none"
-//     onScrollEnd={(index) => Keyboard.dismiss() }
-//   >
-//     {items.map(renderRowWithoutButtons)}
-//   </FormPages>
-// )
 
 export default class FormList extends React.Component {
 

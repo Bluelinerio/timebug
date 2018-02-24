@@ -1,25 +1,25 @@
 import t from "../components/templates";
-import { CharachterStrengths, CharachterWeaknesses } from "./contents";
+import { Strengths, Weaknesses } from "./contents";
 
 export default {
   1: {
     type: t.struct({
-      id:t.maybe(t.String),
-      field: t.list(
+      id: t.maybe(t.String),
+      charachterStrengths: t.list(
         t.struct({
-          strengthsSelfView: CharachterStrengths,
+          strengths: Strengths,
           resultingGoalAchieved: t.String
-         })
+        })
       )
     }),
     options: {
+      label: "What are your strengths?",
+
       fields: {
         id: {
-          hidden:true
+          hidden: true
         },
-        field: {
-          label: "What are your strengths?",
-          auto: 'placeholders',
+        charachterStrengths: {
           disableOrder: true,
           maxLines: 10,
           config: {
@@ -27,37 +27,37 @@ export default {
           },
           item: {
             fields: {
-              strengthsSelfView: {
+              strengths: {
+                auto: 'labels',
                 error: "Please select a charachter strength."
               },
-                resultingGoalAchieved:{
-                  error: "What is a goal that you achieved as a result of this strength of yours?"
-                }
+              resultingGoalAchieved: {
+                label: "What is a goal that you achieved as a result of this strength of yours?"
+              }
             }
           }
         },
       },
       value: {
         fields: {
-          id:'step3+v0.0.0.1'
+          id: 'step3+v0.0.0.1'
         }
       }
     }
   },
   2: {
     type: t.struct({
-      field: t.list(
+      charachterWeaknesses: t.list(
         t.struct({
-          weaknessSelfView: CharachterWeaknesses,
+          weaknesses: Weaknesses,
           goalNotReached: t.String
-         })
+        })
       )
     }),
     options: {
+      label: "What are your weaknesses?",
       fields: {
-        field: {
-          label: "What are your weaknesses?",
-          auto: 'placeholders',
+        charachterWeaknesses: {
           disableOrder: true,
           maxLines: 5,
           config: {
@@ -65,13 +65,14 @@ export default {
           },
           item: {
             fields: {
-              weaknessSelfView: {
-               // error: "Please select a charachter weakness."
+              weaknesses: {
+                auto: 'labels'
+                // error: "Please select a charachter weakness."
               },
-              goalNotReached:{
-                label:"What is a goal that you haven't been able to reach as a result?"
-                 // error: "What was one of your goals that you were not able to achieve as a result?"
-                }
+              goalNotReached: {
+                label: "What is a goal that you haven't been able to reach as a result?"
+                // error: "What was one of your goals that you were not able to achieve as a result?"
+              }
             }
           }
         },
@@ -80,28 +81,29 @@ export default {
   },
   3: {
     type: t.struct({
-        friendsName: t.String,
-        strengthFriendView: t.list(CharachterStrengths),
-        weaknessFriendView: t.list(CharachterWeaknesses)
-      }),
-      options: {
-        fields: {
-          friendsName: {
-            label: "Write down a friend or family member's name.",
-            error: "The best person to help you with this exercise is someone who you trust to me completely honest without being judgemental."
-          },
-          strengthFriendView: {
-            label:"What does a close friend or family member, an objective one, think of your strengths?",
-            error:"Please select a charachter strength."
+      friendsName: t.String,
+      strengths: t.list(Strengths),
+      weaknesses: t.list(Weaknesses)
+    }),
+    options: {
+      label: "What does a close friend or family member, an objective one, think of your strengths & weaknesses?",
+      fields: {
+        friendsName: {
+          label: "Write down a friend or family member's name.",
+          error: "The best person to help you with this exercise is someone who you trust to me completely honest without being judgemental."
         },
-          weaknessFriendView: {
-            label:"What does a close friend or family member, an objective one, think of your weaknesses?",
-            error:"Please select a charachter weakness.",
-            config: {
-              minLines:3,
-            },
-          }
+        strengths: {
+          label: 'Strengths',
+          error: "Please select a charachter strength."
+        },
+        weaknesses: {
+          label: "Weaknesses",
+          error: "Please select a charachter weakness.",
+          config: {
+            minLines: 3,
+          },
         }
       }
+    }
   }
 };

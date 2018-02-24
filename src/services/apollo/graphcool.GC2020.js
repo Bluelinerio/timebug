@@ -205,16 +205,11 @@ export const createAchievement = ({ userId, tagName }) =>
 export const deleteAchievement = (achievementId) => 
 	client.mutate({
 		mutation:gql`
-			mutation delete($achievementId:ID) {
+			mutation delete($achievementId:ID!) {
 				deleteAchievement(id:$achievementId) {
 					id
-					tagName
-					user {
-						...UserAchievements
-					}
 				}
 			}
-			${userAchievementsFragment}
 		`,
 		variables: {
 			achievementId
@@ -222,6 +217,25 @@ export const deleteAchievement = (achievementId) =>
 	})
 	.then(parse('deleteAchievement'))
 
+export const fetchUserAchievementsWithUserId = (id: string): User =>
+	client
+		.query({
+			query:gql`
+				query getUserAchievements($id: ID!) {
+					User(id: $id) {
+						id
+						...UserAchievements
+					}
+				}
+				${userAchievementsFragment}
+			`,
+			fetchPolicy: 'network-only',
+			variables: { id }
+		})
+		.then(parse('User'))
+		.catch(handleErrorGettingUser)
+
+	
 export const testUser = ({ userId }): any =>
 	client
 		.query({

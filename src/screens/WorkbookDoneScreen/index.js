@@ -2,7 +2,7 @@ import React from 'react'
 import {
 	Button,
 	Text,
-	SafeAreaView
+	Platform
 } from 'react-native'
 import { 
   HeaderBackButton, 
@@ -23,16 +23,13 @@ import { reset } from '../../redux/actions/nav.actions';
 screen.navigationOptions = ({ navigation: { dispatch, state: { params: { stepColor, stepNumber } } } }) => {
 	return {
 		headerRight: (
-				<Button
-					title={'Done'}
-					color={'white'}
-					backgroundColor={stepNumber}
-					onPress={() => dispatch(reset())}
-					style={{
-						paddingTop: 14,
-						paddingHorizontal: 16,
-					}}
-				/>
+			<Button
+				title={'Done'}
+				color={Platform.OS === 'ios' ? 'white' : 'transparent'}
+				accessibilityLabel={'close'}
+				backgroundColor={'transparent'}
+				onPress={() => dispatch(reset())}
+			/>
 		),
 		headerStyle: {
 			backgroundColor: stepColor,

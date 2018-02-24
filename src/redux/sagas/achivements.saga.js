@@ -1,14 +1,18 @@
-import { take, put, actionChannel, select, call } from 'redux-saga/effects'
+import { take, put, putResolve, actionChannel, select, call } from 'redux-saga/effects'
 import {
   UPDATE_USER
 } from '../actionTypes';
 import {
   GET_USER,
-  updateUser
+  updateUser,
 } from '../actions/user.actions';
 import selectors from '../selectors'
 import achievementsList from '../../static/bot/surveyAchievements'
-import { createAchievement, deleteAchievement } from '../../services/apollo'
+import { 
+  createAchievement, 
+  deleteAchievement, 
+  fetchUserAchievementsWithUserId
+} from '../../services/apollo'
 
 const achievements = {
   ASSESSMENTS: 'Assessments',
@@ -112,6 +116,7 @@ export function * watchChangesInFormsAndUpdateAchievements() {
   const requestChan = yield actionChannel([GET_USER.SUCCEEDED, UPDATE_USER])
   while(true) {
     yield take(requestChan)
+    const number = Math.random();
     const user = yield select(selectors.user)
     const payload = nextRequiredUpdateForUser(user);
     if(payload.createAchievement) {
@@ -124,15 +129,17 @@ export function * watchChangesInFormsAndUpdateAchievements() {
       if( res.user ) {
         // an FYI put:
         yield put({ type: CREATE_ACHIEVEMENT, payload })
-        yield put(updateUser(res.user))
+        yield putResolve(updateUser(res.user))
       } else {
         //fail silently
       }
-    } else if(payload.deleteAchievement) {
+    } else if (payload.deleteAchievement) {
       const { achievementId } = payload.deleteAchievement;
       const res = yield call(deleteAchievement, achievementId)
-      if( res.user ) {
-        yield put(updateUser(res.user))
+      if( res.id ) {
+        yield putResolve(updateUser({
+          achievements: user.achievements.filter(a => a.id !== res.id)
+        }))
       } else {
         //fail silently
       }

@@ -1,11 +1,11 @@
 import t from "../components/templates";
-import { PillarsOfLife,CharachterStrengths, PercentSelector,OneToTenScale } from "./contents";
+import { PillarsOfLife,Strengths, PercentSelector,OneToTenScale } from "./contents";
 
 export default {
     1:{ 
         type: t.struct({
             id:t.maybe(t.String),
-           garden:t.list(
+           areasOfGarden:t.list(
                t.struct({
                    areaOfGarden:PillarsOfLife,
                    selfInfluence:PercentSelector,
@@ -15,28 +15,28 @@ export default {
            )
         }),
         options:{
-
+            label:'Imagine different areas of your garden.',
+            
             fields:{
-                label:'Imagine different areas of your garden.',
                 id:{
                     hidden: true
                 },
-                garden:{
+                areasOfGarden:{
                     item:{
                         fields:{
                             areaOfGarden: {
                                 auto:'labels'
                             },
                             selfInfluence: {
-                                label:'Self Influence(%)',
-                                error: 'What percentage of the seeds in this garden were planted by you?'
+                               
+                                label: 'What percentage of the seeds in this garden were planted by you?'
                             },
                             otherInfluence: {
-                                label:'Other Influence(%)',
-                                error: 'What percentage of the seeds in this garden were planted by someone else?'
+                               
+                                label: 'What percentage of the seeds in this garden were planted by someone else?'
                             },
                             nameOfOther: {
-                                error: 'Who planted most of the seeds in your garden over the course of your life? '
+                                label: 'Who planted most of the seeds in your garden over the course of your life? '
                             }
                         }
                     }
@@ -51,68 +51,41 @@ export default {
 
     },
     2:{
-        type: t.Boolean,
+        type: t.struct({
+            commitment:t.Boolean
+        }),
         options: {
             label:'Are you committed to taking full ownership of your life garden going forward?',
+            auto:'none'
         }
      },
      3:{
          type:t.struct({
-            careerBHAG1:t.String,
-            careerBHAG2:t.String,
-            personalityAndHobbiesBHAG:t.String,
-             personalityAndHobbiesBHAG2:t.String,
-             healthBHAG:t.String,
-             healthBHAG2:t.String,
-             relationshipBHAG:t.String,
-             relationshipBHAG2:t.String,
-             financialBHAG:t.String,
-             financialBHAG2:t.String,
-             PEBHAG:t.String,
-             PEBHAG2:t.String,
-             spiritualityBHAG:t.String,
-             spiritualityBHAG2:t.String
+            careerBhagOne:t.String,
+            careerBhagTwo:t.String,
+             aimsAndHobbiesBhagOne:t.String,
+             aimsAndHobbiesBhagTwo:t.String,
+             healthBhagOne:t.String,
+             healthBhagTwo:t.String,
+             relationshipBhagOne:t.String,
+             relationshipBhagTwo:t.String,
+             financialBhagOne:t.String,
+             financialBhagTwo:t.String,
+             spiritualityBhagOne:t.String,
+             spiritualityBHAG2:t.String,
+             financesBhagOne:t.String,
+             financesBhagTwo:t.String,
          }),
          options: {
-             fields:{
-                label:"Reflecting on the 7 Self-assessments over Steps 13-19, list two Big Hairy Audacious Goals (BHAGs) that you'd like to plant for this next year.",
-                careerBHAG:{
-                     auto:'labels'
-                 },
-                 careerBHAG2:{
-                    auto:'labels'                 },
-                    personalityAndHobbiesBHAG:{
-                    auto:'labels'                },
-                personalityAndHobbiesBHAG2:{
-                    auto:'labels'                },
-                    healthBHAG:{
-                    auto:'labels'                },
-                healthBHAG2:{
-                    auto:'labels'                },
-                    relationshipBHAG:{
-                    auto:'labels'                },
-                relationshipBHAG2:{
-                    auto:'labels'                },
-                    financialBHAG:{
-                    auto:'labels'                },
-                financialBHAG2:{
-                    auto:'labels'                },
-                    placeAndEnvironmentBHAG:{
-                    auto:'labels'                },
-                placeAndEnvironmentBHAG2:{
-                    auto:'labels'                },
-                    spiritualityBHAG:{
-                    auto:'labels'                },
-                spiritualityBHAG2:{
-                    auto:'labels'                }
-             }
+            label:"Reflecting on the 7 Self-assessments over Steps 13-19, list two Big Hairy Audacious Goals (BHAGs) that you'd like to plant for this next year.",
+            
          }
      },
      4:{
          type: t.struct({
              skills:t.list(
                  t.struct({
-                    skill:CharachterStrengths,
+                    skill:t.String,
                     proficiencyLevel:OneToTenScale,
                     aspirationLevel:OneToTenScale,
                     improvements:t.String
@@ -130,8 +103,9 @@ export default {
                                  error: 'Please select a Charachter Strength.'
                              },
                              proficiencyLevel:{
-                                 label:'Proficiency Level(Using a 10pt Scale with 1=beginner to 10=master)',
-                                 error: 'Please select a value.'
+                                 label:'Proficiency Level',
+                                 error: 'Please select a value.',
+                                 help:'Using a 10pt Scale with 1=beginner to 10=master'
                              },
                              aspirationLevel:{
                                  label:'Aspiration level in 2020',

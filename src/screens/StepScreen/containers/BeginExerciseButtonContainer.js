@@ -17,24 +17,21 @@ const mapStateToProps = state => {
 
 const textTestId= 'step_to_workbook_text'
 const buttonTestId= 'step_to_workbook_button'
+const text = 'BEGIN';
 
 const merge = (stateProps, dispatchProps, ownProps): Props => {
   const { colors, steps } = stateProps
-  const { navigation: {state:{ params:{ stepId }}}} = ownProps
+  const { navigation: {state: { params:{ stepId }}}} = ownProps
   const backgroundColor = colors[stepId]
-
-  const text = 'BEGIN';
-
-  const { goToWorkbookScreen } = dispatchProps;
-  const onPressWithProps = goToWorkbookScreen
   return {
+    ...stateProps,
+    ...dispatchProps,
     ...ownProps,
-    onPressWithProps,
+    backgroundColor,
+		text, 
     textTestId,
     buttonTestId,
-		text,
-    backgroundColor,
   }
 }
 
-export default withNavigation(connect(mapStateToProps,({ goToWorkbookScreen}), merge)(Button));
+export default withNavigation(connect(mapStateToProps, ({ onPressWithProps: goToWorkbookScreen }), merge)(Button));
