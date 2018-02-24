@@ -33,15 +33,6 @@ export const LifeStages = t.enums.of([
 ], 'LifeStages');
 
 export const PillarsOfLife = t.enums.of([
-<<<<<<< HEAD
-  'Career',
-  'Personality & Hobbies',
-  'Health',
-  'Financial',
-  'Relationship',
-  'Environment',
-  'Spirituality'
-=======
   'Finances',
  'Environment',
  'Aims & Hobbies',
@@ -50,7 +41,6 @@ export const PillarsOfLife = t.enums.of([
  'Health & Wellness',
  'Spirituality',
   
->>>>>>> origin
 ], 'PillarsOfLife');
 
 export const Emotion = t.enums.of([
