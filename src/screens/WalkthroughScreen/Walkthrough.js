@@ -4,11 +4,11 @@ import {
   View, 
   Image, 
   StyleSheet, 
-  SafeAreaView, 
   Dimensions, 
   StatusBar, 
   Platform
 } from 'react-native';
+import { SafeAreaView } from 'react-navigation';
 import Swiper from 'react-native-swiper';
 import LinearGradient from 'react-native-linear-gradient'
 

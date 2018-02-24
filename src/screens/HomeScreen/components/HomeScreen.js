@@ -1,13 +1,16 @@
 // @flow
 import React, { PureComponent } from 'react';
 import { 
+	StatusBar,
 	View,
 	Text, 
 	ScrollView, 
 	TouchableHighlight, 
 } from 'react-native';
-import { NavigationAction } 				from 'react-navigation'
-
+import { 
+	NavigationAction,
+	SafeAreaView,
+} 				from 'react-navigation'
 //// begining
 import GradientWithTwoColors							from '../../../components/GradientWithTwoColors';
 import DefaultIndicator             			from '../../../components/DefaultIndicator.js';
@@ -54,8 +57,12 @@ export default class HomeScreen extends PureComponent<Props, State> {
 		}
 
 		return (
-			<View style={styles.container}>
-				<View style={styles.innerScreenContainer} />
+			<SafeAreaView forceInset={{ top: 'always', bottom: 'never' }} style={styles.container}>
+				<StatusBar 
+					translucent
+					barStyle='dark-content'
+					backgroundColor={'black'}
+				/> 
 				<ScrollView 
 					style={{ flex: 1 }} 
 					contentInsetAdjustmentBehavior="automatic"
@@ -82,7 +89,7 @@ export default class HomeScreen extends PureComponent<Props, State> {
 					</View>
 					<Version />
 				</ScrollView>
-			</View>
+			</SafeAreaView>
 		);
 	}
 }
