@@ -1,8 +1,5 @@
 // @flow
 import * as React from 'react';
-<<<<<<< HEAD
-import {View, Image, StyleSheet, SafeAreaView, ScrollView, Dimensions, StatusBar } from 'react-native';
-=======
 import {
   View, 
   Image, 
@@ -12,7 +9,6 @@ import {
   Platform
 } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
->>>>>>> origin
 import Swiper from 'react-native-swiper';
 import LinearGradient from 'react-native-linear-gradient'
 
@@ -41,17 +37,10 @@ export default class Walkthrough extends React.Component<Props> {
     >
       <StatusBar 
         translucent 
-<<<<<<< HEAD
-        barStyle="light-content"
-        backgroundColor={'white'}
-      />
-      <SafeAreaView style={styles.fullHeightView}>
-=======
         barStyle='light-content'
         backgroundColor={'transparent'}
       /> 
       <SafeAreaView >
->>>>>>> origin
         <View style={styles.slide} >
           <Text 
             type='header2' 
