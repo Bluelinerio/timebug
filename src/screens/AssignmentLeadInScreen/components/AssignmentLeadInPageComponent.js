@@ -6,7 +6,6 @@ import TouchableBounce 			from 'react-native/Libraries/Components/Touchable/Touc
 import styles 							from '../styles';
 import Markdown  						from '../../../Modules/Markdown';
 import AssignmentNumber 		from './AssignmentNumber';
-import BeginWorkbookButton 	from '../containers/BeginWorkbookButton';
 import markdownStyles 			from '../../../styles/Markdown/assignment'
 import type { Assignment} 	from '../../../services/cms'
 
@@ -94,8 +93,5 @@ export default ({ assignment, index, color, isLastItem, progress, scrollToPage }
 				width={Dimensions.get('window').width - (!isLastItem ? 70 : 30)}
 			/>
 			</View>
-			{isLastItem && 
-				<BeginWorkbookButton />
-			}
 	</TouchableBounce>)
 }
