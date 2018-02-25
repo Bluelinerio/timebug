@@ -54,7 +54,6 @@ t.String.getValidationErrorMessage = (actual, path, context) => {
   const to = path.length ? '/' + path.join('/') + ': ' : '';
 
   if(!actual) {
-    debugger;
     const help = context && context.options && context.options.help 
         && ', ' + context.options.help
     return `missing required field ${to}${help}`
