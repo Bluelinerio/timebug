@@ -25,3 +25,4 @@ export function logoutButtonPressed() {
 }
 
 export const REFRESH_CMS = action('REFRESH_CMS')
+export const resetStore = action('RESET_ALL')

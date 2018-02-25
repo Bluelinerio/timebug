@@ -16,6 +16,7 @@ import {
 }                                   from './containers/VersionGate'
 import                                   './reactotron';
 import setup                        from './redux';
+import { resetStore }               from './redux/actions'
 import { client }                   from './services/apollo';
 import                                   './services/sentry';
 import AppNavigation                from './navigation/app';
@@ -40,7 +41,10 @@ export default class App extends React.Component<{},State> {
   state:State = {
     error: null
   }
-  componentDidCatch(error:any) {
+  async componentDidCatch(error:any) {
+    debugger;
+    store.dispatch(resetStore)
+    persistor.purge()
     this.setState({
       error
     })
