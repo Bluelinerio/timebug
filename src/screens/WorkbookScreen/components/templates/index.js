@@ -51,8 +51,13 @@ t.form.Form.defaultProps = {
 
 
 t.String.getValidationErrorMessage = (actual, path, context) => {
-  if(!actual && context && context.options && context.options.label) {
-    return `${context.options.label} is a required, ${context.options.help || ''}`
+  const to = path.length ? '/' + path.join('/') + ': ' : '';
+
+  if(!actual) {
+    debugger;
+    const help = context && context.options && context.options.help 
+        && ', ' + context.options.help
+    return `missing required field ${to}${help}`
   } else {
     const to = path.length ? '/' + path.join('/') + ': ' : '';
     return 'Invalid value ' + t.stringify(actual) + ' supplied to ' + to;
