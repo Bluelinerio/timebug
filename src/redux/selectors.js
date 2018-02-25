@@ -26,17 +26,6 @@ const aboutText = (state:any) => getCms(state).about
 const user = (state: any): ?User =>
 	typeof getUserState(state) === 'string' ? null : getUserState(state)
 const userId = (state: any) => user(state) && user(state).id
-const isUserStateUNDETERMINED = (state: any): boolean => getUserState(state) === UNDETERMINED
-const isUserStateAUTHENTICATING = (state: any): boolean => getUserState(state) === AUTHENTICATING
-const needsLogin =  (state: any) => {
-	// user can be only an object, or a string:
-	const userState = getUserState(state)
-	if(typeof userState === 'string') {
-		return userState !== AUTHENTICATING
-	} else {
-		return false
-	}
-}
 
 const isLoggedIn = (state: any) : boolean => !!user(state)
 const isAnonymous = (state: any) : boolean => getUserState(state) === ANONYMOUS
@@ -127,9 +116,6 @@ export default {
 	user,
 	userId,
 	isLoggedIn,
-	isUserStateUNDETERMINED,
-	isUserStateAUTHENTICATING,
-	needsLogin,
 	isAnonymous,
 	completedForms,
 	sortedCompletedForms,

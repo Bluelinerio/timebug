@@ -82,9 +82,11 @@ export default StyleSheet.create({
     color: iOSColors.gray
 	},
 	headerAvatar: {
-    height: 43,
-    width: 43,
-    borderRadius: 43 / 2
+    height: 44,
+    width: 44,
+		borderRadius: 44 / 2,
+		borderColor: 'green',
+		borderWidth: 1
 	},
 	bannerHeaderTitle: iOSUIKit.largeTitleEmphasizedObject,
 	banner: {

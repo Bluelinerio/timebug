@@ -15,6 +15,7 @@ import {
   systemWeights
 } from "react-native-typography";
 import moment from 'moment';
+
 const mapStateToProps = state => ({ user: selectors.user(state) });
 
 const GravatrImage = ({ email, style}) => (
@@ -24,7 +25,7 @@ const GravatrImage = ({ email, style}) => (
 	/>
 );
 
-const Banner = ({ date='Monday, 27 November', user, titleColor }) => 
+const Banner = ({ user }) => 
   (
 		<View>
 			<VerticalGradient />
@@ -33,7 +34,7 @@ const Banner = ({ date='Monday, 27 November', user, titleColor }) =>
 					<Text style={styles.headerDate}>
 						{moment().format("dddd DD MMM").toUpperCase()}
 					</Text>
-					<Text style={[styles.title, styles.strong, { color: titleColor || 'black' }]}>{`Welcome`}</Text>
+					<Text style={[styles.title, styles.strong]}>{`Welcome`}</Text>
 				</View>
 				{user && user.email && 
 					<TouchableOpacity>

@@ -7,15 +7,10 @@ import {
 	ScrollView, 
 	TouchableHighlight, 
 } from 'react-native';
-import { 
-	NavigationAction,
-	SafeAreaView,
-} 				from 'react-navigation'
-//// begining
-import GradientWithTwoColors							from '../../../components/GradientWithTwoColors';
-import DefaultIndicator             			from '../../../components/DefaultIndicator.js';
-import Error                        			from '../../../components/Error';
+import { SafeAreaView } from 'react-navigation'
 
+import GradientWithTwoColors							from '../../../components/GradientWithTwoColors';
+import Error                        			from '../../../components/Error';
 import PagninatedCarouselContainer  			from '../containers/PagninatedCarouselContainer';
 import LifevisionDashoboardCellContainer	from '../containers/LifevisionDashoboardCellContainer';
 import Version														from '../containers/Version'
@@ -29,33 +24,16 @@ import Banner                       			from './Banner';
 import MeditationDashobardCellContainer		from '../containers/MeditationDashobardCellContainer';
 
 export type Props = {
-	navigation: any,
-	showLoading: boolean,
-	userFinishedAllSteps: boolean,
-	error: string
+	error?: string
 };
 type State = {
 	stepIndexInFocus: number
 };
 
 export default class HomeScreen extends PureComponent<Props, State> {
-  state = { stepIndexInFocus: 0 }
+	state = { stepIndexInFocus: 0 }
 	render() {
-    const {
-      navigation,
-      showLoading,
-      userFinishedAllSteps,
-      error,
-    } = this.props;
 		const { stepIndexInFocus } = this.state;
-
-		if (showLoading) {
-			return <DefaultIndicator size='large' />;
-		}
-		if (error) {
-			return <Error message={error} />;
-		}
-
 		return (
 			<SafeAreaView forceInset={{ top: 'always', bottom: 'never' }} style={styles.container}>
 				<StatusBar 
@@ -93,4 +71,3 @@ export default class HomeScreen extends PureComponent<Props, State> {
 		);
 	}
 }
-
