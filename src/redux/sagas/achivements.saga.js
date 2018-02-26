@@ -43,7 +43,7 @@ const testDataFromStatic = () => {
   Object.keys(achievements).forEach((k, i) => assert(achievements[key] === achievementsList[i]), `achievements at index ${i} should be ${achievements[key]}`)
 }
 
-const nextRequiredUpdateForUser = (user:User): {updated:[ string ], deleted:[string]} => {
+const nextRequiredUpdateForUser = (user:User): { updated:[ string ], deleted:[string]} => {
   const achievementsForStepId = {
     '1': [achievements.STAGES_OF_LIFE, achievements.REFLECTIONS],
     '2': [achievements.PILLARS_OF_LIFE],
@@ -57,8 +57,8 @@ const nextRequiredUpdateForUser = (user:User): {updated:[ string ], deleted:[str
     '10': [achievements.MY_INTERNAL_WORLD, achievements.LIFE_VISION],
     '11': [],
     '12': [achievements.MAJOR_LIFE_EVENTS],
-    '13': [achievements.FINANCES],
-    '14': [],
+    '13': [],
+    '14': [achievements.FINANCES],
     '15': [achievements.AIMS_AND_HOBBIES],
     '16': [],
     '17': [achievements.RELATIONSHIPS],
