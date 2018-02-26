@@ -1,38 +1,34 @@
 
 const user = {
   achievements: [
-    AreasOfLife,
     StagesOfLife,
     Reflections,
-    LifeCategories,
+    PillarsOfLife,
     StrengthsAndWeaknesses,
     Team,
     Goals,
     Commitments,
-    HolisticHealth,
+    HealthAndWellness,
     MyInternalWorld,
     MajorLifeEvents,
-    WorkandFinances,
-    PersonalAimsAndHobbies,
+    Financial,
+    AimsAndHobbies,
     Relationships,
     Spirituality,
-    PlaceAndEnvironment,
+    Environment,
     Assessments,
     LifeVision,
   ]
 }
 
 const achievements = {
-  AreasOfLife: {
-
-  },
   StagesOfLife: {
 
   },
   Reflections: {
 
   },
-  LifeCategories: {
+  PillarsOfLife: {
 
   },
   StrengthsAndWeaknesses: {
@@ -47,7 +43,7 @@ const achievements = {
   Commitments: {
 
   },
-  HolisticHealth: {
+  HealthAndWellness: {
 
   },
   MyInternalWorld: {
@@ -59,7 +55,7 @@ const achievements = {
   WorkandFinances: {
 
   },
-  PersonalAimsAndHobbies: {
+  AimsAndHobbies: {
 
   },
   Relationships: {
@@ -68,7 +64,7 @@ const achievements = {
   Spirituality: {
 
   },
-  PlaceAndEnvironment: {
+  Environment: {
 
   },
   Assessments: {
