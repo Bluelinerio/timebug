@@ -148,6 +148,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-sound')
     compile project(':react-native-sentry')
     compile project(':react-native-code-push')
     compile project(':react-native-device-info')
