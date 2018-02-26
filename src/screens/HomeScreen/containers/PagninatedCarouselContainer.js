@@ -50,6 +50,6 @@ const mapStateToProps = (state:any) => {
 	})
 }
 
-const onPress = (item, index) => goToAssignmentFlow({ step: item, index})
+const onPress = (step, index) => goToAssignmentFlow({ step, index})
 
 export default connect(mapStateToProps, ({ onPress }) )(PagninatedCarousel);
