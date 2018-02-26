@@ -4,7 +4,7 @@ import { NavigationActions } from 'react-navigation'
 import screen                 from './containers/StepScreenContainer';
 import HeaderCloseButton      from '../../components/HeaderCloseButton'
 import Logo                   from '../../components/Logo'
-import styles                 from './styles';
+import styles                 from '../styles';
 
 //  headerTitle: <Logo height={30} width={30}/>,
 

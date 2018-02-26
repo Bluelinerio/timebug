@@ -4,7 +4,8 @@ import {
   Image,
   View,
   Text,
-  Button
+  Button,
+  Platform
 } from 'react-native'
 import TouchableBounce 			  from 'react-native/Libraries/Components/Touchable/TouchableBounce'
 import glamorous              from 'glamorous-native'
@@ -13,6 +14,11 @@ import LinearGradient         from 'react-native-linear-gradient';
 import styles                 from '../../styles/dashbaord.styles'
 import TouchableRoundedImage  from '../../../../components/TouchableRoundedImage';
 import Meditator              from '../../../../components/Meditator';
+import { 
+  hotPink, 
+  lessSaturatedDeepBlue, 
+  deepBlue 
+}                             from '../../../../constants/colors';
 
 const Card = glamorous(View/*TouchableBounce*/)(styles.dashboardCard);
 const Row = glamorous.view(styles.suggestionRow);
@@ -40,6 +46,22 @@ const HighlighText = ({children}) => (
   </GradientWithTwoColors>
 )
 
+const YNButton = ({onPress, title}) => (
+  <View 
+    style={{
+      alignSelf:'center', 
+      marginVertical: 10,
+      marginHorizontal: 20,
+    }}
+  >
+    <Button
+      title={title}
+      color={ Platform.OS === 'ios' ? deepBlue : lessSaturatedDeepBlue }
+      onPress={onPress}
+    />
+  </View>
+)
+
 export default class MeditationCell extends React.PureComponent<> {
   render() {
     const { onPress } = this.props;
@@ -47,20 +69,27 @@ export default class MeditationCell extends React.PureComponent<> {
       <Card>
         <Row>
           <HighlighText> 
-            <Meditator />
             <Text style={[styles.suggestionText, styles.strong, { 
               textAlign: 'center', 
-              color: '#FF24D8' 
+              color: hotPink
             }]}>
               {`\Have you meditated today?\n`}
             </Text>
-            <Button
-              style={{
-                alignSelf:'center', 
-                marginBottom: 10}}
-              title={'Yes'}
-              onPress={onPress}
-            />
+            <Meditator />
+            <View style={{
+              flexDirection:'row',
+              justifyContent:'center',
+              alignItems: 'center',
+            }}>
+              <YNButton
+                title={'Yes'}
+                onPress={onPress}
+              />
+              <YNButton
+                title={'No'}
+                onPress={onPress}
+              />
+            </View>
           </HighlighText>
         </Row>
       </Card>
