@@ -39,12 +39,16 @@ export default class HomeScreen extends PureComponent<Props, State> {
 				<StatusBar 
 					translucent
 					barStyle='dark-content'
-					backgroundColor={'black'}
+					backgroundColor={'transparent'}
 				/> 
 				<ScrollView 
 					style={{ flex: 1 }} 
 					contentInsetAdjustmentBehavior="automatic"
-				>
+				>	
+					{StatusBar.currentHeight && <View style={{
+						backgroundColor: 'white',
+						height:StatusBar.currentHeight
+					}} />}				
 					<Banner />
 					<PagninatedCarouselContainer
 						itemWidth={itemWidth}
