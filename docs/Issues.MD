@@ -15,6 +15,12 @@ Issues
 
 - Redux-Persist on Android when reloading doesn't rehydrates. [link](https://github.com/rt2zz/redux-persist/issues/102)
 
+- react-native-sound : Android
+  - ```java:43: error: cannot find symbol final ReactContext reactContext = this.context```
+  - [github issue:](https://github.com/zmxv/react-native-sound/issues/382) 
+  - Solution: Revert to @0.10.5
+
+
 
 Compiling
 --------
