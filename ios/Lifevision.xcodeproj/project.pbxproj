@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -13,7 +14,6 @@
 		00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
 		00E356F31AD99517003FC87E /* LifevisionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* LifevisionTests.m */; };
 		0810BAAE4E0643C297AEFB59 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57C7719A7FEF494BBD5D9F20 /* MaterialIcons.ttf */; };
-		0C9CD097CA184A98B3BCD13B /* Meditator1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F70FB98C001424CA63C4922 /* Meditator1.png */; };
 		0EA1C5BDD50243EF8B2702C6 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9293B7C25ADB405FA12154C8 /* libRNVectorIcons.a */; };
 		1279992B497946B5B8C6036A /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 31157B4B2B4D447FA2F1D0E2 /* FontAwesome.ttf */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
@@ -34,7 +34,6 @@
 		207834E9B83E4273B1CB16C3 /* 2020-diary-step-18.png in Resources */ = {isa = PBXBuildFile; fileRef = 060751800068405D9D7304E8 /* 2020-diary-step-18.png */; };
 		21F9891CE54347828F75075D /* 2020-diary-step-4.png in Resources */ = {isa = PBXBuildFile; fileRef = F2B168944D894400B00FBDD0 /* 2020-diary-step-4.png */; };
 		242E33E72B3D44169DD04118 /* 2020-diary-step-11.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F8B322E03F54BF3910BD769 /* 2020-diary-step-11.png */; };
-		2696EB970D36430FBF649229 /* Meditator8.png in Resources */ = {isa = PBXBuildFile; fileRef = 64E9ADE4CE46423784D42080 /* Meditator8.png */; };
 		26B722DCAAE74A78B167D26F /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F01FDC441C44721AD15DC35 /* Entypo.ttf */; };
 		275FFA3D7A0447399A5B22B3 /* 2020-diary-step-21.png in Resources */ = {isa = PBXBuildFile; fileRef = F195A117F48242A8A9C7F175 /* 2020-diary-step-21.png */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
@@ -54,11 +53,9 @@
 		3BCE2F7FB0A24F9798E43B30 /* Metropolis-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = BF30A88CDC124236A4774B99 /* Metropolis-Medium.otf */; };
 		3CA3710EDFF646CEB4F8CDCB /* 2020-diary-step-1.png in Resources */ = {isa = PBXBuildFile; fileRef = FC66B46687B9416582809756 /* 2020-diary-step-1.png */; };
 		3CE0519D15A74E17A065FBF1 /* sandClockConfetti@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0961A63D63954C67AC22CF82 /* sandClockConfetti@3x.png */; };
-		3E6C39E16C9342FDA4E576B0 /* Meditator2.png in Resources */ = {isa = PBXBuildFile; fileRef = 149C6658290E4F91AF062D18 /* Meditator2.png */; };
 		3E75010D2BD24AE6B1F31809 /* Metropolis-SemiBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = FA98C67E343D4CC9B9C3BDCB /* Metropolis-SemiBoldItalic.otf */; };
 		3E854EAC298246DAA2452458 /* 2020-diary-step-19.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C733FD0975947D9BE2AB9A4 /* 2020-diary-step-19.png */; };
 		3EBB27C84DF6410689CA8023 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4497000DBE624C758DC7A878 /* MaterialIcons.ttf */; };
-		3FFF87EBF55947EABAB381F5 /* Meditator3.png in Resources */ = {isa = PBXBuildFile; fileRef = A265CE54B0C64B99B31E387F /* Meditator3.png */; };
 		41395E0A325C4854ACDFB05F /* 2020-diary-step-26.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B3099E8E76494882B28BF3 /* 2020-diary-step-26.png */; };
 		427CF7DD055F416F99F52703 /* 2020-diary-step-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 206B1EAD0A554C0BB83B4016 /* 2020-diary-step-29.png */; };
 		431F97BA6B1C4CC2B1C116B6 /* Metropolis-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B4C222AC0C7480F9D05B796 /* Metropolis-RegularItalic.otf */; };
@@ -72,7 +69,6 @@
 		517D1EFF7E904F0C834E5891 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3B57CFBA68B74889A8B8662E /* EvilIcons.ttf */; };
 		52E08DFA2C8D4F45B4C9BE8A /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18B2DDD7DA314ED9893299EA /* Zocial.ttf */; };
 		53B338318D124558AA3F2EFE /* Metropolis-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3B101239ACA743BC827C7412 /* Metropolis-MediumItalic.otf */; };
-		54D1346384B84605BAF47F9F /* Meditator12.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EEA8592602B44A3931A9839 /* Meditator12.png */; };
 		54F05E03BB9D45DBB50A5179 /* Metropolis-ThinItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = FC1002986DAE4858AC9EFA4C /* Metropolis-ThinItalic.otf */; };
 		5868E8CD5BC14D0BB40B6A13 /* Roboto_medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F9075118CA04F0382E88C0E /* Roboto_medium.ttf */; };
 		588FBD6AC5D8471997B72308 /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 573073BF8E7147C9AF6BF4BA /* libRCTFBSDK.a */; };
@@ -85,11 +81,9 @@
 		7B842D0A892243DAA968385B /* 2020-diary-step-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 86E8CA8065774F3C9882F20C /* 2020-diary-step-2.png */; };
 		81F2C17FE35E435DA7239F85 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB7A9F0628F3499BB20FA071 /* Ionicons.ttf */; };
 		824FFA761DD841E991654723 /* Metropolis-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98DB4E3F7A1F41E397CE3658 /* Metropolis-BlackItalic.otf */; };
-		82CDC8A902A44B14AECE3D16 /* Meditator7.png in Resources */ = {isa = PBXBuildFile; fileRef = 749A5A7C076F43E084547BB9 /* Meditator7.png */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		86C986988F6A44EF90123075 /* 2020-diary-step-15.png in Resources */ = {isa = PBXBuildFile; fileRef = D8004A0854F54A1EBF1F7386 /* 2020-diary-step-15.png */; };
 		8C1267ABE7914ACFB0BA3062 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EA2659C3B484CB68F1CC4DA /* FBSDKCoreKit.framework */; };
-		8C6F1898E2CC49488AA9491A /* Meditator5.png in Resources */ = {isa = PBXBuildFile; fileRef = C668F2A379464147970C97DE /* Meditator5.png */; };
 		8CC27DE8F6594EE39DC76EB5 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9279D43457CA417B82A913D0 /* FBSDKLoginKit.framework */; };
 		8FD0FF2DDD1D467A97467C84 /* Roboto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E2EBC692F42043FF8F12AEA6 /* Roboto.ttf */; };
 		8FDE4C82046F4C748C59B584 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F013D1E12B514B159F21CD08 /* SimpleLineIcons.ttf */; };
@@ -110,23 +104,19 @@
 		B07FBCC8AC03483094306ED9 /* 2020-diary-step-30.png in Resources */ = {isa = PBXBuildFile; fileRef = 06F72533ACF64BD495FF45F5 /* 2020-diary-step-30.png */; };
 		B360632F08A34A5E915D55E5 /* Metropolis-ExtraLightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 04E0CB5F6336405C893721DB /* Metropolis-ExtraLightItalic.otf */; };
 		B428BBAB04AC4DC68AC008F1 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E339D4B84D64EC89A41463A /* Entypo.ttf */; };
-		B70A8EE551BE41E393567134 /* Meditator9.png in Resources */ = {isa = PBXBuildFile; fileRef = 23DBDF6F70A147528AF6FD3E /* Meditator9.png */; };
 		B7B910C2EA7444E39DC10735 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 38D61F674FA741408EB0DB8D /* Octicons.ttf */; };
 		BCB2A6B019084F50B39072C3 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EE35559F2FD432FADBDAADF /* FBSDKShareKit.framework */; };
-		BCF99B58ED8249C3ADD995C8 /* Meditator10.png in Resources */ = {isa = PBXBuildFile; fileRef = 13B1AD6666864C92B49C7437 /* Meditator10.png */; };
 		BD11FA511759476F9D02E498 /* 2020-diary-step-27.png in Resources */ = {isa = PBXBuildFile; fileRef = AED85DACAB2E4ED7A172D2FC /* 2020-diary-step-27.png */; };
 		BFA5E945E088421BA72780E1 /* 2020-diary-step-6.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E367965BD8048BEB5196DFE /* 2020-diary-step-6.png */; };
 		BFE9266B1D244556BB054A90 /* 2020-diary-step-10.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BD983B2232C4C51B9C4A42A /* 2020-diary-step-10.png */; };
 		C37BCBBDE1C34425A279067A /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5E6468C8F154D4CAA950D5D /* EvilIcons.ttf */; };
 		CC8A94A56B4B4FEAB80B0894 /* libRNSentry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C479C2B29EE440B98FBB08A8 /* libRNSentry.a */; };
-		CD2B8EDB00C748F1945CDC48 /* Meditator6.png in Resources */ = {isa = PBXBuildFile; fileRef = 40A3EB01FEC5482BA6F14F3A /* Meditator6.png */; };
 		D15C06954183498E8B03CBBE /* Lifevision-Collage@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 464C449773C043B18E4DBDBB /* Lifevision-Collage@3x.png */; };
 		D29004A5F3E1491CB400E90A /* 2020-diary-step-24.png in Resources */ = {isa = PBXBuildFile; fileRef = C96B38CE91394249BCFB2067 /* 2020-diary-step-24.png */; };
 		D3248B9319EC4ABE839876CD /* Metropolis-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CBDD923749584DA3B431DAE6 /* Metropolis-SemiBold.otf */; };
 		D8E8CAB258734FEBAD0CA23C /* libRNSound.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C326879D75BB4A608FF9BF08 /* libRNSound.a */; };
 		DE65CEDCDDFA4543A0E298D6 /* 2020-diary-step-22.png in Resources */ = {isa = PBXBuildFile; fileRef = 425BB1032BB2435FADA68412 /* 2020-diary-step-22.png */; };
 		E7DE5529E29C49C297F7216D /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65ADF678154745FC8E3B43DC /* Foundation.ttf */; };
-		EAE99FD7178E4C6F85F7C675 /* Meditator4.png in Resources */ = {isa = PBXBuildFile; fileRef = F762313522BC4574A494C679 /* Meditator4.png */; };
 		EDA842A8A4B74A7493DD7CEF /* sandClockConfetti@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C09A70AE3A0C45DBAEABF078 /* sandClockConfetti@2x.png */; };
 		F1913A7C69124E24BD976F4F /* AppIcon-Web.png in Resources */ = {isa = PBXBuildFile; fileRef = 57EDAF94E3024BF994BDD27D /* AppIcon-Web.png */; };
 		F33A2FF9F9074DEE8AA6694B /* rubicon-icon-font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B02A9292ABB84AB29CBAF1B9 /* rubicon-icon-font.ttf */; };
@@ -501,7 +491,6 @@
 		0C95F8BCE28840A1AC88A7E6 /* libCodePush.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libCodePush.a; sourceTree = "<group>"; };
 		0D4E4BB5410047218E498399 /* 2020-diary-step-28.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-28.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-28.png"; sourceTree = "<group>"; };
 		0EE35559F2FD432FADBDAADF /* FBSDKShareKit.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ./ios/Frameworks/FBSDKShareKit.framework; sourceTree = "<group>"; };
-		0F70FB98C001424CA63C4922 /* Meditator1.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Meditator1.png; path = ../src/resources/images/Meditators/Meditator1.png; sourceTree = "<group>"; };
 		10F8FEC279B44771827FEC23 /* 2020-diary-step-5.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-5.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-5.png"; sourceTree = "<group>"; };
 		11942F39836E4CBA8F025BB4 /* ODRefreshControlDemo.app */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.application; path = ODRefreshControlDemo.app; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
@@ -513,18 +502,14 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Lifevision/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Lifevision/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Lifevision/main.m; sourceTree = "<group>"; };
-		13B1AD6666864C92B49C7437 /* Meditator10.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Meditator10.png; path = ../src/resources/images/Meditators/Meditator10.png; sourceTree = "<group>"; };
 		14645D2DAA8D4D5E8250D40B /* BVLinearGradient.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = BVLinearGradient.xcodeproj; path = "../node_modules/react-native-linear-gradient/BVLinearGradient.xcodeproj"; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
-		149C6658290E4F91AF062D18 /* Meditator2.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Meditator2.png; path = ../src/resources/images/Meditators/Meditator2.png; sourceTree = "<group>"; };
 		16683B966FF14765ADE5534E /* 2020-diary-step-8.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-8.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-8.png"; sourceTree = "<group>"; };
 		18B2DDD7DA314ED9893299EA /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		1C888D8C237041F0BED9D855 /* 2020-diary-step-16.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-16.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-16.png"; sourceTree = "<group>"; };
 		1DFB4CA015524870908EA08A /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/native-base/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		1E5F892BB82D49629C55D0A6 /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
-		1EEA8592602B44A3931A9839 /* Meditator12.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Meditator12.png; path = ../src/resources/images/Meditators/Meditator12.png; sourceTree = "<group>"; };
 		206B1EAD0A554C0BB83B4016 /* 2020-diary-step-29.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-29.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-29.png"; sourceTree = "<group>"; };
-		23DBDF6F70A147528AF6FD3E /* Meditator9.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Meditator9.png; path = ../src/resources/images/Meditators/Meditator9.png; sourceTree = "<group>"; };
 		2872989996D249388C8C0BA7 /* libz.tbd */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		2C733FD0975947D9BE2AB9A4 /* 2020-diary-step-19.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-19.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-19.png"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* Lifevision-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lifevision-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -537,7 +522,6 @@
 		3B57CFBA68B74889A8B8662E /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/native-base/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		3CBCE40F8D474CD7BE8A47E0 /* Metropolis-ExtraBold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-ExtraBold.otf"; path = "../src/resources/fonts/Metropolis/Metropolis-ExtraBold.otf"; sourceTree = "<group>"; };
 		3E367965BD8048BEB5196DFE /* 2020-diary-step-6.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-6.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-6.png"; sourceTree = "<group>"; };
-		40A3EB01FEC5482BA6F14F3A /* Meditator6.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Meditator6.png; path = ../src/resources/images/Meditators/Meditator6.png; sourceTree = "<group>"; };
 		425BB1032BB2435FADA68412 /* 2020-diary-step-22.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-22.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-22.png"; sourceTree = "<group>"; };
 		4497000DBE624C758DC7A878 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		45C7FD8C56B74DD488C34A19 /* libRNDeviceInfo-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNDeviceInfo-tvOS.a"; sourceTree = "<group>"; };
@@ -555,7 +539,6 @@
 		5E339D4B84D64EC89A41463A /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/native-base/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		6232EC316E764FCEAFFE34E3 /* RNSound.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNSound.xcodeproj; path = "../node_modules/react-native-sound/RNSound.xcodeproj"; sourceTree = "<group>"; };
-		64E9ADE4CE46423784D42080 /* Meditator8.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Meditator8.png; path = ../src/resources/images/Meditators/Meditator8.png; sourceTree = "<group>"; };
 		65ADF678154745FC8E3B43DC /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		6A577BF6A1E04E6DB562A4F4 /* 2020-diary-step-17.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-17.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-17.png"; sourceTree = "<group>"; };
 		6BD983B2232C4C51B9C4A42A /* 2020-diary-step-10.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-10.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-10.png"; sourceTree = "<group>"; };
@@ -566,7 +549,6 @@
 		6DAB8FA78EE74E369AC2DE80 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/native-base/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		6DD9949CE9A24ABBAEAE4BA8 /* RCTFBSDK.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTFBSDK.xcodeproj; path = "../node_modules/react-native-fbsdk/ios/RCTFBSDK.xcodeproj"; sourceTree = "<group>"; };
 		735D2BCA86DE4A82B3C4C077 /* sandClockConfetti.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = sandClockConfetti.png; path = ../src/resources/images/sandClockConfetti.png; sourceTree = "<group>"; };
-		749A5A7C076F43E084547BB9 /* Meditator7.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Meditator7.png; path = ../src/resources/images/Meditators/Meditator7.png; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		7E949A2844AF48209ED74318 /* Metropolis-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-Regular.otf"; path = "../src/resources/fonts/Metropolis/Metropolis-Regular.otf"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
@@ -581,7 +563,6 @@
 		98DB4E3F7A1F41E397CE3658 /* Metropolis-BlackItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-BlackItalic.otf"; path = "../src/resources/fonts/Metropolis/Metropolis-BlackItalic.otf"; sourceTree = "<group>"; };
 		9B4C222AC0C7480F9D05B796 /* Metropolis-RegularItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-RegularItalic.otf"; path = "../src/resources/fonts/Metropolis/Metropolis-RegularItalic.otf"; sourceTree = "<group>"; };
 		9ECBC182F77B49BAB3C9758F /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/native-base/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
-		A265CE54B0C64B99B31E387F /* Meditator3.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Meditator3.png; path = ../src/resources/images/Meditators/Meditator3.png; sourceTree = "<group>"; };
 		A32E3EDF89B14BBD8662E4C8 /* Metropolis-Light.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-Light.otf"; path = "../src/resources/fonts/Metropolis/Metropolis-Light.otf"; sourceTree = "<group>"; };
 		A5E6468C8F154D4CAA950D5D /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		A84741DD967C4911A473EF91 /* Metropolis-BoldItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-BoldItalic.otf"; path = "../src/resources/fonts/Metropolis/Metropolis-BoldItalic.otf"; sourceTree = "<group>"; };
@@ -596,7 +577,6 @@
 		C09A70AE3A0C45DBAEABF078 /* sandClockConfetti@2x.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "sandClockConfetti@2x.png"; path = "../src/resources/images/sandClockConfetti@2x.png"; sourceTree = "<group>"; };
 		C326879D75BB4A608FF9BF08 /* libRNSound.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSound.a; sourceTree = "<group>"; };
 		C479C2B29EE440B98FBB08A8 /* libRNSentry.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSentry.a; sourceTree = "<group>"; };
-		C668F2A379464147970C97DE /* Meditator5.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Meditator5.png; path = ../src/resources/images/Meditators/Meditator5.png; sourceTree = "<group>"; };
 		C96B38CE91394249BCFB2067 /* 2020-diary-step-24.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-24.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-24.png"; sourceTree = "<group>"; };
 		CBDD923749584DA3B431DAE6 /* Metropolis-SemiBold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-SemiBold.otf"; path = "../src/resources/fonts/Metropolis/Metropolis-SemiBold.otf"; sourceTree = "<group>"; };
 		D8004A0854F54A1EBF1F7386 /* 2020-diary-step-15.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-15.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-15.png"; sourceTree = "<group>"; };
@@ -611,7 +591,6 @@
 		F2B168944D894400B00FBDD0 /* 2020-diary-step-4.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-4.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-4.png"; sourceTree = "<group>"; };
 		F39533AE076C4D8F911B0005 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		F65148B3D7FC41D18F0DB7BE /* Metropolis-LightItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-LightItalic.otf"; path = "../src/resources/fonts/Metropolis/Metropolis-LightItalic.otf"; sourceTree = "<group>"; };
-		F762313522BC4574A494C679 /* Meditator4.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Meditator4.png; path = ../src/resources/images/Meditators/Meditator4.png; sourceTree = "<group>"; };
 		FA84FEEB7A1846368A6DB60E /* 2020-diary-step-14.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-14.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-14.png"; sourceTree = "<group>"; };
 		FA98C67E343D4CC9B9C3BDCB /* Metropolis-SemiBoldItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-SemiBoldItalic.otf"; path = "../src/resources/fonts/Metropolis/Metropolis-SemiBoldItalic.otf"; sourceTree = "<group>"; };
 		FC1002986DAE4858AC9EFA4C /* Metropolis-ThinItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-ThinItalic.otf"; path = "../src/resources/fonts/Metropolis/Metropolis-ThinItalic.otf"; sourceTree = "<group>"; };
@@ -943,17 +922,6 @@
 				9ECBC182F77B49BAB3C9758F /* Zocial.ttf */,
 				57EDAF94E3024BF994BDD27D /* AppIcon-Web.png */,
 				464C449773C043B18E4DBDBB /* Lifevision-Collage@3x.png */,
-				0F70FB98C001424CA63C4922 /* Meditator1.png */,
-				13B1AD6666864C92B49C7437 /* Meditator10.png */,
-				1EEA8592602B44A3931A9839 /* Meditator12.png */,
-				149C6658290E4F91AF062D18 /* Meditator2.png */,
-				A265CE54B0C64B99B31E387F /* Meditator3.png */,
-				F762313522BC4574A494C679 /* Meditator4.png */,
-				C668F2A379464147970C97DE /* Meditator5.png */,
-				40A3EB01FEC5482BA6F14F3A /* Meditator6.png */,
-				749A5A7C076F43E084547BB9 /* Meditator7.png */,
-				64E9ADE4CE46423784D42080 /* Meditator8.png */,
-				23DBDF6F70A147528AF6FD3E /* Meditator9.png */,
 				735D2BCA86DE4A82B3C4C077 /* sandClockConfetti.png */,
 				C09A70AE3A0C45DBAEABF078 /* sandClockConfetti@2x.png */,
 				0961A63D63954C67AC22CF82 /* sandClockConfetti@3x.png */,
@@ -1662,17 +1630,6 @@
 				39313EC2D23145FAB69AFFE9 /* Zocial.ttf in Resources */,
 				F1913A7C69124E24BD976F4F /* AppIcon-Web.png in Resources */,
 				D15C06954183498E8B03CBBE /* Lifevision-Collage@3x.png in Resources */,
-				0C9CD097CA184A98B3BCD13B /* Meditator1.png in Resources */,
-				BCF99B58ED8249C3ADD995C8 /* Meditator10.png in Resources */,
-				54D1346384B84605BAF47F9F /* Meditator12.png in Resources */,
-				3E6C39E16C9342FDA4E576B0 /* Meditator2.png in Resources */,
-				3FFF87EBF55947EABAB381F5 /* Meditator3.png in Resources */,
-				EAE99FD7178E4C6F85F7C675 /* Meditator4.png in Resources */,
-				8C6F1898E2CC49488AA9491A /* Meditator5.png in Resources */,
-				CD2B8EDB00C748F1945CDC48 /* Meditator6.png in Resources */,
-				82CDC8A902A44B14AECE3D16 /* Meditator7.png in Resources */,
-				2696EB970D36430FBF649229 /* Meditator8.png in Resources */,
-				B70A8EE551BE41E393567134 /* Meditator9.png in Resources */,
 				A5A410B876304555B23BEAD8 /* sandClockConfetti.png in Resources */,
 				EDA842A8A4B74A7493DD7CEF /* sandClockConfetti@2x.png in Resources */,
 				3CE0519D15A74E17A065FBF1 /* sandClockConfetti@3x.png in Resources */,
