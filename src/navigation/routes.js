@@ -4,7 +4,7 @@ export default {
     HomeScreen: 'HomeScreen',
     AssignmentFlow: 'AssignmentFlow',
     Walkthrough: 'Walkthrough',
-    Dashboard: 'Dashboard',
+    DashboardScreen: 'DashboardScreen',
     initialRouteName:'HomeScreen',
   },
   step: {
