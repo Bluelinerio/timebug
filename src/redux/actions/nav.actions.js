@@ -65,6 +65,9 @@ export const restartStepAction = (step: Step) => {
 }
 
 // TODO remove static string and use params (routes.step.StepScreen ... )
+export const goToMeditation                   = () => NavigationActions.navigate({
+  routeName: routes.root.MeditationScreen
+})
 export const goToStepScreen                   = (props: any) => navigateWith({ props, routeName:'StepScreen' });
 export const navigateToAssignmentLeadInScreen = (props: any) => navigateWith({ props, routeName:'AssignmentLeadInScreen' })
 export const goToWorkbookScreen               = (props: any) => navigateWith({ props, routeName:'WorkbookScreen' })

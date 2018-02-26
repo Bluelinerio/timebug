@@ -6,6 +6,7 @@ export default {
     Walkthrough: 'Walkthrough',
     DashboardScreen: 'DashboardScreen',
     initialRouteName:'HomeScreen',
+    MeditationScreen:'MeditationScreen'
   },
   step: {
     StepScreen: 'StepScreen',

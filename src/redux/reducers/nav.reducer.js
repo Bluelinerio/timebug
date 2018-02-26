@@ -37,6 +37,26 @@ const allRoutesAreValid = (routes) => {
   return routes.find(isRouteInvalid) ? false : true
 }
 
+const findAssignmentFlow = (state) => state.routes
+  .find(route => route.routeName === rootConfiguration.routes.AssignmentFlow);
+
+const isAssignmentFlowValid = (assignmentFlow) => {
+  try {
+    // instead of migrating screen names, reset!
+    const unregisteredRouteNames = assignmentFlow.routes.
+      find(route => Object.keys(assignmentFlowConfiguration.screens)
+        .includes(route.routeName) === false 
+      )
+    if (unregisteredRouteNames) {
+      return false
+    } else {
+      return true
+    }
+  } catch(e) {
+    return false
+  }
+}
+
 const thisVersion = 9
 const persistConfig = {
 	key:'nav',
@@ -57,20 +77,9 @@ const persistConfig = {
         return Promise.resolve(initialRouteState)
       }
       // validate assignment flow:
-      const assignmentFlow = state.routes.find(route => route.routeName === rootConfiguration.routes.AssignmentFlow)
-      
-      if (assignmentFlow) {
-        if(!assignmentFlow.params.stepId) {
-          return Promise.resolve(initialRouteState)
-        }
-        // instead of migrating screen names, reset!
-        const unregisteredRouteNames = assignmentFlow.routes.
-          find(route => Object.keys(assignmentFlowConfiguration.screens)
-            .includes(route.routeName) === false 
-          )
-        if (unregisteredRouteNames) {
-          return Promise.resolve(initialRouteState)
-        }
+      const assignmentFlow = findAssignmentFlow(state)
+      if (assignmentFlow && !isAssignmentFlowValid(assignmentFlow)) {
+        return Promise.resolve(initialRouteState)
       }
     }
     return Promise.resolve(state)    

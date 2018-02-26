@@ -10,6 +10,7 @@ import WorkbookDoneScreen                 from '../screens/WorkbookDoneScreen'
 import WorkbookScreen                     from '../screens/WorkbookScreen'
 import WalkthroughScreen                  from '../screens/WalkthroughScreen';
 import DashboardScreen                    from '../screens/DashboardScreen'
+import MeditationScreen                   from '../screens/MeditationScreen'
 import { uriPrefix }                      from '../constants'
 import routes                             from './routes';
 
@@ -67,6 +68,9 @@ export const rootConfiguration = {
     [routes.root.DashboardScreen]: {
       screen: DashboardScreen,
       path: 'dashboard'
+    },
+    [routes.root.MeditationScreen]: {
+      screen: MeditationScreen,
     }
   },
   options: {
