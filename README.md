@@ -8,6 +8,9 @@ iOS >= 8, Android >= 4.4
 * `yarn`
 * `react-native link`
 
+## temp Sentry credentials:
+amos@blabsventures.com
+O7Xj7hvV8JswmmX
 
 ### iOS 
 
