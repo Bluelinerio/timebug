@@ -18,6 +18,9 @@ import Text                 from './components/Text'
 import Button               from './components/Button'
 import type { ScreenProps } from './components/Types';
 
+const height = Dimensions.get('window').height
+const width = Dimensions.get('window').width
+
 type Props = ScreenProps & {
   slides:[Slide],
   dismiss:() => void
@@ -40,7 +43,7 @@ export default class Walkthrough extends React.Component<Props> {
         barStyle='light-content'
         backgroundColor={'transparent'}
       /> 
-      <SafeAreaView >
+      <SafeAreaView style={styles.fullHeightView} >
         <View style={styles.slide} >
           <Text 
             type='header2' 
@@ -64,7 +67,7 @@ export default class Walkthrough extends React.Component<Props> {
             <Image 
             source={slide.image}
             resizeMode='cover'
-            style={{width: 240 , height: 410}}
+            style={{width: (width * .60) , height: 410}}
              />
           }
           </View>
@@ -107,8 +110,7 @@ export default class Walkthrough extends React.Component<Props> {
   }
 }
 
-const height = Dimensions.get('window').height
-const width = Dimensions.get('window').width
+
 const baseSpacing = Math.floor(width * 0.06)
 const largeVerticalSpacing  = Math.floor(height * 0.06)
 
@@ -117,9 +119,9 @@ const styles = StyleSheet.create({
     flex: 1
   },
   footer: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      marginHorizontal: baseSpacing
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginHorizontal: baseSpacing
   },
   slide: {
     paddingHorizontal: baseSpacing,
@@ -130,13 +132,27 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems:'center',
     position:'absolute',
-    bottom:60,
+    bottom:0,
     left:0,
-    right:0
+    right:0,
+    ...Platform.select({
+			android: { 
+        paddingHorizontal: 10,
+        borderRadius: 10,
+        marginVertical: 0, // needed for shadow
+        elevation: 10,
+        width: (width * .60),
+        marginLeft: (width * .20) 
+          },
+			ios: {
+				shadowColor: "black",
+				shadowOpacity: 0.5
+			}
+		})
   },
+
   fullHeightView: {
-    height: Dimensions.get('window').height
-    
+    height: Dimensions.get('window').height   
   },
   title: {
     marginTop: largeVerticalSpacing,
@@ -163,12 +179,10 @@ const theme = {
     },
     header2: {
       fontSize: Math.ceil(height * 0.04),
-      lineHeight: 43,
       fontFamily: "Helvetica-Bold"
     },
     header3: {
       fontSize: Math.ceil(height * 0.027),
-      lineHeight: 28,//standard
       fontFamily: 'HelveticaNeue',
       fontWeight: 'bold'
     },
