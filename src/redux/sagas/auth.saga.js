@@ -43,6 +43,7 @@ import type {
 import {
   authenticateWithFBToken,
   fetchUserWithId,
+	isClientEndpoint, 
   resetStore
 } from '../../services/apollo';
 import facebook from '../../services/facebook';
@@ -78,9 +79,10 @@ function* refreshUserOrLogout() {
     );
     // customizatio point in case we change enpoints...
     const fbToken: ?string = yield call(facebook.getToken);
-    if (userId && token) {
-      return yield call(_fetchUserWithId, userId);
-    } else if (fbToken) {
+		if (userId && token && isClientEndpoint(endpoint)) {
+			return yield call(_fetchUserWithId, userId)
+		}
+		if (fbToken) {
       yield fork(
         requestSaga,
         AUTHENTICATE_FB,
