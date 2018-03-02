@@ -2,4 +2,6 @@
 	"javascript.validate.enable": false,
 	"flow.useNPMPackagedFlow": true,
 	"editor.snippetSuggestions": "top",
+	"editor.formatOnSave": true,
+	"prettier.eslintIntegration": true
 }
