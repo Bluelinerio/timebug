@@ -1,12 +1,12 @@
 /* @flow */
 
-import { I18nManager } from 'react-native';
+import { I18nManager } from "react-native";
 
 import type {
   NavigationSceneRendererProps,
   NavigationScene,
-  AnimatedViewStyleProp,
-} from 'react-navigation/src/TypeDefinition';
+  AnimatedViewStyleProp
+} from "react-navigation/src/TypeDefinition";
 
 /**
  * Utility that builds the style for the card in the cards stack.
@@ -37,7 +37,7 @@ function forInitial(
   const translate = focused ? 0 : 1000000;
   return {
     opacity,
-    transform: [{ translateX: translate }, { translateY: translate }],
+    transform: [{ translateX: translate }, { translateY: translate }]
   };
 }
 
@@ -55,7 +55,7 @@ function forHorizontal(
 
   const lastIndex = scenes.length - 1;
   const activeScene =
-          scenes.find((item: NavigationScene) => item.isActive) || {};
+    scenes.find((item: NavigationScene) => item.isActive) || {};
   const scenesActiveIndex = scenes.findIndex(
     (item: NavigationScene) => item === activeScene
   );
@@ -71,7 +71,7 @@ function forHorizontal(
     inputRange: [index - 1, index, index + 1],
     outputRange: I18nManager.isRTL
       ? ([-width, 0, width * 0.3]: Array<number>)
-      : ([width, 0, width * -0.3]: Array<number>),
+      : ([width, 0, width * -0.3]: Array<number>)
   };
 
   let opacity = {
@@ -80,9 +80,9 @@ function forHorizontal(
       index - 0.99,
       index + 0.03,
       index + 0.99,
-      index + 1,
+      index + 1
     ]: Array<number>),
-    outputRange: ([0, 1, 1, 0.85, 0]: Array<number>),
+    outputRange: ([0, 1, 1, 0.85, 0]: Array<number>)
   };
 
   if (isBack) {
@@ -99,7 +99,7 @@ function forHorizontal(
       opacity.inputRange[3] = lastIndex - 0.01;
     } else if (scenesCurrentIndex > scenesActiveIndex) {
       return {
-        opacity: 0,
+        opacity: 0
       };
     }
   }
@@ -108,9 +108,9 @@ function forHorizontal(
     opacity: position.interpolate(opacity),
     transform: [
       {
-        translateX: position.interpolate(translateX),
-      },
-    ],
+        translateX: position.interpolate(translateX)
+      }
+    ]
   };
 }
 
@@ -128,7 +128,7 @@ function forVertical(
 
   const lastIndex = scenes.length - 1;
   const activeScene =
-          scenes.find((item: NavigationScene) => item.isActive) || {};
+    scenes.find((item: NavigationScene) => item.isActive) || {};
   const scenesActiveIndex = scenes.findIndex(
     (item: NavigationScene) => item === activeScene
   );
@@ -146,14 +146,14 @@ function forVertical(
       index - 0.99,
       index + 0.03,
       index + 0.99,
-      index + 1,
+      index + 1
     ]: Array<number>),
-    outputRange: ([0, 1, 1, 0.85, 0]: Array<number>),
+    outputRange: ([0, 1, 1, 0.85, 0]: Array<number>)
   };
 
   const translateY = {
     inputRange: ([index - 1, index, index + 1]: Array<number>),
-    outputRange: ([height, 0, 0]: Array<number>),
+    outputRange: ([height, 0, 0]: Array<number>)
   };
 
   if (isBack) {
@@ -170,7 +170,7 @@ function forVertical(
       opacity.inputRange[3] = lastIndex - 0.01;
     } else if (scenesCurrentIndex > scenesActiveIndex) {
       return {
-        opacity: 0,
+        opacity: 0
       };
     }
   }
@@ -179,9 +179,9 @@ function forVertical(
     opacity: position.interpolate(opacity),
     transform: [
       {
-        translateY: position.interpolate(translateY),
-      },
-    ],
+        translateY: position.interpolate(translateY)
+      }
+    ]
   };
 }
 
@@ -199,7 +199,7 @@ function forFadeFromBottomAndroid(
 
   const lastIndex = scenes.length - 1;
   const activeScene =
-          scenes.find((item: NavigationScene) => item.isActive) || {};
+    scenes.find((item: NavigationScene) => item.isActive) || {};
   const scenesActiveIndex = scenes.findIndex(
     (item: NavigationScene) => item === activeScene
   );
@@ -222,32 +222,32 @@ function forFadeFromBottomAndroid(
       inputRange[3] = lastIndex;
     } else if (scenesCurrentIndex > scenesActiveIndex) {
       return {
-        opacity: 0,
+        opacity: 0
       };
     }
   }
 
   const opacity = position.interpolate({
     inputRange,
-    outputRange: ([0, 1, 1, 0]: Array<number>),
+    outputRange: ([0, 1, 1, 0]: Array<number>)
   });
 
   const translateX = 0;
   const translateY = position.interpolate({
     inputRange,
-    outputRange: ([50, 0, 0, 0]: Array<number>),
+    outputRange: ([50, 0, 0, 0]: Array<number>)
   });
 
   return {
     opacity,
     transform: [
       {
-        translateX,
+        translateX
       },
       {
-        translateY,
-      },
-    ],
+        translateY
+      }
+    ]
   };
 }
 
@@ -263,7 +263,7 @@ function forFade(props: NavigationSceneRendererProps): AnimatedViewStyleProp {
 
   const lastIndex = scenes.length - 1;
   const activeScene =
-          scenes.find((item: NavigationScene) => item.isActive) || {};
+    scenes.find((item: NavigationScene) => item.isActive) || {};
   const scenesActiveIndex = scenes.findIndex(
     (item: NavigationScene) => item === activeScene
   );
@@ -285,18 +285,18 @@ function forFade(props: NavigationSceneRendererProps): AnimatedViewStyleProp {
       inputRange[2] = lastIndex;
     } else if (scenesCurrentIndex > scenesActiveIndex) {
       return {
-        opacity: 0,
+        opacity: 0
       };
     }
   }
 
   const opacity = position.interpolate({
     inputRange,
-    outputRange: ([0, 1, 1]: Array<number>),
+    outputRange: ([0, 1, 1]: Array<number>)
   });
 
   return {
-    opacity,
+    opacity
   };
 }
 
@@ -312,5 +312,5 @@ export default {
   forVertical,
   forFadeFromBottomAndroid,
   forFade,
-  canUseNativeDriver,
+  canUseNativeDriver
 };

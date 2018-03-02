@@ -1,41 +1,51 @@
 // @flow
-import * as React from 'react';
-import { 
-  View, 
-  Platform, 
-  WebView, 
-  ActivityIndicator, 
-  StyleSheet 
-} from 'react-native';
+import * as React from "react";
+import {
+  View,
+  Platform,
+  WebView,
+  ActivityIndicator,
+  StyleSheet
+} from "react-native";
 
 type Icon = {
-  uri:string
-}
+  uri: string
+};
 
 type Props = {
   style: {},
   source: Icon,
-  showWebviewLoader: boolean,
-}
+  showWebviewLoader: boolean
+};
 export default class SVGImage extends React.Component<Props> {
   static defaultProps = {
     style: {},
-    source: { uri: '' },
-    showWebviewLoader: Platform.OS === 'android',
+    source: { uri: "" },
+    showWebviewLoader: Platform.OS === "android"
   };
 
   renderLoader = () => (
-    <View style={[ this.props.style, {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
-    }]}>
-      <ActivityIndicator/>
+    <View
+      style={[
+        this.props.style,
+        {
+          flex: 1,
+          alignItems: "center",
+          justifyContent: "center"
+        }
+      ]}
+    >
+      <ActivityIndicator />
     </View>
   );
 
   render() {
-    const { showWebviewLoader, source: { uri }, style, ...restOfProps } = this.props;
+    const {
+      showWebviewLoader,
+      source: { uri },
+      style,
+      ...restOfProps
+    } = this.props;
     const html = `
       <!DOCTYPE html>\n
       <html>

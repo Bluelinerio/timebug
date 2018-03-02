@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   Platform,
   StyleSheet,
@@ -8,55 +8,51 @@ import {
   ScrollView,
   TouchableOpacity,
   StatusBar
-} from 'react-native';
-import Icon                       from 'react-native-vector-icons/Ionicons';
-import Markdown                   from '../../../Modules/Markdown';
-import Button                     from '../../../components/Button';
-import GradientWithTwoColors      from '../../../components/GradientWithTwoColors'
-import ScrollableHeader           from '../../../components/ScrollableHeader';
-import CustomImage                from '../../../components/CustomImage';
-import type { Step }              from '../../../services/cms';
-import { getImageUrl }            from '../../../services/cms';
-import styles                     from '../styles';
-import { 
-  APPBAR_HEIGHT, 
-  STATUSBAR_HEIGHT 
-}                                 from '../../../constants';
-import markdownStyles             from '../../../styles/Markdown/stepScreen';
-import StepScreenButtonContainer  from '../containers/StepScreenButtonContainer';
+} from "react-native";
+import Icon from "react-native-vector-icons/Ionicons";
+import Markdown from "../../../Modules/Markdown";
+import Button from "../../../components/Button";
+import GradientWithTwoColors from "../../../components/GradientWithTwoColors";
+import ScrollableHeader from "../../../components/ScrollableHeader";
+import CustomImage from "../../../components/CustomImage";
+import type { Step } from "../../../services/cms";
+import { getImageUrl } from "../../../services/cms";
+import styles from "../styles";
+import { APPBAR_HEIGHT, STATUSBAR_HEIGHT } from "../../../constants";
+import markdownStyles from "../../../styles/Markdown/stepScreen";
+import StepScreenButtonContainer from "../containers/StepScreenButtonContainer";
 
 export type Props = {
-  title: string, 
-  subtitle: string, 
-  description: string, 
-  number:number, 
-  icon:{ uri: string }, 
-  color: string, 
+  title: string,
+  subtitle: string,
+  description: string,
+  number: number,
+  icon: { uri: string },
+  color: string,
   onPress: () => void
 };
 
-const HEADER_HEIGHT = Dimensions.get('window').height * 0.4
+const HEADER_HEIGHT = Dimensions.get("window").height * 0.4;
 
 const Content = ({ title, subtitle, description, color, number }) => (
   <View style={styles.stepScreenContent}>
-    <StatusBar 
-      translucent 
-      barStyle='light-content'
-      backgroundColor={'transparent'}
-    /> 
+    <StatusBar
+      translucent
+      barStyle="light-content"
+      backgroundColor={"transparent"}
+    />
     <Text
-    testID={'step_subtitle'}
-    style={[styles.stepScreenSubtitle, {
-      color
-    }]}
+      testID={"step_subtitle"}
+      style={[
+        styles.stepScreenSubtitle,
+        {
+          color
+        }
+      ]}
     >
-    {subtitle}
+      {subtitle}
     </Text>
-    <Text
-      style={[styles.stepScreenTitle]}
-    >
-      {title}
-    </Text>
+    <Text style={[styles.stepScreenTitle]}>{title}</Text>
     <ScrollView style={styles.stepScreenScrollView}>
       <Markdown markdownStyles={markdownStyles}>{description}</Markdown>
     </ScrollView>
@@ -64,23 +60,36 @@ const Content = ({ title, subtitle, description, color, number }) => (
   </View>
 );
 
-
-const Header = ({ icon, title, number, color}) => (
-  <View style={[styles.stepScreenHeader, {
-    backgroundColor: color
-  }]}>
-    {icon && 
-      <CustomImage 
+const Header = ({ icon, title, number, color }) => (
+  <View
+    style={[
+      styles.stepScreenHeader,
+      {
+        backgroundColor: color
+      }
+    ]}
+  >
+    {icon && (
+      <CustomImage
         backgroundColor={color}
         style={styles.stepScreenImage}
-        testID={'step_picture'}
+        testID={"step_picture"}
         source={icon}
       />
-    }
+    )}
   </View>
 );
 
-export default ({ title, subtitle, description, number, icon, color, onPress, image }) => (
+export default ({
+  title,
+  subtitle,
+  description,
+  number,
+  icon,
+  color,
+  onPress,
+  image
+}) => (
   <ScrollableHeader
     headerMaxHeight={HEADER_HEIGHT}
     headerMinHeight={APPBAR_HEIGHT + STATUSBAR_HEIGHT}
@@ -93,10 +102,12 @@ export default ({ title, subtitle, description, number, icon, color, onPress, im
       />
     }
     header={
-      <View style={{
-        ...StyleSheet.absoluteFillObject,
-        backgroundColor: color
-      }}/>
+      <View
+        style={{
+          ...StyleSheet.absoluteFillObject,
+          backgroundColor: color
+        }}
+      />
     }
     content={
       <Content
@@ -109,4 +120,4 @@ export default ({ title, subtitle, description, number, icon, color, onPress, im
       />
     }
   />
-)
+);

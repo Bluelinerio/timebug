@@ -4,17 +4,16 @@ import Reactotron, {
   overlay,
   asyncStorage,
   networking
-} from 'reactotron-react-native'
+} from "reactotron-react-native";
 
-if(__DEV__) {
-  Reactotron
-    .configure({
-      name: 'React Native Demo'
-    })
+if (__DEV__) {
+  Reactotron.configure({
+    name: "React Native Demo"
+  })
     .use(trackGlobalErrors())
     .use(openInEditor())
     .use(overlay())
     .use(asyncStorage())
     .use(networking())
-    .connect()
+    .connect();
 }

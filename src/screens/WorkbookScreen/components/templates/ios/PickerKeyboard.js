@@ -23,7 +23,6 @@ type State<T> = {
 };
 
 class PickerKeyboard<T> extends Component<Props<T>, State<T>> {
-  
   picker: ?Picker = null;
 
   constructor(props: Props<T>) {
@@ -37,7 +36,7 @@ class PickerKeyboard<T> extends Component<Props<T>, State<T>> {
 
   componentWillReceiveProps(nextProps: Props<T>) {
     if (nextProps.value !== this.state.selectedValue) {
-      this.setState({selectedValue: nextProps.value})
+      this.setState({ selectedValue: nextProps.value });
     }
   }
 

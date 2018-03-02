@@ -1,34 +1,30 @@
-import {
-  Platform,
-  StyleSheet,
-  Dimensions,
-} from "react-native";
-import { deepBlue }       from '../../../constants/colors'
-import { STATUSBAR_HEIGHT, APPBAR_HEIGHT} from '../../../constants'
-import normalize from '../../../utils/normalizeText';
+import { Platform, StyleSheet, Dimensions } from "react-native";
+import { deepBlue } from "../../../constants/colors";
+import { STATUSBAR_HEIGHT, APPBAR_HEIGHT } from "../../../constants";
+import normalize from "../../../utils/normalizeText";
 
 export default StyleSheet.create({
   rowContainer: {
-    flex:1,
-    flexDirection: 'row',
+    flex: 1,
+    flexDirection: "row"
   },
   stepScreenScreen: {
     flex: 1,
-    flexDirection: 'row',
+    flexDirection: "row",
     paddingHorizontal: 25,
     marginBottom: 30
   },
   stepScreenHeader: {
     flex: 1,
     paddingTop: STATUSBAR_HEIGHT + APPBAR_HEIGHT,
-    flexDirection: 'row',
-    justifyContent:'center',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center"
   },
   stepScreenHeaderTitleContainer: {
     flex: 1,
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    justifyContent: "space-between",
+    alignItems: "center"
   },
   stepScreenHeaderTitle: {
     paddingTop: 10,
@@ -38,25 +34,25 @@ export default StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
     color: "#ffffff",
-    alignSelf: 'flex-end',
+    alignSelf: "flex-end"
   },
   stepScreenContent: {
     marginTop: 20,
-    marginBottom: 30,
+    marginBottom: 30
   },
   stepScreenText: {
-    color: '#000000',
+    color: "#000000",
     fontSize: normalize(12),
-    textAlign: 'center',
+    textAlign: "center"
   },
   stepScreenSubtitle: {
     fontFamily: "Helvetica",
     fontSize: normalize(20),
     fontWeight: "200",
     color: deepBlue,
-    textAlign: 'left',
+    textAlign: "left",
     paddingHorizontal: 20,
-    paddingVertical: 20,
+    paddingVertical: 20
   },
   stepScreenTitle: {
     fontFamily: "Helvetica",
@@ -64,22 +60,22 @@ export default StyleSheet.create({
     fontWeight: "bold",
     color: deepBlue,
     paddingHorizontal: 20,
-    paddingVertical: 20,
+    paddingVertical: 20
   },
   stepScreenImage: {
-    flex: 1,
+    flex: 1
   },
   stepScreenDescription: {
     flex: 1,
-    paddingBottom: 300,
+    paddingBottom: 300
   },
   stepScreenScrollView: {
     flex: 1,
-    paddingHorizontal: 20,
+    paddingHorizontal: 20
   },
   stepScreenBackButton: {
-    position: 'absolute',
+    position: "absolute",
     top: 35,
-    left: 15,
-  },
+    left: 15
+  }
 });

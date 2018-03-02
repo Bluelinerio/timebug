@@ -13,7 +13,8 @@ export default {
       )
     }),
     options: {
-      label: "Break down a typical 168 hour week according to the 7 Pillars Of Life.",
+      label:
+        "Break down a typical 168 hour week according to the 7 Pillars Of Life.",
 
       fields: {
         id: {
@@ -23,7 +24,7 @@ export default {
           disableOrder: true,
           maxLines: 10,
           config: {
-            maxLines: 10,
+            maxLines: 10
           },
           item: {
             fields: {
@@ -35,12 +36,12 @@ export default {
               }
             }
           }
-        },
+        }
       }
     },
     value: {
       fields: {
-        id: 'step2+v0.0.0.1'
+        id: "step2+v0.0.0.1"
       }
     }
   },
@@ -61,7 +62,7 @@ export default {
           disableOrder: true,
           maxLines: 3,
           config: {
-            maxLines: 3,
+            maxLines: 3
           },
           item: {
             fields: {
@@ -69,12 +70,11 @@ export default {
                 //error: "Please select a Life category."
               },
               hours: {
-
                 //error: "How many hours out of a 168 hour week would you ideally spend on this category?"
               }
             }
           }
-        },
+        }
       }
     }
   },
@@ -83,7 +83,7 @@ export default {
       activities: t.list(
         t.struct({
           activity: t.String,
-          pillarsOfLife: t.maybe(PillarsOfLife),
+          pillarsOfLife: t.maybe(PillarsOfLife)
         })
       )
     }),
@@ -94,7 +94,7 @@ export default {
           disableOrder: true,
           maxLines: 10,
           config: {
-            maxLines: 10,
+            maxLines: 10
           },
           item: {
             fields: {
@@ -115,7 +115,7 @@ export default {
       activities: t.list(
         t.struct({
           activity: t.String,
-          pillarsOfLife: t.maybe(PillarsOfLife),
+          pillarsOfLife: t.maybe(PillarsOfLife)
         })
       )
     }),
@@ -126,7 +126,7 @@ export default {
           disableOrder: true,
           maxLines: 10,
           config: {
-            maxLines: 10,
+            maxLines: 10
           },
           item: {
             fields: {

@@ -1,87 +1,80 @@
 /* @flow */
 
-import React from 'react'
-import {
-  I18nManager,
-  Image,
-  View,
-  Platform,
-  StyleSheet,
-} from 'react-native'
-import Icon from 'react-native-vector-icons/Ionicons'
-import TouchableItem from './TouchableItem'
+import React from "react";
+import { I18nManager, Image, View, Platform, StyleSheet } from "react-native";
+import Icon from "react-native-vector-icons/Ionicons";
+import TouchableItem from "./TouchableItem";
 
 type Props = {
   onPress?: () => void,
   pressColorAndroid?: string,
   tintColor?: ?string,
-  width?: ?number,
-}
+  width?: ?number
+};
 
 type DefaultProps = {
   pressColorAndroid: string,
-  tintColor: ?string,
-}
+  tintColor: ?string
+};
 
-type State = {}
+type State = {};
 
-class HeaderCloseButton extends React.PureComponent<DefaultProps, Props, State> {
+class HeaderCloseButton extends React.PureComponent<
+  DefaultProps,
+  Props,
+  State
+> {
   static defaultProps = {
-    pressColorAndroid: 'rgba(0, 0, 0, .32)',
+    pressColorAndroid: "rgba(0, 0, 0, .32)",
     tintColor: Platform.select({
-      ios: '#037aff',
-      android: 'white'
+      ios: "#037aff",
+      android: "white"
     })
-  }
+  };
 
-  state = {}
-  
+  state = {};
+
   render() {
-    const {
-      onPress,
-      pressColorAndroid,
-      width,
-      tintColor,
-    } = this.props
+    const { onPress, pressColorAndroid, width, tintColor } = this.props;
 
     // eslint-disable-next-line global-require
     return (
       <TouchableItem
-        accessibilityComponentType='button'
-        accessibilityLabel={'close'}
+        accessibilityComponentType="button"
+        accessibilityLabel={"close"}
         accessibilityTraits="button"
-        testID='header-back'
+        testID="header-back"
         delayPressIn={0}
         onPress={onPress}
         pressColor={pressColorAndroid}
         style={styles.container}
         borderless
       >
-        <Icon 
+        <Icon
           style={styles.icon}
-          name={'md-close'} 
+          name={"md-close"}
           size={24}
-          color={tintColor} 
+          color={tintColor}
         />
       </TouchableItem>
-    )
+    );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'row',
-    backgroundColor: 'transparent',
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "row",
+    backgroundColor: "transparent",
     borderRadius: 24,
     marginRight: 16,
     marginLeft: 16,
-    padding: 2,
+    padding: 2
   },
-  icon:{
+  icon: {
     marginHorizontal: 6
   }
-})
+});
 
-export default HeaderCloseButton
+export default HeaderCloseButton;

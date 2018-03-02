@@ -8,7 +8,7 @@ import type { BaseProps } from "./Types";
 type TypographyProps = BaseProps & {
   theme: ThemeProps,
   type:
-    "header1"
+    | "header1"
     | "header2"
     | "header3"
     | "large"
@@ -27,7 +27,14 @@ export default class Text extends React.Component<TypographyProps> {
   };
 
   render(): React.Node {
-    const { type, style, numberOfLines, gutterBottom, children, theme } = this.props;
+    const {
+      type,
+      style,
+      numberOfLines,
+      gutterBottom,
+      children,
+      theme
+    } = this.props;
     const defaultStyle = [
       theme.typography[type],
       { backgroundColor: "transparent" }

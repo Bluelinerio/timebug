@@ -61,5 +61,3 @@
 //     alignItems: 'center',
 //   },
 // });
-
-

@@ -1,82 +1,75 @@
+// const user = {
+//   achievements: [
+//     StagesOfLife,
+//     Reflections,
+//     PillarsOfLife,
+//     StrengthsAndWeaknesses,
+//     Team,
+//     Goals,
+//     Commitments,
+//     HealthAndWellness,
+//     MyInternalWorld,
+//     MajorLifeEvents,
+//     Financial,
+//     AimsAndHobbies,
+//     Relationships,
+//     Spirituality,
+//     Environment,
+//     Assessments,
+//     LifeVision,
+//   ]
+// }
 
-const user = {
-  achievements: [
-    StagesOfLife,
-    Reflections,
-    PillarsOfLife,
-    StrengthsAndWeaknesses,
-    Team,
-    Goals,
-    Commitments,
-    HealthAndWellness,
-    MyInternalWorld,
-    MajorLifeEvents,
-    Financial,
-    AimsAndHobbies,
-    Relationships,
-    Spirituality,
-    Environment,
-    Assessments,
-    LifeVision,
-  ]
-}
+// const achievements = {
+//   StagesOfLife: {
 
-const achievements = {
-  StagesOfLife: {
+//   },
+//   Reflections: {
 
-  },
-  Reflections: {
+//   },
+//   PillarsOfLife: {
 
-  },
-  PillarsOfLife: {
+//   },
+//   StrengthsAndWeaknesses: {
 
-  },
-  StrengthsAndWeaknesses: {
+//   },
+//   Team: {
 
-  },
-  Team: {
+//   },
+//   Goals: {
 
-  },
-  Goals: {
+//   },
+//   Commitments: {
 
-  },
-  Commitments: {
+//   },
+//   HealthAndWellness: {
 
-  },
-  HealthAndWellness: {
+//   },
+//   MyInternalWorld: {
 
-  },
-  MyInternalWorld: {
+//   },
+//   MajorLifeEvents: {
 
-  },
-  MajorLifeEvents: {
+//   },
+//   WorkandFinances: {
 
-  },
-  WorkandFinances: {
+//   },
+//   AimsAndHobbies: {
 
-  },
-  AimsAndHobbies: {
+//   },
+//   Relationships: {
 
-  },
-  Relationships: {
+//   },
+//   Spirituality: {
 
-  },
-  Spirituality: {
+//   },
+//   Environment: {
 
-  },
-  Environment: {
+//   },
+//   Assessments: {
 
-  },
-  Assessments: {
+//   },
+//   My2020LifeVision: {
 
-  },
-  My2020LifeVision: {
-    
-  }
-}
-
-const 
-
-
-
-
+//   }
+// }

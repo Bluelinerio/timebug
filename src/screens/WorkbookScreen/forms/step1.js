@@ -16,7 +16,7 @@ export default {
           hidden: true
         },
         lifeStages: {
-          label: 'Which stage of life does this belong to?'
+          label: "Which stage of life does this belong to?"
         },
         memory: {
           multiline: true
@@ -24,14 +24,14 @@ export default {
           //help: "Try to be as descriptive as possible."
         },
         areaOfLife: {
-          label: "Which of the 7 Pillars of Life does this belong to?",
-          //help: "Assign this memory to one of the 7 Timebug Life Categories. This will be help us with later steps of Assessment and Vision Creation."     
-        },
+          label: "Which of the 7 Pillars of Life does this belong to?"
+          //help: "Assign this memory to one of the 7 Timebug Life Categories. This will be help us with later steps of Assessment and Vision Creation."
+        }
       }
     },
     value: {
       fields: {
-        id: 'step1+v0.0.0.1'
+        id: "step1+v0.0.0.1"
       }
     }
   },
@@ -39,18 +39,18 @@ export default {
     type: t.struct({
       regret: t.String,
       areaOfLife: t.maybe(AreaOfLife),
-      lifeStages: t.maybe(LifeStages),
+      lifeStages: t.maybe(LifeStages)
     }),
     options: {
       label: "What are your main regrets?",
       fields: {
         lifeStages: {
-          label: 'Which stage of life does this belong to?'
+          label: "Which stage of life does this belong to?"
           // help: "Please select a value"
         },
         areaOfLife: {
-          label: "Which of the 7 Pillars of Life does this belong to?",
-          //help: "Assign this memory to one of the 7 Timebug Life Categories. This will be help us with later steps of Assessment and Vision Creation.",          
+          label: "Which of the 7 Pillars of Life does this belong to?"
+          //help: "Assign this memory to one of the 7 Timebug Life Categories. This will be help us with later steps of Assessment and Vision Creation.",
           //help: "Please fill out this field."
         },
         regret: {
@@ -66,18 +66,16 @@ export default {
       definingMoment: t.list(t.String)
     }),
     options: {
-      label: "What are your defining life moments?(e.g. marriage, birth of a child, career awards, etc.)",
+      label:
+        "What are your defining life moments?(e.g. marriage, birth of a child, career awards, etc.)",
       fields: {
-
         //placeholder: 'birthing my first child.',
         definingMoment: {
-
           disableOrder: true,
           maxLines: 3,
           config: {
-            maxLines: 3,
-          },
-
+            maxLines: 3
+          }
         }
       }
     }
@@ -88,10 +86,10 @@ export default {
     }),
     options: {
       //label: "When you were in that 90 year old’s body and mind",
-      label: "What emotions do you feel as you reflect back on your life as a 90 year old?",
+      label:
+        "What emotions do you feel as you reflect back on your life as a 90 year old?",
 
       fields: {
-
         reflection: {
           multiline: true
           //help: "Be completely honest with yourself. This is an exercise to help us determine what we want to keep doing well, and what we need to imrprove on as we walk down the path to 2020.",

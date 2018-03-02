@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { View, Text, Picker } from 'react-native';
-import PickerIOS from './ios/PickerIOS';
+import React from "react";
+import PropTypes from "prop-types";
+import { View, Text, Picker } from "react-native";
+import PickerIOS from "./ios/PickerIOS";
 
 export default function select(props) {
   if (props.hidden) {
@@ -44,7 +44,7 @@ export default function select(props) {
         accessibilityLabel={label}
         value={value}
         text={text}
-        onBeginEditing={() => null }
+        onBeginEditing={() => null}
         onCancel={() => null}
         onChange={onChange}
         styles={{
@@ -75,7 +75,7 @@ export default function select(props) {
       )}
       {hasError &&
         error && (
-          <Text accessibilityLiveRegion='polite' style={stylesheet.errorBlock}>
+          <Text accessibilityLiveRegion="polite" style={stylesheet.errorBlock}>
             {error}
           </Text>
         )}

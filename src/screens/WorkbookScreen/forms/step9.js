@@ -15,7 +15,7 @@ export default {
       )
     }),
     options: {
-      label: 'Who are your current role models?',
+      label: "Who are your current role models?",
 
       fields: {
         id: {
@@ -26,19 +26,22 @@ export default {
           item: {
             fields: {
               roleModel: {
-                auto: 'labels',
+                auto: "labels"
                 //  error:'Please enter the name of a Role Model.'
               },
               pillarsOfLife: {
-                label: 'Which of the 7 Pillars of Life does he/she primarily influence?',
+                label:
+                  "Which of the 7 Pillars of Life does he/she primarily influence?"
                 //error: 'Please select a Life Category.'
               },
               interactionFrequency: {
-                label: 'To what degree do you know and interact with this Advisor personally?',
+                label:
+                  "To what degree do you know and interact with this Advisor personally?"
                 //error: 'How often do you interact with this person?'
               },
               why: {
-                label: 'Why do you look up to this Advisor? What do you want to learn from them?',
+                label:
+                  "Why do you look up to this Advisor? What do you want to learn from them?",
                 multiline: true
                 //error:'Why would this person make a good role model for you?'
               }
@@ -47,16 +50,15 @@ export default {
           disableOrder: true,
           maxLines: 10,
           config: {
-            maxLines: 10,
-          },
-        },
+            maxLines: 10
+          }
+        }
       }
     },
     value: {
       fields: {
-        id: 'step9+v0.0.0.1'
+        id: "step9+v0.0.0.1"
       }
     }
   }
-
 };

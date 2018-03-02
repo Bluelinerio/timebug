@@ -5,14 +5,14 @@ import PropTypes from "prop-types";
 const styles = StyleSheet.create({
   row: {
     flexDirection: "row",
-    overflow: "hidden",
+    overflow: "hidden"
   },
   hide: {
     position: "absolute",
     left: 0,
     right: 0,
-    opacity: 0,
-  },
+    opacity: 0
+  }
 });
 
 const range = length => Array.from({ length }, (x, i) => i);
@@ -29,9 +29,9 @@ const getAnimationStyle = animation => {
   return {
     transform: [
       {
-        translateY: animation,
-      },
-    ],
+        translateY: animation
+      }
+    ]
   };
 };
 
@@ -46,26 +46,30 @@ const Piece = ({ children, style, textStyle }) => {
 class Ticker extends Component {
   static propTypes = {
     text: PropTypes.string,
-    textStyle: PropTypes.oneOfType([PropTypes.number, PropTypes.object, PropTypes.array]),
+    textStyle: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.object,
+      PropTypes.array
+    ])
   };
   static defaultProps = {
-    rotateTime: 250,
+    rotateTime: 250
   };
   state = {
     measured: false,
     height: 0,
-    fontSize: StyleSheet.flatten(this.props.textStyle).fontSize,
+    fontSize: StyleSheet.flatten(this.props.textStyle).fontSize
   };
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      fontSize: StyleSheet.flatten(nextProps.textStyle).fontSize,
+      fontSize: StyleSheet.flatten(nextProps.textStyle).fontSize
     });
   }
   handleMeasure = e => {
     this.setState({
       measured: true,
-      height: e.nativeEvent.layout.height,
+      height: e.nativeEvent.layout.height
     });
   };
 
@@ -76,7 +80,9 @@ class Ticker extends Component {
 
     const childs = text || children;
 
-    const renderer = isString(childs) ? stringNumberRenderer : generalChildRenderer;
+    const renderer = isString(childs)
+      ? stringNumberRenderer
+      : generalChildRenderer;
 
     return (
       <View style={[styles.row, { height, opacity }, style]}>
@@ -85,9 +91,13 @@ class Ticker extends Component {
           textStyle,
           height,
           rotateTime,
-          rotateItems: numberRange,
+          rotateItems: numberRange
         })}
-        <Text style={[textStyle, styles.hide]} onLayout={this.handleMeasure} pointerEvents="none">
+        <Text
+          style={[textStyle, styles.hide]}
+          onLayout={this.handleMeasure}
+          pointerEvents="none"
+        >
           0
         </Text>
       </View>
@@ -95,7 +105,13 @@ class Ticker extends Component {
   }
 }
 
-const generalChildRenderer = ({ children, textStyle, height, rotateTime, rotateItems = [] }) => {
+const generalChildRenderer = ({
+  children,
+  textStyle,
+  height,
+  rotateTime,
+  rotateItems = []
+}) => {
   return React.Children.map(children, (child, i) => {
     if (isString(child)) {
       return (
@@ -114,12 +130,18 @@ const generalChildRenderer = ({ children, textStyle, height, rotateTime, rotateI
       height,
       duration: child.props.rotateTime || rotateTime,
       textStyle,
-      rotateItems: child.props.rotateItems || rotateItems,
+      rotateItems: child.props.rotateItems || rotateItems
     });
   });
 };
 
-const stringNumberRenderer = ({ children, textStyle, height, rotateTime, rotateItems }) => {
+const stringNumberRenderer = ({
+  children,
+  textStyle,
+  height,
+  rotateTime,
+  rotateItems
+}) => {
   return splitText(children).map((piece, i) => {
     if (!isNumber(piece))
       return (
@@ -146,9 +168,9 @@ class Tick extends Component {
       getPosition({
         text: this.props.text,
         items: this.props.rotateItems,
-        height: this.props.height,
-      }),
-    ),
+        height: this.props.height
+      })
+    )
   };
   componentDidMount() {
     // If we first render then don't do a mounting animation
@@ -158,9 +180,9 @@ class Tick extends Component {
           getPosition({
             text: this.props.text,
             items: this.props.rotateItems,
-            height: this.props.height,
-          }),
-        ),
+            height: this.props.height
+          })
+        )
       });
     }
   }
@@ -171,9 +193,9 @@ class Tick extends Component {
           getPosition({
             text: nextProps.text,
             items: nextProps.rotateItems,
-            height: nextProps.height,
-          }),
-        ),
+            height: nextProps.height
+          })
+        )
       });
     }
   }
@@ -185,10 +207,10 @@ class Tick extends Component {
         toValue: getPosition({
           text: text,
           items: rotateItems,
-          height,
+          height
         }),
         duration,
-        useNativeDriver: true,
+        useNativeDriver: true
       }).start();
     }
   }
