@@ -10,27 +10,27 @@ import {
   put,
   takeLatest,
   fork
-} from "redux-saga/effects";
-import { requestSaga } from "../../Modules/redux-saga-request";
-import type { Request } from "../../Modules/redux-saga-request";
+} from 'redux-saga/effects';
+import { requestSaga } from '../../Modules/redux-saga-request';
+import type { Request } from '../../Modules/redux-saga-request';
 // actions:
 import {
   LOGIN_WITH_FB_BUTTON_PRESSED,
   FB_LOGIN_DIALOG_RESPONDED,
   LOGOUT,
   REFRESH_USER
-} from "../actionTypes";
-import * as actions from "../actions";
+} from '../actionTypes';
+import * as actions from '../actions';
 import {
   incrementRequestCount,
   decrementRequestCount
-} from "../actions/network.actions";
+} from '../actions/network.actions';
 import {
   GET_USER,
   AUTHENTICATE_FB,
   refreshUser
-} from "../actions/user.actions";
-import selectors from "../selectors";
+} from '../actions/user.actions';
+import selectors from '../selectors';
 // models
 import type {
   Auth,
@@ -38,15 +38,15 @@ import type {
   User,
   UserState,
   ErrorResponse
-} from "../../services/apollo/models";
+} from '../../services/apollo/models';
 //
 import {
   authenticateWithFBToken,
   fetchUserWithId,
   resetStore
-} from "../../services/apollo";
-import facebook from "../../services/facebook";
-import AuthStorage from "../../services/authStorage";
+} from '../../services/apollo';
+import facebook from '../../services/facebook';
+import AuthStorage from '../../services/authStorage';
 
 function* unlinkUser() {
   yield all([call(AuthStorage.wipeStorage), call(facebook.logOut)]);
@@ -66,7 +66,7 @@ function* _handleUserError() {
 }
 
 function* _fetchUserWithId(userId) {
-  yield put({ type: "FETCH_USER_WITH_ID", payload: userId });
+  yield put({ type: 'FETCH_USER_WITH_ID', payload: userId });
   yield call(requestSaga, GET_USER, () => fetchUserWithId(userId), { userId });
   // if GET_USER.ERRORED it will be handled by _handleUserError
 }
@@ -121,7 +121,7 @@ function* _loginOrRegisterWithFacebook() {
     const success = yield call(facebook.openFBLogin);
     yield put({ type: FB_LOGIN_DIALOG_RESPONDED, payload: success });
   } catch (error) {
-    yield put({ type: FB_LOGIN_DIALOG_RESPONDED + "FAILD", message: error });
+    yield put({ type: FB_LOGIN_DIALOG_RESPONDED + 'FAILD', message: error });
     yield put({ type: GET_USER.ERRORED, error });
     return error;
   } finally {

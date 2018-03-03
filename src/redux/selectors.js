@@ -1,13 +1,13 @@
 // @flow
-import R from "ramda";
-import { getUserState, getCms, getFormData } from "./rootReducer";
+import R from 'ramda';
+import { getUserState, getCms, getFormData } from './rootReducer';
 import {
   UNDETERMINED,
   ANONYMOUS,
   AUTHENTICATING
-} from "../services/apollo/models";
-import type { User, Form } from "../services/apollo/models";
-import type { Colors, Step, Slide } from "../services/cms";
+} from '../services/apollo/models';
+import type { User, Form } from '../services/apollo/models';
+import type { Colors, Step, Slide } from '../services/cms';
 
 // CMS
 const sortSteps = (a: Step, b: Step) => a.number - b.number;
@@ -28,7 +28,7 @@ const aboutText = (state: any) => getCms(state).about;
 
 // User
 const user = (state: any): ?User =>
-  typeof getUserState(state) === "string" ? null : getUserState(state);
+  typeof getUserState(state) === 'string' ? null : getUserState(state);
 const userId = (state: any) => user(state) && user(state).id;
 
 const isLoggedIn = (state: any): boolean => !!user(state);
@@ -66,7 +66,7 @@ const colorForStepWithId = (state: any) => (stepId: string) =>
 const step = (number: number) => (state: any) => steps(state)[number];
 
 // models
-import workbooks from "../screens/WorkbookScreen/forms";
+import workbooks from '../screens/WorkbookScreen/forms';
 // form data
 const formData = (state: any) => getFormData(state).data;
 const incompleteFormsData = (state: any) => getFormData(state).data;

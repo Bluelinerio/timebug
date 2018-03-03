@@ -1,12 +1,12 @@
 // @flow
-import { FETCH_CMS } from "../actions/cms.actions";
-import type { Step, Colors, OnobardingPage } from "../../services/cms";
+import { FETCH_CMS } from '../actions/cms.actions';
+import type { Step, Colors, OnobardingPage } from '../../services/cms';
 const {
   steps,
   colors,
   about,
   onboardingPages
-} = require("../../static/cms.json");
+} = require('../../static/cms.json');
 
 export type CMSState = {
   requestCount: number,
@@ -56,13 +56,13 @@ function cmsReducer(state: CMSState = initialState, action: StepsAction) {
   }
 }
 
-import storage from "redux-persist/lib/storage";
-import { persistReducer } from "redux-persist";
+import storage from 'redux-persist/lib/storage';
+import { persistReducer } from 'redux-persist';
 
 const persistConfig = {
-  key: "cms",
+  key: 'cms',
   storage: storage,
-  blacklist: ["requestCount"],
+  blacklist: ['requestCount'],
   stateReconciler: (
     inboundState: CMSState,
     originalState: CMSState,

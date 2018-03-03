@@ -2,7 +2,7 @@ import {
   RootNavigator,
   rootConfiguration,
   assignmentFlowConfiguration
-} from "../../navigation";
+} from '../../navigation';
 
 const initialRouteState = RootNavigator.router.getStateForAction(
   RootNavigator.router.getActionForPathAndParams(
@@ -17,7 +17,7 @@ const walkthroughState = RootNavigator.router.getStateForAction(
 );
 
 if (!initialRouteState || !walkthroughState) {
-  throw "nav reducer --expect state to be not nil";
+  throw 'nav reducer --expect state to be not nil';
 }
 const initialState = initialRouteState;
 

@@ -1,16 +1,16 @@
-import React, { PureComponent } from "react";
-import { View, Text, Image, TouchableOpacity } from "react-native";
-import { ParallaxImage } from "react-native-snap-carousel";
-import CustomImage from "../../../components/CustomImage";
+import React, { PureComponent } from 'react';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
+import { ParallaxImage } from 'react-native-snap-carousel';
+import CustomImage from '../../../components/CustomImage';
 import styles, {
   spinnerEvenColor,
   spinnerUnEvenColor
-} from "../styles/SliderEntry.style";
-import type { Step, Icon } from "../../../services/cms";
-import { getImageUrl } from "../../../services/cms";
-import TouchableBounce from "react-native/Libraries/Components/Touchable/TouchableBounce";
-import Entypo from "react-native-vector-icons/Entypo";
-import { deepBlue } from "../../../constants/colors";
+} from '../styles/SliderEntry.style';
+import type { Step, Icon } from '../../../services/cms';
+import { getImageUrl } from '../../../services/cms';
+import TouchableBounce from 'react-native/Libraries/Components/Touchable/TouchableBounce';
+import Entypo from 'react-native-vector-icons/Entypo';
+import { deepBlue } from '../../../constants/colors';
 
 export type Item = {
   title: string,
@@ -74,18 +74,18 @@ export default class SliderEntry extends PureComponent<Prop> {
           {iconName && (
             <View
               style={{
-                position: "absolute",
+                position: 'absolute',
                 right: 0,
                 top: 0,
-                backgroundColor: "transparent",
+                backgroundColor: 'transparent',
                 borderRadius: 14,
                 borderWidth: 0,
                 borderColor: deepBlue,
                 height: 30,
                 width: 60,
-                justifyContent: "center",
-                alignItems: "center",
-                flexDirection: "row"
+                justifyContent: 'center',
+                alignItems: 'center',
+                flexDirection: 'row'
               }}
             >
               <Entypo name={iconName} size={20} color={deepBlue} />

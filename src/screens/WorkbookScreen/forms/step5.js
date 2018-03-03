@@ -1,5 +1,5 @@
-import t from "../components/templates";
-import { GoalTypes } from "./contents";
+import t from '../components/templates';
+import { GoalTypes } from './contents';
 
 export default {
   1: {
@@ -14,7 +14,7 @@ export default {
     }),
     options: {
       label:
-        "What are some of your recent goals? Classify them according to the 7 Goal Types.",
+        'What are some of your recent goals? Classify them according to the 7 Goal Types.',
       fields: {
         id: {
           hidden: true
@@ -22,8 +22,8 @@ export default {
         goals: {
           item: {
             fields: {
-              goal: { auto: "labels" }, //error:'Please enter a goal'},
-              goalTypes: { auto: "labels" } //error:'Please select a Goal Type'}
+              goal: { auto: 'labels' }, //error:'Please enter a goal'},
+              goalTypes: { auto: 'labels' } //error:'Please select a Goal Type'}
             }
           },
           disableOrder: true,
@@ -35,7 +35,7 @@ export default {
       }
     },
     value: {
-      id: "step5+v0.0.0.1"
+      id: 'step5+v0.0.0.1'
     }
   }
 };

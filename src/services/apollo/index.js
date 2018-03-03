@@ -1,1 +1,1 @@
-export * from "./graphcool.GC2020";
+export * from './graphcool.GC2020';

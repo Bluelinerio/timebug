@@ -1,19 +1,19 @@
-import * as React from "react";
-import { Image, View, Text, StatusBar, StyleSheet } from "react-native";
-import { SafeAreaView, NavigationActions } from "react-navigation";
-import Entypo from "react-native-vector-icons/Entypo";
-import TouchableBounce from "react-native/Libraries/Components/Touchable/TouchableBounce";
-import LinearGradient from "react-native-linear-gradient";
-import SoundPlayback from "./SoundPlayback";
-import CloseButton from "./CloseButton";
-import Ticker from "./Ticker";
+import * as React from 'react';
+import { Image, View, Text, StatusBar, StyleSheet } from 'react-native';
+import { SafeAreaView, NavigationActions } from 'react-navigation';
+import Entypo from 'react-native-vector-icons/Entypo';
+import TouchableBounce from 'react-native/Libraries/Components/Touchable/TouchableBounce';
+import LinearGradient from 'react-native-linear-gradient';
+import SoundPlayback from './SoundPlayback';
+import CloseButton from './CloseButton';
+import Ticker from './Ticker';
 
 // freesuonds:
 //https://freesound.org/people/reinsamba/sounds/46062/
 
 const VerticalGradientWithTwoColors = ({
-  startColor = "#004E69",
-  endColor = "#0D0D0D",
+  startColor = '#004E69',
+  endColor = '#0D0D0D',
   children,
   style
 }) => (
@@ -30,7 +30,7 @@ const VerticalGradientWithTwoColors = ({
 );
 
 const PlayButton = () => <View />;
-const CountdownLabel = ({ text = "meditation" }) => <Text>{text}</Text>;
+const CountdownLabel = ({ text = 'meditation' }) => <Text>{text}</Text>;
 
 // class PlaybackControllerButton extends
 export default class MeditationScreen extends React.PureComponent<> {
@@ -50,12 +50,12 @@ export default class MeditationScreen extends React.PureComponent<> {
         <StatusBar
           translucent
           barStyle="dark-content"
-          backgroundColor={"transparent"}
+          backgroundColor={'transparent'}
         />
         {StatusBar.currentHeight && (
           <View
             style={{
-              backgroundColor: "transparent",
+              backgroundColor: 'transparent',
               height: StatusBar.currentHeight
             }}
           />
@@ -63,7 +63,7 @@ export default class MeditationScreen extends React.PureComponent<> {
         <SafeAreaView>
           <CloseButton dispatch={navigation.dispatch} />
           <SoundPlayback
-            url={require("../../../resources/sounds/gong.wav")}
+            url={require('../../../resources/sounds/gong.wav')}
             ref={c => (this.soundPlayback = c)}
             onReady={() =>
               this.setState({ soundReady: true, soundPlaying: false })
@@ -72,22 +72,22 @@ export default class MeditationScreen extends React.PureComponent<> {
           />
           {soundReady && (
             <Entypo.Button
-              name={soundPlaying ? "controller-paus" : "controller-play"}
-              backgroundColor={"transparent"}
-              pressColor={"transparent"}
+              name={soundPlaying ? 'controller-paus' : 'controller-play'}
+              backgroundColor={'transparent'}
+              pressColor={'transparent'}
               onPress={
                 soundPlaying
                   ? () => this.pause
                   : () => this.soundPlayback.play()
               }
-              color={"white"}
+              color={'white'}
               size={88}
               style={styles.playButton}
             />
           )}
           {countdown > 0 && (
             <Ticker
-              text={"10:00"}
+              text={'10:00'}
               style={{
                 fontSize: 20
               }}
@@ -101,8 +101,8 @@ export default class MeditationScreen extends React.PureComponent<> {
 
 const styles = StyleSheet.create({
   playButton: {
-    alignSelf: "center",
-    backgroundColor: "transparent",
+    alignSelf: 'center',
+    backgroundColor: 'transparent',
     paddingHorizontal: 10,
     paddingVertical: 10
   }

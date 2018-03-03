@@ -1,6 +1,6 @@
 // @flow
-import { NetInfo, Alert, Platform } from "react-native";
-import { NETWORK_ALERT_TIME, WORK_OFFLINE } from "../constants/constants";
+import { NetInfo, Alert, Platform } from 'react-native';
+import { NETWORK_ALERT_TIME, WORK_OFFLINE } from '../constants/constants';
 
 /**
  * check network connection
@@ -14,10 +14,10 @@ class NetworkState {
     if (!this.offlineMode) {
       Alert.alert(
         "An internet connection is required to use some of this app's functionality",
-        "",
+        '',
         [
           {
-            text: "Try again",
+            text: 'Try again',
             onPress: () => {
               setTimeout(() => {
                 this._checkConnection(resolve, reject, dontWorkOffline);
@@ -25,17 +25,17 @@ class NetworkState {
             }
           },
           {
-            text: "OK"
+            text: 'OK'
           }
         ]
       );
     } else if (dontWorkOffline) {
       Alert.alert(
         "An internet connection is required to use some of this app's functionality",
-        "",
+        '',
         [
           {
-            text: "Try again",
+            text: 'Try again',
             onPress: () => {
               setTimeout(() => {
                 this._checkConnection(resolve, reject, dontWorkOffline);
@@ -43,7 +43,7 @@ class NetworkState {
             }
           },
           {
-            text: "OK"
+            text: 'OK'
           }
         ]
       );
@@ -55,7 +55,7 @@ class NetworkState {
       resolve();
       return;
     }
-    if (Platform.OS === "android") {
+    if (Platform.OS === 'android') {
       NetInfo.isConnected.fetch().then(isConnected => {
         this.isInProgres = false;
         if (isConnected) {
@@ -69,25 +69,25 @@ class NetworkState {
         /**
          * if check first time wait for response
          */
-        NetInfo.addEventListener("change", reach => {
+        NetInfo.addEventListener('change', reach => {
           if (this.currentState === null) {
-            if (reach === "wifi" || reach === "cell") {
+            if (reach === 'wifi' || reach === 'cell') {
               resolve();
             } else {
               this._alert(resolve, reject, dontWorkOffline);
             }
           }
-          if (reach === "wifi" || reach === "cell") {
+          if (reach === 'wifi' || reach === 'cell') {
             this.offlineMode = false;
           }
           this.currentState = reach;
           this.isInProgres = false;
         });
       }
-      if (this.currentState === "wifi" || this.currentState === "cell") {
+      if (this.currentState === 'wifi' || this.currentState === 'cell') {
         resolve();
       }
-      if (this.currentState === "none" || this.currentState === "unknown") {
+      if (this.currentState === 'none' || this.currentState === 'unknown') {
         this._alert(resolve, reject, dontWorkOffline);
       }
     }

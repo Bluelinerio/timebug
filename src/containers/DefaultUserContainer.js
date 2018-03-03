@@ -1,14 +1,14 @@
-import * as React from "react";
-import { View, Text } from "react-native";
+import * as React from 'react';
+import { View, Text } from 'react-native';
 
-import User from "./User";
+import User from './User';
 import {
   AUTHENTICATING,
   UNDETERMIND,
   ANONYMOUS
-} from "../services/apollo/models";
-import DefaultIndicator from "../components/DefaultIndicator";
-import ErrorComponent from "../components/Error";
+} from '../services/apollo/models';
+import DefaultIndicator from '../components/DefaultIndicator';
+import ErrorComponent from '../components/Error';
 
 export default ({ renderWithUser, anonymousMessage, navigationOptions }) => (
   <User
@@ -23,7 +23,7 @@ export default ({ renderWithUser, anonymousMessage, navigationOptions }) => (
             <Component
               message={
                 anonymousMessage ||
-                "You need to be logged in to be user this screen."
+                'You need to be logged in to be user this screen.'
               }
             />
           );

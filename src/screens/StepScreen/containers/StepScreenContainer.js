@@ -1,16 +1,16 @@
 // @flow
 
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { withNavigation } from "react-navigation";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withNavigation } from 'react-navigation';
 
-import StepScreen from "../components/StepScreen";
-import type Props from "../components/StepScreen";
-import { headerBackgrounds } from "../../../resources/images";
-import { getImageUrl } from "../../../services/cms";
-import selectors from "../../../redux/selectors";
-import type { Step } from "../../../services/cms";
-import { goToAssignmentLeadInScreen } from "../../../redux/actions/nav.actions";
+import StepScreen from '../components/StepScreen';
+import type Props from '../components/StepScreen';
+import { headerBackgrounds } from '../../../resources/images';
+import { getImageUrl } from '../../../services/cms';
+import selectors from '../../../redux/selectors';
+import type { Step } from '../../../services/cms';
+import { goToAssignmentLeadInScreen } from '../../../redux/actions/nav.actions';
 
 const mapStateToProps = state => {
   const steps = selectors.steps(state);
@@ -18,7 +18,7 @@ const mapStateToProps = state => {
 };
 
 const testNavigation = ownProps => {
-  if (!ownProps.navigation) throw "did not find navigation";
+  if (!ownProps.navigation) throw 'did not find navigation';
 };
 const testStepId = ({ navigation: { state: { params: { stepId } } } }) => {
   if (!stepId) {

@@ -1,8 +1,8 @@
-import { StyleSheet, Dimensions, Platform } from "react-native";
-import { colors } from "../styles";
+import { StyleSheet, Dimensions, Platform } from 'react-native';
+import { colors } from '../styles';
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get(
-  "window"
+  'window'
 );
 
 function wp(percentage) {
@@ -17,8 +17,8 @@ const itemHorizontalMargin = wp(2);
 
 export const sliderWidth = viewportWidth;
 export const itemWidth = slideWidth + itemHorizontalMargin * 2;
-export const spinnerEvenColor = "rgba(255, 255, 255, 0.4)";
-export const spinnerUnEvenColor = "rgba(0, 0, 0, 0.25)";
+export const spinnerEvenColor = 'rgba(255, 255, 255, 0.4)';
+export const spinnerUnEvenColor = 'rgba(0, 0, 0, 0.25)';
 
 const entryBorderRadius = 16;
 
@@ -26,7 +26,7 @@ export default StyleSheet.create({
   slideInnerContainer: {
     width: itemWidth,
     height: slideHeight,
-    backgroundColor: "white",
+    backgroundColor: 'white',
     ...Platform.select({
       android: {
         paddingHorizontal: itemHorizontalMargin,
@@ -37,7 +37,7 @@ export default StyleSheet.create({
       ios: {
         marginVertical: 30, // needed for shadow
         borderRadius: entryBorderRadius,
-        shadowColor: "black",
+        shadowColor: 'black',
         shadowOffset: {
           width: 0,
           height: 10
@@ -50,7 +50,7 @@ export default StyleSheet.create({
   imageContainer: {
     flex: 1,
     marginVertical: entryBorderRadius, // needed for shadow
-    backgroundColor: "white",
+    backgroundColor: 'white',
     borderTopLeftRadius: entryBorderRadius,
     borderTopRightRadius: entryBorderRadius
   },
@@ -59,35 +59,35 @@ export default StyleSheet.create({
   },
   svg: {
     ...StyleSheet.absoluteFillObject,
-    borderRadius: Platform.OS === "ios" ? entryBorderRadius : 0,
+    borderRadius: Platform.OS === 'ios' ? entryBorderRadius : 0,
     borderTopLeftRadius: entryBorderRadius,
     borderTopRightRadius: entryBorderRadius
   },
   image: {
     ...StyleSheet.absoluteFillObject,
-    resizeMode: "cover",
-    borderRadius: Platform.OS === "ios" ? entryBorderRadius : 0,
+    resizeMode: 'cover',
+    borderRadius: Platform.OS === 'ios' ? entryBorderRadius : 0,
     borderTopLeftRadius: entryBorderRadius,
     borderTopRightRadius: entryBorderRadius
   },
   // image's border radius is buggy on ios; let's hack it!
   radiusMask: {
-    position: "absolute",
+    position: 'absolute',
     bottom: 0,
     left: 0,
     right: 0,
     height: entryBorderRadius,
-    backgroundColor: "white"
+    backgroundColor: 'white'
   },
   radiusMaskEven: {
     backgroundColor: colors.black
   },
   textContainer: {
-    justifyContent: "center",
+    justifyContent: 'center',
     paddingTop: 20 - entryBorderRadius,
     paddingBottom: 20,
     paddingHorizontal: 16,
-    backgroundColor: "white",
+    backgroundColor: 'white',
     borderBottomLeftRadius: entryBorderRadius,
     borderBottomRightRadius: entryBorderRadius
   },
@@ -97,19 +97,19 @@ export default StyleSheet.create({
   title: {
     color: colors.black,
     fontSize: 14,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     letterSpacing: 0.5
   },
   titleEven: {
-    color: "white"
+    color: 'white'
   },
   subtitle: {
     marginTop: 6,
     color: colors.gray,
     fontSize: 12,
-    fontStyle: "italic"
+    fontStyle: 'italic'
   },
   subtitleEven: {
-    color: "rgba(255, 255, 255, 0.7)"
+    color: 'rgba(255, 255, 255, 0.7)'
   }
 });

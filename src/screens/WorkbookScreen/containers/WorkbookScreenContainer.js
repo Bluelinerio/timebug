@@ -1,22 +1,22 @@
 // @flow
 
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { NavigationActions, withNavigation } from "react-navigation";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { NavigationActions, withNavigation } from 'react-navigation';
 
-import { headerBackgrounds } from "../../../resources/images";
+import { headerBackgrounds } from '../../../resources/images';
 import {
   submitFormValue,
   syncFormData
-} from "../../../redux/actions/formData.actions";
+} from '../../../redux/actions/formData.actions';
 import {
   goToWorkbookDoneScreen,
   goToWorkbookScreenWithParams
-} from "../../../redux/actions/nav.actions";
-import selectors from "../../../redux/selectors";
-import type Props from "../components/WorkbookScreenComponent";
-import WorkbookScreenComponent from "../components/WorkbookScreenComponent";
-import DefaultUserContainer from "../../../containers/DefaultUserContainer";
+} from '../../../redux/actions/nav.actions';
+import selectors from '../../../redux/selectors';
+import type Props from '../components/WorkbookScreenComponent';
+import WorkbookScreenComponent from '../components/WorkbookScreenComponent';
+import DefaultUserContainer from '../../../containers/DefaultUserContainer';
 
 const mapStateToProps = state => {
   const steps = selectors.steps(state);
@@ -40,7 +40,7 @@ const merge = (stateProps, dispatchProps, ownProps): Props => {
   const formIdIndex = Object.keys(models).indexOf(formId);
   const isFinalForm = numberOfForms - 1 === formIdIndex;
   const ifFirstForm = formIdIndex === 0;
-  const buttonMessage = isFinalForm ? "SUBMIT" : "NEXT";
+  const buttonMessage = isFinalForm ? 'SUBMIT' : 'NEXT';
 
   const model = models[formId];
   const value = formData[formId];
@@ -94,7 +94,7 @@ export default () => (
   <DefaultUserContainer
     renderWithUser={() => <WorkbookScreenContainer />}
     anonymousMessage={
-      "You need to be logged in to be able to do the exercises. Please go back and log in again."
+      'You need to be logged in to be able to do the exercises. Please go back and log in again.'
     }
   />
 );

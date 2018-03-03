@@ -1,11 +1,11 @@
-import cms from "./reducers/cms.reducer";
-import error from "./reducers/error.reducer";
-import network from "./reducers/network.reducer";
-import user from "./reducers/user.reducer";
-import formData from "./reducers/formData.reducer";
-import nav from "./reducers/nav.reducer";
-import appState from "./reducers/appState.reducer";
-import agregates from "./reducers/agregates.reducer";
+import cms from './reducers/cms.reducer';
+import error from './reducers/error.reducer';
+import network from './reducers/network.reducer';
+import user from './reducers/user.reducer';
+import formData from './reducers/formData.reducer';
+import nav from './reducers/nav.reducer';
+import appState from './reducers/appState.reducer';
+import agregates from './reducers/agregates.reducer';
 
 export const rootReducer = {
   cms,
@@ -19,11 +19,11 @@ export const rootReducer = {
 };
 
 // @flow
-import type { CMSState } from "./reducers/cms.reducer";
-import type { FormModelsState } from "./reducers/formData.reducer";
-import type { UserState } from "../../services/apollo/models";
-import type { AppState } from "./reducers/appState.reducer";
-import type { AggregateState } from "./reducers/agregates.reducer";
+import type { CMSState } from './reducers/cms.reducer';
+import type { FormModelsState } from './reducers/formData.reducer';
+import type { UserState } from '../../services/apollo/models';
+import type { AppState } from './reducers/appState.reducer';
+import type { AggregateState } from './reducers/agregates.reducer';
 
 export const getUserState = (state: any): UserState => state.user;
 export const getCms = (state: any): CMSState => state.cms;

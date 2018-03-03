@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import { StyleSheet, Text, View, Animated } from "react-native";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import { StyleSheet, Text, View, Animated } from 'react-native';
+import PropTypes from 'prop-types';
 
 const styles = StyleSheet.create({
   row: {
-    flexDirection: "row",
-    overflow: "hidden"
+    flexDirection: 'row',
+    overflow: 'hidden'
   },
   hide: {
-    position: "absolute",
+    position: 'absolute',
     left: 0,
     right: 0,
     opacity: 0
@@ -20,10 +20,10 @@ const getPosition = ({ text, items, height }) => {
   const index = items.findIndex(p => p === text);
   return index * height * -1;
 };
-const splitText = (text = "") => (text + "").split("");
-const isNumber = (text = "") => !isNaN(parseInt(text, 10));
-const isString = (text = "") => typeof text === "string";
-const numberRange = range(10).map(p => p + "");
+const splitText = (text = '') => (text + '').split('');
+const isNumber = (text = '') => !isNaN(parseInt(text, 10));
+const isString = (text = '') => typeof text === 'string';
+const numberRange = range(10).map(p => p + '');
 
 const getAnimationStyle = animation => {
   return {
@@ -122,7 +122,7 @@ const generalChildRenderer = ({
     }
 
     const items = child.props.rotateItems || rotateItems;
-    const key = items.join(",") + i;
+    const key = items.join(',') + i;
 
     return React.cloneElement(child, {
       key,

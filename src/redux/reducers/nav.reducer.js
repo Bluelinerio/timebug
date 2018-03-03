@@ -2,7 +2,7 @@ import {
   RootNavigator,
   rootConfiguration,
   assignmentFlowConfiguration
-} from "../../navigation";
+} from '../../navigation';
 
 const initialRouteState = RootNavigator.router.getStateForAction(
   RootNavigator.router.getActionForPathAndParams(
@@ -17,7 +17,7 @@ const walkthroughState = RootNavigator.router.getStateForAction(
 );
 
 if (!initialRouteState || !walkthroughState) {
-  throw "nav reducer --expect state to be not nil";
+  throw 'nav reducer --expect state to be not nil';
 }
 const initialState = walkthroughState;
 
@@ -26,8 +26,8 @@ function navReducer(state = initialState, action) {
   return newState || state;
 }
 
-import storage from "redux-persist/lib/storage";
-import { persistReducer, createMigrate } from "redux-persist";
+import storage from 'redux-persist/lib/storage';
+import { persistReducer, createMigrate } from 'redux-persist';
 
 const isRouteInvalid = route => {
   if (!route.routeName) return true;
@@ -64,7 +64,7 @@ const isAssignmentFlowValid = assignmentFlow => {
 
 const thisVersion = 9;
 const persistConfig = {
-  key: "nav",
+  key: 'nav',
   storage: storage,
   version: thisVersion,
   migrate: (state, version) => {

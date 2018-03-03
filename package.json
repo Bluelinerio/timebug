@@ -9,7 +9,7 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
-    "format": "prettier-eslint \"src/**/*.js\" --write",
+    "format": "prettier-eslint \"src/**/*.js\" --write --single-quote ",
     "build-e2e:ios": "detox build -c ios.sim.debug",
     "test-e2e:ios": "detox test -c ios.sim.debug -l verbose",
     "build-e2e:android": "yarn clean:android && detox build -c android.emu.debug",

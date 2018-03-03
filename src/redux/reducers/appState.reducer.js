@@ -8,9 +8,9 @@ import {
   FOREGROUND,
   BACKGROUND,
   INACTIVE
-} from "redux-enhancer-react-native-appstate";
+} from 'redux-enhancer-react-native-appstate';
 
-export const UNDETERMIND = "UNDETERMIND";
+export const UNDETERMIND = 'UNDETERMIND';
 
 export type AppState =
   | UNDETERMIND
@@ -22,7 +22,7 @@ export type AppState =
       +agregates: Object
     };
 
-export const initialState = "UNDETERMIND";
+export const initialState = 'UNDETERMIND';
 
 export default (
   state: AppState = initialState,

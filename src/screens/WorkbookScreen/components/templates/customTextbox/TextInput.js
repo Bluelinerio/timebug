@@ -1,6 +1,6 @@
 // @flow
-import React from "react";
-import { View, TextInput, Text, Animated } from "react-native";
+import React from 'react';
+import { View, TextInput, Text, Animated } from 'react-native';
 
 type State = {
   height: number,
@@ -40,7 +40,7 @@ export default class CustomTextInput extends React.Component<Props, State> {
         style={[
           hasError ? styles.controlLabel.error : styles.controlLabel.normal,
           {
-            textAlign: "auto",
+            textAlign: 'auto',
             opacity: fadeAnim,
             transform: [
               {
@@ -64,7 +64,7 @@ export default class CustomTextInput extends React.Component<Props, State> {
         style={[
           hasError ? styles.controlLabel.error : styles.controlLabel.normal,
           {
-            textAlign: "auto"
+            textAlign: 'auto'
           }
         ]}
       >
@@ -78,7 +78,7 @@ export default class CustomTextInput extends React.Component<Props, State> {
     this.state = {
       height: 0,
       fieldFocused: props.value ? true : false,
-      text: props.value ? String(props.value) : "",
+      text: props.value ? String(props.value) : '',
       fadeAnim: props.value ? new Animated.Value(1) : new Animated.Value(0)
     };
   }
@@ -226,10 +226,10 @@ export default class CustomTextInput extends React.Component<Props, State> {
             {
               borderRadius: 6,
               borderWidth: 1,
-              borderColor: "#ccc",
+              borderColor: '#ccc',
               paddingVertical: 10,
               paddingHorizontal: 7,
-              justifyContent: "flex-end"
+              justifyContent: 'flex-end'
             }
           ]}
         >

@@ -1,10 +1,10 @@
 // @flow
 
-import React, { Component } from "react";
-import { Text, View, Image } from "react-native";
-import Feather from "react-native-vector-icons/MaterialCommunityIcons";
-import styles from "../styles";
-import Button from "../../../components/Button";
+import React, { Component } from 'react';
+import { Text, View, Image } from 'react-native';
+import Feather from 'react-native-vector-icons/MaterialCommunityIcons';
+import styles from '../styles';
+import Button from '../../../components/Button';
 
 export type Props = {
   title: string,
@@ -39,7 +39,7 @@ export default ({
       ]}
     >
       <View style={styles.messageContainer}>
-        <Text style={[styles.title, styles.strong, { color: "white" }]}>
+        <Text style={[styles.title, styles.strong, { color: 'white' }]}>
           {title}
         </Text>
       </View>
@@ -47,7 +47,7 @@ export default ({
         <Button
           onPress={buttonOnPress}
           text={buttonTitle}
-          backgroundColor={"white"}
+          backgroundColor={'white'}
           textColor={nextStepColor}
         />
       </View>

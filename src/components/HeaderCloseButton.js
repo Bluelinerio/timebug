@@ -1,9 +1,9 @@
 /* @flow */
 
-import React from "react";
-import { I18nManager, Image, View, Platform, StyleSheet } from "react-native";
-import Icon from "react-native-vector-icons/Ionicons";
-import TouchableItem from "./TouchableItem";
+import React from 'react';
+import { I18nManager, Image, View, Platform, StyleSheet } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
+import TouchableItem from './TouchableItem';
 
 type Props = {
   onPress?: () => void,
@@ -25,10 +25,10 @@ class HeaderCloseButton extends React.PureComponent<
   State
 > {
   static defaultProps = {
-    pressColorAndroid: "rgba(0, 0, 0, .32)",
+    pressColorAndroid: 'rgba(0, 0, 0, .32)',
     tintColor: Platform.select({
-      ios: "#037aff",
-      android: "white"
+      ios: '#037aff',
+      android: 'white'
     })
   };
 
@@ -41,7 +41,7 @@ class HeaderCloseButton extends React.PureComponent<
     return (
       <TouchableItem
         accessibilityComponentType="button"
-        accessibilityLabel={"close"}
+        accessibilityLabel={'close'}
         accessibilityTraits="button"
         testID="header-back"
         delayPressIn={0}
@@ -52,7 +52,7 @@ class HeaderCloseButton extends React.PureComponent<
       >
         <Icon
           style={styles.icon}
-          name={"md-close"}
+          name={'md-close'}
           size={24}
           color={tintColor}
         />
@@ -63,10 +63,10 @@ class HeaderCloseButton extends React.PureComponent<
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "row",
-    backgroundColor: "transparent",
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    backgroundColor: 'transparent',
     borderRadius: 24,
     marginRight: 16,
     marginLeft: 16,

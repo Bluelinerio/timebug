@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 import Svg, {
   Circle,
   Ellipse,
@@ -15,20 +15,20 @@ import Svg, {
   Use,
   Defs,
   Stop
-} from "react-native-svg";
+} from 'react-native-svg';
 
 const defaultStyle = {
-  alignSelf: "center"
+  alignSelf: 'center'
 };
 
 export default ({
   width = 75,
   height = 75,
   style = defaultStyle,
-  backgroundColor = "transparent",
-  shapeColor = "#FFFFFF",
-  deepBlue = "#000A8B",
-  hotPink = "#EC008C"
+  backgroundColor = 'transparent',
+  shapeColor = '#FFFFFF',
+  deepBlue = '#000A8B',
+  hotPink = '#EC008C'
 }) => (
   <Svg width={width} height={width} style={style} viewBox="0 0 160 180">
     <G>

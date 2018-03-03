@@ -1,6 +1,6 @@
 /* @flow */
 
-import React from "react";
+import React from 'react';
 import {
   Image,
   Platform,
@@ -8,20 +8,20 @@ import {
   View,
   SafeAreaView,
   TouchableOpacity
-} from "react-native";
-import { connect } from "react-redux";
-import VerticalGradient from "./VerticalGradient";
-import styles from "../styles/dashbaord.styles";
+} from 'react-native';
+import { connect } from 'react-redux';
+import VerticalGradient from './VerticalGradient';
+import styles from '../styles/dashbaord.styles';
 
-import md5 from "md5";
-import selectors from "../../../redux/selectors";
+import md5 from 'md5';
+import selectors from '../../../redux/selectors';
 import {
   iOSColors,
   human,
   iOSUIKit,
   systemWeights
-} from "react-native-typography";
-import moment from "moment";
+} from 'react-native-typography';
+import moment from 'moment';
 
 const mapStateToProps = state => ({ user: selectors.user(state) });
 
@@ -39,7 +39,7 @@ const Banner = ({ user }) => (
       <View>
         <Text style={styles.headerDate}>
           {moment()
-            .format("dddd DD MMM")
+            .format('dddd DD MMM')
             .toUpperCase()}
         </Text>
         <Text style={[styles.title, styles.strong]}>{`Welcome`}</Text>

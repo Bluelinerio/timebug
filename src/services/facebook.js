@@ -1,5 +1,5 @@
 // @flow
-import FBSDK from "react-native-fbsdk";
+import FBSDK from 'react-native-fbsdk';
 const { LoginManager, AccessToken } = FBSDK;
 
 export type OpenFBLoginResult =
@@ -24,13 +24,13 @@ const getToken = (): Promise<?string> =>
 
 const openFBLogin = (): Promise<OpenFBLoginResult> =>
   LoginManager.logInWithReadPermissions([
-    "public_profile",
-    "email",
-    "user_friends"
+    'public_profile',
+    'email',
+    'user_friends'
   ]).then(result => {
     if (result.isCancelled) {
       return {
-        error: "User cancelled Facebook login"
+        error: 'User cancelled Facebook login'
       };
     }
     return AccessToken.getCurrentAccessToken().then(fbData => ({

@@ -1,25 +1,25 @@
-import React from "react";
-import { addNavigationHelpers, NavigationActions } from "react-navigation";
-import { createReduxBoundAddListener } from "react-navigation-redux-helpers";
-import { BackHandler, Linking } from "react-native";
-import { connect } from "react-redux";
-import { uriPrefix } from "../constants";
-import { RootNavigator } from "./index";
+import React from 'react';
+import { addNavigationHelpers, NavigationActions } from 'react-navigation';
+import { createReduxBoundAddListener } from 'react-navigation-redux-helpers';
+import { BackHandler, Linking } from 'react-native';
+import { connect } from 'react-redux';
+import { uriPrefix } from '../constants';
+import { RootNavigator } from './index';
 
-const addListener = createReduxBoundAddListener("root");
+const addListener = createReduxBoundAddListener('root');
 
 class AppNavigation extends React.Component {
   componentDidMount() {
-    BackHandler.addEventListener("hardwareBackPress", this.onBackPress);
-    Linking.addEventListener("url", ({ url }: { url: string }) => {
+    BackHandler.addEventListener('hardwareBackPress', this.onBackPress);
+    Linking.addEventListener('url', ({ url }: { url: string }) => {
       this.handleUrl(url);
     });
 
     Linking.getInitialURL().then((url: string) => url && this.handleUrl(url));
   }
   componentWillUnmount() {
-    BackHandler.removeEventListener("hardwareBackPress", this.onBackPress);
-    Linking.removeEventListener("url", this.handleOpenURL);
+    BackHandler.removeEventListener('hardwareBackPress', this.onBackPress);
+    Linking.removeEventListener('url', this.handleOpenURL);
   }
 
   handleUrl(url) {

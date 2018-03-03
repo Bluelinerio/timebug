@@ -1,4 +1,4 @@
-import t from "../components/templates";
+import t from '../components/templates';
 
 export default {
   1: {
@@ -34,7 +34,7 @@ export default {
                 /*error:'Think about 3-5 goals you would like to help this person with.'*/
               },
               supportPlan: {
-                label: "How do you plan to support them?",
+                label: 'How do you plan to support them?',
                 multiline: true
               }
             }
@@ -43,7 +43,7 @@ export default {
       }
     },
     value: {
-      id: "step6+v0.0.0.1"
+      id: 'step6+v0.0.0.1'
     }
   }
 };

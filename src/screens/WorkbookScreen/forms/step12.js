@@ -1,5 +1,5 @@
-import t from "../components/templates";
-import { MajorLifeEvents, TimeShift, IncreaseDecrease } from "./contents";
+import t from '../components/templates';
+import { MajorLifeEvents, TimeShift, IncreaseDecrease } from './contents';
 
 export default {
   1: {
@@ -14,7 +14,7 @@ export default {
       )
     }),
     options: {
-      label: "What MLEs happened to you over the past 5 years?",
+      label: 'What MLEs happened to you over the past 5 years?',
 
       fields: {
         id: {
@@ -25,15 +25,15 @@ export default {
             fields: {
               postiveOrNegative: {
                 label:
-                  "How did those MLEs factor in – positively and negatively – to your goals over the past 5 years?"
+                  'How did those MLEs factor in – positively and negatively – to your goals over the past 5 years?'
               },
               majorLifeEvent: {
-                label: "Major Life Event"
+                label: 'Major Life Event'
                 //error:'Please select a Major Life Event'
               },
               increaseDecrease: {
                 label:
-                  "Did this MLE increase, decrease or do nothing to your Internal Energy Production?"
+                  'Did this MLE increase, decrease or do nothing to your Internal Energy Production?'
               }
             }
           },
@@ -47,7 +47,7 @@ export default {
     },
     value: {
       fields: {
-        id: "step12+v0.0.0.1"
+        id: 'step12+v0.0.0.1'
       }
     }
   }

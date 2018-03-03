@@ -1,5 +1,5 @@
-import { StatusBar } from "react-native";
-import { NavigationActions, StateUtils } from "react-navigation";
+import { StatusBar } from 'react-native';
+import { NavigationActions, StateUtils } from 'react-navigation';
 //https://github.com/react-navigation/react-navigation
 // BACK,
 // INIT,

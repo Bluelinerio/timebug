@@ -1,5 +1,5 @@
 // @flow
-import * as React from "react";
+import * as React from 'react';
 import {
   View,
   Image,
@@ -7,16 +7,16 @@ import {
   Dimensions,
   StatusBar,
   Platform
-} from "react-native";
-import { SafeAreaView } from "react-navigation";
-import Swiper from "react-native-swiper";
-import LinearGradient from "react-native-linear-gradient";
+} from 'react-native';
+import { SafeAreaView } from 'react-navigation';
+import Swiper from 'react-native-swiper';
+import LinearGradient from 'react-native-linear-gradient';
 
-import type { Slide } from "../../services/cms";
-import Theme from "./components/Theme";
-import Text from "./components/Text";
-import Button from "./components/Button";
-import type { ScreenProps } from "./components/Types";
+import type { Slide } from '../../services/cms';
+import Theme from './components/Theme';
+import Text from './components/Text';
+import Button from './components/Button';
+import type { ScreenProps } from './components/Types';
 
 type Props = ScreenProps & {
   slides: [Slide],
@@ -30,7 +30,7 @@ export default class Walkthrough extends React.Component<Props> {
   renderSlide = (slide: Slide, index: number) => (
     <LinearGradient
       key={index}
-      colors={["#008EBC", "#005587"]}
+      colors={['#008EBC', '#005587']}
       style={
         (StyleSheet.absoluteFillObject,
         {
@@ -41,7 +41,7 @@ export default class Walkthrough extends React.Component<Props> {
       <StatusBar
         translucent
         barStyle="light-content"
-        backgroundColor={"transparent"}
+        backgroundColor={'transparent'}
       />
       <SafeAreaView>
         <View style={styles.slide}>
@@ -90,9 +90,9 @@ export default class Walkthrough extends React.Component<Props> {
     const rightButtonOnPress = isLast ? dismiss : goForward;
     return (
       <View style={styles.footer}>
-        <Button label={isFirst ? "Close" : "Back"} onPress={leftButtoOnPress} />
+        <Button label={isFirst ? 'Close' : 'Back'} onPress={leftButtoOnPress} />
         <Button
-          label={isLast ? "Start" : "Next"}
+          label={isLast ? 'Start' : 'Next'}
           onPress={rightButtonOnPress}
           primary={true}
           transparent={true}
@@ -102,8 +102,8 @@ export default class Walkthrough extends React.Component<Props> {
   };
 }
 
-const height = Dimensions.get("window").height;
-const width = Dimensions.get("window").width;
+const height = Dimensions.get('window').height;
+const width = Dimensions.get('window').width;
 const baseSpacing = Math.floor(width * 0.06);
 const largeVerticalSpacing = Math.floor(height * 0.06);
 
@@ -112,8 +112,8 @@ const styles = StyleSheet.create({
     flex: 1
   },
   footer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     marginHorizontal: baseSpacing
   },
   slide: {
@@ -122,69 +122,69 @@ const styles = StyleSheet.create({
     flexGrow: 1
   },
   slideImage: {
-    justifyContent: "center",
-    alignItems: "center",
-    position: "absolute",
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute',
     bottom: 60,
     left: 0,
     right: 0
   },
   fullHeightView: {
-    height: Dimensions.get("window").height
+    height: Dimensions.get('window').height
   },
   title: {
     marginTop: largeVerticalSpacing,
-    color: "white"
+    color: 'white'
   },
   description: {
     marginTop: largeVerticalSpacing,
-    color: "white"
+    color: 'white'
   }
 });
 
 const theme = {
   ...Theme,
   typography: {
-    color: "#666666",
-    bold: "Helvetica-Bold",
-    semibold: "Helvetica",
-    normal: "Helvetica-Medium",
-    light: "Helvetica-Light",
+    color: '#666666',
+    bold: 'Helvetica-Bold',
+    semibold: 'Helvetica',
+    normal: 'Helvetica-Medium',
+    light: 'Helvetica-Light',
     header1: {
       fontSize: 48,
       lineHeight: 58,
-      fontFamily: "Helvetica"
+      fontFamily: 'Helvetica'
     },
     header2: {
       fontSize: Math.ceil(height * 0.04),
       lineHeight: 43,
-      fontFamily: "Helvetica-Bold"
+      fontFamily: 'Helvetica-Bold'
     },
     header3: {
       fontSize: Math.ceil(height * 0.027),
       lineHeight: 28, //standard
-      fontFamily: "HelveticaNeue",
-      fontWeight: "bold"
+      fontFamily: 'HelveticaNeue',
+      fontWeight: 'bold'
     },
     large: {
       fontSize: 14,
       lineHeight: 21,
-      fontFamily: "Helvetica"
+      fontFamily: 'Helvetica'
     },
     regular: {
       fontSize: 14,
       lineHeight: 21,
-      fontFamily: "Helvetica"
+      fontFamily: 'Helvetica'
     },
     small: {
       fontSize: 14,
       lineHeight: 18,
-      fontFamily: "Helvetica"
+      fontFamily: 'Helvetica'
     },
     micro: {
       fontSize: 8,
       lineHeight: 8,
-      fontFamily: "Helvetica"
+      fontFamily: 'Helvetica'
     }
   },
   spacing: {

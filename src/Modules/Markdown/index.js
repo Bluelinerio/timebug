@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   TouchableOpacity,
   Text,
@@ -7,11 +7,11 @@ import {
   Image,
   Linking,
   StyleSheet
-} from "react-native";
-import SimpleMarkdown from "simple-markdown";
+} from 'react-native';
+import SimpleMarkdown from 'simple-markdown';
 
-import styles from "./styles";
-import Utils from "./Utils";
+import styles from './styles';
+import Utils from './Utils';
 
 class Markdown extends Component {
   static propTypes = {
@@ -37,9 +37,9 @@ class Markdown extends Component {
     const rules = SimpleMarkdown.defaultRules;
     this.parser = SimpleMarkdown.parserFor(rules);
     this.reactOutput = SimpleMarkdown.reactFor(
-      SimpleMarkdown.ruleOutput(rules, "react")
+      SimpleMarkdown.ruleOutput(rules, 'react')
     );
-    const blockSource = this.props.children + "\n\n";
+    const blockSource = this.props.children + '\n\n';
     const parseTree = this.parser(blockSource, {
       inline: this.props.parseInline
     });
@@ -60,7 +60,7 @@ class Markdown extends Component {
     let newState = {};
 
     if (nextProps.children !== this.props.children) {
-      const blockSource = nextProps.children + "\n\n";
+      const blockSource = nextProps.children + '\n\n';
       const parseTree = this.parser(blockSource, {
         inline: this.props.parseInline
       });
@@ -100,7 +100,7 @@ class Markdown extends Component {
     }
 
     return (
-      <View style={styles.imageWrapper} key={"imageWrapper_" + key}>
+      <View style={styles.imageWrapper} key={'imageWrapper_' + key}>
         <Image source={{ uri: node.props.src }} style={styles.image} />
       </View>
     );
@@ -110,7 +110,7 @@ class Markdown extends Component {
     const { styles } = this.state;
 
     return (
-      <View key={"list_" + key} style={styles.list}>
+      <View key={'list_' + key} style={styles.list}>
         {this.renderNodes(node.props.children, key, { ordered })}
       </View>
     );
@@ -121,13 +121,13 @@ class Markdown extends Component {
 
     if (ordered) {
       return (
-        <Text key={"listBullet_" + index} style={styles.listItemNumber}>
-          {index + 1 + "."}
+        <Text key={'listBullet_' + index} style={styles.listItemNumber}>
+          {index + 1 + '.'}
         </Text>
       );
     }
 
-    return <View key={"listBullet_" + index} style={styles.listItemBullet} />;
+    return <View key={'listBullet_' + index} style={styles.listItemBullet} />;
   }
 
   renderListItem(node, key, index, extras) {
@@ -137,12 +137,12 @@ class Markdown extends Component {
 
     if (Utils.isTextOnly(children)) {
       return (
-        <View style={styles.listItem} key={"listItem_" + key}>
+        <View style={styles.listItem} key={'listItem_' + key}>
           {this.props.renderListBullet
             ? this.props.renderListBullet(extras.ordered, index)
             : this.renderListBullet(extras.ordered, index)}
           <Text
-            key={"listItemContent_" + key}
+            key={'listItemContent_' + key}
             style={[styles.listItemContent, styles.listItemTextContent]}
           >
             {children}
@@ -151,11 +151,11 @@ class Markdown extends Component {
       );
     } else {
       return (
-        <View style={styles.listItem} key={"listItem_" + key}>
+        <View style={styles.listItem} key={'listItem_' + key}>
           {this.props.renderListBullet
             ? this.props.renderListBullet(extras.ordered, index)
             : this.renderListBullet(extras.ordered, index)}
-          <View key={"listItemContent_" + key} style={styles.listItemContent}>
+          <View key={'listItemContent_' + key} style={styles.listItemContent}>
             {children}
           </View>
         </View>
@@ -196,7 +196,7 @@ class Markdown extends Component {
     return (
       <TouchableOpacity
         style={styles.linkWrapper}
-        key={"linkWrapper_" + key}
+        key={'linkWrapper_' + key}
         onPress={() => Linking.openURL(node.props.href).catch(() => {})}
       >
         {children}
@@ -231,7 +231,7 @@ class Markdown extends Component {
         style.push(styles.blockQuote);
         return (
           <View
-            key={"blockQuote_" + key}
+            key={'blockQuote_' + key}
             style={[styles.block, styles.blockQuote]}
           >
             <Text>{nodes}</Text>
@@ -239,14 +239,14 @@ class Markdown extends Component {
         );
       } else {
         return (
-          <Text key={"block_" + key} style={styles.block}>
+          <Text key={'block_' + key} style={styles.block}>
             {nodes}
           </Text>
         );
       }
     } else {
       return (
-        <View key={"block_" + key} style={styles.block}>
+        <View key={'block_' + key} style={styles.block}>
           {nodes}
         </View>
       );
@@ -257,88 +257,88 @@ class Markdown extends Component {
     const { styles } = this.state;
 
     switch (node.type) {
-      case "h1":
+      case 'h1':
         return this.renderText(
           node,
           key,
           Utils.concatStyles(extras, styles.h1)
         );
-      case "h2":
+      case 'h2':
         return this.renderText(
           node,
           key,
           Utils.concatStyles(extras, styles.h2)
         );
-      case "h3":
+      case 'h3':
         return this.renderText(
           node,
           key,
           Utils.concatStyles(extras, styles.h3)
         );
-      case "h4":
+      case 'h4':
         return this.renderText(
           node,
           key,
           Utils.concatStyles(extras, styles.h4)
         );
-      case "h5":
+      case 'h5':
         return this.renderText(
           node,
           key,
           Utils.concatStyles(extras, styles.h5)
         );
-      case "h6":
+      case 'h6':
         return this.renderText(
           node,
           key,
           Utils.concatStyles(extras, styles.h6)
         );
-      case "div":
+      case 'div':
         return this.renderBlock(node, key, extras);
-      case "ul":
+      case 'ul':
         return this.renderList(node, key, false);
-      case "ol":
+      case 'ol':
         return this.renderList(node, key, true);
-      case "li":
+      case 'li':
         return this.renderListItem(node, key, index, extras);
-      case "a":
+      case 'a':
         return this.renderLink(node, key);
-      case "img":
+      case 'img':
         return this.renderImage(node, key);
-      case "strong":
+      case 'strong':
         return this.renderText(
           node,
           key,
           Utils.concatStyles(extras, styles.strong)
         );
-      case "del":
+      case 'del':
         return this.renderText(
           node,
           key,
           Utils.concatStyles(extras, styles.del)
         );
-      case "em":
+      case 'em':
         return this.renderText(
           node,
           key,
           Utils.concatStyles(extras, styles.em)
         );
-      case "u":
+      case 'u':
         return this.renderText(node, key, Utils.concatStyles(extras, styles.u));
-      case "blockquote":
+      case 'blockquote':
         return this.renderBlockQuote(node, key);
       case undefined:
         return this.renderText(node, key, extras);
       default:
         if (this.props.debug)
-          console.log("Node type " + node.type + " is not supported");
+          console.log('Node type ' + node.type + ' is not supported');
         return null;
     }
   }
 
   renderNodes(nodes, key, extras) {
     return nodes.map((node, index) => {
-      const newKey = key ? key + "_" + index : index + "";
+      const newKey = key ? key + '_' + index : index + '';
       return this.renderNode(node, newKey, index, extras);
     });
   }
@@ -347,7 +347,7 @@ class Markdown extends Component {
     let content = this.renderNodes(this.state.syntaxTree, null, null);
 
     if (this.props.debug) {
-      console.log("\n\n==== LOGGING NODE TREE ===");
+      console.log('\n\n==== LOGGING NODE TREE ===');
       Utils.logDebug(content);
     }
     //debugger;

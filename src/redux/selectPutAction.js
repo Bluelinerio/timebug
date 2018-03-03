@@ -1,4 +1,4 @@
-export const SELECT_PUT_ACTION = "SELECT_PUT_ACTION";
+export const SELECT_PUT_ACTION = 'SELECT_PUT_ACTION';
 export type SelectPutActionFnType = <T>(
   state: any
 ) => { type: string, payload: T };
@@ -18,7 +18,7 @@ export function selectPutAction(
   };
 }
 
-import { select, put, takeEvery } from "redux-saga/effects";
+import { select, put, takeEvery } from 'redux-saga/effects';
 
 function* execute(action: SelectPutActionType) {
   const { selectPut } = action.payload;

@@ -1,7 +1,7 @@
 // @flow
-import * as React from "react";
-import { View, Dimensions } from "react-native";
-import OnLayout from "./OnLayout";
+import * as React from 'react';
+import { View, Dimensions } from 'react-native';
+import OnLayout from './OnLayout';
 
 export type GridItemProps = {
   column: number,
@@ -50,7 +50,7 @@ export type GridProps = {
 const defaulSpacingRatio = 0.1;
 
 export default (props: GridProps) => {
-  const containerWidth = props.width || Dimensions.get("window").width;
+  const containerWidth = props.width || Dimensions.get('window').width;
 
   const tileWidth = containerWidth / props.columns;
   const spaceX = props.spaceX

@@ -1,12 +1,12 @@
-import * as React from "react";
-import Sound from "react-native-sound";
-import { View } from "react-native";
+import * as React from 'react';
+import Sound from 'react-native-sound';
+import { View } from 'react-native';
 
-const PENDING = "pending";
-const READY = "ready";
-const FAIL = "fail";
-const PLAYING = "playing";
-const FINISHED = "finished";
+const PENDING = 'pending';
+const READY = 'ready';
+const FAIL = 'fail';
+const PLAYING = 'playing';
+const FINISHED = 'finished';
 
 type Props = {
   renderOnReady: (() => void) => React.Element<any>, // not useing this

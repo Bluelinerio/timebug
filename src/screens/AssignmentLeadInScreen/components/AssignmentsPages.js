@@ -1,9 +1,9 @@
 // @flow
-import React, { Component, PureComponent } from "react";
-import { View } from "react-native";
-import { Pages } from "react-native-pages";
-import type { Assignment } from "../../../services/cms";
-import AssignmentLeadInPageComponent from "./AssignmentLeadInPageComponent";
+import React, { Component, PureComponent } from 'react';
+import { View } from 'react-native';
+import { Pages } from 'react-native-pages';
+import type { Assignment } from '../../../services/cms';
+import AssignmentLeadInPageComponent from './AssignmentLeadInPageComponent';
 
 export type Props = {
   assignments: [Assignment],

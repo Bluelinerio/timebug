@@ -1,5 +1,5 @@
-import t from "../components/templates";
-import { PillarsOfLife, InteractionFrequency } from "./contents";
+import t from '../components/templates';
+import { PillarsOfLife, InteractionFrequency } from './contents';
 
 export default {
   1: {
@@ -14,7 +14,7 @@ export default {
       )
     }),
     options: {
-      label: "Who is on your Board of Advisors?",
+      label: 'Who is on your Board of Advisors?',
       fields: {
         id: {
           hidden: true
@@ -23,15 +23,15 @@ export default {
           item: {
             fields: {
               boardMember: {
-                auto: "labels"
+                auto: 'labels'
                 //error: "Think about someone who's advice you would value regarding big decisions"
               },
               pillarsOfLife: {
-                auto: "labels"
+                auto: 'labels'
                 //error: 'Assign this person to one of the 7 Timebug Life Categories'
               },
               interactionFrequency: {
-                auto: "labels"
+                auto: 'labels'
                 //error: "How often do you interact with this person?"
               }
             }
@@ -46,7 +46,7 @@ export default {
     },
     value: {
       fields: {
-        id: "step4+v0.0.0.1"
+        id: 'step4+v0.0.0.1'
       }
     }
   },
@@ -61,7 +61,7 @@ export default {
     }),
     options: {
       label:
-        "List any current or potential support groups and meetups, formal or informal, that are a source of positive energy for you, in one or more domains of life.",
+        'List any current or potential support groups and meetups, formal or informal, that are a source of positive energy for you, in one or more domains of life.',
       fields: {
         supportGroups: {
           disableOrder: true,
@@ -72,11 +72,11 @@ export default {
           item: {
             fields: {
               supportGroup: {
-                auto: "labels"
+                auto: 'labels'
                 //error: "Please enter the name of a support group"
               },
               pillarsOfLife: {
-                auto: "labels"
+                auto: 'labels'
                 //error: "Please select a Life Category."
               }
             }

@@ -1,9 +1,9 @@
 // @flow
 
-import React, { Component } from "react";
-import { View, StyleSheet } from "react-native";
-import type { LayoutStyle, ColorValue } from "react-native";
-import LinearGradient from "react-native-linear-gradient";
+import React, { Component } from 'react';
+import { View, StyleSheet } from 'react-native';
+import type { LayoutStyle, ColorValue } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 
 export type GradientBackgroundProps = {
   style: {
@@ -23,8 +23,8 @@ const GradientWithTwoColors = (props: GradientBackgroundProps) => (
 );
 
 GradientWithTwoColors.defaultProps = {
-  gradientTopColor: "#79bddd",
-  gradientBottomColor: "white",
+  gradientTopColor: '#79bddd',
+  gradientBottomColor: 'white',
   opacity: 1
 };
 

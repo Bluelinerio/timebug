@@ -1,5 +1,5 @@
-import * as React from "react";
-import { View } from "react-native";
+import * as React from 'react';
+import { View } from 'react-native';
 
 type Layout = {
   x: number,
@@ -31,7 +31,7 @@ export default class OnLayout extends React.Component<
     const { layout } = this.state;
     return (
       <View
-        style={{ flex: 1, alignSelf: "stretch" }}
+        style={{ flex: 1, alignSelf: 'stretch' }}
         {...props}
         onLayout={this.onLayout}
       >

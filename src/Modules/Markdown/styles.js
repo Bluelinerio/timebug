@@ -1,13 +1,13 @@
 const defaultStyles = {
   block: {
     marginBottom: 10,
-    flexWrap: "wrap",
-    flexDirection: "row"
+    flexWrap: 'wrap',
+    flexDirection: 'row'
   },
   blockQuote: {
     borderLeftWidth: 5,
-    borderLeftColor: "#aaaaaa",
-    backgroundColor: "#cccccc",
+    borderLeftColor: '#aaaaaa',
+    backgroundColor: '#cccccc',
     paddingLeft: 10
   },
   h1: {
@@ -41,46 +41,46 @@ const defaultStyles = {
     marginBottom: 6
   },
   text: {
-    alignSelf: "flex-start"
+    alignSelf: 'flex-start'
   },
   strong: {
-    fontWeight: "bold"
+    fontWeight: 'bold'
   },
   em: {
-    fontStyle: "italic"
+    fontStyle: 'italic'
   },
   del: {
-    textDecorationLine: "line-through"
+    textDecorationLine: 'line-through'
   },
   u: {
-    textDecorationLine: "underline"
+    textDecorationLine: 'underline'
   },
   linkWrapper: {
-    alignSelf: "flex-start"
+    alignSelf: 'flex-start'
   },
   link: {
-    textDecorationLine: "underline",
-    alignSelf: "flex-start"
+    textDecorationLine: 'underline',
+    alignSelf: 'flex-start'
   },
   list: {
     marginBottom: 20
   },
   listItem: {
-    flexDirection: "row",
-    justifyContent: "flex-start",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
     marginVertical: 5
   },
   listItemContent: {
-    flexDirection: "row",
-    justifyContent: "flex-start",
-    alignItems: "flex-start"
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start'
   },
   listItemTextContent: {},
   listItemBullet: {
     width: 4,
     height: 4,
-    backgroundColor: "black",
+    backgroundColor: 'black',
     borderRadius: 2,
     marginRight: 10
   },
@@ -89,8 +89,8 @@ const defaultStyles = {
   },
   imageWrapper: {
     flex: 1,
-    flexDirection: "row",
-    justifyContent: "flex-start"
+    flexDirection: 'row',
+    justifyContent: 'flex-start'
   },
   image: {
     flex: 1,

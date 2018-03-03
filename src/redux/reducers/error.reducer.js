@@ -11,7 +11,7 @@ type ErrorAction = {
 
 const initialState: ErrorState = {
   isError: false,
-  message: ""
+  message: ''
 };
 
 export default function(state: ErrorState = initialState, action: ErrorAction) {

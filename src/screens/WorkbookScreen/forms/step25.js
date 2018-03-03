@@ -1,5 +1,5 @@
-import t from "../components/templates";
-import { OneToTenScale } from "./contents";
+import t from '../components/templates';
+import { OneToTenScale } from './contents';
 
 export default {
   1: {
@@ -10,25 +10,25 @@ export default {
       meditateAnswer: t.Boolean
     }),
     options: {
-      label: "20/20 Life Vision Check-in",
+      label: '20/20 Life Vision Check-in',
       fields: {
         id: {
           hidden: true
         },
         mantraAnswer: {
-          label: "Did you do your mantra today (assigned on Day 21)?"
+          label: 'Did you do your mantra today (assigned on Day 21)?'
         },
         exerciseAnswer: {
-          label: "Did you exercise and meditate yet today(assigned on Day 8)?"
+          label: 'Did you exercise and meditate yet today(assigned on Day 8)?'
         },
         meditateAnswer: {
-          label: "Did you MEDITATE yet today(assigned on Day 8)?"
+          label: 'Did you MEDITATE yet today(assigned on Day 8)?'
         }
       }
     },
     value: {
       fields: {
-        id: "step25+v0.0.0.1"
+        id: 'step25+v0.0.0.1'
       }
     }
   },
@@ -43,21 +43,21 @@ export default {
       )
     }),
     options: {
-      label: "What activity and hobby goals will you achieve 5 years from now?",
+      label: 'What activity and hobby goals will you achieve 5 years from now?',
       fields: {
         goals: {
           item: {
             fields: {
               goal: {
-                label: "Goal"
+                label: 'Goal'
               },
               importanceLevel: {
-                label: "Prioritize the item",
-                help: "1 = the most important, 2 = second most important etc."
+                label: 'Prioritize the item',
+                help: '1 = the most important, 2 = second most important etc.'
               },
               timeSpent: {
                 label:
-                  "How many hours per month do you plan to spend, on average, on this activity?"
+                  'How many hours per month do you plan to spend, on average, on this activity?'
               }
             }
           }
@@ -72,19 +72,19 @@ export default {
       howWillYouHelp: t.String
     }),
     options: {
-      label: "Vision Creation:Aims and Hobbies",
+      label: 'Vision Creation:Aims and Hobbies',
       fields: {
         areasCutDown: {
           label:
-            "Which areas in your personal time will you cut down on or out completely?"
+            'Which areas in your personal time will you cut down on or out completely?'
         },
         whoToHelp: {
           label:
-            "Who do you want to see enjoy more time for themselves, doing the things that you know would make them happy?"
+            'Who do you want to see enjoy more time for themselves, doing the things that you know would make them happy?'
         },
         howWillYouHelp: {
           label:
-            "How will you help them attain those personal goals 5 years from now?",
+            'How will you help them attain those personal goals 5 years from now?',
           multiline: true
         }
       }
@@ -98,7 +98,7 @@ export default {
       howHelpOthers: t.String
     }),
     options: {
-      label: "Vision Creation:Aims and Hobbies",
+      label: 'Vision Creation:Aims and Hobbies',
       fields: {
         oneWish: {
           label:
@@ -106,15 +106,15 @@ export default {
         },
         whatAdvice: {
           label:
-            "What advice would you give people who are on board with your wish- how can we all work together towards this aim in our personal lives?"
+            'What advice would you give people who are on board with your wish- how can we all work together towards this aim in our personal lives?'
         },
         howHelpWorld: {
           label:
-            "How can you help encourage others to help actualize this world goal?"
+            'How can you help encourage others to help actualize this world goal?'
         },
         howHelpOthers: {
           label:
-            "How can you help, be it in any small way, to see this goal be achieved?"
+            'How can you help, be it in any small way, to see this goal be achieved?'
         }
       }
     }

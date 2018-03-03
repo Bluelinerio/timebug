@@ -1,5 +1,5 @@
 // @flow
-import { call, cancelled as cancelledSaga, put } from "redux-saga/effects";
+import { call, cancelled as cancelledSaga, put } from 'redux-saga/effects';
 
 /**
  * request can be used to call a promise in a saga and have events

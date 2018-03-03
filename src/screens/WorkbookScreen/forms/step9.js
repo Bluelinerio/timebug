@@ -1,5 +1,5 @@
-import t from "../components/templates";
-import { PillarsOfLife, InteractionFrequency } from "./contents";
+import t from '../components/templates';
+import { PillarsOfLife, InteractionFrequency } from './contents';
 
 export default {
   1: {
@@ -15,7 +15,7 @@ export default {
       )
     }),
     options: {
-      label: "Who are your current role models?",
+      label: 'Who are your current role models?',
 
       fields: {
         id: {
@@ -26,22 +26,22 @@ export default {
           item: {
             fields: {
               roleModel: {
-                auto: "labels"
+                auto: 'labels'
                 //  error:'Please enter the name of a Role Model.'
               },
               pillarsOfLife: {
                 label:
-                  "Which of the 7 Pillars of Life does he/she primarily influence?"
+                  'Which of the 7 Pillars of Life does he/she primarily influence?'
                 //error: 'Please select a Life Category.'
               },
               interactionFrequency: {
                 label:
-                  "To what degree do you know and interact with this Advisor personally?"
+                  'To what degree do you know and interact with this Advisor personally?'
                 //error: 'How often do you interact with this person?'
               },
               why: {
                 label:
-                  "Why do you look up to this Advisor? What do you want to learn from them?",
+                  'Why do you look up to this Advisor? What do you want to learn from them?',
                 multiline: true
                 //error:'Why would this person make a good role model for you?'
               }
@@ -57,7 +57,7 @@ export default {
     },
     value: {
       fields: {
-        id: "step9+v0.0.0.1"
+        id: 'step9+v0.0.0.1'
       }
     }
   }

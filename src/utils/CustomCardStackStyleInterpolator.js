@@ -1,12 +1,12 @@
 /* @flow */
 
-import { I18nManager } from "react-native";
+import { I18nManager } from 'react-native';
 
 import type {
   NavigationSceneRendererProps,
   NavigationScene,
   AnimatedViewStyleProp
-} from "react-navigation/src/TypeDefinition";
+} from 'react-navigation/src/TypeDefinition';
 
 /**
  * Utility that builds the style for the card in the cards stack.

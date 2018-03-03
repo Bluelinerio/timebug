@@ -1,7 +1,7 @@
 // @flow
-import React from "react";
-import { Animated, Text, View } from "react-native";
-import styles from "../styles";
+import React from 'react';
+import { Animated, Text, View } from 'react-native';
+import styles from '../styles';
 
 const CicleWidth = 32;
 

@@ -1,11 +1,11 @@
 // @flow
-import * as React from "react";
-import { StyleSheet } from "react-native";
-import { Button as NBButton, Text } from "native-base";
+import * as React from 'react';
+import { StyleSheet } from 'react-native';
+import { Button as NBButton, Text } from 'native-base';
 
-import { Theme } from "./Theme";
+import { Theme } from './Theme';
 
-import type { BaseProps } from "./Types";
+import type { BaseProps } from './Types';
 
 type ButtonProps = BaseProps & {
   label: string,
@@ -49,9 +49,9 @@ export default class Button extends React.Component<ButtonProps> {
             primary ? Theme.typography.large : Theme.typography.regular,
             {
               color: disabled
-                ? "transparent"
+                ? 'transparent'
                 : primary
-                  ? transparent ? Theme.palette.primary : "white"
+                  ? transparent ? Theme.palette.primary : 'white'
                   : Theme.typography.color,
               fontSize: primary ? 16 : Theme.typography.regular.fontSize,
               fontFamily: Theme.typography.semibold
@@ -68,7 +68,7 @@ export default class Button extends React.Component<ButtonProps> {
 const styles = StyleSheet.create({
   base: {},
   primary: {
-    shadowColor: "rgba(0, 170, 255, 0.29)",
+    shadowColor: 'rgba(0, 170, 255, 0.29)',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 1,
     shadowRadius: 7

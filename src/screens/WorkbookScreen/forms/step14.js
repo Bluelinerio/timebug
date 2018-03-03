@@ -1,4 +1,4 @@
-import t from "../components/templates";
+import t from '../components/templates';
 
 import {
   WhereStandToday,
@@ -9,7 +9,7 @@ import {
   SatisfactionFromCurrentResult,
   CreditScoreChange,
   OneToTenScale
-} from "./contents";
+} from './contents';
 
 export default {
   1: {
@@ -18,21 +18,21 @@ export default {
       emotion: t.list(Emotion)
     }),
     options: {
-      label: "Financial Assessment",
+      label: 'Financial Assessment',
       fields: {
         id: {
           hidden: true
         },
         emotion: {
           label:
-            "What emotions pop up when you think about your relationship with money? "
+            'What emotions pop up when you think about your relationship with money? '
           //error: 'Emotions are hard for some and easy for others. Just pick the first thing that comes to mind.'
         }
       }
     },
     value: {
       fields: {
-        id: "step14+v0.0.0.1",
+        id: 'step14+v0.0.0.1',
         othersView: true
       }
     }
@@ -44,15 +44,15 @@ export default {
     }),
     options: {
       label:
-        "In one or two sentences, describe your attitude towards money today",
+        'In one or two sentences, describe your attitude towards money today',
       fields: {
         selfView: {
-          auto: "none",
+          auto: 'none',
           multiline: true
         },
         othersView: {
           label:
-            "Knowing how others perceive your relationship with money could be helpful. Would you like to try engage someone to find out?"
+            'Knowing how others perceive your relationship with money could be helpful. Would you like to try engage someone to find out?'
         }
       }
     }
@@ -67,17 +67,17 @@ export default {
       effort: EffortEvaluation
     }),
     options: {
-      label: "Credit score",
+      label: 'Credit score',
       fields: {
         today: {
-          label: "What is your credit score?"
+          label: 'What is your credit score?'
         },
         creditScoreChange: {
-          label: "Has your credit score changed over the past year?"
+          label: 'Has your credit score changed over the past year?'
         },
         aYearAgo: {
-          label: "What was your credit score one year ago today?",
-          error: "Choose one"
+          label: 'What was your credit score one year ago today?',
+          error: 'Choose one'
         }
       }
     }
@@ -88,15 +88,15 @@ export default {
       biggestDissapointment: t.String
     }),
     options: {
-      label: "Financial Achievements",
+      label: 'Financial Achievements',
       fields: {
         bestAchievement: {
           label:
-            "What was your biggest financial achievement over the past 5 years?"
+            'What was your biggest financial achievement over the past 5 years?'
           //error: 'Write a sentence or two describing your biggest success'
         },
         biggestDissapointment: {
-          label: "What was your biggest dissapointment over the past 5 years?"
+          label: 'What was your biggest dissapointment over the past 5 years?'
           //error: 'Can you sum it up in a word or two?'
         }
       }
@@ -110,19 +110,19 @@ export default {
     }),
 
     options: {
-      label: "Where do you stand today?",
+      label: 'Where do you stand today?',
       fields: {
         whereStandToday: {
           label:
-            "Where do you stand today compared to what you had envisioned for yourself?"
+            'Where do you stand today compared to what you had envisioned for yourself?'
         },
         profitLossFeelings: {
           label:
-            "Do you have a Profit and Loss Statement? If so, how do you feel about it?",
-          help: "1=Not at all happy, 10=Extremely happy"
+            'Do you have a Profit and Loss Statement? If so, how do you feel about it?',
+          help: '1=Not at all happy, 10=Extremely happy'
         },
         balanceSheetChange: {
-          label: "How does it compare to a balance sheet from previous years?"
+          label: 'How does it compare to a balance sheet from previous years?'
         }
       }
     }

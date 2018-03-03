@@ -1,5 +1,5 @@
-import t from "../components/templates";
-import { TimeSpent, SpiritualViews, SpiritualPractices } from "./contents";
+import t from '../components/templates';
+import { TimeSpent, SpiritualViews, SpiritualPractices } from './contents';
 
 export default {
   1: {
@@ -13,24 +13,24 @@ export default {
       )
     }),
     options: {
-      label: "Spirituality Assessment",
+      label: 'Spirituality Assessment',
       fields: {
         id: {
           hidden: true
         },
         spiritualViews: {
-          label: "What are your current views and feelings about spirituality?"
+          label: 'What are your current views and feelings about spirituality?'
         },
 
         spiritualInfluence: {
           field: {
             label:
-              "Who and what influenced your spiritual views early on in life?"
+              'Who and what influenced your spiritual views early on in life?'
           },
           item: {
             fields: {
               name: {
-                label: "Name"
+                label: 'Name'
               }
             }
           }
@@ -39,7 +39,7 @@ export default {
     },
     value: {
       fields: {
-        id: "step19+v0.0.0.1"
+        id: 'step19+v0.0.0.1'
       }
     }
   },
@@ -53,14 +53,14 @@ export default {
       )
     }),
     options: {
-      label: "Who are your current role models or mentors in this area? ",
+      label: 'Who are your current role models or mentors in this area? ',
 
       fields: {
         currentMentors: {
           item: {
             fields: {
               why: {
-                label: "Why do you admire their approach to and views on life? "
+                label: 'Why do you admire their approach to and views on life? '
               }
             }
           }
@@ -74,15 +74,15 @@ export default {
       spiritualityChanged: t.String
     }),
     options: {
-      label: "Spirituality Assessment",
+      label: 'Spirituality Assessment',
       fields: {
         timeSpentSpirutality: {
           label:
-            "How much time do you spend each week on spiritual practices, interactions, reading, writing, etc.?"
+            'How much time do you spend each week on spiritual practices, interactions, reading, writing, etc.?'
         },
         spiritualityChanged: {
           label:
-            "How have your Spiritual practices and/or beliefs changed over the past 5 years?"
+            'How have your Spiritual practices and/or beliefs changed over the past 5 years?'
         }
       }
     }
@@ -99,27 +99,27 @@ export default {
       })
     }),
     options: {
-      label: "Spirituality Assessment",
+      label: 'Spirituality Assessment',
       fields: {
         internalQualities: {
           label:
-            "What internal qualities(Iqs: Goal Type 4) have been influenced - positively or negatively - by Spiritual practices - or lack thereof?"
+            'What internal qualities(Iqs: Goal Type 4) have been influenced - positively or negatively - by Spiritual practices - or lack thereof?'
         },
         insights: {
           label:
-            "What insights did you pick up from your spirituality over the past 5 years?",
+            'What insights did you pick up from your spirituality over the past 5 years?',
           fields: {
             purposeOnEarth: {
-              label: "What Is My Purpose On Earth?"
+              label: 'What Is My Purpose On Earth?'
             },
             beyondOuterForm: {
-              label: "Beyond My Outer Form, What Am I?"
+              label: 'Beyond My Outer Form, What Am I?'
             },
             karma: {
-              label: "My Karma Has Shown Me..."
+              label: 'My Karma Has Shown Me...'
             },
             healedEmotionalWoundsFrom: {
-              label: "I have healed emotional wounds from..."
+              label: 'I have healed emotional wounds from...'
             }
           }
         }

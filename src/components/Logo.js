@@ -1,5 +1,5 @@
-import * as React from "react";
-import { Dimensions } from "react-native";
+import * as React from 'react';
+import { Dimensions } from 'react-native';
 import Svg, {
   Circle,
   Ellipse,
@@ -16,15 +16,15 @@ import Svg, {
   Use,
   Defs,
   Stop
-} from "react-native-svg";
+} from 'react-native-svg';
 
 export default ({
   width,
   height,
   style = {},
-  backgroundColor = "transparent",
-  shapeColor = "#FFFFFF",
-  circleColor = "#E4E4E459"
+  backgroundColor = 'transparent',
+  shapeColor = '#FFFFFF',
+  circleColor = '#E4E4E459'
 }) => (
   <Svg width={width || 1024} height={height || 1024} viewBox="0 0 1024 1024">
     <G id="2020-app-store-icon-(1024)">
@@ -39,7 +39,7 @@ export default ({
       <G
         id="Group"
         transform={{
-          translate: "153.000000, 47.000000"
+          translate: '153.000000, 47.000000'
         }}
       >
         <Path
@@ -49,7 +49,7 @@ export default ({
         />
         <G
           transform={{
-            translate: "8.000000, 0.000000"
+            translate: '8.000000, 0.000000'
           }}
           fill={shapeColor}
           id="Shape"

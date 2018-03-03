@@ -1,15 +1,15 @@
 // @flow
 
-import React, { Component } from "react";
-import { StyleSheet } from "react-native";
-import { connect } from "react-redux";
-import { withNavigation } from "react-navigation";
-import type { Step } from "../../../services/cms";
-import DefaultUserContainer from "../../../containers/DefaultUserContainer";
-import WorkbookDoneScreen from "../components/WorkbookDoneScreen";
-import type { Props } from "../components/WorkbookDoneScreen";
-import { restartStepAction, reset } from "../../../redux/actions/nav.actions";
-import selectors from "../../../redux/selectors";
+import React, { Component } from 'react';
+import { StyleSheet } from 'react-native';
+import { connect } from 'react-redux';
+import { withNavigation } from 'react-navigation';
+import type { Step } from '../../../services/cms';
+import DefaultUserContainer from '../../../containers/DefaultUserContainer';
+import WorkbookDoneScreen from '../components/WorkbookDoneScreen';
+import type { Props } from '../components/WorkbookDoneScreen';
+import { restartStepAction, reset } from '../../../redux/actions/nav.actions';
+import selectors from '../../../redux/selectors';
 
 type FormMetaData = {
   uploading: boolean,
@@ -92,7 +92,7 @@ export default () => (
   <DefaultUserContainer
     renderWithUser={() => <WorkbookDoneContainer />}
     anonymousMessage={
-      "You need to be logged in to be able to do the exercises. Please go back and log in again."
+      'You need to be logged in to be able to do the exercises. Please go back and log in again.'
     }
   />
 );

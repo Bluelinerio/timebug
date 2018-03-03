@@ -1,15 +1,15 @@
 // @flow
-import PropTypes from "prop-types";
-import React, { Component } from "react";
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import {
   Modal,
   TouchableWithoutFeedback,
   View,
   Text,
   Picker
-} from "react-native";
+} from 'react-native';
 
-import styles from "./styles/PickerKeyboard.styles";
+import styles from './styles/PickerKeyboard.styles';
 
 type Props<T> = {
   onCancel: () => void,
@@ -71,7 +71,7 @@ class PickerKeyboard<T> extends Component<Props<T>, State<T>> {
     const { keyboardBackgroundColor, children } = this.props;
 
     return (
-      <Modal animationType={"slide"} transparent={true} visible={visible}>
+      <Modal animationType={'slide'} transparent={true} visible={visible}>
         <TouchableWithoutFeedback onPress={this.onCancelPress}>
           <View style={styles.container}>
             <View style={styles.modal}>

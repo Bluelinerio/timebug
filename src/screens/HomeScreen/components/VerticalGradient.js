@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import styles, { colors } from "../styles";
-import LinearGradient from "react-native-linear-gradient";
+import React, { Component } from 'react';
+import styles, { colors } from '../styles';
+import LinearGradient from 'react-native-linear-gradient';
 
 const StartEndGradient = ({
   colorStart = colors.startGradientColor,

@@ -1,15 +1,15 @@
 // @flow
-import * as React from "react";
-import { View } from "react-native";
-import { connect } from "react-redux";
-import { getUserState } from "../redux/rootReducer";
+import * as React from 'react';
+import { View } from 'react-native';
+import { connect } from 'react-redux';
+import { getUserState } from '../redux/rootReducer';
 import {
   UNDETERMINED,
   ANONYMOUS,
   AUTHENTICATING
-} from "../services/apollo/models";
-import selectors from "../redux/selectors";
-import { selectLimit } from "async";
+} from '../services/apollo/models';
+import selectors from '../redux/selectors';
+import { selectLimit } from 'async';
 
 type Props = {
   renderWithState: (
@@ -35,7 +35,7 @@ export default connect(mapStateToProps)(
     userState,
     ...rest
   }) => {
-    if (typeof userState === "string") {
+    if (typeof userState === 'string') {
       if (renderWithState) return renderWithState(userState);
       if (userState === UNDETERMINED && renderWithUndetermined)
         return renderWithUndetermined();
@@ -44,7 +44,7 @@ export default connect(mapStateToProps)(
       if (userState === AUTHENTICATING && renderWithAuthenticating)
         return renderWithAuthenticating();
     }
-    if (userState && typeof userState === "object" && renderWithUser)
+    if (userState && typeof userState === 'object' && renderWithUser)
       return renderWithUser(userState);
     return null;
   }

@@ -1,4 +1,4 @@
-import { white } from "../../../constants/colors";
+import { white } from '../../../constants/colors';
 
 const buttonHeight = 44;
 const marginHorizontal = 10;
@@ -15,9 +15,9 @@ const paddingHorizontal = {
 
 const style = {
   buttonContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
     marginBottom,
     paddingVertical: 4
   },
@@ -30,9 +30,9 @@ const style = {
   wideButton: {
     height: buttonHeight,
     borderRadius: buttonHeight,
-    alignSelf: "center",
-    justifyContent: "center",
-    overflow: "hidden",
+    alignSelf: 'center',
+    justifyContent: 'center',
+    overflow: 'hidden',
     marginHorizontal,
     minWidth: minWidthWide,
     paddingHorizontal: paddingHorizontal.wide
@@ -42,24 +42,24 @@ const style = {
     paddingHorizontal: paddingHorizontal.narrow
   },
   left: {
-    justifyContent: "flex-start",
+    justifyContent: 'flex-start',
     paddingHorizontal: paddingHorizontal.sides
   },
   right: {
-    justifyContent: "flex-end",
+    justifyContent: 'flex-end',
     paddingHorizontal: paddingHorizontal.sides
   },
   wideButtonText: {
-    fontFamily: "Metropolis",
-    fontWeight: "bold",
-    textAlign: "center",
+    fontFamily: 'Metropolis',
+    fontWeight: 'bold',
+    textAlign: 'center',
     fontSize: buttonTextSize,
     color: white
   },
   buttonGroup: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center"
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center'
   }
 };
 export default style;

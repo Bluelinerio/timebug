@@ -1,7 +1,7 @@
 // DEBOUNCING!
 // Fix for debouncing on the https://github.com/react-navigation/react-navigation/issues/271
 // working fix for debouncing:
-import { NavigationActions, StateUtils } from "react-navigation";
+import { NavigationActions, StateUtils } from 'react-navigation';
 
 export const fixDebounce = navigator =>
   (navigator.router.getStateForAction = navigateOnce(
@@ -19,7 +19,7 @@ export const navigateOnce = getStateForAction => (action, state) => {
 };
 
 // Official (but not working...)
-import deepDiffer from "react-native/lib/deepDiffer";
+import deepDiffer from 'react-native/lib/deepDiffer';
 
 export const getActiveRouteForState = navigationState =>
   navigationState.routes

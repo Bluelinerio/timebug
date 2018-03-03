@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   View,
   Text,
@@ -6,16 +6,16 @@ import {
   TouchableOpacity,
   Keyboard,
   Platform
-} from "react-native";
-import Icon from "react-native-vector-icons/MaterialIcons";
-import styles from "../../styles/templates";
-import FormPages from "../FormPages";
+} from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import styles from '../../styles/templates';
+import FormPages from '../FormPages';
 
 const renderRowWithoutButtons = ({ key, input }) => (
   <View
     style={{
       flex: 1,
-      justifyContent: "center",
+      justifyContent: 'center',
       marginVertical: 10
     }}
     key={key}
@@ -117,7 +117,7 @@ export default class FormList extends React.Component {
       pages < (maxLines || 10) && (add && add.type && add.click)
         ? renderRowAddButton({
             key: add.type,
-            text: pages === 0 ? "Create First" : `(${items.length})`,
+            text: pages === 0 ? 'Create First' : `(${items.length})`,
             onPress: () => {
               add.click();
               this.setState({

@@ -12,12 +12,12 @@
 // Copied from https://github.com/react-native-training/react-native-elements/blob/cd3c2f053fd7ef7bbc1a449082a3a4d5db498924/src/helpers/normalizeText.js
 // by amosel
 
-const React = require("react-native"); // eslint-disable-line no-undef
+const React = require('react-native'); // eslint-disable-line no-undef
 const { PixelRatio, Dimensions } = React;
 
 const pixelRatio = PixelRatio.get();
-const deviceHeight = Dimensions.get("window").height;
-const deviceWidth = Dimensions.get("window").width;
+const deviceHeight = Dimensions.get('window').height;
+const deviceWidth = Dimensions.get('window').width;
 
 // -- Testing Only --
 // const fontScale = PixelRatio.getFontScale();

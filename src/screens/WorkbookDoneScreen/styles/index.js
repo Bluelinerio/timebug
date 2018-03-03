@@ -1,5 +1,5 @@
-import { StyleSheet, Platform } from "react-native";
-import { lightBlue } from "../../../constants/colors";
+import { StyleSheet, Platform } from 'react-native';
+import { lightBlue } from '../../../constants/colors';
 import {
   human,
   systemWeights,
@@ -8,39 +8,39 @@ import {
   material,
   sanFranciscoWeights,
   robotoWeights
-} from "react-native-typography";
+} from 'react-native-typography';
 
 export default StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "space-between"
+    alignItems: 'center',
+    justifyContent: 'space-between'
   },
   timerContainer: {
     flex: 0,
-    flexDirection: "row"
+    flexDirection: 'row'
   },
   messageContainer: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     top: 100
   },
   text: {
-    color: "#000000",
+    color: '#000000',
     fontSize: 10,
-    fontWeight: "bold"
+    fontWeight: 'bold'
   },
   absoluteContainer: {
     flex: 1,
-    flexDirection: "row",
-    alignItems: "flex-end",
+    flexDirection: 'row',
+    alignItems: 'flex-end',
     marginBottom: 30
   },
   currentStep: {
-    fontFamily: "Helvetica",
+    fontFamily: 'Helvetica',
     fontSize: 40,
-    fontWeight: "bold"
+    fontWeight: 'bold'
   },
   buttonImage: {
     width: 11.5,
@@ -49,11 +49,11 @@ export default StyleSheet.create({
     marginTop: 2
   },
   durationText: {
-    fontFamily: "Helvetica",
+    fontFamily: 'Helvetica',
     fontSize: 12,
-    fontWeight: "bold",
-    textAlign: "center",
-    alignSelf: "flex-end"
+    fontWeight: 'bold',
+    textAlign: 'center',
+    alignSelf: 'flex-end'
   },
   textColor: {
     color: lightBlue
@@ -107,13 +107,13 @@ export default StyleSheet.create({
         //...human.largeTitleObject,
       }
     }),
-    textAlign: "center"
+    textAlign: 'center'
   },
   title: iOSUIKit.largeTitleEmphasizedObject,
   messageText: {
-    fontFamily: "Helvetica",
+    fontFamily: 'Helvetica',
     fontSize: 20,
-    fontWeight: "300",
-    textAlign: "center"
+    fontWeight: '300',
+    textAlign: 'center'
   }
 });

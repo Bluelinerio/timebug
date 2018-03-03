@@ -1,7 +1,7 @@
 // @flow
-import React from "react";
-import { HeaderBackButton, NavigationActions } from "react-navigation";
-import screen from "./containers/WorkbookScreenContainer";
+import React from 'react';
+import { HeaderBackButton, NavigationActions } from 'react-navigation';
+import screen from './containers/WorkbookScreenContainer';
 
 screen.navigationOptions = ({
   navigation: { dispatch, state: { key, params } }
@@ -12,7 +12,7 @@ screen.navigationOptions = ({
     headerStyle: {
       backgroundColor: stepColor
     },
-    headerTintColor: "white",
+    headerTintColor: 'white',
     headerLeft: (
       <HeaderBackButton
         tintColor="white"

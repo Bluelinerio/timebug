@@ -1,10 +1,10 @@
-import t from "../components/templates";
+import t from '../components/templates';
 import {
   PillarsOfLife,
   Strengths,
   PercentSelector,
   OneToTenScale
-} from "./contents";
+} from './contents';
 
 export default {
   1: {
@@ -20,7 +20,7 @@ export default {
       )
     }),
     options: {
-      label: "Imagine different areas of your garden.",
+      label: 'Imagine different areas of your garden.',
 
       fields: {
         id: {
@@ -30,19 +30,19 @@ export default {
           item: {
             fields: {
               areaOfGarden: {
-                auto: "labels"
+                auto: 'labels'
               },
               selfInfluence: {
                 label:
-                  "What percentage of the seeds in this garden were planted by you?"
+                  'What percentage of the seeds in this garden were planted by you?'
               },
               otherInfluence: {
                 label:
-                  "What percentage of the seeds in this garden were planted by someone else?"
+                  'What percentage of the seeds in this garden were planted by someone else?'
               },
               nameOfOther: {
                 label:
-                  "Who planted most of the seeds in your garden over the course of your life? "
+                  'Who planted most of the seeds in your garden over the course of your life? '
               }
             }
           }
@@ -51,7 +51,7 @@ export default {
     },
     value: {
       fields: {
-        id: "step21+v0.0.0.2"
+        id: 'step21+v0.0.0.2'
       }
     }
   },
@@ -61,8 +61,8 @@ export default {
     }),
     options: {
       label:
-        "Are you committed to taking full ownership of your life garden going forward?",
-      auto: "none"
+        'Are you committed to taking full ownership of your life garden going forward?',
+      auto: 'none'
     }
   },
   3: {
@@ -100,27 +100,27 @@ export default {
     }),
     options: {
       label:
-        "Think about how strong your current tools(skills,approach,etc) are for tending to your garden - Strengths & Weaknesses from Day 3 is a useful review.",
+        'Think about how strong your current tools(skills,approach,etc) are for tending to your garden - Strengths & Weaknesses from Day 3 is a useful review.',
       fields: {
         skills: {
           item: {
             fields: {
               skill: {
-                label: "Skill",
-                error: "Please select a Charachter Strength."
+                label: 'Skill',
+                error: 'Please select a Charachter Strength.'
               },
               proficiencyLevel: {
-                label: "Proficiency Level",
-                error: "Please select a value.",
-                help: "Using a 10pt Scale with 1=beginner to 10=master"
+                label: 'Proficiency Level',
+                error: 'Please select a value.',
+                help: 'Using a 10pt Scale with 1=beginner to 10=master'
               },
               aspirationLevel: {
-                label: "Aspiration level in 2020",
-                error: "Please select a value."
+                label: 'Aspiration level in 2020',
+                error: 'Please select a value.'
               },
               improvements: {
                 label:
-                  "What improvements needs to happen for you to reach your aspirational 2020 level?",
+                  'What improvements needs to happen for you to reach your aspirational 2020 level?',
                 error:
                   "Think about your past goals, things you'd like to do more and less of, etc..."
               }

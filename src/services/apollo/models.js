@@ -10,9 +10,9 @@ export type ErrorResponse = {
   error: GraphResponse
 };
 
-export const UNDETERMINED = "UNDETERMINED";
-export const ANONYMOUS = "ANONYMOUS";
-export const AUTHENTICATING = "AUTHENTICATING";
+export const UNDETERMINED = 'UNDETERMINED';
+export const ANONYMOUS = 'ANONYMOUS';
+export const AUTHENTICATING = 'AUTHENTICATING';
 
 export type UserState = { +user: User } | ANONYMOUS | UNDETERMINED;
 

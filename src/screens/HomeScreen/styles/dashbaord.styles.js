@@ -1,5 +1,5 @@
-import * as React from "react";
-import { StyleSheet, Platform } from "react-native";
+import * as React from 'react';
+import { StyleSheet, Platform } from 'react-native';
 import {
   human,
   systemWeights,
@@ -8,12 +8,12 @@ import {
   material,
   sanFranciscoWeights,
   robotoWeights
-} from "react-native-typography";
+} from 'react-native-typography';
 
 const suggestionRow = {
-  flexDirection: "row",
-  justifyContent: "flex-start",
-  alignItems: "stretch"
+  flexDirection: 'row',
+  justifyContent: 'flex-start',
+  alignItems: 'stretch'
 };
 
 export default StyleSheet.create({
@@ -25,9 +25,9 @@ export default StyleSheet.create({
     marginBottom: 40,
     marginHorizontal: 16,
     padding: 12,
-    flexDirection: "column",
-    justifyContent: "flex-start",
-    alignItems: "flex-start",
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
     backgroundColor: iOSColors.white,
     borderRadius: 6
   },
@@ -36,15 +36,15 @@ export default StyleSheet.create({
     marginBottom: 40,
     marginHorizontal: 16,
     padding: 12,
-    flexDirection: "column",
-    justifyContent: "flex-start",
-    alignItems: "flex-start",
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
     backgroundColor: iOSColors.white,
     borderRadius: 6,
     ...Platform.select({
       android: { elevation: 16 },
       ios: {
-        shadowColor: "black",
+        shadowColor: 'black',
         shadowOffset: {
           width: 0,
           height: 16
@@ -111,13 +111,13 @@ export default StyleSheet.create({
         //...human.largeTitleObject,
       }
     }),
-    textAlign: "center"
+    textAlign: 'center'
   },
   title: iOSUIKit.largeTitleEmphasizedObject,
   header: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "flex-start",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
     paddingTop: 16,
     paddingBottom: 8,
     marginHorizontal: 16,

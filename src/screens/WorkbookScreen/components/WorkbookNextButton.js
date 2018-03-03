@@ -1,7 +1,7 @@
 // @flow
-import React, { Component } from "react";
-import { View } from "react-native";
-import Button from "../../../components/Button";
+import React, { Component } from 'react';
+import { View } from 'react-native';
+import Button from '../../../components/Button';
 
 export type NextButtonProps = {
   isInvalid: boolean,

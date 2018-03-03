@@ -1,5 +1,5 @@
 // @flow
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
@@ -11,12 +11,12 @@ import {
   Image,
   Dimensions,
   Alert
-} from "react-native";
-import t from "./templates";
-import WorkbookNextButton from "../components/WorkbookNextButton";
-import type { NextButtonProps } from "../components/WorkbookNextButton";
-import DefaultIndicator from "../../../components/DefaultIndicator";
-import styles from "../styles";
+} from 'react-native';
+import t from './templates';
+import WorkbookNextButton from '../components/WorkbookNextButton';
+import type { NextButtonProps } from '../components/WorkbookNextButton';
+import DefaultIndicator from '../../../components/DefaultIndicator';
+import styles from '../styles';
 const Form = t.form.Form;
 
 export type Model = {
@@ -88,7 +88,7 @@ class WorkbookScreenContainer extends Component<Props, State> {
     const { errors, value } = this.form.validate();
     if (errors.length > 0) {
       const { message, path } = errors[0];
-      Alert.alert(message, "", [
+      Alert.alert(message, '', [
         /* this is for later ideally working with react-native-keyboard-aware-scroll-view
           {
             text: 'Show me',
@@ -100,7 +100,7 @@ class WorkbookScreenContainer extends Component<Props, State> {
           },
           */
         {
-          text: "OK"
+          text: 'OK'
         }
       ]);
     } else {

@@ -1,12 +1,12 @@
 // @flow
-import { action } from "../utils";
+import { action } from '../utils';
 import {
   INCREMENT_FORM_DATA_QUEUE,
   DECREMENT_FORM_DATA_QUEUE,
   SUBMIT_FORM_VALUE,
   SYNC_FORM_DATA
-} from "../actionTypes";
-import { throttleAction } from "../throttle";
+} from '../actionTypes';
+import { throttleAction } from '../throttle';
 
 export type SubmitAction = {
   formId: string,

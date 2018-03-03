@@ -9,17 +9,17 @@ export const PHASES = {
   MEDITATION,
   SELF_ASSESSMENT,
   VISION_CREATION,
-  COMPLETE,
+  COMPLETE
 };
 
 export type Icon = {
-  uri: string,
+  uri: string
 };
 
 export type Assignment = {
   order: number,
   content: string,
-  icon: Icon,
+  icon: Icon
 };
 
 export type Phase = MEDITATION | SELF_ASSESSMENT | SELF_ASSESSMENT | COMPLETE;
@@ -34,7 +34,7 @@ export type Colors = {
   phases: {
     MEDITATION: string,
     SELF_ASSESSMENT: string,
-    VISION_CREATION: string,
+    VISION_CREATION: string
   },
   steps: {
     StepNumber: string,
@@ -66,8 +66,8 @@ export type Colors = {
     StepNumber: string,
     StepNumber: string,
     StepNumber: string,
-    StepNumber: string,
-  },
+    StepNumber: string
+  }
 };
 
 export type Step = {
@@ -82,19 +82,19 @@ export type Step = {
   color: ?string,
   duration: number,
   stepScreenDescription: string,
-  shortIcon: Icon,
+  shortIcon: Icon
 };
 
 export type OnobardingPage = {
   title: string,
-  slides: [Slide],
+  slides: [Slide]
 };
 
 export type Slide = {
   title: string,
   description: string,
   image: Icon,
-  order: string,
+  order: string
 };
 
 export const getImageUrl = (icon: Icon): string =>
@@ -126,7 +126,7 @@ export const gradientBackground_ColorForStepIndex = (colors: Colors) => (
   step: number
 ) => ({
   colorStart: getColorStartAtStepIndex(step, colors),
-  colorEnd: getNextPhaseColorForStepAtIndex(step, colors),
+  colorEnd: getNextPhaseColorForStepAtIndex(step, colors)
 });
 
 if (__DEV__) {
@@ -268,7 +268,7 @@ if (__DEV__) {
   }
   obj = {
     steps: { '11': 'success' },
-    phases: { [VISION_CREATION]: 'success' },
+    phases: { [VISION_CREATION]: 'success' }
   };
   result = gradientBackground_ColorForStepIndex(obj)(10);
   if (result.colorStart !== 'success') {

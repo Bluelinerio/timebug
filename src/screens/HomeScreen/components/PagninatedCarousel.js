@@ -1,15 +1,15 @@
 // @flow
 
-import React, { PureComponent } from "react";
-import { View, Text, Platform } from "react-native";
-import Carousel, { Pagination } from "react-native-snap-carousel";
-import styles, { colors } from "../styles/PagninatedCarousel.style";
-import StepGradientBackground from "../containers/StepGradientBackground";
-import StepCarouselGreet from "../containers/StepCarouselGreet";
-import VerticalGradient from "./VerticalGradient";
-import SliderEntry from "./SliderEntry";
-import type { Item } from "./SliderEntry";
-import { NUMBER_OF_STEP_FOR_PHASES /* 10 */ } from "../../../services/cms";
+import React, { PureComponent } from 'react';
+import { View, Text, Platform } from 'react-native';
+import Carousel, { Pagination } from 'react-native-snap-carousel';
+import styles, { colors } from '../styles/PagninatedCarousel.style';
+import StepGradientBackground from '../containers/StepGradientBackground';
+import StepCarouselGreet from '../containers/StepCarouselGreet';
+import VerticalGradient from './VerticalGradient';
+import SliderEntry from './SliderEntry';
+import type { Item } from './SliderEntry';
+import { NUMBER_OF_STEP_FOR_PHASES /* 10 */ } from '../../../services/cms';
 
 const SLIDER_1_FIRST_ITEM = 0;
 type Props = {
@@ -46,7 +46,7 @@ export default class PagninatedCarousel extends PureComponent<Props, State> {
         <VerticalGradient />
         <View
           style={{
-            position: "absolute",
+            position: 'absolute',
             top: 16,
             left: 16,
             right: 16,
@@ -79,9 +79,9 @@ export default class PagninatedCarousel extends PureComponent<Props, State> {
           hasParallaxImages={false}
           firstItem={SLIDER_1_FIRST_ITEM}
           inactiveSlideScale={0.95}
-          inactiveSlideOpacity={Platform.OS === "ios" ? 0.9 : 1.0}
-          enableMomentum={Platform.OS !== "ios"}
-          lockScrollWhileSnapping={Platform.OS !== "ios"}
+          inactiveSlideOpacity={Platform.OS === 'ios' ? 0.9 : 1.0}
+          enableMomentum={Platform.OS !== 'ios'}
+          lockScrollWhileSnapping={Platform.OS !== 'ios'}
           containerCustomStyle={styles.slider}
           contentContainerCustomStyle={styles.sliderContentContainer}
           loop={false}

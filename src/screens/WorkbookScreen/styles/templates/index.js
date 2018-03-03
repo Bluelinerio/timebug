@@ -1,16 +1,16 @@
-import { StyleSheet, PixelRatio, Platform } from "react-native";
-import stylesheet from "tcomb-form-native/lib/stylesheets/bootstrap";
+import { StyleSheet, PixelRatio, Platform } from 'react-native';
+import stylesheet from 'tcomb-form-native/lib/stylesheets/bootstrap';
 
-export const LABEL_COLOR = "#000000";
-export const INPUT_COLOR = "#000000";
-export const ERROR_COLOR = "#a94442";
-export const HELP_COLOR = "#999999";
-export const BORDER_COLOR = "#cccccc";
-export const DISABLED_COLOR = "#777777";
-export const DISABLED_BACKGROUND_COLOR = "#eeeeee";
-export const BACKGROUND_COLOR = "#FAFAFA"; //'#FFFFFF';
+export const LABEL_COLOR = '#000000';
+export const INPUT_COLOR = '#000000';
+export const ERROR_COLOR = '#a94442';
+export const HELP_COLOR = '#999999';
+export const BORDER_COLOR = '#cccccc';
+export const DISABLED_COLOR = '#777777';
+export const DISABLED_BACKGROUND_COLOR = '#eeeeee';
+export const BACKGROUND_COLOR = '#FAFAFA'; //'#FFFFFF';
 export const FONT_SIZE = 18;
-export const FONT_WEIGHT = "500";
+export const FONT_WEIGHT = '500';
 
 //#E6E5ED
 // from  https://material.io/guidelines/components/text-fields.html#text-fields-layout
@@ -38,10 +38,10 @@ export default Object.freeze({
     }
   },
   formLabel: {
-    textAlign: "center",
+    textAlign: 'center',
     fontSize: 22,
     paddingVertical: 20,
-    fontWeight: "700"
+    fontWeight: '700'
   },
 
   controlLabel: {
@@ -64,18 +64,18 @@ export default Object.freeze({
       ...stylesheet.helpBlock.normal,
       marginTop: 4,
       paddingHorizontal: 4,
-      fontStyle: "italic"
+      fontStyle: 'italic'
     },
     error: {
       ...stylesheet.helpBlock.normal,
       marginTop: 4,
       paddingHorizontal: 4,
-      fontStyle: "italic"
+      fontStyle: 'italic'
     }
   },
   pickerContainer: {
     normal: {
-      flexDirection: "row",
+      flexDirection: 'row',
       height: 48,
       borderWidth: 1,
       borderRadius: 4,
@@ -84,7 +84,7 @@ export default Object.freeze({
       backgroundColor: BACKGROUND_COLOR
     },
     error: {
-      flexDirection: "row",
+      flexDirection: 'row',
       height: 48,
       borderWidth: 1,
       borderRadius: 4,
@@ -97,7 +97,7 @@ export default Object.freeze({
   pickerLabelStyle: {
     normal: {
       fontSize: 17,
-      alignSelf: "center"
+      alignSelf: 'center'
     }
   },
   listAddButton: {
@@ -106,21 +106,21 @@ export default Object.freeze({
     borderRadius: 4,
     borderWidth: 1,
     borderColor: BORDER_COLOR,
-    flexDirection: "row",
-    alignItems: "center"
+    flexDirection: 'row',
+    alignItems: 'center'
   },
   textBox: {
     normal: {
       color: INPUT_COLOR,
       fontSize: 16,
       height: 46,
-      textAlign: "left"
+      textAlign: 'left'
     },
     error: {
       color: INPUT_COLOR,
       fontSize: FONT_SIZE,
       height: 46,
-      textAlign: "left"
+      textAlign: 'left'
     }
   },
   textBoxView: {

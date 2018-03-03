@@ -1,5 +1,5 @@
 // @flow
-import * as React from "react";
+import * as React from 'react';
 import {
   Image,
   View,
@@ -7,23 +7,23 @@ import {
   TouchableOpacity,
   Platform,
   ScrollView
-} from "react-native";
-import TouchableBounce from "react-native/Libraries/Components/Touchable/TouchableBounce";
-import glamorous from "glamorous-native";
-import LinearGradient from "react-native-linear-gradient";
+} from 'react-native';
+import TouchableBounce from 'react-native/Libraries/Components/Touchable/TouchableBounce';
+import glamorous from 'glamorous-native';
+import LinearGradient from 'react-native-linear-gradient';
 
-import styles from "../../styles/dashbaord.styles";
-import PhaseProgress from "../../../../components/PhaseProgress";
-import TouchableRoundedImage from "../../../../components/TouchableRoundedImage";
-import OnLayout from "../../../../components/OnLayout";
-import PhaseProgressContainer from "../../../../containers/PhaseProgressContainer";
-import User from "../../../../containers/User";
+import styles from '../../styles/dashbaord.styles';
+import PhaseProgress from '../../../../components/PhaseProgress';
+import TouchableRoundedImage from '../../../../components/TouchableRoundedImage';
+import OnLayout from '../../../../components/OnLayout';
+import PhaseProgressContainer from '../../../../containers/PhaseProgressContainer';
+import User from '../../../../containers/User';
 import {
   MEDITATION,
   SELF_ASSESSMENT,
   VISION_CREATION,
   COMPLETE
-} from "../../../../services/cms";
+} from '../../../../services/cms';
 
 const Card = glamorous(TouchableBounce)(styles.dashboardCardWide);
 const CardHeader = glamorous.view(styles.header);
@@ -31,8 +31,8 @@ const Row = glamorous.view(styles.suggestionRow);
 const BottomRow = glamorous.view(styles.suggestionRowBottom);
 
 const GradientWithTwoColors = ({
-  startColor = "#FF24D8",
-  endColor = "#6AC2ED",
+  startColor = '#FF24D8',
+  endColor = '#6AC2ED',
   children,
   style
 }) => (
@@ -53,8 +53,8 @@ const GradientWithTwoColors = ({
 
 const Highlight = ({
   children,
-  startColor = "white",
-  endColor = "#f8f8f8",
+  startColor = 'white',
+  endColor = '#f8f8f8',
   gradientStyle
 }) => (
   <LinearGradient
@@ -69,7 +69,7 @@ const Highlight = ({
 
 const BackgroundImage = glamorous.image(styles.backgroundImage, props => ({
   // here we tint it based on props...
-  tintColor: "blue"
+  tintColor: 'blue'
 }));
 
 const Header = ({ date, source, title, titleColor, avatar }) => (
@@ -77,7 +77,7 @@ const Header = ({ date, source, title, titleColor, avatar }) => (
     <View>
       {date && <Text style={styles.date}>{date}</Text>}
       <Text style={[styles.title, styles.strong, { color: titleColor }]}>
-        {" "}
+        {' '}
         {title}
       </Text>
     </View>
@@ -96,7 +96,7 @@ export type Props = {
   }
 };
 
-import Markdown from "../../../../Modules/Markdown";
+import Markdown from '../../../../Modules/Markdown';
 // <DashboardHightlight>
 //   <Markdown
 // 		markdownStyles={{
@@ -117,7 +117,7 @@ const RowContent = ({ phaseColors }: Props) => (
   <View>
     <Text
       style={
-        ([styles.suggestionText, { color: "#ccc" }], { paddingVertical: 10 })
+        ([styles.suggestionText, { color: '#ccc' }], { paddingVertical: 10 })
       }
     >
       <Text
@@ -170,7 +170,7 @@ const Container = glamorous.view({
   ...Platform.select({
     android: { elevation: 16 },
     ios: {
-      shadowColor: "black",
+      shadowColor: 'black',
       shadowOffset: {
         width: 0,
         height: 16
@@ -212,7 +212,7 @@ const DashboardHightlight = props => (
       ...Platform.select({
         android: { elevation: 2 },
         ios: {
-          shadowColor: "black",
+          shadowColor: 'black',
           shadowOffset: {
             width: 0,
             height: 2
@@ -241,7 +241,7 @@ const Main = props => (
             style={[
               styles.suggestionText,
               {
-                color: "#ccc"
+                color: '#ccc'
               }
             ]}
           >

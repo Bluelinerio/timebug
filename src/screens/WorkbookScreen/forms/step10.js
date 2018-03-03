@@ -1,5 +1,5 @@
-import t from "../components/templates";
-import { PillarsOfLife, InteractionFrequency, OneToTenScale } from "./contents";
+import t from '../components/templates';
+import { PillarsOfLife, InteractionFrequency, OneToTenScale } from './contents';
 
 export default {
   1: {
@@ -15,7 +15,7 @@ export default {
     }),
     options: {
       label:
-        "What are 5-15 different Is that you feel are a part of yourself? (e.g., “Lazy I” could resemble “Procrastinating I”)",
+        'What are 5-15 different Is that you feel are a part of yourself? (e.g., “Lazy I” could resemble “Procrastinating I”)',
       fields: {
         id: {
           hidden: true
@@ -25,7 +25,7 @@ export default {
             fields: {
               i: {
                 //label: 'Write down your \'I\'',
-                label: "What would you name this I?",
+                label: 'What would you name this I?',
                 placeholder: 'e.g. "Lazy I"'
                 // error: 'For example \'I procrastinate\'.'
               },
@@ -40,7 +40,7 @@ export default {
               }
             }
           },
-          auto: "none",
+          auto: 'none',
           disableOrder: true,
           maxLines: 10,
           config: {
@@ -51,7 +51,7 @@ export default {
     },
     value: {
       fields: {
-        id: "step10+v0.0.0.1"
+        id: 'step10+v0.0.0.1'
       }
     }
   },
@@ -66,7 +66,7 @@ export default {
     }),
     options: {
       label:
-        "Reflecting back on the day 5 list of Goals, pick several and briefly note how your ego aspects either hindered or aided you.",
+        'Reflecting back on the day 5 list of Goals, pick several and briefly note how your ego aspects either hindered or aided you.',
       fields: {
         egoInfluence: {
           disableOrder: true,
@@ -77,11 +77,11 @@ export default {
           item: {
             fields: {
               goal: {
-                auto: "labels"
+                auto: 'labels'
               },
               helpOrHinder: {
                 label:
-                  "How did a particular ego aspect help or hinder you in pursuit of this goal?"
+                  'How did a particular ego aspect help or hinder you in pursuit of this goal?'
               }
             }
           }

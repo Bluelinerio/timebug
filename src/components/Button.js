@@ -1,10 +1,10 @@
 // @flow
-import React from "react";
-import { Dimensions, Text, View, TouchableHighlight } from "react-native";
-import Icon from "react-native-vector-icons/Ionicons";
-import defaultStyle from "../styles/components/Button";
+import React from 'react';
+import { Dimensions, Text, View, TouchableHighlight } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
+import defaultStyle from '../styles/components/Button';
 
-export type Side = "left" | "right" | null;
+export type Side = 'left' | 'right' | null;
 export type Props = {
   text: string,
   onPress?: () => void,
@@ -66,7 +66,7 @@ export default (props: Props) => {
     activeOpacity: opacity,
     onPress: onPress,
     disabled: disabled,
-    underlayColor: "#c0c0c0",
+    underlayColor: '#c0c0c0',
     testID: buttonTestId
   };
 
@@ -79,7 +79,7 @@ export default (props: Props) => {
       <TouchableHighlight {...touchableHighlightProps}>
         <View {...buttonGroupProps}>
           {side &&
-            side === "left" &&
+            side === 'left' &&
             withArrow && <ArrowBack style={styles.buttonIconRight} />}
           <Text
             style={[
@@ -93,7 +93,7 @@ export default (props: Props) => {
             {text}
           </Text>
           {side &&
-            side === "right" &&
+            side === 'right' &&
             withArrow && <ArrowForward style={styles.buttonIconLeft} />}
         </View>
       </TouchableHighlight>

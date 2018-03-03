@@ -1,21 +1,21 @@
-import { StyleSheet, Dimensions } from "react-native";
+import { StyleSheet, Dimensions } from 'react-native';
 
 const CicleWidth = 32;
 
 export default StyleSheet.create({
   assignmentLeadInScreenSlideContainer: {
     flex: 1,
-    justifyContent: "space-between",
+    justifyContent: 'space-between',
     paddingVertical: 30,
     paddingHorizontal: 20
   },
   assignmentLeadInScreenSlideText: {
     flex: 1,
-    justifyContent: "center"
+    justifyContent: 'center'
   },
   assignmentLeadInScreenNumberContainer: {
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
     width: CicleWidth,
     height: CicleWidth,
     borderRadius: CicleWidth,
@@ -23,10 +23,10 @@ export default StyleSheet.create({
     marginVertical: 10
   },
   assignmentLeadInScreenNumberText: {
-    fontFamily: "Helvetica",
+    fontFamily: 'Helvetica',
     fontSize: Math.ceil(CicleWidth * 0.55),
-    textAlign: "center",
-    color: "white",
-    backgroundColor: "transparent"
+    textAlign: 'center',
+    color: 'white',
+    backgroundColor: 'transparent'
   }
 });

@@ -1,22 +1,22 @@
 // @flow
 // testing the API : https://npm.runkit.com/contentful
-import { createClient } from "contentful";
+import { createClient } from 'contentful';
 import type { Icon } from './cms';
 export const CONTENTFUL_CREDENTIALS = {
   accessToken:
-    "c139e7f2a7a86fc0813e71fbb18bb7b1921189ce4d7cc58c7f0ccc0022adee5f",
-  space: "1gbed7lrsmj4"
+    'c139e7f2a7a86fc0813e71fbb18bb7b1921189ce4d7cc58c7f0ccc0022adee5f',
+  space: '1gbed7lrsmj4'
 };
 
-export const CONTENTFUL_CONTENT_STEP = "day";
-export const CONTENTFUL_CONTENT_LOGIN = "login";
-export const CONTENTFUL_CONTENT_COLORS = "colors";
-export const CONTENTFUL_ONBOARDING_PAGE = "onboardingPage";
+export const CONTENTFUL_CONTENT_STEP = 'day';
+export const CONTENTFUL_CONTENT_LOGIN = 'login';
+export const CONTENTFUL_CONTENT_COLORS = 'colors';
+export const CONTENTFUL_ONBOARDING_PAGE = 'onboardingPage';
 
 export const contentfulClient = createClient(CONTENTFUL_CREDENTIALS);
 
 const getImageUrl = (icon: Icon): { uri: string } => ({
-  uri: (icon.url || icon.fields.file.url || "").replace("//", "https://")
+  uri: (icon.url || icon.fields.file.url || '').replace('//', 'https://')
 });
 
 const onboardingPagesFromResponse = response => {
@@ -51,7 +51,7 @@ const colorsFromResponse = response => ({
   colors: response.items[0].fields.schema
 });
 
-const stepsFromResponse = unlinkFields("steps");
+const stepsFromResponse = unlinkFields('steps');
 
 const nomrmalizeSteps = ({ steps, colors }) => ({
   steps: steps.reduce(
@@ -110,14 +110,14 @@ export const refreshCMS = () =>
 
 export const testContentFromCMS = object => {
   if (!object.colors.steps) {
-    throw "failed validating contenful response";
+    throw 'failed validating contenful response';
   }
   if (!object.colors.phases) {
-    throw "failed validating contenful response";
+    throw 'failed validating contenful response';
   }
   const steps = Object.values(object.steps);
   if (steps.length !== 30) {
-    throw "failed validating contenful response";
+    throw 'failed validating contenful response';
   }
   for (let index = 1; index < 31; index++) {
     const number = index.toString();

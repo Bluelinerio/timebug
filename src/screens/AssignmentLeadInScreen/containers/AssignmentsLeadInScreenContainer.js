@@ -1,14 +1,14 @@
 // @flow
 
-import React, { Component } from "react";
-import { StyleSheet } from "react-native";
-import { connect } from "react-redux";
-import AssignmentsPages from "../components/AssignmentsPages";
-import type { Props } from "../components/AssignmentsPages";
-import type { Assignment } from "../../../services/cms";
-import DefaultIndicator from "../../../components/DefaultIndicator";
-import StepButtonStyle from "../../../styles/components/Button";
-import selectors from "../../../redux/selectors";
+import React, { Component } from 'react';
+import { StyleSheet } from 'react-native';
+import { connect } from 'react-redux';
+import AssignmentsPages from '../components/AssignmentsPages';
+import type { Props } from '../components/AssignmentsPages';
+import type { Assignment } from '../../../services/cms';
+import DefaultIndicator from '../../../components/DefaultIndicator';
+import StepButtonStyle from '../../../styles/components/Button';
+import selectors from '../../../redux/selectors';
 
 const mapStateToProps = state => {
   const colors = selectors.stepColors(state);

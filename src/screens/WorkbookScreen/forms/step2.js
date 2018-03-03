@@ -1,5 +1,5 @@
-import t from "../components/templates";
-import { PillarsOfLife, AreaOfLife, HoursPerMonth } from "./contents";
+import t from '../components/templates';
+import { PillarsOfLife, AreaOfLife, HoursPerMonth } from './contents';
 
 export default {
   1: {
@@ -14,7 +14,7 @@ export default {
     }),
     options: {
       label:
-        "Break down a typical 168 hour week according to the 7 Pillars Of Life.",
+        'Break down a typical 168 hour week according to the 7 Pillars Of Life.',
 
       fields: {
         id: {
@@ -41,7 +41,7 @@ export default {
     },
     value: {
       fields: {
-        id: "step2+v0.0.0.1"
+        id: 'step2+v0.0.0.1'
       }
     }
   },
@@ -55,7 +55,7 @@ export default {
       )
     }),
     options: {
-      label: "How many hours do you ideally want to spend on each activity?",
+      label: 'How many hours do you ideally want to spend on each activity?',
 
       fields: {
         pillar: {
@@ -88,7 +88,7 @@ export default {
       )
     }),
     options: {
-      label: "What activities do you ideally want to engage in less?",
+      label: 'What activities do you ideally want to engage in less?',
       fields: {
         activities: {
           disableOrder: true,
@@ -120,7 +120,7 @@ export default {
       )
     }),
     options: {
-      label: "What activities do you ideally want to engage in more?",
+      label: 'What activities do you ideally want to engage in more?',
       fields: {
         activities: {
           disableOrder: true,

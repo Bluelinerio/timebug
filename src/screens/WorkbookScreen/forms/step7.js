@@ -1,5 +1,5 @@
-import t from "../components/templates";
-import { CommonGoalOutcomes } from "./contents";
+import t from '../components/templates';
+import { CommonGoalOutcomes } from './contents';
 
 export default {
   1: {
@@ -13,7 +13,7 @@ export default {
       )
     }),
     options: {
-      label: "What are 5 of your goals from the past 5 years?",
+      label: 'What are 5 of your goals from the past 5 years?',
 
       fields: {
         id: {
@@ -29,7 +29,7 @@ export default {
             fields: {
               commonGoalOutcomes: {
                 label:
-                  "Classify this goal according to the 7 Common Goal Outcomes."
+                  'Classify this goal according to the 7 Common Goal Outcomes.'
               }
             }
           }
@@ -38,7 +38,7 @@ export default {
     },
     value: {
       fields: {
-        id: "step7+v0.0.0.1"
+        id: 'step7+v0.0.0.1'
       }
     }
   },
@@ -48,7 +48,7 @@ export default {
     }),
     options: {
       label:
-        "Have you noticed any patterns? Have any guesses as to the reasons underlying such patterns?",
+        'Have you noticed any patterns? Have any guesses as to the reasons underlying such patterns?',
 
       fields: {
         patterns: {

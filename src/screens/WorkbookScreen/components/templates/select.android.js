@@ -1,5 +1,5 @@
-var React = require("react");
-var { View, Text, Picker } = require("react-native");
+var React = require('react');
+var { View, Text, Picker } = require('react-native');
 
 function select(locals) {
   if (locals.hidden) {

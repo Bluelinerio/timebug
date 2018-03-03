@@ -10,28 +10,28 @@ import {
   take,
   takeLatest,
   select
-} from "redux-saga/effects";
-import { delay } from "redux-saga";
+} from 'redux-saga/effects';
+import { delay } from 'redux-saga';
 
-import { createForm, updateForm } from "../../services/apollo";
+import { createForm, updateForm } from '../../services/apollo';
 import type {
   CreateFormArgs,
   UpdateormArgs,
   Form
-} from "../../services/apollo/models";
-import { request } from "../../Modules/redux-saga-request";
+} from '../../services/apollo/models';
+import { request } from '../../Modules/redux-saga-request';
 
-import { SYNC_FORM_DATA } from "../actionTypes";
-import { GET_USER, updateUser } from "../actions/user.actions";
+import { SYNC_FORM_DATA } from '../actionTypes';
+import { GET_USER, updateUser } from '../actions/user.actions';
 import {
   incrementFormDataQueue,
   decrementFormDataQueue
-} from "../actions/formData.actions";
-import { client } from "../../services/apollo";
-import selectors from "../selectors";
-import { diffObjs } from "../utils/diffObjs";
+} from '../actions/formData.actions';
+import { client } from '../../services/apollo';
+import selectors from '../selectors';
+import { diffObjs } from '../utils/diffObjs';
 
-export const UPDATE_AND_CREATE_FORMS = "UPDATE_AND_CREATE_FORMS";
+export const UPDATE_AND_CREATE_FORMS = 'UPDATE_AND_CREATE_FORMS';
 // export const LOG = 'LOG';
 //const log = payload => yield put({ type: LOG,  payload });
 const log = payload => console.log(payload);
@@ -59,7 +59,7 @@ const formDataFromForm = (forms: [Form]) =>
 function* reviewCurrentUserFormsAndFormDataCompareAndUpfateToState() {
   //const userId = yield select(selectors.userId)
   log({
-    info: "Started reviewing differences between form data and user forms"
+    info: 'Started reviewing differences between form data and user forms'
   });
 
   const { userId, completedFormsData, formData, formWithStepId } = yield call(
@@ -74,13 +74,13 @@ function* reviewCurrentUserFormsAndFormDataCompareAndUpfateToState() {
 
   if (!userId) {
     const error =
-      "userId is expected while reviewing differences between form data and user forms";
+      'userId is expected while reviewing differences between form data and user forms';
     if (__DEV__) {
       throw error;
     } else {
       log({
         info:
-          "Compelted reviewing differences between form data and user forms",
+          'Compelted reviewing differences between form data and user forms',
         error
       });
     }
@@ -90,7 +90,7 @@ function* reviewCurrentUserFormsAndFormDataCompareAndUpfateToState() {
   if (!difference && !onlyOnLeft) {
     log({
       info:
-        "Compelted reviewing differences between form data and user forms. No sync is needed"
+        'Compelted reviewing differences between form data and user forms. No sync is needed'
     });
     return;
   }
@@ -128,7 +128,7 @@ function* reviewCurrentUserFormsAndFormDataCompareAndUpfateToState() {
 
   log({
     info:
-      "Commencing with sync request after reviewing differences between form data and user forms",
+      'Commencing with sync request after reviewing differences between form data and user forms',
     creates,
     updates
   });
@@ -209,12 +209,12 @@ function* syncRequests(payload) {
       throw error;
     } else {
       log({
-        info: "Compelted synching differences between form data and user forms."
+        info: 'Compelted synching differences between form data and user forms.'
       });
     }
   } else {
     log({
-      info: "Compelted synching differences between form data and user forms."
+      info: 'Compelted synching differences between form data and user forms.'
     });
   }
 }

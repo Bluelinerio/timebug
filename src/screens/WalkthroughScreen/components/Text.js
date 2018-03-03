@@ -1,20 +1,20 @@
 // @flow
-import * as React from "react";
-import { Text as RNText } from "react-native";
-import { Theme } from "./Theme";
-import type { ThemeProps } from "./Theme";
-import type { BaseProps } from "./Types";
+import * as React from 'react';
+import { Text as RNText } from 'react-native';
+import { Theme } from './Theme';
+import type { ThemeProps } from './Theme';
+import type { BaseProps } from './Types';
 
 type TypographyProps = BaseProps & {
   theme: ThemeProps,
   type:
-    | "header1"
-    | "header2"
-    | "header3"
-    | "large"
-    | "regular"
-    | "small"
-    | "micro",
+    | 'header1'
+    | 'header2'
+    | 'header3'
+    | 'large'
+    | 'regular'
+    | 'small'
+    | 'micro',
   numberOfLines?: number,
   gutterBottom?: boolean,
   children: string
@@ -22,7 +22,7 @@ type TypographyProps = BaseProps & {
 
 export default class Text extends React.Component<TypographyProps> {
   static defaultProps = {
-    type: "regular",
+    type: 'regular',
     theme: Theme
   };
 
@@ -37,13 +37,13 @@ export default class Text extends React.Component<TypographyProps> {
     } = this.props;
     const defaultStyle = [
       theme.typography[type],
-      { backgroundColor: "transparent" }
+      { backgroundColor: 'transparent' }
     ];
-    const isHeader = type.startsWith("header");
+    const isHeader = type.startsWith('header');
     defaultStyle.push({
       color: isHeader
-        ? "black"
-        : type === "large" ? theme.palette.lightGray : theme.typography.color,
+        ? 'black'
+        : type === 'large' ? theme.palette.lightGray : theme.typography.color,
       marginBottom: gutterBottom
         ? isHeader ? theme.spacing.base : theme.spacing.small
         : 0
@@ -51,7 +51,7 @@ export default class Text extends React.Component<TypographyProps> {
     defaultStyle.push(style);
     return (
       <RNText style={defaultStyle} {...{ numberOfLines }}>
-        {type === "large" ? children.toUpperCase() : children}
+        {type === 'large' ? children.toUpperCase() : children}
       </RNText>
     );
   }

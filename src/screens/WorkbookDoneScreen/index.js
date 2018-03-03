@@ -1,8 +1,8 @@
-import React from "react";
-import { Button, Text, Platform } from "react-native";
-import { HeaderBackButton, NavigationActions } from "react-navigation";
-import screen from "./containers/WorkbookDoneScreenContainer";
-import { reset } from "../../redux/actions/nav.actions";
+import React from 'react';
+import { Button, Text, Platform } from 'react-native';
+import { HeaderBackButton, NavigationActions } from 'react-navigation';
+import screen from './containers/WorkbookDoneScreenContainer';
+import { reset } from '../../redux/actions/nav.actions';
 
 // import Icon from 'react-native-vector-icons/Entypo'
 // import styles from '../../styles/components/Button'
@@ -19,20 +19,20 @@ screen.navigationOptions = ({
   return {
     headerRight: (
       <Button
-        title={"Done"}
-        color={Platform.OS === "ios" ? "white" : "transparent"}
-        accessibilityLabel={"close"}
-        backgroundColor={"transparent"}
+        title={'Done'}
+        color={Platform.OS === 'ios' ? 'white' : 'transparent'}
+        accessibilityLabel={'close'}
+        backgroundColor={'transparent'}
         onPress={() => dispatch(reset())}
       />
     ),
     headerStyle: {
       backgroundColor: stepColor,
-      borderBottomColor: "transparent",
+      borderBottomColor: 'transparent',
       shadowOpacity: 0,
-      shadowColor: "transparent"
+      shadowColor: 'transparent'
     },
-    headerTintColor: "white",
+    headerTintColor: 'white',
     headerLeft: (
       <HeaderBackButton
         tintColor="white"

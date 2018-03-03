@@ -1,13 +1,13 @@
-import * as React from "react";
-import { connect } from "react-redux";
-import Svg, { Circle, G } from "react-native-svg";
+import * as React from 'react';
+import { connect } from 'react-redux';
+import Svg, { Circle, G } from 'react-native-svg';
 
-import PhaseProgress from "../components/PhaseProgress";
-import selectors from "../redux/selectors";
-import { phaseForStepAtIndex } from "../services/cms";
-import { renderContainer } from "../components/PhaseProgress/defaults";
-import Grid from "../components/Grid";
-import type { GridProps } from "../components/Grid";
+import PhaseProgress from '../components/PhaseProgress';
+import selectors from '../redux/selectors';
+import { phaseForStepAtIndex } from '../services/cms';
+import { renderContainer } from '../components/PhaseProgress/defaults';
+import Grid from '../components/Grid';
+import type { GridProps } from '../components/Grid';
 
 const circle = 0.3;
 const circleRatio = 0.4;
@@ -71,7 +71,7 @@ const merge = (stateProps, dispatchProps, ownProps): GridProps => ({
           : stateProps.completedStepIndices
         ).includes(props.index)
           ? stateProps.phaseColors[phaseForStepAtIndex(props.index)]
-          : "#E9E9E9"
+          : '#E9E9E9'
       }
     />
   )

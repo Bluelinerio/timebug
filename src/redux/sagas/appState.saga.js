@@ -1,13 +1,13 @@
-import { takeEvery, put, select, call } from "redux-saga/effects";
+import { takeEvery, put, select, call } from 'redux-saga/effects';
 import {
   FOREGROUND,
   BACKGROUND,
   INACTIVE
-} from "redux-enhancer-react-native-appstate";
+} from 'redux-enhancer-react-native-appstate';
 
-import type { AppState } from "../reducers/appState.reducer";
-import { initialState, UNDETERMIND } from "../reducers/appState.reducer";
-import { getAppState, getAggregateState } from "../rootReducer";
+import type { AppState } from '../reducers/appState.reducer';
+import { initialState, UNDETERMIND } from '../reducers/appState.reducer';
+import { getAppState, getAggregateState } from '../rootReducer';
 
 export function* appStateSagaWatcher() {
   const appState = yield select(getAppState);
@@ -131,9 +131,9 @@ function* background() {}
 
 function* inactive() {}
 
-import equal from "deep-equal";
-import isSameWeek from "date-fns/is_same_week";
-import isSameDay from "date-fns/is_same_day";
+import equal from 'deep-equal';
+import isSameWeek from 'date-fns/is_same_week';
+import isSameDay from 'date-fns/is_same_day';
 
 const firstTimeBundle = ({
   firstTimeDate,

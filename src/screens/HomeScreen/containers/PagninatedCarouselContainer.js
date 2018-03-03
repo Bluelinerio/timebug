@@ -1,13 +1,13 @@
 // @flow
-import React, { Component } from "react";
-import { View, Text } from "react-native";
-import { connect } from "react-redux";
-import PagninatedCarousel from "../components/PagninatedCarousel";
-import type Item from "../components/SliderEntry";
-import type Step from "../../../services/cms";
-import { getImageUrl, phaseForStepAtIndex } from "../../../services/cms";
-import selectors from "../../../redux/selectors";
-import { goToAssignmentFlow } from "../../../redux/actions/nav.actions";
+import React, { Component } from 'react';
+import { View, Text } from 'react-native';
+import { connect } from 'react-redux';
+import PagninatedCarousel from '../components/PagninatedCarousel';
+import type Item from '../components/SliderEntry';
+import type Step from '../../../services/cms';
+import { getImageUrl, phaseForStepAtIndex } from '../../../services/cms';
+import selectors from '../../../redux/selectors';
+import { goToAssignmentFlow } from '../../../redux/actions/nav.actions';
 
 const mapStateToProps = (state: any) => {
   const phaseColors = selectors.phaseColors(state);
@@ -29,7 +29,7 @@ const mapStateToProps = (state: any) => {
     const incompleteForm = incompleteFormsData[step.stepId];
     return {
       ...step,
-      iconName: lastUpdate !== 0 ? "check" : incompleteForm ? "edit" : null,
+      iconName: lastUpdate !== 0 ? 'check' : incompleteForm ? 'edit' : null,
       progress: {
         lastUpdate,
         incompleteForm

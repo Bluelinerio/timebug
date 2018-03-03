@@ -5,36 +5,36 @@ import {
   actionChannel,
   select,
   call
-} from "redux-saga/effects";
-import { UPDATE_USER } from "../actionTypes";
-import { GET_USER, updateUser } from "../actions/user.actions";
-import selectors from "../selectors";
-import achievementsList from "../../static/bot/surveyAchievements";
+} from 'redux-saga/effects';
+import { UPDATE_USER } from '../actionTypes';
+import { GET_USER, updateUser } from '../actions/user.actions';
+import selectors from '../selectors';
+import achievementsList from '../../static/bot/surveyAchievements';
 import {
   createAchievement,
   deleteAchievement,
   fetchUserAchievementsWithUserId
-} from "../../services/apollo";
+} from '../../services/apollo';
 
 const achievements = {
-  ASSESSMENTS: "Assessments",
-  PILLARS_OF_LIFE: "Pillars Of Life",
-  STRENGTHS_AND_WEAKNESSES: "Strengths And Weaknesses",
-  TEAM: "Team",
-  GOALS: "Goals",
-  COMMITMENTS: "Commitments",
-  MY_INTERNAL_WORLD: "My Internal World",
-  LIFE_VISION: "Life Vision",
-  HEALTH_AND_WELLNESS: "Health And Wellness",
-  CAREER: "Career",
-  GOALS: "Goals",
-  MAJOR_LIFE_EVENTS: "Major Life Events",
-  FINANCES: "Finances",
-  AIMS_AND_HOBBIES: "Aims And Hobbies",
-  ENVIRONMENT: "Environment",
-  RELATIONSHIPS: "Relationships",
-  SPIRITUALITY: "Spirituality",
-  STAGES_OF_LIFE: "Stages Of Life"
+  ASSESSMENTS: 'Assessments',
+  PILLARS_OF_LIFE: 'Pillars Of Life',
+  STRENGTHS_AND_WEAKNESSES: 'Strengths And Weaknesses',
+  TEAM: 'Team',
+  GOALS: 'Goals',
+  COMMITMENTS: 'Commitments',
+  MY_INTERNAL_WORLD: 'My Internal World',
+  LIFE_VISION: 'Life Vision',
+  HEALTH_AND_WELLNESS: 'Health And Wellness',
+  CAREER: 'Career',
+  GOALS: 'Goals',
+  MAJOR_LIFE_EVENTS: 'Major Life Events',
+  FINANCES: 'Finances',
+  AIMS_AND_HOBBIES: 'Aims And Hobbies',
+  ENVIRONMENT: 'Environment',
+  RELATIONSHIPS: 'Relationships',
+  SPIRITUALITY: 'Spirituality',
+  STAGES_OF_LIFE: 'Stages Of Life'
 };
 
 const testDataFromStatic = () => {
@@ -52,36 +52,36 @@ const nextRequiredUpdateForUser = (
   user: User
 ): { updated: [string], deleted: [string] } => {
   const achievementsForStepId = {
-    "1": [achievements.STAGES_OF_LIFE, achievements.REFLECTIONS],
-    "2": [achievements.PILLARS_OF_LIFE],
-    "3": [achievements.STRENGTHS_AND_WEAKNESSES, achievements.TEAM],
-    "4": [],
-    "5": [achievements.GOALS],
-    "6": [],
-    "7": [],
-    "8": [achievements.COMMITMENTS, achievements.HEALTH_AND_WELLNESS],
-    "9": [],
-    "10": [achievements.MY_INTERNAL_WORLD, achievements.LIFE_VISION],
-    "11": [],
-    "12": [achievements.MAJOR_LIFE_EVENTS],
-    "13": [],
-    "14": [achievements.FINANCES],
-    "15": [achievements.AIMS_AND_HOBBIES],
-    "16": [],
-    "17": [achievements.RELATIONSHIPS],
-    "18": [achievements.ENVIRONMENT],
-    "19": [achievements.SPIRITUALITY],
-    "20": [achievements.ASSESSMENTS],
-    "21": [],
-    "22": [],
-    "23": [],
-    "24": [],
-    "25": [],
-    "26": [],
-    "27": [],
-    "28": [],
-    "29": [],
-    "30": []
+    '1': [achievements.STAGES_OF_LIFE, achievements.REFLECTIONS],
+    '2': [achievements.PILLARS_OF_LIFE],
+    '3': [achievements.STRENGTHS_AND_WEAKNESSES, achievements.TEAM],
+    '4': [],
+    '5': [achievements.GOALS],
+    '6': [],
+    '7': [],
+    '8': [achievements.COMMITMENTS, achievements.HEALTH_AND_WELLNESS],
+    '9': [],
+    '10': [achievements.MY_INTERNAL_WORLD, achievements.LIFE_VISION],
+    '11': [],
+    '12': [achievements.MAJOR_LIFE_EVENTS],
+    '13': [],
+    '14': [achievements.FINANCES],
+    '15': [achievements.AIMS_AND_HOBBIES],
+    '16': [],
+    '17': [achievements.RELATIONSHIPS],
+    '18': [achievements.ENVIRONMENT],
+    '19': [achievements.SPIRITUALITY],
+    '20': [achievements.ASSESSMENTS],
+    '21': [],
+    '22': [],
+    '23': [],
+    '24': [],
+    '25': [],
+    '26': [],
+    '27': [],
+    '28': [],
+    '29': [],
+    '30': []
   };
   const listOfValidAchievementsNames = Object.values(achievements); // client based logic right here and now!
   const current: [string] = user.achievements.map(a => a.tagName);
@@ -115,7 +115,7 @@ const nextRequiredUpdateForUser = (
   return {};
 };
 
-const CREATE_ACHIEVEMENT = "CREATE_ACHIEVEMENT";
+const CREATE_ACHIEVEMENT = 'CREATE_ACHIEVEMENT';
 
 export function* watchChangesInFormsAndUpdateAchievements() {
   // here the assumptions is that the formData reducer will always Hydrate before the GET_USER action return, becuase we never

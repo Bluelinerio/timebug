@@ -2,7 +2,7 @@
 import {
   DECREMENT_REQUEST_COUNT,
   INCREMENT_REQUEST_COUNT
-} from "../actionTypes";
+} from '../actionTypes';
 
 type NetworkState = number;
 

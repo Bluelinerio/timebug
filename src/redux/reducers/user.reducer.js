@@ -1,18 +1,18 @@
 // @flow
-import type { UserStateAction } from "../actions";
-import { SET_USER_STATE } from "../actions";
-import type { User, UserState } from "../../services/apollo/models";
+import type { UserStateAction } from '../actions';
+import { SET_USER_STATE } from '../actions';
+import type { User, UserState } from '../../services/apollo/models';
 import {
   ANONYMOUS,
   UNDETERMINED,
   AUTHENTICATING
-} from "../../services/apollo/models";
-import { GET_USER, AUTHENTICATE_FB } from "../actions/user.actions";
+} from '../../services/apollo/models';
+import { GET_USER, AUTHENTICATE_FB } from '../actions/user.actions';
 import {
   LOGOUT,
   LOGIN_WITH_FB_BUTTON_PRESSED,
   UPDATE_USER
-} from "../actionTypes";
+} from '../actionTypes';
 
 export const userFromResponse = (response: any): User => response.data.User;
 

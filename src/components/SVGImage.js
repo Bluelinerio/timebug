@@ -1,12 +1,12 @@
 // @flow
-import * as React from "react";
+import * as React from 'react';
 import {
   View,
   Platform,
   WebView,
   ActivityIndicator,
   StyleSheet
-} from "react-native";
+} from 'react-native';
 
 type Icon = {
   uri: string
@@ -20,8 +20,8 @@ type Props = {
 export default class SVGImage extends React.Component<Props> {
   static defaultProps = {
     style: {},
-    source: { uri: "" },
-    showWebviewLoader: Platform.OS === "android"
+    source: { uri: '' },
+    showWebviewLoader: Platform.OS === 'android'
   };
 
   renderLoader = () => (
@@ -30,8 +30,8 @@ export default class SVGImage extends React.Component<Props> {
         this.props.style,
         {
           flex: 1,
-          alignItems: "center",
-          justifyContent: "center"
+          alignItems: 'center',
+          justifyContent: 'center'
         }
       ]}
     >

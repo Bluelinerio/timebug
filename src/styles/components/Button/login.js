@@ -1,5 +1,5 @@
-import { facebookColor } from "../../../constants/colors";
-import style from "./index";
+import { facebookColor } from '../../../constants/colors';
+import style from './index';
 
 const styles = {
   ...style,

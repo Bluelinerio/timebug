@@ -1,4 +1,4 @@
-import t from "../components/templates";
+import t from '../components/templates';
 
 export default {
   1: {
@@ -9,25 +9,25 @@ export default {
       meditateAnswer: t.Boolean
     }),
     options: {
-      label: "20/20 Life Vision Check-in",
+      label: '20/20 Life Vision Check-in',
       fields: {
         id: {
           hidden: true
         },
         mantraAnswer: {
-          label: "Did you do your mantra today (assigned on Day 21)?"
+          label: 'Did you do your mantra today (assigned on Day 21)?'
         },
         exerciseAnswer: {
-          label: "Did you exercise and meditate yet today(assigned on Day 8)?"
+          label: 'Did you exercise and meditate yet today(assigned on Day 8)?'
         },
         meditateAnswer: {
-          label: "Did you MEDITATE yet today(assigned on Day 8)?"
+          label: 'Did you MEDITATE yet today(assigned on Day 8)?'
         }
       }
     },
     value: {
       fields: {
-        id: "step26+v0.0.0.1"
+        id: 'step26+v0.0.0.1'
       }
     }
   },
@@ -42,30 +42,30 @@ export default {
     }),
     options: {
       label:
-        "What changes and achievements will you make across the following areas?",
+        'What changes and achievements will you make across the following areas?',
       fields: {
         priorities: {
-          label: "Prioritizing your Health Goals vs. other Areas",
+          label: 'Prioritizing your Health Goals vs. other Areas',
           multiline: true
         },
         fitnessExercise: {
-          label: "Fitness & Exercise",
+          label: 'Fitness & Exercise',
           multiline: true
         },
         nutritionDiet: {
-          label: "Nutrition & Diet",
+          label: 'Nutrition & Diet',
           multiline: true
         },
         sleep: {
-          label: "Sleep",
+          label: 'Sleep',
           multiline: true
         },
         bodyCare: {
-          label: "Body Care",
+          label: 'Body Care',
           multiline: true
         },
         mentalEmotional: {
-          label: "Mental & Emotional Health",
+          label: 'Mental & Emotional Health',
           multiline: true
         }
       }
@@ -78,18 +78,18 @@ export default {
       howHelp: t.String
     }),
     options: {
-      label: "Vision Creation: Health and Wellness",
+      label: 'Vision Creation: Health and Wellness',
       fields: {
         who: {
           label:
-            "Who you want to make drastic improvements in their physical health?"
+            'Who you want to make drastic improvements in their physical health?'
         },
         howChange: {
-          label: "How exactly do you want them to change?",
+          label: 'How exactly do you want them to change?',
           multiline: true
         },
         howHelp: {
-          label: "How can you help them achieve this goal?",
+          label: 'How can you help them achieve this goal?',
           multiline: true
         }
       }
@@ -102,20 +102,20 @@ export default {
       howHelp: t.String
     }),
     options: {
-      label: "Vision Creation: Health and Wellness",
+      label: 'Vision Creation: Health and Wellness',
 
       fields: {
         oneWish: {
           label:
-            "List one wish that you have for the world or a particular sector of the world when it comes to Health.",
-          auto: "none"
+            'List one wish that you have for the world or a particular sector of the world when it comes to Health.',
+          auto: 'none'
         },
         whatGroup: {
           label:
-            "What group of people or country can be most influential in helping to attain this goal?"
+            'What group of people or country can be most influential in helping to attain this goal?'
         },
         howHelp: {
-          label: "How can you help, even in a small way, to acheive this goal?"
+          label: 'How can you help, even in a small way, to acheive this goal?'
         }
       }
     }

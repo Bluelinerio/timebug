@@ -1,6 +1,6 @@
-import { put, throttle } from "redux-saga/effects";
+import { put, throttle } from 'redux-saga/effects';
 
-export const SAGA_THROTTLE = "SAGA_THROTTLE";
+export const SAGA_THROTTLE = 'SAGA_THROTTLE';
 export type ActionToThrottle = { type: string, payload?: any };
 export type ThrottleActionType = {
   type: SAGA_THROTTLE,

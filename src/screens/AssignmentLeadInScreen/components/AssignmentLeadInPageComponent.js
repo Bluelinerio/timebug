@@ -1,13 +1,13 @@
 // @flow
 
-import React, { Component, PureComponent } from "react";
-import { Dimensions, ScrollView, View, Animated } from "react-native";
-import TouchableBounce from "react-native/Libraries/Components/Touchable/TouchableBounce";
-import styles from "../styles";
-import Markdown from "../../../Modules/Markdown";
-import AssignmentNumber from "./AssignmentNumber";
-import markdownStyles from "../../../styles/Markdown/assignment";
-import type { Assignment } from "../../../services/cms";
+import React, { Component, PureComponent } from 'react';
+import { Dimensions, ScrollView, View, Animated } from 'react-native';
+import TouchableBounce from 'react-native/Libraries/Components/Touchable/TouchableBounce';
+import styles from '../styles';
+import Markdown from '../../../Modules/Markdown';
+import AssignmentNumber from './AssignmentNumber';
+import markdownStyles from '../../../styles/Markdown/assignment';
+import type { Assignment } from '../../../services/cms';
 
 class AnimateWrapper extends PureComponent {
   render() {
@@ -48,8 +48,8 @@ const TextRenderer = ({ text, animatedStyle, width }) =>
     <Animated.Text
       style={[
         {
-          backgroundColor: "transparent",
-          textAlign: "left",
+          backgroundColor: 'transparent',
+          textAlign: 'left',
           fontSize: 20
         },
         animatedStyle
@@ -103,7 +103,7 @@ export default ({
         <TextRenderer
           text={assignment.content}
           animatedStyle={animatedStyle}
-          width={Dimensions.get("window").width - (!isLastItem ? 70 : 30)}
+          width={Dimensions.get('window').width - (!isLastItem ? 70 : 30)}
         />
       </View>
     </TouchableBounce>

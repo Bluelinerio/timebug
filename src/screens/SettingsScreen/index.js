@@ -1,6 +1,6 @@
-import * as React from "react";
-import connect from "react-reduxt";
-import Profile from "./Profile";
+import * as React from 'react';
+import connect from 'react-reduxt';
+import Profile from './Profile';
 
 const ProfileScreen = () => <Profile {...contactData} />;
 

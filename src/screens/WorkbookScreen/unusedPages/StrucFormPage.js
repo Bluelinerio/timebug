@@ -1,11 +1,11 @@
-import React from "react";
-import { View, Text, Keyboard } from "react-native";
-import FormPages from "../FormPages";
-import Button from "../../../../components/Button";
-import { deepBlue } from "../../../../constants/colors";
-import styles from "../../styles";
-import buttonStyles from "../../../../styles/components/Button/workbook";
-import TouchableBounce from "react-native/Libraries/Components/Touchable/TouchableBounce";
+import React from 'react';
+import { View, Text, Keyboard } from 'react-native';
+import FormPages from '../FormPages';
+import Button from '../../../../components/Button';
+import { deepBlue } from '../../../../constants/colors';
+import styles from '../../styles';
+import buttonStyles from '../../../../styles/components/Button/workbook';
+import TouchableBounce from 'react-native/Libraries/Components/Touchable/TouchableBounce';
 
 // indicatorPosition: `none`, `top`, `right`, `bottom` and `left`
 export default class StrucFormPage extends React.Component {
@@ -54,7 +54,7 @@ export default class StrucFormPage extends React.Component {
         paddingHorizontal: topLevel ? 20 : 0,
         top: 20
       },
-      indicatorColor: "#CCC",
+      indicatorColor: '#CCC',
       onScrollEnd: index => {
         Keyboard.dismiss();
         this.setState({

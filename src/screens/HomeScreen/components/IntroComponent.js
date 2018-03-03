@@ -1,6 +1,6 @@
 // @flow
 
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   StyleSheet,
   Platform,
@@ -10,21 +10,21 @@ import {
   TouchableHighlight,
   ScrollView,
   Image
-} from "react-native";
-import Markdown from "../../../Modules/Markdown";
-import LinearGradient from "react-native-linear-gradient";
-import FBLoginButton from "../containers/FBLoginButton";
-import ScrollableHeader from "../../../components/ScrollableHeader";
-import DefaultIndicator from "../../../components/DefaultIndicator";
-import { backgroundImage } from "../../../resources/images/";
-import { whiteTwo, deepBlue, hotPink } from "../../../constants/colors";
+} from 'react-native';
+import Markdown from '../../../Modules/Markdown';
+import LinearGradient from 'react-native-linear-gradient';
+import FBLoginButton from '../containers/FBLoginButton';
+import ScrollableHeader from '../../../components/ScrollableHeader';
+import DefaultIndicator from '../../../components/DefaultIndicator';
+import { backgroundImage } from '../../../resources/images/';
+import { whiteTwo, deepBlue, hotPink } from '../../../constants/colors';
 import {
   APPBAR_HEIGHT,
   STATUSBAR_HEIGHT,
   TITLE_OFFSET
-} from "../../../constants";
-import LoginButtonStyles from "../../../styles/components/Button/login";
-import markdownStyles from "../../../styles/Markdown/intro";
+} from '../../../constants';
+import LoginButtonStyles from '../../../styles/components/Button/login';
+import markdownStyles from '../../../styles/Markdown/intro';
 
 const Header = () => <View style={styles.header} />;
 
@@ -36,7 +36,7 @@ const Content = () => (
         paddingHorizontal: 20
       }}
     >
-      <Markdown markdownStyles={markdownStyles}>{"about"}</Markdown>
+      <Markdown markdownStyles={markdownStyles}>{'about'}</Markdown>
     </ScrollView>
     <FBLoginButton />
 
@@ -58,22 +58,22 @@ export default () => (
 const styles = StyleSheet.create({
   header: {
     flex: 1,
-    justifyContent: "space-between",
-    alignItems: "center",
-    backgroundColor: "white"
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: 'white'
   },
   title: {
     paddingTop: 0,
-    fontFamily: "HelveticaNeue",
+    fontFamily: 'HelveticaNeue',
     fontSize: 24,
-    fontWeight: "bold",
-    textAlign: "center",
+    fontWeight: 'bold',
+    textAlign: 'center',
     color: deepBlue,
-    backgroundColor: "transparent"
+    backgroundColor: 'transparent'
   },
   gradient: {
     flex: 1,
-    alignSelf: "stretch"
+    alignSelf: 'stretch'
   },
   content: {
     marginTop: 30,

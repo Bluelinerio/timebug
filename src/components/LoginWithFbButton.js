@@ -1,12 +1,12 @@
-import * as React from "react";
-import { connect } from "react-redux";
-import { View, Text, Dimensions, StyleSheet } from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome";
-import Entypo from "react-native-vector-icons/Entypo";
+import * as React from 'react';
+import { connect } from 'react-redux';
+import { View, Text, Dimensions, StyleSheet } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import Entypo from 'react-native-vector-icons/Entypo';
 
-import Button from "../components/Button";
-import type { Props } from "../components/Button";
-import { heavyGray, lightGray, facebookColor } from "../constants/colors";
+import Button from '../components/Button';
+import type { Props } from '../components/Button';
+import { heavyGray, lightGray, facebookColor } from '../constants/colors';
 
 export default ({
   onPress,
@@ -34,24 +34,24 @@ export default ({
 
 const styles = StyleSheet.create({
   container: {
-    alignSelf: "center",
-    justifyContent: "center",
-    marginVertical: Dimensions.get("window").height * 0.05
+    alignSelf: 'center',
+    justifyContent: 'center',
+    marginVertical: Dimensions.get('window').height * 0.05
   },
   facebookButton: {
     paddingHorizontal: 10
   },
   advisoryContainer: {
     marginTop: 10,
-    flexDirection: "row",
-    justifyContent: "center"
+    flexDirection: 'row',
+    justifyContent: 'center'
   },
   infoIcon: {
-    alignSelf: "center",
+    alignSelf: 'center',
     marginHorizontal: 4
   },
   advisoryText: {
-    textAlign: "center",
+    textAlign: 'center',
     color: lightGray,
     fontSize: 11
   }

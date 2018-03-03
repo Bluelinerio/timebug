@@ -1,9 +1,9 @@
 // @flow
 
-import { ApolloClient } from "apollo-client";
-import { HttpLink } from "apollo-link-http";
-import { InMemoryCache } from "apollo-cache-inmemory";
-import gql from "graphql-tag";
+import { ApolloClient } from 'apollo-client';
+import { HttpLink } from 'apollo-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import gql from 'graphql-tag';
 import type {
   Auth,
   User,
@@ -12,10 +12,10 @@ import type {
   ErrorResponse,
   CreateFormArgs,
   UpdateormArgs
-} from "./models";
+} from './models';
 
 export const endpoints = {
-  simple: "https://api.graph.cool/simple/v1/cjdowhhkd5x86012230izght0"
+  simple: 'https://api.graph.cool/simple/v1/cjdowhhkd5x86012230izght0'
 };
 
 export const client = new ApolloClient({
@@ -23,7 +23,7 @@ export const client = new ApolloClient({
   cache: new InMemoryCache()
 });
 
-import { temporaryUserAdditions } from "./tmp";
+import { temporaryUserAdditions } from './tmp';
 
 const _parse = <T>(key: string, graphResponse: GraphResponse): T => {
   const { data, error } = graphResponse;
@@ -34,7 +34,7 @@ const _parse = <T>(key: string, graphResponse: GraphResponse): T => {
   if (value) {
     return temporaryUserAdditions(value);
   }
-  throw { error: error || "User not found" };
+  throw { error: error || 'User not found' };
 };
 
 const parse = <T>(key: string) => (graphResponse: GraphResponse): T =>
@@ -53,10 +53,10 @@ export const authenticateWithFBToken = (fbToken: string): Auth =>
           }
         }
       `,
-      fetchPolicy: "network-only",
+      fetchPolicy: 'network-only',
       variables: { token: fbToken }
     })
-    .then(parse("authenticateFB"));
+    .then(parse('authenticateFB'));
 
 const handleErrorGettingUser = (errorResponse: ErrorResponse) => {
   throw errorResponse;
@@ -131,10 +131,10 @@ export const fetchUserWithId = (id: string): User =>
         }
         ${userFragments}
       `,
-      fetchPolicy: "network-only",
+      fetchPolicy: 'network-only',
       variables: { id }
     })
-    .then(parse("User"))
+    .then(parse('User'))
     .catch(handleErrorGettingUser);
 
 export const createForm = ({ userId, stepId, data }: CreateFormArgs): any =>
@@ -156,7 +156,7 @@ export const createForm = ({ userId, stepId, data }: CreateFormArgs): any =>
         data
       }
     })
-    .then(parse("createForm"));
+    .then(parse('createForm'));
 
 export const updateForm = ({ userId, id, data }: UpdateormArgs): any =>
   client
@@ -177,7 +177,7 @@ export const updateForm = ({ userId, id, data }: UpdateormArgs): any =>
         data
       }
     })
-    .then(parse("updateForm"));
+    .then(parse('updateForm'));
 
 export const createAchievement = ({ userId, tagName }) =>
   client
@@ -200,7 +200,7 @@ export const createAchievement = ({ userId, tagName }) =>
         tagName
       }
     })
-    .then(parse("createAchievement"));
+    .then(parse('createAchievement'));
 
 export const deleteAchievement = achievementId =>
   client
@@ -216,7 +216,7 @@ export const deleteAchievement = achievementId =>
         achievementId
       }
     })
-    .then(parse("deleteAchievement"));
+    .then(parse('deleteAchievement'));
 
 export const fetchUserAchievementsWithUserId = (id: string): User =>
   client
@@ -230,10 +230,10 @@ export const fetchUserAchievementsWithUserId = (id: string): User =>
         }
         ${userAchievementsFragment}
       `,
-      fetchPolicy: "network-only",
+      fetchPolicy: 'network-only',
       variables: { id }
     })
-    .then(parse("User"))
+    .then(parse('User'))
     .catch(handleErrorGettingUser);
 
 export const testUser = ({ userId }): any =>
@@ -257,4 +257,4 @@ export const testUser = ({ userId }): any =>
         userId: userId
       }
     })
-    .then(parse("User"));
+    .then(parse('User'));

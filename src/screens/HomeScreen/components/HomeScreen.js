@@ -1,27 +1,27 @@
 // @flow
-import React, { PureComponent } from "react";
+import React, { PureComponent } from 'react';
 import {
   StatusBar,
   View,
   Text,
   ScrollView,
   TouchableHighlight
-} from "react-native";
-import { SafeAreaView } from "react-navigation";
+} from 'react-native';
+import { SafeAreaView } from 'react-navigation';
 
-import GradientWithTwoColors from "../../../components/GradientWithTwoColors";
-import Error from "../../../components/Error";
-import PagninatedCarouselContainer from "../containers/PagninatedCarouselContainer";
-import LifevisionDashoboardCellContainer from "../containers/LifevisionDashoboardCellContainer";
-import Version from "../containers/Version";
-import styles from "../styles";
-import { sliderWidth, itemWidth } from "../styles/SliderEntry.style";
-import PagninatedCarousel from "./PagninatedCarousel";
-import Banner from "./Banner";
+import GradientWithTwoColors from '../../../components/GradientWithTwoColors';
+import Error from '../../../components/Error';
+import PagninatedCarouselContainer from '../containers/PagninatedCarouselContainer';
+import LifevisionDashoboardCellContainer from '../containers/LifevisionDashoboardCellContainer';
+import Version from '../containers/Version';
+import styles from '../styles';
+import { sliderWidth, itemWidth } from '../styles/SliderEntry.style';
+import PagninatedCarousel from './PagninatedCarousel';
+import Banner from './Banner';
 
 /// end other.
 
-import MeditationDashobardCellContainer from "../containers/MeditationDashobardCellContainer";
+import MeditationDashobardCellContainer from '../containers/MeditationDashobardCellContainer';
 
 export type Props = {
   error?: string
@@ -36,13 +36,13 @@ export default class HomeScreen extends PureComponent<Props, State> {
     const { stepIndexInFocus } = this.state;
     return (
       <SafeAreaView
-        forceInset={{ top: "always", bottom: "never" }}
+        forceInset={{ top: 'always', bottom: 'never' }}
         style={styles.container}
       >
         <StatusBar
           translucent
           barStyle="dark-content"
-          backgroundColor={"transparent"}
+          backgroundColor={'transparent'}
         />
         <ScrollView
           style={{ flex: 1 }}
@@ -51,7 +51,7 @@ export default class HomeScreen extends PureComponent<Props, State> {
           {StatusBar.currentHeight && (
             <View
               style={{
-                backgroundColor: "white",
+                backgroundColor: 'white',
                 height: StatusBar.currentHeight
               }}
             />
@@ -67,14 +67,14 @@ export default class HomeScreen extends PureComponent<Props, State> {
           <View
             style={{
               height: 300,
-              flexDirection: "row",
-              justifyContent: "center",
-              alignItems: "center"
+              flexDirection: 'row',
+              justifyContent: 'center',
+              alignItems: 'center'
             }}
           >
             <GradientWithTwoColors
-              gradientTopColor={"#f8f8f8"}
-              gradientBottomColor={"white"}
+              gradientTopColor={'#f8f8f8'}
+              gradientBottomColor={'white'}
               opacity={0.5}
             />
           </View>

@@ -1,5 +1,5 @@
-import * as React from "react";
-import { Dimensions } from "react-native";
+import * as React from 'react';
+import { Dimensions } from 'react-native';
 import Svg, {
   Circle,
   Ellipse,
@@ -16,9 +16,9 @@ import Svg, {
   Use,
   Defs,
   Stop
-} from "react-native-svg";
-import Grid from "../Grid";
-import type { GridItemProps, GridContainerProps, GridProps } from "../Grid";
+} from 'react-native-svg';
+import Grid from '../Grid';
+import type { GridItemProps, GridContainerProps, GridProps } from '../Grid';
 
 const state = [
   0,
@@ -52,7 +52,7 @@ const state = [
   1,
   1
 ];
-const colors = ["#E9E9E9", "#005587", "#F89A1F", "#00B896"];
+const colors = ['#E9E9E9', '#005587', '#F89A1F', '#00B896'];
 
 export const renderContainer = (props: GridContainerProps) => (
   <Svg width={props.width} height={props.height} style={props.style || {}}>
@@ -103,7 +103,7 @@ type Props = GridProps & {
 export const defaultProps: GridProps = {
   columns: 10,
   rows: 3,
-  width: Dimensions.get("window").width,
+  width: Dimensions.get('window').width,
   aspectRatio: 1,
   options: {
     spaceX: ({ tileWidth }) => Math.floor(tileWidth * 0.1),

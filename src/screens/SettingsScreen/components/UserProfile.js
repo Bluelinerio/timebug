@@ -1,6 +1,6 @@
 // @flow
-import * as React from "react";
-import { Card, Icon } from "react-native-elements";
+import * as React from 'react';
+import { Card, Icon } from 'react-native-elements';
 import {
   Image,
   ImageBackground,
@@ -11,11 +11,11 @@ import {
   StyleSheet,
   Text,
   View
-} from "react-native";
-import { lifevisionCollage } from "../../../resources/images/";
-import { deepBlue as primaryColor } from "../../../constants/colors";
+} from 'react-native';
+import { lifevisionCollage } from '../../../resources/images/';
+import { deepBlue as primaryColor } from '../../../constants/colors';
 
-import Separator from "./Separator";
+import Separator from './Separator';
 
 export type Props = {
   logout: () => void,
@@ -125,7 +125,7 @@ export default Contact;
 
 const styles = StyleSheet.create({
   cardContainer: {
-    backgroundColor: "#FFF",
+    backgroundColor: '#FFF',
     borderWidth: 0,
     flex: 1,
     margin: 0,
@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   emailContainer: {
-    backgroundColor: "#FFF",
+    backgroundColor: '#FFF',
     flex: 1,
     paddingTop: 30
   },
@@ -145,27 +145,27 @@ const styles = StyleSheet.create({
   },
   headerContainer: {},
   headerColumn: {
-    backgroundColor: "transparent",
+    backgroundColor: 'transparent',
     ...Platform.select({
       ios: {
-        alignItems: "center",
+        alignItems: 'center',
         elevation: 1,
         marginTop: -1
       },
       android: {
-        alignItems: "center"
+        alignItems: 'center'
       }
     })
   },
   placeIcon: {
-    color: "white",
+    color: 'white',
     fontSize: 26
   },
   scroll: {
-    backgroundColor: "#FFF"
+    backgroundColor: '#FFF'
   },
   telContainer: {
-    backgroundColor: "#FFF",
+    backgroundColor: '#FFF',
     flex: 1,
     paddingTop: 30
   },
@@ -178,10 +178,10 @@ const styles = StyleSheet.create({
     width: 170
   },
   userNameText: {
-    color: "#FFF",
+    color: '#FFF',
     fontSize: 22,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     paddingBottom: 8,
-    textAlign: "center"
+    textAlign: 'center'
   }
 });

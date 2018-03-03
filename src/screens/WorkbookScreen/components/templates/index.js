@@ -1,18 +1,18 @@
-import { Animated, KeyboardAvoidingView } from "react-native";
-import { Pages } from "react-native-pages";
-import React, { Children } from "react";
+import { Animated, KeyboardAvoidingView } from 'react-native';
+import { Pages } from 'react-native-pages';
+import React, { Children } from 'react';
 
-import t from "tcomb-form-native/lib";
-import { getTypeInfo } from "tcomb-form-native/lib/util";
-import templates from "tcomb-form-native/lib/templates/bootstrap/index";
-import stylesheet from "tcomb-form-native/lib/stylesheets/bootstrap";
-import i18n from "tcomb-form-native/lib/i18n/en";
+import t from 'tcomb-form-native/lib';
+import { getTypeInfo } from 'tcomb-form-native/lib/util';
+import templates from 'tcomb-form-native/lib/templates/bootstrap/index';
+import stylesheet from 'tcomb-form-native/lib/stylesheets/bootstrap';
+import i18n from 'tcomb-form-native/lib/i18n/en';
 
-import customList from "./customList";
-import customTextBox from "./customTextbox";
-import customStruct from "./customStruct";
-import select from "./select";
-import customStylesheet from "../../styles/templates/index";
+import customList from './customList';
+import customTextBox from './customTextbox';
+import customStruct from './customStruct';
+import select from './select';
+import customStylesheet from '../../styles/templates/index';
 
 if (__DEV__) {
   function assert(condition, error) {
@@ -20,32 +20,32 @@ if (__DEV__) {
   }
   const message = name => `expected ${name} in customStylesheet`;
   assert(
-    typeof customStylesheet.textbox.normal === "object",
-    message("textbox.normal")
+    typeof customStylesheet.textbox.normal === 'object',
+    message('textbox.normal')
   );
   assert(
-    typeof customStylesheet.textbox.error === "object",
-    message("textbox.error")
+    typeof customStylesheet.textbox.error === 'object',
+    message('textbox.error')
   );
   assert(
-    typeof customStylesheet.textbox.notEditable === "object",
-    message("textbox.notEditable")
+    typeof customStylesheet.textbox.notEditable === 'object',
+    message('textbox.notEditable')
   );
   assert(
-    typeof customStylesheet.fieldset.topLevel === "object",
-    message("fieldset.topLevel")
+    typeof customStylesheet.fieldset.topLevel === 'object',
+    message('fieldset.topLevel')
   );
   assert(
-    typeof customStylesheet.fieldset.normal === "object",
-    message("fieldset.normal")
+    typeof customStylesheet.fieldset.normal === 'object',
+    message('fieldset.normal')
   );
   assert(
-    typeof customStylesheet.textBoxView.normal === "object",
-    message("textBoxView.normal")
+    typeof customStylesheet.textBoxView.normal === 'object',
+    message('textBoxView.normal')
   );
   assert(
-    typeof customStylesheet.textBoxView.error === "object",
-    message("textBoxView.error")
+    typeof customStylesheet.textBoxView.error === 'object',
+    message('textBoxView.error')
   );
 }
 
@@ -68,18 +68,18 @@ t.form.Form.defaultProps = {
 };
 
 t.String.getValidationErrorMessage = (actual, path, context) => {
-  const to = path.length ? "/" + path.join("/") + ": " : "";
+  const to = path.length ? '/' + path.join('/') + ': ' : '';
 
   if (!actual) {
     const help =
       context &&
       context.options &&
       context.options.help &&
-      ", " + context.options.help;
+      ', ' + context.options.help;
     return `missing required field ${to}${help}`;
   } else {
-    const to = path.length ? "/" + path.join("/") + ": " : "";
-    return "Invalid value " + t.stringify(actual) + " supplied to " + to;
+    const to = path.length ? '/' + path.join('/') + ': ' : '';
+    return 'Invalid value ' + t.stringify(actual) + ' supplied to ' + to;
   }
 };
 

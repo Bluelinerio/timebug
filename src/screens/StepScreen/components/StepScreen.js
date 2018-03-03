@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   Platform,
   StyleSheet,
@@ -8,19 +8,19 @@ import {
   ScrollView,
   TouchableOpacity,
   StatusBar
-} from "react-native";
-import Icon from "react-native-vector-icons/Ionicons";
-import Markdown from "../../../Modules/Markdown";
-import Button from "../../../components/Button";
-import GradientWithTwoColors from "../../../components/GradientWithTwoColors";
-import ScrollableHeader from "../../../components/ScrollableHeader";
-import CustomImage from "../../../components/CustomImage";
-import type { Step } from "../../../services/cms";
-import { getImageUrl } from "../../../services/cms";
-import styles from "../styles";
-import { APPBAR_HEIGHT, STATUSBAR_HEIGHT } from "../../../constants";
-import markdownStyles from "../../../styles/Markdown/stepScreen";
-import StepScreenButtonContainer from "../containers/StepScreenButtonContainer";
+} from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
+import Markdown from '../../../Modules/Markdown';
+import Button from '../../../components/Button';
+import GradientWithTwoColors from '../../../components/GradientWithTwoColors';
+import ScrollableHeader from '../../../components/ScrollableHeader';
+import CustomImage from '../../../components/CustomImage';
+import type { Step } from '../../../services/cms';
+import { getImageUrl } from '../../../services/cms';
+import styles from '../styles';
+import { APPBAR_HEIGHT, STATUSBAR_HEIGHT } from '../../../constants';
+import markdownStyles from '../../../styles/Markdown/stepScreen';
+import StepScreenButtonContainer from '../containers/StepScreenButtonContainer';
 
 export type Props = {
   title: string,
@@ -32,17 +32,17 @@ export type Props = {
   onPress: () => void
 };
 
-const HEADER_HEIGHT = Dimensions.get("window").height * 0.4;
+const HEADER_HEIGHT = Dimensions.get('window').height * 0.4;
 
 const Content = ({ title, subtitle, description, color, number }) => (
   <View style={styles.stepScreenContent}>
     <StatusBar
       translucent
       barStyle="light-content"
-      backgroundColor={"transparent"}
+      backgroundColor={'transparent'}
     />
     <Text
-      testID={"step_subtitle"}
+      testID={'step_subtitle'}
       style={[
         styles.stepScreenSubtitle,
         {
@@ -73,7 +73,7 @@ const Header = ({ icon, title, number, color }) => (
       <CustomImage
         backgroundColor={color}
         style={styles.stepScreenImage}
-        testID={"step_picture"}
+        testID={'step_picture'}
         source={icon}
       />
     )}

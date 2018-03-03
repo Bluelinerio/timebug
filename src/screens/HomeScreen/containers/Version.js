@@ -1,13 +1,13 @@
-import React, { PureComponent } from "react";
-import { View, Text, ScrollView, TouchableHighlight } from "react-native";
-import DeviceInfo from "react-native-device-info";
+import React, { PureComponent } from 'react';
+import { View, Text, ScrollView, TouchableHighlight } from 'react-native';
+import DeviceInfo from 'react-native-device-info';
 
 export default () => (
   <Text
     style={{
-      textAlign: "center",
+      textAlign: 'center',
       fontSize: 10,
-      color: "#ccc",
+      color: '#ccc',
       marginBottom: 2
     }}
   >

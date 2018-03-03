@@ -7,13 +7,13 @@ const TOKEN_KEY = 'lifevision-1';
 export type TokenAndUserIdType = {
   token: string,
   userId: string,
-  endpoint: string,
+  endpoint: string
 };
 
 const emptyTokenAndUserId = {
   token: null,
   userId: null,
-  endpoint: null,
+  endpoint: null
 };
 
 // TODO: This function isn't used, remove if not needed.
@@ -29,7 +29,7 @@ const emptyTokenAndUserId = {
 
 const android = {
   getTokenAndUserId: (): ?TokenAndUserIdType => ({}),
-  setTokenAndUserId: () => null,
+  setTokenAndUserId: () => null
 };
 
 async function getTokenAndUserId() {
@@ -61,12 +61,12 @@ async function wipeStorage() {
 const ios = {
   getTokenAndUserId,
   setTokenAndUserId,
-  wipeStorage,
+  wipeStorage
 };
 
 export default Platform.select({
   ios,
-  android,
+  android
 });
 
 // todo: this isn't working needs fixing:

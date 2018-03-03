@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { View, Text, Picker } from "react-native";
-import PickerIOS from "./ios/PickerIOS";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { View, Text, Picker } from 'react-native';
+import PickerIOS from './ios/PickerIOS';
 
 export default function select(props) {
   if (props.hidden) {

@@ -1,9 +1,9 @@
 // @flow
 
-import { put, select, takeLatest } from "redux-saga/effects";
-import { GO_TO_HOME_SCREEN, SAGA_NAVIGATE } from "../actionTypes";
-import { NavigationActions } from "react-navigation";
-import type, { Assignment } from "../../services/cms";
+import { put, select, takeLatest } from 'redux-saga/effects';
+import { GO_TO_HOME_SCREEN, SAGA_NAVIGATE } from '../actionTypes';
+import { NavigationActions } from 'react-navigation';
+import type, { Assignment } from '../../services/cms';
 
 type SelectForNavigation = (
   state: any
@@ -24,9 +24,9 @@ export function* watchForsagaNavigate() {
 
 const _goToHomeScreen = (action: { reset: boolean, number: number }) => {
   if (action.reset) {
-    return NavigationActions.reset("HomeScreen", action);
+    return NavigationActions.reset('HomeScreen', action);
   } else {
-    return NavigationActions.navigate("HomeScreen", action);
+    return NavigationActions.navigate('HomeScreen', action);
   }
 };
 

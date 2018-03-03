@@ -1,4 +1,4 @@
-import screen from "./containers/AssignmentsLeadInScreenContainer";
+import screen from './containers/AssignmentsLeadInScreenContainer';
 
 screen.navigationOptions = ({
   navigation: { state: { params: { stepColor, stepNumber } } }
@@ -7,7 +7,7 @@ screen.navigationOptions = ({
   headerStyle: {
     backgroundColor: stepColor
   },
-  headerTintColor: "white"
+  headerTintColor: 'white'
 });
 
 export default {

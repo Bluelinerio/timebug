@@ -1,26 +1,26 @@
 // @flow
-import * as React from "react";
-import { Image, View, Text, Button, Platform } from "react-native";
-import TouchableBounce from "react-native/Libraries/Components/Touchable/TouchableBounce";
-import glamorous from "glamorous-native";
-import LinearGradient from "react-native-linear-gradient";
+import * as React from 'react';
+import { Image, View, Text, Button, Platform } from 'react-native';
+import TouchableBounce from 'react-native/Libraries/Components/Touchable/TouchableBounce';
+import glamorous from 'glamorous-native';
+import LinearGradient from 'react-native-linear-gradient';
 
-import styles from "../../styles/dashbaord.styles";
-import TouchableRoundedImage from "../../../../components/TouchableRoundedImage";
-import Meditator from "../../../../components/Meditator";
+import styles from '../../styles/dashbaord.styles';
+import TouchableRoundedImage from '../../../../components/TouchableRoundedImage';
+import Meditator from '../../../../components/Meditator';
 import {
   hotPink,
   lessSaturatedDeepBlue,
   deepBlue
-} from "../../../../constants/colors";
+} from '../../../../constants/colors';
 
 const Card = glamorous(View /*TouchableBounce*/)(styles.dashboardCard);
 const Row = glamorous.view(styles.suggestionRow);
 const BottomRow = glamorous.view(styles.suggestionRowBottom);
 
 const GradientWithTwoColors = ({
-  startColor = "white",
-  endColor = "#f8f8f8",
+  startColor = 'white',
+  endColor = '#f8f8f8',
   children,
   style
 }) => (
@@ -48,14 +48,14 @@ const HighlighText = ({ children }) => (
 const YNButton = ({ onPress, title }) => (
   <View
     style={{
-      alignSelf: "center",
+      alignSelf: 'center',
       marginVertical: 10,
       marginHorizontal: 20
     }}
   >
     <Button
       title={title}
-      color={Platform.OS === "ios" ? deepBlue : lessSaturatedDeepBlue}
+      color={Platform.OS === 'ios' ? deepBlue : lessSaturatedDeepBlue}
       onPress={onPress}
     />
   </View>
@@ -73,7 +73,7 @@ export default class MeditationCell extends React.PureComponent<> {
                 styles.suggestionText,
                 styles.strong,
                 {
-                  textAlign: "center",
+                  textAlign: 'center',
                   color: hotPink
                 }
               ]}
@@ -83,13 +83,13 @@ export default class MeditationCell extends React.PureComponent<> {
             <Meditator />
             <View
               style={{
-                flexDirection: "row",
-                justifyContent: "center",
-                alignItems: "center"
+                flexDirection: 'row',
+                justifyContent: 'center',
+                alignItems: 'center'
               }}
             >
-              <YNButton title={"Yes"} onPress={onPress} />
-              <YNButton title={"No"} onPress={onPress} />
+              <YNButton title={'Yes'} onPress={onPress} />
+              <YNButton title={'No'} onPress={onPress} />
             </View>
           </HighlighText>
         </Row>

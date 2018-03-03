@@ -1,10 +1,10 @@
-import React from "react";
-import { View, Text, Keyboard } from "react-native";
-import Button from "../../../../components/Button";
-import { deepBlue } from "../../../../constants/colors";
-import styles from "../../styles";
-import buttonStyles from "../../../../styles/components/Button/workbook";
-import TouchableBounce from "react-native/Libraries/Components/Touchable/TouchableBounce";
+import React from 'react';
+import { View, Text, Keyboard } from 'react-native';
+import Button from '../../../../components/Button';
+import { deepBlue } from '../../../../constants/colors';
+import styles from '../../styles';
+import buttonStyles from '../../../../styles/components/Button/workbook';
+import TouchableBounce from 'react-native/Libraries/Components/Touchable/TouchableBounce';
 
 // indicatorPosition: `none`, `top`, `right`, `bottom` and `left`
 export default class Struct extends React.Component {

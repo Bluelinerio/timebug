@@ -1,7 +1,7 @@
 // @flow
-import React from "react";
-import { TouchableOpacity, ImageBackground } from "react-native";
-import glamorous from "glamorous-native";
+import React from 'react';
+import { TouchableOpacity, ImageBackground } from 'react-native';
+import glamorous from 'glamorous-native';
 
 type Props = {} & {
   style: React.StylePropTypes,
@@ -12,9 +12,9 @@ const StyledImageBackground = glamorous(ImageBackground)({
   flex: 1,
   height: undefined,
   width: undefined,
-  flexDirection: "column",
-  justifyContent: "space-between",
-  alignItems: "flex-start",
+  flexDirection: 'column',
+  justifyContent: 'space-between',
+  alignItems: 'flex-start',
   borderRadius: 6
 });
 

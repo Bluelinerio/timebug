@@ -3,7 +3,7 @@ import {
   SUBMIT_FORM_VALUE,
   INCREMENT_FORM_DATA_QUEUE,
   DECREMENT_FORM_DATA_QUEUE
-} from "../actionTypes";
+} from '../actionTypes';
 
 export type FormDataState = {
   data: {
@@ -75,8 +75,8 @@ function formDataReducer(
   }
 }
 
-import storage from "redux-persist/lib/storage";
-import { persistReducer, createMigrate } from "redux-persist";
+import storage from 'redux-persist/lib/storage';
+import { persistReducer, createMigrate } from 'redux-persist';
 
 const mapDataWithStepIndicesToDataWithStepIds = state => {
   if (!state.data || Object.keys(state.data).length === 0) {
@@ -102,9 +102,9 @@ const migrations = {
 };
 
 const persistConfig = {
-  key: "formData",
+  key: 'formData',
   storage: storage,
-  blacklist: ["requestCount"],
+  blacklist: ['requestCount'],
   version: 1,
   migrate: createMigrate(migrations, { debug: true })
 };

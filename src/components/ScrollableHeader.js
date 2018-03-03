@@ -1,7 +1,7 @@
 // @flow
 
-import React, { Component } from "react";
-import { Animated, ScrollView, View } from "react-native";
+import React, { Component } from 'react';
+import { Animated, ScrollView, View } from 'react-native';
 
 type Props = {
   content: ReactElement,
@@ -37,33 +37,33 @@ export default class ScrollableHeader extends Component<Props, State> {
     const headerHeight = this.state.scrollY.interpolate({
       inputRange: [0, headerScrollDistance],
       outputRange: [headerMaxHeight, headerMinHeight],
-      extrapolate: "clamp"
+      extrapolate: 'clamp'
     });
     const imageOpacity = this.state.scrollY.interpolate({
       inputRange: [0, headerScrollDistance / 2, headerScrollDistance],
       outputRange: [1, 1, 1],
-      extrapolate: "clamp"
+      extrapolate: 'clamp'
     });
     const imageTranslate = this.state.scrollY.interpolate({
       inputRange: [0, headerScrollDistance],
       outputRange: [0, -100],
-      extrapolate: "clamp"
+      extrapolate: 'clamp'
     });
     const headerOpacity = this.state.scrollY.interpolate({
       inputRange: [0, 0, headerScrollDistance],
       outputRange: [0, 0, 1],
-      extrapolate: "clamp"
+      extrapolate: 'clamp'
     });
     const contentOpacity = this.state.scrollY.interpolate({
       inputRange: [0, 1, headerScrollDistance],
       outputRange: [1, 1, 0],
-      extrapolate: "clamp"
+      extrapolate: 'clamp'
     });
 
     return (
       <View style={{ flex: 1 }}>
         <ScrollView
-          testID={"step_content_scrollable"}
+          testID={'step_content_scrollable'}
           style={{ flex: 1 }}
           scrollEventThrottle={16}
           automaticallyAdjustContentInsets={false}
@@ -77,12 +77,12 @@ export default class ScrollableHeader extends Component<Props, State> {
           style={[
             headerStyles,
             {
-              position: "absolute",
+              position: 'absolute',
               top: 0,
               left: 0,
               right: 0,
-              backgroundColor: "transparent",
-              overflow: "hidden",
+              backgroundColor: 'transparent',
+              overflow: 'hidden',
               height: headerHeight
             }
           ]}
@@ -90,7 +90,7 @@ export default class ScrollableHeader extends Component<Props, State> {
           {headerImage ? (
             <Animated.Image
               style={{
-                position: "absolute",
+                position: 'absolute',
                 top: 0,
                 left: 0,
                 right: 0,
@@ -106,7 +106,7 @@ export default class ScrollableHeader extends Component<Props, State> {
           {headerComponent ? (
             <Animated.View
               style={{
-                position: "absolute",
+                position: 'absolute',
                 top: 0,
                 left: 0,
                 right: 0,
@@ -122,14 +122,14 @@ export default class ScrollableHeader extends Component<Props, State> {
           ) : null}
           <Animated.View
             style={{
-              position: "absolute",
+              position: 'absolute',
               top: 0,
               left: 0,
               right: 0,
               height: headerMaxHeight,
-              alignItems: "center",
-              justifyContent: "center",
-              backgroundColor: "transparent",
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: 'transparent',
               opacity: headerOpacity,
               zIndex: 11
             }}

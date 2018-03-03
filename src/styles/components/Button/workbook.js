@@ -1,5 +1,5 @@
-import { hotPink } from "../../../constants/colors";
-import style from "./index";
+import { hotPink } from '../../../constants/colors';
+import style from './index';
 
 const styles = {
   ...style,

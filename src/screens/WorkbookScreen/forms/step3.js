@@ -1,5 +1,5 @@
-import t from "../components/templates";
-import { Strengths, Weaknesses } from "./contents";
+import t from '../components/templates';
+import { Strengths, Weaknesses } from './contents';
 
 export default {
   1: {
@@ -13,7 +13,7 @@ export default {
       )
     }),
     options: {
-      label: "What are your strengths?",
+      label: 'What are your strengths?',
 
       fields: {
         id: {
@@ -28,12 +28,12 @@ export default {
           item: {
             fields: {
               strengths: {
-                auto: "labels",
-                error: "Please select a charachter strength."
+                auto: 'labels',
+                error: 'Please select a charachter strength.'
               },
               resultingGoalAchieved: {
                 label:
-                  "What is a goal that you achieved as a result of this strength of yours?"
+                  'What is a goal that you achieved as a result of this strength of yours?'
               }
             }
           }
@@ -41,7 +41,7 @@ export default {
       },
       value: {
         fields: {
-          id: "step3+v0.0.0.1"
+          id: 'step3+v0.0.0.1'
         }
       }
     }
@@ -56,7 +56,7 @@ export default {
       )
     }),
     options: {
-      label: "What are your weaknesses?",
+      label: 'What are your weaknesses?',
       fields: {
         charachterWeaknesses: {
           disableOrder: true,
@@ -67,7 +67,7 @@ export default {
           item: {
             fields: {
               weaknesses: {
-                auto: "labels"
+                auto: 'labels'
                 // error: "Please select a charachter weakness."
               },
               goalNotReached: {
@@ -89,20 +89,20 @@ export default {
     }),
     options: {
       label:
-        "What does a close friend or family member, an objective one, think of your strengths & weaknesses?",
+        'What does a close friend or family member, an objective one, think of your strengths & weaknesses?',
       fields: {
         friendsName: {
           label: "Write down a friend or family member's name.",
           error:
-            "The best person to help you with this exercise is someone who you trust to me completely honest without being judgemental."
+            'The best person to help you with this exercise is someone who you trust to me completely honest without being judgemental.'
         },
         strengths: {
-          label: "Strengths",
-          error: "Please select a charachter strength."
+          label: 'Strengths',
+          error: 'Please select a charachter strength.'
         },
         weaknesses: {
-          label: "Weaknesses",
-          error: "Please select a charachter weakness.",
+          label: 'Weaknesses',
+          error: 'Please select a charachter weakness.',
           config: {
             minLines: 3
           }

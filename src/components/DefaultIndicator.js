@@ -1,11 +1,11 @@
 // @flow
-import React from "react";
-import { View, ActivityIndicator, StyleSheet, Image } from "react-native";
-import styles from "../styles/components/DefaultIndicator";
-import { lifevisionCollage } from "../resources/images";
+import React from 'react';
+import { View, ActivityIndicator, StyleSheet, Image } from 'react-native';
+import styles from '../styles/components/DefaultIndicator';
+import { lifevisionCollage } from '../resources/images';
 
 type Props = {
-  size: "small" | "large"
+  size: 'small' | 'large'
 };
 
 export default ({ size, color }: Props) => (
@@ -21,7 +21,7 @@ export default ({ size, color }: Props) => (
       source={lifevisionCollage}
     />
     <ActivityIndicator
-      size={size || "large"}
+      size={size || 'large'}
       color={color || StyleSheet.flatten(styles.activityIndicator).color}
     />
   </View>

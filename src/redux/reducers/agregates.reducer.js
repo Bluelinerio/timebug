@@ -6,7 +6,7 @@
 // @flow
 
 export const UNDETERMIND = 0;
-export const UPDATE = "UPDATE";
+export const UPDATE = 'UPDATE';
 
 export type AggregateType = {};
 export type AggregateContainer = {
@@ -36,13 +36,13 @@ function aggregateReducer(
   }
 }
 
-import storage from "redux-persist/lib/storage";
-import { persistReducer } from "redux-persist";
+import storage from 'redux-persist/lib/storage';
+import { persistReducer } from 'redux-persist';
 
 const persistConfig = {
-  key: "aggregate",
+  key: 'aggregate',
   storage: storage,
-  blacklist: ["requestCount", "error"],
+  blacklist: ['requestCount', 'error'],
   stateReconciler: (
     inboundState: AggregateState,
     originalState: AggregateState,
