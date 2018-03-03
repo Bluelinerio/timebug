@@ -18,8 +18,8 @@ This will correct lint warnings that can be automatically fixed, e.g. adding a ;
 
 This will format all .js files in the src directory with prettier-eslint, it will format the code according to the rules setup in your eslint config.
 
-## Auto format on save
+## IDE integrations
 
 * VSCode
 
-Install the following extension: https://github.com/prettier/prettier-vscode, the config is already added in vscode setttings json, just reload the editor and it should work.
+Install the following extension: https://github.com/prettier/prettier-vscode, follow instructions and hit Ctrl + Shift + F to format a file.
