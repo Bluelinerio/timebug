@@ -1,31 +1,42 @@
 // @flow
 
+<<<<<<< HEAD
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
 import type { LayoutStyle, ColorValue } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+=======
+import React, { Component } from 'react'
+import { View, StyleSheet } from 'react-native'
+import type { LayoutStyle, ColorValue } from 'react-native'
+import LinearGradient from 'react-native-linear-gradient'
+import { whiteGradientColors } from '../constants/colors'
+>>>>>>> 2fedbfe... Added WhiteGradientColors.
 
 export type GradientBackgroundProps = {
   style: {
     container: LayoutStyle,
     gradient?: LayoutStyle
   },
-  gradientTopColor: ColorValue,
-  gradientBottomColor: ColorValue,
+  topColor: ColorValue,
+  bottomColor: ColorValue,
   opacity: number
 };
 
 const GradientWithTwoColors = (props: GradientBackgroundProps) => (
   <LinearGradient
-    colors={[props.gradientTopColor, props.gradientBottomColor]}
-    style={[{ ...StyleSheet.absoluteFillObject }, { opacity: props.opacity }]}
+    colors={[
+      props.topColor,
+      props.bottomColor,
+    ]}
+    style={[{...StyleSheet.absoluteFillObject}, { opacity: props.opacity }]}
   />
 );
 
 GradientWithTwoColors.defaultProps = {
-  gradientTopColor: '#79bddd',
-  gradientBottomColor: 'white',
-  opacity: 1
-};
+  topColor: whiteGradientColors.startColor,
+  bottomColor: whiteGradientColors.endColor,
+  opacity: 1,
+}
 
-export default GradientWithTwoColors;
+export default GradientWithTwoColors
