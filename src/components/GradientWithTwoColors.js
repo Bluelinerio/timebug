@@ -20,15 +20,16 @@ export type GradientBackgroundProps = {
   },
   topColor: ColorValue,
   bottomColor: ColorValue,
+  reverse: boolean,
   opacity: number
 };
 
 const GradientWithTwoColors = (props: GradientBackgroundProps) => (
   <LinearGradient
-    colors={[
-      props.topColor,
-      props.bottomColor,
-    ]}
+    colors={ props.reverse 
+      ? [ props.bottomColor, props.topColor ]
+      : [ props.topColor, props.bottomColor ] 
+    }
     style={[{...StyleSheet.absoluteFillObject}, { opacity: props.opacity }]}
   />
 );
@@ -37,6 +38,7 @@ GradientWithTwoColors.defaultProps = {
   topColor: whiteGradientColors.startColor,
   bottomColor: whiteGradientColors.endColor,
   opacity: 1,
+  reverse: false,
 }
 
 export default GradientWithTwoColors
