@@ -57,7 +57,7 @@ function* _logout() {
   yield all([
     call(unlinkUser),
     call(resetStore),
-    call(actions.resetStore.type)
+    call(actions.resetStore)
   ]);
 }
 
