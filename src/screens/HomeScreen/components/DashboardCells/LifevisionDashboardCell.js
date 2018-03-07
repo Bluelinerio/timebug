@@ -7,18 +7,19 @@ import {
   TouchableOpacity,
   Platform,
   ScrollView
-} from 'react-native';
-import TouchableBounce from 'react-native/Libraries/Components/Touchable/TouchableBounce';
-import glamorous from 'glamorous-native';
-import LinearGradient from 'react-native-linear-gradient';
+} from 'react-native'
+import TouchableBounce 			  from 'react-native/Libraries/Components/Touchable/TouchableBounce'
+import glamorous              from 'glamorous-native'
+import LinearGradient         from 'react-native-linear-gradient';
 
-import styles from '../../styles/dashbaord.styles';
-import PhaseProgress from '../../../../components/PhaseProgress';
-import TouchableRoundedImage from '../../../../components/TouchableRoundedImage';
-import OnLayout from '../../../../components/OnLayout';
-import PhaseProgressContainer from '../../../../containers/PhaseProgressContainer';
-import User from '../../../../containers/User';
-import {
+import styles                 from '../../styles/dashbaord.styles'
+import PhaseProgress          from '../../../../components/PhaseProgress'
+import TouchableRoundedImage  from '../../../../components/TouchableRoundedImage';
+import OnLayout               from '../../../../components/OnLayout';
+import HighlighRow    from '../../../../components/HighlighRow';
+import PhaseProgressContainer from '../../../../containers/PhaseProgressContainer'
+import User                   from '../../../../containers/User'
+import { 
   MEDITATION,
   SELF_ASSESSMENT,
   VISION_CREATION,
@@ -30,44 +31,7 @@ const CardHeader = glamorous.view(styles.header);
 const Row = glamorous.view(styles.suggestionRow);
 const BottomRow = glamorous.view(styles.suggestionRowBottom);
 
-const GradientWithTwoColors = ({
-  startColor = '#FF24D8',
-  endColor = '#6AC2ED',
-  children,
-  style
-}) => (
-  <LinearGradient
-    style={
-      style || {
-        flex: 2,
-        borderRadius: 6
-      }
-    }
-    colors={[startColor, endColor]}
-    start={{ x: 1, y: 0 }}
-    end={{ x: 0, y: 1 }}
-  >
-    {children}
-  </LinearGradient>
-);
-
-const Highlight = ({
-  children,
-  startColor = 'white',
-  endColor = '#f8f8f8',
-  gradientStyle
-}) => (
-  <LinearGradient
-    style={gradientStyle || { flex: 1 }}
-    colors={[startColor, endColor]}
-    start={{ x: 1, y: 0 }}
-    end={{ x: 0, y: 1 }}
-  >
-    <View>{children}</View>
-  </LinearGradient>
-);
-
-const BackgroundImage = glamorous.image(styles.backgroundImage, props => ({
+const BackgroundImage = glamorous.image(styles.backgroundImage, (props) => ({
   // here we tint it based on props...
   tintColor: 'blue'
 }));
@@ -97,32 +61,26 @@ export type Props = {
 };
 
 import Markdown from '../../../../Modules/Markdown';
-// <DashboardHightlight>
-//   <Markdown
-// 		markdownStyles={{
-// 			...markdownStyles,
-// 			block: {
-// 				...markdownStyles.block,
-// 				width
-// 			},
-// 			list: {
-// 				width
-// 			}
-// 		}}
-// 	>
-// 		{text}
-// 	</Markdown>
+  // <HighlighRow> 
+  //   <Markdown
+	// 		markdownStyles={{
+	// 			...markdownStyles,
+	// 			block: {
+	// 				...markdownStyles.block,
+	// 				width
+	// 			},
+	// 			list: {
+	// 				width
+	// 			}
+	// 		}}
+	// 	>
+	// 		{text}
+	// 	</Markdown>
 
-const RowContent = ({ phaseColors }: Props) => (
-  <View>
-    <Text
-      style={
-        ([styles.suggestionText, { color: '#ccc' }], { paddingVertical: 10 })
-      }
-    >
-      <Text
-        style={styles.bold}
-      >{`The below is an example of a how a Dashboard Cell Content will look like when you start using the app.`}</Text>
+const RowContent = ({ phaseColors } : Props) => (
+  <View> 
+    <Text style={[styles.suggestionText,{ color: '#ccc'}], { paddingVertical: 10}}>
+      <Text style={styles.bold} >{`The below is an example of a how a Dashboard Cell Content will look like when you start using the app.`}</Text>
       {`\n---\n`}
       {`\nAwesome! Over the last week you have completed `}
       <Text style={styles.bold}>{`3`}</Text>
@@ -167,75 +125,50 @@ const RowContent = ({ phaseColors }: Props) => (
 const horizontalPadding = 16;
 
 const Container = glamorous.view({
-  ...Platform.select({
-    android: { elevation: 16 },
-    ios: {
-      shadowColor: 'black',
-      shadowOffset: {
-        width: 0,
-        height: 16
-      },
-      shadowOpacity: 0.2,
-      shadowRadius: 16
-    }
-  })
-});
+    ...Platform.select({
+      android: { elevation: 16 },
+      ios: {
+        shadowColor: "black",
+        shadowOffset: {
+          width: 0,
+          height: 16
+        },
+        shadowOpacity: 0.2,
+        shadowRadius: 16
+      }
+    })
+})
 
-const HorizontalScrollView = props => (
-  <ScrollView
-    style={{
-      marginTop: 20
-    }}
-    horizontal={true}
-    contentInset={{
-      top: 0,
-      bottom: 0,
-      left: horizontalPadding,
-      right: 0
-    }}
-    contentOffset={{
-      x: -horizontalPadding,
-      y: 0
-    }}
-    contentContainerStyle={{}}
-    {...props}
-  />
-);
+const HorizontalScrollView = (props) => (
+  <ScrollView 
+      style={{ 
+        marginTop: 20
+      }}
+      horizontal={true}
+      contentInset={{
+        top:0,
+        bottom:0,
+        left:horizontalPadding,
+        right:0
+      }}
+      contentOffset={{
+        x:-horizontalPadding,
+        y:0
+      }}
+      contentContainerStyle={{}}
+      {...props}
+    />
+)
 
-const DashboardHightlight = props => (
-  <Highlight
-    gradientStyle={{
-      marginRight: 10,
-      paddingTop: 10,
-      marginBottom: 10,
-      borderRadius: 6,
-      ...Platform.select({
-        android: { elevation: 2 },
-        ios: {
-          shadowColor: 'black',
-          shadowOffset: {
-            width: 0,
-            height: 2
-          },
-          shadowOpacity: 0.2,
-          shadowRadius: 2
-        }
-      })
-    }}
-    {...props}
-  />
-);
 
 const Main = props => (
   <Container>
     <Header title="Life Vision" titleColor="black" />
     <HorizontalScrollView>
       {
-        <DashboardHightlight>
-          <OnLayout
-            render={({ width }) =>
-              width > 0 ? <PhaseProgressContainer width={width} /> : null
-            }
+        <HighlighRow style={styles.leaderboardContainer}>
+          <OnLayout 
+            render={({width}) => width > 0 ? (<PhaseProgressContainer width={width} />) : null }
           />
           <Text
             style={[
@@ -247,7 +180,8 @@ const Main = props => (
           >
             {`The legend of your progress through your journey`}
           </Text>
-        </DashboardHightlight>
+        </HighlighRow>
+
       }
     </HorizontalScrollView>
   </Container>

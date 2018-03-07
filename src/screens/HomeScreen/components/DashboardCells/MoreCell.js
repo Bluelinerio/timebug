@@ -1,12 +1,17 @@
 // @flow
-import * as React from 'react';
-import { Image, View, Text, Button, Platform } from 'react-native';
-import TouchableBounce from 'react-native/Libraries/Components/Touchable/TouchableBounce';
-import glamorous from 'glamorous-native';
-import LinearGradient from 'react-native-linear-gradient';
+import * as React from 'react'
+import {
+  Image,
+  View,
+  Text,
+  Button,
+  Platform
+} from 'react-native'
+import TouchableBounce 			  from 'react-native/Libraries/Components/Touchable/TouchableBounce'
+import glamorous              from 'glamorous-native'
+import LinearGradient         from 'react-native-linear-gradient';
 
 import styles                 from '../../styles/dashbaord.styles'
-import TouchableRoundedImage  from '../../../../components/TouchableRoundedImage';
 import Meditator              from '../../../../components/Meditator';
 import YesNoButton            from '../../../../components/YesNoButton'
 import HighlighRow            from '../../../../components/HighlighRow'
@@ -14,9 +19,9 @@ import {
   hotPink, 
 }                             from '../../../../constants/colors';
 
-const Card = glamorous(View /*TouchableBounce*/)(styles.dashboardCard);
+const Card = glamorous(TouchableBounce)(styles.dashboardCard);
 const Row = glamorous.view(styles.suggestionRow);
-const BottomRow = glamorous.view(styles.suggestionRowBottom);
+
 
 export default class MeditationCell extends React.PureComponent<> {
   render() {
@@ -24,12 +29,12 @@ export default class MeditationCell extends React.PureComponent<> {
     return (
       <Card>
         <Row>
-          <HighlighRow style={styles.bigSuggestionWithText}> 
+          <HighlighRow> 
             <Text style={[styles.suggestionText, styles.strong, { 
               textAlign: 'center', 
               color: hotPink
             }]}>
-              {`\Have you meditated today?\n`}
+              {`\Not sure where to start?\n`}
             </Text>
             <Meditator />
             <View style={{
@@ -38,17 +43,13 @@ export default class MeditationCell extends React.PureComponent<> {
               alignItems: 'center',
             }}>
               <YesNoButton
-                title={'Yes'}
-                onPress={onPress}
-              />
-              <YesNoButton
-                title={'No'}
+                title={'Read more'}
                 onPress={onPress}
               />
             </View>
           </HighlighRow>
         </Row>
       </Card>
-    );
+    )
   }
 }
