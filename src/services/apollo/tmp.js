@@ -1,12 +1,10 @@
-export const temporaryUserAdditions = (data) =>  {
+export const temporaryUserAdditions = data => {
   // identify user
-  if(!data.facebookId) {
-    return data
+  if (!data.facebookId) {
+    return data;
   }
   return {
     ...data,
-    aggregates: {
-      
-    }
-  }
-}
+    aggregates: {}
+  };
+};

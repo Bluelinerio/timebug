@@ -1,5 +1,4 @@
-import t from "../components/templates";
-
+import t from '../components/templates';
 
 export default {
   1: {
@@ -7,7 +6,7 @@ export default {
       id: t.maybe(t.String),
       mantraAnswer: t.Boolean,
       exerciseAnswer: t.Boolean,
-      meditateAnswer: t.Boolean,
+      meditateAnswer: t.Boolean
     }),
     options: {
       label: '20/20 Life Vision Check-in',
@@ -19,12 +18,12 @@ export default {
           label: 'Did you do your mantra today (assigned on Day 21)?'
         },
         exerciseAnswer: {
-          label: 'Did you exercise and meditate yet today(assigned on Day 8)?',
+          label: 'Did you exercise and meditate yet today(assigned on Day 8)?'
         },
         meditateAnswer: {
           label: 'Did you MEDITATE yet today(assigned on Day 8)?'
         }
-      },
+      }
     },
     value: {
       fields: {
@@ -34,12 +33,11 @@ export default {
   },
   2: {
     type: t.struct({
-      goal: t.list(
-        t.String
-      )
+      goal: t.list(t.String)
     }),
     options: {
-      label: 'What major goals [BHAGs] do you envision for yourself 5 years from now?',
+      label:
+        'What major goals [BHAGs] do you envision for yourself 5 years from now?',
       item: {
         fields: {
           goal: {
@@ -69,11 +67,13 @@ export default {
                 label: 'BHAG(Environment)'
               },
               priority: {
-                label: 'How do you rank each bucket list item in terms of priority?',
+                label:
+                  'How do you rank each bucket list item in terms of priority?',
                 help: '1= Low priority and 10= High priority'
               },
               timeSpent: {
-                label: 'How much time per year (for each of the next 5 years) will you spend, on average, working towards this goal?'
+                label:
+                  'How much time per year (for each of the next 5 years) will you spend, on average, working towards this goal?'
               }
             }
           }
@@ -91,7 +91,8 @@ export default {
       label: 'Vision Creation: Environment',
       fields: {
         who: {
-          label: 'Who in your life do you want to enjoy a major transformation in their place and environment surroundings?'
+          label:
+            'Who in your life do you want to enjoy a major transformation in their place and environment surroundings?'
         },
         howAttain: {
           label: 'What do you want them to accomplish 5 years from now?'
@@ -111,14 +112,14 @@ export default {
       label: 'Vision Creation: Environment',
       fields: {
         oneWish: {
-          label: 'What’s your place and environment wish for the world or a particular sector of the world?'
+          label:
+            'What’s your place and environment wish for the world or a particular sector of the world?'
         },
         howHelp: {
-          label: 'How can you help, be it in any small way, accomplish this goal?',
-
+          label:
+            'How can you help, be it in any small way, accomplish this goal?'
         }
       }
-
     }
   }
 };

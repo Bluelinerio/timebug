@@ -1,46 +1,51 @@
 // @flow
-import FBSDK from 'react-native-fbsdk'
-const {
-	LoginManager,
-	AccessToken
-} = FBSDK
+import FBSDK from 'react-native-fbsdk';
+const { LoginManager, AccessToken } = FBSDK;
 
-export type OpenFBLoginResult = {
-	fbData: string
-} | {
-	error: any
-}
+export type OpenFBLoginResult =
+  | {
+      fbData: string
+    }
+  | {
+      error: any
+    };
 export type FacebookDataState = {
-	accessToken: string,
-	applicationID: string,
-	declinedPermissions: Array < string > ,
-	expirationTime: number,
-	lastRefreshTime: number,
-	permissions: Array < string > ,
-	userID: string,
-}
+  accessToken: string,
+  applicationID: string,
+  declinedPermissions: Array<string>,
+  expirationTime: number,
+  lastRefreshTime: number,
+  permissions: Array<string>,
+  userID: string
+};
 
-const getToken = (): Promise <?string> => AccessToken.getCurrentAccessToken().then(t => t ? t.accessToken : null)
+const getToken = (): Promise<?string> =>
+  AccessToken.getCurrentAccessToken().then(t => (t ? t.accessToken : null));
 
-const openFBLogin = (): Promise < OpenFBLoginResult > => LoginManager.logInWithReadPermissions(['public_profile', 'email', 'user_friends']).then(result => {
-		if (result.isCancelled) {
-			return {
-				error: 'User cancelled Facebook login'
-			}
-		}
-		return AccessToken.getCurrentAccessToken().then(fbData => ({ ...result,
-			fbData
-		}))
-	})
+const openFBLogin = (): Promise<OpenFBLoginResult> =>
+  LoginManager.logInWithReadPermissions([
+    'public_profile',
+    'email',
+    'user_friends'
+  ]).then(result => {
+    if (result.isCancelled) {
+      return {
+        error: 'User cancelled Facebook login'
+      };
+    }
+    return AccessToken.getCurrentAccessToken().then(fbData => ({
+      ...result,
+      fbData
+    }));
+  });
 
-const logOut = (): Promise<void> => LoginManager.logOut()
+const logOut = (): Promise<void> => LoginManager.logOut();
 
 export default {
-	openFBLogin,
-	getToken,
-	logOut
-}
-
+  openFBLogin,
+  getToken,
+  logOut
+};
 
 // export function* openFBLogin(): OpenFBLoginResult {
 // 	type openFBLoginResultType = { +type: string, +token: string }

@@ -14,11 +14,11 @@ export type Props = {
   nextStepDuration: number,
   nextStepNumber: number,
   nextStepColor: string,
-  done:() => void,
+  done: () => void,
   buttonOnPress: () => void
-}
+};
 
-export default ({ 
+export default ({
   doneStepNumber,
   doneStepColor,
   nextStepDuration,
@@ -30,9 +30,14 @@ export default ({
   buttonOnPress
 }: Props) => {
   return (
-    <View style={[styles.container, {
-      backgroundColor: doneStepColor
-    }]}>
+    <View
+      style={[
+        styles.container,
+        {
+          backgroundColor: doneStepColor
+        }
+      ]}
+    >
       <View style={styles.messageContainer}>
         <Text style={[styles.title, styles.strong, { color: 'white' }]}>
           {title}

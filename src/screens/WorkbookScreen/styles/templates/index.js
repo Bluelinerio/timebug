@@ -1,9 +1,5 @@
-import {
-  StyleSheet, 
-  PixelRatio,
-  Platform
-} from 'react-native';
-import stylesheet                 from "tcomb-form-native/lib/stylesheets/bootstrap";
+import { StyleSheet, PixelRatio, Platform } from 'react-native';
+import stylesheet from 'tcomb-form-native/lib/stylesheets/bootstrap';
 
 export const LABEL_COLOR = '#000000';
 export const INPUT_COLOR = '#000000';
@@ -12,7 +8,7 @@ export const HELP_COLOR = '#999999';
 export const BORDER_COLOR = '#cccccc';
 export const DISABLED_COLOR = '#777777';
 export const DISABLED_BACKGROUND_COLOR = '#eeeeee';
-export const BACKGROUND_COLOR = '#FAFAFA' //'#FFFFFF';
+export const BACKGROUND_COLOR = '#FAFAFA'; //'#FFFFFF';
 export const FONT_SIZE = 18;
 export const FONT_WEIGHT = '500';
 
@@ -22,7 +18,7 @@ export const FONT_WEIGHT = '500';
 // Top padding: 16dp
 // Bottom padding: 8dp
 // alt-text
-// Floating label text 
+// Floating label text
 // Top padding above label: 16dp
 // Bottom padding below label: 8dp
 // Bottom padding below input: 8dp
@@ -30,13 +26,13 @@ export const FONT_WEIGHT = '500';
 export default Object.freeze({
   ...stylesheet,
   fieldset: {
-    topLevel: { 
+    topLevel: {
       paddingHorizontal: 16,
       paddingVertical: 20,
       backgroundColor: BACKGROUND_COLOR,
       flex: 1
     },
-    normal: { 
+    normal: {
       paddingVertical: 20,
       flex: 1
     }
@@ -47,7 +43,7 @@ export default Object.freeze({
     paddingVertical: 20,
     fontWeight: '700'
   },
-  
+
   controlLabel: {
     normal: {
       color: LABEL_COLOR,
@@ -68,13 +64,13 @@ export default Object.freeze({
       ...stylesheet.helpBlock.normal,
       marginTop: 4,
       paddingHorizontal: 4,
-      fontStyle:'italic'
+      fontStyle: 'italic'
     },
     error: {
       ...stylesheet.helpBlock.normal,
-      marginTop:4,
+      marginTop: 4,
       paddingHorizontal: 4,
-      fontStyle:'italic'
+      fontStyle: 'italic'
     }
   },
   pickerContainer: {
@@ -85,7 +81,7 @@ export default Object.freeze({
       borderRadius: 4,
       borderColor: BORDER_COLOR,
       padding: 8,
-      backgroundColor: BACKGROUND_COLOR,
+      backgroundColor: BACKGROUND_COLOR
     },
     error: {
       flexDirection: 'row',
@@ -94,14 +90,14 @@ export default Object.freeze({
       borderRadius: 4,
       borderColor: ERROR_COLOR,
       padding: 8,
-      backgroundColor: BACKGROUND_COLOR,
+      backgroundColor: BACKGROUND_COLOR
     },
-    open: { }
+    open: {}
   },
   pickerLabelStyle: {
     normal: {
       fontSize: 17,
-      alignSelf: 'center',
+      alignSelf: 'center'
     }
   },
   listAddButton: {
@@ -111,44 +107,40 @@ export default Object.freeze({
     borderWidth: 1,
     borderColor: BORDER_COLOR,
     flexDirection: 'row',
-    alignItems:'center'
+    alignItems: 'center'
   },
   textBox: {
     normal: {
       color: INPUT_COLOR,
       fontSize: 16,
       height: 46,
-      textAlign: 'left',
+      textAlign: 'left'
     },
-    error : {
+    error: {
       color: INPUT_COLOR,
       fontSize: FONT_SIZE,
       height: 46,
-      textAlign: 'left',
+      textAlign: 'left'
     }
   },
   textBoxView: {
     normal: {
-      ...(Platform.select({
-        ios: {
-
-        },
+      ...Platform.select({
+        ios: {},
         android: {
           borderBottomColor: INPUT_COLOR,
-          borderBottomWidth: 1 / PixelRatio.get(),
+          borderBottomWidth: 1 / PixelRatio.get()
         }
-      }))
+      })
     },
     error: {
-      ...(Platform.select({
-        ios: {
-
-        },
+      ...Platform.select({
+        ios: {},
         android: {
           borderBottomColor: INPUT_COLOR,
-          borderBottomWidth: 1 / PixelRatio.get(),
+          borderBottomWidth: 1 / PixelRatio.get()
         }
-      }))
+      })
     }
   }
 });

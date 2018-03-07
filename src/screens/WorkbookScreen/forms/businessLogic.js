@@ -60,4 +60,4 @@ export default {
   28: step28BusinessLogic,
   29: step29BusinessLogic,
   30: step30BusinessLogic
-}
+};

@@ -1,6 +1,6 @@
 // @flow
-import * as React from 'react'
-import { Card, Icon } from 'react-native-elements'
+import * as React from 'react';
+import { Card, Icon } from 'react-native-elements';
 import {
   Image,
   ImageBackground,
@@ -10,28 +10,27 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  View,
-} from 'react-native'
-import { lifevisionCollage } from '../../../resources/images/'
-import { deepBlue as primaryColor } from '../../../constants/colors'
+  View
+} from 'react-native';
+import { lifevisionCollage } from '../../../resources/images/';
+import { deepBlue as primaryColor } from '../../../constants/colors';
 
-import Separator from './Separator'
+import Separator from './Separator';
 
 export type Props = {
-  logout:() => void,
+  logout: () => void,
   name: string,
-  avatar: string,
-}
+  avatar: string
+};
 
 class Contact extends React.Component {
-
   renderHeader = () => {
     const {
       avatar,
       avatarBackground,
       name,
-      address: { city, country },
-    } = this.props
+      address: { city, country }
+    } = this.props;
 
     return (
       <View style={styles.headerContainer}>
@@ -44,7 +43,7 @@ class Contact extends React.Component {
             <Image
               style={styles.userImage}
               source={{
-                uri: avatar,
+                uri: avatar
               }}
             />
             <Text style={styles.userNameText}>{name}</Text>
@@ -66,8 +65,8 @@ class Contact extends React.Component {
           </View>
         </ImageBackground>
       </View>
-    )
-  }
+    );
+  };
 
   renderTel = () => (
     <ListView
@@ -83,10 +82,10 @@ class Contact extends React.Component {
             onPressSms={this.onPressSms}
             onPressTel={this.onPressTel}
           />
-        )
+        );
       }}
     />
-  )
+  );
 
   renderEmail = () => (
     <ListView
@@ -101,10 +100,10 @@ class Contact extends React.Component {
             email={email}
             onPressEmail={this.onPressEmail}
           />
-        )
+        );
       }}
     />
-  )
+  );
 
   render() {
     return (
@@ -118,12 +117,11 @@ class Contact extends React.Component {
           </Card>
         </View>
       </ScrollView>
-    )
+    );
   }
 }
 
-export default Contact
-
+export default Contact;
 
 const styles = StyleSheet.create({
   cardContainer: {
@@ -131,19 +129,19 @@ const styles = StyleSheet.create({
     borderWidth: 0,
     flex: 1,
     margin: 0,
-    padding: 0,
+    padding: 0
   },
   container: {
-    flex: 1,
+    flex: 1
   },
   emailContainer: {
     backgroundColor: '#FFF',
     flex: 1,
-    paddingTop: 30,
+    paddingTop: 30
   },
   headerBackgroundImage: {
     paddingBottom: 20,
-    paddingTop: 35,
+    paddingTop: 35
   },
   headerContainer: {},
   headerColumn: {
@@ -152,24 +150,24 @@ const styles = StyleSheet.create({
       ios: {
         alignItems: 'center',
         elevation: 1,
-        marginTop: -1,
+        marginTop: -1
       },
       android: {
-        alignItems: 'center',
-      },
-    }),
+        alignItems: 'center'
+      }
+    })
   },
   placeIcon: {
     color: 'white',
-    fontSize: 26,
+    fontSize: 26
   },
   scroll: {
-    backgroundColor: '#FFF',
+    backgroundColor: '#FFF'
   },
   telContainer: {
     backgroundColor: '#FFF',
     flex: 1,
-    paddingTop: 30,
+    paddingTop: 30
   },
   userImage: {
     borderColor: primaryColor,
@@ -177,13 +175,13 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     height: 170,
     marginBottom: 15,
-    width: 170,
+    width: 170
   },
   userNameText: {
     color: '#FFF',
     fontSize: 22,
     fontWeight: 'bold',
     paddingBottom: 8,
-    textAlign: 'center',
-  },
-})
+    textAlign: 'center'
+  }
+});

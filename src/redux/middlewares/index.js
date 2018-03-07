@@ -1,6 +1,4 @@
-import {
-  StatusBar
-} from 'react-native';
+import { StatusBar } from 'react-native';
 import { NavigationActions, StateUtils } from 'react-navigation';
 //https://github.com/react-navigation/react-navigation
 // BACK,
@@ -30,13 +28,13 @@ const ACTIONS = {
   //   debugger;
   //   dispatch(action)
   // }
-}
+};
 
 export const reactNavigationMiddleware = store => dispatch => action => {
-  const custom = ACTIONS[action.type] 
-  if(custom) {
-    return custom(action,dispatch)
+  const custom = ACTIONS[action.type];
+  if (custom) {
+    return custom(action, dispatch);
   } else {
-    return dispatch(action)
+    return dispatch(action);
   }
-}
+};

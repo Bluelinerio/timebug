@@ -1,8 +1,7 @@
-import t from "../components/templates";
-import { GoalTypes } from "./contents";
+import t from '../components/templates';
+import { GoalTypes } from './contents';
 
 export default {
-
   1: {
     type: t.struct({
       id: t.maybe(t.String),
@@ -14,7 +13,8 @@ export default {
       )
     }),
     options: {
-      label: "What are some of your recent goals? Classify them according to the 7 Goal Types.",
+      label:
+        'What are some of your recent goals? Classify them according to the 7 Goal Types.',
       fields: {
         id: {
           hidden: true
@@ -29,9 +29,9 @@ export default {
           disableOrder: true,
           maxLines: 10,
           config: {
-            maxLines: 10,
-          },
-        },
+            maxLines: 10
+          }
+        }
       }
     },
     value: {

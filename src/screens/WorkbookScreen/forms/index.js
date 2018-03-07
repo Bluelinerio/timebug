@@ -1,5 +1,5 @@
 import React from 'react';
-import t     from "../components/templates";
+import t from '../components/templates';
 import step1 from './step1';
 import step2 from './step2';
 import step3 from './step3';
@@ -30,7 +30,6 @@ import step27 from './step27';
 import step28 from './step28';
 import step29 from './step29';
 import step30 from './step30';
-
 
 export default {
   1: step1,
@@ -63,5 +62,4 @@ export default {
   28: step28,
   29: step29,
   30: step30
-
-}
+};

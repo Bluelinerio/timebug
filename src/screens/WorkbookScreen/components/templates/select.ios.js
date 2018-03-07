@@ -44,7 +44,7 @@ export default function select(props) {
         accessibilityLabel={label}
         value={value}
         text={text}
-        onBeginEditing={() => null }
+        onBeginEditing={() => null}
         onCancel={() => null}
         onChange={onChange}
         styles={{
@@ -75,7 +75,7 @@ export default function select(props) {
       )}
       {hasError &&
         error && (
-          <Text accessibilityLiveRegion='polite' style={stylesheet.errorBlock}>
+          <Text accessibilityLiveRegion="polite" style={stylesheet.errorBlock}>
             {error}
           </Text>
         )}

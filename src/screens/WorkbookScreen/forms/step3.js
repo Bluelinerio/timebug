@@ -1,5 +1,5 @@
-import t from "../components/templates";
-import { Strengths, Weaknesses } from "./contents";
+import t from '../components/templates';
+import { Strengths, Weaknesses } from './contents';
 
 export default {
   1: {
@@ -13,7 +13,7 @@ export default {
       )
     }),
     options: {
-      label: "What are your strengths?",
+      label: 'What are your strengths?',
 
       fields: {
         id: {
@@ -23,20 +23,21 @@ export default {
           disableOrder: true,
           maxLines: 10,
           config: {
-            maxLines: 10,
+            maxLines: 10
           },
           item: {
             fields: {
               strengths: {
                 auto: 'labels',
-                error: "Please select a charachter strength."
+                error: 'Please select a charachter strength.'
               },
               resultingGoalAchieved: {
-                label: "What is a goal that you achieved as a result of this strength of yours?"
+                label:
+                  'What is a goal that you achieved as a result of this strength of yours?'
               }
             }
           }
-        },
+        }
       },
       value: {
         fields: {
@@ -55,13 +56,13 @@ export default {
       )
     }),
     options: {
-      label: "What are your weaknesses?",
+      label: 'What are your weaknesses?',
       fields: {
         charachterWeaknesses: {
           disableOrder: true,
           maxLines: 5,
           config: {
-            maxLines: 5,
+            maxLines: 5
           },
           item: {
             fields: {
@@ -70,12 +71,13 @@ export default {
                 // error: "Please select a charachter weakness."
               },
               goalNotReached: {
-                label: "What is a goal that you haven't been able to reach as a result?"
+                label:
+                  "What is a goal that you haven't been able to reach as a result?"
                 // error: "What was one of your goals that you were not able to achieve as a result?"
               }
             }
           }
-        },
+        }
       }
     }
   },
@@ -86,22 +88,24 @@ export default {
       weaknesses: t.list(Weaknesses)
     }),
     options: {
-      label: "What does a close friend or family member, an objective one, think of your strengths & weaknesses?",
+      label:
+        'What does a close friend or family member, an objective one, think of your strengths & weaknesses?',
       fields: {
         friendsName: {
           label: "Write down a friend or family member's name.",
-          error: "The best person to help you with this exercise is someone who you trust to me completely honest without being judgemental."
+          error:
+            'The best person to help you with this exercise is someone who you trust to me completely honest without being judgemental.'
         },
         strengths: {
           label: 'Strengths',
-          error: "Please select a charachter strength."
+          error: 'Please select a charachter strength.'
         },
         weaknesses: {
-          label: "Weaknesses",
-          error: "Please select a charachter weakness.",
+          label: 'Weaknesses',
+          error: 'Please select a charachter weakness.',
           config: {
-            minLines: 3,
-          },
+            minLines: 3
+          }
         }
       }
     }

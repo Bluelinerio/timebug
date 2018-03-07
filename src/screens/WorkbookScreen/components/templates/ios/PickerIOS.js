@@ -1,7 +1,7 @@
 // @flow
-import * as React from "react";
-import { View, TouchableOpacity, Text } from "react-native";
-import PickerKeyboard from "./PickerKeyboard";
+import * as React from 'react';
+import { View, TouchableOpacity, Text } from 'react-native';
+import PickerKeyboard from './PickerKeyboard';
 
 type Props = {
   value: string,

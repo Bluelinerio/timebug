@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import Swiper from 'react-native-swiper';
-import LinearGradient from 'react-native-linear-gradient'
+import LinearGradient from 'react-native-linear-gradient';
 
 import type { Slide } from '../../services/cms';
 import Theme from './components/Theme'
@@ -34,85 +34,81 @@ export default class Walkthrough extends React.Component<Props> {
     <LinearGradient
       key={index}
       colors={['#008EBC', '#005587']}
-      style={StyleSheet.absoluteFillObject, {
-        height, 
-      }}
+      style={
+        (StyleSheet.absoluteFillObject,
+        {
+          height
+        })
+      }
     >
-  <StatusBar
-    translucent
-    barStyle='light-content'
-    backgroundColor={'transparent'}
-  />
-  <SafeAreaView style={styles.fullHeightView} >
-    <View style={styles.slide} >
-      <Text
-        type='header2'
-        style={styles.title}
-        theme={theme}
-      >
-        {slide.title}
-      </Text>
-      {slide.description &&
-        <Text
-          type='header3'
-          style={styles.description}
-          theme={theme}
-        >
-          {slide.description}
-        </Text>
-      }
-    </View>
-    <View style={styles.slideImage}>
-      {slide.image &&
-        <Image
-          source={slide.image}
-          resizeMode='cover'
-          style={{ width: (width * .60), height: 410 }}
+      <StatusBar
+        translucent
+        barStyle="light-content"
+        backgroundColor={'transparent'}
+      />
+      <SafeAreaView>
+        <View style={styles.slide}>
+          <Text type="header2" style={styles.title} theme={theme}>
+            {slide.title}
+          </Text>
+          {slide.description && (
+            <Text type="header3" style={styles.description} theme={theme}>
+              {slide.description}
+            </Text>
+          )}
+        </View>
+        <View style={styles.slideImage}>
+          {slide.image && (
+            <Image
+              source={slide.image}
+              resizeMode="cover"
+              style={{ width: 240, height: 410 }}
+            />
+          )}
+        </View>
+      </SafeAreaView>
+    </LinearGradient>
+  );
+
+  render(): React.Node {
+    const { renderPagination, onIndexChanged } = this;
+    const { slides } = this.props;
+    return (
+      <Swiper loop={false} {...{ renderPagination, onIndexChanged }}>
+        {slides.map(this.renderSlide)}
+      </Swiper>
+    );
+  }
+  renderPagination = (
+    index: number,
+    total: number,
+    context: Swiper
+  ): React.Node => {
+    const isFirst = index === 0;
+    const isLast = index === total - 1;
+    const { dismiss } = this.props;
+    const goBack = () => context.scrollBy(-1);
+    const goForward = () => context.scrollBy(1);
+    const leftButtoOnPress = isFirst ? dismiss : goBack;
+    const rightButtonOnPress = isLast ? dismiss : goForward;
+    return (
+      <View style={styles.footer}>
+        <Button label={isFirst ? 'Close' : 'Back'} onPress={leftButtoOnPress} />
+        <Button
+          label={isLast ? 'Start' : 'Next'}
+          onPress={rightButtonOnPress}
+          primary={true}
+          transparent={true}
         />
-      }
-    </View>
-
-  </SafeAreaView>
-    </LinearGradient >
-  )
-
-render(): React.Node {
-  const { renderPagination, onIndexChanged } = this;
-  const { slides } = this.props
-  return (
-    <Swiper loop={false} {...{ renderPagination, onIndexChanged }} >
-      {slides.map(this.renderSlide)}
-    </Swiper>
-  );
-}
-renderPagination = (index: number, total: number, context: Swiper): React.Node => {
-  const isFirst = index === 0;
-  const isLast = index === total - 1;
-  const { dismiss } = this.props
-  const goBack = () => context.scrollBy(-1);
-  const goForward = () => context.scrollBy(1);
-  const leftButtoOnPress = isFirst ? dismiss : goBack
-  const rightButtonOnPress = isLast ? dismiss : goForward
-  return (
-    <View style={styles.footer} >
-      <Button
-        label={isFirst ? 'Close' : 'Back'}
-        onPress={leftButtoOnPress}
-      />
-      <Button
-        label={isLast ? 'Start' : 'Next'}
-        onPress={rightButtonOnPress}
-        primary={true}
-        transparent={true}
-      />
-    </View>
-  );
-}
+      </View>
+    );
+  };
 }
 
-
-const baseSpacing = Math.floor(width * 0.06)
-const largeVerticalSpacing = Math.floor(height * 0.06)
+const height = Dimensions.get('window').height;
+const width = Dimensions.get('window').width;
+const baseSpacing = Math.floor(width * 0.06);
+const largeVerticalSpacing = Math.floor(height * 0.06);
 
 const styles = StyleSheet.create({
   container: {
@@ -132,23 +128,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     position: 'absolute',
-    bottom: 0,
+    bottom: 60,
     left: 0,
-    right: 0,
-    ...Platform.select({
-      android: {
-        paddingHorizontal: 10,
-        borderRadius: 10,
-        marginVertical: 0, // needed for shadow
-        elevation: 10,
-        width: (width * .60),
-        marginLeft: (width * .20)
-      },
-      ios: {
-        shadowColor: "black",
-        shadowOpacity: 0.5
-      }
-    })
+    right: 0
   },
 
   fullHeightView: {
@@ -162,49 +144,51 @@ const styles = StyleSheet.create({
     marginTop: largeVerticalSpacing,
     color: 'white'
   }
-})
+});
 
 const theme = {
   ...Theme,
   typography: {
-    color: "#666666",
-    bold: "Helvetica-Bold",
-    semibold: "Helvetica",
-    normal: "Helvetica-Medium",
-    light: "Helvetica-Light",
+    color: '#666666',
+    bold: 'Helvetica-Bold',
+    semibold: 'Helvetica',
+    normal: 'Helvetica-Medium',
+    light: 'Helvetica-Light',
     header1: {
       fontSize: 48,
       lineHeight: 58,
-      fontFamily: "Helvetica"
+      fontFamily: 'Helvetica'
     },
     header2: {
       fontSize: Math.ceil(height * 0.04),
-      fontFamily: "Helvetica-Bold"
+      lineHeight: 43,
+      fontFamily: 'Helvetica-Bold'
     },
     header3: {
       fontSize: Math.ceil(height * 0.027),
+      lineHeight: 28, //standard
       fontFamily: 'HelveticaNeue',
       fontWeight: 'bold'
     },
     large: {
       fontSize: 14,
       lineHeight: 21,
-      fontFamily: "Helvetica"
+      fontFamily: 'Helvetica'
     },
     regular: {
       fontSize: 14,
       lineHeight: 21,
-      fontFamily: "Helvetica"
+      fontFamily: 'Helvetica'
     },
     small: {
       fontSize: 14,
       lineHeight: 18,
-      fontFamily: "Helvetica"
+      fontFamily: 'Helvetica'
     },
     micro: {
       fontSize: 8,
       lineHeight: 8,
-      fontFamily: "Helvetica"
+      fontFamily: 'Helvetica'
     }
   },
   spacing: {
@@ -214,4 +198,4 @@ const theme = {
     large: 48,
     xLarge: 64
   }
-}
+};

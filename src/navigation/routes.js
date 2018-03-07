@@ -5,13 +5,13 @@ export default {
     AssignmentFlow: 'AssignmentFlow',
     Walkthrough: 'Walkthrough',
     DashboardScreen: 'DashboardScreen',
-    initialRouteName:'HomeScreen',
-    MeditationScreen:'MeditationScreen'
+    initialRouteName: 'HomeScreen',
+    MeditationScreen: 'MeditationScreen'
   },
   step: {
     StepScreen: 'StepScreen',
     AssignmentLeadInScreen: 'AssignmentLeadInScreen',
     WorkbookScreen: 'WorkbookScreen',
-    WorkbookDoneScreen: 'WorkbookDoneScreen',
+    WorkbookDoneScreen: 'WorkbookDoneScreen'
   }
 };

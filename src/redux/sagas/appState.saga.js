@@ -1,143 +1,156 @@
-import { takeEvery, put, select, call } from 'redux-saga/effects'
-import { FOREGROUND, BACKGROUND, INACTIVE } from 'redux-enhancer-react-native-appstate'
+import { takeEvery, put, select, call } from 'redux-saga/effects';
+import {
+  FOREGROUND,
+  BACKGROUND,
+  INACTIVE
+} from 'redux-enhancer-react-native-appstate';
 
-import type { AppState }  from '../reducers/appState.reducer'
-import { initialState, UNDETERMIND }   from '../reducers/appState.reducer'
-import { 
-  getAppState,
-  getAggregateState
-}                          from '../rootReducer'
+import type { AppState } from '../reducers/appState.reducer';
+import { initialState, UNDETERMIND } from '../reducers/appState.reducer';
+import { getAppState, getAggregateState } from '../rootReducer';
 
-export function * appStateSagaWatcher() {
-  const appState = yield select(getAppState)
-  if(appState.last) {
-    yield appStateBusinessLogicRoot({ type: appState.last})
+export function* appStateSagaWatcher() {
+  const appState = yield select(getAppState);
+  if (appState.last) {
+    yield appStateBusinessLogicRoot({ type: appState.last });
   }
-  yield takeEvery([FOREGROUND, BACKGROUND, INACTIVE] , appStateBusinessLogicRoot)
+  yield takeEvery(
+    [FOREGROUND, BACKGROUND, INACTIVE],
+    appStateBusinessLogicRoot
+  );
 }
 
-function * appStateBusinessLogicRoot(action: { type: FOREGROUND | BACKGROUND | INACTIVE }) {
-  const state = yield select(state => state)
-  switch(action.type) {
+function* appStateBusinessLogicRoot(action: {
+  type: FOREGROUND | BACKGROUND | INACTIVE
+}) {
+  const state = yield select(state => state);
+  switch (action.type) {
     case FOREGROUND:
-      yield call(foreground, state)
+      yield call(foreground, state);
     case BACKGROUND:
-    yield call(background, state)
+      yield call(background, state);
     case INACTIVE:
-    yield call(inactive, state)
-    default: 
-      return
+      yield call(inactive, state);
+    default:
+      return;
   }
 }
 
-function * foreground(state) {
-  const appState = getAppState(state)
-  let aggregate = getAggregateState(appState)
+function* foreground(state) {
+  const appState = getAppState(state);
+  let aggregate = getAggregateState(appState);
 
-  if( aggregate === UNDETERMIND) {
+  if (aggregate === UNDETERMIND) {
     agregate = {
       ...agregates,
-      ...firstTimeBundle(firstTimeDate: now, firstTimeLaunchDate: now, now: now),
+      ...firstTimeBundle(
+        (firstTimeDate: now),
+        (firstTimeLaunchDate: now),
+        (now: now)
+      ),
       isVeryFirstSession: true
-    }
+    };
   }
 
-//   const now = Date.now()
-//   debugger
-//   const isFirstTime = state.sessions.length === 0
-//   const isFirstLaunch = state.current.start === 0
-//   const sessionNeverEndedProperly = !isFirstTime && !isFirstLaunch && state.current.end === 0
-//   if (isFirstTime || isFirstLaunch || sessionNeverEndedProperly) {
-//     if (isFirstTime && !isFirstLaunch) {
-//       throw 'can not happen that it is the first time and not the first launch'
-//     }
-//     const current = {
-//       start: now,
-//       end: 0,
-//       entries: 1
-//     }
-//     const ftBundle = firstTimeBundle({firstTimeDate: now, firstTimeLaunchDate: now, now}),
-//     agregates = isFirstTime 
-//       ? { 
-//           ...ftBundle,
-//           isVeryFirstSession: true
-//         } 
-//       : isFirstLaunch 
-//         ? {
-//           ...state.agregates,
-//           ...ftBundle
-//         }
-//         : {
-//           ...state.agregates,
-//           lastRecovery: {
-//             started: now,
-//             sessionNeverEndedProperly
-//           },
-//           recoveredSessions: [...(state.agregates.recoveredSessions || [] ), now]
-//         }
+  //   const now = Date.now()
+  //   debugger
+  //   const isFirstTime = state.sessions.length === 0
+  //   const isFirstLaunch = state.current.start === 0
+  //   const sessionNeverEndedProperly = !isFirstTime && !isFirstLaunch && state.current.end === 0
+  //   if (isFirstTime || isFirstLaunch || sessionNeverEndedProperly) {
+  //     if (isFirstTime && !isFirstLaunch) {
+  //       throw 'can not happen that it is the first time and not the first launch'
+  //     }
+  //     const current = {
+  //       start: now,
+  //       end: 0,
+  //       entries: 1
+  //     }
+  //     const ftBundle = firstTimeBundle({firstTimeDate: now, firstTimeLaunchDate: now, now}),
+  //     agregates = isFirstTime
+  //       ? {
+  //           ...ftBundle,
+  //           isVeryFirstSession: true
+  //         }
+  //       : isFirstLaunch
+  //         ? {
+  //           ...state.agregates,
+  //           ...ftBundle
+  //         }
+  //         : {
+  //           ...state.agregates,
+  //           lastRecovery: {
+  //             started: now,
+  //             sessionNeverEndedProperly
+  //           },
+  //           recoveredSessions: [...(state.agregates.recoveredSessions || [] ), now]
+  //         }
 
-//     return {
-//       ...state,
-//       current,
-//       agregates,
-//     }
-//   }
-//   const timePasseSinceLastBackgorund = now - state.current.end
-//   if(timePasseSinceLastBackgorund < 0 ) {
-//     throw 'timePasseSinceLastBackgorund should always be a positive number'
-//   }
-//   const previousSessionDuration = state.current.end - state.current.start
-//   if(previousSessionDuration < 0) {
-//     throw 'previousSessionDuration should always be a positive number'        
-//   }
-//   // determin if the continue current sesssion or archive it:
-//   const resumedFromLastSession = isSameDay(state.current.start, now)
+  //     return {
+  //       ...state,
+  //       current,
+  //       agregates,
+  //     }
+  //   }
+  //   const timePasseSinceLastBackgorund = now - state.current.end
+  //   if(timePasseSinceLastBackgorund < 0 ) {
+  //     throw 'timePasseSinceLastBackgorund should always be a positive number'
+  //   }
+  //   const previousSessionDuration = state.current.end - state.current.start
+  //   if(previousSessionDuration < 0) {
+  //     throw 'previousSessionDuration should always be a positive number'
+  //   }
+  //   // determin if the continue current sesssion or archive it:
+  //   const resumedFromLastSession = isSameDay(state.current.start, now)
 
-//   const current = resumedFromLastSession 
-//   ? {
-//       ...state.current,
-//       entries: state.current.entries + 1,
-//       end: now
-//     }
-//   : {
-//       entries: 0,
-//       start: now,
-//       end: 0
-//     }
+  //   const current = resumedFromLastSession
+  //   ? {
+  //       ...state.current,
+  //       entries: state.current.entries + 1,
+  //       end: now
+  //     }
+  //   : {
+  //       entries: 0,
+  //       start: now,
+  //       end: 0
+  //     }
 
-//   const agregates = {
-//     ...state.agregates,
-//     resumedFromLastSession
-//   }
-//   return {
-//     ...state,
-//     current,
-//     agregates
-//   }
-// }
+  //   const agregates = {
+  //     ...state.agregates,
+  //     resumedFromLastSession
+  //   }
+  //   return {
+  //     ...state,
+  //     current,
+  //     agregates
+  //   }
+  // }
 }
 
-function * background() {
+function* background() {}
 
-}
+function* inactive() {}
 
-function * inactive() {
+import equal from 'deep-equal';
+import isSameWeek from 'date-fns/is_same_week';
+import isSameDay from 'date-fns/is_same_day';
 
-}
-
-import equal from 'deep-equal'
-import isSameWeek from 'date-fns/is_same_week'
-import isSameDay from 'date-fns/is_same_day'
-
-const firstTimeBundle = ({firstTimeDate, firstTimeLaunchDate, now}: {firstTimeDate: number, firstTimeLaunchDate: number, now: number}) => ({
+const firstTimeBundle = ({
+  firstTimeDate,
+  firstTimeLaunchDate,
+  now
+}: {
+  firstTimeDate: number,
+  firstTimeLaunchDate: number,
+  now: number
+}) => ({
   isFirstWeek: isSameWeek(firstTimeDate, now),
   isFirstDay: isSameDay(firstTimeDate, now),
   isFirstTime: isSameDay(firstTimeDate, now),
   isFirstLaunch: isSameDay(firstTimeLaunchDate, now),
   firstTimeDate,
-  firstTimeLaunchDate,
-})
-
+  firstTimeLaunchDate
+});
 
 // type Session = {
 //   start: number,
@@ -151,7 +164,7 @@ const firstTimeBundle = ({firstTimeDate, firstTimeLaunchDate, now}: {firstTimeDa
 //   },
 //   sessions:[],
 //   agregates: {
-    
+
 //   }
 
 // const foreground = (state: AppState = initialState):AppState => {
@@ -170,12 +183,12 @@ const firstTimeBundle = ({firstTimeDate, firstTimeLaunchDate, now}: {firstTimeDa
 //       entries: 1
 //     }
 //     const ftBundle = firstTimeBundle({firstTimeDate: now, firstTimeLaunchDate: now, now}),
-//     agregates = isFirstTime 
-//       ? { 
+//     agregates = isFirstTime
+//       ? {
 //           ...ftBundle,
 //           isVeryFirstSession: true
-//         } 
-//       : isFirstLaunch 
+//         }
+//       : isFirstLaunch
 //         ? {
 //           ...state.agregates,
 //           ...ftBundle
@@ -201,12 +214,12 @@ const firstTimeBundle = ({firstTimeDate, firstTimeLaunchDate, now}: {firstTimeDa
 //   }
 //   const previousSessionDuration = state.current.end - state.current.start
 //   if(previousSessionDuration < 0) {
-//     throw 'previousSessionDuration should always be a positive number'        
+//     throw 'previousSessionDuration should always be a positive number'
 //   }
 //   // determin if the continue current sesssion or archive it:
 //   const resumedFromLastSession = isSameDay(state.current.start, now)
 
-//   const current = resumedFromLastSession 
+//   const current = resumedFromLastSession
 //   ? {
 //       ...state.current,
 //       entries: state.current.entries + 1,
@@ -242,15 +255,15 @@ const firstTimeBundle = ({firstTimeDate, firstTimeLaunchDate, now}: {firstTimeDa
 //     throw 'it is impossible for a session with entries not to have an end date'
 //   }
 
-//   const agregates = { 
+//   const agregates = {
 //     ...state,
 //     ...firstTimeBundle({
-//       firstTimeDate: state.agregates.firstTimeDate, 
-//       firstTimeLaunchDate: state.agregates.firstTimeLaunchDate, 
+//       firstTimeDate: state.agregates.firstTimeDate,
+//       firstTimeLaunchDate: state.agregates.firstTimeLaunchDate,
 //       now
 //     }),
 //     isVeryFirstSession: false,
-//   } 
+//   }
 
 //   const timePasseSinceLastForegroud = now - state.current.end
 //   if(timePasseSinceLastForegroud < 0 ) {
@@ -258,10 +271,10 @@ const firstTimeBundle = ({firstTimeDate, firstTimeLaunchDate, now}: {firstTimeDa
 //   }
 //   const sessionDuration = now - state.current.start
 //   if (sessionDuration < 0) {
-//     throw 'sessionDuration should always be a positive number'        
+//     throw 'sessionDuration should always be a positive number'
 //   }
 //   // determin if the continue current sesssion or archive it:
-//   const current = resumedFromLastSession 
+//   const current = resumedFromLastSession
 //   ? {
 //       ...current,
 //       end: now
@@ -269,13 +282,13 @@ const firstTimeBundle = ({firstTimeDate, firstTimeLaunchDate, now}: {firstTimeDa
 //   : {
 //       start: now,
 //       end: 0,
-//       entries: 0      
+//       entries: 0
 //   }
 //   const agregates = {
 //     ...state.agregates,
 //     resumedFromLastSession
 //   }
-//   const sessions = resumedFromLastSession 
+//   const sessions = resumedFromLastSession
 //     ? state.sessions
 //     : [current, ...state.sessions]
 
@@ -284,7 +297,7 @@ const firstTimeBundle = ({firstTimeDate, firstTimeLaunchDate, now}: {firstTimeDa
 //     sessions,
 //     current,
 //     agregates
-//   }  
+//   }
 // }
 
 // // need an actions that merges sessions.

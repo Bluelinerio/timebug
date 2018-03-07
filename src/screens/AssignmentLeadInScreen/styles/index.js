@@ -1,17 +1,17 @@
 import { StyleSheet, Dimensions } from 'react-native';
 
-const CicleWidth = 32
+const CicleWidth = 32;
 
 export default StyleSheet.create({
   assignmentLeadInScreenSlideContainer: {
     flex: 1,
-    justifyContent:'space-between',
+    justifyContent: 'space-between',
     paddingVertical: 30,
-    paddingHorizontal: 20,
+    paddingHorizontal: 20
   },
-  assignmentLeadInScreenSlideText : {
+  assignmentLeadInScreenSlideText: {
     flex: 1,
-    justifyContent:'center',
+    justifyContent: 'center'
   },
   assignmentLeadInScreenNumberContainer: {
     alignItems: 'center',
@@ -20,7 +20,7 @@ export default StyleSheet.create({
     height: CicleWidth,
     borderRadius: CicleWidth,
     marginRight: 10,
-    marginVertical: 10,
+    marginVertical: 10
   },
   assignmentLeadInScreenNumberText: {
     fontFamily: 'Helvetica',

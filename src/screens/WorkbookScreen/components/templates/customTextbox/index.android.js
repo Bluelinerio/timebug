@@ -1,54 +1,53 @@
-import React                                           from 'react';
-import { 
-  View, 
-  Text, 
-  TextInput, 
-  Platform, 
-  PixelRatio  
-}
-from 'react-native';
+import React from 'react';
+import { View, Text, TextInput, Platform, PixelRatio } from 'react-native';
 import styles from '../../../styles/templates';
-import MyComponent from './ModalComponent'
-if(!styles ) {
-  throw 'did not find stlye file'
+import MyComponent from './ModalComponent';
+if (!styles) {
+  throw 'did not find stlye file';
 }
 class FocusedTextInput extends React.Component {
   state = {
-    focus:false
-  }
+    focus: false
+  };
 
   render() {
-    const { locals } = this.props
+    const { locals } = this.props;
     if (locals.hidden) {
       return null;
     }
-    let stylesheet        = locals.stylesheet;
-    let formGroupStyle    = stylesheet.formGroup.normal;
+    let stylesheet = locals.stylesheet;
+    let formGroupStyle = stylesheet.formGroup.normal;
     let controlLabelStyle = stylesheet.controlLabel.normal;
-    let textboxStyle      = styles.textBox.normal;
-    let textboxViewStyle  = styles.textBoxView.normal;
-    let helpBlockStyle    = stylesheet.helpBlock.normal;
-    let errorBlockStyle   = stylesheet.errorBlock;
+    let textboxStyle = styles.textBox.normal;
+    let textboxViewStyle = styles.textBoxView.normal;
+    let helpBlockStyle = stylesheet.helpBlock.normal;
+    let errorBlockStyle = stylesheet.errorBlock;
 
     if (locals.hasError) {
-      formGroupStyle    = stylesheet.formGroup.error;
+      formGroupStyle = stylesheet.formGroup.error;
       controlLabelStyle = stylesheet.controlLabel.error;
-      textboxStyle      = styles.textBox.error;
-      textboxViewStyle  = styles.textBoxView.error;
-      helpBlockStyle    = stylesheet.helpBlock.error;
+      textboxStyle = styles.textBox.error;
+      textboxViewStyle = styles.textBoxView.error;
+      helpBlockStyle = stylesheet.helpBlock.error;
     }
 
     if (locals.editable === false) {
-      textboxStyle     = stylesheet.textbox.notEditable;
+      textboxStyle = stylesheet.textbox.notEditable;
       textboxViewStyle = stylesheet.textboxView.notEditable;
     }
 
-    let label = locals.label 
-      && <Text style={controlLabelStyle}>{locals.label}</Text>;
-    let help  = locals.help && locals.showHelp 
-      && <Text style={helpBlockStyle}>{locals.help}</Text>
-    let error = locals.hasError && locals.error && locals.showError 
-      && <Text accessibilityLiveRegion="polite" style={errorBlockStyle}>{locals.error}</Text>
+    let label = locals.label && (
+      <Text style={controlLabelStyle}>{locals.label}</Text>
+    );
+    let help = locals.help &&
+      locals.showHelp && <Text style={helpBlockStyle}>{locals.help}</Text>;
+    let error = locals.hasError &&
+      locals.error &&
+      locals.showError && (
+        <Text accessibilityLiveRegion="polite" style={errorBlockStyle}>
+          {locals.error}
+        </Text>
+      );
 
     return (
       <View style={formGroupStyle}>
@@ -66,17 +65,17 @@ class FocusedTextInput extends React.Component {
             maxLength={locals.maxLength}
             multiline={locals.multiline}
             onBlur={locals.onBlur}
-            onEndEditing={()=> {
+            onEndEditing={() => {
               this.setState({
-                focus:false
-              })
-              locals.onEndEditing && locals.onEndEditing()
+                focus: false
+              });
+              locals.onEndEditing && locals.onEndEditing();
             }}
-            onFocus={(focus) => {
+            onFocus={focus => {
               this.setState({
-                focus:true
-              })
-              locals.onFocus && locals.onFocus()
+                focus: true
+              });
+              locals.onFocus && locals.onFocus();
             }}
             onLayout={locals.onLayout}
             onSelectionChange={locals.onSelectionChange}
@@ -94,7 +93,7 @@ class FocusedTextInput extends React.Component {
             onKeyPress={locals.onKeyPress}
             returnKeyType={locals.returnKeyType}
             selectionState={locals.selectionState}
-            onChangeText={(value) => locals.onChange(value)}
+            onChangeText={value => locals.onChange(value)}
             onChange={locals.onChangeNative}
             placeholder={locals.placeholder}
             style={textboxStyle}
@@ -104,7 +103,7 @@ class FocusedTextInput extends React.Component {
         {help}
         {error}
       </View>
-    )
+    );
   }
 }
 
@@ -112,7 +111,5 @@ export default function customTextBox(locals) {
   if (locals.hidden) {
     return null;
   }
-  return (
-    <FocusedTextInput locals={locals} />
-  )
+  return <FocusedTextInput locals={locals} />;
 }

@@ -1,7 +1,5 @@
-import t from "../components/templates";
-import { TimeSpent, TimeChanged, ActivityFeelings } from "./contents";
-
-
+import t from '../components/templates';
+import { TimeSpent, TimeChanged, ActivityFeelings } from './contents';
 
 export default {
   1: {
@@ -18,7 +16,7 @@ export default {
       )
     }),
     options: {
-      label: "Aims & Hobbies Assessment",
+      label: 'Aims & Hobbies Assessment',
       fields: {
         id: {
           hidden: true
@@ -27,19 +25,21 @@ export default {
           item: {
             fields: {
               personalAimHobby: {
-                label: 'Aim/Hobby',
+                label: 'Aim/Hobby'
               },
               timeSpentMonth: {
                 label: 'How much time does this hobby take up a month?'
               },
               timeChanged: {
-                label: 'Has this amount of time increased or decreased since Year 1?'
+                label:
+                  'Has this amount of time increased or decreased since Year 1?'
               },
               activityFeelings: {
                 label: 'How does this activity make you feel?'
               },
               aloneOrPartner: {
-                label: 'Do you engage in this activity alone or with others? And if so, with whom generally?'
+                label:
+                  'Do you engage in this activity alone or with others? And if so, with whom generally?'
               }
             }
           }
@@ -61,7 +61,8 @@ export default {
       label: 'How important are these hobbies to you?',
       fields: {
         giveUp: {
-          label: 'Which of these hobbies, if any, would you be willing to give up if some huge new priority came along, and required more of your time?',
+          label:
+            'Which of these hobbies, if any, would you be willing to give up if some huge new priority came along, and required more of your time?',
           error: 'Please enter a hobby'
         },
         notGiveUp: {
@@ -69,7 +70,6 @@ export default {
           error: 'Please enter a hobby'
         }
       }
-
     }
   },
   3: {
@@ -82,7 +82,8 @@ export default {
       )
     }),
     options: {
-      label: "Were there any aims & hobbies that you weren't able to accomplish that you really wanted to over the past 5 years?",
+      label:
+        "Were there any aims & hobbies that you weren't able to accomplish that you really wanted to over the past 5 years?",
 
       fields: {
         aimsAndHobbies: {
@@ -92,14 +93,13 @@ export default {
                 label: 'Aim/Hobby'
               },
               why: {
-                label: 'What stopped you from initiating or continuing these hobbies?',
+                label:
+                  'What stopped you from initiating or continuing these hobbies?'
                 //error:'Why did you have trouble finding time for this hobby?'
               }
             }
           }
-
         }
-
       }
     }
   }

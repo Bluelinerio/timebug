@@ -1,5 +1,5 @@
-import t from "../components/templates";
-import { PillarsOfLife, AreaOfLife, HoursPerMonth } from "./contents";
+import t from '../components/templates';
+import { PillarsOfLife, AreaOfLife, HoursPerMonth } from './contents';
 
 export default {
   1: {
@@ -13,7 +13,8 @@ export default {
       )
     }),
     options: {
-      label: "Break down a typical 168 hour week according to the 7 Pillars Of Life.",
+      label:
+        'Break down a typical 168 hour week according to the 7 Pillars Of Life.',
 
       fields: {
         id: {
@@ -23,7 +24,7 @@ export default {
           disableOrder: true,
           maxLines: 10,
           config: {
-            maxLines: 10,
+            maxLines: 10
           },
           item: {
             fields: {
@@ -35,7 +36,7 @@ export default {
               }
             }
           }
-        },
+        }
       }
     },
     value: {
@@ -54,14 +55,14 @@ export default {
       )
     }),
     options: {
-      label: "How many hours do you ideally want to spend on each activity?",
+      label: 'How many hours do you ideally want to spend on each activity?',
 
       fields: {
         pillar: {
           disableOrder: true,
           maxLines: 3,
           config: {
-            maxLines: 3,
+            maxLines: 3
           },
           item: {
             fields: {
@@ -69,12 +70,11 @@ export default {
                 //error: "Please select a Life category."
               },
               hours: {
-
                 //error: "How many hours out of a 168 hour week would you ideally spend on this category?"
               }
             }
           }
-        },
+        }
       }
     }
   },
@@ -83,18 +83,18 @@ export default {
       activities: t.list(
         t.struct({
           activity: t.String,
-          pillarsOfLife: t.maybe(PillarsOfLife),
+          pillarsOfLife: t.maybe(PillarsOfLife)
         })
       )
     }),
     options: {
-      label: "What activities do you ideally want to engage in less?",
+      label: 'What activities do you ideally want to engage in less?',
       fields: {
         activities: {
           disableOrder: true,
           maxLines: 10,
           config: {
-            maxLines: 10,
+            maxLines: 10
           },
           item: {
             fields: {
@@ -115,18 +115,18 @@ export default {
       activities: t.list(
         t.struct({
           activity: t.String,
-          pillarsOfLife: t.maybe(PillarsOfLife),
+          pillarsOfLife: t.maybe(PillarsOfLife)
         })
       )
     }),
     options: {
-      label: "What activities do you ideally want to engage in more?",
+      label: 'What activities do you ideally want to engage in more?',
       fields: {
         activities: {
           disableOrder: true,
           maxLines: 10,
           config: {
-            maxLines: 10,
+            maxLines: 10
           },
           item: {
             fields: {

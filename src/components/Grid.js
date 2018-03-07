@@ -1,107 +1,110 @@
 // @flow
 import * as React from 'react';
-import {
-  View, Dimensions
-} from 'react-native';
-import OnLayout from './OnLayout'
+import { View, Dimensions } from 'react-native';
+import OnLayout from './OnLayout';
 
 export type GridItemProps = {
   column: number,
   row: number,
-  width: number, 
+  width: number,
   height: number,
   x: number,
   y: number,
   index: number,
   options: {}
-}
+};
 
 export type GridContainerProps = {
   width: number,
-  height : number,
+  height: number,
   children: React.Element<any>,
   style?: any
-}
+};
 
-export type getSpaceXFn = ({ tileWidth: number}) => number
-export type getSpaceYFn = ({ height: number }) => number
-export type preRenderItemProps = ({
+export type getSpaceXFn = ({ tileWidth: number }) => number;
+export type getSpaceYFn = ({ height: number }) => number;
+export type preRenderItemProps = {
   width: number,
   height: number
-});
-export type RenderContainerFnType = (GridContainerProps) => React.Element<any>;
-export type RenderItemFnType = (GridItemProps) => React.Element<any>
+};
+export type RenderContainerFnType = GridContainerProps => React.Element<any>;
+export type RenderItemFnType = GridItemProps => React.Element<any>;
 
 export type GridProps = {
   width: number,
-  rows: number, 
-  columns: number, 
+  rows: number,
+  columns: number,
   aspectRatio: number,
-  spaceX?: number, 
+  spaceX?: number,
   spaceY?: number,
   options?: {
-    spaceX?: getSpaceXFn, 
+    spaceX?: getSpaceXFn,
     spaceY?: getSpaceYFn,
     renderItem?: preRenderItemProps,
     appendToItem?: () => [{}]
   },
   renderContainer: RenderContainerFnType,
   renderItem: RenderItemFnType
-}
+};
 
-const defaulSpacingRatio = 0.1
+const defaulSpacingRatio = 0.1;
 
 export default (props: GridProps) => {
   const containerWidth = props.width || Dimensions.get('window').width;
 
-  const tileWidth = (containerWidth / props.columns)
-  const spaceX = props.spaceX 
-    ? props.spaceX 
-    : (props.options && props.options.spaceX) 
+  const tileWidth = containerWidth / props.columns;
+  const spaceX = props.spaceX
+    ? props.spaceX
+    : props.options && props.options.spaceX
       ? props.options.spaceX({
-        tileWidth: tileWidth,
-      }) 
-    : Math.max(Math.floor(tileWidth * defaulSpacingRatio), 1)
-  const width = tileWidth - spaceX
+          tileWidth: tileWidth
+        })
+      : Math.max(Math.floor(tileWidth * defaulSpacingRatio), 1);
+  const width = tileWidth - spaceX;
 
-  const height = width * props.aspectRatio
-  const spaceY = props.spaceY 
-    ? props.spaceY 
-    : (props.options && props.options.spaceY) 
+  const height = width * props.aspectRatio;
+  const spaceY = props.spaceY
+    ? props.spaceY
+    : props.options && props.options.spaceY
       ? props.options.spaceY({
-        height,
-      }) 
-      : Math.max(Math.floor(height * defaulSpacingRatio), 1)
+          height
+        })
+      : Math.max(Math.floor(height * defaulSpacingRatio), 1);
   const tileHeight = height + spaceY;
-  const options = (props.options && props.options.renderItem)
-    ? props.options.renderItem({
-      width,
-      height,
-    })
-    : null
+  const options =
+    props.options && props.options.renderItem
+      ? props.options.renderItem({
+          width,
+          height
+        })
+      : null;
 
-  const appendToItem = (props.options && props.options.appendToItem) 
-    ? props.options.appendToItem() 
-    : []
+  const appendToItem =
+    props.options && props.options.appendToItem
+      ? props.options.appendToItem()
+      : [];
 
   const containerHeight = tileHeight * props.rows;
-  
+
   const component = props.renderContainer({
     ...props,
     height: containerHeight,
-    children: Array(props.rows * props.columns).fill().map((i ,index) => props.renderItem({
-      index,
-      column:index % props.columns,
-      row:index / props.columns,
-      width,
-      height,
-      x: ((index % props.columns) * tileWidth) + (spaceX * 0.5),
-      y: (Math.floor(index / props.columns) * tileHeight) + (spaceY * 0.5),
-      ...options,
-      ...(appendToItem[index] || {})
-    }))
-  })
+    children: Array(props.rows * props.columns)
+      .fill()
+      .map((i, index) =>
+        props.renderItem({
+          index,
+          column: index % props.columns,
+          row: index / props.columns,
+          width,
+          height,
+          x: (index % props.columns) * tileWidth + spaceX * 0.5,
+          y: Math.floor(index / props.columns) * tileHeight + spaceY * 0.5,
+          ...options,
+          ...(appendToItem[index] || {})
+        })
+      )
+  });
 
   return component;
-
-}
+};

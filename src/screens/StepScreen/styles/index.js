@@ -1,16 +1,12 @@
-import {
-  Platform,
-  StyleSheet,
-  Dimensions,
-} from "react-native";
-import { deepBlue }       from '../../../constants/colors'
-import { STATUSBAR_HEIGHT, APPBAR_HEIGHT} from '../../../constants'
+import { Platform, StyleSheet, Dimensions } from 'react-native';
+import { deepBlue } from '../../../constants/colors';
+import { STATUSBAR_HEIGHT, APPBAR_HEIGHT } from '../../../constants';
 import normalize from '../../../utils/normalizeText';
 
 export default StyleSheet.create({
   rowContainer: {
-    flex:1,
-    flexDirection: 'row',
+    flex: 1,
+    flexDirection: 'row'
   },
   stepScreenScreen: {
     flex: 1,
@@ -22,64 +18,64 @@ export default StyleSheet.create({
     flex: 1,
     paddingTop: STATUSBAR_HEIGHT + APPBAR_HEIGHT,
     flexDirection: 'row',
-    justifyContent:'center',
-    alignItems: 'center',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   stepScreenHeaderTitleContainer: {
     flex: 1,
     justifyContent: 'space-between',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   stepScreenHeaderTitle: {
     paddingTop: 10,
     paddingBottom: 30,
-    fontFamily: "Helvetica",
+    fontFamily: 'Helvetica',
     fontSize: normalize(18),
-    fontWeight: "bold",
-    textAlign: "center",
-    color: "#ffffff",
-    alignSelf: 'flex-end',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: '#ffffff',
+    alignSelf: 'flex-end'
   },
   stepScreenContent: {
     marginTop: 20,
-    marginBottom: 30,
+    marginBottom: 30
   },
   stepScreenText: {
     color: '#000000',
     fontSize: normalize(12),
-    textAlign: 'center',
+    textAlign: 'center'
   },
   stepScreenSubtitle: {
-    fontFamily: "Helvetica",
+    fontFamily: 'Helvetica',
     fontSize: normalize(20),
-    fontWeight: "200",
+    fontWeight: '200',
     color: deepBlue,
     textAlign: 'left',
     paddingHorizontal: 20,
-    paddingVertical: 20,
+    paddingVertical: 20
   },
   stepScreenTitle: {
-    fontFamily: "Helvetica",
+    fontFamily: 'Helvetica',
     fontSize: normalize(28),
-    fontWeight: "bold",
+    fontWeight: 'bold',
     color: deepBlue,
     paddingHorizontal: 20,
-    paddingVertical: 20,
+    paddingVertical: 20
   },
   stepScreenImage: {
-    flex: 1,
+    flex: 1
   },
   stepScreenDescription: {
     flex: 1,
-    paddingBottom: 300,
+    paddingBottom: 300
   },
   stepScreenScrollView: {
     flex: 1,
-    paddingHorizontal: 20,
+    paddingHorizontal: 20
   },
   stepScreenBackButton: {
     position: 'absolute',
     top: 35,
-    left: 15,
-  },
+    left: 15
+  }
 });

@@ -14,9 +14,9 @@ import {
   Platform,
   TouchableNativeFeedback,
   TouchableOpacity,
-  View,
+  View
 } from 'react-native';
-import type { StyleObj } from 'react-native/Libraries/StyleSheet/StyleSheetTypes'
+import type { StyleObj } from 'react-native/Libraries/StyleSheet/StyleSheetTypes';
 type ViewStyleProp = StyleObj;
 
 const ANDROID_VERSION_LOLLIPOP = 21;
@@ -28,11 +28,11 @@ type Props = {
   pressColor?: string,
   activeOpacity?: number,
   children?: React.Element<*>,
-  style?: ViewStyleProp,
+  style?: ViewStyleProp
 };
 
 type DefaultProps = {
-  pressColor: string,
+  pressColor: string
 };
 
 export default class TouchableItem extends Component<
@@ -42,7 +42,7 @@ export default class TouchableItem extends Component<
 > {
   static defaultProps = {
     borderless: false,
-    pressColor: 'rgba(0, 0, 0, .32)',
+    pressColor: 'rgba(0, 0, 0, .32)'
   };
 
   render() {
