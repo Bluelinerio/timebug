@@ -17,110 +17,128 @@ const suggestionRow = {
 };
 
 export default StyleSheet.create({
-  dashboardContainer: {
-    marginHorizontal: 16
-  },
-  dashboardCardWide: {
-    marginTop: 24,
-    marginBottom: 40,
-    marginHorizontal: 16,
-    padding: 12,
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
-    backgroundColor: iOSColors.white,
-    borderRadius: 6
-  },
-  dashboardCard: {
-    marginTop: 24,
-    marginBottom: 40,
-    marginHorizontal: 16,
-    padding: 12,
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
-    backgroundColor: iOSColors.white,
+	dashboardContainer: {
+		marginHorizontal: 16,
+	},
+	dashboardCardWide: {
+		marginTop: 24,
+		marginBottom: 40,
+		marginHorizontal: 16,
+		padding: 12,
+		flexDirection: "column",
+		justifyContent: "flex-start",
+		alignItems: "flex-start",
+		backgroundColor: iOSColors.white,
+		borderRadius: 6,
+	},
+	dashboardCard: {
+		marginTop: 24,
+		marginBottom: 40,
+		marginHorizontal: 16,
+		padding: 12,
+		flexDirection: "column",
+		justifyContent: "flex-start",
+		alignItems: "flex-start",
+		backgroundColor: iOSColors.white,
+		borderRadius: 6,
+		...Platform.select({
+			android: { elevation: 16 },
+			ios: {
+				shadowColor: "black",
+				shadowOffset: {
+					width: 0,
+					height: 16
+				},
+				shadowOpacity: 0.2,
+				shadowRadius: 16
+			}
+		})
+	},
+	leaderboardContainer: {
+    marginRight: 10,
+    paddingTop:10,
+    marginBottom:10,
     borderRadius: 6,
     ...Platform.select({
-      android: { elevation: 16 },
+      android: { elevation: 2 },
       ios: {
-        shadowColor: 'black',
+        shadowColor: "black",
         shadowOffset: {
           width: 0,
-          height: 16
+          height: 2
         },
         shadowOpacity: 0.2,
-        shadowRadius: 16
+        shadowRadius: 2
       }
-    })
+    }) 
   },
-  suggestionRow,
-  suggestionRowBottom: {
-    ...suggestionRow,
-    marginTop: 4
-  },
-  dashboardContainerCard: {
-    height: 40
-  },
-  backgroundImage: {
-    ...StyleSheet.absoluteFillObject
-  },
-  suggestionText: {
-    ...human.headlineWhiteObject,
-    ...systemWeights.light,
-    margin: 8
-  },
-  bold: {
-    ...systemWeights.bold
-  },
-  bigSuggestion: {
-    flex: 2,
-    aspectRatio: 1
-  },
-  bigSuggestionWithText: {
-    flex: 2,
-    borderRadius: 6
-  },
-  smallSuggestionMarginTop: {
-    marginTop: 4
-  },
-  smallSuggestionMarginLeft: {
-    marginLeft: 4
-  },
-  smallSuggestion: {
-    flex: 1,
-    aspectRatio: 1
-  },
-  strong: {
-    ...Platform.select({
-      android: {
-        ...robotoWeights.bold
-      },
-      ios: {
-        ...sanFranciscoWeights.black
-      }
-    })
-  },
-  emogi: {
-    ...Platform.select({
-      android: {
-        ...material.display3Object
-      },
-      ios: {
-        ...material.display3Object
-        //...human.largeTitleObject,
-      }
-    }),
-    textAlign: 'center'
-  },
-  title: iOSUIKit.largeTitleEmphasizedObject,
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'flex-start',
-    paddingTop: 16,
-    paddingBottom: 8,
-    marginHorizontal: 16,
+	suggestionRow,
+	suggestionRowBottom: {
+		...suggestionRow,
+		marginTop: 4,
+	},
+	dashboardContainerCard: {
+		height: 40
+	},
+	backgroundImage: {
+		...StyleSheet.absoluteFillObject,
+	},
+	suggestionText: {
+		...human.headlineWhiteObject,
+		...systemWeights.light,
+		margin: 8
+	},
+	bold: {
+		...systemWeights.bold
+	},
+	bigSuggestion: {
+		flex: 2,
+		aspectRatio: 1
+	},
+	bigSuggestionWithText: {
+		flex: 2,
+		borderRadius: 6    
+	},
+	smallSuggestionMarginTop: {
+		marginTop: 4
+	},
+	smallSuggestionMarginLeft: {
+		marginLeft: 4
+	},
+	smallSuggestion: {
+		flex: 1,
+		aspectRatio: 1
+	},
+	strong: {
+		...Platform.select({
+			android: { 
+				...robotoWeights.bold
+			},
+			ios: {
+				...sanFranciscoWeights.black
+			}
+		}),
+	},
+	emogi: {
+		...Platform.select({
+			android: { 
+				...material.display3Object,
+			},
+			ios: {
+				...material.display3Object,
+				//...human.largeTitleObject,
+			}
+		}),
+		textAlign:'center'
+	},
+	title: iOSUIKit.largeTitleEmphasizedObject,
+	header: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+		alignItems: "flex-start",
+		paddingTop: 16,
+		paddingBottom: 8,
+		marginHorizontal: 16,
     borderBottomWidth: 1,
     borderColor: iOSColors.customGray
   },
