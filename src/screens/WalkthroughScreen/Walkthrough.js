@@ -18,9 +18,6 @@ import Text from './components/Text'
 import Button from './components/Button'
 import type { ScreenProps } from './components/Types';
 
-const height = Dimensions.get('window').height
-const width = Dimensions.get('window').width
-
 type Props = ScreenProps & {
   slides: [Slide],
   dismiss: () => void
