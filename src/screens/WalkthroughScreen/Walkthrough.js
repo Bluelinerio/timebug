@@ -13,20 +13,23 @@ import Swiper from 'react-native-swiper';
 import LinearGradient from 'react-native-linear-gradient';
 
 import type { Slide } from '../../services/cms';
-import Theme from './components/Theme';
-import Text from './components/Text';
-import Button from './components/Button';
+import Theme from './components/Theme'
+import Text from './components/Text'
+import Button from './components/Button'
 import type { ScreenProps } from './components/Types';
+
+const height = Dimensions.get('window').height
+const width = Dimensions.get('window').width
 
 type Props = ScreenProps & {
   slides: [Slide],
   dismiss: () => void
-};
+}
 
 export default class Walkthrough extends React.Component<Props> {
   onIndexChanged = (index: number) => {
     //slides[index].makeVisible();
-  };
+  }
   renderSlide = (slide: Slide, index: number) => (
     <LinearGradient
       key={index}
@@ -129,6 +132,7 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0
   },
+
   fullHeightView: {
     height: Dimensions.get('window').height
   },
