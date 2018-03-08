@@ -4,7 +4,6 @@ import type { Step, Colors, OnobardingPage } from '../../services/cms';
 const {
   steps,
   colors,
-  about,
   onboardingPages
 } = require('../../static/cms.json');
 
@@ -30,7 +29,6 @@ const initialState: CMSState = {
   error: null,
   steps,
   colors,
-  about,
   onboardingPages
 };
 

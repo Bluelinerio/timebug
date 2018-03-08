@@ -9,7 +9,6 @@ export const CONTENTFUL_CREDENTIALS = {
 };
 
 export const CONTENTFUL_CONTENT_STEP = 'day';
-export const CONTENTFUL_CONTENT_LOGIN = 'login';
 export const CONTENTFUL_CONTENT_COLORS = 'colors';
 export const CONTENTFUL_ONBOARDING_PAGE = 'onboardingPage';
 
@@ -43,10 +42,6 @@ const unlinkFields = name => response => ({
   [name]: response.items.map(i => i.fields)
 });
 
-const aboutFromResponse = response => ({
-  about: response.items.map(item => item.fields)[0].about
-});
-
 const colorsFromResponse = response => ({
   colors: response.items[0].fields.schema
 });
@@ -75,11 +70,6 @@ const nomrmalizeSteps = ({ steps, colors }) => ({
   )
 });
 
-export const fetchAbout = () =>
-  contentfulClient
-    .getEntries({ content_type: CONTENTFUL_CONTENT_LOGIN })
-    .then(aboutFromResponse);
-
 export const fetchColors = () =>
   contentfulClient
     .getEntries({ content_type: CONTENTFUL_CONTENT_COLORS })
@@ -99,7 +89,6 @@ export const refreshCMS = () =>
   Promise.all([
     fetchSteps(),
     fetchColors(),
-    fetchAbout(),
     fetchonboardingPages()
   ])
     .then(responses => Object.assign(...responses))
