@@ -1,17 +1,16 @@
 // @flow
 
-import React, { PureComponent } from 'react';
-import { View, Text, Platform } from 'react-native';
-import Carousel, { Pagination } from 'react-native-snap-carousel';
-import styles, { colors } from '../styles/PagninatedCarousel.style';
-import StepGradientBackground from '../containers/StepGradientBackground';
-import StepCarouselGreet from '../containers/StepCarouselGreet';
-import VerticalGradient from './VerticalGradient';
-import SliderEntry from './SliderEntry';
-import type { Item } from './SliderEntry';
-import { NUMBER_OF_STEP_FOR_PHASES /* 10 */ } from '../../../services/cms';
+import React, { PureComponent } from 'react'
+import { View, Text, Platform } from 'react-native'
+import Carousel, { Pagination } from 'react-native-snap-carousel'
+import styles, { colors } from '../styles/PagninatedCarousel.style'
+import StepGradientBackground from '../containers/StepGradientBackground'
+import StepCarouselGreet from '../containers/StepCarouselGreet'
+import VerticalGradient from './VerticalGradient'
+import SliderEntry from './SliderEntry'
+import type { Item } from './SliderEntry'
+import { NUMBER_OF_STEP_FOR_PHASES /* 10 */ } from '../../../services/cms'
 
-const SLIDER_1_FIRST_ITEM = 0;
 type Props = {
   backgroundColorAtIndex: (step: number) => string,
   items: Array<Item>,
@@ -20,21 +19,21 @@ type Props = {
   snap: number => void,
   activeSliderIndex: number,
   onPress: (item: Item, index: number) => void
-};
+}
 
 type State = {
   activeSliderIndex: number,
   activeSliderRef: ?number
-};
+}
 
 export default class PagninatedCarousel extends PureComponent<Props, State> {
   constructor(props: Props) {
-    super(props);
-    const { activeSliderIndex } = props;
+    super(props)
+    const { activeSliderIndex } = props
     this.state = {
-      activeSliderIndex: activeSliderIndex || SLIDER_1_FIRST_ITEM,
+      activeSliderIndex: activeSliderIndex || 0,
       activeSliderRef: null
-    };
+    }
   }
 
   render() {
@@ -45,8 +44,9 @@ export default class PagninatedCarousel extends PureComponent<Props, State> {
       itemWidth,
       snap,
       onPress
-    } = this.props;
-    const { activeSliderRef, activeSliderIndex } = this.state;
+    } = this.props
+    const { activeSliderRef, activeSliderIndex } = this.state
+    debugger
     return (
       <View style={styles.paginatedCarouselContainer}>
         <VerticalGradient />
@@ -66,7 +66,7 @@ export default class PagninatedCarousel extends PureComponent<Props, State> {
         <Carousel
           ref={c => {
             if (!this.state.activeSliderRef) {
-              this.setState({ activeSliderRef: c });
+              this.setState({ activeSliderRef: c })
             }
           }}
           data={items}
@@ -83,7 +83,7 @@ export default class PagninatedCarousel extends PureComponent<Props, State> {
           sliderWidth={sliderWidth}
           itemWidth={itemWidth}
           hasParallaxImages={false}
-          firstItem={SLIDER_1_FIRST_ITEM}
+          firstItem={activeSliderIndex}
           inactiveSlideScale={0.95}
           inactiveSlideOpacity={Platform.OS === 'ios' ? 0.9 : 1.0}
           enableMomentum={Platform.OS !== 'ios'}
@@ -96,9 +96,9 @@ export default class PagninatedCarousel extends PureComponent<Props, State> {
           autoplayDelay={2000}
           autoplayInterval={6000}
           onSnapToItem={(index: number) => {
-            this.setState({ activeSliderIndex: index });
+            this.setState({ activeSliderIndex: index })
             if (snap) {
-              snap(index);
+              snap(index)
             }
           }}
         />
@@ -115,6 +115,6 @@ export default class PagninatedCarousel extends PureComponent<Props, State> {
           tappableDots={!!activeSliderRef}
         />
       </View>
-    );
+    )
   }
 }
