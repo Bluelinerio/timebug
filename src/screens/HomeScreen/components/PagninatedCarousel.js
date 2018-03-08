@@ -23,7 +23,7 @@ type Props = {
 
 type State = {
   activeSliderIndex: number,
-  activeSliderRef: ?number
+  carouseRef: ?number
 }
 
 export default class PagninatedCarousel extends PureComponent<Props, State> {
@@ -32,8 +32,19 @@ export default class PagninatedCarousel extends PureComponent<Props, State> {
     const { activeSliderIndex } = props
     this.state = {
       activeSliderIndex: activeSliderIndex || 0,
-      activeSliderRef: null
+      carouseRef: null
     }
+  }
+
+  // This two mehtods are a fix to the a design decision of Pagination where when pressing a dot it looks for the carouselRef instead of have somethin like onPress(index:number).
+  _snapToItem = (index) => {
+    const { carouseRef } = this.state;
+    carouseRef && carouseRef._snapToItem(index);
+  }
+  _getPositionIndex = (index) => {
+    const { activeSliderIndex } = this.state
+    const addForPhase = Math.floor(activeSliderIndex / NUMBER_OF_STEP_FOR_PHASES) * NUMBER_OF_STEP_FOR_PHASES;
+    return addForPhase + index;
   }
 
   render() {
@@ -45,8 +56,7 @@ export default class PagninatedCarousel extends PureComponent<Props, State> {
       snap,
       onPress
     } = this.props
-    const { activeSliderRef, activeSliderIndex } = this.state
-    debugger
+    const { carouseRef, activeSliderIndex } = this.state
     return (
       <View style={styles.paginatedCarouselContainer}>
         <VerticalGradient />
@@ -65,8 +75,8 @@ export default class PagninatedCarousel extends PureComponent<Props, State> {
         <StepCarouselGreet index={activeSliderIndex} />
         <Carousel
           ref={c => {
-            if (!this.state.activeSliderRef) {
-              this.setState({ activeSliderRef: c })
+            if (!this.state.carouseRef) {
+              this.setState({ carouseRef: c })
             }
           }}
           data={items}
@@ -91,7 +101,6 @@ export default class PagninatedCarousel extends PureComponent<Props, State> {
           containerCustomStyle={styles.slider}
           contentContainerCustomStyle={styles.sliderContentContainer}
           loop={false}
-          loopClonesPerSide={2}
           autoplay={false}
           autoplayDelay={2000}
           autoplayInterval={6000}
@@ -111,8 +120,8 @@ export default class PagninatedCarousel extends PureComponent<Props, State> {
           inactiveDotColor={colors.inactiveDotColor}
           inactiveDotOpacity={0.4}
           inactiveDotScale={0.5}
-          carouselRef={activeSliderRef}
-          tappableDots={!!activeSliderRef}
+          carouselRef={this}
+          tappableDots={!!carouseRef}
         />
       </View>
     )
