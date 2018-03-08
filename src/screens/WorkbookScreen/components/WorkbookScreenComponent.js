@@ -54,7 +54,7 @@ type State = {
   layoutReady: boolean
 };
 
-class WorkbookScreenContainer extends Component<Props, State> {
+class WorkbookScreenComponent extends Component<Props, State> {
   form: ?Form = null;
 
   constructor(props: Props) {
@@ -240,4 +240,4 @@ class WorkbookScreenContainer extends Component<Props, State> {
   };
 }
 
-export default WorkbookScreenContainer;
+export default WorkbookScreenComponent;
