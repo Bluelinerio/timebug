@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component }                from 'react';
 import {
   Platform,
   StyleSheet,
@@ -8,19 +8,22 @@ import {
   ScrollView,
   TouchableOpacity,
   StatusBar
-} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import Markdown from '../../../Modules/Markdown';
-import Button from '../../../components/Button';
-import GradientWithTwoColors from '../../../components/GradientWithTwoColors';
-import ScrollableHeader from '../../../components/ScrollableHeader';
-import CustomImage from '../../../components/CustomImage';
-import type { Step } from '../../../services/cms';
-import { getImageUrl } from '../../../services/cms';
-import styles from '../styles';
+}                                          from 'react-native';
+import Icon                                from 'react-native-vector-icons/Ionicons';
+import Markdown                            from '../../../Modules/Markdown';
+import Button                              from '../../../components/Button';
+import GradientWithTwoColors               from '../../../components/GradientWithTwoColors';
+import ScrollableHeader                    from '../../../components/ScrollableHeader';
+import CustomImage                         from '../../../components/CustomImage';
+import type { Step }                       from '../../../services/cms';
+import { getImageUrl }                     from '../../../services/cms';
 import { APPBAR_HEIGHT, STATUSBAR_HEIGHT } from '../../../constants';
-import markdownStyles from '../../../styles/Markdown/stepScreen';
-import StepScreenButtonContainer from '../containers/StepScreenButtonContainer';
+import markdownStyles                      from '../../../styles/Markdown/stepScreen';
+import StepScreenButtonContainer           from '../containers/StepScreenButtonContainer';
+import styles                              from '../styles';
+import withState                           from './withState'
+
+const WithStateScrollableHeader = withState(ScrollableHeader);
 
 export type Props = {
   title: string,
@@ -90,7 +93,7 @@ export default ({
   onPress,
   image
 }) => (
-  <ScrollableHeader
+  <WithStateScrollableHeader
     headerMaxHeight={HEADER_HEIGHT}
     headerMinHeight={APPBAR_HEIGHT + STATUSBAR_HEIGHT}
     headerImage={image}
