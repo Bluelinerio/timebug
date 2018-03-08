@@ -38,10 +38,13 @@ const populate = (
   return {
     ...state,
     data: {
+      timeStamp: Date.now(),
       ...data,
       [stepId]: {
         ...(data[stepId] || null),
+        timeStamp: Date.now(),
         [formId]: {
+          timeStamp: Date.now(),
           ...value
         }
       }
