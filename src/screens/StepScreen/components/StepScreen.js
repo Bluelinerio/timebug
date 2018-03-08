@@ -21,9 +21,6 @@ import { APPBAR_HEIGHT, STATUSBAR_HEIGHT } from '../../../constants';
 import markdownStyles                      from '../../../styles/Markdown/stepScreen';
 import StepScreenButtonContainer           from '../containers/StepScreenButtonContainer';
 import styles                              from '../styles';
-import withState                           from './withState'
-
-const WithStateScrollableHeader = withState(ScrollableHeader);
 
 export type Props = {
   title: string,
@@ -93,7 +90,7 @@ export default ({
   onPress,
   image
 }) => (
-  <WithStateScrollableHeader
+  <ScrollableHeader
     headerMaxHeight={HEADER_HEIGHT}
     headerMinHeight={APPBAR_HEIGHT + STATUSBAR_HEIGHT}
     headerImage={image}
