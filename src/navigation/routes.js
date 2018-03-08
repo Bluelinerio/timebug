@@ -10,7 +10,6 @@ export default {
   },
   step: {
     StepScreen: 'StepScreen',
-    AssignmentLeadInScreen: 'AssignmentLeadInScreen',
     WorkbookScreen: 'WorkbookScreen',
     WorkbookDoneScreen: 'WorkbookDoneScreen'
   }

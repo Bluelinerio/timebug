@@ -10,7 +10,6 @@ import {
 import { SafeAreaView } from 'react-navigation'
 
 import GradientWithTwoColors							from '../../../components/GradientWithTwoColors'
-import Error                        			from '../../../components/Error'
 import PagninatedCarouselContainer  			from '../containers/PagninatedCarouselContainer'
 import Version														from '../containers/Version'
 import DashboardCellsContainer						from '../containers/DashboardCellContainer'
@@ -22,20 +21,25 @@ import Banner                       			from './Banner'
 import Space															from './Space'
 /// end other.
 
-
-export type Props = {
-	error?: string
+const StatusBarHeightSlugForAndroid = ({ backgroundColor = 'white' }) => {
+	if( StatusBar.currentHeight && StatusBar.translucent ) {
+		return <View 
+							style={{
+								backgroundColor,
+								height: StatusBar.currentHeight
+							}} 
+            />
+	}
+	return null
 }
-type State = {
-	stepIndexInFocus: number
-}
 
-export default class HomeScreen extends PureComponent<Props, State> {
-	state = { stepIndexInFocus: 0 }
+export default class HomeScreen extends PureComponent {
 	render() {
-		const { stepIndexInFocus } = this.state
 		return (
-			<SafeAreaView forceInset={{ top: 'always', bottom: 'never' }} style={styles.container}>
+			<SafeAreaView 
+				forceInset={{ top: 'always', bottom: 'never' }} 
+				style={styles.container}
+			>
 				<StatusBar 
 					translucent
 					barStyle='dark-content'
@@ -45,18 +49,11 @@ export default class HomeScreen extends PureComponent<Props, State> {
 					style={{ flex: 1 }} 
 					contentInsetAdjustmentBehavior="automatic"
 				>	
-          {StatusBar.currentHeight && 
-            <View style={{
-              backgroundColor: 'white',
-              height:StatusBar.currentHeight
-            }} 
-            />
-          }				
+					<StatusBarHeightSlugForAndroid backgroundColor={'white'}/>
 					<Banner />
 					<PagninatedCarouselContainer
 						itemWidth={itemWidth}
 						sliderWidth={sliderWidth}
-						snap={index => this.setState({ stepIndexInFocus: index })}
 					/>
 					<DashboardCellsContainer />
 					<MoreButtonContainer />

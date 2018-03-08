@@ -29,7 +29,6 @@ export type Props = {
   number: number,
   icon: { uri: string },
   color: string,
-  onPress: () => void
 };
 
 const HEADER_HEIGHT = Dimensions.get('window').height * 0.4;
@@ -87,7 +86,6 @@ export default ({
   number,
   icon,
   color,
-  onPress,
   image
 }) => (
   <ScrollableHeader
@@ -116,7 +114,6 @@ export default ({
         subtitle={subtitle}
         description={description}
         color={color}
-        onPress={onPress}
       />
     }
   />

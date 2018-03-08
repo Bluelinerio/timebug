@@ -29,7 +29,6 @@ const mapStateToProps = state => {
 
 const merge = (stateProps, dispatchProps, ownProps): Props => {
   const { colors, steps, completedForms, incompleteFormsData } = stateProps;
-  const { goToAssignmentLeadInScreen } = dispatchProps;
   const { navigation: { dispatch, state: { params: { stepId } } } } = ownProps;
 
   const doneStep: Step = steps[stepId];

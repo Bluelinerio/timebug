@@ -5,7 +5,6 @@ import React from 'react';
 import CardStackStyleInterpolator from '../utils/CustomCardStackStyleInterpolator';
 import HomeScreen from '../screens/HomeScreen';
 import StepScreen from '../screens/StepScreen';
-import AssignmentLeadInScreen from '../screens/AssignmentLeadInScreen';
 import WorkbookDoneScreen from '../screens/WorkbookDoneScreen';
 import WorkbookScreen from '../screens/WorkbookScreen';
 import WalkthroughScreen from '../screens/WalkthroughScreen';
@@ -24,10 +23,6 @@ export const assignmentFlowConfiguration = {
   screens: {
     [routes.step.StepScreen]: {
       screen: StepScreen.screen
-    },
-    [routes.step.AssignmentLeadInScreen]: {
-      screen: AssignmentLeadInScreen.screen,
-      path: 'leadin/:number'
     },
     [routes.step.WorkbookScreen]: {
       screen: WorkbookScreen.screen,

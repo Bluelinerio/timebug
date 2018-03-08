@@ -10,7 +10,6 @@ import { headerBackgrounds } from '../../../resources/images';
 import { getImageUrl } from '../../../services/cms';
 import selectors from '../../../redux/selectors';
 import type { Step } from '../../../services/cms';
-import { goToAssignmentLeadInScreen } from '../../../redux/actions/nav.actions';
 
 const mapStateToProps = state => {
   const steps = selectors.steps(state);
@@ -28,7 +27,6 @@ const testStepId = ({ navigation: { state: { params: { stepId } } } }) => {
 
 const merge = (stateProps, dispatchProps, ownProps): Props => {
   const { steps } = stateProps;
-  const { goToAssignmentLeadInScreen } = dispatchProps;
   testNavigation(ownProps);
   testStepId(ownProps);
   const { navigation: { state: { params: { stepId } } } } = ownProps;
@@ -44,7 +42,6 @@ const merge = (stateProps, dispatchProps, ownProps): Props => {
   const color = step.color;
   const image = headerBackgrounds[stepId];
 
-  const onPress = () => goToAssignmentLeadInScreen(ownProps);
   return {
     title,
     subtitle,
@@ -52,13 +49,12 @@ const merge = (stateProps, dispatchProps, ownProps): Props => {
     number,
     icon,
     color,
-    onPress,
     image
   };
 };
 
 const StepScreenContainer = withNavigation(
-  connect(mapStateToProps, { goToAssignmentLeadInScreen }, merge)(StepScreen)
+  connect(mapStateToProps, null , merge)(StepScreen)
 );
 
 export default StepScreenContainer;
