@@ -18,6 +18,7 @@ type Props = {
   sliderWidth: number,
   itemWidth: number,
   snap: number => void,
+  activeSliderIndex: number,
   onPress: (item: Item, index: number) => void
 };
 
@@ -27,10 +28,15 @@ type State = {
 };
 
 export default class PagninatedCarousel extends PureComponent<Props, State> {
-  state = {
-    activeSliderIndex: SLIDER_1_FIRST_ITEM,
-    activeSliderRef: null
-  };
+  constructor(props: Props) {
+    super(props);
+    const { activeSliderIndex } = props;
+    this.state = {
+      activeSliderIndex: activeSliderIndex || SLIDER_1_FIRST_ITEM,
+      activeSliderRef: null
+    };
+  }
+
   render() {
     const {
       items,
