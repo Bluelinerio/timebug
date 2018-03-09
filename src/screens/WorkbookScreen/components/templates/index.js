@@ -68,20 +68,13 @@ t.form.Form.defaultProps = {
 };
 
 t.String.getValidationErrorMessage = (actual, path, context) => {
-  const to = path.length ? '/' + path.join('/') + ': ' : '';
-
-  if (!actual) {
-    const help =
-      context &&
-      context.options &&
-      context.options.help &&
-      ', ' + context.options.help;
-    return `missing required field ${to}${help}`;
-  } else {
-    const to = path.length ? '/' + path.join('/') + ': ' : '';
-    return 'Invalid value ' + t.stringify(actual) + ' supplied to ' + to;
-  }
-};
+  const to = context && context.options && context.options.label
+  const help = context && context.options && context.options.help
+  return `${actual 
+    ? 'Missing required field' 
+    : `Invalid value ${t.stringify(actual)}`
+  } supplied ${to ? 'to \'' + to + '\'' : ''} ${help ? `\n ${help}` : ''}`
+}
 
 // Override Struct methods to reset to page 0 after changing form
 t.form.Struct.prototype.shouldComponentUpdate = function(nextProps, nextState) {
