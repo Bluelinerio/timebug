@@ -37,8 +37,13 @@ export default class App extends React.Component<{}, State> {
     error: null
   };
   async componentDidCatch(error: any) {
-    store.dispatch(resetStore);
-    persistor.purge();
+    debugger;
+    if(__DEV__) {
+
+    } else if(this.state.error && error === this.state.error){
+      store.dispatch(resetStore);
+      persistor.purge();
+    }
     this.setState({
       error
     });
