@@ -15,7 +15,7 @@ export default {
     }),
     options: {
       label:
-        'What are 5-15 different Is that you feel are a part of yourself? (e.g., “Lazy I” could resemble “Procrastinating I”)',
+        'What are some different \'I\'s that are a part of you? \n\n',
       fields: {
         id: {
           hidden: true
@@ -25,18 +25,18 @@ export default {
             fields: {
               i: {
                 //label: 'Write down your \'I\'',
-                label: 'What would you name this I?',
-                placeholder: 'e.g. "Lazy I"'
+                label: 'Name this "I"',
+                placeholder: 'e.g. "Kind I"'
                 // error: 'For example \'I procrastinate\'.'
               },
               strengthOfI: {
                 label:
-                  'How strong is this "I" (1 = Weakest and 10 = Strongest)?'
+                  'How strong is this "I"? \n\n1 = Weakest and 10 = Strongest'
                 // error: 'How strong is it for you?.'
               },
               whatIWouldSay: {
                 help: 'e.g., Angry I – "LEAVE ME ALONE!! STOP BOTHERING ME!”',
-                label: 'What would this "I" say in a few words?'
+                label: 'What does this "I" say in a few words?'
               }
             }
           },
