@@ -33,30 +33,49 @@ export default {
     }
   },
   2: {
-    type: t.struct({ commitment1: t.Boolean }),
+    type: t.struct({ 
+      career: t.Number,
+      aimsAndHobbies: t.Number,
+      finances:t.Number,
+      environment:t.Number,
+      healthAndWellness:t.Number,
+      spirituality:t.Number,
+      relationships:t.Number
+     }),
     options: {
       label:
-        'Over the past 7 Steps of Vision Creation, you were asked to apply emotions, thoughts and hours to various goals and bucket list items. Did you do it?',
-      auto: 'none',
-      fields: {
-        commitment1: {
-          help:
-            'If not, bring those details in now, classifying each goal/item under one of your 5-10 Life Categories.'
-        }
-      }
+        'Map out the next year of your life - 8,760 hrs (365 days x 24 hrs) according to the 7 Pillars of Life. Take a cue from Step 2 if needed and multiply by 52 to get your Annual Plan.',
+      auto: 'labels'
     }
   },
   3: {
-    type: t.struct({ challenge: t.String }),
+      type: t.struct({ 
+        career: t.String,
+        aimsAndHobbies: t.String,
+        finances:t.String,
+        environment:t.String,
+        healthAndWellness:t.String,
+        spirituality:t.String,
+        relationships:t.String
+       }),
     options: {
       label:
-        'Now, I challenge you to review what you’ve put down in this workbook. What emotions, thoughts or hours jump out to you, and why? Think about what you can do in the now and in the future to harness these features of your past and present life to make positive change in your future life.',
-      fields: {
-        challenge: {
-          multiline: true,
-          numberOfLines: 5
-        }
-      }
+        'What do you feel most excited about, in terms of what you can get done with that chunk of time?',
     }
+  },
+  4:{type: t.struct({ 
+    career: t.String,
+    aimsAndHobbies: t.String,
+    finances:t.String,
+    environment:t.String,
+    healthAndWellness:t.String,
+    spirituality:t.String,
+    relationships:t.String
+   }),
+options: {
+  label:
+    'What do you most fear?',
+}
+
   }
 };

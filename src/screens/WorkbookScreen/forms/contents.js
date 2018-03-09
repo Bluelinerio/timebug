@@ -86,7 +86,7 @@ export const Strengths = t.enums.of(
     'Open-Hearted',
     'Funny'
   ],
-  'trengths'
+  'Strengths'
 );
 
 export const Weaknesses = t.enums.of(
