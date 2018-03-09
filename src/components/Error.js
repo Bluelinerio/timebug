@@ -6,18 +6,16 @@ type Props = {
   message: string
 };
 
-export default ({ message, title = 'Error' }: Props) => {
-  return (
-    <View style={styles.container} testID="error_view">
-      <Text style={{ padding: 20, textAlign: 'center', fontWeight: 'bold' }}>
-        {title}
-      </Text>
-      <Text style={{ padding: 20, textAlign: 'center', fontWeight: '100' }}>
-        {message}
-      </Text>
-    </View>
-  );
-};
+export default ({ message='unknown', title = 'Error' }: Props) => (
+  <View style={styles.container} testID="error_view">
+    <Text style={{ padding: 20, textAlign: 'center', fontWeight: 'bold' }}>
+      {title}
+    </Text>
+    <Text style={{ padding: 20, textAlign: 'center', fontWeight: '100' }}>
+      {message}
+    </Text>
+  </View>
+)
 
 const styles = StyleSheet.create({
   container: {
