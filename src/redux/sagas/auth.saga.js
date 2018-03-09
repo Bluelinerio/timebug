@@ -10,8 +10,8 @@ import {
   put,
   takeLatest,
   fork
-} from 'redux-saga/effects';
-import { requestSaga } from '../../Modules/redux-saga-request';
+}                       from 'redux-saga/effects';
+import { requestSaga }  from '../../Modules/redux-saga-request';
 import type { Request } from '../../Modules/redux-saga-request';
 // actions:
 import {
@@ -19,18 +19,18 @@ import {
   FB_LOGIN_DIALOG_RESPONDED,
   LOGOUT,
   REFRESH_USER
-} from '../actionTypes';
-import * as actions from '../actions';
+}                       from '../actionTypes';
+import * as actions     from '../actions';
 import {
   incrementRequestCount,
   decrementRequestCount
-} from '../actions/network.actions';
+}                       from '../actions/network.actions';
 import {
   GET_USER,
   AUTHENTICATE_FB,
   refreshUser
-} from '../actions/user.actions';
-import selectors from '../selectors';
+}                       from '../actions/user.actions';
+import selectors        from '../selectors';
 // models
 import type {
   Auth,
@@ -38,16 +38,16 @@ import type {
   User,
   UserState,
   ErrorResponse
-} from '../../services/apollo/models';
+}                       from '../../services/apollo/models';
 //
 import {
   authenticateWithFBToken,
   fetchUserWithId,
 	isClientEndpoint, 
   resetStore
-} from '../../services/apollo';
-import facebook from '../../services/facebook';
-import AuthStorage from '../../services/authStorage';
+}                       from '../../services/apollo';
+import facebook         from '../../services/facebook';
+import AuthStorage      from '../../services/authStorage';
 
 function* unlinkUser() {
   yield all([call(AuthStorage.wipeStorage), call(facebook.logOut)]);
