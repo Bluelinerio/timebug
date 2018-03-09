@@ -11,10 +11,12 @@ export default {
       label:
         'Take in a deep breath. Then, breathe fully out of the mouth. What does your nervous system think about this receiving and giving of breath?',
       fields: {
+        auto:'none',
         id: {
           hidden: true
         },
         breath: {
+          auto:'none',
           multiline: true
         }
       }
@@ -31,12 +33,11 @@ export default {
       relationshipToSelf: t.String
     }),
     options: {
+      label:'What old thoughts will you replace with new ones that will create new trust and a new experience?',
       fields: {
         replacements: {
-          label:
-            'What old thoughts will you replace with new ones that will create new trust and a new experience?',
-          help:
-            '(e.g., Old Thinking = “Missed another workout today. I am so lazy.” vs. New Thinking = “Maybe I’m not getting enough rest. I’m going to take it easy on myself today."',
+          auto:'none',
+          help:'(e.g., Old Thinking = “Missed another workout today. I am so lazy.” vs. New Thinking = “Maybe I’m not getting enough rest. I’m going to take it easy on myself today."',
           multiline: true
         },
         relationshipToSelf: {
@@ -47,7 +48,9 @@ export default {
     }
   },
   3: {
-    type: t.list(Emotion),
+    type: t.struct({
+      emotions:t.list(Emotion)
+    }),
     options: {
       label:
         'What are 3 feelings that you will feel about yourself 5 years from now?',
