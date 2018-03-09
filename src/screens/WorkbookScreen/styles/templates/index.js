@@ -38,7 +38,7 @@ export default Object.freeze({
     }
   },
   formLabel: {
-    textAlign: 'center',
+    textAlign: 'left',
     fontSize: 22,
     paddingVertical: 20,
     fontWeight: '700'
