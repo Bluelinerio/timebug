@@ -5,7 +5,8 @@
   "scripts": {
     "postversion": "react-native-version",
     "postinstall": "rm -f ./node_modules/react-native/local-cli/core/__fixtures__/files/package.json",
-    "codepush": "code-push release-react Lifevision-1 Android -d Production & code-push release-react Lifevision iOS -d Production",
+    "codepush:production": "code-push release-react Lifevision-1 Android -d Production & code-push release-react Lifevision iOS -d Production",
+    "codepush:staging": "code-push release-react Lifevision-1 Android -d Staging & code-push release-react Lifevision iOS -d Staging",
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
