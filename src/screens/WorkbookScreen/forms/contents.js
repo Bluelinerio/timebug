@@ -564,3 +564,68 @@ export const HoursPerMonth = t.enums.of(
   range(1, 138).map(h => (h === 1 ? 'One hr' : `${h}hrs`)),
   'HoursPerMonth'
 );
+
+const getValidationErrorMessage = (actual, path, context) => {
+  const to = context && context.options && context.options.label
+  const help = context && context.options && context.options.help
+  return `${actual 
+    ? 'Missing required field' 
+    : `Invalid value ${t.stringify(actual)}`
+  } supplied ${to ? 'to \'' + to + '\'' : ''} ${help ? `\n ${help}` : ''}`
+}
+
+[
+  AreaOfLife,
+  TimesPerWeek,
+  LifeStages,
+  PillarsOfLife,
+  Emotion,
+  Strengths,
+  Weaknesses,
+  InteractionFrequency,
+  ExerciseFrequency,
+  EatingFrequency,
+  HoursSleep,
+  BedTimes,
+  CarryStress,
+  ExerciseTypes,
+  GoalTypes,
+  CommonGoalOutcomes,
+  MajorLifeEvents,
+  PriorityLevels,
+  AssessmentTypes,
+  MeditationTypes,
+  TimesOfDay,
+  AloneOrOthers,
+  DreamsRemember,
+  DescribeProcess,
+  SatisfactionFromCurrentResult,
+  CreditScoreChange,
+  ChangeKind,
+  EffortEvaluation,
+  CreditScore,
+  UseWearableTech,
+  PaidFairly,
+  WhereStandToday,
+  IndulgeFrequency,
+  TakeEnergizers,
+  GoalProcess,
+  OneToTenScale,
+  OverallScore,
+  StrengthOfI,
+  IncreaseDecrease,
+  PercentCompleted,
+  TimeShift,
+  HoursPerWeek,
+  ExerciseLength,
+  TimeChanged,
+  InternalExternal,
+  TimeSpent,
+  IsSleepEnough,
+  SpiritualViews,
+  SpiritualPractices,
+  TimeSpentProgress,
+  ActivityFeelings,
+  PercentSelector,
+  HoursPerMonth
+].forEach( e => e.getValidationErrorMessage = getValidationErrorMessage)
