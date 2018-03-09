@@ -49,17 +49,28 @@ import {
 import facebook         from '../../services/facebook';
 import AuthStorage      from '../../services/authStorage';
 
-function* unlinkUser() {
-  yield all([call(AuthStorage.wipeStorage), call(facebook.logOut)]);
+function* wipeTokens() {
+  yield all([
+    call(AuthStorage.wipeStorage), 
+    call(facebook.logOut)
+  ]);
 }
 
 function* _logout() {
   yield all([
-    call(unlinkUser),
+    call(wipeTokens),
     call(resetStore),
-    put(actions.resetStore)
+    put(actions.setUserAnonymous()),
   ]);
 }
+
+function* _logoutAndWipeUserData() {
+  yield all([
+    call(_logout),
+    put(actions.resetStore)
+  ])
+}
+
 
 function* _handleUserError() {
   const result = yield call(_logout);
