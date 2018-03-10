@@ -90,6 +90,12 @@ export type OnobardingPage = {
   slides: [Slide]
 };
 
+export type Page = {
+  name: string,
+  title: string,
+  content: string
+}
+
 export type Slide = {
   title: string,
   description: string,

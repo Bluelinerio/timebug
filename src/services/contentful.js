@@ -11,12 +11,27 @@ export const CONTENTFUL_CREDENTIALS = {
 export const CONTENTFUL_CONTENT_STEP = 'day';
 export const CONTENTFUL_CONTENT_COLORS = 'colors';
 export const CONTENTFUL_ONBOARDING_PAGE = 'onboardingPage';
+export const CONTENTFUL_PAGE = 'page'
 
 export const contentfulClient = createClient(CONTENTFUL_CREDENTIALS);
 
 const getImageUrl = (icon: Icon): { uri: string } => ({
   uri: (icon.url || icon.fields.file.url || '').replace('//', 'https://')
 });
+
+const pagesFromResponse = response => ({
+  pages: response
+    .items
+    .map(i => i.fields)
+    .filter(p => !!p.name)
+    .reduce((items, { name, title, content }) => ({
+      ...items,
+      [name] : {
+        title, 
+        content
+      }
+    }), {})
+})
 
 const onboardingPagesFromResponse = response => {
   const mapOnboardingSlide = ({ fields: { title, description, image } }) => ({
@@ -84,12 +99,17 @@ export const fetchonboardingPages = () =>
   contentfulClient
     .getEntries({ content_type: CONTENTFUL_ONBOARDING_PAGE })
     .then(onboardingPagesFromResponse);
+export const fetchPages = () => 
+  contentfulClient
+    .getEntries({content_type: CONTENTFUL_PAGE})
+    .then(pagesFromResponse)
 
 export const refreshCMS = () =>
   Promise.all([
     fetchSteps(),
     fetchColors(),
-    fetchonboardingPages()
+    fetchonboardingPages(),
+    fetchPages()
   ])
     .then(responses => Object.assign(...responses))
     .then(cmsData => ({
