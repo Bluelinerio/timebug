@@ -42,7 +42,7 @@ buck-out
 .gradle
 local.properties
 *.iml
-*.keystore
+#*.keystore
 android/app/build/
 android/build/generated/
 android/build/intermediates/
@@ -79,8 +79,8 @@ android/app/src/main/res/drawable-mdpi/*
 
 
 # Andorid key
-android/app/lifevision-release-key.keystore
-android/app/lifevision-release-staging-key.keystore
+# android/app/lifevision-release-key.keystore
+# android/app/lifevision-release-staging-key.keystore
 
 # API Keys
 ios/keys.xcconfig
