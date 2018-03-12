@@ -1,4 +1,4 @@
-package com.lifevision;
+package io.lifevision;
 
 import android.app.Application;
 

@@ -1,5 +1,4 @@
-
-package com.lifevision; // make sure this is your package name
+package io.lifevision; // make sure this is your package name
 
 import android.content.Intent;
 import android.os.Bundle;

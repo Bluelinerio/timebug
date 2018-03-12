@@ -1,4 +1,4 @@
-package com.lifevision;
+package io.lifevision;
 
 import com.facebook.react.ReactActivity;
 import android.content.Intent;

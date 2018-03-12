@@ -155,7 +155,7 @@ index 5720c4b..032bc9f 100755
      buildToolsVersion "23.0.1"
  
      defaultConfig {
-         applicationId "com.timebug.lifevision"
+         applicationId "io.timebug.lifevision"
          minSdkVersion 19
 -        targetSdkVersion 19
 +        targetSdkVersion 27
