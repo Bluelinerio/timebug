@@ -51,7 +51,8 @@ type State = {
   formLayout: ?Layout,
   containerLayout: ?Layout,
   bufferViewHeight: number,
-  layoutReady: boolean
+  layoutReady: boolean,
+  errors: ?any
 };
 
 class WorkbookScreenComponent extends Component<Props, State> {
@@ -65,7 +66,8 @@ class WorkbookScreenComponent extends Component<Props, State> {
       model,
       value,
       bufferViewHeight: 0,
-      layoutReady: false
+      layoutReady: false,
+      errors: null
     };
   }
 
@@ -84,25 +86,33 @@ class WorkbookScreenComponent extends Component<Props, State> {
     }
   }
 
+  showAlert = () => {
+    const { errors } = this.state;
+    if(errors && errors.length) {
+      Alert.alert(errors[0].message, '', [
+          /* this is for later ideally working with react-native-keyboard-aware-scroll-view
+            {
+              text: 'Show me',
+              onPress: () => {
+                const component = this.form.getComponent(path)
+                const ref = component.refs.input
+                input.focus()
+              },
+            },
+            */
+          {
+            text: 'OK'
+          }
+        ]);
+    }
+  }
+
   onPress = () => {
     const { errors, value } = this.form.validate();
-    if (errors.length > 0) {
-      const { message, path } = errors[0];
-      Alert.alert(message, '', [
-        /* this is for later ideally working with react-native-keyboard-aware-scroll-view
-          {
-            text: 'Show me',
-            onPress: () => {
-              const component = this.form.getComponent(path)
-              const ref = component.refs.input
-              input.focus()
-            },
-          },
-          */
-        {
-          text: 'OK'
-        }
-      ]);
+    if (errors && errors.length > 0) {
+      this.setState({
+        errors
+      }, this.showAlert)
     } else {
       const { next, submit } = this.props;
       submit(value);
@@ -111,17 +121,27 @@ class WorkbookScreenComponent extends Component<Props, State> {
   };
 
   onChange = (value: any, path: [string]) => {
-    const { model: { type } } = this.state;
+    const { model: { type }, errors } = this.state;
     const fieldName = path[path.length - 1];
     const fieldValue = path.reduce((struct: {}, field) => struct[field], value);
-    const isInvalid = t.validate(value, type).isValid() === false;
-    if (this.state.isInvalid !== isInvalid || this.state.value !== value) {
+    if(!this.state.errors) {
+      const isInvalid = t.validate(value, type).isValid() === false;
+      if (this.state.isInvalid !== isInvalid || this.state.value !== value) {
+      this.setState({
+          isInvalid,
+          value
+        })
+      }
+    } else {
+      const { errors } = this.form.validate()
+      const isInvalid = errors.length
       this.setState({
         isInvalid,
-        value
-      });
+        value,
+        errors
+      })
     }
-  };
+  }
 
   handleFormRef = ref => {
     this.form = ref;
