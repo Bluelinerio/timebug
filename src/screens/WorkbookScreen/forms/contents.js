@@ -566,12 +566,20 @@ export const HoursPerMonth = t.enums.of(
 );
 
 const getValidationErrorMessage = (actual, path, context) => {
-  const to = context && context.options && context.options.label
+  const to = context && context.options && context.options.label || path && path.length && path[0]
   const help = context && context.options && context.options.help
-  return `${actual 
-    ? 'Missing required field' 
-    : `Invalid value ${t.stringify(actual)}`
-  } supplied ${to ? 'to \'' + to + '\'' : ''} ${help ? `\n ${help}` : ''}`
+  if(!actual) {
+    return `Missing required field ${to 
+      ? 'to \'' + to + '\'' 
+      : ''} ${help 
+        ? `\n ${help}` 
+        : ''}`
+  }
+  return `Invalid value ${t.stringify(actual)} supplied ${to 
+    ? 'to \'' + to + '\'' 
+    : ''} ${help 
+      ? `\n ${help}` 
+      : ''}`
 }
 
 [

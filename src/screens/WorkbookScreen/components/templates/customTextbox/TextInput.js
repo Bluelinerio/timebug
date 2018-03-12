@@ -195,8 +195,8 @@ export default class CustomTextInput extends React.Component<Props, State> {
 
     const { text } = this.state;
     const formGroupStyle = hasError
-      ? styles.formGroup.error
-      : styles.formGroup.normal;
+      ? styles.formGroupStyle.error
+      : styles.formGroupStyle.normal;
 
     const textboxViewStyle = hasError
       ? styles.textBoxView.error
@@ -211,27 +211,11 @@ export default class CustomTextInput extends React.Component<Props, State> {
 
     return (
       <View
-        style={[
-          formGroupStyle,
-          {
-            flex: 1,
-            marginTop: 22,
-            marginBottom: 22
-          }
-        ]}
+        style={formGroupStyle}
       >
         {label}
         <View
-          style={[
-            {
-              borderRadius: 6,
-              borderWidth: 1,
-              borderColor: '#ccc',
-              paddingVertical: 10,
-              paddingHorizontal: 7,
-              justifyContent: 'flex-end'
-            }
-          ]}
+          style={textboxViewStyle}
         >
           {textInput}
         </View>

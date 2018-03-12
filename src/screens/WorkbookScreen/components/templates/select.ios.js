@@ -26,7 +26,7 @@ export default function select(props) {
   return (
     <View
       style={
-        hasError ? stylesheet.formGroup.normal : stylesheet.formGroup.error
+        hasError ? stylesheet.formGroupStyle.normal : stylesheet.formGroupStyle.error
       }
     >
       {label && (

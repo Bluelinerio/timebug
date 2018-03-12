@@ -12,6 +12,13 @@ export const BACKGROUND_COLOR = '#FAFAFA'; //'#FFFFFF';
 export const FONT_SIZE = 18;
 export const FONT_WEIGHT = '500';
 
+const borderRadius = 4
+const borderWidth = 1
+const height = 44
+const paddingHorizontal = 16
+const innerPaddingHorizontal = 4
+const paddingVertical = 20
+
 //#E6E5ED
 // from  https://material.io/guidelines/components/text-fields.html#text-fields-layout
 // Resting label text
@@ -27,23 +34,42 @@ export default Object.freeze({
   ...stylesheet,
   fieldset: {
     topLevel: {
-      paddingHorizontal: 16,
-      paddingVertical: 20,
+      paddingHorizontal,
+      paddingVertical,
       backgroundColor: BACKGROUND_COLOR,
       flex: 1
     },
     normal: {
-      paddingVertical: 20,
+      paddingVertical,
       flex: 1
+    }
+  },
+  formGroup: {
+    normal: {
+      marginBottom: 10
+    },
+    error: {
+      marginBottom: 10
+    }
+  },
+  formGroupStyle: {
+    normal: {
+      flex: 1,
+      marginTop: 22,
+      marginBottom: 22
+    },
+    error:  {
+      flex: 1,
+      marginTop: 22,
+      marginBottom: 22
     }
   },
   formLabel: {
     textAlign: 'left',
     fontSize: 22,
-    paddingVertical: 20,
+    paddingVertical,
     fontWeight: '700'
   },
-
   controlLabel: {
     normal: {
       color: LABEL_COLOR,
@@ -63,31 +89,31 @@ export default Object.freeze({
     normal: {
       ...stylesheet.helpBlock.normal,
       marginTop: 4,
-      paddingHorizontal: 4,
+      paddingHorizontal: innerPaddingHorizontal,
       fontStyle: 'italic'
     },
     error: {
       ...stylesheet.helpBlock.normal,
       marginTop: 4,
-      paddingHorizontal: 4,
+      paddingHorizontal: innerPaddingHorizontal,
       fontStyle: 'italic'
     }
   },
   pickerContainer: {
     normal: {
       flexDirection: 'row',
-      height: 48,
-      borderWidth: 1,
-      borderRadius: 4,
+      height,
+      borderWidth,
+      borderRadius,
       borderColor: BORDER_COLOR,
       padding: 8,
       backgroundColor: BACKGROUND_COLOR
     },
     error: {
       flexDirection: 'row',
-      height: 48,
-      borderWidth: 1,
-      borderRadius: 4,
+      height,
+      borderWidth,
+      borderRadius,
       borderColor: ERROR_COLOR,
       padding: 8,
       backgroundColor: BACKGROUND_COLOR
@@ -101,10 +127,10 @@ export default Object.freeze({
     }
   },
   listAddButton: {
-    height: 44,
+    height,
     padding: 3,
-    borderRadius: 4,
-    borderWidth: 1,
+    borderRadius,
+    borderWidth,
     borderColor: BORDER_COLOR,
     flexDirection: 'row',
     alignItems: 'center'
@@ -113,20 +139,29 @@ export default Object.freeze({
     normal: {
       color: INPUT_COLOR,
       fontSize: 16,
-      height: 46,
-      textAlign: 'left'
+      height,
+      textAlign: 'left',
+      paddingHorizontal: innerPaddingHorizontal,
     },
     error: {
       color: INPUT_COLOR,
       fontSize: FONT_SIZE,
-      height: 46,
-      textAlign: 'left'
+      height,
+      textAlign: 'left',
+      paddingHorizontal: innerPaddingHorizontal,
     }
   },
   textBoxView: {
     normal: {
       ...Platform.select({
-        ios: {},
+        ios: {
+          borderRadius,
+          borderWidth,
+          borderColor: BORDER_COLOR,
+          paddingVertical: borderRadius,
+          paddingHorizontal: innerPaddingHorizontal,
+          justifyContent: 'flex-end'
+        },
         android: {
           borderBottomColor: INPUT_COLOR,
           borderBottomWidth: 1 / PixelRatio.get()
@@ -135,12 +170,19 @@ export default Object.freeze({
     },
     error: {
       ...Platform.select({
-        ios: {},
+        ios: {
+          borderRadius,
+          borderWidth,
+          borderColor: ERROR_COLOR,
+          paddingVertical: borderRadius,
+          paddingHorizontal: innerPaddingHorizontal,
+          justifyContent: 'flex-end'
+        },
         android: {
           borderBottomColor: INPUT_COLOR,
           borderBottomWidth: 1 / PixelRatio.get()
         }
       })
-    }
+    },
   }
 });

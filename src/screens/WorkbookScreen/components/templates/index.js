@@ -68,12 +68,12 @@ t.form.Form.defaultProps = {
 };
 
 t.String.getValidationErrorMessage = (actual, path, context) => {
-  const to = context && context.options && context.options.label
+  const to = context && context.options && context.options.label || path && path.length && path[0]
   const help = context && context.options && context.options.help
   return `${actual 
-    ? 'Missing required field' 
-    : `Invalid value ${t.stringify(actual)}`
-  } supplied ${to ? 'to \'' + to + '\'' : ''} ${help ? `\n ${help}` : ''}`
+    ? `Invalid value ${t.stringify(actual)}  supplied `
+    : 'Missing required field for' 
+  } ${to ? 'to \'' + to + '\'' : ''} ${help ? `\n ${help}` : ''}`
 }
 
 // Override Struct methods to reset to page 0 after changing form

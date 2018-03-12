@@ -8,8 +8,8 @@ function select(locals) {
 
   const stylesheet = locals.stylesheet;
   const formGroupStyle = locals.hasError
-    ? stylesheet.formGroup.error
-    : stylesheet.formGroup.normal;
+    ? stylesheet.formGroupStyle.error
+    : stylesheet.formGroupStyle.normal;
   const controlLabelStyle = locals.hasError
     ? stylesheet.controlLabel.error
     : stylesheet.controlLabel.normal;
