@@ -1,5 +1,4 @@
 import t from '../components/templates';
-import { PillarsOfLife, AreaOfLife, AssessmentTypes } from './contents';
 
 export default {
   1: {
@@ -44,19 +43,19 @@ export default {
      }),
     options: {
       label:
-        'Map out the next year of your life - 8,760 hrs (365 days x 24 hrs) according to the 7 Pillars of Life. Take a cue from Step 2 if needed and multiply by 52 to get your Annual Plan.',
+        'Map out the next year of your life - 8,760 hrs (365 days x 24 hrs) according to your Life Categories. Take a cue from Step 2 if needed and multiply by 52 to get your Annual Plan.',
       auto: 'labels'
     }
   },
   3: {
       type: t.struct({ 
-        career: t.String,
-        aimsAndHobbies: t.String,
-        finances:t.String,
-        environment:t.String,
+        skillsAndEducation: t.String,
+        coreWork: t.String,
+        personalLife:t.String,
+        basicNeeds:t.String,
         healthAndWellness:t.String,
         spirituality:t.String,
-        relationships:t.String
+        specialProjects:t.String
        }),
     options: {
       label:
@@ -64,13 +63,13 @@ export default {
     }
   },
   4:{type: t.struct({ 
-    career: t.String,
-    aimsAndHobbies: t.String,
-    finances:t.String,
-    environment:t.String,
+    skillsAndEducation: t.String,
+    coreWork: t.String,
+    personalLife:t.String,
+    basicNeeds:t.String,
     healthAndWellness:t.String,
     spirituality:t.String,
-    relationships:t.String
+    specialProjects:t.String
    }),
 options: {
   label:

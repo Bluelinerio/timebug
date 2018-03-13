@@ -2,16 +2,31 @@ import t from '../components/templates';
 
 export const AreaOfLife = t.enums.of(
   [
+    'Finances',
+    'Environment',
+    'Aims & Hobbies',
     'Career',
-    'Personality & Hobbies',
-    'Health',
-    'Financial',
-    'Relationship',
-    'Place & Environment',
+    'Relationships',
+    'Health & Wellness',
     'Spirituality'
   ],
   'AreaOfLife'
 );
+
+export const LifeCategories = t.enums.of(
+  [
+    'Spirituality',
+    'Core Work',
+    'Skills & Education',
+    'Personal Life',
+    'Health and Wellness',
+    'Basic Needs',
+    'Special Projects',
+  ],
+  'LifeCategories'
+);
+
+
 
 export const TimesPerWeek = t.enums.of(
   [
@@ -27,15 +42,15 @@ export const TimesPerWeek = t.enums.of(
 
 export const LifeStages = t.enums.of(
   [
-    'Infancy (Ages 0-3)',
-    'Early Childhood (Ages 3-6)',
-    'Middle Childhood (Ages 6-8)',
-    'Late Childhood (Ages 9-11)',
-    'Adolescence (Ages 12-20)',
-    'Early Adulthood (Ages 20-35)',
-    'Midlife (Ages 35-50)',
-    'Mature Adulthood (Ages 50-80)',
-    'Late Adulthood (Age 80+)'
+    'Infancy (0-3 yrs old)',
+    'Early Childhood (3-6 yrs old)',
+    'Middle Childhood (6-8 yrs old)',
+    'Late Childhood (9-11 yrs old)',
+    'Adolescence (12-20 yrs old)',
+    'Early Adulthood (20-35 yrs old)',
+    'Midlife (35-50 yrs old)',
+    'Mature Adulthood (50-80 yrs old)',
+    'Late Adulthood (80+ yrs old)'
   ],
   'LifeStages'
 );
