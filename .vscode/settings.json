@@ -2,5 +2,6 @@
   "javascript.validate.enable": false,
   "flow.useNPMPackagedFlow": true,
   "editor.snippetSuggestions": "top",
-  "prettier.eslintIntegration": true
+  "prettier.eslintIntegration": true,
+  "prettier.singleQuote": true
 }
