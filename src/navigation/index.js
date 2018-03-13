@@ -3,15 +3,16 @@ import { StackNavigator, NavigationActions } from 'react-navigation';
 import React from 'react';
 
 import CardStackStyleInterpolator from '../utils/CustomCardStackStyleInterpolator';
-import HomeScreen from '../screens/HomeScreen';
-import StepScreen from '../screens/StepScreen';
-import WorkbookDoneScreen from '../screens/WorkbookDoneScreen';
-import WorkbookScreen from '../screens/WorkbookScreen';
-import WalkthroughScreen from '../screens/WalkthroughScreen';
-import DashboardScreen from '../screens/DashboardScreen';
-import MeditationScreen from '../screens/MeditationScreen';
-import { uriPrefix } from '../constants';
-import routes from './routes';
+import HomeScreen                 from '../screens/HomeScreen';
+import StepScreen                 from '../screens/StepScreen';
+import WorkbookDoneScreen         from '../screens/WorkbookDoneScreen';
+import WorkbookScreen             from '../screens/WorkbookScreen';
+import WalkthroughScreen          from '../screens/WalkthroughScreen';
+import DashboardScreen            from '../screens/DashboardScreen';
+import MeditationScreen           from '../screens/MeditationScreen';
+import MarkdownScreen             from '../screens/MarkdownScreen'
+import { uriPrefix }              from '../constants';
+import routes                     from './routes';
 
 if (!routes || !routes.root || !routes.root.initialRouteName || !routes.step) {
   throw 'missing routes or nested fields ' + JSON.stringify(routes);
@@ -66,6 +67,9 @@ export const rootConfiguration = {
     },
     [routes.root.MeditationScreen]: {
       screen: MeditationScreen
+    },
+    [routes.root.MarkdownScreen]: {
+      screen: MarkdownScreen
     }
   },
   options: {

@@ -51,7 +51,6 @@ const mapStateToProps = (state: any) => {
     return sum;
   }, {})
 
-  debugger
   const activeSliderIndex = latestStepId ? steps.map(s => s.stepId).indexOf(latestStepId) : 0
   invariant(activeSliderIndex >= 0, `failed finding latestStepId: ${latestStepId} in steps: ${steps.map(s => s.stepId)}`)
 

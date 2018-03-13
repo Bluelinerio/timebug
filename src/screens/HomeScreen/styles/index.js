@@ -85,8 +85,6 @@ export default StyleSheet.create({
     height: 44,
     width: 44,
     borderRadius: 44 / 2,
-    borderColor: 'green',
-    borderWidth: 1
   },
   bannerHeaderTitle: iOSUIKit.largeTitleEmphasizedObject,
   banner: {
