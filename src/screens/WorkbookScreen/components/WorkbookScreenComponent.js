@@ -1,5 +1,5 @@
 // @flow
-import React, { Component } from 'react';
+import React, { Component }     from 'react'
 import {
   StyleSheet,
   Text,
@@ -11,18 +11,18 @@ import {
   Image,
   Dimensions,
   Alert
-} from 'react-native';
-import t from './templates';
-import WorkbookNextButton from '../components/WorkbookNextButton';
-import type { NextButtonProps } from '../components/WorkbookNextButton';
-import DefaultIndicator from '../../../components/DefaultIndicator';
-import styles from '../styles';
-const Form = t.form.Form;
+}                               from 'react-native'
+import t                        from './templates'
+
+import DefaultIndicator         from '../../../components/DefaultIndicator'
+import WorkbookNextButton       from '../components/WorkbookNextButton'
+import styles                   from '../styles'
+const Form = t.form.Form
 
 export type Model = {
   type: any,
   options: any
-};
+}
 
 export type Props = {
   value: any,
@@ -32,14 +32,14 @@ export type Props = {
   stepColor: string,
   submit: (value: any) => void,
   isFetching: boolean
-};
+}
 
 type Layout = {
   height: number,
   width: number,
   x: number,
   y: number
-};
+}
 
 type State = {
   isInvalid: boolean,
@@ -53,14 +53,14 @@ type State = {
   bufferViewHeight: number,
   layoutReady: boolean,
   errors: ?any
-};
+}
 
 class WorkbookScreenComponent extends Component<Props, State> {
-  form: ?Form = null;
+  form: ?Form = null
 
   constructor(props: Props) {
-    super(props);
-    const { value, model } = props;
+    super(props)
+    const { value, model } = props
     this.state = {
       isInvalid: true,
       model,
@@ -68,29 +68,29 @@ class WorkbookScreenComponent extends Component<Props, State> {
       bufferViewHeight: 0,
       layoutReady: false,
       errors: null
-    };
+    }
   }
 
   componentDidMount() {
-    Keyboard.dismiss(); // police keyboard is always off, when starting (specially with android.)
-    const { model: { focusField, type }, value } = this.state;
+    Keyboard.dismiss() // police keyboard is always off, when starting (specially with android.)
+    const { model: { focusField, type }, value } = this.state
 
     if (focusField) {
-      this.form.getComponent(focusField).refs.input.focus();
+      this.form.getComponent(focusField).refs.input.focus()
     }
-    const isInvalid = t.validate(value, type).isValid() === false;
+    const isInvalid = t.validate(value, type).isValid() === false
     if (isInvalid !== this.state.isInvalid) {
-      this.setState(state => ({
+      this.setState({
         isInvalid
-      }));
+      })
     }
   }
 
   showAlert = () => {
-    const { errors } = this.state;
-    if(errors && errors.length) {
+    const { errors } = this.state
+    if (errors && errors.length) {
       Alert.alert(errors[0].message, '', [
-          /* this is for later ideally working with react-native-keyboard-aware-scroll-view
+        /* this is for later ideally working with react-native-keyboard-aware-scroll-view
             {
               text: 'Show me',
               onPress: () => {
@@ -100,34 +100,37 @@ class WorkbookScreenComponent extends Component<Props, State> {
               },
             },
             */
-          {
-            text: 'OK'
-          }
-        ]);
+        {
+          text: 'OK'
+        }
+      ])
     }
   }
 
   onPress = () => {
-    const { errors, value } = this.form.validate();
+    const { errors, value } = this.form.validate()
     if (errors && errors.length > 0) {
-      this.setState({
-        errors
-      }, this.showAlert)
+      this.setState(
+        {
+          errors
+        },
+        this.showAlert
+      )
     } else {
-      const { next, submit } = this.props;
-      submit(value);
-      next();
+      const { next, submit } = this.props
+      submit(value)
+      next()
     }
-  };
+  }
 
   onChange = (value: any, path: [string]) => {
-    const { model: { type }, errors } = this.state;
-    const fieldName = path[path.length - 1];
-    const fieldValue = path.reduce((struct: {}, field) => struct[field], value);
-    if(!this.state.errors) {
-      const isInvalid = t.validate(value, type).isValid() === false;
+    const { model: { type }, errors } = this.state
+    const fieldName = path[path.length - 1]
+    const fieldValue = path.reduce((struct: {}, field) => struct[field], value)
+    if (!this.state.errors) {
+      const isInvalid = t.validate(value, type).isValid() === false
       if (this.state.isInvalid !== isInvalid || this.state.value !== value) {
-      this.setState({
+        this.setState({
           isInvalid,
           value
         })
@@ -144,70 +147,65 @@ class WorkbookScreenComponent extends Component<Props, State> {
   }
 
   handleFormRef = ref => {
-    this.form = ref;
-  };
+    this.form = ref
+  }
 
   // this is an implmentation of ajustment of a growing/shrinking view makin sure the the minimal height of the scroll view content is at least the height of the scroll view itself. (its container)
   layout = () => {
-    const { containerLayout, formLayout, bufferViewHeight } = this.state;
+    const { containerLayout, formLayout, bufferViewHeight } = this.state
     if (containerLayout && formLayout) {
-      const newHeight = containerLayout.height - formLayout.height;
+      const newHeight = containerLayout.height - formLayout.height
       if (!bufferViewHeight) {
         this.setState({
           layoutReady: true,
           bufferViewHeight: newHeight
-        });
+        })
       } else if (newHeight !== 0) {
         this.setState({
           layoutReady: true,
           bufferViewHeight: Math.max(0, bufferViewHeight + newHeight)
-        });
+        })
       } else {
         this.setState({
           layoutReady: true
-        });
+        })
       }
     } else {
       this.setState({
         layoutReady: false
-      });
+      })
     }
-  };
+  }
 
   onLayout = ({ nativeEvent: { layout } }) => {
-    const { formLayout } = this.state;
+    const { formLayout } = this.state
     this.setState(
       {
         containerLayout: layout
       },
       this.layout
-    );
-  };
+    )
+  }
   onFormLayout = ({ nativeEvent: { layout } }) => {
     this.setState(
       {
         formLayout: layout
       },
       this.layout
-    );
-  };
+    )
+  }
 
   render = () => {
-    const {
-      stepColor,
-      isFetching,
-      buttonMessage,
-      backgroundImage
-    } = this.props;
+    const { stepColor, isFetching, buttonMessage, backgroundImage } = this.props
     const {
       model: { options, type },
       isInvalid,
       value,
       layoutReady,
       bufferViewHeight
-    } = this.state;
+    } = this.state
     if (isFetching) {
-      return <DefaultIndicator size="large" />;
+      return <DefaultIndicator size="large" />
     }
 
     return (
@@ -256,8 +254,8 @@ class WorkbookScreenComponent extends Component<Props, State> {
           />
         </View>
       </View>
-    );
-  };
+    )
+  }
 }
 
-export default WorkbookScreenComponent;
+export default WorkbookScreenComponent
