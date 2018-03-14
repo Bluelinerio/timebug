@@ -36,12 +36,12 @@ export default {
               },
               interactionFrequency: {
                 label:
-                  'To what degree do you know and interact with this Advisor personally?'
+                  'To what degree do you interact with this Role Model?'
                 //error: 'How often do you interact with this person?'
               },
               why: {
                 label:
-                  'Why do you look up to this Advisor? What do you want to learn from them?',
+                  'Why do you look up to this Role Model?',
                 multiline: true
                 //error:'Why would this person make a good role model for you?'
               }

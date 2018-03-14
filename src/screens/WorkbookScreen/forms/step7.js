@@ -27,9 +27,12 @@ export default {
           },
           item: {
             fields: {
+              goal: {
+                label:"Enter a goal you've had from the past 5 years."
+              },
               commonGoalOutcomes: {
                 label:
-                  'Classify this goal according to the 7 Common Goal Outcomes.'
+                  'How would you classify the outcome of this goal?'
               }
             }
           }

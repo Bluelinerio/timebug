@@ -5,7 +5,7 @@ export default {
   1: {
     type: t.struct({
       id: t.maybe(t.String),
-      pillar: t.list(
+      weeklyBreakdown: t.list(
         t.struct({
           pillarsOfLife: PillarsOfLife,
           hours: HoursPerMonth
@@ -28,8 +28,9 @@ export default {
           },
           item: {
             fields: {
+              
               pillarsOfLife: {
-                //error: "Please select a Life category."
+                label:'Pillars of Life'
               },
               hours: {
                 //error: "How many hours out of a 168 hour week do you spend on this category?"
