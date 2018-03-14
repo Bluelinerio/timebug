@@ -1,10 +1,8 @@
-import React from 'react';
+import React                 from 'react';
 import { NavigationActions } from 'react-navigation';
-import screen from './containers/StepScreenContainer';
-import HeaderCloseButton from '../../components/HeaderCloseButton';
-import styles from '../styles';
-
-//  headerTitle: <Logo height={30} width={30}/>,
+import screen                from './containers/StepScreenContainer';
+import HeaderCloseButton     from '../../components/HeaderCloseButton';
+import styles                from '../styles';
 
 screen.navigationOptions = ({ navigation: { dispatch } }) => ({
   headerStyle: styles.navigationOptionHeaderStyle,

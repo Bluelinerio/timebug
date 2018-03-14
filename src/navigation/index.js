@@ -1,21 +1,20 @@
-import { Platform } from 'react-native';
-import { StackNavigator, NavigationActions } from 'react-navigation';
-import React from 'react';
+import { Platform }                          from 'react-native'
+import { StackNavigator, NavigationActions } from 'react-navigation'
+import React                                 from 'react'
 
-import CardStackStyleInterpolator from '../utils/CustomCardStackStyleInterpolator';
-import HomeScreen                 from '../screens/HomeScreen';
-import StepScreen                 from '../screens/StepScreen';
-import WorkbookDoneScreen         from '../screens/WorkbookDoneScreen';
-import WorkbookScreen             from '../screens/WorkbookScreen';
-import WalkthroughScreen          from '../screens/WalkthroughScreen';
-import DashboardScreen            from '../screens/DashboardScreen';
-import MeditationScreen           from '../screens/MeditationScreen';
-import MarkdownScreen             from '../screens/MarkdownScreen'
-import { uriPrefix }              from '../constants';
-import routes                     from './routes';
+import HomeScreen                            from '../screens/HomeScreen'
+import StepScreen                            from '../screens/StepScreen'
+import WorkbookDoneScreen                    from '../screens/WorkbookDoneScreen'
+import WorkbookScreen                        from '../screens/WorkbookScreen'
+import WalkthroughScreen                     from '../screens/WalkthroughScreen'
+import DashboardScreen                       from '../screens/DashboardScreen'
+import MeditationScreen                      from '../screens/MeditationScreen'
+import MarkdownScreen                        from '../screens/MarkdownScreen'
+import { uriPrefix }                         from '../constants'
+import routes                                from './routes'
 
 if (!routes || !routes.root || !routes.root.initialRouteName || !routes.step) {
-  throw 'missing routes or nested fields ' + JSON.stringify(routes);
+  throw 'missing routes or nested fields ' + JSON.stringify(routes)
 }
 
 // TODO: there's an issue with moving from the current setup where the import of each screen gets you an object that looks like { screen: } rather than a component, so I added
@@ -41,12 +40,27 @@ export const assignmentFlowConfiguration = {
       opacity: 1
     }
   }
-};
+}
 
 const AssignmentFlowNavigator = StackNavigator(
   assignmentFlowConfiguration.screens,
   assignmentFlowConfiguration.options
-);
+)
+
+export const MarkdownScreenNavigator = StackNavigator(
+  {
+    Markdown: {
+      screen: MarkdownScreen
+    }
+  },
+  {
+    headerMode: 'screen',
+    cardStyle: {
+      backgroundColor: 'white',
+      opacity: 1
+    }
+  }
+)
 
 export const rootConfiguration = {
   routes: routes.root,
@@ -69,7 +83,7 @@ export const rootConfiguration = {
       screen: MeditationScreen
     },
     [routes.root.MarkdownScreen]: {
-      screen: MarkdownScreen
+      screen: MarkdownScreenNavigator
     }
   },
   options: {
@@ -81,25 +95,26 @@ export const rootConfiguration = {
       opacity: 1
     }
   }
-};
+}
 
 export const RootNavigator = StackNavigator(
   rootConfiguration.screens,
   rootConfiguration.options
-);
+)
 
 // fix for debouncing
-import { fixDebounce } from './util';
-fixDebounce(RootNavigator);
-fixDebounce(AssignmentFlowNavigator);
+import { fixDebounce } from './util'
+fixDebounce(RootNavigator)
+fixDebounce(AssignmentFlowNavigator)
+fixDebounce(MarkdownScreenNavigator)
 // remove once fixed...
 
 const previousGetActionForPathAndParams =
-  RootNavigator.router.getActionForPathAndParams;
+  RootNavigator.router.getActionForPathAndParams
 
 Object.assign(RootNavigator.router, {
   getActionForPathAndParams(path, params) {
-    const key = path.split('/')[1];
+    const key = path.split('/')[1]
     if (key === 'step') {
       return NavigationActions.navigate({
         routeName: 'Profile',
@@ -109,8 +124,8 @@ Object.assign(RootNavigator.router, {
           // navigation state.
           routeName: 'Friends'
         })
-      });
+      })
     }
-    return previousGetActionForPathAndParams(path, params);
+    return previousGetActionForPathAndParams(path, params)
   }
-});
+})
