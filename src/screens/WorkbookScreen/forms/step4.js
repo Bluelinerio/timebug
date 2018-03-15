@@ -27,11 +27,11 @@ export default {
                 //error: "Think about someone who's advice you would value regarding big decisions"
               },
               pillarsOfLife: {
-                auto: 'labels'
+                label: 'What Pillar of Life does he/she influence?'
                 //error: 'Assign this person to one of the 7 Timebug Life Categories'
               },
               interactionFrequency: {
-                auto: 'labels'
+                label: 'How often do you interact with this person?'
                 //error: "How often do you interact with this person?"
               }
             }
@@ -76,7 +76,7 @@ export default {
                 //error: "Please enter the name of a support group"
               },
               pillarsOfLife: {
-                auto: 'labels'
+                label: 'What Pillar of Life does this group influence?'
                 //error: "Please select a Life Category."
               }
             }

@@ -14,7 +14,7 @@ export default {
     }),
     options: {
       label:
-        "Who do you really care about (up to 3 people)?What are their goals (up to 5)? If you aren't sure, ask them.",
+        "Goals of Others",
       fields: {
         id: {
           hidden: true
@@ -28,13 +28,16 @@ export default {
           item: {
             fields: {
               significantOther: {
+                label:'Who would you like to help in your life?'
                 /*error: 'Choose someone in your life who you want to, and are able to help.'*/
               },
               goals: {
+                label:'What are his/her goals?',
+                multiline:true
                 /*error:'Think about 3-5 goals you would like to help this person with.'*/
               },
               supportPlan: {
-                label: 'How do you plan to support them?',
+                label: 'How specifically do you plan to help him/her?',
                 multiline: true
               }
             }

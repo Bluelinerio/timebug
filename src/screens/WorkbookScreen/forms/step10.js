@@ -66,7 +66,7 @@ export default {
     }),
     options: {
       label:
-        'Reflecting back on the day 5 list of Goals, pick several and briefly note how your ego aspects either hindered or aided you.',
+        'Have any of these "I"s either hindered or aided your goals?',
       fields: {
         egoInfluence: {
           disableOrder: true,

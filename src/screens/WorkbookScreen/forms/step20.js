@@ -54,7 +54,7 @@ export default {
 
       fields: {
         pillarsOfLifeBreakdown: {
-          label: 'Has anything changed with your life category breakdown?'
+          label: 'Has anything changed with your Pillars of Life breakdown?'
         },
         thingsDoLess: {
           label:

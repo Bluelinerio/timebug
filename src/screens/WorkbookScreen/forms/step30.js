@@ -1,5 +1,4 @@
 import t from '../components/templates';
-import { PillarsOfLife, AreaOfLife, AssessmentTypes } from './contents';
 
 export default {
   1: {

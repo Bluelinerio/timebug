@@ -5,7 +5,7 @@ export default {
   1: {
     type: t.struct({
       id: t.maybe(t.String),
-      charachterStrengths: t.list(
+      characterStrengths: t.list(
         t.struct({
           strengths: Strengths,
           resultingGoalAchieved: t.String
@@ -19,7 +19,7 @@ export default {
         id: {
           hidden: true
         },
-        charachterStrengths: {
+        characterStrengths: {
           disableOrder: true,
           maxLines: 10,
           config: {
@@ -29,11 +29,11 @@ export default {
             fields: {
               strengths: {
                 auto: 'labels',
-                error: 'Please select a charachter strength.'
+                error: 'Please select a character strength.'
               },
               resultingGoalAchieved: {
                 label:
-                  'What is a goal that you achieved as a result of this strength of yours?'
+                  'What goal was positively impacted as a result of this strength?'
               }
             }
           }
@@ -48,7 +48,7 @@ export default {
   },
   2: {
     type: t.struct({
-      charachterWeaknesses: t.list(
+      characterWeaknesses: t.list(
         t.struct({
           weaknesses: Weaknesses,
           goalNotReached: t.String
@@ -58,7 +58,7 @@ export default {
     options: {
       label: 'What are your weaknesses?',
       fields: {
-        charachterWeaknesses: {
+        characterWeaknesses: {
           disableOrder: true,
           maxLines: 5,
           config: {
@@ -68,11 +68,11 @@ export default {
             fields: {
               weaknesses: {
                 auto: 'labels'
-                // error: "Please select a charachter weakness."
+                // error: "Please select a character weakness."
               },
               goalNotReached: {
                 label:
-                  "What is a goal that you haven't been able to reach as a result?"
+                  "What goal was negatively impacted as a result of this weakness?"
                 // error: "What was one of your goals that you were not able to achieve as a result?"
               }
             }
@@ -92,17 +92,17 @@ export default {
         'What does a close friend or family member, an objective one, think of your strengths & weaknesses?',
       fields: {
         friendsName: {
-          label: "Write down a friend or family member's name.",
+          label: "Friend/family member",
           error:
             'The best person to help you with this exercise is someone who you trust to me completely honest without being judgemental.'
         },
         strengths: {
           label: 'Strengths',
-          error: 'Please select a charachter strength.'
+          error: 'Please select a character strength.'
         },
         weaknesses: {
           label: 'Weaknesses',
-          error: 'Please select a charachter weakness.',
+          error: 'Please select a character weakness.',
           config: {
             minLines: 3
           }
