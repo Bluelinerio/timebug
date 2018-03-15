@@ -43,6 +43,14 @@ O7Xj7hvV8JswmmX
 * run `react-native run-android`, only do this after setting up config.json
 * run `yarn run:android` as this will set up config.json and run android machine
 
+## Store Submission
+## Issues
+- Android android.permission.READ_PHONE_STATE althouth not states: the Faecbook SDK is coming with a bunch of permissions that aren't really necessary. When the app comes with this one the Play Store demands (of course...) that the app will come with a privacy policy. 
+    - To review manifest go see android/app/build/outputs/logs/manifest-merger-release-report.txt
+    - To remove add the `xmlns:tools="http://schemas.android.com/tools"` to the AndroidManifest.xml and add `<uses-permission android:name="android.permission.READ_PHONE_STATE" tools:node="remove" />`
+
+Andorid: Remove android.permission.READ_PHONE_STATE which comes with facebook.
+
 ### Tests
 Regarding tests, in general all you need to do is have an available machine, register it's name in package.json, set up configuration to test (config.json as TEST with TESTUSERID),  run js server for RN, and then run detox related commands.
 
