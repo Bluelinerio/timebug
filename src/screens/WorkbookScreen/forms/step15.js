@@ -5,7 +5,7 @@ export default {
   1: {
     type: t.struct({
       id: t.maybe(t.String),
-      personalAimsAndHobbies: t.list(
+      activitiesAndHobbies: t.list(
         t.struct({
           personalAimHobby: t.String,
           timeSpentMonth: TimeSpent,
@@ -16,19 +16,19 @@ export default {
       )
     }),
     options: {
-      label: 'Aims & Hobbies Assessment',
+      label: 'What are some of the activities and hobbies that you typically engage in each month?',
       fields: {
         id: {
           hidden: true
         },
-        personalAimsAndHobbies: {
+        activitiesAndHobbies: {
           item: {
             fields: {
               personalAimHobby: {
                 label: 'Aim/Hobby'
               },
               timeSpentMonth: {
-                label: 'How much time does this hobby take up a month?'
+                label: 'How much time do you spend engaging in this activity per month?'
               },
               timeChanged: {
                 label:
@@ -83,7 +83,7 @@ export default {
     }),
     options: {
       label:
-        "Were there any aims & hobbies that you weren't able to accomplish that you really wanted to over the past 5 years?",
+        "Were there any aims and hobbies that you weren't able to accomplish that you really wanted to over the past 5 years?",
 
       fields: {
         aimsAndHobbies: {
@@ -94,8 +94,7 @@ export default {
               },
               why: {
                 label:
-                  'What stopped you from initiating or continuing these hobbies?'
-                //error:'Why did you have trouble finding time for this hobby?'
+                  'What stopped you from initiating or continuing this hobby'
               }
             }
           }

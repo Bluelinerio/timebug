@@ -29,18 +29,17 @@ export default {
           hidden: true
         },
         priority: {
-          label: 'How much of a priority was your health over the past 5 years?'
+          label: 'How much have you made health a priority over the past 5 years?'
           //error:'Please select a value'
         },
         feelNow: {
-          label:
-            'How do you feel now, physical health-wise?(Using a 10pt scale with 1=not very good to 10-excellent',
-          error: 'Please select a value'
+          label: 'How do you feel physically now?',
+          help: '1= Not very well to 10= Very well'
         },
         healthyPerson: {
           label:
-            'Do you think you are a healthy person? (Using a 10pt scale with 1=not very healthy to 10=extremely healthy).',
-          error: 'Please select a value'
+            'Do you think you are a healthy person?',
+          help: '1= Not very healthy to 10= Extremely healthy'
         }
       }
     },
@@ -63,7 +62,7 @@ export default {
       )
     }),
     options: {
-      label: 'Take time to evaluate your Fitness and Exercise behavior',
+      label: 'Now, its time to think about your fitness and exercise behaviors.',
       fields: {
         doYouExercise: {
           label: 'Do you exercise? If not, why?',
@@ -182,13 +181,12 @@ export default {
     type: t.struct({
       takeCare: t.String,
       carryStress: CarryStress,
-      healthIssues: t.String,
+      healthIssues: t.Boolean,
       howProminent: OneToTenScale,
-      sickDays: OneToTenScale,
-      takeEnergizers: TakeEnergizers
+      sickDays: OneToTenScale
     }),
     options: {
-      label: 'Take time to evaluate your Body Care',
+      label: "Let's think about your Body Care regimen",
       fields: {
         takeCare: {
           label:
@@ -200,22 +198,17 @@ export default {
           error: 'Please select a value.'
         },
         healthIssues: {
-          label: 'Do you have any notable health issues?',
+          label: 'Do you have significant health issues?',
           error: 'Please fill out the field.'
         },
         howProminent: {
           label:
-            'How prominent are they in your life?(Using a 10pt scale with 1=very little effect to 10=a daily challenge)',
-          error: 'Please fill out the field.'
+            'How significant are these issues??',
+          help: 'Using a 10pt scale with 1=very little effect to 10=a daily challenge'
         },
         sickDays: {
           label:
             'How often do you get sick(# of days per year on average from the last few years)',
-          error: 'Please select a value.'
-        },
-        takeEnergizers: {
-          label:
-            'Do you drink coffee or take anything to stay awake or energized daily?',
           error: 'Please select a value.'
         }
       }
@@ -223,10 +216,7 @@ export default {
   },
   6: {
     type: t.struct({
-      stressRange: t.struct({
-        lowEnd: OneToTenScale,
-        highEnd: OneToTenScale
-      }),
+      stressRange: OneToTenScale,
       dealWithStress: t.String,
       expressAbility: t.String,
       awareness: t.struct({
@@ -236,24 +226,13 @@ export default {
       })
     }),
     options: {
-      label: 'Take time to evaluate your Mental & Emotional Health',
+      label: "Let's check out your mental and emotional health.",
       fields: {
         stressRange: {
           label:
-            'What is the range of your stress levels throughout a typical week?(Using a 10pt scale, Choose a number for the low-end and another for the high-end, with 1=total tranquility and 10=major nervous breakdown)',
-          fields: {
-            lowEnd: {
-              label: 'Low-End',
-              error:
-                'Whats the low end of your stress range for a typical week?.'
-            },
-            highEnd: {
-              label: 'High-End',
-              error:
-                'Whats the high end of your stress range for a typical week?.'
-            }
-          }
-        },
+            'How stressed do you get during a typical week?',
+            help: '1= Very low to 10= Very high'
+          },
         dealWithStress: {
           label: 'How do you deal with stress?',
           error: 'Please fill out the field.'
@@ -265,7 +244,7 @@ export default {
         },
         awareness: {
           label:
-            'Are you aware of how stressful situations impact your health and life? Give 3 examples.',
+            'How do stressful situations influence your health?',
           fields: {
             auto: 'placeholders',
             example1: {

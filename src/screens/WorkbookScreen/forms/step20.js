@@ -127,7 +127,7 @@ export default {
     }),
     options: {
       label:
-        'How would you divide your energy and motivation level as a percent of a pie for each Category?',
+        'How would you slice up each in terms of energy level?',
 
       fields: {
         career: {
@@ -201,7 +201,7 @@ export default {
     }),
     options: {
       label:
-        'Give yourself a final evaluation for each of the past 5 Years, as well as an overall 5-Year Score (1-10 score per year per Life Category for a total maximum high score of 50/50).',
+        'What is your final evaluation for each of the past 5 Years? Give yourself a  5-Year Score (1-10 score per year, for a total maximum high score of 50/50, across each Pillar of Life).',
       fields: {
         careerYear1: {
           label: 'Career(Year 1)'

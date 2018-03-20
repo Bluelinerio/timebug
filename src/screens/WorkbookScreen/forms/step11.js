@@ -24,7 +24,7 @@ export default {
       )
     }),
     options: {
-      label: 'What were your top goals over the past 5 years?',
+      label: 'What were you top 3 or 4 goals over the past 5 years?',
 
       fields: {
         id: {
@@ -38,12 +38,12 @@ export default {
                 //error:'Please enter a goal.'
               },
               percentCompleted: {
-                label: 'How far did you get with this goal?(as a percentage)?'
+                label: 'What percentage complete is this goal?'
               },
               satisfactionLevel: {
                 label:
-                  'How satisfied are you with the effort (time & energy) you committed to each goal and the corresponding goal outcome?',
-                help: '1= hardly satisfied, 10= completely satisfied'
+                  'How satisfied are you with the time and energy you committed to this goal?',
+                help: '1= Not at all satisfied to 10= Very satisfied'
               },
               goalProcess: {
                 label: 'How would you describe your goal-process?'
@@ -51,7 +51,7 @@ export default {
               }
             }
           },
-          label: 'Top 10-15 Goals',
+          auto:'none',
           disableOrder: true,
           maxLines: 15,
           config: {
@@ -77,7 +77,7 @@ export default {
       })
     }),
     options: {
-      label: 'During the past 5 years, what years did you track your goals?'
+      label: 'What years of the past 5 did you actively track your goals?'
     },
     fields: {
       goalTracking: {
@@ -92,7 +92,7 @@ export default {
       emotions: t.list(Emotion)
     }),
     options: {
-      label: 'What main emotions have you felt over the past 5 years?'
+      label: "Choose a few emotions that best describe how you've felt over the past 5 years."
     },
     fields: {
       emotions: {

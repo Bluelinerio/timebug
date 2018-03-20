@@ -14,7 +14,7 @@ export default {
       )
     }),
     options: {
-      label: 'What MLEs happened to you over the past 5 years?',
+      label: 'Name some of the Major Life Events (MLEs) that have ocurred over the past 5 years.',
 
       fields: {
         id: {
@@ -25,7 +25,7 @@ export default {
             fields: {
               postiveOrNegative: {
                 label:
-                  'How did those MLEs factor in – positively and negatively – to your goals over the past 5 years?'
+                  'How did this MLE influence your goals?'
               },
               majorLifeEvent: {
                 label: 'Major Life Event'

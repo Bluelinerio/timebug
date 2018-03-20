@@ -17,11 +17,11 @@ export default {
         },
         changes: {
           label:
-            'What changes have taken place in your place and environment since Year 1?'
+            'Name some changes that took place in your place and environment over the past 5 years? Did you move?'
         },
         liveWith: {
           label:
-            'Who do you live with right now, and how does that effect your lifestyle choices?.'
+            'Who do you live with right now, and how does that effect your lifestyle choices?'
         },
         trulyHappy: {
           label:
@@ -69,7 +69,7 @@ export default {
       )
     }),
     options: {
-      label: 'What were your place and environment goals since Year 1? ',
+      label: 'What were your place and environment goals over the past 5 years?',
       fields: {
         goals: {
           item: {

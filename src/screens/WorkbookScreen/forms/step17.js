@@ -28,7 +28,7 @@ export default {
         },
         messagesInHead: {
           label:
-            'What messages run in your head on a daily basis about yourself'
+            'What messages about yourself run through your head on a daily basis?'
         },
         messagesJudgeSelf: {
           label: 'What do you say to judge or shame yourself?'
@@ -44,15 +44,15 @@ export default {
   2: {
     type: t.struct({
       peopleValued: t.list(t.String),
-      peopleLoved: t.String,
-      peopleTreatedContempt: t.String
+      peopleLoved: OneToTenScale,
+      peopleTreatedContempt: OneToTenScale
     }),
     options: {
-      label: 'Whom do you truly value?',
+      label: 'Who do you truly value?',
       fields: {
         peopleValued: {
           item: {
-            label: 'Person valued'
+            label: 'Person'
           }
         },
         peopleLoved: {
@@ -79,22 +79,22 @@ export default {
         givingToOthers: {
           label:
             'How comfortable do you feel giving to others in your daily life?',
-          help: '1=not at all comfortable and 10=very much comfortable'
+          help: '1= Not at all comfortable and 10= Very much comfortable'
         },
         trustValue: {
           label: 'Do you trust the value of what you have to offer to others?',
-          help: '10 = Very Trusting and 1 = Not trustful at all.'
+          help: '1= Not trustful at all and 10= Very Trusting'
         },
         comfortableReceiving: {
           label:
             'How comfortable do you feel receiving from others in your daily life?',
           help:
-            'Using a 10-pt scale with 1=not at all comfortable and 10=very much comfortable'
+            '1= not at all comfortable and 10= very much comfortable'
         },
         worthyAndComfortable: {
           label:
             'Do you feel worthy and comfortable with compliments or acknowledgments from others?',
-          help: '10 = Very comfortable and 1 = Not comfortable at all'
+          help: '1= not at all comfortable and 10= very much comfortable'
         }
       }
     }

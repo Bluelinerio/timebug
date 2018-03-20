@@ -53,14 +53,14 @@ export default {
       )
     }),
     options: {
-      label: 'Who are your current role models or mentors in this area? ',
+      label: 'Who are your current role models or mentors in this area?',
 
       fields: {
         currentMentors: {
           item: {
             fields: {
               why: {
-                label: 'Why do you admire their approach to and views on life? '
+                label: 'Why do you admire his/her approach to and views on life?'
               }
             }
           }
@@ -82,7 +82,7 @@ export default {
         },
         spiritualityChanged: {
           label:
-            'How have your Spiritual practices and/or beliefs changed over the past 5 years?'
+            'How have your spiritual practices and/or beliefs changed over the past 5 years?'
         }
       }
     }
@@ -103,20 +103,20 @@ export default {
       fields: {
         internalQualities: {
           label:
-            'What internal qualities(Iqs: Goal Type 4) have been influenced - positively or negatively - by Spiritual practices - or lack thereof?'
+            'What internal qualities (i.e., Goal Type 4) were positively or negatively influenced by your spriritual practices or lack thereof?'
         },
         insights: {
           label:
             'What insights did you pick up from your spirituality over the past 5 years?',
           fields: {
             purposeOnEarth: {
-              label: 'What Is My Purpose On Earth?'
+              label: 'What is my purpose on Earth?'
             },
             beyondOuterForm: {
-              label: 'Beyond My Outer Form, What Am I?'
+              label: 'Beyond my outer form, what am I?'
             },
             karma: {
-              label: 'My Karma Has Shown Me...'
+              label: 'My karma has shown me...'
             },
             healedEmotionalWoundsFrom: {
               label: 'I have healed emotional wounds from...'
