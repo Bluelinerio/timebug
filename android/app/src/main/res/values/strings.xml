@@ -3,5 +3,5 @@
     <string name="app_name">Lifevision</string>
     <string name="facebook_app_id">177388826165148</string>
     <string name="fb_login_protocol_scheme">fb177388826165148</string>
-    <string name="asset_statements" translatable="false">[{\n  \"relation\": [\"delegate_permission/common.handle_all_urls\"],\n  \"target\": {\n    \"namespace\": \"web\",\n    \"site\": \"https://lifevisionapp.io\",\n  }\n}]</string>
+    <string name="asset_statements" translatable="false">[{\n  \"relation\": [\"delegate_permission/common.handle_all_urls\"],\n  \"target\": {\n    \"namespace\": \"web\",\n    \"site\": \"http://lifevisionapp.io\",\n  }\n}]</string>
 </resources>
