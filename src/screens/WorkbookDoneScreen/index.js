@@ -1,32 +1,31 @@
-import React from 'react';
-import { Button, Text, Platform } from 'react-native';
-import { HeaderBackButton, NavigationActions } from 'react-navigation';
-import screen from './containers/WorkbookDoneScreenContainer';
-import { reset } from '../../redux/actions/nav.actions';
-
-// import Icon from 'react-native-vector-icons/Entypo'
-// import styles from '../../styles/components/Button'
-// <Text style={styles.wideButtonText}>Done</Text>
-// style={{
-// 						paddingTop: 14,
-// 						paddingHorizontal: 16,
-// 						right: 16
-// 					}}
+import React                                   from 'react'
+import { Button, View, Platform, StyleSheet }  from 'react-native'
+import { HeaderBackButton, NavigationActions } from 'react-navigation'
+import screen                                  from './containers/WorkbookDoneScreenContainer'
+import { reset }                               from '../../redux/actions/nav.actions'
+import styles                                  from '../styles'
 
 screen.navigationOptions = ({
-  navigation: { dispatch, state: { params: { stepColor, stepNumber } } }
+  navigation: { dispatch, state: { params: { stepColor } } }
 }) => {
   return {
     headerRight: (
-      <Button
-        title={'Done'}
-        color={Platform.OS === 'ios' ? 'white' : 'transparent'}
-        accessibilityLabel={'close'}
-        backgroundColor={'transparent'}
-        onPress={() => dispatch(reset())}
-      />
+      <View
+        style={{
+          paddingRight: 16
+        }}
+      >
+        <Button
+          title={'Done'}
+          color={Platform.OS === 'ios' ? 'white' : 'transparent'}
+          accessibilityLabel={'close'}
+          backgroundColor={'transparent'}
+          onPress={() => dispatch(reset())}
+        />
+      </View>
     ),
     headerStyle: {
+      ...StyleSheet.flatten(styles.navigationOptionHeaderStyle),
       backgroundColor: stepColor,
       borderBottomColor: 'transparent',
       shadowOpacity: 0,
@@ -39,9 +38,9 @@ screen.navigationOptions = ({
         onPress={() => dispatch(NavigationActions.back())}
       />
     )
-  };
-};
+  }
+}
 
 export default {
   screen
-};
+}
