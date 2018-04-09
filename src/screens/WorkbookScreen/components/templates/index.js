@@ -1,52 +1,48 @@
-import { Animated, KeyboardAvoidingView } from 'react-native';
-import { Pages } from 'react-native-pages';
-import React, { Children } from 'react';
+import * as React       from 'react'
+import t                from 'tcomb-form-native/lib'
+import { getTypeInfo }  from 'tcomb-form-native/lib/util'
+import templates        from 'tcomb-form-native/lib/templates/bootstrap/index'
+import i18n             from 'tcomb-form-native/lib/i18n/en'
 
-import t from 'tcomb-form-native/lib';
-import { getTypeInfo } from 'tcomb-form-native/lib/util';
-import templates from 'tcomb-form-native/lib/templates/bootstrap/index';
-import stylesheet from 'tcomb-form-native/lib/stylesheets/bootstrap';
-import i18n from 'tcomb-form-native/lib/i18n/en';
-
-import customList from './customList';
-import customTextBox from './customTextbox';
-import customStruct from './customStruct';
-import select from './select';
-import customStylesheet from '../../styles/templates/index';
+import customList       from './customList'
+import customTextBox    from './customTextbox'
+import customStruct     from './customStruct'
+import select           from './select'
+import customStylesheet from '../../styles/templates/index'
 
 if (__DEV__) {
   function assert(condition, error) {
-    if (!condition) throw error;
+    if (!condition) throw error
   }
-  const message = name => `expected ${name} in customStylesheet`;
+  const message = name => `expected ${name} in customStylesheet`
   assert(
     typeof customStylesheet.textbox.normal === 'object',
     message('textbox.normal')
-  );
+  )
   assert(
     typeof customStylesheet.textbox.error === 'object',
     message('textbox.error')
-  );
+  )
   assert(
     typeof customStylesheet.textbox.notEditable === 'object',
     message('textbox.notEditable')
-  );
+  )
   assert(
     typeof customStylesheet.fieldset.topLevel === 'object',
     message('fieldset.topLevel')
-  );
+  )
   assert(
     typeof customStylesheet.fieldset.normal === 'object',
     message('fieldset.normal')
-  );
+  )
   assert(
     typeof customStylesheet.textBoxView.normal === 'object',
     message('textBoxView.normal')
-  );
+  )
   assert(
     typeof customStylesheet.textBoxView.error === 'object',
     message('textBoxView.error')
-  );
+  )
 }
 
 const customTemplates = {
@@ -55,17 +51,17 @@ const customTemplates = {
   textbox: customTextBox,
   struct: customStruct,
   select
-};
+}
 
-t.form.Form.templates = customTemplates;
-t.form.Form.stylesheet = customStylesheet;
-t.form.Form.i18n = i18n;
+t.form.Form.templates = customTemplates
+t.form.Form.stylesheet = customStylesheet
+t.form.Form.i18n = i18n
 
 t.form.Form.defaultProps = {
   templates: customTemplates,
   stylesheet: customStylesheet,
   i18n: t.form.Form.i18n
-};
+}
 
 t.String.getValidationErrorMessage = (actual, path, context) => {
   const to = context && context.options && context.options.label || path && path.length && path[0]
@@ -83,34 +79,34 @@ t.form.Struct.prototype.shouldComponentUpdate = function(nextProps, nextState) {
     nextState.hasError !== this.state.hasError ||
     nextProps.options !== this.props.options ||
     nextProps.type !== this.props.type ||
-    nextState.changedPage !== this.state.changedPage;
-  return should;
-};
+    nextState.changedPage !== this.state.changedPage
+  return should
+}
 
 t.form.Struct.prototype.componentWillReceiveProps = function(nextProps) {
-  let changedPage = false;
+  let changedPage = false
   if (nextProps.type !== this.props.type) {
-    this.typeInfo = getTypeInfo(nextProps.type);
-    changedPage = true;
+    this.typeInfo = getTypeInfo(nextProps.type)
+    changedPage = true
   }
   this.setState({
     value: this.getTransformer().format(nextProps.value),
     changedPage
-  });
-};
+  })
+}
 
 t.form.Struct.prototype.componentDidUpdate = function() {
   if (this.state.changedPage) {
-    this.setState({ changedPage: false });
+    this.setState({ changedPage: false })
   }
-};
+}
 
 t.form.Struct.prototype.getChangedPage = function() {
-  return this.state.changedPage;
-};
+  return this.state.changedPage
+}
 
 t.form.Struct.prototype.getLocals = function() {
-  const templates = this.getTemplates();
+  const templates = this.getTemplates()
   const locals = {
     topLevel: this.props.options.topLevel || false,
     path: this.props.ctx.path,
@@ -122,12 +118,12 @@ t.form.Struct.prototype.getLocals = function() {
     value: this.state.value,
     hidden: this.props.options.hidden,
     stylesheet: this.getStylesheet()
-  };
-  locals.order = this.getOrder();
-  locals.inputs = this.getInputs();
-  locals.template = templates.struct;
-  locals.changedPage = this.state.changedPage;
-  return locals;
-};
+  }
+  locals.order = this.getOrder()
+  locals.inputs = this.getInputs()
+  locals.template = templates.struct
+  locals.changedPage = this.state.changedPage
+  return locals
+}
 
-export default t;
+export default t

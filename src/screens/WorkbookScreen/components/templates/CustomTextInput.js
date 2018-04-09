@@ -1,40 +1,41 @@
 // @flow
-import React from 'react';
-import { View, TextInput, Text, Animated } from 'react-native';
+import React from 'react'
+import { View, TextInput, Text, Animated } from 'react-native'
 
 type State = {
   height: number,
   fieldFocused: boolean,
   value: String,
   fadeAnim: Animated.AnimatedValue
-};
-type Props = {
+}
+
+type Props = TextInputProps & {
   style?: any,
   onContentSizeChange?: (event: any) => void
-};
+}
 
-export default class CustomTextInput extends React.Component<Props, State> {
-  input: ?TextInput = null;
+class CustomTextInput extends React.Component<Props, State> {
+  input: ?TextInput = null
   error() {
-    const { error, hasError, styles: { errorBlockStyle } } = this.props;
+    const { error, hasError, styles: { errorBlockStyle } } = this.props
     error && hasError ? (
       <Text accessibilityLiveRegion="polite" style={errorBlockStyle}>
         {error}
       </Text>
-    ) : null;
+    ) : null
   }
   help() {
-    const { help, hasError, styles } = this.props;
+    const { help, hasError, styles } = this.props
     help ? (
       <Text style={hasError ? styles.helpBlock.error : styles.helpBlock.normal}>
         {help}
       </Text>
-    ) : null;
+    ) : null
   }
 
   floatingLabel() {
-    const { label, hasError, styles } = this.props;
-    const { fadeAnim } = this.state;
+    const { label, hasError, styles } = this.props
+    const { fadeAnim } = this.state
     return label ? (
       <Animated.Text
         style={[
@@ -55,10 +56,10 @@ export default class CustomTextInput extends React.Component<Props, State> {
       >
         {label}
       </Animated.Text>
-    ) : null;
+    ) : null
   }
   label() {
-    const { label, hasError, styles } = this.props;
+    const { label, hasError, styles } = this.props
     return label ? (
       <Text
         style={[
@@ -70,67 +71,67 @@ export default class CustomTextInput extends React.Component<Props, State> {
       >
         {label}
       </Text>
-    ) : null;
+    ) : null
   }
 
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       height: 0,
       fieldFocused: props.value ? true : false,
       text: props.value ? String(props.value) : '',
       fadeAnim: props.value ? new Animated.Value(1) : new Animated.Value(0)
-    };
+    }
   }
 
   focus() {
-    this.input && this.input.focus();
+    this.input && this.input.focus()
   }
 
   onFocus = () => {
-    const { fadeAnim } = this.state;
+    const { fadeAnim } = this.state
     Animated.spring(fadeAnim, {
       toValue: 1,
       friction: 5
-    }).start();
+    }).start()
     this.setState({
       fieldFocused: true
-    });
-    this.props.onFocus && this.props.onFocus();
-  };
+    })
+    this.props.onFocus && this.props.onFocus()
+  }
 
   onBlur = () => {
-    const { text, fadeAnim } = this.state;
+    const { text, fadeAnim } = this.state
     if (!text || !text.length) {
       Animated.timing(fadeAnim, {
         toValue: 0
-      }).start();
+      }).start()
     }
     this.setState({
       fieldFocused: false
-    });
-    this.props.onBlur && this.props.onBlur();
-  };
+    })
+    this.props.onBlur && this.props.onBlur()
+  }
 
   onChangeText = (text: string) => {
-    const then = this.props.onChange ? () => this.props.onChange(text) : null;
+    const then = this.props.onChange ? () => this.props.onChange(text) : null
     this.setState(
       {
         text
       },
       then
-    );
-  };
+    )
+  }
 
   onContentSizeChange = (event: any) => {
-    const { nativeEvent: { contentSize: { height } } } = event;
+    const { nativeEvent: { contentSize: { height } } } = event
     if (height !== this.state.height) {
       this.setState({
         height: height
-      });
+      })
     }
-    this.props.onContentSizeChange && this.props.onContentSizeChange(event);
-  };
+    this.props.onContentSizeChange && this.props.onContentSizeChange(event)
+  }
 
   renderTextInput = () => (
     <TextInput
@@ -188,40 +189,36 @@ export default class CustomTextInput extends React.Component<Props, State> {
       ]}
       value={this.props.value}
     />
-  );
+  )
 
   render() {
-    const { styles, hasError, editable, floatingLabel } = this.props;
+    const { styles, hasError, editable, floatingLabel } = this.props
 
-    const { text } = this.state;
+    const { text } = this.state
     const formGroupStyle = hasError
       ? styles.formGroupStyle.error
-      : styles.formGroupStyle.normal;
+      : styles.formGroupStyle.normal
 
     const textboxViewStyle = hasError
       ? styles.textBoxView.error
       : editable !== false
         ? styles.textBoxView.normal
-        : styles.textBoxView.notEditable;
+        : styles.textBoxView.notEditable
 
-    const label = floatingLabel ? this.floatingLabel() : this.label(); // text.length > 0 ? null :
-    const help = this.help();
-    const error = this.error();
-    const textInput = this.renderTextInput();
+    const label = floatingLabel ? this.floatingLabel() : this.label() // text.length > 0 ? null :
+    const help = this.help()
+    const error = this.error()
+    const textInput = this.renderTextInput()
 
     return (
-      <View
-        style={formGroupStyle}
-      >
+      <View style={formGroupStyle}>
         {label}
-        <View
-          style={textboxViewStyle}
-        >
-          {textInput}
-        </View>
+        <View style={textboxViewStyle}>{textInput}</View>
         {help}
         {error}
       </View>
-    );
+    )
   }
 }
+
+export default CustomTextInput
