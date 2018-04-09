@@ -1,22 +1,19 @@
 // @flow
-import React, { Component }     from 'react'
+import React, { Component } from 'react'
 import {
-  StyleSheet,
-  Text,
   View,
-  TouchableHighlight,
   Platform,
   ScrollView,
-  Keyboard,
   Image,
-  Dimensions,
-  Alert
-}                               from 'react-native'
-import t                        from './templates'
+  Alert,
+  StatusBar
+}                           from 'react-native'
+import t                    from './templates'
 
-import DefaultIndicator         from '../../../components/DefaultIndicator'
-import WorkbookNextButton       from '../components/WorkbookNextButton'
-import styles                   from '../styles'
+import KeyboardComponent    from '../../../components/KeyboardComponent'
+import DefaultIndicator     from '../../../components/DefaultIndicator'
+import WorkbookNextButton   from '../components/WorkbookNextButton'
+import styles               from '../styles'
 const Form = t.form.Form
 
 export type Model = {
@@ -72,7 +69,6 @@ class WorkbookScreenComponent extends Component<Props, State> {
   }
 
   componentDidMount() {
-    Keyboard.dismiss() // police keyboard is always off, when starting (specially with android.)
     const { model: { focusField, type }, value } = this.state
 
     if (focusField) {
@@ -210,6 +206,10 @@ class WorkbookScreenComponent extends Component<Props, State> {
 
     return (
       <View onLayout={this.onLayout} style={{ flex: 1 }}>
+        <StatusBar
+          barStyle="light-content"
+          backgroundColor={stepColor}
+        />
         <ScrollView style={styles.fullScreenScrollView}>
           <View
             onLayout={this.onFormLayout}
@@ -245,14 +245,19 @@ class WorkbookScreenComponent extends Component<Props, State> {
             />
           </View>
         </ScrollView>
-        <View style={styles.workbookNextButtonContainer}>
-          <WorkbookNextButton
-            isInvalid={isInvalid}
-            onPress={this.onPress}
-            buttonMessage={buttonMessage}
-            backgroundColor={stepColor}
-          />
-        </View>
+        <KeyboardComponent
+          enabled={Platform.OS === 'android'}
+          shouldRender={({ showing, enabled }) => (!enabled || !showing) }
+        >
+          <View style={styles.workbookNextButtonContainer}>
+            <WorkbookNextButton
+              isInvalid={isInvalid}
+              onPress={this.onPress}
+              buttonMessage={buttonMessage}
+              backgroundColor={stepColor}
+            />
+          </View>
+        </KeyboardComponent>
       </View>
     )
   }
