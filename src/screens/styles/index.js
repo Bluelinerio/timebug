@@ -14,6 +14,7 @@ export default StyleSheet.create({
     right: 0,
     borderBottomColor: 'transparent',
     shadowOpacity: 0,
-    shadowColor: 'transparent'
+    shadowColor: 'transparent',
+    elevation:0
   }
 });
