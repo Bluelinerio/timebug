@@ -1,3 +1,4 @@
+// @flow
 import React                               from 'react'
 import {
   StyleSheet,
@@ -15,24 +16,18 @@ import markdownStyles                      from '../../../styles/Markdown/stepSc
 import StepScreenButtonContainer           from '../containers/StepScreenButtonContainer'
 import styles                              from '../styles'
 
-export type Props = {
+const HEADER_HEIGHT = Dimensions.get('window').height * 0.4
+
+type ContentProps = {
   title: string,
   subtitle: string,
   description: string,
-  number: number,
-  icon: { uri: string },
   color: string
 }
 
-const HEADER_HEIGHT = Dimensions.get('window').height * 0.4
-
-const Content = ({ title, subtitle, description, color, number }) => (
+const Content = ({ title, subtitle, description, color }: ContentProps) => (
   <View style={styles.stepScreenContent}>
-    <StatusBar
-      translucent
-      barStyle="light-content"
-      backgroundColor={'transparent'}
-    />
+    <StatusBar translucent={false} barStyle="light-content" backgroundColor={color} />
     <ScrollView style={styles.stepScreenScrollView}>
       {subtitle && (
         <Text
@@ -50,11 +45,16 @@ const Content = ({ title, subtitle, description, color, number }) => (
       {title && <Text style={[styles.stepScreenTitle]}>{title}</Text>}
       <Markdown markdownStyles={markdownStyles}>{description}</Markdown>
     </ScrollView>
-    <StepScreenButtonContainer number={number} />
+    <StepScreenButtonContainer />
   </View>
 )
 
-const Header = ({ icon, title, number, color }) => (
+type HeaderProps = {
+  icon: { uri: string },
+  color: string
+}
+
+const Header = ({ icon, color }: HeaderProps) => (
   <View
     style={[
       styles.stepScreenHeader,
@@ -74,15 +74,26 @@ const Header = ({ icon, title, number, color }) => (
   </View>
 )
 
-export default ({
+export type Props = {
+  title: string,
+  subtitle: string,
+  description: string,
+  number: number,
+  //icon: { uri: string },
+  color: string,
+  image: { uri: string }
+}
+
+
+const StepScreen = ({
   title,
   subtitle,
   description,
   number,
-  icon,
+  //icon,
   color,
   image
-}) => (
+}: Props) => (
   <ScrollableHeader
     headerMaxHeight={HEADER_HEIGHT}
     headerMinHeight={APPBAR_HEIGHT + STATUSBAR_HEIGHT}
@@ -113,3 +124,5 @@ export default ({
     }
   />
 )
+
+export default StepScreen
