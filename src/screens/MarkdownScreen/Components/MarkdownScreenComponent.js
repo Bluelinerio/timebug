@@ -7,17 +7,16 @@ import styles, { HEADER_HEIGHT } from '../styles'
 import { APPBAR_HEIGHT, STATUSBAR_HEIGHT } from '../../../constants'
 import ScrollableHeader from '../../../components/ScrollableHeader'
 
-export type Props = {
-  title: string,
-  subtitle: string,
-  content: string,
-  icon: { uri: string },
-  color: string
+export type PageContentProps = {
+  markdownStyles: any,
+  content: string
 }
 
-const PageContent = ({ content, markdownStyles, color }) => (
+const PageContent = ({
+  content,
+  markdownStyles
+}: PageContentProps): React.Node => (
   <View style={{ flex: 1 }}>
-    <StatusBar translucent barStyle="dark-content" backgroundColor={color} />
     <ScrollView
       automaticallyAdjustContentInsets={true}
       style={styles.scrollView}
@@ -27,19 +26,23 @@ const PageContent = ({ content, markdownStyles, color }) => (
   </View>
 )
 
+type ScrollableHeaderContentProps = {
+  title: string,
+  subtitle: string,
+  content: string,
+  color: string,
+  markdownStyles: any
+}
+
 const ScrollableHeaderContent = ({
   title,
   subtitle,
   content,
   color,
   markdownStyles
-}) => (
+}: ScrollableHeaderContentProps): React.Node => (
   <View style={styles.content}>
-    <StatusBar
-      translucent
-      barStyle="light-content"
-      backgroundColor={'transparent'}
-    />
+    <StatusBar barStyle="light-content" backgroundColor={color} />
     {subtitle && (
       <Text
         style={[
@@ -59,7 +62,12 @@ const ScrollableHeaderContent = ({
   </View>
 )
 
-const Header = ({ icon, title, color }) => (
+type HeaderProps = {
+  icon?: { uti: string },
+  color: string
+}
+
+const Header = ({ icon, color }: HeaderProps): React.Node => (
   <View
     style={[
       styles.header,
@@ -83,7 +91,7 @@ type Props = {
   markdownStyles?: {}
 }
 
-export default ({
+const MarkdownScreenComponent = ({
   title,
   subtitle,
   content,
@@ -126,3 +134,5 @@ export default ({
     )
   }
 }
+
+export default MarkdownScreenComponent
