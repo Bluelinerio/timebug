@@ -47,13 +47,9 @@ export const restartStepAction = (step: Step) =>
   NavigationActions.reset({
     index: 1,
     key: null,
-    // fix unclear bug where in android goToAssignmentFlow() does somethign wierd to the screen manager:
-    actions: Platform.select({
-      ios: [navigateToInitialRoute(), goToAssignmentFlow({ step })],
-      android: [navigateToInitialRoute()]
-    })
+    actions: [navigateToInitialRoute(), goToAssignmentFlow({ step })]
   })
-
+  
 // TODO remove static string and use params (routes.step.StepScreen ... )
 export const goToMeditation = () =>
   NavigationActions.navigate({
