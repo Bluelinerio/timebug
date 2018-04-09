@@ -6,7 +6,7 @@ import topStyle from '../styles'
 
 export const HEADER_HEIGHT = Dimensions.get('window').height * 0.4;
 export default StyleSheet.create({
-  ..topStyle,
+  ...topStyle,
   screen: {
     flex: 1,
     flexDirection: 'row',

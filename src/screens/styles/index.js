@@ -15,6 +15,6 @@ export default StyleSheet.create({
     borderBottomColor: 'transparent',
     shadowOpacity: 0,
     shadowColor: 'transparent',
-    elevation:0
+    elevation: 0
   }
 });
