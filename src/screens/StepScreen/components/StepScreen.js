@@ -27,7 +27,7 @@ type ContentProps = {
 
 const Content = ({ title, subtitle, description, color }: ContentProps) => (
   <View style={styles.stepScreenContent}>
-    <StatusBar translucent={false} barStyle="light-content" backgroundColor={color} />
+    <StatusBar barStyle="light-content" backgroundColor={color} />
     <ScrollView style={styles.stepScreenScrollView}>
       {subtitle && (
         <Text
