@@ -3,7 +3,6 @@ import { lightBlue } from '../../../constants/colors';
 import {
   human,
   systemWeights,
-  iOSColors,
   iOSUIKit,
   material,
   sanFranciscoWeights,

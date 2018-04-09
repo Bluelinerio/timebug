@@ -1,30 +1,28 @@
 // @flow
-
 import React, { Component } from 'react';
 import { Text, View, Image } from 'react-native';
-import Feather from 'react-native-vector-icons/MaterialCommunityIcons';
 import styles from '../styles';
 import Button from '../../../components/Button';
 
 export type Props = {
   title: string,
   buttonTitle: string,
-  doneStepNumber: number,
+  //doneStepNumber: number,
   doneStepColor: string,
-  nextStepDuration: number,
-  nextStepNumber: number,
+  //nextStepDuration: number,
+  //nextStepNumber: number,
   nextStepColor: string,
-  done: () => void,
+  //done: () => void,
   buttonOnPress: () => void
 };
 
-export default ({
-  doneStepNumber,
+const WorkbookDoneScreen = ({
+  //doneStepNumber,
   doneStepColor,
-  nextStepDuration,
-  nextStepNumber,
+  //nextStepDuration,
+  //nextStepNumber,
   nextStepColor,
-  done,
+  //done,
   title,
   buttonTitle,
   buttonOnPress
@@ -54,3 +52,5 @@ export default ({
     </View>
   );
 };
+
+export default WorkbookDoneScreen
