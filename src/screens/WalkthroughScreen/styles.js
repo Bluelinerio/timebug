@@ -23,6 +23,26 @@ export default StyleSheet.create({
     marginTop: largeVerticalSpacing + StatusBar.currentHeight,
     flexGrow: 1
   },
+  image: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: imageHeight,
+    ...Platform.select({
+      android: {
+        paddingHorizontal: 10,
+        borderRadius: 10,
+        marginVertical: 0, // needed for shadow
+        width: width * 0.6,
+        marginLeft: width * 0.2
+      },
+      ios: {
+        shadowColor: 'black',
+        shadowOpacity: 0.5
+      }
+    })
+  },
   imageContainer: {
     position: 'absolute',
     bottom: 0,

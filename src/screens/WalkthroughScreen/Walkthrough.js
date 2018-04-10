@@ -50,7 +50,7 @@ export default class Walkthrough extends React.Component<Props> {
         <Image
           source={slide.image}
           resizeMode="contain"
-          style={styles.imageContainer}
+          style={styles.image}
         />
       )}
     </LinearGradient>
