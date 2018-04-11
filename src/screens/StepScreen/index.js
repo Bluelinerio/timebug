@@ -1,8 +1,8 @@
-import React                 from 'react';
-import { NavigationActions } from 'react-navigation';
-import screen                from './containers/StepScreenContainer';
-import HeaderCloseButton     from '../../components/HeaderCloseButton';
-import styles                from '../styles';
+import React                 from 'react'
+import { NavigationActions } from 'react-navigation'
+import screen                from './containers/StepScreenContainer'
+import HeaderCloseButton     from '../../components/HeaderCloseButton'
+import styles                from '../styles'
 
 screen.navigationOptions = ({ navigation: { dispatch } }) => ({
   headerStyle: styles.navigationOptionHeaderStyle,
@@ -14,8 +14,8 @@ screen.navigationOptions = ({ navigation: { dispatch } }) => ({
       tintColor={'white'}
     />
   )
-});
+})
 
 export default {
   screen
-};
+}

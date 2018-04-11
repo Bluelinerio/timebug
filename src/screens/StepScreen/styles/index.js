@@ -1,7 +1,7 @@
-import { Platform, StyleSheet, Dimensions } from 'react-native';
-import { deepBlue } from '../../../constants/colors';
-import { STATUSBAR_HEIGHT, APPBAR_HEIGHT } from '../../../constants';
-import normalize from '../../../utils/normalizeText';
+import { StyleSheet } from 'react-native'
+import { deepBlue } from '../../../constants/colors'
+import { STATUSBAR_HEIGHT, APPBAR_HEIGHT } from '../../../constants'
+import normalize from '../../../utils/normalizeText'
 
 export default StyleSheet.create({
   rowContainer: {
@@ -78,4 +78,4 @@ export default StyleSheet.create({
     top: 35,
     left: 15
   }
-});
+})
