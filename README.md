@@ -6,7 +6,6 @@ iOS >= 8, Android >= 4.4
 ## How to run:
 * `git clone`
 * `yarn`
-* `react-native link`
 
 ## temp Sentry credentials:
 amos@blabsventures.com
