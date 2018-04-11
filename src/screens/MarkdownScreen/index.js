@@ -1,9 +1,9 @@
-import * as React              from 'react'
-import { NavigationActions }   from 'react-navigation'
-import { mapProps, compose }   from 'recompose'
-import styles                  from '../styles'
+import * as React from 'react'
+import { NavigationActions, StackNavigator } from 'react-navigation'
+import { mapProps, compose } from 'recompose'
+import styles from '../styles'
 import MarkdownScreenComponent from './Components/MarkdownScreenComponent'
-import HeaderCloseButton       from '../../components/HeaderCloseButton'
+import HeaderCloseButton from '../../components/HeaderCloseButton'
 
 const MarkdownScreenContainer = compose(
   mapProps(props => ({
@@ -23,4 +23,22 @@ MarkdownScreenContainer.navigationOptions = ({ navigation: { dispatch } }) => ({
   )
 })
 
-export default MarkdownScreenContainer
+const MarkdownScreen = StackNavigator(
+  {
+    Markdown: {
+      screen: MarkdownScreenContainer
+    }
+  },
+  {
+    headerMode: 'screen',
+    cardStyle: {
+      backgroundColor: 'white',
+      opacity: 1
+    }
+  }
+)
+
+// TODO: determin if it is required to fixDebounce:
+//fixDebounce(MarkdownScreenNavigator)
+
+export default MarkdownScreen

@@ -1,17 +1,17 @@
-import { Platform }                          from 'react-native'
+import { Platform } from 'react-native'
 import { StackNavigator, NavigationActions } from 'react-navigation'
-import React                                 from 'react'
+import React from 'react'
 
-import HomeScreen                            from '../screens/HomeScreen'
-import StepScreen                            from '../screens/StepScreen'
-import WorkbookDoneScreen                    from '../screens/WorkbookDoneScreen'
-import WorkbookScreen                        from '../screens/WorkbookScreen'
-import WalkthroughScreen                     from '../screens/WalkthroughScreen'
-import DashboardScreen                       from '../screens/DashboardScreen'
-import MeditationScreen                      from '../screens/MeditationScreen'
-import MarkdownScreen                        from '../screens/MarkdownScreen'
-import { uriPrefix }                         from '../constants'
-import routes                                from './routes'
+import HomeScreen from '../screens/HomeScreen'
+import StepScreen from '../screens/StepScreen'
+import WorkbookDoneScreen from '../screens/WorkbookDoneScreen'
+import WorkbookScreen from '../screens/WorkbookScreen'
+import WalkthroughScreen from '../screens/WalkthroughScreen'
+import DashboardScreen from '../screens/DashboardScreen'
+import MeditationScreen from '../screens/MeditationScreen'
+import MarkdownScreen from '../screens/MarkdownScreen'
+import { uriPrefix } from '../constants'
+import routes from './routes'
 
 if (!routes || !routes.root || !routes.root.initialRouteName || !routes.step) {
   throw 'missing routes or nested fields ' + JSON.stringify(routes)
@@ -47,21 +47,6 @@ const AssignmentFlowNavigator = StackNavigator(
   assignmentFlowConfiguration.options
 )
 
-export const MarkdownScreenNavigator = StackNavigator(
-  {
-    Markdown: {
-      screen: MarkdownScreen
-    }
-  },
-  {
-    headerMode: 'screen',
-    cardStyle: {
-      backgroundColor: 'white',
-      opacity: 1
-    }
-  }
-)
-
 export const rootConfiguration = {
   routes: routes.root,
   screens: {
@@ -83,7 +68,7 @@ export const rootConfiguration = {
       screen: MeditationScreen
     },
     [routes.root.MarkdownScreen]: {
-      screen: MarkdownScreenNavigator
+      screen: MarkdownScreen
     }
   },
   options: {
@@ -106,7 +91,6 @@ export const RootNavigator = StackNavigator(
 import { fixDebounce } from './util'
 fixDebounce(RootNavigator)
 fixDebounce(AssignmentFlowNavigator)
-fixDebounce(MarkdownScreenNavigator)
 // remove once fixed...
 
 const previousGetActionForPathAndParams =
