@@ -7,10 +7,6 @@ iOS >= 8, Android >= 4.4
 * `git clone`
 * `yarn`
 
-## temp Sentry credentials:
-amos@blabsventures.com
-O7Xj7hvV8JswmmX
-
 ### iOS 
 
 * open `ios/2020.xcodeproj` in XCode and press START button, or run `react-native run-ios`, only do this after setting up config.json as DEVELOP
