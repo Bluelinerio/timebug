@@ -1,6 +1,6 @@
 // @flow
-import FBSDK from 'react-native-fbsdk';
-const { LoginManager, AccessToken } = FBSDK;
+import FBSDK from 'react-native-fbsdk'
+const { LoginManager, AccessToken } = FBSDK
 
 export type OpenFBLoginResult =
   | {
@@ -8,7 +8,7 @@ export type OpenFBLoginResult =
     }
   | {
       error: any
-    };
+    }
 export type FacebookDataState = {
   accessToken: string,
   applicationID: string,
@@ -17,10 +17,10 @@ export type FacebookDataState = {
   lastRefreshTime: number,
   permissions: Array<string>,
   userID: string
-};
+}
 
 const getToken = (): Promise<?string> =>
-  AccessToken.getCurrentAccessToken().then(t => (t ? t.accessToken : null));
+  AccessToken.getCurrentAccessToken().then(t => (t ? t.accessToken : null))
 
 const openFBLogin = (): Promise<OpenFBLoginResult> =>
   LoginManager.logInWithReadPermissions([
@@ -31,21 +31,44 @@ const openFBLogin = (): Promise<OpenFBLoginResult> =>
     if (result.isCancelled) {
       return {
         error: 'User cancelled Facebook login'
-      };
+      }
     }
     return AccessToken.getCurrentAccessToken().then(fbData => ({
       ...result,
       fbData
-    }));
-  });
+    }))
+  })
 
-const logOut = (): Promise<void> => LoginManager.logOut();
+const logOut = (): Promise<void> => LoginManager.logOut()
+
+const fetchUserImage = (facebookId: string) => {
+  return new Promise((resolve, reject) => {
+    const path = `/${facebookId}/picture`
+    // Create a graph request asking for user information with a callback to handle the response.
+
+    const infoRequest = new GraphRequest(
+      path,
+      null,
+      (error: ?Object, result: ?Object) => {
+        if (error) {
+          reject(error)
+        } else {
+          resolve(result)
+        }
+      }
+    )
+
+    // Start the graph request.
+    new GraphRequestManager().addRequest(infoRequest).start()
+  })
+}
 
 export default {
   openFBLogin,
   getToken,
-  logOut
-};
+  logOut,
+  fetchUserImage
+}
 
 // export function* openFBLogin(): OpenFBLoginResult {
 // 	type openFBLoginResultType = { +type: string, +token: string }
