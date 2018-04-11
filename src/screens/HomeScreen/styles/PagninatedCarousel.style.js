@@ -1,10 +1,10 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native'
 
 export const colors = {
   inactiveDotColor: '#1a1917rgba(255, 255, 255, 0.5)',
   dotColor: 'rgba(255, 255, 255, 0.92)',
   gray: '#888888'
-};
+}
 
 export default StyleSheet.create({
   paginatedCarouselContainer: {
@@ -27,4 +27,4 @@ export default StyleSheet.create({
     borderRadius: 4,
     marginHorizontal: 0
   }
-});
+})

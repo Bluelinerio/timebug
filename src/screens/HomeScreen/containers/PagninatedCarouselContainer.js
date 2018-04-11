@@ -1,33 +1,31 @@
 // @flow
 import invariant                            from 'invariant'
-import React, { Component }                 from 'react';
-import { View, Text }                       from 'react-native';
-import { connect }                          from 'react-redux';
-import PagninatedCarousel                   from '../components/PagninatedCarousel';
-import type Item                            from '../components/SliderEntry';
-import type Step                            from '../../../services/cms';
-import { getImageUrl, phaseForStepAtIndex } from '../../../services/cms';
-import selectors                            from '../../../redux/selectors';
-import { goToAssignmentFlow }               from '../../../redux/actions/nav.actions';
+import { connect }                          from 'react-redux'
+import PagninatedCarousel                   from '../components/PagninatedCarousel'
+import type Item                            from '../components/SliderEntry'
+import type Step                            from '../../../services/cms'
+import { phaseForStepAtIndex }              from '../../../services/cms'
+import selectors                            from '../../../redux/selectors'
+import { goToAssignmentFlow }               from '../../../redux/actions/nav.actions'
 
 const mapStateToProps = (state: any) => {
-  const phaseColors = selectors.phaseColors(state);
+  const phaseColors = selectors.phaseColors(state)
   const backgroundColorAtIndex = (step: number) =>
-    phaseColors[phaseForStepAtIndex(step)];
-  const isLoggedIn = selectors.isLoggedIn(state);
+    phaseColors[phaseForStepAtIndex(step)]
+  const isLoggedIn = selectors.isLoggedIn(state)
   const completedFormsData = isLoggedIn
     ? selectors.completedFormsData(state)
-    : {};
+    : {}
   const incompleteFormsData = isLoggedIn
     ? selectors.incompleteFormsData(state)
-    : {};
+    : {}
 
   const steps: [Step] = selectors.sortedSteps(state).map(step => {
-    if (!isLoggedIn) return step;
+    if (!isLoggedIn) return step
 
-    const completedForm = completedFormsData[step.stepId];
-    const lastUpdate = (completedForm && completedForm.updatedAt) || 0;
-    const incompleteForm = incompleteFormsData[step.stepId];
+    const completedForm = completedFormsData[step.stepId]
+    const lastUpdate = (completedForm && completedForm.updatedAt) || 0
+    const incompleteForm = incompleteFormsData[step.stepId]
     return {
       ...step,
       iconName: lastUpdate !== 0 ? 'check' : incompleteForm ? 'edit' : null,
@@ -35,8 +33,8 @@ const mapStateToProps = (state: any) => {
         lastUpdate,
         incompleteForm
       }
-    };
-  });
+    }
+  })
 
   const { latestStepId } = Object.keys(incompleteFormsData).reduce((sum, latestStepId) => {
     const timeStamp = incompleteFormsData[latestStepId] && incompleteFormsData[latestStepId].timeStamp
@@ -48,23 +46,24 @@ const mapStateToProps = (state: any) => {
         }
       }
     }
-    return sum;
+    return sum
   }, {})
 
   const activeSliderIndex = latestStepId ? steps.map(s => s.stepId).indexOf(latestStepId) : 0
+  
   invariant(activeSliderIndex >= 0, `failed finding latestStepId: ${latestStepId} in steps: ${steps.map(s => s.stepId)}`)
 
-  const items: [Item] = steps.map((step, index) => ({
+  const items: [Item] = steps.map((step) => ({
     ...step,
     subtitle: `Step ${step.number}, Phase: ${step.type}`
-  }));
+  }))
   return {
     backgroundColorAtIndex,
     items,
     activeSliderIndex
-  };
-};
+  }
+}
 
-const onPress = (step, index) => goToAssignmentFlow({ step, index });
+const onPress = (step, index) => goToAssignmentFlow({ step, index })
 
-export default connect(mapStateToProps, { onPress })(PagninatedCarousel);
+export default connect(mapStateToProps, { onPress })(PagninatedCarousel)

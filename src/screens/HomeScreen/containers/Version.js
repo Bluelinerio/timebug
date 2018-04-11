@@ -1,8 +1,8 @@
-import React, { PureComponent } from 'react';
-import { View, Text, ScrollView, TouchableHighlight } from 'react-native';
-import DeviceInfo from 'react-native-device-info';
+import React                                          from 'react'
+import { Text }                                       from 'react-native'
+import DeviceInfo                                     from 'react-native-device-info'
 
-export default () => (
+const VersionComponent = () => (
   <Text
     style={{
       textAlign: 'center',
@@ -13,4 +13,6 @@ export default () => (
   >
     {`20/20 Lifevision © blabsventures 2018\nVersion:${DeviceInfo.getVersion()} build:${DeviceInfo.getBuildNumber()} `}
   </Text>
-);
+)
+
+export default VersionComponent
