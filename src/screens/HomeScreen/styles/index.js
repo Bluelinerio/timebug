@@ -1,14 +1,14 @@
-import { Platform, StyleSheet, StatusBar } from 'react-native';
-import { colors as topColors } from '../../../constants/colors';
+import { Platform, StyleSheet, StatusBar } from 'react-native'
+import { colors as topColors } from '../../../constants/colors'
 import {
   iOSColors,
   human,
   iOSUIKit,
   systemWeights
-} from 'react-native-typography';
+} from 'react-native-typography'
 
 if (!iOSColors || !human || !iOSUIKit || !systemWeights) {
-  throw 'missing react-native-typography';
+  throw 'missing react-native-typography'
 }
 
 export const colors = {
@@ -24,7 +24,7 @@ export const colors = {
   startGradientColor: 'white',
   endGradientColor: '#f8f8f8',
   ...topColors
-};
+}
 
 export default StyleSheet.create({
   container: {
@@ -57,7 +57,6 @@ export default StyleSheet.create({
     marginTop: 5,
     paddingHorizontal: 30,
     backgroundColor: 'transparent',
-    backgroundColor: 'transparent',
     color: colors.subtitleColor,
     fontSize: 13,
     fontStyle: 'italic',
@@ -81,11 +80,6 @@ export default StyleSheet.create({
     ...iOSUIKit.footnoteEmphasizedObject,
     color: iOSColors.gray
   },
-  headerAvatar: {
-    height: 44,
-    width: 44,
-    borderRadius: 44 / 2,
-  },
   bannerHeaderTitle: iOSUIKit.largeTitleEmphasizedObject,
   banner: {
     flexDirection: 'row',
@@ -108,4 +102,4 @@ export default StyleSheet.create({
     textAlign: 'left',
     backgroundColor: 'transparent'
   }
-});
+})
