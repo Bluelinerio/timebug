@@ -1,92 +1,160 @@
-import * as React from 'react';
-import Sound from 'react-native-sound';
-import { View } from 'react-native';
+import * as React from 'react'
+import Sound from 'react-native-sound'
 
-const PENDING = 'pending';
-const READY = 'ready';
-const FAIL = 'fail';
-const PLAYING = 'playing';
-const FINISHED = 'finished';
+// freesuonds:
+//https://freesound.org/people/reinsamba/sounds/46062/
+
+export const PENDING = 'pending'
+export const READY = 'ready'
+export const FAIL = 'fail'
+export const PLAYING = 'playing'
+export const PAUSED = 'paused'
+export const FINISHED = 'finished'
+
+type SoundPlaybackStatus = PENDING | READY | FAIL | PLAYING | FINISHED
 
 type Props = {
-  renderOnReady: (() => void) => React.Element<any>, // not useing this
-  renderOnNotReady: () => React.Element<any>, // not using this.
-  onReady: () => void,
-  onPlaying: () => void
-};
-type State = {
+  shouldRender: SoundPlaybackStatus => boolean,
   url: any,
-  status: FINISHED | FAIL | PLAYING | FINISHED
-};
+  children: boolean => React.Node | [React.Node]
+}
+
+type State = {
+  status: SoundPlaybackStatus,
+  loadedUrl?: any,
+  error?: any,
+  sound?: any
+}
+
 export default class SoundPlayback extends React.PureComponent<Props, State> {
-  componentWillMount() {
-    this.loadSound();
+  state = {
+    status: PENDING
+  }
+
+  componentDidMount() {
+    this.loadSound()
+  }
+  componentWillUnmount() {
+    switch (this.state.status) {
+      case READY:
+      case FINISHED:
+      case PLAYING: {
+        const { sound } = this.state
+        sound.stop(() => {
+          sound.release()
+        })
+        break
+      }
+      case PENDING: {
+        // incase we are in the middle of loading the resource, we need to release it,
+        const { sound } = this.state
+        sound.release()
+        break
+      }
+      default: {
+        break
+      }
+    }
   }
 
   loadSound = () => {
-    const { url } = this.props;
-    const sound = new Sound(url, error => this.callback(error, sound));
+    const { url } = this.props
+    const { loadedUrl, sound: oldSound } = this.state
+
+    if (url == loadedUrl) return
+
+    if (oldSound) {
+      oldSound.release()
+    }
+
+    const sound = new Sound(url, error => this.callback(url, error))
     this.setState({
-      url,
+      loadedUrl: null,
       sound,
       status: PENDING
-    });
-  };
+    })
+  }
 
-  callback = (error, sound) => {
+  callback = (url, error) => {
     if (error) {
-      // Alert.alert('error', error.message);
+      const { sound } = this.state
+      sound.release()
       this.setState({
         status: FAIL,
-        error
-      });
-      return;
-    }
-    this.setState({
-      status: READY
-    });
-    this.props.onReady && this.props.onReady();
-    // Run optional pre-play callback
-    // testInfo.onPrepared && testInfo.onPrepared(sound, component);
-  };
-
-  play = () => {
-    const { status, sound } = this.state;
-    if (sound && status === READY) {
+        error,
+        sound: null
+      })
+    } else {
       this.setState({
-        status: PLAYING
-      });
-      this.props.onPlaying && this.props.onPlaying();
-      sound.play(() => {
-        // Success counts as getting to the end
-        this.setState({
-          status: FINISHED
-        });
-        // release it:
-        sound.release();
-        this.loadSound();
-      });
-    }
-  };
-
-  render() {
-    const { status } = this.state;
-    switch (this.state) {
-      case FINISHED:
-      case READY:
-        return (
-          (this.props.renderOnReady && this.props.renderOnReady(this.play)) || (
-            <View />
-          )
-        );
-      case FAIL:
-      case PLAYING:
-      default:
-        return (
-          (this.props.renderOnNotReady && this.props.renderOnNotReady()) || (
-            <View />
-          )
-        );
+        status: READY,
+        loadedUrl: url
+      })
     }
   }
+
+  stop = () => {
+    const { sound } = this.state
+    if (sound && this.state.status === PLAYING) {
+      this.setState(
+        {
+          status: FINISHED
+        },
+        () => sound.stop()
+      )
+      return
+    }
+  }
+  pause = () => {
+    const { sound } = this.state
+    if (sound && this.state.status === PLAYING) {
+      this.setState(
+        {
+          status: PAUSED
+        },
+        () => sound.pause()
+      )
+    }
+  }
+
+  play = () => {
+    const { status, sound } = this.state
+    if ((sound && status === READY) || status === FINISHED) {
+      this.setState(
+        {
+          status: PLAYING
+        },
+        () =>
+          sound.play(() => {
+            // Success counts as getting to the end
+            this.setState({
+              status: FINISHED
+            })
+            // release it:
+            sound.release()
+            this.loadSound()
+          })
+      )
+    } else if (sound && status === PAUSED) {
+      this.setState(
+        {
+          status: PLAYING
+        },
+        () =>
+          sound.play(() => {
+            // Success counts as getting to the end
+            this.setState({
+              status: FINISHED
+            })
+            // release it:
+            sound.release()
+            this.loadSound()
+          })
+      )
+    }
+  }
+
+  render = () =>
+    this.props.shouldRender(this.state.status)
+      ? this.props.children(this.state.status === PLAYING)
+      : null
 }

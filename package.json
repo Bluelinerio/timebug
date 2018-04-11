@@ -41,6 +41,7 @@
     "ramda": "^0.25.0",
     "react": "16.2.0",
     "react-apollo": "^2.0.4",
+    "react-composer": "^5.0.0",
     "react-native": "0.53.0",
     "react-native-code-push": "^5.2.1",
     "react-native-device-info": "^0.13.0",

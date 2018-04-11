@@ -4692,6 +4692,12 @@ react-clone-referenced-element@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/react-clone-referenced-element/-/react-clone-referenced-element-1.0.1.tgz#2bba8c69404c5e4a944398600bcc4c941f860682"
 
+react-composer@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/react-composer/-/react-composer-5.0.0.tgz#da04db9d8eaed05c2b0e4245a8c7127f420e0b25"
+  dependencies:
+    prop-types "^15.6.0"
+
 react-deep-force-update@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/react-deep-force-update/-/react-deep-force-update-1.0.1.tgz#f911b5be1d2a6fe387507dd6e9a767aa2924b4c7"

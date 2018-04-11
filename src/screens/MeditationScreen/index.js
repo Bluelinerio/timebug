@@ -1,5 +1,6 @@
 // @flow
 import * as React from 'react'
+import { connect } from 'react-redux'
 import MeditationScreenComponent from './components/MeditationScreenComponent'
 import { StackNavigator, NavigationActions } from 'react-navigation'
 import styles from '../styles'
@@ -18,10 +19,19 @@ MeditationScreenComponent.navigationOptions = ({
   )
 })
 
+const done = () => NavigationActions.back()
+
+const MeditationScreenContainer = connect(
+  state => ({
+    soundFile: require('../../resources/sounds/gong.wav')
+  }),
+  ({ done })
+)(MeditationScreenComponent)
+
 const MeditationScreen = StackNavigator(
   {
     Markdown: {
-      screen: MeditationScreenComponent
+      screen: MeditationScreenContainer
     }
   },
   {
@@ -32,6 +42,14 @@ const MeditationScreen = StackNavigator(
     }
   }
 )
+
+type Meditation = {
+  id: string,
+  name: string,
+  step: string,
+  timeInSeconds: number,
+  audioFile: string // if
+}
 
 // TODO: determin if it is required to fixDebounce:
 //fixDebounce(MeditationScreen)
