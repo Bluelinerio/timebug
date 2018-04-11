@@ -1,36 +1,46 @@
-import * as React from 'react';
+import * as React from 'react'
 import Svg, {
-  Circle,
-  Ellipse,
   G,
-  LinearGradient,
-  RadialGradient,
-  Line,
-  Path,
-  Polygon,
-  Polyline,
-  Rect,
-  Symbol,
-  Text,
-  Use,
-  Defs,
-  Stop
-} from 'react-native-svg';
+  Path
+  // Circle,
+  // Ellipse,
+  // LinearGradient,
+  // RadialGradient,
+  // Line,
+  // Polygon,
+  // Polyline,
+  // Rect,
+  // Symbol,
+  // Text,
+  // Use,
+  // Defs,
+  // Stop
+} from 'react-native-svg'
 
 const defaultStyle = {
   alignSelf: 'center'
-};
+}
 
-export default ({
+type Props = {
+  width: number,
+  height: number,
+  style: any,
+  shapeColor: string,
+  deepBlue: string,
+  hotPink: string
+  //backgroundColor: string,
+}
+
+const Meditator = ({
   width = 75,
   height = 75,
   style = defaultStyle,
-  backgroundColor = 'transparent',
   shapeColor = '#FFFFFF',
   deepBlue = '#000A8B',
   hotPink = '#EC008C'
-}) => (
-  <Svg width={width} height={width} style={style} viewBox="0 0 160 180">
+  //backgroundColor = 'transparent',
+}: Props) => (
+  <Svg width={width} height={height} style={style} viewBox="0 0 160 180">
     <G>
       <Path
         fill={shapeColor}
@@ -167,4 +177,6 @@ export default ({
       />
     </G>
   </Svg>
-);
+)
+
+export default Meditator

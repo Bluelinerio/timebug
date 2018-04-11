@@ -1,17 +1,18 @@
 // @flow
-import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import React from 'react'
+import { Text, View, StyleSheet } from 'react-native'
 
 type Props = {
-  message: string
-};
+  message: string,
+  title: string
+}
 
-export default ({ message='unknown', title = 'Error' }: Props) => (
+const ErrorComponent = ({ message = 'unknown', title = 'Error' }: Props) => (
   <View style={styles.container} testID="error_view">
-    <Text style={{ padding: 20, textAlign: 'center', fontWeight: 'bold' }}>
+    <Text style={styles.title}>
       {title}
     </Text>
-    <Text style={{ padding: 20, textAlign: 'center', fontWeight: '100' }}>
+    <Text style={styles.message}>
       {message}
     </Text>
   </View>
@@ -23,5 +24,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center'
-  }
-});
+  },
+  title: { padding: 20, textAlign: 'center', fontWeight: 'bold' },
+  message: { padding: 20, textAlign: 'center', fontWeight: '100' }
+})
+
+export default ErrorComponent

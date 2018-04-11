@@ -1,31 +1,38 @@
-import * as React from 'react';
-import { Dimensions } from 'react-native';
+import * as React from 'react'
 import Svg, {
-  Circle,
-  Ellipse,
-  G,
-  LinearGradient,
-  RadialGradient,
-  Line,
-  Path,
-  Polygon,
-  Polyline,
   Rect,
-  Symbol,
-  Text,
-  Use,
-  Defs,
-  Stop
-} from 'react-native-svg';
+  G,
+  Path,
+  // Circle,
+  // Ellipse,
+  // LinearGradient,
+  // RadialGradient,
+  // Line,
+  // Polygon,
+  // Polyline,
+  // Symbol,
+  // Text,
+  // Use,
+  // Defs,
+  // Stop
+} from 'react-native-svg'
 
-export default ({
+type Props = {
+  width: number,
+  height: number,
+  //style: any,
+  backgroundColor: string,
+  shapeColor: string,
+  circleColor: string,
+}
+const Logo = ({
   width,
   height,
-  style = {},
+  //style = {},
   backgroundColor = 'transparent',
   shapeColor = '#FFFFFF',
   circleColor = '#E4E4E459'
-}) => (
+} : Props)   => (
   <Svg width={width || 1024} height={height || 1024} viewBox="0 0 1024 1024">
     <G id="2020-app-store-icon-(1024)">
       <Rect
@@ -60,4 +67,6 @@ export default ({
       </G>
     </G>
   </Svg>
-);
+)
+
+export default Logo

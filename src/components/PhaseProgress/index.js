@@ -1,8 +1,8 @@
 // @flow
-import * as React from 'react';
-import { ScrollView, Dimensions } from 'react-native';
+import * as React       from 'react'
+import Grid             from '../Grid'
+import { defaultProps } from './defaults'
 
-import Grid from '../Grid';
-import { defaultProps } from './defaults';
+const PhaseProgress = (props: {}) => <Grid {...defaultProps} {...props} />
 
-export default (props: {}) => <Grid {...defaultProps} {...props} />;
+export default PhaseProgress

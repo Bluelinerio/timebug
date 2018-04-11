@@ -1,24 +1,24 @@
 // @flow
 
-import React, { Component } from 'react';
-import { Animated, ScrollView, View } from 'react-native';
+import React, { Component } from 'react'
+import { Animated, ScrollView, View } from 'react-native'
 
 type Props = {
-  content: ReactElement,
-  headerImage: ReactElement,
-  headerComponent: ReactElement,
-  header: ReactElement,
+  content: React.Node,
+  headerImage: React.Node,
+  headerComponent: React.Node,
+  header: React.Node,
   headerStyles: any,
   headerMaxHeight: number,
   headerMinHeight: number
-};
+}
 
 type State = {
   scrollY: number
-};
+}
 
 export default class ScrollableHeader extends Component<Props, State> {
-  state = { scrollY: new Animated.Value(0) };
+  state = { scrollY: new Animated.Value(0) }
 
   render() {
     const {
@@ -27,38 +27,38 @@ export default class ScrollableHeader extends Component<Props, State> {
       headerImage,
       headerComponent,
       header
-    } = this.props;
-    let { headerMinHeight, headerMaxHeight } = this.props;
+    } = this.props
+    let { headerMinHeight, headerMaxHeight } = this.props
     if (!headerMaxHeight) {
-      headerMaxHeight = 260;
+      headerMaxHeight = 260
     }
-    const headerScrollDistance = headerMaxHeight - headerMinHeight;
+    const headerScrollDistance = headerMaxHeight - headerMinHeight
 
     const headerHeight = this.state.scrollY.interpolate({
       inputRange: [0, headerScrollDistance],
       outputRange: [headerMaxHeight, headerMinHeight],
       extrapolate: 'clamp'
-    });
-    const imageOpacity = this.state.scrollY.interpolate({
-      inputRange: [0, headerScrollDistance / 2, headerScrollDistance],
-      outputRange: [1, 1, 1],
-      extrapolate: 'clamp'
-    });
+    })
+    // const contentOpacity = this.state.scrollY.interpolate({
+    //   inputRange: [0, 1, headerScrollDistance],
+    //   outputRange: [1, 1, 0],
+    //   extrapolate: 'clamp'
+    // })
+    // const imageOpacity = this.state.scrollY.interpolate({
+    //   inputRange: [0, headerScrollDistance / 2, headerScrollDistance],
+    //   outputRange: [1, 1, 1],
+    //   extrapolate: 'clamp'
+    // })
     const imageTranslate = this.state.scrollY.interpolate({
       inputRange: [0, headerScrollDistance],
       outputRange: [0, -100],
       extrapolate: 'clamp'
-    });
+    })
     const headerOpacity = this.state.scrollY.interpolate({
       inputRange: [0, 0, headerScrollDistance],
       outputRange: [0, 0, 1],
       extrapolate: 'clamp'
-    });
-    const contentOpacity = this.state.scrollY.interpolate({
-      inputRange: [0, 1, headerScrollDistance],
-      outputRange: [1, 1, 0],
-      extrapolate: 'clamp'
-    });
+    })
 
     return (
       <View style={{ flex: 1 }}>
@@ -138,6 +138,6 @@ export default class ScrollableHeader extends Component<Props, State> {
           </Animated.View>
         </Animated.View>
       </View>
-    );
+    )
   }
 }

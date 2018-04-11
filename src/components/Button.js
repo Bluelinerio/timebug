@@ -1,10 +1,10 @@
 // @flow
-import React from 'react';
-import { Dimensions, Text, View, TouchableHighlight } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import defaultStyle from '../styles/components/Button';
+import React from 'react'
+import { Text, View, TouchableHighlight } from 'react-native'
+import Icon from 'react-native-vector-icons/Ionicons'
+import defaultStyle from '../styles/components/Button'
 
-export type Side = 'left' | 'right' | null;
+export type Side = 'left' | 'right' | null
 export type Props = {
   text: string,
   onPress?: () => void,
@@ -18,14 +18,14 @@ export type Props = {
   textColor?: string,
   textTestId: string,
   buttonTestId: string
-};
+}
 
 const ArrowBack = props => (
   <Icon name="ios-arrow-back-outline" size={30} color="white" {...props} />
-);
+)
 const ArrowForward = props => (
   <Icon name="ios-arrow-forward-outline" size={30} color="white" {...props} />
-);
+)
 
 export default (props: Props) => {
   const {
@@ -39,19 +39,19 @@ export default (props: Props) => {
     textColor,
     buttonTestId,
     textTestId
-  } = props;
+  } = props
 
   const onPress = onPressWithProps
     ? () => onPressWithProps(props)
-    : props.onPress;
+    : props.onPress
 
   const styles = {
     ...defaultStyle,
     ...props.styles
-  };
-  const opacity = disabledStyle ? 1 : disabled ? 0.1 : 1; // set alpha to 0.1 when disabled and disabledStyle not provided
+  }
+  const opacity = disabledStyle ? 1 : disabled ? 0.1 : 1 // set alpha to 0.1 when disabled and disabledStyle not provided
 
-  const containerStyle = [styles.buttonContainer, side && styles[side]];
+  const containerStyle = [styles.buttonContainer, side && styles[side]]
 
   const touchableStyle = [
     styles.wideButton,
@@ -60,7 +60,7 @@ export default (props: Props) => {
       opacity,
       backgroundColor
     }
-  ];
+  ]
   const touchableHighlightProps = {
     style: touchableStyle,
     activeOpacity: opacity,
@@ -68,11 +68,11 @@ export default (props: Props) => {
     disabled: disabled,
     underlayColor: '#c0c0c0',
     testID: buttonTestId
-  };
+  }
 
   const buttonGroupProps = {
     style: [side && styles.buttonGroup]
-  };
+  }
 
   return (
     <View style={containerStyle}>
@@ -98,5 +98,5 @@ export default (props: Props) => {
         </View>
       </TouchableHighlight>
     </View>
-  );
-};
+  )
+}

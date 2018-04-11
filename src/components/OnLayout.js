@@ -27,7 +27,7 @@ export default class OnLayout extends React.Component<
     });
   };
   render() {
-    const { render, style, ...props } = this.props;
+    const { render, ...props } = this.props;
     const { layout } = this.state;
     return (
       <View

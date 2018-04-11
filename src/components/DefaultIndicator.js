@@ -1,14 +1,15 @@
 // @flow
-import React from 'react';
-import { View, ActivityIndicator, StyleSheet, Image } from 'react-native';
-import styles from '../styles/components/DefaultIndicator';
-import { lifevisionCollage } from '../resources/images';
+import React from 'react'
+import { View, ActivityIndicator, StyleSheet, Image } from 'react-native'
+import styles from '../styles/components/DefaultIndicator'
+import { lifevisionCollage } from '../resources/images'
 
 type Props = {
-  size: 'small' | 'large'
-};
+  size: 'small' | 'large',
+  color? : string
+}
 
-export default ({ size, color }: Props) => (
+const DefaultIndicator = ({ size, color }: Props) => (
   <View style={styles.container}>
     <Image
       tintColor="ccc"
@@ -25,4 +26,6 @@ export default ({ size, color }: Props) => (
       color={color || StyleSheet.flatten(styles.activityIndicator).color}
     />
   </View>
-);
+)
+
+export default DefaultIndicator

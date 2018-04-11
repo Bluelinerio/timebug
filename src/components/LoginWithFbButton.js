@@ -1,17 +1,19 @@
-import * as React from 'react';
-import { connect } from 'react-redux';
-import { View, Text, Dimensions, StyleSheet } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import Entypo from 'react-native-vector-icons/Entypo';
+// @flow
+import * as React                              from 'react'
+import { View, Text, Dimensions, StyleSheet }  from 'react-native'
+import Icon                                    from 'react-native-vector-icons/FontAwesome'
+import Entypo                                  from 'react-native-vector-icons/Entypo'
+import { heavyGray, lightGray, facebookColor } from '../constants/colors'
 
-import Button from '../components/Button';
-import type { Props } from '../components/Button';
-import { heavyGray, lightGray, facebookColor } from '../constants/colors';
+type Props = {
+  onPress: () => void,
+  advisoryText: string
+}
 
-export default ({
+const LoginWithFbButton = ({
   onPress,
   advisoryText = `We don't post anything to Facebook`
-}) => (
+}: Props) => (
   <View style={styles.container}>
     <Icon.Button
       name="facebook"
@@ -30,7 +32,7 @@ export default ({
       <Text style={styles.advisoryText}>{advisoryText}</Text>
     </View>
   </View>
-);
+)
 
 const styles = StyleSheet.create({
   container: {
@@ -55,4 +57,6 @@ const styles = StyleSheet.create({
     color: lightGray,
     fontSize: 11
   }
-});
+})
+
+export default LoginWithFbButton

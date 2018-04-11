@@ -4,8 +4,7 @@ import {
   View,
   Platform,
   WebView,
-  ActivityIndicator,
-  StyleSheet
+  ActivityIndicator
 } from 'react-native';
 
 type Icon = {

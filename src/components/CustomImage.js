@@ -1,15 +1,15 @@
 // @flow
-import React from 'react';
-import { Image } from 'react-native';
-import SVGImage from './SVGImage';
+import React from 'react'
+import { Image } from 'react-native'
+import SVGImage from './SVGImage'
 
 type Props = {
   style: any,
   source: { uri: string }
-};
+}
 
-export default (props: Props) => {
-  const { source, style, ...rest } = props;
+const CustomImage = (props: Props) => {
+  const { source, style, ...rest } = props
   return source && source.uri.endsWith('svg') ? (
     <SVGImage
       style={[style, { backgroundColor: 'transparent' }]}
@@ -19,5 +19,7 @@ export default (props: Props) => {
     />
   ) : (
     <Image source={source} style={style} {...rest} />
-  );
-};
+  )
+}
+
+export default CustomImage
