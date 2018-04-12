@@ -1,7 +1,4 @@
-import { Platform, StyleSheet, Dimensions } from 'react-native';
-import { deepBlue } from '../../constants/colors';
-import { STATUSBAR_HEIGHT, APPBAR_HEIGHT } from '../../constants';
-import normalize from '../../utils/normalizeText';
+import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   // look at the 'styles' in react-navigation/src/views/Header/Header.js

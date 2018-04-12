@@ -104,7 +104,7 @@ const MarkdownScreenComponent = ({
     return (
       <ScrollableHeader
         headerMaxHeight={image ? HEADER_HEIGHT : 0}
-        headerMinHeight={image ? APPBAR_HEIGHT + STATUSBAR_HEIGHT : 0}
+        headerMinHeight={image ? APPBAR_HEIGHT() + STATUSBAR_HEIGHT : 0}
         headerImage={image}
         headerComponent={<Header color={color} />}
         header={

@@ -16,7 +16,7 @@ export default StyleSheet.create({
   },
   stepScreenHeader: {
     flex: 1,
-    paddingTop: STATUSBAR_HEIGHT + APPBAR_HEIGHT,
+    paddingTop: STATUSBAR_HEIGHT + APPBAR_HEIGHT(),
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center'

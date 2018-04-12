@@ -93,6 +93,7 @@ const StepScreen = ({
   <ScrollableHeader
     headerMaxHeight={HEADER_HEIGHT}
     headerMinHeight={APPBAR_HEIGHT + STATUSBAR_HEIGHT}
+    headerMinHeight={APPBAR_HEIGHT() + STATUSBAR_HEIGHT}
     headerImage={image}
     headerComponent={
       <Header
