@@ -6,6 +6,7 @@ import { goToMeditation } from './../../../redux/actions/nav.actions'
 import MeditationDashobardCell from './../components/DashboardCells/MeditationDashbardCell'
 import LifevisionDashboardCell from './../components/DashboardCells/LifevisionDashboardCell'
 
+// Dashboard should determind  visibilty based on a feed switch or A/B signal
 const LifevisionDashoboardCellContainer = () => (
   <User
     renderWithState={() => <LifevisionDashboardCell />}
@@ -17,7 +18,7 @@ const MeditationDashobardCellContainer = connect(null, {
   onPress: goToMeditation
 })(MeditationDashobardCell)
 
-const DashboardCellsContainer = ({ show = true }: { show: boolean }) => {
+const DashboardCellsContainer = ({ show = false }: { show: boolean }) => {
   return show ? (
     <React.Fragment>
       <LifevisionDashoboardCellContainer />

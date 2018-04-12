@@ -26,7 +26,7 @@ export default class HomeScreenComponent extends PureComponent {
             itemWidth={itemWidth}
             sliderWidth={sliderWidth}
           />
-          <DashboardCellsContainer show={true} />
+          <DashboardCellsContainer />
           <MoreButtonContainer />
           <Space />
           <Version />
