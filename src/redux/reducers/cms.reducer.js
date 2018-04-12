@@ -1,5 +1,5 @@
 // @flow
-import { FETCH_CMS } from '../actions/cms.actions'
+import { FETCH_CMS, SEED_CMS } from '../actions/cms.actions'
 import type { Step, Colors, OnobardingPage, Page } from '../../services/cms'
 
 export type CMSState = {
@@ -22,11 +22,16 @@ const initialState: CMSState = {
   requestCount: 0,
   lastFetchDate: null,
   totalNumberOfSteps: 30,
-  error: null,
+  error: null
 }
 
 function cmsReducer(state: CMSState = initialState, action: StepsAction) {
   switch (action.type) {
+    case SEED_CMS:
+      return {
+        ...state,
+        ...action.payload,
+      }
     case FETCH_CMS.STARTED:
       return { ...state, requestCount: state.requestCount + 1 }
     case FETCH_CMS.SUCCEEDED:
@@ -74,6 +79,7 @@ const persistConfig = {
 
 export default persistReducer(persistConfig, cmsReducer)
 
+// export default cmsReducer
 // type PersistConfig = {
 //   key: string, // the key for the persist
 //   storage: Object, // the storage adapter, following the AsyncStorage api
