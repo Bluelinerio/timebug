@@ -1,10 +1,10 @@
 // @flow
-import * as React from 'react'
-import { connect } from 'react-redux'
-import MeditationScreenComponent from './components/MeditationScreenComponent'
+import * as React                            from 'react'
+import { connect }                           from 'react-redux'
+import MeditationScreenComponent             from './components/MeditationScreenComponent'
 import { StackNavigator, NavigationActions } from 'react-navigation'
-import styles from '../styles'
-import HeaderCloseButton from '../../components/HeaderCloseButton'
+import styles                                from '../styles'
+import HeaderCloseButton                     from '../../components/HeaderCloseButton'
 
 MeditationScreenComponent.navigationOptions = ({
   navigation: { dispatch }
@@ -47,6 +47,7 @@ type Meditation = {
   id: string,
   name: string,
   step: string,
+  backgroundColor: string,
   timeInSeconds: number,
   audioFile: string // if
 }
