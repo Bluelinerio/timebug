@@ -2,6 +2,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { getCms } from '../redux/rootReducer'
+
 type Props = {
   render?: ({ 
     appInstructions: string 
@@ -18,15 +19,16 @@ const mapStateToProps = state => ({
   appInstructions: appInstructions(state)
 })
 
-export default connect(mapStateToProps)(
+const AppInstructionsContainer = connect(mapStateToProps)(
   ({
     render,
     renderWithNotAvialble,
     appInstructions,
     ...rest
   }) => (appInstructions && render)
-    ? render({appInstructions, ...rest}) 
+    ? render({ appInstructions, ...rest}) 
     : renderWithNotAvialble
       ? renderWithNotAvialble(rest)
       : null
 )
+export default AppInstructionsContainer

@@ -25,6 +25,7 @@ const PageContent = ({
 )
 
 type Props = {
+  headerTitle?: string,
   title?: string,
   subtitle?: string,
   content?: string,
@@ -34,6 +35,7 @@ type Props = {
 }
 
 const MarkdownScreenComponent = ({
+  headerTitle,
   title,
   subtitle,
   content,
@@ -58,7 +60,10 @@ const MarkdownScreenComponent = ({
           />
         }
         header={
-          <ScrollingHeaderPagerHeaderComponent color={color} title={title} />
+          <ScrollingHeaderPagerHeaderComponent
+            color={color}
+            title={headerTitle}
+          />
         }
         content={
           <ScrollingHeaderPageContentComponent
