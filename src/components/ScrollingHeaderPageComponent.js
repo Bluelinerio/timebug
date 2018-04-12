@@ -28,7 +28,7 @@ type State = {
   layoutReady: boolean
 }
 
-export default class ScrollableHeader extends Component<Props, State> {
+export default class ScrollingHeaderPageComponent extends Component<Props, State> {
   state = {
     scrollY: new Animated.Value(0),
     bufferViewHeight: 0,
@@ -40,8 +40,8 @@ export default class ScrollableHeader extends Component<Props, State> {
   }
   constructor(props) {
     super(props)
-    invariant(props.content, 'ScrollableHeader missing content props')
-    invariant(props.header, 'ScrollableHeader missing header props')
+    invariant(props.content, 'ScrollingHeaderPageComponent missing content props')
+    invariant(props.header, 'ScrollingHeaderPageComponent missing header props')
   }
   // this is an implmentation of ajustment of a growing/shrinking view makin sure the the minimal height of the scroll view content is at least the height of the scroll view itself. (its container)
   layout = () => {
