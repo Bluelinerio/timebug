@@ -9,7 +9,7 @@ type Props = {
   subtitle?: string,
   content: string,
   markdownStyles: any,
-  backgroundColor: string,
+  androidStatusBarColor: string,
   titleColor: string,
   children: React.Node | [React.Node]
 }
@@ -19,12 +19,15 @@ const ScrollingHeaderPageContentComponent = ({
   subtitle,
   content,
   markdownStyles,
-  backgroundColor,
+  androidStatusBarColor,
   titleColor = deepBlue,
   children
 }: Props): React.Node => (
   <View style={styles.content}>
-    <StatusBar barStyle="light-content" backgroundColor={backgroundColor} />
+    <StatusBar
+      barStyle="light-content"
+      backgroundColor={androidStatusBarColor}
+    />
     {subtitle && <Text style={[styles.subtitle]}>{subtitle}</Text>}
     {title && (
       <Text style={[styles.title, { color: titleColor }]}>{title}</Text>

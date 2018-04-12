@@ -35,26 +35,26 @@ export default class SoundPlayback extends React.PureComponent<Props, State> {
     this.loadSound()
   }
   componentWillUnmount() {
-    switch (this.state.status) {
-      case READY:
-      case FINISHED:
-      case PLAYING: {
-        const { sound } = this.state
-        sound.stop(() => {
-          sound.release()
-        })
-        break
-      }
-      case PENDING: {
-        // incase we are in the middle of loading the resource, we need to release it,
-        const { sound } = this.state
-        sound.release()
-        break
-      }
-      default: {
-        break
-      }
-    }
+    // switch (this.state.status) {
+    //   case READY:
+    //   case FINISHED:
+    //   case PLAYING: {
+    //     const { sound } = this.state
+    //     sound.stop(() => {
+    //       sound.release()
+    //     })
+    //     break
+    //   }
+    //   case PENDING: {
+    //     // incase we are in the middle of loading the resource, we need to release it,
+    //     const { sound } = this.state
+    //     sound.release()
+    //     break
+    //   }
+    //   default: {
+    //     break
+    //   }
+    // }
   }
 
   loadSound = () => {

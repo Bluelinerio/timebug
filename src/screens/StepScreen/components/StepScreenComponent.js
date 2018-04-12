@@ -39,7 +39,7 @@ const StepScreenComponent = ({
         title={title}
         subtitle={subtitle}
         content={content}
-        color={color}
+        androidStatusBarColor={color}
         markdownStyles={markdownStyles}
       >
         {<StepScreenButtonContainer />}
