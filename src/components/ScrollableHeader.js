@@ -1,44 +1,107 @@
 // @flow
 
 import React, { Component } from 'react'
-import { Animated, ScrollView, View } from 'react-native'
+import { Animated, ScrollView, View, StyleSheet } from 'react-native'
+import invariant from 'invariant'
 
 type Props = {
   content: React.Node,
-  headerImage: React.Node,
-  headerComponent: React.Node,
   header: React.Node,
-  headerStyles: any,
-  headerMaxHeight: number,
-  headerMinHeight: number
+  headerImage?: React.Node,
+  headerComponent?: React.Node,
+  headerMaxHeight?: number,
+  headerMinHeight?: number
+}
+
+type Layout = {
+  height: number,
+  width: number,
+  x: number,
+  y: number
 }
 
 type State = {
-  scrollY: number
+  scrollY: number,
+  contentLayout: ?Layout,
+  containerLayout: ?Layout,
+  bufferViewHeight: number,
+  layoutReady: boolean
 }
 
 export default class ScrollableHeader extends Component<Props, State> {
-  state = { scrollY: new Animated.Value(0) }
+  state = {
+    scrollY: new Animated.Value(0),
+    bufferViewHeight: 0,
+    layoutReady: false
+  }
+  static defaultProps = {
+    headerMaxHeight: 260,
+    headerMinHeight: 0
+  }
+  constructor(props) {
+    super(props)
+    invariant(props.content, 'ScrollableHeader missing content props')
+    invariant(props.header, 'ScrollableHeader missing header props')
+  }
+  // this is an implmentation of ajustment of a growing/shrinking view makin sure the the minimal height of the scroll view content is at least the height of the scroll view itself. (its container)
+  layout = () => {
+    const { containerLayout, contentLayout, bufferViewHeight } = this.state
+    if (containerLayout && contentLayout) {
+      const newBufferViewHeight =
+        containerLayout.height -
+        (contentLayout.height - this.props.headerMinHeight)
+      if (!bufferViewHeight) {
+        this.setState({
+          layoutReady: true,
+          bufferViewHeight: newBufferViewHeight
+        })
+      } else if (newBufferViewHeight !== 0) {
+        this.setState({
+          layoutReady: true,
+          bufferViewHeight: Math.max(0, bufferViewHeight + newBufferViewHeight)
+        })
+      } else {
+        this.setState({
+          layoutReady: true
+        })
+      }
+    } else {
+      this.setState({
+        layoutReady: false
+      })
+    }
+  }
+
+  onLayout = ({ nativeEvent: { layout } }) => {
+    this.setState(
+      {
+        containerLayout: layout
+      },
+      this.layout
+    )
+  }
+  oncontentLayout = ({ nativeEvent: { layout } }) => {
+    this.setState(
+      {
+        contentLayout: layout
+      },
+      this.layout
+    )
+  }
 
   render() {
+    const { layoutReady, bufferViewHeight } = this.state
     const {
       content,
-      headerStyles,
       headerImage,
       headerComponent,
-      header
+      header,
+      headerMinHeight,
+      headerMaxHeight
     } = this.props
-    let { headerMinHeight, headerMaxHeight } = this.props
-    if (!headerMaxHeight) {
-      headerMaxHeight = 260
-    }
+
     const headerScrollDistance = headerMaxHeight - headerMinHeight
 
-    const headerHeight = this.state.scrollY.interpolate({
-      inputRange: [0, headerScrollDistance],
-      outputRange: [headerMaxHeight, headerMinHeight],
-      extrapolate: 'clamp'
-    })
     // const contentOpacity = this.state.scrollY.interpolate({
     //   inputRange: [0, 1, headerScrollDistance],
     //   outputRange: [1, 1, 0],
@@ -49,7 +112,12 @@ export default class ScrollableHeader extends Component<Props, State> {
     //   outputRange: [1, 1, 1],
     //   extrapolate: 'clamp'
     // })
-    const imageTranslate = this.state.scrollY.interpolate({
+    const headerHeight = this.state.scrollY.interpolate({
+      inputRange: [0, headerScrollDistance],
+      outputRange: [headerMaxHeight, headerMinHeight],
+      extrapolate: 'clamp'
+    })
+    const translateY = this.state.scrollY.interpolate({
       inputRange: [0, headerScrollDistance],
       outputRange: [0, -100],
       extrapolate: 'clamp'
@@ -61,21 +129,32 @@ export default class ScrollableHeader extends Component<Props, State> {
     })
 
     return (
-      <View style={{ flex: 1 }}>
+      <View onLayout={this.onLayout} style={{ flex: 1 }}>
         <ScrollView
           testID={'step_content_scrollable'}
           style={{ flex: 1 }}
-          scrollEventThrottle={16}
+          showsVerticalScrollIndicator={false}
           automaticallyAdjustContentInsets={false}
+          scrollEventThrottle={16}
           onScroll={Animated.event([
             { nativeEvent: { contentOffset: { y: this.state.scrollY } } }
           ])}
         >
-          <View style={{ marginTop: headerMaxHeight }}>{content}</View>
+          <View
+            style={{
+              marginTop: headerMaxHeight,
+              marginBottom: bufferViewHeight
+            }}
+          >
+            <View
+              onLayout={this.oncontentLayout}
+            >
+              {content}
+            </View>
+          </View>
         </ScrollView>
         <Animated.View
           style={[
-            headerStyles,
             {
               position: 'absolute',
               top: 0,
@@ -87,7 +166,7 @@ export default class ScrollableHeader extends Component<Props, State> {
             }
           ]}
         >
-          {headerImage ? (
+          {headerImage && (
             <Animated.Image
               style={{
                 position: 'absolute',
@@ -98,12 +177,12 @@ export default class ScrollableHeader extends Component<Props, State> {
                 height: headerMaxHeight,
                 zIndex: 10,
                 opacity: 0.9,
-                transform: [{ translateY: imageTranslate }]
+                transform: [{ translateY }]
               }}
               source={headerImage}
             />
-          ) : null}
-          {headerComponent ? (
+          )}
+          {headerComponent && (
             <Animated.View
               style={{
                 position: 'absolute',
@@ -114,12 +193,12 @@ export default class ScrollableHeader extends Component<Props, State> {
                 height: headerMaxHeight,
                 zIndex: 9,
                 opacity: 1,
-                transform: [{ translateY: imageTranslate }]
+                transform: [{ translateY }]
               }}
             >
               {headerComponent}
             </Animated.View>
-          ) : null}
+          )}
           <Animated.View
             style={{
               position: 'absolute',
