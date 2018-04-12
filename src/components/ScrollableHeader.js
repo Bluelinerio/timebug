@@ -1,7 +1,7 @@
 // @flow
 
 import React, { Component } from 'react'
-import { Animated, ScrollView, View, StyleSheet } from 'react-native'
+import { Animated, ScrollView, View } from 'react-native'
 import invariant from 'invariant'
 
 type Props = {
@@ -47,9 +47,7 @@ export default class ScrollableHeader extends Component<Props, State> {
   layout = () => {
     const { containerLayout, contentLayout, bufferViewHeight } = this.state
     if (containerLayout && contentLayout) {
-      const newBufferViewHeight =
-        containerLayout.height -
-        (contentLayout.height - this.props.headerMinHeight)
+      const newBufferViewHeight = Math.max(0, containerLayout.height - (contentLayout.height - this.props.headerMinHeight))
       if (!bufferViewHeight) {
         this.setState({
           layoutReady: true,
@@ -128,6 +126,7 @@ export default class ScrollableHeader extends Component<Props, State> {
       extrapolate: 'clamp'
     })
 
+    console.log(bufferViewHeight)
     return (
       <View onLayout={this.onLayout} style={{ flex: 1 }}>
         <ScrollView
@@ -146,11 +145,7 @@ export default class ScrollableHeader extends Component<Props, State> {
               marginBottom: bufferViewHeight
             }}
           >
-            <View
-              onLayout={this.oncontentLayout}
-            >
-              {content}
-            </View>
+            <View onLayout={this.oncontentLayout}>{content}</View>
           </View>
         </ScrollView>
         <Animated.View
