@@ -4,7 +4,7 @@ import { Dimensions } from 'react-native'
 import ScrollingHeaderPageComponent from '../../../components/ScrollingHeaderPageComponent'
 import ScrollingHeaderPagerHeaderComponent from '../../../components/ScrollingHeaderPagerHeaderComponent'
 import ScrollingHeaderPageContentComponent from '../../../components/ScrollingHeaderPageContentComponent'
-import ScrollingHeaderPageHeaderComponent from '../../../components/ScrollingHeaderPageHeaderComponent'
+import ScrollingHeaderPageHeaderBackgorundComponent from '../../../components/ScrollingHeaderPageHeaderBackgorundComponent'
 import { APPBAR_HEIGHT, STATUSBAR_HEIGHT } from '../../../constants'
 import markdownStyles from '../../../styles/Markdown/stepScreen'
 import StepScreenButtonContainer from '../containers/StepScreenButtonContainer'
@@ -30,7 +30,9 @@ const StepScreenComponent = ({
     headerMaxHeight={HEADER_HEIGHT}
     headerMinHeight={APPBAR_HEIGHT() + STATUSBAR_HEIGHT}
     headerImage={image}
-    headerComponent={<ScrollingHeaderPageHeaderComponent color={color} />}
+    headerComponent={
+      <ScrollingHeaderPageHeaderBackgorundComponent color={color} />
+    }
     header={<ScrollingHeaderPagerHeaderComponent color={color} title={title} />}
     content={
       <ScrollingHeaderPageContentComponent

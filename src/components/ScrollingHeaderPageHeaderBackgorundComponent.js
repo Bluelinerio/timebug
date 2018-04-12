@@ -3,7 +3,7 @@ import * as React from 'react'
 import { View, StyleSheet } from 'react-native'
 import { APPBAR_HEIGHT, STATUSBAR_HEIGHT } from '../constants'
 
-const ScrollingHeaderPageHeaderComponent = ({ color }: { color: string }) => (
+const ScrollingHeaderPageHeaderBackgorundComponent = ({ color }: { color: string }) => (
   <View
     style={[
       styles.container,
@@ -13,7 +13,7 @@ const ScrollingHeaderPageHeaderComponent = ({ color }: { color: string }) => (
     ]}
   />
 )
-export default ScrollingHeaderPageHeaderComponent
+export default ScrollingHeaderPageHeaderBackgorundComponent
 
 const styles = StyleSheet.create({
   container: {

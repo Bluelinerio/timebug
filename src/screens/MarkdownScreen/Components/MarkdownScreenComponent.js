@@ -1,14 +1,15 @@
 //@flow
-import * as React from 'react'
-import { View, ScrollView } from 'react-native'
+import * as React                                   from 'react'
+import { View, ScrollView }                         from 'react-native'
 
-import CustomImage from '../../../components/CustomImage'
-import Markdown from '../../../Modules/Markdown'
-import { APPBAR_HEIGHT, STATUSBAR_HEIGHT } from '../../../constants'
-import ScrollingHeaderPageComponent from '../../../components/ScrollingHeaderPageComponent'
-import ScrollingHeaderPageContentComponent from '../../../components/ScrollingHeaderPageContentComponent'
-import ScrollingHeaderPagerHeaderComponent from '../../../components/ScrollingHeaderPagerHeaderComponent'
-import styles, { HEADER_HEIGHT } from '../styles'
+import CustomImage                                  from '../../../components/CustomImage'
+import Markdown                                     from '../../../Modules/Markdown'
+import { APPBAR_HEIGHT, STATUSBAR_HEIGHT }          from '../../../constants'
+import ScrollingHeaderPageComponent                 from '../../../components/ScrollingHeaderPageComponent'
+import ScrollingHeaderPageContentComponent          from '../../../components/ScrollingHeaderPageContentComponent'
+import ScrollingHeaderPagerHeaderComponent          from '../../../components/ScrollingHeaderPagerHeaderComponent'
+import ScrollingHeaderPageHeaderBackgorundComponent from '../../../components/ScrollingHeaderPageHeaderBackgorundComponent'
+import styles, { HEADER_HEIGHT }                    from '../styles'
 
 export type PageContentProps = {
   markdownStyles: any,
@@ -50,14 +51,7 @@ const MarkdownScreenComponent = ({
         headerMinHeight={APPBAR_HEIGHT() + STATUSBAR_HEIGHT}
         headerImage={image}
         headerComponent={
-          <View
-            style={[
-              styles.header,
-              {
-                backgroundColor: color
-              }
-            ]}
-          />
+          <ScrollingHeaderPageHeaderBackgorundComponent color={color} />
         }
         header={
           <ScrollingHeaderPagerHeaderComponent
