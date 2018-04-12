@@ -1,12 +1,12 @@
 // @flow
-import { FETCH_CMS } from '../actions/cms.actions';
-import type { Step, Colors, OnobardingPage, Page } from '../../services/cms';
+import { FETCH_CMS } from '../actions/cms.actions'
+import type { Step, Colors, OnobardingPage, Page } from '../../services/cms'
 const {
   steps,
   colors,
   onboardingPages,
   pages
-} = require('../../static/cms.json');
+} = require('../../static/cms.json')
 
 export type CMSState = {
   requestCount: number,
@@ -17,12 +17,12 @@ export type CMSState = {
   onboardingPages: [OnobardingPage],
   pages: [Page],
   error: ?string
-};
+}
 
 type StepsAction = {
   type: string,
   payload?: Array<Step> | Colors
-};
+}
 
 const initialState: CMSState = {
   requestCount: 0,
@@ -33,32 +33,32 @@ const initialState: CMSState = {
   colors,
   onboardingPages,
   pages
-};
+}
 
 function cmsReducer(state: CMSState = initialState, action: StepsAction) {
   switch (action.type) {
     case FETCH_CMS.STARTED:
-      return { ...state, requestCount: state.requestCount + 1 };
+      return { ...state, requestCount: state.requestCount + 1 }
     case FETCH_CMS.SUCCEEDED:
       return {
         ...state,
         ...action.payload,
         lastFetchDate: Date.now(),
         requestCount: state.requestCount - 1
-      };
+      }
     case (FETCH_CMS.CANCELLED, FETCH_CMS.ERRORED):
       return {
         ...state,
         requestCount: state.requestCount - 1,
         error: action.error || null
-      };
+      }
     default:
-      return state;
+      return state
   }
 }
 
-import storage from 'redux-persist/lib/storage';
-import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage'
+import { persistReducer } from 'redux-persist'
 
 const persistConfig = {
   key: 'cms',
@@ -77,12 +77,12 @@ const persistConfig = {
         : originalState.lastFetchDate &&
           originalState.lastFetchDate > inboundState.lastFetchDate
           ? originalState
-          : inboundState;
-    return state;
+          : inboundState
+    return state
   }
-};
+}
 
-export default persistReducer(persistConfig, cmsReducer);
+export default persistReducer(persistConfig, cmsReducer)
 
 // type PersistConfig = {
 //   key: string, // the key for the persist
