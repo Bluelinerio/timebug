@@ -1,41 +1,52 @@
 // @flow
+import { takeLatest, fork, put }          from 'redux-saga/effects'
+import { REFRESH_CMS }                    from '../actions'
+import { FETCH_CMS, SEED_CMS }            from '../actions/cms.actions'
+import { refreshCMS, testContentFromCMS } from '../../services/contentful'
+import { request }                        from '../../Modules/redux-saga-request'
+import { headerBackgrounds }              from '../../resources/images'
+let staticCms = require('../../static/cms.json')
 
-import {
-  throttle,
-  fork,
-  call,
-  cancelled,
-  put,
-  takeLatest,
-  select
-} from 'redux-saga/effects';
-import { delay } from 'redux-saga';
-import { REFRESH_CMS } from '../actions';
-import {
-  incrementRequestCount,
-  decrementRequestCount
-} from '../actions/network.actions';
-import { FETCH_CMS } from '../actions/cms.actions';
-import { refreshCMS, testContentFromCMS } from '../../services/contentful';
-import networkState from '../../utils/networkState';
-import type { Colors, Step } from '../../services/cms';
-import { request } from '../../Modules/redux-saga-request';
+const addLocalImage = step => ({
+  ...step,
+  image: headerBackgrounds[step.stepId]
+})
+
+function* seedCMS() {
+  staticCms.steps = Object.values(staticCms.steps).reduce(
+    (sum, step) => ({
+      ...sum,
+      [step.stepId]: addLocalImage(step)
+    }),
+    {}
+  )
+  yield put({ type: SEED_CMS, payload: staticCms })
+}
 
 function* _fetchCms() {
-  if (__DEV__) {
-    const cms = yield request(FETCH_CMS, () =>
-      refreshCMS().then(testContentFromCMS)
-    );
-  } else {
-    return yield request(FETCH_CMS, refreshCMS);
-  }
+  let { payload: cms } = yield request(
+    FETCH_CMS,
+    refreshCMS()
+      .then(cms => ({
+        ...cms,
+        step: Object.values(cms.steps).reduce(
+          (sum, step) => ({
+            ...sum,
+            [step.stepId]: addLocalImage(step)
+          }),
+          {}
+        )
+      }))
+      .then(cms => __DEV__ && testContentFromCMS(cms))
+  )
 }
 
 function* watchFetchSteps() {
-  yield throttle(500, REFRESH_CMS.type, _fetchCms);
+  yield takeLatest(REFRESH_CMS.type, _fetchCms)
 }
 
 export default function* cmsSaga() {
-  yield fork(watchFetchSteps);
-  yield put(REFRESH_CMS);
+  yield fork(seedCMS)
+  yield fork(watchFetchSteps)
+  yield put(REFRESH_CMS)
 }
