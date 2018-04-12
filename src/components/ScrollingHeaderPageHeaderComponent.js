@@ -18,7 +18,7 @@ type Props = {
   title: string
 }
 
-const ScrollingHeaderPagerHeaderComponent = ({ color, title }: Props) => (
+const ScrollingHeaderPageHeaderComponent = ({ color, title }: Props) => (
   <View
     style={[
       styles.platformContainerStyles,
@@ -36,7 +36,7 @@ const ScrollingHeaderPagerHeaderComponent = ({ color, title }: Props) => (
   </View>
 )
 
-export default ScrollingHeaderPagerHeaderComponent
+export default ScrollingHeaderPageHeaderComponent
 
 //const TITLE_OFFSET = Platform.OS === 'ios' ? 70 : 56
 const styles = StyleSheet.create({

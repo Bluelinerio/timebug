@@ -7,7 +7,7 @@ import Markdown                                     from '../../../Modules/Markd
 import { APPBAR_HEIGHT, STATUSBAR_HEIGHT }          from '../../../constants'
 import ScrollingHeaderPageComponent                 from '../../../components/ScrollingHeaderPageComponent'
 import ScrollingHeaderPageContentComponent          from '../../../components/ScrollingHeaderPageContentComponent'
-import ScrollingHeaderPagerHeaderComponent          from '../../../components/ScrollingHeaderPagerHeaderComponent'
+import ScrollingHeaderPageHeaderComponent          from '../../../components/ScrollingHeaderPageHeaderComponent'
 import ScrollingHeaderPageHeaderBackgorundComponent from '../../../components/ScrollingHeaderPageHeaderBackgorundComponent'
 import styles, { HEADER_HEIGHT }                    from '../styles'
 
@@ -54,7 +54,7 @@ const MarkdownScreenComponent = ({
           <ScrollingHeaderPageHeaderBackgorundComponent color={color} />
         }
         header={
-          <ScrollingHeaderPagerHeaderComponent
+          <ScrollingHeaderPageHeaderComponent
             color={color}
             title={headerTitle}
           />
