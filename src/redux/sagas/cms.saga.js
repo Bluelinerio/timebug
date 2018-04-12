@@ -27,9 +27,9 @@ function* _fetchCms() {
   let { payload: cms } = yield request(
     FETCH_CMS,
     refreshCMS()
-      .then(cms => ({
-        ...cms,
-        step: Object.values(cms.steps).reduce(
+      .then(({ steps, ...rest }) => ({
+        ...rest,
+        steps: Object.values(steps).reduce(
           (sum, step) => ({
             ...sum,
             [step.stepId]: addLocalImage(step)
@@ -37,7 +37,7 @@ function* _fetchCms() {
           {}
         )
       }))
-      .then(cms => __DEV__ && testContentFromCMS(cms))
+      .then(__DEV__ ? testContentFromCMS : () => null)
   )
 }
 
