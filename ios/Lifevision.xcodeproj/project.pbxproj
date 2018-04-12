@@ -2213,7 +2213,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.timebug.lifevisionApp;
-				PRODUCT_NAME = Lifevision;
+				PRODUCT_NAME = "Lifevision Stage";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
