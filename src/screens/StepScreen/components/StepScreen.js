@@ -1,11 +1,10 @@
 // @flow
-import React                               from 'react'
+import React from 'react'
 import {
   StyleSheet,
   Dimensions,
   Text,
   View,
-  ScrollView,
   StatusBar
 }                                          from 'react-native'
 import Markdown                            from '../../../Modules/Markdown'
@@ -28,23 +27,21 @@ type ContentProps = {
 const Content = ({ title, subtitle, description, color }: ContentProps) => (
   <View style={styles.stepScreenContent}>
     <StatusBar barStyle="light-content" backgroundColor={color} />
-    <ScrollView style={styles.stepScreenScrollView}>
-      {subtitle && (
-        <Text
-          testID={'step_subtitle'}
-          style={[
-            styles.stepScreenSubtitle,
-            {
-              color
-            }
-          ]}
-        >
-          {subtitle}
-        </Text>
-      )}
-      {title && <Text style={[styles.stepScreenTitle]}>{title}</Text>}
-      <Markdown markdownStyles={markdownStyles}>{description}</Markdown>
-    </ScrollView>
+    {subtitle && (
+      <Text
+        testID={'step_subtitle'}
+        style={[
+          styles.stepScreenSubtitle,
+          {
+            color
+          }
+        ]}
+      >
+        {subtitle}
+      </Text>
+    )}
+    {title && <Text style={[styles.stepScreenTitle]}>{title}</Text>}
+    <Markdown markdownStyles={markdownStyles}>{description}</Markdown>
     <StepScreenButtonContainer />
   </View>
 )
@@ -83,7 +80,6 @@ export type Props = {
   color: string,
   image: { uri: string }
 }
-
 
 const StepScreen = ({
   title,
