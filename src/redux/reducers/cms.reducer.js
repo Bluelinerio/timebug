@@ -51,46 +51,4 @@ function cmsReducer(state: CMSState = initialState, action: StepsAction) {
       return state
   }
 }
-
-import storage from 'redux-persist/lib/storage'
-import { persistReducer } from 'redux-persist'
-
-const persistConfig = {
-  key: 'cms',
-  storage: storage,
-  blacklist: ['requestCount'],
-  stateReconciler: (
-    inboundState: CMSState,
-    originalState: CMSState,
-    reducedState: CMSState
-  ) => {
-    const state =
-      !inboundState ||
-      !inboundState.lastFetchDate ||
-      originalState.requestCount > 0
-        ? originalState
-        : originalState.lastFetchDate &&
-          originalState.lastFetchDate > inboundState.lastFetchDate
-          ? originalState
-          : inboundState
-    return state
-  }
-}
-
-export default persistReducer(persistConfig, cmsReducer)
-
-// export default cmsReducer
-// type PersistConfig = {
-//   key: string, // the key for the persist
-//   storage: Object, // the storage adapter, following the AsyncStorage api
-//   version?: number, // the state version as an integer (defaults to -1)
-//   blacklist?: Array<string>, // do not persist these keys
-//   whitelist?: Array<string>, // only persist these keys
-//   migrate?: (Object, number) => Promise<Object>,
-//   transforms?: Array<Transform>,
-//   throttle?: number,
-//   keyPrefix?: string, // will be prefixed to the storage key
-//   debug?: boolean, // true -> verbose logs
-//   stateReconciler?: false | StateReconciler, // false -> do not automatically reconcile state
-//   serialize?: boolean, // false -> do not call JSON.parse & stringify when setting & getting from storage
-// }
+export default cmsReducer
