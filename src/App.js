@@ -1,10 +1,10 @@
 // @flow
-import React                           from 'react'
-import { ApolloProvider }              from 'react-apollo'
-import { Provider }                    from 'react-redux'
+import React from 'react'
+import { ApolloProvider } from 'react-apollo'
+import { Provider } from 'react-redux'
 import { AppRegistry, Platform, View } from 'react-native'
-import { PersistGate }                 from 'redux-persist/es/integration/react'
-import codePush                        from 'react-native-code-push'
+import { PersistGate } from 'redux-persist/es/integration/react'
+import codePush from 'react-native-code-push'
 
 import {
   isNativeUpdateRequired,
@@ -37,7 +37,6 @@ export default class App extends React.Component<{}, State> {
     error: null
   }
   async componentDidCatch(error: any) {
-    
     if (__DEV__) {
       store.dispatch(resetStore)
       persistor.purge()
@@ -87,6 +86,6 @@ const codePushConfigurations = {
   installMode: codePush.InstallMode.ON_NEXT_RESUME
 }
 
-App = codePush(codePushConfigurations)(App)
+const CodepushApp = codePush(codePushConfigurations)(App)
 
-AppRegistry.registerComponent(APP_NAME, () => App)
+AppRegistry.registerComponent(APP_NAME, () => CodepushApp)
