@@ -38,7 +38,8 @@ export default StyleSheet.create({
   },
   stepScreenContent: {
     marginTop: 20,
-    marginBottom: 30
+    marginBottom: 30,
+    paddingHorizontal: 20
   },
   stepScreenText: {
     color: '#000000',
@@ -68,10 +69,6 @@ export default StyleSheet.create({
   stepScreenDescription: {
     flex: 1,
     paddingBottom: 300
-  },
-  stepScreenScrollView: {
-    flex: 1,
-    paddingHorizontal: 20
   },
   stepScreenBackButton: {
     position: 'absolute',
