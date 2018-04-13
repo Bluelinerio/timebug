@@ -17,7 +17,13 @@ type Props = {
   renderWithUser?: (props?: {}) => React.Node,
   renderWithAuthenticating?: () => React.Node,
   renderWithUndetermined?: () => React.Node,
-  children: (UserState) => React.Node
+  children: ({
+    userSate: UserState,
+    isLoggedIn: boolean,
+    undetermined: boolean,
+    authenticating: boolean,
+    anonymous: boolean
+  }) => React.Node
 }
 
 const mapStateToProps = state => ({
@@ -33,21 +39,31 @@ export default connect(mapStateToProps)(
     renderWithUndetermined,
     userState,
     children
-  }) => {
+  }: Props) => {
+    const isLoggedIn = userState && typeof userState === 'object'
+    const undetermined = userState === UNDETERMINED
+    const authenticating = userState === AUTHENTICATING
+    const anonymous = userState === ANONYMOUS
+
     if (typeof userState === 'string') {
       if (renderWithState) return renderWithState(userState)
-      if (userState === UNDETERMINED && renderWithUndetermined)
+      if (undetermined && renderWithUndetermined)
         return renderWithUndetermined()
-      if (userState === ANONYMOUS && renderWithAnonymous)
-        return renderWithAnonymous()
-      if (userState === AUTHENTICATING && renderWithAuthenticating)
+      if (anonymous && renderWithAnonymous) return renderWithAnonymous()
+      if (authenticating && renderWithAuthenticating)
         return renderWithAuthenticating()
     }
 
-    if (userState && typeof userState === 'object' && renderWithUser)
-      return renderWithUser(userState)
-    if(children) 
-      return children(userState)
+    if (isLoggedIn && renderWithUser) return renderWithUser(userState)
+
+    if (children)
+      return children({
+        userState,
+        isLoggedIn,
+        undetermined,
+        authenticating,
+        anonymous
+      })
     return null
   }
 )
