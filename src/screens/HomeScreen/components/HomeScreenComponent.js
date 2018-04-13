@@ -1,6 +1,6 @@
 // @flow
 import React, { PureComponent } from 'react'
-import { StatusBar, ScrollView } from 'react-native'
+import { StatusBar, ScrollView, LayoutAnimation } from 'react-native'
 import { SafeAreaView } from 'react-navigation'
 
 import PagninatedCarouselContainer from '../containers/PagninatedCarouselContainer'
@@ -13,6 +13,9 @@ import Banner from './Banner'
 import Space from './Space'
 
 export default class HomeScreenComponent extends PureComponent {
+  state = {
+    showMore: true
+  }
   render() {
     return (
       <SafeAreaView
@@ -22,12 +25,35 @@ export default class HomeScreenComponent extends PureComponent {
         <StatusBar barStyle="dark-content" backgroundColor={'white'} />
         <ScrollView style={{ flex: 1 }}>
           <Banner />
+          {this.state.showMore && (
+            <MoreButtonContainer
+              onClose={() =>
+                this.setState(
+                  {
+                    showMore: false
+                  },
+                  () =>
+                    LayoutAnimation.configureNext({
+                      duration: 400,
+                      create: {
+                        type: LayoutAnimation.Types.spring,
+                        property: LayoutAnimation.Properties.scaleXY,
+                        springDamping: 0.7
+                      },
+                      update: {
+                        type: LayoutAnimation.Types.spring,
+                        springDamping: 0.7
+                      }
+                    })
+                )
+              }
+            />
+          )}
           <PagninatedCarouselContainer
             itemWidth={itemWidth}
             sliderWidth={sliderWidth}
           />
           <DashboardCellsContainer />
-          <MoreButtonContainer />
           <Space />
           <Version />
         </ScrollView>
