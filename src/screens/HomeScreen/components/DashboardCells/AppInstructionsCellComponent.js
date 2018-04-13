@@ -32,7 +32,6 @@ const AppInstructionsCellComponent = ({
         >
           {title}
         </Text>
-        <Meditator />
         <View
           style={{
             flexDirection: 'row',
