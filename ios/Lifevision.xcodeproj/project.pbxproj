@@ -2212,7 +2212,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.timebug.lifevisionApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.timebug.stage.lifevisionApp;
 				PRODUCT_NAME = "Lifevision Stage";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
