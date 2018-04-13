@@ -126,7 +126,6 @@ export default class ScrollingHeaderPageComponent extends Component<Props, State
       extrapolate: 'clamp'
     })
 
-    console.log(bufferViewHeight)
     return (
       <View onLayout={this.onLayout} style={{ flex: 1 }}>
         <ScrollView
