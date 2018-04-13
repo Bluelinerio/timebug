@@ -7,23 +7,27 @@ import MeditationDashobardCell from './../components/DashboardCells/MeditationDa
 import LifevisionDashboardCell from './../components/DashboardCells/LifevisionDashboardCell'
 
 // Dashboard should determind  visibilty based on a feed switch or A/B signal
-const LifevisionDashoboardCellContainer = () => (
-  <User
-    renderWithState={() => <LifevisionDashboardCell />}
-    renderWithUser={() => <LifevisionDashboardCell />}
-  />
-)
 
 const MeditationDashobardCellContainer = connect(null, {
   onPress: goToMeditation
 })(MeditationDashobardCell)
 
-const DashboardCellsContainer = ({ show = false }: { show: boolean }) => {
+const DashboardCellsContainer = ({ show = true }: { show: boolean }) => {
   return show ? (
-    <React.Fragment>
-      <LifevisionDashoboardCellContainer />
-      <MeditationDashobardCellContainer />
-    </React.Fragment>
+    <User>
+      {({
+        userState,
+        isLoggedIn,
+        undetermined,
+        authenticating,
+        anonymous
+      }) => (
+        <React.Fragment>
+          <LifevisionDashboardCell />
+          <MeditationDashobardCellContainer />
+        </React.Fragment>
+      )}
+    </User>
   ) : null
 }
 
