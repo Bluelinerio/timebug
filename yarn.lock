@@ -4765,6 +4765,14 @@ react-native-fbsdk@0.6.3:
     pump "^1.0.2"
     xcode "^0.9.3"
 
+react-native-gesture-handler@^1.0.0-alpha.42:
+  version "1.0.0-alpha.42"
+  resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.0.0-alpha.42.tgz#0618c140b269da3c55637e235cd0c51be641121c"
+  dependencies:
+    hoist-non-react-statics "^2.3.1"
+    invariant "^2.2.2"
+    prop-types "^15.5.10"
+
 react-native-iphone-x-helper@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.0.2.tgz#7dbca530930f7c1ce8633cc8fd13ba94102992e1"

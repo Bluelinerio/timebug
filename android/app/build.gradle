@@ -180,6 +180,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-gesture-handler')
     compile project(':react-native-sound')
     compile project(':react-native-sentry')
     compile project(':react-native-code-push')

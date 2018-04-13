@@ -46,6 +46,7 @@
     "react-native-code-push": "^5.2.1",
     "react-native-device-info": "^0.13.0",
     "react-native-fbsdk": "0.6.3",
+    "react-native-gesture-handler": "^1.0.0-alpha.42",
     "react-native-linear-gradient": "^2.4.0",
     "react-native-markdown-syntax": "^0.1.0",
     "react-native-pages": "^0.6.1",
