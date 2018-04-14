@@ -1,9 +1,9 @@
 // @flow
-
-import React, { Component } from 'react'
+import * as React from 'react'
 import { connect } from 'react-redux'
-import { NavigationActions, withNavigation } from 'react-navigation'
+import { withNavigation } from 'react-navigation'
 import invariant from 'invariant'
+import t from '../components/templates'
 
 import { headerBackgrounds }   from '../../../resources/images'
 import {
@@ -18,7 +18,6 @@ import selectors               from '../../../redux/selectors'
 import type Props              from '../components/WorkbookScreenComponent'
 import WorkbookScreenComponent from '../components/WorkbookScreenComponent'
 import DefaultUserContainer    from '../../../containers/DefaultUserContainer'
-import t from '../components/templates'
 
 const formatType = type => {
   const compose = (...fns) => x => fns.reduce((v, fn) => fn(v), x)
@@ -44,14 +43,17 @@ const merge = (stateProps, dispatchProps, ownProps): Props => {
   const { colors, steps } = stateProps
   const { navigation: { state: { params } } } = ownProps
   const { stepId, formId, stepColor } = params
-  
+
   invariant(invariant, 'workbook container expected params in naviation')
-  invariant(stepId && formId && stepColor, 'workbook container expected stepId && formId && stepColor in params in naviation')
-  
+  invariant(
+    stepId && formId && stepColor,
+    'workbook container expected stepId && formId && stepColor in params in naviation'
+  )
+
   const { models, formData } = stateProps.modelsAndDataForExercise(stepId)
 
   invariant(
-    Object.keys(models).includes(formId), 
+    Object.keys(models).includes(formId),
     `did not find model for formId ${formId} for stepId:${stepId}`
   )
 
