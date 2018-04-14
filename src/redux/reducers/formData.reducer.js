@@ -33,7 +33,7 @@ const populate = (
   action: PopulateFormAction,
   state: FormDataState
 ): FormDataState => {
-  const { stepId, formId, value } = action.payload;
+  const { stepId, formId, value, type } = action.payload;
   const data = state.data || {};
   return {
     ...state,
@@ -45,7 +45,8 @@ const populate = (
         timeStamp: Date.now(),
         [formId]: {
           timeStamp: Date.now(),
-          ...value
+          ...value,
+          type
         }
       }
     }

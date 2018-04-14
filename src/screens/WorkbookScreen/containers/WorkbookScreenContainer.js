@@ -18,6 +18,20 @@ import selectors               from '../../../redux/selectors'
 import type Props              from '../components/WorkbookScreenComponent'
 import WorkbookScreenComponent from '../components/WorkbookScreenComponent'
 import DefaultUserContainer    from '../../../containers/DefaultUserContainer'
+import t from '../components/templates'
+
+const formatType = type => {
+  const compose = (...fns) => x => fns.reduce((v, fn) => fn(v), x)
+  const removeOptional = s => (s.charAt(0) === '?' ? s.substr(1) : s)
+  const enter = (sum, key) => ({
+    ...sum,
+    [key]: compose(removeOptional)(t.getTypeName(type.meta.props[key]))
+  })
+
+  return Object.keys(type.meta.props)
+    .filter(key => key !== 'id')
+    .reduce(enter, {})
+}
 
 const mapStateToProps = state => {
   const steps = selectors.steps(state)
@@ -71,7 +85,8 @@ const merge = (stateProps, dispatchProps, ownProps): Props => {
       submitFormValue({
         formId,
         stepId,
-        value
+        value,
+        type: formatType(model.type)
       })
     )
 
