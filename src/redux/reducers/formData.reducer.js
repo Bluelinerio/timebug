@@ -3,14 +3,15 @@ import {
   SUBMIT_FORM_VALUE,
   INCREMENT_FORM_DATA_QUEUE,
   DECREMENT_FORM_DATA_QUEUE
-} from '../actionTypes';
+} from '../actionTypes'
+
 
 export type FormDataState = {
   data: {
     [key: string]: any
   },
   requestCount: number
-};
+}
 
 type PopulateFormAction = {
   type: SUBMIT_FORM_VALUE.type,
@@ -19,22 +20,25 @@ type PopulateFormAction = {
     formId: string,
     value: any
   }
-};
+}
 
-type FormAction = PopulateFormAction;
+type FormAction = PopulateFormAction
 
-const initialSDataState = {};
+const initialSDataState = {}
 const initialState: FormDataState = {
   data: initialSDataState,
   requestCount: 0
-};
+}
+
+const filterWithKeys = (pred, obj) =>
+  R.pipe(R.toPairs, R.filter(R.apply(pred)), R.fromPairs)(obj)
 
 const populate = (
   action: PopulateFormAction,
   state: FormDataState
 ): FormDataState => {
-  const { stepId, formId, value, type } = action.payload;
-  const data = state.data || {};
+  const { stepId, formId, value, type } = action.payload
+  const data = state.data || {}
   return {
     ...state,
     data: {
@@ -50,18 +54,18 @@ const populate = (
         }
       }
     }
-  };
-};
+  }
+}
 
 const increment = (state: FormDataState): FormDataState => ({
   ...state,
   requestCount: state.requestCount + 1
-});
+})
 
 const decrement = (state: FormDataState): FormDataState => ({
   ...state,
   requestCount: state.requestCount - 1
-});
+})
 
 function formDataReducer(
   state: FormDataState = initialState,
@@ -69,33 +73,33 @@ function formDataReducer(
 ) {
   switch (action.type) {
     case SUBMIT_FORM_VALUE:
-      return populate(action, state);
+      return populate(action, state)
     case INCREMENT_FORM_DATA_QUEUE:
-      return increment(state);
+      return increment(state)
     case DECREMENT_FORM_DATA_QUEUE:
-      return decrement(state);
+      return decrement(state)
     default:
-      return state;
+      return state
   }
 }
 
-import storage from 'redux-persist/lib/storage';
-import { persistReducer, createMigrate } from 'redux-persist';
+import storage from 'redux-persist/lib/storage'
+import { persistReducer, createMigrate } from 'redux-persist'
 
 const mapDataWithStepIndicesToDataWithStepIds = state => {
   if (!state.data || Object.keys(state.data).length === 0) {
-    return initialSDataState;
+    return initialSDataState
   }
 
-  const data = state.data;
+  const data = state.data
   return Object.keys(data).reduce(
     (sum, stepIndex) => ({
       ...sum,
       [(stepIndex + 1).toString()]: data[stepIndex]
     }),
     {}
-  );
-};
+  )
+}
 
 const migrations = {
   0: state => ({
@@ -103,7 +107,7 @@ const migrations = {
     data: mapDataWithStepIndicesToDataWithStepIds(state.data)
   }),
   1: state => state
-};
+}
 
 const persistConfig = {
   key: 'formData',
@@ -111,6 +115,6 @@ const persistConfig = {
   blacklist: ['requestCount'],
   version: 1,
   migrate: createMigrate(migrations, { debug: true })
-};
+}
 
-export default persistReducer(persistConfig, formDataReducer);
+export default persistReducer(persistConfig, formDataReducer)
