@@ -33,14 +33,12 @@ const formatType = type => {
 }
 
 const mapStateToProps = state => {
-  const steps = selectors.steps(state)
   const fetching = selectors.isSynchingFormData(state)
   const modelsAndDataForExercise = selectors.modelsAndDataForExercise(state)
-  return { steps, fetching, modelsAndDataForExercise }
+  return { fetching, modelsAndDataForExercise }
 }
 
 const merge = (stateProps, dispatchProps, ownProps): Props => {
-  const { colors, steps } = stateProps
   const { navigation: { state: { params } } } = ownProps
   const { stepId, formId, stepColor } = params
 
