@@ -5,6 +5,8 @@ import {
   DECREMENT_FORM_DATA_QUEUE
 } from '../actionTypes'
 
+import { diffObjs } from '../utils/diffObjs'
+import R from 'ramda'
 
 export type FormDataState = {
   data: {
@@ -39,6 +41,17 @@ const populate = (
 ): FormDataState => {
   const { stepId, formId, value, type } = action.payload
   const data = state.data || {}
+
+  // filter old value from timestamp, or anything else we might add...
+  const oldValue = filterWithKeys(
+    key => Object.keys(value).includes(key),
+    R.view(R.lensPath([stepId, formId]), data)
+  )
+
+  const { difference, onlyOnRight } = diffObjs(oldValue, value)
+
+  if (!difference && !onlyOnRight) return state
+
   return {
     ...state,
     data: {
