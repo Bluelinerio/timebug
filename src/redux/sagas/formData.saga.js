@@ -28,6 +28,23 @@ export const UPDATE_AND_CREATE_FORMS = 'UPDATE_AND_CREATE_FORMS'
 //const log = payload => yield put({ type: LOG,  payload });
 const log = payload => console.log(payload)
 
+const range = (start, end) =>
+  Array(end - start)
+    .fill()
+    .map((v, i) => i + start)
+
+const stepIds = range(1, 30).map((v, i) => i.toString())
+
+const removeAllKeyButStepIds = (obj: {}) =>
+  Object.keys(obj)
+    .filter(k => stepIds.includes(k))
+    .reduce(
+      (sum, k) => ({
+        ...sum,
+        [k]: obj[k]
+      }),
+      {}
+    )
 
 function* mySelectors(props) {
   const keys = Object.keys(props)
@@ -134,9 +151,9 @@ export function* watchSyncFormData() {
   // here the assumptions is that the formData reducer will always Hydrate before the GET_USER action return, becuase we never
   const requestChan = yield actionChannel([GET_USER.SUCCEEDED, SYNC_FORM_DATA])
   while (true) {
-    const payload = yield call(
-      reviewCurrentUserFormsAndFormDataCompareAndUpfateToState
-    );
+    yield take(requestChan)
+    yield fork(reviewCurrentUserFormsAndFormDataCompareAndUpfateToState)
+    const { payload } = yield take(UPDATE_AND_CREATE_FORMS)
     if (payload && (payload.updates || payload.creates)) {
       yield fork(syncRequests, payload)
     }
@@ -161,6 +178,24 @@ function* syncRequests(payload) {
       if (__DEV__) {
         testUpdate(update)
       }
+
+      try {
+        const { user } = yield call(updateForm, {
+          ...update
+        })
+        log({
+          info: `Compelted synching on update between form data and user forms`,
+          update,
+          new: user.forms.find(f => f.id === update.id)
+        })
+        _user = user
+      } catch (error) {
+        _user = null
+        log({
+          info: `Form Synch: Failed on update between form data and user forms`,
+          error,
+          update
+        })
       }
     }
   }
@@ -170,6 +205,18 @@ function* syncRequests(payload) {
       if (__DEV__) {
         testCreate(create)
       }
+      try {
+        const { user } = yield call(createForm, {
+          ...create
+        })
+        _user = user
+      } catch (error) {
+        _user = null
+        log({
+          info: `Form Synch: Failed on create between form data and user forms`,
+          error,
+          create
+        })
       }
     }
   }
