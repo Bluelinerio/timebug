@@ -112,7 +112,7 @@ const WorkbookScreenContainer = withNavigation(
   connect(mapStateToProps, null, merge)(WorkbookScreenComponent)
 )
 
-export default () => (
+const WorkbookScreenContainerWithUser = () => (
   <DefaultUserContainer
     renderWithUser={() => <WorkbookScreenContainer />}
     anonymousMessage={
@@ -120,3 +120,5 @@ export default () => (
     }
   />
 )
+
+export default WorkbookScreenContainerWithUser
