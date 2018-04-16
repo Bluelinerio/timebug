@@ -1,4 +1,4 @@
-import t from '../components/templates';
+import t from '../components/templates'
 
 export const AreaOfLife = t.enums.of(
   [
@@ -11,7 +11,7 @@ export const AreaOfLife = t.enums.of(
     'Spirituality'
   ],
   'AreaOfLife'
-);
+)
 
 export const LifeCategories = t.enums.of(
   [
@@ -21,12 +21,10 @@ export const LifeCategories = t.enums.of(
     'Personal Life',
     'Health and Wellness',
     'Basic Needs',
-    'Special Projects',
+    'Special Projects'
   ],
   'LifeCategories'
-);
-
-
+)
 
 export const TimesPerWeek = t.enums.of(
   [
@@ -38,7 +36,7 @@ export const TimesPerWeek = t.enums.of(
     '3 to 5 times a week'
   ],
   'TimesPerWeek'
-);
+)
 
 export const LifeStages = t.enums.of(
   [
@@ -53,7 +51,7 @@ export const LifeStages = t.enums.of(
     'Late Adulthood (80+ yrs old)'
   ],
   'LifeStages'
-);
+)
 
 export const PillarsOfLife = t.enums.of(
   [
@@ -66,7 +64,7 @@ export const PillarsOfLife = t.enums.of(
     'Spirituality'
   ],
   'PillarsOfLife'
-);
+)
 
 export const Emotion = t.enums.of(
   [
@@ -89,7 +87,7 @@ export const Emotion = t.enums.of(
     'Angry'
   ],
   'Emotion'
-);
+)
 
 export const Strengths = t.enums.of(
   [
@@ -102,7 +100,7 @@ export const Strengths = t.enums.of(
     'Funny'
   ],
   'Strengths'
-);
+)
 
 export const Weaknesses = t.enums.of(
   [
@@ -115,17 +113,17 @@ export const Weaknesses = t.enums.of(
     'Closed mindeded'
   ],
   'Weaknesses'
-);
+)
 
 export const InteractionFrequency = t.enums.of(
   ['Daily', 'Weekly', 'Monthly', 'Bi-Monthly', 'Yearly', 'Rarely', 'Never'],
   'InteractionFrequency'
-);
+)
 
 export const ExerciseFrequency = t.enums.of(
   ['Daily', 'Weekly', 'Bi-Weekly', 'Never'],
   'ExerciseFrequency'
-);
+)
 
 export const EatingFrequency = t.enums.of(
   [
@@ -136,7 +134,7 @@ export const EatingFrequency = t.enums.of(
     'More than four meals per day'
   ],
   'EatingFrequency'
-);
+)
 
 export const HoursSleep = t.enums.of(
   [
@@ -148,7 +146,7 @@ export const HoursSleep = t.enums.of(
     'More than 8 hrs'
   ],
   'HoursSleep'
-);
+)
 
 export const BedTimes = t.enums.of(
   [
@@ -160,12 +158,12 @@ export const BedTimes = t.enums.of(
     'After 1 AM'
   ],
   'BedTimes'
-);
+)
 
 export const CarryStress = t.enums.of(
   ['Neck', 'Shoulders', 'Upper Back', 'Lower Back', 'Glutes', 'Other'],
   'CarryStress'
-);
+)
 
 export const ExerciseTypes = t.enums.of(
   [
@@ -180,7 +178,7 @@ export const ExerciseTypes = t.enums.of(
     'Other'
   ],
   'ExerciseTypes'
-);
+)
 
 export const GoalTypes = t.enums.of(
   [
@@ -193,7 +191,7 @@ export const GoalTypes = t.enums.of(
     'Relationship Quality'
   ],
   'GoalTypes'
-);
+)
 
 export const CommonGoalOutcomes = t.enums.of(
   [
@@ -206,7 +204,7 @@ export const CommonGoalOutcomes = t.enums.of(
     'Latency Effect'
   ],
   'CommonGoalOutcomes'
-);
+)
 
 export const MajorLifeEvents = t.enums.of(
   [
@@ -220,12 +218,12 @@ export const MajorLifeEvents = t.enums.of(
     'Other'
   ],
   'MajorLifeEvents'
-);
+)
 
 export const PriorityLevels = t.enums.of(
   ['Very High', 'High', 'Medium', 'Low', 'Very Low'],
   'PriorityLevels'
-);
+)
 
 export const AssessmentTypes = t.enums.of(
   [
@@ -238,7 +236,7 @@ export const AssessmentTypes = t.enums.of(
     'Spirituality'
   ],
   'AssessmentTypes'
-);
+)
 
 export const MeditationTypes = t.enums.of(
   [
@@ -250,7 +248,7 @@ export const MeditationTypes = t.enums.of(
     'Other'
   ],
   'MeditationTypes'
-);
+)
 
 export const TimesOfDay = t.enums.of(
   [
@@ -262,17 +260,17 @@ export const TimesOfDay = t.enums.of(
     'Late Night'
   ],
   'TimesOfDay'
-);
+)
 
 export const AloneOrOthers = t.enums.of(
   ['Alone', 'With Others'],
   'AloneOrOthers'
-);
+)
 
 export const DreamsRemember = t.enums.of(
   ['Daily', 'Most of the time,', 'Occasionally', 'Rarely', 'Never'],
   'DreamsRemember'
-);
+)
 
 export const DescribeProcess = t.enums.of(
   [
@@ -283,7 +281,7 @@ export const DescribeProcess = t.enums.of(
     'Thorough + working with a coach or peer group'
   ],
   'DescribeProcess'
-);
+)
 
 export const SatisfactionFromCurrentResult = t.enums.of(
   [
@@ -297,7 +295,7 @@ export const SatisfactionFromCurrentResult = t.enums.of(
     'It had Gotten much worst!'
   ],
   'SatisfactionFromCurrentResult'
-);
+)
 
 export const CreditScoreChange = t.enums.of(
   [
@@ -308,12 +306,12 @@ export const CreditScoreChange = t.enums.of(
     'Gotten much worse'
   ],
   'CreditScoreChange'
-);
+)
 
 export const ChangeKind = t.enums.of(
   ['Same', 'Minimal Change', 'No Change', 'Significant Change'],
   'ChangeKind'
-);
+)
 
 export const EffortEvaluation = t.enums.of(
   [
@@ -324,7 +322,7 @@ export const EffortEvaluation = t.enums.of(
     'No Change'
   ],
   'EffortEvaluation'
-);
+)
 
 export const CreditScore = t.enums.of(
   [
@@ -336,17 +334,17 @@ export const CreditScore = t.enums.of(
     'I do not know.'
   ],
   'CreditScore'
-);
+)
 
 export const UseWearableTech = t.enums.of(
   ['Never', 'Sometimes', 'Often', 'Always'],
   'UseWearableTech'
-);
+)
 
 export const PaidFairly = t.enums.of(
   ['Not Fair', 'Just Right', 'Beyond Fair'],
   'PaidFairly'
-);
+)
 
 export const WhereStandToday = t.enums.of(
   [
@@ -357,17 +355,17 @@ export const WhereStandToday = t.enums.of(
     'Significantly ahead'
   ],
   'WhereStandToday'
-);
+)
 
 export const IndulgeFrequency = t.enums.of(
   ['Never', 'Sometimes 1-2 times/week', 'Always (daily)'],
   'IndulgeFrequency'
-);
+)
 
 export const TakeEnergizers = t.enums.of(
   ['Never', 'Occasionally', 'Frequently', 'Daily'],
   'TakeEnergizers'
-);
+)
 
 export const GoalProcess = t.enums.of(
   [
@@ -378,12 +376,12 @@ export const GoalProcess = t.enums.of(
     'Thorough + working with a coach or peer group'
   ],
   'GoalProcess'
-);
+)
 
 export const OneToTenScale = t.enums.of(
   ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
   'OneToTenScale'
-);
+)
 
 export const OverallScore = t.enums.of(
   [
@@ -435,7 +433,7 @@ export const OverallScore = t.enums.of(
     '50'
   ],
   'OneToTenScale'
-);
+)
 
 export const StrengthOfI = t.enums.of(
   [
@@ -446,7 +444,7 @@ export const StrengthOfI = t.enums.of(
     'Very Weak'
   ],
   'StrengthOfI'
-);
+)
 
 export const IncreaseDecrease = t.enums.of(
   [
@@ -457,7 +455,7 @@ export const IncreaseDecrease = t.enums.of(
     'Strongly decreased'
   ],
   'IncreaseDecrease'
-);
+)
 
 export const PercentCompleted = t.enums.of(
   [
@@ -473,7 +471,7 @@ export const PercentCompleted = t.enums.of(
     '90-100%'
   ],
   'PercentCompleted'
-);
+)
 
 export const TimeShift = t.enums.of(
   [
@@ -484,12 +482,12 @@ export const TimeShift = t.enums.of(
     'Significantly more free time'
   ],
   'TimeShift'
-);
+)
 
 export const HoursPerWeek = t.enums.of(
   ['Less than 20', '20-30', '30-40', '40-50', 'More Than 50'],
   'HoursPerWeek'
-);
+)
 
 export const ExerciseLength = t.enums.of([
   'Less than 30 min',
@@ -497,7 +495,7 @@ export const ExerciseLength = t.enums.of([
   'Between an hour to two',
   'More than Two hours, less than 4',
   'More than 4 hours'
-]);
+])
 
 export const TimeChanged = t.enums.of(
   [
@@ -508,12 +506,12 @@ export const TimeChanged = t.enums.of(
     'Increased by more than 10 hours'
   ],
   'TimeChanged'
-);
+)
 
 export const InternalExternal = t.enums.of(
   ['Internal', 'External', 'Both'],
   'InternalExternal'
-);
+)
 
 export const TimeSpent = t.enums.of(
   [
@@ -524,7 +522,7 @@ export const TimeSpent = t.enums.of(
     'More than 10 hours'
   ],
   'TimeSpentMonth'
-);
+)
 
 export const IsSleepEnough = t.enums.of(
   [
@@ -533,7 +531,7 @@ export const IsSleepEnough = t.enums.of(
     'Need significantly more sleep (3-4 hrs / night)'
   ],
   'IsSleepEnough'
-);
+)
 
 export const SpiritualViews = t.enums.of(
   [
@@ -544,7 +542,7 @@ export const SpiritualViews = t.enums.of(
     'None of the above'
   ],
   'SpiritualViews'
-);
+)
 
 export const SpiritualPractices = t.enums.of(
   [
@@ -553,51 +551,49 @@ export const SpiritualPractices = t.enums.of(
     'Many spiritual practices'
   ],
   'SpiritualPractices'
-);
+)
 
 export const TimeSpentProgress = t.enums.of(
   ['No progress', 'Some progress', 'Extreme progress'],
   'TimeSpentProgress'
-);
+)
 
 export const ActivityFeelings = t.enums.of(
   ['Not at all fulfilled', 'Somewhat fulfilled', 'Extremely fulfilled'],
   'ActivityFeelings'
-);
+)
 
 export const PercentSelector = t.enums.of(
   ['10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', '100'],
   'PercentSelector'
-);
+)
 
 const range = (start, end) =>
   Array(end - start)
     .fill()
-    .map((v, i) => i + start);
+    .map((v, i) => i + start)
 
 export const HoursPerMonth = t.enums.of(
   range(1, 138).map(h => (h === 1 ? 'One hr' : `${h}hrs`)),
   'HoursPerMonth'
-);
+)
 
 const getValidationErrorMessage = (actual, path, context) => {
-  const to = context && context.options && context.options.label || path && path.length && path[0]
+  const to =
+    (context && context.options && context.options.label) ||
+    (path && path.length && path[0])
   const help = context && context.options && context.options.help
-  if(!actual) {
-    return `Missing required field ${to 
-      ? 'to \'' + to + '\'' 
-      : ''} ${help 
-        ? `\n ${help}` 
-        : ''}`
+  if (!actual) {
+    return `Missing required field ${to ? "to '" + to + "'" : ''} ${
+      help ? `\n ${help}` : ''
+    }`
   }
-  return `Invalid value ${t.stringify(actual)} supplied ${to 
-    ? 'to \'' + to + '\'' 
-    : ''} ${help 
-      ? `\n ${help}` 
-      : ''}`
+  return `Invalid value ${t.stringify(actual)} supplied ${
+    to ? "to '" + to + "'" : ''
+  } ${help ? `\n ${help}` : ''}`
 }
 
-[
+const all = [
   AreaOfLife,
   TimesPerWeek,
   LifeStages,
@@ -651,4 +647,6 @@ const getValidationErrorMessage = (actual, path, context) => {
   ActivityFeelings,
   PercentSelector,
   HoursPerMonth
-].forEach( e => e.getValidationErrorMessage = getValidationErrorMessage)
+]
+
+all.forEach(e => (e.getValidationErrorMessage = getValidationErrorMessage))
