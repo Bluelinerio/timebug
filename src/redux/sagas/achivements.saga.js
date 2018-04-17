@@ -27,7 +27,6 @@ const achievements = {
   LIFE_VISION: 'Life Vision',
   HEALTH_AND_WELLNESS: 'Health And Wellness',
   CAREER: 'Career',
-  GOALS: 'Goals',
   MAJOR_LIFE_EVENTS: 'Major Life Events',
   FINANCES: 'Finances',
   AIMS_AND_HOBBIES: 'Aims And Hobbies',
