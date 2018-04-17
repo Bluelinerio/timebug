@@ -1,5 +1,5 @@
-import t from '../components/templates';
-import { AreaOfLife, LifeStages, Emotion } from './contents';
+import t from '../components/templates'
+import { AreaOfLife, LifeStages, Emotion } from './contents'
 
 export default {
   1: {
@@ -82,19 +82,19 @@ export default {
   },
   4: {
     type: t.struct({
-      reflection: t.maybe(t.String)
+      reflection: Emotion
     }),
     options: {
       //label: "When you were in that 90 year old’s body and mind",
       label:
-        'What emotions do you feel as you reflect back on your life as a 90 year old?',
-
+        'What is your primary emotion as you reflect back on your life as a 90-year-old?',
       fields: {
         reflection: {
+          showLabel: false,
           multiline: true
           //help: "Be completely honest with yourself. This is an exercise to help us determine what we want to keep doing well, and what we need to imrprove on as we walk down the path to 2020.",
         }
       }
     }
   }
-};
+}
