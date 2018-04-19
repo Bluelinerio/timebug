@@ -86,7 +86,7 @@ export default {
       activitiesToEngageLess: t.list(
         t.struct({
           activity: t.String,
-          pillarsOfLife: t.maybe(PillarsOfLife)
+          pillarOfLife: PillarsOfLife
         })
       )
     }),
@@ -103,9 +103,11 @@ export default {
             auto: 'none',
             fields: {
               activity: {
+                auto:'labels'
                 //error: "What's something you would like to do less of in the coming years?"
               },
-              areaOfLife: {
+              pillarOfLife: {
+                auto:'labels'
                 //error: "What Timebug Life Category does this thing fit into?"
               }
             }
@@ -136,9 +138,11 @@ export default {
             auto: 'none',
             fields: {
               activity: {
+                auto:'labels'
                 //error: "What's something you would like to do less of in the coming years?"
               },
               pillarsOfLife: {
+                auto:'labels'
                 //error: "What Timebug Life Category does this thing fit into?"
               }
             }

@@ -92,7 +92,7 @@ export default {
   },
   4: {
     type: t.struct({
-      skills: t.list(
+      skillsForGarden: t.list(
         t.struct({
           skill: t.String,
           proficiencyLevel: OneToTenScale,
