@@ -62,7 +62,7 @@ export default {
   },
   3: {
     type: t.struct({
-      dreams: t.list(
+      dreamJournal: t.list(
         t.struct({
           dream: t.String
         })
@@ -72,7 +72,7 @@ export default {
       label:
         'For the remainder of the program [8 Nights of Dreaming], try to remember and write your dreams down first thing in the morning – or even if you wake up in the middle of the night, the way Jason described his experience in the video. Note what themes, characters, settings, fears, hopes and aspirations were present.',
       fields: {
-        dreams: {
+        dreamJournal: {
           item: {
             auto: 'none',
             fields: {

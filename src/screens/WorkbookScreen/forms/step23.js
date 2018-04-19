@@ -60,7 +60,7 @@ export default {
   },
   3: {
     type: t.struct({
-      BHAGS: t.list(t.String)
+      careerBHAGS: t.list(t.String)
     }),
     options: {
       label:
@@ -70,7 +70,7 @@ export default {
   4: {
     type: t.struct({
       id: t.maybe(t.String),
-      skillsToBuild: t.list(
+      careerSkillsToBuild: t.list(
         t.struct({
           skill: t.String,
           whatWillYouDo: t.String,
@@ -86,7 +86,7 @@ export default {
         id: {
           hidden: true
         },
-        skillsToBuild: {
+        careerSkillsToBuild: {
           item: { auto:'none',
             fields: {
               skill: {
