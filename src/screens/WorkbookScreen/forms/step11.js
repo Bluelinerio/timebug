@@ -14,7 +14,7 @@ export default {
   1: {
     type: t.struct({
       id: t.maybe(t.String),
-      goals: t.list(
+      topGoalsPast5Years: t.list(
         t.struct({
           goal: t.String,
           percentCompleted: PercentSelector,
@@ -30,8 +30,9 @@ export default {
         id: {
           hidden: true
         },
-        goals: {
+        topGoalsPast5Years: {
           item: {
+            auto: 'none',
             fields: {
               goal: {
                 label: 'Goal'
@@ -68,7 +69,7 @@ export default {
   },
   2: {
     type: t.struct({
-      goalTracking: t.struct({
+      fiveYearGoalTracking: t.struct({
         year1: t.Boolean,
         year2: t.Boolean,
         year3: t.Boolean,
@@ -80,7 +81,7 @@ export default {
       label: 'During the past 5 years, what years did you track your goals?'
     },
     fields: {
-      goalTracking: {
+      fiveYearGoalTracking: {
         options: {
           auto: 'labels'
         }

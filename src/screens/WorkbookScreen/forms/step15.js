@@ -23,6 +23,7 @@ export default {
         },
         personalAimsAndHobbies: {
           item: {
+            auto: 'none',
             fields: {
               personalAimHobby: {
                 label: 'Aim/Hobby'
@@ -54,20 +55,27 @@ export default {
   },
   2: {
     type: t.struct({
-      giveUp: t.String,
-      notGiveUp: t.String
+      hobbyPriorities: t.struct({
+        giveUp: t.String,
+        notGiveUp: t.String
+      })
     }),
     options: {
       label: 'How important are these hobbies to you?',
       fields: {
-        giveUp: {
-          label:
-            'Which of these hobbies, if any, would you be willing to give up if some huge new priority came along, and required more of your time?',
-          error: 'Please enter a hobby'
-        },
-        notGiveUp: {
-          label: 'Which would you NOT give up under (almost)any circumstance?',
-          error: 'Please enter a hobby'
+        hobbyPriorities: {
+          fields: {
+            giveUp: {
+              label:
+                'Which of these hobbies, if any, would you be willing to give up if some huge new priority came along, and required more of your time?',
+              error: 'Please enter a hobby'
+            },
+            notGiveUp: {
+              label:
+                'Which would you NOT give up under (almost)any circumstance?',
+              error: 'Please enter a hobby'
+            }
+          }
         }
       }
     }
@@ -88,6 +96,7 @@ export default {
       fields: {
         aimsAndHobbies: {
           item: {
+            auto: 'none',
             fields: {
               personalAimHobby: {
                 label: 'Aim/Hobby'

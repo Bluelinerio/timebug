@@ -5,9 +5,11 @@ export default {
   1: {
     type: t.struct({
       id: t.maybe(t.String),
-      mantraAnswer: t.Boolean,
-      exerciseAnswer: t.Boolean,
-      meditateAnswer: t.Boolean
+      step25CheckIn: t.struct({
+        mantraAnswer: t.Boolean,
+        exerciseAnswer: t.Boolean,
+        meditateAnswer: t.Boolean
+      })
     }),
     options: {
       label: '20/20 Life Vision Check-in',
@@ -34,7 +36,7 @@ export default {
   },
   2: {
     type: t.struct({
-      goals: t.list(
+      aimAndHobbyGoals: t.list(
         t.struct({
           goal: t.String,
           importanceLevel: t.Number,
@@ -45,8 +47,9 @@ export default {
     options: {
       label: 'What activity and hobby goals will you achieve 5 years from now?',
       fields: {
-        goals: {
+        aimAndHobbyGoals: {
           item: {
+            auto: 'none',
             fields: {
               goal: {
                 label: 'Goal'
@@ -67,54 +70,66 @@ export default {
   },
   3: {
     type: t.struct({
-      areasCutDown: t.String,
-      whoToHelp: t.String,
-      howWillYouHelp: t.String
+      aimsAndHobbiesVisionCreation: t.struct({
+        areasCutDown: t.String,
+        whoToHelp: t.String,
+        howWillYouHelp: t.String
+      })
     }),
     options: {
       label: 'Vision Creation:Aims and Hobbies',
       fields: {
-        areasCutDown: {
-          label:
-            'Which areas in your personal time will you cut down on or out completely?'
-        },
-        whoToHelp: {
-          label:
-            'Who do you want to see enjoy more time for themselves, doing the things that you know would make them happy?'
-        },
-        howWillYouHelp: {
-          label:
-            'How will you help them attain those personal goals 5 years from now?',
-          multiline: true
+        aimsAndHobbiesVisionCreation: {
+          fields: {
+            areasCutDown: {
+              label:
+                'Which areas in your personal time will you cut down on or out completely?'
+            },
+            whoToHelp: {
+              label:
+                'Who do you want to see enjoy more time for themselves, doing the things that you know would make them happy?'
+            },
+            howWillYouHelp: {
+              label:
+                'How will you help them attain those personal goals 5 years from now?',
+              multiline: true
+            }
+          }
         }
       }
     }
   },
   4: {
     type: t.struct({
-      oneWish: t.String,
-      whatAdvice: t.String,
-      howHelpWorld: t.String,
-      howHelpOthers: t.String
+      aimsAndHobbiesVisionCreationForOthers: t.struct({
+        oneWish: t.String,
+        whatAdvice: t.String,
+        howHelpWorld: t.String,
+        howHelpOthers: t.String
+      })
     }),
     options: {
       label: 'Vision Creation:Aims and Hobbies',
       fields: {
-        oneWish: {
-          label:
-            "What's one wish that you have for the world or a particular sector of the world relating to personal aims and hobbies?"
-        },
-        whatAdvice: {
-          label:
-            'What advice would you give people who are on board with your wish- how can we all work together towards this aim in our personal lives?'
-        },
-        howHelpWorld: {
-          label:
-            'How can you help encourage others to help actualize this world goal?'
-        },
-        howHelpOthers: {
-          label:
-            'How can you help, be it in any small way, to see this goal be achieved?'
+        aimsAndHobbiesVisionCreationForOthers: {
+          fields: {
+            oneWish: {
+              label:
+                "What's one wish that you have for the world or a particular sector of the world relating to personal aims and hobbies?"
+            },
+            whatAdvice: {
+              label:
+                'What advice would you give people who are on board with your wish- how can we all work together towards this aim in our personal lives?'
+            },
+            howHelpWorld: {
+              label:
+                'How can you help encourage others to help actualize this world goal?'
+            },
+            howHelpOthers: {
+              label:
+                'How can you help, be it in any small way, to see this goal be achieved?'
+            }
+          }
         }
       }
     }

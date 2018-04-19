@@ -5,9 +5,11 @@ export default {
   1: {
     type: t.struct({
       id: t.maybe(t.String),
-      mantraAnswer: t.Boolean,
-      exerciseAnswer: t.Boolean,
-      meditateAnswer: t.Boolean
+      step23CheckIn: t.struct({
+        mantraAnswer: t.Boolean,
+        exerciseAnswer: t.Boolean,
+        meditateAnswer: t.Boolean
+      })
     }),
     options: {
       label: '20/20 Life Vision Check-in',
@@ -34,18 +36,24 @@ export default {
   },
   2: {
     type: t.struct({
-      changeJobs: t.String,
-      changesNeeded: t.String
+      ifChangeJob: t.struct({
+        changeJobs: t.String,
+        changesNeeded: t.String
+      })
     }),
     options: {
       label:
         'If you could change jobs, and do something totally new, what would it be?',
       auto: 'none',
       fields: {
-        changesNeeded: {
-          label:
-            'Reflecting back on exercise 13, what changes would you need to make in your career to increase your fulfillment and motivation levels to 10 (Extremely fufilled/motivated)?',
-          multiline: true
+        ifChangeJob: {
+          fields: {
+            changesNeeded: {
+              label:
+                'Reflecting back on exercise 13, what changes would you need to make in your career to increase your fulfillment and motivation levels to 10 (Extremely fufilled/motivated)?',
+              multiline: true
+            }
+          }
         }
       }
     }
@@ -62,7 +70,7 @@ export default {
   4: {
     type: t.struct({
       id: t.maybe(t.String),
-      field: t.list(
+      skillsToBuild: t.list(
         t.struct({
           skill: t.String,
           whatWillYouDo: t.String,
@@ -78,8 +86,8 @@ export default {
         id: {
           hidden: true
         },
-        field: {
-          item: {
+        skillsToBuild: {
+          item: { auto:'none',
             fields: {
               skill: {
                 label: 'Skill'

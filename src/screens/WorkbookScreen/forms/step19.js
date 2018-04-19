@@ -5,32 +5,40 @@ export default {
   1: {
     type: t.struct({
       id: t.maybe(t.String),
-      spiritualViews: SpiritualViews,
-      spiritualInfluence: t.list(
-        t.struct({
-          name: t.String
-        })
-      )
+      spiritualityAssessment: t.struct({
+        spiritualViews: SpiritualViews,
+        spiritualInfluence: t.list(
+          t.struct({
+            name: t.String
+          })
+        )
+      })
     }),
     options: {
       label: 'Spirituality Assessment',
       fields: {
-        id: {
-          hidden: true
-        },
-        spiritualViews: {
-          label: 'What are your current views and feelings about spirituality?'
-        },
+        spiritualityAssessment: {
+          fields: {
+            id: {
+              hidden: true
+            },
+            spiritualViews: {
+              label:
+                'What are your current views and feelings about spirituality?'
+            },
 
-        spiritualInfluence: {
-          field: {
-            label:
-              'Who and what influenced your spiritual views early on in life?'
-          },
-          item: {
-            fields: {
-              name: {
-                label: 'Name'
+            spiritualInfluence: {
+              field: {
+                label:
+                  'Who and what influenced your spiritual views early on in life?'
+              },
+              item: {
+                auto: 'none',
+                fields: {
+                  name: {
+                    label: 'Name'
+                  }
+                }
               }
             }
           }
@@ -58,6 +66,7 @@ export default {
       fields: {
         currentMentors: {
           item: {
+            auto: 'none',
             fields: {
               why: {
                 label: 'Why do you admire their approach to and views on life? '
@@ -70,19 +79,25 @@ export default {
   },
   3: {
     type: t.struct({
-      timeSpentSpirutality: TimeSpent,
-      spiritualityChanged: t.String
+      spiritualHabits: t.struct({
+        timeSpentSpirutality: TimeSpent,
+        spiritualityChanged: t.String
+      })
     }),
     options: {
       label: 'Spirituality Assessment',
       fields: {
-        timeSpentSpirutality: {
-          label:
-            'How much time do you spend each week on spiritual practices, interactions, reading, writing, etc.?'
-        },
-        spiritualityChanged: {
-          label:
-            'How have your Spiritual practices and/or beliefs changed over the past 5 years?'
+        spiritualHabits: {
+          fields: {
+            timeSpentSpirutality: {
+              label:
+                'How much time do you spend each week on spiritual practices, interactions, reading, writing, etc.?'
+            },
+            spiritualityChanged: {
+              label:
+                'How have your Spiritual practices and/or beliefs changed over the past 5 years?'
+            }
+          }
         }
       }
     }

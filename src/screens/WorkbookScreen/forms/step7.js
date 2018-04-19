@@ -5,7 +5,7 @@ export default {
   1: {
     type: t.struct({
       id: t.maybe(t.String),
-      goals: t.list(
+      goalsFromPast5Years: t.list(
         t.struct({
           goal: t.String,
           commonGoalOutcomes: CommonGoalOutcomes
@@ -19,20 +19,20 @@ export default {
         id: {
           hidden: true
         },
-        goals: {
+        goalsFromPast5Years: {
           disableOrder: true,
           maxLines: 5,
           config: {
             maxLines: 5
           },
           item: {
+            auto: 'none',
             fields: {
               goal: {
-                label:"Enter a goal you've had from the past 5 years."
+                label: "Enter a goal you've had from the past 5 years."
               },
               commonGoalOutcomes: {
-                label:
-                  'How would you classify the outcome of this goal?'
+                label: 'How would you classify the outcome of this goal?'
               }
             }
           }

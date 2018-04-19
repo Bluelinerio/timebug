@@ -22,6 +22,7 @@ export default {
         },
         majorLifeEvents: {
           item: {
+            auto: 'none',
             fields: {
               postiveOrNegative: {
                 label:

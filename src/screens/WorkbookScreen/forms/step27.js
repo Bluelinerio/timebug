@@ -11,12 +11,12 @@ export default {
       label:
         'Take in a deep breath. Then, breathe fully out of the mouth. What does your nervous system think about this receiving and giving of breath?',
       fields: {
-        auto:'none',
+        auto: 'none',
         id: {
           hidden: true
         },
         breath: {
-          auto:'none',
+          auto: 'none',
           multiline: true
         }
       }
@@ -29,27 +29,36 @@ export default {
   },
   2: {
     type: t.struct({
-      replacements: t.String,
-      relationshipToSelf: t.String
+      thoughtsToReplace: t.struct({
+        replacements: t.String,
+        relationshipToSelf: t.String
+      })
     }),
     options: {
-      label:'What old thoughts will you replace with new ones that will create new trust and a new experience?',
+      label:
+        'What old thoughts will you replace with new ones that will create new trust and a new experience?',
       fields: {
-        replacements: {
-          auto:'none',
-          help:'(e.g., Old Thinking = “Missed another workout today. I am so lazy.” vs. New Thinking = “Maybe I’m not getting enough rest. I’m going to take it easy on myself today."',
-          multiline: true
-        },
-        relationshipToSelf: {
-          label: 'What will your relationship to self look like in 5 years?',
-          multiline: true
+        thoughtsToReplace: {
+          fields: {
+            replacements: {
+              auto: 'none',
+              help:
+                '(e.g., Old Thinking = “Missed another workout today. I am so lazy.” vs. New Thinking = “Maybe I’m not getting enough rest. I’m going to take it easy on myself today."',
+              multiline: true
+            },
+            relationshipToSelf: {
+              label:
+                'What will your relationship to self look like in 5 years?',
+              multiline: true
+            }
+          }
         }
       }
     }
   },
   3: {
     type: t.struct({
-      emotions:t.list(Emotion)
+      emotions: t.list(Emotion)
     }),
     options: {
       label:
@@ -65,6 +74,7 @@ export default {
       label:
         'Who are 3 different people you will value or value more than you do now?',
       item: {
+        auto: 'none',
         fields: {
           auto: 'placeholders',
           person: {}
@@ -106,19 +116,26 @@ export default {
       }
     }
   },
-  11: {
+  7: {
     type: t.struct({
-      giveMore: t.String,
-      receiveMore: t.String
+      helpOthersWithGiving: t.struct({
+        giveMore: t.String,
+        receiveMore: t.String
+      })
     }),
     options: {
       label: 'Vision Creation:Relationships',
       fields: {
-        giveMore: {
-          label: 'What do you want to give more of to others in 5 years?'
-        },
-        receiveMore: {
-          label: 'What do you want to receive more of from others in 5 years?'
+        helpOthersWithGiving: {
+          fields: {
+            giveMore: {
+              label: 'What do you want to give more of to others in 5 years?'
+            },
+            receiveMore: {
+              label:
+                'What do you want to receive more of from others in 5 years?'
+            }
+          }
         }
       }
     }
