@@ -5,7 +5,7 @@ export default {
   1: {
     type: t.struct({
       id: t.maybe(t.String),
-      advisors: t.list(
+      boardOfAdvisors: t.list(
         t.struct({
           boardMember: t.String,
           pillarsOfLife: PillarsOfLife,
@@ -19,8 +19,9 @@ export default {
         id: {
           hidden: true
         },
-        advisors: {
+        boardOfAdvisors: {
           item: {
+            auto: 'none',
             fields: {
               boardMember: {
                 auto: 'labels'
@@ -70,6 +71,7 @@ export default {
             maxLines: 10
           },
           item: {
+            auto: 'none',
             fields: {
               supportGroup: {
                 auto: 'labels'

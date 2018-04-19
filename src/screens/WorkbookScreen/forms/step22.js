@@ -34,22 +34,28 @@ export default {
   },
   2: {
     type: t.struct({
-      dreamsDescribe: t.String,
-      dreamsRemember: DreamsRemember,
-      dreamsComeTrue: t.String
+      dreamsAssessment: t.struct({
+        dreamsDescribe: t.String,
+        dreamsRemember: DreamsRemember,
+        dreamsComeTrue: t.String
+      })
     }),
     options: {
       label: 'What do you dream about?',
       fields: {
-        dreamsDescribe: {
-          label: 'Any general themes?'
-        },
-        dreamsRemember: {
-          label: 'How often do you remember your dreams?'
-        },
-        dreamsComeTrue: {
-          label:
-            'Have your dreams ever come true – as in, you dreamt about something and then it happened? If so, list an instance when that happened.'
+        dreamsAssessment: {
+          fields: {
+            dreamsDescribe: {
+              label: 'Any general themes?'
+            },
+            dreamsRemember: {
+              label: 'How often do you remember your dreams?'
+            },
+            dreamsComeTrue: {
+              label:
+                'Have your dreams ever come true – as in, you dreamt about something and then it happened? If so, list an instance when that happened.'
+            }
+          }
         }
       }
     }
@@ -68,6 +74,7 @@ export default {
       fields: {
         dreams: {
           item: {
+            auto: 'none',
             fields: {
               dream: {
                 label: 'Dream'

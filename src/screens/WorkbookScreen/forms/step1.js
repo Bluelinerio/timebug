@@ -5,9 +5,13 @@ export default {
   1: {
     type: t.struct({
       id: t.maybe(t.String),
-      memory: t.String,
-      areaOfLife: AreaOfLife,
-      lifeStages: LifeStages
+      memories: t.list(
+        t.struct({
+          memory: t.String,
+          areaOfLife: AreaOfLife,
+          lifeStages: LifeStages
+        })
+      )
     }),
     options: {
       label: 'What are your best memories?',
@@ -15,17 +19,25 @@ export default {
         id: {
           hidden: true
         },
-        lifeStages: {
-          label: 'Which stage of life does this belong to?'
-        },
-        memory: {
-          multiline: true
-
-          //help: "Try to be as descriptive as possible."
-        },
-        areaOfLife: {
-          label: 'Which of the 7 Pillars of Life does this belong to?'
-          //help: "Assign this memory to one of the 7 Timebug Life Categories. This will be help us with later steps of Assessment and Vision Creation."
+        memories: {
+          item: {
+            auto: 'none',
+            auto: 'none',
+            fields: {
+              lifeStages: {
+                label: 'Which stage of life does this belong to?'
+              },
+              memory: {
+                multiline: true,
+                label: 'Memory'
+                //help: "Try to be as descriptive as possible."
+              },
+              areaOfLife: {
+                label: 'Which of the 7 Pillars of Life does this belong to?'
+                //help: "Assign this memory to one of the 7 Timebug Life Categories. This will be help us with later steps of Assessment and Vision Creation."
+              }
+            }
+          }
         }
       }
     },
@@ -37,40 +49,54 @@ export default {
   },
   2: {
     type: t.struct({
-      regret: t.String,
-      areaOfLife: t.maybe(AreaOfLife),
-      lifeStages: t.maybe(LifeStages)
+      memories: t.list(
+        t.struct({
+          regret: t.String,
+          areaOfLife: t.maybe(AreaOfLife),
+          lifeStages: t.maybe(LifeStages)
+        })
+      )
     }),
     options: {
       label: 'What are your main regrets?',
       fields: {
-        lifeStages: {
-          label: 'Which stage of life does this belong to?'
-          // help: "Please select a value"
-        },
-        areaOfLife: {
-          label: 'Which of the 7 Pillars of Life does this belong to?'
-          //help: "Assign this memory to one of the 7 Timebug Life Categories. This will be help us with later steps of Assessment and Vision Creation.",
-          //help: "Please fill out this field."
-        },
-        regret: {
-          multiline: true
-          // help: "Please fill out this field.",
-          //help: "Try to be as descriptive as possible."
+        memories: {
+          auto: 'none',
+          item: {
+            auto: 'none',
+            auto: 'none',
+            fields: {
+              lifeStages: {
+                label: 'Which stage of life does this belong to?'
+                // help: "Please select a value"
+              },
+              areaOfLife: {
+                label: 'Which of the 7 Pillars of Life does this belong to?'
+                //help: "Assign this memory to one of the 7 Timebug Life Categories. This will be help us with later steps of Assessment and Vision Creation.",
+                //help: "Please fill out this field."
+              },
+              regret: {
+                multiline: true,
+                auto: 'labels'
+                // help: "Please fill out this field.",
+                //help: "Try to be as descriptive as possible."
+              }
+            }
+          }
         }
       }
     }
   },
   3: {
     type: t.struct({
-      definingMoment: t.list(t.String)
+      definingMoments: t.list(t.String)
     }),
     options: {
       label:
         'What are your defining life moments?(e.g. marriage, birth of a child, career awards, etc.)',
       fields: {
         //placeholder: 'birthing my first child.',
-        definingMoment: {
+        definingMoments: {
           disableOrder: true,
           maxLines: 3,
           config: {
@@ -82,7 +108,7 @@ export default {
   },
   4: {
     type: t.struct({
-      reflection: t.maybe(t.String)
+      reflections: t.maybe(t.String)
     }),
     options: {
       //label: "When you were in that 90 year old’s body and mind",
@@ -90,7 +116,11 @@ export default {
         'What emotions do you feel as you reflect back on your life as a 90 year old?',
 
       fields: {
-        reflection: {
+        reflections: {
+          item: {
+            auto: 'none',
+            auto: 'none'
+          },
           multiline: true
           //help: "Be completely honest with yourself. This is an exercise to help us determine what we want to keep doing well, and what we need to imrprove on as we walk down the path to 2020.",
         }

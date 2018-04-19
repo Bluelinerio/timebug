@@ -39,90 +39,112 @@ export default {
   },
   2: {
     type: t.struct({
-      selfView: t.String,
-      othersView: t.maybe(t.Boolean)
+      attitudeTowardsMoney: t.struct({
+        selfView: t.String,
+        othersView: t.maybe(t.Boolean)
+      })
     }),
     options: {
       label:
         'In one or two sentences, describe your attitude towards money today',
       fields: {
-        selfView: {
-          auto: 'none',
-          multiline: true
-        },
-        othersView: {
-          label:
-            'Knowing how others perceive your relationship with money could be helpful. Would you like to try engage someone to find out?'
+        attitudeTowardsMoney: {
+          fields: {
+            selfView: {
+              auto: 'none',
+              multiline: true
+            },
+            othersView: {
+              label:
+                'Knowing how others perceive your relationship with money could be helpful. Would you like to try engage someone to find out?'
+            }
+          }
         }
       }
     }
   },
   3: {
     type: t.struct({
-      today: CreditScore,
-      creditScoreChange: CreditScoreChange,
-      aYearAgo: CreditScore,
-      aYearFromNow: CreditScore,
-      change: ChangeKind,
-      effort: EffortEvaluation
+      creditScoreAssessment: t.struct({
+        today: CreditScore,
+        creditScoreChange: CreditScoreChange,
+        aYearAgo: CreditScore,
+        aYearFromNow: CreditScore,
+        change: ChangeKind,
+        effort: EffortEvaluation
+      })
     }),
     options: {
       label: 'Credit score',
       fields: {
-        today: {
-          label: 'What is your credit score?'
-        },
-        creditScoreChange: {
-          label: 'Has your credit score changed over the past year?'
-        },
-        aYearAgo: {
-          label: 'What was your credit score one year ago today?',
-          error: 'Choose one'
+        creditScoreAssessment: {
+          fields: {
+            today: {
+              label: 'What is your credit score?'
+            },
+            creditScoreChange: {
+              label: 'Has your credit score changed over the past year?'
+            },
+            aYearAgo: {
+              label: 'What was your credit score one year ago today?',
+              error: 'Choose one'
+            }
+          }
         }
       }
     }
   },
   4: {
     type: t.struct({
-      bestAchievement: t.String,
-      biggestDissapointment: t.String
+      financialAchievements: t.struct({
+        bestAchievement: t.String,
+        biggestDissapointment: t.String
+      })
     }),
     options: {
       label: 'Financial Achievements',
       fields: {
-        bestAchievement: {
-          label:
-            'What was your biggest financial achievement over the past 5 years?'
-          //error: 'Write a sentence or two describing your biggest success'
-        },
-        biggestDissapointment: {
-          label: 'What was your biggest dissapointment over the past 5 years?'
-          //error: 'Can you sum it up in a word or two?'
+        financialAchievements: {
+          bestAchievement: {
+            label:
+              'What was your biggest financial achievement over the past 5 years?'
+            //error: 'Write a sentence or two describing your biggest success'
+          },
+          biggestDissapointment: {
+            label: 'What was your biggest dissapointment over the past 5 years?'
+            //error: 'Can you sum it up in a word or two?'
+          }
         }
       }
     }
   },
   5: {
     type: t.struct({
-      whereStandToday: WhereStandToday,
-      profitLossFeelings: t.maybe(OneToTenScale),
-      balanceSheetChange: CreditScoreChange
+      currentFinancialStanding: t.struct({
+        whereStandToday: WhereStandToday,
+        profitLossFeelings: t.maybe(OneToTenScale),
+        balanceSheetChange: CreditScoreChange
+      })
     }),
-
     options: {
       label: 'Where do you stand today?',
       fields: {
-        whereStandToday: {
-          label:
-            'Where do you stand today compared to what you had envisioned for yourself?'
-        },
-        profitLossFeelings: {
-          label:
-            'Do you have a Profit and Loss Statement? If so, how do you feel about it?',
-          help: '1=Not at all happy, 10=Extremely happy'
-        },
-        balanceSheetChange: {
-          label: 'How does it compare to a balance sheet from previous years?'
+        currentFinancialStanding: {
+          fields: {
+            whereStandToday: {
+              label:
+                'Where do you stand today compared to what you had envisioned for yourself?'
+            },
+            profitLossFeelings: {
+              label:
+                'Do you have a Profit and Loss Statement? If so, how do you feel about it?',
+              help: '1=Not at all happy, 10=Extremely happy'
+            },
+            balanceSheetChange: {
+              label:
+                'How does it compare to a balance sheet from previous years?'
+            }
+          }
         }
       }
     }

@@ -27,6 +27,7 @@ export default {
         },
         topGoals: {
           item: {
+            auto: 'none',
             fields: {
               specificChanges: {
                 label: 'Specific changes to make'

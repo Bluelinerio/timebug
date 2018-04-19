@@ -28,6 +28,7 @@ export default {
         },
         areasOfGarden: {
           item: {
+            auto: 'none',
             fields: {
               areaOfGarden: {
                 auto: 'labels'
@@ -67,20 +68,22 @@ export default {
   },
   3: {
     type: t.struct({
-      careerBhagOne: t.String,
-      careerBhagTwo: t.String,
-      aimsAndHobbiesBhagOne: t.String,
-      aimsAndHobbiesBhagTwo: t.String,
-      healthBhagOne: t.String,
-      healthBhagTwo: t.String,
-      relationshipBhagOne: t.String,
-      relationshipBhagTwo: t.String,
-      financialBhagOne: t.String,
-      financialBhagTwo: t.String,
-      spiritualityBhagOne: t.String,
-      spiritualityBHAG2: t.String,
-      financesBhagOne: t.String,
-      financesBhagTwo: t.String
+      selfAssessmentsReflection: t.struct({
+        careerBhagOne: t.String,
+        careerBhagTwo: t.String,
+        aimsAndHobbiesBhagOne: t.String,
+        aimsAndHobbiesBhagTwo: t.String,
+        healthBhagOne: t.String,
+        healthBhagTwo: t.String,
+        relationshipBhagOne: t.String,
+        relationshipBhagTwo: t.String,
+        financialBhagOne: t.String,
+        financialBhagTwo: t.String,
+        spiritualityBhagOne: t.String,
+        spiritualityBHAG2: t.String,
+        financesBhagOne: t.String,
+        financesBhagTwo: t.String
+      })
     }),
     options: {
       label:
@@ -104,6 +107,7 @@ export default {
       fields: {
         skills: {
           item: {
+            auto: 'none',
             fields: {
               skill: {
                 label: 'Skill',

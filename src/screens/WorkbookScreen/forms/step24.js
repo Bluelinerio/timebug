@@ -5,24 +5,31 @@ export default {
   1: {
     type: t.struct({
       id: t.maybe(t.String),
-      mantraAnswer: t.Boolean,
-      exerciseAnswer: t.Boolean,
-      meditateAnswer: t.Boolean
+      step24CheckIn: t.struct({
+        mantraAnswer: t.Boolean,
+        exerciseAnswer: t.Boolean,
+        meditateAnswer: t.Boolean
+      })
     }),
     options: {
       label: '20/20 Life Vision Check-in',
       fields: {
-        id: {
-          hidden: true
-        },
-        mantraAnswer: {
-          label: 'Did you do your mantra today (assigned on Day 21)?'
-        },
-        exerciseAnswer: {
-          label: 'Did you exercise and meditate yet today(assigned on Day 8)?'
-        },
-        meditateAnswer: {
-          label: 'Did you MEDITATE yet today(assigned on Day 8)?'
+        step24CheckIn: {
+          fields: {
+            id: {
+              hidden: true
+            },
+            mantraAnswer: {
+              label: 'Did you do your mantra today (assigned on Day 21)?'
+            },
+            exerciseAnswer: {
+              label:
+                'Did you exercise and meditate yet today(assigned on Day 8)?'
+            },
+            meditateAnswer: {
+              label: 'Did you MEDITATE yet today(assigned on Day 8)?'
+            }
+          }
         }
       }
     },
@@ -46,17 +53,20 @@ export default {
       label:
         'Who is your “finance team” that helped you not only to attain but also manage your financial success?',
       item: {
+        auto: 'none',
         label: 'Person'
       }
     }
   },
   4: {
     type: t.struct({
-      moneyPlans: t.String,
-      lifeDiffer: t.String,
-      workMoreOrLess: t.String,
-      vacationDays: t.String,
-      materialThings: t.String
+      moneyDreams: t.struct({
+        moneyPlans: t.String,
+        lifeDiffer: t.String,
+        workMoreOrLess: t.String,
+        vacationDays: t.String,
+        materialThings: t.String
+      })
     }),
     options: {
       label: 'Money Dreams',
@@ -92,37 +102,43 @@ export default {
   },
   6: {
     type: t.struct({
-      whoChangeRelationship: t.String,
-      whoChangeFinancialFortunes: t.String,
-      howHelp: t.String,
-      oneWish: t.String,
-      whoCanHelp: t.String,
-      howYouHelp: t.String
+      personToHelpFinancially: t.struct({
+        whoChangeRelationship: t.String,
+        whoChangeFinancialFortunes: t.String,
+        howHelp: t.String,
+        oneWish: t.String,
+        whoCanHelp: t.String,
+        howYouHelp: t.String
+      })
     }),
     options: {
       fields: {
-        whoChangeRelationship: {
-          label:
-            'Who do you want to succeed with or change his / her relationship to money?'
-        },
-        whoChangeFinancialFortunes: {
-          label:
-            'How do you want them change his/her financial fortunes in 5 years?'
-        },
-        howHelp: {
-          label: 'How can you help him/her achieve this goal? '
-        },
-        oneWish: {
-          label:
-            'What one wish do you have for the world or a particular sector of the world relating to money?'
-        },
-        whoCanHelp: {
-          label:
-            'What group of people or country can be most influential in helping this goal be attained?'
-        },
-        howYouHelp: {
-          label:
-            'How can you help, be it in any small way, to see this goal achieved?'
+        personToHelpFinancially: {
+          fields: {
+            whoChangeRelationship: {
+              label:
+                'Who do you want to succeed with or change his / her relationship to money?'
+            },
+            whoChangeFinancialFortunes: {
+              label:
+                'How do you want them change his/her financial fortunes in 5 years?'
+            },
+            howHelp: {
+              label: 'How can you help him/her achieve this goal? '
+            },
+            oneWish: {
+              label:
+                'What one wish do you have for the world or a particular sector of the world relating to money?'
+            },
+            whoCanHelp: {
+              label:
+                'What group of people or country can be most influential in helping this goal be attained?'
+            },
+            howYouHelp: {
+              label:
+                'How can you help, be it in any small way, to see this goal achieved?'
+            }
+          }
         }
       }
     }

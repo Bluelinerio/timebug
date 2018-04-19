@@ -26,6 +26,7 @@ export default {
             maxLines: 10
           },
           item: {
+            auto: 'none',
             fields: {
               strengths: {
                 auto: 'labels',
@@ -65,6 +66,7 @@ export default {
             maxLines: 5
           },
           item: {
+            auto: 'none',
             fields: {
               weaknesses: {
                 auto: 'labels'
@@ -72,7 +74,7 @@ export default {
               },
               goalNotReached: {
                 label:
-                  "What goal was negatively impacted as a result of this weakness?"
+                  'What goal was negatively impacted as a result of this weakness?'
                 // error: "What was one of your goals that you were not able to achieve as a result?"
               }
             }
@@ -83,16 +85,18 @@ export default {
   },
   3: {
     type: t.struct({
-      friendsName: t.String,
-      strengths: t.list(Strengths),
-      weaknesses: t.list(Weaknesses)
+      closeFriend: t.struct({
+        friendsName: t.String,
+        strengths: t.list(Strengths),
+        weaknesses: t.list(Weaknesses)
+      })
     }),
     options: {
       label:
         'What does a close friend or family member, an objective one, think of your strengths & weaknesses?',
       fields: {
         friendsName: {
-          label: "Friend/family member",
+          label: 'Friend/family member',
           error:
             'The best person to help you with this exercise is someone who you trust to me completely honest without being judgemental.'
         },
