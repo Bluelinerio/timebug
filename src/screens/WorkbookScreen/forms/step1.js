@@ -21,8 +21,7 @@ export default {
         },
         memories: {
           item: {
-            auto: 'none',
-            auto: 'none',
+            auto: 'none'
             fields: {
               lifeStages: {
                 label: 'Which stage of life does this belong to?'
@@ -63,8 +62,7 @@ export default {
         memories: {
           auto: 'none',
           item: {
-            auto: 'none',
-            auto: 'none',
+            auto: 'none'
             fields: {
               lifeStages: {
                 label: 'Which stage of life does this belong to?'
