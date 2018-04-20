@@ -12,7 +12,7 @@ type Props = {
   value: number,
   maximumValue: number,
   minimumValue: number,
-  updateEmojiWithValue?: ({
+  updateStoreWithEmojiAndValue?: ({
     value: number,
     emoji: string
   }) => void,
@@ -65,15 +65,14 @@ class EmojiPickerScreenComponent extends React.Component<Props, State> {
   doneButton = () => {
     const { value, emoji } = this.state
     this.props.navigation.dispatch(NavigationActions.back())
-    this.props.updateEmojiWithValue &&
-      this.props.updateEmojiWithValue({
+    this.props.updateStoreWithEmojiAndValue &&
+      this.props.updateStoreWithEmojiAndValue({
         value,
         emoji
       })
   }
 
-  updateValue = value =>
-    this.setState({ value, selectionMade: true }, this.animateIfNeeded)
+  updateValue = value => this.setState({ value, selectionMade: true })
 
   render() {
     const { emoji, selectionMade } = this.state
@@ -107,15 +106,6 @@ class EmojiPickerScreenComponent extends React.Component<Props, State> {
             {emoji}
           </Text>
         </Animatable.View>
-        {selectionMade && (
-          <Slider
-            value={this.props.value}
-            maximumValue={this.props.maximumValue}
-            minimumValue={this.props.minimumValue}
-            onSlidingComplete={this.updateValue}
-            color={this.props.color}
-          />
-        )}
         <EmojiSelectorComponent
           columns={10}
           onEmojiSelected={this.updateEmoji}
@@ -126,11 +116,20 @@ class EmojiPickerScreenComponent extends React.Component<Props, State> {
           category={Categories.people}
         />
         {selectionMade && (
-          <View>
+          <View style={{
+            marginVertical: 20
+          }}>
             <Button
               onPress={this.doneButton}
               text={"That's it"}
               backgroundColor={this.props.color}
+            />
+            <Slider
+              value={this.props.value}
+              maximumValue={this.props.maximumValue}
+              minimumValue={this.props.minimumValue}
+              onSlidingComplete={this.updateValue}
+              color={this.props.color}
             />
           </View>
         )}
@@ -150,7 +149,6 @@ const styles = StyleSheet.create({
   display: {
     padding: 20,
     margin: 24,
-    borderWidth: 2,
     borderRadius: 12,
     alignItems: 'center',
     justifyContent: 'center'
