@@ -1,9 +1,9 @@
-import * as React                            from 'react'
+import * as React from 'react'
 import { NavigationActions, StackNavigator } from 'react-navigation'
-import { mapProps, compose }                 from 'recompose'
-import styles                                from '../styles'
-import MarkdownScreenComponent               from './Components/MarkdownScreenComponent'
-import HeaderCloseButton                     from '../../components/HeaderCloseButton'
+import { mapProps, compose } from 'recompose'
+import styles from '../styles'
+import MarkdownScreenComponent from './Components/MarkdownScreenComponent'
+import HeaderCloseButton from '../../components/HeaderCloseButton'
 
 const MarkdownScreenContainer = compose(
   mapProps(props => ({
@@ -39,6 +39,7 @@ const MarkdownScreen = StackNavigator(
 )
 
 // TODO: determin if it is required to fixDebounce:
-//fixDebounce(MarkdownScreenNavigator)
+import { fixDebounce } from '../../navigation/util'
+fixDebounce(MarkdownScreen)
 
 export default MarkdownScreen

@@ -2,9 +2,12 @@ import * as React from 'react'
 import EmojiPickerScreenComponent from './EmojiPickerScreenComponent'
 import { NavigationActions, StackNavigator } from 'react-navigation'
 import { mapProps, compose } from 'recompose'
+import { connect } from 'react-redux'
+import updateStoreWithEmojiAndValue from '../../redux/actions/checkins.actions'
 import HeaderCloseButton from '../../components/HeaderCloseButton'
 
 const EmojiPickerScreenContainer = compose(
+  connect(null, { updateStoreWithEmojiAndValue }),
   mapProps(props => {
     return {
       ...props,
@@ -49,7 +52,8 @@ const EmojiPickerScreen = StackNavigator(
   }
 )
 
+import { fixDebounce } from '../../navigation/util'
 // TODO: determin if it is required to fixDebounce:
-//fixDebounce(EmojiPickerScreenNavigator)
+fixDebounce(EmojiPickerScreen)
 
 export default EmojiPickerScreen
