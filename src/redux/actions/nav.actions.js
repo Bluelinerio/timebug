@@ -84,3 +84,9 @@ export const goToMarkdownScreen = (props: ?{}) =>
     routeName: routes.root.MarkdownScreen,
     params: props
   })
+
+export const goToEmojiPickerScreen = (params: ?{}) =>
+  NavigationActions.navigate({
+    routeName: routes.root.EmojiPickerScreen,
+    params
+  })

@@ -7,11 +7,12 @@ export default {
     DashboardScreen: 'DashboardScreen',
     initialRouteName: 'HomeScreen',
     MeditationScreen: 'MeditationScreen',
-    MarkdownScreen: 'MarkdownScreen'
+    MarkdownScreen: 'MarkdownScreen',
+    EmojiPickerScreen: 'EmojiPickerScreen'
   },
   step: {
     StepScreen: 'StepScreen',
     WorkbookScreen: 'WorkbookScreen',
     WorkbookDoneScreen: 'WorkbookDoneScreen'
   }
-};
+}

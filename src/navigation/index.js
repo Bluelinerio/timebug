@@ -10,6 +10,7 @@ import WalkthroughScreen from '../screens/WalkthroughScreen'
 import DashboardScreen from '../screens/DashboardScreen'
 import MeditationScreen from '../screens/MeditationScreen'
 import MarkdownScreen from '../screens/MarkdownScreen'
+import EmojiPickerScreen from '../screens/EmojiPickerScreen'
 import { uriPrefix } from '../constants'
 import routes from './routes'
 
@@ -69,6 +70,9 @@ export const rootConfiguration = {
     },
     [routes.root.MarkdownScreen]: {
       screen: MarkdownScreen
+    },
+    [routes.root.EmojiPickerScreen]: {
+      screen: EmojiPickerScreen
     }
   },
   options: {
