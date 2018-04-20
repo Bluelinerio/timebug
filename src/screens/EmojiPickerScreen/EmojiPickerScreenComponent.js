@@ -2,12 +2,12 @@ import React from 'react'
 import { StyleSheet, Text, View, LayoutAnimation } from 'react-native'
 import { SafeAreaView, NavigationActions } from 'react-navigation'
 import type { NavigationProp } from 'react-navigation'
-import * as Animatable from 'react-native-animatable'
 import EmojiSelectorComponent, { Categories } from './EmojiSelectorComponent'
 import Slider from '../../components/Slider'
 import Button from '../../components/Button'
 
 type Props = {
+  title: string,
   color: string,
   value: number,
   maximumValue: number,
@@ -86,8 +86,7 @@ class EmojiPickerScreenComponent extends React.Component<Props, State> {
           }
         ]}
       >
-        <Animatable.View
-          ref={v => (this.animatableView = v)}
+        <View
           style={[
             styles.display,
             {
@@ -105,7 +104,7 @@ class EmojiPickerScreenComponent extends React.Component<Props, State> {
           >
             {emoji}
           </Text>
-        </Animatable.View>
+        </View>
         <EmojiSelectorComponent
           columns={10}
           onEmojiSelected={this.updateEmoji}
@@ -116,9 +115,11 @@ class EmojiPickerScreenComponent extends React.Component<Props, State> {
           category={Categories.people}
         />
         {selectionMade && (
-          <View style={{
-            marginVertical: 20
-          }}>
+          <View
+            style={{
+              marginVertical: 20
+            }}
+          >
             <Button
               onPress={this.doneButton}
               text={"That's it"}
