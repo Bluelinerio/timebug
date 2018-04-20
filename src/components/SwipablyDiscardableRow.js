@@ -20,7 +20,11 @@ export default class SwipablyDiscardableRow extends Component<{
         renderRightActions={() => (
           <RectButton style={styles.rightAction} onPress={onClose} />
         )}
+        renderLeftActions={() => (
+          <RectButton style={styles.rightAction} onPress={onClose} />
+        )}
         onSwipeableRightOpen={onClose}
+        onSwipeableLeftOpen={onClose}
       >
         {children}
       </Swipeable>
