@@ -1,7 +1,7 @@
 // @flow
 
 import React, { PureComponent } from 'react'
-import { View, Text, Platform } from 'react-native'
+import { View, Platform, LayoutAnimation } from 'react-native'
 import Carousel, { Pagination } from 'react-native-snap-carousel'
 import styles, { colors } from '../styles/PagninatedCarousel.style'
 import StepCarouselGreet from '../containers/StepCarouselGreet'
@@ -36,14 +36,16 @@ export default class PagninatedCarousel extends PureComponent<Props, State> {
   }
 
   // This two mehtods are a fix to the a design decision of Pagination where when pressing a dot it looks for the carouselRef instead of have somethin like onPress(index:number).
-  _snapToItem = (index) => {
-    const { carouseRef } = this.state;
-    carouseRef && carouseRef._snapToItem(index);
+  _snapToItem = index => {
+    const { carouseRef } = this.state
+    carouseRef && carouseRef._snapToItem(index)
   }
-  _getPositionIndex = (index) => {
+  _getPositionIndex = index => {
     const { activeSliderIndex } = this.state
-    const addForPhase = Math.floor(activeSliderIndex / NUMBER_OF_STEP_FOR_PHASES) * NUMBER_OF_STEP_FOR_PHASES;
-    return addForPhase + index;
+    const addForPhase =
+      Math.floor(activeSliderIndex / NUMBER_OF_STEP_FOR_PHASES) *
+      NUMBER_OF_STEP_FOR_PHASES
+    return addForPhase + index
   }
 
   render() {
@@ -104,7 +106,21 @@ export default class PagninatedCarousel extends PureComponent<Props, State> {
           autoplayDelay={2000}
           autoplayInterval={6000}
           onSnapToItem={(index: number) => {
-            this.setState({ activeSliderIndex: index })
+            this.setState(
+              { activeSliderIndex: index },
+              LayoutAnimation.configureNext({
+                duration: 400,
+                create: {
+                  type: LayoutAnimation.Types.spring,
+                  property: LayoutAnimation.Properties.scaleXY,
+                  springDamping: 0.7
+                },
+                update: {
+                  type: LayoutAnimation.Types.spring,
+                  springDamping: 0.7
+                }
+              })
+            )
             if (snap) {
               snap(index)
             }
