@@ -1,4 +1,7 @@
 import * as React from 'react'
+import {
+  removeLabelFromListItem
+} from '../FormManipulations.js'
 
 import {
   ListContainer,
@@ -124,7 +127,10 @@ export default class FormList extends React.Component<Props, State> {
         })
       : null
 
-    const children = items.reverse().map(RowWithoutButtons)
+    const children = items
+      .reverse()
+      .map(removeLabelFromListItem)
+      .map(RowWithoutButtons)
 
     const lastChildIndex = children.length - 1
 
