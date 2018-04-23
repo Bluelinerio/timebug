@@ -7,11 +7,6 @@ import EmotionCheckinCellComponent from '../components/DashboardCells/EmotionChe
 import { randomItem } from '../../../utils/random'
 import moment from 'moment'
 
-const mapStateToProps = state => ({
-  user: selectors.user(state),
-  uniqueColors: selectors.uniqueColors(state)
-})
-
 const getGreetingTime = m => {
   if (!m || !m.isValid()) return ''
 
@@ -28,19 +23,70 @@ const getGreetingTime = m => {
   }
 }
 
-const firstName = user => user && user.name && user.name.split(' ')[0]
-const title = firstName =>
-  `Hi${(firstName && ` ${firstName}, how`) ||
-    `, how`} are you feeling EMOTIONALLY this ${getGreetingTime(moment())}?\n`
+const firstNameFromUser = user => user && user.name && user.name.split(' ')[0]
 
-const button = ({ user, uniqueColors, navigation, ...rest }) => ({
-  ...rest,
-  title: title(firstName(user)),
+const EMOTION = 'Emotion'
+const PHYSICAL = 'Physical'
+const MENTAL = 'Mental'
+
+type CheckinType = EMOTION | PHYSICAL | MENTAL
+
+type CheckinSuggestion = {
+  type: CheckingType,
+  title: string,
+  color: string,
+  id: string
+}
+
+const createNewHowAreYouFeelingSuggestionCheckin = ({ user, uniqueColors }) => {
+  const randomCheckinType = (): CheckinType =>
+    randomItem([EMOTION, PHYSICAL, MENTAL])
+
+  const checkinTypeInSentence = (checkin: CheckinType) =>
+    ({
+      [EMOTION]: 'EMOTIONALLY',
+      [PHYSICAL]: 'physically',
+      [MENTAL]: 'Mentally'
+    }[checkin])
+
+  const suggestionTitleFromFirstNameAndCheckinType = (
+    firstName: string,
+    checkinType: CheckingType
+  ) =>
+    `Hi${(firstName && ` ${firstName}, how`) ||
+      `, how`} are you feeling ${checkinTypeInSentence(
+      checkinType
+    ).toUpperCase()} this ${getGreetingTime(moment())}?\n`
+
+  const randomId = () => '' // randomBytes(16).toString('hex'),
+  const checkinType = randomCheckinType()
+
+  return {
+    title: suggestionTitleFromFirstNameAndCheckinType(
+      firstNameFromUser(user),
+      checkinType
+    ),
+    color: randomItem(uniqueColors),
+    id: randomId(),
+    checkinType
+  }
+}
+
+const mapStateToProps = state =>
+  createNewHowAreYouFeelingSuggestionCheckin({
+    user: selectors.user(state),
+    uniqueColors: selectors.uniqueColors(state)
+  })
+
+const button = ({ title, color, id, checkinType, navigation, ...rest }) => ({
+  title,
   button: {
     onPress: () =>
       navigation.dispatch(
         goToEmojiPickerScreen({
-          color: randomItem(uniqueColors)
+          color,
+          id,
+          checkinType
         })
       ),
     title: 'Emoji'

@@ -17,25 +17,23 @@ const EmojiPickerScreenContainer = compose(
 )(EmojiPickerScreenComponent)
 
 EmojiPickerScreenContainer.navigationOptions = ({
-  navigation: { dispatch, params }
-}) => {
-  //debugger
-  return {
-    headerStyle: [
-      {
-        backgroundColor: 'white'
-      }
-    ],
-    title: 'How are you feeling?',
-    headerRight: (
-      <HeaderCloseButton
-        onPress={() => dispatch(NavigationActions.back())}
-        pressColorAndroid={'white'}
-        tintColor={'white'}
-      />
-    )
-  }
-}
+  navigation: { dispatch, state: { params: { title, color } } }
+}) => ({
+  headerStyle: [
+    {
+      backgroundColor: color,
+      elevation: 0
+    }
+  ],
+  title,
+  headerRight: (
+    <HeaderCloseButton
+      onPress={() => dispatch(NavigationActions.back())}
+      pressColorAndroid={'white'}
+      tintColor={'white'}
+    />
+  )
+})
 
 const EmojiPickerScreen = StackNavigator(
   {

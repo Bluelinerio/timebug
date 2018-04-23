@@ -3,11 +3,9 @@ import * as React from 'react'
 import {
   CellContainer,
   Container,
-  VectorItemButton,
+  VectorEntypoButton,
   Title
 } from './DashboardViews.js'
-
-const EmojiButton = <VectorItemButton name="emoji-neutral" />
 
 const EmotionCheckinCellComponent = ({
   button,
@@ -20,13 +18,14 @@ const EmotionCheckinCellComponent = ({
   },
   title: string,
   onClose: () => void
-}) => (
-  <CellContainer onClose={onClose}>
-    <Title title={title} />
-    <Container>
-      <EmojiButton {...button} />
-    </Container>
-  </CellContainer>
-)
-
+}) => {
+  return (
+    <CellContainer onClose={onClose}>
+      <Title title={title} />
+      <Container>
+        <VectorEntypoButton name="emoji-neutral" {...button} />
+      </Container>
+    </CellContainer>
+  )
+}
 export default EmotionCheckinCellComponent
