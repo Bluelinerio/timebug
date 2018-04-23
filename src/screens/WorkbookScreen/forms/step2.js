@@ -69,10 +69,12 @@ export default {
           item: {
             auto: 'none',
             fields: {
-              pillarsOfLife: {
+              pillarOfLife: { 
+                auto: 'labels'
                 //error: "Please select a Life category."
               },
               hours: {
+                auto: 'labels'
                 //error: "How many hours out of a 168 hour week would you ideally spend on this category?"
               }
             }

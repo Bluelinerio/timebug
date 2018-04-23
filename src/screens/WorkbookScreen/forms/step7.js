@@ -20,6 +20,7 @@ export default {
           hidden: true
         },
         goalsFromPast5Years: {
+          label:'Goals',
           disableOrder: true,
           maxLines: 5,
           config: {

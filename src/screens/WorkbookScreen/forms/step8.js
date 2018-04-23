@@ -30,7 +30,7 @@ export default {
           emotional: OneToTenScale
         })
       }),
-      weekend: t.struct({
+      weekendEnergyLevels: t.struct({
         weekendMorningEnergyLevels: t.struct({
           physical: OneToTenScale,
           mental: OneToTenScale,

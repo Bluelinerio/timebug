@@ -25,7 +25,10 @@ export default {
         },
         emotion: {
           label:
-            'What emotions pop up when you think about your relationship with money? '
+            'What emotions pop up when you think about your relationship with money? ',
+          item: {
+            auto: 'none'
+          }
           //error: 'Emotions are hard for some and easy for others. Just pick the first thing that comes to mind.'
         }
       }
@@ -41,17 +44,17 @@ export default {
     type: t.struct({
       attitudeTowardsMoney: t.struct({
         selfView: t.String,
-        othersView: t.maybe(t.Boolean)
+        othersView: t.Boolean
       })
     }),
     options: {
-      label:
-        'In one or two sentences, describe your attitude towards money today',
       fields: {
         attitudeTowardsMoney: {
+          label: 'Financial Assessment',
           fields: {
             selfView: {
-              auto: 'none',
+              label:
+                'In one or two sentences, describe your attitude towards money today',
               multiline: true
             },
             othersView: {
@@ -75,9 +78,9 @@ export default {
       })
     }),
     options: {
-      label: 'Credit score',
       fields: {
         creditScoreAssessment: {
+          label: 'Financial Assessment',
           fields: {
             today: {
               label: 'What is your credit score?'
@@ -88,7 +91,12 @@ export default {
             aYearAgo: {
               label: 'What was your credit score one year ago today?',
               error: 'Choose one'
-            }
+            },
+            aYearFromNow: {
+              label: 'What will your credit score be one year from now?'
+            },
+            change: { label: 'How would you describe this change?' },
+            effort: { label: 'What kind of effort will this take?' }
           }
         }
       }
@@ -102,17 +110,20 @@ export default {
       })
     }),
     options: {
-      label: 'Financial Achievements',
       fields: {
         financialAchievements: {
-          bestAchievement: {
-            label:
-              'What was your biggest financial achievement over the past 5 years?'
-            //error: 'Write a sentence or two describing your biggest success'
-          },
-          biggestDissapointment: {
-            label: 'What was your biggest dissapointment over the past 5 years?'
-            //error: 'Can you sum it up in a word or two?'
+          label: 'Financial Achievements',
+          fields: {
+            bestAchievement: {
+              label:
+                'What was your biggest financial achievement over the past 5 years?'
+              //error: 'Write a sentence or two describing your biggest success'
+            },
+            biggestDissapointment: {
+              label:
+                'What was your biggest dissapointment over the past 5 years?'
+              //error: 'Can you sum it up in a word or two?'
+            }
           }
         }
       }
@@ -127,17 +138,18 @@ export default {
       })
     }),
     options: {
-      label: 'Where do you stand today?',
+
       fields: {
         currentFinancialStanding: {
+          label: 'Where do you stand today?',
+          
           fields: {
             whereStandToday: {
               label:
                 'Where do you stand today compared to what you had envisioned for yourself?'
             },
             profitLossFeelings: {
-              label:
-                'Do you have a Profit and Loss Statement? If so, how do you feel about it?',
+              label:'Do you have a Profit and Loss Statement? If so, how do you feel about it?',
               help: '1=Not at all happy, 10=Extremely happy'
             },
             balanceSheetChange: {

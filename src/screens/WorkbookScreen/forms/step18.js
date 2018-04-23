@@ -12,12 +12,12 @@ export default {
       })
     }),
     options: {
-      label: 'Environment Assessment',
       fields: {
         id: {
           hidden: true
         },
         enviromnmentAssessment: {
+          label: 'Environment Assessment',
           fields: {
             changes: {
               label:

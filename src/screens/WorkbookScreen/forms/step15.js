@@ -61,9 +61,10 @@ export default {
       })
     }),
     options: {
-      label: 'How important are these hobbies to you?',
       fields: {
         hobbyPriorities: {
+          label: 'How important are these hobbies to you?',
+          
           fields: {
             giveUp: {
               label:
