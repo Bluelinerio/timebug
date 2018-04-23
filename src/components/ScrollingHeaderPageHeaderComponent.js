@@ -48,18 +48,11 @@ const styles = StyleSheet.create({
     marginHorizontal: 16
   },
   platformContainerStyles: Platform.select({
-    ios: {
-      borderBottomWidth: StyleSheet.hairlineWidth,
-      borderBottomColor: '#A7A7AA'
-    },
+    ios: {},
     android: {
-      shadowColor: 'black',
-      shadowOpacity: 0.1,
-      shadowRadius: StyleSheet.hairlineWidth,
-      shadowOffset: {
-        height: StyleSheet.hairlineWidth
-      },
-      elevation: 4
+      shadowColor: 'transparent',
+      shadowOpacity: 0.0,
+      elevation: 0
     }
   })
 })
