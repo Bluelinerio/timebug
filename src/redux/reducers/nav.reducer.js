@@ -2,46 +2,46 @@ import {
   RootNavigator,
   rootConfiguration,
   assignmentFlowConfiguration
-} from '../../navigation';
+} from '../../navigation'
 
 const initialRouteState = RootNavigator.router.getStateForAction(
   RootNavigator.router.getActionForPathAndParams(
     rootConfiguration.routes.initialRouteName
   )
-);
+)
 const walkthroughState = RootNavigator.router.getStateForAction(
   RootNavigator.router.getActionForPathAndParams(
     rootConfiguration.routes.Walkthrough
   ),
   initialRouteState
-);
+)
 
 if (!initialRouteState || !walkthroughState) {
-  throw 'nav reducer --expect state to be not nil';
+  throw 'nav reducer --expect state to be not nil'
 }
-const initialState = walkthroughState;
+const initialState = walkthroughState
 
 function navReducer(state = initialState, action) {
-  const newState = RootNavigator.router.getStateForAction(action, state);
-  return newState || state;
+  const newState = RootNavigator.router.getStateForAction(action, state)
+  return newState || state
 }
 
-import storage from 'redux-persist/lib/storage';
-import { persistReducer, createMigrate } from 'redux-persist';
+import storage from 'redux-persist/lib/storage'
+import { persistReducer, createMigrate } from 'redux-persist'
 
 const isRouteInvalid = route => {
-  if (!route.routeName) return true;
-  if (route.routes) return allRoutesAreValid(route.routes) === false;
-  return false;
-};
+  if (!route.routeName) return true
+  if (route.routes) return allRoutesAreValid(route.routes) === false
+  return false
+}
 const allRoutesAreValid = routes => {
-  return routes.find(isRouteInvalid) ? false : true;
-};
+  return routes.find(isRouteInvalid) ? false : true
+}
 
 const findAssignmentFlow = state =>
   state.routes.find(
     route => route.routeName === rootConfiguration.routes.AssignmentFlow
-  );
+  )
 
 const isAssignmentFlowValid = assignmentFlow => {
   try {
@@ -51,18 +51,18 @@ const isAssignmentFlowValid = assignmentFlow => {
         Object.keys(assignmentFlowConfiguration.screens).includes(
           route.routeName
         ) === false
-    );
+    )
     if (unregisteredRouteNames) {
-      return false;
+      return false
     } else {
-      return true;
+      return true
     }
   } catch (e) {
-    return false;
+    return false
   }
-};
+}
 
-const thisVersion = 9;
+const thisVersion = 9
 const persistConfig = {
   key: 'nav',
   storage: storage,
@@ -70,27 +70,27 @@ const persistConfig = {
   migrate: (state, version) => {
     if (state) {
       if (!state.routes || !allRoutesAreValid(state.routes)) {
-        return Promise.resolve(initialRouteState);
+        return Promise.resolve(initialRouteState)
       }
       if (version < thisVersion) {
-        return Promise.resolve(initialRouteState);
+        return Promise.resolve(initialRouteState)
       }
       // prevent from any navigation issue that may arise to override that the root view is always home:
-      const initialRouteName = state.routes[0].routeName;
+      const initialRouteName = state.routes[0].routeName
       if (
         !initialRouteName /* this can happen sometimes! */ ||
         initialRouteName !== rootConfiguration.routes.initialRouteName
       ) {
-        return Promise.resolve(initialRouteState);
+        return Promise.resolve(initialRouteState)
       }
       // validate assignment flow:
-      const assignmentFlow = findAssignmentFlow(state);
+      const assignmentFlow = findAssignmentFlow(state)
       if (assignmentFlow && !isAssignmentFlowValid(assignmentFlow)) {
-        return Promise.resolve(initialRouteState);
+        return Promise.resolve(initialRouteState)
       }
     }
-    return Promise.resolve(state);
+    return Promise.resolve(state)
   }
-};
+}
 
-export default persistReducer(persistConfig, navReducer);
+export default persistReducer(persistConfig, navReducer)
