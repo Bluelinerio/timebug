@@ -29,9 +29,31 @@ function navReducer(state = initialState, action) {
 import storage from 'redux-persist/lib/storage'
 import { persistReducer, createMigrate } from 'redux-persist'
 
+import routes from '../../navigation/routes'
+const requiredParamFieldsForRoute = (route: string) => {
+  switch (route) {
+    case routes.root.AssignmentFlow:
+    case routes.step.StepScreen:
+    case routes.step.WorkbookScreen:
+    case routes.step.WorkbookDoneScreen: {
+      return ['stepId', 'stepColor']
+    }
+    default:
+      return []
+  }
+}
+
 const isRouteInvalid = route => {
   if (!route.routeName) return true
   if (route.routes) return allRoutesAreValid(route.routes) === false
+  const keys = requiredParamFieldsForRoute(route.routeName)
+  if (
+    keys.length > 0 &&
+    (!routes.state ||
+      !routes.state.params ||
+      keys.find(key => !Object.keys(routes.state.params).includes(key)))
+  )
+    return true
   return false
 }
 const allRoutesAreValid = routes => {
