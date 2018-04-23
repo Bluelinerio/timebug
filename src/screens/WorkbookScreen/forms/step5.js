@@ -24,7 +24,7 @@ export default {
             auto: 'none',
             fields: {
               goal: { label: 'What is a recent life goal?' }, //error:'Please enter a goal'},
-              goalTypes: { auto: 'How would you classify this goal?' } //error:'Please select a Goal Type'}
+              goalTypes: { label: 'How would you classify this goal?' } //error:'Please select a Goal Type'}
             }
           },
           disableOrder: true,

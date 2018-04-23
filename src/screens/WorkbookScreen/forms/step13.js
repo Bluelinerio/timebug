@@ -22,7 +22,6 @@ export default {
       })
     }),
     options: {
-      label: 'Career Assessment',
       fields: {
         id: {
           hidden: true

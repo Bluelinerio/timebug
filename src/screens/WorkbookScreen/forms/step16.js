@@ -25,7 +25,6 @@ export default {
       })
     }),
     options: {
-      label: 'Health Assessment',
       fields: {
         id: {
           hidden: true
@@ -72,9 +71,10 @@ export default {
       })
     }),
     options: {
-      label: 'Take time to evaluate your Fitness and Exercise behavior',
       fields: {
         fitnessBehaviorAssessment: {
+          label: 'Take time to evaluate your Fitness and Exercise behavior',
+
           fields: {
             doYouExercise: {
               label: 'Do you exercise? If not, why?',
@@ -91,13 +91,16 @@ export default {
             topFitnessGoals: {
               label:
                 "What were your top 3 fitness goals from last year and how did you do with them?(Refer to Day 7's typical outcomes)",
-              item: { auto:'none',
+              item: {
+                auto: 'none',
                 fields: {
-                  auto: 'placeholders',
+                  auto: 'labels',
                   goal: {
+                    auto: 'labels',
                     error: 'Please fill out this field'
                   },
                   goalOutcome: {
+                    auto: 'labels',
                     error: 'Please select a value.'
                   }
                 }
@@ -121,9 +124,10 @@ export default {
       })
     }),
     options: {
-      label: 'Take time to evaluate your nutrition & diet',
       fields: {
         nutritionDietAssessment: {
+          label: 'Take time to evaluate your nutrition & diet',
+
           fields: {
             typicalDiet: {
               label: 'What is your typical diet?',
@@ -169,9 +173,10 @@ export default {
       })
     }),
     options: {
-      label: 'Take time to evaluate your Sleep pattern.',
       fields: {
         sleepPatternEvaluation: {
+          label: 'Take time to evaluate your Sleep pattern.',
+
           fields: {
             hoursSleep: {
               label: 'How many hours do you typically sleep?'
@@ -216,9 +221,10 @@ export default {
       })
     }),
     options: {
-      label: 'Take time to evaluate your Body Care',
       fields: {
         bodyCareAssessment: {
+          label: 'Take time to evaluate your Body Care',
+
           fields: {
             takeCare: {
               label:
@@ -268,7 +274,6 @@ export default {
       })
     }),
     options: {
-      label: 'Take time to evaluate your Mental & Emotional Health',
       fields: {
         stressRange: {
           label:

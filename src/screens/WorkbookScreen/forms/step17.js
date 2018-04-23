@@ -13,14 +13,12 @@ export default {
       })
     }),
     options: {
-      label: 'Relationships Assessment',
-
       fields: {
+        id: {
+          hidden: true
+        },
         relationshipsAssessment: {
           fields: {
-            id: {
-              hidden: true
-            },
             selfTreatment: {
               label: 'How do you typically treat yourself?',
               help: '1 = With almost no respect, 10 = With tremendous respect'
@@ -56,13 +54,16 @@ export default {
       })
     }),
     options: {
-      label: 'Whom do you truly value?',
       fields: {
         peopleTrulyValued: {
+          label: 'Whom do you truly value?',
+
           fields: {
             peopleValued: {
+              auto: 'none',
+
               item: {
-                auto: 'none'
+                label: 'Name'
               }
             },
             peopleLoved: {
@@ -88,9 +89,9 @@ export default {
       })
     }),
     options: {
-      label: 'Relationships Assessment',
       fields: {
         givingReceivingAssessment: {
+          label: 'Relationships Assessment',
           fields: {
             givingToOthers: {
               label:
@@ -129,13 +130,17 @@ export default {
     }),
     options: {
       label: 'What were your relationship quality goals over the past 5 years?',
-
       fields: {
         relationshipQualityGoals: {
           item: {
             auto: 'none',
             fields: {
-              auto: 'labels'
+              goal: {
+                auto: 'labels'
+              },
+              goalOutcome: {
+                auto: 'labels'
+              }
             }
           }
         }
@@ -150,9 +155,10 @@ export default {
       })
     }),
     options: {
-      label: 'Relationships Assessment',
       fields: {
         intimateRelationshipAssessment: {
+          label: 'Relationships Assessment',
+
           fields: {
             intimateRelationship: {
               label:
@@ -177,7 +183,19 @@ export default {
       )
     }),
     options: {
-      label: 'Which relationships improved over the past 5 years? With whom?'
+      label: 'Which relationships improved over the past 5 years? With whom?',
+      fields: {
+        relationshipsImproved: {
+          item: {
+            auto: 'none',
+            fields: {
+              person: {
+                auto:'labels'
+              }
+            }
+          }
+        }
+      }
     }
   },
   7: {
@@ -189,7 +207,19 @@ export default {
       )
     }),
     options: {
-      label: 'Which relationships improved over the past 5 years? With whom?'
+      label: 'Which relationships regressed over the past 5 years? With whom?',
+      fields: {
+        relationshipsRegressed: {
+          item: {
+            auto: 'none',
+            fields: {
+              person: {
+                auto:'labels'
+              }
+            }
+          }
+        }
+      }
     }
   }
 };
