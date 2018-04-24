@@ -1,7 +1,6 @@
 // @flow
 import * as React                              from 'react'
 import { compose, mapProps }                   from 'recompose'
-import { withNavigation }                      from 'react-navigation'
 import { userRequired, withNavigationAndStep } from '../../../HOC'
 import type { Step }                           from '../../../services/cms'
 import { restartStepAction, reset }            from '../../../redux/actions/nav.actions'
@@ -47,7 +46,6 @@ const merge = ({ steps, step, dispatch }: { step: Step , steps:Array<Step>, disp
 
 const WorkbookDoneScreenContainer = compose(
   userRequired,
-  withNavigation,
   withNavigationAndStep,
   mapProps(merge)
 )(WorkbookDoneScreen)
