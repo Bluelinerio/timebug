@@ -24,10 +24,9 @@ export type Model = {
 export type Props = {
   value: any,
   model: Model,
-  next: () => void,
+  next: (value: any) => void,
   buttonMessage: string,
   stepColor: string,
-  submit: (value: any) => void,
   isFetching: boolean
 }
 
@@ -113,9 +112,8 @@ class WorkbookScreenComponent extends Component<Props, State> {
         this.showAlert
       )
     } else {
-      const { next, submit } = this.props
-      submit(value)
-      next()
+      const { next } = this.props
+      next(value)
     }
   }
 
@@ -206,10 +204,7 @@ class WorkbookScreenComponent extends Component<Props, State> {
 
     return (
       <View onLayout={this.onLayout} style={{ flex: 1 }}>
-        <StatusBar
-          barStyle="light-content"
-          backgroundColor={stepColor}
-        />
+        <StatusBar barStyle="light-content" backgroundColor={stepColor} />
         <ScrollView style={styles.fullScreenScrollView}>
           <View
             onLayout={this.onFormLayout}
@@ -247,7 +242,7 @@ class WorkbookScreenComponent extends Component<Props, State> {
         </ScrollView>
         <KeyboardComponent
           enabled={Platform.OS === 'android'}
-          shouldRender={({ showing, enabled }) => (!enabled || !showing) }
+          shouldRender={({ showing, enabled }) => !enabled || !showing}
         >
           <View style={styles.workbookNextButtonContainer}>
             <WorkbookNextButton

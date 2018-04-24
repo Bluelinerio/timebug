@@ -36,10 +36,10 @@ const merge = ({
   dispatch,
   modelsAndDataForExercise,
   step,
+  formId,
   navigation: { state: { params } }
 }): Props => {
   const { models, formData } = modelsAndDataForExercise(step.stepId)
-  const { formId } = params
   invariant(
     Object.keys(models).includes(formId),
     `did not find model for formId ${formId} for stepId:${step.stepId}`
@@ -57,7 +57,12 @@ const merge = ({
   const backgroundImage = headerBackgrounds[step.stepId]
 
   const nextActions = isFinalForm
-    ? [syncFormData(), goToWorkbookDoneScreen({ params })]
+    ? [
+        syncFormData(),
+        goToWorkbookDoneScreen({
+          params
+        })
+      ]
     : [
         goToWorkbookScreenWithParams({
           ...params,
@@ -65,18 +70,15 @@ const merge = ({
         })
       ]
 
-  const next = () =>
-    nextActions.forEach(action => dispatch(action))
-
-  const submit = value =>
-    dispatch(
-      submitFormValue({
-        formId,
-        stepId: step.stepId,
-        value,
-        type: formatType(model.type)
-      })
-    )
+  const next = value => {
+    const submit = submitFormValue({
+      formId,
+      stepId: step.stepId,
+      value,
+      type: formatType(model.type)
+    })
+    nextActions.concat(submit).forEach(action => dispatch(action))
+  }
 
   return {
     stepColor: step.color,
@@ -86,7 +88,6 @@ const merge = ({
     buttonMessage,
     formId,
     numberOfForms,
-    submit,
     backgroundImage
   }
 }
@@ -98,8 +99,8 @@ const mapStateToProps = state => {
 
 const WorkbookScreenContainerWithUser = compose(
   userRequired,
-  withNavigationAndStep,
   connect(mapStateToProps),
+  withNavigationAndStep,
   mapProps(merge)
 )(WorkbookScreenComponent)
 
