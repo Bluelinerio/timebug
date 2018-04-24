@@ -6,11 +6,12 @@ import UserAnonymousError from '../containers/UserAnonymousError'
 import DefaultIndicator from '../components/DefaultIndicator'
 
 const unpackStepParamsFromNavigation = ({
-  state: { params: { stepId, stepColor, stepNumber } }
+  state: { params: { stepId, stepColor, stepNumber, formId } }
 }) => ({
   stepId,
   stepColor,
-  stepNumber
+  stepNumber,
+  formId
 })
 
 export const withNavigationAndStep = compose(
@@ -19,19 +20,24 @@ export const withNavigationAndStep = compose(
   mapProps(props => {
     if (!props.navigation) {
       if (__DEV__) {
+        debugger
         throw new Error('missing navigation in props')
       } else {
         return props
       }
     }
-    const { steps } = props
+    const { steps, navigation} = props
     const {
-      stepId /*, stepColor, stepNumber */
-    } = unpackStepParamsFromNavigation(props.navigation)
-
+      /*, stepColor, stepNumber */
+      stepId,
+      formId
+    } = unpackStepParamsFromNavigation(navigation)
+    
     return {
       ...props,
-      step: steps[stepId]
+      step: steps[stepId],
+      formId,
+      navigation,
     }
   })
 )
