@@ -1,23 +1,23 @@
 // @flow
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { withNavigation } from 'react-navigation'
+import { compose, mapProps } from 'recompose'
 import invariant from 'invariant'
+import { userRequired, withNavigationAndStep } from '../../../HOC'
 import t from '../components/templates'
 
-import { headerBackgrounds }   from '../../../resources/images'
+import { headerBackgrounds } from '../../../resources/images'
 import {
   submitFormValue,
   syncFormData
-}                              from '../../../redux/actions/formData.actions'
+} from '../../../redux/actions/formData.actions'
 import {
   goToWorkbookDoneScreen,
   goToWorkbookScreenWithParams
-}                              from '../../../redux/actions/nav.actions'
-import selectors               from '../../../redux/selectors'
-import type Props              from '../components/WorkbookScreenComponent'
+} from '../../../redux/actions/nav.actions'
+import selectors from '../../../redux/selectors'
+import type Props from '../components/WorkbookScreenComponent'
 import WorkbookScreenComponent from '../components/WorkbookScreenComponent'
-import DefaultUserContainer    from '../../../containers/DefaultUserContainer'
 
 const formatType = type => {
   const compose = (...fns) => x => fns.reduce((v, fn) => fn(v), x)
@@ -32,27 +32,17 @@ const formatType = type => {
     .reduce(enter, {})
 }
 
-const mapStateToProps = state => {
-  const fetching = selectors.isSynchingFormData(state)
-  const modelsAndDataForExercise = selectors.modelsAndDataForExercise(state)
-  return { fetching, modelsAndDataForExercise }
-}
-
-const merge = (stateProps, dispatchProps, ownProps): Props => {
-  const { navigation: { state: { params } } } = ownProps
-  const { stepId, formId, stepColor } = params
-
-  invariant(invariant, 'workbook container expected params in naviation')
-  invariant(
-    stepId && formId && stepColor,
-    'workbook container expected stepId && formId && stepColor in params in naviation'
-  )
-
-  const { models, formData } = stateProps.modelsAndDataForExercise(stepId)
-
+const merge = ({
+  dispatch,
+  modelsAndDataForExercise,
+  step,
+  navigation: { state: { params } }
+}): Props => {
+  const { models, formData } = modelsAndDataForExercise(step.stepId)
+  const { formId } = params
   invariant(
     Object.keys(models).includes(formId),
-    `did not find model for formId ${formId} for stepId:${stepId}`
+    `did not find model for formId ${formId} for stepId:${step.stepId}`
   )
 
   const numberOfForms = Object.keys(models).length
@@ -64,12 +54,10 @@ const merge = (stateProps, dispatchProps, ownProps): Props => {
   const model = models[formId]
   const value = formData[formId]
 
-  const isFetching = !models ? true : stateProps.network > 0
-
-  const backgroundImage = headerBackgrounds[stepId]
+  const backgroundImage = headerBackgrounds[step.stepId]
 
   const nextActions = isFinalForm
-    ? [syncFormData(), goToWorkbookDoneScreen(ownProps)]
+    ? [syncFormData(), goToWorkbookDoneScreen({ params })]
     : [
         goToWorkbookScreenWithParams({
           ...params,
@@ -78,45 +66,41 @@ const merge = (stateProps, dispatchProps, ownProps): Props => {
       ]
 
   const next = () =>
-    nextActions.forEach(action => ownProps.navigation.dispatch(action))
+    nextActions.forEach(action => dispatch(action))
 
   const submit = value =>
-    ownProps.navigation.dispatch(
+    dispatch(
       submitFormValue({
         formId,
-        stepId,
+        stepId: step.stepId,
         value,
         type: formatType(model.type)
       })
     )
 
   return {
-    ...ownProps,
-    ...dispatchProps,
-    stepColor,
+    stepColor: step.color,
     value,
     model,
     next,
     buttonMessage,
     formId,
     numberOfForms,
-    isFetching,
     submit,
     backgroundImage
   }
 }
 
-const WorkbookScreenContainer = withNavigation(
-  connect(mapStateToProps, null, merge)(WorkbookScreenComponent)
-)
+const mapStateToProps = state => {
+  const modelsAndDataForExercise = selectors.modelsAndDataForExercise(state)
+  return { modelsAndDataForExercise }
+}
 
-const WorkbookScreenContainerWithUser = () => (
-  <DefaultUserContainer
-    renderWithUser={() => <WorkbookScreenContainer />}
-    anonymousMessage={
-      'You need to be logged in to be able to do the exercises. Please go back and log in again.'
-    }
-  />
-)
+const WorkbookScreenContainerWithUser = compose(
+  userRequired,
+  withNavigationAndStep,
+  connect(mapStateToProps),
+  mapProps(merge)
+)(WorkbookScreenComponent)
 
 export default WorkbookScreenContainerWithUser
