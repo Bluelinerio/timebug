@@ -1,12 +1,6 @@
 // @flow
-import { Platform } from 'react-native'
 import { NavigationActions } from 'react-navigation'
-import { action } from '../utils'
-import type { SelectPutActionFnType } from '../selectPutAction'
-import { selectPutAction } from '../selectPutAction'
-import { GO_TO_HOME_SCREEN, SAGA_NAVIGATE } from '../actionTypes'
 import type { Step } from '../../services/cms'
-import selectors from '../selectors'
 import routes from '../../navigation/routes'
 
 if (!routes || !routes.root || !routes.root.initialRouteName || !routes.step) {
@@ -49,7 +43,7 @@ export const restartStepAction = (step: Step) =>
     key: null,
     actions: [navigateToInitialRoute(), goToAssignmentFlow({ step })]
   })
-  
+
 // TODO remove static string and use params (routes.step.StepScreen ... )
 export const goToMeditation = () =>
   NavigationActions.navigate({
@@ -60,9 +54,10 @@ export const goToWorkbookScreen = (props: any) =>
     props,
     routeName: 'WorkbookScreen'
   })
+  
 export const goToWorkbookDoneScreen = (props: any) =>
-  navigateWith({
-    props,
+  NavigationActions.navigate({
+    ...props,
     routeName: 'WorkbookDoneScreen'
   })
 
