@@ -9,6 +9,12 @@ const textTestId = 'step_to_workbook_text'
 const buttonTestId = 'step_to_workbook_button'
 const text = 'BEGIN'
 
+const mapToButton = ({ step, dispatch, ...rest }) : Props => ({
+  ...rest,
+  onPressWithProps: props => dispatch(goToWorkbookScreen(props)),
+  backgroundColor: step.color
+})
+
 const BeginExerciseButtonContainer = compose(
   withProps({
     textTestId,
@@ -16,11 +22,7 @@ const BeginExerciseButtonContainer = compose(
     text
   }),
   withNavigationAndStep,
-  mapProps(({ step, dispatch, ...rest }) => ({
-    ...rest,
-    onPressWithProps: props => dispatch(goToWorkbookScreen(props)),
-    backgroundColor: step.color
-  }))
+  mapProps(mapToButton)
 )(Button)
 
 export default BeginExerciseButtonContainer

@@ -20,7 +20,6 @@ export const withNavigationAndStep = compose(
   mapProps(props => {
     if (!props.navigation) {
       if (__DEV__) {
-        debugger
         throw new Error('missing navigation in props')
       } else {
         return props
