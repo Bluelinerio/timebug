@@ -4,26 +4,30 @@ export default {
   1: {
     type: t.struct({
       id: t.maybe(t.String),
-      step25CheckIn: t.struct({
+      step26CheckIn: t.struct({
         mantraAnswer: t.Boolean,
         exerciseAnswer: t.Boolean,
         meditateAnswer: t.Boolean
       })
     }),
     options: {
-      label: '20/20 Life Vision Check-in',
       fields: {
         id: {
           hidden: true
         },
-        mantraAnswer: {
-          label: 'Did you do your mantra today (assigned on Day 21)?'
-        },
-        exerciseAnswer: {
-          label: 'Did you exercise and meditate yet today(assigned on Day 8)?'
-        },
-        meditateAnswer: {
-          label: 'Did you MEDITATE yet today(assigned on Day 8)?'
+        step26CheckIn: {
+          label: '20/20 Life Vision Check-in',
+          fields: {
+            mantraAnswer: {
+              label: 'Did you do your mantra today (assigned on Day 21)?'
+            },
+            exerciseAnswer: {
+              label: 'Did you exercise yet today(assigned on Day 8)?'
+            },
+            meditateAnswer: {
+              label: 'Did you meditate yet today(assigned on Day 8)?'
+            }
+          }
         }
       }
     },
@@ -45,10 +49,10 @@ export default {
       })
     }),
     options: {
-      label:
-        'What changes and achievements will you make across the following areas?',
       fields: {
         healthVisionCreation: {
+          label:
+            'What changes and achievements will you make across the following areas?',
           fields: {
             priorities: {
               label: 'Prioritizing your Health Goals vs. other Areas',
@@ -88,9 +92,9 @@ export default {
       })
     }),
     options: {
-      label: 'Vision Creation: Health and Wellness',
       fields: {
         healthVisionCreationForOthers: {
+          label: 'Vision Creation: Health and Wellness',
           fields: {
             who: {
               label:
@@ -118,10 +122,9 @@ export default {
       })
     }),
     options: {
-      label: 'Vision Creation: Health and Wellness',
-
       fields: {
         healthAndWellnessHelpForWorld: {
+          label: 'Vision Creation: Health and Wellness',
           fields: {
             oneWish: {
               label:

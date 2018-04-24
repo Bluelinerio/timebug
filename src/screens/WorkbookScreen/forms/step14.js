@@ -138,18 +138,18 @@ export default {
       })
     }),
     options: {
-
       fields: {
         currentFinancialStanding: {
           label: 'Where do you stand today?',
-          
+
           fields: {
             whereStandToday: {
               label:
                 'Where do you stand today compared to what you had envisioned for yourself?'
             },
             profitLossFeelings: {
-              label:'Do you have a Profit and Loss Statement? If so, how do you feel about it?',
+              label:
+                'Do you have a Profit and Loss Statement? If so, how do you feel about it?',
               help: '1=Not at all happy, 10=Extremely happy'
             },
             balanceSheetChange: {

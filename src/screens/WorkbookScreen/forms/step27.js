@@ -35,13 +35,13 @@ export default {
       })
     }),
     options: {
-      label:
-        'What old thoughts will you replace with new ones that will create new trust and a new experience?',
       fields: {
         thoughtsToReplace: {
+          label: 'Vision Creation: Relationships',
           fields: {
             replacements: {
-              auto: 'none',
+              label:
+                'What old thoughts will you replace with new ones that will create new trust and a new experience?',
               help:
                 '(e.g., Old Thinking = “Missed another workout today. I am so lazy.” vs. New Thinking = “Maybe I’m not getting enough rest. I’m going to take it easy on myself today."',
               multiline: true
@@ -63,7 +63,15 @@ export default {
     options: {
       label:
         'What are 3 feelings that you will feel about yourself 5 years from now?',
-      maxLines: 3
+      maxLines: 3,
+      fields: {
+        emotions: {
+          auto: 'none',
+          item: {
+            auto: 'none'
+          }
+        }
+      }
     }
   },
   4: {
@@ -73,11 +81,15 @@ export default {
     options: {
       label:
         'Who are 3 different people you will value or value more than you do now?',
-      item: {
-        auto: 'none',
-        fields: {
-          auto: 'placeholders',
-          person: {}
+      fields: {
+        person: {
+          auto: 'none',
+          item: {
+            auto: 'none',
+            fields: {
+              auto: 'placeholders'
+            }
+          }
         }
       },
       maxLines: 3
@@ -109,6 +121,12 @@ export default {
       maxLines: 3,
       auto: 'labels',
       fields: {
+        needs: {
+          auto: 'none',
+          item: {
+            auto: 'none'
+          }
+        },
         communicate: {
           label:
             'Are you willing to communicate these needs to another person in the spirit of mutual giving?'
@@ -124,9 +142,9 @@ export default {
       })
     }),
     options: {
-      label: 'Vision Creation:Relationships',
       fields: {
         helpOthersWithGiving: {
+          label: 'Vision Creation:Relationships',
           fields: {
             giveMore: {
               label: 'What do you want to give more of to others in 5 years?'

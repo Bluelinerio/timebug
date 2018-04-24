@@ -11,22 +11,21 @@ export default {
       })
     }),
     options: {
-      label: '20/20 Life Vision Check-in',
       fields: {
+        id: {
+          hidden: true
+        },
         step28CheckIn: {
+          label: '20/20 Life Vision Check-in',
           fields: {
-            id: {
-              hidden: true
-            },
             mantraAnswer: {
               label: 'Did you do your mantra today (assigned on Day 21)?'
             },
             exerciseAnswer: {
-              label:
-                'Did you exercise and meditate yet today(assigned on Day 8)?'
+              label: 'Did you exercise yet today(assigned on Day 8)?'
             },
             meditateAnswer: {
-              label: 'Did you MEDITATE yet today(assigned on Day 8)?'
+              label: 'Did you meditate yet today(assigned on Day 8)?'
             }
           }
         }
@@ -45,11 +44,11 @@ export default {
     options: {
       label:
         'What major goals [BHAGs] do you envision for yourself 5 years from now?',
-      item: {
-        auto: 'none',
-        fields: {
-          goal: {
-            auto: 'labels'
+      fields: {
+        goal: {
+          auto: 'none',
+          item: {
+            auto: 'none'
           }
         }
       }
@@ -57,7 +56,7 @@ export default {
   },
   3: {
     type: t.struct({
-      environmentBuketListGoals: t.list(
+      environmentBucketListGoals: t.list(
         t.struct({
           bucketPEBHAG: t.String,
           priority: t.Number,
@@ -66,19 +65,19 @@ export default {
       )
     }),
     options: {
-      label: "What's on your 2020 environment bucket list?",
       fields: {
-        environmentBuketListGoals: {
+        environmentBucketListGoals: {
+          label: "What's on your 2020 Environment bucket list?",
           item: {
             auto: 'none',
             fields: {
               bucketPEBHAG: {
-                label: 'BHAG(Environment)'
+                label: 'BHAG'
               },
               priority: {
                 label:
-                  'How do you rank each bucket list item in terms of priority?',
-                help: '1= Low priority and 10= High priority'
+                  'How do you rank this bucket list item in terms of priority?',
+                placeholder: '1= Low priority and 10= High priority'
               },
               timeSpent: {
                 label:
@@ -99,9 +98,9 @@ export default {
       })
     }),
     options: {
-      label: 'Vision Creation: Environment',
       fields: {
         environmentVisionCreationForOthers: {
+          label: 'Vision Creation: Environment',
           fields: {
             who: {
               label:
@@ -126,9 +125,9 @@ export default {
       })
     }),
     options: {
-      label: 'Vision Creation: Environment',
       fields: {
         environmentVisionCreationForWorld: {
+          label: 'Vision Creation: Environment',
           fields: {
             oneWish: {
               label:

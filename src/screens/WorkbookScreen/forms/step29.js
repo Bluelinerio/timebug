@@ -11,12 +11,12 @@ export default {
       })
     }),
     options: {
-      label: '20/20 Life Vision Check-in',
       fields: {
         id: {
           hidden: true
         },
         step29CheckIn: {
+          label: '20/20 Life Vision Check-in',
           fields: {
             mantraAnswer: {
               label: 'Did you do your mantra today (assigned on Day 21)?'
@@ -40,23 +40,15 @@ export default {
   },
   2: {
     type: t.struct({
-      spiritualTeammates: t.list(
-        t.struct({
-          teammate: t.String
-        })
-      )
+      spiritualTeammates: t.list(t.String)
     }),
     options: {
-      label: 'Who are your spiritual “teammates” in 5 years from now? ',
+      label: 'Who are your spiritual “team-mates” in 5 years from now? ',
       fields: {
-        field: {
+        spiritualTeammates: {
+          auto: 'none',
           item: {
-            auto: 'none',
-            fields: {
-              teammate: {
-                label: 'Spiritual Teammate'
-              }
-            }
+            auto: 'none'
           }
         }
       }
@@ -73,9 +65,10 @@ export default {
       )
     }),
     options: {
-      label: 'Vision Creation:Spirituality',
+      label: 'Vision Creation: Spirituality',
       fields: {
         spiritualtyBHAGS: {
+          auto: 'none',
           item: {
             auto: 'none',
             fields: {
@@ -84,8 +77,8 @@ export default {
                   'What major Spirituality goals (BHAGs) do you envision for yourself by year 5?'
               },
               priority: {
-                label:
-                  'How will you prioritize your list items? (1= Low priority and 10= High priority)'
+                label: 'How will you prioritize this list item?',
+                placeholder: ' 1= Low priority and 10= High priority'
               },
               timeSpent: {
                 label:
@@ -112,6 +105,7 @@ export default {
         'Remember Step 10 ("Mapping Out Your Internal World")?How will each of your listed Is (ego aspects) evolve by Year 5?',
       fields: {
         egoAspectsEvolve: {
+          auto: 'none',
           item: {
             auto: 'none',
             fields: {
@@ -140,9 +134,9 @@ export default {
       })
     }),
     options: {
-      label: 'Vision Creation: Spirituality',
       fields: {
         spiritualityVisionCreationForOthers: {
+          label: 'Vision Creation: Spirituality',
           fields: {
             whoHelp: {
               label:

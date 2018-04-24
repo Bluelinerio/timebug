@@ -12,22 +12,21 @@ export default {
       })
     }),
     options: {
-      label: '20/20 Life Vision Check-in',
       fields: {
+        id: {
+          hidden: true
+        },
         step24CheckIn: {
+          label: '20/20 Life Vision Check-in',
           fields: {
-            id: {
-              hidden: true
-            },
             mantraAnswer: {
               label: 'Did you do your mantra today (assigned on Day 21)?'
             },
             exerciseAnswer: {
-              label:
-                'Did you exercise and meditate yet today(assigned on Day 8)?'
+              label: 'Did you exercise yet today(assigned on Day 8)?'
             },
             meditateAnswer: {
-              label: 'Did you MEDITATE yet today(assigned on Day 8)?'
+              label: 'Did you meditate yet today(assigned on Day 8)?'
             }
           }
         }
@@ -42,7 +41,12 @@ export default {
   2: {
     type: t.struct({ money: t.String }),
     options: {
-      label: 'Five years from now, how much money will you have in the bank?'
+      label: 'Five years from now, how much money will you have in the bank?',
+      fields: {
+        money: {
+          auto: 'none'
+        }
+      }
     }
   },
   3: {
@@ -52,9 +56,14 @@ export default {
     options: {
       label:
         'Who is your “finance team” that helped you not only to attain but also manage your financial success?',
-      item: {
-        auto: 'none',
-        label: 'Person'
+      fields: {
+        financeTeam: {
+          auto: 'none',
+          item: {
+            auto: 'none',
+            label: 'Person'
+          }
+        }
       }
     }
   },
@@ -69,25 +78,29 @@ export default {
       })
     }),
     options: {
-      label: 'Money Dreams',
       fields: {
-        moneyPlans: {
-          label:
-            'What do you plan to do with any excess money that you come into over the next 5 years?'
-        },
-        lifeDiffer: {
-          label:
-            'How will your life differ 5 years from now due to your  money BHAG acheivements?'
-        },
-        workMoreOrLess: {
-          label: 'How much more or less will you work as a result?'
-        },
-        vacationDays: {
-          label: 'How many days a year will you take off for vacation?'
-        },
-        materialThings: {
-          label:
-            'What additional material things will you have or have access to that you now don’t?'
+        moneyDreams: {
+          label: 'Vision Creation: Finance',
+          fields: {
+            moneyPlans: {
+              label:
+                'What do you plan to do with any excess money that you come into over the next 5 years?'
+            },
+            lifeDiffer: {
+              label:
+                'How will your life differ 5 years from now due to your  money BHAG acheivements?'
+            },
+            workMoreOrLess: {
+              label: 'How much more or less will you work as a result?'
+            },
+            vacationDays: {
+              label: 'How many days a year will you take off for vacation?'
+            },
+            materialThings: {
+              label:
+                'What additional material things will you have or have access to that you now don’t?'
+            }
+          }
         }
       }
     }
@@ -97,7 +110,15 @@ export default {
       emotions: t.list(Emotion)
     }),
     options: {
-      label: "what emotions will you feel as a result that you don't feel now?"
+      label: "What emotions will you feel as a result that you don't feel now?",
+      fields: {
+        emotions: {
+          auto:'none',
+          item: {
+            auto:'none'
+          }
+        }
+      }
     }
   },
   6: {
@@ -114,6 +135,7 @@ export default {
     options: {
       fields: {
         personToHelpFinancially: {
+          label: 'Vision Creation: Finance',
           fields: {
             whoChangeRelationship: {
               label:

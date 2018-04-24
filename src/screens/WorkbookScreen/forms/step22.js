@@ -19,10 +19,10 @@ export default {
           label: 'Did you do your mantra today (assigned on Day 21)?'
         },
         exerciseAnswer: {
-          label: 'Did you exercise and meditate yet today(assigned on Day 8)?'
+          label: 'Did you exercise yet today(assigned on Day 8)?'
         },
         meditateAnswer: {
-          label: 'Did you MEDITATE yet today(assigned on Day 8)?'
+          label: 'Did you meditate yet today(assigned on Day 8)?'
         }
       }
     },

@@ -50,9 +50,9 @@ export default {
       })
     }),
     options: {
-      label: 'Environment Assessment',
       fields: {
         doYouConnectToEnvironment: {
+          label: 'Environment Assessment',
           fields: {
             connect: {
               label:
@@ -81,9 +81,9 @@ export default {
       )
     }),
     options: {
-      label: 'What were your place and environment goals since Year 1? ',
       fields: {
         placeEnvironmentGoals: {
+          label: 'What were your place and environment goals since Year 1? ',
           item: {
             auto: 'none',
             fields: {

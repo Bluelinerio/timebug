@@ -11,13 +11,13 @@ export default {
       })
     }),
     options: {
-      label: '20/20 Life Vision Check-in',
       fields: {
+        id: {
+          hidden: true
+        },
         step30CheckIn: {
+          label: '20/20 Life Vision Check-in',          
           fields: {
-            id: {
-              hidden: true
-            },
             mantraAnswer: {
               label: 'Did you do your mantra today (assigned on Day 21)?'
             },
@@ -51,11 +51,10 @@ export default {
       })
     }),
     options: {
-      label:
-        'Map out the next year of your life - 8,760 hrs (365 days x 24 hrs) according to the 7 Pillars of Life. Take a cue from Step 2 if needed and multiply by 52 to get your Annual Plan.',
       auto: 'labels',
       fields: {
         nextYearLifeMap: {
+          label:'Map out the next year of your life - 8,760 hrs (365 days x 24 hrs) according to the 7 Pillars of Life. Take a cue from Step 2 if needed and multiply by 52 to get your Annual Plan.',
           fields: {
             auto: 'labels'
           }
@@ -76,8 +75,11 @@ export default {
       })
     }),
     options: {
-      label:
-        'What do you feel most excited about, in terms of what you can get done with that chunk of time?'
+      fields: {
+        visionCreationExcitement: {
+          label: 'What do you feel most excited about, in terms of what you can get done with that chunk of time?',          
+        }
+      }
     }
   },
   4: {
@@ -93,7 +95,11 @@ export default {
       })
     }),
     options: {
-      label: 'What do you most fear?'
+      fields: {
+        visionCreationFears: {
+          label: 'What do you most fear?'
+        }
+      }
     }
   }
 };

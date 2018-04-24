@@ -190,7 +190,7 @@ export default {
             auto: 'none',
             fields: {
               person: {
-                auto:'labels'
+                auto: 'labels'
               }
             }
           }
@@ -214,7 +214,7 @@ export default {
             auto: 'none',
             fields: {
               person: {
-                auto:'labels'
+                auto: 'labels'
               }
             }
           }
