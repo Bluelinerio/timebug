@@ -24,11 +24,11 @@ const phaseColors = (state: any): { string: string } =>
 const isCMSLoading = (state: any) => getCms(state).requestCount > 0
 const totalNumberOfSteps = (state: any) => getCms(state).totalNumberOfSteps
 const colors = (state: any) => getCms(state).colors
-const uniqueColors = (state: any) => [...(
-  new Set([
+const uniqueColors = (state: any) => [
+  ...new Set([
     ...Object.values(getCms(state).colors.steps),
     ...Object.values(getCms(state).colors.phases)
-  ]))
+  ])
 ]
 
 const assignmentsForStepId = (state: any) => (stepId: string) =>
@@ -45,9 +45,10 @@ const user = (state: any): ?User =>
   typeof getUserState(state) === 'string' ? null : getUserState(state)
 const userId = (state: any) => user(state) && user(state).id
 
+const isNotLoggedIn = (state: any): boolean => !user(state)
 const isLoggedIn = (state: any): boolean => !!user(state)
 const isAnonymous = (state: any): boolean => getUserState(state) === ANONYMOUS
-
+const isAuthenticating = (state: any): boolean => getUserState(state) === AUTHENTICATING
 const sortForms = (a: Form, b: Form) => a.stepId - b.stepId
 
 // stepId on the server is an Int!. A clear idea how to
@@ -141,7 +142,9 @@ export default {
   user,
   userId,
   isLoggedIn,
+  isNotLoggedIn,
   isAnonymous,
+  isAuthenticating,
   completedForms,
   sortedCompletedForms,
   completedFormsData,
