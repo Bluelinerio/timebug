@@ -6,8 +6,31 @@ import {
   ANONYMOUS,
   AUTHENTICATING
 } from '../services/apollo/models'
+// models
+import workbooks from '../screens/WorkbookScreen/forms'
 import type { User, Form } from '../services/apollo/models'
 import type { Colors, Step, Slide } from '../services/cms'
+
+export const filterWithKeys = (pred, obj) =>
+  R.pipe(R.toPairs, R.filter(R.apply(pred)), R.fromPairs)(obj)
+
+function isPositiveInteger(n) {
+  return n >>> 0 === parseFloat(n)
+}
+
+export const filterNumbers = (obj: {}) =>
+  filterWithKeys(key => isPositiveInteger(key), obj)
+
+export const filterKeys = (keys: [string]) => (obj: {}) =>
+  filterWithKeys(key => keys.includes(key), obj)
+export const range = (start, end) =>
+  Array(end - start)
+    .fill()
+    .map((v, i) => i + start)
+
+export const stepIds = range(1, 30).map((v, i) => i.toString())
+
+export const filterStepIds = filterKeys(stepIds)
 
 // CMS
 const sortSteps = (a: Step, b: Step) => a.number - b.number
@@ -48,7 +71,8 @@ const userId = (state: any) => user(state) && user(state).id
 const isNotLoggedIn = (state: any): boolean => !user(state)
 const isLoggedIn = (state: any): boolean => !!user(state)
 const isAnonymous = (state: any): boolean => getUserState(state) === ANONYMOUS
-const isAuthenticating = (state: any): boolean => getUserState(state) === AUTHENTICATING
+const isAuthenticating = (state: any): boolean =>
+  getUserState(state) === AUTHENTICATING
 const sortForms = (a: Form, b: Form) => a.stepId - b.stepId
 
 // stepId on the server is an Int!. A clear idea how to
@@ -73,12 +97,43 @@ const completedStepIds = (state: any): [string] =>
 const formWithStepId = (state: any) => (stepId: string): Form =>
   completedForms(state).find(f => f.stepId)
 
-// models
-import workbooks from '../screens/WorkbookScreen/forms'
 // form data
 const formData = (state: any) => getFormData(state).data
-const incompleteFormsData = (state: any) => getFormData(state).data
+const incompleteFormsData = (state: any) =>
+  filterStepIds(getFormData(state).data)
 
+const sortedStepsWithForms = state => {
+  
+  const completed = completedForms(state)
+  const incompleteForms = incompleteFormsData(state)
+
+  const { latestStepId } = Object.keys(incompleteForms).reduce(
+    (sum, latestStepId) => {
+      const timeStamp =
+        incompleteForms[latestStepId] && incompleteForms[latestStepId].timeStamp
+      if (timeStamp) {
+        if (!sum.timeStamp || sum.timeStamp < timeStamp) {
+          return {
+            latestStepId,
+            timeStamp
+          }
+        }
+      }
+      return sum
+    },
+    {}
+  )
+  return {
+    sortedStepsWithForms: sortedSteps(state).map(step => {
+      return {
+        completedForms: completed.find(f => f.stepId),
+        incomplete: filterNumbers(incompleteForms[step.stepId]),
+        step
+      }
+    }),
+    latestStepId
+  }
+}
 const modelsAndDataForExercise = (state: any) => (stepId: string) => {
   //TComb Forms helpers
   const isValueAValidTCombType = (value, type) =>
@@ -126,6 +181,7 @@ const isSynchingFormData = (state: any) => getFormData(state).requestCount > 0
 export default {
   getCms,
   sortedSteps,
+  sortedStepsWithForms,
   steps,
   colorForStepWithId,
   phaseColors,
