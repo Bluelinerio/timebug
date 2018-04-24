@@ -1,13 +1,58 @@
 // @flow
-import * as React                   from 'react'
-import { connect }                  from 'react-redux'
-import { withNavigation }           from 'react-navigation'
-import type { Step }                from '../../../services/cms'
-import DefaultUserContainer         from '../../../containers/DefaultUserContainer'
-import { restartStepAction, reset } from '../../../redux/actions/nav.actions'
-import selectors                    from '../../../redux/selectors'
-import WorkbookDoneScreen           from '../components/WorkbookDoneScreen'
-import type { Props }               from '../components/WorkbookDoneScreen'
+import * as React                              from 'react'
+import { compose, mapProps }                   from 'recompose'
+import { withNavigation }                      from 'react-navigation'
+import { userRequired, withNavigationAndStep } from '../../../HOC'
+import type { Step }                           from '../../../services/cms'
+import { restartStepAction, reset }            from '../../../redux/actions/nav.actions'
+import WorkbookDoneScreen                      from '../components/WorkbookDoneScreen'
+import type { Props }                          from '../components/WorkbookDoneScreen'
+
+const getNextStep = (currentStep, steps) =>
+  Object.values(steps).find(s => s.number === currentStep.number + 1)
+
+const merge = ({ steps, step, dispatch }: { step: Step , steps:Array<Step>, dispatch: () => void }): Props => {
+  const backgroundColor = step.color
+  const nextStep = getNextStep(step, steps)
+
+  if (nextStep) {
+    // this is required in case we change how stepId work...
+    const title = `Step ${step.number} is complete!`
+    const buttonTitle = `Start Step ${nextStep.number}`.toUpperCase()
+    const buttonOnPress = () => dispatch(restartStepAction(nextStep))
+
+    const textColor = nextStep.color
+    return {
+      title,
+      buttonTitle,
+      backgroundColor,
+      textColor,
+      buttonOnPress
+    }
+  }
+
+  const title = `This Step ${step.number} is complete!`
+  const buttonTitle = `Done`.toUpperCase()
+  const buttonOnPress = () => dispatch(reset())
+
+  return {
+    title,
+    buttonTitle,
+    steps,
+    backgroundColor,
+    textColor: backgroundColor,
+    buttonOnPress
+  }
+}
+
+const WorkbookDoneScreenContainer = compose(
+  userRequired,
+  withNavigation,
+  withNavigationAndStep,
+  mapProps(merge)
+)(WorkbookDoneScreen)
+
+export default WorkbookDoneScreenContainer
 
 // type FormMetaData = {
 //   uploading: boolean,
@@ -17,82 +62,8 @@ import type { Props }               from '../components/WorkbookDoneScreen'
 //   createAt: number
 // }
 
-const mapStateToProps = state => {
-  const steps = selectors.steps(state)
-  const colors = selectors.stepColors(state)
-  const completedForms = selectors.completedForms(state)
-  const incompleteFormsData = selectors.incompleteFormsData(state)
-  return { steps, colors }
-}
-
-const merge = (stateProps, dispatchProps, ownProps): Props => {
-  const { colors, steps, completedForms, incompleteFormsData } = stateProps
-  const { navigation: { dispatch, state: { params: { stepId } } } } = ownProps
-
-  const doneStep: Step = steps[stepId]
-  const doneStepColor = doneStep.color
-  //const formData = completedForms[doneStep.stepId]
-  //const numberOfSteps = Object.values(steps).length
-  const doneStepNumber = doneStep.number
-  const nextStepNumber = doneStep.number + 1
-  const nextStep = Object.values(steps).find(s => s.number === nextStepNumber)
-
-  if (nextStep) {
-    // this is required in case we change how stepId work...
-    const title = `Step ${doneStepNumber} is complete!`
-    const buttonTitle = `Start Step ${nextStepNumber}`.toUpperCase()
-    const buttonOnPress = () => dispatch(restartStepAction(nextStep))
-
-    const nextStepColor = nextStep.color
-    const nextStepDuration = nextStep.duration
-    return {
-      ...stateProps,
-      ...dispatchProps,
-      ...ownProps,
-      title,
-      buttonTitle,
-      steps,
-      doneStep,
-      doneStepColor,
-      doneStepNumber,
-      nextStepDuration,
-      nextStepNumber,
-      nextStepColor,
-      buttonOnPress
-    }
-  }
-
-  const title = `This Step ${doneStepNumber} is complete!`
-  const buttonTitle = `Start Step ${nextStepNumber}`.toUpperCase()
-  const buttonOnPress = () => dispatch(reset())
-
-  return {
-    ...stateProps,
-    ...dispatchProps,
-    ...ownProps,
-    title,
-    buttonTitle,
-    steps,
-    doneStep,
-    doneStepColor,
-    doneStepNumber,
-    nextStepNumber: 0,
-    nextStepColor: doneStepColor,
-    buttonOnPress
-  }
-}
-
-const WorkbookDoneContainer = withNavigation(
-  connect(mapStateToProps, { done: reset }, merge)(WorkbookDoneScreen)
-)
-
-const WorkbookDoneScreenContainer = () => (
-  <DefaultUserContainer
-    renderWithUser={() => <WorkbookDoneContainer />}
-    anonymousMessage={
-      'You need to be logged in to be able to do the exercises. Please go back and log in again.'
-    }
-  />
-)
-
-export default WorkbookDoneScreenContainer
+// const completedForms = selectors.completedForms(state)
+// const incompleteFormsData = selectors.incompleteFormsData(state)
+//done: () => void,
+//const formData = completedForms[step.stepId]
+//const numberOfSteps = Object.values(steps).length

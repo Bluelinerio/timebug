@@ -1,28 +1,20 @@
 // @flow
-import React, { Component } from 'react';
-import { Text, View, Image } from 'react-native';
-import styles from '../styles';
-import Button from '../../../components/Button';
+import React, { Component } from 'react'
+import { Text, View, Image } from 'react-native'
+import styles from '../styles'
+import Button from '../../../components/Button'
 
 export type Props = {
   title: string,
   buttonTitle: string,
-  //doneStepNumber: number,
-  doneStepColor: string,
-  //nextStepDuration: number,
-  //nextStepNumber: number,
-  nextStepColor: string,
-  //done: () => void,
+  backgroundColor: string,
+  textColor: string,
   buttonOnPress: () => void
-};
+}
 
 const WorkbookDoneScreen = ({
-  //doneStepNumber,
-  doneStepColor,
-  //nextStepDuration,
-  //nextStepNumber,
-  nextStepColor,
-  //done,
+  backgroundColor,
+  textColor,
   title,
   buttonTitle,
   buttonOnPress
@@ -32,7 +24,7 @@ const WorkbookDoneScreen = ({
       style={[
         styles.container,
         {
-          backgroundColor: doneStepColor
+          backgroundColor
         }
       ]}
     >
@@ -46,11 +38,11 @@ const WorkbookDoneScreen = ({
           onPress={buttonOnPress}
           text={buttonTitle}
           backgroundColor={'white'}
-          textColor={nextStepColor}
+          textColor={textColor}
         />
       </View>
     </View>
-  );
-};
+  )
+}
 
 export default WorkbookDoneScreen
