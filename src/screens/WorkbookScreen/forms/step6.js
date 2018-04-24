@@ -18,7 +18,8 @@ export default {
         id: {
           hidden: true
         },
-        field: {
+        goalsOfOthers: {
+          auto:'none',
           disableOrder: true,
           maxLines: 5,
           config: {
