@@ -20,6 +20,7 @@ export default {
           hidden: true
         },
         recentGoals: {
+          auto: 'none',
           item: {
             auto: 'none',
             fields: {
