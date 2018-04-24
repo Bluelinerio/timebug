@@ -1,6 +1,6 @@
+import * as React from 'react'
 import { Platform } from 'react-native'
 import { StackNavigator, NavigationActions } from 'react-navigation'
-import React from 'react'
 
 import HomeScreen from '../screens/HomeScreen'
 import StepScreen from '../screens/StepScreen'
