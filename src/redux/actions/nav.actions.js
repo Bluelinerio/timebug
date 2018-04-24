@@ -1,4 +1,5 @@
 // @flow
+import R from 'ramda'
 import { NavigationActions } from 'react-navigation'
 import type { Step } from '../../services/cms'
 import routes from '../../navigation/routes'
@@ -52,14 +53,17 @@ export const goToMeditation = () =>
 export const goToWorkbookScreen = (props: any) =>
   navigateWith({
     props,
-    routeName: 'WorkbookScreen'
+    routeName: routes.step.WorkbookScreen
   })
-  
+
 export const goToWorkbookDoneScreen = (props: any) =>
   NavigationActions.navigate({
     ...props,
-    routeName: 'WorkbookDoneScreen'
+    routeName: routes.step.WorkbookDoneScreen
   })
+
+export const goToPreviosFormsForStep = step =>
+  NavigationActions.navigate('PreviosFormsForStep', step.stepId)
 
 export const goToAssignmentFlow = ({ step }: { step: Step }) =>
   NavigationActions.navigate({
@@ -68,11 +72,38 @@ export const goToAssignmentFlow = ({ step }: { step: Step }) =>
       ...stepInfoForStep(step)
     }
   })
+
 export const goToWorkbookScreenWithParams = (params: StepInfo) =>
   NavigationActions.navigate({
     routeName: routes.step.WorkbookScreen,
     params
   })
+
+export const goToWorkbookSkippingStepScreen = ({
+  step,
+  incompleteFormsIds
+}) => {
+  const params = stepInfoForStep(step)
+  const action =
+    (incompleteFormsIds &&
+      incompleteFormsIds.length &&
+      incompleteFormsIds.reverse().reduce((action, formId) => {
+        return NavigationActions.push({
+          params: {
+            ...params,
+            formId
+          },
+          routeName: routes.step.WorkbookScreen,
+          action
+        })
+      }, null)) ||
+    null
+  return NavigationActions.navigate({
+    routeName: routes.root.AssignmentFlow,
+    params,
+    action
+  })
+}
 
 export const goToMarkdownScreen = (props: ?{}) =>
   NavigationActions.navigate({
