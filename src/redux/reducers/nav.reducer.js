@@ -49,9 +49,8 @@ const isRouteInvalid = route => {
   const keys = requiredParamFieldsForRoute(route.routeName)
   if (
     keys.length > 0 &&
-    (!routes.state ||
-      !routes.state.params ||
-      keys.find(key => !Object.keys(routes.state.params).includes(key)))
+    (!route.params ||
+      keys.find(key => !Object.keys(route.params).includes(key)))
   )
     return true
   return false
@@ -92,6 +91,7 @@ const persistConfig = {
   migrate: (state, version) => {
     if (state) {
       if (!state.routes || !allRoutesAreValid(state.routes)) {
+        console.warn('nav.reducer: resetting routes')
         return Promise.resolve(initialRouteState)
       }
       if (version < thisVersion) {
