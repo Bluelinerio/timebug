@@ -3,8 +3,10 @@ import EmojiPickerScreenComponent from './EmojiPickerScreenComponent'
 import { NavigationActions, StackNavigator } from 'react-navigation'
 import { mapProps, compose } from 'recompose'
 import { connect } from 'react-redux'
-import updateStoreWithEmojiAndValue from '../../redux/actions/checkins.actions'
+//import updateStoreWithEmojiAndValue from '../../redux/actions/checkins.actions'
 import HeaderCloseButton from '../../components/HeaderCloseButton'
+
+const updateStoreWithEmojiAndValue = () => null
 
 const EmojiPickerScreenContainer = compose(
   connect(null, { updateStoreWithEmojiAndValue }),
