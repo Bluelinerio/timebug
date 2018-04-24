@@ -15,23 +15,20 @@ export default {
       })
     }),
     options: {
-      label: 'Spirituality Assessment',
       fields: {
+        id: {
+          hidden: true
+        },
         spiritualityAssessment: {
           fields: {
-            id: {
-              hidden: true
-            },
             spiritualViews: {
               label:
                 'What are your current views and feelings about spirituality?'
             },
 
             spiritualInfluence: {
-              field: {
-                label:
-                  'Who and what influenced your spiritual views early on in life?'
-              },
+              label:
+                'Who and what influenced your spiritual views early on in life?',
               item: {
                 auto: 'none',
                 fields: {
@@ -68,6 +65,9 @@ export default {
           item: {
             auto: 'none',
             fields: {
+              name: {
+                auto: 'labels'
+              },
               why: {
                 label: 'Why do you admire their approach to and views on life? '
               }
@@ -85,9 +85,9 @@ export default {
       })
     }),
     options: {
-      label: 'Spirituality Assessment',
       fields: {
         spiritualHabits: {
+          label: 'Spirituality Assessment',
           fields: {
             timeSpentSpirutality: {
               label:

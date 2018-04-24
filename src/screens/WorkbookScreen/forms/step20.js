@@ -29,6 +29,12 @@ export default {
           item: {
             auto: 'none',
             fields: {
+              goal: {
+                auto: 'labels'
+              },
+              newInsights: {
+                auto: 'labels'
+              },
               specificChanges: {
                 label: 'Specific changes to make'
               }

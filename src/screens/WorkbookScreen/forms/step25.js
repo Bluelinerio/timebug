@@ -12,19 +12,23 @@ export default {
       })
     }),
     options: {
-      label: '20/20 Life Vision Check-in',
       fields: {
         id: {
           hidden: true
         },
-        mantraAnswer: {
-          label: 'Did you do your mantra today (assigned on Day 21)?'
-        },
-        exerciseAnswer: {
-          label: 'Did you exercise and meditate yet today(assigned on Day 8)?'
-        },
-        meditateAnswer: {
-          label: 'Did you MEDITATE yet today(assigned on Day 8)?'
+        step25CheckIn: {
+          label: '20/20 Life Vision Check-in',
+          fields: {
+            mantraAnswer: {
+              label: 'Did you do your mantra today (assigned on Day 21)?'
+            },
+            exerciseAnswer: {
+              label: 'Did you exercise yet today(assigned on Day 8)?'
+            },
+            meditateAnswer: {
+              label: 'Did you meditate yet today(assigned on Day 8)?'
+            }
+          }
         }
       }
     },
@@ -48,6 +52,7 @@ export default {
       label: 'What activity and hobby goals will you achieve 5 years from now?',
       fields: {
         aimAndHobbyGoals: {
+          auto: 'none',
           item: {
             auto: 'none',
             fields: {
@@ -77,9 +82,9 @@ export default {
       })
     }),
     options: {
-      label: 'Vision Creation:Aims and Hobbies',
       fields: {
         aimsAndHobbiesVisionCreation: {
+          label: 'Vision Creation: Aims and Hobbies',
           fields: {
             areasCutDown: {
               label:
@@ -109,9 +114,9 @@ export default {
       })
     }),
     options: {
-      label: 'Vision Creation:Aims and Hobbies',
       fields: {
         aimsAndHobbiesVisionCreationForOthers: {
+          label: 'Vision Creation: Aims and Hobbies',
           fields: {
             oneWish: {
               label:

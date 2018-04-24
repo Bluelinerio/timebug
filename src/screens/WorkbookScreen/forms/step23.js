@@ -17,14 +17,18 @@ export default {
         id: {
           hidden: true
         },
-        mantraAnswer: {
-          label: 'Did you do your mantra today (assigned on Day 21)?'
-        },
-        exerciseAnswer: {
-          label: 'Did you exercise and meditate yet today(assigned on Day 8)?'
-        },
-        meditateAnswer: {
-          label: 'Did you MEDITATE yet today(assigned on Day 8)?'
+        step23CheckIn: {
+          fields: {
+            mantraAnswer: {
+              label: 'Did you do your mantra today (assigned on Day 21)?'
+            },
+            exerciseAnswer: {
+              label: 'Did you exercise yet today(assigned on Day 8)?'
+            },
+            meditateAnswer: {
+              label: 'Did you meditate yet today(assigned on Day 8)?'
+            }
+          }
         }
       }
     },
@@ -42,11 +46,10 @@ export default {
       })
     }),
     options: {
-      label:
-        'If you could change jobs, and do something totally new, what would it be?',
-      auto: 'none',
       fields: {
         ifChangeJob: {
+          label:
+            'If you could change jobs, and do something totally new, what would it be?',
           fields: {
             changesNeeded: {
               label:
@@ -64,7 +67,15 @@ export default {
     }),
     options: {
       label:
-        'Back on Step 21, you were asked to list your Big Hairy Audacious Goals (BHAGs). Focusing on Career only now, take that a step further by adding 3-5 more Career BHAGs.'
+        'Back on Step 21, you were asked to list your Big Hairy Audacious Goals (BHAGs). Focusing on Career only now, take that a step further by adding 3-5 more Career BHAGs.',
+      fields: {
+        careerBHAGS: {
+          auto: 'none',
+          item: {
+            label: 'Career BHAG'
+          }
+        }
+      }
     }
   },
   4: {
@@ -87,7 +98,9 @@ export default {
           hidden: true
         },
         careerSkillsToBuild: {
-          item: { auto:'none',
+          auto: 'none',
+          item: {
+            auto: 'none',
             fields: {
               skill: {
                 label: 'Skill'

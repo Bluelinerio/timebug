@@ -64,7 +64,7 @@ export default {
       fields: {
         hobbyPriorities: {
           label: 'How important are these hobbies to you?',
-          
+
           fields: {
             giveUp: {
               label:

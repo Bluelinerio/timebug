@@ -21,12 +21,12 @@ export default {
     }),
     options: {
       label: 'Imagine different areas of your garden.',
-
       fields: {
         id: {
           hidden: true
         },
         areasOfGarden: {
+          auto: 'none',
           item: {
             auto: 'none',
             fields: {
@@ -80,7 +80,7 @@ export default {
         financialBhagOne: t.String,
         financialBhagTwo: t.String,
         spiritualityBhagOne: t.String,
-        spiritualityBHAG2: t.String,
+        spiritualityBhagTwo: t.String,
         financesBhagOne: t.String,
         financesBhagTwo: t.String
       })
@@ -103,9 +103,10 @@ export default {
     }),
     options: {
       label:
-        'Think about how strong your current tools(skills,approach,etc) are for tending to your garden - Strengths & Weaknesses from Day 3 is a useful review.',
+        'Think about how strong your current tools (skills,approach,etc) are for tending to your garden - Strengths & Weaknesses from Day 3 is a useful review.',
       fields: {
-        skills: {
+        skillsForGarden: {
+          auto: 'none',
           item: {
             auto: 'none',
             fields: {
