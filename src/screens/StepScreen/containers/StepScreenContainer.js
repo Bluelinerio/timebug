@@ -1,12 +1,11 @@
 // @flow
 import StepScreenComponent from '../components/StepScreenComponent'
-
-import { connect } from 'react-redux'
-import { withNavigation } from 'react-navigation'
 import { compose, mapProps } from 'recompose'
-import selectors from '../../../redux/selectors'
+import {
+  withNavigationAndStep
+} from '../../../HOC'
 
-const mapStepToStepScreenProps = step => {
+const mapStepToStepScreenProps = ({step}) => {
   return {
     title: step.title,
     subtitle: `Step ${step.number}`,
@@ -16,15 +15,8 @@ const mapStepToStepScreenProps = step => {
   }
 }
 
-const mapStepNavigationParam = ({
-  steps,
-  navigation: { state: { params: { stepId } } }
-}) => steps[stepId]
-
 const StepScreenContainer = compose(
-  withNavigation,
-  connect(state => ({ steps: selectors.steps(state) })),
-  mapProps(mapStepNavigationParam),
+  withNavigationAndStep,
   mapProps(mapStepToStepScreenProps)
 )(StepScreenComponent)
 
