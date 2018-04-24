@@ -1,39 +1,26 @@
-import * as React             from 'react'
-import { connect }            from 'react-redux'
-import { withNavigation }     from 'react-navigation'
-import Button                 from '../../../components/Button'
-import type { Props }         from '../../../components/Button'
-import selectors              from '../../../redux/selectors'
+import * as React from 'react'
+import { compose, withProps, mapProps } from 'recompose'
+import Button from '../../../components/Button'
+import type { Props } from '../../../components/Button'
 import { goToWorkbookScreen } from '../../../redux/actions/nav.actions'
-
-const mapStateToProps = state => {
-  const colors = selectors.stepColors(state)
-  return {
-    colors
-  }
-}
+import { withNavigationAndStep } from '../../../HOC'
 
 const textTestId = 'step_to_workbook_text'
 const buttonTestId = 'step_to_workbook_button'
 const text = 'BEGIN'
 
-const merge = (stateProps, dispatchProps, ownProps): Props => {
-  const { colors } = stateProps
-  const { navigation: { state: { params: { stepId } } } } = ownProps
-  const backgroundColor = colors[stepId]
-  return {
-    ...stateProps,
-    ...dispatchProps,
-    ...ownProps,
-    backgroundColor,
-    text,
+const BeginExerciseButtonContainer = compose(
+  withProps({
     textTestId,
-    buttonTestId
-  }
-}
+    buttonTestId,
+    text
+  }),
+  withNavigationAndStep,
+  mapProps(({ step, dispatch, ...rest }) => ({
+    ...rest,
+    onPressWithProps: props => dispatch(goToWorkbookScreen(props)),
+    backgroundColor: step.color
+  }))
+)(Button)
 
-export default withNavigation(
-  connect(mapStateToProps, { onPressWithProps: goToWorkbookScreen }, merge)(
-    Button
-  )
-)
+export default BeginExerciseButtonContainer
