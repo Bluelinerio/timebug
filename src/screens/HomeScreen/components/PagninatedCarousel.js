@@ -57,21 +57,16 @@ export default class PagninatedCarousel extends PureComponent<Props, State> {
       snap,
       onPress
     } = this.props
+
     const { carouseRef, activeSliderIndex } = this.state
+
     return (
       <View style={styles.paginatedCarouselContainer}>
         <VerticalGradient />
         <View
-          style={{
-            position: 'absolute',
-            top: 16,
-            left: 16,
-            right: 16,
-            bottom: 16,
-            paddingVertical: 20,
-            borderRadius: 24,
+          style={[styles.background, {
             backgroundColor: backgroundColorAtIndex(activeSliderIndex)
-          }}
+          }]}
         />
         <StepCarouselGreet index={activeSliderIndex} />
         <Carousel
@@ -85,7 +80,7 @@ export default class PagninatedCarousel extends PureComponent<Props, State> {
             <SliderEntry
               data={item}
               even={false}
-              parallax={true}
+              parallax={false}
               parallaxProps={parallaxProps}
               width={sliderWidth}
               onPress={() => onPress(item, index)}

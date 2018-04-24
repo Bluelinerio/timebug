@@ -7,6 +7,15 @@ export const colors = {
 }
 
 export default StyleSheet.create({
+  background: {
+    position: 'absolute',
+    top: 16,
+    left: 16,
+    right: 16,
+    bottom: 16,
+    paddingVertical: 20,
+    borderRadius: 24,
+  },
   paginatedCarouselContainer: {
     paddingTop: 60,
     paddingBottom: 60
