@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, Button } from 'react-native'
 import Entypo from 'react-native-vector-icons/Entypo'
 import TouchableBounce from 'react-native/Libraries/Components/Touchable/TouchableBounce'
 import CustomImage from '../../../components/CustomImage'
@@ -26,6 +26,18 @@ type Prop = {
   color: string
 }
 
+const ActionButton = ({ title = 'CONTINUE', color, onPress }) => (
+  <View
+    style={[
+      {
+        paddingVertical: 5
+      }
+    ]}
+  >
+    <Button color={deepBlue} title={title} onPress={onPress}/>
+  </View>
+)
+
 export default class SliderEntry extends PureComponent<Prop> {
   get image() {
     const { data: { icon }, parallax, parallaxProps, even } = this.props
@@ -47,7 +59,11 @@ export default class SliderEntry extends PureComponent<Prop> {
   }
 
   render() {
-    const { onPress, data: { title, subtitle, iconName }, even } = this.props
+    const {
+      onPress,
+      data: { title, subtitle, actionButtonProps },
+      even
+    } = this.props
     const uppercaseTitle = title ? (
       <Text
         style={[styles.title, even ? styles.titleEven : {}]}
@@ -64,25 +80,20 @@ export default class SliderEntry extends PureComponent<Prop> {
         <View
           style={[styles.imageContainer, even ? styles.imageContainerEven : {}]}
         >
-          {iconName && (
-            <View
-              style={[
-                styles.sliderEntryTopRightIconContainer,
-                {
-                  borderColor: deepBlue
-                }
-              ]}
-            >
-              <Entypo name={iconName} size={20} color={deepBlue} />
-            </View>
-          )}
           {this.image}
           <View
             style={[styles.radiusMask, even ? styles.radiusMaskEven : {}]}
           />
         </View>
         <View
-          style={[styles.textContainer, even ? styles.textContainerEven : {}]}
+          style={[
+            styles.textContainer,
+            even
+              ? styles.textContainerEven
+              : {
+                  paddingBottom: actionButtonProps ? 0 : 20
+                }
+          ]}
         >
           {uppercaseTitle}
           <Text
@@ -91,6 +102,7 @@ export default class SliderEntry extends PureComponent<Prop> {
           >
             {subtitle}
           </Text>
+          {actionButtonProps && <Button color={deepBlue} {...actionButtonProps} />}
         </View>
       </TouchableBounce>
     )

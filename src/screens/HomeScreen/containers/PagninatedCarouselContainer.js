@@ -1,69 +1,110 @@
 // @flow
-import invariant                            from 'invariant'
-import { connect }                          from 'react-redux'
-import PagninatedCarousel                   from '../components/PagninatedCarousel'
-import type Item                            from '../components/SliderEntry'
-import type Step                            from '../../../services/cms'
-import { phaseForStepAtIndex }              from '../../../services/cms'
-import selectors                            from '../../../redux/selectors'
-import { goToAssignmentFlow }               from '../../../redux/actions/nav.actions'
+import invariant from 'invariant'
+import { connect } from 'react-redux'
+import { compose, mapProps } from 'recompose'
+import { withNavigation } from 'react-navigation'
+import PagninatedCarousel from '../components/PagninatedCarousel'
+import { phaseForStepAtIndex } from '../../../services/cms'
+import type Item from '../components/SliderEntry'
+import type Step from '../../../services/cms'
+import selectors from '../../../redux/selectors'
+import {
+  goToWorkbookSkippingStepScreen,
+  goToAssignmentFlow,
+  goToPreviosFormsForStep
+} from '../../../redux/actions/nav.actions'
 
-const mapStateToProps = (state: any) => {
-  const phaseColors = selectors.phaseColors(state)
-  const backgroundColorAtIndex = (step: number) =>
-    phaseColors[phaseForStepAtIndex(step)]
-  const isLoggedIn = selectors.isLoggedIn(state)
-  const completedFormsData = isLoggedIn
-    ? selectors.completedFormsData(state)
-    : {}
-  const incompleteFormsData = isLoggedIn
-    ? selectors.incompleteFormsData(state)
-    : {}
+const ALLOW_USER_TO_JUST_DIRECTLY_TO_FORM = false
+const FIRST_FORM_ID = '1'
 
-  const steps: [Step] = selectors.sortedSteps(state).map(step => {
-    if (!isLoggedIn) return step
-
-    const completedForm = completedFormsData[step.stepId]
-    const lastUpdate = (completedForm && completedForm.updatedAt) || 0
-    const incompleteForm = incompleteFormsData[step.stepId]
+const renderProgressButton = (
+  { completedForms, incomplete, step },
+  { dispatch }
+) => {
+  if (Object.keys(incomplete).length > 0) {
     return {
-      ...step,
-      iconName: lastUpdate !== 0 ? 'check' : incompleteForm ? 'edit' : null,
-      progress: {
-        lastUpdate,
-        incompleteForm
+      title: 'Resume',
+      onPress: () => {
+        dispatch(
+          goToWorkbookSkippingStepScreen({
+            step,
+            incompleteFormsIds: Object.keys(incomplete)
+          })
+        )
       }
     }
-  })
-
-  const { latestStepId } = Object.keys(incompleteFormsData).reduce((sum, latestStepId) => {
-    const timeStamp = incompleteFormsData[latestStepId] && incompleteFormsData[latestStepId].timeStamp
-    if(timeStamp) {
-      if(!sum.timeStamp || sum.timeStamp < timeStamp) {
-        return {
-          latestStepId,
-          timeStamp
-        }
+  } else if (completedForms && completedForms.length > 0) {
+    return {
+      title: 'Edit',
+      onPress: () => dispatch(goToPreviosFormsForStep(step))
+    }
+  } else if (ALLOW_USER_TO_JUST_DIRECTLY_TO_FORM) {
+    return {
+      title: 'Start',
+      onPress: () => {
+        dispatch(
+          goToWorkbookSkippingStepScreen({
+            step,
+            incompleteFormsIds: [FIRST_FORM_ID]
+          })
+        )
       }
     }
-    return sum
-  }, {})
-
-  const activeSliderIndex = latestStepId ? steps.map(s => s.stepId).indexOf(latestStepId) : 0
-  
-  invariant(activeSliderIndex >= 0, `failed finding latestStepId: ${latestStepId} in steps: ${steps.map(s => s.stepId)}`)
-
-  const items: [Item] = steps.map((step) => ({
-    ...step,
-    subtitle: `Step ${step.number}, Phase: ${step.type}`
-  }))
-  return {
-    backgroundColorAtIndex,
-    items,
-    activeSliderIndex
+  } else {
+    return null
   }
 }
 
-const onPress = (step, index) => goToAssignmentFlow({ step, index })
+const mapStateToProps = (state: any) => {
+  const { latestStepId, sortedStepsWithForms } = selectors.sortedStepsWithForms(
+    state
+  )
 
-export default connect(mapStateToProps, { onPress })(PagninatedCarousel)
+  const phaseColors = selectors.phaseColors(state)
+
+  const backgroundColorAtIndex = (step: number) =>
+    phaseColors[phaseForStepAtIndex(step)]
+
+  const activeSliderIndex = latestStepId
+    ? sortedStepsWithForms.map(s => s.step.stepId).indexOf(latestStepId)
+    : 0
+
+  invariant(
+    activeSliderIndex >= 0,
+    `failed finding latestStepId: ${latestStepId} in steps: ${sortedStepsWithForms.map(
+      s => s.step.stepId
+    )}`
+  )
+
+  return {
+    sortedStepsWithForms,
+    activeSliderIndex,
+    backgroundColorAtIndex
+  }
+}
+
+const PagninatedCarouselContainer = compose(
+  withNavigation,
+  connect(mapStateToProps),
+  mapProps(
+    ({ activeSliderIndex, sortedStepsWithForms, navigation, ...rest }) => {
+      const props = {
+        ...rest,
+        onPress: (item, index) =>
+          navigation.dispatch(goToAssignmentFlow(sortedStepsWithForms[index])),
+        activeSliderIndex,
+        items: sortedStepsWithForms.map(stepWithForms => ({
+          title: stepWithForms.step.title,
+          icon: stepWithForms.step.icon,
+          subtitle: `Step ${stepWithForms.step.number}, Phase: ${
+            stepWithForms.step.type
+          }`,
+          actionButtonProps: renderProgressButton(stepWithForms, navigation)
+        }))
+      }
+      return props
+    }
+  )
+)(PagninatedCarousel)
+
+export default PagninatedCarouselContainer
