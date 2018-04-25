@@ -243,7 +243,7 @@ export default {
         selfRelationshipYear2: {
           label: 'Relationships(Year 2)'
         },
-        selfFinancialear2: {
+        selfFinancialYear2: {
           label: 'Financial(Year 2)'
         },
         selfEnvironmentYear2: {
@@ -264,7 +264,7 @@ export default {
         selfRelationshipYear3: {
           label: 'Relationships(Year 3)'
         },
-        selfFinancialear3: {
+        selfFinancialYear3: {
           label: 'Financial(Year 3)'
         },
         selfEnvironmentYear3: {
@@ -285,7 +285,7 @@ export default {
         selfRelationshipYear4: {
           label: 'Relationships(Year 4)'
         },
-        selfFinancialear4: {
+        selfFinancialYear4: {
           label: 'Financial(Year 4)'
         },
         selfEnvironmentYear4: {
@@ -306,7 +306,7 @@ export default {
         selfRelationshipYear5: {
           label: 'Relationships(Year 5)'
         },
-        selfFinancialear5: {
+        selfFinancialYear5: {
           label: 'Financial(Year 5)'
         },
         selfEnvironmentYear5: {
@@ -316,7 +316,7 @@ export default {
           label: 'Spirituality(Year 5)'
         },
         selfCareerOverall: {
-          labels: 'auto',
+          labels: 'Career Overall',
           error: 'Add up your five year career score'
         },
         selfAimsAndHobbiesOverall: {
@@ -501,25 +501,25 @@ export default {
           label: 'Spirituality(Year 5)'
         },
         otherCareerOverall: {
-          labels: 'auto'
+          label: 'Career Overall'
         },
         otherAimsAndHobbiesOverall: {
-          labels: 'auto'
+          label: 'Aims And Hobbies Overall'
         },
         otherHealthAndWellnessOverall: {
-          labels: 'auto'
+          label: 'Health And Wellness Overall'
         },
         otherRelationshipOverall: {
-          labels: 'auto'
+          label: 'Relationships Overall'
         },
         otherFinancialOverall: {
-          labels: 'auto'
+          label: 'Fiancial Overall'
         },
         otherEnvironmentOverall: {
-          labels: 'auto'
+          label: 'Environment Overall'
         },
         otherSpiritualityOverall: {
-          labels: 'auto'
+          label: 'Spirituality Overall'
         }
       }
     }
