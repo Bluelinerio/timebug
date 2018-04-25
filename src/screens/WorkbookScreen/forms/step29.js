@@ -65,16 +65,15 @@ export default {
       )
     }),
     options: {
-      label: 'Vision Creation: Spirituality',
+      label:'What major Spirituality goals (BHAGs) do you envision for yourself by year 5?',
       fields: {
         spiritualtyBHAGS: {
-          auto: 'none',
+          auto:'none',
           item: {
             auto: 'none',
             fields: {
               spiritualityBHAG: {
-                label:
-                  'What major Spirituality goals (BHAGs) do you envision for yourself by year 5?'
+                label:'Spirituality BHAG'
               },
               priority: {
                 label: 'How will you prioritize this list item?',
