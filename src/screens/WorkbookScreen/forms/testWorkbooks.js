@@ -1,8 +1,8 @@
 import R from 'ramda'
-import t from '../components/templates'
 
+const test = false
 const testWorkbooks = workbooks => {
-  if (__DEV__) {
+  if (__DEV__ && test) {
     //const mapSubform = filterKeys(['id'])
     const mapForm = ({ form, formId }) =>
       Object.keys(form).map(subFormId =>
