@@ -6,7 +6,10 @@ import { connect } from 'react-redux'
 //import updateStoreWithEmojiAndValue from '../../redux/actions/checkins.actions'
 import HeaderCloseButton from '../../components/HeaderCloseButton'
 
-const updateStoreWithEmojiAndValue = () => null
+const updateStoreWithEmojiAndValue = (payload) => ({
+  type: 'PUSH_CHECKIN',
+  payload
+})
 
 const EmojiPickerScreenContainer = compose(
   connect(null, { updateStoreWithEmojiAndValue }),
