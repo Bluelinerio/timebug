@@ -1,7 +1,7 @@
 import * as React from 'react'
 import {
   removeLabelFromListItem
-} from '../FormManipulations.js'
+} from './FormManipulations.js'
 
 import {
   ListContainer,

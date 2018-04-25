@@ -2,7 +2,7 @@
 import * as React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
-import styles from '../../../styles/templates'
+import styles from '../../styles/templates'
 
 type Item = {
   key: string,
