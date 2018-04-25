@@ -3,12 +3,17 @@ import { randomItem } from '../../../utils/random'
 import CheckinExerciseCellContainer from './CheckinExerciseCellContainer'
 import HowAreYouFeelingSuggestionCellContainer from './HowAreYouFeelingSuggestionCellContainer'
 import WhereToStartSuggestionCellContainer from './WhereToStartSuggestionCellContainer'
+import SwipablyDiscardableRow from '../../../components/SwipablyDiscardableRow'
 
-const MoreButtonContainer = props => randomItem([
-    <CheckinExerciseCellContainer {...props} />,
-    <HowAreYouFeelingSuggestionCellContainer {...props} />,
-    <WhereToStartSuggestionCellContainer {...props} />
-  ])
+const MoreButtonContainer = props => (
+  <SwipablyDiscardableRow onClose={props.onClose}>
+    {randomItem([
+      <CheckinExerciseCellContainer {...props} />,
+      <HowAreYouFeelingSuggestionCellContainer {...props} />,
+      <WhereToStartSuggestionCellContainer {...props} />
+    ])}
+  </SwipablyDiscardableRow>
+)
 
 // const MoreButtonContainer = props => (
 //   <HowAreYouFeelingSuggestionCellContainer {...props} />

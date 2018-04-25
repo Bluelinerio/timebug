@@ -4,7 +4,6 @@ import { View, Text, Platform, LayoutAnimation } from 'react-native'
 import glamorous from 'glamorous-native'
 
 import styles from '../../styles/dashbaord.styles'
-import SwipablyDiscardableRow from '../../../../components/SwipablyDiscardableRow'
 import HighlighRow from '../../../../components/HighlighRow'
 import {
   hotPink,
@@ -61,13 +60,11 @@ export const CellContainer = ({
 }: {
   onClose: () => void
 }) => (
-  <SwipablyDiscardableRow onClose={onClose}>
-    <View style={styles.dashboardCard}>
-      <View style={styles.suggestionRow}>
-        <HighlighRow style={styles.bigSuggestionWithText} {...rest} />
-      </View>
+  <View style={styles.dashboardCard}>
+    <View style={styles.suggestionRow}>
+      <HighlighRow style={styles.bigSuggestionWithText} {...rest} />
     </View>
-  </SwipablyDiscardableRow>
+  </View>
 )
 
 export const VectorEntypoButton = props => (

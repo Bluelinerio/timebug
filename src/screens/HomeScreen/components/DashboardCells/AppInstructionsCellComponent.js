@@ -2,7 +2,6 @@
 import * as React from 'react'
 import { View, Text } from 'react-native'
 import styles from '../../styles/dashbaord.styles'
-import SwipablyDiscardableRow from '../../../../components/SwipablyDiscardableRow'
 //import Meditator from '../../../../components/Meditator'
 import YesNoButton from '../../../../components/YesNoButton'
 import HighlighRow from '../../../../components/HighlighRow'
@@ -20,35 +19,33 @@ const AppInstructionsCellComponent = ({
   title: string,
   onClose: () => void
 }) => (
-  <SwipablyDiscardableRow onClose={onClose} >
-    <View style={styles.dashboardCard}>
-      <View style={styles.suggestionRow}>
-        <HighlighRow>
-          <Text
-            style={[
-              styles.suggestionText,
-              styles.strong,
-              {
-                textAlign: 'center',
-                color: hotPink
-              }
-            ]}
-          >
-            {title}
-          </Text>
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'center',
-              alignItems: 'center'
-            }}
-          >
-            <YesNoButton title={button.title} onPress={button.onPress} />
-          </View>
-        </HighlighRow>
-      </View>
+  <View style={styles.dashboardCard}>
+    <View style={styles.suggestionRow}>
+      <HighlighRow>
+        <Text
+          style={[
+            styles.suggestionText,
+            styles.strong,
+            {
+              textAlign: 'center',
+              color: hotPink
+            }
+          ]}
+        >
+          {title}
+        </Text>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}
+        >
+          <YesNoButton title={button.title} onPress={button.onPress} />
+        </View>
+      </HighlighRow>
     </View>
-  </SwipablyDiscardableRow>
+  </View>
 )
 
 export default AppInstructionsCellComponent
