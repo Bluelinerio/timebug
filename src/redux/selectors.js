@@ -56,10 +56,6 @@ const uniqueColors = (state: any) => [
   ])
 ]
 
-const assignmentsForStepId = (state: any) => (stepId: string) =>
-  steps(state)[stepId].assignments
-const colorForStepWithId = (state: any) => (stepId: string) =>
-  stepColors(state)[stepId]
 const step = (number: number) => (state: any) => steps(state)[number]
 
 const pages = state => getCms(state).pages
@@ -104,8 +100,19 @@ const formData = (state: any) => getFormData(state).data
 const incompleteFormsData = (state: any) =>
   filterStepIds(getFormData(state).data)
 
-const sortedStepsWithForms = state => {
+const buttonTitleForFormCompletion = ({ completedForms, incomplete }) => {
+  
+  Object.keys(incomplete).length > 0 ? 'Resume' : 'Edit'
+  if (Object.keys(incomplete).length > 0) {
+    return 'Resume'
+  } else if (completedForms && Object.keys(completedForms).length > 0) {
+    return 'Edit'
+  } else {
+    return 'Start'
+  }
+}
 
+const sortedStepsWithForms = state => {
   const completed = completedForms(state)
   const incompleteForms = incompleteFormsData(state)
 
@@ -125,17 +132,31 @@ const sortedStepsWithForms = state => {
     },
     {}
   )
+
   return {
-    sortedStepsWithForms: sortedSteps(state).map(step => {
-      return {
+    sortedStepsWithForms: sortedSteps(state)
+      .map(step => ({
         completedForms: completed.find(f => f.stepId),
         incomplete: filterNumbers(incompleteForms[step.stepId]),
         step
-      }
-    }),
+      }))
+      .map(step => ({
+        ...step,
+        buttonTitleForFormCompletion: buttonTitleForFormCompletion(step)
+      })),
     latestStepId
   }
 }
+
+const buttonTitlesForFormCompletion = state => stepId => {
+  return R.compose(
+    buttonTitleForFormCompletion,
+    R.find(i => i.step.stepId === stepId),
+    R.prop('sortedStepsWithForms'),
+    sortedStepsWithForms
+  )(state)
+}
+
 const modelsAndDataForExercise = (state: any) => (stepId: string) => {
   //TComb Forms helpers
 
@@ -172,8 +193,8 @@ export default {
   getCms,
   sortedSteps,
   sortedStepsWithForms,
+  buttonTitlesForFormCompletion,
   steps,
-  colorForStepWithId,
   phaseColors,
   introSlides,
   step,
@@ -184,7 +205,6 @@ export default {
   stepColors,
   isCMSLoading,
   totalNumberOfSteps,
-  assignmentsForStepId,
   user,
   userId,
   isLoggedIn,
