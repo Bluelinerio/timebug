@@ -23,6 +23,7 @@ export default {
         },
 
         roleModels: {
+          auto: 'none',
           item: {
             auto: 'none',
             fields: {

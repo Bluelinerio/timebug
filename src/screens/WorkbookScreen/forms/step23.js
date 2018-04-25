@@ -12,12 +12,12 @@ export default {
       })
     }),
     options: {
-      label: '20/20 Life Vision Check-in',
       fields: {
         id: {
           hidden: true
         },
         step23CheckIn: {
+          label: '20/20 Life Vision Check-in',
           fields: {
             mantraAnswer: {
               label: 'Did you do your mantra today (assigned on Day 21)?'
@@ -51,6 +51,9 @@ export default {
           label:
             'If you could change jobs, and do something totally new, what would it be?',
           fields: {
+            changeJobs: {
+              auto: 'none'
+            },
             changesNeeded: {
               label:
                 'Reflecting back on exercise 13, what changes would you need to make in your career to increase your fulfillment and motivation levels to 10 (Extremely fufilled/motivated)?',
