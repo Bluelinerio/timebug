@@ -1,5 +1,5 @@
-import t from '../components/templates';
-import { TimeSpent, TimeChanged, ActivityFeelings } from './contents';
+import t from '../components/templates'
+import { TimeSpent, TimeChanged, ActivityFeelings } from './contents'
 
 export default {
   1: {
@@ -83,7 +83,7 @@ export default {
   },
   3: {
     type: t.struct({
-      aimsAndHobbies: t.list(
+      notAccomplishedAimsAndHobbies: t.list(
         t.struct({
           personalAimHobby: t.String,
           why: t.String
@@ -95,7 +95,7 @@ export default {
         "Were there any aims & hobbies that you weren't able to accomplish that you really wanted to over the past 5 years?",
 
       fields: {
-        aimsAndHobbies: {
+        notAccomplishedAimsAndHobbies: {
           item: {
             auto: 'none',
             fields: {
@@ -113,4 +113,4 @@ export default {
       }
     }
   }
-};
+}
