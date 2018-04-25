@@ -39,16 +39,16 @@ export default {
   },
   2: {
     type: t.struct({
-      goal: t.list(t.String)
+      environmentBHAG: t.list(t.String)
     }),
     options: {
       label:
-        'What major goals [BHAGs] do you envision for yourself 5 years from now?',
+        'What major goals [BHAGs] pertaining to your Environment do you envision for yourself 5 years from now?',
       fields: {
-        goal: {
+        environmentBHAG: {
           auto: 'none',
           item: {
-            auto: 'none'
+            label: 'Environment BHAG'
           }
         }
       }

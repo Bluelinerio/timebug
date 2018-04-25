@@ -81,13 +81,62 @@ export default {
         financialBhagTwo: t.String,
         spiritualityBhagOne: t.String,
         spiritualityBhagTwo: t.String,
-        financesBhagOne: t.String,
-        financesBhagTwo: t.String
+        environmentBhagOne: t.String,
+        environmentBhagTwo: t.String
       })
     }),
     options: {
-      label:
-        "Reflecting on the 7 Self-assessments over Steps 13-19, list two Big Hairy Audacious Goals (BHAGs) that you'd like to plant for this next year."
+      fields:{
+        selfAssessmentsReflection:{
+          label:"Reflecting on the 7 Self-assessments over Steps 13-19, list two Big Hairy Audacious Goals (BHAGs) that you'd like to plant for this next year.",
+          fields: {
+            careerBhagOne: {
+              label:'Career BHAG no.1'
+            },
+            careerBhagTwo: {
+              label:'Career BHAG no.2'
+            },
+            aimsAndHobbiesBhagOne: {
+              label:'Aims and Hobbies BHAG no.1'
+            },
+            aimsAndHobbiesBhagTwo: {
+              label:'Aims and Hobbies BHAG no.2'
+            },
+            healthBhagOne: {
+              label:'Health BHAG no.1'
+            },
+            healthBhagTwo: {
+              label:'Health BHAG no.2'
+            },
+            relationshipBhagOne: {
+              label:'Relationships BHAG no.1'
+            },
+            relationshipBhagTwo: {
+              label:'Relationships BHAG no.2'
+            },
+            financialBhagOne: {
+              label:'Financial BHAG no.1'
+            },
+            financialBhagTwo: {
+              label:'Financial BHAG no.2'
+            },
+            spiritualityBhagOne: {
+              label:'Spirituality BHAG no.1'
+            },
+            spiritualityBhagTwo: {
+              label:'Spirituality BHAG no.2'
+            },
+            environmentBhagOne: {
+              label:'Environment BHAG no.1'
+            },
+            environmentBhagTwo: {
+              label:'Environment BHAG no.2'
+            }
+
+          }
+          
+        }
+      }
     }
   },
   4: {
