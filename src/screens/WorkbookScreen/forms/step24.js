@@ -107,12 +107,12 @@ export default {
   },
   5: {
     type: t.struct({
-      emotions: t.list(Emotion)
+      financialEmotionsWillFeel: t.list(Emotion)
     }),
     options: {
       label: "What emotions will you feel as a result that you don't feel now?",
       fields: {
-        emotions: {
+        financialEmotionsWillFeel: {
           auto:'none',
           item: {
             auto:'none'
