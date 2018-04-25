@@ -58,14 +58,14 @@ export default {
   },
   3: {
     type: t.struct({
-      emotions: t.list(Emotion)
+      relationshipEmotionsWillFeel: t.list(Emotion)
     }),
     options: {
       label:
         'What are 3 feelings that you will feel about yourself 5 years from now?',
       maxLines: 3,
       fields: {
-        emotions: {
+        relationshipEmotionsWillFeel: {
           auto: 'none',
           item: {
             auto: 'none'

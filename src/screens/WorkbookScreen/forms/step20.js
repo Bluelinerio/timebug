@@ -512,7 +512,7 @@ export default {
         otherRelationshipOverall: {
           labels: 'auto'
         },
-        financialOverall: {
+        otherFinancialOverall: {
           labels: 'auto'
         },
         otherEnvironmentOverall: {
