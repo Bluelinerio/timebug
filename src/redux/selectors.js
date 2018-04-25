@@ -8,6 +8,8 @@ import {
 } from '../services/apollo/models'
 // models
 import workbooks from '../screens/WorkbookScreen/forms'
+import { removeIvalidValuesInsteadOfDoingAnyMigrationForNow } from './tcomb'
+
 import type { User, Form } from '../services/apollo/models'
 import type { Colors, Step, Slide } from '../services/cms'
 
@@ -103,7 +105,7 @@ const incompleteFormsData = (state: any) =>
   filterStepIds(getFormData(state).data)
 
 const sortedStepsWithForms = state => {
-  
+
   const completed = completedForms(state)
   const incompleteForms = incompleteFormsData(state)
 
@@ -136,18 +138,6 @@ const sortedStepsWithForms = state => {
 }
 const modelsAndDataForExercise = (state: any) => (stepId: string) => {
   //TComb Forms helpers
-  const isValueAValidTCombType = (value, type) =>
-    type.is(value) ? value : null
-  const removeIvalidValuesInsteadOfDoingAnyMigrationForNow = (model, value) =>
-    Object.keys(model.type.meta.props).reduce(
-      (sum, key) => ({
-        ...sum,
-        ...(isValueAValidTCombType(value[key], model.type.meta.props[key]) && {
-          [key]: value[key]
-        })
-      }),
-      {}
-    )
 
   const models = workbooks[stepId]
   const localData = getFormData(state).data[stepId]
