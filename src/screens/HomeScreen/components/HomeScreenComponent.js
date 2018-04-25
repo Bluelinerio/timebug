@@ -6,7 +6,7 @@ import { SafeAreaView } from 'react-navigation'
 import PagninatedCarouselContainer from '../containers/PagninatedCarouselContainer'
 import Version from '../containers/Version'
 import DashboardCellsContainer from '../containers/DashboardCellContainer'
-import MoreButtonContainer from '../containers/MoreButtonContainer'
+import SuggestionCellContainer from '../containers/SuggestionCellContainer'
 import styles from '../styles'
 import { sliderWidth, itemWidth } from '../styles/SliderEntry.style'
 import Banner from './Banner'
@@ -26,7 +26,7 @@ export default class HomeScreenComponent extends PureComponent {
         <ScrollView style={{ flex: 1 }}>
           <Banner />
           {this.state.showMore && (
-            <MoreButtonContainer
+            <SuggestionCellContainer
               onClose={() =>
                 this.setState(
                   {

@@ -5,7 +5,7 @@ import HowAreYouFeelingSuggestionCellContainer from './HowAreYouFeelingSuggestio
 import WhereToStartSuggestionCellContainer from './WhereToStartSuggestionCellContainer'
 import SwipablyDiscardableRow from '../../../components/SwipablyDiscardableRow'
 
-const MoreButtonContainer = props => (
+const SuggestionCellContainer = props => (
   <SwipablyDiscardableRow onClose={props.onClose}>
     {randomItem([
       <CheckinExerciseCellContainer {...props} />,
@@ -15,8 +15,4 @@ const MoreButtonContainer = props => (
   </SwipablyDiscardableRow>
 )
 
-// const MoreButtonContainer = props => (
-//   <HowAreYouFeelingSuggestionCellContainer {...props} />
-// )
-
-export default MoreButtonContainer
+export default SuggestionCellContainer
