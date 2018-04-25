@@ -1,16 +1,11 @@
-import t from '../components/templates';
-import {
-  AssessmentTypes,
-  TimeSpentProgress,
-  OneToTenScale,
-  OverallScore
-} from './contents';
+import t from '../components/templates'
+import { TimeSpentProgress, OneToTenScale, OverallScore } from './contents'
 
 export default {
   1: {
     type: t.struct({
       id: t.maybe(t.String),
-      topGoals: t.list(
+      nextFiveYearsTopGoals: t.list(
         t.struct({
           goal: t.String,
           newInsights: t.String,
@@ -25,7 +20,7 @@ export default {
         id: {
           hidden: true
         },
-        topGoals: {
+        nextFiveYearsTopGoals: {
           item: {
             auto: 'none',
             fields: {
@@ -78,19 +73,22 @@ export default {
   },
   3: {
     type: t.struct({
-      career: OneToTenScale,
-      aimsAndHobbies: OneToTenScale,
-      healthAndWellness: OneToTenScale,
-      financial: OneToTenScale,
-      relationship: OneToTenScale,
-      environment: OneToTenScale,
-      spirituality: OneToTenScale
+      pastPillarImportance: t.struct({
+        career: OneToTenScale,
+        aimsAndHobbies: OneToTenScale,
+        healthAndWellness: OneToTenScale,
+        financial: OneToTenScale,
+        relationship: OneToTenScale,
+        environment: OneToTenScale,
+        spirituality: OneToTenScale
+      })
     }),
     options: {
       label:
         'Rank each of the 7 Pillars of Life in order of importance to you over the past 5 years.',
-
       fields: {
+        pastPillarImportance: {
+          fields: {
         career: {
           auto: 'labels',
           help: '10= Very Important and 1= Not important at all'
@@ -118,6 +116,8 @@ export default {
         spirituality: {
           auto: 'labels',
           help: '10= Very Important and 1= Not important at all'
+        }
+      }
         }
       }
     }
@@ -524,4 +524,4 @@ export default {
       }
     }
   }
-};
+}
