@@ -48,7 +48,7 @@ export default {
   },
   2: {
     type: t.struct({
-      memories: t.list(
+      regrets: t.list(
         t.struct({
           regret: t.String,
           areaOfLife: t.maybe(AreaOfLife),
@@ -59,7 +59,7 @@ export default {
     options: {
       label: 'What are your main regrets?',
       fields: {
-        memories: {
+        regrets: {
           auto: 'none',
           item: {
             auto: 'none',
