@@ -37,8 +37,8 @@ const MeditationDashobardCell = ({
             alignItems: 'center'
           }}
         >
-          <YesNoButton title={'Yes'} onPress={onPress} />
-          <YesNoButton title={'No'} onPress={onPress} />
+          <YesNoButton title={'I want to Meditate'} onPress={onPress} />
+
         </View>
       </HighlighRow>
     </View>
