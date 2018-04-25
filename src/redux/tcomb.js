@@ -55,16 +55,19 @@ if (__DEV__) {
 }
 
 const isValueAValidTCombType = (value, key, type) => {
-  const res = type[key].is(value[key])
+  const res = value.type[key] === type[key].displayName
   if (!res) {
-    console.warn(`expected value of ${key} to be of type ${type.displayName} got ${JSON.sringify(value[key])}`)
+    console.warn(
+      `expected value of ${key} to be of type ${
+        type.displayName
+      } got ${JSON.stringify(value[key])}`
+    )
   }
   return res
 }
 
 export const isTCombValueValid = (value: any, model: any) => (key: string) => {
   const props = getTCombProps(model)
-
   return props[key] && value[key] && isValueAValidTCombType(value, key, props)
 }
 
@@ -74,7 +77,7 @@ export const removeIvalidValuesInsteadOfDoingAnyMigrationForNow = (
 ) => {
   const validKeys = validKeysForModel(model)
   const mapKeysWithValidTCombValues = isTCombValueValid(value, model)
-  const keysWithValidValues = validKeys.map(mapKeysWithValidTCombValues)
+  const keysWithValidValues = validKeys.filter(mapKeysWithValidTCombValues)
 
   return keysWithValidValues.reduce((sum, key) => {
     return {
