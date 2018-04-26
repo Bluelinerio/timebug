@@ -100,12 +100,15 @@ const formData = (state: any) => getFormData(state).data
 const incompleteFormsData = (state: any) =>
   filterStepIds(getFormData(state).data)
 
+const EDITING_FORMS_SUPPORTTED = false
 const buttonTitleForFormCompletion = ({ completedForms, incomplete }) => {
-  
-  Object.keys(incomplete).length > 0 ? 'Resume' : 'Edit'
   if (Object.keys(incomplete).length > 0) {
     return 'Resume'
-  } else if (completedForms && Object.keys(completedForms).length > 0) {
+  } else if (
+    EDITING_FORMS_SUPPORTTED &&
+    completedForms &&
+    Object.keys(completedForms).length > 0
+  ) {
     return 'Edit'
   } else {
     return 'Start'
