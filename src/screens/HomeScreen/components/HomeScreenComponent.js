@@ -5,7 +5,7 @@ import { SafeAreaView } from 'react-navigation'
 
 import PagninatedCarouselContainer from '../containers/PagninatedCarouselContainer'
 import Version from '../containers/Version'
-import DashboardCellsContainer from '../containers/DashboardCellContainer'
+import DashboardCellsContainer from '../containers/DashboardCellsContainer'
 import SuggestionCellContainer from '../containers/SuggestionCellContainer'
 import styles from '../styles'
 import { sliderWidth, itemWidth } from '../styles/SliderEntry.style'
