@@ -1,14 +1,20 @@
 // @flow
-import * as React                              from 'react'
-import { Image, View, Text, TouchableOpacity } from 'react-native'
+import * as React             from 'react'
+import { 
+  Image, 
+  View, 
+  Text, 
+  TouchableOpacity, 
+  Dimensions 
+}                             from 'react-native'
 import styles, {
   scrollViewHorizontalPadding,
   grayColor
-}                                              from '../../styles/dashbaord.styles'
-import OnLayout                                from '../../../../components/OnLayout'
-import HighlighRow                             from '../../../../components/HighlighRow'
-import HorizontalScrollView                    from '../../../../components/HorizontalScrollView'
-import PhaseProgressContainer                  from '../../../../containers/PhaseProgressContainer'
+}                             from '../../../styles/dashbaord.styles'
+import OnLayout               from '../../../../components/OnLayout'
+import HighlighRow            from '../../../../components/HighlighRow'
+import HorizontalScrollView   from '../../../../components/HorizontalScrollView'
+import PhaseProgressContainer from '../../../../containers/PhaseProgressContainer'
 
 type HeaderProps = {
   date: string,
