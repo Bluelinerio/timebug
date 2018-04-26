@@ -1,23 +1,23 @@
 // @flow
-import * as React from 'react'
-import { connect } from 'react-redux'
-import { compose, mapProps } from 'recompose'
-import invariant from 'invariant'
+import * as React                              from 'react'
+import { connect }                             from 'react-redux'
+import { compose, mapProps }                   from 'recompose'
+import invariant                               from 'invariant'
 import { userRequired, withNavigationAndStep } from '../../../HOC'
-import t from '../components/templates'
+import t                                       from '../components/templates'
 
-import { headerBackgrounds } from '../../../resources/images'
+import { headerBackgrounds }                   from '../../../resources/images'
 import {
   submitFormValue,
   syncFormData
-} from '../../../redux/actions/formData.actions'
+}                                              from '../../../redux/actions/formData.actions'
 import {
   goToWorkbookDoneScreen,
   goToWorkbookScreenWithParams
-} from '../../../redux/actions/nav.actions'
-import selectors from '../../../redux/selectors'
-import type Props from '../components/WorkbookScreenComponent'
-import WorkbookScreenComponent from '../components/WorkbookScreenComponent'
+}                                              from '../../../redux/actions/nav.actions'
+import selectors                               from '../../../redux/selectors'
+import type Props                              from '../components/WorkbookScreenComponent'
+import WorkbookScreenComponent                 from '../components/WorkbookScreenComponent'
 
 const formatType = type => {
   const compose = (...fns) => x => fns.reduce((v, fn) => fn(v), x)
