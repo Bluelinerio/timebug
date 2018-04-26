@@ -1,17 +1,17 @@
 // @flow
 import R from 'ramda'
-import { getUserState, getCms, getFormData } from './rootReducer'
+import { getUserState, getCms, getFormData } from '../rootReducer'
 import {
   UNDETERMINED,
   ANONYMOUS,
   AUTHENTICATING
-} from '../services/apollo/models'
+} from '../../services/apollo/models'
 // models
-import workbooks from '../screens/WorkbookScreen/forms'
-import { removeIvalidValuesInsteadOfDoingAnyMigrationForNow } from './tcomb'
+import workbooks from '../../screens/WorkbookScreen/forms'
+import { removeIvalidValuesInsteadOfDoingAnyMigrationForNow } from '../tcomb'
 
-import type { User, Form } from '../services/apollo/models'
-import type { Colors, Step, Slide } from '../services/cms'
+import type { User, Form } from '../../services/apollo/models'
+import type { Colors, Step, Slide } from '../../services/cms'
 
 export const filterWithKeys = (pred, obj) =>
   R.pipe(R.toPairs, R.filter(R.apply(pred)), R.fromPairs)(obj)
