@@ -1,8 +1,9 @@
 // @flow
-import React, { Component } from 'react'
-import { Text, View, Image } from 'react-native'
-import styles from '../styles'
-import Button from '../../../components/Button'
+import * as React      from 'react'
+import { Text, View }  from 'react-native'
+import styles          from '../styles'
+import dashboardStyles from '../../styles/dashbaord.styles'
+import Button          from '../../../components/Button'
 
 export type Props = {
   title: string,
@@ -29,7 +30,7 @@ const WorkbookDoneScreen = ({
       ]}
     >
       <View style={styles.messageContainer}>
-        <Text style={[styles.title, styles.strong, { color: 'white' }]}>
+        <Text style={[dashboardStyles.title, dashboardStyles.strong, { color: 'white' }]}>
           {title}
         </Text>
       </View>
