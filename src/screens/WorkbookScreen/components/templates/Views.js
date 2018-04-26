@@ -16,9 +16,9 @@ type Item = {
 }
 
 export const RowWithoutButtons = ({ key, input, buttons }: Item) => {
-  
   return (
     <SwipablyDiscardableRow
+      key={key}
       onClose={() => {
         buttons && buttons.length && buttons[0].click && buttons[0].click()
       }}
@@ -29,7 +29,6 @@ export const RowWithoutButtons = ({ key, input, buttons }: Item) => {
           justifyContent: 'center',
           marginVertical: 10
         }}
-        key={key}
       >
         {input}
       </View>
