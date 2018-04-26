@@ -146,28 +146,28 @@ class WorkbookScreenComponent extends Component<Props, State> {
 
   // this is an implmentation of ajustment of a growing/shrinking view makin sure the the minimal height of the scroll view content is at least the height of the scroll view itself. (its container)
   layout = () => {
-    const { containerLayout, formLayout, bufferViewHeight } = this.state
+    const {
+      containerLayout,
+      formLayout,
+      bufferViewHeight,
+      layoutReady
+    } = this.state
     if (containerLayout && formLayout) {
-      const newHeight = containerLayout.height - formLayout.height
-      if (!bufferViewHeight) {
+      const newBufferHeight = Math.max(
+        0,
+        bufferViewHeight +
+          Math.max(0, containerLayout.height - formLayout.height)
+      )
+      if (newBufferHeight !== bufferViewHeight) {
         this.setState({
           layoutReady: true,
-          bufferViewHeight: newHeight
+          bufferViewHeight: newBufferHeight
         })
-      } else if (newHeight !== 0) {
-        this.setState({
-          layoutReady: true,
-          bufferViewHeight: Math.max(0, bufferViewHeight + newHeight)
-        })
-      } else {
+      } else if (!layoutReady) {
         this.setState({
           layoutReady: true
         })
       }
-    } else {
-      this.setState({
-        layoutReady: false
-      })
     }
   }
 
