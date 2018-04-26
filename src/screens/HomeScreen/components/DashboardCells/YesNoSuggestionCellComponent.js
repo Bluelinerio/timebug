@@ -7,8 +7,10 @@ import {
   YesButton,
   NoButton,
   Title,
-  triggerAnimation
 } from './DashboardViews.js'
+import {
+  triggerAnimation
+} from '../../../styles'
 import Meditator from '../../../../components/Meditator'
 import { goToMeditation } from '../../../../redux/actions/nav.actions'
 

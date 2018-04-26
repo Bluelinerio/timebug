@@ -1,7 +1,6 @@
 import * as React from 'react'
-import {
-  removeLabelFromListItem
-} from './FormManipulations.js'
+import { removeLabelFromListItem } from './FormManipulations.js'
+import { triggerAnimation } from '../../../styles'
 
 import {
   ListContainer,
@@ -57,9 +56,12 @@ export default class FormList extends React.Component<Props, State> {
 
   componentWillReceiveProps = nextProps => {
     if (this.state.pages !== nextProps.items.length) {
-      this.setState({
-        pages: nextProps.items.length
-      })
+      this.setState(
+        {
+          pages: nextProps.items.length
+        },
+        triggerAnimation
+      )
     }
   }
 
@@ -115,7 +117,7 @@ export default class FormList extends React.Component<Props, State> {
     const addButton = shouldRenderAddButton
       ? AddButton({
           key: add.type,
-          text: pages === 0 ? 'Create First' : `(${items.length})`,
+          text: '', //items === 0 ? 'Create First' : `Create another (${items.length})`,
           disabled: !addButtonEnabled,
           onPress: () => {
             add.click()
