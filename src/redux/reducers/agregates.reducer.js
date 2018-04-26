@@ -4,9 +4,9 @@
 // inactive - This is a state that occurs when transitioning between foreground & background, and during periods of inactivity such as entering the Multitasking view or in the event of an incoming call
 
 // @flow
-import { NavigationActions } from 'react-navigation'
 import navigationReducer, {
-  NavigationReducerKeys
+  NavigationReducerKeys,
+  ActionTypes as NavigationReducerActionTypes
 } from './agregates.navigation.reducer'
 
 export const AgregateReducerKeys = {
@@ -31,10 +31,9 @@ function agregateReducer(
   state: AgregateState = initialState,
   action: AgregateUpdateAction
 ) {
+  if (NavigationReducerActionTypes.includes(action.type)) return navigationReducer(state, action)
+
   switch (action.type) {
-    case NavigationActions.NAVIGATE: {
-      return navigationReducer(state, action)
-    }
     case EVENT:
       return {
         ...(state || {}),

@@ -1,6 +1,7 @@
 import R from 'ramda'
 import routes from '../../navigation/routes'
 import { composeReducers } from './utils'
+import { NavigationActions } from 'react-navigation'
 
 const NavigationActionStepIdLens = R.lensPath(['params', 'stepId'])
 const NavigationActionFormIdLens = R.lensPath(['params', 'formId'])
@@ -13,6 +14,7 @@ export const NavigationReducerKeys = {
     stepGuide: 'stepGuide'
   }
 }
+export const ActionTypes = [NavigationActions.NAVIGATE]
 
 const navigationReducer = (state = {}, action) => {
   const stepWorkbookLensWithStep = (stepId: string) =>
