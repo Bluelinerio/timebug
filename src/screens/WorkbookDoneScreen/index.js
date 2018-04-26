@@ -4,26 +4,13 @@ import { HeaderBackButton, NavigationActions } from 'react-navigation'
 import screen                                  from './containers/WorkbookDoneScreenContainer'
 import { reset }                               from '../../redux/actions/nav.actions'
 import styles                                  from '../styles'
+import NavigationCloseButton                   from '../../components/NavigationCloseButton'
 
 screen.navigationOptions = ({
   navigation: { dispatch, state: { params: { stepColor } } }
 }) => {
   return {
-    headerRight: (
-      <View
-        style={{
-          paddingRight: 16
-        }}
-      >
-        <Button
-          title={'Done'}
-          color={Platform.OS === 'ios' ? 'white' : 'transparent'}
-          accessibilityLabel={'close'}
-          backgroundColor={'transparent'}
-          onPress={() => dispatch(reset())}
-        />
-      </View>
-    ),
+    headerRight: <NavigationCloseButton onPress={() => dispatch(reset())} />,
     headerStyle: {
       ...StyleSheet.flatten(styles.navigationOptionHeaderStyle),
       backgroundColor: stepColor,
