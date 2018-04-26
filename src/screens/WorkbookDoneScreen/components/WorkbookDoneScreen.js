@@ -30,8 +30,19 @@ const WorkbookDoneScreen = ({
       ]}
     >
       <View style={styles.messageContainer}>
-        <Text style={[dashboardStyles.title, dashboardStyles.strong, { color: 'white' }]}>
+        <Text
+          style={[
+            dashboardStyles.title,
+            dashboardStyles.strong,
+            { color: 'white' }
+          ]}
+        >
           {title}
+        </Text>
+        <Text style={[dashboardStyles.suggestionText, dashboardStyles.strong, { color: 'white' }]}>
+          {
+            'Regret was rated highest of a list of negative emotions in fulfilling five functions: (1) making sense of the world, (2) avoiding future negative behaviors, (3) gaining insight, (4) achieving social harmony, and (5) improving ability to approach desired opportunities (presumably because we regret past passivity).'
+          }
         </Text>
       </View>
       <View style={[styles.absoluteContainer]}>
