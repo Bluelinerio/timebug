@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react'
 import { View, Text } from 'react-native'
-import styles         from '../../../styles/dashbaord.styles'
+import styles         from '../../../styles/dashboard.styles'
 import Meditator      from '../../../../components/Meditator'
 import YesNoButton    from '../../../../components/YesNoButton'
 import HighlighRow    from '../../../../components/HighlighRow'

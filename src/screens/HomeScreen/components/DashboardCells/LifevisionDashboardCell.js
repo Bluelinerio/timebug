@@ -10,7 +10,7 @@ import {
 import styles, {
   scrollViewHorizontalPadding,
   grayColor
-}                             from '../../../styles/dashbaord.styles'
+}                             from '../../../styles/dashboard.styles'
 import OnLayout               from '../../../../components/OnLayout'
 import HighlighRow            from '../../../../components/HighlighRow'
 import HorizontalScrollView   from '../../../../components/HorizontalScrollView'

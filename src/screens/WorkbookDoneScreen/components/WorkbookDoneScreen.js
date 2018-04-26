@@ -1,8 +1,8 @@
 // @flow
-import * as React      from 'react'
+import * as React from 'react'
 import { Text, View }  from 'react-native'
 import styles          from '../styles'
-import dashboardStyles from '../../styles/dashbaord.styles'
+import dashboardStyles from '../../styles/dashboard.styles'
 import Button          from '../../../components/Button'
 
 export type Props = {

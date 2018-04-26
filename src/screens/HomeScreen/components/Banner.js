@@ -5,7 +5,7 @@ import { Image, Text, View } from 'react-native'
 import VerticalGradient from './VerticalGradient'
 import UserProfileImageConsumer from '../../../containers/UserProfileImageConsumer'
 import LogoutButtonContainer from '../../../containers/LogoutButtonContainer'
-import styles from '../../styles/dashbaord.styles'
+import styles from '../../styles/dashboard.styles'
 import moment from 'moment'
 
 const Banner = () => {

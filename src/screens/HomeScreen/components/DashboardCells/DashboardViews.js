@@ -3,7 +3,7 @@ import * as React from 'react'
 import { View, Text, Platform } from 'react-native'
 import glamorous from 'glamorous-native'
 
-import styles from '../../../styles/dashbaord.styles'
+import styles from '../../../styles/dashboard.styles'
 import HighlighRow from '../../../../components/HighlighRow'
 import {
   hotPink,
