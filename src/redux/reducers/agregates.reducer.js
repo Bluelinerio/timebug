@@ -5,30 +5,35 @@
 
 // @flow
 import { NavigationActions } from 'react-navigation'
-import R from 'ramda'
-import routes from '../../navigation/routes'
-import { composeReducers } from './utils'
+import navigationReducer, {
+  NavigationReducerKeys
+} from './agregates.navigation.reducer'
+
+export const AgregateReducerKeys = {
+  agregate: 'agregates',
+  ...NavigationReducerKeys,
+}
 
 export const UPDATE = 'UPDATE'
 export const PUSH = 'PUSH'
 export const EVENT = 'EVENT'
 export const PAGE_VIEW = 'PAGE_VIEW'
 
-export type AggregateState = {}
-export type AggregateUpdateAction = {
+export type AgregateState = {}
+export type AgregateUpdateAction = {
   type: UPDATE | PUSH | EVENT | PAGE_VIEW,
   payload: {}
 }
-export const initialState: AggregateState = {}
+export const initialState: AgregateState = {}
 
 // re: react-navigation and redux-beacon review https://github.com/rangle/redux-beacon/issues/138
-function aggregateReducer(
-  state: AggregateState = initialState,
-  action: AggregateUpdateAction
+function agregateReducer(
+  state: AgregateState = initialState,
+  action: AgregateUpdateAction
 ) {
   switch (action.type) {
     case NavigationActions.NAVIGATE: {
-      return navigate(state, action)
+      return navigationReducer(state, action)
     }
     case EVENT:
       return {
@@ -58,67 +63,14 @@ function aggregateReducer(
   }
 }
 
-const navigate = (state = {}, action) => {
-  const NavigationActionStepIdLens = R.lensPath(['params', 'stepId'])
-  const NavigationActionFormIdLens = R.lensPath(['params', 'formId'])
-  const NavigationActionRouteNameLens = R.lensPath(['routeName'])
-  const PageVisits = 'pageVisit'
-  const Pages = {
-    stepWorkbook: 'stepWorkbook',
-    stepGuide: 'stepGuide'
-  }
-  const stepWorkbookLensWithStep = (stepId: string) =>
-    R.lensPath([PageVisits, Pages.stepGuide, stepId])
-  const stepGuideLensWithStep = (stepId: string) =>
-    R.lensPath([PageVisits, Pages.stepWorkbook, stepId])
-  const updateScreen = append => previous => ({
-    count: ((previous && previous.count) || 0) + 1,
-    last: Date.now(),
-    ...(append || {})
-  })
-
-  const tagPageVisits = (state = {}, action) => {
-    switch (R.view(NavigationActionRouteNameLens, action)) {
-      case routes.root.AssignmentFlow:
-      case routes.step.StepScreen: {
-        return R.over(
-          stepGuideLensWithStep(R.view(NavigationActionStepIdLens, action)),
-          updateScreen({}),
-          state
-        )
-      }
-      case routes.step.WorkbookScreen:
-        return R.over(
-          stepWorkbookLensWithStep(R.view(NavigationActionStepIdLens, action)),
-          updateScreen({
-            formId: R.view(NavigationActionFormIdLens)
-          }),
-          state
-        )
-      default:
-        break
-    }
-  }
-
-  const tagLastVisitedPage = (state, action) => ({
-    ...state,
-    lastVisitedPage: {
-      routeName: R.view(NavigationActionRouteNameLens, action),
-      timestamp: Date.now()
-    }
-  })
-
-  return composeReducers(tagPageVisits, tagLastVisitedPage)(state, action)
-}
-
 import storage from 'redux-persist/lib/storage'
 import { persistReducer } from 'redux-persist'
 
 //export const UNDETERMIND = 0
 // stateReconciler: (
-//   inboundState: AggregateState,
-//   originalState: AggregateState
-//   //reducedState: AggregateState
+//   inboundState: AgregateState,
+//   originalState: AgregateState
+//   //reducedState: AgregateState
 // ) => {
 //   if (inboundState === UNDETERMIND) {
 //     return UNDETERMIND
@@ -136,9 +88,9 @@ import { persistReducer } from 'redux-persist'
 // }
 
 const persistConfig = {
-  key: 'aggregate',
+  key: AgregateReducerKeys.agregate,
   storage: storage,
   blacklist: ['requestCount', 'error']
 }
 
-export default persistReducer(persistConfig, aggregateReducer)
+export default persistReducer(persistConfig, agregateReducer)
