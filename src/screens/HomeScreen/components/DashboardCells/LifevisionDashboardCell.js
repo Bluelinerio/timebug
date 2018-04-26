@@ -42,7 +42,16 @@ const LifevisionDashboardCell = () => (
     <Header title="Life Vision" titleColor="black" />
     <HorizontalScrollView horizontalPadding={scrollViewHorizontalPadding}>
       {
-        <HighlighRow style={styles.leaderboardContainer}>
+        <HighlighRow
+          style={[
+            styles.leaderboardContainer,
+            {
+              width:
+                Dimensions.get('window').width - scrollViewHorizontalPadding - 20,
+              paddingLeft: 10
+            }
+          ]}
+        >
           <OnLayout
             render={({ width }) =>
               width > 0 ? <PhaseProgressContainer width={width} /> : null
