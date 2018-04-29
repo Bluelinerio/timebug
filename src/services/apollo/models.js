@@ -72,3 +72,35 @@ export type UpdateormArgs = {
 };
 
 export type Auth = { token: string, user: AuthUser };
+
+export type Checkin = {
+  +id: string,
+  +name: string, //currently, this property is named template, it is one of the changes that are pending to be done
+  +user: User,
+  +createdAt: string,
+  +updatedAt: string,
+  +eventDate: string,
+  +version: string,
+  +data: any
+}
+
+export type createCheckinArgs = {
+  +name: string, //currently, this property is named template, it is one of the changes that are pending to be done
+  +userId: String,
+  +eventDate: string,
+  +version: string,
+  +data: any
+}
+
+export type updateCheckinArgs = {
+    +checkinId: string,
+    +eventDate: string,
+    +version: string,
+    +data: any
+}
+
+export type filterCheckinsByTemplateArgs = {
+  +userId: string,
+  +name: string, //currently, this property is named template, it is one of the changes that are pending to be done
+  +version: string
+}

@@ -12,6 +12,10 @@ import type {
 	ErrorResponse, 
 	CreateFormArgs,
 	UpdateormArgs,
+	Checkin,
+	createCheckinArgs,
+	updateCheckinArgs,
+	filterCheckinsByTemplateArgs
 } from './models'
 
 
@@ -115,7 +119,24 @@ const userFragments =gql`
 	}
 `
 
-
+/**
+ * New: Fragment to get Checkins on user
+ */
+const userCheckinFragment = gql`
+	fragment UserCheckin on User {
+		checkins{
+			id
+			data
+			createdAt
+			updatedAt
+			version
+			template
+		}
+	}`
+	
+/**
+ *  Edited: gets user checkins as well
+ */
 export const fetchUserWithId = (id: string): User =>
 	client
 		.query({
@@ -128,9 +149,11 @@ export const fetchUserWithId = (id: string): User =>
 						email
 						...UserAchievements
 						...SortedForms
+						...UserCheckin
 					}
 				}
 				${userFragments}
+				${userCheckinFragment}
 			`,
 			fetchPolicy: 'network-only',
 			variables: { id }
@@ -259,3 +282,170 @@ export const testUser = ({ userId }): any =>
 			}
 		})
 		.then(parse('User'))
+
+/**
+ *  CHECKINS
+ */
+
+// TODO: Rename template to name
+export const CheckinFragment = gql`fragment CheckinFragment on Checkin {
+    id
+    createdAt
+    updatedAt
+    eventDate
+    template
+    version
+    data
+}`
+
+export const checkinUserFragment = gql`fragment checkinUserFragment on Checkin {
+	user {
+		id
+		facebookId
+		name
+	}
+}`
+
+export const CheckinFragments = `
+	${CheckinFragment}
+
+	${checkinUserFragment}
+`
+
+/**
+ * Helpers
+ */
+const handleCheckinError = e => console.log(e)
+
+const filterCheckinsByUser = checkins => checkins.filter(checkin => checkin.user && checkin.user.id === id)
+
+export const getCheckinsForUserOfTemplate = ({ userId, name, version } : filterCheckinsByTemplateArgs): [Checkin] =>
+	client
+		.query({
+			query: gql`query checkinsByTemplate(
+				$name:String!, 
+				$version: String
+			  ){
+				allCheckins(filter:{
+				  template: $name
+				  version: $version
+				}){
+					...CheckinFragment
+					...checkinUserFragment
+				}
+			  }
+			  
+			  ${CheckinFragments}
+			  `,
+			  fetchPolicy: 'network-only',
+			  variables: {
+				name,
+				version
+			  }
+		})
+		.then(parse('allCheckins'))
+		.then(filterCheckinsByUser)
+		.catch(handleCheckinError)
+
+export const getCheckinsForUser = (id: String) : [Checkin] =>
+	client
+		.query({
+			query: gql`query{
+				allCheckins{
+					...CheckinFragment
+					...checkinUserFragment
+				}
+			  }
+			  ${CheckinFragments}
+			`,
+			fetchPolicy: 'network-only',
+		})
+		.then(parse('allCheckins'))
+		.then(filterCheckinsByUser)
+		.catch(handleCheckinError)
+
+
+// TODO: Rename templateId to name
+export const addCheckinToUser = ({ userId, name, version, data, eventDate }: createCheckinArgs) : Checkin => 
+	client
+		.mutate({
+			mutation: gql`mutation addCheckin(
+				$userId: ID!,
+				$name: String!,
+				$version: String,
+				$data: Json,
+				$eventDate: DateTime
+			){
+				createCheckin(
+					userId: $userId, 
+					template: $name, 
+					version: $version, 
+					data: $data, 
+					eventDate: $eventDate
+				){
+					...CheckinFragment
+					...checkinUserFragment
+				}
+			}
+			
+			${CheckinFragments}
+			`,
+			variables: {
+				userId,
+				name,
+				version,
+				data,
+				eventDate
+			}
+		})
+		.then(parse('createCheckin'))
+		.catch(handleCheckinError)
+
+// TODO: Rename templateId to name
+export const updateCheckin = ({ checkinId, version, data, eventDate } : updateCheckinArgs) : Checkin => 
+	client
+		.mutate({
+			mutation: gql`mutation updateCheckin(
+				$checkinId: ID!, 
+				$version: String, 
+				$data: Json, 
+				$eventDate: DateTime
+			  ){
+				updateCheckin(
+				  id: $checkinId, 
+				  version: $version, 
+				  data: $data, 
+				  eventDate: $eventDate
+				){
+					...CheckinFragment
+					...checkinUserFragment
+				}
+			  }
+
+			  ${CheckinFragments}
+			  `,
+			  variables: {
+				checkinId,
+				version,
+				data,
+				eventDate
+			  }
+		})
+		.then(parse('updateCheckin'))
+		.catch(handleCheckinError)
+
+export const deleteCheckin = (checkinId : string) : Checkin =>
+	client
+	    .mutate({
+			mutation: gql`mutation deleteCheckin($checkinId: ID!){
+				deleteCheckin(id: $checkinId){
+				  id
+				}
+			  }
+			  `,
+			  variables: {
+				checkinId
+			  }
+		})
+		.then(parse('deleteCheckin'))
+		.catch(handleCheckinError)
