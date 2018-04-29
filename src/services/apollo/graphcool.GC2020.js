@@ -315,20 +315,32 @@ export const CheckinFragments = `
 /**
  * Helpers
  */
-const handleCheckinError = e => console.log(e)
 
-const filterCheckinsByUser = checkins => checkins.filter(checkin => checkin.user && checkin.user.id === id)
+const handleCheckinError = (e : ErrorResponse) => {
+	throw e
+}
 
+/**
+ * End Helpers
+ */
+
+ /**
+  * Queries
+  */
 export const getCheckinsForUserOfTemplate = ({ userId, name, version } : filterCheckinsByTemplateArgs): [Checkin] =>
 	client
 		.query({
 			query: gql`query checkinsByTemplate(
 				$name:String!, 
 				$version: String
+				$userId: ID!
 			  ){
 				allCheckins(filter:{
 				  template: $name
 				  version: $version
+				  user: {
+					id: $userId
+				  }
 				}){
 					...CheckinFragment
 					...checkinUserFragment
@@ -340,28 +352,34 @@ export const getCheckinsForUserOfTemplate = ({ userId, name, version } : filterC
 			  fetchPolicy: 'network-only',
 			  variables: {
 				name,
-				version
+				version,
+				userId
 			  }
 		})
 		.then(parse('allCheckins'))
-		.then(filterCheckinsByUser)
 		.catch(handleCheckinError)
 
-export const getCheckinsForUser = (id: String) : [Checkin] =>
+export const getCheckinsForUser = (userId: String) : [Checkin] =>
 	client
 		.query({
-			query: gql`query{
-				allCheckins{
-					...CheckinFragment
+			query: gql`query checkinsForUser($userId: ID!){
+				allCheckins(filter: {
+					  user: {
+						id: $userId
+					  }
+				  }){
 					...checkinUserFragment
+				  	...CheckinFragment
 				}
 			  }
 			  ${CheckinFragments}
 			`,
 			fetchPolicy: 'network-only',
+			variables: {
+				userId
+			},
 		})
 		.then(parse('allCheckins'))
-		.then(filterCheckinsByUser)
 		.catch(handleCheckinError)
 
 
