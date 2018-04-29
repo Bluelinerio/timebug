@@ -75,7 +75,7 @@ export type Auth = { token: string, user: AuthUser };
 
 export type Checkin = {
   +id: string,
-  +name: string, //TODO: rename to name
+  +name: string,
   +user: User,
   +createdAt: string,
   +updatedAt: string,
