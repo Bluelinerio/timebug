@@ -75,7 +75,7 @@ export type Auth = { token: string, user: AuthUser };
 
 export type Checkin = {
   +id: string,
-  +name: string, //currently, this property is named template, it is one of the changes that are pending to be done
+  +template: string, //TODO: rename to name
   +user: User,
   +createdAt: string,
   +updatedAt: string,
@@ -85,22 +85,22 @@ export type Checkin = {
 }
 
 export type createCheckinArgs = {
-  +name: string, //currently, this property is named template, it is one of the changes that are pending to be done
-  +userId: String,
-  +eventDate: string,
-  +version: string,
-  +data: any
+  name: string,
+  userId: String,
+  eventDate: string,
+  version: string,
+  data: any
 }
 
 export type updateCheckinArgs = {
-    +checkinId: string,
-    +eventDate: string,
-    +version: string,
-    +data: any
+    checkinId: string,
+    eventDate: string,
+    version: string,
+    data: any
 }
 
 export type filterCheckinsByTemplateArgs = {
-  +userId: string,
-  +name: string, //currently, this property is named template, it is one of the changes that are pending to be done
-  +version: string
+  userId: string,
+  name: string,
+  version: string
 }
