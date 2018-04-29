@@ -130,7 +130,7 @@ const userCheckinFragment = gql`
 			createdAt
 			updatedAt
 			version
-			template
+			name
 		}
 	}`
 	
@@ -287,13 +287,12 @@ export const testUser = ({ userId }): any =>
  *  CHECKINS
  */
 
-// TODO: Rename template to name
 export const CheckinFragment = gql`fragment CheckinFragment on Checkin {
     id
     createdAt
     updatedAt
     eventDate
-    template
+    name
     version
     data
 }`
@@ -336,7 +335,7 @@ export const getCheckinsForUserOfTemplate = ({ userId, name, version } : filterC
 				$userId: ID!
 			  ){
 				allCheckins(filter:{
-				  template: $name
+				  name: $name
 				  version: $version
 				  user: {
 					id: $userId
@@ -383,7 +382,6 @@ export const getCheckinsForUser = (userId: String) : [Checkin] =>
 		.catch(handleCheckinError)
 
 
-// TODO: Rename templateId to name
 export const addCheckinToUser = ({ userId, name, version, data, eventDate }: createCheckinArgs) : Checkin => 
 	client
 		.mutate({
@@ -396,7 +394,7 @@ export const addCheckinToUser = ({ userId, name, version, data, eventDate }: cre
 			){
 				createCheckin(
 					userId: $userId, 
-					template: $name, 
+					name: $name, 
 					version: $version, 
 					data: $data, 
 					eventDate: $eventDate
@@ -419,7 +417,7 @@ export const addCheckinToUser = ({ userId, name, version, data, eventDate }: cre
 		.then(parse('createCheckin'))
 		.catch(handleCheckinError)
 
-// TODO: Rename templateId to name
+
 export const updateCheckin = ({ checkinId, version, data, eventDate } : updateCheckinArgs) : Checkin => 
 	client
 		.mutate({
