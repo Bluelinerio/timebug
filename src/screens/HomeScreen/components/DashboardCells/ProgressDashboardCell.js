@@ -37,9 +37,9 @@ const Header = ({ date, source, title, titleColor }: HeaderProps) => (
   </View>
 )
 
-const LifevisionDashboardCell = () => (
+const ProgressDashboardCell = () => (
   <View style={styles.container}>
-    <Header title="Life Vision" titleColor="black" />
+    <Header title="Progress" titleColor="black" />
     <HorizontalScrollView horizontalPadding={scrollViewHorizontalPadding}>
       {
         <HighlighRow
@@ -61,11 +61,12 @@ const LifevisionDashboardCell = () => (
             style={[
               styles.suggestionText,
               {
-                color: grayColor
+                color: grayColor,
+                textAlign: 'center'
               }
             ]}
           >
-            {`The legend of your progress through your journey`}
+            {`The legend of your progress`}
           </Text>
         </HighlighRow>
       }
@@ -73,7 +74,7 @@ const LifevisionDashboardCell = () => (
   </View>
 )
 
-export default LifevisionDashboardCell
+export default ProgressDashboardCell
 
 // import {
 //   MEDITATION,

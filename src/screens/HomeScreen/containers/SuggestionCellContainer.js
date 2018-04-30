@@ -11,20 +11,37 @@ const pickSuggestion = state => ({
   lastStepGuideVisited: lastStepGuideVisited(state)
 })
 
+/*
+(!props.lastStepGuideVisited ? (
+          <WhereToStartSuggestionCellContainer {...props} />
+        ) : (
+          <CheckinExerciseCellContainer {...props} />
+        ),
+        randomItem([
+          <CheckinExerciseCellContainer {...props} />,
+          <HowAreYouFeelingSuggestionCellContainer {...props} />
+        ]))
+*/
+
+// const yestrdayCheckinWasAlreadySubmitted = () => true
+// const itIsTimeToAskForYesterdaysCheking = () => true // noon.
+
+// // feedlin:
+// if (yestrdayCheckinWasAlreadySubmitted() === false) {
+//   if (itIsTimeToAskForYesterdaysCheking() === true) {
+//     <HowAreYouFeelingSuggestionCellContainer day={Yesterday} />
+//   }
+// }
+
 const SuggestionCellPicker = (props: {
   lastStepGuideVisited: {},
   onClose: () => void
 }) => {
   return (
     <SwipablyDiscardableRow onClose={props.onClose}>
-      {!props.lastStepGuideVisited ? (
-        <WhereToStartSuggestionCellContainer {...props} />
-      ) : (
-        randomItem([
-          <CheckinExerciseCellContainer {...props} />,
-          <HowAreYouFeelingSuggestionCellContainer {...props} />
-        ])
-      )}
+      {
+        <CheckinExerciseCellContainer {...props} /> //<HowAreYouFeelingSuggestionCellContainer {...props} /> //
+      }
     </SwipablyDiscardableRow>
   )
 }

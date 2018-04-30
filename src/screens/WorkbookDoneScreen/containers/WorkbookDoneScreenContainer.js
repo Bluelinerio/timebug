@@ -9,7 +9,7 @@ import type { Props } from '../components/WorkbookDoneScreen'
 import getInsight, { dummyFormValue } from './insights'
 import nextStepMotivation from './nextStepMotivation'
 
-const getNextStep = (currentStep, steps) =>
+const suggestedNextStep = (currentStep, steps) =>
   Object.values(steps).find(s => s.number === currentStep.number + 1)
 
 const merge = ({
@@ -25,7 +25,7 @@ const merge = ({
   const nextStepMotivationText = nextStepMotivation[step.stepId]
   const backgroundColor = step.color
 
-  const nextStep = getNextStep(step, steps)
+  const nextStep = suggestedNextStep(step, steps)
   if (nextStep) {
     // this is required in case we change how stepId work...
     return {
