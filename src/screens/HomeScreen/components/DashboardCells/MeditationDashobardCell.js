@@ -1,5 +1,5 @@
 // @flow
-import * as React from 'react'
+import * as React     from 'react'
 import { View, Text } from 'react-native'
 import styles         from '../../../styles/dashboard.styles'
 import Meditator      from '../../../../components/Meditator'
@@ -7,9 +7,9 @@ import YesNoButton    from '../../../../components/YesNoButton'
 import HighlighRow    from '../../../../components/HighlighRow'
 import { hotPink }    from '../../../../constants/colors'
 
-
 const MeditationDashobardCell = ({
-  title, onPress
+  title,
+  onPress
 }: {
   title: string,
   onPress: () => void
@@ -37,8 +37,7 @@ const MeditationDashobardCell = ({
             alignItems: 'center'
           }}
         >
-          <YesNoButton title={'I want to Meditate'} onPress={onPress} />
-
+          <YesNoButton title={title} onPress={onPress} />
         </View>
       </HighlighRow>
     </View>

@@ -1,17 +1,17 @@
 // @flow
-import * as React from 'react'
-import { View } from 'react-native'
+import * as React         from 'react'
+import { View }           from 'react-native'
 import {
   CellContainer,
   Container,
   YesButton,
   NoButton,
   Title,
-} from './DashboardViews.js'
+}                         from './DashboardViews.js'
 import {
   triggerAnimation
-} from '../../../styles'
-import Meditator from '../../../../components/Meditator'
+}                         from '../../../styles'
+import Meditator          from '../../../../components/Meditator'
 import { goToMeditation } from '../../../../redux/actions/nav.actions'
 
 const ANSWER_YES = 'ANSWER_YES'
