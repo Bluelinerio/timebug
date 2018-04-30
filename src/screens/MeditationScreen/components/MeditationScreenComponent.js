@@ -14,6 +14,10 @@ type Props = {
   lengthInSeconds: number,
   name: string,
   color: string,
+  gradientBackgound: {
+    startColor: string,
+    endColor: string
+  },
   playSoundOnEnd: boolean,
   done: () => void,
   soundfile: number | { uri: string }
@@ -114,10 +118,7 @@ export default class MeditationScreenComponent extends React.PureComponent<
   }
   render() {
     return (
-      <MeditationScreenBackground
-        startColor={this.props.color}
-        endColor={this.props.color}
-      >
+      <MeditationScreenBackground {...this.props.gradientBackgound}>
         <SafeAreaView
           forceInset={{ top: 'always', bottom: 'never' }}
           style={styles.container}
