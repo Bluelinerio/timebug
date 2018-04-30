@@ -1,0 +1,11 @@
+[
+  {
+    "id": "local-armchair-meditation",
+    "name": "Armchair Meditation",
+    "step": "1",
+    "color": "#005587",
+    "lengthInSeconds": 300,
+    "audioFile": null,
+    "gongFile": null
+  }
+]
