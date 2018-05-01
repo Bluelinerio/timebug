@@ -1,11 +1,11 @@
-import * as React from 'react'
-import { connect } from 'react-redux'
-import { randomItem } from '../../../utils/random'
-import CheckinExerciseCellContainer from './CheckinExerciseCellContainer'
+import * as React                              from 'react'
+import { connect }                             from 'react-redux'
+import { randomItem }                          from '../../../utils/random'
+import CheckinExerciseCellContainer            from './CheckinExerciseCellContainer'
 import HowAreYouFeelingSuggestionCellContainer from './HowAreYouFeelingSuggestionCellContainer'
-import WhereToStartSuggestionCellContainer from './WhereToStartSuggestionCellContainer'
-import SwipablyDiscardableRow from '../../../components/SwipablyDiscardableRow'
-import { lastStepGuideVisited } from '../../../redux/selectors/agregates'
+import WhereToStartSuggestionCellContainer     from './WhereToStartSuggestionCellContainer'
+import SwipablyDiscardableRow                  from '../../../components/SwipablyDiscardableRow'
+import { lastStepGuideVisited }                from '../../../redux/selectors/agregates'
 
 const pickSuggestion = state => ({
   lastStepGuideVisited: lastStepGuideVisited(state)
@@ -39,9 +39,14 @@ const SuggestionCellPicker = (props: {
 }) => {
   return (
     <SwipablyDiscardableRow onClose={props.onClose}>
-      {
-        <CheckinExerciseCellContainer {...props} /> //<HowAreYouFeelingSuggestionCellContainer {...props} /> //
-      }
+      {!props.lastStepGuideVisited ? (
+        <WhereToStartSuggestionCellContainer {...props} />
+      ) : (
+        randomItem([
+          <CheckinExerciseCellContainer {...props} />,
+          <HowAreYouFeelingSuggestionCellContainer {...props} />
+        ])
+      )}
     </SwipablyDiscardableRow>
   )
 }
