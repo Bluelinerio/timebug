@@ -9,7 +9,7 @@ import SoundPlayback, { PENDING, FAIL }              from './SoundPlayback'
 import MeditationTimer, { PAUSED, STARTED, STOPPED } from './MeditationTimer'
 import MeditationScreenBackground                    from './MeditationScreenBackground'
 import PlayPauseButton                               from './PlayPauseButton'
-
+import { triggerAnimation }                          from '../../styles'
 type Props = {
   lengthInSeconds: number,
   name: string,
@@ -73,17 +73,22 @@ export default class MeditationScreenComponent extends React.PureComponent<
           ? () => {
               this.soundPlayback.pause()
               this.timer.pause()
+              triggerAnimation()
             }
           : () => {
               this.timer.pause()
+              triggerAnimation()
             }
         : status === PAUSED
           ? () => {
               this.timer.start()
+              this.soundPlayback.play()
+              triggerAnimation()
             }
           : () => {
               this.soundPlayback.play()
               this.timer.start()
+              triggerAnimation()
             }
     const finishEarlyButton = status === PAUSED &&
       !timeElapsed && (
@@ -97,7 +102,7 @@ export default class MeditationScreenComponent extends React.PureComponent<
     return (
       <View
         style={{
-          flex:1,
+          flex: 1,
           justifyContent: 'space-between'
         }}
       >
@@ -105,7 +110,11 @@ export default class MeditationScreenComponent extends React.PureComponent<
           <Text style={styles.title}>{this.props.name}</Text>
           <Text style={styles.countdownText}>{`${minutes}:${seconds}`}</Text>
         </View>
-        <View>
+        <View
+          style={{
+            paddingVertical: 20
+          }}
+        >
           <PlayPauseButton
             style={styles.playButton}
             playing={status == STARTED}
@@ -120,7 +129,7 @@ export default class MeditationScreenComponent extends React.PureComponent<
     return (
       <MeditationScreenBackground {...this.props.gradientBackgound}>
         <SafeAreaView
-          forceInset={{ top: 'always', bottom: 'never' }}
+          forceInset={{ top: 'always', bottom: 'always' }}
           style={styles.container}
         >
           <Composer
