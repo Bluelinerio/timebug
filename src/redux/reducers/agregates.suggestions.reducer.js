@@ -1,68 +1,28 @@
-import R from 'ramda'
-import routes from '../../navigation/routes'
-import { composeReducers } from './utils'
-
-const NavigationActionStepIdLens = R.lensPath(['params', 'stepId'])
-const NavigationActionFormIdLens = R.lensPath(['params', 'formId'])
-const NavigationActionRouteNameLens = R.lensPath(['routeName'])
+import { SUBMIT_CHECKIN } from '../actionTypes'
 
 export const SuggestionsReducerKeys = {
   suggestionsHistory: 'suggestionsHistory',
+  currentSuggestion: 'currentSuggestion',
   checkinHistory: 'checkinHistory',
-  lastCheckin: 'lastCheckin',
+  lastCheckin: 'lastCheckin'
 }
 
+export const ActionTypes = [SUBMIT_CHECKIN]
+
 const suggestionsReducer = (state = {}, action) => {
-  const stepWorkbookLensWithStep = (stepId: string) =>
-    R.lensPath([
-      SuggestionsReducerKeys.pageVisits,
-      SuggestionsReducerKeys.pages.stepWorkbook,
-      stepId
-    ])
-  const stepGuideLensWithStep = (stepId: string) =>
-    R.lensPath([
-      SuggestionsReducerKeys.pageVisits,
-      SuggestionsReducerKeys.pages.stepGuide,
-      stepId
-    ])
-  const updateScreen = append => previous => ({
-    count: ((previous && previous.count) || 0) + 1,
-    last: Date.now(),
-    ...(append || {})
-  })
-
-  const tagPageVisits = (state = {}, action) => {
-    switch (R.view(NavigationActionRouteNameLens, action)) {
-      case routes.root.AssignmentFlow:
-      case routes.step.StepScreen: {
-        return R.over(
-          stepGuideLensWithStep(R.view(NavigationActionStepIdLens, action)),
-          updateScreen({}),
-          state
-        )
+  switch (action.type) {
+    case SUBMIT_CHECKIN:
+      return {
+        ...state,
+        [SuggestionsReducerKeys.lastCheckin]: action.payload,
+        [SuggestionsReducerKeys.checkinHistory]: {
+          ...state[SuggestionsReducerKeys.checkinHistory],
+          [Date.now()]: action.payload
+        }
       }
-      case routes.step.WorkbookScreen:
-        return R.over(
-          stepWorkbookLensWithStep(R.view(NavigationActionStepIdLens, action)),
-          updateScreen({
-            formId: R.view(NavigationActionFormIdLens)
-          }),
-          state
-        )
-      default:
-        break
-    }
+    default:
+      return state
   }
-
-  const tagLastVisitedPage = (state, action) => ({
-    ...state,
-    lastVisitedPage: {
-      routeName: R.view(NavigationActionRouteNameLens, action),
-      timestamp: Date.now()
-    }
-  })
-
-  return composeReducers(tagPageVisits, tagLastVisitedPage)(state, action)
 }
 
 export default suggestionsReducer
