@@ -5,33 +5,37 @@ export default {
   1: {
     type: t.struct({
       id: t.maybe(t.String),
-      selfTreatment: OneToTenScale,
-      selfTreatmentLearningCurve: OneToTenScale,
-      messagesInHead: t.String,
-      messagesJudgeSelf: t.String
+      relationshipsAssessment: t.struct({
+        selfTreatment: OneToTenScale,
+        selfTreatmentLearningCurve: OneToTenScale,
+        messagesInHead: t.String,
+        messagesJudgeSelf: t.String
+      })
     }),
     options: {
-      label: 'Relationships Assessment',
-
       fields: {
         id: {
           hidden: true
         },
-        selfTreatment: {
-          label: 'How do you typically treat yourself?',
-          help: '1 = With almost no respect, 10 = With tremendous respect'
-        },
-        selfTreatmentLearningCurve: {
-          label:
-            'How do you treat yourself in the process of having a learning curve, which inevitably involves making mistakes and learning from failures.',
-          help: '1 = Not at all patient and 10 = Very patient'
-        },
-        messagesInHead: {
-          label:
-            'What messages run in your head on a daily basis about yourself'
-        },
-        messagesJudgeSelf: {
-          label: 'What do you say to judge or shame yourself?'
+        relationshipsAssessment: {
+          fields: {
+            selfTreatment: {
+              label: 'How do you typically treat yourself?',
+              help: '1 = With almost no respect, 10 = With tremendous respect'
+            },
+            selfTreatmentLearningCurve: {
+              label:
+                'How do you treat yourself in the process of having a learning curve, which inevitably involves making mistakes and learning from failures.',
+              help: '1 = Not at all patient and 10 = Very patient'
+            },
+            messagesInHead: {
+              label:
+                'What messages run in your head on a daily basis about yourself'
+            },
+            messagesJudgeSelf: {
+              label: 'What do you say to judge or shame yourself?'
+            }
+          }
         }
       }
     },
@@ -43,58 +47,74 @@ export default {
   },
   2: {
     type: t.struct({
-      peopleValued: t.list(t.String),
-      peopleLoved: t.String,
-      peopleTreatedContempt: t.String
+      peopleTrulyValued: t.struct({
+        peopleValued: t.list(t.String),
+        peopleLoved: t.String,
+        peopleTreatedContempt: t.String
+      })
     }),
     options: {
-      label: 'Whom do you truly value?',
       fields: {
-        peopleValued: {
-          item: {
-            label: 'Person valued'
+        peopleTrulyValued: {
+          label: 'Whom do you truly value?',
+
+          fields: {
+            peopleValued: {
+              auto: 'none',
+
+              item: {
+                label: 'Name'
+              }
+            },
+            peopleLoved: {
+              label:
+                'How many of these people do you love based on their waist size?'
+            },
+            peopleTreatedContempt: {
+              label:
+                'How many of these people do you treat with the same contempt and impatience that you have described about yourself?'
+            }
           }
-        },
-        peopleLoved: {
-          label:
-            'How many of these people do you love based on their waist size?'
-        },
-        peopleTreatedContempt: {
-          label:
-            'How many of these people do you treat with the same contempt and impatience that you have described about yourself?'
         }
       }
     }
   },
   3: {
     type: t.struct({
-      givingToOthers: OneToTenScale,
-      trustValue: OneToTenScale,
-      comfortableReceiving: OneToTenScale,
-      worthyAndComfortable: OneToTenScale
+      givingReceivingAssessment: t.struct({
+        givingToOthers: OneToTenScale,
+        trustValue: OneToTenScale,
+        comfortableReceiving: OneToTenScale,
+        worthyAndComfortable: OneToTenScale
+      })
     }),
     options: {
-      label: 'Relationships Assessment',
       fields: {
-        givingToOthers: {
-          label:
-            'How comfortable do you feel giving to others in your daily life?',
-          help: '1=not at all comfortable and 10=very much comfortable'
-        },
-        trustValue: {
-          label: 'Do you trust the value of what you have to offer to others?',
-          help: '10 = Very Trusting and 1 = Not trustful at all.'
-        },
-        comfortableReceiving: {
-          label:
-            'How comfortable do you feel receiving from others in your daily life?',
-          help:
-            'Using a 10-pt scale with 1=not at all comfortable and 10=very much comfortable'
-        },
-        worthyAndComfortable: {
-          label:
-            'Do you feel worthy and comfortable with compliments or acknowledgments from others?',
-          help: '10 = Very comfortable and 1 = Not comfortable at all'
+        givingReceivingAssessment: {
+          label: 'Relationships Assessment',
+          fields: {
+            givingToOthers: {
+              label:
+                'How comfortable do you feel giving to others in your daily life?',
+              help: '1=not at all comfortable and 10=very much comfortable'
+            },
+            trustValue: {
+              label:
+                'Do you trust the value of what you have to offer to others?',
+              help: '10 = Very Trusting and 1 = Not trustful at all.'
+            },
+            comfortableReceiving: {
+              label:
+                'How comfortable do you feel receiving from others in your daily life?',
+              help:
+                'Using a 10-pt scale with 1=not at all comfortable and 10=very much comfortable'
+            },
+            worthyAndComfortable: {
+              label:
+                'Do you feel worthy and comfortable with compliments or acknowledgments from others?',
+              help: '10 = Very comfortable and 1 = Not comfortable at all'
+            }
+          }
         }
       }
     }
@@ -110,12 +130,17 @@ export default {
     }),
     options: {
       label: 'What were your relationship quality goals over the past 5 years?',
-
       fields: {
         relationshipQualityGoals: {
           item: {
+            auto: 'none',
             fields: {
-              auto: 'labels'
+              goal: {
+                auto: 'labels'
+              },
+              goalOutcome: {
+                auto: 'labels'
+              }
             }
           }
         }
@@ -124,20 +149,27 @@ export default {
   },
   5: {
     type: t.struct({
-      intimateRelationship: t.Boolean,
-      communicationEval: OneToTenScale
+      intimateRelationshipAssessment: t.struct({
+        intimateRelationship: t.Boolean,
+        communicationEval: OneToTenScale
+      })
     }),
     options: {
-      label: 'Relationships Assessment',
       fields: {
-        intimateRelationship: {
-          label:
-            'Have you had an intimate, committed relationship over the past 5 years?'
-        },
-        communicationEval: {
-          label:
-            'If yes, how would you evaluate the quality of the connection and communication, on the whole? ',
-          help: '1 = Poor and 10 = Very strong'
+        intimateRelationshipAssessment: {
+          label: 'Relationships Assessment',
+
+          fields: {
+            intimateRelationship: {
+              label:
+                'Have you had an intimate, committed relationship over the past 5 years?'
+            },
+            communicationEval: {
+              label:
+                'If yes, how would you evaluate the quality of the connection and communication, on the whole? ',
+              help: '1 = Poor and 10 = Very strong'
+            }
+          }
         }
       }
     }
@@ -151,7 +183,19 @@ export default {
       )
     }),
     options: {
-      label: 'Which relationships improved over the past 5 years? With whom?'
+      label: 'Which relationships improved over the past 5 years? With whom?',
+      fields: {
+        relationshipsImproved: {
+          item: {
+            auto: 'none',
+            fields: {
+              person: {
+                auto: 'labels'
+              }
+            }
+          }
+        }
+      }
     }
   },
   7: {
@@ -163,7 +207,19 @@ export default {
       )
     }),
     options: {
-      label: 'Which relationships improved over the past 5 years? With whom?'
+      label: 'Which relationships regressed over the past 5 years? With whom?',
+      fields: {
+        relationshipsRegressed: {
+          item: {
+            auto: 'none',
+            fields: {
+              person: {
+                auto: 'labels'
+              }
+            }
+          }
+        }
+      }
     }
   }
 };

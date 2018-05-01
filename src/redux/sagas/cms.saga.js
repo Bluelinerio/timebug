@@ -5,7 +5,8 @@ import { FETCH_CMS, SEED_CMS }            from '../actions/cms.actions'
 import { refreshCMS, testContentFromCMS } from '../../services/contentful'
 import { request }                        from '../../Modules/redux-saga-request'
 import { headerBackgrounds }              from '../../resources/images'
-let staticCms = require('../../static/cms.json')
+let staticCms     = require('../../static/cms.json')
+const meditations = require('../../static/Meditations.json')
 
 const addLocalImage = step => ({
   ...step,
@@ -20,7 +21,13 @@ function* seedCMS() {
     }),
     {}
   )
-  yield put({ type: SEED_CMS, payload: staticCms })
+  yield put({
+    type: SEED_CMS,
+    payload: {
+      ...staticCms,
+      meditations
+    }
+  })
 }
 
 function* _fetchCms() {

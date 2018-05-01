@@ -13,27 +13,28 @@ export default {
       )
     }),
     options: {
-      label:
-        "Goals of Others",
+      label: 'Goals of Others',
       fields: {
         id: {
           hidden: true
         },
-        field: {
+        goalsOfOthers: {
+          auto:'none',
           disableOrder: true,
           maxLines: 5,
           config: {
             maxLines: 5
           },
           item: {
+            auto: 'none',
             fields: {
               significantOther: {
-                label:'Who would you like to help in your life?'
+                label: 'Who would you like to help in your life?'
                 /*error: 'Choose someone in your life who you want to, and are able to help.'*/
               },
               goals: {
-                label:'What are his/her goals?',
-                multiline:true
+                label: 'What are his/her goals?',
+                multiline: true
                 /*error:'Think about 3-5 goals you would like to help this person with.'*/
               },
               supportPlan: {

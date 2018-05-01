@@ -24,6 +24,7 @@ export default {
 
         roleModels: {
           item: {
+            auto: 'none',
             fields: {
               roleModel: {
                 auto: 'labels'
@@ -35,13 +36,11 @@ export default {
                 //error: 'Please select a Life Category.'
               },
               interactionFrequency: {
-                label:
-                  'To what degree do you interact with this Role Model?'
+                label: 'To what degree do you interact with this Role Model?'
                 //error: 'How often do you interact with this person?'
               },
               why: {
-                label:
-                  'Why do you look up to this Role Model?',
+                label: 'Why do you look up to this Role Model?',
                 multiline: true
                 //error:'Why would this person make a good role model for you?'
               }

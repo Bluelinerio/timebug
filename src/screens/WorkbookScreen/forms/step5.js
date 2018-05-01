@@ -5,7 +5,7 @@ export default {
   1: {
     type: t.struct({
       id: t.maybe(t.String),
-      goals: t.list(
+      recentGoals: t.list(
         t.struct({
           goal: t.String,
           goalTypes: GoalTypes
@@ -19,11 +19,13 @@ export default {
         id: {
           hidden: true
         },
-        goals: {
+        recentGoals: {
+          auto: 'none',
           item: {
+            auto: 'none',
             fields: {
               goal: { label: 'What is a recent life goal?' }, //error:'Please enter a goal'},
-              goalTypes: { auto: 'How would you classify this goal?' } //error:'Please select a Goal Type'}
+              goalTypes: { label: 'How would you classify this goal?' } //error:'Please select a Goal Type'}
             }
           },
           disableOrder: true,

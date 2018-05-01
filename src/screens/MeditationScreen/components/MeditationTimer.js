@@ -1,4 +1,6 @@
 import React from 'react'
+import invariant from 'invariant'
+
 /**
  * Pads a given string or number with zeros.
  *
@@ -22,7 +24,7 @@ type RenderProps = {
 }
 
 type MeditationTimerProps = {
-  timeInSeconds: number,
+  lengthInSeconds: number,
   daysInHours: boolean,
   zeroPadLength: number,
   intervalDelay: number,
@@ -54,12 +56,12 @@ export default class Countdown extends React.Component<
     zeroPadLength: 2,
     intervalDelay: 1000,
     precision: 0,
-    children: null,
-    timeInSeconds: 10
+    children: null
   }
   state = {
     status: STOPPED,
-    elapseTime: 0
+    elapseTime: 0,
+    timeElapsed: false
   }
 
   clearInterval() {
@@ -109,15 +111,15 @@ export default class Countdown extends React.Component<
 
   tick = () => {
     const elapseTime = this.state.elapseTime + this.props.intervalDelay
-    const timeElapsed = elapseTime / 1000 >= this.props.timeInSeconds
+    const timeElapsed = elapseTime / 1000 >= this.props.lengthInSeconds
     const timeJustElapsed = !this.state.timeElapsed && timeElapsed
-    console.log(timeJustElapsed ? 'firstTime': '')
+    console.log(timeJustElapsed ? 'firstTime' : '')
     this.setState(
       {
         elapseTime,
         timeElapsed
       },
-        timeJustElapsed ? this.props.onTimeElapsed : this.props.onTick
+      timeJustElapsed ? this.props.onTimeElapsed : this.props.onTick
     )
   }
 
@@ -151,6 +153,7 @@ export default class Countdown extends React.Component<
   }
 
   render() {
+    invariant(this.props.lengthInSeconds, 'lengthInSeconds is not defined')
     console.log(this.state)
     const formattedDelta = this.getFormattedDelta()
 

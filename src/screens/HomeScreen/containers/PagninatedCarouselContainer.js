@@ -18,12 +18,12 @@ const ALLOW_USER_TO_JUST_DIRECTLY_TO_FORM = false
 const FIRST_FORM_ID = '1'
 
 const renderProgressButton = (
-  { completedForms, incomplete, step },
+  { completedForms, incomplete, step, buttonTitleForFormCompletion },
   { dispatch }
 ) => {
   if (Object.keys(incomplete).length > 0) {
     return {
-      title: 'Resume',
+      title: buttonTitleForFormCompletion,
       onPress: () => {
         dispatch(
           goToWorkbookSkippingStepScreen({
@@ -35,12 +35,12 @@ const renderProgressButton = (
     }
   } else if (completedForms && completedForms.length > 0) {
     return {
-      title: 'Edit',
+      title: buttonTitleForFormCompletion,
       onPress: () => dispatch(goToPreviosFormsForStep(step))
     }
   } else if (ALLOW_USER_TO_JUST_DIRECTLY_TO_FORM) {
     return {
-      title: 'Start',
+      title: buttonTitleForFormCompletion,
       onPress: () => {
         dispatch(
           goToWorkbookSkippingStepScreen({

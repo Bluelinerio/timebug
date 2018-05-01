@@ -25,18 +25,51 @@ export const withNavigationAndStep = compose(
         return props
       }
     }
-    const { steps, navigation} = props
+    const { steps, navigation } = props
     const {
       /*, stepColor, stepNumber */
       stepId,
       formId
     } = unpackStepParamsFromNavigation(navigation)
-    
+
     return {
       ...props,
       step: steps[stepId],
       formId,
-      navigation,
+      navigation
+    }
+  })
+)
+
+const unpackMeditationParamsFromNavigation = ({
+  state: { params: { id } }
+}) => ({
+  id
+})
+
+export const withNavigationAndMeditation = compose(
+  connect(state => ({
+    meditations: selectors.meditations(state)
+  })),
+  withNavigation,
+  mapProps(props => {
+    if (!props.navigation) {
+      if (__DEV__) {
+        throw new Error('missing navigation in props')
+      } else {
+        return props
+      }
+    }
+    const { meditations, navigation } = props
+    const meditationIdFromNavigation = unpackMeditationParamsFromNavigation(
+      navigation
+    ).id
+    const meditation =
+      meditationIdFromNavigation &&
+      meditations.find(item => item.id === meditationIdFromNavigation) || meditations[0]
+    return {
+      ...props,
+      meditation
     }
   })
 )

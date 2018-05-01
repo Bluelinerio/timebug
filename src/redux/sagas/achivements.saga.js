@@ -17,23 +17,23 @@ import {
 } from '../../services/apollo';
 
 const achievements = {
-  ASSESSMENTS: 'Assessments',
-  PILLARS_OF_LIFE: 'Pillars Of Life',
+  ASSESSMENTS             : 'Assessments',
+  PILLARS_OF_LIFE         : 'Pillars Of Life',
   STRENGTHS_AND_WEAKNESSES: 'Strengths And Weaknesses',
-  TEAM: 'Team',
-  GOALS: 'Goals',
-  COMMITMENTS: 'Commitments',
-  MY_INTERNAL_WORLD: 'My Internal World',
-  LIFE_VISION: 'Life Vision',
-  HEALTH_AND_WELLNESS: 'Health And Wellness',
-  CAREER: 'Career',
-  MAJOR_LIFE_EVENTS: 'Major Life Events',
-  FINANCES: 'Finances',
-  AIMS_AND_HOBBIES: 'Aims And Hobbies',
-  ENVIRONMENT: 'Environment',
-  RELATIONSHIPS: 'Relationships',
-  SPIRITUALITY: 'Spirituality',
-  STAGES_OF_LIFE: 'Stages Of Life'
+  TEAM                    : 'Team',
+  GOALS                   : 'Goals',
+  COMMITMENTS             : 'Commitments',
+  MY_INTERNAL_WORLD       : 'My Internal World',
+  LIFE_VISION             : 'Life Vision',
+  HEALTH_AND_WELLNESS     : 'Health And Wellness',
+  CAREER                  : 'Career',
+  MAJOR_LIFE_EVENTS       : 'Major Life Events',
+  FINANCES                : 'Finances',
+  AIMS_AND_HOBBIES        : 'Aims And Hobbies',
+  ENVIRONMENT             : 'Environment',
+  RELATIONSHIPS           : 'Relationships',
+  SPIRITUALITY            : 'Spirituality',
+  STAGES_OF_LIFE          : 'Stages Of Life'
 };
 
 const testDataFromStatic = () => {

@@ -7,7 +7,7 @@ import {
 
 import type { AppState } from '../reducers/appState.reducer';
 import { initialState, UNDETERMIND } from '../reducers/appState.reducer';
-import { getAppState, getAggregateState } from '../rootReducer';
+import { getAppState, getAgregateState } from '../rootReducer';
 
 export function* appStateSagaWatcher() {
   const appState = yield select(getAppState);
@@ -38,9 +38,9 @@ function* appStateBusinessLogicRoot(action: {
 
 function* foreground(state) {
   const appState = getAppState(state);
-  let aggregate = getAggregateState(appState);
+  let agregate = getAgregateState(appState);
 
-  if (aggregate === UNDETERMIND) {
+  if (agregate === UNDETERMIND) {
     agregate = {
       ...agregates,
       ...firstTimeBundle(

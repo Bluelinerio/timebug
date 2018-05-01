@@ -28,7 +28,10 @@ type State = {
   layoutReady: boolean
 }
 
-export default class ScrollingHeaderPageComponent extends Component<Props, State> {
+export default class ScrollingHeaderPageComponent extends Component<
+  Props,
+  State
+> {
   state = {
     scrollY: new Animated.Value(0),
     bufferViewHeight: 0,
@@ -40,33 +43,40 @@ export default class ScrollingHeaderPageComponent extends Component<Props, State
   }
   constructor(props) {
     super(props)
-    invariant(props.content, 'ScrollingHeaderPageComponent missing content props')
+    invariant(
+      props.content,
+      'ScrollingHeaderPageComponent missing content props'
+    )
     invariant(props.header, 'ScrollingHeaderPageComponent missing header props')
   }
   // this is an implmentation of ajustment of a growing/shrinking view makin sure the the minimal height of the scroll view content is at least the height of the scroll view itself. (its container)
   layout = () => {
-    const { containerLayout, contentLayout, bufferViewHeight } = this.state
+    const { headerMaxHeight, headerMinHeight } = this.props
+    const {
+      containerLayout,
+      contentLayout,
+      bufferViewHeight,
+      layoutReady
+    } = this.state
     if (containerLayout && contentLayout) {
-      const newBufferViewHeight = Math.max(0, containerLayout.height - (contentLayout.height - this.props.headerMinHeight))
-      if (!bufferViewHeight) {
+      const newBufferHeight = Math.max(
+        0,
+        bufferViewHeight +
+          Math.max(
+            0,
+            containerLayout.height - contentLayout.height - headerMaxHeight
+          ) + 10
+      )
+      if (newBufferHeight !== bufferViewHeight) {
         this.setState({
           layoutReady: true,
-          bufferViewHeight: newBufferViewHeight
+          bufferViewHeight: newBufferHeight
         })
-      } else if (newBufferViewHeight !== 0) {
-        this.setState({
-          layoutReady: true,
-          bufferViewHeight: Math.max(0, bufferViewHeight + newBufferViewHeight)
-        })
-      } else {
+      } else if (!layoutReady) {
         this.setState({
           layoutReady: true
         })
       }
-    } else {
-      this.setState({
-        layoutReady: false
-      })
     }
   }
 

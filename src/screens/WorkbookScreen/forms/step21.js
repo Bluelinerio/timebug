@@ -21,13 +21,14 @@ export default {
     }),
     options: {
       label: 'Imagine different areas of your garden.',
-
       fields: {
         id: {
           hidden: true
         },
         areasOfGarden: {
+          auto: 'none',
           item: {
+            auto: 'none',
             fields: {
               areaOfGarden: {
                 auto: 'labels'
@@ -67,29 +68,80 @@ export default {
   },
   3: {
     type: t.struct({
-      careerBhagOne: t.String,
-      careerBhagTwo: t.String,
-      aimsAndHobbiesBhagOne: t.String,
-      aimsAndHobbiesBhagTwo: t.String,
-      healthBhagOne: t.String,
-      healthBhagTwo: t.String,
-      relationshipBhagOne: t.String,
-      relationshipBhagTwo: t.String,
-      financialBhagOne: t.String,
-      financialBhagTwo: t.String,
-      spiritualityBhagOne: t.String,
-      spiritualityBHAG2: t.String,
-      financesBhagOne: t.String,
-      financesBhagTwo: t.String
+      selfAssessmentsReflection: t.struct({
+        careerBhagOne: t.String,
+        careerBhagTwo: t.String,
+        aimsAndHobbiesBhagOne: t.String,
+        aimsAndHobbiesBhagTwo: t.String,
+        healthBhagOne: t.String,
+        healthBhagTwo: t.String,
+        relationshipBhagOne: t.String,
+        relationshipBhagTwo: t.String,
+        financialBhagOne: t.String,
+        financialBhagTwo: t.String,
+        spiritualityBhagOne: t.String,
+        spiritualityBhagTwo: t.String,
+        environmentBhagOne: t.String,
+        environmentBhagTwo: t.String
+      })
     }),
     options: {
-      label:
-        "Reflecting on the 7 Self-assessments over Steps 13-19, list two Big Hairy Audacious Goals (BHAGs) that you'd like to plant for this next year."
+      fields:{
+        selfAssessmentsReflection:{
+          label:"Reflecting on the 7 Self-assessments over Steps 13-19, list two Big Hairy Audacious Goals (BHAGs) that you'd like to plant for this next year.",
+          fields: {
+            careerBhagOne: {
+              label:'Career BHAG no.1'
+            },
+            careerBhagTwo: {
+              label:'Career BHAG no.2'
+            },
+            aimsAndHobbiesBhagOne: {
+              label:'Aims and Hobbies BHAG no.1'
+            },
+            aimsAndHobbiesBhagTwo: {
+              label:'Aims and Hobbies BHAG no.2'
+            },
+            healthBhagOne: {
+              label:'Health BHAG no.1'
+            },
+            healthBhagTwo: {
+              label:'Health BHAG no.2'
+            },
+            relationshipBhagOne: {
+              label:'Relationships BHAG no.1'
+            },
+            relationshipBhagTwo: {
+              label:'Relationships BHAG no.2'
+            },
+            financialBhagOne: {
+              label:'Financial BHAG no.1'
+            },
+            financialBhagTwo: {
+              label:'Financial BHAG no.2'
+            },
+            spiritualityBhagOne: {
+              label:'Spirituality BHAG no.1'
+            },
+            spiritualityBhagTwo: {
+              label:'Spirituality BHAG no.2'
+            },
+            environmentBhagOne: {
+              label:'Environment BHAG no.1'
+            },
+            environmentBhagTwo: {
+              label:'Environment BHAG no.2'
+            }
+
+          }
+          
+        }
+      }
     }
   },
   4: {
     type: t.struct({
-      skills: t.list(
+      skillsForGarden: t.list(
         t.struct({
           skill: t.String,
           proficiencyLevel: OneToTenScale,
@@ -100,10 +152,12 @@ export default {
     }),
     options: {
       label:
-        'Think about how strong your current tools(skills,approach,etc) are for tending to your garden - Strengths & Weaknesses from Day 3 is a useful review.',
+        'Think about how strong your current tools (skills,approach,etc) are for tending to your garden - Strengths & Weaknesses from Day 3 is a useful review.',
       fields: {
-        skills: {
+        skillsForGarden: {
+          auto: 'none',
           item: {
+            auto: 'none',
             fields: {
               skill: {
                 label: 'Skill',

@@ -5,7 +5,7 @@ export default {
   1: {
     type: t.struct({
       id: t.maybe(t.String),
-      field: t.list(
+      egoAspects: t.list(
         t.struct({
           i: t.String,
           strengthOfI: OneToTenScale,
@@ -14,14 +14,14 @@ export default {
       )
     }),
     options: {
-      label:
-        'What are some different \'I\'s that are a part of you? \n\n',
+      label: "What are some different 'I's that are a part of you? \n\n",
       fields: {
         id: {
           hidden: true
         },
-        field: {
+        egoAspects: {
           item: {
+            auto: 'none',
             fields: {
               i: {
                 //label: 'Write down your \'I\'',
@@ -57,7 +57,7 @@ export default {
   },
   2: {
     type: t.struct({
-      egoInfluence: t.list(
+      egoAspectGoalInfluence: t.list(
         t.struct({
           goal: t.String,
           helpOrHinder: t.String
@@ -65,16 +65,16 @@ export default {
       )
     }),
     options: {
-      label:
-        'Have any of these "I"s either hindered or aided your goals?',
+      label: 'Have any of these "I"s either hindered or aided your goals?',
       fields: {
-        egoInfluence: {
+        egoAspectGoalInfluence: {
           disableOrder: true,
           maxLines: 10,
           config: {
             maxLines: 10
           },
           item: {
+            auto: 'none',
             fields: {
               goal: {
                 auto: 'labels'

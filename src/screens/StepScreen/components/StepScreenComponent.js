@@ -12,6 +12,7 @@ import StepScreenButtonContainer from '../containers/StepScreenButtonContainer'
 const HEADER_HEIGHT = Dimensions.get('window').height * 0.4
 
 export type Props = {
+  headerTitle: string,
   title: string,
   subtitle: string,
   content: string,
@@ -21,6 +22,7 @@ export type Props = {
 
 const StepScreenComponent = ({
   title,
+  headerTitle,
   subtitle,
   content,
   color,
@@ -33,7 +35,7 @@ const StepScreenComponent = ({
     headerComponent={
       <ScrollingHeaderPageHeaderBackgorundComponent color={color} />
     }
-    header={<ScrollingHeaderPageHeaderComponent color={color} title={title} />}
+    header={<ScrollingHeaderPageHeaderComponent color={color} title={headerTitle} />}
     content={
       <ScrollingHeaderPageContentComponent
         title={title}

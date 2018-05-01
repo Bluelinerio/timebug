@@ -1,15 +1,17 @@
 // @flow
 import R from 'ramda'
-import { getUserState, getCms, getFormData } from './rootReducer'
+import { getUserState, getCms, getFormData } from '../rootReducer'
 import {
   UNDETERMINED,
   ANONYMOUS,
   AUTHENTICATING
-} from '../services/apollo/models'
+} from '../../services/apollo/models'
 // models
-import workbooks from '../screens/WorkbookScreen/forms'
-import type { User, Form } from '../services/apollo/models'
-import type { Colors, Step, Slide } from '../services/cms'
+import workbooks from '../../screens/WorkbookScreen/forms'
+import { removeIvalidValuesInsteadOfDoingAnyMigrationForNow } from '../tcomb'
+
+import type { User, Form } from '../../services/apollo/models'
+import type { Colors, Step, Slide } from '../../services/cms'
 
 export const filterWithKeys = (pred, obj) =>
   R.pipe(R.toPairs, R.filter(R.apply(pred)), R.fromPairs)(obj)
@@ -53,11 +55,7 @@ const uniqueColors = (state: any) => [
     ...Object.values(getCms(state).colors.phases)
   ])
 ]
-
-const assignmentsForStepId = (state: any) => (stepId: string) =>
-  steps(state)[stepId].assignments
-const colorForStepWithId = (state: any) => (stepId: string) =>
-  stepColors(state)[stepId]
+const meditations = (state: any) => getCms(state).meditations
 const step = (number: number) => (state: any) => steps(state)[number]
 
 const pages = state => getCms(state).pages
@@ -102,8 +100,22 @@ const formData = (state: any) => getFormData(state).data
 const incompleteFormsData = (state: any) =>
   filterStepIds(getFormData(state).data)
 
+const EDITING_FORMS_SUPPORTTED = false
+const buttonTitleForFormCompletion = ({ completedForms, incomplete }) => {
+  if (Object.keys(incomplete).length > 0) {
+    return 'Resume'
+  } else if (
+    EDITING_FORMS_SUPPORTTED &&
+    completedForms &&
+    Object.keys(completedForms).length > 0
+  ) {
+    return 'Edit'
+  } else {
+    return 'Start'
+  }
+}
+
 const sortedStepsWithForms = state => {
-  
   const completed = completedForms(state)
   const incompleteForms = incompleteFormsData(state)
 
@@ -123,31 +135,33 @@ const sortedStepsWithForms = state => {
     },
     {}
   )
+
   return {
-    sortedStepsWithForms: sortedSteps(state).map(step => {
-      return {
+    sortedStepsWithForms: sortedSteps(state)
+      .map(step => ({
         completedForms: completed.find(f => f.stepId),
         incomplete: filterNumbers(incompleteForms[step.stepId]),
         step
-      }
-    }),
+      }))
+      .map(step => ({
+        ...step,
+        buttonTitleForFormCompletion: buttonTitleForFormCompletion(step)
+      })),
     latestStepId
   }
 }
+
+const buttonTitlesForFormCompletion = state => stepId => {
+  return R.compose(
+    buttonTitleForFormCompletion,
+    R.find(i => i.step.stepId === stepId),
+    R.prop('sortedStepsWithForms'),
+    sortedStepsWithForms
+  )(state)
+}
+
 const modelsAndDataForExercise = (state: any) => (stepId: string) => {
   //TComb Forms helpers
-  const isValueAValidTCombType = (value, type) =>
-    type.is(value) ? value : null
-  const removeIvalidValuesInsteadOfDoingAnyMigrationForNow = (model, value) =>
-    Object.keys(model.type.meta.props).reduce(
-      (sum, key) => ({
-        ...sum,
-        ...(isValueAValidTCombType(value[key], model.type.meta.props[key]) && {
-          [key]: value[key]
-        })
-      }),
-      {}
-    )
 
   const models = workbooks[stepId]
   const localData = getFormData(state).data[stepId]
@@ -182,8 +196,9 @@ export default {
   getCms,
   sortedSteps,
   sortedStepsWithForms,
+  buttonTitlesForFormCompletion,
   steps,
-  colorForStepWithId,
+  meditations,
   phaseColors,
   introSlides,
   step,
@@ -194,7 +209,6 @@ export default {
   stepColors,
   isCMSLoading,
   totalNumberOfSteps,
-  assignmentsForStepId,
   user,
   userId,
   isLoggedIn,

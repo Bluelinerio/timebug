@@ -35,7 +35,7 @@ const button = ({ appInstructions, colors, navigation, ...rest }) => ({
           title: `Not sure where to start?\n`
         })
       ),
-    title: 'Read more'
+    title: 'Learn more'
   }
 })
 

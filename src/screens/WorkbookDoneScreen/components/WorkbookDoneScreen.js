@@ -1,23 +1,29 @@
 // @flow
-import React, { Component } from 'react'
-import { Text, View, Image } from 'react-native'
-import styles from '../styles'
+import * as React from 'react'
+import { Text, View, StyleSheet } from 'react-native'
+import dashboardStyles from '../../styles/dashboard.styles'
 import Button from '../../../components/Button'
 
+const white = '#FEFEFE'
 export type Props = {
   title: string,
   buttonTitle: string,
   backgroundColor: string,
-  textColor: string,
-  buttonOnPress: () => void
+  insightText: string,
+  nextStepMotivationText: string,
+  button: {
+    onPress: () => void,
+    text: string,
+    textColor: string
+  }
 }
 
 const WorkbookDoneScreen = ({
   backgroundColor,
-  textColor,
   title,
-  buttonTitle,
-  buttonOnPress
+  button,
+  insightText,
+  nextStepMotivationText
 }: Props) => {
   return (
     <View
@@ -28,21 +34,46 @@ const WorkbookDoneScreen = ({
         }
       ]}
     >
-      <View style={styles.messageContainer}>
-        <Text style={[styles.title, styles.strong, { color: 'white' }]}>
+      <View style={[styles.messageContainer]}>
+        <Text
+          style={[
+            dashboardStyles.title,
+            dashboardStyles.strong,
+            { color: white, textAlign: 'left', marginBottom: 30 }
+          ]}
+        >
           {title}
         </Text>
+        <Text style={styles.suggestionText}>
+          <Text style={dashboardStyles.strong}>{'Did You Know?\n'}</Text>
+          {insightText + '\n\n'}
+          <Text style={dashboardStyles.strong}>{"What's next?\n"}</Text>
+          {nextStepMotivationText}
+        </Text>
       </View>
-      <View style={[styles.absoluteContainer]}>
-        <Button
-          onPress={buttonOnPress}
-          text={buttonTitle}
-          backgroundColor={'white'}
-          textColor={textColor}
-        />
+      <View>
+        <Button backgroundColor={white} {...button} />
       </View>
     </View>
   )
 }
 
 export default WorkbookDoneScreen
+
+const styles = StyleSheet.create({
+  suggestionText: {
+    ...StyleSheet.flatten(dashboardStyles.suggestionText),
+    color: white
+  },
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 20
+  },
+  messageContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
+})

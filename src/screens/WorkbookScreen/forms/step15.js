@@ -1,5 +1,5 @@
-import t from '../components/templates';
-import { TimeSpent, TimeChanged, ActivityFeelings } from './contents';
+import t from '../components/templates'
+import { TimeSpent, TimeChanged, ActivityFeelings } from './contents'
 
 export default {
   1: {
@@ -23,6 +23,7 @@ export default {
         },
         personalAimsAndHobbies: {
           item: {
+            auto: 'none',
             fields: {
               personalAimHobby: {
                 label: 'Aim/Hobby'
@@ -54,27 +55,35 @@ export default {
   },
   2: {
     type: t.struct({
-      giveUp: t.String,
-      notGiveUp: t.String
+      hobbyPriorities: t.struct({
+        giveUp: t.String,
+        notGiveUp: t.String
+      })
     }),
     options: {
-      label: 'How important are these hobbies to you?',
       fields: {
-        giveUp: {
-          label:
-            'Which of these hobbies, if any, would you be willing to give up if some huge new priority came along, and required more of your time?',
-          error: 'Please enter a hobby'
-        },
-        notGiveUp: {
-          label: 'Which would you NOT give up under (almost)any circumstance?',
-          error: 'Please enter a hobby'
+        hobbyPriorities: {
+          label: 'How important are these hobbies to you?',
+
+          fields: {
+            giveUp: {
+              label:
+                'Which of these hobbies, if any, would you be willing to give up if some huge new priority came along, and required more of your time?',
+              error: 'Please enter a hobby'
+            },
+            notGiveUp: {
+              label:
+                'Which would you NOT give up under (almost)any circumstance?',
+              error: 'Please enter a hobby'
+            }
+          }
         }
       }
     }
   },
   3: {
     type: t.struct({
-      aimsAndHobbies: t.list(
+      notAccomplishedAimsAndHobbies: t.list(
         t.struct({
           personalAimHobby: t.String,
           why: t.String
@@ -86,8 +95,9 @@ export default {
         "Were there any aims & hobbies that you weren't able to accomplish that you really wanted to over the past 5 years?",
 
       fields: {
-        aimsAndHobbies: {
+        notAccomplishedAimsAndHobbies: {
           item: {
+            auto: 'none',
             fields: {
               personalAimHobby: {
                 label: 'Aim/Hobby'
@@ -103,4 +113,4 @@ export default {
       }
     }
   }
-};
+}

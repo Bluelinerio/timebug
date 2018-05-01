@@ -4,24 +4,31 @@ export default {
   1: {
     type: t.struct({
       id: t.maybe(t.String),
-      mantraAnswer: t.Boolean,
-      exerciseAnswer: t.Boolean,
-      meditateAnswer: t.Boolean
+      step29CheckIn: t.struct({
+        mantraAnswer: t.Boolean,
+        exerciseAnswer: t.Boolean,
+        meditateAnswer: t.Boolean
+      })
     }),
     options: {
-      label: '20/20 Life Vision Check-in',
       fields: {
         id: {
           hidden: true
         },
-        mantraAnswer: {
-          label: 'Did you do your mantra today (assigned on Day 21)?'
-        },
-        exerciseAnswer: {
-          label: 'Did you exercise and meditate yet today(assigned on Day 8)?'
-        },
-        meditateAnswer: {
-          label: 'Did you MEDITATE yet today(assigned on Day 8)?'
+        step29CheckIn: {
+          label: '20/20 Life Vision Check-in',
+          fields: {
+            mantraAnswer: {
+              label: 'Did you do your mantra today (assigned on Day 21)?'
+            },
+            exerciseAnswer: {
+              label:
+                'Did you exercise and meditate yet today(assigned on Day 8)?'
+            },
+            meditateAnswer: {
+              label: 'Did you MEDITATE yet today(assigned on Day 8)?'
+            }
+          }
         }
       }
     },
@@ -33,22 +40,15 @@ export default {
   },
   2: {
     type: t.struct({
-      spiritualTeammates: t.list(
-        t.struct({
-          teammate: t.String
-        })
-      )
+      spiritualTeammates: t.list(t.String)
     }),
     options: {
-      label: 'Who are your spiritual “teammates” in 5 years from now? ',
+      label: 'Who are your spiritual “team-mates” in 5 years from now? ',
       fields: {
-        field: {
+        spiritualTeammates: {
+          auto: 'none',
           item: {
-            fields: {
-              teammate: {
-                label: 'Spiritual Teammate'
-              }
-            }
+            auto: 'none'
           }
         }
       }
@@ -56,7 +56,7 @@ export default {
   },
   3: {
     type: t.struct({
-      goals: t.list(
+      spiritualtyBHAGS: t.list(
         t.struct({
           spiritualityBHAG: t.String,
           priority: t.Number,
@@ -65,18 +65,19 @@ export default {
       )
     }),
     options: {
-      label: 'Vision Creation:Spirituality',
+      label:'What major Spirituality goals (BHAGs) do you envision for yourself by year 5?',
       fields: {
-        goals: {
+        spiritualtyBHAGS: {
+          auto:'none',
           item: {
+            auto: 'none',
             fields: {
               spiritualityBHAG: {
-                label:
-                  'What major Spirituality goals (BHAGs) do you envision for yourself by year 5?'
+                label:'Spirituality BHAG'
               },
               priority: {
-                label:
-                  'How will you prioritize your list items? (1= Low priority and 10= High priority)'
+                label: 'How will you prioritize this list item?',
+                placeholder: ' 1= Low priority and 10= High priority'
               },
               timeSpent: {
                 label:
@@ -90,7 +91,7 @@ export default {
   },
   4: {
     type: t.struct({
-      egoAspects: t.list(
+      egoAspectsEvolve: t.list(
         t.struct({
           i: t.String,
           willEvolve: t.String,
@@ -102,8 +103,10 @@ export default {
       label:
         'Remember Step 10 ("Mapping Out Your Internal World")?How will each of your listed Is (ego aspects) evolve by Year 5?',
       fields: {
-        egoAspects: {
+        egoAspectsEvolve: {
+          auto: 'none',
           item: {
+            auto: 'none',
             fields: {
               i: {
                 label: 'I(ego Aspect)'
@@ -123,24 +126,30 @@ export default {
   },
   5: {
     type: t.struct({
-      whoHelp: t.String,
-      howHelp: t.String,
-      howFurtherSpirituality: t.String
+      spiritualityVisionCreationForOthers: t.struct({
+        whoHelp: t.String,
+        howHelp: t.String,
+        howFurtherSpirituality: t.String
+      })
     }),
     options: {
-      label: 'Vision Creation: Spirituality',
       fields: {
-        whoHelp: {
-          label:
-            'Who do you want to enjoy a major transformation or sense of peace and internal happiness in their lives? How will you help him/her? '
-        },
-        howHelp: {
-          label:
-            'How will you want help him/her attain those inner journey goals by Year 5?'
-        },
-        howFurtherSpirituality: {
-          label:
-            'How do you want to help further spirituality in the world 5 years from now?'
+        spiritualityVisionCreationForOthers: {
+          label: 'Vision Creation: Spirituality',
+          fields: {
+            whoHelp: {
+              label:
+                'Who do you want to enjoy a major transformation or sense of peace and internal happiness in their lives? How will you help him/her? '
+            },
+            howHelp: {
+              label:
+                'How will you want help him/her attain those inner journey goals by Year 5?'
+            },
+            howFurtherSpirituality: {
+              label:
+                'How do you want to help further spirituality in the world 5 years from now?'
+            }
+          }
         }
       }
     }

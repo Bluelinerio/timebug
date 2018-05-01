@@ -2,30 +2,39 @@
 import * as React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
-import styles from '../../../styles/templates'
+import styles from '../../styles/templates'
+import SwipablyDiscardableRow from '../../../../components/SwipablyDiscardableRow'
 
 type Item = {
   key: string,
   input: React.Node,
-  button: Array<{
+  buttons: Array<{
     click: () => void,
     label: string,
     type: string
   }>
 }
 
-export const RowWithoutButtons = ({ key, input, /*buttons*/ }: Item) => (
-  <View
-    style={{
-      flex: 1,
-      justifyContent: 'center',
-      marginVertical: 10
-    }}
-    key={key}
-  >
-    {input}
-  </View>
-)
+export const RowWithoutButtons = ({ key, input, buttons }: Item) => {
+  return (
+    <SwipablyDiscardableRow
+      key={key}
+      onClose={() => {
+        buttons && buttons.length && buttons[0].click && buttons[0].click()
+      }}
+    >
+      <View
+        style={{
+          flex: 1,
+          justifyContent: 'center',
+          marginVertical: 10
+        }}
+      >
+        {input}
+      </View>
+    </SwipablyDiscardableRow>
+  )
+}
 
 export const ErrorLabel = ({ style, text }: { style: any, text: string }) => (
   <Text accessibilityLiveRegion="polite" style={style}>

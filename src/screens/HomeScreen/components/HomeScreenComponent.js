@@ -5,8 +5,8 @@ import { SafeAreaView } from 'react-navigation'
 
 import PagninatedCarouselContainer from '../containers/PagninatedCarouselContainer'
 import Version from '../containers/Version'
-import DashboardCellsContainer from '../containers/DashboardCellContainer'
-import MoreButtonContainer from '../containers/MoreButtonContainer'
+import DashboardCellsContainer from '../containers/DashboardCellsContainer'
+import SuggestionCellContainer from '../containers/SuggestionCellContainer'
 import styles from '../styles'
 import { sliderWidth, itemWidth } from '../styles/SliderEntry.style'
 import Banner from './Banner'
@@ -14,7 +14,7 @@ import Space from './Space'
 
 export default class HomeScreenComponent extends PureComponent {
   state = {
-    showMore: true
+    showSuggestions: true
   }
   render() {
     return (
@@ -25,12 +25,12 @@ export default class HomeScreenComponent extends PureComponent {
         <StatusBar barStyle="dark-content" backgroundColor={'white'} />
         <ScrollView style={{ flex: 1 }}>
           <Banner />
-          {this.state.showMore && (
-            <MoreButtonContainer
+          {this.state.showSuggestions && (
+            <SuggestionCellContainer
               onClose={() =>
                 this.setState(
                   {
-                    showMore: false
+                    showSuggestions: false
                   },
                   () =>
                     LayoutAnimation.configureNext({

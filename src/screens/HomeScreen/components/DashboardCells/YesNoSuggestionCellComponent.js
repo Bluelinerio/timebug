@@ -1,15 +1,18 @@
 // @flow
-import * as React from 'react'
-import { View } from 'react-native'
+import * as React         from 'react'
+import { View }           from 'react-native'
 import {
   CellContainer,
   Container,
   YesButton,
   NoButton,
-  YesDisabled,
   Title,
+}                         from './DashboardViews.js'
+import {
   triggerAnimation
-} from './DashboardViews.js'
+}                         from '../../../styles'
+import Meditator          from '../../../../components/Meditator'
+import { goToMeditation } from '../../../../redux/actions/nav.actions'
 
 const ANSWER_YES = 'ANSWER_YES'
 const ANSWER_NO = 'ANSWER_NO'
@@ -21,7 +24,8 @@ type Props = {
   followupNo: string,
   onPressYes: () => void,
   onPressNo: () => void,
-  onClose: () => void
+  onClose: () => void,
+  dispatch: any => void
 }
 
 type State = {
@@ -31,7 +35,7 @@ type State = {
 class YesNoSuggestionCellComponent extends React.Component<Props, State> {
   static defaultProps = {
     followupYes: 'Awesome!!',
-    followupNo: 'Should I create a reminder?'
+    followupNo: 'Meditate Now?'
   }
 
   state = {
@@ -50,7 +54,10 @@ class YesNoSuggestionCellComponent extends React.Component<Props, State> {
       this.props.onPressNo && this.props.onPressNo()
     })
   }
-
+  tmpMeditate = () => {
+    this.props.dispatch(goToMeditation())
+    this.props.onClose()
+  }
   render() {
     const { title, followupNo, followupYes, ...rest } = this.props
     const { answer } = this.state
@@ -82,16 +89,12 @@ class YesNoSuggestionCellComponent extends React.Component<Props, State> {
         )}
         {answer === ANSWER_NO && (
           <React.Fragment>
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'flex-start',
-                alignItems: 'center'
-              }}
-            >
-              <NoButton />
-              <Title title={followupNo} />
-            </View>
+            <Title title={followupNo} />
+            <Meditator />
+            <Container>
+              <YesButton onPress={this.tmpMeditate} />
+              <NoButton onPress={this.props.onClose} />
+            </Container>
           </React.Fragment>
         )}
       </CellContainer>

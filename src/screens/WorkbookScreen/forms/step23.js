@@ -5,9 +5,11 @@ export default {
   1: {
     type: t.struct({
       id: t.maybe(t.String),
-      mantraAnswer: t.Boolean,
-      exerciseAnswer: t.Boolean,
-      meditateAnswer: t.Boolean
+      step23CheckIn: t.struct({
+        mantraAnswer: t.Boolean,
+        exerciseAnswer: t.Boolean,
+        meditateAnswer: t.Boolean
+      })
     }),
     options: {
       label: '20/20 Life Vision Check-in',
@@ -15,14 +17,18 @@ export default {
         id: {
           hidden: true
         },
-        mantraAnswer: {
-          label: 'Did you do your mantra today (assigned on Day 21)?'
-        },
-        exerciseAnswer: {
-          label: 'Did you exercise and meditate yet today(assigned on Day 8)?'
-        },
-        meditateAnswer: {
-          label: 'Did you MEDITATE yet today(assigned on Day 8)?'
+        step23CheckIn: {
+          fields: {
+            mantraAnswer: {
+              label: 'Did you do your mantra today (assigned on Day 21)?'
+            },
+            exerciseAnswer: {
+              label: 'Did you exercise yet today(assigned on Day 8)?'
+            },
+            meditateAnswer: {
+              label: 'Did you meditate yet today(assigned on Day 8)?'
+            }
+          }
         }
       }
     },
@@ -34,35 +40,48 @@ export default {
   },
   2: {
     type: t.struct({
-      changeJobs: t.String,
-      changesNeeded: t.String
+      ifChangeJob: t.struct({
+        changeJobs: t.String,
+        changesNeeded: t.String
+      })
     }),
     options: {
-      label:
-        'If you could change jobs, and do something totally new, what would it be?',
-      auto: 'none',
       fields: {
-        changesNeeded: {
+        ifChangeJob: {
           label:
-            'Reflecting back on exercise 13, what changes would you need to make in your career to increase your fulfillment and motivation levels to 10 (Extremely fufilled/motivated)?',
-          multiline: true
+            'If you could change jobs, and do something totally new, what would it be?',
+          fields: {
+            changesNeeded: {
+              label:
+                'Reflecting back on exercise 13, what changes would you need to make in your career to increase your fulfillment and motivation levels to 10 (Extremely fufilled/motivated)?',
+              multiline: true
+            }
+          }
         }
       }
     }
   },
   3: {
     type: t.struct({
-      BHAGS: t.list(t.String)
+      careerBHAGS: t.list(t.String)
     }),
     options: {
       label:
-        'Back on Step 21, you were asked to list your Big Hairy Audacious Goals (BHAGs). Focusing on Career only now, take that a step further by adding 3-5 more Career BHAGs.'
+        'Back on Step 21, you were asked to list your Big Hairy Audacious Goals (BHAGs). Focusing on Career only now, take that a step further by adding 3-5 more Career BHAGs.',
+      fields: {
+        careerBHAGS: {
+          auto: 'none',
+          item: {
+            label: 'Career BHAG'
+          }
+        }
+      }
     }
   },
   4: {
     type: t.struct({
       id: t.maybe(t.String),
-      field: t.list(
+      careerSkillsToBuild: t.list(
         t.struct({
           skill: t.String,
           whatWillYouDo: t.String,
@@ -78,8 +97,10 @@ export default {
         id: {
           hidden: true
         },
-        field: {
+        careerSkillsToBuild: {
+          auto: 'none',
           item: {
+            auto: 'none',
             fields: {
               skill: {
                 label: 'Skill'

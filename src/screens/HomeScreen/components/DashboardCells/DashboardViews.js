@@ -1,10 +1,9 @@
 // @flow
 import * as React from 'react'
-import { View, Text, Platform, LayoutAnimation } from 'react-native'
+import { View, Text, Platform } from 'react-native'
 import glamorous from 'glamorous-native'
 
-import styles from '../../styles/dashbaord.styles'
-import SwipablyDiscardableRow from '../../../../components/SwipablyDiscardableRow'
+import styles from '../../../styles/dashboard.styles'
 import HighlighRow from '../../../../components/HighlighRow'
 import {
   hotPink,
@@ -14,19 +13,6 @@ import {
 import Entypo from 'react-native-vector-icons/Entypo'
 import Ionicons from 'react-native-vector-icons//Ionicons'
 
-export const triggerAnimation = () =>
-  LayoutAnimation.configureNext({
-    duration: 400,
-    create: {
-      type: LayoutAnimation.Types.spring,
-      property: LayoutAnimation.Properties.scaleXY,
-      springDamping: 0.7
-    },
-    update: {
-      type: LayoutAnimation.Types.spring,
-      springDamping: 0.7
-    }
-  })
 export const Title = ({ title, ...rest }: { title: string }) => (
   <Text
     {...rest}
@@ -61,13 +47,11 @@ export const CellContainer = ({
 }: {
   onClose: () => void
 }) => (
-  <SwipablyDiscardableRow onClose={onClose}>
-    <View style={styles.dashboardCard}>
-      <View style={styles.suggestionRow}>
-        <HighlighRow style={styles.bigSuggestionWithText} {...rest} />
-      </View>
+  <View style={styles.dashboardCard}>
+    <View style={styles.suggestionRow}>
+      <HighlighRow style={styles.bigSuggestionWithText} {...rest} />
     </View>
-  </SwipablyDiscardableRow>
+  </View>
 )
 
 export const VectorEntypoButton = props => (

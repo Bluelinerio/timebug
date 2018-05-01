@@ -5,6 +5,6 @@ export const temporaryUserAdditions = data => {
   }
   return {
     ...data,
-    aggregates: {}
+    agregates: {}
   };
 };

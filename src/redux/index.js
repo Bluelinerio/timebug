@@ -9,7 +9,6 @@ import reduxReset from 'redux-reset'
 
 import rootSaga from './rootSagas'
 import { rootReducer } from './rootReducer'
-import { reactNavigationMiddleware } from './middlewares'
 import { resetStore } from './actions'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
@@ -25,8 +24,7 @@ export default () => {
     composeEnhancers(
       reduxReset(resetStore.type), // Set action.type here
       applyAppStateListener(),
-      applyMiddleware(thunk, sagaMiddleware),
-      applyMiddleware(reactNavigationMiddleware)
+      applyMiddleware(thunk, sagaMiddleware)
     )
   )
   const persistor = persistStore(store)

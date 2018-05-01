@@ -46,9 +46,12 @@ export const restartStepAction = (step: Step) =>
   })
 
 // TODO remove static string and use params (routes.step.StepScreen ... )
-export const goToMeditation = () =>
+export const goToMeditation = (id) =>
   NavigationActions.navigate({
-    routeName: routes.root.MeditationScreen
+    routeName: routes.root.MeditationScreen,
+    params: {
+      id
+    }
   })
 export const goToWorkbookScreen = (props: any) =>
   navigateWith({

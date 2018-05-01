@@ -19,10 +19,10 @@ export default {
           label: 'Did you do your mantra today (assigned on Day 21)?'
         },
         exerciseAnswer: {
-          label: 'Did you exercise and meditate yet today(assigned on Day 8)?'
+          label: 'Did you exercise yet today(assigned on Day 8)?'
         },
         meditateAnswer: {
-          label: 'Did you MEDITATE yet today(assigned on Day 8)?'
+          label: 'Did you meditate yet today(assigned on Day 8)?'
         }
       }
     },
@@ -34,29 +34,35 @@ export default {
   },
   2: {
     type: t.struct({
-      dreamsDescribe: t.String,
-      dreamsRemember: DreamsRemember,
-      dreamsComeTrue: t.String
+      dreamsAssessment: t.struct({
+        dreamsDescribe: t.String,
+        dreamsRemember: DreamsRemember,
+        dreamsComeTrue: t.String
+      })
     }),
     options: {
       label: 'What do you dream about?',
       fields: {
-        dreamsDescribe: {
-          label: 'Any general themes?'
-        },
-        dreamsRemember: {
-          label: 'How often do you remember your dreams?'
-        },
-        dreamsComeTrue: {
-          label:
-            'Have your dreams ever come true – as in, you dreamt about something and then it happened? If so, list an instance when that happened.'
+        dreamsAssessment: {
+          fields: {
+            dreamsDescribe: {
+              label: 'Any general themes?'
+            },
+            dreamsRemember: {
+              label: 'How often do you remember your dreams?'
+            },
+            dreamsComeTrue: {
+              label:
+                'Have your dreams ever come true – as in, you dreamt about something and then it happened? If so, list an instance when that happened.'
+            }
+          }
         }
       }
     }
   },
   3: {
     type: t.struct({
-      dreams: t.list(
+      dreamJournal: t.list(
         t.struct({
           dream: t.String
         })
@@ -66,8 +72,9 @@ export default {
       label:
         'For the remainder of the program [8 Nights of Dreaming], try to remember and write your dreams down first thing in the morning – or even if you wake up in the middle of the night, the way Jason described his experience in the video. Note what themes, characters, settings, fears, hopes and aspirations were present.',
       fields: {
-        dreams: {
+        dreamJournal: {
           item: {
+            auto: 'none',
             fields: {
               dream: {
                 label: 'Dream'
