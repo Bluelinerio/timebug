@@ -7,6 +7,7 @@ import {
 
 const mapStepToStepScreenProps = ({step}) => {
   return {
+    headerTitle: step.stepScreenDescription,
     title: step.title,
     subtitle: `Step ${step.number}`,
     content: step.description,

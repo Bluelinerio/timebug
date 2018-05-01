@@ -55,7 +55,7 @@ const uniqueColors = (state: any) => [
     ...Object.values(getCms(state).colors.phases)
   ])
 ]
-
+const meditations = (state: any) => getCms(state).meditations
 const step = (number: number) => (state: any) => steps(state)[number]
 
 const pages = state => getCms(state).pages
@@ -198,6 +198,7 @@ export default {
   sortedStepsWithForms,
   buttonTitlesForFormCompletion,
   steps,
+  meditations,
   phaseColors,
   introSlides,
   step,

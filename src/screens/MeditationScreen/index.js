@@ -1,12 +1,27 @@
 // @flow
-import * as React                            from 'react'
-import { connect }                           from 'react-redux'
-import MeditationScreenComponent             from './components/MeditationScreenComponent'
+import * as React from 'react'
+import { connect } from 'react-redux'
+import { compose, mapProps } from 'recompose'
+import selectors from '../../redux/selectors'
+import MeditationScreenComponent from './components/MeditationScreenComponent'
 import { StackNavigator, NavigationActions } from 'react-navigation'
-import styles                                from '../styles'
-import HeaderCloseButton                     from '../../components/HeaderCloseButton'
+import styles from '../styles'
+import HeaderCloseButton from '../../components/HeaderCloseButton'
+import { withNavigationAndMeditation } from '../../HOC'
 
-MeditationScreenComponent.navigationOptions = ({
+const goneSoundFile = require('../../resources/sounds/gong.wav')
+
+const MeditationScreenContainer = compose(
+  withNavigationAndMeditation,
+  mapProps(({ navigation: { dispatch }, meditation, rest }) => ({
+    ...rest,
+    ...meditation,
+    soundfile: meditation.audioFile ? meditation.audioFile : goneSoundFile,
+    done: () => dispatch(NavigationActions.back())
+  }))
+)(MeditationScreenComponent)
+
+MeditationScreenContainer.navigationOptions = ({
   navigation: { dispatch }
 }) => ({
   headerStyle: styles.navigationOptionHeaderStyle,
@@ -18,15 +33,6 @@ MeditationScreenComponent.navigationOptions = ({
     />
   )
 })
-
-const done = () => NavigationActions.back()
-
-const MeditationScreenContainer = connect(
-  state => ({
-    soundFile: require('../../resources/sounds/gong.wav')
-  }),
-  ({ done })
-)(MeditationScreenComponent)
 
 const MeditationScreen = StackNavigator(
   {
@@ -46,10 +52,11 @@ const MeditationScreen = StackNavigator(
 type Meditation = {
   id: string,
   name: string,
-  step: string,
+  step?: string,
   backgroundColor: string,
-  timeInSeconds: number,
-  audioFile: string // if
+  lengthInSeconds: number,
+  audioFile: string,
+  gongFile: string
 }
 
 // TODO: determin if it is required to fixDebounce:

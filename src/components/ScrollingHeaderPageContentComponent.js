@@ -4,7 +4,6 @@ import {
   View,
   Text,
   StatusBar,
-  TouchableHighlight,
   StyleSheet
 } from 'react-native'
 import { deepBlue } from '../constants/colors'
