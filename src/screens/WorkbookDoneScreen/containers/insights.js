@@ -1,6 +1,6 @@
 //@flow
 const insights = {
-  '1': `General:\n Regret was rated highest of a list of negative emotions in fulfilling five functions:\n(1) making sense of the world,\n(2) avoiding future negative behaviors,\n(3) gaining insight,\n(4) achieving social harmony, and\n(5) improving ability to approach desired opportunities (presumably because we regret past passivity). -Researcher Neal Roese of the Kellogg School of Managemen`,
+  '1': `According to research regret is fulfilling in a number of ways, including avoiding future negative behaviors, gaining insight, and achieving social harmony`,
   '2': `General:\nManaging time is managing choices.\n\nToo many demands on your time can lead to a "scarcity mindset".\nDo you find yourself running around to take care of the problem right in front of you. Don’t neglect to take action on the things that will impact you in the long run.`,
   '3': `Remember that vulnerability is adaptive. Did you know that high-achievement is linked to the ability to be honest and share weaknesses with others.`,
   '4': `We all have blindspots. Did you know that every human overestimates the extent to which his/her internal states are 	detectable to others—a well-known bias known as the "illusion of transparency." Feedback from others helps overcome it.`,
