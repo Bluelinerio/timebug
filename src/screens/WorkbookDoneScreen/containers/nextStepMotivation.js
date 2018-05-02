@@ -1,5 +1,5 @@
 const nextStepMotivation = {
-  '1': `Up next is Step 2, where we'll help you optimize your time based on a typical 168 hour week.`,
+  '1': `Up next is Step 2, where will review and optimize a typical 168 hr week (24hrs X 7days).`,
   '2': `In Step 3, you will engage in constructive self-reflection regarding your strengths and weaknesses and how they have helped or hindered you in pursuit of your goals.`,
   '3': `In step 4, we’ll ask you to form a Board of Advisors, based on the 7 Pillars of Life. A strong community is foundational for becoming the best possible you.`,
   '4': `Now it’s time for step 5, where you will begin the process ofsetting and classifying your life goals according to the seven goal types. `,
