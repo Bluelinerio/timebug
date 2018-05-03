@@ -4,7 +4,7 @@ import {
   LOGOUT,
   ON_APP_LOADED,
   LOGIN_WITH_FB_BUTTON_PRESSED
-} from '../actionTypes.js';
+} from '../actionTypes';
 import { action } from '../utils';
 import { createRequest } from '../../Modules/redux-saga-request';
 import type { Request } from '../../Modules/redux-saga-request';

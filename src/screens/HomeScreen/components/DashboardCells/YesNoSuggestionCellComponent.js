@@ -7,7 +7,7 @@ import {
   YesButton,
   NoButton,
   Title,
-}                         from './DashboardViews.js'
+}                         from './DashboardViews'
 import {
   triggerAnimation
 }                         from '../../../styles'

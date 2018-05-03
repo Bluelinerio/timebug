@@ -2,7 +2,7 @@
 import React               from 'react'
 import HomeScreenComponent from './components/HomeScreenComponent'
 import User                from '../../containers/User'
-import DefaultIndicator    from '../../components/DefaultIndicator.js'
+import DefaultIndicator    from '../../components/DefaultIndicator'
 
 const HomeScreenContainer = () => (
   <User

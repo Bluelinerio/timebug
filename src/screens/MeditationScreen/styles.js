@@ -1,6 +1,6 @@
 import { StyleSheet }              from 'react-native'
 import { systemWeights, material } from 'react-native-typography'
-import { white2 }                  from '../../constants/colors.js'
+import { white2 }                  from '../../constants/colors'
 
 export const white = white2
 

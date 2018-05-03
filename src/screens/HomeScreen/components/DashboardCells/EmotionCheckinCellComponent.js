@@ -5,7 +5,7 @@ import {
   Container,
   VectorEntypoButton,
   Title
-} from './DashboardViews.js'
+} from './DashboardViews'
 
 const EmotionCheckinCellComponent = ({
   button,

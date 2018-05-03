@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { removeLabelFromListItem } from './FormManipulations.js'
+import { removeLabelFromListItem } from './FormManipulations'
 import { triggerAnimation } from '../../../styles'
 
 import {
@@ -10,7 +10,7 @@ import {
   HelpLabel,
   AddButton,
   ItemContainer
-} from './Views.js'
+} from './Views'
 
 type Item = {
   key: string,
