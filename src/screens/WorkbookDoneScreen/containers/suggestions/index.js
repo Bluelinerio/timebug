@@ -28,7 +28,12 @@ if (__DEV__) {
     throw new Error('missing sequenceMotivationText')
   }
   if (stepIds.find(stepId => !sequenceMotivationText[stepId])) {
-    throw new Error(`missing stepIds ${R.difference(Object.keys(sequenceMotivationText), stepIds)}`)
+    throw new Error(
+      `missing stepIds ${R.difference(
+        Object.keys(sequenceMotivationText),
+        stepIds
+      )}`
+    )
   }
   if (!categoyMotivationText) {
     throw new Error('missing categoyMotivationText')
@@ -85,33 +90,40 @@ export const getSuggstedStep = (previousSteps: [StepId]) => {
   }
 }
 
-export type NextStepSuggestion = {
-  type: 'NextStepSuggstion',
-  data: {
-    previousSteps: Array<StepId>,
-    suggestedStepId: StepId,
-    category: Category,
-    texts: {
-      [HOME_SCREEN | DONE_SCREEN]: string
-    }
+export type NextStepSuggestionData = {
+  previousSteps: Array<StepId>,
+  suggestedStepId: StepId,
+  category: Category,
+  texts: {
+    [HOME_SCREEN | DONE_SCREEN]: string
   }
 }
+
+export type NextStepSuggestion = {
+  name: 'NextStepSuggstion',
+  data: NextStepSuggestionData
+}
+
+const NEXT_STEP_SUGGESTION_NAME = 'NextStepSuggstion'
+
+const createNextStepSuggestion = (data: NextStepSuggestionData) => ({
+  name: NEXT_STEP_SUGGESTION_NAME,
+  data
+})
+
 export const suggestNextStep = (
   previousSteps: [StepId]
 ): NextStepSuggestion => {
   const { suggestedStepId, category, texts } = getSuggstedStep(previousSteps)
-  return {
-    type: 'NextStepSuggstion',
-    data: {
-      previousSteps,
-      suggestedStepId,
-      category,
-      texts: applyData({
-        suggestedNextStep: suggestedStepId,
-        previousStep: R.last(previousSteps)
-      })(texts)
-    }
-  }
+  return createNextStepSuggestion({
+    previousSteps,
+    suggestedStepId,
+    category,
+    texts: applyData({
+      suggestedNextStep: suggestedStepId,
+      previousStep: R.last(previousSteps)
+    })(texts)
+  })
 }
 
 export const Screens = {
