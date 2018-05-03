@@ -71,8 +71,10 @@ const isLoggedIn = (state: any): boolean => !!user(state)
 const isAnonymous = (state: any): boolean => getUserState(state) === ANONYMOUS
 const isAuthenticating = (state: any): boolean =>
   getUserState(state) === AUTHENTICATING
-const sortForms = (a: Form, b: Form) => a.stepId - b.stepId
 
+const sortForms = (a: Form, b: Form) => a.stepId - b.stepId
+const sortFormsChronologically = (a: Form, b: Form) =>
+  Date.parse(a.updatedAt) - Date.parse(b.updatedAt)
 // stepId on the server is an Int!. A clear idea how to
 const completedFormsData = (state: any) =>
   completedForms(state).reduce(
@@ -85,6 +87,9 @@ const completedFormsData = (state: any) =>
 
 const completedForms = (state: any): [Form] =>
   user(state) ? user(state).forms : []
+
+const completedFormsChronologically = (state: any): [Form] =>
+  completedForms(state).sort(sortFormsChronologically)
 
 const sortedCompletedForms = (state: any): [Form] =>
   completedForms(state).sort(sortForms)
@@ -217,6 +222,7 @@ export default {
   isAuthenticating,
   completedForms,
   sortedCompletedForms,
+  completedFormsChronologically,
   completedFormsData,
   completedStepIds,
   formWithStepId,
