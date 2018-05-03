@@ -56,7 +56,7 @@ export default {
     options: {
       auto: 'none',
       label:
-        'What are your different energy levels (physical, mental and emotional) at different times of a typical day (morning, afternoon, evening)?',
+        'What are your different energy levels at different times of a typical day?',
       fields: {
         id: {
           hidden: true
