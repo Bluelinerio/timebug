@@ -86,7 +86,7 @@ const completedFormsData = (state: any) =>
   )
 
 const completedForms = (state: any): [Form] =>
-  user(state) ? user(state).forms : []
+  user(state) ? user(state).forms.map(f => f) : []
 
 const completedFormsChronologically = (state: any): [Form] =>
   completedForms(state).sort(sortFormsChronologically)
