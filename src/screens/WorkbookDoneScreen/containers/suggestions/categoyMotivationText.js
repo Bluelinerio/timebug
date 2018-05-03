@@ -38,7 +38,7 @@ const categoyMotivationText = {
     [HOME_SCREEN]: ({ suggestedNextStep }) =>
       `At timebug, we believe working towards a completely fulfilling career, as opposed to 'just a job', is essential for well-being. Based on your activity, it looks like you have a particular interest in this area. Why not continue your great work in step ${suggestedNextStep}.`,
     [DONE_SCREEN]: ({ suggestedNextStep }) =>
-      `At timebug, we believe working towards a completely fulfilling career, as opposed to 'just a job', is essential for well-being. Based on your activity, it looks like you have a particular interest in this area. Why not continue your great work in step ${suggestedNextStep}..`
+      `At timebug, we believe working towards a completely fulfilling career, as opposed to 'just a job', is essential for well-being. Based on your activity, it looks like you have a particular interest in this area. Why not continue your great work in step ${suggestedNextStep}.`
   },
   [HOBBIES]: {
     [HOME_SCREEN]: ({ suggestedNextStep }) =>
