@@ -1,20 +1,22 @@
 // @flow
 import * as React from 'react'
+import { connect } from 'react-redux'
 import { compose, mapProps } from 'recompose'
+import selectors from '../../../redux/selectors'
 import { userRequired, withNavigationAndStep } from '../../../HOC'
 import type { Step } from '../../../services/cms'
 import { restartStepAction, reset } from '../../../redux/actions/nav.actions'
 import WorkbookDoneScreen from '../components/WorkbookDoneScreen'
 import type { Props } from '../components/WorkbookDoneScreen'
 import getInsight, { dummyFormValue } from './insights'
-import nextStepMotivation from './nextStepMotivation'
+import { suggestNextStep, Screens } from './suggestions'
 
 const suggestedNextStep = (currentStep, steps) =>
   Object.values(steps).find(s => s.number === currentStep.number + 1)
 
 const merge = ({
-  steps,
   step,
+  completedStepIdsChronologically,
   dispatch
 }: {
   step: Step,
@@ -22,10 +24,14 @@ const merge = ({
   dispatch: () => void
 }): Props => {
   const insightText = getInsight(step.stepId, dummyFormValue)
-  const nextStepMotivationText = nextStepMotivation[step.stepId]
   const backgroundColor = step.color
 
-  const nextStep = suggestedNextStep(step, steps)
+  const { data: { suggestedStepId: nextStep, texts } } = suggestNextStep(
+    completedStepIdsChronologically
+  )
+  debugger
+  const nextStepMotivationText = texts[Screens.DONE_SCREEN]
+
   if (nextStep) {
     // this is required in case we change how stepId work...
     return {
@@ -57,6 +63,12 @@ const merge = ({
 const WorkbookDoneScreenContainer = compose(
   userRequired,
   withNavigationAndStep,
+  connect(state => ({
+    completedStepIdsChronologically: selectors
+      .completedFormsChronologically(state)
+      .map(f => f.stepId)
+      .map(stepId => stepId.toString())
+  })),
   mapProps(merge)
 )(WorkbookDoneScreen)
 
@@ -73,5 +85,5 @@ export default WorkbookDoneScreenContainer
 // const completedForms = selectors.completedForms(state)
 // const incompleteFormsData = selectors.incompleteFormsData(state)
 //done: () => void,
-//const formData = completedForms[step.stepId]
+//const formData = completedForms[step.toString()]
 //const numberOfSteps = Object.values(steps).length
