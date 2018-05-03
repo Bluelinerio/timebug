@@ -9,7 +9,13 @@ const EmojiPickerScreenContainer = compose(
   withProps(({ navigation: { dispatch, state } }) => {
     return {
       ...state.params,
-      updateStoreWithEmojiAndValue: ({ value, emoji }) => dispatch(submitCheckin(props))
+      updateStoreWithEmojiAndValue: ({ value, emoji }) => dispatch(submitCheckin({
+        name:'emoji',
+        data: {
+          value,
+          emoji
+        }
+      }))
     }
   })
 )(EmojiPickerScreenComponent)

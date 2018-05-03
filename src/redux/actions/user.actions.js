@@ -4,10 +4,10 @@ import {
   REFRESH_USER,
   UPDATE_USER,
   SUBMIT_CHECKIN
-}                                 from '../actionTypes'
-import { createRequest }          from '../../Modules/redux-saga-request'
-import type { Request }           from '../../Modules/redux-saga-request'
-import { action }                 from '../utils'
+}                        from '../actionTypes'
+import { createRequest } from '../../Modules/redux-saga-request'
+import type { Request }  from '../../Modules/redux-saga-request'
+import { action }        from '../utils'
 
 export const GET_USER: Request<any, any> = createRequest('GET_USER')
 export const AUTHENTICATE_FB: Request<any, any> = createRequest(
@@ -23,7 +23,7 @@ export const updateUser = (payload: any) => ({
   payload: payload
 })
 
-export const updateStoreWithEmojiAndValue = payload => ({
+export const submitCheckin = payload => ({
   type: SUBMIT_CHECKIN,
   payload
 })

@@ -13,7 +13,8 @@ import {
   SPIRITUALITY,
   PHASE1,
   PHASE2,
-  PHASE3
+  PHASE3,
+  stepIds
 } from './constants'
 
 import type { StepId, Category } from './types'
@@ -25,6 +26,9 @@ import R from 'ramda'
 if (__DEV__) {
   if (!sequenceMotivationText) {
     throw new Error('missing sequenceMotivationText')
+  }
+  if (stepIds.find(stepId => !sequenceMotivationText[stepId])) {
+    throw new Error(`missing stepIds ${R.difference(Object.keys(sequenceMotivationText), stepIds)}`)
   }
   if (!categoyMotivationText) {
     throw new Error('missing categoyMotivationText')
@@ -66,20 +70,6 @@ export const getSuggstedStep = (previousSteps: [StepId]) => {
     : sequenceMotivationText[suggestedStepId]
 
   if (__DEV__) {
-    if (!categoyMotivationText) {
-      throw new Error('categoyMotivationText is not defined')
-    }
-    if (!sequenceMotivationText) {
-      throw new Error('sequenceMotivationText is not defined')
-    }
-    if (!sequenceMotivationText[suggestedStepId]) {
-      throw new Error(
-        `missing stepId ${suggestedStepId} in sequenceMotivationText`
-      )
-    }
-    if (!categoyMotivationText[category]) {
-      throw new Error(`missing key ${category} in categoyMotivationText`)
-    }
     if (!texts) {
       throw new Error('missing texts')
     }
