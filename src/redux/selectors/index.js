@@ -74,7 +74,7 @@ const isAuthenticating = (state: any): boolean =>
 
 const sortForms = (a: Form, b: Form) => a.stepId - b.stepId
 const sortFormsChronologically = (a: Form, b: Form) =>
-  Date.parse(a.updatedAt) - Date.parse(b.updatedAt)
+  Date.parse(b.updatedAt) - Date.parse(a.updatedAt)
 // stepId on the server is an Int!. A clear idea how to
 const completedFormsData = (state: any) =>
   completedForms(state).reduce(
