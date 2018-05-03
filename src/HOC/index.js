@@ -75,12 +75,16 @@ export const withNavigationAndMeditation = compose(
 )
 
 export const userRequired = compose(
+  connect(state => ({
+    isNotLoggedIn: selectors.isNotLoggedIn(state),
+    isAnonymous: selectors.isAnonymous(state)
+  })),
   branch(
-    state => selectors.isLoggedIn(state),
+    ({ isNotLoggedIn }) => isNotLoggedIn,
     branch(
-      state => selectors.isAnonymous(state),
-      renderComponent(DefaultIndicator),
-      renderComponent(UserAnonymousError)
+      ({ isAnonymous }) => isAnonymous,
+      renderComponent(UserAnonymousError),
+      renderComponent(DefaultIndicator)
     )
   )
 )
