@@ -11,10 +11,9 @@ import type { Props } from '../components/WorkbookDoneScreen'
 import getInsight, { dummyFormValue } from './insights'
 import { suggestNextStep, Screens } from './suggestions'
 
-const suggestedNextStep = (currentStep, steps) =>
-  Object.values(steps).find(s => s.number === currentStep.number + 1)
 
 const merge = ({
+  steps,
   step,
   completedStepIdsChronologically,
   dispatch
@@ -26,11 +25,12 @@ const merge = ({
   const insightText = getInsight(step.stepId, dummyFormValue)
   const backgroundColor = step.color
 
-  const { data: { suggestedStepId: nextStep, texts } } = suggestNextStep(
+  const { data: { suggestedStepId, texts } } = suggestNextStep(
     completedStepIdsChronologically
   )
-  debugger
+
   const nextStepMotivationText = texts[Screens.DONE_SCREEN]
+  const nextStep = steps[suggestedStepId]
 
   if (nextStep) {
     // this is required in case we change how stepId work...
