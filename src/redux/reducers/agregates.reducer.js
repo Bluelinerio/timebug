@@ -9,9 +9,15 @@ import navigationReducer, {
   ActionTypes as NavigationReducerActionTypes
 } from './agregates.navigation.reducer'
 
+import suggestionsReducer, {
+  SuggestionsReducerKeys,
+  ActionTypes as SuggestionReducerActionTypes
+} from './agregates.suggestions.reducer.js'
+
 export const AgregateReducerKeys = {
   agregate: 'agregates',
   ...NavigationReducerKeys,
+  ...SuggestionsReducerKeys
 }
 
 export const UPDATE = 'UPDATE'
@@ -31,8 +37,13 @@ function agregateReducer(
   state: AgregateState = initialState,
   action: AgregateUpdateAction
 ) {
-  if (NavigationReducerActionTypes.includes(action.type)) return navigationReducer(state, action)
+  if (NavigationReducerActionTypes.includes(action.type))
+    return navigationReducer(state, action)
 
+  if (SuggestionReducerActionTypes.includes(action.type)) {
+    return suggestionsReducer(state, action)
+  }
+  
   switch (action.type) {
     case EVENT:
       return {
