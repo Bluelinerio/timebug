@@ -15,7 +15,7 @@ import suggestionsReducer, {
 } from './agregates.suggestions.reducer.js'
 
 export const AgregateReducerKeys = {
-  agregate: 'agregates',
+  agregates: 'agregates',
   ...NavigationReducerKeys,
   ...SuggestionsReducerKeys
 }
@@ -43,7 +43,7 @@ function agregateReducer(
   if (SuggestionReducerActionTypes.includes(action.type)) {
     return suggestionsReducer(state, action)
   }
-  
+
   switch (action.type) {
     case EVENT:
       return {
@@ -98,7 +98,7 @@ import { persistReducer } from 'redux-persist'
 // }
 
 const persistConfig = {
-  key: AgregateReducerKeys.agregate,
+  key: AgregateReducerKeys.agregates,
   storage: storage,
   blacklist: ['requestCount', 'error']
 }
