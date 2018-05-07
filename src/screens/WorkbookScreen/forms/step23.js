@@ -118,7 +118,7 @@ export default {
     }
   },
   5: {
-    type: t.struct({ hours: t.Number }),
+    type: t.struct({ hoursWillSpendWorking: t.Number }),
     options: {
       label:
         'The average worker spends 40 hrs * 50 weeks working = 2,000 hours. How many hours will you spend working this year? #Workbug'

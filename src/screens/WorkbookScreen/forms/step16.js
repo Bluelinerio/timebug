@@ -295,12 +295,12 @@ export default {
           label: 'How do you deal with stress?',
           error: 'Please fill out the field.'
         },
-        expressAbility: {
+        abailityToExpressStress: {
           label:
             'Are you able to express your emotions in a healthy way? How do you communicate your feelings?',
           error: 'Please fill out the field.'
         },
-        awareness: {
+        stressfulSituationAwareness: {
           label:
             'Are you aware of how stressful situations impact your health and life? Give 3 examples.',
           fields: {

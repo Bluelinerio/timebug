@@ -5,9 +5,9 @@ export default {
   1: {
     type: t.struct({
       id: t.maybe(t.String),
-      mantraAnswer: t.Boolean,
-      exerciseAnswer: t.Boolean,
-      meditateAnswer: t.Boolean
+      step22MantraAnswer: t.Boolean,
+      step22ExerciseAnswer: t.Boolean,
+      step22MeditateAnswer: t.Boolean
     }),
     options: {
       label: '20/20 Life Vision Check-in',
@@ -15,13 +15,13 @@ export default {
         id: {
           hidden: true
         },
-        mantraAnswer: {
+        step22MantraAnswer: {
           label: 'Did you do your mantra today (assigned on Day 21)?'
         },
-        exerciseAnswer: {
+        step22ExerciseAnswer: {
           label: 'Did you exercise yet today(assigned on Day 8)?'
         },
-        meditateAnswer: {
+        step22MeditateAnswer: {
           label: 'Did you meditate yet today(assigned on Day 8)?'
         }
       }
@@ -44,6 +44,7 @@ export default {
       label: 'What do you dream about?',
       fields: {
         dreamsAssessment: {
+          auto:'none',
           fields: {
             dreamsDescribe: {
               label: 'Any general themes?'

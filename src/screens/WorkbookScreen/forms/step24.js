@@ -43,7 +43,7 @@ export default {
     options: {
       label: 'Five years from now, how much money will you have in the bank?',
       fields: {
-        money: {
+        moneyWillHave: {
           auto: 'none'
         }
       }

@@ -47,8 +47,8 @@ export default {
   2: {
     type: t.struct({
       pillarsOfLifeBreakdown: t.String,
-      thingsDoLess: TimeSpentProgress,
-      thingsDoMore: TimeSpentProgress
+      nextFiveYearsThingsDoLess: TimeSpentProgress,
+      nextFiveYearsThingsDoMore: TimeSpentProgress
     }),
     options: {
       label:
@@ -58,12 +58,12 @@ export default {
         pillarsOfLifeBreakdown: {
           label: 'Has anything changed with your Pillars of Life breakdown?'
         },
-        thingsDoLess: {
+        nextFiveYearsThingsDoLess: {
           label:
             'Has anything changed with your 3 things that you want to DO LESS of in general?',
           help: 'i.e. "Watching TV"'
         },
-        thingsDoMore: {
+        nextFiveYearsThingsDoMore: {
           label:
             'Has anything changed with your 3 things that you want to DO MORE of in general?',
           help: 'i.e. "Exercising"'
@@ -74,13 +74,13 @@ export default {
   3: {
     type: t.struct({
       pastPillarImportance: t.struct({
-        career: OneToTenScale,
-        aimsAndHobbies: OneToTenScale,
-        healthAndWellness: OneToTenScale,
-        financial: OneToTenScale,
-        relationship: OneToTenScale,
-        environment: OneToTenScale,
-        spirituality: OneToTenScale
+        pastPillarImportanceCareer: OneToTenScale,
+        pastPillarImportanceAimsAndHobbies: OneToTenScale,
+        pastPillarImportanceHealthAndWellness: OneToTenScale,
+        pastPillarImportanceFinancial: OneToTenScale,
+        pastPillarImportanceRelationship: OneToTenScale,
+        pastPillarImportanceEnvironment: OneToTenScale,
+        pastPillarImportanceSpirituality: OneToTenScale
       })
     }),
     options: {
@@ -89,32 +89,32 @@ export default {
       fields: {
         pastPillarImportance: {
           fields: {
-        career: {
-          auto: 'labels',
+            pastPillarImportanceCareer: {
+          label: 'Career',
           help: '10= Very Important and 1= Not important at all'
         },
-        aimsAndHobbies: {
-          auto: 'labels',
+        pastPillarImportanceAimsAndHobbies: {
+          label: 'Aims and Hobbies',
           help: '10= Very Important and 1= Not important at all'
         },
-        healthAndWellness: {
-          auto: 'labels',
+        pastPillarImportanceHealthAndWellness: {
+          label: 'Health and Wellness',
           help: '10= Very Important and 1= Not important at all'
         },
-        financial: {
-          auto: 'labels',
+        pastPillarImportanceFinancial: {
+          label: 'Financial',
           help: '10= Very Important and 1= Not important at all'
         },
-        relationship: {
-          auto: 'labels',
+        pastPillarImportanceRelationship: {
+          label: 'Relationships',
           help: '10= Very Important and 1= Not important at all'
         },
-        environment: {
-          auto: 'labels',
+        pastPillarImportanceEnvironment: {
+          label: 'Environment',
           help: '10= Very Important and 1= Not important at all'
         },
-        spirituality: {
-          auto: 'labels',
+        pastPillarImportanceSpirituality: {
+          label: 'Spirituality',
           help: '10= Very Important and 1= Not important at all'
         }
       }
@@ -124,222 +124,222 @@ export default {
   },
   4: {
     type: t.struct({
-      career: t.Number,
-      aimsAndHobbies: t.Number,
-      healthAndWellness: t.Number,
-      relationship: t.Number,
-      financial: t.Number,
-      environment: t.Number,
-      spirituality: t.Number
+      careerEnergyMotivationLevel: t.Number,
+      aimsAndHobbiesEnergyMotivationLevel: t.Number,
+      healthAndWellnessEnergyMotivationLevel: t.Number,
+      relationshipEnergyMotivationLevel: t.Number,
+      financialEnergyMotivationLevel: t.Number,
+      environmentEnergyMotivationLevel: t.Number,
+      spiritualityEnergyMotivationLevel: t.Number
     }),
     options: {
       label:
         'How would you divide your energy and motivation level as a percent of a pie for each Category?',
 
       fields: {
-        career: {
-          auto: 'labels'
+        careerEnergyMotivationLevel: {
+          label: 'Career'
         },
-        aimsAndHobbies: {
-          auto: 'labels'
+        aimsAndHobbiesEnergyMotivationLevel: {
+          label: 'Aims and Hobbies'
         },
-        healthAndWellness: {
-          auto: 'labels'
+        healthAndWellnessEnergyMotivationLevel: {
+          label: 'Health and Wellness'
         },
-        relationship: {
-          auto: 'labels'
+        relationshipEnergyMotivationLevel: {
+          label: 'Relationships'
         },
-        financial: {
-          auto: 'labels'
+        financialEnergyMotivationLevel: {
+          label: 'Financial'
         },
-        environment: {
-          auto: 'labels'
+        environmentEnergyMotivationLevel: {
+          label: 'Environment'
         },
-        spirituality: {
-          auto: 'labels'
+        spiritualityEnergyMotivationLevel: {
+          label: 'Spirituality'
         }
       }
     }
   },
   5: {
     type: t.struct({
-      selfCareerYear1: OneToTenScale,
-      selfAimsAndHobbiesYear1: OneToTenScale,
-      selfHealthAndWellnessYear1: OneToTenScale,
-      selfRelationshipYear1: OneToTenScale,
-      selfFinancialYear1: OneToTenScale,
-      selfEnvironmentYear1: OneToTenScale,
-      selfSpiritualityYear1: OneToTenScale,
-      selfCareerYear2: OneToTenScale,
-      selfAimsAndHobbiesYear2: OneToTenScale,
-      selfHealthAndWellnessYear2: OneToTenScale,
-      selfRelationshipYear2: OneToTenScale,
-      selfFinancialYear2: OneToTenScale,
-      selfEnvironmentYear2: OneToTenScale,
-      selfSpiritualityYear2: OneToTenScale,
-      selfCareerYear3: OneToTenScale,
-      selfAimsAndHobbiesYear3: OneToTenScale,
-      selfHealthAndWellnessYear3: OneToTenScale,
-      selfRelationshipYear3: OneToTenScale,
-      selfFinancialYear3: OneToTenScale,
-      selfEnvironmentYear3: OneToTenScale,
-      selfSpiritualityYear3: OneToTenScale,
-      selfCareerYear4: OneToTenScale,
-      selfAimsAndHobbiesYear4: OneToTenScale,
-      selfHealthAndWellnessYear4: OneToTenScale,
-      selfRelationshipYear4: OneToTenScale,
-      selfFinancialYear4: OneToTenScale,
-      selfEnvironmentYear4: OneToTenScale,
-      selfSpiritualityYear4: OneToTenScale,
-      selfCareerYear5: OneToTenScale,
-      selfAimsAndHobbiesYear5: OneToTenScale,
-      selfHealthAndWellnessYear5: OneToTenScale,
-      selfRelationshipYear5: OneToTenScale,
-      selfFinancialYear5: OneToTenScale,
-      selfEnvironmentYear5: OneToTenScale,
-      selfSpiritualityYear5: OneToTenScale,
-      selfCareerOverall: OverallScore,
-      selfAimsAndHobbiesOverall: OverallScore,
-      selfHealthAndWellnessOverall: OverallScore,
-      selfRelationshipOverall: OverallScore,
-      selfFinancialOverall: OverallScore,
-      selfEnvironmentOverall: OverallScore,
-      selfSpiritualityOverall: OverallScore
+      selfCareerYear1Rating: OneToTenScale,
+      selfAimsAndHobbiesYear1Rating: OneToTenScale,
+      selfHealthAndWellnessYear1Rating: OneToTenScale,
+      selfRelationshipYear1Rating: OneToTenScale,
+      selfFinancialYear1Rating: OneToTenScale,
+      selfEnvironmentYear1Rating: OneToTenScale,
+      selfSpiritualityYear1Rating: OneToTenScale,
+      selfCareerYear2Rating: OneToTenScale,
+      selfAimsAndHobbiesYear2Rating: OneToTenScale,
+      selfHealthAndWellnessYear2Rating: OneToTenScale,
+      selfRelationshipYear2Rating: OneToTenScale,
+      selfFinancialYear2Rating: OneToTenScale,
+      selfEnvironmentYear2Rating: OneToTenScale,
+      selfSpiritualityYear2Rating: OneToTenScale,
+      selfCareerYear3Rating: OneToTenScale,
+      selfAimsAndHobbiesYear3Rating: OneToTenScale,
+      selfHealthAndWellnessYear3Rating: OneToTenScale,
+      selfRelationshipYear3Rating: OneToTenScale,
+      selfFinancialYear3Rating: OneToTenScale,
+      selfEnvironmentYear3Rating: OneToTenScale,
+      selfSpiritualityYear3Rating: OneToTenScale,
+      selfCareerYear4Rating: OneToTenScale,
+      selfAimsAndHobbiesYear4Rating: OneToTenScale,
+      selfHealthAndWellnessYear4Rating: OneToTenScale,
+      selfRelationshipYear4Rating: OneToTenScale,
+      selfFinancialYear4Rating: OneToTenScale,
+      selfEnvironmentYear4Rating: OneToTenScale,
+      selfSpiritualityYear4Rating: OneToTenScale,
+      selfCareerYear5Rating: OneToTenScale,
+      selfAimsAndHobbiesYear5Rating: OneToTenScale,
+      selfHealthAndWellnessYear5Rating: OneToTenScale,
+      selfRelationshipYear5Rating: OneToTenScale,
+      selfFinancialYear5Rating: OneToTenScale,
+      selfEnvironmentYear5Rating: OneToTenScale,
+      selfSpiritualityYear5Rating: OneToTenScale,
+      selfCareerOverallRating: OverallScore,
+      selfAimsAndHobbiesOverallRating: OverallScore,
+      selfHealthAndWellnessOverallRating: OverallScore,
+      selfRelationshipOverallRating: OverallScore,
+      selfFinancialOverallRating: OverallScore,
+      selfEnvironmentOverallRating: OverallScore,
+      selfSpiritualityOverallRating: OverallScore
     }),
     options: {
       label:
         'Give yourself a final evaluation for each of the past 5 Years, as well as an overall 5-Year Score (1-10 score per year per Life Category for a total maximum high score of 50/50).',
       fields: {
-        selfCareerYear1: {
+        selfCareerYear1Rating: {
           label: 'Career(Year 1)'
         },
-        selfAimsAndHobbiesYear1: {
+        selfAimsAndHobbiesYear1Rating: {
           label: 'Aims and Hobbies(Year 1)'
         },
-        selfHealthAndWellnessYear1: {
+        selfHealthAndWellnessYear1Rating: {
           label: 'Health and Wellness(Year 1)'
         },
-        selfRelationshipYear1: {
+        selfRelationshipYear1Rating: {
           label: 'Relationships(Year 1)'
         },
-        selfFinancialYear1: {
+        selfFinancialYear1Rating: {
           label: 'Financial(Year 1)'
         },
-        selfEnvironmentYear1: {
+        selfEnvironmentYear1Rating: {
           label: 'Environment(Year 1)'
         },
-        selfSpiritualityYear1: {
+        selfSpiritualityYear1Rating: {
           label: 'Spirituality(Year 1)'
         },
-        selfCareerYear2: {
+        selfCareerYear2Rating: {
           label: 'Career(Year 2)'
         },
-        selfAimsAndHobbiesYear2: {
+        selfAimsAndHobbiesYear2Rating: {
           label: 'Aims and Hobbies(Year 2)'
         },
-        selfHealthAndWellnessYear2: {
+        selfHealthAndWellnessYear2Rating: {
           label: 'Health and Wellness(Year 2)'
         },
-        selfRelationshipYear2: {
+        selfRelationshipYear2Rating: {
           label: 'Relationships(Year 2)'
         },
-        selfFinancialYear2: {
+        selfFinancialYear2Rating: {
           label: 'Financial(Year 2)'
         },
-        selfEnvironmentYear2: {
+        selfEnvironmentYear2Rating: {
           label: 'Environment(Year 2)'
         },
-        selfSpiritualityYear2: {
+        selfSpiritualityYear2Rating: {
           label: 'Spirituality(Year 2)'
         },
-        selfCareerYear3: {
+        selfCareerYear3Rating: {
           label: 'Career(Year 3)'
         },
-        selfAimsAndHobbiesYear3: {
+        selfAimsAndHobbiesYear3Rating: {
           label: 'Aims and Hobbies(Year 3)'
         },
-        selfHealthAndWellnessYear3: {
+        selfHealthAndWellnessYear3Rating: {
           label: 'Health and Wellness(Year 3)'
         },
-        selfRelationshipYear3: {
+        selfRelationshipYear3Rating: {
           label: 'Relationships(Year 3)'
         },
-        selfFinancialYear3: {
+        selfFinancialYear3Rating: {
           label: 'Financial(Year 3)'
         },
-        selfEnvironmentYear3: {
+        selfEnvironmentYear3Rating: {
           label: 'Environment(Year 3)'
         },
-        selfSpiritualityYear3: {
+        selfSpiritualityYear3Rating: {
           label: 'Spirituality(Year 3)'
         },
-        selfCareerYear4: {
+        selfCareerYear4Rating: {
           label: 'Career(Year 4)'
         },
-        selfAimsAndHobbiesYear4: {
+        selfAimsAndHobbiesYear4Rating: {
           label: 'Aims and Hobbies(Year 4)'
         },
-        selfHealthAndWellnessYear4: {
+        selfHealthAndWellnessYear4Rating: {
           label: 'Health and Wellness(Year 4)'
         },
-        selfRelationshipYear4: {
+        selfRelationshipYear4Rating: {
           label: 'Relationships(Year 4)'
         },
-        selfFinancialYear4: {
+        selfFinancialYear4Rating: {
           label: 'Financial(Year 4)'
         },
-        selfEnvironmentYear4: {
+        selfEnvironmentYear4Rating: {
           label: 'Environment(Year 4)'
         },
-        selfSpiritualityYear4: {
+        selfSpiritualityYear4Rating: {
           label: 'Spirituality(Year 4)'
         },
-        selfCareerYear5: {
+        selfCareerYear5Rating: {
           label: 'Career(Year 5)'
         },
-        selfAimsAndHobbiesYear5: {
+        selfAimsAndHobbiesYear5Rating: {
           label: 'Aims and Hobbies(Year 5)'
         },
-        selfHealthAndWellnessYear5: {
+        selfHealthAndWellnessYear5Rating: {
           label: 'Health and Wellness(Year 5)'
         },
-        selfRelationshipYear5: {
+        selfRelationshipYear5Rating: {
           label: 'Relationships(Year 5)'
         },
-        selfFinancialYear5: {
+        selfFinancialYear5Rating: {
           label: 'Financial(Year 5)'
         },
-        selfEnvironmentYear5: {
+        selfEnvironmentYear5Rating: {
           label: 'Environment(Year 5)'
         },
-        selfSpiritualityYear5: {
+        selfSpiritualityYear5Rating: {
           label: 'Spirituality(Year 5)'
         },
-        selfCareerOverall: {
-          labels: 'Career Overall',
+        selfCareerOverallRating: {
+          label: 'Career Overall',
           error: 'Add up your five year career score'
         },
-        selfAimsAndHobbiesOverall: {
+        selfAimsAndHobbiesOverallRating: {
           label: 'Personality & Hobbies Overall',
           error: 'Add up your five year personality & hobbies score'
         },
-        selfHealthAndWellnessOverall: {
+        selfHealthAndWellnessOverallRating: {
           label: 'Health And Wellness Overall',
           error: 'Add up your five year health score'
         },
-        selfRelationshipOverall: {
+        selfRelationshipOverallRating: {
           label: 'Relationships Overall',
           error: 'Add up your five year relationship score'
         },
-        selfFinancialOverall: {
+        selfFinancialOverallRating: {
           label: 'Financial Overall',
           error: 'Add up your five year financial score'
         },
-        selfEnvironmentOverall: {
+        selfEnvironmentOverallRating: {
           label: 'P & E Overall',
           error: 'Add up your five year P & E score'
         },
-        selfSpiritualityOverall: {
+        selfSpiritualityOverallRating: {
           label: 'Spirituality Overall',
           error: 'Add up your five year spirituality score'
         }
@@ -348,177 +348,177 @@ export default {
   },
   6: {
     type: t.struct({
-      otherCareerYear1: OneToTenScale,
-      otherAimsAndHobbiesYear1: OneToTenScale,
-      otherHealthAndWellnessYear1: OneToTenScale,
-      otherRelationshipYear1: OneToTenScale,
-      otherFinancialYear1: OneToTenScale,
-      otherEnvironmentYear1: OneToTenScale,
-      otherSpiritualityYear1: OneToTenScale,
-      otherCareerYear2: OneToTenScale,
-      otherAimsAndHobbiesYear2: OneToTenScale,
-      otherHealthAndWellnessYear2: OneToTenScale,
-      otherRelationshipYear2: OneToTenScale,
-      otherFinancialYear2: OneToTenScale,
-      otherEnvironmentYear2: OneToTenScale,
-      otherSpiritualityYear2: OneToTenScale,
-      otherCareerYear3: OneToTenScale,
-      otherAimsAndHobbiesYear3: OneToTenScale,
-      otherHealthAndWellnessYear3: OneToTenScale,
-      otherRelationshipYear3: OneToTenScale,
-      otherFinancialYear3: OneToTenScale,
-      otherEnvironmentYear3: OneToTenScale,
-      otherSpiritualityYear3: OneToTenScale,
-      otherCareerYear4: OneToTenScale,
-      otherAimsAndHobbiesYear4: OneToTenScale,
-      otherHealthAndWellnessYear4: OneToTenScale,
-      otherRelationshipYear4: OneToTenScale,
-      otherFinancialYear4: OneToTenScale,
-      otherEnvironmentYear4: OneToTenScale,
-      otherSpiritualityYear4: OneToTenScale,
-      otherCareerYear5: OneToTenScale,
-      otherAimsAndHobbiesYear5: OneToTenScale,
-      otherHealthAndWellnessYear5: OneToTenScale,
-      otherRelationshipYear5: OneToTenScale,
-      otherFinancialYear5: OneToTenScale,
-      otherEnvironmentYear5: OneToTenScale,
-      otherSpiritualityYear5: OneToTenScale,
-      otherCareerOverall: OverallScore,
-      otherAimsAndHobbiesOverall: OverallScore,
-      otherHealthAndWellnessOverall: OverallScore,
-      otherRelationshipOverall: OverallScore,
-      otherFinancialOverall: OverallScore,
-      otherEnvironmentOverall: OverallScore,
-      otherSpiritualityOverall: OverallScore
+      otherCareerYear1Rating: OneToTenScale,
+      otherAimsAndHobbiesYear1Rating: OneToTenScale,
+      otherHealthAndWellnessYear1Rating: OneToTenScale,
+      otherRelationshipYear1Rating: OneToTenScale,
+      otherFinancialYear1Rating: OneToTenScale,
+      otherEnvironmentYear1Rating: OneToTenScale,
+      otherSpiritualityYear1Rating: OneToTenScale,
+      otherCareerYear2Rating: OneToTenScale,
+      otherAimsAndHobbiesYear2Rating: OneToTenScale,
+      otherHealthAndWellnessYear2Rating: OneToTenScale,
+      otherRelationshipYear2Rating: OneToTenScale,
+      otherFinancialYear2Rating: OneToTenScale,
+      otherEnvironmentYear2Rating: OneToTenScale,
+      otherSpiritualityYear2Rating: OneToTenScale,
+      otherCareerYear3Rating: OneToTenScale,
+      otherAimsAndHobbiesYear3Rating: OneToTenScale,
+      otherHealthAndWellnessYear3Rating: OneToTenScale,
+      otherRelationshipYear3Rating: OneToTenScale,
+      otherFinancialYear3Rating: OneToTenScale,
+      otherEnvironmentYear3Rating: OneToTenScale,
+      otherSpiritualityYear3Rating: OneToTenScale,
+      otherCareerYear4Rating: OneToTenScale,
+      otherAimsAndHobbiesYear4Rating: OneToTenScale,
+      otherHealthAndWellnessYear4Rating: OneToTenScale,
+      otherRelationshipYear4Rating: OneToTenScale,
+      otherFinancialYear4Rating: OneToTenScale,
+      otherEnvironmentYear4Rating: OneToTenScale,
+      otherSpiritualityYear4Rating: OneToTenScale,
+      otherCareerYear5Rating: OneToTenScale,
+      otherAimsAndHobbiesYear5Rating: OneToTenScale,
+      otherHealthAndWellnessYear5Rating: OneToTenScale,
+      otherRelationshipYear5Rating: OneToTenScale,
+      otherFinancialYear5Rating: OneToTenScale,
+      otherEnvironmentYear5Rating: OneToTenScale,
+      otherSpiritualityYear5Rating: OneToTenScale,
+      otherCareerOverallRating: OverallScore,
+      otherAimsAndHobbiesOverallRating: OverallScore,
+      otherHealthAndWellnessOverallRating: OverallScore,
+      otherRelationshipOverallRating: OverallScore,
+      otherFinancialOverallRating: OverallScore,
+      otherEnvironmentOverallRating: OverallScore,
+      otherSpiritualityOverallRating: OverallScore
     }),
     options: {
       label:
         'Have one other person(per Area) - be it a family member or friend, and preferably one of your CEO of Me Board Members - give you a Score for the past 5 years(on a 1-10 scale), to arrive at an overall 5 year score for each of the 7 assessment areas. Would you like to engage someone to help you do this?',
       fields: {
-        otherCareerYear1: {
+        otherCareerYear1Rating: {
           label: 'Career(Year 1)'
         },
-        otherAimsAndHobbiesYear1: {
+        otherAimsAndHobbiesYear1Rating: {
           label: 'Aims and Hobbies(Year 1)'
         },
-        otherHealthAndWellnessYear1: {
+        otherHealthAndWellnessYear1Rating: {
           label: 'Health and Wellness(Year 1)'
         },
-        otherRelationshipYear1: {
+        otherRelationshipYear1Rating: {
           label: 'Relationships(Year 1)'
         },
-        otherFinancialYear1: {
+        otherFinancialYear1Rating: {
           label: 'Financial(Year 1)'
         },
-        otherEnvironmentYear1: {
+        otherEnvironmentYear1Rating: {
           label: 'Environment(Year 1)'
         },
-        otherSpiritualityYear1: {
+        otherSpiritualityYear1Rating: {
           label: 'Spirituality(Year 1)'
         },
-        otherCareerYear2: {
+        otherCareerYear2Rating: {
           label: 'Career(Year 2)'
         },
-        otherAimsAndHobbiesYear2: {
+        otherAimsAndHobbiesYear2Rating: {
           label: 'Aims and Hobbies(Year 2)'
         },
-        otherHealthAndWellnessYear2: {
+        otherHealthAndWellnessYear2Rating: {
           label: 'Health and Wellness(Year 2)'
         },
-        otherRelationshipYear2: {
+        otherRelationshipYear2Rating: {
           label: 'Relationships(Year 2)'
         },
-        otherFinancialYear2: {
+        otherFinancialYear2Rating: {
           label: 'Financial(Year 2)'
         },
-        otherEnvironmentYear2: {
+        otherEnvironmentYear2Rating: {
           label: 'Environment(Year 2)'
         },
-        otherSpiritualityYear2: {
+        otherSpiritualityYear2Rating: {
           label: 'Spirituality(Year 2)'
         },
-        otherCareerYear3: {
+        otherCareerYear3Rating: {
           label: 'Career(Year 3)'
         },
-        otherAimsAndHobbiesYear3: {
+        otherAimsAndHobbiesYear3Rating: {
           label: 'Aims and Hobbies(Year 3)'
         },
-        otherHealthAndWellnessYear3: {
+        otherHealthAndWellnessYear3Rating: {
           label: 'Health and Wellness(Year 3)'
         },
-        otherRelationshipYear3: {
+        otherRelationshipYear3Rating: {
           label: 'Relationships(Year 3)'
         },
-        otherFinancialYear3: {
+        otherFinancialYear3Rating: {
           label: 'Financial(Year 3)'
         },
-        otherEnvironmentYear3: {
+        otherEnvironmentYear3Rating: {
           label: 'Environment(Year 3)'
         },
-        otherSpiritualityYear3: {
+        otherSpiritualityYear3Rating: {
           label: 'Spirituality(Year 3)'
         },
-        otherCareerYear4: {
+        otherCareerYear4Rating: {
           label: 'Career(Year 4)'
         },
-        otherAimsAndHobbiesYear4: {
+        otherAimsAndHobbiesYear4Rating: {
           label: 'Aims and Hobbies(Year 4)'
         },
-        otherHealthAndWellnessYear4: {
+        otherHealthAndWellnessYear4Rating: {
           label: 'Health and Wellness(Year 4)'
         },
-        otherRelationshipYear4: {
+        otherRelationshipYear4Rating: {
           label: 'Relationships(Year 4)'
         },
-        otherFinancialYear4: {
+        otherFinancialYear4Rating: {
           label: 'Financial(Year 4)'
         },
-        otherEnvironmentYear4: {
+        otherEnvironmentYear4Rating: {
           label: 'Environment(Year 4)'
         },
-        otherSpiritualityYear4: {
+        otherSpiritualityYear4Rating: {
           label: 'Spirituality(Year 4)'
         },
-        otherCareerYear5: {
+        otherCareerYear5Rating: {
           label: 'Career(Year 5)'
         },
-        otherAimsAndHobbiesYear5: {
+        otherAimsAndHobbiesYear5Rating: {
           label: 'Aims and Hobbies(Year 5)'
         },
-        otherHealthAndWellnessYear5: {
+        otherHealthAndWellnessYear5Rating: {
           label: 'Health and Wellness(Year 5)'
         },
-        otherRelationshipYear5: {
+        otherRelationshipYear5Rating: {
           label: 'Relationships(Year 5)'
         },
-        otherFinancialYear5: {
+        otherFinancialYear5Rating: {
           label: 'Financial(Year 5)'
         },
-        otherEnvironmentYear5: {
+        otherEnvironmentYear5Rating: {
           label: 'Environment(Year 5)'
         },
-        otherSpiritualityYear5: {
+        otherSpiritualityYear5Rating: {
           label: 'Spirituality(Year 5)'
         },
-        otherCareerOverall: {
+        otherCareerOverallRating: {
           label: 'Career Overall'
         },
-        otherAimsAndHobbiesOverall: {
+        otherAimsAndHobbiesOverallRating: {
           label: 'Aims And Hobbies Overall'
         },
-        otherHealthAndWellnessOverall: {
+        otherHealthAndWellnessOverallRating: {
           label: 'Health And Wellness Overall'
         },
-        otherRelationshipOverall: {
+        otherRelationshipOverallRating: {
           label: 'Relationships Overall'
         },
-        otherFinancialOverall: {
+        otherFinancialOverallRating: {
           label: 'Fiancial Overall'
         },
-        otherEnvironmentOverall: {
+        otherEnvironmentOverallRating: {
           label: 'Environment Overall'
         },
-        otherSpiritualityOverall: {
+        otherSpiritualityOverallRating: {
           label: 'Spirituality Overall'
         }
       }

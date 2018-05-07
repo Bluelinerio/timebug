@@ -58,7 +58,7 @@ export default {
   },
   2: {
     type: t.struct({
-      commitment: t.Boolean
+      commitmentToGardenOwnership: t.Boolean
     }),
     options: {
       label:

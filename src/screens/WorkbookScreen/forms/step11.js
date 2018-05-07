@@ -90,7 +90,7 @@ export default {
   },
   3: {
     type: t.struct({
-      emotions: t.list(Emotion)
+      emotionsPast5Years: t.list(Emotion)
     }),
     options: {
       label: 'What main emotions have you felt over the past 5 years?'
