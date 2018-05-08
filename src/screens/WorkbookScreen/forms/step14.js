@@ -52,12 +52,12 @@ export default {
           fields: {
             selfView: {
               label:
-                'In one or two sentences, describe your attitude towards money today',
+              "What's your general attitude towards money right now?",
               multiline: true
             },
             othersView: {
               label:
-                'Knowing how others perceive your relationship with money could be helpful. Would you like to try engage someone to find out?'
+                'Knowing how others percieve your relationship with money is helpful. Would you like to engage a trusted advisor in this discussion?'
             }
           }
         }

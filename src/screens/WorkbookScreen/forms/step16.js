@@ -33,18 +33,17 @@ export default {
           fields: {
             priority: {
               label:
-                'How much of a priority was your health over the past 5 years?'
+                'How much have you made health a priority over the past 5 years?'
               //error:'Please select a value'
             },
             feelNow: {
-              label:
-                'How do you feel now, physical health-wise?(Using a 10pt scale with 1=not very good to 10-excellent',
-              error: 'Please select a value'
+              label: 'How do you feel physically now?',
+              help: '1= Not very well to 10= Very well'    
             },
             healthyPerson: {
-              label:
-                'Do you think you are a healthy person? (Using a 10pt scale with 1=not very healthy to 10=extremely healthy).',
-              error: 'Please select a value'
+             label: 'Do you think you are a healthy person?',
+              help: '1= Not very healthy to 10= Extremely healthy'
+    
             }
           }
         }
@@ -73,7 +72,7 @@ export default {
     options: {
       fields: {
         fitnessBehaviorAssessment: {
-          label: 'Take time to evaluate your Fitness and Exercise behavior',
+       label: 'Now, its time to think about your fitness and exercise behaviors.',
 
           fields: {
             doYouExercise: {
@@ -126,7 +125,7 @@ export default {
     options: {
       fields: {
         nutritionDietAssessment: {
-          label: 'Take time to evaluate your nutrition & diet',
+          label: "Let's think about your Body Care regimen",
 
           fields: {
             typicalDiet: {
@@ -236,13 +235,13 @@ export default {
               error: 'Please select a value.'
             },
             healthIssues: {
-              label: 'Do you have any notable health issues?',
+              label: 'Do you have any significant health issues?',
               error: 'Please fill out the field.'
             },
             howProminent: {
-              label:
-                'How prominent are they in your life?(Using a 10pt scale with 1=very little effect to 10=a daily challenge)',
-              error: 'Please fill out the field.'
+              label:'How significant are these issues?',
+              help: 'Using a 10pt scale with 1=very little effect to 10=a daily challenge'
+    
             },
             sickDays: {
               label:
@@ -301,8 +300,7 @@ export default {
           error: 'Please fill out the field.'
         },
         stressfulSituationAwareness: {
-          label:
-            'Are you aware of how stressful situations impact your health and life? Give 3 examples.',
+          label:'How do stressful situations influence your health?',
           fields: {
             auto: 'placeholders',
             example1: {

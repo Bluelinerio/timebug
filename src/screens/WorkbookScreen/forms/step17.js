@@ -29,8 +29,7 @@ export default {
               help: '1 = Not at all patient and 10 = Very patient'
             },
             messagesInHead: {
-              label:
-                'What messages run in your head on a daily basis about yourself'
+              label:'What messages about yourself run through your head on a daily basis?'
             },
             messagesJudgeSelf: {
               label: 'What do you say to judge or shame yourself?'
@@ -56,7 +55,7 @@ export default {
     options: {
       fields: {
         peopleTrulyValued: {
-          label: 'Whom do you truly value?',
+          label: 'Who do you truly value?',
 
           fields: {
             peopleValued: {
@@ -96,12 +95,12 @@ export default {
             givingToOthers: {
               label:
                 'How comfortable do you feel giving to others in your daily life?',
-              help: '1=not at all comfortable and 10=very much comfortable'
+              help: '1= not at all comfortable and 10= very much comfortable'
             },
             trustValue: {
               label:
                 'Do you trust the value of what you have to offer to others?',
-              help: '10 = Very Trusting and 1 = Not trustful at all.'
+              help: '10= Very Trusting and 1= Not trustful at all.'
             },
             comfortableReceiving: {
               label:
@@ -112,7 +111,7 @@ export default {
             worthyAndComfortable: {
               label:
                 'Do you feel worthy and comfortable with compliments or acknowledgments from others?',
-              help: '10 = Very comfortable and 1 = Not comfortable at all'
+              help: '10= Very comfortable and 1= Not comfortable at all'
             }
           }
         }
@@ -167,7 +166,7 @@ export default {
             communicationEval: {
               label:
                 'If yes, how would you evaluate the quality of the connection and communication, on the whole? ',
-              help: '1 = Poor and 10 = Very strong'
+              help: '1= Poor and 10= Very strong'
             }
           }
         }
