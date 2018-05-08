@@ -5,7 +5,7 @@ export default {
   1: {
     type: t.struct({
       id: t.maybe(t.String),
-      breath: t.String
+      deepBreathReflections: t.String
     }),
     options: {
       label:
@@ -15,7 +15,7 @@ export default {
         id: {
           hidden: true
         },
-        breath: {
+        deepBreathReflections: {
           auto: 'none',
           multiline: true
         }
@@ -76,13 +76,13 @@ export default {
   },
   4: {
     type: t.struct({
-      person: t.list(t.String)
+      peopleYouWillValueMore: t.list(t.String)
     }),
     options: {
       label:
         'Who are 3 different people you will value or value more than you do now?',
       fields: {
-        person: {
+        peopleYouWillValueMore: {
           auto: 'none',
           item: {
             auto: 'none',
@@ -97,13 +97,13 @@ export default {
   },
   5: {
     type: t.struct({
-      healAndRepair: t.String
+      healAndRepairRelationships: t.String
     }),
     options: {
       label:
         'What have you done by 2020 to heal and repair the relationships that you noted have regressed in the Day 17 Assignment?',
       fields: {
-        healAndRepair: {
+        healAndRepairRelationships: {
           auto: 'none',
           multiline: true
         }
@@ -112,8 +112,8 @@ export default {
   },
   6: {
     type: t.struct({
-      needs: t.list(t.String),
-      communicate: t.Boolean
+      needsYouWillHave: t.list(t.String),
+      willingToCommunicateNeeds: t.Boolean
     }),
     options: {
       label:
@@ -121,13 +121,13 @@ export default {
       maxLines: 3,
       auto: 'labels',
       fields: {
-        needs: {
+        needsYouWillHave: {
           auto: 'none',
           item: {
             auto: 'none'
           }
         },
-        communicate: {
+        willingToCommunicateNeeds: {
           label:
             'Are you willing to communicate these needs to another person in the spirit of mutual giving?'
         }

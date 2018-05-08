@@ -85,7 +85,7 @@ export default {
   },
   3: {
     type: t.struct({
-      closeFriend: t.struct({
+      objectiveEvaluator: t.struct({
         friendsName: t.String,
         strengths: t.list(Strengths),
         weaknesses: t.list(Weaknesses)
@@ -95,20 +95,24 @@ export default {
       label:
         'What does a close friend or family member, an objective one, think of your strengths & weaknesses?',
       fields: {
-        friendsName: {
-          label: 'Friend/family member',
-          error:
-            'The best person to help you with this exercise is someone who you trust to me completely honest without being judgemental.'
-        },
-        strengths: {
-          label: 'Strengths',
-          error: 'Please select a character strength.'
-        },
-        weaknesses: {
-          label: 'Weaknesses',
-          error: 'Please select a character weakness.',
-          config: {
-            minLines: 3
+        objectiveEvaluator: {
+          fields: {
+            friendsName: {
+              label: 'Name',
+              error:
+                'The best person to help you with this exercise is someone who you trust to me completely honest without being judgemental.'
+            },
+            strengths: {
+              label: 'Strengths',
+              error: 'Please select a character strength.'
+            },
+            weaknesses: {
+              label: 'Weaknesses',
+              error: 'Please select a character weakness.',
+              config: {
+                minLines: 3
+              }
+            }
           }
         }
       }

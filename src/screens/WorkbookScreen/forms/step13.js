@@ -68,7 +68,7 @@ export default {
   },
   2: {
     type: t.struct({
-      meaningfulAchievements: t.list(
+      careerMeaningfulAchievements: t.list(
         t.struct({
           meaningfulAchievement: t.String,
           whatChanged: t.String

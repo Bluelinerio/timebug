@@ -15,17 +15,15 @@ export default {
   1: {
     type: t.struct({
       id: t.maybe(t.String),
-      emotion: t.list(Emotion)
+      financialEmotions: t.list(Emotion)
     }),
     options: {
-      label: 'Financial Assessment',
+      label: 'What emotions pop up when you think about your relationship with money?',
       fields: {
         id: {
           hidden: true
         },
-        emotion: {
-          label:
-            'What emotions pop up when you think about your relationship with money? ',
+        financialEmotions: {
           item: {
             auto: 'none'
           }

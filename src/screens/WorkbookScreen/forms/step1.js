@@ -5,7 +5,7 @@ export default {
   1: {
     type: t.struct({
       id: t.maybe(t.String),
-      memories: t.list(
+      rockingChairMemories: t.list(
         t.struct({
           memory: t.String,
           areaOfLife: AreaOfLife,
@@ -48,7 +48,7 @@ export default {
   },
   2: {
     type: t.struct({
-      regrets: t.list(
+      rockingChairRegrets: t.list(
         t.struct({
           regret: t.String,
           areaOfLife: t.maybe(AreaOfLife),
@@ -87,7 +87,7 @@ export default {
   },
   3: {
     type: t.struct({
-      definingMoments: t.list(t.String)
+      rockingChairDefiningMoments: t.list(t.String)
     }),
     options: {
       label:
@@ -114,6 +114,7 @@ export default {
         'What is your primary emotion as you reflect back on your life as a 90-year-old?',
       fields: {
         rockingChairReflection: {
+          auto:'none',
           showLabel: false,
           multiline: true
           //help: "Be completely honest with yourself. This is an exercise to help us determine what we want to keep doing well, and what we need to imrprove on as we walk down the path to 2020.",

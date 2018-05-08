@@ -50,7 +50,7 @@ export default {
   },
   2: {
     type: t.struct({
-      currentMentors: t.list(
+      currentSpiritualMentors: t.list(
         t.struct({
           name: t.String,
           why: t.String
@@ -116,11 +116,11 @@ export default {
     options: {
       label: 'Spirituality Assessment',
       fields: {
-        internalQualities: {
+        internalQualitiesInfuelcedBySpirituality: {
           label:
             'What internal qualities(Iqs: Goal Type 4) have been influenced - positively or negatively - by Spiritual practices - or lack thereof?'
         },
-        insights: {
+        spiritualInsights: {
           label:
             'What insights did you pick up from your spirituality over the past 5 years?',
           fields: {
@@ -130,7 +130,7 @@ export default {
             beyondOuterForm: {
               label: 'Beyond My Outer Form, What Am I?'
             },
-            karma: {
+            karmaHasShownMe: {
               label: 'My Karma Has Shown Me...'
             },
             healedEmotionalWoundsFrom: {

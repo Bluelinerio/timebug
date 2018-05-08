@@ -48,14 +48,14 @@ export default {
   },
   2: {
     type: t.struct({
-      patterns: t.String
+      goalOutcomePatterns: t.String
     }),
     options: {
       label:
         'Have you noticed any patterns? Have any guesses as to the reasons underlying such patterns?',
-
       fields: {
-        patterns: {
+        goalOutcomePatterns: {
+          auto:'none',
           multiline: true
         }
       }
