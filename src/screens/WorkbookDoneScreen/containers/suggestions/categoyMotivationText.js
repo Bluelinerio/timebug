@@ -32,25 +32,25 @@ const categoyMotivationText = {
     [HOME_SCREEN]: ({ suggestedNextStep }) =>
       `It looks like you're finding this app using for setting and tracking your goals. This is central to success in the 20/20 Life Vision Challenge. We suggest you continue the good work with step ${suggestedNextStep}.`,
     [DONE_SCREEN]: ({ suggestedNextStep }) =>
-      `This last exercise centered around goal setting and tracking. This is central to success in the 20/20 Life Vision Challenge. We suggest you continue the good work with step ${suggestedNextStep}.`
+      `Based on your activity so far, it looks like you are finding this app useful for goal setting and tracking. This is central to success in the 20/20 Life Vision Challenge. We suggest you continue the good work with step ${suggestedNextStep}.`
   },
   [CAREER]: {
     [HOME_SCREEN]: ({ suggestedNextStep }) =>
       `At timebug, we believe working towards a completely fulfilling career, as opposed to 'just a job', is essential for well-being. Based on your activity, it looks like you have a particular interest in this area. Why not continue your great work in step ${suggestedNextStep}.`,
     [DONE_SCREEN]: ({ suggestedNextStep }) =>
-      `This last exercise centered around career, one of the 7 Pillars of Life. At timebug, we believe working towards a completely fulfilling career, as opposed to 'just a job', is essential for well-being. Based on your activity, it looks like you have a particular interest in this area. Why not continue your great work in step ${suggestedNextStep}..`
+      `At timebug, we believe working towards a completely fulfilling career, as opposed to 'just a job', is essential for well-being. Based on your activity, it looks like you have a particular interest in this area. Why not continue your great work in step ${suggestedNextStep}.`
   },
   [HOBBIES]: {
     [HOME_SCREEN]: ({ suggestedNextStep }) =>
       `Work/Life balance an essential part of the Timebug philosophy - don't forget to make space for your personal aims and hobbies. With this in mind, we suggest you continue with step ${suggestedNextStep}.`,
     [DONE_SCREEN]: ({ suggestedNextStep }) =>
-      `This last exercise centered around aims and hobbies, one of the 7 Pillars of Life. Work/Life balance an essential part of the Timebug philosophy - don't forget to make space for your personal aims and hobbies! With this in mind, we suggest you continue with step ${suggestedNextStep}.`
+      `Based on your ativity so far, it seems like you have a particular interest in personal aims and hobbies. That's great, because work/life balance is a central piece of the Timebug philosophy. With this in mind, we suggest you continue with step ${suggestedNextStep}.`
   },
   [HEALTH]: {
     [HOME_SCREEN]: ({ suggestedNextStep }) =>
-      `Work/Life balance an essential part of the Timebug philosophy - don't forget to make space for your personal aims and hobbies. With this in mind, we suggest you continue with step ${suggestedNextStep}.`,
-    [DONE_SCREEN]: ({ suggestedNextStep }) =>
-      `This last exercise centered around aims and hobbies, one of the 7 Pillars of Life. Work/Life balance an essential part of the Timebug philosophy - don't forget to make space for your personal aims and hobbies! With this in mind, we suggest you continue with step ${suggestedNextStep}.`
+      `Based on your use of this app so far, it looks like Health and Wellness is an area of particular interest for you. This is great, and at Timebug, health is a holisitc concept, taking into account the physical, psychological and spiritual. With this in mind, we suggest you continue with step ${suggestedNextStep}.`,
+    [DONE_SCREEN]: ({ suggestedNextStep,previousStep }) =>
+      `Nice job, you've completed ${previousStep}. Based on your use of this app so far, it looks like Health and Wellness is an area of particular interest for you. This is great, and at Timebug, health is a holisitc concept, taking into account the physical, psychological and spiritual. With this in mind, we suggest you continue with step ${suggestedNextStep}.`
   },
   [RELATIONSHIPS]: {
     [HOME_SCREEN]: ({ suggestedNextStep }) =>
@@ -62,7 +62,7 @@ const categoyMotivationText = {
     [HOME_SCREEN]: ({ suggestedNextStep }) =>
       `A healthy environment in which you feel well situated is essential to unveiling your higher purpose. Continue the great work in this area with step ${suggestedNextStep}.`,
     [DONE_SCREEN]: ({ suggestedNextStep }) =>
-      `This last exercise was based on Environment, one of the 7 Pillars of Life. A healthy environment in which you feel well situated is essential to unveiling your higher purpose. Continue the great work in this area with step ${suggestedNextStep}.`
+      `Based on your activity so far, it seems like you have a particular interest in your environment. A healthy environment in which you feel well situated is essential to unveiling your higher purpose. Continue the great work in this area with step ${suggestedNextStep}.`
   },
   [SPIRITUALITY]: {
     [HOME_SCREEN]: ({ suggestedNextStep }) =>
