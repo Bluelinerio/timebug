@@ -207,7 +207,7 @@ export default {
       selfSpiritualityOverallRating: OverallScore
     }),
     options: {
-      label:'What is your final evaluation for each of the past 5 Years? Give yourself a  5-Year Score (1-10 score per year, for a total maximum high score of 50/50, across each Pillar of Life).',
+      label:'What is your final evaluation for each of the past 5 Years? Give yourself a 5-Year Score (1-10 score per year, for a total maximum high score of 50/50, across each Pillar of Life).',
             fields: {
         selfCareerYear1Rating: {
           label: 'Career(Year 1)'

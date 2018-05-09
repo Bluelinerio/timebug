@@ -101,7 +101,7 @@ export default {
                 label: 'Aim/Hobby'
               },
               why: {
-                label: 'What stopped you from initiating or continuing this hobby'
+                label: 'What stopped you from initiating or continuing this hobby?'
                 //error:'Why did you have trouble finding time for this hobby?'
               }
             }

@@ -57,7 +57,7 @@ export default {
             },
             othersView: {
               label:
-                'Knowing how others percieve your relationship with money is helpful. Would you like to engage a trusted advisor in this discussion?'
+                'Knowing how others perceive your relationship with money is helpful. Would you like to engage a trusted advisor in this discussion?'
             }
           }
         }

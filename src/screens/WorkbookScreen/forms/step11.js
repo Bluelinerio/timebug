@@ -24,7 +24,7 @@ export default {
       )
     }),
     options: {
-      label: 'What were you top 3 or 4 goals over the past 5 years?',
+      label: 'What were your top 3 or 4 goals over the past 5 years?',
 
       fields: {
         id: {

@@ -100,7 +100,7 @@ export default {
             trustValue: {
               label:
                 'Do you trust the value of what you have to offer to others?',
-              help: '10= Very Trusting and 1= Not trustful at all.'
+              help: '10= Very trusting and 1= Not trustful at all.'
             },
             comfortableReceiving: {
               label:

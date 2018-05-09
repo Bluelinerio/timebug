@@ -21,7 +21,7 @@ export default {
           fields: {
             changes: {
               label:
-                'Name some changes that took place in your place and environment over the past 5 years? Did you move?'
+                'Name some changes that took place in your environment over the past 5 years. Did you move?'
             },
             liveWith: {
               label:

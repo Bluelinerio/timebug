@@ -125,7 +125,7 @@ export default {
     options: {
       fields: {
         nutritionDietAssessment: {
-          label: "Let's think about your Body Care regimen",
+          label: "Let's think about your nutrition & diet.",
 
           fields: {
             typicalDiet: {
@@ -174,7 +174,7 @@ export default {
     options: {
       fields: {
         sleepPatternEvaluation: {
-          label: 'Take time to evaluate your Sleep pattern.',
+          label: 'Take time to evaluate your sleep pattern.',
 
           fields: {
             hoursSleep: {
@@ -222,7 +222,7 @@ export default {
     options: {
       fields: {
         bodyCareAssessment: {
-          label: 'Take time to evaluate your Body Care',
+          label: 'Take time to evaluate your body care',
 
           fields: {
             takeCare: {
@@ -276,7 +276,7 @@ export default {
       fields: {
         stressRange: {
           label:
-            'What is the range of your stress levels throughout a typical week?(Using a 10pt scale, Choose a number for the low-end and another for the high-end, with 1=total tranquility and 10=major nervous breakdown)',
+            'What is the range of your stress levels throughout a typical week?(Using a 10pt scale, choose a number for the low-end and another for the high-end, with 1=total tranquility and 10=major nervous breakdown)',
           fields: {
             lowEnd: {
               label: 'Low-End',
