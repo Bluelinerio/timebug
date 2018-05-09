@@ -564,7 +564,7 @@ export const ActivityFeelings = t.enums.of(
 )
 
 export const PercentSelector = t.enums.of(
-  ['10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', '100'],
+  ['10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', '100%'],
   'PercentSelector'
 )
 
