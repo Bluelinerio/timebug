@@ -31,8 +31,8 @@ android/gradle.properties
 /ReactAndroid/build/
 
 # Buck
-.buckd
-buck-out
+\.buckd/
+buck-out/
 /ReactAndroid/src/main/jni/prebuilt/lib/armeabi-v7a/
 /ReactAndroid/src/main/jni/prebuilt/lib/x86/
 /ReactAndroid/src/main/gen
@@ -47,8 +47,10 @@ android/app/build/
 android/build/generated/
 android/build/intermediates/
 
-# Node
-node_modules
+# node.js
+node_modules/
+npm-debug.log
+yarn-error.log
 *.log
 .nvm
 /danger/node_modules/
@@ -66,10 +68,11 @@ ios/build
 ios/New Group/
 ios/Pods
 
-# react-native bundle
+# react-native bundle artifacts
 android/app/src/main/assets/index.android.bundle
 android/app/src/main/assets/index.android.bundle.meta
 ios/main.jsbundle
+*.jsbundle
 
 # Android assets
 android/app/src/main/res/raw/*
@@ -88,3 +91,14 @@ android/app/keys.properties
 
 # Config
 config.json
+
+# fastlane
+#
+# It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
+# screenshots whenever they are needed.
+# For more information about the recommended setup visit:
+# https://docs.fastlane.tools/best-practices/source-control/
+
+*/fastlane/report.xml
+*/fastlane/Preview.html
+*/fastlane/screenshots
