@@ -4,18 +4,31 @@
 iOS >= 8, Android >= 4.4
 
 ## How to run:
-* `git clone`
-* `yarn`
-
 ### iOS 
-
+* `yarn`
 * open `ios/2020.xcodeproj` in XCode and press START button, or run `yarn run:ios`, only do this after setting up config.json as DEVELOP
 * Run commodity command `yarn run:ios`, this will copy the env and run ios directly
 
 ### Android 
-
+* `yarn`
 * run `react-native run-android`, only do this after setting up config.json
 * run `yarn run:android` as this will set up config.json and run android machine
+
+### Versioning:
+
+## Native Versioning:
+- `npm version X.X.X` (using [react-native-version](https://www.npmjs.com/package/react-native-version))
+
+## JS Version and Codepush
+- code-push is used to identify JS version rolled out version of js. 
+- Pushing a new version `yarn codepush:production` or `yarn codepush:production`
+- Codepush JS versions are distributed to apps with matching native version. If the current native version is 1.5.0, pushing a code push will only distribute to apps with that native version. Apps with different native version will not be affected.
+- In order to hotfix or other wise modify js code of previous native version: 
+    1. go back to that tag/SHA, 
+    2. create a branch like `v1.4.0-hotfix-1` 
+    3. Make changes and push to repo
+    4. Push to production.
+
 
 ## Store Submission
 ## Issues
