@@ -16,7 +16,7 @@ export default {
       )
     }),
     options: {
-      label: 'Aims & Hobbies Assessment',
+      label: 'What are some of the activities and hobbies that you typically engage in each month?',
       fields: {
         id: {
           hidden: true
@@ -29,7 +29,7 @@ export default {
                 label: 'Aim/Hobby'
               },
               timeSpentMonth: {
-                label: 'How much time does this hobby take up a month?'
+                label: 'How much time do you spend engaging in this activity per month?'
               },
               timeChanged: {
                 label:
@@ -91,9 +91,7 @@ export default {
       )
     }),
     options: {
-      label:
-        "Were there any aims & hobbies that you weren't able to accomplish that you really wanted to over the past 5 years?",
-
+      label:"Were there any aims and hobbies that you weren't able to accomplish that you really wanted to over the past 5 years?",
       fields: {
         notAccomplishedAimsAndHobbies: {
           item: {
@@ -103,8 +101,7 @@ export default {
                 label: 'Aim/Hobby'
               },
               why: {
-                label:
-                  'What stopped you from initiating or continuing these hobbies?'
+                label: 'What stopped you from initiating or continuing this hobby?'
                 //error:'Why did you have trouble finding time for this hobby?'
               }
             }
