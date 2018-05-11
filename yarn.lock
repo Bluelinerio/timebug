@@ -497,24 +497,24 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
-"@sentry/cli@^1.28.4":
-  version "1.30.0"
-  resolved "https://registry.yarnpkg.com/@sentry/cli/-/cli-1.30.0.tgz#bd2eb7d84ef87f1d58e4a6fb2c4889fd2ae4b6c9"
+"@sentry/cli@^1.30.1":
+  version "1.31.0"
+  resolved "https://registry.yarnpkg.com/@sentry/cli/-/cli-1.31.0.tgz#fb4d956fbb0bd9d65cf4c557533d03e93c8772ce"
   dependencies:
     https-proxy-agent "^2.1.1"
     node-fetch "^1.7.3"
     progress "2.0.0"
     proxy-from-env "^1.0.0"
 
-"@sentry/wizard@^0.8.1":
-  version "0.8.3"
-  resolved "https://registry.yarnpkg.com/@sentry/wizard/-/wizard-0.8.3.tgz#746ca37b432289e4a12ffcc1be32308c866d0051"
+"@sentry/wizard@^0.9.5":
+  version "0.9.7"
+  resolved "https://registry.yarnpkg.com/@sentry/wizard/-/wizard-0.9.7.tgz#81ea7d08476addfe456950858a74196a85b9e1de"
   dependencies:
-    "@sentry/cli" "^1.28.4"
-    chalk "^2.3.0"
+    "@sentry/cli" "^1.30.1"
+    chalk "^2.3.1"
     glob "^7.1.2"
-    inquirer "^5.0.1"
-    lodash "^4.17.4"
+    inquirer "^5.1.0"
+    lodash "^4.17.5"
     open "^0.0.5"
     r2 "^2.0.0"
     read-env "^1.1.1"
@@ -1870,13 +1870,13 @@ chalk@^2.1.0:
     escape-string-regexp "^1.0.5"
     supports-color "^5.3.0"
 
-chalk@^2.3.0:
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/chalk/-/chalk-2.3.1.tgz#523fe2678aec7b04e8041909292fe8b17059b796"
+chalk@^2.3.1:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/chalk/-/chalk-2.4.1.tgz#18c49ab16a037b6eb0152cc83e3471338215b66e"
   dependencies:
-    ansi-styles "^3.2.0"
+    ansi-styles "^3.2.1"
     escape-string-regexp "^1.0.5"
-    supports-color "^5.2.0"
+    supports-color "^5.3.0"
 
 change-emitter@^0.1.2:
   version "0.1.6"
@@ -3370,9 +3370,9 @@ inquirer@^3.0.6:
     strip-ansi "^4.0.0"
     through "^2.3.6"
 
-inquirer@^5.0.1:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-5.1.0.tgz#19da508931892328abbbdd4c477f1efc65abfd67"
+inquirer@^5.1.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-5.2.0.tgz#db350c2b73daca77ff1243962e9f22f099685726"
   dependencies:
     ansi-escapes "^3.0.0"
     chalk "^2.0.0"
@@ -5022,9 +5022,9 @@ range-parser@~1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.0.tgz#f49be6b487894ddc40dcc94a322f611092e00d5e"
 
-raven-js@^3.22.1:
-  version "3.22.3"
-  resolved "https://registry.yarnpkg.com/raven-js/-/raven-js-3.22.3.tgz#8330dcc102b699ffbc2f48790978b997bf4d8f75"
+raven-js@^3.24.2:
+  version "3.25.0"
+  resolved "https://registry.yarnpkg.com/raven-js/-/raven-js-3.25.0.tgz#4ee92410b61665d730f34a54a0893fbb3769f5cb"
 
 raw-body@^2.2.0:
   version "2.3.2"
@@ -5200,12 +5200,12 @@ react-native-select-input-ios@^1.1.4:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/react-native-select-input-ios/-/react-native-select-input-ios-1.1.4.tgz#2c0389f3ef039e45910f90aceaa4d281946a8909"
 
-react-native-sentry@^0.34.0:
-  version "0.34.0"
-  resolved "https://registry.yarnpkg.com/react-native-sentry/-/react-native-sentry-0.34.0.tgz#de015b8123d35d93644efe68bb91fb93a055b801"
+react-native-sentry@0.36.0:
+  version "0.36.0"
+  resolved "https://registry.yarnpkg.com/react-native-sentry/-/react-native-sentry-0.36.0.tgz#1c66d72af56aa801daaa5569c09fc7d04bea6544"
   dependencies:
-    "@sentry/wizard" "^0.8.1"
-    raven-js "^3.22.1"
+    "@sentry/wizard" "^0.9.5"
+    raven-js "^3.24.2"
 
 react-native-slider@^0.11.0:
   version "0.11.0"
@@ -6166,12 +6166,6 @@ supports-color@^4.0.0:
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-4.5.0.tgz#be7a0de484dec5c5cddf8b3d59125044912f635b"
   dependencies:
     has-flag "^2.0.0"
-
-supports-color@^5.2.0:
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-5.2.0.tgz#b0d5333b1184dd3666cbe5aa0b45c5ac7ac17a4a"
-  dependencies:
-    has-flag "^3.0.0"
 
 supports-color@^5.3.0:
   version "5.3.0"
