@@ -26,9 +26,10 @@ const merge = ({
   const backgroundColor = step.color
 
   const { data: { suggestedStepId, texts } } = suggestNextStep(
-    completedStepIdsChronologically
+    completedStepIdsChronologically.map(val => parseInt(val)).sort((a,b) => a - b).map(val => val.toString())
   )
 
+  // Check to see if this is the last actual step, turn the start next step button to a reset button, replace nextStepMotivation with final text  
   const nextStepMotivationText = texts[Screens.DONE_SCREEN]
   const nextStep = steps[suggestedStepId]
 

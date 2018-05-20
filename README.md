@@ -40,7 +40,7 @@ Andorid: Remove android.permission.READ_PHONE_STATE which comes with facebook.
 
 ## Once server deployment changes
 * Clear cache and Data for the app (Android)
-* I believe this should work as well on ios
+* This should work as well on ios
 This is to clear the store that currently holds your key, and skips login, whereas on a new deployment your key is not registered.
 This should be set up as a new issue
 ## How to deploy (Android):
