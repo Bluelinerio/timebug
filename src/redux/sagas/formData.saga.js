@@ -81,7 +81,7 @@ function* reviewCurrentUserFormsAndFormDataCompareAndUpfateToState() {
     } else {
       log({
         info:
-          'Compelted reviewing differences between form data and user forms',
+          'Completed reviewing differences between form data and user forms',
         error
       })
     }
@@ -94,7 +94,7 @@ function* reviewCurrentUserFormsAndFormDataCompareAndUpfateToState() {
   if (!difference && !onlyOnLeft) {
     log({
       info:
-        'Compelted reviewing differences between form data and user forms. No sync is needed'
+        'Completed reviewing differences between form data and user forms. No sync is needed'
     })
     return
   }
@@ -184,7 +184,7 @@ function* syncRequests(payload) {
           ...update
         })
         log({
-          info: `Compelted synching on update between form data and user forms`,
+          info: `Completed synching on update between form data and user forms`,
           update,
           new: user.forms.find(f => f.id === update.id)
         })
@@ -232,17 +232,17 @@ function* syncRequests(payload) {
   )
 
   if (formDataRequestCount !== 0) {
-    const error = `Compelted synching differences between form data and user forms with formDataRequestCount: ${formDataRequestCount}`
+    const error = `Completed synching differences between form data and user forms with formDataRequestCount: ${formDataRequestCount}`
     if (__DEV__) {
       throw error
     } else {
       log({
-        info: 'Compelted synching differences between form data and user forms.'
+        info: 'Completed synching differences between form data and user forms.'
       })
     }
   } else {
     log({
-      info: 'Compelted synching differences between form data and user forms.'
+      info: 'Completed synching differences between form data and user forms.'
     })
   }
 }

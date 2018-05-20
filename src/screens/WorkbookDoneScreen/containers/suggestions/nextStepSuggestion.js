@@ -25,7 +25,9 @@ import {
  */
 
 const allSteps = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30']
+const sequentialExceptions = ['15', '30', '4', '9', '25']
 
+const biasedInputs = [PHASE1, PHASE2, PHASE3];
 
 /**
  * @param {Array}
@@ -54,11 +56,12 @@ const _biggerOrEqualTo = min => c => c >= min
 const _findAtLeastOf = (data, min) =>
   R.compose(_biggerOrEqualTo(min), _count(data))
 
-const stepIds = R.range(1, 30).map((v, i) => i.toString())
+//Modified because R.range is left inclusive and right exclusive
+const _stepIds = R.range(1, 31).map((v, i) => v.toString())
 const isStepId = stepIdOrNot => {
-  return stepIds.includes(stepIdOrNot)
+  return _stepIds.includes(stepIdOrNot)
 }
-const findIfItemHasSameNeighbor = (i, input, test) => {
+const _findIfItemHasSameNeighbor = (i, input, test) => {
   const indexInTest = R.indexOf(input[i], test) 
   if (indexInTest !== -1) {
 
@@ -101,7 +104,7 @@ const findIfItemHasSameNeighbor = (i, input, test) => {
  */
 const _test = (data, succeedIfAbovePercent) => subject => {
   const hasSameNeighbor = (item, i) =>
-    findIfItemHasSameNeighbor(i, subject, data)
+    _findIfItemHasSameNeighbor(i, subject, data)
   const countSubjectItemInData = () =>
     R.countBy(item => data.includes(item), subject)['true']
   const hasAllItems = () => R.all(item => subject.includes(item), data)
@@ -131,7 +134,7 @@ const _test = (data, succeedIfAbovePercent) => subject => {
 
 const _moddedTest = (data, minItems, minPercent = 0.00) => subject => {
   const hasSameNeighbor = (item, i) =>
-    findIfItemHasSameNeighbor(i, subject, data)
+    _findIfItemHasSameNeighbor(i, subject, data)
   const countSubjectItemInData = () => {
     const res = R.countBy(item => data.includes(item), subject)
     if (res['true'])
@@ -160,9 +163,10 @@ const _moddedTest = (data, minItems, minPercent = 0.00) => subject => {
   return percentage > minPercent ? percentage : 0.00
 }
 
-const mirrorFromIndex = (index, length, fromRight) => {
+const _mirrorFromIndex = (index, length, fromRight) => {
   let g = []
   let i = 1
+  let j = 0
   while (g.length < length - 1) {
     if (fromRight) {
       if (index + i < length) {
@@ -171,12 +175,21 @@ const mirrorFromIndex = (index, length, fromRight) => {
       if (index - i >= 0) {
         g.push(index - i)
       }
+      else {
+        g.push(length - 1 - j)
+        j++
+      }
     } else {
+      1,  9, 10
       if (index - i >= 0) {
         g.push(index - i)
       }
       if (index + i < length) {
         g.push(index + i)
+      }
+      else{
+        g.push(j)
+        j++
       }
     }
     i++
@@ -185,8 +198,9 @@ const mirrorFromIndex = (index, length, fromRight) => {
 }
 
 const _suggest = data => subject => {
-  const index = R.indexOf(R.last(subject), data)
-  const nextSuggestedIndex = mirrorFromIndex(index, data.length).find(
+  const filtered = R.filter(value => data.includes(value))(subject)
+  const index = R.indexOf(R.last(filtered), data)
+  const nextSuggestedIndex = _mirrorFromIndex(index, data.length).find(
     i => subject.includes(data[i]) === false
   )
   return data[nextSuggestedIndex]
@@ -205,7 +219,7 @@ const Categories = {
   [PHASE1]: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
   [PHASE2]: ['11', '12', '13', '14', '15', '16', '17', '18', '19', '20'],
   [PHASE3]: ['21', '22', '23', '24', '25', '26', '27', '28', '29', '30'],
-  [NEIGHBOR]: stepIds
+  [NEIGHBOR]: _stepIds
 }
 const suggestionsByCategory = {
   [REFLECTION]: _suggest(Categories[REFLECTION]),
@@ -254,23 +268,28 @@ const moddedTest = {
   [PHASE3]: _moddedTest(Categories[PHASE3], 3),
 }
 
-const checkSequential = (subject) => {
-  if (subject.length === 1 && subject[0] === '1') return ['2', NEIGHBOR];
+const _checkSequential = subject => {
+  if (subject.length === 1 && !sequentialExceptions.find(el => subject[0] === el)) return [`${parseInt(subject[0]) + 1}`, NEIGHBOR];
   else {
-    for (let i = 0; i < allSteps.length; i++) {
-      if(subject[i] !== allSteps[i]) return i > 2 ? [allSteps[i], NEIGHBOR] : false
-      else if (i >= subject.length && i > 2) return [subject.length + 1, NEIGHBOR]
-    }
-    return false;
+    const result = subject.reduce((prev, curr, i) => {
+      if(curr !== allSteps[i])
+        prev = false
+      else{
+        if(prev !== false && i < allSteps.length - 1) prev = [allSteps[i + 1], NEIGHBOR]
+      }
+      return prev;
+    }, ['2', NEIGHBOR])
+    return result;
   }
 }
-
 const suggestNextStep = steps => {
   if (!steps || steps.length === 0)
     throw new Error(`Cannot make suggestion on empty data`)
+  if(steps.length === allSteps.length) 
+    throw new Error(`Already completed everything`)
 
   console.log(`--Checking ${steps} for sequentially`)
-  const isSequential = checkSequential(steps);
+  const isSequential = _checkSequential(steps);
   if (isSequential != false)
     return isSequential
 
@@ -294,19 +313,22 @@ const suggestNextStep = steps => {
     }
     else {
       if (weights[key] > weights[winner]) {
-        return { ...prev, winner: key }
+        return { ...prev, winner: key, tie: false }
       }
       else if (weights[key] !== 0 && weights[key] === weights[winner]) {
+        if(biasedInputs.find(el => key === el) && !biasedInputs.find(el => winner === el))
+          return { ...prev, winner: key, tie: false }
         return { ...prev, tie: true }
       }
       return prev
     }
   }, { winner: NEIGHBOR, tie: false })
   const winnerKey = tie ? NEIGHBOR : winner
-  console.log(`--Found winner ${winnerKey}\n`)
+  console.log(`--Found winner ${winnerKey}`)
   const suggestedNextStep = suggestionsByCategory[winnerKey](steps)
   return [suggestedNextStep, winnerKey]
 }
+
 if (__DEV__) {
 const runOnTestAndReportFailed = fn => ({ value, expected }) => {
   try{
@@ -338,8 +360,10 @@ const tests = [
   { value: [], expected: 'error' }
 ]
 
-tests.reduce((sum, test) => {
-  const result = runOnTestAndReportFailed(suggestNextStep)(test)
-  console.log(result)
-})
+// tests.reduce((sum, test) => {
+//   const result = runOnTestAndReportFailed(suggestNextStep)(test)
+//   console.log(result)
+// })
 }
+
+export default suggestNextStep
