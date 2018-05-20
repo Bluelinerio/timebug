@@ -49,7 +49,7 @@ const WorkbookDoneScreen = ({
             insightText && 
               <Text>
                 <Text style={dashboardStyles.strong}>{`Did You Know?\n`}</Text>
-                <Text>{`${insightText}'\n\n'`}</Text>
+                <Text>{`${insightText}'\n\n`}</Text>
               </Text>
           }
           <Text style={dashboardStyles.strong}>{"What's next?\n"}</Text>
