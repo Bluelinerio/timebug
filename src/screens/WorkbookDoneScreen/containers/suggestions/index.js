@@ -123,7 +123,7 @@ export const suggestNextStep = (
     category,
     texts: applyData({
       suggestedNextStep: suggestedStepId,
-      previousStep:  R.last(R.reverse(previousSteps))
+      previousStep:  R.last(previousSteps)
     })(texts)
   })
 }
