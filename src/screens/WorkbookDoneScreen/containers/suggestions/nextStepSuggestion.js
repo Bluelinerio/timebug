@@ -7,7 +7,7 @@ const R = require('ramda')
 import {
   REFLECTION,
   TEAMWORK,
-  GOAL,
+  GOALS,
   CAREER,
   HOBBIES,
   HEALTH,
@@ -17,7 +17,8 @@ import {
   PHASE1,
   PHASE2,
   PHASE3,
-  NEIGHBOR
+  NEIGHBOR,
+  FINISHED
 } from './constants'
 
 /**
@@ -209,7 +210,7 @@ const _suggest = data => subject => {
 const Categories = {
   [REFLECTION]: ['1', '3', '8', '10', '12', '20', '21', '22', '30'],
   [TEAMWORK]: ['4', '9'],
-  [GOAL]: ['2', '5', '6', '7', '11', '20', '21'],
+  [GOALS]: ['2', '5', '6', '7', '11', '20', '21'],
   [CAREER]: ['13', '14', '23', '24'],
   [HOBBIES]: ['15', '25'],
   [HEALTH]: ['16', '26'],
@@ -224,7 +225,7 @@ const Categories = {
 const suggestionsByCategory = {
   [REFLECTION]: _suggest(Categories[REFLECTION]),
   [TEAMWORK]: _suggest(Categories[TEAMWORK]),
-  [GOAL]: _suggest(Categories[GOAL]),
+  [GOALS]: _suggest(Categories[GOALS]),
   [CAREER]: _suggest(Categories[CAREER]),
   [HOBBIES]: _suggest(Categories[HOBBIES]),
   [HEALTH]: _suggest(Categories[HEALTH]),
@@ -244,7 +245,7 @@ const testsByCategory = {
   [PHASE3]: _findAtLeastOf(Categories[PHASE3], 3),
   [REFLECTION]: _test(Categories[REFLECTION]),
   [TEAMWORK]: _test(Categories[TEAMWORK]),
-  [GOAL]: _test(Categories[GOAL]),
+  [GOALS]: _test(Categories[GOALS]),
   [CAREER]: _test(Categories[CAREER]),
   [HOBBIES]: _test(Categories[HOBBIES]),
   [HEALTH]: _test(Categories[HEALTH]),
@@ -256,7 +257,7 @@ const testsByCategory = {
 const moddedTest = {
   [REFLECTION]: _moddedTest(Categories[REFLECTION]),
   [TEAMWORK]: _moddedTest(Categories[TEAMWORK]),
-  [GOAL]: _moddedTest(Categories[GOAL]),
+  [GOALS]: _moddedTest(Categories[GOALS]),
   [CAREER]: _moddedTest(Categories[CAREER]),
   [HOBBIES]: _moddedTest(Categories[HOBBIES]),
   [HEALTH]: _moddedTest(Categories[HEALTH]),
@@ -283,10 +284,12 @@ const _checkSequential = subject => {
   }
 }
 const suggestNextStep = steps => {
+  //Most of these errors remain uncaught most of the time
   if (!steps || steps.length === 0)
     throw new Error(`Cannot make suggestion on empty data`)
+  // This is a controlled response sent once every step is completed
   if(steps.length === allSteps.length) 
-    throw new Error(`Already completed everything`)
+    return ['-1', FINISHED]
 
   console.log(`--Checking ${steps} for sequentially`)
   const isSequential = _checkSequential(steps);
@@ -348,7 +351,7 @@ const tests = [
   { value: ['1', '3', '10'], expected: ['8', REFLECTION] },
   { value: ['3', '10'], expected: ['8', REFLECTION] },
   { value: ['8', '10'], expected: ['12', REFLECTION] },
-  { value: ['2', '5'], expected: ['6', GOAL] },
+  { value: ['2', '5'], expected: ['6', GOALS] },
   { value: ['15'], expected: ['25', HOBBIES] },
   { value: ['15', '25'], expected: ['24', NEIGHBOR] },
   { value: ['1'], expected: ['2', NEIGHBOR] },

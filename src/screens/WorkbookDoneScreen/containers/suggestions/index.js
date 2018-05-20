@@ -19,7 +19,7 @@ import {
 
 import type { StepId, Category } from './types'
 import sequenceMotivationText from './sequenceMotivationText'
-import categoyMotivationText from './categoyMotivationText'
+import categoryMotivationText from './categoryMotivationText'
 import nextStepSuggestion from './nextStepSuggestion'
 import R from 'ramda'
 
@@ -35,8 +35,8 @@ if (__DEV__) {
       )}`
     )
   }
-  if (!categoyMotivationText) {
-    throw new Error('missing categoyMotivationText')
+  if (!categoryMotivationText) {
+    throw new Error('missing categoryMotivationText')
   }
   const missingKey = [
     REFLECTION,
@@ -51,10 +51,10 @@ if (__DEV__) {
     PHASE1,
     PHASE2,
     PHASE3
-  ].find(key => !Object.keys(categoyMotivationText).includes(key))
+  ].find(key => !Object.keys(categoryMotivationText).includes(key))
 
   if (missingKey) {
-    throw new Error(`categoyMotivationText: missing key ${missingKey}`)
+    throw new Error(`categoryMotivationText: missing key ${missingKey}`)
   }
 
   if (!nextStepSuggestion) {
@@ -65,13 +65,15 @@ if (__DEV__) {
 const applyData = data =>
   R.compose(R.fromPairs, R.map(a => [a[0], a[1](data)]), R.toPairs)
 
-export const getSuggstedStep = (previousSteps: [StepId]) => {
+export const getSuggestedStep = (previousSteps: [StepId]) => {
+  // Missing try catch
+  const sortedSteps = previousSteps.map(val => parseInt(val)).sort((a,b) => a - b).map(val => val.toString())
   const [suggestedStepId: StepId, category: Category] = nextStepSuggestion(
-    previousSteps
+    sortedSteps
   )
 
-  const texts = Object.keys(categoyMotivationText).includes(category)
-    ? categoyMotivationText[category]
+  const texts = Object.keys(categoryMotivationText).includes(category)
+    ? categoryMotivationText[category]
     : sequenceMotivationText[suggestedStepId]
 
   if (__DEV__) {
@@ -100,11 +102,11 @@ export type NextStepSuggestionData = {
 }
 
 export type NextStepSuggestion = {
-  name: 'NextStepSuggstion',
+  name: 'NextStepSuggestion',
   data: NextStepSuggestionData
 }
 
-const NEXT_STEP_SUGGESTION_NAME = 'NextStepSuggstion'
+const NEXT_STEP_SUGGESTION_NAME = 'NextStepSuggestion'
 
 const createNextStepSuggestion = (data: NextStepSuggestionData) => ({
   name: NEXT_STEP_SUGGESTION_NAME,
@@ -114,14 +116,14 @@ const createNextStepSuggestion = (data: NextStepSuggestionData) => ({
 export const suggestNextStep = (
   previousSteps: [StepId]
 ): NextStepSuggestion => {
-  const { suggestedStepId, category, texts } = getSuggstedStep(previousSteps)
+  const { suggestedStepId, category, texts } = getSuggestedStep(previousSteps)
   return createNextStepSuggestion({
     previousSteps,
     suggestedStepId,
     category,
     texts: applyData({
       suggestedNextStep: suggestedStepId,
-      previousStep: R.last(previousSteps)
+      previousStep:  R.last(R.reverse(previousSteps))
     })(texts)
   })
 }

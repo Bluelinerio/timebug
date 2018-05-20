@@ -14,6 +14,8 @@ export const PHASE2        = 'PHASE2'
 export const PHASE3        = 'PHASE3'
 export const NEIGHBOR      = 'NEIGHBOR'
 
+export const FINISHED = 'FINISHED'
+
 export const HOME_SCREEN   = routes.root.HomeScreen
 export const DONE_SCREEN   = routes.step.WorkbookDoneScreen
 
