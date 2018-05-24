@@ -1,6 +1,6 @@
 {
   "name": "Lifevision",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "private": true,
   "scripts": {
     "postversion": "react-native-version",
@@ -55,7 +55,7 @@
     "react-native-markdown-syntax": "^0.1.0",
     "react-native-pages": "^0.6.1",
     "react-native-select-input-ios": "^1.1.4",
-    "react-native-sentry": "^0.34.0",
+    "react-native-sentry": "0.36.0",
     "react-native-slider": "^0.11.0",
     "react-native-snap-carousel": "3.6.0",
     "react-native-sound": "0.10.5",
