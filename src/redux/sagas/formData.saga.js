@@ -33,7 +33,8 @@ const range = (start, end) =>
     .fill()
     .map((v, i) => i + start)
 
-const stepIds = range(1, 30).map((v, i) => i.toString())
+//Range function is open ended on the right side
+const stepIds = range(1, 31).map((v, i) => v.toString())
 
 const removeAllKeyButStepIds = (obj: {}) =>
   Object.keys(obj)
@@ -58,7 +59,7 @@ function* mySelectors(props) {
 }
 
 function* reviewCurrentUserFormsAndFormDataCompareAndUpfateToState() {
-  //const userId = yield select(selectors.userId)
+
   log({
     info: 'Started reviewing differences between form data and user forms'
   })
@@ -81,7 +82,7 @@ function* reviewCurrentUserFormsAndFormDataCompareAndUpfateToState() {
     } else {
       log({
         info:
-          'Compelted reviewing differences between form data and user forms',
+          'Error reviewing differences between form data and user forms',
         error
       })
     }
@@ -94,7 +95,7 @@ function* reviewCurrentUserFormsAndFormDataCompareAndUpfateToState() {
   if (!difference && !onlyOnLeft) {
     log({
       info:
-        'Compelted reviewing differences between form data and user forms. No sync is needed'
+        'Completed reviewing differences between form data and user forms. No sync is needed'
     })
     return
   }
@@ -184,7 +185,7 @@ function* syncRequests(payload) {
           ...update
         })
         log({
-          info: `Compelted synching on update between form data and user forms`,
+          info: `Completed synching on update between form data and user forms`,
           update,
           new: user.forms.find(f => f.id === update.id)
         })
@@ -232,17 +233,17 @@ function* syncRequests(payload) {
   )
 
   if (formDataRequestCount !== 0) {
-    const error = `Compelted synching differences between form data and user forms with formDataRequestCount: ${formDataRequestCount}`
+    const error = `Completed synching differences between form data and user forms with formDataRequestCount: ${formDataRequestCount}`
     if (__DEV__) {
       throw error
     } else {
       log({
-        info: 'Compelted synching differences between form data and user forms.'
+        info: 'Completed synching differences between form data and user forms.'
       })
     }
   } else {
     log({
-      info: 'Compelted synching differences between form data and user forms.'
+      info: 'Completed synching differences between form data and user forms.'
     })
   }
 }

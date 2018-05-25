@@ -22,6 +22,7 @@
     "run:android:release": "cp config.example.json config.json && node node_modules/react-native/local-cli/cli.js run-android --variant=release",
     "run:ios": "cp config.example.json config.json && node node_modules/react-native/local-cli/cli.js run-ios",
     "clean:android": "cd android && gradlew clean && cd ..",
+    "debug:android": "node node_modules/react-native/local-cli/cli.js log-android", 
     "fetch-cms-static": "babel-node scripts/contentful-fetch.js --output '../src/static/cms.json' --presets es2015,stage-2,react-native"
   },
   "dependencies": {
