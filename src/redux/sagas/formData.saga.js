@@ -6,14 +6,15 @@ import {
   put,
   putResolve,
   take,
-  select
+  select,
+  takeLatest
 } from 'redux-saga/effects'
 import { delay } from 'redux-saga'
 
-import { createForm, updateForm } from '../../services/apollo'
+import { createForm, updateForm, resetUserSteps } from '../../services/apollo'
 import type { UpdateormArgs } from '../../services/apollo/models'
 
-import { SYNC_FORM_DATA } from '../actionTypes'
+import { SYNC_FORM_DATA, RESET_FORMS_REQUEST, RESET_FORMS } from '../actionTypes'
 import { GET_USER, updateUser } from '../actions/user.actions'
 import {
   incrementFormDataQueue,
@@ -147,9 +148,22 @@ function* reviewCurrentUserFormsAndFormDataCompareAndUpfateToState() {
   })
 }
 
+function* _handleReset(){
+  const userId = yield select(selectors.userId)
+  const data = yield call(resetUserSteps, userId)
+  yield put({
+    type: RESET_FORMS
+  })
+}
+
+function* watchForResetSteps(){
+  yield takeLatest(RESET_FORMS_REQUEST, _handleReset)
+}
+
 export function* watchSyncFormData() {
   // here the assumptions is that the formData reducer will always Hydrate before the GET_USER action return, becuase we never
   const requestChan = yield actionChannel([GET_USER.SUCCEEDED, SYNC_FORM_DATA])
+  yield fork(watchForResetSteps)
   while (true) {
     yield take(requestChan)
     yield fork(reviewCurrentUserFormsAndFormDataCompareAndUpfateToState)

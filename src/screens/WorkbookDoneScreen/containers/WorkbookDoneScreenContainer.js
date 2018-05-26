@@ -11,7 +11,6 @@ import type { Props } from '../components/WorkbookDoneScreen'
 import getInsight, { dummyFormValue } from './insights'
 import { suggestNextStep, Screens } from './suggestions'
 
-
 const merge = ({
   steps,
   step,
@@ -29,7 +28,6 @@ const merge = ({
     completedStepIdsChronologically
   )
 
-  // Check to see if this is the last actual step, turn the start next step button to a reset button, replace nextStepMotivation with final text  
   const nextStepMotivationText = texts[Screens.DONE_SCREEN]
   const nextStep = steps[suggestedStepId]
 

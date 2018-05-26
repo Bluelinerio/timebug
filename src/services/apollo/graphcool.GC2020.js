@@ -63,6 +63,22 @@ export const authenticateWithFBToken = (fbToken: string): Auth =>
 		})
 		.then(parse('authenticateFB'))
 
+export const resetUserSteps = (userId) =>
+	client
+		.mutate({
+			mutation:gql`
+				mutation resetUser($userId: ID!) {
+					reset(userId: $userId) {
+						message
+					}
+				}
+			`,
+			variables: {
+				userId,
+			}
+		})
+		.then(parse('reset'))
+
 const handleErrorGettingUser = (errorResponse: ErrorResponse) => {
 	throw errorResponse
 }

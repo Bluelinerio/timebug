@@ -148,6 +148,12 @@ const _test = (data, succeedIfAbovePercent) => subject => {
   return false
 }
 
+/**
+ * Current decision making for suggestions
+ * @param {*} data 
+ * @param {*} minItems 
+ * @param {*} minPercent 
+ */
 const _moddedTest = (data, minItems, minPercent = 0.00) => subject => {
   const hasSameNeighbor = (item, i) =>
     _findIfItemHasSameNeighbor(i, subject, data)
@@ -301,7 +307,7 @@ const _checkSequential = subject => {
 const suggestNextStep = steps => {
   //Most of these errors remain uncaught most of the time
   if (!steps || steps.length === 0)
-    throw new Error(`Cannot make suggestion on empty data`)
+    return ['-1', 'PLACEHOLDER']
   // This is a controlled response sent once every step is completed
   if(steps.length === allSteps.length) 
     return ['-1', FINISHED]
@@ -370,7 +376,7 @@ if (__DEV__) {
     { value: ['10', '12', '20'], expected: ['21', REFLECTION] },
     { value: ['3', '10'], expected: ['8', REFLECTION] },
     { value: ['8', '10'], expected: ['12', REFLECTION] },
-    { value: ['2', '5'], expected: ['6', GOAL] },
+    { value: ['2', '5'], expected: ['6', GOALS] },
     { value: ['15'], expected: ['25', HOBBIES] },
     { value: ['1', '2', '3', '5', '7', '8' , '13'], expected: ['9', PHASE1] },
     { value: ['15', '25'], expected: ['24', NEIGHBOR] },
@@ -392,7 +398,7 @@ if (__DEV__) {
     { value: ['22', '30'], expected: ['1', REFLECTION] },
     { value: ['1','2','3','4','5','7',`9`,'15','17'], expected: ['8', PHASE1] },
     { value: ['1','2','3','4','5','6','7','8',`9`,'15','17'], expected: ['10', PHASE1] },
-    { value: ['1','2','3','4','5','6','7','8',`9`,'10', '15','17'], expected: ['11', GOAL] },
+    { value: ['1','2','3','4','5','6','7','8',`9`,'10', '15','17'], expected: ['11', GOALS] },
   ]
 
   tests.map((test) => {

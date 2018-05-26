@@ -3,7 +3,16 @@ import {
   DONE_SCREEN,
 } from './constants'
 
-const sequenceMotivationText = {
+/**
+ * About -1: Temporary solution, it prevents some errors, due to __DEV__ flag.
+ * at the very first step there are NO steps, so it crashes because nextStep is undefined.
+ * This solution is just meant to subside the error for the sake of completing issue 185
+ */
+const sequenceMotivationText = {  
+  '-1': {
+    [HOME_SCREEN]: () => `Placeholder`,
+    [DONE_SCREEN]: () => `Placeholder`
+  },
   '1': {
     [HOME_SCREEN]: () => `Welcome to the 20/20 Life Vision Challenge! We suggest starting with Step 1: The Rocking Chair.`,
     [DONE_SCREEN]: () => `Welcome to the 20/20 Life Vision Challenge! We suggest starting with Step 1: The Rocking Chair.`
