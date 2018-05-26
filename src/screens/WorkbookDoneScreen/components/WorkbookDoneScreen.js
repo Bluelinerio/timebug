@@ -45,8 +45,13 @@ const WorkbookDoneScreen = ({
           {title}
         </Text>
         <Text style={styles.suggestionText}>
-          <Text style={dashboardStyles.strong}>{'Did You Know?\n'}</Text>
-          {insightText + '\n\n'}
+          {
+            insightText && 
+              <Text>
+                <Text style={dashboardStyles.strong}>{`Did You Know?\n`}</Text>
+                <Text>{`${insightText}'\n\n`}</Text>
+              </Text>
+          }
           <Text style={dashboardStyles.strong}>{"What's next?\n"}</Text>
           {nextStepMotivationText}
         </Text>

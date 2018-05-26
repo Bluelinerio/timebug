@@ -12,10 +12,11 @@ import {
   SPIRITUALITY,
   PHASE1,
   PHASE2,
-  PHASE3
+  PHASE3,
+  FINISHED
 } from './constants'
 
-const categoyMotivationText = {
+const categoryMotivationText = {
   [REFLECTION]: {
     [HOME_SCREEN]: ({ suggestedNextStep }) =>
       `Based on your activity so far, it seems like this app is helping you with instrospection and self reflection. We love that! You might want to try step ${suggestedNextStep}`,
@@ -87,12 +88,18 @@ const categoyMotivationText = {
       `With the completion of ${previousStep}, you're almost done with Phase 3:Vision Creation! Keep up the great work with step ${suggestedNextStep}.`,
     [DONE_SCREEN]: ({ suggestedNextStep }) =>
       `You're almost done with Phase 1:Vision Creation! Keep up the great work with step ${suggestedNextStep}.`
+  },
+  [FINISHED]: {
+    [HOME_SCREEN]: () =>
+      `You have completed every step of this journey, congratulations!`,
+    [DONE_SCREEN]: () =>
+      `You have completed every step of this journey, congratulations!`
   }
 }
 
 if (__DEV__) {
-  if (!categoyMotivationText) {
-    throw new Error('missing categoyMotivationText')
+  if (!categoryMotivationText) {
+    throw new Error('missing categoryMotivationText')
   }
   const missingKey = [
     REFLECTION,
@@ -107,11 +114,11 @@ if (__DEV__) {
     PHASE1,
     PHASE2,
     PHASE3
-  ].find(key => !Object.keys(categoyMotivationText).includes(key))
+  ].find(key => !Object.keys(categoryMotivationText).includes(key))
 
   if (missingKey) {
     throw new Error(`missing key ${missingKey}`)
   }
 }
 
-export default categoyMotivationText
+export default categoryMotivationText
