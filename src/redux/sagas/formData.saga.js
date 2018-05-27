@@ -34,7 +34,7 @@ const range = (start, end) =>
     .fill()
     .map((v, i) => i + start)
 
-const stepIds = range(1, 30).map((v, i) => i.toString())
+const stepIds = range(1, 31).map((v, i) => v.toString())
 
 const removeAllKeyButStepIds = (obj: {}) =>
   Object.keys(obj)
@@ -92,6 +92,7 @@ function* reviewCurrentUserFormsAndFormDataCompareAndUpfateToState() {
     removeAllKeyButStepIds(formData),
     removeAllKeyButStepIds(completedFormsData)
   )
+
   if (!difference && !onlyOnLeft) {
     log({
       info:
@@ -160,17 +161,23 @@ function* watchForResetSteps(){
   yield takeLatest(RESET_FORMS_REQUEST, _handleReset)
 }
 
-export function* watchSyncFormData() {
-  // here the assumptions is that the formData reducer will always Hydrate before the GET_USER action return, becuase we never
-  const requestChan = yield actionChannel([GET_USER.SUCCEEDED, SYNC_FORM_DATA])
-  yield fork(watchForResetSteps)
-  while (true) {
-    yield take(requestChan)
-    yield fork(reviewCurrentUserFormsAndFormDataCompareAndUpfateToState)
+function* watchForUpdateOrCreate() {
+  while(true) {
     const { payload } = yield take(UPDATE_AND_CREATE_FORMS)
     if (payload && (payload.updates || payload.creates)) {
       yield fork(syncRequests, payload)
     }
+  }
+}
+
+export function* watchSyncFormData() {
+  // here the assumptions is that the formData reducer will always Hydrate before the GET_USER action return, becuase we never
+  const requestChan = yield actionChannel([GET_USER.SUCCEEDED, SYNC_FORM_DATA])
+  yield fork(watchForResetSteps)
+  yield fork(watchForUpdateOrCreate)
+  while (true) {
+    yield take(requestChan)
+    yield fork(reviewCurrentUserFormsAndFormDataCompareAndUpfateToState)
   }
 }
 
