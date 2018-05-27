@@ -40,6 +40,7 @@ const merge = ({
   navigation: { state: { params } }
 }): Props => {
   const { models, formData } = modelsAndDataForExercise(step.stepId)
+
   invariant(
     Object.keys(models).includes(formId),
     `did not find model for formId ${formId} for stepId:${step.stepId}`
@@ -77,7 +78,8 @@ const merge = ({
       value,
       type: formatType(model.type)
     })
-    nextActions.concat(submit).forEach(action => dispatch(action))
+    const actions = [submit, ...nextActions]
+    actions.map(action => dispatch(action))
   }
 
   return {
