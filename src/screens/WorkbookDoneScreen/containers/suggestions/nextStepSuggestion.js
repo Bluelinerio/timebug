@@ -1,8 +1,13 @@
-import R from 'ramda'
+const R = require('ramda')
+
+/**
+ *  Categories in which steps are classified
+ */
+
 import {
   REFLECTION,
   TEAMWORK,
-  GOALS,
+  GOAL,
   CAREER,
   HOBBIES,
   HEALTH,
@@ -12,27 +17,57 @@ import {
   PHASE1,
   PHASE2,
   PHASE3,
-  NEIGHBOR,
-  stepIds
+  NEIGHBOR
 } from './constants'
 
+/**
+ * End categories
+ */
+
+const allSteps = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30']
+
+
+/**
+ * @param {Array}
+ * Returns function, that returns the elements of the second array that are included in the first
+ * @returns {function} @param  {Array}
+ *                     @return {Array}
+ * 
+ */
 const _count = first => second => second.filter(item => first.includes(item))
-//const _biggerThan = min => test => test > min
+
+/**
+ * 
+ * @param {*} min 
+ * Self explanatory comparison functions
+ */
+const _biggerThan = min => test => test > min
+
 const _biggerOrEqualTo = min => c => c >= min
+
+
+/**
+ * 
+ * @param {*} data 
+ * @param {*} min 
+ */
 const _findAtLeastOf = (data, min) =>
   R.compose(_biggerOrEqualTo(min), _count(data))
 
+const stepIds = R.range(1, 30).map((v, i) => i.toString())
 const isStepId = stepIdOrNot => {
   return stepIds.includes(stepIdOrNot)
 }
 const findIfItemHasSameNeighbor = (i, input, test) => {
-  const indexInTest = R.indexOf(input[i], test) // that item is contained.
+  const indexInTest = R.indexOf(input[i], test) 
   if (indexInTest !== -1) {
+
     const previousInput = () => input[i - 1]
     const nextInput = () => input[i + 1]
 
     const canAddToIndex = indexInTest < test.length - 1
     const canSubtractFromIndex = indexInTest > 0
+
     if (i === input.length - 1) {
       const before = previousInput()
       return (
@@ -58,6 +93,12 @@ const findIfItemHasSameNeighbor = (i, input, test) => {
   }
   return false
 }
+
+/**
+ * Unused
+ * @param {Array} data : all elements of category, hardcoded
+ * @param {Number} succeedIfAbovePercent : nullable, weight of decision
+ */
 const _test = (data, succeedIfAbovePercent) => subject => {
   const hasSameNeighbor = (item, i) =>
     findIfItemHasSameNeighbor(i, subject, data)
@@ -73,20 +114,52 @@ const _test = (data, succeedIfAbovePercent) => subject => {
     return result
   }
   if (hasAllItems()) {
-    console.log(`Already complted all items ${subject}`)
+    console.log(`Already completed all items ${subject}`)
     return false
   }
   if (subject.find(hasSameNeighbor)) {
     console.log(`found neighbor in ${subject}`)
     return true
   }
-  const percent = succeedIfAbovePercent && 0.33
+  const percentage = succeedIfAbovePercent || 0.33
   if (countSubjectItemInData() / subject.length > percent) {
-    console.log(`the percent of item in ${data} is highers than ${percent}`)
+    console.log(`the percentage of item in ${data} is higher than ${percent}`)
     return true
   }
   return false
 }
+
+const _moddedTest = (data, minItems, minPercent = 0.00) => subject => {
+  const hasSameNeighbor = (item, i) =>
+    findIfItemHasSameNeighbor(i, subject, data)
+  const countSubjectItemInData = () => {
+    const res = R.countBy(item => data.includes(item), subject)
+    if (res['true'])
+      return res['true']
+    return 0
+  }
+  const hasAllItems = () => R.all(item => subject.includes(item), data)
+
+  const countElementsInDataThatAreInSubject = () => {
+    const res = R.countBy(item => subject.includes(item), data)
+    if (res['true'])
+      return res['true']
+    return 0
+  }
+
+  if (subject.length === 0)
+    return new Error('can not provide suggestion based on no history')
+
+  const elements = countElementsInDataThatAreInSubject()
+  if (hasAllItems()) {
+    console.log(`Already completed all items ${subject}`)
+    return 0.00
+  }
+
+  const percentage = elements / data.length
+  return percentage > minPercent ? percentage : 0.00
+}
+
 const mirrorFromIndex = (index, length, fromRight) => {
   let g = []
   let i = 1
@@ -118,52 +191,89 @@ const _suggest = data => subject => {
   )
   return data[nextSuggestedIndex]
 }
+
 const Categories = {
-  [REFLECTION]   : ['1', '3', '8', '10', '12', '20', '21', '22', '30'],
-  [TEAMWORK]     : ['4', '9'],
-  [GOALS]        : ['2', '5', '6', '7', '11', '20', '21'],
-  [CAREER]       : ['13', '14', '23', '24'],
-  [HOBBIES]      : ['15', '25'],
-  [HEALTH]       : ['16', '26'],
+  [REFLECTION]: ['1', '3', '8', '10', '12', '20', '21', '22', '30'],
+  [TEAMWORK]: ['4', '9'],
+  [GOAL]: ['2', '5', '6', '7', '11', '20', '21'],
+  [CAREER]: ['13', '14', '23', '24'],
+  [HOBBIES]: ['15', '25'],
+  [HEALTH]: ['16', '26'],
   [RELATIONSHIPS]: ['17', '27'],
-  [ENVIRONMENT]  : ['18', '28'],
-  [SPIRITUALITY] : ['19', '29'],
-  [PHASE1]       : ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
-  [PHASE2]       : ['11', '12', '13', '14', '15', '16', '17', '18', '19', '20'],
-  [PHASE3]       : ['21', '22', '23', '24', '25', '26', '27', '28', '29', '30'],
-  [NEIGHBOR]     : stepIds
+  [ENVIRONMENT]: ['18', '28'],
+  [SPIRITUALITY]: ['19', '29'],
+  [PHASE1]: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+  [PHASE2]: ['11', '12', '13', '14', '15', '16', '17', '18', '19', '20'],
+  [PHASE3]: ['21', '22', '23', '24', '25', '26', '27', '28', '29', '30'],
+  [NEIGHBOR]: stepIds
 }
 const suggestionsByCategory = {
-  [REFLECTION]   : _suggest(Categories[REFLECTION]),
-  [TEAMWORK]     : _suggest(Categories[TEAMWORK]),
-  [GOALS]        : _suggest(Categories[GOALS]),
-  [CAREER]       : _suggest(Categories[CAREER]),
-  [HOBBIES]      : _suggest(Categories[HOBBIES]),
-  [HEALTH]       : _suggest(Categories[HEALTH]),
+  [REFLECTION]: _suggest(Categories[REFLECTION]),
+  [TEAMWORK]: _suggest(Categories[TEAMWORK]),
+  [GOAL]: _suggest(Categories[GOAL]),
+  [CAREER]: _suggest(Categories[CAREER]),
+  [HOBBIES]: _suggest(Categories[HOBBIES]),
+  [HEALTH]: _suggest(Categories[HEALTH]),
   [RELATIONSHIPS]: _suggest(Categories[RELATIONSHIPS]),
-  [ENVIRONMENT]  : _suggest(Categories[ENVIRONMENT]),
-  [SPIRITUALITY] : _suggest(Categories[SPIRITUALITY]),
-  [PHASE1]       : _suggest(Categories[PHASE1]),
-  [PHASE2]       : _suggest(Categories[PHASE2]),
-  [PHASE3]       : _suggest(Categories[PHASE3]),
-  [NEIGHBOR]     : _suggest(Categories[NEIGHBOR])
-}
-const testsByCategory = {
-  [REFLECTION]   : _test(Categories[REFLECTION]),
-  [TEAMWORK]     : _test(Categories[TEAMWORK]),
-  [GOALS]        : _test(Categories[GOALS]),
-  [CAREER]       : _test(Categories[CAREER]),
-  [HOBBIES]      : _test(Categories[HOBBIES]),
-  [HEALTH]       : _test(Categories[HEALTH]),
-  [RELATIONSHIPS]: _test(Categories[RELATIONSHIPS]),
-  [ENVIRONMENT]  : _test(Categories[ENVIRONMENT]),
-  [SPIRITUALITY] : _test(Categories[SPIRITUALITY]),
-  [PHASE1]       : _findAtLeastOf(Categories[PHASE1], 3),
-  [PHASE2]       : _findAtLeastOf(Categories[PHASE2], 3),
-  [PHASE3]       : _findAtLeastOf(Categories[PHASE3], 3)
+  [ENVIRONMENT]: _suggest(Categories[ENVIRONMENT]),
+  [SPIRITUALITY]: _suggest(Categories[SPIRITUALITY]),
+  [PHASE1]: _suggest(Categories[PHASE1]),
+  [PHASE2]: _suggest(Categories[PHASE2]),
+  [PHASE3]: _suggest(Categories[PHASE3]),
+  [NEIGHBOR]: _suggest(Categories[NEIGHBOR])
 }
 
-const nextStepSuggestion = steps => {
+//Unused 
+const testsByCategory = {
+  [PHASE1]: _findAtLeastOf(Categories[PHASE1], 3),
+  [PHASE2]: _findAtLeastOf(Categories[PHASE2], 3),
+  [PHASE3]: _findAtLeastOf(Categories[PHASE3], 3),
+  [REFLECTION]: _test(Categories[REFLECTION]),
+  [TEAMWORK]: _test(Categories[TEAMWORK]),
+  [GOAL]: _test(Categories[GOAL]),
+  [CAREER]: _test(Categories[CAREER]),
+  [HOBBIES]: _test(Categories[HOBBIES]),
+  [HEALTH]: _test(Categories[HEALTH]),
+  [RELATIONSHIPS]: _test(Categories[RELATIONSHIPS]),
+  [ENVIRONMENT]: _test(Categories[ENVIRONMENT]),
+  [SPIRITUALITY]: _test(Categories[SPIRITUALITY]),
+}
+
+const moddedTest = {
+  [REFLECTION]: _moddedTest(Categories[REFLECTION]),
+  [TEAMWORK]: _moddedTest(Categories[TEAMWORK]),
+  [GOAL]: _moddedTest(Categories[GOAL]),
+  [CAREER]: _moddedTest(Categories[CAREER]),
+  [HOBBIES]: _moddedTest(Categories[HOBBIES]),
+  [HEALTH]: _moddedTest(Categories[HEALTH]),
+  [RELATIONSHIPS]: _moddedTest(Categories[RELATIONSHIPS]),
+  [ENVIRONMENT]: _moddedTest(Categories[ENVIRONMENT]),
+  [SPIRITUALITY]: _moddedTest(Categories[SPIRITUALITY]),
+  [PHASE1]: _moddedTest(Categories[PHASE1], 3),
+  [PHASE2]: _moddedTest(Categories[PHASE2], 3),
+  [PHASE3]: _moddedTest(Categories[PHASE3], 3),
+}
+
+const checkSequential = (subject) => {
+  if (subject.length === 1 && subject[0] === '1') return ['2', NEIGHBOR];
+  else {
+    for (let i = 0; i < allSteps.length; i++) {
+      if(subject[i] !== allSteps[i]) return i > 2 ? [allSteps[i], NEIGHBOR] : false
+      else if (i >= subject.length && i > 2) return [subject.length + 1, NEIGHBOR]
+    }
+    return false;
+  }
+}
+
+const suggestNextStep = steps => {
+  if (!steps || steps.length === 0)
+    throw new Error(`Cannot make suggestion on empty data`)
+
+  console.log(`--Checking ${steps} for sequentially`)
+  const isSequential = checkSequential(steps);
+  if (isSequential != false)
+    return isSequential
+
   if (!steps.find(isStepId))
     throw new Error(`expected step id got: ${steps.find(isStepId)}`)
   if (R.dropRepeats(steps).length < steps.length)
@@ -171,48 +281,65 @@ const nextStepSuggestion = steps => {
       `found duplicate steps ${R.difference(R.dropRepeats(steps), steps)}`
     )
   console.log(`--Starting suggestions for ${steps}`)
-  const winnerKey =
-    Object.keys(testsByCategory).find(key => {
-      const result = testsByCategory[key](steps)
-      if (!result) {
-        console.log(`skipping ${key}`)
+  const weights = Object.keys(moddedTest).reduce((prev, key) => {
+    const weight = moddedTest[key](steps)
+    prev[key] = weight
+    return prev
+  }, {})
+  const { winner, tie } = Object.keys(weights).reduce((prev, key) => {
+    const { winner } = prev
+    const weight = weights[key]
+    if (weight !== 0 && winner === NEIGHBOR) {
+      return { ...prev, winner: key }
+    }
+    else {
+      if (weights[key] > weights[winner]) {
+        return { ...prev, winner: key }
       }
-      return result
-    }) || NEIGHBOR
+      else if (weights[key] !== 0 && weights[key] === weights[winner]) {
+        return { ...prev, tie: true }
+      }
+      return prev
+    }
+  }, { winner: NEIGHBOR, tie: false })
+  const winnerKey = tie ? NEIGHBOR : winner
   console.log(`--Found winner ${winnerKey}\n`)
   const suggestedNextStep = suggestionsByCategory[winnerKey](steps)
   return [suggestedNextStep, winnerKey]
 }
-
-export default nextStepSuggestion
-
 if (__DEV__) {
-  //const runOneTest = fn => ({ value, expected }) => R.equals(fn(value), expected)
-  // const runOnTestAndReport = fn => ({ value, expected }) => {
-  //   const result = fn(value)
-  //   if (R.equals(result, expected)) return 'passed'
-  //   return `for value ${value} expectd ${expected} got ${result}`
-  // }
-
-  //tests.map(reunOnTestAndReport(nextStepSuggestion))
-  //runOnTestAndReportFailed(nextStepSuggestion)({ value: ['2', '5'], expected: [ '9', GOALS ]})
-  const runOnTestAndReportFailed = fn => ({ value, expected }) => {
+const runOnTestAndReportFailed = fn => ({ value, expected }) => {
+  try{
     const result = fn(value)
     if (!R.equals(result, expected))
       return `failed where value is ${value} got ${result} expectd ${expected}`
     return 'we are good!'
+  } catch(e) {
+    if(expected === 'error')
+      return `we are good! expected error, and got ${e}`
+    return `failed where value is ${value}, the following error ocurred: ${e} `    
   }
+}
 
-  const tests = [
-    { value: ['1', '3'], expected: ['8', REFLECTION] },
-    { value: ['1', '3', '10'], expected: ['8', REFLECTION] },
-    { value: ['3', '10'], expected: ['8', REFLECTION] },
-    { value: ['8', '10'], expected: ['12', REFLECTION] },
-    { value: ['2', '5'], expected: ['6', GOALS] },
-    { value: ['15'], expected: ['25', HOBBIES] },
-    { value: ['15', '25'], expected: ['25', HOBBIES] }
-  ]
-  tests.reduce((sum, test) =>
-    runOnTestAndReportFailed(nextStepSuggestion)(test)
-  )
+const tests = [
+  { value: ['1', '3'], expected: ['8', REFLECTION] },
+  { value: ['1', '3', '10'], expected: ['8', REFLECTION] },
+  { value: ['3', '10'], expected: ['8', REFLECTION] },
+  { value: ['8', '10'], expected: ['12', REFLECTION] },
+  { value: ['2', '5'], expected: ['6', GOAL] },
+  { value: ['15'], expected: ['25', HOBBIES] },
+  { value: ['15', '25'], expected: ['24', NEIGHBOR] },
+  { value: ['1'], expected: ['2', NEIGHBOR] },
+  { value: ['1', '2', '3', '4', '5', '6', '7'], expected: ['8', NEIGHBOR] },
+  { value: ['1', '2', '3', '4', '5', '6', '7', '8'], expected: ['9', NEIGHBOR] },
+  { value: ['1', '3', '4', '5', '6', '10'], expected: ['2', PHASE1] },
+  { value: ['11', '13', '14', '15', '16'], expected: ['12', PHASE2] },
+  { value: ['7', '8', '9'], expected: ['3', PHASE1] },
+  { value: [], expected: 'error' }
+]
+
+tests.reduce((sum, test) => {
+  const result = runOnTestAndReportFailed(suggestNextStep)(test)
+  console.log(result)
+})
 }
