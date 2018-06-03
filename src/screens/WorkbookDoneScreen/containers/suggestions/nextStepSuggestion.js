@@ -148,6 +148,12 @@ const _test = (data, succeedIfAbovePercent) => subject => {
   return false
 }
 
+/**
+ * Current decision making for suggestions
+ * @param {*} data 
+ * @param {*} minItems 
+ * @param {*} minPercent 
+ */
 const _moddedTest = (data, minItems, minPercent = 0.00) => subject => {
   const hasSameNeighbor = (item, i) =>
     _findIfItemHasSameNeighbor(i, subject, data)
@@ -301,7 +307,7 @@ const _checkSequential = subject => {
 const suggestNextStep = steps => {
   //Most of these errors remain uncaught most of the time
   if (!steps || steps.length === 0)
-    throw new Error(`Cannot make suggestion on empty data`)
+    return ['-1', 'PLACEHOLDER']
   // This is a controlled response sent once every step is completed
   if(steps.length === allSteps.length) 
     return ['-1', FINISHED]

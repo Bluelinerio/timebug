@@ -7,6 +7,7 @@ import UserProfileImageConsumer from '../../../containers/UserProfileImageConsum
 import LogoutButtonContainer from '../../../containers/LogoutButtonContainer'
 import styles from '../../styles/dashboard.styles'
 import moment from 'moment'
+import ResetStepsButton from './ResetStepsButton'
 
 const Banner = () => {
   return (
@@ -20,6 +21,10 @@ const Banner = () => {
               .toUpperCase()}
           </Text>
           <Text style={[styles.title, styles.strong]}>{`Welcome`}</Text>
+          {
+            (__DEV__) &&
+                  <ResetStepsButton />
+          }
         </View>
         <LogoutButtonContainer>
           <UserProfileImageConsumer>

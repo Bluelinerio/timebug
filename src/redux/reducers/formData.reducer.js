@@ -2,7 +2,8 @@
 import {
   SUBMIT_FORM_VALUE,
   INCREMENT_FORM_DATA_QUEUE,
-  DECREMENT_FORM_DATA_QUEUE
+  DECREMENT_FORM_DATA_QUEUE,
+  RESET_FORMS
 } from '../actionTypes'
 
 import { diffObjs } from '../utils/diffObjs'
@@ -91,6 +92,8 @@ function formDataReducer(
       return increment(state)
     case DECREMENT_FORM_DATA_QUEUE:
       return decrement(state)
+    case RESET_FORMS: 
+      return initialState
     default:
       return state
   }
