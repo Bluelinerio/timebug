@@ -358,26 +358,33 @@ if (__DEV__) {
     try{
       const result = fn(value)
       if (!R.equals(result, expected))
-        return `failed where value is ${value} got ${result} expectd ${expected}`
-      return 'we are good!'
+        return { status: false, text: `failed where value is ${value} got ${result} expectd ${expected}`}
+      return { status: true, text: 'we are good!' }
     } catch(e) {
       if(expected === 'error')
-        return `we are good! expected error, and got ${e}`
-      return `failed where value is ${value}, the following error ocurred: ${e} `    
+        return { status: true, text: `we are good! expected error, and got ${e}` }
+      return { status: true, text: `failed where value is ${value}, the following error ocurred: ${e}` }    
     }
   }
+
+  /**
+   * Priority:
+   * Sequential
+   * Phases
+   * Categories
+   */
 
   const tests = [
     { value: ['1', '3'], expected: ['8', REFLECTION] },
     { value: ['1', '2'], expected: ['3', NEIGHBOR] },
     { value: ['1', '2', '3', '5'], expected: ['4', PHASE1] },
     { value: ['1', '2', '3'], expected: ['4', NEIGHBOR] },
-    { value: ['1', '3', '10'], expected: ['8', REFLECTION] },
+    { value: ['1', '3', '10'], expected: ['8', REFLECTION] }, //0.33 Reflection vs 0.3 Phase1
     { value: ['10', '12', '20'], expected: ['21', REFLECTION] },
     { value: ['3', '10'], expected: ['8', REFLECTION] },
     { value: ['8', '10'], expected: ['12', REFLECTION] },
     { value: ['2', '5'], expected: ['6', GOALS] },
-    { value: ['15'], expected: ['25', HOBBIES] },
+    { value: ['15'], expected: ['25', HOBBIES] }, // Check this one
     { value: ['1', '2', '3', '5', '7', '8' , '13'], expected: ['9', PHASE1] },
     { value: ['15', '25'], expected: ['24', NEIGHBOR] },
     { value: ['1'], expected: ['2', NEIGHBOR] },
@@ -385,17 +392,16 @@ if (__DEV__) {
     { value: ['1', '2', '3', '4', '5', '6', '7', '8'], expected: ['9', NEIGHBOR] },
     { value: ['1', '3', '4', '5', '6', '10'], expected: ['9', PHASE1] },
     { value: ['11', '13', '14', '15', '16'], expected: ['17', PHASE2] },
-    { value: ['7', '8', '9'], expected: ['4', TEAMWORK] },
+    { value: ['7', '8', '9'], expected: ['4', TEAMWORK] }, // Check this one
     { value: ['4', '7', '8', '9'], expected: ['10', PHASE1] },
-    { value: ['25'], expected: ['15', HOBBIES] },
+    { value: ['25'], expected: ['15', HOBBIES] }, // Check this one
     { value: ['30'], expected: ['22', REFLECTION] },
     { value: Categories[REFLECTION], expected: ['9',PHASE1]},
     { value: allSteps, expected: 'error' },  
-    { value: [], expected: 'error' },
-    { value: ['10'], expected: ['11', NEIGHBOR] },
-    { value: ['20', '21', '22'], expected: ['30', REFLECTION] },
+    { value: ['10'], expected: ['11', NEIGHBOR] }, // Check this one
+    { value: ['20', '21', '22'], expected: ['30', REFLECTION] }, // Check this one
     { value: ['20', '22'], expected: ['21', REFLECTION] },
-    { value: ['22', '30'], expected: ['1', REFLECTION] },
+    { value: ['22', '30'], expected: ['1', REFLECTION] }, // Check this one
     { value: ['1','2','3','4','5','7',`9`,'15','17'], expected: ['8', PHASE1] },
     { value: ['1','2','3','4','5','6','7','8',`9`,'15','17'], expected: ['10', PHASE1] },
     { value: ['1','2','3','4','5','6','7','8',`9`,'10', '15','17'], expected: ['11', GOALS] },
