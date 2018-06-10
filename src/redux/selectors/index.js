@@ -98,7 +98,7 @@ const completedStepIds = (state: any): [string] =>
   completedForms(state).map(f => f.stepId)
 
 const formWithStepId = (state: any) => (stepId: string): Form =>
-  completedForms(state).find(f => f.stepId)
+  completedForms(state).find(f => f.stepId === stepId)
 
 // form data
 const formData = (state: any) => getFormData(state).data
