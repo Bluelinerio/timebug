@@ -43,13 +43,18 @@ const populate = (
   const { stepId, formId, value, type } = action.payload
   const data = state.data || {}
 
+  // There is a property id in values that is constantly undefined, yet saved, triggering syncronizations
+  const filteredValue = Object.keys(value)
+    .filter(key => !(key === 'id' && value[key] === undefined))
+    .map(key => value[key])
+
   // filter old value from timestamp, or anything else we might add...
   const oldValue = filterWithKeys(
-    key => Object.keys(value).includes(key),
+    key => Object.keys(filteredValue).includes(key),
     R.view(R.lensPath([stepId, formId]), data)
   )
 
-  const { difference, onlyOnRight } = diffObjs(oldValue, value)
+  const { difference, onlyOnRight } = diffObjs(oldValue, filteredValue)
 
   if (!difference && !onlyOnRight) return state
 
@@ -63,7 +68,7 @@ const populate = (
         timeStamp: Date.now(),
         [formId]: {
           timeStamp: Date.now(),
-          ...value,
+          ...filteredValue,
           type
         }
       }
