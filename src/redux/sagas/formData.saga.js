@@ -15,7 +15,7 @@ import { createForm, updateForm, resetUserSteps } from '../../services/apollo'
 import type { UpdateormArgs } from '../../services/apollo/models'
 
 import { SYNC_FORM_DATA, RESET_FORMS_REQUEST, RESET_FORMS } from '../actionTypes'
-import { GET_USER, updateUser } from '../actions/user.actions'
+import { GET_USER, updateUser, resetUserSteps as resetAction } from '../actions/user.actions'
 import {
   incrementFormDataQueue,
   decrementFormDataQueue
@@ -154,6 +154,11 @@ function* _handleReset(){
   const data = yield call(resetUserSteps, userId)
   yield put({
     type: RESET_FORMS
+  })
+  yield put(resetAction())
+  yield delay(1000)
+  yield put({
+    type: SYNC_FORM_DATA
   })
 }
 
