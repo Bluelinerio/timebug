@@ -226,6 +226,7 @@ function* syncRequests(payload) {
   const userId = yield select(selectors.userId)
   if (!userId) return
 
+  // run serially, ideally we want to be able to compose those requests, and send them in one go...
   yield putResolve(incrementFormDataQueue())
   // run serially, ideally we want to be able to compose those requests, and send them in one go...
 
