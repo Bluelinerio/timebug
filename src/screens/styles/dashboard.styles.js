@@ -161,7 +161,17 @@ export default StyleSheet.create({
     paddingBottom: 8,
     marginHorizontal: 16,
     borderBottomWidth: 1,
-    borderColor: iOSColors.customGray
+    borderColor: iOSColors.customGray,
+  },
+  reset: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: iOSColors.blue,
+    borderRadius: 6,
+    padding: 8,
+  },
+  resetText: {
+    color: '#FAFAFA'    
   },
   headerDate: {
     ...iOSUIKit.footnoteEmphasizedObject,

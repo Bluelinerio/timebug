@@ -6,14 +6,15 @@ import {
   put,
   putResolve,
   take,
-  select
+  select,
+  takeLatest
 } from 'redux-saga/effects'
 import { delay } from 'redux-saga'
 
-import { createForm, updateForm } from '../../services/apollo'
+import { createForm, updateForm, resetUserSteps } from '../../services/apollo'
 import type { UpdateormArgs } from '../../services/apollo/models'
 
-import { SYNC_FORM_DATA } from '../actionTypes'
+import { SYNC_FORM_DATA, RESET_FORMS_REQUEST, RESET_FORMS } from '../actionTypes'
 import { GET_USER, updateUser } from '../actions/user.actions'
 import {
   incrementFormDataQueue,
@@ -33,7 +34,7 @@ const range = (start, end) =>
     .fill()
     .map((v, i) => i + start)
 
-const stepIds = range(1, 30).map((v, i) => i.toString())
+const stepIds = range(1, 31).map((v, i) => v.toString())
 
 const removeAllKeyButStepIds = (obj: {}) =>
   Object.keys(obj)
@@ -91,6 +92,7 @@ function* reviewCurrentUserFormsAndFormDataCompareAndUpfateToState() {
     removeAllKeyButStepIds(formData),
     removeAllKeyButStepIds(completedFormsData)
   )
+
   if (!difference && !onlyOnLeft) {
     log({
       info:
@@ -147,16 +149,35 @@ function* reviewCurrentUserFormsAndFormDataCompareAndUpfateToState() {
   })
 }
 
-export function* watchSyncFormData() {
-  // here the assumptions is that the formData reducer will always Hydrate before the GET_USER action return, becuase we never
-  const requestChan = yield actionChannel([GET_USER.SUCCEEDED, SYNC_FORM_DATA])
-  while (true) {
-    yield take(requestChan)
-    yield fork(reviewCurrentUserFormsAndFormDataCompareAndUpfateToState)
+function* _handleReset(){
+  const userId = yield select(selectors.userId)
+  const data = yield call(resetUserSteps, userId)
+  yield put({
+    type: RESET_FORMS
+  })
+}
+
+function* watchForResetSteps(){
+  yield takeLatest(RESET_FORMS_REQUEST, _handleReset)
+}
+
+function* watchForUpdateOrCreate() {
+  while(true) {
     const { payload } = yield take(UPDATE_AND_CREATE_FORMS)
     if (payload && (payload.updates || payload.creates)) {
       yield fork(syncRequests, payload)
     }
+  }
+}
+
+export function* watchSyncFormData() {
+  // here the assumptions is that the formData reducer will always Hydrate before the GET_USER action return, becuase we never
+  const requestChan = yield actionChannel([GET_USER.SUCCEEDED, SYNC_FORM_DATA])
+  yield fork(watchForResetSteps)
+  yield fork(watchForUpdateOrCreate)
+  while (true) {
+    yield take(requestChan)
+    yield fork(reviewCurrentUserFormsAndFormDataCompareAndUpfateToState)
   }
 }
 
