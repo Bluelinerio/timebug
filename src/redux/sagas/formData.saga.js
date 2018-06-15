@@ -152,14 +152,10 @@ function* reviewCurrentUserFormsAndFormDataCompareAndUpfateToState() {
 function* _handleReset(){
   const userId = yield select(selectors.userId)
   const data = yield call(resetUserSteps, userId)
-  yield put({
+  yield putResolve({
     type: RESET_FORMS
   })
-  yield put(resetAction())
-  yield delay(1000)
-  yield put({
-    type: SYNC_FORM_DATA
-  })
+  yield putResolve(resetAction())
 }
 
 function* watchForResetSteps(){
