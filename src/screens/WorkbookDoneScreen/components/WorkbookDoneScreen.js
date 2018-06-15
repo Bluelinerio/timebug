@@ -3,6 +3,7 @@ import * as React from 'react'
 import { Text, View, StyleSheet } from 'react-native'
 import dashboardStyles from '../../styles/dashboard.styles'
 import Button from '../../../components/Button'
+import WorkbookIndicator from '../../../components/WorkbookIndicator'
 
 const white = '#FEFEFE'
 export type Props = {
@@ -23,7 +24,8 @@ const WorkbookDoneScreen = ({
   title,
   button,
   insightText,
-  nextStepMotivationText
+  nextStepMotivationText,
+  isSynchingFormData
 }: Props) => {
   return (
     <View
@@ -44,20 +46,27 @@ const WorkbookDoneScreen = ({
         >
           {title}
         </Text>
-        <Text style={styles.suggestionText}>
-          {
-            insightText && 
-              <Text>
-                <Text style={dashboardStyles.strong}>{`Did You Know?\n`}</Text>
-                <Text>{`${insightText}'\n\n`}</Text>
+        {
+          !isSynchingFormData 
+            ? <Text style={styles.suggestionText}>
+                  {
+                    insightText && 
+                      <Text>
+                        <Text style={dashboardStyles.strong}>{`Did You Know?\n`}</Text>
+                        <Text>{`${insightText}'\n\n`}</Text>
+                      </Text>
+                  }
+                  <Text style={dashboardStyles.strong}>{"What's next?\n"}</Text>
+                  {nextStepMotivationText}
               </Text>
-          }
-          <Text style={dashboardStyles.strong}>{"What's next?\n"}</Text>
-          {nextStepMotivationText}
-        </Text>
+            : <WorkbookIndicator />
+        }
       </View>
       <View>
-        <Button backgroundColor={white} {...button} />
+        {
+          !isSynchingFormData
+            && <Button backgroundColor={white} {...button} />
+        }
       </View>
     </View>
   )

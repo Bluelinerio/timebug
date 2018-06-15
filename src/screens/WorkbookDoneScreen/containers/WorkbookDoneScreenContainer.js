@@ -16,10 +16,12 @@ const merge = ({
   steps,
   step,
   completedStepIdsChronologically,
+  isSynchingFormData,
   dispatch
 }: {
   step: Step,
   steps: Array<Step>,
+  isSynchingFormData: boolean,
   dispatch: () => void
 }): Props => {
   const insightText = getInsight(step.stepId, dummyFormValue)
@@ -44,7 +46,8 @@ const merge = ({
         text: `Start Step ${nextStep.number}`.toUpperCase(),
         onPress: () => dispatch(restartStepAction(nextStep)),
         textColor: nextStep.color
-      }
+      },
+      isSynchingFormData
     }
   }
 
@@ -57,7 +60,8 @@ const merge = ({
       text: `Done`.toUpperCase(),
       onPress: () => dispatch(reset()),
       textColor: backgroundColor
-    }
+    },
+    isSynchingFormData
   }
 }
 
@@ -68,7 +72,9 @@ const WorkbookDoneScreenContainer = compose(
     completedStepIdsChronologically: selectors
       .completedFormsChronologically(state)
       .map(f => f.stepId)
-      .map(stepId => stepId.toString())
+      .map(stepId => stepId.toString()),
+    isSynchingFormData: selectors
+      .isSynchingFormData(state)
   })),
   mapProps(merge)
 )(WorkbookDoneScreen)
