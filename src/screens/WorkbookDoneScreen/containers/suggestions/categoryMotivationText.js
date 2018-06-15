@@ -19,9 +19,9 @@ import {
 const categoryMotivationText = {
   [REFLECTION]: {
     [HOME_SCREEN]: ({ suggestedNextStep }) =>
-      `Based on your activity so far, it seems like this app is helping you with instrospection and self reflection. We love that! You might want to try step ${suggestedNextStep}`,
+      `Based on your activity so far, it seems like this app is helping you with instrospection and self reflection. We love that! You might want to try step ${suggestedNextStep}.`,
     [DONE_SCREEN]: ({ suggestedNextStep, previousStep }) =>
-      `Nice job, you've completed ${previousStep}. Based on your activity so far, it seems like this app is helping you with instrospection and self reflection. We love that! You might want to try step ${suggestedNextStep}`
+      `Nice job, you've completed ${previousStep}. Based on your activity so far, it seems like this app is helping you with instrospection and self reflection. We love that! You might want to try step ${suggestedNextStep}.`
   },
   [TEAMWORK]: {
     [HOME_SCREEN]: ({ suggestedNextStep }) =>
