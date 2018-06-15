@@ -8,6 +8,7 @@ import LogoutButtonContainer from '../../../containers/LogoutButtonContainer'
 import styles from '../../styles/dashboard.styles'
 import moment from 'moment'
 import ResetStepsButton from './ResetStepsButton'
+import DisplayStepsContainer from './../containers/DisplayStepsContainer';
 
 const Banner = () => {
   return (
@@ -23,7 +24,10 @@ const Banner = () => {
           <Text style={[styles.title, styles.strong]}>{`Welcome`}</Text>
           {
             (__DEV__) &&
-                  <ResetStepsButton />
+                  <View>
+                    <ResetStepsButton />
+                    <DisplayStepsContainer />                    
+                  </View>
           }
         </View>
         <LogoutButtonContainer>
