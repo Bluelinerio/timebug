@@ -12,6 +12,7 @@ export type Props = {
   backgroundColor: string,
   insightText: string,
   nextStepMotivationText: string,
+  isSynchingFormData: boolean,
   button: {
     onPress: () => void,
     text: string,

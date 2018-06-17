@@ -14,11 +14,15 @@ import { delay } from 'redux-saga'
 import { createForm, updateForm, resetUserSteps } from '../../services/apollo'
 import type { UpdateormArgs } from '../../services/apollo/models'
 
-import { SYNC_FORM_DATA, RESET_FORMS_REQUEST, RESET_FORMS } from '../actionTypes'
+import { SYNC_FORM_DATA, RESET_FORMS_REQUEST, RESET_FORMS, START_LOADING_FORMDATA, STOP_LOADING_FORMDATA } from '../actionTypes'
 import { GET_USER, updateUser, resetUserSteps as resetAction } from '../actions/user.actions'
 import {
   incrementFormDataQueue,
-  decrementFormDataQueue
+  decrementFormDataQueue,
+  unsetLoadingFormData,
+  setLoadingFormData,
+  stopLoadingFormData,
+  startLoadingFormData
 } from '../actions/formData.actions'
 import selectors from '../selectors'
 import { diffObjs } from '../utils/diffObjs'
@@ -60,6 +64,7 @@ function* mySelectors(props) {
 
 function* reviewCurrentUserFormsAndFormDataCompareAndUpfateToState() {
   //const userId = yield select(selectors.userId)
+  yield put(startLoadingFormData())
   log({
     info: 'Started reviewing differences between form data and user forms'
   })
@@ -92,8 +97,9 @@ function* reviewCurrentUserFormsAndFormDataCompareAndUpfateToState() {
     removeAllKeyButStepIds(formData),
     removeAllKeyButStepIds(completedFormsData)
   )
-
+  
   if (!difference && !onlyOnLeft) {
+    yield put(stopLoadingFormData())
     log({
       info:
         'Completed reviewing differences between form data and user forms. No sync is needed'
@@ -132,6 +138,10 @@ function* reviewCurrentUserFormsAndFormDataCompareAndUpfateToState() {
         }
       ]
     }, [])
+    
+  const formDataRequestCount = yield select(
+    state => state.formData.requestCount
+  )
 
   log({
     info:
@@ -139,7 +149,9 @@ function* reviewCurrentUserFormsAndFormDataCompareAndUpfateToState() {
     creates,
     updates
   })
-
+  
+  yield put(stopLoadingFormData())
+  
   yield put({
     type: UPDATE_AND_CREATE_FORMS,
     payload: {
@@ -163,6 +175,19 @@ function* _handleReset(){
   }
 }
 
+function* watchForLoadingForm() {
+  while(true){
+    yield take(START_LOADING_FORMDATA)
+    yield put(setLoadingFormData())
+    // yield race([
+    //   yield take(STOP_LOADING_FORMDATA),
+    //   yield putResolve(delay(10000))
+    // ])
+    yield take(STOP_LOADING_FORMDATA)
+    yield put(unsetLoadingFormData())
+  }
+}
+
 function* watchForResetSteps(){
   yield takeLatest(RESET_FORMS_REQUEST, _handleReset)
 }
@@ -181,6 +206,7 @@ export function* watchSyncFormData() {
   const requestChan = yield actionChannel([GET_USER.SUCCEEDED, SYNC_FORM_DATA])
   yield fork(watchForResetSteps)
   yield fork(watchForUpdateOrCreate)
+  yield fork(watchForLoadingForm)
   while (true) {
     yield take(requestChan)
     yield fork(reviewCurrentUserFormsAndFormDataCompareAndUpfateToState)
