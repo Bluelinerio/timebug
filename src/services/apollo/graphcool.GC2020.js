@@ -85,7 +85,7 @@ const handleErrorGettingUser = (errorResponse: ErrorResponse) => {
 
 const userSortedFormFragment =gql`
 	fragment SortedForms on User {
-		forms(orderBy: stepId_DESC, first: 20) {
+		forms(orderBy: stepId_DESC) {
 			id
 			createdAt
 			updatedAt
@@ -112,7 +112,7 @@ const userAchievementsFragment =gql`
 
 const userFragments =gql`
 	fragment SortedForms on User {
-		forms(orderBy: stepId_DESC, first: 20) {
+		forms(orderBy: stepId_DESC) {
 			id
 			createdAt
 			updatedAt
