@@ -9,7 +9,8 @@ import t                                       from '../components/templates'
 import { headerBackgrounds }                   from '../../../resources/images'
 import {
   submitFormValue,
-  syncFormData
+  syncFormData,
+  startLoadingFormData
 }                                              from '../../../redux/actions/formData.actions'
 import {
   goToWorkbookDoneScreen,
@@ -59,6 +60,7 @@ const merge = ({
 
   const nextActions = isFinalForm
     ? [
+        startLoadingFormData(),
         syncFormData(),
         goToWorkbookDoneScreen({
           params

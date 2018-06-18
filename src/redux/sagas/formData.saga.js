@@ -7,7 +7,8 @@ import {
   putResolve,
   take,
   select,
-  takeLatest
+  takeLatest,
+  race
 } from 'redux-saga/effects'
 import { delay } from 'redux-saga'
 
@@ -65,6 +66,7 @@ function* mySelectors(props) {
 function* reviewCurrentUserFormsAndFormDataCompareAndUpfateToState() {
   //const userId = yield select(selectors.userId)
   yield put(startLoadingFormData())
+  
   log({
     info: 'Started reviewing differences between form data and user forms'
   })
@@ -149,9 +151,9 @@ function* reviewCurrentUserFormsAndFormDataCompareAndUpfateToState() {
     creates,
     updates
   })
-  
+
   yield put(stopLoadingFormData())
-  
+    
   yield put({
     type: UPDATE_AND_CREATE_FORMS,
     payload: {
@@ -179,11 +181,10 @@ function* watchForLoadingForm() {
   while(true){
     yield take(START_LOADING_FORMDATA)
     yield put(setLoadingFormData())
-    // yield race([
-    //   yield take(STOP_LOADING_FORMDATA),
-    //   yield putResolve(delay(10000))
-    // ])
-    yield take(STOP_LOADING_FORMDATA)
+    yield race([
+      take(STOP_LOADING_FORMDATA),
+      delay(5000) 
+    ])
     yield put(unsetLoadingFormData())
   }
 }
@@ -216,13 +217,14 @@ export function* watchSyncFormData() {
 function* syncRequests(payload) {
   const { updates, creates } = payload
 
-  yield delay(1)
-
   const userId = yield select(selectors.userId)
   if (!userId) return
 
-  // run serially, ideally we want to be able to compose those requests, and send them in one go...
   yield putResolve(incrementFormDataQueue())
+  // run serially, ideally we want to be able to compose those requests, and send them in one go...
+
+  yield delay(1)
+
 
   let _user = null
   if (updates && updates.length) {
@@ -279,7 +281,6 @@ function* syncRequests(payload) {
   }
 
   yield putResolve(decrementFormDataQueue())
-
   const formDataRequestCount = yield select(
     state => state.formData.requestCount
   )
