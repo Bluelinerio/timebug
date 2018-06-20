@@ -15,7 +15,14 @@ import { delay } from 'redux-saga'
 import { createForm, updateForm, resetUserSteps } from '../../services/apollo'
 import type { UpdateormArgs } from '../../services/apollo/models'
 
-import { SYNC_FORM_DATA, RESET_FORMS_REQUEST, RESET_FORMS, START_LOADING_FORMDATA, STOP_LOADING_FORMDATA } from '../actionTypes'
+import { 
+  SYNC_FORM_DATA, 
+  RESET_FORMS_REQUEST, 
+  RESET_FORMS, 
+  START_LOADING_FORMDATA, 
+  STOP_LOADING_FORMDATA 
+} from '../actionTypes'
+
 import { GET_USER, updateUser, resetUserSteps as resetAction } from '../actions/user.actions'
 import {
   incrementFormDataQueue,
