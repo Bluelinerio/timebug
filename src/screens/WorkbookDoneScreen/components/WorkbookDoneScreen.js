@@ -37,38 +37,37 @@ const WorkbookDoneScreen = ({
         }
       ]}
     >
-      <View style={[styles.messageContainer]}>
-        <Text
-          style={[
-            dashboardStyles.title,
-            dashboardStyles.strong,
-            { color: white, textAlign: 'left', marginBottom: 30 }
-          ]}
-        >
-          {title}
-        </Text>
-        {
-          !isSynchingFormData 
-            ? <Text style={styles.suggestionText}>
-                  {
-                    insightText && 
-                      <Text>
-                        <Text style={dashboardStyles.strong}>{`Did You Know?\n`}</Text>
-                        <Text>{`${insightText}'\n\n`}</Text>
-                      </Text>
-                  }
-                  <Text style={dashboardStyles.strong}>{"What's next?\n"}</Text>
-                  {nextStepMotivationText}
-              </Text>
-            : <WorkbookIndicator />
-        }
-      </View>
-      <View>
-        {
-          !isSynchingFormData
-            && <Button backgroundColor={white} {...button} />
-        }
-      </View>
+      {
+        isSynchingFormData
+          ? <WorkbookIndicator />
+          : <View> 
+              <View style={[styles.messageContainer]}>
+                <Text
+                  style={[
+                    dashboardStyles.title,
+                    dashboardStyles.strong,
+                    { color: white, textAlign: 'left', marginBottom: 30 }
+                  ]}
+                >
+                  {title}
+                </Text>
+                <Text style={styles.suggestionText}>
+                    {
+                      insightText && 
+                        <Text>
+                          <Text style={dashboardStyles.strong}>{`Did You Know?\n`}</Text>
+                          <Text>{`${insightText}'\n\n`}</Text>
+                        </Text>
+                    }
+                    <Text style={dashboardStyles.strong}>{"What's next?\n"}</Text>
+                    {nextStepMotivationText}
+                </Text>
+              </View>
+              <View>
+                  <Button backgroundColor={white} {...button} />
+              </View>
+            </View>  
+      }
     </View>
   )
 }

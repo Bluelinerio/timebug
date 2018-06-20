@@ -75,9 +75,8 @@ const WorkbookDoneScreenContainer = compose(
       .map(stepId => stepId.toString()),
     isSynchingFormData: selectors
       .isSynchingFormData(state) 
-      || selectors
-        .loadingFormData(state)
-      
+        || selectors
+            .loadingFormData(state)
   })),
   mapProps(merge)
 )(WorkbookDoneScreen)
