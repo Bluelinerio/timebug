@@ -25,13 +25,8 @@ export const endpoints = {
 }
 export const isClientEndpoint = (endpoint:string) => endpoints.simple === endpoint;
 
-const logMiddleware = new ApolloLink((operation, forward) => {
-	// console.log("APOLLO", operation.query)
-	return forward(operation)
-})
-
 export const client = new ApolloClient({
-  link: concat(logMiddleware, new HttpLink({ uri: endpoints.simple })),
+  link: new HttpLink({ uri: endpoints.simple }),
   cache: new InMemoryCache()
 });
 
@@ -207,6 +202,7 @@ export const createForm = ({ userId, stepId, data } : CreateFormArgs): any =>
 			}
 		})
 		.then(parse('createForm'))
+		.catch(e => console.log(e))
 
 export const updateForm = ({ userId, id, data } : UpdateormArgs): any =>
 	client
@@ -228,7 +224,7 @@ export const updateForm = ({ userId, id, data } : UpdateormArgs): any =>
 			}
 		})
 		.then(parse('updateForm'))
-
+		.catch(e => console.log(e))		
 
 export const createAchievement = ({ userId, tagName }) => 
 	client.mutate({
