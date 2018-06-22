@@ -11,7 +11,8 @@ import { GET_USER, AUTHENTICATE_FB } from '../actions/user.actions'
 import {
   LOGOUT,
   LOGIN_WITH_FB_BUTTON_PRESSED,
-  UPDATE_USER
+  UPDATE_USER,
+  RESET_USER_STEPS
 }                                    from '../actionTypes'
 
 export const userFromResponse = (response: any): User => response.data.User
@@ -35,6 +36,11 @@ export default function(state: UserState = UNDETERMINED, action: Action) {
       return {
         ...state,
         ...action.payload
+      }
+    case RESET_USER_STEPS:
+      return {
+        ...state,
+        forms: []
       }
     default:
       return state
