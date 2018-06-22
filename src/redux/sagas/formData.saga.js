@@ -11,7 +11,7 @@ import {
 } from 'redux-saga/effects'
 import { delay } from 'redux-saga'
 
-import { createForm, updateForm, resetUserSteps } from '../../services/apollo'
+import { createForm, updateForm, resetUserSteps, deleteForm } from '../../services/apollo'
 import type { UpdateormArgs } from '../../services/apollo/models'
 
 import { SYNC_FORM_DATA, RESET_FORMS_REQUEST, RESET_FORMS } from '../actionTypes'
@@ -56,6 +56,23 @@ function* mySelectors(props) {
     result[key] = yield select(selector)
   }
   return result
+}
+
+function* removeRepeats(user) {
+  const { forms } = user
+  const sortedForms = forms.sort((a, b) => Date.parse(a.updatedAt) - Date.parse(b.updatedAt))
+  sortedForms.filter((item, pos) => sortedForms.indexOf(item) !== pos)
+    .map(f => yield fork(deleteForm, { id: f.id} ))
+  const finalForms = forms
+    .sort((a, b) => Date.parse(b.updatedAt) - Date.parse(a.updatedAt))
+    .reduce((forms, form) => {
+        (forms, form) => ({
+          ...forms,
+          [form.stepId]: form.data
+        }),
+      {}
+    })
+  return finalForms
 }
 
 function* reviewCurrentUserFormsAndFormDataCompareAndUpfateToState() {
@@ -211,7 +228,6 @@ function* syncRequests(payload) {
           ...update
         })
         if(error) {
-          throw(error)
           console.log("ERROR SYNCHING UPDATES",error)
         }
         log({
@@ -241,7 +257,6 @@ function* syncRequests(payload) {
           ...create
         })
         if(error){
-          throw(error)
           console.log("ERROR SYNCHING UPDATES",error)
         }
         _user = user
@@ -257,7 +272,8 @@ function* syncRequests(payload) {
   }
 
   if (_user) {
-    yield putResolve(updateUser(_user))
+    const { finalUser } = yield call(removeRepeats, _user)
+    yield putResolve(updateUser(finalUser))
   }
 
   yield putResolve(decrementFormDataQueue())

@@ -224,6 +224,22 @@ export const updateForm = ({ userId, id, data } : UpdateormArgs): any =>
 			}
 		})
 		.then(parse('updateForm'))
+
+export const deleteForm = ({ id }): any =>
+	client
+		.mutate({
+			mutation:gql`
+				mutation deleteForm($id:ID!) {
+					deleteForm(id:$id) {
+						id
+					}
+				}
+				`,
+			variables: {
+				id
+			}
+		})
+		.then(parse('deleteForm'))
 		.catch(e => console.log(e))		
 
 export const createAchievement = ({ userId, tagName }) => 
