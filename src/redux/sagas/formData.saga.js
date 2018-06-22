@@ -201,9 +201,13 @@ function* syncRequests(payload) {
       }
 
       try {
-        const { user } = yield call(updateForm, {
+        const { user, error } = yield call(updateForm, {
           ...update
         })
+        if(error) {
+          throw(error)
+          console.log("ERROR SYNCHING UPDATES",error)
+        }
         log({
           info: `Completed synching on update between form data and user forms`,
           update,
@@ -227,9 +231,13 @@ function* syncRequests(payload) {
         testCreate(create)
       }
       try {
-        const { user } = yield call(createForm, {
+        const { user, error } = yield call(createForm, {
           ...create
         })
+        if(error){
+          throw(error)
+          console.log("ERROR SYNCHING UPDATES",error)
+        }
         _user = user
       } catch (error) {
         _user = null

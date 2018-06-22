@@ -50,7 +50,7 @@ const populate = (
 
   // filter old value from timestamp, or anything else we might add...
   const oldValue = filterWithKeys(
-    key => Object.keys(filteredValue).includes(key),
+    key => {return Object.keys(filteredValue).includes(key)},
     R.view(R.lensPath([stepId, formId]), data)
   )
 
@@ -58,6 +58,10 @@ const populate = (
 
   if (!difference && !onlyOnRight) return state
 
+  console.log(difference)
+
+  console.log(onlyOnRight)
+  
   return {
     ...state,
     data: {

@@ -2,6 +2,7 @@
 
 import { ApolloClient } from 'apollo-client';
 import { HttpLink } from 'apollo-link-http';
+import { ApolloLink, concat } from 'apollo-link'
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import gql from 'graphql-tag';
 import type { 
@@ -24,8 +25,13 @@ export const endpoints = {
 }
 export const isClientEndpoint = (endpoint:string) => endpoints.simple === endpoint;
 
+const logMiddleware = new ApolloLink((operation, forward) => {
+	// console.log("APOLLO", operation.query)
+	return forward(operation)
+})
+
 export const client = new ApolloClient({
-  link: new HttpLink({ uri: endpoints.simple }),
+  link: concat(logMiddleware, new HttpLink({ uri: endpoints.simple })),
   cache: new InMemoryCache()
 });
 
@@ -33,6 +39,10 @@ import { temporaryUserAdditions } from './tmp';
 
 const _parse = <T>(key: string, graphResponse: GraphResponse): T => {
 	const { data, error } = graphResponse
+	if(error){
+		console.log("ERROR IN THENABLE")
+		throw error;
+	}
 	const value: T = {
 		...data[key],
 		endpoint:endpoints.simple
