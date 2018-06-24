@@ -58,21 +58,44 @@ function* mySelectors(props) {
   return result
 }
 
+function* findRepeatedForms(formData) {
+  return formData
+    .sort((a, b) => a.stepId - b.stepId)
+    .reduce((prev, f, index, arr) => {
+      if(arr.length > index + 1 && arr[index + 1].stepId === f.stepId
+            || prev.find(form => form.stepId === f.stepId))
+        return [ ...prev, f]
+      return prev
+    }, [])
+    .sort((a, b) => a.stepId - b.stepId)  
+    .sort((a, b) => {
+      if(a.stepId === b.stepId)
+        return Date.parse(b.updatedAt) - Date.parse(a.updatedAt)
+      else
+        return 0
+    })
+    .reduce((forms, form, index, arr) => {
+      const prev = index > 0 ? arr[index - 1] : null
+      if(prev && prev.stepId === form.stepId)
+        return [...forms, form]
+      return forms
+    }, [])
+}
+
 function* removeRepeats(user) {
   const { forms } = user
-  const sortedForms = forms.sort((a, b) => Date.parse(a.updatedAt) - Date.parse(b.updatedAt))
-  sortedForms.filter((item, pos) => sortedForms.indexOf(item) !== pos)
-    .map(f => yield fork(deleteForm, { id: f.id} ))
+  const repeatedForms = yield call(findRepeatedForms, forms)
   const finalForms = forms
-    .sort((a, b) => Date.parse(b.updatedAt) - Date.parse(a.updatedAt))
-    .reduce((forms, form) => {
-        (forms, form) => ({
-          ...forms,
-          [form.stepId]: form.data
-        }),
-      {}
+    .filter(f => repeatedForms.find(form => form.id === f.id) ? false: true)
+  for(let form of repeatedForms) {
+    yield fork(deleteForm, {
+      ...form
     })
-  return finalForms
+  }
+  return {
+    ...user,
+    forms: finalForms
+  }
 }
 
 function* reviewCurrentUserFormsAndFormDataCompareAndUpfateToState() {
@@ -105,18 +128,22 @@ function* reviewCurrentUserFormsAndFormDataCompareAndUpfateToState() {
     }
   }
 
+  const forms = yield select (selectors.completedForms)
+  const deletable = yield call(findRepeatedForms, forms)
+
   const { difference, onlyOnLeft } = diffObjs(
     removeAllKeyButStepIds(formData),
     removeAllKeyButStepIds(completedFormsData)
   )
-
-  if (!difference && !onlyOnLeft) {
+  
+  if (!difference && !onlyOnLeft && deletable.length === 0) {
     log({
       info:
         'Completed reviewing differences between form data and user forms. No sync is needed'
     })
     return
   }
+
 
   const updates =
     difference &&
@@ -150,18 +177,22 @@ function* reviewCurrentUserFormsAndFormDataCompareAndUpfateToState() {
       ]
     }, [])
 
+  const deletes = deletable.filter(d => d.id)
+
   log({
     info:
       'Commencing with sync request after reviewing differences between form data and user forms',
     creates,
-    updates
+    updates,
+    deletes
   })
 
   yield put({
     type: UPDATE_AND_CREATE_FORMS,
     payload: {
       creates,
-      updates
+      updates,
+      deletes
     }
   })
 }
@@ -189,6 +220,7 @@ function* watchForUpdateOrCreate() {
     const { payload } = yield take(UPDATE_AND_CREATE_FORMS)
     if (payload && (payload.updates || payload.creates)) {
       yield fork(syncRequests, payload)
+      yield delay(5000)
     }
   }
 }
@@ -205,7 +237,7 @@ export function* watchSyncFormData() {
 }
 
 function* syncRequests(payload) {
-  const { updates, creates } = payload
+  const { updates, creates, deletes } = payload
 
   yield delay(1)
 
@@ -224,12 +256,9 @@ function* syncRequests(payload) {
       }
 
       try {
-        const { user, error } = yield call(updateForm, {
+        const { user } = yield call(updateForm, {
           ...update
         })
-        if(error) {
-          console.log("ERROR SYNCHING UPDATES",error)
-        }
         log({
           info: `Completed synching on update between form data and user forms`,
           update,
@@ -253,12 +282,9 @@ function* syncRequests(payload) {
         testCreate(create)
       }
       try {
-        const { user, error } = yield call(createForm, {
+        const { user } = yield call(createForm, {
           ...create
         })
-        if(error){
-          console.log("ERROR SYNCHING UPDATES",error)
-        }
         _user = user
       } catch (error) {
         _user = null
@@ -270,9 +296,39 @@ function* syncRequests(payload) {
       }
     }
   }
+  if(deletes && deletes.length) {
+    for(let index = 0; index < deletes.length; index++) {
+      const del = deletes[index]
+        try {
+          if(__DEV__)
+            testDelete(del)
+          const { id } = yield call(deleteForm, {
+            ...del
+          })
+          const userForms = yield select(selectors.completedForms)
+          const currentUserState = _user ? _user : { forms: userForms }
+          const currentForms = currentUserState.forms.filter(f => f.id !== id)
+          _user = {
+            ...currentUserState,
+            forms: currentForms
+          }
+          log({
+            info: `Completed synching on delete between form data and user forms`,
+            del
+          })
+        } catch (error) {
+          _user = null
+          log({
+            info: `Form Synch: Failed on delete between form data and user forms`,
+            error,
+            del
+        })
+      }
+    }
+  }
 
   if (_user) {
-    const { finalUser } = yield call(removeRepeats, _user)
+    const finalUser = yield call(removeRepeats, _user)
     yield putResolve(updateUser(finalUser))
   }
 
@@ -313,5 +369,11 @@ const testUpdate = (update: UpdateormArgs) => {
   }
   if (!update.data) {
     throw `missing data in update:${JSON.stringify(update)}`
+  }
+}
+
+const testDelete = del => {
+  if (!del.id) {
+    throw `missing id in delete:${JSON.stringify(del)}`
   }
 }
