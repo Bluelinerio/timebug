@@ -82,7 +82,7 @@ function* findRepeatedForms(formData) {
     }, [])
 }
 
-function* removeRepeats(user) {
+function* removeRepeatedForms(user) {
   const { forms } = user
   const repeatedForms = yield call(findRepeatedForms, forms)
   const finalForms = forms
@@ -328,8 +328,13 @@ function* syncRequests(payload) {
   }
 
   if (_user) {
-    const finalUser = yield call(removeRepeats, _user)
-    yield putResolve(updateUser(finalUser))
+    /**
+     * Redundant deletion in case the responses come with repeated steps
+     * uncomment the line below in case the app can´t logically handle repeated steps normally
+     * also replace _user with finalUser on the update
+     */
+    // const finalUser = yield call(removeRepeatedForms, _user)
+    yield putResolve(updateUser(_user))
   }
 
   yield putResolve(decrementFormDataQueue())
