@@ -37,6 +37,9 @@ export default Object.freeze({
       paddingHorizontal,
       paddingVertical,
       backgroundColor: BACKGROUND_COLOR,
+      marginVertical: 10,
+      marginHorizontal: 15,
+      borderRadius: 6,
       flex: 1
     },
     normal: {

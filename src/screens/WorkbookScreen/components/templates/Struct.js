@@ -56,8 +56,10 @@ export default class Struct extends React.Component {
     const children = [label ? [label] : [], ...rows];
     const topLevel = this.props.topLevel || false;
     const { fieldset } = this.props.styles;
+    const color = this.props.config.color
+    const style = topLevel ? {...fieldset.topLevel, backgroundColor: color} : fieldset.normal 
     return (
-      <View style={topLevel ? fieldset.topLevel : fieldset.normal}>
+      <View style={{...style}}>
         {error}
         {children}
       </View>
