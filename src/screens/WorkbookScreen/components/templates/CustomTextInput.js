@@ -192,18 +192,25 @@ class CustomTextInput extends React.Component<Props, State> {
   )
 
   render() {
-    const { styles, hasError, editable, floatingLabel } = this.props
+    const { styles, hasError, editable, floatingLabel, config } = this.props
 
     const { text } = this.state
     const formGroupStyle = hasError
       ? styles.formGroupStyle.error
       : styles.formGroupStyle.normal
+    
 
-    const textboxViewStyle = hasError
-      ? styles.textBoxView.error
-      : editable !== false
-        ? styles.textBoxView.normal
-        : styles.textBoxView.notEditable
+    const textboxViewStyle = [
+      styles.textBoxView.base,
+      hasError
+        ? styles.textBoxView.error
+        : editable !== false
+          ? styles.textBoxView.normal
+          : styles.textBoxView.notEditable,
+      {
+        backgroundColor: config.color
+      }
+    ]
 
     const label = floatingLabel ? this.floatingLabel() : this.label() // text.length > 0 ? null :
     const help = this.help()

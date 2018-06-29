@@ -37,9 +37,6 @@ export default Object.freeze({
       paddingHorizontal,
       paddingVertical,
       backgroundColor: BACKGROUND_COLOR,
-      marginVertical: 10,
-      marginHorizontal: 15,
-      borderRadius: 6,
       flex: 1
     },
     normal: {
@@ -155,6 +152,16 @@ export default Object.freeze({
     }
   },
   textBoxView: {
+    base: {
+      ...Platform.select({
+        ios: {},
+        android:{
+          borderColor: INPUT_COLOR,
+          borderWidth: 1 / PixelRatio.get(),
+          padding: innerPaddingHorizontal
+        }
+      })
+    },
     normal: {
       ...Platform.select({
         ios: {
