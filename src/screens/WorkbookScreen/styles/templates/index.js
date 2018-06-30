@@ -69,6 +69,7 @@ export default Object.freeze({
     textAlign: 'left',
     fontSize: 22,
     paddingVertical,
+    fontFamily: 'Metropolis',
     fontWeight: '700'
   },
   controlLabel: {
@@ -76,14 +77,16 @@ export default Object.freeze({
       color: LABEL_COLOR,
       fontSize: FONT_SIZE,
       marginBottom: 7,
-      fontWeight: FONT_WEIGHT
+      fontFamily: 'Metropolis',
+      fontWeight: 'bold'
     },
     // the style applied when a validation error occours
     error: {
       color: LABEL_COLOR,
       fontSize: FONT_SIZE,
       marginBottom: 7,
-      fontWeight: FONT_WEIGHT
+      fontFamily: 'Metropolis',
+      fontWeight: 'bold'
     }
   },
   helpBlock: {
@@ -91,12 +94,14 @@ export default Object.freeze({
       ...stylesheet.helpBlock.normal,
       marginTop: 4,
       paddingHorizontal: innerPaddingHorizontal,
+      fontFamily: 'Metropolis',      
       fontStyle: 'italic'
     },
     error: {
       ...stylesheet.helpBlock.normal,
       marginTop: 4,
       paddingHorizontal: innerPaddingHorizontal,
+      fontFamily: 'Metropolis',      
       fontStyle: 'italic'
     }
   },
