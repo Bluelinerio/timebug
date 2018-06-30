@@ -15,7 +15,8 @@ export default function select(props) {
     error,
     options,
     value,
-    onChange
+    onChange,
+    config
   } = props;
 
   const children = options.map(({ value, text }) => (
@@ -48,9 +49,14 @@ export default function select(props) {
         onCancel={() => null}
         onChange={onChange}
         styles={{
-          container: hasError
-            ? stylesheet.pickerContainer.error
-            : stylesheet.pickerContainer.normal,
+          container: [
+            hasError
+              ? stylesheet.pickerContainer.error
+              : stylesheet.pickerContainer.normal,
+            {
+              backgroundColor: config.color
+            }
+          ],
           touchable: [
             hasError
               ? stylesheet.pickerTouchable.error

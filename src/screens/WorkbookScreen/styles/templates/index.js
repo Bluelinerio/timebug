@@ -17,6 +17,7 @@ const borderWidth = 1
 const height = 44
 const paddingHorizontal = 16
 const innerPaddingHorizontal = 4
+const innerPaddingVertical = 2
 const paddingVertical = 20
 
 //#E6E5ED
@@ -100,6 +101,13 @@ export default Object.freeze({
     }
   },
   pickerContainer: {
+    base: {
+      borderColor: BORDER_COLOR,
+      borderWidth: borderWidth,
+      borderRadius,
+      paddingHorizontal: innerPaddingHorizontal,
+      paddingVertical: innerPaddingVertical
+    },
     normal: {
       flexDirection: 'row',
       height,
@@ -107,7 +115,7 @@ export default Object.freeze({
       borderRadius,
       borderColor: BORDER_COLOR,
       padding: 8,
-      backgroundColor: BACKGROUND_COLOR
+      backgroundColor: 'transparent',
     },
     error: {
       flexDirection: 'row',
@@ -116,7 +124,7 @@ export default Object.freeze({
       borderRadius,
       borderColor: ERROR_COLOR,
       padding: 8,
-      backgroundColor: BACKGROUND_COLOR
+      backgroundColor: 'transparent'
     },
     open: {}
   },
@@ -156,9 +164,11 @@ export default Object.freeze({
       ...Platform.select({
         ios: {},
         android:{
-          borderColor: INPUT_COLOR,
-          borderWidth: 1 / PixelRatio.get(),
-          padding: innerPaddingHorizontal
+          borderColor: BORDER_COLOR,
+          borderWidth: borderWidth,
+          paddingHorizontal: innerPaddingHorizontal,
+          borderRadius,
+          paddingVertical: innerPaddingVertical
         }
       })
     },

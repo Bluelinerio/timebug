@@ -85,7 +85,8 @@ export default class FormList extends React.Component<Props, State> {
       add,
       label,
       help,
-      maxLines
+      maxLines,
+      config
     } = this.props
 
     const { index, pages, focusLastItem } = this.state
@@ -125,6 +126,9 @@ export default class FormList extends React.Component<Props, State> {
               index: index + 1,
               focusLastItem: true
             })
+          },
+          style: {
+            backgroundColor: config.color
           }
         })
       : null

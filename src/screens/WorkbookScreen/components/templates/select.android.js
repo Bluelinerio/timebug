@@ -7,6 +7,8 @@ function select(locals) {
   }
 
   const stylesheet = locals.stylesheet;
+
+
   const formGroupStyle = locals.hasError
     ? stylesheet.formGroupStyle.error
     : stylesheet.formGroupStyle.normal;
@@ -47,20 +49,27 @@ function select(locals) {
   return (
     <View style={formGroupStyle}>
       {label}
-      <Picker
-        accessibilityLabel={locals.label}
-        ref="input"
-        style={selectStyle}
-        selectedValue={locals.value}
-        onValueChange={locals.onChange}
-        help={locals.help}
-        enabled={locals.enabled}
-        mode={locals.mode}
-        prompt={locals.prompt}
-        itemStyle={locals.itemStyle}
-      >
-        {options}
-      </Picker>
+      <View style={[
+          {
+            backgroundColor: locals.config.color
+          },
+          {...stylesheet.pickerContainer.base}
+        ]}>
+        <Picker
+          accessibilityLabel={locals.label}
+          ref="input"
+          style={selectStyle}
+          selectedValue={locals.value}
+          onValueChange={locals.onChange}
+          help={locals.help}
+          enabled={locals.enabled}
+          mode={locals.mode}
+          prompt={locals.prompt}
+          itemStyle={locals.itemStyle}
+        >
+          {options}
+        </Picker>
+      </View>
       {help}
       {error}
     </View>
