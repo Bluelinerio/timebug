@@ -1,25 +1,33 @@
-var React = require('react');
-var { View, Text, Picker } = require('react-native');
+import React                  from 'react'
+import { View, Text, Picker } from 'react-native'
+import { compose } from 'redux';
 
-function select(locals) {
-  if (locals.hidden) {
+const composeStyles = (...overrideStyles) => (...styles) => 
+  [
+    ...styles,
+    ...overrideStyles
+  ]
+
+
+const select = (locals) => {
+  if (locals.hidden) 
     return null;
-  }
+  
 
   const stylesheet = locals.stylesheet;
 
-
   const formGroupStyle = locals.hasError
     ? stylesheet.formGroupStyle.error
-    : stylesheet.formGroupStyle.normal;
-  const controlLabelStyle = [
-    locals.hasError
-      ? stylesheet.controlLabel.error
-      : stylesheet.controlLabel.normal,
-      {
-        color: locals.config.stepColor
-      }
-  ]
+    : stylesheet.formGroupStyle.normal
+
+  const controlLabelStyle = compose(
+    composeStyles({
+      color: locals.config.stepColor
+    })
+  )(locals.hasError
+    ? stylesheet.controlLabel.error
+    : stylesheet.controlLabel.normal
+  )
 
   const selectStyle = locals.hasError
     ? stylesheet.select.error
@@ -59,7 +67,7 @@ function select(locals) {
             backgroundColor: locals.config.color
           },
           {...stylesheet.pickerContainer.base}
-        ]}>
+      ]}>
         <Picker
           accessibilityLabel={locals.label}
           ref="input"
