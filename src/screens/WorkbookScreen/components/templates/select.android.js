@@ -1,6 +1,5 @@
 import React                  from 'react'
 import { View, Text, Picker } from 'react-native'
-import { compose } from 'redux';
 
 const composeStyles = (...overrideStyles) => (...styles) => 
   [
@@ -20,14 +19,12 @@ const select = (locals) => {
     ? stylesheet.formGroupStyle.error
     : stylesheet.formGroupStyle.normal
 
-  const controlLabelStyle = compose(
-    composeStyles({
+  const controlLabelStyle = composeStyles({
       color: locals.config.stepColor
-    })
-  )(locals.hasError
-    ? stylesheet.controlLabel.error
-    : stylesheet.controlLabel.normal
-  )
+  })(locals.hasError
+      ? stylesheet.controlLabel.error
+      : stylesheet.controlLabel.normal
+    )
 
   const selectStyle = locals.hasError
     ? stylesheet.select.error
