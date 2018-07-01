@@ -77,6 +77,7 @@ export default Object.freeze({
       color: LABEL_COLOR,
       fontSize: FONT_SIZE,
       marginBottom: 7,
+      lineHeight: FONT_SIZE * 1.25 ,
       fontFamily: 'Metropolis',
       fontWeight: 'bold'
     },
@@ -85,6 +86,7 @@ export default Object.freeze({
       color: LABEL_COLOR,
       fontSize: FONT_SIZE,
       marginBottom: 7,
+      lineHeight: FONT_SIZE * 1.25,      
       fontFamily: 'Metropolis',
       fontWeight: 'bold'
     }
