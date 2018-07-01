@@ -219,7 +219,7 @@ class WorkbookScreenComponent extends Component<Props, State> {
                   type={type}
                   ref={this.handleFormRef}
                   options={{
-                    ...{...options, config: { ...config, color: hexToRgba(stepColor, 0.1) }, },
+                    ...{...options, config: { ...config, stepColor, color: hexToRgba(stepColor, 0.1) } },
                     topLevel: true
                   }}
                   value={value}

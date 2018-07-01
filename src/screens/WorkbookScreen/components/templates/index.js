@@ -8,6 +8,7 @@ import customList       from './customList'
 import customTextBox    from './customTextbox'
 import customStruct     from './customStruct'
 import select           from './select'
+import customSwitch         from './customSwitch'
 import customStylesheet from '../../styles/templates/index'
 
 if (__DEV__) {
@@ -50,6 +51,7 @@ const customTemplates = {
   list: customList,
   textbox: customTextBox,
   struct: customStruct,
+  checkbox: customSwitch,
   select
 }
 

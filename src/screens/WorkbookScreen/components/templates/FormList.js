@@ -71,7 +71,14 @@ export default class FormList extends React.Component<Props, State> {
     return (
       text && {
         text,
-        style: hasError ? styles.controlLabel.error : styles.controlLabel.normal
+        style: [
+            hasError 
+              ? styles.controlLabel.error 
+              : styles.controlLabel.normal,
+            {
+              color: config.stepColor
+            }
+          ]
       }
     )
   }

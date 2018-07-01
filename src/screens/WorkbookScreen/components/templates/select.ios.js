@@ -33,9 +33,14 @@ export default function select(props) {
       {label && (
         <Text
           style={
-            hasError
-              ? stylesheet.controlLabel.error
-              : stylesheet.controlLabel.normal
+            [
+              hasError
+                ? stylesheet.controlLabel.error
+                : stylesheet.controlLabel.normal,
+                {
+                  color: config.stepColor
+                }
+            ]
           }
         >
           {label}

@@ -12,9 +12,14 @@ function select(locals) {
   const formGroupStyle = locals.hasError
     ? stylesheet.formGroupStyle.error
     : stylesheet.formGroupStyle.normal;
-  const controlLabelStyle = locals.hasError
-    ? stylesheet.controlLabel.error
-    : stylesheet.controlLabel.normal;
+  const controlLabelStyle = [
+    locals.hasError
+      ? stylesheet.controlLabel.error
+      : stylesheet.controlLabel.normal,
+      {
+        color: locals.config.stepColor
+      }
+  ]
 
   const selectStyle = locals.hasError
     ? stylesheet.select.error

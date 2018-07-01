@@ -34,7 +34,7 @@ class CustomTextInput extends React.Component<Props, State> {
   }
 
   floatingLabel() {
-    const { label, hasError, styles } = this.props
+    const { label, hasError, styles, config } = this.props
     const { fadeAnim } = this.state
     return label ? (
       <Animated.Text
@@ -43,6 +43,7 @@ class CustomTextInput extends React.Component<Props, State> {
           {
             textAlign: 'auto',
             opacity: fadeAnim,
+            color: config.stepColor,
             transform: [
               {
                 translateY: fadeAnim.interpolate({
@@ -59,13 +60,16 @@ class CustomTextInput extends React.Component<Props, State> {
     ) : null
   }
   label() {
-    const { label, hasError, styles } = this.props
+    const { label, hasError, styles, config } = this.props
     return label ? (
       <Text
         style={[
           hasError ? styles.controlLabel.error : styles.controlLabel.normal,
           {
             textAlign: 'auto'
+          },
+          {
+            color: config.stepColor
           }
         ]}
       >
