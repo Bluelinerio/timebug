@@ -1,6 +1,12 @@
 import React                    from "react"
 import { View, Text, Switch }   from "react-native"
 
+const composeStyles = (...overrideStyles) => (...styles) => 
+    [
+        ...styles,
+        ...overrideStyles
+    ]
+
 const checkbox = (locals) => {
     if (locals.hidden) 
         return null;
@@ -11,14 +17,12 @@ const checkbox = (locals) => {
         ? stylesheet.formGroup.error
         : stylesheet.formGroup.normal
 
-    const controlLabelStyle = [
-        locals.hasError 
-            ? stylesheet.controlLabel.error
-            : stylesheet.controlLabel.normal,
-        {
-            color: locals.config.stepColor
-        }
-    ]
+    const controlLabelStyle = composeStyles({
+        color: locals.config.stepColor
+    })(locals.hasError 
+        ? stylesheet.controlLabel.error
+        : stylesheet.controlLabel.normal
+    )
 
     const checkboxStyle = locals.hasError 
         ? stylesheet.checkbox.error
