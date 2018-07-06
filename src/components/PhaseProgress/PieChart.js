@@ -1,38 +1,20 @@
 import React, { Component } from 'react'
+import { View, Text as NativeText } from 'react-native'
 import { PieChart } from 'react-native-svg-charts'
 import { Text } from 'react-native-svg'
+import styles from '../../styles/components/PieCharts'
 
 class PieChartProgress extends Component {
     render() {
-        const data = [
-            {
-                key: 1,
-                amount: 50,
-                svg: { fill: '#600080' },
-            },
-            {
-                key: 2,
-                amount: 50,
-                svg: { fill: '#9900cc' }
-            },
-            {
-                key: 3,
-                amount: 40,
-                svg: { fill: '#c61aff' }
-            },
-            {
-                key: 4,
-                amount: 95,
-                svg: { fill: '#d966ff' }
-            },
-            {
-                key: 5,
-                amount: 35,
-                svg: { fill: '#ecb3ff' }
-            }
-        ]
+        const { height, chartProps, textProps, style, element } = this.props
 
-        const { height, chartProps, textProps, style } = this.props
+        const { label, total, slices } = element
+
+        const data = slices.map(({ amount, color }, index) => ({
+            key: index,
+            amount,
+            svg: { fill: color }
+        }))
 
         const Labels = ({ slices, height, width }) => {
             return slices.map((slice, index) => {
@@ -51,14 +33,17 @@ class PieChartProgress extends Component {
         }
 
         return (
-            <PieChart
-                style={{ height }}
-                valueAccessor={({ item }) => item.amount}
-                data={data}
-                {...chartProps}
-            >
-                <Labels/>
-            </PieChart>
+            <View style={{ borderWidth: 0.25, borderColor: '#717171' }}>
+                <PieChart
+                    style={{ height }}
+                    valueAccessor={({ item }) => item.amount}
+                    data={data}
+                    {...chartProps}
+                />
+                <NativeText style={styles.label}>
+                    {label}
+                </NativeText>
+            </View>
         )
     }
 }

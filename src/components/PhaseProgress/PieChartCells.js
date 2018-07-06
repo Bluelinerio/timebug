@@ -6,15 +6,15 @@ const textProps = {
     fill: 'white',
     textAnchor: 'middle',
     alignmentBaseline: 'middle',
-    fontSize: 12,
+    fontSize: 14,
     stroke: 'black', 
-    strokeWidth: 0.2
+    strokeWidth: 0.3
 }
 
 const chartProps = {
     spacing: 0,
     outerRadius: '95%',
-    innerRadius: '5%'
+    innerRadius: '20%'
 }
 
 const PieChartCells = (props) => {
@@ -34,7 +34,8 @@ const PieChartCells = (props) => {
                     .fill()
                     .map((el, index) => {
                         const element = rowElements[index]
-                        return (<View style={{flex: 1, height, flexDirection: 'column'}}>
+                        return (
+                        <View style={{flex: 1, height, flexDirection: 'column' }}>
                             <CellComponent
                                 key={element.label}
                                 element={element}

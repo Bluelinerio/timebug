@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import Svg, { Circle, G } from 'react-native-svg';
 
 import selectors from '../redux/selectors';
 import PhaseProgress from '../components/PhaseProgress';
@@ -15,72 +14,82 @@ import {
 import PieChart from '../components/PhaseProgress/PieChart';
 import PieChartCells from '../components/PhaseProgress/PieChartCells'
 
+const missingColor = '#9E9E9E'
+
 const mapStateToProps = state => ({
   completedStepIndices: selectors.completedStepIds(state).map(i => i - 1),
-  phaseColors: selectors.phaseColors(state)
+  phaseColors: selectors.phaseColors(state),
 });
 
 const merge = (stateProps, dispatchProps, ownProps) => {
 
   console.log("STATEPROPS", stateProps)
 
+  const completedStepsInPhase = {
+    MEDITATION: stateProps.completedStepIndices.filter(index => phaseForStepAtIndex(index) === MEDITATION).length,
+    VISION_CREATION: stateProps.completedStepIndices.filter(index => phaseForStepAtIndex(index) === VISION_CREATION).length,
+    SELF_ASSESSMENT: stateProps.completedStepIndices.filter(index => phaseForStepAtIndex(index) === SELF_ASSESSMENT).length,
+  }
+
   //TODO: Replace OVERALL color when completed with COMPLETED COLOR
   const elements = [{
-    label: 'Phase 1',
+    label: `Phase 1: ${completedStepsInPhase[MEDITATION]} / ${NUMBER_OF_STEP_FOR_PHASES}`,
     total: NUMBER_OF_STEP_FOR_PHASES,
     slices: [{
       color: stateProps.phaseColors[MEDITATION],
-      completed: stateProps.completedStepIndices.filter(index => phaseForStepAtIndex(index) === MEDITATION).length
+      amount: completedStepsInPhase[MEDITATION]
     }, 
     {
-      color: '#000000',
-      completed: NUMBER_OF_STEP_FOR_PHASES - stateProps.completedStepIndices.filter(index => phaseForStepAtIndex(index) === MEDITATION).length
+      color: missingColor,
+      amount: NUMBER_OF_STEP_FOR_PHASES - completedStepsInPhase[MEDITATION]
     }]
   },
   {
-    label: 'Phase 2',
+    label: `Phase 2: ${completedStepsInPhase[SELF_ASSESSMENT]} / ${NUMBER_OF_STEP_FOR_PHASES}`,
     total: NUMBER_OF_STEP_FOR_PHASES,
     slices: [{
       color: stateProps.phaseColors[SELF_ASSESSMENT],
-      completed: stateProps.completedStepIndices.filter(index => phaseForStepAtIndex(index) === SELF_ASSESSMENT).length
+      amount: completedStepsInPhase[SELF_ASSESSMENT]
     }, 
     {
-      color: '#000000',
-      completed: NUMBER_OF_STEP_FOR_PHASES - stateProps.completedStepIndices.filter(index => phaseForStepAtIndex(index) === SELF_ASSESSMENT).length
+      color: missingColor,
+      amount: NUMBER_OF_STEP_FOR_PHASES - completedStepsInPhase[SELF_ASSESSMENT]
     }]
   },
   {
-    label: 'Phase 3',
+    label: `Phase 3: ${completedStepsInPhase[VISION_CREATION]} / ${NUMBER_OF_STEP_FOR_PHASES}`,
     total: NUMBER_OF_STEP_FOR_PHASES,
     slices: [{
       color: stateProps.phaseColors[VISION_CREATION],
-      completed: stateProps.completedStepIndices.filter(index => phaseForStepAtIndex(index) === VISION_CREATION).length
+      amount: completedStepsInPhase[VISION_CREATION]
     }, {
-      color: '#000000',
-      completed: NUMBER_OF_STEP_FOR_PHASES - stateProps.completedStepIndices.filter(index => phaseForStepAtIndex(index) === VISION_CREATION).length
+      color: missingColor,
+      amount: NUMBER_OF_STEP_FOR_PHASES - completedStepsInPhase[VISION_CREATION]
     }]
   },
   {
-    label: 'Overall',
+    label: `Overall: ${completedStepsInPhase[MEDITATION] 
+      + completedStepsInPhase[SELF_ASSESSMENT] 
+      + completedStepsInPhase[VISION_CREATION] } / ${NUMBER_OF_STEPS}`,
     total: NUMBER_OF_STEPS,
     slices: [{
       color: stateProps.phaseColors[MEDITATION],
-      completed: stateProps.completedStepIndices.filter(index => phaseForStepAtIndex(index) === MEDITATION).length
+      amount: completedStepsInPhase[MEDITATION]
     },
     {
       color: stateProps.phaseColors[SELF_ASSESSMENT],
-      completed: stateProps.completedStepIndices.filter(index => phaseForStepAtIndex(index) === SELF_ASSESSMENT).length
+      amount: completedStepsInPhase[SELF_ASSESSMENT]
     },
     {
       color: stateProps.phaseColors[VISION_CREATION],
-      completed: stateProps.completedStepIndices.filter(index => phaseForStepAtIndex(index) === VISION_CREATION).length
+      amount: completedStepsInPhase[VISION_CREATION]
     }, 
     {
-      color: '#000000',
-      completed: NUMBER_OF_STEPS 
-        - stateProps.completedStepIndices.filter(index => phaseForStepAtIndex(index) === SELF_ASSESSMENT).length
-        - stateProps.completedStepIndices.filter(index => phaseForStepAtIndex(index) === VISION_CREATION).length
-        - stateProps.completedStepIndices.filter(index => phaseForStepAtIndex(index) === MEDITATION).length
+      color: missingColor,
+      amount: NUMBER_OF_STEPS 
+        - completedStepsInPhase[MEDITATION]
+        - completedStepsInPhase[SELF_ASSESSMENT]
+        - completedStepsInPhase[VISION_CREATION]
     }]
   }];
   console.log("ELEMENTS", elements)
@@ -90,18 +99,7 @@ const merge = (stateProps, dispatchProps, ownProps) => {
     ...dispatchProps,
     ...ownProps,
     maxColumns: 3,
-    elements: [{
-      label: 'Phase 1'
-    },
-    {
-      label: 'Phase 2'
-    },
-    {
-      label: 'Phase 3'
-    },
-    {
-      label: 'Overall'
-    }],
+    elements,
     phaseForStepAtIndex
   });
 }

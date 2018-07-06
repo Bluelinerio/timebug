@@ -17,7 +17,7 @@ const MeditationDashobardCellContainer = compose(
   })
 )(MeditationDashobardCell)
 
-const shouldShowUserProgressWithUser = user => user.forms.length > 3
+const shouldShowUserProgressWithUser = user => user.forms.length > 0
 
 const DashboardCellsContainer = ({ show = true }: { show: boolean }) => {
   return show ? (
