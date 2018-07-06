@@ -14,7 +14,7 @@ import styles, {
 import OnLayout               from '../../../../components/OnLayout'
 import HighlighRow            from '../../../../components/HighlighRow'
 import HorizontalScrollView   from '../../../../components/HorizontalScrollView'
-import PhaseProgressContainer from '../../../../containers/PhaseProgressContainer'
+import PhaseProgressContainer from '../../../../containers/PhaseProgressContainerChart'
 
 type HeaderProps = {
   date: string,
@@ -38,7 +38,7 @@ const Header = ({ date, source, title, titleColor }: HeaderProps) => (
 )
 
 const ProgressDashboardCell = () => (
-  <View style={styles.container}>
+  <View style={styles.dashboardCard}>
     <Header title="Progress" titleColor="black" />
     <HorizontalScrollView horizontalPadding={scrollViewHorizontalPadding}>
       {
@@ -47,14 +47,17 @@ const ProgressDashboardCell = () => (
             styles.leaderboardContainer,
             {
               width:
-                Dimensions.get('window').width - scrollViewHorizontalPadding - 20,
-              paddingLeft: 10
+                Dimensions.get('window').width - scrollViewHorizontalPadding - 16 - 24
+            },
+            {
+              padding: 0,
+              margin: 0
             }
           ]}
         >
           <OnLayout
             render={({ width }) =>
-              width > 0 ? <PhaseProgressContainer width={width} /> : null
+              width > 0 ? <PhaseProgressContainer width={width}/> : null
             }
           />
           <Text
