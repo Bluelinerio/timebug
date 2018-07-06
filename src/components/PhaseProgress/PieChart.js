@@ -32,6 +32,8 @@ class PieChartProgress extends Component {
             }
         ]
 
+        const { height, chartProps, textProps, style } = this.props
+
         const Labels = ({ slices, height, width }) => {
             return slices.map((slice, index) => {
                 const { labelCentroid, pieCentroid, data } = slice;
@@ -40,12 +42,7 @@ class PieChartProgress extends Component {
                         key={index}
                         x={pieCentroid[ 0 ]}
                         y={pieCentroid[ 1 ]}
-                        fill={'white'}
-                        textAnchor={'middle'}
-                        alignmentBaseline={'middle'}
-                        fontSize={24}
-                        stroke={'black'}
-                        strokeWidth={0.2}
+                        {...textProps}
                     >
                         {data.amount}
                     </Text>
@@ -55,11 +52,10 @@ class PieChartProgress extends Component {
 
         return (
             <PieChart
-                style={{ height: 200 }}
+                style={{ height }}
                 valueAccessor={({ item }) => item.amount}
                 data={data}
-                spacing={0}
-                outerRadius={'95%'}
+                {...chartProps}
             >
                 <Labels/>
             </PieChart>
