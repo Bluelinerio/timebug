@@ -7,7 +7,6 @@ import gql from 'graphql-tag';
 import type { 
 	Auth, 
 	User, 
-	GraphErrors, 
 	GraphResponse, 
 	ErrorResponse, 
 	CreateFormArgs,
@@ -16,8 +15,7 @@ import type {
 	createCheckinArgs,
 	updateCheckinArgs,
 	filterCheckinsByTemplateArgs
-} from './models'
-
+} from '../../types.js'
 
 export const endpoints = {
 	simple: 'https://api.graph.cool/simple/v1/cjdnw03hv8l6m01133d2ix1pb'
@@ -29,7 +27,7 @@ export const client = new ApolloClient({
   cache: new InMemoryCache()
 });
 
-import { temporaryUserAdditions } from './tmp';
+export const resetApolloStore = client.resetStore;
 
 const _parse = <T>(key: string, graphResponse: GraphResponse): T => {
 	const { data, error } = graphResponse
@@ -38,14 +36,13 @@ const _parse = <T>(key: string, graphResponse: GraphResponse): T => {
 		endpoint:endpoints.simple
 	}
 	if (value) {
-		return temporaryUserAdditions(value)
+		return value
 	}
 	throw { error: error || 'User not found'}
 }
 
 const parse = <T>(key: string) => (graphResponse: GraphResponse): T => _parse(key, graphResponse)
 
-export const resetStore = client.resetStore;
 
 export const authenticateWithFBToken = (fbToken: string): Auth =>
 	client

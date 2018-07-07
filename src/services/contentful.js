@@ -104,7 +104,7 @@ export const fetchPages = () =>
     .getEntries({content_type: CONTENTFUL_PAGE})
     .then(pagesFromResponse)
 
-export const refreshCMS = () =>
+export const refreshContentful = () =>
   Promise.all([
     fetchSteps(),
     fetchColors(),

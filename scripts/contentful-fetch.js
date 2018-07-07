@@ -1,9 +1,7 @@
 #!/usr/bin/env node
-import { refreshCMS, testContentFromCMS } from '../src/services/contentful';
+import { refreshContentful, testContentFromCMS } from '../src/services/contentful';
 const jsonfile = require('jsonfile');
 const path = require('path');
-const util = require('util');
-const fs = require('fs');
 const argv = require('yargs')
     .usage('Usage: $0 ')
     .example('$0 -f foo.jsson', 'count the lines in the given file')
@@ -20,4 +18,4 @@ const writeJSONFile = (content) => jsonfile.writeFile(jsonfilename, content, (er
 
 const justLog = contnet => { console.log('result: \n' + JSON.stringify(contnet)); return contnet}
 
-refreshCMS().then(testContentFromCMS).then(justLog).then(writeJSONFile)
+refreshContentful().then(testContentFromCMS).then(justLog).then(writeJSONFile)
