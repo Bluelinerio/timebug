@@ -6,12 +6,10 @@ import { watchForSelectPutAction } from './selectPutAction';
 import { appStateSagaWatcher } from './sagas/appState.saga';
 import { watchSyncFormData } from './sagas/formData.saga';
 import { watchChangesInFormsAndUpdateAchievements } from './sagas/achivements.saga';
-import { watchForThrottleAction } from './throttle';
 function* appSaga() {
   yield all([
     appStateSagaWatcher(),
     watchForSelectPutAction(),
-    watchForThrottleAction(),
     cmsSaga(),
     loginFlowSaga(),
     goToHomeScreen(),

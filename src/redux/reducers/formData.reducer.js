@@ -50,7 +50,7 @@ const populate = (
     .filter(key => !(key === 'id' && value[key] === undefined))
     .map(key => value[key])
 
-  // filter old value from timestamp, or anything else we might add...
+  // filter old value from timeStamp, or anything else we might add...
   const oldValue = filterWithKeys(
     key => Object.keys(filteredValue).includes(key),
     R.view(R.lensPath([stepId, formId]), data)

@@ -15,7 +15,7 @@ export const navigateOnce = getStateForAction => (action, state) => {
     isEqualRoute({ routeName, params }, state.routes[state.routes.length - 1])
     ? null
     : getStateForAction(action, state);
-  // you might want to replace 'null' with 'state' if you're using redux (see comments below)
+  // you might want to replace 'null' with 'state' if yqqou're using redux (see comments below)
 };
 
 // Official (but not working...)

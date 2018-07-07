@@ -1,10 +1,10 @@
 // @flow
-import React from 'react'
-import { ApolloProvider } from 'react-apollo'
-import { Provider } from 'react-redux'
-import { AppRegistry, Platform, View } from 'react-native'
-import { PersistGate } from 'redux-persist/es/integration/react'
-import codePush from 'react-native-code-push'
+import React                           from 'react'
+import { ApolloProvider }              from 'react-apollo'
+import { Provider }                    from 'react-redux'
+import { AppRegistry, Platform }       from 'react-native'
+import { PersistGate }                 from 'redux-persist/es/integration/react'
+import codePush                        from 'react-native-code-push'
 
 import {
   isNativeUpdateRequired,
@@ -37,9 +37,8 @@ export default class App extends React.Component<{}, State> {
     error: null
   }
   async componentDidCatch(error: any) {
-    if (__DEV__) {
-    } else if (this.state.error && error === this.state.error) {
-      store.dispatch(resetStore)
+    if (!__DEV__ && error !== this.state.error) {
+      store.dispatch(resetStore())
       persistor.purge()
     }
     this.setState({
@@ -56,17 +55,17 @@ export default class App extends React.Component<{}, State> {
     }
     if (Platform.OS === 'ios') {
       return (
-        <ApolloProvider client={client}>
-          <Provider store={store}>
-            <PersistGate
-              loading={<DefaultIndicator />}
-              onBeforeLift={() => {}}
-              persistor={persistor}
-            >
+        <PersistGate
+          loading={<DefaultIndicator />}
+          onBeforeLift={() => {}}
+          persistor={persistor}
+        >
+          <ApolloProvider client={client}>
+            <Provider store={store}>
               <AppNavigation />
-            </PersistGate>
-          </Provider>
-        </ApolloProvider>
+            </Provider>
+          </ApolloProvider>
+        </PersistGate>
       )
     } else {
       return (
@@ -79,11 +78,17 @@ export default class App extends React.Component<{}, State> {
     }
   }
 }
-const codePushConfigurations = {
-  checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
-  installMode: codePush.InstallMode.ON_NEXT_RESUME
+
+if(__DEV__) {
+  AppRegistry.registerComponent(APP_NAME, () => App)
+} else {
+  const codePushConfigurations = {
+    checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
+    installMode: codePush.InstallMode.ON_NEXT_RESUME
+  }
+  
+  const CodepushApp = codePush(codePushConfigurations)(App)
+  
+  AppRegistry.registerComponent(APP_NAME, () => CodepushApp)
+  
 }
-
-const CodepushApp = codePush(codePushConfigurations)(App)
-
-AppRegistry.registerComponent(APP_NAME, () => CodepushApp)

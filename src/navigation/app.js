@@ -4,9 +4,9 @@ import { createReduxBoundAddListener }             from 'react-navigation-redux-
 import { BackHandler, Linking }                    from 'react-native'
 import { connect }                                 from 'react-redux'
 import { uriPrefix }                               from '../constants'
-import { RootNavigator }                           from './index'
+import { RootNavigator , naviationRootKey }        from './index'
 
-const addListener = createReduxBoundAddListener('root')
+const addListener = createReduxBoundAddListener(naviationRootKey)
 
 class AppNavigation extends React.Component {
   componentDidMount() {

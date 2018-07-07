@@ -1,68 +1,55 @@
 // @flow
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { getUserState } from '../redux/selectors/rootReducer.selectors'
-import {
-  UNDETERMINED,
-  ANONYMOUS,
-  AUTHENTICATING
-} from '../services/apollo/models'
-import type { UserState } from '../services/apollo/models'
+import userSelectors from '../redux/selectors/user.selectors'
+import combineSelectors from '../redux/selectors/combineSelectors'
+import type { User } from '../types'
 
 type Props = {
-  renderWithState?: (
-    state: UNDETERMINED | ANONYMOUS | AUTHENTICATING
-  ) => React.Node,
   renderWithAnonymous?: () => React.Node,
-  renderWithUser?: (props?: {}) => React.Node,
+  renderWithUser?: (props: User) => React.Node,
   renderWithAuthenticating?: () => React.Node,
   renderWithUndetermined?: () => React.Node,
+  user: User,
+  userId: string,
+  isLoggedIn: boolean,
+  isAnonymous: boolean,
+  isAuthenticating: boolean,
   children: ({
-    userSate: UserState,
+    user: User,
     isLoggedIn: boolean,
-    undetermined: boolean,
-    authenticating: boolean,
-    anonymous: boolean
+    isAnonymous: boolean,
+    isAuthenticating: boolean
   }) => React.Node
 }
 
-const mapStateToProps = state => ({
-  userState: getUserState(state)
-})
-
-export default connect(mapStateToProps)(
+export default connect(
+  combineSelectors(userSelectors)
+)(
   ({
-    renderWithState,
     renderWithAnonymous,
     renderWithUser,
     renderWithAuthenticating,
     renderWithUndetermined,
-    userState,
+    user,
+    isLoggedIn,
+    isAnonymous,
+    isAuthenticating,
+    isUndetermined,
     children
   }: Props) => {
-    const isLoggedIn = userState && typeof userState === 'object'
-    const undetermined = userState === UNDETERMINED
-    const authenticating = userState === AUTHENTICATING
-    const anonymous = userState === ANONYMOUS
-
-    if (typeof userState === 'string') {
-      if (renderWithState) return renderWithState(userState)
-      if (undetermined && renderWithUndetermined)
-        return renderWithUndetermined()
-      if (anonymous && renderWithAnonymous) return renderWithAnonymous()
-      if (authenticating && renderWithAuthenticating)
-        return renderWithAuthenticating()
-    }
-
-    if (isLoggedIn && renderWithUser) return renderWithUser(userState)
+    if(isAnonymous && renderWithAnonymous) return renderWithAnonymous()
+    if (isUndetermined && renderWithUndetermined) return renderWithUndetermined()
+    if (isAuthenticating && renderWithAuthenticating) return renderWithAuthenticating()
+    if (isLoggedIn && renderWithUser) return renderWithUser(user)
 
     if (children)
       return children({
-        userState,
+        user,
         isLoggedIn,
-        undetermined,
-        authenticating,
-        anonymous
+        isUndetermined,
+        isAuthenticating,
+        isAnonymous
       })
     return null
   }

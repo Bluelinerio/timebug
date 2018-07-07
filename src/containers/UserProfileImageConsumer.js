@@ -10,7 +10,7 @@ type Props = {
 const UserProfileImageConsumer = ({ children }: Props) => (
   <User>
     {({ userState }) => {
-      if (userState && userState.email)
+      if (isLoggedInd && userState.email)
         return children({
           uri: `https://www.gravatar.com/avatar/${md5(userState.email)}`
         })

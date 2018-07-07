@@ -4,13 +4,14 @@ import { NavigationActions, StackNavigator } from 'react-navigation'
 import { withProps, compose } from 'recompose'
 import HeaderCloseButton from '../../components/HeaderCloseButton'
 import { submitCheckin } from '../../redux/actions/user.actions'
+import { CHECKIN_EMOJI } from '../../constants/checkins'
 
 const EmojiPickerScreenContainer = compose(
   withProps(({ navigation: { dispatch, state } }) => {
     return {
       ...state.params,
       updateStoreWithEmojiAndValue: ({ value, emoji }) => dispatch(submitCheckin({
-        name:'emoji',
+        name: CHECKIN_EMOJI,
         data: {
           value,
           emoji

@@ -1,8 +1,7 @@
 // @flow
-import R from 'ramda'
 import { NavigationActions } from 'react-navigation'
-import type { Step } from '../../services/cms'
-import routes from '../../navigation/routes'
+import type { Step }         from '../../services/cms'
+import routes                from '../../navigation/routes'
 
 if (!routes || !routes.root || !routes.root.initialRouteName || !routes.step) {
   throw 'missing routes or nested fields ' + JSON.stringify(routes)

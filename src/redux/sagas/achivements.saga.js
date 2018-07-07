@@ -7,13 +7,12 @@ import {
   call
 } from 'redux-saga/effects';
 import { UPDATE_USER } from '../actionTypes';
-import { GET_USER, updateUser } from '../actions/user.actions';
+import { getUser, updateUser } from '../actions/user.actions';
 import selectors from '../selectors';
 import achievementsList from '../../static/bot/surveyAchievements';
 import {
   createAchievement,
-  deleteAchievement,
-  fetchUserAchievementsWithUserId
+  deleteAchievement
 } from '../../services/apollo';
 
 const achievements = {
@@ -117,8 +116,8 @@ const nextRequiredUpdateForUser = (
 const CREATE_ACHIEVEMENT = 'CREATE_ACHIEVEMENT';
 
 export function* watchChangesInFormsAndUpdateAchievements() {
-  // here the assumptions is that the formData reducer will always Hydrate before the GET_USER action return, becuase we never
-  const requestChan = yield actionChannel([GET_USER.SUCCEEDED, UPDATE_USER]);
+  // here the assumptions is that the formData reducer will always Hydrate before the getUser action return, becuase we never
+  const requestChan = yield actionChannel([getUser.SUCCEEDED, UPDATE_USER]);
   while (true) {
     yield take(requestChan);
     const number = Math.random();

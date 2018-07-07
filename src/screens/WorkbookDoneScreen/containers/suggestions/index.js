@@ -2,6 +2,14 @@
 import {
   HOME_SCREEN,
   DONE_SCREEN,
+} from '../../../../constants/screens'
+import {
+  stepIds,
+  PHASE1,
+  PHASE2,
+  PHASE3,
+} from '../../../../constants/steps'
+import {
   REFLECTION,
   TEAMWORK,
   GOALS,
@@ -11,11 +19,7 @@ import {
   RELATIONSHIPS,
   ENVIRONMENT,
   SPIRITUALITY,
-  PHASE1,
-  PHASE2,
-  PHASE3,
-  stepIds
-} from './constants'
+} from '../../../../constants/suggestions';
 
 import type { StepId, Category } from './types'
 import sequenceMotivationText from './sequenceMotivationText'

@@ -1,84 +1,105 @@
+import R from 'ramda'
 import { connect } from 'react-redux'
 import { withNavigation } from 'react-navigation'
-import { compose, mapProps, renderComponent, branch } from 'recompose'
-import selectors from '../redux/selectors'
+import { compose, withProps, renderComponent, branch } from 'recompose'
+import combineSelectors from '../redux/selectors/combineSelectors'
+import {
+  steps,
+  meditations,
+  isNotLoggedIn,
+  isAnonymous
+} from '../redux/selectors'
 import UserAnonymousError from '../containers/UserAnonymousError'
 import DefaultIndicator from '../components/DefaultIndicator'
 
-const unpackStepParamsFromNavigation = ({
-  state: { params: { stepId, stepColor, stepNumber, formId } }
-}) => ({
-  stepId,
-  stepColor,
-  stepNumber,
-  formId
+const stepIdFromNavigationLens = R.lensPath(['state', 'params', 'stepId'])
+const stepFormIdFromNavigationLens = R.lensPath(['state', 'params', 'formId'])
+const meditationIdFromNavigationLens = R.lensPath(['state', 'params', 'id'])
+
+const withSteps = compose(
+  connect(combineSelectors({ steps })),
+  withProps(props => {
+    if (!props.steps) {
+      throw new Error('missing steps in props')
+    }
+    if (!props.steps.length === 30) {
+      throw new Error('expected 30 steps')
+    }
+  })
+)
+
+const withMeditations = compose(
+  connect(combineSelectors({ meditations })),
+  withProps(props => {
+    if (!props.meditations) {
+      throw new Error('missing meditations in props')
+    }
+    if (!props.meditations.length !== 0) {
+      throw new Error('expected more 1 or more meditations')
+    }
+  })
+)
+
+const withLoginStatus = connect(
+  combineSelectors({
+    isNotLoggedIn,
+    isAnonymous
+  })
+)
+
+const withNavigationValidationLenses = (...lenses) =>
+  compose(
+    withProps(props => {
+      if (!props.navigation) {
+        throw new Error('missing navigation in props')
+      }
+      if (lenses) {
+        lenses.forEach(lens => {
+          if (!R.view(lens, props.navigation)) {
+            throw new Error('expected a step props object in navigation params')
+          }
+        })
+      }
+      return props
+    }),
+    withNavigation
+  )
+
+const withNavigationStepProps = withProps(({ navigation, steps }) => {
+  return {
+    step: steps[R.view(stepIdFromNavigationLens, navigation)],
+    formId: R.view(stepFormIdFromNavigationLens, navigation)
+  }
 })
 
 export const withNavigationAndStep = compose(
-  connect(state => ({ steps: selectors.steps(state) })),
-  withNavigation,
-  mapProps(props => {
-    if (!props.navigation) {
-      if (__DEV__) {
-        throw new Error('missing navigation in props')
-      } else {
-        return props
-      }
-    }
-    const { steps, navigation } = props
-    const {
-      /*, stepColor, stepNumber */
-      stepId,
-      formId
-    } = unpackStepParamsFromNavigation(navigation)
-
-    return {
-      ...props,
-      step: steps[stepId],
-      formId,
-      navigation
-    }
-  })
+  withSteps,
+  withNavigationValidationLenses(
+    stepIdFromNavigationLens,
+    stepFormIdFromNavigationLens
+  ),
+  withNavigationStepProps
 )
 
-const unpackMeditationParamsFromNavigation = ({
-  state: { params: { id } }
-}) => ({
-  id
-})
+const withMeditationFromNavigationOrFallback = withProps(
+  ({ navigation, meditations }) => {
+    const meditationId = !R.view(meditationIdFromNavigationLens, navigation)
+    return {
+      meditation:
+        (meditationId && meditations.find(item => item.id === meditationId)) ||
+        meditations[0]
+    }
+  }
+)
 
 export const withNavigationAndMeditation = compose(
-  connect(state => ({
-    meditations: selectors.meditations(state)
-  })),
-  withNavigation,
-  mapProps(props => {
-    if (!props.navigation) {
-      if (__DEV__) {
-        throw new Error('missing navigation in props')
-      } else {
-        return props
-      }
-    }
-    const { meditations, navigation } = props
-    const meditationIdFromNavigation = unpackMeditationParamsFromNavigation(
-      navigation
-    ).id
-    const meditation =
-      meditationIdFromNavigation &&
-      meditations.find(item => item.id === meditationIdFromNavigation) || meditations[0]
-    return {
-      ...props,
-      meditation
-    }
-  })
+  withMeditations,
+  withNavigationValidationLenses(meditationIdFromNavigationLens),
+  withMeditationFromNavigationOrFallback
 )
 
 export const userRequired = compose(
-  connect(state => ({
-    isNotLoggedIn: selectors.isNotLoggedIn(state),
-    isAnonymous: selectors.isAnonymous(state)
-  })),
+  withLoginStatus,
   branch(
     ({ isNotLoggedIn }) => isNotLoggedIn,
     branch(

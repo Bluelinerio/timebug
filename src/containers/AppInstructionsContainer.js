@@ -1,6 +1,7 @@
 // @flow
 import * as React from 'react'
 import { connect } from 'react-redux'
+import { appInstructions } from '../redux/selectors/cms.selectors'
 import { getCms } from '../redux/selectors/rootReducer.selectors'
 
 type Props = {
@@ -12,14 +13,9 @@ type Props = {
   }) => React.Node
 }
 
-const pages = (state) => getCms(state).pages
-const appInstructions = (state: any) => pages(state)['AppInstructions']
-
-const mapStateToProps = state => ({
-  appInstructions: appInstructions(state)
-})
-
-const AppInstructionsContainer = connect(mapStateToProps)(
+const AppInstructionsContainer = connect(
+  composeSelectors({ appInstructions } )
+)(
   ({
     render,
     renderWithNotAvialble,
@@ -31,4 +27,5 @@ const AppInstructionsContainer = connect(mapStateToProps)(
       ? renderWithNotAvialble(rest)
       : null
 )
+
 export default AppInstructionsContainer

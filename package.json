@@ -129,7 +129,8 @@
       "src/**/*.{js,jsx}",
       "!<rootDir>/node_modules/",
       "!**/__e2e__/**",
-      "!<rootDir>/__e2e__/"
+      "!<rootDir>/__e2e__/",
+      "!<rootDir>/**.lock"
     ],
     "transform": {
       "^.+\\.jsx$": "babel-jest",

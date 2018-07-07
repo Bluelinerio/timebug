@@ -1,8 +1,7 @@
-/**
- * @flow
- */
+//@flow
+import { waitFor, element, by } from 'detox';
 
-describe('Step Component', () => {
+describe.skip('Step Component', () => {
     it('Should Open StepScreen', async () => {
       await waitFor(element(by.id('login_button'))).toBeVisible().withTimeout(15000);
       await expect(element(by.id('login_button'))).toBeVisible();
@@ -23,7 +22,7 @@ describe('Step Component', () => {
         await waitFor(element(by.id('step_subtitle'))).toBeVisible().withTimeout(15000);
         await expect(element(by.id('step_subtitle'))).toBeVisible();
         await expect(element(by.id('step_screen_step_number'))).toExist();
-        await expect(element(by.id('step_screen_close_icon'))).toExist();       
+        await expect(element(by.id('step_screen_close_icon'))).toExist();
         await expect(element(by.id('step_content_scrollable'))).toExist();
         await expect(element(by.id('step_to_assignment_button'))).toExist();
     })
@@ -39,7 +38,7 @@ describe('Step Component', () => {
         await expect(element(by.id('step_subtitle'))).toBeVisible();
         await element(by.id('step_content_scrollable')).scroll(200,'down')
         await expect(element(by.id('step_content_scrollable'))).toBeVisible();
-        //This also scrolls to bottom 
+        //This also scrolls to bottom
         await element(by.id('step_content_scrollable')).scroll(200,'up')
     })
 
@@ -50,12 +49,12 @@ describe('Step Component', () => {
         await expect(element(by.id('login_button'))).toBeNotVisible();
         await waitFor(element(by.id('step_start_button'))).toBeVisible().withTimeout(15000);
         await element(by.id('step_start_button')).tap();
-        await waitFor(element(by.id('step_subtitle'))).toBeVisible().withTimeout(15000);        
-        await expect(element(by.id('step_subtitle'))).toBeVisible();      
+        await waitFor(element(by.id('step_subtitle'))).toBeVisible().withTimeout(15000);
+        await expect(element(by.id('step_subtitle'))).toBeVisible();
         await element(by.id('step_content_scrollable')).scrollTo('bottom')
         await expect(element(by.id('step_content_scrollable'))).toBeVisible();
         await expect(element(by.id('step_to_assignment_button'))).toBeVisible()
-        //This also scrolls to bottom 
+        //This also scrolls to bottom
         await element(by.id('step_content_scrollable')).scrollTo('top')
     })
 
@@ -66,12 +65,11 @@ describe('Step Component', () => {
         await expect(element(by.id('login_button'))).toBeNotVisible();
         await waitFor(element(by.id('step_start_button'))).toBeVisible().withTimeout(15000);
         await element(by.id('step_start_button')).tap();
-        await waitFor(element(by.id('step_subtitle'))).toBeVisible().withTimeout(15000);        
+        await waitFor(element(by.id('step_subtitle'))).toBeVisible().withTimeout(15000);
         await element(by.id('step_content_scrollable')).scrollTo('bottom')
         await expect(element(by.id('step_content_scrollable'))).toBeVisible();
         await expect(element(by.id('step_to_assignment_button'))).toBeVisible()
         await element(by.id('step_to_assignment_button')).tap();
     })
   });
-  
-  
+

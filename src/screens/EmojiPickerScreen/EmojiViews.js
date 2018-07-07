@@ -6,7 +6,6 @@ import {
   StyleSheet,
   TouchableOpacity,
   Platform,
-  Dimensions,
   ActivityIndicator,
   FlatList
 } from 'react-native'

@@ -1,7 +1,6 @@
 //@flow
 export type Selector = (state: {}, ownProps: {}) => *
-
-export const combineSelectors = (selectors: {}) => (state: {}, ownProps: {}): * => {
+export const combineSelectors = (selectors: { [string] : Selector }) => (state: {}, ownProps: {}): {} => {
   if (__DEV__) {
     const keyForNotAFunction = Object.keys(selectors).find(key => typeof selectors[key] !== 'function')
     if(keyForNotAFunction) {

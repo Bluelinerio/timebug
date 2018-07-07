@@ -2,7 +2,8 @@ import {
   RootNavigator,
   rootConfiguration,
   assignmentFlowConfiguration
-} from '../../navigation'
+} from './index'
+import routes from '../navigation/routes'
 
 const initialRouteState = RootNavigator.router.getStateForAction(
   RootNavigator.router.getActionForPathAndParams(
@@ -29,7 +30,6 @@ function navReducer(state = initialState, action) {
 import storage from 'redux-persist/lib/storage'
 import { persistReducer, createMigrate } from 'redux-persist'
 
-import routes from '../../navigation/routes'
 const requiredParamFieldsForRoute = (route: string) => {
   switch (route) {
     case routes.root.AssignmentFlow:

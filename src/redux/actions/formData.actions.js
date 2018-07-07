@@ -1,5 +1,5 @@
 // @flow
-import { action } from '../utils';
+import { action } from './utils';
 import {
   INCREMENT_FORM_DATA_QUEUE,
   DECREMENT_FORM_DATA_QUEUE,
@@ -11,7 +11,6 @@ import {
   START_LOADING_FORMDATA,
   STOP_LOADING_FORMDATA
 } from '../actionTypes';
-import { throttleAction } from '../throttle';
 
 export type SubmitAction = {
   formId: string,

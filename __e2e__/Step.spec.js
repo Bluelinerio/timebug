@@ -1,13 +1,12 @@
-/**
- * @flow
- */
+// @flow
+import { waitFor, element, by } from 'detox';
 
-describe('Step Component', () => {
+describe.skip('Step Component', () => {
   it('Should redirect to a Step ', async () => {
     await waitFor(element(by.id('login_button'))).toBeVisible().withTimeout(15000);
     await expect(element(by.id('login_button'))).toBeVisible();
     await element(by.id('login_button')).tap();
-    await expect(element(by.id('login_button'))).toBeNotVisible();    
+    await expect(element(by.id('login_button'))).toBeNotVisible();
     await waitFor(element(by.id('step_title'))).toBeVisible().withTimeout(10000);
     await expect(element(by.id('step_title'))).toBeVisible();
   });

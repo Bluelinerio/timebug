@@ -1,8 +1,6 @@
 // @flow
 import * as React from 'react'
-import { connect } from 'react-redux'
-import { compose, mapProps } from 'recompose'
-import selectors from '../../redux/selectors'
+import { compose, withProps } from 'recompose'
 import MeditationScreenComponent from './components/MeditationScreenComponent'
 import { StackNavigator, NavigationActions } from 'react-navigation'
 import styles from '../styles'
@@ -13,8 +11,7 @@ const goneSoundFile = require('../../resources/sounds/gong.wav')
 
 const MeditationScreenContainer = compose(
   withNavigationAndMeditation,
-  mapProps(({ navigation: { dispatch }, meditation, rest }) => ({
-    ...rest,
+  withProps(({ navigation: { dispatch }, meditation }) => ({
     ...meditation,
     soundfile: meditation.audioFile ? meditation.audioFile : goneSoundFile,
     done: () => dispatch(NavigationActions.back())

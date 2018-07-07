@@ -13,8 +13,7 @@ import {
 import { delay } from 'redux-saga'
 
 import { createForm, updateForm, resetUserSteps } from '../../services/apollo'
-import type { UpdateormArgs } from '../../services/apollo/models'
-
+import type { UpdateormArgs } from '../../types'
 import {
   SYNC_FORM_DATA,
   RESET_FORMS_REQUEST,
@@ -23,7 +22,7 @@ import {
   STOP_LOADING_FORMDATA
 } from '../actionTypes'
 
-import { GET_USER, updateUser, resetUserSteps as resetAction } from '../actions/user.actions'
+import { getUser, updateUser } from '../actions/user.actions'
 import {
   incrementFormDataQueue,
   decrementFormDataQueue,
@@ -31,6 +30,7 @@ import {
   setNotLoadingFormData
 } from '../actions/formData.actions'
 import selectors from '../selectors'
+import { stepIds } from '../../constants/steps'
 import { diffObjs } from '../utils/diffObjs'
 
 export const UPDATE_AND_CREATE_FORMS = 'UPDATE_AND_CREATE_FORMS'
@@ -38,13 +38,6 @@ export const UPDATE_AND_CREATE_FORMS = 'UPDATE_AND_CREATE_FORMS'
 // export const LOG = 'LOG';
 //const log = payload => yield put({ type: LOG,  payload });
 const log = payload => console.log(payload)
-
-const range = (start, end) =>
-  Array(end - start)
-    .fill()
-    .map((v, i) => i + start)
-
-const stepIds = range(1, 31).map((v, i) => v.toString())
 
 const removeAllKeyButStepIds = (obj: {}) =>
   Object.keys(obj)
@@ -209,7 +202,7 @@ function* watchForUpdateOrCreate() {
 
 export function* watchSyncFormData() {
   // here the assumptions is that the formData reducer will always Hydrate before the GET_USER action return, becuase we never
-  const requestChan = yield actionChannel([GET_USER.SUCCEEDED, SYNC_FORM_DATA])
+  const requestChan = yield actionChannel([getUser.SUCCEEDED, SYNC_FORM_DATA])
   yield fork(watchForResetSteps)
   yield fork(watchForUpdateOrCreate)
   yield fork(watchForLoadingForm)

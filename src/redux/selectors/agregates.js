@@ -4,12 +4,12 @@ import { AgregateReducerKeys } from '../reducers/agregates.reducer'
 
 export const stepGuideLens = R.lensPath([
   AgregateReducerKeys.agregate,
-  NavigationReducerKeys.pageVisits,
+  NavigationReducerKeys.visits,
   NavigationReducerKeys.pages.stepGuide
 ])
 export const stepWorkbookLens = R.lensPath([
   AgregateReducerKeys.agregate,
-  NavigationReducerKeys.pageVisits,
+  NavigationReducerKeys.visits,
   NavigationReducerKeys.pages.stepWorkbook
 ])
 

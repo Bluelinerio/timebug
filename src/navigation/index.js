@@ -11,12 +11,14 @@ import DashboardScreen from '../screens/DashboardScreen'
 import MeditationScreen from '../screens/MeditationScreen'
 import MarkdownScreen from '../screens/MarkdownScreen'
 import EmojiPickerScreen from '../screens/EmojiPickerScreen'
-import { uriPrefix } from '../constants'
+// import { uriPrefix } from '../constants'
 import routes from './routes'
 
 if (!routes || !routes.root || !routes.root.initialRouteName || !routes.step) {
   throw 'missing routes or nested fields ' + JSON.stringify(routes)
 }
+
+export const naviationRootKey = 'root'
 
 // TODO: there's an issue with moving from the current setup where the import of each screen gets you an object that looks like { screen: } rather than a component, so I added
 export const assignmentFlowConfiguration = {

@@ -40,7 +40,7 @@ const WorkbookDoneScreen = ({
       {
         isSynchingFormData
           ? <WorkbookIndicator />
-          : <View> 
+          : <View>
               <View style={[styles.messageContainer]}>
                 <Text
                   style={[
@@ -53,7 +53,7 @@ const WorkbookDoneScreen = ({
                 </Text>
                 <Text style={styles.suggestionText}>
                     {
-                      insightText && 
+                      insightText &&
                         <Text>
                           <Text style={dashboardStyles.strong}>{`Did You Know?\n`}</Text>
                           <Text>{`${insightText}'\n\n`}</Text>
@@ -68,7 +68,7 @@ const WorkbookDoneScreen = ({
           !isSynchingFormData
                   <Button backgroundColor={white} {...button} />
               </View>
-            </View>  
+            </View>
       }
     </View>
   )

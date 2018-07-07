@@ -1,5 +1,6 @@
 // @flow
-import { FETCH_CMS, SEED_CMS } from '../actions/cms.actions'
+import { fetchCms } from '../actions/cms.actions'
+import { SEED_CMS } from '../actionTypes';
 import type { Step, Colors, OnobardingPage, Page } from '../../services/cms'
 
 export type CMSState = {
@@ -32,16 +33,16 @@ function cmsReducer(state: CMSState = initialState, action: StepsAction) {
         ...state,
         ...action.payload,
       }
-    case FETCH_CMS.STARTED:
+    case fetchCms.STARTED:
       return { ...state, requestCount: state.requestCount + 1 }
-    case FETCH_CMS.SUCCEEDED:
+    case fetchCms.SUCCEEDED:
       return {
         ...state,
         ...action.payload,
         lastFetchDate: Date.now(),
         requestCount: state.requestCount - 1
       }
-    case (FETCH_CMS.CANCELLED, FETCH_CMS.ERRORED):
+    case (fetchCms.CANCELLED, fetchCms.ERRORED):
       return {
         ...state,
         requestCount: state.requestCount - 1,
@@ -51,4 +52,5 @@ function cmsReducer(state: CMSState = initialState, action: StepsAction) {
       return state
   }
 }
+export const name = 'cms';
 export default cmsReducer

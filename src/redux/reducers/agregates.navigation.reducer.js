@@ -8,7 +8,7 @@ const NavigationActionFormIdLens = R.lensPath(['params', 'formId'])
 const NavigationActionRouteNameLens = R.lensPath(['routeName'])
 
 export const NavigationReducerKeys = {
-  pageVisits: 'pageVisits',
+  visits: 'visits',
   pages: {
     stepWorkbook: 'stepWorkbook',
     stepGuide: 'stepGuide'
@@ -19,13 +19,13 @@ export const ActionTypes = [NavigationActions.NAVIGATE]
 const navigationReducer = (state = {}, action) => {
   const stepWorkbookLensWithStep = (stepId: string) =>
     R.lensPath([
-      NavigationReducerKeys.pageVisits,
+      NavigationReducerKeys.visits,
       NavigationReducerKeys.pages.stepWorkbook,
       stepId
     ])
   const stepGuideLensWithStep = (stepId: string) =>
     R.lensPath([
-      NavigationReducerKeys.pageVisits,
+      NavigationReducerKeys.visits,
       NavigationReducerKeys.pages.stepGuide,
       stepId
     ])
@@ -35,7 +35,7 @@ const navigationReducer = (state = {}, action) => {
     ...(append || {})
   })
 
-  const tagPageVisits = (state = {}, action) => {
+  const tagVisit = (state = {}, action) => {
     switch (R.view(NavigationActionRouteNameLens, action)) {
       case routes.root.AssignmentFlow:
       case routes.step.StepScreen: {
@@ -58,15 +58,15 @@ const navigationReducer = (state = {}, action) => {
     }
   }
 
-  const tagLastVisitedPage = (state, action) => ({
+  const tagLastVisited = (state, action) => ({
     ...state,
     lastVisitedPage: {
       routeName: R.view(NavigationActionRouteNameLens, action),
-      timestamp: Date.now()
+      timeStamp: Date.now()
     }
   })
 
-  return composeReducers(tagPageVisits, tagLastVisitedPage)(state, action)
+  return composeReducers(tagVisit, tagLastVisited)(state, action)
 }
 
 export default navigationReducer

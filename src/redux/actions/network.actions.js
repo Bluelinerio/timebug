@@ -1,5 +1,5 @@
 // @flow
-import { action } from '../utils';
+import { action } from './utils';
 import {
   INCREMENT_REQUEST_COUNT,
   DECREMENT_REQUEST_COUNT

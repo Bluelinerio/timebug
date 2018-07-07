@@ -1,6 +1,8 @@
 import {
   HOME_SCREEN,
   DONE_SCREEN,
+} from '../../../../constants/screens'
+import {
   REFLECTION,
   TEAMWORK,
   GOALS,
@@ -14,7 +16,7 @@ import {
   PHASE2,
   PHASE3,
   FINISHED
-} from './constants'
+} from '../../../../constants/suggestions';
 
 const categoryMotivationText = {
   [REFLECTION]: {
