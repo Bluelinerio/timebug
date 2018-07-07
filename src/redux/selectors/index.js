@@ -76,6 +76,17 @@ const sortForms = (a: Form, b: Form) => a.stepId - b.stepId
 const sortFormsChronologically = (a: Form, b: Form) =>
   Date.parse(b.updatedAt) - Date.parse(a.updatedAt)
 // stepId on the server is an Int!. A clear idea how to
+
+const hasCompletedForms = (state: any): boolean =>
+user(state) && user(state).forms.length > 1
+const hasNoCompletedForms = R.compose(
+  R.not,
+  hasCompletedForms
+)
+
+const completedForms = (state: any): [Form] =>
+  user(state) ? user(state).forms.map(f => f) : []
+
 const completedFormsData = (state: any) =>
   completedForms(state).reduce(
     (forms, form) => ({
@@ -84,9 +95,6 @@ const completedFormsData = (state: any) =>
     }),
     {}
   )
-
-const completedForms = (state: any): [Form] =>
-  user(state) ? user(state).forms.map(f => f) : []
 
 const completedFormsChronologically = (state: any): [Form] =>
   completedForms(state).sort(sortFormsChronologically)
@@ -222,6 +230,8 @@ const selectors = {
   isNotLoggedIn,
   isAnonymous,
   isAuthenticating,
+  hasCompletedForms,
+  hasNoCompletedForms,
   completedForms,
   sortedCompletedForms,
   completedFormsChronologically,
