@@ -5,8 +5,12 @@ import { connect } from 'react-redux'
 import { Text, TouchableOpacity } from 'react-native'
 import styles from '../../styles/dashboard.styles'
 import { resetRequest } from '../../../redux/actions/formData.actions'
+import * as selectors from '../../../redux/selectors'
+import { combineSelectors } from '../../../redux/selectors/utils'
 
-const ResetStepsButton = ({ reset }) => {
+const { isLoggedIn } = selectors.default;
+
+const ResetStepsButton = ({ reset } : { reset: () => void }) => {
     return (
         <TouchableOpacity style={styles.reset} onPress={reset} >
             <Text style={styles.resetText}>DEV: Press to reset steps</Text>
@@ -14,8 +18,7 @@ const ResetStepsButton = ({ reset }) => {
     )
 }
 
-const mapDispatchToProps = dispatch => ({
-  reset: () => dispatch(resetRequest())
-})
-
-export default connect(null, mapDispatchToProps)(ResetStepsButton)
+export default connect(
+    combineSelectors({ isLoggedIn }),
+    ({ reset: resetRequest })
+)(ResetStepsButton)

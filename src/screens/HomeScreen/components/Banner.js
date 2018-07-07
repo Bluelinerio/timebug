@@ -22,21 +22,21 @@ const Banner = () => {
               .toUpperCase()}
           </Text>
           <Text style={[styles.title, styles.strong]}>{`Welcome`}</Text>
-          {
-            (__DEV__) &&
-                  <View>
-                    <ResetStepsButton />
-                    <DisplayStepsContainer />                    
-                  </View>
-          }
         </View>
         <LogoutButtonContainer>
           <UserProfileImageConsumer>
             {source => <Image source={source} style={styles.headerAvatar} />}
           </UserProfileImageConsumer>
         </LogoutButtonContainer>
-      </View>
     </View>
+    {
+      (__DEV__) &&
+            <View style={{ padding: 15 }}>
+              <ResetStepsButton />
+              <DisplayStepsContainer />
+            </View>
+    }
+  </View>
   )
 }
 
