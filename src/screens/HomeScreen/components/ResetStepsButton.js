@@ -10,8 +10,8 @@ import { combineSelectors } from '../../../redux/selectors/combineSelectors'
 
 const { isLoggedIn } = selectors.default;
 
-const ResetStepsButton = ({ reset } : { reset: () => void }) => {
-    return (
+const ResetStepsButton = ({ isLoggedIn, reset } : { isLoggedIn: boolean, reset: () => void }) => {
+    return isLoggedIn && (
         <TouchableOpacity style={styles.reset} onPress={reset} >
             <Text style={styles.resetText}>DEV: Press to reset steps</Text>
         </TouchableOpacity>
