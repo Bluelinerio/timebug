@@ -1,8 +1,8 @@
 // @flow
 import R from 'ramda'
-import { getUserState, getCms, getFormData } from '../rootReducer'
+import { getUserState, getCms, getFormData } from './rootReducer.selectors'
 import {
-  UNDETERMINED,
+  // UNDETERMINED,
   ANONYMOUS,
   AUTHENTICATING
 } from '../../services/apollo/models'
@@ -11,10 +11,10 @@ import workbooks from '../../screens/WorkbookScreen/forms'
 import { removeIvalidValuesInsteadOfDoingAnyMigrationForNow } from '../tcomb'
 
 import type { User, Form } from '../../services/apollo/models'
-import type { Colors, Step, Slide } from '../../services/cms'
+import type { Step, Slide } from '../../services/cms'
 
-export const filterWithKeys = (pred, obj) =>
-  R.pipe(R.toPairs, R.filter(R.apply(pred)), R.fromPairs)(obj)
+export const filterWithKeys = (predicate, obj) =>
+  R.pipe(R.toPairs, R.filter(R.apply(predicate)), R.fromPairs)(obj)
 
 function isPositiveInteger(n) {
   return n >>> 0 === parseFloat(n)
@@ -199,7 +199,7 @@ const isSynchingFormData = (state: any) => getFormData(state).requestCount > 0
 
 const loadingFormData = (state: any) => getFormData(state).loadingFormData
 
-export default {
+const selectors = {
   getCms,
   sortedSteps,
   sortedStepsWithForms,
@@ -234,3 +234,5 @@ export default {
   isSynchingFormData,
   loadingFormData
 }
+
+export default selectors
