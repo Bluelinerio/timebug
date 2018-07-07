@@ -1,11 +1,6 @@
-import { createActionsObject } from './utils'
-
 export const REQUEST = 'REQUEST'
 export const SUCCESS = 'SUCCESS'
 export const FAILURE = 'FAILURE'
-
-const createRequestTypes = base =>
-  createActionsObject(base, REQUEST, SUCCESS, FAILURE)
 
 export const INCREMENT_REQUEST_COUNT = 'INCREMENT_REQUEST_COUNT'
 export const DECREMENT_REQUEST_COUNT = 'DECREMENT_REQUEST_COUNT'
