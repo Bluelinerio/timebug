@@ -6,7 +6,7 @@ import { Text, TouchableOpacity } from 'react-native'
 import styles from '../../styles/dashboard.styles'
 import { resetRequest } from '../../../redux/actions/formData.actions'
 import * as selectors from '../../../redux/selectors'
-import { combineSelectors } from '../../../redux/selectors/utils'
+import { combineSelectors } from '../../../redux/selectors/combineSelectors'
 
 const { isLoggedIn } = selectors.default;
 
