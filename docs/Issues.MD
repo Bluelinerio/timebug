@@ -1,8 +1,9 @@
 Issues
 ------
 
+- react-native 0.54.4 - Yellow box Warning `isMounted(..) is deprecated in plain JavaSript React classes` is a react-native issue (#18868)[https://github.com/facebook/react-native/issues/18868] need to upgrade react-native when the fix it.
 - Upgrade to react-native 0.53
-  - iOS Error: 
+  - iOS Error:
     - `react-native-vector-icons/MaterialIcons`, the Haste package `react-native-vector-icons` was found`
     - Resolution: `rm ./node_modules/react-native/local-cli/core/__fixtures__/files/package.json`
     - Source: https://github.com/oblador/react-native-vector-icons/issues/626
@@ -17,7 +18,7 @@ Issues
 
 - react-native-sound : Android
   - ```java:43: error: cannot find symbol final ReactContext reactContext = this.context```
-  - [github issue:](https://github.com/zmxv/react-native-sound/issues/382) 
+  - [github issue:](https://github.com/zmxv/react-native-sound/issues/382)
   - Solution: Revert to @0.10.5
 
 
