@@ -20,14 +20,13 @@ import {
   RESET_FORMS_REQUEST, 
   RESET_FORMS, 
   START_LOADING_FORMDATA, 
-  STOP_LOADING_FORMDATA 
+  STOP_LOADING_FORMDATA
 } from '../actionTypes'
 
 import { GET_USER, updateUser, resetUserSteps as resetAction } from '../actions/user.actions'
 import {
   incrementFormDataQueue,
   decrementFormDataQueue,
-  unsetLoadingFormData,
   setLoadingFormData,
   stopLoadingFormData,
   startLoadingFormData
@@ -70,7 +69,7 @@ function* mySelectors(props) {
   return result
 }
 
-function* reviewCurrentUserFormsAndFormDataCompareAndUpfateToState() {
+function* reviewCurrentUserFormsAndFormDataCompareAndUpdateToState() {
   //const userId = yield select(selectors.userId)
   yield put(startLoadingFormData())
   
@@ -187,12 +186,12 @@ function* _handleReset(){
 function* watchForLoadingForm() {
   while(true){
     yield take(START_LOADING_FORMDATA)
-    yield put(setLoadingFormData())
+    yield put(setLoadingFormData(true))
     yield race([
       take(STOP_LOADING_FORMDATA),
       delay(5000) 
     ])
-    yield put(unsetLoadingFormData())
+    yield put(setLoadingFormData(false))
   }
 }
 
@@ -217,7 +216,7 @@ export function* watchSyncFormData() {
   yield fork(watchForLoadingForm)
   while (true) {
     yield take(requestChan)
-    yield fork(reviewCurrentUserFormsAndFormDataCompareAndUpfateToState)
+    yield fork(reviewCurrentUserFormsAndFormDataCompareAndUpdateToState)
   }
 }
 

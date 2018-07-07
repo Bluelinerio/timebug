@@ -89,14 +89,9 @@ const decrement = (state: FormDataState): FormDataState => ({
   requestCount: state.requestCount - 1
 })
 
-const setLoadingFormData = (state: FormDataState): FormDataState => ({
+const setLoadingFormData = (state: FormDataState, payload: boolean): FormDataState => ({
   ...state,
-  loadingFormData: true
-})
-
-const unsetLoadingFormData = (state: FormDataState): FormDataState => ({
-  ...state,
-  loadingFormData: false
+  loadingFormData: payload !== false
 })
 
 function formDataReducer(
@@ -111,9 +106,7 @@ function formDataReducer(
     case DECREMENT_FORM_DATA_QUEUE:
       return decrement(state)
     case SET_LOADING_FORMDATA:
-      return setLoadingFormData(state)
-    case UNSET_LOADING_FORMDATA:
-      return unsetLoadingFormData(state)
+      return setLoadingFormData(state, action.payload)
     case RESET_FORMS: 
       return initialState
     default:
