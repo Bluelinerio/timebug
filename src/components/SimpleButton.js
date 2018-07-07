@@ -21,10 +21,18 @@ const styles = StyleSheet.create({
       }
 })
 
-const SimpleButton = ({ text='DEV: Press to reset steps', reset } : { text: string, reset: () => void }) => {
-    return (
-        <TouchableOpacity style={styles.reset} onPress={reset} >
-            <Text style={styles.resetText}>{text}</Text>
+const SimpleButton = ({
+    hide,
+    text,
+    onPress
+} : {
+    show: boolean,
+    text: string,
+    onPress: () => void
+}) => {
+    return !hide && (
+        <TouchableOpacity style={styles.reset} onPress={onPress} >
+            <Text style={styles.resetText}>{'DEV: Press to reset steps'}</Text>
         </TouchableOpacity>
     )
 }
