@@ -10,7 +10,7 @@ import { headerBackgrounds }                   from '../../../resources/images'
 import {
   submitFormValue,
   syncFormData,
-  startLoadingFormData
+  setLoadingFormData
 }                                              from '../../../redux/actions/formData.actions'
 import {
   goToWorkbookDoneScreen,
@@ -60,7 +60,7 @@ const merge = ({
 
   const nextActions = isFinalForm
     ? [
-        startLoadingFormData(),
+        setLoadingFormData(),
         syncFormData(),
         goToWorkbookDoneScreen({
           params
