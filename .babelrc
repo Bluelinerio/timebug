@@ -6,5 +6,16 @@
   "plugins": [
     ["transform-decorators-legacy","transform-react-jsx-source"]
   ],
-  "retainLines": true
+  "retainLines": true,
+  "env": {
+    "production": {
+      "plugins": ["transform-es2015-modules-commonjs"]
+    },
+    "development": {
+      "plugins": ["transform-es2015-modules-commonjs"]
+    },
+    "test": {
+      "plugins": ["transform-es2015-modules-commonjs"]
+    }
+  },
 }
