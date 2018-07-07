@@ -33,7 +33,7 @@ class PieChartProgress extends Component {
         }
 
         return (
-            <View style={{ borderWidth: 0.25, borderColor: '#717171' }}>
+            <View>
                 <PieChart
                     style={{ height }}
                     valueAccessor={({ item }) => item.amount}
