@@ -7,18 +7,29 @@ import {
   putResolve,
   take,
   select,
-  takeLatest
+  takeLatest,
+  race
 } from 'redux-saga/effects'
 import { delay } from 'redux-saga'
 
 import { createForm, updateForm, resetUserSteps } from '../../services/apollo'
 import type { UpdateormArgs } from '../../services/apollo/models'
 
-import { SYNC_FORM_DATA, RESET_FORMS_REQUEST, RESET_FORMS } from '../actionTypes'
-import { GET_USER, updateUser } from '../actions/user.actions'
+import { 
+  SYNC_FORM_DATA, 
+  RESET_FORMS_REQUEST, 
+  RESET_FORMS, 
+  START_LOADING_FORMDATA, 
+  STOP_LOADING_FORMDATA
+} from '../actionTypes'
+
+import { GET_USER, updateUser, resetUserSteps as resetAction } from '../actions/user.actions'
 import {
   incrementFormDataQueue,
-  decrementFormDataQueue
+  decrementFormDataQueue,
+  setLoadingFormData,
+  stopLoadingFormData,
+  startLoadingFormData
 } from '../actions/formData.actions'
 import selectors from '../selectors'
 import { diffObjs } from '../utils/diffObjs'
@@ -58,8 +69,10 @@ function* mySelectors(props) {
   return result
 }
 
-function* reviewCurrentUserFormsAndFormDataCompareAndUpfateToState() {
+function* reviewCurrentUserFormsAndFormDataCompareAndUpdateToState() {
   //const userId = yield select(selectors.userId)
+  yield put(startLoadingFormData())
+  
   log({
     info: 'Started reviewing differences between form data and user forms'
   })
@@ -92,8 +105,9 @@ function* reviewCurrentUserFormsAndFormDataCompareAndUpfateToState() {
     removeAllKeyButStepIds(formData),
     removeAllKeyButStepIds(completedFormsData)
   )
-
+  
   if (!difference && !onlyOnLeft) {
+    yield put(stopLoadingFormData())
     log({
       info:
         'Completed reviewing differences between form data and user forms. No sync is needed'
@@ -132,6 +146,10 @@ function* reviewCurrentUserFormsAndFormDataCompareAndUpfateToState() {
         }
       ]
     }, [])
+    
+  const formDataRequestCount = yield select(
+    state => state.formData.requestCount
+  )
 
   log({
     info:
@@ -140,6 +158,8 @@ function* reviewCurrentUserFormsAndFormDataCompareAndUpfateToState() {
     updates
   })
 
+  yield put(stopLoadingFormData())
+    
   yield put({
     type: UPDATE_AND_CREATE_FORMS,
     payload: {
@@ -151,10 +171,28 @@ function* reviewCurrentUserFormsAndFormDataCompareAndUpfateToState() {
 
 function* _handleReset(){
   const userId = yield select(selectors.userId)
-  const data = yield call(resetUserSteps, userId)
-  yield put({
-    type: RESET_FORMS
-  })
+  try {
+    const data = yield call(resetUserSteps, userId)
+    yield putResolve({
+      type: RESET_FORMS
+    })
+    yield putResolve(resetAction())
+  } catch (error) {
+    if (__DEV__)
+      throw error
+  }
+}
+
+function* watchForLoadingForm() {
+  while(true){
+    yield take(START_LOADING_FORMDATA)
+    yield put(setLoadingFormData(true))
+    yield race([
+      take(STOP_LOADING_FORMDATA),
+      delay(5000) 
+    ])
+    yield put(setLoadingFormData(false))
+  }
 }
 
 function* watchForResetSteps(){
@@ -175,22 +213,24 @@ export function* watchSyncFormData() {
   const requestChan = yield actionChannel([GET_USER.SUCCEEDED, SYNC_FORM_DATA])
   yield fork(watchForResetSteps)
   yield fork(watchForUpdateOrCreate)
+  yield fork(watchForLoadingForm)
   while (true) {
     yield take(requestChan)
-    yield fork(reviewCurrentUserFormsAndFormDataCompareAndUpfateToState)
+    yield fork(reviewCurrentUserFormsAndFormDataCompareAndUpdateToState)
   }
 }
 
 function* syncRequests(payload) {
   const { updates, creates } = payload
 
-  yield delay(1)
-
   const userId = yield select(selectors.userId)
   if (!userId) return
 
-  // run serially, ideally we want to be able to compose those requests, and send them in one go...
   yield putResolve(incrementFormDataQueue())
+  // run serially, ideally we want to be able to compose those requests, and send them in one go...
+
+  yield delay(1)
+
 
   let _user = null
   if (updates && updates.length) {
@@ -247,7 +287,6 @@ function* syncRequests(payload) {
   }
 
   yield putResolve(decrementFormDataQueue())
-
   const formDataRequestCount = yield select(
     state => state.formData.requestCount
   )

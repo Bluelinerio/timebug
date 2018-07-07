@@ -3,7 +3,9 @@ import {
   SUBMIT_FORM_VALUE,
   INCREMENT_FORM_DATA_QUEUE,
   DECREMENT_FORM_DATA_QUEUE,
-  RESET_FORMS
+  RESET_FORMS,
+  UNSET_LOADING_FORMDATA,
+  SET_LOADING_FORMDATA
 } from '../actionTypes'
 
 import { diffObjs } from '../utils/diffObjs'
@@ -30,7 +32,8 @@ type FormAction = PopulateFormAction
 const initialSDataState = {}
 const initialState: FormDataState = {
   data: initialSDataState,
-  requestCount: 0
+  requestCount: 0,
+  loadingFormData: false,
 }
 
 const filterWithKeys = (pred, obj) =>
@@ -86,6 +89,11 @@ const decrement = (state: FormDataState): FormDataState => ({
   requestCount: state.requestCount - 1
 })
 
+const setLoadingFormData = (state: FormDataState, payload: boolean): FormDataState => ({
+  ...state,
+  loadingFormData: payload !== false
+})
+
 function formDataReducer(
   state: FormDataState = initialState,
   action: FormAction
@@ -97,6 +105,8 @@ function formDataReducer(
       return increment(state)
     case DECREMENT_FORM_DATA_QUEUE:
       return decrement(state)
+    case SET_LOADING_FORMDATA:
+      return setLoadingFormData(state, action.payload)
     case RESET_FORMS: 
       return initialState
     default:
@@ -133,7 +143,7 @@ const migrations = {
 const persistConfig = {
   key: 'formData',
   storage: storage,
-  blacklist: ['requestCount'],
+  blacklist: ['requestCount', 'loadingFormData'],
   version: 1,
   migrate: createMigrate(migrations, { debug: true })
 }

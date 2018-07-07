@@ -197,6 +197,8 @@ const modelsAndDataForExercise = (state: any) => (stepId: string) => {
 
 const isSynchingFormData = (state: any) => getFormData(state).requestCount > 0
 
+const loadingFormData = (state: any) => getFormData(state).loadingFormData
+
 export default {
   getCms,
   sortedSteps,
@@ -229,5 +231,6 @@ export default {
   modelsAndDataForExercise,
   formData,
   incompleteFormsData,
-  isSynchingFormData
+  isSynchingFormData,
+  loadingFormData
 }
