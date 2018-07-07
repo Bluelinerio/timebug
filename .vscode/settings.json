@@ -1,13 +1,26 @@
 {
-  "prettier.semi": false,
-  "javascript.validate.enable": false,
-  "javascript.format.enable": false,
   "flow.useNPMPackagedFlow": true,
+  // Enable/disable JavaScript validation. (For Flow)
+  "javascript.validate.enable": false,
+  // Enable/disable default JavaScript formatter. (For Prettier)
+  "javascript.format.enable": false,
   "editor.snippetSuggestions": "top",
+  "editor.tabSize": 2,
+  "prettier.semi": false,
   "prettier.eslintIntegration": true,
   "prettier.singleQuote": true,
   "search.exclude": {
-    "**/flow-typed": true,
+    "**/flow-typed": true
   },
-  "eslint.enable": true
+  "eslint.enable": true,
+  "files.exclude": {
+    ".*": false,
+    "ios/": false,
+    "*.lo*": false,
+    "*.json": false,
+    "LICENSE": false,
+    "android/": false,
+    "__tests__": false,
+    "node_modules/": false
+  },
 }
