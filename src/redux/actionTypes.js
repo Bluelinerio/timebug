@@ -1,11 +1,6 @@
-import { createActionsObject } from './utils'
-
 export const REQUEST = 'REQUEST'
 export const SUCCESS = 'SUCCESS'
 export const FAILURE = 'FAILURE'
-
-const createRequestTypes = base =>
-  createActionsObject(base, REQUEST, SUCCESS, FAILURE)
 
 export const INCREMENT_REQUEST_COUNT = 'INCREMENT_REQUEST_COUNT'
 export const DECREMENT_REQUEST_COUNT = 'DECREMENT_REQUEST_COUNT'
@@ -40,7 +35,6 @@ export const START_LOADING_FORMDATA = 'START_LOADING_FORMDATA'
 export const STOP_LOADING_FORMDATA = 'STOP_LOADING_FORMDATA'
 
 export const SET_LOADING_FORMDATA = 'SET_LOADING_FORMDATA'
-export const UNSET_LOADING_FORMDATA = 'UNSET_LOADING_FORMDATA'
 
 export const RESET_FORMS = 'RESET_FORMS'
 

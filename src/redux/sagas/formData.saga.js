@@ -15,11 +15,11 @@ import { delay } from 'redux-saga'
 import { createForm, updateForm, resetUserSteps } from '../../services/apollo'
 import type { UpdateormArgs } from '../../services/apollo/models'
 
-import { 
-  SYNC_FORM_DATA, 
-  RESET_FORMS_REQUEST, 
-  RESET_FORMS, 
-  START_LOADING_FORMDATA, 
+import {
+  SYNC_FORM_DATA,
+  RESET_FORMS_REQUEST,
+  RESET_FORMS,
+  START_LOADING_FORMDATA,
   STOP_LOADING_FORMDATA
 } from '../actionTypes'
 
@@ -28,8 +28,7 @@ import {
   incrementFormDataQueue,
   decrementFormDataQueue,
   setLoadingFormData,
-  stopLoadingFormData,
-  startLoadingFormData
+  setNotLoadingFormData
 } from '../actions/formData.actions'
 import selectors from '../selectors'
 import { diffObjs } from '../utils/diffObjs'
@@ -71,8 +70,8 @@ function* mySelectors(props) {
 
 function* reviewCurrentUserFormsAndFormDataCompareAndUpdateToState() {
   //const userId = yield select(selectors.userId)
-  yield put(startLoadingFormData())
-  
+  yield put(setLoadingFormData())
+
   log({
     info: 'Started reviewing differences between form data and user forms'
   })
@@ -105,9 +104,9 @@ function* reviewCurrentUserFormsAndFormDataCompareAndUpdateToState() {
     removeAllKeyButStepIds(formData),
     removeAllKeyButStepIds(completedFormsData)
   )
-  
+
   if (!difference && !onlyOnLeft) {
-    yield put(stopLoadingFormData())
+    yield put(setNotLoadingFormData())
     log({
       info:
         'Completed reviewing differences between form data and user forms. No sync is needed'
@@ -146,7 +145,7 @@ function* reviewCurrentUserFormsAndFormDataCompareAndUpdateToState() {
         }
       ]
     }, [])
-    
+
   const formDataRequestCount = yield select(
     state => state.formData.requestCount
   )
@@ -158,8 +157,8 @@ function* reviewCurrentUserFormsAndFormDataCompareAndUpdateToState() {
     updates
   })
 
-  yield put(stopLoadingFormData())
-    
+  yield put(setNotLoadingFormData())
+
   yield put({
     type: UPDATE_AND_CREATE_FORMS,
     payload: {
@@ -186,12 +185,12 @@ function* _handleReset(){
 function* watchForLoadingForm() {
   while(true){
     yield take(START_LOADING_FORMDATA)
-    yield put(setLoadingFormData(true))
+    yield put(setLoadingFormData())
     yield race([
       take(STOP_LOADING_FORMDATA),
-      delay(5000) 
+      delay(5000)
     ])
-    yield put(setLoadingFormData(false))
+    yield put(setNotLoadingFormData())
   }
 }
 
@@ -226,6 +225,7 @@ function* syncRequests(payload) {
   const userId = yield select(selectors.userId)
   if (!userId) return
 
+  // run serially, ideally we want to be able to compose those requests, and send them in one go...
   yield putResolve(incrementFormDataQueue())
   // run serially, ideally we want to be able to compose those requests, and send them in one go...
 

@@ -4,7 +4,6 @@ import {
   INCREMENT_FORM_DATA_QUEUE,
   DECREMENT_FORM_DATA_QUEUE,
   RESET_FORMS,
-  UNSET_LOADING_FORMDATA,
   SET_LOADING_FORMDATA
 } from '../actionTypes'
 
@@ -107,7 +106,7 @@ function formDataReducer(
       return decrement(state)
     case SET_LOADING_FORMDATA:
       return setLoadingFormData(state, action.payload)
-    case RESET_FORMS: 
+    case RESET_FORMS:
       return initialState
     default:
       return state

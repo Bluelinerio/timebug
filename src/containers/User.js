@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { getUserState } from '../redux/rootReducer'
+import { getUserState } from '../redux/selectors/rootReducer.selectors'
 import {
   UNDETERMINED,
   ANONYMOUS,

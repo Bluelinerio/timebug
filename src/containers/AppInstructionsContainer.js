@@ -1,11 +1,11 @@
 // @flow
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { getCms } from '../redux/rootReducer'
+import { getCms } from '../redux/selectors/rootReducer.selectors'
 
 type Props = {
-  render?: ({ 
-    appInstructions: string 
+  render?: ({
+    appInstructions: string
   }) => React.Node,
   renderWithNotAvialble?: ({
 
@@ -26,7 +26,7 @@ const AppInstructionsContainer = connect(mapStateToProps)(
     appInstructions,
     ...rest
   }) => (appInstructions && render)
-    ? render({ appInstructions, ...rest}) 
+    ? render({ appInstructions, ...rest})
     : renderWithNotAvialble
       ? renderWithNotAvialble(rest)
       : null

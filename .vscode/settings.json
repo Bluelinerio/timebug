@@ -1,4 +1,5 @@
 {
+  "prettier.semi": false,
   "javascript.validate.enable": false,
   "javascript.format.enable": false,
   "flow.useNPMPackagedFlow": true,
@@ -7,5 +8,6 @@
   "prettier.singleQuote": true,
   "search.exclude": {
     "**/flow-typed": true,
-  }
+  },
+  "eslint.enable": true
 }
