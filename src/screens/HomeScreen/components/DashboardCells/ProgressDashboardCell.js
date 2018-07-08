@@ -57,7 +57,7 @@ const ProgressDashboardCell = () => (
         >
           <OnLayout
             render={({ width }) =>
-              width > 0 ? <PhaseProgressContainer width={width}/> : null
+              width > 0 ? <PhaseProgressContainer maxColumns={3} width={width}/> : null
             }
           />
           <Text
