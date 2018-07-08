@@ -12,7 +12,6 @@ import {
   VISION_CREATION
 } from '../../services/cms';
 import PieChartCells from '../../components/PhaseProgress/PieChartCells'
-import type, { Slice, Chart } from '../../components/PhaseProgress/PieChartCells'
 import { mediumGray } from '../../constants/colors'
 
 import { buildCharts, LabelFn } from './charts'
@@ -21,6 +20,12 @@ type CompletedSteps = {
   MEDITATION: number,
   VISION_CREATION: number,
   SELF_ASSESSMENT: number
+}
+
+const chartProps: ChartProps = {
+  spacing: 0,
+  outerRadius: '95%',
+  innerRadius: '50%'
 }
 
 const mapStateToProps = state => ({
@@ -59,6 +64,7 @@ const merge = (stateProps, dispatchProps, ownProps) => {
     ...ownProps,
     maxColumns,
     elements,
+    chartProps,
     phaseForStepAtIndex
   });
 }

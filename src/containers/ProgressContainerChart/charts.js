@@ -1,8 +1,10 @@
+// @flow
 import { 
     MEDITATION,
     SELF_ASSESSMENT,
     VISION_CREATION
 } from '../../services/cms';
+import type, { Chart } from '../../components/PhaseProgress/PieChart'
 
 export type BuildChartProps = {
     missingFormsColor?: string,

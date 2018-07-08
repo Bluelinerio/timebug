@@ -1,12 +1,34 @@
+// @flow
 import React, { Component } from 'react'
 import { View, Text as NativeText } from 'react-native'
 import { PieChart } from 'react-native-svg-charts'
 import styles from '../../styles/components/PieCharts'
 
-class PieChartProgress extends Component {
-    render() {
-        const { height, chartProps, style, element } = this.props
+export type Slice = {
+    color: string,
+    amount: number
+}
+  
+export type Chart = {
+    label: string,
+    total: number,
+    slices: [Slice]
+}
 
+export type ChartProps = {
+    outerRadius: string,
+    innerRadius: string,
+    spacing: number
+}
+
+export type PieChartProgressProps = {
+    height: number,
+    chartProps: ChartProps,
+    style?: any,
+    element: Chart
+}
+
+const PieChartProgress = ({ height, chartProps, style, element, ...rest }: PieChartProgressProps) => {
         const { label, total, slices } = element
 
         const data = slices.map(({ amount, color }, index) => ({
@@ -28,7 +50,6 @@ class PieChartProgress extends Component {
                 </NativeText>
             </View>
         )
-    }
 }
 
 export default PieChartProgress
