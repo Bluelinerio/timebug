@@ -2,19 +2,27 @@ import React from 'react'
 import { View, Text } from 'react-native'
 import PieChart from './PieChart'
 
-const textProps = {
-    fill: 'white',
-    textAnchor: 'middle',
-    alignmentBaseline: 'middle',
-    fontSize: 14,
-    stroke: 'black', 
-    strokeWidth: 0.3
+export type Slice = {
+    color: string,
+    amount: number
+}
+  
+export type Chart = {
+    label: string,
+    amount: number,
+    slices: [Slice]
 }
 
-const chartProps = {
+type ChartProps = {
+    outerRadius: string,
+    innerRadius: string,
+    spacing: number
+}
+
+const chartProps: ChartProps = {
     spacing: 0,
     outerRadius: '95%',
-    innerRadius: '20%'
+    innerRadius: '50%'
 }
 
 const generalCellStyles = {
@@ -116,7 +124,6 @@ const PieChartCells = (props) => {
                             {
                                 RowCellComponent({
                                     rowElements,
-                                    textProps,
                                     chartProps,
                                     height,
                                     elements,
