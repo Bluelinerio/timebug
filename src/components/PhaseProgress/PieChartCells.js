@@ -30,12 +30,16 @@ const generalCellStyles = {
     flexDirection: 'column' 
 }
 
-const containerStyles = (width) => ({
-    flex: 1,
-    height: width,
+const baseContainerStyles = {
+    flex: 1,    
     flexDirection: 'column',
     borderWidth: 0.25,
     borderColor: '#717171'
+}
+
+const containerStyles = (newStyle, baseStyle = baseContainerStyles) => ({
+    ...baseStyle,
+    ...newStyle
 })
 
 const rowStyles = {
@@ -61,7 +65,7 @@ const buildRowStyle = (numRows, baseStyle = {}) => (rowIndex) => {
         }
 }
 
-const buildCellStyle = (numCells, baseStyle = {}) => (cellIndex) =>{
+const buildCellStyle = (numCells, baseStyle = generalCellStyles) => (cellIndex) =>{
     if(numCells === 1)
         return {
             ...baseStyle
@@ -90,17 +94,14 @@ const PieChartCells = (props) => {
     
     const ColumnBuilder = (CellComponent) => (numElements) => (rest) => {
         const { rowElements, currentElementSet, height } = rest
-        const cellStyles = buildCellStyle(numElements)
+        const cellStyles = buildCellStyle(numElements, generalCellStyles)
         return Array(numElements)
                     .fill()
                     .map((el, index) => {
                         const element = rowElements[index]
                         const cellStyle = cellStyles(index)
                         return (
-                        <View key={element.label} style={[
-                            cellStyle, 
-                            generalCellStyles
-                        ]}>
+                        <View key={element.label} style={cellStyle}>
                             <CellComponent
                                 element={element}
                                 {...rest} 
@@ -137,7 +138,7 @@ const PieChartCells = (props) => {
         
         
     return (
-        <View style={containerStyles(width)}>
+        <View style={containerStyles({ height: width }, baseContainerStyles)}>
             {
                rows(elements, numRows, maxColumns)(ColumnBuilder(PieChartCell(props)))
             }
