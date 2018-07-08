@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 import { View, Text as NativeText } from 'react-native'
 import { PieChart } from 'react-native-svg-charts'
-import { Text } from 'react-native-svg'
 import styles from '../../styles/components/PieCharts'
 
 class PieChartProgress extends Component {
     render() {
-        const { height, chartProps, textProps, style, element } = this.props
+        const { height, chartProps, style, element } = this.props
 
         const { label, total, slices } = element
 
@@ -15,22 +14,6 @@ class PieChartProgress extends Component {
             amount,
             svg: { fill: color }
         }))
-
-        const Labels = ({ slices, height, width }) => {
-            return slices.map((slice, index) => {
-                const { labelCentroid, pieCentroid, data } = slice;
-                return (
-                    <Text
-                        key={index}
-                        x={pieCentroid[ 0 ]}
-                        y={pieCentroid[ 1 ]}
-                        {...textProps}
-                    >
-                        {data.amount}
-                    </Text>
-                )
-            })
-        }
 
         return (
             <View>
