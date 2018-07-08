@@ -14,7 +14,7 @@ import styles, {
 import OnLayout               from '../../../../components/OnLayout'
 import HighlighRow            from '../../../../components/HighlighRow'
 import HorizontalScrollView   from '../../../../components/HorizontalScrollView'
-import PhaseProgressContainer from '../../../../containers/PhaseProgressContainerChart'
+import PhaseProgressContainer from '../../../../containers/ProgressContainerChart'
 
 type HeaderProps = {
   date: string,

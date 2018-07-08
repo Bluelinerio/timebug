@@ -88,9 +88,9 @@ const PieChartCells = (props) => {
 
     const PieChartCell = (props) => 
         (newProps) =>
-            <View>
+            <React.Fragment>
                 <PieChart {...{...props, ...newProps}}/>
-            </View>
+            </React.Fragment>
     
     const ColumnBuilder = (CellComponent) => (numElements) => (rest) => {
         const { rowElements, currentElementSet, height } = rest
