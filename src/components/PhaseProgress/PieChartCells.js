@@ -92,10 +92,10 @@ const PieChartCells = (props) => {
                 <PieChart {...{...props, ...newProps}}/>
             </React.Fragment>
     
-    const ColumnBuilder = (CellComponent) => (numElements) => (rest) => {
+    const ColumnBuilder = (CellComponent) => ({columnsPerRow, ...rest}) => {
         const { rowElements, currentElementSet, height } = rest
-        const cellStyles = buildCellStyle(numElements, generalCellStyles)
-        return Array(numElements)
+        const cellStyles = buildCellStyle(columnsPerRow, generalCellStyles)
+        return Array(columnsPerRow)
                     .fill()
                     .map((el, index) => {
                         const element = rowElements[index]
@@ -104,44 +104,47 @@ const PieChartCells = (props) => {
                         <View key={element.label} style={cellStyle}>
                             <CellComponent
                                 element={element}
-                                {...rest} 
                                 height={height}
+                                {...rest} 
                             />
                         </View>)
                     })
     }
 
-    const rows = (elements, numRows, max) => (Component) => {
+    const Grid = ({ elements, numRows, maxColumns, renderChildComponent: RowCellComponent, ...rest }) => {
         return Array(numRows)
             .fill()
             .map((el, index) => {
                 const height = (width / numRows) - 20
-                const columnsPerRow = (max * (index + 1)) < elements.length 
-                    ? max
-                    : elements.length - (max * (index))
-                const RowCellComponent = Component(columnsPerRow)
-                const rowElements = elements.slice().slice((index * max), max * (index + 1))
-                return (<View key={`row-${index + 1}`} style={[rowStyles, { height }]}>
-                            {
-                                RowCellComponent({
-                                    rowElements,
-                                    chartProps,
-                                    height,
-                                    elements,
-                                    numRows,
-                                    maxColumns: max
-                                })
-                            }
-                        </View>)
+                const columnsPerRow = (maxColumns * (index + 1)) < elements.length 
+                    ? maxColumns
+                    : elements.length - (maxColumns * index)
+                const rowElements = elements.slice().slice((index * maxColumns), maxColumns * (index + 1))
+                return (
+                    <View key={`row-${index + 1}`} style={[rowStyles, { height }]}>
+                        <RowCellComponent 
+                            columnsPerRow={columnsPerRow}
+                            rowElements={rowElements}
+                            height={height}
+                            numRows={numRows}
+                            maxColumns={maxColumns}
+                            {...rest}
+                        />
+                    </View>
+                )
             })
     }
         
         
     return (
         <View style={containerStyles({ height: width }, baseContainerStyles)}>
-            {
-               rows(elements, numRows, maxColumns)(ColumnBuilder(PieChartCell(props)))
-            }
+            <Grid
+                elements={elements}
+                numRows={numRows}
+                maxColumns={maxColumns}
+                renderChildComponent={ColumnBuilder(PieChartCell(props))}
+                chartProps={chartProps}
+            />
         </View>
     )
 }
