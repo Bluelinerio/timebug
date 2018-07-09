@@ -1,6 +1,6 @@
 // @flow
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, Platform } from 'react-native'
 
 import type, { ChartProps } from './PieChart'
 
@@ -10,8 +10,21 @@ const style = {
     container: {
         flex: 1,    
         flexDirection: 'column',
-        borderWidth: 0.25,
-        borderColor: '#717171'
+        borderRadius: 6,
+        ...Platform.select({
+            android: { 
+              elevation: 2
+            },
+            ios: {
+              shadowColor: 'black',
+              shadowOffset: {
+                width: 0,
+                height: 2
+              },
+              shadowOpacity: 0.2,
+              shadowRadius: 2
+            }
+          })
     },
     row:  {
         flex: 1,  

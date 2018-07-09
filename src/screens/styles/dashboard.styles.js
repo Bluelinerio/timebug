@@ -83,6 +83,27 @@ export default StyleSheet.create({
     borderRadius: 6,
     ...Platform.select({
       android: { 
+        elevation: 2
+      },
+      ios: {
+        shadowColor: 'black',
+        shadowOffset: {
+          width: 0,
+          height: 2
+        },
+        shadowOpacity: 0.2,
+        shadowRadius: 2
+      }
+    })
+  },
+  pieChartContainer: {
+    marginRight: 10,
+    paddingTop: 10,
+    marginBottom: 10,
+    paddingLeft: 10,
+    borderRadius: 6,
+    ...Platform.select({
+      android: { 
         elevation: 2,
         marginRight: 0,
         paddingTop: 0,
