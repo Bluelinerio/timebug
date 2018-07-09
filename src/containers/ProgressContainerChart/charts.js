@@ -11,7 +11,7 @@ export type BuildChartProps = {
     phaseColors: { string: string }
 }
   
-export type LabelFn = ({ total: number, completedSteps: number }) => string
+export type LabelFn = ({ total: number, completedSteps: number, labelKey?: string }) => string
 
 export type ChartProps = {
     completedStepsInPhase: CompletedSteps,
@@ -35,6 +35,14 @@ export type ChartFns = (BuildChartProps) => {
     phase: ChartFn
 }
 
+const transformKeyToText = (key) => {
+  return key === MEDITATION 
+    ? 'Meditation'
+    : key === SELF_ASSESSMENT
+    ? 'Self assessment'
+    : 'Vision creation'
+}
+
 export const buildCharts = ({
     missingFormsColor = mediumGray,
     phaseColors
@@ -45,6 +53,7 @@ export const buildCharts = ({
       label 
     }) => {
       const completedSteps = Object.values(completedStepsInPhase).reduce((prev, curr) => prev + curr, 0)
+      const labelKey = 'Overall'
       const slices = completedSteps === total 
         ? [{
               color: phaseColors[COMPLETE],
@@ -70,7 +79,7 @@ export const buildCharts = ({
         ]
 
       return {
-        label: label({ total, completedSteps }),
+        label: label({ labelKey, total, completedSteps }),
         total,
         slices
       }
@@ -83,6 +92,7 @@ export const buildCharts = ({
       label 
     }) => {
       const completedSteps = completedStepsInPhase[chartKey]
+      const labelKey = transformKeyToText(chartKey)
       const slices = [
         {
           color: phaseColors[chartKey],
@@ -94,7 +104,7 @@ export const buildCharts = ({
         }
       ]
       return {
-        label: label({ total, completedSteps }),
+        label: label({ labelKey, total, completedSteps }),
         total,
         slices
       }

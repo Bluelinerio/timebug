@@ -48,9 +48,10 @@ const merge = (stateProps, dispatchProps, ownProps) => {
 
   const { overall: overallChart, phase: phaseChart } = buildCharts({ missingFormsColor: mediumGray, phaseColors })
 
-  const label: LabelFn = ({ total, completedSteps }) => 
-    `Overall: ${completedSteps} / ${total}`
+  const label: LabelFn = ({ total, completedSteps, labelKey }) => 
+    `${labelKey}: ${completedSteps} / ${total}`
 
+  
   const elements = [
     phaseChart({ completedStepsInPhase, chartKey: MEDITATION, total: NUMBER_OF_STEP_FOR_PHASES, label }),
     phaseChart({ completedStepsInPhase, chartKey: SELF_ASSESSMENT, total: NUMBER_OF_STEP_FOR_PHASES, label }),
