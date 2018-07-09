@@ -1,19 +1,18 @@
-import * as React       from 'react'
-import t                from 'tcomb-form-native/lib'
-import { getTypeInfo }  from 'tcomb-form-native/lib/util'
-import templates        from 'tcomb-form-native/lib/templates/bootstrap/index'
-import i18n             from 'tcomb-form-native/lib/i18n/en'
+import t from 'tcomb-form-native/lib'
+import { getTypeInfo } from 'tcomb-form-native/lib/util'
+import templates from 'tcomb-form-native/lib/templates/bootstrap/index'
+import i18n from 'tcomb-form-native/lib/i18n/en'
 
-import customList       from './customList'
-import customTextBox    from './customTextbox'
-import customStruct     from './customStruct'
-import select           from './select'
+import customList from './customList'
+import customTextBox from './customTextbox'
+import customStruct from './customStruct'
+import select from './select'
 import customStylesheet from '../../styles/templates/index'
 
+function assert(condition, error) {
+  if (!condition) throw error
+}
 if (__DEV__) {
-  function assert(condition, error) {
-    if (!condition) throw error
-  }
   const message = name => `expected ${name} in customStylesheet`
   assert(
     typeof customStylesheet.textbox.normal === 'object',
@@ -66,9 +65,9 @@ t.form.Form.defaultProps = {
 t.String.getValidationErrorMessage = (actual, path, context) => {
   const to = context && context.options && context.options.label || path && path.length && path[0]
   const help = context && context.options && context.options.help
-  return `${actual 
+  return `${actual
     ? `Invalid value ${t.stringify(actual)}  supplied `
-    : 'Missing required field for' 
+    : 'Missing required field for'
   } ${to ? 'to \'' + to + '\'' : ''} ${help ? `\n ${help}` : ''}`
 }
 

@@ -1,5 +1,4 @@
 import R from 'ramda'
-import t from '../screens/WorkbookScreen/components/templates'
 
 const tcombPropLens = R.lensPath(['type', 'meta', 'props'])
 const getTCombProps = model => {

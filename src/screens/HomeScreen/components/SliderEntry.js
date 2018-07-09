@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react'
 import { View, Text, Button } from 'react-native'
-import Entypo from 'react-native-vector-icons/Entypo'
 import TouchableBounce from 'react-native/Libraries/Components/Touchable/TouchableBounce'
 import CustomImage from '../../../components/CustomImage'
 import styles, {

@@ -1,45 +1,51 @@
 // @flow
-import type { Step, Slide } from '../../services/cms'
-import { getCms } from '../rootReducer'
-import { filterKeys } from './utils'
+import R from 'ramda'
+import { filterKeys, viewOr } from './utils'
 import { stepIds } from '../../constants/steps'
+import * as reducerLenses from '../lenses/reducer.lenses'
 
 export const filterStepIds = filterKeys(stepIds)
 
-const sortSteps = (a: Step, b: Step) => a.number - b.number
+const byNumber = R.ascend(R.prop('number'))
 
 // CMS
-const steps = (state: any): [Step] => getCms(state).steps
-const sortedSteps = (state: any): [Step] => Object.values(steps(state)).sort(sortSteps)
-const stepColors = (state: any): { number: string } => getCms(state).colors.steps
-const introSlides = (state: any): [Slide] => getCms(state).onboardingPages.intro.slides
-const phaseColors = (state: any): { string: string } => getCms(state).colors.phases
-const isCMSLoading = (state: any) => getCms(state).requestCount > 0
-const totalNumberOfSteps = (state: any) => getCms(state).totalNumberOfSteps
-const colors = (state: any) => getCms(state).colors
-const uniqueColors = (state: any) => [
-  ...new Set([
-    ...Object.values(getCms(state).colors.steps),
-    ...Object.values(getCms(state).colors.phases)
-  ])
-]
-const meditations = (state: any) => getCms(state).meditations
-const step = (number: number) => (state: any) => steps(state)[number]
-const pages = state => getCms(state).pages
-const appInstructions = (state: any) => pages(state)['AppInstructions']
+const steps = viewOr({}, reducerLenses.steps)
+const sortedSteps = R.pipe(
+  steps,
+  R.values,
+  R.sort(byNumber)
+)
+const stepColors = viewOr({}, reducerLenses.stepColors)
+const phaseColors = viewOr({}, reducerLenses.phaseColors)
+const introSlides = viewOr([], reducerLenses.introSlides)
+const isCMSLoading = R.compose(
+  i => i > 0,
+  viewOr(0, reducerLenses.cmsRequestCount),
+  // R.equals(0),
+  // R.not
+)
+const totalNumberOfSteps = viewOr(30, reducerLenses.totalNumberOfSteps)
+const colors = viewOr(undefined, reducerLenses.colors)
+const uniqueColors = state => R.uniq(
+  [...R.values(phaseColors(state)), ...R.values(stepColors(state))]
+)
+const meditations = viewOr([], reducerLenses.meditations)
+const step = R.curry((state, stepId) => R.prop(stepId, steps(state)))
+const pages = viewOr([], reducerLenses.pages)
+const appInstructions = viewOr(undefined, reducerLenses.appInstructions)
 
 export default {
-  sortedSteps,
   steps,
+  sortedSteps,
   meditations,
   phaseColors,
+  stepColors,
   introSlides,
   step,
   pages,
   appInstructions,
   colors,
   uniqueColors,
-  stepColors,
   isCMSLoading,
   totalNumberOfSteps
 }

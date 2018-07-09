@@ -1,22 +1,22 @@
 /* @flow */
 import React from 'react'
 import md5 from 'md5'
-import User from './User'
+import { connect } from 'react-redux'
+import userSelectors from '../redux/selectors/user.selectors'
+import { combineSelectors } from '../redux/selectors/combineSelectors'
 
 type Props = {
-  children: ({ uri: string }) => React.Node | [React.Node]
+  children: ({ uri: string }) => React.Node | [React.Node],
+  user: { email: string }
 }
 
-const UserProfileImageConsumer = ({ children }: Props) => (
-  <User>
-    {({ userState }) => {
-      if (isLoggedInd && userState.email)
-        return children({
-          uri: `https://www.gravatar.com/avatar/${md5(userState.email)}`
-        })
-      else return null
-    }}
-  </User>
-)
+const UserProfileImageConsumer = ({ children, user }: Props) => user
+  && user.email
+  && children
+  && children({
+  uri: `https://www.gravatar.com/avatar/${md5(user.email)}`
+})
 
-export default UserProfileImageConsumer
+export default connect(
+  combineSelectors(userSelectors)
+)(UserProfileImageConsumer)

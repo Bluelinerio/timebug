@@ -1,19 +1,29 @@
 //@flow
 import * as React from 'react'
-import User from '../../../containers/User'
+import { connect } from 'react-redux'
 import LoginWithFbButtonContainer from '../../../containers/LoginWithFbButtonContainer'
 import BeginExerciseButtonContainer from './BeginExerciseButtonContainer'
 import SmallLoadingIndicator from '../../../components/SmallLoadingIndicator'
+import { combineSelectors } from '../../../redux/selectors/combineSelectors';
+import userSelectors from '../../../redux/selectors/user.selectors';
 
-const StepScreenButtonContainer = () => (
-  <User
-    renderWithUser={() => <BeginExerciseButtonContainer />}
-    renderWithAuthenticating={() => (
-      <SmallLoadingIndicator message={'Authenticating'} />
-    )}
-    renderWithUndetermined={() => <SmallLoadingIndicator />}
-    renderWithAnonymous={() => <LoginWithFbButtonContainer />}
-  />
+type Props = {
+  isLoggedIn: boolean,
+  needsLogin: boolean,
+}
+
+const StepScreenButtonContainer = connect(
+  combineSelectors(userSelectors)
+)(({
+  isLoggedIn,
+  needsLogin,
+} : Props ) => (
+  isLoggedIn
+  ? <BeginExerciseButtonContainer />
+    : needsLogin
+      ? <LoginWithFbButtonContainer/>
+      : <SmallLoadingIndicator message={'Authenticating'} />
+  )
 )
 
 export default StepScreenButtonContainer

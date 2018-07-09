@@ -258,6 +258,15 @@ export type ErrorResponse = {
 
 export type UserState = { +user: User } | ANONYMOUS | UNDETERMINED
 
+export type FormDataState = {
+  data: {
+    [key: string]: any
+  },
+  requestCount: number
+}
+
+export type AgregateState = {}
+
 export type Form = {
 	id: string,
 	stepId: number,

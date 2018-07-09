@@ -9,3 +9,7 @@ function isPositiveInteger(n) {
 export const filterNumbers = (obj: {}) => filterWithKeys(key => isPositiveInteger(key), obj)
 
 export const filterKeys = (keys: [string]) => (obj: {}) => filterWithKeys(key => keys.includes(key), obj)
+
+export const viewOr = R.curryN(3,
+  (defaultValue, lens, data) => R.defaultTo(defaultValue, R.view(lens, data))
+)

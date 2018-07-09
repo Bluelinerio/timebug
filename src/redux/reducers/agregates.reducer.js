@@ -12,7 +12,8 @@ import navigationReducer, {
 import suggestionsReducer, {
   SuggestionsReducerKeys,
   ActionTypes as SuggestionReducerActionTypes
-} from './agregates.suggestions.reducer.js'
+} from './agregates.suggestions.reducer'
+import type { AgregateState } from '../../types'
 
 export const AgregateReducerKeys = {
   agregates: 'agregates',
@@ -25,7 +26,6 @@ export const PUSH = 'PUSH'
 export const EVENT = 'EVENT'
 export const PAGE_VIEW = 'PAGE_VIEW'
 
-export type AgregateState = {}
 export type AgregateUpdateAction = {
   type: UPDATE | PUSH | EVENT | PAGE_VIEW,
   payload: {}

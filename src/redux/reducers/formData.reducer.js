@@ -9,13 +9,9 @@ import {
 
 import { diffObjs } from '../utils/diffObjs'
 import R from 'ramda'
-
-export type FormDataState = {
-  data: {
-    [key: string]: any
-  },
-  requestCount: number
-}
+import type { FormDataState } from '../../types';
+import storage from 'redux-persist/lib/storage'
+import { persistReducer, createMigrate } from 'redux-persist'
 
 type PopulateFormAction = {
   type: SUBMIT_FORM_VALUE.type,
@@ -112,9 +108,6 @@ function formDataReducer(
       return state
   }
 }
-
-import storage from 'redux-persist/lib/storage'
-import { persistReducer, createMigrate } from 'redux-persist'
 
 const mapDataWithStepIndicesToDataWithStepIds = state => {
   if (!state.data || Object.keys(state.data).length === 0) {

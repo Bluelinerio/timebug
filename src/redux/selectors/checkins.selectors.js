@@ -1,5 +1,5 @@
 // @flow
-import R        from 'ramda'
+import R from 'ramda'
 import {
   // CHECKIN_PHYSICALLY,
   // CHECKIN_EMOTIONALLY,
@@ -8,18 +8,19 @@ import {
   // CHECKIN_MOOD,
   CHECKIN_MEDITATION,
   // CHECKIN_EMOJI,
-}               from '../../constants/checkins'
-import { user } from './user.selectors'
+} from '../../constants/checkins'
+import { viewOr } from './utils'
+import * as reducerLenses from '../lenses/reducer.lenses'
 
-const checkins                 = R.compose(
-  R.prop('checkins'),
-  user
-)
-const isMeditationCheckin      = R.whereEq({ name: CHECKIN_MEDITATION })
-const showUserMeditationOption = R.compose(
-  R.not(-1),
+const checkins = viewOr([], reducerLenses.checkinsLens)
+
+const isMeditationCheckin = R.whereEq({ name: CHECKIN_MEDITATION })
+
+const showUserMeditationOption = R.pipe(
+  checkins,
   R.findIndex(isMeditationCheckin),
-  checkins
+  R.equals(-1),
+  R.not,
 )
 
 export default {

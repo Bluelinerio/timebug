@@ -1,9 +1,9 @@
-import React          from 'react'
+import React from 'react'
 import { View, Text } from 'react-native'
-import { connect }    from 'react-redux'
-import styles         from '../styles'
-import type Step      from '../../../services/cms'
-import selectors      from '../../../redux/selectors'
+import { connect } from 'react-redux'
+import styles from '../styles'
+import type Step from '../../../services/cms'
+import selectors from '../../../redux/selectors'
 
 const mapStateToProps = state => {
   const steps: [Step] = selectors.sortedSteps(state)

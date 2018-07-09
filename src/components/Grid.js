@@ -1,7 +1,6 @@
 // @flow
 import * as React from 'react';
-import { View, Dimensions } from 'react-native';
-import OnLayout from './OnLayout';
+import { Dimensions } from 'react-native';
 
 export type GridItemProps = {
   column: number,

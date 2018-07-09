@@ -6,6 +6,7 @@ import { watchForSelectPutAction } from './selectPutAction';
 import { appStateSagaWatcher } from './sagas/appState.saga';
 import { watchSyncFormData } from './sagas/formData.saga';
 import { watchChangesInFormsAndUpdateAchievements } from './sagas/achivements.saga';
+
 function* appSaga() {
   yield all([
     appStateSagaWatcher(),

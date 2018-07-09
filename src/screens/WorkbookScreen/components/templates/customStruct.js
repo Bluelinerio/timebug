@@ -1,11 +1,11 @@
-import React from 'react';
-import { View, Text, Keyboard } from 'react-native';
-import Struct from './Struct';
+import React from 'react'
+import { View, Text, Keyboard } from 'react-native'
+import Struct from './Struct'
 
 export default ({ hidden, stylesheet, changedPage, ...rest }) => {
-  let pagesRef = null;
+  let pagesRef = null
   if (hidden) {
-    return null;
+    return null
   }
   return (
     <Struct
@@ -15,5 +15,5 @@ export default ({ hidden, stylesheet, changedPage, ...rest }) => {
         ...rest
       }}
     />
-  );
-};
+  )
+}
