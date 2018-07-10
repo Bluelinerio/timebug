@@ -4,12 +4,12 @@ import { connect } from 'react-redux';
 
 import selectors from '../../redux/selectors';
 import { 
-  phaseForStepAtIndex,
-  NUMBER_OF_STEPS,
-  NUMBER_OF_STEP_FOR_PHASES,
-  MEDITATION,
-  SELF_ASSESSMENT,
-  VISION_CREATION
+    phaseForStepAtIndex,
+    NUMBER_OF_STEPS,
+    NUMBER_OF_STEP_FOR_PHASES,
+    MEDITATION,
+    SELF_ASSESSMENT,
+    VISION_CREATION
 } from '../../services/cms';
 import PieChartCells from '../../components/PhaseProgress/PieChartCells'
 import { mediumGray } from '../../constants/colors'
