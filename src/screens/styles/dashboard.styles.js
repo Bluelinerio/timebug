@@ -98,17 +98,11 @@ export default StyleSheet.create({
   },
   pieChartContainer: {
     marginRight: 10,
-    paddingTop: 10,
     marginBottom: 10,
-    paddingLeft: 10,
     borderRadius: 6,
     ...Platform.select({
       android: { 
-        elevation: 2,
-        marginRight: 0,
-        paddingTop: 0,
-        marginBottom: 0,
-        paddingLeft: 0,
+        elevation: 2
       },
       ios: {
         shadowColor: 'black',

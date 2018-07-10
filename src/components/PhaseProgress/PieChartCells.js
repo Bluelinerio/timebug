@@ -10,27 +10,11 @@ const style = {
     container: {
         flex: 1,    
         flexDirection: 'column',
-        borderRadius: 6,
-        ...Platform.select({
-            android: { 
-              elevation: 2
-            },
-            ios: {
-              shadowColor: 'black',
-              shadowOffset: {
-                width: 0,
-                height: 2
-              },
-              shadowOpacity: 0.2,
-              shadowRadius: 2
-            }
-          })
+        borderRadius: 6
     },
     row:  {
         flex: 1,  
-        flexDirection: 'row',
-        borderWidth: 0.25,
-        borderColor: '#717171',
+        flexDirection: 'row'
     },
     cell: {
         flex: 1,
