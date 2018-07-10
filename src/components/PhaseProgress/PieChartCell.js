@@ -2,13 +2,8 @@ import React from 'react'
 import { View } from 'react-native'
 import PieChart from './PieChart'
 
-const buildCellStyle = (numCells, baseStyle = {}) => (cellIndex) =>{
-    if(numCells === 1)
-        return {
-            ...baseStyle
-        }
-    else 
-        return cellIndex > 0 
+const buildCellStyle = (numCells, baseStyle = {}) => (cellIndex) =>
+    cellIndex > 0 
         ? {
             ...baseStyle,
             borderLeftWidth: 0.25, 
@@ -17,7 +12,7 @@ const buildCellStyle = (numCells, baseStyle = {}) => (cellIndex) =>{
         : {
             ...baseStyle,
         }
-}
+
 
 const Cell = ({columnsPerRow, ...rest}) => {
     const { rowElements, currentElementSet, height, style } = rest
