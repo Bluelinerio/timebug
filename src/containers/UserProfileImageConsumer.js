@@ -10,7 +10,6 @@ type Props = {
 const UserProfileImageConsumer = ({ children }: Props) => (
   <User>
     {({ userState }) => {
-      console.log(userState)
       if (userState && userState.facebookId)
         return children({
           uri: `https://graph.facebook.com/${userState.facebookId}/picture?type=normal`

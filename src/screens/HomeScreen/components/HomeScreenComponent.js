@@ -3,7 +3,7 @@ import React, { PureComponent } from 'react'
 import { StatusBar, ScrollView, LayoutAnimation } from 'react-native'
 import { SafeAreaView } from 'react-navigation'
 
-import PagninatedCarouselContainer from '../containers/PagninatedCarouselContainer'
+import PaginatedCarouselContainer from '../containers/PaginatedCarouselContainer'
 import Version from '../containers/Version'
 import DashboardCellsContainer from '../containers/DashboardCellsContainer'
 import SuggestionCellContainer from '../containers/SuggestionCellContainer'
@@ -11,6 +11,7 @@ import styles from '../styles'
 import { sliderWidth, itemWidth } from '../styles/SliderEntry.style'
 import Banner from './Banner'
 import Space from './Space'
+import Insight from '../containers/InsightContainer'
 
 export default class HomeScreenComponent extends PureComponent {
   state = {
@@ -49,6 +50,7 @@ export default class HomeScreenComponent extends PureComponent {
               }
             />
           )}
+          <Insight />
           <PagninatedCarouselContainer
             itemWidth={itemWidth}
             sliderWidth={sliderWidth}
