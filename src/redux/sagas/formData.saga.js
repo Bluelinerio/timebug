@@ -28,7 +28,9 @@ import {
   incrementFormDataQueue,
   decrementFormDataQueue,
   setLoadingFormData,
-  setNotLoadingFormData
+  setNotLoadingFormData,
+  stopLoadingFormData, 
+  startLoadingFormData 
 } from '../actions/formData.actions'
 import selectors from '../selectors'
 import { diffObjs } from '../utils/diffObjs'
@@ -70,7 +72,7 @@ function* mySelectors(props) {
 
 function* reviewCurrentUserFormsAndFormDataCompareAndUpdateToState() {
   //const userId = yield select(selectors.userId)
-  yield put(setLoadingFormData())
+  yield put(startLoadingFormData())
 
   log({
     info: 'Started reviewing differences between form data and user forms'
@@ -106,7 +108,7 @@ function* reviewCurrentUserFormsAndFormDataCompareAndUpdateToState() {
   )
 
   if (!difference && !onlyOnLeft) {
-    yield put(setNotLoadingFormData())
+    yield put(stopLoadingFormData())
     log({
       info:
         'Completed reviewing differences between form data and user forms. No sync is needed'
@@ -157,7 +159,7 @@ function* reviewCurrentUserFormsAndFormDataCompareAndUpdateToState() {
     updates
   })
 
-  yield put(setNotLoadingFormData())
+  yield put(stopLoadingFormData())
 
   yield put({
     type: UPDATE_AND_CREATE_FORMS,
@@ -188,7 +190,7 @@ function* watchForLoadingForm() {
     yield put(setLoadingFormData())
     yield race([
       take(STOP_LOADING_FORMDATA),
-      delay(5000)
+      delay(8000)
     ])
     yield put(setNotLoadingFormData())
   }
