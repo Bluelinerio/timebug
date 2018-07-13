@@ -51,7 +51,7 @@ export default class HomeScreenComponent extends PureComponent {
             />
           )}
           <Insight />
-          <PagninatedCarouselContainer
+          <PaginatedCarouselContainer
             itemWidth={itemWidth}
             sliderWidth={sliderWidth}
           />

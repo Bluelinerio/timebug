@@ -5,6 +5,9 @@ const InsightComponent = ({ insight }) => {
     return (
         <View>
             <Text>
+                Did you know?
+            </Text>
+            <Text>
                 {insight}
             </Text>
         </View>

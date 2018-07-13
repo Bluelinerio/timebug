@@ -2,14 +2,15 @@ import { connect } from 'react-redux'
 import getInsight, { dummyFormValue } from './../../../static/insights'
 import InsightComponent from '../components/InsightComponent'
 import selectors from '../../../redux/selectors'
+import R from 'ramda'
 
 const mapStateToProps = (state) => {
-    const { latestStepId, sortedStepsWithForms } = selectors.sortedStepsWithForms(state)
+    const latestForm = R.last(selectors.completedFormsChronologically(state))
 
-    console.log(latestStepId)
-    console.log(sortedStepsWithForms)
+    const insight = getInsight(latestForm.stepId, dummyFormValue)
+
     return {
-        insight: "Loremloremlorem"
+        insight
     }
 }
 

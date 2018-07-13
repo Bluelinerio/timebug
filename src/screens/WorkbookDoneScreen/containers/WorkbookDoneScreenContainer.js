@@ -8,7 +8,7 @@ import type { Step } from '../../../services/cms'
 import { restartStepAction, reset } from '../../../redux/actions/nav.actions'
 import WorkbookDoneScreen from '../components/WorkbookDoneScreen'
 import type { Props } from '../components/WorkbookDoneScreen'
-import getInsight, { dummyFormValue } from '../../../static/insights'
+import getInsight, { dummyFormValue } from './../../../static/insights'
 import { suggestNextStep, Screens } from './suggestions'
 
 
