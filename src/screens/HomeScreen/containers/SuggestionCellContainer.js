@@ -6,9 +6,11 @@ import HowAreYouFeelingSuggestionCellContainer from './HowAreYouFeelingSuggestio
 import WhereToStartSuggestionCellContainer     from './WhereToStartSuggestionCellContainer'
 import SwipablyDiscardableRow                  from '../../../components/SwipablyDiscardableRow'
 import { lastStepGuideVisited }                from '../../../redux/selectors/agregates'
+import selectors                               from '../../../redux/selectors'
 
 const pickSuggestion = state => ({
-  lastStepGuideVisited: lastStepGuideVisited(state)
+  lastStepGuideVisited: lastStepGuideVisited(state),
+  hasCompletedForms: selectors.hasCompletedForms(state)
 })
 
 /*
@@ -35,6 +37,7 @@ const pickSuggestion = state => ({
 
 const SuggestionCellPicker = (props: {
   lastStepGuideVisited: {},
+  hasCompletedForms: boolean,
   onClose: () => void
 }) => {
   return (
