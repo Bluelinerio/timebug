@@ -7,10 +7,10 @@ import R from 'ramda'
 const mapStateToProps = (state) => {
     const latestForm = R.last(selectors.completedFormsChronologically(state))
 
-    const insight = getInsight(latestForm.stepId, dummyFormValue)
+    const insightText = getInsight(latestForm.stepId, dummyFormValue)
 
     return {
-        insight
+        insightText
     }
 }
 

@@ -1,15 +1,27 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
+import dashboardStyles from '../../styles/dashboard.styles'
 
-const InsightComponent = ({ insight }) => {
+const styles = {
+    suggestionText: {
+        ...StyleSheet.flatten(dashboardStyles.suggestionText),
+        color: '#0098AA'
+    },
+}
+
+const InsightComponent = ({ insightText, children }) => {
     return (
         <View>
-            <Text>
-                Did you know?
-            </Text>
-            <Text>
-                {insight}
-            </Text>
+            <Text style={styles.suggestionText}>
+                    {
+                      insightText && 
+                        <Text>
+                          <Text style={dashboardStyles.strong}>{`Did You Know?\n`}</Text>
+                          <Text>{`${insightText}'\n\n`}</Text>
+                        </Text>
+                    }
+                    {children}
+                </Text>
         </View>
     )
 }
