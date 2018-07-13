@@ -52,6 +52,28 @@ export default StyleSheet.create({
     backgroundColor: iOSColors.white,
     borderRadius: 6
   },
+  dashboardInsightContainer: {
+      borderRadius: 6,
+      marginHorizontal: 16,
+      marginVertical: 8,
+      padding: 12,
+      flexDirection: 'column',
+      justifyContent: 'flex-start',
+      alignItems: 'flex-start',
+      backgroundColor: iOSColors.white,
+      ...Platform.select({
+        android: { elevation: 2 },
+        ios: {
+          shadowColor: 'black',
+          shadowOffset: {
+            width: 0,
+            height: 2
+          },
+          shadowOpacity: 0.2,
+          shadowRadius: 2
+        }
+      })
+  },
   dashboardCard: {
     marginTop: 24,
     marginBottom: 40,

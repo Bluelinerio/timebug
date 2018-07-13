@@ -1,49 +1,27 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import dashboardStyles from '../../styles/dashboard.styles'
-import {
-    human,
-    systemWeights,
-    iOSColors,
-    iOSUIKit,
-    material,
-    sanFranciscoWeights,
-    robotoWeights
-} from 'react-native-typography'
+
+import Insight from '../../../components/Insight'
 
 const styles = {
     suggestionText: {
         ...StyleSheet.flatten(dashboardStyles.suggestionText),
-        color: '#6AC2ED',
+        color: '#21288A',
         fontSize: 16,
         lineHeight: 20        
-    },
-    view: {
-        borderRadius: 6,
-        marginHorizontal: 16,
-        marginVertical: 8,
-        padding: 12,
-        flexDirection: 'column',
-        justifyContent: 'flex-start',
-        alignItems: 'flex-start',
-        backgroundColor: iOSColors.white,
-        elevation: 2,
     }
 }
 
 const InsightComponent = ({ insightText, children }) => {
     return (
-        <View style={styles.view}>
+        <View style={dashboardStyles.dashboardInsightContainer}>
             <Text style={styles.suggestionText}>
-                    {
-                      insightText && 
-                        <Text>
-                          <Text style={dashboardStyles.strong}>{`Did You Know?\n`}</Text>
-                          <Text>{`${insightText}`}</Text>
-                        </Text>
-                    }
-                    {children}
-                </Text>
+                {
+                    insightText && 
+                        <Insight insightText={insightText} style={{title: dashboardStyles.strong }}/>
+                }
+            </Text>
         </View>
     )
 }
