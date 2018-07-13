@@ -61,7 +61,6 @@ const merge = ({
 
   const nextActions = isFinalForm
     ? [
-        startLoadingFormData(),
         syncFormData(),
         goToWorkbookDoneScreen({
           params
