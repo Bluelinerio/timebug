@@ -55,7 +55,8 @@ export default StyleSheet.create({
   dashboardInsightContainer: {
       borderRadius: 6,
       marginHorizontal: 16,
-      marginVertical: 8,
+      marginBottom: 8,
+      marginTop: 16,
       padding: 12,
       flexDirection: 'column',
       justifyContent: 'flex-start',
