@@ -62,11 +62,12 @@ const WorkbookDoneScreen = ({
                     <Text style={dashboardStyles.strong}>{"What's next?\n"}</Text>
                     {nextStepMotivationText}
                 </Text>
-        }
               </View>
               <View>
-          !isSynchingFormData
+              {
+                !isSynchingFormData &&
                   <Button backgroundColor={white} {...button} />
+              }
               </View>
             </View>  
       }
