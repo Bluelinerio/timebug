@@ -35,6 +35,8 @@ const pickSuggestion = state => ({
 //   }
 // }
 
+
+//TODO: Review these 2 other components
 const SuggestionCellPicker = (props: {
   lastStepGuideVisited: {},
   hasCompletedForms: boolean,

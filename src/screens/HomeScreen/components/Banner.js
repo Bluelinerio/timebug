@@ -9,6 +9,9 @@ import styles from '../../styles/dashboard.styles'
 import moment from 'moment'
 import ResetStepsButton from './ResetStepsButton'
 import DisplayStepsContainer from './../containers/DisplayStepsContainer';
+import User from './../../../containers/User'
+
+const firstName = user => user && user.name && user.name.split(' ')[0]
 
 const Banner = () => {
   return (
@@ -21,7 +24,13 @@ const Banner = () => {
               .format('dddd DD MMM')
               .toUpperCase()}
           </Text>
-          <Text style={[styles.title, styles.strong]}>{`Welcome`}</Text>
+          <User>
+            {
+              ({userState}) => {
+                  return (<Text style={[styles.title, styles.strong]}>{`Welcome ${userState ? firstName(userState) : ``}`}</Text>)
+              }
+            }
+          </User>
         </View>
         <LogoutButtonContainer>
           <UserProfileImageConsumer>

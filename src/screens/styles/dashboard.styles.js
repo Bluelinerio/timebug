@@ -175,7 +175,7 @@ export default StyleSheet.create({
     }),
     textAlign: 'center'
   },
-  title: iOSUIKit.largeTitleEmphasizedObject,
+  title: iOSUIKit.title3EmphasizedObject,
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
