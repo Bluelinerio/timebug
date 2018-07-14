@@ -7,9 +7,7 @@ import Insight from '../../../components/Insight'
 const styles = {
     suggestionText: {
         ...StyleSheet.flatten(dashboardStyles.suggestionText),
-        color: '#21288A',
-        fontSize: 16,
-        lineHeight: 20        
+        ...StyleSheet.flatten(dashboardStyles.homeSuggestionText)  
     }
 }
 

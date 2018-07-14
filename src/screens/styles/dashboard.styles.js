@@ -132,6 +132,11 @@ export default StyleSheet.create({
     ...systemWeights.light,
     margin: 8
   },
+  homeSuggestionText: {
+    color: iOSColors.blue,
+    fontSize: 16,
+    lineHeight: 20     
+  },
   bold: {
     ...systemWeights.bold
   },
@@ -163,7 +168,7 @@ export default StyleSheet.create({
       }
     })
   },
-  emogi: {
+  emoji: {
     ...Platform.select({
       android: {
         ...material.display3Object
@@ -175,7 +180,11 @@ export default StyleSheet.create({
     }),
     textAlign: 'center'
   },
-  title: iOSUIKit.title3EmphasizedObject,
+  title: iOSUIKit.largeTitleEmphasizedObject,
+  bannerTitle: {
+    ...iOSUIKit.title3EmphasizedObject,
+    color: iOSColors.blue
+  },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
