@@ -42,7 +42,7 @@ const SuggestionCellPicker = (props: {
 }) => {
   return (
     <SwipablyDiscardableRow onClose={props.onClose}>
-      {!props.lastStepGuideVisited ? (
+      {!props.lastStepGuideVisited && !props.hasCompletedForms? (
         <WhereToStartSuggestionCellContainer {...props} />
       ) : (
         randomItem([
