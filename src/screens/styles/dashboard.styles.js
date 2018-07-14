@@ -119,6 +119,11 @@ export default StyleSheet.create({
       }
     })
   },
+  pictureTooltip: {
+    ...iOSUIKit.caption2EmphasizedObject,
+    fontSize: 12,
+    color: deepBlue
+  },
   suggestionRow,
   suggestionRowBottom: {
     ...suggestionRow,
