@@ -8,6 +8,9 @@ import {
   sanFranciscoWeights,
   robotoWeights
 } from 'react-native-typography'
+import {
+  deepBlue
+} from '../../constants/colors'
 
 const suggestionRow = {
   flexDirection: 'row',
@@ -133,7 +136,7 @@ export default StyleSheet.create({
     margin: 8
   },
   homeSuggestionText: {
-    color: iOSColors.blue,
+    color: deepBlue,
     fontSize: 16,
     lineHeight: 20     
   },
@@ -183,7 +186,7 @@ export default StyleSheet.create({
   title: iOSUIKit.largeTitleEmphasizedObject,
   bannerTitle: {
     ...iOSUIKit.title3EmphasizedObject,
-    color: iOSColors.blue
+    color: deepBlue
   },
   header: {
     flexDirection: 'row',

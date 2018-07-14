@@ -27,7 +27,7 @@ const Banner = () => {
           <User>
             {
               ({userState}) => {
-                  return (<Text style={[styles.bannerTitle, styles.strong]}>{`Welcome ${userState ? `, ${firstName(userState)}` : ``}!`}</Text>)
+                  return (<Text style={[styles.bannerTitle, styles.strong]}>{`Welcome${userState ? `, ${firstName(userState)}` : ``}!`}</Text>)
               }
             }
           </User>
