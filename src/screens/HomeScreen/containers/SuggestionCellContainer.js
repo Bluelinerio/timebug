@@ -36,17 +36,19 @@ const pickSuggestion = state => ({
 // }
 
 
-//TODO: Review these 2 other components
+//NOTE: To show the CheckinExcerciseCell and HowAreYouFeelingContainer, delete the prop Show and it's check
+
 const SuggestionCellPicker = (props: {
   lastStepGuideVisited: {},
   hasCompletedForms: boolean,
-  onClose: () => void
+  onClose: () => void,
+  show: boolean
 }) => {
   return (
     <SwipablyDiscardableRow onClose={props.onClose}>
       {!props.lastStepGuideVisited && !props.hasCompletedForms? (
         <WhereToStartSuggestionCellContainer {...props} />
-      ) : (
+      ) : props.show && (
         randomItem([
           <CheckinExerciseCellContainer {...props} />,
           <HowAreYouFeelingSuggestionCellContainer {...props} />
