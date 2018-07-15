@@ -1,7 +1,9 @@
 import React                                   from 'react'
-import { View, Text }              from 'react-native'
+import { View, Text, StyleSheet, StatusBar }              from 'react-native'
+import { HeaderBackButton, NavigationActions, StackNavigator } from 'react-navigation'
+import styles                                  from '../styles'
 
-const screen = (props) => (
+const MyJourneyScreenContainer = (props) => (
     <View>
         <Text>
             MyJourney
@@ -9,4 +11,36 @@ const screen = (props) => (
     </View>
 )
 
-export default screen
+MyJourneyScreenContainer.navigationOptions = ({
+  navigation: { dispatch }
+}) => {
+  return {
+    title: 'My Journey',
+    headerStyle: {
+      height: 64,
+      backgroundColor: '#005587'
+    },
+    headerTintColor: 'white',
+    headerLeft: (
+      <HeaderBackButton
+        tintColor="white"
+        onPress={() => dispatch(NavigationActions.back())}
+      />
+    )
+  }
+}
+
+const MyJourneyScreen = StackNavigator(
+    {
+      Markdown: MyJourneyScreenContainer
+    },
+    {
+      headerMode: 'screen',
+      cardStyle: {
+        backgroundColor: 'white',
+        opacity: 1
+      }
+    }
+  )
+
+export default MyJourneyScreen

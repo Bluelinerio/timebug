@@ -17,6 +17,12 @@ const navigationMiddleware = createReactNavigationReduxMiddleware(
   state => state.nav
 )
 
+const logger = store => next => action => {
+  console.log(action.type)
+  const result = next(action)
+  return result
+}
+
 export default () => {
   const sagaMiddleware = createSagaMiddleware()
   const store = createStore(
@@ -24,7 +30,7 @@ export default () => {
     composeEnhancers(
       reduxReset(resetStore.type), // Set action.type here
       applyAppStateListener(),
-      applyMiddleware(thunk, sagaMiddleware)
+      applyMiddleware(logger, thunk, sagaMiddleware)
     )
   )
   const persistor = persistStore(store)
