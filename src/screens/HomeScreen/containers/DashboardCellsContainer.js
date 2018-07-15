@@ -6,6 +6,7 @@ import User                    from './../../../containers/User'
 import { goToMeditation }      from './../../../redux/actions/nav.actions'
 import MeditationDashobardCell from './../components/DashboardCells/MeditationDashobardCell'
 import ProgressDashboardCell   from './../components/DashboardCells/ProgressDashboardCell'
+import PieProgressDashboardCell from './../components/DashboardCells/PieProgressDashboardCell'
 
 // Dashboard should determind  visibilty based on a feed switch or A/B signal
 const MeditationDashobardCellContainer = compose(
@@ -17,7 +18,7 @@ const MeditationDashobardCellContainer = compose(
   })
 )(MeditationDashobardCell)
 
-const shouldShowUserProgressWithUser = user => user.forms.length > 3
+const shouldShowUserProgressWithUser = user => user.forms.length > 0
 
 const DashboardCellsContainer = ({ show = true }: { show: boolean }) => {
   return show ? (
@@ -26,7 +27,10 @@ const DashboardCellsContainer = ({ show = true }: { show: boolean }) => {
         <React.Fragment>
           {isLoggedIn &&
             shouldShowUserProgressWithUser(userState) && (
-              <ProgressDashboardCell />
+              <React.Fragment >
+                <ProgressDashboardCell />
+                <PieProgressDashboardCell />
+              </React.Fragment>
             )}
           <MeditationDashobardCellContainer />
         </React.Fragment>
