@@ -11,6 +11,7 @@ import DashboardScreen from '../screens/DashboardScreen'
 import MeditationScreen from '../screens/MeditationScreen'
 import MarkdownScreen from '../screens/MarkdownScreen'
 import EmojiPickerScreen from '../screens/EmojiPickerScreen'
+import MyJourneyScreen from '../screens/MyJourneyScreen'
 import { uriPrefix } from '../constants'
 import routes from './routes'
 
@@ -73,6 +74,9 @@ export const rootConfiguration = {
     },
     [routes.root.EmojiPickerScreen]: {
       screen: EmojiPickerScreen
+    },
+    [routes.root.MyJourneyScreen]: {
+      screen: MyJourneyScreen
     }
   },
   options: {
