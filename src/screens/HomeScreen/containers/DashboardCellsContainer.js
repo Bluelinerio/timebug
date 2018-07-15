@@ -1,11 +1,11 @@
 //@flow
-import * as React              from 'react'
-import { connect }             from 'react-redux'
-import { compose, withProps }  from 'recompose'
-import User                    from './../../../containers/User'
-import { goToMeditation }      from './../../../redux/actions/nav.actions'
-import MeditationDashobardCell from './../components/DashboardCells/MeditationDashobardCell'
-import ProgressDashboardCell   from './../components/DashboardCells/ProgressDashboardCell'
+import * as React               from 'react'
+import { connect }              from 'react-redux'
+import { compose, withProps }   from 'recompose'
+import User                     from './../../../containers/User'
+import { goToMeditation }       from './../../../redux/actions/nav.actions'
+import MeditationDashobardCell  from './../components/DashboardCells/MeditationDashobardCell'
+import ProgressDashboardCell    from './../components/DashboardCells/ProgressDashboardCell'
 import PieProgressDashboardCell from './../components/DashboardCells/PieProgressDashboardCell'
 
 // Dashboard should determind  visibilty based on a feed switch or A/B signal
@@ -25,13 +25,6 @@ const DashboardCellsContainer = ({ show = true }: { show: boolean }) => {
     <User>
       {({ userState, isLoggedIn }) => (
         <React.Fragment>
-          {isLoggedIn &&
-            shouldShowUserProgressWithUser(userState) && (
-              <React.Fragment >
-                <ProgressDashboardCell />
-                <PieProgressDashboardCell />
-              </React.Fragment>
-            )}
           <MeditationDashobardCellContainer />
         </React.Fragment>
       )}

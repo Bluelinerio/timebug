@@ -1,30 +1,30 @@
 import React                                                    from 'react'
-import { View, Text, StyleSheet, StatusBar }                    from 'react-native'
+import { ScrollView, Text, StyleSheet, StatusBar }              from 'react-native'
 import { HeaderBackButton, NavigationActions, StackNavigator }  from 'react-navigation'
 import styles                                                   from '../styles'
 import User                                                     from './../../containers/User'
 import ProgressDashboardCell                                    from './../HomeScreen/components/DashboardCells/ProgressDashboardCell'
+import PieProgressDashboardCell                                 from './../HomeScreen/components/DashboardCells/PieProgressDashboardCell'
 
 //TODO: Migrate ProgressDashboardCell 
 const shouldShowUserProgressWithUser = user => user.forms.length > 3
 
+const ProgressDashboardCellContainer =  ({ userState, isLoggedIn }) => 
+  isLoggedIn &&
+    shouldShowUserProgressWithUser(userState)
+    ? (
+      <React.Fragment >
+        <ProgressDashboardCell />
+        <PieProgressDashboardCell />
+      </React.Fragment>
+    ) : null
+
 const MyJourneyScreenContainer = (props) => (
-    <View>
+    <ScrollView style={{ flex: 1 }}>
         <User>
-            {
-                ({ userState, isLoggedIn }) => (
-                    <React.Fragment>        
-                        {
-                            isLoggedIn &&
-                                shouldShowUserProgressWithUser(userState) && (
-                                    <ProgressDashboardCell />
-                                )
-                        }
-                    </React.Fragment>
-                )
-            }
+          <ProgressDashboardCellContainer />
         </User>
-    </View>
+    </ScrollView>
 )
 
 MyJourneyScreenContainer.navigationOptions = ({
