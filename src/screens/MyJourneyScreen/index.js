@@ -1,13 +1,29 @@
-import React                                   from 'react'
-import { View, Text, StyleSheet, StatusBar }              from 'react-native'
-import { HeaderBackButton, NavigationActions, StackNavigator } from 'react-navigation'
-import styles                                  from '../styles'
+import React                                                    from 'react'
+import { View, Text, StyleSheet, StatusBar }                    from 'react-native'
+import { HeaderBackButton, NavigationActions, StackNavigator }  from 'react-navigation'
+import styles                                                   from '../styles'
+import User                                                     from './../../containers/User'
+import ProgressDashboardCell                                    from './../HomeScreen/components/DashboardCells/ProgressDashboardCell'
+
+//TODO: Migrate ProgressDashboardCell 
+const shouldShowUserProgressWithUser = user => user.forms.length > 3
 
 const MyJourneyScreenContainer = (props) => (
     <View>
-        <Text>
-            MyJourney
-        </Text>
+        <User>
+            {
+                ({ userState, isLoggedIn }) => (
+                    <React.Fragment>        
+                        {
+                            isLoggedIn &&
+                                shouldShowUserProgressWithUser(userState) && (
+                                    <ProgressDashboardCell />
+                                )
+                        }
+                    </React.Fragment>
+                )
+            }
+        </User>
     </View>
 )
 
