@@ -5,7 +5,8 @@ import selectors from '../../../redux/selectors'
 import R from 'ramda'
 
 const mapStateToProps = (state) => {
-    const latestForm = R.last(selectors.completedFormsChronologically(state))
+    const completedFormsChronologically = selectors.completedFormsChronologically(state)
+    const latestForm = R.last(R.reverse(completedFormsChronologically))
 
     const insightText = getInsight(latestForm.stepId, dummyFormValue)
 

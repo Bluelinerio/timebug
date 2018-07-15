@@ -11,7 +11,7 @@ const styles = {
     }
 }
 
-const InsightComponent = ({ insightText, children }) => {
+const InsightComponent = ({ insightText }) => {
     return (
         <View style={dashboardStyles.dashboardInsightContainer}>
             <Text style={styles.suggestionText}>
