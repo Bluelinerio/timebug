@@ -17,7 +17,7 @@ const InsightComponent = ({ insightText }) => {
             <Text style={styles.suggestionText}>
                 {
                     insightText && 
-                        <Insight insightText={insightText} style={{title: dashboardStyles.strong }}/>
+                        <Insight insightText={insightText} style={{ title: dashboardStyles.strong, text: { textAlign: 'justify'} }}/>
                 }
             </Text>
         </View>
