@@ -7,7 +7,7 @@ import Insight from '../../../components/Insight'
 const styles = {
     suggestionText: {
         ...StyleSheet.flatten(dashboardStyles.suggestionText),
-        ...StyleSheet.flatten(dashboardStyles.homeSuggestionText)  
+        ...StyleSheet.flatten(dashboardStyles.homeSuggestionText)
     }
 }
 

@@ -164,8 +164,8 @@ export default StyleSheet.create({
   },
   homeSuggestionText: {
     color: deepBlue,
-    fontSize: 16,
-    lineHeight: 20     
+    fontSize: 14,
+    lineHeight: 16     
   },
   bold: {
     ...systemWeights.bold
