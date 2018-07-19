@@ -55,8 +55,6 @@ export default class HomeScreenComponent extends PureComponent {
             itemWidth={itemWidth}
             sliderWidth={sliderWidth}
           />
-          <DashboardCellsContainer />
-          <Space />
           <Version />
         </ScrollView>
       </SafeAreaView>
