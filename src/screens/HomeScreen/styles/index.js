@@ -103,9 +103,22 @@ export default StyleSheet.create({
     backgroundColor: 'transparent'
   },
   myJourneyContainer: {
-    paddingTop: 7.5,
-    paddingBottom: 2.5,
-    paddingHorizontal: 5
+    paddingHorizontal: 5,
+    paddingVertical: 2,
+    marginTop: 2,
+    borderRadius: 6,
+    ...Platform.select({
+      android: { elevation: 1 },
+      ios: {
+        shadowColor: 'black',
+        shadowOffset: {
+          width: 0,
+          height: 1
+        },
+        shadowOpacity: 0.2,
+        shadowRadius: 1
+      }
+    })
   },
   myJourneyText: {
     color: '#00098A',
