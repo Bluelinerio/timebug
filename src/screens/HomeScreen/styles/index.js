@@ -101,5 +101,14 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'left',
     backgroundColor: 'transparent'
+  },
+  myJourneyContainer: {
+    paddingTop: 7.5,
+    paddingBottom: 2.5,
+    paddingHorizontal: 5
+  },
+  myJourneyText: {
+    color: '#00098A',
+    fontSize: 14
   }
 })

@@ -33,7 +33,7 @@ const Banner = () => {
             }
           </User>
         </View>
-        <UserProfileImageConsumer style={{ headerAvatar: styles.headerAvatar }}>
+        <UserProfileImageConsumer>
           {source => <UserProfileImage source={source} styles={{ headerAvatar: styles.headerAvatar }} />}
         </UserProfileImageConsumer>
     </View>
