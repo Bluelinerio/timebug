@@ -66,6 +66,30 @@ const isValueAValidTCombType = (value, key, type) => {
   return res
 }
 
+// This depends on the fact that the only additional keys to the structure are timeStamp and type
+const mapValueTypeKeysToActualValues = (value = {}) => {
+
+  const filterMetaKeys = key => !['timeStamp', 'type'].find(k => k === key)
+  const notFilterMetaKeys = key => !filterMetaKeys(key)
+  
+  const typeSpec = value && value.type && Object.keys(value.type)
+  
+  if(!typeSpec)
+    return {}
+
+  const typeValues = Object.keys(value).filter(filterMetaKeys).reduce((newValue, key, index) => {
+    return {
+      ...newValue,
+      [typeSpec[index]]: value[key]
+    }
+  }, {})
+
+  return {
+    ...value,
+    ...typeValues
+  }
+}
+
 export const isTCombValueValid = (value: any, model: any) => (key: string) => {
   const props = getTCombProps(model)
   return props[key] && value[key] && isValueAValidTCombType(value, key, props)
@@ -75,14 +99,16 @@ export const removeIvalidValuesInsteadOfDoingAnyMigrationForNow = (
   model,
   value = {}
 ) => {
+
   const validKeys = validKeysForModel(model)
-  const mapKeysWithValidTCombValues = isTCombValueValid(value, model)
+  const valueWithActualKeyNames = mapValueTypeKeysToActualValues(value)
+  const mapKeysWithValidTCombValues = isTCombValueValid(valueWithActualKeyNames, model)
   const keysWithValidValues = validKeys.filter(mapKeysWithValidTCombValues)
 
   return keysWithValidValues.reduce((sum, key) => {
     return {
       ...sum,
-      [key]: value[key]
+      [key]: valueWithActualKeyNames[key]
     }
   }, {})
 }
