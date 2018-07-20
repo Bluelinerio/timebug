@@ -103,9 +103,9 @@ export default StyleSheet.create({
     backgroundColor: 'transparent'
   },
   myJourneyContainer: {
-    paddingHorizontal: 5,
-    paddingVertical: 2,
-    marginTop: 2,
+    paddingHorizontal: 3,
+    paddingVertical: 3,
+    marginTop: 6,
     borderRadius: 6,
     ...Platform.select({
       android: { elevation: 1 },
