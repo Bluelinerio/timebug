@@ -191,13 +191,13 @@ function* timeout(duration = 5000) {
 }
 
 function* watchForStopFormData() {
-  take(STOP_LOADING_FORMDATA)
+  yield take(STOP_LOADING_FORMDATA)
 }
 
 function* raceLoadingForm() {
     try{
         yield put(setLoadingFormData())
-        const result = race({
+        const result = yield race({
           request: call(watchForStopFormData),
           timeout: call(timeout, 8000)
         })
