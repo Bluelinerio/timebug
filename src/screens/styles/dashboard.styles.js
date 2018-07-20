@@ -240,9 +240,9 @@ export default StyleSheet.create({
     color: iOSColors.gray
   },
   headerAvatar: {
-    height: 44,
-    width: 44,
-    borderRadius: 44 / 2,
+    height: 36,
+    width: 36,
+    borderRadius: 36 / 2,
     alignSelf: 'center',
   }
 })
