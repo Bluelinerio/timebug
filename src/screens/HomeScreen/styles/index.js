@@ -121,7 +121,8 @@ export default StyleSheet.create({
     })
   },
   myJourneyText: {
+    ...iOSUIKit.footnoteEmphasizedObject,
     color: '#00098A',
-    fontSize: 14
+    fontSize: 16
   }
 })
