@@ -2,7 +2,8 @@
 import { 
     MEDITATION,
     SELF_ASSESSMENT,
-    VISION_CREATION
+    VISION_CREATION,
+    COMPLETE
 } from '../../services/cms';
 import type, { Chart } from '../../components/PhaseProgress/PieChart'
 
