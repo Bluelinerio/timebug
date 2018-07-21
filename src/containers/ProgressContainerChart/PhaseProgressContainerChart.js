@@ -9,9 +9,10 @@ import {
     NUMBER_OF_STEP_FOR_PHASES,
     MEDITATION,
     SELF_ASSESSMENT,
-    VISION_CREATION
+    VISION_CREATION,
+    COMPLETE
 } from '../../services/cms';
-import PieChartCells from '../../components/PhaseProgress/PieChartCells'
+import PieChartCells, { PieChartCellsProps } from '../../components/PhaseProgress/PieChartCells'
 import { mediumGray } from '../../constants/colors'
 
 import { buildCharts, LabelFn } from './charts'
@@ -28,6 +29,28 @@ const chartProps: ChartProps = {
   innerRadius: '50%'
 }
 
+type PhaseProgressContainerChartProps = {
+  maxColumns: number,
+  width: number
+}
+
+export type PhaseColors = {
+  MEDITATION: string,
+  VISION_CREATION: string,
+  SELF_ASSESSMENT: string,
+  COMPLETE: string
+}
+
+type StepIndexesTo15 = 0 | 1 | 2 | 3 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15
+type StepIndexesTo29 = 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24 | 25 | 26 | 27 | 28 | 29
+
+type StepIndexes = StepIndexesTo15 & StepIndexesTo29
+
+type PhaseProgressContainerChartStateProps = {
+  completedStepIndices: Array<StepIndexes>,
+  phaseColors: PhaseColors
+}
+
 const mapStateToProps = state => ({
   completedStepIndices: selectors.completedStepIds(state).map(i => i - 1),
   phaseColors: selectors.phaseColors(state),
@@ -35,7 +58,11 @@ const mapStateToProps = state => ({
 
 const recommendedMaxColumns = 3
 
-const merge = (stateProps, dispatchProps, ownProps) => {
+const merge = (
+  stateProps : PhaseProgressContainerChartStateProps, 
+  dispatchProps : any, 
+  ownProps: PhaseProgressContainerChartProps
+) : PieChartCellsProps => {
 
   const { phaseColors, completedStepIndices } = stateProps
   const { maxColumns = recommendedMaxColumns } = ownProps
@@ -65,8 +92,7 @@ const merge = (stateProps, dispatchProps, ownProps) => {
     ...ownProps,
     maxColumns,
     elements,
-    chartProps,
-    phaseForStepAtIndex
+    chartProps
   });
 }
 

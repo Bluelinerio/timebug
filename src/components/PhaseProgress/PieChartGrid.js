@@ -1,8 +1,18 @@
+// @flow
 import React from 'react'
 import { View } from 'react-native'
 import Cell from './PieChartCell'
+import type, { Chart } from './PieChart'
 
-const buildRowStyle = (numRows, baseStyle = {}) => (rowIndex) =>    
+type PieCHartGridProps = {
+    elements: Array<Chart>,
+    numRows: number,
+    maxColumns: number,
+    width: number,
+    style?: { row: any } | any
+}
+
+const buildRowStyle = (numRows : number, baseStyle : any = {}) => (rowIndex : number) =>    
     rowIndex > 0 
         ? {
             ...baseStyle,
@@ -14,7 +24,7 @@ const buildRowStyle = (numRows, baseStyle = {}) => (rowIndex) =>
         }
 
 
-const Grid = ({ elements, numRows, maxColumns, ...rest }) => {
+const Grid = ({ elements, numRows, maxColumns, ...rest } : PieCHartGridProps) : any => {
     const { style: { row } } = rest    
     const rowStyle = buildRowStyle(numRows, row)    
     return Array(numRows)
@@ -32,8 +42,6 @@ const Grid = ({ elements, numRows, maxColumns, ...rest }) => {
                         columnsPerRow={columnsPerRow}
                         rowElements={rowElements}
                         height={height}
-                        numRows={numRows}
-                        maxColumns={maxColumns}
                         {...rest}
                     />
                 </View>

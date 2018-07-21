@@ -6,10 +6,11 @@ import {
     COMPLETE
 } from '../../services/cms';
 import type, { Chart } from '../../components/PhaseProgress/PieChart'
+import { PhaseColors } from './PhaseProgressContainerChart'
 
 export type BuildChartProps = {
     missingFormsColor?: string,
-    phaseColors: { string: string }
+    phaseColors: PhaseColors
 }
   
 export type LabelFn = ({ total: number, completedSteps: number, labelKey?: string }) => string

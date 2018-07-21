@@ -28,10 +28,18 @@ export type PieChartProgressProps = {
     element: Chart
 }
 
-const PieChartProgress = ({ height, chartProps, style, element, ...rest }: PieChartProgressProps) => {
+type PieChartProps = {
+    key: number,
+    amount: number,
+    svg?: {
+        fill?: string
+    }
+}
+
+const PieChartProgress = ({ height, chartProps, style, element }: PieChartProgressProps) => {
         const { label, total, slices } = element
 
-        const data = slices.map(({ amount, color }, index) => ({
+        const data: Array<PieChartProps> = slices.map(({ amount, color }, index) => ({
             key: index,
             amount,
             svg: { fill: color }

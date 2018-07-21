@@ -1,8 +1,9 @@
+// @flow
 import React from 'react'
 import { View } from 'react-native'
-import PieChart from './PieChart'
+import PieChart, { Chart } from './PieChart'
 
-const buildCellStyle = (numCells, baseStyle = {}) => (cellIndex) =>
+const buildCellStyle = (numCells: number, baseStyle: any = {}) => (cellIndex: number) : any =>
     cellIndex > 0 
         ? {
             ...baseStyle,
@@ -13,9 +14,16 @@ const buildCellStyle = (numCells, baseStyle = {}) => (cellIndex) =>
             ...baseStyle,
         }
 
+type CellProps = {
+    columnsPerRow: number,
+    rowElements: Array<Chart>,
+    height: number,
+    style?: { cell: any } | any
+}
 
-const Cell = ({columnsPerRow, ...rest}) => {
-    const { rowElements, currentElementSet, height, style } = rest
+
+const Cell = ({columnsPerRow, ...rest} : CellProps) : any => {
+    const { rowElements, height, style } = rest
     const { cell } = style
     const cellStyles = buildCellStyle(columnsPerRow, cell)
     return Array(columnsPerRow)

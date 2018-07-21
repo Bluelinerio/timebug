@@ -2,11 +2,17 @@
 import React from 'react'
 import { View, Text, Platform } from 'react-native'
 
-import type, { ChartProps } from './PieChart'
+import type, { ChartProps, Chart } from './PieChart'
 
 import PieChartGrid from './PieChartGrid'
 
-const style = {
+type PieChartStyles = {
+    container?: any,
+    row?: any,
+    cell?: any
+}
+
+const style : PieChartStyles = {
     container: {
         flex: 1,    
         flexDirection: 'column',
@@ -22,7 +28,14 @@ const style = {
     }
 }
 
-const PieChartCells = (props) => {
+export type PieChartCellsProps = {
+    width: number,
+    maxColumns: number,
+    elements: Array<Chart>,
+    chartProps: ChartProps,
+}
+
+const PieChartCells = (props : PieChartCellsProps) : any => {
     const { width, maxColumns, elements } = props
     const numRows = Math.ceil(elements.length / maxColumns)
 
