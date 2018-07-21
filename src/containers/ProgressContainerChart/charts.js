@@ -3,7 +3,8 @@ import {
     MEDITATION,
     SELF_ASSESSMENT,
     VISION_CREATION,
-    COMPLETE
+    COMPLETE,
+    Phase
 } from '../../services/cms';
 import type, { Chart } from '../../components/PhaseProgress/PieChart'
 import { PhaseColors } from './PhaseProgressContainerChart'
@@ -37,12 +38,14 @@ export type ChartFns = (BuildChartProps) => {
     phase: ChartFn
 }
 
-const transformKeyToText = (key) => {
+const transformKeyToText = (key: Phase) : string => {
   return key === MEDITATION 
     ? 'Meditation'
     : key === SELF_ASSESSMENT
     ? 'Self assessment'
-    : 'Vision creation'
+    : key === VISION_CREATION
+    ? 'Vision creation'
+    : 'Complete'
 }
 
 export const buildCharts = ({

@@ -23,12 +23,6 @@ type CompletedSteps = {
   SELF_ASSESSMENT: number
 }
 
-const chartProps: ChartProps = {
-  spacing: 0,
-  outerRadius: '95%',
-  innerRadius: '50%'
-}
-
 type PhaseProgressContainerChartProps = {
   maxColumns: number,
   width: number
@@ -51,7 +45,13 @@ type PhaseProgressContainerChartStateProps = {
   phaseColors: PhaseColors
 }
 
-const mapStateToProps = state => ({
+const chartProps: ChartProps = {
+  spacing: 0,
+  outerRadius: '95%',
+  innerRadius: '50%'
+}
+
+const mapStateToProps = (state : any) : PhaseProgressContainerChartStateProps => ({
   completedStepIndices: selectors.completedStepIds(state).map(i => i - 1),
   phaseColors: selectors.phaseColors(state),
 });
@@ -59,8 +59,8 @@ const mapStateToProps = state => ({
 const recommendedMaxColumns = 3
 
 const merge = (
-  stateProps : PhaseProgressContainerChartStateProps, 
-  dispatchProps : any, 
+  stateProps: PhaseProgressContainerChartStateProps, 
+  dispatchProps?: any, 
   ownProps: PhaseProgressContainerChartProps
 ) : PieChartCellsProps => {
 
