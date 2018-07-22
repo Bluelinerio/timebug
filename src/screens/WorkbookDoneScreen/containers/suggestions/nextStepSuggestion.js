@@ -22,6 +22,9 @@ import {
   FINISHED
 } from './constants'
 
+import {
+  StepId
+} from './types'
 /**
  * End categories
  */
@@ -40,10 +43,7 @@ type Finished = FINISHED
 
 type CategoryElement = Category | Phase | Neighbor | Finished
 
-type StepsTo16 = '1' | '2' | ' 3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | '11' | '12' | '13' | '14' | '15' | '16'
-type StepsTo30 = '17' | '18' | '19' | '20' | '21' | '22' | '23' | '24' | '25' | '26' | '27' | '28' | '29' | '30'
-
-type Step = StepsTo16 | StepsTo30
+type Step = StepId
 
 type StepsList = Array<Step>
 
