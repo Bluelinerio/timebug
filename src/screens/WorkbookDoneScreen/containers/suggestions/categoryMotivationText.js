@@ -16,7 +16,13 @@ import {
   FINISHED
 } from './constants'
 
-const categoryMotivationText = {
+import { MotivationElement, Category } from './types'
+
+export type CategoryMotivationObject = {
+  [x: string] : MotivationElement
+}
+
+const categoryMotivationText: CategoryMotivationObject = {
   [REFLECTION]: {
     [HOME_SCREEN]: ({ suggestedNextStep }) =>
       `Based on your activity so far, it seems like this app is helping you with instrospection and self reflection. We love that! You might want to try step ${suggestedNextStep}`,

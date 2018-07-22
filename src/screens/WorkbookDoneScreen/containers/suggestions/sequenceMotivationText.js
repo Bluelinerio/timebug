@@ -3,22 +3,14 @@ import {
   HOME_SCREEN,
   DONE_SCREEN,
 } from './constants'
+import { MotivationElement, StepId } from './types'
 
+type ValidSequence = '-1' | StepId
 
-type SequenceMotivationElement = {
-  HOME_SCREEN: () => string,
-  DONE_SCREEN: () => string
+export type SequenceMotivationObject = {
+  [x : string]: MotivationElement
 }
 
-type SequenceMotivationObject = {
-  [string]: SequenceMotivationElement
-}
-
-/**
- * About -1: Temporary solution, it prevents some errors, due to __DEV__ flag.
- * at the very first step there are NO steps, so it crashes because nextStep is undefined.
- * This solution is just meant to subside the error for the sake of completing issue 185
- */
 const sequenceMotivationText: SequenceMotivationObject = {  
   '-1': {
     [HOME_SCREEN]: () => `Placeholder`,

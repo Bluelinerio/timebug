@@ -13,6 +13,9 @@ import {
   PHASE3,
   NEIGHBOR,
 
+  HOME_SCREEN,
+  DONE_SCREEN,
+  
   STEP1,
   STEP2,
   STEP3,
@@ -60,6 +63,14 @@ export type Category =
   | PHASE2
   | PHASE3
   | NEIGHBOR
+
+export type HomeScreen = HOME_SCREEN
+export type DoneScreen = DONE_SCREEN
+
+export type MotivationElement = {
+  HomeScreen: any,
+  DoneScreen: any
+}
 
 export type StepId =
   | STEP1
