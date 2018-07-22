@@ -16,10 +16,10 @@ import {
   FINISHED
 } from './constants'
 
-import { MotivationElement, Category } from './types'
+import { MotivationElement } from './types'
 
 export type CategoryMotivationObject = {
-  [x: string] : MotivationElement
+  [x: string]: MotivationElement
 }
 
 const categoryMotivationText: CategoryMotivationObject = {
@@ -56,7 +56,7 @@ const categoryMotivationText: CategoryMotivationObject = {
   [HEALTH]: {
     [HOME_SCREEN]: ({ suggestedNextStep }) =>
       `Based on your use of this app so far, it looks like Health and Wellness is an area of particular interest for you. This is great, and at Timebug, health is a holisitc concept, taking into account the physical, psychological and spiritual. With this in mind, we suggest you continue with step ${suggestedNextStep}.`,
-    [DONE_SCREEN]: ({ suggestedNextStep,previousStep }) =>
+    [DONE_SCREEN]: ({ suggestedNextStep, previousStep }) =>
       `Nice job, you've completed ${previousStep}. Based on your use of this app so far, it looks like Health and Wellness is an area of particular interest for you. This is great, and at Timebug, health is a holisitc concept, taking into account the physical, psychological and spiritual. With this in mind, we suggest you continue with step ${suggestedNextStep}.`
   },
   [RELATIONSHIPS]: {
