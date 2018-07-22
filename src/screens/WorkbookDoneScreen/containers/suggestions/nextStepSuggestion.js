@@ -23,7 +23,8 @@ import {
 } from './constants'
 
 import {
-  StepId
+  StepId,
+  Category
 } from './types'
 /**
  * End categories
@@ -32,16 +33,6 @@ import {
 /**
  *  Types
  */
-
-type Category = REFLECTION | TEAMWORK | GOALS | CAREER | HOBBIES | HEALTH | RELATIONSHIPS | ENVIRONMENT | SPIRITUALITY
-
-type Phase = PHASE1 | PHASE2 | PHASE3
-
-type Neighbor = NEIGHBOR
-
-type Finished = FINISHED
-
-type CategoryElement = Category | Phase | Neighbor | Finished
 
 type Step = StepId
 
@@ -53,15 +44,15 @@ type DevResult = {
 }
 
 type CategoriesObject = {
-  [CategoryElement]: StepsList,
+  [Category]: StepsList,
 }
 
 type CategoriesCalls = {
-  [CategoryElement]: any
+  [Category]: any
 }
 
-type Suggestion = [
-  Step, CategoryElement
+export type Suggestion = [
+  Step, Category
 ]
 
  /**
