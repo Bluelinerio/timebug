@@ -1,5 +1,5 @@
 //@flow
-import R            from 'ramda'
+import R from 'ramda'
 
 /**
  *  Categories in which steps are classified
@@ -20,7 +20,7 @@ import {
   PHASE3,
   NEIGHBOR,
   FINISHED
-}                   from './constants'
+} from './constants'
 
 /**
  * End categories
@@ -38,7 +38,7 @@ type Neighbor = NEIGHBOR
 
 type Finished = FINISHED
 
-type Categories = Category | Phase | Neighbor | Finished
+type CategoryElement = Category | Phase | Neighbor | Finished
 
 type StepsTo16 = '1' | '2' | ' 3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | '11' | '12' | '13' | '14' | '15' | '16'
 type StepsTo30 = '17' | '18' | '19' | '20' | '21' | '22' | '23' | '24' | '25' | '26' | '27' | '28' | '29' | '30'
@@ -49,19 +49,19 @@ type StepsList = Array<Step>
 
 type DevResult = {
   status: number,
-  text:   string
+  text: string
 }
 
 type CategoriesObject = {
-  [Categories]: StepsList,
+  [CategoryElement]: StepsList,
 }
 
 type CategoriesCalls = {
-  Categories: any
+  [CategoryElement]: any
 }
 
 type Suggestion = [
-  Step, Categories
+  Step, CategoryElement
 ]
 
  /**
@@ -135,7 +135,7 @@ const _findAtLeastOf = (data : Array<string> | Array<any>, min: number) =>
  * Modified because R.range is left inclusive and right exclusive
  */
 
-const _stepIds: StepsList = R.range(1, 31).map((v, i) => v.toString())
+const _stepIds: StepsList = R.range(1, 31).map(v => v.toString())
 
 /**
  * Function that returns true if the passed param is a stepId
@@ -232,8 +232,8 @@ const _test = (
     return true
   }
   const percentage = succeedIfAbovePercent || 0.33
-  if (countSubjectItemInData() / subject.length > percent) {
-    console.log(`the percentage of item in ${data} is higher than ${percent}`)
+  if (countSubjectItemInData() / subject.length > percentage) {
+    console.log(`the percentage of item in ${data} is higher than ${percentage}`)
     return true
   }
   return false
@@ -252,15 +252,6 @@ const _test = (
  * Steps the user has completed
  */
 const _moddedTest = (data, minItems, minPercent = 0.00) => subject => {
-  const hasSameNeighbor = (item : Step, i : number) =>
-    _findIfItemHasSameNeighbor(i, subject, data)
-
-  const countSubjectItemInData = () : boolean => {
-    const res = R.countBy(item => data.includes(item), subject)
-    if (res['true'])
-      return res['true']
-    return 0
-  }
 
   const hasAllItems = () => R.all(item => subject.includes(item), data)
 
@@ -307,7 +298,6 @@ const _mirrorFromIndex = (index : number, length: number, fromRight: boolean) =>
         j++
       }
     } else {
-      1,  9, 10
       if (index - i >= 0) {
         g.push(index - i)
       }
@@ -341,7 +331,7 @@ const _suggest = (data : StepsList) => (subject: StepsList) : Step => {
   return data[nextSuggestedIndex]
 }
 
-const Categories : CategoriesObject = {
+const Categories: CategoriesObject = {
   [REFLECTION]: ['1', '3', '8', '10', '12', '20', '21', '22', '30'],
   [TEAMWORK]: ['4', '9'],
   [GOALS]: ['2', '5', '6', '7', '11', '20', '21'],
@@ -356,6 +346,7 @@ const Categories : CategoriesObject = {
   [PHASE3]: ['21', '22', '23', '24', '25', '26', '27', '28', '29', '30'],
   [NEIGHBOR]: _stepIds
 }
+
 const suggestionsByCategory: CategoriesCalls = {
   [REFLECTION]: _suggest(Categories[REFLECTION]),
   [TEAMWORK]: _suggest(Categories[TEAMWORK]),
@@ -370,22 +361,6 @@ const suggestionsByCategory: CategoriesCalls = {
   [PHASE2]: _suggest(Categories[PHASE2]),
   [PHASE3]: _suggest(Categories[PHASE3]),
   [NEIGHBOR]: _suggest(Categories[NEIGHBOR])
-}
-
-//Unused 
-const testsByCategory: CategoriesCalls = {
-  [PHASE1]: _findAtLeastOf(Categories[PHASE1], 3),
-  [PHASE2]: _findAtLeastOf(Categories[PHASE2], 3),
-  [PHASE3]: _findAtLeastOf(Categories[PHASE3], 3),
-  [REFLECTION]: _test(Categories[REFLECTION]),
-  [TEAMWORK]: _test(Categories[TEAMWORK]),
-  [GOALS]: _test(Categories[GOALS]),
-  [CAREER]: _test(Categories[CAREER]),
-  [HOBBIES]: _test(Categories[HOBBIES]),
-  [HEALTH]: _test(Categories[HEALTH]),
-  [RELATIONSHIPS]: _test(Categories[RELATIONSHIPS]),
-  [ENVIRONMENT]: _test(Categories[ENVIRONMENT]),
-  [SPIRITUALITY]: _test(Categories[SPIRITUALITY]),
 }
 
 const moddedTest: CategoriesCalls = {
