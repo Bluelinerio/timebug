@@ -1,5 +1,5 @@
 //@flow
-const R = require('ramda')
+import R            from 'ramda'
 
 /**
  *  Categories in which steps are classified
@@ -20,7 +20,11 @@ import {
   PHASE3,
   NEIGHBOR,
   FINISHED
-} from './constants'
+}                   from './constants'
+
+/**
+ * End categories
+ */
 
 /**
  *  Types
@@ -36,7 +40,10 @@ type Finished = FINISHED
 
 type Categories = Category | Phase | Neighbor | Finished
 
-type Step = string
+type StepsTo16 = '1' | '2' | ' 3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | '11' | '12' | '13' | '14' | '15' | '16'
+type StepsTo30 = '17' | '18' | '19' | '20' | '21' | '22' | '23' | '24' | '25' | '26' | '27' | '28' | '29' | '30'
+
+type Step = StepsTo16 | StepsTo30
 
 type StepsList = Array<Step>
 
@@ -46,17 +53,19 @@ type DevResult = {
 }
 
 type CategoriesObject = {
-  string: StepsList
+  [Categories]: StepsList,
+}
+
+type CategoriesCalls = {
+  Categories: any
 }
 
 type Suggestion = [
   Step, Categories
 ]
+
  /**
  *  EndTypes
- */
-/**
- * End categories
  */
 
 /**
@@ -89,7 +98,7 @@ const biasedInputs = [PHASE1, PHASE2, PHASE3];
  *    @return {number}
  *    Number of elements in the second array that are also in the first
  */
-const _count = (first: Array<any>) => (second: Array<any>) : (Array<any>) => second.filter(item => first.includes(item)).length
+const _count = (first: Array<any>) => (second: Array<any>) : number => second.filter(item => first.includes(item)).length
 
 /**
  * Self explanatory comparison function
@@ -123,12 +132,10 @@ const _findAtLeastOf = (data : Array<string> | Array<any>, min: number) =>
 
 
 /**
- * Function that returns an array of strings of the numbers from 1 to 30 both ends inclusive.
- * 
  * Modified because R.range is left inclusive and right exclusive
  */
 
-const _stepIds = R.range(1, 31).map((v, i) => v.toString())
+const _stepIds: StepsList = R.range(1, 31).map((v, i) => v.toString())
 
 /**
  * Function that returns true if the passed param is a stepId
@@ -200,10 +207,13 @@ const _test = (
   data: StepsList,
   succeedIfAbovePercent: number
 ) => (subject : StepsList) : boolean => {
+
   const hasSameNeighbor = (item: Step , i: number) : boolean =>
     _findIfItemHasSameNeighbor(i, subject, data)
+
   const countSubjectItemInData = () : number =>
     R.countBy(item => data.includes(item), subject)['true']
+
   const hasAllItems = () : boolean => R.all(item => subject.includes(item), data)
 
   if (subject.length === 0)
@@ -244,12 +254,14 @@ const _test = (
 const _moddedTest = (data, minItems, minPercent = 0.00) => subject => {
   const hasSameNeighbor = (item : Step, i : number) =>
     _findIfItemHasSameNeighbor(i, subject, data)
+
   const countSubjectItemInData = () : boolean => {
     const res = R.countBy(item => data.includes(item), subject)
     if (res['true'])
       return res['true']
     return 0
   }
+
   const hasAllItems = () => R.all(item => subject.includes(item), data)
 
   const countElementsInDataThatAreInSubject = () => {
@@ -272,6 +284,12 @@ const _moddedTest = (data, minItems, minPercent = 0.00) => subject => {
   return percentage > minPercent ? percentage : 0.00
 }
 
+/**
+ * Creates an array of all indexes from 0 to length in order of proximity to index.
+ * @param {number} index 
+ * @param {number} length 
+ * @param {boolean} fromRight 
+ */
 const _mirrorFromIndex = (index : number, length: number, fromRight: boolean) => {
   let g = []
   let i = 1
@@ -306,6 +324,14 @@ const _mirrorFromIndex = (index : number, length: number, fromRight: boolean) =>
   return g
 }
 
+/**
+ * Suggests next recommended step based on the winning category and the user's interests
+ * @param {StepsList} data
+ * All steps belonging to a category
+ * @return {Function} 
+ * @param {StepsList} subject
+ * All steps completed by the user
+ */
 const _suggest = (data : StepsList) => (subject: StepsList) : Step => {
   const filtered = R.filter(value => data.includes(value))(subject)
   const index = R.indexOf(R.last(filtered), data)
@@ -330,7 +356,7 @@ const Categories : CategoriesObject = {
   [PHASE3]: ['21', '22', '23', '24', '25', '26', '27', '28', '29', '30'],
   [NEIGHBOR]: _stepIds
 }
-const suggestionsByCategory = {
+const suggestionsByCategory: CategoriesCalls = {
   [REFLECTION]: _suggest(Categories[REFLECTION]),
   [TEAMWORK]: _suggest(Categories[TEAMWORK]),
   [GOALS]: _suggest(Categories[GOALS]),
@@ -347,7 +373,7 @@ const suggestionsByCategory = {
 }
 
 //Unused 
-const testsByCategory = {
+const testsByCategory: CategoriesCalls = {
   [PHASE1]: _findAtLeastOf(Categories[PHASE1], 3),
   [PHASE2]: _findAtLeastOf(Categories[PHASE2], 3),
   [PHASE3]: _findAtLeastOf(Categories[PHASE3], 3),
@@ -362,7 +388,7 @@ const testsByCategory = {
   [SPIRITUALITY]: _test(Categories[SPIRITUALITY]),
 }
 
-const moddedTest = {
+const moddedTest: CategoriesCalls = {
   [REFLECTION]: _moddedTest(Categories[REFLECTION]),
   [TEAMWORK]: _moddedTest(Categories[TEAMWORK]),
   [GOALS]: _moddedTest(Categories[GOALS]),
