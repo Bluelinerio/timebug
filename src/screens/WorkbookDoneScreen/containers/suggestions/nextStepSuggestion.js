@@ -1,3 +1,4 @@
+//@flow
 const R = require('ramda')
 
 /**
@@ -22,6 +23,39 @@ import {
 } from './constants'
 
 /**
+ *  Types
+ */
+
+type Category = REFLECTION | TEAMWORK | GOALS | CAREER | HOBBIES | HEALTH | RELATIONSHIPS | ENVIRONMENT | SPIRITUALITY
+
+type Phase = PHASE1 | PHASE2 | PHASE3
+
+type Neighbor = NEIGHBOR
+
+type Finished = FINISHED
+
+type Categories = Category | Phase | Neighbor | Finished
+
+type Step = string
+
+type StepsList = Array<Step>
+
+type DevResult = {
+  status: number,
+  text:   string
+}
+
+type CategoriesObject = {
+  string: StepsList
+}
+
+type Suggestion = [
+  Step, Categories
+]
+ /**
+ *  EndTypes
+ */
+/**
  * End categories
  */
 
@@ -29,7 +63,7 @@ import {
  * Dev helpers
  */
 
-const handleResult = ({ status, text }) => {
+const handleResult = ({ status, text } : DevResult) : null => {
   if(status === false)
     console.warn(text)
   else
@@ -46,38 +80,82 @@ const sequentialExceptions = ['15', '30', '4', '9', '25']
 const biasedInputs = [PHASE1, PHASE2, PHASE3];
 
 /**
- * @param {Array}
  * Returns function, that returns the elements of the second array that are included in the first
- * @returns {function} @param  {Array}
- *                     @return {Array}
- * 
+ * @param {Array} first
+ * First array to be compared
+ * @returns {Function} 
+ *    @param  {Array} second
+ *    Second array To be compared
+ *    @return {number}
+ *    Number of elements in the second array that are also in the first
  */
-const _count = first => second => second.filter(item => first.includes(item))
+const _count = (first: Array<any>) => (second: Array<any>) : (Array<any>) => second.filter(item => first.includes(item)).length
 
 /**
- * 
- * @param {*} min 
- * Self explanatory comparison functions
+ * Self explanatory comparison function
+ * @param {number} min
+ * @param {number} test
+ * @returns {boolean}
+ * Returns true if test is bigger than min
  */
-const _biggerThan = min => test => test > min
+const _biggerThan = (min: number) => (test: number) : boolean => test > min
 
-const _biggerOrEqualTo = min => c => c >= min
+/**
+ * Self explanatory comparison function
+ * @param {number} min
+ * @param {number} c
+ * @returns {boolean} 
+ * Returns true if c is bigger or equal to min
+ */
+
+const _biggerOrEqualTo = (min: number) => (c: number): boolean => c >= min
 
 
 /**
  * 
  * @param {*} data 
  * @param {*} min 
+ * 
  */
-const _findAtLeastOf = (data, min) =>
+
+const _findAtLeastOf = (data : Array<string> | Array<any>, min: number) =>
   R.compose(_biggerOrEqualTo(min), _count(data))
 
-//Modified because R.range is left inclusive and right exclusive
+
+/**
+ * Function that returns an array of strings of the numbers from 1 to 30 both ends inclusive.
+ * 
+ * Modified because R.range is left inclusive and right exclusive
+ */
+
 const _stepIds = R.range(1, 31).map((v, i) => v.toString())
-const isStepId = stepIdOrNot => {
+
+/**
+ * Function that returns true if the passed param is a stepId
+ * @param {string | any} param
+ * @returns {boolean} boolean
+ */
+const isStepId = (stepIdOrNot: string | any) => {
   return _stepIds.includes(stepIdOrNot)
 }
-const _findIfItemHasSameNeighbor = (i, input, test) => {
+
+/**
+ * Tries to find if the element at index i on input has the same neighbors as it's counterpart on test,
+ * returns true if any of the neighbors of test at i are the same as the neighbors of input at i
+ * @param {number} i 
+ * Number representing index in both arrays
+ * @param {Array<string>} input
+ * All steps of a category
+ * @param {Array<string>} test
+ * All steps the user has
+ * @return {boolean} boolean
+ */
+
+const _findIfItemHasSameNeighbor = (
+  i: number,
+  input: StepsList,
+  test: StepsList
+) : boolean => {
   const indexInTest = R.indexOf(input[i], test) 
   if (indexInTest !== -1) {
 
@@ -118,12 +196,15 @@ const _findIfItemHasSameNeighbor = (i, input, test) => {
  * @param {Array} data : all elements of category, hardcoded
  * @param {Number} succeedIfAbovePercent : nullable, weight of decision
  */
-const _test = (data, succeedIfAbovePercent) => subject => {
-  const hasSameNeighbor = (item, i) =>
+const _test = (
+  data: StepsList,
+  succeedIfAbovePercent: number
+) => (subject : StepsList) : boolean => {
+  const hasSameNeighbor = (item: Step , i: number) : boolean =>
     _findIfItemHasSameNeighbor(i, subject, data)
-  const countSubjectItemInData = () =>
+  const countSubjectItemInData = () : number =>
     R.countBy(item => data.includes(item), subject)['true']
-  const hasAllItems = () => R.all(item => subject.includes(item), data)
+  const hasAllItems = () : boolean => R.all(item => subject.includes(item), data)
 
   if (subject.length === 0)
     return new Error('can not provide suggestion based on no history')
@@ -149,15 +230,21 @@ const _test = (data, succeedIfAbovePercent) => subject => {
 }
 
 /**
- * Current decision making for suggestions
- * @param {*} data 
- * @param {*} minItems 
- * @param {*} minPercent 
+ * Function that determines odds of a certain subject belonging to a certain category
+ * @param {Array<string>} data 
+ * Elements of category
+ * @param {number} minItems 
+ * Minimum number of items to be considered - Not Used
+ * @param {number} minPercent
+ * Odds threshold that needs to be surpassed to return true - Value between 0 and 1 default 0
+ * @return {Function} 
+ * @param {Array<string>} subject
+ * Steps the user has completed
  */
 const _moddedTest = (data, minItems, minPercent = 0.00) => subject => {
-  const hasSameNeighbor = (item, i) =>
+  const hasSameNeighbor = (item : Step, i : number) =>
     _findIfItemHasSameNeighbor(i, subject, data)
-  const countSubjectItemInData = () => {
+  const countSubjectItemInData = () : boolean => {
     const res = R.countBy(item => data.includes(item), subject)
     if (res['true'])
       return res['true']
@@ -185,7 +272,7 @@ const _moddedTest = (data, minItems, minPercent = 0.00) => subject => {
   return percentage > minPercent ? percentage : 0.00
 }
 
-const _mirrorFromIndex = (index, length, fromRight) => {
+const _mirrorFromIndex = (index : number, length: number, fromRight: boolean) => {
   let g = []
   let i = 1
   let j = 0
@@ -219,7 +306,7 @@ const _mirrorFromIndex = (index, length, fromRight) => {
   return g
 }
 
-const _suggest = data => subject => {
+const _suggest = (data : StepsList) => (subject: StepsList) : Step => {
   const filtered = R.filter(value => data.includes(value))(subject)
   const index = R.indexOf(R.last(filtered), data)
   const nextSuggestedIndex = _mirrorFromIndex(index, data.length).find(
@@ -228,7 +315,7 @@ const _suggest = data => subject => {
   return data[nextSuggestedIndex]
 }
 
-const Categories = {
+const Categories : CategoriesObject = {
   [REFLECTION]: ['1', '3', '8', '10', '12', '20', '21', '22', '30'],
   [TEAMWORK]: ['4', '9'],
   [GOALS]: ['2', '5', '6', '7', '11', '20', '21'],
@@ -290,7 +377,12 @@ const moddedTest = {
   [PHASE3]: _moddedTest(Categories[PHASE3], 3),
 }
 
-const _checkSequential = subject => {
+/**
+ * Checks subject against allSteps to determine if the user is checking steps sequentially
+ * @param {Array<string>} subject
+ * User's completed steps 
+ */
+const _checkSequential = (subject: StepsList) : Suggestion => {
   if (subject.length === 1 && !sequentialExceptions.find(el => subject[0] === el)) return [`${parseInt(subject[0]) + 1}`, NEIGHBOR];
   else {
     const result = subject.reduce((prev, curr, i) => {
@@ -304,7 +396,15 @@ const _checkSequential = subject => {
     return result;
   }
 }
-const suggestNextStep = steps => {
+
+/**
+ * Returns a suggestion of the next step to completed based on the user's interest in a certain category
+ * @param {Array<string>} steps
+ * Steps the user has completed so far 
+ * @returns {Suggestion} 
+ * A suggestion
+ */
+const suggestNextStep = (steps : StepsList) : Suggestion => {
   //Most of these errors remain uncaught most of the time
   if (!steps || steps.length === 0)
     return ['-1', 'PLACEHOLDER']
