@@ -29,5 +29,7 @@ export const syncFormData = () => ({ type: SYNC_FORM_DATA });
 export const incrementFormDataQueue = () => action(INCREMENT_FORM_DATA_QUEUE);
 export const decrementFormDataQueue = () => action(DECREMENT_FORM_DATA_QUEUE);
 
-export const setLoadingFormData = (payload) => ({ type: SET_LOADING_FORMDATA, payload });
+export const setLoadingFormData = (payload = true) => ({ type: SET_LOADING_FORMDATA, payload });
+export const startLoadingFormData = () => ({ type: START_LOADING_FORMDATA }) 
+export const stopLoadingFormData = () => ({ type: STOP_LOADING_FORMDATA }) 
 export const setNotLoadingFormData = () => setLoadingFormData(false)
