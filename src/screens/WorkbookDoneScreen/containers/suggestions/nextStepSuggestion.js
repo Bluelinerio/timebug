@@ -304,8 +304,10 @@ const _checkSequential = subject => {
     return result;
   }
 }
-const suggestNextStep = steps => {
-  //Most of these errors remain uncaught most of the time
+const suggestNextStep = originalSteps => {
+  console.log(`--Checking ${originalSteps} for Suggestions`)
+  const steps = R.dropRepeats(originalSteps)
+
   if (!steps || steps.length === 0)
     return ['-1', 'PLACEHOLDER']
   // This is a controlled response sent once every step is completed
