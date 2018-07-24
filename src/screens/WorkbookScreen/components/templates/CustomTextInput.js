@@ -1,6 +1,7 @@
 // @flow
 import React from 'react'
 import { View, TextInput, Text, Animated } from 'react-native'
+import { compose } from 'redux'
 
 type State = {
   height: number,
@@ -15,31 +16,34 @@ type Props = TextInputProps & {
 }
 
 class CustomTextInput extends React.Component<Props, State> {
+
   input: ?TextInput = null
-  error() {
-    const { error, hasError, styles: { errorBlockStyle } } = this.props
+
+  error(styles) {
+    const { error, hasError } = this.props
     error && hasError ? (
-      <Text accessibilityLiveRegion="polite" style={errorBlockStyle}>
+      <Text accessibilityLiveRegion="polite" style={styles}>
         {error}
       </Text>
     ) : null
   }
-  help() {
-    const { help, hasError, styles } = this.props
+
+  help(styles) {
+    const { help } = this.props
     help ? (
-      <Text style={hasError ? styles.helpBlock.error : styles.helpBlock.normal}>
+      <Text style={styles}>
         {help}
       </Text>
     ) : null
   }
 
-  floatingLabel() {
-    const { label, hasError, styles } = this.props
+  floatingLabel(labelStyles) {
+    const { label } = this.props
     const { fadeAnim } = this.state
     return label ? (
       <Animated.Text
         style={[
-          hasError ? styles.controlLabel.error : styles.controlLabel.normal,
+          ...labelStyles,
           {
             textAlign: 'auto',
             opacity: fadeAnim,
@@ -58,12 +62,12 @@ class CustomTextInput extends React.Component<Props, State> {
       </Animated.Text>
     ) : null
   }
-  label() {
-    const { label, hasError, styles } = this.props
+  label(labelStyles) {
+    const { label } = this.props
     return label ? (
       <Text
         style={[
-          hasError ? styles.controlLabel.error : styles.controlLabel.normal,
+          ...labelStyles,
           {
             textAlign: 'auto'
           }
@@ -133,7 +137,7 @@ class CustomTextInput extends React.Component<Props, State> {
     this.props.onContentSizeChange && this.props.onContentSizeChange(event)
   }
 
-  renderTextInput = () => (
+  renderTextInput = (styles) => (
     <TextInput
       ref={c => (this.input = c)}
       onContentSizeChange={
@@ -177,38 +181,72 @@ class CustomTextInput extends React.Component<Props, State> {
       returnKeyType={this.props.returnKeyType}
       selectionState={this.props.selectionState}
       placeholder={this.props.placeholder}
-      style={[
-        this.props.hasError
-          ? this.props.styles.textBox.error
-          : this.props.editable !== false
-            ? this.props.styles.textBox.normal
-            : this.props.styles.textbox.notEditable,
-        {
-          height: Math.min(400, Math.max(this.state.height, 44))
-        }
-      ]}
+      style={styles}
       value={this.props.value}
     />
   )
 
+  composeStyles(...overrideStyles) {
+    return (...styles) => [
+      ...styles,
+      ...overrideStyles
+    ]
+  }
+
   render() {
-    const { styles, hasError, editable, floatingLabel } = this.props
+    const { styles, hasError, editable, floatingLabel, config } = this.props
 
     const { text } = this.state
-    const formGroupStyle = hasError
-      ? styles.formGroupStyle.error
-      : styles.formGroupStyle.normal
 
-    const textboxViewStyle = hasError
-      ? styles.textBoxView.error
-      : editable !== false
-        ? styles.textBoxView.normal
-        : styles.textBoxView.notEditable
+    const formGroupStyle = compose(
+      this.composeStyles(hasError
+        ? styles.formGroupStyle.error
+        : styles.formGroupStyle.normal)
+    )()
+    
 
-    const label = floatingLabel ? this.floatingLabel() : this.label() // text.length > 0 ? null :
-    const help = this.help()
-    const error = this.error()
-    const textInput = this.renderTextInput()
+    const textboxViewStyle = compose(
+      this.composeStyles({
+        backgroundColor: config.color
+      }),
+      this.composeStyles(
+        hasError
+          ? styles.textBoxView.error
+          : editable !== false
+            ? styles.textBoxView.normal
+            : styles.textBoxView.notEditable
+      ),
+      this.composeStyles(styles.textBoxView.base)
+    )()
+
+    const labelStyles = compose(
+      this.composeStyles({color: config.stepColor})
+    )(hasError 
+      ? styles.controlLabel.error 
+      : styles.controlLabel.normal
+    )
+
+    const helpStyles = [
+      hasError ? styles.helpBlock.error : styles.helpBlock.normal
+    ]
+
+    const errorStyles = styles.errorBlockStyle
+
+    const textInputStyles = compose(
+      this.composeStyles({
+        height: Math.min(400, Math.max(this.state.height, 44))
+      })
+    )(this.props.hasError
+      ? this.props.styles.textBox.error
+      : this.props.editable !== false
+        ? this.props.styles.textBox.normal
+        : this.props.styles.textbox.notEditable
+    )
+    
+    const label = floatingLabel ? this.floatingLabel(labelStyles) : this.label(labelStyles) // text.length > 0 ? null :
+    const help = this.help(helpStyles)
+    const error = this.error(errorStyles)
+    const textInput = this.renderTextInput(textInputStyles)
 
     return (
       <View style={formGroupStyle}>

@@ -14,6 +14,8 @@ import KeyboardComponent    from '../../../components/KeyboardComponent'
 import DefaultIndicator     from '../../../components/DefaultIndicator'
 import WorkbookNextButton   from '../components/WorkbookNextButton'
 import styles               from '../styles'
+import hexToRgba           from '../../../utils/colorTransform'
+
 const Form = t.form.Form
 
 export type Model = {
@@ -202,6 +204,7 @@ class WorkbookScreenComponent extends Component<Props, State> {
       return <DefaultIndicator size="large" />
     }
 
+    const { config } = options
     return (
       <View onLayout={this.onLayout} style={{ flex: 1 }}>
         <StatusBar barStyle="light-content" backgroundColor={stepColor} />
@@ -212,16 +215,20 @@ class WorkbookScreenComponent extends Component<Props, State> {
               opacity: layoutReady ? 1 : 0
             }}
           >
-            <Form
-              type={type}
-              ref={this.handleFormRef}
-              options={{
-                ...options,
-                topLevel: true
-              }}
-              value={value}
-              onChange={this.onChange}
-            />
+                <Form
+                  type={type}
+                  ref={this.handleFormRef}
+                  options={{
+                    ...{
+                        ...options, 
+                        config: { ...config, stepColor, color: hexToRgba(stepColor, 0.1) } 
+                    },
+                    topLevel: true
+                  }}
+                  value={value}
+                  onChange={this.onChange}
+                  
+                />
             <View
               style={[
                 styles.flexibleHeightView,
