@@ -4,6 +4,7 @@ import { Text, View, StyleSheet } from 'react-native'
 import dashboardStyles from '../../styles/dashboard.styles'
 import Button from '../../../components/Button'
 import WorkbookIndicator from '../../../components/WorkbookIndicator'
+import Insight from '../../../components/Insight'
 
 const white = '#FEFEFE'
 export type Props = {
@@ -55,8 +56,7 @@ const WorkbookDoneScreen = ({
                     {
                       insightText && 
                         <Text>
-                          <Text style={dashboardStyles.strong}>{`Did You Know?\n`}</Text>
-                          <Text>{`${insightText}'\n\n`}</Text>
+                          <Insight insightText={insightText} style={{title: dashboardStyles.strong }} extraLines={2} />
                         </Text>
                     }
                     <Text style={dashboardStyles.strong}>{"What's next?\n"}</Text>

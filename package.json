@@ -60,6 +60,7 @@
     "react-native-snap-carousel": "3.6.0",
     "react-native-sound": "0.10.5",
     "react-native-svg": "https://github.com/expo/react-native-svg/archive/5.5.1-exp.1.tar.gz",
+    "react-native-svg-charts": "^5.2.0",
     "react-native-svg-image": "^2.0.0",
     "react-native-swiper": "^1.5.13",
     "react-native-typography": "^1.2.1",

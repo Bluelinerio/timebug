@@ -3,7 +3,7 @@ import invariant from 'invariant'
 import { connect } from 'react-redux'
 import { compose, mapProps } from 'recompose'
 import { withNavigation } from 'react-navigation'
-import PagninatedCarousel from '../components/PagninatedCarousel'
+import PaginatedCarousel from '../components/PaginatedCarousel'
 import { phaseForStepAtIndex } from '../../../services/cms'
 import type Item from '../components/SliderEntry'
 import type Step from '../../../services/cms'
@@ -105,6 +105,6 @@ const PagninatedCarouselContainer = compose(
       return props
     }
   )
-)(PagninatedCarousel)
+)(PaginatedCarousel)
 
 export default PagninatedCarouselContainer

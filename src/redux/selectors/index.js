@@ -78,7 +78,8 @@ const sortFormsChronologically = (a: Form, b: Form) =>
 // stepId on the server is an Int!. A clear idea how to
 
 const hasCompletedForms = (state: any): boolean =>
-user(state) && user(state).forms.length > 1
+  user(state) && user(state).forms.length > 0
+
 const hasNoCompletedForms = R.compose(
   R.not,
   hasCompletedForms

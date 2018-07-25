@@ -5,7 +5,8 @@ import {
   View, 
   Text, 
   TouchableOpacity, 
-  Dimensions 
+  Dimensions,
+  Platform
 }                             from 'react-native'
 import styles, {
   scrollViewHorizontalPadding,
@@ -14,7 +15,7 @@ import styles, {
 import OnLayout               from '../../../../components/OnLayout'
 import HighlighRow            from '../../../../components/HighlighRow'
 import HorizontalScrollView   from '../../../../components/HorizontalScrollView'
-import PhaseProgressContainer from '../../../../containers/PhaseProgressContainer'
+import PhaseProgressContainer from '../../../../containers/ProgressContainerChart'
 
 type HeaderProps = {
   date: string,
@@ -39,35 +40,27 @@ const Header = ({ date, source, title, titleColor }: HeaderProps) => (
 
 const ProgressDashboardCell = () => (
   <View style={styles.container}>
-    <Header title="Progress" titleColor="black" />
+    <Header title="Progress Chart" titleColor="black" />
     <HorizontalScrollView horizontalPadding={scrollViewHorizontalPadding}>
       {
         <HighlighRow
           style={[
-            styles.leaderboardContainer,
+            styles.pieChartContainer,
             {
               width:
-                Dimensions.get('window').width - scrollViewHorizontalPadding - 20,
-              paddingLeft: 10
+                Dimensions.get('window').width - scrollViewHorizontalPadding - 20
+            },
+            Platform.OS === 'ios' ? {}
+            : {
+              marginHorizontal: scrollViewHorizontalPadding
             }
           ]}
         >
           <OnLayout
             render={({ width }) =>
-              width > 0 ? <PhaseProgressContainer width={width} /> : null
+              width > 0 ? <PhaseProgressContainer maxColumns={3} width={width}/> : null
             }
           />
-          <Text
-            style={[
-              styles.suggestionText,
-              {
-                color: grayColor,
-                textAlign: 'center'
-              }
-            ]}
-          >
-            {`The legend of your progress`}
-          </Text>
         </HighlighRow>
       }
     </HorizontalScrollView>
@@ -75,18 +68,3 @@ const ProgressDashboardCell = () => (
 )
 
 export default ProgressDashboardCell
-
-// import {
-//   MEDITATION,
-//   SELF_ASSESSMENT,
-//   VISION_CREATION,
-//   COMPLETE
-// } from '../../../../services/cms'
-// export type Props = {
-//   phaseColors: {
-//     [MEDITATION]: string,
-//     [SELF_ASSESSMENT]: string,
-//     [VISION_CREATION]: string,
-//     [COMPLETE]: string
-//   }
-// }

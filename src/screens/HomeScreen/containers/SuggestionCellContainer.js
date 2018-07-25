@@ -6,9 +6,11 @@ import HowAreYouFeelingSuggestionCellContainer from './HowAreYouFeelingSuggestio
 import WhereToStartSuggestionCellContainer     from './WhereToStartSuggestionCellContainer'
 import SwipablyDiscardableRow                  from '../../../components/SwipablyDiscardableRow'
 import { lastStepGuideVisited }                from '../../../redux/selectors/agregates'
+import selectors                               from '../../../redux/selectors'
 
 const pickSuggestion = state => ({
-  lastStepGuideVisited: lastStepGuideVisited(state)
+  lastStepGuideVisited: lastStepGuideVisited(state),
+  hasCompletedForms: selectors.hasCompletedForms(state)
 })
 
 /*
@@ -33,15 +35,20 @@ const pickSuggestion = state => ({
 //   }
 // }
 
+
+//NOTE: To show the CheckinExcerciseCell and HowAreYouFeelingContainer, delete the prop Show and it's check
+
 const SuggestionCellPicker = (props: {
   lastStepGuideVisited: {},
-  onClose: () => void
+  hasCompletedForms: boolean,
+  onClose: () => void,
+  show: boolean
 }) => {
   return (
     <SwipablyDiscardableRow onClose={props.onClose}>
-      {!props.lastStepGuideVisited ? (
+      {!props.lastStepGuideVisited && !props.hasCompletedForms? (
         <WhereToStartSuggestionCellContainer {...props} />
-      ) : (
+      ) : props.show && (
         randomItem([
           <CheckinExerciseCellContainer {...props} />,
           <HowAreYouFeelingSuggestionCellContainer {...props} />
