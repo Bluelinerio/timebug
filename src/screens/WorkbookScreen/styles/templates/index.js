@@ -17,6 +17,7 @@ const borderWidth = 1
 const height = 44
 const paddingHorizontal = 16
 const innerPaddingHorizontal = 4
+const innerPaddingVertical = 2
 const paddingVertical = 20
 
 //#E6E5ED
@@ -68,6 +69,7 @@ export default Object.freeze({
     textAlign: 'left',
     fontSize: 22,
     paddingVertical,
+    fontFamily: 'Metropolis',
     fontWeight: '700'
   },
   controlLabel: {
@@ -75,14 +77,18 @@ export default Object.freeze({
       color: LABEL_COLOR,
       fontSize: FONT_SIZE,
       marginBottom: 7,
-      fontWeight: FONT_WEIGHT
+      lineHeight: FONT_SIZE * 1.25 ,
+      fontFamily: 'Metropolis',
+      fontWeight: 'bold'
     },
     // the style applied when a validation error occours
     error: {
       color: LABEL_COLOR,
       fontSize: FONT_SIZE,
       marginBottom: 7,
-      fontWeight: FONT_WEIGHT
+      lineHeight: FONT_SIZE * 1.25,      
+      fontFamily: 'Metropolis',
+      fontWeight: 'bold'
     }
   },
   helpBlock: {
@@ -90,16 +96,25 @@ export default Object.freeze({
       ...stylesheet.helpBlock.normal,
       marginTop: 4,
       paddingHorizontal: innerPaddingHorizontal,
+      fontFamily: 'Metropolis',      
       fontStyle: 'italic'
     },
     error: {
       ...stylesheet.helpBlock.normal,
       marginTop: 4,
       paddingHorizontal: innerPaddingHorizontal,
+      fontFamily: 'Metropolis',      
       fontStyle: 'italic'
     }
   },
   pickerContainer: {
+    base: {
+      borderColor: BORDER_COLOR,
+      borderWidth: borderWidth,
+      borderRadius,
+      paddingHorizontal: innerPaddingHorizontal,
+      paddingVertical: innerPaddingVertical
+    },
     normal: {
       flexDirection: 'row',
       height,
@@ -107,7 +122,7 @@ export default Object.freeze({
       borderRadius,
       borderColor: BORDER_COLOR,
       padding: 8,
-      backgroundColor: BACKGROUND_COLOR
+      backgroundColor: 'transparent',
     },
     error: {
       flexDirection: 'row',
@@ -116,7 +131,7 @@ export default Object.freeze({
       borderRadius,
       borderColor: ERROR_COLOR,
       padding: 8,
-      backgroundColor: BACKGROUND_COLOR
+      backgroundColor: 'transparent'
     },
     open: {}
   },
@@ -152,6 +167,18 @@ export default Object.freeze({
     }
   },
   textBoxView: {
+    base: {
+      ...Platform.select({
+        ios: {},
+        android:{
+          borderColor: BORDER_COLOR,
+          borderWidth: borderWidth,
+          paddingHorizontal: innerPaddingHorizontal,
+          borderRadius,
+          paddingVertical: innerPaddingVertical
+        }
+      })
+    },
     normal: {
       ...Platform.select({
         ios: {

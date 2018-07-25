@@ -179,7 +179,6 @@ const modelsAndDataForExercise = (state: any) => (stepId: string) => {
 
   const models = workbooks[stepId]
   const localData = getFormData(state).data[stepId]
-
   if (!localData) {
     return {
       models,
