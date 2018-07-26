@@ -1,16 +1,12 @@
-import React from 'react'
+import React from 'react';
+import { View } from 'react-native';
 
-import { View, Text } from 'react-native'
-import PillarTimeTableElement, { PillarTimeTableHeader } from './PillarTimeTableElement'
+import PillarTimeTableElement from './PillarTimeTableElement';
+import PillarTimeTableHeader from './PillarTimeTableHeader';
+import styles from '../styles';
 
 const TimeSpentOnPillars = ({ pillars }) => (
-    <View style={{
-        flexDirection: 'column',
-        flex: 1,    
-        borderRadius: 6,
-        padding: 16
-    }}>
-        
+    <View style={[styles.timeContainer, styles.container]}>
             {
                 pillars && 
                     <React.Fragment>
