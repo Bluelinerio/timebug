@@ -1,5 +1,5 @@
 // @flow
-import * as React             from 'react'
+import * as React                  from 'react'
 import { 
   Image, 
   View, 
@@ -7,14 +7,14 @@ import {
   TouchableOpacity, 
   Dimensions,
   Platform
-}                             from 'react-native'
+}                                  from 'react-native'
 import styles, {
   scrollViewHorizontalPadding,
   grayColor
-}                             from '../../../styles/dashboard.styles'
-import OnLayout               from '../../../../components/OnLayout'
-import HighlighRow            from '../../../../components/HighlighRow'
-import HorizontalScrollView   from '../../../../components/HorizontalScrollView'
+}                                  from '../../../styles/dashboard.styles'
+import OnLayout                    from '../../../../components/OnLayout'
+import HighlighRow                 from '../../../../components/HighlighRow'
+import HorizontalScrollView        from '../../../../components/HorizontalScrollView'
 import TimeSpentOnPillarsContainer from '../../containers/TimeSpentOnPillarsContainer'
 
 type HeaderProps = {

@@ -1,9 +1,7 @@
-import { compose, mapProps } from 'recompose'
-import R from 'ramda'
-import selectors from '../../../redux/selectors';
-import FormConsumer from './../../../containers/FormConsumer';
+import { compose, mapProps }       from 'recompose'
+import R                           from 'ramda'
+import FormConsumer                from './../../../containers/FormConsumer';
 import TimeSpentOnPillarsComponent from '../components/TimeSpentOnPillarsComponent'
-import { iOSUIKit } from 'react-native-typography'
 
 const STEP2 = '2'
 

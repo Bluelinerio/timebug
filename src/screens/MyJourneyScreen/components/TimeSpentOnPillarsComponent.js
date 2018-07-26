@@ -1,9 +1,9 @@
-import React from 'react';
-import { View } from 'react-native';
+import React                  from 'react';
+import { View }               from 'react-native';
 
 import PillarTimeTableElement from './PillarTimeTableElement';
-import PillarTimeTableHeader from './PillarTimeTableHeader';
-import styles from '../styles';
+import PillarTimeTableHeader  from './PillarTimeTableHeader';
+import styles                 from '../styles';
 
 const TimeSpentOnPillars = ({ pillars }) => (
     <View style={[styles.timeContainer, styles.container]}>

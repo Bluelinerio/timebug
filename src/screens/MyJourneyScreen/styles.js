@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { iOSUIKit } from 'react-native-typography'
+import { iOSUIKit }   from 'react-native-typography'
 
 export default StyleSheet.create({
     header: {
