@@ -13,8 +13,14 @@ const MyJourneyScreenComponent = (props: any) => (
         <User>
             { ({ userState, isLoggedIn }) => 
                 isLoggedIn &&
-                    shouldShowUserProgressWithUser(userState) &&
-                        (<ProgressCellComponent/>)
+                    (
+                        <React.Fragment>
+                            {
+                                shouldShowUserProgressWithUser(userState) &&
+                                    (<ProgressCellComponent/>)
+                            }
+                        </React.Fragment>                        
+                    )
             }
         </User>
     </ScrollView>
