@@ -6,14 +6,24 @@ import TimeSpentOnPillarsComponent from '../components/TimeSpentOnPillarsCompone
 const STEP2 = '2'
 
 const wantedKeys = {
-    typical: {
+    typicalWeek: {
         form: '1',
         key: 'typicalWeeklyBreakdown'
     },
-    ideal: {
+    idealWeek: {
         form: '2',
         key: 'idealWeeklyBreakdown'
     }
+}
+
+const getDataFromForm = (formData) => {
+    return Object.keys(wantedKeys).reduce((obj, k) => {
+        const { form, key } = wantedKeys[k]
+        return {
+            ...obj,
+            [k]: formData[form][key]
+        }
+    }, {})
 }
 
 const merge = ({
@@ -30,10 +40,8 @@ const merge = ({
             return null
         }
     }
-    if(formData && notEmpty(formData)){
-        const { typical, ideal } = wantedKeys
-        const typicalWeek = formData[typical.form][typical.key]
-        const idealWeek = formData[ideal.form][ideal.key]
+    if(formData && notEmpty(formData)) {
+        const { typicalWeek, idealWeek } = getDataFromForm(formData)
         const typicalWeekTemplateObject = typicalWeek.reduce(( allPillars, pillar) => {
             const { pillarOfLife, hours } = pillar
             return {
