@@ -26,6 +26,15 @@ const merge = ({
 }) => {
     const { formData } = modelsAndDataForExercise(STEP2)
     const notEmpty =compose(R.not,R.isEmpty)
+    const parseHoursIntoNumber = (hours) => {
+        const regex = /\d+/
+        try {
+            return parseInt(hours.match(regex))
+        }
+        catch (e) {
+            return null
+        }
+    }
     if(formData && notEmpty(formData)){
         const typicalWeek = formData['1']['typicalWeeklyBreakdown']
         const idealWeek = formData['2']['idealWeeklyBreakdown']
@@ -34,7 +43,7 @@ const merge = ({
             return {
                 ...allPillars,
                 [pillarOfLife]: {
-                    typicalWeek: hours
+                    typicalWeek: parseHoursIntoNumber(hours)
                 }
             }
         }, {})
@@ -46,13 +55,13 @@ const merge = ({
                 ...allPillars,
                 [pillarOfLife] : {
                     ...counterPart,
-                    idealWeek: hours
+                    idealWeek: parseHoursIntoNumber(hours)
                 }  
             }
         }, typicalWeekTemplateObject)
 
         return {
-            step: steptemplateObject
+            pillars: steptemplateObject
         }
     }
     return {}
