@@ -1,7 +1,7 @@
 import { compose, mapProps }       from 'recompose'
 import R                           from 'ramda'
 import FormConsumer                from './../../../containers/FormConsumer';
-import TimeSpentOnPillarsComponent from '../components/TimeSpentOnPillarsComponent'
+import TimeTableProgressCell from '../components/ProgressCells/TimeTableProgressCell'
 
 const STEP2 = '2'
 
@@ -27,7 +27,6 @@ const getDataFromForm = (formData) => {
 }
 
 const parseHoursIntoNumber = (hours) => {
-    console.log(hours)
     const regex = /\d+/
     const isOne = hours.toLowerCase().includes('one')
     try { return isOne ? 1 : parseInt(hours.match(regex)) }
@@ -75,6 +74,6 @@ const merge = ({
 const TimeSpentOnPillarsContainer = compose(
     FormConsumer,
     mapProps(merge),
-)(TimeSpentOnPillarsComponent)
+)(TimeTableProgressCell)
 
 export default TimeSpentOnPillarsContainer

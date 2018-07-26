@@ -15,7 +15,7 @@ import styles, {
 import OnLayout                    from '../../../../components/OnLayout'
 import HighlighRow                 from '../../../../components/HighlighRow'
 import HorizontalScrollView        from '../../../../components/HorizontalScrollView'
-import TimeSpentOnPillarsContainer from '../../containers/TimeSpentOnPillarsContainer'
+import TimeSpentOnPillarsComponent from '../TimeSpentOnPillarsComponent'
 
 type HeaderProps = {
   date: string,
@@ -38,33 +38,35 @@ const Header = ({ date, source, title, titleColor }: HeaderProps) => (
   </View>
 )
 
-const TimeTableProgressCell = () => (
-  <View style={styles.container}>
-    <Header title="Your weekly Timetable" titleColor="black" />
-    <HorizontalScrollView horizontalPadding={scrollViewHorizontalPadding}>
-      {
-        <HighlighRow
-          style={[
-            styles.pieChartContainer,
-            {
-              width:
-                Dimensions.get('window').width - scrollViewHorizontalPadding - 20
-            },
-            Platform.OS === 'ios' ? {}
-            : {
-              marginHorizontal: scrollViewHorizontalPadding
-            }
-          ]}
-        >
-          <OnLayout
-            render={({ width }) =>
-              width > 0 ? <TimeSpentOnPillarsContainer width={width}/> : null
-            }
-          />
-        </HighlighRow>
-      }
-    </HorizontalScrollView>
-  </View>
+const TimeTableProgressCell = ({ pillars }) => (
+  pillars ?
+    (<View style={styles.container}>
+      <Header title="Your weekly Timetable" titleColor="black" />
+      <HorizontalScrollView horizontalPadding={scrollViewHorizontalPadding}>
+        {
+          <HighlighRow
+            style={[
+              styles.pieChartContainer,
+              {
+                width:
+                  Dimensions.get('window').width - scrollViewHorizontalPadding - 20
+              },
+              Platform.OS === 'ios' ? {}
+              : {
+                marginHorizontal: scrollViewHorizontalPadding
+              }
+            ]}
+          >
+            <OnLayout
+              render={({ width }) =>
+                width > 0 ? <TimeSpentOnPillarsComponent pillars={pillars}/> : null
+              }
+            />
+          </HighlighRow>
+        }
+      </HorizontalScrollView>
+  </View>)
+  : null
 )
 
 export default TimeTableProgressCell

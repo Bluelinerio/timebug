@@ -2,7 +2,7 @@ import React                    from 'react'
 
 import ProgressDashboardCell    from './ProgressCells/ProgressDashboardCell'
 import PieProgressDashboardCell from './ProgressCells/PieProgressDashboardCell'
-import TimeTableProgressCell    from './ProgressCells/TimeTableProgressCell'
+import TimeTableProgressCell    from '../containers/TimeSpentOnPillarsContainer'
 
 const ProgressCellComponent =  () => (
   <React.Fragment >
