@@ -26,20 +26,19 @@ const getDataFromForm = (formData) => {
     }, {})
 }
 
+const parseHoursIntoNumber = (hours) => {
+    const regex = /\d+/
+    try { return parseInt(hours.match(regex)) }
+    catch (e) { return null }
+}
+
+const notEmpty = compose(R.not,R.isEmpty)
+
 const merge = ({
     modelsAndDataForExercise
 }) => {
     const { formData } = modelsAndDataForExercise(STEP2)
-    const notEmpty =compose(R.not,R.isEmpty)
-    const parseHoursIntoNumber = (hours) => {
-        const regex = /\d+/
-        try {
-            return parseInt(hours.match(regex))
-        }
-        catch (e) {
-            return null
-        }
-    }
+
     if(formData && notEmpty(formData)) {
         const { typicalWeek, idealWeek } = getDataFromForm(formData)
         const typicalWeekTemplateObject = typicalWeek.reduce(( allPillars, pillar) => {
