@@ -9,7 +9,7 @@ const renderText = (typical) => (ideal) => {
     return result > 0 
         ? `+${result} hrs`
         : result < 0
-        ? `-${result} hrs`
+        ? `${result} hrs`
         : `${result} hrs`
 }
 
