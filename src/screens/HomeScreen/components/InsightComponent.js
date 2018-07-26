@@ -12,16 +12,15 @@ const styles = {
 }
 
 const InsightComponent = ({ insightText }) => {
-    return (
-        <View style={dashboardStyles.dashboardInsightContainer}>
-            <Text style={styles.suggestionText}>
-                {
-                    insightText && 
-                        <Insight insightText={insightText} style={{ title: dashboardStyles.strong, text: { textAlign: 'justify'} }}/>
-                }
-            </Text>
-        </View>
-    )
+    return insightText 
+        ? (
+            <View style={dashboardStyles.dashboardInsightContainer}>
+                <Text style={styles.suggestionText}>
+                    <Insight insightText={insightText} style={{ title: dashboardStyles.strong, text: { textAlign: 'justify'} }}/>
+                </Text>
+            </View>
+        )
+        : null
 }
 
 export default InsightComponent
