@@ -40,7 +40,7 @@ const Header = ({ date, source, title, titleColor }: HeaderProps) => (
 
 const TimeTableProgressCell = () => (
   <View style={styles.container}>
-    <Header title="Your ideal week" titleColor="black" />
+    <Header title="Your weekly Timetable" titleColor="black" />
     <HorizontalScrollView horizontalPadding={scrollViewHorizontalPadding}>
       {
         <HighlighRow

@@ -27,8 +27,10 @@ const getDataFromForm = (formData) => {
 }
 
 const parseHoursIntoNumber = (hours) => {
+    console.log(hours)
     const regex = /\d+/
-    try { return parseInt(hours.match(regex)) }
+    const isOne = hours.toLowerCase().includes('one')
+    try { return isOne ? 1 : parseInt(hours.match(regex)) }
     catch (e) { return null }
 }
 

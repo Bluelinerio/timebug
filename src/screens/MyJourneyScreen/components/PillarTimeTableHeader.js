@@ -7,17 +7,17 @@ const PillarTimeTableHeader = () => (
     <View style={styles.row}>
         <View style={[styles.element, styles.pillar]}>
             <Text style={[styles.pillarText, styles.headerRowText]}>
-                Area of life
+                Pillar Of Life
             </Text>
         </View>
         <View style={styles.element}>
             <Text style={[styles.elementText, styles.headerRowText]}>
-                Current week
+                Current Week
             </Text>
         </View>
         <View style={styles.element}>
             <Text style={[styles.elementText, styles.headerRowText]}>
-                Ideal week
+                Ideal Week
             </Text>
         </View>
         <View style={styles.element}>

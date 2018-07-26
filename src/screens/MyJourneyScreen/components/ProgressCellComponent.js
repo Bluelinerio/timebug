@@ -6,9 +6,9 @@ import TimeTableProgressCell    from './ProgressCells/TimeTableProgressCell'
 
 const ProgressCellComponent =  () => (
   <React.Fragment >
-    <TimeTableProgressCell />
     <ProgressDashboardCell />
     <PieProgressDashboardCell />
+    <TimeTableProgressCell />
   </React.Fragment>
 )
     
