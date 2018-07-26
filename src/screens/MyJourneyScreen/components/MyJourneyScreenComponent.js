@@ -2,7 +2,6 @@ import React                                                    from 'react'
 import { ScrollView }                                           from 'react-native'
 
 import User                                                     from './../../../containers/User'
-import TimeSpentOnPillars                                       from './../../../containers/TimeSpentOnPillarsContainer'
 import ProgressCellComponent                                    from './ProgressCellComponent'
 
 import styles                                                   from '../styles'
@@ -16,7 +15,6 @@ const MyJourneyScreenComponent = (props: any) => (
                 isLoggedIn &&
                     (
                         <React.Fragment>
-                            <TimeSpentOnPillars />
                             {
                                 shouldShowUserProgressWithUser(userState) &&
                                     (<ProgressCellComponent/>)

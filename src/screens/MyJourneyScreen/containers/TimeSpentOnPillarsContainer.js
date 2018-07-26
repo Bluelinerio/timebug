@@ -1,23 +1,20 @@
 import { compose, mapProps } from 'recompose'
 import R from 'ramda'
-import selectors from '../redux/selectors';
-import FormConsumer from './FormConsumer';
+import selectors from '../../../redux/selectors';
+import FormConsumer from './../../../containers/FormConsumer';
 import TimeSpentOnPillarsComponent from '../components/TimeSpentOnPillarsComponent'
+import { iOSUIKit } from 'react-native-typography'
 
 const STEP2 = '2'
 
 const wantedKeys = {
-    ['1']: {
-        typicalWeeklyBreakdown: [
-            'pillarOfLife',
-            'hours'
-        ],
+    typical: {
+        form: '1',
+        key: 'typicalWeeklyBreakdown'
     },
-    ['2']: {
-        idealWeeklyBreakdown: [
-            'pillarOfLife',
-            'hours'
-        ]
+    ideal: {
+        form: '2',
+        key: 'idealWeeklyBreakdown'
     }
 }
 
@@ -36,8 +33,9 @@ const merge = ({
         }
     }
     if(formData && notEmpty(formData)){
-        const typicalWeek = formData['1']['typicalWeeklyBreakdown']
-        const idealWeek = formData['2']['idealWeeklyBreakdown']
+        const { typical, ideal } = wantedKeys
+        const typicalWeek = formData[typical.form][typical.key]
+        const idealWeek = formData[ideal.form][ideal.key]
         const typicalWeekTemplateObject = typicalWeek.reduce(( allPillars, pillar) => {
             const { pillarOfLife, hours } = pillar
             return {
