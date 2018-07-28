@@ -1,6 +1,4 @@
 import React from 'react'
-import FormComponent    from '../components/Form2Component'
-import GenericFormConsumer  from '../../../../../containers/GenericFormConsumer'
 
 const wantedKeys = {
     typicalWeek: {
@@ -59,13 +57,10 @@ const handler = ({ formData }) => {
     }
 }
 
-const Form2Consumer = (props) => {
-    const { step } = props
-    const FormConsumer = GenericFormConsumer(FormComponent)
-    return (
-        <FormConsumer step={step} handler={handler} {...props} />
-    )
-}
+const Form2Consumer = (props) => (Component) => (
+    <Component handler={handler} {...props} />
+)
+
 
 
 export default Form2Consumer
