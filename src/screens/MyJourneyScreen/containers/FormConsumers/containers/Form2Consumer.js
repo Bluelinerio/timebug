@@ -61,6 +61,4 @@ const Form2Consumer = (props) => (Component) => (
     <Component handler={handler} {...props} />
 )
 
-
-
 export default Form2Consumer
