@@ -3,6 +3,7 @@ import { View }               from 'react-native';
 
 import PillarTimeTableElement from './../../../components/PillarTimeTableElement';
 import PillarTimeTableHeader  from './../../../components/PillarTimeTableHeader';
+import Cell                   from './../../../components/ProgressCells/Cell'
 import styles                 from '../../../styles';
 
 const Form2Component = ({ pillars }) => (
@@ -24,6 +25,5 @@ const Form2Component = ({ pillars }) => (
             }
     </View>
 )
-
 
 export default Form2Component

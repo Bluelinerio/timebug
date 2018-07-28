@@ -7,6 +7,7 @@ import ProgressCellComponent                                    from './Progress
 import styles                                                   from '../styles'
 
 import FormComponent                                           from '../containers/FormConsumers'
+import JourneyCarouselComponent                                from '../containers/JourneyCarouselContainer'
 
 const shouldShowUserProgressWithUser = user => user.forms.length > 0
 
@@ -24,6 +25,10 @@ const MyJourneyScreenComponent = (props: any) => (
                             {
                                 shouldShowUserProgressWithUser(userState) &&
                                     (<FormComponent step={'2'} />)
+                            }
+                            {
+                                shouldShowUserProgressWithUser(userState) &&
+                                    (<JourneyCarouselComponent/>)
                             }
                         </React.Fragment>                        
                     )
