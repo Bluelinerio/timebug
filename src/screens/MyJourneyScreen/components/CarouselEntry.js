@@ -2,10 +2,13 @@ import React from 'react'
 import { View } from 'react-native'
 import styles from '../styles/EntryStyles'
 
-const CarouselEntry = (props) => {
+const CarouselEntry = ({ width, children}) => {
     return (
-        <View style={styles.entry}>
-            { props.children }
+        <View style={[
+            styles.entry,
+            { width }
+        ]}>
+            { children }
         </View>
     )
 }

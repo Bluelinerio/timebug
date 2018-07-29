@@ -6,8 +6,8 @@ const { width: viewportWidth, height: viewportHeight } = Dimensions.get(
   'window'
 )
 
-function wp(percentage) {
-    const value = percentage * viewportWidth / 100
+function wp(percentage, port = viewportWidth ) {
+    const value = percentage * port / 100
     return Math.round(value)
 }
 
@@ -20,6 +20,7 @@ export const sliderWidth        = viewportWidth
 export const itemWidth          = slideWidth + itemHorizontalMargin * 2
 export const spinnerEvenColor   = 'rgba(255, 255, 255, 0.4)'
 export const spinnerUnEvenColor = 'rgba(0, 0, 0, 0.25)'
+export const minimumItemHeight  = wp(20, viewportHeight)
 const entryBorderRadius         = 16
 
 export default StyleSheet.create({

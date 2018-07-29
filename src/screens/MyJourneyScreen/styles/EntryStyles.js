@@ -1,14 +1,17 @@
 import { StyleSheet, Platform } from 'react-native'
+import { minimumItemHeight } from './CarouselStyles'
 
 export default StyleSheet.create({
     entry: {
         borderRadius: 6,
-        paddingVertical: 15,
-        paddingRight: 5,
-        margin: 5,
+        paddingVertical: 5,
         backgroundColor: '#FAFAFA',
+        minHeight: minimumItemHeight,
         ...Platform.select({
-            android: { elevation: 2 },
+            android: { 
+                elevation: 2, 
+                margin: 1 
+            },
             ios: {
               shadowColor: 'black',
               shadowOffset: {
