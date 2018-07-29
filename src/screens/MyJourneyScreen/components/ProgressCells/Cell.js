@@ -7,24 +7,30 @@ import {
 }                                  from 'react-native'
 import styles, {
   scrollViewHorizontalPadding,
-}                                  from '../../../styles/dashboard.styles'
+}                                  from './styles/ProgressCell.style'
 import OnLayout                    from '../../../../components/OnLayout'
 import HighlighRow                 from '../../../../components/HighlighRow'
+import HorizontalScrollView        from '../../../../components/HorizontalScrollView'
+import Header from './CellHeader';
 
-const Cell = ({component: Component, ...rest}) => (
-    <View style={styles.container}>
+
+const Cell = ({ children , layoutComponent: Component, title, titleColor, style = { highlight: {} }, ...rest}) => (
+  <View style={styles.container}>
+    <Header title={title} titleColor={titleColor} />
+    <HorizontalScrollView horizontalPadding={scrollViewHorizontalPadding}>
         {
           <HighlighRow
             style={[
-              styles.pieChartContainer,
               {
                 width:
                   Dimensions.get('window').width - scrollViewHorizontalPadding - 20
               },
-              Platform.OS === 'ios' ? {}
+              Platform.OS === 'ios' 
+              ? {}
               : {
                 marginHorizontal: scrollViewHorizontalPadding
-              }
+              },
+              style.highlight
             ]}
           >
             <OnLayout
@@ -32,8 +38,10 @@ const Cell = ({component: Component, ...rest}) => (
                 width > 0 ? <Component {...rest}/> : null
               }
             />
+            {children}
           </HighlighRow>
         }
+      </HorizontalScrollView>
   </View>
 )
 
