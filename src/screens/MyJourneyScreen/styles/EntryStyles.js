@@ -31,7 +31,7 @@ export default StyleSheet.create({
     },
     header: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
         alignItems: 'center',
         paddingTop: 8,
         paddingBottom: 4,

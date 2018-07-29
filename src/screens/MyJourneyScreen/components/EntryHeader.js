@@ -10,11 +10,9 @@ type HeaderProps = {
 
 const Header = ({ title, titleColor, style }: HeaderProps) => (
     <View style={styles.header}>
-      <View>
         <Text style={[styles.headerText, { color: titleColor, ...style }, ]}>
           {title}
         </Text>
-      </View>
     </View>
 )
 
