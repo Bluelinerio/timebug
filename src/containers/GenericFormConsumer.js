@@ -18,8 +18,17 @@ const merge = (
     const { modelsAndDataForExercise } = stateProps;
     const { step, handler } = ownProps;
     const { formData } = modelsAndDataForExercise(step)
+    const propsNoHandler = Object.keys(ownProps).reduce((props, key) => {
+      if (key === 'handler')
+        return props
+      return {
+        ...props,
+        [key]: ownProps[key]
+      }
+    }, {})
     if(formData && notEmpty(formData)) {
       return {
+        ...propsNoHandler,
         ...handler({formData})
       } 
     }
