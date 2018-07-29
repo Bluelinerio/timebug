@@ -11,32 +11,12 @@ import {
 import styles, {
   scrollViewHorizontalPadding,
   grayColor
-}                             from '../../../styles/dashboard.styles'
+}                             from './styles/ProgressCell.style'
 import OnLayout               from '../../../../components/OnLayout'
 import HighlighRow            from '../../../../components/HighlighRow'
 import HorizontalScrollView   from '../../../../components/HorizontalScrollView'
 import PhaseProgressContainer from '../../../../containers/PhaseProgressContainer'
-
-type HeaderProps = {
-  date: string,
-  source: string,
-  title: string,
-  titleColor: string
-}
-
-const Header = ({ date, source, title, titleColor }: HeaderProps) => (
-  <View style={styles.header}>
-    <View>
-      {date && <Text style={styles.date}>{date}</Text>}
-      <Text style={[styles.title, styles.strong, { color: titleColor }]}>
-        {title}
-      </Text>
-    </View>
-    <TouchableOpacity>
-      {source && <Image style={styles.avatar} source={source} />}
-    </TouchableOpacity>
-  </View>
-)
+import Header                 from './CellHeader'
 
 const PieProgressDashboardCell = () => (
   <View style={styles.container}>

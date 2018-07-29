@@ -1,42 +1,18 @@
 // @flow
 import * as React                  from 'react'
 import { 
-  Image, 
   View, 
-  Text, 
-  TouchableOpacity, 
   Dimensions,
   Platform
 }                                  from 'react-native'
 import styles, {
-  scrollViewHorizontalPadding,
-  grayColor
-}                                  from '../../../styles/dashboard.styles'
+  scrollViewHorizontalPadding
+}                                  from './styles/ProgressCell.style'
 import OnLayout                    from '../../../../components/OnLayout'
 import HighlighRow                 from '../../../../components/HighlighRow'
 import HorizontalScrollView        from '../../../../components/HorizontalScrollView'
 import TimeSpentOnPillarsComponent from '../TimeSpentOnPillarsComponent'
-
-type HeaderProps = {
-  date: string,
-  source: string,
-  title: string,
-  titleColor: string
-}
-
-const Header = ({ date, source, title, titleColor }: HeaderProps) => (
-  <View style={styles.header}>
-    <View>
-      {date && <Text style={styles.date}>{date}</Text>}
-      <Text style={[styles.title, styles.strong, { color: titleColor, fontSize: 24 }]}>
-        {title}
-      </Text>
-    </View>
-    <TouchableOpacity>
-      {source && <Image style={styles.avatar} source={source} />}
-    </TouchableOpacity>
-  </View>
-)
+import Header                      from './CellHeader'
 
 const TimeTableProgressCell = ({ pillars }) => (
   pillars ?
