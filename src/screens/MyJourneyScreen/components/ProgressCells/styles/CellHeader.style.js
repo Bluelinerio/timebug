@@ -4,28 +4,9 @@ import {
   iOSUIKit,
   sanFranciscoWeights,
   robotoWeights
-} from 'react-native-typography'
-
-export const scrollViewHorizontalPadding = 16
-export const grayColor = '#ccc'
+}                               from 'react-native-typography'
 
 export default StyleSheet.create({
-  container: {
-    ...Platform.select({
-      android: {
-        elevation: 16
-      },
-      ios: {
-        shadowColor: 'black',
-        shadowOffset: {
-          width: 0,
-          height: 16
-        },
-        shadowOpacity: 0.2,
-        shadowRadius: 16
-      }
-    })
-  },
   strong: {
     ...Platform.select({
       android: {
@@ -48,5 +29,4 @@ export default StyleSheet.create({
     borderColor: iOSColors.customGray,
   },
   cellHeader: iOSUIKit.title3EmphasizedObject
-  
 })

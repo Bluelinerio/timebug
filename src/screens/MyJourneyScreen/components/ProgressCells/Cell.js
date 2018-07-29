@@ -11,7 +11,7 @@ import styles, {
 import OnLayout                    from '../../../../components/OnLayout'
 import HighlighRow                 from '../../../../components/HighlighRow'
 import HorizontalScrollView        from '../../../../components/HorizontalScrollView'
-import Header from './CellHeader';
+import Header                      from './CellHeader';
 
 
 const Cell = ({ children , layoutComponent: Component, title, titleColor, style = { highlight: {} }, ...rest}) => (
@@ -35,7 +35,7 @@ const Cell = ({ children , layoutComponent: Component, title, titleColor, style 
           >
             <OnLayout
               render={({ width }) =>
-                width > 0 ? <Component {...rest}/> : null
+                width > 0 ? <Component width={width} {...rest}/> : null
               }
             />
             {children}
