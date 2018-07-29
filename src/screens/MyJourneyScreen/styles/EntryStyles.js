@@ -10,7 +10,7 @@ export default StyleSheet.create({
         ...Platform.select({
             android: { 
                 elevation: 2, 
-                margin: 1 
+                margin: 3
             },
             ios: {
               shadowColor: 'black',
