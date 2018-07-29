@@ -24,8 +24,6 @@ const entryBorderRadius         = 16
 
 export default StyleSheet.create({
     carouselContainer: {
-        paddingTop: 60,
-        paddingBottom: 60,
         marginBottom: 20
     },
     slideInnerContainer: {

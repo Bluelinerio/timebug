@@ -19,7 +19,6 @@ const Form2Component = ({ pillars }) => (
                                     )
                                 })
                             }
-                        
                     </React.Fragment>
                     
             }

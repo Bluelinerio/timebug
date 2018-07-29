@@ -3,10 +3,9 @@ import { StyleSheet, Platform } from 'react-native'
 export default StyleSheet.create({
     entry: {
         borderRadius: 6,
-        paddingVertical: 30,
-        paddingRight: 15,
+        paddingVertical: 15,
+        paddingRight: 5,
         margin: 5,
-        marginLeft: 0,
         backgroundColor: '#FAFAFA',
         ...Platform.select({
             android: { elevation: 2 },
