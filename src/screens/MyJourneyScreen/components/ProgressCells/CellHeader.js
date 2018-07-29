@@ -1,3 +1,4 @@
+//@flow
 import React                                   from 'react'
 import styles                                  from './styles/CellHeader.style'
 import { View, Text, TouchableOpacity, Image } from 'react-native'

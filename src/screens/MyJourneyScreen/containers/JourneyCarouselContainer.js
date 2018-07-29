@@ -22,7 +22,8 @@ const dummyEntries = (length) => {
         .map((el, index) => {
             return {
                 step: "2",
-                render
+                render,
+                title: "Your weekly timetable"
             }
         })
 }

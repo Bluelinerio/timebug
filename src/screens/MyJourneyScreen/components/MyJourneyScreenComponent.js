@@ -6,11 +6,9 @@ import ProgressCellComponent                                    from './Progress
 
 import styles                                                   from '../styles'
 
-import JourneyCarouselComponent                                from '../containers/JourneyCarouselContainer'
-
 const shouldShowUserProgressWithUser = user => user.forms.length > 0
 
-const MyJourneyScreenComponent = (props: any) => (
+const MyJourneyScreenComponent = () => (
     <ScrollView style={styles.container}>
         <User>
             { ({ userState, isLoggedIn }) => 
@@ -20,10 +18,6 @@ const MyJourneyScreenComponent = (props: any) => (
                             {
                                 shouldShowUserProgressWithUser(userState) &&
                                     (<ProgressCellComponent/>)
-                            }
-                            {
-                                shouldShowUserProgressWithUser(userState) &&
-                                    (<JourneyCarouselComponent/>)
                             }
                         </React.Fragment>                        
                     )

@@ -1,6 +1,12 @@
 import { StyleSheet, Platform } from 'react-native'
 import { minimumItemHeight } from './CarouselStyles'
-
+import {
+    iOSColors,
+    iOSUIKit,
+    sanFranciscoWeights,
+    robotoWeights
+}                               from 'react-native-typography'
+  
 export default StyleSheet.create({
     entry: {
         borderRadius: 6,
@@ -20,6 +26,28 @@ export default StyleSheet.create({
               },
               shadowOpacity: 0.2,
               shadowRadius: 2
+            }
+        })
+    },
+    header: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingTop: 8,
+        paddingBottom: 4,
+        marginHorizontal: 16,
+        borderBottomWidth: 0.5,
+        borderColor: iOSColors.customGray,
+    },
+    headerText: {
+        textAlign: 'center',
+        ...iOSUIKit.bodyEmphasizedObject,
+        ...Platform.select({
+            android:{
+                ...robotoWeights.light
+            },
+            ios: {
+                ...sanFranciscoWeights.light
             }
         })
     }
