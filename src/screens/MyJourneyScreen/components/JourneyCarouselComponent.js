@@ -16,8 +16,9 @@ export default class MyCarousel extends Component {
         }
     }
 
-    _renderItem ({item}) {
-        const { step, title, render: Component } = item
+    _renderItem = ({item}) => {
+        const { step, title } = item
+        const { render: Component } = this.props
         return (
             <CarouselEntry width={itemWidth} title={title}>
                 <Component step={step} />

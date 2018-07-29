@@ -57,8 +57,9 @@ const handler = ({ formData }) => {
     }
 }
 
-const Form2Consumer = (props) => (Component) => (
-    <Component handler={handler} {...props} />
-)
+const Form2Consumer = (injectedProps) => (Component) => {
+    const Consumer = (props) => <Component handler={handler} {...injectedProps} {...props} />
+    return Consumer
+}
 
 export default Form2Consumer

@@ -1,11 +1,7 @@
 import React       from 'react';
- 
 import { connect } from 'react-redux'
-
 import JourneyCarouselComponent from '../components/JourneyCarouselComponent';
-
-import FormComponent from './FormConsumers'
-
+import FormComponent, { Entries } from './FormConsumers'
 import selectors    from '../../../redux/selectors'
 
 const mapStateToProps = (state) => ({
@@ -16,22 +12,26 @@ const render = ({ step }) => (
     <FormComponent step={step} />
 )
 
-const dummyEntries = (length) => {
-    return Array(length)
-        .fill()
-        .map((el, index) => {
-            return {
-                step: "2",
-                render,
-                title: "Your weekly timetable"
-            }
+const buildEntries = (forms) => {
+    console.log(forms)
+    return forms
+    ? forms
+        .map(form => {
+            const element = Entries[form.stepId]
+            if (element && element.render)
+                return {
+                    title: element.title,
+                    step: `${form.stepId}`
+                }
+            return
         })
+        .filter(el => !!el)
+    : []
 }
-
 
 const merge = (stateProps, dispatchProps, ownProps) => {
     const { forms } = stateProps
-    const entries = dummyEntries(3)
+    const entries = buildEntries(forms)
     return {
         ...stateProps,
         ...dispatchProps,
