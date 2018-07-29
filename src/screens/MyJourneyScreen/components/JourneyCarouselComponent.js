@@ -1,6 +1,9 @@
 import React, { Component }    from 'react';
-import { Text } from 'react-native'
+import { View, Platform } from 'react-native'
 import Carousel from 'react-native-snap-carousel';
+
+import CarouselEntry from './CarouselEntry'
+import styles, { sliderWidth, itemWidth } from '../styles/CarouselStyles';
 
 export default class MyCarousel extends Component {
 
@@ -8,27 +11,41 @@ export default class MyCarousel extends Component {
         super(props)
         const { entries } = props
         this.state = {
-            entries
+            entries,
+            carouselRef: null
         }
     }
 
-    _renderItem ({item, index}) {
-        const { render } = item
-        console.log(item)
+    _renderItem ({item}) {
+        const { step, render: Component } = item
         return (
-            <Text>{index}</Text>
+            <CarouselEntry>
+                <Component step={step} />
+            </CarouselEntry>
         )
     }
 
     render () {
         return (
-            <Carousel
-              ref={(c) => { this._carousel = c; }}
-              data={this.state.entries}
-              renderItem={this._renderItem}
-              itemWidth={400}
-              sliderWidth={400}
-            />
+            <View style={styles.carouselContainer}>
+                <Carousel
+                    ref={(c) => {
+                        if(!this.state.carouselRef)
+                            this.setState({ carouselRef: c })
+                    }}
+                    data={this.state.entries}
+                    renderItem={this._renderItem}
+                    itemWidth={itemWidth}
+                    sliderWidth={sliderWidth}
+                    containerCustomStyle={styles.slider}
+                    contentContainerCustomStyle={styles.sliderContentContainer}
+                    hasParallaxImages={false}
+                    inactiveSlideScale={0.95}
+                    inactiveSlideOpacity={Platform.OS === 'ios' ? 0.9 : 1.0}
+                    enableMomentum={Platform.OS !== 'ios'}
+                    lockScrollWhileSnapping={Platform.OS !== 'ios'}
+                />
+            </View>
         );
     }
 }

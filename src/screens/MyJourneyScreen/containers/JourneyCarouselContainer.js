@@ -30,12 +30,11 @@ const dummyEntries = (length) => {
 
 const merge = (stateProps, dispatchProps, ownProps) => {
     const { forms } = stateProps
-    console.log("HOW MANY", forms.length)
     const entries = dummyEntries(3)
     return {
         ...stateProps,
-        dispatchProps,
-        ownProps,
+        ...dispatchProps,
+        ...ownProps,
         entries,
         render
     }
