@@ -13,7 +13,6 @@ const render = ({ step }) => (
 )
 
 const buildEntries = (forms) => {
-    console.log(forms)
     return forms
     ? forms
         .map(form => {
