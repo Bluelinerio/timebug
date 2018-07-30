@@ -1,6 +1,6 @@
 import React from 'react'
 
-const handler = (stuff) => {
+export const handler = (stuff) => {
     // Dummy handler, required by genericFormConsumer
     return {
         stuff
@@ -13,7 +13,7 @@ const FormExampleConsumer = (injectedProps) => (Component) => {
         text: "This is dummy text"
     }
     const Consumer = (props) => (
-        <Component handler={handler} data={data} {...injectedProps} {...props} />
+        <Component data={data} {...injectedProps} {...props} />
     )
     return Consumer
 }

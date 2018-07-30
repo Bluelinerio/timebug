@@ -10,29 +10,21 @@ const mapStateToProps = state => {
 
 const notEmpty = compose(R.not,R.isEmpty)
 
-const merge = (
+const merge = (handler) => (
     stateProps,
     dispatchprops,
     ownProps
 ) => {
     const { modelsAndDataForExercise } = stateProps;
-    const { step, handler } = ownProps;
+    const { step } = ownProps;
     const { formData } = modelsAndDataForExercise(step)
-    const propsNoHandler = Object.keys(ownProps).reduce((props, key) => {
-      if (key === 'handler')
-        return props
-      return {
-        ...props,
-        [key]: ownProps[key]
-      }
-    }, {})
     if(formData && notEmpty(formData)) {
       return {
-        ...propsNoHandler,
+        ...ownProps,
         ...handler({formData})
       } 
     }
       return {};
 }
 
-export default connect(mapStateToProps, null, merge)
+export default (handler) => connect(mapStateToProps, null, merge(handler))

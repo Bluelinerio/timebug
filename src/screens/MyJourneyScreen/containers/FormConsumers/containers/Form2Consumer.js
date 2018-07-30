@@ -28,7 +28,7 @@ const parseHoursIntoNumber = (hours) => {
     catch (e) { return null }
 }
 
-const handler = ({ formData }) => {
+export const handler = ({ formData }) => {
     const { typicalWeek, idealWeek } = getDataFromForm(formData)
     const typicalWeekTemplateObject = typicalWeek.reduce(( allPillars, pillar) => {
         const { pillarOfLife, hours } = pillar
@@ -58,7 +58,7 @@ const handler = ({ formData }) => {
 }
 
 const Form2Consumer = (injectedProps) => (Component) => {
-    const Consumer = (props) => <Component handler={handler} {...injectedProps} {...props} />
+    const Consumer = (props) => <Component {...injectedProps} {...props} />
     return Consumer
 }
 
