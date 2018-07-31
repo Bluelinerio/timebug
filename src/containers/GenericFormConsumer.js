@@ -4,13 +4,8 @@ import { connect } from 'react-redux'
 import { compose } from 'recompose'
 import selectors   from '../redux/selectors'
 
-
 type ModelsAndData = {
   models: any,
-  formData: any
-}
-
-export type FormDataForExercise = {
   formData: any
 }
 
@@ -18,6 +13,10 @@ type ModelsAndDataCall = (stepId: string) => ModelsAndData
 
 type FormConsumerProps = {
   modelsAndDataForExercise: ModelsAndDataCall
+}
+
+export type FormDataForExercise = {
+  formData: any
 }
 
 export type HandlerFunction = (obj: FormDataForExercise) => any

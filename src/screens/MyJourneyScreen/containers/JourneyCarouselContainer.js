@@ -16,7 +16,7 @@ const mapStateToProps = (state: any): JourneyCarouselStateProps => ({
 
 const render = ({ step }) => <FormComponent step={step} />
 
-const buildEntries = forms => {
+const buildEntries = (forms) => {
   return forms
     ? forms
         .map(form => {
