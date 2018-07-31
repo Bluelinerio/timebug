@@ -4,7 +4,13 @@ import JourneyCarouselComponent   from '../components/JourneyCarouselComponent'
 import FormComponent, { Entries } from './FormConsumers'
 import selectors                  from '../../../redux/selectors'
 
-const mapStateToProps = state => ({
+type JourneyCarouselStateProps = {
+  forms: [{
+    stepId: number
+  }]
+}
+
+const mapStateToProps = (state: any): JourneyCarouselStateProps => ({
   forms: selectors.sortedCompletedForms(state)
 })
 

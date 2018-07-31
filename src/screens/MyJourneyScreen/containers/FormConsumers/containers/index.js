@@ -14,15 +14,6 @@ import ExampleFormComponent                          from '../components/FormCom
 import Form2HOC, { handler as form2Handler }         from './Form2Consumer'
 import ExampleFormHOC, { handler as exampleHandler } from './FormConsumerEx'
 
-export type SelectedKeyEntry = {
-  form: string,
-  key: string
-}
-
-export type SelectedKeys = {
-  [x: string]: SelectedKeyEntry
-}
-
 export type FormEntry = {
   title: string,
   render: React.ComponentType<any>
@@ -51,7 +42,7 @@ export const formEntries: FormEntriesType = {
   }
 }
 
-export default props => {
+export default (props: any): React.ComponentType<any> => {
   const { step } = props
   const { render: Component } = formEntries[step]
   return Component ? <Component {...props} /> : null
