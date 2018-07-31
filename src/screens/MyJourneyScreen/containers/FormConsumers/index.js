@@ -1,7 +1,8 @@
+//@flow
 import React                           from 'react'
 import StepComponents, { formEntries } from './containers'
 
-const FormComponent = props => <StepComponents {...props} />
+const FormComponent = (props: any) => <StepComponents {...props} />
 
 export const Entries = formEntries
 

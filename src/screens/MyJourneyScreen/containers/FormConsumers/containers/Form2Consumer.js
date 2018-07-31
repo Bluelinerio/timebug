@@ -1,4 +1,6 @@
+//@flow
 import React from 'react'
+import { SelectedKeyEntry } from '../../types'
 
 const wantedKeys = {
   typicalWeek: {

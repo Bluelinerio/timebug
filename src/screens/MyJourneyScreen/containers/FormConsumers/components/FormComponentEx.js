@@ -1,7 +1,13 @@
+//@flow
 import React          from 'react'
 import { View, Text } from 'react-native'
 
-const FormComponentExample = ({ data, injected, ...rest }) => {
+type FormComponentProps = {
+  data: any,
+  injected: string
+}
+
+const FormComponentExample = ({ data, injected, ...rest }: FormComponentProps) => {
   return (
     <View>
       <Text style={{ fontWeight: '700', fontSize: 20 }}>{data.subtitle}</Text>

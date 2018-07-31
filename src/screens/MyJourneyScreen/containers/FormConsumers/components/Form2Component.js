@@ -4,7 +4,11 @@ import PillarTimeTableElement from './../../../components/PillarTimeTableElement
 import PillarTimeTableHeader  from './../../../components/PillarTimeTableHeader'
 import styles                 from '../../../styles'
 
-const Form2Component = ({ pillars }) => (
+type Form2Props = {
+  pillars: any
+}
+
+const Form2Component = ({ pillars }: Form2Props) => (
   <View style={[styles.timeContainer, styles.container]}>
     {pillars && (
       <React.Fragment>
