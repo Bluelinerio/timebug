@@ -1,15 +1,22 @@
+//@flow
 import React          from 'react'
 import { View, Text } from 'react-native'
 import styles         from '../styles'
 
-const renderText = typical => ideal => {
+type PillarTimeTableElementProps = {
+  pillar: string,
+  typicalWeek: number,
+  idealWeek: number,
+}
+
+const renderText = (typical: number) => (ideal: number): string => {
   const result = typical - ideal
   return result > 0
     ? `+${result} hrs`
     : result < 0 ? `${result} hrs` : `${result} hrs`
 }
 
-const PillarTimeTableElement = ({ pillar, typicalWeek, idealWeek }) => (
+const PillarTimeTableElement = ({ pillar, typicalWeek, idealWeek } : PillarTimeTableElementProps) => (
   <View style={[styles.row, styles.elementRow]}>
     <View style={[styles.element, styles.pillar]}>
       <Text style={[styles.pillarText]}>{pillar}</Text>

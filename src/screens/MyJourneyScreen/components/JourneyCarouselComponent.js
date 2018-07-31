@@ -1,10 +1,17 @@
+//@flow
 import React, { Component }               from 'react'
 import { View, Platform }                 from 'react-native'
 import Carousel                           from 'react-native-snap-carousel'
 import CarouselEntry                      from './CarouselEntry'
 import styles, { sliderWidth, itemWidth } from '../styles/CarouselStyles'
+import { CarouselEntryType }              from '../containers/JourneyCarouselContainer'
 
-export default class MyCarousel extends Component {
+type JourneyCarouselComponentProps = {
+  entries: [CarouselEntryType],
+  render: React.ComponentType<any>
+}
+
+export default class JourneyCarouselComponent extends Component<JourneyCarouselComponentProps> {
   constructor(props) {
     super(props)
     const { entries } = props
@@ -14,7 +21,7 @@ export default class MyCarousel extends Component {
     }
   }
 
-  _renderItem = ({ item }) => {
+  _renderItem = ({ item }: { item: CarouselEntryType }) => {
     const { step, title } = item
     const { render: Component } = this.props
     return (

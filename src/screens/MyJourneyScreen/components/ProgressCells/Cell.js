@@ -9,6 +9,16 @@ import HighlighRow                    from '../../../../components/HighlighRow'
 import HorizontalScrollView           from '../../../../components/HorizontalScrollView'
 import Header                         from './CellHeader'
 
+type CellProps = {
+  children?: [React.ComponentType<any>],
+  layoutComponent: React.ComponentType<any>,
+  title: string,
+  titleColor: string,
+  style?: {
+    highlight: any
+  } | any
+}
+
 const Cell = ({
   children,
   layoutComponent: Component,
@@ -16,7 +26,7 @@ const Cell = ({
   titleColor,
   style = { highlight: {} },
   ...rest
-}) => (
+}: CellProps) => (
   <View style={styles.container}>
     <Header title={title} titleColor={titleColor} />
     <HorizontalScrollView horizontalPadding={scrollViewHorizontalPadding}>

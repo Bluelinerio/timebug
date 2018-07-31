@@ -10,6 +10,11 @@ type JourneyCarouselStateProps = {
   }]
 }
 
+export type CarouselEntryType = {
+  title: string,
+  step: string
+}
+
 const mapStateToProps = (state: any): JourneyCarouselStateProps => ({
   forms: selectors.sortedCompletedForms(state)
 })
