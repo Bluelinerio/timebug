@@ -26,7 +26,7 @@ export default StyleSheet.create({
     paddingBottom: 8,
     marginHorizontal: 16,
     borderBottomWidth: 1,
-    borderColor: iOSColors.customGray,
+    borderColor: iOSColors.customGray
   },
   cellHeader: iOSUIKit.title3EmphasizedObject
 })

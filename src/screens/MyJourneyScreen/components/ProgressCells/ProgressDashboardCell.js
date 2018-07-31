@@ -1,11 +1,7 @@
 // @flow
 import * as React             from 'react'
-import { 
-  Text,
-}                             from 'react-native'
-import styles, {
-  grayColor
-}                             from './styles/ProgressCell.style'
+import { Text }               from 'react-native'
+import styles, { grayColor }  from './styles/ProgressCell.style'
 import PhaseProgressContainer from '../../../../containers/PhaseProgressContainer'
 import Cell                   from './Cell'
 
@@ -14,18 +10,20 @@ const style = {
 }
 
 const PieProgressDashboardCell = () => (
-  <Cell 
-        layoutComponent={({width, ...rest}) => <PhaseProgressContainer width={width} {...rest} />}
-        title={"Progress"}
-        titleColor={"black"}
-        style={style}
+  <Cell
+    layoutComponent={({ width, ...rest }) => (
+      <PhaseProgressContainer width={width} {...rest} />
+    )}
+    title={'Progress'}
+    titleColor={'black'}
+    style={style}
   >
     <Text
       style={[
         styles.suggestionText,
         styles.progressUnderlineText,
         {
-          color: grayColor,
+          color: grayColor
         }
       ]}
     >

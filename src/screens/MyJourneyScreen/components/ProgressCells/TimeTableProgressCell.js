@@ -8,15 +8,16 @@ const style = {
   highlight: styles.pieChartContainer
 }
 
-const TimeTableProgressCell = ({ pillars }) => (
-  pillars ?
-    (<Cell 
-        layoutComponent={(props) => <TimeSpentOnPillarsComponent pillars={pillars} {...props}/>}
-        title={"Your weekly Timetable"}
-        titleColor={"black"}
-        style={style}
-    />)
-  : null
-)
+const TimeTableProgressCell = ({ pillars }) =>
+  pillars ? (
+    <Cell
+      layoutComponent={props => (
+        <TimeSpentOnPillarsComponent pillars={pillars} {...props} />
+      )}
+      title={'Your weekly Timetable'}
+      titleColor={'black'}
+      style={style}
+    />
+  ) : null
 
 export default TimeTableProgressCell

@@ -1,7 +1,7 @@
-import React            from 'react'
-import StepComponents, { formEntries }   from './containers'
+import React                           from 'react'
+import StepComponents, { formEntries } from './containers'
 
-const FormComponent = (props) => <StepComponents {...props}/>
+const FormComponent = props => <StepComponents {...props} />
 
 export const Entries = formEntries
 

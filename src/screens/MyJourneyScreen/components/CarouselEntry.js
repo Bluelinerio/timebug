@@ -1,6 +1,6 @@
-import React from 'react'
+import React    from 'react'
 import { View } from 'react-native'
-import styles from '../styles/EntryStyles'
+import styles   from '../styles/EntryStyles'
 import Header   from './EntryHeader'
 
 const CarouselEntry = ({ width, title, children }) => {

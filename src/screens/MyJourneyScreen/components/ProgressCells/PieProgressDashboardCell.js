@@ -9,11 +9,13 @@ const style = {
 }
 
 const ProgressDashboardCell = () => (
-  <Cell 
-        layoutComponent={({width, ...rest}) => <PhaseProgressContainer maxColumns={3} width={width} {...rest} />}
-        title={"Progress Chart"}
-        titleColor={"black"}
-        style={style}
+  <Cell
+    layoutComponent={({ width, ...rest }) => (
+      <PhaseProgressContainer maxColumns={3} width={width} {...rest} />
+    )}
+    title={'Progress Chart'}
+    titleColor={'black'}
+    style={style}
   />
 )
 

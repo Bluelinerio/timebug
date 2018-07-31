@@ -8,21 +8,28 @@ type HeaderProps = {
   source: string,
   title: string,
   titleColor: string,
-  style? : any
+  style?: any
 }
 
 const Header = ({ date, source, title, titleColor, style }: HeaderProps) => (
-    <View style={styles.header}>
-      <View>
-        {date && <Text style={styles.date}>{date}</Text>}
-        <Text style={[styles.title, styles.strong, styles.cellHeader, { color: titleColor, ...style }, ]}>
-          {title}
-        </Text>
-      </View>
-      <TouchableOpacity>
-        {source && <Image style={styles.avatar} source={source} />}
-      </TouchableOpacity>
+  <View style={styles.header}>
+    <View>
+      {date && <Text style={styles.date}>{date}</Text>}
+      <Text
+        style={[
+          styles.title,
+          styles.strong,
+          styles.cellHeader,
+          { color: titleColor, ...style }
+        ]}
+      >
+        {title}
+      </Text>
     </View>
+    <TouchableOpacity>
+      {source && <Image style={styles.avatar} source={source} />}
+    </TouchableOpacity>
+  </View>
 )
 
 export default Header

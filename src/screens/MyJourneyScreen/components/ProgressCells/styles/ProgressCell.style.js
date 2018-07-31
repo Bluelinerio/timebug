@@ -36,7 +36,7 @@ export default StyleSheet.create({
     paddingLeft: 10,
     borderRadius: 6,
     ...Platform.select({
-      android: { 
+      android: {
         elevation: 2
       },
       ios: {
@@ -55,7 +55,7 @@ export default StyleSheet.create({
     marginBottom: 10,
     borderRadius: 6,
     ...Platform.select({
-      android: { 
+      android: {
         elevation: 2
       },
       ios: {
