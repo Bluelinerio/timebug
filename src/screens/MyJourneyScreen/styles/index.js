@@ -32,14 +32,14 @@ export default StyleSheet.create({
     justifyContent: 'center'
   },
   elementText: {
-    ...iOSUIKit.subheadEmphasizedObject,
+    ...iOSUIKit.caption2EmphasizedObject,
     textAlign: 'center'
   },
   pillar: {
     flex: 2
   },
   pillarText: {
-    ...iOSUIKit.subheadEmphasizedObject,
+    ...iOSUIKit.caption2EmphasizedObject,
     textAlign: 'left'
   }
 })
