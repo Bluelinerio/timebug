@@ -20,7 +20,7 @@ export default StyleSheet.create({
     flexDirection: 'row'
   },
   elementRow: {
-    marginVertical: 6
+    paddingVertical: 6
   },
   headerRowText: {
     ...iOSUIKit.subheadEmphasizedObject

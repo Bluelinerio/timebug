@@ -7,6 +7,7 @@ type PillarTimeTableElementProps = {
   pillar: string,
   typicalWeek: number,
   idealWeek: number,
+  style: any
 }
 
 const renderText = (typical: number) => (ideal: number): string => {
@@ -16,8 +17,8 @@ const renderText = (typical: number) => (ideal: number): string => {
     : result < 0 ? `${result} hrs` : `${result} hrs`
 }
 
-const PillarTimeTableElement = ({ pillar, typicalWeek, idealWeek } : PillarTimeTableElementProps) => (
-  <View style={[styles.row, styles.elementRow]}>
+const PillarTimeTableElement = ({ pillar, typicalWeek, idealWeek, style = {} } : PillarTimeTableElementProps) => (
+  <View style={[styles.row, styles.elementRow, style.row]}>
     <View style={[styles.element, styles.pillar]}>
       <Text style={[styles.pillarText]}>{pillar}</Text>
     </View>
