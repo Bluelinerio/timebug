@@ -1,55 +1,69 @@
-import { takeEvery, put, select, call } from 'redux-saga/effects';
+import { takeEvery, select, call } from 'redux-saga/effects'
+// import isSameWeek from 'date-fns/is_same_week'
+// import isSameDay from 'date-fns/is_same_day'
+// import combineSelectors from '../selectors/combineSelectors';
 import {
   FOREGROUND,
   BACKGROUND,
   INACTIVE
-} from 'redux-enhancer-react-native-appstate';
+} from 'redux-enhancer-react-native-appstate'
 
-import type { AppState } from '../reducers/appState.reducer';
-import { initialState, UNDETERMIND } from '../reducers/appState.reducer';
-import { getAppState, getAgregateState } from '../selectors/rootReducer.selectors';
+if(!FOREGROUND || !BACKGROUND || !INACTIVE) throw new Error('not found');
+// import type { AppState } from '../reducers/appState.reducer'
+// import { initialState, UNDETERMIND } from '../reducers/appState.reducer'
+import {
+  getAppState,
+  // getAgregateState
+} from '../selectors/rootReducer.selectors'
 
 export function* appStateSagaWatcher() {
-  const appState = yield select(getAppState);
+  const appState = yield select(getAppState)
   if (appState.last) {
-    yield appStateBusinessLogicRoot({ type: appState.last });
+    yield appStateBusinessLogicRoot({ type: appState.last })
   }
-  yield takeEvery(
-    [FOREGROUND, BACKGROUND, INACTIVE],
-    appStateBusinessLogicRoot
-  );
+  yield takeEvery([FOREGROUND, BACKGROUND, INACTIVE], appStateBusinessLogicRoot)
 }
 
 function* appStateBusinessLogicRoot(action: {
   type: FOREGROUND | BACKGROUND | INACTIVE
 }) {
-  const state = yield select(state => state);
   switch (action.type) {
-    case FOREGROUND:
-      yield call(foreground, state);
-    case BACKGROUND:
-      yield call(background, state);
-    case INACTIVE:
-      yield call(inactive, state);
+    case FOREGROUND: {
+      yield call(foreground)
+      break
+    }
+    case BACKGROUND: {
+      yield call(background)
+      break
+    }
+    case INACTIVE: {
+      yield call(inactive)
+      break
+    }
     default:
-      return;
+      return
   }
 }
 
-function* foreground(state) {
-  const appState = getAppState(state);
-  let agregate = getAgregateState(appState);
+function* inactive() {
 
-  if (agregate === UNDETERMIND) {
-    agregate = {
-      ...agregates,
-      ...firstTimeBundle(
-        (firstTimeDate: now),
-        (firstTimeLaunchDate: now),
-        (now: now)
-      ),
-      isVeryFirstSession: true
-    };
+}
+
+function* foreground() {
+  // const { appState, agregate } = yield select(combineSelectors({
+  //   appState: getAppState,
+  //   agregate: getAgregateState
+  // }));
+  // if (agregate === UNDETERMIND) {
+  //   agregate = {
+  //     ...agregates,
+  //     ...firstTimeBundle(
+  //       (firstTimeDate: now),
+  //       (firstTimeLaunchDate: now),
+  //       (now: now)
+  //     ),
+  //     isVeryFirstSession: true
+  //   }
   }
 
   //   const now = Date.now()
@@ -125,32 +139,24 @@ function* foreground(state) {
   //     agregates
   //   }
   // }
-}
+  // }
 
-function* background() {}
-
-function* inactive() {}
-
-import equal from 'deep-equal';
-import isSameWeek from 'date-fns/is_same_week';
-import isSameDay from 'date-fns/is_same_day';
-
-const firstTimeBundle = ({
-  firstTimeDate,
-  firstTimeLaunchDate,
-  now
-}: {
-  firstTimeDate: number,
-  firstTimeLaunchDate: number,
-  now: number
-}) => ({
-  isFirstWeek: isSameWeek(firstTimeDate, now),
-  isFirstDay: isSameDay(firstTimeDate, now),
-  isFirstTime: isSameDay(firstTimeDate, now),
-  isFirstLaunch: isSameDay(firstTimeLaunchDate, now),
-  firstTimeDate,
-  firstTimeLaunchDate
-});
+// const firstTimeBundle = ({
+//   firstTimeDate,
+//   firstTimeLaunchDate,
+//   now
+// }: {
+//   firstTimeDate: number,
+//   firstTimeLaunchDate: number,
+//   now: number
+// }) => ({
+//   isFirstWeek: isSameWeek(firstTimeDate, now),
+//   isFirstDay: isSameDay(firstTimeDate, now),
+//   isFirstTime: isSameDay(firstTimeDate, now),
+//   isFirstLaunch: isSameDay(firstTimeLaunchDate, now),
+//   firstTimeDate,
+//   firstTimeLaunchDate
+// })
 
 // type Session = {
 //   start: number,
@@ -242,18 +248,18 @@ const firstTimeBundle = ({
 //   }
 // }
 
-// const background = (state: AppState): AppState => {
-//   if (state.current.start === 0) {
-//     throw 'current sessions start when going to the backgorund must can not be 0'
-//   }
-//   const now = Date.now()
-//   if(state.agregates.isFirstTime && !state.agregates.isFirstLaunch) {
-//     throw 'it is impossible that when going to background on the first time but now the first launch'
-//   }
-//   const isAResumedSession = state.current.entries > 0
-//   if(state.current.entries > 0 && state.current.end) {
-//     throw 'it is impossible for a session with entries not to have an end date'
-//   }
+function* background () {
+  // if (state.current.start === 0) {
+  //   throw 'current sessions start when going to the backgorund must can not be 0'
+  // }
+  // const now = Date.now()
+  // if(state.agregates.isFirstTime && !state.agregates.isFirstLaunch) {
+  //   throw 'it is impossible that when going to background on the first time but now the first launch'
+  // }
+  // const isAResumedSession = state.current.entries > 0
+  // if(state.current.entries > 0 && state.current.end) {
+  //   throw 'it is impossible for a session with entries not to have an end date'
+  // }
 
 //   const agregates = {
 //     ...state,
@@ -298,7 +304,7 @@ const firstTimeBundle = ({
 //     current,
 //     agregates
 //   }
-// }
+}
 
 // // need an actions that merges sessions.
 // const firstTimeBundle = ({firstTimeDate, firstTimeLaunchDate, now}: {firstTimeDate: number, firstTimeLaunchDate: number, now:number}) => ({

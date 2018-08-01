@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import LoginWithFbButtonContainer from '../../../containers/LoginWithFbButtonContainer'
 import BeginExerciseButtonContainer from './BeginExerciseButtonContainer'
 import SmallLoadingIndicator from '../../../components/SmallLoadingIndicator'
-import { combineSelectors } from '../../../redux/selectors/combineSelectors';
+import combineSelectors from '../../../redux/selectors/combineSelectors';
 import userSelectors from '../../../redux/selectors/user.selectors';
 
 type Props = {

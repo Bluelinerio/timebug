@@ -1,37 +1,43 @@
 // @flow
-import type { Form }                                          from '../../types'
-import { user }                                               from './user.selectors'
-
+import R from 'ramda'
+import type { Form } from '../../types'
+import { formsLenses } from '../lenses/user.lenses';
+import { viewOr, arrange } from './utils';
 /// forms
-const sortForms = (a: Form, b: Form) => a.stepId - b.stepId
 const sortFormsChronologically = (a: Form, b: Form) =>
   Date.parse(b.updatedAt) - Date.parse(a.updatedAt)
 // stepId on the server is an Int!. A clear idea how to
 
-const completedForms = (state: any): [Form] =>
-  user(state) ? user(state).forms.map(f => f) : []
+const completedForms = viewOr([], formsLenses)
 
-const completedFormsData = (state: any) =>
-  completedForms(state).reduce(
-    (forms, form) => ({
-      ...forms,
-      [form.stepId]: form.data
-    }),
-    {}
-  )
+const completedFormsData = R.compose(
+  arrange('stepId'),
+  completedForms
+)
 
+export const completedFormsChronologically = R.compose(
+  R.sort(sortFormsChronologically),
+  completedForms
+)
 
-const completedFormsChronologically = (state: any): [Form] =>
-  completedForms(state).sort(sortFormsChronologically)
+export const sortedCompletedForms = R.compose(
+  R.completedForms,
+  completedForms
+)
 
-const sortedCompletedForms = (state: any): [Form] =>
-  completedForms(state).sort(sortForms)
+export const completedStepIds = R.compose(
+  R.prop('stpeId'),
+  completedForms
+)
 
-const completedStepIds = (state: any): [string] =>
-  completedForms(state).map(f => f.stepId)
+export const formWithStepId = stepId => R.compose(
+  R.propEq('stepId', stepId),
+  completedForms
+)
 
-const formWithStepId = (state: any) => (stepId: string): Form =>
-  completedForms(state).find(f => f.stepId === stepId)
+export const hasCompletedForms = R.compose(R.length, completedForms)
+
+export const hasNoCompletedForms = R.compose(R.not, hasCompletedForms)
 
 export default {
   completedForms,
@@ -40,4 +46,6 @@ export default {
   completedFormsData,
   completedStepIds,
   formWithStepId,
+  hasCompletedForms,
+  hasNoCompletedForms
 }

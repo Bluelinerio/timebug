@@ -1,13 +1,13 @@
 // @flow
 import invariant from 'invariant'
 import { connect } from 'react-redux'
-import { compose, mapProps } from 'recompose'
+import { compose, withProps } from 'recompose'
 import { withNavigation } from 'react-navigation'
 import PagninatedCarousel from '../components/PagninatedCarousel'
 import { phaseForStepAtIndex } from '../../../services/cms'
-import type Item from '../components/SliderEntry'
-import type Step from '../../../services/cms'
-import selectors from '../../../redux/selectors'
+import formDataSelectors from '../../../redux/selectors/formData.selectors'
+import cmsSelectors from '../../../redux/selectors/cms.selectors'
+
 import {
   goToWorkbookSkippingStepScreen,
   goToAssignmentFlow,
@@ -56,11 +56,12 @@ const renderProgressButton = (
 }
 
 const mapStateToProps = (state: any) => {
-  const { latestStepId, sortedStepsWithForms } = selectors.sortedStepsWithForms(
+  const { latestStepId, sortedStepsWithForms } = formDataSelectors.sortedStepsWithForms(
     state
   )
+  debugger;
 
-  const phaseColors = selectors.phaseColors(state)
+  const phaseColors = cmsSelectors.phaseColors(state)
 
   const backgroundColorAtIndex = (step: number) =>
     phaseColors[phaseForStepAtIndex(step)]
@@ -86,7 +87,7 @@ const mapStateToProps = (state: any) => {
 const PagninatedCarouselContainer = compose(
   withNavigation,
   connect(mapStateToProps),
-  mapProps(
+  withProps(
     ({ activeSliderIndex, sortedStepsWithForms, navigation, ...rest }) => {
       const props = {
         ...rest,

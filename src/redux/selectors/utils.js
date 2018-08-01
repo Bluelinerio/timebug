@@ -13,3 +13,9 @@ export const filterKeys = (keys: [string]) => (obj: {}) => filterWithKeys(key =>
 export const viewOr = R.curryN(3,
   (defaultValue, lens, data) => R.defaultTo(defaultValue, R.view(lens, data))
 )
+
+export const arrange = key => R.compose(
+  R.fromPairs,
+  R.map(a => [a[key], a]),
+)
+

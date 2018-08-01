@@ -1,13 +1,13 @@
 //@flow
-import { connect }             from 'react-redux'
-import selectors from '../../../redux/selectors'
+import { connect } from 'react-redux'
+import { completedFormsChronologically } from '../../../redux/selectors/forms.selectors'
 import DisplaySteps from '../components/DisplaySteps'
+import combineSelectors from '../../../redux/selectors/combineSelectors';
 
-const DisplayStepsContainer = connect( state => ({
-    steps: 
-        selectors.completedFormsChronologically(state)
-            .sort((a, b) => a.stepId - b.stepId )
-  }), null)
-(DisplaySteps)
+const DisplayStepsContainer = connect(
+    combineSelectors({
+        steps: completedFormsChronologically
+    })
+)(DisplaySteps)
 
 export default DisplayStepsContainer

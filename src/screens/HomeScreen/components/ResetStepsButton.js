@@ -1,13 +1,11 @@
 /* @flow */
-
-import React from 'react'
 import { connect } from 'react-redux'
 import SimpleButton from '../../../components/SimpleButton'
 import { resetRequest } from '../../../redux/actions/formData.actions'
-import * as selectors from '../../../redux/selectors'
-import { combineSelectors } from '../../../redux/selectors/combineSelectors'
+import formsSelectors from '../../../redux/selectors/forms.selectors'
+import combineSelectors from '../../../redux/selectors/combineSelectors'
 
-const { hasNoCompletedForms } = selectors.default;
+const { hasNoCompletedForms } = formsSelectors;
 
 const ResetStepsButton = connect(
     combineSelectors({ hide: hasNoCompletedForms }),

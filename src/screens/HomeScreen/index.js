@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import HomeScreenComponent from './components/HomeScreenComponent'
 import DefaultIndicator from '../../components/DefaultIndicator'
 import userSelectors from '../../redux/selectors/user.selectors'
-import { combineSelectors } from '../../redux/selectors/combineSelectors';
+import combineSelectors from '../../redux/selectors/combineSelectors';
 
 type Props = { isAuthenticating: boolean, isUndetermined: boolean }
 

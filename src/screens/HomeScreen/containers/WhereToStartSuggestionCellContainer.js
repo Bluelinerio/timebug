@@ -1,18 +1,14 @@
 import { connect } from 'react-redux'
-import { compose, branch, renderNothing, mapProps } from 'recompose'
+import { compose, branch, renderNothing, withProps } from 'recompose'
 import { withNavigation } from 'react-navigation'
-import selectors from '../../../redux/selectors'
+import { user } from '../../../redux/selectors/user.selectors'
+import { appInstructions, uniqueColors } from '../../../redux/selectors/cms.selectors'
 import { goToMarkdownScreen } from '../../../redux/actions/nav.actions'
 import AppInstructionsCellComponent from '../components/DashboardCells/AppInstructionsCellComponent'
 import markdownStyles from '../../../styles/Markdown/stepScreen'
 import { headerBackgrounds } from '../../../resources/images'
 import { randomItem } from '../../../utils/random'
-
-const mapStateToProps = state => ({
-  user: selectors.user(state),
-  appInstructions: selectors.appInstructions(state),
-  colors: selectors.uniqueColors(state)
-})
+import combineSelectors from '../../../redux/selectors/combineSelectors';
 
 const title = ({ user, ...rest }) => ({
   ...rest,
@@ -40,11 +36,17 @@ const button = ({ appInstructions, colors, navigation, ...rest }) => ({
 })
 
 const WhereToStartSuggestionCellContainer = compose(
-  connect(mapStateToProps),
+  connect(
+    combineSelectors({
+      user,
+      appInstructions,
+      colors: uniqueColors
+    })
+  ),
   branch(({ appInstructions }) => !appInstructions, renderNothing),
   withNavigation,
-  mapProps(title),
-  mapProps(button)
+  withProps(title),
+  withProps(button)
 )(AppInstructionsCellComponent)
 
 

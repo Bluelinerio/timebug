@@ -1,10 +1,11 @@
 //@flow
 export type Selector = (state: {}, ownProps: {}) => *
-export const combineSelectors = (selectors: { [string] : Selector }) => (state: {}, ownProps: {}): {} => {
+
+const combineSelectors = (selectors: { [string] : Selector }) => (state: {}, ownProps: {}): {} => {
   if (__DEV__) {
     const keyForNotAFunction = Object.keys(selectors).find(key => typeof selectors[key] !== 'function')
     if(keyForNotAFunction) {
-      throw new Error(`combineSelectors error: expected a function ${keyForNotAFunction} got ${selectors[keyForNotAFunction]}`)
+      throw new Error(`combineSelectors error: expected a function '${keyForNotAFunction}', got ${selectors[keyForNotAFunction]}`)
     }
   }
   return Object.keys(selectors).reduce(
@@ -15,3 +16,5 @@ export const combineSelectors = (selectors: { [string] : Selector }) => (state: 
     {}
   )
 }
+
+export default combineSelectors;
