@@ -139,11 +139,11 @@ export default {
           fields: {
             whoHelp: {
               label:
-                'Who do you want to enjoy a major transformation or sense of peace and internal happiness in their lives? How will you help him/her? '
+                'Who do you want to enjoy a major transformation or sense of peace and internal happiness in their lives?'
             },
             howHelp: {
               label:
-                'How will you want help him/her attain those inner journey goals by Year 5?'
+                'How will you help him/her attain those inner journey goals by Year 5?'
             },
             howFurtherSpirituality: {
               label:

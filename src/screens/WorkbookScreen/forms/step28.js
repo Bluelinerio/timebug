@@ -56,41 +56,6 @@ export default {
   },
   3: {
     type: t.struct({
-      environmentBucketListGoals: t.list(
-        t.struct({
-          bucketPEBHAG: t.String,
-          priority: t.Number,
-          timeSpent: t.String
-        })
-      )
-    }),
-    options: {
-      fields: {
-        environmentBucketListGoals: {
-          label: "What's on your 2020 Environment bucket list?",
-          item: {
-            auto: 'none',
-            fields: {
-              bucketPEBHAG: {
-                label: 'BHAG'
-              },
-              priority: {
-                label:
-                  'How do you rank this bucket list item in terms of priority?',
-                placeholder: '1= Low priority and 10= High priority'
-              },
-              timeSpent: {
-                label:
-                  'How much time per year (for each of the next 5 years) will you spend, on average, working towards this goal?'
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  4: {
-    type: t.struct({
       environmentVisionCreationForOthers: t.struct({
         who: t.String,
         howAttain: t.String,
@@ -117,7 +82,7 @@ export default {
       }
     }
   },
-  5: {
+  4: {
     type: t.struct({
       environmentVisionCreationForWorld: t.struct({
         oneWish: t.String,
