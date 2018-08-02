@@ -25,14 +25,17 @@ export type FormEntriesType = {
   [STEP]: FormEntry
 }
 
-export const formEntries: FormEntriesType = {
-  [STEP1]: {
+/**
+ * [STEP1]: {
     title: 'Component 1',
     render: compose(
       ExampleFormHOC({ injected: 'This is step 1' }),
       GenericFormConsumer(exampleHandler)
     )(ExampleFormComponent)
-  },
+  }
+ */
+
+export const formEntries: FormEntriesType = {
   [STEP2]: {
     title: 'Your weekly timetable',
     render: compose(GenericFormConsumer(form2Handler), Form2HOC())(
