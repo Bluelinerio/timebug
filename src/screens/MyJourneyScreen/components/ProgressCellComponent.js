@@ -1,15 +1,14 @@
-import React                    from 'react'
+import React                     from 'react'
+import ProgressDashboardCell     from './ProgressCells/ProgressDashboardCell'
+import PieProgressDashboardCell  from './ProgressCells/PieProgressDashboardCell'
+import UnlockedStepsCarouselCell from './UnlockedStepsCarouselCell'
 
-import ProgressDashboardCell    from './ProgressCells/ProgressDashboardCell'
-import PieProgressDashboardCell from './ProgressCells/PieProgressDashboardCell'
-import TimeTableProgressCell    from '../containers/TimeSpentOnPillarsContainer'
-
-const ProgressCellComponent =  () => (
-  <React.Fragment >
+const ProgressCellComponent = () => (
+  <React.Fragment>
     <ProgressDashboardCell />
     <PieProgressDashboardCell />
-    <TimeTableProgressCell />
+    <UnlockedStepsCarouselCell />
   </React.Fragment>
 )
-    
+
 export default ProgressCellComponent
