@@ -1,11 +1,9 @@
 //@flow
 import React from 'react'
-import styles from '../../../../styles'
 import GenericElement, {
-  GenericElementProps,
   GenericElementContent,
   GenericElementStyle
-} from '../../../../components/GenericElement'
+}            from '../../../../components/GenericElement'
 
 type BoardOfAdvisorsElementProps = {
   boardMember: string,
@@ -18,14 +16,9 @@ type ObjectStyles = {
   [x: string]: GenericElementStyle
 }
 
-const renderText = (typical: number) => (ideal: number): string => {
-  const result = typical - ideal
-  return result > 0
-    ? `+${result} hrs`
-    : result < 0 ? `${result} hrs` : `${result} hrs`
-}
-
-const buildElements = props => {
+const buildElements = (
+  props: BoardOfAdvisorsElementProps
+): [GenericElementContent] => {
   const mapKeyToStyle: ObjectStyles = {}
   return Object.keys(props).reduce((elements, key) => {
     const style = mapKeyToStyle[key]
@@ -46,7 +39,7 @@ const FormElement = ({
   interactionFrequency,
   style = {}
 }: BoardOfAdvisorsElementProps) => {
-  const elements = buildElements({
+  const elements: [GenericElementContent] = buildElements({
     pillarsOfLife,
     boardMember,
     interactionFrequency

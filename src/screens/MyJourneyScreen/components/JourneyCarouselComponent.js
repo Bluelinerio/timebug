@@ -11,7 +11,9 @@ type JourneyCarouselComponentProps = {
   render: React.ComponentType<any>
 }
 
-export default class JourneyCarouselComponent extends Component<JourneyCarouselComponentProps> {
+export default class JourneyCarouselComponent extends Component<
+  JourneyCarouselComponentProps
+> {
   constructor(props) {
     super(props)
     const { entries } = props
