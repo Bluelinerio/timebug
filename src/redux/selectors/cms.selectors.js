@@ -10,6 +10,7 @@ const byNumber = R.ascend(R.prop('number'))
 
 // CMS
 export const steps = viewOr({}, reducerLenses.steps)
+export const allSteps = R.compose(R.values, steps)
 export const sortedSteps = R.pipe(
   steps,
   R.values,
@@ -36,6 +37,7 @@ export const appInstructions = viewOr(undefined, reducerLenses.appInstructions)
 
 export default {
   steps,
+  allSteps,
   sortedSteps,
   meditations,
   phaseColors,

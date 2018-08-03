@@ -10,7 +10,7 @@ import cmsSelectors from './cms.selectors'
 import combineSelectors from './combineSelectors';
 
 const { completedForms } = formsSelectors
-const { sortedSteps } = cmsSelectors
+const { sortedSteps, allSteps } = cmsSelectors
 
 export const filterStepIds = filterKeys(stepIds)
 const EDITING_FORMS_SUPPORTTED = false
@@ -28,76 +28,59 @@ export const incompleteForms = R.compose(
 	formData
 )
 
-const buttonTitleForFormCompletion = ({ completedForms, incomplete }) => {
-	if (Object.keys(incomplete).length > 0) {
+const buttonTitleForFormCompletion = ( { forms: { complete, incomplete } }) => {
+	if (incomplete || incomplete.length > 0) {
 		return 'Resume'
-	} else if (EDITING_FORMS_SUPPORTTED && completedForms && Object.keys(completedForms).length > 0) {
+	} else if (EDITING_FORMS_SUPPORTTED && complete && incomplete) {
 		return 'Edit'
 	} else {
 		return 'Start'
 	}
 }
 
+// export const completedFormsGroupedByStepIdSortedByDate = R.compose(
+// 	R.groupBy(R.prop('stepId')),
+// 	completedForms
+// )
+
+// R.compose(
+// 	R.sortBy(R.prop('updatedAt')),
+// 	R.find(f => f.stepId === step.stepId)
+// )
+// R.compose(
+// 	R.sortBy(R.prop('timeStamp')),
+// 	R.find(f => f.stepId === step.stepId)
+// )
+
 export const combineSteps = R.compose(
+	R.sortWith([
+		R.descend(R.path(['forms', 'incomplete', 'updatedAt'])),
+		R.ascend(R.path(['forms', 'complete', 'timeStamp']))
+	]),
 	({
 		completedForms,
 		incompleteForms,
-		sortedSteps,
-	}) => {
-		debugger;
-		return sortedSteps.map(step => ({
+		allSteps,
+	}) => allSteps.map(step => ({
 			...step,
 			forms: ({
-				complete: R.compose(
-					R.sortBy(R.prop('updatedAt')),
-					R.find(f => f.stepId === step.stepId)
-				)(completedForms),
-				incomplete: R.compose(
-					R.sortBy(R.prop('timeStamp')),
-					R.find(f => f.stepId === step.stepId)
-				)(incompleteForms),
+				complete: R.find(f => f.stepId === step.stepId, completedForms),
+				incomplete: R.find(f => f.stepId === step.stepId, incompleteForms),
 			})
-		}))
-	},
+		}
+	)),
 	combineSelectors({
 		completedForms,
 		incompleteForms,
-		sortedSteps,
+		allSteps,
 	})
 )
 
-export const sortedStepsWithForms = state => {
-	debugger;
-	const steps = combineSteps(state);
-	const completed = completedForms(state)
-	const incompleteForms = incompleteFormsData(state)
-	const { latestStepId } = Object.keys(incompleteForms).reduce((sum, latestStepId) => {
-		const timeStamp = incompleteForms[latestStepId] && incompleteForms[latestStepId].timeStamp
-		if (timeStamp) {
-			if (!sum.timeStamp || sum.timeStamp < timeStamp) {
-				return {
-					latestStepId,
-					timeStamp
-				}
-			}
-		}
-		return sum
-	}, {})
+const withSelectors = selectors => item => ({
+	...item,
+	...combineSelectors(selectors)(item)
+})
 
-	return {
-		steps: sortedSteps(state)
-			.map(step => ({
-				completedForms: completed.find(f => f.stepId),
-				incomplete: filterNumbers(incompleteForms[step.stepId]),
-				step
-			}))
-			.map(step => ({
-				...step,
-				buttonTitleForFormCompletion: buttonTitleForFormCompletion(step)
-			})),
-		latestStepId
-	}
-}
 export const buttonTitlesForFormCompletion = state => stepId => {
 	return R.compose(
 		buttonTitleForFormCompletion,
@@ -106,6 +89,17 @@ export const buttonTitlesForFormCompletion = state => stepId => {
 		sortedStepsWithForms
 	)(state)
 }
+
+export const sortedStepsWithForms = state => {
+	const steps = combineSteps(state).map(withSelectors(buttonTitleForFormCompletion));
+	const latestStepId = R.view(R.lensPath([0, 'stepId']), steps)
+	debugger;
+	return {
+		steps,
+		latestStepId
+	}
+}
+
 
 export const modelsAndDataForExercise = (state: any) => (stepId: string) => {
 	//TComb Forms helpers

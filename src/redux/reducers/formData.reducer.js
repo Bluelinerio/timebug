@@ -1,4 +1,5 @@
 // @flow
+import R from 'ramda'
 import {
   SUBMIT_FORM_VALUE,
   INCREMENT_FORM_DATA_QUEUE,
@@ -6,12 +7,13 @@ import {
   RESET_FORMS,
   SET_LOADING_FORMDATA
 } from '../actionTypes'
+import { formDataWithStepIdAndFormIdLens } from '../lenses/formData.lenses'
 
 import { diffObjs } from '../utils/diffObjs'
-import R from 'ramda'
 import type { FormDataState } from '../../types';
 import storage from 'redux-persist/lib/storage'
 import { persistReducer, createMigrate } from 'redux-persist'
+import { step } from '../selectors/cms.selectors';
 
 type PopulateFormAction = {
   type: SUBMIT_FORM_VALUE.type,

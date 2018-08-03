@@ -4,7 +4,7 @@ import {
   NavigationActionStepIdLens,
   NavigationActionFormIdLens,
   NavigationActionRouteNameLens
-} from './index.js'
+} from '../index.js'
 
 import { HISTORY, VISITS, LAST_VISITED } from '../../constants/reducers'
 import { STEP_SCREEN, WORKBOOK_SCREEN } from '../../constants/screens'

@@ -1,6 +1,7 @@
 import R from 'ramda'
 
 const tcombPropLens = R.lensPath(['type', 'meta', 'props'])
+
 const getTCombProps = model => {
   const props = R.view(tcombPropLens, model)
   if (!props) {

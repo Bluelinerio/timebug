@@ -2,7 +2,7 @@
 import R from 'ramda'
 import type { Form } from '../../types'
 import { formsLenses } from '../lenses/user.lenses';
-import { viewOr, arrange } from './utils';
+import { viewOr } from './utils';
 /// forms
 const sortFormsChronologically = (a: Form, b: Form) =>
   Date.parse(b.updatedAt) - Date.parse(a.updatedAt)
@@ -11,7 +11,7 @@ const sortFormsChronologically = (a: Form, b: Form) =>
 const completedForms = viewOr([], formsLenses)
 
 const completedFormsData = R.compose(
-  arrange('stepId'),
+  R.indexBy(R.prop('stepId')),
   completedForms
 )
 
