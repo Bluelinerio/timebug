@@ -51,8 +51,8 @@ export default {
       rockingChairRegrets: t.list(
         t.struct({
           regret: t.String,
-          areaOfLife: t.maybe(AreaOfLife),
-          lifeStages: t.maybe(LifeStages)
+          areaOfLife: AreaOfLife,
+          lifeStages: LifeStages
         })
       )
     }),

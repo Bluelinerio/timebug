@@ -87,7 +87,7 @@ const categoryMotivationText = {
     [HOME_SCREEN]: ({ suggestedNextStep, previousStep }) =>
       `With the completion of ${previousStep}, you're almost done with Phase 3:Vision Creation! Keep up the great work with step ${suggestedNextStep}.`,
     [DONE_SCREEN]: ({ suggestedNextStep }) =>
-      `You're almost done with Phase 1:Vision Creation! Keep up the great work with step ${suggestedNextStep}.`
+      `You're almost done with Phase 3:Vision Creation! Keep up the great work with step ${suggestedNextStep}.`
   },
   [FINISHED]: {
     [HOME_SCREEN]: () =>

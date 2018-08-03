@@ -37,13 +37,7 @@ const Banner = () => {
           {source => <UserProfileImage source={source} styles={{ headerAvatar: styles.headerAvatar }} />}
         </UserProfileImageConsumer>
     </View>
-    {
-      (__DEV__) &&
-            <View style={{ padding: 15 }}>
-              <ResetStepsButton />
-              <DisplayStepsContainer />
-            </View>
-    }
+
   </View>
   )
 }
