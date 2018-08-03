@@ -1,17 +1,17 @@
 // @flow
+import R from 'ramda'
 import { SUBMIT_AWARD_VALUE, RESET_AWARD_VALUE } from '../actionTypes'
 import { SumbitAwardValueAction } from '../actions/award.actions'
 import { diffObjs } from '../utils/diffObjs'
-import R from 'ramda'
+import initialModels from '../../static/awards'
 
 /**
  * Each key in this structure, will be the key inside the corresponding FormData
  */
 export type AwardData = {
-  [form: string]: [
+  [key: string]: [
     {
       type: any,
-      key: string,
       content: [
         {
           value: any
@@ -19,6 +19,27 @@ export type AwardData = {
       ]
     }
   ]
+}
+
+type ModelType = 'list'
+type ModelElementType = 'label' | 'checkbox'
+
+/**
+ * The key inside fields refers to the column or element that has a checkbox
+ */
+
+export type ModelsData = {
+  type: ModelType,
+  fields: {
+    [key: string]: {
+      type: ModelElementType,
+      form: string,
+      options?: {
+        header?: string,
+        label?: string
+      }
+    }
+  }
 }
 
 /**
@@ -30,16 +51,24 @@ export type AwardData = {
 export type AwardState = {
   data: {
     [key: string]: AwardData
+  },
+  models: {
+    [key: string]: ModelsData
   }
 }
+
+export type AwardModelsData = {}
 
 /**
  * Setting up initial state
  */
-const initialAwardDataState = {}
+const initialAwardDataState = initialModels
+
+const initialModelsState = {}
 
 const initialState: AwardState = {
-  data: initialAwardDataState
+  data: initialAwardDataState,
+  models: initialModelsState
 }
 
 const filterWithKeys = (pred, obj) =>
@@ -49,7 +78,7 @@ const populate = (
   action: SumbitAwardValueAction,
   state: AwardState
 ): AwardState => {
-  const { key, value, type } = action.payload
+  const { stepId, element: { key, value, type } } = action.payload
   const data = state.data || {}
 
   // There is a property id in values that is constantly undefined, yet saved, triggering syncronizations
@@ -60,7 +89,7 @@ const populate = (
   // filter old value from timestamp, or anything else we might add...
   const oldValue = filterWithKeys(
     key => Object.keys(filteredValue).includes(key),
-    R.view(R.lensPath([stepId, formId]), data)
+    R.view(R.lensPath([stepId, key]), data)
   )
 
   const { difference, onlyOnRight } = diffObjs(oldValue, filteredValue)
@@ -70,13 +99,10 @@ const populate = (
   return {
     ...state,
     data: {
-      timeStamp: Date.now(),
       ...data,
       [stepId]: {
         ...(data[stepId] || null),
-        timeStamp: Date.now(),
-        [formId]: {
-          timeStamp: Date.now(),
+        [key]: {
           ...filteredValue,
           type
         }
