@@ -15,10 +15,6 @@ type PillarsObject = {
   [x: string]: PillarOfLife
 }
 
-type FormConsumerProps = {
-  pillars: PillarsObject
-}
-
 const wantedKeys: SelectedKeys = {
   typicalWeek: {
     form: '1',
@@ -81,7 +77,7 @@ export const handler: HandlerFunction = ({ formData }: FormDataForExercise) => {
   }
 }
 
-const Form2Consumer = (injectedProps: any) => (Component: React.ComponentType<any>): React.ComponentType<any>  => {
+const Form2Consumer = (injectedProps: any) => (Component: React.ComponentType<any>): React.ComponentType<any> => {
   const Consumer = props => <Component {...injectedProps} {...props} />
   return Consumer
 }

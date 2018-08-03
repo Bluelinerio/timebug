@@ -9,6 +9,12 @@ export default StyleSheet.create({
   container: {
     flex: 1
   },
+  tableContainer: {
+    flexDirection: 'column',
+    borderRadius: 6,
+    paddingHorizontal: 16,
+    paddingVertical: 8
+  },
   timeContainer: {
     flexDirection: 'column',
     borderRadius: 6,

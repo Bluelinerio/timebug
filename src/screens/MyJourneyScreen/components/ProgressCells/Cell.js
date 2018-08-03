@@ -14,9 +14,11 @@ type CellProps = {
   layoutComponent: React.ComponentType<any>,
   title: string,
   titleColor: string,
-  style?: {
-    highlight: any
-  } | any
+  style?:
+    | {
+        highlight: any
+      }
+    | any
 }
 
 const Cell = ({

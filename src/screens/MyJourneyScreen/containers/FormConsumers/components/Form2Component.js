@@ -3,7 +3,7 @@ import { View }                                  from 'react-native'
 import PillarTimeTableElement                    from './../../../components/PillarTimeTableElement'
 import PillarTimeTableHeader                     from './../../../components/PillarTimeTableHeader'
 import styles                                    from '../../../styles'
-import { mediumGray, gray400 }                 from '../../../../../constants/colors'
+import { mediumGray, gray400 }                   from '../../../../../constants/colors'
 
 type Form2Props = {
   pillars: any

@@ -5,7 +5,8 @@ import User                  from './../../../containers/User'
 import ProgressCellComponent from './ProgressCellComponent'
 import styles                from '../styles'
 
-const shouldShowUserProgressWithUser = (user: any): boolean => user.forms.length > 0
+const shouldShowUserProgressWithUser = (user: any): boolean =>
+  user.forms.length > 0
 
 const MyJourneyScreenComponent = () => (
   <ScrollView style={styles.container}>

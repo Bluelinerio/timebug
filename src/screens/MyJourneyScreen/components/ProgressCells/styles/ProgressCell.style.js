@@ -1,12 +1,7 @@
 import { StyleSheet, Platform } from 'react-native'
 import {
   human,
-  systemWeights,
-  iOSColors,
-  iOSUIKit,
-  material,
-  sanFranciscoWeights,
-  robotoWeights
+  systemWeights
 }                               from 'react-native-typography'
 
 export const scrollViewHorizontalPadding = 16

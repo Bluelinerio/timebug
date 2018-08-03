@@ -7,7 +7,11 @@ type FormComponentProps = {
   injected: string
 }
 
-const FormComponentExample = ({ data, injected, ...rest }: FormComponentProps) => {
+const FormComponentExample = ({
+  data,
+  injected,
+  ...rest
+}: FormComponentProps) => {
   return (
     <View>
       <Text style={{ fontWeight: '700', fontSize: 20 }}>{data.subtitle}</Text>
