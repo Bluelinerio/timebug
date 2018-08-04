@@ -17,9 +17,7 @@ const wantedKeys: SelectedKeys = {
 export const handler: HandlerFunction = ({ formData }: FormDataForExercise) => {
     const { boardOfAdvisors } = getDataFromForm(formData, wantedKeys)
     return {
-        formData: {
-            boardOfAdvisors
-        }
+        boardOfAdvisors
     }
 }
 

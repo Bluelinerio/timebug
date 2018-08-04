@@ -47,5 +47,9 @@ export default StyleSheet.create({
   pillarText: {
     ...iOSUIKit.caption2EmphasizedObject,
     textAlign: 'left'
+  },
+  center: {
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 })

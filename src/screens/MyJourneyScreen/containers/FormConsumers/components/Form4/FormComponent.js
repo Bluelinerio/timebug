@@ -3,6 +3,7 @@ import React                   from 'react'
 import { View }                from 'react-native'
 import Header                  from './BoardOfAdvisorsHeader'
 import Element                 from './BoardOfAdvisorsElement'
+import LockedEntry             from '../../../../components/LockedEntry'
 import styles                  from '../../../../styles'
 import { mediumGray, gray400 } from '../../../../../../constants/colors'
 
@@ -13,9 +14,7 @@ type BoardOfAdvisorsElement = {
 }
 
 type FormComponentProps = {
-  formData: {
     boardOfAdvisors: [BoardOfAdvisorsElement]
-  }
 }
 
 const styleForEvenElements = {
@@ -32,24 +31,29 @@ const styleForUnevenElements = {
 
 const isEven = (num: number): boolean => num % 2 === 0
 
-const Form4Component = ({ formData }: FormComponentProps) => {
-  const { boardOfAdvisors } = formData
+const Form4Component = ({ boardOfAdvisors }: FormComponentProps) => {
   return (
     <View style={[styles.container, styles.tableContainer]}>
-      <Header />
-      {boardOfAdvisors &&
-        boardOfAdvisors.map((advisor, index) => {
-          const { boardMember } = advisor
-          return (
-            <Element
-              key={boardMember}
-              style={
-                !isEven(index) ? styleForUnevenElements : styleForEvenElements
-              }
-              {...advisor}
-            />
-          )
-        })}
+      {boardOfAdvisors ?
+        <React.Fragment> 
+          <Header />
+            {
+              boardOfAdvisors.map((advisor, index) => {
+                const { boardMember } = advisor
+                return (
+                  <Element
+                    key={boardMember}
+                    style={
+                      !isEven(index) ? styleForUnevenElements : styleForEvenElements
+                    }
+                    {...advisor}
+                  />
+                )
+              })
+            }
+        </React.Fragment>  
+        : <LockedEntry />
+      }
     </View>
   )
 }
