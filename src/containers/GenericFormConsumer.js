@@ -3,7 +3,6 @@ import R           from 'ramda'
 import { connect } from 'react-redux'
 import { compose } from 'recompose'
 import selectors   from '../redux/selectors'
-import { submitAwardAnswers, resetAward, SubmitAwardValuePayload } from '../redux/actions/award.actions'
 
 type ModelsAndData = {
   models: any,
@@ -27,14 +26,9 @@ const mapStateToProps = (state: any): FormConsumerProps => {
   return { modelsAndDataForExercise }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  submitAnswers: (payload: SubmitAwardValuePayload) => dispatch(submitAwardAnswers(payload)),
-  reset: () => dispatch(resetAward())
-})
-
 const notEmpty = compose(R.not, R.isEmpty)
 
-const merge = (handler: HandlerFunction) => (stateProps, dispatchprops, ownProps) => {
+const merge = (handler: HandlerFunction) => (stateProps, dispatchProps, ownProps) => {
   const { modelsAndDataForExercise } = stateProps
   const { step } = ownProps
   const { formData } = modelsAndDataForExercise(step)
@@ -44,7 +38,9 @@ const merge = (handler: HandlerFunction) => (stateProps, dispatchprops, ownProps
       ...handler({ formData })
     }
   }
-  return {}
+  return {
+    ...ownProps
+  }
 }
 
-export default handler => connect(mapStateToProps, mapDispatchToProps, merge(handler))
+export default handler => connect(mapStateToProps, null, merge(handler))

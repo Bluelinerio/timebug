@@ -6,19 +6,16 @@ import { diffObjs } from '../utils/diffObjs'
 import initialModels from '../../static/awards'
 
 /**
- * Each key in this structure, will be the key inside the corresponding FormData
+ * The upper level keys are the index of the 'formData' element in formData,
+ * the inner level keys are the key in SimpleModelData
  */
 export type AwardData = {
-  [key: string]: [
-    {
+  [key: string]: {
+    [key: string] : {
       type: any,
-      content: [
-        {
-          value: any
-        }
-      ]
+      value: any
     }
-  ]
+  }
 }
 
 type ModelType = 'list'
@@ -34,10 +31,21 @@ export type ModelsData = {
     [key: string]: {
       type: ModelElementType,
       form: string,
+      key: string,
       options?: {
         header?: string,
         label?: string
       }
+    }
+  }
+}
+
+export type SimpleModelData = {
+  [key: string]: {
+    type: ModelElementType,
+    options?: {
+      header?: string,
+      label?: string
     }
   }
 }
@@ -62,9 +70,9 @@ export type AwardModelsData = {}
 /**
  * Setting up initial state
  */
-const initialAwardDataState = initialModels
+const initialAwardDataState = {}
 
-const initialModelsState = {}
+const initialModelsState = initialModels
 
 const initialState: AwardState = {
   data: initialAwardDataState,
@@ -146,13 +154,14 @@ const mapDataWithStepIndicesToDataWithStepIds = state => {
 const migrations = {
   0: state => ({
     ...state,
-    data: mapDataWithStepIndicesToDataWithStepIds(state.data)
+    data: mapDataWithStepIndicesToDataWithStepIds(state.data),
+    models: initialModels
   }),
   1: state => state
 }
 
 const persistConfig = {
-  key: 'awardData',
+  key: 'awards',
   storage: storage,
   blacklist: [],
   version: 1,
