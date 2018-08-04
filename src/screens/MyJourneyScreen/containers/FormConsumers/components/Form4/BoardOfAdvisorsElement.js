@@ -26,6 +26,7 @@ const buildElements = (
     return [
       ...elements,
       {
+        type: 'label',
         text,
         style
       }

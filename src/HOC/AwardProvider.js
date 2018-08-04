@@ -26,8 +26,10 @@ const merge = (stateProps, dispatchProps, ownProps) => {
     return {
       ...ownProps,
       ...dispatchProps,
-      model,
-      data
+      award: {
+        model,
+        data
+      }
     }
   }
   return {
