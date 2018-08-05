@@ -26,7 +26,7 @@ const CheckboxComponent = ({
   <View style={[styles.row, styles.elementRow, style.row]}>
     <View style={[styles.element, style.container]}>
       <CheckBox
-        style={[styles.elementText, style.text]}
+        style={[styles.checkBox, styles.center]}
         onValueChange={() => tron.log(`KEY: ${key}, index: ${formIndex} `)}
         value={!!value}
       />

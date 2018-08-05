@@ -14,11 +14,9 @@ export type LabelComponentProps = {
 }
 
 const LabelComponent = ({ text, style = {} }: LabelComponentProps) => (
-  <View style={[styles.row, styles.elementRow, style.row]}>
     <View style={[styles.element, style.container]}>
       <Text style={[styles.elementText, style.text]}>{text}</Text>
     </View>
-  </View>
 )
 
 export default LabelComponent

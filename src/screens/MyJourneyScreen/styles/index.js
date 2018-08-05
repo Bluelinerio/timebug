@@ -51,5 +51,8 @@ export default StyleSheet.create({
   center: {
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  checkBox: {
+    alignSelf: 'center'
   }
 })

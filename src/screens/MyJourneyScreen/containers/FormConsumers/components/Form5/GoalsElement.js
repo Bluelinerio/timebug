@@ -1,7 +1,8 @@
 //@flow
 import React from 'react'
+import { View } from 'react-native'
 import ListEntry from '../../../../components/ListEntry'
-import t from 'reactotron-react-native'
+import styles from '../../../../styles'
 
 type GoalsElementElementProps = {
   elements: any,
@@ -9,11 +10,13 @@ type GoalsElementElementProps = {
 }
 
 const GoalElement = ({ elements, style = {} }: GoalsElementElementProps) => {
-  return elements
-    ? elements.map(el => {
+  return elements ? (
+    <View style={[styles.row, styles.elementRow, style.row]}>
+      {elements.map(el => {
         return <ListEntry {...el} style={style} />
-      })
-    : null
+      })}
+    </View>
+  ) : null
 }
 
 export default GoalElement
