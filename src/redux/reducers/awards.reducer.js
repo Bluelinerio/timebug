@@ -1,17 +1,17 @@
 // @flow
-import R from 'ramda'
+import R                                         from 'ramda'
 import { SUBMIT_AWARD_VALUE, RESET_AWARD_VALUE } from '../actionTypes'
-import { SumbitAwardValueAction } from '../actions/award.actions'
-import { diffObjs } from '../utils/diffObjs'
-import initialModels from '../../static/awards'
+import { SumbitAwardValueAction }                from '../actions/award.actions'
+import { diffObjs }                              from '../utils/diffObjs'
+import initialModels                             from '../../static/awards'
 
 /**
  * The upper level keys are the index of the 'formData' element in formData,
- * the inner level keys are the key in SimpleModelData
+ * the inner level keys are the keys in SimpleModelData
  */
 export type AwardData = {
   [key: string]: {
-    [key: string] : {
+    [key: string]: {
       type: any,
       value: any
     }
