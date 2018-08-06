@@ -1,8 +1,7 @@
 //@flow
-import React from 'react'
+import React              from 'react'
 import { View, CheckBox } from 'react-native'
-import styles from '../../styles'
-import tron from 'reactotron-react-native'
+import styles             from '../../styles'
 
 export type CheckboxComponentStyle = {
   container?: any,
@@ -12,14 +11,14 @@ export type CheckboxComponentStyle = {
 export type CheckboxComponentProps = {
   type: string,
   formIndex: string,
-  key: string,
+  formKey: string,
   value: boolean | null,
   style?: CheckboxComponentStyle
 }
 
 const CheckboxComponent = ({
   value,
-  key,
+  formKey,
   formIndex,
   style = {}
 }: CheckboxComponentProps) => (
@@ -27,7 +26,9 @@ const CheckboxComponent = ({
     <View style={[styles.element, style.container]}>
       <CheckBox
         style={[styles.checkBox, styles.center]}
-        onValueChange={() => tron.log(`KEY: ${key}, index: ${formIndex} `)}
+        onValueChange={() =>
+          console.log(`KEY: ${formKey}, index: ${formIndex} `)
+        }
         value={!!value}
       />
     </View>

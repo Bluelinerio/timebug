@@ -32,38 +32,33 @@ const transformPropsForPresentation = props => {
 
   const elements = Object.keys(recentGoals).reduce((elements, key) => {
     const value = recentGoals[key]
-    const { goal, goalTypes } = value
-    const specialElements = Object.keys(model).reduce((els, k) => {
-      const modelElement = model[k]
-      const dataRowElement = data[key]
-      if (modelElement.type !== STRUCT && modelElement.type !== LABEL)
-        return [
-          ...els,
-          {
-            type: modelElement.type,
-            value: dataRowElement ? dataRowElement[k].value : null
+    if (header.elements.length > 0) {
+      const element = header.elements.map(el => {
+        const { type, key: actualKey } = el
+        if (type === LABEL) {
+          const text = value[actualKey]
+          return {
+            ...el,
+            text
           }
-        ]
-
-      return [...els]
-    }, [])
-
-    return [
-      ...elements,
-      {
-        elements: [
-          {
-            type: LABEL,
-            text: goal
-          },
-          {
-            type: LABEL,
-            text: goalTypes
-          },
-          ...specialElements
-        ]
-      }
-    ]
+        } else if (type !== STRUCT) {
+          const dataRowElement = data[actualKey]
+          return {
+            ...el,
+            formIndex: key,
+            formKey: actualKey,
+            value: dataRowElement ? dataRowElement[actualKey].value : null
+          }
+        }
+      })
+      return [
+        ...elements,
+        {
+          elements: element
+        }
+      ]
+    }
+    return elements
   }, [])
 
   return {
