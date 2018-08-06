@@ -30,7 +30,7 @@ const transformPropsForPresentation = props => {
     elements: buildHeader(model)
   }
 
-  const elements = Object.keys(recentGoals).reduce((elements, key) => {
+  const elements = recentGoals ? Object.keys(recentGoals).reduce((elements, key) => {
     const value = recentGoals[key]
     if (header.elements.length > 0) {
       const element = header.elements.map(el => {
@@ -59,7 +59,7 @@ const transformPropsForPresentation = props => {
       ]
     }
     return elements
-  }, [])
+  }, []) : null
 
   return {
     header,
