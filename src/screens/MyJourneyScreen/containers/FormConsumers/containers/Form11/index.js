@@ -1,17 +1,15 @@
 //@flow
-import React from 'react'
-import { compose } from 'recompose'
-import { SelectedKeys } from '../../../types'
+import React                                   from 'react'
+import { compose }                             from 'recompose'
+import { SelectedKeys }                        from '../../../types'
 import {
   HandlerFunction,
   FormDataForExercise
-} from '../../../../../../HOC/GenericFormConsumer'
-import getDataFromForm from '../../utils/DataFromForm'
-import { buildHeader } from '../../utils/FormModelToElement'
-import { LABEL, STRUCT } from '../../../../../../static/awards/modelTypes'
+}                                              from '../../../../../../HOC/GenericFormConsumer'
+import getDataFromForm                         from '../../utils/DataFromForm'
+import { buildHeader }                         from '../../utils/FormModelToElement'
+import { LABEL, STRUCT }                       from '../../../../../../static/awards/modelTypes'
 import { STEP11, getFormRequestedKeysForStep } from '../../../Forms'
-import R                                      from 'ramda'
-
 
 const wantedKeys: SelectedKeys = getFormRequestedKeysForStep(STEP11)
 
@@ -27,17 +25,13 @@ export const handler: HandlerFunction = ({
 }
 
 const transformPropsForPresentation = props => {
-  const {
-    componentData,
-    award: { data, model },
-    ...rest
-  } = props
+  const { componentData, award: { data, model }, ...rest } = props
 
   const header = {
     elements: buildHeader(model)
   }
   const { topGoalsPast5Years } = componentData
-  
+
   const elements = topGoalsPast5Years
     ? Object.keys(topGoalsPast5Years).reduce((elements, key) => {
         const value = topGoalsPast5Years[key]

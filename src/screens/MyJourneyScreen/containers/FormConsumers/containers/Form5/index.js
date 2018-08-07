@@ -13,7 +13,10 @@ import { STEP5, getFormRequestedKeysForStep } from '../../../Forms'
 
 const wantedKeys: SelectedKeys = getFormRequestedKeysForStep(STEP5)
 
-export const handler: HandlerFunction = ({ formData, ...rest }: FormDataForExercise) => {
+export const handler: HandlerFunction = ({
+  formData,
+  ...rest
+}: FormDataForExercise) => {
   const componentData = getDataFromForm(formData, wantedKeys)
   return {
     componentData,
@@ -23,7 +26,7 @@ export const handler: HandlerFunction = ({ formData, ...rest }: FormDataForExerc
 
 const transformPropsForPresentation = props => {
   const { componentData, award: { data, model }, ...rest } = props
-  
+
   const header = {
     elements: buildHeader(model)
   }
@@ -72,7 +75,6 @@ const transformPropsForPresentation = props => {
 
 const Form5Consumer = (Component: React.ComponentType<any>) => {
   const Consumer = props => {
-
     const providedProps = compose(transformPropsForPresentation, handler)(props)
     return <Component {...props} {...providedProps} />
   }

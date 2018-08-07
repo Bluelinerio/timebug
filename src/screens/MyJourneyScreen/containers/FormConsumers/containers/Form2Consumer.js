@@ -43,7 +43,7 @@ const transformPropsForPresentation = ({ componentData }) => {
 
   const { typicalWeek, idealWeek } = componentData
 
-  if(!typicalWeek || !idealWeek) return {}
+  if (!typicalWeek || !idealWeek) return {}
 
   const typicalWeekTemplateObject = typicalWeek.reduce((allPillars, pillar) => {
     const { pillarOfLife, hours } = pillar
@@ -82,7 +82,9 @@ const componentPropsHandler = compose(transformPropsForPresentation, handler)
 const Form2Consumer = (
   Component: React.ComponentType<any>
 ): React.ComponentType<any> => {
-  const Consumer = props => <Component {...props} {...componentPropsHandler(props)} />
+  const Consumer = props => (
+    <Component {...props} {...componentPropsHandler(props)} />
+  )
   return Consumer
 }
 
