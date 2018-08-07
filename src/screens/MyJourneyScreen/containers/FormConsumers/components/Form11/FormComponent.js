@@ -1,11 +1,11 @@
 //@flow
-import React from 'react'
-import { View } from 'react-native'
-import ListElement from '../../../../components/ListElement'
-import styles from '../../../../styles'
-import { mediumGray, gray400 } from '../../../../../../constants/colors'
+import React                    from 'react'
+import { View }                 from 'react-native'
+import ListElement              from '../../../../components/ListElement'
+import styles                   from '../../../../styles'
+import { mediumGray, gray400 }  from '../../../../../../constants/colors'
 import { LockedEntryWithCheck } from '../../../../components/LockedEntry'
-import GenericHeader from '../../../../components/GenericHeader'
+import GenericHeader            from '../../../../components/GenericHeader'
 
 const styleForEvenElements = {
   row: {

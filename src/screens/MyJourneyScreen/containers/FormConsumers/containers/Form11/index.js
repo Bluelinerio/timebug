@@ -13,18 +13,30 @@ import { STEP11, getFormRequestedKeysForStep } from '../../../Forms'
 
 const wantedKeys: SelectedKeys = getFormRequestedKeysForStep(STEP11)
 
+type ComponentDataForForm = {
+  topGoalsPast5Years: any
+}
+
+type PresentationProps = {
+  componentData: ComponentDataForForm | {},
+  award: {
+    data: any,
+    model: any
+  }
+}
+
 export const handler: HandlerFunction = ({
   formData,
   ...rest
 }: FormDataForExercise) => {
-  const componentData = getDataFromForm(formData, wantedKeys)
+  const componentData: ComponentDataForForm = getDataFromForm(formData, wantedKeys)
   return {
     componentData,
     ...rest
   }
 }
 
-const transformPropsForPresentation = props => {
+const transformPropsForPresentation = (props: PresentationProps) => {
   const { componentData, award: { data, model }, ...rest } = props
 
   const header = {

@@ -17,37 +17,24 @@ export type AwardData = {
   }
 }
 
-type ModelType = 'list'
 type ModelElementType = 'label' | 'checkbox'
 
 /**
  * The key inside fields refers to the column or element that has a checkbox
  */
 
-export type ModelsData = {
-  type: ModelType,
-  fields: {
-    [key: string]: {
-      type: ModelElementType,
-      form: string,
-      key: string,
-      options?: {
-        header?: string,
-        label?: string
-      }
-    }
+export type Model = {
+  type: ModelElementType,
+  options?: {
+    header?: string,
+    label?: string
   }
 }
 
 export type SimpleModelData = {
-  [key: string]: {
-    type: ModelElementType,
-    options?: {
-      header?: string,
-      label?: string
-    }
-  }
+  [key: string]: Model
 }
+
 
 /**
  * Types
@@ -60,7 +47,7 @@ export type AwardState = {
     [key: string]: AwardData
   },
   models: {
-    [key: string]: ModelsData
+    [key: string]: SimpleModelData
   }
 }
 
