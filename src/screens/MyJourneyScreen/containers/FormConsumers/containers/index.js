@@ -18,7 +18,7 @@ import Form11Component                 from '../components/Form11/FormComponent'
 import Form2HOC                        from './Form2Consumer'
 import Form4HOC                        from './Form4'
 import Form5HOC                        from './Form5'
-import Form11HOC                       from './Form5'
+import Form11HOC                       from './Form11'
 
 export type FormEntry = {
   title: string,
