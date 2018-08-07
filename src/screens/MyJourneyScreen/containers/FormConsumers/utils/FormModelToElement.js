@@ -50,9 +50,14 @@ export const buildHeader = (model: SimpleModelData): Array<HeaderElement> => {
 /**
  * Todo create flow type for elements
  */
-export const buildElements = ({ header, componentDataArray = [], data = {} } : BuildElementsArgs): [any] => {
+export const buildElements = ({
+  header,
+  componentDataArray = [],
+  data = {}
+}: BuildElementsArgs): [any] => {
   return componentDataArray.reduce((allElements, componentElement) => {
-    const elements = Object.keys(componentElement).reduce((elements, key) => {
+    const elements = componentElement
+      ? Object.keys(componentElement).reduce((elements, key) => {
           const value = componentElement[key]
           if (header.elements.length > 0) {
             const element = header.elements.map(el => {
@@ -82,9 +87,8 @@ export const buildElements = ({ header, componentDataArray = [], data = {} } : B
           }
           return elements
         }, [])
-      return [
-        ...allElements,
-        ...elements
-      ]
+      : null
+    if (elements) return [...allElements, ...elements]
+    return allElements
   }, [])
 }
