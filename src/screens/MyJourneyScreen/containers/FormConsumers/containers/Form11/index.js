@@ -79,7 +79,7 @@ const transformPropsForPresentation = props => {
 
 const Form11Consumer = (Component: React.ComponentType<any>) => {
   const Consumer = props => {
-    const providedProps = compose(transformPropsForPresentation, handler)(props)
+    const providedProps = transformPropsForPresentation(props)
     return <Component {...props} {...providedProps} />
   }
   return Consumer
