@@ -7,7 +7,7 @@ import {
   FormDataForExercise
 }                                             from '../../../../../../HOC/GenericFormConsumer'
 import getDataFromForm                        from '../../utils/DataFromForm'
-import { buildHeader }                        from '../../utils/FormModelToElement'
+import { buildHeader, buildElements }         from '../../utils/FormModelToElement'
 import { LABEL, STRUCT }                      from '../../../../../../static/awards/modelTypes'
 import { STEP5, getFormRequestedKeysForStep } from '../../../Forms'
 
@@ -32,39 +32,12 @@ const transformPropsForPresentation = props => {
   }
 
   const { recentGoals } = componentData
+  
+  const componentDataArray = [
+    recentGoals
+  ]
 
-  const elements = recentGoals
-    ? Object.keys(recentGoals).reduce((elements, key) => {
-        const value = recentGoals[key]
-        if (header.elements.length > 0) {
-          const element = header.elements.map(el => {
-            const { type, key: actualKey } = el
-            if (type === LABEL) {
-              const text = value[actualKey]
-              return {
-                ...el,
-                text
-              }
-            } else if (type !== STRUCT) {
-              const dataRowElement = data[key]
-              return {
-                ...el,
-                formIndex: key,
-                formKey: actualKey,
-                value: dataRowElement ? dataRowElement[actualKey].value : null
-              }
-            }
-          })
-          return [
-            ...elements,
-            {
-              elements: element
-            }
-          ]
-        }
-        return elements
-      }, [])
-    : null
+  const elements = buildElements({ header, componentDataArray, data })
 
   return {
     header,
