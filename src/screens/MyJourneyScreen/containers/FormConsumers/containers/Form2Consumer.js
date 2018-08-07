@@ -4,7 +4,7 @@ import { SelectedKeys }                       from '../../types'
 import type {
   HandlerFunction,
   FormDataForExercise
-}                                             from '../../../../../containers/GenericFormConsumer'
+}                                             from '../../../../../HOC/GenericFormConsumer'
 import { STEP2, getFormRequestedKeysForStep } from '../../Forms'
 
 type PillarOfLife = {

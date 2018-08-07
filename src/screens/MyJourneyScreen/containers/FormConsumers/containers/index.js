@@ -1,9 +1,11 @@
 //@flow
 import React                                         from 'react'
 import { compose }                                   from 'recompose'
-import GenericFormConsumer                           from '../../../../../containers/GenericFormConsumer'
+import GenericFormConsumer                           from '../../../../../HOC/GenericFormConsumer'
 import AwardProvider                                 from '../../../../../HOC/AwardProvider'
-import type, { STEP, STEP1, STEP2, STEP3, STEP4, STEP5 }    from '../../Forms'
+import { STEP2, STEP4, STEP5 }                       from '../../Forms'
+import type { STEP }                                 from '../../Forms'
+
 /**
  * Presentational Components
  */

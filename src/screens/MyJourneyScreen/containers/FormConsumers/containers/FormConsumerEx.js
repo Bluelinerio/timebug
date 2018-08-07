@@ -3,7 +3,7 @@ import React from 'react'
 import type, {
   HandlerFunction,
   FormDataForExercise
-}            from '../../../../../containers/GenericFormConsumer'
+}            from '../../../../../HOC/GenericFormConsumer'
 
 type FormConsumerExampleData = any
 

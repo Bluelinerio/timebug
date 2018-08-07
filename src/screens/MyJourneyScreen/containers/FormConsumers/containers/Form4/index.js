@@ -4,7 +4,7 @@ import { SelectedKeys }                       from '../../../types'
 import {
   HandlerFunction,
   FormDataForExercise
-}                                             from '../../../../../../containers/GenericFormConsumer'
+}                                             from '../../../../../../HOC/GenericFormConsumer'
 import getDataFromForm                        from '../../utils/DataFromForm'
 import { STEP4, getFormRequestedKeysForStep } from '../../../Forms'
 
