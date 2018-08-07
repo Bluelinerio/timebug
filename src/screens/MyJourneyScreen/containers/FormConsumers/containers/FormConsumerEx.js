@@ -20,7 +20,7 @@ const FormExampleConsumer = (injectedProps: any) => (Component: React.ComponentT
     text: 'This is dummy text'
   }
   const Consumer = props => (
-    <Component data={data} {...injectedProps} {...props} />
+    <Component data={data} {...injectedProps} {...props} {...handler(props)} />
   )
   return Consumer
 }

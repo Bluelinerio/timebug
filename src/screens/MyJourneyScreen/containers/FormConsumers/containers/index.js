@@ -46,28 +46,16 @@ export type FormEntriesType = {
 export const formEntries: FormEntriesType = {
   [STEP2]: {
     title: 'Your weekly timetable',
-    render: compose(GenericFormConsumer(form2Handler), Form2HOC())(
+    render: compose(GenericFormConsumer, Form2HOC)(
       Form2Component
     )
   },
   [STEP4]: {
     title: 'Your board of advisors',
-    render: compose(GenericFormConsumer(form4Handler), Form4HOC)(Form4Component)
-  },
-  [STEP5]: {
-    title: 'Your goals',
-    render: compose(GenericFormConsumer(form5Handler), AwardProvider, Form5HOC)(
-      Form5Component
+    render: compose(GenericFormConsumer, Form4HOC)(
+      Form4Component
     )
   },
-  [STEP11]: {
-    title: 'Your goal progress',
-    render: compose(
-      GenericFormConsumer(form11Handler),
-      AwardProvider,
-      Form11HOC
-    )(Form11Component)
-  }
 }
 
 export default (props: any): React.ComponentType<any> => {

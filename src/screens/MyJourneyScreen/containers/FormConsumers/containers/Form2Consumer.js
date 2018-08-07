@@ -1,11 +1,14 @@
 //@flow
 import React                                  from 'react'
+import { compose }                            from 'recompose'
 import { SelectedKeys }                       from '../../types'
 import type {
   HandlerFunction,
   FormDataForExercise
 }                                             from '../../../../../HOC/GenericFormConsumer'
 import { STEP2, getFormRequestedKeysForStep } from '../../Forms'
+import R                                      from 'ramda'
+import getDataFromForm                        from '../utils/DataFromForm'
 
 type PillarOfLife = {
   typicalWeek: number,
@@ -18,16 +21,6 @@ type PillarsObject = {
 
 const wantedKeys: SelectedKeys = getFormRequestedKeysForStep(STEP2)
 
-const getDataFromForm = (formData: any) => {
-  return Object.keys(wantedKeys).reduce((obj, k) => {
-    const { form, key } = wantedKeys[k]
-    return {
-      ...obj,
-      [k]: formData[form][key]
-    }
-  }, {})
-}
-
 const parseHoursIntoNumber = (hours: any) => {
   const regex = /\d+/
   const isOne = hours.toLowerCase().includes('one')
@@ -39,7 +32,19 @@ const parseHoursIntoNumber = (hours: any) => {
 }
 
 export const handler: HandlerFunction = ({ formData }: FormDataForExercise) => {
-  const { typicalWeek, idealWeek } = getDataFromForm(formData)
+  const componentData = getDataFromForm(formData, wantedKeys)
+  return {
+    componentData
+  }
+}
+
+const transformPropsForPresentation = ({ componentData }) => {
+  if (!componentData || R.isEmpty(componentData)) return {}
+
+  const { typicalWeek, idealWeek } = componentData
+
+  if(!typicalWeek || !idealWeek) return {}
+
   const typicalWeekTemplateObject = typicalWeek.reduce((allPillars, pillar) => {
     const { pillarOfLife, hours } = pillar
     return {
@@ -72,10 +77,12 @@ export const handler: HandlerFunction = ({ formData }: FormDataForExercise) => {
   }
 }
 
-const Form2Consumer = (injectedProps: any) => (
+const componentPropsHandler = compose(transformPropsForPresentation, handler)
+
+const Form2Consumer = (
   Component: React.ComponentType<any>
 ): React.ComponentType<any> => {
-  const Consumer = props => <Component {...injectedProps} {...props} />
+  const Consumer = props => <Component {...props} {...componentPropsHandler(props)} />
   return Consumer
 }
 
