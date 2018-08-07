@@ -10,6 +10,8 @@ import getDataFromForm from '../../utils/DataFromForm'
 import { buildHeader } from '../../utils/FormModelToElement'
 import { LABEL, STRUCT } from '../../../../../../static/awards/modelTypes'
 import { STEP11, getFormRequestedKeysForStep } from '../../../Forms'
+import R                                      from 'ramda'
+
 
 const wantedKeys: SelectedKeys = getFormRequestedKeysForStep(STEP11)
 
@@ -17,18 +19,16 @@ export const handler: HandlerFunction = ({
   formData,
   ...rest
 }: FormDataForExercise) => {
-  const { topGoalsPast5Years } = getDataFromForm(formData, wantedKeys)
+  const componentData = getDataFromForm(formData, wantedKeys)
   return {
-    content: {
-      topGoalsPast5Years
-    },
+    componentData,
     ...rest
   }
 }
 
 const transformPropsForPresentation = props => {
   const {
-    content: { topGoalsPast5Years },
+    componentData,
     award: { data, model },
     ...rest
   } = props
@@ -36,7 +36,8 @@ const transformPropsForPresentation = props => {
   const header = {
     elements: buildHeader(model)
   }
-
+  const { topGoalsPast5Years } = componentData
+  
   const elements = topGoalsPast5Years
     ? Object.keys(topGoalsPast5Years).reduce((elements, key) => {
         const value = topGoalsPast5Years[key]
@@ -79,7 +80,7 @@ const transformPropsForPresentation = props => {
 
 const Form11Consumer = (Component: React.ComponentType<any>) => {
   const Consumer = props => {
-    const providedProps = transformPropsForPresentation(props)
+    const providedProps = compose(transformPropsForPresentation, handler)(props)
     return <Component {...props} {...providedProps} />
   }
   return Consumer

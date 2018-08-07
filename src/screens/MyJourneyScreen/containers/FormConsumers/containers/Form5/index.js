@@ -1,5 +1,6 @@
 //@flow
 import React                                  from 'react'
+import { compose }                            from 'recompose'
 import { SelectedKeys }                       from '../../../types'
 import {
   HandlerFunction,
@@ -12,19 +13,22 @@ import { STEP5, getFormRequestedKeysForStep } from '../../../Forms'
 
 const wantedKeys: SelectedKeys = getFormRequestedKeysForStep(STEP5)
 
-export const handler: HandlerFunction = ({ formData }: FormDataForExercise) => {
-  const { recentGoals } = getDataFromForm(formData, wantedKeys)
+export const handler: HandlerFunction = ({ formData, ...rest }: FormDataForExercise) => {
+  const componentData = getDataFromForm(formData, wantedKeys)
   return {
-    recentGoals
+    componentData,
+    ...rest
   }
 }
 
 const transformPropsForPresentation = props => {
-  const { recentGoals, award: { data, model }, ...rest } = props
-
+  const { componentData, award: { data, model }, ...rest } = props
+  
   const header = {
     elements: buildHeader(model)
   }
+
+  const { recentGoals } = componentData
 
   const elements = recentGoals
     ? Object.keys(recentGoals).reduce((elements, key) => {
@@ -68,7 +72,8 @@ const transformPropsForPresentation = props => {
 
 const Form5Consumer = (Component: React.ComponentType<any>) => {
   const Consumer = props => {
-    const providedProps = transformPropsForPresentation(props)
+
+    const providedProps = compose(transformPropsForPresentation, handler)(props)
     return <Component {...props} {...providedProps} />
   }
   return Consumer

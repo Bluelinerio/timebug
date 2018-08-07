@@ -56,6 +56,20 @@ export const formEntries: FormEntriesType = {
       Form4Component
     )
   },
+  [STEP5]: { 
+    title: 'Your goals', 
+    render: compose(GenericFormConsumer, AwardProvider, Form5HOC)( 
+      Form5Component
+    )
+  },
+  [STEP11]: { 
+    title: 'Your goal progress', 
+    render: compose( 
+      GenericFormConsumer, 
+      AwardProvider, 
+      Form11HOC 
+    )(Form11Component) 
+  } 
 }
 
 export default (props: any): React.ComponentType<any> => {

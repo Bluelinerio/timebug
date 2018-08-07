@@ -28,14 +28,14 @@ const mapStateToProps = (state: any): FormConsumerProps => {
 
 const notEmpty = compose(R.not, R.isEmpty)
 
-const merge = (handler: HandlerFunction) => (stateProps, dispatchProps, ownProps) => {
+const merge = (stateProps, dispatchProps, ownProps) => {
   const { modelsAndDataForExercise } = stateProps
   const { step } = ownProps
   const { formData } = modelsAndDataForExercise(step)
   if (formData && notEmpty(formData)) {
     return {
       ...ownProps,
-      ...handler({ formData })
+      formData
     }
   }
   return {
@@ -43,4 +43,4 @@ const merge = (handler: HandlerFunction) => (stateProps, dispatchProps, ownProps
   }
 }
 
-export default handler => connect(mapStateToProps, null, merge(handler))
+export default connect(mapStateToProps, null, merge)
