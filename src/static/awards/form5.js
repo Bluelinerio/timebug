@@ -1,12 +1,5 @@
 import { CHECKBOX, LABEL, STRUCT } from './modelTypes'
 
-export const wantedKeys = {
-  recentGoals: {
-    form: '1',
-    key: 'recentGoals'
-  }
-}
-
 export default {
   recentGoals: {
     type: STRUCT,

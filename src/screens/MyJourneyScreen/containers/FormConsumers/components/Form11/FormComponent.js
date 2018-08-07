@@ -1,11 +1,11 @@
 //@flow
 import React from 'react'
 import { View } from 'react-native'
-import GoalsHeader from './GoalsHeader'
-import GoalsElement from './GoalsElement'
+import ListElement from '../../../../components/ListElement'
 import styles from '../../../../styles'
 import { mediumGray, gray400 } from '../../../../../../constants/colors'
 import { LockedEntryWithCheck } from '../../../../components/LockedEntry'
+import GenericHeader from '../../../../components/GenericHeader'
 
 const styleForEvenElements = {
   row: {
@@ -21,15 +21,18 @@ const styleForUnevenElements = {
 
 const isEven = (num: number): boolean => num % 2 === 0
 
+/**
+ * TODO: add flow
+ */
 const FormComponent = props => {
-  const { elements } = props
+  const { elements, header } = props
   return (
     <View style={[styles.container, styles.tableContainer]}>
       <LockedEntryWithCheck check={() => elements && elements.length > 0}>
-        <GoalsHeader {...props} />
+        <GenericHeader {...header} />
         {elements &&
           elements.map((element, index) => (
-            <GoalsElement
+            <ListElement
               key={index}
               {...props}
               {...element}

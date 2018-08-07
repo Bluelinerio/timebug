@@ -58,6 +58,12 @@ export const allFormsRequestedKeys: RequestedKeys = {
       form: '1',
       key: 'recentGoals'
     }
+  },
+  [STEP11]: {
+    topGoalsPast5Years: {
+      form: '1',
+      key: 'topGoalsPast5Years'
+    }
   }
 }
 
