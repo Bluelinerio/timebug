@@ -30,36 +30,38 @@ const transformPropsForPresentation = props => {
     elements: buildHeader(model)
   }
 
-  const elements = recentGoals ? Object.keys(recentGoals).reduce((elements, key) => {
-    const value = recentGoals[key]
-    if (header.elements.length > 0) {
-      const element = header.elements.map(el => {
-        const { type, key: actualKey } = el
-        if (type === LABEL) {
-          const text = value[actualKey]
-          return {
-            ...el,
-            text
-          }
-        } else if (type !== STRUCT) {
-          const dataRowElement = data[actualKey]
-          return {
-            ...el,
-            formIndex: key,
-            formKey: actualKey,
-            value: dataRowElement ? dataRowElement[actualKey].value : null
-          }
+  const elements = recentGoals
+    ? Object.keys(recentGoals).reduce((elements, key) => {
+        const value = recentGoals[key]
+        if (header.elements.length > 0) {
+          const element = header.elements.map(el => {
+            const { type, key: actualKey } = el
+            if (type === LABEL) {
+              const text = value[actualKey]
+              return {
+                ...el,
+                text
+              }
+            } else if (type !== STRUCT) {
+              const dataRowElement = data[key]
+              return {
+                ...el,
+                formIndex: key,
+                formKey: actualKey,
+                value: dataRowElement ? dataRowElement[actualKey].value : null
+              }
+            }
+          })
+          return [
+            ...elements,
+            {
+              elements: element
+            }
+          ]
         }
-      })
-      return [
-        ...elements,
-        {
-          elements: element
-        }
-      ]
-    }
-    return elements
-  }, []) : null
+        return elements
+      }, [])
+    : null
 
   return {
     header,

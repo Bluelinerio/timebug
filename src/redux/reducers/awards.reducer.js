@@ -1,16 +1,15 @@
 // @flow
-import R                                         from 'ramda'
+import R from 'ramda'
 import { SUBMIT_AWARD_VALUE, RESET_AWARD_VALUE } from '../actionTypes'
-import { SumbitAwardValueAction }                from '../actions/award.actions'
-import { diffObjs }                              from '../utils/diffObjs'
-import initialModels                             from '../../static/awards'
-
+import { SumbitAwardValueAction } from '../actions/award.actions'
+import { diffObjs } from '../utils/diffObjs'
+import initialModels from '../../static/awards'
 /**
  * The upper level keys are the index of the 'formData' element in formData,
  * the inner level keys are the keys in SimpleModelData
  */
 export type AwardData = {
-  [key: string]: {
+  [formIndex: string]: {
     [key: string]: {
       type: any,
       value: any
@@ -79,30 +78,21 @@ const initialState: AwardState = {
   models: initialModelsState
 }
 
-const filterWithKeys = (pred, obj) =>
-  R.pipe(R.toPairs, R.filter(R.apply(pred)), R.fromPairs)(obj)
+const invalidAction = obj =>
+  !obj.stepId ||
+  !obj.element ||
+  !obj.element.key ||
+  !obj.element.formIndex ||
+  !obj.element.type ||
+  obj.element.value === undefined 
 
 const populate = (
   action: SumbitAwardValueAction,
   state: AwardState
 ): AwardState => {
-  const { stepId, element: { key, value, type } } = action.payload
+  if (invalidAction(action.payload)) return state
+  const { stepId, element: { key, value, formIndex, type } } = action.payload
   const data = state.data || {}
-
-  // There is a property id in values that is constantly undefined, yet saved, triggering syncronizations
-  const filteredValue = Object.keys(value)
-    .filter(key => !(key === 'id' && value[key] === undefined))
-    .map(key => value[key])
-
-  // filter old value from timestamp, or anything else we might add...
-  const oldValue = filterWithKeys(
-    key => Object.keys(filteredValue).includes(key),
-    R.view(R.lensPath([stepId, key]), data)
-  )
-
-  const { difference, onlyOnRight } = diffObjs(oldValue, filteredValue)
-
-  if (!difference && !onlyOnRight) return state
 
   return {
     ...state,
@@ -110,9 +100,12 @@ const populate = (
       ...data,
       [stepId]: {
         ...(data[stepId] || null),
-        [key]: {
-          ...filteredValue,
-          type
+        [formIndex]: {
+          ...(data[formIndex] || null),
+          [key]: {
+            type,
+            value
+          }
         }
       }
     }

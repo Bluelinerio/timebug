@@ -6,6 +6,7 @@ export type SubmitAwardValuePayload = {
   element: {
     key: string,
     value: any,
+    formIndex: any,
     type: any
   }
 }

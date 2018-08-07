@@ -20,8 +20,11 @@ const styleForUnevenElements = {
 
 const isEven = (num: number): boolean => num % 2 === 0
 
+/**
+ * TODO: Add flow
+ */
 const FormComponent = props => {
-  const { elements } = props
+  const { elements, submitAnswers, step } = props
   return (
     <View style={[styles.container, styles.tableContainer]}>
       <LockedEntryWithCheck check={() => elements && elements.length > 0}>
@@ -34,6 +37,8 @@ const FormComponent = props => {
                 !isEven(index) ? styleForUnevenElements : styleForEvenElements
               }
               {...element}
+              submitAnswers={submitAnswers}
+              step={step}
             />
           ))}
       </LockedEntryWithCheck>

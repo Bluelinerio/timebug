@@ -1,7 +1,7 @@
 //@flow
-import React              from 'react'
-import { View, CheckBox } from 'react-native'
-import styles             from '../../styles'
+import React            from 'react'
+import { View, Switch } from 'react-native'
+import styles           from '../../styles'
 
 export type CheckboxComponentStyle = {
   container?: any,
@@ -13,6 +13,9 @@ export type CheckboxComponentProps = {
   formIndex: string,
   formKey: string,
   value: boolean | null,
+  submitAnswers: any,
+  step: string,
+  valueType?: string,
   style?: CheckboxComponentStyle
 }
 
@@ -20,19 +23,33 @@ const CheckboxComponent = ({
   value,
   formKey,
   formIndex,
-  style = {}
-}: CheckboxComponentProps) => (
-  <View style={[styles.row, styles.elementRow, style.row]}>
-    <View style={[styles.element, style.container]}>
-      <CheckBox
-        style={[styles.checkBox, styles.center]}
-        onValueChange={() =>
-          console.log(`KEY: ${formKey}, index: ${formIndex} `)
-        }
-        value={!!value}
-      />
+  style = {},
+  submitAnswers,
+  step,
+  valueType = 'boolean'
+}: CheckboxComponentProps) => {
+  return (
+    <View style={[styles.row, styles.elementRow, style.row]}>
+      <View style={[styles.element, style.container]}>
+        <Switch
+          style={[styles.checkBox, styles.center]}
+          onValueChange={value => {
+            const payload = {
+              stepId: step,
+              element: {
+                key: formKey,
+                value,
+                formIndex,
+                type: valueType
+              }
+            }
+            submitAnswers(payload)
+          }}
+          value={!!value}
+        />
+      </View>
     </View>
-  </View>
-)
+  )
+}
 
 export default CheckboxComponent
