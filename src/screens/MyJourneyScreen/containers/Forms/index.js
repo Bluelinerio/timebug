@@ -1,3 +1,6 @@
+//@flow
+import { SelectedKeys } from '../types'
+
 export const STEP1 = '1'
 export const STEP2 = '2'
 export const STEP3 = '3'
@@ -28,6 +31,40 @@ export const STEP27 = '27'
 export const STEP28 = '28'
 export const STEP29 = '29'
 export const STEP30 = '30'
+
+type RequestedKeys = {
+  [x: string]: SelectedKeys
+}
+
+export const allFormsRequestedKeys: RequestedKeys = {
+  [STEP2]: {
+    typicalWeek: {
+      form: '1',
+      key: 'typicalWeeklyBreakdown'
+    },
+    idealWeek: {
+      form: '2',
+      key: 'idealWeeklyBreakdown'
+    }
+  },
+  [STEP4]: {
+    boardOfAdvisors: {
+      form: '1',
+      key: 'boardOfAdvisors'
+    }
+  },
+  [STEP5]: {
+    recentGoals: {
+      form: '1',
+      key: 'recentGoals'
+    }
+  }
+}
+
+export const getFormRequestedKeysForStep = (stepId: string): SelectedKeys => {
+  const requestedKeys = allFormsRequestedKeys[stepId]
+  return requestedKeys ? requestedKeys : {}
+}
 
 export type STEP =
   | STEP1

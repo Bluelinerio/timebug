@@ -1,10 +1,11 @@
 //@flow
-import React                              from 'react'
-import { SelectedKeyEntry, SelectedKeys } from '../../types'
-import type, {
+import React                                  from 'react'
+import { SelectedKeys }                       from '../../types'
+import type {
   HandlerFunction,
   FormDataForExercise
-}                                         from '../../../../../containers/GenericFormConsumer'
+}                                             from '../../../../../containers/GenericFormConsumer'
+import { STEP2, getFormRequestedKeysForStep } from '../../Forms'
 
 type PillarOfLife = {
   typicalWeek: number,
@@ -15,16 +16,7 @@ type PillarsObject = {
   [x: string]: PillarOfLife
 }
 
-const wantedKeys: SelectedKeys = {
-  typicalWeek: {
-    form: '1',
-    key: 'typicalWeeklyBreakdown'
-  },
-  idealWeek: {
-    form: '2',
-    key: 'idealWeeklyBreakdown'
-  }
-}
+const wantedKeys: SelectedKeys = getFormRequestedKeysForStep(STEP2)
 
 const getDataFromForm = (formData: any) => {
   return Object.keys(wantedKeys).reduce((obj, k) => {
@@ -58,26 +50,31 @@ export const handler: HandlerFunction = ({ formData }: FormDataForExercise) => {
     }
   }, {})
 
-  const steptemplateObject: PillarsObject = idealWeek.reduce((allPillars, pillar) => {
-    const { pillarOfLife, hours } = pillar
-    const counterPart = typicalWeekTemplateObject[pillarOfLife]
-      ? typicalWeekTemplateObject[pillarOfLife]
-      : {}
-    return {
-      ...allPillars,
-      [pillarOfLife]: {
-        ...counterPart,
-        idealWeek: parseHoursIntoNumber(hours)
+  const steptemplateObject: PillarsObject = idealWeek.reduce(
+    (allPillars, pillar) => {
+      const { pillarOfLife, hours } = pillar
+      const counterPart = typicalWeekTemplateObject[pillarOfLife]
+        ? typicalWeekTemplateObject[pillarOfLife]
+        : {}
+      return {
+        ...allPillars,
+        [pillarOfLife]: {
+          ...counterPart,
+          idealWeek: parseHoursIntoNumber(hours)
+        }
       }
-    }
-  }, typicalWeekTemplateObject)
+    },
+    typicalWeekTemplateObject
+  )
 
   return {
     pillars: steptemplateObject
   }
 }
 
-const Form2Consumer = (injectedProps: any) => (Component: React.ComponentType<any>): React.ComponentType<any> => {
+const Form2Consumer = (injectedProps: any) => (
+  Component: React.ComponentType<any>
+): React.ComponentType<any> => {
   const Consumer = props => <Component {...injectedProps} {...props} />
   return Consumer
 }

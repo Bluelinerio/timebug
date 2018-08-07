@@ -6,16 +6,13 @@ import styles    from '../../../../styles'
 
 type GoalsElementElementProps = {
   elements: [any],
-  submitAnswers: any,
-  step: string,
   style?: any
 }
 
 const GoalElement = ({
   elements,
-  submitAnswers,
-  step,
-  style = {}
+  style = {},
+  ...rest
 }: GoalsElementElementProps) => {
   return elements ? (
     <View style={[styles.row, styles.elementRow, style.row]}>
@@ -23,10 +20,9 @@ const GoalElement = ({
         return (
           <ListEntry
             key={`${el.formIndex}-${el.formKey}`}
+            {...rest}
             {...el}
             style={style}
-            submitAnswers={submitAnswers}
-            step={step}
           />
         )
       })}

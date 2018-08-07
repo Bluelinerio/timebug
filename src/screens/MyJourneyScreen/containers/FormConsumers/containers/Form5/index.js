@@ -1,20 +1,16 @@
 //@flow
-import React             from 'react'
-import { SelectedKeys }  from '../../../types'
+import React                                  from 'react'
+import { SelectedKeys }                       from '../../../types'
 import {
   HandlerFunction,
   FormDataForExercise
-}                        from '../../../../../../containers/GenericFormConsumer'
-import getDataFromForm   from '../../utils/DataFromForm'
-import { buildHeader }   from '../../utils/FormModelToElement'
-import { LABEL, STRUCT } from '../../../../../../static/awards/modelTypes'
+}                                             from '../../../../../../containers/GenericFormConsumer'
+import getDataFromForm                        from '../../utils/DataFromForm'
+import { buildHeader }                        from '../../utils/FormModelToElement'
+import { LABEL, STRUCT }                      from '../../../../../../static/awards/modelTypes'
+import { STEP5, getFormRequestedKeysForStep } from '../../../Forms'
 
-const wantedKeys: SelectedKeys = {
-  recentGoals: {
-    form: '1',
-    key: 'recentGoals'
-  }
-}
+const wantedKeys: SelectedKeys = getFormRequestedKeysForStep(STEP5)
 
 export const handler: HandlerFunction = ({ formData }: FormDataForExercise) => {
   const { recentGoals } = getDataFromForm(formData, wantedKeys)
