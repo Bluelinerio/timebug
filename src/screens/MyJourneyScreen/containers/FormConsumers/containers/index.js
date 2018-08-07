@@ -59,6 +59,14 @@ export const formEntries: FormEntriesType = {
     render: compose(GenericFormConsumer(form5Handler), AwardProvider, Form5HOC)(
       Form5Component
     )
+  },
+  [STEP11]: {
+    title: 'Your goal progress',
+    render: compose(
+      GenericFormConsumer(form11Handler),
+      AwardProvider,
+      Form11HOC
+    )(Form11Component)
   }
 }
 
