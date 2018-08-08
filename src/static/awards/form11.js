@@ -25,7 +25,7 @@ export default {
         key: 'satisfactionLevel',
         column: true,
         options: {
-          header: 'Completion'
+          header: 'Satisfaction Level'
         }
       },
       goalProcess: {
@@ -33,7 +33,7 @@ export default {
         key: 'goalProcess',
         column: true,
         options: {
-          header: 'Completion'
+          header: 'Goal Process'
         }
       }
     }

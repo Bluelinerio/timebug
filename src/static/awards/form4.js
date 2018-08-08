@@ -17,7 +17,7 @@ export default {
         key: 'pillarsOfLife',
         column: true,
         options: {
-          header: 'Pillas of Life'
+          header: 'Pillar of Life'
         }
       },
       interactionFrequency: {

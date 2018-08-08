@@ -29,7 +29,7 @@ export default StyleSheet.create({
     paddingVertical: 6
   },
   headerRowText: {
-    ...iOSUIKit.subheadEmphasizedObject
+    ...iOSUIKit.footnoteEmphasizedObject
   },
   element: {
     flex: 1,
