@@ -1,8 +1,8 @@
 // @flow
 import R from 'ramda'
-import { getUserState, getCms, getFormData } from '../rootReducer'
+import { getUserState, getCms, getFormData } from './rootReducer.selectors'
 import {
-  UNDETERMINED,
+  // UNDETERMINED,
   ANONYMOUS,
   AUTHENTICATING
 } from '../../services/apollo/models'
@@ -11,10 +11,10 @@ import workbooks from '../../screens/WorkbookScreen/forms'
 import { removeIvalidValuesInsteadOfDoingAnyMigrationForNow } from '../tcomb'
 
 import type { User, Form } from '../../services/apollo/models'
-import type { Colors, Step, Slide } from '../../services/cms'
+import type { Step, Slide } from '../../services/cms'
 
-export const filterWithKeys = (pred, obj) =>
-  R.pipe(R.toPairs, R.filter(R.apply(pred)), R.fromPairs)(obj)
+export const filterWithKeys = (predicate, obj) =>
+  R.pipe(R.toPairs, R.filter(R.apply(predicate)), R.fromPairs)(obj)
 
 function isPositiveInteger(n) {
   return n >>> 0 === parseFloat(n)
@@ -76,6 +76,18 @@ const sortForms = (a: Form, b: Form) => a.stepId - b.stepId
 const sortFormsChronologically = (a: Form, b: Form) =>
   Date.parse(b.updatedAt) - Date.parse(a.updatedAt)
 // stepId on the server is an Int!. A clear idea how to
+
+const hasCompletedForms = (state: any): boolean =>
+  user(state) && user(state).forms.length > 0
+
+const hasNoCompletedForms = R.compose(
+  R.not,
+  hasCompletedForms
+)
+
+const completedForms = (state: any): [Form] =>
+  user(state) ? user(state).forms.map(f => f) : []
+
 const completedFormsData = (state: any) =>
   completedForms(state).reduce(
     (forms, form) => ({
@@ -84,9 +96,6 @@ const completedFormsData = (state: any) =>
     }),
     {}
   )
-
-const completedForms = (state: any): [Form] =>
-  user(state) ? user(state).forms.map(f => f) : []
 
 const completedFormsChronologically = (state: any): [Form] =>
   completedForms(state).sort(sortFormsChronologically)
@@ -170,7 +179,6 @@ const modelsAndDataForExercise = (state: any) => (stepId: string) => {
 
   const models = workbooks[stepId]
   const localData = getFormData(state).data[stepId]
-
   if (!localData) {
     return {
       models,
@@ -197,7 +205,9 @@ const modelsAndDataForExercise = (state: any) => (stepId: string) => {
 
 const isSynchingFormData = (state: any) => getFormData(state).requestCount > 0
 
-export default {
+const loadingFormData = (state: any) => getFormData(state).loadingFormData
+
+const selectors = {
   getCms,
   sortedSteps,
   sortedStepsWithForms,
@@ -220,6 +230,8 @@ export default {
   isNotLoggedIn,
   isAnonymous,
   isAuthenticating,
+  hasCompletedForms,
+  hasNoCompletedForms,
   completedForms,
   sortedCompletedForms,
   completedFormsChronologically,
@@ -229,5 +241,8 @@ export default {
   modelsAndDataForExercise,
   formData,
   incompleteFormsData,
-  isSynchingFormData
+  isSynchingFormData,
+  loadingFormData
 }
+
+export default selectors

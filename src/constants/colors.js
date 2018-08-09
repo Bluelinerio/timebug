@@ -12,6 +12,8 @@ export const hotPink = '#EB008B';
 export const facebookColor = '#3b5998';
 export const heavyGray = '#717171'
 export const lightGray = '#AAAAAA'
+export const mediumGray = '#E9E9E9'
+export const gray400 = '#BDBDBD'
 export const whiteGradientColors = {
   startColor: white,
   endColor: white2

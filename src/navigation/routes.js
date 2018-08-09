@@ -8,7 +8,8 @@ export default {
     initialRouteName: 'HomeScreen',
     MeditationScreen: 'MeditationScreen',
     MarkdownScreen: 'MarkdownScreen',
-    EmojiPickerScreen: 'EmojiPickerScreen'
+    EmojiPickerScreen: 'EmojiPickerScreen',
+    MyJourneyScreen: 'MyJourneyScreen'
   },
   step: {
     StepScreen: 'StepScreen',

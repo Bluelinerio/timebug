@@ -8,6 +8,9 @@ import {
   sanFranciscoWeights,
   robotoWeights
 } from 'react-native-typography'
+import {
+  deepBlue
+} from '../../constants/colors'
 
 const suggestionRow = {
   flexDirection: 'row',
@@ -52,6 +55,29 @@ export default StyleSheet.create({
     backgroundColor: iOSColors.white,
     borderRadius: 6
   },
+  dashboardInsightContainer: {
+      borderRadius: 6,
+      marginHorizontal: 16,
+      marginBottom: 8,
+      marginTop: 16,
+      padding: 12,
+      flexDirection: 'column',
+      justifyContent: 'flex-start',
+      alignItems: 'flex-start',
+      backgroundColor: iOSColors.white,
+      ...Platform.select({
+        android: { elevation: 2 },
+        ios: {
+          shadowColor: 'black',
+          shadowOffset: {
+            width: 0,
+            height: 2
+          },
+          shadowOpacity: 0.2,
+          shadowRadius: 2
+        }
+      })
+  },
   dashboardCard: {
     marginTop: 24,
     marginBottom: 40,
@@ -79,9 +105,12 @@ export default StyleSheet.create({
     marginRight: 10,
     paddingTop: 10,
     marginBottom: 10,
+    paddingLeft: 10,
     borderRadius: 6,
     ...Platform.select({
-      android: { elevation: 2 },
+      android: { 
+        elevation: 2
+      },
       ios: {
         shadowColor: 'black',
         shadowOffset: {
@@ -92,6 +121,30 @@ export default StyleSheet.create({
         shadowRadius: 2
       }
     })
+  },
+  pieChartContainer: {
+    marginRight: 10,
+    marginBottom: 10,
+    borderRadius: 6,
+    ...Platform.select({
+      android: { 
+        elevation: 2
+      },
+      ios: {
+        shadowColor: 'black',
+        shadowOffset: {
+          width: 0,
+          height: 2
+        },
+        shadowOpacity: 0.2,
+        shadowRadius: 2
+      }
+    })
+  },
+  pictureTooltip: {
+    ...iOSUIKit.caption2EmphasizedObject,
+    fontSize: 12,
+    color: deepBlue
   },
   suggestionRow,
   suggestionRowBottom: {
@@ -108,6 +161,11 @@ export default StyleSheet.create({
     ...human.headlineWhiteObject,
     ...systemWeights.light,
     margin: 8
+  },
+  homeSuggestionText: {
+    color: deepBlue,
+    fontSize: 14,
+    lineHeight: 16     
   },
   bold: {
     ...systemWeights.bold
@@ -140,7 +198,7 @@ export default StyleSheet.create({
       }
     })
   },
-  emogi: {
+  emoji: {
     ...Platform.select({
       android: {
         ...material.display3Object
@@ -153,6 +211,10 @@ export default StyleSheet.create({
     textAlign: 'center'
   },
   title: iOSUIKit.largeTitleEmphasizedObject,
+  bannerTitle: {
+    ...iOSUIKit.title3EmphasizedObject,
+    color: deepBlue
+  },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -178,9 +240,9 @@ export default StyleSheet.create({
     color: iOSColors.gray
   },
   headerAvatar: {
-    height: 44,
-    width: 44,
-    borderRadius: 44 / 2,
+    height: 36,
+    width: 36,
+    borderRadius: 36 / 2,
     alignSelf: 'center',
   }
 })

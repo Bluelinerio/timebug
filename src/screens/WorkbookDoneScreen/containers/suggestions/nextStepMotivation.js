@@ -2,11 +2,11 @@ const nextStepMotivation = {
   '1': `Up next is Step 2, where will review and optimize a typical 168 hr week (24hrs X 7days).`,
   '2': `In Step 3, you will engage in constructive self-reflection regarding your strengths and weaknesses and how they have helped or hindered you in pursuit of your goals.`,
   '3': `In step 4, we’ll ask you to form a Board of Advisors, based on the 7 Pillars of Life. A strong community is foundational for becoming the best possible you.`,
-  '4': `Now it’s time for step 5, where you will begin the process ofsetting and classifying your life goals according to the seven goal types. `,
+  '4': `Now it’s time for step 5, where you will begin the process of setting and classifying your life goals according to the seven goal types. `,
   '5': `Now that you’ve clearly set goals for yourself, you can begin step 6, where you will meditate on the goals of people in your inner circle, and how you can best support them. In the 20/20 Life Vision Challenge, giving is just as important as receiving.`,
   '6': `For many of us, following through on our goals is a bit harder than setting them. Step 7 will help you analyze what happens after you set your goals, using the 7 Goal Outcomes. This will be very helpful for breaking any bad habits that have prevented us from achieving past goals.`,
   '7': `In step 8 ,you’ll turn your gaze inward and look at your internal energy levels. You’ll meditate on how you’re feeling at different times of the day, in different situations. This will help you gain perspective on where you’re doing great and where you can look to improve.`,
-  '8': `In step 9, where you will meditate on who your role models are, and when and how they have influenced you according to the 7 Pillars of Life`,
+  '8': `In step 9, where you will meditate on who your role models are, and when and how they have influenced you according to the 7 Pillars of Life.`,
   '9': `You’re almost done with phase 1 of the 20/20 Life Vision Challenge. In step 10, you will look within, meditate on the various parts of your internal world, and determine how they have helped or hindered you in your journey thus far.`,
   '10': `Congratulations! You’ve completed Phase 1: Meditation. Now, we move on to Phase 2: Assessment. Let’s begin with step 11, where you will assess your goals over the last 5 years.`,
   '11': `Step 12 deals with your Major Life Events. Picking up where you left off in step 11, you’ll analyze the MLEs of your past 5 years, and what kind of effects they had.`,
@@ -29,7 +29,7 @@ const nextStepMotivation = {
   '28': `You have arrived at the final stage of your Vision Creation - step 29, where you will focus on the final Pillar of Life, spirituality.`,
   '29': `You’ve arrived at the final step of the 20/20 Life Vision Challenge! The last thing you’ll need to do is map out the next year of your life based on all the work you’ve done thus far. This will be a powerful reference and motivational tool going forward.`,
   '30': `Congratulations! You did it! It’s time for all of your hard work and dedication to start paying dividends. Only you can work to manifest the best you, but this app can be a great tool for you going forward. All of the data, thoughts and feelings you’ve shared will be stored and given back to you - this will provide motivation, insight and real indicators of your progress. You are also free to come back and update various parts of the challenge as you wish - after all, the only thing constant is change!\n
-  
+
   Good luck and remember - this is not an end, but the beginning of the real work - the fun part!`
 }
 

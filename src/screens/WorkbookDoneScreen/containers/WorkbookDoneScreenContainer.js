@@ -8,7 +8,7 @@ import type { Step } from '../../../services/cms'
 import { restartStepAction, reset } from '../../../redux/actions/nav.actions'
 import WorkbookDoneScreen from '../components/WorkbookDoneScreen'
 import type { Props } from '../components/WorkbookDoneScreen'
-import getInsight, { dummyFormValue } from './insights'
+import getInsight, { dummyFormValue } from './../../../static/insights'
 import { suggestNextStep, Screens } from './suggestions'
 
 
@@ -16,10 +16,12 @@ const merge = ({
   steps,
   step,
   completedStepIdsChronologically,
+  isSynchingFormData,
   dispatch
 }: {
   step: Step,
   steps: Array<Step>,
+  isSynchingFormData: boolean,
   dispatch: () => void
 }): Props => {
   const insightText = getInsight(step.stepId, dummyFormValue)
@@ -29,7 +31,7 @@ const merge = ({
     completedStepIdsChronologically
   )
 
-  // Check to see if this is the last actual step, turn the start next step button to a reset button, replace nextStepMotivation with final text  
+  // Check to see if this is the last actual step, turn the start next step button to a reset button, replace nextStepMotivation with final text
   const nextStepMotivationText = texts[Screens.DONE_SCREEN]
   const nextStep = steps[suggestedStepId]
 
@@ -44,7 +46,8 @@ const merge = ({
         text: `Start Step ${nextStep.number}`.toUpperCase(),
         onPress: () => dispatch(restartStepAction(nextStep)),
         textColor: nextStep.color
-      }
+      },
+      isSynchingFormData
     }
   }
 
@@ -57,7 +60,8 @@ const merge = ({
       text: `Done`.toUpperCase(),
       onPress: () => dispatch(reset()),
       textColor: backgroundColor
-    }
+    },
+    isSynchingFormData
   }
 }
 
@@ -68,7 +72,11 @@ const WorkbookDoneScreenContainer = compose(
     completedStepIdsChronologically: selectors
       .completedFormsChronologically(state)
       .map(f => f.stepId)
-      .map(stepId => stepId.toString())
+      .map(stepId => stepId.toString()),
+    isSynchingFormData: selectors
+      .isSynchingFormData(state)
+        || selectors
+            .loadingFormData(state)
   })),
   mapProps(merge)
 )(WorkbookDoneScreen)

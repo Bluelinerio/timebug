@@ -7,6 +7,7 @@ import i18n             from 'tcomb-form-native/lib/i18n/en'
 import customList       from './customList'
 import customTextBox    from './customTextbox'
 import customStruct     from './customStruct'
+import customSwitch     from './customSwitch'
 import select           from './select'
 import customStylesheet from '../../styles/templates/index'
 
@@ -50,6 +51,7 @@ const customTemplates = {
   list: customList,
   textbox: customTextBox,
   struct: customStruct,
+  checkbox: customSwitch,
   select
 }
 

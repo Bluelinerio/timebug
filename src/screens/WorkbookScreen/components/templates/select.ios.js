@@ -1,7 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React                  from 'react';
+import PropTypes              from 'prop-types';
 import { View, Text, Picker } from 'react-native';
-import PickerIOS from './ios/PickerIOS';
+import PickerIOS              from './ios/PickerIOS';
+
+const composeStyles = (...overrideStyles) => (...styles) => 
+  [
+    ...styles,
+    ...overrideStyles
+  ]
 
 export default function select(props) {
   if (props.hidden) {
@@ -15,13 +21,21 @@ export default function select(props) {
     error,
     options,
     value,
-    onChange
+    onChange,
+    config
   } = props;
 
   const children = options.map(({ value, text }) => (
     <Picker.Item key={value} value={value} label={text} />
   ));
 
+  const labelStyles = composeStyles({
+    color: config.stepColor
+  })(hasError
+    ? stylesheet.controlLabel.error
+    : stylesheet.controlLabel.normal
+  )
+  
   const text = options.find(option => option.value === value).text;
   return (
     <View
@@ -31,11 +45,7 @@ export default function select(props) {
     >
       {label && (
         <Text
-          style={
-            hasError
-              ? stylesheet.controlLabel.error
-              : stylesheet.controlLabel.normal
-          }
+          style={labelStyles}
         >
           {label}
         </Text>
@@ -48,9 +58,14 @@ export default function select(props) {
         onCancel={() => null}
         onChange={onChange}
         styles={{
-          container: hasError
-            ? stylesheet.pickerContainer.error
-            : stylesheet.pickerContainer.normal,
+          container: [
+            hasError
+              ? stylesheet.pickerContainer.error
+              : stylesheet.pickerContainer.normal,
+            {
+              backgroundColor: config.color
+            }
+          ],
           touchable: [
             hasError
               ? stylesheet.pickerTouchable.error

@@ -54,17 +54,19 @@ export const AddButton = ({
   key,
   text,
   onPress,
-  disabled
+  disabled,
+  style
 }: {
   key: string,
   text: string,
   onPress: () => void,
-  disabled: boolean
+  disabled: boolean,
+  style: any
 }) => (
   <TouchableOpacity
     disabled={disabled}
     key={key}
-    style={styles.listAddButton}
+    style={[styles.listAddButton, {...style}]}
     onPress={onPress}
   >
     <Icon name="add" size={32} color="black" />

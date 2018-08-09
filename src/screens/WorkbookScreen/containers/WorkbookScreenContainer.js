@@ -9,7 +9,9 @@ import t                                       from '../components/templates'
 import { headerBackgrounds }                   from '../../../resources/images'
 import {
   submitFormValue,
-  syncFormData
+  syncFormData,
+  setLoadingFormData,
+  startLoadingFormData 
 }                                              from '../../../redux/actions/formData.actions'
 import {
   goToWorkbookDoneScreen,

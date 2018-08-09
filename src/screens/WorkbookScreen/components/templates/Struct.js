@@ -24,11 +24,11 @@ export default class Struct extends React.Component {
       )
     );
   };
-  label = () => {
+  label = (style = {}) => {
     const { label, styles } = this.props;
     return (
       label && (
-        <Text key={label} style={styles.formLabel}>
+        <Text key={label} style={[styles.formLabel, {...style}]}>
           {label}
         </Text>
       )
@@ -52,12 +52,15 @@ export default class Struct extends React.Component {
   render() {
     const error = this.error();
     const rows = this.rows();
-    const label = this.label();
+    const label = this.label({
+      color: this.props.config.stepColor
+    });
     const children = [label ? [label] : [], ...rows];
     const topLevel = this.props.topLevel || false;
     const { fieldset } = this.props.styles;
+    const style = topLevel ? fieldset.topLevel : fieldset.normal 
     return (
-      <View style={topLevel ? fieldset.topLevel : fieldset.normal}>
+      <View style={{...style}}>
         {error}
         {children}
       </View>

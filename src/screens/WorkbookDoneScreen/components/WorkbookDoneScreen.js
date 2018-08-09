@@ -3,6 +3,8 @@ import * as React from 'react'
 import { Text, View, StyleSheet } from 'react-native'
 import dashboardStyles from '../../styles/dashboard.styles'
 import Button from '../../../components/Button'
+import WorkbookIndicator from '../../../components/WorkbookIndicator'
+import Insight from '../../../components/Insight'
 
 const white = '#FEFEFE'
 export type Props = {
@@ -11,6 +13,7 @@ export type Props = {
   backgroundColor: string,
   insightText: string,
   nextStepMotivationText: string,
+  isSynchingFormData: boolean,
   button: {
     onPress: () => void,
     text: string,
@@ -23,7 +26,8 @@ const WorkbookDoneScreen = ({
   title,
   button,
   insightText,
-  nextStepMotivationText
+  nextStepMotivationText,
+  isSynchingFormData
 }: Props) => {
   return (
     <View
@@ -34,31 +38,39 @@ const WorkbookDoneScreen = ({
         }
       ]}
     >
-      <View style={[styles.messageContainer]}>
-        <Text
-          style={[
-            dashboardStyles.title,
-            dashboardStyles.strong,
-            { color: white, textAlign: 'left', marginBottom: 30 }
-          ]}
-        >
-          {title}
-        </Text>
-        <Text style={styles.suggestionText}>
-          {
-            insightText && 
-              <Text>
-                <Text style={dashboardStyles.strong}>{`Did You Know?\n`}</Text>
-                <Text>{`${insightText}'\n\n`}</Text>
-              </Text>
-          }
-          <Text style={dashboardStyles.strong}>{"What's next?\n"}</Text>
-          {nextStepMotivationText}
-        </Text>
-      </View>
-      <View>
-        <Button backgroundColor={white} {...button} />
-      </View>
+      {
+        isSynchingFormData
+          ? <WorkbookIndicator />
+          : <View> 
+              <View style={[styles.messageContainer]}>
+                <Text
+                  style={[
+                    dashboardStyles.title,
+                    dashboardStyles.strong,
+                    { color: white, textAlign: 'left', marginBottom: 30 }
+                  ]}
+                >
+                  {title}
+                </Text>
+                <Text style={styles.suggestionText}>
+                    {
+                      insightText && 
+                        <Text>
+                          <Insight insightText={insightText} style={{title: dashboardStyles.strong }} extraLines={2} />
+                        </Text>
+                    }
+                    <Text style={dashboardStyles.strong}>{"What's next?\n"}</Text>
+                    {nextStepMotivationText}
+                </Text>
+              </View>
+              <View>
+              {
+                !isSynchingFormData &&
+                  <Button backgroundColor={white} {...button} />
+              }
+              </View>
+            </View>  
+      }
     </View>
   )
 }

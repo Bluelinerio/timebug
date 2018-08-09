@@ -2,20 +2,16 @@
 
 import React from 'react'
 import { connect } from 'react-redux'
-import { Text, TouchableOpacity } from 'react-native'
-import styles from '../../styles/dashboard.styles'
+import SimpleButton from '../../../components/SimpleButton'
 import { resetRequest } from '../../../redux/actions/formData.actions'
+import * as selectors from '../../../redux/selectors'
+import { combineSelectors } from '../../../redux/selectors/combineSelectors'
 
-const ResetStepsButton = ({ reset }) => {
-    return (
-        <TouchableOpacity style={styles.reset} onPress={reset} >
-            <Text style={styles.resetText}>DEV: Press to reset steps</Text>
-        </TouchableOpacity>
-    )
-}
+const { hasNoCompletedForms } = selectors.default;
 
-const mapDispatchToProps = dispatch => ({
-  reset: () => dispatch(resetRequest())
-})
+const ResetStepsButton = connect(
+    combineSelectors({ hide: hasNoCompletedForms }),
+    ({ onPress: resetRequest, text: 'DEV: Press to reset steps' })
+)(SimpleButton)
 
-export default connect(null, mapDispatchToProps)(ResetStepsButton)
+export default ResetStepsButton

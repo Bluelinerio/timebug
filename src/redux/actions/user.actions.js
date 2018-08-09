@@ -5,10 +5,10 @@ import {
   UPDATE_USER,
   SUBMIT_CHECKIN,
   RESET_USER_STEPS
-}                        from '../actionTypes'
+} from '../actionTypes'
 import { createRequest } from '../../Modules/redux-saga-request'
-import type { Request }  from '../../Modules/redux-saga-request'
-import { action }        from '../utils'
+import type { Request } from '../../Modules/redux-saga-request'
+import { action } from '../utils'
 
 export const GET_USER: Request<any, any> = createRequest('GET_USER')
 export const AUTHENTICATE_FB: Request<any, any> = createRequest(

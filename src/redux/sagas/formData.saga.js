@@ -7,18 +7,31 @@ import {
   putResolve,
   take,
   select,
-  takeLatest
+  takeLatest,
+  race,
+  channel
 } from 'redux-saga/effects'
 import { delay } from 'redux-saga'
 
 import { createForm, updateForm, resetUserSteps, deleteForm } from '../../services/apollo'
 import type { UpdateormArgs } from '../../services/apollo/models'
 
-import { SYNC_FORM_DATA, RESET_FORMS_REQUEST, RESET_FORMS } from '../actionTypes'
+import {
+  SYNC_FORM_DATA,
+  RESET_FORMS_REQUEST,
+  RESET_FORMS,
+  START_LOADING_FORMDATA,
+  STOP_LOADING_FORMDATA
+} from '../actionTypes'
+
 import { GET_USER, updateUser, resetUserSteps as resetAction } from '../actions/user.actions'
 import {
   incrementFormDataQueue,
-  decrementFormDataQueue
+  decrementFormDataQueue,
+  setLoadingFormData,
+  setNotLoadingFormData,
+  stopLoadingFormData, 
+  startLoadingFormData 
 } from '../actions/formData.actions'
 import selectors from '../selectors'
 import { diffObjs } from '../utils/diffObjs'
@@ -100,6 +113,8 @@ function* removeRepeatedForms(user) {
 
 function* reviewCurrentUserFormsAndFormDataCompareAndUpfateToState() {
   //const userId = yield select(selectors.userId)
+  yield put(startLoadingFormData())
+
   log({
     info: 'Started reviewing differences between form data and user forms'
   })
@@ -137,6 +152,7 @@ function* reviewCurrentUserFormsAndFormDataCompareAndUpfateToState() {
   )
   
   if (!difference && !onlyOnLeft && deletable.length === 0) {
+    yield put(stopLoadingFormData())
     log({
       info:
         'Completed reviewing differences between form data and user forms. No sync is needed'
@@ -177,6 +193,10 @@ function* reviewCurrentUserFormsAndFormDataCompareAndUpfateToState() {
       ]
     }, [])
 
+  const formDataRequestCount = yield select(
+    state => state.formData.requestCount
+  )
+
   const deletes = deletable.filter(d => d.id)
 
   log({
@@ -186,6 +206,8 @@ function* reviewCurrentUserFormsAndFormDataCompareAndUpfateToState() {
     updates,
     deletes
   })
+
+  yield put(stopLoadingFormData())
 
   yield put({
     type: UPDATE_AND_CREATE_FORMS,
@@ -211,6 +233,34 @@ function* _handleReset(){
   }
 }
 
+function* timeout(duration = 5000) {
+  yield call(delay, duration)
+  throw new Error("Timeout")
+}
+
+function* watchForStopFormData() {
+  yield take(STOP_LOADING_FORMDATA)
+}
+
+function* raceLoadingForm() {
+    try{
+        yield put(setLoadingFormData())
+        const result = yield race({
+          request: call(watchForStopFormData),
+          timeout: call(timeout, 8000)
+        })
+    }
+    catch(error) {}
+    finally {
+      yield put(setNotLoadingFormData())      
+    }
+}
+
+function* watchForLoadingForm() {
+  const startChan = yield actionChannel(START_LOADING_FORMDATA)
+  yield takeLatest(startChan, raceLoadingForm)
+}
+
 function* watchForResetSteps(){
   yield takeLatest(RESET_FORMS_REQUEST, _handleReset)
 }
@@ -230,22 +280,25 @@ export function* watchSyncFormData() {
   const requestChan = yield actionChannel([GET_USER.SUCCEEDED, SYNC_FORM_DATA])
   yield fork(watchForResetSteps)
   yield fork(watchForUpdateOrCreate)
+  yield fork(watchForLoadingForm)
   while (true) {
     yield take(requestChan)
-    yield fork(reviewCurrentUserFormsAndFormDataCompareAndUpfateToState)
+    yield fork(reviewCurrentUserFormsAndFormDataCompareAndUpdateToState)
   }
 }
 
 function* syncRequests(payload) {
   const { updates, creates, deletes } = payload
 
-  yield delay(1)
-
   const userId = yield select(selectors.userId)
   if (!userId) return
 
   // run serially, ideally we want to be able to compose those requests, and send them in one go...
   yield putResolve(incrementFormDataQueue())
+  // run serially, ideally we want to be able to compose those requests, and send them in one go...
+
+  yield delay(1)
+
 
   let _user = null
   if (updates && updates.length) {
@@ -338,7 +391,6 @@ function* syncRequests(payload) {
   }
 
   yield putResolve(decrementFormDataQueue())
-
   const formDataRequestCount = yield select(
     state => state.formData.requestCount
   )

@@ -41,7 +41,7 @@ const merge = (stateProps, dispatchProps, ownProps): GridProps => ({
       <G
         id="GridContainerDefault"
         stroke="none"
-        stroke-widith="1"
+        stroke-width="1"
         fill="none"
         fill-rule="evenodd"
       >

@@ -7,7 +7,7 @@ import {
 
 import type { AppState } from '../reducers/appState.reducer';
 import { initialState, UNDETERMIND } from '../reducers/appState.reducer';
-import { getAppState, getAgregateState } from '../rootReducer';
+import { getAppState, getAgregateState } from '../selectors/rootReducer.selectors';
 
 export function* appStateSagaWatcher() {
   const appState = yield select(getAppState);
