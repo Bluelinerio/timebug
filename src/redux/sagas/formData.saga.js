@@ -8,8 +8,7 @@ import {
   take,
   select,
   takeLatest,
-  race,
-  channel
+  race
 } from 'redux-saga/effects'
 import { delay } from 'redux-saga'
 
@@ -71,7 +70,7 @@ function* mySelectors(props) {
   return result
 }
 
-function* findRepeatedForms(formData) {
+const findRepeatedForms = (formData) => {
   return formData
     .sort((a, b) => a.stepId - b.stepId)
     .reduce((prev, f, index, arr) => {
@@ -111,7 +110,7 @@ function* removeRepeatedForms(user) {
   }
 }
 
-function* reviewCurrentUserFormsAndFormDataCompareAndUpfateToState() {
+function* reviewCurrentUserFormsAndFormDataCompareAndUpdateToState() {
   //const userId = yield select(selectors.userId)
   yield put(startLoadingFormData())
 
@@ -193,10 +192,6 @@ function* reviewCurrentUserFormsAndFormDataCompareAndUpfateToState() {
       ]
     }, [])
 
-  const formDataRequestCount = yield select(
-    state => state.formData.requestCount
-  )
-
   const deletes = deletable.filter(d => d.id)
 
   log({
@@ -223,6 +218,9 @@ function* _handleReset(){
   const userId = yield select(selectors.userId)
   try {
     const data = yield call(resetUserSteps, userId)
+    log({
+      data
+    })
     yield putResolve({
       type: RESET_FORMS
     })
@@ -249,8 +247,15 @@ function* raceLoadingForm() {
           request: call(watchForStopFormData),
           timeout: call(timeout, 8000)
         })
+        log({
+          result
+        })
     }
-    catch(error) {}
+    catch(error) {
+      log({
+        error
+      })
+    }
     finally {
       yield put(setNotLoadingFormData())      
     }
