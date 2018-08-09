@@ -8,7 +8,8 @@ import {
   take,
   select,
   takeLatest,
-  race
+  race,
+  channel
 } from 'redux-saga/effects'
 import { delay } from 'redux-saga'
 
@@ -28,7 +29,9 @@ import {
   incrementFormDataQueue,
   decrementFormDataQueue,
   setLoadingFormData,
-  setNotLoadingFormData
+  setNotLoadingFormData,
+  stopLoadingFormData, 
+  startLoadingFormData 
 } from '../actions/formData.actions'
 import selectors from '../selectors'
 import { diffObjs } from '../utils/diffObjs'
@@ -70,7 +73,7 @@ function* mySelectors(props) {
 
 function* reviewCurrentUserFormsAndFormDataCompareAndUpdateToState() {
   //const userId = yield select(selectors.userId)
-  yield put(setLoadingFormData())
+  yield put(startLoadingFormData())
 
   log({
     info: 'Started reviewing differences between form data and user forms'
@@ -106,7 +109,7 @@ function* reviewCurrentUserFormsAndFormDataCompareAndUpdateToState() {
   )
 
   if (!difference && !onlyOnLeft) {
-    yield put(setNotLoadingFormData())
+    yield put(stopLoadingFormData())
     log({
       info:
         'Completed reviewing differences between form data and user forms. No sync is needed'
@@ -157,7 +160,7 @@ function* reviewCurrentUserFormsAndFormDataCompareAndUpdateToState() {
     updates
   })
 
-  yield put(setNotLoadingFormData())
+  yield put(stopLoadingFormData())
 
   yield put({
     type: UPDATE_AND_CREATE_FORMS,
@@ -182,16 +185,32 @@ function* _handleReset(){
   }
 }
 
+function* timeout(duration = 5000) {
+  yield call(delay, duration)
+  throw new Error("Timeout")
+}
+
+function* watchForStopFormData() {
+  yield take(STOP_LOADING_FORMDATA)
+}
+
+function* raceLoadingForm() {
+    try{
+        yield put(setLoadingFormData())
+        const result = yield race({
+          request: call(watchForStopFormData),
+          timeout: call(timeout, 8000)
+        })
+    }
+    catch(error) {}
+    finally {
+      yield put(setNotLoadingFormData())      
+    }
+}
+
 function* watchForLoadingForm() {
-  while(true){
-    yield take(START_LOADING_FORMDATA)
-    yield put(setLoadingFormData())
-    yield race([
-      take(STOP_LOADING_FORMDATA),
-      delay(5000)
-    ])
-    yield put(setNotLoadingFormData())
-  }
+  const startChan = yield actionChannel(START_LOADING_FORMDATA)
+  yield takeLatest(startChan, raceLoadingForm)
 }
 
 function* watchForResetSteps(){

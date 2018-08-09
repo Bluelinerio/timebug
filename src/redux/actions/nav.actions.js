@@ -119,3 +119,9 @@ export const goToEmojiPickerScreen = (params: ?{}) =>
     routeName: routes.root.EmojiPickerScreen,
     params
   })
+
+export const goToMyJourneyScreen = (params: ?any) =>
+  NavigationActions.navigate({
+    routeName: routes.root.MyJourneyScreen,
+    params
+  })

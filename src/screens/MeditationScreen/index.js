@@ -9,7 +9,7 @@ import styles from '../styles'
 import HeaderCloseButton from '../../components/HeaderCloseButton'
 import { withNavigationAndMeditation } from '../../HOC'
 
-const goneSoundFile = require('../../resources/sounds/gong.wav')
+//const goneSoundFile = require('../../resources/sounds/gong.wav')
 
 const MeditationScreenContainer = compose(
   withNavigationAndMeditation,

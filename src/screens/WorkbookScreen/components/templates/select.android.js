@@ -1,18 +1,30 @@
-var React = require('react');
-var { View, Text, Picker } = require('react-native');
+import React                  from 'react'
+import { View, Text, Picker } from 'react-native'
 
-function select(locals) {
-  if (locals.hidden) {
+const composeStyles = (...overrideStyles) => (...styles) => 
+  [
+    ...styles,
+    ...overrideStyles
+  ]
+
+
+const select = (locals) => {
+  if (locals.hidden) 
     return null;
-  }
+  
 
   const stylesheet = locals.stylesheet;
+
   const formGroupStyle = locals.hasError
     ? stylesheet.formGroupStyle.error
-    : stylesheet.formGroupStyle.normal;
-  const controlLabelStyle = locals.hasError
-    ? stylesheet.controlLabel.error
-    : stylesheet.controlLabel.normal;
+    : stylesheet.formGroupStyle.normal
+
+  const controlLabelStyle = composeStyles({
+      color: locals.config.stepColor
+  })(locals.hasError
+      ? stylesheet.controlLabel.error
+      : stylesheet.controlLabel.normal
+    )
 
   const selectStyle = locals.hasError
     ? stylesheet.select.error
@@ -47,20 +59,27 @@ function select(locals) {
   return (
     <View style={formGroupStyle}>
       {label}
-      <Picker
-        accessibilityLabel={locals.label}
-        ref="input"
-        style={selectStyle}
-        selectedValue={locals.value}
-        onValueChange={locals.onChange}
-        help={locals.help}
-        enabled={locals.enabled}
-        mode={locals.mode}
-        prompt={locals.prompt}
-        itemStyle={locals.itemStyle}
-      >
-        {options}
-      </Picker>
+      <View style={[
+          {
+            backgroundColor: locals.config.color
+          },
+          {...stylesheet.pickerContainer.base}
+      ]}>
+        <Picker
+          accessibilityLabel={locals.label}
+          ref="input"
+          style={selectStyle}
+          selectedValue={locals.value}
+          onValueChange={locals.onChange}
+          help={locals.help}
+          enabled={locals.enabled}
+          mode={locals.mode}
+          prompt={locals.prompt}
+          itemStyle={locals.itemStyle}
+        >
+          {options}
+        </Picker>
+      </View>
       {help}
       {error}
     </View>

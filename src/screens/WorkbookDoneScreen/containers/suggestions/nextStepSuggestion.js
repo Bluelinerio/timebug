@@ -425,9 +425,12 @@ const _checkSequential = (subject: StepsList): Suggestion => {
  * @returns {Suggestion}
  * A suggestion
  */
-const suggestNextStep = (steps: StepsList): Suggestion => {
-  //Most of these errors remain uncaught most of the time
-  if (!steps || steps.length === 0) return ['-1', 'PLACEHOLDER']
+const suggestNextStep = originalSteps => {
+  console.log(`--Checking ${originalSteps} for Suggestions`)
+  const steps = R.dropRepeats(originalSteps)
+
+  if (!steps || steps.length === 0)
+    return ['-1', 'PLACEHOLDER']
   // This is a controlled response sent once every step is completed
   if (steps.length === allSteps.length) return ['-1', FINISHED]
 

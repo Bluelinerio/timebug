@@ -18,10 +18,8 @@ const sequenceMotivationText: SequenceMotivationObject = {
       `Welcome to the 20/20 Life Vision Challenge! We suggest starting with Step 1: The Rocking Chair.`
   },
   '2': {
-    [HOME_SCREEN]: () =>
-      `Next is Step 2, where you will begin to optimize your time based on a typical 168 hour week.`,
-    [DONE_SCREEN]: () =>
-      `Now you can begin Step 2, where we’ll help you optimize your ideal 168 hour week.`
+    [HOME_SCREEN]: () => 'Next is Step 2, where you will begin to optimize your time based on a typical 168 hour week.',
+    [DONE_SCREEN]: () => 'Now you can begin Step 2, where we’ll help you optimize your ideal 168 hour week.'
   },
   '3': {
     [HOME_SCREEN]: () =>
@@ -60,10 +58,8 @@ const sequenceMotivationText: SequenceMotivationObject = {
       `Let's move on to step 8 , whereyou’ll turn your gaze inward and look at your internal energy levels. You’ll meditate on how you’re feeling at different times of the day, in different situations. This will help you gain perspective on where you’re doing great and where you can look to improve.`
   },
   '9': {
-    [HOME_SCREEN]: () =>
-      `Go ahead and jump into step 9, where you will meditate on who your role models are, and when and how they have influenced you according to the 7 Pillars of Life`,
-    [DONE_SCREEN]: () =>
-      `In step 9, you will meditate on who your role models are, and when and how they have influenced you according to the 7 Pillars of Life`
+    [HOME_SCREEN]: () => `Go ahead and jump into step 9, where you will meditate on who your role models are, and when and how they have influenced you according to the 7 Pillars of Life.`,
+    [DONE_SCREEN]: () => `In step 9, you will meditate on who your role models are, and when and how they have influenced you according to the 7 Pillars of Life.`
   },
   '10': {
     [HOME_SCREEN]: () =>
@@ -120,16 +116,12 @@ const sequenceMotivationText: SequenceMotivationObject = {
       `In Step 18, you’ll turn your gaze outward, look around yourself and assess your current environment.`
   },
   '19': {
-    [HOME_SCREEN]: () =>
-      `In step 19, you'll focus on spirituality and it's role in your life`,
-    [DONE_SCREEN]: () =>
-      `In step 19, you'll focus on spirituality and it's role in your life`
+    [HOME_SCREEN]: () => `In step 19, you'll focus on spirituality and it's role in your life.`,
+    [DONE_SCREEN]: () => `In step 19, you'll focus on spirituality and it's role in your life.`
   },
   '20': {
-    [HOME_SCREEN]: () =>
-      `In step 20, you’ll look back and reflect on your assessments of the last 5 years. We’ll use that as a spring board to the final phase, Vision Creation.`,
-    [DONE_SCREEN]: () =>
-      `In step 20, you’ll look back and reflect on your assessments of the last 5 years. `
+    [HOME_SCREEN]: () => `In step 20, you’ll look back and reflect on your assessments of the last 5 years. We’ll use that as a spring board to the final phase, Vision Creation.`,
+    [DONE_SCREEN]: () => `In step 20, you’ll look back and reflect on your assessments of the last 5 years.`
   },
   '21': {
     [HOME_SCREEN]: () =>
@@ -156,10 +148,8 @@ const sequenceMotivationText: SequenceMotivationObject = {
       `Finances and Career are different pillars, but they are certainly closely related. With that in mind, let’s jump into step 24 and begin the process of Vision Creation for your finances.`
   },
   '25': {
-    [HOME_SCREEN]: () =>
-      `We suggest you move on to step 25, where you will focus on Vision Creation for your Aims & Hobbies`,
-    [DONE_SCREEN]: () =>
-      `In step 25, where you will focus on Vision Creation for your Aims & Hobbies`
+    [HOME_SCREEN]: () => `We suggest you move on to step 25, where you will focus on Vision Creation for your Aims & Hobbies.`,
+    [DONE_SCREEN]: () => `In step 25, where you will focus on Vision Creation for your Aims & Hobbies.`
   },
   '26': {
     [HOME_SCREEN]: () =>
@@ -180,10 +170,8 @@ const sequenceMotivationText: SequenceMotivationObject = {
       `In step 28, you’ll continue the process of Vision Creation with a focus on your Environment.`
   },
   '29': {
-    [HOME_SCREEN]: () =>
-      `Let's move on to step 29, which will focus on Vision Creation for Spirituality`,
-    [DONE_SCREEN]: () =>
-      `In step 29, you’ll continue the process of Vision Creation with a focus on your Spirituality.`
+    [HOME_SCREEN]: () => `Let's move on to step 29, which will focus on Vision Creation for Spirituality.`,
+    [DONE_SCREEN]: () => `In step 29, you’ll continue the process of Vision Creation with a focus on your Spirituality.`
   },
   '30': {
     [HOME_SCREEN]: () =>

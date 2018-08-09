@@ -18,7 +18,8 @@ export default StyleSheet.create({
   },
   paginatedCarouselContainer: {
     paddingTop: 60,
-    paddingBottom: 60
+    paddingBottom: 60,
+    marginBottom: 20
   },
   paginatedCarouselContainerFeatherTop: {
     height: 40

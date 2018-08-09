@@ -65,17 +65,25 @@ export default class FormList extends React.Component<Props, State> {
     }
   }
 
-  labelProps = () => {
-    const { styles, hasError, config } = this.props
+  labelProps = (style) => {
+    const { config } = this.props
     const text = config.labelText && config.labelText(this.props)
     return (
       text && {
         text,
-        style: hasError ? styles.controlLabel.error : styles.controlLabel.normal
+        style
       }
     )
   }
 
+  composeStyles = (...overrideStyles) => {
+    return (...styles) => ([
+        ...styles,
+        ...overrideStyles
+      ])
+  }
+    
+  
   render() {
     const {
       items,
@@ -85,12 +93,21 @@ export default class FormList extends React.Component<Props, State> {
       add,
       label,
       help,
-      maxLines
+      maxLines,
+      config
     } = this.props
 
     const { index, pages, focusLastItem } = this.state
 
-    const labelProps = this.labelProps()
+    const labelStyles = this.composeStyles({
+        color: config.stepColor
+    })(
+      hasError 
+        ? styles.controlLabel.error 
+        : styles.controlLabel.normal
+    )
+
+    const labelProps = this.labelProps(labelStyles)
     const labelComponent = labelProps && Label(labelProps)
 
     const helpComponent = help
@@ -125,6 +142,9 @@ export default class FormList extends React.Component<Props, State> {
               index: index + 1,
               focusLastItem: true
             })
+          },
+          style: {
+            backgroundColor: config.color
           }
         })
       : null

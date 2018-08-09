@@ -10,9 +10,9 @@ type Props = {
 const UserProfileImageConsumer = ({ children }: Props) => (
   <User>
     {({ userState }) => {
-      if (userState && userState.email)
+      if (userState && userState.facebookId)
         return children({
-          uri: `https://www.gravatar.com/avatar/${md5(userState.email)}`
+          uri: `https://graph.facebook.com/${userState.facebookId}/picture?type=normal`
         })
       else return null
     }}
