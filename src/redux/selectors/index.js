@@ -1,6 +1,6 @@
 // @flow
 import R from 'ramda'
-import { getUserState, getCms, getFormData } from './rootReducer.selectors'
+import { getUserState, getCms, getFormData, getAwards } from './rootReducer.selectors'
 import {
   // UNDETERMINED,
   ANONYMOUS,
@@ -207,6 +207,25 @@ const isSynchingFormData = (state: any) => getFormData(state).requestCount > 0
 
 const loadingFormData = (state: any) => getFormData(state).loadingFormData
 
+/**
+ * Award
+ */
+
+const awardModelsAndData = (state: any) => getAwards(state)
+
+const awardModelForStep = (state: any) => (step: number) => awardModelsAndData(state).models[step] ? awardModelsAndData(state).models[step] : {}
+
+const awardDataForStep = (state: any) => (step: number) => awardModelsAndData(state).data[step] ? awardModelsAndData(state).data[step] : {}
+
+const awardModelAndDataForStep = (state: any) => (step: number) => {
+  const data = awardDataForStep(state)(step)
+  const model = awardModelForStep(state)(step)
+  return {
+    data,
+    model
+  }
+}
+
 const selectors = {
   getCms,
   sortedSteps,
@@ -242,7 +261,8 @@ const selectors = {
   formData,
   incompleteFormsData,
   isSynchingFormData,
-  loadingFormData
+  loadingFormData,
+  awardModelAndDataForStep
 }
 
 export default selectors

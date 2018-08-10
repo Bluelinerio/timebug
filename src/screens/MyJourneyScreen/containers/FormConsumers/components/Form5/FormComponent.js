@@ -1,18 +1,11 @@
 //@flow
-import React                    from 'react'
-import { View }                 from 'react-native'
-import ListElement              from '../../../../components/ListElement'
+import React from 'react'
+import { View } from 'react-native'
+import GoalsHeader from './GoalsHeader'
+import GoalsElement from './GoalsElement'
+import styles from '../../../../styles'
+import { mediumGray, gray400 } from '../../../../../../constants/colors'
 import { LockedEntryWithCheck } from '../../../../components/LockedEntry'
-import GenericHeader, {
-  HeaderProps
-}                               from '../../../../components/GenericHeader'
-import styles                   from '../../../../styles'
-import { mediumGray, gray400 }  from '../../../../../../constants/colors'
-
-type FormComponentProps = {
-  elements: [any],
-  header: HeaderProps
-}
 
 const styleForEvenElements = {
   row: {
@@ -28,15 +21,15 @@ const styleForUnevenElements = {
 
 const isEven = (num: number): boolean => num % 2 === 0
 
-const FormComponent = (props: FormComponentProps) => {
-  const { elements, header } = props
+const FormComponent = props => {
+  const { elements } = props
   return (
     <View style={[styles.container, styles.tableContainer]}>
       <LockedEntryWithCheck check={() => elements && elements.length > 0}>
-        <GenericHeader {...header} />
+        <GoalsHeader {...props} />
         {elements &&
           elements.map((element, index) => (
-            <ListElement
+            <GoalsElement
               key={index}
               {...props}
               {...element}
