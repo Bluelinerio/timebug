@@ -1,14 +1,14 @@
 //@flow
 import React                                  from 'react'
+import R                                      from 'ramda'
 import { compose }                            from 'recompose'
-import { SelectedKeys }                       from '../../types'
+import { SelectedKeys }                       from '../../../types'
 import type {
   HandlerFunction,
   FormDataForExercise
-}                                             from '../../../../../HOC/GenericFormConsumer'
-import { STEP2, getFormRequestedKeysForStep } from '../../Forms'
-import R                                      from 'ramda'
-import getDataFromForm                        from '../utils/DataFromForm'
+}                                             from '../../../../../../HOC/GenericFormConsumer'
+import { STEP2, getFormRequestedKeysForStep } from '../../../Forms'
+import getDataFromForm                        from '../../utils/DataFromForm'
 
 type PillarOfLife = {
   typicalWeek: number,
