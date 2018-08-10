@@ -7,22 +7,11 @@ import {
   FormDataForExercise
 }                                             from '../../../../../../HOC/GenericFormConsumer'
 import getDataFromForm                        from '../../utils/DataFromForm'
-import { STEP4, getFormRequestedKeysForStep } from '../../../Forms'
 import { buildHeader, buildElements }         from '../../utils/FormModelToElement'
+import { LABEL, STRUCT }                      from '../../../../../../static/awards/modelTypes'
+import { STEP5, getFormRequestedKeysForStep } from '../../../Forms'
 
-type ComponentDataForForm = {
-  boardOfAdvisors: any
-}
-
-type PresentationProps = {
-  componentData: ComponentDataForForm | {},
-  award: {
-    data: any,
-    model: any
-  }
-}
-
-const wantedKeys: SelectedKeys = getFormRequestedKeysForStep(STEP4)
+const wantedKeys: SelectedKeys = getFormRequestedKeysForStep(STEP5)
 
 export const handler: HandlerFunction = ({
   formData,
@@ -35,16 +24,18 @@ export const handler: HandlerFunction = ({
   }
 }
 
-const transformPropsForPresentation = (props: PresentationProps) => {
+const transformPropsForPresentation = props => {
   const { componentData, award: { data, model }, ...rest } = props
 
   const header = {
     elements: buildHeader(model)
   }
 
-  const { boardOfAdvisors } = componentData
-
-  const componentDataArray = [boardOfAdvisors]
+  const { recentGoals } = componentData
+  
+  const componentDataArray = [
+    recentGoals
+  ]
 
   const elements = buildElements({ header, componentDataArray, data })
 
@@ -55,13 +46,12 @@ const transformPropsForPresentation = (props: PresentationProps) => {
   }
 }
 
-const componentPropsHandler = compose(transformPropsForPresentation, handler)
-
-const Form4Consumer = (Component: React.ComponentType<any>) => {
-  const Consumer = props => (
-    <Component {...props} {...componentPropsHandler(props)} />
-  )
+const Form5Consumer = (Component: React.ComponentType<any>) => {
+  const Consumer = props => {
+    const providedProps = compose(transformPropsForPresentation, handler)(props)
+    return <Component {...props} {...providedProps} />
+  }
   return Consumer
 }
 
-export default Form4Consumer
+export default Form5Consumer
