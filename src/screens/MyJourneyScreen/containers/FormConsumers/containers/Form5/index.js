@@ -6,9 +6,14 @@ import {
   HandlerFunction,
   FormDataForExercise
 }                                             from '../../../../../../HOC/GenericFormConsumer'
+import {
+  AwardForStep
+}                                             from '../../../../../../HOC/AwardProvider'
 import getDataFromForm                        from '../../utils/DataFromForm'
 import { buildHeader, buildElements }         from '../../utils/FormModelToElement'
 import { STEP5, getFormRequestedKeysForStep } from '../../../Forms'
+import { HeaderProps }                        from '../../../../components/GenericHeader'
+import { ListElementProps }                   from '../../../../components/ListElement'
 
 const wantedKeys: SelectedKeys = getFormRequestedKeysForStep(STEP5)
 
@@ -17,13 +22,19 @@ type ComponentDataForForm = {
 }
 
 type PresentationProps = {
-  componentData: ComponentDataForForm
+  componentData: ComponentDataForForm,
+  award: AwardForStep
+}
+
+type ComponentProps = {
+  header: HeaderProps,
+  elements: ListElementProps
 }
 
 export const handler: HandlerFunction = ({
   formData,
   ...rest
-}: FormDataForExercise) => {
+}: FormDataForExercise): PresentationProps => {
   const componentData = getDataFromForm(formData, wantedKeys)
   return {
     componentData,
@@ -31,7 +42,7 @@ export const handler: HandlerFunction = ({
   }
 }
 
-const transformPropsForPresentation = props => {
+const transformPropsForPresentation = (props: PresentationProps): ComponentProps => {
   const { componentData, award: { data, model }, ...rest } = props
 
   const header = {

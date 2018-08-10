@@ -7,7 +7,7 @@ import type {
   FormElement
 }                from '../containers/types'
 
-type ListElementProps = {
+export type ListElementProps = {
   elements: Array<FormElement>,
   style?: any
 }

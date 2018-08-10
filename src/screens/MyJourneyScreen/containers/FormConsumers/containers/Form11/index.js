@@ -9,6 +9,8 @@ import {
 import getDataFromForm                         from '../../utils/DataFromForm'
 import { buildHeader, buildElements }          from '../../utils/FormModelToElement'
 import { STEP11, getFormRequestedKeysForStep } from '../../../Forms'
+import { HeaderProps }                         from '../../../../components/GenericHeader'
+import { ListElementProps }                    from '../../../../components/ListElement'
 
 const wantedKeys: SelectedKeys = getFormRequestedKeysForStep(STEP11)
 
@@ -24,6 +26,11 @@ type PresentationProps = {
   }
 }
 
+type ComponentProps = {
+  header: HeaderProps,
+  elements: ListElementProps
+}
+
 export const handler: HandlerFunction = ({
   formData,
   ...rest
@@ -35,7 +42,7 @@ export const handler: HandlerFunction = ({
   }
 }
 
-const transformPropsForPresentation = (props: PresentationProps) => {
+const transformPropsForPresentation = (props: PresentationProps): ComponentProps => {
   const { componentData, award: { data, model }, ...rest } = props
 
   const header = {
