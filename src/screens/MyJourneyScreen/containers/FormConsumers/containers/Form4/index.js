@@ -27,7 +27,7 @@ const wantedKeys: SelectedKeys = getFormRequestedKeysForStep(STEP4)
 export const handler: HandlerFunction = ({
   formData,
   ...rest
-}: FormDataForExercise) => {
+}: FormDataForExercise) : PresentationProps => {
   const componentData = getDataFromForm(formData, wantedKeys)
   return {
     componentData,

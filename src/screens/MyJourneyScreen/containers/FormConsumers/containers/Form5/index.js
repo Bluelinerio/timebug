@@ -8,10 +8,17 @@ import {
 }                                             from '../../../../../../HOC/GenericFormConsumer'
 import getDataFromForm                        from '../../utils/DataFromForm'
 import { buildHeader, buildElements }         from '../../utils/FormModelToElement'
-import { LABEL, STRUCT }                      from '../../../../../../static/awards/modelTypes'
 import { STEP5, getFormRequestedKeysForStep } from '../../../Forms'
 
 const wantedKeys: SelectedKeys = getFormRequestedKeysForStep(STEP5)
+
+type ComponentDataForForm = {
+  recentGoals: any
+}
+
+type PresentationProps = {
+  componentData: ComponentDataForForm
+}
 
 export const handler: HandlerFunction = ({
   formData,
@@ -46,9 +53,11 @@ const transformPropsForPresentation = props => {
   }
 }
 
+const componentPropsHandler = compose(transformPropsForPresentation, handler)
+
 const Form5Consumer = (Component: React.ComponentType<any>) => {
   const Consumer = props => {
-    const providedProps = compose(transformPropsForPresentation, handler)(props)
+    const providedProps = componentPropsHandler(props)
     return <Component {...props} {...providedProps} />
   }
   return Consumer

@@ -8,7 +8,6 @@ import {
 }                                              from '../../../../../../HOC/GenericFormConsumer'
 import getDataFromForm                         from '../../utils/DataFromForm'
 import { buildHeader, buildElements }          from '../../utils/FormModelToElement'
-import { LABEL, STRUCT }                       from '../../../../../../static/awards/modelTypes'
 import { STEP11, getFormRequestedKeysForStep } from '../../../Forms'
 
 const wantedKeys: SelectedKeys = getFormRequestedKeysForStep(STEP11)
