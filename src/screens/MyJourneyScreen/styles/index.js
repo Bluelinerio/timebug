@@ -29,7 +29,7 @@ export default StyleSheet.create({
     paddingVertical: 6
   },
   headerRowText: {
-    ...iOSUIKit.subheadEmphasizedObject
+    ...iOSUIKit.footnoteEmphasizedObject
   },
   element: {
     flex: 1,
@@ -47,5 +47,12 @@ export default StyleSheet.create({
   pillarText: {
     ...iOSUIKit.caption2EmphasizedObject,
     textAlign: 'left'
+  },
+  center: {
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  checkBox: {
+    alignSelf: 'center'
   }
 })

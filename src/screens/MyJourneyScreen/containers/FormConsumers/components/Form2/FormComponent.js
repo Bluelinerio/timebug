@@ -1,9 +1,10 @@
-import React                                     from 'react'
-import { View }                                  from 'react-native'
-import PillarTimeTableElement                    from './../../../components/PillarTimeTableElement'
-import PillarTimeTableHeader                     from './../../../components/PillarTimeTableHeader'
-import styles                                    from '../../../styles'
-import { mediumGray, gray400 }                   from '../../../../../constants/colors'
+import React                   from 'react'
+import { View }                from 'react-native'
+import PillarTimeTableElement  from './../../../../components/PillarTimeTableElement'
+import PillarTimeTableHeader   from './../../../../components/PillarTimeTableHeader'
+import styles                  from '../../../../styles'
+import { mediumGray, gray400 } from '../../../../../../constants/colors'
+import LockedEntry             from '../../../../components/LockedEntry'
 
 type Form2Props = {
   pillars: any
@@ -25,7 +26,7 @@ const isEven = (num: number): boolean => num % 2 === 0
 
 const Form2Component = ({ pillars }: Form2Props) => (
   <View style={[styles.timeContainer, styles.container]}>
-    {pillars && (
+    {pillars ? (
       <React.Fragment>
         <PillarTimeTableHeader />
         {Object.keys(pillars).map((pillar, index) => {
@@ -33,12 +34,16 @@ const Form2Component = ({ pillars }: Form2Props) => (
             <PillarTimeTableElement
               key={pillar}
               pillar={pillar}
-              style={ !isEven(index)? styleForUnevenElements : styleForEvenElements }
+              style={
+                !isEven(index) ? styleForUnevenElements : styleForEvenElements
+              }
               {...pillars[pillar]}
             />
           )
         })}
       </React.Fragment>
+    ) : (
+      <LockedEntry />
     )}
   </View>
 )
