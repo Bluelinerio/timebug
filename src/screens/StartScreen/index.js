@@ -4,7 +4,7 @@ import StartScreenComponent from './components/StartScreenComponent'
 import User                 from '../../containers/User'
 import DefaultIndicator     from '../../components/DefaultIndicator'
 
-const HomeScreenContainer = () => {
+const StartScreenContainer = () => {
   return (
     <User
       renderWithUser={() => <StartScreenComponent />}
@@ -14,4 +14,4 @@ const HomeScreenContainer = () => {
     />
   )
 }
-export default HomeScreenContainer
+export default StartScreenContainer
