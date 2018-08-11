@@ -5,7 +5,7 @@ import { SafeAreaView } from 'react-navigation'
 
 import Version from '../../../containers/Version'
 import styles from '../styles'
-import Banner from './Banner'
+import Banner from '../../../Banner'
 
 export default class HomeScreenComponent extends PureComponent {
   render() {
