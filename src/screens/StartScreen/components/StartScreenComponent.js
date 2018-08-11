@@ -6,8 +6,9 @@ import { SafeAreaView } from 'react-navigation'
 import Version from '../../../containers/Version'
 import styles from '../styles'
 import Banner from '../../../Banner'
+import ContentArea from './ContentArea'
 
-export default class HomeScreenComponent extends PureComponent {
+export default class StartScreenComponent extends PureComponent {
   render() {
     return (
       <SafeAreaView
@@ -15,8 +16,9 @@ export default class HomeScreenComponent extends PureComponent {
         style={styles.container}
       >
         <StatusBar barStyle="dark-content" backgroundColor={'white'} />
-        <ScrollView style={{ flex: 1 }}>
+        <ScrollView style={styles.container}>
           <Banner />
+          <ContentArea />
           <Version />
         </ScrollView>
       </SafeAreaView>
