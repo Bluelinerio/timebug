@@ -1,9 +1,9 @@
 import React                                    from 'react'
-import { Text, View, Image, TouchableOpacity, StyleSheet }  from 'react-native'
-import LogoutButtonContainer                    from '../../../containers/LogoutButtonContainer'
-import style                                    from '../styles'
+import { Text, View, Image, TouchableOpacity }  from 'react-native'
+import LogoutButtonContainer                    from '../containers/LogoutButtonContainer'
+import style                                    from '../styles/components/UserProfileImage'
 
-export default ({ onPress, styles, source }) => { 
+export default ({ onPress, styles, source }) => {
     return (
             <View>
                 <LogoutButtonContainer>

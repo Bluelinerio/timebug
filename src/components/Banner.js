@@ -2,11 +2,11 @@
 
 import React                    from 'react'
 import { Text, View }           from 'react-native'
-import VerticalGradient         from './VerticalGradient'
-import UserProfileImageConsumer from '../../../containers/UserProfileImageConsumer'
-import styles                   from '../../styles/dashboard.styles'
 import moment                   from 'moment'
-import User                     from './../../../containers/User'
+import VerticalGradient         from '../containers/VerticalGradient'
+import UserProfileImageConsumer from '../containers/UserProfileImageConsumer'
+import styles                   from '../screens/styles/dashboard.styles'
+import User                     from '../containers/User'
 import UserProfileImage         from '../containers/UserProfileImageContainer'
 
 const firstName = user =>
