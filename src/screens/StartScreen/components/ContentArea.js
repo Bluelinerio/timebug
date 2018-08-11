@@ -2,7 +2,7 @@ import React from 'react'
 import { View } from 'react-native'
 import tron from 'reactotron-react-native'
 
-import OptionsButton from './OptionsButton'
+import OptionsButton from './OptionButton'
 import styles from '../styles'
 
 const ContentArea = () => {
