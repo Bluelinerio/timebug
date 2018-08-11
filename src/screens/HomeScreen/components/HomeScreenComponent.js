@@ -4,7 +4,7 @@ import { StatusBar, ScrollView, LayoutAnimation } from 'react-native'
 import { SafeAreaView } from 'react-navigation'
 
 import PaginatedCarouselContainer from '../containers/PaginatedCarouselContainer'
-import Version from '../containers/Version'
+import Version from '../../../containers/Version'
 import SuggestionCellContainer from '../containers/SuggestionCellContainer'
 import styles from '../styles'
 import { sliderWidth, itemWidth } from '../styles/SliderEntry.style'

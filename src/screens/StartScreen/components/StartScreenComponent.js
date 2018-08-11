@@ -1,12 +1,11 @@
 // @flow
 import React, { PureComponent } from 'react'
-import { StatusBar, ScrollView, LayoutAnimation } from 'react-native'
+import { StatusBar, ScrollView } from 'react-native'
 import { SafeAreaView } from 'react-navigation'
 
-import Version from '../containers/Version'
+import Version from '../../../containers/Version'
 import styles from '../styles'
 import Banner from './Banner'
-import Insight from '../containers/InsightContainer'
 
 export default class HomeScreenComponent extends PureComponent {
   render() {
