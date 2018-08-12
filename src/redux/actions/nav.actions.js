@@ -125,3 +125,14 @@ export const goToMyJourneyScreen = (params: ?any) =>
     routeName: routes.root.MyJourneyScreen,
     params
   })
+
+export const goToHomeScreen = (params?: any) => 
+  NavigationActions.navigate({
+    routeName: routes.root.HomeScreen,
+    params
+  })
+
+
+export const goToGuideBookScreen = (params?: any) => ({})
+
+export const goToMyRewardsScreen = (params?: any) => ({})

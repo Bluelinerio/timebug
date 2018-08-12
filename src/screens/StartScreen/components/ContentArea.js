@@ -5,13 +5,13 @@ import tron from 'reactotron-react-native'
 import OptionsButton from './OptionButton'
 import styles from '../styles'
 
-const ContentArea = () => {
+const ContentArea = ({ buttons }) => {
+  return (
     <View style={styles.container}>
-        <OptionsButton onPress={() => tron.log("Holi") }/>
-        <OptionsButton onPress={() => tron.log("2") }/>
-        <OptionsButton onPress={() => tron.log("3") }/>
-        <OptionsButton onPress={() => tron.log("4") }/>        
+      {buttons &&
+        buttons.map(button => <OptionsButton key={button.text} {...button} />)}
     </View>
+  )
 }
 
 export default ContentArea

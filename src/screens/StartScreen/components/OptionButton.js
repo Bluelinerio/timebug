@@ -6,12 +6,12 @@ type OptionButtonProps = {
     onPress: () => any
 }
 
-const OptionButton = ({ onPress }: OptionButtonProps) => {
+const OptionButton = ({ onPress, text }: OptionButtonProps) => {
     return (
         <TouchableOpacity onPress={onPress}>
             <View style={[styles.button]}>
                 <Text style={[styles.buttonText]}>
-                    Holi
+                    { text }
                 </Text>
             </View>
         </TouchableOpacity>
