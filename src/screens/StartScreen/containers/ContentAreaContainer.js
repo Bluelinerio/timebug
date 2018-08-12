@@ -18,7 +18,7 @@ export default compose(
         style: {}
       },
       {
-        text: 'Dashboard',
+        text: 'Work Book',
         onPress: () => navigation.dispatch(goToHomeScreen()),
         style: {}
       },
