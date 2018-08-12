@@ -1,22 +1,45 @@
 /* @flow */
 
-import React                    from 'react'
-import { Text, View }           from 'react-native'
-import moment                   from 'moment'
-import VerticalGradient         from '../containers/VerticalGradient'
-import UserProfileImageConsumer from '../containers/UserProfileImageConsumer'
-import styles                   from '../screens/styles/dashboard.styles'
-import User                     from '../containers/User'
-import UserProfileImage         from '../containers/UserProfileImageContainer'
+import React                      from 'react'
+import { Text, View, StyleSheet } from 'react-native'
+import Icon                       from 'react-native-vector-icons/MaterialIcons'
+import moment                     from 'moment'
+import VerticalGradient           from '../containers/VerticalGradient'
+import UserProfileImageConsumer   from '../containers/UserProfileImageConsumer'
+import styles                     from '../screens/styles/dashboard.styles'
+import User                       from '../containers/User'
+import UserProfileImage           from '../containers/UserProfileImageContainer'
+
+type BannerProps = {
+  goBack: any => any,
+  root: boolean
+}
+
+type BackButtonProps = {
+  onPress: any => any
+}
 
 const firstName = user =>
   user ? (user.name ? user.name.split(' ')[0] : '') : ''
 
-const Banner = () => {
+const BackButton = ({ onPress }: BackButtonProps) => {
+  return (
+    <Icon
+      name="arrow-back"
+      size={24}
+      style={styles.backButton}
+      underlayColor="transparent"
+      onPress={onPress}
+    />
+  )
+}
+
+const Banner = ({ goBack, root = true }: BannerProps) => {
   return (
     <View>
       <VerticalGradient />
       <View style={styles.header}>
+        {!root && <BackButton onPress={goBack} />}
         <View>
           <Text style={styles.headerDate}>
             {moment()

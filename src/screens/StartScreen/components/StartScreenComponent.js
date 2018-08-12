@@ -1,10 +1,10 @@
 // @flow
 import React, { PureComponent } from 'react'
-import { StatusBar, ScrollView } from 'react-native'
+import { StatusBar, ScrollView, View } from 'react-native'
 import { SafeAreaView } from 'react-navigation'
 
-import Version from '../../../containers/Version'
 import styles from '../styles'
+import Version from '../../../containers/Version'
 import Banner from '../../../components/Banner'
 import ContentArea from './../containers/ContentAreaContainer'
 
@@ -16,7 +16,7 @@ export default class StartScreenComponent extends PureComponent {
         style={styles.container}
       >
         <StatusBar barStyle="dark-content" backgroundColor={'white'} />
-        <ScrollView style={styles.container}>
+        <ScrollView style={[styles.container, styles.full]}>
           <Banner />
           <ContentArea />
           <Version />

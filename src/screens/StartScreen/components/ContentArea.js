@@ -1,13 +1,17 @@
+//@flow
 import React from 'react'
 import { View } from 'react-native'
-import tron from 'reactotron-react-native'
 
-import OptionsButton from './OptionButton'
+import OptionsButton, { OptionButtonProps } from './OptionButton'
 import styles from '../styles'
 
-const ContentArea = ({ buttons }) => {
+type ContentAreaProps = {
+  buttons: Array<OptionButtonProps>
+}
+
+const ContentArea = ({ buttons }: ContentAreaProps) => {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, styles.content]}>
       {buttons &&
         buttons.map(button => <OptionsButton key={button.text} {...button} />)}
     </View>

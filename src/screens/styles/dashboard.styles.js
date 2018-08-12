@@ -244,5 +244,8 @@ export default StyleSheet.create({
     width: 36,
     borderRadius: 36 / 2,
     alignSelf: 'center',
+  },
+  backButton: {
+    color: deepBlue
   }
 })

@@ -1,15 +1,17 @@
-import { compose, mapProps } from 'recompose'
-import { withNavigation }    from 'react-navigation'
+//@flow
+import { compose, mapProps }      from 'recompose'
+import { withNavigation }         from 'react-navigation'
+import type { OptionButtonProps } from '../components/OptionButton'
+import ContentArea                from '../components/ContentArea'
 import {
   goToMyJourneyScreen,
   goToHomeScreen
-}                            from '../../../redux/actions/nav.actions'
-import ContentArea           from '../components/ContentArea'
+}                                 from '../../../redux/actions/nav.actions'
 
 export default compose(
   withNavigation,
   mapProps(({ navigation }) => {
-    const buttons = [
+    const buttons: Array<OptionButtonProps> = [
       {
         text: 'My Journey',
         onPress: () => navigation.dispatch(goToMyJourneyScreen()),
