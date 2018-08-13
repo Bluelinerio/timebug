@@ -1,19 +1,28 @@
 import { StyleSheet, Dimensions } from 'react-native'
+import { deepBlue, white2, white } from '../../../constants/colors'
+
+import { bannerHeight } from '../../../styles/components/StartScreenBanner'
 
 const { height: viewportHeight } = Dimensions.get(
   'window'
 )
 
+const containerColor = white
+const buttonColor = deepBlue
+const fontColor = white2
+
 const versionHeight = viewportHeight * 0.08
 
 export const colors = {
-  background1: 'white'
+  containerColor,
+  fontColor,
+  buttonColor
 }
 
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.background1
+    backgroundColor: containerColor
   },
   full: {
     height: viewportHeight,
@@ -24,16 +33,15 @@ export default StyleSheet.create({
     padding: 20
   },
   button: {
-    backgroundColor: 'pink',
+    backgroundColor: buttonColor,
     borderRadius: 6,
     padding: 20,
     marginVertical: 10
   },
   buttonText: {
-    color: 'white'
+    color: fontColor
   },
   versionContainer: {
-      flex: 1,
       maxHeight: versionHeight,
       height: versionHeight
   }

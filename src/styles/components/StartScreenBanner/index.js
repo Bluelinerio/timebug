@@ -12,7 +12,7 @@ import {
 }                               from '../../../utils/viewportCalculation'
 
 export const bannerHeight = heightPercentage(35)
-
+export const bannerColor = paleBlue
 /**
  * Upper row Sized at 25% of the whole banner
  */
@@ -30,7 +30,7 @@ export default StyleSheet.create({
     flex: 1,
     height: bannerHeight,
     flexDirection: 'column',
-    backgroundColor: paleBlue
+    backgroundColor: bannerColor
   },
   headerUpperRow: {
     flex: 1,

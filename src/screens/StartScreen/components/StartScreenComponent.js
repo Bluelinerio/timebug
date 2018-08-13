@@ -18,8 +18,10 @@ export default class StartScreenComponent extends PureComponent {
         <StatusBar barStyle="dark-content" backgroundColor={'white'} />
         <ScrollView style={[styles.container, styles.full]}>
           <Banner />
-          <ContentArea />
-          <Version />
+          <View style={styles.container} >
+            <ContentArea />
+            <Version />
+          </View>
         </ScrollView>
       </SafeAreaView>
     )
