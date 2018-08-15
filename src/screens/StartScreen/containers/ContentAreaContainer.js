@@ -17,6 +17,10 @@ const mapStateToProps = (state: any) => {
     state
   )
 
+  tron.log(state)
+
+  tron.log(sortedStepsWithForms)
+
   const stepColors = selectors.statefullStepColors(state)
 
   const backgroundColorAtIndex = (stepIndex: number) =>
@@ -43,7 +47,9 @@ export default compose(
         text: `Step${number}: ${title}`,
         onPress: () => navigation.dispatch(goToHomeScreen()),
         style: {
-          backgroundColor: backgroundColorAtIndex(index)
+          container: {
+            backgroundColor: backgroundColorAtIndex(index)
+          }
         }
       }
     })
