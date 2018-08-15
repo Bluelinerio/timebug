@@ -7,11 +7,15 @@ import type { OptionButtonProps } from '../components/OptionButton'
 import ContentArea                from '../components/ContentArea'
 import selectors                  from '../../../redux/selectors'
 import {
-  goToMyJourneyScreen,
   goToHomeScreen
 }                                 from '../../../redux/actions/nav.actions'
-import { getColorForStepAtIndex } from '../utils/colorsForStep'
+import { getColorForStepAtIndex, getTextColorForStepAtIndex } from '../utils/colorsForStep'
 import tron                       from 'reactotron-react-native'
+
+import styles from '../styles'
+
+
+
 const mapStateToProps = (state: any) => {
   const { sortedStepsWithForms } = selectors.sortedStepsWithForms(
     state
@@ -26,6 +30,9 @@ const mapStateToProps = (state: any) => {
   const backgroundColorAtIndex = (stepIndex: number) =>
     stepColors[getColorForStepAtIndex(stepIndex, state)]
 
+  const textColorAtIndex = (stepIndex: number) => 
+    getTextColorForStepAtIndex(stepIndex, state, styles)
+
   invariant(
     stepColors,
     `the colors for completed-uncompleted steps is not defined`
@@ -33,24 +40,27 @@ const mapStateToProps = (state: any) => {
 
   return {
     sortedStepsWithForms,
-    backgroundColorAtIndex
+    backgroundColorAtIndex,
+    textColorAtIndex
   }
 }
 
 export default compose(
   withNavigation,
   connect(mapStateToProps),
-  mapProps(({ navigation, sortedStepsWithForms, backgroundColorAtIndex }) => {
-    const buttons = sortedStepsWithForms.map((form, index) => {
+  mapProps(({ navigation, sortedStepsWithForms, backgroundColorAtIndex, textColorAtIndex }) => {
+    const buttons: Array<OptionButtonProps> = sortedStepsWithForms.map((form, index) => {
       const { step: { number, title, icon } } = form
       return {
-        text: `Step${number}: ${title}`,
+        text: `${title}`,
+        step: `${number}`,
         onPress: () => navigation.dispatch(goToHomeScreen()),
         source: icon,
         style: {
           container: {
             backgroundColor: backgroundColorAtIndex(index)
-          }
+          },
+          text: textColorAtIndex(index) 
         }
       }
     })

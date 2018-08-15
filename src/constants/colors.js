@@ -18,6 +18,10 @@ export const paleBlue = '#E3F2FD';
 export const gray200 = '#EEEEEE';
 export const gray50 = '#FAFAFA'
 
+export const MEDITATION = '#005587'
+export const SELF_ASSESMENT = '#EB8900'
+export const VISION_CREATION = '#00B896'
+
 /**
  * StartScreen
  */

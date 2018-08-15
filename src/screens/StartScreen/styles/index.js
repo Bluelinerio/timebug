@@ -7,7 +7,8 @@ import {
 import {
   white2,
   StartScreenButtonsColor,
-  StartScreenBackgroundColor
+  StartScreenBackgroundColor,
+  deepBlue
 }                                     from '../../../constants/colors'
 import Viewport, { heightPercentage } from '../../../utils/viewportCalculation'
 import { bannerHeight }               from '../../../styles/components/StartScreenBanner'
@@ -48,16 +49,16 @@ export default StyleSheet.create({
     backgroundColor: buttonColor,
     borderRadius: 6,
     paddingVertical: 8,
-    paddingHorizontal: 20,
+    paddingHorizontal: 12,
     marginBottom: 6,
     justifyContent: 'space-between'
   },
   buttonImage: {
-    height: 64,
-    width: 64,
+    height: 60,
+    width: 60,
     aspectRatio: 1 / 1
   },
-  buttonText: {
+  stepText: {
     ...iOSUIKit.subheadEmphasizedObject,
     ...Platform.select({
       android: {
@@ -66,10 +67,26 @@ export default StyleSheet.create({
       ios: {
         ...sanFranciscoWeights.semibold
       }
-    }),
+    })
+  },
+  stepTitleText: {
+    ...iOSUIKit.footnoteEmphasizedObject,
+  },
+  buttonText: {
     color: fontColor,
     fontFamily: 'Metropolis',
-    
+    textAlign: 'justify'
+  },
+  subtitle: {
+    ...iOSUIKit.caption2Object,
+    ...Platform.select({
+      android: {
+        ...robotoWeights.thin
+      },
+      ios: {
+        ...sanFranciscoWeights.thin
+      }
+    })
   },
   strong: {
     ...Platform.select({
@@ -88,10 +105,39 @@ export default StyleSheet.create({
     backgroundColor: white2
   },
   buttonTextContainer: {
+    flex: 2,
+    paddingHorizontal: 3,
     alignItems: 'flex-start',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    borderLeftWidth: 1,
+    paddingVertical: 8,
+    borderColor: fontColor
   },
   buttonImageContainer: {
-    alignItems: 'flex-end'
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  mainComponent: { flex: 4 },
+  mainComponentTopRow: { flex: 1, flexDirection: 'row' },
+  mainComponentBottomRow: {
+    paddingTop: 8
+  },
+  secondaryComponent: {},
+  audio: {
+    color: fontColor
+  },
+  book: {
+    color: fontColor
+  },
+  phase1Incomplete: {
+    color: deepBlue
+  },
+  phase2Incomplete: {
+    color: fontColor
+  },
+  phase3Incomplete: {
+    color: fontColor
   }
+  
 })
