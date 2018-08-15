@@ -5,7 +5,7 @@ import { SafeAreaView } from 'react-navigation'
 
 import styles from '../styles'
 import Version from '../../../containers/Version'
-import Banner from '../../../components/StartScreenBanner'
+import Banner from '../../../components/MinifiedBanner'
 import ContentArea from './../containers/ContentAreaContainer'
 
 export default class StartScreenComponent extends PureComponent {

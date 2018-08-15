@@ -36,6 +36,9 @@ const BackButton = ({ onPress }: BackButtonProps) => {
   )
 }
 
+/**
+ * This banner has been deprecated in favor of the minified banner
+ */
 const Banner = ({ goBack, root = true }: BannerProps) => {
   return (
     <View>
