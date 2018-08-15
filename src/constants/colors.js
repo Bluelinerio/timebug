@@ -15,6 +15,18 @@ export const lightGray = '#AAAAAA';
 export const mediumGray = '#E9E9E9';
 export const gray400 = '#BDBDBD';
 export const paleBlue = '#E3F2FD';
+export const gray200 = '#EEEEEE';
+export const gray50 = '#FAFAFA'
+
+/**
+ * StartScreen
+ */
+
+export const StartScreenBannerColor = '#B8DEFF'
+
+export const StartScreenButtonsColor = '#4EADFF'
+
+export const StartScreenBackgroundColor = '#E1F3FB'
 
 export const PHASE_1_COMPLETE = '#4EADFF'
 export const PHASE_2_COMPLETE = '#F89A1F'

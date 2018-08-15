@@ -1,18 +1,18 @@
 //@flow
-import { StyleSheet, Platform } from 'react-native'
+import { StyleSheet, Platform }             from 'react-native'
 import {
   sanFranciscoWeights,
   robotoWeights,
   iOSUIKit
-}                               from 'react-native-typography'
-import { paleBlue, deepBlue }   from '../../../constants/colors'
+}                                           from 'react-native-typography'
+import { deepBlue, StartScreenBannerColor } from '../../../constants/colors'
 import {
   heightPercentage,
   widthPercentage
-}                               from '../../../utils/viewportCalculation'
+}                                           from '../../../utils/viewportCalculation'
 
 export const bannerHeight = heightPercentage(35)
-export const bannerColor = paleBlue
+export const bannerColor = StartScreenBannerColor
 /**
  * Upper row Sized at 25% of the whole banner
  */
@@ -97,7 +97,7 @@ export default StyleSheet.create({
         ...robotoWeights.bold
       },
       ios: {
-        ...sanFranciscoWeights.semiblack
+        ...sanFranciscoWeights.semibold
       }
     })
   }

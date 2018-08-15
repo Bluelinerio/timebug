@@ -13,7 +13,7 @@ const firstName = (user: { name: string }): string =>
 const StartScreenBanner = () => {
   return (
     <View style={styles.header}>
-      <StatusBar barStyle="light-content" backgroundColor={bannerColor} />
+      <StatusBar barStyle="dark-content" backgroundColor={bannerColor} />
       <View style={styles.headerUpperRow}>
         <View>
           <UserProfileImageConsumer>

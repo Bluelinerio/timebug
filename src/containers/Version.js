@@ -1,7 +1,7 @@
-import React from 'react'
-import { Text } from 'react-native'
+import React      from 'react'
+import { Text }   from 'react-native'
 import DeviceInfo from 'react-native-device-info'
-import CodePush from 'react-native-code-push'
+import CodePush   from 'react-native-code-push'
 
 class VersionComponent extends React.Component {
   state = { version: __DEV__ ? 'debug' : 'release' }
