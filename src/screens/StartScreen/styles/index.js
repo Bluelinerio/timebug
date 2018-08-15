@@ -8,7 +8,13 @@ import {
   white2,
   StartScreenButtonsColor,
   StartScreenBackgroundColor,
-  deepBlue
+  deepBlue,
+  PHASE_1_COMPLETE,
+  PHASE_2_COMPLETE,
+  PHASE_3_COMPLETE,
+  PHASE_1_INCOMPLETE,
+  PHASE_2_INCOMPLETE,
+  PHASE_3_INCOMPLETE
 }                                     from '../../../constants/colors'
 import Viewport, { heightPercentage } from '../../../utils/viewportCalculation'
 import { bannerHeight }               from '../../../styles/components/StartScreenBanner'
@@ -20,6 +26,11 @@ const fontColor = white2
 const { viewportHeight } = Viewport
 const remainderHeight = viewportHeight - bannerHeight
 const versionHeight = heightPercentage(15, remainderHeight)
+
+export const StepComponentActionDimensions = 36
+export const StepComponentActionRadius = 36
+
+export const helperIconSize = 18
 
 export const colors = {
   containerColor,
@@ -70,7 +81,7 @@ export default StyleSheet.create({
     })
   },
   stepTitleText: {
-    ...iOSUIKit.footnoteEmphasizedObject,
+    ...iOSUIKit.footnoteEmphasizedObject
   },
   buttonText: {
     color: fontColor,
@@ -124,12 +135,48 @@ export default StyleSheet.create({
     paddingTop: 8
   },
   secondaryComponent: {},
+  helperButton: {
+    height: StepComponentActionDimensions,
+    width: StepComponentActionDimensions,
+    borderRadius: StepComponentActionRadius,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
   audio: {
     color: fontColor
   },
   book: {
     color: fontColor
   },
+  iconPhase1: {
+    color: PHASE_1_COMPLETE
+  },
+  iconPhase2: {
+    color: PHASE_2_COMPLETE
+  },
+  iconPhase3: {
+    color: PHASE_3_COMPLETE
+  },
+
+  iconContainerPhase1Complete: {
+    backgroundColor: PHASE_1_INCOMPLETE
+  },
+  iconContainerPhase2Complete: {
+    backgroundColor: PHASE_2_INCOMPLETE
+  },
+  iconContainerPhase3Complete: {
+    backgroundColor: PHASE_3_INCOMPLETE
+  },
+  iconContainerPhase1Incomplete: {
+    backgroundColor: fontColor
+  },
+  iconContainerPhase2Incomplete: {
+    backgroundColor: fontColor
+  },
+  iconContainerPhase3Incomplete: {
+    backgroundColor: fontColor
+  },
+
   phase1Incomplete: {
     color: deepBlue
   },
@@ -139,5 +186,4 @@ export default StyleSheet.create({
   phase3Incomplete: {
     color: fontColor
   }
-  
 })

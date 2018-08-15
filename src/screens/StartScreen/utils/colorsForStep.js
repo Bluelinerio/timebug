@@ -12,6 +12,12 @@ import {
   SELF_ASSESSMENT,
   VISION_CREATION
 } from '../../../services/cms'
+import styles from '../styles'
+
+export const isStepIndexCompleted = (stepIndex, state) => {
+  const { user: { forms } } = state
+  return forms.find(form => form.stepId === stepIndex + 1) ? true : false
+}
 
 const mapPhaseAndCompletionToKey = (phase, completed) => {
   switch (phase) {
@@ -46,4 +52,39 @@ export const getTextColorForStepAtIndex = (stepIndex, state, styles) => {
   return forms.find(form => form.stepId === stepIndex + 1)
     ? {}
     : incompleteStyles[phase]
+}
+
+export const mapPhaseAndCompletionToStylesHelper = (phase, completed = false) => {
+  switch (phase) {
+    case MEDITATION:
+      return completed
+        ? {
+            container: styles.iconContainerPhase1Complete,
+            icon: styles.iconPhase1
+          }
+        : {
+            container: styles.iconContainerPhase1Incomplete,
+            icon: styles.iconPhase1
+          }
+    case SELF_ASSESSMENT:
+      return completed
+        ? {
+            container: styles.iconContainerPhase2Complete,
+            icon: styles.iconPhase2
+          }
+        : {
+            container: styles.iconContainerPhase2Incomplete,
+            icon: styles.iconPhase2
+          }
+    case VISION_CREATION:
+      return completed
+        ? {
+            container: styles.iconContainerPhase3Complete,
+            icon: styles.iconPhase3
+          }
+        : {
+            container: styles.iconContainerPhase3Incomplete,
+            icon: styles.iconPhase3
+          }
+  }
 }
