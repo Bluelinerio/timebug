@@ -16,6 +16,13 @@ export const mediumGray = '#E9E9E9';
 export const gray400 = '#BDBDBD';
 export const paleBlue = '#E3F2FD';
 
+export const PHASE_1_COMPLETE = '#4EADFF'
+export const PHASE_2_COMPLETE = '#F89A1F'
+export const PHASE_3_COMPLETE = '#20B89D'
+export const PHASE_1_INCOMPLETE = '#B8DEFF'
+export const PHASE_2_INCOMPLETE = '#F8CF1F'
+export const PHASE_3_INCOMPLETE = '#20DE9D'
+
 export const whiteGradientColors = {
   startColor: white,
   endColor: white2
