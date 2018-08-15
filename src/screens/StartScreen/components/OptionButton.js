@@ -1,6 +1,7 @@
 //@flow
 import React                                   from 'react'
-import { View, TouchableOpacity, Text, Image } from 'react-native'
+import { View, TouchableOpacity, Text } from 'react-native'
+import CustomImage                             from '../../../components/CustomImage'
 import styles                                  from '../styles'
 import { icon }                                from '../../../resources/images'
 
@@ -29,7 +30,7 @@ const OptionButton = ({
         </Text>
       </View>
       <View style={[styles.flex, styles.buttonImageContainer]}>
-        <Image style={[styles.buttonImage, style.image]} source={source} />
+        <CustomImage style={[styles.buttonImage, style.image]} source={source} />
       </View>
     </View>
   </TouchableOpacity>

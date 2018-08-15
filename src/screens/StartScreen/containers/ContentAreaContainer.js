@@ -46,6 +46,7 @@ export default compose(
       return {
         text: `Step${number}: ${title}`,
         onPress: () => navigation.dispatch(goToHomeScreen()),
+        source: icon,
         style: {
           container: {
             backgroundColor: backgroundColorAtIndex(index)
