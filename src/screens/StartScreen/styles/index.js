@@ -134,11 +134,18 @@ export default StyleSheet.create({
   mainComponentBottomRow: {
     paddingTop: 8
   },
-  secondaryComponent: {},
+  secondaryComponent: {
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
   helperButton: {
     height: StepComponentActionDimensions,
     width: StepComponentActionDimensions,
     borderRadius: StepComponentActionRadius,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  center: {
     alignItems: 'center',
     justifyContent: 'center'
   },
@@ -162,10 +169,10 @@ export default StyleSheet.create({
     backgroundColor: PHASE_1_INCOMPLETE
   },
   iconContainerPhase2Complete: {
-    backgroundColor: PHASE_2_INCOMPLETE
+    backgroundColor: fontColor
   },
   iconContainerPhase3Complete: {
-    backgroundColor: PHASE_3_INCOMPLETE
+    backgroundColor: fontColor
   },
   iconContainerPhase1Incomplete: {
     backgroundColor: fontColor

@@ -15,8 +15,8 @@ import {
 import styles from '../styles'
 
 export const isStepIndexCompleted = (stepIndex, state) => {
-  const { user: { forms } } = state
-  return forms.find(form => form.stepId === stepIndex + 1) ? true : false
+  const { user : { forms } } = state
+  return forms && forms.find(form => form.stepId === stepIndex + 1) ? true : false
 }
 
 const mapPhaseAndCompletionToKey = (phase, completed) => {
@@ -31,12 +31,9 @@ const mapPhaseAndCompletionToKey = (phase, completed) => {
 }
 
 export const getColorForStepAtIndex = (stepIndex, state) => {
-  const phase = phaseForStepAtIndex(stepIndex)
-  const { user } = state
-  const { forms } = user
   return mapPhaseAndCompletionToKey(
-    phase,
-    forms.find(form => form.stepId === stepIndex + 1) ? true : false
+    phaseForStepAtIndex(stepIndex),
+    isStepIndexCompleted(stepIndex, state)
   )
 }
 
@@ -47,9 +44,7 @@ export const getTextColorForStepAtIndex = (stepIndex, state, styles) => {
     [VISION_CREATION]: styles.phase3Incomplete
   }
   const phase = phaseForStepAtIndex(stepIndex)
-  const { user } = state
-  const { forms } = user
-  return forms.find(form => form.stepId === stepIndex + 1)
+  return isStepIndexCompleted(stepIndex, state)
     ? {}
     : incompleteStyles[phase]
 }

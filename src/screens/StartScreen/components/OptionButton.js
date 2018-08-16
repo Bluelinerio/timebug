@@ -7,13 +7,13 @@ import styles, { helperIconSize } from '../styles'
 import { icon } from '../../../resources/images'
 import { mapPhaseAndCompletionToStylesHelper } from '../utils/colorsForStep'
 
-/**
- * Remove
- */
-import tron from 'reactotron-react-native'
-
 const lorem =
   'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati velit culpa alias ipsum delectus accusantium'
+
+export type SideActions = {
+  audio: () => any,
+  content: () => any
+}
 
 export type OptionButtonProps = {
   onPress: () => any,
@@ -22,6 +22,7 @@ export type OptionButtonProps = {
   subtitleText: string,
   complete: boolean,
   phase: string,
+  sideActions: SideActions,
   source:
     | any
     | {
@@ -38,8 +39,10 @@ const OptionButton = ({
   phase,
   subtitleText = lorem,
   source = icon,
+  sideActions,
   style = {}
 }: OptionButtonProps) => {
+  const { audio: audioAction, content: contentAction } = sideActions
   const {
     container: helperContainerStyle,
     icon: helperIconStyle
@@ -73,28 +76,30 @@ const OptionButton = ({
           </View>
         </View>
         <View style={[styles.flex, styles.secondaryComponent]}>
-          <View style={[styles.flex]}>
-            <TouchableOpacity onPress={() => tron.log("Book")}>
-              <View style={[styles.helperButton, helperContainerStyle]}>
-                <Icon
-                  name="ios-book"
-                  size={helperIconSize}
-                  style={[styles.audio, helperIconStyle]}
-                  underlayColor="transparent"
-                />
-              </View>
+          <View style={[styles.flex, styles.center]}>
+            <TouchableOpacity
+              style={[styles.helperButton, helperContainerStyle]}
+              onPress={contentAction}
+            >
+              <Icon
+                name="ios-book"
+                size={helperIconSize}
+                style={[styles.audio, helperIconStyle]}
+                underlayColor="transparent"
+              />
             </TouchableOpacity>
           </View>
-          <View style={[styles.flex]}>
-            <TouchableOpacity onPress={() => tron.log("Audio")}>
-              <View style={[styles.helperButton, helperContainerStyle]}>
-                <Icon
-                  name="ios-volume-high"
-                  size={helperIconSize}
-                  style={[styles.book, helperIconStyle]}
-                  underlayColor="transparent"
-                />
-              </View>
+          <View style={[styles.flex, styles.center]}>
+            <TouchableOpacity
+              style={[styles.helperButton, helperContainerStyle]}
+              onPress={audioAction}
+            >
+              <Icon
+                name="ios-volume-up"
+                size={helperIconSize}
+                style={[styles.book, helperIconStyle]}
+                underlayColor="transparent"
+              />
             </TouchableOpacity>
           </View>
         </View>
