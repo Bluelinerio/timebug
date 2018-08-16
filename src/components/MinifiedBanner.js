@@ -9,7 +9,7 @@ import { icon } from '../resources/images'
 const MinifiedBanner = () => {
   return (
     <View style={styles.header}>
-      <StatusBar barStyle="light-content" backgroundColor={bannerColor} />
+      <StatusBar barStyle="dark-content" backgroundColor={bannerColor} />
       <View style={styles.headerUpperRow}>
         <View style={styles.headerUpperRowBlock}/>
         <View style={styles.headerUpperRowBlock}>
