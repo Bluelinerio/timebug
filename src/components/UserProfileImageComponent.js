@@ -1,6 +1,5 @@
 import React                 from 'react'
 import { View, Image }       from 'react-native'
-import LogoutButtonContainer from '../containers/LogoutButtonContainer'
 
 type UserProfileImageProps = {
   styles: any,
@@ -13,9 +12,7 @@ const UserProfileImageComponent = ({
 }: UserProfileImageProps) => {
   return (
     <View>
-      <LogoutButtonContainer>
         <Image source={source} style={styles.headerAvatar} />
-      </LogoutButtonContainer>
     </View>
   )
 }
