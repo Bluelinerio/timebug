@@ -2,7 +2,8 @@
 import React from 'react'
 import md5 from 'md5'
 import User from './User'
-import LogoutButtonContainer from '../containers/LogoutButtonContainer'
+import LogoutButtonContainer from './LogoutButtonContainer'
+import OpenLoginModalContainer from './OpenLoginModalContainer'
 
 type Props = {
   children: ({ uri: string }) => React.Node | [React.Node]
@@ -23,9 +24,13 @@ const UserProfileImageConsumer = ({ children }: Props) => (
         )
       else
         //TODO: REMOVE AND REPLACE WITH ACTUAL PLACEHOLDER
-        return children({
-          uri: `https://www.chaarat.com/wp-content/uploads/2017/08/placeholder-user.png`
-        })
+        return (
+          <OpenLoginModalContainer>
+            {children({
+              uri: `https://www.chaarat.com/wp-content/uploads/2017/08/placeholder-user.png`
+            })}
+          </OpenLoginModalContainer>
+        )
     }}
   </User>
 )
