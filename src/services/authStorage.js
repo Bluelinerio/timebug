@@ -1,20 +1,19 @@
 // @flow
-import { AsyncStorage, Platform } from 'react-native';
+import { AsyncStorage, Platform } from 'react-native'
 
-//
-const TOKEN_KEY = 'lifevision-1';
+const TOKEN_KEY = 'lifevision-1'
 
 export type TokenAndUserIdType = {
   token: string,
   userId: string,
   endpoint: string
-};
+}
 
 const emptyTokenAndUserId = {
   token: null,
   userId: null,
   endpoint: null
-};
+}
 
 // TODO: This function isn't used, remove if not needed.
 // const wipeOldTokens = () => {
@@ -27,46 +26,51 @@ const emptyTokenAndUserId = {
 //   ]);
 // };
 
-const android = {
-  getTokenAndUserId: (): ?TokenAndUserIdType => ({}),
-  setTokenAndUserId: () => null
-};
-
 async function getTokenAndUserId() {
-  const keys = await AsyncStorage.getAllKeys();
+  const keys = await AsyncStorage.getAllKeys()
   if (keys && keys.includes(TOKEN_KEY)) {
     try {
-      const data = await AsyncStorage.getItem(TOKEN_KEY);
-      return JSON.parse(data);
+      const data = await AsyncStorage.getItem(TOKEN_KEY)
+      return JSON.parse(data)
     } catch (e) {
-      return null;
+      return null
     }
   } else {
-    return emptyTokenAndUserId;
+    return emptyTokenAndUserId
   }
 }
 
 async function setTokenAndUserId(data: TokenAndUserIdType) {
   try {
-    await AsyncStorage.setItem(TOKEN_KEY, JSON.stringify(data));
-  } catch (e) {}
+    await AsyncStorage.setItem(TOKEN_KEY, JSON.stringify(data))
+  } catch (e) {
+    console.log(e)
+  }
 }
 
 async function wipeStorage() {
   try {
-    await AsyncStorage.removeItem(TOKEN_KEY);
-  } catch (e) {}
+    await AsyncStorage.removeItem(TOKEN_KEY)
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+const android = {
+  getTokenAndUserId,
+  setTokenAndUserId,
+  wipeStorage
 }
 
 const ios = {
   getTokenAndUserId,
   setTokenAndUserId,
   wipeStorage
-};
+}
 
 export default Platform.select({
   ios,
   android
-});
+})
 
 // todo: this isn't working needs fixing:
