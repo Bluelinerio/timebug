@@ -6,12 +6,14 @@ import { withNavigation } from 'react-navigation'
 import tron from 'reactotron-react-native'
 import type { OptionButtonProps } from '../components/OptionButton'
 import ContentArea from '../components/ContentArea'
+import { key as loginModalKey } from '../../../components/LoginModal'
 import selectors from '../../../redux/selectors'
 import {
   goToHomeScreen,
   goToAssignmentFlow,
   goToWorkbookSkippingStepScreen
 } from '../../../redux/actions/nav.actions'
+import { openModal } from '../../../redux/actions/modal.actions'
 import {
   getColorForStepAtIndex,
   getTextColorForStepAtIndex,
@@ -24,6 +26,7 @@ const FIRST_FORM_ID = '1'
 
 const mapStateToProps = (state: any) => {
   const { sortedStepsWithForms } = selectors.sortedStepsWithForms(state)
+  const isLoggedIn = selectors.isLoggedIn(state)
 
   tron.log(state)
 
@@ -49,20 +52,27 @@ const mapStateToProps = (state: any) => {
     sortedStepsWithForms,
     backgroundColorAtIndex,
     textColorAtIndex,
-    stepCompleted
+    stepCompleted,
+    isLoggedIn
   }
 }
 
+const mapDispatchToProps = dispatch => ({
+  login: () => dispatch(openModal({ key:loginModalKey }))
+})
+
 export default compose(
   withNavigation,
-  connect(mapStateToProps),
+  connect(mapStateToProps, mapDispatchToProps),
   mapProps(
     ({
       navigation,
       sortedStepsWithForms,
       backgroundColorAtIndex,
       textColorAtIndex,
-      stepCompleted
+      stepCompleted,
+      isLoggedIn,
+      login
     }) => {
       const buttons: Array<OptionButtonProps> = sortedStepsWithForms.map(
         (form, index) => {
@@ -73,12 +83,14 @@ export default compose(
             step: `${number}`,
             phase: phaseForStepAtIndex(index),
             onPress: () =>
-              navigation.dispatch(
-                goToWorkbookSkippingStepScreen({
-                  step,
-                  incompleteFormsIds: [FIRST_FORM_ID]
-                })
-              ),
+              isLoggedIn
+                ? navigation.dispatch(
+                    goToWorkbookSkippingStepScreen({
+                      step,
+                      incompleteFormsIds: [FIRST_FORM_ID]
+                    })
+                  )
+                : login(),
             sideActions: {
               audio: () => navigation.dispatch(goToHomeScreen()),
               content: () =>
