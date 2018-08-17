@@ -5,18 +5,20 @@ import {
   PHASE_1_NOT_COMPLETED_KEY,
   PHASE_2_NOT_COMPLETED_KEY,
   PHASE_3_NOT_COMPLETED_KEY
-} from '../../../services/dummyCms'
+}             from '../../../services/dummyCms'
 import {
   phaseForStepAtIndex,
   MEDITATION,
   SELF_ASSESSMENT,
   VISION_CREATION
-} from '../../../services/cms'
+}             from '../../../services/cms'
 import styles from '../styles'
 
-export const isStepIndexCompleted = (stepIndex, state) => {
-  const { user : { forms } } = state
-  return forms && forms.find(form => form.stepId === stepIndex + 1) ? true : false
+export const isStepIndexCompleted = (stepIndex, user) => {
+  const { forms } = user
+  return forms && forms.find(form => form.stepId === stepIndex + 1)
+    ? true
+    : false
 }
 
 const mapPhaseAndCompletionToKey = (phase, completed) => {
@@ -30,26 +32,27 @@ const mapPhaseAndCompletionToKey = (phase, completed) => {
   }
 }
 
-export const getColorForStepAtIndex = (stepIndex, state) => {
+export const getColorForStepAtIndex = (stepIndex, user) => {
   return mapPhaseAndCompletionToKey(
     phaseForStepAtIndex(stepIndex),
-    isStepIndexCompleted(stepIndex, state)
+    isStepIndexCompleted(stepIndex, user)
   )
 }
 
-export const getTextColorForStepAtIndex = (stepIndex, state, styles) => {
+export const getTextColorForStepAtIndex = (stepIndex, user, styles) => {
   const incompleteStyles = {
     [MEDITATION]: styles.phase1Incomplete,
     [SELF_ASSESSMENT]: styles.phase2Incomplete,
     [VISION_CREATION]: styles.phase3Incomplete
   }
   const phase = phaseForStepAtIndex(stepIndex)
-  return isStepIndexCompleted(stepIndex, state)
-    ? {}
-    : incompleteStyles[phase]
+  return isStepIndexCompleted(stepIndex, user) ? {} : incompleteStyles[phase]
 }
 
-export const mapPhaseAndCompletionToStylesHelper = (phase, completed = false) => {
+export const mapPhaseAndCompletionToStylesHelper = (
+  phase,
+  completed = false
+) => {
   switch (phase) {
     case MEDITATION:
       return completed

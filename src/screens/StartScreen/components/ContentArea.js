@@ -1,21 +1,34 @@
 //@flow
-import React from 'react'
-import { View } from 'react-native'
+import React         from 'react'
+import { View }      from 'react-native'
+import OptionsButton from '../containers/OptionButtonContainer'
+import styles        from '../styles'
 
-import OptionsButton, { OptionButtonProps } from './OptionButton'
-import styles from '../styles'
+import tron          from 'reactotron-react-native'
 
 type ContentAreaProps = {
-  buttons: Array<OptionButtonProps>
+  steps: Array<any>,
+  user: any,
+  stepColors: any
 }
 
-const ContentArea = ({ buttons }: ContentAreaProps) => {
-  return (
-    <View style={[styles.container, styles.content]}>
-      {buttons &&
-        buttons.map(button => <OptionsButton key={button.text} {...button} />)}
-    </View>
-  )
+class ContentArea extends React.PureComponent<ContentAreaProps> {
+  render() {
+    tron.log('Re rendered content area')
+    const { steps, stepColors } = this.props
+    return (
+      <View style={[styles.container, styles.content]}>
+        {steps &&
+          Object.values(steps).map(step => (
+            <OptionsButton
+              key={step.number}
+              step={step}
+              stepColors={stepColors}
+            />
+          ))}
+      </View>
+    )
+  }
 }
 
 export default ContentArea

@@ -1,19 +1,24 @@
 // @flow
-import R from 'ramda'
-import { getUserState, getCms, getFormData, getAwards } from './rootReducer.selectors'
+import R                                                      from 'ramda'
+import {
+  getUserState,
+  getCms,
+  getFormData,
+  getAwards
+}                                                             from './rootReducer.selectors'
 import {
   // UNDETERMINED,
   ANONYMOUS,
   AUTHENTICATING
-} from '../../services/apollo/models'
+}                                                             from '../../services/apollo/models'
 // models
-import workbooks from '../../screens/WorkbookScreen/forms'
+import workbooks                                              from '../../screens/WorkbookScreen/forms'
 import { removeIvalidValuesInsteadOfDoingAnyMigrationForNow } from '../tcomb'
 
-import type { User, Form } from '../../services/apollo/models'
-import type { Step, Slide } from '../../services/cms'
+import type { User, Form }                                    from '../../services/apollo/models'
+import type { Step, Slide }                                   from '../../services/cms'
 
-import { getStepColors } from '../../services/dummyCms'
+import { getStepColors }                                      from '../../services/dummyCms'
 
 export const filterWithKeys = (predicate, obj) =>
   R.pipe(R.toPairs, R.filter(R.apply(predicate)), R.fromPairs)(obj)
@@ -64,6 +69,7 @@ const pages = state => getCms(state).pages
 const appInstructions = (state: any) => pages(state)['AppInstructions']
 
 // User
+const getUser = (state: any): ?User => getUserState(state)
 const user = (state: any): ?User =>
   typeof getUserState(state) === 'string' ? null : getUserState(state)
 const userId = (state: any) => user(state) && user(state).id
@@ -82,10 +88,7 @@ const sortFormsChronologically = (a: Form, b: Form) =>
 const hasCompletedForms = (state: any): boolean =>
   user(state) && user(state).forms.length > 0
 
-const hasNoCompletedForms = R.compose(
-  R.not,
-  hasCompletedForms
-)
+const hasNoCompletedForms = R.compose(R.not, hasCompletedForms)
 
 const completedForms = (state: any): [Form] =>
   user(state) ? user(state).forms.map(f => f) : []
@@ -220,9 +223,15 @@ const statefullStepColors = (state: any) => getStepColors(state)
 
 const awardModelsAndData = (state: any) => getAwards(state)
 
-const awardModelForStep = (state: any) => (step: number) => awardModelsAndData(state).models[step] ? awardModelsAndData(state).models[step] : {}
+const awardModelForStep = (state: any) => (step: number) =>
+  awardModelsAndData(state).models[step]
+    ? awardModelsAndData(state).models[step]
+    : {}
 
-const awardDataForStep = (state: any) => (step: number) => awardModelsAndData(state).data[step] ? awardModelsAndData(state).data[step] : {}
+const awardDataForStep = (state: any) => (step: number) =>
+  awardModelsAndData(state).data[step]
+    ? awardModelsAndData(state).data[step]
+    : {}
 
 const awardModelAndDataForStep = (state: any) => (step: number) => {
   const data = awardDataForStep(state)(step)
@@ -238,6 +247,7 @@ const selectors = {
   sortedSteps,
   sortedStepsWithForms,
   buttonTitlesForFormCompletion,
+  getUser,
   steps,
   meditations,
   phaseColors,
