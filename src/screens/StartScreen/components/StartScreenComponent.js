@@ -1,12 +1,12 @@
 // @flow
-import React, { PureComponent }        from 'react'
+import React, { PureComponent } from 'react'
 import { StatusBar, ScrollView, View } from 'react-native'
-import { SafeAreaView }                from 'react-navigation'
-import styles                          from '../styles'
-import Version                         from '../../../containers/Version'
-import Banner                          from '../../../components/MinifiedBanner'
-import ContentArea                     from './../containers/ContentAreaContainer'
-
+import { SafeAreaView } from 'react-navigation'
+import styles from '../styles'
+import Version from '../../../containers/Version'
+import Banner from '../../../components/MinifiedBanner'
+import ContentArea from './../containers/ContentAreaContainer'
+import PhaseProgress from './PhaseProgressList'
 export default class StartScreenComponent extends PureComponent {
   render() {
     return (
@@ -18,6 +18,7 @@ export default class StartScreenComponent extends PureComponent {
         <ScrollView style={[styles.container, styles.full]}>
           <Banner />
           <View style={styles.container}>
+            <PhaseProgress />
             <ContentArea />
             <Version />
           </View>

@@ -38,6 +38,21 @@ export const colors = {
   buttonColor
 }
 
+export const phaseProgressStyles = StyleSheet.create({
+  listContainer: {
+    flex:1,
+    flexDirection: 'row',
+    padding: 12,
+    backgroundColor: 'blue'
+  },
+  phaseContainer: {
+    flex: 1,
+    marginHorizontal: 4,
+    borderRadius: 6,
+    padding: 8
+  }
+})
+
 export default StyleSheet.create({
   flex: {
     flex: 1
