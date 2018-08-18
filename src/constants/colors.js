@@ -15,8 +15,10 @@ export const lightGray = '#AAAAAA';
 export const mediumGray = '#E9E9E9';
 export const gray400 = '#BDBDBD';
 export const paleBlue = '#E3F2FD';
+export const blue100 = '#B3E5FC';
 export const gray200 = '#EEEEEE';
-export const gray50 = '#FAFAFA'
+export const gray50 = '#FAFAFA';
+export const gray900 = '#212121';
 
 export const MEDITATION = '#005587'
 export const SELF_ASSESMENT = '#EB8900'

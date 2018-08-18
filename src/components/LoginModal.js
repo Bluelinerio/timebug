@@ -1,7 +1,24 @@
-import React                                     from 'react'
-import { View, Modal, Text, TouchableHighlight } from 'react-native'
-import LoginButtonContainer                      from '../containers/LoginButtonContainer'
-import tron                                      from 'reactotron-react-native'
+import React from 'react'
+import {
+  View,
+  Modal,
+  Text,
+  TouchableOpacity,
+  StatusBar,
+  Image
+} from 'react-native'
+import LoginButtonContainer from '../containers/LoginButtonContainer'
+import Gradient from '../components/Gradient'
+import styles, {
+  statusBarColor,
+  closeButtonColor,
+  closeButtonSize,
+  gradientColors
+} from '../styles/components/LoginModal'
+import { icon } from '../resources/images'
+import Icon from 'react-native-vector-icons/dist/MaterialIcons'
+
+import tron from 'reactotron-react-native'
 
 export type LoginModalProps = {
   isOpen: boolean,
@@ -9,6 +26,8 @@ export type LoginModalProps = {
 }
 
 export const key = 'Login'
+
+const innerText = `Login to enjoy the app at it's fullest and live the journey through the seven pillars of life!`
 
 const LoginModal = (props: LoginModalProps) => {
   const { isOpen, close } = props
@@ -20,25 +39,36 @@ const LoginModal = (props: LoginModalProps) => {
       visible={isOpen}
       onRequestClose={() => {
         tron.log('closed')
+        close()
       }}
     >
-      <View
-        style={{
-          flex: 1,
-          alignItems: 'center',
-          justifyContent: 'center',
-          backgroundColor: 'transparent'
-        }}
-      >
-        <View style={{ width: 300, height: 300, backgroundColor: 'white', padding: 24 }}>
-          <TouchableHighlight
-            onPress={close}
-            style={{ flex:1, height: 32, flexDirection: 'column', backgroundColor: 'blue', alignSelf: 'center', padding: 26  }}
-          >
-            <Text>Hide Modal</Text>
-          </TouchableHighlight>
+      <StatusBar barStyle="dark-content" backgroundColor={statusBarColor} />
+      <View style={styles.modalContainer}>
+        <Gradient colors={gradientColors} style={styles.modal}>
+          <View style={styles.modalHeader}>
+            <View style={[styles.headerBlock, styles.iconBlock]}>
+              <TouchableOpacity
+                onPress={close}
+                style={styles.closeButtonContainer}
+              >
+                <Icon
+                  name={'close'}
+                  color={closeButtonColor}
+                  size={closeButtonSize}
+                />
+              </TouchableOpacity>
+            </View>
+          </View>
+          <View style={styles.headerBlock}>
+            <Image style={[styles.headerIcon]} source={icon} />
+          </View>
+          <View style={styles.textBlock}>
+            <Text style={styles.text}>
+                {innerText}
+            </Text>
+          </View>
           <LoginButtonContainer onPress={close} />
-        </View>
+        </Gradient>
       </View>
     </Modal>
   )
