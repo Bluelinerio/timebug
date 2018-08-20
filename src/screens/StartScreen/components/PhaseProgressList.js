@@ -1,19 +1,20 @@
 import React from 'react'
 import { View, Text } from 'react-native'
 import { phaseProgressStyles as styles } from '../styles'
+import PhaseProgress from '../containers/PhaseProgressElementContainer'
+export type PhraseProgressListProps = {
+  phases: Array<String>
+}
 
-const PhaseProgressList = () => {
+const PhaseProgressList = ({ phases }: PhraseProgressListProps) => {
   return (
     <View style={styles.listContainer}>
-      <View style={[styles.phaseContainer, { backgroundColor: 'red' }]}>
-        <Text>Phase1</Text>
-      </View>
-      <View style={[styles.phaseContainer, { backgroundColor: 'blue' }]}>
-        <Text>Phase2</Text>
-      </View>
-      <View style={[styles.phaseContainer, { backgroundColor: 'green' }]}>
-        <Text>Phase3</Text>
-      </View>
+      {
+        phases
+          && phases.map((phase) => (
+            <PhaseProgress key={phase} phase={phase}/>
+          ))
+      }
     </View>
   )
 }

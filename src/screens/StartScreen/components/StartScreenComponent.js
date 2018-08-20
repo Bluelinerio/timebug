@@ -6,7 +6,8 @@ import styles from '../styles'
 import Version from '../../../containers/Version'
 import Banner from '../../../components/MinifiedBanner'
 import ContentArea from './../containers/ContentAreaContainer'
-import PhaseProgress from './PhaseProgressList'
+import PhaseProgress from '../containers/PhaseProgressContainer'
+
 export default class StartScreenComponent extends PureComponent {
   render() {
     return (

@@ -18,7 +18,7 @@ import { removeIvalidValuesInsteadOfDoingAnyMigrationForNow } from '../tcomb'
 import type { User, Form }                                    from '../../services/apollo/models'
 import type { Step, Slide }                                   from '../../services/cms'
 
-import { getStepColors }                                      from '../../services/dummyCms'
+import { getStepColors, getPhaseColors }                      from '../../services/dummyCms'
 
 export const filterWithKeys = (predicate, obj) =>
   R.pipe(R.toPairs, R.filter(R.apply(predicate)), R.fromPairs)(obj)
@@ -216,7 +216,7 @@ const loadingFormData = (state: any) => getFormData(state).loadingFormData
  * Should check CMS for colors, for now it's hardcoded
  */
 const statefullStepColors = (state: any) => getStepColors(state)
-
+const overridePhaseColors = (state: any) => getPhaseColors(state)
 /**
  * Award
  */
@@ -280,7 +280,8 @@ const selectors = {
   isSynchingFormData,
   loadingFormData,
   awardModelAndDataForStep,
-  statefullStepColors
+  statefullStepColors,
+  overridePhaseColors
 }
 
 export default selectors

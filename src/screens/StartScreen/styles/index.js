@@ -38,18 +38,40 @@ export const colors = {
   buttonColor
 }
 
+export const progressFillColor = fontColor
+
 export const phaseProgressStyles = StyleSheet.create({
   listContainer: {
     flex:1,
     flexDirection: 'row',
-    padding: 12,
-    backgroundColor: 'blue'
+    padding: 12
   },
   phaseContainer: {
     flex: 1,
     marginHorizontal: 4,
     borderRadius: 6,
     padding: 8
+  },
+  phaseNumber: {
+    color: fontColor,
+    fontSize: 12,
+    fontFamily: 'Metropolis'
+  },
+  phaseText: {
+    color: fontColor,
+    fontSize: 12,
+    fontFamily: 'Metropolis'
+  },
+  mainArea: {
+    flex:1
+  },
+  secondaryArea: {
+    flex:1,
+  },
+  phaseProportion: {
+    color: fontColor,
+    fontSize: 10,
+    fontFamily: 'Metropolis'
   }
 })
 
