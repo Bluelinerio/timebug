@@ -4,7 +4,7 @@ import { View }      from 'react-native'
 import OptionsButton from '../containers/OptionButtonContainer'
 import styles        from '../styles'
 
-import tron          from 'reactotron-react-native'
+import tron from 'reactotron-react-native'
 
 type ContentAreaProps = {
   steps: Array<any>,

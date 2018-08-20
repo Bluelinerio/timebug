@@ -1,7 +1,8 @@
-import React from 'react'
-import { View, Text } from 'react-native'
+import React                             from 'react'
+import { View }                          from 'react-native'
 import { phaseProgressStyles as styles } from '../styles'
-import PhaseProgress from '../containers/PhaseProgressElementContainer'
+import PhaseProgress                     from '../containers/PhaseProgressElementContainer'
+
 export type PhraseProgressListProps = {
   phases: Array<String>
 }
@@ -9,12 +10,8 @@ export type PhraseProgressListProps = {
 const PhaseProgressList = ({ phases }: PhraseProgressListProps) => {
   return (
     <View style={[styles.listContainer, styles.content]}>
-      {
-        phases
-          && phases.map((phase) => (
-            <PhaseProgress key={phase} phase={phase}/>
-          ))
-      }
+      {phases &&
+        phases.map(phase => <PhaseProgress key={phase} phase={phase} />)}
     </View>
   )
 }

@@ -1,10 +1,7 @@
-import React from 'react'
-import {
-  View,
-  Text
-} from 'react-native'
+import React                             from 'react'
+import { View, Text }                    from 'react-native'
 import { phaseProgressStyles as styles } from '../styles'
-import ProgressBar from 'react-native-progress/Bar'
+import ProgressBar                       from 'react-native-progress/Bar'
 
 export type PhaseProgressComponentProps = {
   phase: string,

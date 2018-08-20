@@ -1,5 +1,5 @@
-import { connect } from 'react-redux'
-import selectors from '../../../redux/selectors'
+import { connect }            from 'react-redux'
+import selectors              from '../../../redux/selectors'
 import PhaseProgressComponent from '../components/PhaseProgressComponent'
 import {
   phaseForUserForm,
@@ -8,8 +8,8 @@ import {
   MEDITATION,
   SELF_ASSESSMENT,
   VISION_CREATION
-} from '../../../services/cms'
-import { progressFillColor } from '../styles'
+}                             from '../../../services/cms'
+import { progressFillColor }  from '../styles'
 
 type PhaseProgressState = {
   sortedStepsWithForms: Array<any>,
@@ -25,8 +25,8 @@ type PhaseProgressContainerProps = {
   phase: string
 }
 
-const mapPhaseToName = ({ phase }: { phase: string}) => {
-  switch(phase){
+const mapPhaseToName = ({ phase }: { phase: string }) => {
+  switch (phase) {
     case MEDITATION:
       return 'MEDITATION'
     case SELF_ASSESSMENT:
@@ -86,9 +86,9 @@ const mergeProps = (
     colors && colors.override
       ? colors.override[phase].complete
       : colors.original[phase]
-    
+
   return {
-    phase: mapPhaseToName({phase}),
+    phase: mapPhaseToName({ phase }),
     phaseNumber,
     phaseColor,
     fill: fillColor,

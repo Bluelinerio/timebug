@@ -42,7 +42,7 @@ export const progressFillColor = fontColor
 
 export const phaseProgressStyles = StyleSheet.create({
   listContainer: {
-    flex:1,
+    flex: 1,
     flexDirection: 'row',
     paddingVertical: 12,
     alignItems: 'center',
@@ -70,11 +70,11 @@ export const phaseProgressStyles = StyleSheet.create({
     fontFamily: 'Metropolis'
   },
   mainArea: {
-    flex:1
+    flex: 1
   },
   secondaryArea: {
     marginTop: 4,
-    flex:1,
+    flex: 1,
     justifyContent: 'flex-end'
   },
   phaseProportion: {
@@ -91,7 +91,7 @@ export const phaseProgressStyles = StyleSheet.create({
         ...sanFranciscoWeights.bold
       }
     })
-  },
+  }
 })
 
 export default StyleSheet.create({
