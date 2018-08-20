@@ -16,7 +16,7 @@ export default class StartScreenComponent extends PureComponent {
         style={styles.container}
       >
         <StatusBar barStyle="dark-content" backgroundColor={'white'} />
-        <ScrollView style={[styles.container, styles.full]}>
+        <ScrollView style={[styles.container]}>
           <Banner />
           <View style={styles.container}>
             <PhaseProgress />

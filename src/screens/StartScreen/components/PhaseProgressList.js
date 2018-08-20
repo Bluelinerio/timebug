@@ -8,7 +8,7 @@ export type PhraseProgressListProps = {
 
 const PhaseProgressList = ({ phases }: PhraseProgressListProps) => {
   return (
-    <View style={styles.listContainer}>
+    <View style={[styles.listContainer, styles.content]}>
       {
         phases
           && phases.map((phase) => (

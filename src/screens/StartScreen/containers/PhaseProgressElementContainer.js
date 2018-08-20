@@ -4,10 +4,13 @@ import PhaseProgressComponent from '../components/PhaseProgressComponent'
 import {
   phaseForUserForm,
   phaseNumberForPhase,
-  phaseForStep
+  phaseForStep,
+  MEDITATION,
+  SELF_ASSESSMENT,
+  VISION_CREATION
 } from '../../../services/cms'
 import { progressFillColor } from '../styles'
-import tron from 'reactotron-react-native'
+
 type PhaseProgressState = {
   sortedStepsWithForms: Array<any>,
   user: any,
@@ -20,6 +23,19 @@ type PhaseProgressState = {
 
 type PhaseProgressContainerProps = {
   phase: string
+}
+
+const mapPhaseToName = ({ phase }: { phase: string}) => {
+  switch(phase){
+    case MEDITATION:
+      return 'MEDITATION'
+    case SELF_ASSESSMENT:
+      return 'SELF-ASSESSMENT'
+    case VISION_CREATION:
+      return 'VISION CREATION'
+    default:
+      return ''
+  }
 }
 
 const mapStateToProps = (state: any): PhaseProgressState => {
@@ -45,8 +61,6 @@ const mergeProps = (
   ownProps: PhaseProgressContainerProps
 ) => {
   const { sortedStepsWithForms, user, isLoggedIn, colors } = stateProps
-  tron.log(stateProps)
-  tron.log(ownProps)
   const { phase } = ownProps
   const phaseNumber = phaseNumberForPhase({ phase })
   const formsForPhase = sortedStepsWithForms.filter(form => {
@@ -63,7 +77,7 @@ const mergeProps = (
 
   const fillColor = progressFillColor
 
-  const nonFillColor =
+  const unfilledColor =
     colors && colors.override
       ? colors.override[phase].incomplete
       : colors.original[phase]
@@ -72,13 +86,13 @@ const mergeProps = (
     colors && colors.override
       ? colors.override[phase].complete
       : colors.original[phase]
-      
+    
   return {
-    phase,
+    phase: mapPhaseToName({phase}),
     phaseNumber,
     phaseColor,
     fill: fillColor,
-    bar: nonFillColor,
+    unfilledColor,
     ...stepsData
   }
 }

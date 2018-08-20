@@ -44,35 +44,54 @@ export const phaseProgressStyles = StyleSheet.create({
   listContainer: {
     flex:1,
     flexDirection: 'row',
-    padding: 12
+    paddingVertical: 12,
+    alignItems: 'center',
+    justifyContent: 'space-between'
+  },
+  content: {
+    padding: 20
   },
   phaseContainer: {
     flex: 1,
-    marginHorizontal: 4,
+    marginHorizontal: 6,
     borderRadius: 6,
     padding: 8
   },
   phaseNumber: {
+    ...iOSUIKit.caption2EmphasizedObject,
     color: fontColor,
-    fontSize: 12,
+    fontSize: 11,
     fontFamily: 'Metropolis'
   },
   phaseText: {
+    ...iOSUIKit.caption2EmphasizedObject,
     color: fontColor,
-    fontSize: 12,
+    fontSize: 11,
     fontFamily: 'Metropolis'
   },
   mainArea: {
     flex:1
   },
   secondaryArea: {
+    marginTop: 4,
     flex:1,
+    justifyContent: 'flex-end'
   },
   phaseProportion: {
     color: fontColor,
-    fontSize: 10,
+    fontSize: 8,
     fontFamily: 'Metropolis'
-  }
+  },
+  strong: {
+    ...Platform.select({
+      android: {
+        ...robotoWeights.bold
+      },
+      ios: {
+        ...sanFranciscoWeights.bold
+      }
+    })
+  },
 })
 
 export default StyleSheet.create({
