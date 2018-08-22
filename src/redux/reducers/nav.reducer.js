@@ -1,16 +1,18 @@
 import {
-  RootNavigator,
   rootConfiguration,
-  assignmentFlowConfiguration
+  assignmentFlowConfiguration,
+  tabConfiguration,
+  RootTabNavigator
 } from '../../navigation'
 
-const initialRouteState = RootNavigator.router.getStateForAction(
-  RootNavigator.router.getActionForPathAndParams(
-    rootConfiguration.routes.initialRouteName
+const initialRouteState = RootTabNavigator.router.getStateForAction(
+  RootTabNavigator.router.getActionForPathAndParams(
+    tabConfiguration.routes.initialRouteName
   )
 )
-const walkthroughState = RootNavigator.router.getStateForAction(
-  RootNavigator.router.getActionForPathAndParams(
+
+const walkthroughState = RootTabNavigator.router.getStateForAction(
+  RootTabNavigator.router.getActionForPathAndParams(
     rootConfiguration.routes.Walkthrough
   ),
   initialRouteState
@@ -22,7 +24,7 @@ if (!initialRouteState || !walkthroughState) {
 const initialState = walkthroughState
 
 function navReducer(state = initialState, action) {
-  const newState = RootNavigator.router.getStateForAction(action, state)
+  const newState = RootTabNavigator.router.getStateForAction(action, state)
   return newState || state
 }
 
@@ -83,7 +85,7 @@ const isAssignmentFlowValid = assignmentFlow => {
   }
 }
 
-const thisVersion = 9
+const thisVersion = 11
 const persistConfig = {
   key: 'nav',
   storage: storage,
@@ -101,7 +103,7 @@ const persistConfig = {
       const initialRouteName = state.routes[0].routeName
       if (
         !initialRouteName /* this can happen sometimes! */ ||
-        initialRouteName !== rootConfiguration.routes.initialRouteName
+        initialRouteName !== tabConfiguration.routes.initialRouteName
       ) {
         return Promise.resolve(initialRouteState)
       }

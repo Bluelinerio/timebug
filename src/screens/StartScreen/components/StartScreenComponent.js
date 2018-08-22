@@ -7,7 +7,6 @@ import Version                         from '../../../containers/Version'
 import Banner                          from '../../../components/MinifiedBanner'
 import ContentArea                     from './../containers/ContentAreaContainer'
 import PhaseProgress                   from '../containers/PhaseProgressContainer'
-import DummyTab                        from '../../../components/DummyTabBar'
 
 export default class StartScreenComponent extends PureComponent {
   render() {
@@ -25,7 +24,6 @@ export default class StartScreenComponent extends PureComponent {
             <Version />
           </View>
         </ScrollView>
-        <DummyTab />
       </SafeAreaView>
     )
   }

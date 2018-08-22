@@ -7,14 +7,18 @@ export default {
     StartScreen: 'StartScreen',
     DashboardScreen: 'DashboardScreen',
     initialRouteName: 'StartScreen',
-    MeditationScreen: 'MeditationScreen',
     MarkdownScreen: 'MarkdownScreen',
-    EmojiPickerScreen: 'EmojiPickerScreen',
-    MyJourneyScreen: 'MyJourneyScreen'
+    EmojiPickerScreen: 'EmojiPickerScreen'
   },
   step: {
     StepScreen: 'StepScreen',
     WorkbookScreen: 'WorkbookScreen',
     WorkbookDoneScreen: 'WorkbookDoneScreen'
+  },
+  tab: {
+    initialRouteName: 'RootNavigator',
+    MyJourneyScreen: 'MyJourneyScreen',
+    MeditationScreen: 'MeditationScreen',
+    RootNavigator: 'RootNavigator'
   }
 }

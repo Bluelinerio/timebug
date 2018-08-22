@@ -1,19 +1,32 @@
-import { Platform } from 'react-native'
-import { StackNavigator, NavigationActions } from 'react-navigation'
+import React              from 'react'
+import { Platform }       from 'react-native'
+import {
+  StackNavigator,
+  NavigationActions,
+  TabNavigator,
+  TabBarBottom
+}                         from 'react-navigation'
 
-import HomeScreen from '../screens/HomeScreen'
-import StepScreen from '../screens/StepScreen'
+import {
+  tabBarBackground,
+  tabBarButtonColor,
+  tabBarUnselected
+}                         from '../constants/colors'
+import TabBarIcon         from '../components/TabBarIcon'
+
+import HomeScreen         from '../screens/HomeScreen'
+import StepScreen         from '../screens/StepScreen'
 import WorkbookDoneScreen from '../screens/WorkbookDoneScreen'
-import WorkbookScreen from '../screens/WorkbookScreen'
-import WalkthroughScreen from '../screens/WalkthroughScreen'
-import DashboardScreen from '../screens/DashboardScreen'
-import MeditationScreen from '../screens/MeditationScreen'
-import MarkdownScreen from '../screens/MarkdownScreen'
-import EmojiPickerScreen from '../screens/EmojiPickerScreen'
-import MyJourneyScreen from '../screens/MyJourneyScreen'
-import StartScreen from '../screens/StartScreen'
-import { uriPrefix } from '../constants'
-import routes from './routes'
+import WorkbookScreen     from '../screens/WorkbookScreen'
+import WalkthroughScreen  from '../screens/WalkthroughScreen'
+import DashboardScreen    from '../screens/DashboardScreen'
+import MeditationScreen   from '../screens/MeditationScreen'
+import MarkdownScreen     from '../screens/MarkdownScreen'
+import EmojiPickerScreen  from '../screens/EmojiPickerScreen'
+import MyJourneyScreen    from '../screens/MyJourneyScreen'
+import StartScreen        from '../screens/StartScreen'
+import { uriPrefix }      from '../constants'
+import routes             from './routes'
 
 if (!routes || !routes.root || !routes.root.initialRouteName || !routes.step) {
   throw 'missing routes or nested fields ' + JSON.stringify(routes)
@@ -66,17 +79,11 @@ export const rootConfiguration = {
       screen: DashboardScreen,
       path: 'dashboard'
     },
-    [routes.root.MeditationScreen]: {
-      screen: MeditationScreen
-    },
     [routes.root.MarkdownScreen]: {
       screen: MarkdownScreen
     },
     [routes.root.EmojiPickerScreen]: {
       screen: EmojiPickerScreen
-    },
-    [routes.root.MyJourneyScreen]: {
-      screen: MyJourneyScreen
     },
     [routes.root.StartScreen]: {
       screen: StartScreen
@@ -98,6 +105,51 @@ export const RootNavigator = StackNavigator(
   rootConfiguration.options
 )
 
+export const tabConfiguration = {
+  routes: routes.tab,
+  screens: {
+    [routes.tab.RootNavigator]: {
+      screen: RootNavigator
+    },
+    // [routes.tab.MeditationScreen]: {
+    //   screen: MeditationScreen
+    // },
+    [routes.tab.MyJourneyScreen]: {
+      screen: MyJourneyScreen
+    }
+  },
+  options: {
+    initialRouteName: routes.tab.initialRouteName,
+    navigationOptions: ({ navigation }) => ({
+      tabBarIcon: ({ focused, tintColor }) => {
+        const { routeName } = navigation.state
+        return (
+          <TabBarIcon
+            routeName={routeName}
+            focused={focused}
+            tintColor={tintColor}
+          />
+        )
+      }
+    }),
+    tabBarOptions: {
+      activeTintColor: tabBarButtonColor,
+      inactiveTintColor: tabBarUnselected,
+      style: {
+        backgroundColor: tabBarBackground
+      }
+    },
+    tabBarComponent: TabBarBottom,
+    tabBarPosition: 'bottom',
+    animationEnabled: false,
+    swipeEnabled: false
+  }
+}
+export const RootTabNavigator = TabNavigator(
+  tabConfiguration.screens,
+  tabConfiguration.options
+)
+
 // fix for debouncing
 import { fixDebounce } from './util'
 fixDebounce(RootNavigator)
@@ -105,9 +157,9 @@ fixDebounce(AssignmentFlowNavigator)
 // remove once fixed...
 
 const previousGetActionForPathAndParams =
-  RootNavigator.router.getActionForPathAndParams
+  RootTabNavigator.router.getActionForPathAndParams
 
-Object.assign(RootNavigator.router, {
+Object.assign(RootTabNavigator.router, {
   getActionForPathAndParams(path, params) {
     const key = path.split('/')[1]
     if (key === 'step') {
