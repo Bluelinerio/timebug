@@ -3,9 +3,12 @@ import React     from 'react'
 import { View }  from 'react-native'
 import ListEntry from './ListEntry'
 import styles    from '../styles'
+import type {
+  FormElement
+}                from '../containers/types'
 
-type ListElementProps = {
-  elements: [any],
+export type ListElementProps = {
+  elements: Array<FormElement>,
   style?: any
 }
 

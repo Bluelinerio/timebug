@@ -19,12 +19,13 @@ export type AwardData = {
 
 type ModelElementType = 'label' | 'checkbox'
 
-/**
- * The key inside fields refers to the column or element that has a checkbox
- */
-
 export type Model = {
   type: ModelElementType,
+  fields?: {
+    [x: string]: Model
+  },
+  key?: string,
+  column?: boolean,
   options?: {
     header?: string,
     label?: string

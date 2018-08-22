@@ -4,11 +4,16 @@ import { View, Platform }                 from 'react-native'
 import Carousel                           from 'react-native-snap-carousel'
 import CarouselEntry                      from './CarouselEntry'
 import styles, { sliderWidth, itemWidth } from '../styles/CarouselStyles'
-import { CarouselEntryType }              from '../containers/JourneyCarouselContainer'
+import { CarouselEntryType }              from '../containers/types'
 
 type JourneyCarouselComponentProps = {
   entries: [CarouselEntryType],
   render: React.ComponentType<any>
+}
+
+type JourneyCarouselState = {
+  entries: [CarouselEntryType],
+  carouselRef: any
 }
 
 export default class JourneyCarouselComponent extends Component<
