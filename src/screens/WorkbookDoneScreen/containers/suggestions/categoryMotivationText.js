@@ -16,7 +16,13 @@ import {
   FINISHED
 } from './constants'
 
-const categoryMotivationText = {
+import { MotivationElement } from './types'
+
+export type CategoryMotivationObject = {
+  [x: string]: MotivationElement
+}
+
+const categoryMotivationText: CategoryMotivationObject = {
   [REFLECTION]: {
     [HOME_SCREEN]: ({ suggestedNextStep }) =>
       `Based on your activity so far, it seems like this app is helping you with instrospection and self reflection. We love that! You might want to try step ${suggestedNextStep}.`,
@@ -50,7 +56,7 @@ const categoryMotivationText = {
   [HEALTH]: {
     [HOME_SCREEN]: ({ suggestedNextStep }) =>
       `Based on your use of this app so far, it looks like Health and Wellness is an area of particular interest for you. This is great, and at Timebug, health is a holisitc concept, taking into account the physical, psychological and spiritual. With this in mind, we suggest you continue with step ${suggestedNextStep}.`,
-    [DONE_SCREEN]: ({ suggestedNextStep,previousStep }) =>
+    [DONE_SCREEN]: ({ suggestedNextStep, previousStep }) =>
       `Nice job, you've completed ${previousStep}. Based on your use of this app so far, it looks like Health and Wellness is an area of particular interest for you. This is great, and at Timebug, health is a holisitc concept, taking into account the physical, psychological and spiritual. With this in mind, we suggest you continue with step ${suggestedNextStep}.`
   },
   [RELATIONSHIPS]: {
