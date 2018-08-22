@@ -8,48 +8,53 @@ import {
   take,
   select,
   takeLatest,
-  race,
-  channel
-} from 'redux-saga/effects'
-import { delay } from 'redux-saga'
-
-import { createForm, updateForm, resetUserSteps } from '../../services/apollo'
+  race
+}                             from 'redux-saga/effects'
+import { delay }              from 'redux-saga'
+import {
+  createForm,
+  updateForm,
+  resetUserSteps,
+  deleteForm
+}                             from '../../services/apollo'
 import type { UpdateormArgs } from '../../services/apollo/models'
-
 import {
   SYNC_FORM_DATA,
   RESET_FORMS_REQUEST,
   RESET_FORMS,
   START_LOADING_FORMDATA,
   STOP_LOADING_FORMDATA
-} from '../actionTypes'
-
-import { GET_USER, updateUser, resetUserSteps as resetAction } from '../actions/user.actions'
+}                             from '../actionTypes'
+import {
+  GET_USER,
+  updateUser,
+  resetUserSteps as resetAction
+}                             from '../actions/user.actions'
 import {
   incrementFormDataQueue,
   decrementFormDataQueue,
   setLoadingFormData,
   setNotLoadingFormData,
-  stopLoadingFormData, 
-  startLoadingFormData 
-} from '../actions/formData.actions'
-import selectors from '../selectors'
-import { diffObjs } from '../utils/diffObjs'
+  stopLoadingFormData,
+  startLoadingFormData
+}                             from '../actions/formData.actions'
+import selectors              from '../selectors'
+import { diffObjs }           from '../utils/diffObjs'
+import tron                   from 'reactotron-react-native'
 
 export const UPDATE_AND_CREATE_FORMS = 'UPDATE_AND_CREATE_FORMS'
 
-// export const LOG = 'LOG';
-//const log = payload => yield put({ type: LOG,  payload });
-const log = payload => console.log(payload)
+// DO NOT STAGE THIS CHANGE
+const log = payload => tron.log(payload)
 
-const range = (start, end) =>
+const range = (start: number, end: number) : Array<number> =>
   Array(end - start)
     .fill()
     .map((v, i) => i + start)
 
-const stepIds = range(1, 31).map((v, i) => v.toString())
+const stepIds: Array<string> = range(1, 31).map(v => v.toString())
 
-const removeAllKeyButStepIds = (obj: {}) =>
+const removeAllKeyButStepIds = (obj: {}): any =>
   Object.keys(obj)
     .filter(k => stepIds.includes(k))
     .reduce(
@@ -60,7 +65,7 @@ const removeAllKeyButStepIds = (obj: {}) =>
       {}
     )
 
-function* mySelectors(props) {
+function* mySelectors(props: any): any {
   const keys = Object.keys(props)
   let result = {}
   for (let index = 0; index < keys.length; index++) {
@@ -71,8 +76,48 @@ function* mySelectors(props) {
   return result
 }
 
+const findRepeatedForms = (formData: {}): {} => {
+  return formData
+    .sort((a, b) => a.stepId - b.stepId)
+    .reduce((prev, f, index, arr) => {
+      if (
+        (arr.length > index + 1 && arr[index + 1].stepId === f.stepId) ||
+        prev.find(form => form.stepId === f.stepId)
+      )
+        return [...prev, f]
+      return prev
+    }, [])
+    .sort((a, b) => a.stepId - b.stepId)
+    .sort((a, b) => {
+      if (a.stepId === b.stepId)
+        return Date.parse(b.updatedAt) - Date.parse(a.updatedAt)
+      else return 0
+    })
+    .reduce((forms, form, index, arr) => {
+      const prev = index > 0 ? arr[index - 1] : null
+      if (prev && prev.stepId === form.stepId) return [...forms, form]
+      return forms
+    }, [])
+}
+
+function* removeRepeatedForms(user) {
+  const { forms } = user
+  const repeatedForms = yield call(findRepeatedForms, forms)
+  const finalForms = forms.filter(
+    f => (repeatedForms.find(form => form.id === f.id) ? false : true)
+  )
+  for (let form of repeatedForms) {
+    yield fork(deleteForm, {
+      ...form
+    })
+  }
+  return {
+    ...user,
+    forms: finalForms
+  }
+}
+
 function* reviewCurrentUserFormsAndFormDataCompareAndUpdateToState() {
-  //const userId = yield select(selectors.userId)
   yield put(startLoadingFormData())
 
   log({
@@ -103,12 +148,15 @@ function* reviewCurrentUserFormsAndFormDataCompareAndUpdateToState() {
     }
   }
 
+  const forms = yield select(selectors.completedForms)
+  const deletable = yield call(findRepeatedForms, forms)
+
   const { difference, onlyOnLeft } = diffObjs(
     removeAllKeyButStepIds(formData),
     removeAllKeyButStepIds(completedFormsData)
   )
 
-  if (!difference && !onlyOnLeft) {
+  if (!difference && !onlyOnLeft && deletable.length === 0) {
     yield put(stopLoadingFormData())
     log({
       info:
@@ -149,15 +197,14 @@ function* reviewCurrentUserFormsAndFormDataCompareAndUpdateToState() {
       ]
     }, [])
 
-  const formDataRequestCount = yield select(
-    state => state.formData.requestCount
-  )
+  const deletes = deletable.filter(d => d.id)
 
   log({
     info:
       'Commencing with sync request after reviewing differences between form data and user forms',
     creates,
-    updates
+    updates,
+    deletes
   })
 
   yield put(stopLoadingFormData())
@@ -166,28 +213,31 @@ function* reviewCurrentUserFormsAndFormDataCompareAndUpdateToState() {
     type: UPDATE_AND_CREATE_FORMS,
     payload: {
       creates,
-      updates
+      updates,
+      deletes
     }
   })
 }
 
-function* _handleReset(){
+function* _handleReset() {
   const userId = yield select(selectors.userId)
   try {
     const data = yield call(resetUserSteps, userId)
+    log({
+      data
+    })
     yield putResolve({
       type: RESET_FORMS
     })
     yield putResolve(resetAction())
   } catch (error) {
-    if (__DEV__)
-      throw error
+    if (__DEV__) throw error
   }
 }
 
 function* timeout(duration = 5000) {
   yield call(delay, duration)
-  throw new Error("Timeout")
+  throw new Error('Timeout')
 }
 
 function* watchForStopFormData() {
@@ -195,17 +245,22 @@ function* watchForStopFormData() {
 }
 
 function* raceLoadingForm() {
-    try{
-        yield put(setLoadingFormData())
-        const result = yield race({
-          request: call(watchForStopFormData),
-          timeout: call(timeout, 8000)
-        })
-    }
-    catch(error) {}
-    finally {
-      yield put(setNotLoadingFormData())      
-    }
+  try {
+    yield put(setLoadingFormData())
+    const result = yield race({
+      request: call(watchForStopFormData),
+      timeout: call(timeout, 8000)
+    })
+    log({
+      result
+    })
+  } catch (error) {
+    log({
+      error
+    })
+  } finally {
+    yield put(setNotLoadingFormData())
+  }
 }
 
 function* watchForLoadingForm() {
@@ -213,15 +268,16 @@ function* watchForLoadingForm() {
   yield takeLatest(startChan, raceLoadingForm)
 }
 
-function* watchForResetSteps(){
+function* watchForResetSteps() {
   yield takeLatest(RESET_FORMS_REQUEST, _handleReset)
 }
 
 function* watchForUpdateOrCreate() {
-  while(true) {
+  while (true) {
     const { payload } = yield take(UPDATE_AND_CREATE_FORMS)
     if (payload && (payload.updates || payload.creates)) {
       yield fork(syncRequests, payload)
+      yield delay(5000)
     }
   }
 }
@@ -239,7 +295,7 @@ export function* watchSyncFormData() {
 }
 
 function* syncRequests(payload) {
-  const { updates, creates } = payload
+  const { updates, creates, deletes } = payload
 
   const userId = yield select(selectors.userId)
   if (!userId) return
@@ -249,7 +305,6 @@ function* syncRequests(payload) {
   // run serially, ideally we want to be able to compose those requests, and send them in one go...
 
   yield delay(1)
-
 
   let _user = null
   if (updates && updates.length) {
@@ -300,8 +355,43 @@ function* syncRequests(payload) {
       }
     }
   }
+  if (deletes && deletes.length) {
+    for (let index = 0; index < deletes.length; index++) {
+      const del = deletes[index]
+      try {
+        if (__DEV__) testDelete(del)
+        const { id } = yield call(deleteForm, {
+          ...del
+        })
+        const userForms = yield select(selectors.completedForms)
+        const currentUserState = _user ? _user : { forms: userForms }
+        const currentForms = currentUserState.forms.filter(f => f.id !== id)
+        _user = {
+          ...currentUserState,
+          forms: currentForms
+        }
+        log({
+          info: `Completed synching on delete between form data and user forms`,
+          del
+        })
+      } catch (error) {
+        _user = null
+        log({
+          info: `Form Synch: Failed on delete between form data and user forms`,
+          error,
+          del
+        })
+      }
+    }
+  }
 
   if (_user) {
+    /**
+     * Redundant deletion in case the responses come with repeated steps
+     * uncomment the line below in case the app can´t logically handle repeated steps normally
+     * also replace _user with finalUser on the update
+     */
+    // const finalUser = yield call(removeRepeatedForms, _user)
     yield putResolve(updateUser(_user))
   }
 
@@ -341,5 +431,11 @@ const testUpdate = (update: UpdateormArgs) => {
   }
   if (!update.data) {
     throw `missing data in update:${JSON.stringify(update)}`
+  }
+}
+
+const testDelete = del => {
+  if (!del.id) {
+    throw `missing id in delete:${JSON.stringify(del)}`
   }
 }
