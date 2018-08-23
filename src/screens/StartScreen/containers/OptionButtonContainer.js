@@ -5,6 +5,7 @@ import { withNavigation }                  from 'react-navigation'
 import OptionButton, { OptionButtonProps } from '../components/OptionButton'
 import { openModal }                       from '../../../redux/actions/modal.actions'
 import { key as loginModalKey }            from '../../../components/LoginModal'
+import { key as audioModalKey }            from '../../../components/AudioModal'
 import styles                              from '../styles'
 import {
   getColorForStepAtIndex,
@@ -21,7 +22,8 @@ import selectors                           from '../../../redux/selectors'
 import tron from 'reactotron-react-native'
 
 type OptionButtonDispatchProps = {
-  login: () => any
+  login: () => any,
+  openAudio: () => any
 }
 
 type OptionButtonStateProps = {
@@ -45,7 +47,8 @@ const mapStateToProps = (state: any): OptionButtonStateProps => {
 }
 
 const mapDispatchToProps = (dispatch: any): OptionButtonDispatchProps => ({
-  login: () => dispatch(openModal({ key: loginModalKey }))
+  login: () => dispatch(openModal({ key: loginModalKey })),
+  openAudio: ({ audio = null, icon, title, snippet }) => dispatch(openModal({ key: audioModalKey, params: { audio, icon, title, snippet }}))
 })
 
 const merge = (
@@ -55,7 +58,7 @@ const merge = (
 ): OptionButtonProps => {
   const { user } = stateProps
   const { stepColors, step, navigation } = ownProps
-  const { login } = dispatchProps
+  const { login, openAudio } = dispatchProps
 
   tron.log(step)
 
@@ -88,7 +91,7 @@ const merge = (
           )
         : login(),
     sideActions: {
-      audio: () => login(),
+      audio: () => openAudio({ title, icon, snippet }),
       content: () => navigation.dispatch(goToAssignmentFlow({ step }))
     },
     source: icon,

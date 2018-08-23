@@ -2,7 +2,8 @@
 import { OPEN_MODAL, CLOSE_MODAL } from '../actionTypes'
 
 export type ModalActionPayload = {
-  key: string
+  key: string,
+  params: any
 }
 
 export const openModal = (payload: ModalActionPayload) => ({

@@ -4,7 +4,8 @@ import ModalComponent            from '../components/ModalComponent'
 import { openModal, closeModal } from '../redux/actions/modal.actions'
 
 type ModalState = {
-  openKeys: [string]
+  openKeys: [string],
+  params: any
 }
 
 type ModalDispatch = {
@@ -13,9 +14,10 @@ type ModalDispatch = {
 }
 
 const mapStateToProps = (state: any): ModalState => {
-  const { modal: { openKeys } } = state
+  const { modal: { openKeys, params } } = state
   return {
-    openKeys
+    openKeys,
+    params
   }
 }
 
