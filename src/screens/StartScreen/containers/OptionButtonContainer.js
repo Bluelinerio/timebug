@@ -48,7 +48,7 @@ const mapStateToProps = (state: any): OptionButtonStateProps => {
 
 const mapDispatchToProps = (dispatch: any): OptionButtonDispatchProps => ({
   login: () => dispatch(openModal({ key: loginModalKey })),
-  openAudio: ({ audio = null, icon, title, snippet }) => dispatch(openModal({ key: audioModalKey, params: { audio, icon, title, snippet }}))
+  openAudio: ({ audio, icon, title, snippet }) => dispatch(openModal({ key: audioModalKey, params: { audio, icon, title, snippet }}))
 })
 
 const merge = (

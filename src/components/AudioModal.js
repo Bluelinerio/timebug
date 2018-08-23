@@ -42,54 +42,65 @@ const defaultAudio =
 const onLoad = () => tron.log('loading')
 const onEnd = () => tron.log('ended')
 
-const AudioModal = (props: AudioModalProps) => {
-  const { isOpen, close, title, snippet, audio = defaultAudio, icon } = props
-  tron.log('Rendered Audio Modal')
-  tron.log(props)
-  return (
-    <Modal
-      animationType="slide"
-      transparent={true}
-      visible={isOpen}
-      onRequestClose={() => {
-        close()
-      }}
-    >
-      <StatusBar barStyle="dark-content" backgroundColor={statusBarColor} />
-      <View style={styles.modalContainer}>
-        <Gradient colors={gradientColors} style={styles.modal}>
-          <View style={styles.modalHeader}>
-            <View style={[styles.headerBlock, styles.iconBlock]}>
-              <TouchableOpacity
-                onPress={close}
-                style={styles.closeButtonContainer}
-              >
-                <Icon
-                  name={'close'}
-                  color={closeButtonColor}
-                  size={closeButtonSize}
-                />
-              </TouchableOpacity>
+class AudioModal extends React.PureComponent<AudioModalProps> {
+  render() {
+    const { isOpen, close, title, snippet, audio = defaultAudio } = this.props
+    tron.log('Rendered Audio Modal')
+    tron.log(this.props)
+    return (
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={isOpen}
+        onRequestClose={() => {
+          close()
+        }}
+      >
+        <StatusBar barStyle="dark-content" backgroundColor={statusBarColor} />
+        <View style={styles.modalContainer}>
+          <Gradient colors={gradientColors} style={styles.modal}>
+            <View style={styles.modalHeader}>
+              <View style={[styles.headerBlock, styles.iconBlock]}>
+                <TouchableOpacity
+                  onPress={close}
+                  style={styles.closeButtonContainer}
+                >
+                  <Icon
+                    name={'close'}
+                    color={closeButtonColor}
+                    size={closeButtonSize}
+                  />
+                </TouchableOpacity>
+              </View>
             </View>
-          </View>
-          <View style={styles.titleContainer}>
-            <Text style={styles.title}>{title}</Text>
-          </View>
-          <View style={styles.headerBlock}>
-            <Image style={[styles.headerIcon]} source={icon} />
-          </View>
-          <View style={styles.textBlock}>
-            <Text style={styles.text}>{snippet}</Text>
-          </View>
-          <Video 
-            source={{ uri: audio }}
-            onLoad={onLoad}
-            onEnd={onEnd}
-          />
-        </Gradient>
-      </View>
-    </Modal>
-  )
+            <View style={styles.titleContainer}>
+              <Text style={styles.title}>{title}</Text>
+            </View>
+            <View style={styles.headerBlock}>
+              <Image style={[styles.headerIcon]} source={icon} />
+            </View>
+            <View style={styles.textBlock}>
+              <Text style={styles.text}>{snippet}</Text>
+            </View>
+            {isOpen &&
+              audio && (
+                <Video
+                  ref={ref => {
+                    this.player = ref
+                  }}
+                  source={{ uri: audio }}
+                  onLoad={onLoad}
+                  onEnd={onEnd}
+                />
+              )}
+            <TouchableOpacity onPress={() => this.player.seek(0)}>
+              <View style={{ width: 60, height: 40, backgroundColor: 'red' }} />
+            </TouchableOpacity>
+          </Gradient>
+        </View>
+      </Modal>
+    )
+  }
 }
 
 export default AudioModal

@@ -50,9 +50,6 @@ const initialState = {
 }
 
 export default (state: ModalState = initialState, action: ModalAction) => {
-  tron.log("MODALSTATE")
-  tron.log(state)
-  tron.log(action)
   switch (action.type) {
     case OPEN_MODAL:
       return handleOpen(state, action.payload)
