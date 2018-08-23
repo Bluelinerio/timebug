@@ -57,7 +57,9 @@ const merge = (
   const { stepColors, step, navigation } = ownProps
   const { login } = dispatchProps
 
-  const { number, title, icon } = step
+  tron.log(step)
+
+  const { number, title, icon, snippet } = step
   const isLoggedIn = typeof user === 'string' ? false : true
 
   tron.log(`Calling merge on step: ${number}`)
@@ -74,6 +76,7 @@ const merge = (
   return {
     text: `${title}`,
     step: `${number}`,
+    subtitleText: `${snippet}`,
     phase: phaseForStepAtIndex(number - 1),
     onPress: () =>
       isLoggedIn
