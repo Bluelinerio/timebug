@@ -17,7 +17,8 @@ import styles, {
 import { icon } from '../resources/images'
 import Icon from 'react-native-vector-icons/dist/MaterialIcons'
 
-import Video from 'react-native-video'
+import AudioVideo from './AudioVideoComponent'
+// import Video from 'react-native-video'
 
 import tron from 'reactotron-react-native'
 
@@ -38,9 +39,6 @@ export const key = 'Audio'
 
 const defaultAudio =
   'https://assets.ctfassets.net/6h184bey8vl3/7JQ278WKGsAKcQO4KWWSkI/7a6a37e74821aa780f71dec640c0f14a/test__online-audio-converter.com_.mp3'
-
-const onLoad = () => tron.log('loading')
-const onEnd = () => tron.log('ended')
 
 class AudioModal extends React.PureComponent<AudioModalProps> {
   render() {
@@ -84,18 +82,10 @@ class AudioModal extends React.PureComponent<AudioModalProps> {
             </View>
             {isOpen &&
               audio && (
-                <Video
-                  ref={ref => {
-                    this.player = ref
-                  }}
-                  source={{ uri: audio }}
-                  onLoad={onLoad}
-                  onEnd={onEnd}
-                />
+                <React.Fragment>
+                  <AudioVideo file={audio} />
+                </React.Fragment>
               )}
-            <TouchableOpacity onPress={() => this.player.seek(0)}>
-              <View style={{ width: 60, height: 40, backgroundColor: 'red' }} />
-            </TouchableOpacity>
           </Gradient>
         </View>
       </Modal>
