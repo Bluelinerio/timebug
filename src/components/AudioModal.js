@@ -17,19 +17,33 @@ import styles, {
 import { icon } from '../resources/images'
 import Icon from 'react-native-vector-icons/dist/MaterialIcons'
 
+import Video from 'react-native-video'
+
 import tron from 'reactotron-react-native'
 
 export type AudioModalProps = {
   isOpen: boolean,
   title: string,
   snippet: string,
+  audio: string,
+  icon:
+    | string
+    | {
+        uri: string
+      },
   close: () => any
 }
 
 export const key = 'Audio'
 
+const defaultAudio =
+  'https://assets.ctfassets.net/6h184bey8vl3/7JQ278WKGsAKcQO4KWWSkI/7a6a37e74821aa780f71dec640c0f14a/test__online-audio-converter.com_.mp3'
+
+const onLoad = () => tron.log('loading')
+const onEnd = () => tron.log('ended')
+
 const AudioModal = (props: AudioModalProps) => {
-  const { isOpen, close, title, snippet } = props
+  const { isOpen, close, title, snippet, audio = defaultAudio, icon } = props
   tron.log('Rendered Audio Modal')
   tron.log(props)
   return (
@@ -59,18 +73,19 @@ const AudioModal = (props: AudioModalProps) => {
             </View>
           </View>
           <View style={styles.titleContainer}>
-            <Text style={styles.title}>
-              {title}
-            </Text>
+            <Text style={styles.title}>{title}</Text>
           </View>
           <View style={styles.headerBlock}>
             <Image style={[styles.headerIcon]} source={icon} />
           </View>
           <View style={styles.textBlock}>
-            <Text style={styles.text}>
-                {snippet}
-            </Text>
+            <Text style={styles.text}>{snippet}</Text>
           </View>
+          <Video 
+            source={{ uri: audio }}
+            onLoad={onLoad}
+            onEnd={onEnd}
+          />
         </Gradient>
       </View>
     </Modal>
