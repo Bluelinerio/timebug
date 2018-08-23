@@ -80,7 +80,7 @@ export default StyleSheet.create({
   textBlock: {
     flex: 1,
     flexDirection: 'row',
-    alignItems: 'center',    
+    alignItems: 'flex-start',    
     justifyContent: 'flex-start',
     paddingVertical: 12,
     paddingHorizontal: 16
@@ -96,5 +96,8 @@ export default StyleSheet.create({
     textAlign: 'center',
     fontFamily: 'Metropolis',
     color: deepBlue
+  },
+  titleContainer: {
+    paddingHorizontal: 8
   }
 })

@@ -29,7 +29,7 @@ export type AudioModalProps = {
 export const key = 'Audio'
 
 const AudioModal = (props: AudioModalProps) => {
-  const { isOpen, close, title } = props
+  const { isOpen, close, title, snippet } = props
   tron.log('Rendered Audio Modal')
   tron.log(props)
   return (
@@ -58,11 +58,18 @@ const AudioModal = (props: AudioModalProps) => {
               </TouchableOpacity>
             </View>
           </View>
-          <Text style={styles.title}>
-            {title}
-          </Text>
+          <View style={styles.titleContainer}>
+            <Text style={styles.title}>
+              {title}
+            </Text>
+          </View>
           <View style={styles.headerBlock}>
             <Image style={[styles.headerIcon]} source={icon} />
+          </View>
+          <View style={styles.textBlock}>
+            <Text style={styles.text}>
+                {snippet}
+            </Text>
           </View>
         </Gradient>
       </View>
