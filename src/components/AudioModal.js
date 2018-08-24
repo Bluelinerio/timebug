@@ -25,7 +25,6 @@ import tron from 'reactotron-react-native'
 export type AudioModalProps = {
   isOpen: boolean,
   title: string,
-  snippet: string,
   audio: string,
   icon:
     | string
@@ -42,7 +41,7 @@ const defaultAudio =
 
 class AudioModal extends React.PureComponent<AudioModalProps> {
   render() {
-    const { isOpen, close, title, snippet, audio = defaultAudio } = this.props
+    const { isOpen, close, title, audio = defaultAudio } = this.props
     tron.log('Rendered Audio Modal')
     tron.log(this.props)
     return (
@@ -76,9 +75,6 @@ class AudioModal extends React.PureComponent<AudioModalProps> {
             </View>
             <View style={styles.headerBlock}>
               <Image style={[styles.headerIcon]} source={icon} />
-            </View>
-            <View style={styles.textBlock}>
-              <Text style={styles.text}>{snippet}</Text>
             </View>
             {isOpen &&
               audio && (
