@@ -1,9 +1,8 @@
 //@flow
-import React from 'react'
+import React          from 'react'
 import { View, Text } from 'react-native'
-import Slider from 'react-native-slider'
-
-import styles from '../styles/components/AudioVideoComponent'
+import Slider         from 'react-native-slider'
+import styles         from '../styles/components/AudioVideoComponent'
 
 const pad = (n, width, z = 0) => {
   n = n + ''
@@ -37,9 +36,7 @@ const SeekBar = (props: SeekBarProps) => {
         value={currentPosition}
       />
       <View style={styles.textContainer}>
-        <Text style={styles.text}>
-          {`${remaining[0]}:${remaining[1]}`}
-        </Text>
+        <Text style={styles.text}>{`${remaining[0]}:${remaining[1]}`}</Text>
       </View>
     </View>
   )

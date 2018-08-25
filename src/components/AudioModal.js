@@ -1,4 +1,4 @@
-import React from 'react'
+import React      from 'react'
 import {
   View,
   Modal,
@@ -6,21 +6,17 @@ import {
   StatusBar,
   Text,
   Image
-} from 'react-native'
-import Gradient from '../components/Gradient'
+}                 from 'react-native'
+import Gradient   from '../components/Gradient'
 import styles, {
   statusBarColor,
   closeButtonColor,
   closeButtonSize,
   gradientColors
-} from '../styles/components/AudioModal'
-import { icon } from '../resources/images'
-import Icon from 'react-native-vector-icons/dist/MaterialIcons'
-
+}                 from '../styles/components/AudioModal'
+import { icon }   from '../resources/images'
+import Icon       from 'react-native-vector-icons/dist/MaterialIcons'
 import AudioVideo from './AudioVideoComponent'
-// import Video from 'react-native-video'
-
-import tron from 'reactotron-react-native'
 
 export type AudioModalProps = {
   isOpen: boolean,
@@ -42,7 +38,6 @@ const defaultAudio =
 class AudioModal extends React.PureComponent<AudioModalProps> {
   render() {
     const { isOpen, close, title, audio = defaultAudio } = this.props
-    tron.log(this.props)
     return (
       <Modal
         animationType="slide"
@@ -54,7 +49,10 @@ class AudioModal extends React.PureComponent<AudioModalProps> {
       >
         <StatusBar barStyle="dark-content" backgroundColor={statusBarColor} />
         <View style={styles.modalContainer}>
-          <TouchableOpacity style={styles.modalBackgroundTouchable} onPress={close} />
+          <TouchableOpacity
+            style={styles.modalBackgroundTouchable}
+            onPress={close}
+          />
           <Gradient colors={gradientColors} style={styles.modal}>
             <View style={styles.modalHeader}>
               <View style={[styles.headerBlock, styles.iconBlock]}>

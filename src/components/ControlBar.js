@@ -1,10 +1,10 @@
 //@flow
-import React from 'react'
+import React                      from 'react'
 import { View, TouchableOpacity } from 'react-native'
-import Icon from 'react-native-vector-icons/Ionicons'
-import SeekBar from './SeekBar'
+import Icon                       from 'react-native-vector-icons/Ionicons'
+import SeekBar                    from './SeekBar'
 
-import styles, { iconSize } from '../styles/components/AudioVideoComponent'
+import styles, { iconSize }       from '../styles/components/AudioVideoComponent'
 
 export type ControlBarProps = {
   iconName: string,
@@ -17,18 +17,11 @@ export type ControlBarProps = {
 
 const ControlBar = (props: ControlBarProps) => {
   return (
-    <View
-      style={styles.controlBarContainer}
-    >
-      <TouchableOpacity
-        onPress={props.onButtonPress}
-        style={styles.playButton}
-      >
+    <View style={styles.controlBarContainer}>
+      <TouchableOpacity onPress={props.onButtonPress} style={styles.playButton}>
         <Icon name={props.iconName} size={iconSize} style={styles.icon} />
       </TouchableOpacity>
-      <View
-        style={styles.seekBarParent}
-      >
+      <View style={styles.seekBarParent}>
         <SeekBar
           onSeek={props.seek}
           trackLength={props.trackLength}

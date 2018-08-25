@@ -1,12 +1,10 @@
-import * as React from 'react'
-import { View, TouchableOpacity } from 'react-native'
-import Icon from 'react-native-vector-icons/Ionicons'
-import Video from 'react-native-video'
+import * as React       from 'react'
+import { View }         from 'react-native'
+import Video            from 'react-native-video'
 import DefaultIndicator from './DefaultIndicator'
-import SeekBar from './SeekBar'
-import ControlBar from './ControlBar'
+import ControlBar       from './ControlBar'
 
-import styles from '../styles/components/AudioVideoComponent'
+import styles           from '../styles/components/AudioVideoComponent'
 
 export const PENDING = 'pending'
 export const READY = 'ready'
@@ -61,7 +59,11 @@ export default class AudioVideoComponent extends React.PureComponent<
   onLoadStart = () => {}
 
   onEnd = () => {
-    this.setState({ paused: true, status: FINISHED, currentPosition: this.state.totalLength })
+    this.setState({
+      paused: true,
+      status: FINISHED,
+      currentPosition: this.state.totalLength
+    })
   }
 
   pause = () => {
@@ -105,9 +107,7 @@ export default class AudioVideoComponent extends React.PureComponent<
     )
     return (
       <React.Fragment>
-        <View
-          style={styles.audioVideoContainer}
-        >
+        <View style={styles.audioVideoContainer}>
           {this.state.status === PENDING ? (
             <DefaultIndicator />
           ) : (
