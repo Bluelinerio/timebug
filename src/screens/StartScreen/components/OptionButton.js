@@ -2,6 +2,7 @@
 import React                                   from 'react'
 import { View, TouchableOpacity, Text }        from 'react-native'
 import Icon                                    from 'react-native-vector-icons/Ionicons'
+import SvgIcon                                 from '../../../components/SvgIcon'
 import CustomImage                             from '../../../components/CustomImage'
 import styles, { helperIconSize }              from '../styles'
 import { icon }                                from '../../../resources/images'
@@ -86,11 +87,9 @@ class OptionButton extends React.PureComponent<OptionButtonProps> {
                 style={[styles.helperButton, helperContainerStyle]}
                 onPress={contentAction}
               >
-                <Icon
-                  name="ios-book"
-                  size={helperIconSize}
-                  style={[styles.audio, helperIconStyle]}
-                  underlayColor="transparent"
+                <SvgIcon
+                  name="Book"
+                  {...helperIconStyle}
                 />
               </TouchableOpacity>
             </View>
@@ -99,11 +98,9 @@ class OptionButton extends React.PureComponent<OptionButtonProps> {
                 style={[styles.helperButton, helperContainerStyle]}
                 onPress={audioAction}
               >
-                <Icon
-                  name="ios-volume-up"
-                  size={helperIconSize}
-                  style={[styles.book, helperIconStyle]}
-                  underlayColor="transparent"
+                <SvgIcon
+                  name="Audio"
+                  {...helperIconStyle}                  
                 />
               </TouchableOpacity>
             </View>

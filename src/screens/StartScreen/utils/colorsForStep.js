@@ -12,7 +12,7 @@ import {
   SELF_ASSESSMENT,
   VISION_CREATION
 }             from '../../../services/cms'
-import styles from '../styles'
+import styles, { svgStyles } from '../styles'
 
 export const isStepIndexCompleted = (stepIndex, user) => {
   const { forms } = user
@@ -58,31 +58,31 @@ export const mapPhaseAndCompletionToStylesHelper = (
       return completed
         ? {
             container: styles.iconContainerPhase1Complete,
-            icon: styles.iconPhase1
+            icon: svgStyles.iconPhase1
           }
         : {
             container: styles.iconContainerPhase1Incomplete,
-            icon: styles.iconPhase1
+            icon: svgStyles.iconPhase1
           }
     case SELF_ASSESSMENT:
       return completed
         ? {
             container: styles.iconContainerPhase2Complete,
-            icon: styles.iconPhase2
+            icon: svgStyles.iconPhase2
           }
         : {
             container: styles.iconContainerPhase2Incomplete,
-            icon: styles.iconPhase2
+            icon: svgStyles.iconPhase2
           }
     case VISION_CREATION:
       return completed
         ? {
             container: styles.iconContainerPhase3Complete,
-            icon: styles.iconPhase3
+            icon: svgStyles.iconPhase3
           }
         : {
             container: styles.iconContainerPhase3Incomplete,
-            icon: styles.iconPhase3
+            icon: svgStyles.iconPhase3
           }
   }
 }
