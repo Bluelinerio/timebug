@@ -42,7 +42,6 @@ const defaultAudio =
 class AudioModal extends React.PureComponent<AudioModalProps> {
   render() {
     const { isOpen, close, title, audio = defaultAudio } = this.props
-    tron.log('Rendered Audio Modal')
     tron.log(this.props)
     return (
       <Modal
@@ -55,6 +54,7 @@ class AudioModal extends React.PureComponent<AudioModalProps> {
       >
         <StatusBar barStyle="dark-content" backgroundColor={statusBarColor} />
         <View style={styles.modalContainer}>
+          <TouchableOpacity style={styles.modalBackgroundTouchable} onPress={close} />
           <Gradient colors={gradientColors} style={styles.modal}>
             <View style={styles.modalHeader}>
               <View style={[styles.headerBlock, styles.iconBlock]}>

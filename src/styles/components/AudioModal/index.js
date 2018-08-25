@@ -9,7 +9,7 @@ import {
   widthPercentage
 } from '../../../utils/viewportCalculation'
 
-export const modalHeight = heightPercentage(60)
+export const modalHeight = heightPercentage(50)
 export const modalWidth = widthPercentage(80)
 export const modalDetailsColor = paleBlue
 
@@ -43,7 +43,8 @@ export default StyleSheet.create({
     width: modalWidth,
     backgroundColor: white2,
     borderRadius: borderRadius,
-    padding: 1
+    padding: 1,
+    zIndex: 999
   },
   modalHeader: {
     flex: 0,
@@ -99,5 +100,13 @@ export default StyleSheet.create({
   },
   titleContainer: {
     paddingHorizontal: 8
+  },
+  modalBackgroundTouchable: {
+    zIndex: 1,
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: widthPercentage(100),
+    height: heightPercentage(100)
   }
 })

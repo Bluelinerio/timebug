@@ -40,7 +40,8 @@ export default StyleSheet.create({
     width: modalWidth,
     backgroundColor: white2,
     borderRadius: borderRadius,
-    padding: 1
+    padding: 1,
+    zIndex: 999
   },
   modalHeader: {
     flex: 0,
@@ -87,5 +88,13 @@ export default StyleSheet.create({
       fontSize: 14,
       lineHeight: 15,
       fontFamily: 'Metropolis'
+  },
+  modalBackgroundTouchable: {
+    zIndex: 1,
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: widthPercentage(100),
+    height: heightPercentage(100)
   }
 })

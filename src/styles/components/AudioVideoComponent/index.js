@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { gray900, white2 } from '../../../constants/colors'
+import { gray900, white2, heavyGray } from '../../../constants/colors'
 
 const mainColor = gray900
 
@@ -36,7 +36,7 @@ export default StyleSheet.create({
     borderRadius: 100,
   },
   icon: {
-    color: 'gray' 
+    color: heavyGray
   },
   seekBarParent: {
     flex: 6,
