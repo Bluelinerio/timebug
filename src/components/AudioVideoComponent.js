@@ -6,7 +6,7 @@ import DefaultIndicator from './DefaultIndicator'
 import SeekBar from './SeekBar'
 import ControlBar from './ControlBar'
 
-import tron from 'reactotron-react-native'
+import styles from '../styles/components/AudioVideoComponent'
 
 export const PENDING = 'pending'
 export const READY = 'ready'
@@ -61,8 +61,7 @@ export default class AudioVideoComponent extends React.PureComponent<
   onLoadStart = () => {}
 
   onEnd = () => {
-    tron.log('video ended')
-    this.setState({ paused: true, status: FINISHED })
+    this.setState({ paused: true, status: FINISHED, currentPosition: this.state.totalLength })
   }
 
   pause = () => {
@@ -90,7 +89,6 @@ export default class AudioVideoComponent extends React.PureComponent<
   }
 
   render = () => {
-    tron.log(this.state)
     const video = (
       <Video
         ref={ref => {
@@ -102,18 +100,13 @@ export default class AudioVideoComponent extends React.PureComponent<
         onEnd={this.onEnd}
         onProgress={this.onProgress}
         paused={this.state.paused}
+        progressUpdateInterval={200.0}
       />
     )
     return (
       <React.Fragment>
         <View
-          style={{
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center',
-            paddingVertical: 4,
-            paddingHorizontal: 8
-          }}
+          style={styles.audioVideoContainer}
         >
           {this.state.status === PENDING ? (
             <DefaultIndicator />

@@ -4,6 +4,8 @@ import { View, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 import SeekBar from './SeekBar'
 
+import styles, { iconSize } from '../styles/components/AudioVideoComponent'
+
 export type ControlBarProps = {
   iconName: string,
   onButtonPress: () => any,
@@ -16,37 +18,16 @@ export type ControlBarProps = {
 const ControlBar = (props: ControlBarProps) => {
   return (
     <View
-      style={{
-        flex: 1,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginHorizontal: 12,
-        paddingHorizontal: 8,
-        maxHeight: 50,
-        backgroundColor: 'white',
-        borderRadius: 12
-      }}
+      style={styles.controlBarContainer}
     >
       <TouchableOpacity
         onPress={props.onButtonPress}
-        style={{
-          flex: 1,
-          borderColor: '#212121',
-          borderWidth: 1,
-          alignItems: 'center',
-          justifyContent: 'center',
-          borderRadius: 100,
-        }}
+        style={styles.playButton}
       >
-        <Icon name={props.iconName} size={32} style={{ color: 'gray' }} />
+        <Icon name={props.iconName} size={iconSize} style={styles.icon} />
       </TouchableOpacity>
       <View
-        style={{
-          flex: 6,
-          alignItems: 'stretch',
-          justifyContent: 'center'
-        }}
+        style={styles.seekBarParent}
       >
         <SeekBar
           onSeek={props.seek}
