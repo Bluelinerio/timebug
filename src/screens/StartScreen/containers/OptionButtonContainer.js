@@ -60,8 +60,6 @@ const merge = (
   const { stepColors, step, navigation } = ownProps
   const { login, openAudio } = dispatchProps
 
-  tron.log(step)
-
   const { number, title, icon, snippet } = step
   const isLoggedIn = typeof user === 'string' ? false : true
 

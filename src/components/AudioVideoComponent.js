@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/Ionicons'
 import Video from 'react-native-video'
 import DefaultIndicator from './DefaultIndicator'
 import SeekBar from './SeekBar'
+import ControlBar from './ControlBar'
 
 import tron from 'reactotron-react-native'
 
@@ -33,27 +34,27 @@ export default class AudioVideoComponent extends React.PureComponent<
     status: PENDING,
     paused: true,
     totalLength: 1,
-    currentPosition: 0,
+    currentPosition: 0
   }
 
-  setDuration = (data) => {
-    this.setState({totalLength: Math.floor(data.duration)});
+  setDuration = data => {
+    this.setState({ totalLength: Math.floor(data.duration) })
   }
 
-  setTime = (data) => {
-    this.setState({currentPosition: Math.floor(data.currentTime)});
+  setTime = data => {
+    this.setState({ currentPosition: Math.floor(data.currentTime) })
   }
 
-  seek = (time) => {
-    time = Math.round(time);
+  seek = time => {
+    time = Math.round(time)
     this.player && this.player.seek(time)
     this.setState({
       currentPosition: time,
-      paused: false,
-    });
+      paused: false
+    })
   }
 
-  onLoad = (data) => {
+  onLoad = data => {
     tron.log('video loaded')
     this.setDuration(data)
     this.setState({ status: READY })
@@ -72,7 +73,7 @@ export default class AudioVideoComponent extends React.PureComponent<
     this.setState({ paused: true, status: PAUSED })
   }
 
-  onProgress = (data) => {
+  onProgress = data => {
     tron.log('Progress!')
     this.setTime(data)
   }
@@ -110,7 +111,7 @@ export default class AudioVideoComponent extends React.PureComponent<
           style={{
             flex: 1,
             alignItems: 'center',
-            justifyContent: 'flex-start',
+            justifyContent: 'center',
             paddingVertical: 4,
             paddingHorizontal: 8
           }}
@@ -118,30 +119,15 @@ export default class AudioVideoComponent extends React.PureComponent<
           {this.state.status === PENDING ? (
             <DefaultIndicator />
           ) : (
-            <View style={{flex: 1, flexDirection: 'row' }}>
-              <TouchableOpacity
-                onPress={() =>
-                  this.state.status === PLAYING ? this.pause() : this.play()
-                }
-              >
-                <Icon
-                  name={
-                    this.state.status === PLAYING ? 'ios-pause' : 'ios-play'
-                  }
-                  size={40}
-                  style={{
-                    color: 'gray'
-                  }}
-                />
-              </TouchableOpacity>
-            </View>
-          )}
-          
-          <SeekBar
-              onSeek={this.seek}
+            <ControlBar 
+              onButtonPress={() => this.state.status === PLAYING ? this.pause() : this.play()}
+              iconName={this.state.status === PLAYING ? 'ios-pause' : 'ios-play'}
+              seek={this.seek}
               trackLength={this.state.totalLength}
-              onSlidingStart={() => this.setState({paused: true})}
-              currentPosition={this.state.currentPosition} />
+              onSlidingStart={() => this.setState({ paused: true })}
+              currentPosition={this.state.currentPosition}
+            />
+          )}
         </View>
         {video}
       </React.Fragment>
