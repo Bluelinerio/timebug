@@ -49,20 +49,16 @@ export default class AudioVideoComponent extends React.PureComponent<
     time = Math.round(time)
     this.player && this.player.seek(time)
     this.setState({
-      currentPosition: time,
-      paused: false
+      currentPosition: time
     })
   }
 
   onLoad = data => {
-    tron.log('video loaded')
     this.setDuration(data)
     this.setState({ status: READY })
   }
 
-  onLoadStart = () => {
-    tron.log('Started Loading video')
-  }
+  onLoadStart = () => {}
 
   onEnd = () => {
     tron.log('video ended')
@@ -74,18 +70,21 @@ export default class AudioVideoComponent extends React.PureComponent<
   }
 
   onProgress = data => {
-    tron.log('Progress!')
     this.setTime(data)
   }
 
+  onSlideStart = () => this.pause()
+
+  onSlideEnd = time => {
+    this.seek(time)
+    this.play()
+  }
+
   play = () => {
-    tron.log('play')
     if (this.state.status === FINISHED || this.state.status === READY) {
-      tron.log('seek')
       this.seek(0)
       this.setState({ paused: false, status: PLAYING })
     } else {
-      tron.log('just play')
       this.setState({ paused: false, status: PLAYING })
     }
   }
@@ -119,12 +118,16 @@ export default class AudioVideoComponent extends React.PureComponent<
           {this.state.status === PENDING ? (
             <DefaultIndicator />
           ) : (
-            <ControlBar 
-              onButtonPress={() => this.state.status === PLAYING ? this.pause() : this.play()}
-              iconName={this.state.status === PLAYING ? 'ios-pause' : 'ios-play'}
-              seek={this.seek}
+            <ControlBar
+              onButtonPress={() =>
+                this.state.status === PLAYING ? this.pause() : this.play()
+              }
+              iconName={
+                this.state.status === PLAYING ? 'ios-pause' : 'ios-play'
+              }
+              seek={this.onSlideEnd}
               trackLength={this.state.totalLength}
-              onSlidingStart={() => this.setState({ paused: true })}
+              onSlidingStart={this.onSlideStart}
               currentPosition={this.state.currentPosition}
             />
           )}

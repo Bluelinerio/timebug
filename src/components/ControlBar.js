@@ -9,7 +9,7 @@ export type ControlBarProps = {
   onButtonPress: () => any,
   seek: () => any,
   trackLength: number,
-  onSlideStart: () => any,
+  onSlidingStart: () => any,
   currentPosition: number
 }
 
@@ -23,7 +23,7 @@ const ControlBar = (props: ControlBarProps) => {
         justifyContent: 'center',
         marginHorizontal: 12,
         paddingHorizontal: 8,
-        maxHeight: 60,
+        maxHeight: 50,
         backgroundColor: 'white',
         borderRadius: 12
       }}
@@ -32,17 +32,18 @@ const ControlBar = (props: ControlBarProps) => {
         onPress={props.onButtonPress}
         style={{
           flex: 1,
-          backgroundColor: 'green',
+          borderColor: '#212121',
+          borderWidth: 1,
           alignItems: 'center',
           justifyContent: 'center',
           borderRadius: 100,
         }}
       >
-        <Icon name={props.iconName} size={40} style={{ color: 'gray' }} />
+        <Icon name={props.iconName} size={32} style={{ color: 'gray' }} />
       </TouchableOpacity>
       <View
         style={{
-          flex: 5,
+          flex: 6,
           alignItems: 'stretch',
           justifyContent: 'center'
         }}
@@ -50,7 +51,7 @@ const ControlBar = (props: ControlBarProps) => {
         <SeekBar
           onSeek={props.seek}
           trackLength={props.trackLength}
-          onSlidingStart={props.onSlideStart}
+          onSlidingStart={props.onSlidingStart}
           currentPosition={props.currentPosition}
         />
       </View>

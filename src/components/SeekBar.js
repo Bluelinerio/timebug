@@ -20,39 +20,25 @@ const SeekBar = props => {
   const { trackLength, currentPosition, onSeek, onSlidingStart } = props
   const elapsed = minutesAndSeconds(currentPosition)
   const remaining = minutesAndSeconds(trackLength - currentPosition)
-
-  tron.log('RENDERED SEEKBAR')
-  tron.log(!!Slider)
   tron.log(props)
-
-  return (
-    <View style={styles.seekBarContainer}>
-      {/* <View style={styles.textContainer}>
-        <Text style={styles.text}>
-          {elapsed[0] + ':' + elapsed[1] + '/' + trackLength > 1 &&
-            '-' + remaining[0] + ':' + remaining[1]}
-        </Text>
-      </View> */}
-      <View style={styles.sliderContainer}>
-        <Slider
-          maximumValue={Math.max(trackLength, 1, currentPosition + 1)}
-          onSlidingStart={onSlidingStart}
-          onSlidingComplete={onSeek}
-          value={currentPosition}
-        />
-      </View>
-    </View>
-  )
-}
-
-const Sb = props => {
+  tron.log(elapsed)
+  tron.log(remaining)
   return (
     <View style={dummyStyles.container}>
       <Slider
         style={dummyStyles.sliderContainer}
-        minimumTrackTintColor='red'
-        thumbTintColor='#EEEEEE'
+        minimumTrackTintColor="red"
+        thumbTintColor="#EEEEEE"
+        maximumValue={Math.max(trackLength, 1, currentPosition + 1)}
+        onSlidingStart={onSlidingStart}
+        onSlidingComplete={onSeek}
+        value={currentPosition}
       />
+      <View style={dummyStyles.textContainer}>
+        <Text style={dummyStyles.text}>
+          {`${remaining[0]}:${remaining[1]}`}
+        </Text>
+      </View>
     </View>
   )
 }
@@ -60,18 +46,24 @@ const Sb = props => {
 const dummyStyles = StyleSheet.create({
   container: {
     flex: 1,
-    marginLeft: 10,
-    marginRight: 10,
     justifyContent: 'center',
-    alignItems: 'center',    
+    alignItems: 'center',
+    marginLeft: 10,
     flexDirection: 'row'
   },
   sliderContainer: {
-    flex: 1,
+    flex: 4,
     alignItems: 'stretch',
     justifyContent: 'center',
-    padding: 8,
+    padding: 8
+  },
+  textContainer: {
+    flex: 1,
+  },
+  text: {
+    color: '#212121',
+    fontSize: 10
   }
 })
 
-export default Sb
+export default SeekBar
