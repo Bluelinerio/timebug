@@ -71,9 +71,6 @@ class AudioModal extends React.PureComponent<AudioModalProps> {
             <View style={styles.titleContainer}>
               <Text style={styles.title}>{title}</Text>
             </View>
-            <View style={styles.headerBlock}>
-              <Image style={[styles.headerIcon]} source={icon} />
-            </View>
             {isOpen &&
               audio && (
                 <React.Fragment>
