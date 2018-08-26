@@ -2,15 +2,19 @@
 import { OPEN_MODAL, CLOSE_MODAL } from '../actionTypes'
 import { ModalActionPayload } from '../actions/modal.actions'
 
-import tron from 'reactotron-react-native'
-
 type ModalState = {
-  openKeys: Array<string>
+  openKeys: Array<string>,
+  params: any
 }
 
 type ModalAction = {
   type: OPEN_MODAL | CLOSE_MODAL,
   payload: ModalActionPayload
+}
+
+const initialState: ModalState = {
+  openKeys: [],
+  params: {}
 }
 
 const isKeyInState = (state: ModalState, modalKey: string) =>
@@ -42,11 +46,6 @@ const handleClose = (state: ModalState, payload: ModalActionPayload) => {
       }
     }
   return state
-}
-
-const initialState = {
-  openKeys: [],
-  params: {}
 }
 
 export default (state: ModalState = initialState, action: ModalAction) => {
