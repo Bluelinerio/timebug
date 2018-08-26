@@ -9,13 +9,13 @@ import {
   widthPercentage
 } from '../../../utils/viewportCalculation'
 
-export const modalHeight = heightPercentage(50)
+export const modalHeight = heightPercentage(40)
 export const modalWidth = widthPercentage(80)
 export const modalDetailsColor = paleBlue
 
 export const statusBarColor = gray900
 
-const headerHeight = heightPercentage(20, modalHeight)
+const headerHeight = heightPercentage(30, modalHeight)
 
 const imageHeight = heightPercentage(25, modalHeight)
 const imageWidth = imageHeight
