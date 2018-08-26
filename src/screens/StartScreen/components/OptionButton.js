@@ -1,10 +1,9 @@
 //@flow
 import React                                   from 'react'
 import { View, TouchableOpacity, Text }        from 'react-native'
-import Icon                                    from 'react-native-vector-icons/Ionicons'
 import SvgIcon                                 from '../../../components/SvgIcon'
 import CustomImage                             from '../../../components/CustomImage'
-import styles, { helperIconSize }              from '../styles'
+import styles                                  from '../styles'
 import { icon }                                from '../../../resources/images'
 import { mapPhaseAndCompletionToStylesHelper } from '../utils/colorsForStep'
 import tron                                    from 'reactotron-react-native'
@@ -25,6 +24,7 @@ export type OptionButtonProps = {
   complete: boolean,
   phase: string,
   sideActions: SideActions,
+  visible: boolean,
   source:
     | any
     | {
@@ -44,16 +44,15 @@ class OptionButton extends React.PureComponent<OptionButtonProps> {
       subtitleText = lorem,
       source = icon,
       sideActions,
-      style = {}
+      style = {},
+      visible
     } = this.props
-    tron.log(`Callin render on step: ${step}`)
-
     const { audio: audioAction, content: contentAction } = sideActions
     const {
       container: helperContainerStyle,
       icon: helperIconStyle
     } = mapPhaseAndCompletionToStylesHelper(phase, complete)
-    return (
+    return visible ? (
       <TouchableOpacity onPress={onPress}>
         <View style={[styles.button, style.container]}>
           <View style={styles.mainComponent}>
@@ -87,10 +86,7 @@ class OptionButton extends React.PureComponent<OptionButtonProps> {
                 style={[styles.helperButton, helperContainerStyle]}
                 onPress={contentAction}
               >
-                <SvgIcon
-                  name="Book"
-                  {...helperIconStyle}
-                />
+                <SvgIcon name="Book" {...helperIconStyle} />
               </TouchableOpacity>
             </View>
             <View style={[styles.flex, styles.center]}>
@@ -98,16 +94,13 @@ class OptionButton extends React.PureComponent<OptionButtonProps> {
                 style={[styles.helperButton, helperContainerStyle]}
                 onPress={audioAction}
               >
-                <SvgIcon
-                  name="Audio"
-                  {...helperIconStyle}                  
-                />
+                <SvgIcon name="Audio" {...helperIconStyle} />
               </TouchableOpacity>
             </View>
           </View>
         </View>
       </TouchableOpacity>
-    )
+    ) : null
   }
 }
 

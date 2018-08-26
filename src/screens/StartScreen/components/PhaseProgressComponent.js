@@ -1,5 +1,6 @@
+//@flow
 import React                             from 'react'
-import { View, Text }                    from 'react-native'
+import { View, Text, TouchableOpacity }  from 'react-native'
 import { phaseProgressStyles as styles } from '../styles'
 import ProgressBar                       from 'react-native-progress/Bar'
 
@@ -9,6 +10,7 @@ export type PhaseProgressComponentProps = {
   complete: number,
   incomplete: number,
   fill: string,
+  onPhasePress: () => any,
   unfilledColor: string,
   phaseColor: string
 }
@@ -22,12 +24,16 @@ class PhaseProgressComponent extends React.PureComponent<
       phaseNumber,
       complete,
       incomplete,
+      onPhasePress,
       fill,
       unfilledColor,
       phaseColor
     } = this.props
     return (
-      <View style={[styles.phaseContainer, { backgroundColor: phaseColor }]}>
+      <TouchableOpacity
+        style={[styles.phaseContainer, { backgroundColor: phaseColor }]}
+        onPress={onPhasePress}
+      >
         <View style={styles.mainArea}>
           <Text
             style={[styles.phaseNumber, styles.strong]}
@@ -53,7 +59,7 @@ class PhaseProgressComponent extends React.PureComponent<
               )}
           </View>
         </View>
-      </View>
+      </TouchableOpacity>
     )
   }
 }

@@ -1,6 +1,9 @@
-import { connect }            from 'react-redux'
-import selectors              from '../../../redux/selectors'
-import PhaseProgressComponent from '../components/PhaseProgressComponent'
+//@flow
+import { connect }           from 'react-redux'
+import selectors             from '../../../redux/selectors'
+import PhaseProgressComponent, {
+  PhaseProgressComponentProps
+}                            from '../components/PhaseProgressComponent'
 import {
   phaseForUserForm,
   phaseNumberForPhase,
@@ -8,8 +11,15 @@ import {
   MEDITATION,
   SELF_ASSESSMENT,
   VISION_CREATION
-}                             from '../../../services/cms'
-import { progressFillColor }  from '../styles'
+}                            from '../../../services/cms'
+import { changeUI }          from '../../../redux/actions/ui.actions'
+import { screenKey }         from '../index'
+import { progressFillColor } from '../styles'
+
+/**
+ * UI reducer param key
+ */
+export const PhaseProgressElementKey = 'PhaseProgress'
 
 type PhaseProgressState = {
   sortedStepsWithForms: Array<any>,
@@ -24,6 +34,8 @@ type PhaseProgressState = {
 type PhaseProgressContainerProps = {
   phase: string
 }
+
+type PhaseProgressDispatchProps = {}
 
 const mapPhaseToName = ({ phase }: { phase: string }) => {
   switch (phase) {
@@ -44,6 +56,7 @@ const mapStateToProps = (state: any): PhaseProgressState => {
   const isLoggedIn = selectors.isLoggedIn(state)
   const originalColors = selectors.phaseColors(state)
   const newColors = selectors.overridePhaseColors(state)
+
   return {
     sortedStepsWithForms,
     user,
@@ -55,13 +68,25 @@ const mapStateToProps = (state: any): PhaseProgressState => {
   }
 }
 
+const mapDispatchToProps = (dispatch: any): PhaseProgressDispatchProps => ({
+  selectPhase: (phase: string) => () =>
+    dispatch(
+      changeUI({
+        screen: screenKey,
+        params: { [PhaseProgressElementKey]: { selected: phase } }
+      })
+    )
+})
+
 const mergeProps = (
   stateProps: PhaseProgressState,
-  _: any,
+  dispatchProps: PhaseProgressDispatchProps,
   ownProps: PhaseProgressContainerProps
-) => {
+): PhaseProgressComponentProps => {
   const { sortedStepsWithForms, user, isLoggedIn, colors } = stateProps
+  const { selectPhase } = dispatchProps
   const { phase } = ownProps
+
   const phaseNumber = phaseNumberForPhase({ phase })
   const formsForPhase = sortedStepsWithForms.filter(form => {
     const { step } = form
@@ -74,6 +99,8 @@ const mergeProps = (
     complete: userFormsForPhase,
     incomplete: formsForPhase.length - userFormsForPhase
   }
+
+  const onPhasePress = selectPhase(phase)
 
   const fillColor = progressFillColor
 
@@ -93,10 +120,11 @@ const mergeProps = (
     phaseColor,
     fill: fillColor,
     unfilledColor,
+    onPhasePress,
     ...stepsData
   }
 }
 
-export default connect(mapStateToProps, null, mergeProps)(
+export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(
   PhaseProgressComponent
 )
