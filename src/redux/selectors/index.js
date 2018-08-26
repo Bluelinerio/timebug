@@ -247,7 +247,7 @@ const awardModelAndDataForStep = (state: any) => (step: number) => {
  * UI
  */
 
-const stateForScreen = (state: any) => (screen: string) => getUIState(state)[screen] || {}
+const stateForScreen = (state: any) => (screen: string) => getUIState(state).screens[screen] || {}
 
 const selectors = {
   getCms,
