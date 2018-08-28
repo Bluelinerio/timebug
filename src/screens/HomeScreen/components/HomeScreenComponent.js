@@ -4,13 +4,11 @@ import { StatusBar, ScrollView, LayoutAnimation } from 'react-native'
 import { SafeAreaView } from 'react-navigation'
 
 import PaginatedCarouselContainer from '../containers/PaginatedCarouselContainer'
-import Version from '../containers/Version'
-import DashboardCellsContainer from '../containers/DashboardCellsContainer'
+import Version from '../../../containers/Version'
 import SuggestionCellContainer from '../containers/SuggestionCellContainer'
 import styles from '../styles'
 import { sliderWidth, itemWidth } from '../styles/SliderEntry.style'
-import Banner from './Banner'
-import Space from './Space'
+import Banner from '../../../containers/Banner'
 import Insight from '../containers/InsightContainer'
 
 export default class HomeScreenComponent extends PureComponent {
@@ -25,7 +23,7 @@ export default class HomeScreenComponent extends PureComponent {
       >
         <StatusBar barStyle="dark-content" backgroundColor={'white'} />
         <ScrollView style={{ flex: 1 }}>
-          <Banner />
+          <Banner root={false}/>
           {this.state.showSuggestions && (
             <SuggestionCellContainer
               onClose={() =>

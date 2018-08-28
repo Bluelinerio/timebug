@@ -7,10 +7,8 @@ import {
   material,
   sanFranciscoWeights,
   robotoWeights
-} from 'react-native-typography'
-import {
-  deepBlue
-} from '../../constants/colors'
+}                               from 'react-native-typography'
+import { deepBlue }             from '../../constants/colors'
 
 const suggestionRow = {
   flexDirection: 'row',
@@ -56,27 +54,27 @@ export default StyleSheet.create({
     borderRadius: 6
   },
   dashboardInsightContainer: {
-      borderRadius: 6,
-      marginHorizontal: 16,
-      marginBottom: 8,
-      marginTop: 16,
-      padding: 12,
-      flexDirection: 'column',
-      justifyContent: 'flex-start',
-      alignItems: 'flex-start',
-      backgroundColor: iOSColors.white,
-      ...Platform.select({
-        android: { elevation: 2 },
-        ios: {
-          shadowColor: 'black',
-          shadowOffset: {
-            width: 0,
-            height: 2
-          },
-          shadowOpacity: 0.2,
-          shadowRadius: 2
-        }
-      })
+    borderRadius: 6,
+    marginHorizontal: 16,
+    marginBottom: 8,
+    marginTop: 16,
+    padding: 12,
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    backgroundColor: iOSColors.white,
+    ...Platform.select({
+      android: { elevation: 2 },
+      ios: {
+        shadowColor: 'black',
+        shadowOffset: {
+          width: 0,
+          height: 2
+        },
+        shadowOpacity: 0.2,
+        shadowRadius: 2
+      }
+    })
   },
   dashboardCard: {
     marginTop: 24,
@@ -108,7 +106,7 @@ export default StyleSheet.create({
     paddingLeft: 10,
     borderRadius: 6,
     ...Platform.select({
-      android: { 
+      android: {
         elevation: 2
       },
       ios: {
@@ -127,7 +125,7 @@ export default StyleSheet.create({
     marginBottom: 10,
     borderRadius: 6,
     ...Platform.select({
-      android: { 
+      android: {
         elevation: 2
       },
       ios: {
@@ -165,7 +163,7 @@ export default StyleSheet.create({
   homeSuggestionText: {
     color: deepBlue,
     fontSize: 14,
-    lineHeight: 16     
+    lineHeight: 16
   },
   bold: {
     ...systemWeights.bold
@@ -217,23 +215,27 @@ export default StyleSheet.create({
   },
   header: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
     paddingTop: 16,
     paddingBottom: 8,
     marginHorizontal: 16,
     borderBottomWidth: 1,
-    borderColor: iOSColors.customGray,
+    borderColor: iOSColors.customGray
+  },
+  headerBlock: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center'
   },
   reset: {
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: iOSColors.blue,
     borderRadius: 6,
-    padding: 8,
+    padding: 8
   },
   resetText: {
-    color: '#FAFAFA'    
+    color: '#FAFAFA'
   },
   headerDate: {
     ...iOSUIKit.footnoteEmphasizedObject,
@@ -243,6 +245,12 @@ export default StyleSheet.create({
     height: 36,
     width: 36,
     borderRadius: 36 / 2,
-    alignSelf: 'center',
+    alignSelf: 'center'
+  },
+  backButton: {
+    color: deepBlue
+  },
+  headerBackButton: {
+    paddingRight: 10
   }
 })
