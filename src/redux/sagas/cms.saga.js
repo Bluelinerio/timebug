@@ -1,23 +1,35 @@
 // @flow
-import { takeLatest, fork, put }          from 'redux-saga/effects'
-import { REFRESH_CMS }                    from '../actions'
-import { FETCH_CMS, SEED_CMS }            from '../actions/cms.actions'
-import { refreshCMS, testContentFromCMS } from '../../services/contentful'
-import { request }                        from '../../Modules/redux-saga-request'
-import { headerBackgrounds }              from '../../resources/images'
-let staticCms     = require('../../static/cms.json')
-const meditations = require('../../static/Meditations.json')
+import { takeLatest, fork, put } from 'redux-saga/effects'
+import { REFRESH_CMS }           from '../actions'
+import { FETCH_CMS, SEED_CMS }   from '../actions/cms.actions'
+import { refreshCMS }            from '../../services/contentful'
+import { request }               from '../../Modules/redux-saga-request'
+import { headerBackgrounds }     from '../../resources/images'
+import staticCms                 from '../../static/cms.json'
+import meditations               from '../../static/Meditations.json'
 
-const addLocalImage = step => ({
+const stepWithLocalImage = step => ({
   ...step,
   image: headerBackgrounds[step.stepId]
 })
+
+const refresh = () =>
+  refreshCMS().then(({ steps, ...rest }) => ({
+    ...rest,
+    steps: Object.values(steps).reduce(
+      (sum, step) => ({
+        ...sum,
+        [step.stepId]: stepWithLocalImage(step)
+      }),
+      {}
+    )
+  }))
 
 function* seedCMS() {
   staticCms.steps = Object.values(staticCms.steps).reduce(
     (sum, step) => ({
       ...sum,
-      [step.stepId]: addLocalImage(step)
+      [step.stepId]: stepWithLocalImage(step)
     }),
     {}
   )
@@ -31,21 +43,7 @@ function* seedCMS() {
 }
 
 function* _fetchCms() {
-  let { payload: cms } = yield request(
-    FETCH_CMS,
-    refreshCMS()
-      .then(({ steps, ...rest }) => ({
-        ...rest,
-        steps: Object.values(steps).reduce(
-          (sum, step) => ({
-            ...sum,
-            [step.stepId]: addLocalImage(step)
-          }),
-          {}
-        )
-      }))
-      .then(__DEV__ ? testContentFromCMS : () => null)
-  )
+  yield request(FETCH_CMS, refresh)
 }
 
 function* watchFetchSteps() {
