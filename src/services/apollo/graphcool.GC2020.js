@@ -2,6 +2,7 @@
 
 import { ApolloClient } from 'apollo-client';
 import { HttpLink } from 'apollo-link-http';
+import { ApolloLink, concat } from 'apollo-link'
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import gql from 'graphql-tag';
 import type { 
@@ -33,6 +34,10 @@ import { temporaryUserAdditions } from './tmp';
 
 const _parse = <T>(key: string, graphResponse: GraphResponse): T => {
 	const { data, error } = graphResponse
+	if(error){
+		console.log("ERROR IN THENABLE")
+		throw error;
+	}
 	const value: T = {
 		...data[key],
 		endpoint:endpoints.simple
@@ -197,6 +202,7 @@ export const createForm = ({ userId, stepId, data } : CreateFormArgs): any =>
 			}
 		})
 		.then(parse('createForm'))
+		.catch(e => console.log(e))
 
 export const updateForm = ({ userId, id, data } : UpdateormArgs): any =>
 	client
@@ -219,6 +225,22 @@ export const updateForm = ({ userId, id, data } : UpdateormArgs): any =>
 		})
 		.then(parse('updateForm'))
 
+export const deleteForm = ({ id }): any =>
+	client
+		.mutate({
+			mutation:gql`
+				mutation deleteForm($id:ID!) {
+					deleteForm(id:$id) {
+						id
+					}
+				}
+				`,
+			variables: {
+				id
+			}
+		})
+		.then(parse('deleteForm'))
+		.catch(e => console.log(e))		
 
 export const createAchievement = ({ userId, tagName }) => 
 	client.mutate({

@@ -1,6 +1,12 @@
+//@flow
 import React from 'react'
 import { View, Text } from 'react-native'
 import styles from '../styles'
+
+type LockedEntryWithCheckProps = {
+  check: () => boolean,
+  children: any
+}
 
 const LockedEntry = () => (
   <View style={[styles.container, styles.center]}>
@@ -8,7 +14,7 @@ const LockedEntry = () => (
   </View>
 )
 
-export const LockedEntryWithCheck = ({ check, children }) => {
+export const LockedEntryWithCheck = ({ check, children }: LockedEntryWithCheckProps) => {
   return (
     <React.Fragment>
       {

@@ -1,27 +1,32 @@
-import React                      from 'react'
-import { connect }                from 'react-redux'
-import JourneyCarouselComponent   from '../components/JourneyCarouselComponent'
-import FormComponent, { Entries } from './FormConsumers'
-import selectors                  from '../../../redux/selectors'
+//@flow
+import React                           from 'react'
+import { connect }                     from 'react-redux'
+import JourneyCarouselComponent        from '../components/JourneyCarouselComponent'
+import FormComponent, { Entries }      from './FormConsumers'
+import selectors                       from '../../../redux/selectors'
+import { CarouselEntryType }           from './types'
 
 type JourneyCarouselStateProps = {
-  forms: [{
-    stepId: number
-  }]
-}
-
-export type CarouselEntryType = {
-  title: string,
-  step: string
+  forms: [
+    {
+      stepId: number
+    }
+  ]
 }
 
 const mapStateToProps = (state: any): JourneyCarouselStateProps => ({
   forms: selectors.sortedCompletedForms(state)
 })
 
-const render = ({ step }) => <FormComponent step={step} />
+const render = ({
+  step
+}: {
+  step: number
+}): React.ComponentType<{ step: number }> => <FormComponent step={step} />
 
-const buildEntries = (forms) => {
+const buildEntries = (
+  forms: Array<{ stepId: number }>
+): Array<CarouselEntryType> => {
   return forms
     ? forms
         .map(form => {

@@ -3,13 +3,16 @@ import {
   SimpleModelData,
   Model,
   AwardData
-} from '../../../../../redux/reducers/awards.reducer.js'
+}                        from '../../../../../redux/reducers/awards.reducer.js'
 import { HeaderElement } from '../../../components/GenericHeader'
 import {
   CHECKBOX,
   LABEL,
   STRUCT
-} from '../../../../../static/awards/modelTypes'
+}                        from '../../../../../static/awards/modelTypes'
+import {
+  FormElement
+}                        from '../../types'
 
 type FindColumnElementsArgs = {
   model: SimpleModelData
@@ -47,16 +50,13 @@ export const buildHeader = (model: SimpleModelData): Array<HeaderElement> => {
   }))
 }
 
-/**
- * Todo create flow type for elements
- */
 export const buildElements = ({
   header,
   componentDataArray = [],
   data = {}
-}: BuildElementsArgs): [any] => {
+}: BuildElementsArgs): Array<FormElement> => {
   return componentDataArray.reduce((allElements, componentElement) => {
-    const elements = componentElement
+    const elements: Array<FormElement> | null = componentElement
       ? Object.keys(componentElement).reduce((elements, key) => {
           const value = componentElement[key]
           if (header.elements.length > 0) {

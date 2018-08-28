@@ -1,12 +1,11 @@
 // @flow
 import { StyleSheet, Dimensions, Platform } from 'react-native'
-import { colors }                           from '../styles'
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get(
   'window'
 )
 
-function wp(percentage, port = viewportWidth) {
+const wp = (percentage: number, port: number = viewportWidth ): number => {
   const value = percentage * port / 100
   return Math.round(value)
 }

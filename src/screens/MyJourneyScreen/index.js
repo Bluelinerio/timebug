@@ -1,3 +1,4 @@
+//@flow
 import React                    from 'react'
 import { StyleSheet }           from 'react-native'
 import {
@@ -8,11 +9,24 @@ import {
 import styles                   from './styles'
 import MyJourneyScreenContainer from './containers/MyJourneyScreenContainer'
 
-const headerTitle = 'My Journey'
+const headerTitle: string = 'My Journey'
+
+type NavigationOptionsProps = {
+  navigation: {
+    dispatch: (any) => any
+  }
+}
+
+type NavigationOptions = {
+  title: string,
+  headerStyle: any,
+  headerTintColor: 'white' | string,
+  headerLeft: React.ComponentType<{tintColor: string, onPress: (any) => any}>
+}
 
 MyJourneyScreenContainer.navigationOptions = ({
   navigation: { dispatch }
-}) => ({
+}: NavigationOptionsProps) : NavigationOptions => ({
   title: headerTitle,
   headerStyle: {
     ...StyleSheet.flatten(styles.header)

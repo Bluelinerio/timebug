@@ -1,5 +1,4 @@
 // @flow
-import * as React from 'react'
 import { connect } from 'react-redux'
 import { compose, mapProps } from 'recompose'
 import selectors from '../../../redux/selectors'
@@ -9,8 +8,7 @@ import { restartStepAction, reset } from '../../../redux/actions/nav.actions'
 import WorkbookDoneScreen from '../components/WorkbookDoneScreen'
 import type { Props } from '../components/WorkbookDoneScreen'
 import getInsight, { dummyFormValue } from './../../../static/insights'
-import { suggestNextStep, Screens } from './suggestions'
-
+import { suggestNextStep, Screens, NextStepSuggestion } from './suggestions'
 
 const merge = ({
   steps,
@@ -27,13 +25,12 @@ const merge = ({
   const insightText = getInsight(step.stepId, dummyFormValue)
   const backgroundColor = step.color
 
-  const { data: { suggestedStepId, texts } } = suggestNextStep(
-    completedStepIdsChronologically
-  )
+  const {
+    data: { suggestedStepId, texts }
+  }: NextStepSuggestion = suggestNextStep(completedStepIdsChronologically)
 
-  // Check to see if this is the last actual step, turn the start next step button to a reset button, replace nextStepMotivation with final text
-  const nextStepMotivationText = texts[Screens.DONE_SCREEN]
-  const nextStep = steps[suggestedStepId]
+  const nextStepMotivationText: string = texts[Screens.DONE_SCREEN]
+  const nextStep: string = steps[suggestedStepId]
 
   if (nextStep) {
     // this is required in case we change how stepId work...
@@ -73,10 +70,8 @@ const WorkbookDoneScreenContainer = compose(
       .completedFormsChronologically(state)
       .map(f => f.stepId)
       .map(stepId => stepId.toString()),
-    isSynchingFormData: selectors
-      .isSynchingFormData(state)
-        || selectors
-            .loadingFormData(state)
+    isSynchingFormData:
+      selectors.isSynchingFormData(state) || selectors.loadingFormData(state)
   })),
   mapProps(merge)
 )(WorkbookDoneScreen)

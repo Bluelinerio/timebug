@@ -19,6 +19,10 @@ type PillarsObject = {
   [x: string]: PillarOfLife
 }
 
+type ComponentProps = {
+  pillars: PillarsObject
+}
+
 const wantedKeys: SelectedKeys = getFormRequestedKeysForStep(STEP2)
 
 const parseHoursIntoNumber = (hours: any) => {
@@ -38,14 +42,14 @@ export const handler: HandlerFunction = ({ formData }: FormDataForExercise) => {
   }
 }
 
-const transformPropsForPresentation = ({ componentData }) => {
+const transformPropsForPresentation = ({ componentData }) : ComponentProps => {
   if (!componentData || R.isEmpty(componentData)) return {}
 
   const { typicalWeek, idealWeek } = componentData
 
   if (!typicalWeek || !idealWeek) return {}
 
-  const typicalWeekTemplateObject = typicalWeek.reduce((allPillars, pillar) => {
+  const typicalWeekTemplateObject: PillarsObject = typicalWeek.reduce((allPillars, pillar) => {
     const { pillarOfLife, hours } = pillar
     return {
       ...allPillars,
