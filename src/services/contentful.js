@@ -15,7 +15,7 @@ export const CONTENTFUL_PAGE = 'page'
 
 export const contentfulClient = createClient(CONTENTFUL_CREDENTIALS);
 
-const getImageUrl = (icon: Icon): { uri: string } => ({
+const getContentUrl = (icon: Icon): { uri: string } => ({
   uri: (icon.url || icon.fields.file.url || '').replace('//', 'https://')
 });
 
@@ -37,7 +37,7 @@ const onboardingPagesFromResponse = response => {
   const mapOnboardingSlide = ({ fields: { title, description, image } }) => ({
     title,
     description,
-    image: image ? getImageUrl(image) : null
+    image: image ? getContentUrl(image) : null
   });
   return {
     onboardingPages: response.items.reduce(
@@ -63,24 +63,27 @@ const colorsFromResponse = response => ({
 
 const stepsFromResponse = unlinkFields('steps');
 
-const nomrmalizeSteps = ({ steps, colors }) => ({
+const normalizeSteps = ({ steps, colors }) => ({
   steps: steps.reduce(
-    (sum, step) => ({
-      ...sum,
-      [step.number]: {
-        ...step,
-        refAssignment: [],
-        assignments: step.refAssignment.map(i => ({
-          ...i.fields,
-          icon: i.icon ? getImageUrl(i.icon) : null
-        })),
-        icon: step.icon ? getImageUrl(step.icon) : null,
-        stepId: step.number.toString(),
-        workbookDurationMin: step.workbookDurationMin || 15,
-        duration: step.duration || 15,
-        color: colors.steps[step.number]
-      }
-    }),
+    (sum, step) => {
+      return ({
+        ...sum,
+        [step.number]: {
+          ...step,
+          refAssignment: [],
+          assignments: step.refAssignment.map(i => ({
+            ...i.fields,
+            icon: i.icon ? getContentUrl(i.icon) : null
+          })),
+          icon: step.icon ? getContentUrl(step.icon) : null,
+          stepId: step.number.toString(),
+          workbookDurationMin: step.workbookDurationMin || 15,
+          duration: step.duration || 15,
+          color: colors.steps[step.number],
+          audio: step.audio ? getContentUrl(step.audio) : null
+        }
+      })
+    },
     {}
   )
 });
@@ -114,7 +117,7 @@ export const refreshCMS = () =>
     .then(responses => Object.assign(...responses))
     .then(cmsData => ({
       ...cmsData,
-      ...nomrmalizeSteps(cmsData)
+      ...normalizeSteps(cmsData)
     }));
 
 export const testContentFromCMS = object => {
