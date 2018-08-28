@@ -26,6 +26,8 @@ import {
   VISION_CREATION
 }                                          from '../../../services/cms'
 
+const defaultAudio = 'https://assets.ctfassets.net/6h184bey8vl3/7JQ278WKGsAKcQO4KWWSkI/7a6a37e74821aa780f71dec640c0f14a/test__online-audio-converter.com_.mp3'
+
 type OptionButtonDispatchProps = {
   login: () => any,
   openAudio: () => any
@@ -88,7 +90,9 @@ const merge = (
   const { stepColors, step, navigation } = ownProps
   const { login, openAudio } = dispatchProps
 
-  const { number, title, icon, snippet } = step
+  const { number, title, icon, snippet, audio } = step
+  const audioAddress = audio && audio.uri ? audio.uri : defaultAudio
+
   const isLoggedIn = typeof user === 'string' ? false : true
 
   const visible = mapTypeToPhase(step) === selected
@@ -117,7 +121,7 @@ const merge = (
           )
         : login(),
     sideActions: {
-      audio: () => openAudio({ title, icon }),
+      audio: () => openAudio({ title, icon, audio: audioAddress }),
       content: () => navigation.dispatch(goToAssignmentFlow({ step }))
     },
     source: icon,

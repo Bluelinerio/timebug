@@ -14,7 +14,6 @@ import styles, {
   closeButtonSize,
   gradientColors
 }                 from '../styles/components/AudioModal'
-import { icon }   from '../resources/images'
 import Icon       from 'react-native-vector-icons/dist/MaterialIcons'
 import AudioVideo from './AudioVideoComponent'
 
@@ -32,12 +31,9 @@ export type AudioModalProps = {
 
 export const key = 'Audio'
 
-const defaultAudio =
-  'https://assets.ctfassets.net/6h184bey8vl3/7JQ278WKGsAKcQO4KWWSkI/7a6a37e74821aa780f71dec640c0f14a/test__online-audio-converter.com_.mp3'
-
 class AudioModal extends React.PureComponent<AudioModalProps> {
   render() {
-    const { isOpen, close, title, audio = defaultAudio } = this.props
+    const { isOpen, close, title, audio, icon } = this.props
     return (
       <Modal
         animationType="slide"
