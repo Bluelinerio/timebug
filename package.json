@@ -96,7 +96,9 @@
     "prettier-eslint-cli": "^4.7.1",
     "react-native-version": "^2.4.1",
     "react-test-renderer": "16.0.0-alpha.6",
-    "reactotron-react-native": "^2.0.0-alpha.1"
+    "reactotron-react-native": "^2.0.0-alpha.1",
+    "reactotron-redux": "^2.0.0",
+    "reactotron-redux-saga": "^2.0.0"
   },
   "rnpm": {
     "assets": [
