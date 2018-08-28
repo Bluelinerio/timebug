@@ -44,8 +44,11 @@ import tron                   from 'reactotron-react-native'
 
 export const UPDATE_AND_CREATE_FORMS = 'UPDATE_AND_CREATE_FORMS'
 
-// DO NOT STAGE THIS CHANGE
-const log = payload => tron.log(payload)
+const log = payload => tron.display({
+  name: 'FormData Saga',
+  preview: 'FormData',
+  value: payload
+})
 
 const range = (start: number, end: number) : Array<number> =>
   Array(end - start)
