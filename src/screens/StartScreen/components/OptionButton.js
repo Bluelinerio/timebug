@@ -53,7 +53,7 @@ class OptionButton extends React.PureComponent<OptionButtonProps> {
               <View style={[styles.buttonImageContainer]}>
                 <CustomImage
                   style={[styles.buttonImage]}
-                  source={{ uri: source }}
+                  source={source}
                 />
               </View>
               <View style={[styles.buttonTextContainer]}>
