@@ -1,14 +1,18 @@
 // @flow
-import { connect } from 'react-redux'
-import { compose, mapProps } from 'recompose'
-import selectors from '../../../redux/selectors'
-import { userRequired, withNavigationAndStep } from '../../../HOC'
-import type { Step } from '../../../services/cms'
-import { restartStepAction, reset } from '../../../redux/actions/nav.actions'
-import WorkbookDoneScreen from '../components/WorkbookDoneScreen'
-import type { Props } from '../components/WorkbookDoneScreen'
-import getInsight, { dummyFormValue } from './../../../static/insights'
+import { connect }                                      from 'react-redux'
+import { compose, mapProps }                            from 'recompose'
+import selectors                                        from '../../../redux/selectors'
+import { userRequired, withNavigationAndStep }          from '../../../HOC'
+import type { Step }                                    from '../../../services/cms'
+import {
+  restartStepActionSafe,
+  goBackFrom
+}                                                       from '../../../redux/actions/nav.actions'
+import WorkbookDoneScreen                               from '../components/WorkbookDoneScreen'
+import type { Props }                                   from '../components/WorkbookDoneScreen'
+import getInsight, { dummyFormValue }                   from './../../../static/insights'
 import { suggestNextStep, Screens, NextStepSuggestion } from './suggestions'
+import routes                                           from '../../../navigation/routes'
 
 const merge = ({
   steps,
@@ -41,7 +45,8 @@ const merge = ({
       title: `Step ${step.number} is complete!`,
       button: {
         text: `Start Step ${nextStep.number}`.toUpperCase(),
-        onPress: () => dispatch(restartStepAction(nextStep)),
+        onPress: () =>
+          dispatch(restartStepActionSafe(nextStep, routes.root.AssignmentFlow)),
         textColor: nextStep.color
       },
       isSynchingFormData
@@ -55,7 +60,7 @@ const merge = ({
     title: `This Step ${step.number} is complete!`,
     button: {
       text: `Done`.toUpperCase(),
-      onPress: () => dispatch(reset()),
+      onPress: () => dispatch(goBackFrom(routes.root.AssignmentFlow)),
       textColor: backgroundColor
     },
     isSynchingFormData
