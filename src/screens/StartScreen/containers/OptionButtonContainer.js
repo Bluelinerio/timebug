@@ -12,9 +12,7 @@ import {
   isStepIndexCompleted
 }                                          from '../utils/colorsForStep'
 import { phaseForStepAtIndex }             from '../../../services/cms'
-import {
-  goToWorkbookSkippingStepScreen
-}                                          from '../../../redux/actions/nav.actions'
+import { goToWorkbookSkippingStepScreen }  from '../../../redux/actions/nav.actions'
 import selectors                           from '../../../redux/selectors'
 import { screenKey }                       from '../index'
 import { PhaseProgressElementKey }         from './PhaseProgressElementContainer'
@@ -86,8 +84,8 @@ const merge = (
   const { login } = dispatchProps
 
   const { number, title, icon, snippet, audio } = step
-  tron.log("Option button container logic for option button #" + number)
-  
+  tron.log('Option button container logic for option button #' + number)
+
   const isLoggedIn = typeof user === 'string' ? false : true
 
   const visible = mapTypeToPhase(step) === selected
@@ -103,13 +101,13 @@ const merge = (
 
   return {
     title,
-    audio: audio && audio.uri || undefined,
+    audio: (audio && audio.uri) || undefined,
     step: number,
     subtitleText: `${snippet}`,
     phase: phaseForStepAtIndex(number - 1),
     source: icon && icon.uri,
     complete: stepCompleted(number - 1),
-    visible,      
+    visible,
     onPress: () =>
       isLoggedIn
         ? navigation.dispatch(
