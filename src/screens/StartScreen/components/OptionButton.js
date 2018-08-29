@@ -45,8 +45,8 @@ class OptionButton extends React.PureComponent<OptionButtonProps> {
       textStyle
     } = this.props
     tron.log('Re rendered option button #' + step)
-    return visible ? (
-      <TouchableOpacity onPress={onPress}>
+    return (
+      <TouchableOpacity style={visible ? {} : { width: 0, height: 0 }} onPress={onPress}>
         <View style={[styles.button, { backgroundColor: containerBackgroundColor }]}>
           <View style={styles.mainComponent}>
             <View style={styles.mainComponentTopRow}>
@@ -89,7 +89,7 @@ class OptionButton extends React.PureComponent<OptionButtonProps> {
           </View>
         </View>
       </TouchableOpacity>
-    ) : null
+    )
   }
 }
 
