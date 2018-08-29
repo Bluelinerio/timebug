@@ -1,12 +1,11 @@
 //@flow
-import React                                   from 'react'
-import { View, TouchableOpacity, Text }        from 'react-native'
-import SvgIcon                                 from '../../../components/SvgIcon'
-import CustomImage                             from '../../../components/CustomImage'
-import styles                                  from '../styles'
-import { icon }                                from '../../../resources/images'
-import { mapPhaseAndCompletionToStylesHelper } from '../utils/colorsForStep'
-import tron                                    from 'reactotron-react-native'
+import React                            from 'react'
+import { View, TouchableOpacity, Text } from 'react-native'
+import CustomImage                      from '../../../components/CustomImage'
+import styles                           from '../styles'
+import tron                             from 'reactotron-react-native'
+import StepContentButton                from '../containers/StepContentButtonContainer'
+import StepAudioButton                  from '../containers/StepAudioButtonContainer'
 
 const lorem =
   'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati velit culpa alias ipsum delectus accusantium'
@@ -18,19 +17,16 @@ export type SideActions = {
 
 export type OptionButtonProps = {
   onPress: () => any,
-  text: string,
-  step: string,
+  title: string,
+  step: number,
   subtitleText: string,
+  audio: string,
   complete: boolean,
   phase: string,
-  sideActions: SideActions,
   visible: boolean,
-  source:
-    | any
-    | {
-        uri: string
-      },
-  style?: any
+  source: string,
+  containerBackgroundColor: string,
+  textStyle: any
 }
 
 class OptionButton extends React.PureComponent<OptionButtonProps> {
@@ -38,65 +34,58 @@ class OptionButton extends React.PureComponent<OptionButtonProps> {
     const {
       onPress,
       step,
-      text,
+      title,
       complete,
       phase,
       subtitleText = lorem,
-      source = icon,
-      sideActions,
-      style = {},
-      visible
+      source,
+      visible,
+      audio,
+      containerBackgroundColor,
+      textStyle
     } = this.props
-    const { audio: audioAction, content: contentAction } = sideActions
-    const {
-      container: helperContainerStyle,
-      icon: helperIconStyle
-    } = mapPhaseAndCompletionToStylesHelper(phase, complete)
+    tron.log('Re rendered option button #' + step)
     return visible ? (
       <TouchableOpacity onPress={onPress}>
-        <View style={[styles.button, style.container]}>
+        <View style={[styles.button, { backgroundColor: containerBackgroundColor }]}>
           <View style={styles.mainComponent}>
             <View style={styles.mainComponentTopRow}>
               <View style={[styles.buttonImageContainer]}>
                 <CustomImage
-                  style={[styles.buttonImage, style.image]}
-                  source={source}
+                  style={[styles.buttonImage]}
+                  source={{ uri: source }}
                 />
               </View>
               <View style={[styles.buttonTextContainer]}>
-                <Text style={[styles.stepText, styles.buttonText, style.text]}>
+                <Text style={[styles.stepText, styles.buttonText, textStyle]}>
                   Step {step}:
                 </Text>
                 <Text
-                  style={[styles.stepTitleText, styles.buttonText, style.text]}
+                  style={[styles.stepTitleText, styles.buttonText, textStyle]}
                 >
-                  {text}
+                  {title}
                 </Text>
               </View>
             </View>
             <View style={[styles.flex, styles.mainComponentBottomRow]}>
-              <Text style={[styles.subtitle, styles.buttonText, style.text]}>
+              <Text style={[styles.subtitle, styles.buttonText, textStyle]}>
                 {subtitleText}
               </Text>
             </View>
           </View>
           <View style={[styles.flex, styles.secondaryComponent]}>
-            <View style={[styles.flex, styles.center]}>
-              <TouchableOpacity
-                style={[styles.helperButton, helperContainerStyle]}
-                onPress={contentAction}
-              >
-                <SvgIcon name="Book" {...helperIconStyle} />
-              </TouchableOpacity>
-            </View>
-            <View style={[styles.flex, styles.center]}>
-              <TouchableOpacity
-                style={[styles.helperButton, helperContainerStyle]}
-                onPress={audioAction}
-              >
-                <SvgIcon name="Audio" {...helperIconStyle} />
-              </TouchableOpacity>
-            </View>
+            <StepContentButton
+              number={step}
+              phase={phase}
+              complete={complete}
+            />
+            <StepAudioButton
+              phase={phase}
+              complete={complete}
+              audio={audio}
+              title={title}
+              icon={source}
+            />
           </View>
         </View>
       </TouchableOpacity>
