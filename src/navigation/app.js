@@ -4,11 +4,16 @@ import { createReduxBoundAddListener }             from 'react-navigation-redux-
 import { BackHandler, Linking }                    from 'react-native'
 import { connect }                                 from 'react-redux'
 import { uriPrefix }                               from '../constants'
-import { RootTabNavigator, StartNavigator }        from './index'
+import { StartNavigator }                          from './index'
 
 const addListener = createReduxBoundAddListener('root')
 
-class AppNavigation extends React.Component {
+type Props = {
+  dispatch: () => any,
+  nav: any
+}
+
+class AppNavigation extends React.Component<Props> {
   componentDidMount() {
     BackHandler.addEventListener('hardwareBackPress', this.onBackPress)
     Linking.addEventListener('url', ({ url }: { url: string }) => {
