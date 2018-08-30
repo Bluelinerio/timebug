@@ -16,6 +16,9 @@ export const stepInfoForStep = (step: Step) => ({
   formId: '1'
 })
 
+export const popToTop = () => 
+  NavigationActions.popToTop()
+
 export const navigateWith = ({
   routeName,
   props: { navigation: { state: { params } } }
@@ -27,7 +30,7 @@ export const navigateWith = ({
 
 const navigateToInitialRoute = () =>
   NavigationActions.navigate({
-    routeName: routes.root.initialRouteName
+    routeName: routes.start.initialRouteName
   })
 
 export const reset = () =>

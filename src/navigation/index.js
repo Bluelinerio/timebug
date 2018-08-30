@@ -72,9 +72,6 @@ export const rootConfiguration = {
       screen: AssignmentFlowNavigator,
       path: 'step'
     },
-    [routes.root.Walkthrough]: {
-      screen: WalkthroughScreen
-    },
     [routes.root.DashboardScreen]: {
       screen: DashboardScreen,
       path: 'dashboard'
@@ -145,9 +142,36 @@ export const tabConfiguration = {
     swipeEnabled: false
   }
 }
+
 export const RootTabNavigator = TabNavigator(
   tabConfiguration.screens,
   tabConfiguration.options
+)
+
+export const startConfiguration = {
+  routes: routes.start,
+  screens: {
+    [routes.start.TabNavigator]: {
+      screen: RootTabNavigator
+    },
+    [routes.start.Walkthrough]: {
+      screen: WalkthroughScreen
+    },
+  },
+  options: {
+    initialRouteName: routes.start.initialRouteName,
+    mode: Platform.OS === 'ios' ? 'modal' : 'card',
+    headerMode: 'none',
+    cardStyle: {
+      backgroundColor: 'white',
+      opacity: 1
+    }
+  }
+}
+
+export const StartNavigator = StackNavigator(
+  startConfiguration.screens,
+  startConfiguration.options
 )
 
 // fix for debouncing

@@ -3,7 +3,6 @@ export default {
   root: {
     HomeScreen: 'HomeScreen',
     AssignmentFlow: 'AssignmentFlow',
-    Walkthrough: 'Walkthrough',
     StartScreen: 'StartScreen',
     DashboardScreen: 'DashboardScreen',
     initialRouteName: 'StartScreen',
@@ -20,5 +19,10 @@ export default {
     MyJourneyScreen: 'MyJourneyScreen',
     MeditationScreen: 'MeditationScreen',
     RootNavigator: 'RootNavigator'
+  },
+  start: {
+    initialRouteName: 'TabNavigator',
+    Walkthrough: 'Walkthrough',
+    TabNavigator: 'TabNavigator'    
   }
 }

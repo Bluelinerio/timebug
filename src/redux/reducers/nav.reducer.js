@@ -1,19 +1,19 @@
 import {
   rootConfiguration,
   assignmentFlowConfiguration,
-  tabConfiguration,
-  RootTabNavigator
+  startConfiguration,
+  StartNavigator
 } from '../../navigation'
 
-const initialRouteState = RootTabNavigator.router.getStateForAction(
-  RootTabNavigator.router.getActionForPathAndParams(
-    tabConfiguration.routes.initialRouteName
+const initialRouteState = StartNavigator.router.getStateForAction(
+  StartNavigator.router.getActionForPathAndParams(
+    startConfiguration.routes.initialRouteName
   )
 )
 
-const walkthroughState = RootTabNavigator.router.getStateForAction(
-  RootTabNavigator.router.getActionForPathAndParams(
-    rootConfiguration.routes.Walkthrough
+const walkthroughState = StartNavigator.router.getStateForAction(
+  StartNavigator.router.getActionForPathAndParams(
+    startConfiguration.routes.Walkthrough
   ),
   initialRouteState
 )
@@ -24,7 +24,7 @@ if (!initialRouteState || !walkthroughState) {
 const initialState = walkthroughState
 
 function navReducer(state = initialState, action) {
-  const newState = RootTabNavigator.router.getStateForAction(action, state)
+  const newState = StartNavigator.router.getStateForAction(action, state)
   return newState || state
 }
 
@@ -103,7 +103,7 @@ const persistConfig = {
       const initialRouteName = state.routes[0].routeName
       if (
         !initialRouteName /* this can happen sometimes! */ ||
-        initialRouteName !== tabConfiguration.routes.initialRouteName
+        initialRouteName !== startConfiguration.routes.initialRouteName
       ) {
         return Promise.resolve(initialRouteState)
       }

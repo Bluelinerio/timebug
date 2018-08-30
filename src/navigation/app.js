@@ -4,7 +4,7 @@ import { createReduxBoundAddListener }             from 'react-navigation-redux-
 import { BackHandler, Linking }                    from 'react-native'
 import { connect }                                 from 'react-redux'
 import { uriPrefix }                               from '../constants'
-import { RootTabNavigator }                        from './index'
+import { RootTabNavigator, StartNavigator }        from './index'
 
 const addListener = createReduxBoundAddListener('root')
 
@@ -25,7 +25,7 @@ class AppNavigation extends React.Component {
   handleUrl(url) {
     const { dispatch } = this.props
     const path = url.split(uriPrefix)[1] || url
-    const action = RootTabNavigator.router.getActionForPathAndParams(path)
+    const action = StartNavigator.router.getActionForPathAndParams(path)
     if (action) {
       dispatch(action)
     }
@@ -47,7 +47,7 @@ class AppNavigation extends React.Component {
       state: nav,
       addListener
     })
-    return <RootTabNavigator navigation={navigation} />
+    return <StartNavigator navigation={navigation} />
   }
 }
 
