@@ -1,9 +1,10 @@
 //@flow
 import { OPEN_MODAL, CLOSE_MODAL } from '../actionTypes'
-import { ModalActionPayload }      from '../actions/modal.actions'
+import { ModalActionPayload } from '../actions/modal.actions'
 
 type ModalState = {
-  openKeys: Array<string>
+  openKeys: Array<string>,
+  params: any
 }
 
 type ModalAction = {
@@ -11,15 +12,24 @@ type ModalAction = {
   payload: ModalActionPayload
 }
 
+const initialState: ModalState = {
+  openKeys: [],
+  params: {}
+}
+
 const isKeyInState = (state: ModalState, modalKey: string) =>
   !!state.openKeys.find(key => key === modalKey)
 
 const handleOpen = (state: ModalState, payload: ModalActionPayload) => {
-  const { key } = payload
+  const { key, params } = payload
   if (!isKeyInState(state, key))
     return {
       ...state,
-      openKeys: [...state.openKeys, key]
+      openKeys: [...state.openKeys, key],
+      params: {
+        ...state.params,
+        [key]: params
+      }
     }
   return state
 }
@@ -29,13 +39,13 @@ const handleClose = (state: ModalState, payload: ModalActionPayload) => {
   if (isKeyInState(state, key))
     return {
       ...state,
-      openKeys: state.openKeys.filter(k => k !== key)
+      openKeys: state.openKeys.filter(k => k !== key),
+      params: {
+        ...state.params,
+        [key]: null
+      }
     }
   return state
-}
-
-const initialState = {
-  openKeys: []
 }
 
 export default (state: ModalState = initialState, action: ModalAction) => {

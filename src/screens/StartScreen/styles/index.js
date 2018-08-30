@@ -30,7 +30,7 @@ const versionHeight = heightPercentage(15, remainderHeight)
 export const StepComponentActionDimensions = 36
 export const StepComponentActionRadius = 36
 
-export const helperIconSize = 18
+export const helperIconSize = 22
 
 export const colors = {
   containerColor,
@@ -39,6 +39,24 @@ export const colors = {
 }
 
 export const progressFillColor = fontColor
+
+export const svgStyles = {
+  iconPhase1: {
+    fill: PHASE_1_COMPLETE,
+    height: helperIconSize,
+    width: helperIconSize
+  },
+  iconPhase2: {
+    fill: PHASE_2_COMPLETE,
+    height: helperIconSize,
+    width: helperIconSize
+  },
+  iconPhase3: {
+    fill: PHASE_3_COMPLETE,
+    height: helperIconSize,
+    width: helperIconSize
+  },
+}
 
 export const phaseProgressStyles = StyleSheet.create({
   listContainer: {

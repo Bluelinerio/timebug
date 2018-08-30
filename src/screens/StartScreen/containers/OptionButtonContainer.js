@@ -5,6 +5,7 @@ import { withNavigation }                  from 'react-navigation'
 import OptionButton, { OptionButtonProps } from '../components/OptionButton'
 import { openModal }                       from '../../../redux/actions/modal.actions'
 import { key as loginModalKey }            from '../../../components/LoginModal'
+import { key as audioModalKey }            from '../../../components/AudioModal'
 import styles                              from '../styles'
 import {
   getColorForStepAtIndex,
@@ -17,15 +18,22 @@ import {
   goToWorkbookSkippingStepScreen
 }                                          from '../../../redux/actions/nav.actions'
 import selectors                           from '../../../redux/selectors'
-
-import tron from 'reactotron-react-native'
+import { screenKey }                       from '../index'
+import { PhaseProgressElementKey }         from './PhaseProgressElementContainer'
+import {
+  MEDITATION,
+  SELF_ASSESSMENT,
+  VISION_CREATION
+}                                          from '../../../services/cms'
 
 type OptionButtonDispatchProps = {
-  login: () => any
+  login: () => any,
+  openAudio: () => any
 }
 
 type OptionButtonStateProps = {
-  user: any
+  user: any,
+  selected: string
 }
 
 type OptionButtonContainerProps = {
@@ -35,17 +43,40 @@ type OptionButtonContainerProps = {
   stepColors: any
 }
 
+const mapTypeToPhase = ({ type }) => {
+  switch (type) {
+    case 'MEDITATION':
+      return MEDITATION
+    case 'SELF-ASSESSMENT':
+      return SELF_ASSESSMENT
+    case 'VISION CREATION':
+      return VISION_CREATION
+    default:
+      return MEDITATION
+  }
+}
+
 const FIRST_FORM_ID = '1'
 
 const mapStateToProps = (state: any): OptionButtonStateProps => {
   const user = selectors.getUser(state)
+
+  const uiState = selectors.stateForScreen(state)(screenKey)
+
+  const { selected } = uiState[PhaseProgressElementKey] || {
+    selected: MEDITATION
+  }
+
   return {
-    user
+    user,
+    selected
   }
 }
 
 const mapDispatchToProps = (dispatch: any): OptionButtonDispatchProps => ({
-  login: () => dispatch(openModal({ key: loginModalKey }))
+  login: () => dispatch(openModal({ key: loginModalKey })),
+  openAudio: ({ audio, icon, title }) =>
+    dispatch(openModal({ key: audioModalKey, params: { audio, icon, title } }))
 })
 
 const merge = (
@@ -53,14 +84,14 @@ const merge = (
   dispatchProps: OptionButtonDispatchProps,
   ownProps: OptionButtonContainerProps
 ): OptionButtonProps => {
-  const { user } = stateProps
+  const { user, selected } = stateProps
   const { stepColors, step, navigation } = ownProps
-  const { login } = dispatchProps
+  const { login, openAudio } = dispatchProps
 
-  const { number, title, icon } = step
+  const { number, title, icon, snippet } = step
   const isLoggedIn = typeof user === 'string' ? false : true
 
-  tron.log(`Calling merge on step: ${number}`)
+  const visible = mapTypeToPhase(step) === selected
 
   const backgroundColorAtIndex = (stepIndex: number) =>
     stepColors[getColorForStepAtIndex(stepIndex, user)]
@@ -74,6 +105,7 @@ const merge = (
   return {
     text: `${title}`,
     step: `${number}`,
+    subtitleText: `${snippet}`,
     phase: phaseForStepAtIndex(number - 1),
     onPress: () =>
       isLoggedIn
@@ -85,7 +117,7 @@ const merge = (
           )
         : login(),
     sideActions: {
-      audio: () => login(),
+      audio: () => openAudio({ title, icon }),
       content: () => navigation.dispatch(goToAssignmentFlow({ step }))
     },
     source: icon,
@@ -95,7 +127,8 @@ const merge = (
         backgroundColor: backgroundColorAtIndex(number - 1)
       },
       text: textColorAtIndex(number - 1)
-    }
+    },
+    visible
   }
 }
 

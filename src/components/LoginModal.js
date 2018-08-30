@@ -44,6 +44,7 @@ const LoginModal = (props: LoginModalProps) => {
     >
       <StatusBar barStyle="dark-content" backgroundColor={statusBarColor} />
       <View style={styles.modalContainer}>
+        <TouchableOpacity style={styles.modalBackgroundTouchable} onPress={close} />
         <Gradient colors={gradientColors} style={styles.modal}>
           <View style={styles.modalHeader}>
             <View style={[styles.headerBlock, styles.iconBlock]}>
