@@ -23,6 +23,6 @@ export default {
   start: {
     initialRouteName: 'TabNavigator',
     Walkthrough: 'Walkthrough',
-    TabNavigator: 'TabNavigator'    
+    TabNavigator: 'TabNavigator'
   }
 }

@@ -16,8 +16,7 @@ export const stepInfoForStep = (step: Step) => ({
   formId: '1'
 })
 
-export const popToTop = () => 
-  NavigationActions.popToTop()
+export const popToTop = () => NavigationActions.popToTop()
 
 export const navigateWith = ({
   routeName,

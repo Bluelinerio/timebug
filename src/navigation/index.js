@@ -6,14 +6,12 @@ import {
   TabNavigator,
   TabBarBottom
 }                         from 'react-navigation'
-
 import {
   tabBarBackground,
   tabBarButtonColor,
   tabBarUnselected
 }                         from '../constants/colors'
 import TabBarIcon         from '../components/TabBarIcon'
-
 import HomeScreen         from '../screens/HomeScreen'
 import StepScreen         from '../screens/StepScreen'
 import WorkbookDoneScreen from '../screens/WorkbookDoneScreen'
@@ -25,7 +23,6 @@ import MarkdownScreen     from '../screens/MarkdownScreen'
 import EmojiPickerScreen  from '../screens/EmojiPickerScreen'
 import MyJourneyScreen    from '../screens/MyJourneyScreen'
 import StartScreen        from '../screens/StartScreen'
-import { uriPrefix }      from '../constants'
 import routes             from './routes'
 
 if (!routes || !routes.root || !routes.root.initialRouteName || !routes.step) {
@@ -156,7 +153,7 @@ export const startConfiguration = {
     },
     [routes.start.Walkthrough]: {
       screen: WalkthroughScreen
-    },
+    }
   },
   options: {
     initialRouteName: routes.start.initialRouteName,
