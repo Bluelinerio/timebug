@@ -134,9 +134,7 @@ export const tabConfiguration = {
       }
     },
     tabBarComponent: TabBarBottom,
-    tabBarPosition: 'bottom',
-    animationEnabled: false,
-    swipeEnabled: false
+    tabBarPosition: 'bottom'
   }
 }
 
