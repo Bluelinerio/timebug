@@ -7,16 +7,13 @@ import {
   ActivityIndicator
 } from 'react-native';
 
-type Icon = {
-  uri: string
-};
-
 type Props = {
   style: {},
-  source: Icon,
+  source: string,
   showWebviewLoader: boolean
 };
-export default class SVGImage extends React.Component<Props> {
+
+export default class SVGImage extends React.PureComponent<Props> {
   static defaultProps = {
     style: {},
     source: { uri: '' },
@@ -41,9 +38,8 @@ export default class SVGImage extends React.Component<Props> {
   render() {
     const {
       showWebviewLoader,
-      source: { uri },
-      style,
-      ...restOfProps
+      source,
+      style
     } = this.props;
     const html = `
       <!DOCTYPE html>\n
@@ -68,7 +64,7 @@ export default class SVGImage extends React.Component<Props> {
         </head>
         <body>
           <div>
-            <img src="${uri}" align="middle" />
+            <img src="${source}" align="middle" />
           </div>
         </body>
       </html>
@@ -80,7 +76,6 @@ export default class SVGImage extends React.Component<Props> {
         renderLoading={showWebviewLoader ? this.renderLoader : null}
         scalesPageToFit={true}
         style={style}
-        {...restOfProps}
         source={{ html }}
       />
     );
