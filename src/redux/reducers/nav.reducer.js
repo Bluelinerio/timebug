@@ -29,7 +29,7 @@ function navReducer(state = initialState, action) {
 }
 
 import storage from 'redux-persist/lib/storage'
-import { persistReducer, createMigrate } from 'redux-persist'
+import { persistReducer } from 'redux-persist'
 
 import routes from '../../navigation/routes'
 const requiredParamFieldsForRoute = (route: string) => {
