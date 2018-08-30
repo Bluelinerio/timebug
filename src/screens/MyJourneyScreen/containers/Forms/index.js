@@ -32,8 +32,41 @@ export const STEP28 = '28'
 export const STEP29 = '29'
 export const STEP30 = '30'
 
+export type STEP =
+  | STEP1
+  | STEP2
+  | STEP3
+  | STEP4
+  | STEP5
+  | STEP6
+  | STEP7
+  | STEP8
+  | STEP9
+  | STEP10
+  | STEP11
+  | STEP12
+  | STEP13
+  | STEP14
+  | STEP15
+  | STEP16
+  | STEP17
+  | STEP18
+  | STEP19
+  | STEP20
+  | STEP21
+  | STEP22
+  | STEP23
+  | STEP24
+  | STEP25
+  | STEP26
+  | STEP27
+  | STEP28
+  | STEP29
+  | STEP30
+
+
 type RequestedKeys = {
-  [x: string]: SelectedKeys
+  [x: STEP]: SelectedKeys
 }
 
 export const allFormsRequestedKeys: RequestedKeys = {
@@ -71,35 +104,3 @@ export const getFormRequestedKeysForStep = (stepId: string): SelectedKeys => {
   const requestedKeys = allFormsRequestedKeys[stepId]
   return requestedKeys ? requestedKeys : {}
 }
-
-export type STEP =
-  | STEP1
-  | STEP2
-  | STEP3
-  | STEP4
-  | STEP5
-  | STEP6
-  | STEP7
-  | STEP8
-  | STEP9
-  | STEP10
-  | STEP11
-  | STEP12
-  | STEP13
-  | STEP14
-  | STEP15
-  | STEP16
-  | STEP17
-  | STEP18
-  | STEP19
-  | STEP20
-  | STEP21
-  | STEP22
-  | STEP23
-  | STEP24
-  | STEP25
-  | STEP26
-  | STEP27
-  | STEP28
-  | STEP29
-  | STEP30

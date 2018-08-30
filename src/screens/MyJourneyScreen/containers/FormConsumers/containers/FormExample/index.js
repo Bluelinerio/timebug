@@ -1,6 +1,6 @@
 //@flow
 import React from 'react'
-import type, {
+import type {
   HandlerFunction,
   FormDataForExercise
 }            from '../../../../../HOC/GenericFormConsumer'

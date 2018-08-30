@@ -1,4 +1,10 @@
-const nextStepMotivation = {
+//@flow
+
+type NextStepMotivationObject = {
+  [x: string]: string
+}
+
+const nextStepMotivation: NextStepMotivationObject = {
   '1': `Up next is Step 2, where will review and optimize a typical 168 hr week (24hrs X 7days).`,
   '2': `In Step 3, you will engage in constructive self-reflection regarding your strengths and weaknesses and how they have helped or hindered you in pursuit of your goals.`,
   '3': `In step 4, we’ll ask you to form a Board of Advisors, based on the 7 Pillars of Life. A strong community is foundational for becoming the best possible you.`,
@@ -32,5 +38,6 @@ const nextStepMotivation = {
 
   Good luck and remember - this is not an end, but the beginning of the real work - the fun part!`
 }
+
 
 export default nextStepMotivation
