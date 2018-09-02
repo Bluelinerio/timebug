@@ -62,6 +62,8 @@ type CheckingListStateProps = {
 const mapStateToProps = (state: any): CheckingListStateProps => {
   const steps = selectors.steps(state)
   const user = selectors.user(state)
+  const checkins = selectors.checkins(state)
+  
   //REMOVE ONCE CONTENTFUL HAS STEPS
   const modifiedSteps = Object.keys(steps).reduce((stepsR, key) => {
     const step = steps[key]
