@@ -13,6 +13,9 @@ export default StyleSheet.create({
     flex: 1
   },
   scroll: {
+    flex: 1    
+  },
+  padded: {
     padding: 16
   },
   checkinContainer: {
