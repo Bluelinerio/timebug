@@ -60,3 +60,8 @@ export const LOAD_AWARD_VALUE = 'LOAD_AWARD_VALUE'
 
 export const CHANGE_UI_STATUS = 'CHANGE_UI_STATUS'
 export const RESET_UI_STATUS = 'RESET_UI_STATUS'
+
+/**
+ * Checkins
+ */
+export const CHANGE_CHECKIN = 'CHANGE_CHECKIN'
