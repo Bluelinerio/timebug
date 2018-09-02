@@ -1,8 +1,9 @@
-import React from 'react'
-import InteractionManager from '../../utils/InteractionManager'
+//@flow
+import React                  from 'react'
+import InteractionManager     from '../../utils/InteractionManager'
 import CheckinScreenContainer from './containers/CheckinScreenContainer'
-import User from '../../containers/User'
-import DefaultIndicator from '../../components/DefaultIndicator'
+import User                   from '../../containers/User'
+import DefaultIndicator       from '../../components/DefaultIndicator'
 
 class CheckinScreen extends React.PureComponent {
   constructor(props) {

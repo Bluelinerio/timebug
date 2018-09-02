@@ -1,11 +1,10 @@
 // @flow
-import React from 'react'
+import React                from 'react'
 import { View, ScrollView } from 'react-native'
-import { SafeAreaView } from 'react-navigation'
+import { SafeAreaView }     from 'react-navigation'
+import CheckinList          from '../containers/CheckinList'
+import styles               from '../styles'
 
-import CheckinList from '../containers/CheckinList'
-
-import styles from '../styles'
 class CheckinScreenComponent extends React.PureComponent<any> {
   render() {
     return (

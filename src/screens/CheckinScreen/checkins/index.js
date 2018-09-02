@@ -1,5 +1,5 @@
-
-import moment from 'moment'
+//@flow
+import moment                            from 'moment'
 import { frequencies, WEEKLY, BIWEEKLY } from '../../../services/checkins'
 
 export const STEP1 = '1'
@@ -66,27 +66,30 @@ export type STEP =
   | STEP30
 
 export type Checkin = {
-    text: string,
-    title: string,
-    lastCheckin: string,
-    frequency: string,
-    link: string
+  text: string,
+  title: string,
+  lastCheckin: string,
+  frequency: string,
+  link: string
 }
 
 export const checkins = {
-    [STEP1]: {
-        text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam corporis mollitia maiores asperiores illum. Expedita beatae similique eos velit, perspiciatis itaque sequi voluptatem sed repellendus cum sint suscipit et non.',
-        title: 'Checkin for step1!',
-        lastCheckin: moment().subtract(5, 'd').format("YYYY-MM-DD HH:mm:ss"),
-        frequency: frequencies[WEEKLY],
-        link: 'journey/rewards?reward=4'
-    },
-    [STEP2]: {
-        text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam corporis mollitia maiores asperiores illum. Expedita beatae similique eos velit, perspiciatis itaque sequi voluptatem sed repellendus cum sint suscipit et non.',
-        title: 'Checkin for step2!',
-        lastCheckin: moment().subtract(2, 'd'),
-        frequency: frequencies[BIWEEKLY],
-        link: 'home?step=14'
-    }
+  [STEP1]: {
+    text:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam corporis mollitia maiores asperiores illum. Expedita beatae similique eos velit, perspiciatis itaque sequi voluptatem sed repellendus cum sint suscipit et non.',
+    title: 'Checkin for step1!',
+    lastCheckin: moment()
+      .subtract(5, 'd')
+      .format('YYYY-MM-DD HH:mm:ss'),
+    frequency: frequencies[WEEKLY],
+    link: 'journey/rewards?reward=4'
+  },
+  [STEP2]: {
+    text:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam corporis mollitia maiores asperiores illum. Expedita beatae similique eos velit, perspiciatis itaque sequi voluptatem sed repellendus cum sint suscipit et non.',
+    title: 'Checkin for step2!',
+    lastCheckin: moment().subtract(2, 'd'),
+    frequency: frequencies[BIWEEKLY],
+    link: 'journey/rewards?reward=2'
+  }
 }
-

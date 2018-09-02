@@ -1,10 +1,12 @@
-import { StyleSheet } from 'react-native'
-import { deepBlue, cyan, gray400 } from '../../../constants/colors'
+import { StyleSheet, Platform }    from 'react-native'
 import {
-  sanFranciscoWeights,
-  robotoWeights,
-  iOSUIKit
-} from 'react-native-typography'
+  azure,
+  gray50,
+  gray400,
+  white2,
+  gray900
+}                                  from '../../../constants/colors'
+import { systemWeights, iOSUIKit } from 'react-native-typography'
 
 export default StyleSheet.create({
   container: {
@@ -15,13 +17,30 @@ export default StyleSheet.create({
   },
   checkinContainer: {
     flex: 1,
-    backgroundColor: cyan,
+    backgroundColor: gray50,
     marginVertical: 10,
-    borderRadius: 6
+    borderRadius: 6,
+    ...Platform.select({
+      android: {
+        elevation: 2
+      },
+      ios: {
+        shadowColor: 'black',
+        shadowOffset: {
+          width: 0,
+          height: 2
+        },
+        shadowOpacity: 0.2,
+        shadowRadius: 2
+      }
+    })
   },
   checkinTopContainer: {
     flex: 2,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    backgroundColor: azure,
+    borderTopLeftRadius: 6,
+    borderTopRightRadius: 6
   },
   titleContainer: {
     flex: 3,
@@ -30,10 +49,11 @@ export default StyleSheet.create({
   },
   title: {
     ...iOSUIKit.title3EmphasizedObject,
+    ...systemWeights.bold,
     fontSize: 18,
-    color: deepBlue,
+    color: white2,
     textDecorationLine: 'underline',
-    fontFamily: 'Metropolis',
+    fontFamily: 'Metropolis'
   },
   centeredContainer: {
     flex: 1,
@@ -43,6 +63,7 @@ export default StyleSheet.create({
   date: {
     ...iOSUIKit.caption2Object,
     fontFamily: 'Metropolis',
+    color: white2
   },
   changedDate: {
     ...iOSUIKit.caption2Object,
@@ -50,13 +71,16 @@ export default StyleSheet.create({
   },
   textContainer: {
     flex: 1,
-    marginVertical: 12,
-    paddingHorizontal: 12
+    padding: 12,
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+    borderColor: gray900
   },
   text: {
-    ...iOSUIKit.footnoteObject,      
+    ...iOSUIKit.footnoteObject,
+    ...systemWeights.regular,
     textAlign: 'justify',
-    fontFamily: 'Metropolis',
+    fontFamily: 'Metropolis'
   },
   lowerRowContainer: {
     paddingVertical: 10,
@@ -64,7 +88,9 @@ export default StyleSheet.create({
     flexDirection: 'row'
   },
   pickerContainer: {
-    flex: 2
+    flex: 2,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   picker: {
     width: 150,
@@ -74,22 +100,16 @@ export default StyleSheet.create({
     borderRadius: 10,
     paddingVertical: 8
   },
-  save: {
-    backgroundColor: deepBlue
-  },
-  saveDisabled: {
-    backgroundColor: gray400
+  buttonText: {
+    ...iOSUIKit.calloutObject,
+    ...systemWeights.light,
+    textDecorationLine: 'underline',
+    fontFamily: 'Metropolis'
   },
   saveText: {
-    ...iOSUIKit.calloutObject,    
-    color: deepBlue,
-    textDecorationLine: 'underline',
-    fontFamily: 'Metropolis',
+    color: azure
   },
   saveTextDisabled: {
-    ...iOSUIKit.calloutObject,      
-    color: gray400,
-    textDecorationLine: 'underline',
-    fontFamily: 'Metropolis',
+    color: gray400
   }
 })

@@ -1,11 +1,11 @@
-import { connect } from 'react-redux'
-import { checkins } from '../checkins'
+//@flow
+import { connect }          from 'react-redux'
+import { checkins }         from '../checkins'
 import {
-  goToMyJourneyScreen,
   goToStartScreen,
   journeyScreenDeepParams
-} from '../../../redux/actions/nav.actions'
-import selectors from '../../../redux/selectors'
+}                           from '../../../redux/actions/nav.actions'
+import selectors            from '../../../redux/selectors'
 import CheckinListComponent from '../components/CheckinListComponent'
 
 export const isStepCompleted = () => {
@@ -14,12 +14,15 @@ export const isStepCompleted = () => {
     if (completionMap[stepNumber]) return completionMap[stepNumber]
     const { forms } = user
     const completed =
-      forms && forms.find(form => {
-          const value = `${form.stepId}` === stepNumber
-          if(!completionMap[form.stepId]) completionMap[form.stepId] = value
-          return value
-      }) ? true : false
-    if(!completionMap[stepNumber]) completionMap[stepNumber] = completed
+      forms &&
+      forms.find(form => {
+        const value = `${form.stepId}` === stepNumber
+        if (!completionMap[form.stepId]) completionMap[form.stepId] = value
+        return value
+      })
+        ? true
+        : false
+    if (!completionMap[stepNumber]) completionMap[stepNumber] = completed
     return completed
   }
 }
@@ -72,10 +75,10 @@ const mapStateToProps = (state: any): CheckingListStateProps => {
         }
       }
     return {
-        ...stepsR,
-        [key]: {
-            ...step
-        }
+      ...stepsR,
+      [key]: {
+        ...step
+      }
     }
   }, {})
   return {
@@ -91,19 +94,18 @@ const mapDispatchToProps = (dispatch: () => any): CheckinListDispatchProps => ({
 
 const mergeProps = (
   stateProps: CheckingListStateProps,
-  dispatchProps: CheckinListDispatchProps,
-  _
+  dispatchProps: CheckinListDispatchProps
 ) => {
   const { steps, user } = stateProps
   const { homeScreen, journeyScreen } = dispatchProps
   const handleLink = (checkin: any) => {
     const { link } = checkin
     const { screen, component, params } = handleUrl(link)
-    switch(screen) {
-        case 'home':
-            return () => homeScreen({ component, params })
-        case 'journey': 
-            return () => journeyScreen({ component, params })
+    switch (screen) {
+      case 'home':
+        return () => homeScreen({ component, params })
+      case 'journey':
+        return () => journeyScreen({ component, params })
     }
   }
   if (!stepsWithCheckinsMap)

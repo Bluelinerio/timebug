@@ -1,4 +1,5 @@
-import React from 'react'
+//@flow
+import React                                   from 'react'
 import CheckinElement, { CheckinElementProps } from './CheckinElement'
 
 type CheckinListComponentProps = {
