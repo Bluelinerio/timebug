@@ -20,6 +20,7 @@ export const gray200 = '#EEEEEE'
 export const gray50 = '#FAFAFA'
 export const gray900 = '#212121'
 export const azure = '#4EADFF'
+export const cyan = '#B8DEFF'
 
 export const MEDITATION = '#005587'
 export const SELF_ASSESMENT = '#EB8900'
@@ -42,7 +43,7 @@ export const StartScreenBackgroundColor = '#E1F3FB'
 export const PHASE_1_COMPLETE = azure
 export const PHASE_2_COMPLETE = '#F89A1F'
 export const PHASE_3_COMPLETE = '#20B89D'
-export const PHASE_1_INCOMPLETE = '#B8DEFF'
+export const PHASE_1_INCOMPLETE = cyan
 export const PHASE_2_INCOMPLETE = '#F8CF1F'
 export const PHASE_3_INCOMPLETE = '#20DE9D'
 

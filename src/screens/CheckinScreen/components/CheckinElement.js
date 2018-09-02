@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, Picker, TouchableOpacity, StyleSheet } from 'react-native'
+import { View, Text, Picker, TouchableOpacity } from 'react-native'
 import {
   frequencies,
   DAILY,
@@ -8,6 +8,8 @@ import {
   MONTHLY
 } from '../../../services/checkins'
 import moment from 'moment'
+
+import styles from '../styles'
 
 export type CheckinElementProps = {
   text: string,
@@ -49,34 +51,28 @@ class CheckinElement extends React.PureComponent<CheckinElementProps> {
     const { frequency: localFrequency } = this.state
     return (
       <View
-        style={{
-          flex: 1,
-          padding: 8,
-          paddingHorizontal: 16,
-          backgroundColor: '#EEEEEE',
-          marginVertical: 10
-        }}
+        style={styles.checkinContainer}
       >
-        <View style={{ flex: 2, flexDirection: 'row'}}>
-          <View style={{ flex: 3, alignItems: 'flex-start' }}>
-            <Text style={{ fontSize: 16, color: 'blue', textDecorationLine:'underline' }} onPress={onLink}>{title}</Text>
-          </View>
-          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <View style={styles.checkinTopContainer}>
+          <TouchableOpacity style={[styles.titleContainer, styles.button]} onPress={onLink}>
+            <Text style={styles.title}>{title}</Text>
+          </TouchableOpacity>
+          <View style={styles.centeredContainer}>
             <Text
-              style={[{ fontSize: 12 }, frequency !== localFrequency ? { color: 'green' } : {}]}
+              style={[styles.date, frequency !== localFrequency ? styles.changedDate : {}]}
             >
               {operateCheckinDate(localFrequency, lastCheckin)}
             </Text>
           </View>
         </View>
-        <View style={{ flex: 1, marginVertical: 12 }}>
-          <Text style={{ textAlign: 'justify' }} >{text}</Text>
+        <View style={styles.textContainer}>
+          <Text style={styles.text} >{text}</Text>
         </View>
-        <View style={{ flex: 1, flexDirection: 'row' }}>
-          <View style={{ flex: 2 }}>
+        <View style={styles.lowerRowContainer}>
+          <View style={styles.pickerContainer}>
             <Picker
               selectedValue={localFrequency}
-              style={{ width: 120, height: 30 }}
+              style={styles.picker}
               onValueChange={value => this.setState({ frequency: value })}
             >
               {Object.keys(frequencies).map(key => {
@@ -92,20 +88,20 @@ class CheckinElement extends React.PureComponent<CheckinElementProps> {
             </Picker>
           </View>
           <View
-            style={{
-              flex: 1
-            }}
+            style={styles.container}
           >
             <TouchableOpacity
-              onPress={frequency !== localFrequency ? onPress : () => null}
+              onPress={onPress}
+              disabled={frequency === localFrequency}
               style={[
-                { flex: 1, alignItems: 'center', justifyContent: 'center' },
+                styles.centeredContainer,
+                styles.button,
                 frequency !== localFrequency
-                  ? { backgroundColor: 'blue' }
-                  : { backgroundColor: 'gray' }
+                  ? styles.save
+                  : styles.saveDisabled
               ]}
             >
-              <Text style={{ color: 'white' }}>Save</Text>
+              <Text style={styles.saveText}>Save</Text>
             </TouchableOpacity>
           </View>
         </View>
