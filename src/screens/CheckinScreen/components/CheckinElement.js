@@ -95,13 +95,9 @@ class CheckinElement extends React.PureComponent<CheckinElementProps> {
               disabled={frequency === localFrequency}
               style={[
                 styles.centeredContainer,
-                styles.button,
-                frequency !== localFrequency
-                  ? styles.save
-                  : styles.saveDisabled
               ]}
             >
-              <Text style={styles.saveText}>Save</Text>
+              <Text style={frequency !== localFrequency ? styles.saveText : styles.saveTextDisabled}>Save</Text>
             </TouchableOpacity>
           </View>
         </View>

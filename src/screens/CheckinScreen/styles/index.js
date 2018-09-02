@@ -1,5 +1,10 @@
 import { StyleSheet } from 'react-native'
-import { white2, deepBlue, cyan, gray400 } from '../../../constants/colors'
+import { deepBlue, cyan, gray400 } from '../../../constants/colors'
+import {
+  sanFranciscoWeights,
+  robotoWeights,
+  iOSUIKit
+} from 'react-native-typography'
 
 export default StyleSheet.create({
   container: {
@@ -12,7 +17,6 @@ export default StyleSheet.create({
     flex: 1,
     backgroundColor: cyan,
     marginVertical: 10,
-    padding: 12,
     borderRadius: 6
   },
   checkinTopContainer: {
@@ -22,12 +26,14 @@ export default StyleSheet.create({
   titleContainer: {
     flex: 3,
     alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: deepBlue
+    justifyContent: 'center'
   },
   title: {
-    fontSize: 16,
-    color: white2
+    ...iOSUIKit.title3EmphasizedObject,
+    fontSize: 18,
+    color: deepBlue,
+    textDecorationLine: 'underline',
+    fontFamily: 'Metropolis',
   },
   centeredContainer: {
     flex: 1,
@@ -35,19 +41,25 @@ export default StyleSheet.create({
     justifyContent: 'center'
   },
   date: {
-    fontSize: 12
+    ...iOSUIKit.caption2Object,
+    fontFamily: 'Metropolis',
   },
   changedDate: {
+    ...iOSUIKit.caption2Object,
     color: 'green'
   },
   textContainer: {
     flex: 1,
-    marginVertical: 12
+    marginVertical: 12,
+    paddingHorizontal: 12
   },
   text: {
-    textAlign: 'justify'
+    ...iOSUIKit.footnoteObject,      
+    textAlign: 'justify',
+    fontFamily: 'Metropolis',
   },
   lowerRowContainer: {
+    paddingVertical: 10,
     flex: 1,
     flexDirection: 'row'
   },
@@ -69,6 +81,15 @@ export default StyleSheet.create({
     backgroundColor: gray400
   },
   saveText: {
-    color: white2
+    ...iOSUIKit.calloutObject,    
+    color: deepBlue,
+    textDecorationLine: 'underline',
+    fontFamily: 'Metropolis',
+  },
+  saveTextDisabled: {
+    ...iOSUIKit.calloutObject,      
+    color: gray400,
+    textDecorationLine: 'underline',
+    fontFamily: 'Metropolis',
   }
 })
