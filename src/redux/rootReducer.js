@@ -7,6 +7,8 @@ import nav       from './reducers/nav.reducer'
 import appState  from './reducers/appState.reducer'
 import agregates from './reducers/agregates.reducer'
 import awards    from './reducers/awards.reducer'
+import modal     from './reducers/modal.reducer'
+import uiState   from './reducers/ui.reducer'
 
 export const rootReducer = {
   cms,
@@ -17,5 +19,7 @@ export const rootReducer = {
   nav,
   appState,
   agregates,
-  awards
+  awards,
+  modal,
+  uiState
 }

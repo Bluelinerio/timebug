@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { Platform } from 'react-native'
 import { StackNavigator, NavigationActions } from 'react-navigation'
 
@@ -12,6 +11,7 @@ import MeditationScreen from '../screens/MeditationScreen'
 import MarkdownScreen from '../screens/MarkdownScreen'
 import EmojiPickerScreen from '../screens/EmojiPickerScreen'
 import MyJourneyScreen from '../screens/MyJourneyScreen'
+import StartScreen from '../screens/StartScreen'
 import { uriPrefix } from '../constants'
 import routes from './routes'
 
@@ -77,6 +77,9 @@ export const rootConfiguration = {
     },
     [routes.root.MyJourneyScreen]: {
       screen: MyJourneyScreen
+    },
+    [routes.root.StartScreen]: {
+      screen: StartScreen
     }
   },
   options: {

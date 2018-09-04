@@ -1,8 +1,7 @@
-import React from 'react'
-import { Text } from 'react-native'
+import React      from 'react'
+import { Text }   from 'react-native'
 import DeviceInfo from 'react-native-device-info'
-import CodePush from 'react-native-code-push'
-//import version from 'react-native-version'
+import CodePush   from 'react-native-code-push'
 
 class VersionComponent extends React.Component {
   state = { version: __DEV__ ? 'debug' : 'release' }
@@ -23,7 +22,7 @@ class VersionComponent extends React.Component {
         }}
       >
         {`20/20 Lifevision © blabsventures 2018\n Version:${
-          this.state.codepush
+          this.state.version
         }, Native:${DeviceInfo.getVersion()} build:${DeviceInfo.getBuildNumber()} `}
       </Text>
     )
