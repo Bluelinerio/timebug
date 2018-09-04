@@ -3,18 +3,26 @@ export default {
   root: {
     HomeScreen: 'HomeScreen',
     AssignmentFlow: 'AssignmentFlow',
-    Walkthrough: 'Walkthrough',
     StartScreen: 'StartScreen',
     DashboardScreen: 'DashboardScreen',
     initialRouteName: 'StartScreen',
-    MeditationScreen: 'MeditationScreen',
     MarkdownScreen: 'MarkdownScreen',
-    EmojiPickerScreen: 'EmojiPickerScreen',
-    MyJourneyScreen: 'MyJourneyScreen'
+    EmojiPickerScreen: 'EmojiPickerScreen'
   },
   step: {
     StepScreen: 'StepScreen',
     WorkbookScreen: 'WorkbookScreen',
     WorkbookDoneScreen: 'WorkbookDoneScreen'
+  },
+  tab: {
+    initialRouteName: 'RootNavigator',
+    MyJourneyScreen: 'MyJourneyScreen',
+    MeditationScreen: 'MeditationScreen',
+    RootNavigator: 'RootNavigator'
+  },
+  start: {
+    initialRouteName: 'TabNavigator',
+    Walkthrough: 'Walkthrough',
+    TabNavigator: 'TabNavigator'
   }
 }

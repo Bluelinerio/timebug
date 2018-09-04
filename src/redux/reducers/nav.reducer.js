@@ -1,17 +1,19 @@
 import {
-  RootNavigator,
   rootConfiguration,
-  assignmentFlowConfiguration
+  assignmentFlowConfiguration,
+  startConfiguration,
+  StartNavigator
 } from '../../navigation'
 
-const initialRouteState = RootNavigator.router.getStateForAction(
-  RootNavigator.router.getActionForPathAndParams(
-    rootConfiguration.routes.initialRouteName
+const initialRouteState = StartNavigator.router.getStateForAction(
+  StartNavigator.router.getActionForPathAndParams(
+    startConfiguration.routes.initialRouteName
   )
 )
-const walkthroughState = RootNavigator.router.getStateForAction(
-  RootNavigator.router.getActionForPathAndParams(
-    rootConfiguration.routes.Walkthrough
+
+const walkthroughState = StartNavigator.router.getStateForAction(
+  StartNavigator.router.getActionForPathAndParams(
+    startConfiguration.routes.Walkthrough
   ),
   initialRouteState
 )
@@ -22,12 +24,12 @@ if (!initialRouteState || !walkthroughState) {
 const initialState = walkthroughState
 
 function navReducer(state = initialState, action) {
-  const newState = RootNavigator.router.getStateForAction(action, state)
+  const newState = StartNavigator.router.getStateForAction(action, state)
   return newState || state
 }
 
 import storage from 'redux-persist/lib/storage'
-import { persistReducer, createMigrate } from 'redux-persist'
+import { persistReducer } from 'redux-persist'
 
 import routes from '../../navigation/routes'
 const requiredParamFieldsForRoute = (route: string) => {
@@ -83,7 +85,7 @@ const isAssignmentFlowValid = assignmentFlow => {
   }
 }
 
-const thisVersion = 9
+const thisVersion = 11
 const persistConfig = {
   key: 'nav',
   storage: storage,
@@ -101,7 +103,7 @@ const persistConfig = {
       const initialRouteName = state.routes[0].routeName
       if (
         !initialRouteName /* this can happen sometimes! */ ||
-        initialRouteName !== rootConfiguration.routes.initialRouteName
+        initialRouteName !== startConfiguration.routes.initialRouteName
       ) {
         return Promise.resolve(initialRouteState)
       }
