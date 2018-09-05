@@ -4,9 +4,14 @@ import { createClient } from 'contentful';
 import type { Icon } from './cms';
 export const CONTENTFUL_CREDENTIALS = {
   accessToken:
-    'c139e7f2a7a86fc0813e71fbb18bb7b1921189ce4d7cc58c7f0ccc0022adee5f',
-  space: '1gbed7lrsmj4'
+  '65a618b02639a9c34ec36c573e06611e3568354171e02f72fbd96adbe83f50d3',
+space: '6h184bey8vl3'
 };
+
+  //old:
+  //accessToken:
+    //'c139e7f2a7a86fc0813e71fbb18bb7b1921189ce4d7cc58c7f0ccc0022adee5f',
+  //space: '1gbed7lrsmj4'
 
 export const CONTENTFUL_CONTENT_STEP = 'day';
 export const CONTENTFUL_CONTENT_COLORS = 'colors';
