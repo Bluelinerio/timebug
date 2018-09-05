@@ -17,4 +17,4 @@ export const getAgregateState = (state: any): AgregateState =>
   state.agregates;
 export const getAwards = (state:any): AwardState => state.awards;
 export const getUIState = (state: any): UIState => state.uiState;
-export const getCheckin = (state: any): CheckinState => state.checkins;
+export const getCheckinState = (state: any): CheckinState => state.checkins;

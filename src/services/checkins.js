@@ -7,6 +7,6 @@ export const MONTHLY = 'MONTHLY'
 export const frequencies = {
     [DAILY]: 'Daily',
     [WEEKLY]: 'Weekly',
-    [BIWEEKLY]: 'Biweeky',
+    [BIWEEKLY]: 'Biweekly',
     [MONTHLY]: 'Monthly'
 }

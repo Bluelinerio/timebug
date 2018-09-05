@@ -1,11 +1,12 @@
 //@flow
-import { connect }          from 'react-redux'
-import { checkins }         from '../checkins'
+import { connect } from 'react-redux'
+import { checkins } from '../checkins'
 import {
   goToStartScreen,
   journeyScreenDeepParams
-}                           from '../../../redux/actions/nav.actions'
-import selectors            from '../../../redux/selectors'
+} from '../../../redux/actions/nav.actions'
+import { changeCheckin } from '../../../redux/actions/checkin.actions'
+import selectors from '../../../redux/selectors'
 import CheckinListComponent from '../components/CheckinListComponent'
 
 export const isStepCompleted = () => {
@@ -62,8 +63,7 @@ type CheckingListStateProps = {
 const mapStateToProps = (state: any): CheckingListStateProps => {
   const steps = selectors.steps(state)
   const user = selectors.user(state)
-  const checkins = selectors.checkins(state)
-  
+  const checkinState = selectors.getCheckins(state)
   //REMOVE ONCE CONTENTFUL HAS STEPS
   const modifiedSteps = Object.keys(steps).reduce((stepsR, key) => {
     const step = steps[key]
@@ -85,21 +85,23 @@ const mapStateToProps = (state: any): CheckingListStateProps => {
   }, {})
   return {
     steps: modifiedSteps,
-    user
+    user,
+    checkinState
   }
 }
 
 const mapDispatchToProps = (dispatch: () => any): CheckinListDispatchProps => ({
   homeScreen: (params: any) => dispatch(goToStartScreen(params)),
-  journeyScreen: (params: any) => dispatch(journeyScreenDeepParams(params))
+  journeyScreen: (params: any) => dispatch(journeyScreenDeepParams(params)),
+  updateCheckin: (params: any) => dispatch(changeCheckin(params))
 })
 
 const mergeProps = (
   stateProps: CheckingListStateProps,
   dispatchProps: CheckinListDispatchProps
 ) => {
-  const { steps, user } = stateProps
-  const { homeScreen, journeyScreen } = dispatchProps
+  const { steps, user, checkinState } = stateProps
+  const { homeScreen, journeyScreen, updateCheckin } = dispatchProps
   const handleLink = (checkin: any) => {
     const { link } = checkin
     const { screen, component, params } = handleUrl(link)
@@ -110,20 +112,23 @@ const mergeProps = (
         return () => journeyScreen({ component, params })
     }
   }
-  if (!stepsWithCheckinsMap)
-    stepsWithCheckinsMap = Object.keys(steps).reduce((stepsR, key) => {
-      const step = steps[key]
-      if (step.checkin)
-        return {
-          ...stepsR,
-          [key]: {
-            ...step.checkin,
-            onLink: handleLink(step.checkin),
-            onPress: null
-          }
+
+  stepsWithCheckinsMap = Object.keys(steps).reduce((stepsR, key) => {
+    const step = steps[key]
+    const checkinUpdate = checkinState[key]
+    if (step.checkin)
+      return {
+        ...stepsR,
+        [key]: {
+          ...step.checkin,
+          onLink: handleLink(step.checkin),
+          onPress: updateCheckin,
+          step: key,
+          frequency: checkinUpdate ? checkinUpdate.frequency : step.checkin.frequency 
         }
-      return stepsR
-    }, {})
+      }
+    return stepsR
+  }, {})
 
   const unlockedCheckins = Object.keys(stepsWithCheckinsMap).reduce(
     (checkins, key) => {
@@ -133,12 +138,7 @@ const mergeProps = (
     },
     []
   )
-  if (
-    !unlockedCheckinsMap ||
-    unlockedCheckins.length !== unlockedCheckinsMap.length
-  ) {
-    unlockedCheckinsMap = unlockedCheckins
-  }
+  unlockedCheckinsMap = unlockedCheckins
   return {
     checkins: unlockedCheckinsMap
   }

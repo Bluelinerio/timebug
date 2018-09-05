@@ -16,6 +16,7 @@ export type CheckinElementProps = {
   title: string,
   lastCheckin: string,
   frequency: DAILY | WEEKLY | MONTHLY | BIWEEKLY,
+  step: string,
   onPress: () => any,
   onLink: () => any
 }
@@ -53,7 +54,7 @@ class CheckinElement extends React.PureComponent<CheckinElementProps> {
     }
   }
   render() {
-    const { text, title, lastCheckin, frequency, onPress, onLink } = this.props
+    const { text, title, lastCheckin, frequency, onPress, onLink, step } = this.props
     const { frequency: localFrequency } = this.state
     return (
       <View style={styles.checkinContainer}>
@@ -95,7 +96,7 @@ class CheckinElement extends React.PureComponent<CheckinElementProps> {
           </View>
           <View style={styles.container}>
             <TouchableOpacity
-              onPress={onPress}
+              onPress={() => onPress({ step, frequency: localFrequency })}
               disabled={frequency === localFrequency}
               style={[styles.centeredContainer]}
             >

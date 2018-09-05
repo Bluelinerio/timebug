@@ -3,13 +3,13 @@ import { CHANGE_CHECKIN } from '../actionTypes'
 import { CheckinActionPayload } from '../actions/checkin.actions'
 
 type CheckinElement = {
-    frequency: string
+  frequency: string
 }
 
 type CheckinState = {
-    checkins: {
-        [x: string]: CheckinElement
-    }
+  checkins: {
+    [x: string]: CheckinElement
+  }
 }
 
 type CheckinAction = {
@@ -22,13 +22,16 @@ const initialState: CheckinState = {
 }
 
 const handleChange = (state: CheckinState, payload: CheckinActionPayload) => {
-    const { step, frequency } = payload
-    return {
-        ...state,
-        [step]: {
-            frequency
-        }
+  const { step, frequency } = payload
+  return {
+    ...state,
+    checkins: {
+      ...state.checkins,
+      [step]: {
+        frequency
+      }
     }
+  }
 }
 
 export default (state: CheckinState = initialState, action: CheckinAction) => {
