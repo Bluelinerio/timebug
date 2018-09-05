@@ -54,7 +54,15 @@ class CheckinElement extends React.PureComponent<CheckinElementProps> {
     }
   }
   render() {
-    const { text, title, lastCheckin, frequency, onPress, onLink, step } = this.props
+    const {
+      text,
+      title,
+      lastCheckin,
+      frequency,
+      onPress,
+      onLink,
+      step
+    } = this.props
     const { frequency: localFrequency } = this.state
     return (
       <View style={styles.checkinContainer}>

@@ -1,5 +1,5 @@
 //@flow
-import { CHANGE_CHECKIN } from '../actionTypes'
+import { CHANGE_CHECKIN }       from '../actionTypes'
 import { CheckinActionPayload } from '../actions/checkin.actions'
 
 type CheckinElement = {

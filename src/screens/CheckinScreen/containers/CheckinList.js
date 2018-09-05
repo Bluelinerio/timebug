@@ -1,12 +1,12 @@
 //@flow
-import { connect } from 'react-redux'
-import { checkins } from '../checkins'
+import { connect }          from 'react-redux'
+import { checkins }         from '../checkins'
 import {
   goToStartScreen,
   journeyScreenDeepParams
-} from '../../../redux/actions/nav.actions'
-import { changeCheckin } from '../../../redux/actions/checkin.actions'
-import selectors from '../../../redux/selectors'
+}                           from '../../../redux/actions/nav.actions'
+import { changeCheckin }    from '../../../redux/actions/checkin.actions'
+import selectors            from '../../../redux/selectors'
 import CheckinListComponent from '../components/CheckinListComponent'
 
 export const isStepCompleted = () => {
@@ -124,7 +124,9 @@ const mergeProps = (
           onLink: handleLink(step.checkin),
           onPress: updateCheckin,
           step: key,
-          frequency: checkinUpdate ? checkinUpdate.frequency : step.checkin.frequency 
+          frequency: checkinUpdate
+            ? checkinUpdate.frequency
+            : step.checkin.frequency
         }
       }
     return stepsR
