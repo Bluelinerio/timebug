@@ -5,6 +5,7 @@ import Reactotron, {
   asyncStorage,
   networking
 } from 'reactotron-react-native';
+import { reactotronRedux } from 'reactotron-redux'
 
 if (__DEV__) {
   Reactotron.configure({
@@ -15,5 +16,6 @@ if (__DEV__) {
     .use(overlay())
     .use(asyncStorage())
     .use(networking())
+    .use(reactotronRedux())
     .connect();
 }
