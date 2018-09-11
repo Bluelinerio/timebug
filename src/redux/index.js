@@ -11,11 +11,20 @@ import rootSaga        from './rootSagas'
 import { rootReducer } from './rootReducer'
 import { resetStore }  from './actions'
 
+import Reactotron from 'reactotron-react-native'
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const navigationMiddleware = createReactNavigationReduxMiddleware(
   'root',
   state => state.nav
 )
+
+const logger = store => next => action => {  
+  Reactotron.log(action.type)  
+  const result = next(action)
+  Reactotron.log(result)
+  return result  
+} 
 
 export default () => {
   const sagaMiddleware = createSagaMiddleware()
@@ -24,7 +33,7 @@ export default () => {
     composeEnhancers(
       reduxReset(resetStore.type), // Set action.type here
       applyAppStateListener(),
-      applyMiddleware(navigationMiddleware, thunk, sagaMiddleware)
+      applyMiddleware(logger, navigationMiddleware, thunk, sagaMiddleware)
     )
   )
   const persistor = persistStore(store)

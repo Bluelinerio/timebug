@@ -44,7 +44,6 @@ function* _fetchCms() {
           {}
         )
       }))
-      .then(__DEV__ ? testContentFromCMS : () => null)
   )
 }
 

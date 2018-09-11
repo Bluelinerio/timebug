@@ -12,7 +12,6 @@ const argv = require('yargs')
     .describe('f', 'sets the output a file at path')
     .argv;
 
-		
 const jsonfilename = path.join(__dirname, argv.output)
 const writeJSONFile = (content) => jsonfile.writeFile(jsonfilename, content, (err) => {
   console.error(err ? err : 'sucecss wriging CMS data into ' + jsonfilename)
