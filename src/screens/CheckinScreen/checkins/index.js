@@ -70,7 +70,8 @@ export type Checkin = {
   title: string,
   lastCheckin: string,
   frequency: string,
-  link: string
+  link: string,
+  message: string,
 }
 
 export const checkins = {
@@ -78,6 +79,7 @@ export const checkins = {
     text:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam corporis mollitia maiores asperiores illum. Expedita beatae similique eos velit, perspiciatis itaque sequi voluptatem sed repellendus cum sint suscipit et non.',
     title: 'Checkin for step1!',
+    message: 'You have a notification pending for your board of advisors!',    
     lastCheckin: moment()
       .subtract(5, 'd')
       .format('YYYY-MM-DD HH:mm:ss'),
@@ -88,6 +90,7 @@ export const checkins = {
     text:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam corporis mollitia maiores asperiores illum. Expedita beatae similique eos velit, perspiciatis itaque sequi voluptatem sed repellendus cum sint suscipit et non.',
     title: 'Checkin for step2!',
+    message: 'You have a notification pending for your weekly timetable!',
     lastCheckin: moment().subtract(2, 'd'),
     frequency: frequencies[BIWEEKLY],
     link: 'journey/rewards?reward=2'
