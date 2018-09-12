@@ -1,9 +1,12 @@
 //@flow
-import { CHANGE_CHECKIN }       from '../actionTypes'
+import { CHANGE_CHECKIN, UPDATE_CHECKIN }       from '../actionTypes'
 import { CheckinActionPayload } from '../actions/checkin.actions'
 
-type CheckinElement = {
-  frequency: string
+export type CheckinElement = {
+  frequency: string,
+  lastCheckin: string,
+  nextCheckin: string,
+  id: string
 }
 
 type CheckinState = {
@@ -22,13 +25,14 @@ const initialState: CheckinState = {
 }
 
 const handleChange = (state: CheckinState, payload: CheckinActionPayload) => {
-  const { step, frequency } = payload
+  const { step, checkin } = payload
   return {
     ...state,
     checkins: {
       ...state.checkins,
       [step]: {
-        frequency
+        ...state.checkins[step],
+        ...checkin
       }
     }
   }
@@ -36,7 +40,7 @@ const handleChange = (state: CheckinState, payload: CheckinActionPayload) => {
 
 export default (state: CheckinState = initialState, action: CheckinAction) => {
   switch (action.type) {
-    case CHANGE_CHECKIN:
+    case UPDATE_CHECKIN:
       return handleChange(state, action.payload)
     default:
       return state
