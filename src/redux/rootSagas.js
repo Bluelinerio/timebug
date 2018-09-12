@@ -7,6 +7,8 @@ import { appStateSagaWatcher }                      from './sagas/appState.saga'
 import { watchSyncFormData }                        from './sagas/formData.saga'
 import { watchChangesInFormsAndUpdateAchievements } from './sagas/achivements.saga'
 import { watchForThrottleAction }                   from './throttle'
+import { watchForCheckinsSaga }                     from './sagas/checkins.saga'
+
 function* appSaga() {
   yield all([
     appStateSagaWatcher(),
@@ -17,7 +19,8 @@ function* appSaga() {
     goToHomeScreen(),
     watchForsagaNavigate(),
     watchSyncFormData(),
-    watchChangesInFormsAndUpdateAchievements()
+    watchChangesInFormsAndUpdateAchievements(),
+    watchForCheckinsSaga()
   ])
 }
 export default function* rootSaga() {

@@ -1,12 +1,15 @@
 // @flow
 import { takeLatest, fork, put }          from 'redux-saga/effects'
 import { REFRESH_CMS }                    from '../actions'
-import { FETCH_CMS, SEED_CMS }            from '../actions/cms.actions'
-import { refreshCMS, testContentFromCMS } from '../../services/contentful'
+import { FETCH_CMS, SEED_CMS, SET_NOTIFICATIONS } from '../actions/cms.actions'
+import { initialNotifications } from '../actions/checkin.actions'
+import { refreshCMS } from '../../services/contentful'
 import { request }                        from '../../Modules/redux-saga-request'
 import { headerBackgrounds }              from '../../resources/images'
 let staticCms     = require('../../static/cms.json')
 const meditations = require('../../static/Meditations.json')
+
+import tron from 'reactotron-react-native'
 
 const addLocalImage = step => ({
   ...step,
@@ -28,6 +31,12 @@ function* seedCMS() {
       meditations
     }
   })
+  yield put({
+    type: SET_NOTIFICATIONS,
+    payload: {
+      ...staticCms
+    }
+  })
 }
 
 function* _fetchCms() {
@@ -44,7 +53,23 @@ function* _fetchCms() {
           {}
         )
       }))
+      .catch(e => tron.log(e))
   )
+  yield put({
+    type: SET_NOTIFICATIONS,
+    payload: {
+      ...cms
+    }
+  })
+}
+
+function* _setUpInitialNotifications({ payload }) {
+  const { steps } = payload
+  yield put(initialNotifications({ steps }))
+}
+
+function* watchForInitialNotifications() {
+  yield takeLatest(SET_NOTIFICATIONS, _setUpInitialNotifications)
 }
 
 function* watchFetchSteps() {
@@ -52,6 +77,7 @@ function* watchFetchSteps() {
 }
 
 export default function* cmsSaga() {
+  yield fork(watchForInitialNotifications)
   yield fork(seedCMS)
   yield fork(watchFetchSteps)
   yield put(REFRESH_CMS)
