@@ -123,6 +123,45 @@ export const phaseForStepAtIndex = (step: number) => {
   }
 };
 
+export const phaseNumberForPhase = ({ phase }) => {
+  switch (phase) {
+    case MEDITATION:
+      return 1;
+    case SELF_ASSESSMENT:
+      return 2;
+    case VISION_CREATION:
+      return 3;
+    default:
+      return 0;
+  }
+}
+
+export const phaseForUserForm = ({ stepId }) => {
+  switch (true) {
+    case stepId > 0 && stepId <= 10:
+      return MEDITATION;
+    case stepId > 10 && stepId <= 20:
+      return SELF_ASSESSMENT;
+    case stepId > 20 && stepId <= 30:
+      return VISION_CREATION;
+    default:
+      return COMPLETE;
+  }
+}
+
+export const phaseForStep = ({ number }) => {
+  switch (true) {
+    case number > 0 && number <= 10:
+      return MEDITATION;
+    case number > 10 && number <= 20:
+      return SELF_ASSESSMENT;
+    case number > 20 && number <= 30:
+      return VISION_CREATION;
+    default:
+      return COMPLETE;
+  }
+}
+
 const getColorStartAtStepIndex = (step: number, colors: Colors) =>
   colors.steps[step + 1];
 const getNextPhaseColorForStepAtIndex = (step: number, colors: Colors) =>

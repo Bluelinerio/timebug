@@ -40,6 +40,23 @@ export const RESET_FORMS = 'RESET_FORMS'
 
 export const ON_APP_LOADED = 'ON_APP_LOADED'
 
-export const SUBMIT_AWARD_VALUE = 'SUBMIT_AWARD_VALUE';
-export const RESET_AWARD_VALUE = 'RESET_AWARD_VALUE';
+/**
+ * Awards
+ */
+export const SUBMIT_AWARD_VALUE = 'SUBMIT_AWARD_VALUE'
+export const RESET_AWARD_VALUE = 'RESET_AWARD_VALUE'
 export const LOAD_AWARD_VALUE = 'LOAD_AWARD_VALUE'
+
+/**
+ * Modal
+ */
+
+ export const OPEN_MODAL = 'OPEN_MODAL'
+ export const CLOSE_MODAL = 'CLOSE_MODAL'
+
+ /**
+  * UI
+  */
+
+export const CHANGE_UI_STATUS = 'CHANGE_UI_STATUS'
+export const RESET_UI_STATUS = 'RESET_UI_STATUS'

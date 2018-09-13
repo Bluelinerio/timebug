@@ -5,7 +5,7 @@ import Icon                                    from 'react-native-vector-icons/F
 import Entypo                                  from 'react-native-vector-icons/Entypo'
 import { heavyGray, lightGray, facebookColor } from '../constants/colors'
 
-type Props = {
+export type Props = {
   onPress: () => void,
   advisoryText: string
 }

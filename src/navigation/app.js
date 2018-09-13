@@ -4,11 +4,16 @@ import { createReduxBoundAddListener }             from 'react-navigation-redux-
 import { BackHandler, Linking }                    from 'react-native'
 import { connect }                                 from 'react-redux'
 import { uriPrefix }                               from '../constants'
-import { RootNavigator }                           from './index'
+import { StartNavigator }                          from './index'
 
 const addListener = createReduxBoundAddListener('root')
 
-class AppNavigation extends React.Component {
+type Props = {
+  dispatch: () => any,
+  nav: any
+}
+
+class AppNavigation extends React.Component<Props> {
   componentDidMount() {
     BackHandler.addEventListener('hardwareBackPress', this.onBackPress)
     Linking.addEventListener('url', ({ url }: { url: string }) => {
@@ -25,7 +30,7 @@ class AppNavigation extends React.Component {
   handleUrl(url) {
     const { dispatch } = this.props
     const path = url.split(uriPrefix)[1] || url
-    const action = RootNavigator.router.getActionForPathAndParams(path)
+    const action = StartNavigator.router.getActionForPathAndParams(path)
     if (action) {
       dispatch(action)
     }
@@ -47,7 +52,7 @@ class AppNavigation extends React.Component {
       state: nav,
       addListener
     })
-    return <RootNavigator navigation={navigation} />
+    return <StartNavigator navigation={navigation} />
   }
 }
 

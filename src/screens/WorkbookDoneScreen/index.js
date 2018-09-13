@@ -1,16 +1,21 @@
 import React                                   from 'react'
-import { Button, View, Platform, StyleSheet }  from 'react-native'
+import { StyleSheet }                          from 'react-native'
 import { HeaderBackButton, NavigationActions } from 'react-navigation'
 import screen                                  from './containers/WorkbookDoneScreenContainer'
-import { reset }                               from '../../redux/actions/nav.actions'
+import { goBackFrom }                          from '../../redux/actions/nav.actions'
 import styles                                  from '../styles'
 import NavigationCloseButton                   from '../../components/NavigationCloseButton'
+import routes                                  from '../../navigation/routes'
 
 screen.navigationOptions = ({
   navigation: { dispatch, state: { params: { stepColor } } }
 }) => {
   return {
-    headerRight: <NavigationCloseButton onPress={() => dispatch(reset())} />,
+    headerRight: (
+      <NavigationCloseButton
+        onPress={() => dispatch(goBackFrom(routes.root.AssignmentFlow))}
+      />
+    ),
     headerStyle: {
       ...StyleSheet.flatten(styles.navigationOptionHeaderStyle),
       backgroundColor: stepColor,

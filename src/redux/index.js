@@ -5,9 +5,9 @@ import thunk from 'redux-thunk'
 import { persistStore } from 'redux-persist'
 import { createReactNavigationReduxMiddleware } from 'react-navigation-redux-helpers'
 import applyAppStateListener from 'redux-enhancer-react-native-appstate'
-import reduxReset from 'redux-reset'
+import reduxReset      from 'redux-reset'
 
-import rootSaga from './rootSagas'
+import rootSaga        from './rootSagas'
 import { rootReducer } from './rootReducer'
 import { resetStore } from './actions'
 import Reactotron from 'reactotron-react-native'
@@ -43,7 +43,7 @@ export default () => {
     composeEnhancers(
       reduxReset(resetStore.type), // Set action.type here
       applyAppStateListener(),
-      applyMiddleware(thunk, sagaMiddleware)
+      applyMiddleware(navigationMiddleware, thunk, sagaMiddleware)
     )
   )
   const persistor = persistStore(store)

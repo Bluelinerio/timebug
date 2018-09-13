@@ -1,8 +1,7 @@
 // @flow
-import R from 'ramda'
 import { NavigationActions } from 'react-navigation'
-import type { Step } from '../../services/cms'
-import routes from '../../navigation/routes'
+import type { Step }         from '../../services/cms'
+import routes                from '../../navigation/routes'
 
 if (!routes || !routes.root || !routes.root.initialRouteName || !routes.step) {
   throw 'missing routes or nested fields ' + JSON.stringify(routes)
@@ -17,6 +16,8 @@ export const stepInfoForStep = (step: Step) => ({
   formId: '1'
 })
 
+export const popToTop = () => NavigationActions.popToTop()
+
 export const navigateWith = ({
   routeName,
   props: { navigation: { state: { params } } }
@@ -28,7 +29,7 @@ export const navigateWith = ({
 
 const navigateToInitialRoute = () =>
   NavigationActions.navigate({
-    routeName: routes.root.initialRouteName
+    routeName: routes.start.initialRouteName
   })
 
 export const reset = () =>
@@ -38,6 +39,11 @@ export const reset = () =>
     actions: [navigateToInitialRoute()]
   })
 
+export const goBackFrom = (key: string) =>
+  NavigationActions.back({
+    key
+  })
+
 export const restartStepAction = (step: Step) =>
   NavigationActions.reset({
     index: 1,
@@ -45,8 +51,23 @@ export const restartStepAction = (step: Step) =>
     actions: [navigateToInitialRoute(), goToAssignmentFlow({ step })]
   })
 
+export const restartStepActionSafe = (step: Step, key: string) =>
+  NavigationActions.reset({
+    index: 0,
+    key,
+    actions: [goToStepScreen(step)]
+  })
+
+export const goToStepScreen = (step: Step) =>
+  NavigationActions.navigate({
+    params: {
+      ...stepInfoForStep(step)
+    },
+    routeName: routes.step.StepScreen
+  })
+
 // TODO remove static string and use params (routes.step.StepScreen ... )
-export const goToMeditation = (id) =>
+export const goToMeditation = id =>
   NavigationActions.navigate({
     routeName: routes.root.MeditationScreen,
     params: {
@@ -71,6 +92,7 @@ export const goToPreviosFormsForStep = step =>
 export const goToAssignmentFlow = ({ step }: { step: Step }) =>
   NavigationActions.navigate({
     routeName: routes.root.AssignmentFlow,
+    key: routes.root.AssignmentFlow,
     params: {
       ...stepInfoForStep(step)
     }
@@ -104,7 +126,8 @@ export const goToWorkbookSkippingStepScreen = ({
   return NavigationActions.navigate({
     routeName: routes.root.AssignmentFlow,
     params,
-    action
+    action,
+    key: routes.root.AssignmentFlow
   })
 }
 
@@ -125,3 +148,13 @@ export const goToMyJourneyScreen = (params: ?any) =>
     routeName: routes.root.MyJourneyScreen,
     params
   })
+
+export const goToHomeScreen = (params?: any) =>
+  NavigationActions.navigate({
+    routeName: routes.root.HomeScreen,
+    params
+  })
+
+export const goToGuideBookScreen = (params?: any) => ({})
+
+export const goToMyRewardsScreen = (params?: any) => ({})

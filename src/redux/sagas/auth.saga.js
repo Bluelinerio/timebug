@@ -51,7 +51,7 @@ import AuthStorage      from '../../services/authStorage';
 
 function* wipeTokens() {
   yield all([
-    call(AuthStorage.wipeStorage), 
+    call(AuthStorage.wipeStorage),
     call(facebook.logOut)
   ]);
 }
