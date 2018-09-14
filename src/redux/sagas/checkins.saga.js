@@ -16,8 +16,8 @@ function* setUpNotificationAndUpdateCheckin({ payload }) {
     tron.log("NotificationUpdate")
     tron.log(payload)
     const nextCheckin = yield call (calculateNextCheckin, "30s")
-    const id = yield call(NotificationService.scheduleNotification, message, "Lifevision", nextCheckin)
-    yield put(updateCheckin({ step, checking: { frequency, nextCheckin, id }}))
+    // const id = yield call(NotificationService.scheduleNotification, message, "Lifevision", nextCheckin)
+    yield put(updateCheckin({ step, checkin: { frequency, nextCheckin }}))
 }
 
 function* _setInitialNotifications({ payload }) {

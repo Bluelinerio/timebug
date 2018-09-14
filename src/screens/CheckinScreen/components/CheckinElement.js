@@ -104,7 +104,7 @@ class CheckinElement extends React.PureComponent<CheckinElementProps> {
           </View>
           <View style={styles.container}>
             <TouchableOpacity
-              onPress={() => onPress({ step, checkin: { frequency: localFrequency } })}
+              onPress={() => onPress({ step, frequency: localFrequency })}
               disabled={frequency === localFrequency}
               style={[styles.centeredContainer]}
             >
