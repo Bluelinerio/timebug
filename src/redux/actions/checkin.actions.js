@@ -1,5 +1,9 @@
 //@flow
-import { CHANGE_CHECKIN, UPDATE_CHECKIN, BUILD_NOTIFICATION_SET } from '../actionTypes'
+import {
+  CHANGE_CHECKIN,
+  UPDATE_CHECKIN,
+  BUILD_NOTIFICATION_SET
+}                         from '../actionTypes'
 import { CheckinElement } from '../reducers/checkin.reducer'
 
 export type CheckinActionPayload = {

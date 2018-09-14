@@ -1,6 +1,6 @@
 //@flow
-import { CHANGE_CHECKIN, UPDATE_CHECKIN }       from '../actionTypes'
-import { CheckinActionPayload } from '../actions/checkin.actions'
+import { CHANGE_CHECKIN, UPDATE_CHECKIN } from '../actionTypes'
+import { CheckinActionPayload }           from '../actions/checkin.actions'
 
 export type CheckinElement = {
   frequency: string,

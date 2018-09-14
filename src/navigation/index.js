@@ -1,3 +1,4 @@
+// @flow
 import React              from 'react'
 import { Platform }       from 'react-native'
 import {
@@ -109,9 +110,6 @@ export const tabConfiguration = {
     [routes.tab.CheckinScreen]: {
       screen: CheckinScreen
     },
-    // [routes.tab.MeditationScreen]: {
-    //   screen: MeditationScreen
-    // },
     [routes.tab.MyJourneyScreen]: {
       screen: MyJourneyScreen
     }
