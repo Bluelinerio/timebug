@@ -16,6 +16,8 @@ const mapRouteToIcon = (routeName, focused) => {
     case routes.tab.MeditationScreen:
       return `ios-options${focused ? '' : '-outline'}`
     case routes.tab.MyJourneyScreen:
+      return `ios-construct${focused ? '' : '-outline'}`
+    case routes.tab.CheckinScreen:
       return `ios-compass${focused ? '' : '-outline'}`
     default:
       return

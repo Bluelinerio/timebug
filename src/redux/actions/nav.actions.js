@@ -32,6 +32,12 @@ const navigateToInitialRoute = () =>
     routeName: routes.start.initialRouteName
   })
 
+export const goToStartScreen = (params?: any) => 
+  NavigationActions.navigate({
+    routeName: routes.root.StartScreen,
+    params
+  })
+
 export const reset = () =>
   NavigationActions.reset({
     index: 0,
@@ -143,10 +149,18 @@ export const goToEmojiPickerScreen = (params: ?{}) =>
     params
   })
 
-export const goToMyJourneyScreen = (params: ?any) =>
+export const goToMyJourneyScreen = (params: ?any) => 
   NavigationActions.navigate({
-    routeName: routes.root.MyJourneyScreen,
+    routeName: routes.tab.MyJourneyScreen,
     params
+  })
+
+
+export const journeyScreenDeepParams = (params: ?any) => 
+  NavigationActions.navigate({
+    routeName: routes.tab.MyJourneyScreen,
+    params,
+    key: routes.tab.MyJourneyScreen
   })
 
 export const goToHomeScreen = (params?: any) =>

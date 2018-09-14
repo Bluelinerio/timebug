@@ -92,6 +92,8 @@ const persistConfig = {
   version: thisVersion,
   migrate: (state, version) => {
     if (state) {
+      //To enforce initial render of steps
+      return Promise.resolve(initialRouteState)      
       if (!state.routes || !allRoutesAreValid(state.routes)) {
         console.warn('nav.reducer: resetting routes')
         return Promise.resolve(initialRouteState)

@@ -8,7 +8,9 @@ import { CarouselEntryType }              from '../containers/types'
 
 type JourneyCarouselComponentProps = {
   entries: [CarouselEntryType],
-  render: React.ComponentType<any>
+  render: React.ComponentType<any>,
+  component: string,
+  reward: string
 }
 
 type JourneyCarouselState = {
@@ -17,7 +19,8 @@ type JourneyCarouselState = {
 }
 
 export default class JourneyCarouselComponent extends Component<
-  JourneyCarouselComponentProps
+  JourneyCarouselComponentProps,
+  JourneyCarouselState
 > {
   constructor(props) {
     super(props)
@@ -26,6 +29,31 @@ export default class JourneyCarouselComponent extends Component<
       entries,
       carouselRef: null
     }
+  }
+
+  shouldComponentUpdate(nextProps) {
+    if (
+      nextProps.component !== this.props.component ||
+      nextProps.reward !== this.props.reward
+    ) {
+      this.snap(nextProps.reward)
+    }
+    return false
+  }
+
+  snap(reward) {
+    const { entries } = this.state
+    const entryIndex = entries.reduce((index, entry, currentIndex) => {
+      const { step } = entry
+      if (`${step}` === reward) return currentIndex
+      return index
+    }, 0)
+    this._snapToItem(entryIndex)
+  }
+
+  _snapToItem = index => {
+    const { carouselRef } = this.state
+    carouselRef && carouselRef._snapToItem(index)
   }
 
   _renderItem = ({ item }: { item: CarouselEntryType }) => {

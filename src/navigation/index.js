@@ -1,3 +1,4 @@
+// @flow
 import React              from 'react'
 import { Platform }       from 'react-native'
 import {
@@ -19,6 +20,7 @@ import WorkbookScreen     from '../screens/WorkbookScreen'
 import WalkthroughScreen  from '../screens/WalkthroughScreen'
 import DashboardScreen    from '../screens/DashboardScreen'
 import MeditationScreen   from '../screens/MeditationScreen'
+import CheckinScreen      from '../screens/CheckinScreen'
 import MarkdownScreen     from '../screens/MarkdownScreen'
 import EmojiPickerScreen  from '../screens/EmojiPickerScreen'
 import MyJourneyScreen    from '../screens/MyJourneyScreen'
@@ -105,9 +107,9 @@ export const tabConfiguration = {
     [routes.tab.RootNavigator]: {
       screen: RootNavigator
     },
-    // [routes.tab.MeditationScreen]: {
-    //   screen: MeditationScreen
-    // },
+    [routes.tab.CheckinScreen]: {
+      screen: CheckinScreen
+    },
     [routes.tab.MyJourneyScreen]: {
       screen: MyJourneyScreen
     }

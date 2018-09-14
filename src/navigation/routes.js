@@ -18,7 +18,8 @@ export default {
     initialRouteName: 'RootNavigator',
     MyJourneyScreen: 'MyJourneyScreen',
     MeditationScreen: 'MeditationScreen',
-    RootNavigator: 'RootNavigator'
+    RootNavigator: 'RootNavigator',
+    CheckinScreen: 'CheckinScreen'
   },
   start: {
     initialRouteName: 'TabNavigator',

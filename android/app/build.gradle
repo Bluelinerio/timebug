@@ -102,6 +102,9 @@ android {
             abiFilters "armeabi-v7a", "x86"
         }
     }
+    ext {
+        googlePlayServicesVersion = "15.0.1" // default: "+"
+    }
     splits {
         abi {
             reset()
@@ -193,6 +196,13 @@ dependencies {
     compile "com.android.support:appcompat-v7:23.0.1"
     compile "com.facebook.react:react-native:+"  // From node_modules
     compile project(':react-native-linear-gradient')
+    compile project(':react-native-push-notification')
+    compile 'com.google.android.gms:play-services-base:15.0.1'
+    compile 'com.google.android.gms:play-services-basement:15.0.1'
+    compile 'com.google.android.gms:play-services-tasks:15.0.1'    
+    compile ('com.google.android.gms:play-services-gcm:15.0.1') {
+        force = true;
+    }
 
      compile 'com.facebook.android:facebook-android-sdk:4.22.1)'
     

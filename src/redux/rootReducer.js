@@ -9,6 +9,7 @@ import agregates from './reducers/agregates.reducer'
 import awards    from './reducers/awards.reducer'
 import modal     from './reducers/modal.reducer'
 import uiState   from './reducers/ui.reducer'
+import checkins  from './reducers/checkin.reducer'
 
 export const rootReducer = {
   cms,
@@ -21,5 +22,6 @@ export const rootReducer = {
   agregates,
   awards,
   modal,
-  uiState
+  uiState,
+  checkins
 }

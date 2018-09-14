@@ -1,3 +1,4 @@
+// @flow
 import {
   PHASE_1_COMPLETE,
   PHASE_2_COMPLETE,
@@ -5,14 +6,8 @@ import {
   PHASE_1_INCOMPLETE,
   PHASE_2_INCOMPLETE,
   PHASE_3_INCOMPLETE
-} from '../constants/colors'
-
-import {
-  MEDITATION,
-  SELF_ASSESSMENT,
-  VISION_CREATION,
-  COMPLETE,
-} from './cms'
+}                                                                 from '../constants/colors'
+import { MEDITATION, SELF_ASSESSMENT, VISION_CREATION, COMPLETE } from './cms'
 
 export const PHASE_1_COMPLETED_KEY = 'PHASE1COMPLETE'
 export const PHASE_2_COMPLETED_KEY = 'PHASE2COMPLETE'
