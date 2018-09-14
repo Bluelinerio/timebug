@@ -26,7 +26,7 @@ export default () => {
       composeEnhancers(
         reduxReset(resetStore.type), // Set action.type here
         applyAppStateListener(),
-        applyMiddleware(thunk, sagaMiddleware)
+        applyMiddleware(navigationMiddleware, thunk, sagaMiddleware)
       )
     )
     const persistor = persistStore(store)
