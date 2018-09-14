@@ -150,7 +150,7 @@ export default StyleSheet.create({
         ...robotoWeights.bold
       },
       ios: {
-        ...sanFranciscoWeights.semibold
+        ...sanFranciscoWeights.bold
       }
     })
   },
@@ -166,10 +166,10 @@ export default StyleSheet.create({
     ...iOSUIKit.caption2Object,
     ...Platform.select({
       android: {
-        ...robotoWeights.thin
+        ...robotoWeights.normal
       },
       ios: {
-        ...sanFranciscoWeights.thin
+        ...sanFranciscoWeights.normal
       }
     })
   },

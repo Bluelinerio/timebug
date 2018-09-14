@@ -40,20 +40,17 @@ function* seedCMS() {
 }
 
 function* _fetchCms() {
-  let { payload: cms } = yield request(
-    FETCH_CMS,
-    refreshCMS()
-      .then(({ steps, ...rest }) => ({
-        ...rest,
-        steps: Object.values(steps).reduce(
-          (sum, step) => ({
-            ...sum,
-            [step.stepId]: addLocalImage(step)
-          }),
-          {}
-        )
-      }))
-      .catch(e => tron.log(e))
+  let { payload: cms } = yield request(FETCH_CMS, () =>
+    refreshCMS().then(({ steps, ...rest }) => ({
+      ...rest,
+      steps: Object.values(steps).reduce(
+        (sum, step) => ({
+          ...sum,
+          [step.stepId]: addLocalImage(step)
+        }),
+        {}
+      )
+    }))
   )
   yield put({
     type: SET_NOTIFICATIONS,
