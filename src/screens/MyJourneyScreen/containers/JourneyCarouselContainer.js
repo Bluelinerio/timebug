@@ -1,10 +1,10 @@
 //@flow
-import React                           from 'react'
-import { connect }                     from 'react-redux'
-import JourneyCarouselComponent        from '../components/JourneyCarouselComponent'
-import FormComponent, { Entries }      from './FormConsumers'
-import selectors                       from '../../../redux/selectors'
-import { CarouselEntryType }           from './types'
+import React                      from 'react'
+import { connect }                from 'react-redux'
+import JourneyCarouselComponent   from '../components/JourneyCarouselComponent'
+import FormComponent, { Entries } from './FormConsumers'
+import selectors                  from '../../../redux/selectors'
+import { CarouselEntryType }      from './types'
 
 type JourneyCarouselStateProps = {
   forms: [
@@ -42,12 +42,10 @@ const buildEntries = (
     : []
 }
 
-const merge = (stateProps, dispatchProps, ownProps) => {
+const merge = (stateProps: JourneyCarouselStateProps, _, ownProps) => {
   const { forms } = stateProps
   const entries = buildEntries(forms)
   return {
-    ...stateProps,
-    ...dispatchProps,
     ...ownProps,
     entries,
     render

@@ -1,6 +1,5 @@
 // @flow
 import { call, cancelled as cancelledSaga, put } from 'redux-saga/effects';
-
 /**
  * request can be used to call a promise in a saga and have events
  * dispatched indicating the promises status.
@@ -98,7 +97,6 @@ export function* requestSaga<P, M>(
   try {
     // Attempt to call the promise.
     var payload: P | Promise<P> = yield call(func);
-
     // If it's successful put the succeeded type.
     return yield put(success(payload, meta));
   } catch (e) {

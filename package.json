@@ -23,7 +23,7 @@
     "run:ios": "cp config.example.json config.json && node node_modules/react-native/local-cli/cli.js run-ios",
     "debug:android": "node node_modules/react-native/local-cli/cli.js log-android",
     "clean:android": "cd android && gradlew clean && cd ..",
-    "fetch-cms-static": "babel-node scripts/contentful-fetch.js --output '../src/static/cms.json' --presets es2015,stage-2,react-native"
+    "fetch-cms-static": "babel-node scripts/contentful-fetch.js --output ../src/static/cms.json --presets es2015,stage-2,react-native"
   },
   "dependencies": {
     "apollo-client-preset": "^1.0.5",
@@ -55,6 +55,7 @@
     "react-native-markdown-syntax": "^0.1.0",
     "react-native-pages": "^0.6.1",
     "react-native-progress": "^3.5.0",
+    "react-native-push-notification": "^3.1.1",
     "react-native-select-input-ios": "^1.1.4",
     "react-native-sentry": "0.36.0",
     "react-native-slider": "^0.11.0",
@@ -90,6 +91,7 @@
     "babel-preset-react-native": "1.9.2",
     "babel-preset-stage-2": "^6.11.0",
     "babel-register": "^6.11.6",
+    "@babel/node": "^7.0.0",    
     "detox": "^5.10.0",
     "eslint": "^4.18.1",
     "eslint-plugin-react": "^7.7.0",

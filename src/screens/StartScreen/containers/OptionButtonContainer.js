@@ -5,7 +5,6 @@ import { withNavigation }                  from 'react-navigation'
 import OptionButton, { OptionButtonProps } from '../components/OptionButton'
 import { openModal }                       from '../../../redux/actions/modal.actions'
 import { key as loginModalKey }            from '../../../components/LoginModal'
-import { key as audioModalKey }            from '../../../components/AudioModal'
 import styles                              from '../styles'
 import {
   getColorForStepAtIndex,
@@ -13,10 +12,7 @@ import {
   isStepIndexCompleted
 }                                          from '../utils/colorsForStep'
 import { phaseForStepAtIndex }             from '../../../services/cms'
-import {
-  goToAssignmentFlow,
-  goToWorkbookSkippingStepScreen
-}                                          from '../../../redux/actions/nav.actions'
+import { goToWorkbookSkippingStepScreen }  from '../../../redux/actions/nav.actions'
 import selectors                           from '../../../redux/selectors'
 import { screenKey }                       from '../index'
 import { PhaseProgressElementKey }         from './PhaseProgressElementContainer'
@@ -29,8 +25,7 @@ import {
 const defaultAudio = 'https://assets.ctfassets.net/6h184bey8vl3/7JQ278WKGsAKcQO4KWWSkI/7a6a37e74821aa780f71dec640c0f14a/test__online-audio-converter.com_.mp3'
 
 type OptionButtonDispatchProps = {
-  login: () => any,
-  openAudio: () => any
+  login: () => any
 }
 
 type OptionButtonStateProps = {
@@ -76,9 +71,7 @@ const mapStateToProps = (state: any): OptionButtonStateProps => {
 }
 
 const mapDispatchToProps = (dispatch: any): OptionButtonDispatchProps => ({
-  login: () => dispatch(openModal({ key: loginModalKey })),
-  openAudio: ({ audio, icon, title }) =>
-    dispatch(openModal({ key: audioModalKey, params: { audio, icon, title } }))
+  login: () => dispatch(openModal({ key: loginModalKey }))
 })
 
 const merge = (
@@ -88,7 +81,7 @@ const merge = (
 ): OptionButtonProps => {
   const { user, selected } = stateProps
   const { stepColors, step, navigation } = ownProps
-  const { login, openAudio } = dispatchProps
+  const { login } = dispatchProps
 
   const { number, title, icon, snippet, audio } = step
   const audioAddress = audio && audio.uri ? audio.uri : defaultAudio
@@ -107,10 +100,14 @@ const merge = (
     isStepIndexCompleted(stepIndex, user)
 
   return {
-    text: `${title}`,
-    step: `${number}`,
+    title,
+    audio: (audio && audio.uri) || undefined,
+    step: number,
     subtitleText: `${snippet}`,
     phase: phaseForStepAtIndex(number - 1),
+    source: icon && icon.uri,
+    complete: stepCompleted(number - 1),
+    visible,
     onPress: () =>
       isLoggedIn
         ? navigation.dispatch(
@@ -120,19 +117,8 @@ const merge = (
             })
           )
         : login(),
-    sideActions: {
-      audio: () => openAudio({ title, icon, audio: audioAddress }),
-      content: () => navigation.dispatch(goToAssignmentFlow({ step }))
-    },
-    source: icon,
-    complete: stepCompleted(number - 1),
-    style: {
-      container: {
-        backgroundColor: backgroundColorAtIndex(number - 1)
-      },
-      text: textColorAtIndex(number - 1)
-    },
-    visible
+    containerBackgroundColor: backgroundColorAtIndex(number - 1),
+    textStyle: textColorAtIndex(number - 1)
   }
 }
 

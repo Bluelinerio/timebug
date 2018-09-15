@@ -5,21 +5,23 @@ import SVGImage from './SVGImage'
 
 type Props = {
   style: any,
-  source: { uri: string }
+  source: string
 }
 
-const CustomImage = (props: Props) => {
-  const { source, style, ...rest } = props
-  return source && source.uri.endsWith('svg') ? (
-    <SVGImage
-      style={[style, { backgroundColor: 'transparent' }]}
-      source={source}
-      scrollEnabled={false}
-      {...rest}
-    />
-  ) : (
-    <Image source={source} style={style} {...rest} />
-  )
+class CustomImage extends React.PureComponent<Props> {
+  
+  render(){
+    const { source, style, ...rest } = this.props
+    return source && source.endsWith('svg') ? (
+      <SVGImage
+        style={[style, { backgroundColor: 'transparent' }]}
+        source={source}
+        scrollEnabled={false}
+      />
+    ) : (
+      <Image source={{ uri: source }} style={style} {...rest} />
+    )
+  }
 }
 
 export default CustomImage

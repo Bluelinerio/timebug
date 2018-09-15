@@ -5,7 +5,8 @@ import {
   getCms,
   getFormData,
   getAwards,
-  getUIState
+  getUIState,
+  getCheckinState
 }                                                             from './rootReducer.selectors'
 import {
   // UNDETERMINED,
@@ -249,6 +250,11 @@ const awardModelAndDataForStep = (state: any) => (step: number) => {
 
 const stateForScreen = (state: any) => (screen: string) => getUIState(state).screens[screen] || {}
 
+/**
+ * Checkins
+ */
+const getCheckins = (state: any) => getCheckinState(state).checkins
+
 const selectors = {
   getCms,
   sortedSteps,
@@ -289,7 +295,8 @@ const selectors = {
   awardModelAndDataForStep,
   statefullStepColors,
   overridePhaseColors,
-  stateForScreen
+  stateForScreen,
+  getCheckins
 }
 
 export default selectors

@@ -1,44 +1,51 @@
 // @flow
 // testing the API : https://npm.runkit.com/contentful
-import { createClient } from 'contentful';
-import type { Icon } from './cms';
+import { createClient } from 'contentful'
+import type { Icon } from './cms'
 export const CONTENTFUL_CREDENTIALS = {
   accessToken:
-    'c139e7f2a7a86fc0813e71fbb18bb7b1921189ce4d7cc58c7f0ccc0022adee5f',
-  space: '1gbed7lrsmj4'
-};
+    '65a618b02639a9c34ec36c573e06611e3568354171e02f72fbd96adbe83f50d3',
+  space: '6h184bey8vl3'
+}
 
-export const CONTENTFUL_CONTENT_STEP = 'day';
-export const CONTENTFUL_CONTENT_COLORS = 'colors';
-export const CONTENTFUL_ONBOARDING_PAGE = 'onboardingPage';
+//old:
+//accessToken:
+//'c139e7f2a7a86fc0813e71fbb18bb7b1921189ce4d7cc58c7f0ccc0022adee5f',
+//space: '1gbed7lrsmj4'
+
+export const CONTENTFUL_CONTENT_STEP = 'day'
+export const CONTENTFUL_CONTENT_COLORS = 'colors'
+export const CONTENTFUL_ONBOARDING_PAGE = 'onboardingPage'
 export const CONTENTFUL_PAGE = 'page'
 
-export const contentfulClient = createClient(CONTENTFUL_CREDENTIALS);
+export const contentfulClient = createClient(CONTENTFUL_CREDENTIALS)
 
 const getContentUrl = (icon: Icon): { uri: string } => ({
   uri: (icon.url || icon.fields.file.url || '').replace('//', 'https://')
-});
+})
 
 const pagesFromResponse = response => ({
-  pages: response
-    .items
+  pages: response.items
     .map(i => i.fields)
     .filter(p => !!p.name)
-    .reduce((items, { name, title, content }) => ({
-      ...items,
-      [name] : {
-        title, 
-        content
-      }
-    }), {})
+    .reduce(
+      (items, { name, title, content }) => ({
+        ...items,
+        [name]: {
+          title,
+          content
+        }
+      }),
+      {}
+    )
 })
 
 const onboardingPagesFromResponse = response => {
   const mapOnboardingSlide = ({ fields: { title, description, image } }) => ({
     title,
     description,
-    image: image ? getContentUrl(image) : null
-  });
+    image: image ? getImageUrl(image) : null
+  })
   return {
     onboardingPages: response.items.reduce(
       (items, { fields: { name, slides, title } }) => ({
@@ -50,18 +57,18 @@ const onboardingPagesFromResponse = response => {
       }),
       {}
     )
-  };
-};
+  }
+}
 
 const unlinkFields = name => response => ({
   [name]: response.items.map(i => i.fields)
-});
+})
 
 const colorsFromResponse = response => ({
   colors: response.items[0].fields.schema
-});
+})
 
-const stepsFromResponse = unlinkFields('steps');
+const stepsFromResponse = unlinkFields('steps')
 
 const normalizeSteps = ({ steps, colors }) => ({
   steps: steps.reduce(
@@ -86,57 +93,58 @@ const normalizeSteps = ({ steps, colors }) => ({
     },
     {}
   )
-});
+})
 
 export const fetchColors = () =>
   contentfulClient
     .getEntries({ content_type: CONTENTFUL_CONTENT_COLORS })
-    .then(colorsFromResponse);
+    .then(colorsFromResponse)
 
 export const fetchSteps = () =>
   contentfulClient
     .getEntries({ content_type: CONTENTFUL_CONTENT_STEP })
-    .then(stepsFromResponse);
+    .then(stepsFromResponse)
 
 export const fetchonboardingPages = () =>
   contentfulClient
     .getEntries({ content_type: CONTENTFUL_ONBOARDING_PAGE })
-    .then(onboardingPagesFromResponse);
-export const fetchPages = () => 
+    .then(onboardingPagesFromResponse)
+
+export const fetchPages = () =>
   contentfulClient
-    .getEntries({content_type: CONTENTFUL_PAGE})
+    .getEntries({ content_type: CONTENTFUL_PAGE })
     .then(pagesFromResponse)
 
 export const refreshCMS = () =>
   Promise.all([
     fetchSteps(),
     fetchColors(),
-    fetchonboardingPages(),
-    fetchPages()
+    fetchPages(),
+    fetchonboardingPages()
   ])
     .then(responses => Object.assign(...responses))
     .then(cmsData => ({
       ...cmsData,
-      ...normalizeSteps(cmsData)
-    }));
+      ...nomrmalizeSteps(cmsData)
+    }))
 
 export const testContentFromCMS = object => {
   if (!object.colors.steps) {
-    throw 'failed validating contenful response';
+    throw 'failed validating contenful response'
   }
   if (!object.colors.phases) {
-    throw 'failed validating contenful response';
+    throw 'failed validating contenful response'
   }
-  const steps = Object.values(object.steps);
+  const steps = Object.values(object.steps)
   if (steps.length !== 30) {
-    throw 'failed validating contenful response';
+    throw 'failed validating contenful response'
   }
   for (let index = 1; index < 31; index++) {
-    const number = index.toString();
-    const step = object.steps[number];
+    const number = index.toString()
+    const step = object.steps[number]
     if (!step) {
-      throw `failed validating contenful response step ${index}`;
+      throw `failed validating contenful response step ${index}`
     }
   }
-  return object;
-};
+  return object
+}
