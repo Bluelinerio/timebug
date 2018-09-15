@@ -51,12 +51,11 @@ function* seedCMS() {
 
 function* _fetchCms() {
   let { payload: cms } = yield request(FETCH_CMS, refresh)
-  const { steps } = cms
-  if (steps)
+  if (!cms.error)
     yield put({
       type: SET_NOTIFICATIONS,
       payload: {
-        steps
+        steps: cms.steps
       }
     })
 }
