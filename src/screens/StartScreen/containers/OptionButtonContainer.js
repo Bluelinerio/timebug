@@ -84,7 +84,6 @@ const merge = (
   const { login } = dispatchProps
 
   const { number, title, icon, snippet, audio } = step
-  const audioAddress = audio && audio.uri ? audio.uri : defaultAudio
 
   const isLoggedIn = typeof user === 'string' ? false : true
 
