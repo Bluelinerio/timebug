@@ -1,5 +1,6 @@
 //This is a temporary "placeholder" for contentful
 import moment from 'moment'
+import tron from 'reactotron-react-native'
 
 export const DAILY = 'DAILY'
 export const WEEKLY = 'WEEKLY'
@@ -15,27 +16,58 @@ export const frequencies = {
 
 export type Frequency = DAILY | WEEKLY | BIWEEKLY | MONTHLY
 export const calculateNextCheckin = (frequency: Frequency) => {
+  const now = moment()
   switch (frequency) {
-    case frequencies[DAILY]:
-      return moment()
+    case frequencies[DAILY]: {
+      const due = now
+        .clone()
         .add(1, 'd')
-        .format()
-    case frequencies[WEEKLY]:
-      return moment()
+      const repeatTime = due.diff(now)
+      return [
+        due.format(),
+        repeatTime
+      ]
+    }
+    case frequencies[WEEKLY]: {
+      const due = now
+        .clone()
         .add(1, 'w')
-        .format()
-    case frequencies[BIWEEKLY]:
-      return moment()
+      const repeatTime = due.diff(now)
+      return [
+        due.format(),
+        repeatTime
+      ]
+    }
+    case frequencies[BIWEEKLY]: {
+      const due = now
+        .clone()
         .add(3, 'd')
         .add('12', 'h')
-        .format()
-    case frequencies[MONTHLY]:
-      return moment()
+      const repeatTime = due.diff(now)
+      return [
+        due.format(),
+        repeatTime
+      ]
+    }
+    case frequencies[MONTHLY]: {
+      const due = now
+        .clone()
         .add(1, 'M')
-        .format()
-    default:
-      return moment()
-        .add(30, 's')
-        .format()
+      const repeatTime = due.diff(now)
+      return [
+        due.format(),
+        repeatTime
+      ]
+    }
+    default: {
+      const due = now
+        .clone()
+        .add(15, 's')
+      const repeatTime = due.diff(now)
+      return [
+        due.format(),
+        repeatTime
+      ]
+    }
   }
 }

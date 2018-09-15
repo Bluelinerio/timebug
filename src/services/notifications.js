@@ -65,9 +65,12 @@ class NotificationService {
     return notificationId
   }
 
-  scheduleNotification(msg, title, time) {
-    const notificationId = PushNotification.localNotificationSchedule({
-      date: time,
+  scheduleNotification(msg, title, time, id, repeatTime) {
+    PushNotification.localNotificationSchedule({
+      repeatType: 'time',
+      repeatTime,
+      id,
+      date: new Date(time),
       autoCancel: true, // (optional) default: true
       largeIcon: "ic_launcher", // (optional) default: "ic_launcher"
       smallIcon: "ic_notification", // (optional) default: "ic_notification" with fallback for "ic_launcher"
@@ -90,7 +93,7 @@ class NotificationService {
       playSound: true, // (optional) default: true
       soundName: 'default', // (optional) Sound to play when the notification is shown. Value of 'default' plays the default sound. It can be set to a custom sound such as 'android.resource://com.xyz/raw/my_sound'. It will look for the 'my_sound' audio file in 'res/raw' directory and play it. default: 'default' (default sound is played)
     });
-    return notificationId
+    return id
   }
 
   checkPermission(cbk) {

@@ -5,7 +5,7 @@ import {
   goToStartScreen,
   journeyScreenDeepParams
 }                           from '../../../redux/actions/nav.actions'
-import { changeCheckin }    from '../../../redux/actions/checkin.actions'
+import { changeCheckin, cancelNotifications }    from '../../../redux/actions/checkin.actions'
 import selectors            from '../../../redux/selectors'
 import CheckinListComponent from '../components/CheckinListComponent'
 
@@ -52,7 +52,9 @@ let unlockedCheckinsMap = null
 
 type CheckinListDispatchProps = {
   homeScreen: () => any,
-  journeyScreen: () => any
+  journeyScreen: () => any,
+  updateCheckin: () => any,
+  cancelAllNotifications: () => any
 }
 
 type CheckingListStateProps = {
@@ -93,7 +95,8 @@ const mapStateToProps = (state: any): CheckingListStateProps => {
 const mapDispatchToProps = (dispatch: () => any): CheckinListDispatchProps => ({
   homeScreen: (params: any) => dispatch(goToStartScreen(params)),
   journeyScreen: (params: any) => dispatch(journeyScreenDeepParams(params)),
-  updateCheckin: (params: any) => dispatch(changeCheckin(params))
+  updateCheckin: (params: any) => dispatch(changeCheckin(params)),
+  cancelAllNotifications: () => dispatch(cancelNotifications())
 })
 
 const mergeProps = (
@@ -101,7 +104,7 @@ const mergeProps = (
   dispatchProps: CheckinListDispatchProps
 ) => {
   const { steps, user, checkinState } = stateProps
-  const { homeScreen, journeyScreen, updateCheckin } = dispatchProps
+  const { homeScreen, journeyScreen, updateCheckin, cancelAllNotifications } = dispatchProps
   const handleLink = (checkin: any) => {
     const { link } = checkin
     const { screen, component, params } = handleUrl(link)
@@ -142,7 +145,8 @@ const mergeProps = (
   )
   unlockedCheckinsMap = unlockedCheckins
   return {
-    checkins: unlockedCheckinsMap
+    checkins: unlockedCheckinsMap,
+    cancelAllNotifications: __DEV__ ? cancelAllNotifications : null
   }
 }
 
