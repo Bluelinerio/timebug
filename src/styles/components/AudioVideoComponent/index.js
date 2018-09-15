@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet }                 from 'react-native'
 import { gray900, white2, heavyGray } from '../../../constants/colors'
 
 const mainColor = gray900
@@ -33,7 +33,7 @@ export default StyleSheet.create({
     borderWidth: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 100,
+    borderRadius: 100
   },
   icon: {
     color: heavyGray
@@ -57,7 +57,7 @@ export default StyleSheet.create({
     padding: 8
   },
   textContainer: {
-    flex: 1,
+    flex: 1
   },
   text: {
     color: mainColor,
