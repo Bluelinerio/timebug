@@ -2,34 +2,22 @@ import { takeLatest, fork, call, put } from 'redux-saga/effects'
 import { updateCheckin }               from '../actions/checkin.actions'
 import {
   CHANGE_CHECKIN,
-  BUILD_NOTIFICATION_SET,
-  CANCEL_ALL_NOTIFICATIONS
+  BUILD_NOTIFICATION_SET
 }                                      from '../actionTypes'
-import NotificationService             from '../../services/notifications'
 import { calculateNextCheckin }        from '../../services/checkins'
+import { createNotification }          from '../actions/notifications.actions'
 
 function* setUpNotificationAndUpdateCheckin({ payload }) {
   const { step, frequency, message } = payload
-  const [nextCheckin, repeatTime] = yield call(calculateNextCheckin, frequency)
-  const id = yield call(
-    NotificationService.scheduleNotification,
-    message,
-    'Lifevision',
-    nextCheckin,
-    `${step}`,
-    repeatTime
-  )
+  const [nextCheckin, repeatTime] = yield call(calculateNextCheckin, '15s')
+  const id = `${step}`
+  yield put(createNotification({ message, id, nextCheckin, repeatTime }))
   yield put(updateCheckin({ step, checkin: { frequency, nextCheckin, id } }))
-}
-
-function* clearNotifications() {
-  yield call(NotificationService.cancelAll)
 }
 
 function* _setInitialNotifications({ payload }) {
   const { steps } = payload
   // TODO
-
 }
 
 function* watchForInitialNotifications() {
@@ -40,12 +28,7 @@ function* watchForCheckinsUpdate() {
   yield takeLatest(CHANGE_CHECKIN, setUpNotificationAndUpdateCheckin)
 }
 
-function* watchForNotificationHelpers() {
-  yield takeLatest(CANCEL_ALL_NOTIFICATIONS, clearNotifications)
-}
-
 export function* watchForCheckinsSaga() {
   yield fork(watchForCheckinsUpdate)
-  yield fork(watchForNotificationHelpers)
   yield fork(watchForInitialNotifications)
 }

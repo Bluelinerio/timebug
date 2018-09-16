@@ -1,6 +1,10 @@
 //@flow
-import { CHANGE_CHECKIN, UPDATE_CHECKIN, BUILD_NOTIFICATION_SET, CANCEL_ALL_NOTIFICATIONS } from '../actionTypes'
-import { CheckinElement }                                                                   from '../reducers/checkin.reducer'
+import {
+  CHANGE_CHECKIN,
+  UPDATE_CHECKIN,
+  BUILD_NOTIFICATION_SET
+}                         from '../actionTypes'
+import { CheckinElement } from '../reducers/checkin.reducer'
 
 export type CheckinActionPayload = {
   step: string,
@@ -30,8 +34,4 @@ export const updateCheckin = (payload: CheckinActionPayload) => ({
 export const initialNotifications = (payload: CheckinInitialNotifications) => ({
   type: BUILD_NOTIFICATION_SET,
   payload
-})
-
-export const cancelNotifications = () => ({
-  type: CANCEL_ALL_NOTIFICATIONS
 })

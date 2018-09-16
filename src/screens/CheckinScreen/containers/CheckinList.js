@@ -1,13 +1,14 @@
 //@flow
-import { connect }          from 'react-redux'
-import { checkins }         from '../checkins'
+import { connect }             from 'react-redux'
+import { checkins }            from '../checkins'
 import {
   goToStartScreen,
   journeyScreenDeepParams
-}                           from '../../../redux/actions/nav.actions'
-import { changeCheckin, cancelNotifications }    from '../../../redux/actions/checkin.actions'
-import selectors            from '../../../redux/selectors'
-import CheckinListComponent from '../components/CheckinListComponent'
+}                              from '../../../redux/actions/nav.actions'
+import { changeCheckin }       from '../../../redux/actions/checkin.actions'
+import { cancelNotifications } from '../../../redux/actions/notifications.actions'
+import selectors               from '../../../redux/selectors'
+import CheckinListComponent    from '../components/CheckinListComponent'
 
 export const isStepCompleted = () => {
   const completionMap = {}
@@ -104,7 +105,12 @@ const mergeProps = (
   dispatchProps: CheckinListDispatchProps
 ) => {
   const { steps, user, checkinState } = stateProps
-  const { homeScreen, journeyScreen, updateCheckin, cancelAllNotifications } = dispatchProps
+  const {
+    homeScreen,
+    journeyScreen,
+    updateCheckin,
+    cancelAllNotifications
+  } = dispatchProps
   const handleLink = (checkin: any) => {
     const { link } = checkin
     const { screen, component, params } = handleUrl(link)
