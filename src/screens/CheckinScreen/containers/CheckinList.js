@@ -1,9 +1,6 @@
 //@flow
 import { connect }             from 'react-redux'
-import {
-  goToStartScreen,
-  journeyScreenDeepParams
-}                              from '../../../redux/actions/nav.actions'
+import { linkNavigation }      from '../../../redux/actions/nav.actions'
 import { changeCheckin }       from '../../../redux/actions/checkin.actions'
 import { cancelNotifications } from '../../../redux/actions/notifications.actions'
 import selectors               from '../../../redux/selectors'
@@ -28,32 +25,14 @@ export const isStepCompleted = () => {
   }
 }
 
-const handleUrl = link => {
-  const [location, query] = link.split('?')
-  const [screen, component] = location.split('/')
-  const params = query.split('&').reduce((params, param) => {
-    const [key, value] = param.split('=')
-    return {
-      ...params,
-      [key]: value
-    }
-  }, {})
-  return {
-    screen,
-    component,
-    params
-  }
-}
-
 const stepCompletedMemoized = isStepCompleted()
 
 let stepsWithCheckinsMap = null
 let unlockedCheckinsMap = null
 
 type CheckinListDispatchProps = {
-  homeScreen: () => any,
-  journeyScreen: () => any,
   updateCheckin: () => any,
+  linkNavigation: () => any,
   cancelAllNotifications: () => any
 }
 
@@ -74,9 +53,9 @@ const mapStateToProps = (state: any): CheckingListStateProps => {
 }
 
 const mapDispatchToProps = (dispatch: () => any): CheckinListDispatchProps => ({
-  homeScreen: (params: any) => dispatch(goToStartScreen(params)),
-  journeyScreen: (params: any) => dispatch(journeyScreenDeepParams(params)),
   updateCheckin: (params: any) => dispatch(changeCheckin(params)),
+  linkNavigation: (params: { link: string }) =>
+    dispatch(linkNavigation(params)),
   cancelAllNotifications: () => dispatch(cancelNotifications())
 })
 
@@ -86,27 +65,21 @@ const mergeProps = (
 ) => {
   const { steps, user, checkinState } = stateProps
   const {
-    homeScreen,
-    journeyScreen,
     updateCheckin,
-    cancelAllNotifications
+    cancelAllNotifications,
+    linkNavigation
   } = dispatchProps
+
   const handleLink = (payload: any) => {
     const { link } = payload
-    const { screen, component, params } = handleUrl(link)
-    switch (screen) {
-      case 'home':
-        return () => homeScreen({ component, params })
-      case 'journey':
-        return () => journeyScreen({ component, params })
-    }
+    linkNavigation({ link })
   }
 
   const handleCheckinAction = (checkin: any) => {
     const { action: { type, payload } } = checkin
-    switch(type) {
+    switch (type) {
       case 'link':
-        return handleLink(payload)
+        return () => handleLink(payload)
       default:
         return () => null
     }
@@ -123,7 +96,7 @@ const mergeProps = (
           ...checkinUpdate,
           onLink: handleCheckinAction(step.checkin),
           onPress: updateCheckin,
-          step: key,
+          step: key
         }
       }
     return stepsR

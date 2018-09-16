@@ -2,12 +2,22 @@
 import { NavigationActions } from 'react-navigation'
 import type { Step }         from '../../services/cms'
 import routes                from '../../navigation/routes'
+import { LINK_NAVIGATION }   from '../actionTypes'
 
 if (!routes || !routes.root || !routes.root.initialRouteName || !routes.step) {
   throw 'missing routes or nested fields ' + JSON.stringify(routes)
 }
 
 type StepInfo = { stepId: string, formId: string, color: string }
+
+export type LinkedNavigationPayload = {
+  link: string
+}
+
+export const linkNavigation = (payload: LinkedNavigationPayload) => ({
+  type: LINK_NAVIGATION,
+  payload
+})
 
 export const stepInfoForStep = (step: Step) => ({
   stepId: step.stepId,
@@ -32,7 +42,7 @@ const navigateToInitialRoute = () =>
     routeName: routes.start.initialRouteName
   })
 
-export const goToStartScreen = (params?: any) => 
+export const goToStartScreen = (params?: any) =>
   NavigationActions.navigate({
     routeName: routes.root.StartScreen,
     params
@@ -149,14 +159,13 @@ export const goToEmojiPickerScreen = (params: ?{}) =>
     params
   })
 
-export const goToMyJourneyScreen = (params: ?any) => 
+export const goToMyJourneyScreen = (params: ?any) =>
   NavigationActions.navigate({
     routeName: routes.tab.MyJourneyScreen,
     params
   })
 
-
-export const journeyScreenDeepParams = (params: ?any) => 
+export const journeyScreenDeepParams = (params: ?any) =>
   NavigationActions.navigate({
     routeName: routes.tab.MyJourneyScreen,
     params,
