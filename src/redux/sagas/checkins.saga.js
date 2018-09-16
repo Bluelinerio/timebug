@@ -9,7 +9,7 @@ import { createNotification }          from '../actions/notifications.actions'
 
 function* setUpNotificationAndUpdateCheckin({ payload }) {
   const { step, frequency, message } = payload
-  const [nextCheckin, repeatTime] = yield call(calculateNextCheckin, '15s')
+  const [nextCheckin, repeatTime] = yield call(calculateNextCheckin, frequency)
   const id = `${step}`
   yield put(createNotification({ message, id, nextCheckin, repeatTime }))
   yield put(updateCheckin({ step, checkin: { frequency, nextCheckin, id } }))

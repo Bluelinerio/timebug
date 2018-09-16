@@ -10,6 +10,7 @@ import {
 import NotificationService                     from '../../services/notifications'
 import { calculateNextCheckin }                from '../../services/checkins'
 import { updateCheckin }                       from '../actions/checkin.actions'
+import { linkNavigation }                      from '../actions/nav.actions'
 
 function* clearNotifications() {
   yield call(NotificationService.cancelAll)
@@ -30,11 +31,17 @@ function* scheduleNotification({ payload }) {
 function* onNotification({ payload }) {
   const { id } = payload
   const checkins = yield select(selectors.getCheckins)
+  const steps = yield select(selectors.steps)
   const checkin = checkins[`${id}`]
+  const step = steps[id]
   const { frequency } = checkin
+  const { checkin: { action } } = step
   const lastCheckin = moment()
   const [nextCheckin, _] = yield call(calculateNextCheckin, frequency)
   yield put(updateCheckin({ step: id, checkin: { lastCheckin, nextCheckin } }))
+  // TODO: add some delay before the transition
+  if (action.type === 'link')
+    yield put(linkNavigation({ link: action.payload.link }))
 }
 
 function* watchForNotificationHelpers() {
