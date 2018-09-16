@@ -1,6 +1,5 @@
 //This is a temporary "placeholder" for contentful
 import moment from 'moment'
-import tron from 'reactotron-react-native'
 
 export const DAILY = 'DAILY'
 export const WEEKLY = 'WEEKLY'

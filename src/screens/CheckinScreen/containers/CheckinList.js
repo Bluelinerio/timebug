@@ -1,6 +1,5 @@
 //@flow
 import { connect }             from 'react-redux'
-import { checkins }            from '../checkins'
 import {
   goToStartScreen,
   journeyScreenDeepParams
@@ -67,27 +66,8 @@ const mapStateToProps = (state: any): CheckingListStateProps => {
   const steps = selectors.steps(state)
   const user = selectors.user(state)
   const checkinState = selectors.getCheckins(state)
-  //REMOVE ONCE CONTENTFUL HAS STEPS
-  const modifiedSteps = Object.keys(steps).reduce((stepsR, key) => {
-    const step = steps[key]
-    const checkin = checkins[key]
-    if (checkin)
-      return {
-        ...stepsR,
-        [key]: {
-          ...step,
-          checkin
-        }
-      }
-    return {
-      ...stepsR,
-      [key]: {
-        ...step
-      }
-    }
-  }, {})
   return {
-    steps: modifiedSteps,
+    steps,
     user,
     checkinState
   }
@@ -111,8 +91,8 @@ const mergeProps = (
     updateCheckin,
     cancelAllNotifications
   } = dispatchProps
-  const handleLink = (checkin: any) => {
-    const { link } = checkin
+  const handleLink = (payload: any) => {
+    const { link } = payload
     const { screen, component, params } = handleUrl(link)
     switch (screen) {
       case 'home':
@@ -122,20 +102,28 @@ const mergeProps = (
     }
   }
 
+  const handleCheckinAction = (checkin: any) => {
+    const { action: { type, payload } } = checkin
+    switch(type) {
+      case 'link':
+        return handleLink(payload)
+      default:
+        return () => null
+    }
+  }
+
   stepsWithCheckinsMap = Object.keys(steps).reduce((stepsR, key) => {
     const step = steps[key]
-    const checkinUpdate = checkinState[key]
+    const checkinUpdate = checkinState[key] || {}
     if (step.checkin)
       return {
         ...stepsR,
         [key]: {
           ...step.checkin,
-          onLink: handleLink(step.checkin),
+          ...checkinUpdate,
+          onLink: handleCheckinAction(step.checkin),
           onPress: updateCheckin,
           step: key,
-          frequency: checkinUpdate
-            ? checkinUpdate.frequency
-            : step.checkin.frequency
         }
       }
     return stepsR

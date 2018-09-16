@@ -15,6 +15,7 @@ export type CheckinElementProps = {
   text: string,
   title: string,
   lastCheckin: string,
+  nextCheckin: string,
   frequency: DAILY | WEEKLY | MONTHLY | BIWEEKLY,
   step: string,
   message: string,
@@ -22,8 +23,25 @@ export type CheckinElementProps = {
   onLink: () => any
 }
 
-const operateCheckinDate = (frequency, lastCheckin) => {
+const operateWithLastCheckin = (frequency, lastCheckin) => {
   const lastCheckinMoment = moment(lastCheckin)
+  switch (frequency) {
+    case frequencies[DAILY]:
+      return lastCheckinMoment.add(1, 'd').format('MM-DD-YY')
+    case frequencies[WEEKLY]:
+      return lastCheckinMoment.add(1, 'w').format('MM-DD-YY')
+    case frequencies[BIWEEKLY]:
+      return lastCheckinMoment
+        .add(3, 'd')
+        .add('12', 'h')
+        .format('MM-DD-YY')
+    case frequencies[MONTHLY]:
+      return lastCheckinMoment.add(1, 'M').format('MM-DD-YY')
+  }
+}
+
+const operateCheckinDate = (frequency, lastCheckin = null) => {
+  if (lastCheckin) return operateWithLastCheckin(frequency, lastCheckin)
   switch (frequency) {
     case frequencies[DAILY]:
       return moment()
@@ -42,8 +60,6 @@ const operateCheckinDate = (frequency, lastCheckin) => {
       return moment()
         .add(1, 'M')
         .format('MM-DD-YY')
-    default:
-      return lastCheckinMoment.format('MM-DD-YY')
   }
 }
 
@@ -106,7 +122,9 @@ class CheckinElement extends React.PureComponent<CheckinElementProps> {
           </View>
           <View style={styles.container}>
             <TouchableOpacity
-              onPress={() => onPress({ step, frequency: localFrequency, message })}
+              onPress={() =>
+                onPress({ step, frequency: localFrequency, message })
+              }
               disabled={frequency === localFrequency}
               style={[styles.centeredContainer]}
             >
