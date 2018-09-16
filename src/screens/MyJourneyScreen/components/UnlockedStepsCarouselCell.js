@@ -10,7 +10,7 @@ type Props = {
 
 class UnlockedStepsCarouselCell extends React.PureComponent<Props> {
   render() {
-    const title = 'Unlockables'
+    const title = 'Rewards'
     const titleColor = 'black'
     const { component, reward } = this.props
     return (
