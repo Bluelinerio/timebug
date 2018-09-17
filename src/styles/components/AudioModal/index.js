@@ -1,13 +1,18 @@
 //@flow
 import { StyleSheet } from 'react-native'
+import { iOSUIKit }   from 'react-native-typography'
 import {
-  iOSUIKit
-}                                           from 'react-native-typography'
-import { gray900, gray400, white2, paleBlue, blue100, deepBlue } from '../../../constants/colors'
+  gray900,
+  gray400,
+  white2,
+  paleBlue,
+  blue100,
+  deepBlue
+}                     from '../../../constants/colors'
 import {
   heightPercentage,
   widthPercentage
-} from '../../../utils/viewportCalculation'
+}                     from '../../../utils/viewportCalculation'
 
 export const modalHeight = heightPercentage(40)
 export const modalWidth = widthPercentage(80)
@@ -26,6 +31,7 @@ const closeButtonBorderRadius = closeButtonHeight
 
 export const closeButtonColor = gray400
 export const closeButtonSize = 20
+export const noAudioIconSize = 32
 
 const borderRadius = 12
 
@@ -76,21 +82,21 @@ export default StyleSheet.create({
     borderWidth: 1,
     borderColor: gray400,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   textBlock: {
     flex: 1,
     flexDirection: 'row',
-    alignItems: 'flex-start',    
+    alignItems: 'flex-start',
     justifyContent: 'flex-start',
     paddingVertical: 12,
     paddingHorizontal: 16
   },
   text: {
-      textAlign: 'center',
-      fontSize: 14,
-      lineHeight: 15,
-      fontFamily: 'Metropolis'
+    textAlign: 'center',
+    fontSize: 14,
+    lineHeight: 15,
+    fontFamily: 'Metropolis'
   },
   title: {
     ...iOSUIKit.bodyEmphasizedObject,
@@ -108,5 +114,17 @@ export default StyleSheet.create({
     left: 0,
     width: widthPercentage(100),
     height: heightPercentage(100)
+  },
+  noAudiotext: {
+    ...iOSUIKit.camption2Object,
+    color: gray900,
+    textAlign: 'center'
+  },
+  bottomModalContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 4,
+    paddingHorizontal: 8
   }
 })

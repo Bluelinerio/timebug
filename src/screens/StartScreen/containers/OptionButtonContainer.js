@@ -22,7 +22,7 @@ import {
   VISION_CREATION
 }                                          from '../../../services/cms'
 
-import tron from 'reactotron-react-native'
+const defaultAudio = 'https://assets.ctfassets.net/6h184bey8vl3/7JQ278WKGsAKcQO4KWWSkI/7a6a37e74821aa780f71dec640c0f14a/test__online-audio-converter.com_.mp3'
 
 type OptionButtonDispatchProps = {
   login: () => any
@@ -84,7 +84,6 @@ const merge = (
   const { login } = dispatchProps
 
   const { number, title, icon, snippet, audio } = step
-  tron.log('Option button container logic for option button #' + number)
 
   const isLoggedIn = typeof user === 'string' ? false : true
 
