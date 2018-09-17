@@ -86,6 +86,17 @@ export const checkins = {
     frequency: frequencies[WEEKLY],
     link: 'journey/rewards?reward=4'
   },
+  [STEP4]: {
+    text:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam corporis mollitia maiores asperiores illum. Expedita beatae similique eos velit, perspiciatis itaque sequi voluptatem sed repellendus cum sint suscipit et non.',
+    title: 'Checkin for step1!',
+    message: 'You have a notification pending for your board of advisors!',    
+    lastCheckin: moment()
+      .subtract(5, 'd')
+      .format('YYYY-MM-DD HH:mm:ss'),
+    frequency: frequencies[WEEKLY],
+    link: 'journey/rewards?reward=4'
+  },
   [STEP2]: {
     text:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam corporis mollitia maiores asperiores illum. Expedita beatae similique eos velit, perspiciatis itaque sequi voluptatem sed repellendus cum sint suscipit et non.',
