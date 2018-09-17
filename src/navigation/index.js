@@ -1,6 +1,6 @@
 // @flow
 import React              from 'react'
-import { Platform }       from 'react-native'
+import { Platform, Text }       from 'react-native'
 import {
   StackNavigator,
   NavigationActions,
@@ -13,6 +13,7 @@ import {
   tabBarUnselected
 }                         from '../constants/colors'
 import TabBarIcon         from '../components/TabBarIcon'
+import TabBarLabel        from '../components/TabBarLabel'
 import HomeScreen         from '../screens/HomeScreen'
 import StepScreen         from '../screens/StepScreen'
 import WorkbookDoneScreen from '../screens/WorkbookDoneScreen'
@@ -29,6 +30,21 @@ import routes             from './routes'
 
 if (!routes || !routes.root || !routes.root.initialRouteName || !routes.step) {
   throw 'missing routes or nested fields ' + JSON.stringify(routes)
+}
+
+const mapRouteToName = (routeName) => {
+  switch (routeName) {
+    case routes.tab.RootNavigator:
+      return 'Home'
+    case routes.tab.MeditationScreen:
+      return 'Meditation'
+    case routes.tab.MyJourneyScreen:
+      return 'Journey'
+    case routes.tab.CheckinScreen:
+      return 'Checkins'
+    default:
+      return ''
+  }
 }
 
 // TODO: there's an issue with moving from the current setup where the import of each screen gets you an object that looks like { screen: } rather than a component, so I added
@@ -125,6 +141,12 @@ export const tabConfiguration = {
             focused={focused}
             tintColor={tintColor}
           />
+        )
+      },
+      tabBarLabel: ({ tintColor, focused }) => {
+        const { routeName } = navigation.state
+        return (
+          <TabBarLabel routeName={routeName} tintColor={tintColor}/>
         )
       }
     }),
