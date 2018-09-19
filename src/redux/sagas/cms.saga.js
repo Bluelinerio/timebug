@@ -42,10 +42,7 @@ function* seedCMS() {
     }
   })
   yield put({
-    type: SET_NOTIFICATIONS,
-    payload: {
-      ...staticCms
-    }
+    type: SET_NOTIFICATIONS
   })
 }
 
@@ -53,16 +50,12 @@ function* _fetchCms() {
   let { payload: cms } = yield request(FETCH_CMS, refresh)
   if (!cms.error)
     yield put({
-      type: SET_NOTIFICATIONS,
-      payload: {
-        steps: cms.steps
-      }
+      type: SET_NOTIFICATIONS
     })
 }
 
-function* _setUpInitialNotifications({ payload }) {
-  const { steps } = payload
-  yield put(initialNotifications({ steps }))
+function* _setUpInitialNotifications() {
+  yield put(initialNotifications())
 }
 
 function* watchForInitialNotifications() {

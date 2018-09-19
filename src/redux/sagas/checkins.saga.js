@@ -1,4 +1,4 @@
-import { takeLatest, fork, call, put } from 'redux-saga/effects'
+import { takeLatest, fork, call, put, select } from 'redux-saga/effects'
 import { updateCheckin }               from '../actions/checkin.actions'
 import {
   CHANGE_CHECKIN,
@@ -6,6 +6,9 @@ import {
 }                                      from '../actionTypes'
 import { calculateNextCheckin }        from '../../services/checkins'
 import { createNotification }          from '../actions/notifications.actions'
+import selectors                       from '../selectors'
+
+import tron                            from 'reactotron-react-native'
 
 function* setUpNotificationAndUpdateCheckin({ payload }) {
   const { step, frequency, message } = payload
@@ -15,9 +18,15 @@ function* setUpNotificationAndUpdateCheckin({ payload }) {
   yield put(updateCheckin({ step, checkin: { frequency, nextCheckin, id } }))
 }
 
-function* _setInitialNotifications({ payload }) {
-  const { steps } = payload
-  // TODO
+function* _setInitialNotifications() {
+  tron.log("Initial notifications")
+  const steps = yield select(selectors.steps)
+  const user = yield select(selectors.user)
+  tron.log(steps)
+  if(user)
+    tron.log("There is a user")
+  else
+    tron.log("No user")
 }
 
 function* watchForInitialNotifications() {
