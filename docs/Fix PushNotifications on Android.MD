@@ -30,8 +30,8 @@ E:\AndroidNotify\node_modules\react-native-push-notification\android\src\main\ja
 
 [As read here](https://stackoverflow.com/questions/51682448/react-native-push-notification-can-not-build-in-android)
 
-# Fix
-On `node_modules/react-native-push-notifications/android/build.gradle` replace
+# Old Fix
+On `node_modules/react-native-push-notification/android/build.gradle` replace
 
 ```
 def DEFAULT_COMPILE_SDK_VERSION = 23
@@ -51,4 +51,35 @@ def DEFAULT_TARGET_SDK_VERSION = 27
 def DEFAULT_SUPPORT_LIB_VERSION = "23.0.1"
 def DEFAULT_GOOGLE_PLAY_SERVICES_VERSION = "+"
 def DEFAULT_FIREBASE_MESSAGING_VERSION = "+"
+```
+
+# New fix
+
+In case a similar error happens again, the previously mentioned configurations can be overriden globally so that every package adapts to them.
+
+in `android/build.gradle` (This is the important one)
+
+```
+// Change ext values to whatever is needed, these are the current values, set like this because of react-native-push-notifications
+ext {
+        googlePlayServicesVersion = "15.0.1" // default: "+"
+        compileSdkVersion = 27
+        buildToolsVersion = "23.0.1"
+        targetSdkVersion = 27
+        supportLibVersion = "23.0.1"
+}
+
+```
+
+in `android/app/build.gradle` 
+
+```
+// Added this change, I am unsure of the effect, but I believe this only affects the app itself, not the packages it uses
+ext {
+        googlePlayServicesVersion = "15.0.1" // default: "+"
+        compileSdkVersion = 27
+        buildToolsVersion = "23.0.1"
+        targetSdkVersion = 27
+        supportLibVersion = "23.0.1"
+    }
 ```
