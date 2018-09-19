@@ -16,6 +16,22 @@ const navigationMiddleware = createReactNavigationReduxMiddleware(
   'root',
   state => state.nav
 )
+
+const logger = store => next => action => {
+  Reactotron.display({
+    name: 'action',
+    preview: action.type,
+    value: action.payload
+  })
+  const result = next(action)
+  Reactotron.display({
+    name: 'store',
+    preview: action.type,
+    value: store.getState()
+  })
+  return result
+}
+
 export default () => {
   const sagaMiddleware = createSagaMiddleware()
   if (__DEV__) {
@@ -24,7 +40,7 @@ export default () => {
       composeEnhancers(
         reduxReset(resetStore.type), // Set action.type here
         applyAppStateListener(),
-        applyMiddleware(navigationMiddleware, thunk, sagaMiddleware)
+        applyMiddleware(logger, navigationMiddleware, thunk, sagaMiddleware)
       )
     )
     const persistor = persistStore(store)
@@ -41,7 +57,7 @@ export default () => {
     composeEnhancers(
       reduxReset(resetStore.type), // Set action.type here
       applyAppStateListener(),
-      applyMiddleware(navigationMiddleware, thunk, sagaMiddleware)
+      applyMiddleware(logger, navigationMiddleware, thunk, sagaMiddleware)
     )
   )
   const persistor = persistStore(store)

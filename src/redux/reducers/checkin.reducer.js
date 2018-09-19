@@ -1,6 +1,6 @@
 //@flow
-import { CHANGE_CHECKIN, UPDATE_CHECKIN } from '../actionTypes'
-import { CheckinActionPayload }           from '../actions/checkin.actions'
+import { CHANGE_CHECKIN, UPDATE_CHECKIN, CANCEL_ALL_NOTIFICATIONS } from '../actionTypes'
+import { CheckinActionPayload } from '../actions/checkin.actions'
 
 export type CheckinElement = {
   frequency: string,
@@ -11,7 +11,7 @@ export type CheckinElement = {
 
 type CheckinState = {
   checkins: {
-    [x: string]: CheckinElement
+    [x: string]: CheckinElement,
   }
 }
 
@@ -38,11 +38,33 @@ const handleChange = (state: CheckinState, payload: CheckinActionPayload) => {
   }
 }
 
-export default (state: CheckinState = initialState, action: CheckinAction) => {
+const checkinReducer = (
+  state: CheckinState = initialState,
+  action: CheckinAction
+) => {
   switch (action.type) {
     case UPDATE_CHECKIN:
       return handleChange(state, action.payload)
+    case CANCEL_ALL_NOTIFICATIONS: 
+      return initialState
     default:
       return state
   }
 }
+
+import storage from 'redux-persist/lib/storage'
+import { persistReducer, createMigrate } from 'redux-persist'
+
+const migrations = {
+  0: state => state
+}
+
+const persistConfig = {
+  key: 'checkins',
+  storage: storage,
+  blacklist: [],
+  version: 1,
+  migrate: createMigrate(migrations, { debug: true })
+}
+
+export default persistReducer(persistConfig, checkinReducer)
