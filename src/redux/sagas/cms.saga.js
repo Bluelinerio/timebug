@@ -1,26 +1,36 @@
 // @flow
-import { takeLatest, fork, put }          from 'redux-saga/effects'
-import { REFRESH_CMS }                    from '../actions'
+import { takeLatest, fork, put }                  from 'redux-saga/effects'
+import { REFRESH_CMS }                            from '../actions'
 import { FETCH_CMS, SEED_CMS, SET_NOTIFICATIONS } from '../actions/cms.actions'
-import { initialNotifications } from '../actions/checkin.actions'
-import { refreshCMS } from '../../services/contentful'
-import { request }                        from '../../Modules/redux-saga-request'
-import { headerBackgrounds }              from '../../resources/images'
-let staticCms     = require('../../static/cms.json')
+import { initialNotifications }                   from '../actions/checkin.actions'
+import { refreshCMS }                             from '../../services/contentful'
+import { request }                                from '../../Modules/redux-saga-request'
+import { headerBackgrounds }                      from '../../resources/images'
+let staticCms = require('../../static/cms.json')
 const meditations = require('../../static/Meditations.json')
 
-import tron from 'reactotron-react-native'
-
-const addLocalImage = step => ({
+const stepWithLocalImage = step => ({
   ...step,
   image: headerBackgrounds[step.stepId]
 })
+
+const refresh = () =>
+  refreshCMS().then(({ steps, ...rest }) => ({
+    ...rest,
+    steps: Object.values(steps).reduce(
+      (sum, step) => ({
+        ...sum,
+        [step.stepId]: stepWithLocalImage(step)
+      }),
+      {}
+    )
+  }))
 
 function* seedCMS() {
   staticCms.steps = Object.values(staticCms.steps).reduce(
     (sum, step) => ({
       ...sum,
-      [step.stepId]: addLocalImage(step)
+      [step.stepId]: stepWithLocalImage(step)
     }),
     {}
   )
@@ -40,24 +50,14 @@ function* seedCMS() {
 }
 
 function* _fetchCms() {
-  let { payload: cms } = yield request(FETCH_CMS, () =>
-    refreshCMS().then(({ steps, ...rest }) => ({
-      ...rest,
-      steps: Object.values(steps).reduce(
-        (sum, step) => ({
-          ...sum,
-          [step.stepId]: addLocalImage(step)
-        }),
-        {}
-      )
-    }))
-  )
-  yield put({
-    type: SET_NOTIFICATIONS,
-    payload: {
-      ...cms
-    }
-  })
+  let { payload: cms } = yield request(FETCH_CMS, refresh)
+  if (!cms.error)
+    yield put({
+      type: SET_NOTIFICATIONS,
+      payload: {
+        steps: cms.steps
+      }
+    })
 }
 
 function* _setUpInitialNotifications({ payload }) {

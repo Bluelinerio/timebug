@@ -1,22 +1,14 @@
-import React      from 'react'
-import {
-  View,
-  Modal,
-  TouchableOpacity,
-  StatusBar,
-  Text,
-  Image
-}                 from 'react-native'
-import Gradient   from '../components/Gradient'
+import React                                              from 'react'
+import { View, Modal, TouchableOpacity, StatusBar, Text } from 'react-native'
+import Gradient                                           from '../components/Gradient'
 import styles, {
   statusBarColor,
   closeButtonColor,
   closeButtonSize,
   gradientColors
-}                 from '../styles/components/AudioModal'
-import { icon }   from '../resources/images'
-import Icon       from 'react-native-vector-icons/dist/MaterialIcons'
-import AudioVideo from './AudioVideoComponent'
+}                                                         from '../styles/components/AudioModal'
+import Icon                                               from 'react-native-vector-icons/dist/MaterialIcons'
+import AudioVideo                                         from './AudioVideoComponent'
 
 export type AudioModalProps = {
   isOpen: boolean,
@@ -32,12 +24,9 @@ export type AudioModalProps = {
 
 export const key = 'Audio'
 
-const defaultAudio =
-  'https://assets.ctfassets.net/6h184bey8vl3/7JQ278WKGsAKcQO4KWWSkI/7a6a37e74821aa780f71dec640c0f14a/test__online-audio-converter.com_.mp3'
-
 class AudioModal extends React.PureComponent<AudioModalProps> {
   render() {
-    const { isOpen, close, title, audio = defaultAudio } = this.props
+    const { isOpen, close, title, audio } = this.props
     return (
       <Modal
         animationType="slide"
@@ -71,12 +60,19 @@ class AudioModal extends React.PureComponent<AudioModalProps> {
             <View style={styles.titleContainer}>
               <Text style={styles.title}>{title}</Text>
             </View>
-            {isOpen &&
-              audio && (
-                <React.Fragment>
-                  <AudioVideo file={audio} />
-                </React.Fragment>
-              )}
+            {isOpen && audio ? (
+              <React.Fragment>
+                <AudioVideo file={audio} />
+              </React.Fragment>
+            ) : (
+              <React.Fragment>
+                <View style={styles.bottomModalContainer}>
+                  <Text style={styles.noAudiotext}>
+                    No audiotrack is available for this step currently
+                  </Text>
+                </View>
+              </React.Fragment>
+            )}
           </Gradient>
         </View>
       </Modal>
