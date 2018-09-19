@@ -41,3 +41,11 @@ allprojects {
                 }
     }
 }
+
+ext {
+        googlePlayServicesVersion = "15.0.1" // default: "+"
+        compileSdkVersion = 27
+        buildToolsVersion = "23.0.1"
+        targetSdkVersion = 27
+        supportLibVersion = "23.0.1"
+}
