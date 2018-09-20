@@ -17,10 +17,6 @@ type CheckinChangePayload = {
   message: string
 }
 
-type CheckinInitialNotifications = {
-  steps: any
-}
-
 export const changeCheckin = (payload: CheckinChangePayload) => ({
   type: CHANGE_CHECKIN,
   payload
@@ -31,7 +27,6 @@ export const updateCheckin = (payload: CheckinActionPayload) => ({
   payload
 })
 
-export const initialNotifications = (payload: CheckinInitialNotifications) => ({
-  type: BUILD_NOTIFICATION_SET,
-  payload
+export const initialNotifications = () => ({
+  type: BUILD_NOTIFICATION_SET
 })
