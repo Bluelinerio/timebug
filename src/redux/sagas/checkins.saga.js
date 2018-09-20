@@ -1,3 +1,5 @@
+// @flow
+// TODO FLOW
 import {
   takeLatest,
   take,
@@ -11,9 +13,9 @@ import { updateCheckin }                          from '../actions/checkin.actio
 import { CHANGE_CHECKIN, BUILD_NOTIFICATION_SET } from '../actionTypes'
 import { calculateNextCheckin }                   from '../../services/checkins'
 import { createNotification }                     from '../actions/notifications.actions'
+import { changeCheckin }                          from '../actions/checkin.actions'
 import selectors                                  from '../selectors'
-
-import tron from 'reactotron-react-native'
+import { isStepCompleted }                        from '../../services/cms'
 
 function* setUpNotificationAndUpdateCheckin({ payload }) {
   const { step, frequency, message } = payload
@@ -24,27 +26,36 @@ function* setUpNotificationAndUpdateCheckin({ payload }) {
 }
 
 function* _setInitialNotifications() {
-  tron.log('Initial notifications')
   const steps = yield select(selectors.steps)
   const user = yield select(selectors.user)
-  tron.log(steps)
+  const checkins = yield select(selectors.getCheckins)
   if (user) {
-    tron.log('There is a user')
-    
+    const stepsWithUnsetNotifications = Object.values(steps).filter(step => {
+      const shouldSetNotification =
+        !step.checkin ||
+        checkins[step.number] ||
+        !isStepCompleted(step.number, user)
+          ? false
+          : true
+      return shouldSetNotification
+    })
+    for (const step of stepsWithUnsetNotifications) {
+      const { checkin, number } = step
+      yield put(changeCheckin({ ...checkin, step: number }))
+    }
   }
-  else tron.log('No user')
 }
 
 function* watchForInitialNotifications() {
-  const channel = yield actionChannel(BUILD_NOTIFICATION_SET)
-  while (true) {
-    const action = yield take(channel)
-    yield call(_setInitialNotifications)
-  }
+  yield takeLatest(BUILD_NOTIFICATION_SET, _setInitialNotifications)
 }
 
 function* watchForCheckinsUpdate() {
-  yield takeLatest(CHANGE_CHECKIN, setUpNotificationAndUpdateCheckin)
+  const channel = yield actionChannel(CHANGE_CHECKIN)
+  while (true) {
+    const action = yield take(channel)
+    yield call(setUpNotificationAndUpdateCheckin, action)
+  }
 }
 
 export function* watchForCheckinsSaga() {

@@ -4,28 +4,10 @@ import { linkNavigation }      from '../../../redux/actions/nav.actions'
 import { changeCheckin }       from '../../../redux/actions/checkin.actions'
 import { cancelNotifications } from '../../../redux/actions/notifications.actions'
 import selectors               from '../../../redux/selectors'
-import CheckinListComponent    from '../components/CheckinListComponent'
-
-export const isStepCompleted = () => {
-  const completionMap = {}
-  return (stepNumber, user) => {
-    if (completionMap[stepNumber]) return completionMap[stepNumber]
-    const { forms } = user
-    const completed =
-      forms &&
-      forms.find(form => {
-        const value = `${form.stepId}` === stepNumber
-        if (!completionMap[form.stepId]) completionMap[form.stepId] = value
-        return value
-      })
-        ? true
-        : false
-    if (!completionMap[stepNumber]) completionMap[stepNumber] = completed
-    return completed
-  }
-}
-
-const stepCompletedMemoized = isStepCompleted()
+import CheckinListComponent, {
+  CheckinListComponentProps
+}                              from '../components/CheckinListComponent'
+import { isStepCompleted }     from '../../../services/cms'
 
 let stepsWithCheckinsMap = null
 let unlockedCheckinsMap = null
@@ -62,7 +44,7 @@ const mapDispatchToProps = (dispatch: () => any): CheckinListDispatchProps => ({
 const mergeProps = (
   stateProps: CheckingListStateProps,
   dispatchProps: CheckinListDispatchProps
-) => {
+) : CheckinListComponentProps => {
   const { steps, user, checkinState } = stateProps
   const {
     updateCheckin,
@@ -104,7 +86,7 @@ const mergeProps = (
 
   const unlockedCheckins = Object.keys(stepsWithCheckinsMap).reduce(
     (checkins, key) => {
-      if (user && stepCompletedMemoized(key, user))
+      if (user && isStepCompleted(key, user))
         return [...checkins, stepsWithCheckinsMap[key]]
       return checkins
     },
