@@ -81,13 +81,13 @@ class NotificationService {
       date: new Date(time),
       autoCancel: true, // (optional) default: true
       largeIcon: 'ic_launcher', // (optional) default: "ic_launcher"
-      smallIcon: 'ic_notification', // (optional) default: "ic_notification" with fallback for "ic_launcher"
+      smallIcon: 'ic_launcher', // (optional) default: "ic_notification" with fallback for "ic_launcher"
       subText: 'You got a checkin pending!', // (optional) default: none
-      color: 'blue', // (optional) default: system default
+      // color: 'blue', // (optional) default: system default
       vibrate: true, // (optional) default: true
       vibration: 1000, // vibration length in milliseconds, ignored if vibrate=false, default: 1000
-      tag: 'some_tag', // (optional) add tag to message
-      group: 'group', // (optional) add group to message
+      // tag: 'some_tag', // (optional) add tag to message
+      // group: 'group', // (optional) add group to message
       ongoing: false, // (optional) set whether this is an "ongoing" notification
 
       /* iOS only properties */

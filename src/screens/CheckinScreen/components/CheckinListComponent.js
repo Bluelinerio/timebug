@@ -20,7 +20,7 @@ class CheckinListComponent extends React.Component<CheckinListComponentProps> {
     const { checkins, cancelAllNotifications } = this.props
     return (
       <React.Fragment>
-        {__DEV__ &&
+        {/* {__DEV__ &&
           checkins && (
             <TouchableOpacity
               style={{ backgroundColor: 'blue', height: 80, width: 200, alignSelf: 'center', justifyContent: 'center', alignItems: 'center' }}
@@ -28,7 +28,7 @@ class CheckinListComponent extends React.Component<CheckinListComponentProps> {
             >
               <Text style={{ color: '#FAFAFA' }}>Clear All notifications</Text>
             </TouchableOpacity>
-          )}
+          )} */}
         {checkins ? (
           Object.keys(checkins).map(key => {
             const checkin = checkins[key]
