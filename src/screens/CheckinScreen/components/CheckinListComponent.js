@@ -23,10 +23,10 @@ class CheckinListComponent extends React.Component<CheckinListComponentProps> {
         {__DEV__ &&
           checkins && (
             <TouchableOpacity
-              style={{ backgroundColor: 'gray', height: 80, width: 200 }}
+              style={{ backgroundColor: 'blue', height: 80, width: 200, alignSelf: 'center', justifyContent: 'center', alignItems: 'center' }}
               onPress={cancelAllNotifications}
             >
-              <Text>Clear All notifications</Text>
+              <Text style={{ color: '#FAFAFA' }}>Clear All notifications</Text>
             </TouchableOpacity>
           )}
         {checkins ? (
