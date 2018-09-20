@@ -6,8 +6,8 @@ import { initialNotifications }                   from '../actions/checkin.actio
 import { refreshCMS }                             from '../../services/contentful'
 import { request }                                from '../../Modules/redux-saga-request'
 import { headerBackgrounds }                      from '../../resources/images'
-let staticCms = require('../../static/cms.json')
-const meditations = require('../../static/Meditations.json')
+import staticCms                                  from '../../static/cms.json'
+import meditations                                from '../../static/Meditations.json'
 
 const stepWithLocalImage = step => ({
   ...step,
