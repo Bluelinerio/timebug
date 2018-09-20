@@ -118,7 +118,8 @@ export default StyleSheet.create({
   noCheckinContainer: { 
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    alignSelf: 'center'
   },
   noCheckinText: {
     textAlign: 'center'
