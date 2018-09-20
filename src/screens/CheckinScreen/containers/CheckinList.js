@@ -1,13 +1,13 @@
 //@flow
-import { connect }             from 'react-redux'
-import { linkNavigation }      from '../../../redux/actions/nav.actions'
-import { changeCheckin }       from '../../../redux/actions/checkin.actions'
+import { connect } from 'react-redux'
+import { linkNavigation } from '../../../redux/actions/nav.actions'
+import { changeCheckin } from '../../../redux/actions/checkin.actions'
 import { cancelNotifications } from '../../../redux/actions/notifications.actions'
-import selectors               from '../../../redux/selectors'
+import selectors from '../../../redux/selectors'
 import CheckinListComponent, {
   CheckinListComponentProps
-}                              from '../components/CheckinListComponent'
-import { isStepCompleted }     from '../../../services/cms'
+} from '../components/CheckinListComponent'
+import { isStepCompleted } from '../../../services/cms'
 
 let stepsWithCheckinsMap = null
 let unlockedCheckinsMap = null
@@ -20,17 +20,18 @@ type CheckinListDispatchProps = {
 
 type CheckingListStateProps = {
   steps: any,
-  user: any
+  user: any,
+  checkins: any
 }
 
 const mapStateToProps = (state: any): CheckingListStateProps => {
   const steps = selectors.steps(state)
   const user = selectors.user(state)
-  const checkinState = selectors.getCheckins(state)
+  const checkins = selectors.getCheckins(state)
   return {
     steps,
     user,
-    checkinState
+    checkins
   }
 }
 
@@ -44,8 +45,8 @@ const mapDispatchToProps = (dispatch: () => any): CheckinListDispatchProps => ({
 const mergeProps = (
   stateProps: CheckingListStateProps,
   dispatchProps: CheckinListDispatchProps
-) : CheckinListComponentProps => {
-  const { steps, user, checkinState } = stateProps
+): CheckinListComponentProps => {
+  const { checkins } = stateProps
   const {
     updateCheckin,
     cancelAllNotifications,
@@ -67,34 +68,24 @@ const mergeProps = (
     }
   }
 
-  stepsWithCheckinsMap = Object.keys(steps).reduce((stepsR, key) => {
-    const step = steps[key]
-    const checkinUpdate = checkinState[key] || {}
-    if (step.checkin)
-      return {
-        ...stepsR,
-        [key]: {
-          ...step.checkin,
-          ...checkinUpdate,
-          onLink: handleCheckinAction(step.checkin),
+  const actualCheckins = Object.keys(checkins).reduce(
+    (unlockedCheckins, key) => {
+      const checkin = checkins[key]
+      return [
+        ...unlockedCheckins,
+        {
+          ...checkin,
+          onLink: handleCheckinAction(checkin),
           onPress: updateCheckin,
           step: key
         }
-      }
-    return stepsR
-  }, {})
-
-  const unlockedCheckins = Object.keys(stepsWithCheckinsMap).reduce(
-    (checkins, key) => {
-      if (user && isStepCompleted(key, user))
-        return [...checkins, stepsWithCheckinsMap[key]]
-      return checkins
+      ]
     },
     []
   )
-  unlockedCheckinsMap = unlockedCheckins
+
   return {
-    checkins: unlockedCheckinsMap,
+    checkins: actualCheckins,
     cancelAllNotifications: __DEV__ ? cancelAllNotifications : null
   }
 }

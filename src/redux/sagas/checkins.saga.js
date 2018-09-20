@@ -18,11 +18,11 @@ import selectors                                  from '../selectors'
 import { isStepCompleted }                        from '../../services/cms'
 
 function* setUpNotificationAndUpdateCheckin({ payload }) {
-  const { step, frequency, message } = payload
+  const { step, frequency, message, ...rest } = payload
   const [nextCheckin, repeatTime] = yield call(calculateNextCheckin, frequency)
   const id = `${step}`
   yield put(createNotification({ message, id, nextCheckin, repeatTime }))
-  yield put(updateCheckin({ step, checkin: { frequency, nextCheckin, id } }))
+  yield put(updateCheckin({ step, checkin: { frequency, nextCheckin, id, message, ...rest } }))
 }
 
 function* _setInitialNotifications() {

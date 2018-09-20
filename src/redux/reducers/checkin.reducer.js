@@ -6,6 +6,10 @@ export type CheckinElement = {
   frequency: string,
   lastCheckin: string,
   nextCheckin: string,
+  text: string,
+  title: string,
+  message: string,
+  action: any,
   id: string
 }
 
