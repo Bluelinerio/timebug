@@ -32,11 +32,9 @@ function* _setInitialNotifications() {
   if (user) {
     const stepsWithUnsetNotifications = Object.values(steps).filter(step => {
       const shouldSetNotification =
-        !step.checkin ||
-        checkins[step.number] ||
-        !isStepCompleted(step.number, user)
-          ? false
-          : true
+        step.checkin &&
+        !checkins[step.number] &&
+        isStepCompleted(step.number, user)
       return shouldSetNotification
     })
     for (const step of stepsWithUnsetNotifications) {
