@@ -114,5 +114,13 @@ export default StyleSheet.create({
   },
   saveTextDisabled: {
     color: gray400
+  },
+  noCheckinContainer: { 
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  noCheckinText: {
+    textAlign: 'center'
   }
 })

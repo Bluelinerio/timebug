@@ -1,11 +1,12 @@
 //@flow
-import React                                   from 'react'
-import { Text, TouchableOpacity }              from 'react-native'
+import React from 'react'
+import { Text, TouchableOpacity, View } from 'react-native'
 import CheckinElement, { CheckinElementProps } from './CheckinElement'
+import styles from '../styles'
 
 type CheckinListComponentProps = {
   checkins: Array<CheckinElementProps>,
-  cancelAllNotifications: null | () => any 
+  cancelAllNotifications: null | (() => any)
 }
 
 class CheckinListComponent extends React.Component<CheckinListComponentProps> {
@@ -19,19 +20,27 @@ class CheckinListComponent extends React.Component<CheckinListComponentProps> {
     const { checkins, cancelAllNotifications } = this.props
     return (
       <React.Fragment>
-        {
-          __DEV__ &&
-            <TouchableOpacity style={{ backgroundColor: 'gray', height: 80, width: 200 }} onPress={cancelAllNotifications}>
-              <Text>
-                Clear All notifications
-              </Text>
-            </TouchableOpacity>  
-        }
-        {checkins &&
+        {__DEV__ &&
+          checkins && (
+            <TouchableOpacity
+              style={{ backgroundColor: 'gray', height: 80, width: 200 }}
+              onPress={cancelAllNotifications}
+            >
+              <Text>Clear All notifications</Text>
+            </TouchableOpacity>
+          )}
+        {checkins ? (
           Object.keys(checkins).map(key => {
             const checkin = checkins[key]
             return <CheckinElement key={key} {...checkin} />
-          })}
+          })
+        ) : (
+          <View
+            style={styles.noCheckinContainer}
+          >
+            <Text style={styles.noCheckinText}>No checkins have been loaded yet</Text>
+          </View>
+        )}
       </React.Fragment>
     )
   }
