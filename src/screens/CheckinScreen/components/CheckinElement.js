@@ -23,7 +23,7 @@ export type CheckinElementProps = {
   onLink: () => any
 }
 
-const operateWithLastCheckin = (frequency, lastCheckin) => {
+const operateWithLastCheckin = (frequency: string, lastCheckin: string) => {
   const lastCheckinMoment = moment(lastCheckin)
   switch (frequency) {
     case frequencies[DAILY]:
@@ -40,7 +40,10 @@ const operateWithLastCheckin = (frequency, lastCheckin) => {
   }
 }
 
-const operateCheckinDate = (frequency, lastCheckin = null) => {
+const operateCheckinDate = (
+  frequency: string,
+  lastCheckin: string | null = null
+) => {
   if (lastCheckin) return operateWithLastCheckin(frequency, lastCheckin)
   switch (frequency) {
     case frequencies[DAILY]:

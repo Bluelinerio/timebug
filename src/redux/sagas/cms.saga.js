@@ -47,7 +47,7 @@ function* seedCMS() {
 }
 
 function* _fetchCms() {
-  let { payload: cms } = yield request(FETCH_CMS, refresh)
+  const { payload: cms } = yield request(FETCH_CMS, refresh)
   if (!cms.error)
     yield put({
       type: SET_NOTIFICATIONS

@@ -1,8 +1,8 @@
 //@flow
-import React from 'react'
-import { Text, TouchableOpacity, View } from 'react-native'
+import React                                   from 'react'
+import { Text, TouchableOpacity, View }        from 'react-native'
 import CheckinElement, { CheckinElementProps } from './CheckinElement'
-import styles from '../styles'
+import styles                                  from '../styles'
 
 type CheckinListComponentProps = {
   checkins: Array<CheckinElementProps>,
@@ -35,10 +35,10 @@ class CheckinListComponent extends React.Component<CheckinListComponentProps> {
             return <CheckinElement key={key} {...checkin} />
           })
         ) : (
-          <View
-            style={styles.noCheckinContainer}
-          >
-            <Text style={styles.noCheckinText}>No checkins have been loaded yet</Text>
+          <View style={styles.noCheckinContainer}>
+            <Text style={styles.noCheckinText}>
+              No checkins have been loaded yet
+            </Text>
           </View>
         )}
       </React.Fragment>

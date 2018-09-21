@@ -57,6 +57,8 @@ function* watchForCheckinsUpdate() {
 }
 
 export function* watchForCheckinsSaga() {
+  // TODO: Set up permissions for IOS? it would probably be good to do it here
+  // Disable both forks until the call to permissions is accepted
   yield fork(watchForCheckinsUpdate)
   yield fork(watchForInitialNotifications)
 }

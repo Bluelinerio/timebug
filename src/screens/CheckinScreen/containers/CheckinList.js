@@ -1,16 +1,12 @@
 //@flow
-import { connect } from 'react-redux'
-import { linkNavigation } from '../../../redux/actions/nav.actions'
-import { changeCheckin } from '../../../redux/actions/checkin.actions'
+import { connect }             from 'react-redux'
+import { linkNavigation }      from '../../../redux/actions/nav.actions'
+import { changeCheckin }       from '../../../redux/actions/checkin.actions'
 import { cancelNotifications } from '../../../redux/actions/notifications.actions'
-import selectors from '../../../redux/selectors'
+import selectors               from '../../../redux/selectors'
 import CheckinListComponent, {
   CheckinListComponentProps
-} from '../components/CheckinListComponent'
-import { isStepCompleted } from '../../../services/cms'
-
-let stepsWithCheckinsMap = null
-let unlockedCheckinsMap = null
+}                              from '../components/CheckinListComponent'
 
 type CheckinListDispatchProps = {
   updateCheckin: () => any,
@@ -19,18 +15,12 @@ type CheckinListDispatchProps = {
 }
 
 type CheckingListStateProps = {
-  steps: any,
-  user: any,
   checkins: any
 }
 
 const mapStateToProps = (state: any): CheckingListStateProps => {
-  const steps = selectors.steps(state)
-  const user = selectors.user(state)
   const checkins = selectors.getCheckins(state)
   return {
-    steps,
-    user,
     checkins
   }
 }

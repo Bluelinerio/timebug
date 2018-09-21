@@ -164,19 +164,21 @@ export const phaseForStep = ({ number }) => {
 
 const _isStepCompleted = () => {
   const completionMap = {}
-  return (stepNumber, user) => {
+  return (stepNumber: number, user: any) => {
     if (completionMap[`${stepNumber}`]) return completionMap[`${stepNumber}`]
-    const { forms } = user  
+    const { forms } = user
     const completed =
       forms &&
       forms.find(form => {
-        if (!completionMap[`${form.stepId}`]) completionMap[`${form.stepId}`] = true
+        if (!completionMap[`${form.stepId}`])
+          completionMap[`${form.stepId}`] = true
         const value = `${form.stepId}` === `${stepNumber}`
         return value
       })
         ? true
         : false
-    if (!completionMap[`${stepNumber}`]) completionMap[`${stepNumber}`] = completed
+    if (!completionMap[`${stepNumber}`])
+      completionMap[`${stepNumber}`] = completed
     return completed
   }
 }

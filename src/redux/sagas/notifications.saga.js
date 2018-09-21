@@ -1,3 +1,4 @@
+// @flow
 import { takeLatest, fork, call, select, put } from 'redux-saga/effects'
 import selectors                               from '../selectors'
 import moment                                  from 'moment'
@@ -11,12 +12,20 @@ import NotificationService                     from '../../services/notification
 import { calculateNextCheckin }                from '../../services/checkins'
 import { updateCheckin }                       from '../actions/checkin.actions'
 import { linkNavigation }                      from '../actions/nav.actions'
+import type {
+  CreateNotificationPayload,
+  OnNotificationPayload
+}                                              from '../actions/notification.actions'
 
 function* clearNotifications() {
   yield call(NotificationService.cancelAll)
 }
 
-function* scheduleNotification({ payload }) {
+function* scheduleNotification({
+  payload
+}: {
+  payload: CreateNotificationPayload
+}) {
   const { message, nextCheckin, id, repeatTime } = payload
   yield call(
     NotificationService.scheduleNotification,
@@ -28,7 +37,7 @@ function* scheduleNotification({ payload }) {
   )
 }
 
-function* onNotification({ payload }) {
+function* onNotification({ payload }: { payload: OnNotificationPayload }) {
   const { id } = payload
   const checkins = yield select(selectors.getCheckins)
   const steps = yield select(selectors.steps)
@@ -53,6 +62,6 @@ function* watchForNotificationHelpers() {
   )
 }
 
-export function* watchForNotificationSaga() {
+export function* watchForNotificationSaga() {  
   yield fork(watchForNotificationHelpers)
 }
