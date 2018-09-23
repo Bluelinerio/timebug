@@ -1,4 +1,4 @@
-//This is a temporary "placeholder" for contentful
+// @flow
 import moment from 'moment'
 
 export const DAILY = 'DAILY'
