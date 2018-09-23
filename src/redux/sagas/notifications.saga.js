@@ -16,7 +16,8 @@ import {
   ON_NOTIFICATION,
   CREATE_NOTIFICATION,
   UPDATE_NOTIFICATION,
-  REMOVE_NOTIFICATION
+  REMOVE_NOTIFICATION,
+  STORE_LOADED
 }                               from '../actionTypes'
 import NotificationService      from '../../services/notifications'
 import { calculateNextCheckin } from '../../services/checkins'
@@ -50,12 +51,11 @@ function* scheduleNotification({
 
 function* onNotification({ payload }: { payload: OnNotificationPayload }) {
   const { id } = payload
+  const hasStoreLoaded = yield select(selectors.hasStoreLoaded)
+  if (!hasStoreLoaded) yield take(STORE_LOADED)
   const checkins = yield select(selectors.getCheckins)
-  const steps = yield select(selectors.steps)
   const checkin = checkins[`${id}`]
-  const step = steps[id]
-  const { frequency } = checkin
-  const { checkin: { action } } = step
+  const { frequency, action } = checkin
   const lastCheckin = moment()
   const [nextCheckin, _] = yield call(calculateNextCheckin, frequency)
   yield put(updateCheckin({ step: id, checkin: { lastCheckin, nextCheckin } }))

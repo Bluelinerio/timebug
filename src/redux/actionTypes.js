@@ -94,3 +94,9 @@ export const ON_NOTIFICATION = 'ON_NOTIFICATION'
  */
 
 export const LINK_NAVIGATION = 'LINK_NAVIGATION'
+
+/**
+ * Persist
+ */
+
+export const STORE_LOADED = 'STORE_LOADED'

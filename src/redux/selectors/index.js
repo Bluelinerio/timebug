@@ -6,7 +6,8 @@ import {
   getFormData,
   getAwards,
   getUIState,
-  getCheckinState
+  getCheckinState,
+  getPersistState
 }                                                             from './rootReducer.selectors'
 import {
   // UNDETERMINED,
@@ -255,6 +256,12 @@ const stateForScreen = (state: any) => (screen: string) => getUIState(state).scr
  */
 const getCheckins = (state: any) => getCheckinState(state).checkins
 
+/**
+ * Persist Status
+ */
+
+const hasStoreLoaded = (state: any) => getPersistState(state).status === 'LOADED'
+
 const selectors = {
   getCms,
   sortedSteps,
@@ -296,7 +303,8 @@ const selectors = {
   statefullStepColors,
   overridePhaseColors,
   stateForScreen,
-  getCheckins
+  getCheckins,
+  hasStoreLoaded
 }
 
 export default selectors

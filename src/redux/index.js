@@ -10,6 +10,7 @@ import rootSaga                                                   from './rootSa
 import { rootReducer }                                            from './rootReducer'
 import { resetStore }                                             from './actions'
 import Reactotron                                                 from 'reactotron-react-native'
+import { storeHasLoaded }                                         from './actions/persist.actions'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const navigationMiddleware = createReactNavigationReduxMiddleware(
@@ -43,7 +44,9 @@ export default () => {
         applyMiddleware(logger, navigationMiddleware, thunk, sagaMiddleware)
       )
     )
-    const persistor = persistStore(store)
+    const persistor = persistStore(store, {}, () => {
+      store.dispatch(storeHasLoaded())
+    })
 
     sagaMiddleware.run(rootSaga)
 
@@ -60,7 +63,9 @@ export default () => {
       applyMiddleware(logger, navigationMiddleware, thunk, sagaMiddleware)
     )
   )
-  const persistor = persistStore(store)
+  const persistor = persistStore(store, {}, () => {
+    store.dispatch(storeHasLoaded())
+  })
 
   sagaMiddleware.run(rootSaga)
 
