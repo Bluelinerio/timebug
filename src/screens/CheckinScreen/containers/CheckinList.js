@@ -5,6 +5,10 @@ import {
   changeCheckin,
   toggleCheckin
 }                              from '../../../redux/actions/checkin.actions'
+import type {
+  CheckinChangePayload,
+  ToggleCheckinPayload
+}                              from '../../../redux/actions/checkin.actions'
 import { cancelNotifications } from '../../../redux/actions/notifications.actions'
 import selectors               from '../../../redux/selectors'
 import CheckinListComponent, {
@@ -12,10 +16,10 @@ import CheckinListComponent, {
 }                              from '../components/CheckinListComponent'
 
 type CheckinListDispatchProps = {
-  updateCheckin: any => any,
+  updateCheckin: CheckinChangePayload => any,
   linkNavigation: ({ link: string }) => any,
   cancelAllNotifications: () => any,
-  toggleNotification: ({ step: number, checkin?: any }) => any
+  toggleNotification: ToggleCheckinPayload => any
 }
 
 type CheckingListStateProps = {

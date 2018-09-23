@@ -79,7 +79,7 @@ function* watchForNotificationScheduling() {
     UPDATE_NOTIFICATION
   ])
   while (true) {
-    const action = yield take(channel)
+    const action: { payload: CreateNotificationPayload } = yield take(channel)
     yield call(scheduleNotification, action)
   }
 }
@@ -87,7 +87,7 @@ function* watchForNotificationScheduling() {
 function* watchForNotificationDeletion() {
   const channel = yield actionChannel(REMOVE_NOTIFICATION)
   while (true) {
-    const action = yield take(channel)
+    const action: { payload: RemoveNotificationPayload } = yield take(channel)
     yield call(removeNotification, action)
   }
 }

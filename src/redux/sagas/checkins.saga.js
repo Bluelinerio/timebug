@@ -33,6 +33,14 @@ import type {
 import selectors                from '../selectors'
 import { isStepCompleted }      from '../../services/cms'
 
+type StepWithUpdate = {
+  __action__: string,
+  checkin: any,
+  number: number,
+}
+
+type StepsWithNotificationUpdates = Array<StepWithUpdate>
+
 function* setUpNotificationAndUpdateCheckin({
   payload
 }: {
@@ -77,7 +85,7 @@ function* _setInitialNotifications() {
   const user = yield select(selectors.user)
   const checkins = yield select(selectors.getCheckins)
   if (user) {
-    const stepsWithUnsetNotifications = Object.values(steps).reduce(
+    const stepsWithUnsetNotifications: StepsWithNotificationUpdates = Object.values(steps).reduce(
       (allSteps, step) => {
         const shouldSetNotification =
           step.checkin &&
@@ -123,7 +131,7 @@ function* watchForInitialNotifications() {
 function* watchForCheckinsUpdate() {
   const channel = yield actionChannel(CHANGE_CHECKIN)
   while (true) {
-    const action = yield take(channel)
+    const action: { payload: CheckinChangePayload } = yield take(channel)
     yield call(setUpNotificationAndUpdateCheckin, action)
   }
 }
@@ -131,7 +139,7 @@ function* watchForCheckinsUpdate() {
 function* watchForCheckinsDeletion() {
   const channel = yield actionChannel(REMOVE_CHECKIN)
   while (true) {
-    const action = yield take(channel)
+    const action: { payload: DeleteCheckinPayload } = yield take(channel)
     yield call(handleRemoveCheckin, action)
   }
 }

@@ -164,7 +164,7 @@ export const phaseForStep = ({ number }) => {
 
 const _isStepCompleted = () => {
   const completionMap = {}
-  return (stepNumber: number, user: any) => {
+  return (stepNumber: number, user: any): boolean => {
     if (completionMap[`${stepNumber}`]) return completionMap[`${stepNumber}`]
     const { forms } = user
     const completed =

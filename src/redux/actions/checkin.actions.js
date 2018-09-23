@@ -14,7 +14,7 @@ export type CheckinActionPayload = {
   checkin: CheckinElement
 }
 
-type CheckinChangePayload = {
+export type CheckinChangePayload = {
   step: number,
   frequency: string,
   message: string

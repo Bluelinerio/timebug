@@ -14,7 +14,7 @@ export const frequencies = {
 }
 
 export type Frequency = DAILY | WEEKLY | BIWEEKLY | MONTHLY
-export const calculateNextCheckin = (frequency: Frequency) => {
+export const calculateNextCheckin = (frequency: Frequency): [string, number] => {
   const now = moment()
   switch (frequency) {
     case frequencies[DAILY]: {

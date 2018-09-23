@@ -8,6 +8,10 @@ import {
   BIWEEKLY,
   MONTHLY
 }                                                       from '../../../services/checkins'
+import type {
+  CheckinChangePayload,
+  ToggleCheckinPayload
+}                                                       from '../../../redux/actions/checkin.actions'
 import moment                                           from 'moment'
 import styles                                           from '../styles'
 
@@ -19,13 +23,13 @@ export type CheckinElementProps = {
   frequency: DAILY | WEEKLY | MONTHLY | BIWEEKLY,
   step: string,
   message: string,
-  onPress: any => any,
-  onLink: any => any,
-  onToggle: any => any,
+  onPress: CheckinChangePayload => any,
+  onLink: ({ link: string }) => any,
+  onToggle: ToggleCheckinPayload => any,
   id: string | null
 }
 
-const operateWithLastCheckin = (frequency: string, lastCheckin: string) => {
+const operateWithLastCheckin = (frequency: string, lastCheckin: string): string => {
   const lastCheckinMoment = moment(lastCheckin)
   switch (frequency) {
     case frequencies[DAILY]:
@@ -45,7 +49,7 @@ const operateWithLastCheckin = (frequency: string, lastCheckin: string) => {
 const operateCheckinDate = (
   frequency: string,
   lastCheckin: string | null = null
-) => {
+): string => {
   if (lastCheckin) return operateWithLastCheckin(frequency, lastCheckin)
   switch (frequency) {
     case frequencies[DAILY]:
