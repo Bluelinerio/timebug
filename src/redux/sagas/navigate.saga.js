@@ -11,9 +11,8 @@ import {
   journeyScreenDeepParams
 }                                       from '../actions/nav.actions'
 import type { LinkedNavigationPayload } from '../actions/nav.actions'
-import type, { Assignment }             from '../../services/cms'
 
-const handleUrl = link => {
+const handleUrl = (link: string): { screen: string, component: string, params: any } => {
   const [location, query] = link.split('?')
   const [screen, component] = location.split('/')
   const params = query.split('&').reduce((params, param) => {
@@ -30,7 +29,7 @@ const handleUrl = link => {
   }
 }
 
-const handleLink = (payload: any) => {
+const handleLink = (payload: { link: string }) => {
   const { link } = payload
   const { screen, component, params } = handleUrl(link)
   switch (screen) {

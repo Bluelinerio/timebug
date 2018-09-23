@@ -48,32 +48,6 @@ class NotificationService {
     })
   }
 
-  static localNotification(title: string, message: string) {
-    const notificationId = PushNotification.localNotification({
-      /* Android Only Properties */
-      autoCancel: true, // (optional) default: true
-      largeIcon: 'ic_launcher', // (optional) default: "ic_launcher"
-      smallIcon: 'ic_notification', // (optional) default: "ic_notification" with fallback for "ic_launcher"
-      bigText: 'You got a notification pending!', // (optional) default: "message" prop
-      vibrate: true, // (optional) default: true
-      vibration: 300, // vibration length in milliseconds, ignored if vibrate=false, default: 1000
-      ongoing: false, // (optional) set whether this is an "ongoing" notification
-
-      /* iOS only properties */
-      alertAction: 'view', // (optional) default: view
-      category: null, // (optional) default: null
-      userInfo: null, // (optional) default: null (object containing additional notification data)
-
-      /* iOS and Android properties */
-      title, // (optional)
-      message, // (required)
-      playSound: false, // (optional) default: true
-      soundName: 'default' // (optional) Sound to play when the notification is shown. Value of 'default' plays the default sound. It can be set to a custom sound such as 'android.resource://com.xyz/raw/my_sound'. It will look for the 'my_sound' audio file in 'res/raw' directory and play it. default: 'default' (default sound is played)
-    })
-
-    return notificationId
-  }
-
   // Time is on ISO8601 date and time
   static scheduleNotification(
     msg: string,
@@ -101,7 +75,7 @@ class NotificationService {
       /* iOS only properties */
       alertAction: 'view', // (optional) default: view
       category: null, // (optional) default: null
-      userInfo: null, // (optional) default: null (object containing additional notification data)
+      userInfo: id, // (optional) default: null (object containing additional notification data)
 
       /* iOS and Android properties */
       title, // (optional)
@@ -116,8 +90,8 @@ class NotificationService {
     return PushNotification.checkPermissions(cbk)
   }
 
-  static cancelNotif(id: number) {
-    PushNotification.cancelLocalNotifications({ id })
+  static cancelNotification(id: string) {
+    PushNotification.cancelLocalNotifications({ id: `${id}` })
   }
 
   static cancelAll() {

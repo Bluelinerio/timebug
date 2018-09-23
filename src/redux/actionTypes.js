@@ -68,6 +68,10 @@ export const CHANGE_CHECKIN = 'CHANGE_CHECKIN'
 
 export const UPDATE_CHECKIN = 'UPDATE_CHECKIN'
 
+export const REMOVE_CHECKIN = 'REMOVE_CHECKIN'
+
+export const DELETE_CHECKIN = 'DELETE_CHECKIN'
+
 /**
  * Notifications
  */

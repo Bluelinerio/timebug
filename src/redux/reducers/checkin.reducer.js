@@ -1,6 +1,16 @@
 //@flow
-import { CHANGE_CHECKIN, UPDATE_CHECKIN, CANCEL_ALL_NOTIFICATIONS } from '../actionTypes'
-import { CheckinActionPayload } from '../actions/checkin.actions'
+import {
+  CHANGE_CHECKIN,
+  UPDATE_CHECKIN,
+  CANCEL_ALL_NOTIFICATIONS,
+  DELETE_CHECKIN
+} from '../actionTypes'
+import {
+  CheckinActionPayload,
+  DeleteCheckinPayload
+} from '../actions/checkin.actions'
+
+import tron from 'reactotron-react-native'
 
 export type CheckinElement = {
   frequency: string,
@@ -15,7 +25,7 @@ export type CheckinElement = {
 
 type CheckinState = {
   checkins: {
-    [x: string]: CheckinElement,
+    [x: string]: CheckinElement
   }
 }
 
@@ -42,6 +52,22 @@ const handleChange = (state: CheckinState, payload: CheckinActionPayload) => {
   }
 }
 
+const handleDelete = (state: CheckinState, payload: DeleteCheckinPayload) => {
+  const { step } = payload
+  const { checkins } = state
+  const newCheckins = Object.keys(checkins).reduce((stateObj, key) => {
+    if (`${key}` === `${step}`) return stateObj
+    return {
+      ...stateObj,
+      [key]: checkins[key]
+    }
+  }, {})
+  return {
+    ...state,
+    checkins: newCheckins
+  }
+}
+
 const checkinReducer = (
   state: CheckinState = initialState,
   action: CheckinAction
@@ -49,7 +75,9 @@ const checkinReducer = (
   switch (action.type) {
     case UPDATE_CHECKIN:
       return handleChange(state, action.payload)
-    case CANCEL_ALL_NOTIFICATIONS: 
+    case DELETE_CHECKIN:
+      return handleDelete(state, action.payload)
+    case CANCEL_ALL_NOTIFICATIONS:
       return initialState
     default:
       return state
