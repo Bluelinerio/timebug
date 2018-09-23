@@ -10,8 +10,6 @@ import {
   DeleteCheckinPayload
 } from '../actions/checkin.actions'
 
-import tron from 'reactotron-react-native'
-
 export type CheckinElement = {
   frequency: string,
   lastCheckin: string,

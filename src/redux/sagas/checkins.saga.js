@@ -12,7 +12,8 @@ import { updateCheckin }        from '../actions/checkin.actions'
 import {
   CHANGE_CHECKIN,
   BUILD_NOTIFICATION_SET,
-  REMOVE_CHECKIN
+  REMOVE_CHECKIN,
+  TOGGLE_CHECKIN
 }                               from '../actionTypes'
 import { calculateNextCheckin } from '../../services/checkins'
 import {
@@ -26,12 +27,11 @@ import {
 }                               from '../actions/checkin.actions'
 import type {
   DeleteCheckinPayload,
-  CheckinChangePayload
+  CheckinChangePayload,
+  ToggleCheckinPayload
 }                               from '../actions/checkin.actions'
 import selectors                from '../selectors'
 import { isStepCompleted }      from '../../services/cms'
-
-import tron from 'reactotron-react-native'
 
 function* setUpNotificationAndUpdateCheckin({
   payload
@@ -53,6 +53,23 @@ function* setUpNotificationAndUpdateCheckin({
 function* handleRemoveCheckin({ payload }: DeleteCheckinPayload) {
   yield put(deleteCheckin(payload))
   yield put(removeNotification(payload))
+}
+
+function* toggleNotification({ payload }: ToggleCheckinPayload) {
+  const { checkin, step } = payload
+  const checkins = yield select(selectors.getCheckins)
+  const currentCheckin = checkins[`${step}`]
+  if (currentCheckin.id) {
+    yield put(
+      updateCheckin({
+        step,
+        checkin: { nextCheckin: null, id: null }
+      })
+    )
+    yield put(removeNotification({ step: `${step}` }))
+  } else {
+    yield put(changeCheckin({ ...checkin, step: `${step}` }))
+  }
 }
 
 function* _setInitialNotifications() {
@@ -89,7 +106,6 @@ function* _setInitialNotifications() {
       },
       []
     )
-    tron.log(stepsWithUnsetNotifications)
     for (const step of stepsWithUnsetNotifications) {
       const { checkin, number, __action__ } = step
       if (__action__ === 'change')
@@ -120,10 +136,15 @@ function* watchForCheckinsDeletion() {
   }
 }
 
+function* watchForNotificationToggling() {
+  yield takeLatest(TOGGLE_CHECKIN, toggleNotification)
+}
+
 export function* watchForCheckinsSaga() {
   // TODO: Set up permissions for IOS? it would probably be good to do it here
   // Disable both forks until the call to permissions is accepted
   yield fork(watchForCheckinsUpdate)
   yield fork(watchForCheckinsDeletion)
+  yield fork(watchForNotificationToggling)
   yield fork(watchForInitialNotifications)
 }

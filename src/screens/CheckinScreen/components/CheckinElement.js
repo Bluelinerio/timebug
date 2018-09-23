@@ -1,15 +1,15 @@
 //@flow
-import React                                    from 'react'
-import { View, Text, Picker, TouchableOpacity } from 'react-native'
+import React                                            from 'react'
+import { View, Text, Picker, TouchableOpacity, Switch } from 'react-native'
 import {
   frequencies,
   DAILY,
   WEEKLY,
   BIWEEKLY,
   MONTHLY
-}                                               from '../../../services/checkins'
-import moment                                   from 'moment'
-import styles                                   from '../styles'
+}                                                       from '../../../services/checkins'
+import moment                                           from 'moment'
+import styles                                           from '../styles'
 
 export type CheckinElementProps = {
   text: string,
@@ -19,8 +19,10 @@ export type CheckinElementProps = {
   frequency: DAILY | WEEKLY | MONTHLY | BIWEEKLY,
   step: string,
   message: string,
-  onPress: () => any,
-  onLink: () => any
+  onPress: any => any,
+  onLink: any => any,
+  onToggle: any => any,
+  id: string | null
 }
 
 const operateWithLastCheckin = (frequency: string, lastCheckin: string) => {
@@ -82,7 +84,9 @@ class CheckinElement extends React.PureComponent<CheckinElementProps> {
       onPress,
       onLink,
       step,
-      message
+      message,
+      onToggle,
+      id
     } = this.props
     const { frequency: localFrequency } = this.state
     return (
@@ -101,8 +105,20 @@ class CheckinElement extends React.PureComponent<CheckinElementProps> {
                 frequency !== localFrequency ? styles.changedDate : {}
               ]}
             >
-              {operateCheckinDate(localFrequency, lastCheckin)}
+              {!!id && operateCheckinDate(localFrequency, lastCheckin)}
             </Text>
+          </View>
+          <View>
+            <Switch
+              style={styles.centeredContainer}
+              onValueChange={() => {
+                onToggle({
+                  step,
+                  checkin: { frequency: localFrequency, message }
+                })
+              }}
+              value={!!id}
+            />
           </View>
         </View>
         <View style={styles.textContainer}>

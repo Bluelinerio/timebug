@@ -1,24 +1,32 @@
 // @flow
-import { takeLatest, fork, call, select, put, actionChannel, take } from 'redux-saga/effects'
-import { delay }                               from 'redux-saga'
-import selectors                               from '../selectors'
-import moment                                  from 'moment'
+import {
+  takeLatest,
+  fork,
+  call,
+  select,
+  put,
+  actionChannel,
+  take
+}                               from 'redux-saga/effects'
+import { delay }                from 'redux-saga'
+import selectors                from '../selectors'
+import moment                   from 'moment'
 import {
   CANCEL_ALL_NOTIFICATIONS,
   ON_NOTIFICATION,
   CREATE_NOTIFICATION,
   UPDATE_NOTIFICATION,
   REMOVE_NOTIFICATION
-}                                              from '../actionTypes'
-import NotificationService                     from '../../services/notifications'
-import { calculateNextCheckin }                from '../../services/checkins'
-import { updateCheckin }                       from '../actions/checkin.actions'
-import { linkNavigation }                      from '../actions/nav.actions'
+}                               from '../actionTypes'
+import NotificationService      from '../../services/notifications'
+import { calculateNextCheckin } from '../../services/checkins'
+import { updateCheckin }        from '../actions/checkin.actions'
+import { linkNavigation }       from '../actions/nav.actions'
 import type {
   CreateNotificationPayload,
   OnNotificationPayload,
   RemoveNotificationPayload
-}                                              from '../actions/notification.actions'
+}                               from '../actions/notification.actions'
 
 function* clearNotifications() {
   yield call(NotificationService.cancelAll)
@@ -51,19 +59,25 @@ function* onNotification({ payload }: { payload: OnNotificationPayload }) {
   const lastCheckin = moment()
   const [nextCheckin, _] = yield call(calculateNextCheckin, frequency)
   yield put(updateCheckin({ step: id, checkin: { lastCheckin, nextCheckin } }))
-  // TODO: add some delay before the transition
-  yield delay(1)  
+  yield delay(1)
   if (action.type === 'link')
     yield put(linkNavigation({ link: action.payload.link }))
 }
 
-function* removeNotification({payload}: { payload: RemoveNotificationPayload}) {
+function* removeNotification({
+  payload
+}: {
+  payload: RemoveNotificationPayload
+}) {
   const { step } = payload
   yield call(NotificationService.cancelNotification, `${step}`)
 }
 
 function* watchForNotificationScheduling() {
-  const channel = yield actionChannel([CREATE_NOTIFICATION, UPDATE_NOTIFICATION])
+  const channel = yield actionChannel([
+    CREATE_NOTIFICATION,
+    UPDATE_NOTIFICATION
+  ])
   while (true) {
     const action = yield take(channel)
     yield call(scheduleNotification, action)
@@ -85,6 +99,6 @@ function* watchForNotificationHelpers() {
   yield fork(watchForNotificationScheduling)
 }
 
-export function* watchForNotificationSaga() {  
+export function* watchForNotificationSaga() {
   yield fork(watchForNotificationHelpers)
 }

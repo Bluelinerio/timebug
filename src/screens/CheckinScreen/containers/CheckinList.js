@@ -1,7 +1,10 @@
 //@flow
 import { connect }             from 'react-redux'
 import { linkNavigation }      from '../../../redux/actions/nav.actions'
-import { changeCheckin }       from '../../../redux/actions/checkin.actions'
+import {
+  changeCheckin,
+  toggleCheckin
+}                              from '../../../redux/actions/checkin.actions'
 import { cancelNotifications } from '../../../redux/actions/notifications.actions'
 import selectors               from '../../../redux/selectors'
 import CheckinListComponent, {
@@ -9,9 +12,10 @@ import CheckinListComponent, {
 }                              from '../components/CheckinListComponent'
 
 type CheckinListDispatchProps = {
-  updateCheckin: () => any,
-  linkNavigation: () => any,
-  cancelAllNotifications: () => any
+  updateCheckin: any => any,
+  linkNavigation: ({ link: string }) => any,
+  cancelAllNotifications: () => any,
+  toggleNotification: ({ step: number, checkin?: any }) => any
 }
 
 type CheckingListStateProps = {
@@ -26,10 +30,10 @@ const mapStateToProps = (state: any): CheckingListStateProps => {
 }
 
 const mapDispatchToProps = (dispatch: () => any): CheckinListDispatchProps => ({
-  updateCheckin: (params: any) => dispatch(changeCheckin(params)),
-  linkNavigation: (params: { link: string }) =>
-    dispatch(linkNavigation(params)),
-  cancelAllNotifications: () => dispatch(cancelNotifications())
+  updateCheckin: params => dispatch(changeCheckin(params)),
+  linkNavigation: params => dispatch(linkNavigation(params)),
+  cancelAllNotifications: () => dispatch(cancelNotifications()),
+  toggleNotification: params => dispatch(toggleCheckin(params))
 })
 
 const mergeProps = (
@@ -40,7 +44,8 @@ const mergeProps = (
   const {
     updateCheckin,
     cancelAllNotifications,
-    linkNavigation
+    linkNavigation,
+    toggleNotification
   } = dispatchProps
 
   const handleLink = (payload: any) => {
@@ -66,6 +71,7 @@ const mergeProps = (
         {
           ...checkin,
           onLink: handleCheckinAction(checkin),
+          onToggle: toggleNotification,
           onPress: updateCheckin,
           step: key
         }

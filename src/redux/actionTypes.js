@@ -51,12 +51,12 @@ export const LOAD_AWARD_VALUE = 'LOAD_AWARD_VALUE'
  * Modal
  */
 
- export const OPEN_MODAL = 'OPEN_MODAL'
- export const CLOSE_MODAL = 'CLOSE_MODAL'
+export const OPEN_MODAL = 'OPEN_MODAL'
+export const CLOSE_MODAL = 'CLOSE_MODAL'
 
- /**
-  * UI
-  */
+/**
+ * UI
+ */
 
 export const CHANGE_UI_STATUS = 'CHANGE_UI_STATUS'
 export const RESET_UI_STATUS = 'RESET_UI_STATUS'
@@ -72,6 +72,8 @@ export const REMOVE_CHECKIN = 'REMOVE_CHECKIN'
 
 export const DELETE_CHECKIN = 'DELETE_CHECKIN'
 
+export const TOGGLE_CHECKIN = 'TOGGLE_CHECKIN'
+
 /**
  * Notifications
  */
@@ -82,7 +84,7 @@ export const REMOVE_NOTIFICATION = 'REMOVE_NOTIFICATION'
 export const UPDATE_NOTIFICATION = 'UPDATE_NOTIFICATION'
 
 export const CANCEL_ALL_NOTIFICATIONS = 'CANCEL_ALL_NOTIFICATIONS'
- 
+
 export const BUILD_NOTIFICATION_SET = 'BUILD_NOTIFICATION_SET'
 
 export const ON_NOTIFICATION = 'ON_NOTIFICATION'
