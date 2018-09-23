@@ -41,9 +41,6 @@ function* seedCMS() {
       meditations
     }
   })
-  yield put({
-    type: SET_NOTIFICATIONS
-  })
 }
 
 function* _fetchCms() {

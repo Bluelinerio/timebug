@@ -6,40 +6,48 @@ import {
   actionChannel,
   call,
   put,
-  select
-}                               from 'redux-saga/effects'
-import { updateCheckin }        from '../actions/checkin.actions'
+  select,
+  race
+}                                    from 'redux-saga/effects'
+import { updateCheckin }             from '../actions/checkin.actions'
 import {
   CHANGE_CHECKIN,
   BUILD_NOTIFICATION_SET,
   REMOVE_CHECKIN,
   TOGGLE_CHECKIN
-}                               from '../actionTypes'
-import { calculateNextCheckin } from '../../services/checkins'
+}                                    from '../actionTypes'
+import { GET_USER }                  from '../actions/user.actions'
+import { FETCH_CMS }                 from '../actions/cms.actions'
+import { calculateNextCheckin }      from '../../services/checkins'
 import {
   createNotification,
   removeNotification
-}                               from '../actions/notifications.actions'
+}                                    from '../actions/notifications.actions'
 import {
   changeCheckin,
   deleteCheckin,
   removeCheckin
-}                               from '../actions/checkin.actions'
+}                                    from '../actions/checkin.actions'
 import type {
   DeleteCheckinPayload,
   CheckinChangePayload,
   ToggleCheckinPayload
-}                               from '../actions/checkin.actions'
-import selectors                from '../selectors'
-import { isStepCompleted }      from '../../services/cms'
+}                                    from '../actions/checkin.actions'
+import selectors                     from '../selectors'
+import { isStepCompleted }           from '../../services/cms'
+import { timeoutNoError as timeout } from '../utils/sagaHelpers'
 
 type StepWithUpdate = {
   __action__: string,
   checkin: any,
-  number: number,
+  number: number
 }
 
 type StepsWithNotificationUpdates = Array<StepWithUpdate>
+
+function* _watchForInitialNotificationsHold() {
+  yield take([GET_USER.SUCCEEDED, FETCH_CMS.SUCCEEDED])
+}
 
 function* setUpNotificationAndUpdateCheckin({
   payload
@@ -85,35 +93,38 @@ function* _setInitialNotifications() {
   const user = yield select(selectors.user)
   const checkins = yield select(selectors.getCheckins)
   if (user) {
-    const stepsWithUnsetNotifications: StepsWithNotificationUpdates = Object.values(steps).reduce(
-      (allSteps, step) => {
-        const shouldSetNotification =
-          step.checkin &&
-          !checkins[step.number] &&
-          isStepCompleted(step.number, user)
-        if (shouldSetNotification) {
-          return [
-            ...allSteps,
-            {
-              ...step,
-              __action__: 'change'
-            }
-          ]
-        }
-        const shouldBeRemoved = !step.checkin && checkins[step.number]
-        if (shouldBeRemoved) {
-          return [
-            ...allSteps,
-            {
-              ...step,
-              __action__: 'remove'
-            }
-          ]
-        }
-        return allSteps
-      },
-      []
-    )
+    yield race({
+      request: call(_watchForInitialNotificationsHold),
+      timeout: call(timeout, 5000)
+    })
+    const stepsWithUnsetNotifications: StepsWithNotificationUpdates = Object.values(
+      steps
+    ).reduce((allSteps, step) => {
+      const shouldSetNotification =
+        step.checkin &&
+        !checkins[step.number] &&
+        isStepCompleted(step.number, user)
+      if (shouldSetNotification) {
+        return [
+          ...allSteps,
+          {
+            ...step,
+            __action__: 'change'
+          }
+        ]
+      }
+      const shouldBeRemoved = !step.checkin && checkins[step.number]
+      if (shouldBeRemoved) {
+        return [
+          ...allSteps,
+          {
+            ...step,
+            __action__: 'remove'
+          }
+        ]
+      }
+      return allSteps
+    }, [])
     for (const step of stepsWithUnsetNotifications) {
       const { checkin, number, __action__ } = step
       if (__action__ === 'change')
