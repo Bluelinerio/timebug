@@ -2,23 +2,31 @@
 import {
   CHANGE_CHECKIN,
   UPDATE_CHECKIN,
-  BUILD_NOTIFICATION_SET
-}                         from '../actionTypes'
-import { CheckinElement } from '../reducers/checkin.reducer'
+  BUILD_NOTIFICATION_SET,
+  REMOVE_CHECKIN,
+  DELETE_CHECKIN,
+  TOGGLE_CHECKIN
+}                              from '../actionTypes'
+import type { CheckinElement } from '../reducers/checkin.reducer'
 
 export type CheckinActionPayload = {
   step: string,
   checkin: CheckinElement
 }
 
-type CheckinChangePayload = {
+export type CheckinChangePayload = {
   step: number,
   frequency: string,
   message: string
 }
 
-type CheckinInitialNotifications = {
-  steps: any
+export type DeleteCheckinPayload = {
+  step: string
+}
+
+export type ToggleCheckinPayload = {
+  step: string,
+  checkin?: CheckinChangePayload
 }
 
 export const changeCheckin = (payload: CheckinChangePayload) => ({
@@ -31,7 +39,21 @@ export const updateCheckin = (payload: CheckinActionPayload) => ({
   payload
 })
 
-export const initialNotifications = (payload: CheckinInitialNotifications) => ({
-  type: BUILD_NOTIFICATION_SET,
+export const initialNotifications = () => ({
+  type: BUILD_NOTIFICATION_SET
+})
+
+export const removeCheckin = (payload: DeleteCheckinPayload) => ({
+  type: REMOVE_CHECKIN,
+  payload
+})
+
+export const deleteCheckin = (payload: DeleteCheckinPayload) => ({
+  type: DELETE_CHECKIN,
+  payload
+})
+
+export const toggleCheckin = (payload: ToggleCheckinPayload) => ({
+  type: TOGGLE_CHECKIN,
   payload
 })

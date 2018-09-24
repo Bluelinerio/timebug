@@ -10,12 +10,29 @@ import rootSaga                                                   from './rootSa
 import { rootReducer }                                            from './rootReducer'
 import { resetStore }                                             from './actions'
 import Reactotron                                                 from 'reactotron-react-native'
+import { storeHasLoaded }                                         from './actions/persist.actions'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const navigationMiddleware = createReactNavigationReduxMiddleware(
   'root',
   state => state.nav
 )
+
+const logger = store => next => action => {
+  Reactotron.display({
+    name: 'action',
+    preview: action.type,
+    value: action.payload
+  })
+  const result = next(action)
+  Reactotron.display({
+    name: 'store',
+    preview: action.type,
+    value: store.getState()
+  })
+  return result
+}
+
 export default () => {
   const sagaMiddleware = createSagaMiddleware()
   if (__DEV__) {
@@ -24,10 +41,12 @@ export default () => {
       composeEnhancers(
         reduxReset(resetStore.type), // Set action.type here
         applyAppStateListener(),
-        applyMiddleware(navigationMiddleware, thunk, sagaMiddleware)
+        applyMiddleware(logger, navigationMiddleware, thunk, sagaMiddleware)
       )
     )
-    const persistor = persistStore(store)
+    const persistor = persistStore(store, {}, () => {
+      store.dispatch(storeHasLoaded())
+    })
 
     sagaMiddleware.run(rootSaga)
 
@@ -41,10 +60,12 @@ export default () => {
     composeEnhancers(
       reduxReset(resetStore.type), // Set action.type here
       applyAppStateListener(),
-      applyMiddleware(navigationMiddleware, thunk, sagaMiddleware)
+      applyMiddleware(logger, navigationMiddleware, thunk, sagaMiddleware)
     )
   )
-  const persistor = persistStore(store)
+  const persistor = persistStore(store, {}, () => {
+    store.dispatch(storeHasLoaded())
+  })
 
   sagaMiddleware.run(rootSaga)
 

@@ -6,8 +6,8 @@ import { initialNotifications }                   from '../actions/checkin.actio
 import { refreshCMS }                             from '../../services/contentful'
 import { request }                                from '../../Modules/redux-saga-request'
 import { headerBackgrounds }                      from '../../resources/images'
-let staticCms = require('../../static/cms.json')
-const meditations = require('../../static/Meditations.json')
+import staticCms                                  from '../../static/cms.json'
+import meditations                                from '../../static/Meditations.json'
 
 const stepWithLocalImage = step => ({
   ...step,
@@ -41,28 +41,18 @@ function* seedCMS() {
       meditations
     }
   })
-  yield put({
-    type: SET_NOTIFICATIONS,
-    payload: {
-      ...staticCms
-    }
-  })
 }
 
 function* _fetchCms() {
-  let { payload: cms } = yield request(FETCH_CMS, refresh)
+  const { payload: cms } = yield request(FETCH_CMS, refresh)
   if (!cms.error)
     yield put({
-      type: SET_NOTIFICATIONS,
-      payload: {
-        steps: cms.steps
-      }
+      type: SET_NOTIFICATIONS
     })
 }
 
-function* _setUpInitialNotifications({ payload }) {
-  const { steps } = payload
-  yield put(initialNotifications({ steps }))
+function* _setUpInitialNotifications() {
+  yield put(initialNotifications())
 }
 
 function* watchForInitialNotifications() {

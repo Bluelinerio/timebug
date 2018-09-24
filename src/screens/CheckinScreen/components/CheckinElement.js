@@ -1,28 +1,56 @@
 //@flow
-import React                                    from 'react'
-import { View, Text, Picker, TouchableOpacity } from 'react-native'
+import React                                            from 'react'
+import { View, Text, Picker, TouchableOpacity, Switch } from 'react-native'
 import {
   frequencies,
   DAILY,
   WEEKLY,
   BIWEEKLY,
   MONTHLY
-}                                               from '../../../services/checkins'
-import moment                                   from 'moment'
-import styles                                   from '../styles'
+}                                                       from '../../../services/checkins'
+import type {
+  CheckinChangePayload,
+  ToggleCheckinPayload
+}                                                       from '../../../redux/actions/checkin.actions'
+import moment                                           from 'moment'
+import styles                                           from '../styles'
 
 export type CheckinElementProps = {
   text: string,
   title: string,
   lastCheckin: string,
+  nextCheckin: string,
   frequency: DAILY | WEEKLY | MONTHLY | BIWEEKLY,
   step: string,
-  onPress: () => any,
-  onLink: () => any
+  message: string,
+  onPress: CheckinChangePayload => any,
+  onLink: ({ link: string }) => any,
+  onToggle: ToggleCheckinPayload => any,
+  id: string | null
 }
 
-const operateCheckinDate = (frequency, lastCheckin) => {
+const operateWithLastCheckin = (frequency: string, lastCheckin: string): string => {
   const lastCheckinMoment = moment(lastCheckin)
+  switch (frequency) {
+    case frequencies[DAILY]:
+      return lastCheckinMoment.add(1, 'd').format('MM-DD-YY')
+    case frequencies[WEEKLY]:
+      return lastCheckinMoment.add(1, 'w').format('MM-DD-YY')
+    case frequencies[BIWEEKLY]:
+      return lastCheckinMoment
+        .add(3, 'd')
+        .add('12', 'h')
+        .format('MM-DD-YY')
+    case frequencies[MONTHLY]:
+      return lastCheckinMoment.add(1, 'M').format('MM-DD-YY')
+  }
+}
+
+const operateCheckinDate = (
+  frequency: string,
+  lastCheckin: string | null = null
+): string => {
+  if (lastCheckin) return operateWithLastCheckin(frequency, lastCheckin)
   switch (frequency) {
     case frequencies[DAILY]:
       return moment()
@@ -41,8 +69,6 @@ const operateCheckinDate = (frequency, lastCheckin) => {
       return moment()
         .add(1, 'M')
         .format('MM-DD-YY')
-    default:
-      return lastCheckinMoment.format('MM-DD-YY')
   }
 }
 
@@ -61,7 +87,10 @@ class CheckinElement extends React.PureComponent<CheckinElementProps> {
       frequency,
       onPress,
       onLink,
-      step
+      step,
+      message,
+      onToggle,
+      id
     } = this.props
     const { frequency: localFrequency } = this.state
     return (
@@ -80,8 +109,20 @@ class CheckinElement extends React.PureComponent<CheckinElementProps> {
                 frequency !== localFrequency ? styles.changedDate : {}
               ]}
             >
-              {operateCheckinDate(localFrequency, lastCheckin)}
+              {!!id && operateCheckinDate(localFrequency, lastCheckin)}
             </Text>
+          </View>
+          <View>
+            <Switch
+              style={styles.centeredContainer}
+              onValueChange={() => {
+                onToggle({
+                  step,
+                  checkin: { frequency: localFrequency, message }
+                })
+              }}
+              value={!!id}
+            />
           </View>
         </View>
         <View style={styles.textContainer}>
@@ -104,7 +145,9 @@ class CheckinElement extends React.PureComponent<CheckinElementProps> {
           </View>
           <View style={styles.container}>
             <TouchableOpacity
-              onPress={() => onPress({ step, frequency: localFrequency })}
+              onPress={() =>
+                onPress({ step, frequency: localFrequency, message })
+              }
               disabled={frequency === localFrequency}
               style={[styles.centeredContainer]}
             >

@@ -9,27 +9,27 @@ import {
   select,
   takeLatest,
   race
-}                             from 'redux-saga/effects'
-import { delay }              from 'redux-saga'
+}                               from 'redux-saga/effects'
+import { delay }                from 'redux-saga'
 import {
   createForm,
   updateForm,
   resetUserSteps,
   deleteForm
-}                             from '../../services/apollo'
-import type { UpdateormArgs } from '../../services/apollo/models'
+}                               from '../../services/apollo'
+import type { UpdateormArgs }   from '../../services/apollo/models'
 import {
   SYNC_FORM_DATA,
   RESET_FORMS_REQUEST,
   RESET_FORMS,
   START_LOADING_FORMDATA,
   STOP_LOADING_FORMDATA
-}                             from '../actionTypes'
+}                               from '../actionTypes'
 import {
   GET_USER,
   updateUser,
   resetUserSteps as resetAction
-}                             from '../actions/user.actions'
+}                               from '../actions/user.actions'
 import {
   incrementFormDataQueue,
   decrementFormDataQueue,
@@ -37,20 +37,22 @@ import {
   setNotLoadingFormData,
   stopLoadingFormData,
   startLoadingFormData
-}                             from '../actions/formData.actions'
-import selectors              from '../selectors'
-import { diffObjs }           from '../utils/diffObjs'
-import tron                   from 'reactotron-react-native'
+}                               from '../actions/formData.actions'
+import selectors                from '../selectors'
+import { diffObjs }             from '../utils/diffObjs'
+import { initialNotifications } from '../actions/checkin.actions'
+import tron                     from 'reactotron-react-native'
 
 export const UPDATE_AND_CREATE_FORMS = 'UPDATE_AND_CREATE_FORMS'
 
-const log = payload => tron.display({
-  name: 'FormData Saga',
-  preview: 'FormData',
-  value: payload
-})
+const log = payload =>
+  tron.display({
+    name: 'FormData Saga',
+    preview: 'FormData',
+    value: payload
+  })
 
-const range = (start: number, end: number) : Array<number> =>
+const range = (start: number, end: number): Array<number> =>
   Array(end - start)
     .fill()
     .map((v, i) => i + start)
@@ -397,6 +399,8 @@ function* syncRequests(payload) {
     // const finalUser = yield call(removeRepeatedForms, _user)
     yield putResolve(updateUser(_user))
   }
+
+  yield put(initialNotifications())
 
   yield putResolve(decrementFormDataQueue())
   const formDataRequestCount = yield select(

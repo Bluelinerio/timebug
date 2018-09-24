@@ -162,6 +162,29 @@ export const phaseForStep = ({ number }) => {
   }
 }
 
+const _isStepCompleted = () => {
+  const completionMap = {}
+  return (stepNumber: number, user: any): boolean => {
+    if (completionMap[`${stepNumber}`]) return completionMap[`${stepNumber}`]
+    const { forms } = user
+    const completed =
+      forms &&
+      forms.find(form => {
+        if (!completionMap[`${form.stepId}`])
+          completionMap[`${form.stepId}`] = true
+        const value = `${form.stepId}` === `${stepNumber}`
+        return value
+      })
+        ? true
+        : false
+    if (!completionMap[`${stepNumber}`])
+      completionMap[`${stepNumber}`] = completed
+    return completed
+  }
+}
+
+export const isStepCompleted = _isStepCompleted()
+
 const getColorStartAtStepIndex = (step: number, colors: Colors) =>
   colors.steps[step + 1]
 const getNextPhaseColorForStepAtIndex = (step: number, colors: Colors) =>
