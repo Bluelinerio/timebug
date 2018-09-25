@@ -23,7 +23,8 @@ import {
   RESET_FORMS_REQUEST,
   RESET_FORMS,
   START_LOADING_FORMDATA,
-  STOP_LOADING_FORMDATA
+  STOP_LOADING_FORMDATA,
+  SYNC_FINISHED
 }                               from '../actionTypes'
 import {
   GET_USER,
@@ -36,7 +37,8 @@ import {
   setLoadingFormData,
   setNotLoadingFormData,
   stopLoadingFormData,
-  startLoadingFormData
+  startLoadingFormData,
+  restoreFormData
 }                               from '../actions/formData.actions'
 import selectors                from '../selectors'
 import { diffObjs }             from '../utils/diffObjs'
@@ -44,6 +46,10 @@ import { initialNotifications } from '../actions/checkin.actions'
 import tron                     from 'reactotron-react-native'
 
 export const UPDATE_AND_CREATE_FORMS = 'UPDATE_AND_CREATE_FORMS'
+
+/**
+ * Helpers
+ */
 
 const log = payload =>
   tron.display({
@@ -122,6 +128,58 @@ function* removeRepeatedForms(user) {
   }
 }
 
+/**
+ * End Helpers
+ */
+
+/**
+ * Sagas
+ */
+
+function* timeout(duration = 5000) {
+  yield call(delay, duration)
+  throw new Error('Timeout')
+}
+
+function* watchForStopFormData() {
+  yield take(STOP_LOADING_FORMDATA)
+}
+
+function* _handleReset() {
+  const userId = yield select(selectors.userId)
+  try {
+    const data = yield call(resetUserSteps, userId)
+    log({
+      data
+    })
+    yield putResolve({
+      type: RESET_FORMS
+    })
+    yield putResolve(resetAction())
+  } catch (error) {
+    if (__DEV__) throw error
+  }
+}
+
+function* raceLoadingForm() {
+  try {
+    yield put(setLoadingFormData())
+    const result = yield race({
+      request: call(watchForStopFormData),
+      timeout: call(timeout, 8000)
+    })
+    log({
+      result
+    })
+  } catch (error) {
+    log({
+      error
+    })
+  } finally {
+    yield put(setNotLoadingFormData())
+  }
+}
+
 function* reviewCurrentUserFormsAndFormDataCompareAndUpdateToState() {
   yield put(startLoadingFormData())
 
@@ -163,6 +221,7 @@ function* reviewCurrentUserFormsAndFormDataCompareAndUpdateToState() {
 
   if (!difference && !onlyOnLeft && deletable.length === 0) {
     yield put(stopLoadingFormData())
+    yield put({ type: SYNC_FINISHED })
     log({
       info:
         'Completed reviewing differences between form data and user forms. No sync is needed'
@@ -222,81 +281,6 @@ function* reviewCurrentUserFormsAndFormDataCompareAndUpdateToState() {
       deletes
     }
   })
-}
-
-function* _handleReset() {
-  const userId = yield select(selectors.userId)
-  try {
-    const data = yield call(resetUserSteps, userId)
-    log({
-      data
-    })
-    yield putResolve({
-      type: RESET_FORMS
-    })
-    yield putResolve(resetAction())
-  } catch (error) {
-    if (__DEV__) throw error
-  }
-}
-
-function* timeout(duration = 5000) {
-  yield call(delay, duration)
-  throw new Error('Timeout')
-}
-
-function* watchForStopFormData() {
-  yield take(STOP_LOADING_FORMDATA)
-}
-
-function* raceLoadingForm() {
-  try {
-    yield put(setLoadingFormData())
-    const result = yield race({
-      request: call(watchForStopFormData),
-      timeout: call(timeout, 8000)
-    })
-    log({
-      result
-    })
-  } catch (error) {
-    log({
-      error
-    })
-  } finally {
-    yield put(setNotLoadingFormData())
-  }
-}
-
-function* watchForLoadingForm() {
-  const startChan = yield actionChannel(START_LOADING_FORMDATA)
-  yield takeLatest(startChan, raceLoadingForm)
-}
-
-function* watchForResetSteps() {
-  yield takeLatest(RESET_FORMS_REQUEST, _handleReset)
-}
-
-function* watchForUpdateOrCreate() {
-  while (true) {
-    const { payload } = yield take(UPDATE_AND_CREATE_FORMS)
-    if (payload && (payload.updates || payload.creates)) {
-      yield fork(syncRequests, payload)
-      yield delay(5000)
-    }
-  }
-}
-
-export function* watchSyncFormData() {
-  // here the assumptions is that the formData reducer will always Hydrate before the GET_USER action return, becuase we never
-  const requestChan = yield actionChannel([GET_USER.SUCCEEDED, SYNC_FORM_DATA])
-  yield fork(watchForResetSteps)
-  yield fork(watchForUpdateOrCreate)
-  yield fork(watchForLoadingForm)
-  while (true) {
-    yield take(requestChan)
-    yield fork(reviewCurrentUserFormsAndFormDataCompareAndUpdateToState)
-  }
 }
 
 function* syncRequests(payload) {
@@ -402,6 +386,8 @@ function* syncRequests(payload) {
 
   yield put(initialNotifications())
 
+  yield put({ type: SYNC_FINISHED })
+
   yield putResolve(decrementFormDataQueue())
   const formDataRequestCount = yield select(
     state => state.formData.requestCount
@@ -420,6 +406,69 @@ function* syncRequests(payload) {
     log({
       info: 'Completed synching differences between form data and user forms.'
     })
+  }
+}
+
+function* _handleSyncFinished() {
+  const { completedFormsData, formData } = yield call(mySelectors, {
+    completedFormsData: selectors.completedFormsData,
+    formData: selectors.formData
+  })
+
+  const forms = Object.keys(completedFormsData).reduce((formObj, key) => {
+    const currentFormData = formData[key] || {}
+    const currentUserForm = completedFormsData[key]
+
+    const { difference, onlyOnLeft } = diffObjs(
+      removeAllKeyButStepIds(currentUserForm),
+      removeAllKeyButStepIds(currentFormData)
+    )
+
+    if (!difference && !onlyOnLeft) return formObj
+    return {
+      ...formObj,
+      [key]: {
+        ...currentUserForm
+      }
+    }
+  }, {})
+
+  if (Object.keys(forms).length > 0) yield put(restoreFormData({ forms }))
+}
+
+function* watchForLoadingForm() {
+  const startChan = yield actionChannel(START_LOADING_FORMDATA)
+  yield takeLatest(startChan, raceLoadingForm)
+}
+
+function* watchForResetSteps() {
+  yield takeLatest(RESET_FORMS_REQUEST, _handleReset)
+}
+
+function* watchForUpdateOrCreate() {
+  while (true) {
+    const { payload } = yield take(UPDATE_AND_CREATE_FORMS)
+    if (payload && (payload.updates || payload.creates)) {
+      yield fork(syncRequests, payload)
+      yield delay(5000)
+    }
+  }
+}
+
+function* watchForSynchronizationFinished() {
+  yield takeLatest(SYNC_FINISHED, _handleSyncFinished)
+}
+
+export function* watchSyncFormData() {
+  // here the assumptions is that the formData reducer will always Hydrate before the GET_USER action return, becuase we never
+  const requestChan = yield actionChannel([GET_USER.SUCCEEDED, SYNC_FORM_DATA])
+  yield fork(watchForResetSteps)
+  yield fork(watchForSynchronizationFinished)
+  yield fork(watchForUpdateOrCreate)
+  yield fork(watchForLoadingForm)
+  while (true) {
+    yield take(requestChan)
+    yield fork(reviewCurrentUserFormsAndFormDataCompareAndUpdateToState)
   }
 }
 
