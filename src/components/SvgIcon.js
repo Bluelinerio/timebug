@@ -1,7 +1,7 @@
 //@flow
-import React from 'react'
+import React   from 'react'
 import SvgIcon from 'react-native-svg-icon'
-import svgs from '../resources/images/svgIcons'
+import svgs    from '../resources/images/svgIcons'
 
 export type IconProps = {
     name: string,

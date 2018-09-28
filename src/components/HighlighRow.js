@@ -1,6 +1,6 @@
 // @flow
-import * as React from 'react'
-import LinearGradient from 'react-native-linear-gradient'
+import * as React              from 'react'
+import LinearGradient          from 'react-native-linear-gradient'
 import { whiteGradientColors } from '../constants/colors'
 
 type Props = {

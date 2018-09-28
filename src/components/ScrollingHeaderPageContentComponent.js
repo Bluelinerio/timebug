@@ -1,14 +1,14 @@
 //@flow
-import * as React from 'react'
+import * as React        from 'react'
 import {
   View,
   Text,
   StatusBar,
   StyleSheet
-} from 'react-native'
-import { deepBlue } from '../constants/colors'
-import Markdown from '../Modules/Markdown'
-import normalize from '../utils/normalizeText'
+}                        from 'react-native'
+import { deepBlue }      from '../constants/colors'
+import Markdown          from '../Modules/Markdown'
+import normalize         from '../utils/normalizeText'
 import SimpleColorButton from './SimpleColorButton'
 
 type Props = {
@@ -20,7 +20,7 @@ type Props = {
   titleColor: string,
   button: {
     title: string,
-    onPress: () => void  
+    onPress: () => void
   },
   children: React.Node | [React.Node]
 }

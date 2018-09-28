@@ -18,8 +18,10 @@ const StyledImageBackground = glamorous(ImageBackground)({
   borderRadius: 6
 });
 
-export default ({ style, children, ...props }: Props) => (
+const TouchableRoundedImage = ({ style, children, ...props }: Props) => (
   <TouchableOpacity style={style}>
     <StyledImageBackground {...props}>{children}</StyledImageBackground>
   </TouchableOpacity>
 );
+
+export default TouchableRoundedImage

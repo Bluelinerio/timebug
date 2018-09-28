@@ -1,8 +1,9 @@
-import * as React from 'react'
+import * as React                         from 'react'
 import { StyleSheet, Dimensions, Slider } from 'react-native'
+
 // react-native-slider is reall slow and buggy. probably not a good idea to use it right now.
-// import { StyleSheet, Dimensions } from 'react-native'
-// import Slider from 'react-native-slider'
+// import { StyleSheet, Dimensions }      from 'react-native'
+// import Slider                          from 'react-native-slider'
 
 const StyledSlider = ({
   color,
