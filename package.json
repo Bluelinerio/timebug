@@ -11,6 +11,7 @@
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
     "format": "prettier-eslint \"src/**/*.js\" --write --single-quote ",
+    "test": "jest ./tests",
     "build-e2e:ios": "detox build -c ios.sim.debug",
     "test-e2e:ios": "detox test -c ios.sim.debug -l verbose",
     "build-e2e:android": "yarn clean:android && detox build -c android.emu.debug",
@@ -95,13 +96,18 @@
     "babel-register": "^6.11.6",
     "detox": "^5.10.0",
     "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0",
     "eslint": "^4.18.1",
     "eslint-plugin-react": "^7.7.0",
     "flow-bin": "^0.69.0",
     "jest": "^23.6.0",
+    "jest-serializer-enzyme": "^1.0.0",
+    "jest-static-stubs": "^0.0.1",
     "mocha": "^3.5.3",
     "prettier-eslint": "^8.8.1",
     "prettier-eslint-cli": "^4.7.1",
+    "react-addons-test-utils": "^15.6.2",
+    "react-dom": "^16.5.2",
     "react-native-version": "^2.4.1",
     "react-test-renderer": "16.0.0-alpha.6",
     "reactotron-react-native": "^2.0.0-alpha.1",
@@ -111,6 +117,12 @@
   "rnpm": {
     "assets": [
       "./src/resources"
+    ]
+  },
+  "jest": {
+    "preset": "react-native",
+    "snapshotSerializers": [
+      "./node_modules/jest-serializer-enzyme"
     ]
   },
   "detox": {
