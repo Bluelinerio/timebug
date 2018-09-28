@@ -153,7 +153,7 @@ android {
             applicationIdSuffix ".debug"
         }
         releaseStaging {
-            buildConfigField "String", "CODEPUSH_KEY", '"XdDuwzoP5l3oE4h4_3GeHlacDZiUSkZ5pfmSz"'
+            buildConfigField "String", "CODEPUSH_KEY", '"7019bffd-dffd-4dce-8796-497c14800c3f"'
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
             applicationIdSuffix ".staging"
