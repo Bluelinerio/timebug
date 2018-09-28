@@ -132,12 +132,12 @@ android {
             }
         }
         releaseStaging {
-            if (System.getenv()["CI"]) { // CI=true is exported by Nevercode
+            if (System.getenv()["CI"] == 'true') { // CI=true is exported by Nevercode
                 storeFile file(System.getenv()["NC_STAGING_KEYSTORE_PATH"])
                 storePassword System.getenv()["NC_STAGING_KEYSTORE_PASSWORD"]
                 keyAlias System.getenv()["NC_STAGING_KEY_ALIAS"]
                 keyPassword System.getenv()["NC_STAGING_KEY_PASSWORD"]
-            } else if( project.hasProperty("RELEASE_STAGING_STORE_FILE") ) {
+            } else if (project.hasProperty("RELEASE_STAGING_STORE_FILE") && RELEASE_STAGING_STORE_FILE != 'null' ) {
                 storeFile file(RELEASE_STAGING_STORE_FILE)
                 storePassword RELEASE_STAGING_STORE_PASSWORD
                 keyAlias RELEASE_STAGING_KEY_ALIAS
@@ -157,7 +157,7 @@ android {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
             applicationIdSuffix ".staging"
-            signingConfig signingConfigs.releaseStaging
+            // signingConfig signingConfigs.releaseStaging
         }
         release {
             buildConfigField "String", "CODEPUSH_KEY", '"Ub70pK-b7j5X_PH-q032vxOTuocyBybq6fXrG"'

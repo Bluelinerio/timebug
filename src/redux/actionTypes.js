@@ -40,6 +40,10 @@ export const RESET_FORMS = 'RESET_FORMS'
 
 export const ON_APP_LOADED = 'ON_APP_LOADED'
 
+export const SYNC_FINISHED = 'SYNC_FINISHED'
+
+export const RESTORE_FORM_DATA = 'RESTORE_FORM_DATA'
+
 /**
  * Awards
  */
