@@ -42,7 +42,7 @@ buck-out/
 .gradle
 local.properties
 *.iml
-#*.keystore
+*.keystore
 android/app/build/
 android/build/generated/
 android/build/intermediates/
