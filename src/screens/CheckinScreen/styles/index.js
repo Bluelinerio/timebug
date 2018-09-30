@@ -41,7 +41,7 @@ export default StyleSheet.create({
   checkinTopContainer: {
     flex: 2,
     flexDirection: 'row',
-    backgroundColor: 'red',
+    backgroundColor: azure,
     borderTopLeftRadius: 6,
     borderTopRightRadius: 6
   },
