@@ -86,13 +86,16 @@ def enableProguardInReleaseBuilds = false
 
 android {
     compileSdkVersion 27
-    buildToolsVersion "23.0.1"
+    buildToolsVersion '27.0.2'
 
     defaultConfig {
         applicationId "io.lifevision"
         minSdkVersion 19
         targetSdkVersion 27
         versionCode 37
+
+        testBuildType System.getProperty('testBuildType', 'debug')  //this will later be used to control the test apk build type
+        missingDimensionStrategy "minReactNative", "minReactNative46" //read note
         
         //REQUIRED FOR DETOX DO NOT REMOVE
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -105,9 +108,9 @@ android {
     ext {
         googlePlayServicesVersion = "15.0.1" // default: "+"
         compileSdkVersion = 27
-        buildToolsVersion = "23.0.1"
+        buildToolsVersion = "27.0.2"
         targetSdkVersion = 27
-        supportLibVersion = "23.0.1"
+        supportLibVersion = "27.0.2"
     }
     splits {
         abi {
@@ -157,6 +160,7 @@ android {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
             applicationIdSuffix ".staging"
+            matchingFallbacks = ['release', 'debug']
             // signingConfig signingConfigs.releaseStaging
         }
         release {
@@ -187,34 +191,33 @@ android {
 }
 
 dependencies {
-    compile project(':react-native-gesture-handler')
-    compile project(':react-native-sound')
-    compile project(':react-native-sentry')
-    compile project(':react-native-code-push')
-    compile project(':react-native-device-info')
-    compile project(':react-native-svg')
-    compile project(':react-native-fbsdk')
-    compile project(':react-native-vector-icons')
-    compile project(':react-native-video')
-    compile fileTree(dir: "libs", include: ["*.jar"])
-    compile "com.android.support:appcompat-v7:23.0.1"
-    compile "com.facebook.react:react-native:+"  // From node_modules
-    compile project(':react-native-linear-gradient')
-    compile project(':react-native-push-notification')
-    compile 'com.google.android.gms:play-services-base:15.0.1'
-    compile 'com.google.android.gms:play-services-basement:15.0.1'
-    compile 'com.google.android.gms:play-services-tasks:15.0.1'    
-    compile ('com.google.android.gms:play-services-gcm:15.0.1') {
+    implementation project(':react-native-gesture-handler')
+    implementation project(':react-native-sound')
+    implementation project(':react-native-sentry')
+    implementation project(':react-native-code-push')
+    implementation project(':react-native-device-info')
+    implementation project(':react-native-svg')
+    implementation project(':react-native-fbsdk')
+    implementation project(':react-native-vector-icons')
+    implementation project(':react-native-video')
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "com.android.support:appcompat-v7:27.0.2"
+    implementation "com.facebook.react:react-native:+"  // From node_modules
+    implementation project(':react-native-linear-gradient')
+    implementation project(':react-native-push-notification')
+    implementation 'com.google.android.gms:play-services-base:15.0.1'
+    implementation 'com.google.android.gms:play-services-basement:15.0.1'
+    implementation 'com.google.android.gms:play-services-tasks:15.0.1'
+    implementation ('com.google.android.gms:play-services-gcm:15.0.1') {
         force = true;
     }
 
-     compile 'com.facebook.android:facebook-android-sdk:4.22.1)'
-    
-    //Required for detox, if this project's RN version is 0.46 or above,
-    //Remove oldOkhttpDebug and replace with newOkhttpDebug
-    androidTestCompile(project(path: ":detox", configuration: "oldOkhttpDebug"), {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
+    androidTestImplementation(project(path: ":detox"))
+    androidTestImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test:rules:1.0.1'
+
+     implementation 'com.facebook.android:facebook-android-sdk:4.22.1)'
 
     //Uncomment if some sort of incompatibility surges with jackson
 //     androidTestCompile(project(path: ":detox", configuration: "oldOkhttpDebug"), {
