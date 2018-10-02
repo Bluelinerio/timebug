@@ -3,12 +3,12 @@ package io.lifevision;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.microsoft.codepush.react.CodePush;
 import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
 import com.brentvatne.react.ReactVideoPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.zmxv.RNSound.RNSoundPackage;
 import io.sentry.RNSentryPackage;
-import com.microsoft.codepush.react.CodePush;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.horcrux.svg.SvgPackage;
 import com.facebook.FacebookSdk;
@@ -50,12 +50,12 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
             new MainReactPackage(),
+            new CodePush(getResources().getString(R.string.reactNativeCodePush_androidDeploymentKey), getApplicationContext(), BuildConfig.DEBUG),
             new ReactNativePushNotificationPackage(),
             new ReactVideoPackage(),
             new RNGestureHandlerPackage(),
             new RNSoundPackage(),
             new RNSentryPackage(MainApplication.this),
-            new CodePush(BuildConfig.CODEPUSH_KEY, MainApplication.this, BuildConfig.DEBUG),
             new RNDeviceInfo(),
             new SvgPackage(),
             new FBSDKPackage(mCallbackManager),
