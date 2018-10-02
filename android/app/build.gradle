@@ -134,7 +134,7 @@ android {
                 keyPassword RELEASE_KEY_PASSWORD
             }
         }
-        releaseStaging {
+        stagingRelease {
             if (System.getenv()["CI"] == 'true') { // CI=true is exported by Nevercode
                 storeFile file(System.getenv()["NC_STAGING_KEYSTORE_PATH"])
                 storePassword System.getenv()["NC_STAGING_KEYSTORE_PASSWORD"]
@@ -155,13 +155,13 @@ android {
             buildConfigField "String", "CODEPUSH_KEY", '""'
             applicationIdSuffix ".debug"
         }
-        releaseStaging {
+        stagingRelease {
             buildConfigField "String", "CODEPUSH_KEY", '"7019bffd-dffd-4dce-8796-497c14800c3f"'
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
             applicationIdSuffix ".staging"
             matchingFallbacks = ['release']
-            // signingConfig signingConfigs.releaseStaging
+            // signingConfig signingConfigs.stagingRelease
         }
         release {
             buildConfigField "String", "CODEPUSH_KEY", '"Ub70pK-b7j5X_PH-q032vxOTuocyBybq6fXrG"'
