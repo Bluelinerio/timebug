@@ -42,6 +42,8 @@ buck-out/
 local.properties
 *.iml
 *.keystore
+/android/**/.project
+android/**/bin/
 android/app/build/
 android/build/generated/
 android/build/intermediates/
