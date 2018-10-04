@@ -22,7 +22,6 @@ DerivedData
 project.xcworkspace
 
 # Gradle
-android/gradle.properties
 /build/
 /RNTester/android/app/build/
 /RNTester/android/app/gradle/
@@ -43,6 +42,8 @@ buck-out/
 local.properties
 *.iml
 *.keystore
+/android/**/.project
+android/**/bin/
 android/app/build/
 android/build/generated/
 android/build/intermediates/

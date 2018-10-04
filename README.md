@@ -4,7 +4,7 @@
 iOS >= 8, Android >= 4.4
 
 ## How to run:
-### iOS 
+### iOS
 * `yarn`
 * open `ios/2020.xcodeproj` in XCode and press START button, or run `yarn run:ios`, only do this after setting up config.json as DEVELOP
 * Run commodity command `yarn run:ios`, this will copy the env and run ios directly

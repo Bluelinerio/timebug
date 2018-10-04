@@ -4,11 +4,12 @@ import {
   INCREMENT_FORM_DATA_QUEUE,
   DECREMENT_FORM_DATA_QUEUE,
   RESET_FORMS,
-  SET_LOADING_FORMDATA
-} from '../actionTypes'
-
-import { diffObjs } from '../utils/diffObjs'
-import R from 'ramda'
+  SET_LOADING_FORMDATA,
+  RESTORE_FORM_DATA
+}                                      from '../actionTypes'
+import type { RestoreFormDataPayload } from '../actions/formData.actions'
+import { diffObjs }                    from '../utils/diffObjs'
+import R                               from 'ramda'
 
 export type FormDataState = {
   data: {
@@ -32,7 +33,7 @@ const initialSDataState = {}
 const initialState: FormDataState = {
   data: initialSDataState,
   requestCount: 0,
-  loadingFormData: false,
+  loadingFormData: false
 }
 
 const filterWithKeys = (pred, obj) =>
@@ -51,19 +52,14 @@ const populate = (
     .map(key => value[key])
 
   // filter old value from timestamp, or anything else we might add...
-  const oldValue = filterWithKeys(
-    key => {return Object.keys(filteredValue).includes(key)},
-    R.view(R.lensPath([stepId, formId]), data)
-  )
+  const oldValue = filterWithKeys(key => {
+    return Object.keys(filteredValue).includes(key)
+  }, R.view(R.lensPath([stepId, formId]), data))
 
   const { difference, onlyOnRight } = diffObjs(oldValue, filteredValue)
 
   if (!difference && !onlyOnRight) return state
 
-  console.log(difference)
-
-  console.log(onlyOnRight)
-  
   return {
     ...state,
     data: {
@@ -82,6 +78,31 @@ const populate = (
   }
 }
 
+const restore = (state: FormDataState, payload: RestoreFormDataPayload) => {
+  const { forms } = payload
+  const { data } = state
+
+  const newData = Object.keys(forms).reduce((tmpState, key) => {
+    const form = forms[key]
+    const formInState = data[key] || {}
+    return {
+      ...tmpState,
+      [key]: {
+        ...form,
+        ...formInState
+      }
+    }
+  }, {})
+
+  return {
+    ...state,
+    data: {
+      ...newData,
+      ...data
+    }
+  }
+}
+
 const increment = (state: FormDataState): FormDataState => ({
   ...state,
   requestCount: state.requestCount + 1
@@ -92,7 +113,10 @@ const decrement = (state: FormDataState): FormDataState => ({
   requestCount: state.requestCount - 1
 })
 
-const setLoadingFormData = (state: FormDataState, payload: boolean): FormDataState => ({
+const setLoadingFormData = (
+  state: FormDataState,
+  payload: boolean
+): FormDataState => ({
   ...state,
   loadingFormData: payload !== false
 })
@@ -110,6 +134,8 @@ function formDataReducer(
       return decrement(state)
     case SET_LOADING_FORMDATA:
       return setLoadingFormData(state, action.payload)
+    case RESTORE_FORM_DATA:
+      return restore(state, action.payload)
     case RESET_FORMS:
       return initialState
     default:

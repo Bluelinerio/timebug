@@ -80,8 +80,8 @@ export default class App extends React.Component<{}, State> {
   }
 }
 const codePushConfigurations = {
-  checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
-  installMode: codePush.InstallMode.ON_NEXT_RESUME
+  checkFrequency: codePush.CheckFrequency.ON_APP_START,
+  installMode: codePush.InstallMode.ON_NEXT_RESTART
 }
 
 const CodepushApp = codePush(codePushConfigurations)(App)
