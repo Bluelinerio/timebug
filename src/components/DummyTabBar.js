@@ -9,7 +9,7 @@ const TabElement = ({ name, text, selected = false }) => (
   </View>
 )
 const TabBar = () => (
-  <View style={{ height: 50, flexDirection: 'row', backgroundColor: '#E0F2F1', borderTopWidth: 1, borderTopColor: '#B2DFDB' }}>
+  <View style={{ height: 50, flexDirection: 'row', backgroundColor: '#E0F2F1', borderTopWidth: 1, borderTopColor: '#B2DFDA' }}>
     <TabElement name={'ios-pin'} text={'Check Ins'} selected={true} />
     <TabElement name={'ios-compass'} text={'My Journey'} />
     <TabElement name={'ios-book'} text={'Workbook'} />
