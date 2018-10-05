@@ -1,6 +1,6 @@
 //@flow
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React, { Component }         from 'react'
+import PropTypes                    from 'prop-types'
 import { Dimensions, AsyncStorage } from 'react-native'
 import {
   EmojiCell,
@@ -8,8 +8,8 @@ import {
   Loader,
   Container,
   charFromEmojiObject
-} from './EmojiViews'
-import emoji from 'emoji-datasource'
+}                                   from './EmojiViews'
+import emoji                        from 'emoji-datasource'
 
 export const Categories = {
   all: {

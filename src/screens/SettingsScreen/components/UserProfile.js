@@ -1,36 +1,37 @@
 // @flow
-import * as React from 'react';
-import { Card, Icon } from 'react-native-elements';
+import * as React                   from 'react'
+import { Card, Icon }               from 'react-native-elements'
 import {
   Image,
   ImageBackground,
-  Linking,
   ListView,
   Platform,
   ScrollView,
   StyleSheet,
   Text,
   View
-} from 'react-native';
-import { lifevisionCollage } from '../../../resources/images/';
-import { deepBlue as primaryColor } from '../../../constants/colors';
+}                                   from 'react-native'
+import { lifevisionCollage }        from '../../../resources/images/'
+import { deepBlue as primaryColor } from '../../../constants/colors'
 
-import Separator from './Separator';
+const Tel = () => null
+const Email = () => null
+const Separator = () => null
 
 export type Props = {
   logout: () => void,
   name: string,
-  avatar: string
-};
+  avatar: string,
+  avatarBackground: string,
+  address: {
+    city: string,
+    country: string
+  }
+}
 
-class Contact extends React.Component {
+class Contact extends React.Component<Props> {
   renderHeader = () => {
-    const {
-      avatar,
-      avatarBackground,
-      name,
-      address: { city, country }
-    } = this.props;
+    const { avatar, name, address: { city, country } } = this.props
 
     return (
       <View style={styles.headerContainer}>
@@ -65,8 +66,8 @@ class Contact extends React.Component {
           </View>
         </ImageBackground>
       </View>
-    );
-  };
+    )
+  }
 
   renderTel = () => (
     <ListView
@@ -82,10 +83,10 @@ class Contact extends React.Component {
             onPressSms={this.onPressSms}
             onPressTel={this.onPressTel}
           />
-        );
+        )
       }}
     />
-  );
+  )
 
   renderEmail = () => (
     <ListView
@@ -100,10 +101,10 @@ class Contact extends React.Component {
             email={email}
             onPressEmail={this.onPressEmail}
           />
-        );
+        )
       }}
     />
-  );
+  )
 
   render() {
     return (
@@ -117,11 +118,11 @@ class Contact extends React.Component {
           </Card>
         </View>
       </ScrollView>
-    );
+    )
   }
 }
 
-export default Contact;
+export default Contact
 
 const styles = StyleSheet.create({
   cardContainer: {
@@ -184,4 +185,4 @@ const styles = StyleSheet.create({
     paddingBottom: 8,
     textAlign: 'center'
   }
-});
+})

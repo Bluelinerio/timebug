@@ -17,7 +17,7 @@ class CheckinScreenComponent extends React.PureComponent<any> {
           <ScrollView style={styles.scroll}>
             <Banner />
             <View style={[styles.padded, styles.container]}>
-              <CheckinList />                          
+              <CheckinList />
             </View>
           </ScrollView>
         </View>

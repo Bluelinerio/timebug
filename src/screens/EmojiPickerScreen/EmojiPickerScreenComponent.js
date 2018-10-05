@@ -1,10 +1,10 @@
-import React from 'react'
+import React                                       from 'react'
 import { StyleSheet, Text, View, LayoutAnimation } from 'react-native'
-import { SafeAreaView, NavigationActions } from 'react-navigation'
-import type { NavigationProp } from 'react-navigation'
-import EmojiSelectorComponent, { Categories } from './EmojiSelectorComponent'
-import Slider from '../../components/Slider'
-import Button from '../../components/Button'
+import { SafeAreaView, NavigationActions }         from 'react-navigation'
+import type { NavigationProp }                     from 'react-navigation'
+import EmojiSelectorComponent, { Categories }      from './EmojiSelectorComponent'
+import Slider                                      from '../../components/Slider'
+import Button                                      from '../../components/Button'
 
 type Props = {
   title: string,

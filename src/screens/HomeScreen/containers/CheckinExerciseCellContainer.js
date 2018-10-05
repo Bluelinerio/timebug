@@ -1,8 +1,7 @@
-import { connect } from 'react-redux'
-import { compose, mapProps } from 'recompose'
-import { withNavigation } from 'react-navigation'
-import selectors from '../../../redux/selectors'
-import { goToEmojiPickerScreen } from '../../../redux/actions/nav.actions'
+import { connect }                  from 'react-redux'
+import { compose, mapProps }        from 'recompose'
+import { withNavigation }           from 'react-navigation'
+import selectors                    from '../../../redux/selectors'
 import YesNoSuggestionCellComponent from '../components/DashboardCells/YesNoSuggestionCellComponent'
 
 const mapStateToProps = state => ({

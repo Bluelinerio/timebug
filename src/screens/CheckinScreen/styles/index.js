@@ -13,7 +13,7 @@ export default StyleSheet.create({
     flex: 1
   },
   scroll: {
-    flex: 1    
+    flex: 1
   },
   padded: {
     padding: 16
@@ -115,7 +115,7 @@ export default StyleSheet.create({
   saveTextDisabled: {
     color: gray400
   },
-  noCheckinContainer: { 
+  noCheckinContainer: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',

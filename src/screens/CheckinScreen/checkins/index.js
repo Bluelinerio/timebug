@@ -1,6 +1,4 @@
 //@flow
-import moment                            from 'moment'
-import { frequencies, WEEKLY, BIWEEKLY } from '../../../services/checkins'
 
 export const STEP1 = '1'
 export const STEP2 = '2'
@@ -71,5 +69,5 @@ export type Checkin = {
   lastCheckin: string,
   frequency: string,
   link: string,
-  message: string,
+  message: string
 }

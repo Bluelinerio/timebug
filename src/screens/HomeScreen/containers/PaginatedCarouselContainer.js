@@ -1,18 +1,16 @@
 // @flow
-import invariant from 'invariant'
-import { connect } from 'react-redux'
-import { compose, mapProps } from 'recompose'
-import { withNavigation } from 'react-navigation'
-import PaginatedCarousel from '../components/PaginatedCarousel'
+import invariant               from 'invariant'
+import { connect }             from 'react-redux'
+import { compose, mapProps }   from 'recompose'
+import { withNavigation }      from 'react-navigation'
+import PaginatedCarousel       from '../components/PaginatedCarousel'
 import { phaseForStepAtIndex } from '../../../services/cms'
-import type Item from '../components/SliderEntry'
-import type Step from '../../../services/cms'
-import selectors from '../../../redux/selectors'
+import selectors               from '../../../redux/selectors'
 import {
   goToWorkbookSkippingStepScreen,
   goToAssignmentFlow,
   goToPreviosFormsForStep
-} from '../../../redux/actions/nav.actions'
+}                              from '../../../redux/actions/nav.actions'
 
 const ALLOW_USER_TO_JUST_DIRECTLY_TO_FORM = false
 const FIRST_FORM_ID = '1'
