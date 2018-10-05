@@ -1,3 +1,6 @@
+/* eslint-disable react/display-name */
+/* eslint-disable react/display-name */
+
 // @flow
 import React              from 'react'
 import { Platform }       from 'react-native'
@@ -101,6 +104,11 @@ export const RootNavigator = StackNavigator(
   rootConfiguration.options
 )
 
+type NavigationOptionsElementProps = {
+  focused: boolean,
+  tintColor: string
+}
+
 export const tabConfiguration = {
   routes: routes.tab,
   screens: {
@@ -117,7 +125,7 @@ export const tabConfiguration = {
   options: {
     initialRouteName: routes.tab.initialRouteName,
     navigationOptions: ({ navigation }) => ({
-      tabBarIcon: ({ focused, tintColor }) => {
+      tabBarIcon: ({ focused, tintColor }: NavigationOptionsElementProps) => {
         const { routeName } = navigation.state
         return (
           <TabBarIcon
@@ -127,7 +135,7 @@ export const tabConfiguration = {
           />
         )
       },
-      tabBarLabel: ({ tintColor, focused }) => {
+      tabBarLabel: ({ tintColor }: NavigationOptionsElementProps) => {
         const { routeName } = navigation.state
         return (
           <TabBarLabel routeName={routeName} tintColor={tintColor}/>
