@@ -1,7 +1,7 @@
 import { LABEL, STRUCT } from './modelTypes'
 
 export default {
-    topGoalsPast5Years: {
+  topGoalsPast5Years: {
     type: STRUCT,
     fields: {
       goal: {
