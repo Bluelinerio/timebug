@@ -1,6 +1,6 @@
 //@flow
 import { CHANGE_UI_STATUS, RESET_UI_STATUS } from '../actionTypes'
-import { UIActionPayload } from '../actions/ui.actions'
+import { UIActionPayload }                   from '../actions/ui.actions'
 
 type UIState = {
   screens: any
@@ -31,11 +31,11 @@ const handleChange = (state: UIState, payload: UIActionPayload) => {
 
 export default (state: UIState = initialState, action: UIAction) => {
   switch (action.type) {
-    case CHANGE_UI_STATUS:
-      return handleChange(state, action.payload)
-    case RESET_UI_STATUS:
-      return initialState
-    default:
-      return state
+  case CHANGE_UI_STATUS:
+    return handleChange(state, action.payload)
+  case RESET_UI_STATUS:
+    return initialState
+  default:
+    return state
   }
 }

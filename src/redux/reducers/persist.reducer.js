@@ -25,9 +25,9 @@ const handleChange = (state: PersistState) => {
 
 export default (state: PersistState = initialState, action: PersistAction) => {
   switch (action.type) {
-    case STORE_LOADED:
-      return handleChange(state, action.payload)
-    default:
-      return state
+  case STORE_LOADED:
+    return handleChange(state, action.payload)
+  default:
+    return state
   }
 }

@@ -12,7 +12,7 @@ import type { PersistState }    from '../reducers/persist.reducer'
 export const getUserState = (state: any): UserState => state.user
 export const getCms = (state: any): CMSState => state.cms
 export const getForms = (state: any): FormModelsState => state.forms
-export const getFormData = (state: any): FormDataState => state.formData
+export const getFormData = (state: any): any => state.formData
 export const getAppState = (state: any): AppState => state.appState
 export const getAgregateState = (state: any): AgregateState => state.agregates
 export const getAwards = (state: any): AwardState => state.awards

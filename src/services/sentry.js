@@ -1,5 +1,5 @@
 import { Sentry } from 'react-native-sentry'
-import CodePush from 'react-native-code-push'
+import CodePush   from 'react-native-code-push'
 import DeviceInfo from 'react-native-device-info'
 
 // Sentry will log all error, including errors while debugging on simulator.

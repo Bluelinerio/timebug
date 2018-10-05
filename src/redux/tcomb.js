@@ -1,5 +1,4 @@
 import R from 'ramda'
-import t from '../screens/WorkbookScreen/components/templates'
 
 const tcombPropLens = R.lensPath(['type', 'meta', 'props'])
 const getTCombProps = model => {
@@ -70,10 +69,9 @@ const isValueAValidTCombType = (value, key, type) => {
 const mapValueTypeKeysToActualValues = (value = {}) => {
 
   const filterMetaKeys = key => !['timeStamp', 'type'].find(k => k === key)
-  const notFilterMetaKeys = key => !filterMetaKeys(key)
-  
+
   const typeSpec = value && value.type && Object.keys(value.type)
-  
+
   if(!typeSpec)
     return {}
 

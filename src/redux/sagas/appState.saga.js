@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { takeEvery, put, select, call } from 'redux-saga/effects';
 import {
   FOREGROUND,

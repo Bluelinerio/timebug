@@ -71,14 +71,14 @@ const checkinReducer = (
   action: CheckinAction
 ) => {
   switch (action.type) {
-    case UPDATE_CHECKIN:
-      return handleChange(state, action.payload)
-    case DELETE_CHECKIN:
-      return handleDelete(state, action.payload)
-    case CANCEL_ALL_NOTIFICATIONS:
-      return initialState
-    default:
-      return state
+  case UPDATE_CHECKIN:
+    return handleChange(state, action.payload)
+  case DELETE_CHECKIN:
+    return handleDelete(state, action.payload)
+  case CANCEL_ALL_NOTIFICATIONS:
+    return initialState
+  default:
+    return state
   }
 }
 

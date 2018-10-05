@@ -57,7 +57,7 @@ function* onNotification({ payload }: { payload: OnNotificationPayload }) {
   const checkin = checkins[`${id}`]
   const { frequency, action } = checkin
   const lastCheckin = moment()
-  const [nextCheckin, _] = yield call(calculateNextCheckin, frequency)
+  const [nextCheckin] = yield call(calculateNextCheckin, frequency)
   yield put(updateCheckin({ step: id, checkin: { lastCheckin, nextCheckin } }))
   yield delay(1)
   if (action.type === 'link')
