@@ -178,6 +178,6 @@ export const goToHomeScreen = (params?: any) =>
     params
   })
 
-export const goToGuideBookScreen = (params?: any) => ({})
+export const goToGuideBookScreen = () => ({})
 
-export const goToMyRewardsScreen = (params?: any) => ({})
+export const goToMyRewardsScreen = () => ({})

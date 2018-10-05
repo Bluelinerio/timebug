@@ -1,14 +1,10 @@
-import t from '../components/templates';
+import t from '../components/templates'
 import {
-  PillarsOfLife,
   Emotion,
-  InteractionFrequency,
-  GoalYears,
   PercentSelector,
   OneToTenScale,
-  GoalProcess,
-  DescribeProcess
-} from './contents';
+  GoalProcess
+}        from './contents'
 
 export default {
   1: {
@@ -42,9 +38,9 @@ export default {
                 label: 'How far did you get with this goal?(as a percentage)?'
               },
               satisfactionLevel: {
-                label:'How satisfied are you with the time and energy you committed to this goal?',
+                label:
+                  'How satisfied are you with the time and energy you committed to this goal?',
                 help: '1= Not at all satisfied to 10= Very satisfied'
-
               },
               goalProcess: {
                 label: 'How would you describe your goal-process?'
@@ -52,7 +48,7 @@ export default {
               }
             }
           },
-          auto:'none',
+          auto: 'none',
           disableOrder: true,
           maxLines: 15,
           config: {
@@ -82,7 +78,6 @@ export default {
     },
     fields: {
       fiveYearGoalTracking: {
-        
         options: {
           auto: 'none'
         }
@@ -94,7 +89,8 @@ export default {
       emotionsPast5Years: t.list(Emotion)
     }),
     options: {
-      label: "Choose a few emotions that best describe how you've felt over the past 5 years."
+      label:
+        "Choose a few emotions that best describe how you've felt over the past 5 years."
     },
     fields: {
       emotions: {
@@ -104,4 +100,4 @@ export default {
       }
     }
   }
-};
+}

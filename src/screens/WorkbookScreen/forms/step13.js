@@ -3,9 +3,8 @@ import {
   PaidFairly,
   TimeChanged,
   HoursPerWeek,
-  OneToTenScale,
-  InternalExternal
-} from './contents';
+  OneToTenScale
+}        from './contents';
 
 export default {
   1: {

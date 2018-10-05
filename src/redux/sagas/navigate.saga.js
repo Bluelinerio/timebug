@@ -12,7 +12,9 @@ import {
 }                                       from '../actions/nav.actions'
 import type { LinkedNavigationPayload } from '../actions/nav.actions'
 
-const handleUrl = (link: string): { screen: string, component: string, params: any } => {
+const handleUrl = (
+  link: string
+): { screen: string, component: string, params: any } => {
   const [location, query] = link.split('?')
   const [screen, component] = location.split('/')
   const params = query.split('&').reduce((params, param) => {
@@ -33,10 +35,10 @@ const handleLink = (payload: { link: string }) => {
   const { link } = payload
   const { screen, component, params } = handleUrl(link)
   switch (screen) {
-    case 'home':
-      return goToStartScreen({ component, params })
-    case 'journey':
-      return journeyScreenDeepParams({ component, params })
+  case 'home':
+    return goToStartScreen({ component, params })
+  case 'journey':
+    return journeyScreenDeepParams({ component, params })
   }
 }
 
@@ -47,10 +49,6 @@ function* deeplinkNavigation({
 }) {
   yield put(handleLink(payload))
 }
-
-type SelectForNavigation = (
-  state: any
-) => { action: any, params: any, routeName: string }
 
 function* onNavigate(action) {
   try {

@@ -11,16 +11,16 @@ function wp(percentage) {
   return Math.round(value)
 }
 
-const percentage                = 85
-const slideHeight               = viewportHeight * 0.4
-const slideWidth                = wp(percentage)
-const itemHorizontalMargin      = wp(2)
+const percentage = 85
+const slideHeight = viewportHeight * 0.4
+const slideWidth = wp(percentage)
+const itemHorizontalMargin = wp(2)
 
-export const sliderWidth        = viewportWidth
-export const itemWidth          = slideWidth + itemHorizontalMargin * 2
-export const spinnerEvenColor   = 'rgba(255, 255, 255, 0.4)'
+export const sliderWidth = viewportWidth
+export const itemWidth = slideWidth + itemHorizontalMargin * 2
+export const spinnerEvenColor = 'rgba(255, 255, 255, 0.4)'
 export const spinnerUnEvenColor = 'rgba(0, 0, 0, 0.25)'
-const entryBorderRadius         = 16
+const entryBorderRadius = 16
 
 export default StyleSheet.create({
   sliderEntryTopRightIconContainer: {

@@ -1,4 +1,3 @@
-import React from 'react'
 import testWorkbooks from './testWorkbooks'
 import step1 from './step1'
 import step2 from './step2'

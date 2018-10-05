@@ -50,7 +50,7 @@ const transformPropsForPresentation = (props: PresentationProps): ComponentProps
   }
 
   const { recentGoals } = componentData
-  
+
   const componentDataArray = [
     recentGoals
   ]

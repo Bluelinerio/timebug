@@ -1,12 +1,12 @@
 // @flow
-import React from 'react';
-import { HeaderBackButton, NavigationActions } from 'react-navigation';
-import screen from './containers/WorkbookScreenContainer';
+import React                                   from 'react'
+import { HeaderBackButton, NavigationActions } from 'react-navigation'
+import screen                                  from './containers/WorkbookScreenContainer'
 
 screen.navigationOptions = ({
   navigation: { dispatch, state: { params } }
 }) => {
-  const { stepColor, stepNumber } = params;
+  const { stepColor, stepNumber } = params
   return {
     title: `Exercise ${stepNumber}`,
     headerStyle: {
@@ -19,9 +19,9 @@ screen.navigationOptions = ({
         onPress={() => dispatch(NavigationActions.back())}
       />
     )
-  };
-};
+  }
+}
 
 export default {
   screen
-};
+}

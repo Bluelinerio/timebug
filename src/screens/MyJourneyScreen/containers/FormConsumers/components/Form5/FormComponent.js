@@ -21,7 +21,11 @@ const styleForUnevenElements = {
 
 const isEven = (num: number): boolean => num % 2 === 0
 
-const FormComponent = props => {
+type FormComponentProps = {
+  elements: Array<any>
+}
+
+const FormComponent = (props: FormComponentProps) => {
   const { elements } = props
   return (
     <View style={[styles.container, styles.tableContainer]}>

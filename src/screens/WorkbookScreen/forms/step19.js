@@ -1,5 +1,5 @@
-import t from '../components/templates';
-import { TimeSpent, SpiritualViews, SpiritualPractices } from './contents';
+import t                             from '../components/templates'
+import { TimeSpent, SpiritualViews } from './contents'
 
 export default {
   1: {
@@ -69,7 +69,8 @@ export default {
                 auto: 'labels'
               },
               why: {
-                label: 'Why do you admire his/her approach to and views on life?'
+                label:
+                  'Why do you admire his/her approach to and views on life?'
               }
             }
           }
@@ -117,8 +118,9 @@ export default {
       label: 'Spirituality Assessment',
       fields: {
         internalQualitiesInfuelcedBySpirituality: {
-          label:'What internal qualities (i.e., Goal Type 4) were positively or negatively influenced by your spriritual practices or lack thereof?'
-                },
+          label:
+            'What internal qualities (i.e., Goal Type 4) were positively or negatively influenced by your spriritual practices or lack thereof?'
+        },
         spiritualInsights: {
           label:
             'What insights did you pick up from your spirituality over the past 5 years?',
@@ -140,4 +142,4 @@ export default {
       }
     }
   }
-};
+}

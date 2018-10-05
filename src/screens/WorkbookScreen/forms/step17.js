@@ -1,5 +1,5 @@
-import t from '../components/templates';
-import { CommonGoalOutcomes, OneToTenScale } from './contents';
+import t                                     from '../components/templates'
+import { CommonGoalOutcomes, OneToTenScale } from './contents'
 
 export default {
   1: {
@@ -29,7 +29,8 @@ export default {
               help: '1 = Not at all patient and 10 = Very patient'
             },
             messagesInHead: {
-              label:'What messages about yourself run through your head on a daily basis?'
+              label:
+                'What messages about yourself run through your head on a daily basis?'
             },
             messagesJudgeSelf: {
               label: 'What do you say to judge or shame yourself?'
@@ -221,4 +222,4 @@ export default {
       }
     }
   }
-};
+}

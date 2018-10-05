@@ -5,13 +5,13 @@ import {
   PHASE_1_NOT_COMPLETED_KEY,
   PHASE_2_NOT_COMPLETED_KEY,
   PHASE_3_NOT_COMPLETED_KEY
-}             from '../../../services/dummyCms'
+}                            from '../../../services/dummyCms'
 import {
   phaseForStepAtIndex,
   MEDITATION,
   SELF_ASSESSMENT,
   VISION_CREATION
-}             from '../../../services/cms'
+}                            from '../../../services/cms'
 import styles, { svgStyles } from '../styles'
 
 export const isStepIndexCompleted = (stepIndex, user) => {
@@ -23,12 +23,12 @@ export const isStepIndexCompleted = (stepIndex, user) => {
 
 const mapPhaseAndCompletionToKey = (phase, completed) => {
   switch (phase) {
-    case MEDITATION:
-      return completed ? PHASE_1_COMPLETED_KEY : PHASE_1_NOT_COMPLETED_KEY
-    case SELF_ASSESSMENT:
-      return completed ? PHASE_2_COMPLETED_KEY : PHASE_2_NOT_COMPLETED_KEY
-    case VISION_CREATION:
-      return completed ? PHASE_3_COMPLETED_KEY : PHASE_3_NOT_COMPLETED_KEY
+  case MEDITATION:
+    return completed ? PHASE_1_COMPLETED_KEY : PHASE_1_NOT_COMPLETED_KEY
+  case SELF_ASSESSMENT:
+    return completed ? PHASE_2_COMPLETED_KEY : PHASE_2_NOT_COMPLETED_KEY
+  case VISION_CREATION:
+    return completed ? PHASE_3_COMPLETED_KEY : PHASE_3_NOT_COMPLETED_KEY
   }
 }
 
@@ -54,35 +54,35 @@ export const mapPhaseAndCompletionToStylesHelper = (
   completed = false
 ) => {
   switch (phase) {
-    case MEDITATION:
-      return completed
-        ? {
-            container: styles.iconContainerPhase1Complete,
-            icon: svgStyles.iconPhase1
-          }
-        : {
-            container: styles.iconContainerPhase1Incomplete,
-            icon: svgStyles.iconPhase1
-          }
-    case SELF_ASSESSMENT:
-      return completed
-        ? {
-            container: styles.iconContainerPhase2Complete,
-            icon: svgStyles.iconPhase2
-          }
-        : {
-            container: styles.iconContainerPhase2Incomplete,
-            icon: svgStyles.iconPhase2
-          }
-    case VISION_CREATION:
-      return completed
-        ? {
-            container: styles.iconContainerPhase3Complete,
-            icon: svgStyles.iconPhase3
-          }
-        : {
-            container: styles.iconContainerPhase3Incomplete,
-            icon: svgStyles.iconPhase3
-          }
+  case MEDITATION:
+    return completed
+      ? {
+        container: styles.iconContainerPhase1Complete,
+        icon: svgStyles.iconPhase1
+      }
+      : {
+        container: styles.iconContainerPhase1Incomplete,
+        icon: svgStyles.iconPhase1
+      }
+  case SELF_ASSESSMENT:
+    return completed
+      ? {
+        container: styles.iconContainerPhase2Complete,
+        icon: svgStyles.iconPhase2
+      }
+      : {
+        container: styles.iconContainerPhase2Incomplete,
+        icon: svgStyles.iconPhase2
+      }
+  case VISION_CREATION:
+    return completed
+      ? {
+        container: styles.iconContainerPhase3Complete,
+        icon: svgStyles.iconPhase3
+      }
+      : {
+        container: styles.iconContainerPhase3Incomplete,
+        icon: svgStyles.iconPhase3
+      }
   }
 }

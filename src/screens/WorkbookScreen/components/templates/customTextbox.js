@@ -1,4 +1,4 @@
-import React from 'react'
+import React           from 'react'
 import CustomTextInput from './CustomTextInput'
 
 type Props = Object & {

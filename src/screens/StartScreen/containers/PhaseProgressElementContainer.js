@@ -39,14 +39,14 @@ type PhaseProgressDispatchProps = {}
 
 const mapPhaseToName = ({ phase }: { phase: string }) => {
   switch (phase) {
-    case MEDITATION:
-      return 'MEDITATION'
-    case SELF_ASSESSMENT:
-      return 'SELF-ASSESSMENT'
-    case VISION_CREATION:
-      return 'VISION CREATION'
-    default:
-      return ''
+  case MEDITATION:
+    return 'MEDITATION'
+  case SELF_ASSESSMENT:
+    return 'SELF-ASSESSMENT'
+  case VISION_CREATION:
+    return 'VISION CREATION'
+  default:
+    return ''
   }
 }
 

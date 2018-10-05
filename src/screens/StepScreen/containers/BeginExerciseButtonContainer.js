@@ -1,11 +1,10 @@
-import * as React from 'react'
 import { compose, withProps, mapProps } from 'recompose'
-import { connect } from 'react-redux'
-import Button from '../../../components/Button'
-import type { Props } from '../../../components/Button'
-import { goToWorkbookScreen } from '../../../redux/actions/nav.actions'
-import selectors from '../../../redux/selectors'
-import { withNavigationAndStep } from '../../../HOC'
+import { connect }                      from 'react-redux'
+import Button                           from '../../../components/Button'
+import type { Props }                   from '../../../components/Button'
+import { goToWorkbookScreen }           from '../../../redux/actions/nav.actions'
+import selectors                        from '../../../redux/selectors'
+import { withNavigationAndStep }        from '../../../HOC'
 
 const textTestId = 'step_to_workbook_text'
 const buttonTestId = 'step_to_workbook_button'
@@ -29,7 +28,7 @@ const mapStateToProps = (state: any) => ({
 const BeginExerciseButtonContainer = compose(
   withProps({
     textTestId,
-    buttonTestId,
+    buttonTestId
   }),
   withNavigationAndStep,
   connect(mapStateToProps),

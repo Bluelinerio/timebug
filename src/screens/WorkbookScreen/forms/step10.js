@@ -1,5 +1,5 @@
-import t from '../components/templates';
-import { PillarsOfLife, InteractionFrequency, OneToTenScale } from './contents';
+import t                 from '../components/templates';
+import { OneToTenScale } from './contents';
 
 export default {
   1: {

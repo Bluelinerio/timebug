@@ -56,7 +56,7 @@ const fetchUserImage = (facebookId: string) => {
   return new Promise((resolve, reject) => {
     const path = `/${facebookId}/picture`
     // Create a graph request asking for user information with a callback to handle the response.
-    
+
     const infoRequest = new GraphRequest(
       path,
       null,

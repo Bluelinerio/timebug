@@ -1,15 +1,13 @@
-import t from '../components/templates';
-
+import t from '../components/templates'
 import {
   WhereStandToday,
   Emotion,
   CreditScore,
   ChangeKind,
   EffortEvaluation,
-  SatisfactionFromCurrentResult,
   CreditScoreChange,
   OneToTenScale
-} from './contents';
+}        from './contents'
 
 export default {
   1: {
@@ -18,7 +16,8 @@ export default {
       financialEmotions: t.list(Emotion)
     }),
     options: {
-      label: 'What emotions pop up when you think about your relationship with money?',
+      label:
+        'What emotions pop up when you think about your relationship with money?',
       fields: {
         id: {
           hidden: true
@@ -51,8 +50,7 @@ export default {
           label: 'Financial Assessment',
           fields: {
             selfView: {
-              label:
-              "What's your general attitude towards money right now?",
+              label: "What's your general attitude towards money right now?",
               multiline: true
             },
             othersView: {
@@ -159,4 +157,4 @@ export default {
       }
     }
   }
-};
+}

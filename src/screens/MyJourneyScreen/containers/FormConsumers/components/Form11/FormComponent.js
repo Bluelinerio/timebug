@@ -3,6 +3,9 @@ import React                    from 'react'
 import { View }                 from 'react-native'
 import ListElement              from '../../../../components/ListElement'
 import GenericHeader            from '../../../../components/GenericHeader'
+import type {
+  HeaderProps
+}                               from '../../../../components/GenericHeader'
 import styles                   from '../../../../styles'
 import { mediumGray, gray400 }  from '../../../../../../constants/colors'
 import { LockedEntryWithCheck } from '../../../../components/LockedEntry'
@@ -21,10 +24,12 @@ const styleForUnevenElements = {
 
 const isEven = (num: number): boolean => num % 2 === 0
 
-/**
- * TODO: add flow
- */
-const FormComponent = props => {
+type FormComponentProps = {
+  elements: [any],
+  header: HeaderProps
+}
+
+const FormComponent = (props: FormComponentProps) => {
   const { elements, header } = props
   return (
     <View style={[styles.container, styles.tableContainer]}>

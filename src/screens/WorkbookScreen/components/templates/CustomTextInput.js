@@ -1,7 +1,8 @@
 // @flow
-import React from 'react'
+/* eslint-disable react/prop-types*/
+import React                               from 'react'
 import { View, TextInput, Text, Animated } from 'react-native'
-import { compose } from 'redux'
+import { compose }                         from 'redux'
 
 type State = {
   height: number,
@@ -10,13 +11,12 @@ type State = {
   fadeAnim: Animated.AnimatedValue
 }
 
-type Props = TextInputProps & {
+type Props = {
   style?: any,
   onContentSizeChange?: (event: any) => void
 }
 
 class CustomTextInput extends React.Component<Props, State> {
-
   input: ?TextInput = null
 
   error(styles) {
@@ -30,11 +30,7 @@ class CustomTextInput extends React.Component<Props, State> {
 
   help(styles) {
     const { help } = this.props
-    help ? (
-      <Text style={styles}>
-        {help}
-      </Text>
-    ) : null
+    help ? <Text style={styles}>{help}</Text> : null
   }
 
   floatingLabel(labelStyles) {
@@ -137,7 +133,7 @@ class CustomTextInput extends React.Component<Props, State> {
     this.props.onContentSizeChange && this.props.onContentSizeChange(event)
   }
 
-  renderTextInput = (styles) => (
+  renderTextInput = styles => (
     <TextInput
       ref={c => (this.input = c)}
       onContentSizeChange={
@@ -187,23 +183,17 @@ class CustomTextInput extends React.Component<Props, State> {
   )
 
   composeStyles(...overrideStyles) {
-    return (...styles) => [
-      ...styles,
-      ...overrideStyles
-    ]
+    return (...styles) => [...styles, ...overrideStyles]
   }
 
   render() {
     const { styles, hasError, editable, floatingLabel, config } = this.props
 
-    const { text } = this.state
-
     const formGroupStyle = compose(
-      this.composeStyles(hasError
-        ? styles.formGroupStyle.error
-        : styles.formGroupStyle.normal)
+      this.composeStyles(
+        hasError ? styles.formGroupStyle.error : styles.formGroupStyle.normal
+      )
     )()
-    
 
     const textboxViewStyle = compose(
       this.composeStyles({
@@ -220,11 +210,8 @@ class CustomTextInput extends React.Component<Props, State> {
     )()
 
     const labelStyles = compose(
-      this.composeStyles({color: config.stepColor})
-    )(hasError 
-      ? styles.controlLabel.error 
-      : styles.controlLabel.normal
-    )
+      this.composeStyles({ color: config.stepColor })
+    )(hasError ? styles.controlLabel.error : styles.controlLabel.normal)
 
     const helpStyles = [
       hasError ? styles.helpBlock.error : styles.helpBlock.normal
@@ -236,14 +223,17 @@ class CustomTextInput extends React.Component<Props, State> {
       this.composeStyles({
         height: Math.min(400, Math.max(this.state.height, 44))
       })
-    )(this.props.hasError
-      ? this.props.styles.textBox.error
-      : this.props.editable !== false
-        ? this.props.styles.textBox.normal
-        : this.props.styles.textbox.notEditable
+    )(
+      this.props.hasError
+        ? this.props.styles.textBox.error
+        : this.props.editable !== false
+          ? this.props.styles.textBox.normal
+          : this.props.styles.textbox.notEditable
     )
-    
-    const label = floatingLabel ? this.floatingLabel(labelStyles) : this.label(labelStyles) // text.length > 0 ? null :
+
+    const label = floatingLabel
+      ? this.floatingLabel(labelStyles)
+      : this.label(labelStyles) // text.length > 0 ? null :
     const help = this.help(helpStyles)
     const error = this.error(errorStyles)
     const textInput = this.renderTextInput(textInputStyles)

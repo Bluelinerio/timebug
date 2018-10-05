@@ -1,6 +1,5 @@
 /* @flow */
 import React from 'react'
-import md5 from 'md5'
 import User from './User'
 import LogoutButtonContainer from './LogoutButtonContainer'
 import OpenLoginModalContainer from './OpenLoginModalContainer'

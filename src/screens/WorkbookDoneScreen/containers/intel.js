@@ -40,7 +40,7 @@ const evaluateGoalTypes = (recentGoals: Array<RecentGoal>) => {
     )(ItemComparable)(recentGoals)
 }
 
-const step5ForLater = ({ recentGoals }) =>
+export const step5ForLater = ({ recentGoals }) =>
   `Goal types can help reveal your predominant mindset in life.${
     recentGoals.length > 0
       ? ` You care about ${evaluateGoalTypes(recentGoals)}`

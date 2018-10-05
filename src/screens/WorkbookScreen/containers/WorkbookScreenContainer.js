@@ -1,17 +1,13 @@
 // @flow
-import * as React                              from 'react'
 import { connect }                             from 'react-redux'
 import { compose, mapProps }                   from 'recompose'
 import invariant                               from 'invariant'
 import { userRequired, withNavigationAndStep } from '../../../HOC'
 import t                                       from '../components/templates'
-
 import { headerBackgrounds }                   from '../../../resources/images'
 import {
   submitFormValue,
-  syncFormData,
-  setLoadingFormData,
-  startLoadingFormData 
+  syncFormData
 }                                              from '../../../redux/actions/formData.actions'
 import {
   goToWorkbookDoneScreen,
@@ -51,7 +47,6 @@ const merge = ({
   const numberOfForms = Object.keys(models).length
   const formIdIndex = Object.keys(models).indexOf(formId)
   const isFinalForm = numberOfForms - 1 === formIdIndex
-  const ifFirstForm = formIdIndex === 0
   const buttonMessage = isFinalForm ? 'SUBMIT' : 'NEXT'
 
   const model = models[formId]
@@ -61,17 +56,17 @@ const merge = ({
 
   const nextActions = isFinalForm
     ? [
-        syncFormData(),
-        goToWorkbookDoneScreen({
-          params
-        })
-      ]
+      syncFormData(),
+      goToWorkbookDoneScreen({
+        params
+      })
+    ]
     : [
-        goToWorkbookScreenWithParams({
-          ...params,
-          formId: Object.keys(models)[formIdIndex + 1]
-        })
-      ]
+      goToWorkbookScreenWithParams({
+        ...params,
+        formId: Object.keys(models)[formIdIndex + 1]
+      })
+    ]
 
   const next = value => {
     const submit = submitFormValue({

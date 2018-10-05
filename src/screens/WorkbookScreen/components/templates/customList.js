@@ -1,4 +1,4 @@
-import React from 'react'
+import React    from 'react'
 import FormList from './FormList'
 
 export default ({ stylesheet, hidden, ...rest }) =>

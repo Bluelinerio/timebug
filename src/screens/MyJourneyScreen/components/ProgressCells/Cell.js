@@ -44,8 +44,8 @@ const Cell = ({
             Platform.OS === 'ios'
               ? {}
               : {
-                  marginHorizontal: scrollViewHorizontalPadding
-                },
+                marginHorizontal: scrollViewHorizontalPadding
+              },
             style.highlight
           ]}
         >
