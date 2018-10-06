@@ -4,6 +4,7 @@ import InteractionManager     from '../../utils/InteractionManager'
 import GoalScreenContainer    from './containers/GoalScreenContainer'
 import User                   from '../../containers/User'
 import DefaultIndicator       from '../../components/DefaultIndicator'
+import MissingUserScreen      from '../../components/MissingUserScreen'
 
 class GoalScreen extends React.PureComponent {
   constructor(props) {
@@ -26,7 +27,7 @@ class GoalScreen extends React.PureComponent {
     return didFinishInitialAnimation ? (
       <User
         renderWithUser={() => <GoalScreenContainer />}
-        renderWithAnonymous={() => <GoalScreenContainer />}
+        renderWithAnonymous={() => <MissingUserScreen />}
         renderWithAuthenticating={() => <DefaultIndicator size="large" />}
         renderWithUndetermined={() => <DefaultIndicator size="large" />}
       />

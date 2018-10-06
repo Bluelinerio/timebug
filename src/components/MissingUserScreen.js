@@ -1,8 +1,8 @@
-import React from 'react'
+import React                      from 'react'
 import { View, ScrollView, Text } from 'react-native'
-import { SafeAreaView } from 'react-navigation'
-import styles from '../styles/components/MissingUserScreen'
-import Banner from './MinifiedBanner'
+import { SafeAreaView }           from 'react-navigation'
+import styles                     from '../styles/components/MissingUserScreen'
+import Banner                     from './MinifiedBanner'
 
 const MissingUserScreen = () => {
   return (
