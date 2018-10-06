@@ -19,7 +19,8 @@ export default {
     MyJourneyScreen: 'MyJourneyScreen',
     MeditationScreen: 'MeditationScreen',
     RootNavigator: 'RootNavigator',
-    CheckinScreen: 'CheckinScreen'
+    CheckinScreen: 'CheckinScreen',
+    GoalScreen: 'GoalScreen'
   },
   start: {
     initialRouteName: 'TabNavigator',

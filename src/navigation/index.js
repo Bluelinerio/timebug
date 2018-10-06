@@ -26,6 +26,7 @@ import MarkdownScreen     from '../screens/MarkdownScreen'
 import EmojiPickerScreen  from '../screens/EmojiPickerScreen'
 import MyJourneyScreen    from '../screens/MyJourneyScreen'
 import StartScreen        from '../screens/StartScreen'
+import GoalScreen         from '../screens/GoalScreen'
 import routes             from './routes'
 
 if (!routes || !routes.root || !routes.root.initialRouteName || !routes.step) {
@@ -128,6 +129,9 @@ export const tabConfiguration = {
     },
     [routes.tab.MyJourneyScreen]: {
       screen: MyJourneyScreen
+    },
+    [routes.tab.GoalScreen]: {
+      screen: GoalScreen
     }
   },
   options: {
