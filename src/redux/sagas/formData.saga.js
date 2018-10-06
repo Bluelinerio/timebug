@@ -111,6 +111,7 @@ const findRepeatedForms = (formData: {}): {} => {
     }, [])
 }
 
+/* eslint-disable-next-line no-unused-vars */
 function* removeRepeatedForms(user) {
   const { forms } = user
   const repeatedForms = yield call(findRepeatedForms, forms)

@@ -1,11 +1,9 @@
 // @flow
-import StepScreenComponent from '../components/StepScreenComponent'
-import { compose, mapProps } from 'recompose'
-import {
-  withNavigationAndStep
-} from '../../../HOC'
+import StepScreenComponent       from '../components/StepScreenComponent'
+import { compose, mapProps }     from 'recompose'
+import { withNavigationAndStep } from '../../../HOC'
 
-const mapStepToStepScreenProps = ({step}) => {
+const mapStepToStepScreenProps = ({ step }) => {
   return {
     headerTitle: step.stepScreenDescription,
     title: step.title,

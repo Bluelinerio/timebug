@@ -1,7 +1,7 @@
 // @flow
-import { StyleSheet, Dimensions } from 'react-native';
-import styles from '../styles';
-import { BACKGROUND_COLOR } from './templates';
+import { StyleSheet, Dimensions } from 'react-native'
+import styles                     from '../styles'
+import { BACKGROUND_COLOR }       from './templates'
 
 export default StyleSheet.create({
   ...styles,
@@ -33,4 +33,4 @@ export default StyleSheet.create({
     alignItems: 'flex-end',
     zIndex: 999
   }
-});
+})

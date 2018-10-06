@@ -1,5 +1,5 @@
 // @flow
-import * as React from 'react'
+import * as React   from 'react'
 import { Keyboard } from 'react-native'
 
 class KeyboardComponent extends React.PureComponent<
@@ -63,15 +63,15 @@ class KeyboardComponent extends React.PureComponent<
   render() {
     const { shouldRender, children, enabled } = this.props
     const { showing } = this.state
-    
+
     return children &&
       shouldRender &&
       shouldRender({
         showing,
         enabled
-      })
-    ? (<React.Fragment>{children}</React.Fragment>) 
-    : null
+      }) ? (
+        <React.Fragment>{children}</React.Fragment>
+      ) : null
   }
 }
 

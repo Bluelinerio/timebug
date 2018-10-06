@@ -1,11 +1,11 @@
 import { Platform, StyleSheet, StatusBar } from 'react-native'
-import { colors as topColors } from '../../../constants/colors'
+import { colors as topColors }             from '../../../constants/colors'
 import {
   iOSColors,
   human,
   iOSUIKit,
   systemWeights
-} from 'react-native-typography'
+}                                          from 'react-native-typography'
 
 if (!iOSColors || !human || !iOSUIKit || !systemWeights) {
   throw 'missing react-native-typography'

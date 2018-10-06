@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { View } from 'react-native'
-import Entypo from 'react-native-vector-icons/Entypo'
+import { View }   from 'react-native'
+import Entypo     from 'react-native-vector-icons/Entypo'
 
 export const ActionButton = ({
   color,

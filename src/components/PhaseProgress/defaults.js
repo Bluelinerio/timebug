@@ -1,23 +1,10 @@
-import * as React from 'react'
-import { Dimensions } from 'react-native'
+import * as React                                            from 'react'
+import { Dimensions }                                        from 'react-native'
 import Svg, {
   Circle,
   Rect,
   G
-  // Ellipse,
-  // LinearGradient,
-  // RadialGradient,
-  // Line,
-  // Path,
-  // Polygon,
-  // Polyline,
-  // Symbol,
-  // Text,
-  // Use,
-  // Defs,
-  // Stop
-} from 'react-native-svg'
-//import Grid from '../Grid'
+}                                                            from 'react-native-svg'
 import type { GridItemProps, GridContainerProps, GridProps } from '../Grid'
 
 export const renderContainer = (props: GridContainerProps) => (

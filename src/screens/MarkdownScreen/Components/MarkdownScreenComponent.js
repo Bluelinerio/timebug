@@ -1,15 +1,13 @@
 //@flow
-import * as React from 'react'
-import { View, ScrollView } from 'react-native'
-
-import CustomImage from '../../../components/CustomImage'
-import Markdown from '../../../Modules/Markdown'
-import { APPBAR_HEIGHT, STATUSBAR_HEIGHT } from '../../../constants'
-import ScrollingHeaderPageComponent from '../../../components/ScrollingHeaderPageComponent'
-import ScrollingHeaderPageContentComponent from '../../../components/ScrollingHeaderPageContentComponent'
-import ScrollingHeaderPageHeaderComponent from '../../../components/ScrollingHeaderPageHeaderComponent'
+import * as React                                   from 'react'
+import { View }                                     from 'react-native'
+import Markdown                                     from '../../../Modules/Markdown'
+import { APPBAR_HEIGHT, STATUSBAR_HEIGHT }          from '../../../constants'
+import ScrollingHeaderPageComponent                 from '../../../components/ScrollingHeaderPageComponent'
+import ScrollingHeaderPageContentComponent          from '../../../components/ScrollingHeaderPageContentComponent'
+import ScrollingHeaderPageHeaderComponent           from '../../../components/ScrollingHeaderPageHeaderComponent'
 import ScrollingHeaderPageHeaderBackgorundComponent from '../../../components/ScrollingHeaderPageHeaderBackgorundComponent'
-import styles, { HEADER_HEIGHT } from '../styles'
+import { HEADER_HEIGHT }                            from '../styles'
 
 export type PageContentProps = {
   markdownStyles: any,

@@ -1,15 +1,15 @@
 //@flow
 import { connect } from 'react-redux'
-import selectors from '../redux/selectors'
+import selectors   from '../redux/selectors'
 import {
   submitAwardAnswers,
   resetAward,
   SubmitAwardValuePayload
-} from '../redux/actions/award.actions'
+}                  from '../redux/actions/award.actions'
 import {
   AwardData,
   SimpleModelData
-} from '../redux/reducers/awards.reducer'
+}                  from '../redux/reducers/awards.reducer'
 
 type AwardForStep = {
   model: SimpleModelData,

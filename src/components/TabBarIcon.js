@@ -1,12 +1,12 @@
 //@flow
-import React from 'react'
+import React    from 'react'
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import routes from '../navigation/routes'
+import routes   from '../navigation/routes'
 
 type TabBarIconProps = {
-    routeName: string,
-    focused: boolean,
-    tintColor: string
+  routeName: string,
+  focused: boolean,
+  tintColor: string
 }
 
 const mapRouteToIcon = (routeName, focused) => {

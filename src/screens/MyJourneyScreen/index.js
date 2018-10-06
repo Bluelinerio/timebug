@@ -1,14 +1,15 @@
 //@flow
-import React                    from 'react'
-import { StyleSheet }           from 'react-native'
-import {
-  HeaderBackButton,
-  NavigationActions,
-  StackNavigator
-}                               from 'react-navigation'
-import styles                   from './styles'
+
 import MyJourneyScreenContainer from './containers/MyJourneyScreenContainer'
 
+// import React                    from 'react'
+// import { StyleSheet }           from 'react-native'
+// import {
+//   HeaderBackButton,
+//   NavigationActions,
+//   StackNavigator
+// }                               from 'react-navigation'
+// import styles                   from './styles'
 // const headerTitle: string = 'My Journey'
 
 // type NavigationOptionsProps = {

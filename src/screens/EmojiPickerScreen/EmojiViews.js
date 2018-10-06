@@ -6,10 +6,9 @@ import {
   StyleSheet,
   TouchableOpacity,
   Platform,
-  Dimensions,
   ActivityIndicator,
   FlatList
-} from 'react-native'
+}            from 'react-native'
 
 type Emoji = {
   key: string,

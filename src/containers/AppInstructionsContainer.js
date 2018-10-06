@@ -7,9 +7,7 @@ type Props = {
   render?: ({
     appInstructions: string
   }) => React.Node,
-  renderWithNotAvialble?: ({
-
-  }) => React.Node
+  renderWithNotAvaliable?: (any) => React.Node
 }
 
 const pages = (state) => getCms(state).pages
@@ -22,13 +20,13 @@ const mapStateToProps = state => ({
 const AppInstructionsContainer = connect(mapStateToProps)(
   ({
     render,
-    renderWithNotAvialble,
+    renderWithNotAvaliable,
     appInstructions,
     ...rest
-  }) => (appInstructions && render)
+  }: Props) => (appInstructions && render)
     ? render({ appInstructions, ...rest})
-    : renderWithNotAvialble
-      ? renderWithNotAvialble(rest)
+    : renderWithNotAvaliable
+      ? renderWithNotAvaliable(rest)
       : null
 )
 export default AppInstructionsContainer

@@ -1,4 +1,6 @@
-import * as React from 'react';
-import { View } from 'react-native';
+import * as React from 'react'
+import { View } from 'react-native'
 
-export default () => <View />;
+const DashboardScreen = () => <View />
+
+export default DashboardScreen

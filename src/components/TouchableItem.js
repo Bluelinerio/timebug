@@ -15,8 +15,8 @@ import {
   TouchableNativeFeedback,
   TouchableOpacity,
   View
-} from 'react-native';
-import type { StyleObj } from 'react-native/Libraries/StyleSheet/StyleSheetTypes';
+}                                     from 'react-native';
+import type { StyleObj }              from 'react-native/Libraries/StyleSheet/StyleSheetTypes';
 type ViewStyleProp = StyleObj;
 
 const ANDROID_VERSION_LOLLIPOP = 21;

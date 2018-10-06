@@ -1,6 +1,6 @@
-import R from 'ramda'
-import routes from '../../navigation/routes'
-import { composeReducers } from './utils'
+import R                     from 'ramda'
+import routes                from '../../navigation/routes'
+import { composeReducers }   from './utils'
 import { NavigationActions } from 'react-navigation'
 
 const NavigationActionStepIdLens = R.lensPath(['params', 'stepId'])
@@ -37,24 +37,24 @@ const navigationReducer = (state = {}, action) => {
 
   const tagPageVisits = (state = {}, action) => {
     switch (R.view(NavigationActionRouteNameLens, action)) {
-      case routes.root.AssignmentFlow:
-      case routes.step.StepScreen: {
-        return R.over(
-          stepGuideLensWithStep(R.view(NavigationActionStepIdLens, action)),
-          updateScreen({}),
-          state
-        )
-      }
-      case routes.step.WorkbookScreen:
-        return R.over(
-          stepWorkbookLensWithStep(R.view(NavigationActionStepIdLens, action)),
-          updateScreen({
-            formId: R.view(NavigationActionFormIdLens)
-          }),
-          state
-        )
-      default:
-        break
+    case routes.root.AssignmentFlow:
+    case routes.step.StepScreen: {
+      return R.over(
+        stepGuideLensWithStep(R.view(NavigationActionStepIdLens, action)),
+        updateScreen({}),
+        state
+      )
+    }
+    case routes.step.WorkbookScreen:
+      return R.over(
+        stepWorkbookLensWithStep(R.view(NavigationActionStepIdLens, action)),
+        updateScreen({
+          formId: R.view(NavigationActionFormIdLens)
+        }),
+        state
+      )
+    default:
+      break
     }
   }
 

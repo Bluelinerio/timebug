@@ -1,6 +1,9 @@
+/* eslint-disable react/display-name */
+/* eslint-disable react/display-name */
+
 // @flow
 import React              from 'react'
-import { Platform, Text }       from 'react-native'
+import { Platform }       from 'react-native'
 import {
   StackNavigator,
   NavigationActions,
@@ -20,7 +23,6 @@ import WorkbookDoneScreen from '../screens/WorkbookDoneScreen'
 import WorkbookScreen     from '../screens/WorkbookScreen'
 import WalkthroughScreen  from '../screens/WalkthroughScreen'
 import DashboardScreen    from '../screens/DashboardScreen'
-import MeditationScreen   from '../screens/MeditationScreen'
 import CheckinScreen      from '../screens/CheckinScreen'
 import MarkdownScreen     from '../screens/MarkdownScreen'
 import EmojiPickerScreen  from '../screens/EmojiPickerScreen'
@@ -31,21 +33,6 @@ import routes             from './routes'
 
 if (!routes || !routes.root || !routes.root.initialRouteName || !routes.step) {
   throw 'missing routes or nested fields ' + JSON.stringify(routes)
-}
-
-const mapRouteToName = (routeName) => {
-  switch (routeName) {
-    case routes.tab.RootNavigator:
-      return 'Home'
-    case routes.tab.MeditationScreen:
-      return 'Meditation'
-    case routes.tab.MyJourneyScreen:
-      return 'Journey'
-    case routes.tab.CheckinScreen:
-      return 'Checkins'
-    default:
-      return ''
-  }
 }
 
 // TODO: there's an issue with moving from the current setup where the import of each screen gets you an object that looks like { screen: } rather than a component, so I added
@@ -118,6 +105,11 @@ export const RootNavigator = StackNavigator(
   rootConfiguration.options
 )
 
+type NavigationOptionsElementProps = {
+  focused: boolean,
+  tintColor: string
+}
+
 export const tabConfiguration = {
   routes: routes.tab,
   screens: {
@@ -137,7 +129,7 @@ export const tabConfiguration = {
   options: {
     initialRouteName: routes.tab.initialRouteName,
     navigationOptions: ({ navigation }) => ({
-      tabBarIcon: ({ focused, tintColor }) => {
+      tabBarIcon: ({ focused, tintColor }: NavigationOptionsElementProps) => {
         const { routeName } = navigation.state
         return (
           <TabBarIcon
@@ -147,7 +139,7 @@ export const tabConfiguration = {
           />
         )
       },
-      tabBarLabel: ({ tintColor, focused }) => {
+      tabBarLabel: ({ tintColor }: NavigationOptionsElementProps) => {
         const { routeName } = navigation.state
         return (
           <TabBarLabel routeName={routeName} tintColor={tintColor}/>

@@ -1,10 +1,10 @@
 // @flow
-import * as React from 'react'
+import * as React                 from 'react'
 import { Text, View, StyleSheet } from 'react-native'
-import dashboardStyles from '../../styles/dashboard.styles'
-import Button from '../../../components/Button'
-import WorkbookIndicator from '../../../components/WorkbookIndicator'
-import Insight from '../../../components/Insight'
+import dashboardStyles            from '../../styles/dashboard.styles'
+import Button                     from '../../../components/Button'
+import WorkbookIndicator          from '../../../components/WorkbookIndicator'
+import Insight                    from '../../../components/Insight'
 
 const white = '#FEFEFE'
 export type Props = {
@@ -38,39 +38,41 @@ const WorkbookDoneScreen = ({
         }
       ]}
     >
-      {
-        isSynchingFormData
-          ? <WorkbookIndicator />
-          : <View> 
-              <View style={[styles.messageContainer]}>
-                <Text
-                  style={[
-                    dashboardStyles.title,
-                    dashboardStyles.strong,
-                    { color: white, textAlign: 'left', marginBottom: 30 }
-                  ]}
-                >
-                  {title}
+      {isSynchingFormData ? (
+        <WorkbookIndicator />
+      ) : (
+        <View>
+          <View style={[styles.messageContainer]}>
+            <Text
+              style={[
+                dashboardStyles.title,
+                dashboardStyles.strong,
+                { color: white, textAlign: 'left', marginBottom: 30 }
+              ]}
+            >
+              {title}
+            </Text>
+            <Text style={styles.suggestionText}>
+              {insightText && (
+                <Text>
+                  <Insight
+                    insightText={insightText}
+                    style={{ title: dashboardStyles.strong }}
+                    extraLines={2}
+                  />
                 </Text>
-                <Text style={styles.suggestionText}>
-                    {
-                      insightText && 
-                        <Text>
-                          <Insight insightText={insightText} style={{title: dashboardStyles.strong }} extraLines={2} />
-                        </Text>
-                    }
-                    <Text style={dashboardStyles.strong}>{"What's next?\n"}</Text>
-                    {nextStepMotivationText}
-                </Text>
-              </View>
-              <View>
-              {
-                !isSynchingFormData &&
-                  <Button backgroundColor={white} {...button} />
-              }
-              </View>
-            </View>  
-      }
+              )}
+              <Text style={dashboardStyles.strong}>{"What's next?\n"}</Text>
+              {nextStepMotivationText}
+            </Text>
+          </View>
+          <View>
+            {!isSynchingFormData && (
+              <Button backgroundColor={white} {...button} />
+            )}
+          </View>
+        </View>
+      )}
     </View>
   )
 }

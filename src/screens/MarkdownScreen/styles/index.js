@@ -1,8 +1,8 @@
-import { StyleSheet, Dimensions } from 'react-native'
-import { deepBlue } from '../../../constants/colors'
+import { StyleSheet, Dimensions }          from 'react-native'
+import { deepBlue }                        from '../../../constants/colors'
 import { STATUSBAR_HEIGHT, APPBAR_HEIGHT } from '../../../constants'
-import normalize from '../../../utils/normalizeText'
-import topStyle from '../styles'
+import normalize                           from '../../../utils/normalizeText'
+import topStyle                            from '../styles'
 
 export const HEADER_HEIGHT = Dimensions.get('window').height * 0.4
 export default StyleSheet.create({

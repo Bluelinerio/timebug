@@ -1,5 +1,5 @@
-import t from '../components/templates';
-import { PillarsOfLife, AreaOfLife, HoursPerMonth } from './contents';
+import t                                from '../components/templates';
+import { PillarsOfLife, HoursPerMonth } from './contents';
 
 export default {
   1: {
@@ -69,7 +69,7 @@ export default {
           item: {
             auto: 'none',
             fields: {
-              pillarOfLife: { 
+              pillarOfLife: {
                 auto: 'labels'
                 //error: "Please select a Life category."
               },

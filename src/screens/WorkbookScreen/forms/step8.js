@@ -7,7 +7,7 @@ import {
   OneToTenScale,
   TimesPerWeek,
   ExerciseLength
-} from './contents';
+}        from './contents';
 
 export default {
   1: {

@@ -29,20 +29,23 @@ export type CheckinElementProps = {
   id: string | null
 }
 
-const operateWithLastCheckin = (frequency: string, lastCheckin: string): string => {
+const operateWithLastCheckin = (
+  frequency: string,
+  lastCheckin: string
+): string => {
   const lastCheckinMoment = moment(lastCheckin)
   switch (frequency) {
-    case frequencies[DAILY]:
-      return lastCheckinMoment.add(1, 'd').format('MM-DD-YY')
-    case frequencies[WEEKLY]:
-      return lastCheckinMoment.add(1, 'w').format('MM-DD-YY')
-    case frequencies[BIWEEKLY]:
-      return lastCheckinMoment
-        .add(3, 'd')
-        .add('12', 'h')
-        .format('MM-DD-YY')
-    case frequencies[MONTHLY]:
-      return lastCheckinMoment.add(1, 'M').format('MM-DD-YY')
+  case frequencies[DAILY]:
+    return lastCheckinMoment.add(1, 'd').format('MM-DD-YY')
+  case frequencies[WEEKLY]:
+    return lastCheckinMoment.add(1, 'w').format('MM-DD-YY')
+  case frequencies[BIWEEKLY]:
+    return lastCheckinMoment
+      .add(3, 'd')
+      .add('12', 'h')
+      .format('MM-DD-YY')
+  case frequencies[MONTHLY]:
+    return lastCheckinMoment.add(1, 'M').format('MM-DD-YY')
   }
 }
 
@@ -52,23 +55,23 @@ const operateCheckinDate = (
 ): string => {
   if (lastCheckin) return operateWithLastCheckin(frequency, lastCheckin)
   switch (frequency) {
-    case frequencies[DAILY]:
-      return moment()
-        .add(1, 'd')
-        .format('MM-DD-YY')
-    case frequencies[WEEKLY]:
-      return moment()
-        .add(1, 'w')
-        .format('MM-DD-YY')
-    case frequencies[BIWEEKLY]:
-      return moment()
-        .add(3, 'd')
-        .add('12', 'h')
-        .format('MM-DD-YY')
-    case frequencies[MONTHLY]:
-      return moment()
-        .add(1, 'M')
-        .format('MM-DD-YY')
+  case frequencies[DAILY]:
+    return moment()
+      .add(1, 'd')
+      .format('MM-DD-YY')
+  case frequencies[WEEKLY]:
+    return moment()
+      .add(1, 'w')
+      .format('MM-DD-YY')
+  case frequencies[BIWEEKLY]:
+    return moment()
+      .add(3, 'd')
+      .add('12', 'h')
+      .format('MM-DD-YY')
+  case frequencies[MONTHLY]:
+    return moment()
+      .add(1, 'M')
+      .format('MM-DD-YY')
   }
 }
 

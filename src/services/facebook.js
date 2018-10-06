@@ -41,6 +41,17 @@ const openFBLogin = (): Promise<OpenFBLoginResult> =>
 
 const logOut = (): Promise<void> => LoginManager.logOut()
 
+/**
+ * Dummies
+ */
+class GraphRequest {}
+
+const GraphRequestManager = () => ({
+  addRequest: () => ({
+    start: () => null
+  })
+})
+
 const fetchUserImage = (facebookId: string) => {
   return new Promise((resolve, reject) => {
     const path = `/${facebookId}/picture`

@@ -1,11 +1,11 @@
-import { connect } from 'react-redux'
-import { compose, mapProps } from 'recompose'
-import { withNavigation } from 'react-navigation'
-import selectors from '../../../redux/selectors'
-import { goToEmojiPickerScreen } from '../../../redux/actions/nav.actions'
+import { connect }                 from 'react-redux'
+import { compose, mapProps }       from 'recompose'
+import { withNavigation }          from 'react-navigation'
+import selectors                   from '../../../redux/selectors'
+import { goToEmojiPickerScreen }   from '../../../redux/actions/nav.actions'
 import EmotionCheckinCellComponent from '../components/DashboardCells/EmotionCheckinCellComponent'
-import { randomItem } from '../../../utils/random'
-import moment from 'moment'
+import { randomItem }              from '../../../utils/random'
+import moment                      from 'moment'
 
 const getGreetingTime = m => {
   if (!m || !m.isValid()) return ''
@@ -32,13 +32,13 @@ const MENTAL = 'Mental'
 type CheckinType = EMOTION | PHYSICAL | MENTAL
 
 type CheckinSuggestion = {
-  type: CheckingType,
+  type: CheckinType,
   title: string,
   color: string,
   id: string
 }
 
-const createNewHowAreYouFeelingSuggestionCheckin = ({ user, uniqueColors }) => {
+const createNewHowAreYouFeelingSuggestionCheckin = ({ user, uniqueColors }): CheckinSuggestion => {
   const randomCheckinType = (): CheckinType =>
     randomItem([EMOTION, PHYSICAL, MENTAL])
 
@@ -51,7 +51,7 @@ const createNewHowAreYouFeelingSuggestionCheckin = ({ user, uniqueColors }) => {
 
   const suggestionTitleFromFirstNameAndCheckinType = (
     firstName: string,
-    checkinType: CheckingType
+    checkinType: CheckinType
   ) =>
     `Hi${(firstName && ` ${firstName}, how`) ||
       `, how`} are you feeling ${checkinTypeInSentence(
@@ -78,7 +78,7 @@ const mapStateToProps = state =>
     uniqueColors: selectors.uniqueColors(state)
   })
 
-const button = ({ title, color, id, checkinType, navigation, ...rest }) => ({
+const button = ({ title, color, id, checkinType, navigation }) => ({
   title,
   button: {
     onPress: () =>

@@ -1,4 +1,3 @@
-import * as React       from 'react'
 import t                from 'tcomb-form-native/lib'
 import { getTypeInfo }  from 'tcomb-form-native/lib/util'
 import templates        from 'tcomb-form-native/lib/templates/bootstrap/index'
@@ -12,7 +11,7 @@ import select           from './select'
 import customStylesheet from '../../styles/templates/index'
 
 if (__DEV__) {
-  function assert(condition, error) {
+  const assert = (condition, error) => {
     if (!condition) throw error
   }
   const message = name => `expected ${name} in customStylesheet`
@@ -68,9 +67,9 @@ t.form.Form.defaultProps = {
 t.String.getValidationErrorMessage = (actual, path, context) => {
   const to = context && context.options && context.options.label || path && path.length && path[0]
   const help = context && context.options && context.options.help
-  return `${actual 
+  return `${actual
     ? `Invalid value ${t.stringify(actual)}  supplied `
-    : 'Missing required field for' 
+    : 'Missing required field for'
   } ${to ? 'to \'' + to + '\'' : ''} ${help ? `\n ${help}` : ''}`
 }
 

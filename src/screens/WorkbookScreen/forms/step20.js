@@ -1,4 +1,4 @@
-import t from '../components/templates'
+import t                                                  from '../components/templates'
 import { TimeSpentProgress, OneToTenScale, OverallScore } from './contents'
 
 export default {
@@ -90,34 +90,34 @@ export default {
         pastPillarImportance: {
           fields: {
             pastPillarImportanceCareer: {
-          label: 'Career',
-          help: '10= Very Important and 1= Not important at all'
-        },
-        pastPillarImportanceAimsAndHobbies: {
-          label: 'Aims and Hobbies',
-          help: '10= Very Important and 1= Not important at all'
-        },
-        pastPillarImportanceHealthAndWellness: {
-          label: 'Health and Wellness',
-          help: '10= Very Important and 1= Not important at all'
-        },
-        pastPillarImportanceFinancial: {
-          label: 'Financial',
-          help: '10= Very Important and 1= Not important at all'
-        },
-        pastPillarImportanceRelationship: {
-          label: 'Relationships',
-          help: '10= Very Important and 1= Not important at all'
-        },
-        pastPillarImportanceEnvironment: {
-          label: 'Environment',
-          help: '10= Very Important and 1= Not important at all'
-        },
-        pastPillarImportanceSpirituality: {
-          label: 'Spirituality',
-          help: '10= Very Important and 1= Not important at all'
-        }
-      }
+              label: 'Career',
+              help: '10= Very Important and 1= Not important at all'
+            },
+            pastPillarImportanceAimsAndHobbies: {
+              label: 'Aims and Hobbies',
+              help: '10= Very Important and 1= Not important at all'
+            },
+            pastPillarImportanceHealthAndWellness: {
+              label: 'Health and Wellness',
+              help: '10= Very Important and 1= Not important at all'
+            },
+            pastPillarImportanceFinancial: {
+              label: 'Financial',
+              help: '10= Very Important and 1= Not important at all'
+            },
+            pastPillarImportanceRelationship: {
+              label: 'Relationships',
+              help: '10= Very Important and 1= Not important at all'
+            },
+            pastPillarImportanceEnvironment: {
+              label: 'Environment',
+              help: '10= Very Important and 1= Not important at all'
+            },
+            pastPillarImportanceSpirituality: {
+              label: 'Spirituality',
+              help: '10= Very Important and 1= Not important at all'
+            }
+          }
         }
       }
     }
@@ -133,8 +133,7 @@ export default {
       spiritualityEnergyMotivationLevel: t.Number
     }),
     options: {
-      label:
-        'How would you slice up each in terms of energy level?',
+      label: 'How would you slice up each in terms of energy level?',
 
       fields: {
         careerEnergyMotivationLevel: {
@@ -207,8 +206,9 @@ export default {
       selfSpiritualityOverallRating: OverallScore
     }),
     options: {
-      label:'What is your final evaluation for each of the past 5 Years? Give yourself a 5-Year Score (1-10 score per year, for a total maximum high score of 50/50, across each Pillar of Life).',
-            fields: {
+      label:
+        'What is your final evaluation for each of the past 5 Years? Give yourself a 5-Year Score (1-10 score per year, for a total maximum high score of 50/50, across each Pillar of Life).',
+      fields: {
         selfCareerYear1Rating: {
           label: 'Career(Year 1)'
         },

@@ -1,4 +1,4 @@
-import t from '../components/templates';
+import t from '../components/templates'
 import {
   OneToTenScale,
   IsSleepEnough,
@@ -12,7 +12,7 @@ import {
   BedTimes,
   EatingFrequency,
   HoursSleep
-} from './contents';
+}        from './contents'
 
 export default {
   1: {
@@ -38,12 +38,11 @@ export default {
             },
             feelNow: {
               label: 'How do you feel physically now?',
-              help: '1= Not very well to 10= Very well'    
+              help: '1= Not very well to 10= Very well'
             },
             healthyPerson: {
-             label: 'Do you think you are a healthy person?',
+              label: 'Do you think you are a healthy person?',
               help: '1= Not very healthy to 10= Extremely healthy'
-    
             }
           }
         }
@@ -72,7 +71,8 @@ export default {
     options: {
       fields: {
         fitnessBehaviorAssessment: {
-       label: 'Now, its time to think about your fitness and exercise behaviors.',
+          label:
+            'Now, its time to think about your fitness and exercise behaviors.',
 
           fields: {
             doYouExercise: {
@@ -239,9 +239,9 @@ export default {
               error: 'Please fill out the field.'
             },
             howProminent: {
-              label:'How significant are these issues?',
-              help: 'Using a 10pt scale with 1=very little effect to 10=a daily challenge'
-    
+              label: 'How significant are these issues?',
+              help:
+                'Using a 10pt scale with 1=very little effect to 10=a daily challenge'
             },
             sickDays: {
               label:
@@ -300,7 +300,7 @@ export default {
           error: 'Please fill out the field.'
         },
         stressfulSituationAwareness: {
-          label:'How do stressful situations influence your health?',
+          label: 'How do stressful situations influence your health?',
           fields: {
             auto: 'placeholders',
             example1: {
@@ -317,4 +317,4 @@ export default {
       }
     }
   }
-};
+}

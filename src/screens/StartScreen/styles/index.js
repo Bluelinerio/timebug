@@ -12,9 +12,7 @@ import {
   PHASE_1_COMPLETE,
   PHASE_2_COMPLETE,
   PHASE_3_COMPLETE,
-  PHASE_1_INCOMPLETE,
-  PHASE_2_INCOMPLETE,
-  PHASE_3_INCOMPLETE
+  PHASE_1_INCOMPLETE
 }                                     from '../../../constants/colors'
 import Viewport, { heightPercentage } from '../../../utils/viewportCalculation'
 import { bannerHeight }               from '../../../styles/components/StartScreenBanner'

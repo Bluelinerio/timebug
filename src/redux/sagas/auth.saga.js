@@ -1,18 +1,15 @@
 // @flow
 import {
   throttle,
-  select,
   take,
   race,
   call,
   all,
-  cancelled,
   put,
   takeLatest,
   fork
 }                                                 from 'redux-saga/effects'
 import { requestSaga }                            from '../../Modules/redux-saga-request'
-import type { Request }                           from '../../Modules/redux-saga-request'
 import {
   LOGIN_WITH_FB_BUTTON_PRESSED,
   FB_LOGIN_DIALOG_RESPONDED,
@@ -20,20 +17,8 @@ import {
   REFRESH_USER
 }                                                 from '../actionTypes'
 import * as actions                               from '../actions'
-import {
-  incrementRequestCount,
-  decrementRequestCount
-}                                                 from '../actions/network.actions'
 import { initialNotifications }                   from '../actions/checkin.actions'
 import { GET_USER, AUTHENTICATE_FB, refreshUser } from '../actions/user.actions'
-import selectors                                  from '../selectors'
-import type {
-  Auth,
-  AuthUser,
-  User,
-  UserState,
-  ErrorResponse
-}                                                 from '../../services/apollo/models'
 import {
   authenticateWithFBToken,
   fetchUserWithId,
@@ -57,12 +42,12 @@ function* _logout() {
   ])
 }
 
-function* _logoutAndWipeUserData() {
-  yield all([call(_logout), put(actions.resetStore)])
-}
+// function* _logoutAndWipeUserData() {
+//   yield all([call(_logout), put(actions.resetStore)])
+// }
 
 function* _handleUserError() {
-  const result = yield call(_logout)
+  yield call(_logout)
   yield put(actions.setUserAnonymous())
 }
 

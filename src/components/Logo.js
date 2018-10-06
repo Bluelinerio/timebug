@@ -1,21 +1,5 @@
-import * as React from 'react'
-import Svg, {
-  Rect,
-  G,
-  Path,
-  // Circle,
-  // Ellipse,
-  // LinearGradient,
-  // RadialGradient,
-  // Line,
-  // Polygon,
-  // Polyline,
-  // Symbol,
-  // Text,
-  // Use,
-  // Defs,
-  // Stop
-} from 'react-native-svg'
+import * as React             from 'react'
+import Svg, { Rect, G, Path } from 'react-native-svg'
 
 type Props = {
   width: number,
@@ -23,16 +7,15 @@ type Props = {
   //style: any,
   backgroundColor: string,
   shapeColor: string,
-  circleColor: string,
+  circleColor: string
 }
 const Logo = ({
   width,
   height,
-  //style = {},
   backgroundColor = 'transparent',
   shapeColor = '#FFFFFF',
   circleColor = '#E4E4E459'
-} : Props)   => (
+}: Props) => (
   <Svg width={width || 1024} height={height || 1024} viewBox="0 0 1024 1024">
     <G id="2020-app-store-icon-(1024)">
       <Rect

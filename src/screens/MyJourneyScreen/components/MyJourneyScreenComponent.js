@@ -1,8 +1,7 @@
 //@flow
-import React from 'react'
-import { ScrollView } from 'react-native'
-import { SafeAreaView } from 'react-navigation'
-
+import React                     from 'react'
+import { ScrollView }            from 'react-native'
+import { SafeAreaView }          from 'react-navigation'
 import User                      from './../../../containers/User'
 import ProgressCellComponent     from './ProgressCellComponent'
 import styles                    from '../styles'

@@ -1,24 +1,24 @@
 // @flow
-import React from 'react'
-import { ApolloProvider } from 'react-apollo'
-import { Provider } from 'react-redux'
-import { AppRegistry, Platform, View } from 'react-native'
-import { PersistGate } from 'redux-persist/es/integration/react'
-import codePush from 'react-native-code-push'
-
+/* eslint-disable no-global-assign */
+import React                     from 'react'
+import { ApolloProvider }        from 'react-apollo'
+import { Provider }              from 'react-redux'
+import { AppRegistry, Platform } from 'react-native'
+import { PersistGate }           from 'redux-persist/es/integration/react'
+import codePush                  from 'react-native-code-push'
 import {
   isNativeUpdateRequired,
   NativeUpdateRequired
-}                                      from './containers/VersionGate'
+}                                from './containers/VersionGate'
 import './reactotron'
-import setup                           from './redux'
-import { resetStore }                  from './redux/actions'
-import { client }                      from './services/apollo'
+import setup                     from './redux'
+import { resetStore }            from './redux/actions'
+import { client }                from './services/apollo'
 import './services/sentry'
-import AppNavigation                   from './containers/AppNavigationWithModal'
-import { APP_NAME }                    from './constants'
-import DefaultIndicator                from './components/DefaultIndicator'
-import Error                           from './components/Error'
+import AppNavigation             from './containers/AppNavigationWithModal'
+import { APP_NAME }              from './constants'
+import DefaultIndicator          from './components/DefaultIndicator'
+import Error                     from './components/Error'
 
 if (__DEV__) {
   //Show network requests such as fetch, WebSocket etc. in chrome dev tools:
@@ -37,8 +37,7 @@ export default class App extends React.Component<{}, State> {
     error: null
   }
   async componentDidCatch(error: any) {
-    if (__DEV__) {
-    } else if (this.state.error && error === this.state.error) {
+    if (this.state.error && error === this.state.error) {
       store.dispatch(resetStore)
       persistor.purge()
     }

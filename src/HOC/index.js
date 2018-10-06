@@ -1,9 +1,9 @@
-import { connect } from 'react-redux'
-import { withNavigation } from 'react-navigation'
+import { connect }                                    from 'react-redux'
+import { withNavigation }                             from 'react-navigation'
 import { compose, mapProps, renderComponent, branch } from 'recompose'
-import selectors from '../redux/selectors'
-import UserAnonymousError from '../containers/UserAnonymousError'
-import DefaultIndicator from '../components/DefaultIndicator'
+import selectors                                      from '../redux/selectors'
+import UserAnonymousError                             from '../containers/UserAnonymousError'
+import DefaultIndicator                               from '../components/DefaultIndicator'
 
 const unpackStepParamsFromNavigation = ({
   state: { params: { stepId, stepColor, stepNumber, formId } }

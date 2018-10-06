@@ -1,6 +1,6 @@
 //@flow
-import * as React from 'react'
-import { View, StyleSheet } from 'react-native'
+import * as React                          from 'react'
+import { View, StyleSheet }                from 'react-native'
 import { APPBAR_HEIGHT, STATUSBAR_HEIGHT } from '../constants'
 
 const ScrollingHeaderPageHeaderBackgorundComponent = ({ color }: { color: string }) => (

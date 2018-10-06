@@ -1,7 +1,9 @@
 export const SELECT_PUT_ACTION = 'SELECT_PUT_ACTION';
-export type SelectPutActionFnType = <T>(
+
+export type SelectPutActionFnType = (
   state: any
-) => { type: string, payload: T };
+) => { type: string, payload: any };
+
 export type SelectPutActionType = {
   type: SELECT_PUT_ACTION,
   payload: { selectPut: SelectPutActionFnType }

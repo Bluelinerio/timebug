@@ -9,12 +9,11 @@ import {
   StatusBar
 }                           from 'react-native'
 import t                    from './templates'
-
 import KeyboardComponent    from '../../../components/KeyboardComponent'
 import DefaultIndicator     from '../../../components/DefaultIndicator'
 import WorkbookNextButton   from '../components/WorkbookNextButton'
 import styles               from '../styles'
-import hexToRgba           from '../../../utils/colorTransform'
+import hexToRgba            from '../../../utils/colorTransform'
 
 const Form = t.form.Form
 
@@ -29,7 +28,8 @@ export type Props = {
   next: (value: any) => void,
   buttonMessage: string,
   stepColor: string,
-  isFetching: boolean
+  isFetching: boolean,
+  backgroundImage: string
 }
 
 type Layout = {
@@ -119,10 +119,11 @@ class WorkbookScreenComponent extends Component<Props, State> {
     }
   }
 
+  /* eslint-disable-next-line */
   onChange = (value: any, path: [string]) => {
-    const { model: { type }, errors } = this.state
-    const fieldName = path[path.length - 1]
-    const fieldValue = path.reduce((struct: {}, field) => struct[field], value)
+    const { model: { type } } = this.state
+    // const fieldName = path[path.length - 1]
+    // const fieldValue = path.reduce((struct: {}, field) => struct[field], value)
     if (!this.state.errors) {
       const isInvalid = t.validate(value, type).isValid() === false
       if (this.state.isInvalid !== isInvalid || this.state.value !== value) {
@@ -174,7 +175,6 @@ class WorkbookScreenComponent extends Component<Props, State> {
   }
 
   onLayout = ({ nativeEvent: { layout } }) => {
-    const { formLayout } = this.state
     this.setState(
       {
         containerLayout: layout
@@ -215,20 +215,23 @@ class WorkbookScreenComponent extends Component<Props, State> {
               opacity: layoutReady ? 1 : 0
             }}
           >
-                <Form
-                  type={type}
-                  ref={this.handleFormRef}
-                  options={{
-                    ...{
-                        ...options, 
-                        config: { ...config, stepColor, color: hexToRgba(stepColor, 0.1) } 
-                    },
-                    topLevel: true
-                  }}
-                  value={value}
-                  onChange={this.onChange}
-                  
-                />
+            <Form
+              type={type}
+              ref={this.handleFormRef}
+              options={{
+                ...{
+                  ...options,
+                  config: {
+                    ...config,
+                    stepColor,
+                    color: hexToRgba(stepColor, 0.1)
+                  }
+                },
+                topLevel: true
+              }}
+              value={value}
+              onChange={this.onChange}
+            />
             <View
               style={[
                 styles.flexibleHeightView,

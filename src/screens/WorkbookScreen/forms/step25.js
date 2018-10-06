@@ -1,5 +1,4 @@
-import t from '../components/templates';
-import { OneToTenScale } from './contents';
+import t from '../components/templates'
 
 export default {
   1: {
@@ -139,4 +138,4 @@ export default {
       }
     }
   }
-};
+}

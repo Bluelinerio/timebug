@@ -123,6 +123,7 @@ const _count = (first: Array<any>) => (second: Array<any>): number =>
  * @returns {boolean}
  * Returns true if test is bigger than min
  */
+/* eslint-disable-next-line no-unused-vars */
 const _biggerThan = (min: number) => (test: number): boolean => test > min
 
 /**
@@ -141,7 +142,7 @@ const _biggerOrEqualTo = (min: number) => (c: number): boolean => c >= min
  * @param {*} min
  *
  */
-
+/* eslint-disable-next-line no-unused-vars */
 const _findAtLeastOf = (data: Array<string> | Array<any>, min: number) =>
   R.compose(_biggerOrEqualTo(min), _count(data))
 
@@ -216,6 +217,7 @@ const _findIfItemHasSameNeighbor = (
  * @param {Array} data : all elements of category, hardcoded
  * @param {Number} succeedIfAbovePercent : nullable, weight of decision
  */
+/* eslint-disable-next-line no-unused-vars */
 const _test = (data: StepsList, succeedIfAbovePercent: number) => (
   subject: StepsList
 ): boolean => {

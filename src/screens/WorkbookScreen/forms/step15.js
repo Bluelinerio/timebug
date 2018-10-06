@@ -1,4 +1,4 @@
-import t from '../components/templates'
+import t                                            from '../components/templates'
 import { TimeSpent, TimeChanged, ActivityFeelings } from './contents'
 
 export default {
@@ -16,7 +16,8 @@ export default {
       )
     }),
     options: {
-      label: 'What are some of the activities and hobbies that you typically engage in each month?',
+      label:
+        'What are some of the activities and hobbies that you typically engage in each month?',
       fields: {
         id: {
           hidden: true
@@ -29,7 +30,8 @@ export default {
                 label: 'Aim/Hobby'
               },
               timeSpentMonth: {
-                label: 'How much time do you spend engaging in this activity per month?'
+                label:
+                  'How much time do you spend engaging in this activity per month?'
               },
               timeChanged: {
                 label:
@@ -91,7 +93,8 @@ export default {
       )
     }),
     options: {
-      label:"Were there any aims and hobbies that you weren't able to accomplish that you really wanted to over the past 5 years?",
+      label:
+        "Were there any aims and hobbies that you weren't able to accomplish that you really wanted to over the past 5 years?",
       fields: {
         notAccomplishedAimsAndHobbies: {
           item: {
@@ -101,7 +104,8 @@ export default {
                 label: 'Aim/Hobby'
               },
               why: {
-                label: 'What stopped you from initiating or continuing this hobby?'
+                label:
+                  'What stopped you from initiating or continuing this hobby?'
                 //error:'Why did you have trouble finding time for this hobby?'
               }
             }

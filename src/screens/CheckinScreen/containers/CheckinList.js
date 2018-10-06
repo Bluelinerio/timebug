@@ -60,10 +60,10 @@ const mergeProps = (
   const handleCheckinAction = (checkin: any) => {
     const { action: { type, payload } } = checkin
     switch (type) {
-      case 'link':
-        return () => handleLink(payload)
-      default:
-        return () => null
+    case 'link':
+      return () => handleLink(payload)
+    default:
+      return () => null
     }
   }
 

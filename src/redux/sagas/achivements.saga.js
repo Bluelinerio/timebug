@@ -5,16 +5,17 @@ import {
   actionChannel,
   select,
   call
-} from 'redux-saga/effects';
-import { UPDATE_USER } from '../actionTypes';
+}                               from 'redux-saga/effects';
+import { UPDATE_USER }          from '../actionTypes';
 import { GET_USER, updateUser } from '../actions/user.actions';
-import selectors from '../selectors';
-import achievementsList from '../../static/bot/surveyAchievements';
+import selectors                from '../selectors';
 import {
   createAchievement,
   deleteAchievement,
-  fetchUserAchievementsWithUserId
-} from '../../services/apollo';
+}                               from '../../services/apollo';
+import type {
+  User
+}                                                 from '../../services/apollo/models'
 
 const achievements = {
   ASSESSMENTS             : 'Assessments',
@@ -34,17 +35,6 @@ const achievements = {
   RELATIONSHIPS           : 'Relationships',
   SPIRITUALITY            : 'Spirituality',
   STAGES_OF_LIFE          : 'Stages Of Life'
-};
-
-const testDataFromStatic = () => {
-  function assert(condition, error) {
-    if (!condition) throw error;
-  }
-
-  Object.keys(achievements).forEach(
-    (k, i) => assert(achievements[key] === achievementsList[i]),
-    `achievements at index ${i} should be ${achievements[key]}`
-  );
 };
 
 const nextRequiredUpdateForUser = (
@@ -121,7 +111,6 @@ export function* watchChangesInFormsAndUpdateAchievements() {
   const requestChan = yield actionChannel([GET_USER.SUCCEEDED, UPDATE_USER]);
   while (true) {
     yield take(requestChan);
-    const number = Math.random();
     const user = yield select(selectors.user);
     const payload = nextRequiredUpdateForUser(user);
     if (payload.createAchievement) {

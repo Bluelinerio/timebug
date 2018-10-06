@@ -1,5 +1,5 @@
-import t from '../components/templates';
-import { Emotion } from './contents';
+import t           from '../components/templates'
+import { Emotion } from './contents'
 
 export default {
   1: {
@@ -158,4 +158,4 @@ export default {
       }
     }
   }
-};
+}

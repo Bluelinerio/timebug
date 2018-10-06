@@ -1,4 +1,4 @@
-import t from '../components/templates';
+import t                  from '../components/templates';
 import { DreamsRemember } from './contents';
 
 export default {

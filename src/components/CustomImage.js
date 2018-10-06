@@ -1,7 +1,7 @@
 // @flow
-import React from 'react'
+import React     from 'react'
 import { Image } from 'react-native'
-import SVGImage from './SVGImage'
+import SVGImage  from './SVGImage'
 
 type Props = {
   style: any,
@@ -9,7 +9,7 @@ type Props = {
 }
 
 class CustomImage extends React.PureComponent<Props> {
-  
+
   render(){
     const { source, style, ...rest } = this.props
     return source && source.endsWith('svg') ? (

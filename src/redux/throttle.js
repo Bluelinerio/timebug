@@ -7,7 +7,7 @@ export type ThrottleActionType = {
   payload: ActionToThrottle
 };
 
-export function throttleAction<T>(
+export function throttleAction(
   payload: ActionToThrottle
 ): ThrottleActionType {
   return {

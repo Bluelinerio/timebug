@@ -1,7 +1,7 @@
-import React from 'react'
+import React    from 'react'
 import { Text } from 'react-native'
-import routes from '../navigation/routes'
-import styles from '../styles/components/TabBar'
+import routes   from '../navigation/routes'
+import styles   from '../styles/components/TabBar'
 
 type TabBarLabelProps = {
   routeName: string,
@@ -27,7 +27,7 @@ const mapRouteToName = routeName => {
 
 const TabBarLabel = ({ routeName, tintColor }: TabBarLabelProps) => {
   return (
-    <Text style={[ styles.tabBarLabel, { color: tintColor }]}>
+    <Text style={[styles.tabBarLabel, { color: tintColor }]}>
       {mapRouteToName(routeName)}
     </Text>
   )

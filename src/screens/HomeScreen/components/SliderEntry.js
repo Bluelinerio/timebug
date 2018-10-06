@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react'
 import { View, Text, Button } from 'react-native'
-import Entypo from 'react-native-vector-icons/Entypo'
 import TouchableBounce from 'react-native/Libraries/Components/Touchable/TouchableBounce'
 import CustomImage from '../../../components/CustomImage'
 import styles, {
@@ -26,7 +25,13 @@ type Prop = {
   color: string
 }
 
-const ActionButton = ({ title = 'CONTINUE', color, onPress }) => (
+type ActionButtonProps = {
+  title: string,
+  color: string,
+  onPress: () => null
+}
+
+export const ActionButton = ({ title = 'CONTINUE', onPress }: ActionButtonProps) => (
   <View
     style={[
       {
@@ -34,7 +39,7 @@ const ActionButton = ({ title = 'CONTINUE', color, onPress }) => (
       }
     ]}
   >
-    <Button color={deepBlue} title={title} onPress={onPress}/>
+    <Button color={deepBlue} title={title} onPress={onPress} />
   </View>
 )
 
@@ -91,8 +96,8 @@ export default class SliderEntry extends PureComponent<Prop> {
             even
               ? styles.textContainerEven
               : {
-                  paddingBottom: actionButtonProps ? 0 : 20
-                }
+                paddingBottom: actionButtonProps ? 0 : 20
+              }
           ]}
         >
           {uppercaseTitle}
@@ -102,7 +107,9 @@ export default class SliderEntry extends PureComponent<Prop> {
           >
             {subtitle}
           </Text>
-          {actionButtonProps && <Button color={deepBlue} {...actionButtonProps} />}
+          {actionButtonProps && (
+            <Button color={deepBlue} {...actionButtonProps} />
+          )}
         </View>
       </TouchableBounce>
     )
