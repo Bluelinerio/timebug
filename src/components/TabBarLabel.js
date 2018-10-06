@@ -10,18 +10,18 @@ type TabBarLabelProps = {
 
 const mapRouteToName = routeName => {
   switch (routeName) {
-    case routes.tab.RootNavigator:
-      return 'Home'
-    case routes.tab.MeditationScreen:
-      return 'Meditation'
-    case routes.tab.MyJourneyScreen:
-      return 'Journey'
-    case routes.tab.CheckinScreen:
-      return 'Checkins'
-    case routes.tab.GoalScreen:
-      return 'Goals'
-    default:
-      return ''
+  case routes.tab.RootNavigator:
+    return 'Home'
+  case routes.tab.MeditationScreen:
+    return 'Meditation'
+  case routes.tab.MyJourneyScreen:
+    return 'Journey'
+  case routes.tab.CheckinScreen:
+    return 'Checkins'
+  case routes.tab.GoalScreen:
+    return 'Goals'
+  default:
+    return ''
   }
 }
 
