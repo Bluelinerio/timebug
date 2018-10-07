@@ -163,5 +163,25 @@ export default StyleSheet.create({
   percentageText: {
     ...iOSUIKit.caption2Object,
     fontSize: 9
+  },
+  stepTitleContainer: {
+    flex: 3,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  stepTitle: {
+    ...iOSUIKit.footnoteObject
+  },
+  stepSwitchContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  goalStepContainer: {
+    paddingVertical: 6,
+    paddingHorizontal: 8,
+    flexDirection: 'row',
+    backgroundColor: gray50,
+    marginBottom: 2
   }
 })

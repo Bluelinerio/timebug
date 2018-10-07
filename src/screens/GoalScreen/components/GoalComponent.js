@@ -1,30 +1,23 @@
+// @flow
 import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
-import type { Goal } from '../types'
+import type { Goal, GoalStep } from '../types'
 import styles from '../styles'
 import { hashCode } from '../../../utils/hash'
 import Icon from 'react-native-vector-icons/FontAwesome'
+import GoalStepComponent from './GoalStepComponent'
 
 type GoalComponentProps = {
   goal: Goal,
-  onPress: () => any
+  onPress: () => any,
+  steps: Array<GoalStep>
 }
 
 class GoalComponent extends React.PureComponent<GoalComponentProps> {
   constructor(props) {
     super(props)
     this.state = {
-      showList: false,
-      dummy: [
-        {
-          title: 'Spend less money on stupid things',
-          completed: false
-        },
-        {
-          title: 'Some Random step',
-          completed: true
-        }
-      ]
+      showList: false
     }
   }
 
@@ -38,7 +31,7 @@ class GoalComponent extends React.PureComponent<GoalComponentProps> {
   }
 
   render() {
-    const { goal } = this.props
+    const { goal, steps } = this.props
     const { showList } = this.state
     return (
       <View style={styles.goalFullContainer}>
@@ -76,16 +69,21 @@ class GoalComponent extends React.PureComponent<GoalComponentProps> {
             </TouchableOpacity>
           </View>
         </View>
-        <View style={[styles.hiddenView, showList ? {} : styles.hidden]}>
-          {this.state.dummy.map(step => {
-            return (
-              <View key={hashCode(JSON.stringify(step))}>
-                <Text>{step.title}</Text>
-                <Text>{step.completed}</Text>
-              </View>
-            )
-          })}
-        </View>
+        {showList && (
+          <View style={[styles.hiddenView]}>
+            {steps.map(step => {
+              return (
+                <View key={hashCode(JSON.stringify(step))}>
+                  <GoalStepComponent
+                    title={step.title}
+                    completed={step.completed}
+                    id={step.id}
+                  />
+                </View>
+              )
+            })}
+          </View>
+        )}
       </View>
     )
   }
