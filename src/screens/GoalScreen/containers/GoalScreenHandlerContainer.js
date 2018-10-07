@@ -23,10 +23,6 @@ const getDataFromForm = (formData: any, wantedKeys: any): {} | any => {
   }, {})
 }
 
-const mapDispatchToProps = () => {
-  return {}
-}
-
 const mergeProps = (_, dispatchProps, ownProps) => {
   const { formData } = ownProps
   const data = getDataFromForm(formData, wantedKeys)
@@ -36,6 +32,6 @@ const mergeProps = (_, dispatchProps, ownProps) => {
   }
 }
 
-export default compose(FormHOC, connect(null, mapDispatchToProps, mergeProps))(
+export default compose(FormHOC, connect(null, null, mergeProps))(
   GoalScreenHandlerComponent
 )

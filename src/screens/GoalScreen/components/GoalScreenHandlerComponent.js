@@ -1,8 +1,8 @@
-import React                 from 'react'
-import { View, Text }        from 'react-native'
-import R                     from 'ramda'
+import React from 'react'
+import { View } from 'react-native'
+import R from 'ramda'
 import ScreenLockedContainer from '../containers/ScreenLockedContainer'
-import tron                  from 'reactotron-react-native'
+import GoalListComponent from '../containers/GoalListContainer'
 
 type GoalScreenHandlerComponentProps = {
   data: any
@@ -10,14 +10,9 @@ type GoalScreenHandlerComponentProps = {
 
 const GoalScreenHandlerComponent = (props: GoalScreenHandlerComponentProps) => {
   const { data } = props
-  tron.log(props)
   return (
     <View>
-      {R.isEmpty(data) ? (
-        <ScreenLockedContainer />
-      ) : (
-        <Text>You did complete step 5 </Text>
-      )}
+      {R.isEmpty(data) ? <ScreenLockedContainer /> : <GoalListComponent data={data} />}
     </View>
   )
 }
