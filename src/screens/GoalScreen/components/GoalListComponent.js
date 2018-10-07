@@ -6,7 +6,8 @@ import GoalComponent from '../containers/GoalContainer'
 import styles from '../styles'
 
 type GoalListComponentProps = {
-  data: any
+  data: any,
+  step: any
 }
 
 class GoalListComponent extends React.PureComponent<GoalListComponentProps> {
@@ -24,9 +25,9 @@ class GoalListComponent extends React.PureComponent<GoalListComponentProps> {
           </Text>
         </View>
         {data &&
-          data.recentGoals.map(goal => (
+          data.recentGoals.map((goal, index) => (
             <React.Fragment key={hashCode(JSON.stringify(goal))}>
-              <GoalComponent goal={goal} />
+              <GoalComponent goal={goal} goalIndex={index} />
             </React.Fragment>
           ))}
       </View>

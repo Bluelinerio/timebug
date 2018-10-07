@@ -27,7 +27,6 @@ const mergeProps = (_, dispatchProps, ownProps) => {
   const { formData } = ownProps
   const data = getDataFromForm(formData, wantedKeys)
   return {
-    ...dispatchProps,
     data
   }
 }

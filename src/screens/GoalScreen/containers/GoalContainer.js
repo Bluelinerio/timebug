@@ -2,6 +2,7 @@ import { connect } from 'react-redux'
 import GoalComponent from '../components/GoalComponent'
 import type { GoalStepComponentProps } from '../components/GoalComponent'
 import type { Goal } from '../types'
+import { goToGoalStepScreen } from '../../../redux/actions/nav.actions'
 import tron from 'reactotron-react-native'
 
 type DispatchToProps = {
@@ -9,7 +10,8 @@ type DispatchToProps = {
 }
 
 type GoalContainerProps = {
-  goal: Goal
+  goal: Goal,
+  goalIndex: number
 }
 
 const dummyData = [
@@ -25,9 +27,9 @@ const dummyData = [
   }
 ]
 
-const mapDispatchToProps = (): DispatchToProps => {
+const mapDispatchToProps = (dispatch: any): DispatchToProps => {
   return {
-    onPress: () => tron.log('hiahaiahia')
+    onPress: (id: string) => dispatch(goToGoalStepScreen({ goalId: id }))
   }
 }
 

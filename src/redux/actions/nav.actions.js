@@ -10,6 +10,10 @@ if (!routes || !routes.root || !routes.root.initialRouteName || !routes.step) {
 
 type StepInfo = { stepId: string, formId: string, color: string }
 
+type GoalStepScreenNavigationParams = {
+  goalId: string
+}
+
 export type LinkedNavigationPayload = {
   link: string
 }
@@ -40,6 +44,12 @@ export const navigateWith = ({
 const navigateToInitialRoute = () =>
   NavigationActions.navigate({
     routeName: routes.start.initialRouteName
+  })
+
+export const goToGoalStepScreen = (params: GoalStepScreenNavigationParams) =>
+  NavigationActions.navigate({
+    routeName: routes.goals.GoalStepScreen,
+    params
   })
 
 export const goToStartScreen = (params?: any) =>
