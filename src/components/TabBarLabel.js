@@ -18,7 +18,7 @@ const mapRouteToName = routeName => {
     return 'Journey'
   case routes.tab.CheckinScreen:
     return 'Checkins'
-  case routes.tab.GoalScreen:
+  case routes.tab.GoalsNavigator:
     return 'Goals'
   default:
     return ''

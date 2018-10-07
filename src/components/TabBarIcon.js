@@ -19,7 +19,7 @@ const mapRouteToIcon = (routeName, focused) => {
     return `ios-construct${focused ? '' : '-outline'}`
   case routes.tab.CheckinScreen:
     return `ios-compass${focused ? '' : '-outline'}`
-  case routes.tab.GoalScreen:
+  case routes.tab.GoalsNavigator:
     return `ios-checkmark${focused ? '' : '-outline'}`
   default:
     return

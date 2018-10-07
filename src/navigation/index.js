@@ -29,6 +29,7 @@ import EmojiPickerScreen  from '../screens/EmojiPickerScreen'
 import MyJourneyScreen    from '../screens/MyJourneyScreen'
 import StartScreen        from '../screens/StartScreen'
 import GoalScreen         from '../screens/GoalScreen'
+import GoalStepScreen     from '../screens/GoalStepScreen'
 import routes             from './routes'
 
 if (!routes || !routes.root || !routes.root.initialRouteName || !routes.step) {
@@ -105,6 +106,33 @@ export const RootNavigator = StackNavigator(
   rootConfiguration.options
 )
 
+export const goalsConfiguration = {
+  routes: routes.goals,
+  screens: {
+    [routes.goals.GoalScreen]: {
+      screen: GoalScreen
+    },
+    [routes.goals.GoalStepScreen]: {
+      screen: GoalStepScreen,
+      path: 'goal'
+    }
+  },
+  options: {
+    initialRouteName: routes.goals.initialRouteName,
+    mode: Platform.OS === 'ios' ? 'modal' : 'card',
+    headerMode: 'none',
+    cardStyle: {
+      backgroundColor: 'white',
+      opacity: 1
+    }
+  }
+}
+
+export const goalsNavigator = StackNavigator(
+  goalsConfiguration.screens,
+  goalsConfiguration.options
+)
+
 type NavigationOptionsElementProps = {
   focused: boolean,
   tintColor: string
@@ -122,8 +150,8 @@ export const tabConfiguration = {
     [routes.tab.MyJourneyScreen]: {
       screen: MyJourneyScreen
     },
-    [routes.tab.GoalScreen]: {
-      screen: GoalScreen
+    [routes.tab.GoalsNavigator]: {
+      screen: goalsNavigator
     }
   },
   options: {
@@ -141,9 +169,7 @@ export const tabConfiguration = {
       },
       tabBarLabel: ({ tintColor }: NavigationOptionsElementProps) => {
         const { routeName } = navigation.state
-        return (
-          <TabBarLabel routeName={routeName} tintColor={tintColor}/>
-        )
+        return <TabBarLabel routeName={routeName} tintColor={tintColor} />
       }
     }),
     tabBarOptions: {
