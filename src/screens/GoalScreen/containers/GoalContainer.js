@@ -8,6 +8,8 @@ type DispatchToProps = {
   onPress: () => any
 }
 
+const FIRST_FORM_ID = '1'
+
 type GoalContainerProps = {
   goal: Goal,
   goalIndex: number
@@ -33,7 +35,8 @@ const mapDispatchToProps = (dispatch: any): DispatchToProps => {
         goToGoalStepScreen({
           goalId: id,
           goalTitle: goal.goal,
-          goalType: goal.goalTypes
+          goalType: goal.goalTypes,
+          formId: FIRST_FORM_ID
         })
       )
   }

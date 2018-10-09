@@ -11,7 +11,8 @@ type GoalComponentProps = {
   goal: Goal,
   onPress: () => any,
   steps: Array<GoalStep>,
-  goalIndex: string
+  goalIndex: string,
+  formId: string
 }
 
 class GoalComponent extends React.PureComponent<GoalComponentProps> {

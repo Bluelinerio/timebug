@@ -13,7 +13,8 @@ type StepInfo = { stepId: string, formId: string, color: string }
 export type GoalStepScreenNavigationParams = {
   goalId: string,
   goalTitle?: string,
-  goalType?: string
+  goalType?: string,
+  formId: string
 }
 
 export type LinkedNavigationPayload = {
