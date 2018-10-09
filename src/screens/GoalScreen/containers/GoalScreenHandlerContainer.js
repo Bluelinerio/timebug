@@ -23,7 +23,7 @@ const getDataFromForm = (formData: any, wantedKeys: any): {} | any => {
   }, {})
 }
 
-const mergeProps = (_, dispatchProps, ownProps) => {
+const mergeProps = (_, __, ownProps) => {
   const { formData } = ownProps
   const data = getDataFromForm(formData, wantedKeys)
   return {

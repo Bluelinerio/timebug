@@ -1,9 +1,9 @@
-import React         from 'react'
+import React          from 'react'
 import { View, Text } from 'react-native'
-import tron          from 'reactotron-react-native'
-import { hashCode }  from '../../../utils/hash'
-import GoalComponent from '../containers/GoalContainer'
-import styles from '../styles'
+import tron           from 'reactotron-react-native'
+import { hashCode }   from '../../../utils/hash'
+import GoalComponent  from '../containers/GoalContainer'
+import styles         from '../styles'
 
 type GoalListComponentProps = {
   data: any,

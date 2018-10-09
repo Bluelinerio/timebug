@@ -1,11 +1,11 @@
 // @flow
-import React from 'react'
+import React                            from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
-import type { Goal, GoalStep } from '../types'
-import styles from '../styles'
-import { hashCode } from '../../../utils/hash'
-import Icon from 'react-native-vector-icons/FontAwesome'
-import GoalStepComponent from './GoalStepComponent'
+import type { Goal, GoalStep }          from '../types'
+import styles                           from '../styles'
+import { hashCode }                     from '../../../utils/hash'
+import Icon                             from 'react-native-vector-icons/FontAwesome'
+import GoalStepComponent                from './GoalStepComponent'
 
 type GoalComponentProps = {
   goal: Goal,
@@ -27,8 +27,8 @@ class GoalComponent extends React.PureComponent<GoalComponentProps> {
   }
 
   _onPress = () => {
-    const { onPress, goalIndex } = this.props
-    onPress(goalIndex)
+    const { onPress, goal, goalIndex } = this.props
+    onPress(goalIndex, goal)
   }
 
   render() {

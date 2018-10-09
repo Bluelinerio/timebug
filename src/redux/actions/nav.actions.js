@@ -11,7 +11,9 @@ if (!routes || !routes.root || !routes.root.initialRouteName || !routes.step) {
 type StepInfo = { stepId: string, formId: string, color: string }
 
 export type GoalStepScreenNavigationParams = {
-  goalId: string
+  goalId: string,
+  goalTitle?: string,
+  goalType?: string
 }
 
 export type LinkedNavigationPayload = {

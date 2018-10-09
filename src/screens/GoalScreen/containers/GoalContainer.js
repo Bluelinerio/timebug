@@ -1,9 +1,8 @@
-import { connect } from 'react-redux'
-import GoalComponent from '../components/GoalComponent'
+import { connect }                     from 'react-redux'
+import GoalComponent                   from '../components/GoalComponent'
 import type { GoalStepComponentProps } from '../components/GoalComponent'
-import type { Goal } from '../types'
-import { goToGoalStepScreen } from '../../../redux/actions/nav.actions'
-import tron from 'reactotron-react-native'
+import type { Goal }                   from '../types'
+import { goToGoalStepScreen }          from '../../../redux/actions/nav.actions'
 
 type DispatchToProps = {
   onPress: () => any
@@ -29,7 +28,14 @@ const dummyData = [
 
 const mapDispatchToProps = (dispatch: any): DispatchToProps => {
   return {
-    onPress: (id: string) => dispatch(goToGoalStepScreen({ goalId: id }))
+    onPress: (id: string, goal: Goal) =>
+      dispatch(
+        goToGoalStepScreen({
+          goalId: id,
+          goalTitle: goal.goal,
+          goalType: goal.goalTypes
+        })
+      )
   }
 }
 
