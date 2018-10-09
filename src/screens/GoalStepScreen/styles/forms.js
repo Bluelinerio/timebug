@@ -18,7 +18,7 @@ const height = 44
 const paddingHorizontal = 16
 const innerPaddingHorizontal = 4
 const innerPaddingVertical = 2
-const paddingVertical = 20
+const paddingVertical = 8
 
 //#E6E5ED
 // from  https://material.io/guidelines/components/text-fields.html#text-fields-layout
@@ -37,7 +37,7 @@ export default Object.freeze({
     topLevel: {
       paddingHorizontal,
       paddingVertical,
-      backgroundColor: BACKGROUND_COLOR,
+      backgroundColor: 'transparent',
       flex: 1
     },
     normal: {

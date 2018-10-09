@@ -11,14 +11,14 @@ export default {
     }),
     options: {
       label:
-        'Add some steps that could help you in the completion of your goal!',
+        'Steps that could help you reach your goal',
       fields: {
         goalSteps: {
           item: {
             auto: 'none',
             fields: {
               step: {
-                label: 'Some label'
+                label: 'A step to complete my goal...'
               }
             }
           }
