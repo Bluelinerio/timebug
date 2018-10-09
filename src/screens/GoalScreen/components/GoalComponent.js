@@ -10,7 +10,8 @@ import GoalStepComponent from './GoalStepComponent'
 type GoalComponentProps = {
   goal: Goal,
   onPress: () => any,
-  steps: Array<GoalStep>
+  steps: Array<GoalStep>,
+  goalIndex: string
 }
 
 class GoalComponent extends React.PureComponent<GoalComponentProps> {
@@ -26,8 +27,8 @@ class GoalComponent extends React.PureComponent<GoalComponentProps> {
   }
 
   _onPress = () => {
-    const { onPress } = this.props
-    onPress()
+    const { onPress, goalIndex } = this.props
+    onPress(goalIndex)
   }
 
   render() {

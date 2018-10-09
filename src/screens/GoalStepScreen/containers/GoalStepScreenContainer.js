@@ -1,3 +1,7 @@
 import GoalStepScreenComponent from '../components/GoalStepScreenComponent'
+import { withNavigation } from 'react-navigation'
+import { compose } from 'recompose'
 
-export default GoalStepScreenComponent
+export default compose(
+  withNavigation
+)(GoalStepScreenComponent)

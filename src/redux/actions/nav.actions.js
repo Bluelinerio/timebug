@@ -10,7 +10,7 @@ if (!routes || !routes.root || !routes.root.initialRouteName || !routes.step) {
 
 type StepInfo = { stepId: string, formId: string, color: string }
 
-type GoalStepScreenNavigationParams = {
+export type GoalStepScreenNavigationParams = {
   goalId: string
 }
 
@@ -46,6 +46,7 @@ const navigateToInitialRoute = () =>
     routeName: routes.start.initialRouteName
   })
 
+  // TODO: add goal itself to params
 export const goToGoalStepScreen = (params: GoalStepScreenNavigationParams) =>
   NavigationActions.navigate({
     routeName: routes.goals.GoalStepScreen,

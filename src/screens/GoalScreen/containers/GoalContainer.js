@@ -38,10 +38,11 @@ const mergeProps = (
   dispatchProps: DispatchToProps,
   ownProps: GoalContainerProps
 ): GoalStepComponentProps => {
-  const { goal } = ownProps
+  const { goal, goalIndex } = ownProps
   const { onPress } = dispatchProps
   return {
     goal,
+    goalIndex,
     onPress,
     steps: dummyData
   }

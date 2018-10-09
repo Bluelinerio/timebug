@@ -120,7 +120,7 @@ export const goalsConfiguration = {
   options: {
     initialRouteName: routes.goals.initialRouteName,
     mode: Platform.OS === 'ios' ? 'modal' : 'card',
-    headerMode: 'none',
+    headerMode: 'screen',
     cardStyle: {
       backgroundColor: 'white',
       opacity: 1
