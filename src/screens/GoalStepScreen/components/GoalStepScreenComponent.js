@@ -9,14 +9,35 @@ import hexToRgba from '../../../utils/colorTransform'
 
 const Form = t.form.Form
 
-class GoalStepScreen extends React.PureComponent {
+export type Model = {
+  type: any,
+  options: any
+}
+
+type GoalStepScreenProps = {
+  onPress: () => any,
+  model: Model
+}
+
+type GoalStepScreenState = {
+  model: Model,
+  isInvalid: boolean,
+  value: any,
+  errors: ?any
+}
+
+class GoalStepScreen extends React.PureComponent<
+  GoalStepScreenProps,
+  GoalStepScreenState
+> {
   constructor(props) {
     super(props)
-    const { model } = props
+    const { model, value } = props
     this.state = {
       model,
       isInvalid: false,
-      errors: null
+      errors: null,
+      value
     }
   }
 
@@ -82,11 +103,12 @@ class GoalStepScreen extends React.PureComponent {
               onChange={this.onChange}
             />
           </View>
+          <View style={{ height: 60 }} />
         </ScrollView>
         <View style={styles.workbookNextButtonContainer}>
           <NextButton
             onPress={this.onPress}
-            buttonMessage={"Submit"}
+            buttonMessage={'Submit'}
             backgroundColor={buttonColor}
           />
         </View>
