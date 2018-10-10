@@ -1,11 +1,10 @@
 import React from 'react'
-import { ScrollView, View } from 'react-native'
-import { SafeAreaView } from 'react-navigation'
+import { ScrollView, View, StatusBar, Alert } from 'react-native'
 import styles, { buttonColor } from '../styles'
-import tron from 'reactotron-react-native'
 import t from '../../../forms/components'
 import NextButton from './NextButton'
 import hexToRgba from '../../../utils/colorTransform'
+
 
 const Form = t.form.Form
 
@@ -16,7 +15,8 @@ export type Model = {
 
 type GoalStepScreenProps = {
   onPress: () => any,
-  model: Model
+  model: Model,
+  value: any
 }
 
 type GoalStepScreenState = {
@@ -37,12 +37,37 @@ class GoalStepScreen extends React.PureComponent<
       model,
       isInvalid: false,
       errors: null,
+      bufferViewHeight: 0,
+      layoutReady: false,
+      containerLayout: null,
+      formLayout: null,
       value
     }
   }
 
   handleFormRef = ref => {
     this.form = ref
+  }
+
+  showAlert = () => {
+    const { errors } = this.state
+    if (errors && errors.length) {
+      Alert.alert(errors[0].message, '', [
+        /* this is for later ideally working with react-native-keyboard-aware-scroll-view
+            {
+              text: 'Show me',
+              onPress: () => {
+                const component = this.form.getComponent(path)
+                const ref = component.refs.input
+                input.focus()
+              },
+            },
+            */
+        {
+          text: 'OK'
+        }
+      ])
+    }
   }
 
   onChange = (value: any) => {
@@ -68,23 +93,87 @@ class GoalStepScreen extends React.PureComponent<
 
   onPress = () => {
     const { onPress } = this.props
+    const { errors, value } = this.form.validate()
+    if (errors && errors.length > 0) {
+      this.setState(
+        {
+          errors
+        },
+        this.showAlert
+      )
+    } else {
+      onPress(value)
+    }
+  }
+
+  layout = () => {
+    const {
+      containerLayout,
+      formLayout,
+      bufferViewHeight,
+      layoutReady
+    } = this.state
+    if (containerLayout && formLayout) {
+      const newBufferHeight = Math.max(
+        0,
+        bufferViewHeight +
+          Math.max(0, containerLayout.height - formLayout.height)
+      )
+      if (newBufferHeight !== bufferViewHeight) {
+        this.setState({
+          layoutReady: true,
+          bufferViewHeight: newBufferHeight
+        })
+      } else if (!layoutReady) {
+        this.setState({
+          layoutReady: true
+        })
+      }
+    }
+  }
+
+  onLayout = ({ nativeEvent: { layout } }) => {
+    this.setState(
+      {
+        containerLayout: layout
+      },
+      this.layout
+    )
+  }
+  onFormLayout = ({ nativeEvent: { layout } }) => {
+    this.setState(
+      {
+        formLayout: layout
+      },
+      this.layout
+    )
+  }
+
+  shouldShowPaddingView = () => {
     const { value } = this.state
-    tron.log(value)
-    onPress(value)
+    return !value || (value.goalSteps.length <= 1)
   }
 
   render() {
-    const { model, value } = this.state
+    const {
+      model,
+      value,
+      layoutReady,
+      bufferViewHeight
+    } = this.state
     const { type, options } = model
     const { config } = options
-    tron.log(model)
+
     return (
-      <SafeAreaView
-        forceInset={{ top: 'always', bottom: 'never' }}
-        style={styles.container}
-      >
-        <ScrollView style={styles.container}>
-          <View>
+      <View onLayout={this.onLayout} style={{ flex: 1 }}>
+        <StatusBar barStyle="light-content" backgroundColor={buttonColor} />
+        <ScrollView >
+          <View
+            onLayout={this.onFormLayout}
+            style={{
+              opacity: layoutReady ? 1 : 0
+            }}
+          >
             <Form
               type={type}
               ref={this.handleFormRef}
@@ -102,8 +191,13 @@ class GoalStepScreen extends React.PureComponent<
               value={value}
               onChange={this.onChange}
             />
+            <View
+              style={[
+                styles.flexibleHeightView,
+                bufferViewHeight && this.shouldShowPaddingView() ? { height: bufferViewHeight } : {}
+              ]}
+            />
           </View>
-          <View style={{ height: 60 }} />
         </ScrollView>
         <View style={styles.workbookNextButtonContainer}>
           <NextButton
@@ -112,7 +206,7 @@ class GoalStepScreen extends React.PureComponent<
             backgroundColor={buttonColor}
           />
         </View>
-      </SafeAreaView>
+      </View>
     )
   }
 }

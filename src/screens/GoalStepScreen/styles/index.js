@@ -16,5 +16,8 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'flex-end',
     zIndex: 999
-  }
+  },
+  flexibleHeightView: {
+    backgroundColor: '#FAFAFA'
+  },
 })
