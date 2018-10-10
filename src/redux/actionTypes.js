@@ -104,3 +104,11 @@ export const LINK_NAVIGATION = 'LINK_NAVIGATION'
  */
 
 export const STORE_LOADED = 'STORE_LOADED'
+
+/**
+ * Goals
+ */
+
+export const ADD_GOAL_STEP = 'ADD_GOAL_STEP'
+export const REMOVE_GOAL_STEP = 'REMOVE_GOAL_STEP'
+export const REMOVE_GOAL = 'REMOVE_GOAL'
