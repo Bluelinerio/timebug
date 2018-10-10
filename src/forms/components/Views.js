@@ -2,7 +2,7 @@
 import * as React                       from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import Icon                             from 'react-native-vector-icons/MaterialIcons'
-import styles                           from '../styles'
+import styles, { extraStyles }                          from '../styles'
 import SwipablyDiscardableRow           from '../../components/SwipablyDiscardableRow'
 
 type Item = {
@@ -24,11 +24,7 @@ export const RowWithoutButtons = ({ key, input, buttons }: Item) => {
       }}
     >
       <View
-        style={{
-          flex: 1,
-          justifyContent: 'center',
-          marginVertical: 10
-        }}
+        style={extraStyles.rowNoButtons}
       >
         {input}
       </View>

@@ -1,5 +1,5 @@
-import { PixelRatio, Platform } from 'react-native'
-import stylesheet               from 'tcomb-form-native/lib/stylesheets/bootstrap'
+import { PixelRatio, Platform, StyleSheet } from 'react-native'
+import stylesheet                           from 'tcomb-form-native/lib/stylesheets/bootstrap'
 
 export const LABEL_COLOR = '#000000'
 export const INPUT_COLOR = '#000000'
@@ -30,6 +30,14 @@ const paddingVertical = 20
 // Top padding above label: 16dp
 // Bottom padding below label: 8dp
 // Bottom padding below input: 8dp
+
+export const extraStyles = StyleSheet.create({
+  rowNoButtons: {
+    flex: 1,
+    justifyContent: 'center',
+    marginVertical: 5
+  }
+})
 
 export default Object.freeze({
   ...stylesheet,

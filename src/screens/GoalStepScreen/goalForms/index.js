@@ -1,4 +1,4 @@
-import t from '../components/form'
+import t from '../../../forms/components'
 
 export default {
   1: {

@@ -3,7 +3,7 @@ import { ScrollView, View } from 'react-native'
 import { SafeAreaView } from 'react-navigation'
 import styles, { buttonColor } from '../styles'
 import tron from 'reactotron-react-native'
-import t from './form'
+import t from '../../../forms/components'
 import NextButton from './NextButton'
 import hexToRgba from '../../../utils/colorTransform'
 

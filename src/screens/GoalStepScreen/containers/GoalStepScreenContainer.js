@@ -1,7 +1,7 @@
 import GoalStepScreenComponent from '../components/GoalStepScreenComponent'
 import { connect } from 'react-redux'
 import { withNavigation } from 'react-navigation'
-import t from '../components/form'
+import t from '../../../forms/components'
 import { compose, mapProps } from 'recompose'
 import models from '../goalForms'
 import tron from 'reactotron-react-native'
