@@ -1,4 +1,4 @@
-import t from '../components/templates'
+import t from '../../../forms/components'
 
 export const AreaOfLife = t.enums.of(
   [

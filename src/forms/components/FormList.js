@@ -1,6 +1,6 @@
 import * as React                  from 'react'
 import { removeLabelFromListItem } from './FormManipulations'
-import { triggerAnimation }        from '../../../styles'
+import { triggerAnimation }        from '../../screens/styles'
 
 import {
   ListContainer,

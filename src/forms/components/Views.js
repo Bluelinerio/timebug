@@ -2,8 +2,8 @@
 import * as React                       from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import Icon                             from 'react-native-vector-icons/MaterialIcons'
-import styles                           from '../../styles/templates'
-import SwipablyDiscardableRow           from '../../../../components/SwipablyDiscardableRow'
+import styles                           from '../styles'
+import SwipablyDiscardableRow           from '../../components/SwipablyDiscardableRow'
 
 type Item = {
   key: string,

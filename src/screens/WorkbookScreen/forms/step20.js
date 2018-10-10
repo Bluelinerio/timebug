@@ -1,4 +1,4 @@
-import t                                                  from '../components/templates'
+import t                                                  from '../../../forms/components'
 import { TimeSpentProgress, OneToTenScale, OverallScore } from './contents'
 
 export default {

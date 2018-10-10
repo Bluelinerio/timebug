@@ -8,7 +8,7 @@ import customTextBox    from './customTextbox'
 import customStruct     from './customStruct'
 import customSwitch     from './customSwitch'
 import select           from './select'
-import customStylesheet from '../../styles/templates/index'
+import customStylesheet from '../styles'
 
 if (__DEV__) {
   const assert = (condition, error) => {

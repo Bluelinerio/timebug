@@ -1,7 +1,7 @@
 // @flow
 import { StyleSheet, Dimensions } from 'react-native'
 import styles                     from '../styles'
-import { BACKGROUND_COLOR }       from './templates'
+import { BACKGROUND_COLOR }       from '../../../forms/styles'
 
 export default StyleSheet.create({
   ...styles,
