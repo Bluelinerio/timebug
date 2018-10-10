@@ -1,5 +1,5 @@
-import t from '../components/templates';
-import { OneToTenScale, TimeSpent } from './contents';
+import t             from '../components/templates';
+import { TimeSpent } from './contents';
 
 export default {
   1: {

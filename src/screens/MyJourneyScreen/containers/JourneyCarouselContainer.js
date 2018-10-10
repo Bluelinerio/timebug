@@ -29,16 +29,16 @@ const buildEntries = (
 ): Array<CarouselEntryType> => {
   return forms
     ? forms
-        .map(form => {
-          const element = Entries[form.stepId]
-          if (element && element.render)
-            return {
-              title: element.title,
-              step: `${form.stepId}`
-            }
-          return
-        })
-        .filter(el => !!el)
+      .map(form => {
+        const element = Entries[form.stepId]
+        if (element && element.render)
+          return {
+            title: element.title,
+            step: `${form.stepId}`
+          }
+        return
+      })
+      .filter(el => !!el)
     : []
 }
 

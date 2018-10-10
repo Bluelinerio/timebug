@@ -1,5 +1,5 @@
-import React                 from 'react'
-import { View, Image }       from 'react-native'
+import React           from 'react'
+import { View, Image } from 'react-native'
 
 type UserProfileImageProps = {
   styles: any,
@@ -12,7 +12,7 @@ const UserProfileImageComponent = ({
 }: UserProfileImageProps) => {
   return (
     <View>
-        <Image source={source} style={styles.headerAvatar} />
+      <Image source={source} style={styles.headerAvatar} />
     </View>
   )
 }

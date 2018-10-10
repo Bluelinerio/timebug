@@ -1,8 +1,8 @@
 // @flow
-import React from 'react'
+import React                                from 'react'
 import { StyleSheet, Platform, Text, View } from 'react-native'
-import { SafeAreaView } from 'react-navigation'
-import { APPBAR_HEIGHT, STATUSBAR_HEIGHT } from '../constants'
+import { SafeAreaView }                     from 'react-navigation'
+import { APPBAR_HEIGHT, STATUSBAR_HEIGHT }  from '../constants'
 
 const HeaderTitle = ({ style, ...rest }: { style: any }) => (
   <Text

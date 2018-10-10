@@ -1,5 +1,5 @@
-import React from 'react'
-import { color } from '../styles/components/Gradient'
+import React          from 'react'
+import { color }      from '../styles/components/Gradient'
 import LinearGradient from 'react-native-linear-gradient'
 
 type Props = {

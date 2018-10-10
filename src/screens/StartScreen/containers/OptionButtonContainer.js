@@ -22,7 +22,7 @@ import {
   VISION_CREATION
 }                                          from '../../../services/cms'
 
-const defaultAudio = 'https://assets.ctfassets.net/6h184bey8vl3/7JQ278WKGsAKcQO4KWWSkI/7a6a37e74821aa780f71dec640c0f14a/test__online-audio-converter.com_.mp3'
+// const defaultAudio = 'https://assets.ctfassets.net/6h184bey8vl3/7JQ278WKGsAKcQO4KWWSkI/7a6a37e74821aa780f71dec640c0f14a/test__online-audio-converter.com_.mp3'
 
 type OptionButtonDispatchProps = {
   login: () => any
@@ -42,14 +42,14 @@ type OptionButtonContainerProps = {
 
 const mapTypeToPhase = ({ type }) => {
   switch (type) {
-    case 'MEDITATION':
-      return MEDITATION
-    case 'SELF-ASSESSMENT':
-      return SELF_ASSESSMENT
-    case 'VISION CREATION':
-      return VISION_CREATION
-    default:
-      return MEDITATION
+  case 'MEDITATION':
+    return MEDITATION
+  case 'SELF-ASSESSMENT':
+    return SELF_ASSESSMENT
+  case 'VISION CREATION':
+    return VISION_CREATION
+  default:
+    return MEDITATION
   }
 }
 
@@ -110,11 +110,11 @@ const merge = (
     onPress: () =>
       isLoggedIn
         ? navigation.dispatch(
-            goToWorkbookSkippingStepScreen({
-              step,
-              incompleteFormsIds: [FIRST_FORM_ID]
-            })
-          )
+          goToWorkbookSkippingStepScreen({
+            step,
+            incompleteFormsIds: [FIRST_FORM_ID]
+          })
+        )
         : login(),
     containerBackgroundColor: backgroundColorAtIndex(number - 1),
     textStyle: textColorAtIndex(number - 1)

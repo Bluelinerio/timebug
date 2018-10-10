@@ -1,4 +1,4 @@
-import React from 'react'
+import React                      from 'react'
 import { Button, View, Platform } from 'react-native'
 
 const NavigationCloseButton = ({ onPress }: { onPress: () => void }) => (

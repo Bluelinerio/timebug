@@ -1,6 +1,6 @@
-import * as React from 'react'
+import * as React                                     from 'react'
 import { View, Text, TouchableHighlight, StyleSheet } from 'react-native'
-import { deepBlue } from '../constants/colors'
+import { deepBlue }                                   from '../constants/colors'
 
 export default class SimpleColorButton extends React.Component<{
   color: string,

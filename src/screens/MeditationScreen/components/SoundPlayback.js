@@ -1,5 +1,5 @@
 import * as React from 'react'
-import Sound from 'react-native-sound'
+import Sound      from 'react-native-sound'
 
 // freesuonds:
 //https://freesound.org/people/reinsamba/sounds/46062/

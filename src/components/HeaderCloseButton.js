@@ -1,8 +1,8 @@
 //@flow
-import React from 'react'
+import React                    from 'react'
 import { Platform, StyleSheet } from 'react-native'
-import Icon from 'react-native-vector-icons/Ionicons'
-import TouchableItem from './TouchableItem'
+import Icon                     from 'react-native-vector-icons/Ionicons'
+import TouchableItem            from './TouchableItem'
 
 type Props = {
   onPress?: () => void,

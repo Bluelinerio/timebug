@@ -1,5 +1,5 @@
-import t from '../components/templates';
-import { OneToTenScale, CommonGoalOutcomes } from './contents';
+import t                      from '../components/templates';
+import { CommonGoalOutcomes } from './contents';
 
 export default {
   1: {

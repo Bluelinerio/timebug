@@ -1,13 +1,13 @@
 // @flow
-import React from 'react'
-import { Dimensions } from 'react-native'
-import ScrollingHeaderPageComponent from '../../../components/ScrollingHeaderPageComponent'
-import ScrollingHeaderPageHeaderComponent from '../../../components/ScrollingHeaderPageHeaderComponent'
-import ScrollingHeaderPageContentComponent from '../../../components/ScrollingHeaderPageContentComponent'
+import React                                        from 'react'
+import { Dimensions }                               from 'react-native'
+import ScrollingHeaderPageComponent                 from '../../../components/ScrollingHeaderPageComponent'
+import ScrollingHeaderPageHeaderComponent           from '../../../components/ScrollingHeaderPageHeaderComponent'
+import ScrollingHeaderPageContentComponent          from '../../../components/ScrollingHeaderPageContentComponent'
 import ScrollingHeaderPageHeaderBackgorundComponent from '../../../components/ScrollingHeaderPageHeaderBackgorundComponent'
-import { APPBAR_HEIGHT, STATUSBAR_HEIGHT } from '../../../constants'
-import markdownStyles from '../../../styles/Markdown/stepScreen'
-import StepScreenButtonContainer from '../containers/StepScreenButtonContainer'
+import { APPBAR_HEIGHT, STATUSBAR_HEIGHT }          from '../../../constants'
+import markdownStyles                               from '../../../styles/Markdown/stepScreen'
+import StepScreenButtonContainer                    from '../containers/StepScreenButtonContainer'
 
 const HEADER_HEIGHT = Dimensions.get('window').height * 0.4
 

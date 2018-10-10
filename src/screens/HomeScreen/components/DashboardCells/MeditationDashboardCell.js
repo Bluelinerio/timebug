@@ -7,7 +7,7 @@ import YesNoButton    from '../../../../components/YesNoButton'
 import HighlighRow    from '../../../../components/HighlighRow'
 import { hotPink }    from '../../../../constants/colors'
 
-const MeditationDashobardCell = ({
+const MeditationDashboardCell = ({
   title,
   onPress
 }: {
@@ -43,4 +43,4 @@ const MeditationDashobardCell = ({
     </View>
   </View>
 )
-export default MeditationDashobardCell
+export default MeditationDashboardCell

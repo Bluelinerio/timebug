@@ -1,16 +1,16 @@
-import { StyleSheet, PixelRatio, Platform } from 'react-native';
-import stylesheet from 'tcomb-form-native/lib/stylesheets/bootstrap';
+import { PixelRatio, Platform } from 'react-native'
+import stylesheet               from 'tcomb-form-native/lib/stylesheets/bootstrap'
 
-export const LABEL_COLOR = '#000000';
-export const INPUT_COLOR = '#000000';
-export const ERROR_COLOR = '#a94442';
-export const HELP_COLOR = '#999999';
-export const BORDER_COLOR = '#cccccc';
-export const DISABLED_COLOR = '#777777';
-export const DISABLED_BACKGROUND_COLOR = '#eeeeee';
-export const BACKGROUND_COLOR = '#FAFAFA'; //'#FFFFFF';
-export const FONT_SIZE = 18;
-export const FONT_WEIGHT = '500';
+export const LABEL_COLOR = '#000000'
+export const INPUT_COLOR = '#000000'
+export const ERROR_COLOR = '#a94442'
+export const HELP_COLOR = '#999999'
+export const BORDER_COLOR = '#cccccc'
+export const DISABLED_COLOR = '#777777'
+export const DISABLED_BACKGROUND_COLOR = '#eeeeee'
+export const BACKGROUND_COLOR = '#FAFAFA' //'#FFFFFF';
+export const FONT_SIZE = 18
+export const FONT_WEIGHT = '500'
 
 const borderRadius = 4
 const borderWidth = 1
@@ -59,7 +59,7 @@ export default Object.freeze({
       marginTop: 22,
       marginBottom: 22
     },
-    error:  {
+    error: {
       flex: 1,
       marginTop: 22,
       marginBottom: 22
@@ -77,7 +77,7 @@ export default Object.freeze({
       color: LABEL_COLOR,
       fontSize: FONT_SIZE,
       marginBottom: 7,
-      lineHeight: FONT_SIZE * 1.25 ,
+      lineHeight: FONT_SIZE * 1.25,
       fontFamily: 'Metropolis',
       fontWeight: 'bold'
     },
@@ -86,7 +86,7 @@ export default Object.freeze({
       color: LABEL_COLOR,
       fontSize: FONT_SIZE,
       marginBottom: 7,
-      lineHeight: FONT_SIZE * 1.25,      
+      lineHeight: FONT_SIZE * 1.25,
       fontFamily: 'Metropolis',
       fontWeight: 'bold'
     }
@@ -96,14 +96,14 @@ export default Object.freeze({
       ...stylesheet.helpBlock.normal,
       marginTop: 4,
       paddingHorizontal: innerPaddingHorizontal,
-      fontFamily: 'Metropolis',      
+      fontFamily: 'Metropolis',
       fontStyle: 'italic'
     },
     error: {
       ...stylesheet.helpBlock.normal,
       marginTop: 4,
       paddingHorizontal: innerPaddingHorizontal,
-      fontFamily: 'Metropolis',      
+      fontFamily: 'Metropolis',
       fontStyle: 'italic'
     }
   },
@@ -122,7 +122,7 @@ export default Object.freeze({
       borderRadius,
       borderColor: BORDER_COLOR,
       padding: 8,
-      backgroundColor: 'transparent',
+      backgroundColor: 'transparent'
     },
     error: {
       flexDirection: 'row',
@@ -156,21 +156,21 @@ export default Object.freeze({
       fontSize: 16,
       height,
       textAlign: 'left',
-      paddingHorizontal: innerPaddingHorizontal,
+      paddingHorizontal: innerPaddingHorizontal
     },
     error: {
       color: INPUT_COLOR,
       fontSize: FONT_SIZE,
       height,
       textAlign: 'left',
-      paddingHorizontal: innerPaddingHorizontal,
+      paddingHorizontal: innerPaddingHorizontal
     }
   },
   textBoxView: {
     base: {
       ...Platform.select({
         ios: {},
-        android:{
+        android: {
           borderColor: BORDER_COLOR,
           borderWidth: borderWidth,
           paddingHorizontal: innerPaddingHorizontal,
@@ -210,6 +210,6 @@ export default Object.freeze({
           borderBottomWidth: 1 / PixelRatio.get()
         }
       })
-    },
+    }
   }
-});
+})

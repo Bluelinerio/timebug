@@ -1,9 +1,7 @@
 // @flow
-import R from 'ramda'
 import { SUBMIT_AWARD_VALUE, RESET_AWARD_VALUE } from '../actionTypes'
-import { SumbitAwardValueAction } from '../actions/award.actions'
-import { diffObjs } from '../utils/diffObjs'
-import initialModels from '../../static/awards'
+import { SumbitAwardValueAction }                from '../actions/award.actions'
+import initialModels                             from '../../static/awards'
 /**
  * The upper level keys are the index of the 'formData' element in formData,
  * the inner level keys are the keys in SimpleModelData
@@ -35,7 +33,6 @@ export type Model = {
 export type SimpleModelData = {
   [key: string]: Model
 }
-
 
 /**
  * Types
@@ -72,7 +69,7 @@ const invalidAction = obj =>
   !obj.element.key ||
   !obj.element.formIndex ||
   !obj.element.type ||
-  obj.element.value === undefined 
+  obj.element.value === undefined
 
 const populate = (
   action: SumbitAwardValueAction,
@@ -105,12 +102,12 @@ function formDataReducer(
   action: SumbitAwardValueAction
 ) {
   switch (action.type) {
-    case SUBMIT_AWARD_VALUE:
-      return populate(action, state)
-    case RESET_AWARD_VALUE:
-      return initialState
-    default:
-      return state
+  case SUBMIT_AWARD_VALUE:
+    return populate(action, state)
+  case RESET_AWARD_VALUE:
+    return initialState
+  default:
+    return state
   }
 }
 

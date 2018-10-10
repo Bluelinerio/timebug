@@ -1,17 +1,27 @@
-import React                  from 'react';
-import PropTypes              from 'prop-types';
-import { View, Text, Picker } from 'react-native';
-import PickerIOS              from './ios/PickerIOS';
+import React                  from 'react'
+import { View, Text, Picker } from 'react-native'
+import PickerIOS              from './ios/PickerIOS'
 
-const composeStyles = (...overrideStyles) => (...styles) => 
-  [
-    ...styles,
-    ...overrideStyles
-  ]
+const composeStyles = (...overrideStyles) => (...styles) => [
+  ...styles,
+  ...overrideStyles
+]
 
-export default function select(props) {
+type Props = {
+    stylesheet: any,
+    hasError: boolean,
+    label: string,
+    help: string,
+    error: string,
+    options: any,
+    value: any,
+    onChange: () => any,
+    config: any,
+    hidden: boolean
+}
+export default function select(props: Props) {
   if (props.hidden) {
-    return null;
+    return null
   }
   const {
     stylesheet,
@@ -23,33 +33,26 @@ export default function select(props) {
     value,
     onChange,
     config
-  } = props;
+  } = props
 
   const children = options.map(({ value, text }) => (
     <Picker.Item key={value} value={value} label={text} />
-  ));
+  ))
 
   const labelStyles = composeStyles({
     color: config.stepColor
-  })(hasError
-    ? stylesheet.controlLabel.error
-    : stylesheet.controlLabel.normal
-  )
-  
-  const text = options.find(option => option.value === value).text;
+  })(hasError ? stylesheet.controlLabel.error : stylesheet.controlLabel.normal)
+
+  const text = options.find(option => option.value === value).text
   return (
     <View
       style={
-        hasError ? stylesheet.formGroupStyle.normal : stylesheet.formGroupStyle.error
+        hasError
+          ? stylesheet.formGroupStyle.normal
+          : stylesheet.formGroupStyle.error
       }
     >
-      {label && (
-        <Text
-          style={labelStyles}
-        >
-          {label}
-        </Text>
-      )}
+      {label && <Text style={labelStyles}>{label}</Text>}
       <PickerIOS
         accessibilityLabel={label}
         value={value}
@@ -95,5 +98,5 @@ export default function select(props) {
           </Text>
         )}
     </View>
-  );
+  )
 }

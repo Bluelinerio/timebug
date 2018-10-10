@@ -1,4 +1,4 @@
-import React from 'react'
+import React                from 'react'
 import {
   View,
   Modal,
@@ -6,19 +6,17 @@ import {
   TouchableOpacity,
   StatusBar,
   Image
-} from 'react-native'
+}                           from 'react-native'
 import LoginButtonContainer from '../containers/LoginButtonContainer'
-import Gradient from '../components/Gradient'
+import Gradient             from '../components/Gradient'
 import styles, {
   statusBarColor,
   closeButtonColor,
   closeButtonSize,
   gradientColors
-} from '../styles/components/LoginModal'
-import { icon } from '../resources/images'
-import Icon from 'react-native-vector-icons/dist/MaterialIcons'
-
-import tron from 'reactotron-react-native'
+}                           from '../styles/components/LoginModal'
+import { icon }             from '../resources/images'
+import Icon                 from 'react-native-vector-icons/dist/MaterialIcons'
 
 export type LoginModalProps = {
   isOpen: boolean,
@@ -31,20 +29,21 @@ const innerText = `Login to enjoy the app at it's fullest and live the journey t
 
 const LoginModal = (props: LoginModalProps) => {
   const { isOpen, close } = props
-  tron.log('Rendered Login Modal')
   return (
     <Modal
       animationType="slide"
       transparent={true}
       visible={isOpen}
       onRequestClose={() => {
-        tron.log('closed')
         close()
       }}
     >
       <StatusBar barStyle="dark-content" backgroundColor={statusBarColor} />
       <View style={styles.modalContainer}>
-        <TouchableOpacity style={styles.modalBackgroundTouchable} onPress={close} />
+        <TouchableOpacity
+          style={styles.modalBackgroundTouchable}
+          onPress={close}
+        />
         <Gradient colors={gradientColors} style={styles.modal}>
           <View style={styles.modalHeader}>
             <View style={[styles.headerBlock, styles.iconBlock]}>
@@ -64,9 +63,7 @@ const LoginModal = (props: LoginModalProps) => {
             <Image style={[styles.headerIcon]} source={icon} />
           </View>
           <View style={styles.textBlock}>
-            <Text style={styles.text}>
-                {innerText}
-            </Text>
+            <Text style={styles.text}>{innerText}</Text>
           </View>
           <LoginButtonContainer onPress={close} />
         </Gradient>

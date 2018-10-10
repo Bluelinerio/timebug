@@ -1,17 +1,20 @@
-// @flow
-import * as React from 'react'
-import { View, Text, Platform } from 'react-native'
-import glamorous from 'glamorous-native'
+// Remove when file is used again
+/* eslint-disable no-unused-vars */
 
-import styles from '../../../styles/dashboard.styles'
-import HighlighRow from '../../../../components/HighlighRow'
+// @flow
+
+import * as React               from 'react'
+import { View, Text, Platform } from 'react-native'
+import glamorous                from 'glamorous-native'
+import styles                   from '../../../styles/dashboard.styles'
+import HighlighRow              from '../../../../components/HighlighRow'
 import {
   hotPink,
   deepBlue,
   lessSaturatedDeepBlue
-} from '../../../../constants/colors'
-import Entypo from 'react-native-vector-icons/Entypo'
-import Ionicons from 'react-native-vector-icons//Ionicons'
+}                               from '../../../../constants/colors'
+import Entypo                   from 'react-native-vector-icons/Entypo'
+import Ionicons                 from 'react-native-vector-icons//Ionicons'
 
 export const Title = ({ title, ...rest }: { title: string }) => (
   <Text
@@ -67,7 +70,12 @@ export const VectorEntypoButton = props => (
     {...props}
   />
 )
-export const VectorIoniconsButton = props => (
+
+type VectorIoniconsButtonProps = {
+  size: number
+}
+
+export const VectorIoniconsButton = (props: VectorIoniconsButtonProps) => (
   <Ionicons.Button
     backgroundColor={'transparent'}
     size={props.size | 48}

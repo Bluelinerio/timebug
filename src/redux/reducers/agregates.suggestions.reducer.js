@@ -11,17 +11,17 @@ export const ActionTypes = [SUBMIT_CHECKIN]
 
 const suggestionsReducer = (state = {}, action) => {
   switch (action.type) {
-    case SUBMIT_CHECKIN:
-      return {
-        ...state,
-        [SuggestionsReducerKeys.lastCheckin]: action.payload,
-        [SuggestionsReducerKeys.checkinHistory]: {
-          ...state[SuggestionsReducerKeys.checkinHistory],
-          [Date.now()]: action.payload
-        }
+  case SUBMIT_CHECKIN:
+    return {
+      ...state,
+      [SuggestionsReducerKeys.lastCheckin]: action.payload,
+      [SuggestionsReducerKeys.checkinHistory]: {
+        ...state[SuggestionsReducerKeys.checkinHistory],
+        [Date.now()]: action.payload
       }
-    default:
-      return state
+    }
+  default:
+    return state
   }
 }
 

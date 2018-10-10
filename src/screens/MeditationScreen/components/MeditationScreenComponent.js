@@ -6,7 +6,7 @@ import { SafeAreaView }                              from 'react-navigation'
 import styles, { white }                             from '../styles'
 import Button                                        from '../../../components/Button'
 import SoundPlayback, { PENDING, FAIL }              from './SoundPlayback'
-import MeditationTimer, { PAUSED, STARTED, STOPPED } from './MeditationTimer'
+import MeditationTimer, { PAUSED, STARTED }          from './MeditationTimer'
 import MeditationScreenBackground                    from './MeditationScreenBackground'
 import PlayPauseButton                               from './PlayPauseButton'
 import { triggerAnimation }                          from '../../styles'
@@ -71,25 +71,25 @@ export default class MeditationScreenComponent extends React.PureComponent<
       status === STARTED
         ? playingSound
           ? () => {
-              this.soundPlayback.pause()
-              this.timer.pause()
-              triggerAnimation()
-            }
+            this.soundPlayback.pause()
+            this.timer.pause()
+            triggerAnimation()
+          }
           : () => {
-              this.timer.pause()
-              triggerAnimation()
-            }
+            this.timer.pause()
+            triggerAnimation()
+          }
         : status === PAUSED
           ? () => {
-              this.timer.start()
-              this.soundPlayback.play()
-              triggerAnimation()
-            }
+            this.timer.start()
+            this.soundPlayback.play()
+            triggerAnimation()
+          }
           : () => {
-              this.soundPlayback.play()
-              this.timer.start()
-              triggerAnimation()
-            }
+            this.soundPlayback.play()
+            this.timer.start()
+            triggerAnimation()
+          }
     const finishEarlyButton = status === PAUSED &&
       !timeElapsed && (
         <Button

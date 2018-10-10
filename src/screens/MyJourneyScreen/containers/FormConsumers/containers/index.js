@@ -33,7 +33,7 @@ export type FormEntriesType = {
  * import ExampleFormComponent            from '../components/FormExample/FormComponentEx'
  * import ExampleFormHOC                  from './FormExample'
  * ...
- * 
+ *
  * [STEP1]: {
     title: 'Component 1',
     render: compose(
@@ -68,8 +68,11 @@ export const formEntries: FormEntriesType = {
   }
 }
 
-export default (props: any): React.ComponentType<any> => {
+const FormConsumersContainer = (props: any): React.ComponentType<any> => {
   const { step } = props
   const { render: Component } = formEntries[step]
   return Component ? <Component {...props} /> : null
 }
+
+
+export default FormConsumersContainer

@@ -1,6 +1,12 @@
 //@flow
 import { StyleSheet } from 'react-native'
-import { gray900, gray400, white2, paleBlue, blue100 } from '../../../constants/colors'
+import {
+  gray900,
+  gray400,
+  white2,
+  paleBlue,
+  blue100
+} from '../../../constants/colors'
 import {
   heightPercentage,
   widthPercentage
@@ -73,21 +79,21 @@ export default StyleSheet.create({
     borderWidth: 1,
     borderColor: gray400,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   textBlock: {
     flex: 1,
     flexDirection: 'row',
-    alignItems: 'center',    
+    alignItems: 'center',
     justifyContent: 'flex-start',
     paddingVertical: 12,
     paddingHorizontal: 16
   },
   text: {
-      textAlign: 'center',
-      fontSize: 14,
-      lineHeight: 15,
-      fontFamily: 'Metropolis'
+    textAlign: 'center',
+    fontSize: 14,
+    lineHeight: 15,
+    fontFamily: 'Metropolis'
   },
   modalBackgroundTouchable: {
     zIndex: 1,

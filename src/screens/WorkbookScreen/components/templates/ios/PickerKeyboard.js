@@ -1,20 +1,19 @@
 // @flow
-import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import {
   Modal,
   TouchableWithoutFeedback,
   View,
-  Text,
   Picker
-} from 'react-native';
-
-import styles from './styles/PickerKeyboard.styles';
+}                           from 'react-native';
+import styles               from './styles/PickerKeyboard.styles';
 
 type Props<T> = {
   onCancel: () => void,
   onChange: T => void,
-  value: T
+  value: T,
+  keyboardBackgroundColor: string,
+  children: any
 };
 
 type State<T> = {

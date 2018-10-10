@@ -45,31 +45,31 @@ function agregateReducer(
   }
 
   switch (action.type) {
-    case EVENT:
-      return {
-        ...(state || {}),
-        events: {
-          ...state.events,
-          [Date.now()]: action.payload
-        }
+  case EVENT:
+    return {
+      ...(state || {}),
+      events: {
+        ...state.events,
+        [Date.now()]: action.payload
       }
-    case UPDATE:
-      return {
-        ...(state && {}),
-        ...action.payload
-      }
-    case PUSH:
-      return {
-        ...(state && {}),
-        ...Object.keys(action.payload).reduce(
-          (sum, key) => ({
-            [key]: [...state[key], action.payload]
-          }),
-          {}
-        )
-      }
-    default:
-      return state
+    }
+  case UPDATE:
+    return {
+      ...(state && {}),
+      ...action.payload
+    }
+  case PUSH:
+    return {
+      ...(state && {}),
+      ...Object.keys(action.payload).reduce(
+        (sum, key) => ({
+          [key]: [...state[key], action.payload]
+        }),
+        {}
+      )
+    }
+  default:
+    return state
   }
 }
 

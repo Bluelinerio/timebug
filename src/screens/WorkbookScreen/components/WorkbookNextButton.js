@@ -1,6 +1,5 @@
 // @flow
-import React, { Component } from 'react';
-import { View } from 'react-native';
+import React  from 'react';
 import Button from '../../../components/Button';
 
 export type NextButtonProps = {
@@ -11,7 +10,7 @@ export type NextButtonProps = {
   backgroundColor: string
 };
 
-export default (props: NextButtonProps) => {
+const WorkbookNextButton = (props: NextButtonProps) => {
   const { onPress, buttonMessage, backgroundColor } = props;
   return (
     <Button
@@ -23,3 +22,5 @@ export default (props: NextButtonProps) => {
     />
   );
 };
+
+export default WorkbookNextButton

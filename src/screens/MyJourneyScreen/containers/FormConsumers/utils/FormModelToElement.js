@@ -58,35 +58,35 @@ export const buildElements = ({
   return componentDataArray.reduce((allElements, componentElement) => {
     const elements: Array<FormElement> | null = componentElement
       ? Object.keys(componentElement).reduce((elements, key) => {
-          const value = componentElement[key]
-          if (header.elements.length > 0) {
-            const element = header.elements.map(el => {
-              const { type, key: actualKey } = el
-              if (type === LABEL) {
-                const text = value[actualKey]
-                return {
-                  ...el,
-                  text
-                }
-              } else if (type !== STRUCT) {
-                const dataRowElement = data[key]
-                return {
-                  ...el,
-                  formIndex: key,
-                  formKey: actualKey,
-                  value: dataRowElement ? dataRowElement[actualKey].value : null
-                }
+        const value = componentElement[key]
+        if (header.elements.length > 0) {
+          const element = header.elements.map(el => {
+            const { type, key: actualKey } = el
+            if (type === LABEL) {
+              const text = value[actualKey]
+              return {
+                ...el,
+                text
               }
-            })
-            return [
-              ...elements,
-              {
-                elements: element
+            } else if (type !== STRUCT) {
+              const dataRowElement = data[key]
+              return {
+                ...el,
+                formIndex: key,
+                formKey: actualKey,
+                value: dataRowElement ? dataRowElement[actualKey].value : null
               }
-            ]
-          }
-          return elements
-        }, [])
+            }
+          })
+          return [
+            ...elements,
+            {
+              elements: element
+            }
+          ]
+        }
+        return elements
+      }, [])
       : null
     if (elements) return [...allElements, ...elements]
     return allElements

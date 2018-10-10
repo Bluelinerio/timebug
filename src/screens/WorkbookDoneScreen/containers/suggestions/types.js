@@ -12,10 +12,8 @@ import {
   PHASE2,
   PHASE3,
   NEIGHBOR,
-
   HOME_SCREEN,
   DONE_SCREEN,
-  
   STEP1,
   STEP2,
   STEP3,
@@ -46,7 +44,6 @@ import {
   STEP28,
   STEP29,
   STEP30
-  
 } from './constants'
 
 export type Category =

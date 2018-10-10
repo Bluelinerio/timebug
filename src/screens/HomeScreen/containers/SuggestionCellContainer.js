@@ -1,3 +1,6 @@
+// Remove this disable once this file is taken again
+/* eslint-disable react/jsx-key */
+
 import * as React                              from 'react'
 import { connect }                             from 'react-redux'
 import { randomItem }                          from '../../../utils/random'

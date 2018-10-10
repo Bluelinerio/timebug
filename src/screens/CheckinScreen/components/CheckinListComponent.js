@@ -1,6 +1,6 @@
 //@flow
 import React                                   from 'react'
-import { Text, TouchableOpacity, View }        from 'react-native'
+import { Text, View }        from 'react-native'
 import CheckinElement, { CheckinElementProps } from './CheckinElement'
 import styles                                  from '../styles'
 
@@ -17,18 +17,9 @@ class CheckinListComponent extends React.Component<CheckinListComponentProps> {
   }
 
   render() {
-    const { checkins, cancelAllNotifications } = this.props
+    const { checkins } = this.props
     return (
       <React.Fragment>
-        {/* {__DEV__ &&
-          checkins && (
-            <TouchableOpacity
-              style={{ backgroundColor: 'blue', height: 80, width: 200, alignSelf: 'center', justifyContent: 'center', alignItems: 'center' }}
-              onPress={cancelAllNotifications}
-            >
-              <Text style={{ color: '#FAFAFA' }}>Clear All notifications</Text>
-            </TouchableOpacity>
-          )} */}
         {checkins ? (
           Object.keys(checkins).map(key => {
             const checkin = checkins[key]

@@ -126,20 +126,20 @@ function formDataReducer(
   action: FormAction
 ) {
   switch (action.type) {
-    case SUBMIT_FORM_VALUE:
-      return populate(action, state)
-    case INCREMENT_FORM_DATA_QUEUE:
-      return increment(state)
-    case DECREMENT_FORM_DATA_QUEUE:
-      return decrement(state)
-    case SET_LOADING_FORMDATA:
-      return setLoadingFormData(state, action.payload)
-    case RESTORE_FORM_DATA:
-      return restore(state, action.payload)
-    case RESET_FORMS:
-      return initialState
-    default:
-      return state
+  case SUBMIT_FORM_VALUE:
+    return populate(action, state)
+  case INCREMENT_FORM_DATA_QUEUE:
+    return increment(state)
+  case DECREMENT_FORM_DATA_QUEUE:
+    return decrement(state)
+  case SET_LOADING_FORMDATA:
+    return setLoadingFormData(state, action.payload)
+  case RESTORE_FORM_DATA:
+    return restore(state, action.payload)
+  case RESET_FORMS:
+    return initialState
+  default:
+    return state
   }
 }
 

@@ -1,22 +1,34 @@
-// @flow
-import * as React from 'react'
-import { connect } from 'react-redux'
-import { compose, mapProps } from 'recompose'
-import selectors from '../../redux/selectors'
-import MeditationScreenComponent from './components/MeditationScreenComponent'
-import { StackNavigator, NavigationActions } from 'react-navigation'
-import styles from '../styles'
-import HeaderCloseButton from '../../components/HeaderCloseButton'
-import { withNavigationAndMeditation } from '../../HOC'
+// Remove once file is used again
+/* eslint-disable no-undef */
 
-//const goneSoundFile = require('../../resources/sounds/gong.wav')
+// @flow
+
+import * as React                            from 'react'
+import { compose, mapProps }                 from 'recompose'
+import MeditationScreenComponent             from './components/MeditationScreenComponent'
+import { StackNavigator, NavigationActions } from 'react-navigation'
+import styles                                from '../styles'
+import HeaderCloseButton                     from '../../components/HeaderCloseButton'
+import { withNavigationAndMeditation }       from '../../HOC'
+
+//const gongSoundFile = require('../../resources/sounds/gong.wav')
+
+type Meditation = {
+  id: string,
+  name: string,
+  step?: string,
+  backgroundColor: string,
+  lengthInSeconds: number,
+  audioFile: string,
+  gongFile: string
+}
 
 const MeditationScreenContainer = compose(
   withNavigationAndMeditation,
-  mapProps(({ navigation: { dispatch }, meditation, rest }) => ({
+  mapProps(({ navigation: { dispatch }, meditation, rest } : { meditation: Meditation }) => ({
     ...rest,
     ...meditation,
-    soundfile: meditation.audioFile ? meditation.audioFile : goneSoundFile,
+    soundfile: meditation.audioFile ? meditation.audioFile : gongSoundFile,
     done: () => dispatch(NavigationActions.back())
   }))
 )(MeditationScreenComponent)
@@ -48,16 +60,6 @@ const MeditationScreen = StackNavigator(
     }
   }
 )
-
-type Meditation = {
-  id: string,
-  name: string,
-  step?: string,
-  backgroundColor: string,
-  lengthInSeconds: number,
-  audioFile: string,
-  gongFile: string
-}
 
 // TODO: determin if it is required to fixDebounce:
 //fixDebounce(MeditationScreen)

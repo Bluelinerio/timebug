@@ -1,10 +1,10 @@
 // @flow
 
-import React, { Component } from 'react'
-import { View, StyleSheet } from 'react-native'
+import React                            from 'react'
+import { StyleSheet }                   from 'react-native'
 import type { LayoutStyle, ColorValue } from 'react-native'
-import LinearGradient from 'react-native-linear-gradient'
-import { whiteGradientColors } from '../constants/colors'
+import LinearGradient                   from 'react-native-linear-gradient'
+import { whiteGradientColors }          from '../constants/colors'
 
 export type GradientBackgroundProps = {
   style: {
@@ -19,9 +19,9 @@ export type GradientBackgroundProps = {
 
 const GradientWithTwoColors = (props: GradientBackgroundProps) => (
   <LinearGradient
-    colors={ props.reverse 
+    colors={ props.reverse
       ? [ props.endColor, props.startColor ]
-      : [ props.startColor, props.endColor ] 
+      : [ props.startColor, props.endColor ]
     }
     style={[{...StyleSheet.absoluteFillObject}, { opacity: props.opacity }]}
   />

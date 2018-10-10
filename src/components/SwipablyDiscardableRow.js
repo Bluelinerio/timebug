@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import { StyleSheet } from 'react-native'
-
-import { RectButton } from 'react-native-gesture-handler'
-import Swipeable from 'react-native-gesture-handler/Swipeable'
+import { StyleSheet }       from 'react-native'
+import { RectButton }       from 'react-native-gesture-handler'
+import Swipeable            from 'react-native-gesture-handler/Swipeable'
 
 export default class SwipablyDiscardableRow extends Component<{
   children: React.Node,

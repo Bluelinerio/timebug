@@ -21,13 +21,13 @@ const ModalComponent = ({
         isOpen={!!openKeys.find(key => key === loginModalKey)}
         close={() => closeModal(loginModalKey)}
         open={key => openModal(key)}
-        {...params && params[loginModalKey] ? params[loginModalKey] : {}}
+        {...(params && params[loginModalKey] ? params[loginModalKey] : {})}
       />
-      <AudioModal 
+      <AudioModal
         isOpen={!!openKeys.find(key => key === audioModalKey)}
         close={() => closeModal(audioModalKey)}
         open={key => openModal(key)}
-        {...params && params[audioModalKey] ? params[audioModalKey] : {}}
+        {...(params && params[audioModalKey] ? params[audioModalKey] : {})}
       />
     </React.Fragment>
   )

@@ -1,14 +1,13 @@
 // @flow
-import * as React from 'react'
+import * as React                        from 'react'
 import {
   View,
   Image,
   StatusBar,
-} from 'react-native'
-import { SafeAreaView } from 'react-navigation'
-import Swiper from 'react-native-swiper'
-import LinearGradient from 'react-native-linear-gradient'
-
+}                                        from 'react-native'
+import { SafeAreaView }                  from 'react-navigation'
+import Swiper                            from 'react-native-swiper'
+import LinearGradient                    from 'react-native-linear-gradient'
 import type { Slide }                    from '../../services/cms'
 import Text                              from './components/Text'
 import Button                            from './components/Button'
@@ -21,7 +20,7 @@ type Props = ScreenProps & {
 }
 
 export default class Walkthrough extends React.Component<Props> {
-  onIndexChanged = (index: number) => {}
+  onIndexChanged = () => {}
 
   renderSlide = (slide: Slide, index: number) => (
     <LinearGradient

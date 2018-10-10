@@ -1,4 +1,4 @@
-import t from '../components/templates';
+import t           from '../components/templates';
 import { Emotion } from './contents';
 
 export default {

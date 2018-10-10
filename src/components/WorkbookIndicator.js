@@ -1,7 +1,7 @@
 // @flow
-import React from 'react'
+import React                                   from 'react'
 import { View, ActivityIndicator, StyleSheet } from 'react-native'
-import styles from '../styles/components/WorkbookIndicator'
+import styles                                  from '../styles/components/WorkbookIndicator'
 
 type Props = {
   size: 'small' | 'large',

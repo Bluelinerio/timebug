@@ -1,8 +1,8 @@
 // @flow
-import React from 'react'
+import React                                          from 'react'
 import { View, ActivityIndicator, StyleSheet, Image } from 'react-native'
-import styles from '../styles/components/DefaultIndicator'
-import { lifevisionCollage } from '../resources/images'
+import styles                                         from '../styles/components/DefaultIndicator'
+import { lifevisionCollage }                          from '../resources/images'
 
 type Props = {
   size: 'small' | 'large',

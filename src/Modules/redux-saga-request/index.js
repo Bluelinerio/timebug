@@ -1,3 +1,4 @@
+/* eslint-disable */
 // @flow
 import { call, cancelled as cancelledSaga, put } from 'redux-saga/effects';
 /**

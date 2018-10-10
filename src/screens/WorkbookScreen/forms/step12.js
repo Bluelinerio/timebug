@@ -1,5 +1,5 @@
-import t from '../components/templates';
-import { MajorLifeEvents, TimeShift, IncreaseDecrease } from './contents';
+import t                                     from '../components/templates';
+import { MajorLifeEvents, IncreaseDecrease } from './contents';
 
 export default {
   1: {

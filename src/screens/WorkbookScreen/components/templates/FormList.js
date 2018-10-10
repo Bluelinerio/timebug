@@ -1,6 +1,6 @@
-import * as React from 'react'
+import * as React                  from 'react'
 import { removeLabelFromListItem } from './FormManipulations'
-import { triggerAnimation } from '../../../styles'
+import { triggerAnimation }        from '../../../styles'
 
 import {
   ListContainer,
@@ -65,7 +65,7 @@ export default class FormList extends React.Component<Props, State> {
     }
   }
 
-  labelProps = (style) => {
+  labelProps = style => {
     const { config } = this.props
     const text = config.labelText && config.labelText(this.props)
     return (
@@ -77,13 +77,9 @@ export default class FormList extends React.Component<Props, State> {
   }
 
   composeStyles = (...overrideStyles) => {
-    return (...styles) => ([
-        ...styles,
-        ...overrideStyles
-      ])
+    return (...styles) => [...styles, ...overrideStyles]
   }
-    
-  
+
   render() {
     const {
       items,
@@ -100,29 +96,25 @@ export default class FormList extends React.Component<Props, State> {
     const { index, pages, focusLastItem } = this.state
 
     const labelStyles = this.composeStyles({
-        color: config.stepColor
-    })(
-      hasError 
-        ? styles.controlLabel.error 
-        : styles.controlLabel.normal
-    )
+      color: config.stepColor
+    })(hasError ? styles.controlLabel.error : styles.controlLabel.normal)
 
     const labelProps = this.labelProps(labelStyles)
     const labelComponent = labelProps && Label(labelProps)
 
     const helpComponent = help
       ? HelpLabel({
-          style: hasError ? styles.helpBlock.error : styles.helpBlock.normal,
-          text: label
-        })
+        style: hasError ? styles.helpBlock.error : styles.helpBlock.normal,
+        text: label
+      })
       : null
 
     const errorComponent =
       hasError && error
         ? ErrorLabel({
-            style: styles.errorBlock,
-            text: error
-          })
+          style: styles.errorBlock,
+          text: error
+        })
         : null
 
     const addButtonEnabled =
@@ -133,20 +125,20 @@ export default class FormList extends React.Component<Props, State> {
 
     const addButton = shouldRenderAddButton
       ? AddButton({
-          key: add.type,
-          text: '', //items === 0 ? 'Create First' : `Create another (${items.length})`,
-          disabled: !addButtonEnabled,
-          onPress: () => {
-            add.click()
-            this.setState({
-              index: index + 1,
-              focusLastItem: true
-            })
-          },
-          style: {
-            backgroundColor: config.color
-          }
-        })
+        key: add.type,
+        text: '', //items === 0 ? 'Create First' : `Create another (${items.length})`,
+        disabled: !addButtonEnabled,
+        onPress: () => {
+          add.click()
+          this.setState({
+            index: index + 1,
+            focusLastItem: true
+          })
+        },
+        style: {
+          backgroundColor: config.color
+        }
+      })
       : null
 
     const children = items
@@ -157,7 +149,7 @@ export default class FormList extends React.Component<Props, State> {
     const lastChildIndex = children.length - 1
 
     if (focusLastItem && lastChildIndex >= 0) {
-      const lastChild = children[lastChildIndex]
+      // const lastChild = children[lastChildIndex]
       // lastChild.focus
     }
     return (

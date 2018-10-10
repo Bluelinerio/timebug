@@ -1,10 +1,10 @@
 //@flow
-import React from 'react'
+import React                      from 'react'
 import { View, Image, StatusBar } from 'react-native'
-import UserProfileImageConsumer from '../containers/UserProfileImageConsumer'
-import styles, { bannerColor } from '../styles/components/Banner/mini'
-import UserProfileImage from '../containers/UserProfileImageContainer'
-import { icon } from '../resources/images'
+import UserProfileImageConsumer   from '../containers/UserProfileImageConsumer'
+import styles, { bannerColor }    from '../styles/components/Banner/mini'
+import UserProfileImage           from '../containers/UserProfileImageContainer'
+import { icon }                   from '../resources/images'
 
 const MinifiedBanner = () => {
   return (

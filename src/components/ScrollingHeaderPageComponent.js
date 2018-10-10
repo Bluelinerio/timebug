@@ -1,8 +1,8 @@
 // @flow
 
-import React, { Component } from 'react'
+import React, { Component }           from 'react'
 import { Animated, ScrollView, View } from 'react-native'
-import invariant from 'invariant'
+import invariant                      from 'invariant'
 
 type Props = {
   content: React.Node,
@@ -51,7 +51,7 @@ export default class ScrollingHeaderPageComponent extends Component<
   }
   // this is an implmentation of ajustment of a growing/shrinking view makin sure the the minimal height of the scroll view content is at least the height of the scroll view itself. (its container)
   layout = () => {
-    const { headerMaxHeight, headerMinHeight } = this.props
+    const { headerMaxHeight } = this.props
     const {
       containerLayout,
       contentLayout,
@@ -65,7 +65,8 @@ export default class ScrollingHeaderPageComponent extends Component<
           Math.max(
             0,
             containerLayout.height - contentLayout.height - headerMaxHeight
-          ) + 10
+          ) +
+          10
       )
       if (newBufferHeight !== bufferViewHeight) {
         this.setState({
@@ -98,7 +99,7 @@ export default class ScrollingHeaderPageComponent extends Component<
   }
 
   render() {
-    const { layoutReady, bufferViewHeight } = this.state
+    const { bufferViewHeight } = this.state
     const {
       content,
       headerImage,

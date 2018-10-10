@@ -1,12 +1,12 @@
-import { connect } from 'react-redux'
+import { connect }                                  from 'react-redux'
 import { compose, branch, renderNothing, mapProps } from 'recompose'
-import { withNavigation } from 'react-navigation'
-import selectors from '../../../redux/selectors'
-import { goToMarkdownScreen } from '../../../redux/actions/nav.actions'
-import AppInstructionsCellComponent from '../components/DashboardCells/AppInstructionsCellComponent'
-import markdownStyles from '../../../styles/Markdown/stepScreen'
-import { headerBackgrounds } from '../../../resources/images'
-import { randomItem } from '../../../utils/random'
+import { withNavigation }                           from 'react-navigation'
+import selectors                                    from '../../../redux/selectors'
+import { goToMarkdownScreen }                       from '../../../redux/actions/nav.actions'
+import AppInstructionsCellComponent                 from '../components/DashboardCells/AppInstructionsCellComponent'
+import markdownStyles                               from '../../../styles/Markdown/stepScreen'
+import { headerBackgrounds }                        from '../../../resources/images'
+import { randomItem }                               from '../../../utils/random'
 
 const mapStateToProps = state => ({
   user: selectors.user(state),
@@ -46,6 +46,5 @@ const WhereToStartSuggestionCellContainer = compose(
   mapProps(title),
   mapProps(button)
 )(AppInstructionsCellComponent)
-
 
 export default WhereToStartSuggestionCellContainer

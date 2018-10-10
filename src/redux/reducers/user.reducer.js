@@ -23,26 +23,26 @@ type Action = UserStateAction | LogoutAction
 
 export default function(state: UserState = UNDETERMINED, action: Action) {
   switch (action.type) {
-    case LOGIN_WITH_FB_BUTTON_PRESSED:
-    case AUTHENTICATE_FB.STARTED:
-    case GET_USER.STARTED:
-      return AUTHENTICATING
-    case LOGOUT:
-      return ANONYMOUS
-    case SET_USER_STATE:
-    case GET_USER.SUCCEEDED:
-      return action.payload
-    case UPDATE_USER:
-      return {
-        ...state,
-        ...action.payload
-      }
-    case RESET_USER_STEPS:
-      return {
-        ...state,
-        forms: []
-      }
-    default:
-      return state
+  case LOGIN_WITH_FB_BUTTON_PRESSED:
+  case AUTHENTICATE_FB.STARTED:
+  case GET_USER.STARTED:
+    return AUTHENTICATING
+  case LOGOUT:
+    return ANONYMOUS
+  case SET_USER_STATE:
+  case GET_USER.SUCCEEDED:
+    return action.payload
+  case UPDATE_USER:
+    return {
+      ...state,
+      ...action.payload
+    }
+  case RESET_USER_STEPS:
+    return {
+      ...state,
+      forms: []
+    }
+  default:
+    return state
   }
 }

@@ -1,6 +1,6 @@
 //@flow
 import { OPEN_MODAL, CLOSE_MODAL } from '../actionTypes'
-import { ModalActionPayload } from '../actions/modal.actions'
+import { ModalActionPayload }      from '../actions/modal.actions'
 
 type ModalState = {
   openKeys: Array<string>,
@@ -50,11 +50,11 @@ const handleClose = (state: ModalState, payload: ModalActionPayload) => {
 
 export default (state: ModalState = initialState, action: ModalAction) => {
   switch (action.type) {
-    case OPEN_MODAL:
-      return handleOpen(state, action.payload)
-    case CLOSE_MODAL:
-      return handleClose(state, action.payload)
-    default:
-      return state
+  case OPEN_MODAL:
+    return handleOpen(state, action.payload)
+  case CLOSE_MODAL:
+    return handleClose(state, action.payload)
+  default:
+    return state
   }
 }

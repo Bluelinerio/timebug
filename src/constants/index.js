@@ -20,13 +20,12 @@ export function isIphoneX() {
   )
 }
 
-export const APPBAR_HEIGHT = (isLandscape: boolean) => Platform.select({
-  ios: isLandscape && !Platform.isPad ? 32 : 44,
-  android: 56
-})
+export const APPBAR_HEIGHT = (isLandscape: boolean) =>
+  Platform.select({
+    ios: isLandscape && !Platform.isPad ? 32 : 44,
+    android: 56
+  })
 
 export const STATUSBAR_HEIGHT =
   Platform.OS === 'ios' ? (isIphoneX() ? 50 : 20) : 0
 export const TITLE_OFFSET = Platform.OS === 'ios' ? 70 : 56
-
-  
