@@ -5,7 +5,6 @@ import t from '../../../forms/components'
 import NextButton from './NextButton'
 import hexToRgba from '../../../utils/colorTransform'
 
-
 const Form = t.form.Form
 
 export type Model = {
@@ -53,16 +52,6 @@ class GoalStepScreen extends React.PureComponent<
     const { errors } = this.state
     if (errors && errors.length) {
       Alert.alert(errors[0].message, '', [
-        /* this is for later ideally working with react-native-keyboard-aware-scroll-view
-            {
-              text: 'Show me',
-              onPress: () => {
-                const component = this.form.getComponent(path)
-                const ref = component.refs.input
-                input.focus()
-              },
-            },
-            */
         {
           text: 'OK'
         }
@@ -91,9 +80,34 @@ class GoalStepScreen extends React.PureComponent<
     }
   }
 
+  validate = () => {
+    const { model } = this.state
+    const { options: { fields: { goalSteps: { config } } } } = model
+    const validation = this.form.validate()
+    const { errors, value } = validation
+    if (config.min && config.max) {
+      const { min, max } = config
+      const hasError =
+        value.goalSteps.length < min || value.goalSteps.length > max
+      const res = hasError
+        ? {
+          value,
+          errors: [
+            {
+              message: 'Needed a minimum of 2 steps up to a maximum of 10'
+            },
+            ...errors
+          ]
+        }
+        : validation
+      return res
+    }
+    return validation
+  }
+
   onPress = () => {
     const { onPress } = this.props
-    const { errors, value } = this.form.validate()
+    const { errors, value } = this.validate()
     if (errors && errors.length > 0) {
       this.setState(
         {
@@ -151,23 +165,18 @@ class GoalStepScreen extends React.PureComponent<
 
   shouldShowPaddingView = () => {
     const { value } = this.state
-    return !value || (value.goalSteps.length <= 1)
+    return !value || value.goalSteps.length <= 1
   }
 
   render() {
-    const {
-      model,
-      value,
-      layoutReady,
-      bufferViewHeight
-    } = this.state
+    const { model, value, layoutReady, bufferViewHeight } = this.state
     const { type, options } = model
     const { config } = options
 
     return (
       <View onLayout={this.onLayout} style={{ flex: 1 }}>
         <StatusBar barStyle="light-content" backgroundColor={buttonColor} />
-        <ScrollView >
+        <ScrollView>
           <View
             onLayout={this.onFormLayout}
             style={{
@@ -194,7 +203,9 @@ class GoalStepScreen extends React.PureComponent<
             <View
               style={[
                 styles.flexibleHeightView,
-                bufferViewHeight && this.shouldShowPaddingView() ? { height: bufferViewHeight } : {}
+                bufferViewHeight && this.shouldShowPaddingView()
+                  ? { height: bufferViewHeight }
+                  : {}
               ]}
             />
           </View>

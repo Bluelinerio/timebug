@@ -10,10 +10,13 @@ export default {
       )
     }),
     options: {
-      label:
-        'Steps that could help you reach your goal',
+      label: 'Add a list of 2-10 steps that could help you achieve your goals!',
       fields: {
         goalSteps: {
+          config: {
+            min: 2,
+            max: 10
+          },
           item: {
             auto: 'none',
             fields: {
