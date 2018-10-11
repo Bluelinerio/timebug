@@ -1,8 +1,8 @@
 import { StyleSheet } from 'react-native'
-import { SELF_ASSESMENT } from '../../../constants/colors'
+import { MEDITATION } from '../../../constants/colors'
 
-export const headerColor = SELF_ASSESMENT
-export const buttonColor = SELF_ASSESMENT
+export const headerColor = MEDITATION
+export const buttonColor = MEDITATION
 
 export default StyleSheet.create({
   container: {
