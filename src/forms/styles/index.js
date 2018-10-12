@@ -36,6 +36,17 @@ export const extraStyles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     marginVertical: 5
+  },
+  listFootnote: {
+    fontSize: 16,
+    fontFamily: 'Metropolis'
+  },
+  listFootnoteContainer: {
+    paddingBottom: 4,
+    marginBottom: 10
+  },
+  listFootnoteBanner: {
+    marginTop: -8
   }
 })
 

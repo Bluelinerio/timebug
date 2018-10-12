@@ -1,7 +1,6 @@
 import * as React                  from 'react'
 import { removeLabelFromListItem } from './FormManipulations'
 import { triggerAnimation }        from '../../screens/styles'
-
 import {
   ListContainer,
   RowWithoutButtons,
@@ -9,8 +8,9 @@ import {
   Label,
   HelpLabel,
   AddButton,
-  ItemContainer
-} from './Views'
+  ItemContainer,
+  ListFootnote
+}                                  from './Views'
 
 type Item = {
   key: string,
@@ -35,7 +35,10 @@ type Props = {
   help: string,
   maxLines: string,
   config: {
-    labelText?: () => void
+    labelText?: () => void,
+    color: string,
+    min?: number,
+    max?: number
   }
 }
 
@@ -93,7 +96,7 @@ export default class FormList extends React.Component<Props, State> {
       config
     } = this.props
 
-    const { index, pages, focusLastItem } = this.state
+    const { index, pages } = this.state
 
     const labelStyles = this.composeStyles({
       color: config.stepColor
@@ -101,6 +104,8 @@ export default class FormList extends React.Component<Props, State> {
 
     const labelProps = this.labelProps(labelStyles)
     const labelComponent = labelProps && Label(labelProps)
+
+    const footnote = ListFootnote(items ? items.length : 0, config)
 
     const helpComponent = help
       ? HelpLabel({
@@ -141,20 +146,17 @@ export default class FormList extends React.Component<Props, State> {
       })
       : null
 
-    const children = items
-      .reverse()
-      .map(removeLabelFromListItem)
-      .map(RowWithoutButtons)
+    const children = items.map(removeLabelFromListItem).map(RowWithoutButtons)
 
-    const lastChildIndex = children.length - 1
+    // if (focusLastItem && children && children.length > 0) {
+    //   const lastChildIndex = children.length - 1
+    //   const lastChild = children[lastChildIndex]
+    // }
 
-    if (focusLastItem && lastChildIndex >= 0) {
-      // const lastChild = children[lastChildIndex]
-      // lastChild.focus
-    }
     return (
       <ListContainer style={styles.fieldset.normal}>
         {labelComponent}
+        {footnote}
         {helpComponent}
         {errorComponent}
         {addButton}
