@@ -11,6 +11,7 @@ import modal        from './reducers/modal.reducer'
 import uiState      from './reducers/ui.reducer'
 import checkins     from './reducers/checkin.reducer'
 import persistState from './reducers/persist.reducer'
+import goals        from './reducers/goals.reducer'
 
 export const rootReducer = {
   cms,
@@ -25,5 +26,6 @@ export const rootReducer = {
   modal,
   uiState,
   checkins,
-  persistState
+  persistState,
+  goals
 }

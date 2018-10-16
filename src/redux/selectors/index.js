@@ -7,7 +7,8 @@ import {
   getAwards,
   getUIState,
   getCheckinState,
-  getPersistState
+  getPersistState,
+  getGoals
 }                                                             from './rootReducer.selectors'
 import {
   // UNDETERMINED,
@@ -17,10 +18,8 @@ import {
 // models
 import workbooks                                              from '../../screens/WorkbookScreen/forms'
 import { removeIvalidValuesInsteadOfDoingAnyMigrationForNow } from '../tcomb'
-
 import type { User, Form }                                    from '../../services/apollo/models'
 import type { Step, Slide }                                   from '../../services/cms'
-
 import { getStepColors, getPhaseColors }                      from '../../services/dummyCms'
 
 export const filterWithKeys = (predicate, obj) =>
@@ -249,7 +248,8 @@ const awardModelAndDataForStep = (state: any) => (step: number) => {
  * UI
  */
 
-const stateForScreen = (state: any) => (screen: string) => getUIState(state).screens[screen] || {}
+const stateForScreen = (state: any) => (screen: string) =>
+  getUIState(state).screens[screen] || {}
 
 /**
  * Checkins
@@ -260,7 +260,56 @@ const getCheckins = (state: any) => getCheckinState(state).checkins
  * Persist Status
  */
 
-const hasStoreLoaded = (state: any) => getPersistState(state).status === 'LOADED'
+const hasStoreLoaded = (state: any) =>
+  getPersistState(state).status === 'LOADED'
+
+/**
+ * Goals
+ */
+const getGoalsData = (state: any) => getGoals(state).data
+
+const getGoalsDataForGoal = (state: any) => {
+  const data = getGoalsData(state)
+  return (goalId: string) => {
+    const dataForGoals = data[goalId]
+    return dataForGoals
+  }
+}
+
+const getGoalStepsForGoalAndForm = (state: any) => {
+  const data = getGoalsData(state)
+  return (goalId: string, formId: string) => {
+    const dataForGoals = data[goalId]
+    const form = dataForGoals[formId]
+    const onlyValueElements = Object.keys(form)
+      .filter(key => key !== 'timestamp' && key !== 'id')
+      .reduce((object, key) => {
+        return {
+          ...object,
+          [key]: form[key]
+        }
+      }, {})
+    return onlyValueElements
+  }
+}
+
+const getGoalsStepsForGoalAndFormStateless = (
+  data: any,
+  goalId: string,
+  formId: string
+) => {
+  const dataForGoals = data[goalId] || {}
+  const form = dataForGoals[formId] || {}
+  const onlyValueElements = Object.keys(form)
+    .filter(key => key !== 'timestamp' && key !== 'id')
+    .reduce((object, key) => {
+      return {
+        ...object,
+        [key]: form[key]
+      }
+    }, {})
+  return onlyValueElements
+}
 
 const selectors = {
   getCms,
@@ -304,7 +353,11 @@ const selectors = {
   overridePhaseColors,
   stateForScreen,
   getCheckins,
-  hasStoreLoaded
+  hasStoreLoaded,
+  getGoalsData,
+  getGoalsDataForGoal,
+  getGoalStepsForGoalAndForm,
+  getGoalsStepsForGoalAndFormStateless
 }
 
 export default selectors

@@ -1,9 +1,10 @@
-import React from 'react'
+import React                                  from 'react'
 import { ScrollView, View, StatusBar, Alert } from 'react-native'
-import styles, { buttonColor } from '../styles'
-import t from '../../../forms/components'
-import NextButton from './NextButton'
-import hexToRgba from '../../../utils/colorTransform'
+import styles, { buttonColor }                from '../styles'
+import t                                      from '../../../forms/components'
+import NextButton                             from './NextButton'
+import hexToRgba                              from '../../../utils/colorTransform'
+import r                                      from 'ramda'
 
 const Form = t.form.Form
 
@@ -15,7 +16,10 @@ export type Model = {
 type GoalStepScreenProps = {
   onPress: () => any,
   model: Model,
-  value: any
+  value: any,
+  goalId: string,
+  formId: string,
+  type: string
 }
 
 type GoalStepScreenState = {
@@ -106,7 +110,7 @@ class GoalStepScreen extends React.PureComponent<
   }
 
   onPress = () => {
-    const { onPress } = this.props
+    const { onPress, goalId, formId, type } = this.props
     const { errors, value } = this.validate()
     if (errors && errors.length > 0) {
       this.setState(
@@ -116,7 +120,7 @@ class GoalStepScreen extends React.PureComponent<
         this.showAlert
       )
     } else {
-      onPress(value)
+      onPress({ value, goalId, formId, type })
     }
   }
 
@@ -165,7 +169,7 @@ class GoalStepScreen extends React.PureComponent<
 
   shouldShowPaddingView = () => {
     const { value } = this.state
-    return !value || value.goalSteps.length <= 1
+    return !value || r.isEmpty(value) || value.goalSteps.length <= 1
   }
 
   render() {

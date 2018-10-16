@@ -1,10 +1,16 @@
-import GoalStepScreenComponent from '../components/GoalStepScreenComponent'
-import { connect } from 'react-redux'
-import { withNavigation } from 'react-navigation'
-import t from '../../../forms/components'
-import { compose, mapProps } from 'recompose'
-import models from '../goalForms'
-import tron from 'reactotron-react-native'
+import GoalStepScreenComponent  from '../components/GoalStepScreenComponent'
+import { connect }              from 'react-redux'
+import { withNavigation }       from 'react-navigation'
+import t                        from '../../../forms/components'
+import { compose, mapProps }    from 'recompose'
+import models                   from '../goalForms'
+import tron                     from 'reactotron-react-native'
+import {
+  UpdateGoalStep,
+  SyncGoalSteps
+}                               from '../../../redux/actions/goals.actions'
+import type { GoalStepPayload } from '../../../redux/actions/goals.actions'
+import selectors                from '../../../redux/selectors'
 
 const formatType = type => {
   const compose = (...fns) => x => fns.reduce((v, fn) => fn(v), x)
@@ -19,24 +25,56 @@ const formatType = type => {
     .reduce(enter, {})
 }
 
+type Dispatchable = (payload: any) => any
+
+const callWithObj = (fn: Array<Dispatchable>) => (payload: any) =>
+  fn.map(f => {
+    f(payload)
+  })
 const mapDispatchToProps = (dispatch: any) => {
+  tron.display({
+    name: 'MapDispatchToProps in GoalStep',
+    preview: 'MapDispatch',
+    value: 'Lek'
+  })
+  const updateGoalStep = (payload: GoalStepPayload) =>
+    dispatch(UpdateGoalStep(payload))
+  const syncGoalSteps = (payload: GoalStepPayload) =>
+    dispatch(SyncGoalSteps(payload))
+  const onPress = callWithObj([updateGoalStep, syncGoalSteps])
   return {
-    onPress: (obj: any) => tron.log(obj)
+    onPress
   }
 }
 
-const merge = ({ onPress, navigation: { state: { params } } }) => {
+const mapStateToProps = (state: any): { goalsData: any } => {
+  const goalsData = selectors.getGoalsData(state)
+  return {
+    goalsData
+  }
+}
+
+const merge = ({ onPress, goalsData, navigation: { state: { params } } }) => {
   const { goalId, formId } = params
+  tron.log(goalsData)
   const model = models[formId]
+  const value = selectors.getGoalsStepsForGoalAndFormStateless(
+    goalsData,
+    `${goalId}`,
+    `${formId}`
+  )
   return {
     goalId,
+    formId,
+    type: formatType(model.type),
     onPress,
-    model
+    model,
+    value
   }
 }
 
 export default compose(
-  connect(null, mapDispatchToProps),
+  connect(mapStateToProps, mapDispatchToProps),
   withNavigation,
   mapProps(merge)
 )(GoalStepScreenComponent)
