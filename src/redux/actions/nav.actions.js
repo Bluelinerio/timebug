@@ -74,6 +74,9 @@ export const goBackFrom = (key: string) =>
     key
   })
 
+export const goBack = () =>
+  NavigationActions.back()
+
 export const restartStepAction = (step: Step) =>
   NavigationActions.reset({
     index: 1,

@@ -5,8 +5,11 @@ import t                                      from '../../../forms/components'
 import NextButton                             from './NextButton'
 import hexToRgba                              from '../../../utils/colorTransform'
 import r                                      from 'ramda'
+import uuid                                   from 'uuid/v4'
 
 const Form = t.form.Form
+
+const generate = () => uuid()
 
 export type Model = {
   type: any,
@@ -44,7 +47,8 @@ class GoalStepScreen extends React.PureComponent<
       layoutReady: false,
       containerLayout: null,
       formLayout: null,
-      value
+      value,
+      originalValue: value
     }
   }
 
@@ -109,8 +113,50 @@ class GoalStepScreen extends React.PureComponent<
     return validation
   }
 
+  _handleConfiguration = (value, originalValue) => {
+    const { model } = this.state
+    const { options: { fields: { goalSteps: { config } } } } = model
+    if (config) {
+      const { defaults } = config
+      if (defaults) {
+        const { goalSteps } = value
+        const { goalSteps: originalGoalSteps = {} } = originalValue
+        const mergedValueGoalsteps = goalSteps.map((goal, index) => {
+          const original = originalGoalSteps[index] || {}
+          return {
+            ...original,
+            ...goal
+          }
+        })
+        const newGoalsteps = mergedValueGoalsteps.map(goal => {
+          const newData = Object.keys(defaults).reduce((data, key) => {
+            if (goal[key]) return data
+            let defaultValue
+            const def = defaults[key]
+            const { type, value: defValue } = def
+            if (type === 'generated') defaultValue = generate()
+            else if (type === 'constant') defaultValue = defValue
+            return {
+              ...data,
+              [key]: defaultValue
+            }
+          }, {})
+          return {
+            ...goal,
+            ...newData
+          }
+        })
+        return {
+          ...value,
+          goalSteps: newGoalsteps
+        }
+      }
+    }
+    return value
+  }
   onPress = () => {
     const { onPress, goalId, formId, type } = this.props
+    const { originalValue } = this.state
     const { errors, value } = this.validate()
     if (errors && errors.length > 0) {
       this.setState(
@@ -120,7 +166,8 @@ class GoalStepScreen extends React.PureComponent<
         this.showAlert
       )
     } else {
-      onPress({ value, goalId, formId, type })
+      const newValue = this._handleConfiguration(value, originalValue)
+      onPress({ value: newValue, goalId, formId, type })
     }
   }
 

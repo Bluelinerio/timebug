@@ -3,7 +3,6 @@ import React                            from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import type { Goal, GoalStep }          from '../types'
 import styles                           from '../styles'
-import { hashCode }                     from '../../../utils/hash'
 import Icon                             from 'react-native-vector-icons/FontAwesome'
 import GoalStepComponent                from './GoalStepComponent'
 
@@ -12,7 +11,8 @@ type GoalComponentProps = {
   onPress: () => any,
   steps: Array<GoalStep>,
   goalIndex: string,
-  formId: string
+  formId: string,
+  onGoalSwitch: any => any
 }
 
 class GoalComponent extends React.PureComponent<GoalComponentProps> {
@@ -33,7 +33,7 @@ class GoalComponent extends React.PureComponent<GoalComponentProps> {
   }
 
   render() {
-    const { goal, steps } = this.props
+    const { goal, steps, onGoalSwitch, formId, goalIndex } = this.props
     const { showList } = this.state
     return (
       <View style={styles.goalFullContainer}>
@@ -58,7 +58,14 @@ class GoalComponent extends React.PureComponent<GoalComponentProps> {
                   styles.justifiedText
                 ]}
               >
-                20%
+                {steps &&
+                  steps.length > 0 &&
+                  `${(steps.reduce(
+                    (total, step) => (step.completed ? total + 1 : total),
+                    0
+                  ) *
+                    100 /
+                    steps.length).toFixed(0)}%`}
               </Text>
             </View>
             <TouchableOpacity
@@ -71,21 +78,26 @@ class GoalComponent extends React.PureComponent<GoalComponentProps> {
             </TouchableOpacity>
           </View>
         </View>
-        {showList && (
-          <View style={[styles.hiddenView]}>
-            {steps.map(step => {
-              return (
-                <View key={hashCode(JSON.stringify(step))}>
-                  <GoalStepComponent
-                    title={step.title}
-                    completed={step.completed}
-                    id={step.id}
-                  />
-                </View>
-              )
-            })}
-          </View>
-        )}
+        {steps &&
+          steps.length > 0 &&
+          showList && (
+            <View style={[styles.hiddenView]}>
+              {steps.map(step => {
+                return (
+                  <View key={step.id}>
+                    <GoalStepComponent
+                      title={step.step}
+                      completed={step.completed}
+                      id={step.id}
+                      onGoalSwitch={onGoalSwitch}
+                      formId={formId}
+                      goalId={goalIndex}
+                    />
+                  </View>
+                )
+              })}
+            </View>
+          )}
       </View>
     )
   }

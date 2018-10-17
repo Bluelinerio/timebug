@@ -1,6 +1,7 @@
-import { connect }       from 'react-redux'
-import selectors         from '../../../redux/selectors'
-import GoalListComponent from '../components/GoalListComponent'
+import { connect }          from 'react-redux'
+import selectors            from '../../../redux/selectors'
+import GoalListComponent    from '../components/GoalListComponent'
+import { CLEAR_GOAL_STEPS } from '../../../redux/actionTypes'
 
 const mapStateToProps = (state: any) => {
   const step = selectors
@@ -11,4 +12,8 @@ const mapStateToProps = (state: any) => {
   }
 }
 
-export default connect(mapStateToProps)(GoalListComponent)
+const mapDispatchToProps = (dispatch: any) => ({
+  clearGoals: () => dispatch({ type: CLEAR_GOAL_STEPS })
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(GoalListComponent)

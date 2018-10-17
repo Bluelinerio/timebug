@@ -10,6 +10,7 @@ import {
   SyncGoalSteps
 }                               from '../../../redux/actions/goals.actions'
 import type { GoalStepPayload } from '../../../redux/actions/goals.actions'
+import { goBack }               from '../../../redux/actions/nav.actions'
 import selectors                from '../../../redux/selectors'
 
 const formatType = type => {
@@ -32,16 +33,13 @@ const callWithObj = (fn: Array<Dispatchable>) => (payload: any) =>
     f(payload)
   })
 const mapDispatchToProps = (dispatch: any) => {
-  tron.display({
-    name: 'MapDispatchToProps in GoalStep',
-    preview: 'MapDispatch',
-    value: 'Lek'
-  })
   const updateGoalStep = (payload: GoalStepPayload) =>
     dispatch(UpdateGoalStep(payload))
   const syncGoalSteps = (payload: GoalStepPayload) =>
     dispatch(SyncGoalSteps(payload))
-  const onPress = callWithObj([updateGoalStep, syncGoalSteps])
+  const back = () =>
+    dispatch(goBack())
+  const onPress = callWithObj([updateGoalStep, syncGoalSteps, back])
   return {
     onPress
   }

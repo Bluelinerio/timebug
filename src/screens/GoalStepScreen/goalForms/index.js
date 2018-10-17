@@ -15,13 +15,31 @@ export default {
         goalSteps: {
           config: {
             min: 2,
-            max: 10
+            max: 10,
+            defaults: {
+              id: {
+                type: 'generated'
+              },
+              completed: {
+                type: 'constant',
+                value: false
+              }
+            }
           },
           item: {
             auto: 'none',
             fields: {
               step: {
                 label: 'A step to complete my goal...'
+              },
+              id: {
+                label: 'id',
+                hidden: true,
+                generated: true,
+                config: {
+                  hidden: true,
+                  generated: true
+                }
               }
             }
           }
