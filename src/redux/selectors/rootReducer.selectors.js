@@ -8,6 +8,7 @@ import type { AwardState }      from '../reducers/awards.reducer'
 import type { UIState }         from '../reducers/ui.reducer'
 import type { CheckinState }    from '../reducers/checkin.reducer'
 import type { PersistState }    from '../reducers/persist.reducer'
+import type { GoalState }       from '../reducers/goals.reducer'
 
 export const getUserState = (state: any): UserState => state.user
 export const getCms = (state: any): CMSState => state.cms
@@ -19,3 +20,4 @@ export const getAwards = (state: any): AwardState => state.awards
 export const getUIState = (state: any): UIState => state.uiState
 export const getCheckinState = (state: any): CheckinState => state.checkins
 export const getPersistState = (state: any): PersistState => state.persistState
+export const getGoals = (state: any): GoalState => state.goals

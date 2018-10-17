@@ -19,11 +19,17 @@ export default {
     MyJourneyScreen: 'MyJourneyScreen',
     MeditationScreen: 'MeditationScreen',
     RootNavigator: 'RootNavigator',
-    CheckinScreen: 'CheckinScreen'
+    CheckinScreen: 'CheckinScreen',
+    GoalsNavigator: 'GoalsNavigator'
   },
   start: {
     initialRouteName: 'TabNavigator',
     Walkthrough: 'Walkthrough',
     TabNavigator: 'TabNavigator'
+  },
+  goals: {
+    initialRouteName: 'GoalScreen',
+    GoalScreen: 'GoalScreen',
+    GoalStepScreen: 'GoalStepScreen'
   }
 }

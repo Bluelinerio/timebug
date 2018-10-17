@@ -13,6 +13,7 @@ import { watchChangesInFormsAndUpdateAchievements } from './sagas/achivements.sa
 import { watchForThrottleAction }                   from './throttle'
 import { watchForCheckinsSaga }                     from './sagas/checkins.saga'
 import { watchForNotificationSaga }                 from './sagas/notifications.saga'
+import { watchForGoalsSaga }                        from './sagas/goals.saga'
 
 function* appSaga() {
   yield all([
@@ -27,7 +28,8 @@ function* appSaga() {
     watchSyncFormData(),
     watchChangesInFormsAndUpdateAchievements(),
     watchForCheckinsSaga(),
-    watchForNotificationSaga()
+    watchForNotificationSaga(),
+    watchForGoalsSaga()
   ])
 }
 export default function* rootSaga() {

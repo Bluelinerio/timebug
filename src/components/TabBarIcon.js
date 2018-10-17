@@ -19,6 +19,8 @@ const mapRouteToIcon = (routeName, focused) => {
     return `ios-construct${focused ? '' : '-outline'}`
   case routes.tab.CheckinScreen:
     return `ios-compass${focused ? '' : '-outline'}`
+  case routes.tab.GoalsNavigator:
+    return `ios-checkmark${focused ? '' : '-outline'}`
   default:
     return
   }
@@ -26,7 +28,13 @@ const mapRouteToIcon = (routeName, focused) => {
 
 const TabBarIcon = ({ routeName, focused, tintColor }: TabBarIconProps) => {
   const iconName = mapRouteToIcon(routeName, focused)
-  return <Ionicons name={iconName} size={25} color={tintColor} />
+  return (
+    <Ionicons
+      name={iconName}
+      size={routeName === routes.tab.GoalScreen ? 32 : 25}
+      color={tintColor}
+    />
+  )
 }
 
 export default TabBarIcon

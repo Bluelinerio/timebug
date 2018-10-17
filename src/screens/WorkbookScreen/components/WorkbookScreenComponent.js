@@ -8,7 +8,7 @@ import {
   Alert,
   StatusBar
 }                           from 'react-native'
-import t                    from './templates'
+import t                    from '../../../forms/components'
 import KeyboardComponent    from '../../../components/KeyboardComponent'
 import DefaultIndicator     from '../../../components/DefaultIndicator'
 import WorkbookNextButton   from '../components/WorkbookNextButton'

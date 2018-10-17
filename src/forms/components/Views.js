@@ -2,8 +2,8 @@
 import * as React                       from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import Icon                             from 'react-native-vector-icons/MaterialIcons'
-import styles                           from '../../styles/templates'
-import SwipablyDiscardableRow           from '../../../../components/SwipablyDiscardableRow'
+import styles, { extraStyles }          from '../styles'
+import SwipablyDiscardableRow           from '../../components/SwipablyDiscardableRow'
 
 type Item = {
   key: string,
@@ -23,15 +23,7 @@ export const RowWithoutButtons = ({ key, input, buttons }: Item) => {
         buttons && buttons.length && buttons[0].click && buttons[0].click()
       }}
     >
-      <View
-        style={{
-          flex: 1,
-          justifyContent: 'center',
-          marginVertical: 10
-        }}
-      >
-        {input}
-      </View>
+      <View style={extraStyles.rowNoButtons}>{input}</View>
     </SwipablyDiscardableRow>
   )
 }
@@ -66,12 +58,33 @@ export const AddButton = ({
   <TouchableOpacity
     disabled={disabled}
     key={key}
-    style={[styles.listAddButton, {...style}]}
+    style={[styles.listAddButton, { ...style }]}
     onPress={onPress}
   >
     <Icon name="add" size={32} color="black" />
     <Text style={{}}>{text}</Text>
   </TouchableOpacity>
+)
+
+export const ListFootnote = (
+  currentItems: number,
+  { min = null, max = null }: { min?: number, max: number }
+): React.Node => (
+  <View style={extraStyles.listFootnoteBanner}>
+    <View style={extraStyles.listFootnoteContainer}>
+      <Text style={extraStyles.listFootnote}>{`Current items: ${currentItems} ${
+        max ? `/ ${max}` : ''
+      }`}</Text>
+    </View>
+    {min &&
+      max && (
+        <View style={extraStyles.listFootnoteContainer}>
+          <Text
+            style={extraStyles.listFootnote}
+          >{`Add from ${min} to ${max} elements`}</Text>
+        </View>
+      )}
+  </View>
 )
 
 export const ItemContainer = ({

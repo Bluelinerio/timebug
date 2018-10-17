@@ -1,4 +1,4 @@
-import t                                     from '../components/templates';
+import t                                     from '../../../forms/components';
 import { MajorLifeEvents, IncreaseDecrease } from './contents';
 
 export default {

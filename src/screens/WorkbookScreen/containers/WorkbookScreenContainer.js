@@ -3,7 +3,7 @@ import { connect }                             from 'react-redux'
 import { compose, mapProps }                   from 'recompose'
 import invariant                               from 'invariant'
 import { userRequired, withNavigationAndStep } from '../../../HOC'
-import t                                       from '../components/templates'
+import t                                       from '../../../forms/components'
 import { headerBackgrounds }                   from '../../../resources/images'
 import {
   submitFormValue,
