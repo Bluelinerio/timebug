@@ -70,6 +70,7 @@ type RequestedKeys = {
 }
 
 export const allFormsRequestedKeys: RequestedKeys = {
+  [STEP1]: {},
   [STEP2]: {
     typicalWeek: {
       form: '1',
