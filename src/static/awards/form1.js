@@ -13,7 +13,8 @@ export default {
         meta: {
           _store: 'daily',
           _timestamp: true,
-          _date: [true, 'MM/DD/YYYY']
+          _date: [true, 'MM/DD/YYYY'],
+          max: 10
         }
       }
     }

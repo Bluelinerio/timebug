@@ -1,5 +1,5 @@
 // @flow
-import { SUBMIT_AWARD_VALUE, RESET_AWARD_VALUE } from '../actionTypes'
+import { SUBMIT_AWARD_VALUE, RESET_AWARD_VALUE, SUBMIT_AWARD_VALUE_EXTENDED } from '../actionTypes'
 import { SumbitAwardValueAction }                from '../actions/award.actions'
 import initialModels                             from '../../static/awards'
 /**
@@ -12,6 +12,25 @@ export type AwardData = {
       type: any,
       value: any
     }
+  }
+}
+
+/**
+ * In this iteration, the keys are the top level keys as defined in the static form
+ * To handle lists, a special struct LIST will be issued
+ * This struct will contain a special definition of a struct to render
+ */
+export type ExtendedAwardData = {
+  [key: string]: {
+    extended: true,
+    [fieldKey: string]: {
+      value: any | Array<any>,
+      type: any,
+      meta: {
+        timestamp?: number,
+        date?: string
+      }
+    } 
   }
 }
 
@@ -42,7 +61,7 @@ export type SimpleModelData = {
  */
 export type AwardState = {
   data: {
-    [key: string]: AwardData
+    [key: string]: AwardData | ExtendedAwardData
   },
   models: {
     [key: string]: SimpleModelData

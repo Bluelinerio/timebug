@@ -1,5 +1,34 @@
 import { StyleSheet } from 'react-native'
 import { iOSUIKit }   from 'react-native-typography'
+import { gray50 }     from '../../../constants/colors'
+
+export const stylesStep1 = {
+  formContainer: {
+    backgroundColor: '#FFFFFF',
+    flexDirection: 'column',
+    borderRadius: 6,
+    padding: 16,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  switchContainer: {
+    padding: 4,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between'
+  },
+  caption: {
+    ...iOSUIKit.subheadEmphasizedObject,
+    fontSize: '18',
+    fontFamily: 'Metropolis',
+    textAlign: 'center'
+  },
+  yesNoHint: {
+    ...iOSUIKit.subheadEmphasizedObject,
+    fontFamily: 'Metropolis',
+    textAlign: 'center'
+  }
+}
 
 export default StyleSheet.create({
   header: {

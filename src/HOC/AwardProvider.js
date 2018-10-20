@@ -4,7 +4,9 @@ import selectors   from '../redux/selectors'
 import {
   submitAwardAnswers,
   resetAward,
-  SubmitAwardValuePayload
+  SubmitAwardValuePayload,
+  ExtendedSubmitAwardAnswerPayload,
+  extendedSubmitAwardAnswers
 }                  from '../redux/actions/award.actions'
 import {
   AwardData,
@@ -44,6 +46,8 @@ const mapStateToProps = (state: any): AwardState => {
 const mapDispatchToProps = (dispatch: any): AwardDispatch => ({
   submitAnswers: (payload: SubmitAwardValuePayload) =>
     dispatch(submitAwardAnswers(payload)),
+  extendedSubmit: (payload: ExtendedSubmitAwardAnswerPayload) =>
+    dispatch(extendedSubmitAwardAnswers(payload)),
   reset: () => dispatch(resetAward())
 })
 
