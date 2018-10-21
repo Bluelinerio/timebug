@@ -1,10 +1,9 @@
 //@flow
-import React from 'react'
-import { View, Text, Switch } from 'react-native'
+import React                    from 'react'
+import { View }                 from 'react-native'
 import { LockedEntryWithCheck } from '../../../../components/LockedEntry'
-import styles, { stylesStep1 } from '../../../../styles'
-import tron from 'reactotron-react-native'
-import MeditationCheckin from './MeditationCheckin'
+import styles                   from '../../../../styles'
+import MeditationCheckin        from '../../containers/Form1/MeditationCheckinContainer'
 
 type FormComponentProps = {
   step: number,
@@ -15,13 +14,19 @@ type FormComponentProps = {
   }
 }
 
+const key = 'meditationCheckin'
+
 const FormComponent = (props: FormComponentProps) => {
   const { award: { data, model } } = props
-  const key = 'meditationCheckin'
   return (
     <View style={[styles.container, styles.tableContainer]}>
       <LockedEntryWithCheck check={() => true}>
-        <MeditationCheckin {...props} formKey={key} model={model[key]}></MeditationCheckin>
+        <MeditationCheckin
+          {...props}
+          data={data[key]}
+          formKey={key}
+          model={model[key]}
+        />
       </LockedEntryWithCheck>
     </View>
   )

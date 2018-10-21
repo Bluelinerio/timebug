@@ -1,6 +1,5 @@
 import { StyleSheet } from 'react-native'
 import { iOSUIKit }   from 'react-native-typography'
-import { gray50 }     from '../../../constants/colors'
 
 export const stylesStep1 = {
   formContainer: {
@@ -19,7 +18,7 @@ export const stylesStep1 = {
   },
   caption: {
     ...iOSUIKit.subheadEmphasizedObject,
-    fontSize: '18',
+    fontSize: 18,
     fontFamily: 'Metropolis',
     textAlign: 'center'
   },

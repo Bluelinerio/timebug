@@ -6,7 +6,7 @@ import {
   resetAward,
   SubmitAwardValuePayload,
   ExtendedSubmitAwardAnswerPayload,
-  extendedSubmitAwardAnswers
+  evaluateExtendedAward
 }                  from '../redux/actions/award.actions'
 import {
   AwardData,
@@ -47,7 +47,7 @@ const mapDispatchToProps = (dispatch: any): AwardDispatch => ({
   submitAnswers: (payload: SubmitAwardValuePayload) =>
     dispatch(submitAwardAnswers(payload)),
   extendedSubmit: (payload: ExtendedSubmitAwardAnswerPayload) =>
-    dispatch(extendedSubmitAwardAnswers(payload)),
+    dispatch(evaluateExtendedAward(payload)),
   reset: () => dispatch(resetAward())
 })
 

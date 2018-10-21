@@ -11,7 +11,7 @@ export default {
           header: 'Have you meditated Today?'
         },
         meta: {
-          _store: 'daily',
+          _store: 'list',
           _timestamp: true,
           _date: [true, 'MM/DD/YYYY'],
           max: 10

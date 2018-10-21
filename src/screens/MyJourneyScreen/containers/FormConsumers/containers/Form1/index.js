@@ -1,23 +1,39 @@
 //@flow
-import React                                  from 'react'
-import { compose }                            from 'recompose'
+import React       from 'react'
+import { compose } from 'recompose'
 
-import tron from 'reactotron-react-native'
-
-const onSwitch = (dispatchable: () => any, payload: any) => {
-  dispatchable(payload)
+const mapDataToPayload = (
+  step: string,
+  awardKey: String,
+  fieldKey: String,
+  value: any,
+  { fields }: { fields: any }
+) => {
+  const field = fields[fieldKey]
+  const { type, meta } = field
+  return {
+    stepId: step,
+    element: {
+      awardKey,
+      fieldKey,
+      type,
+      value,
+      meta
+    }
+  }
 }
 
-const transformPropsForPresentation = (props) => {
-  tron.log(props)
-  return props
-}
+const transformPropsForPresentation = props => props
 
 const componentPropsHandler = compose(transformPropsForPresentation)
 
 const Form1Consumer = (Component: React.ComponentType<any>) => {
   const Consumer = props => (
-    <Component {...props} onSwitch={onSwitch} {...componentPropsHandler(props)} />
+    <Component
+      {...props}
+      mapDataToPayload={mapDataToPayload}
+      {...componentPropsHandler(props)}
+    />
   )
   return Consumer
 }

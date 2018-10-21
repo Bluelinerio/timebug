@@ -1,26 +1,44 @@
 //@flow
-import React from 'react'
-import { View, Text, Switch } from 'react-native'
+import React                   from 'react'
+import { View, Text, Switch }  from 'react-native'
 import styles, { stylesStep1 } from '../../../../styles'
-import tron from 'reactotron-react-native'
+import tron                    from 'reactotron-react-native'
 
-const MeditationCheckinComponent = (props) => {
-  tron.log(props)
-  const { model: { fields } } = props
-  const thisField = fields.meditatedToday
-  const { key, options, meta } = thisField
-  return (
-    <View style={[styles.container, stylesStep1.formContainer]}>
-      <View>
-        <Text style={stylesStep1.caption}> {options.header || 'Did you exercise today?'}</Text>
+//TODO: Flow
+
+class MeditationCheckinComponent extends React.PureComponent<any> {
+  _onValueChange = (value: any) => {
+    const {
+      extendedSubmit,
+      step,
+      formKey,
+      model,
+      mapDataToPayload,
+      fieldKey
+    } = this.props
+    extendedSubmit(mapDataToPayload(step, formKey, fieldKey, value, model))
+  }
+
+  render() {
+    tron.log(this.props)
+    const { model: { fields }, value = {}, fieldKey } = this.props
+    const { options } = fields[fieldKey]
+    return (
+      <View style={[styles.container, stylesStep1.formContainer]}>
+        <View>
+          <Text style={stylesStep1.caption}>
+            {' '}
+            {options.header || 'Did you meditate today?'}
+          </Text>
+        </View>
+        <View style={stylesStep1.switchContainer}>
+          <Text style={stylesStep1.yesNoHint}>No</Text>
+          <Switch value={value.value} onValueChange={this._onValueChange} />
+          <Text style={stylesStep1.yesNoHint}>Yes</Text>
+        </View>
       </View>
-      <View style={stylesStep1.switchContainer}>
-        <Text style={stylesStep1.yesNoHint}>No</Text>
-        <Switch />
-        <Text style={stylesStep1.yesNoHint}>Yes</Text>
-      </View>
-    </View>
-  )
+    )
+  }
 }
 
 export default MeditationCheckinComponent
