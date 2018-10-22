@@ -11,7 +11,7 @@ const merge = props => {
   if (meta._store === 'list') {
     const { _date = [true, 'MM/DD/YYYY'] } = meta
     const displayValue =
-      value.find(v => v.date === moment().format(_date[1])) || null
+      value.find(v => v.date === moment().format(_date[1])) || { value: false }
     return {
       ...props,
       value: displayValue,
