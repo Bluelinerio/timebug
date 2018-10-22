@@ -3,30 +3,28 @@ import React                    from 'react'
 import { View }                 from 'react-native'
 import { LockedEntryWithCheck } from '../../../../components/LockedEntry'
 import styles                   from '../../../../styles'
-import MeditationCheckin        from '../../containers/Form1/MeditationCheckinContainer'
+import FormComponentSwitch      from './FormComponentSwitch'
 
 type FormComponentProps = {
   step: number,
+  hasCompletedStep: boolean,
   extendedSubmit: () => any,
+  mapDataToPayload: () => {
+    stepId: number,
+    element: any
+  },
   award: {
     model: any,
     data: any
   }
 }
 
-const key = 'meditationCheckin'
-
 const FormComponent = (props: FormComponentProps) => {
-  const { award: { data, model } } = props
+  const { hasCompletedStep } = props
   return (
     <View style={[styles.container, styles.tableContainer]}>
-      <LockedEntryWithCheck check={() => true}>
-        <MeditationCheckin
-          {...props}
-          data={data[key]}
-          formKey={key}
-          model={model[key]}
-        />
+      <LockedEntryWithCheck check={() => hasCompletedStep}>
+        <FormComponentSwitch {...props} />
       </LockedEntryWithCheck>
     </View>
   )

@@ -2,7 +2,6 @@
 import React                   from 'react'
 import { View, Text, Switch }  from 'react-native'
 import styles, { stylesStep1 } from '../../../../styles'
-import tron                    from 'reactotron-react-native'
 
 //TODO: Flow
 
@@ -20,7 +19,6 @@ class MeditationCheckinComponent extends React.PureComponent<any> {
   }
 
   render() {
-    tron.log(this.props)
     const { model: { fields }, value = {}, fieldKey } = this.props
     const { options } = fields[fieldKey]
     return (

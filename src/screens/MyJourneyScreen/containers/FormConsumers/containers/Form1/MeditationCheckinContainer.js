@@ -2,7 +2,9 @@ import MeditationCheckin from '../../components/Form1/MeditationCheckin'
 import { mapProps }      from 'recompose'
 import moment            from 'moment'
 
-const fieldKey = 'meditatedToday'
+export const key = 'meditationCheckin'
+
+export const fieldKey = 'meditatedToday'
 
 const merge = props => {
   const { data = {} } = props
