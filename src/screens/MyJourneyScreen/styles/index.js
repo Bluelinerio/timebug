@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native'
 import { iOSUIKit }   from 'react-native-typography'
+import { azure }      from '../../../constants/colors'
 
 export const stylesStep1 = {
   formContainer: {
@@ -24,6 +25,12 @@ export const stylesStep1 = {
   },
   yesNoHint: {
     ...iOSUIKit.subheadEmphasizedObject,
+    fontFamily: 'Metropolis',
+    textAlign: 'center'
+  },
+  congratulations: {
+    ...iOSUIKit.subheadEmphasizedObject,
+    color: azure,
     fontFamily: 'Metropolis',
     textAlign: 'center'
   }

@@ -1,6 +1,6 @@
 //@flow
-import React                   from 'react'
-import { View, Text, Switch }  from 'react-native'
+import React from 'react'
+import { View, Text, Switch } from 'react-native'
 import styles, { stylesStep1 } from '../../../../styles'
 
 //TODO: Flow
@@ -19,7 +19,7 @@ class MeditationCheckinComponent extends React.PureComponent<any> {
   }
 
   render() {
-    const { model: { fields }, value = {}, fieldKey } = this.props
+    const { model: { fields }, value, fieldKey } = this.props
     const { options } = fields[fieldKey]
     return (
       <View style={[styles.container, stylesStep1.formContainer]}>
@@ -34,6 +34,9 @@ class MeditationCheckinComponent extends React.PureComponent<any> {
           <Switch value={value.value} onValueChange={this._onValueChange} />
           <Text style={stylesStep1.yesNoHint}>Yes</Text>
         </View>
+        {value && value.value === true ? (
+          <Text style={stylesStep1.congratulations}>Good job!</Text>
+        ) : null}
       </View>
     )
   }
