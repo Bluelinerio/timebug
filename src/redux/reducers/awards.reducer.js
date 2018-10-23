@@ -77,8 +77,6 @@ export type AwardState = {
   }
 }
 
-export type AwardModelsData = {}
-
 /**
  * Setting up initial state
  */

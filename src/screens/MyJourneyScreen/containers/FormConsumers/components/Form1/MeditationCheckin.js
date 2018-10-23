@@ -1,11 +1,27 @@
 //@flow
-import React from 'react'
-import { View, Text, Switch } from 'react-native'
+import React                   from 'react'
+import { View, Text, Switch }  from 'react-native'
 import styles, { stylesStep1 } from '../../../../styles'
 
-//TODO: Flow
+type MeditationCheckinComponentProps = {
+  extendedSubmit: () => any,
+  step: string,
+  formKey: string,
+  model: {
+    fields: {
+      [key: string]: {
+        options: any
+      }
+    }
+  },
+  mapDataToPayload: () => any,
+  fieldKey: string,
+  value: { value: boolean }
+}
 
-class MeditationCheckinComponent extends React.PureComponent<any> {
+class MeditationCheckinComponent extends React.PureComponent<
+  MeditationCheckinComponentProps
+> {
   _onValueChange = (value: any) => {
     const {
       extendedSubmit,

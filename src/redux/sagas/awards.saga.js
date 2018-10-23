@@ -6,7 +6,9 @@ import type { ExtendedSubmitAwardAnswerAction } from '../actions/award.actions'
 import selectors                                from '../selectors'
 import uuid                                     from 'uuid/v4'
 
-const getTimeForMetaConfig = (meta: any) => {
+const getTimeForMetaConfig = (
+  meta: any
+): { timestamp?: string, date?: string, format?: string } => {
   const { _timestamp, _date } = meta
   const shouldStoreDate =
     Array.isArray(_date) && _date.length > 0 && _date[0] === true ? true : false
@@ -22,18 +24,6 @@ const getTimeForMetaConfig = (meta: any) => {
     timestamp,
     date,
     format
-  }
-}
-
-export type ExtendedSubmitAwardAnswerPayload = {
-  stepId: string,
-  element: {
-    awardKey: string,
-    value: any,
-    model: any,
-    meta?: any,
-    fieldKey: any,
-    type: any
   }
 }
 

@@ -3,7 +3,17 @@ import MeditationCheckin, {
   key as meditationKey
 }            from '../../containers/Form1/MeditationCheckinContainer'
 
-const mapComponents = (key, props) => {
+type Props = {
+  award: {
+    data: any,
+    model: any
+  },
+  step: string,
+  mapDataToPayload: () => any,
+  extendedSubmit: () => any
+}
+
+const mapComponents = (key: string, props: Props): React.Node<any> => {
   const { award: { model, data } } = props
   switch (key) {
   case meditationKey: {

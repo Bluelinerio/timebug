@@ -1,7 +1,8 @@
 //@flow
-import React       from 'react'
-import selectors   from '../../../../../../redux/selectors'
-import { connect } from 'react-redux'
+import React                                     from 'react'
+import selectors                                 from '../../../../../../redux/selectors'
+import { connect }                               from 'react-redux'
+import type { ExtendedSubmitAwardAnswerPayload } from '../../../../../../redux/actions/award.actions'
 
 const mapDataToPayload = (
   step: string,
@@ -9,7 +10,7 @@ const mapDataToPayload = (
   fieldKey: String,
   value: any,
   { fields }: { fields: any }
-) => {
+): ExtendedSubmitAwardAnswerPayload => {
   const field = fields[fieldKey]
   const { type, meta } = field
   return {
@@ -24,7 +25,11 @@ const mapDataToPayload = (
   }
 }
 
-const mapStateToProps = (state: any) => {
+type ConsumerStateProps = {
+  hasCompletedStep: boolean
+}
+
+const mapStateToProps = (state: any): ConsumerStateProps => {
   const completedStepIds = selectors.completedStepIds(state) || []
   const hasCompletedStep = completedStepIds.find(step => `${step}` === '1')
     ? true
