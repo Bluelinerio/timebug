@@ -1,7 +1,17 @@
 // @flow
-import { SUBMIT_AWARD_VALUE, RESET_AWARD_VALUE } from '../actionTypes'
-import { SumbitAwardValueAction }                from '../actions/award.actions'
-import initialModels                             from '../../static/awards'
+import {
+  SUBMIT_AWARD_VALUE,
+  RESET_AWARD_VALUE,
+  SUBMIT_AWARD_VALUE_EXTENDED
+}                    from '../actionTypes'
+import type {
+  SumbitAwardValueAction,
+  ExtendedSubmitAwardAnswerAction
+}                    from '../actions/award.actions'
+import initialModels from '../../static/awards'
+import moment        from 'moment'
+import uuid          from 'uuid/v4'
+
 /**
  * The upper level keys are the index of the 'formData' element in formData,
  * the inner level keys are the keys in SimpleModelData
@@ -11,6 +21,24 @@ export type AwardData = {
     [key: string]: {
       type: any,
       value: any
+    }
+  }
+}
+
+/**
+ * In this iteration, the keys are the top level keys as defined in the static form
+ * To handle lists, a special struct LIST will be issued
+ * This struct will contain a special definition of a struct to render
+ */
+export type ExtendedAwardData = {
+  [awardKey: string]: {
+    extended: true,
+    [fieldKey: string]: {
+      value: any | Array<any>,
+      type: any,
+      key: string,
+      timestamp?: number,
+      meta: any
     }
   }
 }
@@ -42,14 +70,12 @@ export type SimpleModelData = {
  */
 export type AwardState = {
   data: {
-    [key: string]: AwardData
+    [key: string]: AwardData | ExtendedAwardData
   },
   models: {
     [key: string]: SimpleModelData
   }
 }
-
-export type AwardModelsData = {}
 
 /**
  * Setting up initial state
@@ -86,10 +112,45 @@ const populate = (
       [stepId]: {
         ...(data[stepId] || null),
         [formIndex]: {
-          ...(data[formIndex] || null),
+          ...((data[stepId] && data[stepId][formIndex]) || null),
           [key]: {
             type,
             value
+          }
+        }
+      }
+    }
+  }
+}
+
+const extendedPopulate = (
+  action: ExtendedSubmitAwardAnswerAction,
+  state: AwardState
+): AwardState => {
+  const {
+    stepId,
+    element: { awardKey, value, fieldKey, type, meta }
+  } = action.payload
+  const data = state.data || {}
+  const stepData = data[stepId] || {}
+  const awardData = stepData[awardKey] || {}
+  const fieldData = awardData[fieldKey] || {}
+  return {
+    ...state,
+    data: {
+      ...data,
+      [stepId]: {
+        ...stepData,
+        [awardKey]: {
+          ...awardData,
+          [fieldKey]: {
+            id: fieldData.id || uuid(),
+            type,
+            value,
+            meta,
+            timestamp: moment()
+              .toDate()
+              .getTime()
           }
         }
       }
@@ -104,6 +165,8 @@ function formDataReducer(
   switch (action.type) {
   case SUBMIT_AWARD_VALUE:
     return populate(action, state)
+  case SUBMIT_AWARD_VALUE_EXTENDED:
+    return extendedPopulate(action, state)
   case RESET_AWARD_VALUE:
     return initialState
   default:

@@ -1,24 +1,27 @@
 //@flow
-import React                           from 'react'
-import { compose }                     from 'recompose'
-import GenericFormConsumer             from '../../../../../HOC/GenericFormConsumer'
-import AwardProvider                   from '../../../../../HOC/AwardProvider'
-import { STEP2, STEP4, STEP5, STEP11 } from '../../Forms'
-import type { STEP }                   from '../../Forms'
+import React                                  from 'react'
+import { compose }                            from 'recompose'
+import GenericFormConsumer                    from '../../../../../HOC/GenericFormConsumer'
+import AwardProvider                          from '../../../../../HOC/AwardProvider'
+import { STEP2, STEP4, STEP5, STEP11, STEP1 } from '../../Forms'
+import type { STEP }                          from '../../Forms'
 /**
  * Presentational Components
  */
-import Form2Component                  from '../components/Form2/FormComponent'
-import Form4Component                  from '../components/Form4/FormComponent'
-import Form5Component                  from '../components/Form5/FormComponent'
-import Form11Component                 from '../components/Form11/FormComponent'
+import Form2Component                         from '../components/Form2/FormComponent'
+import Form4Component                         from '../components/Form4/FormComponent'
+import Form5Component                         from '../components/Form5/FormComponent'
+import Form11Component                        from '../components/Form11/FormComponent'
+import Form1Component                         from '../components/Form1/FormComponent'
+
 /**
  * Form consumer HOCS
  */
-import Form2HOC                        from './Form2'
-import Form4HOC                        from './Form4'
-import Form5HOC                        from './Form5'
-import Form11HOC                       from './Form11'
+import Form2HOC                               from './Form2'
+import Form4HOC                               from './Form4'
+import Form5HOC                               from './Form5'
+import Form11HOC                              from './Form11'
+import Form1HOC                               from './Form1'
 
 export type FormEntry = {
   title: string,
@@ -44,6 +47,12 @@ export type FormEntriesType = {
  */
 
 export const formEntries: FormEntriesType = {
+  [STEP1]: {
+    title: 'Meditation Checkin',
+    render: compose(AwardProvider, Form1HOC)(
+      Form1Component
+    )
+  },
   [STEP2]: {
     title: 'Your weekly timetable',
     render: compose(GenericFormConsumer, Form2HOC)(Form2Component)
@@ -73,6 +82,5 @@ const FormConsumersContainer = (props: any): React.ComponentType<any> => {
   const { render: Component } = formEntries[step]
   return Component ? <Component {...props} /> : null
 }
-
 
 export default FormConsumersContainer
