@@ -3,7 +3,7 @@ import React                   from 'react'
 import { View, Text, Switch }  from 'react-native'
 import styles, { stylesStep1 } from '../../../../styles'
 
-type MeditationCheckinComponentProps = {
+export type MeditationCheckinComponentProps = {
   extendedSubmit: () => any,
   step: string,
   formKey: string,

@@ -4,6 +4,8 @@ import selectors                                 from '../../../../../../redux/s
 import { connect }                               from 'react-redux'
 import type { ExtendedSubmitAwardAnswerPayload } from '../../../../../../redux/actions/award.actions'
 
+const STEP_TO_CHECK = '1'
+
 const mapDataToPayload = (
   step: string,
   awardKey: String,
@@ -29,9 +31,12 @@ type ConsumerStateProps = {
   hasCompletedStep: boolean
 }
 
+// TODO: Use merge to not hardcode the steps
 const mapStateToProps = (state: any): ConsumerStateProps => {
   const completedStepIds = selectors.completedStepIds(state) || []
-  const hasCompletedStep = completedStepIds.find(step => `${step}` === '1')
+  const hasCompletedStep = completedStepIds.find(
+    step => `${step}` === STEP_TO_CHECK
+  )
     ? true
     : false
   return {
