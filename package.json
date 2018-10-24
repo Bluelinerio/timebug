@@ -50,7 +50,7 @@
     "react-native-code-push": "^5.4.2",
     "react-native-device-info": "^0.13.0",
     "react-native-emoji-selector": "^0.1.6",
-    "react-native-fbsdk": "0.6.3",
+    "react-native-fbsdk": "0.8.0",
     "react-native-gesture-handler": "^1.0.0-alpha.42",
     "react-native-linear-gradient": "^2.4.0",
     "react-native-markdown-syntax": "^0.1.0",
