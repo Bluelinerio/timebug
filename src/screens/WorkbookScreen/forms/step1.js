@@ -14,7 +14,7 @@ export default {
       )
     }),
     options: {
-      label: 'What are your best memories?',
+      label: 'Write down your best memories.',
       fields: {
         id: {
           hidden: true
