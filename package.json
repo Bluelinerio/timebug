@@ -49,6 +49,7 @@
     "react-native-animatable": "^1.2.4",
     "react-native-code-push": "^5.4.2",
     "react-native-device-info": "^0.13.0",
+    "react-native-elements": "^0.19.1",
     "react-native-emoji-selector": "^0.1.6",
     "react-native-fbsdk": "0.8.0",
     "react-native-gesture-handler": "^1.0.0-alpha.42",

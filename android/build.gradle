@@ -39,7 +39,7 @@ allprojects {
         }
         configurations.all {
                     resolutionStrategy {
-                      force 'com.facebook.android:facebook-android-sdk:4.22.1'
+                      force 'com.facebook.android:facebook-android-sdk:4.34.0'
                     }
                 }
     }
