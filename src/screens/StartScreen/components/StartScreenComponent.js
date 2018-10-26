@@ -1,12 +1,15 @@
 // @flow
-import React, { PureComponent }        from 'react'
+import React, { PureComponent } from 'react'
 import { StatusBar, ScrollView, View } from 'react-native'
-import { SafeAreaView }                from 'react-navigation'
-import styles                          from '../styles'
-import Version                         from '../../../containers/Version'
-import Banner                          from '../../../components/MinifiedBanner'
-import ContentArea                     from './../containers/ContentAreaContainer'
-import PhaseProgress                   from '../containers/PhaseProgressContainer'
+import { SafeAreaView } from 'react-navigation'
+import styles from '../styles'
+import Version from '../../../containers/Version'
+import Banner from '../../../components/MinifiedBanner'
+import ContentArea from './../containers/ContentAreaContainer'
+import PhaseProgress from '../containers/PhaseProgressContainer'
+
+// TODO: Remove, prototype
+import GoToPrototypeButton from '../containers/GoToPrototypeButtonContainer'
 
 export default class StartScreenComponent extends PureComponent {
   render() {
@@ -18,6 +21,7 @@ export default class StartScreenComponent extends PureComponent {
         <StatusBar barStyle="dark-content" backgroundColor={'white'} />
         <ScrollView style={[styles.container]}>
           <Banner />
+          <GoToPrototypeButton />
           <View style={styles.container}>
             <PhaseProgress />
             <ContentArea />

@@ -7,7 +7,9 @@ export default {
     DashboardScreen: 'DashboardScreen',
     initialRouteName: 'StartScreen',
     MarkdownScreen: 'MarkdownScreen',
-    EmojiPickerScreen: 'EmojiPickerScreen'
+    EmojiPickerScreen: 'EmojiPickerScreen',
+    // TODO: Prototype Data to remove
+    PrototypeNavigator: 'PrototypeNavigator'
   },
   step: {
     StepScreen: 'StepScreen',

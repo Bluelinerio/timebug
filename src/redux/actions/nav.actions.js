@@ -33,6 +33,11 @@ export const stepInfoForStep = (step: Step) => ({
   formId: '1'
 })
 
+// TODO: Remove
+export const goToPrototype = () => NavigationActions.navigate({
+  routeName: routes.root.PrototypeNavigator
+})
+
 export const popToTop = () => NavigationActions.popToTop()
 
 export const navigateWith = ({

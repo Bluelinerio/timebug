@@ -30,6 +30,10 @@ import MyJourneyScreen    from '../screens/MyJourneyScreen'
 import StartScreen        from '../screens/StartScreen'
 import GoalScreen         from '../screens/GoalScreen'
 import GoalStepScreen     from '../screens/GoalStepScreen'
+
+// TODO: Prototype to remove
+import PrototypeNavigator from '../screens/PrototypeScreen'
+
 import routes             from './routes'
 
 if (!routes || !routes.root || !routes.root.initialRouteName || !routes.step) {
@@ -88,6 +92,11 @@ export const rootConfiguration = {
     },
     [routes.root.StartScreen]: {
       screen: StartScreen
+    },
+    // TODO: Prototype to remove
+    [routes.root.PrototypeNavigator]: {
+      screen: PrototypeNavigator,
+      path: 'prototype'
     }
   },
   options: {
