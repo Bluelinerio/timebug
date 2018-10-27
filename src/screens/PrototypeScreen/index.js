@@ -42,6 +42,7 @@ export const PrototypeNavigatorConfiguration = {
   },
   options: {
     initialRouteName: routes.proto.initialRouteName,
+    headerMode: 'none',
     navigationOptions: ({ navigation: { dispatch } }) => ({
       headerStyle: {
         backgroundColor: headerBackgroundColor
