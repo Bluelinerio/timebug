@@ -1,23 +1,30 @@
 // @flow
 import React from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
-import rootStyles, { formStyles } from '../styles'
+import { View, TouchableOpacity } from 'react-native'
+import rootStyles, { formStyles, iconSize, iconColor } from '../styles'
 import moment from 'moment'
 import tron from 'reactotron-react-native'
 import FormPicker from './FormComponents/FormPicker'
 import { actionTypes } from '../forms/types'
+import Icon from 'react-native-vector-icons/Ionicons'
 
 const FormButton = ({
   onPress,
-  text,
+  icon,
   styles
 }: {
   onPress: () => any,
-  text: string,
+  icon: string,
   styles: any
 }) => (
   <TouchableOpacity onPress={onPress} style={styles.button}>
-    <Text style={styles.text}>{text}</Text>
+    <Icon
+      style={[styles.text, formStyles.icon]}
+      name={icon}
+      size={iconSize}
+      color={iconColor}
+    />
+    {/* <Text style={styles.text}>{text}</Text> */}
   </TouchableOpacity>
 )
 
@@ -62,6 +69,11 @@ class Form extends React.PureComponent<Props, any> {
     this.setState({ fieldIndex: fieldIndex + 1 })
   }
 
+  _goToPreviousField = () => {
+    const { fieldIndex } = this.state
+    this.setState({ fieldIndex: fieldIndex - 1 })
+  }
+
   _goToNextForm = (form: string) => {
     const { fieldIndex } = this.state
     this.setState({ form, fieldIndex: [fieldIndex, 0] })
@@ -71,10 +83,16 @@ class Form extends React.PureComponent<Props, any> {
     this._onPress()
   }
 
+  _onFinishedForm = () => {
+    tron.log('hey you done')
+  }
+
   _onPress = () => {
     const { fieldIndex, numberOfFields } = this.state
-    if (fieldIndex < numberOfFields) {
+    if (fieldIndex < numberOfFields - 1) {
       this._goToNextField()
+    } else {
+      this._onFinishedForm()
     }
     // const currentFieldElement = currentForm.fields[fieldIndex]
     // if (!passiveTypes.find(el => el === currentFieldElement.type)) {
@@ -99,12 +117,16 @@ class Form extends React.PureComponent<Props, any> {
     }
   }
 
-  _getButtonText = () => {
+  _getButtonIcon = () => {
     const { fieldIndex, numberOfFields } = this.state
-    if (fieldIndex < numberOfFields) {
-      return 'Next'
+    if (fieldIndex < numberOfFields - 1) {
+      return 'ios-arrow-round-forward'
     }
-    return 'End'
+    return 'ios-checkmark'
+  }
+
+  _onBackPress = () => {
+    this._goToPreviousField()
   }
 
   render() {
@@ -120,14 +142,30 @@ class Form extends React.PureComponent<Props, any> {
             buttonHandler={this._buttonHandler}
           />
         </View>
-        <View style={formStyles.formButtonContainer}>
+        <View
+          style={
+            fieldIndex > 0
+              ? formStyles.formButtonContainerDual
+              : formStyles.formButtonContainer
+          }
+        >
+          {fieldIndex > 0 && (
+            <FormButton
+              onPress={this._onBackPress}
+              styles={{
+                button: formStyles.formButton,
+                text: formStyles.formButtonText
+              }}
+              icon={'ios-arrow-round-back'}
+            />
+          )}
           <FormButton
             onPress={this._onPress}
             styles={{
               button: formStyles.formButton,
               text: formStyles.formButtonText
             }}
-            text={this._getButtonText()}
+            icon={this._getButtonIcon()}
           />
         </View>
       </View>

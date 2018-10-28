@@ -13,6 +13,8 @@ import { widthPercentage } from '../../../utils/viewportCalculation'
 
 export const headerBackgroundColor = paleBlue
 export const formTextColor = darkBlue
+export const iconSize = 22
+export const iconColor = gray50
 
 const horizontalComponentsWidth = widthPercentage(80)
 
@@ -26,11 +28,23 @@ export const formStyles = StyleSheet.create({
   },
   formButtonContainer: {
     backgroundColor: 'transparent',
+    flexDirection: 'row',
     flex: 1,
     padding: 8,
     marginBottom: 16,
-    alignItems: 'flex-end',
+    marginHorizontal: 16,
+    alignItems: 'center',
     justifyContent: 'center'
+  },
+  formButtonContainerDual: {
+    backgroundColor: 'transparent',
+    flexDirection: 'row',
+    flex: 1,
+    padding: 8,
+    marginBottom: 16,
+    marginHorizontal: 16,
+    alignItems: 'center',
+    justifyContent: 'space-between'
   },
   formButton: {
     backgroundColor: azure,
@@ -137,6 +151,10 @@ export default StyleSheet.create({
   },
   text: {
     fontFamily: 'Metropolis'
+  },
+  icon: {
+    fontSize: 22,
+    color: gray50
   },
   protoText: {
     ...iOSUIKit.bodyEmphasizedObject
