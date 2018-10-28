@@ -88,7 +88,7 @@ const form5 = {
         }))
       }
     },
-    6: {
+    5: {
       type: types.list,
       content: {
         text: 'What are some steps you need to do to complete this goal?'
@@ -105,7 +105,7 @@ const form5 = {
         }
       }
     },
-    5: {
+    6: {
       type: types.button,
       content: {
         text: 'Do you wish to add more goals?'
