@@ -75,6 +75,8 @@ export const formStyles = StyleSheet.create({
     marginTop: 16,
     borderWidth: 0.5,
     borderColor: '#cccccc',
+    paddingVertical: 2,
+    paddingHorizontal: 4,
     backgroundColor: hexToRgba(azure, 0.1),
     width: horizontalComponentsWidth,
     borderRadius: 4

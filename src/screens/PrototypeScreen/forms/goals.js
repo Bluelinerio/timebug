@@ -1,4 +1,5 @@
 import types, { actionTypes } from './types'
+import { frequencies } from '../../../services/checkins'
 
 export const AreaOfLife = [
   'Finances',
@@ -8,6 +9,28 @@ export const AreaOfLife = [
   'Relationships',
   'Health & Wellness',
   'Spirituality'
+]
+
+export const GoalType = [
+  'Energy & Time',
+  'Achievement & Skills',
+  'Health Indicators',
+  'Internal Qualities',
+  'Environment',
+  'Material Outcomes',
+  'Relationship Quality'
+]
+
+export const timeToCompleteGoal = [
+  '1 day',
+  '3 days',
+  '1 week',
+  '1 month',
+  '2 months',
+  '3 months',
+  '6 months',
+  'Less than 1 year',
+  'More than 1 year'
 ]
 
 const form5 = {
@@ -25,10 +48,10 @@ const form5 = {
       type: types.string,
       key: 'recentLifeGoals',
       content: {
-        text: 'What are some of your recent life goals?'
+        text: 'What is one of your recent life goals?'
       },
       options: {
-        placeHolder: 'Input your recent life goals',
+        placeHolder: 'Input a recent life goal',
         multiline: true
       }
     },
@@ -36,18 +59,36 @@ const form5 = {
       type: types.select,
       key: 'areaOfLife',
       content: {
-        text: 'What are of life does this goal belong to ?',
-        items: AreaOfLife.map(area => ({
-          value: area,
-          text: area
+        text: 'Classify this goal according to one of the 7 goal types',
+        items: GoalType.map(goal => ({
+          value: goal,
+          text: goal
         }))
-      },
-      options: {
-        placeHolder: 'Input your recent life goals',
-        multiline: true
       }
     },
     3: {
+      type: types.select,
+      key: 'areaOfLife',
+      content: {
+        text: 'How long do you think it will take to complete this goal?',
+        items: timeToCompleteGoal.map(time => ({
+          value: time,
+          text: time
+        }))
+      }
+    },
+    4: {
+      type: types.select,
+      key: 'areaOfLife',
+      content: {
+        text: 'How often would you like to be reminded about this goal?',
+        items: Object.keys(frequencies).map(key => ({
+          value: key,
+          text: frequencies[key]
+        }))
+      }
+    },
+    5: {
       type: types.button,
       content: {
         text: 'Do you wish to add more goals?'
