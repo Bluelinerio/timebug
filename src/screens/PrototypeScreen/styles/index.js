@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet, Platform } from 'react-native'
 import {
   paleBlue,
   azure,
@@ -9,8 +9,12 @@ import {
 import { iOSUIKit } from 'react-native-typography'
 import hexToRgba from '../../../utils/colorTransform'
 
+import { widthPercentage } from '../../../utils/viewportCalculation'
+
 export const headerBackgroundColor = paleBlue
 export const formTextColor = darkBlue
+
+const horizontalComponentsWidth = widthPercentage(80)
 
 export const formStyles = StyleSheet.create({
   formContainer: {
@@ -24,14 +28,30 @@ export const formStyles = StyleSheet.create({
     backgroundColor: 'transparent',
     flex: 1,
     padding: 8,
+    marginBottom: 16,
     alignItems: 'flex-end',
     justifyContent: 'center'
   },
-  //TODO: shadow
   formButton: {
     backgroundColor: azure,
-    padding: 8,
-    borderRadius: 6
+    padding: 16,
+    borderRadius: 12,
+    height: 40,
+    width: 80,
+    alignItems: 'center',
+    justifyContent: 'center',
+    ...Platform.select({
+      android: { elevation: 2 },
+      ios: {
+        shadowColor: 'black',
+        shadowOffset: {
+          width: 2,
+          height: 2
+        },
+        shadowOpacity: 0.3,
+        shadowRadius: 12
+      }
+    })
   },
   formButtonText: {
     color: gray50
@@ -46,7 +66,6 @@ export const formStyles = StyleSheet.create({
     fontSize: 18
   },
   textInputStyle: {
-    textAlign: 'center',
     color: gray900,
     fontFamily: 'Metropolis',
     fontWeight: '700',
@@ -57,6 +76,7 @@ export const formStyles = StyleSheet.create({
     borderWidth: 0.5,
     borderColor: '#cccccc',
     backgroundColor: hexToRgba(azure, 0.1),
+    width: horizontalComponentsWidth,
     borderRadius: 4
   },
   buttonComponentContainer: {
@@ -71,22 +91,39 @@ export const formStyles = StyleSheet.create({
   buttonComponentStyle: {
     backgroundColor: azure,
     minWidth: 80,
-    borderRadius: 4
+    borderRadius: 6,
+    ...Platform.select({
+      android: { elevation: 2 },
+      ios: {
+        shadowColor: 'black',
+        shadowOffset: {
+          width: 1,
+          height: 2
+        },
+        shadowOpacity: 0.3,
+        shadowRadius: 1
+      }
+    })
   },
   pickerContainer: {
-    marginTop: 8,
+    marginTop: 16
   },
-  pickerStyle: {
-    backgroundColor: 'transparent'
+  pickerStyle: {},
+  pickerItemStyle: {
+    color: gray900,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
+    fontSize: 16
   },
   pickerBackground: {
+    width: horizontalComponentsWidth,
     backgroundColor: hexToRgba(azure, 0.1),
     paddingVertical: 2,
     paddingHorizontal: 4,
     borderWidth: 0.5,
     borderRadius: 4,
-    borderColor: '#cccccc',
-  },
+    borderColor: '#cccccc'
+  }
 })
 
 export default StyleSheet.create({

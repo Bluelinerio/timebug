@@ -2,7 +2,6 @@ import React from 'react'
 import { View, Picker } from 'react-native'
 import { Text } from 'react-native-elements'
 import { formStyles } from '../../styles'
-import { widthPercentage } from '../../../../utils/viewportCalculation'
 
 // const options = locals.options.map(({ value, text }) => (
 //     <Picker.Item key={value} value={value} label={text} />
@@ -36,14 +35,9 @@ const Select = ({
       <View style={formStyles.pickerBackground}>
         <Picker
           selectedValue={value}
-          style={[
-            {
-              width: widthPercentage(70),
-              maxWidth: widthPercentage(70)
-            },
-            formStyles.pickerStyle
-          ]}
+          style={[formStyles.pickerStyle]}
           onValueChange={itemValue => onChange(itemValue)}
+          itemStyle={formStyles.pickerItemStyle}
         >
           {content &&
             content.items.map(({ value, text }) => (
