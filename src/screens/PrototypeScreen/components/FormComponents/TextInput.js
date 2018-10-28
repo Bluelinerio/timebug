@@ -7,7 +7,7 @@ const TextInput = ({
   onChange,
   field: {
     content = {
-      text: 'someText'
+      text: ''
     },
     options = {
       multiline: false,

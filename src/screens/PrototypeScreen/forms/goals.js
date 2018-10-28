@@ -88,6 +88,23 @@ const form5 = {
         }))
       }
     },
+    6: {
+      type: types.list,
+      content: {
+        text: 'What are some steps you need to do to complete this goal?'
+      },
+      options: {
+        childTypes: {
+          0: {
+            type: types.string,
+            key: 'stepToLifeGoal',
+            options: {
+              placeHolder: 'Step'
+            }
+          }
+        }
+      }
+    },
     5: {
       type: types.button,
       content: {
