@@ -91,7 +91,8 @@ const form5 = {
     5: {
       type: types.list,
       content: {
-        text: 'What are some steps you need to do to complete this goal?'
+        text: 'What are some steps you need to do to complete this goal?',
+        listText: 'GoalStep: '
       },
       options: {
         childTypes: {

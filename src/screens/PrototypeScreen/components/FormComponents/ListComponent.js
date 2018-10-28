@@ -22,21 +22,38 @@ class ListComponent extends React.PureComponent<Props, State> {
   constructor(props) {
     super(props)
     this.state = {
-      value: props.value || [],
+      value: [],
       currentValue: {}
     }
   }
 
+  _processElementText = (element: any, index: number) => {
+    const { value } = element
+    const { field: { content: { listText } } } = this.props
+    return `${listText} - ${index}: ${value}`
+  }
+
   _onChange = (value: any, element: string) => {
-    tron.log('value changed!')
-    tron.log(value)
-    tron.log(element)
+    const { currentValue } = this.state
+    this.setState({
+      currentValue: { ...currentValue, [element]: { value, key: element } }
+    })
   }
 
   _onAddPress = () => {
-    tron.log('Added something!')
-    const { value, currentValue } = this.state
-    this.setState({ value: [...value, currentValue], currentValue: {} })
+    const { value, currentValue, field: { options } } = this.state
+    const { childTypes } = options
+    this.setState({
+      value: [
+        ...value,
+        {
+          ...currentValue,
+          _id: uuid(),
+          _model: childTypes[currentValue.element]
+        }
+      ],
+      currentValue: {}
+    })
   }
 
   _onDeletePress = () => {
@@ -44,7 +61,7 @@ class ListComponent extends React.PureComponent<Props, State> {
   }
 
   render() {
-    const { currentValue } = this.state
+    const { currentValue, value } = this.state
     const { field: { content, options } } = this.props
     const { childTypes } = options
     tron.log(this.state)
@@ -56,12 +73,12 @@ class ListComponent extends React.PureComponent<Props, State> {
             {childTypes &&
               Object.keys(childTypes).map(key => {
                 const field = childTypes[key]
-                const inValue = currentValue[key]
+                const inValue = currentValue[key] || {}
                 return (
                   <FormPicker
                     key={field.key}
                     field={field}
-                    value={inValue}
+                    value={inValue.value}
                     onChange={value => this._onChange(value, key)}
                   />
                 )
@@ -77,15 +94,11 @@ class ListComponent extends React.PureComponent<Props, State> {
           />
         </View>
         <View style={formStyles.listContentContainer}>
-          <Text style={formStyles.listContentElement}>
-            There should be elements here
-          </Text>
-          <Text style={formStyles.listContentElement}>
-            There should be elements here
-          </Text>
-          <Text style={formStyles.listContentElement}>
-            There should be elements here
-          </Text>
+          {value.map((val, index) => (
+            <Text key={val._id} style={formStyles.listContentElement}>
+              {this._processElementText(val, index)}
+            </Text>
+          ))}
         </View>
       </React.Fragment>
     )
