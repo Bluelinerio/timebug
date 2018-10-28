@@ -1,4 +1,9 @@
+import { connect } from 'react-redux'
 import PrototypeScreen from '../components/PrototypeScreen'
-import { withNavigation } from 'react-navigation'
+import { goToGoalFormScreen } from '../../../redux/actions/nav.actions'
 
-export default withNavigation(PrototypeScreen)
+const mapDispatchToProps = (dispatch: any) => ({
+  goToGoalFormScreen: () => dispatch(goToGoalFormScreen())
+})
+
+export default connect(null, mapDispatchToProps)(PrototypeScreen)

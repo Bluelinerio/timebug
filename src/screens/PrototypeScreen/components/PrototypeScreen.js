@@ -4,8 +4,9 @@ import { SafeAreaView } from 'react-navigation'
 import Banner from '../../../containers/NavigationAwareBanner'
 import styles from '../styles'
 
-class PrototypeScreen extends React.PureComponent {
+class PrototypeScreen extends React.PureComponent<any> {
   render() {
+    const { goToGoalFormScreen } = this.props
     return (
       <SafeAreaView
         forceInset={{ top: 'always', bottom: 'never' }}
@@ -21,7 +22,7 @@ class PrototypeScreen extends React.PureComponent {
               </Text>
             </View>
             <View style={styles.buttonContainer}>
-              <TouchableOpacity style={styles.button}>
+              <TouchableOpacity style={styles.button} onPress={goToGoalFormScreen}>
                 <Text style={[styles.buttonText, styles.text]}>Goal form</Text>
               </TouchableOpacity>
             </View>
