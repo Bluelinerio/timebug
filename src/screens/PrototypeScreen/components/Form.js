@@ -108,7 +108,7 @@ class Form extends React.PureComponent<Props, any> {
   }
 
   render() {
-    const { fieldIndex } = this.state
+    const { fieldIndex, currentElementValue } = this.state
     const currentField = this.model.fields[fieldIndex]
     return (
       <View style={rootStyles.container}>
@@ -116,6 +116,7 @@ class Form extends React.PureComponent<Props, any> {
           <FormPicker
             field={currentField}
             onChange={this._onChange}
+            value={currentElementValue}
             buttonHandler={this._buttonHandler}
           />
         </View>

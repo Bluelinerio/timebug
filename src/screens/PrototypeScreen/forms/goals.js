@@ -1,5 +1,15 @@
 import types, { actionTypes } from './types'
 
+export const AreaOfLife = [
+  'Finances',
+  'Environment',
+  'Aims & Hobbies',
+  'Career',
+  'Relationships',
+  'Health & Wellness',
+  'Spirituality'
+]
+
 const form5 = {
   type: types.form,
   fields: {
@@ -23,6 +33,21 @@ const form5 = {
       }
     },
     2: {
+      type: types.select,
+      key: 'areaOfLife',
+      content: {
+        text: 'What are of life does this goal belong to ?',
+        items: AreaOfLife.map(area => ({
+          value: area,
+          text: area
+        }))
+      },
+      options: {
+        placeHolder: 'Input your recent life goals',
+        multiline: true
+      }
+    },
+    3: {
       type: types.button,
       content: {
         text: 'Do you wish to add more goals?'

@@ -3,6 +3,7 @@ import Label from './Label'
 import TextInput from './TextInput'
 import Button from './ButtonComponent'
 import types from '../../forms/types'
+import Select from './SelectComponent'
 
 type Props = {
   onChange: () => any,
@@ -18,6 +19,8 @@ const selectComponent = ({ type }: { type: string }) => {
     return TextInput
   case types.button:
     return Button
+  case types.select:
+    return Select
   }
 }
 

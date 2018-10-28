@@ -72,7 +72,21 @@ export const formStyles = StyleSheet.create({
     backgroundColor: azure,
     minWidth: 80,
     borderRadius: 4
-  }
+  },
+  pickerContainer: {
+    marginTop: 8,
+  },
+  pickerStyle: {
+    backgroundColor: 'transparent'
+  },
+  pickerBackground: {
+    backgroundColor: hexToRgba(azure, 0.1),
+    paddingVertical: 2,
+    paddingHorizontal: 4,
+    borderWidth: 0.5,
+    borderRadius: 4,
+    borderColor: '#cccccc',
+  },
 })
 
 export default StyleSheet.create({
