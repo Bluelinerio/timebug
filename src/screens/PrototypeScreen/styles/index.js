@@ -4,7 +4,8 @@ import {
   azure,
   gray50,
   darkBlue,
-  gray900
+  gray900,
+  gray200
 } from '../../../constants/colors'
 import { iOSUIKit } from 'react-native-typography'
 import hexToRgba from '../../../utils/colorTransform'
@@ -139,11 +140,31 @@ export const formStyles = StyleSheet.create({
     borderWidth: 0.5,
     borderRadius: 4,
     borderColor: '#cccccc'
+  },
+  listFormContainer: {
+    padding: 8,
+    borderBottomColor: 4,
+    alignItems: 'center'
+  },
+  listElementContainer: {
+    marginBottom: 8
+  },
+  listButtonStyle: {
+    maxWidth: 80
   }
 })
 
 export default StyleSheet.create({
   container: {
+    flex: 1
+  },
+  scrollView: {
+    flexGrow: 1
+  },
+  contentContainer: {
+    flex: 1
+  },
+  scrollViewContent: {
     flex: 1
   },
   prototypeBackground: {

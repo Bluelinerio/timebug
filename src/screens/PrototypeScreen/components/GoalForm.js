@@ -1,5 +1,5 @@
 import React from 'react'
-import { View } from 'react-native'
+import { View, ScrollView } from 'react-native'
 import styles from '../styles'
 import { SafeAreaView } from 'react-navigation'
 import Banner from '../../../containers/NavigationAwareBanner'
@@ -31,12 +31,15 @@ class GoalForm extends React.PureComponent<Props> {
         forceInset={{ top: 'always', bottom: 'never' }}
         style={styles.container}
       >
-        <View style={styles.container}>
+        <ScrollView
+          style={styles.scrollView}
+          contentContainerStyle={styles.scrollView}
+        >
           <Banner backButton={true} />
           <View style={[styles.container, styles.prototypeBackground]}>
             <Form model={model} value={formData} />
           </View>
-        </View>
+        </ScrollView>
       </SafeAreaView>
     )
   }

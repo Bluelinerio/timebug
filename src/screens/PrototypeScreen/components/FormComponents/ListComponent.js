@@ -52,7 +52,7 @@ class ListComponent extends React.PureComponent<Props, State> {
       <React.Fragment>
         <Text style={formStyles.textInputLabelStyle}>{content.text}</Text>
         <View style={formStyles.listFormContainer}>
-          <View>
+          <View style={formStyles.listElementContainer}>
             {childTypes &&
               Object.keys(childTypes).map(key => {
                 const field = childTypes[key]
@@ -68,7 +68,10 @@ class ListComponent extends React.PureComponent<Props, State> {
               })}
           </View>
           <Button
-            buttonStyle={formStyles.buttonComponentStyle}
+            buttonStyle={[
+              formStyles.buttonComponentStyle,
+              formStyles.listButtonStyle
+            ]}
             title={'add'}
             onPress={() => this._onAddPress()}
           />
