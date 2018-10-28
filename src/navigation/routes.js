@@ -35,3 +35,11 @@ export default {
     GoalStepScreen: 'GoalStepScreen'
   }
 }
+
+export const protoRoutes = {
+  proto: {
+    PrototypeScreen: 'PrototypeScreen',
+    initialRouteName: 'PrototypeScreen',
+    GoalFormScreen: 'GoalFormScreen'
+  }
+}
