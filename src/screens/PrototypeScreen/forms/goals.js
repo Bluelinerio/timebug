@@ -22,15 +22,11 @@ export const GoalType = [
 ]
 
 export const timeToCompleteGoal = [
-  '1 day',
-  '3 days',
-  '1 week',
-  '1 month',
-  '2 months',
-  '3 months',
+  'A day',
+  'A week',
+  'A month',
   '6 months',
-  'Less than 1 year',
-  'More than 1 year'
+  'A year',
 ]
 
 const form5 = {
