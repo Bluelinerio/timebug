@@ -44,7 +44,9 @@ const form5 = {
       type: types.string,
       key: 'recentLifeGoals',
       content: {
-        text: 'What is one of your recent life goals?'
+        text: 'What is one of your recent life goals?',
+        smallKey: 'Goal',
+        primary: true
       },
       options: {
         placeHolder: 'Input a recent life goal',
@@ -57,6 +59,7 @@ const form5 = {
       key: 'areaOfLife',
       content: {
         text: 'Classify this goal according to one of the 7 goal types',
+        smallKey: 'Type of goal',
         items: GoalType.map(goal => ({
           value: goal,
           text: goal
@@ -71,6 +74,7 @@ const form5 = {
       key: 'areaOfLife',
       content: {
         text: 'How long do you think it will take to complete this goal?',
+        smallKey: 'ETA',
         items: timeToCompleteGoal.map(time => ({
           value: time,
           text: time
@@ -85,10 +89,12 @@ const form5 = {
       key: 'areaOfLife',
       content: {
         text: 'How often would you like to be reminded about this goal?',
+        smallKey: 'Check-in',
         items: Object.keys(frequencies).map(key => ({
           value: key,
           text: frequencies[key]
-        }))
+        })),
+        translation: (key: string) => frequencies[key]
       },
       options: {
         default: Object.keys(frequencies)[0]
@@ -98,7 +104,8 @@ const form5 = {
       type: types.list,
       content: {
         text: 'What are some steps you need to do to complete this goal?',
-        listText: 'Steps'
+        listText: 'Steps',
+        smallKey: 'Steps'
       },
       options: {
         childTypes: {

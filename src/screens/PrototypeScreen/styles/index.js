@@ -182,6 +182,17 @@ export const formStyles = StyleSheet.create({
     fontFamily: 'Metropolis',
     fontWeight: '700',
     textAlign: 'justify',
+    color: gray900,
+    alignSelf: 'flex-start'
+  },
+  answersContainer: {
+    padding: 16
+  },
+  answerText: {
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
+    textAlign: 'justify',
+    color: gray900,
     alignSelf: 'flex-start'
   }
 })

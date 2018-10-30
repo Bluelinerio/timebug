@@ -8,6 +8,7 @@ import FormPicker from './FormComponents/FormPicker'
 import { actionTypes, passiveTypes } from '../forms/types'
 import Icon from 'react-native-vector-icons/Ionicons'
 import uuid from 'uuid/v4'
+import Answers from './FormAnswers'
 
 const FormButton = ({
   onPress,
@@ -209,7 +210,12 @@ class Form extends React.PureComponent<Props, any> {
       name: 'Props of Form',
       preview: 'Props of Form'
     })
-    const { fieldIndex, currentElementValue, numberOfFields } = this.state
+    const {
+      fieldIndex,
+      currentElementValue,
+      numberOfFields,
+      value
+    } = this.state
     const currentField = this.model.fields[fieldIndex] || []
     return (
       <View style={rootStyles.container}>
@@ -221,6 +227,7 @@ class Form extends React.PureComponent<Props, any> {
             buttonHandler={this._buttonHandler}
           />
         </View>
+        <Answers value={value} model={this.model} />
         <View
           style={
             fieldIndex > 0
