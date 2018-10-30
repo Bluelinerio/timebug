@@ -25,7 +25,6 @@ const FormButton = ({
       size={iconSize}
       color={iconColor}
     />
-    {/* <Text style={styles.text}>{text}</Text> */}
   </TouchableOpacity>
 )
 
