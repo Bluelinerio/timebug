@@ -1,5 +1,6 @@
 export const passiveTypes = [
-  'label'
+  'label',
+  'button'
 ]
 
 export const actionTypes = {

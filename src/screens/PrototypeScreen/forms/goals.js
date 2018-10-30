@@ -2,6 +2,7 @@ import types, { actionTypes } from './types'
 import { frequencies } from '../../../services/checkins'
 
 export const AreaOfLife = [
+  '-',
   'Finances',
   'Environment',
   'Aims & Hobbies',
@@ -12,6 +13,7 @@ export const AreaOfLife = [
 ]
 
 export const GoalType = [
+  '-',
   'Energy & Time',
   'Achievement & Skills',
   'Health Indicators',
@@ -22,6 +24,7 @@ export const GoalType = [
 ]
 
 export const timeToCompleteGoal = [
+  '-',
   'A day',
   'A week',
   'A month',
@@ -88,7 +91,7 @@ const form5 = {
       type: types.list,
       content: {
         text: 'What are some steps you need to do to complete this goal?',
-        listText: 'GoalStep: '
+        listText: 'Steps'
       },
       options: {
         childTypes: {

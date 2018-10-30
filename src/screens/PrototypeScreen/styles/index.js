@@ -5,7 +5,7 @@ import {
   gray50,
   darkBlue,
   gray900,
-  gray200
+  gray100
 } from '../../../constants/colors'
 import { iOSUIKit } from 'react-native-typography'
 import hexToRgba from '../../../utils/colorTransform'
@@ -14,7 +14,7 @@ import { widthPercentage } from '../../../utils/viewportCalculation'
 
 export const headerBackgroundColor = paleBlue
 export const formTextColor = darkBlue
-export const iconSize = 22
+export const iconSize = 30
 export const iconColor = gray50
 
 const horizontalComponentsWidth = widthPercentage(80)
@@ -100,7 +100,7 @@ export const formStyles = StyleSheet.create({
     flexDirection: 'row',
     paddingTop: 16,
     marginTop: 8,
-    justifyContent: 'space-between'
+    justifyContent: 'space-around'
   },
   centeredButton: {
     justifyContent: 'center'
@@ -143,14 +143,46 @@ export const formStyles = StyleSheet.create({
   },
   listFormContainer: {
     padding: 8,
-    borderBottomColor: 4,
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: gray100,
+    borderRadius: 6,
+    ...Platform.select({
+      android: { elevation: 2 },
+      ios: {
+        shadowColor: 'black',
+        shadowOffset: {
+          width: 1,
+          height: 2
+        },
+        shadowOpacity: 0.3,
+        shadowRadius: 1
+      }
+    })
   },
   listElementContainer: {
     marginBottom: 8
   },
   listButtonStyle: {
     maxWidth: 80
+  },
+  listContentContainer: {
+    marginTop: 16,
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+    alignSelf: 'flex-start',
+    alignContent: 'flex-start'
+  },
+  listButtonTextStyle: {
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
+    fontSize: 16
+  },
+  textElementText: {
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
+    textAlign: 'justify',
+    alignSelf: 'flex-start'
   }
 })
 
