@@ -7,7 +7,7 @@ const ButtonComponent = ({
   buttonHandler,
   field: {
     content = {
-      text: 'someText'
+      text: ''
     },
     actions
   }
