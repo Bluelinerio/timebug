@@ -5,8 +5,9 @@ import rootStyles, { formStyles, iconSize, iconColor } from '../styles'
 import moment from 'moment'
 import tron from 'reactotron-react-native'
 import FormPicker from './FormComponents/FormPicker'
-import { actionTypes } from '../forms/types'
+import { actionTypes, passiveTypes } from '../forms/types'
 import Icon from 'react-native-vector-icons/Ionicons'
+import uuid from 'uuid/v4'
 
 const FormButton = ({
   onPress,
@@ -46,32 +47,46 @@ class Form extends React.PureComponent<Props, any> {
       numberOfFields: Object.keys(this.model.fields).length,
       isFormFinished: false,
       storableValue: [],
-      currentElementValue: null
+      currentElementValue:
+        props.value && props.value[0] ? props.value[0].value : null
     }
   }
 
   _storeValue = () => {
-    const { value, currentElementValue, currentField, fieldIndex } = this.state
+    const { value, currentElementValue, fieldIndex } = this.state
+    const currentField = this.model.fields[fieldIndex]
     const newValue = {
       ...value,
       [fieldIndex]: {
         ...value[fieldIndex],
         type: currentField.type,
         value: currentElementValue,
-        timestamp: moment().format()
+        timestamp: moment().format(),
+        _id: uuid()
       }
     }
     this.setState({ value: newValue })
   }
 
   _goToNextField = () => {
-    const { fieldIndex } = this.state
-    this.setState({ fieldIndex: fieldIndex + 1 })
+    const { fieldIndex, value } = this.state
+    this.setState({
+      fieldIndex: fieldIndex + 1,
+      currentElementValue: value[fieldIndex + 1]
+        ? value[fieldIndex + 1].value
+        : null
+    })
   }
 
   _goToPreviousField = () => {
-    const { fieldIndex } = this.state
-    this.setState({ fieldIndex: fieldIndex - 1 })
+    const { fieldIndex, value } = this.state
+    tron.log(this.state)
+    this.setState({
+      fieldIndex: fieldIndex - 1,
+      currentElementValue: value[fieldIndex - 1]
+        ? value[fieldIndex - 1].value
+        : null
+    })
   }
 
   _goToNextForm = (form: string) => {
@@ -89,21 +104,19 @@ class Form extends React.PureComponent<Props, any> {
 
   _onPress = () => {
     const { fieldIndex, numberOfFields } = this.state
+    const currentField = this.model.fields[fieldIndex]
+    if (!passiveTypes.find(el => el === currentField.type)) {
+      this._storeValue()
+    }
     if (fieldIndex < numberOfFields - 1) {
       this._goToNextField()
     } else {
       this._onFinishedForm()
     }
-    // const currentFieldElement = currentForm.fields[fieldIndex]
-    // if (!passiveTypes.find(el => el === currentFieldElement.type)) {
-    //   //   this._storeValue()
-    //   tron.log('Should store!')
-    // }
   }
 
   _onChange = value => {
     this.setState({ currentElementValue: value })
-    tron.log(this.state)
   }
 
   _handleGoTo = payload => {
@@ -126,12 +139,27 @@ class Form extends React.PureComponent<Props, any> {
   }
 
   _onBackPress = () => {
+    // const { fieldIndex } = this.state
+    // const currentField = this.model.fields[fieldIndex]
+    // if (!passiveTypes.find(el => el === currentField.type)) {
+    //   this._storeValue()
+    // }
     this._goToPreviousField()
   }
 
   render() {
+    tron.display({
+      value: this.state,
+      name: 'State of Form',
+      preview: 'State of Form'
+    })
+    tron.display({
+      value: this.props,
+      name: 'Props of Form',
+      preview: 'Props of Form'
+    })
     const { fieldIndex, currentElementValue } = this.state
-    const currentField = this.model.fields[fieldIndex]
+    const currentField = this.model.fields[fieldIndex] || []
     return (
       <View style={rootStyles.container}>
         <View style={formStyles.formContainer}>

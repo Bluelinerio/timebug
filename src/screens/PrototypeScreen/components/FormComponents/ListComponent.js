@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, Alert } from 'react-native'
+import { View, Text } from 'react-native'
 import { Button } from 'react-native-elements'
 import { formStyles } from '../../styles'
 import tron from 'reactotron-react-native'
@@ -8,6 +8,7 @@ import uuid from 'uuid/v4'
 
 type Props = {
   value: Array<any>,
+  onChange: () => any,
   field: {
     content?: any,
     options?: any
@@ -68,7 +69,6 @@ class ListComponent extends React.PureComponent<Props, State> {
   constructor(props) {
     super(props)
     this.state = {
-      value: [],
       currentValue: {}
     }
   }
@@ -81,7 +81,8 @@ class ListComponent extends React.PureComponent<Props, State> {
   }
 
   _onAddPress = () => {
-    const { value, currentValue } = this.state
+    const { currentValue } = this.state
+    const { value = [], onChange, field: { options } } = this.props
     // Test if input's blank
     // const err = Object.keys(currentValue).find(k => {
     //   const val = currentValue[k]
@@ -94,7 +95,6 @@ class ListComponent extends React.PureComponent<Props, State> {
     //   ])
     //   return
     // }
-    const { field: { options } } = this.props
     const { childTypes } = options
     const valueToSave = Object.keys(currentValue).reduce((prev, key) => {
       const _model = childTypes[key]
@@ -106,16 +106,14 @@ class ListComponent extends React.PureComponent<Props, State> {
         }
       }
     }, {})
-    this.setState({
-      value: [
-        ...value,
-        {
-          ...valueToSave,
-          _id: uuid()
-        }
-      ],
-      currentValue: {}
-    })
+    onChange([
+      ...(value ? value : []),
+      {
+        ...valueToSave,
+        _id: uuid()
+      }
+    ])
+    this.setState({ currentValue: {} })
   }
 
   _onDeletePress = () => {
@@ -123,8 +121,8 @@ class ListComponent extends React.PureComponent<Props, State> {
   }
 
   render() {
-    const { currentValue, value } = this.state
-    const { field: { content, options } } = this.props
+    const { currentValue } = this.state
+    const { field: { content, options }, value } = this.props
     const { childTypes } = options
     return (
       <React.Fragment>
@@ -161,9 +159,10 @@ class ListComponent extends React.PureComponent<Props, State> {
               {`${content.listText}`}:
             </Text>
           )}
-          {value.map((val, index) => (
-            <TextElement key={val._id} element={val} index={index} />
-          ))}
+          {value &&
+            value.map((val, index) => (
+              <TextElement key={val._id} element={val} index={index} />
+            ))}
         </View>
       </React.Fragment>
     )
