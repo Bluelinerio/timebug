@@ -12,7 +12,7 @@ const TextInput = ({
     options = {
       multiline: false,
       placeHolder: '',
-      label: 'placeholderLabel'
+      label: ''
     }
   }
 }: {
@@ -20,8 +20,15 @@ const TextInput = ({
   onChange: string => any,
   color: string,
   field: {
-    content?: any,
-    options?: any
+    content?: {
+      text: string
+    },
+    options?: {
+      multiline: boolean,
+      placeHolder: string,
+      label: string,
+      default?: string
+    }
   }
 }) => (
   <React.Fragment>
@@ -31,7 +38,7 @@ const TextInput = ({
       inputStyle={formStyles.textInputStyle}
       underlineColorAndroid={'transparent'}
       onChangeText={onChange}
-      value={value}
+      value={value ? value : options.default}
       multiline={options.multiline}
     />
   </React.Fragment>

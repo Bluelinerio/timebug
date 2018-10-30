@@ -60,16 +60,17 @@ class Form extends React.PureComponent<Props, any> {
   _getNewValue = () => {
     const { value, currentElementValue, fieldIndex } = this.state
     const currentField = this.model.fields[fieldIndex]
+    const defaultValue = currentField.options.default
     const newField = value[fieldIndex]
       ? {
         ...value[fieldIndex],
-        value: currentElementValue,
+        value: currentElementValue || defaultValue,
         timestamp: moment().format()
       }
       : {
         ...value[fieldIndex],
         type: currentField.type,
-        value: currentElementValue,
+        value: currentElementValue || defaultValue,
         timestamp: moment().format(),
         _id: uuid()
       }

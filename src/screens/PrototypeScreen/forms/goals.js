@@ -2,7 +2,6 @@ import types, { actionTypes } from './types'
 import { frequencies } from '../../../services/checkins'
 
 export const AreaOfLife = [
-  '-',
   'Finances',
   'Environment',
   'Aims & Hobbies',
@@ -13,7 +12,6 @@ export const AreaOfLife = [
 ]
 
 export const GoalType = [
-  '-',
   'Energy & Time',
   'Achievement & Skills',
   'Health Indicators',
@@ -24,12 +22,11 @@ export const GoalType = [
 ]
 
 export const timeToCompleteGoal = [
-  '-',
   'A day',
   'A week',
   'A month',
   '6 months',
-  'A year',
+  'A year'
 ]
 
 const form5 = {
@@ -51,7 +48,8 @@ const form5 = {
       },
       options: {
         placeHolder: 'Input a recent life goal',
-        multiline: true
+        multiline: true,
+        default: ''
       }
     },
     2: {
@@ -63,6 +61,9 @@ const form5 = {
           value: goal,
           text: goal
         }))
+      },
+      options: {
+        default: GoalType[0]
       }
     },
     3: {
@@ -74,6 +75,9 @@ const form5 = {
           value: time,
           text: time
         }))
+      },
+      options: {
+        default: timeToCompleteGoal[0]
       }
     },
     4: {
@@ -85,6 +89,9 @@ const form5 = {
           value: key,
           text: frequencies[key]
         }))
+      },
+      options: {
+        default: Object.keys(frequencies)[0]
       }
     },
     5: {
@@ -102,7 +109,8 @@ const form5 = {
               placeHolder: 'Step'
             }
           }
-        }
+        },
+        default: []
       }
     },
     6: {
