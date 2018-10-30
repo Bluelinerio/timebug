@@ -45,7 +45,7 @@ export const formStyles = StyleSheet.create({
     marginBottom: 16,
     marginHorizontal: 16,
     alignItems: 'center',
-    justifyContent: 'space-between'
+    justifyContent: 'space-around'
   },
   formButton: {
     backgroundColor: azure,
