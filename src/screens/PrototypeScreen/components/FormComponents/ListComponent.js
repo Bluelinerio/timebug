@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, Alert } from 'react-native'
 import { Button } from 'react-native-elements'
 import { formStyles } from '../../styles'
 import tron from 'reactotron-react-native'
@@ -14,8 +14,54 @@ type Props = {
   }
 }
 
+type ValueElement = {
+  _id: string,
+  _model: any,
+  [x: string]: {
+    value: any,
+    key: string
+  }
+}
+
 type State = {
-  elements: Array<any>
+  value: Array<ValueElement>,
+  currentValue: ValueElement
+}
+
+const _stripKeys = (val: ValueElement) => {
+  const metaKeys = ['_id', '_model']
+  return Object.keys(val).reduce((prev, key) => {
+    if (metaKeys.find(k => k === key)) return prev
+    return {
+      ...prev,
+      [key]: val[key]
+    }
+  }, {})
+}
+
+const TextElement = ({
+  element,
+  index
+}: {
+  index: number,
+  element: ValueElement
+}) => {
+  const strippedObject = _stripKeys(element)
+  return (
+    <React.Fragment>
+      {Object.values(strippedObject).map(value => {
+        return (
+          value &&
+          value.value && (
+            <Text
+              key={value._id}
+              style={[formStyles.textElementText]}
+            >{`\t\t\t\t${index + 1})${value.value}`}</Text>
+          )
+        )
+      })}
+    </React.Fragment>
+  )
 }
 
 class ListComponent extends React.PureComponent<Props, State> {
@@ -27,12 +73,6 @@ class ListComponent extends React.PureComponent<Props, State> {
     }
   }
 
-  _processElementText = (element: any, index: number) => {
-    const { value } = element
-    const { field: { content: { listText } } } = this.props
-    return `${listText} - ${index}: ${value}`
-  }
-
   _onChange = (value: any, element: string) => {
     const { currentValue } = this.state
     this.setState({
@@ -41,15 +81,37 @@ class ListComponent extends React.PureComponent<Props, State> {
   }
 
   _onAddPress = () => {
-    const { value, currentValue, field: { options } } = this.state
+    const { value, currentValue } = this.state
+    // Test if input's blank
+    // const err = Object.keys(currentValue).find(k => {
+    //   const val = currentValue[k]
+    //   if (val.value === null || val.value === '') return true
+    //   return false
+    // }) || true
+    // if (err) {
+    //   Alert.alert('Error', 'Please input a valid step', [
+    //     { text: 'OK', onPress: () => null }
+    //   ])
+    //   return
+    // }
+    const { field: { options } } = this.props
     const { childTypes } = options
+    const valueToSave = Object.keys(currentValue).reduce((prev, key) => {
+      const _model = childTypes[key]
+      return {
+        [key]: {
+          ...currentValue[key],
+          _model,
+          _id: uuid()
+        }
+      }
+    }, {})
     this.setState({
       value: [
         ...value,
         {
-          ...currentValue,
-          _id: uuid(),
-          _model: childTypes[currentValue.element]
+          ...valueToSave,
+          _id: uuid()
         }
       ],
       currentValue: {}
@@ -64,7 +126,6 @@ class ListComponent extends React.PureComponent<Props, State> {
     const { currentValue, value } = this.state
     const { field: { content, options } } = this.props
     const { childTypes } = options
-    tron.log(this.state)
     return (
       <React.Fragment>
         <Text style={formStyles.textInputLabelStyle}>{content.text}</Text>
@@ -90,14 +151,18 @@ class ListComponent extends React.PureComponent<Props, State> {
               formStyles.listButtonStyle
             ]}
             title={'add'}
+            textStyle={formStyles.listButtonTextStyle}
             onPress={() => this._onAddPress()}
           />
         </View>
         <View style={formStyles.listContentContainer}>
-          {value.map((val, index) => (
-            <Text key={val._id} style={formStyles.listContentElement}>
-              {this._processElementText(val, index)}
+          {value && (
+            <Text style={[formStyles.textElementText]}>
+              {`${content.listText}`}:
             </Text>
+          )}
+          {value.map((val, index) => (
+            <TextElement key={val._id} element={val} index={index} />
           ))}
         </View>
       </React.Fragment>
