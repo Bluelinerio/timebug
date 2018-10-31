@@ -2,7 +2,6 @@ import types, { actionTypes } from './types'
 import { frequencies } from '../../../services/checkins'
 
 export const AreaOfLife = [
-  '-',
   'Finances',
   'Environment',
   'Aims & Hobbies',
@@ -13,7 +12,6 @@ export const AreaOfLife = [
 ]
 
 export const GoalType = [
-  '-',
   'Energy & Time',
   'Achievement & Skills',
   'Health Indicators',
@@ -24,12 +22,11 @@ export const GoalType = [
 ]
 
 export const timeToCompleteGoal = [
-  '-',
   'A day',
   'A week',
   'A month',
   '6 months',
-  'A year',
+  'A year'
 ]
 
 const form5 = {
@@ -47,11 +44,14 @@ const form5 = {
       type: types.string,
       key: 'recentLifeGoals',
       content: {
-        text: 'What is one of your recent life goals?'
+        text: 'What is one of your recent life goals?',
+        smallKey: 'Goal',
+        primary: true
       },
       options: {
         placeHolder: 'Input a recent life goal',
-        multiline: true
+        multiline: true,
+        default: ''
       }
     },
     2: {
@@ -59,10 +59,14 @@ const form5 = {
       key: 'areaOfLife',
       content: {
         text: 'Classify this goal according to one of the 7 goal types',
+        smallKey: 'Type of goal',
         items: GoalType.map(goal => ({
           value: goal,
           text: goal
         }))
+      },
+      options: {
+        default: GoalType[0]
       }
     },
     3: {
@@ -70,10 +74,14 @@ const form5 = {
       key: 'areaOfLife',
       content: {
         text: 'How long do you think it will take to complete this goal?',
+        smallKey: 'ETA',
         items: timeToCompleteGoal.map(time => ({
           value: time,
           text: time
         }))
+      },
+      options: {
+        default: timeToCompleteGoal[0]
       }
     },
     4: {
@@ -81,17 +89,23 @@ const form5 = {
       key: 'areaOfLife',
       content: {
         text: 'How often would you like to be reminded about this goal?',
+        smallKey: 'Check-in',
         items: Object.keys(frequencies).map(key => ({
           value: key,
           text: frequencies[key]
-        }))
+        })),
+        translation: (key: string) => frequencies[key]
+      },
+      options: {
+        default: Object.keys(frequencies)[0]
       }
     },
     5: {
       type: types.list,
       content: {
         text: 'What are some steps you need to do to complete this goal?',
-        listText: 'Steps'
+        listText: 'Steps',
+        smallKey: 'Steps'
       },
       options: {
         childTypes: {
@@ -102,7 +116,8 @@ const form5 = {
               placeHolder: 'Step'
             }
           }
-        }
+        },
+        default: []
       }
     },
     6: {

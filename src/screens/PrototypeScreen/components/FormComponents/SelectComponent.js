@@ -3,21 +3,10 @@ import { View, Picker } from 'react-native'
 import { Text } from 'react-native-elements'
 import { formStyles } from '../../styles'
 
-// const options = locals.options.map(({ value, text }) => (
-//     <Picker.Item key={value} value={value} label={text} />
-// ))
-// content: {
-//     text: 'What are of life does this goal belong to ?',
-//     items: AreaOfLife.map(area => ({
-//       value: area,
-//       label: area
-//     }))
-//   },
-
 const Select = ({
   value,
   onChange,
-  field: { content }
+  field: { content, options }
 }: {
   value: string,
   onChange: string => any,
@@ -26,7 +15,9 @@ const Select = ({
       text: string,
       items: Array<{ text: string, value: string }>
     },
-    options?: any
+    options?: {
+      default: string
+    }
   }
 }) => (
   <React.Fragment>
@@ -34,7 +25,7 @@ const Select = ({
     <View style={formStyles.pickerContainer}>
       <View style={formStyles.pickerBackground}>
         <Picker
-          selectedValue={value}
+          selectedValue={value ? value : options.value}
           style={[formStyles.pickerStyle]}
           onValueChange={itemValue => onChange(itemValue)}
           itemStyle={formStyles.pickerItemStyle}

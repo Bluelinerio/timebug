@@ -83,18 +83,6 @@ class ListComponent extends React.PureComponent<Props, State> {
   _onAddPress = () => {
     const { currentValue } = this.state
     const { value = [], onChange, field: { options } } = this.props
-    // Test if input's blank
-    // const err = Object.keys(currentValue).find(k => {
-    //   const val = currentValue[k]
-    //   if (val.value === null || val.value === '') return true
-    //   return false
-    // }) || true
-    // if (err) {
-    //   Alert.alert('Error', 'Please input a valid step', [
-    //     { text: 'OK', onPress: () => null }
-    //   ])
-    //   return
-    // }
     const { childTypes } = options
     const valueToSave = Object.keys(currentValue).reduce((prev, key) => {
       const _model = childTypes[key]
