@@ -142,22 +142,20 @@ export const formStyles = StyleSheet.create({
     borderColor: '#cccccc'
   },
   listFormContainer: {
-    padding: 8,
     alignItems: 'center',
-    backgroundColor: gray100,
     borderRadius: 6,
-    ...Platform.select({
-      android: { elevation: 2 },
-      ios: {
-        shadowColor: 'black',
-        shadowOffset: {
-          width: 1,
-          height: 2
-        },
-        shadowOpacity: 0.3,
-        shadowRadius: 1
-      }
-    })
+    // ...Platform.select({
+    //   android: { elevation: 2 },
+    //   ios: {
+    //     shadowColor: 'black',
+    //     shadowOffset: {
+    //       width: 1,
+    //       height: 2
+    //     },
+    //     shadowOpacity: 0.3,
+    //     shadowRadius: 1
+    //   }
+    // })
   },
   listElementContainer: {
     marginBottom: 8
