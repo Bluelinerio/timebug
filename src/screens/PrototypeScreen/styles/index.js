@@ -4,8 +4,7 @@ import {
   azure,
   gray50,
   darkBlue,
-  gray900,
-  gray100
+  gray900
 } from '../../../constants/colors'
 import { iOSUIKit } from 'react-native-typography'
 import hexToRgba from '../../../utils/colorTransform'
@@ -82,8 +81,7 @@ export const formStyles = StyleSheet.create({
   },
   textInputStyle: {
     color: gray900,
-    fontFamily: 'Metropolis',
-    fontWeight: '700',
+    fontFamily: 'Helvetica Roboto',
     fontSize: 16
   },
   textInputContainerStyle: {
@@ -143,7 +141,7 @@ export const formStyles = StyleSheet.create({
   },
   listFormContainer: {
     alignItems: 'center',
-    borderRadius: 6,
+    borderRadius: 6
     // ...Platform.select({
     //   android: { elevation: 2 },
     //   ios: {
