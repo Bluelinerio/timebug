@@ -220,6 +220,10 @@ export default StyleSheet.create({
     fontSize: 22,
     color: gray50
   },
+  bottomButtonText: {
+    fontSize: 22,
+    color: gray50
+  },
   protoText: {
     ...iOSUIKit.bodyEmphasizedObject
   },

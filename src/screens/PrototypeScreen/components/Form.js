@@ -1,6 +1,6 @@
 // @flow
 import React from 'react'
-import { View, TouchableOpacity } from 'react-native'
+import { View, TouchableOpacity, Text } from 'react-native'
 import rootStyles, { formStyles, iconSize, iconColor } from '../styles'
 import moment from 'moment'
 import tron from 'reactotron-react-native'
@@ -10,6 +10,7 @@ import Icon from 'react-native-vector-icons/Ionicons'
 import uuid from 'uuid/v4'
 import Answers from './FormAnswers'
 
+/* eslint-disable-next-line */
 const FormButton = ({
   onPress,
   icon,
@@ -26,6 +27,20 @@ const FormButton = ({
       size={iconSize}
       color={iconColor}
     />
+  </TouchableOpacity>
+)
+
+const TextFormButton = ({
+  onPress,
+  text,
+  styles
+}: {
+  onPress: () => any,
+  text: string,
+  styles: any
+}) => (
+  <TouchableOpacity onPress={onPress} style={styles.button}>
+    <Text style={[styles.text, formStyles.bottomButtonText]}>{text}</Text>
   </TouchableOpacity>
 )
 
@@ -180,6 +195,14 @@ class Form extends React.PureComponent<Props, any> {
     return 'ios-checkmark'
   }
 
+  _getButtonText = () => {
+    const { fieldIndex, numberOfFields } = this.state
+    if (fieldIndex < numberOfFields - 1) {
+      return 'Next'
+    }
+    return 'Done'
+  }
+
   _onBackPress = () => {
     const { fieldIndex, value } = this.state
     const currentField = this.model.fields[fieldIndex]
@@ -236,16 +259,16 @@ class Form extends React.PureComponent<Props, any> {
           }
         >
           {fieldIndex > 0 && (
-            <FormButton
+            <TextFormButton
               onPress={this._onBackPress}
               styles={{
                 button: formStyles.formButton,
                 text: formStyles.formButtonText
               }}
-              icon={'ios-arrow-round-back'}
+              text={'Prev'}
             />
           )}
-          <FormButton
+          <TextFormButton
             onPress={
               fieldIndex < numberOfFields - 1 ? this._onPress : this._onFinish
             }
@@ -253,7 +276,7 @@ class Form extends React.PureComponent<Props, any> {
               button: formStyles.formButton,
               text: formStyles.formButtonText
             }}
-            icon={this._getButtonIcon()}
+            text={this._getButtonText()}
           />
         </View>
       </View>
