@@ -135,8 +135,8 @@ export const formStyles = StyleSheet.create({
   pickerBackground: {
     width: horizontalComponentsWidth,
     backgroundColor: hexToRgba(azure, 0.1),
-    paddingVertical: 2,
-    paddingHorizontal: 4,
+    paddingVertical: 1,
+    paddingHorizontal: 2,
     borderWidth: 0.5,
     borderRadius: 4,
     borderColor: '#cccccc'
