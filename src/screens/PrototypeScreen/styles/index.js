@@ -4,8 +4,7 @@ import {
   azure,
   gray50,
   darkBlue,
-  gray900,
-  gray100
+  gray900
 } from '../../../constants/colors'
 import { iOSUIKit } from 'react-native-typography'
 import hexToRgba from '../../../utils/colorTransform'
@@ -82,8 +81,7 @@ export const formStyles = StyleSheet.create({
   },
   textInputStyle: {
     color: gray900,
-    fontFamily: 'Metropolis',
-    fontWeight: '700',
+    fontFamily: 'Helvetica Roboto',
     fontSize: 16
   },
   textInputContainerStyle: {
@@ -135,29 +133,27 @@ export const formStyles = StyleSheet.create({
   pickerBackground: {
     width: horizontalComponentsWidth,
     backgroundColor: hexToRgba(azure, 0.1),
-    paddingVertical: 2,
-    paddingHorizontal: 4,
+    paddingVertical: 1,
+    paddingHorizontal: 2,
     borderWidth: 0.5,
     borderRadius: 4,
     borderColor: '#cccccc'
   },
   listFormContainer: {
-    padding: 8,
     alignItems: 'center',
-    backgroundColor: gray100,
-    borderRadius: 6,
-    ...Platform.select({
-      android: { elevation: 2 },
-      ios: {
-        shadowColor: 'black',
-        shadowOffset: {
-          width: 1,
-          height: 2
-        },
-        shadowOpacity: 0.3,
-        shadowRadius: 1
-      }
-    })
+    borderRadius: 6
+    // ...Platform.select({
+    //   android: { elevation: 2 },
+    //   ios: {
+    //     shadowColor: 'black',
+    //     shadowOffset: {
+    //       width: 1,
+    //       height: 2
+    //     },
+    //     shadowOpacity: 0.3,
+    //     shadowRadius: 1
+    //   }
+    // })
   },
   listElementContainer: {
     marginBottom: 8
@@ -217,6 +213,10 @@ export default StyleSheet.create({
     fontFamily: 'Metropolis'
   },
   icon: {
+    fontSize: 22,
+    color: gray50
+  },
+  bottomButtonText: {
     fontSize: 22,
     color: gray50
   },
