@@ -1,9 +1,9 @@
 // @flow
-import React from 'react'
+import React          from 'react'
 import { View, Text } from 'react-native'
-import styles from '../styles'
-import GoalElement from '../containers/GoalElementContainer'
-import { GoalType } from '../forms/goals'
+import styles         from '../styles'
+import GoalElement    from '../containers/GoalElementContainer'
+import { GoalType }   from '../forms/goals'
 
 type Props = {
   onSelect: String => any

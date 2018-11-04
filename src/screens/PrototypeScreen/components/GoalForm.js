@@ -1,9 +1,9 @@
-import React from 'react'
+import React                from 'react'
 import { View, ScrollView } from 'react-native'
-import styles from '../styles'
-import { SafeAreaView } from 'react-navigation'
-import Banner from '../../../containers/NavigationAwareBanner'
-import Form from './Form'
+import styles               from '../styles'
+import { SafeAreaView }     from 'react-navigation'
+import Banner               from '../../../containers/NavigationAwareBanner'
+import Form                 from './Form'
 
 type Props = {
   setScreenStatus: () => any,

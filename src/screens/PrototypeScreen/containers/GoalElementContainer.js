@@ -7,7 +7,12 @@ import models from '../forms'
 const screen = 'GoalPrototypeScreen'
 const step = '5'
 
-const mapStateToProps = (state: any) => {
+type StateProps = {
+  model: any,
+  data: Array<any>
+}
+
+const mapStateToProps = (state: any): StateProps => {
   const screenData = selectors.stateForScreen(state)(screen)
   return {
     data: screenData[step],
@@ -15,7 +20,13 @@ const mapStateToProps = (state: any) => {
   }
 }
 
-const mergeProps = (stateProps, _, ownProps) => {
+type MergeProps = {
+  goals: Array<any>,
+  goal: String,
+  onSelect: String => any
+}
+
+const mergeProps = (stateProps, _, ownProps): MergeProps => {
   const { goal, onSelect } = ownProps
   const { data = [] } = stateProps
   const goals = data.filter(goalData => {
