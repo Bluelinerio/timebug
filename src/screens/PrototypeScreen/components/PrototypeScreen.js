@@ -6,7 +6,7 @@ import styles from '../styles'
 
 class PrototypeScreen extends React.PureComponent<any> {
   render() {
-    const { goToGoalFormScreen } = this.props
+    const { goToGoalFormScreen, goToPrototypeGoalScreen } = this.props
     return (
       <SafeAreaView
         forceInset={{ top: 'always', bottom: 'never' }}
@@ -22,12 +22,18 @@ class PrototypeScreen extends React.PureComponent<any> {
               </Text>
             </View>
             <View style={styles.buttonContainer}>
-              <TouchableOpacity style={styles.button} onPress={goToGoalFormScreen}>
+              <TouchableOpacity
+                style={styles.button}
+                onPress={goToGoalFormScreen}
+              >
                 <Text style={[styles.buttonText, styles.text]}>Goal form</Text>
               </TouchableOpacity>
             </View>
             <View style={styles.buttonContainer}>
-              <TouchableOpacity style={styles.button}>
+              <TouchableOpacity
+                style={styles.button}
+                onPress={goToPrototypeGoalScreen}
+              >
                 <Text
                   style={[styles.buttonText, styles.text]}
                 >{`Goal's screen`}</Text>

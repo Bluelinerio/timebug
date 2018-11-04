@@ -4,7 +4,8 @@ import {
   azure,
   gray50,
   darkBlue,
-  gray900
+  gray900,
+  gray200
 } from '../../../constants/colors'
 import { iOSUIKit } from 'react-native-typography'
 import hexToRgba from '../../../utils/colorTransform'
@@ -251,5 +252,38 @@ export default StyleSheet.create({
     padding: 16,
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  goalScreenViewContainer: {
+    flex: 1,
+    padding: 16
+  },
+  goalScreenTitle: {
+    ...iOSUIKit.title3EmphasizedObject,
+    textAlign: 'justify',
+    color: darkBlue
+  },
+  elementContainer: {
+    flex: 1,
+    height: 100,
+    flexDirection: 'row',
+    borderRadius: 6,
+    backgroundColor: gray200,
+    marginBottom: 10,
+    padding: 10
+  },
+  leftBlock: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  rightBlock: {
+    flex: 3,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  elementIcon: {
+    height: 40,
+    width: 40,
+    aspectRatio: 1 / 1
   }
 })

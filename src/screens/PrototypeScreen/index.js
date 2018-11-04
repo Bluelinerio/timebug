@@ -10,6 +10,7 @@ import {
 } from 'react-navigation'
 import { headerBackgroundColor } from './styles'
 import GoalFormScreen from './containers/GoalFormContainer'
+import GoalProtoScreen from './components/GoalScreenComponent'
 import { protoRoutes as routes } from '../../navigation/routes'
 /**
  * Ui reducer screen key
@@ -35,6 +36,9 @@ export const PrototypeNavigatorConfiguration = {
     },
     [routes.proto.GoalFormScreen]: {
       screen: GoalFormScreen
+    },
+    [routes.proto.GoalProtoScreen]: {
+      screen: GoalProtoScreen
     }
   },
   options: {
