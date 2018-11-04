@@ -23,6 +23,7 @@ export const gray100 = '#F5F5F5'
 export const azure = '#4EADFF'
 export const cyan = '#B8DEFF'
 export const darkBlue = '#005587'
+export const blue900 = '#0D47A1'
 
 export const MEDITATION = '#005587'
 export const SELF_ASSESMENT = '#EB8900'

@@ -1,8 +1,8 @@
 // @flow
-import React from 'react'
+import React                 from 'react'
 import { View, Text, Image } from 'react-native'
-import styles from '../styles'
-import { icon } from '../../../resources/images'
+import styles                from '../styles'
+import { icon }              from '../../../resources/images'
 
 type Props = {
   goals: Array<any>,
@@ -19,7 +19,7 @@ class GoalListElement extends React.PureComponent<Props> {
           <Image style={styles.elementIcon} source={icon} />
         </View>
         <View style={styles.rightBlock}>
-          <Text>
+          <Text style={styles.elementText}>
             {goal}{' '}
             {goals
               ? goals.length > 0
@@ -32,9 +32,6 @@ class GoalListElement extends React.PureComponent<Props> {
                 : `(0)`
               : ''}
           </Text>
-        </View>
-        <View>
-          <Text />
         </View>
       </View>
     )

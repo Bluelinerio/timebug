@@ -1,9 +1,9 @@
-import React from 'react'
+import React                from 'react'
 import { View, ScrollView } from 'react-native'
-import styles from '../styles'
-import { SafeAreaView } from 'react-navigation'
-import Banner from '../../../containers/NavigationAwareBanner'
-import GoalList from './GoalList'
+import styles               from '../styles'
+import { SafeAreaView }     from 'react-navigation'
+import Banner               from '../../../containers/NavigationAwareBanner'
+import GoalList             from './GoalList'
 
 class GoalScreenComponent extends React.PureComponent<> {
   render() {
@@ -12,12 +12,15 @@ class GoalScreenComponent extends React.PureComponent<> {
         forceInset={{ top: 'always', bottom: 'never' }}
         style={styles.container}
       >
-        <ScrollView
-          style={styles.scrollView}
-          contentContainerStyle={styles.scrollView}
-        >
+        <ScrollView style={styles.container}>
           <Banner backButton={true} />
-          <View style={[styles.container, styles.prototypeBackground, styles.goalScreenViewContainer]}>
+          <View
+            style={[
+              styles.container,
+              styles.prototypeBackground,
+              styles.goalScreenViewContainer
+            ]}
+          >
             <GoalList />
           </View>
         </ScrollView>

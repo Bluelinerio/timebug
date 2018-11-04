@@ -1,17 +1,17 @@
 // @flow
-import React from 'react'
+import React          from 'react'
 import { View, Text } from 'react-native'
-import styles from '../styles'
-import GoalElement from '../containers/GoalElementContainer'
-import { GoalType } from '../forms/goals'
-import tron from 'reactotron-react-native'
+import styles         from '../styles'
+import GoalElement    from '../containers/GoalElementContainer'
+import { GoalType }   from '../forms/goals'
+import tron           from 'reactotron-react-native'
 
 class GoalList extends React.PureComponent {
   render() {
     tron.log(GoalType)
     return (
       <React.Fragment>
-        <View style={styles.container}>
+        <View style={styles.titleContainer}>
           <Text style={styles.goalScreenTitle}>GOALS</Text>
         </View>
         <View style={styles.container}>
