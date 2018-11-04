@@ -5,7 +5,9 @@ import {
   gray50,
   gray900,
   gray200,
-  blue900
+  blue900,
+  gray400,
+  VISION_CREATION
 }                               from '../../../constants/colors'
 import { iOSUIKit }             from 'react-native-typography'
 import hexToRgba                from '../../../utils/colorTransform'
@@ -15,6 +17,8 @@ export const headerBackgroundColor = paleBlue
 export const formTextColor = blue900
 export const iconSize = 30
 export const iconColor = gray50
+export const completedColor = VISION_CREATION
+export const incompleteColor = gray400
 
 const horizontalComponentsWidth = widthPercentage(80)
 
@@ -271,6 +275,7 @@ export default StyleSheet.create({
     backgroundColor: gray200,
     marginBottom: 10,
     padding: 10,
+    maxHeight: 60,
     ...Platform.select({
       android: { elevation: 2 },
       ios: {
@@ -303,5 +308,9 @@ export default StyleSheet.create({
     ...iOSUIKit.bodyEmphasizedObject,
     textAlign: 'justify',
     color: formTextColor
+  },
+  leftIcon: {
+    alignItems: 'flex-start',
+    paddingLeft: 8
   }
 })

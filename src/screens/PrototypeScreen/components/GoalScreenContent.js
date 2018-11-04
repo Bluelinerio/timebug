@@ -3,6 +3,7 @@ import React from 'react'
 import GoalList from './GoalList'
 import { BackHandler } from 'react-native'
 import GoalsFromTypeList from '../containers/GoalsFromTypeListContainer'
+import GoalReview from './GoalReview'
 import tron from 'reactotron-react-native'
 
 type State = {
@@ -46,6 +47,7 @@ class GoalScreenContent extends React.PureComponent<any, State> {
 
   onBackButtonPressAndroid = () => {
     const { selectedGoaltype, selectedGoal } = this.state
+    const { navigation } = this.props
     if (selectedGoal) {
       this.setState({ selectedGoal: null })
       //Animate to the left
@@ -56,7 +58,8 @@ class GoalScreenContent extends React.PureComponent<any, State> {
       // Animate to the left
       return true
     }
-    return false
+    navigation.goBack()
+    return true
   }
 
   _onSelectGoaltype = type => {
@@ -82,6 +85,7 @@ class GoalScreenContent extends React.PureComponent<any, State> {
               onSelect={this._onSelectGoal}
             />
           )}
+        {selectedGoaltype && selectedGoal && <GoalReview goal={selectedGoal} />}
       </React.Fragment>
     )
   }
