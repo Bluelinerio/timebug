@@ -1,20 +1,26 @@
 // @flow
-import React                 from 'react'
-import { View, Text, Image } from 'react-native'
-import styles                from '../styles'
-import { icon }              from '../../../resources/images'
+import React from 'react'
+import { View, Text, Image, TouchableOpacity } from 'react-native'
+import styles from '../styles'
+import { icon } from '../../../resources/images'
 
 type Props = {
   goals: Array<any>,
   model: any,
-  goal: any
+  goal: any,
+  onSelect: String => any
 }
 
 class GoalListElement extends React.PureComponent<Props> {
+  _onPress = () => {
+    const { goal, onSelect } = this.props
+    onSelect(goal)
+  }
+
   render() {
     const { goals, goal } = this.props
     return (
-      <View style={styles.elementContainer}>
+      <TouchableOpacity style={styles.elementContainer} onPress={this._onPress}>
         <View style={styles.leftBlock}>
           <Image style={styles.elementIcon} source={icon} />
         </View>
@@ -33,7 +39,7 @@ class GoalListElement extends React.PureComponent<Props> {
               : ''}
           </Text>
         </View>
-      </View>
+      </TouchableOpacity>
     )
   }
 }

@@ -3,7 +3,6 @@ import React from 'react'
 import { View, TouchableOpacity, Text } from 'react-native'
 import rootStyles, { formStyles, iconSize, iconColor } from '../styles'
 import moment from 'moment'
-import tron from 'reactotron-react-native'
 import FormPicker from './FormComponents/FormPicker'
 import { actionTypes, passiveTypes } from '../forms/types'
 import Icon from 'react-native-vector-icons/Ionicons'
@@ -223,16 +222,6 @@ class Form extends React.PureComponent<Props, any> {
   }
 
   render() {
-    tron.display({
-      value: this.state,
-      name: 'State of Form',
-      preview: 'State of Form'
-    })
-    tron.display({
-      value: this.props,
-      name: 'Props of Form',
-      preview: 'Props of Form'
-    })
     const {
       fieldIndex,
       currentElementValue,

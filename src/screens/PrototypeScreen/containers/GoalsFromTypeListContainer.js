@@ -1,7 +1,7 @@
 // @flow
 import { connect } from 'react-redux'
 import selectors from '../../../redux/selectors'
-import GoalListElement from '../components/GoalListElement'
+import GoalsFromTypeList from '../components/GoalsFromTypeList'
 import models from '../forms'
 
 const screen = 'GoalPrototypeScreen'
@@ -17,15 +17,16 @@ const mapStateToProps = (state: any) => {
 
 const mergeProps = (stateProps, _, ownProps) => {
   const { goal, onSelect } = ownProps
-  const { data = [] } = stateProps
+  const { data = [], model } = stateProps
   const goals = data.filter(goalData => {
     return goal === goalData['2'].value
   })
   return {
     goals,
     goal,
+    model,
     onSelect
   }
 }
 
-export default connect(mapStateToProps, null, mergeProps)(GoalListElement)
+export default connect(mapStateToProps, null, mergeProps)(GoalsFromTypeList)

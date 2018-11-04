@@ -253,7 +253,6 @@ export default StyleSheet.create({
     justifyContent: 'center'
   },
   goalScreenViewContainer: {
-    flex: 1,
     padding: 16
   },
   titleContainer: {
