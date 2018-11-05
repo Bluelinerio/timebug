@@ -19,7 +19,8 @@ class GoalsFromTypeList extends React.PureComponent<Props> {
     return (
       <React.Fragment>
         <View style={styles.titleContainer}>
-          <Text style={styles.goalScreenTitle}>{goal}</Text>
+          <Text style={styles.goalScreenTitle}>GOALS</Text>
+          <Text style={styles.goalScreenSubtitle}>{goal}</Text>
         </View>
         <View style={styles.container}>
           {Object.values(goals).map(goal => (

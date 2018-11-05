@@ -272,6 +272,11 @@ export default StyleSheet.create({
     textAlign: 'justify',
     color: formTextColor
   },
+  goalScreenSubtitle: {
+    ...iOSUIKit.title3EmphasizedObject,
+    textAlign: 'justify',
+    color: formTextColor
+  },
   elementContainer: {
     flex: 1,
     flexDirection: 'row',
