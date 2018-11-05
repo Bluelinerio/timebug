@@ -197,6 +197,7 @@ dependencies {
     implementation project(':react-native-code-push')
     implementation project(':react-native-device-info')
     implementation project(':react-native-svg')
+    implementation 'com.facebook.android:facebook-android-sdk:4.34.0'
     implementation project(':react-native-fbsdk')
     implementation project(':react-native-vector-icons')
     implementation project(':react-native-video')
@@ -216,8 +217,6 @@ dependencies {
     androidTestImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test:rules:1.0.1'
-
-     implementation 'com.facebook.android:facebook-android-sdk:4.22.1)'
 
     //Uncomment if some sort of incompatibility surges with jackson
 //     androidTestCompile(project(path: ":detox", configuration: "oldOkhttpDebug"), {
