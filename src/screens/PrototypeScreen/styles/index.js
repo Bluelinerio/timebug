@@ -3,18 +3,22 @@ import {
   paleBlue,
   azure,
   gray50,
-  darkBlue,
-  gray900
-} from '../../../constants/colors'
-import { iOSUIKit } from 'react-native-typography'
-import hexToRgba from '../../../utils/colorTransform'
-
-import { widthPercentage } from '../../../utils/viewportCalculation'
+  gray900,
+  gray200,
+  blue900,
+  gray400,
+  VISION_CREATION
+}                               from '../../../constants/colors'
+import { iOSUIKit }             from 'react-native-typography'
+import hexToRgba                from '../../../utils/colorTransform'
+import { widthPercentage }      from '../../../utils/viewportCalculation'
 
 export const headerBackgroundColor = paleBlue
-export const formTextColor = darkBlue
+export const formTextColor = blue900
 export const iconSize = 30
 export const iconColor = gray50
+export const completedColor = VISION_CREATION
+export const incompleteColor = gray400
 
 const horizontalComponentsWidth = widthPercentage(80)
 
@@ -251,5 +255,62 @@ export default StyleSheet.create({
     padding: 16,
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  goalScreenViewContainer: {
+    padding: 16
+  },
+  titleContainer: {
+    marginBottom: 10
+  },
+  goalScreenTitle: {
+    ...iOSUIKit.largeTitleEmphasizedObject,
+    fontSize: 28,
+    textAlign: 'justify',
+    color: formTextColor
+  },
+  elementContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    borderRadius: 8,
+    backgroundColor: gray200,
+    marginBottom: 10,
+    padding: 10,
+    maxHeight: 60,
+    ...Platform.select({
+      android: { elevation: 2 },
+      ios: {
+        shadowColor: 'black',
+        shadowOffset: {
+          width: 2,
+          height: 2
+        },
+        shadowOpacity: 0.3,
+        shadowRadius: 8
+      }
+    })
+  },
+  leftBlock: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  rightBlock: {
+    flex: 3,
+    alignItems: 'flex-start',
+    justifyContent: 'center'
+  },
+  elementIcon: {
+    height: 40,
+    width: 40,
+    aspectRatio: 1 / 1
+  },
+  elementText: {
+    ...iOSUIKit.bodyEmphasizedObject,
+    textAlign: 'justify',
+    color: formTextColor
+  },
+  leftIcon: {
+    alignItems: 'flex-start',
+    paddingLeft: 8
   }
 })

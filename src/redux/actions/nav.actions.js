@@ -44,6 +44,11 @@ export const goToGoalFormScreen = () =>
     routeName: protoRoutes.proto.GoalFormScreen
   })
 
+export const goToGoalProtoScreen = () =>
+  NavigationActions.navigate({
+    routeName: protoRoutes.proto.GoalProtoScreen
+  })
+
 export const popToTop = () => NavigationActions.popToTop()
 
 export const navigateWith = ({
