@@ -38,8 +38,10 @@ const ListComponent = ({ hint, value }: { hint: string, value: string }) => {
       {formElements.map((element, index) => {
         const { value, _id } = element
         return (
-          <Text style={formStyles.answerText} key={_id}>{`\t\t${index +
-            1}) ${value}`}</Text>
+          <View style={formStyles.indented} key={_id}>
+            <Text style={formStyles.answerText}>{`${index +
+              1}) ${value}`}</Text>
+          </View>
         )
       })}
     </View>

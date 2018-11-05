@@ -52,9 +52,10 @@ export const formStyles = StyleSheet.create({
   },
   formButton: {
     backgroundColor: azure,
-    padding: 16,
+    paddingVertical: 8,
+    paddingHorizontal: 16,
     borderRadius: 12,
-    height: 40,
+    height: 50,
     width: 80,
     alignItems: 'center',
     justifyContent: 'center',
@@ -194,6 +195,9 @@ export const formStyles = StyleSheet.create({
     textAlign: 'justify',
     color: gray900,
     alignSelf: 'flex-start'
+  },
+  indented: {
+    paddingLeft: 16
   }
 })
 
@@ -221,7 +225,7 @@ export default StyleSheet.create({
     color: gray50
   },
   bottomButtonText: {
-    fontSize: 22,
+    fontSize: 16,
     color: gray50
   },
   protoText: {

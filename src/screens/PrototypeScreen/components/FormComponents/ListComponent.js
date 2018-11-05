@@ -54,10 +54,11 @@ const TextElement = ({
         return (
           value &&
           value.value && (
-            <Text
-              key={value._id}
-              style={[formStyles.textElementText]}
-            >{`\t\t\t\t${index + 1})${value.value}`}</Text>
+            <View key={value._id} style={formStyles.indented}>
+              <Text style={[formStyles.textElementText]}>{`${index + 1})${
+                value.value
+              }`}</Text>
+            </View>
           )
         )
       })}
