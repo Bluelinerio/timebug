@@ -8,10 +8,10 @@ import {
   blue900,
   gray400,
   VISION_CREATION
-}                               from '../../../constants/colors'
-import { iOSUIKit }             from 'react-native-typography'
-import hexToRgba                from '../../../utils/colorTransform'
-import { widthPercentage }      from '../../../utils/viewportCalculation'
+} from '../../../constants/colors'
+import { iOSUIKit } from 'react-native-typography'
+import hexToRgba from '../../../utils/colorTransform'
+import { widthPercentage } from '../../../utils/viewportCalculation'
 
 export const headerBackgroundColor = paleBlue
 export const formTextColor = blue900
@@ -19,8 +19,12 @@ export const iconSize = 30
 export const iconColor = gray50
 export const completedColor = VISION_CREATION
 export const incompleteColor = gray400
+const indentSpace = 16
 
 const horizontalComponentsWidth = widthPercentage(80)
+
+export const minimumTrackColor = azure
+export const maximumTrackColor = gray400
 
 export const formStyles = StyleSheet.create({
   formContainer: {
@@ -277,6 +281,16 @@ export default StyleSheet.create({
     textAlign: 'justify',
     color: formTextColor
   },
+  goalScreenContent: {
+    ...iOSUIKit.bodyEmphasizedObject,
+    textAlign: 'justify',
+    color: formTextColor
+  },
+  goalScreenSmall: {
+    ...iOSUIKit.subheadEmphasizedObject,
+    textAlign: 'justify',
+    color: formTextColor
+  },
   elementContainer: {
     flex: 1,
     flexDirection: 'row',
@@ -321,5 +335,24 @@ export default StyleSheet.create({
   leftIcon: {
     alignItems: 'flex-start',
     paddingLeft: 8
+  },
+  goalReviewTextBlock: {},
+  goalReviewTextWithMargin: {
+    marginBottom: 6
+  },
+  goalReviewIndent: {
+    paddingLeft: indentSpace
+  },
+  goalReviewStepsIndent: {
+    paddingLeft: indentSpace * 2
+  },
+  row: {
+    flexDirection: 'row'
+  },
+  totalProgress: {
+    flex: 1,
+    paddingVertical: 6,
+    alignItems: "stretch",
+    justifyContent: 'center'
   }
 })

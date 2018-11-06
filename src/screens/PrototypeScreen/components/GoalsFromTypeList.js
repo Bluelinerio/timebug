@@ -3,7 +3,6 @@ import React from 'react'
 import { View, Text } from 'react-native'
 import styles from '../styles'
 import GoalElement from './GoalElement'
-import tron from 'reactotron-react-native'
 
 type Props = {
   onSelect: String => any,
@@ -14,7 +13,6 @@ type Props = {
 
 class GoalsFromTypeList extends React.PureComponent<Props> {
   render() {
-    tron.log(this.props)
     const { goal, goals, onSelect } = this.props
     return (
       <React.Fragment>

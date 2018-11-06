@@ -4,7 +4,6 @@ import GoalList from './GoalList'
 import { BackHandler } from 'react-native'
 import GoalsFromTypeList from '../containers/GoalsFromTypeListContainer'
 import GoalReview from './GoalReview'
-import tron from 'reactotron-react-native'
 
 type State = {
   selectedGoaltype: String | null,
@@ -71,8 +70,6 @@ class GoalScreenContent extends React.PureComponent<any, State> {
   }
 
   render() {
-    tron.log(this.props)
-    tron.log(this.state)
     const { selectedGoaltype, selectedGoal } = this.state
     return (
       <React.Fragment>
@@ -85,7 +82,10 @@ class GoalScreenContent extends React.PureComponent<any, State> {
               onSelect={this._onSelectGoal}
             />
           )}
-        {selectedGoaltype && selectedGoal && <GoalReview goal={selectedGoal} />}
+        {selectedGoaltype &&
+          selectedGoal && (
+            <GoalReview goal={selectedGoal} type={selectedGoaltype} />
+          )}
       </React.Fragment>
     )
   }
