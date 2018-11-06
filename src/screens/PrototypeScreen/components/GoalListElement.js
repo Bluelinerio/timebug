@@ -30,8 +30,8 @@ class GoalListElement extends React.PureComponent<Props> {
             {goals
               ? goals.length > 0
                 ? `(${goals.reduce((completedGoals, g) => {
-                  const { _data = {} } = g
-                  const completed = _data.completed || false
+                  const { extra = {} } = g
+                  const completed = extra.completed || false
                   if (completed) return completedGoals + 1
                   return completedGoals
                 }, 0)}/${goals.length})`

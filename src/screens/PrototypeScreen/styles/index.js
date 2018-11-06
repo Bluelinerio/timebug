@@ -8,10 +8,10 @@ import {
   blue900,
   gray400,
   VISION_CREATION
-}                               from '../../../constants/colors'
-import { iOSUIKit }             from 'react-native-typography'
-import hexToRgba                from '../../../utils/colorTransform'
-import { widthPercentage }      from '../../../utils/viewportCalculation'
+} from '../../../constants/colors'
+import { iOSUIKit } from 'react-native-typography'
+import hexToRgba from '../../../utils/colorTransform'
+import { widthPercentage } from '../../../utils/viewportCalculation'
 
 export const headerBackgroundColor = paleBlue
 export const formTextColor = blue900
@@ -19,8 +19,12 @@ export const iconSize = 30
 export const iconColor = gray50
 export const completedColor = VISION_CREATION
 export const incompleteColor = gray400
+const indentSpace = 16
 
 const horizontalComponentsWidth = widthPercentage(80)
+
+export const minimumTrackColor = azure
+export const maximumTrackColor = gray400
 
 export const formStyles = StyleSheet.create({
   formContainer: {
@@ -52,9 +56,10 @@ export const formStyles = StyleSheet.create({
   },
   formButton: {
     backgroundColor: azure,
-    padding: 16,
+    paddingVertical: 8,
+    paddingHorizontal: 16,
     borderRadius: 12,
-    height: 40,
+    height: 50,
     width: 80,
     alignItems: 'center',
     justifyContent: 'center',
@@ -194,6 +199,9 @@ export const formStyles = StyleSheet.create({
     textAlign: 'justify',
     color: gray900,
     alignSelf: 'flex-start'
+  },
+  indented: {
+    paddingLeft: 16
   }
 })
 
@@ -221,7 +229,7 @@ export default StyleSheet.create({
     color: gray50
   },
   bottomButtonText: {
-    fontSize: 22,
+    fontSize: 16,
     color: gray50
   },
   protoText: {
@@ -265,6 +273,21 @@ export default StyleSheet.create({
   goalScreenTitle: {
     ...iOSUIKit.largeTitleEmphasizedObject,
     fontSize: 28,
+    textAlign: 'justify',
+    color: formTextColor
+  },
+  goalScreenSubtitle: {
+    ...iOSUIKit.title3EmphasizedObject,
+    textAlign: 'justify',
+    color: formTextColor
+  },
+  goalScreenContent: {
+    ...iOSUIKit.bodyEmphasizedObject,
+    textAlign: 'justify',
+    color: formTextColor
+  },
+  goalScreenSmall: {
+    ...iOSUIKit.subheadEmphasizedObject,
     textAlign: 'justify',
     color: formTextColor
   },
@@ -312,5 +335,37 @@ export default StyleSheet.create({
   leftIcon: {
     alignItems: 'flex-start',
     paddingLeft: 8
+  },
+  goalReviewTextBlock: {},
+  goalReviewTextWithMargin: {
+    marginBottom: 6
+  },
+  goalReviewIndent: {
+    paddingLeft: indentSpace
+  },
+  goalReviewStepsIndent: {
+    paddingLeft: indentSpace * 2
+  },
+  row: {
+    flexDirection: 'row'
+  },
+  totalProgress: {
+    flex: 1,
+    paddingVertical: 6,
+    alignItems: 'stretch',
+    justifyContent: 'center'
+  },
+  textArea: {
+    height: 80,
+    borderRadius: 6,
+    borderColor: gray400,
+    borderWidth: 1,
+    justifyContent: 'flex-start',
+    backgroundColor: gray200
+  },
+  additionalInput: {
+    color: gray900,
+    fontFamily: 'Helvetica Roboto',
+    fontSize: 16
   }
 })

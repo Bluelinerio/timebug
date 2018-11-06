@@ -21,6 +21,8 @@ export const GoalType = [
   'Relationship Quality'
 ]
 
+export const translateFrequencies = (frequency: string) => frequencies[frequency]
+
 export const timeToCompleteGoal = [
   'A day',
   'A week',
@@ -94,7 +96,7 @@ const form5 = {
           value: key,
           text: frequencies[key]
         })),
-        translation: (key: string) => frequencies[key]
+        translation: translateFrequencies
       },
       options: {
         default: Object.keys(frequencies)[0]
