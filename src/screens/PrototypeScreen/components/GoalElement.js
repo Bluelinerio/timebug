@@ -20,18 +20,18 @@ class GoalElement extends React.PureComponent<Props> {
   render() {
     const { goal } = this.props
     const goalText = goal['1'].value
-    const { _data = {} } = goal
+    const { extra = {} } = goal
     return (
       <TouchableOpacity style={styles.elementContainer} onPress={this._onPress}>
         <View style={[styles.leftBlock, styles.leftIcon]}>
           <Icon
             name={
-              _data.completed
+              extra.completed
                 ? 'ios-checkmark-circle'
                 : 'ios-checkmark-circle-outline'
             }
             size={32}
-            color={_data.completed ? completedColor : incompleteColor}
+            color={extra.completed ? completedColor : incompleteColor}
           />
         </View>
         <View style={styles.rightBlock}>

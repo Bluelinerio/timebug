@@ -3,7 +3,7 @@ import React from 'react'
 import GoalList from './GoalList'
 import { BackHandler } from 'react-native'
 import GoalsFromTypeList from '../containers/GoalsFromTypeListContainer'
-import GoalReview from './GoalReview'
+import GoalReview from '../containers/GoalReviewContainer'
 
 type State = {
   selectedGoaltype: String | null,

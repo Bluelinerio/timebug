@@ -131,7 +131,7 @@ class Form extends React.PureComponent<Props, any> {
     this.setState(
       {
         isFormFinished: true,
-        storableValue: [...storableValue, value]
+        storableValue: [...storableValue, {...value, _id: uuid()}]
       },
       () => {
         onFinish(this.state.storableValue)
@@ -170,7 +170,7 @@ class Form extends React.PureComponent<Props, any> {
     const { value, storableValue, formIteration } = this.state
     this.setState({
       fieldIndex: payload,
-      storableValue: [...storableValue, value],
+      storableValue: [...storableValue, { ...value, _id: uuid() }],
       value:
         this.props.value && this.props.value[formIteration + 1]
           ? this.props.value[formIteration + 1]

@@ -352,7 +352,20 @@ export default StyleSheet.create({
   totalProgress: {
     flex: 1,
     paddingVertical: 6,
-    alignItems: "stretch",
+    alignItems: 'stretch',
     justifyContent: 'center'
+  },
+  textArea: {
+    height: 80,
+    borderRadius: 6,
+    borderColor: gray400,
+    borderWidth: 1,
+    justifyContent: 'flex-start',
+    backgroundColor: gray200
+  },
+  additionalInput: {
+    color: gray900,
+    fontFamily: 'Helvetica Roboto',
+    fontSize: 16
   }
 })
