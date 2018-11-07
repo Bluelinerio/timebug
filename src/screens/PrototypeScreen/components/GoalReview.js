@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
 import Slider from 'react-native-slider'
 import styles, { minimumTrackColor, maximumTrackColor } from '../styles'
 import { translateFrequencies } from '../forms/goals'
@@ -10,7 +10,9 @@ type Props = {
   goal: any,
   type: String,
   onPress: (any, any) => String,
-  onTextChange: String => any
+  onTextChange: String => any,
+  toggleGoal: () => any,
+  deleteGoal: () => any
 }
 
 class GoalReview extends React.PureComponent<Props> {
@@ -48,7 +50,7 @@ class GoalReview extends React.PureComponent<Props> {
   }
 
   render() {
-    const { goal, type } = this.props
+    const { goal, type, toggleGoal, deleteGoal } = this.props
     const steps = goal['5'].value
     const { notes } = this.state
     return (
@@ -59,7 +61,10 @@ class GoalReview extends React.PureComponent<Props> {
         </View>
         <View style={styles.container}>
           <View style={styles.goalReviewTextWithMargin}>
-            <Text style={styles.goalScreenSubtitle}>{goal['1'].value}</Text>
+            <Text style={styles.goalScreenSubtitle}>
+              {goal['1'].value}
+              {goal.extra && goal.extra.completed ? ' - Completed' : ''}
+            </Text>
           </View>
           <View style={[styles.goalReviewIndent]}>
             <Text style={styles.goalScreenContent}>
@@ -120,6 +125,18 @@ class GoalReview extends React.PureComponent<Props> {
               value={notes}
               onChangeText={this._handleInput}
             />
+          </View>
+          <View style={styles.optionsContainer}>
+            <TouchableOpacity style={styles.optionButton} onPress={toggleGoal}>
+              <Text style={styles.optionButtonText}>
+                {goal.extra && goal.extra.completed
+                  ? 'Set goal as not finished'
+                  : 'Set goal as finished'}
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.optionButton} onPress={deleteGoal}>
+              <Text style={styles.optionButtonText}>Delete this goal</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </React.Fragment>

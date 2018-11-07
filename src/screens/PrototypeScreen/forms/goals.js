@@ -31,6 +31,13 @@ export const timeToCompleteGoal = [
   'A year'
 ]
 
+export const STATUS = {
+  PENDING: 'PENDING',
+  COMPLETED: 'COMPLETED',
+  ARCHIVED: 'ARCHIVED',
+  DELETED: 'DELETED'
+}
+
 const form5 = {
   type: types.form,
   fields: {

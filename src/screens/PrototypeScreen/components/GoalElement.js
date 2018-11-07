@@ -21,7 +21,7 @@ class GoalElement extends React.PureComponent<Props> {
     const { goal } = this.props
     const goalText = goal['1'].value
     const { extra = {} } = goal
-    return (
+    return !extra.deleted && (
       <TouchableOpacity style={styles.elementContainer} onPress={this._onPress}>
         <View style={[styles.leftBlock, styles.leftIcon]}>
           <Icon

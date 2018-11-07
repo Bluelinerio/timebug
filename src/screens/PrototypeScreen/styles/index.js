@@ -355,6 +355,9 @@ export default StyleSheet.create({
     alignItems: 'stretch',
     justifyContent: 'center'
   },
+  textAreaContainer: {
+    marginBottom: 16
+  },
   textArea: {
     height: 80,
     borderRadius: 6,
@@ -367,5 +370,38 @@ export default StyleSheet.create({
     color: gray900,
     fontFamily: 'Helvetica Roboto',
     fontSize: 16
+  },
+  optionsContainer: {
+    flexDirection: 'row',
+    paddingVertical: 5,
+    paddingHorizontal: 8,
+    justifyContent: 'space-around',
+    alignItems: 'center'
+  },
+  optionButton: {
+    backgroundColor: azure,
+    padding: 4,
+    borderRadius: 12,
+    height: 50,
+    width: 150,
+    alignItems: 'center',
+    justifyContent: 'center',
+    ...Platform.select({
+      android: { elevation: 2 },
+      ios: {
+        shadowColor: 'black',
+        shadowOffset: {
+          width: 2,
+          height: 2
+        },
+        shadowOpacity: 0.3,
+        shadowRadius: 12
+      }
+    })
+  },
+  optionButtonText: {
+    ...iOSUIKit.footnoteObject,
+    textAlign: 'center',
+    color: gray50
   }
 })
