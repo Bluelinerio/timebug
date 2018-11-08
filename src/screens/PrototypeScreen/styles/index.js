@@ -90,7 +90,7 @@ export const formStyles = StyleSheet.create({
   },
   textInputStyle: {
     color: gray900,
-    fontFamily: 'Helvetica Roboto',
+    fontFamily: 'Helvetica',
     fontSize: 16
   },
   textInputContainerStyle: {
