@@ -1,6 +1,6 @@
-import { connect } from 'react-redux'
-import selectors from '../../../redux/selectors'
-import GoalReview from '../components/GoalReview'
+import { connect }  from 'react-redux'
+import selectors    from '../../../redux/selectors'
+import GoalReview   from '../components/GoalReview'
 import { changeUI } from '../../../redux/actions/ui.actions'
 
 const screen = 'GoalPrototypeScreen'
@@ -52,7 +52,7 @@ const onPressSubstep = (data, setScreenStatus) => {
 }
 
 const textEvent = (data, index, setScreenStatus) => {
-  return text => {
+  const fn = text => {
     const goal = data[index]
 
     const newData = data.map(d => {
@@ -60,6 +60,7 @@ const textEvent = (data, index, setScreenStatus) => {
         return {
           ...d,
           extra: {
+            ...d.extra,
             notes: text
           }
         }
@@ -68,12 +69,58 @@ const textEvent = (data, index, setScreenStatus) => {
 
     setScreenStatus({ [step]: newData })
   }
+  return fn
+}
+
+const switchGoal = (data, index, setScreenStatus) => {
+  const fn = () => {
+    const goal = data[index]
+
+    const newData = data.map(d => {
+      if (d._id === goal._id) {
+        const status = d.extra ? !!d.extra.completed : false
+        return {
+          ...d,
+          extra: {
+            ...d.extra,
+            completed: !status
+          }
+        }
+      }
+      return d
+    })
+
+    setScreenStatus({ [step]: newData })
+  }
+  return fn
+}
+
+const softDelete = (data, index, setScreenStatus, unsetGoal) => {
+  const fn = () => {
+    const goal = data[index]
+
+    const newData = data.map(d => {
+      if (d._id === goal._id)
+        return {
+          ...d,
+          extra: {
+            ...d.extra,
+            deleted: true
+          }
+        }
+      return d
+    })
+
+    unsetGoal()
+    setScreenStatus({ [step]: newData })
+  }
+  return fn
 }
 
 // TODO: Fix this, it's ugly
 const merge = (stateProps, dispatchProps, ownProps) => {
   const { data } = stateProps
-  const { goal: { _id } } = ownProps
+  const { goal: { _id }, unsetGoal } = ownProps
   const [currentGoal, index] = data.reduce((res, g, index) => {
     if (g._id === _id) return [g, index]
     return res
@@ -81,12 +128,16 @@ const merge = (stateProps, dispatchProps, ownProps) => {
   const { setScreenStatus } = dispatchProps
   const onPress = onPressSubstep(data, setScreenStatus)
   const onTextChange = textEvent(data, index, setScreenStatus)
+  const toggleGoal = switchGoal(data, index, setScreenStatus)
+  const deleteGoal = softDelete(data, index, setScreenStatus, unsetGoal)
   return {
     ...ownProps,
     goal: currentGoal,
     goalIndex: index,
     onPress,
-    onTextChange
+    onTextChange,
+    toggleGoal,
+    deleteGoal
   }
 }
 

@@ -1,7 +1,7 @@
-import React from 'react'
+import React            from 'react'
 import { View, Picker } from 'react-native'
-import { Text } from 'react-native-elements'
-import { formStyles } from '../../styles'
+import { Text }         from 'react-native-elements'
+import { formStyles }   from '../../styles'
 
 const Select = ({
   value,

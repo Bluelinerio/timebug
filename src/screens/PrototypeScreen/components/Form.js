@@ -1,13 +1,13 @@
 // @flow
-import React from 'react'
-import { View, TouchableOpacity, Text } from 'react-native'
+import React                                           from 'react'
+import { View, TouchableOpacity, Text }                from 'react-native'
 import rootStyles, { formStyles, iconSize, iconColor } from '../styles'
-import moment from 'moment'
-import FormPicker from './FormComponents/FormPicker'
-import { actionTypes, passiveTypes } from '../forms/types'
-import Icon from 'react-native-vector-icons/Ionicons'
-import uuid from 'uuid/v4'
-import Answers from './FormAnswers'
+import moment                                          from 'moment'
+import FormPicker                                      from './FormComponents/FormPicker'
+import { actionTypes, passiveTypes }                   from '../forms/types'
+import Icon                                            from 'react-native-vector-icons/Ionicons'
+import uuid                                            from 'uuid/v4'
+import Answers                                         from './FormAnswers'
 
 /* eslint-disable-next-line */
 const FormButton = ({

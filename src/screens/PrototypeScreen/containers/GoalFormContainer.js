@@ -1,9 +1,9 @@
-import { connect } from 'react-redux'
-import GoalForm from '../components/GoalForm'
+import { connect }  from 'react-redux'
+import GoalForm     from '../components/GoalForm'
 import { changeUI } from '../../../redux/actions/ui.actions'
-import { goBack } from '../../../redux/actions/nav.actions'
-import selectors from '../../../redux/selectors'
-import models from '../forms'
+import { goBack }   from '../../../redux/actions/nav.actions'
+import selectors    from '../../../redux/selectors'
+import models       from '../forms'
 
 const screen = 'GoalPrototypeScreen'
 

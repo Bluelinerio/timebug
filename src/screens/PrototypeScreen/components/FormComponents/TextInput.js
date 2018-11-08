@@ -1,6 +1,6 @@
-import React from 'react'
+import React               from 'react'
 import { FormInput, Text } from 'react-native-elements'
-import { formStyles } from '../../styles'
+import { formStyles }      from '../../styles'
 
 const TextInput = ({
   value,

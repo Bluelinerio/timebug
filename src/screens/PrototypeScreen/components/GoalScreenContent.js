@@ -1,9 +1,9 @@
 // @flow
-import React from 'react'
-import GoalList from './GoalList'
-import { BackHandler } from 'react-native'
+import React             from 'react'
+import GoalList          from './GoalList'
+import { BackHandler }   from 'react-native'
 import GoalsFromTypeList from '../containers/GoalsFromTypeListContainer'
-import GoalReview from '../containers/GoalReviewContainer'
+import GoalReview        from '../containers/GoalReviewContainer'
 
 type State = {
   selectedGoaltype: String | null,
@@ -69,6 +69,10 @@ class GoalScreenContent extends React.PureComponent<any, State> {
     this.setState({ selectedGoal: goal })
   }
 
+  _unsetGoal = () => {
+    this.setState({ selectedGoal: null, selectedGoaltype: null })
+  }
+
   render() {
     const { selectedGoaltype, selectedGoal } = this.state
     return (
@@ -84,7 +88,11 @@ class GoalScreenContent extends React.PureComponent<any, State> {
           )}
         {selectedGoaltype &&
           selectedGoal && (
-            <GoalReview goal={selectedGoal} type={selectedGoaltype} />
+            <GoalReview
+              goal={selectedGoal}
+              type={selectedGoaltype}
+              unsetGoal={this._unsetGoal}
+            />
           )}
       </React.Fragment>
     )

@@ -1,5 +1,5 @@
-import React from 'react'
-import { Text } from 'react-native-elements'
+import React                         from 'react'
+import { Text }                      from 'react-native-elements'
 import { formTextColor, formStyles } from '../../styles'
 
 const Label = ({

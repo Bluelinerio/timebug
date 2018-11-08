@@ -1,10 +1,10 @@
-import React from 'react'
-import Label from './Label'
+import React     from 'react'
+import Label     from './Label'
 import TextInput from './TextInput'
-import Button from './ButtonComponent'
-import types from '../../forms/types'
-import Select from './SelectComponent'
-import List from './ListComponent'
+import Button    from './ButtonComponent'
+import types     from '../../forms/types'
+import Select    from './SelectComponent'
+import List      from './ListComponent'
 
 type Props = {
   onChange: () => any,
