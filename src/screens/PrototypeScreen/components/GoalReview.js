@@ -138,12 +138,12 @@ class GoalReview extends React.PureComponent<Props> {
             <TouchableOpacity style={styles.optionButton} onPress={toggleGoal}>
               <Text style={styles.optionButtonText}>
                 {goal.extra && goal.extra.completed
-                  ? 'Set goal as not finished'
-                  : 'Set goal as finished'}
+                  ? 'Not Complete'
+                  : 'Complete'}
               </Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.optionButton} onPress={deleteGoal}>
-              <Text style={styles.optionButtonText}>Delete this goal</Text>
+              <Text style={styles.optionButtonText}>Delete</Text>
             </TouchableOpacity>
           </View>
         </View>

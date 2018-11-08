@@ -380,10 +380,12 @@ export default StyleSheet.create({
   },
   optionButton: {
     backgroundColor: azure,
-    padding: 4,
+    paddingVertical: 4,
+    paddingHorizontal: 2,
     borderRadius: 12,
     height: 50,
-    width: 150,
+    width: 110,
+    maxWidth: 110,
     alignItems: 'center',
     justifyContent: 'center',
     ...Platform.select({
