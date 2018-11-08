@@ -53,6 +53,14 @@ class GoalReview extends React.PureComponent<Props> {
     const { goal, type, toggleGoal, deleteGoal } = this.props
     const steps = goal['5'].value
     const { notes } = this.state
+    const completedSteps = steps.reduce((count, step) => {
+      if (step.extra && step.extra.completed) return count + 1
+      return count
+    }, 0)
+    const totalSteps = steps.length
+    const completion = goal.extra && goal.extra.completed
+      ? 100
+      : totalSteps > 0 ? completedSteps / totalSteps * 100 : 0
     return (
       <React.Fragment>
         <View style={styles.titleContainer}>
@@ -77,22 +85,24 @@ class GoalReview extends React.PureComponent<Props> {
           <View style={styles.goalReviewTextBlock}>
             <Text style={styles.goalScreenContent}>Progress</Text>
             <View style={styles.goalReviewIndent}>
-              <Text style={styles.goalScreenContent}>Month #1: 100%</Text>
-            </View>
-            <View style={styles.goalReviewIndent}>
-              <Text style={styles.goalScreenContent}>Month #2: 33%</Text>
+              <Text style={styles.goalScreenContent}>
+                Month #1:{' '}
+                {completion}%
+              </Text>
             </View>
           </View>
           <View style={styles.goalReviewTextBlock}>
             <View style={[styles.totalProgress]}>
-              <Text style={styles.goalScreenContent}>Total: 22%</Text>
+              <Text style={styles.goalScreenContent}>
+                Total: {completion}%
+              </Text>
               <Slider
                 maximumValue={100}
                 minimumValue={0}
                 step={1}
                 minimumTrackTintColor={minimumTrackColor}
                 maximumTrackTintColor={maximumTrackColor}
-                value={22}
+                value={completion}
                 disabled
                 thumbStyle={{
                   width: 0,
