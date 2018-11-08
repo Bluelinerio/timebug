@@ -368,7 +368,7 @@ export default StyleSheet.create({
   },
   additionalInput: {
     color: gray900,
-    fontFamily: 'Helvetica Roboto',
+    fontFamily: 'Helvetica',
     fontSize: 16
   },
   optionsContainer: {
