@@ -1,5 +1,5 @@
 import types, { actionTypes } from './types'
-import { frequencies } from '../../../services/checkins'
+import { frequencies }        from '../../../services/checkins'
 
 export const AreaOfLife = [
   'Finances',
@@ -21,7 +21,8 @@ export const GoalType = [
   'Relationship Quality'
 ]
 
-export const translateFrequencies = (frequency: string) => frequencies[frequency]
+export const translateFrequencies = (frequency: string) =>
+  frequencies[frequency]
 
 export const timeToCompleteGoal = [
   'A day',

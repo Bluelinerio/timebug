@@ -1,6 +1,6 @@
-import { connect } from 'react-redux'
-import selectors from '../../../redux/selectors'
-import GoalReview from '../components/GoalReview'
+import { connect }  from 'react-redux'
+import selectors    from '../../../redux/selectors'
+import GoalReview   from '../components/GoalReview'
 import { changeUI } from '../../../redux/actions/ui.actions'
 
 const screen = 'GoalPrototypeScreen'

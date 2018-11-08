@@ -1,10 +1,10 @@
-import React from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
-import Slider from 'react-native-slider'
+import React                                            from 'react'
+import { View, Text, TouchableOpacity }                 from 'react-native'
+import Slider                                           from 'react-native-slider'
 import styles, { minimumTrackColor, maximumTrackColor } from '../styles'
-import { translateFrequencies } from '../forms/goals'
-import GoalSubstep from './GoalSubstep'
-import { FormInput } from 'react-native-elements'
+import { translateFrequencies }                         from '../forms/goals'
+import GoalSubstep                                      from './GoalSubstep'
+import { FormInput }                                    from 'react-native-elements'
 
 type Props = {
   goal: any,
@@ -58,9 +58,10 @@ class GoalReview extends React.PureComponent<Props> {
       return count
     }, 0)
     const totalSteps = steps.length
-    const completion = goal.extra && goal.extra.completed
-      ? 100
-      : totalSteps > 0 ? completedSteps / totalSteps * 100 : 0
+    const completion =
+      goal.extra && goal.extra.completed
+        ? 100
+        : totalSteps > 0 ? completedSteps / totalSteps * 100 : 0
     return (
       <React.Fragment>
         <View style={styles.titleContainer}>
@@ -86,16 +87,13 @@ class GoalReview extends React.PureComponent<Props> {
             <Text style={styles.goalScreenContent}>Progress</Text>
             <View style={styles.goalReviewIndent}>
               <Text style={styles.goalScreenContent}>
-                Month #1:{' '}
-                {completion}%
+                Month #1: {completion}%
               </Text>
             </View>
           </View>
           <View style={styles.goalReviewTextBlock}>
             <View style={[styles.totalProgress]}>
-              <Text style={styles.goalScreenContent}>
-                Total: {completion}%
-              </Text>
+              <Text style={styles.goalScreenContent}>Total: {completion}%</Text>
               <Slider
                 maximumValue={100}
                 minimumValue={0}

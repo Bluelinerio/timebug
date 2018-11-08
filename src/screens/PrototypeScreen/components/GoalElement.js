@@ -1,8 +1,8 @@
 // @flow
-import React from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
+import React                                       from 'react'
+import { View, Text, TouchableOpacity }            from 'react-native'
 import styles, { completedColor, incompleteColor } from '../styles'
-import Icon from 'react-native-vector-icons/Ionicons'
+import Icon                                        from 'react-native-vector-icons/Ionicons'
 
 type Props = {
   goals: Array<any>,

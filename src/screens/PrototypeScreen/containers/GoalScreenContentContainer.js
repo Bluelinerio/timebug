@@ -1,8 +1,8 @@
 import { withNavigation } from 'react-navigation'
-import { connect } from 'react-redux'
-import { compose } from 'recompose'
-import selectors from '../../../redux/selectors'
-import GoalScreenContent from '../components/GoalScreenContent'
+import { connect }        from 'react-redux'
+import { compose }        from 'recompose'
+import selectors          from '../../../redux/selectors'
+import GoalScreenContent  from '../components/GoalScreenContent'
 
 //TODO: Eventually do this well
 // const screen = 'GoalPrototypeScreen'

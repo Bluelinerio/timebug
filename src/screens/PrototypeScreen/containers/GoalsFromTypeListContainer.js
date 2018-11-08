@@ -1,8 +1,8 @@
 // @flow
-import { connect } from 'react-redux'
-import selectors from '../../../redux/selectors'
+import { connect }       from 'react-redux'
+import selectors         from '../../../redux/selectors'
 import GoalsFromTypeList from '../components/GoalsFromTypeList'
-import models from '../forms'
+import models            from '../forms'
 
 const screen = 'GoalPrototypeScreen'
 const step = '5'

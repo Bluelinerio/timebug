@@ -1,8 +1,8 @@
 // @flow
-import React from 'react'
-import { View } from 'react-native'
+import React          from 'react'
+import { View }       from 'react-native'
 import { formStyles } from '../styles'
-import FormSwitch from './FormAnswerSwitch'
+import FormSwitch     from './FormAnswerSwitch'
 
 type Props = {
   value: any,

@@ -8,10 +8,10 @@ import {
   blue900,
   gray400,
   VISION_CREATION
-} from '../../../constants/colors'
-import { iOSUIKit } from 'react-native-typography'
-import hexToRgba from '../../../utils/colorTransform'
-import { widthPercentage } from '../../../utils/viewportCalculation'
+}                               from '../../../constants/colors'
+import { iOSUIKit }             from 'react-native-typography'
+import hexToRgba                from '../../../utils/colorTransform'
+import { widthPercentage }      from '../../../utils/viewportCalculation'
 
 export const headerBackgroundColor = paleBlue
 export const formTextColor = blue900

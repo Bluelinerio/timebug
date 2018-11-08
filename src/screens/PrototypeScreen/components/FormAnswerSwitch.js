@@ -1,7 +1,7 @@
 // @flow
-import React from 'react'
+import React          from 'react'
 import { View, Text } from 'react-native'
-import types from '../forms/types'
+import types          from '../forms/types'
 import { formStyles } from '../styles'
 
 const TextComponent = ({

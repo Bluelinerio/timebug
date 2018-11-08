@@ -1,10 +1,10 @@
-import React from 'react'
+import React          from 'react'
 import { View, Text } from 'react-native'
-import { Button } from 'react-native-elements'
+import { Button }     from 'react-native-elements'
 import { formStyles } from '../../styles'
-import tron from 'reactotron-react-native'
-import FormPicker from './FormPicker'
-import uuid from 'uuid/v4'
+import tron           from 'reactotron-react-native'
+import FormPicker     from './FormPicker'
+import uuid           from 'uuid/v4'
 
 type Props = {
   value: Array<any>,

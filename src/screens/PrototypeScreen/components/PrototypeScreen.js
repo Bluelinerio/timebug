@@ -1,8 +1,8 @@
-import React from 'react'
+import React                            from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
-import { SafeAreaView } from 'react-navigation'
-import Banner from '../../../containers/NavigationAwareBanner'
-import styles from '../styles'
+import { SafeAreaView }                 from 'react-navigation'
+import Banner                           from '../../../containers/NavigationAwareBanner'
+import styles                           from '../styles'
 
 class PrototypeScreen extends React.PureComponent<any> {
   render() {
