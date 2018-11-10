@@ -7,7 +7,7 @@ import {
 } from '../../../utils/viewportCalculation'
 
 export const bannerHeight = heightPercentage(10)
-export const bannerColor = 'red'
+export const bannerColor = paleBlue
 /**
  * Upper row Sized at 25% of the whole banner
  */
