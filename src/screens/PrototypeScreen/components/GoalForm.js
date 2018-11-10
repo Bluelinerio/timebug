@@ -34,7 +34,7 @@ class GoalForm extends React.PureComponent<Props> {
           style={styles.scrollView}
           contentContainerStyle={styles.scrollView}
         >
-          <Banner backButton={true} />
+          <Banner />
           <View style={[styles.container, styles.prototypeBackground]}>
             <Form model={model} value={formData} onFinish={this._onFinish} />
           </View>

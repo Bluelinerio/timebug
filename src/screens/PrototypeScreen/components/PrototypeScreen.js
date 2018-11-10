@@ -13,7 +13,7 @@ class PrototypeScreen extends React.PureComponent<any> {
         style={styles.container}
       >
         <View style={styles.container}>
-          <Banner backButton={true} />
+          <Banner/>
           <View style={styles.viewContainer}>
             <View style={styles.buttonContainer}>
               <Text style={[styles.protoText, styles.text]}>

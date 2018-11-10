@@ -16,7 +16,7 @@ class GoalScreenComponent extends React.PureComponent<> {
           style={styles.scrollView}
           contentContainerStyle={styles.scrollView}
         >
-          <Banner backButton={true} />
+          <Banner />
           <View
             style={[
               styles.container,
