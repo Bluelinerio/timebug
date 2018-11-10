@@ -101,7 +101,7 @@ class GoalScreenComponent extends React.PureComponent<Props, State> {
           style={styles.scrollView}
           contentContainerStyle={styles.scrollView}
         >
-          <Banner />
+          <Banner override={this._onSoftwareBackButtonPress}/>
           <View
             style={[
               styles.container,
