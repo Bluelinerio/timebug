@@ -1,25 +1,25 @@
-import { connect }  from 'react-redux'
-import selectors    from '../../../redux/selectors'
-import GoalReview   from '../components/GoalReview'
-import { changeUI } from '../../../redux/actions/ui.actions'
-
-const screen = 'GoalPrototypeScreen'
-const step = '5'
+import { connect }        from 'react-redux'
+import selectors          from '../../../redux/selectors'
+import GoalReview         from '../components/GoalReview'
+import { changeUI }       from '../../../redux/actions/ui.actions'
+import { withNavigation } from 'react-navigation'
+import { compose }        from 'recompose'
 
 const mapStateToProps = (state: any) => {
-  const screenData = selectors.stateForScreen(state)(screen)
+  const stateForScreen = selectors.stateForScreen(state)
   return {
-    data: screenData[step]
+    stateForScreen
   }
 }
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    setScreenStatus: (params: any) => dispatch(changeUI({ screen, params }))
+    setScreenStatusWrapper: (screen: string) => (params: any) =>
+      dispatch(changeUI({ screen, params }))
   }
 }
 
-const onPressSubstep = (data, setScreenStatus) => {
+const onPressSubstep = (data, setScreenStatus, step) => {
   return (goal, substep) => {
     const { _id } = goal
 
@@ -51,7 +51,7 @@ const onPressSubstep = (data, setScreenStatus) => {
   }
 }
 
-const textEvent = (data, index, setScreenStatus) => {
+const textEvent = (data, index, setScreenStatus, step) => {
   const fn = text => {
     const goal = data[index]
 
@@ -72,7 +72,7 @@ const textEvent = (data, index, setScreenStatus) => {
   return fn
 }
 
-const switchGoal = (data, index, setScreenStatus) => {
+const switchGoal = (data, index, setScreenStatus, step) => {
   const fn = () => {
     const goal = data[index]
 
@@ -95,7 +95,7 @@ const switchGoal = (data, index, setScreenStatus) => {
   return fn
 }
 
-const softDelete = (data, index, setScreenStatus, unsetGoal) => {
+const softDelete = (data, index, setScreenStatus, unsetGoal, step) => {
   const fn = () => {
     const goal = data[index]
 
@@ -117,19 +117,22 @@ const softDelete = (data, index, setScreenStatus, unsetGoal) => {
   return fn
 }
 
-// TODO: Fix this, it's ugly
 const merge = (stateProps, dispatchProps, ownProps) => {
-  const { data } = stateProps
   const { goal: { _id }, unsetGoal } = ownProps
+  const { navigation: { state: { params: { step, screen } } } } = ownProps
+  const { stateForScreen } = stateProps
+  const screenData = stateForScreen(screen)
+  const data = screenData[step] || []
   const [currentGoal, index] = data.reduce((res, g, index) => {
     if (g._id === _id) return [g, index]
     return res
   }, [])
-  const { setScreenStatus } = dispatchProps
-  const onPress = onPressSubstep(data, setScreenStatus)
-  const onTextChange = textEvent(data, index, setScreenStatus)
-  const toggleGoal = switchGoal(data, index, setScreenStatus)
-  const deleteGoal = softDelete(data, index, setScreenStatus, unsetGoal)
+  const { setScreenStatusWrapper } = dispatchProps
+  const setScreenStatus = setScreenStatusWrapper(screen)
+  const onPress = onPressSubstep(data, setScreenStatus, step)
+  const onTextChange = textEvent(data, index, setScreenStatus, step)
+  const toggleGoal = switchGoal(data, index, setScreenStatus, step)
+  const deleteGoal = softDelete(data, index, setScreenStatus, unsetGoal, step)
   return {
     ...ownProps,
     goal: currentGoal,
@@ -141,4 +144,7 @@ const merge = (stateProps, dispatchProps, ownProps) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps, merge)(GoalReview)
+export default compose(
+  withNavigation,
+  connect(mapStateToProps, mapDispatchToProps, merge)
+)(GoalReview)

@@ -1,32 +1,47 @@
 // @flow
-import { connect }       from 'react-redux'
-import selectors         from '../../../redux/selectors'
-import GoalsFromTypeList from '../components/GoalsFromTypeList'
-import models            from '../forms'
+import { connect }           from 'react-redux'
+import selectors             from '../../../redux/selectors'
+import GoalsFromTypeList     from '../components/GoalsFromTypeList'
+import models                from '../forms'
+import { withNavigation }    from 'react-navigation'
+import { compose, mapProps } from 'recompose'
 
-const screen = 'GoalPrototypeScreen'
-const step = '5'
+type StateProps = {
+  model: any,
+  data: Array<any>
+}
 
-const mapStateToProps = (state: any) => {
-  const screenData = selectors.stateForScreen(state)(screen)
+const mapStateToProps = (state: any): StateProps => {
+  const stateForScreen = selectors.stateForScreen(state)
   return {
-    data: screenData[step],
-    model: models[step]
+    stateForScreen
   }
 }
 
-const mergeProps = (stateProps, _, ownProps) => {
-  const { goal, onSelect } = ownProps
-  const { data = [], model } = stateProps
+type MergeProps = {
+  goals: Array<any>,
+  goal: String,
+  onSelect: String => any
+}
+
+const mergeProps = (props): MergeProps => {
+  const { goal, onSelect, stateForScreen } = props
+  const { navigation: { state: { params: { step, screen } } } } = props
+  const screenData = stateForScreen(screen)
+  const data = screenData[step] || []
   const goals = data.filter(goalData => {
     return goal === goalData['2'].value
   })
   return {
     goals,
     goal,
-    model,
-    onSelect
+    onSelect,
+    model: models[step]
   }
 }
 
-export default connect(mapStateToProps, null, mergeProps)(GoalsFromTypeList)
+export default compose(
+  connect(mapStateToProps),
+  withNavigation,
+  mapProps(mergeProps)
+)(GoalsFromTypeList)

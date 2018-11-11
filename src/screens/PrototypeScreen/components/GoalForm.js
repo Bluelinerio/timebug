@@ -1,3 +1,4 @@
+// @flow
 import React                from 'react'
 import { View, ScrollView } from 'react-native'
 import styles               from '../styles'
@@ -9,20 +10,19 @@ type Props = {
   setScreenStatus: () => any,
   back: () => any,
   models: any,
-  data: any
+  data: any,
+  step: String
 }
-
-const step = '5'
 
 class GoalForm extends React.PureComponent<Props> {
   _onFinish = (data: any) => {
-    const { setScreenStatus, back } = this.props
+    const { setScreenStatus, back, step } = this.props
     setScreenStatus({ [step]: data })
     back()
   }
 
   render() {
-    const { models, data } = this.props
+    const { models, data, step } = this.props
     const model = models[step]
     const formData = data[step]
     return (

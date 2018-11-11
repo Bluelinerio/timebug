@@ -1,9 +1,11 @@
-import { connect }  from 'react-redux'
-import GoalForm     from '../components/GoalForm'
-import { changeUI } from '../../../redux/actions/ui.actions'
-import { goBack }   from '../../../redux/actions/nav.actions'
-import selectors    from '../../../redux/selectors'
-import models       from '../forms'
+import { connect }           from 'react-redux'
+import GoalForm              from '../components/GoalForm'
+import { changeUI }          from '../../../redux/actions/ui.actions'
+import { goBack }            from '../../../redux/actions/nav.actions'
+import selectors             from '../../../redux/selectors'
+import models                from '../forms'
+import { withNavigation }    from 'react-navigation'
+import { compose, mapProps } from 'recompose'
 
 const screen = 'GoalPrototypeScreen'
 
@@ -22,4 +24,19 @@ const mapDispatchToProps = (dispatch: any) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(GoalForm)
+const merge = ({ navigation, data, models, setScreenStatus, back }) => {
+  const { state: { params: { step } } } = navigation
+  return {
+    data,
+    models,
+    setScreenStatus,
+    back,
+    step
+  }
+}
+
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withNavigation,
+  mapProps(merge)
+)(GoalForm)

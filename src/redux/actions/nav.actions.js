@@ -21,6 +21,11 @@ export type LinkedNavigationPayload = {
   link: string
 }
 
+export type GoalFormParams = {
+  step: String,
+  screen: String
+}
+
 export const linkNavigation = (payload: LinkedNavigationPayload) => ({
   type: LINK_NAVIGATION,
   payload
@@ -39,14 +44,16 @@ export const goToPrototype = () =>
     routeName: routes.root.PrototypeNavigator
   })
 
-export const goToGoalFormScreen = () =>
+export const goToGoalFormScreen = (params: GoalFormParams) =>
   NavigationActions.navigate({
-    routeName: protoRoutes.proto.GoalFormScreen
+    routeName: protoRoutes.proto.GoalFormScreen,
+    params
   })
 
-export const goToGoalProtoScreen = () =>
+export const goToGoalProtoScreen = (params: GoalFormParams) =>
   NavigationActions.navigate({
-    routeName: protoRoutes.proto.GoalProtoScreen
+    routeName: protoRoutes.proto.GoalProtoScreen,
+    params
   })
 
 export const popToTop = () => NavigationActions.popToTop()
