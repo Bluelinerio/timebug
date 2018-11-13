@@ -3,7 +3,7 @@ import GoalForm              from '../components/GoalForm'
 import { changeUI }          from '../../../redux/actions/ui.actions'
 import { goBack }            from '../../../redux/actions/nav.actions'
 import selectors             from '../../../redux/selectors'
-import models                from '../forms'
+import models                from '../../../forms/custom/forms'
 import { withNavigation }    from 'react-navigation'
 import { compose, mapProps } from 'recompose'
 

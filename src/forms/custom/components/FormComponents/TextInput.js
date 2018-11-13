@@ -1,6 +1,6 @@
-import React               from 'react'
+import React from 'react'
 import { FormInput, Text } from 'react-native-elements'
-import { formStyles }      from '../../styles'
+import styles from '../../styles'
 
 const TextInput = ({
   value,
@@ -32,10 +32,10 @@ const TextInput = ({
   }
 }) => (
   <React.Fragment>
-    <Text style={formStyles.textInputLabelStyle}>{content.text}</Text>
+    <Text style={styles.textInputLabelStyle}>{content.text}</Text>
     <FormInput
-      containerStyle={formStyles.textInputContainerStyle}
-      inputStyle={formStyles.textInputStyle}
+      containerStyle={styles.textInputContainerStyle}
+      inputStyle={styles.textInputStyle}
       underlineColorAndroid={'transparent'}
       onChangeText={onChange}
       value={value ? value : options.default}

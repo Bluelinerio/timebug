@@ -1,10 +1,10 @@
-import React          from 'react'
+import React from 'react'
 import { View, Text } from 'react-native'
-import { Button }     from 'react-native-elements'
-import { formStyles } from '../../styles'
-import tron           from 'reactotron-react-native'
-import FormPicker     from './FormPicker'
-import uuid           from 'uuid/v4'
+import { Button } from 'react-native-elements'
+import styles from '../../styles'
+import tron from 'reactotron-react-native'
+import FormPicker from './FormPicker'
+import uuid from 'uuid/v4'
 
 type Props = {
   value: Array<any>,
@@ -54,8 +54,8 @@ const TextElement = ({
         return (
           value &&
           value.value && (
-            <View key={value._id} style={formStyles.indented}>
-              <Text style={[formStyles.textElementText]}>{`${index + 1})${
+            <View key={value._id} style={styles.indented}>
+              <Text style={[styles.textElementText]}>{`${index + 1})${
                 value.value
               }`}</Text>
             </View>
@@ -115,9 +115,9 @@ class ListComponent extends React.PureComponent<Props, State> {
     const { childTypes } = options
     return (
       <React.Fragment>
-        <Text style={formStyles.textInputLabelStyle}>{content.text}</Text>
-        <View style={formStyles.listFormContainer}>
-          <View style={formStyles.listElementContainer}>
+        <Text style={styles.textInputLabelStyle}>{content.text}</Text>
+        <View style={styles.listFormContainer}>
+          <View style={styles.listElementContainer}>
             {childTypes &&
               Object.keys(childTypes).map(key => {
                 const field = childTypes[key]
@@ -133,18 +133,15 @@ class ListComponent extends React.PureComponent<Props, State> {
               })}
           </View>
           <Button
-            buttonStyle={[
-              formStyles.buttonComponentStyle,
-              formStyles.listButtonStyle
-            ]}
+            buttonStyle={[styles.buttonComponentStyle, styles.listButtonStyle]}
             title={'add'}
-            textStyle={formStyles.listButtonTextStyle}
+            textStyle={styles.listButtonTextStyle}
             onPress={() => this._onAddPress()}
           />
         </View>
-        <View style={formStyles.listContentContainer}>
+        <View style={styles.listContentContainer}>
           {value && (
-            <Text style={[formStyles.textElementText]}>
+            <Text style={[styles.textElementText]}>
               {`${content.listText}`}:
             </Text>
           )}

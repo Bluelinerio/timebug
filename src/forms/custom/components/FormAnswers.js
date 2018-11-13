@@ -1,8 +1,8 @@
 // @flow
-import React          from 'react'
-import { View }       from 'react-native'
-import { formStyles } from '../styles'
-import FormSwitch     from './FormAnswerSwitch'
+import React from 'react'
+import { View } from 'react-native'
+import styles from '../styles'
+import FormSwitch from './FormAnswerSwitch'
 
 type Props = {
   value: any,
@@ -15,7 +15,7 @@ class FormAnswers extends React.PureComponent<Props> {
   render() {
     const { value, model } = this.props
     return (
-      <View style={formStyles.answersContainer}>
+      <View style={styles.answersContainer}>
         {value &&
           Object.keys(value).map(key => {
             const currentModel = model.fields[key]

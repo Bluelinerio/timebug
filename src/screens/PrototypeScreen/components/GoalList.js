@@ -3,7 +3,7 @@ import React          from 'react'
 import { View, Text } from 'react-native'
 import styles         from '../styles'
 import GoalElement    from '../containers/GoalElementContainer'
-import { GoalType }   from '../forms/goals'
+import { GoalType }   from '../../../forms/custom/forms/goals'
 
 type Props = {
   onSelect: String => any

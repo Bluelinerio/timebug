@@ -1,7 +1,7 @@
-import React            from 'react'
-import { View }         from 'react-native'
+import React from 'react'
+import { View } from 'react-native'
 import { Button, Text } from 'react-native-elements'
-import { formStyles }   from '../../styles'
+import styles from '../../styles'
 
 const ButtonComponent = ({
   buttonHandler,
@@ -22,16 +22,16 @@ const ButtonComponent = ({
   }
 }) => (
   <View>
-    <Text style={formStyles.textInputLabelStyle}>{content.text}</Text>
+    <Text style={styles.textInputLabelStyle}>{content.text}</Text>
     <View
       style={[
-        formStyles.buttonComponentContainer,
-        actions.length === 1 ? formStyles.centeredButton : {}
+        styles.buttonComponentContainer,
+        actions.length === 1 ? styles.centeredButton : {}
       ]}
     >
       {actions.map(action => (
         <Button
-          buttonStyle={formStyles.buttonComponentStyle}
+          buttonStyle={styles.buttonComponentStyle}
           title={action.text}
           key={action.key}
           onPress={() => buttonHandler(action)}

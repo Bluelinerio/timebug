@@ -2,7 +2,7 @@ import React                                            from 'react'
 import { View, Text, TouchableOpacity }                 from 'react-native'
 import Slider                                           from 'react-native-slider'
 import styles, { minimumTrackColor, maximumTrackColor } from '../styles'
-import { translateFrequencies }                         from '../forms/goals'
+import { translateFrequencies }                         from '../../../forms/custom/forms/goals'
 import GoalSubstep                                      from './GoalSubstep'
 import { FormInput }                                    from 'react-native-elements'
 

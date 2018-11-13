@@ -1,13 +1,13 @@
 // @flow
-import React                                           from 'react'
-import { View, TouchableOpacity, Text }                from 'react-native'
-import rootStyles, { formStyles, iconSize, iconColor } from '../styles'
-import moment                                          from 'moment'
-import FormPicker                                      from './FormComponents/FormPicker'
-import { actionTypes, passiveTypes }                   from '../forms/types'
-import Icon                                            from 'react-native-vector-icons/Ionicons'
-import uuid                                            from 'uuid/v4'
-import Answers                                         from './FormAnswers'
+import React from 'react'
+import { View, TouchableOpacity, Text } from 'react-native'
+import styles, { iconSize, iconColor } from '../styles'
+import moment from 'moment'
+import FormPicker from './FormComponents/FormPicker'
+import { actionTypes, passiveTypes } from '../forms/types'
+import Icon from 'react-native-vector-icons/Ionicons'
+import uuid from 'uuid/v4'
+import Answers from './FormAnswers'
 
 /* eslint-disable-next-line */
 const FormButton = ({
@@ -21,7 +21,7 @@ const FormButton = ({
 }) => (
   <TouchableOpacity onPress={onPress} style={styles.button}>
     <Icon
-      style={[styles.text, formStyles.icon]}
+      style={[styles.text, styles.icon]}
       name={icon}
       size={iconSize}
       color={iconColor}
@@ -39,7 +39,7 @@ const TextFormButton = ({
   styles: any
 }) => (
   <TouchableOpacity onPress={onPress} style={styles.button}>
-    <Text style={[styles.text, formStyles.bottomButtonText]}>{text}</Text>
+    <Text style={[styles.text, styles.bottomButtonText]}>{text}</Text>
   </TouchableOpacity>
 )
 
@@ -131,7 +131,7 @@ class Form extends React.PureComponent<Props, any> {
     this.setState(
       {
         isFormFinished: true,
-        storableValue: [...storableValue, {...value, _id: uuid()}]
+        storableValue: [...storableValue, { ...value, _id: uuid() }]
       },
       () => {
         onFinish(this.state.storableValue)
@@ -230,8 +230,8 @@ class Form extends React.PureComponent<Props, any> {
     } = this.state
     const currentField = this.model.fields[fieldIndex] || []
     return (
-      <View style={rootStyles.container}>
-        <View style={formStyles.formContainer}>
+      <View style={styles.container}>
+        <View style={styles.formContainer}>
           <FormPicker
             field={currentField}
             onChange={this._onChange}
@@ -243,16 +243,16 @@ class Form extends React.PureComponent<Props, any> {
         <View
           style={
             fieldIndex > 0
-              ? formStyles.formButtonContainerDual
-              : formStyles.formButtonContainer
+              ? styles.formButtonContainerDual
+              : styles.formButtonContainer
           }
         >
           {fieldIndex > 0 && (
             <TextFormButton
               onPress={this._onBackPress}
               styles={{
-                button: formStyles.formButton,
-                text: formStyles.formButtonText
+                button: styles.formButton,
+                text: styles.formButtonText
               }}
               text={'Prev'}
             />
@@ -262,8 +262,8 @@ class Form extends React.PureComponent<Props, any> {
               fieldIndex < numberOfFields - 1 ? this._onPress : this._onFinish
             }
             styles={{
-              button: formStyles.formButton,
-              text: formStyles.formButtonText
+              button: styles.formButton,
+              text: styles.formButtonText
             }}
             text={this._getButtonText()}
           />

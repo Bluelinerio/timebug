@@ -1,8 +1,8 @@
 // @flow
-import React          from 'react'
+import React from 'react'
 import { View, Text } from 'react-native'
-import types          from '../forms/types'
-import { formStyles } from '../styles'
+import types from '../forms/types'
+import styles from '../styles'
 
 const TextComponent = ({
   hint,
@@ -15,7 +15,7 @@ const TextComponent = ({
 }) => {
   return (
     <View>
-      <Text style={formStyles.answerText}>{`${hint}: ${
+      <Text style={styles.answerText}>{`${hint}: ${
         translation ? translation(value) : value
       }`}</Text>
     </View>
@@ -34,13 +34,12 @@ const ListComponent = ({ hint, value }: { hint: string, value: string }) => {
   }, [])
   return (
     <View>
-      <Text style={formStyles.answerText}>{hint}:</Text>
+      <Text style={styles.answerText}>{hint}:</Text>
       {formElements.map((element, index) => {
         const { value, _id } = element
         return (
-          <View style={formStyles.indented} key={_id}>
-            <Text style={formStyles.answerText}>{`${index +
-              1}) ${value}`}</Text>
+          <View style={styles.indented} key={_id}>
+            <Text style={styles.answerText}>{`${index + 1}) ${value}`}</Text>
           </View>
         )
       })}

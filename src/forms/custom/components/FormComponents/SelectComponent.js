@@ -1,7 +1,7 @@
-import React            from 'react'
+import React from 'react'
 import { View, Picker } from 'react-native'
-import { Text }         from 'react-native-elements'
-import { formStyles }   from '../../styles'
+import { Text } from 'react-native-elements'
+import styles from '../../styles'
 
 const Select = ({
   value,
@@ -21,14 +21,14 @@ const Select = ({
   }
 }) => (
   <React.Fragment>
-    <Text style={formStyles.textInputLabelStyle}>{content.text}</Text>
-    <View style={formStyles.pickerContainer}>
-      <View style={formStyles.pickerBackground}>
+    <Text style={styles.textInputLabelStyle}>{content.text}</Text>
+    <View style={styles.pickerContainer}>
+      <View style={styles.pickerBackground}>
         <Picker
           selectedValue={value ? value : options.value}
-          style={[formStyles.pickerStyle]}
+          style={[styles.pickerStyle]}
           onValueChange={itemValue => onChange(itemValue)}
-          itemStyle={formStyles.pickerItemStyle}
+          itemStyle={styles.pickerItemStyle}
         >
           {content &&
             content.items.map(({ value, text }) => (

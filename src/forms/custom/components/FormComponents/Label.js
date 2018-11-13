@@ -1,6 +1,6 @@
-import React                         from 'react'
-import { Text }                      from 'react-native-elements'
-import { formTextColor, formStyles } from '../../styles'
+import React from 'react'
+import { Text } from 'react-native-elements'
+import styles, { formTextColor } from '../../styles'
 
 const Label = ({
   color = formTextColor,
@@ -17,7 +17,7 @@ const Label = ({
     }
   }
 }) => (
-  <Text h4 style={[formStyles.labelComponent, { color }]}>
+  <Text h4 style={[styles.labelComponent, { color }]}>
     {content.text}
   </Text>
 )

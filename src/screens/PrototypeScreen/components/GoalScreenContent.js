@@ -1,8 +1,8 @@
 // @flow
-import React from 'react'
-import GoalList from './GoalList'
+import React             from 'react'
+import GoalList          from './GoalList'
 import GoalsFromTypeList from '../containers/GoalsFromTypeListContainer'
-import GoalReview from '../containers/GoalReviewContainer'
+import GoalReview        from '../containers/GoalReviewContainer'
 
 type Props = {
   onSelectGoal: () => any,

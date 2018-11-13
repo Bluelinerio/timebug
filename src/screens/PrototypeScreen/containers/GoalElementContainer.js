@@ -2,7 +2,7 @@
 import { connect }           from 'react-redux'
 import selectors             from '../../../redux/selectors'
 import GoalListElement       from '../components/GoalListElement'
-import models                from '../forms'
+import models                from '../../../forms/custom/forms'
 import { withNavigation }    from 'react-navigation'
 import { compose, mapProps } from 'recompose'
 
