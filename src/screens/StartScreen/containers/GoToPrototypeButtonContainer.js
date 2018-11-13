@@ -4,7 +4,6 @@ import GoToPrototypeButton from '../components/GoToPrototypeButton'
 import tron from 'reactotron-react-native'
 
 const mapDispatchToProps = (dispatch: any) => {
-  tron.log('stuff')
   return ({
     goToProto: () => dispatch(goToPrototype())
   })
