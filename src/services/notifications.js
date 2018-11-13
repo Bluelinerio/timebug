@@ -74,8 +74,7 @@ class NotificationService {
 
       /* iOS only properties */
       alertAction: 'view', // (optional) default: view
-      category: null, // (optional) default: null
-      userInfo: id, // (optional) default: null (object containing additional notification data)
+      userInfo: {id: `${id}`}, // (optional) default: null (object containing additional notification data)
 
       /* iOS and Android properties */
       title, // (optional)
