@@ -123,7 +123,8 @@ const form5 = {
             type: types.string,
             key: 'stepToLifeGoal',
             options: {
-              placeHolder: 'Step'
+              placeHolder: 'Step',
+              default: ''
             }
           }
         },
