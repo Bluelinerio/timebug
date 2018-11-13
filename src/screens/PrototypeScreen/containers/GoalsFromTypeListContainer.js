@@ -29,8 +29,9 @@ const mergeProps = (props): MergeProps => {
   const { navigation: { state: { params: { step, screen } } } } = props
   const screenData = stateForScreen(screen)
   const data = screenData[step] || []
+  const goalTypeIndex = '2'
   const goals = data.filter(goalData => {
-    return goal === goalData['2'].value
+    return goal === goalData[goalTypeIndex].value
   })
   return {
     goals,

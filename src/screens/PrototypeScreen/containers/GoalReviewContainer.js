@@ -20,6 +20,7 @@ const mapDispatchToProps = (dispatch: any) => {
 }
 
 const onPressSubstep = (data, setScreenStatus, step) => {
+  const substepIndex = '5'
   return (goal, substep) => {
     const { _id } = goal
 
@@ -28,7 +29,7 @@ const onPressSubstep = (data, setScreenStatus, step) => {
       return index
     }, -1)
 
-    const substepData = data[index]['5']
+    const substepData = data[index][substepIndex]
 
     const substepValue = substepData.value.map(value => {
       if (value._id !== substep._id) return value
@@ -39,7 +40,7 @@ const onPressSubstep = (data, setScreenStatus, step) => {
       if (d._id === _id)
         return {
           ...d,
-          ['5']: {
+          [substepIndex]: {
             ...substepData,
             value: substepValue
           }

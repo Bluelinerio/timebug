@@ -14,6 +14,7 @@ type Props = {
 class GoalsFromTypeList extends React.PureComponent<Props> {
   render() {
     const { goal, goals, onSelect } = this.props
+    const goalTitleIndex = '1'
     return (
       <React.Fragment>
         <View style={styles.titleContainer}>
@@ -23,7 +24,7 @@ class GoalsFromTypeList extends React.PureComponent<Props> {
         <View style={styles.container}>
           {Object.values(goals).map(goal => (
             <GoalElement
-              key={goal['1'].value}
+              key={goal[goalTitleIndex].value}
               goal={goal}
               onSelect={onSelect}
             />

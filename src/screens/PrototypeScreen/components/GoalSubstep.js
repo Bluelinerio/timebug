@@ -35,6 +35,7 @@ class GoalSubstep extends React.PureComponent<Props> {
 
   render() {
     const { step } = this.props
+    const substepTitleIndex = '0'
     return (
       <View style={styles.elementContainer}>
         <TouchableOpacity
@@ -56,7 +57,7 @@ class GoalSubstep extends React.PureComponent<Props> {
           />
         </TouchableOpacity>
         <View style={styles.rightBlock}>
-          <Text style={styles.elementText}>{step['0'].value}</Text>
+          <Text style={styles.elementText}>{step[substepTitleIndex].value}</Text>
         </View>
       </View>
     )

@@ -19,7 +19,8 @@ class GoalElement extends React.PureComponent<Props> {
 
   render() {
     const { goal } = this.props
-    const goalText = goal['1'].value
+    const goalTitleIndex = '1'
+    const goalText = goal[goalTitleIndex].value
     const { extra = {} } = goal
     return !extra.deleted && (
       <TouchableOpacity style={styles.elementContainer} onPress={this._onPress}>

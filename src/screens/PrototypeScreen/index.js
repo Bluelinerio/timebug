@@ -1,16 +1,16 @@
 // @flow
-import React from 'react'
-import PrototypeScreen from './containers/PrototypeScreenContainer'
-import User from '../../containers/User'
-import DefaultIndicator from '../../components/DefaultIndicator'
+import React                     from 'react'
+import PrototypeScreen           from './containers/PrototypeScreenContainer'
+import User                      from '../../containers/User'
+import DefaultIndicator          from '../../components/DefaultIndicator'
 import {
   StackNavigator,
   HeaderBackButton,
   NavigationActions
-} from 'react-navigation'
+}                                from 'react-navigation'
 import { headerBackgroundColor } from './styles'
-import GoalFormScreen from './containers/GoalFormContainer'
-import GoalProtoScreen from './components/GoalScreenComponent'
+import GoalFormScreen            from './containers/GoalFormContainer'
+import GoalProtoScreen           from './components/GoalScreenComponent'
 import { protoRoutes as routes } from '../../navigation/routes'
 /**
  * Ui reducer screen key
