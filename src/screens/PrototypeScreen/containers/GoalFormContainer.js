@@ -7,25 +7,26 @@ import models                from '../forms'
 import { withNavigation }    from 'react-navigation'
 import { compose, mapProps } from 'recompose'
 
-const screen = 'GoalPrototypeScreen'
-
 const mapStateToProps = (state: any) => {
-  const screenData = selectors.stateForScreen(state)(screen)
+  const stateForScreen = selectors.stateForScreen(state)
   return {
-    data: screenData,
+    stateForScreen,
     models
   }
 }
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    setScreenStatus: (params: any) => dispatch(changeUI({ screen, params })),
+    setScreen: (screen: string) => (params: any) =>
+      dispatch(changeUI({ screen, params })),
     back: () => dispatch(goBack())
   }
 }
 
-const merge = ({ navigation, data, models, setScreenStatus, back }) => {
-  const { state: { params: { step } } } = navigation
+const merge = ({ navigation, stateForScreen, models, setScreen, back }) => {
+  const { state: { params: { step, screen } } } = navigation
+  const setScreenStatus = setScreen(screen)
+  const data = stateForScreen(screen)
   return {
     data,
     models,
