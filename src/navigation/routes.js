@@ -9,7 +9,6 @@ export default {
     MarkdownScreen: 'MarkdownScreen',
     EmojiPickerScreen: 'EmojiPickerScreen',
     // TODO: Prototype Data to remove
-    PrototypeNavigator: 'PrototypeNavigator'
   },
   step: {
     StepScreen: 'StepScreen',
@@ -24,11 +23,22 @@ export default {
     CheckinScreen: 'CheckinScreen',
     GoalsNavigator: 'GoalsNavigator'
   },
-  start: {
-    initialRouteName: 'TabNavigator',
-    Walkthrough: 'Walkthrough',
-    TabNavigator: 'TabNavigator'
+  version: {
+    initialRouteName: 'AppVersion',
+    TabNavigator: 'TabNavigator',
+    AppVersion: 'AppVersion',
+    PrototypeNavigator: 'PrototypeNavigator'
   },
+  start: {
+    initialRouteName: 'VersionNavigator',
+    Walkthrough: 'Walkthrough',
+    VersionNavigator: 'VersionNavigator'
+  },
+  // start: {
+  //   initialRouteName: 'TabNavigator',
+  //   Walkthrough: 'Walkthrough',
+  //   TabNavigator: 'TabNavigator'
+  // },
   goals: {
     initialRouteName: 'GoalScreen',
     GoalScreen: 'GoalScreen',

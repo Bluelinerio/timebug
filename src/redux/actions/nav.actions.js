@@ -41,7 +41,7 @@ export const stepInfoForStep = (step: Step) => ({
 // TODO: Remove
 export const goToPrototype = () =>
   NavigationActions.navigate({
-    routeName: routes.root.PrototypeNavigator
+    routeName: routes.version.PrototypeNavigator
   })
 
 export const goToGoalFormScreen = (params: GoalFormParams) =>

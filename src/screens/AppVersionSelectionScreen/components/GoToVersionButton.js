@@ -25,16 +25,17 @@ const styles = {
 }
 
 type Props = {
-  goToProto: () => any
+  onPress: () => any,
+  text: string
 }
 
 class GoToPrototypeButton extends React.PureComponent<Props> {
   render() {
-    const { goToProto } = this.props
+    const { onPress, text } = this.props
     return (
       <View style={styles.container}>
-        <TouchableOpacity onPress={goToProto} style={styles.button}>
-          <Text style={styles.text}>Tap here</Text>
+        <TouchableOpacity onPress={onPress} style={styles.button}>
+          <Text style={styles.text}>{text}</Text>
         </TouchableOpacity>
       </View>
     )

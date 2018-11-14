@@ -16,7 +16,8 @@ type Props = {
 
 const mapStateToProps = (state: any) => {
   const nav = state.nav
-  const params = nav.routes[0].routes[2].params
+  //Due to the new stack nav
+  const params = nav.routes[0].routes[1].routes[2].params
   let component
   let reward
   if (params) {
