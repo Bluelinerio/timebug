@@ -1,6 +1,7 @@
-import { connect } from 'react-redux'
+import { connect }         from 'react-redux'
 import { goToStartScreen } from '../../../redux/actions/nav.actions'
-import GoToVersionButton from '../components/GoToVersionButton'
+import GoToVersionButton   from '../components/GoToVersionButton'
+import { debounce }        from '../../../utils/debounce'
 
 const mapStateToProps = () => {
   return {
@@ -10,7 +11,7 @@ const mapStateToProps = () => {
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    onPress: () => dispatch(goToStartScreen())
+    onPress: debounce(() => dispatch(goToStartScreen()), 250)
   }
 }
 

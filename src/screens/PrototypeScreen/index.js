@@ -1,8 +1,6 @@
 // @flow
 import React                     from 'react'
 import PrototypeScreen           from './containers/PrototypeScreenContainer'
-import User                      from '../../containers/User'
-import DefaultIndicator          from '../../components/DefaultIndicator'
 import {
   StackNavigator,
   HeaderBackButton,
@@ -18,14 +16,7 @@ import { protoRoutes as routes } from '../../navigation/routes'
 export const screenKey = 'PrototypeScreen'
 
 const Screen = () => {
-  return (
-    <User
-      renderWithUser={() => <PrototypeScreen />}
-      renderWithAnonymous={() => <PrototypeScreen />}
-      renderWithAuthenticating={() => <DefaultIndicator size="large" />}
-      renderWithUndetermined={() => <DefaultIndicator size="large" />}
-    />
-  )
+  return <PrototypeScreen />
 }
 
 export const PrototypeNavigatorConfiguration = {
