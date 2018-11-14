@@ -1,10 +1,9 @@
-import React from 'react'
-import { View, Text } from 'react-native'
-import { Button } from 'react-native-elements'
-import styles from '../../styles'
-import tron from 'reactotron-react-native'
-import FormPicker from './FormPicker'
-import uuid from 'uuid/v4'
+import React                 from 'react'
+import { View, Text, Alert } from 'react-native'
+import { Button }            from 'react-native-elements'
+import styles                from '../../styles'
+import FormPicker            from './FormPicker'
+import uuid                  from 'uuid/v4'
 
 type Props = {
   value: Array<any>,
@@ -55,9 +54,8 @@ const TextElement = ({
           value &&
           value.value && (
             <View key={value._id} style={styles.indented}>
-              <Text style={[styles.textElementText]}>{`${index + 1})${
-                value.value
-              }`}</Text>
+              <Text style={[styles.textElementText]}>{`${index +
+                1})${value.value || ``}`}</Text>
             </View>
           )
         )
@@ -69,9 +67,26 @@ const TextElement = ({
 class ListComponent extends React.PureComponent<Props, State> {
   constructor(props) {
     super(props)
+    const currentValue = this._buildValue(props)
     this.state = {
-      currentValue: {}
+      currentValue
     }
+  }
+
+  _buildValue = props => {
+    const { field: { options } } = props
+    const { childTypes } = options
+    const defaultValue = Object.keys(childTypes).reduce((value, key) => {
+      const child = childTypes[key]
+      return {
+        ...value,
+        [key]: {
+          key,
+          value: child.options ? child.options.default : undefined
+        }
+      }
+    }, {})
+    return defaultValue
   }
 
   _onChange = (value: any, element: string) => {
@@ -81,10 +96,30 @@ class ListComponent extends React.PureComponent<Props, State> {
     })
   }
 
+  _validate = () => {
+    const { currentValue } = this.state
+    const hasError = Object.values(currentValue).some(value => {
+      return value.value === undefined || value.value === ''
+    })
+    if (hasError)
+      return {
+        error: 'The input text cannot be blank',
+        failed: true
+      }
+    return {
+      failed: false
+    }
+  }
+
   _onAddPress = () => {
     const { currentValue } = this.state
     const { value = [], onChange, field: { options } } = this.props
     const { childTypes } = options
+    const { error, failed } = this._validate()
+    if (failed) {
+      Alert.alert('Input Error', error)
+      return
+    }
     const valueToSave = Object.keys(currentValue).reduce((prev, key) => {
       const _model = childTypes[key]
       return {
@@ -102,12 +137,10 @@ class ListComponent extends React.PureComponent<Props, State> {
         _id: uuid()
       }
     ])
-    this.setState({ currentValue: {} })
+    this.setState({ currentValue: this._buildValue(this.props) })
   }
 
-  _onDeletePress = () => {
-    tron.log('Deleted something')
-  }
+  _onDeletePress = () => {}
 
   render() {
     const { currentValue } = this.state
