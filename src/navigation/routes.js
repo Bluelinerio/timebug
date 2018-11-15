@@ -7,7 +7,8 @@ export default {
     DashboardScreen: 'DashboardScreen',
     initialRouteName: 'StartScreen',
     MarkdownScreen: 'MarkdownScreen',
-    EmojiPickerScreen: 'EmojiPickerScreen'
+    EmojiPickerScreen: 'EmojiPickerScreen',
+    // TODO: Prototype Data to remove
   },
   step: {
     StepScreen: 'StepScreen',
@@ -22,14 +23,34 @@ export default {
     CheckinScreen: 'CheckinScreen',
     GoalsNavigator: 'GoalsNavigator'
   },
-  start: {
-    initialRouteName: 'TabNavigator',
-    Walkthrough: 'Walkthrough',
-    TabNavigator: 'TabNavigator'
+  version: {
+    initialRouteName: 'AppVersion',
+    TabNavigator: 'TabNavigator',
+    AppVersion: 'AppVersion',
+    PrototypeNavigator: 'PrototypeNavigator'
   },
+  start: {
+    initialRouteName: 'VersionNavigator',
+    Walkthrough: 'Walkthrough',
+    VersionNavigator: 'VersionNavigator'
+  },
+  // start: {
+  //   initialRouteName: 'TabNavigator',
+  //   Walkthrough: 'Walkthrough',
+  //   TabNavigator: 'TabNavigator'
+  // },
   goals: {
     initialRouteName: 'GoalScreen',
     GoalScreen: 'GoalScreen',
     GoalStepScreen: 'GoalStepScreen'
+  }
+}
+
+export const protoRoutes = {
+  proto: {
+    PrototypeScreen: 'PrototypeScreen',
+    initialRouteName: 'PrototypeScreen',
+    GoalFormScreen: 'GoalFormScreen',
+    GoalProtoScreen: 'GoalProtoScreen'
   }
 }

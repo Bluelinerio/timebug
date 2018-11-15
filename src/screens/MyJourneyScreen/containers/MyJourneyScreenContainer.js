@@ -4,6 +4,7 @@ import { connect }              from 'react-redux'
 import InteractionManager       from '../../../utils/InteractionManager'
 import DefaultIndicator         from '../../../components/DefaultIndicator'
 import MyJourneyScreenComponent from '../components/MyJourneyScreenComponent'
+import { getCurrentRouteState } from '../../../utils/currentRouteState'
 
 type State = {
   didFinishInitialAnimation: boolean
@@ -16,7 +17,8 @@ type Props = {
 
 const mapStateToProps = (state: any) => {
   const nav = state.nav
-  const params = nav.routes[0].routes[2].params
+  //Due to the new stack nav
+  const params = getCurrentRouteState(nav).params
   let component
   let reward
   if (params) {

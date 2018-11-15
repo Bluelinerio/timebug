@@ -30,6 +30,10 @@ import MyJourneyScreen    from '../screens/MyJourneyScreen'
 import StartScreen        from '../screens/StartScreen'
 import GoalScreen         from '../screens/GoalScreen'
 import GoalStepScreen     from '../screens/GoalStepScreen'
+import AppVersionScreen   from '../screens/AppVersionSelectionScreen'
+// TODO: Prototype to remove
+import PrototypeNavigator from '../screens/PrototypeScreen'
+
 import routes             from './routes'
 
 if (!routes || !routes.root || !routes.root.initialRouteName || !routes.step) {
@@ -189,11 +193,42 @@ export const RootTabNavigator = TabNavigator(
   tabConfiguration.options
 )
 
+export const versionConfiguration = {
+  routes: routes.version,
+  screens: {
+    [routes.version.AppVersion]: {
+      screen: AppVersionScreen
+    },
+    // TODO: Prototype to remove
+    [routes.version.PrototypeNavigator]: {
+      screen: PrototypeNavigator,
+      path: 'prototype'
+    },
+    [routes.start.TabNavigator]: {
+      screen: RootTabNavigator
+    },
+  },
+  options: {
+    initialRouteName: routes.version.initialRouteName,
+    mode: Platform.OS === 'ios' ? 'modal' : 'card',
+    headerMode: 'none',
+    cardStyle: {
+      backgroundColor: 'white',
+      opacity: 1
+    }
+  }
+}
+
+export const VersionNavigator = StackNavigator(
+  versionConfiguration.screens,
+  versionConfiguration.options
+)
+
 export const startConfiguration = {
   routes: routes.start,
   screens: {
-    [routes.start.TabNavigator]: {
-      screen: RootTabNavigator
+    [routes.start.VersionNavigator]: {
+      screen: VersionNavigator
     },
     [routes.start.Walkthrough]: {
       screen: WalkthroughScreen

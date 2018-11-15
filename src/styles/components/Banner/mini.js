@@ -8,6 +8,7 @@ import {
 
 export const bannerHeight = heightPercentage(10)
 export const bannerColor = paleBlue
+
 /**
  * Upper row Sized at 25% of the whole banner
  */
@@ -24,6 +25,7 @@ export default StyleSheet.create({
   header: {
     flex: 1,
     height: bannerHeight,
+    maxHeight: bannerHeight,
     flexDirection: 'column',
     backgroundColor: bannerColor,
     ...Platform.select({
@@ -51,6 +53,9 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  arrowContainer: {
+    justifyContent: 'flex-start'
   },
   headerUserImageContainer: {
     justifyContent: 'flex-end'

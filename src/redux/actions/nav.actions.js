@@ -1,8 +1,8 @@
 // @flow
 import { NavigationActions } from 'react-navigation'
-import type { Step }         from '../../services/cms'
-import routes                from '../../navigation/routes'
-import { LINK_NAVIGATION }   from '../actionTypes'
+import type { Step } from '../../services/cms'
+import routes, { protoRoutes } from '../../navigation/routes'
+import { LINK_NAVIGATION } from '../actionTypes'
 
 if (!routes || !routes.root || !routes.root.initialRouteName || !routes.step) {
   throw 'missing routes or nested fields ' + JSON.stringify(routes)
@@ -21,6 +21,11 @@ export type LinkedNavigationPayload = {
   link: string
 }
 
+export type GoalFormParams = {
+  step: String,
+  screen: String
+}
+
 export const linkNavigation = (payload: LinkedNavigationPayload) => ({
   type: LINK_NAVIGATION,
   payload
@@ -32,6 +37,24 @@ export const stepInfoForStep = (step: Step) => ({
   stepNumber: step.number,
   formId: '1'
 })
+
+// TODO: Remove
+export const goToPrototype = () =>
+  NavigationActions.navigate({
+    routeName: routes.version.PrototypeNavigator
+  })
+
+export const goToGoalFormScreen = (params: GoalFormParams) =>
+  NavigationActions.navigate({
+    routeName: protoRoutes.proto.GoalFormScreen,
+    params
+  })
+
+export const goToGoalProtoScreen = (params: GoalFormParams) =>
+  NavigationActions.navigate({
+    routeName: protoRoutes.proto.GoalProtoScreen,
+    params
+  })
 
 export const popToTop = () => NavigationActions.popToTop()
 
@@ -49,7 +72,7 @@ const navigateToInitialRoute = () =>
     routeName: routes.start.initialRouteName
   })
 
-  // TODO: add goal itself to params
+// TODO: add goal itself to params
 export const goToGoalStepScreen = (params: GoalStepScreenNavigationParams) =>
   NavigationActions.navigate({
     routeName: routes.goals.GoalStepScreen,
@@ -74,8 +97,7 @@ export const goBackFrom = (key: string) =>
     key
   })
 
-export const goBack = () =>
-  NavigationActions.back()
+export const goBack = () => NavigationActions.back()
 
 export const restartStepAction = (step: Step) =>
   NavigationActions.reset({
