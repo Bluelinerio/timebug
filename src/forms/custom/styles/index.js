@@ -1,11 +1,14 @@
 import { StyleSheet, Platform } from 'react-native'
 import hexToRgba from '../../../utils/colorTransform'
 import { widthPercentage } from '../../../utils/viewportCalculation'
-import { azure, gray50, gray900, blue900 } from '../../../constants/colors'
+import { azure, gray50, gray900, blue900, gray400, greenA400 } from '../../../constants/colors'
 
 export const formTextColor = blue900
 export const iconSize = 30
 export const iconColor = gray50
+
+export const checkboxColor = greenA400
+export const uncheckedColor = gray400
 
 const horizontalComponentsWidth = widthPercentage(80)
 

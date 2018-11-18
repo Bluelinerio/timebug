@@ -131,6 +131,23 @@ const form5 = {
       }
     },
     6: {
+      type: types.multipleSelect,
+      key: 'areaOfLifeMultiple',
+      content: {
+        text: 'Classify this goal according to the 7 goal types',
+        smallKey: 'Type of goal',
+        listText: 'Type of goal',
+        items: GoalType.map((goal, index) => ({
+          value: goal,
+          text: goal,
+          id: `areaOfLifeMultiple_${index}`
+        }))
+      },
+      options: {
+        default: []
+      }
+    },
+    7: {
       type: types.button,
       content: {
         text: 'Do you wish to add more goals?'
@@ -145,7 +162,7 @@ const form5 = {
           }
         }
       ]
-    }
+    },
   }
 }
 
