@@ -53,12 +53,17 @@ class GoalReview extends React.PureComponent<Props> {
     const { goal, type, toggleGoal, deleteGoal } = this.props
     const goalStepsIndex = '5'
     const goalTitleIndex = '1'
+    const goalTypeIndex = '2'
     const steps = goal[goalStepsIndex].value
     const { notes } = this.state
     const completedSteps = steps.reduce((count, step) => {
       if (step.extra && step.extra.completed) return count + 1
       return count
     }, 0)
+    const goalTypes = goal[goalTypeIndex].value.reduce((string, val, index) => {
+      if(index === 0) return `${val}`
+      return `${string}, ${val}`
+    }, ``)
     const totalSteps = steps.length
     const completion =
       goal.extra && goal.extra.completed
@@ -68,7 +73,7 @@ class GoalReview extends React.PureComponent<Props> {
       <React.Fragment>
         <View style={styles.titleContainer}>
           <Text style={styles.goalScreenTitle}>GOALS</Text>
-          <Text style={styles.goalScreenSubtitle}>{type}</Text>
+          <Text style={styles.goalScreenTypes}>{goalTypes}</Text>
         </View>
         <View style={styles.container}>
           <View style={styles.goalReviewTextWithMargin}>
