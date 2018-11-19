@@ -95,6 +95,12 @@ export default StyleSheet.create({
     textAlign: 'justify',
     color: formTextColor
   },
+  goalScreenTypes: {
+    ...iOSUIKit.bodyEmphasizedObject,
+    fontSize: 16,
+    textAlign: 'justify',
+    color: formTextColor
+  },
   goalScreenContent: {
     ...iOSUIKit.bodyEmphasizedObject,
     textAlign: 'justify',

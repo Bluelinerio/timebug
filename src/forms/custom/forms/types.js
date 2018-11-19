@@ -17,5 +17,6 @@ export default {
   label: 'label',
   select: 'select',
   switch: 'switch',
-  button: 'button'
+  button: 'button',
+  multipleSelect: 'multipleSelect'
 }

@@ -22,7 +22,13 @@ const TextComponent = ({
   )
 }
 
-const ListComponent = ({ hint, value }: { hint: string, value: string }) => {
+const ListComponent = ({
+  hint,
+  value
+}: {
+  hint: string,
+  value: Array<any>
+}) => {
   const formElements = value.reduce((allElements, val) => {
     return [
       ...allElements,
@@ -47,6 +53,27 @@ const ListComponent = ({ hint, value }: { hint: string, value: string }) => {
   )
 }
 
+const MultiSelectComponent = ({
+  hint,
+  value
+}: {
+  hint: string,
+  value: Array<string>
+}) => {
+  return (
+    <View>
+      <Text style={styles.answerText}>{hint}:</Text>
+      {value.map((element, index) => {
+        return (
+          <View style={styles.indented} key={index}>
+            <Text style={styles.answerText}>{`${index + 1}) ${element}`}</Text>
+          </View>
+        )
+      })}
+    </View>
+  )
+}
+
 const switchComponents = (model: { type: string }) => {
   const { type } = model
   switch (type) {
@@ -56,6 +83,8 @@ const switchComponents = (model: { type: string }) => {
     return TextComponent
   case types.list:
     return ListComponent
+  case types.multipleSelect:
+    return MultiSelectComponent
   default:
     return null
   }

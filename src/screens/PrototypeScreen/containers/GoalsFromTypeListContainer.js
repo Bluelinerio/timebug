@@ -31,7 +31,7 @@ const mergeProps = (props): MergeProps => {
   const data = screenData[step] || []
   const goalTypeIndex = '2'
   const goals = data.filter(goalData => {
-    return goal === goalData[goalTypeIndex].value
+    return goalData[goalTypeIndex].value.find(g => g === goal)
   })
   return {
     goals,

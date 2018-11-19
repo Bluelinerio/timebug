@@ -1,10 +1,11 @@
-import React     from 'react'
-import Label     from './Label'
-import TextInput from './TextInput'
-import Button    from './ButtonComponent'
-import types     from '../../forms/types'
-import Select    from './SelectComponent'
-import List      from './ListComponent'
+import React          from 'react'
+import Label          from './Label'
+import TextInput      from './TextInput'
+import Button         from './ButtonComponent'
+import types          from '../../forms/types'
+import Select         from './SelectComponent'
+import List           from './ListComponent'
+import MultipleSelect from './MultipleSelectComponent'
 
 type Props = {
   onChange: () => any,
@@ -24,6 +25,8 @@ const selectComponent = ({ type }: { type: string }) => {
     return Select
   case types.list:
     return List
+  case types.multipleSelect:
+    return MultipleSelect
   }
 }
 
