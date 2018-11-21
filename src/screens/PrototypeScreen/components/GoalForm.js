@@ -5,6 +5,7 @@ import styles               from '../styles'
 import { SafeAreaView }     from 'react-navigation'
 import Banner               from '../../../containers/NavigationAwareBanner'
 import Form                 from '../../../forms/custom/components/Form'
+import HelpButton           from '../containers/HelpButtonContainer'
 
 type Props = {
   setScreenStatus: () => any,
@@ -35,6 +36,7 @@ class GoalForm extends React.PureComponent<Props> {
           contentContainerStyle={styles.scrollView}
         >
           <Banner />
+          <HelpButton step={step} />
           <View style={[styles.container, styles.prototypeBackground]}>
             <Form model={model} value={formData} onFinish={this._onFinish} />
           </View>
