@@ -1,18 +1,31 @@
-import { StyleSheet, Dimensions, StatusBar, Platform } from 'react-native'
-import Theme                                           from './components/Theme'
+import { StyleSheet, StatusBar, Platform } from 'react-native'
+import Theme                               from './components/Theme'
+import {
+  heightPercentage,
+  widthPercentage
+}                                          from '../../utils/viewportCalculation'
 
-const height = Dimensions.get('window').height
-const width = Dimensions.get('window').width
-const baseSpacing = Math.floor(width * 0.06)
-const largeVerticalSpacing = Math.floor(height * 0.06)
-const imageHeight = height * 0.6
+const baseSpacing = widthPercentage(6)
+const largeVerticalSpacing = heightPercentage(2)
+const imageHeight = heightPercentage(60)
+const imageWidth = widthPercentage(60)
+
 export const gradientColors = {
   start: '#008EBC',
   end: '#005587'
 }
 
 export default StyleSheet.create({
-  screen: StyleSheet.absoluteFillObject,
+  screen: {
+    flexGrow: 1
+  },
+  regularContainer: {
+    paddingHorizontal: baseSpacing,
+    paddingTop: largeVerticalSpacing + StatusBar.currentHeight,
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
   footer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -21,21 +34,13 @@ export default StyleSheet.create({
   container: {
     paddingHorizontal: baseSpacing,
     marginTop: largeVerticalSpacing + StatusBar.currentHeight,
-    flexGrow: 1
+    flex: 1
   },
   image: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
     height: imageHeight,
     ...Platform.select({
       android: {
-        paddingHorizontal: 10,
-        borderRadius: 10,
-        marginVertical: 0, // needed for shadow
-        width: width * 0.6,
-        marginLeft: width * 0.2
+        borderRadius: 10
       },
       ios: {
         shadowColor: 'black',
@@ -44,19 +49,13 @@ export default StyleSheet.create({
     })
   },
   imageContainer: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
+    flex: 1,
     height: imageHeight,
     ...Platform.select({
       android: {
-        paddingHorizontal: 10,
-        borderRadius: 10,
-        marginVertical: 0, // needed for shadow
+        marginTop: largeVerticalSpacing,
         elevation: 10,
-        width: width * 0.6,
-        marginLeft: width * 0.2
+        width: imageWidth
       },
       ios: {
         shadowColor: 'black',
@@ -65,7 +64,8 @@ export default StyleSheet.create({
     })
   },
   title: {
-    marginTop: largeVerticalSpacing,
+    marginTop: -largeVerticalSpacing,
+    marginBottom: largeVerticalSpacing,
     color: 'white'
   },
   description: {
@@ -88,11 +88,11 @@ export const theme = {
       fontFamily: 'Helvetica'
     },
     header2: {
-      fontSize: Math.ceil(height * 0.04),
+      fontSize: heightPercentage(4),
       fontFamily: 'Helvetica-Bold'
     },
     header3: {
-      fontSize: Math.ceil(height * 0.027),
+      fontSize: heightPercentage(2.7),
       fontFamily: 'HelveticaNeue',
       fontWeight: 'bold'
     },
