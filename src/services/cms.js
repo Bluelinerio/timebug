@@ -12,6 +12,20 @@ export const PHASES = {
   COMPLETE
 }
 
+const wellKnownMeditation = [MEDITATION]
+
+const wellKnownSelfAssessment = [
+  SELF_ASSESSMENT,
+  'SELF ASSESSMENT',
+  'SELF-ASSESSMENT'
+]
+
+const wellKnownVisionCreation = [
+  VISION_CREATION,
+  'VISION CREATION',
+  'VISION-CREATION'
+]
+
 export type Icon = {
   uri: string
 }
@@ -159,6 +173,33 @@ export const phaseForStep = ({ number }) => {
     return VISION_CREATION
   default:
     return COMPLETE
+  }
+}
+
+export const translateCMSPhaseToStandard = (phase: string) => {
+  switch (true) {
+  case wellKnownMeditation.includes(phase):
+    return MEDITATION
+  case wellKnownSelfAssessment.indexOf(phase):
+    return SELF_ASSESSMENT
+  case wellKnownVisionCreation.includes(phase):
+    return VISION_CREATION
+  default:
+    return COMPLETE
+  }
+}
+
+export const translatePhaseAndFOrmat = (phase: String) => {
+  const translatedPhase = translateCMSPhaseToStandard(phase)
+  switch (translatedPhase) {
+  case MEDITATION:
+    return 'Meditation'
+  case SELF_ASSESSMENT:
+    return 'Self Assessment'
+  case VISION_CREATION:
+    return 'Vision Creation'
+  default:
+    return 'Completed'
   }
 }
 
