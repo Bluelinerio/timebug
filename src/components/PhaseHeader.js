@@ -1,9 +1,15 @@
 //@flow
-import React                                 from 'react'
-import { View, Text, StatusBar, ScrollView } from 'react-native'
-import { HeaderBackButton }                  from 'react-navigation'
-import styles, { bannerColor }               from '../styles/components/Banner/phase'
-import type { Step }                         from '../services/cms'
+import React                   from 'react'
+import {
+  View,
+  Text,
+  StatusBar,
+  ScrollView,
+  TouchableOpacity
+}                              from 'react-native'
+import { HeaderBackButton }    from 'react-navigation'
+import styles, { bannerColor } from '../styles/components/Banner/phase'
+import type { Step }           from '../services/cms'
 
 type Props = {
   onBackPress: () => any,
@@ -12,7 +18,8 @@ type Props = {
   textColor: string,
   backgroundColor: string,
   titleColor: string,
-  steps: Array<Step>
+  steps: Array<Step>,
+  onSelectStep: Step => any
 }
 
 class PhaseHeader extends React.PureComponent<Props> {
@@ -23,6 +30,7 @@ class PhaseHeader extends React.PureComponent<Props> {
       backgroundColor,
       steps,
       titleColor,
+      onSelectStep = () => null,
       onBackPress = null,
       backButton = false
     } = this.props
@@ -52,14 +60,15 @@ class PhaseHeader extends React.PureComponent<Props> {
         >
           {steps &&
             steps.map(step => (
-              <View
+              <TouchableOpacity
                 key={step.number}
                 style={[styles.headerStep, { backgroundColor }]}
+                onPress={() => onSelectStep(step)}
               >
                 <Text
                   style={[styles.headerStepText, { color: textColor }]}
                 >{`Step ${step.stepId}`}</Text>
-              </View>
+              </TouchableOpacity>
             ))}
         </ScrollView>
       </View>

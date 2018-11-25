@@ -19,7 +19,8 @@ type DispatchProps = {
 type OwnProps = {
   override: () => any,
   step: Step,
-  phase: string
+  phase: string,
+  onSelectStep: (Step) => any
 }
 
 type StateProps = {
@@ -49,7 +50,7 @@ const mergeProps = (
   ownProps: OwnProps
 ): Props => {
   const { isStepCompleted, steps } = stateProps
-  const { override, step, phase } = ownProps
+  const { override, step, phase, ...rest } = ownProps
   const { type, stepId } = step
   const title = formatPhaseTitle(type)
   const { goBack } = dispatchProps
@@ -61,6 +62,7 @@ const mergeProps = (
   )
   const titleColor = getColorFromStep(step.type)
   return {
+    ...rest,
     onBackPress,
     backButton: true,
     title,
