@@ -216,9 +216,9 @@ const loadingFormData = (state: any) => getFormData(state).loadingFormData
 
 const isStepCompleted = (state: any) => {
   const _stepCompleted = (step: number) => {
-    const user = user(state)
-    if(!user) return false
-    const { forms } = user
+    const currentUser = user(state)
+    if(!currentUser) return false
+    const { forms } = currentUser
     const completed =
       forms &&
       forms.find(form => `${form.stepId}` === `${step}`)

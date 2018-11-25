@@ -13,7 +13,7 @@ import {
   white2,
   deepBlue
 } from '../../constants/colors'
-import { translateCMSPhaseToStandard, isStepCompleted,  PHASES } from '../../services/cms'
+import { translateCMSPhaseToStandard,  PHASES } from '../../services/cms'
 
 export const phase_1_color = MEDITATION
 
@@ -63,7 +63,7 @@ export const getTextColorFromStep = ({ type }: { type: string }, completed = fal
   const phase = translateCMSPhaseToStandard(type)
   switch (phase) {
   case PHASES.MEDITATION:
-    return completed ? stepTextColor : deepBlue
+    return completed ? stepTextColor : phase_1_incomplete_text_color
   case PHASES.SELF_ASSESMENT:
     return stepTextColor
   case PHASES.VISION_CREATION:

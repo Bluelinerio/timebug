@@ -18,7 +18,7 @@ type Props = {
 class StepSelectionScreenComponent extends React.Component<Props> {
   _onPress = (step: any) => {
     const { goToForm } = this.props
-    goToForm(step)
+    goToForm({step})
   }
 
   render() {
