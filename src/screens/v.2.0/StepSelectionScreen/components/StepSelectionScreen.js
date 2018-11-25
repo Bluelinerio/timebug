@@ -9,6 +9,7 @@ import {
 } from 'react-native'
 import Banner from '../../../../containers/NavigationAwareBanner'
 import styles from '../styles'
+import { translateCMSPhaseToStandard } from '../../../../services/cms'
 
 type Props = {
   steps: Array<any>,
@@ -18,7 +19,8 @@ type Props = {
 class StepSelectionScreenComponent extends React.Component<Props> {
   _onPress = (step: any) => {
     const { goToForm } = this.props
-    goToForm({step})
+    const phase = translateCMSPhaseToStandard(step.type)
+    goToForm({step, phase})
   }
 
   render() {
