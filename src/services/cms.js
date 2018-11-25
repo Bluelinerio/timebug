@@ -189,7 +189,7 @@ export const translateCMSPhaseToStandard = (phase: string) => {
   }
 }
 
-export const translatePhaseAndFOrmat = (phase: String) => {
+export const translatePhaseAndFormat = (phase: String) => {
   const translatedPhase = translateCMSPhaseToStandard(phase)
   switch (translatedPhase) {
   case MEDITATION:
