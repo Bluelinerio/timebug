@@ -2,7 +2,8 @@ import { connect }     from 'react-redux'
 import PrototypeScreen from '../components/PrototypeScreen'
 import {
   goToGoalFormScreen,
-  goToGoalProtoScreen
+  goToGoalProtoScreen,
+  goToPrototypeStepScreen
 }                      from '../../../redux/actions/nav.actions'
 import { debounce }    from '../../../utils/debounce'
 
@@ -16,6 +17,10 @@ const mapDispatchToProps = (dispatch: any) => ({
   ),
   goToPrototypeGoalScreen: debounce(
     () => dispatch(goToGoalProtoScreen({ step, screen })),
+    250
+  ),
+  goToPrototypeStartScreen: debounce(
+    () => dispatch(goToPrototypeStepScreen()),
     250
   )
 })
