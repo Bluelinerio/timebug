@@ -7,10 +7,8 @@ import {
   widthPercentage
 } from '../../../utils/viewportCalculation'
 
-export const bannerHeight = heightPercentage(15)
+export const bannerHeight = heightPercentage(20)
 export const bannerColor = paleBlue
-
-const upperRowBlockWidth = widthPercentage(33.33, widthPercentage(100) - 32)
 
 export default StyleSheet.create({
   header: {
@@ -42,19 +40,20 @@ export default StyleSheet.create({
     ...iOSUIKit.bodyObject
   },
   headerLowerRow: {
-    flex: 1,
-    flexDirection: 'row',
-    paddingVertical: 8,
-    paddingHorizontal: 16
+    flex: 1
+  },
+  horizontalScrollContainer: {
+    paddingHorizontal: 16,
+    justifyContent: 'space-between'
   },
   headerUpperRowBlock: {
     flex: 1,
-    width: upperRowBlockWidth,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center'
   },
   titleBlock: {
+    flex: 3,
     justifyContent: 'flex-start'
   },
   arrowContainer: {
@@ -63,8 +62,13 @@ export default StyleSheet.create({
   headerStep: {
     alignItems: 'center',
     justifyContent: 'center',
-    maxWidth: widthPercentage(15) - 32,
-    maxHeight: heightPercentage(40, bannerHeight),
+    maxWidth: widthPercentage(20),
+    padding: 8,
     borderRadius: 6,
+    marginHorizontal: 4,
+    maxHeight: heightPercentage(30, bannerHeight),
+  },
+  headerStepText: {
+    ...iOSUIKit.footnoteEmphasizedObject
   }
 })
