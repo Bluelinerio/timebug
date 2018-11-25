@@ -23,7 +23,9 @@ const mapStateToProps = (state: any) => {
   let reward
   if (params) {
     component = params.component
-    reward = params.params.reward
+    reward = params && params.params
+      ? params.params.reward
+      : null
   }
   return {
     component,
