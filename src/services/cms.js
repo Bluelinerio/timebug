@@ -205,9 +205,11 @@ export const translatePhaseAndFormat = (phase: String) => {
 
 const _isStepCompleted = () => {
   const completionMap = {}
+  let lastLengthOfFormsChecked = 0
   return (stepNumber: number, user: any): boolean => {
-    if (completionMap[`${stepNumber}`]) return completionMap[`${stepNumber}`]
     const { forms } = user
+    if (completionMap[`${stepNumber}`] && (forms && forms.length === lastLengthOfFormsChecked))
+      return completionMap[`${stepNumber}`]
     const completed =
       forms &&
       forms.find(form => {
@@ -220,6 +222,7 @@ const _isStepCompleted = () => {
         : false
     if (!completionMap[`${stepNumber}`])
       completionMap[`${stepNumber}`] = completed
+    lastLengthOfFormsChecked = forms.length
     return completed
   }
 }
