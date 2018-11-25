@@ -214,6 +214,20 @@ const isSynchingFormData = (state: any) => getFormData(state).requestCount > 0
 
 const loadingFormData = (state: any) => getFormData(state).loadingFormData
 
+const isStepCompleted = (state: any) => {
+  const _stepCompleted = (step: number) => {
+    const user = user(state)
+    if(!user) return false
+    const { forms } = user
+    const completed =
+      forms &&
+      forms.find(form => `${form.stepId}` === `${step}`)
+        ? true
+        : false
+    return completed
+  }
+  return _stepCompleted
+}
 /**
  * Should check CMS for colors, for now it's hardcoded
  */
@@ -357,7 +371,8 @@ const selectors = {
   getGoalsData,
   getGoalsDataForGoal,
   getGoalStepsForGoalAndForm,
-  getGoalsStepsForGoalAndFormStateless
+  getGoalsStepsForGoalAndFormStateless,
+  isStepCompleted
 }
 
 export default selectors
