@@ -180,7 +180,7 @@ export const translateCMSPhaseToStandard = (phase: string) => {
   switch (true) {
   case wellKnownMeditation.includes(phase):
     return MEDITATION
-  case wellKnownSelfAssessment.indexOf(phase):
+  case wellKnownSelfAssessment.includes(phase):
     return SELF_ASSESSMENT
   case wellKnownVisionCreation.includes(phase):
     return VISION_CREATION
@@ -198,6 +198,20 @@ export const translatePhaseAndFormat = (phase: String) => {
     return 'Self Assessment'
   case VISION_CREATION:
     return 'Vision Creation'
+  default:
+    return 'Completed'
+  }
+}
+
+export const formatPhaseTitle = (phase: String) => {
+  const translatedPhase = translateCMSPhaseToStandard(phase)
+  switch (translatedPhase) {
+  case MEDITATION:
+    return 'Phase 1 : Meditation'
+  case SELF_ASSESSMENT:
+    return 'Phase 2 : Self Assessment'
+  case VISION_CREATION:
+    return 'Phase 3 : Vision Creation'
   default:
     return 'Completed'
   }
