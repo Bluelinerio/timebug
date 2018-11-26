@@ -1,10 +1,10 @@
 // @flow
-import React            from 'react'
-import { ScrollView }   from 'react-native'
-import styles           from '../styles'
-import { SafeAreaView } from 'react-navigation'
-import Banner           from '../../../containers/NavigationAwareBanner'
-import Form             from '../../../forms/custom/components/FormContainer'
+import React                from 'react'
+import { View, ScrollView } from 'react-native'
+import styles               from '../styles'
+import { SafeAreaView }     from 'react-navigation'
+import Banner               from '../../../containers/NavigationAwareBanner'
+import Form                 from '../../../forms/custom/components/Form'
 
 type Props = {
   setScreenStatus: () => any,
@@ -35,13 +35,9 @@ class GoalForm extends React.PureComponent<Props> {
           contentContainerStyle={styles.scrollView}
         >
           <Banner />
-          <Form
-            model={model}
-            value={formData}
-            onFinish={this._onFinish}
-            step={step}
-            formContainerStyle={styles.prototypeBackground}
-          />
+          <View style={[styles.container, styles.prototypeBackground]}>
+            <Form model={model} value={formData} onFinish={this._onFinish} />
+          </View>
         </ScrollView>
       </SafeAreaView>
     )
