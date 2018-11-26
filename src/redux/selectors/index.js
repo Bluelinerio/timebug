@@ -311,8 +311,6 @@ const getGoalsStepsForGoalAndFormStateless = (
   return onlyValueElements
 }
 
-const formHelpSlides = (state) => getCms(state).helpSlides || {}
-
 const selectors = {
   getCms,
   sortedSteps,
@@ -359,8 +357,7 @@ const selectors = {
   getGoalsData,
   getGoalsDataForGoal,
   getGoalStepsForGoalAndForm,
-  getGoalsStepsForGoalAndFormStateless,
-  formHelpSlides
+  getGoalsStepsForGoalAndFormStateless
 }
 
 export default selectors
