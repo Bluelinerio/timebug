@@ -51,6 +51,7 @@ export const protoRoutes = {
     PrototypeScreen: 'PrototypeScreen',
     initialRouteName: 'PrototypeScreen',
     GoalFormScreen: 'GoalFormScreen',
-    GoalProtoScreen: 'GoalProtoScreen'
+    GoalProtoScreen: 'GoalProtoScreen',
+    HelpScreen: 'HelpScreen'
   }
 }
