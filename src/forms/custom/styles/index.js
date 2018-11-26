@@ -1,7 +1,14 @@
 import { StyleSheet, Platform } from 'react-native'
-import hexToRgba from '../../../utils/colorTransform'
-import { widthPercentage } from '../../../utils/viewportCalculation'
-import { azure, gray50, gray900, blue900, gray400, greenA400 } from '../../../constants/colors'
+import hexToRgba                from '../../../utils/colorTransform'
+import { widthPercentage }      from '../../../utils/viewportCalculation'
+import {
+  azure,
+  gray50,
+  gray900,
+  blue900,
+  gray400,
+  greenA400
+}                               from '../../../constants/colors'
 
 export const formTextColor = blue900
 export const iconSize = 30
@@ -9,17 +16,35 @@ export const iconColor = gray50
 
 export const checkboxColor = greenA400
 export const uncheckedColor = gray400
+export const helpButtonColor = azure
 
 const horizontalComponentsWidth = widthPercentage(80)
 
 const formStyles = StyleSheet.create({
   container: {
+    flex: 1
+  },
+  helpButton: {
+    width: 40,
+    height: 40,
+    borderRadius: 100,
+    backgroundColor: azure,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  helpButtonContainer: {
     flex: 1,
+    flexGrow: 0,
+    alignItems: 'flex-end',
+    justifyContent: 'flex-end',
+    paddingRight: 20,
+    paddingTop: 10
   },
   formContainer: {
     backgroundColor: 'transparent',
     flex: 5,
     padding: 16,
+    paddingTop: 10,
     justifyContent: 'center',
     alignItems: 'center'
   },

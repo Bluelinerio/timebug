@@ -18,6 +18,7 @@ export const CONTENTFUL_CONTENT_STEP = 'day'
 export const CONTENTFUL_CONTENT_COLORS = 'colors'
 export const CONTENTFUL_ONBOARDING_PAGE = 'onboardingPage'
 export const CONTENTFUL_PAGE = 'page'
+export const CONTENTFUL_HELP_SLIDES = 'helpSlides'
 
 export const contentfulClient = createClient(CONTENTFUL_CREDENTIALS)
 
@@ -60,6 +61,28 @@ const onboardingPagesFromResponse = response => {
     )
   }
 }
+
+const helpSlidesResponse = response => ({
+  helpSlides: response.items.reduce(
+    (items, { fields: { title, description, image, step, order } }) => {
+      const itemsForStep = items[step] || []
+      return ({
+        ...items,
+        [step]: [
+          ...itemsForStep,
+          {
+            title,
+            description,
+            order,
+            step,
+            image: image ? getContentUrl(image) : null
+          }
+        ]
+      })
+    },
+    {}
+  )
+})
 
 const unlinkFields = name => response => ({
   [name]: response.items.map(i => i.fields)
@@ -113,12 +136,18 @@ export const fetchPages = () =>
     .getEntries({ content_type: CONTENTFUL_PAGE })
     .then(pagesFromResponse)
 
+export const fetchHelpSlides = () =>
+  contentfulClient
+    .getEntries({ content_type: CONTENTFUL_HELP_SLIDES })
+    .then(helpSlidesResponse)
+
 export const refreshCMS = () =>
   Promise.all([
     fetchSteps(),
     fetchColors(),
     fetchPages(),
-    fetchonboardingPages()
+    fetchonboardingPages(),
+    fetchHelpSlides()
   ])
     .then(responses => Object.assign(...responses))
     .then(cmsData => ({
