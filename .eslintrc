@@ -6,6 +6,7 @@
     "jest": true,
     "node": true
   },
+  "comma-dangle": ["error", "always"],
   "plugins": ["react"],
   "extends": ["eslint:recommended", "plugin:react/recommended"],
   "rules": {
