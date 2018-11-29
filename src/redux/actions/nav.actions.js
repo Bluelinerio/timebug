@@ -26,6 +26,10 @@ export type GoalFormParams = {
   screen: String
 }
 
+export type HelpParams = {
+  step: String
+}
+
 export const linkNavigation = (payload: LinkedNavigationPayload) => ({
   type: LINK_NAVIGATION,
   payload
@@ -57,6 +61,12 @@ export const goToGoalProtoScreen = (params: GoalFormParams) =>
     params
   })
 
+export const goToHelpScreen = (params: HelpParams) =>
+  NavigationActions.navigate({
+    routeName: protoRoutes.proto.HelpScreen,
+    params
+  })
+
 export const goToPrototypeStepScreen = () =>
   NavigationActions.navigate({
     routeName: protoRoutes.v2.V2_StepScreen
@@ -71,6 +81,8 @@ export const goToPrototypeWorkbookScreen = (params: any) =>
 /* End Prototype */
 
 export const popToTop = () => NavigationActions.popToTop()
+
+export const pop = () => NavigationActions.pop()
 
 export const navigateWith = ({
   routeName,

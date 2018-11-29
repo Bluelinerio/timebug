@@ -52,6 +52,7 @@ export const protoRoutes = {
     initialRouteName: 'PrototypeScreen',
     GoalFormScreen: 'GoalFormScreen',
     GoalProtoScreen: 'GoalProtoScreen',
+    HelpScreen: 'HelpScreen'
     V2Navigator: 'V2Navigator'
   },
   v2: {
