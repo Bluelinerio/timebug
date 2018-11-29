@@ -38,7 +38,8 @@ export const stepInfoForStep = (step: Step) => ({
   formId: '1'
 })
 
-// TODO: Remove
+/* Prototype */
+
 export const goToPrototype = () =>
   NavigationActions.navigate({
     routeName: routes.version.PrototypeNavigator
@@ -55,6 +56,19 @@ export const goToGoalProtoScreen = (params: GoalFormParams) =>
     routeName: protoRoutes.proto.GoalProtoScreen,
     params
   })
+
+export const goToPrototypeStepScreen = () =>
+  NavigationActions.navigate({
+    routeName: protoRoutes.v2.V2_StepScreen
+  })
+
+export const goToPrototypeWorkbookScreen = (params: any) =>
+  NavigationActions.navigate({
+    routeName: protoRoutes.v2.V2_WorkbookScreen,
+    params
+  })
+
+/* End Prototype */
 
 export const popToTop = () => NavigationActions.popToTop()
 

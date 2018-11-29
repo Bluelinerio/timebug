@@ -12,6 +12,20 @@ export const PHASES = {
   COMPLETE
 }
 
+const wellKnownMeditation = [MEDITATION]
+
+const wellKnownSelfAssessment = [
+  SELF_ASSESSMENT,
+  'SELF ASSESSMENT',
+  'SELF-ASSESSMENT'
+]
+
+const wellKnownVisionCreation = [
+  VISION_CREATION,
+  'VISION CREATION',
+  'VISION-CREATION'
+]
+
 export type Icon = {
   uri: string
 }
@@ -162,11 +176,54 @@ export const phaseForStep = ({ number }) => {
   }
 }
 
+export const translateCMSPhaseToStandard = (phase: string) => {
+  switch (true) {
+  case wellKnownMeditation.includes(phase):
+    return MEDITATION
+  case wellKnownSelfAssessment.includes(phase):
+    return SELF_ASSESSMENT
+  case wellKnownVisionCreation.includes(phase):
+    return VISION_CREATION
+  default:
+    return COMPLETE
+  }
+}
+
+export const translatePhaseAndFormat = (phase: String) => {
+  const translatedPhase = translateCMSPhaseToStandard(phase)
+  switch (translatedPhase) {
+  case MEDITATION:
+    return 'Meditation'
+  case SELF_ASSESSMENT:
+    return 'Self Assessment'
+  case VISION_CREATION:
+    return 'Vision Creation'
+  default:
+    return 'Completed'
+  }
+}
+
+export const formatPhaseTitle = (phase: String) => {
+  const translatedPhase = translateCMSPhaseToStandard(phase)
+  switch (translatedPhase) {
+  case MEDITATION:
+    return 'Phase 1 : Meditation'
+  case SELF_ASSESSMENT:
+    return 'Phase 2 : Self Assessment'
+  case VISION_CREATION:
+    return 'Phase 3 : Vision Creation'
+  default:
+    return 'Completed'
+  }
+}
+
 const _isStepCompleted = () => {
   const completionMap = {}
+  let lastLengthOfFormsChecked = 0
   return (stepNumber: number, user: any): boolean => {
-    if (completionMap[`${stepNumber}`]) return completionMap[`${stepNumber}`]
     const { forms } = user
+    if (completionMap[`${stepNumber}`] && (forms && forms.length === lastLengthOfFormsChecked))
+      return completionMap[`${stepNumber}`]
     const completed =
       forms &&
       forms.find(form => {
@@ -179,6 +236,7 @@ const _isStepCompleted = () => {
         : false
     if (!completionMap[`${stepNumber}`])
       completionMap[`${stepNumber}`] = completed
+    lastLengthOfFormsChecked = forms.length
     return completed
   }
 }

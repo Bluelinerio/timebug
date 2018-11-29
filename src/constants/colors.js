@@ -26,10 +26,13 @@ export const cyan = '#B8DEFF'
 export const darkBlue = '#005587'
 export const blue900 = '#0D47A1'
 export const greenA400 = '#00E676'
+export const orange50 = '#FFF3E0'
+export const green50 = '#E8F5E9'
 
 export const MEDITATION = '#005587'
-export const SELF_ASSESMENT = '#EB8900'
+export const SELF_ASSESSMENT = '#F78C00'
 export const VISION_CREATION = '#00B896'
+export const COMPLETE = '#EB008B'
 
 export const tabBarBackground = '#E0F2F1'
 export const tabBarButtonColor = deepBlue
@@ -56,3 +59,9 @@ export const whiteGradientColors = {
   startColor: white,
   endColor: white2
 }
+
+/**
+ * V2.0
+ */
+
+export const PHASE_1_BAR = '#4EADFF'
