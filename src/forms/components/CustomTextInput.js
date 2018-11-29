@@ -1,41 +1,41 @@
 // @flow
 /* eslint-disable react/prop-types*/
-import React                               from 'react'
-import { View, TextInput, Text, Animated } from 'react-native'
-import { compose }                         from 'redux'
+import React from 'react';
+import { View, TextInput, Text, Animated } from 'react-native';
+import { compose } from 'redux';
 
 type State = {
   height: number,
   fieldFocused: boolean,
   value: String,
-  fadeAnim: Animated.AnimatedValue
-}
+  fadeAnim: Animated.AnimatedValue,
+};
 
 type Props = {
   style?: any,
-  onContentSizeChange?: (event: any) => void
-}
+  onContentSizeChange?: (event: any) => void,
+};
 
 class CustomTextInput extends React.Component<Props, State> {
-  input: ?TextInput = null
+  input: ?TextInput = null;
 
   error(styles) {
-    const { error, hasError } = this.props
+    const { error, hasError } = this.props;
     error && hasError ? (
       <Text accessibilityLiveRegion="polite" style={styles}>
         {error}
       </Text>
-    ) : null
+    ) : null;
   }
 
   help(styles) {
-    const { help } = this.props
-    help ? <Text style={styles}>{help}</Text> : null
+    const { help } = this.props;
+    help ? <Text style={styles}>{help}</Text> : null;
   }
 
   floatingLabel(labelStyles) {
-    const { label } = this.props
-    const { fadeAnim } = this.state
+    const { label } = this.props;
+    const { fadeAnim } = this.state;
     return label ? (
       <Animated.Text
         style={[
@@ -47,91 +47,91 @@ class CustomTextInput extends React.Component<Props, State> {
               {
                 translateY: fadeAnim.interpolate({
                   inputRange: [0, 1],
-                  outputRange: [10, 0]
-                })
-              }
-            ]
-          }
+                  outputRange: [10, 0],
+                }),
+              },
+            ],
+          },
         ]}
       >
         {label}
       </Animated.Text>
-    ) : null
+    ) : null;
   }
   label(labelStyles) {
-    const { label } = this.props
+    const { label } = this.props;
     return label ? (
       <Text
         style={[
           ...labelStyles,
           {
-            textAlign: 'auto'
-          }
+            textAlign: 'auto',
+          },
         ]}
       >
         {label}
       </Text>
-    ) : null
+    ) : null;
   }
 
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       height: 0,
       fieldFocused: props.value ? true : false,
       text: props.value ? String(props.value) : '',
-      fadeAnim: props.value ? new Animated.Value(1) : new Animated.Value(0)
-    }
+      fadeAnim: props.value ? new Animated.Value(1) : new Animated.Value(0),
+    };
   }
 
   focus() {
-    this.input && this.input.focus()
+    this.input && this.input.focus();
   }
 
   onFocus = () => {
-    const { fadeAnim } = this.state
+    const { fadeAnim } = this.state;
     Animated.spring(fadeAnim, {
       toValue: 1,
-      friction: 5
-    }).start()
+      friction: 5,
+    }).start();
     this.setState({
-      fieldFocused: true
-    })
-    this.props.onFocus && this.props.onFocus()
-  }
+      fieldFocused: true,
+    });
+    this.props.onFocus && this.props.onFocus();
+  };
 
   onBlur = () => {
-    const { text, fadeAnim } = this.state
+    const { text, fadeAnim } = this.state;
     if (!text || !text.length) {
       Animated.timing(fadeAnim, {
-        toValue: 0
-      }).start()
+        toValue: 0,
+      }).start();
     }
     this.setState({
-      fieldFocused: false
-    })
-    this.props.onBlur && this.props.onBlur()
-  }
+      fieldFocused: false,
+    });
+    this.props.onBlur && this.props.onBlur();
+  };
 
   onChangeText = (text: string) => {
-    const then = this.props.onChange ? () => this.props.onChange(text) : null
+    const then = this.props.onChange ? () => this.props.onChange(text) : null;
     this.setState(
       {
-        text
+        text,
       },
       then
-    )
-  }
+    );
+  };
 
   onContentSizeChange = (event: any) => {
-    const { nativeEvent: { contentSize: { height } } } = event
+    const { nativeEvent: { contentSize: { height } } } = event;
     if (height !== this.state.height) {
       this.setState({
-        height: height
-      })
+        height: height,
+      });
     }
-    this.props.onContentSizeChange && this.props.onContentSizeChange(event)
-  }
+    this.props.onContentSizeChange && this.props.onContentSizeChange(event);
+  };
 
   renderTextInput = styles => (
     <TextInput
@@ -180,24 +180,24 @@ class CustomTextInput extends React.Component<Props, State> {
       style={styles}
       value={this.props.value}
     />
-  )
+  );
 
   composeStyles(...overrideStyles) {
-    return (...styles) => [...styles, ...overrideStyles]
+    return (...styles) => [...styles, ...overrideStyles];
   }
 
   render() {
-    const { styles, hasError, editable, floatingLabel, config } = this.props
+    const { styles, hasError, editable, floatingLabel, config } = this.props;
 
     const formGroupStyle = compose(
       this.composeStyles(
         hasError ? styles.formGroupStyle.error : styles.formGroupStyle.normal
       )
-    )()
+    )();
 
     const textboxViewStyle = compose(
       this.composeStyles({
-        backgroundColor: config.color
+        backgroundColor: config.color,
       }),
       this.composeStyles(
         hasError
@@ -207,21 +207,21 @@ class CustomTextInput extends React.Component<Props, State> {
             : styles.textBoxView.notEditable
       ),
       this.composeStyles(styles.textBoxView.base)
-    )()
+    )();
 
     const labelStyles = compose(
       this.composeStyles({ color: config.stepColor })
-    )(hasError ? styles.controlLabel.error : styles.controlLabel.normal)
+    )(hasError ? styles.controlLabel.error : styles.controlLabel.normal);
 
     const helpStyles = [
-      hasError ? styles.helpBlock.error : styles.helpBlock.normal
-    ]
+      hasError ? styles.helpBlock.error : styles.helpBlock.normal,
+    ];
 
-    const errorStyles = styles.errorBlockStyle
+    const errorStyles = styles.errorBlockStyle;
 
     const textInputStyles = compose(
       this.composeStyles({
-        height: Math.min(400, Math.max(this.state.height, 44))
+        height: Math.min(400, Math.max(this.state.height, 44)),
       })
     )(
       this.props.hasError
@@ -229,14 +229,14 @@ class CustomTextInput extends React.Component<Props, State> {
         : this.props.editable !== false
           ? this.props.styles.textBox.normal
           : this.props.styles.textbox.notEditable
-    )
+    );
 
     const label = floatingLabel
       ? this.floatingLabel(labelStyles)
-      : this.label(labelStyles) // text.length > 0 ? null :
-    const help = this.help(helpStyles)
-    const error = this.error(errorStyles)
-    const textInput = this.renderTextInput(textInputStyles)
+      : this.label(labelStyles); // text.length > 0 ? null :
+    const help = this.help(helpStyles);
+    const error = this.error(errorStyles);
+    const textInput = this.renderTextInput(textInputStyles);
 
     return (
       <View style={formGroupStyle}>
@@ -245,8 +245,8 @@ class CustomTextInput extends React.Component<Props, State> {
         {help}
         {error}
       </View>
-    )
+    );
   }
 }
 
-export default CustomTextInput
+export default CustomTextInput;

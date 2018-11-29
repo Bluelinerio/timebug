@@ -1,15 +1,15 @@
 //@flow
-import React                   from 'react'
+import React from 'react';
 import {
   View,
   Text,
   StatusBar,
   ScrollView,
-  TouchableOpacity
-}                              from 'react-native'
-import { HeaderBackButton }    from 'react-navigation'
-import styles, { bannerColor } from '../styles/components/Banner/phase'
-import type { Step }           from '../services/cms'
+  TouchableOpacity,
+} from 'react-native';
+import { HeaderBackButton } from 'react-navigation';
+import styles, { bannerColor } from '../styles/components/Banner/phase';
+import type { Step } from '../services/cms';
 
 type Props = {
   onBackPress: () => any,
@@ -20,8 +20,8 @@ type Props = {
   titleColor: string,
   steps: Array<Step>,
   headerBackgroundColor: string,
-  onSelectStep: Step => any
-}
+  onSelectStep: Step => any,
+};
 
 class PhaseHeader extends React.PureComponent<Props> {
   render() {
@@ -34,8 +34,8 @@ class PhaseHeader extends React.PureComponent<Props> {
       onSelectStep = () => null,
       onBackPress = null,
       backButton = false,
-      headerBackgroundColor
-    } = this.props
+      headerBackgroundColor,
+    } = this.props;
     return (
       <View style={[styles.header, { backgroundColor: headerBackgroundColor }]}>
         <StatusBar barStyle="dark-content" backgroundColor={bannerColor} />
@@ -74,8 +74,8 @@ class PhaseHeader extends React.PureComponent<Props> {
             ))}
         </ScrollView>
       </View>
-    )
+    );
   }
 }
 
-export default PhaseHeader
+export default PhaseHeader;

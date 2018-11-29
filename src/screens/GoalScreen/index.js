@@ -1,34 +1,34 @@
 //@flow
-import React               from 'react'
-import InteractionManager  from '../../utils/InteractionManager'
-import GoalScreenContainer from './containers/GoalScreenContainer'
-import User                from '../../containers/User'
-import DefaultIndicator    from '../../components/DefaultIndicator'
-import MissingUserScreen   from '../../components/MissingUserScreen'
+import React from 'react';
+import InteractionManager from '../../utils/InteractionManager';
+import GoalScreenContainer from './containers/GoalScreenContainer';
+import User from '../../containers/User';
+import DefaultIndicator from '../../components/DefaultIndicator';
+import MissingUserScreen from '../../components/MissingUserScreen';
 
 class GoalScreen extends React.PureComponent {
   static navigationOptions = {
-    header: null
-  }
+    header: null,
+  };
 
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      didFinishInitialAnimation: false
-    }
+      didFinishInitialAnimation: false,
+    };
   }
 
   componentDidMount() {
     InteractionManager.runAfterInteractions(() => {
-      ``
+      ``;
       this.setState({
-        didFinishInitialAnimation: true
-      })
-    })
+        didFinishInitialAnimation: true,
+      });
+    });
   }
 
   render() {
-    const { didFinishInitialAnimation } = this.state
+    const { didFinishInitialAnimation } = this.state;
     return didFinishInitialAnimation ? (
       <User
         renderWithUser={() => <GoalScreenContainer />}
@@ -38,8 +38,8 @@ class GoalScreen extends React.PureComponent {
       />
     ) : (
       <DefaultIndicator size="large" />
-    )
+    );
   }
 }
 
-export default GoalScreen
+export default GoalScreen;

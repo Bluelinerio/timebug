@@ -1,15 +1,15 @@
 //@flow
-import React                                   from 'react'
-import styles                                  from './styles/CellHeader.style'
-import { View, Text, TouchableOpacity, Image } from 'react-native'
+import React from 'react';
+import styles from './styles/CellHeader.style';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 
 type HeaderProps = {
   date: string,
   source: string,
   title: string,
   titleColor: string,
-  style?: any
-}
+  style?: any,
+};
 
 const Header = ({ date, source, title, titleColor, style }: HeaderProps) => (
   <View style={styles.header}>
@@ -20,7 +20,7 @@ const Header = ({ date, source, title, titleColor, style }: HeaderProps) => (
           styles.title,
           styles.strong,
           styles.cellHeader,
-          { color: titleColor, ...style }
+          { color: titleColor, ...style },
         ]}
       >
         {title}
@@ -30,6 +30,6 @@ const Header = ({ date, source, title, titleColor, style }: HeaderProps) => (
       {source && <Image style={styles.avatar} source={source} />}
     </TouchableOpacity>
   </View>
-)
+);
 
-export default Header
+export default Header;

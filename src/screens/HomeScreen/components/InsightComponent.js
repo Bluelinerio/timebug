@@ -1,18 +1,18 @@
-import React                      from 'react'
-import { View, Text, StyleSheet } from 'react-native'
-import dashboardStyles            from '../../styles/dashboard.styles'
-import Insight                    from '../../../components/Insight'
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import dashboardStyles from '../../styles/dashboard.styles';
+import Insight from '../../../components/Insight';
 
 const styles = {
   suggestionText: {
     ...StyleSheet.flatten(dashboardStyles.suggestionText),
-    ...StyleSheet.flatten(dashboardStyles.homeSuggestionText)
-  }
-}
+    ...StyleSheet.flatten(dashboardStyles.homeSuggestionText),
+  },
+};
 
 type InsightComponentProps = {
-    insightText: string
-}
+  insightText: string,
+};
 
 const InsightComponent = ({ insightText }: InsightComponentProps) => {
   return insightText ? (
@@ -22,12 +22,12 @@ const InsightComponent = ({ insightText }: InsightComponentProps) => {
           insightText={insightText}
           style={{
             title: dashboardStyles.strong,
-            text: { textAlign: 'justify' }
+            text: { textAlign: 'justify' },
           }}
         />
       </Text>
     </View>
-  ) : null
-}
+  ) : null;
+};
 
-export default InsightComponent
+export default InsightComponent;

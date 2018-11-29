@@ -1,25 +1,25 @@
 // @flow
-import { connect }  from 'react-redux';
-import screen       from './Help'
+import { connect } from 'react-redux';
+import screen from './Help';
 import { pop } from '../../redux/actions/nav.actions';
-import selectors from '../../redux/selectors'
-import { mapProps, compose } from 'recompose'
-import { withNavigation } from 'react-navigation'
+import selectors from '../../redux/selectors';
+import { mapProps, compose } from 'recompose';
+import { withNavigation } from 'react-navigation';
 
 const mapStateToProps = state => ({
-  slides: selectors.formHelpSlides(state)
+  slides: selectors.formHelpSlides(state),
 });
 
 const dismiss = pop;
 
 const merge = ({ slides, dismiss, navigation }) => {
-  const { state: { params: { step } } } = navigation
-  const stepSlides = slides[step].sort((a, b) => a.order - b.order)
+  const { state: { params: { step } } } = navigation;
+  const stepSlides = slides[step].sort((a, b) => a.order - b.order);
   return {
     slides: stepSlides,
-    dismiss
-  }
-}
+    dismiss,
+  };
+};
 
 export default compose(
   connect(mapStateToProps, { dismiss }),

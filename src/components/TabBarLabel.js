@@ -1,36 +1,36 @@
-import React    from 'react'
-import { Text } from 'react-native'
-import routes   from '../navigation/routes'
-import styles   from '../styles/components/TabBar'
+import React from 'react';
+import { Text } from 'react-native';
+import routes from '../navigation/routes';
+import styles from '../styles/components/TabBar';
 
 type TabBarLabelProps = {
   routeName: string,
-  tintColor: string
-}
+  tintColor: string,
+};
 
 const mapRouteToName = routeName => {
   switch (routeName) {
   case routes.tab.RootNavigator:
-    return 'Home'
+    return 'Home';
   case routes.tab.MeditationScreen:
-    return 'Meditation'
+    return 'Meditation';
   case routes.tab.MyJourneyScreen:
-    return 'Journey'
+    return 'Journey';
   case routes.tab.CheckinScreen:
-    return 'Checkins'
+    return 'Checkins';
   case routes.tab.GoalsNavigator:
-    return 'Goals'
+    return 'Goals';
   default:
-    return ''
+    return '';
   }
-}
+};
 
 const TabBarLabel = ({ routeName, tintColor }: TabBarLabelProps) => {
   return (
     <Text style={[styles.tabBarLabel, { color: tintColor }]}>
       {mapRouteToName(routeName)}
     </Text>
-  )
-}
+  );
+};
 
-export default TabBarLabel
+export default TabBarLabel;

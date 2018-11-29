@@ -1,9 +1,9 @@
 // @flow
 
-import { ApolloClient } from 'apollo-client'
-import { HttpLink } from 'apollo-link-http'
-import { InMemoryCache } from 'apollo-cache-inmemory'
-import gql from 'graphql-tag'
+import { ApolloClient } from 'apollo-client';
+import { HttpLink } from 'apollo-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import gql from 'graphql-tag';
 import type {
   Auth,
   User,
@@ -14,42 +14,42 @@ import type {
   Checkin,
   createCheckinArgs,
   updateCheckinArgs,
-  filterCheckinsByTemplateArgs
-} from './models'
+  filterCheckinsByTemplateArgs,
+} from './models';
 
 export const endpoints = {
-  simple: 'https://api.graph.cool/simple/v1/cjdnw03hv8l6m01133d2ix1pb'
-}
+  simple: 'https://api.graph.cool/simple/v1/cjdnw03hv8l6m01133d2ix1pb',
+};
 export const isClientEndpoint = (endpoint: string) =>
-  endpoints.simple === endpoint
+  endpoints.simple === endpoint;
 
 export const client = new ApolloClient({
   link: new HttpLink({ uri: endpoints.simple }),
-  cache: new InMemoryCache()
-})
+  cache: new InMemoryCache(),
+});
 
-import { temporaryUserAdditions } from './tmp'
+import { temporaryUserAdditions } from './tmp';
 
 const _parse = <T>(key: string, graphResponse: GraphResponse): T => {
-  const { data, error } = graphResponse
+  const { data, error } = graphResponse;
   if (error) {
-    console.log('ERROR IN THENABLE')
-    throw error
+    console.log('ERROR IN THENABLE');
+    throw error;
   }
   const value: T = {
     ...data[key],
-    endpoint: endpoints.simple
-  }
+    endpoint: endpoints.simple,
+  };
   if (value) {
-    return temporaryUserAdditions(value)
+    return temporaryUserAdditions(value);
   }
-  throw { error: error || 'User not found' }
-}
+  throw { error: error || 'User not found' };
+};
 
 const parse = <T>(key: string) => (graphResponse: GraphResponse): T =>
-  _parse(key, graphResponse)
+  _parse(key, graphResponse);
 
-export const resetStore = client.resetStore
+export const resetStore = client.resetStore;
 
 export const authenticateWithFBToken = (fbToken: string): Auth =>
   client
@@ -63,9 +63,9 @@ export const authenticateWithFBToken = (fbToken: string): Auth =>
         }
       `,
       fetchPolicy: 'network-only',
-      variables: { token: fbToken }
+      variables: { token: fbToken },
     })
-    .then(parse('authenticateFB'))
+    .then(parse('authenticateFB'));
 
 export const resetUserSteps = userId =>
   client
@@ -78,14 +78,14 @@ export const resetUserSteps = userId =>
         }
       `,
       variables: {
-        userId
-      }
+        userId,
+      },
     })
-    .then(parse('reset'))
+    .then(parse('reset'));
 
 const handleErrorGettingUser = (errorResponse: ErrorResponse) => {
-  throw errorResponse
-}
+  throw errorResponse;
+};
 
 const userSortedFormFragment = gql`
   fragment SortedForms on User {
@@ -97,7 +97,7 @@ const userSortedFormFragment = gql`
       data
     }
   }
-`
+`;
 const userAchievementsFragment = gql`
   fragment UserAchievements on User {
     achievements {
@@ -112,7 +112,7 @@ const userAchievementsFragment = gql`
       }
     }
   }
-`
+`;
 
 const userFragments = gql`
   fragment SortedForms on User {
@@ -138,7 +138,7 @@ const userFragments = gql`
       }
     }
   }
-`
+`;
 
 /**
  * New: Fragment to get Checkins on user
@@ -154,7 +154,7 @@ const userCheckinFragment = gql`
       name
     }
   }
-`
+`;
 
 /**
  *  Edited: gets user checkins as well
@@ -178,10 +178,10 @@ export const fetchUserWithId = (id: string): User =>
         ${userCheckinFragment}
       `,
       fetchPolicy: 'network-only',
-      variables: { id }
+      variables: { id },
     })
     .then(parse('User'))
-    .catch(handleErrorGettingUser)
+    .catch(handleErrorGettingUser);
 
 export const createForm = ({ userId, stepId, data }: CreateFormArgs): any =>
   client
@@ -199,11 +199,11 @@ export const createForm = ({ userId, stepId, data }: CreateFormArgs): any =>
       variables: {
         userId,
         stepId,
-        data
-      }
+        data,
+      },
     })
     .then(parse('createForm'))
-    .catch(e => console.log(e))
+    .catch(e => console.log(e));
 
 export const updateForm = ({ userId, id, data }: UpdateormArgs): any =>
   client
@@ -221,10 +221,10 @@ export const updateForm = ({ userId, id, data }: UpdateormArgs): any =>
       variables: {
         userId,
         id,
-        data
-      }
+        data,
+      },
     })
-    .then(parse('updateForm'))
+    .then(parse('updateForm'));
 
 export const deleteForm = ({ id }): any =>
   client
@@ -237,11 +237,11 @@ export const deleteForm = ({ id }): any =>
         }
       `,
       variables: {
-        id
-      }
+        id,
+      },
     })
     .then(parse('deleteForm'))
-    .catch(e => console.log(e))
+    .catch(e => console.log(e));
 
 export const createAchievement = ({ userId, tagName }) =>
   client
@@ -261,10 +261,10 @@ export const createAchievement = ({ userId, tagName }) =>
       `,
       variables: {
         userId,
-        tagName
-      }
+        tagName,
+      },
     })
-    .then(parse('createAchievement'))
+    .then(parse('createAchievement'));
 
 export const deleteAchievement = achievementId =>
   client
@@ -277,10 +277,10 @@ export const deleteAchievement = achievementId =>
         }
       `,
       variables: {
-        achievementId
-      }
+        achievementId,
+      },
     })
-    .then(parse('deleteAchievement'))
+    .then(parse('deleteAchievement'));
 
 export const fetchUserAchievementsWithUserId = (id: string): User =>
   client
@@ -295,10 +295,10 @@ export const fetchUserAchievementsWithUserId = (id: string): User =>
         ${userAchievementsFragment}
       `,
       fetchPolicy: 'network-only',
-      variables: { id }
+      variables: { id },
     })
     .then(parse('User'))
-    .catch(handleErrorGettingUser)
+    .catch(handleErrorGettingUser);
 
 export const testUser = ({ userId }): any =>
   client
@@ -318,10 +318,10 @@ export const testUser = ({ userId }): any =>
         }
       `,
       variables: {
-        userId: userId
-      }
+        userId: userId,
+      },
     })
-    .then(parse('User'))
+    .then(parse('User'));
 
 /**
  *  CHECKINS
@@ -337,7 +337,7 @@ export const CheckinFragment = gql`
     version
     data
   }
-`
+`;
 
 export const checkinUserFragment = gql`
   fragment checkinUserFragment on Checkin {
@@ -347,21 +347,21 @@ export const checkinUserFragment = gql`
       name
     }
   }
-`
+`;
 
 export const CheckinFragments = `
 	${CheckinFragment}
 
 	${checkinUserFragment}
-`
+`;
 
 /**
  * Helpers
  */
 
 const handleCheckinError = (e: ErrorResponse) => {
-  throw e
-}
+  throw e;
+};
 
 /**
  * End Helpers
@@ -373,7 +373,7 @@ const handleCheckinError = (e: ErrorResponse) => {
 export const getCheckinsForUserOfTemplate = ({
   userId,
   name,
-  version
+  version,
 }: filterCheckinsByTemplateArgs): [Checkin] =>
   client
     .query({
@@ -397,11 +397,11 @@ export const getCheckinsForUserOfTemplate = ({
       variables: {
         name,
         version,
-        userId
-      }
+        userId,
+      },
     })
     .then(parse('allCheckins'))
-    .catch(handleCheckinError)
+    .catch(handleCheckinError);
 
 export const getCheckinsForUser = (userId: String): [Checkin] =>
   client
@@ -417,18 +417,18 @@ export const getCheckinsForUser = (userId: String): [Checkin] =>
       `,
       fetchPolicy: 'network-only',
       variables: {
-        userId
-      }
+        userId,
+      },
     })
     .then(parse('allCheckins'))
-    .catch(handleCheckinError)
+    .catch(handleCheckinError);
 
 export const addCheckinToUser = ({
   userId,
   name,
   version,
   data,
-  eventDate
+  eventDate,
 }: createCheckinArgs): Checkin =>
   client
     .mutate({
@@ -459,17 +459,17 @@ export const addCheckinToUser = ({
         name,
         version,
         data,
-        eventDate
-      }
+        eventDate,
+      },
     })
     .then(parse('createCheckin'))
-    .catch(handleCheckinError)
+    .catch(handleCheckinError);
 
 export const updateCheckin = ({
   checkinId,
   version,
   data,
-  eventDate
+  eventDate,
 }: updateCheckinArgs): Checkin =>
   client
     .mutate({
@@ -497,11 +497,11 @@ export const updateCheckin = ({
         checkinId,
         version,
         data,
-        eventDate
-      }
+        eventDate,
+      },
     })
     .then(parse('updateCheckin'))
-    .catch(handleCheckinError)
+    .catch(handleCheckinError);
 
 export const deleteCheckin = (checkinId: string): Checkin =>
   client
@@ -514,8 +514,8 @@ export const deleteCheckin = (checkinId: string): Checkin =>
         }
       `,
       variables: {
-        checkinId
-      }
+        checkinId,
+      },
     })
     .then(parse('deleteCheckin'))
-    .catch(handleCheckinError)
+    .catch(handleCheckinError);

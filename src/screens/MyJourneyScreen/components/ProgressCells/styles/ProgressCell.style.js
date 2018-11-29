@@ -1,28 +1,25 @@
-import { StyleSheet, Platform } from 'react-native'
-import {
-  human,
-  systemWeights
-}                               from 'react-native-typography'
+import { StyleSheet, Platform } from 'react-native';
+import { human, systemWeights } from 'react-native-typography';
 
-export const scrollViewHorizontalPadding = 16
-export const grayColor = '#ccc'
+export const scrollViewHorizontalPadding = 16;
+export const grayColor = '#ccc';
 
 export default StyleSheet.create({
   container: {
     ...Platform.select({
       android: {
-        elevation: 16
+        elevation: 16,
       },
       ios: {
         shadowColor: 'black',
         shadowOffset: {
           width: 0,
-          height: 16
+          height: 16,
         },
         shadowOpacity: 0.2,
-        shadowRadius: 16
-      }
-    })
+        shadowRadius: 16,
+      },
+    }),
   },
   leaderboardContainer: {
     marginRight: 10,
@@ -32,18 +29,18 @@ export default StyleSheet.create({
     borderRadius: 6,
     ...Platform.select({
       android: {
-        elevation: 2
+        elevation: 2,
       },
       ios: {
         shadowColor: 'black',
         shadowOffset: {
           width: 0,
-          height: 2
+          height: 2,
         },
         shadowOpacity: 0.2,
-        shadowRadius: 2
-      }
-    })
+        shadowRadius: 2,
+      },
+    }),
   },
   pieChartContainer: {
     marginRight: 10,
@@ -51,25 +48,25 @@ export default StyleSheet.create({
     borderRadius: 6,
     ...Platform.select({
       android: {
-        elevation: 2
+        elevation: 2,
       },
       ios: {
         shadowColor: 'black',
         shadowOffset: {
           width: 0,
-          height: 2
+          height: 2,
         },
         shadowOpacity: 0.2,
-        shadowRadius: 2
-      }
-    })
+        shadowRadius: 2,
+      },
+    }),
   },
   suggestionText: {
     ...human.headlineWhiteObject,
     ...systemWeights.light,
-    margin: 8
+    margin: 8,
   },
   progressUnderlineText: {
-    textAlign: 'center'
-  }
-})
+    textAlign: 'center',
+  },
+});

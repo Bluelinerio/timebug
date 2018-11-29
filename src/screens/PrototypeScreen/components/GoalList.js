@@ -1,13 +1,13 @@
 // @flow
-import React          from 'react'
-import { View, Text } from 'react-native'
-import styles         from '../styles'
-import GoalElement    from '../containers/GoalElementContainer'
-import { GoalType }   from '../../../forms/custom/forms/goals'
+import React from 'react';
+import { View, Text } from 'react-native';
+import styles from '../styles';
+import GoalElement from '../containers/GoalElementContainer';
+import { GoalType } from '../../../forms/custom/forms/goals';
 
 type Props = {
-  onSelect: String => any
-}
+  onSelect: String => any,
+};
 
 class GoalList extends React.PureComponent<Props> {
   render() {
@@ -22,8 +22,8 @@ class GoalList extends React.PureComponent<Props> {
           ))}
         </View>
       </React.Fragment>
-    )
+    );
   }
 }
 
-export default GoalList
+export default GoalList;

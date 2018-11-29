@@ -1,18 +1,18 @@
-import React          from 'react'
-import { View, Text } from 'react-native'
-import { hashCode }   from '../../../utils/hash'
-import GoalComponent  from '../containers/GoalContainer'
-import styles         from '../styles'
+import React from 'react';
+import { View, Text } from 'react-native';
+import { hashCode } from '../../../utils/hash';
+import GoalComponent from '../containers/GoalContainer';
+import styles from '../styles';
 
 type GoalListComponentProps = {
   data: any,
   step: any,
-  clearGoals: any
-}
+  clearGoals: any,
+};
 
 class GoalListComponent extends React.PureComponent<GoalListComponentProps> {
   render() {
-    const { data } = this.props
+    const { data } = this.props;
     return (
       <View style={styles.goalListContainer}>
         <View style={styles.goalListHeader}>
@@ -32,8 +32,8 @@ class GoalListComponent extends React.PureComponent<GoalListComponentProps> {
             </React.Fragment>
           ))}
       </View>
-    )
+    );
   }
 }
 
-export default GoalListComponent
+export default GoalListComponent;

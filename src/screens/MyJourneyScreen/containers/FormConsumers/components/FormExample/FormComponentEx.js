@@ -1,11 +1,11 @@
 //@flow
-import React          from 'react'
-import { View, Text } from 'react-native'
+import React from 'react';
+import { View, Text } from 'react-native';
 
 type FormComponentProps = {
   data: any,
-  injected: string
-}
+  injected: string,
+};
 
 const FormComponentExample = ({ data, injected }: FormComponentProps) => {
   return (
@@ -14,7 +14,7 @@ const FormComponentExample = ({ data, injected }: FormComponentProps) => {
       <Text>{data.text}</Text>
       {injected && <Text>This was injected {injected}</Text>}
     </View>
-  )
-}
+  );
+};
 
-export default FormComponentExample
+export default FormComponentExample;

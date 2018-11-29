@@ -1,4 +1,4 @@
-import { StyleSheet, Platform } from 'react-native'
+import { StyleSheet, Platform } from 'react-native';
 import {
   human,
   systemWeights,
@@ -6,41 +6,41 @@ import {
   iOSUIKit,
   material,
   sanFranciscoWeights,
-  robotoWeights
-}                               from 'react-native-typography'
-import { deepBlue }             from '../../constants/colors'
+  robotoWeights,
+} from 'react-native-typography';
+import { deepBlue } from '../../constants/colors';
 
 const suggestionRow = {
   flexDirection: 'row',
   justifyContent: 'flex-start',
-  alignItems: 'stretch'
-}
+  alignItems: 'stretch',
+};
 
-export const scrollViewHorizontalPadding = 16
-export const grayColor = '#ccc'
+export const scrollViewHorizontalPadding = 16;
+export const grayColor = '#ccc';
 
 export default StyleSheet.create({
   container: {
     ...Platform.select({
       android: {
-        elevation: 16
+        elevation: 16,
       },
       ios: {
         shadowColor: 'black',
         shadowOffset: {
           width: 0,
-          height: 16
+          height: 16,
         },
         shadowOpacity: 0.2,
-        shadowRadius: 16
-      }
-    })
+        shadowRadius: 16,
+      },
+    }),
   },
   horizontalScrollView: {
-    marginTop: 20
+    marginTop: 20,
   },
   dashboardContainer: {
-    marginHorizontal: 16
+    marginHorizontal: 16,
   },
   dashboardCardWide: {
     marginTop: 24,
@@ -51,7 +51,7 @@ export default StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
     backgroundColor: iOSColors.white,
-    borderRadius: 6
+    borderRadius: 6,
   },
   dashboardInsightContainer: {
     borderRadius: 6,
@@ -69,12 +69,12 @@ export default StyleSheet.create({
         shadowColor: 'black',
         shadowOffset: {
           width: 0,
-          height: 2
+          height: 2,
         },
         shadowOpacity: 0.2,
-        shadowRadius: 2
-      }
-    })
+        shadowRadius: 2,
+      },
+    }),
   },
   dashboardCard: {
     marginTop: 24,
@@ -92,12 +92,12 @@ export default StyleSheet.create({
         shadowColor: 'black',
         shadowOffset: {
           width: 0,
-          height: 16
+          height: 16,
         },
         shadowOpacity: 0.2,
-        shadowRadius: 16
-      }
-    })
+        shadowRadius: 16,
+      },
+    }),
   },
   leaderboardContainer: {
     marginRight: 10,
@@ -107,18 +107,18 @@ export default StyleSheet.create({
     borderRadius: 6,
     ...Platform.select({
       android: {
-        elevation: 2
+        elevation: 2,
       },
       ios: {
         shadowColor: 'black',
         shadowOffset: {
           width: 0,
-          height: 2
+          height: 2,
         },
         shadowOpacity: 0.2,
-        shadowRadius: 2
-      }
-    })
+        shadowRadius: 2,
+      },
+    }),
   },
   pieChartContainer: {
     marginRight: 10,
@@ -126,92 +126,92 @@ export default StyleSheet.create({
     borderRadius: 6,
     ...Platform.select({
       android: {
-        elevation: 2
+        elevation: 2,
       },
       ios: {
         shadowColor: 'black',
         shadowOffset: {
           width: 0,
-          height: 2
+          height: 2,
         },
         shadowOpacity: 0.2,
-        shadowRadius: 2
-      }
-    })
+        shadowRadius: 2,
+      },
+    }),
   },
   pictureTooltip: {
     ...iOSUIKit.caption2EmphasizedObject,
     fontSize: 12,
-    color: deepBlue
+    color: deepBlue,
   },
   suggestionRow,
   suggestionRowBottom: {
     ...suggestionRow,
-    marginTop: 4
+    marginTop: 4,
   },
   dashboardContainerCard: {
-    height: 40
+    height: 40,
   },
   backgroundImage: {
-    ...StyleSheet.absoluteFillObject
+    ...StyleSheet.absoluteFillObject,
   },
   suggestionText: {
     ...human.headlineWhiteObject,
     ...systemWeights.light,
-    margin: 8
+    margin: 8,
   },
   homeSuggestionText: {
     color: deepBlue,
     fontSize: 14,
-    lineHeight: 16
+    lineHeight: 16,
   },
   bold: {
-    ...systemWeights.bold
+    ...systemWeights.bold,
   },
   bigSuggestion: {
     flex: 2,
-    aspectRatio: 1
+    aspectRatio: 1,
   },
   bigSuggestionWithText: {
     flex: 2,
-    borderRadius: 6
+    borderRadius: 6,
   },
   smallSuggestionMarginTop: {
-    marginTop: 4
+    marginTop: 4,
   },
   smallSuggestionMarginLeft: {
-    marginLeft: 4
+    marginLeft: 4,
   },
   smallSuggestion: {
     flex: 1,
-    aspectRatio: 1
+    aspectRatio: 1,
   },
   strong: {
     ...Platform.select({
       android: {
-        ...robotoWeights.bold
+        ...robotoWeights.bold,
       },
       ios: {
-        ...sanFranciscoWeights.black
-      }
-    })
+        ...sanFranciscoWeights.black,
+      },
+    }),
   },
   emoji: {
     ...Platform.select({
       android: {
-        ...material.display3Object
+        ...material.display3Object,
       },
       ios: {
-        ...material.display3Object
+        ...material.display3Object,
         //...human.largeTitleObject,
-      }
+      },
     }),
-    textAlign: 'center'
+    textAlign: 'center',
   },
   title: iOSUIKit.largeTitleEmphasizedObject,
   bannerTitle: {
     ...iOSUIKit.title3EmphasizedObject,
-    color: deepBlue
+    color: deepBlue,
   },
   header: {
     flexDirection: 'row',
@@ -219,38 +219,38 @@ export default StyleSheet.create({
     paddingBottom: 8,
     marginHorizontal: 16,
     borderBottomWidth: 1,
-    borderColor: iOSColors.customGray
+    borderColor: iOSColors.customGray,
   },
   headerBlock: {
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   reset: {
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: iOSColors.blue,
     borderRadius: 6,
-    padding: 8
+    padding: 8,
   },
   resetText: {
-    color: '#FAFAFA'
+    color: '#FAFAFA',
   },
   headerDate: {
     ...iOSUIKit.footnoteEmphasizedObject,
-    color: iOSColors.gray
+    color: iOSColors.gray,
   },
   headerAvatar: {
     height: 36,
     width: 36,
     borderRadius: 36 / 2,
-    alignSelf: 'center'
+    alignSelf: 'center',
   },
   backButton: {
-    color: deepBlue
+    color: deepBlue,
   },
   headerBackButton: {
-    paddingRight: 10
-  }
-})
+    paddingRight: 10,
+  },
+});

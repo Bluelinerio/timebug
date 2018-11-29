@@ -1,5 +1,5 @@
-import Goals from './goals'
+import Goals from './goals';
 
 export default {
-  '5': Goals
-}
+  '5': Goals,
+};

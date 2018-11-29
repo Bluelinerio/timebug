@@ -1,7 +1,7 @@
 // @flow
-import React from 'react'
-import StepSelectionScreen from './containers/StepSelectionScreenContainer'
+import React from 'react';
+import StepSelectionScreen from './containers/StepSelectionScreenContainer';
 
-const StepSelectionScreenContainer = () => <StepSelectionScreen />
+const StepSelectionScreenContainer = () => <StepSelectionScreen />;
 
-export default StepSelectionScreenContainer
+export default StepSelectionScreenContainer;

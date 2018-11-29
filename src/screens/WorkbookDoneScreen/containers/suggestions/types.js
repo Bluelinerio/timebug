@@ -43,8 +43,8 @@ import {
   STEP27,
   STEP28,
   STEP29,
-  STEP30
-} from './constants'
+  STEP30,
+} from './constants';
 
 export type Category =
   | REFLECTION
@@ -59,15 +59,15 @@ export type Category =
   | PHASE1
   | PHASE2
   | PHASE3
-  | NEIGHBOR
+  | NEIGHBOR;
 
-export type HomeScreen = HOME_SCREEN
-export type DoneScreen = DONE_SCREEN
+export type HomeScreen = HOME_SCREEN;
+export type DoneScreen = DONE_SCREEN;
 
 export type MotivationElement = {
   HomeScreen: any,
-  DoneScreen: any
-}
+  DoneScreen: any,
+};
 
 export type StepId =
   | STEP1
@@ -99,4 +99,4 @@ export type StepId =
   | STEP27
   | STEP28
   | STEP29
-  | STEP30
+  | STEP30;

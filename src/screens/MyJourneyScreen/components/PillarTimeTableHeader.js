@@ -1,6 +1,6 @@
-import React          from 'react'
-import { View, Text } from 'react-native'
-import styles         from '../styles'
+import React from 'react';
+import { View, Text } from 'react-native';
+import styles from '../styles';
 
 const PillarTimeTableHeader = () => (
   <View style={styles.row}>
@@ -21,6 +21,6 @@ const PillarTimeTableHeader = () => (
       <Text style={[styles.elementText, styles.headerRowText]}>Diff</Text>
     </View>
   </View>
-)
+);
 
-export default PillarTimeTableHeader
+export default PillarTimeTableHeader;

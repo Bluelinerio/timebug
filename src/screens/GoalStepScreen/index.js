@@ -1,15 +1,15 @@
 // @flow
-import React                                   from 'react'
-import { HeaderBackButton, NavigationActions } from 'react-navigation'
-import screen                                  from './containers/GoalStepScreenContainer'
-import { headerColor }                         from './styles'
+import React from 'react';
+import { HeaderBackButton, NavigationActions } from 'react-navigation';
+import screen from './containers/GoalStepScreenContainer';
+import { headerColor } from './styles';
 
 screen.navigationOptions = ({ navigation: { dispatch, state } }) => {
   return {
     title: `Goal #${parseInt(state.params.goalId) + 1}`,
     headerMode: 'screen',
     headerStyle: {
-      backgroundColor: headerColor
+      backgroundColor: headerColor,
     },
     headerTintColor: 'white',
     headerLeft: (
@@ -17,8 +17,8 @@ screen.navigationOptions = ({ navigation: { dispatch, state } }) => {
         tintColor="white"
         onPress={() => dispatch(NavigationActions.back())}
       />
-    )
-  }
-}
+    ),
+  };
+};
 
-export default screen
+export default screen;

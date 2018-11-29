@@ -1,5 +1,5 @@
-import React from 'react'
-import { G, Path } from 'react-native-svg'
+import React from 'react';
+import { G, Path } from 'react-native-svg';
 
 const SvgIcons = {
   Book: {
@@ -43,7 +43,7 @@ const SvgIcons = {
         />
       </G>
     ),
-    viewBox: '0 0 60 60'
+    viewBox: '0 0 60 60',
   },
   Audio: {
     svg: (
@@ -93,8 +93,8 @@ const SvgIcons = {
         />
       </G>
     ),
-    viewBox: '0 0 60 60'
-  }
-}
+    viewBox: '0 0 60 60',
+  },
+};
 
-export default SvgIcons
+export default SvgIcons;

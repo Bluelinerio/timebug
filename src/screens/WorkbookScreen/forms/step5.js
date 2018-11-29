@@ -1,4 +1,4 @@
-import t             from '../../../forms/components';
+import t from '../../../forms/components';
 import { GoalTypes } from './contents';
 
 export default {
@@ -8,16 +8,16 @@ export default {
       recentGoals: t.list(
         t.struct({
           goal: t.String,
-          goalTypes: GoalTypes
+          goalTypes: GoalTypes,
         })
-      )
+      ),
     }),
     options: {
       label:
         'What are some of your recent goals? Classify them according to the 7 Goal Types.',
       fields: {
         id: {
-          hidden: true
+          hidden: true,
         },
         recentGoals: {
           auto: 'none',
@@ -25,19 +25,19 @@ export default {
             auto: 'none',
             fields: {
               goal: { label: 'What is a recent life goal?' }, //error:'Please enter a goal'},
-              goalTypes: { label: 'How would you classify this goal?' } //error:'Please select a Goal Type'}
-            }
+              goalTypes: { label: 'How would you classify this goal?' }, //error:'Please select a Goal Type'}
+            },
           },
           disableOrder: true,
           maxLines: 10,
           config: {
-            maxLines: 10
-          }
-        }
-      }
+            maxLines: 10,
+          },
+        },
+      },
     },
     value: {
-      id: 'step5+v0.0.0.1'
-    }
-  }
+      id: 'step5+v0.0.0.1',
+    },
+  },
 };

@@ -1,10 +1,10 @@
 //@flow
-import React                      from 'react'
-import { View, TouchableOpacity } from 'react-native'
-import Icon                       from 'react-native-vector-icons/Ionicons'
-import SeekBar                    from './SeekBar'
+import React from 'react';
+import { View, TouchableOpacity } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
+import SeekBar from './SeekBar';
 
-import styles, { iconSize }       from '../styles/components/AudioVideoComponent'
+import styles, { iconSize } from '../styles/components/AudioVideoComponent';
 
 export type ControlBarProps = {
   iconName: string,
@@ -12,8 +12,8 @@ export type ControlBarProps = {
   seek: () => any,
   trackLength: number,
   onSlidingStart: () => any,
-  currentPosition: number
-}
+  currentPosition: number,
+};
 
 const ControlBar = (props: ControlBarProps) => {
   return (
@@ -30,7 +30,7 @@ const ControlBar = (props: ControlBarProps) => {
         />
       </View>
     </View>
-  )
-}
+  );
+};
 
-export default ControlBar
+export default ControlBar;

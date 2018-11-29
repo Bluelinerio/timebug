@@ -1,19 +1,19 @@
 // @flow
-import React, { PureComponent }                   from 'react'
-import { StatusBar, ScrollView, LayoutAnimation } from 'react-native'
-import { SafeAreaView }                           from 'react-navigation'
-import PaginatedCarouselContainer                 from '../containers/PaginatedCarouselContainer'
-import Version                                    from '../../../containers/Version'
-import SuggestionCellContainer                    from '../containers/SuggestionCellContainer'
-import styles                                     from '../styles'
-import { sliderWidth, itemWidth }                 from '../styles/SliderEntry.style'
-import Banner                                     from '../../../containers/Banner'
-import Insight                                    from '../containers/InsightContainer'
+import React, { PureComponent } from 'react';
+import { StatusBar, ScrollView, LayoutAnimation } from 'react-native';
+import { SafeAreaView } from 'react-navigation';
+import PaginatedCarouselContainer from '../containers/PaginatedCarouselContainer';
+import Version from '../../../containers/Version';
+import SuggestionCellContainer from '../containers/SuggestionCellContainer';
+import styles from '../styles';
+import { sliderWidth, itemWidth } from '../styles/SliderEntry.style';
+import Banner from '../../../containers/Banner';
+import Insight from '../containers/InsightContainer';
 
 export default class HomeScreenComponent extends PureComponent {
   state = {
-    showSuggestions: true
-  }
+    showSuggestions: true,
+  };
   render() {
     return (
       <SafeAreaView
@@ -22,13 +22,13 @@ export default class HomeScreenComponent extends PureComponent {
       >
         <StatusBar barStyle="dark-content" backgroundColor={'white'} />
         <ScrollView style={{ flex: 1 }}>
-          <Banner root={false}/>
+          <Banner root={false} />
           {this.state.showSuggestions && (
             <SuggestionCellContainer
               onClose={() =>
                 this.setState(
                   {
-                    showSuggestions: false
+                    showSuggestions: false,
                   },
                   () =>
                     LayoutAnimation.configureNext({
@@ -36,12 +36,12 @@ export default class HomeScreenComponent extends PureComponent {
                       create: {
                         type: LayoutAnimation.Types.spring,
                         property: LayoutAnimation.Properties.scaleXY,
-                        springDamping: 0.7
+                        springDamping: 0.7,
                       },
                       update: {
                         type: LayoutAnimation.Types.spring,
-                        springDamping: 0.7
-                      }
+                        springDamping: 0.7,
+                      },
                     })
                 )
               }
@@ -55,6 +55,6 @@ export default class HomeScreenComponent extends PureComponent {
           <Version />
         </ScrollView>
       </SafeAreaView>
-    )
+    );
   }
 }

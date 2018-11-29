@@ -1,3 +1,3 @@
-import GoalScreenComponent from '../components/GoalScreenComponent'
+import GoalScreenComponent from '../components/GoalScreenComponent';
 
-export default GoalScreenComponent
+export default GoalScreenComponent;

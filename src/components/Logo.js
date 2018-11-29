@@ -1,5 +1,5 @@
-import * as React             from 'react'
-import Svg, { Rect, G, Path } from 'react-native-svg'
+import * as React from 'react';
+import Svg, { Rect, G, Path } from 'react-native-svg';
 
 type Props = {
   width: number,
@@ -7,14 +7,14 @@ type Props = {
   //style: any,
   backgroundColor: string,
   shapeColor: string,
-  circleColor: string
-}
+  circleColor: string,
+};
 const Logo = ({
   width,
   height,
   backgroundColor = 'transparent',
   shapeColor = '#FFFFFF',
-  circleColor = '#E4E4E459'
+  circleColor = '#E4E4E459',
 }: Props) => (
   <Svg width={width || 1024} height={height || 1024} viewBox="0 0 1024 1024">
     <G id="2020-app-store-icon-(1024)">
@@ -29,7 +29,7 @@ const Logo = ({
       <G
         id="Group"
         transform={{
-          translate: '153.000000, 47.000000'
+          translate: '153.000000, 47.000000',
         }}
       >
         <Path
@@ -39,7 +39,7 @@ const Logo = ({
         />
         <G
           transform={{
-            translate: '8.000000, 0.000000'
+            translate: '8.000000, 0.000000',
           }}
           fill={shapeColor}
           id="Shape"
@@ -50,6 +50,6 @@ const Logo = ({
       </G>
     </G>
   </Svg>
-)
+);
 
-export default Logo
+export default Logo;

@@ -1,12 +1,12 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
   },
   listContainer: {
     paddingVertical: 8,
-    paddingHorizontal: 16
+    paddingHorizontal: 16,
   },
   buttonContainer: {
     flex: 1,
@@ -14,9 +14,9 @@ export default StyleSheet.create({
     borderRadius: 6,
     paddingHorizontal: 8,
     paddingVertical: 16,
-    backgroundColor: '#4EADFF'
+    backgroundColor: '#4EADFF',
   },
   buttonTextContainer: {
-    color: '#FAFAFA'
-  }
-})
+    color: '#FAFAFA',
+  },
+});

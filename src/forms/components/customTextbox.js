@@ -1,19 +1,19 @@
-import React           from 'react'
-import CustomTextInput from './CustomTextInput'
+import React from 'react';
+import CustomTextInput from './CustomTextInput';
 
 type Props = Object & {
-  stylesheet: any
-}
+  stylesheet: any,
+};
 export default function customTextBox({ stylesheet, ...rest }: Props) {
   if (rest.hidden) {
-    return null
+    return null;
   }
   return (
     <CustomTextInput
       {...{
         ...rest,
-        styles: stylesheet
+        styles: stylesheet,
       }}
     />
-  )
+  );
 }

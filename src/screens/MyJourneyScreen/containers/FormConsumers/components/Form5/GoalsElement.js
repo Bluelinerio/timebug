@@ -1,13 +1,13 @@
 //@flow
-import React     from 'react'
-import { View }  from 'react-native'
-import ListEntry from '../../../../components/ListEntry'
-import styles    from '../../../../styles'
+import React from 'react';
+import { View } from 'react-native';
+import ListEntry from '../../../../components/ListEntry';
+import styles from '../../../../styles';
 
 type GoalsElementElementProps = {
   elements: [any],
-  style?: any
-}
+  style?: any,
+};
 
 const GoalElement = ({
   elements,
@@ -24,10 +24,10 @@ const GoalElement = ({
             {...el}
             style={style}
           />
-        )
+        );
       })}
     </View>
-  ) : null
-}
+  ) : null;
+};
 
-export default GoalElement
+export default GoalElement;

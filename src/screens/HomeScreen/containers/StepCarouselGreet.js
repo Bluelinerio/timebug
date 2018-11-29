@@ -1,22 +1,22 @@
-import React          from 'react'
-import { View, Text } from 'react-native'
-import { connect }    from 'react-redux'
-import styles         from '../styles'
-import type Step      from '../../../services/cms'
-import selectors      from '../../../redux/selectors'
+import React from 'react';
+import { View, Text } from 'react-native';
+import { connect } from 'react-redux';
+import styles from '../styles';
+import type Step from '../../../services/cms';
+import selectors from '../../../redux/selectors';
 
 const mapStateToProps = state => {
-  const steps: [Step] = selectors.sortedSteps(state)
-  const stepForIndex = (index: number): Step => steps[index]
-  return { stepForIndex }
-}
+  const steps: [Step] = selectors.sortedSteps(state);
+  const stepForIndex = (index: number): Step => steps[index];
+  return { stepForIndex };
+};
 
 type GreetProps = {
   index: number,
-  stepForIndex: (index: number) => Step
-}
+  stepForIndex: (index: number) => Step,
+};
 
-const Greet = ({ index, stepForIndex } : GreetProps) => (
+const Greet = ({ index, stepForIndex }: GreetProps) => (
   <View>
     <Text style={styles.title} numberOfLines={1}>
       {stepForIndex(index) ? stepForIndex(index).stepScreenDescription : ''}
@@ -25,6 +25,6 @@ const Greet = ({ index, stepForIndex } : GreetProps) => (
       {stepForIndex(index) ? stepForIndex(index).snippet : ''}
     </Text>
   </View>
-)
+);
 
-export default connect(mapStateToProps)(Greet)
+export default connect(mapStateToProps)(Greet);

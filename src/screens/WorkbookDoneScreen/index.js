@@ -1,14 +1,14 @@
-import React                                   from 'react'
-import { StyleSheet }                          from 'react-native'
-import { HeaderBackButton, NavigationActions } from 'react-navigation'
-import screen                                  from './containers/WorkbookDoneScreenContainer'
-import { goBackFrom }                          from '../../redux/actions/nav.actions'
-import styles                                  from '../styles'
-import NavigationCloseButton                   from '../../components/NavigationCloseButton'
-import routes                                  from '../../navigation/routes'
+import React from 'react';
+import { StyleSheet } from 'react-native';
+import { HeaderBackButton, NavigationActions } from 'react-navigation';
+import screen from './containers/WorkbookDoneScreenContainer';
+import { goBackFrom } from '../../redux/actions/nav.actions';
+import styles from '../styles';
+import NavigationCloseButton from '../../components/NavigationCloseButton';
+import routes from '../../navigation/routes';
 
 screen.navigationOptions = ({
-  navigation: { dispatch, state: { params: { stepColor } } }
+  navigation: { dispatch, state: { params: { stepColor } } },
 }) => {
   return {
     headerRight: (
@@ -21,7 +21,7 @@ screen.navigationOptions = ({
       backgroundColor: stepColor,
       borderBottomColor: 'transparent',
       shadowOpacity: 0,
-      shadowColor: 'transparent'
+      shadowColor: 'transparent',
     },
     headerTintColor: 'white',
     headerLeft: (
@@ -29,10 +29,10 @@ screen.navigationOptions = ({
         tintColor="white"
         onPress={() => dispatch(NavigationActions.back())}
       />
-    )
-  }
-}
+    ),
+  };
+};
 
 export default {
-  screen
-}
+  screen,
+};

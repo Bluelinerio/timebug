@@ -6,12 +6,12 @@ const styles = {
   wideButton: {
     ...style.wideButton,
     borderWidth: 1,
-    borderColor: facebookColor
+    borderColor: facebookColor,
   },
   wideButtonText: {
     ...style.wideButtonText,
-    color: facebookColor
-  }
+    color: facebookColor,
+  },
 };
 
 export default styles;

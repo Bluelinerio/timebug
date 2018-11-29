@@ -21,7 +21,7 @@ import {
   cond,
   apply,
   equals,
-  __
+  __,
 } from 'ramda';
 
 export const groupObjBy = curry(
@@ -35,7 +35,7 @@ export const groupObjBy = curry(
 export const diffObjs = pipe(
   useWith(mergeWith(merge), [
     map(objOf('leftValue')),
-    map(objOf('rightValue'))
+    map(objOf('rightValue')),
   ]),
   groupObjBy(
     cond([
@@ -44,15 +44,15 @@ export const diffObjs = pipe(
         pipe(
           values,
           ifElse(apply(equals), always('common'), always('difference'))
-        )
+        ),
       ],
       [has('leftValue'), always('onlyOnLeft')],
-      [has('rightValue'), always('onlyOnRight')]
+      [has('rightValue'), always('onlyOnRight')],
     ])
   ),
   evolve({
     common: map(prop('leftValue')),
     onlyOnLeft: map(prop('leftValue')),
-    onlyOnRight: map(prop('rightValue'))
+    onlyOnRight: map(prop('rightValue')),
   })
 );

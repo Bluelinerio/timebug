@@ -1,9 +1,9 @@
-import React                      from 'react'
-import { ScrollView }             from 'react-native'
-import { SafeAreaView }           from 'react-navigation'
-import GoalScreenHandlerContainer from '../containers/GoalScreenHandlerContainer'
-import Banner                     from '../../../components/MinifiedBanner'
-import styles                     from '../styles'
+import React from 'react';
+import { ScrollView } from 'react-native';
+import { SafeAreaView } from 'react-navigation';
+import GoalScreenHandlerContainer from '../containers/GoalScreenHandlerContainer';
+import Banner from '../../../components/MinifiedBanner';
+import styles from '../styles';
 
 const GoalScreenComponent = () => {
   return (
@@ -16,7 +16,7 @@ const GoalScreenComponent = () => {
         <GoalScreenHandlerContainer step={5} />
       </ScrollView>
     </SafeAreaView>
-  )
-}
+  );
+};
 
-export default GoalScreenComponent
+export default GoalScreenComponent;

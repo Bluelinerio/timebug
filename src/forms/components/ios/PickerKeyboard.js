@@ -1,24 +1,19 @@
 // @flow
 import React, { Component } from 'react';
-import {
-  Modal,
-  TouchableWithoutFeedback,
-  View,
-  Picker
-}                           from 'react-native';
-import styles               from './styles/PickerKeyboard.styles';
+import { Modal, TouchableWithoutFeedback, View, Picker } from 'react-native';
+import styles from './styles/PickerKeyboard.styles';
 
 type Props<T> = {
   onCancel: () => void,
   onChange: T => void,
   value: T,
   keyboardBackgroundColor: string,
-  children: any
+  children: any,
 };
 
 type State<T> = {
   selectedValue: T,
-  visible: boolean
+  visible: boolean,
 };
 
 class PickerKeyboard<T> extends Component<Props<T>, State<T>> {
@@ -29,7 +24,7 @@ class PickerKeyboard<T> extends Component<Props<T>, State<T>> {
     // initial state
     this.state = {
       selectedValue: props.value,
-      visible: false
+      visible: false,
     };
   }
 
@@ -80,7 +75,7 @@ class PickerKeyboard<T> extends Component<Props<T>, State<T>> {
                 onValueChange={this.onValueChange}
                 style={[
                   styles.pickerview,
-                  { backgroundColor: keyboardBackgroundColor }
+                  { backgroundColor: keyboardBackgroundColor },
                 ]}
               >
                 {children || null}

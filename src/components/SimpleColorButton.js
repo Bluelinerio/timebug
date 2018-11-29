@@ -1,20 +1,20 @@
-import * as React                                     from 'react'
-import { View, Text, TouchableHighlight, StyleSheet } from 'react-native'
-import { deepBlue }                                   from '../constants/colors'
+import * as React from 'react';
+import { View, Text, TouchableHighlight, StyleSheet } from 'react-native';
+import { deepBlue } from '../constants/colors';
 
 export default class SimpleColorButton extends React.Component<{
   color: string,
   title: string,
-  onPress: () => void
+  onPress: () => void,
 }> {
   static defaultProps = {
-    color: deepBlue
-  }
+    color: deepBlue,
+  };
   state = {
-    underlay: false
-  }
-  _onHideUnderlay = () => this.setState({ underlay: false })
-  _onShowUnderlay = () => this.setState({ underlay: true })
+    underlay: false,
+  };
+  _onHideUnderlay = () => this.setState({ underlay: false });
+  _onShowUnderlay = () => this.setState({ underlay: true });
 
   render() {
     return (
@@ -27,21 +27,21 @@ export default class SimpleColorButton extends React.Component<{
           style={[
             styles.touchable,
             {
-              backgroundColor: this.state.underlay ? 'white' : this.props.color
-            }
+              backgroundColor: this.state.underlay ? 'white' : this.props.color,
+            },
           ]}
         >
           <Text
             style={{
               color: this.state.underlay ? this.props.color : 'white',
-              fontWeight: 'bold'
+              fontWeight: 'bold',
             }}
           >
             {this.props.title}
           </Text>
         </TouchableHighlight>
       </View>
-    )
+    );
   }
 }
 
@@ -52,14 +52,14 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     paddingVertical: 20,
     justifyContent: 'center',
-    alignItems: 'flex-end'
+    alignItems: 'flex-end',
   },
   touchable: {
     borderRadius: 22,
     paddingVertical: 7,
-    paddingHorizontal: 14
+    paddingHorizontal: 14,
   },
   text: {
-    fontWeight: 'bold'
-  }
-})
+    fontWeight: 'bold',
+  },
+});

@@ -6,10 +6,10 @@
     "jest": true,
     "node": true
   },
-  "comma-dangle": ["error", "always"],
   "plugins": ["react"],
   "extends": ["eslint:recommended", "plugin:react/recommended"],
   "rules": {
+    "comma-dangle": ["error", "always-multiline"],
     "no-console": 0,
     "rules": {
       "quotes": ["error", "single"]

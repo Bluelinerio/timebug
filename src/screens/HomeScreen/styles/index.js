@@ -1,14 +1,14 @@
-import { Platform, StyleSheet, StatusBar } from 'react-native'
-import { colors as topColors }             from '../../../constants/colors'
+import { Platform, StyleSheet, StatusBar } from 'react-native';
+import { colors as topColors } from '../../../constants/colors';
 import {
   iOSColors,
   human,
   iOSUIKit,
-  systemWeights
-}                                          from 'react-native-typography'
+  systemWeights,
+} from 'react-native-typography';
 
 if (!iOSColors || !human || !iOSUIKit || !systemWeights) {
-  throw 'missing react-native-typography'
+  throw 'missing react-native-typography';
 }
 
 export const colors = {
@@ -23,27 +23,27 @@ export const colors = {
   borderColor: '#ddd',
   startGradientColor: 'white',
   endGradientColor: '#f8f8f8',
-  ...topColors
-}
+  ...topColors,
+};
 
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.background1
+    backgroundColor: colors.background1,
   },
   innerScreenContainer: {
     backgroundColor: colors.background1,
-    height: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight
+    height: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight,
   },
   gradient: {
     ...StyleSheet.absoluteFillObject,
-    opacity: 1
+    opacity: 1,
   },
   scrollview: {
-    flex: 1
+    flex: 1,
   },
   scrollviewContentContainer: {
-    flex: 1
+    flex: 1,
   },
   title: {
     paddingHorizontal: 30,
@@ -51,7 +51,7 @@ export default StyleSheet.create({
     color: colors.titleColor,
     fontSize: 20,
     fontWeight: 'bold',
-    textAlign: 'center'
+    textAlign: 'center',
   },
   subtitle: {
     marginTop: 5,
@@ -60,11 +60,11 @@ export default StyleSheet.create({
     color: colors.subtitleColor,
     fontSize: 13,
     fontStyle: 'italic',
-    textAlign: 'center'
+    textAlign: 'center',
   },
   bannerContainer: {
     backgroundColor: colors.background1,
-    paddingTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight
+    paddingTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight,
   },
   header: {
     flexDirection: 'row',
@@ -74,25 +74,25 @@ export default StyleSheet.create({
     paddingTop: 16,
     paddingBottom: 8,
     borderBottomWidth: 1,
-    borderColor: iOSColors.customGray
+    borderColor: iOSColors.customGray,
   },
   headerDate: {
     ...iOSUIKit.footnoteEmphasizedObject,
-    color: iOSColors.gray
+    color: iOSColors.gray,
   },
   bannerHeaderTitle: iOSUIKit.largeTitleEmphasizedObject,
   banner: {
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: colors.background1,
-    padding: 10
+    padding: 10,
   },
   bannerImage: {
     width: 36,
     height: 36,
     resizeMode: 'contain',
     tintColor: colors.black,
-    margin: 8
+    margin: 8,
   },
   bannerTitle: {
     paddingHorizontal: 10,
@@ -100,7 +100,7 @@ export default StyleSheet.create({
     fontSize: 28,
     fontWeight: 'bold',
     textAlign: 'left',
-    backgroundColor: 'transparent'
+    backgroundColor: 'transparent',
   },
   myJourneyContainer: {
     paddingHorizontal: 3,
@@ -113,16 +113,16 @@ export default StyleSheet.create({
         shadowColor: 'black',
         shadowOffset: {
           width: 0,
-          height: 1
+          height: 1,
         },
         shadowOpacity: 0.2,
-        shadowRadius: 1
-      }
-    })
+        shadowRadius: 1,
+      },
+    }),
   },
   myJourneyText: {
     ...iOSUIKit.footnoteEmphasizedObject,
     color: '#00098A',
-    fontSize: 16
-  }
-})
+    fontSize: 16,
+  },
+});

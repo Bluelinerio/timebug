@@ -11,6 +11,6 @@ export default {
     textAlign: 'center',
     color: 'rgba(236, 0, 140, 0.72)',
     marginHorizontal: 15.5,
-    backgroundColor: 'transparent'
-  }
+    backgroundColor: 'transparent',
+  },
 };

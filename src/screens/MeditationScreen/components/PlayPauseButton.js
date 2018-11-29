@@ -1,5 +1,5 @@
-import * as React from 'react'
-import Entypo     from 'react-native-vector-icons/Entypo'
+import * as React from 'react';
+import Entypo from 'react-native-vector-icons/Entypo';
 
 const PlayPauseButton = ({
   onPress,
@@ -7,7 +7,7 @@ const PlayPauseButton = ({
   ...rest
 }: {
   playing: boolean,
-  onPress: () => void
+  onPress: () => void,
 }) => (
   <Entypo.Button
     name={playing ? 'controller-paus' : 'controller-play'}
@@ -18,6 +18,6 @@ const PlayPauseButton = ({
     onPress={onPress}
     {...rest}
   />
-)
+);
 
-export default PlayPauseButton
+export default PlayPauseButton;

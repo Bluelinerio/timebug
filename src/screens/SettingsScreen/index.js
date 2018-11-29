@@ -1,10 +1,10 @@
-import * as React from 'react'
-import Profile    from './Profile'
+import * as React from 'react';
+import Profile from './Profile';
 
-const ProfileScreen = () => <Profile />
+const ProfileScreen = () => <Profile />;
 
 ProfileScreen.navigationOptions = () => ({
-  header: null
-})
+  header: null,
+});
 
-export default ProfileScreen
+export default ProfileScreen;

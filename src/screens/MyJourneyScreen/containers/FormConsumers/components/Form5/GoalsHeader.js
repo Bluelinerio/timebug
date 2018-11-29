@@ -1,11 +1,11 @@
 //@flow
-import React from 'react'
+import React from 'react';
 import GenericHeader, {
-  HeaderProps
-}            from '../../../../components/GenericHeader'
+  HeaderProps,
+} from '../../../../components/GenericHeader';
 
 const GoalsHeader = ({ header }: { header: HeaderProps }) => {
-  return <GenericHeader {...header} />
-}
+  return <GenericHeader {...header} />;
+};
 
-export default GoalsHeader
+export default GoalsHeader;

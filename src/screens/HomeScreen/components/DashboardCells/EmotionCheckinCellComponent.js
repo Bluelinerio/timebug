@@ -1,23 +1,23 @@
 // @flow
-import * as React from 'react'
+import * as React from 'react';
 import {
   CellContainer,
   Container,
   VectorEntypoButton,
-  Title
-}                 from './DashboardViews'
+  Title,
+} from './DashboardViews';
 
 const EmotionCheckinCellComponent = ({
   button,
   title,
-  onClose
+  onClose,
 }: {
   button: {
     onPress: () => void,
-    title: string
+    title: string,
   },
   title: string,
-  onClose: () => void
+  onClose: () => void,
 }) => {
   return (
     <CellContainer onClose={onClose}>
@@ -26,6 +26,6 @@ const EmotionCheckinCellComponent = ({
         <VectorEntypoButton name="emoji-neutral" {...button} />
       </Container>
     </CellContainer>
-  )
-}
-export default EmotionCheckinCellComponent
+  );
+};
+export default EmotionCheckinCellComponent;

@@ -1,17 +1,17 @@
-import React from 'react'
-import { Text } from 'react-native-elements'
-import { formTextColor } from '../../styles'
+import React from 'react';
+import { Text } from 'react-native-elements';
+import { formTextColor } from '../../styles';
 
 const Dummy = ({
   color = formTextColor,
-  value
+  value,
 }: {
   color?: string,
-  value: any
+  value: any,
 }) => {
   <Text h4 style={{ color }}>
     {JSON.stringify(value)}
-  </Text>
-}
+  </Text>;
+};
 
-export default Dummy
+export default Dummy;

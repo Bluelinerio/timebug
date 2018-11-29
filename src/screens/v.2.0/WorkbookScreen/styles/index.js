@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native';
 import {
   PHASE_2_COMPLETE,
   PHASE_3_COMPLETE,
@@ -6,38 +6,36 @@ import {
   PHASE_1_BAR,
   SELF_ASSESSMENT,
   VISION_CREATION,
-  white2
-} from '../../../../constants/colors'
-import {
-  iOSUIKit
-}                                     from 'react-native-typography'
-import { heightPercentage } from '../../../../utils/viewportCalculation'
+  white2,
+} from '../../../../constants/colors';
+import { iOSUIKit } from 'react-native-typography';
+import { heightPercentage } from '../../../../utils/viewportCalculation';
 
-export const stepBarHeight = heightPercentage(14)
-export const helperIconContainerSize = heightPercentage(80, stepBarHeight)
-export const helperIconSize = heightPercentage(80, helperIconContainerSize)
-export const stepIconSize = helperIconContainerSize
-export const stepBarPadding = heightPercentage(5, stepBarHeight)
+export const stepBarHeight = heightPercentage(14);
+export const helperIconContainerSize = heightPercentage(80, stepBarHeight);
+export const helperIconSize = heightPercentage(80, helperIconContainerSize);
+export const stepIconSize = helperIconContainerSize;
+export const stepBarPadding = heightPercentage(5, stepBarHeight);
 
-const fontColor = white2
+const fontColor = white2;
 
 export const svgStyles = {
   phase1: {
     fill: deepBlue,
     height: helperIconSize,
-    width: helperIconSize
+    width: helperIconSize,
   },
   phase2: {
     fill: white2,
     height: helperIconSize,
-    width: helperIconSize
+    width: helperIconSize,
   },
   phase3: {
     fill: white2,
     height: helperIconSize,
-    width: helperIconSize
-  }
-}
+    width: helperIconSize,
+  },
+};
 
 export const barColors = {
   phase1: {
@@ -54,17 +52,17 @@ export const barColors = {
     backgroundColor: PHASE_3_COMPLETE,
     borderBottomWidth: 0.5,
     borderBottomColor: VISION_CREATION,
-  }
-}
+  },
+};
 
 export default StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
   },
   center: {
     alignItems: 'center',
     justifyContent: 'center',
-    flex: 1
+    flex: 1,
   },
   stepBarContainer: {
     flex: 1,
@@ -75,7 +73,7 @@ export default StyleSheet.create({
     borderBottomWidth: 0.5,
     borderBottomColor: deepBlue,
     paddingHorizontal: 2,
-    paddingVertical: stepBarPadding
+    paddingVertical: stepBarPadding,
   },
   stepAudioButtonContainer: {
     flex: 1,
@@ -84,7 +82,7 @@ export default StyleSheet.create({
   },
   stepBarContentContainer: {
     flex: 2,
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   stepPictureContainer: {
     flex: 1,
@@ -94,17 +92,17 @@ export default StyleSheet.create({
   stepBarContent: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'flex-start'
+    alignItems: 'flex-start',
   },
   stepNumber: {
     ...iOSUIKit.subheadEmphasizedObject,
     fontSize: 16,
-    color: fontColor
+    color: fontColor,
   },
   stepTitle: {
     ...iOSUIKit.footnoteObject,
     fontSize: 14,
-    color: fontColor
+    color: fontColor,
   },
   stepBarTitleContainer: {
     flex: 2,
@@ -115,11 +113,11 @@ export default StyleSheet.create({
     borderRadius: 1000,
     alignItems: 'center',
     justifyContent: 'center',
-    flex: 1
+    flex: 1,
   },
   buttonImage: {
     height: stepIconSize,
     width: stepIconSize,
-    aspectRatio: 1 / 1
+    aspectRatio: 1 / 1,
   },
-})
+});

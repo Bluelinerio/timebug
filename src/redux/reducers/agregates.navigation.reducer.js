@@ -1,39 +1,39 @@
-import R                     from 'ramda'
-import routes                from '../../navigation/routes'
-import { composeReducers }   from './utils'
-import { NavigationActions } from 'react-navigation'
+import R from 'ramda';
+import routes from '../../navigation/routes';
+import { composeReducers } from './utils';
+import { NavigationActions } from 'react-navigation';
 
-const NavigationActionStepIdLens = R.lensPath(['params', 'stepId'])
-const NavigationActionFormIdLens = R.lensPath(['params', 'formId'])
-const NavigationActionRouteNameLens = R.lensPath(['routeName'])
+const NavigationActionStepIdLens = R.lensPath(['params', 'stepId']);
+const NavigationActionFormIdLens = R.lensPath(['params', 'formId']);
+const NavigationActionRouteNameLens = R.lensPath(['routeName']);
 
 export const NavigationReducerKeys = {
   pageVisits: 'pageVisits',
   pages: {
     stepWorkbook: 'stepWorkbook',
-    stepGuide: 'stepGuide'
-  }
-}
-export const ActionTypes = [NavigationActions.NAVIGATE]
+    stepGuide: 'stepGuide',
+  },
+};
+export const ActionTypes = [NavigationActions.NAVIGATE];
 
 const navigationReducer = (state = {}, action) => {
   const stepWorkbookLensWithStep = (stepId: string) =>
     R.lensPath([
       NavigationReducerKeys.pageVisits,
       NavigationReducerKeys.pages.stepWorkbook,
-      stepId
-    ])
+      stepId,
+    ]);
   const stepGuideLensWithStep = (stepId: string) =>
     R.lensPath([
       NavigationReducerKeys.pageVisits,
       NavigationReducerKeys.pages.stepGuide,
-      stepId
-    ])
+      stepId,
+    ]);
   const updateScreen = append => previous => ({
     count: ((previous && previous.count) || 0) + 1,
     last: Date.now(),
-    ...(append || {})
-  })
+    ...(append || {}),
+  });
 
   const tagPageVisits = (state = {}, action) => {
     switch (R.view(NavigationActionRouteNameLens, action)) {
@@ -43,30 +43,30 @@ const navigationReducer = (state = {}, action) => {
         stepGuideLensWithStep(R.view(NavigationActionStepIdLens, action)),
         updateScreen({}),
         state
-      )
+      );
     }
     case routes.step.WorkbookScreen:
       return R.over(
         stepWorkbookLensWithStep(R.view(NavigationActionStepIdLens, action)),
         updateScreen({
-          formId: R.view(NavigationActionFormIdLens)
+          formId: R.view(NavigationActionFormIdLens),
         }),
         state
-      )
+      );
     default:
-      break
+      break;
     }
-  }
+  };
 
   const tagLastVisitedPage = (state, action) => ({
     ...state,
     lastVisitedPage: {
       routeName: R.view(NavigationActionRouteNameLens, action),
-      timestamp: Date.now()
-    }
-  })
+      timestamp: Date.now(),
+    },
+  });
 
-  return composeReducers(tagPageVisits, tagLastVisitedPage)(state, action)
-}
+  return composeReducers(tagPageVisits, tagLastVisitedPage)(state, action);
+};
 
-export default navigationReducer
+export default navigationReducer;

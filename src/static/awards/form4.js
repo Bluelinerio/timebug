@@ -1,4 +1,4 @@
-import { LABEL, STRUCT } from './modelTypes'
+import { LABEL, STRUCT } from './modelTypes';
 
 export default {
   boardOfAdvisors: {
@@ -9,25 +9,25 @@ export default {
         key: 'boardMember',
         column: true,
         options: {
-          header: 'Member'
-        }
+          header: 'Member',
+        },
       },
       pillarsOfLife: {
         type: LABEL,
         key: 'pillarsOfLife',
         column: true,
         options: {
-          header: 'Pillar of Life'
-        }
+          header: 'Pillar of Life',
+        },
       },
       interactionFrequency: {
         type: LABEL,
         key: 'interactionFrequency',
         column: true,
         options: {
-          header: 'Frequency of interaction'
-        }
-      }
-    }
-  }
-}
+          header: 'Frequency of interaction',
+        },
+      },
+    },
+  },
+};

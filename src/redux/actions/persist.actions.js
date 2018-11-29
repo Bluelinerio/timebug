@@ -1,6 +1,6 @@
 // @flow
-import { STORE_LOADED } from '../actionTypes'
+import { STORE_LOADED } from '../actionTypes';
 
 export const storeHasLoaded = () => ({
-  type: STORE_LOADED
-})
+  type: STORE_LOADED,
+});

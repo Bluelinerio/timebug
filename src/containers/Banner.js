@@ -1,17 +1,17 @@
-import { NavigationActions } from 'react-navigation'
-import { connect }           from 'react-redux'
-import Banner                from '../components/Banner'
+import { NavigationActions } from 'react-navigation';
+import { connect } from 'react-redux';
+import Banner from '../components/Banner';
 
 const mapDispatchToProps = dispatch => ({
-  goBack: () => dispatch(NavigationActions.back())
-})
+  goBack: () => dispatch(NavigationActions.back()),
+});
 
 const merge = (stateProps: any, dispatchProps: any, ownProps: any) => {
-  const { goBack } = dispatchProps
+  const { goBack } = dispatchProps;
   return {
     ...ownProps,
-    goBack
-  }
-}
+    goBack,
+  };
+};
 
-export default connect(null, mapDispatchToProps, merge)(Banner)
+export default connect(null, mapDispatchToProps, merge)(Banner);

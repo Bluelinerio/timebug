@@ -1,5 +1,5 @@
 // @flow
-import React  from 'react';
+import React from 'react';
 import Button from '../../../components/Button';
 
 export type NextButtonProps = {
@@ -7,7 +7,7 @@ export type NextButtonProps = {
   onPress: () => void,
   disabled: boolean,
   buttonMessage: string,
-  backgroundColor: string
+  backgroundColor: string,
 };
 
 const WorkbookNextButton = (props: NextButtonProps) => {
@@ -23,4 +23,4 @@ const WorkbookNextButton = (props: NextButtonProps) => {
   );
 };
 
-export default WorkbookNextButton
+export default WorkbookNextButton;

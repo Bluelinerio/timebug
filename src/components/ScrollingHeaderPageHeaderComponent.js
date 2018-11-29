@@ -1,8 +1,8 @@
 // @flow
-import React                                from 'react'
-import { StyleSheet, Platform, Text, View } from 'react-native'
-import { SafeAreaView }                     from 'react-navigation'
-import { APPBAR_HEIGHT, STATUSBAR_HEIGHT }  from '../constants'
+import React from 'react';
+import { StyleSheet, Platform, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-navigation';
+import { APPBAR_HEIGHT, STATUSBAR_HEIGHT } from '../constants';
 
 const HeaderTitle = ({ style, ...rest }: { style: any }) => (
   <Text
@@ -11,12 +11,12 @@ const HeaderTitle = ({ style, ...rest }: { style: any }) => (
     accessibilityTraits="header"
     {...rest}
   />
-)
+);
 
 type Props = {
   color: string,
-  title: string
-}
+  title: string,
+};
 
 const ScrollingHeaderPageHeaderComponent = ({ color, title }: Props) => (
   <View
@@ -26,17 +26,17 @@ const ScrollingHeaderPageHeaderComponent = ({ color, title }: Props) => (
       {
         height: APPBAR_HEIGHT() + STATUSBAR_HEIGHT,
         backgroundColor: color,
-        justifyContent: 'center'
-      }
+        justifyContent: 'center',
+      },
     ]}
   >
     <SafeAreaView forceInset={{ top: 'always', bottom: 'never' }}>
       <HeaderTitle>{title}</HeaderTitle>
     </SafeAreaView>
   </View>
-)
+);
 
-export default ScrollingHeaderPageHeaderComponent
+export default ScrollingHeaderPageHeaderComponent;
 
 //const TITLE_OFFSET = Platform.OS === 'ios' ? 70 : 56
 const styles = StyleSheet.create({
@@ -45,14 +45,14 @@ const styles = StyleSheet.create({
     fontWeight: Platform.OS === 'ios' ? '700' : '500',
     color: Platform.OS === 'ios' ? '#F7F7F7' : '#FFF',
     textAlign: Platform.OS === 'ios' ? 'center' : 'left',
-    marginHorizontal: 16
+    marginHorizontal: 16,
   },
   platformContainerStyles: Platform.select({
     ios: {},
     android: {
       shadowColor: 'transparent',
       shadowOpacity: 0.0,
-      elevation: 0
-    }
-  })
-})
+      elevation: 0,
+    },
+  }),
+});

@@ -1,6 +1,6 @@
 //@flow
 
-import MyJourneyScreenContainer from './containers/MyJourneyScreenContainer'
+import MyJourneyScreenContainer from './containers/MyJourneyScreenContainer';
 
 // import React                    from 'react'
 // import { StyleSheet }           from 'react-native'
@@ -54,4 +54,4 @@ import MyJourneyScreenContainer from './containers/MyJourneyScreenContainer'
 //   }
 // )
 
-export default MyJourneyScreenContainer
+export default MyJourneyScreenContainer;

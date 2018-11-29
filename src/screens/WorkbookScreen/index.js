@@ -1,16 +1,16 @@
 // @flow
-import React                                   from 'react'
-import { HeaderBackButton, NavigationActions } from 'react-navigation'
-import screen                                  from './containers/WorkbookScreenContainer'
+import React from 'react';
+import { HeaderBackButton, NavigationActions } from 'react-navigation';
+import screen from './containers/WorkbookScreenContainer';
 
 screen.navigationOptions = ({
-  navigation: { dispatch, state: { params } }
+  navigation: { dispatch, state: { params } },
 }) => {
-  const { stepColor, stepNumber } = params
+  const { stepColor, stepNumber } = params;
   return {
     title: `Exercise ${stepNumber}`,
     headerStyle: {
-      backgroundColor: stepColor
+      backgroundColor: stepColor,
     },
     headerTintColor: 'white',
     headerLeft: (
@@ -18,10 +18,10 @@ screen.navigationOptions = ({
         tintColor="white"
         onPress={() => dispatch(NavigationActions.back())}
       />
-    )
-  }
-}
+    ),
+  };
+};
 
 export default {
-  screen
-}
+  screen,
+};

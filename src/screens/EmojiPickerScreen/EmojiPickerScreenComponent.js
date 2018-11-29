@@ -1,10 +1,10 @@
-import React                                       from 'react'
-import { StyleSheet, Text, View, LayoutAnimation } from 'react-native'
-import { SafeAreaView, NavigationActions }         from 'react-navigation'
-import type { NavigationProp }                     from 'react-navigation'
-import EmojiSelectorComponent, { Categories }      from './EmojiSelectorComponent'
-import Slider                                      from '../../components/Slider'
-import Button                                      from '../../components/Button'
+import React from 'react';
+import { StyleSheet, Text, View, LayoutAnimation } from 'react-native';
+import { SafeAreaView, NavigationActions } from 'react-navigation';
+import type { NavigationProp } from 'react-navigation';
+import EmojiSelectorComponent, { Categories } from './EmojiSelectorComponent';
+import Slider from '../../components/Slider';
+import Button from '../../components/Button';
 
 type Props = {
   title: string,
@@ -14,29 +14,29 @@ type Props = {
   minimumValue: number,
   updateStoreWithEmojiAndValue?: ({
     value: number,
-    emoji: string
+    emoji: string,
   }) => void,
-  navigation: NavigationProp<any>
-}
+  navigation: NavigationProp<any>,
+};
 
 type State = {
   emoji: string,
   value: number,
-  selectionMade: boolean
-}
+  selectionMade: boolean,
+};
 class EmojiPickerScreenComponent extends React.Component<Props, State> {
   static defaultProps = {
     color: '#007AFF',
     value: 0.5,
     maximumValue: 1.0,
-    minimumValue: 0.0
-  }
+    minimumValue: 0.0,
+  };
 
   state = {
     emoji: '😀',
     value: 0.5,
-    selectionMade: false
-  }
+    selectionMade: false,
+  };
 
   triggerLayoutAniamtion = () =>
     LayoutAnimation.configureNext({
@@ -44,62 +44,62 @@ class EmojiPickerScreenComponent extends React.Component<Props, State> {
       create: {
         type: LayoutAnimation.Types.spring,
         property: LayoutAnimation.Properties.scaleXY,
-        springDamping: 0.7
+        springDamping: 0.7,
       },
       update: {
         type: LayoutAnimation.Types.spring,
-        springDamping: 0.7
-      }
-    })
+        springDamping: 0.7,
+      },
+    });
 
   updateEmoji = emoji => {
-    const update = emoji !== this.state.emoji
+    const update = emoji !== this.state.emoji;
     if (update) {
-      const triggerLayoutAniamtion = this.state.selectionMade === false
+      const triggerLayoutAniamtion = this.state.selectionMade === false;
       this.setState({ emoji, selectionMade: true }, () => {
-        if (triggerLayoutAniamtion) this.triggerLayoutAniamtion()
-      })
+        if (triggerLayoutAniamtion) this.triggerLayoutAniamtion();
+      });
     }
-  }
+  };
 
   doneButton = () => {
-    const { value, emoji } = this.state
-    this.props.navigation.dispatch(NavigationActions.back())
+    const { value, emoji } = this.state;
+    this.props.navigation.dispatch(NavigationActions.back());
     this.props.updateStoreWithEmojiAndValue &&
       this.props.updateStoreWithEmojiAndValue({
         value,
-        emoji
-      })
-  }
+        emoji,
+      });
+  };
 
-  updateValue = value => this.setState({ value, selectionMade: true })
+  updateValue = value => this.setState({ value, selectionMade: true });
 
   render() {
-    const { emoji, selectionMade } = this.state
+    const { emoji, selectionMade } = this.state;
     return (
       <SafeAreaView
         forceInset={{ top: 'always', bottom: 'always' }}
         style={[
           styles.container,
           {
-            backgroundColor: '#fff'
-          }
+            backgroundColor: '#fff',
+          },
         ]}
       >
         <View
           style={[
             styles.display,
             {
-              borderColor: this.props.color
-            }
+              borderColor: this.props.color,
+            },
           ]}
         >
           <Text
             style={[
               styles.emoji,
               {
-                opacity: selectionMade ? 1 : 0.4
-              }
+                opacity: selectionMade ? 1 : 0.4,
+              },
             ]}
           >
             {emoji}
@@ -117,7 +117,7 @@ class EmojiPickerScreenComponent extends React.Component<Props, State> {
         {selectionMade && (
           <View
             style={{
-              marginVertical: 20
+              marginVertical: 20,
             }}
           >
             <Button
@@ -135,24 +135,24 @@ class EmojiPickerScreenComponent extends React.Component<Props, State> {
           </View>
         )}
       </SafeAreaView>
-    )
+    );
   }
 }
 
-export default EmojiPickerScreenComponent
+export default EmojiPickerScreenComponent;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   display: {
     padding: 20,
     margin: 24,
     borderRadius: 12,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
-  emoji: { fontSize: 64, backgroundColor: 'transparent' }
-})
+  emoji: { fontSize: 64, backgroundColor: 'transparent' },
+});

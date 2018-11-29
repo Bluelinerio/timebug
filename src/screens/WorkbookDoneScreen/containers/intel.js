@@ -1,4 +1,4 @@
-import R from 'ramda'
+import R from 'ramda';
 
 type RecentGoal = {
   goal: string,
@@ -9,8 +9,8 @@ type RecentGoal = {
     | 'Internal Qualities'
     | 'Environment'
     | 'Material Outcomes'
-    | 'Relationship Quality'
-}
+    | 'Relationship Quality',
+};
 
 const evaluateGoalTypes = (recentGoals: Array<RecentGoal>) => {
   const ItemComparable = {
@@ -20,14 +20,14 @@ const evaluateGoalTypes = (recentGoals: Array<RecentGoal>) => {
       'Achievement & Skills',
       'Health Indicators',
       'Internal Qualities',
-      'Relationship Quality'
+      'Relationship Quality',
     ],
     pass: 'accurate and safe',
-    fail: 'maintaining control and moving forward'
-  }
+    fail: 'maintaining control and moving forward',
+  };
 
   const count = ({ items, innerProp, pass, fail }) =>
-    R.countBy(item => (items.includes(item[innerProp]) ? pass : fail))
+    R.countBy(item => (items.includes(item[innerProp]) ? pass : fail));
 
   return x =>
     R.compose(
@@ -37,12 +37,12 @@ const evaluateGoalTypes = (recentGoals: Array<RecentGoal>) => {
       R.toPairs,
       R.invertObj,
       count(x)
-    )(ItemComparable)(recentGoals)
-}
+    )(ItemComparable)(recentGoals);
+};
 
 export const step5ForLater = ({ recentGoals }) =>
   `Goal types can help reveal your predominant mindset in life.${
     recentGoals.length > 0
       ? ` You care about ${evaluateGoalTypes(recentGoals)}`
       : ``
-  }`
+  }`;

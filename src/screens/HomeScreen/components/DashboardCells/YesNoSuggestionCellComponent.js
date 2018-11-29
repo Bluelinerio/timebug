@@ -1,22 +1,20 @@
 // @flow
-import * as React         from 'react'
-import { View }           from 'react-native'
+import * as React from 'react';
+import { View } from 'react-native';
 import {
   CellContainer,
   Container,
   YesButton,
   NoButton,
   Title,
-}                         from './DashboardViews'
-import {
-  triggerAnimation
-}                         from '../../../styles'
-import Meditator          from '../../../../components/Meditator'
-import { goToMeditation } from '../../../../redux/actions/nav.actions'
+} from './DashboardViews';
+import { triggerAnimation } from '../../../styles';
+import Meditator from '../../../../components/Meditator';
+import { goToMeditation } from '../../../../redux/actions/nav.actions';
 
-const ANSWER_YES = 'ANSWER_YES'
-const ANSWER_NO = 'ANSWER_NO'
-const NO_ANSWER = 'NO_ANSWER'
+const ANSWER_YES = 'ANSWER_YES';
+const ANSWER_NO = 'ANSWER_NO';
+const NO_ANSWER = 'NO_ANSWER';
 
 type Props = {
   title: string,
@@ -25,42 +23,42 @@ type Props = {
   onPressYes: () => void,
   onPressNo: () => void,
   onClose: () => void,
-  dispatch: any => void
-}
+  dispatch: any => void,
+};
 
 type State = {
-  answer: ANSWER_YES | ANSWER_NO | NO_ANSWER
-}
+  answer: ANSWER_YES | ANSWER_NO | NO_ANSWER,
+};
 
 class YesNoSuggestionCellComponent extends React.Component<Props, State> {
   static defaultProps = {
     followupYes: 'Awesome!!',
-    followupNo: 'Meditate Now?'
-  }
+    followupNo: 'Meditate Now?',
+  };
 
   state = {
-    answer: NO_ANSWER
-  }
+    answer: NO_ANSWER,
+  };
 
   answerNo = () => {
     this.setState({ answer: ANSWER_NO }, () => {
-      triggerAnimation()
-      this.props.onPressYes && this.props.onPressYes
-    })
-  }
+      triggerAnimation();
+      this.props.onPressYes && this.props.onPressYes;
+    });
+  };
   answerYes = () => {
     this.setState({ answer: ANSWER_YES }, () => {
-      triggerAnimation()
-      this.props.onPressNo && this.props.onPressNo()
-    })
-  }
+      triggerAnimation();
+      this.props.onPressNo && this.props.onPressNo();
+    });
+  };
   tmpMeditate = () => {
-    this.props.dispatch(goToMeditation())
-    this.props.onClose()
-  }
+    this.props.dispatch(goToMeditation());
+    this.props.onClose();
+  };
   render() {
-    const { title, followupNo, followupYes, ...rest } = this.props
-    const { answer } = this.state
+    const { title, followupNo, followupYes, ...rest } = this.props;
+    const { answer } = this.state;
     return (
       <CellContainer {...rest}>
         {answer === NO_ANSWER && (
@@ -79,7 +77,7 @@ class YesNoSuggestionCellComponent extends React.Component<Props, State> {
                 left: 5,
                 flexDirection: 'row',
                 justifyContent: 'flex-start',
-                alignItems: 'center'
+                alignItems: 'center',
               }}
             >
               <YesButton />
@@ -98,8 +96,8 @@ class YesNoSuggestionCellComponent extends React.Component<Props, State> {
           </React.Fragment>
         )}
       </CellContainer>
-    )
+    );
   }
 }
 
-export default YesNoSuggestionCellComponent
+export default YesNoSuggestionCellComponent;

@@ -13,7 +13,7 @@ export default {
   step: {
     StepScreen: 'StepScreen',
     WorkbookScreen: 'WorkbookScreen',
-    WorkbookDoneScreen: 'WorkbookDoneScreen'
+    WorkbookDoneScreen: 'WorkbookDoneScreen',
   },
   tab: {
     initialRouteName: 'RootNavigator',
@@ -21,18 +21,18 @@ export default {
     MeditationScreen: 'MeditationScreen',
     RootNavigator: 'RootNavigator',
     CheckinScreen: 'CheckinScreen',
-    GoalsNavigator: 'GoalsNavigator'
+    GoalsNavigator: 'GoalsNavigator',
   },
   version: {
     initialRouteName: 'AppVersion',
     TabNavigator: 'TabNavigator',
     AppVersion: 'AppVersion',
-    PrototypeNavigator: 'PrototypeNavigator'
+    PrototypeNavigator: 'PrototypeNavigator',
   },
   start: {
     initialRouteName: 'VersionNavigator',
     Walkthrough: 'Walkthrough',
-    VersionNavigator: 'VersionNavigator'
+    VersionNavigator: 'VersionNavigator',
   },
   // start: {
   //   initialRouteName: 'TabNavigator',
@@ -42,9 +42,9 @@ export default {
   goals: {
     initialRouteName: 'GoalScreen',
     GoalScreen: 'GoalScreen',
-    GoalStepScreen: 'GoalStepScreen'
-  }
-}
+    GoalStepScreen: 'GoalStepScreen',
+  },
+};
 
 export const protoRoutes = {
   proto: {
@@ -58,6 +58,6 @@ export const protoRoutes = {
   v2: {
     V2_StepScreen: 'V2_StepScreen',
     V2_WorkbookScreen: 'V2_WorkbookScreen',
-    initialRouteName: 'V2_StepScreen'
-  }
-}
+    initialRouteName: 'V2_StepScreen',
+  },
+};

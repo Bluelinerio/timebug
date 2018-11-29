@@ -1,3 +1,3 @@
-import CheckinScreenComponent from '../components/CheckinScreenComponent'
+import CheckinScreenComponent from '../components/CheckinScreenComponent';
 
-export default CheckinScreenComponent
+export default CheckinScreenComponent;

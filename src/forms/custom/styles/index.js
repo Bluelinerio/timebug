@@ -1,28 +1,28 @@
-import { StyleSheet, Platform } from 'react-native'
-import hexToRgba                from '../../../utils/colorTransform'
-import { widthPercentage }      from '../../../utils/viewportCalculation'
+import { StyleSheet, Platform } from 'react-native';
+import hexToRgba from '../../../utils/colorTransform';
+import { widthPercentage } from '../../../utils/viewportCalculation';
 import {
   azure,
   gray50,
   gray900,
   blue900,
   gray400,
-  greenA400
-}                               from '../../../constants/colors'
+  greenA400,
+} from '../../../constants/colors';
 
-export const formTextColor = blue900
-export const iconSize = 30
-export const iconColor = gray50
+export const formTextColor = blue900;
+export const iconSize = 30;
+export const iconColor = gray50;
 
-export const checkboxColor = greenA400
-export const uncheckedColor = gray400
-export const helpButtonColor = azure
+export const checkboxColor = greenA400;
+export const uncheckedColor = gray400;
+export const helpButtonColor = azure;
 
-const horizontalComponentsWidth = widthPercentage(80)
+const horizontalComponentsWidth = widthPercentage(80);
 
 const formStyles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
   },
   helpButton: {
     width: 40,
@@ -30,7 +30,7 @@ const formStyles = StyleSheet.create({
     borderRadius: 100,
     backgroundColor: azure,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   helpButtonContainer: {
     flex: 1,
@@ -38,7 +38,7 @@ const formStyles = StyleSheet.create({
     alignItems: 'flex-end',
     justifyContent: 'flex-end',
     paddingRight: 20,
-    paddingTop: 10
+    paddingTop: 10,
   },
   formContainer: {
     backgroundColor: 'transparent',
@@ -46,7 +46,7 @@ const formStyles = StyleSheet.create({
     padding: 16,
     paddingTop: 10,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   formButtonContainer: {
     backgroundColor: 'transparent',
@@ -56,7 +56,7 @@ const formStyles = StyleSheet.create({
     marginBottom: 16,
     marginHorizontal: 16,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   formButtonContainerDual: {
     backgroundColor: 'transparent',
@@ -66,7 +66,7 @@ const formStyles = StyleSheet.create({
     marginBottom: 16,
     marginHorizontal: 16,
     alignItems: 'center',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
   },
   formButton: {
     backgroundColor: azure,
@@ -83,29 +83,29 @@ const formStyles = StyleSheet.create({
         shadowColor: 'black',
         shadowOffset: {
           width: 2,
-          height: 2
+          height: 2,
         },
         shadowOpacity: 0.3,
-        shadowRadius: 12
-      }
-    })
+        shadowRadius: 12,
+      },
+    }),
   },
   formButtonText: {
-    color: gray50
+    color: gray50,
   },
   labelComponent: {
-    fontFamily: 'Metropolis'
+    fontFamily: 'Metropolis',
   },
   textInputLabelStyle: {
     fontFamily: 'Metropolis',
     fontWeight: '700',
     color: formTextColor,
-    fontSize: 18
+    fontSize: 18,
   },
   textInputStyle: {
     color: gray900,
     fontFamily: 'Helvetica',
-    fontSize: 16
+    fontSize: 16,
   },
   textInputContainerStyle: {
     marginTop: 16,
@@ -115,16 +115,16 @@ const formStyles = StyleSheet.create({
     paddingHorizontal: 4,
     backgroundColor: hexToRgba(azure, 0.1),
     width: horizontalComponentsWidth,
-    borderRadius: 4
+    borderRadius: 4,
   },
   buttonComponentContainer: {
     flexDirection: 'row',
     paddingTop: 16,
     marginTop: 8,
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
   },
   centeredButton: {
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   buttonComponentStyle: {
     backgroundColor: azure,
@@ -136,22 +136,22 @@ const formStyles = StyleSheet.create({
         shadowColor: 'black',
         shadowOffset: {
           width: 1,
-          height: 2
+          height: 2,
         },
         shadowOpacity: 0.3,
-        shadowRadius: 1
-      }
-    })
+        shadowRadius: 1,
+      },
+    }),
   },
   pickerContainer: {
-    marginTop: 16
+    marginTop: 16,
   },
   pickerStyle: {},
   pickerItemStyle: {
     color: gray900,
     fontFamily: 'Metropolis',
     fontWeight: '700',
-    fontSize: 16
+    fontSize: 16,
   },
   pickerBackground: {
     width: horizontalComponentsWidth,
@@ -160,11 +160,11 @@ const formStyles = StyleSheet.create({
     paddingHorizontal: 2,
     borderWidth: 0.5,
     borderRadius: 4,
-    borderColor: '#cccccc'
+    borderColor: '#cccccc',
   },
   listFormContainer: {
     alignItems: 'center',
-    borderRadius: 6
+    borderRadius: 6,
     // ...Platform.select({
     //   android: { elevation: 2 },
     //   ios: {
@@ -179,10 +179,10 @@ const formStyles = StyleSheet.create({
     // })
   },
   listElementContainer: {
-    marginBottom: 8
+    marginBottom: 8,
   },
   listButtonStyle: {
-    maxWidth: 80
+    maxWidth: 80,
   },
   listContentContainer: {
     marginTop: 16,
@@ -190,33 +190,33 @@ const formStyles = StyleSheet.create({
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
     alignSelf: 'flex-start',
-    alignContent: 'flex-start'
+    alignContent: 'flex-start',
   },
   listButtonTextStyle: {
     fontFamily: 'Metropolis',
     fontWeight: '700',
-    fontSize: 16
+    fontSize: 16,
   },
   textElementText: {
     fontFamily: 'Metropolis',
     fontWeight: '700',
     textAlign: 'justify',
     color: gray900,
-    alignSelf: 'flex-start'
+    alignSelf: 'flex-start',
   },
   answersContainer: {
-    padding: 16
+    padding: 16,
   },
   answerText: {
     fontFamily: 'Metropolis',
     fontWeight: '700',
     textAlign: 'justify',
     color: gray900,
-    alignSelf: 'flex-start'
+    alignSelf: 'flex-start',
   },
   indented: {
-    paddingLeft: 16
-  }
-})
+    paddingLeft: 16,
+  },
+});
 
-export default formStyles
+export default formStyles;

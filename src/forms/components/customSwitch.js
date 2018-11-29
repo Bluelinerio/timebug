@@ -1,50 +1,50 @@
-import React                  from 'react'
-import { View, Text, Switch } from 'react-native'
+import React from 'react';
+import { View, Text, Switch } from 'react-native';
 
 const composeStyles = (...overrideStyles) => (...styles) => [
   ...styles,
-  ...overrideStyles
-]
+  ...overrideStyles,
+];
 
 const checkbox = locals => {
-  if (locals.hidden) return null
+  if (locals.hidden) return null;
 
-  const stylesheet = locals.stylesheet
+  const stylesheet = locals.stylesheet;
 
   const formGroupStyle = locals.hasError
     ? stylesheet.formGroup.error
-    : stylesheet.formGroup.normal
+    : stylesheet.formGroup.normal;
 
   const controlLabelStyle = composeStyles({
-    color: locals.config.stepColor
+    color: locals.config.stepColor,
   })(
     locals.hasError
       ? stylesheet.controlLabel.error
       : stylesheet.controlLabel.normal
-  )
+  );
 
   const checkboxStyle = locals.hasError
     ? stylesheet.checkbox.error
-    : stylesheet.checkbox.normal
+    : stylesheet.checkbox.normal;
 
   const helpBlockStyle = locals.hasError
     ? stylesheet.helpBlock.error
-    : stylesheet.helpBlock.normal
+    : stylesheet.helpBlock.normal;
 
-  const errorBlockStyle = stylesheet.errorBlock
+  const errorBlockStyle = stylesheet.errorBlock;
 
   const label = locals.label ? (
     <Text style={controlLabelStyle}>{locals.label}</Text>
-  ) : null
+  ) : null;
   const help = locals.help ? (
     <Text style={helpBlockStyle}>{locals.help}</Text>
-  ) : null
+  ) : null;
   const error =
     locals.hasError && locals.error ? (
       <Text accessibilityLiveRegion="polite" style={errorBlockStyle}>
         {locals.error}
       </Text>
-    ) : null
+    ) : null;
 
   return (
     <View style={formGroupStyle}>
@@ -64,7 +64,7 @@ const checkbox = locals => {
       {help}
       {error}
     </View>
-  )
-}
+  );
+};
 
-export default checkbox
+export default checkbox;

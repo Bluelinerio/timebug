@@ -1,4 +1,4 @@
-import t                                       from '../../../forms/components';
+import t from '../../../forms/components';
 import { PillarsOfLife, InteractionFrequency } from './contents';
 
 export default {
@@ -9,56 +9,56 @@ export default {
         t.struct({
           boardMember: t.String,
           pillarsOfLife: PillarsOfLife,
-          interactionFrequency: InteractionFrequency
+          interactionFrequency: InteractionFrequency,
         })
-      )
+      ),
     }),
     options: {
       label: 'Who is on your Board of Advisors?',
       fields: {
         id: {
-          hidden: true
+          hidden: true,
         },
         boardOfAdvisors: {
           item: {
             auto: 'none',
             fields: {
               boardMember: {
-                auto: 'labels'
+                auto: 'labels',
                 //error: "Think about someone who's advice you would value regarding big decisions"
               },
               pillarsOfLife: {
-                label: 'What Pillar of Life does he/she influence?'
+                label: 'What Pillar of Life does he/she influence?',
                 //error: 'Assign this person to one of the 7 Timebug Life Categories'
               },
               interactionFrequency: {
-                label: 'How often do you interact with this person?'
+                label: 'How often do you interact with this person?',
                 //error: "How often do you interact with this person?"
-              }
-            }
+              },
+            },
           },
           disableOrder: true,
           maxLines: 15,
           config: {
-            maxLines: 15
-          }
-        }
-      }
+            maxLines: 15,
+          },
+        },
+      },
     },
     value: {
       fields: {
-        id: 'step4+v0.0.0.1'
-      }
-    }
+        id: 'step4+v0.0.0.1',
+      },
+    },
   },
   2: {
     type: t.struct({
       supportGroups: t.list(
         t.struct({
           supportGroup: t.String,
-          pillarsOfLife: PillarsOfLife
+          pillarsOfLife: PillarsOfLife,
         })
-      )
+      ),
     }),
     options: {
       label:
@@ -68,23 +68,23 @@ export default {
           disableOrder: true,
           maxLines: 10,
           config: {
-            maxLines: 10
+            maxLines: 10,
           },
           item: {
             auto: 'none',
             fields: {
               supportGroup: {
-                auto: 'labels'
+                auto: 'labels',
                 //error: "Please enter the name of a support group"
               },
               pillarsOfLife: {
-                label: 'What Pillar of Life does this group influence?'
+                label: 'What Pillar of Life does this group influence?',
                 //error: "Please select a Life Category."
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+              },
+            },
+          },
+        },
+      },
+    },
+  },
 };

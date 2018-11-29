@@ -1,72 +1,72 @@
 // @flow
-import { NavigationActions }                             from 'react-navigation'
-import { connect }                                       from 'react-redux'
-import PhaseHeader                                       from '../components/PhaseHeader'
-import type { Props }                                    from '../components/PhaseHeader'
-import selectors                                         from '../redux/selectors'
-import { formatPhaseTitle, translateCMSPhaseToStandard } from '../services/cms'
-import type { Step }                                     from '../services/cms'
+import { NavigationActions } from 'react-navigation';
+import { connect } from 'react-redux';
+import PhaseHeader from '../components/PhaseHeader';
+import type { Props } from '../components/PhaseHeader';
+import selectors from '../redux/selectors';
+import { formatPhaseTitle, translateCMSPhaseToStandard } from '../services/cms';
+import type { Step } from '../services/cms';
 import {
   getTextColorFromStep,
   backgroundColorFromStep,
   getColorFromStep,
-  phaseHeaderBackgroundColorForPhase
-}                                                        from '../styles/components/global'
+  phaseHeaderBackgroundColorForPhase,
+} from '../styles/components/global';
 
 type DispatchProps = {
-  goBack: () => any
-}
+  goBack: () => any,
+};
 
 type OwnProps = {
   override: () => any,
   step: Step,
   phase: string,
-  onSelectStep: Step => any
-}
+  onSelectStep: Step => any,
+};
 
 type StateProps = {
   steps: Array<Step>,
   user: any,
-  isStepCompleted: number => boolean
-}
+  isStepCompleted: number => boolean,
+};
 
 const mapStateToProps = (state: any) => {
-  const steps = Object.values(selectors.steps(state))
-  const user = selectors.getUser(state)
-  const isStepCompleted = selectors.isStepCompleted(state)
+  const steps = Object.values(selectors.steps(state));
+  const user = selectors.getUser(state);
+  const isStepCompleted = selectors.isStepCompleted(state);
   return {
     steps,
     user,
-    isStepCompleted
-  }
-}
+    isStepCompleted,
+  };
+};
 
 const mapDispatchToProps = (dispatch: any): DispatchProps => ({
-  goBack: () => dispatch(NavigationActions.back())
-})
+  goBack: () => dispatch(NavigationActions.back()),
+});
 
 const mergeProps = (
   stateProps: StateProps,
   dispatchProps: DispatchProps,
   ownProps: OwnProps
 ): Props => {
-  const { isStepCompleted, steps } = stateProps
-  const { override, step, phase, ...rest } = ownProps
-  const { type, stepId } = step
-  const { goBack } = dispatchProps
+  const { isStepCompleted, steps } = stateProps;
+  const { override, step, phase, ...rest } = ownProps;
+  const { type, stepId } = step;
+  const { goBack } = dispatchProps;
 
-  const title = formatPhaseTitle(type)
-  const onBackPress = override ? override : goBack
+  const title = formatPhaseTitle(type);
+  const onBackPress = override ? override : goBack;
 
-  const textColor = getTextColorFromStep(step.type, isStepCompleted(stepId))
+  const textColor = getTextColorFromStep(step.type, isStepCompleted(stepId));
   const backgroundColor = backgroundColorFromStep(
     step.type,
     isStepCompleted(stepId)
-  )
+  );
 
-  const headerBackgroundColor = phaseHeaderBackgroundColorForPhase(phase)
+  const headerBackgroundColor = phaseHeaderBackgroundColorForPhase(phase);
 
-  const titleColor = getColorFromStep(step.type)
+  const titleColor = getColorFromStep(step.type);
 
   return {
     ...rest,
@@ -79,10 +79,10 @@ const mergeProps = (
     headerBackgroundColor,
     steps: steps.filter(
       step => translateCMSPhaseToStandard(step.type) === phase
-    )
-  }
-}
+    ),
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(
   PhaseHeader
-)
+);

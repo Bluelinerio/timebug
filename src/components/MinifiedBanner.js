@@ -1,16 +1,16 @@
 //@flow
-import React                      from 'react'
-import { View, Image, StatusBar } from 'react-native'
-import { HeaderBackButton }       from 'react-navigation'
-import UserProfileImageConsumer   from '../containers/UserProfileImageConsumer'
-import styles, { bannerColor }    from '../styles/components/Banner/mini'
-import UserProfileImage           from '../containers/UserProfileImageContainer'
-import { icon }                   from '../resources/images'
+import React from 'react';
+import { View, Image, StatusBar } from 'react-native';
+import { HeaderBackButton } from 'react-navigation';
+import UserProfileImageConsumer from '../containers/UserProfileImageConsumer';
+import styles, { bannerColor } from '../styles/components/Banner/mini';
+import UserProfileImage from '../containers/UserProfileImageContainer';
+import { icon } from '../resources/images';
 
 type Props = {
   onBackPress: () => any,
-  backButton: boolean
-}
+  backButton: boolean,
+};
 
 const MinifiedBanner = ({ onBackPress = null, backButton = false }: Props) => {
   return (
@@ -40,7 +40,7 @@ const MinifiedBanner = ({ onBackPress = null, backButton = false }: Props) => {
         </View>
       </View>
     </View>
-  )
-}
+  );
+};
 
-export default MinifiedBanner
+export default MinifiedBanner;

@@ -1,22 +1,22 @@
 //@flow
-import React          from 'react'
-import { View, Text } from 'react-native'
-import styles         from '../styles'
+import React from 'react';
+import { View, Text } from 'react-native';
+import styles from '../styles';
 
 export type HeaderElement = {
   important?: boolean,
-  text: string
-}
+  text: string,
+};
 
 export type HeaderProps = {
-  elements: [HeaderElement]
-}
+  elements: [HeaderElement],
+};
 
 const GenericHeader = ({ elements }: HeaderProps) => (
   <View style={styles.row}>
     {elements &&
       elements.map(el => {
-        const { important, text } = el
+        const { important, text } = el;
         return (
           <View
             key={text}
@@ -25,15 +25,15 @@ const GenericHeader = ({ elements }: HeaderProps) => (
             <Text
               style={[
                 important ? styles.pillarText : styles.elementText,
-                styles.headerRowText
+                styles.headerRowText,
               ]}
             >
               {text}
             </Text>
           </View>
-        )
+        );
       })}
   </View>
-)
+);
 
-export default GenericHeader
+export default GenericHeader;

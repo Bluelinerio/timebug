@@ -1,52 +1,52 @@
-import { StyleSheet, StatusBar, Platform } from 'react-native'
-import Theme                               from './components/Theme'
+import { StyleSheet, StatusBar, Platform } from 'react-native';
+import Theme from './components/Theme';
 import {
   heightPercentage,
-  widthPercentage
-}                                          from '../../utils/viewportCalculation'
+  widthPercentage,
+} from '../../utils/viewportCalculation';
 
-const baseSpacing = widthPercentage(6)
-const largeVerticalSpacing = heightPercentage(2)
-const imageHeight = heightPercentage(60)
-const imageWidth = widthPercentage(60)
+const baseSpacing = widthPercentage(6);
+const largeVerticalSpacing = heightPercentage(2);
+const imageHeight = heightPercentage(60);
+const imageWidth = widthPercentage(60);
 
 export const gradientColors = {
   start: '#008EBC',
-  end: '#005587'
-}
+  end: '#005587',
+};
 
 export default StyleSheet.create({
   screen: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   regularContainer: {
     paddingHorizontal: baseSpacing,
     paddingTop: largeVerticalSpacing + StatusBar.currentHeight,
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   footer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginHorizontal: baseSpacing
+    marginHorizontal: baseSpacing,
   },
   container: {
     paddingHorizontal: baseSpacing,
     marginTop: largeVerticalSpacing + StatusBar.currentHeight,
-    flex: 1
+    flex: 1,
   },
   image: {
     height: imageHeight,
     ...Platform.select({
       android: {
-        borderRadius: 10
+        borderRadius: 10,
       },
       ios: {
         shadowColor: 'black',
-        shadowOpacity: 0.5
-      }
-    })
+        shadowOpacity: 0.5,
+      },
+    }),
   },
   imageContainer: {
     flex: 1,
@@ -55,24 +55,24 @@ export default StyleSheet.create({
       android: {
         marginTop: largeVerticalSpacing,
         elevation: 10,
-        width: imageWidth
+        width: imageWidth,
       },
       ios: {
         shadowColor: 'black',
-        shadowOpacity: 0.5
-      }
-    })
+        shadowOpacity: 0.5,
+      },
+    }),
   },
   title: {
     marginTop: -largeVerticalSpacing,
     marginBottom: largeVerticalSpacing,
-    color: 'white'
+    color: 'white',
   },
   description: {
     marginTop: largeVerticalSpacing,
-    color: 'white'
-  }
-})
+    color: 'white',
+  },
+});
 
 export const theme = {
   ...Theme,
@@ -85,43 +85,43 @@ export const theme = {
     header1: {
       fontSize: 48,
       lineHeight: 58,
-      fontFamily: 'Helvetica'
+      fontFamily: 'Helvetica',
     },
     header2: {
       fontSize: heightPercentage(4),
-      fontFamily: 'Helvetica-Bold'
+      fontFamily: 'Helvetica-Bold',
     },
     header3: {
       fontSize: heightPercentage(2.7),
       fontFamily: 'HelveticaNeue',
-      fontWeight: 'bold'
+      fontWeight: 'bold',
     },
     large: {
       fontSize: 14,
       lineHeight: 21,
-      fontFamily: 'Helvetica'
+      fontFamily: 'Helvetica',
     },
     regular: {
       fontSize: 14,
       lineHeight: 21,
-      fontFamily: 'Helvetica'
+      fontFamily: 'Helvetica',
     },
     small: {
       fontSize: 14,
       lineHeight: 18,
-      fontFamily: 'Helvetica'
+      fontFamily: 'Helvetica',
     },
     micro: {
       fontSize: 8,
       lineHeight: 8,
-      fontFamily: 'Helvetica'
-    }
+      fontFamily: 'Helvetica',
+    },
   },
   spacing: {
     tiny: 8,
     small: 16,
     base: 24,
     large: 48,
-    xLarge: 64
-  }
-}
+    xLarge: 64,
+  },
+};

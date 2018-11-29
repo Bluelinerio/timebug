@@ -1,16 +1,16 @@
-import React                            from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
-import { SafeAreaView }                 from 'react-navigation'
-import Banner                           from '../../../containers/NavigationAwareBanner'
-import styles                           from '../styles'
+import React from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
+import { SafeAreaView } from 'react-navigation';
+import Banner from '../../../containers/NavigationAwareBanner';
+import styles from '../styles';
 
 class PrototypeScreen extends React.PureComponent<any> {
   render() {
     const {
       goToGoalFormScreen,
       goToPrototypeGoalScreen,
-      goToPrototypeStartScreen
-    } = this.props
+      goToPrototypeStartScreen,
+    } = this.props;
     return (
       <SafeAreaView
         forceInset={{ top: 'always', bottom: 'never' }}
@@ -56,8 +56,8 @@ class PrototypeScreen extends React.PureComponent<any> {
           </View>
         </View>
       </SafeAreaView>
-    )
+    );
   }
 }
 
-export default PrototypeScreen
+export default PrototypeScreen;

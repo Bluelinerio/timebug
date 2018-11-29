@@ -1,11 +1,7 @@
-import * as React                                            from 'react'
-import { Dimensions }                                        from 'react-native'
-import Svg, {
-  Circle,
-  Rect,
-  G
-}                                                            from 'react-native-svg'
-import type { GridItemProps, GridContainerProps, GridProps } from '../Grid'
+import * as React from 'react';
+import { Dimensions } from 'react-native';
+import Svg, { Circle, Rect, G } from 'react-native-svg';
+import type { GridItemProps, GridContainerProps, GridProps } from '../Grid';
 
 export const renderContainer = (props: GridContainerProps) => (
   <Svg width={props.width} height={props.height} style={props.style || {}}>
@@ -19,7 +15,7 @@ export const renderContainer = (props: GridContainerProps) => (
       {props.children}
     </G>
   </Svg>
-)
+);
 
 export const renderRect = (props: GridItemProps) => (
   <Rect
@@ -29,7 +25,7 @@ export const renderRect = (props: GridItemProps) => (
     rx={(props.rx || 1).toString()}
     {...props}
   />
-)
+);
 
 export const renderCircle = (props: GridItemProps) => (
   <Circle
@@ -44,7 +40,7 @@ export const renderCircle = (props: GridItemProps) => (
     ).toString()}
     fill={colors[state[props.index]]}
   />
-)
+);
 
 export const defaultProps: GridProps = {
   columns: 10,
@@ -55,15 +51,15 @@ export const defaultProps: GridProps = {
     spaceX: ({ tileWidth }) => Math.floor(tileWidth * 0.1),
     spaceY: ({ height }) => Math.floor(height * 0.1),
     renderItem: ({ width, height }) => ({
-      rx: Math.floor(Math.min(width, height) * 0.5)
-    })
+      rx: Math.floor(Math.min(width, height) * 0.5),
+    }),
   },
   renderItem: renderCircle,
-  renderContainer: renderContainer
-}
+  renderContainer: renderContainer,
+};
 
-const circle = 0.3
-const circleRatio = 0.4
+const circle = 0.3;
+const circleRatio = 0.4;
 const state = [
   0,
   3,
@@ -94,7 +90,7 @@ const state = [
   0,
   0,
   1,
-  1
-]
+  1,
+];
 
-const colors = ['#E9E9E9', '#005587', '#F89A1F', '#00B896']
+const colors = ['#E9E9E9', '#005587', '#F89A1F', '#00B896'];

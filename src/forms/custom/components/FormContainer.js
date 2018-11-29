@@ -1,9 +1,9 @@
 // @flow
-import React      from 'react'
-import { View }   from 'react-native'
-import styles     from '../styles'
-import Form       from './Form'
-import HelpButton from '../containers/HelpButtonContainer'
+import React from 'react';
+import { View } from 'react-native';
+import styles from '../styles';
+import Form from './Form';
+import HelpButton from '../containers/HelpButtonContainer';
 
 type Props = {
   formContainerStyle?: any,
@@ -12,8 +12,8 @@ type Props = {
   step: string,
   model: any,
   value: any,
-  onFinish: any => any
-}
+  onFinish: any => any,
+};
 
 class FormContainer extends React.PureComponent<Props> {
   render() {
@@ -24,8 +24,8 @@ class FormContainer extends React.PureComponent<Props> {
       step,
       formContainerStyle = {},
       helpButtonContainerStyle = {},
-      helpButtonLabelStyle = {}
-    } = this.props
+      helpButtonLabelStyle = {},
+    } = this.props;
     return (
       <React.Fragment>
         <View style={[styles.container, formContainerStyle]}>
@@ -37,8 +37,8 @@ class FormContainer extends React.PureComponent<Props> {
           <Form model={model} value={value} onFinish={onFinish} />
         </View>
       </React.Fragment>
-    )
+    );
   }
 }
 
-export default FormContainer
+export default FormContainer;

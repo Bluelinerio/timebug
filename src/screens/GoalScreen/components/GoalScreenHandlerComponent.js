@@ -1,21 +1,25 @@
-import React from 'react'
-import { View } from 'react-native'
-import R from 'ramda'
-import ScreenLockedContainer from '../containers/ScreenLockedContainer'
-import GoalListComponent from '../containers/GoalListContainer'
-import styles from '../styles'
+import React from 'react';
+import { View } from 'react-native';
+import R from 'ramda';
+import ScreenLockedContainer from '../containers/ScreenLockedContainer';
+import GoalListComponent from '../containers/GoalListContainer';
+import styles from '../styles';
 
 type GoalScreenHandlerComponentProps = {
-  data: any
-}
+  data: any,
+};
 
 const GoalScreenHandlerComponent = (props: GoalScreenHandlerComponentProps) => {
-  const { data } = props
+  const { data } = props;
   return (
     <View style={styles.handlerContainer}>
-      {R.isEmpty(data) ? <ScreenLockedContainer /> : <GoalListComponent data={data} />}
+      {R.isEmpty(data) ? (
+        <ScreenLockedContainer />
+      ) : (
+        <GoalListComponent data={data} />
+      )}
     </View>
-  )
-}
+  );
+};
 
-export default GoalScreenHandlerComponent
+export default GoalScreenHandlerComponent;

@@ -7,17 +7,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'flex-end'
+    justifyContent: 'flex-end',
   },
   pickerview: {
-    width: SCREEN_WIDTH
+    width: SCREEN_WIDTH,
   },
   modal: {
     width: SCREEN_WIDTH,
     padding: 0,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'white'
+    backgroundColor: 'white',
   },
   buttonview: {
     width: SCREEN_WIDTH,
@@ -25,14 +25,14 @@ const styles = StyleSheet.create({
     borderTopWidth: StyleSheet.hairlineWidth,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    borderTopColor: 'lightgrey'
+    borderTopColor: 'lightgrey',
   },
   picker_bottom: {
-    width: SCREEN_WIDTH
+    width: SCREEN_WIDTH,
   },
   keyboardButtonText: {
-    width: BUTTON_WIDTH
-  }
+    width: BUTTON_WIDTH,
+  },
 });
 
 export default styles;

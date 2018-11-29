@@ -1,40 +1,40 @@
 // @flow
-import { connect }                                      from 'react-redux'
-import { compose, mapProps }                            from 'recompose'
-import selectors                                        from '../../../redux/selectors'
-import { userRequired, withNavigationAndStep }          from '../../../HOC'
-import type { Step }                                    from '../../../services/cms'
+import { connect } from 'react-redux';
+import { compose, mapProps } from 'recompose';
+import selectors from '../../../redux/selectors';
+import { userRequired, withNavigationAndStep } from '../../../HOC';
+import type { Step } from '../../../services/cms';
 import {
   restartStepActionSafe,
-  goBackFrom
-}                                                       from '../../../redux/actions/nav.actions'
-import WorkbookDoneScreen                               from '../components/WorkbookDoneScreen'
-import type { Props }                                   from '../components/WorkbookDoneScreen'
-import getInsight, { dummyFormValue }                   from './../../../static/insights'
-import { suggestNextStep, Screens, NextStepSuggestion } from './suggestions'
-import routes                                           from '../../../navigation/routes'
+  goBackFrom,
+} from '../../../redux/actions/nav.actions';
+import WorkbookDoneScreen from '../components/WorkbookDoneScreen';
+import type { Props } from '../components/WorkbookDoneScreen';
+import getInsight, { dummyFormValue } from './../../../static/insights';
+import { suggestNextStep, Screens, NextStepSuggestion } from './suggestions';
+import routes from '../../../navigation/routes';
 
 const merge = ({
   steps,
   step,
   completedStepIdsChronologically,
   isSynchingFormData,
-  dispatch
+  dispatch,
 }: {
   step: Step,
   steps: Array<Step>,
   isSynchingFormData: boolean,
-  dispatch: () => void
+  dispatch: () => void,
 }): Props => {
-  const insightText = getInsight(step.stepId, dummyFormValue)
-  const backgroundColor = step.color
+  const insightText = getInsight(step.stepId, dummyFormValue);
+  const backgroundColor = step.color;
 
   const {
-    data: { suggestedStepId, texts }
-  }: NextStepSuggestion = suggestNextStep(completedStepIdsChronologically)
+    data: { suggestedStepId, texts },
+  }: NextStepSuggestion = suggestNextStep(completedStepIdsChronologically);
 
-  const nextStepMotivationText: string = texts[Screens.DONE_SCREEN]
-  const nextStep: string = steps[suggestedStepId]
+  const nextStepMotivationText: string = texts[Screens.DONE_SCREEN];
+  const nextStep: string = steps[suggestedStepId];
 
   if (nextStep) {
     // this is required in case we change how stepId work...
@@ -47,10 +47,10 @@ const merge = ({
         text: `Start Step ${nextStep.number}`.toUpperCase(),
         onPress: () =>
           dispatch(restartStepActionSafe(nextStep, routes.root.AssignmentFlow)),
-        textColor: nextStep.color
+        textColor: nextStep.color,
       },
-      isSynchingFormData
-    }
+      isSynchingFormData,
+    };
   }
 
   return {
@@ -61,11 +61,11 @@ const merge = ({
     button: {
       text: `Done`.toUpperCase(),
       onPress: () => dispatch(goBackFrom(routes.root.AssignmentFlow)),
-      textColor: backgroundColor
+      textColor: backgroundColor,
     },
-    isSynchingFormData
-  }
-}
+    isSynchingFormData,
+  };
+};
 
 const WorkbookDoneScreenContainer = compose(
   userRequired,
@@ -76,12 +76,12 @@ const WorkbookDoneScreenContainer = compose(
       .map(f => f.stepId)
       .map(stepId => stepId.toString()),
     isSynchingFormData:
-      selectors.isSynchingFormData(state) || selectors.loadingFormData(state)
+      selectors.isSynchingFormData(state) || selectors.loadingFormData(state),
   })),
   mapProps(merge)
-)(WorkbookDoneScreen)
+)(WorkbookDoneScreen);
 
-export default WorkbookDoneScreenContainer
+export default WorkbookDoneScreenContainer;
 
 // type FormMetaData = {
 //   uploading: boolean,

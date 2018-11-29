@@ -1,7 +1,7 @@
 //@flow
-import React                   from 'react'
-import { View, Text, Switch }  from 'react-native'
-import styles, { stylesStep1 } from '../../../../styles'
+import React from 'react';
+import { View, Text, Switch } from 'react-native';
+import styles, { stylesStep1 } from '../../../../styles';
 
 export type MeditationCheckinComponentProps = {
   extendedSubmit: () => any,
@@ -10,14 +10,14 @@ export type MeditationCheckinComponentProps = {
   model: {
     fields: {
       [key: string]: {
-        options: any
-      }
-    }
+        options: any,
+      },
+    },
   },
   mapDataToPayload: () => any,
   fieldKey: string,
-  value: { value: boolean }
-}
+  value: { value: boolean },
+};
 
 class MeditationCheckinComponent extends React.PureComponent<
   MeditationCheckinComponentProps
@@ -29,14 +29,14 @@ class MeditationCheckinComponent extends React.PureComponent<
       formKey,
       model,
       mapDataToPayload,
-      fieldKey
-    } = this.props
-    extendedSubmit(mapDataToPayload(step, formKey, fieldKey, value, model))
-  }
+      fieldKey,
+    } = this.props;
+    extendedSubmit(mapDataToPayload(step, formKey, fieldKey, value, model));
+  };
 
   render() {
-    const { model: { fields }, value, fieldKey } = this.props
-    const { options } = fields[fieldKey]
+    const { model: { fields }, value, fieldKey } = this.props;
+    const { options } = fields[fieldKey];
     return (
       <View style={[styles.container, stylesStep1.formContainer]}>
         <View>
@@ -54,8 +54,8 @@ class MeditationCheckinComponent extends React.PureComponent<
           <Text style={stylesStep1.congratulations}>Good job!</Text>
         ) : null}
       </View>
-    )
+    );
   }
 }
 
-export default MeditationCheckinComponent
+export default MeditationCheckinComponent;

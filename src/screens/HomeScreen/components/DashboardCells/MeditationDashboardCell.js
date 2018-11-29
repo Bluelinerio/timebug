@@ -1,18 +1,18 @@
 // @flow
-import * as React     from 'react'
-import { View, Text } from 'react-native'
-import styles         from '../../../styles/dashboard.styles'
-import Meditator      from '../../../../components/Meditator'
-import YesNoButton    from '../../../../components/YesNoButton'
-import HighlighRow    from '../../../../components/HighlighRow'
-import { hotPink }    from '../../../../constants/colors'
+import * as React from 'react';
+import { View, Text } from 'react-native';
+import styles from '../../../styles/dashboard.styles';
+import Meditator from '../../../../components/Meditator';
+import YesNoButton from '../../../../components/YesNoButton';
+import HighlighRow from '../../../../components/HighlighRow';
+import { hotPink } from '../../../../constants/colors';
 
 const MeditationDashboardCell = ({
   title,
-  onPress
+  onPress,
 }: {
   title: string,
-  onPress: () => void
+  onPress: () => void,
 }) => (
   <View style={styles.dashboardCard}>
     <View style={styles.suggestionRow}>
@@ -23,8 +23,8 @@ const MeditationDashboardCell = ({
             styles.strong,
             {
               textAlign: 'center',
-              color: hotPink
-            }
+              color: hotPink,
+            },
           ]}
         >
           {title}
@@ -34,7 +34,7 @@ const MeditationDashboardCell = ({
           style={{
             flexDirection: 'row',
             justifyContent: 'center',
-            alignItems: 'center'
+            alignItems: 'center',
           }}
         >
           <YesNoButton title={title} onPress={onPress} />
@@ -42,5 +42,5 @@ const MeditationDashboardCell = ({
       </HighlighRow>
     </View>
   </View>
-)
-export default MeditationDashboardCell
+);
+export default MeditationDashboardCell;

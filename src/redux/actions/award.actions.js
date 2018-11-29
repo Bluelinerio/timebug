@@ -3,8 +3,8 @@ import {
   SUBMIT_AWARD_VALUE,
   RESET_AWARD_VALUE,
   SUBMIT_AWARD_VALUE_EXTENDED,
-  EVALUATE_AWARD_DATA_EXTENDED
-} from '../actionTypes'
+  EVALUATE_AWARD_DATA_EXTENDED,
+} from '../actionTypes';
 
 export type SubmitAwardValuePayload = {
   stepId: string,
@@ -12,14 +12,14 @@ export type SubmitAwardValuePayload = {
     key: string,
     value: any,
     formIndex: any,
-    type: any
-  }
-}
+    type: any,
+  },
+};
 
 export type SumbitAwardValueAction = {
   type: SUBMIT_AWARD_VALUE,
-  payload: SubmitAwardValuePayload
-}
+  payload: SubmitAwardValuePayload,
+};
 
 export type ExtendedSubmitAwardAnswerPayload = {
   stepId: string,
@@ -27,38 +27,38 @@ export type ExtendedSubmitAwardAnswerPayload = {
     awardKey: string,
     value: any,
     model: any,
-    meta? : any,
+    meta?: any,
     fieldKey: any,
-    type: any
-  }
-}
+    type: any,
+  },
+};
 
 export type ExtendedSubmitAwardAnswerAction = {
   type: SUBMIT_AWARD_VALUE_EXTENDED,
-  payload: SubmitAwardValuePayload
-}
+  payload: SubmitAwardValuePayload,
+};
 
 export const submitAwardAnswers = (
   payload: SubmitAwardValuePayload
 ): SumbitAwardValueAction => ({
   type: SUBMIT_AWARD_VALUE,
-  payload
-})
+  payload,
+});
 
 export const extendedSubmitAwardAnswers = (
   payload: ExtendedSubmitAwardAnswerPayload
 ): ExtendedSubmitAwardAnswerAction => ({
   type: SUBMIT_AWARD_VALUE_EXTENDED,
-  payload
-})
+  payload,
+});
 
 export const resetAward = () => ({
-  type: RESET_AWARD_VALUE
-})
+  type: RESET_AWARD_VALUE,
+});
 
 export const evaluateExtendedAward = (
   payload: ExtendedSubmitAwardAnswerPayload
 ): ExtendedSubmitAwardAnswerAction => ({
   type: EVALUATE_AWARD_DATA_EXTENDED,
-  payload
-})
+  payload,
+});

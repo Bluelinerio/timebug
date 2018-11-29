@@ -1,27 +1,27 @@
 //@flow
-import * as React                                   from 'react'
-import { View }                                     from 'react-native'
-import Markdown                                     from '../../../Modules/Markdown'
-import { APPBAR_HEIGHT, STATUSBAR_HEIGHT }          from '../../../constants'
-import ScrollingHeaderPageComponent                 from '../../../components/ScrollingHeaderPageComponent'
-import ScrollingHeaderPageContentComponent          from '../../../components/ScrollingHeaderPageContentComponent'
-import ScrollingHeaderPageHeaderComponent           from '../../../components/ScrollingHeaderPageHeaderComponent'
-import ScrollingHeaderPageHeaderBackgorundComponent from '../../../components/ScrollingHeaderPageHeaderBackgorundComponent'
-import { HEADER_HEIGHT }                            from '../styles'
+import * as React from 'react';
+import { View } from 'react-native';
+import Markdown from '../../../Modules/Markdown';
+import { APPBAR_HEIGHT, STATUSBAR_HEIGHT } from '../../../constants';
+import ScrollingHeaderPageComponent from '../../../components/ScrollingHeaderPageComponent';
+import ScrollingHeaderPageContentComponent from '../../../components/ScrollingHeaderPageContentComponent';
+import ScrollingHeaderPageHeaderComponent from '../../../components/ScrollingHeaderPageHeaderComponent';
+import ScrollingHeaderPageHeaderBackgorundComponent from '../../../components/ScrollingHeaderPageHeaderBackgorundComponent';
+import { HEADER_HEIGHT } from '../styles';
 
 export type PageContentProps = {
   markdownStyles: any,
-  content: string
-}
+  content: string,
+};
 
 const PageContent = ({
   content,
-  markdownStyles
+  markdownStyles,
 }: PageContentProps): React.Node => (
   <View style={{ flex: 1 }}>
     <Markdown markdownStyles={markdownStyles}>{content}</Markdown>
   </View>
-)
+);
 
 type Props = {
   headerTitle?: string,
@@ -30,8 +30,8 @@ type Props = {
   content?: string,
   color?: string,
   image?: { uri: string } | number,
-  markdownStyles?: {}
-}
+  markdownStyles?: {},
+};
 
 const MarkdownScreenComponent = ({
   headerTitle,
@@ -40,7 +40,7 @@ const MarkdownScreenComponent = ({
   content,
   color,
   image,
-  markdownStyles
+  markdownStyles,
 }: Props) => {
   if (image) {
     return (
@@ -66,7 +66,7 @@ const MarkdownScreenComponent = ({
           />
         }
       />
-    )
+    );
   } else {
     return (
       <PageContent
@@ -74,8 +74,8 @@ const MarkdownScreenComponent = ({
         color={color}
         markdownStyles={markdownStyles}
       />
-    )
+    );
   }
-}
+};
 
-export default MarkdownScreenComponent
+export default MarkdownScreenComponent;

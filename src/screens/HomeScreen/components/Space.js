@@ -1,6 +1,6 @@
-import * as React            from 'react'
-import { View }              from 'react-native'
-import GradientWithTwoColors from '../../../components/GradientWithTwoColors'
+import * as React from 'react';
+import { View } from 'react-native';
+import GradientWithTwoColors from '../../../components/GradientWithTwoColors';
 
 const Space = () => (
   <View
@@ -8,11 +8,11 @@ const Space = () => (
       height: 300,
       flexDirection: 'row',
       justifyContent: 'center',
-      alignItems: 'center'
+      alignItems: 'center',
     }}
   >
     <GradientWithTwoColors />
   </View>
-)
+);
 
-export default Space
+export default Space;

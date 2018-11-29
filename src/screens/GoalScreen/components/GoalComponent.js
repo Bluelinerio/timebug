@@ -1,10 +1,10 @@
 // @flow
-import React                            from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
-import type { Goal, GoalStep }          from '../types'
-import styles                           from '../styles'
-import Icon                             from 'react-native-vector-icons/FontAwesome'
-import GoalStepComponent                from './GoalStepComponent'
+import React from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
+import type { Goal, GoalStep } from '../types';
+import styles from '../styles';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import GoalStepComponent from './GoalStepComponent';
 
 type GoalComponentProps = {
   goal: Goal,
@@ -12,29 +12,29 @@ type GoalComponentProps = {
   steps: Array<GoalStep>,
   goalIndex: string,
   formId: string,
-  onGoalSwitch: any => any
-}
+  onGoalSwitch: any => any,
+};
 
 class GoalComponent extends React.PureComponent<GoalComponentProps> {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      showList: false
-    }
+      showList: false,
+    };
   }
 
   _listTrigger = () => {
-    this.setState({ showList: !this.state.showList })
-  }
+    this.setState({ showList: !this.state.showList });
+  };
 
   _onPress = () => {
-    const { onPress, goal, goalIndex } = this.props
-    onPress(goalIndex, goal)
-  }
+    const { onPress, goal, goalIndex } = this.props;
+    onPress(goalIndex, goal);
+  };
 
   render() {
-    const { goal, steps, onGoalSwitch, formId, goalIndex } = this.props
-    const { showList } = this.state
+    const { goal, steps, onGoalSwitch, formId, goalIndex } = this.props;
+    const { showList } = this.state;
     return (
       <View style={styles.goalFullContainer}>
         <View style={styles.goalContainer}>
@@ -55,17 +55,19 @@ class GoalComponent extends React.PureComponent<GoalComponentProps> {
                 style={[
                   styles.percentageText,
                   styles.text,
-                  styles.justifiedText
+                  styles.justifiedText,
                 ]}
               >
                 {steps &&
                   steps.length > 0 &&
-                  `${(steps.reduce(
-                    (total, step) => (step.completed ? total + 1 : total),
-                    0
-                  ) *
+                  `${(
+                    steps.reduce(
+                      (total, step) => (step.completed ? total + 1 : total),
+                      0
+                    ) *
                     100 /
-                    steps.length).toFixed(0)}%`}
+                    steps.length
+                  ).toFixed(0)}%`}
               </Text>
             </View>
             <TouchableOpacity
@@ -94,13 +96,13 @@ class GoalComponent extends React.PureComponent<GoalComponentProps> {
                       goalId={goalIndex}
                     />
                   </View>
-                )
+                );
               })}
             </View>
           )}
       </View>
-    )
+    );
   }
 }
 
-export default GoalComponent
+export default GoalComponent;

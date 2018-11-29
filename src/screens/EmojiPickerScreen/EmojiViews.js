@@ -1,5 +1,5 @@
 //@flow
-import React from 'react'
+import React from 'react';
 import {
   View,
   Text,
@@ -7,18 +7,18 @@ import {
   TouchableOpacity,
   Platform,
   ActivityIndicator,
-  FlatList
-}            from 'react-native'
+  FlatList,
+} from 'react-native';
 
 type Emoji = {
   key: string,
-  emoji: string
-}
+  emoji: string,
+};
 
 const charFromUtf16 = utf16 =>
-  String.fromCodePoint(...utf16.split('-').map(u => '0x' + u))
-export const charFromEmojiObject = obj => charFromUtf16(obj.unified)
-const EmojiFontSizeForCellWithHight = height => height - 12
+  String.fromCodePoint(...utf16.split('-').map(u => '0x' + u));
+export const charFromEmojiObject = obj => charFromUtf16(obj.unified);
+const EmojiFontSizeForCellWithHight = height => height - 12;
 
 export const EmojiCell = ({
   emoji,
@@ -27,7 +27,7 @@ export const EmojiCell = ({
 }: {
   emoji: string,
   columnSize: number,
-  ...rest
+  ...rest,
 }) => (
   <TouchableOpacity
     activeOpacity={0.5}
@@ -35,7 +35,7 @@ export const EmojiCell = ({
       width: cellSize,
       height: cellSize,
       alignItems: 'center',
-      justifyContent: 'center'
+      justifyContent: 'center',
     }}
     {...rest}
   >
@@ -43,23 +43,23 @@ export const EmojiCell = ({
       {charFromEmojiObject(emoji)}
     </Text>
   </TouchableOpacity>
-)
+);
 
 export const EmojiList = ({
   data,
   cellSize,
   columns,
-  onPress
+  onPress,
 }: {
   data: Array<Emoji>,
   cellSize: number,
   columns: number,
-  onPress: Emoji => void
+  onPress: Emoji => void,
 }) => (
   <FlatList
     style={styles.flatList}
     contentContainerStyle={{
-      paddingBottom: cellSize
+      paddingBottom: cellSize,
     }}
     data={data}
     renderItem={({ item }) => (
@@ -75,7 +75,7 @@ export const EmojiList = ({
     keyboardShouldPersistTaps={'always'}
     removeClippedSubviews
   />
-)
+);
 
 export const Loader = ({ theme }: { theme: string }) => (
   <View style={styles.loader}>
@@ -84,39 +84,39 @@ export const Loader = ({ theme }: { theme: string }) => (
       color={Platform.OS === 'android' ? theme : '#000000'}
     />
   </View>
-)
+);
 
 export const Container = ({ children }: () => React.Node) => (
   <View style={styles.frame}>
     <View style={{ flex: 1 }}>{children}</View>
   </View>
-)
+);
 
 const styles = StyleSheet.create({
   frame: {
     flex: 1,
-    width: '100%'
+    width: '100%',
   },
   loader: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   tabBar: {
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   flatList: {
-    flex: 1
+    flex: 1,
   },
   container: {
     flex: 1,
     flexWrap: 'wrap',
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   sectionHeader: {
     margin: 8,
     fontSize: 17,
     width: '100%',
-    color: '#8F8F8F'
-  }
-})
+    color: '#8F8F8F',
+  },
+});

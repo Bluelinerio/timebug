@@ -1,4 +1,4 @@
-import { StyleSheet, LayoutAnimation } from 'react-native'
+import { StyleSheet, LayoutAnimation } from 'react-native';
 
 export default StyleSheet.create({
   // look at the 'styles' in react-navigation/src/views/Header/Header.js
@@ -12,9 +12,9 @@ export default StyleSheet.create({
     borderBottomColor: 'transparent',
     shadowOpacity: 0,
     shadowColor: 'transparent',
-    elevation: 0
-  }
-})
+    elevation: 0,
+  },
+});
 
 export const triggerAnimation = () =>
   LayoutAnimation.configureNext({
@@ -22,10 +22,10 @@ export const triggerAnimation = () =>
     create: {
       type: LayoutAnimation.Types.spring,
       property: LayoutAnimation.Properties.scaleXY,
-      springDamping: 0.7
+      springDamping: 0.7,
     },
     update: {
       type: LayoutAnimation.Types.spring,
-      springDamping: 0.7
-    }
-  })
+      springDamping: 0.7,
+    },
+  });

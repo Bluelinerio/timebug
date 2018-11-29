@@ -38,5 +38,5 @@ export const headerBackgrounds = {
   '27': require('./StepBackgroundsWhite/2020-diary-step-27.png'),
   '28': require('./StepBackgroundsWhite/2020-diary-step-28.png'),
   '29': require('./StepBackgroundsWhite/2020-diary-step-29.png'),
-  '30': require('./StepBackgroundsWhite/2020-diary-step-30.png')
+  '30': require('./StepBackgroundsWhite/2020-diary-step-30.png'),
 };

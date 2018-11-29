@@ -1,40 +1,40 @@
 //@flow
-import React    from 'react'
-import Ionicons from 'react-native-vector-icons/Ionicons'
-import routes   from '../navigation/routes'
+import React from 'react';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import routes from '../navigation/routes';
 
 type TabBarIconProps = {
   routeName: string,
   focused: boolean,
-  tintColor: string
-}
+  tintColor: string,
+};
 
 const mapRouteToIcon = (routeName, focused) => {
   switch (routeName) {
   case routes.tab.RootNavigator:
-    return `ios-pin${focused ? '' : '-outline'}`
+    return `ios-pin${focused ? '' : '-outline'}`;
   case routes.tab.MeditationScreen:
-    return `ios-options${focused ? '' : '-outline'}`
+    return `ios-options${focused ? '' : '-outline'}`;
   case routes.tab.MyJourneyScreen:
-    return `ios-construct${focused ? '' : '-outline'}`
+    return `ios-construct${focused ? '' : '-outline'}`;
   case routes.tab.CheckinScreen:
-    return `ios-compass${focused ? '' : '-outline'}`
+    return `ios-compass${focused ? '' : '-outline'}`;
   case routes.tab.GoalsNavigator:
-    return `ios-checkmark${focused ? '' : '-outline'}`
+    return `ios-checkmark${focused ? '' : '-outline'}`;
   default:
-    return
+    return;
   }
-}
+};
 
 const TabBarIcon = ({ routeName, focused, tintColor }: TabBarIconProps) => {
-  const iconName = mapRouteToIcon(routeName, focused)
+  const iconName = mapRouteToIcon(routeName, focused);
   return (
     <Ionicons
       name={iconName}
       size={routeName === routes.tab.GoalScreen ? 32 : 25}
       color={tintColor}
     />
-  )
-}
+  );
+};
 
-export default TabBarIcon
+export default TabBarIcon;

@@ -1,21 +1,21 @@
 //@flow
-import React         from 'react'
-import { View }      from 'react-native'
-import OptionsButton from '../containers/OptionButtonContainer'
-import styles        from '../styles'
+import React from 'react';
+import { View } from 'react-native';
+import OptionsButton from '../containers/OptionButtonContainer';
+import styles from '../styles';
 
-import tron from 'reactotron-react-native'
+import tron from 'reactotron-react-native';
 
 type ContentAreaProps = {
   steps: Array<any>,
   user: any,
-  stepColors: any
-}
+  stepColors: any,
+};
 
 class ContentArea extends React.PureComponent<ContentAreaProps> {
   render() {
-    tron.log('Re rendered content area')
-    const { steps, stepColors } = this.props
+    tron.log('Re rendered content area');
+    const { steps, stepColors } = this.props;
     return (
       <View style={[styles.container, styles.content]}>
         {steps &&
@@ -27,8 +27,8 @@ class ContentArea extends React.PureComponent<ContentAreaProps> {
             />
           ))}
       </View>
-    )
+    );
   }
 }
 
-export default ContentArea
+export default ContentArea;

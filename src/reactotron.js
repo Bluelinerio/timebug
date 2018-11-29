@@ -3,13 +3,13 @@ import Reactotron, {
   openInEditor,
   overlay,
   asyncStorage,
-  networking
+  networking,
 } from 'reactotron-react-native';
-import { reactotronRedux } from 'reactotron-redux'
+import { reactotronRedux } from 'reactotron-redux';
 
 if (__DEV__) {
   Reactotron.configure({
-    name: 'React Native Demo'
+    name: 'React Native Demo',
   })
     .use(trackGlobalErrors())
     .use(openInEditor())

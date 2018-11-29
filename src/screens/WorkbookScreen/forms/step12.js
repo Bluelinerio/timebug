@@ -1,4 +1,4 @@
-import t                                     from '../../../forms/components';
+import t from '../../../forms/components';
 import { MajorLifeEvents, IncreaseDecrease } from './contents';
 
 export default {
@@ -9,47 +9,47 @@ export default {
         t.struct({
           majorLifeEvent: MajorLifeEvents,
           postiveOrNegative: t.String,
-          increaseDecrease: IncreaseDecrease
+          increaseDecrease: IncreaseDecrease,
         })
-      )
+      ),
     }),
     options: {
-      label: 'Name some of the Major Life Events (MLEs) that have ocurred over the past 5 years.',
+      label:
+        'Name some of the Major Life Events (MLEs) that have ocurred over the past 5 years.',
 
       fields: {
         id: {
-          hidden: true
+          hidden: true,
         },
         majorLifeEvents: {
           item: {
             auto: 'none',
             fields: {
               postiveOrNegative: {
-                label:
-                  'How did this MLE influence your goals?'
+                label: 'How did this MLE influence your goals?',
               },
               majorLifeEvent: {
-                label: 'Major Life Event'
+                label: 'Major Life Event',
                 //error:'Please select a Major Life Event'
               },
               increaseDecrease: {
                 label:
-                  'Did this MLE increase, decrease or do nothing to your Internal Energy Production?'
-              }
-            }
+                  'Did this MLE increase, decrease or do nothing to your Internal Energy Production?',
+              },
+            },
           },
           disableOrder: true,
           maxLines: 15,
           config: {
-            maxLines: 15
-          }
-        }
-      }
+            maxLines: 15,
+          },
+        },
+      },
     },
     value: {
       fields: {
-        id: 'step12+v0.0.0.1'
-      }
-    }
-  }
+        id: 'step12+v0.0.0.1',
+      },
+    },
+  },
 };

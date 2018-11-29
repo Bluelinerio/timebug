@@ -28,7 +28,7 @@ class Utils {
       }
     } else {
       newExtras = {
-        style: [newStyle]
+        style: [newStyle],
       };
     }
     return newExtras;

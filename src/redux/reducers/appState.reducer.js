@@ -7,10 +7,10 @@
 import {
   FOREGROUND,
   BACKGROUND,
-  INACTIVE
-} from 'redux-enhancer-react-native-appstate'
+  INACTIVE,
+} from 'redux-enhancer-react-native-appstate';
 
-export const UNDETERMIND = 'UNDETERMIND'
+export const UNDETERMIND = 'UNDETERMIND';
 
 export type AppState =
   | UNDETERMIND
@@ -19,10 +19,10 @@ export type AppState =
       +backgound: number,
       +invactive: number,
       +last: string,
-      +agregates: Object
-    }
+      +agregates: Object,
+    };
 
-export const initialState = 'UNDETERMIND'
+export const initialState = 'UNDETERMIND';
 
 export default (
   state: AppState = initialState,
@@ -33,21 +33,21 @@ export default (
     return {
       ...(state && {}),
       foreground: Date.now(),
-      last: FOREGROUND
-    }
+      last: FOREGROUND,
+    };
   case BACKGROUND:
     return {
       ...(state && {}),
       last: BACKGROUND,
-      background: Date.now()
-    }
+      background: Date.now(),
+    };
   case INACTIVE:
     return {
       ...(state && {}),
       last: INACTIVE,
-      inactive: Date.now()
-    }
+      inactive: Date.now(),
+    };
   default:
-    return state
+    return state;
   }
-}
+};

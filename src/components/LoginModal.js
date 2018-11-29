@@ -1,41 +1,41 @@
-import React                from 'react'
+import React from 'react';
 import {
   View,
   Modal,
   Text,
   TouchableOpacity,
   StatusBar,
-  Image
-}                           from 'react-native'
-import LoginButtonContainer from '../containers/LoginButtonContainer'
-import Gradient             from '../components/Gradient'
+  Image,
+} from 'react-native';
+import LoginButtonContainer from '../containers/LoginButtonContainer';
+import Gradient from '../components/Gradient';
 import styles, {
   statusBarColor,
   closeButtonColor,
   closeButtonSize,
-  gradientColors
-}                           from '../styles/components/LoginModal'
-import { icon }             from '../resources/images'
-import Icon                 from 'react-native-vector-icons/dist/MaterialIcons'
+  gradientColors,
+} from '../styles/components/LoginModal';
+import { icon } from '../resources/images';
+import Icon from 'react-native-vector-icons/dist/MaterialIcons';
 
 export type LoginModalProps = {
   isOpen: boolean,
-  close: () => any
-}
+  close: () => any,
+};
 
-export const key = 'Login'
+export const key = 'Login';
 
-const innerText = `Login to enjoy the app at it's fullest and live the journey through the seven pillars of life!`
+const innerText = `Login to enjoy the app at it's fullest and live the journey through the seven pillars of life!`;
 
 const LoginModal = (props: LoginModalProps) => {
-  const { isOpen, close } = props
+  const { isOpen, close } = props;
   return (
     <Modal
       animationType="slide"
       transparent={true}
       visible={isOpen}
       onRequestClose={() => {
-        close()
+        close();
       }}
     >
       <StatusBar barStyle="dark-content" backgroundColor={statusBarColor} />
@@ -69,7 +69,7 @@ const LoginModal = (props: LoginModalProps) => {
         </Gradient>
       </View>
     </Modal>
-  )
-}
+  );
+};
 
-export default LoginModal
+export default LoginModal;

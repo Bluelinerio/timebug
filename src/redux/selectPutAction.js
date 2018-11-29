@@ -6,7 +6,7 @@ export type SelectPutActionFnType = (
 
 export type SelectPutActionType = {
   type: SELECT_PUT_ACTION,
-  payload: { selectPut: SelectPutActionFnType }
+  payload: { selectPut: SelectPutActionFnType },
 };
 
 export function selectPutAction(
@@ -15,8 +15,8 @@ export function selectPutAction(
   return {
     type: SELECT_PUT_ACTION,
     payload: {
-      selectPut
-    }
+      selectPut,
+    },
   };
 }
 

@@ -1,20 +1,20 @@
 //@flow
-import React                      from 'react'
-import { View, TouchableOpacity } from 'react-native'
+import React from 'react';
+import { View, TouchableOpacity } from 'react-native';
 
-import SvgIcon                    from '../../../components/SvgIcon'
-import styles                     from '../styles'
+import SvgIcon from '../../../components/SvgIcon';
+import styles from '../styles';
 
 export type StepSideButtonProps = {
   containerStyle: any,
   iconStyle: any,
   name: string,
-  onPress: () => any
-}
+  onPress: () => any,
+};
 
 class StepSideButton extends React.PureComponent<StepSideButtonProps> {
   render() {
-    const { containerStyle, iconStyle, onPress, name } = this.props
+    const { containerStyle, iconStyle, onPress, name } = this.props;
     return (
       <View style={[styles.flex, styles.center]}>
         <TouchableOpacity
@@ -24,8 +24,8 @@ class StepSideButton extends React.PureComponent<StepSideButtonProps> {
           <SvgIcon name={name} {...iconStyle} />
         </TouchableOpacity>
       </View>
-    )
+    );
   }
 }
 
-export default StepSideButton
+export default StepSideButton;
