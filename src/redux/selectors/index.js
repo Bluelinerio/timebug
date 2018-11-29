@@ -374,8 +374,8 @@ const selectors = {
   getGoalsDataForGoal,
   getGoalStepsForGoalAndForm,
   getGoalsStepsForGoalAndFormStateless,
-  formHelpSlides
-  isStepCompleted
+  formHelpSlides,
+  isStepCompleted,
 }
 
 export default selectors
