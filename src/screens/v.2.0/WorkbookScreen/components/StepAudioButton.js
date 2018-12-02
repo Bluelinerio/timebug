@@ -1,28 +1,27 @@
 //@flow
-import React from 'react';
-import { View, TouchableOpacity } from 'react-native';
-
-import SvgIcon from '../../../../components/SvgIcon';
-import styles from '../styles';
+import React         from 'react'
+import { View }      from 'react-native'
+import styles        from '../styles'
+import VideoAwareSVG from '../containers/VideoAwareSVGContainer'
 
 export type StepAudioButtonProps = {
   containerStyle: any,
   iconStyle: any,
-  name: string,
-  onPress: () => any,
-};
+  icons: {
+    [x: string]: string,
+  },
+  audio: string,
+}
 
 class StepAudioButton extends React.PureComponent<StepAudioButtonProps> {
   render() {
-    const { iconStyle, onPress, name } = this.props;
+    const { iconStyle, icons, audio } = this.props
     return (
       <View style={[styles.container, styles.center]}>
-        <TouchableOpacity style={[styles.helperButton]} onPress={onPress}>
-          <SvgIcon name={name} {...iconStyle} />
-        </TouchableOpacity>
+        <VideoAwareSVG file={audio} icons={icons} iconStyle={iconStyle} />
       </View>
-    );
+    )
   }
 }
 
-export default StepAudioButton;
+export default StepAudioButton
