@@ -32,11 +32,11 @@ const mergeProps = (
   const { phase, audio } = ownProps
 
   const icons = {
-    [videoStatus.READY]: 'Book',
+    [videoStatus.READY]: 'AudioMuted',
     [videoStatus.PLAYING]: 'Audio',
-    [videoStatus.PAUSED]: 'Book',
-    [videoStatus.FINISHED]: 'Book',
-    [videoStatus.FAIL]: 'Book',
+    [videoStatus.PAUSED]: 'AudioMuted',
+    [videoStatus.FINISHED]: 'AudioMuted',
+    [videoStatus.FAIL]: 'AudioError',
   }
 
   const iconStyle: iconStyle = mapPhaseToStylesHelper(phase)
