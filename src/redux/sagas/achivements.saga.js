@@ -4,37 +4,32 @@ import {
   putResolve,
   actionChannel,
   select,
-  call
-}                               from 'redux-saga/effects';
-import { UPDATE_USER }          from '../actionTypes';
+  call,
+} from 'redux-saga/effects';
+import { UPDATE_USER } from '../actionTypes';
 import { GET_USER, updateUser } from '../actions/user.actions';
-import selectors                from '../selectors';
-import {
-  createAchievement,
-  deleteAchievement,
-}                               from '../../services/apollo';
-import type {
-  User
-}                                                 from '../../services/apollo/models'
+import selectors from '../selectors';
+import { createAchievement, deleteAchievement } from '../../services/apollo';
+import type { User } from '../../services/apollo/models';
 
 const achievements = {
-  ASSESSMENTS             : 'Assessments',
-  PILLARS_OF_LIFE         : 'Pillars Of Life',
+  ASSESSMENTS: 'Assessments',
+  PILLARS_OF_LIFE: 'Pillars Of Life',
   STRENGTHS_AND_WEAKNESSES: 'Strengths And Weaknesses',
-  TEAM                    : 'Team',
-  GOALS                   : 'Goals',
-  COMMITMENTS             : 'Commitments',
-  MY_INTERNAL_WORLD       : 'My Internal World',
-  LIFE_VISION             : 'Life Vision',
-  HEALTH_AND_WELLNESS     : 'Health And Wellness',
-  CAREER                  : 'Career',
-  MAJOR_LIFE_EVENTS       : 'Major Life Events',
-  FINANCES                : 'Finances',
-  AIMS_AND_HOBBIES        : 'Aims And Hobbies',
-  ENVIRONMENT             : 'Environment',
-  RELATIONSHIPS           : 'Relationships',
-  SPIRITUALITY            : 'Spirituality',
-  STAGES_OF_LIFE          : 'Stages Of Life'
+  TEAM: 'Team',
+  GOALS: 'Goals',
+  COMMITMENTS: 'Commitments',
+  MY_INTERNAL_WORLD: 'My Internal World',
+  LIFE_VISION: 'Life Vision',
+  HEALTH_AND_WELLNESS: 'Health And Wellness',
+  CAREER: 'Career',
+  MAJOR_LIFE_EVENTS: 'Major Life Events',
+  FINANCES: 'Finances',
+  AIMS_AND_HOBBIES: 'Aims And Hobbies',
+  ENVIRONMENT: 'Environment',
+  RELATIONSHIPS: 'Relationships',
+  SPIRITUALITY: 'Spirituality',
+  STAGES_OF_LIFE: 'Stages Of Life',
 };
 
 const nextRequiredUpdateForUser = (
@@ -70,7 +65,7 @@ const nextRequiredUpdateForUser = (
     '27': [],
     '28': [],
     '29': [],
-    '30': []
+    '30': [],
   };
   const listOfValidAchievementsNames = Object.values(achievements); // client based logic right here and now!
   const current: [string] = user.achievements.map(a => a.tagName);
@@ -85,8 +80,8 @@ const nextRequiredUpdateForUser = (
   if (tagName) {
     return {
       createAchievement: {
-        tagName
-      }
+        tagName,
+      },
     };
   }
 
@@ -97,8 +92,8 @@ const nextRequiredUpdateForUser = (
   if (achievement) {
     return {
       deleteAchievement: {
-        achievementId: achievement.id
-      }
+        achievementId: achievement.id,
+      },
     };
   }
   return {};
@@ -118,7 +113,7 @@ export function* watchChangesInFormsAndUpdateAchievements() {
       const { tagName } = payload.createAchievement;
       const res = yield call(createAchievement, {
         tagName,
-        userId
+        userId,
       });
       if (res.user) {
         // an FYI put:
@@ -133,7 +128,7 @@ export function* watchChangesInFormsAndUpdateAchievements() {
       if (res.id) {
         yield putResolve(
           updateUser({
-            achievements: user.achievements.filter(a => a.id !== res.id)
+            achievements: user.achievements.filter(a => a.id !== res.id),
           })
         );
       } else {

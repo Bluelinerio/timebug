@@ -1,13 +1,13 @@
 // @flow
-import * as React             from 'react'
-import { Text }               from 'react-native'
-import styles, { grayColor }  from './styles/ProgressCell.style'
-import PhaseProgressContainer from '../../../../containers/PhaseProgressContainer'
-import Cell                   from './Cell'
+import * as React from 'react';
+import { Text } from 'react-native';
+import styles, { grayColor } from './styles/ProgressCell.style';
+import PhaseProgressContainer from '../../../../containers/PhaseProgressContainer';
+import Cell from './Cell';
 
 const style = {
-  highlight: styles.leaderboardContainer
-}
+  highlight: styles.leaderboardContainer,
+};
 
 const PieProgressDashboardCell = () => (
   <Cell
@@ -23,13 +23,13 @@ const PieProgressDashboardCell = () => (
         styles.suggestionText,
         styles.progressUnderlineText,
         {
-          color: grayColor
-        }
+          color: grayColor,
+        },
       ]}
     >
       {`The legend of your progress`}
     </Text>
   </Cell>
-)
+);
 
-export default PieProgressDashboardCell
+export default PieProgressDashboardCell;

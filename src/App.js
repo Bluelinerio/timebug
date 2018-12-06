@@ -1,57 +1,57 @@
 // @flow
 /* eslint-disable no-global-assign */
-import React                     from 'react'
-import { ApolloProvider }        from 'react-apollo'
-import { Provider }              from 'react-redux'
-import { AppRegistry, Platform } from 'react-native'
-import { PersistGate }           from 'redux-persist/es/integration/react'
-import codePush                  from 'react-native-code-push'
+import React from 'react';
+import { ApolloProvider } from 'react-apollo';
+import { Provider } from 'react-redux';
+import { AppRegistry, Platform } from 'react-native';
+import { PersistGate } from 'redux-persist/es/integration/react';
+import codePush from 'react-native-code-push';
 import {
   isNativeUpdateRequired,
-  NativeUpdateRequired
-}                                from './containers/VersionGate'
-import './reactotron'
-import setup                     from './redux'
-import { resetStore }            from './redux/actions'
-import { client }                from './services/apollo'
-import './services/sentry'
-import AppNavigation             from './containers/AppNavigationWithModal'
-import { APP_NAME }              from './constants'
-import DefaultIndicator          from './components/DefaultIndicator'
-import Error                     from './components/Error'
+  NativeUpdateRequired,
+} from './containers/VersionGate';
+import './reactotron';
+import setup from './redux';
+import { resetStore } from './redux/actions';
+import { client } from './services/apollo';
+import './services/sentry';
+import AppNavigation from './containers/AppNavigationWithModal';
+import { APP_NAME } from './constants';
+import DefaultIndicator from './components/DefaultIndicator';
+import Error from './components/Error';
 
 if (__DEV__) {
   //Show network requests such as fetch, WebSocket etc. in chrome dev tools:
   XMLHttpRequest = GLOBAL.originalXMLHttpRequest
     ? GLOBAL.originalXMLHttpRequest
-    : GLOBAL.XMLHttpRequest
+    : GLOBAL.XMLHttpRequest;
 }
 
-const { persistor, store } = setup()
+const { persistor, store } = setup();
 
 type State = {
-  error?: any
-}
+  error?: any,
+};
 export default class App extends React.Component<{}, State> {
   state: State = {
-    error: null
-  }
+    error: null,
+  };
   async componentDidCatch(error: any) {
     if (this.state.error && error === this.state.error) {
-      store.dispatch(resetStore)
-      persistor.purge()
+      store.dispatch(resetStore);
+      persistor.purge();
     }
     this.setState({
-      error
-    })
+      error,
+    });
   }
   render() {
-    const { error } = this.state
+    const { error } = this.state;
     if (error) {
-      return <Error message={error} />
+      return <Error message={error} />;
     }
     if (isNativeUpdateRequired()) {
-      return <NativeUpdateRequired />
+      return <NativeUpdateRequired />;
     }
     if (Platform.OS === 'ios') {
       return (
@@ -66,7 +66,7 @@ export default class App extends React.Component<{}, State> {
             </PersistGate>
           </Provider>
         </ApolloProvider>
-      )
+      );
     } else {
       return (
         <ApolloProvider client={client}>
@@ -74,15 +74,15 @@ export default class App extends React.Component<{}, State> {
             <AppNavigation />
           </Provider>
         </ApolloProvider>
-      )
+      );
     }
   }
 }
 const codePushConfigurations = {
   checkFrequency: codePush.CheckFrequency.ON_APP_START,
-  installMode: codePush.InstallMode.ON_NEXT_RESTART
-}
+  installMode: codePush.InstallMode.ON_NEXT_RESTART,
+};
 
-const CodepushApp = codePush(codePushConfigurations)(App)
+const CodepushApp = codePush(codePushConfigurations)(App);
 
-AppRegistry.registerComponent(APP_NAME, () => CodepushApp)
+AppRegistry.registerComponent(APP_NAME, () => CodepushApp);

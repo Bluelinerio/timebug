@@ -1,8 +1,8 @@
 // @flow
 
-import React, { Component }           from 'react'
-import { Animated, ScrollView, View } from 'react-native'
-import invariant                      from 'invariant'
+import React, { Component } from 'react';
+import { Animated, ScrollView, View } from 'react-native';
+import invariant from 'invariant';
 
 type Props = {
   content: React.Node,
@@ -10,23 +10,23 @@ type Props = {
   headerImage?: React.Node,
   headerComponent?: React.Node,
   headerMaxHeight?: number,
-  headerMinHeight?: number
-}
+  headerMinHeight?: number,
+};
 
 type Layout = {
   height: number,
   width: number,
   x: number,
-  y: number
-}
+  y: number,
+};
 
 type State = {
   scrollY: number,
   contentLayout: ?Layout,
   containerLayout: ?Layout,
   bufferViewHeight: number,
-  layoutReady: boolean
-}
+  layoutReady: boolean,
+};
 
 export default class ScrollingHeaderPageComponent extends Component<
   Props,
@@ -35,29 +35,32 @@ export default class ScrollingHeaderPageComponent extends Component<
   state = {
     scrollY: new Animated.Value(0),
     bufferViewHeight: 0,
-    layoutReady: false
-  }
+    layoutReady: false,
+  };
   static defaultProps = {
     headerMaxHeight: 260,
-    headerMinHeight: 0
-  }
+    headerMinHeight: 0,
+  };
   constructor(props) {
-    super(props)
+    super(props);
     invariant(
       props.content,
       'ScrollingHeaderPageComponent missing content props'
-    )
-    invariant(props.header, 'ScrollingHeaderPageComponent missing header props')
+    );
+    invariant(
+      props.header,
+      'ScrollingHeaderPageComponent missing header props'
+    );
   }
   // this is an implmentation of ajustment of a growing/shrinking view makin sure the the minimal height of the scroll view content is at least the height of the scroll view itself. (its container)
   layout = () => {
-    const { headerMaxHeight } = this.props
+    const { headerMaxHeight } = this.props;
     const {
       containerLayout,
       contentLayout,
       bufferViewHeight,
-      layoutReady
-    } = this.state
+      layoutReady,
+    } = this.state;
     if (containerLayout && contentLayout) {
       const newBufferHeight = Math.max(
         0,
@@ -67,49 +70,49 @@ export default class ScrollingHeaderPageComponent extends Component<
             containerLayout.height - contentLayout.height - headerMaxHeight
           ) +
           10
-      )
+      );
       if (newBufferHeight !== bufferViewHeight) {
         this.setState({
           layoutReady: true,
-          bufferViewHeight: newBufferHeight
-        })
+          bufferViewHeight: newBufferHeight,
+        });
       } else if (!layoutReady) {
         this.setState({
-          layoutReady: true
-        })
+          layoutReady: true,
+        });
       }
     }
-  }
+  };
 
   onLayout = ({ nativeEvent: { layout } }) => {
     this.setState(
       {
-        containerLayout: layout
+        containerLayout: layout,
       },
       this.layout
-    )
-  }
+    );
+  };
   oncontentLayout = ({ nativeEvent: { layout } }) => {
     this.setState(
       {
-        contentLayout: layout
+        contentLayout: layout,
       },
       this.layout
-    )
-  }
+    );
+  };
 
   render() {
-    const { bufferViewHeight } = this.state
+    const { bufferViewHeight } = this.state;
     const {
       content,
       headerImage,
       headerComponent,
       header,
       headerMinHeight,
-      headerMaxHeight
-    } = this.props
+      headerMaxHeight,
+    } = this.props;
 
-    const headerScrollDistance = headerMaxHeight - headerMinHeight
+    const headerScrollDistance = headerMaxHeight - headerMinHeight;
 
     // const contentOpacity = this.state.scrollY.interpolate({
     //   inputRange: [0, 1, headerScrollDistance],
@@ -124,18 +127,18 @@ export default class ScrollingHeaderPageComponent extends Component<
     const headerHeight = this.state.scrollY.interpolate({
       inputRange: [0, headerScrollDistance],
       outputRange: [headerMaxHeight, headerMinHeight],
-      extrapolate: 'clamp'
-    })
+      extrapolate: 'clamp',
+    });
     const translateY = this.state.scrollY.interpolate({
       inputRange: [0, headerScrollDistance],
       outputRange: [0, -100],
-      extrapolate: 'clamp'
-    })
+      extrapolate: 'clamp',
+    });
     const headerOpacity = this.state.scrollY.interpolate({
       inputRange: [0, 0, headerScrollDistance],
       outputRange: [0, 0, 1],
-      extrapolate: 'clamp'
-    })
+      extrapolate: 'clamp',
+    });
 
     return (
       <View onLayout={this.onLayout} style={{ flex: 1 }}>
@@ -146,13 +149,13 @@ export default class ScrollingHeaderPageComponent extends Component<
           automaticallyAdjustContentInsets={false}
           scrollEventThrottle={16}
           onScroll={Animated.event([
-            { nativeEvent: { contentOffset: { y: this.state.scrollY } } }
+            { nativeEvent: { contentOffset: { y: this.state.scrollY } } },
           ])}
         >
           <View
             style={{
               marginTop: headerMaxHeight,
-              marginBottom: bufferViewHeight
+              marginBottom: bufferViewHeight,
             }}
           >
             <View onLayout={this.oncontentLayout}>{content}</View>
@@ -167,8 +170,8 @@ export default class ScrollingHeaderPageComponent extends Component<
               right: 0,
               backgroundColor: 'transparent',
               overflow: 'hidden',
-              height: headerHeight
-            }
+              height: headerHeight,
+            },
           ]}
         >
           {headerImage && (
@@ -182,7 +185,7 @@ export default class ScrollingHeaderPageComponent extends Component<
                 height: headerMaxHeight,
                 zIndex: 10,
                 opacity: 0.9,
-                transform: [{ translateY }]
+                transform: [{ translateY }],
               }}
               source={headerImage}
             />
@@ -198,7 +201,7 @@ export default class ScrollingHeaderPageComponent extends Component<
                 height: headerMaxHeight,
                 zIndex: 9,
                 opacity: 1,
-                transform: [{ translateY }]
+                transform: [{ translateY }],
               }}
             >
               {headerComponent}
@@ -215,13 +218,13 @@ export default class ScrollingHeaderPageComponent extends Component<
               justifyContent: 'center',
               backgroundColor: 'transparent',
               opacity: headerOpacity,
-              zIndex: 11
+              zIndex: 11,
             }}
           >
             {header}
           </Animated.View>
         </Animated.View>
       </View>
-    )
+    );
   }
 }

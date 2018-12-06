@@ -1,12 +1,12 @@
 /* @flow */
-import React from 'react'
-import User from './User'
-import LogoutButtonContainer from './LogoutButtonContainer'
-import OpenLoginModalContainer from './OpenLoginModalContainer'
+import React from 'react';
+import User from './User';
+import LogoutButtonContainer from './LogoutButtonContainer';
+import OpenLoginModalContainer from './OpenLoginModalContainer';
 
 type Props = {
-  children: ({ uri: string }) => React.Node | [React.Node]
-}
+  children: ({ uri: string }) => React.Node | [React.Node],
+};
 
 const UserProfileImageConsumer = ({ children }: Props) => (
   <User>
@@ -17,21 +17,21 @@ const UserProfileImageConsumer = ({ children }: Props) => (
             {children({
               uri: `https://graph.facebook.com/${
                 userState.facebookId
-              }/picture?type=normal`
+              }/picture?type=normal`,
             })}
           </LogoutButtonContainer>
-        )
+        );
       else
         //TODO: REMOVE AND REPLACE WITH ACTUAL PLACEHOLDER
         return (
           <OpenLoginModalContainer>
             {children({
-              uri: `https://www.chaarat.com/wp-content/uploads/2017/08/placeholder-user.png`
+              uri: `https://www.chaarat.com/wp-content/uploads/2017/08/placeholder-user.png`,
             })}
           </OpenLoginModalContainer>
-        )
+        );
     }}
   </User>
-)
+);
 
-export default UserProfileImageConsumer
+export default UserProfileImageConsumer;

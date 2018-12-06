@@ -4,10 +4,10 @@ export type GraphErrors = Array<Object>;
 
 export type GraphResponse = {
   data: Object,
-  errors: GraphErrors
+  errors: GraphErrors,
 };
 export type ErrorResponse = {
-  error: GraphResponse
+  error: GraphResponse,
 };
 
 export const UNDETERMINED = 'UNDETERMINED';
@@ -18,7 +18,7 @@ export type UserState = { +user: User } | ANONYMOUS | UNDETERMINED;
 
 export type AuthState = {
   +isLoggedIn: boolean,
-  +isLoading: boolean
+  +isLoading: boolean,
 };
 
 export type Form = {
@@ -26,13 +26,13 @@ export type Form = {
   stepId: number,
   data: {},
   createdAt: number,
-  updatedAt: number
+  updatedAt: number,
 };
 
 export type AchievementUpdate = {
   id: string,
   createdAt: number,
-  value: {}
+  value: {},
 };
 
 export type Achievement = {
@@ -40,7 +40,7 @@ export type Achievement = {
   createdAt: number,
   updatedAt: number,
   tagName: string,
-  updates: [AchievementUpdate]
+  updates: [AchievementUpdate],
 };
 
 export type User = {
@@ -51,24 +51,24 @@ export type User = {
   +finished: boolean,
   +endpoint: string,
   +forms: [Form],
-  +achievements: [Achievement]
+  +achievements: [Achievement],
 };
 
 export type AuthUser = {
   name: string,
-  id: string
+  id: string,
 };
 
 export type CreateFormArgs = {
   userId: string,
   stepId: number,
-  data: any
+  data: any,
 };
 
 export type UpdateormArgs = {
   userId: string,
   id: string,
-  data: any
+  data: any,
 };
 
 export type Auth = { token: string, user: AuthUser };
@@ -81,26 +81,26 @@ export type Checkin = {
   +updatedAt: string,
   +eventDate: string,
   +version: string,
-  +data: any
-}
+  +data: any,
+};
 
 export type createCheckinArgs = {
   name: string,
   userId: String,
   eventDate: string,
   version: string,
-  data: any
-}
+  data: any,
+};
 
 export type updateCheckinArgs = {
-    checkinId: string,
-    eventDate: string,
-    version: string,
-    data: any
-}
+  checkinId: string,
+  eventDate: string,
+  version: string,
+  data: any,
+};
 
 export type filterCheckinsByTemplateArgs = {
   userId: string,
   name: string,
-  version: string
-}
+  version: string,
+};

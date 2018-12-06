@@ -1,10 +1,10 @@
-import React                                            from 'react'
-import { View, Text, TouchableOpacity }                 from 'react-native'
-import Slider                                           from 'react-native-slider'
-import styles, { minimumTrackColor, maximumTrackColor } from '../styles'
-import { translateFrequencies }                         from '../../../forms/custom/forms/goals'
-import GoalSubstep                                      from './GoalSubstep'
-import { FormInput }                                    from 'react-native-elements'
+import React from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
+import Slider from 'react-native-slider';
+import styles, { minimumTrackColor, maximumTrackColor } from '../styles';
+import { translateFrequencies } from '../../../forms/custom/forms/goals';
+import GoalSubstep from './GoalSubstep';
+import { FormInput } from 'react-native-elements';
 
 type Props = {
   goal: any,
@@ -12,63 +12,66 @@ type Props = {
   onPress: (any, any) => String,
   onTextChange: String => any,
   toggleGoal: () => any,
-  deleteGoal: () => any
-}
+  deleteGoal: () => any,
+};
 
 class GoalReview extends React.PureComponent<Props> {
   constructor(props) {
-    super(props)
-    const { goal } = props
-    const { extra = {} } = goal
+    super(props);
+    const { goal } = props;
+    const { extra = {} } = goal;
     this.state = {
-      notes: extra.notes || ''
-    }
+      notes: extra.notes || '',
+    };
   }
   _onPress = (substep: any) => {
-    const { onPress, goal } = this.props
-    onPress(goal, substep)
-  }
+    const { onPress, goal } = this.props;
+    onPress(goal, substep);
+  };
 
   _onInputTextChange = (text: String) => {
-    const { onTextChange } = this.props
-    onTextChange(text)
-  }
+    const { onTextChange } = this.props;
+    onTextChange(text);
+  };
 
   _inputTextChangeMechanic = (func, delay) => {
-    let inDebounce
+    let inDebounce;
     return function(text: string) {
-      clearTimeout(inDebounce)
-      inDebounce = setTimeout(() => func(text), delay)
-    }
-  }
+      clearTimeout(inDebounce);
+      inDebounce = setTimeout(() => func(text), delay);
+    };
+  };
 
-  _inputTextEvent = this._inputTextChangeMechanic(this._onInputTextChange, 1500)
+  _inputTextEvent = this._inputTextChangeMechanic(
+    this._onInputTextChange,
+    1500
+  );
 
   _handleInput = (text: string) => {
-    this.setState({ notes: text })
-    this._inputTextEvent(text)
-  }
+    this.setState({ notes: text });
+    this._inputTextEvent(text);
+  };
 
   render() {
-    const { goal, type, toggleGoal, deleteGoal } = this.props
-    const goalStepsIndex = '5'
-    const goalTitleIndex = '1'
-    const goalTypeIndex = '2'
-    const steps = goal[goalStepsIndex].value
-    const { notes } = this.state
+    const { goal, type, toggleGoal, deleteGoal } = this.props;
+    const goalStepsIndex = '5';
+    const goalTitleIndex = '1';
+    const goalTypeIndex = '2';
+    const steps = goal[goalStepsIndex].value;
+    const { notes } = this.state;
     const completedSteps = steps.reduce((count, step) => {
-      if (step.extra && step.extra.completed) return count + 1
-      return count
-    }, 0)
+      if (step.extra && step.extra.completed) return count + 1;
+      return count;
+    }, 0);
     const goalTypes = goal[goalTypeIndex].value.reduce((string, val, index) => {
-      if(index === 0) return `${val}`
-      return `${string}, ${val}`
-    }, ``)
-    const totalSteps = steps.length
+      if (index === 0) return `${val}`;
+      return `${string}, ${val}`;
+    }, ``);
+    const totalSteps = steps.length;
     const completion =
       goal.extra && goal.extra.completed
         ? 100
-        : totalSteps > 0 ? completedSteps / totalSteps * 100 : 0
+        : totalSteps > 0 ? completedSteps / totalSteps * 100 : 0;
     return (
       <React.Fragment>
         <View style={styles.titleContainer}>
@@ -112,7 +115,7 @@ class GoalReview extends React.PureComponent<Props> {
                 thumbStyle={{
                   width: 0,
                   height: 0,
-                  backgroundColor: 'transparent'
+                  backgroundColor: 'transparent',
                 }}
               />
             </View>
@@ -155,8 +158,8 @@ class GoalReview extends React.PureComponent<Props> {
           </View>
         </View>
       </React.Fragment>
-    )
+    );
   }
 }
 
-export default GoalReview
+export default GoalReview;

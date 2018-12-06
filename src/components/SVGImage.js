@@ -1,19 +1,19 @@
 // @flow
-import * as React                                     from 'react'
-import { View, Platform, WebView, ActivityIndicator } from 'react-native'
+import * as React from 'react';
+import { View, Platform, WebView, ActivityIndicator } from 'react-native';
 
 type Props = {
   style: {},
   source: string,
-  showWebviewLoader: boolean
-}
+  showWebviewLoader: boolean,
+};
 
 export default class SVGImage extends React.PureComponent<Props> {
   static defaultProps = {
     style: {},
     source: { uri: '' },
-    showWebviewLoader: Platform.OS === 'android'
-  }
+    showWebviewLoader: Platform.OS === 'android',
+  };
 
   renderLoader = () => (
     <View
@@ -22,16 +22,16 @@ export default class SVGImage extends React.PureComponent<Props> {
         {
           flex: 1,
           alignItems: 'center',
-          justifyContent: 'center'
-        }
+          justifyContent: 'center',
+        },
       ]}
     >
       <ActivityIndicator />
     </View>
-  )
+  );
 
   render() {
-    const { showWebviewLoader, source, style } = this.props
+    const { showWebviewLoader, source, style } = this.props;
     const html = `
       <!DOCTYPE html>\n
       <html>
@@ -59,7 +59,7 @@ export default class SVGImage extends React.PureComponent<Props> {
           </div>
         </body>
       </html>
-    `
+    `;
 
     return (
       <WebView
@@ -69,6 +69,6 @@ export default class SVGImage extends React.PureComponent<Props> {
         style={style}
         source={{ html }}
       />
-    )
+    );
   }
 }

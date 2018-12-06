@@ -1,14 +1,14 @@
 // @flow
-import FBSDK from 'react-native-fbsdk'
-const { LoginManager, AccessToken } = FBSDK
+import FBSDK from 'react-native-fbsdk';
+const { LoginManager, AccessToken } = FBSDK;
 
 export type OpenFBLoginResult =
   | {
-      fbData: string
+      fbData: string,
     }
   | {
-      error: any
-    }
+      error: any,
+    };
 export type FacebookDataState = {
   accessToken: string,
   applicationID: string,
@@ -16,30 +16,30 @@ export type FacebookDataState = {
   expirationTime: number,
   lastRefreshTime: number,
   permissions: Array<string>,
-  userID: string
-}
+  userID: string,
+};
 
 const getToken = (): Promise<?string> =>
-  AccessToken.getCurrentAccessToken().then(t => (t ? t.accessToken : null))
+  AccessToken.getCurrentAccessToken().then(t => (t ? t.accessToken : null));
 
 const openFBLogin = (): Promise<OpenFBLoginResult> =>
   LoginManager.logInWithReadPermissions([
     'public_profile',
     'email',
-    'user_friends'
+    'user_friends',
   ]).then(result => {
     if (result.isCancelled) {
       return {
-        error: 'User cancelled Facebook login'
-      }
+        error: 'User cancelled Facebook login',
+      };
     }
     return AccessToken.getCurrentAccessToken().then(fbData => ({
       ...result,
-      fbData
-    }))
-  })
+      fbData,
+    }));
+  });
 
-const logOut = (): Promise<void> => LoginManager.logOut()
+const logOut = (): Promise<void> => LoginManager.logOut();
 
 /**
  * Dummies
@@ -48,13 +48,13 @@ class GraphRequest {}
 
 const GraphRequestManager = () => ({
   addRequest: () => ({
-    start: () => null
-  })
-})
+    start: () => null,
+  }),
+});
 
 const fetchUserImage = (facebookId: string) => {
   return new Promise((resolve, reject) => {
-    const path = `/${facebookId}/picture`
+    const path = `/${facebookId}/picture`;
     // Create a graph request asking for user information with a callback to handle the response.
 
     const infoRequest = new GraphRequest(
@@ -62,24 +62,24 @@ const fetchUserImage = (facebookId: string) => {
       null,
       (error: ?Object, result: ?Object) => {
         if (error) {
-          reject(error)
+          reject(error);
         } else {
-          resolve(result)
+          resolve(result);
         }
       }
-    )
+    );
 
     // Start the graph request.
-    new GraphRequestManager().addRequest(infoRequest).start()
-  })
-}
+    new GraphRequestManager().addRequest(infoRequest).start();
+  });
+};
 
 export default {
   openFBLogin,
   getToken,
   logOut,
-  fetchUserImage
-}
+  fetchUserImage,
+};
 
 // export function* openFBLogin(): OpenFBLoginResult {
 // 	type openFBLoginResultType = { +type: string, +token: string }

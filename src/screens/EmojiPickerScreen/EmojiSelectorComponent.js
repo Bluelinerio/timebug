@@ -1,64 +1,64 @@
 //@flow
-import React, { Component }         from 'react'
-import PropTypes                    from 'prop-types'
-import { Dimensions, AsyncStorage } from 'react-native'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Dimensions, AsyncStorage } from 'react-native';
 import {
   EmojiCell,
   EmojiList,
   Loader,
   Container,
-  charFromEmojiObject
-}                                   from './EmojiViews'
-import emoji                        from 'emoji-datasource'
+  charFromEmojiObject,
+} from './EmojiViews';
+import emoji from 'emoji-datasource';
 
 export const Categories = {
   all: {
     symbol: null,
-    name: 'All'
+    name: 'All',
   },
   history: {
     symbol: '🕘',
-    name: 'Recently used'
+    name: 'Recently used',
   },
   people: {
     symbol: '😊',
-    name: 'Smileys & People'
+    name: 'Smileys & People',
   },
   nature: {
     symbol: '🦄',
-    name: 'Animals & Nature'
+    name: 'Animals & Nature',
   },
   food: {
     symbol: '🍔',
-    name: 'Food & Drink'
+    name: 'Food & Drink',
   },
   activities: {
     symbol: '⚾️',
-    name: 'Activities'
+    name: 'Activities',
   },
   places: {
     symbol: '✈️',
-    name: 'Travel & Places'
+    name: 'Travel & Places',
   },
   objects: {
     symbol: '💡',
-    name: 'Objects'
+    name: 'Objects',
   },
   symbols: {
     symbol: '🔣',
-    name: 'Symbols'
+    name: 'Symbols',
   },
   flags: {
     symbol: '🏳️‍🌈',
-    name: 'Flags'
-  }
-}
+    name: 'Flags',
+  },
+};
 
-const emojiByCategory = category => emoji.filter(e => e.category === category)
-const sortEmoji = list => list.sort((a, b) => a.sort_order - b.sort_order)
-const categoryKeys = Object.keys(Categories)
-const screenWidth = Dimensions.get('screen').width
-const storage_key = '@emoji-emotion:HISTORY'
+const emojiByCategory = category => emoji.filter(e => e.category === category);
+const sortEmoji = list => list.sort((a, b) => a.sort_order - b.sort_order);
+const categoryKeys = Object.keys(Categories);
+const screenWidth = Dimensions.get('screen').width;
+const storage_key = '@emoji-emotion:HISTORY';
 
 export default class EmojiSelectorComponent extends Component {
   state = {
@@ -66,97 +66,97 @@ export default class EmojiSelectorComponent extends Component {
     isReady: false,
     history: [],
     emojiList: null,
-    cellSize: 0
-  }
+    cellSize: 0,
+  };
 
   handleEmojiSelect = emoji => {
     if (this.props.recordHistory) {
-      this.addToHistory(emoji)
+      this.addToHistory(emoji);
     }
     this.props.onEmojiSelected &&
-      this.props.onEmojiSelected(charFromEmojiObject(emoji))
-  }
+      this.props.onEmojiSelected(charFromEmojiObject(emoji));
+  };
 
   addToHistory = emoji => {
     AsyncStorage.getItem(storage_key).then(result => {
-      let value = []
+      let value = [];
       if (result) {
-        const json = JSON.parse(result)
+        const json = JSON.parse(result);
         if (json.filter(r => r.unified === emoji.unified).length > 0) {
-          value = json
+          value = json;
         } else {
-          const record = Object.assign({}, emoji, { count: 1 })
-          value = [record, ...json]
+          const record = Object.assign({}, emoji, { count: 1 });
+          value = [record, ...json];
         }
       }
-      AsyncStorage.setItem(storage_key, JSON.stringify(value))
+      AsyncStorage.setItem(storage_key, JSON.stringify(value));
       this.setState({
-        history: value
-      })
-    })
-  }
+        history: value,
+      });
+    });
+  };
 
   getHistory = () => {
     AsyncStorage.getItem(storage_key)
       .then(result => JSON.parse(result))
       .then(history => {
-        if (history) this.setState({ history })
-      })
-  }
+        if (history) this.setState({ history });
+      });
+  };
 
   //
   //  RENDER METHODS
   //
   data() {
-    const { history, emojiList, category } = this.state
+    const { history, emojiList, category } = this.state;
 
     if (category === Categories.all) {
       //TODO: OPTIMIZE THIS
-      let largeList = []
+      let largeList = [];
       categoryKeys.forEach(c => {
-        const name = Categories[c].name
+        const name = Categories[c].name;
         const list =
-          name === Categories.history.name ? history : emojiList[name]
-        if (c !== 'all' && c !== 'history') largeList = largeList.concat(list)
-      })
+          name === Categories.history.name ? history : emojiList[name];
+        if (c !== 'all' && c !== 'history') largeList = largeList.concat(list);
+      });
 
-      return largeList.map(emoji => ({ key: emoji.unified, emoji }))
+      return largeList.map(emoji => ({ key: emoji.unified, emoji }));
     } else {
-      let list
-      const name = category.name
+      let list;
+      const name = category.name;
       if (name === Categories.history.name) {
-        list = history
+        list = history;
       } else {
-        list = emojiList[name]
+        list = emojiList[name];
       }
-      return list.map(emoji => ({ key: emoji.unified, emoji }))
+      return list.map(emoji => ({ key: emoji.unified, emoji }));
     }
   }
 
-  cellSize = () => Math.floor(screenWidth / this.props.columns)
+  cellSize = () => Math.floor(screenWidth / this.props.columns);
 
   emojiList = () =>
     categoryKeys.map(c => Categories[c].name).reduce(
       (sum, name) => ({
         ...sum,
-        [name]: sortEmoji(emojiByCategory(name))
+        [name]: sortEmoji(emojiByCategory(name)),
       }),
       {}
-    )
+    );
 
   //
   //  LIFECYCLE METHODS
   //
   componentDidMount() {
-    const { category } = this.props
-    this.setState({ category })
+    const { category } = this.props;
+    this.setState({ category });
 
-    if (this.props.recordHistory) this.getHistory()
+    if (this.props.recordHistory) this.getHistory();
     this.setState({
       emojiList: this.emojiList(),
       cellSize: this.cellSize(),
-      isReady: true
-    })
+      isReady: true,
+    });
   }
 
   renderItem = ({ item }) => (
@@ -166,7 +166,7 @@ export default class EmojiSelectorComponent extends Component {
       onPress={() => this.handleEmojiSelect(item.emoji)}
       cellSize={this.state.cellSize}
     />
-  )
+  );
 
   render() {
     return (
@@ -182,7 +182,7 @@ export default class EmojiSelectorComponent extends Component {
           <Loader theme={this.props.theme} />
         )}
       </Container>
-    )
+    );
   }
 }
 
@@ -193,7 +193,7 @@ EmojiSelectorComponent.propTypes = {
   /** Theme color used for loaders and active tab indicator */
   theme: PropTypes.oneOfType([
     PropTypes.string, // legacy
-    PropTypes.object
+    PropTypes.object,
   ]),
   /** Toggle the history section on or off */
   recordHistory: PropTypes.bool,
@@ -202,12 +202,12 @@ EmojiSelectorComponent.propTypes = {
   category: PropTypes.object,
 
   /** Number of columns accross */
-  columns: PropTypes.number
-}
+  columns: PropTypes.number,
+};
 
 EmojiSelectorComponent.defaultProps = {
   theme: '#007AFF',
   category: Categories.all,
   recordHistory: true,
-  columns: 8
-}
+  columns: 8,
+};

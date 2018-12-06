@@ -3,12 +3,12 @@ import {
   CHANGE_CHECKIN,
   UPDATE_CHECKIN,
   CANCEL_ALL_NOTIFICATIONS,
-  DELETE_CHECKIN
-} from '../actionTypes'
+  DELETE_CHECKIN,
+} from '../actionTypes';
 import {
   CheckinActionPayload,
-  DeleteCheckinPayload
-} from '../actions/checkin.actions'
+  DeleteCheckinPayload,
+} from '../actions/checkin.actions';
 
 export type CheckinElement = {
   frequency: string,
@@ -18,53 +18,53 @@ export type CheckinElement = {
   title: string,
   message: string,
   action: any,
-  id: string
-}
+  id: string,
+};
 
 type CheckinState = {
   checkins: {
-    [x: string]: CheckinElement
-  }
-}
+    [x: string]: CheckinElement,
+  },
+};
 
 type CheckinAction = {
   type: CHANGE_CHECKIN,
-  payload: CheckinActionPayload
-}
+  payload: CheckinActionPayload,
+};
 
 const initialState: CheckinState = {
-  checkins: {}
-}
+  checkins: {},
+};
 
 const handleChange = (state: CheckinState, payload: CheckinActionPayload) => {
-  const { step, checkin } = payload
+  const { step, checkin } = payload;
   return {
     ...state,
     checkins: {
       ...state.checkins,
       [step]: {
         ...state.checkins[step],
-        ...checkin
-      }
-    }
-  }
-}
+        ...checkin,
+      },
+    },
+  };
+};
 
 const handleDelete = (state: CheckinState, payload: DeleteCheckinPayload) => {
-  const { step } = payload
-  const { checkins } = state
+  const { step } = payload;
+  const { checkins } = state;
   const newCheckins = Object.keys(checkins).reduce((stateObj, key) => {
-    if (`${key}` === `${step}`) return stateObj
+    if (`${key}` === `${step}`) return stateObj;
     return {
       ...stateObj,
-      [key]: checkins[key]
-    }
-  }, {})
+      [key]: checkins[key],
+    };
+  }, {});
   return {
     ...state,
-    checkins: newCheckins
-  }
-}
+    checkins: newCheckins,
+  };
+};
 
 const checkinReducer = (
   state: CheckinState = initialState,
@@ -72,29 +72,29 @@ const checkinReducer = (
 ) => {
   switch (action.type) {
   case UPDATE_CHECKIN:
-    return handleChange(state, action.payload)
+    return handleChange(state, action.payload);
   case DELETE_CHECKIN:
-    return handleDelete(state, action.payload)
+    return handleDelete(state, action.payload);
   case CANCEL_ALL_NOTIFICATIONS:
-    return initialState
+    return initialState;
   default:
-    return state
+    return state;
   }
-}
+};
 
-import storage from 'redux-persist/lib/storage'
-import { persistReducer, createMigrate } from 'redux-persist'
+import storage from 'redux-persist/lib/storage';
+import { persistReducer, createMigrate } from 'redux-persist';
 
 const migrations = {
-  0: state => state
-}
+  0: state => state,
+};
 
 const persistConfig = {
   key: 'checkins',
   storage: storage,
   blacklist: [],
   version: 1,
-  migrate: createMigrate(migrations, { debug: true })
-}
+  migrate: createMigrate(migrations, { debug: true }),
+};
 
-export default persistReducer(persistConfig, checkinReducer)
+export default persistReducer(persistConfig, checkinReducer);

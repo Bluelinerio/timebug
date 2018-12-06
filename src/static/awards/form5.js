@@ -1,4 +1,4 @@
-import { CHECKBOX, LABEL, STRUCT } from './modelTypes'
+import { CHECKBOX, LABEL, STRUCT } from './modelTypes';
 
 export default {
   recentGoals: {
@@ -11,25 +11,25 @@ export default {
         key: 'goal',
         column: true,
         options: {
-          header: 'Goal'
-        }
+          header: 'Goal',
+        },
       },
       goalTypes: {
         type: LABEL,
         key: 'goalTypes',
         column: true,
         options: {
-          header: 'Type'
-        }
-      }
-    }
+          header: 'Type',
+        },
+      },
+    },
   },
   isCompleted: {
     type: CHECKBOX,
     key: 'isCompleted',
     column: true,
     options: {
-      header: 'Completed'
-    }
-  }
-}
+      header: 'Completed',
+    },
+  },
+};

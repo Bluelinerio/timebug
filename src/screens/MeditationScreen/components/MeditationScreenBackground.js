@@ -1,17 +1,17 @@
-import * as React     from 'react'
-import LinearGradient from 'react-native-linear-gradient'
+import * as React from 'react';
+import LinearGradient from 'react-native-linear-gradient';
 
 type Props = {
   startColor: string,
   endColor: string,
   children: React.Node | [React.Node],
-}
+};
 
 const MeditationScreenBackground = ({
   startColor = 'gray',
   endColor = 'gray',
-  children
-}: Props) : React.Node => (
+  children,
+}: Props): React.Node => (
   <LinearGradient
     style={{ flex: 1 }}
     colors={[startColor, endColor]}
@@ -20,6 +20,6 @@ const MeditationScreenBackground = ({
   >
     {children}
   </LinearGradient>
-)
+);
 
-export default MeditationScreenBackground
+export default MeditationScreenBackground;

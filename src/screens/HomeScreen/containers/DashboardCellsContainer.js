@@ -1,20 +1,20 @@
 //@flow
-import * as React               from 'react'
-import { connect }              from 'react-redux'
-import { compose, withProps }   from 'recompose'
-import User                     from './../../../containers/User'
-import { goToMeditation }       from './../../../redux/actions/nav.actions'
-import MeditationDashboardCell  from './../components/DashboardCells/MeditationDashboardCell'
+import * as React from 'react';
+import { connect } from 'react-redux';
+import { compose, withProps } from 'recompose';
+import User from './../../../containers/User';
+import { goToMeditation } from './../../../redux/actions/nav.actions';
+import MeditationDashboardCell from './../components/DashboardCells/MeditationDashboardCell';
 
 // Dashboard should determind  visibilty based on a feed switch or A/B signal
 const MeditationDashboardCellContainer = compose(
   connect(null, {
-    onPress: () => goToMeditation('local-armchair-meditation')
+    onPress: () => goToMeditation('local-armchair-meditation'),
   }),
   withProps({
-    title: `I want to Meditate`
+    title: `I want to Meditate`,
   })
-)(MeditationDashboardCell)
+)(MeditationDashboardCell);
 
 const DashboardCellsContainer = ({ show = true }: { show: boolean }) => {
   return show ? (
@@ -25,7 +25,7 @@ const DashboardCellsContainer = ({ show = true }: { show: boolean }) => {
         </React.Fragment>
       )}
     </User>
-  ) : null
-}
+  ) : null;
+};
 
-export default DashboardCellsContainer
+export default DashboardCellsContainer;

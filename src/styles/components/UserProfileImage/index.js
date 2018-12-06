@@ -1,7 +1,5 @@
-import { Platform, StyleSheet } from 'react-native'
-import {
-  iOSUIKit
-} from 'react-native-typography'
+import { Platform, StyleSheet } from 'react-native';
+import { iOSUIKit } from 'react-native-typography';
 
 export default StyleSheet.create({
   myJourneyContainer: {
@@ -15,16 +13,16 @@ export default StyleSheet.create({
         shadowColor: 'black',
         shadowOffset: {
           width: 0,
-          height: 1
+          height: 1,
         },
         shadowOpacity: 0.2,
-        shadowRadius: 1
-      }
-    })
+        shadowRadius: 1,
+      },
+    }),
   },
   myJourneyText: {
     ...iOSUIKit.footnoteEmphasizedObject,
     color: '#00098A',
-    fontSize: 16
-  }
-})
+    fontSize: 16,
+  },
+});

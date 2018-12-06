@@ -22,11 +22,11 @@ class NetworkState {
               setTimeout(() => {
                 this._checkConnection(resolve, reject, dontWorkOffline);
               }, NETWORK_ALERT_TIME);
-            }
+            },
           },
           {
-            text: 'OK'
-          }
+            text: 'OK',
+          },
         ]
       );
     } else if (dontWorkOffline) {
@@ -40,11 +40,11 @@ class NetworkState {
               setTimeout(() => {
                 this._checkConnection(resolve, reject, dontWorkOffline);
               }, NETWORK_ALERT_TIME);
-            }
+            },
           },
           {
-            text: 'OK'
-          }
+            text: 'OK',
+          },
         ]
       );
     }

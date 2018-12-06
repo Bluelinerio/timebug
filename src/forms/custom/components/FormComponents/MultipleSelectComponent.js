@@ -1,8 +1,8 @@
-import React from 'react'
-import { View } from 'react-native'
-import { CheckBox } from 'react-native-elements'
-import { Text } from 'react-native-elements'
-import styles, { checkboxColor, uncheckedColor } from '../../styles'
+import React from 'react';
+import { View } from 'react-native';
+import { CheckBox } from 'react-native-elements';
+import { Text } from 'react-native-elements';
+import styles, { checkboxColor, uncheckedColor } from '../../styles';
 
 type Props = {
   value: Array<string>,
@@ -10,22 +10,22 @@ type Props = {
   field: {
     content: {
       text: string,
-      items: Array<{ text: string, value: string }>
+      items: Array<{ text: string, value: string }>,
     },
     options?: {
-      default: string
-    }
-  }
-}
+      default: string,
+    },
+  },
+};
 
 const Check = ({
   onChange,
   checked,
-  title
+  title,
 }: {
   onChange: () => any,
   checked: Boolean,
-  title: string
+  title: string,
 }) => (
   <CheckBox
     iconType="ionicon"
@@ -38,21 +38,21 @@ const Check = ({
     onPress={onChange}
     containerStyle={{ backgroundColor: 'transparent' }}
   />
-)
+);
 
 class MultipleSelect extends React.PureComponent<Props> {
   _onChange = item => {
-    const { onChange, value = [] } = this.props
-    const { value: itemValue } = item
-    const valueSet = new Set(value)
-    if (valueSet.has(itemValue)) valueSet.delete(itemValue)
-    else valueSet.add(itemValue)
-    onChange([...valueSet])
-  }
+    const { onChange, value = [] } = this.props;
+    const { value: itemValue } = item;
+    const valueSet = new Set(value);
+    if (valueSet.has(itemValue)) valueSet.delete(itemValue);
+    else valueSet.add(itemValue);
+    onChange([...valueSet]);
+  };
 
   render() {
-    const { value = [], field: { content } } = this.props
-    const valueSet = new Set(value)
+    const { value = [], field: { content } } = this.props;
+    const valueSet = new Set(value);
     return (
       <React.Fragment>
         <Text style={styles.textInputLabelStyle}>{content.text}</Text>
@@ -70,7 +70,7 @@ class MultipleSelect extends React.PureComponent<Props> {
           </View>
         </View>
       </React.Fragment>
-    )
+    );
   }
 }
-export default MultipleSelect
+export default MultipleSelect;

@@ -1,18 +1,18 @@
-import { connect }                                    from 'react-redux'
-import { withNavigation }                             from 'react-navigation'
-import { compose, mapProps, renderComponent, branch } from 'recompose'
-import selectors                                      from '../redux/selectors'
-import UserAnonymousError                             from '../containers/UserAnonymousError'
-import DefaultIndicator                               from '../components/DefaultIndicator'
+import { connect } from 'react-redux';
+import { withNavigation } from 'react-navigation';
+import { compose, mapProps, renderComponent, branch } from 'recompose';
+import selectors from '../redux/selectors';
+import UserAnonymousError from '../containers/UserAnonymousError';
+import DefaultIndicator from '../components/DefaultIndicator';
 
 const unpackStepParamsFromNavigation = ({
-  state: { params: { stepId, stepColor, stepNumber, formId } }
+  state: { params: { stepId, stepColor, stepNumber, formId } },
 }) => ({
   stepId,
   stepColor,
   stepNumber,
-  formId
-})
+  formId,
+});
 
 export const withNavigationAndStep = compose(
   connect(state => ({ steps: selectors.steps(state) })),
@@ -20,64 +20,65 @@ export const withNavigationAndStep = compose(
   mapProps(props => {
     if (!props.navigation) {
       if (__DEV__) {
-        throw new Error('missing navigation in props')
+        throw new Error('missing navigation in props');
       } else {
-        return props
+        return props;
       }
     }
-    const { steps, navigation } = props
+    const { steps, navigation } = props;
     const {
       /*, stepColor, stepNumber */
       stepId,
-      formId
-    } = unpackStepParamsFromNavigation(navigation)
+      formId,
+    } = unpackStepParamsFromNavigation(navigation);
 
     return {
       ...props,
       step: steps[stepId],
       formId,
-      navigation
-    }
+      navigation,
+    };
   })
-)
+);
 
 const unpackMeditationParamsFromNavigation = ({
-  state: { params: { id } }
+  state: { params: { id } },
 }) => ({
-  id
-})
+  id,
+});
 
 export const withNavigationAndMeditation = compose(
   connect(state => ({
-    meditations: selectors.meditations(state)
+    meditations: selectors.meditations(state),
   })),
   withNavigation,
   mapProps(props => {
     if (!props.navigation) {
       if (__DEV__) {
-        throw new Error('missing navigation in props')
+        throw new Error('missing navigation in props');
       } else {
-        return props
+        return props;
       }
     }
-    const { meditations, navigation } = props
+    const { meditations, navigation } = props;
     const meditationIdFromNavigation = unpackMeditationParamsFromNavigation(
       navigation
-    ).id
+    ).id;
     const meditation =
-      meditationIdFromNavigation &&
-      meditations.find(item => item.id === meditationIdFromNavigation) || meditations[0]
+      (meditationIdFromNavigation &&
+        meditations.find(item => item.id === meditationIdFromNavigation)) ||
+      meditations[0];
     return {
       ...props,
-      meditation
-    }
+      meditation,
+    };
   })
-)
+);
 
 export const userRequired = compose(
   connect(state => ({
     isNotLoggedIn: selectors.isNotLoggedIn(state),
-    isAnonymous: selectors.isAnonymous(state)
+    isAnonymous: selectors.isAnonymous(state),
   })),
   branch(
     ({ isNotLoggedIn }) => isNotLoggedIn,
@@ -87,4 +88,4 @@ export const userRequired = compose(
       renderComponent(DefaultIndicator)
     )
   )
-)
+);

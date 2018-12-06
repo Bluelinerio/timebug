@@ -1,19 +1,19 @@
 //@flow
-import React                            from 'react'
-import { View, TouchableOpacity, Text } from 'react-native'
-import CustomImage                      from '../../../components/CustomImage'
-import styles                           from '../styles'
-import tron                             from 'reactotron-react-native'
-import StepContentButton                from '../containers/StepContentButtonContainer'
-import StepAudioButton                  from '../containers/StepAudioButtonContainer'
+import React from 'react';
+import { View, TouchableOpacity, Text } from 'react-native';
+import CustomImage from '../../../components/CustomImage';
+import styles from '../styles';
+import tron from 'reactotron-react-native';
+import StepContentButton from '../containers/StepContentButtonContainer';
+import StepAudioButton from '../containers/StepAudioButtonContainer';
 
 const lorem =
-  'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati velit culpa alias ipsum delectus accusantium'
+  'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati velit culpa alias ipsum delectus accusantium';
 
 export type SideActions = {
   audio: () => any,
-  content: () => any
-}
+  content: () => any,
+};
 
 export type OptionButtonProps = {
   onPress: () => any,
@@ -26,8 +26,8 @@ export type OptionButtonProps = {
   visible: boolean,
   source: string,
   containerBackgroundColor: string,
-  textStyle: any
-}
+  textStyle: any,
+};
 
 class OptionButton extends React.PureComponent<OptionButtonProps> {
   render() {
@@ -42,19 +42,21 @@ class OptionButton extends React.PureComponent<OptionButtonProps> {
       visible,
       audio,
       containerBackgroundColor,
-      textStyle
-    } = this.props
-    tron.log('Re rendered option button #' + step)
+      textStyle,
+    } = this.props;
+    tron.log('Re rendered option button #' + step);
     return visible ? (
-      <TouchableOpacity style={visible ? {} : { width: 0, height: 0 }} onPress={onPress}>
-        <View style={[styles.button, { backgroundColor: containerBackgroundColor }]}>
+      <TouchableOpacity
+        style={visible ? {} : { width: 0, height: 0 }}
+        onPress={onPress}
+      >
+        <View
+          style={[styles.button, { backgroundColor: containerBackgroundColor }]}
+        >
           <View style={styles.mainComponent}>
             <View style={styles.mainComponentTopRow}>
               <View style={[styles.buttonImageContainer]}>
-                <CustomImage
-                  style={[styles.buttonImage]}
-                  source={source}
-                />
+                <CustomImage style={[styles.buttonImage]} source={source} />
               </View>
               <View style={[styles.buttonTextContainer]}>
                 <Text style={[styles.stepText, styles.buttonText, textStyle]}>
@@ -89,8 +91,8 @@ class OptionButton extends React.PureComponent<OptionButtonProps> {
           </View>
         </View>
       </TouchableOpacity>
-    ) : null
+    ) : null;
   }
 }
 
-export default OptionButton
+export default OptionButton;

@@ -1,8 +1,8 @@
 // @flow
-import React               from 'react'
-import HomeScreenComponent from './components/HomeScreenComponent'
-import User                from '../../containers/User'
-import DefaultIndicator    from '../../components/DefaultIndicator'
+import React from 'react';
+import HomeScreenComponent from './components/HomeScreenComponent';
+import User from '../../containers/User';
+import DefaultIndicator from '../../components/DefaultIndicator';
 
 const HomeScreenContainer = () => (
   <User
@@ -11,5 +11,5 @@ const HomeScreenContainer = () => (
     renderWithAuthenticating={() => <DefaultIndicator size="large" />}
     renderWithUndetermined={() => <DefaultIndicator size="large" />}
   />
-)
-export default HomeScreenContainer
+);
+export default HomeScreenContainer;

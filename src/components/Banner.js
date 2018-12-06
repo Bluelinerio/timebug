@@ -1,26 +1,26 @@
 /* @flow */
 
-import React                    from 'react'
-import { Text, View }           from 'react-native'
-import Icon                     from 'react-native-vector-icons/MaterialIcons'
-import moment                   from 'moment'
-import VerticalGradient         from '../containers/VerticalGradient'
-import UserProfileImageConsumer from '../containers/UserProfileImageConsumer'
-import styles                   from '../screens/styles/dashboard.styles'
-import User                     from '../containers/User'
-import UserProfileImage         from '../containers/UserProfileImageContainer'
+import React from 'react';
+import { Text, View } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import moment from 'moment';
+import VerticalGradient from '../containers/VerticalGradient';
+import UserProfileImageConsumer from '../containers/UserProfileImageConsumer';
+import styles from '../screens/styles/dashboard.styles';
+import User from '../containers/User';
+import UserProfileImage from '../containers/UserProfileImageContainer';
 
 type BannerProps = {
   goBack: any => any,
-  root: boolean
-}
+  root: boolean,
+};
 
 type BackButtonProps = {
-  onPress: any => any
-}
+  onPress: any => any,
+};
 
 const firstName = user =>
-  user ? (user.name ? user.name.split(' ')[0] : '') : ''
+  user ? (user.name ? user.name.split(' ')[0] : '') : '';
 
 const BackButton = ({ onPress }: BackButtonProps) => {
   return (
@@ -33,8 +33,8 @@ const BackButton = ({ onPress }: BackButtonProps) => {
         onPress={onPress}
       />
     </View>
-  )
-}
+  );
+};
 
 /**
  * This banner has been deprecated in favor of the minified banner
@@ -58,7 +58,7 @@ const Banner = ({ goBack, root = true }: BannerProps) => {
                   <Text style={[styles.bannerTitle, styles.strong]}>{`Welcome${
                     userState ? `${firstName(userState)}` : ``
                   }!`}</Text>
-                )
+                );
               }}
             </User>
           </View>
@@ -73,7 +73,7 @@ const Banner = ({ goBack, root = true }: BannerProps) => {
         </View>
       </View>
     </View>
-  )
-}
+  );
+};
 
-export default Banner
+export default Banner;

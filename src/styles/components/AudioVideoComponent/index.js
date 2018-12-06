@@ -1,10 +1,10 @@
-import { StyleSheet }                 from 'react-native'
-import { gray900, white2, heavyGray } from '../../../constants/colors'
+import { StyleSheet } from 'react-native';
+import { gray900, white2, heavyGray } from '../../../constants/colors';
 
-const mainColor = gray900
+const mainColor = gray900;
 
-export const iconSize = 32
-const barMaxHeight = 50
+export const iconSize = 32;
+const barMaxHeight = 50;
 
 export default StyleSheet.create({
   audioVideoContainer: {
@@ -12,7 +12,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 4,
-    paddingHorizontal: 8
+    paddingHorizontal: 8,
   },
   controlBarContainer: {
     flex: 1,
@@ -25,7 +25,7 @@ export default StyleSheet.create({
     backgroundColor: white2,
     borderRadius: 12,
     borderWidth: 1,
-    borderColor: mainColor
+    borderColor: mainColor,
   },
   playButton: {
     flex: 1,
@@ -33,34 +33,34 @@ export default StyleSheet.create({
     borderWidth: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 100
+    borderRadius: 100,
   },
   icon: {
-    color: heavyGray
+    color: heavyGray,
   },
   seekBarParent: {
     flex: 6,
     alignItems: 'stretch',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   seekBarContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     marginLeft: 10,
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   sliderContainer: {
     flex: 4,
     alignItems: 'stretch',
     justifyContent: 'center',
-    padding: 8
+    padding: 8,
   },
   textContainer: {
-    flex: 1
+    flex: 1,
   },
   text: {
     color: mainColor,
-    fontSize: 10
-  }
-})
+    fontSize: 10,
+  },
+});

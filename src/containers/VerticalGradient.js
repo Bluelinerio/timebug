@@ -1,17 +1,17 @@
-import React from 'react'
-import styles, { colors } from '../styles/components/Gradient'
-import LinearGradient from 'react-native-linear-gradient'
+import React from 'react';
+import styles, { colors } from '../styles/components/Gradient';
+import LinearGradient from 'react-native-linear-gradient';
 
 type Props = {
   colorStart?: string,
   colorEnd?: string,
-  style?: any
-}
+  style?: any,
+};
 
 const StartEndGradient = ({
   colorStart = colors.startGradientColor,
   colorEnd = colors.endGradientColor,
-  style
+  style,
 }: Props) => (
   <LinearGradient
     colors={[colorEnd, colorStart]}
@@ -19,6 +19,6 @@ const StartEndGradient = ({
     end={{ x: 0, y: 0 }}
     style={[styles.gradient, style]}
   />
-)
+);
 
-export default StartEndGradient
+export default StartEndGradient;

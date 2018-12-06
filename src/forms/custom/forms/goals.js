@@ -1,5 +1,5 @@
-import types, { actionTypes } from './types'
-import { frequencies }        from '../../../services/checkins'
+import types, { actionTypes } from './types';
+import { frequencies } from '../../../services/checkins';
 
 export const AreaOfLife = [
   'Finances',
@@ -8,8 +8,8 @@ export const AreaOfLife = [
   'Career',
   'Relationships',
   'Health & Wellness',
-  'Spirituality'
-]
+  'Spirituality',
+];
 
 export const GoalType = [
   'Energy & Time',
@@ -18,26 +18,26 @@ export const GoalType = [
   'Internal Qualities',
   'Environment',
   'Material Outcomes',
-  'Relationship Quality'
-]
+  'Relationship Quality',
+];
 
 export const translateFrequencies = (frequency: string) =>
-  frequencies[frequency]
+  frequencies[frequency];
 
 export const timeToCompleteGoal = [
   'A day',
   'A week',
   'A month',
   '6 months',
-  'A year'
-]
+  'A year',
+];
 
 export const STATUS = {
   PENDING: 'PENDING',
   COMPLETED: 'COMPLETED',
   ARCHIVED: 'ARCHIVED',
-  DELETED: 'DELETED'
-}
+  DELETED: 'DELETED',
+};
 
 const form5 = {
   type: types.form,
@@ -46,9 +46,9 @@ const form5 = {
       type: types.label,
       key: 'goalTitle',
       content: {
-        text: `Let's set up some goals`
+        text: `Let's set up some goals`,
       },
-      options: {}
+      options: {},
     },
     1: {
       type: types.string,
@@ -56,13 +56,13 @@ const form5 = {
       content: {
         text: 'What is one of your recent life goals?',
         smallKey: 'Goal',
-        primary: true
+        primary: true,
       },
       options: {
         placeHolder: 'Input a recent life goal',
         multiline: true,
-        default: ''
-      }
+        default: '',
+      },
     },
     2: {
       type: types.multipleSelect,
@@ -74,12 +74,12 @@ const form5 = {
         items: GoalType.map((goal, index) => ({
           value: goal,
           text: goal,
-          id: `areaOfLifeMultiple_${index}`
-        }))
+          id: `areaOfLifeMultiple_${index}`,
+        })),
       },
       options: {
-        default: []
-      }
+        default: [],
+      },
     },
     3: {
       type: types.select,
@@ -89,12 +89,12 @@ const form5 = {
         smallKey: 'ETA',
         items: timeToCompleteGoal.map(time => ({
           value: time,
-          text: time
-        }))
+          text: time,
+        })),
       },
       options: {
-        default: timeToCompleteGoal[0]
-      }
+        default: timeToCompleteGoal[0],
+      },
     },
     4: {
       type: types.select,
@@ -104,20 +104,20 @@ const form5 = {
         smallKey: 'Check-in',
         items: Object.keys(frequencies).map(key => ({
           value: key,
-          text: frequencies[key]
+          text: frequencies[key],
         })),
-        translation: translateFrequencies
+        translation: translateFrequencies,
       },
       options: {
-        default: Object.keys(frequencies)[0]
-      }
+        default: Object.keys(frequencies)[0],
+      },
     },
     5: {
       type: types.list,
       content: {
         text: 'What are some steps you need to do to complete this goal?',
         listText: 'Steps',
-        smallKey: 'Steps'
+        smallKey: 'Steps',
       },
       options: {
         childTypes: {
@@ -125,17 +125,17 @@ const form5 = {
             type: types.string,
             key: 'stepToLifeGoal',
             options: {
-              placeHolder: 'Step'
-            }
-          }
+              placeHolder: 'Step',
+            },
+          },
         },
-        default: []
-      }
+        default: [],
+      },
     },
     6: {
       type: types.button,
       content: {
-        text: 'Do you wish to add more goals?'
+        text: 'Do you wish to add more goals?',
       },
       actions: [
         {
@@ -143,12 +143,12 @@ const form5 = {
           key: 'goal_yes',
           action: {
             type: actionTypes.GO_TO,
-            payload: 1
-          }
-        }
-      ]
+            payload: 1,
+          },
+        },
+      ],
     },
-  }
-}
+  },
+};
 
-export default form5
+export default form5;

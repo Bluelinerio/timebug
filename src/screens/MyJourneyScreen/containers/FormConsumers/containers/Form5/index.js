@@ -1,77 +1,75 @@
 //@flow
-import React                                  from 'react'
-import { compose }                            from 'recompose'
-import { SelectedKeys }                       from '../../../types'
+import React from 'react';
+import { compose } from 'recompose';
+import { SelectedKeys } from '../../../types';
 import {
   HandlerFunction,
-  FormDataForExercise
-}                                             from '../../../../../../HOC/GenericFormConsumer'
-import {
-  AwardForStep
-}                                             from '../../../../../../HOC/AwardProvider'
-import getDataFromForm                        from '../../utils/DataFromForm'
-import { buildHeader, buildElements }         from '../../utils/FormModelToElement'
-import { STEP5, getFormRequestedKeysForStep } from '../../../Forms'
-import { HeaderProps }                        from '../../../../components/GenericHeader'
-import { ListElementProps }                   from '../../../../components/ListElement'
+  FormDataForExercise,
+} from '../../../../../../HOC/GenericFormConsumer';
+import { AwardForStep } from '../../../../../../HOC/AwardProvider';
+import getDataFromForm from '../../utils/DataFromForm';
+import { buildHeader, buildElements } from '../../utils/FormModelToElement';
+import { STEP5, getFormRequestedKeysForStep } from '../../../Forms';
+import { HeaderProps } from '../../../../components/GenericHeader';
+import { ListElementProps } from '../../../../components/ListElement';
 
-const wantedKeys: SelectedKeys = getFormRequestedKeysForStep(STEP5)
+const wantedKeys: SelectedKeys = getFormRequestedKeysForStep(STEP5);
 
 type ComponentDataForForm = {
-  recentGoals: any
-}
+  recentGoals: any,
+};
 
 type PresentationProps = {
   componentData: ComponentDataForForm,
-  award: AwardForStep
-}
+  award: AwardForStep,
+};
 
 type ComponentProps = {
   header: HeaderProps,
-  elements: ListElementProps
-}
+  elements: ListElementProps,
+};
 
 export const handler: HandlerFunction = ({
   formData,
   ...rest
 }: FormDataForExercise): PresentationProps => {
-  const componentData = getDataFromForm(formData, wantedKeys)
+  const componentData = getDataFromForm(formData, wantedKeys);
   return {
     componentData,
-    ...rest
-  }
-}
+    ...rest,
+  };
+};
 
-const transformPropsForPresentation = (props: PresentationProps): ComponentProps => {
-  const { componentData, award: { data, model }, ...rest } = props
+const transformPropsForPresentation = (
+  props: PresentationProps
+): ComponentProps => {
+  const { componentData, award: { data, model }, ...rest } = props;
 
   const header = {
-    elements: buildHeader(model)
-  }
+    elements: buildHeader(model),
+  };
 
-  const { recentGoals } = componentData
+  const { recentGoals } = componentData;
 
-  const componentDataArray = [
-    recentGoals
-  ]
+  const componentDataArray = [recentGoals];
 
-  const elements = buildElements({ header, componentDataArray, data })
+  const elements = buildElements({ header, componentDataArray, data });
 
   return {
     header,
     elements,
-    ...rest
-  }
-}
+    ...rest,
+  };
+};
 
-const componentPropsHandler = compose(transformPropsForPresentation, handler)
+const componentPropsHandler = compose(transformPropsForPresentation, handler);
 
 const Form5Consumer = (Component: React.ComponentType<any>) => {
   const Consumer = props => {
-    const providedProps = componentPropsHandler(props)
-    return <Component {...props} {...providedProps} />
-  }
-  return Consumer
-}
+    const providedProps = componentPropsHandler(props);
+    return <Component {...props} {...providedProps} />;
+  };
+  return Consumer;
+};
 
-export default Form5Consumer
+export default Form5Consumer;

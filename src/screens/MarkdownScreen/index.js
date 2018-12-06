@@ -1,16 +1,16 @@
-import * as React                            from 'react'
-import { NavigationActions, StackNavigator } from 'react-navigation'
-import { mapProps, compose }                 from 'recompose'
-import styles                                from '../styles'
-import MarkdownScreenComponent               from './Components/MarkdownScreenComponent'
-import HeaderCloseButton                     from '../../components/HeaderCloseButton'
+import * as React from 'react';
+import { NavigationActions, StackNavigator } from 'react-navigation';
+import { mapProps, compose } from 'recompose';
+import styles from '../styles';
+import MarkdownScreenComponent from './Components/MarkdownScreenComponent';
+import HeaderCloseButton from '../../components/HeaderCloseButton';
 
 const MarkdownScreenContainer = compose(
   mapProps(props => ({
     ...props,
-    ...props.navigation.state.params
+    ...props.navigation.state.params,
   }))
-)(MarkdownScreenComponent)
+)(MarkdownScreenComponent);
 
 MarkdownScreenContainer.navigationOptions = ({ navigation: { dispatch } }) => ({
   headerStyle: styles.navigationOptionHeaderStyle,
@@ -20,26 +20,26 @@ MarkdownScreenContainer.navigationOptions = ({ navigation: { dispatch } }) => ({
       pressColorAndroid={'white'}
       tintColor={'white'}
     />
-  )
-})
+  ),
+});
 
 const MarkdownScreen = StackNavigator(
   {
     Markdown: {
-      screen: MarkdownScreenContainer
-    }
+      screen: MarkdownScreenContainer,
+    },
   },
   {
     headerMode: 'screen',
     cardStyle: {
       backgroundColor: 'white',
-      opacity: 1
-    }
+      opacity: 1,
+    },
   }
-)
+);
 
 // TODO: determin if it is required to fixDebounce:
-import { fixDebounce } from '../../navigation/util'
-fixDebounce(MarkdownScreen)
+import { fixDebounce } from '../../navigation/util';
+fixDebounce(MarkdownScreen);
 
-export default MarkdownScreen
+export default MarkdownScreen;

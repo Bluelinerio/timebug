@@ -1,52 +1,52 @@
-import React                 from 'react'
-import { View, Text, Alert } from 'react-native'
-import { Button }            from 'react-native-elements'
-import styles                from '../../styles'
-import FormPicker            from './FormPicker'
-import uuid                  from 'uuid/v4'
+import React from 'react';
+import { View, Text, Alert } from 'react-native';
+import { Button } from 'react-native-elements';
+import styles from '../../styles';
+import FormPicker from './FormPicker';
+import uuid from 'uuid/v4';
 
 type Props = {
   value: Array<any>,
   onChange: () => any,
   field: {
     content?: any,
-    options?: any
-  }
-}
+    options?: any,
+  },
+};
 
 type ValueElement = {
   _id: string,
   _model: any,
   [x: string]: {
     value: any,
-    key: string
-  }
-}
+    key: string,
+  },
+};
 
 type State = {
   value: Array<ValueElement>,
-  currentValue: ValueElement
-}
+  currentValue: ValueElement,
+};
 
 const _stripKeys = (val: ValueElement) => {
-  const metaKeys = ['_id', '_model']
+  const metaKeys = ['_id', '_model'];
   return Object.keys(val).reduce((prev, key) => {
-    if (metaKeys.find(k => k === key)) return prev
+    if (metaKeys.find(k => k === key)) return prev;
     return {
       ...prev,
-      [key]: val[key]
-    }
-  }, {})
-}
+      [key]: val[key],
+    };
+  }, {});
+};
 
 const TextElement = ({
   element,
-  index
+  index,
 }: {
   index: number,
-  element: ValueElement
+  element: ValueElement,
 }) => {
-  const strippedObject = _stripKeys(element)
+  const strippedObject = _stripKeys(element);
   return (
     <React.Fragment>
       {Object.values(strippedObject).map(value => {
@@ -58,94 +58,94 @@ const TextElement = ({
                 1})${value.value || ``}`}</Text>
             </View>
           )
-        )
+        );
       })}
     </React.Fragment>
-  )
-}
+  );
+};
 
 class ListComponent extends React.PureComponent<Props, State> {
   constructor(props) {
-    super(props)
-    const currentValue = this._buildValue(props)
+    super(props);
+    const currentValue = this._buildValue(props);
     this.state = {
-      currentValue
-    }
+      currentValue,
+    };
   }
 
   _buildValue = props => {
-    const { field: { options } } = props
-    const { childTypes } = options
+    const { field: { options } } = props;
+    const { childTypes } = options;
     const defaultValue = Object.keys(childTypes).reduce((value, key) => {
-      const child = childTypes[key]
+      const child = childTypes[key];
       return {
         ...value,
         [key]: {
           key,
-          value: child.options ? child.options.default : undefined
-        }
-      }
-    }, {})
-    return defaultValue
-  }
+          value: child.options ? child.options.default : undefined,
+        },
+      };
+    }, {});
+    return defaultValue;
+  };
 
   _onChange = (value: any, element: string) => {
-    const { currentValue } = this.state
+    const { currentValue } = this.state;
     this.setState({
-      currentValue: { ...currentValue, [element]: { value, key: element } }
-    })
-  }
+      currentValue: { ...currentValue, [element]: { value, key: element } },
+    });
+  };
 
   _validate = () => {
-    const { currentValue } = this.state
+    const { currentValue } = this.state;
     const hasError = Object.values(currentValue).some(value => {
-      return value.value === undefined || value.value === ''
-    })
+      return value.value === undefined || value.value === '';
+    });
     if (hasError)
       return {
         error: 'The input text cannot be blank',
-        failed: true
-      }
+        failed: true,
+      };
     return {
-      failed: false
-    }
-  }
+      failed: false,
+    };
+  };
 
   _onAddPress = () => {
-    const { currentValue } = this.state
-    const { value = [], onChange, field: { options } } = this.props
-    const { childTypes } = options
-    const { error, failed } = this._validate()
+    const { currentValue } = this.state;
+    const { value = [], onChange, field: { options } } = this.props;
+    const { childTypes } = options;
+    const { error, failed } = this._validate();
     if (failed) {
-      Alert.alert('Input Error', error)
-      return
+      Alert.alert('Input Error', error);
+      return;
     }
     const valueToSave = Object.keys(currentValue).reduce((prev, key) => {
-      const _model = childTypes[key]
+      const _model = childTypes[key];
       return {
         [key]: {
           ...currentValue[key],
           _model,
-          _id: uuid()
-        }
-      }
-    }, {})
+          _id: uuid(),
+        },
+      };
+    }, {});
     onChange([
       ...(value ? value : []),
       {
         ...valueToSave,
-        _id: uuid()
-      }
-    ])
-    this.setState({ currentValue: this._buildValue(this.props) })
-  }
+        _id: uuid(),
+      },
+    ]);
+    this.setState({ currentValue: this._buildValue(this.props) });
+  };
 
-  _onDeletePress = () => {}
+  _onDeletePress = () => {};
 
   render() {
-    const { currentValue } = this.state
-    const { field: { content, options }, value } = this.props
-    const { childTypes } = options
+    const { currentValue } = this.state;
+    const { field: { content, options }, value } = this.props;
+    const { childTypes } = options;
     return (
       <React.Fragment>
         <Text style={styles.textInputLabelStyle}>{content.text}</Text>
@@ -153,8 +153,8 @@ class ListComponent extends React.PureComponent<Props, State> {
           <View style={styles.listElementContainer}>
             {childTypes &&
               Object.keys(childTypes).map(key => {
-                const field = childTypes[key]
-                const inValue = currentValue[key] || {}
+                const field = childTypes[key];
+                const inValue = currentValue[key] || {};
                 return (
                   <FormPicker
                     key={field.key}
@@ -162,7 +162,7 @@ class ListComponent extends React.PureComponent<Props, State> {
                     value={inValue.value}
                     onChange={value => this._onChange(value, key)}
                   />
-                )
+                );
               })}
           </View>
           <Button
@@ -184,8 +184,8 @@ class ListComponent extends React.PureComponent<Props, State> {
             ))}
         </View>
       </React.Fragment>
-    )
+    );
   }
 }
 
-export default ListComponent
+export default ListComponent;

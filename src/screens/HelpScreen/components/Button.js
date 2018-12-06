@@ -1,9 +1,9 @@
 // @flow
-import * as React                   from 'react'
-import { StyleSheet }               from 'react-native'
-import { Button as NBButton, Text } from 'native-base'
-import { Theme }                    from './Theme'
-import type { BaseProps }           from './Types'
+import * as React from 'react';
+import { StyleSheet } from 'react-native';
+import { Button as NBButton, Text } from 'native-base';
+import { Theme } from './Theme';
+import type { BaseProps } from './Types';
 
 type ButtonProps = BaseProps & {
   label: string,
@@ -11,8 +11,8 @@ type ButtonProps = BaseProps & {
   transparent?: boolean,
   disabled?: boolean,
   full?: boolean,
-  onPress: () => mixed
-}
+  onPress: () => mixed,
+};
 
 export default class Button extends React.Component<ButtonProps> {
   render(): React.Node {
@@ -23,13 +23,13 @@ export default class Button extends React.Component<ButtonProps> {
       disabled,
       transparent,
       onPress,
-      style
-    } = this.props
-    const computedStyle = [styles.base]
+      style,
+    } = this.props;
+    const computedStyle = [styles.base];
     if (primary && !transparent) {
-      computedStyle.push(styles.primary)
+      computedStyle.push(styles.primary);
     }
-    computedStyle.push(style)
+    computedStyle.push(style);
     return (
       <NBButton
         {...{
@@ -39,7 +39,7 @@ export default class Button extends React.Component<ButtonProps> {
           style: computedStyle,
           rounded: true,
           transparent: !primary || transparent,
-          disabled
+          disabled,
         }}
       >
         <Text
@@ -52,14 +52,14 @@ export default class Button extends React.Component<ButtonProps> {
                   ? transparent ? Theme.palette.primary : 'white'
                   : Theme.typography.color,
               fontSize: primary ? 16 : Theme.typography.regular.fontSize,
-              fontFamily: Theme.typography.semibold
-            }
+              fontFamily: Theme.typography.semibold,
+            },
           ]}
         >
           {label}
         </Text>
       </NBButton>
-    )
+    );
   }
 }
 
@@ -69,6 +69,6 @@ const styles = StyleSheet.create({
     shadowColor: 'rgba(0, 170, 255, 0.29)',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 1,
-    shadowRadius: 7
-  }
-})
+    shadowRadius: 7,
+  },
+});

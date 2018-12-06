@@ -2,26 +2,26 @@
 
 export type SelectedKeyEntry = {
   form: string,
-  key: string
-}
+  key: string,
+};
 
 export type SelectedKeys = {
-  [x: string]: SelectedKeyEntry
-}
+  [x: string]: SelectedKeyEntry,
+};
 
 export type CarouselEntryType = {
   title: string,
-  step: string
-}
+  step: string,
+};
 
 export type PresentationalFormElement = {
-  text: string
-}
+  text: string,
+};
 
 export type InteractiveFormElement = {
   formIndex: string,
   formKey: string,
-  value: any
-}
+  value: any,
+};
 
-export type FormElement = PresentationalFormElement | InteractiveFormElement
+export type FormElement = PresentationalFormElement | InteractiveFormElement;

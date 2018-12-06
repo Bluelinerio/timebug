@@ -1,12 +1,12 @@
 // @flow
-import * as React             from 'react'
-import styles                 from './styles/ProgressCell.style'
-import PhaseProgressContainer from '../../../../containers/ProgressContainerChart'
-import Cell                   from './Cell'
+import * as React from 'react';
+import styles from './styles/ProgressCell.style';
+import PhaseProgressContainer from '../../../../containers/ProgressContainerChart';
+import Cell from './Cell';
 
 const style = {
-  highlight: styles.pieChartContainer
-}
+  highlight: styles.pieChartContainer,
+};
 
 const ProgressDashboardCell = () => (
   <Cell
@@ -17,6 +17,6 @@ const ProgressDashboardCell = () => (
     titleColor={'black'}
     style={style}
   />
-)
+);
 
-export default ProgressDashboardCell
+export default ProgressDashboardCell;

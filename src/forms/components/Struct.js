@@ -1,5 +1,5 @@
-import React          from 'react'
-import { View, Text } from 'react-native'
+import React from 'react';
+import { View, Text } from 'react-native';
 
 // indicatorPosition: `none`, `top`, `right`, `bottom` and `left`
 type StructProps = {
@@ -10,12 +10,12 @@ type StructProps = {
   order: any,
   inputs: any,
   topLevel: any,
-  config: any
-}
+  config: any,
+};
 
 export default class Struct extends React.Component<StructProps> {
   error = () => {
-    const { hasError, error, styles } = this.props
+    const { hasError, error, styles } = this.props;
 
     return (
       hasError &&
@@ -28,21 +28,21 @@ export default class Struct extends React.Component<StructProps> {
           {error}
         </Text>
       )
-    )
-  }
+    );
+  };
   label = (style = {}) => {
-    const { label, styles } = this.props
+    const { label, styles } = this.props;
     return (
       label && (
         <Text key={label} style={[styles.formLabel, { ...style }]}>
           {label}
         </Text>
       )
-    )
-  }
+    );
+  };
 
   rows = () => {
-    const { order, inputs } = this.props
+    const { order, inputs } = this.props;
     return (
       order &&
       order
@@ -52,24 +52,24 @@ export default class Struct extends React.Component<StructProps> {
             !input.props.options ||
             (input.props.options && !input.props.options.hidden)
         )
-    )
-  }
+    );
+  };
 
   render() {
-    const error = this.error()
-    const rows = this.rows()
+    const error = this.error();
+    const rows = this.rows();
     const label = this.label({
-      color: this.props.config.stepColor
-    })
-    const children = [label ? [label] : [], ...rows]
-    const topLevel = this.props.topLevel || false
-    const { fieldset } = this.props.styles
-    const style = topLevel ? fieldset.topLevel : fieldset.normal
+      color: this.props.config.stepColor,
+    });
+    const children = [label ? [label] : [], ...rows];
+    const topLevel = this.props.topLevel || false;
+    const { fieldset } = this.props.styles;
+    const style = topLevel ? fieldset.topLevel : fieldset.normal;
     return (
       <View style={{ ...style }}>
         {error}
         {children}
       </View>
-    )
+    );
   }
 }

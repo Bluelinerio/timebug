@@ -2,93 +2,93 @@
 import {
   SimpleModelData,
   Model,
-  AwardData
-}                        from '../../../../../redux/reducers/awards.reducer.js'
-import { HeaderElement } from '../../../components/GenericHeader'
+  AwardData,
+} from '../../../../../redux/reducers/awards.reducer.js';
+import { HeaderElement } from '../../../components/GenericHeader';
 import {
   CHECKBOX,
   LABEL,
-  STRUCT
-}                        from '../../../../../static/awards/modelTypes'
-import {
-  FormElement
-}                        from '../../types'
+  STRUCT,
+} from '../../../../../static/awards/modelTypes';
+import { FormElement } from '../../types';
 
 type FindColumnElementsArgs = {
-  model: SimpleModelData
-}
+  model: SimpleModelData,
+};
 
 type BuildElementsArgs = {
   header: Array<HeaderElement>,
   componentDataArray?: Array<any>,
-  data?: AwardData
-}
+  data?: AwardData,
+};
 
 const isTypeRenderizable = (model: Model): boolean =>
-  model.column === true && (model.type === LABEL || model.type === CHECKBOX)
+  model.column === true && (model.type === LABEL || model.type === CHECKBOX);
 
 const isModelStruct = (model: Model): boolean =>
-  model.type && model.type === STRUCT
+  model.type && model.type === STRUCT;
 
 export const findColumnElements = ({ model }: FindColumnElementsArgs) => {
   return Object.keys(model)
     .reduce((elements, key) => {
-      const mod = model[key]
-      if (mod && isTypeRenderizable(mod)) return [...elements, mod]
+      const mod = model[key];
+      if (mod && isTypeRenderizable(mod)) return [...elements, mod];
       else if (mod && isModelStruct(mod))
-        return [...elements, ...findColumnElements({ model: mod.fields })]
-      else [...elements]
+        return [...elements, ...findColumnElements({ model: mod.fields })];
+      else [...elements];
     }, [])
-    .filter(model => !!model)
-}
+    .filter(model => !!model);
+};
 
 export const buildHeader = (model: SimpleModelData): Array<HeaderElement> => {
-  const columnElements = findColumnElements({ model })
+  const columnElements = findColumnElements({ model });
   return columnElements.map(element => ({
     text: element.options.header,
-    ...element
-  }))
-}
+    ...element,
+  }));
+};
 
 export const buildElements = ({
   header,
   componentDataArray = [],
-  data = {}
+  data = {},
 }: BuildElementsArgs): Array<FormElement> => {
   return componentDataArray.reduce((allElements, componentElement) => {
     const elements: Array<FormElement> | null = componentElement
       ? Object.keys(componentElement).reduce((elements, key) => {
-        const value = componentElement[key]
+        const value = componentElement[key];
         if (header.elements.length > 0) {
           const element = header.elements.map(el => {
-            const { type, key: actualKey } = el
+            const { type, key: actualKey } = el;
             if (type === LABEL) {
-              const text = value[actualKey]
+              const text = value[actualKey];
               return {
                 ...el,
-                text
-              }
+                text,
+              };
             } else if (type !== STRUCT) {
-              const dataRowElement = data[key]
+              const dataRowElement = data[key];
               return {
                 ...el,
                 formIndex: key,
                 formKey: actualKey,
-                value: dataRowElement ? dataRowElement[actualKey].value : null
-              }
+                value: dataRowElement
+                  ? dataRowElement[actualKey].value
+                  : null,
+              };
             }
-          })
+          });
           return [
             ...elements,
             {
-              elements: element
-            }
-          ]
+              elements: element,
+            },
+          ];
         }
-        return elements
+        return elements;
       }, [])
-      : null
-    if (elements) return [...allElements, ...elements]
-    return allElements
-  }, [])
-}
+      : null;
+    if (elements) return [...allElements, ...elements];
+    return allElements;
+  }, []);
+};

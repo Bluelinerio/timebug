@@ -1,4 +1,4 @@
-import t from '../../../forms/components'
+import t from '../../../forms/components';
 import {
   WhereStandToday,
   Emotion,
@@ -6,43 +6,43 @@ import {
   ChangeKind,
   EffortEvaluation,
   CreditScoreChange,
-  OneToTenScale
-}        from './contents'
+  OneToTenScale,
+} from './contents';
 
 export default {
   1: {
     type: t.struct({
       id: t.maybe(t.String),
-      financialEmotions: t.list(Emotion)
+      financialEmotions: t.list(Emotion),
     }),
     options: {
       label:
         'What emotions pop up when you think about your relationship with money?',
       fields: {
         id: {
-          hidden: true
+          hidden: true,
         },
         financialEmotions: {
           item: {
-            auto: 'none'
-          }
+            auto: 'none',
+          },
           //error: 'Emotions are hard for some and easy for others. Just pick the first thing that comes to mind.'
-        }
-      }
+        },
+      },
     },
     value: {
       fields: {
         id: 'step14+v0.0.0.1',
-        othersView: true
-      }
-    }
+        othersView: true,
+      },
+    },
   },
   2: {
     type: t.struct({
       attitudeTowardsMoney: t.struct({
         selfView: t.String,
-        othersView: t.Boolean
-      })
+        othersView: t.Boolean,
+      }),
     }),
     options: {
       fields: {
@@ -51,16 +51,16 @@ export default {
           fields: {
             selfView: {
               label: "What's your general attitude towards money right now?",
-              multiline: true
+              multiline: true,
             },
             othersView: {
               label:
-                'Knowing how others perceive your relationship with money is helpful. Would you like to engage a trusted advisor in this discussion?'
-            }
-          }
-        }
-      }
-    }
+                'Knowing how others perceive your relationship with money is helpful. Would you like to engage a trusted advisor in this discussion?',
+            },
+          },
+        },
+      },
+    },
   },
   3: {
     type: t.struct({
@@ -70,8 +70,8 @@ export default {
         aYearAgo: CreditScore,
         aYearFromNow: CreditScore,
         change: ChangeKind,
-        effort: EffortEvaluation
-      })
+        effort: EffortEvaluation,
+      }),
     }),
     options: {
       fields: {
@@ -79,31 +79,31 @@ export default {
           label: 'Financial Assessment',
           fields: {
             today: {
-              label: 'What is your credit score?'
+              label: 'What is your credit score?',
             },
             creditScoreChange: {
-              label: 'Has your credit score changed over the past year?'
+              label: 'Has your credit score changed over the past year?',
             },
             aYearAgo: {
               label: 'What was your credit score one year ago today?',
-              error: 'Choose one'
+              error: 'Choose one',
             },
             aYearFromNow: {
-              label: 'What will your credit score be one year from now?'
+              label: 'What will your credit score be one year from now?',
             },
             change: { label: 'How would you describe this change?' },
-            effort: { label: 'What kind of effort will this take?' }
-          }
-        }
-      }
-    }
+            effort: { label: 'What kind of effort will this take?' },
+          },
+        },
+      },
+    },
   },
   4: {
     type: t.struct({
       financialAchievements: t.struct({
         bestAchievement: t.String,
-        biggestDissapointment: t.String
-      })
+        biggestDissapointment: t.String,
+      }),
     }),
     options: {
       fields: {
@@ -112,26 +112,26 @@ export default {
           fields: {
             bestAchievement: {
               label:
-                'What was your biggest financial achievement over the past 5 years?'
+                'What was your biggest financial achievement over the past 5 years?',
               //error: 'Write a sentence or two describing your biggest success'
             },
             biggestDissapointment: {
               label:
-                'What was your biggest dissapointment over the past 5 years?'
+                'What was your biggest dissapointment over the past 5 years?',
               //error: 'Can you sum it up in a word or two?'
-            }
-          }
-        }
-      }
-    }
+            },
+          },
+        },
+      },
+    },
   },
   5: {
     type: t.struct({
       currentFinancialStanding: t.struct({
         whereStandToday: WhereStandToday,
         profitLossFeelings: t.maybe(OneToTenScale),
-        balanceSheetChange: CreditScoreChange
-      })
+        balanceSheetChange: CreditScoreChange,
+      }),
     }),
     options: {
       fields: {
@@ -141,20 +141,20 @@ export default {
           fields: {
             whereStandToday: {
               label:
-                'Where do you stand today compared to what you had envisioned for yourself?'
+                'Where do you stand today compared to what you had envisioned for yourself?',
             },
             profitLossFeelings: {
               label:
                 'Do you have a Profit and Loss Statement? If so, how do you feel about it?',
-              help: '1=Not at all happy, 10=Extremely happy'
+              help: '1=Not at all happy, 10=Extremely happy',
             },
             balanceSheetChange: {
               label:
-                'How does it compare to a balance sheet from previous years?'
-            }
-          }
-        }
-      }
-    }
-  }
-}
+                'How does it compare to a balance sheet from previous years?',
+            },
+          },
+        },
+      },
+    },
+  },
+};

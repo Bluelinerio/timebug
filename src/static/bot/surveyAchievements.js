@@ -13,5 +13,5 @@ export default [
   'Relationships',
   'Spirituality',
   'Stages Of Life',
-  'Strengths And Weaknesses'
+  'Strengths And Weaknesses',
 ];

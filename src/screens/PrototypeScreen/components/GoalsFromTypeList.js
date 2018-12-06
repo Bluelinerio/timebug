@@ -1,20 +1,20 @@
 // @flow
-import React          from 'react'
-import { View, Text } from 'react-native'
-import styles         from '../styles'
-import GoalElement    from './GoalElement'
+import React from 'react';
+import { View, Text } from 'react-native';
+import styles from '../styles';
+import GoalElement from './GoalElement';
 
 type Props = {
   onSelect: String => any,
   goals: any,
   goal: string,
-  model: any
-}
+  model: any,
+};
 
 class GoalsFromTypeList extends React.PureComponent<Props> {
   render() {
-    const { goal, goals, onSelect } = this.props
-    const goalTitleIndex = '1'
+    const { goal, goals, onSelect } = this.props;
+    const goalTitleIndex = '1';
     return (
       <React.Fragment>
         <View style={styles.titleContainer}>
@@ -31,8 +31,8 @@ class GoalsFromTypeList extends React.PureComponent<Props> {
           ))}
         </View>
       </React.Fragment>
-    )
+    );
   }
 }
 
-export default GoalsFromTypeList
+export default GoalsFromTypeList;

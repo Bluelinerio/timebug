@@ -1,4 +1,4 @@
-import { LABEL, STRUCT } from './modelTypes'
+import { LABEL, STRUCT } from './modelTypes';
 
 export default {
   topGoalsPast5Years: {
@@ -9,33 +9,33 @@ export default {
         key: 'goal',
         column: true,
         options: {
-          header: 'Goal'
-        }
+          header: 'Goal',
+        },
       },
       percentCompleted: {
         type: LABEL,
         key: 'percentCompleted',
         column: true,
         options: {
-          header: 'Completion'
-        }
+          header: 'Completion',
+        },
       },
       satisfactionLevel: {
         type: LABEL,
         key: 'satisfactionLevel',
         column: true,
         options: {
-          header: 'Satisfaction Level'
-        }
+          header: 'Satisfaction Level',
+        },
       },
       goalProcess: {
         type: LABEL,
         key: 'goalProcess',
         column: true,
         options: {
-          header: 'Goal Process'
-        }
-      }
-    }
-  }
-}
+          header: 'Goal Process',
+        },
+      },
+    },
+  },
+};

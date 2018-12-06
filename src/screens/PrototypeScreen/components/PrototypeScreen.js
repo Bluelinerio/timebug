@@ -1,19 +1,23 @@
-import React                            from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
-import { SafeAreaView }                 from 'react-navigation'
-import Banner                           from '../../../containers/NavigationAwareBanner'
-import styles                           from '../styles'
+import React from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
+import { SafeAreaView } from 'react-navigation';
+import Banner from '../../../containers/NavigationAwareBanner';
+import styles from '../styles';
 
 class PrototypeScreen extends React.PureComponent<any> {
   render() {
-    const { goToGoalFormScreen, goToPrototypeGoalScreen } = this.props
+    const {
+      goToGoalFormScreen,
+      goToPrototypeGoalScreen,
+      goToPrototypeStartScreen,
+    } = this.props;
     return (
       <SafeAreaView
         forceInset={{ top: 'always', bottom: 'never' }}
         style={styles.container}
       >
         <View style={styles.container}>
-          <Banner/>
+          <Banner />
           <View style={styles.viewContainer}>
             <View style={styles.buttonContainer}>
               <Text style={[styles.protoText, styles.text]}>
@@ -32,6 +36,16 @@ class PrototypeScreen extends React.PureComponent<any> {
             <View style={styles.buttonContainer}>
               <TouchableOpacity
                 style={styles.button}
+                onPress={goToPrototypeStartScreen}
+              >
+                <Text style={[styles.buttonText, styles.text]}>
+                  Go to Prototype
+                </Text>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.buttonContainer}>
+              <TouchableOpacity
+                style={styles.button}
                 onPress={goToPrototypeGoalScreen}
               >
                 <Text
@@ -42,8 +56,8 @@ class PrototypeScreen extends React.PureComponent<any> {
           </View>
         </View>
       </SafeAreaView>
-    )
+    );
   }
 }
 
-export default PrototypeScreen
+export default PrototypeScreen;

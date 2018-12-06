@@ -1,51 +1,51 @@
 //@flow
-import React from 'react'
+import React from 'react';
 import GenericElement, {
   GenericElementContent,
-  GenericElementStyle
-}            from '../../../../components/GenericElement'
+  GenericElementStyle,
+} from '../../../../components/GenericElement';
 
 type BoardOfAdvisorsElementProps = {
   boardMember: string,
   pillarsOfLife: string,
   interactionFrequency: string,
-  style?: any
-}
+  style?: any,
+};
 
 type ObjectStyles = {
-  [x: string]: GenericElementStyle
-}
+  [x: string]: GenericElementStyle,
+};
 
 const buildElements = (
   props: BoardOfAdvisorsElementProps
 ): [GenericElementContent] => {
-  const mapKeyToStyle: ObjectStyles = {}
+  const mapKeyToStyle: ObjectStyles = {};
   return Object.keys(props).reduce((elements, key) => {
-    const style = mapKeyToStyle[key]
-    const text = props[key]
+    const style = mapKeyToStyle[key];
+    const text = props[key];
     return [
       ...elements,
       {
         type: 'label',
         text,
-        style
-      }
-    ]
-  }, [])
-}
+        style,
+      },
+    ];
+  }, []);
+};
 
 const FormElement = ({
   boardMember,
   pillarsOfLife,
   interactionFrequency,
-  style = {}
+  style = {},
 }: BoardOfAdvisorsElementProps) => {
   const elements: [GenericElementContent] = buildElements({
     pillarsOfLife,
     boardMember,
-    interactionFrequency
-  })
-  return <GenericElement elements={elements} style={style} />
-}
+    interactionFrequency,
+  });
+  return <GenericElement elements={elements} style={style} />;
+};
 
-export default FormElement
+export default FormElement;

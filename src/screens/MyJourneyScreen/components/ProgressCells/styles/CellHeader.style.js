@@ -1,21 +1,21 @@
-import { StyleSheet, Platform } from 'react-native'
+import { StyleSheet, Platform } from 'react-native';
 import {
   iOSColors,
   iOSUIKit,
   sanFranciscoWeights,
-  robotoWeights
-}                               from 'react-native-typography'
+  robotoWeights,
+} from 'react-native-typography';
 
 export default StyleSheet.create({
   strong: {
     ...Platform.select({
       android: {
-        ...robotoWeights.bold
+        ...robotoWeights.bold,
       },
       ios: {
-        ...sanFranciscoWeights.black
-      }
-    })
+        ...sanFranciscoWeights.black,
+      },
+    }),
   },
   title: iOSUIKit.largeTitleEmphasizedObject,
   header: {
@@ -26,7 +26,7 @@ export default StyleSheet.create({
     paddingBottom: 8,
     marginHorizontal: 16,
     borderBottomWidth: 1,
-    borderColor: iOSColors.customGray
+    borderColor: iOSColors.customGray,
   },
-  cellHeader: iOSUIKit.title3EmphasizedObject
-})
+  cellHeader: iOSUIKit.title3EmphasizedObject,
+});

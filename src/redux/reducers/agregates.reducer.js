@@ -6,31 +6,31 @@
 // @flow
 import navigationReducer, {
   NavigationReducerKeys,
-  ActionTypes as NavigationReducerActionTypes
-} from './agregates.navigation.reducer'
+  ActionTypes as NavigationReducerActionTypes,
+} from './agregates.navigation.reducer';
 
 import suggestionsReducer, {
   SuggestionsReducerKeys,
-  ActionTypes as SuggestionReducerActionTypes
-} from './agregates.suggestions.reducer.js'
+  ActionTypes as SuggestionReducerActionTypes,
+} from './agregates.suggestions.reducer.js';
 
 export const AgregateReducerKeys = {
   agregates: 'agregates',
   ...NavigationReducerKeys,
-  ...SuggestionsReducerKeys
-}
+  ...SuggestionsReducerKeys,
+};
 
-export const UPDATE = 'UPDATE'
-export const PUSH = 'PUSH'
-export const EVENT = 'EVENT'
-export const PAGE_VIEW = 'PAGE_VIEW'
+export const UPDATE = 'UPDATE';
+export const PUSH = 'PUSH';
+export const EVENT = 'EVENT';
+export const PAGE_VIEW = 'PAGE_VIEW';
 
-export type AgregateState = {}
+export type AgregateState = {};
 export type AgregateUpdateAction = {
   type: UPDATE | PUSH | EVENT | PAGE_VIEW,
-  payload: {}
-}
-export const initialState: AgregateState = {}
+  payload: {},
+};
+export const initialState: AgregateState = {};
 
 // re: react-navigation and redux-beacon review https://github.com/rangle/redux-beacon/issues/138
 function agregateReducer(
@@ -38,10 +38,10 @@ function agregateReducer(
   action: AgregateUpdateAction
 ) {
   if (NavigationReducerActionTypes.includes(action.type))
-    return navigationReducer(state, action)
+    return navigationReducer(state, action);
 
   if (SuggestionReducerActionTypes.includes(action.type)) {
-    return suggestionsReducer(state, action)
+    return suggestionsReducer(state, action);
   }
 
   switch (action.type) {
@@ -50,31 +50,31 @@ function agregateReducer(
       ...(state || {}),
       events: {
         ...state.events,
-        [Date.now()]: action.payload
-      }
-    }
+        [Date.now()]: action.payload,
+      },
+    };
   case UPDATE:
     return {
       ...(state && {}),
-      ...action.payload
-    }
+      ...action.payload,
+    };
   case PUSH:
     return {
       ...(state && {}),
       ...Object.keys(action.payload).reduce(
         (sum, key) => ({
-          [key]: [...state[key], action.payload]
+          [key]: [...state[key], action.payload],
         }),
         {}
-      )
-    }
+      ),
+    };
   default:
-    return state
+    return state;
   }
 }
 
-import storage from 'redux-persist/lib/storage'
-import { persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage';
+import { persistReducer } from 'redux-persist';
 
 //export const UNDETERMIND = 0
 // stateReconciler: (
@@ -100,7 +100,7 @@ import { persistReducer } from 'redux-persist'
 const persistConfig = {
   key: AgregateReducerKeys.agregates,
   storage: storage,
-  blacklist: ['requestCount', 'error']
-}
+  blacklist: ['requestCount', 'error'],
+};
 
-export default persistReducer(persistConfig, agregateReducer)
+export default persistReducer(persistConfig, agregateReducer);

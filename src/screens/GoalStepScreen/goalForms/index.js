@@ -1,13 +1,13 @@
-import t from '../../../forms/components'
+import t from '../../../forms/components';
 
 export default {
   1: {
     type: t.struct({
       goalSteps: t.list(
         t.struct({
-          step: t.String
+          step: t.String,
         })
-      )
+      ),
     }),
     options: {
       label: 'Add a list of 2-10 steps that could help you achieve your goals!',
@@ -18,19 +18,19 @@ export default {
             max: 10,
             defaults: {
               id: {
-                type: 'generated'
+                type: 'generated',
               },
               completed: {
                 type: 'constant',
-                value: false
-              }
-            }
+                value: false,
+              },
+            },
           },
           item: {
             auto: 'none',
             fields: {
               step: {
-                label: 'A step to complete my goal...'
+                label: 'A step to complete my goal...',
               },
               id: {
                 label: 'id',
@@ -38,13 +38,13 @@ export default {
                 generated: true,
                 config: {
                   hidden: true,
-                  generated: true
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
+                  generated: true,
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+};

@@ -1,28 +1,28 @@
-import * as React       from 'react'
-import { View }         from 'react-native'
-import Video            from 'react-native-video'
-import DefaultIndicator from './DefaultIndicator'
-import ControlBar       from './ControlBar'
+import * as React from 'react';
+import { View } from 'react-native';
+import Video from 'react-native-video';
+import DefaultIndicator from './DefaultIndicator';
+import ControlBar from './ControlBar';
 
-import styles           from '../styles/components/AudioVideoComponent'
+import styles from '../styles/components/AudioVideoComponent';
 
-export const PENDING = 'pending'
-export const READY = 'ready'
-export const FAIL = 'fail'
-export const PLAYING = 'playing'
-export const PAUSED = 'paused'
-export const FINISHED = 'finished'
+export const PENDING = 'pending';
+export const READY = 'ready';
+export const FAIL = 'fail';
+export const PLAYING = 'playing';
+export const PAUSED = 'paused';
+export const FINISHED = 'finished';
 
-type AudioVideoComponentStatus = PENDING | READY | FAIL | PLAYING | FINISHED
+type AudioVideoComponentStatus = PENDING | READY | FAIL | PLAYING | FINISHED;
 
 type Props = {
-  file: string
-}
+  file: string,
+};
 
 type State = {
   status: AudioVideoComponentStatus,
-  paused: boolean
-}
+  paused: boolean,
+};
 
 export default class AudioVideoComponent extends React.PureComponent<
   Props,
@@ -32,69 +32,69 @@ export default class AudioVideoComponent extends React.PureComponent<
     status: PENDING,
     paused: true,
     totalLength: 1,
-    currentPosition: 0
-  }
+    currentPosition: 0,
+  };
 
   setDuration = data => {
-    this.setState({ totalLength: Math.floor(data.duration) })
-  }
+    this.setState({ totalLength: Math.floor(data.duration) });
+  };
 
   setTime = data => {
-    this.setState({ currentPosition: Math.floor(data.currentTime) })
-  }
+    this.setState({ currentPosition: Math.floor(data.currentTime) });
+  };
 
   seek = time => {
-    time = Math.round(time)
-    this.player && this.player.seek(time)
+    time = Math.round(time);
+    this.player && this.player.seek(time);
     this.setState({
-      currentPosition: time
-    })
-  }
+      currentPosition: time,
+    });
+  };
 
   onLoad = data => {
-    this.setDuration(data)
-    this.setState({ status: READY })
-  }
+    this.setDuration(data);
+    this.setState({ status: READY });
+  };
 
-  onLoadStart = () => {}
+  onLoadStart = () => {};
 
   onEnd = () => {
     this.setState({
       paused: true,
       status: FINISHED,
-      currentPosition: this.state.totalLength
-    })
-  }
+      currentPosition: this.state.totalLength,
+    });
+  };
 
   pause = () => {
-    this.setState({ paused: true, status: PAUSED })
-  }
+    this.setState({ paused: true, status: PAUSED });
+  };
 
   onProgress = data => {
-    this.setTime(data)
-  }
+    this.setTime(data);
+  };
 
-  onSlideStart = () => this.pause()
+  onSlideStart = () => this.pause();
 
   onSlideEnd = time => {
-    this.seek(time)
-    this.play()
-  }
+    this.seek(time);
+    this.play();
+  };
 
   play = () => {
     if (this.state.status === FINISHED || this.state.status === READY) {
-      this.seek(0)
-      this.setState({ paused: false, status: PLAYING })
+      this.seek(0);
+      this.setState({ paused: false, status: PLAYING });
     } else {
-      this.setState({ paused: false, status: PLAYING })
+      this.setState({ paused: false, status: PLAYING });
     }
-  }
+  };
 
   render = () => {
     const video = (
       <Video
         ref={ref => {
-          this.player = ref
+          this.player = ref;
         }}
         source={{ uri: this.props.file }}
         onLoadStart={this.onLoadStart}
@@ -104,7 +104,7 @@ export default class AudioVideoComponent extends React.PureComponent<
         paused={this.state.paused}
         progressUpdateInterval={200.0}
       />
-    )
+    );
     return (
       <React.Fragment>
         <View style={styles.audioVideoContainer}>
@@ -127,6 +127,6 @@ export default class AudioVideoComponent extends React.PureComponent<
         </View>
         {video}
       </React.Fragment>
-    )
-  }
+    );
+  };
 }

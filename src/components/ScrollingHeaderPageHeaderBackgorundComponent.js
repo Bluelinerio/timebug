@@ -1,19 +1,23 @@
 //@flow
-import * as React                          from 'react'
-import { View, StyleSheet }                from 'react-native'
-import { APPBAR_HEIGHT, STATUSBAR_HEIGHT } from '../constants'
+import * as React from 'react';
+import { View, StyleSheet } from 'react-native';
+import { APPBAR_HEIGHT, STATUSBAR_HEIGHT } from '../constants';
 
-const ScrollingHeaderPageHeaderBackgorundComponent = ({ color }: { color: string }) => (
+const ScrollingHeaderPageHeaderBackgorundComponent = ({
+  color,
+}: {
+  color: string,
+}) => (
   <View
     style={[
       styles.container,
       {
-        backgroundColor: color
-      }
+        backgroundColor: color,
+      },
     ]}
   />
-)
-export default ScrollingHeaderPageHeaderBackgorundComponent
+);
+export default ScrollingHeaderPageHeaderBackgorundComponent;
 
 const styles = StyleSheet.create({
   container: {
@@ -21,6 +25,6 @@ const styles = StyleSheet.create({
     paddingTop: STATUSBAR_HEIGHT + APPBAR_HEIGHT(),
     flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center'
-  }
-})
+    alignItems: 'center',
+  },
+});

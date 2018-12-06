@@ -5,18 +5,18 @@ export default {
   u: {
     fontWeight: 'bold',
     fontFamily: 'Helvetica',
-    color: hotPink
+    color: hotPink,
   },
   block: {
     textAlign: 'left',
     fontWeight: '100',
     fontFamily: 'Helvetica',
     fontSize: 18,
-    marginBottom: 15
+    marginBottom: 15,
   },
   listItemContent: {
     textAlign: 'left',
     fontFamily: 'Helvetica',
-    fontSize: 18
-  }
+    fontSize: 18,
+  },
 };

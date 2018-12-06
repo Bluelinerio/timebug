@@ -1,15 +1,15 @@
 // @flow
-import React                                        from 'react'
-import { Dimensions }                               from 'react-native'
-import ScrollingHeaderPageComponent                 from '../../../components/ScrollingHeaderPageComponent'
-import ScrollingHeaderPageHeaderComponent           from '../../../components/ScrollingHeaderPageHeaderComponent'
-import ScrollingHeaderPageContentComponent          from '../../../components/ScrollingHeaderPageContentComponent'
-import ScrollingHeaderPageHeaderBackgorundComponent from '../../../components/ScrollingHeaderPageHeaderBackgorundComponent'
-import { APPBAR_HEIGHT, STATUSBAR_HEIGHT }          from '../../../constants'
-import markdownStyles                               from '../../../styles/Markdown/stepScreen'
-import StepScreenButtonContainer                    from '../containers/StepScreenButtonContainer'
+import React from 'react';
+import { Dimensions } from 'react-native';
+import ScrollingHeaderPageComponent from '../../../components/ScrollingHeaderPageComponent';
+import ScrollingHeaderPageHeaderComponent from '../../../components/ScrollingHeaderPageHeaderComponent';
+import ScrollingHeaderPageContentComponent from '../../../components/ScrollingHeaderPageContentComponent';
+import ScrollingHeaderPageHeaderBackgorundComponent from '../../../components/ScrollingHeaderPageHeaderBackgorundComponent';
+import { APPBAR_HEIGHT, STATUSBAR_HEIGHT } from '../../../constants';
+import markdownStyles from '../../../styles/Markdown/stepScreen';
+import StepScreenButtonContainer from '../containers/StepScreenButtonContainer';
 
-const HEADER_HEIGHT = Dimensions.get('window').height * 0.4
+const HEADER_HEIGHT = Dimensions.get('window').height * 0.4;
 
 export type Props = {
   headerTitle: string,
@@ -17,8 +17,8 @@ export type Props = {
   subtitle: string,
   content: string,
   color: string,
-  image: { uri: string }
-}
+  image: { uri: string },
+};
 
 const StepScreenComponent = ({
   title,
@@ -26,7 +26,7 @@ const StepScreenComponent = ({
   subtitle,
   content,
   color,
-  image
+  image,
 }: Props) => (
   <ScrollingHeaderPageComponent
     headerMaxHeight={HEADER_HEIGHT}
@@ -35,7 +35,9 @@ const StepScreenComponent = ({
     headerComponent={
       <ScrollingHeaderPageHeaderBackgorundComponent color={color} />
     }
-    header={<ScrollingHeaderPageHeaderComponent color={color} title={headerTitle} />}
+    header={
+      <ScrollingHeaderPageHeaderComponent color={color} title={headerTitle} />
+    }
     content={
       <ScrollingHeaderPageContentComponent
         title={title}
@@ -48,6 +50,6 @@ const StepScreenComponent = ({
       </ScrollingHeaderPageContentComponent>
     }
   />
-)
+);
 
-export default StepScreenComponent
+export default StepScreenComponent;

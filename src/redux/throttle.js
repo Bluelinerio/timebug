@@ -4,15 +4,13 @@ export const SAGA_THROTTLE = 'SAGA_THROTTLE';
 export type ActionToThrottle = { type: string, payload?: any };
 export type ThrottleActionType = {
   type: SAGA_THROTTLE,
-  payload: ActionToThrottle
+  payload: ActionToThrottle,
 };
 
-export function throttleAction(
-  payload: ActionToThrottle
-): ThrottleActionType {
+export function throttleAction(payload: ActionToThrottle): ThrottleActionType {
   return {
     type: SAGA_THROTTLE,
-    payload
+    payload,
   };
 }
 

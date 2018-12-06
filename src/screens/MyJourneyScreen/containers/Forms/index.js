@@ -1,36 +1,36 @@
 //@flow
-import { SelectedKeys } from '../types'
+import { SelectedKeys } from '../types';
 
-export const STEP1 = '1'
-export const STEP2 = '2'
-export const STEP3 = '3'
-export const STEP4 = '4'
-export const STEP5 = '5'
-export const STEP6 = '6'
-export const STEP7 = '7'
-export const STEP8 = '8'
-export const STEP9 = '9'
-export const STEP10 = '10'
-export const STEP11 = '11'
-export const STEP12 = '12'
-export const STEP13 = '13'
-export const STEP14 = '14'
-export const STEP15 = '15'
-export const STEP16 = '16'
-export const STEP17 = '17'
-export const STEP18 = '18'
-export const STEP19 = '19'
-export const STEP20 = '20'
-export const STEP21 = '21'
-export const STEP22 = '22'
-export const STEP23 = '23'
-export const STEP24 = '24'
-export const STEP25 = '25'
-export const STEP26 = '26'
-export const STEP27 = '27'
-export const STEP28 = '28'
-export const STEP29 = '29'
-export const STEP30 = '30'
+export const STEP1 = '1';
+export const STEP2 = '2';
+export const STEP3 = '3';
+export const STEP4 = '4';
+export const STEP5 = '5';
+export const STEP6 = '6';
+export const STEP7 = '7';
+export const STEP8 = '8';
+export const STEP9 = '9';
+export const STEP10 = '10';
+export const STEP11 = '11';
+export const STEP12 = '12';
+export const STEP13 = '13';
+export const STEP14 = '14';
+export const STEP15 = '15';
+export const STEP16 = '16';
+export const STEP17 = '17';
+export const STEP18 = '18';
+export const STEP19 = '19';
+export const STEP20 = '20';
+export const STEP21 = '21';
+export const STEP22 = '22';
+export const STEP23 = '23';
+export const STEP24 = '24';
+export const STEP25 = '25';
+export const STEP26 = '26';
+export const STEP27 = '27';
+export const STEP28 = '28';
+export const STEP29 = '29';
+export const STEP30 = '30';
 
 export type STEP =
   | STEP1
@@ -62,46 +62,45 @@ export type STEP =
   | STEP27
   | STEP28
   | STEP29
-  | STEP30
-
+  | STEP30;
 
 type RequestedKeys = {
-  [x: STEP]: SelectedKeys
-}
+  [x: STEP]: SelectedKeys,
+};
 
 export const allFormsRequestedKeys: RequestedKeys = {
   [STEP1]: {},
   [STEP2]: {
     typicalWeek: {
       form: '1',
-      key: 'typicalWeeklyBreakdown'
+      key: 'typicalWeeklyBreakdown',
     },
     idealWeek: {
       form: '2',
-      key: 'idealWeeklyBreakdown'
-    }
+      key: 'idealWeeklyBreakdown',
+    },
   },
   [STEP4]: {
     boardOfAdvisors: {
       form: '1',
-      key: 'boardOfAdvisors'
-    }
+      key: 'boardOfAdvisors',
+    },
   },
   [STEP5]: {
     recentGoals: {
       form: '1',
-      key: 'recentGoals'
-    }
+      key: 'recentGoals',
+    },
   },
   [STEP11]: {
     topGoalsPast5Years: {
       form: '1',
-      key: 'topGoalsPast5Years'
-    }
-  }
-}
+      key: 'topGoalsPast5Years',
+    },
+  },
+};
 
 export const getFormRequestedKeysForStep = (stepId: string): SelectedKeys => {
-  const requestedKeys = allFormsRequestedKeys[stepId]
-  return requestedKeys ? requestedKeys : {}
-}
+  const requestedKeys = allFormsRequestedKeys[stepId];
+  return requestedKeys ? requestedKeys : {};
+};

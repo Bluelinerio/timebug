@@ -1,23 +1,23 @@
-import React from 'react'
+import React from 'react';
 import GenericHeader, {
-  HeaderProps
-}            from '../../../../components/GenericHeader'
+  HeaderProps,
+} from '../../../../components/GenericHeader';
 
 const headerContent: HeaderProps = {
   elements: [
     {
-      text: 'Pillar of Life'
+      text: 'Pillar of Life',
     },
     {
-      text: 'Advisor'
+      text: 'Advisor',
     },
     {
-      text: 'Frequency'
-    }
-  ]
-}
+      text: 'Frequency',
+    },
+  ],
+};
 const BoardOfAdvisorsHeader = () => {
-  return <GenericHeader {...headerContent} />
-}
+  return <GenericHeader {...headerContent} />;
+};
 
-export default BoardOfAdvisorsHeader
+export default BoardOfAdvisorsHeader;

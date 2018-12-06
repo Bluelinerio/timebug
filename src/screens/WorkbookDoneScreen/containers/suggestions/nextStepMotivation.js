@@ -1,8 +1,8 @@
 //@flow
 
 type NextStepMotivationObject = {
-  [x: string]: string
-}
+  [x: string]: string,
+};
 
 const nextStepMotivation: NextStepMotivationObject = {
   '1': `Up next is Step 2, where will review and optimize a typical 168 hr week (24hrs X 7days).`,
@@ -36,8 +36,7 @@ const nextStepMotivation: NextStepMotivationObject = {
   '29': `You’ve arrived at the final step of the 20/20 Life Vision Challenge! The last thing you’ll need to do is map out the next year of your life based on all the work you’ve done thus far. This will be a powerful reference and motivational tool going forward.`,
   '30': `Congratulations! You did it! It’s time for all of your hard work and dedication to start paying dividends. Only you can work to manifest the best you, but this app can be a great tool for you going forward. All of the data, thoughts and feelings you’ve shared will be stored and given back to you - this will provide motivation, insight and real indicators of your progress. You are also free to come back and update various parts of the challenge as you wish - after all, the only thing constant is change!\n
 
-  Good luck and remember - this is not an end, but the beginning of the real work - the fun part!`
-}
+  Good luck and remember - this is not an end, but the beginning of the real work - the fun part!`,
+};
 
-
-export default nextStepMotivation
+export default nextStepMotivation;

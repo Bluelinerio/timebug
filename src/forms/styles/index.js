@@ -1,24 +1,24 @@
-import { PixelRatio, Platform, StyleSheet } from 'react-native'
-import stylesheet                           from 'tcomb-form-native/lib/stylesheets/bootstrap'
+import { PixelRatio, Platform, StyleSheet } from 'react-native';
+import stylesheet from 'tcomb-form-native/lib/stylesheets/bootstrap';
 
-export const LABEL_COLOR = '#000000'
-export const INPUT_COLOR = '#000000'
-export const ERROR_COLOR = '#a94442'
-export const HELP_COLOR = '#999999'
-export const BORDER_COLOR = '#cccccc'
-export const DISABLED_COLOR = '#777777'
-export const DISABLED_BACKGROUND_COLOR = '#eeeeee'
-export const BACKGROUND_COLOR = '#FAFAFA' //'#FFFFFF';
-export const FONT_SIZE = 18
-export const FONT_WEIGHT = '500'
+export const LABEL_COLOR = '#000000';
+export const INPUT_COLOR = '#000000';
+export const ERROR_COLOR = '#a94442';
+export const HELP_COLOR = '#999999';
+export const BORDER_COLOR = '#cccccc';
+export const DISABLED_COLOR = '#777777';
+export const DISABLED_BACKGROUND_COLOR = '#eeeeee';
+export const BACKGROUND_COLOR = '#FAFAFA'; //'#FFFFFF';
+export const FONT_SIZE = 18;
+export const FONT_WEIGHT = '500';
 
-const borderRadius = 4
-const borderWidth = 1
-const height = 44
-const paddingHorizontal = 16
-const innerPaddingHorizontal = 4
-const innerPaddingVertical = 2
-const paddingVertical = 20
+const borderRadius = 4;
+const borderWidth = 1;
+const height = 44;
+const paddingHorizontal = 16;
+const innerPaddingHorizontal = 4;
+const innerPaddingVertical = 2;
+const paddingVertical = 20;
 
 //#E6E5ED
 // from  https://material.io/guidelines/components/text-fields.html#text-fields-layout
@@ -35,20 +35,20 @@ export const extraStyles = StyleSheet.create({
   rowNoButtons: {
     flex: 1,
     justifyContent: 'center',
-    marginVertical: 5
+    marginVertical: 5,
   },
   listFootnote: {
     fontSize: 16,
-    fontFamily: 'Metropolis'
+    fontFamily: 'Metropolis',
   },
   listFootnoteContainer: {
     paddingBottom: 4,
-    marginBottom: 10
+    marginBottom: 10,
   },
   listFootnoteBanner: {
-    marginTop: -8
-  }
-})
+    marginTop: -8,
+  },
+});
 
 export default Object.freeze({
   ...stylesheet,
@@ -57,39 +57,39 @@ export default Object.freeze({
       paddingHorizontal,
       paddingVertical,
       backgroundColor: BACKGROUND_COLOR,
-      flex: 1
+      flex: 1,
     },
     normal: {
       paddingVertical,
-      flex: 1
-    }
+      flex: 1,
+    },
   },
   formGroup: {
     normal: {
-      marginBottom: 10
+      marginBottom: 10,
     },
     error: {
-      marginBottom: 10
-    }
+      marginBottom: 10,
+    },
   },
   formGroupStyle: {
     normal: {
       flex: 1,
       marginTop: 22,
-      marginBottom: 22
+      marginBottom: 22,
     },
     error: {
       flex: 1,
       marginTop: 22,
-      marginBottom: 22
-    }
+      marginBottom: 22,
+    },
   },
   formLabel: {
     textAlign: 'left',
     fontSize: 22,
     paddingVertical,
     fontFamily: 'Metropolis',
-    fontWeight: '700'
+    fontWeight: '700',
   },
   controlLabel: {
     normal: {
@@ -98,7 +98,7 @@ export default Object.freeze({
       marginBottom: 7,
       lineHeight: FONT_SIZE * 1.25,
       fontFamily: 'Metropolis',
-      fontWeight: 'bold'
+      fontWeight: 'bold',
     },
     // the style applied when a validation error occours
     error: {
@@ -107,8 +107,8 @@ export default Object.freeze({
       marginBottom: 7,
       lineHeight: FONT_SIZE * 1.25,
       fontFamily: 'Metropolis',
-      fontWeight: 'bold'
-    }
+      fontWeight: 'bold',
+    },
   },
   helpBlock: {
     normal: {
@@ -116,15 +116,15 @@ export default Object.freeze({
       marginTop: 4,
       paddingHorizontal: innerPaddingHorizontal,
       fontFamily: 'Metropolis',
-      fontStyle: 'italic'
+      fontStyle: 'italic',
     },
     error: {
       ...stylesheet.helpBlock.normal,
       marginTop: 4,
       paddingHorizontal: innerPaddingHorizontal,
       fontFamily: 'Metropolis',
-      fontStyle: 'italic'
-    }
+      fontStyle: 'italic',
+    },
   },
   pickerContainer: {
     base: {
@@ -132,7 +132,7 @@ export default Object.freeze({
       borderWidth: borderWidth,
       borderRadius,
       paddingHorizontal: innerPaddingHorizontal,
-      paddingVertical: innerPaddingVertical
+      paddingVertical: innerPaddingVertical,
     },
     normal: {
       flexDirection: 'row',
@@ -141,7 +141,7 @@ export default Object.freeze({
       borderRadius,
       borderColor: BORDER_COLOR,
       padding: 8,
-      backgroundColor: 'transparent'
+      backgroundColor: 'transparent',
     },
     error: {
       flexDirection: 'row',
@@ -150,15 +150,15 @@ export default Object.freeze({
       borderRadius,
       borderColor: ERROR_COLOR,
       padding: 8,
-      backgroundColor: 'transparent'
+      backgroundColor: 'transparent',
     },
-    open: {}
+    open: {},
   },
   pickerLabelStyle: {
     normal: {
       fontSize: 17,
-      alignSelf: 'center'
-    }
+      alignSelf: 'center',
+    },
   },
   listAddButton: {
     height,
@@ -167,7 +167,7 @@ export default Object.freeze({
     borderWidth,
     borderColor: BORDER_COLOR,
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   textBox: {
     normal: {
@@ -175,15 +175,15 @@ export default Object.freeze({
       fontSize: 16,
       height,
       textAlign: 'left',
-      paddingHorizontal: innerPaddingHorizontal
+      paddingHorizontal: innerPaddingHorizontal,
     },
     error: {
       color: INPUT_COLOR,
       fontSize: FONT_SIZE,
       height,
       textAlign: 'left',
-      paddingHorizontal: innerPaddingHorizontal
-    }
+      paddingHorizontal: innerPaddingHorizontal,
+    },
   },
   textBoxView: {
     base: {
@@ -194,9 +194,9 @@ export default Object.freeze({
           borderWidth: borderWidth,
           paddingHorizontal: innerPaddingHorizontal,
           borderRadius,
-          paddingVertical: innerPaddingVertical
-        }
-      })
+          paddingVertical: innerPaddingVertical,
+        },
+      }),
     },
     normal: {
       ...Platform.select({
@@ -206,13 +206,13 @@ export default Object.freeze({
           borderColor: BORDER_COLOR,
           paddingVertical: borderRadius,
           paddingHorizontal: innerPaddingHorizontal,
-          justifyContent: 'flex-end'
+          justifyContent: 'flex-end',
         },
         android: {
           borderBottomColor: INPUT_COLOR,
-          borderBottomWidth: 1 / PixelRatio.get()
-        }
-      })
+          borderBottomWidth: 1 / PixelRatio.get(),
+        },
+      }),
     },
     error: {
       ...Platform.select({
@@ -222,13 +222,13 @@ export default Object.freeze({
           borderColor: ERROR_COLOR,
           paddingVertical: borderRadius,
           paddingHorizontal: innerPaddingHorizontal,
-          justifyContent: 'flex-end'
+          justifyContent: 'flex-end',
         },
         android: {
           borderBottomColor: INPUT_COLOR,
-          borderBottomWidth: 1 / PixelRatio.get()
-        }
-      })
-    }
-  }
-})
+          borderBottomWidth: 1 / PixelRatio.get(),
+        },
+      }),
+    },
+  },
+});

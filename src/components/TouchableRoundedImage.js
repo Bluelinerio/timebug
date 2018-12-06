@@ -5,7 +5,7 @@ import glamorous from 'glamorous-native';
 
 type Props = {} & {
   style: React.StylePropTypes,
-  children: [React.Element]
+  children: [React.Element],
 };
 
 const StyledImageBackground = glamorous(ImageBackground)({
@@ -15,7 +15,7 @@ const StyledImageBackground = glamorous(ImageBackground)({
   flexDirection: 'column',
   justifyContent: 'space-between',
   alignItems: 'flex-start',
-  borderRadius: 6
+  borderRadius: 6,
 });
 
 const TouchableRoundedImage = ({ style, children, ...props }: Props) => (
@@ -24,4 +24,4 @@ const TouchableRoundedImage = ({ style, children, ...props }: Props) => (
   </TouchableOpacity>
 );
 
-export default TouchableRoundedImage
+export default TouchableRoundedImage;

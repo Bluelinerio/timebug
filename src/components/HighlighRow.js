@@ -1,15 +1,15 @@
 // @flow
-import * as React              from 'react'
-import LinearGradient          from 'react-native-linear-gradient'
-import { whiteGradientColors } from '../constants/colors'
+import * as React from 'react';
+import LinearGradient from 'react-native-linear-gradient';
+import { whiteGradientColors } from '../constants/colors';
 
 type Props = {
   startColor: string,
   endColor: string,
   style: any,
   reverse: boolean,
-  opacity: number
-}
+  opacity: number,
+};
 
 const HighlighRow = ({
   startColor,
@@ -18,7 +18,7 @@ const HighlighRow = ({
   reverse,
   opacity,
   ...rest
-} : Props ) => (
+}: Props) => (
   <LinearGradient
     style={[style, { opacity: opacity }]}
     colors={reverse ? [endColor, startColor] : [startColor, endColor]}
@@ -26,16 +26,16 @@ const HighlighRow = ({
     end={{ x: 0, y: 1 }}
     {...rest}
   />
-)
+);
 
 HighlighRow.defaultProps = {
   ...whiteGradientColors,
   style: {
     flex: 2,
-    borderRadius: 6
+    borderRadius: 6,
   },
   opacity: 1,
-  reverse: false
-}
+  reverse: false,
+};
 
-export default HighlighRow
+export default HighlighRow;

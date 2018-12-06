@@ -1,4 +1,4 @@
-import { StyleSheet, Platform } from 'react-native'
+import { StyleSheet, Platform } from 'react-native';
 import {
   paleBlue,
   azure,
@@ -6,60 +6,60 @@ import {
   gray900,
   gray200,
   gray400,
-  VISION_CREATION
-}                               from '../../../constants/colors'
-import { iOSUIKit }             from 'react-native-typography'
-import { formTextColor }        from '../../../forms/custom/styles'
+  VISION_CREATION,
+} from '../../../constants/colors';
+import { iOSUIKit } from 'react-native-typography';
+import { formTextColor } from '../../../forms/custom/styles';
 
-export const headerBackgroundColor = paleBlue
-export const completedColor = VISION_CREATION
-export const incompleteColor = gray400
-const indentSpace = 16
+export const headerBackgroundColor = paleBlue;
+export const completedColor = VISION_CREATION;
+export const incompleteColor = gray400;
+const indentSpace = 16;
 
-export const minimumTrackColor = azure
-export const maximumTrackColor = gray400
+export const minimumTrackColor = azure;
+export const maximumTrackColor = gray400;
 
 export default StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
   },
   scrollView: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   contentContainer: {
-    flex: 1
+    flex: 1,
   },
   scrollViewContent: {
-    flex: 1
+    flex: 1,
   },
   prototypeBackground: {
-    backgroundColor: paleBlue
+    backgroundColor: paleBlue,
   },
   text: {
-    fontFamily: 'Metropolis'
+    fontFamily: 'Metropolis',
   },
   icon: {
     fontSize: 22,
-    color: gray50
+    color: gray50,
   },
   bottomButtonText: {
     fontSize: 16,
-    color: gray50
+    color: gray50,
   },
   protoText: {
-    ...iOSUIKit.bodyEmphasizedObject
+    ...iOSUIKit.bodyEmphasizedObject,
   },
   buttonText: {
     ...iOSUIKit.bodyEmphasizedObject,
     textAlign: 'center',
-    color: gray50
+    color: gray50,
   },
   viewContainer: {
     flex: 1,
     padding: 16,
     marginTop: 1,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   button: {
     flex: 1,
@@ -70,46 +70,46 @@ export default StyleSheet.create({
     borderRadius: 6,
     backgroundColor: azure,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   buttonContainer: {
     flex: 1,
     padding: 16,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   goalScreenViewContainer: {
-    padding: 16
+    padding: 16,
   },
   titleContainer: {
-    marginBottom: 10
+    marginBottom: 10,
   },
   goalScreenTitle: {
     ...iOSUIKit.largeTitleEmphasizedObject,
     fontSize: 28,
     textAlign: 'justify',
-    color: formTextColor
+    color: formTextColor,
   },
   goalScreenSubtitle: {
     ...iOSUIKit.title3EmphasizedObject,
     textAlign: 'justify',
-    color: formTextColor
+    color: formTextColor,
   },
   goalScreenTypes: {
     ...iOSUIKit.bodyEmphasizedObject,
     fontSize: 16,
     textAlign: 'justify',
-    color: formTextColor
+    color: formTextColor,
   },
   goalScreenContent: {
     ...iOSUIKit.bodyEmphasizedObject,
     textAlign: 'justify',
-    color: formTextColor
+    color: formTextColor,
   },
   goalScreenSmall: {
     ...iOSUIKit.subheadEmphasizedObject,
     textAlign: 'justify',
-    color: formTextColor
+    color: formTextColor,
   },
   elementContainer: {
     flex: 1,
@@ -125,58 +125,58 @@ export default StyleSheet.create({
         shadowColor: 'black',
         shadowOffset: {
           width: 2,
-          height: 2
+          height: 2,
         },
         shadowOpacity: 0.3,
-        shadowRadius: 8
-      }
-    })
+        shadowRadius: 8,
+      },
+    }),
   },
   leftBlock: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   rightBlock: {
     flex: 3,
     alignItems: 'flex-start',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   elementIcon: {
     height: 40,
     width: 40,
-    aspectRatio: 1 / 1
+    aspectRatio: 1 / 1,
   },
   elementText: {
     ...iOSUIKit.bodyEmphasizedObject,
     textAlign: 'justify',
-    color: formTextColor
+    color: formTextColor,
   },
   leftIcon: {
     alignItems: 'flex-start',
-    paddingLeft: 8
+    paddingLeft: 8,
   },
   goalReviewTextBlock: {},
   goalReviewTextWithMargin: {
-    marginBottom: 6
+    marginBottom: 6,
   },
   goalReviewIndent: {
-    paddingLeft: indentSpace
+    paddingLeft: indentSpace,
   },
   goalReviewStepsIndent: {
-    paddingLeft: indentSpace * 2
+    paddingLeft: indentSpace * 2,
   },
   row: {
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   totalProgress: {
     flex: 1,
     paddingVertical: 6,
     alignItems: 'stretch',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   textAreaContainer: {
-    marginBottom: 16
+    marginBottom: 16,
   },
   textArea: {
     height: 80,
@@ -184,19 +184,19 @@ export default StyleSheet.create({
     borderColor: gray400,
     borderWidth: 1,
     justifyContent: 'flex-start',
-    backgroundColor: gray200
+    backgroundColor: gray200,
   },
   additionalInput: {
     color: gray900,
     fontFamily: 'Helvetica',
-    fontSize: 16
+    fontSize: 16,
   },
   optionsContainer: {
     flexDirection: 'row',
     paddingVertical: 5,
     paddingHorizontal: 8,
     justifyContent: 'space-around',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   optionButton: {
     backgroundColor: azure,
@@ -214,16 +214,16 @@ export default StyleSheet.create({
         shadowColor: 'black',
         shadowOffset: {
           width: 2,
-          height: 2
+          height: 2,
         },
         shadowOpacity: 0.3,
-        shadowRadius: 12
-      }
-    })
+        shadowRadius: 12,
+      },
+    }),
   },
   optionButtonText: {
     ...iOSUIKit.footnoteObject,
     textAlign: 'center',
-    color: gray50
-  }
-})
+    color: gray50,
+  },
+});

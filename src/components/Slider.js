@@ -1,5 +1,5 @@
-import * as React                         from 'react'
-import { StyleSheet, Dimensions, Slider } from 'react-native'
+import * as React from 'react';
+import { StyleSheet, Dimensions, Slider } from 'react-native';
 
 // react-native-slider is reall slow and buggy. probably not a good idea to use it right now.
 // import { StyleSheet, Dimensions }      from 'react-native'
@@ -11,14 +11,14 @@ const StyledSlider = ({
   maximumValue,
   minimumValue,
   onValueChange,
-  onSlidingComplete
+  onSlidingComplete,
 }: {
   value: number,
   maximumValue: number,
   minimumValue: number,
   onValueChange: number => void,
   onSlidingComplete: () => void,
-  color: string
+  color: string,
 }) => (
   <Slider
     maximumValue={maximumValue}
@@ -32,19 +32,19 @@ const StyledSlider = ({
       styles.sliderThumb,
       {
         backgroundColor: color,
-        borderColor: color
-      }
+        borderColor: color,
+      },
     ]}
     minimumTrackTintColor={color}
   />
-)
+);
 
-export default StyledSlider
+export default StyledSlider;
 
 const styles = StyleSheet.create({
   slider: {
     width: Dimensions.get('window').width * 0.8,
-    height: 44
+    height: 44,
   },
   sliderTrack: {
     height: 5,
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     shadowColor: 'black',
     shadowOffset: { width: 0, height: 1 },
     shadowRadius: 1,
-    shadowOpacity: 0.15
+    shadowOpacity: 0.15,
   },
   sliderThumb: {
     width: 30,
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     shadowColor: 'black',
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 2,
-    shadowOpacity: 0.35
+    shadowOpacity: 0.35,
   },
-  emoji: { fontSize: 64, backgroundColor: 'transparent' }
-})
+  emoji: { fontSize: 64, backgroundColor: 'transparent' },
+});

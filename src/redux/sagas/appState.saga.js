@@ -3,12 +3,15 @@ import { takeEvery, put, select, call } from 'redux-saga/effects';
 import {
   FOREGROUND,
   BACKGROUND,
-  INACTIVE
+  INACTIVE,
 } from 'redux-enhancer-react-native-appstate';
 
 import type { AppState } from '../reducers/appState.reducer';
 import { initialState, UNDETERMIND } from '../reducers/appState.reducer';
-import { getAppState, getAgregateState } from '../selectors/rootReducer.selectors';
+import {
+  getAppState,
+  getAgregateState,
+} from '../selectors/rootReducer.selectors';
 
 export function* appStateSagaWatcher() {
   const appState = yield select(getAppState);
@@ -22,7 +25,7 @@ export function* appStateSagaWatcher() {
 }
 
 function* appStateBusinessLogicRoot(action: {
-  type: FOREGROUND | BACKGROUND | INACTIVE
+  type: FOREGROUND | BACKGROUND | INACTIVE,
 }) {
   const state = yield select(state => state);
   switch (action.type) {
@@ -49,7 +52,7 @@ function* foreground(state) {
         (firstTimeLaunchDate: now),
         (now: now)
       ),
-      isVeryFirstSession: true
+      isVeryFirstSession: true,
     };
   }
 
@@ -139,18 +142,18 @@ import isSameDay from 'date-fns/is_same_day';
 const firstTimeBundle = ({
   firstTimeDate,
   firstTimeLaunchDate,
-  now
+  now,
 }: {
   firstTimeDate: number,
   firstTimeLaunchDate: number,
-  now: number
+  now: number,
 }) => ({
   isFirstWeek: isSameWeek(firstTimeDate, now),
   isFirstDay: isSameDay(firstTimeDate, now),
   isFirstTime: isSameDay(firstTimeDate, now),
   isFirstLaunch: isSameDay(firstTimeLaunchDate, now),
   firstTimeDate,
-  firstTimeLaunchDate
+  firstTimeLaunchDate,
 });
 
 // type Session = {

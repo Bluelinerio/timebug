@@ -5,12 +5,12 @@ const styles = {
   ...style,
   wideButton: {
     ...style.wideButton,
-    borderColor: hotPink
+    borderColor: hotPink,
   },
   wideButtonText: {
     ...style.wideButtonText,
-    color: hotPink
-  }
+    color: hotPink,
+  },
 };
 
 export default styles;

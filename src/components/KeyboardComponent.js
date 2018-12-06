@@ -1,6 +1,6 @@
 // @flow
-import * as React   from 'react'
-import { Keyboard } from 'react-native'
+import * as React from 'react';
+import { Keyboard } from 'react-native';
 
 class KeyboardComponent extends React.PureComponent<
   {
@@ -10,69 +10,69 @@ class KeyboardComponent extends React.PureComponent<
     keyboardDidHide: () => void,
     shouldRender: ({
       showing: boolean,
-      enabled: boolean
+      enabled: boolean,
     }) => boolean,
-    children: React.Node | [React.Node]
+    children: React.Node | [React.Node],
   },
   { showing: boolean }
 > {
   state = {
     showing: false,
-    dismissOnMount: false
-  }
+    dismissOnMount: false,
+  };
 
   componentDidMount() {
     if (this.props.dismissOnMount) {
-      Keyboard.dismiss()
+      Keyboard.dismiss();
     }
     if (this.props.enabled) {
       this.keyboardDidShowListener = Keyboard.addListener(
         'keyboardDidShow',
         this.keyboardDidShow
-      )
+      );
       this.keyboardDidHideListener = Keyboard.addListener(
         'keyboardDidHide',
         this.keyboardDidHide
-      )
+      );
     }
   }
 
   componentWillUnmount() {
     if (this.props.enabled) {
-      this.keyboardDidShowListener.remove()
-      this.keyboardDidHideListener.remove()
+      this.keyboardDidShowListener.remove();
+      this.keyboardDidHideListener.remove();
     }
   }
 
   keyboardDidShow = () => {
     this.setState(
       {
-        showing: true
+        showing: true,
       },
       this.props.keyboardDidShow && this.props.keyboardDidShow()
-    )
-  }
+    );
+  };
   keyboardDidHide = () => {
     this.setState(
       {
-        showing: false
+        showing: false,
       },
       this.props.keyboardDidHide && this.props.keyboardDidHide()
-    )
-  }
+    );
+  };
   render() {
-    const { shouldRender, children, enabled } = this.props
-    const { showing } = this.state
+    const { shouldRender, children, enabled } = this.props;
+    const { showing } = this.state;
 
     return children &&
       shouldRender &&
       shouldRender({
         showing,
-        enabled
+        enabled,
       }) ? (
         <React.Fragment>{children}</React.Fragment>
-      ) : null
+      ) : null;
   }
 }
 
-export default KeyboardComponent
+export default KeyboardComponent;

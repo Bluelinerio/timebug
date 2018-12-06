@@ -1,18 +1,18 @@
-import React, { PureComponent } from 'react'
-import { View, Text, Button } from 'react-native'
-import TouchableBounce from 'react-native/Libraries/Components/Touchable/TouchableBounce'
-import CustomImage from '../../../components/CustomImage'
+import React, { PureComponent } from 'react';
+import { View, Text, Button } from 'react-native';
+import TouchableBounce from 'react-native/Libraries/Components/Touchable/TouchableBounce';
+import CustomImage from '../../../components/CustomImage';
 import styles, {
   spinnerEvenColor,
-  spinnerUnEvenColor
-} from '../styles/SliderEntry.style'
-import { deepBlue } from '../../../constants/colors'
+  spinnerUnEvenColor,
+} from '../styles/SliderEntry.style';
+import { deepBlue } from '../../../constants/colors';
 
 export type Item = {
   title: string,
   subtitle: string,
-  icon: { uri: string }
-}
+  icon: { uri: string },
+};
 
 type Prop = {
   data: Item,
@@ -22,36 +22,39 @@ type Prop = {
   width: number,
   height: number,
   onPress: Function,
-  color: string
-}
+  color: string,
+};
 
 type ActionButtonProps = {
   title: string,
   color: string,
-  onPress: () => null
-}
+  onPress: () => null,
+};
 
-export const ActionButton = ({ title = 'CONTINUE', onPress }: ActionButtonProps) => (
+export const ActionButton = ({
+  title = 'CONTINUE',
+  onPress,
+}: ActionButtonProps) => (
   <View
     style={[
       {
-        paddingVertical: 5
-      }
+        paddingVertical: 5,
+      },
     ]}
   >
     <Button color={deepBlue} title={title} onPress={onPress} />
   </View>
-)
+);
 
 export default class SliderEntry extends PureComponent<Prop> {
   get image() {
-    const { data: { icon }, parallax, parallaxProps, even } = this.props
+    const { data: { icon }, parallax, parallaxProps, even } = this.props;
     return parallax ? (
       <CustomImage
         source={icon}
         containerStyle={[
           styles.imageContainer,
-          even ? styles.imageContainerEven : {}
+          even ? styles.imageContainerEven : {},
         ]}
         style={styles.svg}
         showSpinner={true}
@@ -60,15 +63,15 @@ export default class SliderEntry extends PureComponent<Prop> {
       />
     ) : (
       <CustomImage source={icon} style={styles.svg} />
-    )
+    );
   }
 
   render() {
     const {
       onPress,
       data: { title, subtitle, actionButtonProps },
-      even
-    } = this.props
+      even,
+    } = this.props;
     const uppercaseTitle = title ? (
       <Text
         style={[styles.title, even ? styles.titleEven : {}]}
@@ -78,7 +81,7 @@ export default class SliderEntry extends PureComponent<Prop> {
       </Text>
     ) : (
       false
-    )
+    );
 
     return (
       <TouchableBounce style={[styles.slideInnerContainer]} onPress={onPress}>
@@ -96,8 +99,8 @@ export default class SliderEntry extends PureComponent<Prop> {
             even
               ? styles.textContainerEven
               : {
-                paddingBottom: actionButtonProps ? 0 : 20
-              }
+                paddingBottom: actionButtonProps ? 0 : 20,
+              },
           ]}
         >
           {uppercaseTitle}
@@ -112,6 +115,6 @@ export default class SliderEntry extends PureComponent<Prop> {
           )}
         </View>
       </TouchableBounce>
-    )
+    );
   }
 }

@@ -1,3 +1,3 @@
-import PhaseProgress from  './PhaseProgressContainerChart'
+import PhaseProgress from './PhaseProgressContainerChart';
 
-export default PhaseProgress
+export default PhaseProgress;

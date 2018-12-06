@@ -1,12 +1,12 @@
 // @flow
-import * as React                 from 'react'
-import { Text, View, StyleSheet } from 'react-native'
-import dashboardStyles            from '../../styles/dashboard.styles'
-import Button                     from '../../../components/Button'
-import WorkbookIndicator          from '../../../components/WorkbookIndicator'
-import Insight                    from '../../../components/Insight'
+import * as React from 'react';
+import { Text, View, StyleSheet } from 'react-native';
+import dashboardStyles from '../../styles/dashboard.styles';
+import Button from '../../../components/Button';
+import WorkbookIndicator from '../../../components/WorkbookIndicator';
+import Insight from '../../../components/Insight';
 
-const white = '#FEFEFE'
+const white = '#FEFEFE';
 export type Props = {
   title: string,
   buttonTitle: string,
@@ -17,9 +17,9 @@ export type Props = {
   button: {
     onPress: () => void,
     text: string,
-    textColor: string
-  }
-}
+    textColor: string,
+  },
+};
 
 const WorkbookDoneScreen = ({
   backgroundColor,
@@ -27,15 +27,15 @@ const WorkbookDoneScreen = ({
   button,
   insightText,
   nextStepMotivationText,
-  isSynchingFormData
+  isSynchingFormData,
 }: Props) => {
   return (
     <View
       style={[
         styles.container,
         {
-          backgroundColor
-        }
+          backgroundColor,
+        },
       ]}
     >
       {isSynchingFormData ? (
@@ -47,7 +47,7 @@ const WorkbookDoneScreen = ({
               style={[
                 dashboardStyles.title,
                 dashboardStyles.strong,
-                { color: white, textAlign: 'left', marginBottom: 30 }
+                { color: white, textAlign: 'left', marginBottom: 30 },
               ]}
             >
               {title}
@@ -74,25 +74,25 @@ const WorkbookDoneScreen = ({
         </View>
       )}
     </View>
-  )
-}
+  );
+};
 
-export default WorkbookDoneScreen
+export default WorkbookDoneScreen;
 
 const styles = StyleSheet.create({
   suggestionText: {
     ...StyleSheet.flatten(dashboardStyles.suggestionText),
-    color: white
+    color: white,
   },
   container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
   },
   messageContainer: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center'
-  }
-})
+    justifyContent: 'center',
+  },
+});

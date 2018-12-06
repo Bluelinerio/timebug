@@ -1,6 +1,6 @@
-import * as React                  from 'react'
-import { removeLabelFromListItem } from './FormManipulations'
-import { triggerAnimation }        from '../../screens/styles'
+import * as React from 'react';
+import { removeLabelFromListItem } from './FormManipulations';
+import { triggerAnimation } from '../../screens/styles';
 import {
   ListContainer,
   RowWithoutButtons,
@@ -9,8 +9,8 @@ import {
   HelpLabel,
   AddButton,
   ItemContainer,
-  ListFootnote
-}                                  from './Views'
+  ListFootnote,
+} from './Views';
 
 type Item = {
   key: string,
@@ -18,9 +18,9 @@ type Item = {
   button: Array<{
     click: () => void,
     label: string,
-    type: string
-  }>
-}
+    type: string,
+  }>,
+};
 
 type Props = {
   styles: {},
@@ -29,7 +29,7 @@ type Props = {
   error: any,
   add: {
     type: string,
-    click: () => void
+    click: () => void,
   },
   label: string,
   help: string,
@@ -38,15 +38,15 @@ type Props = {
     labelText?: () => void,
     color: string,
     min?: number,
-    max?: number
-  }
-}
+    max?: number,
+  },
+};
 
 type State = {
   index: number,
   pages: number,
-  focusLastItem: boolean
-}
+  focusLastItem: boolean,
+};
 
 export default class FormList extends React.Component<Props, State> {
   //formPages:?FormPages = null
@@ -54,34 +54,34 @@ export default class FormList extends React.Component<Props, State> {
   state = {
     index: -1,
     pages: 0,
-    focusLastItem: false
-  }
+    focusLastItem: false,
+  };
 
   componentWillReceiveProps = nextProps => {
     if (this.state.pages !== nextProps.items.length) {
       this.setState(
         {
-          pages: nextProps.items.length
+          pages: nextProps.items.length,
         },
         triggerAnimation
-      )
+      );
     }
-  }
+  };
 
   labelProps = style => {
-    const { config } = this.props
-    const text = config.labelText && config.labelText(this.props)
+    const { config } = this.props;
+    const text = config.labelText && config.labelText(this.props);
     return (
       text && {
         text,
-        style
+        style,
       }
-    )
-  }
+    );
+  };
 
   composeStyles = (...overrideStyles) => {
-    return (...styles) => [...styles, ...overrideStyles]
-  }
+    return (...styles) => [...styles, ...overrideStyles];
+  };
 
   render() {
     const {
@@ -93,40 +93,40 @@ export default class FormList extends React.Component<Props, State> {
       label,
       help,
       maxLines,
-      config
-    } = this.props
+      config,
+    } = this.props;
 
-    const { index, pages } = this.state
+    const { index, pages } = this.state;
 
     const labelStyles = this.composeStyles({
-      color: config.stepColor
-    })(hasError ? styles.controlLabel.error : styles.controlLabel.normal)
+      color: config.stepColor,
+    })(hasError ? styles.controlLabel.error : styles.controlLabel.normal);
 
-    const labelProps = this.labelProps(labelStyles)
-    const labelComponent = labelProps && Label(labelProps)
+    const labelProps = this.labelProps(labelStyles);
+    const labelComponent = labelProps && Label(labelProps);
 
-    const footnote = ListFootnote(items ? items.length : 0, config)
+    const footnote = ListFootnote(items ? items.length : 0, config);
 
     const helpComponent = help
       ? HelpLabel({
         style: hasError ? styles.helpBlock.error : styles.helpBlock.normal,
-        text: label
+        text: label,
       })
-      : null
+      : null;
 
     const errorComponent =
       hasError && error
         ? ErrorLabel({
           style: styles.errorBlock,
-          text: error
+          text: error,
         })
-        : null
+        : null;
 
     const addButtonEnabled =
-      items.length === 0 || items[items.length - 1].input.props.value
+      items.length === 0 || items[items.length - 1].input.props.value;
 
     const shouldRenderAddButton =
-      pages < (maxLines || 10) && (add && add.type && add.click)
+      pages < (maxLines || 10) && (add && add.type && add.click);
 
     const addButton = shouldRenderAddButton
       ? AddButton({
@@ -134,19 +134,19 @@ export default class FormList extends React.Component<Props, State> {
         text: '', //items === 0 ? 'Create First' : `Create another (${items.length})`,
         disabled: !addButtonEnabled,
         onPress: () => {
-          add.click()
+          add.click();
           this.setState({
             index: index + 1,
-            focusLastItem: true
-          })
+            focusLastItem: true,
+          });
         },
         style: {
-          backgroundColor: config.color
-        }
+          backgroundColor: config.color,
+        },
       })
-      : null
+      : null;
 
-    const children = items.map(removeLabelFromListItem).map(RowWithoutButtons)
+    const children = items.map(removeLabelFromListItem).map(RowWithoutButtons);
 
     // if (focusLastItem && children && children.length > 0) {
     //   const lastChildIndex = children.length - 1
@@ -162,6 +162,6 @@ export default class FormList extends React.Component<Props, State> {
         {addButton}
         <ItemContainer>{children}</ItemContainer>
       </ListContainer>
-    )
+    );
   }
 }

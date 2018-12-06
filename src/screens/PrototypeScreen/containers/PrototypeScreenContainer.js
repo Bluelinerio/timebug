@@ -1,13 +1,14 @@
-import { connect }     from 'react-redux'
-import PrototypeScreen from '../components/PrototypeScreen'
+import { connect } from 'react-redux';
+import PrototypeScreen from '../components/PrototypeScreen';
 import {
   goToGoalFormScreen,
-  goToGoalProtoScreen
-}                      from '../../../redux/actions/nav.actions'
-import { debounce }    from '../../../utils/debounce'
+  goToGoalProtoScreen,
+  goToPrototypeStepScreen,
+} from '../../../redux/actions/nav.actions';
+import { debounce } from '../../../utils/debounce';
 
-const step = '5'
-const screen = 'GoalPrototypeScreen'
+const step = '5';
+const screen = 'GoalPrototypeScreen';
 
 const mapDispatchToProps = (dispatch: any) => ({
   goToGoalFormScreen: debounce(
@@ -17,7 +18,11 @@ const mapDispatchToProps = (dispatch: any) => ({
   goToPrototypeGoalScreen: debounce(
     () => dispatch(goToGoalProtoScreen({ step, screen })),
     250
-  )
-})
+  ),
+  goToPrototypeStartScreen: debounce(
+    () => dispatch(goToPrototypeStepScreen()),
+    250
+  ),
+});
 
-export default connect(null, mapDispatchToProps)(PrototypeScreen)
+export default connect(null, mapDispatchToProps)(PrototypeScreen);

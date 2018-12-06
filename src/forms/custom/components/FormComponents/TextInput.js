@@ -1,35 +1,35 @@
-import React from 'react'
-import { FormInput, Text } from 'react-native-elements'
-import styles from '../../styles'
+import React from 'react';
+import { FormInput, Text } from 'react-native-elements';
+import styles from '../../styles';
 
 const TextInput = ({
   value,
   onChange,
   field: {
     content = {
-      text: ''
+      text: '',
     },
     options = {
       multiline: false,
       placeHolder: '',
-      label: ''
-    }
-  }
+      label: '',
+    },
+  },
 }: {
   value: string,
   onChange: string => any,
   color: string,
   field: {
     content?: {
-      text: string
+      text: string,
     },
     options?: {
       multiline: boolean,
       placeHolder: string,
       label: string,
-      default?: string
-    }
-  }
+      default?: string,
+    },
+  },
 }) => (
   <React.Fragment>
     <Text style={styles.textInputLabelStyle}>{content.text}</Text>
@@ -42,6 +42,6 @@ const TextInput = ({
       multiline={options.multiline}
     />
   </React.Fragment>
-)
+);
 
-export default TextInput
+export default TextInput;

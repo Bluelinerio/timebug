@@ -10,7 +10,7 @@ const buttonTextSize = 15;
 const paddingHorizontal = {
   sides: 10,
   wide: 50,
-  narrow: 35
+  narrow: 35,
 };
 
 const style = {
@@ -19,13 +19,13 @@ const style = {
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom,
-    paddingVertical: 4
+    paddingVertical: 4,
   },
   buttonIconLeft: {
-    marginLeft: marginHorizontal
+    marginLeft: marginHorizontal,
   },
   buttonIconRight: {
-    marginRight: marginHorizontal
+    marginRight: marginHorizontal,
   },
   wideButton: {
     height: buttonHeight,
@@ -35,31 +35,31 @@ const style = {
     overflow: 'hidden',
     marginHorizontal,
     minWidth: minWidthWide,
-    paddingHorizontal: paddingHorizontal.wide
+    paddingHorizontal: paddingHorizontal.wide,
   },
   makeWideButtonNarrow: {
     minWidth: minWidthNarrow,
-    paddingHorizontal: paddingHorizontal.narrow
+    paddingHorizontal: paddingHorizontal.narrow,
   },
   left: {
     justifyContent: 'flex-start',
-    paddingHorizontal: paddingHorizontal.sides
+    paddingHorizontal: paddingHorizontal.sides,
   },
   right: {
     justifyContent: 'flex-end',
-    paddingHorizontal: paddingHorizontal.sides
+    paddingHorizontal: paddingHorizontal.sides,
   },
   wideButtonText: {
     fontFamily: 'Metropolis',
     fontWeight: 'bold',
     textAlign: 'center',
     fontSize: buttonTextSize,
-    color: white
+    color: white,
   },
   buttonGroup: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center'
-  }
+    alignItems: 'center',
+  },
 };
 export default style;

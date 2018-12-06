@@ -1,30 +1,30 @@
 //@flow
-import * as React                                    from 'react'
-import { View, Text, StatusBar }                     from 'react-native'
-import Composer                                      from 'react-composer'
-import { SafeAreaView }                              from 'react-navigation'
-import styles, { white }                             from '../styles'
-import Button                                        from '../../../components/Button'
-import SoundPlayback, { PENDING, FAIL }              from './SoundPlayback'
-import MeditationTimer, { PAUSED, STARTED }          from './MeditationTimer'
-import MeditationScreenBackground                    from './MeditationScreenBackground'
-import PlayPauseButton                               from './PlayPauseButton'
-import { triggerAnimation }                          from '../../styles'
+import * as React from 'react';
+import { View, Text, StatusBar } from 'react-native';
+import Composer from 'react-composer';
+import { SafeAreaView } from 'react-navigation';
+import styles, { white } from '../styles';
+import Button from '../../../components/Button';
+import SoundPlayback, { PENDING, FAIL } from './SoundPlayback';
+import MeditationTimer, { PAUSED, STARTED } from './MeditationTimer';
+import MeditationScreenBackground from './MeditationScreenBackground';
+import PlayPauseButton from './PlayPauseButton';
+import { triggerAnimation } from '../../styles';
 type Props = {
   lengthInSeconds: number,
   name: string,
   color: string,
   gradientBackgound: {
     startColor: string,
-    endColor: string
+    endColor: string,
   },
   playSoundOnEnd: boolean,
   done: () => void,
-  soundfile: number | { uri: string }
-}
+  soundfile: number | { uri: string },
+};
 type State = {
-  lengthInSeconds: number
-}
+  lengthInSeconds: number,
+};
 // class PlaybackControllerButton extends
 export default class MeditationScreenComponent extends React.PureComponent<
   Props,
@@ -33,24 +33,24 @@ export default class MeditationScreenComponent extends React.PureComponent<
   static defaultProps = {
     lengthInSeconds: 60,
     name: 'Meditation',
-    playSoundOnEnd: true
-  }
+    playSoundOnEnd: true,
+  };
   state = {
-    lengthInSeconds: this.props.lengthInSeconds
-  }
+    lengthInSeconds: this.props.lengthInSeconds,
+  };
 
   componentDidMount() {
-    StatusBar.setHidden(true)
+    StatusBar.setHidden(true);
   }
   componentWillUnmount() {
-    StatusBar.setHidden(false)
+    StatusBar.setHidden(false);
   }
 
-  tick = () => null
+  tick = () => null;
 
   onTimeElapsed = () => {
-    this.props.playSoundOnEnd && this.soundPlayback.play()
-  }
+    this.props.playSoundOnEnd && this.soundPlayback.play();
+  };
 
   renderLayout = ([
     playingSound: boolean,
@@ -58,38 +58,38 @@ export default class MeditationScreenComponent extends React.PureComponent<
       minutes,
       seconds,
       status,
-      timeElapsed
-    }: { minutes: number, seconds: number, status: STARTED | PAUSED | STOPPED }
+      timeElapsed,
+    }: { minutes: number, seconds: number, status: STARTED | PAUSED | STOPPED },
   ]) => {
     console.log({
       minutes,
       seconds,
       status,
-      timeElapsed
-    })
+      timeElapsed,
+    });
     const playButtoOnPress =
       status === STARTED
         ? playingSound
           ? () => {
-            this.soundPlayback.pause()
-            this.timer.pause()
-            triggerAnimation()
+            this.soundPlayback.pause();
+            this.timer.pause();
+            triggerAnimation();
           }
           : () => {
-            this.timer.pause()
-            triggerAnimation()
+            this.timer.pause();
+            triggerAnimation();
           }
         : status === PAUSED
           ? () => {
-            this.timer.start()
-            this.soundPlayback.play()
-            triggerAnimation()
+            this.timer.start();
+            this.soundPlayback.play();
+            triggerAnimation();
           }
           : () => {
-            this.soundPlayback.play()
-            this.timer.start()
-            triggerAnimation()
-          }
+            this.soundPlayback.play();
+            this.timer.start();
+            triggerAnimation();
+          };
     const finishEarlyButton = status === PAUSED &&
       !timeElapsed && (
         <Button
@@ -98,12 +98,12 @@ export default class MeditationScreenComponent extends React.PureComponent<
           text={'Finish Early'}
           onPress={this.props.done}
         />
-      )
+      );
     return (
       <View
         style={{
           flex: 1,
-          justifyContent: 'space-between'
+          justifyContent: 'space-between',
         }}
       >
         <View>
@@ -112,7 +112,7 @@ export default class MeditationScreenComponent extends React.PureComponent<
         </View>
         <View
           style={{
-            paddingVertical: 20
+            paddingVertical: 20,
           }}
         >
           <PlayPauseButton
@@ -123,8 +123,8 @@ export default class MeditationScreenComponent extends React.PureComponent<
           {finishEarlyButton}
         </View>
       </View>
-    )
-  }
+    );
+  };
   render() {
     return (
       <MeditationScreenBackground {...this.props.gradientBackgound}>
@@ -146,13 +146,13 @@ export default class MeditationScreenComponent extends React.PureComponent<
                 onTimeElapsed={this.onTimeElapsed}
                 onTick={this.tick}
                 ref={c => (this.timer = c)}
-              />
+              />,
             ]}
           >
             {this.renderLayout}
           </Composer>
         </SafeAreaView>
       </MeditationScreenBackground>
-    )
+    );
   }
 }

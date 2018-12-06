@@ -1,41 +1,41 @@
-import React          from 'react'
-import Label          from './Label'
-import TextInput      from './TextInput'
-import Button         from './ButtonComponent'
-import types          from '../../forms/types'
-import Select         from './SelectComponent'
-import List           from './ListComponent'
-import MultipleSelect from './MultipleSelectComponent'
+import React from 'react';
+import Label from './Label';
+import TextInput from './TextInput';
+import Button from './ButtonComponent';
+import types from '../../forms/types';
+import Select from './SelectComponent';
+import List from './ListComponent';
+import MultipleSelect from './MultipleSelectComponent';
 
 type Props = {
   onChange: () => any,
   value: any,
-  field: any
-}
+  field: any,
+};
 
 const selectComponent = ({ type }: { type: string }) => {
   switch (type) {
   case types.label:
-    return Label
+    return Label;
   case types.string:
-    return TextInput
+    return TextInput;
   case types.button:
-    return Button
+    return Button;
   case types.select:
-    return Select
+    return Select;
   case types.list:
-    return List
+    return List;
   case types.multipleSelect:
-    return MultipleSelect
+    return MultipleSelect;
   }
-}
+};
 
 class FormPicker extends React.PureComponent<Props> {
   render() {
-    const { field } = this.props
-    const Component = selectComponent(field)
-    return <Component {...this.props} />
+    const { field } = this.props;
+    const Component = selectComponent(field);
+    return <Component {...this.props} />;
   }
 }
 
-export default FormPicker
+export default FormPicker;

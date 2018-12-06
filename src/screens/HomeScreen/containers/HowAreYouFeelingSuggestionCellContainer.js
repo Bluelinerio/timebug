@@ -1,53 +1,56 @@
-import { connect }                 from 'react-redux'
-import { compose, mapProps }       from 'recompose'
-import { withNavigation }          from 'react-navigation'
-import selectors                   from '../../../redux/selectors'
-import { goToEmojiPickerScreen }   from '../../../redux/actions/nav.actions'
-import EmotionCheckinCellComponent from '../components/DashboardCells/EmotionCheckinCellComponent'
-import { randomItem }              from '../../../utils/random'
-import moment                      from 'moment'
+import { connect } from 'react-redux';
+import { compose, mapProps } from 'recompose';
+import { withNavigation } from 'react-navigation';
+import selectors from '../../../redux/selectors';
+import { goToEmojiPickerScreen } from '../../../redux/actions/nav.actions';
+import EmotionCheckinCellComponent from '../components/DashboardCells/EmotionCheckinCellComponent';
+import { randomItem } from '../../../utils/random';
+import moment from 'moment';
 
 const getGreetingTime = m => {
-  if (!m || !m.isValid()) return ''
+  if (!m || !m.isValid()) return '';
 
-  var split_afternoon = 12 //24hr time to split the afternoon
-  var split_evening = 17 //24hr time to split the evening
-  var currentHour = parseFloat(m.format('HH'))
+  var split_afternoon = 12; //24hr time to split the afternoon
+  var split_evening = 17; //24hr time to split the evening
+  var currentHour = parseFloat(m.format('HH'));
 
   if (currentHour >= split_afternoon && currentHour <= split_evening) {
-    return 'afternoon'
+    return 'afternoon';
   } else if (currentHour >= split_evening) {
-    return 'evening'
+    return 'evening';
   } else {
-    return 'morning'
+    return 'morning';
   }
-}
+};
 
-const firstNameFromUser = user => user && user.name && user.name.split(' ')[0]
+const firstNameFromUser = user => user && user.name && user.name.split(' ')[0];
 
-const EMOTION = 'Emotion'
-const PHYSICAL = 'Physical'
-const MENTAL = 'Mental'
+const EMOTION = 'Emotion';
+const PHYSICAL = 'Physical';
+const MENTAL = 'Mental';
 
-type CheckinType = EMOTION | PHYSICAL | MENTAL
+type CheckinType = EMOTION | PHYSICAL | MENTAL;
 
 type CheckinSuggestion = {
   type: CheckinType,
   title: string,
   color: string,
-  id: string
-}
+  id: string,
+};
 
-const createNewHowAreYouFeelingSuggestionCheckin = ({ user, uniqueColors }): CheckinSuggestion => {
+const createNewHowAreYouFeelingSuggestionCheckin = ({
+  user,
+  uniqueColors,
+}): CheckinSuggestion => {
   const randomCheckinType = (): CheckinType =>
-    randomItem([EMOTION, PHYSICAL, MENTAL])
+    randomItem([EMOTION, PHYSICAL, MENTAL]);
 
   const checkinTypeInSentence = (checkin: CheckinType) =>
     ({
       [EMOTION]: 'EMOTIONALLY',
       [PHYSICAL]: 'physically',
-      [MENTAL]: 'Mentally'
-    }[checkin])
+      [MENTAL]: 'Mentally',
+    }[checkin]);
 
   const suggestionTitleFromFirstNameAndCheckinType = (
     firstName: string,
@@ -56,10 +59,10 @@ const createNewHowAreYouFeelingSuggestionCheckin = ({ user, uniqueColors }): Che
     `Hi${(firstName && ` ${firstName}, how`) ||
       `, how`} are you feeling ${checkinTypeInSentence(
       checkinType
-    ).toUpperCase()} this ${getGreetingTime(moment())}?\n`
+    ).toUpperCase()} this ${getGreetingTime(moment())}?\n`;
 
-  const randomId = () => '' // randomBytes(16).toString('hex'),
-  const checkinType = randomCheckinType()
+  const randomId = () => ''; // randomBytes(16).toString('hex'),
+  const checkinType = randomCheckinType();
 
   return {
     title: suggestionTitleFromFirstNameAndCheckinType(
@@ -68,15 +71,15 @@ const createNewHowAreYouFeelingSuggestionCheckin = ({ user, uniqueColors }): Che
     ),
     color: randomItem(uniqueColors),
     id: randomId(),
-    checkinType
-  }
-}
+    checkinType,
+  };
+};
 
 const mapStateToProps = state =>
   createNewHowAreYouFeelingSuggestionCheckin({
     user: selectors.user(state),
-    uniqueColors: selectors.uniqueColors(state)
-  })
+    uniqueColors: selectors.uniqueColors(state),
+  });
 
 const button = ({ title, color, id, checkinType, navigation }) => ({
   title,
@@ -86,17 +89,17 @@ const button = ({ title, color, id, checkinType, navigation }) => ({
         goToEmojiPickerScreen({
           color,
           id,
-          checkinType
+          checkinType,
         })
       ),
-    title: 'Emoji'
-  }
-})
+    title: 'Emoji',
+  },
+});
 
 const HowAreYouFeelingSuggestionCellContainer = compose(
   withNavigation,
   connect(mapStateToProps),
   mapProps(button)
-)(EmotionCheckinCellComponent)
+)(EmotionCheckinCellComponent);
 
-export default HowAreYouFeelingSuggestionCellContainer
+export default HowAreYouFeelingSuggestionCellContainer;

@@ -1,18 +1,18 @@
 // @flow
-import * as React                              from 'react'
-import { View, Text, Dimensions, StyleSheet }  from 'react-native'
-import Icon                                    from 'react-native-vector-icons/FontAwesome'
-import Entypo                                  from 'react-native-vector-icons/Entypo'
-import { heavyGray, lightGray, facebookColor } from '../constants/colors'
+import * as React from 'react';
+import { View, Text, Dimensions, StyleSheet } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import Entypo from 'react-native-vector-icons/Entypo';
+import { heavyGray, lightGray, facebookColor } from '../constants/colors';
 
 export type Props = {
   onPress: () => void,
-  advisoryText: string
-}
+  advisoryText: string,
+};
 
 const LoginWithFbButton = ({
   onPress,
-  advisoryText = `We don't post anything to Facebook`
+  advisoryText = `We don't post anything to Facebook`,
 }: Props) => (
   <View style={styles.container}>
     <Icon.Button
@@ -32,31 +32,31 @@ const LoginWithFbButton = ({
       <Text style={styles.advisoryText}>{advisoryText}</Text>
     </View>
   </View>
-)
+);
 
 const styles = StyleSheet.create({
   container: {
     alignSelf: 'center',
     justifyContent: 'center',
-    marginVertical: Dimensions.get('window').height * 0.05
+    marginVertical: Dimensions.get('window').height * 0.05,
   },
   facebookButton: {
-    paddingHorizontal: 10
+    paddingHorizontal: 10,
   },
   advisoryContainer: {
     marginTop: 10,
     flexDirection: 'row',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   infoIcon: {
     alignSelf: 'center',
-    marginHorizontal: 4
+    marginHorizontal: 4,
   },
   advisoryText: {
     textAlign: 'center',
     color: lightGray,
-    fontSize: 11
-  }
-})
+    fontSize: 11,
+  },
+});
 
-export default LoginWithFbButton
+export default LoginWithFbButton;

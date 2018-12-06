@@ -1,14 +1,14 @@
 // @flow
 
-import React, { PureComponent }               from 'react'
-import { View, Platform, LayoutAnimation }    from 'react-native'
-import Carousel, { Pagination }               from 'react-native-snap-carousel'
-import styles, { colors }                     from '../styles/PagninatedCarousel.style'
-import StepCarouselGreet                      from '../containers/StepCarouselGreet'
-import VerticalGradient                       from '../../../containers/VerticalGradient'
-import SliderEntry                            from './SliderEntry'
-import type { Item }                          from './SliderEntry'
-import { NUMBER_OF_STEP_FOR_PHASES /* 10 */ } from '../../../services/cms'
+import React, { PureComponent } from 'react';
+import { View, Platform, LayoutAnimation } from 'react-native';
+import Carousel, { Pagination } from 'react-native-snap-carousel';
+import styles, { colors } from '../styles/PagninatedCarousel.style';
+import StepCarouselGreet from '../containers/StepCarouselGreet';
+import VerticalGradient from '../../../containers/VerticalGradient';
+import SliderEntry from './SliderEntry';
+import type { Item } from './SliderEntry';
+import { NUMBER_OF_STEP_FOR_PHASES /* 10 */ } from '../../../services/cms';
 
 type Props = {
   backgroundColorAtIndex: (step: number) => string,
@@ -17,36 +17,36 @@ type Props = {
   itemWidth: number,
   snap: number => void,
   activeSliderIndex: number,
-  onPress: (item: Item, index: number) => void
-}
+  onPress: (item: Item, index: number) => void,
+};
 
 type State = {
   activeSliderIndex: number,
-  carouseRef: ?number
-}
+  carouseRef: ?number,
+};
 
 export default class PagninatedCarousel extends PureComponent<Props, State> {
   constructor(props: Props) {
-    super(props)
-    const { activeSliderIndex } = props
+    super(props);
+    const { activeSliderIndex } = props;
     this.state = {
       activeSliderIndex: activeSliderIndex || 0,
-      carouseRef: null
-    }
+      carouseRef: null,
+    };
   }
 
   // This two mehtods are a fix to the a design decision of Pagination where when pressing a dot it looks for the carouselRef instead of have somethin like onPress(index:number).
   _snapToItem = index => {
-    const { carouseRef } = this.state
-    carouseRef && carouseRef._snapToItem(index)
-  }
+    const { carouseRef } = this.state;
+    carouseRef && carouseRef._snapToItem(index);
+  };
   _getPositionIndex = index => {
-    const { activeSliderIndex } = this.state
+    const { activeSliderIndex } = this.state;
     const addForPhase =
       Math.floor(activeSliderIndex / NUMBER_OF_STEP_FOR_PHASES) *
-      NUMBER_OF_STEP_FOR_PHASES
-    return addForPhase + index
-  }
+      NUMBER_OF_STEP_FOR_PHASES;
+    return addForPhase + index;
+  };
 
   render() {
     const {
@@ -55,24 +55,27 @@ export default class PagninatedCarousel extends PureComponent<Props, State> {
       sliderWidth,
       itemWidth,
       snap,
-      onPress
-    } = this.props
+      onPress,
+    } = this.props;
 
-    const { carouseRef, activeSliderIndex } = this.state
+    const { carouseRef, activeSliderIndex } = this.state;
 
     return (
       <View style={styles.paginatedCarouselContainer}>
         <VerticalGradient />
         <View
-          style={[styles.background, {
-            backgroundColor: backgroundColorAtIndex(activeSliderIndex)
-          }]}
+          style={[
+            styles.background,
+            {
+              backgroundColor: backgroundColorAtIndex(activeSliderIndex),
+            },
+          ]}
         />
         <StepCarouselGreet index={activeSliderIndex} />
         <Carousel
           ref={c => {
             if (!this.state.carouseRef) {
-              this.setState({ carouseRef: c })
+              this.setState({ carouseRef: c });
             }
           }}
           data={items}
@@ -108,16 +111,16 @@ export default class PagninatedCarousel extends PureComponent<Props, State> {
                 create: {
                   type: LayoutAnimation.Types.spring,
                   property: LayoutAnimation.Properties.scaleXY,
-                  springDamping: 0.7
+                  springDamping: 0.7,
                 },
                 update: {
                   type: LayoutAnimation.Types.spring,
-                  springDamping: 0.7
-                }
+                  springDamping: 0.7,
+                },
               })
-            )
+            );
             if (snap) {
-              snap(index)
+              snap(index);
             }
           }}
         />
@@ -134,6 +137,6 @@ export default class PagninatedCarousel extends PureComponent<Props, State> {
           tappableDots={!!carouseRef}
         />
       </View>
-    )
+    );
   }
 }

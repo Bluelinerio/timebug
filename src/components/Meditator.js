@@ -1,9 +1,9 @@
-import * as React       from 'react'
-import Svg, { G, Path } from 'react-native-svg'
+import * as React from 'react';
+import Svg, { G, Path } from 'react-native-svg';
 
 const defaultStyle = {
-  alignSelf: 'center'
-}
+  alignSelf: 'center',
+};
 
 type Props = {
   width: number,
@@ -11,8 +11,8 @@ type Props = {
   style: any,
   shapeColor: string,
   deepBlue: string,
-  hotPink: string
-}
+  hotPink: string,
+};
 
 const Meditator = ({
   width = 75,
@@ -20,7 +20,7 @@ const Meditator = ({
   style = defaultStyle,
   shapeColor = '#FFFFFF',
   deepBlue = '#000A8B',
-  hotPink = '#EC008C'
+  hotPink = '#EC008C',
 }: Props) => (
   <Svg width={width} height={height} style={style} viewBox="0 0 160 180">
     <G>
@@ -159,6 +159,6 @@ const Meditator = ({
       />
     </G>
   </Svg>
-)
+);
 
-export default Meditator
+export default Meditator;

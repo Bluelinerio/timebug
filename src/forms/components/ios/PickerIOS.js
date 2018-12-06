@@ -10,12 +10,12 @@ type Props = {
   styles: {
     container: any,
     touchable: any,
-    text: any
+    text: any,
   },
   accessibilityLabel: string,
   onBeginEditing: () => void,
   onCancel: () => void,
-  onChange: any => void
+  onChange: any => void,
 };
 
 export default class PickerIOS extends React.Component<Props> {
@@ -29,7 +29,7 @@ export default class PickerIOS extends React.Component<Props> {
       styles,
       accessibilityLabel,
       onCancel,
-      onChange
+      onChange,
     } = this.props;
 
     const focus = () => {

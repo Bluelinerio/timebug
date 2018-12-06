@@ -1,27 +1,27 @@
-import React                  from 'react'
-import { View, Text, Picker } from 'react-native'
-import PickerIOS              from './ios/PickerIOS'
+import React from 'react';
+import { View, Text, Picker } from 'react-native';
+import PickerIOS from './ios/PickerIOS';
 
 const composeStyles = (...overrideStyles) => (...styles) => [
   ...styles,
-  ...overrideStyles
-]
+  ...overrideStyles,
+];
 
 type Props = {
-    stylesheet: any,
-    hasError: boolean,
-    label: string,
-    help: string,
-    error: string,
-    options: any,
-    value: any,
-    onChange: () => any,
-    config: any,
-    hidden: boolean
-}
+  stylesheet: any,
+  hasError: boolean,
+  label: string,
+  help: string,
+  error: string,
+  options: any,
+  value: any,
+  onChange: () => any,
+  config: any,
+  hidden: boolean,
+};
 export default function select(props: Props) {
   if (props.hidden) {
-    return null
+    return null;
   }
   const {
     stylesheet,
@@ -32,18 +32,18 @@ export default function select(props: Props) {
     options,
     value,
     onChange,
-    config
-  } = props
+    config,
+  } = props;
 
   const children = options.map(({ value, text }) => (
     <Picker.Item key={value} value={value} label={text} />
-  ))
+  ));
 
   const labelStyles = composeStyles({
-    color: config.stepColor
-  })(hasError ? stylesheet.controlLabel.error : stylesheet.controlLabel.normal)
+    color: config.stepColor,
+  })(hasError ? stylesheet.controlLabel.error : stylesheet.controlLabel.normal);
 
-  const text = options.find(option => option.value === value).text
+  const text = options.find(option => option.value === value).text;
   return (
     <View
       style={
@@ -66,18 +66,18 @@ export default function select(props: Props) {
               ? stylesheet.pickerContainer.error
               : stylesheet.pickerContainer.normal,
             {
-              backgroundColor: config.color
-            }
+              backgroundColor: config.color,
+            },
           ],
           touchable: [
             hasError
               ? stylesheet.pickerTouchable.error
               : stylesheet.pickerTouchable.normal,
-            stylesheet.pickerTouchable.active
+            stylesheet.pickerTouchable.active,
           ],
           text: hasError
             ? stylesheet.pickerValue.error
-            : stylesheet.pickerValue.normal
+            : stylesheet.pickerValue.normal,
         }}
       >
         {children}
@@ -98,5 +98,5 @@ export default function select(props: Props) {
           </Text>
         )}
     </View>
-  )
+  );
 }

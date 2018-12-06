@@ -22,7 +22,7 @@ export type Request<P, M> = {
   start: (meta?: M) => RequestActionType<M>,
   success: (payload: P, meta?: M) => RequestActionSuccessType<P, M>,
   error: (error: any, meta?: M) => RequestActionErrorType<M>,
-  cancel: (meta?: M) => RequestActionErrorType<M>
+  cancel: (meta?: M) => RequestActionErrorType<M>,
 };
 
 type RequestNames = {
@@ -30,7 +30,7 @@ type RequestNames = {
   STARTED: string,
   SUCCEEDED: string,
   ERRORED: string,
-  CANCELLED: string
+  CANCELLED: string,
 };
 
 const createRequestNames = (type: string): RequestNames => {
@@ -44,7 +44,7 @@ const createRequestNames = (type: string): RequestNames => {
     STARTED,
     SUCCEEDED,
     ERRORED,
-    CANCELLED
+    CANCELLED,
   };
 };
 
@@ -52,7 +52,7 @@ type CreatorType = {
   start: (meta?: M) => RequestActionType<M>,
   success: (payload: P, meta?: M) => RequestActionSuccessType<P, M>,
   error: (error: any, meta?: M) => RequestActionErrorType<M>,
-  cancel: (meta?: M) => RequestActionErrorType<M>
+  cancel: (meta?: M) => RequestActionErrorType<M>,
 };
 
 // Creates types and action creators for a request.
@@ -66,7 +66,7 @@ export function createRequest<P, M>(type: string): Request<P, M> {
   const success = (payload: P, meta?: M) => ({
     type: SUCCEEDED,
     payload,
-    meta
+    meta,
   });
   const error = (error: any, meta?: M) => ({ type: ERRORED, error, meta });
   const cancel = (meta?: M) => ({ type: CANCELLED, meta });
@@ -80,7 +80,7 @@ export function createRequest<P, M>(type: string): Request<P, M> {
     start,
     success,
     error,
-    cancel
+    cancel,
   };
 }
 

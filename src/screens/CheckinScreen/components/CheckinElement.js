@@ -1,19 +1,19 @@
 //@flow
-import React                                            from 'react'
-import { View, Text, Picker, TouchableOpacity, Switch } from 'react-native'
+import React from 'react';
+import { View, Text, Picker, TouchableOpacity, Switch } from 'react-native';
 import {
   frequencies,
   DAILY,
   WEEKLY,
   BIWEEKLY,
-  MONTHLY
-}                                                       from '../../../services/checkins'
+  MONTHLY,
+} from '../../../services/checkins';
 import type {
   CheckinChangePayload,
-  ToggleCheckinPayload
-}                                                       from '../../../redux/actions/checkin.actions'
-import moment                                           from 'moment'
-import styles                                           from '../styles'
+  ToggleCheckinPayload,
+} from '../../../redux/actions/checkin.actions';
+import moment from 'moment';
+import styles from '../styles';
 
 export type CheckinElementProps = {
   text: string,
@@ -26,61 +26,61 @@ export type CheckinElementProps = {
   onPress: CheckinChangePayload => any,
   onLink: ({ link: string }) => any,
   onToggle: ToggleCheckinPayload => any,
-  id: string | null
-}
+  id: string | null,
+};
 
 const operateWithLastCheckin = (
   frequency: string,
   lastCheckin: string
 ): string => {
-  const lastCheckinMoment = moment(lastCheckin)
+  const lastCheckinMoment = moment(lastCheckin);
   switch (frequency) {
   case frequencies[DAILY]:
-    return lastCheckinMoment.add(1, 'd').format('MM-DD-YY')
+    return lastCheckinMoment.add(1, 'd').format('MM-DD-YY');
   case frequencies[WEEKLY]:
-    return lastCheckinMoment.add(1, 'w').format('MM-DD-YY')
+    return lastCheckinMoment.add(1, 'w').format('MM-DD-YY');
   case frequencies[BIWEEKLY]:
     return lastCheckinMoment
       .add(3, 'd')
       .add('12', 'h')
-      .format('MM-DD-YY')
+      .format('MM-DD-YY');
   case frequencies[MONTHLY]:
-    return lastCheckinMoment.add(1, 'M').format('MM-DD-YY')
+    return lastCheckinMoment.add(1, 'M').format('MM-DD-YY');
   }
-}
+};
 
 const operateCheckinDate = (
   frequency: string,
   lastCheckin: string | null = null
 ): string => {
-  if (lastCheckin) return operateWithLastCheckin(frequency, lastCheckin)
+  if (lastCheckin) return operateWithLastCheckin(frequency, lastCheckin);
   switch (frequency) {
   case frequencies[DAILY]:
     return moment()
       .add(1, 'd')
-      .format('MM-DD-YY')
+      .format('MM-DD-YY');
   case frequencies[WEEKLY]:
     return moment()
       .add(1, 'w')
-      .format('MM-DD-YY')
+      .format('MM-DD-YY');
   case frequencies[BIWEEKLY]:
     return moment()
       .add(3, 'd')
       .add('12', 'h')
-      .format('MM-DD-YY')
+      .format('MM-DD-YY');
   case frequencies[MONTHLY]:
     return moment()
       .add(1, 'M')
-      .format('MM-DD-YY')
+      .format('MM-DD-YY');
   }
-}
+};
 
 class CheckinElement extends React.PureComponent<CheckinElementProps> {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      frequency: props.frequency
-    }
+      frequency: props.frequency,
+    };
   }
   render() {
     const {
@@ -93,9 +93,9 @@ class CheckinElement extends React.PureComponent<CheckinElementProps> {
       step,
       message,
       onToggle,
-      id
-    } = this.props
-    const { frequency: localFrequency } = this.state
+      id,
+    } = this.props;
+    const { frequency: localFrequency } = this.state;
     return (
       <View style={styles.checkinContainer}>
         <View style={styles.checkinTopContainer}>
@@ -109,7 +109,7 @@ class CheckinElement extends React.PureComponent<CheckinElementProps> {
             <Text
               style={[
                 styles.date,
-                frequency !== localFrequency ? styles.changedDate : {}
+                frequency !== localFrequency ? styles.changedDate : {},
               ]}
             >
               {!!id && operateCheckinDate(localFrequency, lastCheckin)}
@@ -121,8 +121,8 @@ class CheckinElement extends React.PureComponent<CheckinElementProps> {
               onValueChange={() => {
                 onToggle({
                   step,
-                  checkin: { frequency: localFrequency, message }
-                })
+                  checkin: { frequency: localFrequency, message },
+                });
               }}
               value={!!id}
             />
@@ -139,10 +139,10 @@ class CheckinElement extends React.PureComponent<CheckinElementProps> {
               onValueChange={value => this.setState({ frequency: value })}
             >
               {Object.keys(frequencies).map(key => {
-                const frequency = frequencies[key]
+                const frequency = frequencies[key];
                 return (
                   <Picker.Item key={key} label={frequency} value={frequency} />
-                )
+                );
               })}
             </Picker>
           </View>
@@ -159,7 +159,7 @@ class CheckinElement extends React.PureComponent<CheckinElementProps> {
                   styles.buttonText,
                   frequency !== localFrequency
                     ? styles.saveText
-                    : styles.saveTextDisabled
+                    : styles.saveTextDisabled,
                 ]}
               >
                 Save
@@ -168,8 +168,8 @@ class CheckinElement extends React.PureComponent<CheckinElementProps> {
           </View>
         </View>
       </View>
-    )
+    );
   }
 }
 
-export default CheckinElement
+export default CheckinElement;

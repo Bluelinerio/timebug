@@ -1,20 +1,20 @@
 // @flow
-import React             from 'react'
-import GoalList          from './GoalList'
-import GoalsFromTypeList from '../containers/GoalsFromTypeListContainer'
-import GoalReview        from '../containers/GoalReviewContainer'
+import React from 'react';
+import GoalList from './GoalList';
+import GoalsFromTypeList from '../containers/GoalsFromTypeListContainer';
+import GoalReview from '../containers/GoalReviewContainer';
 
 type Props = {
   onSelectGoal: () => any,
   onSelectGoalType: () => any,
   unsetGoal: () => any,
   selectedGoaltype: string,
-  selectedGoal: any
-}
+  selectedGoal: any,
+};
 
 class GoalScreenContent extends React.PureComponent<Props> {
   render() {
-    const { selectedGoaltype, selectedGoal } = this.props
+    const { selectedGoaltype, selectedGoal } = this.props;
     return (
       <React.Fragment>
         {!selectedGoaltype &&
@@ -35,8 +35,8 @@ class GoalScreenContent extends React.PureComponent<Props> {
             />
           )}
       </React.Fragment>
-    )
+    );
   }
 }
 
-export default GoalScreenContent
+export default GoalScreenContent;

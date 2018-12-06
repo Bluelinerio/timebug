@@ -1,9 +1,9 @@
-import React          from 'react'
-import { View, Text } from 'react-native'
+import React from 'react';
+import { View, Text } from 'react-native';
 
 type DisplayStepsProps = {
-    steps: Array<any>
-}
+  steps: Array<any>,
+};
 
 const DisplaySteps = ({ steps }: DisplayStepsProps) => {
   return (
@@ -14,7 +14,7 @@ const DisplaySteps = ({ steps }: DisplayStepsProps) => {
         {steps && `${steps.map(step => ` ${step.stepId} `)}`}
       </Text>
     </View>
-  )
-}
+  );
+};
 
-export default DisplaySteps
+export default DisplaySteps;

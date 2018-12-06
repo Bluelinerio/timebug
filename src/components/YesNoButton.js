@@ -1,18 +1,18 @@
-import * as React                          from 'react'
-import { View, Button, Platform }          from 'react-native'
-import { deepBlue, lessSaturatedDeepBlue } from '../constants/colors'
+import * as React from 'react';
+import { View, Button, Platform } from 'react-native';
+import { deepBlue, lessSaturatedDeepBlue } from '../constants/colors';
 
 type YesNoButtonProps = {
   onPress: () => any,
-  title: string
-}
+  title: string,
+};
 
 const YesNoButton = ({ onPress, title }: YesNoButtonProps) => (
   <View
     style={{
       alignSelf: 'center',
       marginVertical: 10,
-      marginHorizontal: 20
+      marginHorizontal: 20,
     }}
   >
     <Button
@@ -21,6 +21,6 @@ const YesNoButton = ({ onPress, title }: YesNoButtonProps) => (
       onPress={onPress}
     />
   </View>
-)
+);
 
-export default YesNoButton
+export default YesNoButton;

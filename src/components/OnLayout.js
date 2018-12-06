@@ -5,15 +5,15 @@ type Layout = {
   x: number,
   y: number,
   width: number,
-  height: number
+  height: number,
 };
 
 type OnLayoutState = {
-  layout?: Layout
+  layout?: Layout,
 };
 
 export type Props = {
-  render: OnLayoutState => React.Element
+  render: OnLayoutState => React.Element,
 };
 
 export default class OnLayout extends React.Component<
@@ -23,7 +23,7 @@ export default class OnLayout extends React.Component<
   state: OnLayoutState = { layout: null };
   onLayout = ({ nativeEvent: { layout } }) => {
     this.setState({
-      layout
+      layout,
     });
   };
   render() {

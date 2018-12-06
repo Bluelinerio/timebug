@@ -1,13 +1,13 @@
 //@flow
-import React          from 'react'
-import styles         from '../styles/EntryStyles'
-import { View, Text } from 'react-native'
+import React from 'react';
+import styles from '../styles/EntryStyles';
+import { View, Text } from 'react-native';
 
 type HeaderProps = {
   title: string,
   titleColor: string,
-  style?: any
-}
+  style?: any,
+};
 
 const Header = ({ title, titleColor, style }: HeaderProps) => (
   <View style={styles.header}>
@@ -15,6 +15,6 @@ const Header = ({ title, titleColor, style }: HeaderProps) => (
       {title}
     </Text>
   </View>
-)
+);
 
-export default Header
+export default Header;

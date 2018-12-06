@@ -1,27 +1,27 @@
 //@flow
-import React          from 'react'
-import { View, Text } from 'react-native'
-import styles         from '../styles'
+import React from 'react';
+import { View, Text } from 'react-native';
+import styles from '../styles';
 
 type PillarTimeTableElementProps = {
   pillar: string,
   typicalWeek: number,
   idealWeek: number,
-  style: any
-}
+  style: any,
+};
 
 const renderText = (typical: number) => (ideal: number): string => {
-  const result = typical - ideal
+  const result = typical - ideal;
   return result > 0
     ? `+${result} hrs`
-    : result < 0 ? `${result} hrs` : `${result} hrs`
-}
+    : result < 0 ? `${result} hrs` : `${result} hrs`;
+};
 
 const PillarTimeTableElement = ({
   pillar,
   typicalWeek,
   idealWeek,
-  style = {}
+  style = {},
 }: PillarTimeTableElementProps) => (
   <View style={[styles.row, styles.elementRow, style.row]}>
     <View style={[styles.element, styles.pillar]}>
@@ -43,6 +43,6 @@ const PillarTimeTableElement = ({
       </Text>
     </View>
   </View>
-)
+);
 
-export default PillarTimeTableElement
+export default PillarTimeTableElement;

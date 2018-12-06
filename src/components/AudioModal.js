@@ -1,14 +1,14 @@
-import React                                              from 'react'
-import { View, Modal, TouchableOpacity, StatusBar, Text } from 'react-native'
-import Gradient                                           from '../components/Gradient'
+import React from 'react';
+import { View, Modal, TouchableOpacity, StatusBar, Text } from 'react-native';
+import Gradient from '../components/Gradient';
 import styles, {
   statusBarColor,
   closeButtonColor,
   closeButtonSize,
-  gradientColors
-}                                                         from '../styles/components/AudioModal'
-import Icon                                               from 'react-native-vector-icons/dist/MaterialIcons'
-import AudioVideo                                         from './AudioVideoComponent'
+  gradientColors,
+} from '../styles/components/AudioModal';
+import Icon from 'react-native-vector-icons/dist/MaterialIcons';
+import AudioVideo from './AudioVideoComponent';
 
 export type AudioModalProps = {
   isOpen: boolean,
@@ -17,23 +17,23 @@ export type AudioModalProps = {
   icon:
     | string
     | {
-        uri: string
+        uri: string,
       },
-  close: () => any
-}
+  close: () => any,
+};
 
-export const key = 'Audio'
+export const key = 'Audio';
 
 class AudioModal extends React.PureComponent<AudioModalProps> {
   render() {
-    const { isOpen, close, title, audio } = this.props
+    const { isOpen, close, title, audio } = this.props;
     return (
       <Modal
         animationType="slide"
         transparent={true}
         visible={isOpen}
         onRequestClose={() => {
-          close()
+          close();
         }}
       >
         <StatusBar barStyle="dark-content" backgroundColor={statusBarColor} />
@@ -76,8 +76,8 @@ class AudioModal extends React.PureComponent<AudioModalProps> {
           </Gradient>
         </View>
       </Modal>
-    )
+    );
   }
 }
 
-export default AudioModal
+export default AudioModal;

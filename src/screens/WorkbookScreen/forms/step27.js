@@ -1,11 +1,11 @@
-import t           from '../../../forms/components'
-import { Emotion } from './contents'
+import t from '../../../forms/components';
+import { Emotion } from './contents';
 
 export default {
   1: {
     type: t.struct({
       id: t.maybe(t.String),
-      deepBreathReflections: t.String
+      deepBreathReflections: t.String,
     }),
     options: {
       label:
@@ -13,26 +13,26 @@ export default {
       fields: {
         auto: 'none',
         id: {
-          hidden: true
+          hidden: true,
         },
         deepBreathReflections: {
           auto: 'none',
-          multiline: true
-        }
-      }
+          multiline: true,
+        },
+      },
     },
     value: {
       fields: {
-        id: 'step27+v0.0.0.1'
-      }
-    }
+        id: 'step27+v0.0.0.1',
+      },
+    },
   },
   2: {
     type: t.struct({
       thoughtsToReplace: t.struct({
         replacements: t.String,
-        relationshipToSelf: t.String
-      })
+        relationshipToSelf: t.String,
+      }),
     }),
     options: {
       fields: {
@@ -44,21 +44,21 @@ export default {
                 'What old thoughts will you replace with new ones that will create new trust and a new experience?',
               help:
                 '(e.g., Old Thinking = “Missed another workout today. I am so lazy.” vs. New Thinking = “Maybe I’m not getting enough rest. I’m going to take it easy on myself today."',
-              multiline: true
+              multiline: true,
             },
             relationshipToSelf: {
               label:
                 'What will your relationship to self look like in 5 years?',
-              multiline: true
-            }
-          }
-        }
-      }
-    }
+              multiline: true,
+            },
+          },
+        },
+      },
+    },
   },
   3: {
     type: t.struct({
-      relationshipEmotionsWillFeel: t.list(Emotion)
+      relationshipEmotionsWillFeel: t.list(Emotion),
     }),
     options: {
       label:
@@ -68,15 +68,15 @@ export default {
         relationshipEmotionsWillFeel: {
           auto: 'none',
           item: {
-            auto: 'none'
-          }
-        }
-      }
-    }
+            auto: 'none',
+          },
+        },
+      },
+    },
   },
   4: {
     type: t.struct({
-      peopleYouWillValueMore: t.list(t.String)
+      peopleYouWillValueMore: t.list(t.String),
     }),
     options: {
       label:
@@ -87,17 +87,17 @@ export default {
           item: {
             auto: 'none',
             fields: {
-              auto: 'placeholders'
-            }
-          }
-        }
+              auto: 'placeholders',
+            },
+          },
+        },
       },
-      maxLines: 3
-    }
+      maxLines: 3,
+    },
   },
   5: {
     type: t.struct({
-      healAndRepairRelationships: t.String
+      healAndRepairRelationships: t.String,
     }),
     options: {
       label:
@@ -105,15 +105,15 @@ export default {
       fields: {
         healAndRepairRelationships: {
           auto: 'none',
-          multiline: true
-        }
-      }
-    }
+          multiline: true,
+        },
+      },
+    },
   },
   6: {
     type: t.struct({
       needsYouWillHave: t.list(t.String),
-      willingToCommunicateNeeds: t.Boolean
+      willingToCommunicateNeeds: t.Boolean,
     }),
     options: {
       label:
@@ -124,22 +124,22 @@ export default {
         needsYouWillHave: {
           auto: 'none',
           item: {
-            auto: 'none'
-          }
+            auto: 'none',
+          },
         },
         willingToCommunicateNeeds: {
           label:
-            'Are you willing to communicate these needs to another person in the spirit of mutual giving?'
-        }
-      }
-    }
+            'Are you willing to communicate these needs to another person in the spirit of mutual giving?',
+        },
+      },
+    },
   },
   7: {
     type: t.struct({
       helpOthersWithGiving: t.struct({
         giveMore: t.String,
-        receiveMore: t.String
-      })
+        receiveMore: t.String,
+      }),
     }),
     options: {
       fields: {
@@ -147,15 +147,15 @@ export default {
           label: 'Vision Creation:Relationships',
           fields: {
             giveMore: {
-              label: 'What do you want to give more of to others in 5 years?'
+              label: 'What do you want to give more of to others in 5 years?',
             },
             receiveMore: {
               label:
-                'What do you want to receive more of from others in 5 years?'
-            }
-          }
-        }
-      }
-    }
-  }
-}
+                'What do you want to receive more of from others in 5 years?',
+            },
+          },
+        },
+      },
+    },
+  },
+};

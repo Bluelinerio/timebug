@@ -1,12 +1,12 @@
 //@flow
-import React      from 'react'
-import { Switch } from 'react-native'
-import styles     from '../../styles'
+import React from 'react';
+import { Switch } from 'react-native';
+import styles from '../../styles';
 
 export type CheckboxComponentStyle = {
   container?: any,
-  text?: any
-}
+  text?: any,
+};
 
 export type CheckboxComponentProps = {
   type: string,
@@ -15,8 +15,8 @@ export type CheckboxComponentProps = {
   value: boolean | null,
   submitAnswers: any,
   step: string,
-  valueType?: string
-}
+  valueType?: string,
+};
 
 const CheckboxComponent = ({
   value,
@@ -24,7 +24,7 @@ const CheckboxComponent = ({
   formIndex,
   submitAnswers,
   step,
-  valueType = 'boolean'
+  valueType = 'boolean',
 }: CheckboxComponentProps) => (
   <Switch
     style={[styles.checkBox, styles.center]}
@@ -35,13 +35,13 @@ const CheckboxComponent = ({
           key: formKey,
           value,
           formIndex,
-          type: valueType
-        }
-      }
-      submitAnswers(payload)
+          type: valueType,
+        },
+      };
+      submitAnswers(payload);
     }}
     value={!!value}
   />
-)
+);
 
-export default CheckboxComponent
+export default CheckboxComponent;

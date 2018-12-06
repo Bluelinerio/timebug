@@ -5,55 +5,55 @@ import {
   BUILD_NOTIFICATION_SET,
   REMOVE_CHECKIN,
   DELETE_CHECKIN,
-  TOGGLE_CHECKIN
-}                              from '../actionTypes'
-import type { CheckinElement } from '../reducers/checkin.reducer'
+  TOGGLE_CHECKIN,
+} from '../actionTypes';
+import type { CheckinElement } from '../reducers/checkin.reducer';
 
 export type CheckinActionPayload = {
   step: string,
-  checkin: CheckinElement
-}
+  checkin: CheckinElement,
+};
 
 export type CheckinChangePayload = {
   step: number,
   frequency: string,
-  message: string
-}
+  message: string,
+};
 
 export type DeleteCheckinPayload = {
-  step: string
-}
+  step: string,
+};
 
 export type ToggleCheckinPayload = {
   step: string,
-  checkin?: CheckinChangePayload
-}
+  checkin?: CheckinChangePayload,
+};
 
 export const changeCheckin = (payload: CheckinChangePayload) => ({
   type: CHANGE_CHECKIN,
-  payload
-})
+  payload,
+});
 
 export const updateCheckin = (payload: CheckinActionPayload) => ({
   type: UPDATE_CHECKIN,
-  payload
-})
+  payload,
+});
 
 export const initialNotifications = () => ({
-  type: BUILD_NOTIFICATION_SET
-})
+  type: BUILD_NOTIFICATION_SET,
+});
 
 export const removeCheckin = (payload: DeleteCheckinPayload) => ({
   type: REMOVE_CHECKIN,
-  payload
-})
+  payload,
+});
 
 export const deleteCheckin = (payload: DeleteCheckinPayload) => ({
   type: DELETE_CHECKIN,
-  payload
-})
+  payload,
+});
 
 export const toggleCheckin = (payload: ToggleCheckinPayload) => ({
   type: TOGGLE_CHECKIN,
-  payload
-})
+  payload,
+});

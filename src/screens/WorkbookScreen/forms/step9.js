@@ -1,4 +1,4 @@
-import t                                       from '../../../forms/components';
+import t from '../../../forms/components';
 import { PillarsOfLife, InteractionFrequency } from './contents';
 
 export default {
@@ -10,16 +10,16 @@ export default {
           roleModel: t.String,
           pillarsOfLife: PillarsOfLife,
           interactionFrequency: InteractionFrequency,
-          why: t.String
+          why: t.String,
         })
-      )
+      ),
     }),
     options: {
       label: 'Who are your current role models?',
 
       fields: {
         id: {
-          hidden: true
+          hidden: true,
         },
 
         roleModels: {
@@ -27,37 +27,37 @@ export default {
             auto: 'none',
             fields: {
               roleModel: {
-                auto: 'labels'
+                auto: 'labels',
                 //  error:'Please enter the name of a Role Model.'
               },
               pillarsOfLife: {
                 label:
-                  'Which of the 7 Pillars of Life does he/she primarily influence?'
+                  'Which of the 7 Pillars of Life does he/she primarily influence?',
                 //error: 'Please select a Life Category.'
               },
               interactionFrequency: {
-                label: 'To what degree do you interact with this Role Model?'
+                label: 'To what degree do you interact with this Role Model?',
                 //error: 'How often do you interact with this person?'
               },
               why: {
                 label: 'Why do you look up to this Role Model?',
-                multiline: true
+                multiline: true,
                 //error:'Why would this person make a good role model for you?'
-              }
-            }
+              },
+            },
           },
           disableOrder: true,
           maxLines: 10,
           config: {
-            maxLines: 10
-          }
-        }
-      }
+            maxLines: 10,
+          },
+        },
+      },
     },
     value: {
       fields: {
-        id: 'step9+v0.0.0.1'
-      }
-    }
-  }
+        id: 'step9+v0.0.0.1',
+      },
+    },
+  },
 };

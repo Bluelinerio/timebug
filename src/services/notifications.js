@@ -1,19 +1,19 @@
 // @flow
-import PushNotification from 'react-native-push-notification'
+import PushNotification from 'react-native-push-notification';
 
 class NotificationService {
-  static callbacksSet: boolean = false
+  static callbacksSet: boolean = false;
 
   static init() {
-    NotificationService.onRegistration = () => null
-    NotificationService.onNotification = () => null
-    NotificationService.configure()
+    NotificationService.onRegistration = () => null;
+    NotificationService.onNotification = () => null;
+    NotificationService.configure();
   }
 
   static setCallbacks(onRegistration: () => any, onNotification: () => any) {
-    NotificationService.onRegistration = onRegistration
-    NotificationService.onNotification = onNotification
-    NotificationService.callbacksSet = true
+    NotificationService.onRegistration = onRegistration;
+    NotificationService.onNotification = onNotification;
+    NotificationService.callbacksSet = true;
   }
 
   static configure(gcm: string = '') {
@@ -32,7 +32,7 @@ class NotificationService {
       permissions: {
         alert: true,
         badge: true,
-        sound: true
+        sound: true,
       },
 
       // Should the initial notification be popped automatically
@@ -44,8 +44,8 @@ class NotificationService {
        * - Specified if permissions (ios) and token (android and ios) will requested or not,
        * - if not, you must call PushNotificationsHandler.requestPermissions() later
        */
-      requestPermissions: true
-    })
+      requestPermissions: true,
+    });
   }
 
   // Time is on ISO8601 date and time
@@ -74,30 +74,30 @@ class NotificationService {
 
       /* iOS only properties */
       alertAction: 'view', // (optional) default: view
-      userInfo: {id: `${id}`}, // (optional) default: null (object containing additional notification data)
+      userInfo: { id: `${id}` }, // (optional) default: null (object containing additional notification data)
 
       /* iOS and Android properties */
       title, // (optional)
       message: msg, // (required)
       playSound: true, // (optional) default: true
-      soundName: 'default' // (optional) Sound to play when the notification is shown. Value of 'default' plays the default sound. It can be set to a custom sound such as 'android.resource://com.xyz/raw/my_sound'. It will look for the 'my_sound' audio file in 'res/raw' directory and play it. default: 'default' (default sound is played)
-    })
-    return id
+      soundName: 'default', // (optional) Sound to play when the notification is shown. Value of 'default' plays the default sound. It can be set to a custom sound such as 'android.resource://com.xyz/raw/my_sound'. It will look for the 'my_sound' audio file in 'res/raw' directory and play it. default: 'default' (default sound is played)
+    });
+    return id;
   }
 
   static checkPermission(cbk: any) {
-    return PushNotification.checkPermissions(cbk)
+    return PushNotification.checkPermissions(cbk);
   }
 
   static cancelNotification(id: string) {
-    PushNotification.cancelLocalNotifications({ id: `${id}` })
+    PushNotification.cancelLocalNotifications({ id: `${id}` });
   }
 
   static cancelAll() {
-    PushNotification.cancelAllLocalNotifications()
+    PushNotification.cancelAllLocalNotifications();
   }
 }
 
-NotificationService.init()
+NotificationService.init();
 
-export default NotificationService
+export default NotificationService;

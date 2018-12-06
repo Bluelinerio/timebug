@@ -1,13 +1,13 @@
 // @flow
-import * as React                     from 'react'
-import { View, Dimensions, Platform } from 'react-native'
+import * as React from 'react';
+import { View, Dimensions, Platform } from 'react-native';
 import styles, {
-  scrollViewHorizontalPadding
-}                                     from './styles/ProgressCell.style'
-import OnLayout                       from '../../../../components/OnLayout'
-import HighlighRow                    from '../../../../components/HighlighRow'
-import HorizontalScrollView           from '../../../../components/HorizontalScrollView'
-import Header                         from './CellHeader'
+  scrollViewHorizontalPadding,
+} from './styles/ProgressCell.style';
+import OnLayout from '../../../../components/OnLayout';
+import HighlighRow from '../../../../components/HighlighRow';
+import HorizontalScrollView from '../../../../components/HorizontalScrollView';
+import Header from './CellHeader';
 
 type CellProps = {
   children?: [React.ComponentType<any>],
@@ -16,10 +16,10 @@ type CellProps = {
   titleColor: string,
   style?:
     | {
-        highlight: any
+        highlight: any,
       }
-    | any
-}
+    | any,
+};
 
 const Cell = ({
   children,
@@ -39,14 +39,14 @@ const Cell = ({
               width:
                 Dimensions.get('window').width -
                 scrollViewHorizontalPadding -
-                20
+                20,
             },
             Platform.OS === 'ios'
               ? {}
               : {
-                marginHorizontal: scrollViewHorizontalPadding
+                marginHorizontal: scrollViewHorizontalPadding,
               },
-            style.highlight
+            style.highlight,
           ]}
         >
           <OnLayout
@@ -59,6 +59,6 @@ const Cell = ({
       }
     </HorizontalScrollView>
   </View>
-)
+);
 
-export default Cell
+export default Cell;

@@ -1,4 +1,4 @@
-import t             from '../../../forms/components';
+import t from '../../../forms/components';
 import { TimeSpent } from './contents';
 
 export default {
@@ -8,42 +8,42 @@ export default {
       step23CheckIn: t.struct({
         mantraAnswer: t.Boolean,
         exerciseAnswer: t.Boolean,
-        meditateAnswer: t.Boolean
-      })
+        meditateAnswer: t.Boolean,
+      }),
     }),
     options: {
       label: '20/20 Life Vision Check-in',
       fields: {
         id: {
-          hidden: true
+          hidden: true,
         },
         step23CheckIn: {
           fields: {
             mantraAnswer: {
-              label: 'Did you do your mantra today (assigned on Day 21)?'
+              label: 'Did you do your mantra today (assigned on Day 21)?',
             },
             exerciseAnswer: {
-              label: 'Did you exercise yet today(assigned on Day 8)?'
+              label: 'Did you exercise yet today(assigned on Day 8)?',
             },
             meditateAnswer: {
-              label: 'Did you meditate yet today(assigned on Day 8)?'
-            }
-          }
-        }
-      }
+              label: 'Did you meditate yet today(assigned on Day 8)?',
+            },
+          },
+        },
+      },
     },
     value: {
       fields: {
-        id: 'step23+v0.0.0.1'
-      }
-    }
+        id: 'step23+v0.0.0.1',
+      },
+    },
   },
   2: {
     type: t.struct({
       ifChangeJob: t.struct({
         changeJobs: t.String,
-        changesNeeded: t.String
-      })
+        changesNeeded: t.String,
+      }),
     }),
     options: {
       fields: {
@@ -54,16 +54,16 @@ export default {
             changesNeeded: {
               label:
                 'Reflecting back on exercise 13, what changes would you need to make in your career to increase your fulfillment and motivation levels to 10 (Extremely fufilled/motivated)?',
-              multiline: true
-            }
-          }
-        }
-      }
-    }
+              multiline: true,
+            },
+          },
+        },
+      },
+    },
   },
   3: {
     type: t.struct({
-      careerBHAGS: t.list(t.String)
+      careerBHAGS: t.list(t.String),
     }),
     options: {
       label:
@@ -72,11 +72,11 @@ export default {
         careerBHAGS: {
           auto: 'none',
           item: {
-            label: 'Career BHAG'
-          }
-        }
-      }
-    }
+            label: 'Career BHAG',
+          },
+        },
+      },
+    },
   },
   4: {
     type: t.struct({
@@ -85,9 +85,9 @@ export default {
         t.struct({
           skill: t.String,
           whatWillYouDo: t.String,
-          timePerWeek: TimeSpent
+          timePerWeek: TimeSpent,
         })
-      )
+      ),
     }),
     options: {
       label:
@@ -95,7 +95,7 @@ export default {
 
       fields: {
         id: {
-          hidden: true
+          hidden: true,
         },
         careerSkillsToBuild: {
           auto: 'none',
@@ -103,25 +103,25 @@ export default {
             auto: 'none',
             fields: {
               skill: {
-                label: 'Skill'
+                label: 'Skill',
               },
               whatWillYouDo: {
-                label: 'What will you do this year to develop this skill?'
+                label: 'What will you do this year to develop this skill?',
               },
               timePerWeek: {
-                label: 'How much time per week will you dedicate to this?'
-              }
-            }
-          }
-        }
-      }
-    }
+                label: 'How much time per week will you dedicate to this?',
+              },
+            },
+          },
+        },
+      },
+    },
   },
   5: {
     type: t.struct({ hoursWillSpendWorking: t.Number }),
     options: {
       label:
-        'The average worker spends 40 hrs * 50 weeks working = 2,000 hours. How many hours will you spend working this year? #Workbug'
-    }
-  }
+        'The average worker spends 40 hrs * 50 weeks working = 2,000 hours. How many hours will you spend working this year? #Workbug',
+    },
+  },
 };

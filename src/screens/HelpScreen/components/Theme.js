@@ -2,10 +2,10 @@
 export type Typography = {
   fontFamily: string,
   fontSize: number,
-  lineHeight: number
-}
+  lineHeight: number,
+};
 
-export type Color = string
+export type Color = string;
 
 export type ThemeProps = {
   palette: {
@@ -17,7 +17,7 @@ export type ThemeProps = {
     warning: Color,
     sidebar: Color,
     lightGray: Color,
-    borderColor: Color
+    borderColor: Color,
   },
   typography: {
     color: string,
@@ -31,16 +31,16 @@ export type ThemeProps = {
     large: Typography,
     regular: Typography,
     small: Typography,
-    micro: Typography
+    micro: Typography,
   },
   spacing: {
     tiny: number,
     small: number,
     base: number,
     large: number,
-    xLarge: number
-  }
-}
+    xLarge: number,
+  },
+};
 
 const theme: ThemeProps = {
   palette: {
@@ -52,7 +52,7 @@ const theme: ThemeProps = {
     warning: '#f0ad4e',
     sidebar: '#484848',
     lightGray: '#BFBFBF',
-    borderColor: '#F5F5F5'
+    borderColor: '#F5F5F5',
   },
   typography: {
     color: '#666666',
@@ -63,46 +63,46 @@ const theme: ThemeProps = {
     header1: {
       fontSize: 48,
       lineHeight: 58,
-      fontFamily: 'Helvetica'
+      fontFamily: 'Helvetica',
     },
     header2: {
       fontSize: 36,
       lineHeight: 43,
-      fontFamily: 'Helvetica'
+      fontFamily: 'Helvetica',
     },
     header3: {
       fontSize: 24,
       lineHeight: 28,
-      fontFamily: 'Helvetica'
+      fontFamily: 'Helvetica',
     },
     large: {
       fontSize: 14,
       lineHeight: 21,
-      fontFamily: 'Helvetica'
+      fontFamily: 'Helvetica',
     },
     regular: {
       fontSize: 14,
       lineHeight: 21,
-      fontFamily: 'Helvetica'
+      fontFamily: 'Helvetica',
     },
     small: {
       fontSize: 14,
       lineHeight: 18,
-      fontFamily: 'Helvetica'
+      fontFamily: 'Helvetica',
     },
     micro: {
       fontSize: 8,
       lineHeight: 8,
-      fontFamily: 'Helvetica'
-    }
+      fontFamily: 'Helvetica',
+    },
   },
   spacing: {
     tiny: 8,
     small: 16,
     base: 24,
     large: 48,
-    xLarge: 64
-  }
-}
+    xLarge: 64,
+  },
+};
 
-export { theme as Theme }
+export { theme as Theme };

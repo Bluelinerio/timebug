@@ -1,4 +1,4 @@
-import { CHECKBOX, STRUCT } from './modelTypes'
+import { CHECKBOX, STRUCT } from './modelTypes';
 
 export default {
   meditationCheckin: {
@@ -8,15 +8,15 @@ export default {
         type: CHECKBOX,
         key: 'meditatedToday',
         options: {
-          header: 'Have you meditated Today?'
+          header: 'Have you meditated Today?',
         },
         meta: {
           _store: 'list',
           _timestamp: true,
           _date: [true, 'MM/DD/YYYY'],
-          max: 10
-        }
-      }
-    }
-  }
-}
+          max: 10,
+        },
+      },
+    },
+  },
+};

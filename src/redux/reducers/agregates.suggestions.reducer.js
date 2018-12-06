@@ -1,13 +1,13 @@
-import { SUBMIT_CHECKIN } from '../actionTypes'
+import { SUBMIT_CHECKIN } from '../actionTypes';
 
 export const SuggestionsReducerKeys = {
   suggestionsHistory: 'suggestionsHistory',
   currentSuggestion: 'currentSuggestion',
   checkinHistory: 'checkinHistory',
-  lastCheckin: 'lastCheckin'
-}
+  lastCheckin: 'lastCheckin',
+};
 
-export const ActionTypes = [SUBMIT_CHECKIN]
+export const ActionTypes = [SUBMIT_CHECKIN];
 
 const suggestionsReducer = (state = {}, action) => {
   switch (action.type) {
@@ -17,12 +17,12 @@ const suggestionsReducer = (state = {}, action) => {
       [SuggestionsReducerKeys.lastCheckin]: action.payload,
       [SuggestionsReducerKeys.checkinHistory]: {
         ...state[SuggestionsReducerKeys.checkinHistory],
-        [Date.now()]: action.payload
-      }
-    }
+        [Date.now()]: action.payload,
+      },
+    };
   default:
-    return state
+    return state;
   }
-}
+};
 
-export default suggestionsReducer
+export default suggestionsReducer;

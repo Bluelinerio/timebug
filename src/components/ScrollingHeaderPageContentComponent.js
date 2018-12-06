@@ -1,15 +1,10 @@
 //@flow
-import * as React        from 'react'
-import {
-  View,
-  Text,
-  StatusBar,
-  StyleSheet
-}                        from 'react-native'
-import { deepBlue }      from '../constants/colors'
-import Markdown          from '../Modules/Markdown'
-import normalize         from '../utils/normalizeText'
-import SimpleColorButton from './SimpleColorButton'
+import * as React from 'react';
+import { View, Text, StatusBar, StyleSheet } from 'react-native';
+import { deepBlue } from '../constants/colors';
+import Markdown from '../Modules/Markdown';
+import normalize from '../utils/normalizeText';
+import SimpleColorButton from './SimpleColorButton';
 
 type Props = {
   title?: string,
@@ -20,10 +15,10 @@ type Props = {
   titleColor: string,
   button: {
     title: string,
-    onPress: () => void
+    onPress: () => void,
   },
-  children: React.Node | [React.Node]
-}
+  children: React.Node | [React.Node],
+};
 
 const ScrollingHeaderPageContentComponent = ({
   title,
@@ -33,7 +28,7 @@ const ScrollingHeaderPageContentComponent = ({
   androidStatusBarColor,
   titleColor = deepBlue,
   button,
-  children
+  children,
 }: Props): React.Node => (
   <View style={styles.content}>
     <StatusBar
@@ -44,19 +39,19 @@ const ScrollingHeaderPageContentComponent = ({
     {title && (
       <Text style={[styles.title, { color: titleColor }]}>{title}</Text>
     )}
-    {button && <SimpleColorButton color={deepBlue} {...button}/>}
+    {button && <SimpleColorButton color={deepBlue} {...button} />}
     <Markdown markdownStyles={markdownStyles}>{content}</Markdown>
     {children}
   </View>
-)
+);
 
-export default ScrollingHeaderPageContentComponent
+export default ScrollingHeaderPageContentComponent;
 
 const styles = StyleSheet.create({
   content: {
     marginTop: 20,
     marginBottom: 30,
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
   },
   subtitle: {
     fontFamily: 'Helvetica',
@@ -65,7 +60,7 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     paddingHorizontal: 0,
     paddingVertical: 20,
-    color: deepBlue
+    color: deepBlue,
   },
   title: {
     fontFamily: 'Helvetica',
@@ -73,6 +68,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     paddingHorizontal: 0,
     paddingVertical: 20,
-    color: deepBlue
-  }
-})
+    color: deepBlue,
+  },
+});
