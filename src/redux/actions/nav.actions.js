@@ -69,8 +69,8 @@ export const goToHelpScreen = (params: HelpParams) =>
 
 export const goToPrototypeStepScreen = () =>
   NavigationActions.navigate({
-    routeName: protoRoutes.v2.V2_StepScreen,
-  });
+    routeName: protoRoutes.proto.V2Navigator
+  })
 
 export const goToPrototypeWorkbookScreen = (params: any) =>
   NavigationActions.navigate({
