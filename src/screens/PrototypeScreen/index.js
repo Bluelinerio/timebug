@@ -38,8 +38,8 @@ export const PrototypeNavigatorConfiguration = {
       screen: HelpScreen,
     },
     [routes.proto.V2Navigator]: {
-      screen: V2Navigator
-    }
+      screen: V2Navigator,
+    },
   },
   options: {
     initialRouteName: routes.proto.initialRouteName,
