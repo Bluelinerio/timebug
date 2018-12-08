@@ -5,7 +5,7 @@ import { debounce } from '../../../utils/debounce';
 
 const mapStateToProps = () => {
   return {
-    text: 'Version 1.0',
+    text: 'Go to app',
   };
 };
 

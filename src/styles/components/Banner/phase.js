@@ -1,12 +1,10 @@
 //@flow
-import { StyleSheet, Platform } from 'react-native';
-import { iOSUIKit } from 'react-native-typography';
-import { paleBlue } from '../../../constants/colors';
-import {
-  widthPercentage,
-} from '../../../utils/viewportCalculation';
+import { StyleSheet, Platform } from 'react-native'
+import { iOSUIKit }             from 'react-native-typography'
+import { paleBlue, gray400 }    from '../../../constants/colors'
+import { widthPercentage }      from '../../../utils/viewportCalculation'
 
-export const bannerColor = paleBlue;
+export const bannerColor = paleBlue
 
 export default StyleSheet.create({
   header: {
@@ -70,4 +68,7 @@ export default StyleSheet.create({
   headerStepText: {
     ...iOSUIKit.footnoteEmphasizedObject,
   },
-});
+  disabled: {
+    backgroundColor: gray400,
+  },
+})

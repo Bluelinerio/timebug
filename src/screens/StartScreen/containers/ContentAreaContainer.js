@@ -1,8 +1,10 @@
 //@flow
-import invariant from 'invariant';
-import { connect } from 'react-redux';
-import ContentArea from '../components/ContentArea';
-import selectors from '../../../redux/selectors';
+import invariant from 'invariant'
+import { connect } from 'react-redux'
+import ContentArea from '../components/ContentArea'
+import selectors from '../../../redux/selectors'
+import { compose } from 'recompose'
+import AppVersionProvider from '../../../HOC/AppVersionProvider'
 
 const mapStateToProps = (state: any) => {
   const steps = selectors.steps(state);
@@ -21,4 +23,7 @@ const mapStateToProps = (state: any) => {
   };
 };
 
-export default connect(mapStateToProps)(ContentArea);
+export default compose(
+  connect(mapStateToProps),
+  AppVersionProvider
+)(ContentArea);

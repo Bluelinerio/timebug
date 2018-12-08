@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { goToPrototype } from '../../../redux/actions/nav.actions';
+import { goToRootNavigatorV2 } from '../../../redux/actions/nav.actions';
 import GoToVersionButton from '../components/GoToVersionButton';
 import { debounce } from '../../../utils/debounce';
 
@@ -11,7 +11,7 @@ const mapStateToProps = () => {
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    onPress: debounce(() => dispatch(goToPrototype()), 250),
+    onPress: debounce(() => dispatch(goToRootNavigatorV2()), 250),
   };
 };
 

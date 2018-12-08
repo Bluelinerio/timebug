@@ -118,3 +118,9 @@ export const UPDATE_GOAL_STEP_INNER = 'UPDATE_GOAL_STEP_INNER';
 export const SYNC_GOAL_STEPS = 'SYNC_GOAL_STEPS';
 export const CLEAR_GOAL_STEPS = 'CLEAR_GOAL_STEPS';
 export const REMOVE_GOAL = 'REMOVE_GOAL';
+
+/**
+ * App state
+ */
+
+export const VERSION = 'VERSION'

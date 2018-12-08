@@ -1,15 +1,17 @@
 //@flow
-import React from 'react';
+import React                   from 'react'
 import {
   View,
   Text,
   StatusBar,
   ScrollView,
   TouchableOpacity,
-} from 'react-native';
-import { HeaderBackButton } from 'react-navigation';
-import styles, { bannerColor } from '../styles/components/Banner/phase';
-import type { Step } from '../services/cms';
+}                              from 'react-native'
+import { HeaderBackButton }    from 'react-navigation'
+import styles, { bannerColor } from '../styles/components/Banner/phase'
+import type { Step }           from '../services/cms'
+import ModelHOC                from '../HOC/StepFormModelProvider'
+import { compose }             from 'recompose'
 
 type Props = {
   onBackPress: () => any,
@@ -21,14 +23,58 @@ type Props = {
   steps: Array<Step>,
   headerBackgroundColor: string,
   onSelectStep: Step => any,
-};
+  disabled: boolean,
+}
+
+const UnconnectedPhaseHeaderButton = ({
+  step,
+  backgroundColor,
+  textColor,
+  onPress,
+  disabled = false,
+}: {
+  step: Step,
+  backgroundColor: string,
+  textColor: string,
+  onPress: any,
+  disabled: boolean,
+}) => {
+  return (
+    <TouchableOpacity
+      style={[
+        styles.headerStep,
+        { backgroundColor },
+        disabled ? styles.disabled : {},
+      ]}
+      onPress={onPress}
+      disabled={disabled}
+    >
+      <Text style={[styles.headerStepText, { color: textColor }]}>{`Step ${
+        step.stepId
+      }`}</Text>
+    </TouchableOpacity>
+  )
+}
+
+const mergeProps = (Component: React.Node) => {
+  const Container = ({ formModel, ...rest }: { formModel: any }) => {
+    const disabled = !formModel
+    return <Component disabled={disabled} {...rest} />
+  }
+  return Container
+}
+
+const PhaseHeaderButton = compose(ModelHOC, mergeProps)(
+  UnconnectedPhaseHeaderButton
+)
 
 class PhaseHeader extends React.PureComponent<Props> {
-  _onPressStep = (step) => {
+  _onPressStep = step => {
     const { onSelectStep } = this.props
-    return () => requestAnimationFrame(() => {
-      onSelectStep(step)
-    })
+    return () =>
+      requestAnimationFrame(() => {
+        onSelectStep(step)
+      })
   }
 
   render() {
@@ -41,7 +87,7 @@ class PhaseHeader extends React.PureComponent<Props> {
       onBackPress = null,
       backButton = false,
       headerBackgroundColor,
-    } = this.props;
+    } = this.props
     return (
       <View style={[styles.header, { backgroundColor: headerBackgroundColor }]}>
         <StatusBar barStyle="dark-content" backgroundColor={bannerColor} />
@@ -68,20 +114,18 @@ class PhaseHeader extends React.PureComponent<Props> {
         >
           {steps &&
             steps.map(step => (
-              <TouchableOpacity
+              <PhaseHeaderButton
                 key={step.number}
-                style={[styles.headerStep, { backgroundColor }]}
+                step={step}
+                backgroundColor={backgroundColor}
+                textColor={textColor}
                 onPress={this._onPressStep(step)}
-              >
-                <Text
-                  style={[styles.headerStepText, { color: textColor }]}
-                >{`Step ${step.stepId}`}</Text>
-              </TouchableOpacity>
+              />
             ))}
         </ScrollView>
       </View>
-    );
+    )
   }
 }
 
-export default PhaseHeader;
+export default PhaseHeader

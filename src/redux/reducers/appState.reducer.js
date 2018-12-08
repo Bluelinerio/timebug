@@ -8,46 +8,67 @@ import {
   FOREGROUND,
   BACKGROUND,
   INACTIVE,
-} from 'redux-enhancer-react-native-appstate';
+} from 'redux-enhancer-react-native-appstate'
+import { VERSION } from '../actionTypes'
+import { appVersions } from '../../constants'
+export const UNDETERMINED = 'UNDETERMINED'
 
-export const UNDETERMIND = 'UNDETERMIND';
+export type AppState = {
+  appStatus: {
+    status: UNDETERMINED | FOREGROUND | BACKGROUND | INACTIVE,
+    foreground: number,
+    backgound: number,
+    invactive: number,
+    last: string,
+  },
+  version: string,
+}
 
-export type AppState =
-  | UNDETERMIND
-  | {
-      +foreground: number,
-      +backgound: number,
-      +invactive: number,
-      +last: string,
-      +agregates: Object,
-    };
-
-export const initialState = 'UNDETERMIND';
+export const initialState = {
+  appStatus: {
+    status: UNDETERMINED,
+  },
+  version: appVersions.one,
+}
 
 export default (
   state: AppState = initialState,
-  action: { type: FOREGROUND | BACKGROUND | INACTIVE }
+  action: { type: FOREGROUND | BACKGROUND | INACTIVE | VERSION }
 ) => {
   switch (action.type) {
   case FOREGROUND:
     return {
-      ...(state && {}),
-      foreground: Date.now(),
-      last: FOREGROUND,
-    };
+      ...state,
+      appStatus: {
+        ...(state.appStatus || {}),
+        foreground: Date.now(),
+        last: FOREGROUND,
+      },
+    }
   case BACKGROUND:
     return {
-      ...(state && {}),
-      last: BACKGROUND,
-      background: Date.now(),
-    };
+      ...state,
+      appStatus: {
+        ...(state.appStatus || {}),
+        background: Date.now(),
+        last: BACKGROUND,
+      },
+    }
   case INACTIVE:
     return {
-      ...(state && {}),
-      last: INACTIVE,
-      inactive: Date.now(),
-    };
+      ...state,
+      appStatus: {
+        ...(state.appStatus || {}),
+        inactive: Date.now(),
+        last: INACTIVE,
+      },
+    }
+  case VERSION:
+    return {
+      ...state,
+      version: action.payload.version,
+    }
   default:
-    return state;
+    return state
   }
-};
+}
