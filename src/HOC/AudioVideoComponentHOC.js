@@ -39,13 +39,25 @@ type State = {
 }
 
 const AudioVideoComponentHOC = (Component: React.ReactNode<any>) => {
-  class AudioVideoComponentContainer extends React.PureComponent<Props, State> {
+  class AudioVideoComponentContainer extends React.Component<Props, State> {
     state = {
       status: PENDING,
       paused: true,
       totalLength: 1,
       currentPosition: 0,
       hasBeenReady: false,
+    }
+
+    componentDidUpdate(prevProps) {
+      if (this.props.file !== prevProps.file) {
+        this.setState({
+          status: PENDING,
+          paused: true,
+          totalLength: 1,
+          currentPosition: 0,
+          hasBeenReady: false,
+        })
+      }
     }
 
     setDuration = data => {
@@ -153,7 +165,7 @@ const AudioVideoComponentHOC = (Component: React.ReactNode<any>) => {
         <React.Fragment>
           {video}
           {status === PENDING ? (
-            <DefaultIndicator />
+            <DefaultIndicator container={false} />
           ) : (
             <Component
               {...this.props}

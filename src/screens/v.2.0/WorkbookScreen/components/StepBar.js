@@ -2,7 +2,6 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import CustomImage from '../../../../components/CustomImage';
 import styles from '../styles';
-import StepAudioButton from '../containers/StepAudioButtonContainer';
 
 export type Props = {
   phase: string,
@@ -15,10 +14,9 @@ export type Props = {
 
 class StepBar extends React.PureComponent<Props> {
   render() {
-    const { title, stepId, phase, source, audio, barStyle } = this.props;
+    const { title, stepId, source, barStyle } = this.props;
     return (
       <View style={[styles.stepBarContainer, barStyle]}>
-        <StepAudioButton audio={audio} phase={phase} title={title} />
         <View style={styles.stepBarContentContainer}>
           <View style={styles.stepBarContent}>
             <Text style={styles.stepNumber}>STEP {stepId}</Text>

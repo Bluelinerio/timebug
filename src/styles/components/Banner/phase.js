@@ -3,18 +3,16 @@ import { StyleSheet, Platform } from 'react-native';
 import { iOSUIKit } from 'react-native-typography';
 import { paleBlue } from '../../../constants/colors';
 import {
-  heightPercentage,
   widthPercentage,
 } from '../../../utils/viewportCalculation';
 
-export const bannerHeight = heightPercentage(20);
 export const bannerColor = paleBlue;
 
 export default StyleSheet.create({
   header: {
     flex: 1,
-    height: bannerHeight,
-    maxHeight: bannerHeight,
+    height: '15%',
+    maxHeight: '15%',
     flexDirection: 'column',
     ...Platform.select({
       android: { elevation: 8 },
@@ -44,6 +42,7 @@ export default StyleSheet.create({
   horizontalScrollContainer: {
     paddingHorizontal: 16,
     justifyContent: 'space-between',
+    alignItems: 'center',
   },
   headerUpperRowBlock: {
     flex: 1,
@@ -61,11 +60,12 @@ export default StyleSheet.create({
   headerStep: {
     alignItems: 'center',
     justifyContent: 'center',
+    alignSelf: 'center',
     maxWidth: widthPercentage(20),
     padding: 8,
     borderRadius: 6,
     marginHorizontal: 4,
-    maxHeight: heightPercentage(30, bannerHeight),
+    maxHeight: '90%',
   },
   headerStepText: {
     ...iOSUIKit.footnoteEmphasizedObject,

@@ -1,4 +1,4 @@
-import React from 'react'
+import React                from 'react'
 import { G, Path, Polygon } from 'react-native-svg'
 
 const SvgIcons = {
@@ -114,7 +114,7 @@ const SvgIcons = {
         />
       </G>
     ),
-    viewBox: '0 0 54 54',
+    viewBox: '0 0 60 60',
   },
   AudioError: {
     svg: (

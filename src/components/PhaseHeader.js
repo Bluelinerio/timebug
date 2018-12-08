@@ -24,6 +24,13 @@ type Props = {
 };
 
 class PhaseHeader extends React.PureComponent<Props> {
+  _onPressStep = (step) => {
+    const { onSelectStep } = this.props
+    return () => requestAnimationFrame(() => {
+      onSelectStep(step)
+    })
+  }
+
   render() {
     const {
       title,
@@ -31,7 +38,6 @@ class PhaseHeader extends React.PureComponent<Props> {
       backgroundColor,
       steps,
       titleColor,
-      onSelectStep = () => null,
       onBackPress = null,
       backButton = false,
       headerBackgroundColor,
@@ -65,7 +71,7 @@ class PhaseHeader extends React.PureComponent<Props> {
               <TouchableOpacity
                 key={step.number}
                 style={[styles.headerStep, { backgroundColor }]}
-                onPress={() => onSelectStep(step)}
+                onPress={this._onPressStep(step)}
               >
                 <Text
                   style={[styles.headerStepText, { color: textColor }]}

@@ -1,6 +1,5 @@
-import { StyleSheet, Platform } from 'react-native';
-import hexToRgba from '../../../utils/colorTransform';
-import { widthPercentage } from '../../../utils/viewportCalculation';
+import { StyleSheet, Platform } from 'react-native'
+import hexToRgba                from '../../../utils/colorTransform'
 import {
   azure,
   gray50,
@@ -8,17 +7,15 @@ import {
   blue900,
   gray400,
   greenA400,
-} from '../../../constants/colors';
+}                               from '../../../constants/colors'
 
-export const formTextColor = blue900;
-export const iconSize = 30;
-export const iconColor = gray50;
+export const formTextColor = blue900
+export const iconSize = 30
+export const iconColor = gray50
 
-export const checkboxColor = greenA400;
-export const uncheckedColor = gray400;
-export const helpButtonColor = azure;
-
-const horizontalComponentsWidth = widthPercentage(80);
+export const checkboxColor = greenA400
+export const uncheckedColor = gray400
+export const helpButtonColor = azure
 
 const formStyles = StyleSheet.create({
   container: {
@@ -106,6 +103,7 @@ const formStyles = StyleSheet.create({
     color: gray900,
     fontFamily: 'Helvetica',
     fontSize: 16,
+    width: '80%',
   },
   textInputContainerStyle: {
     marginTop: 16,
@@ -114,7 +112,7 @@ const formStyles = StyleSheet.create({
     paddingVertical: 2,
     paddingHorizontal: 4,
     backgroundColor: hexToRgba(azure, 0.1),
-    width: horizontalComponentsWidth,
+    width: '80%',
     borderRadius: 4,
   },
   buttonComponentContainer: {
@@ -144,6 +142,7 @@ const formStyles = StyleSheet.create({
     }),
   },
   pickerContainer: {
+    width: '80%',
     marginTop: 16,
   },
   pickerStyle: {},
@@ -154,7 +153,7 @@ const formStyles = StyleSheet.create({
     fontSize: 16,
   },
   pickerBackground: {
-    width: horizontalComponentsWidth,
+    width: '100%',
     backgroundColor: hexToRgba(azure, 0.1),
     paddingVertical: 1,
     paddingHorizontal: 2,
@@ -165,21 +164,12 @@ const formStyles = StyleSheet.create({
   listFormContainer: {
     alignItems: 'center',
     borderRadius: 6,
-    // ...Platform.select({
-    //   android: { elevation: 2 },
-    //   ios: {
-    //     shadowColor: 'black',
-    //     shadowOffset: {
-    //       width: 1,
-    //       height: 2
-    //     },
-    //     shadowOpacity: 0.3,
-    //     shadowRadius: 1
-    //   }
-    // })
+    width: '100%',
   },
   listElementContainer: {
     marginBottom: 8,
+    alignItems: 'center',
+    width: '100%',
   },
   listButtonStyle: {
     maxWidth: 80,
@@ -217,6 +207,6 @@ const formStyles = StyleSheet.create({
   indented: {
     paddingLeft: 16,
   },
-});
+})
 
-export default formStyles;
+export default formStyles
