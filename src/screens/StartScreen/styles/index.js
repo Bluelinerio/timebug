@@ -1,9 +1,9 @@
-import { StyleSheet, Platform } from 'react-native';
+import { StyleSheet, Platform }       from 'react-native'
 import {
   sanFranciscoWeights,
   robotoWeights,
   iOSUIKit,
-} from 'react-native-typography';
+}                                     from 'react-native-typography'
 import {
   white2,
   StartScreenButtonsColor,
@@ -13,30 +13,31 @@ import {
   PHASE_2_COMPLETE,
   PHASE_3_COMPLETE,
   PHASE_1_INCOMPLETE,
-} from '../../../constants/colors';
-import Viewport, { heightPercentage } from '../../../utils/viewportCalculation';
-import { bannerHeight } from '../../../styles/components/StartScreenBanner';
+  gray400,
+}                                     from '../../../constants/colors'
+import Viewport, { heightPercentage } from '../../../utils/viewportCalculation'
+import { bannerHeight }               from '../../../styles/components/StartScreenBanner'
 
-const containerColor = StartScreenBackgroundColor;
-const buttonColor = StartScreenButtonsColor;
-const fontColor = white2;
+const containerColor = StartScreenBackgroundColor
+const buttonColor = StartScreenButtonsColor
+const fontColor = white2
 
-const { viewportHeight } = Viewport;
-const remainderHeight = viewportHeight - bannerHeight;
-const versionHeight = heightPercentage(15, remainderHeight);
+const { viewportHeight } = Viewport
+const remainderHeight = viewportHeight - bannerHeight
+const versionHeight = heightPercentage(15, remainderHeight)
 
-export const StepComponentActionDimensions = 36;
-export const StepComponentActionRadius = 36;
+export const StepComponentActionDimensions = 36
+export const StepComponentActionRadius = 36
 
-export const helperIconSize = 22;
+export const helperIconSize = 22
 
 export const colors = {
   containerColor,
   fontColor,
   buttonColor,
-};
+}
 
-export const progressFillColor = fontColor;
+export const progressFillColor = fontColor
 
 export const svgStyles = {
   iconPhase1: {
@@ -54,7 +55,7 @@ export const svgStyles = {
     height: helperIconSize,
     width: helperIconSize,
   },
-};
+}
 
 export const phaseProgressStyles = StyleSheet.create({
   listContainer: {
@@ -108,7 +109,7 @@ export const phaseProgressStyles = StyleSheet.create({
       },
     }),
   },
-});
+})
 
 export default StyleSheet.create({
   flex: {
@@ -117,6 +118,9 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: containerColor,
+  },
+  disabled: {
+    backgroundColor: gray400,
   },
   content: {
     padding: 20,
@@ -265,4 +269,4 @@ export default StyleSheet.create({
   phase3Incomplete: {
     color: fontColor,
   },
-});
+})

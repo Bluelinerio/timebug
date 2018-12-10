@@ -1,23 +1,22 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet }      from 'react-native'
 import {
   PHASE_2_COMPLETE,
   PHASE_3_COMPLETE,
   deepBlue,
   PHASE_1_BAR,
-  SELF_ASSESSMENT,
-  VISION_CREATION,
   white2,
-} from '../../../../constants/colors';
-import { iOSUIKit } from 'react-native-typography';
-import { heightPercentage } from '../../../../utils/viewportCalculation';
+  gray400,
+  hotPink,
+}                          from '../../../../constants/colors'
+import { iOSUIKit }        from 'react-native-typography'
+import { heightPercentage, widthPercentage } from '../../../../utils/viewportCalculation'
 
-export const stepBarHeight = heightPercentage(14);
-export const helperIconContainerSize = heightPercentage(80, stepBarHeight);
-export const helperIconSize = heightPercentage(80, helperIconContainerSize);
-export const stepIconSize = helperIconContainerSize;
-export const stepBarPadding = heightPercentage(5, stepBarHeight);
+export const sideBarWidth = widthPercentage(20)
+export const helperIconContainerSize = widthPercentage(70, sideBarWidth)
+export const helperIconSize = widthPercentage(70, helperIconContainerSize)
+export const stepIconSize = heightPercentage(100, heightPercentage(13.5))
 
-const fontColor = white2;
+const fontColor = white2
 
 export const svgStyles = {
   phase1: {
@@ -35,29 +34,49 @@ export const svgStyles = {
     height: helperIconSize,
     width: helperIconSize,
   },
-};
+  disabled: {
+    fill: gray400,
+    height: helperIconSize,
+    width: helperIconSize,
+  },
+  selected: {
+    fill: hotPink,
+    height: helperIconSize,
+    width: helperIconSize,
+  },
+}
 
 export const barColors = {
   phase1: {
     backgroundColor: PHASE_1_BAR,
-    borderBottomWidth: 0.5,
-    borderBottomColor: deepBlue,
   },
   phase2: {
     backgroundColor: PHASE_2_COMPLETE,
-    borderBottomWidth: 0.5,
-    borderBottomColor: SELF_ASSESSMENT,
   },
   phase3: {
     backgroundColor: PHASE_3_COMPLETE,
-    borderBottomWidth: 0.5,
-    borderBottomColor: VISION_CREATION,
   },
-};
+}
+
+export const sideBarStyles = {
+  sideBarContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    backgroundColor: 'blue',
+    maxWidth: '20%',
+    paddingBottom: '10%',
+    paddingTop: '5%',
+  },
+}
 
 export default StyleSheet.create({
   container: {
     flex: 1,
+  },
+  scrollView: {
+    flexGrow: 1,
   },
   center: {
     alignItems: 'center',
@@ -66,14 +85,12 @@ export default StyleSheet.create({
   },
   stepBarContainer: {
     flex: 1,
-    height: stepBarHeight,
-    maxHeight: stepBarHeight,
+    height: '13.5%',
+    maxHeight: '13.5%',
     flexDirection: 'row',
     backgroundColor: PHASE_1_BAR,
-    borderBottomWidth: 0.5,
-    borderBottomColor: deepBlue,
     paddingHorizontal: 2,
-    paddingVertical: stepBarPadding,
+    paddingVertical: '1%',
   },
   stepAudioButtonContainer: {
     flex: 1,
@@ -93,6 +110,7 @@ export default StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'flex-start',
+    marginTop: 4,
   },
   stepNumber: {
     ...iOSUIKit.subheadEmphasizedObject,
@@ -113,6 +131,7 @@ export default StyleSheet.create({
     borderRadius: 1000,
     alignItems: 'center',
     justifyContent: 'center',
+    maxHeight: helperIconContainerSize,
     flex: 1,
   },
   buttonImage: {
@@ -120,4 +139,7 @@ export default StyleSheet.create({
     width: stepIconSize,
     aspectRatio: 1 / 1,
   },
-});
+  snippetStyle: {
+    textAlign: 'justify',
+  },
+})

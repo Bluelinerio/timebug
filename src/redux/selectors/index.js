@@ -9,9 +9,9 @@ import {
   getCheckinState,
   getPersistState,
   getGoals,
+  getAppState,
 } from './rootReducer.selectors';
 import {
-  // UNDETERMINED,
   ANONYMOUS,
   AUTHENTICATING,
 } from '../../services/apollo/models';
@@ -327,6 +327,8 @@ const getGoalsStepsForGoalAndFormStateless = (
 
 const formHelpSlides = state => getCms(state).helpSlides || {};
 
+const getAppVersion = state => getAppState(state).version
+
 const selectors = {
   getCms,
   sortedSteps,
@@ -376,6 +378,7 @@ const selectors = {
   getGoalsStepsForGoalAndFormStateless,
   formHelpSlides,
   isStepCompleted,
+  getAppVersion,
 };
 
 export default selectors;

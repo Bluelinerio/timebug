@@ -76,27 +76,6 @@ function agregateReducer(
 import storage from 'redux-persist/lib/storage';
 import { persistReducer } from 'redux-persist';
 
-//export const UNDETERMIND = 0
-// stateReconciler: (
-//   inboundState: AgregateState,
-//   originalState: AgregateState
-//   //reducedState: AgregateState
-// ) => {
-//   if (inboundState === UNDETERMIND) {
-//     return UNDETERMIND
-//   }
-//   const state =
-//     !inboundState ||
-//     !inboundState.lastFetchDate ||
-//     originalState.requestCount > 0
-//       ? originalState
-//       : originalState.lastFetchDate &&
-//         originalState.lastFetchDate > inboundState.lastFetchDate
-//         ? originalState
-//         : inboundState
-//   return state
-// }
-
 const persistConfig = {
   key: AgregateReducerKeys.agregates,
   storage: storage,

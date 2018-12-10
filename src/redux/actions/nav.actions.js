@@ -78,6 +78,18 @@ export const goToPrototypeWorkbookScreen = (params: any) =>
     params,
   });
 
+export const goToV2WorkbookScreen = (params: any) =>
+  NavigationActions.navigate({
+    routeName: routes.root.V2Navigator_root,
+    params,
+  });
+
+export const goToRootNavigatorV2 = () =>
+  NavigationActions.navigate({
+    routeName: routes.version.TabNavigator,
+    params: { v2: true },
+  })
+
 /* End Prototype */
 
 export const popToTop = () => NavigationActions.popToTop();

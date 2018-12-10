@@ -31,6 +31,8 @@ import StartScreen from '../screens/StartScreen';
 import GoalScreen from '../screens/GoalScreen';
 import GoalStepScreen from '../screens/GoalStepScreen';
 import AppVersionScreen from '../screens/AppVersionSelectionScreen';
+import V2Navigator from '../screens/v.2.0'
+
 // TODO: Prototype to remove
 import PrototypeNavigator from '../screens/PrototypeScreen';
 
@@ -92,6 +94,9 @@ export const rootConfiguration = {
     },
     [routes.root.StartScreen]: {
       screen: StartScreen,
+    },
+    [routes.root.V2Navigator_root]: {
+      screen: V2Navigator,
     },
   },
   options: {
@@ -204,7 +209,7 @@ export const versionConfiguration = {
       screen: PrototypeNavigator,
       path: 'prototype',
     },
-    [routes.start.TabNavigator]: {
+    [routes.version.TabNavigator]: {
       screen: RootTabNavigator,
     },
   },

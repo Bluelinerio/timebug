@@ -24,8 +24,8 @@ const upperRowBlockWidth = widthPercentage(33.33, widthPercentage(100) - 32);
 export default StyleSheet.create({
   header: {
     flex: 1,
-    height: bannerHeight,
-    maxHeight: bannerHeight,
+    height: '10%',
+    maxHeight: '10%',
     flexDirection: 'column',
     backgroundColor: bannerColor,
     ...Platform.select({

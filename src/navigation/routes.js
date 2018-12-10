@@ -1,4 +1,3 @@
-// Keep this file just the way it is. Moving this inside the index or app file will create recusions/re-entries o import. It should be line a const file.
 export default {
   root: {
     HomeScreen: 'HomeScreen',
@@ -8,7 +7,7 @@ export default {
     initialRouteName: 'StartScreen',
     MarkdownScreen: 'MarkdownScreen',
     EmojiPickerScreen: 'EmojiPickerScreen',
-    // TODO: Prototype Data to remove
+    V2Navigator_root: 'V2Navigator_root',
   },
   step: {
     StepScreen: 'StepScreen',
@@ -58,6 +57,6 @@ export const protoRoutes = {
   v2: {
     V2_StepScreen: 'V2_StepScreen',
     V2_WorkbookScreen: 'V2_WorkbookScreen',
-    initialRouteName: 'V2_StepScreen',
+    initialRouteName: 'V2_WorkbookScreen',
   },
 };
