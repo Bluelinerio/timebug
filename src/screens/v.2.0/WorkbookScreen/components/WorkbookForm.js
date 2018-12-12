@@ -24,7 +24,7 @@ class WorkbookForm extends React.PureComponent<Props> {
     const { model, step, stepNumber, data, phase } = this.props
     return model ? (
       <ScrollView
-        style={styles.scrollView}
+        style={[styles.scrollView, styles.fullWidth]}
         contentContainerStyle={styles.scrollView}
       >
         <Form
@@ -35,6 +35,7 @@ class WorkbookForm extends React.PureComponent<Props> {
           formContainerStyle={styles.prototypeBackground}
           key={stepNumber}
           phase={phase}
+          disableAnswers
           extra={{
             step,
           }}

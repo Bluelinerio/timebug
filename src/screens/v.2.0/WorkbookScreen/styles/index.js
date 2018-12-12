@@ -224,6 +224,8 @@ export default StyleSheet.create({
     borderRadius: 6,
     paddingHorizontal: 10,
     paddingVertical: 8,
+    height: 40,
+    width: 60,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -251,4 +253,7 @@ export default StyleSheet.create({
   preFormButtonContainer: {
     flexGrow: 0,
   },
+  fullWidth: {
+    width: '100%',
+  }
 })
