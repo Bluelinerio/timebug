@@ -182,7 +182,7 @@ export default StyleSheet.create({
   workbookContent: {
     paddingHorizontal: '2.5%',
     paddingVertical: '1%',
-    paddingTop: '5%',
+    paddingTop: '10%',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -231,5 +231,24 @@ export default StyleSheet.create({
     fontFamily: 'Metropolis',
     color: white2,
     textAlign: 'center',
+  },
+  iconRow: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+  },
+  trackLengthContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  trackLength: {
+    ...iOSUIKit.title3EmphasizedObject,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
+    fontSize: 28,
+  },
+  preFormButtonContainer: {
+    flexGrow: 0,
   },
 })

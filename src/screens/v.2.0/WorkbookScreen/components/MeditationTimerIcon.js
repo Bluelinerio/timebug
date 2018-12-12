@@ -1,28 +1,28 @@
 import React                from 'react'
 import { TouchableOpacity } from 'react-native'
-import Icon from 'react-native-vector-icons/Ionicons'
+import Icon                 from 'react-native-vector-icons/Ionicons'
 import styles               from '../styles'
 
 export type Props = {
-  icons: {
-    [x: string]: string,
-  },
-  iconStyle: any,
-  videoStatus: string,
-  handle: () => any,
+  color: string,
+  icon: string,
+  onPress: () => any,
 }
 
 class MeditationTimerIcon extends React.PureComponent<Props> {
   _onPress = () => {
-    const { handle } = this.props
-    handle()
+    const { onPress } = this.props
+    onPress()
   }
 
   render() {
-    const { iconStyle, icons, videoStatus } = this.props
+    const { color, icon } = this.props
     return (
-      <TouchableOpacity style={[styles.helperButton]} onPress={this._onPress}>
-        <Icon name={icons[videoStatus]} {...iconStyle} />
+      <TouchableOpacity
+        style={[styles.icon, { backgroundColor: color }]}
+        onPress={this._onPress}
+      >
+        <Icon color={'#FAFAFA'} size={24} name={icon} />
       </TouchableOpacity>
     )
   }

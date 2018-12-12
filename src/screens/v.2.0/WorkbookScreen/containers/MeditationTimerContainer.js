@@ -11,7 +11,7 @@ export type StepContentButtonContainerProps = {
 }
 
 const mergeProps = (ownProps: StepContentButtonContainerProps): Props => {
-  const { color, videoStatus, handle } = ownProps
+  const { color, videoStatus, handle, currentPosition, totalLength } = ownProps
 
   const icons = {
     [status.READY]: 'ios-play',
@@ -28,6 +28,9 @@ const mergeProps = (ownProps: StepContentButtonContainerProps): Props => {
     color,
     icon,
     handle,
+    currentPosition,
+    totalLength,
+    isPending: videoStatus === status.PENDING,
   }
 }
 

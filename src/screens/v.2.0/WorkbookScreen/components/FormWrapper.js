@@ -36,7 +36,7 @@ class FormWrapper extends React.PureComponent<Props> {
         </Text>
         <View style={[styles.preFormContentContainer]}>
           <MeditationTimer file={audio} color={color} showIndicator={false} />
-          <View style={styles.container}>
+          <View style={[styles.container, styles.preFormButtonContainer]}>
             <TouchableOpacity
               style={[styles.preFormNextButton, { backgroundColor: color }]}
               onPress={this._onPress}

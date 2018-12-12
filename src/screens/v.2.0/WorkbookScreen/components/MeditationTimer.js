@@ -1,12 +1,16 @@
-import React                      from 'react'
-import { View, TouchableOpacity } from 'react-native'
-import Icon                       from 'react-native-vector-icons/Ionicons'
-import styles                     from '../styles'
+import React                 from 'react'
+import { View, Text }        from 'react-native'
+import styles                from '../styles'
+import MeditationTimerIcon   from './MeditationTimerIcon'
+import { minutesAndSeconds } from '../../../../utils/timerHelpers'
 
 export type Props = {
   color: string,
   icon: string,
   handle: () => any,
+  totalLength: number,
+  currentPosition: number,
+  isPending: boolean,
 }
 
 class MeditationTimer extends React.PureComponent<Props> {
@@ -16,15 +20,25 @@ class MeditationTimer extends React.PureComponent<Props> {
   }
 
   render() {
-    const { color, icon } = this.props
+    const { color, icon, totalLength, currentPosition, isPending } = this.props
+    const remaining = minutesAndSeconds(totalLength - currentPosition)
+
     return (
       <View style={[styles.container, styles.iconArea]}>
-        <TouchableOpacity
-          style={[styles.icon, { backgroundColor: color }]}
-          onPress={this._onPress}
-        >
-          <Icon color={'#FAFAFA'} size={26} name={icon} />
-        </TouchableOpacity>
+        <View style={[styles.container, styles.iconRow]}>
+          <MeditationTimerIcon
+            color={color}
+            icon={icon}
+            onPress={this._onPress}
+          />
+        </View>
+        <View style={[styles.container, styles.trackLengthContainer]}>
+          {!isPending && (
+            <Text style={[styles.text, styles.trackLength, { color }]}>{`${
+              remaining[0]
+            }:${remaining[1]}`}</Text>
+          )}
+        </View>
       </View>
     )
   }
