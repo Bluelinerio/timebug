@@ -25,12 +25,14 @@ const merge = ({
   stateForScreen,
   setScreen,
   step,
+  ...props
 }) => {
   const setScreenStatus = setScreen(screen)
   const data = stateForScreen(screen)
   const model = models[step]
   const formData = data[step]
   return {
+    ...props,
     data: formData,
     model,
     setScreenStatus,

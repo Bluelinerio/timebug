@@ -1,6 +1,7 @@
 import React                      from 'react'
 import { View, Text, ScrollView } from 'react-native'
-import Form                       from '../../../../forms/custom/components/Form'
+// import Form                       from '../../../../forms/custom/components/Form'
+import Form                       from '../containers/FormWrapperContainer'
 import styles                     from '../styles'
 import tron                       from 'reactotron-react-native'
 
@@ -9,6 +10,7 @@ type Props = {
   setScreenStatus: any => null,
   model: any,
   data: any,
+  phase: string,
 }
 
 class WorkbookForm extends React.PureComponent<Props> {
@@ -18,7 +20,7 @@ class WorkbookForm extends React.PureComponent<Props> {
     setScreenStatus({ [step]: data })
   }
   render() {
-    const { model, step, data } = this.props
+    const { model, step, data, phase } = this.props
     return model ? (
       <ScrollView
         style={styles.scrollView}
@@ -31,6 +33,7 @@ class WorkbookForm extends React.PureComponent<Props> {
           step={step}
           formContainerStyle={styles.prototypeBackground}
           key={step}
+          phase={phase}
         />
       </ScrollView>
     ) : (

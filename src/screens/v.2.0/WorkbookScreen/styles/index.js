@@ -191,4 +191,45 @@ export default StyleSheet.create({
     justifyContent: 'center',
     marginTop: 8,
   },
+  preFormHeader: {
+    ...iOSUIKit.title3EmphasizedObject,
+    textAlign: 'center',
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
+    lineHeight: 20 * 1.2,
+  },
+  preFormContentContainer: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  iconContainer: {
+    borderRadius: 100,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 20,
+  },
+  icon: {
+    width: 60,
+    height: 60,
+    padding: 20,
+    borderRadius: 100,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  iconArea: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  preFormNextButton: {
+    borderRadius: 6,
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  preFormNextButtonText: {
+    fontFamily: 'Metropolis',
+    color: white2,
+    textAlign: 'center',
+  },
 })
