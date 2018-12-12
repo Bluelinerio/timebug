@@ -21,6 +21,9 @@ export const stepIconSize = heightPercentage(100, heightPercentage(13.5))
 
 const fontColor = white2
 
+export const buttonWidth = widthPercentage(20)
+export const buttonHeight = heightPercentage(6.66)
+
 export const svgStyles = {
   phase1: {
     fill: deepBlue,
@@ -224,8 +227,8 @@ export default StyleSheet.create({
     borderRadius: 6,
     paddingHorizontal: 10,
     paddingVertical: 8,
-    height: 40,
-    width: 60,
+    height: buttonHeight,
+    width: buttonWidth,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -255,5 +258,5 @@ export default StyleSheet.create({
   },
   fullWidth: {
     width: '100%',
-  }
+  },
 })

@@ -8,6 +8,13 @@ import {
   gray400,
   greenA400,
 }                               from '../../../constants/colors'
+import {
+  widthPercentage,
+  heightPercentage,
+}                               from '../../../utils/viewportCalculation'
+
+export const buttonWidth = widthPercentage(20)
+export const buttonHeight = heightPercentage(6.66)
 
 export const formTextColor = blue900
 export const iconSize = 30
@@ -68,8 +75,8 @@ const formStyles = StyleSheet.create({
     borderRadius: 6,
     paddingHorizontal: 10,
     paddingVertical: 8,
-    height: 40,
-    width: 60,
+    height: buttonHeight,
+    width: buttonWidth,
     alignItems: 'center',
     justifyContent: 'center',
     ...Platform.select({
