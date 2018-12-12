@@ -21,7 +21,10 @@ import {
   SELF_ASSESSMENT,
   VISION_CREATION,
 }                                          from '../../../services/cms'
-import { goToV2WorkbookScreen }            from '../../../redux/actions/nav.actions'
+import {
+  goToV2WorkbookScreen,
+  goToAssignmentFlow,
+}                                          from '../../../redux/actions/nav.actions'
 import AppVersionHOC                       from '../../../HOC/AppVersionProvider'
 import ModelHOC                            from '../../../HOC/StepFormModelProvider'
 import { appVersions }                     from '../../../constants'
@@ -86,7 +89,6 @@ const merge = (
 ): OptionButtonProps => {
   const { user, selected } = stateProps
   const { stepColors, step, navigation, _version, formModel } = ownProps
-  const { login } = dispatchProps
 
   const { number, title, icon, snippet, audio } = step
 
@@ -127,7 +129,7 @@ const merge = (
               phase: translateCMSPhaseToStandard(step.type),
             })
           )
-        : login(),
+        : navigation.dispatch(goToAssignmentFlow({ step })),
     isV2: _version === appVersions.two,
     containerBackgroundColor: backgroundColorAtIndex(number - 1),
     textStyle: textColorAtIndex(number - 1),
