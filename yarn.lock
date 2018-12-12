@@ -7634,12 +7634,10 @@ react-native-keyboard-aware-scroll-view@0.4.2:
     prop-types "^15.6.0"
     react-native-iphone-x-helper "^1.0.1"
 
-react-native-linear-gradient@^2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.4.0.tgz#51d8ea12bb72a59bede9edc87b694b16b64cf435"
-  integrity sha512-h4nwmcjfeedSiHGBmQkMmCSIqm3196YtT1AtbAqE93jgAcpib0btvoCx8nBUemmhfm+CA5mFEh8p5biA4wFw/A==
-  dependencies:
-    prop-types "^15.5.10"
+react-native-linear-gradient@^2.5.3:
+  version "2.5.3"
+  resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.5.3.tgz#d90cf19a13fcccfa8bb32025ac40a15ae1b49e99"
+  integrity sha512-XdusrOXXlkI+yQpUW7YLeiq9cZiBwkvQX4XEkHPVrJ9H47gsKmdgBwObkZBzBQUP0dKK/Sg6aVpETEis4w43bQ==
 
 react-native-markdown-syntax@^0.1.0:
   version "0.1.0"
@@ -7757,13 +7755,13 @@ react-native-typography@^1.2.1:
   resolved "https://registry.yarnpkg.com/react-native-typography/-/react-native-typography-1.2.1.tgz#380c71a71e4a4774bd2ca81971aabc6ecf3cb195"
   integrity sha512-ySc6ofgFrYBdlUOCralP6kXvBjuGFTtp2WsYC35Nu4v383okB1i+uxEiSECSsiw4Qwe/OTA6esi/VWUYo4n4bQ==
 
-react-native-vector-icons@^4.4.0:
-  version "4.4.0"
-  resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-4.4.0.tgz#cdfc1cd86ab495b2a4926bcec8f08c155475cbf1"
-  integrity sha512-mh4iDaUn8SPXDwN8lARabYpFWCbVv1PYo3WOnW6Z0LZBS/mhv6v7lMwcizM3RAo9PdZhcklZQCNWB0HdH4APRg==
+react-native-vector-icons@^6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-6.1.0.tgz#770a3f8ced692d75deb3afbb9829195ceed1eedd"
+  integrity sha512-1GF5I4VWgwnzBtVfAKNgEiR5ziHi5QaKL381wwApMzuiFgIJMNt5XIChuKwKoaiB86s+P5iMcYWxYCyENL96lA==
   dependencies:
     lodash "^4.0.0"
-    prop-types "^15.5.10"
+    prop-types "^15.6.2"
     yargs "^8.0.2"
 
 react-native-vector-icons@~4.4.2:
