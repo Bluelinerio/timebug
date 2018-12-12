@@ -48,6 +48,7 @@ type Props = {
   value: any,
   onFinish: any => any,
   disableAnswers?: boolean,
+  CloseButton: () => React.node,
 }
 
 class Form extends React.PureComponent<Props, any> {
@@ -231,9 +232,15 @@ class Form extends React.PureComponent<Props, any> {
       value,
       disableAnswers,
     } = this.state
+    const { CloseButton = null } = this.props
     const currentField = this.model.fields[fieldIndex] || []
     return (
       <View style={styles.container}>
+        {
+          CloseButton
+            ? <CloseButton />
+            : null
+        }
         <View style={styles.formContainer}>
           <FormPicker
             field={currentField}
