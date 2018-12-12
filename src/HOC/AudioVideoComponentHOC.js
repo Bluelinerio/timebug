@@ -28,6 +28,7 @@ type AudioVideoComponentContainerStatus =
 
 type Props = {
   file: string,
+  showIndicator: boolean,
 }
 
 type State = {
@@ -125,6 +126,7 @@ const AudioVideoComponentHOC = (Component: React.ReactNode<any>) => {
     }
 
     handle = () => {
+      if (this.state.status === PENDING) return
       this.state.status === FAIL ? this.retry() : this.toggle()
     }
 
@@ -144,7 +146,8 @@ const AudioVideoComponentHOC = (Component: React.ReactNode<any>) => {
     }
 
     render = () => {
-      const { status, paused } = this.state
+      const { status, paused, totalLength, currentPosition } = this.state
+      const { showIndicator = true } = this.props
       const video =
         status === FAIL ? null : (
           <Video
@@ -164,11 +167,13 @@ const AudioVideoComponentHOC = (Component: React.ReactNode<any>) => {
       return (
         <React.Fragment>
           {video}
-          {status === PENDING ? (
+          {showIndicator && status === PENDING ? (
             <DefaultIndicator container={false} />
           ) : (
             <Component
               {...this.props}
+              totalLength={totalLength}
+              currentPosition={currentPosition}
               videoStatus={status}
               paused={paused}
               handle={this.handle}

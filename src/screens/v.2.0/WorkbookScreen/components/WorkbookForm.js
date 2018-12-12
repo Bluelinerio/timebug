@@ -1,26 +1,27 @@
-import React                      from 'react'
-import { View, Text, ScrollView } from 'react-native'
-// import Form                       from '../../../../forms/custom/components/Form'
-import Form                       from '../containers/FormWrapperContainer'
-import styles                     from '../styles'
-import tron                       from 'reactotron-react-native'
+import React                         from 'react'
+import { View, Text, ScrollView }    from 'react-native'
+import Form                          from '../containers/FormWrapperContainer'
+import styles                        from '../styles'
+import tron                          from 'reactotron-react-native'
+import type { Step }                 from '../../../../services/cms'
 
 type Props = {
-  step: string,
+  stepNumber: string,
   setScreenStatus: any => null,
   model: any,
   data: any,
   phase: string,
+  step: Step,
 }
 
 class WorkbookForm extends React.PureComponent<Props> {
   _onFinish = (data: any) => {
-    const { setScreenStatus, step } = this.props
+    const { setScreenStatus, stepNumber } = this.props
     tron.log(data)
-    setScreenStatus({ [step]: data })
+    setScreenStatus({ [stepNumber]: data })
   }
   render() {
-    const { model, step, data, phase } = this.props
+    const { model, step, stepNumber, data, phase } = this.props
     return model ? (
       <ScrollView
         style={styles.scrollView}
@@ -30,15 +31,18 @@ class WorkbookForm extends React.PureComponent<Props> {
           model={model}
           value={data}
           onFinish={this._onFinish}
-          step={step}
+          stepNumber={stepNumber}
           formContainerStyle={styles.prototypeBackground}
-          key={step}
+          key={stepNumber}
           phase={phase}
+          extra={{
+            step,
+          }}
         />
       </ScrollView>
     ) : (
       <View style={styles.scrollView}>
-        <Text>This step does not have a form yet</Text>
+        <Text>This stepNumber does not have a form yet</Text>
       </View>
     )
   }

@@ -1,16 +1,12 @@
-import React from 'react'
+import React                            from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
-import Icon from 'react-native-vector-icons/dist/Ionicons'
-import Form from '../../../../forms/custom/components/Form'
-import styles from '../styles'
+import Form                             from '../../../../forms/custom/components/Form'
+import MeditationTimer                  from '../containers/MeditationTimerContainer'
+import styles                           from '../styles'
 
 export type Props = {
-  audio:
-    | string
-    | {
-        uri: string,
-      },
   color: string,
+  extra: any,
 }
 
 class FormWrapper extends React.PureComponent<Props> {
@@ -28,8 +24,9 @@ class FormWrapper extends React.PureComponent<Props> {
   }
 
   render() {
-    const { color } = this.props
+    const { color, extra: { step } } = this.props
     const { beginForm } = this.state
+    const audio = (step && step.audio && step.audio.uri) || undefined
     return beginForm ? (
       <Form {...this.props} />
     ) : (
@@ -38,11 +35,7 @@ class FormWrapper extends React.PureComponent<Props> {
           The rocking chair meditation
         </Text>
         <View style={[styles.preFormContentContainer]}>
-          <View style={[styles.container, styles.iconArea]}>
-            <View style={[styles.icon, { backgroundColor: color }]}>
-              <Icon color={'#FAFAFA'} size={30} name={'ios-play'} />
-            </View>
-          </View>
+          <MeditationTimer file={audio} color={color} showIndicator={false} />
           <View style={styles.container}>
             <TouchableOpacity
               style={[styles.preFormNextButton, { backgroundColor: color }]}

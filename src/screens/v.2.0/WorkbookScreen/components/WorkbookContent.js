@@ -21,7 +21,7 @@ class WorkbookContent extends React.PureComponent<Props> {
     return (
       <View style={[styles.container, styles.workbookContent]}>
         {selectedSection === SectionValues.form ? (
-          <WorkbookForm step={`${step.number}`} phase={phase}/>
+          <WorkbookForm step={step} stepNumber={`${step.number}`} phase={phase}/>
         ) : (
           <WorkbookSnippet step={step} phase={phase} />
         )}
