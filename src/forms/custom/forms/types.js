@@ -16,4 +16,5 @@ export default {
   switch: 'switch',
   button: 'button',
   multipleSelect: 'multipleSelect',
+  connected: 'connected',
 };

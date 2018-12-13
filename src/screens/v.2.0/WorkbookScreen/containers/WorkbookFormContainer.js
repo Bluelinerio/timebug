@@ -21,7 +21,7 @@ const mapDispatchToProps = (dispatch: any) => {
 }
 
 const merge = ({
-  screen = 'someRandomScreen',
+  screen = 'workbookScreen_v2',
   stateForScreen,
   setScreen,
   stepNumber,

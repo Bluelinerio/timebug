@@ -27,6 +27,8 @@ const selectComponent = ({ type }: { type: string }) => {
     return List;
   case types.multipleSelect:
     return MultipleSelect;
+  default:
+    return () => null
   }
 };
 

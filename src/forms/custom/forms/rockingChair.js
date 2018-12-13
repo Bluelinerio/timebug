@@ -1,74 +1,92 @@
-import types, { actionTypes } from './types';
+import types from './types'
 
-export const GoalType = [
-  'Energy & Time',
-  'Achievement & Skills',
-  'Health Indicators',
-  'Internal Qualities',
+export const AreaOfLife = [
+  'Finances',
   'Environment',
-  'Material Outcomes',
-  'Relationship Quality',
-];
+  'Aims & Hobbies',
+  'Career',
+  'Relationships',
+  'Health & Wellness',
+  'Spirituality',
+]
 
 const form1 = {
   type: types.form,
   fields: {
     0: {
       type: types.label,
-      key: 'goalTitle',
+      key: 'form_1_start',
       content: {
         text: `Let's talk`,
       },
       options: {},
     },
     1: {
-      type: types.string,
-      key: 'randomKey',
+      type: types.list,
+      key: 'form_1_best_memories',
       content: {
-        text: 'Tell me something',
-        smallKey: 'something',
-        primary: true,
+        text:
+          'When imagining yourself at 90 years old, what were your best memories looking back in your life?',
+        smallKey: 'best_memories',
+        listText: 'Memories',
       },
       options: {
-        placeHolder: 'Some placeholder',
-        multiline: true,
-        default: '',
-      },
-    },
-    2: {
-      type: types.multipleSelect,
-      key: 'areaOfLifeMultiple',
-      content: {
-        text: 'Filler goal types',
-        smallKey: 'Type of goal',
-        listText: 'Type of goal',
-        items: GoalType.map((goal, index) => ({
-          value: goal,
-          text: goal,
-          id: `areaOfLifeMultiple_${index}`,
-        })),
-      },
-      options: {
+        childTypes: {
+          0: {
+            type: types.string,
+            key: 'stepToLifeGoal',
+            options: {
+              placeHolder: 'Best memories',
+              multiline: true,
+              default: '',
+            },
+          },
+        },
         default: [],
       },
     },
-    3: {
-      type: types.button,
+    2: {
+      type: types.connected,
+      key: 'form_1_memories_areas_of_life',
       content: {
-        text: 'Do you like candy?',
+        text: 'What area of life do each of these memories belong to?',
+        smallKey: 'memory_area_of_life',
       },
-      actions: [
-        {
-          text: 'Yes',
-          key: 'more_yes',
-          action: {
-            type: actionTypes.GO_TO,
-            payload: 1,
+      options: {
+        connect: {
+          with: [
+            {
+              formIndex: 1,
+              key: 'form_1_best_memories',
+              children: [
+                {
+                  key: 'stepToLifeGoal',
+                  text: 'Memory',
+                },
+              ],
+            },
+          ],
+          using: {
+            type: types.select,
+            key: 'form_1_memory_area',
+            content: {
+              smallKey: 'memory_area',
+              items: AreaOfLife.map(area => ({
+                value: area,
+                text: area,
+                id: area,
+              })),
+            },
+            options: {
+              default: AreaOfLife[0],
+            },
           },
+          each: true,
         },
-      ],
+        default: [],
+      },
     },
   },
-};
+}
 
-export default form1;
+export default form1
