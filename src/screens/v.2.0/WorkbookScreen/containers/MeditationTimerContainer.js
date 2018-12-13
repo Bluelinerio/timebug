@@ -31,6 +31,7 @@ const mergeProps = (ownProps: StepContentButtonContainerProps): Props => {
     currentPosition,
     totalLength,
     isPending: videoStatus === status.PENDING,
+    errored: videoStatus === status.FAIL,
   }
 }
 
