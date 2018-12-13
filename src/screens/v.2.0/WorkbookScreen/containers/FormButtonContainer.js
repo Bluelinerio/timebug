@@ -7,7 +7,7 @@ import { mapPhaseToStylesHelper }         from '../utils/colorsForStep'
 
 const merge = ({ phase, ...rest }: { phase: string }) => {
   const iconStyle: iconStyle = mapPhaseToStylesHelper(phase)
-  const icon = 'AudioError'
+  const icon = 'Form'
   const ownSection = SectionValues.form
   return {
     ...rest,

@@ -5,6 +5,15 @@ import type { Sections } from '../context/SectionContext'
 import WorkbookForm      from '../containers/WorkbookFormContainer'
 import WorkbookSnippet   from '../containers/WorkbookSnippetContainer'
 import type { Step }     from '../../../../services/cms'
+import {
+  PHASE_2_COMPLETE,
+  PHASE_3_COMPLETE,
+  deepBlue,
+  PHASE_1_BAR,
+  white2,
+  gray400,
+  hotPink,
+}                          from '../../../../constants/colors'
 
 type Props = {
   selectedSection: string,
@@ -17,7 +26,7 @@ class WorkbookContent extends React.PureComponent<Props> {
   render() {
     const { selectedSection, step } = this.props
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, padding:20, color:deepBlue }}>
         {selectedSection === SectionValues.form ? (
           <WorkbookForm step={`${step.number}`} />
         ) : (

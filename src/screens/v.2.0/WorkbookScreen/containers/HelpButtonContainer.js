@@ -40,7 +40,7 @@ const merge = (
   const { slides } = stateProps
   const { step, phase } = ownProps
   const hasHelpSlides = slides[step] && slides[step].length > 0 ? true : false
-  const icon = 'AudioError'
+  const icon = 'Help'
   const iconStyle: iconStyle = mapPhaseToStylesHelper(phase)
   return {
     ...dispatchProps,
