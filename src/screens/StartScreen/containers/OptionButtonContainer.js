@@ -3,8 +3,7 @@ import { connect }                         from 'react-redux'
 import { compose }                         from 'recompose'
 import { withNavigation }                  from 'react-navigation'
 import OptionButton, { OptionButtonProps } from '../components/OptionButton'
-import { openModal }                       from '../../../redux/actions/modal.actions'
-import { key as loginModalKey }            from '../../../components/LoginModal'
+import { loginWithFbButtonPressed }        from '../../../redux/actions'
 import styles                              from '../styles'
 import {
   getColorForStepAtIndex,
@@ -76,7 +75,7 @@ const mapStateToProps = (state: any): OptionButtonStateProps => {
 }
 
 const mapDispatchToProps = (dispatch: any): OptionButtonDispatchProps => ({
-  login: () => dispatch(openModal({ key: loginModalKey })),
+  login: (params) => dispatch(loginWithFbButtonPressed(params)),
 })
 
 const merge = (
@@ -127,7 +126,12 @@ const merge = (
               phase: translateCMSPhaseToStandard(step.type),
             })
           )
-        : login(),
+        : login({
+          step,
+          phase: translateCMSPhaseToStandard(step.type),
+          incompleteFormsIds: [FIRST_FORM_ID],
+          isV2: _version === appVersions.two,
+        }),
     isV2: _version === appVersions.two,
     containerBackgroundColor: backgroundColorAtIndex(number - 1),
     textStyle: textColorAtIndex(number - 1),
