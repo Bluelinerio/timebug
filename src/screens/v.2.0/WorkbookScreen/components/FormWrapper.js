@@ -1,9 +1,9 @@
-import React                            from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
-import Form                             from '../../../../forms/custom/components/Form'
-import MeditationTimer                  from '../containers/MeditationTimerContainer'
-import Icon from 'react-native-vector-icons/Ionicons'
-import styles, { backButtonColor }                           from '../styles'
+import React                       from 'react'
+import { TouchableOpacity }        from 'react-native'
+import Form                        from '../../../../forms/custom/components/Form'
+import Icon                        from 'react-native-vector-icons/Ionicons'
+import styles, { backButtonColor } from '../styles'
+import FormElements                from './formExtras'
 
 export type Props = {
   color: string,
@@ -39,29 +39,37 @@ class FormWrapper extends React.PureComponent<Props> {
     this.setState({ beginForm: !beginForm })
   }
 
+  _mapRequiredPropsToComponent = (requiredProps = []) => {
+    return requiredProps.reduce((allProps, prop) => {
+      const propValue = this.props[prop]
+      return {
+        ...allProps,
+        [prop]: propValue,
+      }
+    }, {})
+  }
+
+  _getStepComponent = ElementForStep => {
+    const { Component, requiredProps } = ElementForStep
+    return (
+      <Component
+        toggleForm={this._toggleForm}
+        {...this._mapRequiredPropsToComponent(requiredProps)}
+      />
+    )
+  }
+
   render() {
-    const { color, extra: { step } } = this.props
+    const { extra: { step } } = this.props
     const { beginForm } = this.state
-    const audio = (step && step.audio && step.audio.uri) || undefined
-    return beginForm ? (
-      <Form {...this.props} CloseButton={this.CloseButton} />
+    const ElementForStep = FormElements[step.number]
+    return !ElementForStep || beginForm ? (
+      <Form
+        {...this.props}
+        {...(ElementForStep ? { CloseButton: this.CloseButton } : {})}
+      />
     ) : (
-      <View style={styles.container}>
-        <Text style={[styles.preFormHeader, { color }]}>
-          The rocking chair meditation
-        </Text>
-        <View style={[styles.preFormContentContainer]}>
-          <MeditationTimer file={audio} color={color} showIndicator={false} />
-          <View style={[styles.container, styles.preFormButtonContainer]}>
-            <TouchableOpacity
-              style={[styles.preFormNextButton, { backgroundColor: color }]}
-              onPress={this._onPress}
-            >
-              <Text style={styles.preFormNextButtonText}> Next </Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </View>
+      this._getStepComponent(ElementForStep)
     )
   }
 }
