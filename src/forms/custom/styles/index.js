@@ -13,6 +13,8 @@ import {
   heightPercentage,
 }                               from '../../../utils/viewportCalculation'
 
+export const TEMPORARY_COLOR_FOR_BUTTONS = azure
+
 export const buttonWidth = widthPercentage(20)
 export const buttonHeight = heightPercentage(6.66)
 
@@ -110,8 +112,10 @@ const formStyles = StyleSheet.create({
     fontSize: 16,
     width: '80%',
   },
+  textInputLabelContainer: {
+    marginBottom: 16,
+  },
   textInputContainerStyle: {
-    marginTop: 16,
     borderWidth: 0.5,
     borderColor: '#cccccc',
     paddingVertical: 2,
@@ -146,6 +150,11 @@ const formStyles = StyleSheet.create({
       },
     }),
   },
+  listButtonContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   pickerContainer: {
     width: '80%',
     marginTop: 16,
@@ -167,17 +176,30 @@ const formStyles = StyleSheet.create({
     borderColor: '#cccccc',
   },
   listFormContainer: {
+    flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
     borderRadius: 6,
     width: '100%',
   },
   listElementContainer: {
     marginBottom: 8,
+    flex: 4,
     alignItems: 'center',
     width: '100%',
   },
   listButtonStyle: {
     maxWidth: 80,
+  },
+  listAddButtonStyle: {
+    width: buttonHeight,
+    height: buttonHeight,
+    borderWidth: 1,
+    borderColor: gray900,
+    backgroundColor: 'transparent',
+    borderRadius: buttonHeight / 2,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   listContentContainer: {
     marginTop: 16,

@@ -1,6 +1,7 @@
-import React from 'react';
-import { FormInput, Text } from 'react-native-elements';
-import styles from '../../styles';
+import React from 'react'
+import { View } from 'react-native'
+import { FormInput, Text } from 'react-native-elements'
+import styles from '../../styles'
 
 const TextInput = ({
   value,
@@ -32,7 +33,9 @@ const TextInput = ({
   },
 }) => (
   <React.Fragment>
-    <Text style={styles.textInputLabelStyle}>{content.text}</Text>
+    <View style={styles.textInputLabelContainer}>
+      <Text style={styles.textInputLabelStyle}>{content.text}</Text>
+    </View>
     <FormInput
       containerStyle={styles.textInputContainerStyle}
       inputStyle={styles.textInputStyle}
@@ -42,6 +45,6 @@ const TextInput = ({
       multiline={options.multiline}
     />
   </React.Fragment>
-);
+)
 
-export default TextInput;
+export default TextInput
