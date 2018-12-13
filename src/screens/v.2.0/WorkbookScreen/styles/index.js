@@ -215,8 +215,8 @@ export default StyleSheet.create({
     padding: 20,
   },
   icon: {
-    width: 60,
-    height: 60,
+    width: 100,
+    height: 100,
     padding: 20,
     borderRadius: 100,
     alignItems: 'center',
