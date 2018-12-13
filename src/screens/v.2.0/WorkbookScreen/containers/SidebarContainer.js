@@ -1,9 +1,9 @@
-import { compose, mapProps } from 'recompose'
-import SideBar from '../components/Sidebar'
-import { mapBarStylesHelper } from '../utils/colorsForStep'
+import { compose, mapProps }           from 'recompose'
+import SideBar                         from '../components/Sidebar'
+import { mapBarStylesHelper }          from '../utils/colorsForStep'
 import { translateCMSPhaseToStandard } from '../../../../services/cms'
-import type { Step } from '../../../../services/cms'
-import type { Props as StepBarProps } from '../components/StepBar'
+import type { Step }                   from '../../../../services/cms'
+import type { Props as StepBarProps }  from '../components/StepBar'
 
 const merge = ({ step }: { step: Step }): StepBarProps => {
   const { type, audio, number } = step

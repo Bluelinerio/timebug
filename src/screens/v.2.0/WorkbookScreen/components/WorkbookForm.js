@@ -1,8 +1,8 @@
-import React from 'react'
+import React                      from 'react'
 import { View, Text, ScrollView } from 'react-native'
-import Form from '../containers/FormWrapperContainer'
-import styles from '../styles'
-import type { Step } from '../../../../services/cms'
+import Form                       from '../containers/FormWrapperContainer'
+import styles                     from '../styles'
+import type { Step }              from '../../../../services/cms'
 
 type Props = {
   stepNumber: string,
