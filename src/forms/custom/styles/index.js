@@ -33,7 +33,7 @@ const formStyles = StyleSheet.create({
   helpButton: {
     width: 40,
     height: 40,
-    borderRadius: 100,
+    borderRadius: 20,
     backgroundColor: azure,
     alignItems: 'center',
     justifyContent: 'center',

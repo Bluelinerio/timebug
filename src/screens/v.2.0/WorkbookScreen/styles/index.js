@@ -155,7 +155,7 @@ export default StyleSheet.create({
   helperButton: {
     height: helperIconContainerSize,
     width: helperIconContainerSize,
-    borderRadius: 1000,
+    borderRadius: helperIconContainerSize / 2,
     alignItems: 'center',
     justifyContent: 'center',
     maxHeight: helperIconContainerSize,
@@ -208,17 +208,11 @@ export default StyleSheet.create({
     flex: 1,
     alignItems: 'center',
   },
-  iconContainer: {
-    borderRadius: 100,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 20,
-  },
   icon: {
     width: 100,
     height: 100,
     padding: 20,
-    borderRadius: 100,
+    borderRadius: 50,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -263,7 +257,7 @@ export default StyleSheet.create({
     width: '100%',
   },
   formBackButton: {
-    borderRadius: 1000,
+    borderRadius: 15,
     width: 30,
     height: 30,
     borderColor: gray600,
