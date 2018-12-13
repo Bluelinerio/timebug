@@ -7,6 +7,7 @@ import {
   white2,
   gray400,
   hotPink,
+  gray600,
 }                     from '../../../../constants/colors'
 import { iOSUIKit }   from 'react-native-typography'
 import {
@@ -23,6 +24,8 @@ const fontColor = white2
 
 export const buttonWidth = widthPercentage(20)
 export const buttonHeight = heightPercentage(6.66)
+
+export const backButtonColor = gray600
 
 export const svgStyles = {
   phase1: {
@@ -258,5 +261,15 @@ export default StyleSheet.create({
   },
   fullWidth: {
     width: '100%',
+  },
+  formBackButton: {
+    borderRadius: 1000,
+    width: 30,
+    height: 30,
+    borderColor: gray600,
+    borderWidth: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignSelf: 'flex-start',
   },
 })

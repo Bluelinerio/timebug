@@ -2,7 +2,8 @@ import React                            from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import Form                             from '../../../../forms/custom/components/Form'
 import MeditationTimer                  from '../containers/MeditationTimerContainer'
-import styles                           from '../styles'
+import Icon from 'react-native-vector-icons/Ionicons'
+import styles, { backButtonColor }                           from '../styles'
 
 export type Props = {
   color: string,
@@ -12,6 +13,21 @@ export type Props = {
 class FormWrapper extends React.PureComponent<Props> {
   state = {
     beginForm: false,
+  }
+
+  _onClosePress = () => {
+    this._toggleForm()
+  }
+
+  CloseButton = () => {
+    return (
+      <TouchableOpacity
+        style={styles.formBackButton}
+        onPress={this._onClosePress}
+      >
+        <Icon name={'ios-arrow-round-back'} size={24} color={backButtonColor} />
+      </TouchableOpacity>
+    )
   }
 
   _onPress = () => {
@@ -28,7 +44,7 @@ class FormWrapper extends React.PureComponent<Props> {
     const { beginForm } = this.state
     const audio = (step && step.audio && step.audio.uri) || undefined
     return beginForm ? (
-      <Form {...this.props} />
+      <Form {...this.props} CloseButton={this.CloseButton} />
     ) : (
       <View style={styles.container}>
         <Text style={[styles.preFormHeader, { color }]}>

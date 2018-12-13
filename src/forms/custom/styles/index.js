@@ -49,7 +49,7 @@ const formStyles = StyleSheet.create({
     flex: 5,
     padding: 16,
     paddingTop: 10,
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
   },
   formButtonContainer: {
