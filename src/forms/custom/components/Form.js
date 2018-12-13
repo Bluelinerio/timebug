@@ -236,11 +236,11 @@ class Form extends React.PureComponent<Props, any> {
     const currentField = this.model.fields[fieldIndex] || []
     return (
       <View style={styles.container}>
-        {
+        {/* {
           CloseButton
             ? <CloseButton />
             : null
-        }
+        } */}
         <View style={styles.formContainer}>
           <FormPicker
             field={currentField}
