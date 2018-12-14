@@ -18,7 +18,7 @@ const form1 = {
       type: types.label,
       key: 'form_1_start',
       content: {
-        text: `Let's talk`,
+        text: `Form 1`,
       },
       options: {},
     },
@@ -28,7 +28,7 @@ const form1 = {
       content: {
         text:
           'When imagining yourself at 90 years old, what were your best memories looking back in your life?',
-        smallKey: 'best_memories',
+        smallKey: 'Memories',
         listText: 'Memories',
       },
       options: {

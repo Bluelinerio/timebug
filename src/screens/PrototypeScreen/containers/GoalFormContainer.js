@@ -1,3 +1,6 @@
+/**
+ * TODO: Adapt to new form keys
+ */
 import { connect } from 'react-redux';
 import GoalForm from '../components/GoalForm';
 import { changeUI } from '../../../redux/actions/ui.actions';

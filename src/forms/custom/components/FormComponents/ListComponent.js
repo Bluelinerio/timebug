@@ -70,20 +70,38 @@ class ListComponent extends React.PureComponent<Props, State> {
   constructor(props) {
     super(props)
     const currentValue = this._buildValue(props)
+    const indexesMap = this._mapIndexesToKeys(props.field.options)
     this.state = {
       currentValue,
+      indexesMap,
     }
+  }
+
+  _mapIndexesToKeys = (options: { childTypes: any }) => {
+    const { childTypes } = options
+    const map = Object.keys(childTypes).reduce((m, k) => {
+      const field = childTypes[k]
+      const { key } = field
+      return {
+        ...m,
+        [k]: key,
+      }
+    }, {})
+    return map
   }
 
   _buildValue = props => {
     const { field: { options } } = props
     const { childTypes } = options
-    const defaultValue = Object.keys(childTypes).reduce((value, key) => {
-      const child = childTypes[key]
+    const defaultValue = Object.keys(childTypes).reduce((value, k) => {
+      const child = childTypes[k]
+      const { key } = child
       return {
         ...value,
         [key]: {
           key,
+          model: child,
+          index: k,
           value: child.options ? child.options.default : undefined,
         },
       }
@@ -91,10 +109,14 @@ class ListComponent extends React.PureComponent<Props, State> {
     return defaultValue
   }
 
-  _onChange = (value: any, element: string) => {
+  _onChange = (value: any, key: string, index: number) => {
     const { currentValue } = this.state
+    const valueForKey = currentValue[key] || {}
     this.setState({
-      currentValue: { ...currentValue, [element]: { value, key: element } },
+      currentValue: {
+        ...currentValue,
+        [key]: { ...valueForKey, value, key, index },
+      },
     })
   }
 
@@ -122,12 +144,11 @@ class ListComponent extends React.PureComponent<Props, State> {
       Alert.alert('Input Error', error)
       return
     }
-    const valueToSave = Object.keys(currentValue).reduce((prev, key) => {
-      const _model = childTypes[key]
+    const valueToSave = Object.values(childTypes).reduce((prev, model) => {
       return {
-        [key]: {
-          ...currentValue[key],
-          _model,
+        [model.key]: {
+          ...currentValue[model.key],
+          _model: model,
           _id: uuid(),
         },
       }
@@ -145,7 +166,7 @@ class ListComponent extends React.PureComponent<Props, State> {
   _onDeletePress = () => {}
 
   render() {
-    const { currentValue } = this.state
+    const { currentValue, indexesMap } = this.state
     const { field: { content, options }, value } = this.props
     const { childTypes } = options
     return (
@@ -156,13 +177,15 @@ class ListComponent extends React.PureComponent<Props, State> {
             {childTypes &&
               Object.keys(childTypes).map(key => {
                 const field = childTypes[key]
-                const inValue = currentValue[key] || {}
+                const inValue = currentValue[indexesMap[key]] || {}
                 return (
                   <FormPicker
                     key={field.key}
                     field={field}
                     value={inValue.value}
-                    onChange={value => this._onChange(value, key)}
+                    onChange={value =>
+                      this._onChange(value, indexesMap[key], key)
+                    }
                   />
                 )
               })}

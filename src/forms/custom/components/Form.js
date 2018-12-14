@@ -58,7 +58,7 @@ class Form extends React.PureComponent<Props, any> {
   constructor(props) {
     super(props)
     this.model = props.model
-    const indexesMap = this._mapKeysToIndexes(this.model)
+    const indexesMap = this._mapIndexesToKeys(this.model)
     const storableValue = props.value || []
     const formIteration = storableValue.length
     const fieldIndex = 0 //start from the beginning of the model
@@ -89,7 +89,7 @@ class Form extends React.PureComponent<Props, any> {
       : {}
   }
 
-  _mapKeysToIndexes = (model: any) => {
+  _mapIndexesToKeys = (model: any) => {
     const { fields } = model
     const map = Object.keys(fields).reduce((m, k) => {
       const field = fields[k]

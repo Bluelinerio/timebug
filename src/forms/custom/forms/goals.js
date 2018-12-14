@@ -1,5 +1,5 @@
-import types, { actionTypes, answerTypes } from './types';
-import { frequencies } from '../../../services/checkins';
+import types, { actionTypes, answerTypes } from './types'
+import {                                   frequencies } from '../../../services/checkins'
 
 export const AreaOfLife = [
   'Finances',
@@ -9,7 +9,7 @@ export const AreaOfLife = [
   'Relationships',
   'Health & Wellness',
   'Spirituality',
-];
+]
 
 export const GoalType = [
   'Energy & Time',
@@ -19,10 +19,10 @@ export const GoalType = [
   'Environment',
   'Material Outcomes',
   'Relationship Quality',
-];
+]
 
 export const translateFrequencies = (frequency: string) =>
-  frequencies[frequency];
+  frequencies[frequency]
 
 export const timeToCompleteGoal = [
   'A day',
@@ -30,14 +30,14 @@ export const timeToCompleteGoal = [
   'A month',
   '6 months',
   'A year',
-];
+]
 
 export const STATUS = {
   PENDING: 'PENDING',
   COMPLETED: 'COMPLETED',
   ARCHIVED: 'ARCHIVED',
   DELETED: 'DELETED',
-};
+}
 
 const form5 = {
   type: types.form,
@@ -125,7 +125,7 @@ const form5 = {
         childTypes: {
           0: {
             type: types.string,
-            key: 'stepToLifeGoal',
+            key: 'form_5_steps.step_to_life_goal',
             options: {
               placeHolder: 'Step',
             },
@@ -151,6 +151,6 @@ const form5 = {
       ],
     },
   },
-};
+}
 
-export default form5;
+export default form5
