@@ -1,9 +1,9 @@
-export const passiveTypes = ['label', 'button'];
+export const passiveTypes = ['label', 'button']
 
 export const actionTypes = {
   END: 'END',
   GO_TO: 'GO_TO',
-};
+}
 
 export default {
   form: 'form',
@@ -17,4 +17,9 @@ export default {
   button: 'button',
   multipleSelect: 'multipleSelect',
   connected: 'connected',
-};
+}
+
+export const answerTypes = {
+  single: 'single',
+  multiple: 'multiple',
+}

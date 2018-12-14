@@ -1,13 +1,16 @@
 // @flow
-import React                            from 'react'
-import { View, TouchableOpacity, Text } from 'react-native'
-import styles, { iconSize, iconColor }  from '../styles'
-import moment                           from 'moment'
-import FormPicker                       from './FormComponents/FormPicker'
-import { actionTypes, passiveTypes }    from '../forms/types'
-import Icon                             from 'react-native-vector-icons/Ionicons'
-import uuid                             from 'uuid/v4'
-import Answers                          from './FormAnswers'
+import React                                      from 'react'
+import { View, TouchableOpacity, Text }           from 'react-native'
+import styles, { iconSize, iconColor }            from '../styles'
+import moment                                     from 'moment'
+import FormPicker                                 from './FormComponents/FormPicker'
+import { actionTypes, passiveTypes, answerTypes } from '../forms/types'
+import Icon                                       from 'react-native-vector-icons/Ionicons'
+import uuid                                       from 'uuid/v4'
+import Answers                                    from './FormAnswers'
+import Display                                    from './debug/DisplayComponent'
+
+const DEBUG_DISPLAY = false
 
 /* eslint-disable-next-line */
 const FormButton = ({
@@ -55,14 +58,16 @@ class Form extends React.PureComponent<Props, any> {
   constructor(props) {
     super(props)
     this.model = props.model
+    const indexesMap = this._mapKeysToIndexes(this.model)
     const storableValue = props.value || []
     const formIteration = storableValue.length
-    const fieldIndex = 0
-    const value =
-      props.value && props.value[formIteration]
-        ? props.value[formIteration]
-        : {}
-    const currentElementValue = value[fieldIndex] || null
+    const fieldIndex = 0 //start from the beginning of the model
+    const value = this._getValueFromAnswerType(
+      props,
+      props.model,
+      formIteration
+    )
+    const currentElementValue = value[indexesMap[fieldIndex]] || null
     this.state = {
       value,
       fieldIndex,
@@ -72,51 +77,60 @@ class Form extends React.PureComponent<Props, any> {
       isFormFinished: false,
       disableAnswers: props.disableAnswers || false,
       numberOfFields: Object.keys(this.model.fields).length,
+      indexesMap,
     }
   }
 
+  _getValueFromAnswerType = (props: any, model: any, formIteration: number) => {
+    if (model.answer === answerTypes.single)
+      return props.value && props.value[0] ? props.value[0] : {}
+    return props.value && props.value[formIteration]
+      ? props.value[formIteration]
+      : {}
+  }
+
+  _mapKeysToIndexes = (model: any) => {
+    const { fields } = model
+    const map = Object.keys(fields).reduce((m, k) => {
+      const field = fields[k]
+      if (passiveTypes.find(el => el === field.type)) return m
+      const { key } = field
+      return {
+        ...m,
+        [k]: key,
+      }
+    }, {})
+    return map
+  }
+
   _getNewValue = () => {
-    const { value, currentElementValue, fieldIndex } = this.state
+    const { value, indexesMap, currentElementValue, fieldIndex } = this.state
     const currentField = this.model.fields[fieldIndex]
     const defaultValue = currentField.options.default
-    const newField = value[fieldIndex]
+    const newField = value[indexesMap[fieldIndex]]
       ? {
-        ...value[fieldIndex],
+        ...value[indexesMap[fieldIndex]],
         value: currentElementValue || defaultValue,
+        key: currentField.key,
+        index: fieldIndex,
         timestamp: moment().format(),
+        model: currentField,
       }
       : {
-        ...value[fieldIndex],
+        ...value[indexesMap[fieldIndex]],
         type: currentField.type,
         value: currentElementValue || defaultValue,
+        key: currentField.key,
+        index: fieldIndex,
         timestamp: moment().format(),
+        model: currentField,
         _id: uuid(),
       }
     const newValue = {
       ...value,
-      [fieldIndex]: newField,
+      [currentField.key]: newField,
     }
     return newValue
-  }
-
-  _goToNextField = () => {
-    const { fieldIndex, value } = this.state
-    this.setState({
-      fieldIndex: fieldIndex + 1,
-      currentElementValue: value[fieldIndex + 1]
-        ? value[fieldIndex + 1].value
-        : null,
-    })
-  }
-
-  _goToPreviousField = () => {
-    const { fieldIndex, value } = this.state
-    this.setState({
-      fieldIndex: fieldIndex - 1,
-      currentElementValue: value[fieldIndex - 1]
-        ? value[fieldIndex - 1].value
-        : null,
-    })
   }
 
   _goToNextForm = (form: string) => {
@@ -129,12 +143,30 @@ class Form extends React.PureComponent<Props, any> {
   }
 
   _onFinishedForm = () => {
-    const { storableValue, value } = this.state
+    const { storableValue, value, fieldIndex } = this.state
     const { onFinish } = this.props
+
+    const currentField = this.model.fields[fieldIndex]
+
+    const newValue = !passiveTypes.find(el => el === currentField.type)
+      ? this._getNewValue()
+      : value
+
+    const newStorableValue =
+      this.model.answer === answerTypes.single
+        ? [
+          {
+            ...newValue,
+            _id: uuid(),
+          },
+        ]
+        : [...storableValue, { ...newValue, _id: uuid() }]
+
     this.setState(
       {
+        value: newValue,
         isFormFinished: true,
-        storableValue: [...storableValue, { ...value, _id: uuid() }],
+        storableValue: newStorableValue,
       },
       () => {
         onFinish(this.state.storableValue)
@@ -143,12 +175,12 @@ class Form extends React.PureComponent<Props, any> {
   }
 
   _onPress = () => {
-    const { fieldIndex, value } = this.state
+    const { fieldIndex, indexesMap, value } = this.state
     const currentField = this.model.fields[fieldIndex]
     let newState = {
       fieldIndex: fieldIndex + 1,
-      currentElementValue: value[fieldIndex + 1]
-        ? value[fieldIndex + 1].value
+      currentElementValue: value[indexesMap[fieldIndex + 1]]
+        ? value[indexesMap[fieldIndex + 1]].value
         : null,
     }
     if (!passiveTypes.find(el => el === currentField.type)) {
@@ -206,12 +238,12 @@ class Form extends React.PureComponent<Props, any> {
   }
 
   _onBackPress = () => {
-    const { fieldIndex, value } = this.state
+    const { fieldIndex, indexesMap, value } = this.state
     const currentField = this.model.fields[fieldIndex]
     let newState = {
       fieldIndex: fieldIndex - 1,
-      currentElementValue: value[fieldIndex - 1]
-        ? value[fieldIndex - 1].value
+      currentElementValue: value[indexesMap[fieldIndex - 1]]
+        ? value[indexesMap[fieldIndex - 1]].value
         : null,
     }
     if (!passiveTypes.find(el => el === currentField.type)) {
@@ -236,11 +268,7 @@ class Form extends React.PureComponent<Props, any> {
     const currentField = this.model.fields[fieldIndex] || []
     return (
       <View style={styles.container}>
-        {
-          CloseButton
-            ? <CloseButton />
-            : null
-        }
+        {CloseButton ? <CloseButton /> : null}
         <View style={styles.formContainer}>
           <FormPicker
             field={currentField}
@@ -249,7 +277,9 @@ class Form extends React.PureComponent<Props, any> {
             buttonHandler={this._buttonHandler}
           />
         </View>
-        {!disableAnswers && <Answers value={value} model={this.model} />}
+        {(!disableAnswers || DEBUG_DISPLAY) && (
+          <Answers value={value} model={this.model} />
+        )}
         <View
           style={
             fieldIndex > 0
@@ -278,6 +308,9 @@ class Form extends React.PureComponent<Props, any> {
             text={this._getButtonText()}
           />
         </View>
+        {DEBUG_DISPLAY && (
+          <Display storable={this.state.storableValue} model={this.model} />
+        )}
       </View>
     )
   }
