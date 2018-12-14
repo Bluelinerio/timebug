@@ -14,8 +14,8 @@ export const setUserAnonymous = (): UserStateAction => ({
   payload: ANONYMOUS,
 });
 
-export const loginWithFbButtonPressed = () =>
-  action(LOGIN_WITH_FB_BUTTON_PRESSED);
+export const loginWithFbButtonPressed = (params) =>
+  action(LOGIN_WITH_FB_BUTTON_PRESSED, params);
 // LOGOUT
 export function logoutButtonPressed() {
   return {
