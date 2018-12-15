@@ -9,3 +9,23 @@ export const LifeStages = [
   'Mature Adulthood (50-80 yrs old)',
   'Late Adulthood (80+ yrs old)',
 ]
+
+export const Emotions = [
+  /*positive*/
+
+  'Joy',
+  'Gratefulness',
+  'Hope',
+  'Love',
+  'Peace',
+  'Excitement',
+  'Pride',
+  /*negative*/
+  'Sadness / Depression',
+  'Anxiousness',
+  'Fear',
+  'Shame / Guilt',
+  'Frustration',
+  'Confusion',
+  'Anger',
+]
