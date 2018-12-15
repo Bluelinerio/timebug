@@ -35,7 +35,7 @@ const form1 = {
         childTypes: {
           0: {
             type: types.string,
-            key: 'stepToLifeGoal',
+            key: 'form_1_best_memories.memory',
             options: {
               placeHolder: 'Best memories',
               multiline: true,
@@ -46,47 +46,41 @@ const form1 = {
         default: [],
       },
     },
-    // 2: {
-    //   type: types.connected,
-    //   key: 'form_1_memories_areas_of_life',
-    //   content: {
-    //     text: 'What area of life do each of these memories belong to?',
-    //     smallKey: 'memory_area_of_life',
-    //   },
-    //   options: {
-    //     connect: {
-    //       with: [
-    //         {
-    //           formIndex: 1,
-    //           key: 'form_1_best_memories',
-    //           children: [
-    //             {
-    //               key: 'stepToLifeGoal',
-    //               text: 'Memory',
-    //             },
-    //           ],
-    //         },
-    //       ],
-    //       using: {
-    //         type: types.select,
-    //         key: 'form_1_memory_area',
-    //         content: {
-    //           smallKey: 'memory_area',
-    //           items: AreaOfLife.map(area => ({
-    //             value: area,
-    //             text: area,
-    //             id: area,
-    //           })),
-    //         },
-    //         options: {
-    //           default: AreaOfLife[0],
-    //         },
-    //       },
-    //       each: true,
-    //     },
-    //     default: [],
-    //   },
-    // },
+    2: {
+      type: types.connected,
+      key: 'form_1_memories_areas_of_life',
+      content: {
+        text: 'What area of life do each of these memories belong to?',
+        smallKey: 'Area of life',
+      },
+      options: {
+        connect: {
+          withElements: {
+            text: 'Memory',
+            key: 'form_1_best_memories',
+            childrenKeys: [
+              'form_1_best_memories.memory',
+            ],
+          },
+          using: {
+            type: types.select,
+            key: 'form_1_memory_area',
+            content: {
+              smallKey: 'area',
+              items: AreaOfLife.map(area => ({
+                value: area,
+                text: area,
+              })),
+            },
+            options: {
+              default: AreaOfLife[0],
+            },
+          },
+          each: true,
+        },
+        default: [],
+      },
+    },
   },
 }
 

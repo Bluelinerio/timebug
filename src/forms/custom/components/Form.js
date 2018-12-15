@@ -275,6 +275,8 @@ class Form extends React.PureComponent<Props, any> {
             onChange={this._onChange}
             value={currentElementValue}
             buttonHandler={this._buttonHandler}
+            currentFormValue={value}
+            allFields={this.model.fields}
           />
         </View>
         {(!disableAnswers || DEBUG_DISPLAY) && (

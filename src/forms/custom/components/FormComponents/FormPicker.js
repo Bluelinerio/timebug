@@ -6,11 +6,13 @@ import types from '../../forms/types'
 import Select from './SelectComponent'
 import List from './ListComponent'
 import MultipleSelect from './MultipleSelectComponent'
+import { connect } from './ConnectedComponentContainer'
 
 type Props = {
   onChange: () => any,
   value: any,
   field: any,
+  buttonHandler: () => any,
 }
 
 const SwitchComponent = ({ field, props }: { type: string }) => {
@@ -40,4 +42,4 @@ class FormPicker extends React.PureComponent<Props> {
   }
 }
 
-export default FormPicker
+export default connect(FormPicker)
