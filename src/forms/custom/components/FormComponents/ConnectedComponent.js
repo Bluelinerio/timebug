@@ -1,10 +1,10 @@
-import React                        from 'react'
-import { View, Text }               from 'react-native'
-import tron                         from 'reactotron-react-native'
-import types                        from '../../forms/types'
-import ConnectedSelect              from './Connected/Select'
-import { connectedComponentStyles } from '../../styles'
-import uuid                         from 'uuid/v4'
+import React from 'react'
+import { View, Text } from 'react-native'
+import tron from 'reactotron-react-native'
+import types from '../../forms/types'
+import ConnectedSelect from './Connected/Select'
+import styles, { connectedComponentStyles } from '../../styles'
+import uuid from 'uuid/v4'
 
 type Props = {
   onChange: () => any,
@@ -14,6 +14,7 @@ type Props = {
   currentFormValue: any,
   allFields: any,
   component: any,
+  header: string,
   dataElement: {
     text: string,
     value: Array<any>,
@@ -23,7 +24,6 @@ type Props = {
 
 const SwitchComponent = (props: { component: any, props: any }) => {
   const { component: { type } } = props
-  tron.log(props)
   switch (type) {
   case types.string:
     return null
@@ -92,8 +92,10 @@ class ConnectedComponent extends React.PureComponent<Props> {
 
   render() {
     const { currentValue, component } = this.state
+    const { header } = this.props
     return (
       <React.Fragment>
+        <Text style={styles.textInputLabelStyle}>{header}</Text>
         {currentValue &&
           currentValue.map(val => {
             return (

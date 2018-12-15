@@ -155,7 +155,7 @@ const _mapKeysToIndexes = (fields: any) => {
 const merge = (props: Props) => {
   const { field, currentFormValue, allFields: fields } = props
   const indexesMap = _mapKeysToIndexes(fields)
-  const { options } = field
+  const { options, content: { text } } = field
   const { connect } = options
   const { withElements, using } = connect
   const dataElement = _buildSingleElement({
@@ -168,6 +168,7 @@ const merge = (props: Props) => {
     ...props,
     component: using,
     dataElement,
+    header: text,
   }
 }
 
