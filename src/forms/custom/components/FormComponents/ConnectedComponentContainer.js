@@ -2,10 +2,10 @@
  * TODO: replace with a context
  */
 // @flow
-import React from 'react'
+import React                   from 'react'
 import types, { passiveTypes } from '../../forms/types'
-import { mapProps } from 'recompose'
-import ConnectedComponent from './ConnectedComponent'
+import { mapProps }            from 'recompose'
+import ConnectedComponent      from './ConnectedComponent'
 
 type Props = {
   onChange: () => any,
@@ -16,51 +16,17 @@ type Props = {
   allFields: any,
 }
 
-// const _extractListData = (
-//   value: Array<any>,
-//   { childrenKeys }: { childrenKeys: any },
-//   listField: { options: { childTypes: any } }
-// ) => {
-//   const { options: { childTypes } } = listField
-//   const indexesMap = _mapKeysToIndexes(childTypes)
-//   const newVal = value.map(val => {
-//     const result = childrenKeys.reduce((object, childKey) => {
-//       const model = childTypes[indexesMap[childKey]]
-//       const valueElement = val[childKey] || {}
-//       const value = valueElement.value || null
-
-//       return {
-//         ...object,
-//         [childKey]: {
-//           value,
-//           model,
-//           key: childKey,
-//           index: indexesMap[childKey],
-//         },
-//       }
-//     }, {})
-
-//     return result
-//   })
-
-//   return newVal
-// }
-
 const _extractListDataArray = (
   value: Array<any>,
-  { childrenKeys }: { childrenKeys: any },
+  { childrenKeys }: { childrenKeys: any }
 ) => {
-
   const newVal = value.map(val => {
     const { _id } = val
     const values = childrenKeys.reduce((allValues, childKey) => {
       const valueElement = val[childKey] || {}
       const value = valueElement.value || null
 
-      return [
-        ...allValues,
-        value,
-      ]
+      return [...allValues, value]
     }, [])
 
     return {
@@ -72,42 +38,18 @@ const _extractListDataArray = (
   return newVal
 }
 
-// const _buildElements = ({
-//   elements,
-//   currentFormValue,
-//   indexesMap,
-//   fields,
-// }: {
-//   elements: Array<any>,
-//   currentFormValue: any,
-//   indexesMap: any,
-//   fields: any,
-// }) => {
-//   const { text, childrenKeys, key } = elements
-//   const separateElements = siblings.reduce((dataElements, sibling) => {
-//     const { key } = sibling
-//     const index = indexesMap[key]
-//     const fieldElement = fields[index]
-//     const valueElement = currentFormValue[key]
-//     const value =
-//       valueElement && valueElement.value
-//         ? fieldElement.type === types.list
-//           ? _extractListData(valueElement.value, sibling, fieldElement)
-//           : valueElement.value
-//         : {}
+const _extractConnectedDataArray = (value: Array<any>) => {
+  const newVal = value.map(val => {
+    const { _id, value = null, parentValues } = val
 
-//     const data = {
-//       type: fieldElement.type,
-//       value,
-//     }
+    return {
+      listElementId: _id,
+      values: [...parentValues.values, value],
+    }
+  })
 
-//     return [...dataElements, data]
-//   }, [])
-//   return {
-//     text,
-//     values: separateElements,
-//   }
-// }
+  return newVal
+}
 
 const _buildSingleElement = ({
   element,
@@ -128,8 +70,10 @@ const _buildSingleElement = ({
   const value =
     valueElement && valueElement.value
       ? fieldElement.type === types.list
-        ? _extractListDataArray(valueElement.value, { childrenKeys }, fieldElement)
-        : valueElement.value
+        ? _extractListDataArray(valueElement.value, { childrenKeys })
+        : fieldElement.type === types.connected
+          ? _extractConnectedDataArray(valueElement.value)
+          : valueElement.value
       : {}
 
   return {

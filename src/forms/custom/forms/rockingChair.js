@@ -1,4 +1,5 @@
 import types, { answerTypes } from './types'
+import { LifeStages } from './content'
 
 export const AreaOfLife = [
   'Finances',
@@ -76,7 +77,37 @@ const form1 = {
               default: AreaOfLife[0],
             },
           },
-          each: true,
+        },
+        default: [],
+      },
+    },
+    3: {
+      type: types.connected,
+      key: 'form_1_memories_stages_of_life',
+      content: {
+        text: 'What stage of life do each of these memories belong to?',
+        smallKey: 'stage of life',
+      },
+      options: {
+        connect: {
+          withElements: {
+            text: 'Memory',
+            key: 'form_1_memories_areas_of_life',
+          },
+          using: {
+            type: types.select,
+            key: 'form_1_memory_stage_of_life',
+            content: {
+              smallKey: 'stage',
+              items: LifeStages.map(stage => ({
+                value: stage,
+                text: stage,
+              })),
+            },
+            options: {
+              default: LifeStages[0],
+            },
+          },
         },
         default: [],
       },

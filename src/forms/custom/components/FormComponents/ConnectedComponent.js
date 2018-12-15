@@ -1,10 +1,9 @@
-import React from 'react'
-import { View, Text } from 'react-native'
-import tron from 'reactotron-react-native'
-import types from '../../forms/types'
-import ConnectedSelect from './Connected/Select'
+import React                                from 'react'
+import { View, Text }                       from 'react-native'
+import types                                from '../../forms/types'
+import ConnectedSelect                      from './Connected/Select'
 import styles, { connectedComponentStyles } from '../../styles'
-import uuid from 'uuid/v4'
+import uuid                                 from 'uuid/v4'
 
 type Props = {
   onChange: () => any,
@@ -37,9 +36,9 @@ const SwitchComponent = (props: { component: any, props: any }) => {
 class ConnectedComponent extends React.PureComponent<Props> {
   constructor(props) {
     super(props)
-    const storableValue = props.value || []
     const { dataElement: { text, value: values }, component } = this.props
 
+    const storableValue = props.value || []
     const currentValue = values.map(val => {
       const listValues = val.values
       const parentId = val.listElementId
@@ -64,9 +63,40 @@ class ConnectedComponent extends React.PureComponent<Props> {
 
     this.state = {
       currentValue,
-      text,
-      component,
     }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.field.key !== prevProps.field.key)
+      this.setState({ currentValue: this._getCurrentValue() })
+  }
+
+  _getCurrentValue = () => {
+    const { dataElement: { text, value: values }, component } = this.props
+    const storableValue = this.props.value || []
+
+    const currentValue = values.map(val => {
+      const listValues = val.values
+      const parentId = val.listElementId
+
+      const match = storableValue.find(
+        savedValue => savedValue.parentId === parentId
+      ) || {
+          value: component.options.default || null,
+          _id: uuid(),
+        }
+
+      return {
+        ...match,
+        parentId: match.parentId || parentId,
+        model: component,
+        parentValues: {
+          text,
+          values: listValues,
+        },
+      }
+    })
+    return currentValue
   }
 
   _onChange = (value: any, _id: string) => {
@@ -91,8 +121,8 @@ class ConnectedComponent extends React.PureComponent<Props> {
   }
 
   render() {
-    const { currentValue, component } = this.state
-    const { header } = this.props
+    const { currentValue } = this.state
+    const { header, component } = this.props
     return (
       <React.Fragment>
         <Text style={styles.textInputLabelStyle}>{header}</Text>
