@@ -1,5 +1,5 @@
-import React from 'react'
-import { View, Picker } from 'react-native'
+import React                        from 'react'
+import { Picker }                   from 'react-native'
 import { connectedComponentStyles } from '../../../styles'
 
 const Select = ({

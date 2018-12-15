@@ -1,5 +1,5 @@
 import { StyleSheet, Platform } from 'react-native'
-import hexToRgba from '../../../utils/colorTransform'
+import hexToRgba                from '../../../utils/colorTransform'
 import {
   azure,
   gray50,
@@ -7,11 +7,11 @@ import {
   blue900,
   gray400,
   greenA400,
-} from '../../../constants/colors'
+}                               from '../../../constants/colors'
 import {
   widthPercentage,
   heightPercentage,
-} from '../../../utils/viewportCalculation'
+}                               from '../../../utils/viewportCalculation'
 
 export const TEMPORARY_COLOR_FOR_BUTTONS = azure
 
@@ -27,6 +27,24 @@ export const uncheckedColor = gray400
 export const helpButtonColor = azure
 
 export const connectedComponentStyles = StyleSheet.create({
+  connectedRow: {
+    flex: 1,
+    flexDirection: 'row',
+    marginVertical: 16,
+    minHeight: 50,
+  },
+  elementIdentifierContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+  contentContainer: {
+    flex: 3,
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+  },
   pickerStyle: {
     width: '100%',
     backgroundColor: hexToRgba(azure, 0.1),
