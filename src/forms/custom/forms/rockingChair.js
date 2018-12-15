@@ -64,7 +64,7 @@ const form1 = {
           },
           using: {
             type: types.select,
-            key: 'form_1_memory_area',
+            key: 'form_1_memory_area_of_life',
             content: {
               smallKey: 'area',
               items: AreaOfLife.map(area => ({

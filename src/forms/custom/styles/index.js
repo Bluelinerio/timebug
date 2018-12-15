@@ -1,5 +1,5 @@
 import { StyleSheet, Platform } from 'react-native'
-import hexToRgba                from '../../../utils/colorTransform'
+import hexToRgba from '../../../utils/colorTransform'
 import {
   azure,
   gray50,
@@ -7,11 +7,11 @@ import {
   blue900,
   gray400,
   greenA400,
-}                               from '../../../constants/colors'
+} from '../../../constants/colors'
 import {
   widthPercentage,
   heightPercentage,
-}                               from '../../../utils/viewportCalculation'
+} from '../../../utils/viewportCalculation'
 
 export const TEMPORARY_COLOR_FOR_BUTTONS = azure
 
@@ -25,6 +25,32 @@ export const iconColor = gray50
 export const checkboxColor = greenA400
 export const uncheckedColor = gray400
 export const helpButtonColor = azure
+
+export const connectedComponentStyles = StyleSheet.create({
+  pickerStyle: {
+    width: '100%',
+    backgroundColor: hexToRgba(azure, 0.1),
+    minHeight: 25,
+    maxHeight: 30,
+    flex: 1,
+  },
+  pickerItemStyle: {
+    color: gray900,
+    fontFamily: 'Metropolis',
+    fontWeight: '500',
+    fontSize: 12,
+  },
+  pickerBackground: {
+    backgroundColor: hexToRgba(azure, 0.1),
+    paddingVertical: 0.5,
+    borderWidth: 0.5,
+    borderRadius: 4,
+    borderColor: '#cccccc',
+  },
+  connectedElement: {
+    marginVertical: 4,
+  },
+})
 
 const formStyles = StyleSheet.create({
   container: {
