@@ -35,7 +35,7 @@ class WorkbookForm extends React.PureComponent<Props> {
       </ScrollView>
     ) : (
       <View style={styles.scrollView}>
-        <Text>This step does not have a form yet</Text>
+        <Text>This form is coming soon</Text>
       </View>
     )
   }

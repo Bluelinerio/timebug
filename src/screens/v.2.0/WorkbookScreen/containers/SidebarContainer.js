@@ -9,6 +9,7 @@ const merge = ({ step }: { step: Step }): StepBarProps => {
   const { type, audio, number } = step
   const phase = translateCMSPhaseToStandard(type)
   const barStyle = mapBarStylesHelper(phase)
+
   return {
     phase,
     audio: (audio && audio.uri) || undefined,

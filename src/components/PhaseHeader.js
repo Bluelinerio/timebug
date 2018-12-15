@@ -58,8 +58,8 @@ const UnconnectedPhaseHeaderButton = ({
 
 const mergeProps = (Component: React.Node) => {
   const Container = ({ formModel, ...rest }: { formModel: any }) => {
-    const disabled = !formModel
-    return <Component disabled={disabled} {...rest} />
+    const hasForm = !!formModel
+    return <Component hasForm={hasForm} {...rest} />
   }
   return Container
 }
