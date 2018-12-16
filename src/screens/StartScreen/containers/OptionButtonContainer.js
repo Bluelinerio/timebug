@@ -84,7 +84,7 @@ const merge = (
   ownProps: OptionButtonContainerProps
 ): OptionButtonProps => {
   const { user, selected } = stateProps
-  const { stepColors, step, navigation, _version, formModel } = ownProps
+  const { stepColors, step, navigation, _version } = ownProps
   const { login } = dispatchProps
 
   const { number, title, icon, snippet, audio } = step
@@ -135,7 +135,7 @@ const merge = (
     isV2: _version === appVersions.two,
     containerBackgroundColor: backgroundColorAtIndex(number - 1),
     textStyle: textColorAtIndex(number - 1),
-    disable: _version === appVersions.two ? !formModel : false,
+    // disable: _version === appVersions.two ? !formModel : false,
   }
 }
 

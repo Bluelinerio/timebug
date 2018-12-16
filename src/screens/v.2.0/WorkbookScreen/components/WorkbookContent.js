@@ -6,13 +6,13 @@ import WorkbookForm      from '../containers/WorkbookFormContainer'
 import WorkbookSnippet   from '../containers/WorkbookSnippetContainer'
 import type { Step }     from '../../../../services/cms'
 import {
-  PHASE_2_COMPLETE,
-  PHASE_3_COMPLETE,
+  // PHASE_2_COMPLETE,
+  // PHASE_3_COMPLETE,
   deepBlue,
-  PHASE_1_BAR,
-  white2,
-  gray400,
-  hotPink,
+  // PHASE_1_BAR,
+  // white2,
+  // gray400,
+  // hotPink,
 }                          from '../../../../constants/colors'
 
 type Props = {

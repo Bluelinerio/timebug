@@ -7,6 +7,7 @@ import {
   StatusBar,
   TouchableOpacity,
 } from 'react-native';
+
 import Banner from '../../../../containers/NavigationAwareBanner';
 import styles from '../styles';
 import { translateCMSPhaseToStandard } from '../../../../services/cms';

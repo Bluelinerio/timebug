@@ -1,6 +1,7 @@
 // @flow
 import { NavigationActions } from 'react-navigation';
 import { connect } from 'react-redux';
+
 import PhaseHeader from '../components/PhaseHeader';
 import type { Props } from '../components/PhaseHeader';
 import selectors from '../redux/selectors';
