@@ -26,7 +26,7 @@ class WorkbookContent extends React.PureComponent<Props> {
   render() {
     const { selectedSection, step } = this.props
     return (
-      <View style={{ flex: 1, padding:20 }}>
+      <View style={{ flex: 1, padding:20, color:deepBlue }}>
         {selectedSection === SectionValues.form ? (
           <WorkbookForm step={`${step.number}`} />
         ) : (
