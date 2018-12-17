@@ -53,15 +53,22 @@ class WorkbookSnippet extends React.PureComponent<Props> {
         style={styles.scrollView}
         contentContainerStyle={styles.scrollView}
       >
-        <View style={styles.snippetTitleContainer}>
-          <Text style={[styles.snippetTitle, textStyle]}>{step.title}</Text>
-        </View>
-        {paragraphs.map((paragraph, index) => (
-          <View key={index} style={styles.snippetParagraph}>
-            <Text style={[styles.snippetStyle, textStyle]}>{paragraph}</Text>
+        <View style={styles.marginScrollViewElement}>
+          <View style={styles.snippetTitleContainer}>
+            <Text style={[styles.snippetTitle, textStyle]}>{step.title}</Text>
           </View>
-        ))}
-        <SwitchButton text={'Next'} background={color} />
+          <View style={styles.actualSnippetContainer}>
+            <Text style={[styles.actualSnippetText, textStyle]}>
+              {step.snippet}
+            </Text>
+          </View>
+          {paragraphs.map((paragraph, index) => (
+            <View key={index} style={styles.snippetParagraph}>
+              <Text style={[styles.snippetStyle, textStyle]}>{paragraph}</Text>
+            </View>
+          ))}
+          <SwitchButton text={'Next'} background={color} />
+        </View>
       </ScrollView>
     )
   }

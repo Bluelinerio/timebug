@@ -191,4 +191,19 @@ export default StyleSheet.create({
     justifyContent: 'center',
     marginTop: 8,
   },
+  marginScrollViewElement: {
+    marginRight: 8,
+  },
+  actualSnippetContainer: {
+    marginVertical: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  actualSnippetText: {
+    ...iOSUIKit.bodyEmphasizedObject,
+    fontSize: 15,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
+    textAlign: 'center',
+  },
 })
