@@ -1,26 +1,45 @@
 // @flow
-import { mapProps }          from 'recompose'
+import { compose, mapProps } from 'recompose'
+import { connect }           from 'react-redux'
+import selectors             from '../../../../redux/selectors'
 import FormFinishedComponent from '../components/FormFinishedComponent'
 import FormFinishedContent   from '../../../../static/workbookDone/index'
 import { mapPhaseToColor }   from '../utils/colorsForStep'
 import type { Step }         from '../../../../services/cms'
-//TODO:
+
+const mapStateToProps = (state: any): StateProps => {
+  const steps = selectors.steps(state)
+  return {
+    steps,
+  }
+}
+
+type StateProps = {
+  steps: Array<Step>,
+}
+
 type Props = {
   step: Step,
   phase: string,
   stepNumber: string,
   onSelectStep: Step => any,
+  steps: Array<Step>,
 }
 
 const merge = (props: Props) => {
-  const { step, phase, stepNumber, onSelectStep } = props
+  const { step, steps, phase, stepNumber, onSelectStep } = props
 
+  const totalSteps = Object.keys(steps).length
   const color = mapPhaseToColor(phase)
 
-  const { text, next } = FormFinishedContent[stepNumber]
+  const {
+    text = `Congratulations on completing Step ${step.number}: ${step.title}`,
+    title = 'Congratulations!',
+  } = FormFinishedContent[stepNumber]
 
-  //TODO
-  const nextStep = next
+  const hasNext = stepNumber + 1 <= totalSteps
+  const nextStep = hasNext ? steps[step.number + 1] : null
+  const nextStepNumber = hasNext ? nextStep.number : 1
 
   const onButtonPress = () => {
     onSelectStep(nextStep)
@@ -31,7 +50,12 @@ const merge = (props: Props) => {
     step,
     onButtonPress,
     text,
+    title,
+    hasNext,
+    nextStepNumber,
   }
 }
 
-export default mapProps(merge)(FormFinishedComponent)
+export default compose(connect(mapStateToProps), mapProps(merge))(
+  FormFinishedComponent
+)

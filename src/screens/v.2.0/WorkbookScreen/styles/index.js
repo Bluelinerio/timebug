@@ -266,4 +266,50 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignSelf: 'flex-start',
   },
+
+  //DoneComponent
+  doneContentContainer: {
+    paddingHorizontal: 12,
+  },
+  doneTitleContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: '2%',
+  },
+  doneTitle: {
+    ...iOSUIKit.subheadEmphasizedObject,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
+    fontSize: 16,
+  },
+  doneTextContainer: {
+    flex: 1,
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+  },
+  doneText: {
+    ...iOSUIKit.footnoteObject,
+    fontFamily: 'Metropolis',
+    textAlign: 'center',
+    fontSize: 14,
+  },
+  doneButtonContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  doneButton: {
+    borderRadius: 6,
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+    height: buttonHeight,
+    width: buttonWidth,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  doneButtontext: {
+    ...iOSUIKit.caption2Object,
+    textAlign: 'center',
+    fontFamily: 'Metropolis',
+    color: fontColor,
+  },
 })
