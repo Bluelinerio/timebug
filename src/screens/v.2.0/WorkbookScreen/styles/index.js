@@ -1,4 +1,4 @@
-import { StyleSheet }      from 'react-native'
+import { StyleSheet } from 'react-native'
 import {
   PHASE_2_COMPLETE,
   PHASE_3_COMPLETE,
@@ -7,9 +7,12 @@ import {
   white2,
   gray400,
   hotPink,
-}                          from '../../../../constants/colors'
-import { iOSUIKit }        from 'react-native-typography'
-import { heightPercentage, widthPercentage } from '../../../../utils/viewportCalculation'
+}                     from '../../../../constants/colors'
+import { iOSUIKit }   from 'react-native-typography'
+import {
+  heightPercentage,
+  widthPercentage,
+}                     from '../../../../utils/viewportCalculation'
 
 export const sideBarWidth = widthPercentage(20)
 export const helperIconContainerSize = widthPercentage(70, sideBarWidth)
@@ -121,6 +124,7 @@ export default StyleSheet.create({
     ...iOSUIKit.footnoteObject,
     fontSize: 14,
     color: fontColor,
+    flexWrap: 'wrap',
   },
   stepBarTitleContainer: {
     flex: 2,
