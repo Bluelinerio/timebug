@@ -1,14 +1,14 @@
 // @flow
-import React                                      from 'react'
-import { View, TouchableOpacity, Text }           from 'react-native'
-import styles, { iconSize, iconColor }            from '../styles'
-import moment                                     from 'moment'
-import FormPicker                                 from './FormComponents/FormPicker'
+import React from 'react'
+import { View, TouchableOpacity, Text } from 'react-native'
+import styles, { iconSize, iconColor } from '../styles'
+import moment from 'moment'
+import FormPicker from './FormComponents/FormPicker'
 import { actionTypes, passiveTypes, answerTypes } from '../forms/types'
-import Icon                                       from 'react-native-vector-icons/Ionicons'
-import uuid                                       from 'uuid/v4'
-import Answers                                    from './FormAnswers'
-import Display                                    from './debug/DisplayComponent'
+import Icon from 'react-native-vector-icons/Ionicons'
+import uuid from 'uuid/v4'
+import Answers from './FormAnswers'
+import Display from './debug/DisplayComponent'
 
 const DEBUG_DISPLAY = false
 
@@ -154,12 +154,7 @@ class Form extends React.PureComponent<Props, any> {
 
     const newStorableValue =
       this.model.answer === answerTypes.single
-        ? [
-          {
-            ...newValue,
-            _id: uuid(),
-          },
-        ]
+        ? this._handleSingleAnswerStorage(newValue)
         : [...storableValue, { ...newValue, _id: uuid() }]
 
     this.setState(
@@ -172,6 +167,24 @@ class Form extends React.PureComponent<Props, any> {
         onFinish(this.state.storableValue)
       }
     )
+  }
+
+  _handleSingleAnswerStorage = value => {
+    const { storableValue } = this.state
+
+    return !storableValue || storableValue.length === 0
+      ? [
+        {
+          ...value,
+          _id: uuid(),
+        },
+      ]
+      : [
+        {
+          ...(storableValue[0] || {}),
+          ...value,
+        },
+      ]
   }
 
   _onPress = () => {
