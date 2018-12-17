@@ -14,6 +14,7 @@ import {
   PHASE_3_COMPLETE,
   PHASE_1_INCOMPLETE,
   gray400,
+  paleBlue,
 }                                     from '../../../constants/colors'
 import Viewport, { heightPercentage } from '../../../utils/viewportCalculation'
 import { bannerHeight }               from '../../../styles/components/StartScreenBanner'
@@ -139,6 +140,12 @@ export default StyleSheet.create({
     paddingHorizontal: 12,
     marginBottom: 6,
     justifyContent: 'space-between',
+  },
+  header: {
+    flex: 1,
+    height: 'auto',
+    flexDirection: 'row',
+    backgroundColor: paleBlue,
   },
   buttonImage: {
     height: 60,
