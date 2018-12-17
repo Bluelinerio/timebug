@@ -49,7 +49,11 @@ class WorkbookScreen extends React.PureComponent<Props, State> {
             {selectedStep && <Sidebar step={selectedStep} />}
             <View style={{ flex: 1 }}>
               {selectedStep && <StepBar step={selectedStep} />}
-              <WorkbookContent step={selectedStep} phase={phase} />
+              <WorkbookContent
+                step={selectedStep}
+                phase={phase}
+                onSelectStep={this._changeSelectedStep}
+              />
             </View>
           </View>
         </SectionProvider>
