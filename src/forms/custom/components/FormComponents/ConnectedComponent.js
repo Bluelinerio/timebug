@@ -67,8 +67,19 @@ class ConnectedComponent extends React.PureComponent<Props> {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.field.key !== prevProps.field.key)
-      this.setState({ currentValue: this._getCurrentValue() })
+    if (this.props.field.key !== prevProps.field.key) {
+      const { onChange } = this.props
+      const currentValue = this._getCurrentValue()
+      this.setState({ currentValue }, () => {
+        onChange(this.state.currentValue)
+      })
+    }
+  }
+
+  componentDidMount() {
+    const { onChange } = this.props
+    const { currentValue } = this.state
+    onChange(currentValue)
   }
 
   _getCurrentValue = () => {
