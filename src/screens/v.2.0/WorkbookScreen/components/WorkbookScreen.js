@@ -1,6 +1,7 @@
 import React               from 'react'
 import { View }            from 'react-native'
 import { SafeAreaView }    from 'react-navigation'
+
 import Banner              from '../../../../containers/PhaseHeaderContainer'
 import styles              from '../styles'
 import type { Step }       from '../../../../services/cms'
@@ -34,6 +35,7 @@ class WorkbookScreen extends React.PureComponent<Props, State> {
   render() {
     const { navigation: { state: { params: { phase } } } } = this.props
     const { selectedStep } = this.state
+
     return (
       <SafeAreaView
         forceInset={{ top: 'always', bottom: 'never' }}

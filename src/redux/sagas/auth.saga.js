@@ -23,6 +23,7 @@ import {
   AUTHENTICATE_FB,
   refreshUser,
 } from '../actions/user.actions';
+import { goToV2WorkbookScreen, goToWorkbookSkippingStepScreen } from '../actions/nav.actions';
 import {
   authenticateWithFBToken,
   fetchUserWithId,
@@ -114,10 +115,20 @@ function* refreshUserOrLogout() {
   }
 }
 
-function* _loginOrRegisterWithFacebook() {
+function* _loginOrRegisterWithFacebook(payload) {
+  const { step, incompleteFormsIds, phase, isV2 } = payload;
+
   try {
     const success = yield call(facebook.openFBLogin);
     yield put({ type: FB_LOGIN_DIALOG_RESPONDED, payload: success });
+
+    if (step) {
+      if (isV2) {
+        yield put(goToV2WorkbookScreen({ step, phase }));
+      } else {
+        yield put(goToWorkbookSkippingStepScreen({ step, incompleteFormsIds }));
+      }
+    }
   } catch (error) {
     yield put({ type: FB_LOGIN_DIALOG_RESPONDED + 'FAILD', message: error });
     yield put({ type: GET_USER.ERRORED, error });
@@ -143,7 +154,8 @@ export function* loginFlowSaga() {
   yield throttle(
     500,
     LOGIN_WITH_FB_BUTTON_PRESSED,
-    _loginOrRegisterWithFacebook
+    _loginOrRegisterWithFacebook,
+    // ...params
   );
   yield throttle(500, LOGOUT, _logout);
 }
