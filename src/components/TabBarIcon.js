@@ -9,18 +9,18 @@ type TabBarIconProps = {
   tintColor: string,
 };
 
-const mapRouteToIcon = (routeName, focused) => {
+const mapRouteToIcon = (routeName) => {
   switch (routeName) {
   case routes.tab.RootNavigator:
-    return `ios-pin${focused ? '' : '-outline'}`;
+    return `ios-pin`;
   case routes.tab.MeditationScreen:
-    return `ios-options${focused ? '' : '-outline'}`;
+    return `ios-options`;
   case routes.tab.MyJourneyScreen:
-    return `ios-construct${focused ? '' : '-outline'}`;
+    return `ios-construct`;
   case routes.tab.CheckinScreen:
-    return `ios-compass${focused ? '' : '-outline'}`;
+    return `ios-compass`;
   case routes.tab.GoalsNavigator:
-    return `ios-checkmark${focused ? '' : '-outline'}`;
+    return `ios-checkmark`;
   default:
     return;
   }
