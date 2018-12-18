@@ -1,4 +1,4 @@
-import { StyleSheet }      from 'react-native'
+import { StyleSheet } from 'react-native'
 import {
   PHASE_2_COMPLETE,
   PHASE_3_COMPLETE,
@@ -7,9 +7,12 @@ import {
   white2,
   gray400,
   hotPink,
-}                          from '../../../../constants/colors'
-import { iOSUIKit }        from 'react-native-typography'
-import { heightPercentage, widthPercentage } from '../../../../utils/viewportCalculation'
+}                     from '../../../../constants/colors'
+import { iOSUIKit }   from 'react-native-typography'
+import {
+  heightPercentage,
+  widthPercentage,
+}                     from '../../../../utils/viewportCalculation'
 
 export const sideBarWidth = widthPercentage(20)
 export const helperIconContainerSize = widthPercentage(70, sideBarWidth)
@@ -46,6 +49,18 @@ export const svgStyles = {
   },
 }
 
+export const textColors = {
+  phase1: {
+    color: deepBlue,
+  },
+  phase2: {
+    color: PHASE_2_COMPLETE,
+  },
+  phase3: {
+    color: PHASE_3_COMPLETE,
+  },
+}
+
 export const barColors = {
   phase1: {
     backgroundColor: PHASE_1_BAR,
@@ -56,6 +71,12 @@ export const barColors = {
   phase3: {
     backgroundColor: PHASE_3_COMPLETE,
   },
+}
+
+export const phaseColors = {
+  phase1: PHASE_1_BAR,
+  phase2: PHASE_2_COMPLETE,
+  phase3: PHASE_3_COMPLETE,
 }
 
 export const sideBarStyles = {
@@ -142,7 +163,50 @@ export default StyleSheet.create({
     width: stepIconSize,
     aspectRatio: 1 / 1,
   },
-  snippetStyle: {
+  snippetTitleContainer: {
+    paddingBottom: '2%',
+  },
+  snippetParagraph: {
+    marginVertical: '0.5%',
+  },
+  snippetTitle: {
+    ...iOSUIKit.title3EmphasizedObject,
     textAlign: 'justify',
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
+    lineHeight: 20 * 1.2,
+  },
+  snippetStyle: {
+    ...iOSUIKit.bodyObject,
+    textAlign: 'justify',
+    fontSize: 14,
+    fontFamily: 'Metropolis',
+  },
+  workbookContent: {
+    paddingHorizontal: '2.5%',
+    paddingVertical: '1%',
+    paddingTop: '5%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  snippetButtonContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 8,
+  },
+  marginScrollViewElement: {
+    marginRight: 8,
+  },
+  actualSnippetContainer: {
+    marginVertical: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  actualSnippetText: {
+    ...iOSUIKit.bodyEmphasizedObject,
+    fontSize: 15,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
+    textAlign: 'center',
   },
 })
