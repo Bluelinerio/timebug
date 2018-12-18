@@ -1,8 +1,11 @@
 //@flow
-import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
-import { phaseProgressStyles as styles } from '../styles';
-import ProgressBar from 'react-native-progress/Bar';
+import React                             from 'react'
+import { View, Text, TouchableOpacity }  from 'react-native'
+import { phaseProgressStyles as styles } from '../styles'
+import ProgressBar                       from 'react-native-progress/Bar'
+
+// TODO: Remove
+const DISABLE_PROGRESS = true
 
 export type PhaseProgressComponentProps = {
   phase: string,
@@ -13,7 +16,7 @@ export type PhaseProgressComponentProps = {
   onPhasePress: () => any,
   unfilledColor: string,
   phaseColor: string,
-};
+}
 
 class PhaseProgressComponent extends React.PureComponent<
   PhaseProgressComponentProps
@@ -28,7 +31,7 @@ class PhaseProgressComponent extends React.PureComponent<
       fill,
       unfilledColor,
       phaseColor,
-    } = this.props;
+    } = this.props
     return (
       <TouchableOpacity
         style={[styles.phaseContainer, { backgroundColor: phaseColor }]}
@@ -48,7 +51,8 @@ class PhaseProgressComponent extends React.PureComponent<
           </Text>
           <View>
             {!!complete &&
-              complete > 0 && (
+              complete > 0 &&
+              !DISABLE_PROGRESS && (
                 <ProgressBar
                   progress={complete / (incomplete + complete)}
                   color={fill}
@@ -60,8 +64,8 @@ class PhaseProgressComponent extends React.PureComponent<
           </View>
         </View>
       </TouchableOpacity>
-    );
+    )
   }
 }
 
-export default PhaseProgressComponent;
+export default PhaseProgressComponent
