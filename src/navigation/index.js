@@ -232,9 +232,12 @@ export const VersionNavigator = StackNavigator(
 export const startConfiguration = {
   routes: routes.start,
   screens: {
-    [routes.start.VersionNavigator]: {
-      screen: VersionNavigator,
+    [routes.start.TabNavigator]: {
+      screen: RootTabNavigator,
     },
+    // [routes.start.VersionNavigator]: {
+    //   screen: VersionNavigator,
+    // },
     [routes.start.Walkthrough]: {
       screen: WalkthroughScreen,
     },
