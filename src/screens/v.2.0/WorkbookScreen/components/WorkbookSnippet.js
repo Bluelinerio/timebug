@@ -47,7 +47,6 @@ const SwitchButton = compose(connectContext(SectionConsumer), mapProps(merge))(
 class WorkbookSnippet extends React.PureComponent<Props> {
   render() {
     const { step, color, textStyle = {} } = this.props
-    const paragraphs = splitByLines(step.description)
     return (
       <ScrollView
         style={styles.scrollView}
@@ -60,11 +59,9 @@ class WorkbookSnippet extends React.PureComponent<Props> {
               {step.snippet}
             </Text>
           </View>
-          {paragraphs.map((paragraph, index) => (
-            <View key={index} style={styles.snippetParagraph}>
-              <Text style={[styles.snippetStyle, textStyle]}>{paragraph}</Text>
+            <View style={styles.snippetParagraph}>
+              <Text style={[styles.snippetStyle, textStyle]}>{step.description}</Text>
             </View>
-          ))}
           <SwitchButton text={'Next'} background={color} />
         </View>
       </ScrollView>
