@@ -14,6 +14,7 @@ import {
 } from '../../../services/cms';
 import styles, { svgStyles } from '../styles';
 
+// TODO: Remove
 const OVERRIDE_STYLES_AS_COMPLETED = true
 
 export const isStepIndexCompleted = (stepIndex, user) => {
