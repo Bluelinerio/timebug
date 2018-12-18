@@ -21,7 +21,7 @@ class Sidebar extends React.PureComponent<Props> {
 
     return (
       <View style={[styles.sideBarContainer, barStyle]}>
-        <StepAudioButton audio={audio} phase={phase} />
+        {/* <StepAudioButton audio={audio} phase={phase} /> */}
         <HelpButton step={step} phase={phase} />
         <ContentButton audio={audio} phase={phase} />
         <FormButton step={step} phase={phase} />
