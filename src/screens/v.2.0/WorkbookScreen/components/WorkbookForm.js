@@ -50,13 +50,12 @@ class WorkbookForm extends React.PureComponent<Props> {
       </ScrollView>
     ) : (
       <View style={[styles.scrollView, styles.snippetParagraph]}>
-        <Text style={[styles.snippetStyle, styles.actualSnippetText]}>
-          The 20/20 Life Vision Workbook is on the way! {"\n"}
+        <Text style={[styles.formPlaceholderStyle]}>
+          The 20/20 Life Vision Workbook is on the way! {"\n\n"}
           In the meantime, enjoy the guidebook and audio book content and keep checking back for updates.{"\n"}{"\n"}
-          You can also find the PDF version of the workbook {"\n"}
-          available at {"\n"}
+          You can also find the PDF version of the workbook available at  {"\n\n"}
           <Text
-            style={{color: blue900}}
+            style={{color: blue900, textAlign: "center"}}
             onPress={this._goToUrl}
           >
             2020lifevision.com

@@ -54,9 +54,7 @@ class WorkbookSnippet extends React.PureComponent<Props> {
         contentContainerStyle={styles.scrollView}
       >
         <View style={styles.marginScrollViewElement}>
-          <View style={styles.snippetTitleContainer}>
-            <Text style={[styles.snippetTitle, textStyle]}>{step.title}</Text>
-          </View>
+    
           <View style={styles.actualSnippetContainer}>
             <Text style={[styles.actualSnippetText, textStyle]}>
               {step.snippet}

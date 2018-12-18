@@ -106,8 +106,8 @@ export default StyleSheet.create({
   },
   stepBarContainer: {
     flex: 1,
-    height: '13.5%',
-    maxHeight: '15%',
+    height: '16%',
+    maxHeight: '16%',
     flexDirection: 'row',
     backgroundColor: PHASE_1_BAR,
     paddingHorizontal: 2,
@@ -188,18 +188,9 @@ export default StyleSheet.create({
     width: stepIconSize,
     aspectRatio: 1 / 1,
   },
-  snippetTitleContainer: {
-    paddingBottom: '2%',
-  },
+
   snippetParagraph: {
     marginVertical: '0.5%',
-  },
-  snippetTitle: {
-    ...iOSUIKit.title3EmphasizedObject,
-    textAlign: 'justify',
-    fontFamily: 'Metropolis',
-    fontWeight: '700',
-    lineHeight: 20 * 1.2,
   },
   snippetStyle: {
     ...iOSUIKit.bodyObject,
@@ -223,15 +214,19 @@ export default StyleSheet.create({
     marginRight: 8,
   },
   actualSnippetContainer: {
-    marginVertical: 8,
-    alignItems: 'center',
-    justifyContent: 'center',
+    marginVertical: 8
   },
   actualSnippetText: {
     ...iOSUIKit.bodyEmphasizedObject,
     fontSize: 15,
     fontFamily: 'Metropolis',
     fontWeight: '700',
-    textAlign: 'center',
+    textAlign: 'left',
   },
+  formPlaceholderStyle: {
+    ...iOSUIKit.bodyEmphasizedObject,    
+    textAlign: 'left',
+    fontSize: 18,
+    fontFamily: 'Metropolis',
+  }
 })
