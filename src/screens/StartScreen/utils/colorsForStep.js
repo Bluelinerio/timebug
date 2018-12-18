@@ -14,8 +14,11 @@ import {
 } from '../../../services/cms';
 import styles, { svgStyles } from '../styles';
 
+const OVERRIDE_STYLES_AS_COMPLETED = true
+
 export const isStepIndexCompleted = (stepIndex, user) => {
   const { forms } = user;
+  if (OVERRIDE_STYLES_AS_COMPLETED) return true
   return forms && forms.find(form => form.stepId === stepIndex + 1)
     ? true
     : false;
