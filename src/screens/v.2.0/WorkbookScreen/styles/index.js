@@ -190,11 +190,22 @@ export default StyleSheet.create({
   },
 
   snippetParagraph: {
-    marginVertical: '0.5%',
+    ...Platform.select({
+      android: { 
+        marginVertical: '0.5%',
+      },
+  }),
   },
   snippetStyle: {
     ...iOSUIKit.bodyObject,
-    textAlign: 'justify',
+    ...Platform.select({
+      android: { 
+        textAlign: 'justify',
+      },
+      ios: {
+        textAlign: 'left',
+      },
+  }),
     fontSize: 14,
     fontFamily: 'Metropolis',
   },
