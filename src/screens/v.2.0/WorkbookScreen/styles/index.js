@@ -89,11 +89,11 @@ export default StyleSheet.create({
   stepBarContainer: {
     flex: 1,
     height: '13.5%',
-    maxHeight: '13.5%',
+    maxHeight: '15%',
     flexDirection: 'row',
     backgroundColor: PHASE_1_BAR,
     paddingHorizontal: 2,
-    paddingVertical: '1%',
+    paddingVertical: 6,
   },
   stepAudioButtonContainer: {
     flex: 1,
@@ -103,6 +103,8 @@ export default StyleSheet.create({
   stepBarContentContainer: {
     flex: 2,
     flexDirection: 'column',
+    flexWrap: 'wrap',
+    alignItems: 'flex-start',
   },
   stepPictureContainer: {
     flex: 1,
@@ -114,6 +116,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'flex-start',
     marginTop: 4,
+    flexWrap: 'wrap',
   },
   stepNumber: {
     ...iOSUIKit.subheadEmphasizedObject,
