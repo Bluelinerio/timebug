@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet, Platform } from 'react-native'
 import {
   PHASE_2_COMPLETE,
   PHASE_3_COMPLETE,
@@ -157,6 +157,31 @@ export default StyleSheet.create({
     justifyContent: 'center',
     maxHeight: helperIconContainerSize,
     flex: 1,
+  },
+  sidebarButton: {
+    borderWidth: 1,
+    borderRadius: 50,
+    borderColor: gray400,
+    borderBottomWidth: 0,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    marginLeft: 5,
+    marginRight: 5,
+    marginTop: 10,
+    ...Platform.select({
+      android: { elevation: 2 },
+      ios: {
+        shadowColor: 'black',
+        shadowOffset: {
+          width: 2,
+          height: 2,
+        },
+        shadowOpacity: 0.3,
+        shadowRadius: 12,
+      },
+    }),
   },
   buttonImage: {
     height: stepIconSize,
