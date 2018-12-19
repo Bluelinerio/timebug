@@ -85,7 +85,7 @@ export const sideBarStyles = {
     flex: 1,
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'space-around',
+    justifyContent: 'space-evenly',
     backgroundColor: 'blue',
     maxWidth: '20%',
     paddingBottom: '10%',
