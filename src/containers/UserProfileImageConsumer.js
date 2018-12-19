@@ -2,7 +2,7 @@
 import React from 'react';
 import User from './User';
 import LogoutButtonContainer from './LogoutButtonContainer';
-import OpenLoginModalContainer from './OpenLoginModalContainer';
+import OpenLoginContainer from './OpenLoginContainer';
 
 type Props = {
   children: ({ uri: string }) => React.Node | [React.Node],
@@ -24,11 +24,11 @@ const UserProfileImageConsumer = ({ children }: Props) => (
       else
         //TODO: REMOVE AND REPLACE WITH ACTUAL PLACEHOLDER
         return (
-          <OpenLoginModalContainer>
+          <OpenLoginContainer>
             {children({
               uri: `https://www.chaarat.com/wp-content/uploads/2017/08/placeholder-user.png`,
             })}
-          </OpenLoginModalContainer>
+          </OpenLoginContainer>
         );
     }}
   </User>

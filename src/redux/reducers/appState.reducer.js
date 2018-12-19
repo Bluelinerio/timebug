@@ -28,7 +28,7 @@ export const initialState = {
   appStatus: {
     status: UNDETERMINED,
   },
-  version: appVersions.one,
+  version: appVersions.two,
 }
 
 export default (

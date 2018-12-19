@@ -37,6 +37,9 @@ import selectors from '../selectors';
 import { isStepCompleted } from '../../services/cms';
 import { timeoutNoError as timeout } from '../utils/sagaHelpers';
 
+// TODO: remove
+const DISABLE_NOTIFICATIONS = true
+
 type StepWithUpdate = {
   __action__: string,
   checkin: any,
@@ -136,7 +139,8 @@ function* _setInitialNotifications() {
 }
 
 function* watchForInitialNotifications() {
-  yield takeLatest(BUILD_NOTIFICATION_SET, _setInitialNotifications);
+  if(!DISABLE_NOTIFICATIONS)
+    yield takeLatest(BUILD_NOTIFICATION_SET, _setInitialNotifications);
 }
 
 function* watchForCheckinsUpdate() {

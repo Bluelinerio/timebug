@@ -5,32 +5,25 @@ import type { Sections } from '../context/SectionContext'
 import WorkbookForm      from '../containers/WorkbookFormContainer'
 import WorkbookSnippet   from '../containers/WorkbookSnippetContainer'
 import type { Step }     from '../../../../services/cms'
-import {
-  // PHASE_2_COMPLETE,
-  // PHASE_3_COMPLETE,
-  deepBlue,
-  // PHASE_1_BAR,
-  // white2,
-  // gray400,
-  // hotPink,
-}                          from '../../../../constants/colors'
+import styles            from '../styles'
 
 type Props = {
   selectedSection: string,
   sections: Sections,
   changeSection: string => any,
   step: Step,
+  phase: string,
 }
 
 class WorkbookContent extends React.PureComponent<Props> {
   render() {
-    const { selectedSection, step } = this.props
+    const { selectedSection, step, phase } = this.props
     return (
-      <View style={{ flex: 1, padding:20 }}>
+      <View style={[styles.container, styles.workbookContent]}>
         {selectedSection === SectionValues.form ? (
           <WorkbookForm step={`${step.number}`} />
         ) : (
-          <WorkbookSnippet step={step} />
+          <WorkbookSnippet step={step} phase={phase} />
         )}
       </View>
     )
