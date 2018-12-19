@@ -6,9 +6,11 @@ const Select = ({
   value,
   onChange,
   component: { content, options },
+  formStyles = {},
 }: {
   value: string,
   onChange: string => any,
+  formStyles: any,
   component: {
     content: {
       items: Array<{ text: string, value: string }>,
@@ -21,7 +23,7 @@ const Select = ({
   <React.Fragment>
     <Picker
       selectedValue={value ? value : options.value}
-      style={[connectedComponentStyles.pickerStyle]}
+      style={[connectedComponentStyles.pickerStyle, formStyles.elementContainerStyle]}
       onValueChange={itemValue => onChange(itemValue)}
       itemStyle={connectedComponentStyles.pickerItemStyle}
     >

@@ -1,14 +1,14 @@
-import React from 'react';
-import { Text } from 'react-native-elements';
-import styles, { formTextColor } from '../../styles';
+import React    from 'react'
+import { Text } from 'react-native-elements'
+import styles   from '../../styles'
 
 const Label = ({
-  color = formTextColor,
   field: {
     content = {
       text: '',
     },
   },
+  formStyles = {},
 }: {
   color?: string,
   field: {
@@ -16,10 +16,11 @@ const Label = ({
       text: string,
     },
   },
+  formStyles: any,
 }) => (
-  <Text h4 style={[styles.labelComponent, { color }]}>
+  <Text h4 style={[styles.labelComponent, formStyles.textStyle]}>
     {content.text}
   </Text>
-);
+)
 
-export default Label;
+export default Label

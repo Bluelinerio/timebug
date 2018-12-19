@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native'
 import {
+  PHASE_1_COMPLETE,
   PHASE_2_COMPLETE,
   PHASE_3_COMPLETE,
   deepBlue,
@@ -8,12 +9,13 @@ import {
   gray400,
   hotPink,
   gray600,
-}                     from '../../../../constants/colors'
-import { iOSUIKit }   from 'react-native-typography'
+} from '../../../../constants/colors'
+import { iOSUIKit } from 'react-native-typography'
 import {
   heightPercentage,
   widthPercentage,
-}                     from '../../../../utils/viewportCalculation'
+} from '../../../../utils/viewportCalculation'
+import hexToRgba from '../../../../utils/colorTransform'
 
 export const sideBarWidth = widthPercentage(20)
 export const helperIconContainerSize = widthPercentage(70, sideBarWidth)
@@ -55,6 +57,18 @@ export const svgStyles = {
   },
 }
 
+export const buttonStyles = {
+  phase1: {
+    backgroundColor: PHASE_1_COMPLETE,
+  },
+  phase2: {
+    backgroundColor: PHASE_2_COMPLETE,
+  },
+  phase3: {
+    backgroundColor: PHASE_3_COMPLETE,
+  },
+}
+
 export const textColors = {
   phase1: {
     color: deepBlue,
@@ -80,9 +94,21 @@ export const barColors = {
 }
 
 export const phaseColors = {
-  phase1: PHASE_1_BAR,
+  phase1: PHASE_1_COMPLETE,
   phase2: PHASE_2_COMPLETE,
   phase3: PHASE_3_COMPLETE,
+}
+
+export const formElementBackgroundStyles = {
+  phase1: {
+    backgroundColor: hexToRgba(PHASE_1_COMPLETE, 0.1),
+  },
+  phase2: {
+    backgroundColor: hexToRgba(PHASE_2_COMPLETE, 0.1),
+  },
+  phase3: {
+    backgroundColor: hexToRgba(PHASE_3_COMPLETE, 0.1),
+  },
 }
 
 export const sideBarStyles = {
@@ -309,5 +335,20 @@ export default StyleSheet.create({
     textAlign: 'center',
     fontFamily: 'Metropolis',
     color: fontColor,
+  },
+  marginScrollViewElement: {
+    marginRight: 8,
+  },
+  actualSnippetContainer: {
+    marginVertical: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  actualSnippetText: {
+    ...iOSUIKit.bodyEmphasizedObject,
+    fontSize: 15,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
+    textAlign: 'center',
   },
 })

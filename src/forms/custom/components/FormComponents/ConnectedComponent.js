@@ -1,9 +1,10 @@
-import React                                from 'react'
-import { View, Text }                       from 'react-native'
-import types                                from '../../forms/types'
-import ConnectedSelect                      from './Connected/Select'
-import styles, { connectedComponentStyles } from '../../styles'
-import uuid                                 from 'uuid/v4'
+import React                        from 'react'
+import { View, Text }               from 'react-native'
+import types                        from '../../forms/types'
+import ConnectedSelect              from './Connected/Select'
+import { connectedComponentStyles } from '../../styles'
+import uuid                         from 'uuid/v4'
+import FormElementHeader            from './FormElementHeader'
 
 type Props = {
   onChange: () => any,
@@ -19,6 +20,7 @@ type Props = {
     value: Array<any>,
     type: string,
   },
+  formStyles: any,
 }
 
 const SwitchComponent = (props: { component: any, props: any }) => {
@@ -133,10 +135,10 @@ class ConnectedComponent extends React.PureComponent<Props> {
 
   render() {
     const { currentValue } = this.state
-    const { header, component } = this.props
+    const { header, component, formStyles = {} } = this.props
     return (
       <React.Fragment>
-        <Text style={styles.textInputLabelStyle}>{header}</Text>
+        <FormElementHeader text={header} textStyle={formStyles.textStyle} />
         {currentValue &&
           currentValue.map(val => {
             return (
@@ -145,17 +147,34 @@ class ConnectedComponent extends React.PureComponent<Props> {
                   <View
                     style={connectedComponentStyles.elementIdentifierContainer}
                   >
-                    <Text>{val.parentValues.text}:</Text>
+                    <Text
+                      style={[
+                        connectedComponentStyles.text,
+                        connectedComponentStyles.identifierText,
+                        formStyles.textStyle,
+                      ]}
+                    >
+                      {val.parentValues.text}:
+                    </Text>
                   </View>
                   <View style={connectedComponentStyles.contentContainer}>
                     {val.parentValues &&
                       val.parentValues.values.map((val, index) => (
-                        <Text key={index}>{val}</Text>
+                        <Text
+                          style={[
+                            connectedComponentStyles.text,
+                            formStyles.textStyle,
+                          ]}
+                          key={index}
+                        >
+                          {val}
+                        </Text>
                       ))}
                     <SwitchComponent
                       component={component}
                       value={val.value}
                       onChange={value => this._onChange(value, val._id)}
+                      formStyles={formStyles}
                     />
                   </View>
                 </View>

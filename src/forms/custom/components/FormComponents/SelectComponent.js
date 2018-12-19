@@ -1,15 +1,17 @@
-import React from 'react';
-import { View, Picker } from 'react-native';
-import { Text } from 'react-native-elements';
-import styles from '../../styles';
+import React             from 'react'
+import { View, Picker }  from 'react-native'
+import FormElementHeader from './FormElementHeader'
+import styles            from '../../styles'
 
 const Select = ({
   value,
   onChange,
   field: { content, options },
+  formStyles = {},
 }: {
   value: string,
   onChange: string => any,
+  formStyles: any,
   field: {
     content: {
       text: string,
@@ -21,9 +23,9 @@ const Select = ({
   },
 }) => (
   <React.Fragment>
-    <Text style={styles.textInputLabelStyle}>{content.text}</Text>
+    <FormElementHeader text={content.text} textStyle={formStyles.textStyle} />
     <View style={styles.pickerContainer}>
-      <View style={styles.pickerBackground}>
+      <View style={[styles.pickerBackground, formStyles.elementContainerStyle]}>
         <Picker
           selectedValue={value ? value : options.value}
           style={[styles.pickerStyle]}
@@ -38,6 +40,6 @@ const Select = ({
       </View>
     </View>
   </React.Fragment>
-);
+)
 
-export default Select;
+export default Select

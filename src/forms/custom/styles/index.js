@@ -40,7 +40,7 @@ export const connectedComponentStyles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   contentContainer: {
-    flex: 3,
+    flex: 2,
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
@@ -67,6 +67,12 @@ export const connectedComponentStyles = StyleSheet.create({
   },
   connectedElement: {
     marginVertical: 4,
+  },
+  text: {
+    fontFamily: 'Metropolis',
+  },
+  identifierText: {
+    fontWeight: '700',
   },
 })
 

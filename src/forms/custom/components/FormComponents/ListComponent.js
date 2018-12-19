@@ -1,8 +1,6 @@
-/**
- * TODO: Use real phase colors instead of hardcoded color
- */
 import React                                   from 'react'
 import { View, Text, Alert, TouchableOpacity } from 'react-native'
+import FormElementHeader                       from './FormElementHeader'
 import styles, { TEMPORARY_COLOR_FOR_BUTTONS } from '../../styles'
 import FormPicker                              from './FormPicker'
 import uuid                                    from 'uuid/v4'
@@ -14,6 +12,7 @@ type Props = {
     content?: any,
     options?: any,
   },
+  formStyles: any,
 }
 
 type ValueElement = {
@@ -44,9 +43,11 @@ const _stripKeys = (val: ValueElement) => {
 const TextElement = ({
   element,
   index,
+  formStyles = {},
 }: {
   index: number,
   element: ValueElement,
+  formStyles: any,
 }) => {
   const strippedObject = _stripKeys(element)
   return (
@@ -56,8 +57,9 @@ const TextElement = ({
           value &&
           value.value && (
             <View key={value._id} style={styles.indented}>
-              <Text style={[styles.textElementText]}>{`${index +
-                1})${value.value || ``}`}</Text>
+              <Text
+                style={[styles.textElementText, formStyles.textStyle]}
+              >{`${index + 1})${value.value || ``}`}</Text>
             </View>
           )
         )
@@ -167,11 +169,14 @@ class ListComponent extends React.PureComponent<Props, State> {
 
   render() {
     const { currentValue, indexesMap } = this.state
-    const { field: { content, options }, value } = this.props
+    const { field: { content, options }, value, formStyles = {} } = this.props
     const { childTypes } = options
     return (
       <React.Fragment>
-        <Text style={styles.textInputLabelStyle}>{content.text}</Text>
+        <FormElementHeader
+          text={content.text}
+          textStyle={formStyles.textStyle}
+        />
         <View style={styles.listFormContainer}>
           <View style={styles.listElementContainer}>
             {childTypes &&
@@ -183,6 +188,7 @@ class ListComponent extends React.PureComponent<Props, State> {
                     key={field.key}
                     field={field}
                     value={inValue.value}
+                    formStyles={formStyles}
                     onChange={value =>
                       this._onChange(value, indexesMap[key], key)
                     }
@@ -194,12 +200,21 @@ class ListComponent extends React.PureComponent<Props, State> {
             <TouchableOpacity
               style={[
                 styles.listAddButtonStyle,
-                { borderColor: TEMPORARY_COLOR_FOR_BUTTONS },
+                {
+                  borderColor:
+                    formStyles.accentColor || TEMPORARY_COLOR_FOR_BUTTONS,
+                },
               ]}
               onPress={this._onAddPress}
             >
               <Text
-                style={{ fontSize: 20, color: TEMPORARY_COLOR_FOR_BUTTONS }}
+                style={[
+                  {
+                    fontSize: 20,
+                    color:
+                      formStyles.accentColor || TEMPORARY_COLOR_FOR_BUTTONS,
+                  },
+                ]}
               >
                 +
               </Text>
@@ -208,13 +223,18 @@ class ListComponent extends React.PureComponent<Props, State> {
         </View>
         <View style={styles.listContentContainer}>
           {value && (
-            <Text style={[styles.textElementText]}>
+            <Text style={[styles.textElementText, formStyles.textStyle]}>
               {`${content.listText}`}:
             </Text>
           )}
           {value &&
             value.map((val, index) => (
-              <TextElement key={val._id} element={val} index={index} />
+              <TextElement
+                key={val._id}
+                element={val}
+                index={index}
+                formStyles={formStyles}
+              />
             ))}
         </View>
       </React.Fragment>

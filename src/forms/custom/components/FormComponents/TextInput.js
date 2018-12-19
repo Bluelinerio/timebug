@@ -1,11 +1,13 @@
-import React               from 'react'
-import { View }            from 'react-native'
-import { FormInput, Text } from 'react-native-elements'
-import styles              from '../../styles'
+import React             from 'react'
+import { View }          from 'react-native'
+import { FormInput }     from 'react-native-elements'
+import styles            from '../../styles'
+import FormElementHeader from './FormElementHeader'
 
 const TextInput = ({
   value,
   onChange,
+  formStyles = {},
   field: {
     content = {
       text: '',
@@ -20,6 +22,7 @@ const TextInput = ({
   value: string,
   onChange: string => any,
   color: string,
+  formStyles: any,
   field: {
     content?: {
       text: string,
@@ -34,10 +37,13 @@ const TextInput = ({
 }) => (
   <React.Fragment>
     <View style={styles.textInputLabelContainer}>
-      <Text style={styles.textInputLabelStyle}>{content.text}</Text>
+      <FormElementHeader text={content.text} textStyle={formStyles.textStyle} />
     </View>
     <FormInput
-      containerStyle={styles.textInputContainerStyle}
+      containerStyle={[
+        styles.textInputContainerStyle,
+        formStyles.elementContainerStyle,
+      ]}
       inputStyle={styles.textInputStyle}
       underlineColorAndroid={'transparent'}
       onChangeText={onChange}
