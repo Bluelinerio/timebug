@@ -14,6 +14,7 @@ export const heavyGray = '#717171';
 export const lightGray = '#AAAAAA';
 export const mediumGray = '#E9E9E9';
 export const gray400 = '#BDBDBD';
+export const gray300 = '#E0E0E0';
 export const paleBlue = '#E3F2FD';
 export const blue100 = '#B3E5FC';
 export const gray200 = '#EEEEEE';

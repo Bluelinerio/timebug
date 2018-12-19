@@ -7,12 +7,13 @@ import {
   white2,
   gray400,
   hotPink,
-}                     from '../../../../constants/colors'
-import { iOSUIKit }   from 'react-native-typography'
+  blue900,
+}                               from '../../../../constants/colors'
+import { iOSUIKit }             from 'react-native-typography'
 import {
   heightPercentage,
   widthPercentage,
-}                     from '../../../../utils/viewportCalculation'
+}                               from '../../../../utils/viewportCalculation'
 
 export const sideBarWidth = widthPercentage(20)
 export const helperIconContainerSize = widthPercentage(70, sideBarWidth)
@@ -98,6 +99,10 @@ export default StyleSheet.create({
   },
   scrollView: {
     flexGrow: 1,
+  },
+  link: {
+    color: blue900,
+    textAlign: 'center',
   },
   center: {
     alignItems: 'center',
@@ -191,21 +196,21 @@ export default StyleSheet.create({
 
   snippetParagraph: {
     ...Platform.select({
-      android: { 
+      android: {
         marginVertical: '0.5%',
       },
-  }),
+    }),
   },
   snippetStyle: {
     ...iOSUIKit.bodyObject,
     ...Platform.select({
-      android: { 
+      android: {
         textAlign: 'justify',
       },
       ios: {
         textAlign: 'left',
       },
-  }),
+    }),
     fontSize: 14,
     fontFamily: 'Metropolis',
   },
@@ -225,7 +230,7 @@ export default StyleSheet.create({
     marginRight: 8,
   },
   actualSnippetContainer: {
-    marginVertical: 8
+    marginVertical: 8,
   },
   actualSnippetText: {
     ...iOSUIKit.bodyEmphasizedObject,
@@ -235,9 +240,9 @@ export default StyleSheet.create({
     textAlign: 'left',
   },
   formPlaceholderStyle: {
-    ...iOSUIKit.bodyEmphasizedObject,    
+    ...iOSUIKit.bodyEmphasizedObject,
     textAlign: 'left',
     fontSize: 18,
     fontFamily: 'Metropolis',
-  }
+  },
 })
