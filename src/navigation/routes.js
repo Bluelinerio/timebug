@@ -29,21 +29,18 @@ export default {
     PrototypeNavigator: 'PrototypeNavigator',
   },
   start: {
-    initialRouteName: 'VersionNavigator',
+    initialRouteName: 'TabNavigator',
     Walkthrough: 'Walkthrough',
     VersionNavigator: 'VersionNavigator',
+    TabNavigator: 'TabNavigator',
+    HelpScreen: 'HelpScreen',
   },
-  // start: {
-  //   initialRouteName: 'TabNavigator',
-  //   Walkthrough: 'Walkthrough',
-  //   TabNavigator: 'TabNavigator'
-  // },
   goals: {
     initialRouteName: 'GoalScreen',
     GoalScreen: 'GoalScreen',
     GoalStepScreen: 'GoalStepScreen',
   },
-};
+}
 
 export const protoRoutes = {
   proto: {
@@ -59,4 +56,4 @@ export const protoRoutes = {
     V2_WorkbookScreen: 'V2_WorkbookScreen',
     initialRouteName: 'V2_WorkbookScreen',
   },
-};
+}

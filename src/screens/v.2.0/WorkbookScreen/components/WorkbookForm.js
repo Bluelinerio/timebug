@@ -1,7 +1,7 @@
-import React                      from 'react'
-import { View, Text, ScrollView } from 'react-native'
-import Form                       from '../containers/FormWrapperContainer'
-import styles                     from '../styles'
+import React                               from 'react'
+import { View, Text, ScrollView, Linking } from 'react-native'
+import Form                                from '../../../../forms/custom/components/Form'
+import styles                              from '../styles'
 import type { Step }              from '../../../../services/cms'
 import FormFinishedComponent      from '../containers/FormFinishedContainer'
 
@@ -31,10 +31,16 @@ class WorkbookForm extends React.PureComponent<Props, State> {
     })
   }
 
+  _goToUrl = () => {
+    Linking.openURL('https://2020lifevision.com/').catch(() => {})
+  }
+
   render() {
     const { model, step, stepNumber, data, phase, onSelectStep } = this.props
     const { formFinished } = this.state
-    return model ? (
+    const isMvp = false
+
+    return model && !isMvp ? (
       <ScrollView
         style={[styles.scrollView, styles.fullWidth]}
         contentContainerStyle={styles.scrollView}
@@ -63,8 +69,18 @@ class WorkbookForm extends React.PureComponent<Props, State> {
         )}
       </ScrollView>
     ) : (
-      <View style={styles.scrollView}>
-        <Text>This form is coming soon</Text>
+      <View style={[styles.scrollView, styles.snippetParagraph]}>
+        <Text style={[styles.formPlaceholderStyle]}>
+          The 20/20 Life Vision Workbook is on the way! {'\n\n'}
+          In the meantime, enjoy the guidebook and audio book content and keep
+          checking back for updates.{'\n'}
+          {'\n'}
+          You can also find the PDF version of the workbook available at{' '}
+          {'\n\n'}
+          <Text style={styles.link} onPress={this._goToUrl}>
+            2020lifevision.com
+          </Text>
+        </Text>
       </View>
     )
   }

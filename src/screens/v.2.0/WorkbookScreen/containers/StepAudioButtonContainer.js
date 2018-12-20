@@ -14,7 +14,7 @@ export type StepContentButtonContainerProps = {
 const mergeProps = (
   ownProps: StepContentButtonContainerProps
 ): StepAudioButtonProps => {
-  const { phase, audio } = ownProps
+  const { phase, audio, barStyle } = ownProps
 
   const icons = {
     [videoStatus.READY]: 'AudioMuted',
@@ -28,6 +28,7 @@ const mergeProps = (
 
   return {
     iconStyle,
+    barStyle,
     icons,
     audio,
   }

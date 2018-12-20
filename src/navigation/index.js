@@ -2,44 +2,45 @@
 /* eslint-disable react/display-name */
 
 // @flow
-import React from 'react';
-import { Platform } from 'react-native';
+import React              from 'react'
+import { Platform }       from 'react-native'
 import {
   StackNavigator,
   NavigationActions,
   TabNavigator,
   TabBarBottom,
-} from 'react-navigation';
+}                         from 'react-navigation'
 import {
   tabBarBackground,
   tabBarButtonColor,
   tabBarUnselected,
-} from '../constants/colors';
-import TabBarIcon from '../components/TabBarIcon';
-import TabBarLabel from '../components/TabBarLabel';
-import HomeScreen from '../screens/HomeScreen';
-import StepScreen from '../screens/StepScreen';
-import WorkbookDoneScreen from '../screens/WorkbookDoneScreen';
-import WorkbookScreen from '../screens/WorkbookScreen';
-import WalkthroughScreen from '../screens/WalkthroughScreen';
-import DashboardScreen from '../screens/DashboardScreen';
-import CheckinScreen from '../screens/CheckinScreen';
-import MarkdownScreen from '../screens/MarkdownScreen';
-import EmojiPickerScreen from '../screens/EmojiPickerScreen';
-import MyJourneyScreen from '../screens/MyJourneyScreen';
-import StartScreen from '../screens/StartScreen';
-import GoalScreen from '../screens/GoalScreen';
-import GoalStepScreen from '../screens/GoalStepScreen';
-import AppVersionScreen from '../screens/AppVersionSelectionScreen';
-import V2Navigator from '../screens/v.2.0'
+}                         from '../constants/colors'
+import TabBarIcon         from '../components/TabBarIcon'
+import TabBarLabel        from '../components/TabBarLabel'
+import HomeScreen         from '../screens/HomeScreen'
+import StepScreen         from '../screens/StepScreen'
+import WorkbookDoneScreen from '../screens/WorkbookDoneScreen'
+import WorkbookScreen     from '../screens/WorkbookScreen'
+import WalkthroughScreen  from '../screens/WalkthroughScreen'
+import DashboardScreen    from '../screens/DashboardScreen'
+import CheckinScreen      from '../screens/CheckinScreen'
+import MarkdownScreen     from '../screens/MarkdownScreen'
+import EmojiPickerScreen  from '../screens/EmojiPickerScreen'
+import MyJourneyScreen    from '../screens/MyJourneyScreen'
+import StartScreen        from '../screens/StartScreen'
+import GoalScreen         from '../screens/GoalScreen'
+import GoalStepScreen     from '../screens/GoalStepScreen'
+import AppVersionScreen   from '../screens/AppVersionSelectionScreen'
+import V2Navigator        from '../screens/v.2.0'
+import HelpScreen         from '../screens/HelpScreen'
 
 // TODO: Prototype to remove
-import PrototypeNavigator from '../screens/PrototypeScreen';
+import PrototypeNavigator from '../screens/PrototypeScreen'
 
-import routes from './routes';
+import routes from './routes'
 
 if (!routes || !routes.root || !routes.root.initialRouteName || !routes.step) {
-  throw 'missing routes or nested fields ' + JSON.stringify(routes);
+  throw 'missing routes or nested fields ' + JSON.stringify(routes)
 }
 
 // TODO: there's an issue with moving from the current setup where the import of each screen gets you an object that looks like { screen: } rather than a component, so I added
@@ -65,12 +66,12 @@ export const assignmentFlowConfiguration = {
       opacity: 1,
     },
   },
-};
+}
 
 const AssignmentFlowNavigator = StackNavigator(
   assignmentFlowConfiguration.screens,
   assignmentFlowConfiguration.options
-);
+)
 
 export const rootConfiguration = {
   routes: routes.root,
@@ -108,12 +109,12 @@ export const rootConfiguration = {
       opacity: 1,
     },
   },
-};
+}
 
 export const RootNavigator = StackNavigator(
   rootConfiguration.screens,
   rootConfiguration.options
-);
+)
 
 export const goalsConfiguration = {
   routes: routes.goals,
@@ -135,17 +136,17 @@ export const goalsConfiguration = {
       opacity: 1,
     },
   },
-};
+}
 
 export const goalsNavigator = StackNavigator(
   goalsConfiguration.screens,
   goalsConfiguration.options
-);
+)
 
 type NavigationOptionsElementProps = {
   focused: boolean,
   tintColor: string,
-};
+}
 
 export const tabConfiguration = {
   routes: routes.tab,
@@ -167,18 +168,18 @@ export const tabConfiguration = {
     initialRouteName: routes.tab.initialRouteName,
     navigationOptions: ({ navigation }) => ({
       tabBarIcon: ({ focused, tintColor }: NavigationOptionsElementProps) => {
-        const { routeName } = navigation.state;
+        const { routeName } = navigation.state
         return (
           <TabBarIcon
             routeName={routeName}
             focused={focused}
             tintColor={tintColor}
           />
-        );
+        )
       },
       tabBarLabel: ({ tintColor }: NavigationOptionsElementProps) => {
-        const { routeName } = navigation.state;
-        return <TabBarLabel routeName={routeName} tintColor={tintColor} />;
+        const { routeName } = navigation.state
+        return <TabBarLabel routeName={routeName} tintColor={tintColor} />
       },
     }),
     tabBarOptions: {
@@ -191,12 +192,12 @@ export const tabConfiguration = {
     tabBarComponent: TabBarBottom,
     tabBarPosition: 'bottom',
   },
-};
+}
 
 export const RootTabNavigator = TabNavigator(
   tabConfiguration.screens,
   tabConfiguration.options
-);
+)
 
 export const versionConfiguration = {
   routes: routes.version,
@@ -222,18 +223,21 @@ export const versionConfiguration = {
       opacity: 1,
     },
   },
-};
+}
 
 export const VersionNavigator = StackNavigator(
   versionConfiguration.screens,
   versionConfiguration.options
-);
+)
 
 export const startConfiguration = {
   routes: routes.start,
   screens: {
-    [routes.start.VersionNavigator]: {
-      screen: VersionNavigator,
+    [routes.start.TabNavigator]: {
+      screen: RootTabNavigator,
+    },
+    [routes.start.HelpScreen]: {
+      screen: HelpScreen,
     },
     [routes.start.Walkthrough]: {
       screen: WalkthroughScreen,
@@ -248,25 +252,25 @@ export const startConfiguration = {
       opacity: 1,
     },
   },
-};
+}
 
 export const StartNavigator = StackNavigator(
   startConfiguration.screens,
   startConfiguration.options
-);
+)
 
 // fix for debouncing
-import { fixDebounce } from './util';
-fixDebounce(RootNavigator);
-fixDebounce(AssignmentFlowNavigator);
+import { fixDebounce } from './util'
+fixDebounce(RootNavigator)
+fixDebounce(AssignmentFlowNavigator)
 // remove once fixed...
 
 const previousGetActionForPathAndParams =
-  RootTabNavigator.router.getActionForPathAndParams;
+  RootTabNavigator.router.getActionForPathAndParams
 
 Object.assign(RootTabNavigator.router, {
   getActionForPathAndParams(path, params) {
-    const key = path.split('/')[1];
+    const key = path.split('/')[1]
     if (key === 'step') {
       return NavigationActions.navigate({
         routeName: 'Profile',
@@ -276,8 +280,8 @@ Object.assign(RootTabNavigator.router, {
           // navigation state.
           routeName: 'Friends',
         }),
-      });
+      })
     }
-    return previousGetActionForPathAndParams(path, params);
+    return previousGetActionForPathAndParams(path, params)
   },
-});
+})

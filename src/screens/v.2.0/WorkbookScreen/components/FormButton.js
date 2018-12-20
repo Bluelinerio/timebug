@@ -13,6 +13,7 @@ export type Props = {
   sections: Sections,
   selectedSection: string,
   ownSection: string,
+  barStyle: any,
 }
 
 class FormButton extends React.PureComponent<Props> {
@@ -28,11 +29,17 @@ class FormButton extends React.PureComponent<Props> {
       icon,
       selectedSection,
       ownSection,
+      barStyle,
     } = this.props
 
     return (
       <TouchableOpacity
-        style={[styles.helperButton, containerStyle]}
+        style={[
+          styles.helperButton,
+          containerStyle,
+          styles.sidebarButton,
+          barStyle,
+        ]}
         onPress={this._onPress}
         disabled={ownSection === selectedSection}
       >

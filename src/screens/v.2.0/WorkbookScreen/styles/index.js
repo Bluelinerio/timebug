@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet, Platform } from 'react-native'
 import {
   PHASE_1_COMPLETE,
   PHASE_2_COMPLETE,
@@ -8,6 +8,7 @@ import {
   white2,
   gray400,
   hotPink,
+  blue900,
   gray600,
 } from '../../../../constants/colors'
 import { iOSUIKit } from 'react-native-typography'
@@ -116,7 +117,7 @@ export const sideBarStyles = {
     flex: 1,
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'space-around',
+    justifyContent: 'space-evenly',
     backgroundColor: 'blue',
     maxWidth: '20%',
     paddingBottom: '10%',
@@ -131,6 +132,10 @@ export default StyleSheet.create({
   scrollView: {
     flexGrow: 1,
   },
+  link: {
+    color: blue900,
+    textAlign: 'center',
+  },
   center: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -138,12 +143,12 @@ export default StyleSheet.create({
   },
   stepBarContainer: {
     flex: 1,
-    height: '13.5%',
-    maxHeight: '13.5%',
+    height: '16%',
+    maxHeight: '16%',
     flexDirection: 'row',
     backgroundColor: PHASE_1_BAR,
     paddingHorizontal: 2,
-    paddingVertical: '1%',
+    paddingVertical: 6,
   },
   stepAudioButtonContainer: {
     flex: 1,
@@ -153,6 +158,8 @@ export default StyleSheet.create({
   stepBarContentContainer: {
     flex: 2,
     flexDirection: 'column',
+    flexWrap: 'wrap',
+    alignItems: 'flex-start',
   },
   stepPictureContainer: {
     flex: 1,
@@ -164,6 +171,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'flex-start',
     marginTop: 4,
+    flexWrap: 'wrap',
   },
   stepNumber: {
     ...iOSUIKit.subheadEmphasizedObject,
@@ -187,6 +195,31 @@ export default StyleSheet.create({
     maxHeight: helperIconContainerSize,
     flex: 1,
   },
+  sidebarButton: {
+    borderWidth: 1,
+    borderRadius: 50,
+    borderColor: gray400,
+    borderBottomWidth: 0,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    marginLeft: 5,
+    marginRight: 5,
+    marginTop: 10,
+    ...Platform.select({
+      android: { elevation: 2 },
+      ios: {
+        shadowColor: 'black',
+        shadowOffset: {
+          width: 2,
+          height: 2,
+        },
+        shadowOpacity: 0.3,
+        shadowRadius: 12,
+      },
+    }),
+  },
   buttonImage: {
     height: stepIconSize,
     width: stepIconSize,
@@ -195,9 +228,6 @@ export default StyleSheet.create({
   snippetTitleContainer: {
     paddingBottom: '2%',
   },
-  snippetParagraph: {
-    marginVertical: '0.5%',
-  },
   snippetTitle: {
     ...iOSUIKit.title3EmphasizedObject,
     textAlign: 'justify',
@@ -205,9 +235,24 @@ export default StyleSheet.create({
     fontWeight: '700',
     lineHeight: 20 * 1.2,
   },
+
+  snippetParagraph: {
+    ...Platform.select({
+      android: {
+        marginVertical: '0.5%',
+      },
+    }),
+  },
   snippetStyle: {
     ...iOSUIKit.bodyObject,
-    textAlign: 'justify',
+    ...Platform.select({
+      android: {
+        textAlign: 'justify',
+      },
+      ios: {
+        textAlign: 'left',
+      },
+    }),
     fontSize: 14,
     fontFamily: 'Metropolis',
   },
@@ -350,5 +395,36 @@ export default StyleSheet.create({
     fontFamily: 'Metropolis',
     fontWeight: '700',
     textAlign: 'center',
+  },
+  workbookContent: {
+    paddingHorizontal: '2.5%',
+    paddingVertical: '1%',
+    paddingTop: '5%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  snippetButtonContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 8,
+  },
+  marginScrollViewElement: {
+    marginRight: 8,
+  },
+  actualSnippetContainer: {
+    marginVertical: 8,
+  },
+  actualSnippetText: {
+    ...iOSUIKit.bodyEmphasizedObject,
+    fontSize: 15,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
+    textAlign: 'left',
+  },
+  formPlaceholderStyle: {
+    ...iOSUIKit.bodyEmphasizedObject,
+    textAlign: 'left',
+    fontSize: 18,
+    fontFamily: 'Metropolis',
   },
 })
