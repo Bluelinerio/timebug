@@ -10,13 +10,13 @@ import {
   hotPink,
   blue900,
   gray600,
-} from '../../../../constants/colors'
-import { iOSUIKit } from 'react-native-typography'
+}                               from '../../../../constants/colors'
+import { iOSUIKit }             from 'react-native-typography'
 import {
   heightPercentage,
   widthPercentage,
-} from '../../../../utils/viewportCalculation'
-import hexToRgba from '../../../../utils/colorTransform'
+}                               from '../../../../utils/viewportCalculation'
+import hexToRgba                from '../../../../utils/colorTransform'
 
 export const sideBarWidth = widthPercentage(20)
 export const helperIconContainerSize = widthPercentage(70, sideBarWidth)
@@ -257,7 +257,9 @@ export default StyleSheet.create({
     fontFamily: 'Metropolis',
   },
   workbookContent: {
-    padding: 20,
+    paddingHorizontal: '2.5%',
+    paddingVertical: '1%',
+    paddingTop: '5%',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -380,33 +382,6 @@ export default StyleSheet.create({
     textAlign: 'center',
     fontFamily: 'Metropolis',
     color: fontColor,
-  },
-  marginScrollViewElement: {
-    marginRight: 8,
-  },
-  actualSnippetContainer: {
-    marginVertical: 8,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  actualSnippetText: {
-    ...iOSUIKit.bodyEmphasizedObject,
-    fontSize: 15,
-    fontFamily: 'Metropolis',
-    fontWeight: '700',
-    textAlign: 'center',
-  },
-  workbookContent: {
-    paddingHorizontal: '2.5%',
-    paddingVertical: '1%',
-    paddingTop: '5%',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  snippetButtonContainer: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 8,
   },
   marginScrollViewElement: {
     marginRight: 8,

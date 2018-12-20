@@ -1,9 +1,9 @@
-import React                               from 'react'
+import React from 'react'
 import { View, Text, ScrollView, Linking } from 'react-native'
-import Form                                from '../../../../forms/custom/components/Form'
-import styles                              from '../styles'
-import type { Step }              from '../../../../services/cms'
-import FormFinishedComponent      from '../containers/FormFinishedContainer'
+import Form from '../containers/FormWrapperContainer'
+import styles from '../styles'
+import type { Step } from '../../../../services/cms'
+import FormFinishedComponent from '../containers/FormFinishedContainer'
 
 type Props = {
   stepNumber: string,
@@ -24,6 +24,13 @@ class WorkbookForm extends React.PureComponent<Props, State> {
     formFinished: false,
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.stepNumber !== prevProps.stepNumber)
+      this.setState({
+        formFinished: false,
+      })
+  }
+
   _onFinish = (data: any) => {
     const { setScreenStatus, stepNumber } = this.props
     this.setState({ formFinished: true }, () => {
@@ -38,9 +45,7 @@ class WorkbookForm extends React.PureComponent<Props, State> {
   render() {
     const { model, step, stepNumber, data, phase, onSelectStep } = this.props
     const { formFinished } = this.state
-    const isMvp = false
-
-    return model && !isMvp ? (
+    return model ? (
       <ScrollView
         style={[styles.scrollView, styles.fullWidth]}
         contentContainerStyle={styles.scrollView}
