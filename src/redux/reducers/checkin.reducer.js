@@ -87,13 +87,22 @@ import { persistReducer, createMigrate } from 'redux-persist';
 
 const migrations = {
   0: state => state,
+  1: (state) => ({
+    ...state,
+    checkins: {},
+  }),
+  2: state => state,
+  3: (state) => ({
+    ...state,
+    checkins: {},
+  }),
 };
 
 const persistConfig = {
   key: 'checkins',
   storage: storage,
   blacklist: [],
-  version: 1,
+  version: 3,
   migrate: createMigrate(migrations, { debug: true }),
 };
 

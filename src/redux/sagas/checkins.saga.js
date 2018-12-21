@@ -12,7 +12,7 @@ import {
 import { updateCheckin }             from '../actions/checkin.actions'
 import {
   CHANGE_CHECKIN,
-  BUILD_NOTIFICATION_SET,
+  // BUILD_NOTIFICATION_SET,
   REMOVE_CHECKIN,
   TOGGLE_CHECKIN,
 }                                    from '../actionTypes'
@@ -88,6 +88,7 @@ function* toggleNotification({ payload }: ToggleCheckinPayload) {
   }
 }
 
+/* eslint-disable-next-line */
 function* _setInitialNotifications() {
   const steps = yield select(selectors.steps)
   const user = yield select(selectors.user)
@@ -136,7 +137,7 @@ function* _setInitialNotifications() {
 }
 
 function* watchForInitialNotifications() {
-  yield takeLatest(BUILD_NOTIFICATION_SET, _setInitialNotifications)
+  // yield takeLatest(BUILD_NOTIFICATION_SET, _setInitialNotifications)
 }
 
 function* watchForCheckinsUpdate() {
@@ -161,7 +162,6 @@ function* watchForNotificationToggling() {
 
 export function* watchForCheckinsSaga() {
   // TODO: Set up permissions for IOS? it would probably be good to do it here
-  // Disable both forks until the call to permissions is accepted
   yield fork(watchForCheckinsUpdate)
   yield fork(watchForCheckinsDeletion)
   yield fork(watchForNotificationToggling)

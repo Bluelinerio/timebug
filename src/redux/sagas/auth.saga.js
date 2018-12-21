@@ -47,10 +47,6 @@ function* _logout() {
   ]);
 }
 
-// function* _logoutAndWipeUserData() {
-//   yield all([call(_logout), put(actions.resetStore)])
-// }
-
 function* _handleUserError() {
   yield call(_logout);
   yield put(actions.setUserAnonymous());
