@@ -4,8 +4,7 @@ import { View, Text, TouchableOpacity }  from 'react-native'
 import { phaseProgressStyles as styles } from '../styles'
 import ProgressBar                       from 'react-native-progress/Bar'
 
-// TODO: Remove
-const DISABLE_PROGRESS = true
+const DISABLE_PROGRESS = false
 
 export type PhaseProgressComponentProps = {
   phase: string,

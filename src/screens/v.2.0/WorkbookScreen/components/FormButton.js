@@ -13,6 +13,7 @@ export type Props = {
   sections: Sections,
   selectedSection: string,
   ownSection: string,
+  barStyle: any,
 }
 
 class FormButton extends React.PureComponent<Props> {

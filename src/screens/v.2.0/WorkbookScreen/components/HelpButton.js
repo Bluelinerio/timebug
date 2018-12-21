@@ -1,7 +1,7 @@
 // @flow
-import React from 'react'
-import { TouchableOpacity } from 'react-native'
-import SvgIcon from '../../../../components/SvgIcon'
+import React                 from 'react'
+import { TouchableOpacity }  from 'react-native'
+import SvgIcon               from '../../../../components/SvgIcon'
 import styles, { svgStyles } from '../styles'
 
 export type Props = {
@@ -11,6 +11,7 @@ export type Props = {
   iconStyle: any,
   hasHelpSlides: boolean,
   icon: string,
+  barStyle: any,
 }
 
 class HelpButton extends React.PureComponent<Props> {
@@ -25,11 +26,17 @@ class HelpButton extends React.PureComponent<Props> {
       iconStyle = {},
       hasHelpSlides,
       icon,
+      barStyle,
     } = this.props
 
     return (
       <TouchableOpacity
-        style={[styles.helperButton, helpButtonContainerStyle]}
+        style={[
+          styles.helperButton,
+          helpButtonContainerStyle,
+          styles.sidebarButton,
+          barStyle,
+        ]}
         onPress={this._onPress}
         disabled={hasHelpSlides ? false : true}
       >

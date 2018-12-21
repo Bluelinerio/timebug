@@ -2,7 +2,6 @@ import React                              from 'react'
 import { View, Text, ScrollView }         from 'react-native'
 import styles                             from '../styles'
 import type { Step }                      from '../../../../services/cms'
-import { splitByLines }                   from '../utils/textSplit'
 import Button                             from '../../../../components/Button'
 import { connectContext }                 from 'react-connect-context'
 import { SectionConsumer, SectionValues } from '../context/SectionContext'
@@ -53,15 +52,16 @@ class WorkbookSnippet extends React.PureComponent<Props> {
         contentContainerStyle={styles.scrollView}
       >
         <View style={styles.marginScrollViewElement}>
-    
           <View style={styles.actualSnippetContainer}>
             <Text style={[styles.actualSnippetText, textStyle]}>
               {step.snippet}
             </Text>
           </View>
-            <View style={styles.snippetParagraph}>
-              <Text style={[styles.snippetStyle, textStyle]}>{step.description}</Text>
-            </View>
+          <View style={styles.snippetParagraph}>
+            <Text style={[styles.snippetStyle, textStyle]}>
+              {step.description}
+            </Text>
+          </View>
           <SwitchButton text={'Next'} background={color} />
         </View>
       </ScrollView>
