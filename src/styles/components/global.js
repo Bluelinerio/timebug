@@ -18,6 +18,8 @@ import {
 } from '../../constants/colors';
 import { translateCMSPhaseToStandard, PHASES } from '../../services/cms';
 
+const MVP_COLORS_OVERRIDE = true
+
 export const phase_1_color = MEDITATION;
 
 export const phase_1_alt_color = PHASE_1_COMPLETE;
@@ -55,11 +57,11 @@ export const backgroundColorFromStep = (
   const phase = translateCMSPhaseToStandard(type);
   switch (phase) {
   case PHASES.MEDITATION:
-    return completed ? phase_1_alt_color : PHASE_1_INCOMPLETE;
+    return completed || MVP_COLORS_OVERRIDE ? phase_1_alt_color : PHASE_1_INCOMPLETE;
   case PHASES.SELF_ASSESSMENT:
-    return completed ? phase_2_alt_color : PHASE_2_INCOMPLETE;
+    return completed || MVP_COLORS_OVERRIDE ? phase_2_alt_color : PHASE_2_INCOMPLETE;
   case PHASES.VISION_CREATION:
-    return completed ? phase_3_alt_color : PHASE_3_INCOMPLETE;
+    return completed || MVP_COLORS_OVERRIDE ? phase_3_alt_color : PHASE_3_INCOMPLETE;
   default:
     return COMPLETE;
   }
@@ -72,7 +74,7 @@ export const getTextColorFromStep = (
   const phase = translateCMSPhaseToStandard(type);
   switch (phase) {
   case PHASES.MEDITATION:
-    return completed ? stepTextColor : phase_1_incomplete_text_color;
+    return completed || MVP_COLORS_OVERRIDE ? stepTextColor : phase_1_incomplete_text_color;
   case PHASES.SELF_ASSESSMENT:
     return stepTextColor;
   case PHASES.VISION_CREATION:

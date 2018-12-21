@@ -1,8 +1,12 @@
 //@flow
 import React         from 'react'
+import { View } from 'react-native';
+
+import styles from '../styles';
 import VideoAwareSVG from '../containers/VideoAwareSVGContainer'
 
 export type StepAudioButtonProps = {
+  barStyle: any,
   containerStyle: any,
   iconStyle: any,
   icons: {
@@ -13,11 +17,11 @@ export type StepAudioButtonProps = {
 
 class StepAudioButton extends React.PureComponent<StepAudioButtonProps> {
   render() {
-    const { iconStyle, icons, audio } = this.props
+    const { iconStyle, icons, audio, barStyle } = this.props
     return (
-      <React.Fragment>
+      <View style={[styles.sidebarButton, barStyle]}>
         <VideoAwareSVG file={audio} icons={icons} iconStyle={iconStyle} />
-      </React.Fragment>
+      </View>
     )
   }
 }

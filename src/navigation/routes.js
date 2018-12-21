@@ -29,9 +29,10 @@ export default {
     PrototypeNavigator: 'PrototypeNavigator',
   },
   start: {
-    initialRouteName: 'VersionNavigator',
+    initialRouteName: 'TabNavigator',
     Walkthrough: 'Walkthrough',
     VersionNavigator: 'VersionNavigator',
+    TabNavigator: 'TabNavigator',
   },
   // start: {
   //   initialRouteName: 'TabNavigator',

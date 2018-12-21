@@ -33,6 +33,9 @@ import GoalStepScreen from '../screens/GoalStepScreen';
 import AppVersionScreen from '../screens/AppVersionSelectionScreen';
 import V2Navigator from '../screens/v.2.0'
 
+// TODO: remove
+const DISABLE_MVP_TAB_BAR = true
+
 // TODO: Prototype to remove
 import PrototypeNavigator from '../screens/PrototypeScreen';
 
@@ -166,6 +169,7 @@ export const tabConfiguration = {
   options: {
     initialRouteName: routes.tab.initialRouteName,
     navigationOptions: ({ navigation }) => ({
+      tabBarVisible: !DISABLE_MVP_TAB_BAR, //TODO: remove
       tabBarIcon: ({ focused, tintColor }: NavigationOptionsElementProps) => {
         const { routeName } = navigation.state;
         return (
@@ -190,6 +194,7 @@ export const tabConfiguration = {
     },
     tabBarComponent: TabBarBottom,
     tabBarPosition: 'bottom',
+    swipeEnabled: false, //TODO: remove
   },
 };
 
@@ -232,9 +237,12 @@ export const VersionNavigator = StackNavigator(
 export const startConfiguration = {
   routes: routes.start,
   screens: {
-    [routes.start.VersionNavigator]: {
-      screen: VersionNavigator,
+    [routes.start.TabNavigator]: {
+      screen: RootTabNavigator,
     },
+    // [routes.start.VersionNavigator]: {
+    //   screen: VersionNavigator,
+    // },
     [routes.start.Walkthrough]: {
       screen: WalkthroughScreen,
     },
