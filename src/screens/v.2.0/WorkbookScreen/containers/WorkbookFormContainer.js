@@ -1,39 +1,32 @@
 import { connect }           from 'react-redux'
 import WorkbookForm          from '../components/WorkbookForm'
-import { changeUI }          from '../../../../redux/actions/ui.actions'
 import selectors             from '../../../../redux/selectors'
 import models                from '../../../../forms/custom/forms'
 import { compose, mapProps } from 'recompose'
+import { submitFormValue }   from '../../../../redux/actions/formData.actions.js'
+import type { SubmitAction } from '../../../../redux/actions/formData.actions.js'
 
 const mapStateToProps = (state: any) => {
-  const stateForScreen = selectors.stateForScreen(state)
+  const data = selectors.formData(state)
   return {
-    stateForScreen,
+    data,
     models,
   }
 }
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    setScreen: (screen: string) => (params: any) =>
-      dispatch(changeUI({ screen, params })),
+    submitForm: (payload: SubmitAction) => dispatch(submitFormValue(payload)),
   }
 }
 
-const merge = ({
-  screen = 'someRandomScreen',
-  stateForScreen,
-  setScreen,
-  step,
-}) => {
-  const setScreenStatus = setScreen(screen)
-  const data = stateForScreen(screen)
+const merge = ({ submitForm, step, data }) => {
   const model = models[step]
   const formData = data[step]
   return {
     data: formData,
     model,
-    setScreenStatus,
+    submitForm,
     step,
   }
 }

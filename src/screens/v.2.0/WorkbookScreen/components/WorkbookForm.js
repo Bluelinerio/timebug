@@ -1,19 +1,22 @@
+// @flow
 import React                               from 'react'
 import { View, Text, ScrollView, Linking } from 'react-native'
 import Form                                from '../../../../forms/custom/components/Form'
 import styles                              from '../styles'
+import type { SubmitAction }               from '../../../../redux/actions/formData.actions.js'
 
 type Props = {
   step: string,
   setScreenStatus: any => null,
   model: any,
   data: any,
+  submitForm: SubmitAction => null,
 }
 
 class WorkbookForm extends React.PureComponent<Props> {
   _onFinish = (data: any) => {
-    const { setScreenStatus, step } = this.props
-    setScreenStatus({ [step]: data })
+    const { submitForm, step } = this.props
+    submitForm({ stepId: step, value: data })
   }
 
   _goToUrl = () => {

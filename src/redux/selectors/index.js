@@ -118,6 +118,7 @@ const formWithStepId = (state: any) => (stepId: string): Form =>
 
 // form data
 const formData = (state: any) => getFormData(state).data;
+
 const incompleteFormsData = (state: any) =>
   filterStepIds(getFormData(state).data);
 
@@ -136,6 +137,7 @@ const buttonTitleForFormCompletion = ({ completedForms, incomplete }) => {
   }
 };
 
+/* DEPRECATED */
 const sortedStepsWithForms = state => {
   const completed = completedForms(state);
   const incompleteForms = incompleteFormsData(state);
@@ -182,6 +184,7 @@ const buttonTitlesForFormCompletion = state => stepId => {
   )(state);
 };
 
+/* DEPRECATED */
 const modelsAndDataForExercise = (state: any) => (stepId: string) => {
   //TComb Forms helpers
 
