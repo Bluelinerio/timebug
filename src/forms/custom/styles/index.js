@@ -8,6 +8,15 @@ import {
   gray400,
   greenA400,
 }                               from '../../../constants/colors'
+import {
+  widthPercentage,
+  heightPercentage,
+}                               from '../../../utils/viewportCalculation'
+
+export const TEMPORARY_COLOR_FOR_BUTTONS = azure
+
+export const buttonWidth = widthPercentage(20)
+export const buttonHeight = heightPercentage(6.66)
 
 export const formTextColor = blue900
 export const iconSize = 30
@@ -17,6 +26,56 @@ export const checkboxColor = greenA400
 export const uncheckedColor = gray400
 export const helpButtonColor = azure
 
+export const connectedComponentStyles = StyleSheet.create({
+  connectedRow: {
+    flex: 1,
+    flexDirection: 'row',
+    marginVertical: 16,
+    minHeight: 50,
+  },
+  elementIdentifierContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+  contentContainer: {
+    flex: 2,
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+  },
+  pickerStyle: {
+    width: '100%',
+    backgroundColor: hexToRgba(azure, 0.1),
+    minHeight: 25,
+    maxHeight: 30,
+    flex: 1,
+  },
+  pickerItemStyle: {
+    color: gray900,
+    fontFamily: 'Metropolis',
+    fontWeight: '500',
+    fontSize: 12,
+  },
+  pickerBackground: {
+    backgroundColor: hexToRgba(azure, 0.1),
+    paddingVertical: 0.5,
+    borderWidth: 0.5,
+    borderRadius: 4,
+    borderColor: '#cccccc',
+  },
+  connectedElement: {
+    marginVertical: 4,
+  },
+  text: {
+    fontFamily: 'Metropolis',
+  },
+  identifierText: {
+    fontWeight: '700',
+  },
+})
+
 const formStyles = StyleSheet.create({
   container: {
     flex: 1,
@@ -24,7 +83,7 @@ const formStyles = StyleSheet.create({
   helpButton: {
     width: 40,
     height: 40,
-    borderRadius: 100,
+    borderRadius: 20,
     backgroundColor: azure,
     alignItems: 'center',
     justifyContent: 'center',
@@ -42,16 +101,15 @@ const formStyles = StyleSheet.create({
     flex: 5,
     padding: 16,
     paddingTop: 10,
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
   },
   formButtonContainer: {
     backgroundColor: 'transparent',
     flexDirection: 'row',
     flex: 1,
+    flexGrow: 0,
     padding: 8,
-    marginBottom: 16,
-    marginHorizontal: 16,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -59,19 +117,18 @@ const formStyles = StyleSheet.create({
     backgroundColor: 'transparent',
     flexDirection: 'row',
     flex: 1,
+    flexGrow: 0,
     padding: 8,
-    marginBottom: 16,
-    marginHorizontal: 16,
     alignItems: 'center',
     justifyContent: 'space-around',
   },
   formButton: {
     backgroundColor: azure,
+    borderRadius: 6,
+    paddingHorizontal: 10,
     paddingVertical: 8,
-    paddingHorizontal: 16,
-    borderRadius: 12,
-    height: 50,
-    width: 80,
+    height: buttonHeight,
+    width: buttonWidth,
     alignItems: 'center',
     justifyContent: 'center',
     ...Platform.select({
@@ -105,8 +162,10 @@ const formStyles = StyleSheet.create({
     fontSize: 16,
     width: '80%',
   },
+  textInputLabelContainer: {
+    marginBottom: 16,
+  },
   textInputContainerStyle: {
-    marginTop: 16,
     borderWidth: 0.5,
     borderColor: '#cccccc',
     paddingVertical: 2,
@@ -141,6 +200,11 @@ const formStyles = StyleSheet.create({
       },
     }),
   },
+  listButtonContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   pickerContainer: {
     width: '80%',
     marginTop: 16,
@@ -162,17 +226,30 @@ const formStyles = StyleSheet.create({
     borderColor: '#cccccc',
   },
   listFormContainer: {
+    flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
     borderRadius: 6,
     width: '100%',
   },
   listElementContainer: {
     marginBottom: 8,
+    flex: 4,
     alignItems: 'center',
     width: '100%',
   },
   listButtonStyle: {
     maxWidth: 80,
+  },
+  listAddButtonStyle: {
+    width: buttonHeight,
+    height: buttonHeight,
+    borderWidth: 1,
+    borderColor: gray900,
+    backgroundColor: 'transparent',
+    borderRadius: buttonHeight / 2,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   listContentContainer: {
     marginTop: 16,

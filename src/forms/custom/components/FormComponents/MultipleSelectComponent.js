@@ -1,12 +1,13 @@
-import React from 'react';
-import { View } from 'react-native';
-import { CheckBox } from 'react-native-elements';
-import { Text } from 'react-native-elements';
-import styles, { checkboxColor, uncheckedColor } from '../../styles';
+import React                                     from 'react'
+import { View }                                  from 'react-native'
+import { CheckBox }                              from 'react-native-elements'
+import FormElementHeader                         from './FormElementHeader'
+import styles, { checkboxColor, uncheckedColor } from '../../styles'
 
 type Props = {
   value: Array<string>,
   onChange: string => any,
+  formStyles: any,
   field: {
     content: {
       text: string,
@@ -16,7 +17,7 @@ type Props = {
       default: string,
     },
   },
-};
+}
 
 const Check = ({
   onChange,
@@ -38,26 +39,31 @@ const Check = ({
     onPress={onChange}
     containerStyle={{ backgroundColor: 'transparent' }}
   />
-);
+)
 
 class MultipleSelect extends React.PureComponent<Props> {
   _onChange = item => {
-    const { onChange, value = [] } = this.props;
-    const { value: itemValue } = item;
-    const valueSet = new Set(value);
-    if (valueSet.has(itemValue)) valueSet.delete(itemValue);
-    else valueSet.add(itemValue);
-    onChange([...valueSet]);
-  };
+    const { onChange, value = [] } = this.props
+    const { value: itemValue } = item
+    const valueSet = new Set(value)
+    if (valueSet.has(itemValue)) valueSet.delete(itemValue)
+    else valueSet.add(itemValue)
+    onChange([...valueSet])
+  }
 
   render() {
-    const { value = [], field: { content } } = this.props;
-    const valueSet = new Set(value);
+    const { value = [], field: { content }, formStyles = {} } = this.props
+    const valueSet = new Set(value)
     return (
       <React.Fragment>
-        <Text style={styles.textInputLabelStyle}>{content.text}</Text>
+        <FormElementHeader
+          text={content.text}
+          textStyle={formStyles.textStyle}
+        />
         <View style={styles.pickerContainer}>
-          <View style={styles.pickerBackground}>
+          <View
+            style={[styles.pickerBackground, formStyles.elementContainerStyle]}
+          >
             {content &&
               content.items.map(item => (
                 <Check
@@ -70,7 +76,7 @@ class MultipleSelect extends React.PureComponent<Props> {
           </View>
         </View>
       </React.Fragment>
-    );
+    )
   }
 }
-export default MultipleSelect;
+export default MultipleSelect

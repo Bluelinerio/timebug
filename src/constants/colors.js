@@ -65,4 +65,4 @@ export const whiteGradientColors = {
  * V2.0
  */
 
-export const PHASE_1_BAR = '#4EADFF';
+export const PHASE_1_BAR = azure;

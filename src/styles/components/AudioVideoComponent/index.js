@@ -33,7 +33,7 @@ export default StyleSheet.create({
     borderWidth: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 100,
+    borderRadius: 50,
   },
   icon: {
     color: heavyGray,

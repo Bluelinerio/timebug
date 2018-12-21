@@ -1,5 +1,5 @@
-import types, { actionTypes } from './types';
-import { frequencies } from '../../../services/checkins';
+import types, { actionTypes, answerTypes } from './types'
+import {                                   frequencies } from '../../../services/checkins'
 
 export const AreaOfLife = [
   'Finances',
@@ -9,7 +9,7 @@ export const AreaOfLife = [
   'Relationships',
   'Health & Wellness',
   'Spirituality',
-];
+]
 
 export const GoalType = [
   'Energy & Time',
@@ -19,10 +19,10 @@ export const GoalType = [
   'Environment',
   'Material Outcomes',
   'Relationship Quality',
-];
+]
 
 export const translateFrequencies = (frequency: string) =>
-  frequencies[frequency];
+  frequencies[frequency]
 
 export const timeToCompleteGoal = [
   'A day',
@@ -30,21 +30,22 @@ export const timeToCompleteGoal = [
   'A month',
   '6 months',
   'A year',
-];
+]
 
 export const STATUS = {
   PENDING: 'PENDING',
   COMPLETED: 'COMPLETED',
   ARCHIVED: 'ARCHIVED',
   DELETED: 'DELETED',
-};
+}
 
 const form5 = {
   type: types.form,
+  answer: answerTypes.multiple,
   fields: {
     0: {
       type: types.label,
-      key: 'goalTitle',
+      key: 'form_5_title',
       content: {
         text: `Let's set up some goals`,
       },
@@ -52,7 +53,7 @@ const form5 = {
     },
     1: {
       type: types.string,
-      key: 'recentLifeGoals',
+      key: 'form_5_recent_life_goals',
       content: {
         text: 'What is one of your recent life goals?',
         smallKey: 'Goal',
@@ -66,7 +67,7 @@ const form5 = {
     },
     2: {
       type: types.multipleSelect,
-      key: 'areaOfLifeMultiple',
+      key: 'form_5_areas_of_life',
       content: {
         text: 'Classify this goal according to the 7 goal types',
         smallKey: 'Type of goal',
@@ -74,7 +75,7 @@ const form5 = {
         items: GoalType.map((goal, index) => ({
           value: goal,
           text: goal,
-          id: `areaOfLifeMultiple_${index}`,
+          id: `form_5_areas_of_life${index}`,
         })),
       },
       options: {
@@ -83,7 +84,7 @@ const form5 = {
     },
     3: {
       type: types.select,
-      key: 'areaOfLife',
+      key: 'form_5_how_long',
       content: {
         text: 'How long do you think it will take to complete this goal?',
         smallKey: 'ETA',
@@ -98,7 +99,7 @@ const form5 = {
     },
     4: {
       type: types.select,
-      key: 'areaOfLife',
+      key: 'form_5_checkin',
       content: {
         text: 'How often would you like to be reminded about this goal?',
         smallKey: 'Check-in',
@@ -114,6 +115,7 @@ const form5 = {
     },
     5: {
       type: types.list,
+      key: 'form_5_steps',
       content: {
         text: 'What are some steps you need to do to complete this goal?',
         listText: 'Steps',
@@ -123,7 +125,7 @@ const form5 = {
         childTypes: {
           0: {
             type: types.string,
-            key: 'stepToLifeGoal',
+            key: 'form_5_steps.step_to_life_goal',
             options: {
               placeHolder: 'Step',
             },
@@ -149,6 +151,6 @@ const form5 = {
       ],
     },
   },
-};
+}
 
-export default form5;
+export default form5

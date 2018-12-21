@@ -24,10 +24,11 @@ const merge = ({ submitForm, step, data }) => {
   const model = models[step]
   const formData = data[step]
   return {
+    ...props,
     data: formData,
     model,
+    stepNumber,
     submitForm,
-    step,
   }
 }
 

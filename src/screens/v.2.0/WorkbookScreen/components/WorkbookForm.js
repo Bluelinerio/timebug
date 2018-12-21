@@ -1,20 +1,44 @@
 // @flow
 import React                               from 'react'
 import { View, Text, ScrollView, Linking } from 'react-native'
-import Form                                from '../../../../forms/custom/components/Form'
-import styles                              from '../styles'
+import Form from '../containers/FormWrapperContainer'
+import styles from '../styles'
+import type { Step } from '../../../../services/cms'
+import FormFinishedComponent from '../containers/FormFinishedContainer'
 import type { SubmitAction }               from '../../../../redux/actions/formData.actions.js'
 
 type Props = {
-  step: string,
+  stepNumber: string,
   setScreenStatus: any => null,
   model: any,
   data: any,
   submitForm: SubmitAction => null,
+  phase: string,
+  step: Step,
+  onSelectStep: Step => any,
 }
 
-class WorkbookForm extends React.PureComponent<Props> {
+type State = {
+  formFinished: boolean,
+}
+
+class WorkbookForm extends React.PureComponent<Props, State> {
+  state = {
+    formFinished: false,
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.stepNumber !== prevProps.stepNumber)
+      this.setState({
+        formFinished: false,
+      })
+  }
+
   _onFinish = (data: any) => {
+    const { setScreenStatus, stepNumber } = this.props
+    this.setState({ formFinished: true }, () => {
+      setScreenStatus({ [stepNumber]: data })
+    })
     const { submitForm, step } = this.props
     submitForm({ stepId: step, value: data })
   }
@@ -24,22 +48,35 @@ class WorkbookForm extends React.PureComponent<Props> {
   }
 
   render() {
-    const { model, step, data } = this.props
-    const isMvp = false
-
-    return model && !isMvp ? (
+    const { model, step, stepNumber, data, phase, onSelectStep } = this.props
+    const { formFinished } = this.state
+    return model ? (
       <ScrollView
-        style={styles.scrollView}
+        style={[styles.scrollView, styles.fullWidth]}
         contentContainerStyle={styles.scrollView}
       >
-        <Form
-          model={model}
-          value={data}
-          onFinish={this._onFinish}
-          step={step}
-          formContainerStyle={styles.prototypeBackground}
-          key={step}
-        />
+        {!formFinished ? (
+          <Form
+            model={model}
+            value={data}
+            onFinish={this._onFinish}
+            stepNumber={stepNumber}
+            formContainerStyle={styles.prototypeBackground}
+            key={stepNumber}
+            phase={phase}
+            disableAnswers
+            extra={{
+              step,
+            }}
+          />
+        ) : (
+          <FormFinishedComponent
+            step={step}
+            stepNumber={stepNumber}
+            phase={phase}
+            onSelectStep={onSelectStep}
+          />
+        )}
       </ScrollView>
     ) : (
       <View style={[styles.scrollView, styles.snippetParagraph]}>

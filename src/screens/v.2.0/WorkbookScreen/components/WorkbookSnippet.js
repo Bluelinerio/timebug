@@ -1,11 +1,11 @@
 import React                              from 'react'
 import { View, Text, ScrollView }         from 'react-native'
-import styles                             from '../styles'
-import type { Step }                      from '../../../../services/cms'
-import Button                             from '../../../../components/Button'
 import { connectContext }                 from 'react-connect-context'
-import { SectionConsumer, SectionValues } from '../context/SectionContext'
 import { compose, mapProps }              from 'recompose'
+import Button                             from '../../../../components/Button'
+import type { Step }                      from '../../../../services/cms'
+import { SectionConsumer, SectionValues } from '../context/SectionContext'
+import styles                             from '../styles'
 
 export type Props = {
   step: Step,

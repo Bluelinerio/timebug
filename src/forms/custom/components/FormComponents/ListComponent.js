@@ -1,9 +1,9 @@
-import React from 'react';
-import { View, Text, Alert } from 'react-native';
-import { Button } from 'react-native-elements';
-import styles from '../../styles';
-import FormPicker from './FormPicker';
-import uuid from 'uuid/v4';
+import React                                   from 'react'
+import { View, Text, Alert, TouchableOpacity } from 'react-native'
+import FormElementHeader                       from './FormElementHeader'
+import styles, { TEMPORARY_COLOR_FOR_BUTTONS } from '../../styles'
+import FormPicker                              from './FormPicker'
+import uuid                                    from 'uuid/v4'
 
 type Props = {
   value: Array<any>,
@@ -12,7 +12,8 @@ type Props = {
     content?: any,
     options?: any,
   },
-};
+  formStyles: any,
+}
 
 type ValueElement = {
   _id: string,
@@ -21,32 +22,34 @@ type ValueElement = {
     value: any,
     key: string,
   },
-};
+}
 
 type State = {
   value: Array<ValueElement>,
   currentValue: ValueElement,
-};
+}
 
 const _stripKeys = (val: ValueElement) => {
-  const metaKeys = ['_id', '_model'];
+  const metaKeys = ['_id', '_model']
   return Object.keys(val).reduce((prev, key) => {
-    if (metaKeys.find(k => k === key)) return prev;
+    if (metaKeys.find(k => k === key)) return prev
     return {
       ...prev,
       [key]: val[key],
-    };
-  }, {});
-};
+    }
+  }, {})
+}
 
 const TextElement = ({
   element,
   index,
+  formStyles = {},
 }: {
   index: number,
   element: ValueElement,
+  formStyles: any,
 }) => {
-  const strippedObject = _stripKeys(element);
+  const strippedObject = _stripKeys(element)
   return (
     <React.Fragment>
       {Object.values(strippedObject).map(value => {
@@ -54,138 +57,189 @@ const TextElement = ({
           value &&
           value.value && (
             <View key={value._id} style={styles.indented}>
-              <Text style={[styles.textElementText]}>{`${index +
-                1})${value.value || ``}`}</Text>
+              <Text
+                style={[styles.textElementText, formStyles.textStyle]}
+              >{`${index + 1})${value.value || ``}`}</Text>
             </View>
           )
-        );
+        )
       })}
     </React.Fragment>
-  );
-};
+  )
+}
 
 class ListComponent extends React.PureComponent<Props, State> {
   constructor(props) {
-    super(props);
-    const currentValue = this._buildValue(props);
+    super(props)
+    const currentValue = this._buildValue(props)
+    const indexesMap = this._mapIndexesToKeys(props.field.options)
     this.state = {
       currentValue,
-    };
+      indexesMap,
+    }
+  }
+
+  _mapIndexesToKeys = (options: { childTypes: any }) => {
+    const { childTypes } = options
+    const map = Object.keys(childTypes).reduce((m, k) => {
+      const field = childTypes[k]
+      const { key } = field
+      return {
+        ...m,
+        [k]: key,
+      }
+    }, {})
+    return map
   }
 
   _buildValue = props => {
-    const { field: { options } } = props;
-    const { childTypes } = options;
-    const defaultValue = Object.keys(childTypes).reduce((value, key) => {
-      const child = childTypes[key];
+    const { field: { options } } = props
+    const { childTypes } = options
+    const defaultValue = Object.keys(childTypes).reduce((value, k) => {
+      const child = childTypes[k]
+      const { key } = child
       return {
         ...value,
         [key]: {
           key,
+          model: child,
+          index: k,
           value: child.options ? child.options.default : undefined,
         },
-      };
-    }, {});
-    return defaultValue;
-  };
+      }
+    }, {})
+    return defaultValue
+  }
 
-  _onChange = (value: any, element: string) => {
-    const { currentValue } = this.state;
+  _onChange = (value: any, key: string, index: number) => {
+    const { currentValue } = this.state
+    const valueForKey = currentValue[key] || {}
     this.setState({
-      currentValue: { ...currentValue, [element]: { value, key: element } },
-    });
-  };
+      currentValue: {
+        ...currentValue,
+        [key]: { ...valueForKey, value, key, index },
+      },
+    })
+  }
 
   _validate = () => {
-    const { currentValue } = this.state;
+    const { currentValue } = this.state
     const hasError = Object.values(currentValue).some(value => {
-      return value.value === undefined || value.value === '';
-    });
+      return value.value === undefined || value.value === ''
+    })
     if (hasError)
       return {
         error: 'The input text cannot be blank',
         failed: true,
-      };
+      }
     return {
       failed: false,
-    };
-  };
+    }
+  }
 
   _onAddPress = () => {
-    const { currentValue } = this.state;
-    const { value = [], onChange, field: { options } } = this.props;
-    const { childTypes } = options;
-    const { error, failed } = this._validate();
+    const { currentValue } = this.state
+    const { value = [], onChange, field: { options } } = this.props
+    const { childTypes } = options
+    const { error, failed } = this._validate()
     if (failed) {
-      Alert.alert('Input Error', error);
-      return;
+      Alert.alert('Input Error', error)
+      return
     }
-    const valueToSave = Object.keys(currentValue).reduce((prev, key) => {
-      const _model = childTypes[key];
+    const valueToSave = Object.values(childTypes).reduce((prev, model) => {
       return {
-        [key]: {
-          ...currentValue[key],
-          _model,
+        [model.key]: {
+          ...currentValue[model.key],
+          _model: model,
           _id: uuid(),
         },
-      };
-    }, {});
+      }
+    }, {})
     onChange([
       ...(value ? value : []),
       {
         ...valueToSave,
         _id: uuid(),
       },
-    ]);
-    this.setState({ currentValue: this._buildValue(this.props) });
-  };
+    ])
+    this.setState({ currentValue: this._buildValue(this.props) })
+  }
 
-  _onDeletePress = () => {};
+  _onDeletePress = () => {}
 
   render() {
-    const { currentValue } = this.state;
-    const { field: { content, options }, value } = this.props;
-    const { childTypes } = options;
+    const { currentValue, indexesMap } = this.state
+    const { field: { content, options }, value, formStyles = {} } = this.props
+    const { childTypes } = options
     return (
       <React.Fragment>
-        <Text style={styles.textInputLabelStyle}>{content.text}</Text>
+        <FormElementHeader
+          text={content.text}
+          textStyle={formStyles.textStyle}
+        />
         <View style={styles.listFormContainer}>
           <View style={styles.listElementContainer}>
             {childTypes &&
               Object.keys(childTypes).map(key => {
-                const field = childTypes[key];
-                const inValue = currentValue[key] || {};
+                const field = childTypes[key]
+                const inValue = currentValue[indexesMap[key]] || {}
                 return (
                   <FormPicker
                     key={field.key}
                     field={field}
                     value={inValue.value}
-                    onChange={value => this._onChange(value, key)}
+                    formStyles={formStyles}
+                    onChange={value =>
+                      this._onChange(value, indexesMap[key], key)
+                    }
                   />
-                );
+                )
               })}
           </View>
-          <Button
-            buttonStyle={[styles.buttonComponentStyle, styles.listButtonStyle]}
-            title={'add'}
-            textStyle={styles.listButtonTextStyle}
-            onPress={() => this._onAddPress()}
-          />
+          <View style={styles.listButtonContainer}>
+            <TouchableOpacity
+              style={[
+                styles.listAddButtonStyle,
+                {
+                  borderColor:
+                    formStyles.accentColor || TEMPORARY_COLOR_FOR_BUTTONS,
+                },
+              ]}
+              onPress={this._onAddPress}
+            >
+              <Text
+                style={[
+                  {
+                    fontSize: 20,
+                    color:
+                      formStyles.accentColor || TEMPORARY_COLOR_FOR_BUTTONS,
+                  },
+                ]}
+              >
+                +
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
         <View style={styles.listContentContainer}>
           {value && (
-            <Text style={[styles.textElementText]}>
+            <Text style={[styles.textElementText, formStyles.textStyle]}>
               {`${content.listText}`}:
             </Text>
           )}
           {value &&
             value.map((val, index) => (
-              <TextElement key={val._id} element={val} index={index} />
+              <TextElement
+                key={val._id}
+                element={val}
+                index={index}
+                formStyles={formStyles}
+              />
             ))}
         </View>
       </React.Fragment>
-    );
+    )
   }
 }
 
-export default ListComponent;
+export default ListComponent
