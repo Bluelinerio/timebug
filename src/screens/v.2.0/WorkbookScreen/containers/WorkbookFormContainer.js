@@ -3,7 +3,10 @@ import WorkbookForm          from '../components/WorkbookForm'
 import selectors             from '../../../../redux/selectors'
 import models                from '../../../../forms/custom/forms'
 import { compose, mapProps } from 'recompose'
-import { submitFormValue }   from '../../../../redux/actions/formData.actions.js'
+import {
+  submitFormValue,
+  syncFormData,
+}                            from '../../../../redux/actions/formData.actions.js'
 import type { SubmitAction } from '../../../../redux/actions/formData.actions.js'
 
 const mapStateToProps = (state: any) => {
@@ -16,13 +19,16 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    submitForm: (payload: SubmitAction) => dispatch(submitFormValue(payload)),
+    submitForm: (payload: SubmitAction) => {
+      dispatch(submitFormValue(payload))
+      dispatch(syncFormData())
+    },
   }
 }
 
-const merge = ({ submitForm, step, data }) => {
-  const model = models[step]
-  const formData = data[step]
+const merge = ({ submitForm, data, stepNumber, ...props }) => {
+  const model = models[stepNumber]
+  const formData = (data[stepNumber] && data[stepNumber].value) || null
   return {
     ...props,
     data: formData,

@@ -1,4 +1,8 @@
 // @flow
+
+/**
+ * Saga effects
+ */
 import {
   actionChannel,
   call,
@@ -11,13 +15,20 @@ import {
   race,
 } from 'redux-saga/effects'
 import { delay } from 'redux-saga'
+
+/**
+ * Network requests
+ */
 import {
   createForm,
   updateForm,
   resetUserSteps,
   deleteForm,
 } from '../../services/apollo'
-// import type { UpdateFormArgs } from '../../services/apollo/models'
+
+/**
+ * Actions and action creators
+ */
 import {
   SYNC_FORM_DATA,
   RESET_FORMS_REQUEST,
@@ -25,6 +36,7 @@ import {
   START_LOADING_FORMDATA,
   STOP_LOADING_FORMDATA,
   SYNC_FINISHED,
+  UPDATE_AND_CREATE_FORMS,
 } from '../actionTypes'
 import {
   GET_USER,
@@ -40,23 +52,28 @@ import {
   startLoadingFormData,
   restoreFormData,
 } from '../actions/formData.actions'
+import { initialNotifications } from '../actions/checkin.actions'
+
+/**
+ * Selectors and other utilities
+ */
 import selectors from '../selectors'
 import { diffObjs } from '../utils/diffObjs'
-import { initialNotifications } from '../actions/checkin.actions'
-import tron from 'reactotron-react-native'
 
-export const UPDATE_AND_CREATE_FORMS = 'UPDATE_AND_CREATE_FORMS'
+import tron from 'reactotron-react-native'
 
 /**
  * Helpers
  */
 
 const log = payload =>
-  tron.display({
-    name: 'FormData Saga',
-    preview: 'FormData',
-    value: payload,
-  })
+  __DEV__
+    ? tron.display({
+      name: 'FormData Saga',
+      preview: 'FormData',
+      value: payload,
+    })
+    : () => null
 
 const range = (start: number, end: number): Array<number> =>
   Array(end - start)
@@ -68,6 +85,17 @@ const stepIds: Array<string> = range(1, 31).map(v => v.toString())
 const removeAllKeyButStepIds = (obj: {}): any =>
   Object.keys(obj)
     .filter(k => stepIds.includes(k))
+    .reduce(
+      (sum, k) => ({
+        ...sum,
+        [k]: obj[k],
+      }),
+      {}
+    )
+
+const removeAllKeysExceptValue = (obj: {}): any =>
+  Object.keys(obj)
+    .filter(k => k === 'value')
     .reduce(
       (sum, k) => ({
         ...sum,
@@ -134,7 +162,7 @@ function* removeRepeatedForms(user) {
  */
 
 /**
- * Sagas
+ * Watcher Sagas
  */
 
 function* watchForStopFormData() {
@@ -173,9 +201,17 @@ export function* watchSyncFormData() {
   yield fork(watchForLoadingForm) // Helper to know when the forms were updating to show UI changes
   while (true) {
     yield take(requestChan)
-    // yield fork(reviewCurrentUserFormsAndFormDataCompareAndUpdateToState) // Tries to determine if there are requests to be made to GC comparing data between user.steps and formData
+    yield fork(reviewCurrentUserFormsAndFormDataCompareAndUpdateToState) // Tries to determine if there are requests to be made to GC comparing data between user.steps and formData
   }
 }
+
+/**
+ * End Watcher Sagas
+ */
+
+/**
+ * Utility Sagas
+ */
 
 function* timeout(duration = 5000) {
   yield call(delay, duration)
@@ -217,7 +253,7 @@ function* raceLoadingForm() {
   }
 }
 
-/* eslint-disable-next-line */
+// Refactor material
 function* reviewCurrentUserFormsAndFormDataCompareAndUpdateToState() {
   yield put(startLoadingFormData())
 
@@ -316,15 +352,14 @@ function* reviewCurrentUserFormsAndFormDataCompareAndUpdateToState() {
   })
 }
 
+// Refactor material
 function* syncRequests(payload) {
   const { updates, creates, deletes } = payload
 
   const userId = yield select(selectors.userId)
   if (!userId) return
 
-  // run serially, ideally we want to be able to compose those requests, and send them in one go...
   yield putResolve(incrementFormDataQueue())
-  // run serially, ideally we want to be able to compose those requests, and send them in one go...
 
   yield delay(1)
 
@@ -430,6 +465,7 @@ function* syncRequests(payload) {
   }
 }
 
+// Restores formData with the state in graphcool, priorizing network state over local state
 function* _handleSyncFinished() {
   const { completedFormsData, formData } = yield call(mySelectors, {
     completedFormsData: selectors.completedFormsData,
@@ -441,8 +477,8 @@ function* _handleSyncFinished() {
     const currentUserForm = completedFormsData[key]
 
     const { difference, onlyOnLeft } = diffObjs(
-      removeAllKeyButStepIds(currentUserForm),
-      removeAllKeyButStepIds(currentFormData)
+      removeAllKeysExceptValue(currentUserForm),
+      removeAllKeysExceptValue(currentFormData)
     )
 
     if (!difference && !onlyOnLeft) return formObj
@@ -457,26 +493,6 @@ function* _handleSyncFinished() {
   if (Object.keys(forms).length > 0) yield put(restoreFormData({ forms }))
 }
 
-// const testCreate = create => {
-//   if (!create.stepId || create.stepId < 0 || create.stepId > 30) {
-//     throw `missing or incorrect stepId in create:${JSON.stringify(create)}`;
-//   }
-//   if (!create.data) {
-//     throw `missing data in create:${JSON.stringify(create)}`;
-//   }
-// };
-
-// const testUpdate = (update: UpdateFormArgs) => {
-//   if (!update.id) {
-//     throw `missing id in update:${JSON.stringify(update)}`;
-//   }
-//   if (!update.data) {
-//     throw `missing data in update:${JSON.stringify(update)}`;
-//   }
-// };
-
-// const testDelete = del => {
-//   if (!del.id) {
-//     throw `missing id in delete:${JSON.stringify(del)}`;
-//   }
-// };
+/**
+ * End Utility Sagas
+ */

@@ -85,7 +85,6 @@ const isAuthenticating = (state: any): boolean =>
 const sortForms = (a: Form, b: Form) => a.stepId - b.stepId;
 const sortFormsChronologically = (a: Form, b: Form) =>
   Date.parse(b.updatedAt) - Date.parse(a.updatedAt);
-// stepId on the server is an Int!. A clear idea how to
 
 const hasCompletedForms = (state: any): boolean =>
   user(state) && user(state).forms.length > 0;
@@ -175,6 +174,8 @@ const sortedStepsWithForms = state => {
   };
 };
 
+
+/* DEPRECATED */
 const buttonTitlesForFormCompletion = state => stepId => {
   return R.compose(
     buttonTitleForFormCompletion,
@@ -231,11 +232,13 @@ const isStepCompleted = (state: any) => {
   };
   return _stepCompleted;
 };
+
 /**
  * Should check CMS for colors, for now it's hardcoded
  */
 const statefullStepColors = (state: any) => getStepColors(state);
 const overridePhaseColors = (state: any) => getPhaseColors(state);
+
 /**
  * Award
  */

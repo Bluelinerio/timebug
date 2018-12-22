@@ -6,10 +6,10 @@ import {
   RESET_FORMS,
   SET_LOADING_FORMDATA,
   RESTORE_FORM_DATA,
-} from '../actionTypes'
+}                                      from '../actionTypes'
 import type { RestoreFormDataPayload } from '../actions/formData.actions'
-import { diffObjs } from '../utils/diffObjs'
-import R from 'ramda'
+import { diffObjs }                    from '../utils/diffObjs'
+import R                               from 'ramda'
 
 export type FormDataState = {
   data: {
@@ -47,7 +47,7 @@ const populate = (
 
   const oldValue = filterWithKeys(key => {
     return Object.keys(value).includes(key)
-  }, R.view(R.lensPath([stepId]), data))
+  }, R.view(R.lensPath([stepId, 'value']), data))
 
   const { difference, onlyOnRight } = diffObjs(oldValue, value)
 
@@ -56,11 +56,13 @@ const populate = (
   return {
     ...state,
     data: {
-      timeStamp: Date.now(),
       ...data,
+      _meta: {
+        timeStamp: Date.now(),
+      },
       [stepId]: {
         ...(data[stepId] || null),
-        ...value,
+        value,
         timeStamp: Date.now(),
       },
     },
@@ -77,11 +79,6 @@ const decrement = (state: FormDataState): FormDataState => ({
   requestCount: state.requestCount - 1,
 })
 
-/**
- * UNUSED
- */
-
-/* eslint-disable-next-line*/
 const restore = (state: FormDataState, payload: RestoreFormDataPayload) => {
   const { forms } = payload
   const { data } = state
@@ -107,7 +104,6 @@ const restore = (state: FormDataState, payload: RestoreFormDataPayload) => {
   }
 }
 
-/* eslint-disable-next-line*/
 const setLoadingFormData = (
   state: FormDataState,
   payload: boolean
@@ -115,10 +111,6 @@ const setLoadingFormData = (
   ...state,
   loadingFormData: payload !== false,
 })
-
-/**
- * END UNUSED
- */
 
 function formDataReducer(
   state: FormDataState = initialState,
@@ -133,8 +125,10 @@ function formDataReducer(
     return decrement(state)
   case RESET_FORMS:
     return initialState
-  case SET_LOADING_FORMDATA:
   case RESTORE_FORM_DATA:
+    return restore(state, action.payload)
+  case SET_LOADING_FORMDATA:
+    return setLoadingFormData(state, action.payload)
   default:
     return state
   }
