@@ -16,14 +16,6 @@ const form1 = {
   answer: answerTypes.single,
   fields: {
     0: {
-      type: types.label,
-      key: 'form_1_start',
-      content: {
-        text: `Form 1`,
-      },
-      options: {},
-    },
-    1: {
       type: types.list,
       key: 'form_1_best_memories',
       content: {
@@ -47,7 +39,7 @@ const form1 = {
         default: [],
       },
     },
-    2: {
+    1: {
       type: types.connected,
       key: 'form_1_memories_areas_of_life',
       content: {
@@ -79,7 +71,7 @@ const form1 = {
         default: [],
       },
     },
-    3: {
+    2: {
       type: types.connected,
       key: 'form_1_memories_stages_of_life',
       content: {
@@ -110,7 +102,7 @@ const form1 = {
         default: [],
       },
     },
-    4: {
+    3: {
       type: types.list,
       key: 'form_1_regrets',
       content: {
@@ -133,7 +125,7 @@ const form1 = {
         default: [],
       },
     },
-    5: {
+    4: {
       type: types.connected,
       key: 'form_1_regrets_areas_of_life',
       content: {
@@ -165,7 +157,7 @@ const form1 = {
         default: [],
       },
     },
-    6: {
+    5: {
       type: types.connected,
       key: 'form_1_regrets_stages_of_life',
       content: {
@@ -196,7 +188,7 @@ const form1 = {
         default: [],
       },
     },
-    7: {
+    6: {
       type: types.list,
       key: 'form_1_emotions',
       content: {
