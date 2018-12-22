@@ -10,6 +10,7 @@ import {
   barColors,
   textColors,
   phaseColors,
+  phaseTextAndButtonColors,
   buttonStyles,
   formElementBackgroundStyles,
 } from '../styles'
@@ -63,6 +64,19 @@ export const mapPhaseToColor = (phase: string) => {
     return phaseColors.phase3
   case COMPLETE:
     return phaseColors.phase1
+  }
+}
+
+export const mapPhaseToTextAndButtonColor = (phase: string) => {
+  switch (phase) {
+  case MEDITATION:
+    return phaseTextAndButtonColors.phase1
+  case SELF_ASSESSMENT:
+    return phaseTextAndButtonColors.phase2
+  case VISION_CREATION:
+    return phaseTextAndButtonColors.phase3
+  case COMPLETE:
+    return phaseTextAndButtonColors.phase1
   }
 }
 

@@ -3,6 +3,9 @@ import {
   PHASE_1_COMPLETE,
   PHASE_2_COMPLETE,
   PHASE_3_COMPLETE,
+  PHASE_1_TEXT_AND_BUTTONS,
+  PHASE_2_TEXT_AND_BUTTONS,
+  PHASE_3_TEXT_AND_BUTTONS,
   deepBlue,
   PHASE_1_BAR,
   white2,
@@ -60,13 +63,13 @@ export const svgStyles = {
 
 export const buttonStyles = {
   phase1: {
-    backgroundColor: PHASE_1_COMPLETE,
+    backgroundColor: PHASE_1_TEXT_AND_BUTTONS,
   },
   phase2: {
-    backgroundColor: PHASE_2_COMPLETE,
+    backgroundColor: PHASE_2_TEXT_AND_BUTTONS,
   },
   phase3: {
-    backgroundColor: PHASE_3_COMPLETE,
+    backgroundColor: PHASE_3_TEXT_AND_BUTTONS,
   },
 }
 
@@ -75,10 +78,10 @@ export const textColors = {
     color: deepBlue,
   },
   phase2: {
-    color: PHASE_2_COMPLETE,
+    color: PHASE_2_TEXT_AND_BUTTONS,
   },
   phase3: {
-    color: PHASE_3_COMPLETE,
+    color: PHASE_3_TEXT_AND_BUTTONS,
   },
 }
 
@@ -98,6 +101,12 @@ export const phaseColors = {
   phase1: PHASE_1_COMPLETE,
   phase2: PHASE_2_COMPLETE,
   phase3: PHASE_3_COMPLETE,
+}
+
+export const phaseTextAndButtonColors = {
+  phase1: PHASE_1_TEXT_AND_BUTTONS,
+  phase2: PHASE_2_TEXT_AND_BUTTONS,
+  phase3: PHASE_3_TEXT_AND_BUTTONS,
 }
 
 export const formElementBackgroundStyles = {

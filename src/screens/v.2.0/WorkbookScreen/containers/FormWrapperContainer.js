@@ -6,6 +6,7 @@ import {
   mapPhaseToColor,
   mapPhaseToButtonStyles,
   mapPhaseToElementBackground,
+  mapPhaseToTextAndButtonColor,
 }                     from '../utils/colorsForStep'
 
 const merge = (props: Props) => {
@@ -14,6 +15,8 @@ const merge = (props: Props) => {
   const buttonContainerStyle = mapPhaseToButtonStyles(phase)
   const elementContainerStyle = mapPhaseToElementBackground(phase)
   const color = mapPhaseToColor(phase)
+  const textAndButtonColor = mapPhaseToTextAndButtonColor(phase)
+
   return {
     ...props,
     formStyles: {
@@ -23,6 +26,7 @@ const merge = (props: Props) => {
       elementContainerStyle,
     },
     color,
+    textAndButtonColor,
   }
 }
 
