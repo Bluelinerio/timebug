@@ -2,6 +2,7 @@ import * as React       from 'react'
 import Video            from 'react-native-video'
 import { Alert }        from 'react-native'
 import DefaultIndicator from '../components/DefaultIndicator'
+import tron             from 'reactotron-react-native'
 
 export const PENDING = 'pending'
 export const READY = 'ready'
@@ -41,23 +42,39 @@ type State = {
 
 const AudioVideoComponentHOC = (Component: React.ReactNode<any>) => {
   class AudioVideoComponentContainer extends React.Component<Props, State> {
-    state = {
-      status: PENDING,
-      paused: true,
-      totalLength: 1,
-      currentPosition: 0,
-      hasBeenReady: false,
+    constructor(props) {
+      super(props)
+
+      const file = props.file
+
+      this.state = {
+        status: file ? PENDING : FAIL,
+        paused: true,
+        totalLength: 1,
+        currentPosition: 0,
+        hasBeenReady: false,
+      }
     }
 
     componentDidUpdate(prevProps) {
       if (this.props.file !== prevProps.file) {
-        this.setState({
-          status: PENDING,
-          paused: true,
-          totalLength: 1,
-          currentPosition: 0,
-          hasBeenReady: false,
-        })
+        if (!this.props.file) {
+          this.setState({
+            status: FAIL,
+            hasBeenReady: false,
+            paused: true,
+            totalLength: 1,
+            currentPosition: 0,
+          })
+        } else {
+          this.setState({
+            status: PENDING,
+            paused: true,
+            totalLength: 1,
+            currentPosition: 0,
+            hasBeenReady: false,
+          })
+        }
       }
     }
 
@@ -136,13 +153,14 @@ const AudioVideoComponentHOC = (Component: React.ReactNode<any>) => {
     }
 
     retry = () => {
-      this.setState({
-        status: PENDING,
-        paused: true,
-        totalLength: 1,
-        currentPosition: 0,
-        hasBeenReady: false,
-      })
+      if (this.props.file)
+        this.setState({
+          status: PENDING,
+          paused: true,
+          totalLength: 1,
+          currentPosition: 0,
+          hasBeenReady: false,
+        })
     }
 
     render = () => {
