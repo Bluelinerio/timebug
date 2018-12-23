@@ -55,6 +55,9 @@ export const PHASE_3_COMPLETE = '#20B89D';
 export const PHASE_1_INCOMPLETE = cyan;
 export const PHASE_2_INCOMPLETE = '#F8CF1F';
 export const PHASE_3_INCOMPLETE = '#20DE9D';
+export const PHASE_1_TEXT_AND_BUTTONS = darkBlue;
+export const PHASE_2_TEXT_AND_BUTTONS = '#D1821B';
+export const PHASE_3_TEXT_AND_BUTTONS = '#199680';
 
 export const whiteGradientColors = {
   startColor: white,
@@ -65,4 +68,4 @@ export const whiteGradientColors = {
  * V2.0
  */
 
-export const PHASE_1_BAR = '#4EADFF';
+export const PHASE_1_BAR = azure;

@@ -1,3 +1,6 @@
+/**
+ * TODO: Fix wrong switch render pattern
+ */
 // @flow
 import React from 'react';
 import { View, Text } from 'react-native';

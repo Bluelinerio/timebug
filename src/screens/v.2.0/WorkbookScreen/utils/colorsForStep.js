@@ -4,8 +4,16 @@ import {
   SELF_ASSESSMENT,
   VISION_CREATION,
   COMPLETE,
-}                                                        from '../../../../services/cms'
-import { svgStyles, barColors, textColors, phaseColors } from '../styles'
+} from '../../../../services/cms'
+import {
+  svgStyles,
+  barColors,
+  textColors,
+  phaseColors,
+  phaseTextAndButtonColors,
+  buttonStyles,
+  formElementBackgroundStyles,
+} from '../styles'
 
 export const mapPhaseToStylesHelper = (phase: string) => {
   switch (phase) {
@@ -56,5 +64,44 @@ export const mapPhaseToColor = (phase: string) => {
     return phaseColors.phase3
   case COMPLETE:
     return phaseColors.phase1
+  }
+}
+
+export const mapPhaseToTextAndButtonColor = (phase: string) => {
+  switch (phase) {
+  case MEDITATION:
+    return phaseTextAndButtonColors.phase1
+  case SELF_ASSESSMENT:
+    return phaseTextAndButtonColors.phase2
+  case VISION_CREATION:
+    return phaseTextAndButtonColors.phase3
+  case COMPLETE:
+    return phaseTextAndButtonColors.phase1
+  }
+}
+
+export const mapPhaseToButtonStyles = (phase: string) => {
+  switch (phase) {
+  case MEDITATION:
+    return buttonStyles.phase1
+  case SELF_ASSESSMENT:
+    return buttonStyles.phase2
+  case VISION_CREATION:
+    return buttonStyles.phase3
+  case COMPLETE:
+    return buttonStyles.phase1
+  }
+}
+
+export const mapPhaseToElementBackground = (phase: string) => {
+  switch (phase) {
+  case MEDITATION:
+    return formElementBackgroundStyles.phase1
+  case SELF_ASSESSMENT:
+    return formElementBackgroundStyles.phase2
+  case VISION_CREATION:
+    return formElementBackgroundStyles.phase3
+  case COMPLETE:
+    return formElementBackgroundStyles.phase1
   }
 }

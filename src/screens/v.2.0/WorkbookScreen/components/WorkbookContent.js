@@ -13,15 +13,16 @@ type Props = {
   changeSection: string => any,
   step: Step,
   phase: string,
+  onSelectStep: Step => any,
 }
 
 class WorkbookContent extends React.PureComponent<Props> {
   render() {
-    const { selectedSection, step, phase } = this.props
+    const { selectedSection, step, phase, onSelectStep } = this.props
     return (
       <View style={[styles.container, styles.workbookContent]}>
         {selectedSection === SectionValues.form ? (
-          <WorkbookForm step={`${step.number}`} />
+          <WorkbookForm step={step} stepNumber={`${step.number}`} phase={phase} onSelectStep={onSelectStep}/>
         ) : (
           <WorkbookSnippet step={step} phase={phase} />
         )}

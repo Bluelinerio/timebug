@@ -1,3 +1,6 @@
+/**
+ * TODO: Adapt to new form keys
+ */
 // @flow
 import { connect } from 'react-redux';
 import selectors from '../../../redux/selectors';

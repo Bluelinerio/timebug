@@ -21,20 +21,22 @@ const mapDispatchToProps = (dispatch: any) => {
 }
 
 const merge = ({
-  screen = 'someRandomScreen',
+  screen = 'workbookScreen_v2',
   stateForScreen,
   setScreen,
-  step,
+  stepNumber,
+  ...props
 }) => {
   const setScreenStatus = setScreen(screen)
   const data = stateForScreen(screen)
-  const model = models[step]
-  const formData = data[step]
+  const model = models[stepNumber]
+  const formData = data[stepNumber]
   return {
+    ...props,
     data: formData,
     model,
     setScreenStatus,
-    step,
+    stepNumber,
   }
 }
 
