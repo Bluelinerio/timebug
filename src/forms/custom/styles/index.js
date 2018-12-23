@@ -26,6 +26,28 @@ export const checkboxColor = greenA400
 export const uncheckedColor = gray400
 export const helpButtonColor = azure
 
+const buttonStyles = {
+  borderRadius: 6,
+  paddingHorizontal: 10,
+  paddingVertical: 8,
+  height: buttonHeight,
+  width: buttonWidth,
+  alignItems: 'center',
+  justifyContent: 'center',
+  ...Platform.select({
+    android: { elevation: 2 },
+    ios: {
+      shadowColor: 'black',
+      shadowOffset: {
+        width: 2,
+        height: 2,
+      },
+      shadowOpacity: 0.3,
+      shadowRadius: 12,
+    },
+  }),
+}
+
 export const connectedComponentStyles = StyleSheet.create({
   connectedRow: {
     flex: 1,
@@ -124,25 +146,11 @@ const formStyles = StyleSheet.create({
   },
   formButton: {
     backgroundColor: azure,
-    borderRadius: 6,
-    paddingHorizontal: 10,
-    paddingVertical: 8,
-    height: buttonHeight,
-    width: buttonWidth,
-    alignItems: 'center',
-    justifyContent: 'center',
-    ...Platform.select({
-      android: { elevation: 2 },
-      ios: {
-        shadowColor: 'black',
-        shadowOffset: {
-          width: 2,
-          height: 2,
-        },
-        shadowOpacity: 0.3,
-        shadowRadius: 12,
-      },
-    }),
+    ...buttonStyles,
+  },
+  formDisabledButton: {
+    backgroundColor: '#606060',
+    ...buttonStyles,
   },
   formButtonText: {
     color: gray50,

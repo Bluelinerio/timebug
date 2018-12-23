@@ -37,6 +37,7 @@ const form1 = {
           },
         },
         default: [],
+        required: true,
       },
     },
     1: {
@@ -69,6 +70,7 @@ const form1 = {
           },
         },
         default: [],
+        required: true,
       },
     },
     2: {
@@ -100,6 +102,7 @@ const form1 = {
           },
         },
         default: [],
+        required: true,
       },
     },
     3: {
@@ -123,6 +126,7 @@ const form1 = {
           },
         },
         default: [],
+        required: true,
       },
     },
     4: {
@@ -155,6 +159,7 @@ const form1 = {
           },
         },
         default: [],
+        required: true,
       },
     },
     5: {
@@ -186,6 +191,7 @@ const form1 = {
           },
         },
         default: [],
+        required: true,
       },
     },
     6: {
@@ -215,6 +221,7 @@ const form1 = {
           },
         },
         default: [],
+        required: true,
       },
     },
   },
