@@ -12,7 +12,7 @@ import {
 import { updateCheckin }             from '../actions/checkin.actions'
 import {
   CHANGE_CHECKIN,
-  // BUILD_NOTIFICATION_SET,
+  BUILD_NOTIFICATION_SET,
   REMOVE_CHECKIN,
   TOGGLE_CHECKIN,
 }                                    from '../actionTypes'
@@ -137,7 +137,7 @@ function* _setInitialNotifications() {
 }
 
 function* watchForInitialNotifications() {
-  // yield takeLatest(BUILD_NOTIFICATION_SET, _setInitialNotifications)
+  yield takeLatest(BUILD_NOTIFICATION_SET, _setInitialNotifications)
 }
 
 function* watchForCheckinsUpdate() {
