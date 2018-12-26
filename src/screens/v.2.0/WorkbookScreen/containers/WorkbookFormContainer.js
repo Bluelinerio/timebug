@@ -1,42 +1,40 @@
 import { connect }           from 'react-redux'
 import WorkbookForm          from '../components/WorkbookForm'
-import { changeUI }          from '../../../../redux/actions/ui.actions'
 import selectors             from '../../../../redux/selectors'
 import models                from '../../../../forms/custom/forms'
 import { compose, mapProps } from 'recompose'
+import {
+  submitFormValue,
+  syncFormData,
+}                            from '../../../../redux/actions/formData.actions.js'
+import type { SubmitAction } from '../../../../redux/actions/formData.actions.js'
 
 const mapStateToProps = (state: any) => {
-  const stateForScreen = selectors.stateForScreen(state)
+  const data = selectors.formData(state)
   return {
-    stateForScreen,
+    data,
     models,
   }
 }
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    setScreen: (screen: string) => (params: any) =>
-      dispatch(changeUI({ screen, params })),
+    submitForm: (payload: SubmitAction) => {
+      dispatch(submitFormValue(payload))
+      dispatch(syncFormData())
+    },
   }
 }
 
-const merge = ({
-  screen = 'workbookScreen_v2',
-  stateForScreen,
-  setScreen,
-  stepNumber,
-  ...props
-}) => {
-  const setScreenStatus = setScreen(screen)
-  const data = stateForScreen(screen)
+const merge = ({ submitForm, data, stepNumber, ...props }) => {
   const model = models[stepNumber]
-  const formData = data[stepNumber]
+  const formData = (data[stepNumber] && data[stepNumber].value) || null
   return {
     ...props,
     data: formData,
     model,
-    setScreenStatus,
     stepNumber,
+    submitForm,
   }
 }
 

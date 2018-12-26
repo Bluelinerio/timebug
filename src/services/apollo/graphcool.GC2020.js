@@ -1,55 +1,55 @@
 // @flow
 
-import { ApolloClient } from 'apollo-client';
-import { HttpLink } from 'apollo-link-http';
-import { InMemoryCache } from 'apollo-cache-inmemory';
-import gql from 'graphql-tag';
+import { ApolloClient }           from 'apollo-client'
+import { HttpLink }               from 'apollo-link-http'
+import { InMemoryCache }          from 'apollo-cache-inmemory'
+import gql                        from 'graphql-tag'
 import type {
   Auth,
   User,
   GraphResponse,
   ErrorResponse,
   CreateFormArgs,
-  UpdateormArgs,
+  UpdateFormArgs,
   Checkin,
   createCheckinArgs,
   updateCheckinArgs,
   filterCheckinsByTemplateArgs,
-} from './models';
+}                                 from './models'
+import { temporaryUserAdditions } from './tmp'
 
 export const endpoints = {
   simple: 'https://api.graph.cool/simple/v1/cjdnw03hv8l6m01133d2ix1pb',
-};
+}
 export const isClientEndpoint = (endpoint: string) =>
-  endpoints.simple === endpoint;
+  endpoints.simple === endpoint
 
 export const client = new ApolloClient({
   link: new HttpLink({ uri: endpoints.simple }),
   cache: new InMemoryCache(),
-});
+})
 
-import { temporaryUserAdditions } from './tmp';
 
 const _parse = <T>(key: string, graphResponse: GraphResponse): T => {
-  const { data, error } = graphResponse;
+  const { data, error } = graphResponse
   if (error) {
-    console.log('ERROR IN THENABLE');
-    throw error;
+    console.log('ERROR IN THENABLE')
+    throw error
   }
   const value: T = {
     ...data[key],
     endpoint: endpoints.simple,
-  };
-  if (value) {
-    return temporaryUserAdditions(value);
   }
-  throw { error: error || 'User not found' };
-};
+  if (value) {
+    return temporaryUserAdditions(value)
+  }
+  throw { error: error || 'User not found' }
+}
 
 const parse = <T>(key: string) => (graphResponse: GraphResponse): T =>
-  _parse(key, graphResponse);
+  _parse(key, graphResponse)
 
-export const resetStore = client.resetStore;
+export const resetStore = client.resetStore
 
 export const authenticateWithFBToken = (fbToken: string): Auth =>
   client
@@ -65,7 +65,7 @@ export const authenticateWithFBToken = (fbToken: string): Auth =>
       fetchPolicy: 'network-only',
       variables: { token: fbToken },
     })
-    .then(parse('authenticateFB'));
+    .then(parse('authenticateFB'))
 
 export const resetUserSteps = userId =>
   client
@@ -81,11 +81,11 @@ export const resetUserSteps = userId =>
         userId,
       },
     })
-    .then(parse('reset'));
+    .then(parse('reset'))
 
 const handleErrorGettingUser = (errorResponse: ErrorResponse) => {
-  throw errorResponse;
-};
+  throw errorResponse
+}
 
 const userSortedFormFragment = gql`
   fragment SortedForms on User {
@@ -97,7 +97,7 @@ const userSortedFormFragment = gql`
       data
     }
   }
-`;
+`
 const userAchievementsFragment = gql`
   fragment UserAchievements on User {
     achievements {
@@ -112,7 +112,7 @@ const userAchievementsFragment = gql`
       }
     }
   }
-`;
+`
 
 const userFragments = gql`
   fragment SortedForms on User {
@@ -138,7 +138,7 @@ const userFragments = gql`
       }
     }
   }
-`;
+`
 
 /**
  * New: Fragment to get Checkins on user
@@ -154,7 +154,7 @@ const userCheckinFragment = gql`
       name
     }
   }
-`;
+`
 
 /**
  *  Edited: gets user checkins as well
@@ -181,7 +181,7 @@ export const fetchUserWithId = (id: string): User =>
       variables: { id },
     })
     .then(parse('User'))
-    .catch(handleErrorGettingUser);
+    .catch(handleErrorGettingUser)
 
 export const createForm = ({ userId, stepId, data }: CreateFormArgs): any =>
   client
@@ -203,9 +203,9 @@ export const createForm = ({ userId, stepId, data }: CreateFormArgs): any =>
       },
     })
     .then(parse('createForm'))
-    .catch(e => console.log(e));
+    .catch(e => console.log(e))
 
-export const updateForm = ({ userId, id, data }: UpdateormArgs): any =>
+export const updateForm = ({ userId, id, data }: UpdateFormArgs): any =>
   client
     .mutate({
       mutation: gql`
@@ -224,7 +224,7 @@ export const updateForm = ({ userId, id, data }: UpdateormArgs): any =>
         data,
       },
     })
-    .then(parse('updateForm'));
+    .then(parse('updateForm'))
 
 export const deleteForm = ({ id }): any =>
   client
@@ -241,7 +241,7 @@ export const deleteForm = ({ id }): any =>
       },
     })
     .then(parse('deleteForm'))
-    .catch(e => console.log(e));
+    .catch(e => console.log(e))
 
 export const createAchievement = ({ userId, tagName }) =>
   client
@@ -264,7 +264,7 @@ export const createAchievement = ({ userId, tagName }) =>
         tagName,
       },
     })
-    .then(parse('createAchievement'));
+    .then(parse('createAchievement'))
 
 export const deleteAchievement = achievementId =>
   client
@@ -280,7 +280,7 @@ export const deleteAchievement = achievementId =>
         achievementId,
       },
     })
-    .then(parse('deleteAchievement'));
+    .then(parse('deleteAchievement'))
 
 export const fetchUserAchievementsWithUserId = (id: string): User =>
   client
@@ -298,7 +298,7 @@ export const fetchUserAchievementsWithUserId = (id: string): User =>
       variables: { id },
     })
     .then(parse('User'))
-    .catch(handleErrorGettingUser);
+    .catch(handleErrorGettingUser)
 
 export const testUser = ({ userId }): any =>
   client
@@ -321,7 +321,7 @@ export const testUser = ({ userId }): any =>
         userId: userId,
       },
     })
-    .then(parse('User'));
+    .then(parse('User'))
 
 /**
  *  CHECKINS
@@ -337,7 +337,7 @@ export const CheckinFragment = gql`
     version
     data
   }
-`;
+`
 
 export const checkinUserFragment = gql`
   fragment checkinUserFragment on Checkin {
@@ -347,21 +347,21 @@ export const checkinUserFragment = gql`
       name
     }
   }
-`;
+`
 
 export const CheckinFragments = `
 	${CheckinFragment}
 
 	${checkinUserFragment}
-`;
+`
 
 /**
  * Helpers
  */
 
 const handleCheckinError = (e: ErrorResponse) => {
-  throw e;
-};
+  throw e
+}
 
 /**
  * End Helpers
@@ -401,7 +401,7 @@ export const getCheckinsForUserOfTemplate = ({
       },
     })
     .then(parse('allCheckins'))
-    .catch(handleCheckinError);
+    .catch(handleCheckinError)
 
 export const getCheckinsForUser = (userId: String): [Checkin] =>
   client
@@ -421,7 +421,7 @@ export const getCheckinsForUser = (userId: String): [Checkin] =>
       },
     })
     .then(parse('allCheckins'))
-    .catch(handleCheckinError);
+    .catch(handleCheckinError)
 
 export const addCheckinToUser = ({
   userId,
@@ -463,7 +463,7 @@ export const addCheckinToUser = ({
       },
     })
     .then(parse('createCheckin'))
-    .catch(handleCheckinError);
+    .catch(handleCheckinError)
 
 export const updateCheckin = ({
   checkinId,
@@ -501,7 +501,7 @@ export const updateCheckin = ({
       },
     })
     .then(parse('updateCheckin'))
-    .catch(handleCheckinError);
+    .catch(handleCheckinError)
 
 export const deleteCheckin = (checkinId: string): Checkin =>
   client
@@ -518,4 +518,4 @@ export const deleteCheckin = (checkinId: string): Checkin =>
       },
     })
     .then(parse('deleteCheckin'))
-    .catch(handleCheckinError);
+    .catch(handleCheckinError)

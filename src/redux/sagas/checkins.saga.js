@@ -88,6 +88,7 @@ function* toggleNotification({ payload }: ToggleCheckinPayload) {
   }
 }
 
+/* eslint-disable-next-line */
 function* _setInitialNotifications() {
   const steps = yield select(selectors.steps)
   const user = yield select(selectors.user)
@@ -161,7 +162,6 @@ function* watchForNotificationToggling() {
 
 export function* watchForCheckinsSaga() {
   // TODO: Set up permissions for IOS? it would probably be good to do it here
-  // Disable both forks until the call to permissions is accepted
   yield fork(watchForCheckinsUpdate)
   yield fork(watchForCheckinsDeletion)
   yield fork(watchForNotificationToggling)

@@ -85,7 +85,6 @@ const isAuthenticating = (state: any): boolean =>
 const sortForms = (a: Form, b: Form) => a.stepId - b.stepId;
 const sortFormsChronologically = (a: Form, b: Form) =>
   Date.parse(b.updatedAt) - Date.parse(a.updatedAt);
-// stepId on the server is an Int!. A clear idea how to
 
 const hasCompletedForms = (state: any): boolean =>
   user(state) && user(state).forms.length > 0;
@@ -118,6 +117,7 @@ const formWithStepId = (state: any) => (stepId: string): Form =>
 
 // form data
 const formData = (state: any) => getFormData(state).data;
+
 const incompleteFormsData = (state: any) =>
   filterStepIds(getFormData(state).data);
 
@@ -136,6 +136,7 @@ const buttonTitleForFormCompletion = ({ completedForms, incomplete }) => {
   }
 };
 
+/* DEPRECATED */
 const sortedStepsWithForms = state => {
   const completed = completedForms(state);
   const incompleteForms = incompleteFormsData(state);
@@ -173,6 +174,8 @@ const sortedStepsWithForms = state => {
   };
 };
 
+
+/* DEPRECATED */
 const buttonTitlesForFormCompletion = state => stepId => {
   return R.compose(
     buttonTitleForFormCompletion,
@@ -182,6 +185,7 @@ const buttonTitlesForFormCompletion = state => stepId => {
   )(state);
 };
 
+/* DEPRECATED */
 const modelsAndDataForExercise = (state: any) => (stepId: string) => {
   //TComb Forms helpers
 
@@ -228,11 +232,13 @@ const isStepCompleted = (state: any) => {
   };
   return _stepCompleted;
 };
+
 /**
  * Should check CMS for colors, for now it's hardcoded
  */
 const statefullStepColors = (state: any) => getStepColors(state);
 const overridePhaseColors = (state: any) => getPhaseColors(state);
+
 /**
  * Award
  */

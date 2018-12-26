@@ -1,15 +1,18 @@
-import React from 'react'
+// @flow
+import React                               from 'react'
 import { View, Text, ScrollView, Linking } from 'react-native'
-import Form from '../containers/FormWrapperContainer'
-import styles from '../styles'
-import type { Step } from '../../../../services/cms'
-import FormFinishedComponent from '../containers/FormFinishedContainer'
+import Form                                from '../containers/FormWrapperContainer'
+import styles                              from '../styles'
+import type { Step }                       from '../../../../services/cms'
+import FormFinishedComponent               from '../containers/FormFinishedContainer'
+import type { SubmitAction }               from '../../../../redux/actions/formData.actions.js'
 
 type Props = {
   stepNumber: string,
   setScreenStatus: any => null,
   model: any,
   data: any,
+  submitForm: SubmitAction => null,
   phase: string,
   step: Step,
   onSelectStep: Step => any,
@@ -32,9 +35,9 @@ class WorkbookForm extends React.PureComponent<Props, State> {
   }
 
   _onFinish = (data: any) => {
-    const { setScreenStatus, stepNumber } = this.props
+    const { submitForm, stepNumber } = this.props
     this.setState({ formFinished: true }, () => {
-      setScreenStatus({ [stepNumber]: data })
+      submitForm({ stepId: stepNumber, value: data })
     })
   }
 
