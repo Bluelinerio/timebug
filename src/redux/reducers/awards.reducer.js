@@ -3,14 +3,14 @@ import {
   SUBMIT_AWARD_VALUE,
   RESET_AWARD_VALUE,
   SUBMIT_AWARD_VALUE_EXTENDED,
-} from '../actionTypes';
+}                    from '../actionTypes'
 import type {
   SumbitAwardValueAction,
   ExtendedSubmitAwardAnswerAction,
-} from '../actions/award.actions';
-import initialModels from '../../static/awards';
-import moment from 'moment';
-import uuid from 'uuid/v4';
+}                    from '../actions/award.actions'
+import initialModels from '../../static/awards'
+import moment        from 'moment'
+import uuid          from 'uuid/v4'
 
 /**
  * The upper level keys are the index of the 'formData' element in formData,
@@ -23,7 +23,7 @@ export type AwardData = {
       value: any,
     },
   },
-};
+}
 
 /**
  * In this iteration, the keys are the top level keys as defined in the static form
@@ -41,9 +41,9 @@ export type ExtendedAwardData = {
       meta: any,
     },
   },
-};
+}
 
-type ModelElementType = 'label' | 'checkbox';
+type ModelElementType = 'label' | 'checkbox'
 
 export type Model = {
   type: ModelElementType,
@@ -56,11 +56,11 @@ export type Model = {
     header?: string,
     label?: string,
   },
-};
+}
 
 export type SimpleModelData = {
   [key: string]: Model,
-};
+}
 
 /**
  * Types
@@ -75,19 +75,19 @@ export type AwardState = {
   models: {
     [key: string]: SimpleModelData,
   },
-};
+}
 
 /**
  * Setting up initial state
  */
-const initialAwardDataState = {};
+const initialAwardDataState = {}
 
-const initialModelsState = initialModels;
+const initialModelsState = initialModels
 
 const initialState: AwardState = {
   data: initialAwardDataState,
   models: initialModelsState,
-};
+}
 
 const invalidAction = obj =>
   !obj.stepId ||
@@ -95,15 +95,15 @@ const invalidAction = obj =>
   !obj.element.key ||
   !obj.element.formIndex ||
   !obj.element.type ||
-  obj.element.value === undefined;
+  obj.element.value === undefined
 
 const populate = (
   action: SumbitAwardValueAction,
   state: AwardState
 ): AwardState => {
-  if (invalidAction(action.payload)) return state;
-  const { stepId, element: { key, value, formIndex, type } } = action.payload;
-  const data = state.data || {};
+  if (invalidAction(action.payload)) return state
+  const { stepId, element: { key, value, formIndex, type } } = action.payload
+  const data = state.data || {}
 
   return {
     ...state,
@@ -120,8 +120,8 @@ const populate = (
         },
       },
     },
-  };
-};
+  }
+}
 
 const extendedPopulate = (
   action: ExtendedSubmitAwardAnswerAction,
@@ -130,11 +130,11 @@ const extendedPopulate = (
   const {
     stepId,
     element: { awardKey, value, fieldKey, type, meta },
-  } = action.payload;
-  const data = state.data || {};
-  const stepData = data[stepId] || {};
-  const awardData = stepData[awardKey] || {};
-  const fieldData = awardData[fieldKey] || {};
+  } = action.payload
+  const data = state.data || {}
+  const stepData = data[stepId] || {}
+  const awardData = stepData[awardKey] || {}
+  const fieldData = awardData[fieldKey] || {}
   return {
     ...state,
     data: {
@@ -155,8 +155,8 @@ const extendedPopulate = (
         },
       },
     },
-  };
-};
+  }
+}
 
 function formDataReducer(
   state: AwardState = initialState,
@@ -164,49 +164,31 @@ function formDataReducer(
 ) {
   switch (action.type) {
   case SUBMIT_AWARD_VALUE:
-    return populate(action, state);
+    return populate(action, state)
   case SUBMIT_AWARD_VALUE_EXTENDED:
-    return extendedPopulate(action, state);
+    return extendedPopulate(action, state)
   case RESET_AWARD_VALUE:
-    return initialState;
+    return initialState
   default:
-    return state;
+    return state
   }
 }
 
-import storage from 'redux-persist/lib/storage';
-import { persistReducer, createMigrate } from 'redux-persist';
-
-const mapDataWithStepIndicesToDataWithStepIds = state => {
-  if (!state.data || Object.keys(state.data).length === 0) {
-    return initialAwardDataState;
-  }
-
-  const { data } = state;
-  return Object.keys(data).reduce(
-    (sum, stepIndex) => ({
-      ...sum,
-      [(stepIndex + 1).toString()]: data[stepIndex],
-    }),
-    {}
-  );
-};
+import storage from 'redux-persist/lib/storage'
+import { persistReducer, createMigrate } from 'redux-persist'
 
 const migrations = {
-  0: state => ({
-    ...state,
-    data: mapDataWithStepIndicesToDataWithStepIds(state.data),
-    models: initialModels,
-  }),
+  0: state => state,
   1: state => state,
-};
+  2: () => initialState,
+}
 
 const persistConfig = {
   key: 'awards',
   storage: storage,
   blacklist: [],
-  version: 1,
+  version: 2,
   migrate: createMigrate(migrations, { debug: true }),
-};
+}
 
-export default persistReducer(persistConfig, formDataReducer);
+export default persistReducer(persistConfig, formDataReducer)

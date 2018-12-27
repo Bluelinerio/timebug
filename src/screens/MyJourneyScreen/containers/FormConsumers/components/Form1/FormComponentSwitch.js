@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 import MeditationCheckin, {
   key as meditationKey,
-} from '../../containers/Form1/MeditationCheckinContainer';
+} from '../../containers/Form1/MeditationCheckinContainer'
 
 type Props = {
   award: {
@@ -11,10 +11,10 @@ type Props = {
   step: string,
   mapDataToPayload: () => any,
   extendedSubmit: () => any,
-};
+}
 
 const mapComponents = (key: string, props: Props): React.Node<any> => {
-  const { award: { model, data } } = props;
+  const { award: { model, data } } = props
   switch (key) {
   case meditationKey: {
     const newProps = {
@@ -24,30 +24,30 @@ const mapComponents = (key: string, props: Props): React.Node<any> => {
       step: props.step,
       mapDataToPayload: props.mapDataToPayload,
       extendedSubmit: props.extendedSubmit,
-    };
-    return <MeditationCheckin key={key} {...newProps} />;
+    }
+    return <MeditationCheckin key={key} {...newProps} />
   }
   default:
-    return null;
+    return null
   }
-};
+}
 
 type FormComponentProps = {
   award: {
     data: any,
     model: any,
   },
-};
+}
 
 class FormComponentSwitch extends React.PureComponent<FormComponentProps> {
   render() {
-    const { award: { model } } = this.props;
+    const { award: { model } } = this.props
     return (
       <React.Fragment>
         {Object.keys(model).map(key => mapComponents(key, this.props))}
       </React.Fragment>
-    );
+    )
   }
 }
 
-export default FormComponentSwitch;
+export default FormComponentSwitch

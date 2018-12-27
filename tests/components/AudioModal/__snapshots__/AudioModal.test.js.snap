@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Testing ReassignLocationMenu component renders as expected 1`] = `
+exports[`Testing audio modal component renders as expected 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <AudioModal
@@ -65,7 +65,7 @@ ShallowWrapper {
               Object {
                 "backgroundColor": "#f8f8f8",
                 "borderRadius": 12,
-                "height": 533.6,
+                "height": 533,
                 "padding": 1,
                 "width": 600,
                 "zIndex": 999,
@@ -78,7 +78,7 @@ ShallowWrapper {
                   "alignItems": "center",
                   "flex": 0,
                   "flexDirection": "row",
-                  "height": 160.08,
+                  "height": 159,
                   "justifyContent": "center",
                   "paddingBottom": 8,
                   "paddingHorizontal": 16,
@@ -107,11 +107,11 @@ ShallowWrapper {
                     Object {
                       "alignItems": "center",
                       "borderColor": "#BDBDBD",
-                      "borderRadius": 80.04,
+                      "borderRadius": 79,
                       "borderWidth": 1,
-                      "height": 80.04,
+                      "height": 79,
                       "justifyContent": "center",
-                      "width": 80.04,
+                      "width": 79,
                     }
                   }
                 >
@@ -211,7 +211,7 @@ ShallowWrapper {
                 Object {
                   "backgroundColor": "#f8f8f8",
                   "borderRadius": 12,
-                  "height": 533.6,
+                  "height": 533,
                   "padding": 1,
                   "width": 600,
                   "zIndex": 999,
@@ -224,7 +224,7 @@ ShallowWrapper {
                     "alignItems": "center",
                     "flex": 0,
                     "flexDirection": "row",
-                    "height": 160.08,
+                    "height": 159,
                     "justifyContent": "center",
                     "paddingBottom": 8,
                     "paddingHorizontal": 16,
@@ -253,11 +253,11 @@ ShallowWrapper {
                       Object {
                         "alignItems": "center",
                         "borderColor": "#BDBDBD",
-                        "borderRadius": 80.04,
+                        "borderRadius": 79,
                         "borderWidth": 1,
-                        "height": 80.04,
+                        "height": 79,
                         "justifyContent": "center",
-                        "width": 80.04,
+                        "width": 79,
                       }
                     }
                   >
@@ -345,7 +345,7 @@ ShallowWrapper {
                       "alignItems": "center",
                       "flex": 0,
                       "flexDirection": "row",
-                      "height": 160.08,
+                      "height": 159,
                       "justifyContent": "center",
                       "paddingBottom": 8,
                       "paddingHorizontal": 16,
@@ -374,11 +374,11 @@ ShallowWrapper {
                         Object {
                           "alignItems": "center",
                           "borderColor": "#BDBDBD",
-                          "borderRadius": 80.04,
+                          "borderRadius": 79,
                           "borderWidth": 1,
-                          "height": 80.04,
+                          "height": 79,
                           "justifyContent": "center",
-                          "width": 80.04,
+                          "width": 79,
                         }
                       }
                     >
@@ -431,7 +431,7 @@ ShallowWrapper {
               "style": Object {
                 "backgroundColor": "#f8f8f8",
                 "borderRadius": 12,
-                "height": 533.6,
+                "height": 533,
                 "padding": 1,
                 "width": 600,
                 "zIndex": 999,
@@ -466,11 +466,11 @@ ShallowWrapper {
                         Object {
                           "alignItems": "center",
                           "borderColor": "#BDBDBD",
-                          "borderRadius": 80.04,
+                          "borderRadius": 79,
                           "borderWidth": 1,
-                          "height": 80.04,
+                          "height": 79,
                           "justifyContent": "center",
-                          "width": 80.04,
+                          "width": 79,
                         }
                       }
                     >
@@ -486,7 +486,7 @@ ShallowWrapper {
                     "alignItems": "center",
                     "flex": 0,
                     "flexDirection": "row",
-                    "height": 160.08,
+                    "height": 159,
                     "justifyContent": "center",
                     "paddingBottom": 8,
                     "paddingHorizontal": 16,
@@ -505,11 +505,11 @@ ShallowWrapper {
                         Object {
                           "alignItems": "center",
                           "borderColor": "#BDBDBD",
-                          "borderRadius": 80.04,
+                          "borderRadius": 79,
                           "borderWidth": 1,
-                          "height": 80.04,
+                          "height": 79,
                           "justifyContent": "center",
-                          "width": 80.04,
+                          "width": 79,
                         }
                       }
                     >
@@ -549,11 +549,11 @@ ShallowWrapper {
                       "style": Object {
                         "alignItems": "center",
                         "borderColor": "#BDBDBD",
-                        "borderRadius": 80.04,
+                        "borderRadius": 79,
                         "borderWidth": 1,
-                        "height": 80.04,
+                        "height": 79,
                         "justifyContent": "center",
-                        "width": 80.04,
+                        "width": 79,
                       },
                     },
                     "ref": null,
@@ -713,7 +713,7 @@ ShallowWrapper {
                 Object {
                   "backgroundColor": "#f8f8f8",
                   "borderRadius": 12,
-                  "height": 533.6,
+                  "height": 533,
                   "padding": 1,
                   "width": 600,
                   "zIndex": 999,
@@ -726,7 +726,7 @@ ShallowWrapper {
                     "alignItems": "center",
                     "flex": 0,
                     "flexDirection": "row",
-                    "height": 160.08,
+                    "height": 159,
                     "justifyContent": "center",
                     "paddingBottom": 8,
                     "paddingHorizontal": 16,
@@ -755,11 +755,11 @@ ShallowWrapper {
                       Object {
                         "alignItems": "center",
                         "borderColor": "#BDBDBD",
-                        "borderRadius": 80.04,
+                        "borderRadius": 79,
                         "borderWidth": 1,
-                        "height": 80.04,
+                        "height": 79,
                         "justifyContent": "center",
-                        "width": 80.04,
+                        "width": 79,
                       }
                     }
                   >
@@ -859,7 +859,7 @@ ShallowWrapper {
                   Object {
                     "backgroundColor": "#f8f8f8",
                     "borderRadius": 12,
-                    "height": 533.6,
+                    "height": 533,
                     "padding": 1,
                     "width": 600,
                     "zIndex": 999,
@@ -872,7 +872,7 @@ ShallowWrapper {
                       "alignItems": "center",
                       "flex": 0,
                       "flexDirection": "row",
-                      "height": 160.08,
+                      "height": 159,
                       "justifyContent": "center",
                       "paddingBottom": 8,
                       "paddingHorizontal": 16,
@@ -901,11 +901,11 @@ ShallowWrapper {
                         Object {
                           "alignItems": "center",
                           "borderColor": "#BDBDBD",
-                          "borderRadius": 80.04,
+                          "borderRadius": 79,
                           "borderWidth": 1,
-                          "height": 80.04,
+                          "height": 79,
                           "justifyContent": "center",
-                          "width": 80.04,
+                          "width": 79,
                         }
                       }
                     >
@@ -993,7 +993,7 @@ ShallowWrapper {
                         "alignItems": "center",
                         "flex": 0,
                         "flexDirection": "row",
-                        "height": 160.08,
+                        "height": 159,
                         "justifyContent": "center",
                         "paddingBottom": 8,
                         "paddingHorizontal": 16,
@@ -1022,11 +1022,11 @@ ShallowWrapper {
                           Object {
                             "alignItems": "center",
                             "borderColor": "#BDBDBD",
-                            "borderRadius": 80.04,
+                            "borderRadius": 79,
                             "borderWidth": 1,
-                            "height": 80.04,
+                            "height": 79,
                             "justifyContent": "center",
-                            "width": 80.04,
+                            "width": 79,
                           }
                         }
                       >
@@ -1079,7 +1079,7 @@ ShallowWrapper {
                 "style": Object {
                   "backgroundColor": "#f8f8f8",
                   "borderRadius": 12,
-                  "height": 533.6,
+                  "height": 533,
                   "padding": 1,
                   "width": 600,
                   "zIndex": 999,
@@ -1114,11 +1114,11 @@ ShallowWrapper {
                           Object {
                             "alignItems": "center",
                             "borderColor": "#BDBDBD",
-                            "borderRadius": 80.04,
+                            "borderRadius": 79,
                             "borderWidth": 1,
-                            "height": 80.04,
+                            "height": 79,
                             "justifyContent": "center",
-                            "width": 80.04,
+                            "width": 79,
                           }
                         }
                       >
@@ -1134,7 +1134,7 @@ ShallowWrapper {
                       "alignItems": "center",
                       "flex": 0,
                       "flexDirection": "row",
-                      "height": 160.08,
+                      "height": 159,
                       "justifyContent": "center",
                       "paddingBottom": 8,
                       "paddingHorizontal": 16,
@@ -1153,11 +1153,11 @@ ShallowWrapper {
                           Object {
                             "alignItems": "center",
                             "borderColor": "#BDBDBD",
-                            "borderRadius": 80.04,
+                            "borderRadius": 79,
                             "borderWidth": 1,
-                            "height": 80.04,
+                            "height": 79,
                             "justifyContent": "center",
-                            "width": 80.04,
+                            "width": 79,
                           }
                         }
                       >
@@ -1197,11 +1197,11 @@ ShallowWrapper {
                         "style": Object {
                           "alignItems": "center",
                           "borderColor": "#BDBDBD",
-                          "borderRadius": 80.04,
+                          "borderRadius": 79,
                           "borderWidth": 1,
-                          "height": 80.04,
+                          "height": 79,
                           "justifyContent": "center",
-                          "width": 80.04,
+                          "width": 79,
                         },
                       },
                       "ref": null,
