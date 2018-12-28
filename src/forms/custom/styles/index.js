@@ -15,8 +15,8 @@ import {
 
 export const TEMPORARY_COLOR_FOR_BUTTONS = azure
 
-export const buttonWidth = widthPercentage(15)
-export const buttonHeight = heightPercentage(5.55)
+export const buttonWidth = widthPercentage(20)
+export const buttonHeight = heightPercentage(6.66)
 
 export const formTextColor = blue900
 export const iconSize = 30
@@ -79,9 +79,6 @@ export const connectedComponentStyles = StyleSheet.create({
     fontFamily: 'Metropolis',
     fontWeight: '500',
     fontSize: 12,
-    height: 100,
-    width: 200,
-    backgroundColor: gray50,
   },
   pickerBackground: {
     backgroundColor: hexToRgba(azure, 0.1),
@@ -213,7 +210,8 @@ const formStyles = StyleSheet.create({
   },
   listButtonContainer: {
     flex: 1,
-    alignSelf: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   pickerContainer: {
     width: '80%',
@@ -243,9 +241,9 @@ const formStyles = StyleSheet.create({
     width: '100%',
   },
   listElementContainer: {
-    marginBottom: 23,
+    marginBottom: 8,
     flex: 4,
-    alignSelf: 'center',
+    alignItems: 'center',
     width: '100%',
   },
   listButtonStyle: {

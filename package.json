@@ -57,7 +57,6 @@
     "react-native-gesture-handler": "^1.0.0-alpha.42",
     "react-native-linear-gradient": "^2.5.3",
     "react-native-markdown-syntax": "^0.1.0",
-    "react-native-modal-selector": "^1.0.0",
     "react-native-pages": "^0.6.1",
     "react-native-progress": "^3.5.0",
     "react-native-push-notification": "^3.1.1",

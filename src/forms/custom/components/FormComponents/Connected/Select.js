@@ -1,6 +1,5 @@
 import React                        from 'react'
-import { Picker, Platform, View }   from 'react-native'
-import ModalSelector                from 'react-native-modal-selector'
+import { Picker }                   from 'react-native'
 import { connectedComponentStyles } from '../../../styles'
 
 const Select = ({
@@ -20,20 +19,12 @@ const Select = ({
       default: string,
     },
   },
-}) => {
-  const onValueChange = (itemValue) => {
-    onChange(itemValue)
-  };
-
-  const onChangeIosSelector = (item) => {
-    onChange(item.key)
-  };
-
-  const renderAndroidPicker = () => (
+}) => (
+  <React.Fragment>
     <Picker
       selectedValue={value ? value : options.value}
       style={[connectedComponentStyles.pickerStyle, formStyles.elementContainerStyle]}
-      onValueChange={onValueChange}
+      onValueChange={itemValue => onChange(itemValue)}
       itemStyle={connectedComponentStyles.pickerItemStyle}
     >
       {content &&
@@ -41,30 +32,7 @@ const Select = ({
           <Picker.Item key={value} value={value} label={text} />
         ))}
     </Picker>
-  );
-
-  const renderiOSPicker = () => {
-    const data = content && content.items.map(({ value, text }) => ({
-      key: value,
-      label: text,
-    }));
-
-    return data && (
-      <View style={[connectedComponentStyles.pickerStyle, formStyles.elementContainerStyle]}>
-        <ModalSelector
-          initValue={value ? value : data[0].key}
-          data={data}
-          onChange={onChangeIosSelector}
-        />
-      </View>
-    );
-  }
-
-  return (
-    <React.Fragment>
-      { Platform.OS === 'ios' ? renderiOSPicker() : renderAndroidPicker()}
-    </React.Fragment>
-  );
-}
+  </React.Fragment>
+)
 
 export default Select
