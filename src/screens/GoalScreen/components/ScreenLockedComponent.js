@@ -5,15 +5,15 @@ import styles from '../styles';
 type ScreenLockedComponentProps = {
   onPress: (step: any) => any,
   step: any,
-};
+}
 
 class ScreenLockedComponent extends React.PureComponent<
   ScreenLockedComponentProps
 > {
   _onPress = () => {
-    const { step, onPress } = this.props;
-    onPress(step);
-  };
+    const { step, onPress } = this.props
+    onPress(step)
+  }
 
   render() {
     return (
@@ -26,8 +26,8 @@ class ScreenLockedComponent extends React.PureComponent<
           <Text style={[styles.text, styles.buttonText]}>Go to step 5</Text>
         </TouchableOpacity>
       </View>
-    );
+    )
   }
 }
 
-export default ScreenLockedComponent;
+export default ScreenLockedComponent

@@ -11,12 +11,16 @@
   "rules": {
     "comma-dangle": ["error", "always-multiline"],
     "no-console": 0,
+    "semi": ["error", "never"],
     "rules": {
       "quotes": ["error", "single"]
     },
+    "eqeqeq": ["error", "always"],
     "no-trailing-spaces": "error",
     "no-multi-spaces": ["error", { "exceptions": { "ImportDeclaration": true } }],
-    "indent": ["error", 2]
+    "indent": ["error", 2],
+    "no-loop-func": "error",
+    "no-case-declarations": "error"
   },
   "globals": {
     "__DEV__": true

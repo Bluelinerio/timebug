@@ -1,7 +1,7 @@
 //@flow
-import React from 'react';
-import { View, Text, Switch } from 'react-native';
-import styles, { stylesStep1 } from '../../../../styles';
+import React                   from 'react'
+import { View, Text, Switch }  from 'react-native'
+import styles, { stylesStep1 } from '../../../../styles'
 
 export type MeditationCheckinComponentProps = {
   extendedSubmit: () => any,
@@ -17,7 +17,8 @@ export type MeditationCheckinComponentProps = {
   mapDataToPayload: () => any,
   fieldKey: string,
   value: { value: boolean },
-};
+  daysInRowCount?: number,
+}
 
 class MeditationCheckinComponent extends React.PureComponent<
   MeditationCheckinComponentProps
@@ -30,13 +31,13 @@ class MeditationCheckinComponent extends React.PureComponent<
       model,
       mapDataToPayload,
       fieldKey,
-    } = this.props;
-    extendedSubmit(mapDataToPayload(step, formKey, fieldKey, value, model));
-  };
+    } = this.props
+    extendedSubmit(mapDataToPayload(step, formKey, fieldKey, value, model))
+  }
 
   render() {
-    const { model: { fields }, value, fieldKey } = this.props;
-    const { options } = fields[fieldKey];
+    const { model: { fields }, value, fieldKey, daysInRowCount } = this.props
+    const { options } = fields[fieldKey]
     return (
       <View style={[styles.container, stylesStep1.formContainer]}>
         <View>
@@ -51,11 +52,23 @@ class MeditationCheckinComponent extends React.PureComponent<
           <Text style={stylesStep1.yesNoHint}>Yes</Text>
         </View>
         {value && value.value === true ? (
-          <Text style={stylesStep1.congratulations}>Good job!</Text>
+          <View>
+            <Text style={stylesStep1.congratulations}>
+              Good job!{' '}
+              {daysInRowCount && daysInRowCount % 5 === 0
+                ? `- Keep going!`
+                : ''}
+            </Text>
+            <Text style={stylesStep1.streakText}>
+              {daysInRowCount && daysInRowCount > 1
+                ? `Current Streak - ${daysInRowCount} days`
+                : ''}
+            </Text>
+          </View>
         ) : null}
       </View>
-    );
+    )
   }
 }
 
-export default MeditationCheckinComponent;
+export default MeditationCheckinComponent

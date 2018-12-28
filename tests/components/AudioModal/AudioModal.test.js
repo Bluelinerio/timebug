@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import AudioModal from '../../../src/components/AudioModal'
 
-describe('Testing ReassignLocationMenu component', () => {
+describe('Testing audio modal component', () => {
   it('renders as expected', () => {
     const wrapper = shallow(
       <AudioModal

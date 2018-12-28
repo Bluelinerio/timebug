@@ -1,4 +1,4 @@
-import { CHECKBOX, STRUCT } from './modelTypes';
+import { CHECKBOX, STRUCT } from './modelTypes'
 
 export default {
   meditationCheckin: {
@@ -19,4 +19,4 @@ export default {
       },
     },
   },
-};
+}

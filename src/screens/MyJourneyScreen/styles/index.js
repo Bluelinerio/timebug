@@ -1,6 +1,6 @@
-import { StyleSheet } from 'react-native';
-import { iOSUIKit } from 'react-native-typography';
-import { azure } from '../../../constants/colors';
+import { StyleSheet } from 'react-native'
+import { iOSUIKit }   from 'react-native-typography'
+import { azure }      from '../../../constants/colors'
 
 export const stylesStep1 = {
   formContainer: {
@@ -34,7 +34,13 @@ export const stylesStep1 = {
     fontFamily: 'Metropolis',
     textAlign: 'center',
   },
-};
+  streakText: {
+    ...iOSUIKit.footnoteObject,
+    color: azure,
+    fontFamily: 'Metropolis',
+    textAlign: 'center',
+  },
+}
 
 export default StyleSheet.create({
   header: {
@@ -90,4 +96,4 @@ export default StyleSheet.create({
   checkBox: {
     alignSelf: 'center',
   },
-});
+})

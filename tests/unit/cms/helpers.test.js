@@ -5,22 +5,22 @@ describe('cms helper methods tests', function() {
     const user = {
       forms: [
         {
-          stepId: '1'
+          stepId: '1',
         },
         {
-          stepId: '3'
+          stepId: '3',
         },
         {
-          stepId: '20'
-        }
-      ]
+          stepId: '20',
+        },
+      ],
     }
     expect(isStepCompleted(1, user)).toBe(true)
     expect(isStepCompleted(20, user)).toBe(true)
     expect(isStepCompleted(3, user)).toBe(true)
     expect(isStepCompleted(15, user)).toBe(false)
 
-    user.forms.push({ stepId: '15'})
+    user.forms.push({ stepId: '15' })
 
     expect(isStepCompleted(15, user)).toBe(true)
 
@@ -33,13 +33,13 @@ describe('cms helper methods tests', function() {
     expect(user.forms[0].stepId).toBe('1')
     expect(user.forms[1].stepId).toBe('3')
 
-    user.forms.push({ stepId: '22'})
+    user.forms.push({ stepId: '22' })
 
     expect(isStepCompleted(22, user)).toBe(true)
 
     expect(isStepCompleted(2, user)).toBe(false)
 
-    user.forms.push({ stepId: '2'})
+    user.forms.push({ stepId: '2' })
 
     expect(isStepCompleted(2, user)).toBe(true)
   })
@@ -49,21 +49,21 @@ describe('cms helper methods tests', function() {
     const user = {
       forms: [
         {
-          stepId: '1'
+          stepId: '1',
         },
         {
-          stepId: '3'
+          stepId: '3',
         },
         {
-          stepId: '20'
-        }
-      ]
+          stepId: '20',
+        },
+      ],
     }
     expect(isStepCompleted(20, user)).toBe(true)
 
     user.forms.pop()
 
-    user.forms.push({ stepId: '22'})
+    user.forms.push({ stepId: '22' })
 
     expect(isStepCompleted(22, user)).toBe(true)
 
@@ -73,5 +73,4 @@ describe('cms helper methods tests', function() {
       expect(err).not.toBe(undefined)
     }
   })
-
 })
