@@ -29,7 +29,7 @@ type State = {
   currentValue: ValueElement,
 }
 
-export const _stripKeys = (val: ValueElement) => {
+const _stripKeys = (val: ValueElement) => {
   const metaKeys = ['_id', '_model']
   return Object.keys(val).reduce((prev, key) => {
     if (metaKeys.find(k => k === key)) return prev
@@ -171,7 +171,6 @@ class ListComponent extends React.PureComponent<Props, State> {
     const { currentValue, indexesMap } = this.state
     const { field: { content, options }, value, formStyles = {} } = this.props
     const { childTypes } = options
-
     return (
       <React.Fragment>
         <FormElementHeader
@@ -184,15 +183,12 @@ class ListComponent extends React.PureComponent<Props, State> {
               Object.keys(childTypes).map(key => {
                 const field = childTypes[key]
                 const inValue = currentValue[indexesMap[key]] || {}
-                const formValue = value;
-
                 return (
                   <FormPicker
                     key={field.key}
                     field={field}
                     value={inValue.value}
                     formStyles={formStyles}
-                    formValue={formValue}
                     onChange={value =>
                       this._onChange(value, indexesMap[key], key)
                     }
