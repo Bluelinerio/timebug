@@ -21,6 +21,7 @@
     "test:android": "yarn test-env && yarn test-e2e:android",
     "run:android": "cp config.example.json config.json && node node_modules/react-native/local-cli/cli.js run-android",
     "run:android:release": "cp config.example.json config.json && node node_modules/react-native/local-cli/cli.js run-android --variant=release",
+    "run:android:staging": "cp config.example.json config.json && node node_modules/react-native/local-cli/cli.js run-android --variant=stagingRelease",
     "run:ios": "cp config.example.json config.json && node node_modules/react-native/local-cli/cli.js run-ios",
     "debug:android": "node node_modules/react-native/local-cli/cli.js log-android",
     "clean:android": "cd android && gradlew clean && cd ..",
