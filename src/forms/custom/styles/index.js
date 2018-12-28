@@ -79,6 +79,9 @@ export const connectedComponentStyles = StyleSheet.create({
     fontFamily: 'Metropolis',
     fontWeight: '500',
     fontSize: 12,
+    height: 100,
+    width: 200,
+    backgroundColor: gray50,
   },
   pickerBackground: {
     backgroundColor: hexToRgba(azure, 0.1),
