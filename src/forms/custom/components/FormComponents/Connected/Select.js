@@ -23,11 +23,11 @@ const Select = ({
 }) => {
   const onValueChange = (itemValue) => {
     onChange(itemValue)
-  };
+  }
 
   const onChangeIosSelector = (item) => {
     onChange(item.key)
-  };
+  }
 
   const renderAndroidPicker = () => (
     <Picker
@@ -41,13 +41,13 @@ const Select = ({
           <Picker.Item key={value} value={value} label={text} />
         ))}
     </Picker>
-  );
+  )
 
   const renderiOSPicker = () => {
     const data = content && content.items.map(({ value, text }) => ({
       key: value,
       label: text,
-    }));
+    }))
 
     return data && (
       <View style={[connectedComponentStyles.pickerStyle, formStyles.elementContainerStyle]}>
@@ -57,14 +57,14 @@ const Select = ({
           onChange={onChangeIosSelector}
         />
       </View>
-    );
+    )
   }
 
   return (
     <React.Fragment>
       { Platform.OS === 'ios' ? renderiOSPicker() : renderAndroidPicker()}
     </React.Fragment>
-  );
+  )
 }
 
 export default Select

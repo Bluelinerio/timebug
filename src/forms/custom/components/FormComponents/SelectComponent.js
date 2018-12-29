@@ -2,8 +2,7 @@ import React             from 'react'
 import { View, Picker }  from 'react-native'
 import FormElementHeader from './FormElementHeader'
 import styles            from '../../styles'
-import { _stripKeys }    from './ListComponent';
-import tron from 'reactotron-react-native';
+import { _stripKeys }    from './ListComponent'
 
 const Select = ({
   value,
@@ -29,25 +28,25 @@ const Select = ({
 
   const getFormItems = () => {
     const mappedObjects = formValue && formValue.map((val) => {
-      const strippedObject = _stripKeys(val);
+      const strippedObject = _stripKeys(val)
       const mappedObject = Object.values(strippedObject).map(value => {
         return value && value.value && {
           _id: value._id,
           value: value.value,
         }
-      });
+      })
 
-      return mappedObject[0];
-    });
+      return mappedObject[0]
+    })
 
-    return mappedObjects;
-  };
+    return mappedObjects
+  }
 
-  const currentItems = getFormItems();
+  const currentItems = getFormItems()
 
   const filteredItems = content && content.items.filter((item) => {
-    const isSelected = currentItems && currentItems.find((ci) => ci.value === item.value);
-    return !isSelected;
+    const isSelected = currentItems && currentItems.find((ci) => ci.value === item.value)
+    return !isSelected
   })
 
   return (

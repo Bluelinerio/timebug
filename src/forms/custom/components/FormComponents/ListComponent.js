@@ -184,7 +184,7 @@ class ListComponent extends React.PureComponent<Props, State> {
               Object.keys(childTypes).map(key => {
                 const field = childTypes[key]
                 const inValue = currentValue[indexesMap[key]] || {}
-                const formValue = value;
+                const formValue = value
 
                 return (
                   <FormPicker
