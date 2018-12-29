@@ -54,6 +54,7 @@ class MultipleSelect extends React.PureComponent<Props> {
   render() {
     const { value = [], field: { content }, formStyles = {} } = this.props
     const valueSet = new Set(value)
+
     return (
       <React.Fragment>
         <FormElementHeader
