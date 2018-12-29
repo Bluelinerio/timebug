@@ -1,9 +1,9 @@
-import React                                   from 'react'
+import React from 'react'
 import { View, Text, Alert, TouchableOpacity } from 'react-native'
-import FormElementHeader                       from './FormElementHeader'
+import FormElementHeader from './FormElementHeader'
 import styles, { TEMPORARY_COLOR_FOR_BUTTONS } from '../../styles'
-import FormPicker                              from './FormPicker'
-import uuid                                    from 'uuid/v4'
+import FormPicker from './FormPicker'
+import uuid from 'uuid/v4'
 
 type Props = {
   value: Array<any>,
@@ -50,20 +50,19 @@ const TextElement = ({
   formStyles: any,
 }) => {
   const strippedObject = _stripKeys(element)
+  const text = `${index + 1} ) ${Object.values(strippedObject)
+    .filter(value => value.value !== null && value.value !== undefined)
+    .map(value => value.value, [])
+    .join('-')}`
   return (
     <React.Fragment>
-      {Object.values(strippedObject).map(value => {
-        return (
-          value &&
-          value.value && (
-            <View key={value._id} style={styles.indented}>
-              <Text
-                style={[styles.textElementText, formStyles.textStyle]}
-              >{`${index + 1})${value.value || ``}`}</Text>
-            </View>
-          )
-        )
-      })}
+      {text && (
+        <View style={styles.indented}>
+          <Text style={[styles.textElementText, formStyles.textStyle]}>
+            {text}
+          </Text>
+        </View>
+      )}
     </React.Fragment>
   )
 }
@@ -148,6 +147,7 @@ class ListComponent extends React.PureComponent<Props, State> {
     }
     const valueToSave = Object.values(childTypes).reduce((prev, model) => {
       return {
+        ...prev,
         [model.key]: {
           ...currentValue[model.key],
           _model: model,

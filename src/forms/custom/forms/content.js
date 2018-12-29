@@ -29,3 +29,13 @@ export const Emotions = [
   'Confusion',
   'Anger',
 ]
+
+export const AreaOfLife = [
+  'Finances',
+  'Environment',
+  'Aims & Hobbies',
+  'Career',
+  'Relationships',
+  'Health & Wellness',
+  'Spirituality',
+]
