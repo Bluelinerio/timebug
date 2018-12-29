@@ -251,10 +251,19 @@ class Form extends React.PureComponent<Props, any> {
     }
   }
 
+  _listValidation = (value, options) => {
+    const { constraints = {} } = options
+    if (!value) return true
+    return constraints.min && constraints.min > 0
+      ? value.length < constraints.min
+      : !(value.length > 0)
+  }
+
   _checkValidation = (field, value) => {
-    switch (field.type) {
+    const { type, options = {} } = field
+    switch (type) {
     case types.list:
-      return !(value && value.length > 0)
+      return this._listValidation(value, options)
     case types.connected:
       return !(value && value.length > 0)
     default:

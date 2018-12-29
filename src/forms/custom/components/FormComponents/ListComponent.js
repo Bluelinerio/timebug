@@ -1,9 +1,9 @@
-import React from 'react'
+import React                                   from 'react'
 import { View, Text, Alert, TouchableOpacity } from 'react-native'
-import FormElementHeader from './FormElementHeader'
+import FormElementHeader                       from './FormElementHeader'
 import styles, { TEMPORARY_COLOR_FOR_BUTTONS } from '../../styles'
-import FormPicker from './FormPicker'
-import uuid from 'uuid/v4'
+import FormPicker                              from './FormPicker'
+import uuid                                    from 'uuid/v4'
 
 type Props = {
   value: Array<any>,
@@ -121,8 +121,9 @@ class ListComponent extends React.PureComponent<Props, State> {
     })
   }
 
-  _validate = () => {
+  _validate = (options = {}) => {
     const { currentValue } = this.state
+    const { constraints = {} } = options
     const hasError = Object.values(currentValue).some(value => {
       return value.value === undefined || value.value === ''
     })
@@ -131,6 +132,19 @@ class ListComponent extends React.PureComponent<Props, State> {
         error: 'The input text cannot be blank',
         failed: true,
       }
+    if (constraints && constraints.max) {
+      const { max } = constraints
+      const { errors = {} } = constraints
+      const { max: maxError } = errors
+      const { value = [] } = this.props
+      if (value && value.length >= max)
+        return {
+          error: maxError
+            ? maxError
+            : `The maximum number of elements is ${max}`,
+          failed: true,
+        }
+    }
     return {
       failed: false,
     }
@@ -140,7 +154,7 @@ class ListComponent extends React.PureComponent<Props, State> {
     const { currentValue } = this.state
     const { value = [], onChange, field: { options } } = this.props
     const { childTypes } = options
-    const { error, failed } = this._validate()
+    const { error, failed } = this._validate(options)
     if (failed) {
       Alert.alert('Input Error', error)
       return
