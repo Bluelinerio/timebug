@@ -1,9 +1,10 @@
-import React                                   from 'react'
-import { View, Text, Alert, TouchableOpacity } from 'react-native'
-import FormElementHeader                       from './FormElementHeader'
-import styles, { TEMPORARY_COLOR_FOR_BUTTONS } from '../../styles'
-import FormPicker                              from './FormPicker'
-import uuid                                    from 'uuid/v4'
+import React                                              from 'react'
+import { View, Text, Alert, TouchableOpacity }            from 'react-native'
+import FormElementHeader                                  from './FormElementHeader'
+import styles, { TEMPORARY_COLOR_FOR_BUTTONS, iconStyle } from '../../styles'
+import FormPicker                                         from './FormPicker'
+import uuid                                               from 'uuid/v4'
+import SvgIcon                                            from '../../../../components/SvgIcon'
 
 type Props = {
   value: Array<any>,
@@ -57,10 +58,19 @@ const TextElement = ({
   return (
     <React.Fragment>
       {text && (
-        <View style={styles.indented}>
-          <Text style={[styles.textElementText, formStyles.textStyle]}>
-            {text}
-          </Text>
+        <View
+          style={[styles.indented, styles.row, styles.listTextAnswersContainer]}
+        >
+          <View style={styles.listTextAnswerTextContainer}>
+            <Text style={[styles.textElementText, formStyles.textStyle]}>
+              {text}
+            </Text>
+          </View>
+          <View style={styles.listTextAnswerIconContainer}>
+            <View style={styles.listTextEditIcon}>
+              <SvgIcon name={'Edit'} {...iconStyle} />
+            </View>
+          </View>
         </View>
       )}
     </React.Fragment>

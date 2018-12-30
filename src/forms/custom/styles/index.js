@@ -12,6 +12,7 @@ import {
   widthPercentage,
   heightPercentage,
 }                               from '../../../utils/viewportCalculation'
+import { iOSUIKit }             from 'react-native-typography'
 
 export const TEMPORARY_COLOR_FOR_BUTTONS = azure
 
@@ -25,6 +26,13 @@ export const iconColor = gray50
 export const checkboxColor = greenA400
 export const uncheckedColor = gray400
 export const helpButtonColor = azure
+const helperIconSize = 16
+
+export const iconStyle = {
+  fill: gray900,
+  height: helperIconSize,
+  width: helperIconSize,
+}
 
 const buttonStyles = {
   borderRadius: 6,
@@ -275,6 +283,7 @@ const formStyles = StyleSheet.create({
     fontSize: 16,
   },
   textElementText: {
+    ...iOSUIKit.subheadEmphasizedObject,
     fontFamily: 'Metropolis',
     fontWeight: '700',
     textAlign: 'justify',
@@ -293,6 +302,33 @@ const formStyles = StyleSheet.create({
   },
   indented: {
     paddingLeft: 16,
+  },
+  row: {
+    flexDirection: 'row',
+  },
+  listTextAnswersContainer: {
+    height: 30,
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+  listTextAnswerTextContainer: {
+    flex: 1,
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+  },
+  listTextAnswerIconContainer: {
+    flex: 1,
+    alignItems: 'flex-start',
+    justifyContent: 'flex-end',
+  },
+  listTextEditIcon: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 24,
+    width: 24,
+    borderRadius: 12,
+    borderColor: '#212121',
+    borderWidth: 1,
   },
 })
 
