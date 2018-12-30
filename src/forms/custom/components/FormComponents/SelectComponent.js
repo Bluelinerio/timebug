@@ -2,7 +2,6 @@ import React             from 'react'
 import { View, Picker }  from 'react-native'
 import FormElementHeader from './FormElementHeader'
 import styles            from '../../styles'
-import { _stripKeys }    from './ListComponent'
 import { DISABLE }       from './../../forms/constants'
 
 const Select = ({
@@ -10,7 +9,7 @@ const Select = ({
   onChange,
   field: { content, options },
   formStyles = {},
-  formValue,
+  __extraProps = {},
 }: {
   value: string,
   onChange: string => any,
@@ -26,39 +25,21 @@ const Select = ({
     },
   },
   formValue: any,
+  __extraProps: {
+    editObjectId: string,
+    filterFunction?: (Array<any>) => Array<any>,
+  },
 }) => {
-  const getFormItems = () => {
-    const mappedObjects =
-      formValue &&
-      formValue.map(val => {
-        const strippedObject = _stripKeys(val)
-        const mappedObject = Object.values(strippedObject).map(value => {
-          return (
-            value &&
-            value.value && {
-              _id: value._id,
-              value: value.value,
-            }
-          )
-        })
-
-        return mappedObject[0]
-      })
-
-    return mappedObjects
-  }
-
-  const currentItems = getFormItems()
-
+  const { filterFunction = null } = __extraProps
   const filteredItems =
-    options && options.repeats && options.repeats === DISABLE
-      ? content &&
-        content.items.filter(item => {
-          const isSelected =
-            currentItems && currentItems.find(ci => ci.value === item.value)
-          return !isSelected
-        })
-      : content.items
+    content && content.items
+      ? options &&
+        options.repeats &&
+        options.repeats === DISABLE &&
+        filterFunction !== null
+        ? filterFunction(content.items)
+        : content.items
+      : []
 
   return (
     <React.Fragment>
@@ -73,7 +54,7 @@ const Select = ({
             onValueChange={itemValue => onChange(itemValue)}
             itemStyle={styles.pickerItemStyle}
           >
-            {content &&
+            {filteredItems &&
               filteredItems.map(({ value, text }) => (
                 <Picker.Item key={value} value={value} label={text} />
               ))}

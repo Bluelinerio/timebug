@@ -8,8 +8,10 @@ import styles, {
 }                                              from '../../styles'
 import FormPicker                              from './FormPicker'
 import uuid                                    from 'uuid/v4'
+import types                                   from '../../forms/types'
 import SvgIcon                                 from '../../../../components/SvgIcon'
 import Icon                                    from 'react-native-vector-icons/Ionicons'
+import tron                                    from 'reactotron-react-native'
 
 type Props = {
   value: Array<any>,
@@ -115,6 +117,8 @@ const TextElement = ({
   )
 }
 
+// TODO: Derive currentValue from props instead of using setState asynchronously
+
 class ListComponent extends React.PureComponent<Props, State> {
   constructor(props) {
     super(props)
@@ -146,18 +150,38 @@ class ListComponent extends React.PureComponent<Props, State> {
     const { childTypes } = options
     const defaultValue = Object.keys(childTypes).reduce((value, k) => {
       const child = childTypes[k]
-      const { key } = child
-      return {
-        ...value,
-        [key]: {
-          key,
-          model: child,
-          index: k,
-          value: child.options ? child.options.default : undefined,
-        },
-      }
+      const { key, type } = child
+      return type === types.select
+        ? {
+          ...value,
+          [key]: this._handleSelectTypeValue(child, k, props),
+        }
+        : {
+          ...value,
+          [key]: {
+            key,
+            model: child,
+            index: k,
+            value: child.options ? child.options.default : undefined,
+          },
+        }
     }, {})
     return defaultValue
+  }
+
+  _handleSelectTypeValue = (child, indexKey, props) => {
+    const { key, content: { items = [] } } = child
+    const filteredValues = this._selectFilterRoot(props, items)
+    tron.log(filteredValues)
+    return {
+      key,
+      model: child,
+      index: indexKey,
+      value:
+        filteredValues && filteredValues.length > 0
+          ? filteredValues[0].value
+          : undefined,
+    }
   }
 
   _onChange = (value: any, key: string, index: number) => {
@@ -169,6 +193,57 @@ class ListComponent extends React.PureComponent<Props, State> {
         [key]: { ...valueForKey, value, key, index },
       },
     })
+  }
+
+  _getFormItems = formValue => {
+    const mappedObjects =
+      formValue &&
+      formValue.map(val => {
+        const strippedObject = _stripKeys(val)
+        const mappedObject = Object.values(strippedObject).map(value => {
+          return (
+            value &&
+            value.value && {
+              _id: value._id,
+              value: value.value,
+            }
+          )
+        })
+
+        return mappedObject[0]
+      })
+
+    return mappedObjects
+  }
+
+  _selectFilterRoot = (props, items) => {
+    const { value } = props
+    const currentItems = this._getFormItems(value)
+    const filtered = items
+      ? items.filter(item => {
+        const filter = ci => ci.value === item.value
+        const isSelected = currentItems && currentItems.find(filter)
+        return !isSelected
+      })
+      : items
+    return filtered
+  }
+
+  _selectFilter = key => items => {
+    const { value } = this.props
+    const { isEditing, currentValue, indexesMap } = this.state
+    const inValue = currentValue[indexesMap[key]] || {}
+    const currentItems = this._getFormItems(value)
+    const filtered = items
+      ? items.filter(item => {
+        const filter = !isEditing
+          ? ci => ci.value === item.value
+          : ci => ci.value === item.value && ci._id !== inValue._id
+        const isSelected = currentItems && currentItems.find(filter)
+        return !isSelected
+      })
+      : items
+    return filtered
   }
 
   _validate = (options = {}) => {
@@ -240,6 +315,7 @@ class ListComponent extends React.PureComponent<Props, State> {
 
   _onAddPress = () => {
     const { currentValue } = this.state
+    tron.log(currentValue)
     const { value = [], onChange, field: { options } } = this.props
     const { childTypes } = options
     const { error, failed } = this._validate(options)
@@ -287,6 +363,7 @@ class ListComponent extends React.PureComponent<Props, State> {
             {childTypes &&
               Object.keys(childTypes).map(key => {
                 const field = childTypes[key]
+                const { type } = field
                 const inValue = currentValue[indexesMap[key]] || {}
                 const formValue = value
 
@@ -300,6 +377,20 @@ class ListComponent extends React.PureComponent<Props, State> {
                     onChange={value =>
                       this._onChange(value, indexesMap[key], key)
                     }
+                    {...(type === types.select
+                      ? isEditing
+                        ? {
+                          __extraProps: {
+                            editObjectId,
+                            filterFunction: this._selectFilter(key),
+                          },
+                        }
+                        : {
+                          __extraProps: {
+                            filterFunction: this._selectFilter(key),
+                          },
+                        }
+                      : {})}
                   />
                 )
               })}
