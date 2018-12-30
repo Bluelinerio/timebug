@@ -7,6 +7,7 @@ import {
   blue900,
   gray400,
   greenA400,
+  white2,
 }                               from '../../../constants/colors'
 import {
   widthPercentage,
@@ -26,7 +27,10 @@ export const iconColor = gray50
 export const checkboxColor = greenA400
 export const uncheckedColor = gray400
 export const helpButtonColor = azure
+
 const helperIconSize = 16
+
+export const helperIconColorIfSelected = white2
 
 export const iconStyle = {
   fill: gray900,
@@ -276,6 +280,7 @@ const formStyles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignSelf: 'flex-start',
     alignContent: 'flex-start',
+    flex: 1,
   },
   listButtonTextStyle: {
     fontFamily: 'Metropolis',
@@ -307,26 +312,25 @@ const formStyles = StyleSheet.create({
     flexDirection: 'row',
   },
   listTextAnswersContainer: {
-    height: 30,
-    alignItems: 'center',
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
+    paddingVertical: 8,
   },
   listTextAnswerTextContainer: {
-    flex: 1,
+    flex: 2,
     alignItems: 'flex-start',
     justifyContent: 'center',
   },
   listTextAnswerIconContainer: {
     flex: 1,
     alignItems: 'flex-start',
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
   },
   listTextEditIcon: {
     alignItems: 'center',
     justifyContent: 'center',
-    height: 24,
-    width: 24,
-    borderRadius: 12,
+    height: 28,
+    width: 28,
+    borderRadius: 14,
     borderColor: '#212121',
     borderWidth: 1,
   },

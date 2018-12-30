@@ -1,10 +1,15 @@
-import React                                              from 'react'
-import { View, Text, Alert, TouchableOpacity }            from 'react-native'
-import FormElementHeader                                  from './FormElementHeader'
-import styles, { TEMPORARY_COLOR_FOR_BUTTONS, iconStyle } from '../../styles'
-import FormPicker                                         from './FormPicker'
-import uuid                                               from 'uuid/v4'
-import SvgIcon                                            from '../../../../components/SvgIcon'
+import React                                   from 'react'
+import { View, Text, Alert, TouchableOpacity } from 'react-native'
+import FormElementHeader                       from './FormElementHeader'
+import styles, {
+  TEMPORARY_COLOR_FOR_BUTTONS,
+  iconStyle,
+  helperIconColorIfSelected,
+}                                              from '../../styles'
+import FormPicker                              from './FormPicker'
+import uuid                                    from 'uuid/v4'
+import SvgIcon                                 from '../../../../components/SvgIcon'
+import Icon                                    from 'react-native-vector-icons/Ionicons'
 
 type Props = {
   value: Array<any>,
@@ -45,10 +50,14 @@ const TextElement = ({
   element,
   index,
   formStyles = {},
+  onEditPress,
+  editObjectId,
 }: {
   index: number,
   element: ValueElement,
   formStyles: any,
+  onEditPress: () => any,
+  editObjectId: string,
 }) => {
   const strippedObject = _stripKeys(element)
   const text = `${index + 1} ) ${Object.values(strippedObject)
@@ -59,18 +68,47 @@ const TextElement = ({
     <React.Fragment>
       {text && (
         <View
-          style={[styles.indented, styles.row, styles.listTextAnswersContainer]}
+          style={[
+            styles.container,
+            styles.indented,
+            styles.row,
+            styles.listTextAnswersContainer,
+          ]}
         >
           <View style={styles.listTextAnswerTextContainer}>
             <Text style={[styles.textElementText, formStyles.textStyle]}>
               {text}
             </Text>
           </View>
-          <View style={styles.listTextAnswerIconContainer}>
-            <View style={styles.listTextEditIcon}>
-              <SvgIcon name={'Edit'} {...iconStyle} />
-            </View>
-          </View>
+          <TouchableOpacity style={styles.listTextAnswerIconContainer}>
+            <TouchableOpacity
+              onPress={onEditPress}
+              style={[
+                styles.listTextEditIcon,
+                editObjectId === element._id
+                  ? {
+                    backgroundColor:
+                        formStyles.accentColor || TEMPORARY_COLOR_FOR_BUTTONS,
+                    borderColor:
+                        formStyles.accentColor || TEMPORARY_COLOR_FOR_BUTTONS,
+                  }
+                  : {
+                    borderColor:
+                        formStyles.accentColor || TEMPORARY_COLOR_FOR_BUTTONS,
+                  },
+              ]}
+            >
+              <SvgIcon
+                name={'Edit'}
+                {...iconStyle}
+                fill={
+                  editObjectId === element._id
+                    ? helperIconColorIfSelected
+                    : formStyles.accentColor || TEMPORARY_COLOR_FOR_BUTTONS
+                }
+              />
+            </TouchableOpacity>
+          </TouchableOpacity>
         </View>
       )}
     </React.Fragment>
@@ -83,8 +121,10 @@ class ListComponent extends React.PureComponent<Props, State> {
     const currentValue = this._buildValue(props)
     const indexesMap = this._mapIndexesToKeys(props.field.options)
     this.state = {
+      isEditing: false,
       currentValue,
       indexesMap,
+      editObjectId: null,
     }
   }
 
@@ -160,6 +200,44 @@ class ListComponent extends React.PureComponent<Props, State> {
     }
   }
 
+  _onEditPress = (element: any) => {
+    const strippedObject = _stripKeys(element)
+    this.setState({
+      isEditing: true,
+      currentValue: strippedObject,
+      editObjectId: element._id,
+    })
+  }
+
+  _onEditDone = () => {
+    const { currentValue, editObjectId } = this.state
+    const { value = [], onChange, field: { options } } = this.props
+    const { error, failed } = this._validate(options)
+    if (failed) {
+      Alert.alert('Input Error', error)
+      return
+    }
+    const valueToSave = value.reduce((newValue, val) => {
+      if (val._id !== editObjectId) return [...newValue, val]
+      else
+        return [
+          ...newValue,
+          {
+            ...val,
+            ...currentValue,
+          },
+        ]
+    }, [])
+    this.setState(
+      {
+        currentValue: this._buildValue(this.props),
+        editObjectId: null,
+        isEditing: false,
+      },
+      () => onChange(valueToSave)
+    )
+  }
+
   _onAddPress = () => {
     const { currentValue } = this.state
     const { value = [], onChange, field: { options } } = this.props
@@ -192,17 +270,19 @@ class ListComponent extends React.PureComponent<Props, State> {
   _onDeletePress = () => {}
 
   render() {
-    const { currentValue, indexesMap } = this.state
+    const { currentValue, indexesMap, isEditing, editObjectId } = this.state
     const { field: { content, options }, value, formStyles = {} } = this.props
     const { childTypes } = options
 
     return (
-      <React.Fragment>
-        <FormElementHeader
-          text={content.text}
-          textStyle={formStyles.textStyle}
-        />
-        <View style={styles.listFormContainer}>
+      <View style={styles.container}>
+        <View style={styles.container}>
+          <FormElementHeader
+            text={content.text}
+            textStyle={formStyles.textStyle}
+          />
+        </View>
+        <View style={[styles.container, styles.listFormContainer]}>
           <View style={styles.listElementContainer}>
             {childTypes &&
               Object.keys(childTypes).map(key => {
@@ -233,27 +313,37 @@ class ListComponent extends React.PureComponent<Props, State> {
                     formStyles.accentColor || TEMPORARY_COLOR_FOR_BUTTONS,
                 },
               ]}
-              onPress={this._onAddPress}
+              onPress={!isEditing ? this._onAddPress : this._onEditDone}
             >
-              <Text
-                style={[
-                  {
-                    fontSize: 20,
-                    color:
-                      formStyles.accentColor || TEMPORARY_COLOR_FOR_BUTTONS,
-                  },
-                ]}
-              >
-                +
-              </Text>
+              {!isEditing ? (
+                <Text
+                  style={[
+                    {
+                      fontSize: 20,
+                      color:
+                        formStyles.accentColor || TEMPORARY_COLOR_FOR_BUTTONS,
+                    },
+                  ]}
+                >
+                  +
+                </Text>
+              ) : (
+                <Icon
+                  size={20}
+                  color={formStyles.accentColor || TEMPORARY_COLOR_FOR_BUTTONS}
+                  name={'ios-checkmark'}
+                />
+              )}
             </TouchableOpacity>
           </View>
         </View>
-        <View style={styles.listContentContainer}>
+        <View style={[styles.container, styles.listContentContainer]}>
           {value && (
-            <Text style={[styles.textElementText, formStyles.textStyle]}>
-              {`${content.listText}`}:
-            </Text>
+            <View style={styles.container}>
+              <Text style={[styles.textElementText, formStyles.textStyle]}>
+                {`${content.listText}`}:
+              </Text>
+            </View>
           )}
           {value &&
             value.map((val, index) => (
@@ -262,10 +352,12 @@ class ListComponent extends React.PureComponent<Props, State> {
                 element={val}
                 index={index}
                 formStyles={formStyles}
+                onEditPress={() => this._onEditPress(val)}
+                editObjectId={editObjectId}
               />
             ))}
         </View>
-      </React.Fragment>
+      </View>
     )
   }
 }
