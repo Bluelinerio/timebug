@@ -71,8 +71,8 @@ class WorkbookScreen extends React.PureComponent<Props, State> {
               />
             </View>
           </View>
-          <View style={[styles.backgroundImage, { backgroundColor }]}>
-            <Image source={headerBackgrounds[selectedStep.number]} style={{ width: '100%', height: 'auto' }}/>
+          <View style={[styles.backgroundImage]}>
+            <Image source={headerBackgrounds[selectedStep.number]} style={{ width: '100%', height: 'auto', tintColor: backgroundColor }}/>
           </View>
         </SectionProvider>
       </SafeAreaView>
