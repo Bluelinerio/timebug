@@ -9,7 +9,7 @@ import Icon                                       from 'react-native-vector-icon
 import uuid                                       from 'uuid/v4'
 import Answers                                    from './FormAnswers'
 import Display                                    from './debug/DisplayComponent'
-import types                                      from '../forms/types';
+import types                                      from '../forms/types'
 
 const DEBUG_DISPLAY = false
 
@@ -42,11 +42,11 @@ const TextFormButton = ({
   onPress: () => any,
   text: string,
   styles: any,
-  disabled: bool,
+  disabled: boolean,
 }) => (
   <TouchableOpacity
     onPress={onPress}
-    style={ disabled ? styles.formDisabledButton : styles.button }
+    style={disabled ? styles.formDisabledButton : styles.button}
     disabled={disabled}
   >
     <Text style={[styles.text, styles.bottomButtonText]}>{text}</Text>
@@ -82,7 +82,9 @@ class Form extends React.PureComponent<Props, any> {
       props.model,
       formIteration
     )
-    const currentElementValue = value[indexesMap[fieldIndex]] || null
+    const currentElementValue = value[indexesMap[fieldIndex]]
+      ? value[indexesMap[fieldIndex]].value
+      : null
     this.state = {
       value,
       fieldIndex,
@@ -250,13 +252,13 @@ class Form extends React.PureComponent<Props, any> {
   }
 
   _checkValidation = (field, value) => {
-    switch(field.type) {
+    switch (field.type) {
     case types.list:
       return !(value && value.length > 0)
     case types.connected:
       return !(value && value.length > 0)
     default:
-      return false;
+      return false
     }
   }
 
@@ -305,8 +307,8 @@ class Form extends React.PureComponent<Props, any> {
     } = this.state
     const { CloseButton = null, formStyles = {} } = this.props
     const currentField = this.model.fields[fieldIndex] || []
-    const isFieldRequired = currentField && currentField.options.required;
-
+    const isFieldRequired =
+      currentField && currentField.options && currentField.options.required
     return (
       <View style={styles.container}>
         {CloseButton ? <CloseButton /> : null}
@@ -350,7 +352,10 @@ class Form extends React.PureComponent<Props, any> {
               text: styles.formButtonText,
             }}
             formStyles={formStyles}
-            disabled={ isFieldRequired && this._checkValidation(currentField, currentElementValue) }
+            disabled={
+              isFieldRequired &&
+              this._checkValidation(currentField, currentElementValue)
+            }
             text={this._getButtonText()}
           />
         </View>

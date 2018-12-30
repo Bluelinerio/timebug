@@ -132,6 +132,7 @@ const form5 = {
           },
         },
         default: [],
+        required: true,
       },
     },
     6: {

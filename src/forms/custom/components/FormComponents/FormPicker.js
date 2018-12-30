@@ -13,6 +13,7 @@ type Props = {
   value: any,
   field: any,
   buttonHandler: () => any,
+  formValue: any,
 }
 
 const SwitchComponent = ({ field, props }: { type: string }) => {
