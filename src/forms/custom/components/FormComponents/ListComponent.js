@@ -1,17 +1,17 @@
-import React                                   from 'react'
+import React from 'react'
 import { View, Text, Alert, TouchableOpacity } from 'react-native'
-import FormElementHeader                       from './FormElementHeader'
+import FormElementHeader from './FormElementHeader'
 import styles, {
   TEMPORARY_COLOR_FOR_BUTTONS,
   iconStyle,
   helperIconColorIfSelected,
-}                                              from '../../styles'
-import FormPicker                              from './FormPicker'
-import uuid                                    from 'uuid/v4'
-import types                                   from '../../forms/types'
-import SvgIcon                                 from '../../../../components/SvgIcon'
-import Icon                                    from 'react-native-vector-icons/Ionicons'
-import { DISABLE }                             from './../../forms/constants'
+} from '../../styles'
+import FormPicker from './FormPicker'
+import uuid from 'uuid/v4'
+import types from '../../forms/types'
+import SvgIcon from '../../../../components/SvgIcon'
+import Icon from 'react-native-vector-icons/Ionicons'
+import { DISABLE } from './../../forms/constants'
 
 import tron from 'reactotron-react-native'
 
@@ -64,10 +64,12 @@ const TextElement = ({
   editObjectId: string,
 }) => {
   const strippedObject = _stripKeys(element)
-  const text = `${index + 1} ) ${Object.values(strippedObject)
+  const text = Object.values(strippedObject)
     .filter(value => value.value !== null && value.value !== undefined)
-    .map(value => value.value, [])
-    .join('-')}`
+    .map((value, ind) => {
+      if (ind === 0) return `${index + 1} ) ${value.value}`
+      return value.value
+    }, [])
   return (
     <React.Fragment>
       {text && (
@@ -80,9 +82,21 @@ const TextElement = ({
           ]}
         >
           <View style={styles.listTextAnswerTextContainer}>
-            <Text style={[styles.textElementText, formStyles.textStyle]}>
-              {text}
-            </Text>
+            {text &&
+              text.length > 0 &&
+              text.map((txt, index) => (
+                <Text
+                  key={index}
+                  style={[
+                    index === 0
+                      ? styles.textElementText
+                      : styles.textElementSubText,
+                    formStyles.textStyle,
+                  ]}
+                >
+                  {txt}
+                </Text>
+              ))}
           </View>
           <TouchableOpacity style={styles.listTextAnswerIconContainer}>
             <TouchableOpacity

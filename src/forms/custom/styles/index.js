@@ -295,6 +295,14 @@ const formStyles = StyleSheet.create({
     color: gray900,
     alignSelf: 'flex-start',
   },
+  textElementSubText: {
+    ...iOSUIKit.footnoteEmphasizedObject,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
+    textAlign: 'justify',
+    alignSelf: 'flex-start',
+    color: gray900,
+  },
   answersContainer: {
     padding: 16,
   },
