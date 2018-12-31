@@ -1,9 +1,8 @@
 // @flow
-import React                            from 'react'
+import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
-import type { Step }                    from '../../../../services/cms'
-import { splitByLines }                 from '../utils/textSplit'
-import styles                           from '../styles'
+import type { Step } from '../../../../services/cms'
+import styles from '../styles'
 
 export type Props = {
   color: string,
@@ -23,19 +22,13 @@ class FormFinishedComponent extends React.PureComponent<Props> {
 
   render() {
     const { color, text, title, hasNext, nextStepNumber } = this.props
-    const paragraphs = splitByLines(text)
     return (
       <View style={[styles.container, styles.doneContentContainer]}>
         <View style={styles.doneTitleContainer}>
           <Text style={[styles.doneTitle, { color }]}>{title}</Text>
         </View>
         <View style={styles.doneTextContainer}>
-          {paragraphs &&
-            paragraphs.map((paragraph, index) => (
-              <Text key={index} style={[styles.doneText, { color }]}>
-                {paragraph}
-              </Text>
-            ))}
+          <Text style={[styles.doneText, { color }]}>{text}</Text>
         </View>
         {hasNext && (
           <View style={styles.doneButtonContainer}>

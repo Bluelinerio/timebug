@@ -11,7 +11,9 @@ import uuid                                    from 'uuid/v4'
 import types                                   from '../../forms/types'
 import SvgIcon                                 from '../../../../components/SvgIcon'
 import Icon                                    from 'react-native-vector-icons/Ionicons'
-import tron                                    from 'reactotron-react-native'
+import { DISABLE }                             from './../../forms/constants'
+
+import tron from 'reactotron-react-native'
 
 type Props = {
   value: Array<any>,
@@ -122,6 +124,7 @@ const TextElement = ({
 class ListComponent extends React.PureComponent<Props, State> {
   constructor(props) {
     super(props)
+    tron.log('Constructor list')
     const currentValue = this._buildValue(props)
     const indexesMap = this._mapIndexesToKeys(props.field.options)
     this.state = {
@@ -129,6 +132,15 @@ class ListComponent extends React.PureComponent<Props, State> {
       currentValue,
       indexesMap,
       editObjectId: null,
+    }
+  }
+
+  componentDidUpdate = prevProps => {
+    if (this.props.value !== prevProps.value) {
+      tron.log('State is not equal for list')
+      this.setState({
+        currentValue: this._buildValue(this.props),
+      })
     }
   }
 
@@ -150,8 +162,11 @@ class ListComponent extends React.PureComponent<Props, State> {
     const { childTypes } = options
     const defaultValue = Object.keys(childTypes).reduce((value, k) => {
       const child = childTypes[k]
-      const { key, type } = child
-      return type === types.select
+      const { key, type, options } = child
+      return type === types.select &&
+        options &&
+        options.repeats &&
+        options.repeats === DISABLE
         ? {
           ...value,
           [key]: this._handleSelectTypeValue(child, k, props),
@@ -172,7 +187,6 @@ class ListComponent extends React.PureComponent<Props, State> {
   _handleSelectTypeValue = (child, indexKey, props) => {
     const { key, content: { items = [] } } = child
     const filteredValues = this._selectFilterRoot(props, items)
-    tron.log(filteredValues)
     return {
       key,
       model: child,
@@ -247,7 +261,7 @@ class ListComponent extends React.PureComponent<Props, State> {
   }
 
   _validate = (options = {}) => {
-    const { currentValue } = this.state
+    const { currentValue, isEditing } = this.state
     const { constraints = {} } = options
     const hasError = Object.values(currentValue).some(value => {
       return value.value === undefined || value.value === ''
@@ -257,7 +271,7 @@ class ListComponent extends React.PureComponent<Props, State> {
         error: 'The input text cannot be blank',
         failed: true,
       }
-    if (constraints && constraints.max) {
+    if (!isEditing && constraints && constraints.max) {
       const { max } = constraints
       const { errors = {} } = constraints
       const { max: maxError } = errors
@@ -305,7 +319,6 @@ class ListComponent extends React.PureComponent<Props, State> {
     }, [])
     this.setState(
       {
-        currentValue: this._buildValue(this.props),
         editObjectId: null,
         isEditing: false,
       },
@@ -340,7 +353,6 @@ class ListComponent extends React.PureComponent<Props, State> {
         _id: uuid(),
       },
     ])
-    this.setState({ currentValue: this._buildValue(this.props) })
   }
 
   _onDeletePress = () => {}

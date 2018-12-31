@@ -67,6 +67,9 @@ type Props = {
     buttonTextStyle: any,
     accentColor: string,
   },
+  extra: {
+    step: string,
+  },
 }
 
 class Form extends React.PureComponent<Props, any> {
@@ -314,7 +317,7 @@ class Form extends React.PureComponent<Props, any> {
       value,
       disableAnswers,
     } = this.state
-    const { CloseButton = null, formStyles = {} } = this.props
+    const { CloseButton = null, formStyles = {}, extra: { step } } = this.props
     const currentField = this.model.fields[fieldIndex] || []
     const isFieldRequired =
       currentField && currentField.options && currentField.options.required
@@ -323,6 +326,7 @@ class Form extends React.PureComponent<Props, any> {
         {CloseButton ? <CloseButton /> : null}
         <View style={styles.formContainer}>
           <FormPicker
+            key={step.number}
             field={currentField}
             onChange={this._onChange}
             value={currentElementValue}
