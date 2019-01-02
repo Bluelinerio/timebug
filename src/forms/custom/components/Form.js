@@ -67,6 +67,9 @@ type Props = {
     buttonTextStyle: any,
     accentColor: string,
   },
+  extra: {
+    step: string,
+  },
 }
 
 class Form extends React.PureComponent<Props, any> {
@@ -251,10 +254,19 @@ class Form extends React.PureComponent<Props, any> {
     }
   }
 
+  _listValidation = (value, options) => {
+    const { constraints = {} } = options
+    if (!value) return true
+    return constraints.min && constraints.min > 0
+      ? value.length < constraints.min
+      : !(value.length > 0)
+  }
+
   _checkValidation = (field, value) => {
-    switch (field.type) {
+    const { type, options = {} } = field
+    switch (type) {
     case types.list:
-      return !(value && value.length > 0)
+      return this._listValidation(value, options)
     case types.connected:
       return !(value && value.length > 0)
     default:
@@ -305,7 +317,7 @@ class Form extends React.PureComponent<Props, any> {
       value,
       disableAnswers,
     } = this.state
-    const { CloseButton = null, formStyles = {} } = this.props
+    const { CloseButton = null, formStyles = {}, extra: { step } } = this.props
     const currentField = this.model.fields[fieldIndex] || []
     const isFieldRequired =
       currentField && currentField.options && currentField.options.required
@@ -314,6 +326,7 @@ class Form extends React.PureComponent<Props, any> {
         {CloseButton ? <CloseButton /> : null}
         <View style={styles.formContainer}>
           <FormPicker
+            key={step.number}
             field={currentField}
             onChange={this._onChange}
             value={currentElementValue}

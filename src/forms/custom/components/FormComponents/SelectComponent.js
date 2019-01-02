@@ -2,14 +2,14 @@ import React             from 'react'
 import { View, Picker }  from 'react-native'
 import FormElementHeader from './FormElementHeader'
 import styles            from '../../styles'
-import { _stripKeys }    from './ListComponent'
+import { DISABLE }       from './../../forms/constants'
 
 const Select = ({
   value,
   onChange,
   field: { content, options },
   formStyles = {},
-  formValue,
+  __extraProps = {},
 }: {
   value: string,
   onChange: string => any,
@@ -20,47 +20,41 @@ const Select = ({
       items: Array<{ text: string, value: string }>,
     },
     options?: {
-      default: string,
+      default?: string,
+      repeats?: string,
     },
   },
   formValue: any,
+  __extraProps: {
+    editObjectId: string,
+    filterFunction?: (Array<any>) => Array<any>,
+  },
 }) => {
-
-  const getFormItems = () => {
-    const mappedObjects = formValue && formValue.map((val) => {
-      const strippedObject = _stripKeys(val)
-      const mappedObject = Object.values(strippedObject).map(value => {
-        return value && value.value && {
-          _id: value._id,
-          value: value.value,
-        }
-      })
-
-      return mappedObject[0]
-    })
-
-    return mappedObjects
-  }
-
-  const currentItems = getFormItems()
-
-  const filteredItems = content && content.items.filter((item) => {
-    const isSelected = currentItems && currentItems.find((ci) => ci.value === item.value)
-    return !isSelected
-  })
+  const { filterFunction = null } = __extraProps
+  const filteredItems =
+    content && content.items
+      ? options &&
+        options.repeats &&
+        options.repeats === DISABLE &&
+        filterFunction !== null
+        ? filterFunction(content.items)
+        : content.items
+      : []
 
   return (
     <React.Fragment>
       <FormElementHeader text={content.text} textStyle={formStyles.textStyle} />
       <View style={styles.pickerContainer}>
-        <View style={[styles.pickerBackground, formStyles.elementContainerStyle]}>
+        <View
+          style={[styles.pickerBackground, formStyles.elementContainerStyle]}
+        >
           <Picker
-            selectedValue={value ? value : options.value}
+            selectedValue={value ? value : options.default}
             style={[styles.pickerStyle]}
             onValueChange={itemValue => onChange(itemValue)}
             itemStyle={styles.pickerItemStyle}
           >
-            {content &&
+            {filteredItems &&
               filteredItems.map(({ value, text }) => (
                 <Picker.Item key={value} value={value} label={text} />
               ))}

@@ -7,11 +7,13 @@ import {
   blue900,
   gray400,
   greenA400,
+  white2,
 }                               from '../../../constants/colors'
 import {
   widthPercentage,
   heightPercentage,
 }                               from '../../../utils/viewportCalculation'
+import { iOSUIKit }             from 'react-native-typography'
 
 export const TEMPORARY_COLOR_FOR_BUTTONS = azure
 
@@ -25,6 +27,16 @@ export const iconColor = gray50
 export const checkboxColor = greenA400
 export const uncheckedColor = gray400
 export const helpButtonColor = azure
+
+const helperIconSize = 16
+
+export const helperIconColorIfSelected = white2
+
+export const iconStyle = {
+  fill: gray900,
+  height: helperIconSize,
+  width: helperIconSize,
+}
 
 const buttonStyles = {
   borderRadius: 6,
@@ -171,17 +183,17 @@ const formStyles = StyleSheet.create({
     color: gray900,
     fontFamily: 'Helvetica',
     fontSize: 16,
-    width: '80%',
+    width: '100%',
   },
   textInputLabelContainer: {
     marginBottom: 16,
   },
   textInputContainerStyle: {
+    margin: 0,
+    marginLeft: 0,
+    marginRight: 0,
     borderWidth: 0.5,
     borderColor: '#cccccc',
-    paddingVertical: 2,
-    paddingHorizontal: 4,
-    backgroundColor: hexToRgba(azure, 0.1),
     width: '80%',
     borderRadius: 4,
   },
@@ -268,6 +280,7 @@ const formStyles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignSelf: 'flex-start',
     alignContent: 'flex-start',
+    flex: 1,
   },
   listButtonTextStyle: {
     fontFamily: 'Metropolis',
@@ -275,11 +288,20 @@ const formStyles = StyleSheet.create({
     fontSize: 16,
   },
   textElementText: {
+    ...iOSUIKit.subheadEmphasizedObject,
     fontFamily: 'Metropolis',
     fontWeight: '700',
     textAlign: 'justify',
     color: gray900,
     alignSelf: 'flex-start',
+  },
+  textElementSubText: {
+    ...iOSUIKit.footnoteEmphasizedObject,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
+    textAlign: 'justify',
+    alignSelf: 'flex-start',
+    color: gray900,
   },
   answersContainer: {
     padding: 16,
@@ -293,6 +315,32 @@ const formStyles = StyleSheet.create({
   },
   indented: {
     paddingLeft: 16,
+  },
+  row: {
+    flexDirection: 'row',
+  },
+  listTextAnswersContainer: {
+    justifyContent: 'center',
+    paddingVertical: 8,
+  },
+  listTextAnswerTextContainer: {
+    flex: 2,
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+  },
+  listTextAnswerIconContainer: {
+    flex: 1,
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+  },
+  listTextEditIcon: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 28,
+    width: 28,
+    borderRadius: 14,
+    borderColor: '#212121',
+    borderWidth: 1,
   },
 })
 

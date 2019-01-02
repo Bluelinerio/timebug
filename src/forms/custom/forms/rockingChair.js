@@ -1,5 +1,6 @@
 import types, { answerTypes }   from './types'
 import { LifeStages, Emotions } from './content'
+import { DISABLE }              from './constants'
 
 export const AreaOfLife = [
   'Finances',
@@ -217,6 +218,7 @@ const form1 = {
             },
             options: {
               default: Emotions[0],
+              repeats: DISABLE,
             },
           },
         },
