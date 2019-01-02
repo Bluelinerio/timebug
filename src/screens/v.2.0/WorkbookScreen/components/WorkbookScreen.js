@@ -1,5 +1,5 @@
 import React                            from 'react'
-import { View, Image }                  from 'react-native'
+import { View }                         from 'react-native'
 import { SafeAreaView }                 from 'react-navigation'
 
 import Banner                           from '../../../../containers/PhaseHeaderContainer'
@@ -9,7 +9,6 @@ import StepBar                          from '../containers/StepBarContainer'
 import Sidebar                          from '../containers/SidebarContainer'
 import { SectionProvider }              from '../context/SectionContext'
 import WorkbookContent                  from '../containers/WorkbookContentContainer'
-import { headerBackgrounds }            from '../../../../resources/images'
 import { mapBarStylesHelper }           from '../utils/colorsForStep'
 import { translateCMSPhaseToStandard } from '../../../../services/cms'
 
@@ -68,11 +67,9 @@ class WorkbookScreen extends React.PureComponent<Props, State> {
                 step={selectedStep}
                 phase={phase}
                 onSelectStep={this._changeSelectedStep}
+                backgroundColor={backgroundColor}
               />
             </View>
-          </View>
-          <View style={[styles.backgroundImage]}>
-            <Image source={headerBackgrounds[selectedStep.number]} style={{ width: '100%', height: 'auto', tintColor: backgroundColor }}/>
           </View>
         </SectionProvider>
       </SafeAreaView>
