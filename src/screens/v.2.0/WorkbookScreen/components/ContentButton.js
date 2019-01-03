@@ -17,7 +17,10 @@ export type Props = {
 }
 
 class ContentButton extends React.PureComponent<Props> {
-  _onPress = () => {}
+  _onPress = () => {
+    const { changeSection, ownSection } = this.props;
+    changeSection(ownSection)
+  }
 
   render() {
     const {
