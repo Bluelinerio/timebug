@@ -34,7 +34,7 @@ class WorkbookContent extends React.PureComponent<Props> {
         forceInset={{ top: 'always', bottom: 'never' }}
         style={styles.container}
       >
-        <View style={[styles.container, styles.workbookContent, { flex: 3 }]}>
+        <View style={[styles.container, styles.workbookContent, { flex: 2 }]}>
           {selectedSection === SectionValues.form ? (
             <WorkbookForm step={step} stepNumber={`${step.number}`} phase={phase} onSelectStep={onSelectStep}/>
           ) : (
