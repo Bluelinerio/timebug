@@ -1,14 +1,16 @@
-import React               from 'react'
-import { View }            from 'react-native'
-import { SafeAreaView }    from 'react-navigation'
+import React                            from 'react'
+import { View }                         from 'react-native'
+import { SafeAreaView }                 from 'react-navigation'
 
-import Banner              from '../../../../containers/PhaseHeaderContainer'
-import styles              from '../styles'
-import type { Step }       from '../../../../services/cms'
-import StepBar             from '../containers/StepBarContainer'
-import Sidebar             from '../containers/SidebarContainer'
-import { SectionProvider } from '../context/SectionContext'
-import WorkbookContent     from '../containers/WorkbookContentContainer'
+import Banner                           from '../../../../containers/PhaseHeaderContainer'
+import styles                           from '../styles'
+import type { Step }                    from '../../../../services/cms'
+import StepBar                          from '../containers/StepBarContainer'
+import Sidebar                          from '../containers/SidebarContainer'
+import { SectionProvider }              from '../context/SectionContext'
+import WorkbookContent                  from '../containers/WorkbookContentContainer'
+import { mapBarStylesHelper }           from '../utils/colorsForStep'
+import { translateCMSPhaseToStandard } from '../../../../services/cms'
 
 type Props = {
   navigation: any,
@@ -32,9 +34,19 @@ class WorkbookScreen extends React.PureComponent<Props, State> {
     this.setState({ selectedStep: step })
   }
 
+  _getCurrentBackgroundColor = (step: Step) => {
+    const { type } = step
+    const phase = translateCMSPhaseToStandard(type)
+    const styles = mapBarStylesHelper(phase)
+
+    return styles.backgroundColor
+  }
+
   render() {
     const { navigation: { state: { params: { phase } } } } = this.props
     const { selectedStep } = this.state
+
+    const backgroundColor = this._getCurrentBackgroundColor(selectedStep)
 
     return (
       <SafeAreaView
@@ -47,7 +59,7 @@ class WorkbookScreen extends React.PureComponent<Props, State> {
           onSelectStep={this._changeSelectedStep}
         />
         <SectionProvider>
-          <View style={{ flex: 1, flexDirection: 'row' }}>
+          <View style={{ flex: 3, flexDirection: 'row' }}>
             {selectedStep && <Sidebar step={selectedStep} />}
             <View style={{ flex: 1 }}>
               {selectedStep && <StepBar step={selectedStep} />}
@@ -55,6 +67,7 @@ class WorkbookScreen extends React.PureComponent<Props, State> {
                 step={selectedStep}
                 phase={phase}
                 onSelectStep={this._changeSelectedStep}
+                backgroundColor={backgroundColor}
               />
             </View>
           </View>

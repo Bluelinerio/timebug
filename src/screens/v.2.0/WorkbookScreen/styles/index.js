@@ -141,6 +141,11 @@ export default StyleSheet.create({
   scrollView: {
     flexGrow: 1,
   },
+  backgroundImage: {
+    flex: 1,
+    flexDirection: 'row',
+    // backgroundColor: PHASE_1_BAR,
+  },
   link: {
     color: blue900,
     textAlign: 'center',
