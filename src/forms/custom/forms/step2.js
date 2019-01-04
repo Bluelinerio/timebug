@@ -53,7 +53,7 @@ const form1 = {
       key: 'form_2_ideal_week_time_',
       content: {
         text:
-          'Now break down an ideal 112 hour week according to how you would LIKE to spend your time',
+          'Now break down an ideal 168 hour week according to how you would LIKE to spend your time',
         smallKey: 'Activities',
       },
       options: {
@@ -79,7 +79,7 @@ const form1 = {
               },
               subtypeOptions: {
                 min: 0,
-                max: 112,
+                max: 168,
                 data: SHARED,
                 step: 1,
                 suffixOfValue: 'hrs',
