@@ -17,9 +17,14 @@ export default {
   button: 'button',
   multipleSelect: 'multipleSelect',
   connected: 'connected',
+  set: 'set',
 }
 
 export const answerTypes = {
   single: 'single',
   multiple: 'multiple',
+}
+
+export const setTypes = {
+  slider: 'set.slider',
 }
