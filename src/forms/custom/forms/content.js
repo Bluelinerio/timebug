@@ -39,34 +39,3 @@ export const AreaOfLife = [
   'Health & Wellness',
   'Spirituality',
 ]
-
-export const LifeCategories = {
-  Spirituality: {
-    title: 'Spirituality',
-    subtitle: 'i.e Meditation, Church, etc.',
-  },
-  CoreWork: {
-    title: 'Core Work',
-    subtitle: 'Your main job',
-  },
-  SpecialProjects: {
-    title: 'Special Projects',
-    subtitle: 'Long term / Creative adventures',
-  },
-  SkillsAndEducation: {
-    title: 'Skills and Education',
-    subtitle: 'Courses, trainings, etc.',
-  },
-  PersonalLife: {
-    title: 'Personal Life',
-    subtitle: 'Relationships, Hobbies, etc.',
-  },
-  BasicNeeds: {
-    title: 'Basic Needs',
-    subtitle: 'Sleep, eating, etc.',
-  },
-  HealthAndWellness: {
-    title: 'Health And Wellness',
-    subtitle: 'i.e Physical exercise',
-  },
-}
