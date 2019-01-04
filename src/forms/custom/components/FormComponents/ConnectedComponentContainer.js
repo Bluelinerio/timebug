@@ -2,10 +2,10 @@
  * TODO: replace with a context
  */
 // @flow
-import React                             from 'react'
-import types, { passiveTypes, setTypes } from '../../forms/types'
-import { mapProps }                      from 'recompose'
-import ConnectedComponent                from './ConnectedComponent'
+import React                   from 'react'
+import types, { passiveTypes } from '../../forms/types'
+import { mapProps }            from 'recompose'
+import ConnectedComponent      from './ConnectedComponent'
 
 type Props = {
   onChange: () => any,
@@ -14,47 +14,6 @@ type Props = {
   buttonHandler: () => any,
   currentFormValue: any,
   allFields: any,
-}
-
-const _extractSliderSetData = (
-  value: any,
-  { childrenKeys }: { childrenKeys: Array<string> }
-) => {
-  const finalValue = childrenKeys.reduce((result, el) => {
-    const { key, contentKey } = el
-    const valueElement = value[key]
-    if (!valueElement)
-      return {
-        ...result,
-        [contentKey]: {
-          key,
-          contentKey,
-          value: 0,
-        },
-      }
-    const { value: childValue, _id } = valueElement
-    return {
-      ...result,
-      [contentKey]: {
-        key,
-        contentKey,
-        value: childValue,
-        _id,
-      },
-    }
-  }, {})
-  return finalValue
-}
-
-const _extractSetData = (value: any, field: any, props: any) => {
-  const { options = {} } = field
-  const { subtype: { type } } = options
-  switch (type) {
-  case setTypes.slider:
-    return _extractSliderSetData(value, props)
-  default:
-    return value
-  }
 }
 
 const _extractListDataArray = (
@@ -114,11 +73,7 @@ const _buildSingleElement = ({
         ? _extractListDataArray(valueElement.value, { childrenKeys })
         : fieldElement.type === types.connected
           ? _extractConnectedDataArray(valueElement.value)
-          : fieldElement.type === types.set
-            ? _extractSetData(valueElement.value, fieldElement, {
-              childrenKeys,
-            })
-            : valueElement.value
+          : valueElement.value
       : {}
 
   return {

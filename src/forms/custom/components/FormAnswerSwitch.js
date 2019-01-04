@@ -2,10 +2,10 @@
  * TODO: Fix wrong switch render pattern
  */
 // @flow
-import React from 'react'
-import { View, Text } from 'react-native'
-import types from '../forms/types'
-import styles from '../styles'
+import React from 'react';
+import { View, Text } from 'react-native';
+import types from '../forms/types';
+import styles from '../styles';
 
 const TextComponent = ({
   hint,
@@ -22,8 +22,8 @@ const TextComponent = ({
         translation ? translation(value) : value
       }`}</Text>
     </View>
-  )
-}
+  );
+};
 
 const ListComponent = ({
   hint,
@@ -36,25 +36,25 @@ const ListComponent = ({
     return [
       ...allElements,
       ...Object.keys(val).reduce((array, key) => {
-        if (key === '_id') return array
-        return [...array, val[key]]
+        if (key === '_id') return array;
+        return [...array, val[key]];
       }, []),
-    ]
-  }, [])
+    ];
+  }, []);
   return (
     <View>
       <Text style={styles.answerText}>{hint}:</Text>
       {formElements.map((element, index) => {
-        const { value, _id } = element
+        const { value, _id } = element;
         return (
           <View style={styles.indented} key={_id}>
             <Text style={styles.answerText}>{`${index + 1}) ${value}`}</Text>
           </View>
-        )
+        );
       })}
     </View>
-  )
-}
+  );
+};
 
 const MultiSelectComponent = ({
   hint,
@@ -71,30 +71,30 @@ const MultiSelectComponent = ({
           <View style={styles.indented} key={index}>
             <Text style={styles.answerText}>{`${index + 1}) ${element}`}</Text>
           </View>
-        )
+        );
       })}
     </View>
-  )
-}
+  );
+};
 
 const switchComponents = (model: { type: string }) => {
-  const { type } = model
+  const { type } = model;
   switch (type) {
   case types.string:
-    return TextComponent
+    return TextComponent;
   case types.select:
-    return TextComponent
+    return TextComponent;
   case types.list:
-    return ListComponent
+    return ListComponent;
   case types.multipleSelect:
-    return MultiSelectComponent
+    return MultiSelectComponent;
   default:
-    return null
+    return null;
   }
-}
+};
 
 const FormAnswerSwitch = (props: { model: string, value: any }) => {
-  const Component = switchComponents(props.model)
+  const Component = switchComponents(props.model);
   return Component ? (
     <Component
       value={props.value.value}
@@ -102,7 +102,7 @@ const FormAnswerSwitch = (props: { model: string, value: any }) => {
       primary={props.model.content.primary}
       translation={props.model.content.translation}
     />
-  ) : null
-}
+  ) : null;
+};
 
-export default FormAnswerSwitch
+export default FormAnswerSwitch;

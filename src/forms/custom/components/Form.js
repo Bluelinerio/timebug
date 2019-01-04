@@ -268,7 +268,7 @@ class Form extends React.PureComponent<Props, any> {
     case types.list:
       return this._listValidation(value, options)
     case types.connected:
-      return !(value)
+      return !(value && value.length > 0)
     default:
       return false
     }
@@ -317,7 +317,7 @@ class Form extends React.PureComponent<Props, any> {
       value,
       disableAnswers,
     } = this.state
-    const { CloseButton = null, formStyles = {} } = this.props
+    const { CloseButton = null, formStyles = {}, extra: { step } } = this.props
     const currentField = this.model.fields[fieldIndex] || []
     const isFieldRequired =
       currentField && currentField.options && currentField.options.required
@@ -326,7 +326,7 @@ class Form extends React.PureComponent<Props, any> {
         {CloseButton ? <CloseButton /> : null}
         <View style={styles.formContainer}>
           <FormPicker
-            key={currentField.key}
+            key={step.number}
             field={currentField}
             onChange={this._onChange}
             value={currentElementValue}
