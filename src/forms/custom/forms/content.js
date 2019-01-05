@@ -39,3 +39,23 @@ export const AreaOfLife = [
   'Health & Wellness',
   'Spirituality',
 ]
+
+export const Strengths = [
+  'Honest',
+  'Brave',
+  'Loyal',
+  'Disciplined',
+  'Compassionate',
+  'Open-Hearted',
+  'Funny',
+]
+
+export const Weaknesses = [
+  'Lazy',
+  'Dishonest',
+  'Self-centered',
+  'Arrogant',
+  'Impatient',
+  'Disorganized',
+  'Closed mindeded',
+]
