@@ -39,8 +39,8 @@ const form3 = {
           min: 3,
           max: 5,
           errors: {
-            min: 'You need at least 3 Weaknesses',
-            max: 'You only need 5 Weaknesses',
+            min: 'You need at least 3 Strengths',
+            max: 'You only need 5 Strengths',
           },
         },
       },
@@ -127,8 +127,57 @@ const form3 = {
           min: 3,
           max: 5,
           errors: {
-            min: 'You need at least 3 activities',
-            max: 'You only need 3 activities',
+            min: 'You need at least 3 strengths',
+            max: 'You only need 5 strengths',
+          },
+        },
+      },
+    },
+    3: {
+      type: types.list,
+      key: 'form_3_weaknesses_by_friend',
+      content: {
+        text:
+          'Now, ask a close friend or family member to list 3-5 charachter weaknesses they believe you to possess',
+        smallKey: 'Weaknesses By Friend',
+        listText: 'Weaknesses By Friend',
+      },
+      options: {
+        childTypes: {
+          0: {
+            type: types.select,
+            key: 'form_3_weaknesses_by_friend.weaknesses',
+            content: {
+              smallKey: 'Weaknesses',
+              items: Weaknesses.map(weakness => ({
+                value: weakness,
+                text: weakness,
+              })),
+            },
+            options: {
+              default: Weaknesses[0],
+              repeats: DISABLE,
+            },
+          },
+          1: {
+            type: types.string,
+            key: 'form_3_weaknesses_by_friend.friend_name',
+            options: {
+              placeHolder: "Friend's name",
+              multiline: true,
+              default: '',
+              isIndependent: true,
+            },
+          },
+        },
+        default: [],
+        required: true,
+        constraints: {
+          min: 3,
+          max: 5,
+          errors: {
+            min: 'You need at least 3 weaknesses',
+            max: 'You only need 5 weaknesses',
           },
         },
       },
