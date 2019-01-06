@@ -32,6 +32,9 @@ const helperIconSize = 16
 
 export const helperIconColorIfSelected = white2
 
+export const minimumTrackColor = blue900
+export const maximumTrackColor = gray400
+
 export const iconStyle = {
   fill: gray900,
   height: helperIconSize,
@@ -188,6 +191,9 @@ const formStyles = StyleSheet.create({
   textInputLabelContainer: {
     marginBottom: 16,
   },
+  formLabelContainer: {
+    marginBottom: 16,
+  },
   textInputContainerStyle: {
     margin: 0,
     marginLeft: 0,
@@ -341,6 +347,73 @@ const formStyles = StyleSheet.create({
     borderRadius: 14,
     borderColor: '#212121',
     borderWidth: 1,
+  },
+  sliderTextContainer: {
+    flex: 1,
+    flexDirection: 'row',
+  },
+  sliderTitleContainer: {
+    flex: 2,
+  },
+  sliderValueContainer: {
+    flex: 1,
+    flexDirection: 'row',
+  },
+  sliderValueInputContainer: {
+    borderWidth: 0.5,
+    borderColor: '#cccccc',
+    borderRadius: 4,
+    height: '80%',
+    flex: 1,
+    flexDirection: 'column',
+    marginRight: 0,
+    marginLeft: 2,
+  },
+  sliderValueInput: {
+    color: gray900,
+    fontFamily: 'Helvetica',
+    fontSize: 16,
+    width: '100%',
+    minHeight: 32,
+  },
+  sliderValueInputContainerParent: {
+    flex: 2.5,
+  },
+  sliderValueTextContainer: {
+    flex: 2,
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  sliderTitle: {
+    ...iOSUIKit.footnoteEmphasizedObject,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
+  },
+  sliderSubtitle: {
+    ...iOSUIKit.caption2EmphasizedObject,
+    fontFamily: 'Metropolis',
+  },
+  sliderValue: {
+    ...iOSUIKit.caption2EmphasizedObject,
+    flex: 1,
+    textAlign: 'center',
+  },
+  sliderSetTotalContainer: {
+    alignItems: 'flex-end',
+    justifyContent: 'center',
+    padding: 8,
+  },
+  sliderSetTotal: {
+    height: 30,
+    width: 30,
+    borderRadius: 6,
+    backgroundColor: gray400,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  totalValue: {
+    ...iOSUIKit.subheadEmphasizedObject,
   },
 })
 

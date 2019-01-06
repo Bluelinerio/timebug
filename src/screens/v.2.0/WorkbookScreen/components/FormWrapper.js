@@ -1,9 +1,9 @@
-import React from 'react'
-import { TouchableOpacity } from 'react-native'
-import Form from '../../../../forms/custom/components/Form'
-import Icon from 'react-native-vector-icons/Ionicons'
+import React                       from 'react'
+import { TouchableOpacity }        from 'react-native'
+import Form                        from '../../../../forms/custom/components/Form'
+import Icon                        from 'react-native-vector-icons/Ionicons'
 import styles, { backButtonColor } from '../styles'
-import FormElements from './formExtras'
+import FormElements                from './formExtras'
 
 export type Props = {
   color: string,
@@ -19,7 +19,11 @@ const CloseButton = onPress => {
     render() {
       return (
         <TouchableOpacity style={styles.formBackButton} onPress={this._onPress}>
-          <Icon name={'ios-arrow-round-back'} size={24} color={backButtonColor} />
+          <Icon
+            name={'ios-arrow-round-back'}
+            size={24}
+            color={backButtonColor}
+          />
         </TouchableOpacity>
       )
     }
@@ -72,7 +76,9 @@ class FormWrapper extends React.PureComponent<Props> {
     return !ElementForStep || beginForm ? (
       <Form
         {...this.props}
-        {...(ElementForStep ? { CloseButton: CloseButton(this._onClosePress) } : {})}
+        {...(ElementForStep
+          ? { CloseButton: CloseButton(this._onClosePress) }
+          : {})}
       />
     ) : (
       this._getStepComponent(ElementForStep)
