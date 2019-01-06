@@ -167,7 +167,7 @@ export const connect = (Component: React.node) => {
   class FormConnectContainer extends React.PureComponent<Props> {
     render() {
       /* eslint-disable-next-line */
-      const { currentFormValue, allFields, ...regularProps } = this.props
+      const { allFields, ...regularProps } = this.props
       const { type } = regularProps.field
 
       return type === types.connected ? (

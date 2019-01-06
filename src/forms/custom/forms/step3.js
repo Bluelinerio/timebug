@@ -85,6 +85,21 @@ const form3 = {
       },
     },
     2: {
+      type: types.string,
+      key: 'form_3_strenghts_friend_name',
+      content: {
+        text: 'Now, ask a close friend or family member to list 3-5 charachter strenghts they believe you to possess',
+        smallKey: "Friend's name Strengths",
+        listText: "Friend's name Strengths",
+      },
+      options: {
+        placeHolder: "Friend's name",
+        multiline: false,
+        default: '',
+        required: true,
+      },
+    },
+    3: {
       type: types.list,
       key: 'form_3_strengths_by_friend',
       content: {
@@ -94,6 +109,12 @@ const form3 = {
         listText: 'Strengths By Friend',
       },
       options: {
+        referencedValue: {
+          type: types.string,
+          key: 'form_3_strenghts_friend_name',
+          text: "Friend's name",
+          smallKey: "Friend's name",
+        },
         childTypes: {
           0: {
             type: types.select,
@@ -110,16 +131,6 @@ const form3 = {
               repeats: DISABLE,
             },
           },
-          1: {
-            type: types.string,
-            key: 'form_3_strengths_by_friend.friend_name',
-            options: {
-              placeHolder: "Friend's name",
-              multiline: true,
-              default: '',
-              isIndependent: true,
-            },
-          },
         },
         default: [],
         required: true,
@@ -133,7 +144,20 @@ const form3 = {
         },
       },
     },
-    3: {
+    4: {
+      type: types.string,
+      key: 'form_3_weaknesses_friend_name',
+      content: {
+        text: 'Now, ask a close friend or family member to list 3-5 charachter weaknesses they believe you to possess',
+      },
+      options: {
+        placeHolder: "Friend's name",
+        multiline: false,
+        default: '',
+        required: true,
+      },
+    },
+    5: {
       type: types.list,
       key: 'form_3_weaknesses_by_friend',
       content: {
@@ -143,6 +167,12 @@ const form3 = {
         listText: 'Weaknesses By Friend',
       },
       options: {
+        referencedValue: {
+          type: types.string,
+          key: 'form_3_weaknesses_friend_name',
+          text: "Friend's name",
+          smallKey: "Friend's name",
+        },
         childTypes: {
           0: {
             type: types.select,
@@ -157,16 +187,6 @@ const form3 = {
             options: {
               default: Weaknesses[0],
               repeats: DISABLE,
-            },
-          },
-          1: {
-            type: types.string,
-            key: 'form_3_weaknesses_by_friend.friend_name',
-            options: {
-              placeHolder: "Friend's name",
-              multiline: true,
-              default: '',
-              isIndependent: true,
             },
           },
         },

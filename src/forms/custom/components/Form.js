@@ -267,6 +267,8 @@ class Form extends React.PureComponent<Props, any> {
     switch (type) {
     case types.list:
       return this._listValidation(value, options)
+    case types.string:
+      return !value || value.trim() === ''
     case types.connected:
       return !(value)
     default:
