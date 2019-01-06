@@ -49,6 +49,7 @@ const TextInput = ({
       onChangeText={onChange}
       value={value ? value : options.default}
       multiline={options.multiline}
+      placeholder={options.placeHolder}
     />
   </React.Fragment>
 )
