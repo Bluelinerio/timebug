@@ -23,6 +23,7 @@ type Props = {
     options?: any,
   },
   formStyles: any,
+  currentFormValue: Object,
 }
 
 type ValueElement = {
@@ -342,7 +343,6 @@ class ListComponent extends React.PureComponent<Props, State> {
 
   _onAddPress = () => {
     const { currentValue } = this.state
-    tron.log(currentValue)
     const { value = [], onChange, field: { options } } = this.props
     const { childTypes } = options
     const { error, failed } = this._validate(options)
@@ -371,10 +371,23 @@ class ListComponent extends React.PureComponent<Props, State> {
 
   _onDeletePress = () => {}
 
+  renderReferencedValue = (referencedValue) => {
+    const { currentFormValue = {}, formStyles = {} } = this.props
+    const referencedElement = currentFormValue[referencedValue.key]
+
+    return (
+      <View style={styles.container}>
+        <Text style={[styles.textElementText, formStyles.textStyle]}>
+          {`${referencedValue.text}: ${referencedElement.value}`}
+        </Text>
+      </View>
+    )
+  }
+
   render() {
     const { currentValue, indexesMap, isEditing, editObjectId } = this.state
     const { field: { content, options }, value, formStyles = {} } = this.props
-    const { childTypes } = options
+    const { childTypes, referencedValue } = options
 
     return (
       <View style={styles.container}>
@@ -454,6 +467,11 @@ class ListComponent extends React.PureComponent<Props, State> {
             </TouchableOpacity>
           </View>
         </View>
+        {
+          referencedValue &&
+          (referencedValue.type === types.string) &&
+          this.renderReferencedValue(referencedValue)
+        }
         <View style={[styles.container, styles.listContentContainer]}>
           {value && (
             <View style={styles.container}>
