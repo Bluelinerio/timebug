@@ -1,6 +1,5 @@
 // @flow
-import { connectContext }                 from 'react-connect-context'
-import { SectionConsumer, SectionValues } from '../context/SectionContext'
+import { SectionValues } from '../context/SectionContext'
 import { compose, mapProps }              from 'recompose'
 import FormButton                         from '../components/FormButton'
 import { mapPhaseToStylesHelper }         from '../utils/colorsForStep'
@@ -17,6 +16,6 @@ const merge = ({ phase, ...rest }: { phase: string }) => {
   }
 }
 
-export default compose(connectContext(SectionConsumer), mapProps(merge))(
+export default compose(mapProps(merge))(
   FormButton
 )

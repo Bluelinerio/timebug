@@ -27,6 +27,7 @@ class WorkbookContent extends React.PureComponent<Props> {
       phase,
       onSelectStep,
       backgroundColor,
+      changeSection,
     } = this.props
 
     return (
@@ -38,7 +39,7 @@ class WorkbookContent extends React.PureComponent<Props> {
           {selectedSection === SectionValues.form ? (
             <WorkbookForm step={step} stepNumber={`${step.number}`} phase={phase} onSelectStep={onSelectStep}/>
           ) : (
-            <WorkbookSnippet step={step} phase={phase} />
+            <WorkbookSnippet step={step} phase={phase} changeSection={changeSection} />
           )}
         </View>
         <View style={[styles.backgroundImage]}>
