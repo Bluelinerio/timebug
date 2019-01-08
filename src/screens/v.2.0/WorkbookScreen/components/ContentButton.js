@@ -18,7 +18,7 @@ export type Props = {
 
 class ContentButton extends React.PureComponent<Props> {
   _onPress = () => {
-    const { changeSection, ownSection } = this.props;
+    const { changeSection, ownSection } = this.props
     changeSection(ownSection)
   }
 
@@ -27,9 +27,9 @@ class ContentButton extends React.PureComponent<Props> {
       containerStyle = {},
       iconStyle = {},
       icon,
-      selectedSection,
       ownSection,
       barStyle,
+      selectedSection,
     } = this.props
 
     return (

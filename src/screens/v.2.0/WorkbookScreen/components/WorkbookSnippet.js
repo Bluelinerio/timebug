@@ -1,18 +1,17 @@
 import React                              from 'react'
 import { View, Text, ScrollView }         from 'react-native'
-import styles                             from '../styles'
-import type { Step }                      from '../../../../services/cms'
-import { splitByLines }                   from '../utils/textSplit'
-import Button                             from '../../../../components/Button'
-import { connectContext }                 from 'react-connect-context'
-import { SectionConsumer, SectionValues } from '../context/SectionContext'
 import { compose, mapProps }              from 'recompose'
+import Button                             from '../../../../components/Button'
+import type { Step }                      from '../../../../services/cms'
+import { SectionValues } from '../context/SectionContext'
+import styles                             from '../styles'
 
 export type Props = {
   step: Step,
   phase: string,
   textStyle?: any,
   color: string,
+  changeSection: string => any,
 }
 
 type SwitchButtonProps = {
@@ -40,29 +39,30 @@ const merge = (props: SwitchButtonProps) => {
   }
 }
 
-const SwitchButton = compose(connectContext(SectionConsumer), mapProps(merge))(
+const SwitchButton = compose(mapProps(merge))(
   UnconnectedSwitchButton
 )
 
 class WorkbookSnippet extends React.PureComponent<Props> {
   render() {
-    const { step, color, textStyle = {} } = this.props
+    const { step, color, textStyle = {}, changeSection } = this.props
     return (
       <ScrollView
         style={styles.scrollView}
         contentContainerStyle={styles.scrollView}
       >
         <View style={styles.marginScrollViewElement}>
-    
           <View style={styles.actualSnippetContainer}>
             <Text style={[styles.actualSnippetText, textStyle]}>
               {step.snippet}
             </Text>
           </View>
-            <View style={styles.snippetParagraph}>
-              <Text style={[styles.snippetStyle, textStyle]}>{step.description}</Text>
-            </View>
-          <SwitchButton text={'Next'} background={color} />
+          <View style={styles.snippetParagraph}>
+            <Text style={[styles.snippetStyle, textStyle]}>
+              {step.description}
+            </Text>
+          </View>
+          <SwitchButton text={'Next'} background={color} changeSection={changeSection} />
         </View>
       </ScrollView>
     )

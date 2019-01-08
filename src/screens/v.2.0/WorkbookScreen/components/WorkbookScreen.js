@@ -7,7 +7,7 @@ import styles              from '../styles'
 import type { Step }       from '../../../../services/cms'
 import StepBar             from '../containers/StepBarContainer'
 import Sidebar             from '../containers/SidebarContainer'
-import { SectionProvider } from '../context/SectionContext'
+import { SectionValues } from '../context/SectionContext'
 import WorkbookContent     from '../containers/WorkbookContentContainer'
 
 type Props = {
@@ -25,6 +25,7 @@ class WorkbookScreen extends React.PureComponent<Props, State> {
     const step = params.step || null
     this.state = {
       selectedStep: step,
+      selectedSection: SectionValues.textContent,
     }
   }
 
@@ -32,9 +33,13 @@ class WorkbookScreen extends React.PureComponent<Props, State> {
     this.setState({ selectedStep: step })
   }
 
+  _changeSection = (section: String) => {
+    this.setState({ selectedSection: section })
+  }
+
   render() {
     const { navigation: { state: { params: { phase } } } } = this.props
-    const { selectedStep } = this.state
+    const { selectedStep, selectedSection } = this.state
 
     return (
       <SafeAreaView
@@ -46,15 +51,20 @@ class WorkbookScreen extends React.PureComponent<Props, State> {
           phase={phase}
           onSelectStep={this._changeSelectedStep}
         />
-        <SectionProvider>
-          <View style={{ flex: 1, flexDirection: 'row' }}>
-            {selectedStep && <Sidebar step={selectedStep} />}
-            <View style={{ flex: 1 }}>
-              {selectedStep && <StepBar step={selectedStep} />}
-              <WorkbookContent step={selectedStep} phase={phase} />
-            </View>
+        <View style={{ flex: 1, flexDirection: 'row' }}>
+          { selectedStep &&
+            <Sidebar step={selectedStep} selectedSection={selectedSection} changeSection={this._changeSection} />
+          }
+          <View style={{ flex: 1 }}>
+            {selectedStep && <StepBar step={selectedStep} />}
+            <WorkbookContent
+              step={selectedStep}
+              phase={phase}
+              selectedSection={selectedSection}
+              changeSection={this._changeSection}
+            />
           </View>
-        </SectionProvider>
+        </View>
       </SafeAreaView>
     )
   }

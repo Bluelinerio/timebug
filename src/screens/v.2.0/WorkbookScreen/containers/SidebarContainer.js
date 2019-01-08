@@ -5,12 +5,13 @@ import { translateCMSPhaseToStandard } from '../../../../services/cms'
 import type { Step } from '../../../../services/cms'
 import type { Props as StepBarProps } from '../components/StepBar'
 
-const merge = ({ step }: { step: Step }): StepBarProps => {
+const merge = ({ step, ...rest }: { step: Step }): StepBarProps => {
   const { type, audio, number } = step
   const phase = translateCMSPhaseToStandard(type)
   const barStyle = mapBarStylesHelper(phase)
 
   return {
+    ...rest,
     phase,
     audio: (audio && audio.uri) || undefined,
     barStyle,
