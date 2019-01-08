@@ -294,8 +294,8 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   icon: {
-    width: 100,
-    height: 100,
+    width: 80,
+    height: 80,
     padding: 20,
     borderRadius: 50,
     alignItems: 'center',
