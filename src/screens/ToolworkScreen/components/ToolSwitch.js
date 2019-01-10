@@ -1,0 +1,31 @@
+import React         from 'react'
+import { TOOL_KEYS } from '2020_static/tools'
+import DailyPlanner  from '../Tools/step2/DailyPlanner'
+import WeeklyPlanner from '../Tools/step2/WeeklyPlanner'
+
+type Props = {
+  step: any,
+  tool: any,
+  data: any,
+  storeAwardData: (value: any, tool: any) => any,
+}
+
+const ToolSwitch = (props: Props) => {
+  const { tool: { key } } = props
+  switch (key) {
+  case TOOL_KEYS.DailyTimebugPlannerKey:
+    return <DailyPlanner {...props} />
+  case TOOL_KEYS.WeeklyTimebugPlannerKey:
+    return <WeeklyPlanner {...props} />
+  default:
+    return null
+  }
+}
+
+class ToolSwitchContainer extends React.PureComponent<Props> {
+  render() {
+    return <ToolSwitch {...this.props} />
+  }
+}
+
+export default ToolSwitchContainer

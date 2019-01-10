@@ -2,13 +2,30 @@ import types, { answerTypes, setTypes } from './types'
 import { SHARED } from './constants'
 import { AreaOfLife, LifeCategories } from './content'
 
+export const FORM_KEYS = {
+  form_2_current_week_time: 'form_2_current_week_time',
+  form_2_ideal_week_time_: 'form_2_ideal_week_time_',
+  form_2_more_time_activities: 'form_2_more_time_activities',
+  form_2_less_time_activities: 'form_2_less_time_activities',
+}
+
+export const FORM_CHILDREN_KEYS = {
+  form_2_more_time_activities: {
+    activities: 'form_2_more_time_activities.activities',
+    areaOfLife: 'form_2_more_time_activities.area_of_life',
+  },
+  form_2_less_time_activities: {
+    activities: 'form_2_less_time_activities.activities',
+    areaOfLife: 'form_2_less_time_activities.area_of_life',
+  },
+}
 const form1 = {
   type: types.form,
   answer: answerTypes.single,
   fields: {
     0: {
       type: types.set,
-      key: 'form_2_current_week_time',
+      key: FORM_KEYS.form_2_current_week_time,
       content: {
         text:
           'Break down a typical 168 hour week according to the 7 life categories',
@@ -50,7 +67,7 @@ const form1 = {
     },
     1: {
       type: types.connected,
-      key: 'form_2_ideal_week_time_',
+      key: FORM_KEYS.form_2_ideal_week_time_,
       content: {
         text:
           'Now break down an ideal 168 hour week according to how you would LIKE to spend your time',
@@ -113,7 +130,7 @@ const form1 = {
     },
     2: {
       type: types.list,
-      key: 'form_2_more_time_activities',
+      key: FORM_KEYS.form_2_more_time_activities,
       content: {
         text: 'List 3 activities you would like to spend more time doing',
         smallKey: 'Activities',
@@ -123,7 +140,7 @@ const form1 = {
         childTypes: {
           0: {
             type: types.string,
-            key: 'form_2_more_time_activities.activities',
+            key: FORM_CHILDREN_KEYS.form_2_more_time_activities.activities,
             options: {
               placeHolder: '',
               multiline: true,
@@ -132,7 +149,7 @@ const form1 = {
           },
           1: {
             type: types.select,
-            key: 'form_2_more_time_activities.area_of_life',
+            key: FORM_CHILDREN_KEYS.form_2_more_time_activities.areaOfLife,
             content: {
               smallKey: 'area',
               items: AreaOfLife.map(area => ({
@@ -159,7 +176,7 @@ const form1 = {
     },
     3: {
       type: types.list,
-      key: 'form_2_less_time_activities',
+      key: FORM_KEYS.form_2_less_time_activities,
       content: {
         text: 'List 3 activities you would like to spend less time doing',
         smallKey: 'Activities',
@@ -169,7 +186,7 @@ const form1 = {
         childTypes: {
           0: {
             type: types.string,
-            key: 'form_2_less_time_activities.activities',
+            key: FORM_CHILDREN_KEYS.form_2_less_time_activities.activities,
             options: {
               placeHolder: '',
               multiline: true,
@@ -178,7 +195,7 @@ const form1 = {
           },
           1: {
             type: types.select,
-            key: 'form_2_less_time_activities.area_of_life',
+            key: FORM_CHILDREN_KEYS.form_2_less_time_activities.areaOfLife,
             content: {
               smallKey: 'area',
               items: AreaOfLife.map(area => ({

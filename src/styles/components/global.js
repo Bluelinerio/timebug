@@ -15,8 +15,12 @@ import {
   orange50,
   green50,
   paleBlue,
-}                                              from '../../constants/colors'
+  PHASE_1_TEXT_AND_BUTTONS,
+  PHASE_2_TEXT_AND_BUTTONS,
+  PHASE_3_TEXT_AND_BUTTONS,
+} from '../../constants/colors'
 import { translateCMSPhaseToStandard, PHASES } from '../../services/cms'
+import hexToRgba from '2020_utils/colorTransform'
 
 const MVP_COLORS_OVERRIDE = false
 
@@ -105,4 +109,64 @@ export const phaseHeaderBackgroundColorForPhase = (type: string) => {
   default:
     return paleBlue
   }
+}
+
+export const buttonStyles = {
+  phase1: {
+    backgroundColor: PHASE_1_TEXT_AND_BUTTONS,
+  },
+  phase2: {
+    backgroundColor: PHASE_2_TEXT_AND_BUTTONS,
+  },
+  phase3: {
+    backgroundColor: PHASE_3_TEXT_AND_BUTTONS,
+  },
+}
+
+export const textColors = {
+  phase1: {
+    color: deepBlue,
+  },
+  phase2: {
+    color: PHASE_2_TEXT_AND_BUTTONS,
+  },
+  phase3: {
+    color: PHASE_3_TEXT_AND_BUTTONS,
+  },
+}
+
+export const phaseColors = {
+  phase1: PHASE_1_COMPLETE,
+  phase2: PHASE_2_COMPLETE,
+  phase3: PHASE_3_COMPLETE,
+}
+
+export const phaseTextAndButtonColors = {
+  phase1: PHASE_1_TEXT_AND_BUTTONS,
+  phase2: PHASE_2_TEXT_AND_BUTTONS,
+  phase3: PHASE_3_TEXT_AND_BUTTONS,
+}
+
+export const buttonTextStyles = {
+  phase1: {
+    color: white2,
+  },
+  phase2: {
+    color: white2,
+  },
+  phase3: {
+    color: white2,
+  },
+}
+
+export const formElementBackgroundStyles = {
+  phase1: {
+    backgroundColor: hexToRgba(PHASE_1_COMPLETE, 0.1),
+  },
+  phase2: {
+    backgroundColor: hexToRgba(PHASE_2_COMPLETE, 0.1),
+  },
+  phase3: {
+    backgroundColor: hexToRgba(PHASE_3_COMPLETE, 0.1),
+  },
 }

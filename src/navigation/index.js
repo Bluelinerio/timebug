@@ -26,7 +26,8 @@ import DashboardScreen    from '../screens/DashboardScreen'
 import CheckinScreen      from '../screens/CheckinScreen'
 import MarkdownScreen     from '../screens/MarkdownScreen'
 import EmojiPickerScreen  from '../screens/EmojiPickerScreen'
-import MyJourneyScreen    from '../screens/MyJourneyScreen'
+import ToolScreen         from '../screens/MyJourneyScreen'
+import ToolworkScreen     from '../screens/ToolworkScreen'
 import StartScreen        from '../screens/StartScreen'
 import GoalScreen         from '../screens/GoalScreen'
 import GoalStepScreen     from '../screens/GoalStepScreen'
@@ -143,6 +144,27 @@ export const goalsNavigator = StackNavigator(
   goalsConfiguration.options
 )
 
+const ToolScreenConfiguration: any = {
+  routes: routes.proto,
+  screens: {
+    [routes.toolFlow.ToolScreen]: {
+      screen: ToolScreen,
+    },
+    [routes.toolFlow.ToolworkScreen]: {
+      screen: ToolworkScreen,
+    },
+  },
+  options: {
+    initialRouteName: routes.toolFlow.initialRouteName,
+    headerMode: 'screen',
+  },
+}
+
+const ToolFlow = StackNavigator(
+  ToolScreenConfiguration.screens,
+  ToolScreenConfiguration.options
+)
+
 type NavigationOptionsElementProps = {
   focused: boolean,
   tintColor: string,
@@ -157,8 +179,8 @@ export const tabConfiguration = {
     [routes.tab.CheckinScreen]: {
       screen: CheckinScreen,
     },
-    [routes.tab.MyJourneyScreen]: {
-      screen: MyJourneyScreen,
+    [routes.tab.ToolFlow]: {
+      screen: ToolFlow,
     },
     [routes.tab.GoalsNavigator]: {
       screen: goalsNavigator,

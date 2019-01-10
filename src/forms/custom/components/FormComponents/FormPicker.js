@@ -7,6 +7,7 @@ import Select         from './SelectComponent'
 import List           from './ListComponent'
 import MultipleSelect from './MultipleSelectComponent'
 import Set            from './SetComponent'
+import Slider         from './SingleSlider'
 import { connect }    from './ConnectedComponentContainer'
 
 type Props = {
@@ -34,6 +35,8 @@ const SwitchComponent = ({ field, props }: { type: string }) => {
     return <MultipleSelect {...props} />
   case types.set:
     return <Set {...props} />
+  case types.slider:
+    return <Slider {...props} />
   default:
     return null
   }

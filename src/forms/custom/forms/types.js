@@ -18,6 +18,7 @@ export default {
   multipleSelect: 'multipleSelect',
   connected: 'connected',
   set: 'set',
+  slider: 'slider',
 }
 
 export const answerTypes = {
