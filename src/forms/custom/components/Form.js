@@ -13,6 +13,26 @@ import types                                      from '../forms/types'
 
 const DEBUG_DISPLAY = false
 
+
+type Props = {
+  model: any,
+  value: any,
+  onFinish: any => any,
+  disableAnswers?: boolean,
+  CloseButton: () => React.node,
+  formStyles: {
+    headerTextStyle: any,
+    textStyle: any,
+    elementContainerStyle: any,
+    buttonContainerStyle: any,
+    buttonTextStyle: any,
+    accentColor: string,
+  },
+  extra: {
+    step: string,
+  },
+}
+
 /* eslint-disable-next-line */
 const FormButton = ({
   onPress,
@@ -52,25 +72,6 @@ const TextFormButton = ({
     <Text style={[styles.text, styles.bottomButtonText]}>{text}</Text>
   </TouchableOpacity>
 )
-
-type Props = {
-  model: any,
-  value: any,
-  onFinish: any => any,
-  disableAnswers?: boolean,
-  CloseButton: () => React.node,
-  formStyles: {
-    headerTextStyle: any,
-    textStyle: any,
-    elementContainerStyle: any,
-    buttonContainerStyle: any,
-    buttonTextStyle: any,
-    accentColor: string,
-  },
-  extra: {
-    step: string,
-  },
-}
 
 class Form extends React.PureComponent<Props, any> {
   constructor(props) {

@@ -16,11 +16,16 @@ export default {
   },
   tab: {
     initialRouteName: 'RootNavigator',
-    MyJourneyScreen: 'MyJourneyScreen',
+    ToolFlow: 'ToolFlow',
     MeditationScreen: 'MeditationScreen',
     RootNavigator: 'RootNavigator',
     CheckinScreen: 'CheckinScreen',
     GoalsNavigator: 'GoalsNavigator',
+  },
+  toolFlow: {
+    initialRouteName: 'ToolScreen',
+    ToolScreen: 'ToolScreen',
+    ToolworkScreen: 'ToolworkScreen',
   },
   version: {
     initialRouteName: 'AppVersion',

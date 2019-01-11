@@ -3,6 +3,7 @@ import Slider                                           from 'react-native-slide
 import { View, Text }                                   from 'react-native'
 import { FormInput }                                    from 'react-native-elements'
 import styles, { minimumTrackColor, maximumTrackColor } from '../../styles'
+import { isNumber }                                     from '2020_utils/formatHelpers'
 
 type Props = {
   value: string | number,
@@ -27,10 +28,6 @@ type Props = {
       },
     },
   },
-}
-
-const isNumber = n => {
-  return !isNaN(parseFloat(n)) && isFinite(n)
 }
 
 class SliderComponent extends React.PureComponent<Props> {

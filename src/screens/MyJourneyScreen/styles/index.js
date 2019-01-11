@@ -1,6 +1,6 @@
-import { StyleSheet } from 'react-native'
-import { iOSUIKit }   from 'react-native-typography'
-import { azure }      from '../../../constants/colors'
+import { StyleSheet }      from 'react-native'
+import { iOSUIKit }        from 'react-native-typography'
+import { azure, paleBlue } from '../../../constants/colors'
 
 export const stylesStep1 = {
   formContainer: {
@@ -49,6 +49,12 @@ export default StyleSheet.create({
   },
   container: {
     flex: 1,
+  },
+  content: {
+    padding: 20,
+  },
+  background: {
+    backgroundColor: paleBlue,
   },
   tableContainer: {
     flexDirection: 'column',

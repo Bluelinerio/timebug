@@ -30,6 +30,11 @@ export type HelpParams = {
   step: String,
 }
 
+type GoToToolParams = {
+  tool: string,
+  step: number,
+}
+
 export const linkNavigation = (payload: LinkedNavigationPayload) => ({
   type: LINK_NAVIGATION,
   payload,
@@ -108,6 +113,12 @@ export const navigateWith = ({
 const navigateToInitialRoute = () =>
   NavigationActions.navigate({
     routeName: routes.start.initialRouteName,
+  })
+
+export const goToTool = (params: GoToToolParams) =>
+  NavigationActions.navigate({
+    routeName: routes.toolFlow.ToolworkScreen,
+    params,
   })
 
 // TODO: add goal itself to params
@@ -238,15 +249,15 @@ export const goToEmojiPickerScreen = (params: ?{}) =>
 
 export const goToMyJourneyScreen = (params: ?any) =>
   NavigationActions.navigate({
-    routeName: routes.tab.MyJourneyScreen,
+    routeName: routes.toolFlow.ToolScreen,
     params,
   })
 
 export const journeyScreenDeepParams = (params: ?any) =>
   NavigationActions.navigate({
-    routeName: routes.tab.MyJourneyScreen,
+    routeName: routes.toolFlow.ToolScreen,
     params,
-    key: routes.tab.MyJourneyScreen,
+    key: routes.toolFlow.ToolScreen,
   })
 
 export const goToHomeScreen = (params?: any) =>

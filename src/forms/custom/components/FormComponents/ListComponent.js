@@ -139,7 +139,6 @@ const TextElement = ({
 class ListComponent extends React.PureComponent<Props, State> {
   constructor(props) {
     super(props)
-    tron.log('Constructor list')
     const currentValue = this._buildValue(props)
     const indexesMap = this._mapIndexesToKeys(props.field.options)
     this.state = {
@@ -152,7 +151,6 @@ class ListComponent extends React.PureComponent<Props, State> {
 
   componentDidUpdate = prevProps => {
     if (this.props.value !== prevProps.value) {
-      tron.log('State is not equal for list')
       this.setState({
         currentValue: this._buildValue(this.props),
       })
