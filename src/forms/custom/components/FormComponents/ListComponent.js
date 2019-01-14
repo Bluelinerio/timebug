@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, Alert, TouchableOpacity } from 'react-native'
+import { View, Text, Alert, TouchableOpacity, Platform } from 'react-native'
 import FormElementHeader from './FormElementHeader'
 import styles, {
   TEMPORARY_COLOR_FOR_BUTTONS,
