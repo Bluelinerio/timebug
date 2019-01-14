@@ -28,7 +28,13 @@ class MeditationTimerIcon extends React.PureComponent<Props> {
           color={'#FAFAFA'}
           size={70}
           name={icon}
-          style={textAlign: 'center'}
+          style={{textAlign: 'center',
+          ...Platform.select({
+            ios: {
+              bottom:5,
+              },
+            }),
+        }}
         />
       </TouchableOpacity>
     )
