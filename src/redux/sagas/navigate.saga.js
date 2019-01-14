@@ -1,16 +1,15 @@
 // @flow
-import { put, select, takeLatest } from 'redux-saga/effects'
+import { put, select, takeLatest }      from 'redux-saga/effects'
 import {
   GO_TO_HOME_SCREEN,
   SAGA_NAVIGATE,
   LINK_NAVIGATION,
-} from '../actionTypes'
-import { NavigationActions } from 'react-navigation'
-import {
-  goToStartScreen,
-  journeyScreenDeepParams,
-} from '../actions/nav.actions'
+}                                       from '../actionTypes'
+import { NavigationActions }            from 'react-navigation'
+import { goToStartScreen, goToTool }    from '../actions/nav.actions'
+import type { goToToolParams }          from '../actions/nav.actions'
 import type { LinkedNavigationPayload } from '../actions/nav.actions'
+import selectors                        from '../selectors'
 
 const handleUrl = (
   link: string
@@ -31,14 +30,30 @@ const handleUrl = (
   }
 }
 
-const handleLink = (payload: { link: string }) => {
+const handleGoToTool = (
+  params: { step: string, key: string },
+  tools: any,
+  steps: any
+) => {
+  const { step: stepNumber, key } = params
+  const step = steps[stepNumber]
+  const toolsForStep = tools[stepNumber] || []
+  const tool = toolsForStep.find(t => t.key === key)
+  const payload: goToToolParams = {
+    step,
+    tool,
+  }
+  return goToTool(payload)
+}
+
+const handleLink = (payload: { link: string }, tools: any, steps: any) => {
   const { link } = payload
   const { screen, component, params } = handleUrl(link)
   switch (screen) {
   case 'home':
     return goToStartScreen({ component, params })
-  case 'journey':
-    return journeyScreenDeepParams({ component, params })
+  case 'tools':
+    return handleGoToTool(params, tools, steps)
   }
 }
 
@@ -47,7 +62,9 @@ function* deeplinkNavigation({
 }: {
   payload: LinkedNavigationPayload,
 }) {
-  yield put(handleLink(payload))
+  const tools = yield select(selectors.getAllTools)
+  const steps = yield select(selectors.steps)
+  yield put(handleLink(payload, tools, steps))
 }
 
 function* onNavigate(action) {

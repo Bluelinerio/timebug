@@ -36,6 +36,7 @@ import type {
 import selectors                     from '../selectors'
 import { isStepCompleted }           from '../../services/cms'
 import { timeoutNoError as timeout } from '../utils/sagaHelpers'
+import R                             from 'ramda'
 
 type StepWithUpdate = {
   __action__: string,
@@ -49,44 +50,86 @@ function* _watchForInitialNotificationsHold() {
   yield take([GET_USER.SUCCEEDED, FETCH_CMS.SUCCEEDED])
 }
 
+const toHashCode = string => {
+  let hash = 0
+  let chr
+  if (string.length === 0) return hash
+  for (let i = 0; i < string.length; i++) {
+    chr = string.charCodeAt(i)
+    hash = (hash << 5) - hash + chr
+    hash |= 0 // Convert to 32bit integer
+  }
+  return Math.abs(hash)
+}
+
 function* setUpNotificationAndUpdateCheckin({
   payload,
 }: {
   payload: CheckinChangePayload,
 }) {
-  const { step, frequency, message, ...rest } = payload
+  const { step, frequency, message, toolKey, action, ...rest } = payload
   const [nextCheckin, repeatTime] = yield call(calculateNextCheckin, frequency)
-  const id = `${step}`
-  yield put(createNotification({ message, id, nextCheckin, repeatTime }))
+  const id = `${toHashCode(toolKey)}`
+  const additionalProps = {
+    step,
+    id,
+    toolKey,
+    action,
+    frequency,
+  }
+  yield put(
+    createNotification({
+      message,
+      id,
+      nextCheckin,
+      repeatTime,
+      additionalProps,
+    })
+  )
   yield put(
     updateCheckin({
       step,
-      checkin: { frequency, nextCheckin, id, message, ...rest },
+      checkin: {
+        frequency,
+        nextCheckin,
+        id,
+        message,
+        toolKey,
+        action,
+        ...rest,
+      },
     })
   )
 }
 
 function* handleRemoveCheckin({ payload }: DeleteCheckinPayload) {
+  const { step, tool } = payload
+  const checkins = yield select(selectors.getCheckins)
+  const checkin = checkins[step][tool]
   yield put(deleteCheckin(payload))
-  yield put(removeNotification(payload))
+  yield put(removeNotification({ checkin }))
 }
 
 function* toggleNotification({ payload }: ToggleCheckinPayload) {
   const { checkin, step } = payload
+  const { toolKey } = checkin
   const checkins = yield select(selectors.getCheckins)
-  const currentCheckin = checkins[`${step}`]
+  const currentCheckin = checkins[`${step}`][`${toolKey}`]
   if (currentCheckin.id) {
     yield put(
       updateCheckin({
         step,
-        checkin: { nextCheckin: null, id: null },
+        checkin: { toolKey, nextCheckin: null, id: null },
       })
     )
-    yield put(removeNotification({ step: `${step}` }))
+    yield put(removeNotification({ checkin: currentCheckin }))
   } else {
     yield put(changeCheckin({ ...checkin, step: `${step}` }))
   }
 }
+
+const isCheckinInStore = (step: any, checkin: any, checkins: any) =>
+  checkins[step.number] && checkins[step.number][checkin.toolKey]
 
 /* eslint-disable-next-line */
 function* _setInitialNotifications() {
@@ -101,37 +144,62 @@ function* _setInitialNotifications() {
     const stepsWithUnsetNotifications: StepsWithNotificationUpdates = Object.values(
       steps
     ).reduce((allSteps, step) => {
-      const shouldSetNotification =
-        step.checkin &&
-        !checkins[step.number] &&
-        isStepCompleted(step.number, user)
-      if (shouldSetNotification) {
-        return [
-          ...allSteps,
-          {
-            ...step,
-            __action__: 'change',
-          },
-        ]
-      }
-      const shouldBeRemoved = !step.checkin && checkins[step.number]
-      if (shouldBeRemoved) {
-        return [
-          ...allSteps,
-          {
-            ...step,
-            __action__: 'remove',
-          },
-        ]
-      }
-      return allSteps
+      const stepCheckins = step.checkin
+      const type = R.type(stepCheckins)
+      if (type !== 'Array') return allSteps
+      const checkinsForStepInState = (checkins && checkins[step.number]) || {}
+
+      const checkinActions = stepCheckins.reduce(
+        (checkinsToBeChanged, checkin) => {
+          const shouldSetNotification =
+            checkin &&
+            isStepCompleted(step.number, user) &&
+            checkin.toolKey &&
+            !isCheckinInStore(step, checkin, checkins)
+          if (shouldSetNotification) {
+            return [
+              ...checkinsToBeChanged,
+              {
+                checkin,
+                number: step.number,
+                __action__: 'change',
+              },
+            ]
+          }
+          return checkinsToBeChanged
+        },
+        []
+      )
+
+      const checkinsToRemove = Object.keys(checkinsForStepInState).reduce(
+        (checkinsToChange, key) => {
+          const checkin = checkinsForStepInState[key]
+          const shouldNotRemove = stepCheckins.find(
+            cmsCheckin => cmsCheckin.toolKey && cmsCheckin.toolKey === key
+          )
+          if (!shouldNotRemove)
+            return [
+              ...checkinsToChange,
+              {
+                checkin,
+                number: step.number,
+                __action__: 'remove',
+              },
+            ]
+          return checkinsToChange
+        },
+        []
+      )
+
+      return [...allSteps, ...checkinActions, ...checkinsToRemove]
     }, [])
+
     for (const step of stepsWithUnsetNotifications) {
       const { checkin, number, __action__ } = step
       if (__action__ === 'change')
         yield put(changeCheckin({ ...checkin, step: number }))
       else if (__action__ === 'remove')
-        yield put(removeCheckin({ step: number }))
+        yield put(removeCheckin({ step: number, tool: checkin.toolKey }))
     }
   }
 }
