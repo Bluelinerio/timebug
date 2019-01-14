@@ -436,7 +436,13 @@ class ListComponent extends React.PureComponent<Props, State> {
                 <Text
                   style={[
                     {
-                      fontSize: 30,
+                      ...Platform.select({
+                        ios: {
+                          fontSize: 30,
+                        },
+                        android: {
+                          fontSize: 20,                          
+                        },
                       color:
                         formStyles.accentColor || TEMPORARY_COLOR_FOR_BUTTONS,
                         ...Platform.select({
