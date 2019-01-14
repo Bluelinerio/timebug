@@ -17,8 +17,10 @@ import { iOSUIKit }             from 'react-native-typography'
 
 export const TEMPORARY_COLOR_FOR_BUTTONS = azure
 
-export const buttonWidth = widthPercentage(12)
+export const buttonWidth = widthPercentage(15)
 export const buttonHeight = heightPercentage(5.55)
+export const buttonWidthIOS = widthPercentage(12)
+
 
 export const formTextColor = blue900
 export const iconSize = 30
@@ -186,6 +188,16 @@ const formStyles = StyleSheet.create({
     width: '100%',
   },
   textInputLabelContainer: {
+    ...Platform.select({
+      ios: {
+        marginBottom: 0,
+      },
+      android: {
+        marginBottom: 16,        
+      },
+    }),
+  },
+  formLabelContainer: {
     marginBottom: 16,
   },
   textInputContainerStyle: {
@@ -272,9 +284,12 @@ const formStyles = StyleSheet.create({
     borderRadius: buttonHeight / 2,
     alignItems: 'center',
     justifyContent: 'center',
-    top:4,
-    right:20
-    
+    ...Platform.select({
+      ios: {
+        top:4,
+        right:20
+      },
+    }),    
   },
   listContentContainer: {
     marginTop: 16,
