@@ -439,18 +439,14 @@ class ListComponent extends React.PureComponent<Props, State> {
                       ...Platform.select({
                         ios: {
                           fontSize: 30,
+                          bottom:3,
+                          left:1,
                         },
                         android: {
                           fontSize: 20,                          
                         },
-                      color:
-                        formStyles.accentColor || TEMPORARY_COLOR_FOR_BUTTONS,
-                        ...Platform.select({
-                          ios: {
-                        bottom:3,
-                        left:1,
-                          },
-                        }),
+                      }),
+                      color:formStyles.accentColor || TEMPORARY_COLOR_FOR_BUTTONS,
                     },
                   ]}
                 >
