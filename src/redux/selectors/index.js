@@ -266,6 +266,12 @@ const getAllTools = () => tools
 
 const getToolsForStep = (step: number) => tools[step]
 
+const getTool = (step: number, key: string) => {
+  const toolsForStep = tools[step] || []
+  const tool = toolsForStep.find(t => t.key === key)
+  return tool
+}
+
 const awardDataForStepAndTool = (state: any) => ({
   stepNumber,
   tool,
@@ -403,6 +409,7 @@ const selectors = {
   getAllTools,
   getToolsForStep,
   awardDataForStepAndTool,
+  getTool,
 }
 
 export default selectors

@@ -7,10 +7,10 @@ import {
   put,
   actionChannel,
   take,
-} from 'redux-saga/effects';
-import { delay } from 'redux-saga';
-import selectors from '../selectors';
-import moment from 'moment';
+}                               from 'redux-saga/effects'
+import { delay }                from 'redux-saga'
+import selectors                from '../selectors'
+import moment                   from 'moment'
 import {
   CANCEL_ALL_NOTIFICATIONS,
   ON_NOTIFICATION,
@@ -18,19 +18,19 @@ import {
   UPDATE_NOTIFICATION,
   REMOVE_NOTIFICATION,
   STORE_LOADED,
-} from '../actionTypes';
-import NotificationService from '../../services/notifications';
-import { calculateNextCheckin } from '../../services/checkins';
-import { updateCheckin } from '../actions/checkin.actions';
-import { linkNavigation } from '../actions/nav.actions';
+}                               from '../actionTypes'
+import NotificationService      from '../../services/notifications'
+import { calculateNextCheckin } from '../../services/checkins'
+import { updateCheckin }        from '../actions/checkin.actions'
+import { linkNavigation }       from '../actions/nav.actions'
 import type {
   CreateNotificationPayload,
   OnNotificationPayload,
   RemoveNotificationPayload,
-} from '../actions/notification.actions';
+}                               from '../actions/notification.actions'
 
 function* clearNotifications() {
-  yield call(NotificationService.cancelAll);
+  yield call(NotificationService.cancelAll)
 }
 
 function* scheduleNotification({
@@ -38,30 +38,28 @@ function* scheduleNotification({
 }: {
   payload: CreateNotificationPayload,
 }) {
-  const { message, nextCheckin, id, repeatTime } = payload;
+  const { message, nextCheckin, id, repeatTime, additionalProps } = payload
   yield call(
     NotificationService.scheduleNotification,
     message,
     'Lifevision',
     nextCheckin,
     `${id}`,
-    repeatTime
-  );
+    repeatTime,
+    additionalProps
+  )
 }
 
 function* onNotification({ payload }: { payload: OnNotificationPayload }) {
-  const { id } = payload;
-  const hasStoreLoaded = yield select(selectors.hasStoreLoaded);
-  if (!hasStoreLoaded) yield take(STORE_LOADED);
-  const checkins = yield select(selectors.getCheckins);
-  const checkin = checkins[`${id}`];
-  const { frequency, action } = checkin;
-  const lastCheckin = moment();
-  const [nextCheckin] = yield call(calculateNextCheckin, frequency);
-  yield put(updateCheckin({ step: id, checkin: { lastCheckin, nextCheckin } }));
-  yield delay(1);
+  const { step, toolKey, action, frequency } = payload
+  const hasStoreLoaded = yield select(selectors.hasStoreLoaded)
+  if (!hasStoreLoaded) yield take(STORE_LOADED)
+  const lastCheckin = moment()
+  const [nextCheckin] = yield call(calculateNextCheckin, frequency)
+  yield put(updateCheckin({ step, checkin: { lastCheckin, nextCheckin, toolKey } }))
+  yield delay(1)
   if (action.type === 'link')
-    yield put(linkNavigation({ link: action.payload.link }));
+    yield put(linkNavigation({ link: action.payload.link }))
 }
 
 function* removeNotification({
@@ -69,36 +67,36 @@ function* removeNotification({
 }: {
   payload: RemoveNotificationPayload,
 }) {
-  const { step } = payload;
-  yield call(NotificationService.cancelNotification, `${step}`);
+  const { checkin } = payload
+  yield call(NotificationService.cancelNotification, `${checkin.id}`)
 }
 
 function* watchForNotificationScheduling() {
   const channel = yield actionChannel([
     CREATE_NOTIFICATION,
     UPDATE_NOTIFICATION,
-  ]);
+  ])
   while (true) {
-    const action: { payload: CreateNotificationPayload } = yield take(channel);
-    yield call(scheduleNotification, action);
+    const action: { payload: CreateNotificationPayload } = yield take(channel)
+    yield call(scheduleNotification, action)
   }
 }
 
 function* watchForNotificationDeletion() {
-  const channel = yield actionChannel(REMOVE_NOTIFICATION);
+  const channel = yield actionChannel(REMOVE_NOTIFICATION)
   while (true) {
-    const action: { payload: RemoveNotificationPayload } = yield take(channel);
-    yield call(removeNotification, action);
+    const action: { payload: RemoveNotificationPayload } = yield take(channel)
+    yield call(removeNotification, action)
   }
 }
 
 function* watchForNotificationHelpers() {
-  yield takeLatest(CANCEL_ALL_NOTIFICATIONS, clearNotifications);
-  yield takeLatest(ON_NOTIFICATION, onNotification);
-  yield fork(watchForNotificationDeletion);
-  yield fork(watchForNotificationScheduling);
+  yield takeLatest(CANCEL_ALL_NOTIFICATIONS, clearNotifications)
+  yield takeLatest(ON_NOTIFICATION, onNotification)
+  yield fork(watchForNotificationDeletion)
+  yield fork(watchForNotificationScheduling)
 }
 
 export function* watchForNotificationSaga() {
-  yield fork(watchForNotificationHelpers);
+  yield fork(watchForNotificationHelpers)
 }

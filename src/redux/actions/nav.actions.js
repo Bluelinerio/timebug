@@ -30,8 +30,8 @@ export type HelpParams = {
   step: String,
 }
 
-type GoToToolParams = {
-  tool: string,
+export type GoToToolParams = {
+  tool: any,
   step: number,
 }
 

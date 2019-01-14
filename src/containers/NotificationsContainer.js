@@ -1,42 +1,45 @@
 // @flow
-import React from 'react';
-import tron from 'reactotron-react-native';
-import { connect } from 'react-redux';
-import { notificationReceived } from '../redux/actions/notifications.actions';
-import NotificationService from '../services/notifications';
+import React                    from 'react'
+import tron                     from 'reactotron-react-native'
+import { connect }              from 'react-redux'
+import { notificationReceived } from '../redux/actions/notifications.actions'
+import NotificationService      from '../services/notifications'
 
 type DispatchProps = {
   notificationReceived: any => any,
-};
+}
+
+// TODO: Fix here so I can get checkin data with the notification
 
 const mapDispatchToProps = (dispatch: any): DispatchProps => ({
-  notificationReceived: ({ id }) => dispatch(notificationReceived({ id })),
-});
+  notificationReceived: (payload) => dispatch(notificationReceived(payload)),
+})
 
 const mergeProps = (_, dispatchProps: DispatchProps) => {
-  const { notificationReceived } = dispatchProps;
+  const { notificationReceived } = dispatchProps
+
   const onRegister = token => {
-    tron.log('OnRegister');
-    tron.log(token);
-  };
-
-  const onNotification = notification => {
-    tron.log('OnNotification');
-    tron.log(notification);
-    notificationReceived(notification);
-  };
-
-  if (!NotificationService.callbacksSet) {
-    tron.log('SETTINGCB');
-    NotificationService.setCallbacks(onRegister, onNotification);
+    tron.log('OnRegister')
+    tron.log(token)
   }
 
-  return {};
-};
+  const onNotification = notification => {
+    tron.log('OnNotification')
+    tron.log(notification)
+    const { additionalProps } = notification
+    notificationReceived(additionalProps)
+  }
+
+  if (!NotificationService.callbacksSet) {
+    NotificationService.setCallbacks(onRegister, onNotification)
+  }
+
+  return {}
+}
 
 const NotificationsContainer = connect(null, mapDispatchToProps, mergeProps)(
   () => null
-);
+)
 
 export const withNotifications = Component => {
   const container = () => (
@@ -44,6 +47,6 @@ export const withNotifications = Component => {
       <NotificationsContainer />
       <Component />
     </React.Fragment>
-  );
-  return container;
-};
+  )
+  return container
+}
