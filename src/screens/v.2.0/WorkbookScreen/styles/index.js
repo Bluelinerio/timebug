@@ -294,8 +294,15 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   icon: {
-    width: 80,
-    height: 80,
+    ...Platform.select({
+      ios: {
+        width: 80,
+        height: 80,
+      },
+      android: {
+        width:100,
+        height:100
+      },
     padding: 20,
     borderRadius: 50,
     alignItems: 'center',
