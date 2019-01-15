@@ -57,6 +57,11 @@ export default StyleSheet.create({
   },
   switchContainer: {
     flex: 1,
+    alignItems: 'flex-end',
+  },
+  switch: {
+    maxHeight: 30,
+    alignSelf: 'flex-end',
   },
   title: {
     ...iOSUIKit.subheadEmphasizedObject,
@@ -69,13 +74,21 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  saveButtonContainer: {
+    alignItems: 'flex-end',
+  },
+  dateContainer: {
+    flex: 1,
+    alignContent: 'flex-end',
+  },
   date: {
-    ...iOSUIKit.caption2Object,
+    ...iOSUIKit.footnoteObject,
     fontFamily: 'Metropolis',
     color: white2,
+    textAlign: 'right',
   },
   changedDate: {
-    ...iOSUIKit.caption2Object,
+    ...iOSUIKit.footnoteObject,
     color: 'green',
   },
   textContainer: {
@@ -101,6 +114,14 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  modalPicker: {
+    padding: 4,
+  },
+  modalText: {
+    ...iOSUIKit.footnoteObject,
+    ...systemWeights.light,
+    fontFamily: 'Metropolis',
+  },
   picker: {
     width: 100,
     height: 40,
@@ -110,7 +131,7 @@ export default StyleSheet.create({
     paddingVertical: 8,
   },
   buttonText: {
-    ...iOSUIKit.calloutObject,
+    ...iOSUIKit.footnoteObject,
     ...systemWeights.light,
     textDecorationLine: 'underline',
     fontFamily: 'Metropolis',

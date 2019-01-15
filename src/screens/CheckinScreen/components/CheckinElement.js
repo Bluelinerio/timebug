@@ -6,7 +6,7 @@ import {
   Picker,
   TouchableOpacity,
   Switch,
-  Platform,
+  StatusBar,
 }                    from 'react-native'
 import ModalSelector from 'react-native-modal-selector'
 import moment        from 'moment'
@@ -99,6 +99,7 @@ class CheckinElement extends React.PureComponent<CheckinElementProps> {
     super(props)
     this.state = {
       frequency: props.checkin.frequency,
+      isModalOpen: false,
     }
   }
 
@@ -106,6 +107,14 @@ class CheckinElement extends React.PureComponent<CheckinElementProps> {
     const frequency = value.key || value
 
     this.setState({ frequency })
+  }
+
+  _onModalOpen = () => {
+    this.setState({ isModalOpen: true })
+  }
+
+  _onModalClose = () => {
+    this.setState({ isModalOpen: false })
   }
 
   renderiOSPicker = () => {
@@ -123,13 +132,15 @@ class CheckinElement extends React.PureComponent<CheckinElementProps> {
 
     return (
       data && (
-        <View style={[styles.picker]}>
-          <ModalSelector
-            initValue={localFrequency}
-            data={data}
-            onChange={this.onChangeValue}
-          />
-        </View>
+        <ModalSelector
+          initValue={localFrequency}
+          data={data}
+          onChange={this.onChangeValue}
+          selectStyle={styles.modalPicker}
+          selectTextStyle={styles.modalText}
+          onModalOpen={this._onModalOpen}
+          onModalClose={this._onModalClose}
+        />
       )
     )
   }
@@ -177,7 +188,7 @@ class CheckinElement extends React.PureComponent<CheckinElementProps> {
       onToggle,
       id,
     } = checkin
-    const { frequency: localFrequency } = this.state
+    const { frequency: localFrequency, isModalOpen } = this.state
     const { number, icon } = step
     const containerBackgroundColor = this.backgroundColorAtIndex(number - 1)
     const source = icon && icon.uri
@@ -190,6 +201,9 @@ class CheckinElement extends React.PureComponent<CheckinElementProps> {
           { backgroundColor: containerBackgroundColor },
         ]}
       >
+        {isModalOpen && (
+          <StatusBar barStyle="light-content" backgroundColor={'#212121'} />
+        )}
         <View style={checkinStyles.mainComponent}>
           <View style={checkinStyles.mainComponentTopRow}>
             <View style={[checkinStyles.buttonImageContainer]}>
@@ -235,7 +249,10 @@ class CheckinElement extends React.PureComponent<CheckinElementProps> {
                 </View>
               </View>
               <View style={[checkinStyles.subtitleWrapper]}>
-                <View style={{ flex: 1 }}>
+                <View style={styles.pickerContainer}>
+                  {this.renderiOSPicker()}
+                </View>
+                <View style={styles.dateContainer}>
                   <Text
                     style={[
                       styles.date,
@@ -245,11 +262,6 @@ class CheckinElement extends React.PureComponent<CheckinElementProps> {
                   >
                     {!!id && operateCheckinDate(localFrequency, lastCheckin)}
                   </Text>
-                </View>
-                <View style={styles.pickerContainer}>
-                  {Platform.OS === 'ios'
-                    ? this.renderiOSPicker()
-                    : this.renderAndroidPicker()}
                 </View>
                 <TouchableOpacity
                   onPress={() =>
@@ -262,7 +274,7 @@ class CheckinElement extends React.PureComponent<CheckinElementProps> {
                     })
                   }
                   disabled={frequency === localFrequency}
-                  style={[styles.centeredContainer]}
+                  style={[styles.centeredContainer, styles.saveButtonContainer]}
                 >
                   <Text
                     style={[
