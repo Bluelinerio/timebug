@@ -1,6 +1,9 @@
 //@flow
 import React from 'react'
-import { View, Text, Picker, TouchableOpacity, Switch } from 'react-native'
+import { View, Text, Picker, TouchableOpacity, Switch, Platform } from 'react-native'
+import ModalSelector from 'react-native-modal-selector'
+import moment from 'moment'
+
 import {
   frequencies,
   DAILY,
@@ -12,8 +15,10 @@ import type {
   CheckinChangePayload,
   ToggleCheckinPayload,
 } from '../../../redux/actions/checkin.actions'
-import moment from 'moment'
 import styles from '../styles'
+import checkinStyles from '../styles/CheckinStyles'
+import CustomImage from '../../../components/CustomImage'
+import { getColorForStepAtIndex, getTextColorForStepAtIndex } from '../../MyJourneyScreen/utils/colorsForStep'
 
 export type CheckinElementProps = {
   text: string,
@@ -27,6 +32,8 @@ export type CheckinElementProps = {
   onLink: ({ link: string }) => any,
   onToggle: ToggleCheckinPayload => any,
   id: string | null,
+  stepColors: any,
+  user: any,
 }
 
 const operateWithLastCheckin = (
@@ -82,6 +89,64 @@ class CheckinElement extends React.PureComponent<CheckinElementProps> {
       frequency: props.frequency,
     }
   }
+
+  onChangeValue = (value) => {
+    const frequency = value.key || value
+
+    this.setState({ frequency })
+  }
+
+  renderiOSPicker = () => {
+    const { frequency: localFrequency } = this.state
+
+    const data = frequencies && Object.keys(frequencies).map(key => {
+      const frequency = frequencies[key]
+      return {
+        label: frequency,
+        key: frequency,
+      }
+    })
+
+    return data && (
+      <View style={[styles.picker]}>
+        <ModalSelector
+          initValue={localFrequency}
+          data={data}
+          onChange={this.onChangeValue}
+        />
+      </View>
+    )
+  }
+
+  renderAndroidPicker = () => {
+    const { frequency: localFrequency } = this.state
+
+    return (
+      <Picker
+        selectedValue={localFrequency}
+        style={styles.picker}
+        onValueChange={this.onChangeValue}
+      >
+        {Object.keys(frequencies).map(key => {
+          const frequency = frequencies[key]
+          return (
+            <Picker.Item key={key} label={frequency} value={frequency} />
+          )
+        })}
+      </Picker>
+    )
+  }
+
+  backgroundColorAtIndex = (stepIndex: Number) => {
+    const { stepColors, user } = this.props
+    return stepColors[getColorForStepAtIndex(stepIndex, user)]
+  }
+
+  textColorAtIndex = (stepIndex: number) => {
+    const { user } = this.props
+    return getTextColorForStepAtIndex(stepIndex, user)
+  }
+
   render() {
     const {
       text,
@@ -96,75 +161,86 @@ class CheckinElement extends React.PureComponent<CheckinElementProps> {
       id,
     } = this.props
     const { frequency: localFrequency } = this.state
+    const { number, icon } = step
+    const containerBackgroundColor = this.backgroundColorAtIndex( number - 1 )
+    const source = icon && icon.uri
+    const textStyle = this.textColorAtIndex( number - 1 )
+
     return (
-      <View style={styles.checkinContainer}>
-        <View style={styles.checkinTopContainer}>
-          <TouchableOpacity
-            style={[styles.titleContainer, styles.button]}
-            onPress={onLink}
-          >
-            <Text style={styles.title}>{title}</Text>
-          </TouchableOpacity>
-          <View style={styles.centeredContainer}>
-            <Text
-              style={[
-                styles.date,
-                frequency !== localFrequency ? styles.changedDate : {},
-              ]}
-            >
-              {!!id && operateCheckinDate(localFrequency, lastCheckin)}
-            </Text>
-          </View>
-          <View>
-            <Switch
-              style={styles.centeredContainer}
-              onValueChange={() => {
-                onToggle({
-                  step,
-                  checkin: { frequency: localFrequency, message },
-                })
-              }}
-              value={!!id}
-            />
-          </View>
-        </View>
-        <View style={styles.textContainer}>
-          <Text style={styles.text}>{text}</Text>
-        </View>
-        <View style={styles.lowerRowContainer}>
-          <View style={styles.pickerContainer}>
-            <Picker
-              selectedValue={localFrequency}
-              style={styles.picker}
-              onValueChange={value => this.setState({ frequency: value })}
-            >
-              {Object.keys(frequencies).map(key => {
-                const frequency = frequencies[key]
-                return (
-                  <Picker.Item key={key} label={frequency} value={frequency} />
-                )
-              })}
-            </Picker>
-          </View>
-          <View style={styles.container}>
-            <TouchableOpacity
-              onPress={() =>
-                onPress({ step, frequency: localFrequency, message })
-              }
-              disabled={frequency === localFrequency}
-              style={[styles.centeredContainer]}
-            >
-              <Text
-                style={[
-                  styles.buttonText,
-                  frequency !== localFrequency
-                    ? styles.saveText
-                    : styles.saveTextDisabled,
-                ]}
+      <View
+        style={[checkinStyles.button, { backgroundColor: containerBackgroundColor }]}
+      >
+        <View style={checkinStyles.mainComponent}>
+          <View style={checkinStyles.mainComponentTopRow}>
+            <View style={[checkinStyles.buttonImageContainer]}>
+              <CustomImage style={[checkinStyles.buttonImage]} source={source} />
+            </View>
+            <View style={checkinStyles.buttonTextContainer}>
+              <View style={checkinStyles.titleWrapper}>
+                <TouchableOpacity
+                  onPress={onLink}
+                >
+                  <View>
+                    <Text style={[checkinStyles.stepText, checkinStyles.buttonText, styles.title, textStyle]}>
+                      {title}
+                    </Text>
+                  </View>
+                </TouchableOpacity>
+                <View>
+                  <Switch
+                    style={styles.centeredContainer}
+                    onValueChange={() => {
+                      onToggle({
+                        step,
+                        checkin: { frequency: localFrequency, message },
+                      })
+                    }}
+                    value={!!id}
+                  />
+                </View>
+              </View>
+              <View
+                style={[checkinStyles.buttonText, textStyle, checkinStyles.subtitleWrapper]}
               >
-                Save
-              </Text>
-            </TouchableOpacity>
+                <View style={{ flex: 1 }}>
+                  <Text
+                    style={[
+                      styles.date,
+                      frequency !== localFrequency ? styles.changedDate : {},
+                      textStyle,
+                    ]}
+                  >
+                    {!!id && operateCheckinDate(localFrequency, lastCheckin)}
+                  </Text>
+                </View>
+                <View style={styles.pickerContainer}>
+                  { Platform.OS === 'ios' ? this.renderiOSPicker() : this.renderAndroidPicker() }
+                </View>
+                <TouchableOpacity
+                  onPress={() =>
+                    onPress({ step, frequency: localFrequency, message })
+                  }
+                  disabled={frequency === localFrequency}
+                  style={[styles.centeredContainer]}
+                >
+                  <Text
+                    style={[
+                      styles.buttonText,
+                      frequency !== localFrequency
+                        ? styles.saveText
+                        : styles.saveTextDisabled,
+                    ]}
+                  >
+                    Save
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </View>
+          <View style={[checkinStyles.container, checkinStyles.mainComponentBottomRow]}>
+            <Text style={[checkinStyles.subtitle, checkinStyles.buttonText, textStyle]}>
+              {text}
+            </Text>
           </View>
         </View>
       </View>

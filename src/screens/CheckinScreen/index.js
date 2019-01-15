@@ -7,18 +7,18 @@ import DefaultIndicator from '../../components/DefaultIndicator';
 
 class CheckinScreen extends React.PureComponent {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       didFinishInitialAnimation: false,
-    };
+    }
   }
 
   componentDidMount() {
     InteractionManager.runAfterInteractions(() => {
       this.setState({
         didFinishInitialAnimation: true,
-      });
-    });
+      })
+    })
   }
 
   render() {

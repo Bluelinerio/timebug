@@ -91,12 +91,12 @@ export default StyleSheet.create({
     flexDirection: 'row',
   },
   pickerContainer: {
-    flex: 2,
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },
   picker: {
-    width: 150,
+    width: 130,
     height: 30,
   },
   button: {
