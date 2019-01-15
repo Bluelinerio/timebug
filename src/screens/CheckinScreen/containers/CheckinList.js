@@ -1,20 +1,19 @@
 //@flow
-import { connect } from 'react-redux'
-
-import { linkNavigation } from '../../../redux/actions/nav.actions'
+import { connect }             from 'react-redux'
+import { linkNavigation }      from '../../../redux/actions/nav.actions'
 import {
   changeCheckin,
   toggleCheckin,
-} from '../../../redux/actions/checkin.actions'
+}                              from '../../../redux/actions/checkin.actions'
 import type {
   CheckinChangePayload,
   ToggleCheckinPayload,
-} from '../../../redux/actions/checkin.actions'
+}                              from '../../../redux/actions/checkin.actions'
 import { cancelNotifications } from '../../../redux/actions/notifications.actions'
-import selectors from '../../../redux/selectors'
+import selectors               from '../../../redux/selectors'
 import CheckinListComponent, {
   CheckinListComponentProps,
-} from '../components/CheckinListComponent'
+}                              from '../components/CheckinListComponent'
 
 type CheckinListDispatchProps = {
   updateCheckin: CheckinChangePayload => any,
@@ -53,7 +52,7 @@ const mapDispatchToProps = (dispatch: () => any): CheckinListDispatchProps => ({
 
 const mergeProps = (
   stateProps: CheckingListStateProps,
-  dispatchProps: CheckinListDispatchProps,
+  dispatchProps: CheckinListDispatchProps
 ): CheckinListComponentProps => {
   const { checkins, stepColors, user, steps } = stateProps
   const {
@@ -82,61 +81,26 @@ const mergeProps = (
     return () => null
   }
 
-  const checkIfHasNestedObjects = (checkin, step) => {
-    const { nextCheckin, id } = checkin
-
-    const nestedObjects = Object.keys(checkin).reduce((nestedObjects, key) => {
-      const prop = checkin[key]
-
-      if ((prop instanceof Object) && prop.title) {
-        const realCheckin = {
-          ...prop,
-          id,
-          nextCheckin,
-        }
-
-        return [
-          ...nestedObjects,
-          {
-            ...realCheckin,
-            onLink: handleCheckinAction(realCheckin),
-            onToggle: toggleNotification,
-            onPress: updateCheckin,
-            step: steps[step],
-          },
-        ]
-      } else {
-        return [...nestedObjects]
-      }
-    }, [] )
-
-    return nestedObjects
-  }
-
   const actualCheckins = Object.keys(checkins).reduce(
     (unlockedCheckins, key) => {
-      const checkin = checkins[key]
-      const nestedObjects = checkIfHasNestedObjects(checkin, key,)
-      const realCheckin = {
-        ...checkin,
-        onLink: handleCheckinAction(checkin),
-        onToggle: toggleNotification,
-        onPress: updateCheckin,
-        step: steps[key],
-      }
-
-      if (checkin.title) {
-        return [
-          ...unlockedCheckins,
-          ...nestedObjects,
-          realCheckin,
-        ]
-      } else {
-        return [
-          ...unlockedCheckins,
-          ...nestedObjects,
-        ]
-      }
+      const checkinsForStep = checkins[key]
+      const checks = Object.keys(checkinsForStep).reduce(
+        (allCheckinsForStep, k) => {
+          const checkin = checkinsForStep[k]
+          return [
+            ...allCheckinsForStep,
+            {
+              ...checkin,
+              onLink: handleCheckinAction(checkin),
+              onToggle: toggleNotification,
+              onPress: updateCheckin,
+              step: steps[key],
+            },
+          ]
+        },
+        []
+      )
+      return [...unlockedCheckins, ...checks]
     },
     []
   )

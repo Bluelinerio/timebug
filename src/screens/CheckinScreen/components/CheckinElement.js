@@ -1,37 +1,49 @@
 //@flow
-import React from 'react'
-import { View, Text, Picker, TouchableOpacity, Switch, Platform } from 'react-native'
+import React         from 'react'
+import {
+  View,
+  Text,
+  Picker,
+  TouchableOpacity,
+  Switch,
+  Platform,
+}                    from 'react-native'
 import ModalSelector from 'react-native-modal-selector'
-import moment from 'moment'
-
+import moment        from 'moment'
 import {
   frequencies,
   DAILY,
   WEEKLY,
   BIWEEKLY,
   MONTHLY,
-} from '../../../services/checkins'
+}                    from '../../../services/checkins'
 import type {
   CheckinChangePayload,
   ToggleCheckinPayload,
-} from '../../../redux/actions/checkin.actions'
-import styles from '../styles'
+}                    from '../../../redux/actions/checkin.actions'
+import styles        from '../styles'
 import checkinStyles from '../styles/CheckinStyles'
-import CustomImage from '../../../components/CustomImage'
-import { getColorForStepAtIndex, getTextColorForStepAtIndex } from '../../MyJourneyScreen/utils/colorsForStep'
+import CustomImage   from '../../../components/CustomImage'
+import {
+  getColorForStepAtIndex,
+  getTextColorForStepAtIndex,
+}                    from '../../MyJourneyScreen/utils/colorsForStep'
 
 export type CheckinElementProps = {
-  text: string,
-  title: string,
-  lastCheckin: string,
-  nextCheckin: string,
-  frequency: DAILY | WEEKLY | MONTHLY | BIWEEKLY,
-  step: string,
-  message: string,
-  onPress: CheckinChangePayload => any,
-  onLink: ({ link: string }) => any,
-  onToggle: ToggleCheckinPayload => any,
-  id: string | null,
+  checkin: {
+    toolKey: string,
+    text: string,
+    title: string,
+    lastCheckin: string,
+    nextCheckin: string,
+    frequency: DAILY | WEEKLY | MONTHLY | BIWEEKLY,
+    step: string,
+    message: string,
+    onPress: CheckinChangePayload => any,
+    onLink: ({ link: string }) => any,
+    onToggle: ToggleCheckinPayload => any,
+    id: string | null,
+  },
   stepColors: any,
   user: any,
 }
@@ -86,11 +98,11 @@ class CheckinElement extends React.PureComponent<CheckinElementProps> {
   constructor(props) {
     super(props)
     this.state = {
-      frequency: props.frequency,
+      frequency: props.checkin.frequency,
     }
   }
 
-  onChangeValue = (value) => {
+  onChangeValue = value => {
     const frequency = value.key || value
 
     this.setState({ frequency })
@@ -99,22 +111,26 @@ class CheckinElement extends React.PureComponent<CheckinElementProps> {
   renderiOSPicker = () => {
     const { frequency: localFrequency } = this.state
 
-    const data = frequencies && Object.keys(frequencies).map(key => {
-      const frequency = frequencies[key]
-      return {
-        label: frequency,
-        key: frequency,
-      }
-    })
+    const data =
+      frequencies &&
+      Object.keys(frequencies).map(key => {
+        const frequency = frequencies[key]
+        return {
+          label: frequency,
+          key: frequency,
+        }
+      })
 
-    return data && (
-      <View style={[styles.picker]}>
-        <ModalSelector
-          initValue={localFrequency}
-          data={data}
-          onChange={this.onChangeValue}
-        />
-      </View>
+    return (
+      data && (
+        <View style={[styles.picker]}>
+          <ModalSelector
+            initValue={localFrequency}
+            data={data}
+            onChange={this.onChangeValue}
+          />
+        </View>
+      )
     )
   }
 
@@ -129,9 +145,7 @@ class CheckinElement extends React.PureComponent<CheckinElementProps> {
       >
         {Object.keys(frequencies).map(key => {
           const frequency = frequencies[key]
-          return (
-            <Picker.Item key={key} label={frequency} value={frequency} />
-          )
+          return <Picker.Item key={key} label={frequency} value={frequency} />
         })}
       </Picker>
     )
@@ -148,6 +162,7 @@ class CheckinElement extends React.PureComponent<CheckinElementProps> {
   }
 
   render() {
+    const { checkin } = this.props
     const {
       text,
       title,
@@ -157,51 +172,69 @@ class CheckinElement extends React.PureComponent<CheckinElementProps> {
       onLink,
       step,
       message,
+      toolKey,
+      action,
       onToggle,
       id,
-    } = this.props
+    } = checkin
     const { frequency: localFrequency } = this.state
     const { number, icon } = step
-    const containerBackgroundColor = this.backgroundColorAtIndex( number - 1 )
+    const containerBackgroundColor = this.backgroundColorAtIndex(number - 1)
     const source = icon && icon.uri
-    const textStyle = this.textColorAtIndex( number - 1 )
+    const textStyle = this.textColorAtIndex(number - 1)
 
     return (
       <View
-        style={[checkinStyles.button, { backgroundColor: containerBackgroundColor }]}
+        style={[
+          checkinStyles.button,
+          { backgroundColor: containerBackgroundColor },
+        ]}
       >
         <View style={checkinStyles.mainComponent}>
           <View style={checkinStyles.mainComponentTopRow}>
             <View style={[checkinStyles.buttonImageContainer]}>
-              <CustomImage style={[checkinStyles.buttonImage]} source={source} />
+              <CustomImage
+                style={[checkinStyles.buttonImage]}
+                source={source}
+              />
             </View>
             <View style={checkinStyles.buttonTextContainer}>
               <View style={checkinStyles.titleWrapper}>
                 <TouchableOpacity
                   onPress={onLink}
+                  style={styles.pressableTitleWrapper}
                 >
                   <View>
-                    <Text style={[checkinStyles.stepText, checkinStyles.buttonText, styles.title, textStyle]}>
+                    <Text
+                      style={[
+                        checkinStyles.stepText,
+                        checkinStyles.buttonText,
+                        styles.title,
+                        textStyle,
+                      ]}
+                    >
                       {title}
                     </Text>
                   </View>
                 </TouchableOpacity>
-                <View>
+                <View style={styles.switchContainer}>
                   <Switch
                     style={styles.centeredContainer}
                     onValueChange={() => {
                       onToggle({
-                        step,
-                        checkin: { frequency: localFrequency, message },
+                        step: number,
+                        checkin: {
+                          message,
+                          toolKey,
+                          frequency: localFrequency,
+                        },
                       })
                     }}
                     value={!!id}
                   />
                 </View>
               </View>
-              <View
-                style={[checkinStyles.buttonText, textStyle, checkinStyles.subtitleWrapper]}
-              >
+              <View style={[checkinStyles.subtitleWrapper]}>
                 <View style={{ flex: 1 }}>
                   <Text
                     style={[
@@ -214,11 +247,19 @@ class CheckinElement extends React.PureComponent<CheckinElementProps> {
                   </Text>
                 </View>
                 <View style={styles.pickerContainer}>
-                  { Platform.OS === 'ios' ? this.renderiOSPicker() : this.renderAndroidPicker() }
+                  {Platform.OS === 'ios'
+                    ? this.renderiOSPicker()
+                    : this.renderAndroidPicker()}
                 </View>
                 <TouchableOpacity
                   onPress={() =>
-                    onPress({ step, frequency: localFrequency, message })
+                    onPress({
+                      message,
+                      action,
+                      toolKey,
+                      step: number,
+                      frequency: localFrequency,
+                    })
                   }
                   disabled={frequency === localFrequency}
                   style={[styles.centeredContainer]}
@@ -237,8 +278,19 @@ class CheckinElement extends React.PureComponent<CheckinElementProps> {
               </View>
             </View>
           </View>
-          <View style={[checkinStyles.container, checkinStyles.mainComponentBottomRow]}>
-            <Text style={[checkinStyles.subtitle, checkinStyles.buttonText, textStyle]}>
+          <View
+            style={[
+              checkinStyles.container,
+              checkinStyles.mainComponentBottomRow,
+            ]}
+          >
+            <Text
+              style={[
+                checkinStyles.subtitle,
+                checkinStyles.buttonText,
+                textStyle,
+              ]}
+            >
               {text}
             </Text>
           </View>

@@ -72,7 +72,7 @@ export default StyleSheet.create({
     }),
   },
   buttonTextContainer: {
-    flex: 2,
+    flex: 3,
     paddingHorizontal: 5,
     alignItems: 'flex-start',
     justifyContent: 'center',
@@ -86,8 +86,11 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
   buttonImage: {
-    height: 60,
-    width: 60,
+    height: 40,
+    width: 40,
+    maxHeight: 80,
+    maxWidth: 80,
+    alignSelf: 'center',
     aspectRatio: 1 / 1,
   },
   buttonText: {

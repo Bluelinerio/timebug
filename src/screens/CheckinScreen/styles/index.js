@@ -1,12 +1,12 @@
-import { StyleSheet, Platform } from 'react-native';
+import { StyleSheet, Platform }    from 'react-native'
 import {
   azure,
   gray50,
   gray400,
   white2,
   gray900,
-} from '../../../constants/colors';
-import { systemWeights, iOSUIKit } from 'react-native-typography';
+}                                  from '../../../constants/colors'
+import { systemWeights, iOSUIKit } from 'react-native-typography'
 
 export default StyleSheet.create({
   container: {
@@ -50,12 +50,18 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  pressableTitleWrapper: {
+    flex: 2,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  switchContainer: {
+    flex: 1,
+  },
   title: {
-    ...iOSUIKit.title3EmphasizedObject,
+    ...iOSUIKit.subheadEmphasizedObject,
     ...systemWeights.bold,
-    fontSize: 18,
     color: white2,
-    textDecorationLine: 'underline',
     fontFamily: 'Metropolis',
   },
   centeredContainer: {
@@ -96,8 +102,8 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
   picker: {
-    width: 130,
-    height: 30,
+    width: 100,
+    height: 40,
   },
   button: {
     borderRadius: 10,
@@ -124,4 +130,4 @@ export default StyleSheet.create({
   noCheckinText: {
     textAlign: 'center',
   },
-});
+})

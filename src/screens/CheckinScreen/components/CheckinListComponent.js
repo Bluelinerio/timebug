@@ -1,15 +1,15 @@
 //@flow
-import React from 'react'
-import { Text, View } from 'react-native'
+import React                                   from 'react'
+import { Text, View }                          from 'react-native'
 import CheckinElement, { CheckinElementProps } from './CheckinElement'
-import styles from '../styles'
+import styles                                  from '../styles'
 
 type CheckinListComponentProps = {
   checkins: Array<CheckinElementProps>,
   cancelAllNotifications: null | (() => any),
   stepColors: any,
   user: any,
-};
+}
 
 class CheckinListComponent extends React.Component<CheckinListComponentProps> {
   shouldComponentUpdate(nextProps) {
@@ -28,7 +28,7 @@ class CheckinListComponent extends React.Component<CheckinListComponentProps> {
             return (
               <CheckinElement
                 key={key}
-                {...checkin}
+                checkin={checkin}
                 stepColors={stepColors}
                 user={user}
               />
