@@ -91,26 +91,42 @@ export const Emotion = t.enums.of(
 
 export const Strengths = t.enums.of(
   [
-    'Honest',
-    'Brave',
-    'Loyal',
-    'Disciplined',
-    'Compassionate',
-    'Open-Hearted',
-    'Funny',
+    'Honesty',
+    'Bravery',
+    'Loyalty',
+    'Discipline',
+    'Compassion',
+    'Open-Heart',
+    'Humor',
+    'Courage',
+    'Creativity',
+    'Judgement',
+    'Perspective',
+    'Curiosity',
+    'Leadership',
+    'Gratitude',
+    'Spirituality',
   ],
   'Strengths'
 );
 
 export const Weaknesses = t.enums.of(
   [
-    'Lazy',
-    'Dishonest',
-    'Self-centered',
-    'Arrogant',
-    'Impatient',
+    'Laziness',
+    'Dishonesty',
+    'Self-centeredness',
+    'Arrogance',
+    'Impatience',
     'Disorganized',
-    'Closed mindeded',
+    'Closed mindedness',
+    'Self Deprecation',
+    'Envy',
+    'Gluttony',
+    'Absent-mindedness',
+    'Cruelty',
+    'Anxiety',
+    'Paranoia',
+
   ],
   'Weaknesses'
 );
