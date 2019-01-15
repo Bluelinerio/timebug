@@ -62,7 +62,7 @@ const Select = ({
 
   return (
     <React.Fragment>
-      { Platform.OS === 'ios' ? renderiOSPicker() : renderAndroidPicker()}
+      { Platform.OS === 'ios' ? renderiOSPicker() : renderAndroidPicker() }
     </React.Fragment>
   )
 }
