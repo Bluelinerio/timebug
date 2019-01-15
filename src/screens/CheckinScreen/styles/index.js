@@ -151,4 +151,18 @@ export default StyleSheet.create({
   noCheckinText: {
     textAlign: 'center',
   },
+  notice: {
+    ...iOSUIKit.caption2EmphasizedObject,
+    fontSize: 14,
+    textAlign: 'center',
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
+  },
+  screenLockedContainer: {
+    flexDirection: 'column',
+    marginTop: 26,
+    paddingHorizontal: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 })

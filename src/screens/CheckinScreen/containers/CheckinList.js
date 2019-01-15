@@ -34,12 +34,14 @@ const mapStateToProps = (state: any): CheckingListStateProps => {
   const stepColors = selectors.statefullStepColors(state)
   const user = selectors.getUser(state)
   const steps = selectors.steps(state)
+  const isLoggedIn = selectors.isLoggedIn(state)
 
   return {
     checkins,
     stepColors,
     user,
     steps,
+    isLoggedIn,
   }
 }
 
@@ -54,7 +56,7 @@ const mergeProps = (
   stateProps: CheckingListStateProps,
   dispatchProps: CheckinListDispatchProps
 ): CheckinListComponentProps => {
-  const { checkins, stepColors, user, steps } = stateProps
+  const { checkins, stepColors, user, steps, isLoggedIn } = stateProps
   const {
     updateCheckin,
     cancelAllNotifications,
@@ -107,6 +109,7 @@ const mergeProps = (
 
   return {
     checkins: actualCheckins,
+    isLoggedIn,
     cancelAllNotifications: __DEV__ ? cancelAllNotifications : null,
     stepColors,
     user,

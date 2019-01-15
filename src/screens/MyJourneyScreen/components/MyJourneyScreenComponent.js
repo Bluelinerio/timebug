@@ -1,31 +1,17 @@
 //@flow
-import React             from 'react'
-import { ScrollView }    from 'react-native'
-import { SafeAreaView }  from 'react-navigation'
-import User              from './../../../containers/User'
-import styles            from '../styles'
-import Banner            from '../../../components/MinifiedBanner'
-import ToolScreenContent from '../containers/ToolScreenContentContainer'
+import React                 from 'react'
+import { ScrollView }        from 'react-native'
+import { SafeAreaView }      from 'react-navigation'
+import User                  from '2020_containers/User'
+import Banner                from '2020_components/MinifiedBanner'
+import styles                from '../styles'
+import ToolScreenContent     from '../containers/ToolScreenContentContainer'
+import ScreenLockedComponent from './ScreenLockedComponent'
 
 const shouldShowUserProgressWithUser = (user: any): boolean =>
   user.forms.length > 0
 
-type MyJourneyProps = {
-  component: string,
-  reward: string,
-}
-
-class MyJourneyScreenComponent extends React.Component<MyJourneyProps> {
-  shouldComponentUpdate(nextProps) {
-    if (
-      nextProps.component !== this.props.component ||
-      nextProps.reward !== this.props.reward
-    ) {
-      this._scrollView.scrollToEnd({ animated: true })
-      return true
-    }
-    return false
-  }
+class MyJourneyScreenComponent extends React.PureComponent {
   render() {
     return (
       <SafeAreaView
@@ -39,14 +25,22 @@ class MyJourneyScreenComponent extends React.Component<MyJourneyProps> {
           <Banner />
           <User>
             {({ userState, isLoggedIn }) =>
-              isLoggedIn && (
+              isLoggedIn ? (
                 <React.Fragment>
-                  {shouldShowUserProgressWithUser(userState) && (
+                  {shouldShowUserProgressWithUser(userState) ? (
                     <React.Fragment>
                       <ToolScreenContent />
                     </React.Fragment>
+                  ) : (
+                    <ScreenLockedComponent
+                      text={'You need to complete some steps first!'}
+                    />
                   )}
                 </React.Fragment>
+              ) : (
+                <ScreenLockedComponent
+                  text={'You need to log in to see this content!'}
+                />
               )
             }
           </User>

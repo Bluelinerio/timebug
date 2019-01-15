@@ -56,6 +56,9 @@ export default StyleSheet.create({
   background: {
     backgroundColor: paleBlue,
   },
+  padded: {
+    paddingTop: 16,
+  },
   tableContainer: {
     flexDirection: 'column',
     borderRadius: 6,
@@ -101,5 +104,25 @@ export default StyleSheet.create({
   },
   checkBox: {
     alignSelf: 'center',
+  },
+  centered: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
+  },
+  notice: {
+    ...iOSUIKit.caption2EmphasizedObject,
+    fontSize: 14,
+    textAlign: 'center',
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
+  },
+  screenLockedContainer: {
+    flexDirection: 'column',
+    marginTop: 40,
+    paddingHorizontal: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 })

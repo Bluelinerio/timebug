@@ -3,27 +3,19 @@ import { View, Text } from 'react-native'
 import styles         from '../styles'
 
 type ScreenLockedComponentProps = {
-  onPress: (step: any) => any,
-  step: any,
+  text?: string,
 }
 
 class ScreenLockedComponent extends React.PureComponent<
   ScreenLockedComponentProps
 > {
-  _onPress = () => {
-    const { step, onPress } = this.props
-    onPress(step)
-  }
-
   render() {
+    const { text } = this.props
     return (
       <View style={[styles.container, styles.screenLockedContainer]}>
-        <Text style={[styles.lockedTitle, styles.text]}>
-          This tool is currently disabled
+        <Text style={[styles.lockedTitle, styles.text, styles.notice]}>
+          {text}
         </Text>
-        {/* <TouchableOpacity style={styles.button} onPress={this._onPress}>
-          <Text style={[styles.text, styles.buttonText]}>Go to step 5</Text>
-        </TouchableOpacity> */}
       </View>
     )
   }
