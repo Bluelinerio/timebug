@@ -200,7 +200,7 @@ const form1 = {
       key: 'form_1_emotions',
       content: {
         text:
-          'Looking back on your life as a 90 years old, what were some of the emotions you felt?',
+          'Looking back on your life as a 90 year old, what were some of the emotions you felt?',
         smallKey: 'Emotions',
         listText: 'Emotions',
       },
