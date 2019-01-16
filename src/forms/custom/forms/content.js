@@ -14,7 +14,7 @@ export const Emotions = [
   /*positive*/
 
   'Joy',
-  'Gratefulness',
+  'Gratitude',
   'Hope',
   'Love',
   'Peace',
