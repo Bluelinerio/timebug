@@ -4,6 +4,7 @@ import {
   UPDATE_CHECKIN,
   CANCEL_ALL_NOTIFICATIONS,
   DELETE_CHECKIN,
+  LOGOUT,
 } from '../actionTypes'
 import {
   CheckinActionPayload,
@@ -98,6 +99,8 @@ const checkinReducer = (
   case DELETE_CHECKIN:
     return handleDelete(state, action.payload)
   case CANCEL_ALL_NOTIFICATIONS:
+    return initialState
+  case LOGOUT:
     return initialState
   default:
     return state
