@@ -13,7 +13,7 @@ import {
   widthPercentage,
   heightPercentage,
 }                               from '../../../utils/viewportCalculation'
-import { iOSUIKit }             from 'react-native-typography'
+import { iOSUIKit, systemWeights }             from 'react-native-typography'
 
 export const TEMPORARY_COLOR_FOR_BUTTONS = azure
 
@@ -88,6 +88,14 @@ export const connectedComponentStyles = StyleSheet.create({
     minHeight: 25,
     maxHeight: 30,
     flex: 1,
+  },
+  modalPicker: {
+    width: '100%',
+  },
+  modalText: {
+    ...iOSUIKit.footnoteObject,
+    ...systemWeights.light,
+    fontFamily: 'Metropolis',
   },
   pickerItemStyle: {
     color: gray900,
