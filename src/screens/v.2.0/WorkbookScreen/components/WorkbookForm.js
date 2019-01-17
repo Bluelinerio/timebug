@@ -1,11 +1,18 @@
 // @flow
 import React                               from 'react'
-import { View, Text, ScrollView, Linking } from 'react-native'
+import {
+  View,
+  Text,
+  ScrollView,
+  Linking,
+  Image,
+}                                          from 'react-native'
 import Form                                from '../containers/FormWrapperContainer'
 import styles                              from '../styles'
 import type { Step }                       from '../../../../services/cms'
 import FormFinishedComponent               from '../containers/FormFinishedContainer'
 import type { SubmitAction }               from '../../../../redux/actions/formData.actions.js'
+import { headerBackgrounds }               from '../../../../resources/images'
 
 type Props = {
   stepNumber: string,
@@ -16,6 +23,7 @@ type Props = {
   phase: string,
   step: Step,
   onSelectStep: Step => any,
+  backgroundColor: any,
 }
 
 type State = {
@@ -46,7 +54,7 @@ class WorkbookForm extends React.PureComponent<Props, State> {
   }
 
   render() {
-    const { model, step, stepNumber, data, phase, onSelectStep } = this.props
+    const { model, step, stepNumber, data, phase, onSelectStep, backgroundColor } = this.props
     const { formFinished } = this.state
     return model ? (
       <ScrollView
@@ -75,6 +83,9 @@ class WorkbookForm extends React.PureComponent<Props, State> {
             onSelectStep={onSelectStep}
           />
         )}
+        <View style={[styles.backgroundImage]}>
+          <Image source={headerBackgrounds[step.number]} style={{ width: '100%', height: 150, tintColor: backgroundColor }}/>
+        </View>
       </ScrollView>
     ) : (
       <View style={[styles.scrollView, styles.snippetParagraph]}>

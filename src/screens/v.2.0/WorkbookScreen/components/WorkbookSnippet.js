@@ -1,10 +1,11 @@
 import React                              from 'react'
-import { View, Text, ScrollView }         from 'react-native'
+import { View, Text, ScrollView, Image }  from 'react-native'
 import { compose, mapProps }              from 'recompose'
 import Button                             from '../../../../components/Button'
 import type { Step }                      from '../../../../services/cms'
 import { SectionValues } from '../context/SectionContext'
 import styles                             from '../styles'
+import { headerBackgrounds }              from '../../../../resources/images'
 
 export type Props = {
   step: Step,
@@ -12,6 +13,7 @@ export type Props = {
   textStyle?: any,
   color: string,
   changeSection: string => any,
+  backgroundColor: any,
 }
 
 type SwitchButtonProps = {
@@ -45,7 +47,7 @@ const SwitchButton = compose(mapProps(merge))(
 
 class WorkbookSnippet extends React.PureComponent<Props> {
   render() {
-    const { step, color, textStyle = {}, changeSection } = this.props
+    const { step, color, textStyle = {}, changeSection, backgroundColor } = this.props
     return (
       <ScrollView
         style={styles.scrollView}
@@ -63,6 +65,9 @@ class WorkbookSnippet extends React.PureComponent<Props> {
             </Text>
           </View>
           <SwitchButton text={'Next'} background={color} changeSection={changeSection} />
+          <View style={[styles.backgroundImage]}>
+            <Image source={headerBackgrounds[step.number]} style={{ width: '100%', height: 150, tintColor: backgroundColor }}/>
+          </View>
         </View>
       </ScrollView>
     )
