@@ -4,7 +4,7 @@ import { connect }           from 'react-redux'
 import selectors             from '../../../../redux/selectors'
 import FormFinishedComponent from '../components/FormFinishedComponent'
 import FormFinishedContent   from '../../../../static/workbookDone/index'
-import { mapPhaseToColor }   from '../utils/colorsForStep'
+import { mapPhaseToTextAndButtonColor }   from '../utils/colorsForStep'
 import type { Step }         from '../../../../services/cms'
 
 const mapStateToProps = (state: any): StateProps => {
@@ -30,7 +30,7 @@ const merge = (props: Props) => {
   const { step, steps, phase, stepNumber, onSelectStep } = props
 
   const totalSteps = Object.keys(steps).length
-  const color = mapPhaseToColor(phase)
+  const color = mapPhaseToTextAndButtonColor(phase)
 
   const {
     text = `Congratulations on completing Step ${step.number}: ${step.title}`,
