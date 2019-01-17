@@ -19,7 +19,7 @@ class ScreenLockedComponent extends React.PureComponent<
     return (
       <View style={[styles.container, styles.screenLockedContainer]}>
         <Text style={[styles.lockedTitle, styles.text]}>
-          This tool is currently disabled
+          This feature is coming soon! Check back for updates.
         </Text>
         {/* <TouchableOpacity style={styles.button} onPress={this._onPress}>
           <Text style={[styles.text, styles.buttonText]}>Go to step 5</Text>
