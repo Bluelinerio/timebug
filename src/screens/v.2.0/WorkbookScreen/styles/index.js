@@ -272,8 +272,6 @@ export default StyleSheet.create({
   },
   workbookContent: {
     paddingHorizontal: '2.5%',
-    paddingVertical: '1%',
-    paddingTop: '5%',
     alignItems: 'center',
     justifyContent: 'center',
   },
