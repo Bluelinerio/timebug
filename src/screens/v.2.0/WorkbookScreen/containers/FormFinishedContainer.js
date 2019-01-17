@@ -37,7 +37,7 @@ const merge = (props: Props) => {
     title = 'Congratulations!',
   } = FormFinishedContent[stepNumber] || {}
 
-  const hasNext = stepNumber + 1 <= totalSteps
+  const hasNext = step.number + 1 <= totalSteps
   const nextStep = hasNext ? steps[step.number + 1] : null
   const nextStepNumber = hasNext ? nextStep.number : 1
 

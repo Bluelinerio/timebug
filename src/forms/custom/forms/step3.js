@@ -4,7 +4,7 @@ import { DISABLE } from './constants'
 
 const form3 = {
   type: types.form,
-  answerType: answerTypes.single,
+  answer: answerTypes.single,
   fields: {
     0: {
       type: types.list,
