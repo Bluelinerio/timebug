@@ -32,6 +32,9 @@ const fontColor = white2
 export const buttonWidth = widthPercentage(15)
 export const buttonHeight = heightPercentage(5.55)
 
+export const finishButtonWidth = widthPercentage(20)
+export const finishButtonHeight = heightPercentage(6.66)
+
 export const backButtonColor = gray600
 
 export const svgStyles = {
@@ -145,7 +148,6 @@ export default StyleSheet.create({
   backgroundImage: {
     flex: 1,
     flexDirection: 'row',
-    // backgroundColor: PHASE_1_BAR,
   },
   link: {
     color: blue900,
@@ -397,20 +399,21 @@ export default StyleSheet.create({
   doneButtonContainer: {
     alignItems: 'center',
     justifyContent: 'center',
+    padding: 10,
   },
   doneButton: {
     borderRadius: 6,
     paddingHorizontal: 10,
     paddingVertical: 8,
-    height: buttonHeight,
-    width: buttonWidth,
+    height: finishButtonHeight,
+    width: finishButtonWidth,
     alignItems: 'center',
     justifyContent: 'center',
   },
   doneButtontext: {
     ...iOSUIKit.caption2Object,
+    fontSize: 13,
     textAlign: 'center',
-    fontFamily: 'Metropolis',
     color: fontColor,
   },
   marginScrollViewElement: {
