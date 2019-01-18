@@ -17,8 +17,6 @@ type Props = {
   onBackPress: () => any,
   backButton: boolean,
   title: string,
-  textColor: string,
-  backgroundColor: string,
   titleColor: string,
   steps: Array<Step>,
   headerBackgroundColor: string,
@@ -80,8 +78,6 @@ class PhaseHeader extends React.PureComponent<Props> {
   render() {
     const {
       title,
-      textColor,
-      backgroundColor,
       steps,
       titleColor,
       onBackPress = null,
@@ -90,7 +86,10 @@ class PhaseHeader extends React.PureComponent<Props> {
     } = this.props
     return (
       <View style={[styles.header, { backgroundColor: headerBackgroundColor }]}>
-        <StatusBar barStyle="dark-content" backgroundColor={bannerColor} />
+        <StatusBar
+          barStyle="dark-content"
+          backgroundColor={headerBackgroundColor}
+        />
         <View style={styles.headerUpperRow}>
           <View style={[styles.headerUpperRowBlock, styles.arrowContainer]}>
             {backButton &&
@@ -117,8 +116,8 @@ class PhaseHeader extends React.PureComponent<Props> {
               <PhaseHeaderButton
                 key={step.number}
                 step={step}
-                backgroundColor={backgroundColor}
-                textColor={textColor}
+                backgroundColor={step._buttonBackgroundColor}
+                textColor={step._textColor}
                 onPress={this._onPressStep(step)}
               />
             ))}
