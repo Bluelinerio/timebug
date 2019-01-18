@@ -1,37 +1,15 @@
 // @flow
-import React                    from 'react'
-import { connect }              from 'react-redux'
-import InteractionManager       from '../../../utils/InteractionManager'
-import DefaultIndicator         from '../../../components/DefaultIndicator'
+import React from 'react'
+import InteractionManager from '2020_utils/InteractionManager'
+import DefaultIndicator from '2020_components/DefaultIndicator'
+import User from '2020_containers/User'
 import MyJourneyScreenComponent from '../components/MyJourneyScreenComponent'
-import { getCurrentRouteState } from '../../../utils/currentRouteState'
 
 type State = {
   didFinishInitialAnimation: boolean,
 }
 
-type Props = {
-  component: string,
-  reward: string,
-}
-
-const mapStateToProps = (state: any) => {
-  const nav = state.nav
-  //Due to the new stack nav
-  const params = getCurrentRouteState(nav).params
-  let component
-  let reward
-  if (params) {
-    component = params.component
-    reward = params && params.params ? params.params.reward : null
-  }
-  return {
-    component,
-    reward,
-  }
-}
-
-class MyJourneyScreenContainer extends React.Component<Props, State> {
+class MyJourneyScreenContainer extends React.Component<any, State> {
   constructor(props) {
     super(props)
     this.state = {
@@ -49,13 +27,17 @@ class MyJourneyScreenContainer extends React.Component<Props, State> {
 
   render() {
     const { didFinishInitialAnimation } = this.state
-    const { component, reward } = this.props
     return didFinishInitialAnimation ? (
-      <MyJourneyScreenComponent component={component} reward={reward} />
+      <User
+        renderWithUser={() => <MyJourneyScreenComponent />}
+        renderWithAnonymous={() => <MyJourneyScreenComponent />}
+        renderWithAuthenticating={() => <DefaultIndicator size="large" />}
+        renderWithUndetermined={() => <DefaultIndicator size="large" />}
+      />
     ) : (
       <DefaultIndicator size="large" />
     )
   }
 }
 
-export default connect(mapStateToProps)(MyJourneyScreenContainer)
+export default MyJourneyScreenContainer

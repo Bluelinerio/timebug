@@ -210,6 +210,7 @@ class CheckinElement extends React.PureComponent<CheckinElementProps> {
               <CustomImage
                 style={[checkinStyles.buttonImage]}
                 source={source}
+                showWebviewLoader
               />
             </View>
             <View style={checkinStyles.buttonTextContainer}>

@@ -1,11 +1,11 @@
 //@flow
 import React                                   from 'react'
-import { Text, View }                          from 'react-native'
 import CheckinElement, { CheckinElementProps } from './CheckinElement'
-import styles                                  from '../styles'
+import ScreenLockedComponent                   from './ScreenLockedComponent'
 
 type CheckinListComponentProps = {
   checkins: Array<CheckinElementProps>,
+  isLoggedIn: boolean,
   cancelAllNotifications: null | (() => any),
   stepColors: any,
   user: any,
@@ -19,27 +19,29 @@ class CheckinListComponent extends React.Component<CheckinListComponentProps> {
   }
 
   render() {
-    const { checkins, stepColors, user } = this.props
+    const { checkins, stepColors, user, isLoggedIn } = this.props
     return (
       <React.Fragment>
-        {checkins ? (
-          Object.keys(checkins).map(key => {
-            const checkin = checkins[key]
-            return (
-              <CheckinElement
-                key={key}
-                checkin={checkin}
-                stepColors={stepColors}
-                user={user}
-              />
-            )
-          })
+        {isLoggedIn ? (
+          checkins && checkins.length > 0 ? (
+            Object.keys(checkins).map(key => {
+              const checkin = checkins[key]
+              return (
+                <CheckinElement
+                  key={key}
+                  checkin={checkin}
+                  stepColors={stepColors}
+                  user={user}
+                />
+              )
+            })
+          ) : (
+            <ScreenLockedComponent text={'No checkins have been loaded yet!'} />
+          )
         ) : (
-          <View style={styles.noCheckinContainer}>
-            <Text style={styles.noCheckinText}>
-              No checkins have been loaded yet
-            </Text>
-          </View>
+          <ScreenLockedComponent
+            text={'You need to log In to see this content!'}
+          />
         )}
       </React.Fragment>
     )
