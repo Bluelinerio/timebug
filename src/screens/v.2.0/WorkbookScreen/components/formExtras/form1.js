@@ -19,7 +19,7 @@ class FormComponent extends React.PureComponent<Props> {
     const { toggleForm, textAndButtonColor } = this.props
     return (
       <View style={styles.container}>
-        <Text style={[styles.preFormHeader, { textAndButtonColor }]}>
+        <Text style={[styles.preFormHeader, { color: textAndButtonColor }]}>
           The rocking chair meditation
         </Text>
         <View style={[styles.preFormContentContainer]}>
