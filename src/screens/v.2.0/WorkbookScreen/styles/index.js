@@ -294,10 +294,17 @@ export default StyleSheet.create({
   icon: {
     width: 100,
     height: 100,
-    padding: 20,
     borderRadius: 50,
     alignItems: 'center',
     justifyContent: 'center',
+    ...Platform.select({
+      android: {
+        paddingLeft: 7,
+      },
+      ios: {
+        paddingLeft: 7,
+      },
+    }),
   },
   iconArea: {
     alignItems: 'center',
