@@ -7,6 +7,7 @@ export type Props = {
   color: string,
   icon: string,
   onPress: () => any,
+  style: any,
 }
 
 class MeditationTimerIcon extends React.PureComponent<Props> {
@@ -16,11 +17,11 @@ class MeditationTimerIcon extends React.PureComponent<Props> {
   }
 
   render() {
-    const { color, icon } = this.props
+    const { color, icon, style } = this.props
 
     return (
       <TouchableOpacity
-        style={[styles.icon, { backgroundColor: color }]}
+        style={[styles.icon, style, { backgroundColor: color }]}
         onPress={this._onPress}
       >
         <Icon

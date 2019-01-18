@@ -13,6 +13,7 @@ export type Props = {
   currentPosition: number,
   isPending: boolean,
   errored: boolean,
+  style: any,
 }
 
 class MeditationTimer extends React.PureComponent<Props> {
@@ -29,6 +30,7 @@ class MeditationTimer extends React.PureComponent<Props> {
       currentPosition,
       isPending,
       errored,
+      style = {},
     } = this.props
     const remaining = minutesAndSeconds(totalLength - currentPosition)
 
@@ -43,6 +45,7 @@ class MeditationTimer extends React.PureComponent<Props> {
                 color={color}
                 icon={icon}
                 onPress={this._onPress}
+                style={style}
               />
             </View>
             <View style={[styles.container, styles.trackLengthContainer]}>
