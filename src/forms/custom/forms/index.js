@@ -9,5 +9,4 @@ export default {
   '1': Chair,
   '2': Step2,
   '3': Step3,
-  '5': Goals,
 }
