@@ -29,7 +29,7 @@ class HelpButton extends React.PureComponent<Props> {
       barStyle,
     } = this.props
 
-    return (
+    return hasHelpSlides ? (
       <TouchableOpacity
         style={[
           styles.helperButton,
@@ -38,14 +38,13 @@ class HelpButton extends React.PureComponent<Props> {
           barStyle,
         ]}
         onPress={this._onPress}
-        disabled={hasHelpSlides ? false : true}
       >
         <SvgIcon
           name={icon}
           {...(hasHelpSlides ? iconStyle : svgStyles.disabled)}
         />
       </TouchableOpacity>
-    )
+    ) : null
   }
 }
 
