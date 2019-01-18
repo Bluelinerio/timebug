@@ -370,6 +370,8 @@ export default StyleSheet.create({
     width: '100%',
   },
   formBackButton: {
+    marginLeft: 16,
+    marginTop: 10,
     borderRadius: 15,
     width: 30,
     height: 30,
