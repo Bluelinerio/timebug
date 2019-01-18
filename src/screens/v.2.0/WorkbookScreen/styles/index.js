@@ -158,6 +158,10 @@ export default StyleSheet.create({
     justifyContent: 'center',
     flex: 1,
   },
+  preFormContainer: {
+    marginTop: 14,
+    marginBottom: 8,
+  },
   stepBarContainer: {
     flex: 1,
     height: '16%',
@@ -288,6 +292,8 @@ export default StyleSheet.create({
     fontFamily: 'Metropolis',
     fontWeight: '700',
     lineHeight: 20 * 1.2,
+    marginVertical: 6,
+    marginBottom: 10,
   },
   preFormContentContainer: {
     flex: 1,
@@ -346,6 +352,7 @@ export default StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    marginVertical: 10,
   },
   trackLength: {
     ...iOSUIKit.title3EmphasizedObject,
@@ -356,6 +363,8 @@ export default StyleSheet.create({
   preFormButtonContainer: {
     flexGrow: 0,
     padding: 6,
+    marginTop: 10,
+    marginBottom: 2,
   },
   fullWidth: {
     width: '100%',
@@ -378,7 +387,7 @@ export default StyleSheet.create({
   doneTitleContainer: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginVertical: '2%',
+    marginVertical: '4%',
   },
   doneTitle: {
     ...iOSUIKit.subheadEmphasizedObject,
