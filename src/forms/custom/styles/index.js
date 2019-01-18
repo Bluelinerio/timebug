@@ -286,6 +286,8 @@ const formStyles = StyleSheet.create({
     borderRadius: buttonHeight / 2,
     alignItems: 'center',
     justifyContent: 'center',
+    marginTop:7,
+    marginRight:40,
   },
   listContentContainer: {
     marginTop: 16,

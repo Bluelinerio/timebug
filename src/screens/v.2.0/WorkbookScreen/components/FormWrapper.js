@@ -23,6 +23,7 @@ const CloseButton = onPress => {
             name={'ios-arrow-round-back'}
             size={24}
             color={backButtonColor}
+            style={{marginTop:2}}
           />
         </TouchableOpacity>
       )
