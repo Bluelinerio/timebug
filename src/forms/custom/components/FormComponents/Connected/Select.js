@@ -1,5 +1,5 @@
 import React                        from 'react'
-import { Picker, Platform, View }   from 'react-native'
+import { Picker, Platform }   from 'react-native'
 import ModalSelector                from 'react-native-modal-selector'
 import { connectedComponentStyles } from '../../../styles'
 
@@ -50,13 +50,13 @@ const Select = ({
     }))
 
     return data && (
-      <View style={[connectedComponentStyles.pickerStyle, formStyles.elementContainerStyle]}>
-        <ModalSelector
-          initValue={value ? value : data[0].key}
-          data={data}
-          onChange={onChangeIosSelector}
-        />
-      </View>
+      <ModalSelector
+        initValue={value ? value : data[0].key}
+        data={data}
+        onChange={onChangeIosSelector}
+        selectStyle={connectedComponentStyles.modalPicker}
+        selectTextStyle={connectedComponentStyles.modalText}
+      />
     )
   }
 
