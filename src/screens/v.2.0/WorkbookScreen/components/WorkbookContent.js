@@ -31,7 +31,7 @@ class WorkbookContent extends React.PureComponent<Props> {
 
     return (
       <SafeAreaView
-        forceInset={{ top: 'always', bottom: 'never' }}
+        forceInset={{ top: 'never', bottom: 'never' }}
         style={styles.container}
       >
         <View style={[styles.container, styles.workbookContent, { flex: 2 }]}>
