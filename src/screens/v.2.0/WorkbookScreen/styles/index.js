@@ -304,7 +304,8 @@ export default StyleSheet.create({
         paddingLeft: 7,
       },
       ios: {
-        paddingLeft: 7,
+        paddingLeft: 3,
+        paddingTop:6,
       },
     }),
   },
