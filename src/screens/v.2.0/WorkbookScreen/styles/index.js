@@ -9,6 +9,7 @@ import {
   deepBlue,
   PHASE_1_BAR,
   white2,
+  gray50,
   gray400,
   hotPink,
   blue900,
@@ -28,8 +29,8 @@ export const stepIconSize = heightPercentage(100, heightPercentage(13.5))
 
 const fontColor = white2
 
-export const buttonWidth = widthPercentage(20)
-export const buttonHeight = heightPercentage(6.66)
+export const buttonWidth = widthPercentage(15)
+export const buttonHeight = heightPercentage(5.55)
 
 export const backButtonColor = gray600
 
@@ -249,7 +250,6 @@ export default StyleSheet.create({
     fontWeight: '700',
     lineHeight: 20 * 1.2,
   },
-
   snippetParagraph: {
     ...Platform.select({
       android: {
@@ -318,11 +318,21 @@ export default StyleSheet.create({
     width: buttonWidth,
     alignItems: 'center',
     justifyContent: 'center',
+    ...Platform.select({
+      android: { elevation: 2 },
+      ios: {
+        shadowColor: 'black',
+        shadowOffset: {
+          width: 2,
+          height: 2,
+        },
+        shadowOpacity: 0.3,
+        shadowRadius: 12,
+      },
+    }),
   },
   preFormNextButtonText: {
-    fontFamily: 'Metropolis',
-    color: white2,
-    textAlign: 'center',
+    color: gray50,
   },
   iconRow: {
     flex: 1,
@@ -342,6 +352,7 @@ export default StyleSheet.create({
   },
   preFormButtonContainer: {
     flexGrow: 0,
+    padding: 6,
   },
   fullWidth: {
     width: '100%',

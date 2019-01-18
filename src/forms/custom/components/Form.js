@@ -69,7 +69,7 @@ const TextFormButton = ({
     style={disabled ? styles.formDisabledButton : styles.button}
     disabled={disabled}
   >
-    <Text style={[styles.text, styles.bottomButtonText]}>{text}</Text>
+    <Text style={[styles.text, styles.bottomButtonText, disabled ? { opacity: 0 }: {}]}>{text}</Text>
   </TouchableOpacity>
 )
 
