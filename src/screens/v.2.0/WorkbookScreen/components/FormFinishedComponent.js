@@ -22,6 +22,7 @@ class FormFinishedComponent extends React.PureComponent<Props> {
 
   render() {
     const { color, text, title, hasNext, nextStepNumber } = this.props
+
     return (
       <View style={[styles.container, styles.doneContentContainer]}>
         <View style={styles.doneTitleContainer}>
@@ -36,7 +37,7 @@ class FormFinishedComponent extends React.PureComponent<Props> {
               style={[styles.doneButton, { backgroundColor: color }]}
               onPress={this._onPress}
             >
-              <Text style={styles.doneButtontext}>Next {nextStepNumber}</Text>
+              <Text style={styles.doneButtontext}>STEP {nextStepNumber}</Text>
             </TouchableOpacity>
           </View>
         )}

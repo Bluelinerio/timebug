@@ -1,18 +1,18 @@
 // @flow
-import { connect } from 'react-redux';
-import { compose, mapProps } from 'recompose';
-import selectors from '../../../redux/selectors';
-import { userRequired, withNavigationAndStep } from '../../../HOC';
-import type { Step } from '../../../services/cms';
+import { connect } from 'react-redux'
+import { compose, mapProps } from 'recompose'
+import selectors from '../../../redux/selectors'
+import { userRequired, withNavigationAndStep } from '../../../HOC'
+import type { Step } from '../../../services/cms'
 import {
   restartStepActionSafe,
   goBackFrom,
-} from '../../../redux/actions/nav.actions';
-import WorkbookDoneScreen from '../components/WorkbookDoneScreen';
-import type { Props } from '../components/WorkbookDoneScreen';
-import getInsight, { dummyFormValue } from './../../../static/insights';
-import { suggestNextStep, Screens, NextStepSuggestion } from './suggestions';
-import routes from '../../../navigation/routes';
+} from '../../../redux/actions/nav.actions'
+import WorkbookDoneScreen from '../components/WorkbookDoneScreen'
+import type { Props } from '../components/WorkbookDoneScreen'
+import getInsight, { dummyFormValue } from './../../../static/insights'
+import { suggestNextStep, Screens, NextStepSuggestion } from './suggestions'
+import routes from '../../../navigation/routes'
 
 const merge = ({
   steps,
@@ -26,15 +26,15 @@ const merge = ({
   isSynchingFormData: boolean,
   dispatch: () => void,
 }): Props => {
-  const insightText = getInsight(step.stepId, dummyFormValue);
-  const backgroundColor = step.color;
+  const insightText = getInsight(step.stepId, dummyFormValue)
+  const backgroundColor = step.color
 
   const {
     data: { suggestedStepId, texts },
-  }: NextStepSuggestion = suggestNextStep(completedStepIdsChronologically);
+  }: NextStepSuggestion = suggestNextStep(completedStepIdsChronologically)
 
-  const nextStepMotivationText: string = texts[Screens.DONE_SCREEN];
-  const nextStep: string = steps[suggestedStepId];
+  const nextStepMotivationText: string = texts[Screens.DONE_SCREEN]
+  const nextStep: string = steps[suggestedStepId]
 
   if (nextStep) {
     // this is required in case we change how stepId work...
@@ -79,9 +79,9 @@ const WorkbookDoneScreenContainer = compose(
       selectors.isSynchingFormData(state) || selectors.loadingFormData(state),
   })),
   mapProps(merge)
-)(WorkbookDoneScreen);
+)(WorkbookDoneScreen)
 
-export default WorkbookDoneScreenContainer;
+export default WorkbookDoneScreenContainer
 
 // type FormMetaData = {
 //   uploading: boolean,
