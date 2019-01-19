@@ -1,3 +1,4 @@
+import { Platform }               from 'react-native'
 import { compose, mapProps }      from 'recompose'
 import MeditationTimer, { Props } from '../components/MeditationTimer'
 import { videoStatus as status }  from '../../../../HOC/AudioVideoComponentHOC'
@@ -24,6 +25,24 @@ const mergeProps = (ownProps: StepContentButtonContainerProps): Props => {
 
   const icon = icons[videoStatus]
 
+  const overrideStyle = {
+    [status.READY]: {},
+    [status.PLAYING]: {
+      ...Platform.select({
+        android: {
+          paddingLeft: 1,
+        },
+        ios: {},
+      }),
+    },
+    [status.PAUSED]: {},
+    [status.FINISHED]: {},
+    [status.FAIL]: {},
+    [status.PENDING]: {},
+  }
+
+  const style = overrideStyle[videoStatus]
+
   return {
     color,
     icon,
@@ -32,6 +51,7 @@ const mergeProps = (ownProps: StepContentButtonContainerProps): Props => {
     totalLength,
     isPending: videoStatus === status.PENDING,
     errored: videoStatus === status.FAIL,
+    style,
   }
 }
 

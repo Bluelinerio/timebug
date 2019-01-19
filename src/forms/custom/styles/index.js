@@ -286,6 +286,13 @@ const formStyles = StyleSheet.create({
     borderRadius: buttonHeight / 2,
     alignItems: 'center',
     justifyContent: 'center',
+    ...Platform.select({
+      ios: { 
+        marginTop:7,
+        marginRight:40 
+      },
+      android: {},
+    }),
   },
   listContentContainer: {
     marginTop: 16,

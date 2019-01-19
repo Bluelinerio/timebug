@@ -448,6 +448,7 @@ class ListComponent extends React.PureComponent<Props, State> {
                   style={[
                     {
                       fontSize: 20,
+                      marginBottom:3,
                       color:
                         formStyles.accentColor || TEMPORARY_COLOR_FOR_BUTTONS,
                     },

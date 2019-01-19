@@ -9,6 +9,7 @@ import {
   deepBlue,
   PHASE_1_BAR,
   white2,
+  gray50,
   gray400,
   hotPink,
   blue900,
@@ -28,8 +29,11 @@ export const stepIconSize = heightPercentage(100, heightPercentage(13.5))
 
 const fontColor = white2
 
-export const buttonWidth = widthPercentage(20)
-export const buttonHeight = heightPercentage(6.66)
+export const buttonWidth = widthPercentage(15)
+export const buttonHeight = heightPercentage(5.55)
+
+export const finishButtonWidth = widthPercentage(20)
+export const finishButtonHeight = heightPercentage(6.66)
 
 export const backButtonColor = gray600
 
@@ -144,7 +148,6 @@ export default StyleSheet.create({
   backgroundImage: {
     flex: 1,
     flexDirection: 'row',
-    // backgroundColor: PHASE_1_BAR,
   },
   link: {
     color: blue900,
@@ -154,6 +157,10 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1,
+  },
+  preFormContainer: {
+    marginTop: 14,
+    marginBottom: 8,
   },
   stepBarContainer: {
     flex: 1,
@@ -249,7 +256,6 @@ export default StyleSheet.create({
     fontWeight: '700',
     lineHeight: 20 * 1.2,
   },
-
   snippetParagraph: {
     ...Platform.select({
       android: {
@@ -286,6 +292,8 @@ export default StyleSheet.create({
     fontFamily: 'Metropolis',
     fontWeight: '700',
     lineHeight: 20 * 1.2,
+    marginVertical: 6,
+    marginBottom: 10,
   },
   preFormContentContainer: {
     flex: 1,
@@ -294,10 +302,18 @@ export default StyleSheet.create({
   icon: {
     width: 100,
     height: 100,
-    padding: 20,
     borderRadius: 50,
     alignItems: 'center',
     justifyContent: 'center',
+    ...Platform.select({
+      android: {
+        paddingLeft: 7,
+      },
+      ios: {
+        paddingLeft: 3,
+        paddingTop:6,
+      },
+    }),
   },
   iconArea: {
     alignItems: 'center',
@@ -311,11 +327,21 @@ export default StyleSheet.create({
     width: buttonWidth,
     alignItems: 'center',
     justifyContent: 'center',
+    ...Platform.select({
+      android: { elevation: 2 },
+      ios: {
+        shadowColor: 'black',
+        shadowOffset: {
+          width: 2,
+          height: 2,
+        },
+        shadowOpacity: 0.3,
+        shadowRadius: 12,
+      },
+    }),
   },
   preFormNextButtonText: {
-    fontFamily: 'Metropolis',
-    color: white2,
-    textAlign: 'center',
+    color: gray50,
   },
   iconRow: {
     flex: 1,
@@ -326,6 +352,7 @@ export default StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    marginVertical: 10,
   },
   trackLength: {
     ...iOSUIKit.title3EmphasizedObject,
@@ -335,11 +362,16 @@ export default StyleSheet.create({
   },
   preFormButtonContainer: {
     flexGrow: 0,
+    padding: 6,
+    marginTop: 10,
+    marginBottom: 2,
   },
   fullWidth: {
     width: '100%',
   },
   formBackButton: {
+    marginLeft: 16,
+    marginTop: 10,
     borderRadius: 15,
     width: 30,
     height: 30,
@@ -357,7 +389,7 @@ export default StyleSheet.create({
   doneTitleContainer: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginVertical: '2%',
+    marginVertical: '4%',
   },
   doneTitle: {
     ...iOSUIKit.subheadEmphasizedObject,
@@ -379,20 +411,21 @@ export default StyleSheet.create({
   doneButtonContainer: {
     alignItems: 'center',
     justifyContent: 'center',
+    padding: 10,
   },
   doneButton: {
     borderRadius: 6,
     paddingHorizontal: 10,
     paddingVertical: 8,
-    height: buttonHeight,
-    width: buttonWidth,
+    height: finishButtonHeight,
+    width: finishButtonWidth,
     alignItems: 'center',
     justifyContent: 'center',
   },
   doneButtontext: {
     ...iOSUIKit.caption2Object,
+    fontSize: 13,
     textAlign: 'center',
-    fontFamily: 'Metropolis',
     color: fontColor,
   },
   marginScrollViewElement: {
