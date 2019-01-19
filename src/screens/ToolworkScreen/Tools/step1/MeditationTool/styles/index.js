@@ -1,4 +1,4 @@
-import { StyleSheet }              from 'react-native'
+import { StyleSheet, Platform }              from 'react-native'
 import { iOSUIKit }                from 'react-native-typography'
 import { azure, darkBlue, gray50 } from '2020_constants/colors'
 
@@ -69,5 +69,47 @@ export default StyleSheet.create({
   toolContentContainer: {
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  icon: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: darkBlue,
+    ...Platform.select({
+      android: {
+        paddingLeft: 7,
+      },
+      ios: {
+        paddingLeft: 3,
+        paddingTop:6,
+      },
+    }),
+  },
+  iconArea: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  iconRow: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+  },
+  trackLengthContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: 10,
+  },
+  trackLength: {
+    ...iOSUIKit.title3EmphasizedObject,
+    color: darkBlue,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
+    fontSize: 28,
+  },
+  text: {
+    color: darkBlue,
   },
 })

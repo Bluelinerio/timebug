@@ -4,6 +4,7 @@ import { View, Text, Switch }  from 'react-native'
 import moment                  from 'moment'
 import uuid                    from 'uuid/v4'
 import { DATE_FORMAT }         from '2020_constants/constants'
+import MeditationTimer         from '../containers/MeditationTimerContainer'
 import styles, { stylesStep1 } from '../styles'
 
 export type MeditationCheckinComponentProps = {
@@ -64,6 +65,9 @@ class MeditationCheckinComponent extends React.PureComponent<
           <Text style={styles.toolTitle}>
             {tool.subtitle || 'Did you meditate today?'}
           </Text>
+        </View>
+        <View style={styles.container}>
+          <MeditationTimer daysInRowCount={daysInRowCount} onTimerFinish={() => this._onValueChange(true)} />
         </View>
         <View style={[styles.container, styles.toolContentContainer]}>
           <View style={stylesStep1.switchContainer}>
