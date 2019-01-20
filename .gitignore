@@ -76,7 +76,6 @@ ios/main.jsbundle
 *.jsbundle
 
 # Android assets
-android/app/src/main/res/raw/*
 android/app/src/main/res/drawable-mdpi/*
 
 
