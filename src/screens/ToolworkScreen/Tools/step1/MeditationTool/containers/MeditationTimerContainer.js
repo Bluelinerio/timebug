@@ -14,7 +14,7 @@ type Props = {
 
 const merge = (props: Props) => {
   const { daysInRowCount, onTimerFinish, disableTimer } = props
-  const multiplier = Math.floor(daysInRowCount / 5) + 1
+  const multiplier = Math.min(Math.floor(daysInRowCount / 5) + 1, 12)
   const total = 300 * multiplier
 
   const onMeditationFinish = () => {
