@@ -9,10 +9,11 @@ const mapDispatchToProps = (dispatch: any) => ({
 type Props = {
   onTimerFinish: () => any,
   daysInRowCount: number,
+  disableTimer: boolean,
 }
 
 const merge = (props: Props) => {
-  const { daysInRowCount, onTimerFinish } = props
+  const { daysInRowCount, onTimerFinish, disableTimer } = props
   const multiplier = Math.floor(daysInRowCount / 5) + 1
   const total = 300 * multiplier
 
@@ -23,6 +24,7 @@ const merge = (props: Props) => {
   return {
     total,
     onMeditationFinish,
+    disableTimer,
   }
 }
 

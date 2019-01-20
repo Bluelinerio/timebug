@@ -1,6 +1,6 @@
-import { StyleSheet, Platform }              from 'react-native'
-import { iOSUIKit }                from 'react-native-typography'
-import { azure, darkBlue, gray50 } from '2020_constants/colors'
+import { StyleSheet, Platform } from 'react-native'
+import { iOSUIKit }             from 'react-native-typography'
+import { darkBlue, gray50 }     from '2020_constants/colors'
 
 const textColor = darkBlue
 
@@ -36,13 +36,13 @@ export const stylesStep1 = {
   },
   congratulations: {
     ...iOSUIKit.subheadEmphasizedObject,
-    color: azure,
+    color: darkBlue,
     fontFamily: 'Metropolis',
     textAlign: 'center',
   },
   streakText: {
     ...iOSUIKit.footnoteObject,
-    color: azure,
+    color: darkBlue,
     fontFamily: 'Metropolis',
     textAlign: 'center',
   },
@@ -83,7 +83,7 @@ export default StyleSheet.create({
       },
       ios: {
         paddingLeft: 3,
-        paddingTop:6,
+        paddingTop: 6,
       },
     }),
   },
@@ -111,5 +111,16 @@ export default StyleSheet.create({
   },
   text: {
     color: darkBlue,
+  },
+  captionContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: 16,
+  },
+  caption: {
+    ...iOSUIKit.subheadEmphasizedObject,
+    color: darkBlue,
+    fontFamily: 'Metropolis',
+    textAlign: 'center',
   },
 })

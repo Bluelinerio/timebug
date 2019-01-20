@@ -3,6 +3,7 @@ import React from 'react'
 type Props = {
   total: number,
   onTimerFinish: () => any,
+  disableTimer: boolean,
 }
 
 const PLAYING = 'PLAYING'
@@ -19,10 +20,11 @@ const TimerHOC = (Component: React.node<any>) => {
   class TimerWrapper extends React.PureComponent<Props> {
     constructor(props) {
       super(props)
+      const disabled = props.disableTimer === true
       this.state = {
-        totalLength: props.total || 1,
+        totalLength: disabled ? 0 : props.total || 1,
         currentPosition: 0,
-        status: TIMER_STATUS.PAUSED,
+        status: disabled ? TIMER_STATUS.FINISHED : TIMER_STATUS.PAUSED,
       }
       this.interval = null
     }

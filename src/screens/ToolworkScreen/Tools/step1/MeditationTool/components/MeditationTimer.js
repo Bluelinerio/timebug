@@ -6,7 +6,7 @@ import MeditationContent from '../containers/MeditationContentWrapper'
 export type Props = {
   onMeditationFinish: () => any,
   total: number,
-  style: any,
+  disableTimer: boolean,
 }
 
 class MeditationTimer extends React.PureComponent<Props> {
@@ -43,9 +43,13 @@ class MeditationTimer extends React.PureComponent<Props> {
   }
 
   render() {
-    const { total } = this.props
+    const { total, disableTimer } = this.props
     return (
-      <MeditationContent onTimerFinish={this._onTimerFinish} total={total} />
+      <MeditationContent
+        onTimerFinish={this._onTimerFinish}
+        total={total}
+        disableTimer={disableTimer}
+      />
     )
   }
 }

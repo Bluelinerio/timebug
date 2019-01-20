@@ -67,12 +67,28 @@ class MeditationCheckinComponent extends React.PureComponent<
           </Text>
         </View>
         <View style={styles.container}>
-          <MeditationTimer daysInRowCount={daysInRowCount} onTimerFinish={() => this._onValueChange(true)} />
+          {data && data.value === true ? (
+            <View style={[styles.container, styles.captionContainer]}>
+              <Text style={styles.caption}>
+                You already meditated today, check in tomorrow!
+              </Text>
+            </View>
+          ) : (
+            <MeditationTimer
+              daysInRowCount={daysInRowCount}
+              disableTimer={data && data.value === true}
+              onTimerFinish={() => this._onValueChange(true)}
+            />
+          )}
         </View>
         <View style={[styles.container, styles.toolContentContainer]}>
           <View style={stylesStep1.switchContainer}>
             <Text style={stylesStep1.yesNoHint}>No</Text>
-            <Switch value={data.value} onValueChange={this._onValueChange} />
+            <Switch
+              disabled={data && data.value === true}
+              value={data.value}
+              onValueChange={this._onValueChange}
+            />
             <Text style={stylesStep1.yesNoHint}>Yes</Text>
           </View>
           {data && data.value === true ? (
