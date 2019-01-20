@@ -1,10 +1,10 @@
 //@flow
-import React from 'react'
-import { View, Text, Switch } from 'react-native'
-import moment from 'moment'
-import uuid from 'uuid/v4'
-import { DATE_FORMAT } from '2020_constants/constants'
-import MeditationTimer from '../containers/MeditationTimerContainer'
+import React                   from 'react'
+import { View, Text, Switch }  from 'react-native'
+import moment                  from 'moment'
+import uuid                    from 'uuid/v4'
+import { DATE_FORMAT }         from '2020_constants/constants'
+import MeditationTimer         from '../containers/MeditationTimerContainer'
 import styles, { stylesStep1 } from '../styles'
 
 export type MeditationCheckinComponentProps = {
@@ -77,7 +77,6 @@ class MeditationCheckinComponent extends React.PureComponent<
             )}
           <MeditationTimer
             daysInRowCount={daysInRowCount}
-            disableTimer={false}
             onTimerFinish={() => this._onValueChange(true)}
           />
         </View>
