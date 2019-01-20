@@ -16,16 +16,21 @@ export const TIMER_STATUS = {
   FINISHED,
 }
 
+const initialState = ({ disableTimer, total }) => {
+  const disabled = disableTimer === true
+
+  return {
+    totalLength: disabled ? 0 : total || 1,
+    currentPosition: 0,
+    status: disabled ? TIMER_STATUS.FINISHED : TIMER_STATUS.PAUSED,
+  }
+}
+
 const TimerHOC = (Component: React.node<any>) => {
   class TimerWrapper extends React.PureComponent<Props> {
     constructor(props) {
       super(props)
-      const disabled = props.disableTimer === true
-      this.state = {
-        totalLength: disabled ? 0 : props.total || 1,
-        currentPosition: 0,
-        status: disabled ? TIMER_STATUS.FINISHED : TIMER_STATUS.PAUSED,
-      }
+      this.state = initialState(props)
       this.interval = null
     }
 
@@ -36,7 +41,11 @@ const TimerHOC = (Component: React.node<any>) => {
 
     _onTimerFinish = () => {
       const { onTimerFinish } = this.props
-      this.setState({ status: TIMER_STATUS.FINISHED, isFinished: true }, () => {
+      this.setState({
+        status: TIMER_STATUS.PAUSED,
+        isFinished: true,
+        currentPosition: 0,
+      }, () => {
         this._clearInterval()
         onTimerFinish()
       })

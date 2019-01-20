@@ -22,6 +22,7 @@ class MeditationCheckinComponent extends React.PureComponent<
 > {
   _onValueChange = (value: any) => {
     const { tool, storeAwardData, allToolValue } = this.props
+
     const valueToday = allToolValue.find(
       val => val.date === moment().format(DATE_FORMAT)
     )
@@ -59,6 +60,7 @@ class MeditationCheckinComponent extends React.PureComponent<
 
   render() {
     const { tool, data = {}, daysInRowCount } = this.props
+
     return (
       <View style={[styles.container]}>
         <View style={styles.toolTitleContainer}>
@@ -77,7 +79,8 @@ class MeditationCheckinComponent extends React.PureComponent<
             )}
           <MeditationTimer
             daysInRowCount={daysInRowCount}
-            onTimerFinish={() => this._onValueChange(true)}
+            onTimerFinish={this._onValueChange}
+            meditationData={data}
           />
         </View>
         <View style={[styles.container, styles.toolContentContainer]}>

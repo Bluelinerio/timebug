@@ -7,6 +7,7 @@ export type Props = {
   onMeditationFinish: () => any,
   total: number,
   disableTimer: boolean,
+  meditationData: any,
 }
 
 class MeditationTimer extends React.PureComponent<Props> {
@@ -25,7 +26,7 @@ class MeditationTimer extends React.PureComponent<Props> {
   }
 
   _onTimerFinish = () => {
-    const { onMeditationFinish } = this.props
+    const { onMeditationFinish, meditationData } = this.props
     this.soundFile.play(success => {
       if (success) {
         // All good, do nothing
@@ -35,6 +36,9 @@ class MeditationTimer extends React.PureComponent<Props> {
         return
       }
     })
+
+    if (meditationData && (meditationData.value === true)) return
+
     onMeditationFinish()
   }
 
@@ -44,6 +48,7 @@ class MeditationTimer extends React.PureComponent<Props> {
 
   render() {
     const { total, disableTimer } = this.props
+
     return (
       <MeditationContent
         onTimerFinish={this._onTimerFinish}

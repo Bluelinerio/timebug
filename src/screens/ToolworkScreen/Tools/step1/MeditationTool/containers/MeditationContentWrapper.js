@@ -11,8 +11,10 @@ type Props = {
 
 const merge = (props: Props) => {
   const { timeLeft, timerStatus, toggleTimer } = props
+
   const remaining = minutesAndSeconds(timeLeft)
   const onPress = () => toggleTimer()
+
   return {
     ...props,
     onPress,
