@@ -1,4 +1,5 @@
-import React from 'react'
+import React     from 'react'
+import KeepAwake from 'react-native-keep-awake'
 
 type Props = {
   total: number,
@@ -41,14 +42,17 @@ const TimerHOC = (Component: React.node<any>) => {
 
     _onTimerFinish = () => {
       const { onTimerFinish } = this.props
-      this.setState({
-        status: TIMER_STATUS.PAUSED,
-        isFinished: true,
-        currentPosition: 0,
-      }, () => {
-        this._clearInterval()
-        onTimerFinish()
-      })
+      this.setState(
+        {
+          status: TIMER_STATUS.PAUSED,
+          isFinished: true,
+          currentPosition: 0,
+        },
+        () => {
+          this._clearInterval()
+          onTimerFinish()
+        }
+      )
     }
 
     _toggleTimer = () => {
@@ -90,12 +94,15 @@ const TimerHOC = (Component: React.node<any>) => {
       /* eslint-disable-next-line */
       const { total, ...rest } = this.props
       return (
-        <Component
-          timerStatus={status}
-          timeLeft={totalLength - currentPosition}
-          toggleTimer={this._toggleTimer}
-          {...rest}
-        />
+        <React.Fragment>
+          <KeepAwake />
+          <Component
+            timerStatus={status}
+            timeLeft={totalLength - currentPosition}
+            toggleTimer={this._toggleTimer}
+            {...rest}
+          />
+        </React.Fragment>
       )
     }
   }

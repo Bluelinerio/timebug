@@ -56,6 +56,7 @@
     "react-native-emoji-selector": "^0.1.6",
     "react-native-fbsdk": "0.8.0",
     "react-native-gesture-handler": "^1.0.0-alpha.42",
+    "react-native-keep-awake": "^4.0.0",
     "react-native-linear-gradient": "^2.5.3",
     "react-native-markdown-syntax": "^0.1.0",
     "react-native-modal-selector": "^1.0.0",
