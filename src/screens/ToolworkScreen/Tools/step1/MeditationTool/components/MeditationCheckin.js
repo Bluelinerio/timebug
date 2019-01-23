@@ -4,6 +4,7 @@ import { View, Text, Switch }  from 'react-native'
 import moment                  from 'moment'
 import uuid                    from 'uuid/v4'
 import { DATE_FORMAT }         from '2020_constants/constants'
+import MeditationTimer         from '../containers/MeditationTimerContainer'
 import styles, { stylesStep1 } from '../styles'
 
 export type MeditationCheckinComponentProps = {
@@ -21,6 +22,7 @@ class MeditationCheckinComponent extends React.PureComponent<
 > {
   _onValueChange = (value: any) => {
     const { tool, storeAwardData, allToolValue } = this.props
+
     const valueToday = allToolValue.find(
       val => val.date === moment().format(DATE_FORMAT)
     )
@@ -58,6 +60,7 @@ class MeditationCheckinComponent extends React.PureComponent<
 
   render() {
     const { tool, data = {}, daysInRowCount } = this.props
+
     return (
       <View style={[styles.container]}>
         <View style={styles.toolTitleContainer}>
@@ -65,10 +68,29 @@ class MeditationCheckinComponent extends React.PureComponent<
             {tool.subtitle || 'Did you meditate today?'}
           </Text>
         </View>
+        <View style={styles.container}>
+          {data &&
+            data.value === true && (
+              <View style={[styles.container, styles.captionContainer]}>
+                <Text style={styles.caption}>
+                  You already meditated today, check in tomorrow!
+                </Text>
+              </View>
+            )}
+          <MeditationTimer
+            daysInRowCount={daysInRowCount}
+            onTimerFinish={this._onValueChange}
+            meditationData={data}
+          />
+        </View>
         <View style={[styles.container, styles.toolContentContainer]}>
           <View style={stylesStep1.switchContainer}>
             <Text style={stylesStep1.yesNoHint}>No</Text>
-            <Switch value={data.value} onValueChange={this._onValueChange} />
+            <Switch
+              disabled={data && data.value === true}
+              value={data.value}
+              onValueChange={this._onValueChange}
+            />
             <Text style={stylesStep1.yesNoHint}>Yes</Text>
           </View>
           {data && data.value === true ? (
