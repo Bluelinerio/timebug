@@ -77,7 +77,7 @@
 		588FBD6AC5D8471997B72308 /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 573073BF8E7147C9AF6BF4BA /* libRCTFBSDK.a */; };
 		5964CC1C217663320046CA77 /* libRCTPushNotification.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 592491462151424E008C4319 /* libRCTPushNotification.a */; };
 		5964CCE8217780260046CA77 /* libRCTPushNotification.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 592491462151424E008C4319 /* libRCTPushNotification.a */; };
-		59BF4C5721F918F100B1C0D3 /* bell.wav in Resources */ = {isa = PBXBuildFile; fileRef = 59BF4C5621F918F100B1C0D3 /* bell.wav */; };
+		59B48CCB21F9DDFD004F2113 /* bell.wav in Resources */ = {isa = PBXBuildFile; fileRef = 59B48CCA21F9DDFD004F2113 /* bell.wav */; };
 		5A2A1B8E3EE0448AABA1DF46 /* 2020-diary-step-17.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A577BF6A1E04E6DB562A4F4 /* 2020-diary-step-17.png */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		648BA0D1032B42C785CFDC0A /* 2020-diary-step-12.png in Resources */ = {isa = PBXBuildFile; fileRef = ECE81ABF4D5C4BF7A3990573 /* 2020-diary-step-12.png */; };
@@ -357,6 +357,13 @@
 			remoteGlobalIDString = A39873CE1EA65EE60051E01A;
 			remoteInfo = "RNVectorIcons-tvOS";
 		};
+		59BF4C9B21F9D82200B1C0D3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F40AEF57130C411D8156A394 /* KCKeepAwake.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = KCKeepAwake;
+		};
 		5E9157321DD0AC6500FF2AA8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */;
@@ -591,7 +598,7 @@
 		57C7719A7FEF494BBD5D9F20 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/native-base/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		57EDAF94E3024BF994BDD27D /* AppIcon-Web.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "AppIcon-Web.png"; path = "../src/resources/images/AppIcon-Web.png"; sourceTree = "<group>"; };
 		5924914021514243008C4319 /* RCTPushNotification.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTPushNotification.xcodeproj; path = "../node_modules/react-native/Libraries/PushNotificationIOS/RCTPushNotification.xcodeproj"; sourceTree = "<group>"; };
-		59BF4C5621F918F100B1C0D3 /* bell.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = bell.wav; path = ../../../Downloads/bell.wav; sourceTree = "<group>"; };
+		59B48CCA21F9DDFD004F2113 /* bell.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = bell.wav; path = ../src/resources/sounds/bell.wav; sourceTree = "<group>"; };
 		59CDB4FE76144DDFB97FCF55 /* 2020-diary-step-13.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-13.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-13.png"; sourceTree = "<group>"; };
 		59E8B0D07AF9487CB038CC25 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
 		5DD37A683C874E3188CA272F /* Metropolis-Thin.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-Thin.otf"; path = "../src/resources/fonts/Metropolis/Metropolis-Thin.otf"; sourceTree = "<group>"; };
@@ -917,6 +924,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		59BF4C9421F9D82100B1C0D3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				59BF4C9C21F9D82200B1C0D3 /* libKCKeepAwake.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		5E91572E1DD0AC6500FF2AA8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -1120,7 +1135,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				59BF4C5621F918F100B1C0D3 /* bell.wav */,
+				59B48CCA21F9DDFD004F2113 /* bell.wav */,
 				13B07FAE1A68108700A75B9A /* Lifevision */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* LifevisionTests */,
@@ -1285,6 +1300,10 @@
 				{
 					ProductGroup = 6C5CA105201EF933007A4AC5 /* Products */;
 					ProjectRef = 98905C02CDCF40399425FF6E /* CodePush.xcodeproj */;
+				},
+				{
+					ProductGroup = 59BF4C9421F9D82100B1C0D3 /* Products */;
+					ProjectRef = F40AEF57130C411D8156A394 /* KCKeepAwake.xcodeproj */;
 				},
 				{
 					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;
@@ -1588,6 +1607,13 @@
 			remoteRef = 59BF4C5421F918C600B1C0D3 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		59BF4C9C21F9D82200B1C0D3 /* libKCKeepAwake.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libKCKeepAwake.a;
+			remoteRef = 59BF4C9B21F9D82200B1C0D3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1832,7 +1858,7 @@
 				7B842D0A892243DAA968385B /* 2020-diary-step-2.png in Resources */,
 				A5B0722AA50D4D8E95D88C78 /* 2020-diary-step-20.png in Resources */,
 				275FFA3D7A0447399A5B22B3 /* 2020-diary-step-21.png in Resources */,
-				59BF4C5721F918F100B1C0D3 /* bell.wav in Resources */,
+				59B48CCB21F9DDFD004F2113 /* bell.wav in Resources */,
 				DE65CEDCDDFA4543A0E298D6 /* 2020-diary-step-22.png in Resources */,
 				AB28FFE77D884309A90B61FE /* 2020-diary-step-23.png in Resources */,
 				D29004A5F3E1491CB400E90A /* 2020-diary-step-24.png in Resources */,
