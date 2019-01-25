@@ -145,9 +145,15 @@ export default StyleSheet.create({
   scrollView: {
     flexGrow: 1,
   },
-  backgroundImage: {
+  backgroundImageContainer: {
     flex: 1,
-    flexDirection: 'row',
+    flexDirection: 'row-reverse',
+    height: '100%',
+  },
+  backgroundImage: {
+    width: '100%',
+    height: 150,
+    alignSelf: 'flex-end',
   },
   link: {
     color: blue900,
@@ -368,6 +374,9 @@ export default StyleSheet.create({
   },
   fullWidth: {
     width: '100%',
+  },
+  fullHeight: {
+    height: '100%',
   },
   formBackButton: {
     marginLeft: 16,

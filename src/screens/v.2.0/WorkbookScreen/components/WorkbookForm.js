@@ -58,7 +58,7 @@ class WorkbookForm extends React.PureComponent<Props, State> {
     const { formFinished } = this.state
     return model ? (
       <ScrollView
-        style={[styles.scrollView, styles.fullWidth]}
+        style={[styles.scrollView, styles.fullWidth, styles.fullHeight]}
         contentContainerStyle={styles.scrollView}
       >
         {!formFinished ? (
@@ -83,8 +83,8 @@ class WorkbookForm extends React.PureComponent<Props, State> {
             onSelectStep={onSelectStep}
           />
         )}
-        <View style={[styles.backgroundImage]}>
-          <Image source={headerBackgrounds[step.number]} style={{ width: '100%', height: 150, tintColor: backgroundColor }}/>
+        <View style={[styles.backgroundImageContainer]}>
+          <Image source={headerBackgrounds[step.number]} style={[styles.backgroundImage, { tintColor: backgroundColor }]}/>
         </View>
       </ScrollView>
     ) : (
