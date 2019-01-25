@@ -277,7 +277,7 @@ export default StyleSheet.create({
     fontFamily: 'Metropolis',
   },
   workbookContent: {
-    paddingHorizontal: '2.5%',
+    // paddingHorizontal: '2.5%',
     alignItems: 'center',
     justifyContent: 'center',
   },
