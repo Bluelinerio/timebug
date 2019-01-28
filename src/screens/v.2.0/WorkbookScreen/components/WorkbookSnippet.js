@@ -65,8 +65,8 @@ class WorkbookSnippet extends React.PureComponent<Props> {
             </Text>
           </View>
           <SwitchButton text={'Next'} background={color} changeSection={changeSection} />
-          <View style={[styles.backgroundImage]}>
-            <Image source={headerBackgrounds[step.number]} style={{ width: '100%', height: 150, tintColor: backgroundColor }}/>
+          <View style={[styles.backgroundImageContainer]}>
+            <Image source={headerBackgrounds[step.number]} style={[styles.backgroundImage, { tintColor: backgroundColor }]}/>
           </View>
         </View>
       </ScrollView>

@@ -145,9 +145,15 @@ export default StyleSheet.create({
   scrollView: {
     flexGrow: 1,
   },
-  backgroundImage: {
+  backgroundImageContainer: {
     flex: 1,
-    flexDirection: 'row',
+    flexDirection: 'row-reverse',
+    height: '100%',
+  },
+  backgroundImage: {
+    width: '100%',
+    height: 150,
+    alignSelf: 'flex-end',
   },
   link: {
     color: blue900,
@@ -262,6 +268,7 @@ export default StyleSheet.create({
         marginVertical: '0.5%',
       },
     }),
+    paddingHorizontal: 16,
   },
   snippetStyle: {
     ...iOSUIKit.bodyObject,
@@ -277,7 +284,7 @@ export default StyleSheet.create({
     fontFamily: 'Metropolis',
   },
   workbookContent: {
-    paddingHorizontal: '2.5%',
+    // paddingHorizontal: '2.5%',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -369,6 +376,9 @@ export default StyleSheet.create({
   fullWidth: {
     width: '100%',
   },
+  fullHeight: {
+    height: '100%',
+  },
   formBackButton: {
     marginLeft: 16,
     marginTop: 10,
@@ -433,6 +443,7 @@ export default StyleSheet.create({
   },
   actualSnippetContainer: {
     marginVertical: 8,
+    paddingHorizontal: 16,
   },
   actualSnippetText: {
     ...iOSUIKit.bodyEmphasizedObject,
