@@ -268,6 +268,7 @@ export default StyleSheet.create({
         marginVertical: '0.5%',
       },
     }),
+    paddingHorizontal: 16,
   },
   snippetStyle: {
     ...iOSUIKit.bodyObject,
@@ -442,6 +443,7 @@ export default StyleSheet.create({
   },
   actualSnippetContainer: {
     marginVertical: 8,
+    paddingHorizontal: 16,
   },
   actualSnippetText: {
     ...iOSUIKit.bodyEmphasizedObject,
