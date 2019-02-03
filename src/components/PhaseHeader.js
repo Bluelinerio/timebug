@@ -84,6 +84,7 @@ class PhaseHeader extends React.PureComponent<Props> {
       backButton = false,
       headerBackgroundColor,
     } = this.props
+
     return (
       <View style={[styles.header, { backgroundColor: headerBackgroundColor }]}>
         <StatusBar

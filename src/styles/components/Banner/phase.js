@@ -8,9 +8,9 @@ export const bannerColor = paleBlue
 
 export default StyleSheet.create({
   header: {
-    flex: 1,
-    height: '15%',
-    maxHeight: '15%',
+    height: 110,
+    maxHeight: 110,
+    minHeight: 110,
     flexDirection: 'column',
     ...Platform.select({
       android: { elevation: 8 },
