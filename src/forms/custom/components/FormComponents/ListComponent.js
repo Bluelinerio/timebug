@@ -13,8 +13,6 @@ import SvgIcon from '../../../../components/SvgIcon'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { DISABLE } from './../../forms/constants'
 
-import tron from 'reactotron-react-native'
-
 type Props = {
   value: Array<any>,
   onChange: () => any,

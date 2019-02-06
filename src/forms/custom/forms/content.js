@@ -105,3 +105,5 @@ export const LifeCategories = {
     subtitle: 'i.e Physical exercise',
   },
 }
+
+export const LifeCategoriesArray = Object.values(LifeCategories).map(val => val.title)
