@@ -4,6 +4,17 @@ import { compose, mapProps }      from 'recompose'
 import selectors                  from '2020_redux/selectors'
 import { FORM_KEYS, STEP_NUMBER } from '2020_forms/forms/goals'
 import GoalListElement            from '../components/GoalListElement'
+import { GoalTypesEnum }          from '2020_forms/forms/content'
+
+const GOAL_ICONS = {
+  [GoalTypesEnum.ENERGY_AND_TIME]: 'GoalTypesET',
+  [GoalTypesEnum.ACHIEVEMENTS_AND_SKILLS]: 'GoalTypesAS',
+  [GoalTypesEnum.HEALTH_INDICATORS]: 'GoalTypesIQ',
+  [GoalTypesEnum.INTERNAL_QUALITIES]: 'GoalTypesMO',
+  [GoalTypesEnum.ENVIRONMENT]: 'GoalTypesRQ',
+  [GoalTypesEnum.MATERIAL_OUTCOMES]: 'GoalTypesHI',
+  [GoalTypesEnum.RELATIONSHIP_QUALITY]: 'GoalTypesPE',
+}
 
 type StateProps = {
   formData: {
@@ -32,6 +43,8 @@ const mergeProps = (props): MergeProps => {
   const step5Data = formData[STEP_NUMBER] || { value: [] }
   const { value } = step5Data
 
+  const iconName = GOAL_ICONS[type] || ''
+
   const goals = value
     .filter(goalData => {
       return goalData[FORM_KEYS.form_5_areas_of_life].value.find(
@@ -50,6 +63,7 @@ const mergeProps = (props): MergeProps => {
     goals,
     type,
     onSelect,
+    iconName,
   }
 }
 

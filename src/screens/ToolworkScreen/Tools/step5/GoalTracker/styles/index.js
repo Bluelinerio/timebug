@@ -22,6 +22,14 @@ export const iconColor = azure
 export const minimumTrackColor = azure
 export const maximumTrackColor = gray400
 
+const helperIconSize = 40
+
+export const iconStyle = {
+  fill: azure,
+  height: helperIconSize,
+  width: helperIconSize,
+}
+
 export default StyleSheet.create({
   container: {
     flex: 1,
