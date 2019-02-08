@@ -7668,6 +7668,11 @@ react-native-code-push@^5.4.2:
     plist "3.0.1"
     xcode "1.0.0"
 
+react-native-contacts@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-contacts/-/react-native-contacts-3.1.1.tgz#41ded28baf7ab83b9b4dc66c54db4c4e3601967b"
+  integrity sha512-xSwL2n0OFnPlSwkw/xzBeiwYtVtB38wmGucAoucMcp9EDfH+gJQ7oqPzRk9uBddYpvOCIw8+J+vsFRW2iJAwMA==
+
 react-native-device-info@^0.13.0:
   version "0.13.0"
   resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-0.13.0.tgz#81051eebd3db6959e4f1d2cb0ae8df74105040cf"
@@ -7777,6 +7782,15 @@ react-native-markdown-syntax@^0.1.0:
   integrity sha1-5oE9qLo/Cic4vMya6SuvTQK61aM=
   dependencies:
     lodash "^4.16.4"
+
+react-native-material-dialog@^0.7.6:
+  version "0.7.6"
+  resolved "https://registry.yarnpkg.com/react-native-material-dialog/-/react-native-material-dialog-0.7.6.tgz#1cf0a454bad045987f8d3980f38fdd36b502d55f"
+  integrity sha512-K5lExew1rl6orpuDaXGV92aVXTahdWTv6RsD5OEuMf3h3iH7Sxgocb3tbRdqqZlw2cVrPl7DemwyT/lZS9jOHg==
+  dependencies:
+    prop-types "^15.5.10"
+    react-native-typography "^1.0.3"
+    react-native-vector-icons "^4.2.0"
 
 react-native-modal-selector@^1.0.0:
   version "1.0.0"
@@ -7889,10 +7903,28 @@ react-native-tab-view@^0.0.74:
   dependencies:
     prop-types "^15.6.0"
 
+react-native-typography@^1.0.3:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/react-native-typography/-/react-native-typography-1.4.0.tgz#166b79c618075882d8af07720649f5bc6523160d"
+  integrity sha512-3lToN3hRvPySw0PWCn1SjbDbNaqlV+FM22zSuymIc2ILGcfWbWcgZ+qdX+VKtHAewMG7Rp5yab2bmuaEYQlu3Q==
+
 react-native-typography@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/react-native-typography/-/react-native-typography-1.2.1.tgz#380c71a71e4a4774bd2ca81971aabc6ecf3cb195"
   integrity sha512-ySc6ofgFrYBdlUOCralP6kXvBjuGFTtp2WsYC35Nu4v383okB1i+uxEiSECSsiw4Qwe/OTA6esi/VWUYo4n4bQ==
+
+"react-native-unified-contacts@git://github.com/joshuapinter/react-native-unified-contacts.git#master":
+  version "2.0.0-pre.1"
+  resolved "git://github.com/joshuapinter/react-native-unified-contacts.git#8de28c96caef0f158795413f4f7643fd328959f8"
+
+react-native-vector-icons@^4.2.0:
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-4.6.0.tgz#e4014311ffa6de397d914ffc31b7097a874cc8d5"
+  integrity sha512-rpfhfPiXCK2PX1nrNhdxSMrEGB/Gw/SvKoPM0G2wAkSoqynnes19K0VYI+Up7DqR1rFIpE4hP2erpT1tNx2tfg==
+  dependencies:
+    lodash "^4.0.0"
+    prop-types "^15.5.10"
+    yargs "^8.0.2"
 
 react-native-vector-icons@^6.1.0:
   version "6.1.0"

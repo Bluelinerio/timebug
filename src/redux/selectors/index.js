@@ -10,8 +10,10 @@ import {
   getPersistState,
   getGoals,
   getAppState,
+  getContactState,
 }                                                             from './rootReducer.selectors'
 import { ANONYMOUS, AUTHENTICATING }                          from '../../services/apollo/models'
+import { UNDETERMINED }                                       from '2020_constants/constants'
 // models
 import workbooks                                              from '../../screens/WorkbookScreen/forms'
 import { removeIvalidValuesInsteadOfDoingAnyMigrationForNow } from '../tcomb'
@@ -356,6 +358,18 @@ const formHelpSlides = state => getCms(state).helpSlides || {}
 
 const getAppVersion = state => getAppState(state).version
 
+/**
+ * Contacts
+ */
+
+const getContacts = (state: any) => getContactState(state).contacts
+
+const getContactPermissions = (state: any) => getContactState(state).permissions
+
+/**
+ * End Contacts
+ */
+
 const selectors = {
   getCms,
   sortedSteps,
@@ -410,6 +424,9 @@ const selectors = {
   getToolsForStep,
   awardDataForStepAndTool,
   getTool,
+  getContactState,
+  getContacts,
+  getContactPermissions,
 }
 
 export default selectors

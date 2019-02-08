@@ -7,16 +7,16 @@ export default StyleSheet.create({
   container: {
     flex: 1,
   },
-  screenBackground: {
-    backgroundColor: paleBlue,
-  },
   scrollView: {
     flexGrow: 1,
   },
   fullWidth: {
     width: '100%',
   },
+  screenBackground: {
+    backgroundColor: paleBlue,
+  },
   padded: {
-    padding: 20,
+    paddingHorizontal: 20,
   },
 })

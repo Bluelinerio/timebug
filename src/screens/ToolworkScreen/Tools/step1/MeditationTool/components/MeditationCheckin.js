@@ -1,11 +1,11 @@
 //@flow
-import React                   from 'react'
-import { View, Text, Switch }  from 'react-native'
-import moment                  from 'moment'
-import uuid                    from 'uuid/v4'
-import { DATE_FORMAT }         from '2020_constants/constants'
-import MeditationTimer         from '../containers/MeditationTimerContainer'
-import styles, { stylesStep1 } from '../styles'
+import React                              from 'react'
+import { View, Text, Switch, ScrollView } from 'react-native'
+import moment                             from 'moment'
+import uuid                               from 'uuid/v4'
+import { DATE_FORMAT }                    from '2020_constants/constants'
+import MeditationTimer                    from '../containers/MeditationTimerContainer'
+import styles, { stylesStep1 }            from '../styles'
 
 export type MeditationCheckinComponentProps = {
   tool: {
@@ -62,54 +62,59 @@ class MeditationCheckinComponent extends React.PureComponent<
     const { tool, data = {}, daysInRowCount } = this.props
 
     return (
-      <View style={[styles.container]}>
-        <View style={styles.toolTitleContainer}>
-          <Text style={styles.toolTitle}>
-            {tool.subtitle || 'Did you meditate today?'}
-          </Text>
-        </View>
-        <View style={styles.container}>
-          {data &&
-            data.value === true && (
-              <View style={[styles.container, styles.captionContainer]}>
-                <Text style={styles.caption}>
-                  You already meditated today, check in tomorrow!
+      <ScrollView
+        style={[styles.scrollView, styles.fullWidth]}
+        contentContainerStyle={styles.scrollView}
+      >
+        <View style={[styles.container, styles.padded]}>
+          <View style={styles.toolTitleContainer}>
+            <Text style={styles.toolTitle}>
+              {tool.subtitle || 'Did you meditate today?'}
+            </Text>
+          </View>
+          <View style={styles.container}>
+            {data &&
+              data.value === true && (
+                <View style={[styles.container, styles.captionContainer]}>
+                  <Text style={styles.caption}>
+                    You already meditated today, check in tomorrow!
+                  </Text>
+                </View>
+              )}
+            <MeditationTimer
+              daysInRowCount={daysInRowCount}
+              onTimerFinish={this._onValueChange}
+              meditationData={data}
+            />
+          </View>
+          <View style={[styles.container, styles.toolContentContainer]}>
+            <View style={stylesStep1.switchContainer}>
+              <Text style={stylesStep1.yesNoHint}>No</Text>
+              <Switch
+                disabled={data && data.value === true}
+                value={data.value}
+                onValueChange={this._onValueChange}
+              />
+              <Text style={stylesStep1.yesNoHint}>Yes</Text>
+            </View>
+            {data && data.value === true ? (
+              <View>
+                <Text style={stylesStep1.congratulations}>
+                  Good job!{' '}
+                  {daysInRowCount && daysInRowCount % 5 === 0
+                    ? `- Keep going!`
+                    : ''}
+                </Text>
+                <Text style={stylesStep1.streakText}>
+                  {daysInRowCount && daysInRowCount > 1
+                    ? `Current Streak - ${daysInRowCount} days`
+                    : ''}
                 </Text>
               </View>
-            )}
-          <MeditationTimer
-            daysInRowCount={daysInRowCount}
-            onTimerFinish={this._onValueChange}
-            meditationData={data}
-          />
-        </View>
-        <View style={[styles.container, styles.toolContentContainer]}>
-          <View style={stylesStep1.switchContainer}>
-            <Text style={stylesStep1.yesNoHint}>No</Text>
-            <Switch
-              disabled={data && data.value === true}
-              value={data.value}
-              onValueChange={this._onValueChange}
-            />
-            <Text style={stylesStep1.yesNoHint}>Yes</Text>
+            ) : null}
           </View>
-          {data && data.value === true ? (
-            <View>
-              <Text style={stylesStep1.congratulations}>
-                Good job!{' '}
-                {daysInRowCount && daysInRowCount % 5 === 0
-                  ? `- Keep going!`
-                  : ''}
-              </Text>
-              <Text style={stylesStep1.streakText}>
-                {daysInRowCount && daysInRowCount > 1
-                  ? `Current Streak - ${daysInRowCount} days`
-                  : ''}
-              </Text>
-            </View>
-          ) : null}
         </View>
-      </View>
+      </ScrollView>
     )
   }
 }

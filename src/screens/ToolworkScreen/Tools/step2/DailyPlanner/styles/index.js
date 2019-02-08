@@ -6,6 +6,15 @@ export default StyleSheet.create({
   container: {
     flex: 1,
   },
+  scrollView: {
+    flexGrow: 1,
+  },
+  fullWidth: {
+    width: '100%',
+  },
+  padded: {
+    padding: 20,
+  },
   dateContainer: {
     flex: 1,
     alignItems: 'center',

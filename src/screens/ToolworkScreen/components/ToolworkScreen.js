@@ -1,8 +1,8 @@
-import React from 'react'
-import { SafeAreaView } from 'react-navigation'
-import { View, BackHandler, StatusBar, ScrollView } from 'react-native'
-import styles, { headerColor } from '../styles'
-import WorkArea from '../containers/WorkAreaContainer'
+import React                      from 'react'
+import { BackHandler, StatusBar } from 'react-native'
+import { SafeAreaView }           from 'react-navigation'
+import styles, { headerColor }    from '../styles'
+import WorkArea                   from '../containers/WorkAreaContainer'
 
 type Props = {
   navigation: any,
@@ -56,14 +56,7 @@ class ToolworkScreen extends React.PureComponent<Props> {
         style={[styles.container, styles.screenBackground]}
       >
         <StatusBar barStyle="light-content" backgroundColor={headerColor} />
-        <ScrollView
-          style={[styles.scrollView, styles.fullWidth]}
-          contentContainerStyle={styles.scrollView}
-        >
-          <View style={styles.padded}>
-            <WorkArea />
-          </View>
-        </ScrollView>
+        <WorkArea />
       </SafeAreaView>
     )
   }

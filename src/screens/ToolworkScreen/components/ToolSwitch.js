@@ -3,6 +3,7 @@ import { TOOL_KEYS }   from '2020_static/tools'
 import DailyPlanner    from '../Tools/step2/DailyPlanner'
 import WeeklyPlanner   from '../Tools/step2/WeeklyPlanner'
 import DailyMeditation from '../Tools/step1/MeditationTool'
+import BoardOfAdvisors from '../Tools/step4/BoardOfAdvisors'
 
 type Props = {
   step: any,
@@ -18,8 +19,10 @@ const ToolSwitch = (props: Props) => {
     return <DailyPlanner {...props} />
   case TOOL_KEYS.WeeklyTimebugPlannerKey:
     return <WeeklyPlanner {...props} />
-  case TOOL_KEYS.DailyMeditationKey: 
+  case TOOL_KEYS.DailyMeditationKey:
     return <DailyMeditation {...props} />
+  case TOOL_KEYS.BoardOfAdvisorsKey:
+    return <BoardOfAdvisors {...props} />
   default:
     return null
   }
