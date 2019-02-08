@@ -1,13 +1,13 @@
 // @flow
-import React                                   from 'react'
-import { View, Text, TouchableOpacity, Alert } from 'react-native'
-import { FormInput }                           from 'react-native-elements'
-import moment                                  from 'moment'
-import uuid                                    from 'uuid/v4'
-import { DATE_FORMAT, SIMPLIFIED_DATE_FORMAT } from '2020_constants/constants'
-import Icon                                    from 'react-native-vector-icons/Ionicons'
-import styles, { iconStyle }                   from '../styles'
-import { isNumber }                            from '2020_utils/formatHelpers'
+import React                                               from 'react'
+import { View, Text, TouchableOpacity, Alert, ScrollView } from 'react-native'
+import { FormInput }                                       from 'react-native-elements'
+import moment                                              from 'moment'
+import uuid                                                from 'uuid/v4'
+import { DATE_FORMAT, SIMPLIFIED_DATE_FORMAT }             from '2020_constants/constants'
+import Icon                                                from 'react-native-vector-icons/Ionicons'
+import styles, { iconStyle }                               from '../styles'
+import { isNumber }                                        from '2020_utils/formatHelpers'
 
 type WeekDataElement = {
   key: string,
@@ -188,126 +188,131 @@ class WeeklyPlanner extends React.PureComponent<Props> {
     const { actionData = {} } = this.props
     const { isEditing, weekData = [], displayValue } = this.state
     return (
-      <View style={[styles.container, styles.padded]}>
-        <View style={styles.weekTitleContainer}>
-          <Text style={styles.weekTitle}>
-            Week of{' '}
-            {`${moment()
-              .startOf('isoWeek')
-              .format(SIMPLIFIED_DATE_FORMAT)}`}{' '}
-            - Day {`${moment().format('E')}`}/7
-          </Text>
-        </View>
-        <View style={styles.weeklyToolContentContainer}>
-          <View style={styles.weeklytableContainer}>
-            <View style={styles.table}>
-              <View style={styles.row}>
-                <View style={styles.categoryColumn}>
-                  <Text style={[styles.columnTitle, styles.categoryTitle]}>
-                    Life category
-                  </Text>
-                </View>
-                <View style={styles.column}>
-                  <Text style={styles.columnTitle}>This week</Text>
-                </View>
-                <View style={styles.column}>
-                  <Text style={styles.columnTitle}>Ideal week</Text>
-                </View>
-                <View style={styles.column}>
-                  <Text style={styles.columnTitle}>Diff</Text>
-                </View>
-              </View>
-              {weekData &&
-                weekData.map(element => {
-                  const { ideal, current, key, diff } = element
-                  const { text } = ideal
-                  return (
-                    <View key={key} style={styles.row}>
-                      <View style={styles.categoryColumnText}>
-                        <Text style={[styles.text, styles.categoryText]}>
-                          {text}
-                        </Text>
-                      </View>
-                      <View style={styles.column}>
-                        {isEditing ? (
-                          <FormInput
-                            containerStyle={styles.sliderValueInputContainer}
-                            inputStyle={styles.sliderValueInput}
-                            keyboardType="numeric"
-                            onChangeText={value => this._onChange(value, key)}
-                            value={`${displayValue[key].value}`}
-                          />
-                        ) : (
-                          <Text style={styles.text}>{current.value}h</Text>
-                        )}
-                      </View>
-                      <View style={styles.column}>
-                        <Text style={styles.text}>{ideal.value}h</Text>
-                      </View>
-                      <View style={styles.column}>
-                        {diff === 0 ? (
-                          <Icon
-                            style={styles.icon}
-                            name={'ios-checkmark-circle'}
-                            {...iconStyle}
-                          />
-                        ) : (
-                          <Text style={styles.text}>{diff}</Text>
-                        )}
-                      </View>
-                    </View>
-                  )
-                })}
-            </View>
+      <ScrollView
+        style={[styles.scrollView, styles.fullWidth]}
+        contentContainerStyle={styles.scrollView}
+      >
+        <View style={[styles.container, styles.padded]}>
+          <View style={styles.weekTitleContainer}>
+            <Text style={styles.weekTitle}>
+              Week of{' '}
+              {`${moment()
+                .startOf('isoWeek')
+                .format(SIMPLIFIED_DATE_FORMAT)}`}{' '}
+              - Day {`${moment().format('E')}`}/7
+            </Text>
           </View>
-          <View style={styles.buttonArea}>
-            <TouchableOpacity
-              onPress={this._toggleEditing}
-              style={styles.button}
-            >
-              <Text style={[styles.buttonText]}>
-                {isEditing ? `Cancel` : 'Edit'}
-              </Text>
-            </TouchableOpacity>
-            {isEditing && (
+          <View style={styles.weeklyToolContentContainer}>
+            <View style={styles.weeklytableContainer}>
+              <View style={styles.table}>
+                <View style={styles.row}>
+                  <View style={styles.categoryColumn}>
+                    <Text style={[styles.columnTitle, styles.categoryTitle]}>
+                      Life category
+                    </Text>
+                  </View>
+                  <View style={styles.column}>
+                    <Text style={styles.columnTitle}>This week</Text>
+                  </View>
+                  <View style={styles.column}>
+                    <Text style={styles.columnTitle}>Ideal week</Text>
+                  </View>
+                  <View style={styles.column}>
+                    <Text style={styles.columnTitle}>Diff</Text>
+                  </View>
+                </View>
+                {weekData &&
+                  weekData.map(element => {
+                    const { ideal, current, key, diff } = element
+                    const { text } = ideal
+                    return (
+                      <View key={key} style={styles.row}>
+                        <View style={styles.categoryColumnText}>
+                          <Text style={[styles.text, styles.categoryText]}>
+                            {text}
+                          </Text>
+                        </View>
+                        <View style={styles.column}>
+                          {isEditing ? (
+                            <FormInput
+                              containerStyle={styles.sliderValueInputContainer}
+                              inputStyle={styles.sliderValueInput}
+                              keyboardType="numeric"
+                              onChangeText={value => this._onChange(value, key)}
+                              value={`${displayValue[key].value}`}
+                            />
+                          ) : (
+                            <Text style={styles.text}>{current.value}h</Text>
+                          )}
+                        </View>
+                        <View style={styles.column}>
+                          <Text style={styles.text}>{ideal.value}h</Text>
+                        </View>
+                        <View style={styles.column}>
+                          {diff === 0 ? (
+                            <Icon
+                              style={styles.icon}
+                              name={'ios-checkmark-circle'}
+                              {...iconStyle}
+                            />
+                          ) : (
+                            <Text style={styles.text}>{diff}</Text>
+                          )}
+                        </View>
+                      </View>
+                    )
+                  })}
+              </View>
+            </View>
+            <View style={styles.buttonArea}>
               <TouchableOpacity
-                onPress={this._onStoreData}
+                onPress={this._toggleEditing}
                 style={styles.button}
               >
-                <Text style={[styles.buttonText]}>Submit</Text>
+                <Text style={[styles.buttonText]}>
+                  {isEditing ? `Cancel` : 'Edit'}
+                </Text>
               </TouchableOpacity>
-            )}
-          </View>
-          <View style={styles.actionsContainer}>
-            <View style={styles.actionsToDoContainer}>
-              <Text style={styles.actionTitle}>I need to do less of...</Text>
-              <View style={styles.actionList}>
-                {actionData &&
-                  actionData.lessTimeActivities &&
-                  actionData.lessTimeActivities.map((activity, index) => (
-                    <Text
-                      key={index}
-                      style={styles.actionText}
-                    >{`- ${activity}`}</Text>
-                  ))}
-              </View>
+              {isEditing && (
+                <TouchableOpacity
+                  onPress={this._onStoreData}
+                  style={styles.button}
+                >
+                  <Text style={[styles.buttonText]}>Submit</Text>
+                </TouchableOpacity>
+              )}
             </View>
-            <View style={styles.actionsToDoContainer}>
-              <Text style={styles.actionTitle}>I need to do more of...</Text>
-              <View style={styles.actionList}>
-                {actionData &&
-                  actionData.moreTimeActivities &&
-                  actionData.moreTimeActivities.map((activity, index) => (
-                    <Text
-                      key={index}
-                      style={styles.actionText}
-                    >{`- ${activity}`}</Text>
-                  ))}
+            <View style={styles.actionsContainer}>
+              <View style={styles.actionsToDoContainer}>
+                <Text style={styles.actionTitle}>I need to do less of...</Text>
+                <View style={styles.actionList}>
+                  {actionData &&
+                    actionData.lessTimeActivities &&
+                    actionData.lessTimeActivities.map((activity, index) => (
+                      <Text
+                        key={index}
+                        style={styles.actionText}
+                      >{`- ${activity}`}</Text>
+                    ))}
+                </View>
+              </View>
+              <View style={styles.actionsToDoContainer}>
+                <Text style={styles.actionTitle}>I need to do more of...</Text>
+                <View style={styles.actionList}>
+                  {actionData &&
+                    actionData.moreTimeActivities &&
+                    actionData.moreTimeActivities.map((activity, index) => (
+                      <Text
+                        key={index}
+                        style={styles.actionText}
+                      >{`- ${activity}`}</Text>
+                    ))}
+                </View>
               </View>
             </View>
           </View>
         </View>
-      </View>
+      </ScrollView>
     )
   }
 }

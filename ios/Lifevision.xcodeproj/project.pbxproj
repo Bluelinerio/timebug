@@ -13,6 +13,7 @@
 		00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */; };
 		00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
 		00E356F31AD99517003FC87E /* LifevisionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* LifevisionTests.m */; };
+		04732F952E5B492190CD2487 /* libRCTContacts.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF0B0FC18ECE4074B6671B84 /* libRCTContacts.a */; };
 		0810BAAE4E0643C297AEFB59 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57C7719A7FEF494BBD5D9F20 /* MaterialIcons.ttf */; };
 		0EA1C5BDD50243EF8B2702C6 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9293B7C25ADB405FA12154C8 /* libRNVectorIcons.a */; };
 		1279992B497946B5B8C6036A /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 31157B4B2B4D447FA2F1D0E2 /* FontAwesome.ttf */; };
@@ -77,6 +78,8 @@
 		588FBD6AC5D8471997B72308 /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 573073BF8E7147C9AF6BF4BA /* libRCTFBSDK.a */; };
 		5964CC1C217663320046CA77 /* libRCTPushNotification.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 592491462151424E008C4319 /* libRCTPushNotification.a */; };
 		5964CCE8217780260046CA77 /* libRCTPushNotification.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 592491462151424E008C4319 /* libRCTPushNotification.a */; };
+		59A08F992209D5CE00EF2F40 /* RNUnifiedContactsBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A08F962209D5CD00EF2F40 /* RNUnifiedContactsBridge.m */; };
+		59A08F9A2209D5CE00EF2F40 /* RNUnifiedContacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A08F972209D5CD00EF2F40 /* RNUnifiedContacts.swift */; };
 		59B48CCB21F9DDFD004F2113 /* bell.wav in Resources */ = {isa = PBXBuildFile; fileRef = 59B48CCA21F9DDFD004F2113 /* bell.wav */; };
 		5A2A1B8E3EE0448AABA1DF46 /* 2020-diary-step-17.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A577BF6A1E04E6DB562A4F4 /* 2020-diary-step-17.png */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
@@ -350,6 +353,13 @@
 			remoteGlobalIDString = 3D05745F1DE6004600184BB4;
 			remoteInfo = "RCTPushNotification-tvOS";
 		};
+		59A08F642209D1CB00EF2F40 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 85B8935F72F64C038664ED5B /* RCTContacts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1441618E1BD0A79300FA4F59;
+			remoteInfo = RCTContacts;
+		};
 		59BF4C5421F918C600B1C0D3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1E5F892BB82D49629C55D0A6 /* RNVectorIcons.xcodeproj */;
@@ -598,6 +608,9 @@
 		57C7719A7FEF494BBD5D9F20 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/native-base/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		57EDAF94E3024BF994BDD27D /* AppIcon-Web.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "AppIcon-Web.png"; path = "../src/resources/images/AppIcon-Web.png"; sourceTree = "<group>"; };
 		5924914021514243008C4319 /* RCTPushNotification.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTPushNotification.xcodeproj; path = "../node_modules/react-native/Libraries/PushNotificationIOS/RCTPushNotification.xcodeproj"; sourceTree = "<group>"; };
+		59A08F962209D5CD00EF2F40 /* RNUnifiedContactsBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNUnifiedContactsBridge.m; sourceTree = "<group>"; };
+		59A08F972209D5CD00EF2F40 /* RNUnifiedContacts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNUnifiedContacts.swift; sourceTree = "<group>"; };
+		59A08F982209D5CD00EF2F40 /* RNUnifiedContacts-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RNUnifiedContacts-Bridging-Header.h"; sourceTree = "<group>"; };
 		59B48CCA21F9DDFD004F2113 /* bell.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = bell.wav; path = ../src/resources/sounds/bell.wav; sourceTree = "<group>"; };
 		59CDB4FE76144DDFB97FCF55 /* 2020-diary-step-13.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-13.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-13.png"; sourceTree = "<group>"; };
 		59E8B0D07AF9487CB038CC25 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
@@ -619,6 +632,7 @@
 		7E949A2844AF48209ED74318 /* Metropolis-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-Regular.otf"; path = "../src/resources/fonts/Metropolis/Metropolis-Regular.otf"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		837C72A2439944F6A6D272F8 /* libRNGestureHandler.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNGestureHandler.a; sourceTree = "<group>"; };
+		85B8935F72F64C038664ED5B /* RCTContacts.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTContacts.xcodeproj; path = "../node_modules/react-native-contacts/ios/RCTContacts.xcodeproj"; sourceTree = "<group>"; };
 		86E8CA8065774F3C9882F20C /* 2020-diary-step-2.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-2.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-2.png"; sourceTree = "<group>"; };
 		8A9AB815655E4C3BA4462D81 /* 2020-diary-step-23.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-23.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-23.png"; sourceTree = "<group>"; };
 		8EA2659C3B484CB68F1CC4DA /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ./ios/Frameworks/FBSDKCoreKit.framework; sourceTree = "<group>"; };
@@ -641,6 +655,7 @@
 		B0B0608A4FF6403EB0359CF8 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		B3C9922841564BA29F0B9037 /* 2020-diary-step-3.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-3.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-3.png"; sourceTree = "<group>"; };
 		B805BC22CD3E43BCBC18D476 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/native-base/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
+		BF0B0FC18ECE4074B6671B84 /* libRCTContacts.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTContacts.a; sourceTree = "<group>"; };
 		BF30A88CDC124236A4774B99 /* Metropolis-Medium.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-Medium.otf"; path = "../src/resources/fonts/Metropolis/Metropolis-Medium.otf"; sourceTree = "<group>"; };
 		C09A70AE3A0C45DBAEABF078 /* sandClockConfetti@2x.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "sandClockConfetti@2x.png"; path = "../src/resources/images/sandClockConfetti@2x.png"; sourceTree = "<group>"; };
 		C326879D75BB4A608FF9BF08 /* libRNSound.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSound.a; sourceTree = "<group>"; };
@@ -710,6 +725,7 @@
 				54B7DBAC82DA43898AB720DF /* libRNGestureHandler.a in Frameworks */,
 				26A5DC7A3FCE464C90FDBE94 /* libRCTVideo.a in Frameworks */,
 				B8F4F4B4509F48E29C8EEA5A /* libKCKeepAwake.a in Frameworks */,
+				04732F952E5B492190CD2487 /* libRCTContacts.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -876,6 +892,7 @@
 				837C72A2439944F6A6D272F8 /* libRNGestureHandler.a */,
 				4ED6F842A92D4871AEEC8C42 /* libRCTVideo.a */,
 				948A464D63744CE1844D684F /* libKCKeepAwake.a */,
+				BF0B0FC18ECE4074B6671B84 /* libRCTContacts.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -922,6 +939,25 @@
 				592491482151424E008C4319 /* libRCTPushNotification-tvOS.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		59A08F592209D1CB00EF2F40 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				59A08F652209D1CB00EF2F40 /* libRCTContacts.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		59A08F952209D5CD00EF2F40 /* RNUnifiedContacts */ = {
+			isa = PBXGroup;
+			children = (
+				59A08F962209D5CD00EF2F40 /* RNUnifiedContactsBridge.m */,
+				59A08F972209D5CD00EF2F40 /* RNUnifiedContacts.swift */,
+				59A08F982209D5CD00EF2F40 /* RNUnifiedContacts-Bridging-Header.h */,
+			);
+			name = RNUnifiedContacts;
+			path = "../node_modules/react-native-unified-contacts/RNUnifiedContacts";
 			sourceTree = "<group>";
 		};
 		59BF4C9421F9D82100B1C0D3 /* Products */ = {
@@ -1119,6 +1155,7 @@
 				D542C96B49034D2BB567DA4E /* RNGestureHandler.xcodeproj */,
 				F1048BC6444A4FCEBDF4C6F7 /* RCTVideo.xcodeproj */,
 				F40AEF57130C411D8156A394 /* KCKeepAwake.xcodeproj */,
+				85B8935F72F64C038664ED5B /* RCTContacts.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1135,6 +1172,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				59A08F952209D5CD00EF2F40 /* RNUnifiedContacts */,
 				59B48CCA21F9DDFD004F2113 /* bell.wav */,
 				13B07FAE1A68108700A75B9A /* Lifevision */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -1312,6 +1350,10 @@
 				{
 					ProductGroup = 5E91572E1DD0AC6500FF2AA8 /* Products */;
 					ProjectRef = 5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */;
+				},
+				{
+					ProductGroup = 59A08F592209D1CB00EF2F40 /* Products */;
+					ProjectRef = 85B8935F72F64C038664ED5B /* RCTContacts.xcodeproj */;
 				},
 				{
 					ProductGroup = 24F229C01F76C6FB0062C985 /* Products */;
@@ -1598,6 +1640,13 @@
 			fileType = archive.ar;
 			path = "libRCTPushNotification-tvOS.a";
 			remoteRef = 592491472151424E008C4319 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		59A08F652209D1CB00EF2F40 /* libRCTContacts.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTContacts.a;
+			remoteRef = 59A08F642209D1CB00EF2F40 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		59BF4C5521F918C600B1C0D3 /* libRNVectorIcons-tvOS.a */ = {
@@ -1954,6 +2003,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				59A08F9A2209D5CE00EF2F40 /* RNUnifiedContacts.swift in Sources */,
+				59A08F992209D5CE00EF2F40 /* RNUnifiedContactsBridge.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2005,6 +2056,7 @@
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 8RQ6236EC6;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Frameworks/";
@@ -2026,12 +2078,14 @@
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)..\node_modules\neact-native-videoios",
 					"$(SRCROOT)..\node_modules\neact-native-keep-awakeios",
+					"$(SRCROOT)..\node_modules\neact-native-contactsiosRCTContacts",
 				);
 				INFOPLIST_FILE = LifevisionTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -2046,6 +2100,7 @@
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = 8RQ6236EC6;
@@ -2064,12 +2119,14 @@
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)..\node_modules\neact-native-videoios",
 					"$(SRCROOT)..\node_modules\neact-native-keep-awakeios",
+					"$(SRCROOT)..\node_modules\neact-native-contactsiosRCTContacts",
 				);
 				INFOPLIST_FILE = LifevisionTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -2107,6 +2164,7 @@
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)..\node_modules\neact-native-videoios",
 					"$(SRCROOT)..\node_modules\neact-native-keep-awakeios",
+					"$(SRCROOT)..\node_modules\neact-native-contactsiosRCTContacts",
 				);
 				"HEADER_SEARCH_PATHS[arch=*]" = (
 					"$(inherited)",
@@ -2137,6 +2195,7 @@
 				PRODUCT_NAME = Lifevision;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 3.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -2166,6 +2225,7 @@
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)..\node_modules\neact-native-videoios",
 					"$(SRCROOT)..\node_modules\neact-native-keep-awakeios",
+					"$(SRCROOT)..\node_modules\neact-native-contactsiosRCTContacts",
 				);
 				INFOPLIST_FILE = Lifevision/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2179,6 +2239,7 @@
 				PRODUCT_NAME = Lifevision;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 3.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -2211,11 +2272,13 @@
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)..\node_modules\neact-native-videoios",
 					"$(SRCROOT)..\node_modules\neact-native-keep-awakeios",
+					"$(SRCROOT)..\node_modules\neact-native-contactsiosRCTContacts",
 				);
 				INFOPLIST_FILE = "Lifevision-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -2258,11 +2321,13 @@
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)..\node_modules\neact-native-videoios",
 					"$(SRCROOT)..\node_modules\neact-native-keep-awakeios",
+					"$(SRCROOT)..\node_modules\neact-native-contactsiosRCTContacts",
 				);
 				INFOPLIST_FILE = "Lifevision-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -2294,11 +2359,13 @@
 					"$(inherited)",
 					"$(SRCROOT)..\node_modules\neact-native-videoios",
 					"$(SRCROOT)..\node_modules\neact-native-keep-awakeios",
+					"$(SRCROOT)..\node_modules\neact-native-contactsiosRCTContacts",
 				);
 				INFOPLIST_FILE = "Lifevision-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -2331,11 +2398,13 @@
 					"$(inherited)",
 					"$(SRCROOT)..\node_modules\neact-native-videoios",
 					"$(SRCROOT)..\node_modules\neact-native-keep-awakeios",
+					"$(SRCROOT)..\node_modules\neact-native-contactsiosRCTContacts",
 				);
 				INFOPLIST_FILE = "Lifevision-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -2420,6 +2489,7 @@
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)..\node_modules\neact-native-videoios",
 					"$(SRCROOT)..\node_modules\neact-native-keep-awakeios",
+					"$(SRCROOT)..\node_modules\neact-native-contactsiosRCTContacts",
 				);
 				INFOPLIST_FILE = Lifevision/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2433,6 +2503,7 @@
 				PRODUCT_NAME = "Lifevision Stage";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 3.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Staging;
@@ -2440,6 +2511,7 @@
 		6C5CA10F201EFA53007A4AC5 /* Staging */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = 8RQ6236EC6;
@@ -2458,12 +2530,14 @@
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)..\node_modules\neact-native-videoios",
 					"$(SRCROOT)..\node_modules\neact-native-keep-awakeios",
+					"$(SRCROOT)..\node_modules\neact-native-contactsiosRCTContacts",
 				);
 				INFOPLIST_FILE = LifevisionTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -2503,11 +2577,13 @@
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)..\node_modules\neact-native-videoios",
 					"$(SRCROOT)..\node_modules\neact-native-keep-awakeios",
+					"$(SRCROOT)..\node_modules\neact-native-contactsiosRCTContacts",
 				);
 				INFOPLIST_FILE = "Lifevision-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -2539,6 +2615,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.Lifevision-tvOSTests";

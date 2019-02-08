@@ -90,7 +90,7 @@ android {
 
     defaultConfig {
         applicationId "io.lifevision"
-        minSdkVersion 19
+        minSdkVersion 23
         targetSdkVersion 27
         versionCode 37
 
@@ -202,6 +202,8 @@ dependencies {
     implementation project(':react-native-vector-icons')
     implementation project(':react-native-video')
     implementation project(':react-native-keep-awake')
+    implementation project(':react-native-contacts')
+    implementation project(':react-native-unified-contacts')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.android.support:appcompat-v7:27.0.2"
     implementation "com.facebook.react:react-native:+"  // From node_modules

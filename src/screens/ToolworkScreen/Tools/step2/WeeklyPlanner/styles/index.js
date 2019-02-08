@@ -15,8 +15,14 @@ export default StyleSheet.create({
     flex: 1,
   },
   padded: {
-    paddingHorizontal: 4,
-    paddingVertical: 8,
+    paddingHorizontal: 24,
+    paddingVertical: 28,
+  },
+  scrollView: {
+    flexGrow: 1,
+  },
+  fullWidth: {
+    width: '100%',
   },
   weekTitleContainer: {
     flex: 1,

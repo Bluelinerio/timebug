@@ -1,10 +1,10 @@
-import React           from 'react'
-import { View, Text }  from 'react-native'
-import moment          from 'moment'
-import uuid            from 'uuid/v4'
-import Form            from '2020_forms/components/Form'
-import { DATE_FORMAT } from '2020_constants/constants'
-import styles          from '../styles'
+import React                      from 'react'
+import { View, Text, ScrollView } from 'react-native'
+import moment                     from 'moment'
+import uuid                       from 'uuid/v4'
+import Form                       from '2020_forms/components/Form'
+import { DATE_FORMAT }            from '2020_constants/constants'
+import styles                     from '../styles'
 
 export type Props = {
   navigation: any,
@@ -59,22 +59,29 @@ class DailyPlanner extends React.PureComponent<Props> {
   render() {
     const { step, tool, formValue } = this.props
     return (
-      <View style={styles.container}>
-        <View style={styles.dateContainer}>
-          <Text style={styles.date}>Today is {moment().format(`dddd, ${DATE_FORMAT}`)}</Text>
+      <ScrollView
+        style={[styles.scrollView, styles.fullWidth]}
+        contentContainerStyle={styles.scrollView}
+      >
+        <View style={[styles.container, styles.padded]}>
+          <View style={styles.dateContainer}>
+            <Text style={styles.date}>
+              Today is {moment().format(`dddd, ${DATE_FORMAT}`)}
+            </Text>
+          </View>
+          <Form
+            key={tool.key}
+            model={tool.form}
+            value={formValue ? formValue.value : null}
+            onFinish={this._onFinish}
+            disableAnswers
+            formStyles={tool.formStyles}
+            extra={{
+              step,
+            }}
+          />
         </View>
-        <Form
-          key={tool.key}
-          model={tool.form}
-          value={formValue ? formValue.value : null}
-          onFinish={this._onFinish}
-          disableAnswers
-          formStyles={tool.formStyles}
-          extra={{
-            step,
-          }}
-        />
-      </View>
+      </ScrollView>
     )
   }
 }

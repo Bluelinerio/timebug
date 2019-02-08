@@ -3,10 +3,12 @@ package io.lifevision;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.rt2zz.reactnativecontacts.ReactNativeContacts;
 import com.corbt.keepawake.KCKeepAwakePackage;
 import com.microsoft.codepush.react.CodePush;
 import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
 import com.brentvatne.react.ReactVideoPackage;
+import com.joshuapinter.RNUnifiedContacts.RNUnifiedContactsPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.zmxv.RNSound.RNSoundPackage;
 import io.sentry.RNSentryPackage;
@@ -51,11 +53,13 @@ public class MainApplication extends Application implements ReactApplication {
   protected List<ReactPackage> getPackages() {
     return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+          new ReactNativeContacts(),
           new KCKeepAwakePackage(),
           new CodePush(BuildConfig.CODEPUSH_KEY, getApplicationContext(), BuildConfig.DEBUG),
           new ReactNativePushNotificationPackage(),
           new ReactVideoPackage(),
           new RNGestureHandlerPackage(),
+          new RNUnifiedContactsPackage(),
           new RNSoundPackage(),
           new RNSentryPackage(MainApplication.this),
           new RNDeviceInfo(),

@@ -1,3 +1,5 @@
+import { NativeContact } from '../services/contactService'
+
 export const camelPad = str =>
   str
     .replace(/([A-Z]+)([A-Z][a-z])/g, ' $1 $2')
@@ -8,3 +10,12 @@ export const camelPad = str =>
 
 export const isNumber = n => !isNaN(parseFloat(n)) && isFinite(n)
 
+export const getContactName = (contact: NativeContact) => {
+  const { givenName, familyName, middleName, prefix, suffix } = contact
+  const fullName = `${prefix ? `${prefix} ` : ''}${givenName}${
+    middleName ? ` ${middleName}` : ''
+  } ${familyName ? ` ${familyName}` : ''} ${suffix ? ` - ${suffix}` : ''}`
+  return fullName
+}
+
+export const displayBase64 = (data: string) => `data:image/png;base64,${data}`

@@ -246,6 +246,11 @@ const _isStepCompleted = () => {
 
 export const isStepCompleted = _isStepCompleted()
 
+export const filterKeysInForms = (key: any) => {
+  const filterKeys = ['_id', '_model', 'id', 'model']
+  return filterKeys.find(key) ? false : true
+}
+
 const getColorStartAtStepIndex = (step: number, colors: Colors) =>
   colors.steps[step + 1]
 const getNextPhaseColorForStepAtIndex = (step: number, colors: Colors) =>
