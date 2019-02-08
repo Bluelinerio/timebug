@@ -4,6 +4,7 @@ import DailyPlanner    from '../Tools/step2/DailyPlanner'
 import WeeklyPlanner   from '../Tools/step2/WeeklyPlanner'
 import DailyMeditation from '../Tools/step1/MeditationTool'
 import BoardOfAdvisors from '../Tools/step4/BoardOfAdvisors'
+import GoalTracker     from '../Tools/step5/GoalTracker'
 
 type Props = {
   step: any,
@@ -23,6 +24,8 @@ const ToolSwitch = (props: Props) => {
     return <DailyMeditation {...props} />
   case TOOL_KEYS.BoardOfAdvisorsKey:
     return <BoardOfAdvisors {...props} />
+  case TOOL_KEYS.GoalTrackerKey:
+    return <GoalTracker {...props} />
   default:
     return null
   }

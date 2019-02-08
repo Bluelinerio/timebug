@@ -1,5 +1,5 @@
-import { StyleSheet, Platform } from 'react-native'
-import hexToRgba                from '../../../utils/colorTransform'
+import { StyleSheet, Platform }    from 'react-native'
+import hexToRgba                   from '../../../utils/colorTransform'
 import {
   azure,
   gray50,
@@ -8,12 +8,12 @@ import {
   gray400,
   greenA400,
   white2,
-}                               from '../../../constants/colors'
+}                                  from '../../../constants/colors'
 import {
   widthPercentage,
   heightPercentage,
-}                               from '../../../utils/viewportCalculation'
-import { iOSUIKit, systemWeights }             from 'react-native-typography'
+}                                  from '../../../utils/viewportCalculation'
+import { iOSUIKit, systemWeights } from 'react-native-typography'
 
 export const TEMPORARY_COLOR_FOR_BUTTONS = azure
 
@@ -287,9 +287,9 @@ const formStyles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     ...Platform.select({
-      ios: { 
-        marginTop:7,
-        marginRight:40 
+      ios: {
+        marginTop: 7,
+        marginRight: 40,
       },
       android: {},
     }),
@@ -429,6 +429,9 @@ const formStyles = StyleSheet.create({
   },
   totalValue: {
     ...iOSUIKit.subheadEmphasizedObject,
+  },
+  iosSelectorText: {
+    textAlign: 'left',
   },
 })
 
