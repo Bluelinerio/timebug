@@ -34,13 +34,19 @@ const IOSPicker = (props: any) => {
       label: text,
     }))
 
+  const textValue =
+    value && data
+      ? data.find(element => element.key === value).label
+      : data[0].label
+
   return (
     data && (
       <View style={[styles.pickerStyle, formStyles.elementContainerStyle]}>
         <ModalSelector
-          initValue={value ? value : data[0].key}
+          initValue={textValue}
+          selectTextStyle={styles.iosSelectorText}
           data={data}
-          onChange={onChange}
+          onChange={element => onChange(element.key)}
         />
       </View>
     )

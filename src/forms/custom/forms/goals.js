@@ -1,36 +1,8 @@
 import types, { actionTypes, answerTypes } from './types'
-import {                                   frequencies } from '../../../services/checkins'
+import { frequencies }                     from '2020_services/checkins'
+import { GoalType, timeToCompleteGoal }    from './content'
 
-export const AreaOfLife = [
-  'Finances',
-  'Environment',
-  'Aims & Hobbies',
-  'Career',
-  'Relationships',
-  'Health & Wellness',
-  'Spirituality',
-]
-
-export const GoalType = [
-  'Energy & Time',
-  'Achievement & Skills',
-  'Health Indicators',
-  'Internal Qualities',
-  'Environment',
-  'Material Outcomes',
-  'Relationship Quality',
-]
-
-export const translateFrequencies = (frequency: string) =>
-  frequencies[frequency]
-
-export const timeToCompleteGoal = [
-  'A day',
-  'A week',
-  'A month',
-  '6 months',
-  'A year',
-]
+export const STEP_NUMBER = '5'
 
 export const STATUS = {
   PENDING: 'PENDING',
@@ -39,52 +11,61 @@ export const STATUS = {
   DELETED: 'DELETED',
 }
 
+export const translateFrequencies = (frequency: string) =>
+  frequencies[frequency]
+
+export const FORM_KEYS = {
+  form_5_recent_life_goals: 'form_5_recent_life_goals',
+  form_5_areas_of_life: 'form_5_areas_of_life',
+  form_5_how_long: 'form_5_how_long',
+  form_5_checkin: 'form_5_checkin',
+  form_5_steps: 'form_5_steps',
+}
+
+export const CHILDREN_KEYS = {
+  form_5_steps: {
+    step_to_life_goal: `${FORM_KEYS.form_5_steps}.step_to_life_goal`,
+  },
+}
+
 const form5 = {
   type: types.form,
   answer: answerTypes.multiple,
   fields: {
     0: {
-      type: types.label,
-      key: 'form_5_title',
-      content: {
-        text: `Let's set up some goals`,
-      },
-      options: {},
-    },
-    1: {
       type: types.string,
-      key: 'form_5_recent_life_goals',
+      key: FORM_KEYS.form_5_recent_life_goals,
       content: {
         text: 'What is one of your recent life goals?',
         smallKey: 'Goal',
         primary: true,
       },
       options: {
-        placeHolder: 'Input a recent life goal',
+        placeHolder: 'Goal',
         multiline: true,
         default: '',
       },
     },
-    2: {
+    1: {
       type: types.multipleSelect,
-      key: 'form_5_areas_of_life',
+      key: FORM_KEYS.form_5_areas_of_life,
       content: {
         text: 'Classify this goal according to the 7 goal types',
         smallKey: 'Type of goal',
         listText: 'Type of goal',
-        items: GoalType.map((goal, index) => ({
+        items: GoalType.map(goal => ({
           value: goal,
           text: goal,
-          id: `form_5_areas_of_life${index}`,
+          id: `${FORM_KEYS.form_5_areas_of_life}_${goal}`,
         })),
       },
       options: {
         default: [],
       },
     },
-    3: {
+    2: {
       type: types.select,
-      key: 'form_5_how_long',
+      key: FORM_KEYS.form_5_how_long,
       content: {
         text: 'How long do you think it will take to complete this goal?',
         smallKey: 'ETA',
@@ -97,9 +78,9 @@ const form5 = {
         default: timeToCompleteGoal[0],
       },
     },
-    4: {
+    3: {
       type: types.select,
-      key: 'form_5_checkin',
+      key: FORM_KEYS.form_5_checkin,
       content: {
         text: 'How often would you like to be reminded about this goal?',
         smallKey: 'Check-in',
@@ -113,9 +94,9 @@ const form5 = {
         default: Object.keys(frequencies)[0],
       },
     },
-    5: {
+    4: {
       type: types.list,
-      key: 'form_5_steps',
+      key: FORM_KEYS.form_5_steps,
       content: {
         text: 'What are some steps you need to do to complete this goal?',
         listText: 'Steps',
@@ -125,7 +106,7 @@ const form5 = {
         childTypes: {
           0: {
             type: types.string,
-            key: 'form_5_steps.step_to_life_goal',
+            key: CHILDREN_KEYS.form_5_steps.step_to_life_goal,
             options: {
               placeHolder: 'Step',
             },
@@ -135,7 +116,7 @@ const form5 = {
         required: true,
       },
     },
-    6: {
+    5: {
       type: types.button,
       content: {
         text: 'Do you wish to add more goals?',
@@ -146,7 +127,7 @@ const form5 = {
           key: 'goal_yes',
           action: {
             type: actionTypes.GO_TO,
-            payload: 1,
+            payload: 0,
           },
         },
       ],

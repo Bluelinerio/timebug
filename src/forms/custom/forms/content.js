@@ -10,6 +10,24 @@ export const LifeStages = [
   'Late Adulthood (80+ yrs old)',
 ]
 
+export const GoalType = [
+  'Energy & Time',
+  'Achievement & Skills',
+  'Health Indicators',
+  'Internal Qualities',
+  'Environment',
+  'Material Outcomes',
+  'Relationship Quality',
+]
+
+export const timeToCompleteGoal = [
+  'A day',
+  'A week',
+  'A month',
+  '6 months',
+  'A year',
+]
+
 export const Emotions = [
   /*positive*/
 
