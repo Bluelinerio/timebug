@@ -1,30 +1,28 @@
-import { connect } from 'react-redux';
-import selectors from '../../../redux/selectors';
-import ScreenLockedComponent from '../components/ScreenLockedComponent';
-import { goToWorkbookSkippingStepScreen } from '../../../redux/actions/nav.actions';
-
-const FIRST_FORM_ID = '1';
+import { connect }                     from 'react-redux'
+import selectors                       from '2020_redux/selectors'
+import { goToV2WorkbookScreen }        from '2020_redux/actions/nav.actions'
+import { translateCMSPhaseToStandard } from '2020_services/cms'
+import ScreenLockedComponent           from '../components/ScreenLockedComponent'
 
 const mapStateToProps = (state: any) => {
   const step = selectors
     .sortedSteps(state)
-    .find(step => `${step.number}` === `${5}`);
+    .find(step => `${step.number}` === `${5}`)
   return {
     step,
-  };
-};
+  }
+}
 
-// TODO: Maybe replace with withNavigation instead of dispatch
 const mapDispatchToProps = (dispatch: any) => ({
   onPress: step =>
     dispatch(
-      goToWorkbookSkippingStepScreen({
+      goToV2WorkbookScreen({
         step,
-        incompleteFormsIds: [FIRST_FORM_ID],
+        phase: translateCMSPhaseToStandard(step.type),
       })
     ),
-});
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(
   ScreenLockedComponent
-);
+)
