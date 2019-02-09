@@ -40,6 +40,10 @@ export default StyleSheet.create({
   contentContainer: {
     flex: 1,
   },
+  padded: {
+    paddingHorizontal: 20,
+    paddingVertical: 8,
+  },
   scrollViewContent: {
     flex: 1,
   },
@@ -149,7 +153,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
   rightBlock: {
-    flex: 3,
+    flex: 4,
     alignItems: 'flex-start',
     justifyContent: 'center',
   },
@@ -243,20 +247,15 @@ export default StyleSheet.create({
   },
   subHeader: {
     flex: 1,
+    paddingTop: 9,
     flexDirection: 'row',
+    alignItems: 'center',
     maxHeight: 40,
-    minHeight: 40,
-  },
-  buttonHeaderArea: {
-    flex: 1,
-    alignItems: 'flex-start',
-    justifyContent: 'center',
+    paddingHorizontal: 20,
   },
   subheaderButton: {
-    height: 35,
-    width: 35,
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 35 / 2,
   },
 })

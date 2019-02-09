@@ -15,7 +15,7 @@ class SubHeader extends React.PureComponent<Props> {
     return display ? (
       <View style={[styles.container, styles.subHeader]}>
         <View style={styles.buttonHeaderArea}>
-          <TouchableOpacity style={styles.subheaderButton} onPress={onBack}>
+          <TouchableOpacity onPress={onBack}>
             <Icon name={'ios-arrow-back'} size={24} color={iconColor} />
           </TouchableOpacity>
         </View>

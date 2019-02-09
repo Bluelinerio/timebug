@@ -107,6 +107,7 @@ class GoalScreenComponent extends React.PureComponent<Props, State> {
             styles.container,
             styles.prototypeBackground,
             styles.goalScreenViewContainer,
+            styles.padded,
           ]}
         >
           <GoalScreenContent
