@@ -11,7 +11,7 @@ import {
 import Icon                            from 'react-native-vector-icons/Ionicons'
 import { icon }                        from '2020_resources/images'
 import { displayBase64 }               from '2020_utils/formatHelpers'
-import DialogContainer, { actions }    from './DialogContainer'
+import DialogContainer, { actions }    from '../DialogContainer'
 import styles, { iconColor, iconSize } from '../../styles/advisor'
 
 type PhoneNumber = {
