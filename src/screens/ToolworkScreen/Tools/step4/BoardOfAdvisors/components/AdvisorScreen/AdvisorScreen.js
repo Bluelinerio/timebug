@@ -24,12 +24,12 @@ class AdvisorScreen extends React.PureComponent<Props> {
   }
 
   render() {
-    const { advisor, onBack } = this.props
+    const { onBack } = this.props
     return (
       <ScrollView style={styles.container}>
         <SubHeader onBack={onBack} />
         <View style={[styles.container]}>
-          <AdvisorArea advisor={advisor} goToSync={this._goToSync} />
+          <AdvisorArea {...this.props} goToSync={this._goToSync} />
         </View>
         <View style={styles.container}>
           <LogArea {...this.props} />

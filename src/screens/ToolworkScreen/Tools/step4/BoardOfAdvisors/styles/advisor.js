@@ -59,6 +59,9 @@ export default StyleSheet.create({
     textAlign: 'center',
     color: darkBlue,
   },
+  link: {
+    textDecorationLine: 'underline',
+  },
   iconWrapper: {
     marginHorizontal: 12,
   },
