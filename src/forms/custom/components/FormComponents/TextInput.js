@@ -17,6 +17,7 @@ const TextInput = ({
       placeHolder: '',
       label: '',
     },
+    style = {}
   },
 }: {
   value: string,
@@ -33,6 +34,7 @@ const TextInput = ({
       label: string,
       default?: string,
     },
+    style?: Object
   },
 }) => (
   <React.Fragment>
@@ -44,7 +46,7 @@ const TextInput = ({
         styles.textInputContainerStyle,
         formStyles.elementContainerStyle,
       ]}
-      inputStyle={styles.textInputStyle}
+      inputStyle={style || styles.textInputStyle}
       underlineColorAndroid={'transparent'}
       onChangeText={onChange}
       value={value ? value : options.default}
