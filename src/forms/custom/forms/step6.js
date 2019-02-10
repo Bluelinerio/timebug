@@ -1,4 +1,4 @@
-import types, { answerTypes } from './types'
+import types, { actionTypes, answerTypes } from './types'
 
 const form6 = {
   type: types.form,
@@ -28,20 +28,55 @@ const form6 = {
             options: {
               placeHolder: 'Goal',
               default: '',
-              multiline: true,
             },
           },
         },
-        default: [],
-        constraints: {
-          min: 1,
-          max: 1,
-          errors: {
-            min: 'You must add at least one (1)',
-            max: 'You can only add one at a time',
+      },
+    },
+    1: {
+      type: types.formElements,
+      key: 'form_6_plan_and_estimated_time',
+      content: {
+        text: 'Write down a detailed plan for how much you can help this person, and estime how much time it will take',
+        smallKey: 'Goal Plan',
+      },
+      options: {
+        childTypes: {
+          0: {
+            type: types.string,
+            key: 'form_6_plan_and_estimated_time.plan',
+            options: {
+              placeHolder: 'Plan',
+              default: '',
+              multiline: true,
+            },
+          },
+          1: {
+            type: types.string,
+            key: 'form_6_plan_and_estimated_time.time',
+            options: {
+              placeHolder: 'Estimated Time',
+              default: '',
+            },
           },
         },
       },
+    },
+    2: {
+      type: types.button,
+      content: {
+        text: 'Do you wish to add more goals?',
+      },
+      actions: [
+        {
+          text: 'Yes',
+          key: 'goal_yes',
+          action: {
+            type: actionTypes.GO_TO,
+            payload: 0,
+          },
+        },
+      ],
     },
   },
 }

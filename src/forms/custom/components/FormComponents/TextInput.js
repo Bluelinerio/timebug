@@ -17,7 +17,7 @@ const TextInput = ({
       placeHolder: '',
       label: '',
     },
-    style = {}
+    style = {},
   },
 }: {
   value: string,
@@ -52,6 +52,7 @@ const TextInput = ({
       value={value ? value : options.default}
       multiline={options.multiline}
       placeholder={options.placeHolder}
+      numberOfLines={options.multiline && 2}
     />
   </React.Fragment>
 )
