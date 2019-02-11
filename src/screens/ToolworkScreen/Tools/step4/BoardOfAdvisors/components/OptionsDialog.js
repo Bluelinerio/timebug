@@ -1,3 +1,4 @@
+// @flow
 import React                          from 'react'
 import { SinglePickerMaterialDialog } from 'react-native-material-dialog'
 
