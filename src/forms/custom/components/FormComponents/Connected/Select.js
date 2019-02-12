@@ -1,6 +1,6 @@
-import React                        from 'react'
-import { Picker, Platform }   from 'react-native'
-import ModalSelector                from 'react-native-modal-selector'
+import React from 'react'
+import { Picker, Platform } from 'react-native'
+import ModalSelector from 'react-native-modal-selector'
 import { connectedComponentStyles } from '../../../styles'
 
 const Select = ({
@@ -21,18 +21,21 @@ const Select = ({
     },
   },
 }) => {
-  const onValueChange = (itemValue) => {
+  const onValueChange = itemValue => {
     onChange(itemValue)
   }
 
-  const onChangeIosSelector = (item) => {
+  const onChangeIosSelector = item => {
     onChange(item.key)
   }
 
   const renderAndroidPicker = () => (
     <Picker
       selectedValue={value ? value : options.value}
-      style={[connectedComponentStyles.pickerStyle, formStyles.elementContainerStyle]}
+      style={[
+        connectedComponentStyles.pickerStyle,
+        formStyles.elementContainerStyle,
+      ]}
       onValueChange={onValueChange}
       itemStyle={connectedComponentStyles.pickerItemStyle}
     >
@@ -44,25 +47,34 @@ const Select = ({
   )
 
   const renderiOSPicker = () => {
-    const data = content && content.items.map(({ value, text }) => ({
-      key: value,
-      label: text,
-    }))
+    const data =
+      content &&
+      content.items.map(({ value, text }) => ({
+        key: value,
+        label: text,
+      }))
 
-    return data && (
-      <ModalSelector
-        initValue={value ? value : data[0].key}
-        data={data}
-        onChange={onChangeIosSelector}
-        selectStyle={connectedComponentStyles.modalPicker}
-        selectTextStyle={connectedComponentStyles.modalText}
-      />
+    const textValue =
+      value && data
+        ? data.find(element => element.key === value).label
+        : data[0].label
+
+    return (
+      data && (
+        <ModalSelector
+          initValue={textValue}
+          data={data}
+          onChange={onChangeIosSelector}
+          selectStyle={connectedComponentStyles.modalPicker}
+          selectTextStyle={connectedComponentStyles.modalText}
+        />
+      )
     )
   }
 
   return (
     <React.Fragment>
-      { Platform.OS === 'ios' ? renderiOSPicker() : renderAndroidPicker() }
+      {Platform.OS === 'ios' ? renderiOSPicker() : renderAndroidPicker()}
     </React.Fragment>
   )
 }
