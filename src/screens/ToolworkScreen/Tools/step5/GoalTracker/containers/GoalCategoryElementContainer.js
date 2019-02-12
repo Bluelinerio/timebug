@@ -9,11 +9,11 @@ import { GoalTypesEnum }          from '2020_forms/forms/content'
 const GOAL_ICONS = {
   [GoalTypesEnum.ENERGY_AND_TIME]: 'GoalTypesET',
   [GoalTypesEnum.ACHIEVEMENTS_AND_SKILLS]: 'GoalTypesAS',
-  [GoalTypesEnum.HEALTH_INDICATORS]: 'GoalTypesIQ',
-  [GoalTypesEnum.INTERNAL_QUALITIES]: 'GoalTypesMO',
-  [GoalTypesEnum.ENVIRONMENT]: 'GoalTypesRQ',
-  [GoalTypesEnum.MATERIAL_OUTCOMES]: 'GoalTypesHI',
-  [GoalTypesEnum.RELATIONSHIP_QUALITY]: 'GoalTypesPE',
+  [GoalTypesEnum.HEALTH_INDICATORS]: 'GoalTypesHI',
+  [GoalTypesEnum.INTERNAL_QUALITIES]: 'GoalTypesIQ',
+  [GoalTypesEnum.ENVIRONMENT]: 'GoalTypesPE',
+  [GoalTypesEnum.MATERIAL_OUTCOMES]: 'GoalTypesMO',
+  [GoalTypesEnum.RELATIONSHIP_QUALITY]: 'GoalTypesRQ',
 }
 
 type StateProps = {
