@@ -4,6 +4,7 @@ import { View, Text, ActivityIndicator, Alert } from 'react-native'
 import ContactService, { NativeContact }        from '2020_services/contactService'
 import SyncList                                 from '../../components/SyncScreen/SyncList'
 import SearchBar                                from '../../components/SyncScreen/SearchBar'
+import { getContactName }                       from '../../utils'
 import styles, { indicatorColor }               from '../../styles/sync'
 
 type State = {
@@ -69,7 +70,7 @@ class SyncListContainer extends React.PureComponent<Props, State> {
 
   _contactNotificationHandler = (contact: any, advisor: any) => {
     const { goToBoard, goToContact } = this.props
-    const name = contact.displayName
+    const name = getContactName(contact)
     Alert.alert(
       'Confirmation',
       `Want to notify ${name} that you have registered them as a trusted advisor?`,

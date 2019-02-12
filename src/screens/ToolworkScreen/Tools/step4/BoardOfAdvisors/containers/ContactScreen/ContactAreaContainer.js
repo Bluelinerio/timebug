@@ -2,6 +2,7 @@
 import { connect }           from 'react-redux'
 import { compose, mapProps } from 'recompose'
 import selectors             from '2020_redux/selectors'
+import { getContactName }    from '../../utils'
 import ContactArea           from '../../components/ContactScreen/ContactArea'
 
 type PhoneNumber = {
@@ -46,8 +47,8 @@ const merge = (props: Props) => {
     phoneNumbers,
     emailAddresses,
     thumbnailImageData: thumbnail,
-    displayName,
   } = contact
+  const displayName = getContactName(contact)
   return {
     userName,
     category,
