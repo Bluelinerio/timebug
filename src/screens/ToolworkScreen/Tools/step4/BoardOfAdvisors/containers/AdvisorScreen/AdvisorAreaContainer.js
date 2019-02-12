@@ -2,6 +2,7 @@
 import { connect }           from 'react-redux'
 import { compose, mapProps } from 'recompose'
 import { removeContact }     from '2020_redux/actions/contacts.actions'
+import { getContactName }    from '../../utils'
 import AdvisorArea           from '../../components/AdvisorScreen/AdvisorArea'
 
 type Props = {
@@ -56,8 +57,8 @@ const merge = (props: Props) => {
     phoneNumbers,
     emailAddresses,
     thumbnailImageData: thumbnail,
-    displayName,
   } = actualContact
+  const displayName = getContactName(actualContact)
   return {
     name,
     category,

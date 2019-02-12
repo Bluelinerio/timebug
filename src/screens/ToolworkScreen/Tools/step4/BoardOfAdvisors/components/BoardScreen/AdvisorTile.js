@@ -3,6 +3,7 @@ import React                                   from 'react'
 import { View, Text, Image, TouchableOpacity } from 'react-native'
 import { icon }                                from '2020_resources/images'
 import { displayBase64 }                       from '2020_utils/formatHelpers'
+import { getContactName }                      from '../../utils'
 import styles                                  from '../../styles/board'
 
 type Props = {
@@ -65,7 +66,7 @@ class AdvisorTile extends React.PureComponent<Props> {
             ) : (
               <View style={styles.paddedLink}>
                 <Text style={styles.contactName}>
-                  Synced with - {contact.contact.displayName}
+                  Synced with - {getContactName(contact.contact)}
                 </Text>
               </View>
             )}
