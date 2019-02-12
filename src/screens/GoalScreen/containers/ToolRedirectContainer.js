@@ -1,12 +1,12 @@
 //@flow
 import { connect }             from 'react-redux'
 import { compose, mapProps }   from 'recompose'
+import { withNavigation }      from 'react-navigation'
 import { goToTool }            from '2020_redux/actions/nav.actions'
 import type { GoToToolParams } from '2020_redux/actions/nav.actions'
 import selectors               from '2020_redux/selectors'
 import tool                    from '2020_static/tools/GoalTracker'
 import ToolRedirect            from '../components/ToolRedirect'
-import tron                    from 'reactotron-react-native'
 
 const STEP_NUMBER = '5'
 
@@ -26,7 +26,6 @@ const mapDispatchToProps = (dispatch: any): ToolButtonDispatchProps => ({
 })
 
 const merge = (props: any) => {
-  tron.log(props)
   const { steps, goToTool } = props
   const step = steps[STEP_NUMBER]
   return {
@@ -38,5 +37,6 @@ const merge = (props: any) => {
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  mapProps(merge)
+  mapProps(merge),
+  withNavigation
 )(ToolRedirect)
