@@ -5,6 +5,7 @@ import {
   REQUEST_PERMISSIONS_NEVER,
   UPDATE_PERMISSION,
   ADD_CONTACT,
+  REMOVE_CONTACT,
 } from '../actionTypes'
 import {
   UNDETERMINED,
@@ -52,7 +53,7 @@ const populateContacts = (
   { payload }: any
 ): ContactState => {
   const { contact, advisorId } = payload
-  const contacts = state.contacts.filter(con => con.advisorId === advisorId)
+  const contacts = state.contacts.filter(con => con.advisorId !== advisorId)
   return {
     ...state,
     contacts: [
@@ -62,6 +63,18 @@ const populateContacts = (
         advisorId,
       },
     ],
+  }
+}
+
+const removeContact = (
+  state: ContactState,
+  { payload }: any
+): ContactState => {
+  const { advisorId } = payload
+  const contacts = state.contacts.filter(con => con.advisorId !== advisorId)
+  return {
+    ...state,
+    contacts,
   }
 }
 
@@ -100,6 +113,8 @@ const contactsReducer = (
     return updatePermission(state, NEVER_ASK_AGAIN, action)
   case ADD_CONTACT:
     return populateContacts(state, action)
+  case REMOVE_CONTACT:
+    return removeContact(state, action)
   default:
     return state
   }

@@ -11,7 +11,7 @@ import {
 import Icon                            from 'react-native-vector-icons/Ionicons'
 import { icon }                        from '2020_resources/images'
 import { displayBase64 }               from '2020_utils/formatHelpers'
-import DialogContainer, { actions }    from './DialogContainer'
+import DialogContainer, { actions }    from '../DialogContainer'
 import styles, { iconColor, iconSize } from '../../styles/advisor'
 
 type PhoneNumber = {
@@ -37,6 +37,7 @@ type Props = {
   displayName: string,
   hasContact: boolean,
   goToSync: () => any,
+  handleUnsync: () => any,
 }
 
 type State = {
@@ -126,6 +127,7 @@ class AdvisorArea extends React.PureComponent<Props, State> {
       displayName,
       hasContact,
       goToSync,
+      handleUnsync,
     } = this.props
     const { openDialog } = this.state
     return (
@@ -152,6 +154,11 @@ class AdvisorArea extends React.PureComponent<Props, State> {
             </Text>
           )}
           <Text style={styles.advisorCategory}>{category}</Text>
+          {hasContact && (
+            <TouchableOpacity onPress={handleUnsync}>
+              <Text style={[styles.advisorCategory, styles.link]}>Unsync</Text>
+            </TouchableOpacity>
+          )}
         </View>
         <View style={styles.contactSection}>
           {phoneNumbers &&

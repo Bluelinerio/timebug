@@ -1,10 +1,11 @@
 // @flow
-import React                             from 'react'
-import { View, Text, ActivityIndicator } from 'react-native'
-import ContactService, { NativeContact } from '2020_services/contactService'
-import SyncList                          from '../../components/SyncScreen/SyncList'
-import SearchBar                         from '../../components/SyncScreen/SearchBar'
-import styles, { indicatorColor }        from '../../styles/sync'
+import React                                    from 'react'
+import { View, Text, ActivityIndicator, Alert } from 'react-native'
+import ContactService, { NativeContact }        from '2020_services/contactService'
+import SyncList                                 from '../../components/SyncScreen/SyncList'
+import SearchBar                                from '../../components/SyncScreen/SearchBar'
+import { getContactName }                       from '../../utils'
+import styles, { indicatorColor }               from '../../styles/sync'
 
 type State = {
   contacts: Array<NativeContact>,
@@ -17,6 +18,7 @@ type Props = {
     name: string,
   },
   goToBoard: () => any,
+  goToContact: (obj: { contact: any, advisor: any }) => any,
   storeAwardData: (value: any, tool: any) => any,
   addContactForAdvisor: any => any,
   tool: any,
@@ -44,7 +46,6 @@ class SyncListContainer extends React.PureComponent<Props, State> {
       storeAwardData,
       addContactForAdvisor,
       data,
-      goToBoard,
     } = this.props
     addContactForAdvisor(contact)
     if (data && data.value) {
@@ -64,7 +65,21 @@ class SyncListContainer extends React.PureComponent<Props, State> {
           tool
         )
     } else storeAwardData([{ contact, advisorId: advisor.id }], tool)
-    goToBoard()
+    this._contactNotificationHandler(contact, advisor)
+  }
+
+  _contactNotificationHandler = (contact: any, advisor: any) => {
+    const { goToBoard, goToContact } = this.props
+    const name = getContactName(contact)
+    Alert.alert(
+      'Confirmation',
+      `Want to notify ${name} that you have registered them as a trusted advisor?`,
+      [
+        { text: 'Yes', onPress: () => goToContact({ contact, advisor }) },
+        { text: 'No', onPress: () => goToBoard() },
+      ],
+      { cancelable: false }
+    )
   }
 
   componentDidMount() {

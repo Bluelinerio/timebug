@@ -1,3 +1,4 @@
+// @flow
 import { connect }                       from 'react-redux'
 import { mapProps, compose }             from 'recompose'
 import selectors                         from '2020_redux/selectors'
@@ -27,9 +28,7 @@ export type DispatchProps = {
   goToFormWrapper: ({ step: any, phase: any }) => () => any,
 }
 
-/* eslint-disable-next-line */
 const mergeContactData = ({ data, stepData }: { data: any, stepData: any }) => {
-  // will probably have to merge data(synced contacts) and formData (raw name and category)
   const boardValue = stepData[FORM_KEYS.form_4_board_of_advisors].value
   const contactsValue = data ? (data.value ? data.value : []) : []
   const value = boardValue.reduce((allValues, boardVal) => {

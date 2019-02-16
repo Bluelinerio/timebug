@@ -6,6 +6,7 @@ import {
   REQUEST_PERMISSIONS_SUCCESS,
   REQUEST_PERMISSIONS_NEVER,
   ADD_CONTACT,
+  REMOVE_CONTACT,
 } from '../actionTypes'
 
 export type SubmitAction = {
@@ -31,6 +32,11 @@ export type ContactAction = {
 
 export const addContact = (payload: { contact: any, advisorId: any }) => ({
   type: ADD_CONTACT,
+  payload,
+})
+
+export const removeContact = (payload: { advisorId: any }) => ({
+  type: REMOVE_CONTACT,
   payload,
 })
 

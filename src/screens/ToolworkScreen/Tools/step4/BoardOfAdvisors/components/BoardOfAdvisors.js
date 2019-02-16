@@ -5,6 +5,7 @@ import { withNavigation } from 'react-navigation'
 import BoardScreen        from '../containers/BoardScreen/BoardScreenContainer'
 import AdvisorScreen      from '../containers/AdvisorScreen/AdvisorScreenContainer'
 import SyncScreen         from '../containers/SyncScreen/SyncScreenContainer'
+import ContactScreen      from '../containers/ContactScreen/ContactScreenContainer'
 
 type State = {
   currentView: string,
@@ -23,6 +24,7 @@ const views = {
   board: 'board',
   sync: 'sync',
   advisor: 'advisor',
+  contact: 'contact',
 }
 
 const BoardSwitch = ({
@@ -40,6 +42,8 @@ const BoardSwitch = ({
     return <AdvisorScreen {...props} {...rest} />
   case views.sync:
     return <SyncScreen {...props} {...rest} />
+  case views.contact:
+    return <ContactScreen {...props} {...rest} />
   default:
     return null
   }
@@ -106,6 +110,10 @@ class BoardOfAdvisors extends React.PureComponent<Props, State> {
     this.setState({ prevState: newPrevState, currentView: views.sync, params })
   }
 
+  goToContact = (params: any) => {
+    this.setState({ currentView: views.contact, params })
+  }
+
   goToAdvisor = (params: any) => {
     const { prevState, ...rest } = this.state
     const newPrevState = [...prevState, rest]
@@ -114,21 +122,6 @@ class BoardOfAdvisors extends React.PureComponent<Props, State> {
       currentView: views.advisor,
       params,
     })
-  }
-
-  _switchNavigationOptions = () => {
-    const { currentView } = this.state
-    switch (currentView) {
-    case views.board:
-      return {
-        goToAdvisor: this.goToAdvisor,
-        goToSync: this.goToSync,
-      }
-    default:
-      return {
-        goToBoard: this.goToBoard,
-      }
-    }
   }
 
   render() {
@@ -145,6 +138,7 @@ class BoardOfAdvisors extends React.PureComponent<Props, State> {
           goToBoard={this.goToBoard}
           goToAdvisor={this.goToAdvisor}
           goToSync={this.goToSync}
+          goToContact={this.goToContact}
           onBack={this._onSoftwareBackButtonPress}
         />
       </React.Fragment>
