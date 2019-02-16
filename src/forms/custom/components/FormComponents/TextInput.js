@@ -1,5 +1,8 @@
 import React             from 'react'
-import { View }          from 'react-native'
+import {
+  View,
+  TextInput as TextInputNative,
+}                        from 'react-native'
 import { FormInput }     from 'react-native-elements'
 import styles            from '../../styles'
 import FormElementHeader from './FormElementHeader'
@@ -16,6 +19,8 @@ const TextInput = ({
       multiline: false,
       placeHolder: '',
       label: '',
+      numberOfLines: null,
+      fullWidth: false,
     },
     style = {},
   },
@@ -41,19 +46,39 @@ const TextInput = ({
     <View style={styles.textInputLabelContainer}>
       <FormElementHeader text={content.text} textStyle={formStyles.textStyle} />
     </View>
-    <FormInput
-      containerStyle={[
-        styles.textInputContainerStyle,
-        formStyles.elementContainerStyle,
-      ]}
-      inputStyle={style || styles.textInputStyle}
-      underlineColorAndroid={'transparent'}
-      onChangeText={onChange}
-      value={value ? value : options.default}
-      multiline={options.multiline}
-      placeholder={options.placeHolder}
-      numberOfLines={options.multiline && 2}
-    />
+    {
+      options.multiline ? (
+        <View style={[
+          styles.textInputContainerStyle,
+          formStyles.elementContainerStyle,
+          options.fullWidth ? { width: '100%' } : {},
+        ]}>
+          <TextInputNative
+            style={style || styles.textInputStyle}
+            underlineColorAndroid={'transparent'}
+            onChangeText={onChange}
+            value={value ? value : options.default}
+            multiline
+            placeholder={options.placeHolder}
+            numberOfLines={options.numberOfLines}
+            allowFontScaling
+          />
+        </View>
+      ) : (
+        <FormInput
+          containerStyle={[
+            styles.textInputContainerStyle,
+            formStyles.elementContainerStyle,
+            options.fullWidth ? { width: '100%' } : {},
+          ]}
+          inputStyle={style || styles.textInputStyle}
+          underlineColorAndroid={'transparent'}
+          onChangeText={onChange}
+          value={value ? value : options.default}
+          placeholder={options.placeHolder}
+        />
+      )
+    }
   </React.Fragment>
 )
 

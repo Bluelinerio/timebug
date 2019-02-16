@@ -20,6 +20,7 @@ const form6 = {
               placeHolder: "Person's name",
               default: '',
               required: true,
+              fullWidth: true,
             },
           },
           1: {
@@ -28,6 +29,9 @@ const form6 = {
             options: {
               placeHolder: 'Goal',
               default: '',
+              multiline: true,
+              numberOfLines: 3,
+              fullWidth: true,
             },
           },
         },
@@ -49,6 +53,8 @@ const form6 = {
               placeHolder: 'Plan',
               default: '',
               multiline: true,
+              numberOfLines: 4,
+              fullWidth: true,
             },
           },
           1: {
@@ -57,6 +63,7 @@ const form6 = {
             options: {
               placeHolder: 'Estimated Time',
               default: '',
+              fullWidth: true,
             },
           },
         },
