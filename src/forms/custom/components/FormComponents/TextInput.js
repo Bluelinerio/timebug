@@ -3,7 +3,9 @@ import {
   View,
   TextInput as TextInputNative,
 }                        from 'react-native'
+import R                 from 'ramda'
 import { FormInput }     from 'react-native-elements'
+
 import styles            from '../../styles'
 import FormElementHeader from './FormElementHeader'
 
@@ -54,7 +56,7 @@ const TextInput = ({
           options.fullWidth ? { width: '100%' } : {},
         ]}>
           <TextInputNative
-            style={style || styles.textInputStyle}
+            style={R.isEmpty(style) ? styles.textInputStyle : style}
             underlineColorAndroid={'transparent'}
             onChangeText={onChange}
             value={value ? value : options.default}
@@ -71,7 +73,7 @@ const TextInput = ({
             formStyles.elementContainerStyle,
             options.fullWidth ? { width: '100%' } : {},
           ]}
-          inputStyle={style || styles.textInputStyle}
+          inputStyle={R.isEmpty(style) ? styles.textInputStyle : style}
           underlineColorAndroid={'transparent'}
           onChangeText={onChange}
           value={value ? value : options.default}
