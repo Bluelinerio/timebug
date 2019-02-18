@@ -1,6 +1,6 @@
 import React                      from 'react'
 import { Picker, Platform, View } from 'react-native'
-import ModalSelector              from 'react-native-modal-selector'
+import ModalSelector              from './CustomModules/Modal'
 import FormElementHeader          from './FormElementHeader'
 import styles                     from '../../styles'
 import { DISABLE }                from './../../forms/constants'
