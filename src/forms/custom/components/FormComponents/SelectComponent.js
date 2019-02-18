@@ -46,7 +46,13 @@ const IOSPicker = (props: any) => {
           initValue={textValue}
           selectTextStyle={styles.iosSelectorText}
           data={data}
-          onChange={element => onChange(element.key)}
+          onChange={element => {
+            console.log(
+              'An element has changed on Select Form Component, onDismiss SHOULD have been called on IOS'
+            )
+            console.log(element)
+            onChange(element.key)
+          }}
         />
       </View>
     )
