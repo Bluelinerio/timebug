@@ -90,9 +90,7 @@ export default class ModalSelector extends React.Component {
   }
 
   onChange = item => {
-    if (Platform.OS === 'android') {
-      this.props.onChange(item)
-    }
+    this.props.onChange(item)
     this.setState(
       { selected: this.props.labelExtractor(item), changedItem: item },
       () => {
