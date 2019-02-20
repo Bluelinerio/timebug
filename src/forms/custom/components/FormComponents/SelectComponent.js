@@ -46,13 +46,7 @@ const IOSPicker = (props: any) => {
           initValue={textValue}
           selectTextStyle={styles.iosSelectorText}
           data={data}
-          onChange={element => {
-            console.log(
-              'An element has changed on Select Form Component, onDismiss SHOULD have been called on IOS'
-            )
-            console.log(element)
-            onChange(element.key)
-          }}
+          onChange={element => onChange(element.key)}
         />
       </View>
     )
@@ -89,10 +83,6 @@ const Select = ({
     onChange(itemValue)
   }
 
-  const onIosChange = item => {
-    onChange(item.key)
-  }
-
   const { filterFunction = null } = __extraProps
   const filteredItems =
     content && content.items
@@ -114,7 +104,7 @@ const Select = ({
             formStyles={formStyles}
             items={filteredItems}
             options={options}
-            onChange={onIosChange}
+            onChange={onValueChange}
           />
         ) : (
           <AndroidPicker

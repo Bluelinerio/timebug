@@ -1,6 +1,6 @@
-import React from 'react'
-import { Picker, Platform } from 'react-native'
-import ModalSelector from 'react-native-modal-selector'
+import React                        from 'react'
+import { Picker, Platform }         from 'react-native'
+import ModalSelector                from 'react-native-modal-selector'
 import { connectedComponentStyles } from '../../../styles'
 
 const Select = ({
