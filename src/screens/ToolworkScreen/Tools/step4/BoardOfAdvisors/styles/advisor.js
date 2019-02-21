@@ -96,6 +96,8 @@ export default StyleSheet.create({
     flex: 1,
     minHeight: 80,
     maxHeight: 80,
+    minWidth: 320,
+    maxWidth: 320,
     borderRadius: 6,
     borderColor: gray400,
     borderWidth: 1,
