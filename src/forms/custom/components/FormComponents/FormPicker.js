@@ -8,6 +8,7 @@ import List           from './ListComponent'
 import MultipleSelect from './MultipleSelectComponent'
 import Set            from './SetComponent'
 import Slider         from './SingleSlider'
+import FormElements   from './FormElementsComponent'
 import { connect }    from './ConnectedComponentContainer'
 
 type Props = {
@@ -37,6 +38,8 @@ const SwitchComponent = ({ field, props }: { type: string }) => {
     return <Set {...props} />
   case types.slider:
     return <Slider {...props} />
+  case types.formElements:
+    return <FormElements {...props} />
   default:
     return null
   }

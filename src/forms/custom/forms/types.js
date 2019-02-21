@@ -19,6 +19,7 @@ export default {
   connected: 'connected',
   set: 'set',
   slider: 'slider',
+  formElements: 'formElements',
 }
 
 export const answerTypes = {
