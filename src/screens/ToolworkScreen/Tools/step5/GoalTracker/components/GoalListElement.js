@@ -1,13 +1,14 @@
 // @flow
-import React                                          from 'react'
-import { View, Text, Image, TouchableOpacity, Alert } from 'react-native'
-import { icon }                                       from '2020_resources/images'
-import styles                                         from '../styles'
+import React                                   from 'react'
+import { View, Text, TouchableOpacity, Alert } from 'react-native'
+import SvgIcon                                 from '2020_components/SvgIcon'
+import styles, { iconStyle }                   from '../styles'
 
 type Props = {
   goals: Array<any>,
   type: any,
   onSelect: String => any,
+  iconName: string,
 }
 
 // TODO: Update the .extra behavior
@@ -26,7 +27,7 @@ class GoalListElement extends React.PureComponent<Props> {
   }
 
   render() {
-    const { goals = [], type } = this.props
+    const { goals = [], type, iconName } = this.props
     const totalGoals = goals.reduce((totalGoals, g) => {
       const awardData = g.award || {}
       const deleted = awardData.deleted || false
@@ -36,7 +37,7 @@ class GoalListElement extends React.PureComponent<Props> {
     return (
       <TouchableOpacity style={styles.elementContainer} onPress={this._onPress}>
         <View style={styles.leftBlock}>
-          <Image style={styles.elementIcon} source={icon} />
+          <SvgIcon name={iconName} {...iconStyle} />
         </View>
         <View style={styles.rightBlock}>
           <Text style={styles.elementText}>

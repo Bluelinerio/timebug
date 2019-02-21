@@ -1,36 +1,29 @@
-import { connect } from 'react-redux';
-import { compose } from 'recompose';
-import GoalScreenHandlerComponent from '../components/GoalScreenHandlerComponent';
-import FormHOC from '../../../HOC/GenericFormConsumer';
-import R from 'ramda';
+import { connect }                from 'react-redux'
+import { compose }                from 'recompose'
+import GoalScreenHandlerComponent from '../components/GoalScreenHandlerComponent'
+import selectors                  from '2020_redux/selectors'
+import FormHOC                    from '../../../HOC/GenericFormConsumer'
 
-const wantedKeys = {
-  recentGoals: {
-    form: 1,
-    key: 'recentGoals',
-  },
-};
+const STEP_NUMBER = '5'
 
-const getDataFromForm = (formData: any, wantedKeys: any): {} | any => {
-  if (!formData || R.isEmpty(formData) || R.isEmpty(wantedKeys)) return {};
-  return Object.keys(wantedKeys).reduce((obj, k) => {
-    const { form, key } = wantedKeys[k];
-    if (!formData[form] || !formData[form][key]) return { ...obj };
-    return {
-      ...obj,
-      [k]: formData[form][key],
-    };
-  }, {});
-};
+const mapStateToProps = (state: any) => {
+  const formData = selectors.formData(state)
+  const getFormData = (step: string) => {
+    return formData[step] || null
+  }
+  return {
+    getFormData,
+  }
+}
 
-const mergeProps = (_, __, ownProps) => {
-  const { formData } = ownProps;
-  const data = getDataFromForm(formData, wantedKeys);
+const mergeProps = stateProps => {
+  const { getFormData } = stateProps
+  const data = getFormData(STEP_NUMBER)
   return {
     data,
-  };
-};
+  }
+}
 
-export default compose(FormHOC, connect(null, null, mergeProps))(
+export default compose(FormHOC, connect(mapStateToProps, null, mergeProps))(
   GoalScreenHandlerComponent
-);
+)

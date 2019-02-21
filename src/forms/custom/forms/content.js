@@ -10,15 +10,37 @@ export const LifeStages = [
   'Late Adulthood (80+ yrs old)',
 ]
 
+/**
+ * Goal types
+ */
+
+const ENERGY_AND_TIME = 'Energy & Time'
+const HEALTH_INDICATORS = 'Health Indicators'
+const ACHIEVEMENTS_AND_SKILLS = 'Achievement & Skills'
+const INTERNAL_QUALITIES = 'Internal Qualities'
+const ENVIRONMENT = 'Environment'
+const MATERIAL_OUTCOMES = 'Material Outcomes'
+const RELATIONSHIP_QUALITY = 'Relationship Quality'
+
 export const GoalType = [
-  'Energy & Time',
-  'Achievement & Skills',
-  'Health Indicators',
-  'Internal Qualities',
-  'Environment',
-  'Material Outcomes',
-  'Relationship Quality',
+  ENERGY_AND_TIME,
+  ACHIEVEMENTS_AND_SKILLS,
+  HEALTH_INDICATORS,
+  INTERNAL_QUALITIES,
+  ENVIRONMENT,
+  MATERIAL_OUTCOMES,
+  RELATIONSHIP_QUALITY,
 ]
+
+export const GoalTypesEnum = {
+  ENERGY_AND_TIME,
+  ACHIEVEMENTS_AND_SKILLS,
+  HEALTH_INDICATORS,
+  INTERNAL_QUALITIES,
+  ENVIRONMENT,
+  MATERIAL_OUTCOMES,
+  RELATIONSHIP_QUALITY,
+}
 
 export const timeToCompleteGoal = [
   'A day',

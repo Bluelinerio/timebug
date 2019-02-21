@@ -36,7 +36,7 @@ const form5 = {
       type: types.string,
       key: FORM_KEYS.form_5_recent_life_goals,
       content: {
-        text: 'What is one of your recent life goals?',
+        text: 'To get started, enter a goal that you are looking to achieve.',
         smallKey: 'Goal',
         primary: true,
       },
