@@ -10,6 +10,6 @@ export default {
   form: {},
   config: {
     max: 168,
-    elementMax: 60,
+    elementMax: 70,
   },
 }

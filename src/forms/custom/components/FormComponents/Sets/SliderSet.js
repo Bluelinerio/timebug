@@ -44,21 +44,30 @@ class SliderSet extends React.PureComponent<Props, State> {
     super(props)
     const { value } = props
     const indexesMap = this._mapIndexesToKeys(props.parentField.options)
+    const currentValue = value ? value : this._buildInitialValue(props)
     this.state = {
       indexesMap,
-      globalMaxValue: this._calculateMaxValue(props),
-      currentValue: value ? value : {},
+      globalMaxValue: this._calculateMaxValue(
+        currentValue,
+        props.parentField.options
+      ),
+      currentValue,
     }
   }
 
   componentDidMount = () => {
     const { value, onChange } = this.props
-    if (!value) {
-      const initialValue = this._buildInitialValue(this.props)
-      this.setState({ currentValue: initialValue }, () =>
-        onChange(this.state.currentValue)
-      )
-    }
+    if (!value) onChange(this.state.currentValue)
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.value && prevProps.value !== this.props.value)
+      this.setState({
+        globalMaxValue: this._calculateMaxValue(
+          this.props.value,
+          this.props.parentField.options
+        ),
+      })
   }
 
   _buildInitialValue = (props: Props) => {
@@ -66,13 +75,17 @@ class SliderSet extends React.PureComponent<Props, State> {
     const { subtypeOptions, children } = parentField.options
     const initialValue = Object.keys(children).reduce((currentValue, index) => {
       const child = children[index]
-      const { key, contentKey } = child
+      const { key, contentKey, options = {} } = child
       return {
         ...currentValue,
         [key]: {
           _id: uuid(),
           _model: child,
-          value: (child.options && child.options.min) || subtypeOptions.min,
+          value: options
+            ? options._compareValue
+              ? options._compareValue.value
+              : options.min ? options.min : subtypeOptions.min
+            : subtypeOptions.min,
           key,
           index,
           contentKey,
@@ -82,9 +95,8 @@ class SliderSet extends React.PureComponent<Props, State> {
     return initialValue
   }
 
-  _calculateMaxValue = (props: Props) => {
-    const value = props.value ? props.value : {}
-    const { subtypeOptions } = props.parentField.options
+  _calculateMaxValue = (value: any, options: any) => {
+    const { subtypeOptions } = options
     if (subtypeOptions.data !== SHARED) return null
     const max = Object.values(value).reduce((maxVal, val) => {
       const { value: v } = val
@@ -107,16 +119,9 @@ class SliderSet extends React.PureComponent<Props, State> {
   }
 
   _onChange = (value: any, key: string, contentKey: string, index: number) => {
-    const {
-      parentField: { options },
-      onChange,
-      value: currentValue = {},
-    } = this.props
+    const { onChange, value: currentValue = {} } = this.props
     const valueForKey =
       currentValue && currentValue[key] ? currentValue[key] : {}
-    const { subtypeOptions } = options
-    const { data } = subtypeOptions
-    const currentValueForKey = valueForKey.value || 0
     let newState = {
       currentValue: {
         ...currentValue,
@@ -129,17 +134,6 @@ class SliderSet extends React.PureComponent<Props, State> {
           contentKey,
         },
       },
-    }
-    if (data === SHARED) {
-      //Is increasing
-      if (value - currentValueForKey > 0) {
-        newState.globalMaxValue =
-          this.state.globalMaxValue - (value - currentValueForKey)
-        //is decreasing
-      } else if (value - currentValueForKey < 0) {
-        newState.globalMaxValue =
-          this.state.globalMaxValue + currentValueForKey - value
-      }
     }
     this.setState(newState, () => onChange(this.state.currentValue))
   }
@@ -202,6 +196,13 @@ class SliderSet extends React.PureComponent<Props, State> {
               </View>
             )
           })}
+        <View style={styles.sliderSetTotalContainer}>
+          <View style={styles.sliderSetTotal}>
+            <Text style={[styles.totalValue, formStyles.textStyle]}>
+              {globalMaxValue}
+            </Text>
+          </View>
+        </View>
       </View>
     )
   }

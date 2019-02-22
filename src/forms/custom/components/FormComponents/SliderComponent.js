@@ -1,9 +1,9 @@
-import React                                            from 'react'
-import Slider                                           from 'react-native-slider'
-import { View, Text }                                   from 'react-native'
-import { FormInput }                                    from 'react-native-elements'
+import React from 'react'
+import Slider from 'react-native-slider'
+import { View, Text } from 'react-native'
+import { FormInput } from 'react-native-elements'
 import styles, { minimumTrackColor, maximumTrackColor } from '../../styles'
-import { isNumber }                                     from '2020_utils/formatHelpers'
+import { isNumber } from '2020_utils/formatHelpers'
 
 type Props = {
   value: string | number,
@@ -33,10 +33,17 @@ type Props = {
 class SliderComponent extends React.PureComponent<Props> {
   constructor(props) {
     super(props)
-    const { value = null } = props
+    const { value = null, field: { options } } = props
+    const { _compareValue } = options
     this.state = {
-      currentValue: value ? value : 0,
-      currentTextValue: value ? value : 0,
+      currentValue:
+        value !== null
+          ? value
+          : _compareValue && _compareValue.value ? _compareValue.value : 0,
+      currentTextValue:
+        value !== null
+          ? value
+          : _compareValue && _compareValue.value ? _compareValue.value : 0,
     }
     this.input = null
   }
@@ -102,7 +109,7 @@ class SliderComponent extends React.PureComponent<Props> {
 
   _buildCompare(comparableValue, value) {
     const flatNumber = comparableValue - value
-    return `${flatNumber < 0 ? '' : '+'}${flatNumber}`
+    return `${flatNumber < 0 ? '+' : ''}${-flatNumber}`
   }
 
   render() {

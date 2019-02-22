@@ -56,7 +56,7 @@ const form1 = {
                   subtitle: category.subtitle,
                 },
                 options: {
-                  max: 60,
+                  max: 70,
                 },
               },
             }
@@ -114,7 +114,7 @@ const form1 = {
                         subtitle: category.subtitle,
                       },
                       options: {
-                        max: 60,
+                        max: 70,
                       },
                     },
                   }

@@ -95,7 +95,7 @@ class WeeklyPlanner extends React.PureComponent<Props> {
           ...current,
           ...overrideWeekData.value[key],
         },
-        diff: overrideWeekData.value[key].value - ideal.value,
+        diff: -(overrideWeekData.value[key].value - ideal.value),
       }
     })
     return newWeekData
@@ -256,7 +256,9 @@ class WeeklyPlanner extends React.PureComponent<Props> {
                               {...iconStyle}
                             />
                           ) : (
-                            <Text style={styles.text}>{diff}</Text>
+                            <Text style={styles.text}>
+                              {diff > 0 ? `+${diff}` : diff}
+                            </Text>
                           )}
                         </View>
                       </View>
