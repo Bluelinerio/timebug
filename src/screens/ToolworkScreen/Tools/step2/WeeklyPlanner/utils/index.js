@@ -22,15 +22,25 @@ const currentWeekDefaultData = Object.keys(LifeCategories).reduce(
   {}
 )
 
-const _getCurrentWeek = () => {
+// TODO: Make sure it works consistently
+const _getCurrentWeek = (disable: boolean = false) => {
   let toolDataForThisWeek = null
   let lastToolDataLength = 0
-  let dayForMnemo = moment().format(DATE_FORMAT)
-  return (dailyToolData: Array<{ date: string, value: Array<any> }>) => {
+  let dayChecked = moment().format(DATE_FORMAT)
+  let lastTime = null
+  return (
+    dailyToolData: Array<{ date: string, value: Array<any> }>,
+    timeStamp?: number
+  ) => {
     const today = moment().format(DATE_FORMAT)
 
-    if (today !== dayForMnemo) {
-      dayForMnemo = today
+    if (today !== dayChecked) {
+      dayChecked = today
+      toolDataForThisWeek = null
+    }
+
+    if (timeStamp !== null && timeStamp !== lastTime) {
+      lastTime = timeStamp
       toolDataForThisWeek = null
     }
 
@@ -39,7 +49,7 @@ const _getCurrentWeek = () => {
       lastToolDataLength = 0
     }
 
-    if (toolDataForThisWeek !== null) {
+    if (toolDataForThisWeek !== null && !disable) {
       return toolDataForThisWeek
     }
 
@@ -180,8 +190,8 @@ export const mapWeekData = (
   return WeekDataArray
 }
 
-export const getCurrentWeekAndReduce = (dailyToolValue: any) => {
-  const currentWeek = getCurrentWeek(dailyToolValue)
+export const getCurrentWeekAndReduce = (dailyToolValue: any, timeStamp?: number) => {
+  const currentWeek = getCurrentWeek(dailyToolValue, timeStamp)
   const currentWeekReduction = reduceCurrentWeek(currentWeek)
   return currentWeekReduction
 }

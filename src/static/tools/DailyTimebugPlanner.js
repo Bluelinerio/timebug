@@ -24,7 +24,7 @@ const form = {
       type: types.set,
       key: 'daily_timebug_planner_tool_daily_time',
       content: {
-        text: 'Break down your day on the 7 life categories',
+        text: 'Break down your day according to the 7 life categories',
         smallKey: 'Activities',
       },
       options: {

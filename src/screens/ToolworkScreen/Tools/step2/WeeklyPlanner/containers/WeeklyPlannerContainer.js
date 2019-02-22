@@ -34,10 +34,11 @@ const merge = (props: any) => {
     tool,
   })
   const dailyToolValue = dailyToolData ? dailyToolData.value : []
+  const dailyToolTimeStamp = dailyToolData ? dailyToolData.timestamp : null
   const weeklyToolValueForThisWeek = findWeeklyToolValue(weeklyToolData)
   const actionData = getActionsData(formDataStep2)
   const idealWeek = getIdealWeek(formDataStep2)
-  const currentWeek = getCurrentWeekAndReduce(dailyToolValue)
+  const currentWeek = getCurrentWeekAndReduce(dailyToolValue, dailyToolTimeStamp)
   const weekData = mapWeekData(idealWeek, currentWeek)
   return {
     ...props,
