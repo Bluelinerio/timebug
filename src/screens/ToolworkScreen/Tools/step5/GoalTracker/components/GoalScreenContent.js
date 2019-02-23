@@ -13,11 +13,12 @@ type Props = {
   tool: { subtitle: string },
   storeAwardData: (any, any) => any,
   data: { value: boolean, _id?: string, date?: string },
+  step: any,
 }
 
 class GoalScreenContent extends React.PureComponent<Props> {
   render() {
-    const { selectedGoaltype, selectedGoal } = this.props
+    const { selectedGoaltype, selectedGoal, step } = this.props
     return (
       <React.Fragment>
         {!selectedGoaltype &&
@@ -25,6 +26,7 @@ class GoalScreenContent extends React.PureComponent<Props> {
             <GoalTypeList
               data={this.props.data}
               onSelect={this.props.onSelectGoalType}
+              step={step}
             />
           )}
         {selectedGoaltype &&
@@ -33,6 +35,7 @@ class GoalScreenContent extends React.PureComponent<Props> {
               type={selectedGoaltype}
               data={this.props.data}
               onSelect={this.props.onSelectGoal}
+              step={step}
             />
           )}
         {selectedGoaltype &&

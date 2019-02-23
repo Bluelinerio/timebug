@@ -9,8 +9,6 @@ type DispatchProps = {
   notificationReceived: any => any,
 }
 
-// TODO: Fix here so I can get checkin data with the notification
-
 const mapDispatchToProps = (dispatch: any): DispatchProps => ({
   notificationReceived: (payload) => dispatch(notificationReceived(payload)),
 })

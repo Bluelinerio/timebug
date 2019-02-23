@@ -1,10 +1,10 @@
 // @flow
-import { connect }                from 'react-redux'
-import { compose, mapProps }      from 'recompose'
-import selectors                  from '2020_redux/selectors'
-import { FORM_KEYS, STEP_NUMBER } from '2020_forms/forms/goals'
-import GoalListElement            from '../components/GoalListElement'
-import { GoalTypesEnum }          from '2020_forms/forms/content'
+import { connect }           from 'react-redux'
+import { compose, mapProps } from 'recompose'
+import selectors             from '2020_redux/selectors'
+import { FORM_KEYS }         from '2020_forms/forms/goals'
+import GoalListElement       from '../components/GoalListElement'
+import { GoalTypesEnum }     from '2020_forms/forms/content'
 
 const GOAL_ICONS = {
   [GoalTypesEnum.ENERGY_AND_TIME]: 'GoalTypesET',
@@ -39,8 +39,8 @@ type MergeProps = {
 }
 
 const mergeProps = (props): MergeProps => {
-  const { type, onSelect, formData, data } = props
-  const step5Data = formData[STEP_NUMBER] || { value: [] }
+  const { type, onSelect, formData, data, step } = props
+  const step5Data = formData[`${step.number}`] || { value: [] }
   const { value } = step5Data
 
   const iconName = GOAL_ICONS[type] || ''

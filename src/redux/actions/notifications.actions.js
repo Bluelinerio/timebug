@@ -4,24 +4,38 @@ import {
   ON_NOTIFICATION,
   CREATE_NOTIFICATION,
   REMOVE_NOTIFICATION,
+  SCHEDULED_NOTIFICATION,
+  REMOVED_NOTIFICATION,
 } from '../actionTypes'
 
 type OnNotificationPayload = {
-  step: number,
+  type: string,
+  data: any,
 }
 
 type CreateNotificationPayload = {
   message: string,
-  nextCheckin: string,
+  notificationTime: string,
   id: string,
   repeatTime: number,
   additionalProps: any,
 }
 
 type RemoveNotificationPayload = {
-  checkin: {
-    id: string,
-  },
+  id: string,
+}
+
+type ScheduleNotificationPayload = {
+  message: string,
+  title: string,
+  notificationTime: string,
+  id: string,
+  repeatTime: number,
+  additionalProps: any,
+}
+
+type NotificationRemovedPayload = {
+  id: string,
 }
 
 export const cancelNotifications = () => ({
@@ -40,5 +54,15 @@ export const createNotification = (payload: CreateNotificationPayload) => ({
 
 export const removeNotification = (payload: RemoveNotificationPayload) => ({
   type: REMOVE_NOTIFICATION,
+  payload,
+})
+
+export const notificationScheduled = (payload: ScheduleNotificationPayload) => ({
+  type: SCHEDULED_NOTIFICATION,
+  payload,
+})
+
+export const notificationRemoved = (payload: NotificationRemovedPayload) => ({
+  type: REMOVED_NOTIFICATION,
   payload,
 })

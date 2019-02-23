@@ -1,3 +1,5 @@
+import { frequencies } from '2020_services/checkins'
+
 export const LifeStages = [
   'Infancy (0-3 yrs old)',
   'Early Childhood (3-6 yrs old)',
@@ -33,8 +35,8 @@ export const GoalType = [
 ]
 
 export const GoalTypesEnum = {
-  ENERGY_AND_TIME,
   ACHIEVEMENTS_AND_SKILLS,
+  ENERGY_AND_TIME,
   HEALTH_INDICATORS,
   INTERNAL_QUALITIES,
   ENVIRONMENT,
@@ -42,13 +44,51 @@ export const GoalTypesEnum = {
   RELATIONSHIP_QUALITY,
 }
 
-export const timeToCompleteGoal = [
-  'A day',
-  'A week',
-  'A month',
-  '6 months',
-  'A year',
-]
+export const timeToCompleteGoal = {
+  DAY: {
+    text: 'A day',
+    key: 'DAY',
+    moment: [{ unit: 'd', value: 1 }],
+    estimate: null,
+    frequency: frequencies.DAILY,
+  },
+  WEEK: {
+    text: 'A week',
+    key: 'WEEK',
+    moment: [{ unit: 'w', value: 1 }],
+    estimate: Array(7)
+      .fill()
+      .map((_, index) => `Day ${index + 1}`),
+    frequency: frequencies.DAILY,
+  },
+  MONTH: {
+    text: 'A month',
+    key: 'MONTH',
+    moment: [{ unit: 'M', value: 1 }],
+    estimate: Array(4)
+      .fill()
+      .map((_, index) => `Week ${index + 1}`),
+    frequency: frequencies.WEEKLY,
+  },
+  MON_6: {
+    text: '6 months',
+    key: 'MON_6',
+    moment: [{ unit: 'M', value: 6 }],
+    estimate: Array(6)
+      .fill()
+      .map((_, index) => `Month ${index + 1}`),
+    frequency: frequencies.MONTHLY,
+  },
+  YEAR: {
+    text: 'A year',
+    key: 'Year',
+    moment: [{ unit: 'y', value: 1 }],
+    estimate: Array(12)
+      .fill()
+      .map((_, index) => `Month ${index + 1}`),
+    frequency: frequencies.MONTHLY,
+  },
+}
 
 export const Emotions = [
   /*positive*/
@@ -146,4 +186,6 @@ export const LifeCategories = {
   },
 }
 
-export const LifeCategoriesArray = Object.values(LifeCategories).map(val => val.title)
+export const LifeCategoriesArray = Object.values(LifeCategories).map(
+  val => val.title
+)

@@ -1,13 +1,17 @@
-import moment                   from 'moment'
-import { connect }              from 'react-redux'
-import { withNavigation }       from 'react-navigation'
-import { compose }              from 'recompose'
-import selectors                from '2020_redux/selectors'
-import { changeUI }             from '2020_redux/actions/ui.actions'
-import GoalReview               from '../components/GoalReview'
-import { FORM_KEYS }            from '2020_forms/forms/goals'
-import { translateFrequencies } from '2020_forms/forms/goals'
-import { DATE_FORMAT }          from '2020_constants/constants'
+// @flow
+import moment                            from 'moment'
+import { connect }                       from 'react-redux'
+import { withNavigation }                from 'react-navigation'
+import { compose }                       from 'recompose'
+import selectors                         from '2020_redux/selectors'
+import { FORM_KEYS }                     from '2020_forms/forms/goals'
+import { DATE_FORMAT, TEXT_DATE_FORMAT } from '2020_constants/constants'
+import { timeToCompleteGoal }            from '2020_forms/forms/content'
+import GoalReview                        from '../components/GoalReview'
+import { frequencies }                   from '2020_services/checkins'
+import { getDueDate }                    from '../utils/getDueDateFromFrequency'
+
+// TODO: Refactor methods that change goals award data to a single one
 
 type StateProps = {
   formData: {
@@ -43,21 +47,14 @@ const mapStateToProps = (state: any): StateProps => {
   }
 }
 
-const mapDispatchToProps = (dispatch: any) => {
-  return {
-    setScreenStatusWrapper: (screen: string) => (params: any) =>
-      dispatch(changeUI({ screen, params })),
-  }
-}
-
-const getNewGoalAwardValueForSubsteps = ({ goal, substep, oldData }) => {
+const buildNewAwardValueForSubstep = ({ goal, substep, oldData, payload }) => {
   if (!oldData)
     return {
       goalId: goal._id,
       substeps: [
         {
           substepId: substep._id,
-          status: STATUS.CLEARED,
+          ...payload,
         },
       ],
       createdAt: moment().format(DATE_FORMAT),
@@ -74,10 +71,7 @@ const getNewGoalAwardValueForSubsteps = ({ goal, substep, oldData }) => {
             ...allSubsteps,
             {
               ...currSubstep,
-              status:
-                currSubstep.status === STATUS.CLEARED
-                  ? STATUS.NOT_CLEARED
-                  : STATUS.CLEARED,
+              ...payload,
             },
           ]
         return [...allSubsteps, currSubstep]
@@ -95,25 +89,26 @@ const getNewGoalAwardValueForSubsteps = ({ goal, substep, oldData }) => {
           ...oldSubsteps,
           {
             substepId: substep._id,
-            status: STATUS.CLEARED,
+            ...payload,
           },
         ],
       }
   }
 }
 
-const onPressSubstep = (currentAwardData, tool, storeAwardData) => {
-  return (goal, substep) => {
+const updateSubstep = (currentAwardData, tool, storeAwardData) => {
+  return ({ goal, substep, payload }) => {
     const { _id } = goal
     const value = currentAwardData ? currentAwardData.value || [] : []
 
     const oldData =
       value.find(goalAwardData => goalAwardData.goalId === _id) || null
 
-    const newGoalAwardValue = getNewGoalAwardValueForSubsteps({
+    const newGoalAwardValue = buildNewAwardValueForSubstep({
       goal,
       substep,
       oldData,
+      payload,
     })
 
     const newData = [
@@ -130,7 +125,10 @@ const textEvent = (goal, currentAwardData, tool, storeAwardData) => {
     const value = currentAwardData ? currentAwardData.value || [] : []
 
     const oldData =
-      value.find(goalAwardData => goalAwardData.goalId === _id) || null
+      value.find(goalAwardData => goalAwardData.goalId === _id) || {
+        createdAt: moment().format(DATE_FORMAT),
+        goalId: _id,
+      }
 
     const newGoalAwardValue = {
       ...oldData,
@@ -152,12 +150,17 @@ const switchGoal = (goal, currentAwardData, tool, storeAwardData) => {
     const value = currentAwardData ? currentAwardData.value || [] : []
 
     const oldData =
-      value.find(goalAwardData => goalAwardData.goalId === _id) || null
+      value.find(goalAwardData => goalAwardData.goalId === _id) || {
+        createdAt: moment().format(DATE_FORMAT),
+        goalId: _id,
+      }
 
     const newGoalAwardValue = {
       ...oldData,
       updatedAt: moment().format(DATE_FORMAT),
       completed: !oldData.completed,
+      completionDate:
+        !oldData.completed === true ? moment().format(TEXT_DATE_FORMAT) : null,
     }
 
     const newData = [
@@ -181,7 +184,10 @@ const softDelete = (
     const value = currentAwardData ? currentAwardData.value || [] : []
 
     const oldData =
-      value.find(goalAwardData => goalAwardData.goalId === _id) || null
+      value.find(goalAwardData => goalAwardData.goalId === _id) || {
+        createdAt: moment().format(DATE_FORMAT),
+        goalId: _id,
+      }
 
     const newGoalAwardValue = {
       ...oldData,
@@ -225,17 +231,24 @@ const merge = (
   const types = goal[FORM_KEYS.form_5_areas_of_life].value || []
   const steps = goal[FORM_KEYS.form_5_steps].value || []
   const substepsMerged = mergeSubstepFormDataWithAwards(steps, goal, data)
-  const frequency = translateFrequencies(goal[FORM_KEYS.form_5_checkin].value)
   const time = goal[FORM_KEYS.form_5_how_long].value
-  const onSubstepPress = onPressSubstep(data, tool, storeAwardData)
+  const timeText = timeToCompleteGoal[time].text
+  const update = updateSubstep(data, tool, storeAwardData)
   const onTextChange = textEvent(goal, data, tool, storeAwardData)
   const goalAwardData =
     data && data.value ? data.value.find(v => v.goalId === goal._id) : {}
   const toggleGoal = switchGoal(goal, data, tool, storeAwardData)
   const deleteGoal = softDelete(goal, data, tool, storeAwardData, unsetGoal)
+  const dialogElements = timeToCompleteGoal[time].estimate
+  const frequency = timeToCompleteGoal[time].frequency
+  const disableETC = frequency === frequencies.DAILY
+  const [daysLeft, completionDate] = getDueDate(
+    goal,
+    timeToCompleteGoal[time].moment
+  )
   return {
     goal,
-    onPress: onSubstepPress,
+    updateSubstep: update,
     onTextChange,
     goalAwardData,
     toggleGoal,
@@ -244,11 +257,15 @@ const merge = (
     types,
     steps: substepsMerged,
     frequency,
-    time,
+    time: timeText,
+    dialogElements,
+    status: STATUS,
+    disableETC,
+    daysLeft,
+    completionDate,
   }
 }
 
-export default compose(
-  withNavigation,
-  connect(mapStateToProps, mapDispatchToProps, merge)
-)(GoalReview)
+export default compose(withNavigation, connect(mapStateToProps, null, merge))(
+  GoalReview
+)

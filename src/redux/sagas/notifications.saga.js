@@ -4,13 +4,11 @@ import {
   fork,
   call,
   select,
-  put,
   actionChannel,
   take,
-}                               from 'redux-saga/effects'
-import { delay }                from 'redux-saga'
-import selectors                from '../selectors'
-import moment                   from 'moment'
+  put,
+}                              from 'redux-saga/effects'
+import selectors               from '../selectors'
 import {
   CANCEL_ALL_NOTIFICATIONS,
   ON_NOTIFICATION,
@@ -18,16 +16,21 @@ import {
   UPDATE_NOTIFICATION,
   REMOVE_NOTIFICATION,
   STORE_LOADED,
-}                               from '../actionTypes'
-import NotificationService      from '../../services/notifications'
-import { calculateNextCheckin } from '../../services/checkins'
-import { updateCheckin }        from '../actions/checkin.actions'
-import { linkNavigation }       from '../actions/nav.actions'
+}                              from '../actionTypes'
+import NotificationService, {
+  notificationTypes,
+}                              from '../../services/notifications'
+import {
+  notificationScheduled,
+  notificationRemoved,
+}                              from '../actions/notifications.actions'
 import type {
   CreateNotificationPayload,
   OnNotificationPayload,
   RemoveNotificationPayload,
-}                               from '../actions/notification.actions'
+}                              from '../actions/notifications.actions'
+import { checkinNotification } from '../actions/checkin.actions'
+import { goalNotification }    from '../actions/goals.actions'
 
 function* clearNotifications() {
   yield call(NotificationService.cancelAll)
@@ -38,28 +41,50 @@ function* scheduleNotification({
 }: {
   payload: CreateNotificationPayload,
 }) {
-  const { message, nextCheckin, id, repeatTime, additionalProps } = payload
+  const {
+    message,
+    notificationTime,
+    id: actualId,
+    repeatTime,
+    additionalProps,
+  } = payload
+  const title = 'Lifevision'
+  const id = `${actualId}`
   yield call(
     NotificationService.scheduleNotification,
     message,
-    'Lifevision',
-    nextCheckin,
-    `${id}`,
+    title,
+    notificationTime,
+    id,
     repeatTime,
     additionalProps
+  )
+  yield put(
+    notificationScheduled({
+      message,
+      notificationTime,
+      id,
+      repeatTime,
+      additionalProps,
+      title,
+    })
   )
 }
 
 function* onNotification({ payload }: { payload: OnNotificationPayload }) {
-  const { step, toolKey, action, frequency } = payload
+  const { type, data } = payload
   const hasStoreLoaded = yield select(selectors.hasStoreLoaded)
   if (!hasStoreLoaded) yield take(STORE_LOADED)
-  const lastCheckin = moment()
-  const [nextCheckin] = yield call(calculateNextCheckin, frequency)
-  yield put(updateCheckin({ step, checkin: { lastCheckin, nextCheckin, toolKey } }))
-  yield delay(1)
-  if (action.type === 'link')
-    yield put(linkNavigation({ link: action.payload.link }))
+  switch (type) {
+  case notificationTypes.CHECKIN_NOTIFICATION:
+    yield put(checkinNotification(data))
+    break
+  case notificationTypes.GOAL_NOTIFICATION:
+    yield put(goalNotification(data))
+    break
+  default:
+    break
+  }
 }
 
 function* removeNotification({
@@ -67,8 +92,10 @@ function* removeNotification({
 }: {
   payload: RemoveNotificationPayload,
 }) {
-  const { checkin } = payload
-  yield call(NotificationService.cancelNotification, `${checkin.id}`)
+  const { id: actualId } = payload
+  const id = `${actualId}`
+  yield call(NotificationService.cancelNotification, id)
+  yield put(notificationRemoved({ id }))
 }
 
 function* watchForNotificationScheduling() {

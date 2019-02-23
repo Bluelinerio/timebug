@@ -1,8 +1,9 @@
-import React from 'react'
+// @flow
+import React                             from 'react'
 import { View, ScrollView, BackHandler } from 'react-native'
-import GoalScreenContent from './GoalScreenContent'
-import styles from '../styles'
-import SubHeader from './SubHeader'
+import GoalScreenContent                 from './GoalScreenContent'
+import SubHeader                         from './SubHeader'
+import styles                            from '../styles'
 
 type State = {
   selectedGoaltype: String | null,
@@ -14,6 +15,10 @@ type Props = {
   tool: { subtitle: string },
   storeAwardData: (any, any) => any,
   data: { value: boolean, _id?: string, date?: string },
+  type?: string,
+  goal?: any,
+  goalId?: string,
+  step: any,
 }
 
 class GoalScreenComponent extends React.PureComponent<Props, State> {
@@ -22,9 +27,10 @@ class GoalScreenComponent extends React.PureComponent<Props, State> {
 
   constructor(props) {
     super(props)
+    const { type, goal } = props
     this.state = {
-      selectedGoaltype: null,
-      selectedGoal: null,
+      selectedGoaltype: type,
+      selectedGoal: goal,
     }
     this._didFocusSubscription = props.navigation.addListener('didFocus', () =>
       BackHandler.addEventListener(
@@ -32,6 +38,16 @@ class GoalScreenComponent extends React.PureComponent<Props, State> {
         this.onBackButtonPressAndroid
       )
     )
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.goalId && prevProps.goalId !== this.props.goalId) {
+      const { type, goal } = this.props
+      this.setState({
+        selectedGoaltype: type,
+        selectedGoal: goal,
+      })
+    }
   }
 
   componentDidMount() {
@@ -112,6 +128,7 @@ class GoalScreenComponent extends React.PureComponent<Props, State> {
         >
           <GoalScreenContent
             tool={this.props.tool}
+            step={this.props.step}
             storeAwardData={this.props.storeAwardData}
             data={this.props.data}
             onSelectGoal={this._onSelectGoal}

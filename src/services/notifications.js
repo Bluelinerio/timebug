@@ -1,6 +1,16 @@
 // @flow
 import PushNotification from 'react-native-push-notification'
 
+const CHECKIN_NOTIFICATION = 'CHECKIN_NOTIFICATION'
+const DATA_NOTIFICATION = 'DATA_NOTIFICATION'
+const GOAL_NOTIFICATION = 'GOAL_NOTIFICATION'
+
+export const notificationTypes = {
+  CHECKIN_NOTIFICATION,
+  DATA_NOTIFICATION,
+  GOAL_NOTIFICATION,
+}
+
 class NotificationService {
   static callbacksSet: boolean = false
 

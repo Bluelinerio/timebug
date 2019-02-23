@@ -6,6 +6,7 @@ import {
   REMOVE_CHECKIN,
   DELETE_CHECKIN,
   TOGGLE_CHECKIN,
+  CHECKIN_NOTIFICATION,
 }                              from '../actionTypes'
 import type { CheckinElement } from '../reducers/checkin.reducer'
 
@@ -29,6 +30,14 @@ export type ToggleCheckinPayload = {
   step: string,
   checkin?: CheckinChangePayload,
 }
+
+export type CheckinNotificationPayload = {
+  step: string,
+  toolKey: string,
+  action: string,
+  frequency: string,
+}
+
 
 export const changeCheckin = (payload: CheckinChangePayload) => ({
   type: CHANGE_CHECKIN,
@@ -56,5 +65,10 @@ export const deleteCheckin = (payload: DeleteCheckinPayload) => ({
 
 export const toggleCheckin = (payload: ToggleCheckinPayload) => ({
   type: TOGGLE_CHECKIN,
+  payload,
+})
+
+export const checkinNotification = (payload: CheckinNotificationPayload) => ({
+  type: CHECKIN_NOTIFICATION,
   payload,
 })

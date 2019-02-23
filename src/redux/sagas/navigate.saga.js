@@ -1,11 +1,11 @@
 // @flow
 import { put, select, takeLatest }      from 'redux-saga/effects'
+import { NavigationActions }            from 'react-navigation'
 import {
   GO_TO_HOME_SCREEN,
   SAGA_NAVIGATE,
   LINK_NAVIGATION,
 }                                       from '../actionTypes'
-import { NavigationActions }            from 'react-navigation'
 import { goToStartScreen, goToTool }    from '../actions/nav.actions'
 import type { goToToolParams }          from '../actions/nav.actions'
 import type { LinkedNavigationPayload } from '../actions/nav.actions'
@@ -35,13 +35,14 @@ const handleGoToTool = (
   tools: any,
   steps: any
 ) => {
-  const { step: stepNumber, key } = params
+  const { step: stepNumber, key, ...rest } = params
   const step = steps[stepNumber]
   const toolsForStep = tools[stepNumber] || []
   const tool = toolsForStep.find(t => t.key === key)
   const payload: goToToolParams = {
     step,
     tool,
+    payload: rest,
   }
   return goToTool(payload)
 }
@@ -64,7 +65,11 @@ function* deeplinkNavigation({
 }) {
   const tools = yield select(selectors.getAllTools)
   const steps = yield select(selectors.steps)
-  yield put(handleLink(payload, tools, steps))
+  try {
+    yield put(handleLink(payload, tools, steps))
+  } catch (err) {
+    console.log(err)
+  }
 }
 
 function* onNavigate(action) {

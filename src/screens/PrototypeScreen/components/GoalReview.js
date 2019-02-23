@@ -91,7 +91,7 @@ class GoalReview extends React.PureComponent<Props> {
             </Text>
           </View>
           <View style={[styles.goalReviewTextBlock, styles.goalReviewIndent]}>
-            <Text style={styles.goalScreenContent}>ETA: {goal['3'].value}</Text>
+            <Text style={styles.goalScreenContent}>ETC: {goal['3'].value}</Text>
           </View>
           <View style={styles.goalReviewTextBlock}>
             <Text style={styles.goalScreenContent}>Progress</Text>

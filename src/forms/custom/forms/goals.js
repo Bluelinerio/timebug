@@ -1,8 +1,8 @@
 import types, { actionTypes, answerTypes } from './types'
-import { frequencies }                     from '2020_services/checkins'
-import { GoalType, timeToCompleteGoal }    from './content'
-
-export const STEP_NUMBER = '5'
+import {
+  GoalType,
+  timeToCompleteGoal,
+}                                          from './content'
 
 export const STATUS = {
   PENDING: 'PENDING',
@@ -10,9 +10,6 @@ export const STATUS = {
   ARCHIVED: 'ARCHIVED',
   DELETED: 'DELETED',
 }
-
-export const translateFrequencies = (frequency: string) =>
-  frequencies[frequency]
 
 export const FORM_KEYS = {
   form_5_recent_life_goals: 'form_5_recent_life_goals',
@@ -68,33 +65,17 @@ const form5 = {
       key: FORM_KEYS.form_5_how_long,
       content: {
         text: 'How long do you think it will take to complete this goal?',
-        smallKey: 'ETA',
-        items: timeToCompleteGoal.map(time => ({
-          value: time,
-          text: time,
+        smallKey: 'ETC',
+        items: Object.keys(timeToCompleteGoal).map(key => ({
+          value: key,
+          text: timeToCompleteGoal[key].text,
         })),
       },
       options: {
-        default: timeToCompleteGoal[0],
+        default: timeToCompleteGoal.DAY.key,
       },
     },
     3: {
-      type: types.select,
-      key: FORM_KEYS.form_5_checkin,
-      content: {
-        text: 'How often would you like to be reminded about this goal?',
-        smallKey: 'Check-in',
-        items: Object.keys(frequencies).map(key => ({
-          value: key,
-          text: frequencies[key],
-        })),
-        translation: translateFrequencies,
-      },
-      options: {
-        default: Object.keys(frequencies)[0],
-      },
-    },
-    4: {
       type: types.list,
       key: FORM_KEYS.form_5_steps,
       content: {
@@ -116,7 +97,7 @@ const form5 = {
         required: true,
       },
     },
-    5: {
+    4: {
       type: types.button,
       content: {
         text: 'Do you wish to add more goals?',
