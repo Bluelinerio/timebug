@@ -34,6 +34,7 @@ import GoalStepScreen     from '../screens/GoalStepScreen'
 import AppVersionScreen   from '../screens/AppVersionSelectionScreen'
 import V2Navigator        from '../screens/v.2.0'
 import HelpScreen         from '../screens/HelpScreen'
+import LoginScreen        from '../screens/LoginScreen'
 
 // TODO: Prototype to remove
 import PrototypeNavigator from '../screens/PrototypeScreen'
@@ -263,6 +264,9 @@ export const startConfiguration = {
     },
     [routes.start.Walkthrough]: {
       screen: WalkthroughScreen,
+    },
+    [routes.start.LoginScreen]: {
+      screen: LoginScreen,
     },
   },
   options: {

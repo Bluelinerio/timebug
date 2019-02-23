@@ -269,3 +269,8 @@ export const goToHomeScreen = (params?: any) =>
 export const goToGuideBookScreen = () => ({})
 
 export const goToMyRewardsScreen = () => ({})
+
+export const goToLogin = () =>
+  NavigationActions.navigate({
+    routeName: routes.start.LoginScreen,
+  })

@@ -3,7 +3,7 @@ import { connect }                         from 'react-redux'
 import { compose }                         from 'recompose'
 import { withNavigation }                  from 'react-navigation'
 import OptionButton, { OptionButtonProps } from '../components/OptionButton'
-import { loginWithFbButtonPressed }        from '../../../redux/actions'
+import { goToLogin }                       from '2020_redux/actions/nav.actions'
 import styles                              from '../styles'
 import {
   getColorForStepAtIndex,
@@ -75,7 +75,7 @@ const mapStateToProps = (state: any): OptionButtonStateProps => {
 }
 
 const mapDispatchToProps = (dispatch: any): OptionButtonDispatchProps => ({
-  login: (params) => dispatch(loginWithFbButtonPressed(params)),
+  login: () => dispatch(goToLogin()),
 })
 
 const merge = (
