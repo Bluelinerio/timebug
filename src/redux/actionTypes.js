@@ -44,6 +44,8 @@ export const SYNC_FINISHED = 'SYNC_FINISHED'
 
 export const RESTORE_FORM_DATA = 'RESTORE_FORM_DATA'
 
+export const SYNC_SIDE_EFFECTS = 'SYNC_SIDE_EFFECTS'
+
 /**
  * Awards
  */

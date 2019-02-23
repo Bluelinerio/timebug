@@ -6,24 +6,29 @@ import {
   call,
   select,
   put,
-}                                                from 'redux-saga/effects'
-import { FORM_KEYS as goalFormKeys }             from '2020_forms/forms/goals'
-import { timeToCompleteGoal }                    from '2020_forms/forms/content'
-import { stepEnum }                              from '2020_services/cms'
-import { TOOL_KEYS }                             from '2020_static/tools'
-import { getDueDate }                            from '2020_utils/dateCalculationHelpers'
-import { toHashCode }                            from '2020_utils/hashing'
-import selectors                                 from '../selectors'
-import { SUBMIT_FORM_VALUE, SUBMIT_AWARD_VALUE } from '../actionTypes'
-import type { SubmitActionPayload }              from '../actions/formData.actions'
-import type { GoalNotificationPayload }          from '../actions/goals.actions'
-import type { SubmitAwardValuePayload }          from '../actions/award.actions'
+  takeLatest,
+}                                       from 'redux-saga/effects'
+import { FORM_KEYS as goalFormKeys }    from '2020_forms/forms/goals'
+import { timeToCompleteGoal }           from '2020_forms/forms/content'
+import { stepEnum }                     from '2020_services/cms'
+import { TOOL_KEYS }                    from '2020_static/tools'
+import { getDueDate }                   from '2020_utils/dateCalculationHelpers'
+import { toHashCode }                   from '2020_utils/hashing'
+import selectors                        from '../selectors'
+import {
+  SUBMIT_FORM_VALUE,
+  SUBMIT_AWARD_VALUE,
+  SYNC_SIDE_EFFECTS,
+}                                       from '../actionTypes'
+import type { SubmitActionPayload }     from '../actions/formData.actions'
+import type { GoalNotificationPayload } from '../actions/goals.actions'
+import type { SubmitAwardValuePayload } from '../actions/award.actions'
 import {
   createNotification,
   removeNotification,
-}                                                from '../actions/notifications.actions'
-import { notificationTypes }                     from '../../services/notifications'
-import { calculateNextCheckin }                  from '../../services/checkins'
+}                                       from '../actions/notifications.actions'
+import { notificationTypes }            from '../../services/notifications'
+import { calculateNextCheckin }         from '../../services/checkins'
 
 // TODO: Refactor into several sagas, extract constants to readable file
 
@@ -212,7 +217,39 @@ function* _watchForFormChanges() {
   }
 }
 
+function* _handleSyncSideEffects() {
+  for (const step in toolKeysForStepIds) {
+    const formData = yield select(selectors.formData)
+    const formDataForStep = formData
+      ? formData[`${step}`] ? formData[`${step}`].value : undefined
+      : undefined
+    if (!formDataForStep) continue
+    const toolKey = toolKeysForStepIds[step]
+    const getAwardDataForTool = yield select(selectors.awardDataForStepAndTool)
+    const awardDataForTool = yield call(getAwardDataForTool, {
+      stepNumber: `${step}`,
+      tool: { key: toolKey },
+    })
+    const awardDataValue =
+      awardDataForTool && awardDataForTool.value
+        ? awardDataForTool.value
+        : undefined
+    switch (step) {
+    case stepEnum.STEP_5:
+      yield call(_syncGoalsNotifications, formDataForStep, awardDataValue)
+      break
+    default:
+      yield
+    }
+  }
+}
+
+function* _watchForSyncronization() {
+  yield takeLatest(SYNC_SIDE_EFFECTS, _handleSyncSideEffects)
+}
+
 export function* watchForFormSideEffectsSaga() {
   yield fork(_watchForAwardChanges)
   yield fork(_watchForFormChanges)
+  yield fork(_watchForSyncronization)
 }
