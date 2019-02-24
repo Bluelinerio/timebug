@@ -6,6 +6,7 @@ import {
   SYNC_GOAL_STEPS,
   UPDATE_GOAL_STEP_INNER,
   GOAL_NOTIFICATION,
+  GOALS_SIDE_EFFECT,
 } from '../actionTypes'
 
 /**
@@ -60,6 +61,15 @@ export type GoalNotificationPayload = {
   notificationInterval: number,
 }
 
+type FormValue = {
+  value: any,
+}
+
+export type GoalSideEffectPayload = {
+  value: Array<FormValue>,
+  awardData: Array<any>,
+}
+
 export const AddGoalStep = (payload: GoalStepPayload): AddGoalStepAction => ({
   type: ADD_GOAL_STEP,
   payload,
@@ -92,5 +102,10 @@ export const updateGoalStepsInner = (
 
 export const goalNotification = (payload: GoalNotificationPayload) => ({
   type: GOAL_NOTIFICATION,
+  payload,
+})
+
+export const goalSideEffect = (payload: GoalSideEffectPayload) => ({
+  type: GOALS_SIDE_EFFECT,
   payload,
 })

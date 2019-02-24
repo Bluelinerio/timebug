@@ -159,3 +159,9 @@ export const REQUEST_PERMISSIONS_NEVER = 'REQUEST_PERMISSIONS_NEVER'
 export const ADD_CONTACT = 'ADD_CONTACT'
 
 export const REMOVE_CONTACT = 'REMOVE_CONTACT'
+
+/**
+ * Form side effects
+ */
+
+export const GOALS_SIDE_EFFECT = 'GOALS_SIDE_EFFECT'

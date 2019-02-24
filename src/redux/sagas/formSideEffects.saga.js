@@ -8,12 +8,10 @@ import {
   put,
   takeLatest,
 }                                       from 'redux-saga/effects'
-import { FORM_KEYS as goalFormKeys }    from '2020_forms/forms/goals'
-import { timeToCompleteGoal }           from '2020_forms/forms/content'
-import { stepEnum }                     from '2020_services/cms'
+
 import { TOOL_KEYS }                    from '2020_static/tools'
-import { getDueDate }                   from '2020_utils/dateCalculationHelpers'
-import { toHashCode }                   from '2020_utils/hashing'
+import { stepEnum }                     from '2020_services/cms'
+
 import selectors                        from '../selectors'
 import {
   SUBMIT_FORM_VALUE,
@@ -21,14 +19,9 @@ import {
   SYNC_SIDE_EFFECTS,
 }                                       from '../actionTypes'
 import type { SubmitActionPayload }     from '../actions/formData.actions'
-import type { GoalNotificationPayload } from '../actions/goals.actions'
 import type { SubmitAwardValuePayload } from '../actions/award.actions'
-import {
-  createNotification,
-  removeNotification,
-}                                       from '../actions/notifications.actions'
-import { notificationTypes }            from '../../services/notifications'
-import { calculateNextCheckin }         from '../../services/checkins'
+import type { GoalSideEffectPayload }   from '../actions/goals.actions'
+import { goalSideEffect }               from '../actions/goals.actions'
 
 // TODO: Refactor into several sagas, extract constants to readable file
 
@@ -36,124 +29,15 @@ const toolKeysForStepIds = {
   [stepEnum.STEP_5]: TOOL_KEYS.GoalTrackerKey,
 }
 
-const CREATE = 'CREATE'
-const DELETE = 'DELETE'
-
-type FormValue = {
-  value: any,
-}
-
-type GoalStruct = {
-  id: string,
-  title: string,
-  areasOfLife: Array<string>,
-  award?: {
-    completed?: boolean,
-    deleted?: boolean,
-  },
-  isValid?: boolean,
-  notification?: any,
-  frequency: string,
-  due: string,
-}
-
-function* _syncGoalsNotifications(
-  value: Array<FormValue>,
+function* _callGoalsSideEffect(
+  value: Array<any> = [],
   awardData: Array<any> = []
 ) {
-  const notifications = yield select(selectors.notifications)
-  const mergedStep5Data: Array<GoalStruct> = value.reduce(
-    (goalsData, goalFormData) => {
-      const { _id } = goalFormData
-      const dueDateKey = goalFormData[goalFormKeys.form_5_how_long].value
-      const title = goalFormData[goalFormKeys.form_5_recent_life_goals].value
-      const areasOfLife = goalFormData[goalFormKeys.form_5_areas_of_life].value
-      const momentMods = timeToCompleteGoal[dueDateKey].moment
-      const frequency = timeToCompleteGoal[dueDateKey].frequency
-      const { hasNotHappened, due } = getDueDate(goalFormData, momentMods)
-      const award = awardData ? awardData.find(g => g.goalId === _id) : null
-      const nId = `${toHashCode(_id)}`
-      const notification = notifications.find(n => n.id === nId)
-
-      return [
-        ...goalsData,
-        {
-          id: _id,
-          title,
-          areasOfLife,
-          award,
-          notification,
-          isValid: hasNotHappened,
-          frequency,
-          due,
-        },
-      ]
-    },
-    []
-  )
-
-  const goalActions = mergedStep5Data.reduce((actions, goal) => {
-    const hasNotification = !!goal.notification
-    const hasFulfilledConditions = goal.award
-      ? goal.award.completed || goal.award.deleted
-      : false
-    const { isValid } = goal
-    if (hasNotification && (hasFulfilledConditions || !isValid))
-      return [
-        ...actions,
-        {
-          _action: DELETE,
-          goal,
-        },
-      ]
-    else if (!hasNotification && !hasFulfilledConditions && isValid)
-      return [
-        ...actions,
-        {
-          _action: CREATE,
-          goal,
-        },
-      ]
-    return actions
-  }, [])
-
-  for (const action of goalActions) {
-    const { _action, goal } = action
-    if (_action === CREATE) {
-      const { id, title, frequency, due, areasOfLife } = goal
-      const notificationId = `${toHashCode(id)}`
-
-      const [notificationTime, notificationInterval] = yield call(
-        calculateNextCheckin,
-        frequency
-      )
-
-      const additionalProps: { type: string, data: GoalNotificationPayload } = {
-        type: notificationTypes.GOAL_NOTIFICATION,
-        data: {
-          goalId: id,
-          due,
-          areasOfLife,
-          frequency,
-          notificationId,
-          notificationInterval,
-        },
-      }
-
-      yield put(
-        createNotification({
-          message: `It's time to check up on your goal: ${title}`,
-          id: notificationId,
-          notificationTime,
-          repeatTime: notificationInterval,
-          additionalProps,
-        })
-      )
-    } else {
-      const { notification } = goal
-      yield put(removeNotification({ id: `${notification.id}` }))
-    }
+  const payload: GoalSideEffectPayload = {
+    value,
+    awardData,
   }
+  yield put(goalSideEffect(payload))
 }
 
 function* _handleAwardEffects(action: {
@@ -167,7 +51,7 @@ function* _handleAwardEffects(action: {
   const formDataForStep = formData[`${stepId}`].value
   switch (stepId) {
   case stepEnum.STEP_5:
-    yield call(_syncGoalsNotifications, formDataForStep, value)
+    yield call(_callGoalsSideEffect, formDataForStep, value)
     break
   default:
     yield
@@ -194,7 +78,7 @@ function* _handleSideEffects(action: {
       : undefined
   switch (stepId) {
   case stepEnum.STEP_5:
-    yield call(_syncGoalsNotifications, value, awardDataValue)
+    yield call(_callGoalsSideEffect, value, awardDataValue)
     break
   default:
     yield
@@ -236,7 +120,7 @@ function* _handleSyncSideEffects() {
         : undefined
     switch (step) {
     case stepEnum.STEP_5:
-      yield call(_syncGoalsNotifications, formDataForStep, awardDataValue)
+      yield call(_callGoalsSideEffect, formDataForStep, awardDataValue)
       break
     default:
       yield
