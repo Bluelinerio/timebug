@@ -286,6 +286,14 @@ class Form extends React.PureComponent<Props, any> {
       : !(value.length > 0)
   }
 
+  _multipleSelectValidation = (value, options) => {
+    const { constraints = {} } = options
+    if (!value) return true
+    return constraints.min && constraints.min > 0
+      ? value.length < constraints.min
+      : !(value.length > 0)
+  }
+
   _checkValidation = (field, value) => {
     const { type, options = {} } = field
     switch (type) {
@@ -295,6 +303,8 @@ class Form extends React.PureComponent<Props, any> {
       return !value || value.trim() === ''
     case types.connected:
       return !value
+    case types.multipleSelect:
+      return this._multipleSelectValidation(value, options)
     default:
       return false
     }

@@ -58,6 +58,10 @@ const form5 = {
       },
       options: {
         default: [],
+        required: true,
+        constraints: {
+          min: 1,
+        },
       },
     },
     2: {
