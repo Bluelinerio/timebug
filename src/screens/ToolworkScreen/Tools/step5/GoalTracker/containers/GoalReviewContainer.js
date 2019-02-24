@@ -8,7 +8,6 @@ import { FORM_KEYS }                     from '2020_forms/forms/goals'
 import { DATE_FORMAT, TEXT_DATE_FORMAT } from '2020_constants/constants'
 import { timeToCompleteGoal }            from '2020_forms/forms/content'
 import GoalReview                        from '../components/GoalReview'
-import { frequencies }                   from '2020_services/checkins'
 import { getDueDate }                    from '../utils/getDueDateFromFrequency'
 
 // TODO: Refactor methods that change goals award data to a single one
@@ -241,7 +240,7 @@ const merge = (
   const deleteGoal = softDelete(goal, data, tool, storeAwardData, unsetGoal)
   const dialogElements = timeToCompleteGoal[time].estimate
   const frequency = timeToCompleteGoal[time].frequency
-  const disableETC = frequency === frequencies.DAILY
+  const disableETC = time === timeToCompleteGoal.DAY.key
   const [daysLeft, completionDate] = getDueDate(
     goal,
     timeToCompleteGoal[time].moment
