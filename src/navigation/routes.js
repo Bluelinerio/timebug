@@ -39,6 +39,7 @@ export default {
     VersionNavigator: 'VersionNavigator',
     TabNavigator: 'TabNavigator',
     HelpScreen: 'HelpScreen',
+    LoginScreen: 'LoginScreen',
   },
   goals: {
     initialRouteName: 'GoalScreen',
