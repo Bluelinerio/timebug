@@ -39,7 +39,7 @@ const form6 = {
       type: types.formElements,
       key: 'form_6_plan_and_estimated_time',
       content: {
-        text: 'Write down a detailed plan for how much you can help this person, and estime how much time it will take',
+        text: 'Write down a detailed plan for how you will help this person, and when you would like it to be complete.',
         smallKey: 'Goal Plan',
       },
       options: {
@@ -58,7 +58,7 @@ const form6 = {
             type: types.string,
             key: 'form_6_plan_and_estimated_time.time',
             options: {
-              placeHolder: 'Estimated Time',
+              placeHolder: 'Target completion date',
               default: '',
             },
           },
