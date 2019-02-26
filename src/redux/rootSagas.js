@@ -16,6 +16,7 @@ import { watchForNotificationSaga }                 from './sagas/notifications.
 import { watchForGoalsSaga }                        from './sagas/goals.saga'
 import { watchForAwardsSaga }                       from './sagas/awards.saga'
 import { watchForContactsSaga }                     from './sagas/contacts.saga'
+import { watchForFormSideEffectsSaga }              from './sagas/formSideEffects.saga'
 
 function* appSaga() {
   yield all([
@@ -34,6 +35,7 @@ function* appSaga() {
     watchForGoalsSaga(),
     watchForAwardsSaga(),
     watchForContactsSaga(),
+    watchForFormSideEffectsSaga(),
   ])
 }
 export default function* rootSaga() {

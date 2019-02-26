@@ -1,3 +1,4 @@
+//@flow
 import React                                       from 'react'
 import { View, TouchableOpacity, Text }            from 'react-native'
 import Icon                                        from 'react-native-vector-icons/Ionicons'
@@ -5,19 +6,22 @@ import { CHILDREN_KEYS }                           from '2020_forms/forms/goals'
 import styles, { completedColor, incompleteColor } from '../styles'
 
 type Step = {
-  [x: String]: {
-    _id: String,
+  [x: string]: {
+    _id: string,
     value: any,
   },
-  _id: String,
-  extra?: {
-    completed?: Boolean,
+  _id: string,
+  award: {
+    estimate?: string,
+    status: boolean,
   },
 }
 
 type Props = {
   step: Step,
   onPress: Step => {},
+  onSubstepPress: Step => any,
+  disableETC: boolean,
 }
 
 class GoalSubstep extends React.PureComponent<Props> {
@@ -26,10 +30,18 @@ class GoalSubstep extends React.PureComponent<Props> {
     onPress(step)
   }
 
+  _onContainerPress = () => {
+    const { onSubstepPress, step } = this.props
+    onSubstepPress(step)
+  }
+
   render() {
-    const { step } = this.props
+    const { step, disableETC } = this.props
     return (
-      <View style={styles.elementContainer}>
+      <TouchableOpacity
+        style={styles.elementContainer}
+        onPress={this._onContainerPress}
+      >
         <TouchableOpacity
           style={[styles.leftBlock, styles.leftIcon]}
           onPress={this._onPress}
@@ -50,8 +62,17 @@ class GoalSubstep extends React.PureComponent<Props> {
           <Text style={styles.elementText}>
             {step[CHILDREN_KEYS.form_5_steps.step_to_life_goal].value}
           </Text>
+          <Text style={[styles.elementText, styles.subtextFootnote]}>
+            {disableETC
+              ? `Due: Today`
+              : `Estimated completion: ${
+                step.award && step.award.estimate
+                  ? step.award.estimate
+                  : 'Not set'
+              }`}
+          </Text>
         </View>
-      </View>
+      </TouchableOpacity>
     )
   }
 }

@@ -11,9 +11,10 @@ import {
   getGoals,
   getAppState,
   getContactState,
+  getNotifications,
+  getNavigationState,
 }                                                             from './rootReducer.selectors'
 import { ANONYMOUS, AUTHENTICATING }                          from '../../services/apollo/models'
-import { UNDETERMINED }                                       from '2020_constants/constants'
 // models
 import workbooks                                              from '../../screens/WorkbookScreen/forms'
 import { removeIvalidValuesInsteadOfDoingAnyMigrationForNow } from '../tcomb'
@@ -370,6 +371,18 @@ const getContactPermissions = (state: any) => getContactState(state).permissions
  * End Contacts
  */
 
+/**
+ * Notifications
+ */
+
+const notifications = (state: any) => getNotifications(state).notifications
+
+/**
+ * End Notifications
+ */
+
+const navigationState = (state: any) => getNavigationState(state)
+
 const selectors = {
   getCms,
   sortedSteps,
@@ -427,6 +440,8 @@ const selectors = {
   getContactState,
   getContacts,
   getContactPermissions,
+  notifications,
+  navigationState,
 }
 
 export default selectors

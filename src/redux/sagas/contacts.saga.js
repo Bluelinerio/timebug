@@ -8,9 +8,8 @@ import {
   requestPermission,
   updatePermission,
 }                                              from '2020_redux/actions/contacts.actions'
-import { GRANTED }                             from '2020_constants/constants'
 
-const CONTACTS_SUCCESS = 'CONTACTS_SUCCESS'
+//TODO: Fix the update permissions if, happens every time
 
 function* _checkPermissionsAndRequestContacts() {
   const completedForms = yield select(selectors.completedForms)

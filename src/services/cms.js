@@ -5,6 +5,10 @@ export const SELF_ASSESSMENT = 'SELF_ASSESSMENT'
 export const VISION_CREATION = 'VISION_CREATION'
 export const COMPLETE = 'COMPLETE'
 
+export const stepEnum = Array(30)
+  .fill()
+  .reduce((en, _, index) => ({ ...en, [`STEP_${index + 1}`]: `${index + 1}` }), {})
+
 export const PHASES = {
   MEDITATION,
   SELF_ASSESSMENT,

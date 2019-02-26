@@ -1,8 +1,8 @@
 // @flow
 import React                                      from 'react'
 import { View, TouchableOpacity, Text }           from 'react-native'
-import styles, { iconSize, iconColor }            from '../styles'
 import moment                                     from 'moment'
+import styles, { iconSize, iconColor }            from '../styles'
 import FormPicker                                 from './FormComponents/FormPicker'
 import { actionTypes, passiveTypes, answerTypes } from '../forms/types'
 import Icon                                       from 'react-native-vector-icons/Ionicons'
@@ -12,7 +12,6 @@ import Display                                    from './debug/DisplayComponent
 import types                                      from '../forms/types'
 
 const DEBUG_DISPLAY = false
-
 
 type Props = {
   model: any,
@@ -69,7 +68,15 @@ const TextFormButton = ({
     style={disabled ? styles.formDisabledButton : styles.button}
     disabled={disabled}
   >
-    <Text style={[styles.text, styles.bottomButtonText, disabled ? { opacity: 0 }: {}]}>{text}</Text>
+    <Text
+      style={[
+        styles.text,
+        styles.bottomButtonText,
+        disabled ? { opacity: 0 } : {},
+      ]}
+    >
+      {text}
+    </Text>
   </TouchableOpacity>
 )
 
@@ -176,7 +183,14 @@ class Form extends React.PureComponent<Props, any> {
     const newStorableValue =
       this.model.answer === answerTypes.single
         ? this._handleSingleAnswerStorage(newValue)
-        : [...storableValue, { ...newValue, _id: uuid() }]
+        : [
+          ...storableValue,
+          {
+            ...newValue,
+            _id: uuid(),
+            created_at: moment().format(),
+          },
+        ]
 
     this.setState(
       {
@@ -198,12 +212,14 @@ class Form extends React.PureComponent<Props, any> {
         {
           ...value,
           _id: uuid(),
+          created_at: moment().format(),
         },
       ]
       : [
         {
           ...(storableValue[0] || {}),
           ...value,
+          updated_at: moment().format(),
         },
       ]
   }
@@ -239,7 +255,14 @@ class Form extends React.PureComponent<Props, any> {
     const { value, storableValue, formIteration } = this.state
     this.setState({
       fieldIndex: payload,
-      storableValue: [...storableValue, { ...value, _id: uuid() }],
+      storableValue: [
+        ...storableValue,
+        {
+          ...value,
+          _id: uuid(),
+          created_at: moment().format(),
+        },
+      ],
       value:
         this.props.value && this.props.value[formIteration + 1]
           ? this.props.value[formIteration + 1]
@@ -263,6 +286,14 @@ class Form extends React.PureComponent<Props, any> {
       : !(value.length > 0)
   }
 
+  _multipleSelectValidation = (value, options) => {
+    const { constraints = {} } = options
+    if (!value) return true
+    return constraints.min && constraints.min > 0
+      ? value.length < constraints.min
+      : !(value.length > 0)
+  }
+
   _checkValidation = (field, value) => {
     const { type, options = {} } = field
     switch (type) {
@@ -271,7 +302,9 @@ class Form extends React.PureComponent<Props, any> {
     case types.string:
       return !value || value.trim() === ''
     case types.connected:
-      return !(value)
+      return !value
+    case types.multipleSelect:
+      return this._multipleSelectValidation(value, options)
     default:
       return false
     }
@@ -359,23 +392,26 @@ class Form extends React.PureComponent<Props, any> {
               text={'Prev'}
             />
           )}
-          { !(isFieldRequired && this._checkValidation(currentField, currentElementValue)) && (
-            <TextFormButton
-              onPress={
-                fieldIndex < numberOfFields - 1 ? this._onPress : this._onFinish
-              }
-              styles={{
-                button: [styles.formButton, formStyles.buttonContainerStyle],
-                text: styles.formButtonText,
-              }}
-              formStyles={formStyles}
-              disabled={
-                isFieldRequired &&
+          {!(
+            isFieldRequired &&
+            this._checkValidation(currentField, currentElementValue)
+          ) && (
+              <TextFormButton
+                onPress={
+                  fieldIndex < numberOfFields - 1 ? this._onPress : this._onFinish
+                }
+                styles={{
+                  button: [styles.formButton, formStyles.buttonContainerStyle],
+                  text: styles.formButtonText,
+                }}
+                formStyles={formStyles}
+                disabled={
+                  isFieldRequired &&
                 this._checkValidation(currentField, currentElementValue)
-              }
-              text={this._getButtonText()}
-            />
-          )}
+                }
+                text={this._getButtonText()}
+              />
+            )}
         </View>
         {DEBUG_DISPLAY && (
           <Display storable={this.state.storableValue} model={this.model} />

@@ -1,15 +1,16 @@
+// @flow
 import React                                            from 'react'
 import { View, Text, TouchableOpacity }                 from 'react-native'
 import { FormInput }                                    from 'react-native-elements'
 import Slider                                           from 'react-native-slider'
 import styles, { minimumTrackColor, maximumTrackColor } from '../styles'
 import GoalSubstep                                      from './GoalSubstep'
+import OptionsDialog                                    from './OptionsDialog'
 
 type Props = {
   goal: any,
   type: String,
-  onPress: (any, any) => String,
-  onTextChange: String => any,
+  onTextChange: string => any,
   toggleGoal: () => any,
   deleteGoal: () => any,
   steps: any,
@@ -17,11 +18,20 @@ type Props = {
   types: Array<string>,
   frequency: string,
   time: string,
+  dialogElements: Array<string>,
+  updateSubstep: (obj: { goal: any, substep: any, payload: any }) => any,
+  status: {
+    CLEARED: boolean,
+    NOT_CLEARED: boolean,
+  },
   goalAwardData: {
     goalId: string,
     text: string,
     substeps: string,
   },
+  disableETC: boolean,
+  daysLeft: string,
+  completionDate: string,
 }
 
 class GoalReview extends React.PureComponent<Props> {
@@ -30,12 +40,23 @@ class GoalReview extends React.PureComponent<Props> {
     const { goalAwardData } = props
     this.state = {
       notes: goalAwardData ? goalAwardData.text || '' : '',
+      openDialog: false,
+      selectedSubstep: null,
     }
   }
 
-  _onPress = (substep: any) => {
-    const { onPress, goal } = this.props
-    onPress(goal, substep)
+  _onSubstepCompletionPress = (substep: any) => {
+    const { updateSubstep, goal, status } = this.props
+    updateSubstep({
+      goal,
+      substep,
+      payload: {
+        status:
+          substep.award && substep.award.status === status.CLEARED
+            ? status.NOT_CLEARED
+            : status.CLEARED,
+      },
+    })
   }
 
   _onInputTextChange = (text: String) => {
@@ -58,6 +79,26 @@ class GoalReview extends React.PureComponent<Props> {
     this._inputTextEvent(text)
   }
 
+  _onSubstepPress = (substep: any) => {
+    this.setState({ openDialog: true, selectedSubstep: substep })
+  }
+
+  _onClose = () => this.setState({ openDialog: false, selectedSubstep: null })
+
+  _onSelectETC = (result: any) => {
+    const { updateSubstep, goal } = this.props
+    const { selectedSubstep } = this.state
+    const { value } = result
+    const payload = {
+      goal,
+      substep: selectedSubstep,
+      payload: { estimate: value },
+    }
+    this.setState({ openDialog: false, selectedSubstep: null }, () => {
+      updateSubstep(payload)
+    })
+  }
+
   render() {
     const {
       toggleGoal,
@@ -67,9 +108,12 @@ class GoalReview extends React.PureComponent<Props> {
       types,
       frequency,
       time,
+      dialogElements,
       goalAwardData,
+      completionDate,
+      daysLeft,
     } = this.props
-    const { notes } = this.state
+    const { notes, openDialog } = this.state
     const completedSteps = steps.reduce((count, step) => {
       if (step.award && step.award.status) return count + 1
       return count
@@ -85,26 +129,36 @@ class GoalReview extends React.PureComponent<Props> {
         : totalSteps > 0 ? completedSteps / totalSteps * 100 : 0
     return (
       <React.Fragment>
+        <OptionsDialog
+          dialogVisible={openDialog}
+          onClose={this._onClose}
+          elements={dialogElements}
+          onSelect={this._onSelectETC}
+        />
         <View style={styles.titleContainer}>
-          <Text style={styles.goalScreenTitle}>GOALS</Text>
+          <Text style={styles.goalScreenSubtitle}>
+            {title}
+            {goalAwardData && goalAwardData.completed ? ' - Completed' : ''}
+          </Text>
           <Text style={styles.goalScreenTypes}>{goalTypes}</Text>
         </View>
         <View style={styles.container}>
-          <View style={styles.goalReviewTextWithMargin}>
-            <Text style={styles.goalScreenSubtitle}>
-              {title}
-              {goalAwardData && goalAwardData.completed ? ' - Completed' : ''}
-            </Text>
-          </View>
           <View style={[styles.goalReviewIndent]}>
             <Text style={styles.goalScreenContent}>Checkin: {frequency}</Text>
           </View>
           <View style={[styles.goalReviewTextBlock, styles.goalReviewIndent]}>
-            <Text style={styles.goalScreenContent}>ETA: {time}</Text>
+            <Text style={styles.goalScreenContent}>ETC: {time}</Text>
+          </View>
+          <View style={[styles.goalReviewTextBlock, styles.goalReviewIndent]}>
+            <Text style={styles.goalScreenContent}>
+              Expected date: {completionDate}
+            </Text>
           </View>
           <View style={styles.goalReviewTextBlock}>
             <View style={[styles.totalProgress]}>
-              <Text style={styles.goalScreenContent}>Total: {completion.toFixed(2)}%</Text>
+              <Text style={styles.goalScreenContent}>
+                Total: {completion.toFixed(2)}%
+              </Text>
               <Slider
                 maximumValue={100}
                 minimumValue={0}
@@ -121,13 +175,33 @@ class GoalReview extends React.PureComponent<Props> {
               />
             </View>
           </View>
+          <View style={styles.goalReviewTextWithMargin}>
+            <Text style={styles.goalTimeLeft}>
+              {goalAwardData && goalAwardData.completed
+                ? 'Congratulations completing this goal!'
+                : daysLeft < 0
+                  ? 'Time for this goal has run out'
+                  : daysLeft === 0
+                    ? `Today is the due day of your goal, press complete if you made it!`
+                    : `You have ${daysLeft} ${
+                      daysLeft === 1 ? 'day' : 'days'
+                    } to complete this goal!`}
+            </Text>
+          </View>
+          <View style={styles.goalReviewTextWithMargin}>
+            <Text style={styles.goalScreenContent}>
+              Steps to complete this goal
+            </Text>
+          </View>
           <View style={styles.goalReviewTextBlock}>
             {steps &&
               steps.map(step => (
                 <GoalSubstep
                   key={step._id}
                   step={step}
-                  onPress={this._onPress}
+                  onPress={this._onSubstepCompletionPress}
+                  onSubstepPress={this._onSubstepPress}
+                  disableETC={this.props.disableETC}
                 />
               ))}
           </View>

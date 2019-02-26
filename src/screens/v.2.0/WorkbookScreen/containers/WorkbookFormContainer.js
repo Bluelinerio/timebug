@@ -1,8 +1,8 @@
 import { connect }           from 'react-redux'
+import { compose, mapProps } from 'recompose'
 import WorkbookForm          from '../components/WorkbookForm'
 import selectors             from '../../../../redux/selectors'
 import models                from '../../../../forms/custom/forms'
-import { compose, mapProps } from 'recompose'
 import {
   submitFormValue,
   syncFormData,

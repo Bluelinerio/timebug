@@ -33,6 +33,7 @@ export type HelpParams = {
 export type GoToToolParams = {
   tool: any,
   step: number,
+  params?: any,
 }
 
 export const linkNavigation = (payload: LinkedNavigationPayload) => ({
@@ -119,9 +120,9 @@ export const goToTool = (params: GoToToolParams) =>
   NavigationActions.navigate({
     routeName: routes.toolFlow.ToolworkScreen,
     params,
+    key: routes.toolFlow.ToolworkScreen,
   })
 
-// TODO: add goal itself to params
 export const goToGoalStepScreen = (params: GoalStepScreenNavigationParams) =>
   NavigationActions.navigate({
     routeName: routes.goals.GoalStepScreen,

@@ -13,7 +13,7 @@ import {
   RESTORE_FORM_DATA,
 }                 from '../actionTypes'
 
-export type SubmitAction = {
+export type SubmitActionPayload = {
   stepId: string,
   value?: any,
 }
@@ -24,7 +24,7 @@ export type RestoreFormDataPayload = {
   },
 }
 
-export const submitFormValue = (payload: SubmitAction) => ({
+export const submitFormValue = (payload: SubmitActionPayload) => ({
   type: SUBMIT_FORM_VALUE,
   payload,
 })

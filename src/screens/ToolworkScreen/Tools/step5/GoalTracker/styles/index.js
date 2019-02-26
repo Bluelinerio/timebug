@@ -110,6 +110,17 @@ export default StyleSheet.create({
     textAlign: 'justify',
     color: formTextColor,
   },
+  goalReviewScreenSubtitle: {
+    ...iOSUIKit.title3EmphasizedObject,
+    fontSize: 26,
+    textAlign: 'justify',
+    color: formTextColor,
+  },
+  goalTimeLeft: {
+    ...iOSUIKit.subheadEmphasizedObject,
+    textAlign: 'center',
+    color: formTextColor,
+  },
   goalScreenTypes: {
     ...iOSUIKit.bodyEmphasizedObject,
     fontSize: 16,
@@ -164,6 +175,11 @@ export default StyleSheet.create({
   },
   elementText: {
     ...iOSUIKit.bodyEmphasizedObject,
+    textAlign: 'justify',
+    color: formTextColor,
+  },
+  subtextFootnote: {
+    ...iOSUIKit.footnoteEmphasizedObject,
     textAlign: 'justify',
     color: formTextColor,
   },

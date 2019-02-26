@@ -37,6 +37,7 @@ import {
   STOP_LOADING_FORMDATA,
   SYNC_FINISHED,
   UPDATE_AND_CREATE_FORMS,
+  SYNC_SIDE_EFFECTS,
 } from '../actionTypes'
 import {
   GET_USER,
@@ -491,6 +492,9 @@ function* _handleSyncFinished() {
   }, {})
 
   if (Object.keys(forms).length > 0) yield put(restoreFormData({ forms }))
+
+  yield delay(10)
+  yield put({ type: SYNC_SIDE_EFFECTS })
 }
 
 /**
