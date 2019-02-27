@@ -1,21 +1,38 @@
 import types, { actionTypes, answerTypes } from './types'
 
+export const FORM_KEYS = {
+  form_6_other_person_goal: 'form_6_other_person_goal',
+  form_6_plan_and_estimated_time: 'form_6_plan_and_estimated_time',
+}
+
+export const CHILDREN_KEYS = {
+  form_6_other_person_goal: {
+    name: `${FORM_KEYS.form_6_other_person_goal}.name`,
+    goal: `${FORM_KEYS.form_6_other_person_goal}.goal`,
+  },
+  form_6_plan_and_estimated_time: {
+    plan: `${FORM_KEYS.form_6_plan_and_estimated_time}.plan`,
+    time: `${FORM_KEYS.form_6_plan_and_estimated_time}.time`,
+  },
+}
+
 const form6 = {
   type: types.form,
   answer: answerTypes.multiple,
   fields: {
     0: {
       type: types.formElements,
-      key: 'form_6_other_person_goal',
+      key: `${FORM_KEYS.form_6_other_person_goal}`,
       content: {
-        text: 'Write down the name of someone you care about, and a goal you would like to help them achieve',
+        text:
+          'Write down the name of someone you care about, and a goal you would like to help them achieve',
         smallKey: "Person's Name",
       },
       options: {
         childTypes: {
           0: {
             type: types.string,
-            key: 'form_6_other_person_goal.name',
+            key: `${CHILDREN_KEYS.form_6_other_person_goal.name}`,
             options: {
               placeHolder: "Person's name",
               default: '',
@@ -24,7 +41,7 @@ const form6 = {
           },
           1: {
             type: types.string,
-            key: 'form_6_other_person_goal.goal',
+            key: `${CHILDREN_KEYS.form_6_other_person_goal.goal}`,
             options: {
               placeHolder: 'Goal',
               default: '',
@@ -37,7 +54,7 @@ const form6 = {
     },
     1: {
       type: types.formElements,
-      key: 'form_6_plan_and_estimated_time',
+      key: `${FORM_KEYS.form_6_plan_and_estimated_time}`,
       content: {
         text: 'Write down a detailed plan for how you will help this person, and when you would like it to be complete.',
         smallKey: 'Goal Plan',
@@ -46,7 +63,7 @@ const form6 = {
         childTypes: {
           0: {
             type: types.string,
-            key: 'form_6_plan_and_estimated_time.plan',
+            key: `${CHILDREN_KEYS.form_6_plan_and_estimated_time.plan}`,
             options: {
               placeHolder: 'Plan',
               default: '',
@@ -54,12 +71,17 @@ const form6 = {
               numberOfLines: 4,
             },
           },
-          1: {
+          2: {
             type: types.string,
-            key: 'form_6_plan_and_estimated_time.time',
+            key: `${CHILDREN_KEYS.form_6_plan_and_estimated_time.time}`,
+            content: {
+              text: 'When would you like to see this completed?',
+              smallKey: 'ETC',
+            },
             options: {
               placeHolder: 'Target completion date',
               default: '',
+              multiline: true,
             },
           },
         },
