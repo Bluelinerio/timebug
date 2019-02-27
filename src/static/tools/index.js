@@ -7,7 +7,6 @@ import WeeklyTimebugPlanner, {
 import DailyMeditation, { key as DailyMeditationKey } from './DailyMeditation'
 import BoardOfAdvisors, { key as BoardOfAdvisorsKey } from './BoardOfAdvisors'
 import GoalTracker, { key as GoalTrackerKey }         from './GoalTracker'
-import GoalsOfOthersLog, { key as GoalsLogKey }       from './GoalsOfOthersLog'
 
 export const TOOL_KEYS = {
   DailyTimebugPlannerKey,
@@ -15,7 +14,6 @@ export const TOOL_KEYS = {
   DailyMeditationKey,
   BoardOfAdvisorsKey,
   GoalTrackerKey,
-  GoalsLogKey,
 }
 
 export default {
@@ -23,5 +21,4 @@ export default {
   '2': [DailyTimebugPlanner, WeeklyTimebugPlanner],
   '4': [BoardOfAdvisors],
   '5': [GoalTracker],
-  '6': [GoalsOfOthersLog],
 }
