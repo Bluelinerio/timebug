@@ -1,12 +1,9 @@
-// @vendor
-import React from 'react'
-import { View } from 'react-native'
-import uuid from 'uuid/v4'
-// app
-import styles from '../../styles'
+import React             from 'react'
+import { View }          from 'react-native'
+import uuid              from 'uuid/v4'
+import styles            from '../../styles'
 import FormElementHeader from './FormElementHeader'
-import FormPicker from './FormPicker'
-import types from '../../forms/types'
+import FormPicker        from './FormPicker'
 
 type Props = {
   value: Array<any>,
@@ -21,12 +18,7 @@ type Props = {
 type State = {}
 
 class FormElementsComponent extends React.PureComponent<Props, State> {
-
-  constructor(props) {
-    super(props)
-  }
-
-  _onChange = (key, index) => (changedValue) => {
+  _onChange = (key, index) => changedValue => {
     const { value = {}, onChange, field: { options } } = this.props
     const { childTypes } = options
     const valueToSave = Object.values(childTypes).reduce((prev, model) => {
@@ -38,7 +30,7 @@ class FormElementsComponent extends React.PureComponent<Props, State> {
           key: model.key,
           _model: model,
           _id: uuid(),
-          ...((savedValue && (savedValue.key === model.key)) ? savedValue : {}),
+          ...(savedValue && savedValue.key === model.key ? savedValue : {}),
         },
       }
     }, {})
@@ -60,7 +52,7 @@ class FormElementsComponent extends React.PureComponent<Props, State> {
 
   render() {
     const { field: { content, options }, value, formStyles = {} } = this.props
-    const { childTypes /*referencedValue*/ } = options
+    const { childTypes } = options
 
     return (
       <View style={styles.container}>
@@ -75,7 +67,6 @@ class FormElementsComponent extends React.PureComponent<Props, State> {
             {childTypes &&
               Object.keys(childTypes).map(key => {
                 const field = childTypes[key]
-                const { type } = field
                 const inValue = value && value[field.key]
                 const formValue = value
 
@@ -83,17 +74,10 @@ class FormElementsComponent extends React.PureComponent<Props, State> {
                   <FormPicker
                     key={field.key}
                     field={field}
-                    value={inValue ? inValue.value: ''}
+                    value={inValue ? inValue.value : ''}
                     formStyles={formStyles}
                     formValue={formValue}
                     onChange={this._onChange(field.key, key)}
-                    {...(type === types.select
-                      ? {
-                        __extraProps: {
-                          filterFunction: this._selectFilter(key),
-                        },
-                      }
-                      : {})}
                   />
                 )
               })}
