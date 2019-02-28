@@ -51,7 +51,7 @@ class GoalListElement extends React.PureComponent<Props> {
           <View style={[styles.goalListElementMainContent]}>
             <View style={styles.goalListRow}>
               <Text style={[styles.goalListText, styles.goalListTitle]}>
-                {goalName.length >= 36
+                {goalName && goalName.length >= 36
                   ? `${chopString(goalName, 36)}`
                   : `${goalName}`}
               </Text>
@@ -59,7 +59,7 @@ class GoalListElement extends React.PureComponent<Props> {
             <View style={[styles.goalListRow, styles.goalListBottomRow]}>
               <View>
                 <Text style={styles.goalListText}>
-                  {name.length >= 40 ? `${chopString(name, 40)}` : `${name}`}
+                  {name && name.length >= 40 ? `${chopString(name, 40)}` : `${name ? name : 'No name'}`}
                 </Text>
               </View>
               <View style={styles.goalListSubElement}>
@@ -67,9 +67,9 @@ class GoalListElement extends React.PureComponent<Props> {
                   {completed
                     ? 'Completed!'
                     : `Estimate: ${
-                      estimate.length >= 20
+                      estimate && estimate.length >= 20
                         ? `${chopString(estimate, 20)}`
-                        : `${estimate}`
+                        : `${estimate ? estimate : 'None set'}`
                     }`}
                 </Text>
               </View>
