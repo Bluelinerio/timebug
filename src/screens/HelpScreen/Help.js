@@ -1,28 +1,26 @@
 // @flow
-import * as React from 'react';
-import { View, Image } from 'react-native';
-import { SafeAreaView } from 'react-navigation';
-import Swiper from 'react-native-swiper';
-import Gradient from '../../components/Gradient';
-import type { Slide } from '../../services/cms';
-import Text from './components/Text';
-import Button from './components/Button';
-import type { ScreenProps } from './components/Types';
-import styles, { theme, gradientColors } from './styles';
-import { heightPercentage } from '../../utils/viewportCalculation';
-import tron from 'reactotron-react-native';
+import * as React                        from 'react'
+import { View, Image }                   from 'react-native'
+import { SafeAreaView }                  from 'react-navigation'
+import Swiper                            from 'react-native-swiper'
+import Gradient                          from '../../components/Gradient'
+import type { Slide }                    from '../../services/cms'
+import Text                              from './components/Text'
+import Button                            from './components/Button'
+import type { ScreenProps }              from './components/Types'
+import styles, { theme, gradientColors } from './styles'
 
 type Props = ScreenProps & {
   slides: [Slide],
   dismiss: () => void,
-};
+}
 type SlideProps = {
   slide: any,
-};
+}
 
 class GradientSlide extends React.PureComponent<SlideProps> {
   render() {
-    const { slide } = this.props;
+    const { slide } = this.props
     return (
       <SafeAreaView
         forceInset={{ top: 'always', bottom: 'never' }}
@@ -53,24 +51,23 @@ class GradientSlide extends React.PureComponent<SlideProps> {
           </View>
         </Gradient>
       </SafeAreaView>
-    );
+    )
   }
 }
 
 export default class Help extends React.Component<Props> {
-  onIndexChanged = () => {};
+  onIndexChanged = () => {}
 
   render(): React.Node {
-    const { renderPagination, onIndexChanged } = this;
-    const { slides } = this.props;
-    tron.log(heightPercentage(0.1));
+    const { renderPagination, onIndexChanged } = this
+    const { slides } = this.props
     return (
       <Swiper loop={false} {...{ renderPagination, onIndexChanged }}>
         {slides.map(slide => (
           <GradientSlide key={`${slide.step}-${slide.order}`} slide={slide} />
         ))}
       </Swiper>
-    );
+    )
   }
 
   renderPagination = (
@@ -78,13 +75,13 @@ export default class Help extends React.Component<Props> {
     total: number,
     context: Swiper
   ): React.Node => {
-    const isFirst = index === 0;
-    const isLast = index === total - 1;
-    const { dismiss } = this.props;
-    const goBack = () => context.scrollBy(-1);
-    const goForward = () => context.scrollBy(1);
-    const leftButtoOnPress = isFirst ? dismiss : goBack;
-    const rightButtonOnPress = isLast ? dismiss : goForward;
+    const isFirst = index === 0
+    const isLast = index === total - 1
+    const { dismiss } = this.props
+    const goBack = () => context.scrollBy(-1)
+    const goForward = () => context.scrollBy(1)
+    const leftButtoOnPress = isFirst ? dismiss : goBack
+    const rightButtonOnPress = isLast ? dismiss : goForward
     return (
       <View style={styles.footer}>
         <Button label={isFirst ? 'Close' : 'Back'} onPress={leftButtoOnPress} />
@@ -95,6 +92,6 @@ export default class Help extends React.Component<Props> {
           transparent={true}
         />
       </View>
-    );
-  };
+    )
+  }
 }
