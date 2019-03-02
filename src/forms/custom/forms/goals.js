@@ -1,8 +1,7 @@
+// @flow
 import types, { actionTypes, answerTypes } from './types'
-import {
-  GoalType,
-  timeToCompleteGoal,
-}                                          from './content'
+import { GoalType, timeToCompleteGoal }    from './content'
+import type { Form }                       from '../types/formTypes'
 
 export const STATUS = {
   PENDING: 'PENDING',
@@ -25,7 +24,7 @@ export const CHILDREN_KEYS = {
   },
 }
 
-const form5 = {
+const form: Form = {
   type: types.form,
   answer: answerTypes.multiple,
   fields: {
@@ -120,4 +119,4 @@ const form5 = {
   },
 }
 
-export default form5
+export default form

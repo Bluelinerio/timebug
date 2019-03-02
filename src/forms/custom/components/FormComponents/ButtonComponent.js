@@ -1,8 +1,10 @@
-import React             from 'react'
-import { View }          from 'react-native'
-import { Button }        from 'react-native-elements'
-import styles            from '../../styles'
-import FormElementHeader from './FormElementHeader'
+// @flow
+import React                from 'react'
+import { View }             from 'react-native'
+import { Button }           from 'react-native-elements'
+import styles               from '../../styles'
+import FormElementHeader    from './FormElementHeader'
+import type { ButtonStyle } from '../types/formTypes'
 
 const ButtonComponent = ({
   buttonHandler,
@@ -10,6 +12,7 @@ const ButtonComponent = ({
     content = {
       text: '',
     },
+    options = {},
     actions,
   },
   formStyles = {},
@@ -17,6 +20,9 @@ const ButtonComponent = ({
   buttonHandler: any => any,
   field: {
     content?: any,
+    options?: {
+      style?: ButtonStyle
+    },
     actions: Array<{
       type: string,
       payload: any,
@@ -37,6 +43,7 @@ const ButtonComponent = ({
           buttonStyle={[
             styles.buttonComponentStyle,
             formStyles.buttonContainerStyle,
+            options.style ? options.style.buttonStyle : {},
           ]}
           title={action.text}
           key={action.key}

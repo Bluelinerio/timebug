@@ -1,8 +1,10 @@
+// @flow
 import React                                     from 'react'
 import { View }                                  from 'react-native'
 import { CheckBox }                              from 'react-native-elements'
 import FormElementHeader                         from './FormElementHeader'
 import styles, { checkboxColor, uncheckedColor } from '../../styles'
+import type { MultiSelectStyle }                 from '../../types/formTypes'
 
 type Props = {
   value: Array<string>,
@@ -15,6 +17,7 @@ type Props = {
     },
     options?: {
       default: string,
+      style?: MultiSelectStyle,
     },
   },
 }
@@ -52,7 +55,12 @@ class MultipleSelect extends React.PureComponent<Props> {
   }
 
   render() {
-    const { value = [], field: { content }, formStyles = {} } = this.props
+    const {
+      value = [],
+      field: { content, options = {} },
+      formStyles = {},
+    } = this.props
+    const { style: staticStyles = {} } = options
     const valueSet = new Set(value)
 
     return (
@@ -61,9 +69,18 @@ class MultipleSelect extends React.PureComponent<Props> {
           text={content.text}
           textStyle={formStyles.textStyle}
         />
-        <View style={styles.pickerContainer}>
+        <View
+          style={[
+            styles.pickerContainer,
+            staticStyles ? staticStyles.pickerContainerStyle : {},
+          ]}
+        >
           <View
-            style={[styles.pickerBackground, formStyles.elementContainerStyle]}
+            style={[
+              styles.pickerBackground,
+              formStyles.elementContainerStyle,
+              staticStyles ? staticStyles.selectContainerStyle : {},
+            ]}
           >
             {content &&
               content.items.map(item => (

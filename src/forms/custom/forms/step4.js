@@ -1,5 +1,7 @@
-import types, { answerTypes } from './types'
+// @flow
+import types, { answerTypes }  from './types'
 import { LifeCategoriesArray } from './content'
+import type { Form }           from '../types/formTypes'
 
 export const FORM_KEYS = {
   form_4_board_of_advisors: 'form_4_board_of_advisors',
@@ -17,7 +19,7 @@ export const FORM_CHILDREN_KEYS = {
   },
 }
 
-const form1 = {
+const form: Form = {
   type: types.form,
   answer: answerTypes.single,
   fields: {
@@ -74,7 +76,8 @@ const form1 = {
       type: types.list,
       key: FORM_KEYS.form_4_support_groups,
       content: {
-        text: 'List any support groups or meetups that create positive energy for you, and which life category they belong to.',
+        text:
+          'List any support groups or meetups that create positive energy for you, and which life category they belong to.',
         smallKey: 'Groups',
         listText: 'Groups',
       },
@@ -121,4 +124,4 @@ const form1 = {
   },
 }
 
-export default form1
+export default form

@@ -1,18 +1,10 @@
-import types, { answerTypes }   from './types'
-import { LifeStages, Emotions } from './content'
-import { DISABLE }              from './constants'
+// @flow
+import types, { answerTypes }               from './types'
+import { LifeStages, Emotions, AreaOfLife } from './content'
+import { DISABLE }                          from './constants'
+import type { Form }                        from '../types/formTypes'
 
-export const AreaOfLife = [
-  'Finances',
-  'Environment',
-  'Aims & Hobbies',
-  'Career',
-  'Relationships',
-  'Health & Wellness',
-  'Spirituality',
-]
-
-const form1 = {
+const form: Form = {
   type: types.form,
   answer: answerTypes.single,
   fields: {
@@ -229,4 +221,4 @@ const form1 = {
   },
 }
 
-export default form1
+export default form
