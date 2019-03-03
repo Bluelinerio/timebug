@@ -1,10 +1,9 @@
 // @flow
-import React                                   from 'react'
-import { View, Text, Image, TouchableOpacity } from 'react-native'
-import { icon }                                from '2020_resources/images'
-import { displayBase64 }                       from '2020_utils/formatHelpers'
-import { getContactName }                      from '../../utils'
-import styles                                  from '../../styles/board'
+import React                            from 'react'
+import { View, Text, TouchableOpacity } from 'react-native'
+import { getContactName }               from '../../utils'
+import styles                           from '../../styles/board'
+import AdvisorImage                     from '../../containers/Common/AdvisorImage'
 
 type Props = {
   advisor: {
@@ -37,18 +36,7 @@ class AdvisorTile extends React.PureComponent<Props> {
         onPress={this.goToAdvisor}
       >
         <View style={styles.advisorImageSection}>
-          <Image
-            style={styles.advisorIcon}
-            source={
-              contact
-                ? contact.contact
-                  ? contact.contact.imageDataAvailable
-                    ? { uri: displayBase64(contact.contact.thumbnailImageData) }
-                    : icon
-                  : icon
-                : icon
-            }
-          />
+          <AdvisorImage advisor={advisor} />
         </View>
         <View style={styles.advisorContent}>
           <View style={styles.advisorTextContent}>

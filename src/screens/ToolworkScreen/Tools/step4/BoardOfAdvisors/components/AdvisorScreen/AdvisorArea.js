@@ -1,7 +1,6 @@
 import React                           from 'react'
 import {
   View,
-  Image,
   Text,
   Linking,
   Alert,
@@ -9,10 +8,9 @@ import {
   TouchableOpacity,
 }                                      from 'react-native'
 import Icon                            from 'react-native-vector-icons/Ionicons'
-import { icon }                        from '2020_resources/images'
-import { displayBase64 }               from '2020_utils/formatHelpers'
 import DialogContainer, { actions }    from '../DialogContainer'
 import styles, { iconColor, iconSize } from '../../styles/advisor'
+import AdvisorImage                    from '../../containers/Common/AdvisorImage'
 
 type PhoneNumber = {
   digits: string,
@@ -38,6 +36,7 @@ type Props = {
   hasContact: boolean,
   goToSync: () => any,
   handleUnsync: () => any,
+  advisor: any,
 }
 
 type State = {
@@ -119,7 +118,6 @@ class AdvisorArea extends React.PureComponent<Props, State> {
 
   render() {
     const {
-      thumbnail,
       name,
       category,
       phoneNumbers,
@@ -128,6 +126,7 @@ class AdvisorArea extends React.PureComponent<Props, State> {
       hasContact,
       goToSync,
       handleUnsync,
+      advisor,
     } = this.props
     const { openDialog } = this.state
     return (
@@ -141,10 +140,7 @@ class AdvisorArea extends React.PureComponent<Props, State> {
           onMailSelect={this._handleEmailSelection}
         />
         <View style={styles.advisorImageSection}>
-          <Image
-            style={styles.advisorIcon}
-            source={thumbnail ? { uri: displayBase64(thumbnail) } : icon}
-          />
+          <AdvisorImage advisor={advisor} />
         </View>
         <View style={styles.advisorTextSection}>
           <Text style={styles.advisorName}>{name}</Text>
