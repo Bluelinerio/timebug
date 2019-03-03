@@ -1,6 +1,6 @@
 import { azure } from '2020_constants/colors'
 
-const helperIconSize = 30
+const helperIconSize = 40
 
 export const iconStyle = {
   fill: azure,
