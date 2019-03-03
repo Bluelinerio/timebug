@@ -1,4 +1,4 @@
-import React                           from 'react'
+import React                                      from 'react'
 import {
   View,
   Text,
@@ -6,11 +6,11 @@ import {
   Alert,
   Platform,
   TouchableOpacity,
-}                                      from 'react-native'
-import Icon                            from 'react-native-vector-icons/Ionicons'
-import DialogContainer, { actions }    from '../DialogContainer'
-import styles, { iconColor, iconSize } from '../../styles/advisor'
-import AdvisorImage                    from '../../containers/Common/AdvisorImage'
+}                                                 from 'react-native'
+import Icon                                       from 'react-native-vector-icons/Ionicons'
+import DialogContainer, { actions }               from '../DialogContainer'
+import styles, { iconColor, iconSize, iconStyle } from '../../styles/advisor'
+import AdvisorImage                               from '../../containers/Common/AdvisorImage'
 
 type PhoneNumber = {
   digits: string,
@@ -140,7 +140,11 @@ class AdvisorArea extends React.PureComponent<Props, State> {
           onMailSelect={this._handleEmailSelection}
         />
         <View style={styles.advisorImageSection}>
-          <AdvisorImage advisor={advisor} />
+          <AdvisorImage
+            advisor={advisor}
+            svgStyle={iconStyle}
+            imageStyle={styles.advisorIcon}
+          />
         </View>
         <View style={styles.advisorTextSection}>
           <Text style={styles.advisorName}>{name}</Text>

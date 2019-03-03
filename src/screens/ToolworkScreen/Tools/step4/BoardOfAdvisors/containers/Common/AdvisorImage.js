@@ -11,6 +11,12 @@ type Props = {
     id: string,
     contact: any | null,
   },
+  imageStyle: any,
+  svgStyle: {
+    fill: string,
+    height: string,
+    width: string,
+  },
 }
 
 const LIFE_CATEGORIES_TO_SVG_MAP = {
@@ -31,7 +37,7 @@ const mapCategoryToSVG = (category: string) => {
 }
 
 const merge = (props: Props) => {
-  const { advisor } = props
+  const { advisor, imageStyle = null, svgStyle = null } = props
   const { contact, category } = advisor
   const hasContact = !!contact
   const contactHasImage =
@@ -44,6 +50,8 @@ const merge = (props: Props) => {
   return {
     imageSource,
     svg,
+    imageStyle,
+    svgStyle,
   }
 }
 
