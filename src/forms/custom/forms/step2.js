@@ -1,6 +1,8 @@
+// @flow
 import types, { answerTypes, setTypes } from './types'
-import { SHARED } from './constants'
-import { AreaOfLife, LifeCategories } from './content'
+import { SHARED }                       from './constants'
+import { AreaOfLife, LifeCategories }   from './content'
+import type { Form }                    from '../types/formTypes'
 
 export const FORM_KEYS = {
   form_2_current_week_time: 'form_2_current_week_time',
@@ -19,7 +21,7 @@ export const FORM_CHILDREN_KEYS = {
     areaOfLife: 'form_2_less_time_activities.area_of_life',
   },
 }
-const form1 = {
+const form: Form = {
   type: types.form,
   answer: answerTypes.single,
   fields: {
@@ -223,4 +225,4 @@ const form1 = {
   },
 }
 
-export default form1
+export default form

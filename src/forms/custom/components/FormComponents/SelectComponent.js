@@ -4,16 +4,30 @@ import ModalSelector              from 'react-native-modal-selector'
 import FormElementHeader          from './FormElementHeader'
 import styles                     from '../../styles'
 import { DISABLE }                from './../../forms/constants'
+import type { SelectStyle }       from './../../types/formTypes'
 
 const AndroidPicker = (props: any) => {
-  const { options, items, onChange, formStyles, value } = props
+  const { options = {}, items, onChange, formStyles, value } = props
+  const { style: staticStyles = {} } = options
   return (
-    <View style={[styles.pickerBackground, formStyles.elementContainerStyle]}>
+    <View
+      style={[
+        styles.pickerBackground,
+        formStyles.elementContainerStyle,
+        staticStyles ? staticStyles.selectContainerStyle : {},
+      ]}
+    >
       <Picker
         selectedValue={value ? value : options.default}
-        style={[styles.pickerStyle]}
+        style={[
+          styles.pickerStyle,
+          staticStyles ? staticStyles.pickerContainerStyle : {},
+        ]}
         onValueChange={onChange}
-        itemStyle={styles.pickerItemStyle}
+        itemStyle={[
+          styles.pickerItemStyle,
+          staticStyles ? staticStyles.itemStyle : {},
+        ]}
       >
         {items &&
           items.map(({ value, text }) => (
@@ -25,7 +39,8 @@ const AndroidPicker = (props: any) => {
 }
 
 const IOSPicker = (props: any) => {
-  const { items, onChange, formStyles, value } = props
+  const { items, onChange, formStyles, value, options = {} } = props
+  const { style: staticStyles = {} } = options
 
   const data =
     items &&
@@ -41,7 +56,13 @@ const IOSPicker = (props: any) => {
 
   return (
     data && (
-      <View style={[styles.pickerStyle, formStyles.elementContainerStyle]}>
+      <View
+        style={[
+          styles.pickerStyle,
+          formStyles.elementContainerStyle,
+          staticStyles ? staticStyles.selectContainerStyle : {},
+        ]}
+      >
         <ModalSelector
           initValue={textValue}
           selectTextStyle={styles.iosSelectorText}
@@ -71,6 +92,7 @@ const Select = ({
     options?: {
       default?: string,
       repeats?: string,
+      style?: SelectStyle,
     },
   },
   formValue: any,

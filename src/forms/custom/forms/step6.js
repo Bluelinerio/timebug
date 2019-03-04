@@ -1,4 +1,7 @@
+// @flow
+import { Platform }                        from 'react-native'
 import types, { actionTypes, answerTypes } from './types'
+import type { Form }                       from '../types/formTypes'
 
 export const FORM_KEYS = {
   form_6_other_person_goal: 'form_6_other_person_goal',
@@ -16,7 +19,7 @@ export const CHILDREN_KEYS = {
   },
 }
 
-const form6 = {
+const form: Form = {
   type: types.form,
   answer: answerTypes.multiple,
   fields: {
@@ -47,6 +50,20 @@ const form6 = {
               default: '',
               multiline: true,
               numberOfLines: 3,
+              style: {
+                textInputContainerStyle: Platform.select({
+                  android: {},
+                  ios: {
+                    marginBottom:20,
+                  }, //Fill with what's needed
+                }),
+                textInputStyle: Platform.select({
+                  android: {},
+                  ios: {  
+                    minHeight:30,
+                  }, //Fill with what's needed
+                }),
+              },
             },
           },
         },
@@ -56,7 +73,8 @@ const form6 = {
       type: types.formElements,
       key: `${FORM_KEYS.form_6_plan_and_estimated_time}`,
       content: {
-        text: 'Write down a detailed plan for how you will help this person, and when you would like it to be complete.',
+        text:
+          'Write down a detailed plan for how you will help this person, and when you would like it to be complete.',
         smallKey: 'Goal Plan',
       },
       options: {
@@ -69,19 +87,44 @@ const form6 = {
               default: '',
               multiline: true,
               numberOfLines: 4,
+              style: {
+                textInputContainerStyle: Platform.select({
+                  android: {},
+                  ios: {
+                  }, //Fill with what's needed
+                }),
+                textInputStyle: Platform.select({
+                  android: {},
+                  ios: {  
+                    minHeight:80,
+                  }, //Fill with what's needed
+                }),
+              },
+              
             },
           },
           2: {
             type: types.string,
             key: `${CHILDREN_KEYS.form_6_plan_and_estimated_time.time}`,
             content: {
-              text: 'When would you like to see this completed?',
               smallKey: 'ETC',
             },
             options: {
               placeHolder: 'Target completion date',
               default: '',
               multiline: true,
+              style: {
+                textInputContainerStyle: Platform.select({
+                  android: {},
+                  ios: {
+                  }, //Fill with what's needed
+                }),
+                textInputStyle: Platform.select({
+                  android: {},
+                  ios: {  
+                  }, //Fill with what's needed
+                }),
+              },
             },
           },
         },
@@ -106,4 +149,4 @@ const form6 = {
   },
 }
 
-export default form6
+export default form

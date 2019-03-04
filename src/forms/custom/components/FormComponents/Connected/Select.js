@@ -2,6 +2,7 @@ import React                        from 'react'
 import { Picker, Platform }         from 'react-native'
 import ModalSelector                from 'react-native-modal-selector'
 import { connectedComponentStyles } from '../../../styles'
+import type { SelectStyle }         from './../../types/formTypes'
 
 const Select = ({
   value,
@@ -18,6 +19,7 @@ const Select = ({
     },
     options?: {
       default: string,
+      style?: SelectStyle,
     },
   },
 }) => {
@@ -35,9 +37,13 @@ const Select = ({
       style={[
         connectedComponentStyles.pickerStyle,
         formStyles.elementContainerStyle,
+        options.style ? options.style.pickerContainerStyle : {},
       ]}
       onValueChange={onValueChange}
-      itemStyle={connectedComponentStyles.pickerItemStyle}
+      itemStyle={[
+        connectedComponentStyles.pickerItemStyle,
+        options.style ? options.style.itemStyle : {},
+      ]}
     >
       {content &&
         content.items.map(({ value, text }) => (
@@ -65,7 +71,10 @@ const Select = ({
           initValue={textValue}
           data={data}
           onChange={onChangeIosSelector}
-          selectStyle={connectedComponentStyles.modalPicker}
+          selectStyle={[
+            connectedComponentStyles.modalPicker,
+            options.style ? options.style.pickerContainerStyle : {},
+          ]}
           selectTextStyle={connectedComponentStyles.modalText}
         />
       )

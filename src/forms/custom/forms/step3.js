@@ -1,8 +1,10 @@
-import types, { answerTypes } from './types'
+// @flow
+import types, { answerTypes }    from './types'
 import { Strengths, Weaknesses } from './content'
-import { DISABLE } from './constants'
+import { DISABLE }               from './constants'
+import type { Form }             from '../types/formTypes'
 
-const form3 = {
+const form: Form = {
   type: types.form,
   answer: answerTypes.single,
   fields: {
@@ -88,7 +90,8 @@ const form3 = {
       type: types.string,
       key: 'form_3_strenghts_friend_name',
       content: {
-        text: 'Now, ask a close friend or family member to list 3-5 charachter strenghts they believe you to possess',
+        text:
+          'Now, ask a close friend or family member to list 3-5 charachter strenghts they believe you to possess',
         smallKey: "Friend's name Strengths",
         listText: "Friend's name Strengths",
       },
@@ -148,7 +151,8 @@ const form3 = {
       type: types.string,
       key: 'form_3_weaknesses_friend_name',
       content: {
-        text: 'Now, ask a close friend or family member to list 3-5 charachter weaknesses they believe you to possess',
+        text:
+          'Now, ask a close friend or family member to list 3-5 charachter weaknesses they believe you to possess',
       },
       options: {
         placeHolder: "Friend's name",
@@ -205,4 +209,4 @@ const form3 = {
   },
 }
 
-export default form3
+export default form
