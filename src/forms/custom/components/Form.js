@@ -294,6 +294,34 @@ class Form extends React.PureComponent<Props, any> {
       : !(value.length > 0)
   }
 
+  _formElementsValidation = (val, options) => {
+    const { childTypes } = options
+    if (!val) return true
+    const hasError = Object.values(childTypes).reduce((err, child) => {
+      if (err) return err
+      const { key, options, type } = child
+      if (!options.required) return err
+      const elementForKey = val ? val[key] : null
+      if (!elementForKey) return true
+      const value = elementForKey.value
+      const result = !this._isValueValidForType(value, type, options)
+      return result
+    }, false)
+    return hasError
+  }
+
+  _isValueValidForType = (value: any, type: string, options?: any = {}) => {
+    if (!value) return false
+    switch (type) {
+    case types.string:
+      return !(value.trim() === '')
+    case types.list:
+      return !this._listValidation(value, options)
+    default:
+      return true
+    }
+  }
+
   _checkValidation = (field, value) => {
     const { type, options = {} } = field
     switch (type) {
@@ -305,6 +333,8 @@ class Form extends React.PureComponent<Props, any> {
       return !value
     case types.multipleSelect:
       return this._multipleSelectValidation(value, options)
+    case types.formElements:
+      return this._formElementsValidation(value, options)
     default:
       return false
     }

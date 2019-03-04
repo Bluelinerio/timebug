@@ -32,6 +32,7 @@ const form: Form = {
         smallKey: "Person's Name",
       },
       options: {
+        required: true,
         childTypes: {
           0: {
             type: types.string,
@@ -46,6 +47,7 @@ const form: Form = {
             type: types.string,
             key: `${CHILDREN_KEYS.form_6_other_person_goal.goal}`,
             options: {
+              required: true,
               placeHolder: 'Goal',
               default: '',
               multiline: true,
@@ -78,6 +80,7 @@ const form: Form = {
         smallKey: 'Goal Plan',
       },
       options: {
+        required: true,
         childTypes: {
           0: {
             type: types.string,
@@ -86,6 +89,7 @@ const form: Form = {
               placeHolder: 'Plan',
               default: '',
               multiline: true,
+              required: true,
               numberOfLines: 4,
               style: {
                 textInputContainerStyle: Platform.select({
