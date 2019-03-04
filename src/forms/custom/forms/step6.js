@@ -53,11 +53,15 @@ const form: Form = {
               style: {
                 textInputContainerStyle: Platform.select({
                   android: {},
-                  ios: {}, //Fill with what's needed
+                  ios: {
+                    marginBottom:20,
+                  }, //Fill with what's needed
                 }),
                 textInputStyle: Platform.select({
                   android: {},
-                  ios: {}, //Fill with what's needed
+                  ios: {  
+                    minHeight:30,
+                  }, //Fill with what's needed
                 }),
               },
             },
@@ -83,19 +87,44 @@ const form: Form = {
               default: '',
               multiline: true,
               numberOfLines: 4,
+              style: {
+                textInputContainerStyle: Platform.select({
+                  android: {},
+                  ios: {
+                  }, //Fill with what's needed
+                }),
+                textInputStyle: Platform.select({
+                  android: {},
+                  ios: {  
+                    minHeight:80,
+                  }, //Fill with what's needed
+                }),
+              },
+              
             },
           },
           2: {
             type: types.string,
             key: `${CHILDREN_KEYS.form_6_plan_and_estimated_time.time}`,
             content: {
-              text: 'When would you like to see this completed?',
               smallKey: 'ETC',
             },
             options: {
               placeHolder: 'Target completion date',
               default: '',
               multiline: true,
+              style: {
+                textInputContainerStyle: Platform.select({
+                  android: {},
+                  ios: {
+                  }, //Fill with what's needed
+                }),
+                textInputStyle: Platform.select({
+                  android: {},
+                  ios: {  
+                  }, //Fill with what's needed
+                }),
+              },
             },
           },
         },
