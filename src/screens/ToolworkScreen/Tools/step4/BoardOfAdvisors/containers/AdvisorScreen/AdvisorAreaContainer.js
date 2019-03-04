@@ -69,6 +69,7 @@ const merge = (props: Props) => {
     hasContact,
     goToSync,
     handleUnsync,
+    advisor,
   }
 }
 

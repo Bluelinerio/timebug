@@ -8,11 +8,18 @@ import {
   white2,
 }                               from '2020_constants/colors'
 
-const imageWidth = 60
+const imageWidth = 100
 const imageHeight = imageWidth
 
 export const iconColor = gray900
 export const iconSize = 40
+
+const helperIconSize = 80
+
+export const iconStyle = {
+  height: helperIconSize,
+  width: helperIconSize,
+}
 
 export default StyleSheet.create({
   container: {

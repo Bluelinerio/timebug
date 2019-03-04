@@ -48,13 +48,13 @@ const form1 = {
               smallKey: 'category',
               items: LifeCategoriesArray.map(category => {
                 return {
-                  value: category,
-                  text: category,
+                  value: category.key,
+                  text: category.text,
                 }
               }),
             },
             options: {
-              default: LifeCategoriesArray[0],
+              default: LifeCategoriesArray[0].key,
             },
           },
         },
@@ -96,13 +96,13 @@ const form1 = {
               smallKey: 'category',
               items: LifeCategoriesArray.map(category => {
                 return {
-                  value: category,
-                  text: category,
+                  value: category.key,
+                  text: category.text,
                 }
               }),
             },
             options: {
-              default: LifeCategoriesArray[0],
+              default: LifeCategoriesArray[0].key,
             },
           },
         },

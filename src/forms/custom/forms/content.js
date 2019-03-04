@@ -159,33 +159,44 @@ export const LifeCategories = {
   Spirituality: {
     title: 'Spirituality',
     subtitle: 'i.e Meditation, Church, etc.',
+    key: 'Spirituality',
   },
   CoreWork: {
     title: 'Core Work',
     subtitle: 'Your main job',
+    key: 'CoreWork',
   },
   SpecialProjects: {
     title: 'Special Projects',
     subtitle: 'Long term / Creative adventures',
+    key: 'SpecialProjects',
   },
   SkillsAndEducation: {
     title: 'Skills and Education',
     subtitle: 'Courses, trainings, etc.',
+    key: 'SkillsAndEducation',
   },
   PersonalLife: {
     title: 'Personal Life',
     subtitle: 'Relationships, Hobbies, etc.',
+    key: 'PersonalLife',
   },
   BasicNeeds: {
     title: 'Basic Needs',
     subtitle: 'Sleep, eating, etc.',
+    key: 'BasicNeeds',
   },
   HealthAndWellness: {
     title: 'Health And Wellness',
     subtitle: 'i.e Physical exercise',
+    key: 'HealthAndWellness',
   },
 }
 
-export const LifeCategoriesArray = Object.values(LifeCategories).map(
-  val => val.title
-)
+export const LifeCategoriesArray = Object.keys(LifeCategories).map(key => {
+  const val = LifeCategories[key]
+  return {
+    key,
+    text: val.title,
+  }
+})
