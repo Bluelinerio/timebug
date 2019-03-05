@@ -170,8 +170,8 @@ const form: Form = {
           min: 3,
           max: 3,
           errors: {
-            min: 'You need at least 3 activities',
-            max: 'You only need 3 activities',
+            min: 'Please list at least 3 activities',
+            max: 'The max input for this exercise is 5 activities.',
           },
         },
       },
@@ -216,8 +216,8 @@ const form: Form = {
           min: 3,
           max: 3,
           errors: {
-            min: 'You need at least 3 activities',
-            max: 'You only need 3 activities',
+            min: 'Please list at least 3 activities',
+            max: 'The max input for this exercise is 5 activities.',
           },
         },
       },

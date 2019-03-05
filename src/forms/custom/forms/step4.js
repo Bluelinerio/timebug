@@ -66,8 +66,8 @@ const form: Form = {
           min: 3,
           max: 10,
           errors: {
-            min: 'Set up at least 3 advisors',
-            max: 'A maximum of 10 advisors only, choose your team wisely!',
+            min: 'Please list at least 3 advisors',
+            max: 'The max input for this exercise is 10 advisors',
           },
         },
       },
@@ -115,8 +115,8 @@ const form: Form = {
           min: 1,
           max: 3,
           errors: {
-            min: 'Mention at least 1 group',
-            max: 'Set up a maximum of 3 groups, choose the most relevant ones',
+            min: 'Please list at least 1 support group',
+            max: 'The max input for this exercise is 3 support groups',
           },
         },
       },

@@ -13,7 +13,7 @@ const form: Form = {
       key: 'form_3_strengths',
       content: {
         text:
-          'List 3 - 5 charachter strengs that you believe yourself to possess',
+          'List 3 - 5 3-5 character strengths that you believe yourself to possess',
         smallKey: 'Strengths',
         listText: 'Strengths',
       },
@@ -41,8 +41,8 @@ const form: Form = {
           min: 3,
           max: 5,
           errors: {
-            min: 'You need at least 3 Strengths',
-            max: 'You only need 5 Strengths',
+            min: 'Please list at least 3 character strengths',
+            max: 'The max input for this exercise is 5 character strengths',
           },
         },
       },
@@ -52,7 +52,7 @@ const form: Form = {
       key: 'form_3_weaknesses',
       content: {
         text:
-          'List 3 - 5 charachter weaknesses that you believe yourself to possess',
+          'List 3 - 5 character weaknesses that you believe yourself to possess',
         smallKey: 'Weaknesses',
         listText: 'Weaknesses',
       },
@@ -80,8 +80,8 @@ const form: Form = {
           min: 3,
           max: 5,
           errors: {
-            min: 'You need at least 3 Weaknesses',
-            max: 'You only need 5 Weaknesses',
+            min: 'Please list at least 3 weaknesses',
+            max: 'The max input for this exercise is 5 weaknesses',
           },
         },
       },
@@ -91,7 +91,7 @@ const form: Form = {
       key: 'form_3_strenghts_friend_name',
       content: {
         text:
-          'Now, ask a close friend or family member to list 3-5 charachter strenghts they believe you to possess',
+          'Now, ask a close friend or family member to list 3-5 character strengths they believe you to possess',
         smallKey: "Friend's name Strengths",
         listText: "Friend's name Strengths",
       },
@@ -107,7 +107,7 @@ const form: Form = {
       key: 'form_3_strengths_by_friend',
       content: {
         text:
-          'Now, ask a close friend or family member to list 3-5 charachter strenghts they believe you to possess',
+          'Now, ask a close friend or family member to list 3-5 character strengths they believe you to possess',
         smallKey: 'Strengths By Friend',
         listText: 'Strengths By Friend',
       },
@@ -141,8 +141,8 @@ const form: Form = {
           min: 3,
           max: 5,
           errors: {
-            min: 'You need at least 3 strengths',
-            max: 'You only need 5 strengths',
+            min: 'Please list at least 3 character strengths',
+            max: 'The max input for this exercise is 5 character strengths',
           },
         },
       },
@@ -152,7 +152,7 @@ const form: Form = {
       key: 'form_3_weaknesses_friend_name',
       content: {
         text:
-          'Now, ask a close friend or family member to list 3-5 charachter weaknesses they believe you to possess',
+          'Now, ask a close friend or family member to list 3-5 character weaknesses they believe you to possess',
       },
       options: {
         placeHolder: "Friend's name",
@@ -166,7 +166,7 @@ const form: Form = {
       key: 'form_3_weaknesses_by_friend',
       content: {
         text:
-          'Now, ask a close friend or family member to list 3-5 charachter weaknesses they believe you to possess',
+          'Now, ask a close friend or family member to list 3-5 character weaknesses they believe you to possess',
         smallKey: 'Weaknesses By Friend',
         listText: 'Weaknesses By Friend',
       },
@@ -200,8 +200,8 @@ const form: Form = {
           min: 3,
           max: 5,
           errors: {
-            min: 'You need at least 3 weaknesses',
-            max: 'You only need 5 weaknesses',
+            min: 'Please list at least 3 character weaknesses',
+            max: 'The max input for this exercise is 5 character weaknesses',
           },
         },
       },
