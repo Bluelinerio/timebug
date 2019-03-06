@@ -1,13 +1,13 @@
 import React                                   from 'react'
 import { View, Text, Alert, TouchableOpacity } from 'react-native'
 import Icon                                    from 'react-native-vector-icons/Ionicons'
+import uuid                                    from 'uuid/v4'
 import FormElementHeader                       from './FormElementHeader'
 import TextElement                             from './common/ListTextElement'
 import styles, {
   TEMPORARY_COLOR_FOR_BUTTONS,
 }                                              from '../../styles'
 import FormPicker                              from './FormPicker'
-import uuid                                    from 'uuid/v4'
 import types                                   from '../../forms/types'
 import {
   mapChildtypeIndexesToKeys,
@@ -172,7 +172,6 @@ class ListComponent extends React.PureComponent<Props, State> {
         ...prev,
         [model.key]: {
           ...currentValue[model.key],
-          _model: model,
           _id: uuid(),
         },
       }

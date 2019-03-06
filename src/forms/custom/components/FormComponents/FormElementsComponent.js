@@ -22,15 +22,30 @@ class FormElementsComponent extends React.PureComponent<Props, State> {
   componentDidUpdate = prevProps => {
     const { field, value, onChange } = this.props
     if (!value && field.key !== prevProps.key) {
-      const initialValue = buildInitialValue(this.props)
+      const initialValue = this._buildInitialValue(this.props)
       onChange({ ...initialValue, _id: uuid() })
     }
+  }
+
+  _buildInitialValue = (props: Props) => {
+    const initialValue = buildInitialValue(props)
+    const value = Object.keys(initialValue).reduce((obj, key) => {
+      const valueForKey = initialValue[key]
+      return {
+        ...obj,
+        [key]: {
+          ...valueForKey,
+          _id: uuid(),
+        },
+      }
+    }, {})
+    return value
   }
 
   componentDidMount = () => {
     const { value, onChange } = this.props
     if (!value) {
-      const initialValue = buildInitialValue(this.props)
+      const initialValue = this._buildInitialValue(this.props)
       onChange({ ...initialValue, _id: uuid() })
     }
   }
