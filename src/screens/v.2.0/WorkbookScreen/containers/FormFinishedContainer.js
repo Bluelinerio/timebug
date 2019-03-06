@@ -40,8 +40,13 @@ const merge = (props: Props) => {
   const hasNext = step.number + 1 <= totalSteps
   const nextStep = hasNext ? steps[step.number + 1] : null
   const nextStepNumber = hasNext ? nextStep.number : 1
+  const toolUnlockName = 'Tool ' + step.number
 
   const onButtonPress = () => {
+    onSelectStep(nextStep)
+  }
+
+  const goToUnlockedTool = () => {
     onSelectStep(nextStep)
   }
 

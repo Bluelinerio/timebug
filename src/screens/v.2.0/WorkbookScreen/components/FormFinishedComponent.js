@@ -3,6 +3,8 @@ import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import type { Step } from '../../../../services/cms'
 import styles from '../styles'
+import ToolButton from '../containers/Tools/ToolButtonContainer'
+
 
 export type Props = {
   color: string,
@@ -12,6 +14,7 @@ export type Props = {
   title: string,
   hasNext: boolean,
   nextStepNumber: number,
+  toolUnlockName: string
 }
 
 class FormFinishedComponent extends React.PureComponent<Props> {
@@ -21,7 +24,7 @@ class FormFinishedComponent extends React.PureComponent<Props> {
   }
 
   render() {
-    const { color, text, title, hasNext, nextStepNumber } = this.props
+    const { color, text, title, hasNext, nextStepNumber, toolUnlockName } = this.props
 
     return (
       <View style={[styles.container, styles.doneContentContainer]}>
@@ -41,6 +44,14 @@ class FormFinishedComponent extends React.PureComponent<Props> {
             </TouchableOpacity>
           </View>
         )}
+         /** */<View style={styles.toolUnlockedButtonContainer}>
+          <TouchableOpacity
+            style={[styles.toolUnlockButton, { backgroundColor: color }]}
+            onPress={this._onPress}
+          >
+            <Text style={styles.toolUnlockButtontext}> {toolUnlockName}</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     )
   }
