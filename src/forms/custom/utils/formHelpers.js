@@ -1,4 +1,3 @@
-import uuid                          from 'uuid/v4'
 import { DISABLE }                   from '../forms/constants'
 import types                         from '../forms/types'
 import { stripKeys }                 from '../utils/stripKeys'
@@ -26,8 +25,7 @@ export const buildInitialValue = (props: any) => {
         [key]: {
           key,
           index,
-          model: child,
-          _id: uuid(),
+          _model: child,
           value: child.options ? child.options.default : undefined,
         },
       }
@@ -41,8 +39,7 @@ const _handleSelectTypeValue = (child, indexKey, props) => {
   return {
     key,
     index: indexKey,
-    model: child,
-    _id: uuid(),
+    _model: child,
     value:
       filteredValues && filteredValues.length > 0
         ? filteredValues[0].value
