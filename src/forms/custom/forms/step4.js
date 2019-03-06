@@ -28,7 +28,7 @@ const form: Form = {
       key: FORM_KEYS.form_4_board_of_advisors,
       content: {
         text:
-          'List up to 5 people for your Board of Advisors. What life category does she or he positively impact?',
+          'List up to 10 people for your Board of Advisors. What life category does she or he positively impact?',
         smallKey: 'Advisors',
         listText: 'Advisors',
       },
