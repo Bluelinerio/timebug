@@ -3,7 +3,7 @@ import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import type { Step } from '../../../../services/cms'
 import styles from '../styles'
-import ToolButton from '../containers/Tools/ToolButtonContainer'
+import { goToTool, goToToolParams } from '../../../../redux/actions/nav.actions.js'
 
 
 export type Props = {
@@ -44,10 +44,10 @@ class FormFinishedComponent extends React.PureComponent<Props> {
             </TouchableOpacity>
           </View>
         )}
-         /** */<View style={styles.toolUnlockedButtonContainer}>
+         <View style={styles.toolUnlockedButtonContainer}>
           <TouchableOpacity
             style={[styles.toolUnlockButton, { backgroundColor: color }]}
-            onPress={this._onPress}
+            onPress={Dispatch(goToTool(params))}
           >
             <Text style={styles.toolUnlockButtontext}> {toolUnlockName}</Text>
           </TouchableOpacity>
