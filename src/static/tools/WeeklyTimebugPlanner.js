@@ -6,7 +6,7 @@ export default {
   title: 'Timebug Planner (Weekly)',
   subtitle: 'How do I want to spend my time?',
   content:
-    'Check-in with this tool once a week to see how you are doing compared to the goals you laid out for yourself, and make adjustments when necessary',
+    'This tool will show you how you are spending your time in comparison to the "Ideal Week" that you have set for yourself in Step 2.',
   form: {},
   config: {
     max: 168,

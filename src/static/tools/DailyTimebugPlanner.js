@@ -72,7 +72,7 @@ export default {
   title: 'Timebug Planner (Daily)',
   subtitle: 'How do I want to spend my time?',
   content:
-    'Check-in with this tool once a day to log your time and how it compares to the weekly vision you laid out in step 2',
+    'Use this tool to track how you are spending your time every day.',
   form: form,
   formStyles: {
     headerTextStyle: {

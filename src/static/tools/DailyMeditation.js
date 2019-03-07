@@ -6,7 +6,7 @@ export default {
   title: 'Meditation tool',
   subtitle: 'Have you meditated today?',
   content:
-    'Check-in with this tool once a day to keep track of your meditation plan. Meditating is important!',
+    'Use this tool to time and track your daily meditation.',
   form: {},
   config: {},
 }

@@ -6,7 +6,7 @@ export default {
   title: 'Goal tracking tool',
   subtitle: 'How are you following up on your goals?',
   content:
-    'Check-in with this tool periodically to keep track of your goals. Persevere and reach your dreams!',
+    'Use this tool to track your Life Vision Goals, step by step.',
   form: {},
   config: {},
 }

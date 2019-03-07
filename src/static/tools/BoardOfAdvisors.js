@@ -4,9 +4,9 @@ export default {
   key,
   number: 4,
   title: 'Board of advisors',
-  subtitle: 'Build up your board of advisors',
+  subtitle: 'Build your board of advisors',
   content:
-    'These are the people that you can trust, and that give valuable insight to help you make progress on your endeavors. Choose wisely, and build your dream team!',
+    'Use this tool to connect with your board of advisors and log the feedback you get.',
   form: {},
   config: {},
 }

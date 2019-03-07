@@ -6,7 +6,7 @@ export default {
   title: 'Goals of Others Log',
   subtitle: 'How are the goals of your peers coming up?',
   content:
-    'This tool helps you keep track of the goals of people that surround you, reciprocate the support they give you and help them reach their dreams!',
+    'Use this tool to help keep track of the things you have committed to do for those close to you.',
   form: {},
   config: {},
 }
