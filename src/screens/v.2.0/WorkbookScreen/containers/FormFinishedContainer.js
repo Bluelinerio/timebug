@@ -33,7 +33,7 @@ const merge = (props: Props) => {
   const color = mapPhaseToTextAndButtonColor(phase)
 
   const {
-    text = `Congratulations on completing Step ${step.number}: ${step.title}`,
+    text = ` Step ${step.number}: ${step.title}`,
     title = 'Congratulations!',
   } = FormFinishedContent[stepNumber] || {}
 

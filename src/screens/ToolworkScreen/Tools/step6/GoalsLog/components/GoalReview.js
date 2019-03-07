@@ -46,18 +46,18 @@ class GoalReview extends React.PureComponent<Props> {
             <Text style={styles.goalName}>{goalName}</Text>
           </View>
           <View style={styles.goalOwnerContainer}>
-            <Text style={styles.goalOwner}>A Goal of: {name}</Text>
+            <Text style={styles.goalOwner}>Person To Help: {name}</Text>
           </View>
           <View style={styles.estimateContainer}>
             <Text style={styles.estimate}>
               {completed
                 ? `Completed at: ${moment(completedAt).format(DATE_FORMAT)}`
-                : `Time estimate: ${estimate}`}
+                : `Estimated time to complete: ${estimate}`}
             </Text>
           </View>
           <View style={styles.planContainer}>
             <Text style={styles.planHeader}>
-              The plan you have redacted to complete this goal is:
+              Your plan to complete this goal is:
             </Text>
             <Text style={styles.plan}>{`${plan}`}</Text>
           </View>

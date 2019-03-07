@@ -7,7 +7,8 @@ import {
   gray600,
   gray900,
   VISION_CREATION,
-  azure,
+  deepBlue,
+  azure
 }                               from '2020_constants/colors'
 import { heightPercentage }     from '2020_utils/viewportCalculation'
 
@@ -90,11 +91,11 @@ export default StyleSheet.create({
   goalListText: {
     ...iOSUIKit.bodyObject,
     fontSize: 15,
-    color: azure,
+    color: deepBlue,
   },
   goalListTitle: {
     ...iOSUIKit.title3EmphasizedObject,
-    color: azure,
+    color: deepBlue,
   },
   goalListSubElement: {
     marginRight: 4,
@@ -171,10 +172,13 @@ export default StyleSheet.create({
   },
   actionButton: {
     flex: 1,
-    backgroundColor: azure,
+    backgroundColor: deepBlue,
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 12,
+    maxWidth:360,
+    marginHorizontal:20,
+    marginBottom:20,
     ...Platform.select({
       android: { elevation: 2 },
       ios: {
