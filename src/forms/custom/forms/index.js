@@ -4,6 +4,8 @@ import Step3 from './step3'
 import Step4 from './step4'
 import Step5 from './goals'
 import Step6 from './step6'
+import Step7 from './step7'
+
 
 export * from './content'
 export * from './constants'
@@ -15,4 +17,5 @@ export default {
   '4': Step4,
   '5': Step5,
   '6': Step6,
+  '7': Step7
 }
