@@ -45,17 +45,23 @@ function* _handleAwardEffects(action: {
   payload: SubmitAwardValuePayload,
 }) {
   const { payload } = action
-  const { stepId, element } = payload
-  const { value } = element
-  const formData = yield select(selectors.formData)
-  const formDataForStep = formData[`${stepId}`].value
-  switch (stepId) {
-  case stepEnum.STEP_5:
-    yield call(_callGoalsSideEffect, formDataForStep, value)
-    break
-  default:
-    yield
+  const { element } = payload
+  const { value, tool } = element
+  const { affectedSteps = [] } = tool
+  if (affectedSteps && affectedSteps.length > 0) {
+    const formData = yield select(selectors.formData)
+    for (const step of affectedSteps) {
+      const formDataForStep = formData[`${step}`].value
+      switch (`${step}`) {
+      case stepEnum.STEP_5:
+        yield fork(_callGoalsSideEffect, formDataForStep, value)
+        break
+      default:
+        yield
+      }
+    }
   }
+  yield
 }
 
 function* _handleSideEffects(action: {
@@ -64,11 +70,10 @@ function* _handleSideEffects(action: {
 }) {
   const { payload } = action
   const { stepId, value } = payload
-  const getAwardDataForTool = yield select(selectors.awardDataForStepAndTool)
+  const getAwardDataForTool = yield select(selectors.awardDataForTool)
   const awardKey = toolKeysForStepIds[`${stepId}`]
   const awardDataForTool = awardKey
     ? yield call(getAwardDataForTool, {
-      stepNumber: `${stepId}`,
       tool: { key: awardKey },
     })
     : null
@@ -109,9 +114,8 @@ function* _handleSyncSideEffects() {
       : undefined
     if (!formDataForStep) continue
     const toolKey = toolKeysForStepIds[step]
-    const getAwardDataForTool = yield select(selectors.awardDataForStepAndTool)
+    const getAwardDataForTool = yield select(selectors.awardDataForTool)
     const awardDataForTool = yield call(getAwardDataForTool, {
-      stepNumber: `${step}`,
       tool: { key: toolKey },
     })
     const awardDataValue =

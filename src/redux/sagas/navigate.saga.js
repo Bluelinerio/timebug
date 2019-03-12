@@ -1,15 +1,15 @@
 // @flow
-import { put, select, takeLatest }      from 'redux-saga/effects'
-import { NavigationActions }            from 'react-navigation'
+import { put, select, takeLatest, call } from 'redux-saga/effects'
+import { NavigationActions }             from 'react-navigation'
 import {
   GO_TO_HOME_SCREEN,
   SAGA_NAVIGATE,
   LINK_NAVIGATION,
-}                                       from '../actionTypes'
-import { goToStartScreen, goToTool }    from '../actions/nav.actions'
-import type { goToToolParams }          from '../actions/nav.actions'
-import type { LinkedNavigationPayload } from '../actions/nav.actions'
-import selectors                        from '../selectors'
+}                                        from '../actionTypes'
+import { goToStartScreen, goToTool }     from '../actions/nav.actions'
+import type { goToToolParams }           from '../actions/nav.actions'
+import type { LinkedNavigationPayload }  from '../actions/nav.actions'
+import selectors                         from '../selectors'
 
 const handleUrl = (
   link: string
@@ -30,31 +30,24 @@ const handleUrl = (
   }
 }
 
-const handleGoToTool = (
-  params: { step: string, key: string },
-  tools: any,
-  steps: any
-) => {
-  const { step: stepNumber, key, ...rest } = params
-  const step = steps[stepNumber]
-  const toolsForStep = tools[stepNumber] || []
-  const tool = toolsForStep.find(t => t.key === key)
+function* handleGoToTool(params: { key: string }) {
+  const { key, ...rest } = params
+  const tool = yield call(selectors.getTool, key)
   const payload: goToToolParams = {
-    step,
     tool,
     payload: rest,
   }
   return goToTool(payload)
 }
 
-const handleLink = (payload: { link: string }, tools: any, steps: any) => {
+function* handleLink(payload: { link: string }) {
   const { link } = payload
   const { screen, component, params } = handleUrl(link)
   switch (screen) {
   case 'home':
-    return goToStartScreen({ component, params })
+    return yield call(goToStartScreen, { component, params })
   case 'tools':
-    return handleGoToTool(params, tools, steps)
+    return yield call(handleGoToTool, params)
   }
 }
 
@@ -63,10 +56,9 @@ function* deeplinkNavigation({
 }: {
   payload: LinkedNavigationPayload,
 }) {
-  const tools = yield select(selectors.getAllTools)
-  const steps = yield select(selectors.steps)
   try {
-    yield put(handleLink(payload, tools, steps))
+    const action = yield call(handleLink, payload)
+    yield put(action)
   } catch (err) {
     console.log(err)
   }

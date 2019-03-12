@@ -1,3 +1,5 @@
+// @flow
+
 import {
   buttonStyles,
   phaseColors,
@@ -8,6 +10,10 @@ import {
 import types, { setTypes, answerTypes } from '2020_forms/forms/types'
 import { LifeCategories } from '2020_forms/forms/content'
 import { SHARED } from '2020_forms/forms/constants'
+
+import {
+  MEDITATION,
+} from '2020_services/cms'
 
 export const key = 'daily_timebug_planner_tool'
 
@@ -69,6 +75,7 @@ const form = {
 export default {
   key,
   number: 2,
+  phase: MEDITATION,
   title: 'Timebug Planner (Daily)',
   subtitle: 'How do I want to spend my time?',
   content:

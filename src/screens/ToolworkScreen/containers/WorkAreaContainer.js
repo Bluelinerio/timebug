@@ -8,7 +8,7 @@ import { submitAwardAnswers }           from '../../../redux/actions/award.actio
 import type { SubmitAwardValuePayload } from '../../../redux/actions/award.actions'
 
 const mapStateToProps = (state: any) => {
-  const getDataForTool = selectors.awardDataForStepAndTool(state)
+  const getDataForTool = selectors.awardDataForTool(state)
   return {
     getDataForTool,
   }
@@ -21,10 +21,9 @@ const mapDispatchToProps = (dispatch: any) => ({
 
 const merge = (props: any): Props => {
   const { navigation: { state }, storeAwardValue, getDataForTool } = props
-  const { params: { step, tool } } = state
-  const toolData = getDataForTool({ stepNumber: step.number, tool })
+  const { params: { tool } } = state
+  const toolData = getDataForTool({ tool })
   return {
-    step,
     tool,
     storeAwardValue,
     toolData,

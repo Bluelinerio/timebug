@@ -2,6 +2,7 @@
 import { connect }           from 'react-redux'
 import { compose, mapProps } from 'recompose'
 import selectors             from '2020_redux/selectors'
+import { stepEnum }          from '2020_services/cms'
 import { FORM_KEYS }         from '2020_forms/forms/goals'
 import GoalListElement       from '../components/GoalListElement'
 import { GoalTypesEnum }     from '2020_forms/forms/content'
@@ -39,8 +40,8 @@ type MergeProps = {
 }
 
 const mergeProps = (props): MergeProps => {
-  const { type, onSelect, formData, data, step } = props
-  const step5Data = formData[`${step.number}`] || { value: [] }
+  const { type, onSelect, formData, data } = props
+  const step5Data = formData[`${stepEnum.STEP_5}`] || { value: [] }
   const { value } = step5Data
 
   const iconName = GOAL_ICONS[type] || ''

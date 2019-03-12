@@ -3,6 +3,7 @@ import { connect }           from 'react-redux'
 import { compose, mapProps } from 'recompose'
 import selectors             from '2020_redux/selectors'
 import { FORM_KEYS }         from '2020_forms/forms/goals'
+import { stepEnum }          from '2020_services/cms'
 import GoalsFromTypeList     from '../components/GoalsFromTypeList'
 
 type StateProps = {
@@ -28,8 +29,8 @@ type MergeProps = {
 }
 
 const mergeProps = (props: any): MergeProps => {
-  const { type, onSelect, formData, data, step } = props
-  const step5Data = formData[`${step.number}`] || { value: [] }
+  const { type, onSelect, formData, data } = props
+  const step5Data = formData[`${stepEnum.STEP_5}`] || { value: [] }
   const { value } = step5Data
   const goals = value
     .filter(goalData => {

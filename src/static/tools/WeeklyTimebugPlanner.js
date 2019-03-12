@@ -1,8 +1,16 @@
+// @flow
+
+import {
+  MEDITATION,
+  stepEnum,
+} from '2020_services/cms'
+
 export const key = 'weekly_timebug_planner_tool'
 
 export default {
   key,
   number: 2,
+  phase: MEDITATION,
   title: 'Timebug Planner (Weekly)',
   subtitle: 'How do I want to spend my time?',
   content:
@@ -11,5 +19,8 @@ export default {
   config: {
     max: 168,
     elementMax: 70,
+  },
+  require: {
+    steps: [stepEnum.STEP_2],
   },
 }

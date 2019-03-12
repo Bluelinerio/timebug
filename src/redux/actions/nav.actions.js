@@ -32,7 +32,6 @@ export type HelpParams = {
 
 export type GoToToolParams = {
   tool: any,
-  step: number,
   params?: any,
 }
 

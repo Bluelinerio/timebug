@@ -6,9 +6,9 @@ import DailyMeditation from '../Tools/step1/MeditationTool'
 import BoardOfAdvisors from '../Tools/step4/BoardOfAdvisors'
 import GoalTracker     from '../Tools/step5/GoalTracker'
 import GoalsLog        from '../Tools/step6/GoalsLog'
+import Dummy           from '../Tools/dummyTool'
 
 type Props = {
-  step: any,
   tool: any,
   data: any,
   storeAwardData: (value: any, tool: any) => any,
@@ -29,6 +29,8 @@ const ToolSwitch = (props: Props) => {
     return <GoalTracker {...props} />
   case TOOL_KEYS.GoalsLogKey:
     return <GoalsLog {...props} />
+  case TOOL_KEYS.DummyKey:
+    return <Dummy {...props}/>
   default:
     return null
   }

@@ -7,7 +7,6 @@ import styles                           from '../../styles/ToolStyles'
 export type ToolButtonProps = {
   onPress: () => any,
   title: string,
-  step: any,
   subtitle: string,
   content: string,
   source: string,
@@ -18,8 +17,8 @@ export type ToolButtonProps = {
 
 class ToolButton extends React.PureComponent<ToolButtonProps> {
   _onPress = () => {
-    const { onPress, step, tool } = this.props
-    onPress({ step, tool })
+    const { onPress, tool } = this.props
+    onPress({ tool })
   }
 
   render() {

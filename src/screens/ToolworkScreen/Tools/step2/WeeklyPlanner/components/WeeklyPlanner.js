@@ -27,7 +27,6 @@ export type WeekDataArray = Array<WeekDataElement>
 
 export type Props = {
   navigation: any,
-  step: any,
   tool: any,
   storeAwardData: (value: any, tool: any) => any,
   actionData?: {
