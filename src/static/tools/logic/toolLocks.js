@@ -112,18 +112,6 @@ const toolDefinitions: Array<ToolLock> = [
     ],
     tool: GoalsOfOthersLog,
   },
-  {
-    conditions: [
-      {
-        type: STEPS,
-        clause: {
-          type: SOME,
-          value: [10, 5],
-        },
-      },
-    ],
-    tool: DummyTool,
-  },
 ]
 
 export default toolDefinitions
