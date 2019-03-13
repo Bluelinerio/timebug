@@ -88,10 +88,10 @@ const form: Form = {
     },
     2: {
       type: types.string,
-      key: 'form_3_strenghts_friend_name',
+      key: 'form_3_strengths_friend_name',
       content: {
         text:
-          'Now, ask a close friend or family member to list 3-5 character strengths they believe you to possess',
+          'Now, ask a close friend or family member to list 3-5 character strengths and weaknesses they believe you to possess',
         smallKey: "Friend's name Strengths",
         listText: "Friend's name Strengths",
       },
@@ -114,7 +114,7 @@ const form: Form = {
       options: {
         referencedValue: {
           type: types.string,
-          key: 'form_3_strenghts_friend_name',
+          key: 'form_3_strengths_friend_name',
           text: "Friend's name",
           smallKey: "Friend's name",
         },
@@ -148,20 +148,6 @@ const form: Form = {
       },
     },
     4: {
-      type: types.string,
-      key: 'form_3_weaknesses_friend_name',
-      content: {
-        text:
-          'Now, ask a close friend or family member to list 3-5 character weaknesses they believe you to possess',
-      },
-      options: {
-        placeHolder: "Friend's name",
-        multiline: false,
-        default: '',
-        required: true,
-      },
-    },
-    5: {
       type: types.list,
       key: 'form_3_weaknesses_by_friend',
       content: {
