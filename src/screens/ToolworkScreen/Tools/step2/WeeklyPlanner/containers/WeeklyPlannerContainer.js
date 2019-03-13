@@ -4,6 +4,8 @@ import { compose, mapProps } from 'recompose'
 import { withNavigation }    from 'react-navigation'
 import selectors             from '2020_redux/selectors'
 import { key }               from '2020_static/tools/DailyTimebugPlanner'
+import { stepEnum }          from '2020_services/cms'
+import StepDataProvider      from '../../../../HOC/ToolStepDataProvider'
 import WeeklyPlanner         from '../components/WeeklyPlanner'
 import {
   getActionsData,
@@ -14,23 +16,19 @@ import {
 }                            from '../utils'
 
 const mapStateToProps = (state: any) => {
-  const formData = selectors.formData(state)
-  const getDataForStepAndTool = selectors.awardDataForStepAndTool(state)
+  const getDataForStepAndTool = selectors.awardDataForTool(state)
   return {
-    formData,
     getDataForStepAndTool,
   }
 }
 
 const merge = (props: any) => {
-  const { formData, step, getDataForStepAndTool, tool } = props
-  const formDataStep2 = formData[`${step.number}`]
+  const { getDataForStepAndTool, stepData, tool } = props
+  const formDataStep2 = stepData[stepEnum.STEP_2]
   const dailyToolData = getDataForStepAndTool({
-    stepNumber: step.number,
     tool: { key },
   })
   const weeklyToolData = getDataForStepAndTool({
-    stepNumber: step.number,
     tool,
   })
   const dailyToolValue = dailyToolData ? dailyToolData.value : []
@@ -38,7 +36,10 @@ const merge = (props: any) => {
   const weeklyToolValueForThisWeek = findWeeklyToolValue(weeklyToolData)
   const actionData = getActionsData(formDataStep2)
   const idealWeek = getIdealWeek(formDataStep2)
-  const currentWeek = getCurrentWeekAndReduce(dailyToolValue, dailyToolTimeStamp)
+  const currentWeek = getCurrentWeekAndReduce(
+    dailyToolValue,
+    dailyToolTimeStamp
+  )
   const weekData = mapWeekData(idealWeek, currentWeek)
   return {
     ...props,
@@ -53,5 +54,6 @@ const merge = (props: any) => {
 export default compose(
   connect(mapStateToProps),
   withNavigation,
+  StepDataProvider,
   mapProps(merge)
 )(WeeklyPlanner)

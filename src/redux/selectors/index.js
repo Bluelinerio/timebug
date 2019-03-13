@@ -1,5 +1,5 @@
 // @flow
-import R                                                      from 'ramda'
+import R                                         from 'ramda'
 import {
   getUserState,
   getCms,
@@ -13,15 +13,17 @@ import {
   getContactState,
   getNotifications,
   getNavigationState,
-}                                                             from './rootReducer.selectors'
-import { ANONYMOUS, AUTHENTICATING }                          from '../../services/apollo/models'
+}                                                from './rootReducer.selectors'
+import { ANONYMOUS, AUTHENTICATING }             from '../../services/apollo/models'
 // models
-import workbooks                                              from '../../screens/WorkbookScreen/forms'
-import { removeIvalidValuesInsteadOfDoingAnyMigrationForNow } from '../tcomb'
-import type { User, Form }                                    from '../../services/apollo/models'
-import type { Step, Slide }                                   from '../../services/cms'
-import { getStepColors, getPhaseColors }                      from '../../services/dummyCms'
-import tools                                                  from '../../static/tools'
+import type { User, Form }                       from '../../services/apollo/models'
+import type { Step, Slide }                      from '../../services/cms'
+import { isStepCompleted as isStepCompletedCMS } from '../../services/cms'
+import { getStepColors, getPhaseColors }         from '../../services/dummyCms'
+import tools                                     from '../../static/tools'
+
+// import workbooks                                              from '../../screens/WorkbookScreen/forms'
+// import { removeIvalidValuesInsteadOfDoingAnyMigrationForNow } from '../tcomb'
 
 export const filterWithKeys = (predicate, obj) =>
   R.pipe(R.toPairs, R.filter(R.apply(predicate)), R.fromPairs)(obj)
@@ -188,6 +190,10 @@ const buttonTitlesForFormCompletion = state => stepId => {
 const modelsAndDataForExercise = (state: any) => (stepId: string) => {
   //TComb Forms helpers
 
+  // TODO: Remove any and all tcomb logic
+  const workbooks = {}
+  const removeIvalidValuesInsteadOfDoingAnyMigrationForNow = () => null
+
   const models = workbooks[stepId]
   const localData = getFormData(state).data[stepId]
   if (!localData) {
@@ -230,6 +236,17 @@ const isStepCompleted = (state: any) => {
   return _stepCompleted
 }
 
+const getCompletedSteps = (state: any) => {
+  const cmsSteps = steps(state)
+  const u = user(state)
+
+  const completedSteps = Object.values(cmsSteps).filter(
+    step => u && isStepCompletedCMS(step.number, u)
+  )
+
+  return completedSteps
+}
+
 /**
  * Should check CMS for colors, for now it's hardcoded
  */
@@ -267,24 +284,14 @@ const awardModelAndDataForStep = (state: any) => (step: number) => {
 
 const getAllTools = () => tools
 
-const getToolsForStep = (step: number) => tools[step]
-
-const getTool = (step: number, key: string) => {
-  const toolsForStep = tools[step] || []
-  const tool = toolsForStep.find(t => t.key === key)
-  return tool
+const getTool = (key: string) => {
+  const tool = tools.find(t => t.tool.key === key) || {}
+  return tool.tool
 }
 
-const awardDataForStepAndTool = (state: any) => ({
-  stepNumber,
-  tool,
-}: {
-  stepNumber: number,
-  tool: any,
-}) => {
+const awardDataForTool = (state: any) => ({ tool }: { tool: any }) => {
   const awardData = getAwards(state).data
-  const dataForStep = awardData[`${stepNumber}`] || {}
-  const dataForTool = dataForStep[tool.key] || null
+  const dataForTool = awardData[`${tool.key}`] || null
   return dataForTool
 }
 
@@ -434,14 +441,14 @@ const selectors = {
   isStepCompleted,
   getAppVersion,
   getAllTools,
-  getToolsForStep,
-  awardDataForStepAndTool,
+  awardDataForTool,
   getTool,
   getContactState,
   getContacts,
   getContactPermissions,
   notifications,
   navigationState,
+  getCompletedSteps,
 }
 
 export default selectors

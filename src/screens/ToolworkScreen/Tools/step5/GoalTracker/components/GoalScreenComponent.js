@@ -18,7 +18,6 @@ type Props = {
   type?: string,
   goal?: any,
   goalId?: string,
-  step: any,
 }
 
 class GoalScreenComponent extends React.PureComponent<Props, State> {
@@ -128,7 +127,6 @@ class GoalScreenComponent extends React.PureComponent<Props, State> {
         >
           <GoalScreenContent
             tool={this.props.tool}
-            step={this.props.step}
             storeAwardData={this.props.storeAwardData}
             data={this.props.data}
             onSelectGoal={this._onSelectGoal}

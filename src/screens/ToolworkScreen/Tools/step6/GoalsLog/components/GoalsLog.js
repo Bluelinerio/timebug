@@ -11,7 +11,6 @@ export type Props = {
   tool: { subtitle: string },
   storeAwardData: (any, any) => any,
   data: { value: boolean, _id?: string, date?: string },
-  step: any,
   navigation: any,
   goal?: Goal,
   goals: Array<Goal>,

@@ -1,8 +1,8 @@
 // @flow
-import { SUBMIT_AWARD_VALUE, RESET_AWARD_VALUE } from '../actionTypes'
-import type { SumbitAwardValueAction }           from '../actions/award.actions'
 import moment                                    from 'moment'
 import uuid                                      from 'uuid/v4'
+import { SUBMIT_AWARD_VALUE, RESET_AWARD_VALUE } from '../actionTypes'
+import type { SumbitAwardValueAction }           from '../actions/award.actions'
 
 /**
  * Types
@@ -38,31 +38,27 @@ const populate = (
   action: SumbitAwardValueAction,
   state: AwardState
 ): AwardState => {
-  const { stepId, element: { key, value, tool } } = action.payload
+  const { element: { key, value, tool } } = action.payload
   const data = state.data || {}
-  const stepData = data[stepId] || {}
-  const keyData = stepData[key] || {}
+  const keyData = data[key] || {}
   return {
     ...state,
     data: {
       ...data,
-      [stepId]: {
-        ...stepData,
-        [key]: {
-          ...keyData,
-          value,
-          tool: keyData.tool ? keyData.tool : tool || null,
-          id: keyData.id || uuid(),
-          timestamp: moment()
-            .toDate()
-            .getTime(),
-        },
+      [key]: {
+        ...keyData,
+        value,
+        tool: keyData.tool ? keyData.tool : tool || null,
+        id: keyData.id || uuid(),
+        timestamp: moment()
+          .toDate()
+          .getTime(),
       },
     },
   }
 }
 
-function formDataReducer(
+function toolDataReducer(
   state: AwardState = initialState,
   action: SumbitAwardValueAction
 ) {
@@ -79,19 +75,38 @@ function formDataReducer(
 import storage from 'redux-persist/lib/storage'
 import { persistReducer, createMigrate } from 'redux-persist'
 
+export const v4_migration = state => {
+  const { data } = state
+  const stepNumbers = Array(30)
+    .fill()
+    .map((v, i) => `${i + 1}`)
+  const newData = stepNumbers.reduce((replacementData, stepNum) => {
+    const toolsForStepData = data[stepNum] || {}
+    return {
+      ...replacementData,
+      ...toolsForStepData,
+    }
+  }, {})
+  return {
+    ...state,
+    data: newData,
+  }
+}
+
 const migrations = {
   0: state => state,
   1: state => state,
   2: () => initialState,
   3: () => initialState,
+  4: v4_migration,
 }
 
 const persistConfig = {
   key: 'awards',
   storage: storage,
   blacklist: [],
-  version: 3,
+  version: 4,
   migrate: createMigrate(migrations, { debug: true }),
 }
 
-export default persistReducer(persistConfig, formDataReducer)
+export default persistReducer(persistConfig, toolDataReducer)

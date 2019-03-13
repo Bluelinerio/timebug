@@ -19,7 +19,7 @@ export const isStepIndexCompleted = (stepIndex: string, user: any) => {
     : false
 }
 
-const mapPhaseAndCompletionToKey = (phase: string) => {
+export const mapPhaseAndCompletionToKey = (phase: string) => {
   switch (phase) {
   case MEDITATION:
     return PHASE_1_NOT_COMPLETED_KEY
@@ -44,5 +44,14 @@ export const getTextColorForStepAtIndex = (stepIndex: string) => {
     [VISION_CREATION]: styles.phase3Incomplete,
   }
   const phase = phaseForStepAtIndex(stepIndex)
+  return incompleteStyles[phase]
+}
+
+export const getTextColorForPhase = (phase: string) => {
+  const incompleteStyles = {
+    [MEDITATION]: styles.phase1Incomplete,
+    [SELF_ASSESSMENT]: styles.phase2Incomplete,
+    [VISION_CREATION]: styles.phase3Incomplete,
+  }
   return incompleteStyles[phase]
 }

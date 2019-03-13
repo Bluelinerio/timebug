@@ -1,16 +1,15 @@
 //@flow
-import invariant           from 'invariant'
-import { connect }         from 'react-redux'
-import { compose }         from 'recompose'
-import ToolScreenContent   from '../components/ToolScreenContent'
-import selectors           from '../../../redux/selectors'
-import { isStepCompleted } from '../../../services/cms'
+import invariant            from 'invariant'
+import { connect }          from 'react-redux'
+import { compose }          from 'recompose'
+import selectors            from '2020_redux/selectors'
+import { getUnlockedTools } from '2020_services/tools'
+import ToolScreenContent    from '../components/ToolScreenContent'
 
+// TODO: Work from here on, remove steps and any instance of these from every level
 const mapStateToProps = (state: any) => {
   const steps = selectors.steps(state)
   const stepColors = selectors.statefullStepColors(state)
-  const tools = selectors.getAllTools()
-  const user = selectors.user(state)
 
   if (__DEV__) {
     invariant(
@@ -19,19 +18,14 @@ const mapStateToProps = (state: any) => {
     )
   }
 
-  const unlockedTools = Object.values(steps)
-    .filter(step => user && isStepCompleted(step.number, user))
-    .reduce((allTools, step) => {
-      const { number } = step
-      const toolsForStep = tools[`${number}`]
-      if (toolsForStep) return [...allTools, ...toolsForStep]
-      return allTools
-    }, [])
+  const completedSteps = selectors.getCompletedSteps(state)
+
+  const tools = getUnlockedTools(completedSteps)
 
   return {
     steps,
     stepColors,
-    tools: unlockedTools,
+    tools,
   }
 }
 

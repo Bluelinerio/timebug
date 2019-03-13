@@ -2,10 +2,11 @@
 import { connect }                       from 'react-redux'
 import { mapProps, compose }             from 'recompose'
 import selectors                         from '2020_redux/selectors'
+import { stepEnum }                      from '2020_services/cms'
 import { FORM_KEYS, FORM_CHILDREN_KEYS } from '2020_forms/forms/step4'
 import { goToV2WorkbookScreen }          from '2020_redux/actions/nav.actions'
-import { phaseForStep }                  from '2020_services/cms'
 import BoardScreen                       from '../../components/BoardScreen/BoardScreen'
+import StepDataProvider                  from '../../../../../HOC/ToolStepDataProvider'
 
 export type Props = {
   step: any,
@@ -17,11 +18,7 @@ export type Props = {
 }
 
 export type StateProps = {
-  formData: {
-    [stepId: string]: {
-      value: any,
-    },
-  },
+  step: any,
 }
 
 export type DispatchProps = {
@@ -52,9 +49,10 @@ const mergeContactData = ({ data, stepData }: { data: any, stepData: any }) => {
 }
 
 const mapStateToProps = (state: any): StateProps => {
-  const formData = selectors.formData(state)
+  const steps = selectors.steps(state)
+  const step = steps[stepEnum.STEP_4]
   return {
-    formData,
+    step,
   }
 }
 
@@ -70,22 +68,21 @@ const mapDispatchToProps = (dispatch: any): DispatchProps => ({
 
 const merge = (props: Props & StateProps & DispatchProps) => {
   const {
-    step,
+    stepData: allStepsData,
     tool,
     data,
     storeAwardData,
-    formData,
     goToFormWrapper,
     goToAdvisor,
     goToSync,
+    step,
   } = props
-  const stepData = formData[`${step.number}`].value[0]
+  const { phase } = tool
+  const stepData = allStepsData[stepEnum.STEP_4].value[0]
   const mergedData = mergeContactData({ data, stepData })
-  const phase = phaseForStep(step)
   const goToForm = goToFormWrapper({ step, phase })
   return {
     tool,
-    step,
     data: mergedData,
     storeAwardData,
     goToForm,
@@ -96,5 +93,6 @@ const merge = (props: Props & StateProps & DispatchProps) => {
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
+  StepDataProvider,
   mapProps(merge)
 )(BoardScreen)

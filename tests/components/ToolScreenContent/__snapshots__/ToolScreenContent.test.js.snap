@@ -1,0 +1,408 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Connected Tool screen content component Should render succesfully the connected component 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Connect(ToolScreenContent) />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "dispatch": [Function],
+      "stepColors": Object {
+        "PHASE1COMPLETE": "#4EADFF",
+        "PHASE1INCOMPLETE": "#B8DEFF",
+        "PHASE2COMPLETE": "#F89A1F",
+        "PHASE2INCOMPLETE": "#FAB152",
+        "PHASE3COMPLETE": "#20B89D",
+        "PHASE3INCOMPLETE": "#20DE9D",
+      },
+      "steps": Object {
+        "1": Object {
+          "icon": Object {
+            "uri": "https://images.ctfassets.net/6h184bey8vl3/Rknt0PorAIG4uoMQAg4KM/d697d93618b298ce10d1606c7d3f573a/TimeBug-Icons-_Step-1_.svg",
+          },
+          "number": 1,
+        },
+        "2": Object {
+          "icon": Object {
+            "uri": "https://images.ctfassets.net/6h184bey8vl3/Rknt0PorAIG4uoMQAg4KM/d697d93618b298ce10d1606c7d3f573a/TimeBug-Icons-_Step-1_.svg",
+          },
+          "number": 2,
+        },
+        "3": Object {
+          "icon": Object {
+            "uri": "https://images.ctfassets.net/6h184bey8vl3/Rknt0PorAIG4uoMQAg4KM/d697d93618b298ce10d1606c7d3f573a/TimeBug-Icons-_Step-1_.svg",
+          },
+          "number": 3,
+        },
+        "4": Object {
+          "icon": Object {
+            "uri": "https://images.ctfassets.net/6h184bey8vl3/Rknt0PorAIG4uoMQAg4KM/d697d93618b298ce10d1606c7d3f573a/TimeBug-Icons-_Step-1_.svg",
+          },
+          "number": 4,
+        },
+        "5": Object {
+          "icon": Object {
+            "uri": "https://images.ctfassets.net/6h184bey8vl3/Rknt0PorAIG4uoMQAg4KM/d697d93618b298ce10d1606c7d3f573a/TimeBug-Icons-_Step-1_.svg",
+          },
+          "number": 5,
+        },
+        "6": Object {
+          "icon": Object {
+            "uri": "https://images.ctfassets.net/6h184bey8vl3/Rknt0PorAIG4uoMQAg4KM/d697d93618b298ce10d1606c7d3f573a/TimeBug-Icons-_Step-1_.svg",
+          },
+          "number": 6,
+        },
+      },
+      "tools": Array [],
+    },
+    "ref": null,
+    "rendered": null,
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "dispatch": [Function],
+        "stepColors": Object {
+          "PHASE1COMPLETE": "#4EADFF",
+          "PHASE1INCOMPLETE": "#B8DEFF",
+          "PHASE2COMPLETE": "#F89A1F",
+          "PHASE2INCOMPLETE": "#FAB152",
+          "PHASE3COMPLETE": "#20B89D",
+          "PHASE3INCOMPLETE": "#20DE9D",
+        },
+        "steps": Object {
+          "1": Object {
+            "icon": Object {
+              "uri": "https://images.ctfassets.net/6h184bey8vl3/Rknt0PorAIG4uoMQAg4KM/d697d93618b298ce10d1606c7d3f573a/TimeBug-Icons-_Step-1_.svg",
+            },
+            "number": 1,
+          },
+          "2": Object {
+            "icon": Object {
+              "uri": "https://images.ctfassets.net/6h184bey8vl3/Rknt0PorAIG4uoMQAg4KM/d697d93618b298ce10d1606c7d3f573a/TimeBug-Icons-_Step-1_.svg",
+            },
+            "number": 2,
+          },
+          "3": Object {
+            "icon": Object {
+              "uri": "https://images.ctfassets.net/6h184bey8vl3/Rknt0PorAIG4uoMQAg4KM/d697d93618b298ce10d1606c7d3f573a/TimeBug-Icons-_Step-1_.svg",
+            },
+            "number": 3,
+          },
+          "4": Object {
+            "icon": Object {
+              "uri": "https://images.ctfassets.net/6h184bey8vl3/Rknt0PorAIG4uoMQAg4KM/d697d93618b298ce10d1606c7d3f573a/TimeBug-Icons-_Step-1_.svg",
+            },
+            "number": 4,
+          },
+          "5": Object {
+            "icon": Object {
+              "uri": "https://images.ctfassets.net/6h184bey8vl3/Rknt0PorAIG4uoMQAg4KM/d697d93618b298ce10d1606c7d3f573a/TimeBug-Icons-_Step-1_.svg",
+            },
+            "number": 5,
+          },
+          "6": Object {
+            "icon": Object {
+              "uri": "https://images.ctfassets.net/6h184bey8vl3/Rknt0PorAIG4uoMQAg4KM/d697d93618b298ce10d1606c7d3f573a/TimeBug-Icons-_Step-1_.svg",
+            },
+            "number": 6,
+          },
+        },
+        "tools": Array [],
+      },
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    "attachTo": undefined,
+    "context": Object {
+      "store": Object {
+        "dispatch": [Function],
+        "getAction": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "isActionDispatched": [Function],
+        "isActionTypeDispatched": [Function],
+        "subscribe": [Function],
+      },
+    },
+    "hydrateIn": undefined,
+  },
+}
+`;
+
+exports[`Connected Tool screen content component Should render the component itself 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <ToolScreenContent
+    stepColors={Object {}}
+    steps={
+      Object {
+        "1": "step_1",
+        "2": "step_2",
+        "3": "step_3",
+      }
+    }
+    tools={
+      Array [
+        Object {
+          "number": 1,
+        },
+        Object {
+          "number": 2,
+        },
+        Object {
+          "number": 3,
+        },
+      ]
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <Connect(ToolButton)
+          step="step_1"
+          stepColors={Object {}}
+          tool={
+            Object {
+              "number": 1,
+            }
+          }
+        />,
+        <Connect(ToolButton)
+          step="step_2"
+          stepColors={Object {}}
+          tool={
+            Object {
+              "number": 2,
+            }
+          }
+        />,
+        <Connect(ToolButton)
+          step="step_3"
+          stepColors={Object {}}
+          tool={
+            Object {
+              "number": 3,
+            }
+          }
+        />,
+      ],
+      "style": Array [
+        Object {
+          "flex": 1,
+        },
+        Object {
+          "padding": 20,
+        },
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "step": "step_1",
+          "stepColors": Object {},
+          "tool": Object {
+            "number": 1,
+          },
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "step": "step_2",
+          "stepColors": Object {},
+          "tool": Object {
+            "number": 2,
+          },
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "step": "step_3",
+          "stepColors": Object {},
+          "tool": Object {
+            "number": 3,
+          },
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <Connect(ToolButton)
+            step="step_1"
+            stepColors={Object {}}
+            tool={
+              Object {
+                "number": 1,
+              }
+            }
+          />,
+          <Connect(ToolButton)
+            step="step_2"
+            stepColors={Object {}}
+            tool={
+              Object {
+                "number": 2,
+              }
+            }
+          />,
+          <Connect(ToolButton)
+            step="step_3"
+            stepColors={Object {}}
+            tool={
+              Object {
+                "number": 3,
+              }
+            }
+          />,
+        ],
+        "style": Array [
+          Object {
+            "flex": 1,
+          },
+          Object {
+            "padding": 20,
+          },
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "step": "step_1",
+            "stepColors": Object {},
+            "tool": Object {
+              "number": 1,
+            },
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "step": "step_2",
+            "stepColors": Object {},
+            "tool": Object {
+              "number": 2,
+            },
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "step": "step_3",
+            "stepColors": Object {},
+            "tool": Object {
+              "number": 3,
+            },
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    "attachTo": undefined,
+    "hydrateIn": undefined,
+  },
+}
+`;

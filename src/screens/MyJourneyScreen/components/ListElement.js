@@ -1,14 +1,14 @@
 //@flow
-import React from 'react';
-import { View } from 'react-native';
-import ListEntry from './ListEntry';
-import styles from '../styles';
-import type { FormElement } from '../containers/types';
+import React                from 'react'
+import { View }             from 'react-native'
+import ListEntry            from './ListEntry'
+import styles               from '../styles'
+import type { FormElement } from '../containers/types'
 
 export type ListElementProps = {
   elements: Array<FormElement>,
   style?: any,
-};
+}
 
 const ListElement = ({ elements, style = {}, ...rest }: ListElementProps) => {
   return elements ? (
@@ -21,10 +21,10 @@ const ListElement = ({ elements, style = {}, ...rest }: ListElementProps) => {
             {...el}
             style={style}
           />
-        );
+        )
       })}
     </View>
-  ) : null;
-};
+  ) : null
+}
 
-export default ListElement;
+export default ListElement

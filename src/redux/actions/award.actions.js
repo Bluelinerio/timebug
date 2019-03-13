@@ -7,7 +7,6 @@ import {
 } from '../actionTypes'
 
 export type SubmitAwardValuePayload = {
-  stepId: string,
   element: {
     key: string,
     value: any,
