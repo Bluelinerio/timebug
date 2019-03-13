@@ -118,6 +118,7 @@ class ConnectedSelect extends React.PureComponent<Props> {
       onChange(storableValue)
     })
   }
+
   render() {
     const { currentValue } = this.state
     const { formStyles, component } = this.props

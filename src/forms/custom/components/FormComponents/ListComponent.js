@@ -1,17 +1,20 @@
-import React from 'react'
+import React                                   from 'react'
 import { View, Text, Alert, TouchableOpacity } from 'react-native'
-import FormElementHeader from './FormElementHeader'
+import Icon                                    from 'react-native-vector-icons/Ionicons'
+import uuid                                    from 'uuid/v4'
+import FormElementHeader                       from './FormElementHeader'
+import TextElement                             from './common/ListTextElement'
 import styles, {
   TEMPORARY_COLOR_FOR_BUTTONS,
-  iconStyle,
-  helperIconColorIfSelected,
-} from '../../styles'
-import FormPicker from './FormPicker'
-import uuid from 'uuid/v4'
-import types from '../../forms/types'
-import SvgIcon from '../../../../components/SvgIcon'
-import Icon from 'react-native-vector-icons/Ionicons'
-import { DISABLE } from './../../forms/constants'
+}                                              from '../../styles'
+import FormPicker                              from './FormPicker'
+import types                                   from '../../forms/types'
+import {
+  mapChildtypeIndexesToKeys,
+  buildInitialValue,
+  getFormItems,
+}                                              from '../../utils/formHelpers'
+import { stripKeys }                           from '../../utils/stripKeys'
 
 type Props = {
   value: Array<any>,
@@ -38,107 +41,13 @@ type State = {
   currentValue: ValueElement,
 }
 
-export const _stripKeys = (val: ValueElement) => {
-  const metaKeys = ['_id', '_model']
-  return Object.keys(val).reduce((prev, key) => {
-    if (metaKeys.find(k => k === key)) return prev
-    return {
-      ...prev,
-      [key]: val[key],
-    }
-  }, {})
-}
-
-const TextElement = ({
-  element,
-  index,
-  formStyles = {},
-  onEditPress,
-  editObjectId,
-}: {
-  index: number,
-  element: ValueElement,
-  formStyles: any,
-  onEditPress: () => any,
-  editObjectId: string,
-}) => {
-  const strippedObject = _stripKeys(element)
-  const text = Object.values(strippedObject)
-    .filter(value => value.value !== null && value.value !== undefined)
-    .map((value, ind) => {
-      if (ind === 0) return `${index + 1} ) ${value.value}`
-      return value.value
-    }, [])
-  return (
-    <React.Fragment>
-      {text && (
-        <View
-          style={[
-            styles.container,
-            styles.indented,
-            styles.row,
-            styles.listTextAnswersContainer,
-          ]}
-        >
-          <View style={styles.listTextAnswerTextContainer}>
-            {text &&
-              text.length > 0 &&
-              text.map((txt, index) => (
-                <Text
-                  key={index}
-                  style={[
-                    index === 0
-                      ? styles.textElementText
-                      : styles.textElementSubText,
-                    formStyles.textStyle,
-                  ]}
-                >
-                  {txt}
-                </Text>
-              ))}
-          </View>
-          <TouchableOpacity style={styles.listTextAnswerIconContainer}>
-            <TouchableOpacity
-              onPress={onEditPress}
-              style={[
-                styles.listTextEditIcon,
-                editObjectId === element._id
-                  ? {
-                    backgroundColor:
-                        formStyles.accentColor || TEMPORARY_COLOR_FOR_BUTTONS,
-                    borderColor:
-                        formStyles.accentColor || TEMPORARY_COLOR_FOR_BUTTONS,
-                  }
-                  : {
-                    borderColor:
-                        formStyles.accentColor || TEMPORARY_COLOR_FOR_BUTTONS,
-                  },
-              ]}
-            >
-              <SvgIcon
-                name={'Edit'}
-                {...iconStyle}
-                fill={
-                  editObjectId === element._id
-                    ? helperIconColorIfSelected
-                    : formStyles.accentColor || TEMPORARY_COLOR_FOR_BUTTONS
-                }
-              />
-            </TouchableOpacity>
-          </TouchableOpacity>
-        </View>
-      )}
-    </React.Fragment>
-  )
-}
-
 // TODO: Derive currentValue from props instead of using setState asynchronously
 
 class ListComponent extends React.PureComponent<Props, State> {
   constructor(props) {
     super(props)
-    const currentValue = this._buildValue(props)
-    const indexesMap = this._mapIndexesToKeys(props.field.options)
+    const currentValue = buildInitialValue(props)
+    const indexesMap = mapChildtypeIndexesToKeys(props.field.options)
     this.state = {
       isEditing: false,
       currentValue,
@@ -150,62 +59,8 @@ class ListComponent extends React.PureComponent<Props, State> {
   componentDidUpdate = prevProps => {
     if (this.props.value !== prevProps.value) {
       this.setState({
-        currentValue: this._buildValue(this.props),
+        currentValue: buildInitialValue(this.props),
       })
-    }
-  }
-
-  _mapIndexesToKeys = (options: { childTypes: any }) => {
-    const { childTypes } = options
-    const map = Object.keys(childTypes).reduce((m, k) => {
-      const field = childTypes[k]
-      const { key } = field
-      return {
-        ...m,
-        [k]: key,
-      }
-    }, {})
-    return map
-  }
-
-  _buildValue = props => {
-    const { field: { options } } = props
-    const { childTypes } = options
-    const defaultValue = Object.keys(childTypes).reduce((value, k) => {
-      const child = childTypes[k]
-      const { key, type, options } = child
-      return type === types.select &&
-        options &&
-        options.repeats &&
-        options.repeats === DISABLE
-        ? {
-          ...value,
-          [key]: this._handleSelectTypeValue(child, k, props),
-        }
-        : {
-          ...value,
-          [key]: {
-            key,
-            model: child,
-            index: k,
-            value: child.options ? child.options.default : undefined,
-          },
-        }
-    }, {})
-    return defaultValue
-  }
-
-  _handleSelectTypeValue = (child, indexKey, props) => {
-    const { key, content: { items = [] } } = child
-    const filteredValues = this._selectFilterRoot(props, items)
-    return {
-      key,
-      model: child,
-      index: indexKey,
-      value:
-        filteredValues && filteredValues.length > 0
-          ? filteredValues[0].value
-          : undefined,
     }
   }
 
@@ -220,45 +75,11 @@ class ListComponent extends React.PureComponent<Props, State> {
     })
   }
 
-  _getFormItems = formValue => {
-    const mappedObjects =
-      formValue &&
-      formValue.map(val => {
-        const strippedObject = _stripKeys(val)
-        const mappedObject = Object.values(strippedObject).map(value => {
-          return (
-            value &&
-            value.value && {
-              _id: value._id,
-              value: value.value,
-            }
-          )
-        })
-
-        return mappedObject[0]
-      })
-
-    return mappedObjects
-  }
-
-  _selectFilterRoot = (props, items) => {
-    const { value } = props
-    const currentItems = this._getFormItems(value)
-    const filtered = items
-      ? items.filter(item => {
-        const filter = ci => ci.value === item.value
-        const isSelected = currentItems && currentItems.find(filter)
-        return !isSelected
-      })
-      : items
-    return filtered
-  }
-
   _selectFilter = key => items => {
     const { value } = this.props
     const { isEditing, currentValue, indexesMap } = this.state
     const inValue = currentValue[indexesMap[key]] || {}
-    const currentItems = this._getFormItems(value)
+    const currentItems = getFormItems(value)
     const filtered = items
       ? items.filter(item => {
         const filter = !isEditing
@@ -301,7 +122,7 @@ class ListComponent extends React.PureComponent<Props, State> {
   }
 
   _onEditPress = (element: any) => {
-    const strippedObject = _stripKeys(element)
+    const strippedObject = stripKeys(element)
     this.setState({
       isEditing: true,
       currentValue: strippedObject,
@@ -351,7 +172,6 @@ class ListComponent extends React.PureComponent<Props, State> {
         ...prev,
         [model.key]: {
           ...currentValue[model.key],
-          _model: model,
           _id: uuid(),
         },
       }
@@ -367,7 +187,7 @@ class ListComponent extends React.PureComponent<Props, State> {
 
   _onDeletePress = () => {}
 
-  renderReferencedValue = (referencedValue) => {
+  renderReferencedValue = referencedValue => {
     const { currentFormValue = {}, formStyles = {} } = this.props
     const referencedElement = currentFormValue[referencedValue.key]
 
@@ -446,7 +266,7 @@ class ListComponent extends React.PureComponent<Props, State> {
                   style={[
                     {
                       fontSize: 20,
-                      marginBottom:3,
+                      marginBottom: 3,
                       color:
                         formStyles.accentColor || TEMPORARY_COLOR_FOR_BUTTONS,
                     },
@@ -464,11 +284,9 @@ class ListComponent extends React.PureComponent<Props, State> {
             </TouchableOpacity>
           </View>
         </View>
-        {
-          referencedValue &&
-          (referencedValue.type === types.string) &&
-          this.renderReferencedValue(referencedValue)
-        }
+        {referencedValue &&
+          referencedValue.type === types.string &&
+          this.renderReferencedValue(referencedValue)}
         <View style={[styles.container, styles.listContentContainer]}>
           {value && (
             <View style={styles.container}>

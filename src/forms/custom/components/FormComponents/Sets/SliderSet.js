@@ -28,17 +28,6 @@ type State = {
   currentValue: ValueElement,
 }
 
-export const _stripKeys = (val: ValueElement) => {
-  const metaKeys = ['_id', '_model']
-  return Object.keys(val).reduce((prev, key) => {
-    if (metaKeys.find(k => k === key)) return prev
-    return {
-      ...prev,
-      [key]: val[key],
-    }
-  }, {})
-}
-
 class SliderSet extends React.PureComponent<Props, State> {
   constructor(props) {
     super(props)

@@ -9,7 +9,12 @@ import Icon                                       from 'react-native-vector-icon
 import uuid                                       from 'uuid/v4'
 import Answers                                    from './FormAnswers'
 import Display                                    from './debug/DisplayComponent'
-import types                                      from '../forms/types'
+import {
+  getButtonText,
+  mapIndexesToKeys,
+  getValueFromAnswerType,
+}                                                 from '../utils/formHelpers'
+import { isFormValueInvalid }                     from '../validation/Form'
 
 const DEBUG_DISPLAY = false
 
@@ -84,15 +89,11 @@ class Form extends React.PureComponent<Props, any> {
   constructor(props) {
     super(props)
     this.model = props.model
-    const indexesMap = this._mapIndexesToKeys(this.model)
+    const indexesMap = mapIndexesToKeys(this.model)
     const storableValue = props.value || []
     const formIteration = storableValue.length
     const fieldIndex = 0 //start from the beginning of the model
-    const value = this._getValueFromAnswerType(
-      props,
-      props.model,
-      formIteration
-    )
+    const value = getValueFromAnswerType(props, props.model, formIteration)
     const currentElementValue = value[indexesMap[fieldIndex]]
       ? value[indexesMap[fieldIndex]].value
       : null
@@ -108,29 +109,6 @@ class Form extends React.PureComponent<Props, any> {
       indexesMap,
     }
   }
-
-  _getValueFromAnswerType = (props: any, model: any, formIteration: number) => {
-    if (model.answer === answerTypes.single)
-      return props.value && props.value[0] ? props.value[0] : {}
-    return props.value && props.value[formIteration]
-      ? props.value[formIteration]
-      : {}
-  }
-
-  _mapIndexesToKeys = (model: any) => {
-    const { fields } = model
-    const map = Object.keys(fields).reduce((m, k) => {
-      const field = fields[k]
-      if (passiveTypes.find(el => el === field.type)) return m
-      const { key } = field
-      return {
-        ...m,
-        [k]: key,
-      }
-    }, {})
-    return map
-  }
-
   _getNewValue = () => {
     const { value, indexesMap, currentElementValue, fieldIndex } = this.state
     const currentField = this.model.fields[fieldIndex]
@@ -278,82 +256,12 @@ class Form extends React.PureComponent<Props, any> {
     }
   }
 
-  _listValidation = (value, options) => {
-    const { constraints = {} } = options
-    if (!value) return true
-    return constraints.min && constraints.min > 0
-      ? value.length < constraints.min
-      : !(value.length > 0)
-  }
-
-  _multipleSelectValidation = (value, options) => {
-    const { constraints = {} } = options
-    if (!value) return true
-    return constraints.min && constraints.min > 0
-      ? value.length < constraints.min
-      : !(value.length > 0)
-  }
-
-  _formElementsValidation = (val, options) => {
-    const { childTypes } = options
-    if (!val) return true
-    const hasError = Object.values(childTypes).reduce((err, child) => {
-      if (err) return err
-      const { key, options, type } = child
-      if (!options.required) return err
-      const elementForKey = val ? val[key] : null
-      if (!elementForKey) return true
-      const value = elementForKey.value
-      const result = !this._isValueValidForType(value, type, options)
-      return result
-    }, false)
-    return hasError
-  }
-
-  _isValueValidForType = (value: any, type: string, options?: any = {}) => {
-    if (!value) return false
-    switch (type) {
-    case types.string:
-      return !(value.trim() === '')
-    case types.list:
-      return !this._listValidation(value, options)
-    default:
-      return true
-    }
-  }
-
-  _checkValidation = (field, value) => {
-    const { type, options = {} } = field
-    switch (type) {
-    case types.list:
-      return this._listValidation(value, options)
-    case types.string:
-      return !value || value.trim() === ''
-    case types.connected:
-      return !value
-    case types.multipleSelect:
-      return this._multipleSelectValidation(value, options)
-    case types.formElements:
-      return this._formElementsValidation(value, options)
-    default:
-      return false
-    }
-  }
-
   _getButtonIcon = () => {
     const { fieldIndex, numberOfFields } = this.state
     if (fieldIndex < numberOfFields - 1) {
       return 'ios-arrow-round-forward'
     }
     return 'ios-checkmark'
-  }
-
-  _getButtonText = () => {
-    const { fieldIndex, numberOfFields } = this.state
-    if (fieldIndex < numberOfFields - 1) {
-      return 'Next'
-    }
-    return 'Done'
   }
 
   _onBackPress = () => {
@@ -424,7 +332,7 @@ class Form extends React.PureComponent<Props, any> {
           )}
           {!(
             isFieldRequired &&
-            this._checkValidation(currentField, currentElementValue)
+            isFormValueInvalid(currentField, currentElementValue)
           ) && (
               <TextFormButton
                 onPress={
@@ -437,9 +345,9 @@ class Form extends React.PureComponent<Props, any> {
                 formStyles={formStyles}
                 disabled={
                   isFieldRequired &&
-                this._checkValidation(currentField, currentElementValue)
+                isFormValueInvalid(currentField, currentElementValue)
                 }
-                text={this._getButtonText()}
+                text={getButtonText(fieldIndex, numberOfFields)}
               />
             )}
         </View>
