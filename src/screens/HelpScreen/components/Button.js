@@ -1,9 +1,9 @@
 // @flow
-import * as React from 'react';
-import { StyleSheet } from 'react-native';
-import { Button as NBButton, Text } from 'native-base';
-import { Theme } from './Theme';
-import type { BaseProps } from './Types';
+import * as React                   from 'react'
+import { StyleSheet }               from 'react-native'
+import { Button as NBButton, Text } from 'native-base'
+import { Theme }                    from './Theme'
+import type { BaseProps }           from './Types'
 
 type ButtonProps = BaseProps & {
   label: string,
@@ -12,7 +12,7 @@ type ButtonProps = BaseProps & {
   disabled?: boolean,
   full?: boolean,
   onPress: () => mixed,
-};
+}
 
 export default class Button extends React.Component<ButtonProps> {
   render(): React.Node {
@@ -24,12 +24,12 @@ export default class Button extends React.Component<ButtonProps> {
       transparent,
       onPress,
       style,
-    } = this.props;
-    const computedStyle = [styles.base];
+    } = this.props
+    const computedStyle = [styles.base]
     if (primary && !transparent) {
-      computedStyle.push(styles.primary);
+      computedStyle.push(styles.primary)
     }
-    computedStyle.push(style);
+    computedStyle.push(style)
     return (
       <NBButton
         {...{
@@ -59,7 +59,7 @@ export default class Button extends React.Component<ButtonProps> {
           {label}
         </Text>
       </NBButton>
-    );
+    )
   }
 }
 
@@ -71,4 +71,4 @@ const styles = StyleSheet.create({
     shadowOpacity: 1,
     shadowRadius: 7,
   },
-});
+})

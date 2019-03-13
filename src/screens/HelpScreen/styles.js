@@ -1,19 +1,19 @@
-import { StyleSheet, StatusBar, Platform } from 'react-native';
-import Theme from './components/Theme';
+import { StyleSheet, StatusBar, Platform } from 'react-native'
+import Theme                               from './components/Theme'
 import {
   heightPercentage,
   widthPercentage,
-} from '../../utils/viewportCalculation';
+}                                          from '../../utils/viewportCalculation'
 
-const baseSpacing = widthPercentage(6);
-const largeVerticalSpacing = heightPercentage(2);
-const imageHeight = heightPercentage(60);
-const imageWidth = widthPercentage(60);
+const baseSpacing = widthPercentage(6)
+const largeVerticalSpacing = heightPercentage(2)
+const imageHeight = heightPercentage(70)
+const imageWidth = widthPercentage(70)
 
 export const gradientColors = {
   start: '#008EBC',
   end: '#005587',
-};
+}
 
 export default StyleSheet.create({
   screen: {
@@ -51,15 +51,18 @@ export default StyleSheet.create({
   imageContainer: {
     flex: 1,
     height: imageHeight,
+    width: imageWidth,
+    justifyContent:'center',
     ...Platform.select({
       android: {
         marginTop: largeVerticalSpacing,
         elevation: 10,
-        width: imageWidth,
       },
       ios: {
         shadowColor: 'black',
         shadowOpacity: 0.5,
+        shadowOffset: {width:-5, height:-5},
+        shadowRadius:10,
       },
     }),
   },
@@ -72,7 +75,7 @@ export default StyleSheet.create({
     marginTop: largeVerticalSpacing,
     color: 'white',
   },
-});
+})
 
 export const theme = {
   ...Theme,
@@ -124,4 +127,4 @@ export const theme = {
     large: 48,
     xLarge: 64,
   },
-};
+}

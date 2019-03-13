@@ -1,9 +1,9 @@
 // @flow
-import * as React from 'react';
-import { Text as RNText } from 'react-native';
-import { Theme } from './Theme';
-import type { ThemeProps } from './Theme';
-import type { BaseProps } from './Types';
+import * as React          from 'react'
+import { Text as RNText }  from 'react-native'
+import { Theme }           from './Theme'
+import type { ThemeProps } from './Theme'
+import type { BaseProps }  from './Types'
 
 type TypographyProps = BaseProps & {
   theme: ThemeProps,
@@ -18,13 +18,13 @@ type TypographyProps = BaseProps & {
   numberOfLines?: number,
   gutterBottom?: boolean,
   children: string,
-};
+}
 
 export default class Text extends React.Component<TypographyProps> {
   static defaultProps = {
     type: 'regular',
     theme: Theme,
-  };
+  }
 
   render(): React.Node {
     const {
@@ -34,12 +34,12 @@ export default class Text extends React.Component<TypographyProps> {
       gutterBottom,
       children,
       theme,
-    } = this.props;
+    } = this.props
     const defaultStyle = [
       theme.typography[type],
       { backgroundColor: 'transparent' },
-    ];
-    const isHeader = type.startsWith('header');
+    ]
+    const isHeader = type.startsWith('header')
     defaultStyle.push({
       color: isHeader
         ? 'black'
@@ -47,12 +47,12 @@ export default class Text extends React.Component<TypographyProps> {
       marginBottom: gutterBottom
         ? isHeader ? theme.spacing.base : theme.spacing.small
         : 0,
-    });
-    defaultStyle.push(style);
+    })
+    defaultStyle.push(style)
     return (
       <RNText style={defaultStyle} {...{ numberOfLines }}>
         {type === 'large' ? children.toUpperCase() : children}
       </RNText>
-    );
+    )
   }
 }

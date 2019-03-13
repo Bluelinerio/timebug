@@ -3,9 +3,9 @@ export type Typography = {
   fontFamily: string,
   fontSize: number,
   lineHeight: number,
-};
+}
 
-export type Color = string;
+export type Color = string
 
 export type ThemeProps = {
   palette: {
@@ -40,7 +40,7 @@ export type ThemeProps = {
     large: number,
     xLarge: number,
   },
-};
+}
 
 const theme: ThemeProps = {
   palette: {
@@ -103,6 +103,6 @@ const theme: ThemeProps = {
     large: 48,
     xLarge: 64,
   },
-};
+}
 
-export { theme as Theme };
+export { theme as Theme }
