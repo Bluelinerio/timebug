@@ -7,8 +7,8 @@ import {
 
 const baseSpacing = widthPercentage(6)
 const largeVerticalSpacing = heightPercentage(2)
-const imageHeight = heightPercentage(60)
-const imageWidth = widthPercentage(60)
+const imageHeight = heightPercentage(70)
+const imageWidth = widthPercentage(70)
 
 export const gradientColors = {
   start: '#008EBC',
@@ -51,15 +51,18 @@ export default StyleSheet.create({
   imageContainer: {
     flex: 1,
     height: imageHeight,
+    width: imageWidth,
+    justifyContent:'center',
     ...Platform.select({
       android: {
         marginTop: largeVerticalSpacing,
         elevation: 10,
-        width: imageWidth,
       },
       ios: {
         shadowColor: 'black',
         shadowOpacity: 0.5,
+        shadowOffset: {width:-5, height:-5},
+        shadowRadius:10,
       },
     }),
   },
