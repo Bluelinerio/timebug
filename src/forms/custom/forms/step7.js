@@ -60,6 +60,35 @@ const form: Form = {
         },
       },
     },
+    1: {
+      type: types.string,
+      key: `${FORM_KEYS.form_7_goal_patterns}`,
+      content: {
+        text:
+          'Have you noticed any patterns? Any guesses as to the reasons underlying such patterns?',
+        smallKey: "Goal Patterns",
+      },
+      options: {
+        placeHolder: 'i.e., when it comes to physical fitness, I tend to fall off after a week or so....',
+        default: '',
+        multiline: true,
+        required: true,
+        numberOfLines: 8,
+        style: {
+          textInputContainerStyle: Platform.select({
+            android: {},
+            ios: {
+            }, //Fill with what's needed
+          }),
+          textInputStyle: Platform.select({
+            android: {},
+            ios: {  
+              minHeight:100,
+            }, //Fill with what's needed
+          }),
+        },        
+      },
+    },
   },
 }
 
