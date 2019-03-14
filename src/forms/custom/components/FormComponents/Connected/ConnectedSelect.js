@@ -1,7 +1,7 @@
 import React                        from 'react'
 import { View, Text }               from 'react-native'
-import { connectedComponentStyles } from '../../../styles'
 import uuid                         from 'uuid/v4'
+import { connectedComponentStyles } from '../../../styles'
 import Select                       from './Select'
 
 type Props = {

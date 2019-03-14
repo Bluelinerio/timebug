@@ -53,12 +53,12 @@ const Select = ({
   )
 
   const renderiOSPicker = () => {
-    const data =
-      content &&
-      content.items.map(({ value, text }) => ({
+    const data = content
+      ? content.items.map(({ value, text }) => ({
         key: value,
         label: text,
       }))
+      : [{ key: '', label: '-' }]
 
     const dataElement =
       value && data
