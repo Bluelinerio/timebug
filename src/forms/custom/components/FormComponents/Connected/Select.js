@@ -60,10 +60,12 @@ const Select = ({
         label: text,
       }))
 
-    const textValue =
+    const dataElement =
       value && data
-        ? data.find(element => element.key === value).label
-        : data[0].label
+        ? data.find(element => element.key === value) || data[0]
+        : data[0]
+
+    const textValue = dataElement.label
 
     return (
       data && (
