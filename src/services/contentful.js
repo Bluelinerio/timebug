@@ -1,30 +1,30 @@
 // @flow
 // testing the API : https://npm.runkit.com/contentful
-import { createClient } from 'contentful';
-import type { Icon } from './cms';
+import { createClient } from 'contentful'
+import type { Icon }    from './cms'
 
 export const CONTENTFUL_CREDENTIALS = {
   accessToken:
     '65a618b02639a9c34ec36c573e06611e3568354171e02f72fbd96adbe83f50d3',
   space: '6h184bey8vl3',
-};
+}
 
 //old:
 //accessToken:
 //'c139e7f2a7a86fc0813e71fbb18bb7b1921189ce4d7cc58c7f0ccc0022adee5f',
 //space: '1gbed7lrsmj4'
 
-export const CONTENTFUL_CONTENT_STEP = 'day';
-export const CONTENTFUL_CONTENT_COLORS = 'colors';
-export const CONTENTFUL_ONBOARDING_PAGE = 'onboardingPage';
-export const CONTENTFUL_PAGE = 'page';
-export const CONTENTFUL_HELP_SLIDES = 'helpSlides';
+export const CONTENTFUL_CONTENT_STEP = 'day'
+export const CONTENTFUL_CONTENT_COLORS = 'colors'
+export const CONTENTFUL_ONBOARDING_PAGE = 'onboardingPage'
+export const CONTENTFUL_PAGE = 'page'
+export const CONTENTFUL_HELP_SLIDES = 'helpSlides'
 
-export const contentfulClient = createClient(CONTENTFUL_CREDENTIALS);
+export const contentfulClient = createClient(CONTENTFUL_CREDENTIALS)
 
 const getContentUrl = (content: Icon): { uri: string } => ({
   uri: (content.url || content.fields.file.url || '').replace('//', 'https://'),
-});
+})
 
 const pagesFromResponse = response => ({
   pages: response.items
@@ -40,14 +40,14 @@ const pagesFromResponse = response => ({
       }),
       {}
     ),
-});
+})
 
 const onboardingPagesFromResponse = response => {
   const mapOnboardingSlide = ({ fields: { title, description, image } }) => ({
     title,
     description,
     image: image ? getContentUrl(image) : null,
-  });
+  })
   return {
     onboardingPages: response.items.reduce(
       (items, { fields: { name, slides, title } }) => ({
@@ -59,13 +59,13 @@ const onboardingPagesFromResponse = response => {
       }),
       {}
     ),
-  };
-};
+  }
+}
 
 const helpSlidesResponse = response => ({
   helpSlides: response.items.reduce(
     (items, { fields: { title, description, image, step, order } }) => {
-      const itemsForStep = items[step] || [];
+      const itemsForStep = items[step] || []
       return {
         ...items,
         [step]: [
@@ -78,21 +78,28 @@ const helpSlidesResponse = response => ({
             image: image ? getContentUrl(image) : null,
           },
         ],
-      };
+      }
     },
     {}
   ),
-});
+})
 
 const unlinkFields = name => response => ({
-  [name]: response.items.map(i => i.fields),
-});
+  [name]: response.items.map(i => ({
+    ...i.fields,
+    __meta: {
+      revisionId: i.sys.revision,
+      updatedAt: i.sys.updatedAt,
+      createdAt: i.sys.createdAt,
+    },
+  })),
+})
 
 const colorsFromResponse = response => ({
   colors: response.items[0].fields.schema,
-});
+})
 
-const stepsFromResponse = unlinkFields('steps');
+const stepsFromResponse = unlinkFields('steps')
 
 const normalizeSteps = ({ steps, colors }) => ({
   steps: steps.reduce((sum, step) => {
@@ -112,34 +119,34 @@ const normalizeSteps = ({ steps, colors }) => ({
         color: colors.steps[step.number],
         audio: step.audio ? getContentUrl(step.audio) : null,
       },
-    };
+    }
   }, {}),
-});
+})
 
 export const fetchColors = () =>
   contentfulClient
     .getEntries({ content_type: CONTENTFUL_CONTENT_COLORS })
-    .then(colorsFromResponse);
+    .then(colorsFromResponse)
 
 export const fetchSteps = () =>
   contentfulClient
     .getEntries({ content_type: CONTENTFUL_CONTENT_STEP })
-    .then(stepsFromResponse);
+    .then(stepsFromResponse)
 
 export const fetchonboardingPages = () =>
   contentfulClient
     .getEntries({ content_type: CONTENTFUL_ONBOARDING_PAGE })
-    .then(onboardingPagesFromResponse);
+    .then(onboardingPagesFromResponse)
 
 export const fetchPages = () =>
   contentfulClient
     .getEntries({ content_type: CONTENTFUL_PAGE })
-    .then(pagesFromResponse);
+    .then(pagesFromResponse)
 
 export const fetchHelpSlides = () =>
   contentfulClient
     .getEntries({ content_type: CONTENTFUL_HELP_SLIDES })
-    .then(helpSlidesResponse);
+    .then(helpSlidesResponse)
 
 export const refreshCMS = () =>
   Promise.all([
@@ -153,25 +160,25 @@ export const refreshCMS = () =>
     .then(cmsData => ({
       ...cmsData,
       ...normalizeSteps(cmsData),
-    }));
+    }))
 
 export const testContentFromCMS = object => {
   if (!object.colors.steps) {
-    throw 'failed validating contenful response';
+    throw 'failed validating contenful response'
   }
   if (!object.colors.phases) {
-    throw 'failed validating contenful response';
+    throw 'failed validating contenful response'
   }
-  const steps = Object.values(object.steps);
+  const steps = Object.values(object.steps)
   if (steps.length !== 30) {
-    throw 'failed validating contenful response';
+    throw 'failed validating contenful response'
   }
   for (let index = 1; index < 31; index++) {
-    const number = index.toString();
-    const step = object.steps[number];
+    const number = index.toString()
+    const step = object.steps[number]
     if (!step) {
-      throw `failed validating contenful response step ${index}`;
+      throw `failed validating contenful response step ${index}`
     }
   }
-  return object;
-};
+  return object
+}
