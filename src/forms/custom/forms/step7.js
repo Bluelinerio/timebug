@@ -1,8 +1,8 @@
 // @flow
-import { Platform }                        from 'react-native'
-import types, { actionTypes, answerTypes } from './types'
-import type { Form }                       from '../types/formTypes'
-import { CommonGoalOutcomes, CommonGoalOutcomesArray }    from './content'
+import { Platform }                from 'react-native'
+import types, { answerTypes }      from './types'
+import type { Form }               from '../types/formTypes'
+import { CommonGoalOutcomesArray } from './content'
 
 export const FORM_KEYS = {
   form_7_goal: 'form_7_goal',
@@ -26,8 +26,8 @@ const form: Form = {
       content: {
         text:
           'What are 5 of your goals from the past 5 years? Classify what happened to them according to the 7 CGOs.',
-        smallKey: "Past Goals",
-        listText:"Past Goals",
+        smallKey: 'Past Goals',
+        listText: 'Past Goals',
       },
       options: {
         required: true,
@@ -36,7 +36,7 @@ const form: Form = {
             type: types.string,
             key: `${CHILDREN_KEYS.form_7_goal.goalName}`,
             options: {
-              placeHolder: "Goal",
+              placeHolder: 'Goal',
               default: '',
               required: true,
             },
@@ -58,6 +58,14 @@ const form: Form = {
             },
           },
         },
+        constraints: {
+          min: 5,
+          max: 10,
+          errors: {
+            min: 'Please list at least 5 goals',
+            max: 'The max input for this exercise is 10 goals',
+          },
+        },
       },
     },
     1: {
@@ -66,10 +74,11 @@ const form: Form = {
       content: {
         text:
           'Have you noticed any patterns? Any guesses as to the reasons underlying such patterns?',
-        smallKey: "Goal Patterns",
+        smallKey: 'Goal Patterns',
       },
       options: {
-        placeHolder: 'i.e., when it comes to physical fitness, I tend to fall off after a week or so....',
+        placeHolder:
+          'i.e., when it comes to physical fitness, I tend to fall off after a week or so....',
         default: '',
         multiline: true,
         required: true,
@@ -77,16 +86,15 @@ const form: Form = {
         style: {
           textInputContainerStyle: Platform.select({
             android: {},
-            ios: {
-            }, //Fill with what's needed
+            ios: {},
           }),
           textInputStyle: Platform.select({
             android: {},
-            ios: {  
-              minHeight:100,
-            }, //Fill with what's needed
+            ios: {
+              minHeight: 100,
+            },
           }),
-        },        
+        },
       },
     },
   },
