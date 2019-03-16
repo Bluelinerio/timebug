@@ -17,6 +17,7 @@ import type { Step } from './cms'
 const areArraysEqual = R.compose(R.isEmpty, R.symmetricDifference)
 
 // TODO: Consider or fill other conditions besides step completion, like tool completion or other arguments
+// TODO: Add a method to test/get a single tool at a time
 
 export const testSome = (clause: Array<any>, data: Array<any>): boolean =>
   clause.reduce((fulfillment, c) => {

@@ -392,7 +392,7 @@ export default StyleSheet.create({
     alignSelf: 'flex-start',
   },
 
-  //DoneComponent
+  // FormFinishedComponent
   doneContentContainer: {
     paddingHorizontal: 12,
   },
@@ -438,6 +438,12 @@ export default StyleSheet.create({
     textAlign: 'center',
     color: fontColor,
   },
+  doneButtonArea: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+  },
+  // End FormFinishedComponent
   marginScrollViewElement: {
     marginRight: 8,
   },
