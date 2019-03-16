@@ -25,7 +25,8 @@
     "run:ios": "cp config.example.json config.json && node node_modules/react-native/local-cli/cli.js run-ios",
     "debug:android": "node node_modules/react-native/local-cli/cli.js log-android",
     "clean:android": "cd android && gradlew clean && cd ..",
-    "fetch-cms-static": "babel-node scripts/contentful-fetch.js --output ../src/static/cms.json --presets es2015,stage-2,react-native"
+    "fetch-cms-static": "babel-node scripts/contentful-fetch.js --output ../src/static/cms.json --presets es2015,stage-2,react-native",
+    "migrate-db": "babel-node scripts/migrate-database --output step5.json --presets es2015,stage-2,react-native"
   },
   "dependencies": {
     "@babel/runtime": "^7.2.0",

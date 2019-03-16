@@ -81,7 +81,7 @@ export const timeToCompleteGoal = {
   },
   YEAR: {
     text: 'A year',
-    key: 'Year',
+    key: 'YEAR',
     moment: [{ unit: 'y', value: 1 }],
     estimate: Array(12)
       .fill()
