@@ -159,7 +159,7 @@ const form: Form = {
       options: {
         referencedValue: {
           type: types.string,
-          key: 'form_3_weaknesses_friend_name',
+          key: 'form_3_strengths_friend_name',
           text: "Friend's name",
           smallKey: "Friend's name",
         },
