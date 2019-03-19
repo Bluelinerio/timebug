@@ -7,6 +7,6 @@ export default {
     most optimal use of your time right now, to help you manifest the future that YOU desire`,
   toolLink: {
     tool: TOOL_KEYS.DailyMeditationKey,
-    text: 'Meditate now!',
+    text: 'MEDITATION TOOL',
   },
 }

@@ -32,8 +32,8 @@ const fontColor = white2
 export const buttonWidth = widthPercentage(15)
 export const buttonHeight = heightPercentage(5.55)
 
-export const finishButtonWidth = widthPercentage(20)
-export const finishButtonHeight = heightPercentage(6.66)
+export const finishButtonWidth = widthPercentage(30)
+export const finishButtonHeight = heightPercentage(10)
 
 export const backButtonColor = gray600
 
@@ -426,7 +426,7 @@ export default StyleSheet.create({
   doneButton: {
     borderRadius: 6,
     paddingHorizontal: 10,
-    paddingVertical: 8,
+    paddingVertical: 6,
     height: finishButtonHeight,
     width: finishButtonWidth,
     alignItems: 'center',
@@ -434,7 +434,8 @@ export default StyleSheet.create({
   },
   doneButtontext: {
     ...iOSUIKit.caption2Object,
-    fontSize: 13,
+    fontSize: 14,
+    fontWeight: '700',
     textAlign: 'center',
     color: fontColor,
   },
