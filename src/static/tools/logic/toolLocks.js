@@ -30,9 +30,9 @@ import DummyTool, { key as DummyKey } from '../Dummy'
 import type { ToolLock } from '../types'
 
 export const TOOL_KEYS = {
+  DailyMeditationKey,
   DailyTimebugPlannerKey,
   WeeklyTimebugPlannerKey,
-  DailyMeditationKey,
   BoardOfAdvisorsKey,
   GoalTrackerKey,
   GoalsLogKey,

@@ -1,8 +1,8 @@
 // @flow
-import React from 'react'
+import React                            from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
-import type { Step } from '../../../../services/cms'
-import styles from '../styles'
+import type { Step }                    from '2020_services/cms'
+import styles                           from '../styles'
 
 export type Props = {
   color: string,
@@ -12,6 +12,10 @@ export type Props = {
   title: string,
   hasNext: boolean,
   nextStepNumber: number,
+  toolButton: {
+    text: string,
+    onPress: () => any,
+  },
 }
 
 class FormFinishedComponent extends React.PureComponent<Props> {
@@ -20,8 +24,22 @@ class FormFinishedComponent extends React.PureComponent<Props> {
     onButtonPress()
   }
 
+  _onToolPress = () => {
+    const { toolButton = null } = this.props
+    if (!toolButton) return
+    const { onPress } = toolButton
+    if (onPress) onPress()
+  }
+
   render() {
-    const { color, text, title, hasNext, nextStepNumber } = this.props
+    const {
+      color,
+      text,
+      title,
+      hasNext,
+      nextStepNumber,
+      toolButton,
+    } = this.props
 
     return (
       <View style={[styles.container, styles.doneContentContainer]}>
@@ -31,16 +49,30 @@ class FormFinishedComponent extends React.PureComponent<Props> {
         <View style={styles.doneTextContainer}>
           <Text style={[styles.doneText, { color }]}>{text}</Text>
         </View>
-        {hasNext && (
-          <View style={styles.doneButtonContainer}>
-            <TouchableOpacity
-              style={[styles.doneButton, { backgroundColor: color }]}
-              onPress={this._onPress}
-            >
-              <Text style={styles.doneButtontext}>STEP {nextStepNumber}</Text>
-            </TouchableOpacity>
-          </View>
-        )}
+        <View style={styles.doneButtonArea}>
+          {hasNext && (
+            <View style={styles.doneButtonContainer}>
+              <TouchableOpacity
+                style={[styles.doneButton, { backgroundColor: color }]}
+                onPress={this._onPress}
+              >
+                <Text style={styles.doneButtontext}>STEP {nextStepNumber}</Text>
+              </TouchableOpacity>
+            </View>
+          )}
+          {toolButton && (
+            <View style={styles.doneButtonContainer}>
+              <TouchableOpacity
+                style={[styles.doneButton, { backgroundColor: color }]}
+                onPress={this._onToolPress}
+              >
+                <Text style={styles.doneButtontext}>
+                  {toolButton.text || `Use tool`}
+                </Text>
+              </TouchableOpacity>
+            </View>
+          )}
+        </View>
       </View>
     )
   }
