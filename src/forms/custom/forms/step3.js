@@ -13,7 +13,7 @@ const form: Form = {
       key: 'form_3_strengths',
       content: {
         text:
-          'List 3 - 5 3-5 character strengths that you believe yourself to possess',
+          'List 3-5 character strengths that you believe yourself to possess',
         smallKey: 'Strengths',
         listText: 'Strengths',
       },
@@ -159,7 +159,7 @@ const form: Form = {
       options: {
         referencedValue: {
           type: types.string,
-          key: 'form_3_weaknesses_friend_name',
+          key: 'form_3_strengths_friend_name',
           text: "Friend's name",
           smallKey: "Friend's name",
         },
