@@ -1,13 +1,10 @@
 // @flow
 
-import { ApolloClient }           from 'apollo-client'
-import { HttpLink }               from 'apollo-link-http'
-import { InMemoryCache }          from 'apollo-cache-inmemory'
-import gql                        from 'graphql-tag'
+// TODO: Refactor into several files
+import gql        from 'graphql-tag'
 import type {
   Auth,
   User,
-  GraphResponse,
   ErrorResponse,
   CreateFormArgs,
   UpdateFormArgs,
@@ -15,41 +12,9 @@ import type {
   createCheckinArgs,
   updateCheckinArgs,
   filterCheckinsByTemplateArgs,
-}                                 from './models'
-import { temporaryUserAdditions } from './tmp'
-
-export const endpoints = {
-  simple: 'https://api.graph.cool/simple/v1/cjdnw03hv8l6m01133d2ix1pb',
-}
-export const isClientEndpoint = (endpoint: string) =>
-  endpoints.simple === endpoint
-
-export const client = new ApolloClient({
-  link: new HttpLink({ uri: endpoints.simple }),
-  cache: new InMemoryCache(),
-})
-
-
-const _parse = <T>(key: string, graphResponse: GraphResponse): T => {
-  const { data, error } = graphResponse
-  if (error) {
-    console.log('ERROR IN THENABLE')
-    throw error
-  }
-  const value: T = {
-    ...data[key],
-    endpoint: endpoints.simple,
-  }
-  if (value) {
-    return temporaryUserAdditions(value)
-  }
-  throw { error: error || 'User not found' }
-}
-
-const parse = <T>(key: string) => (graphResponse: GraphResponse): T =>
-  _parse(key, graphResponse)
-
-export const resetStore = client.resetStore
+}                 from './models'
+import { client } from './client'
+import { parse }  from './utils'
 
 export const authenticateWithFBToken = (fbToken: string): Auth =>
   client
@@ -98,6 +63,7 @@ const userSortedFormFragment = gql`
     }
   }
 `
+
 const userAchievementsFragment = gql`
   fragment UserAchievements on User {
     achievements {
@@ -519,3 +485,7 @@ export const deleteCheckin = (checkinId: string): Checkin =>
     })
     .then(parse('deleteCheckin'))
     .catch(handleCheckinError)
+
+export * from './client'
+export * from './utils'
+export * from './toolData.graph'
