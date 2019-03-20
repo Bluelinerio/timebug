@@ -20,6 +20,7 @@ export type CheckinElement = {
   message: string,
   action: any,
   id: string,
+  revisionId: number,
 }
 
 type CheckinState = {

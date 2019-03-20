@@ -18,6 +18,7 @@ import {
   REMOVE_CHECKIN,
   TOGGLE_CHECKIN,
   CHECKIN_NOTIFICATION,
+  EDIT_CHECKIN,
 }                                    from '../actionTypes'
 import { GET_USER }                  from '../actions/user.actions'
 import { FETCH_CMS }                 from '../actions/cms.actions'
@@ -30,12 +31,14 @@ import {
   changeCheckin,
   deleteCheckin,
   removeCheckin,
+  editCheckin,
 }                                    from '../actions/checkin.actions'
 import type {
   DeleteCheckinPayload,
   CheckinChangePayload,
   ToggleCheckinPayload,
   CheckinNotificationPayload,
+  EditCheckinPayload,
 }                                    from '../actions/checkin.actions'
 import { linkNavigation }            from '../actions/nav.actions'
 import selectors                     from '../selectors'
@@ -129,6 +132,66 @@ function* toggleNotification({ payload }: ToggleCheckinPayload) {
   }
 }
 
+function* _handleCheckinEdition({ payload }: { payload: EditCheckinPayload }) {
+  const { checkin, number, notification } = payload
+  const { toolKey, message, action, frequency, ...rest } = checkin
+  const { scheduledDate: notificationTime } = notification
+
+  const id = `${toHashCode(toolKey)}`
+
+  const oldFrequency = R.view(
+    R.lensPath(['data', 'additionalProps', 'data', 'frequency']),
+    notification
+  )
+
+  const oldRepeatTime = R.view(R.lensPath(['data', 'repeatTime']), notification)
+
+  let repeatTime = oldRepeatTime
+
+  if (frequency !== oldFrequency) {
+    /* eslint-disable-next-line no-unused-vars */
+    const [_, newRepeatTime] = yield call(calculateNextCheckin, frequency)
+    repeatTime = newRepeatTime
+  }
+  const additionalProps = {
+    type: notificationTypes.CHECKIN_NOTIFICATION,
+    data: {
+      step: number,
+      id,
+      toolKey,
+      action,
+      frequency,
+    },
+  }
+
+  yield put(removeCheckin({ step: number, tool: toolKey }))
+  yield delay(10)
+
+  yield put(
+    createNotification({
+      message,
+      id,
+      notificationTime,
+      repeatTime,
+      additionalProps,
+    })
+  )
+  yield put(
+    updateCheckin({
+      step: number,
+      checkin: {
+        frequency,
+        nextCheckin: notificationTime,
+        id,
+        message,
+        toolKey,
+        action,
+        ...rest,
+      },
+    })
+  )
+}
+
 const isCheckinInStore = (step: any, checkin: any, checkins: any) =>
   checkins[step.number] && checkins[step.number][checkin.toolKey]
 
@@ -139,6 +202,7 @@ function* _setInitialNotifications() {
   const steps = yield select(selectors.steps)
   const user = yield select(selectors.user)
   const checkins = yield select(selectors.getCheckins)
+  const notifications = yield select(selectors.notifications)
   if (user) {
     yield race({
       request: call(_watchForInitialNotificationsHold),
@@ -148,6 +212,8 @@ function* _setInitialNotifications() {
       steps
     ).reduce((allSteps, step) => {
       const stepCheckins = step.checkin
+      const { __meta = { revisionId: -1 } } = step
+      const { revisionId } = __meta
       const type = R.type(stepCheckins)
       if (type !== 'Array') return allSteps
       const checkinsForStepInState = (checkins && checkins[step.number]) || {}
@@ -163,7 +229,10 @@ function* _setInitialNotifications() {
             return [
               ...checkinsToBeChanged,
               {
-                checkin,
+                checkin: {
+                  ...checkin,
+                  revisionId,
+                },
                 number: step.number,
                 __action__: 'change',
               },
@@ -174,13 +243,13 @@ function* _setInitialNotifications() {
         []
       )
 
-      const checkinsToRemove = Object.keys(checkinsForStepInState).reduce(
+      const checkinsToUpdate = Object.keys(checkinsForStepInState).reduce(
         (checkinsToChange, key) => {
           const checkin = checkinsForStepInState[key]
-          const shouldNotRemove = stepCheckins.find(
+          const checkinInCms = stepCheckins.find(
             cmsCheckin => cmsCheckin.toolKey && cmsCheckin.toolKey === key
           )
-          if (!shouldNotRemove)
+          if (!checkinInCms)
             return [
               ...checkinsToChange,
               {
@@ -189,20 +258,56 @@ function* _setInitialNotifications() {
                 __action__: 'remove',
               },
             ]
+          else {
+            const shouldUpdate =
+              (!checkin.revisionId && revisionId !== -1) ||
+              checkin.revisionId < revisionId
+            if (shouldUpdate) {
+              const notification =
+                notifications
+                  .filter(n => n.type === CHECKIN_NOTIFICATION)
+                  .find(n => {
+                    const key = R.view(
+                      R.lensPath([
+                        'data',
+                        'additionalProps',
+                        'data',
+                        'toolKey',
+                      ]),
+                      n
+                    )
+                    return key || key === checkin.toolKey
+                  }) || null
+              return [
+                ...checkinsToChange,
+                {
+                  checkin: {
+                    ...checkinInCms,
+                    revisionId,
+                  },
+                  notification,
+                  number: step.number,
+                  __action__: 'update',
+                },
+              ]
+            }
+          }
           return checkinsToChange
         },
         []
       )
 
-      return [...allSteps, ...checkinActions, ...checkinsToRemove]
+      return [...allSteps, ...checkinActions, ...checkinsToUpdate]
     }, [])
 
     for (const step of stepsWithUnsetNotifications) {
-      const { checkin, number, __action__ } = step
+      const { checkin, notification = null, number, __action__ } = step
       if (__action__ === 'change')
         yield put(changeCheckin({ ...checkin, step: number }))
       else if (__action__ === 'remove')
         yield put(removeCheckin({ step: number, tool: checkin.toolKey }))
+      else if (__action__ === 'update')
+        yield put(editCheckin({ number, checkin, notification }))
     }
   }
 }
@@ -253,10 +358,19 @@ function* watchForNotificationToggling() {
   yield takeLatest(TOGGLE_CHECKIN, toggleNotification)
 }
 
+function* watchForCheckinEdition() {
+  const channel = yield actionChannel(EDIT_CHECKIN)
+  while (true) {
+    const action: { payload: EditCheckinPayload } = yield take(channel)
+    yield fork(_handleCheckinEdition, action)
+  }
+}
+
 export function* watchForCheckinsSaga() {
   // TODO: Set up permissions for IOS? it would probably be good to do it here
   yield fork(watchForCheckinsUpdate)
   yield fork(watchForCheckinsDeletion)
+  yield fork(watchForCheckinEdition)
   yield fork(watchForNotificationToggling)
   yield fork(watchForInitialNotifications)
   yield fork(watchForCheckinNotifications)

@@ -84,6 +84,8 @@ export const TOGGLE_CHECKIN = 'TOGGLE_CHECKIN'
 
 export const CHECKIN_NOTIFICATION = 'CHECKIN_NOTIFICATION'
 
+export const EDIT_CHECKIN = 'EDIT_CHECKIN'
+
 /**
  * Notifications
  */
