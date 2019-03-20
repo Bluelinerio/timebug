@@ -226,6 +226,10 @@ export const CommonGoalOutcomes = {
     title: 'Right On Point',
     key: 'RightOnPoint',
   },
+  LatencyEffect: {
+    title: 'Latency Effect',
+    key: 'LatencyEffect',
+  }
 }
 
 export const CommonGoalOutcomesArray = Object.keys(CommonGoalOutcomes).map(
