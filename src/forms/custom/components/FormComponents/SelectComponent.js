@@ -43,16 +43,19 @@ const IOSPicker = (props: any) => {
   const { style: staticStyles = {} } = options
 
   const data =
-    items &&
-    items.map(({ value, text }) => ({
-      key: value,
-      label: text,
-    }))
+    items && items.length > 0
+      ? items.map(({ value, text }) => ({
+        key: value,
+        label: text,
+      }))
+      : [{ key: '', label: '-' }]
 
-  const textValue =
+  const dataElement =
     value && data
-      ? data.find(element => element.key === value).label
-      : data[0].label
+      ? data.find(element => element.key === value) || data[0]
+      : data[0]
+
+  const textValue = dataElement.label
 
   return (
     data && (

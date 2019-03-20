@@ -53,17 +53,19 @@ const Select = ({
   )
 
   const renderiOSPicker = () => {
-    const data =
-      content &&
-      content.items.map(({ value, text }) => ({
+    const data = content
+      ? content.items.map(({ value, text }) => ({
         key: value,
         label: text,
       }))
+      : [{ key: '', label: '-' }]
 
-    const textValue =
+    const dataElement =
       value && data
-        ? data.find(element => element.key === value).label
-        : data[0].label
+        ? data.find(element => element.key === value) || data[0]
+        : data[0]
+
+    const textValue = dataElement.label
 
     return (
       data && (
