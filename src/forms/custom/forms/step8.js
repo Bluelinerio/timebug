@@ -2,7 +2,7 @@
 import { Platform }                from 'react-native'
 import types, { answerTypes, setTypes }      from './types'
 import type { Form }               from '../types/formTypes'
-import { EnergyLevels, ExerciseTypes,ExerciseFrequency,AloneOrOthers }   from './content'
+import { EnergyLevels, ExerciseTypes, MeditationTypes, Frequency,AloneOrOthers }   from './content'
 
 
 
@@ -14,6 +14,7 @@ export const FORM_KEYS = {
   form_8_energy_levels_weekend_afternoon: 'form_8_energy_levels_weekend_afternoon',
   form_8_energy_levels_weekend_evening: 'form_8_energy_levels_weekend_evening',
   form_8_exercise_habits: 'form_8_exercise_habits',
+  form_8_meditation_habits: 'form_8_meditation_habits',
 
 }
 
@@ -52,9 +53,12 @@ export const CHILDREN_KEYS = {
     exerciseFrequency: `${FORM_KEYS.form_8_exercise_habits}.exerciseFrequency`,
     exerciseTypes: `${FORM_KEYS.form_8_exercise_habits}.exerciseTypes`,
     soloOrGroup: `${FORM_KEYS.form_8_exercise_habits}.soloOrGroup`
-
-
   },
+  form_8_meditation_habits: {
+    meditationFrequency: `${FORM_KEYS.form_8_meditation_habits}.meditationFrequency`,
+    meditationTypes: `${FORM_KEYS.form_8_meditation_habits}.meditationTypes`,
+    soloOrGroup: `${FORM_KEYS.form_8_meditation_habits}.soloOrGroup`
+  }
 }
 
   const form: Form = {
@@ -293,9 +297,9 @@ export const CHILDREN_KEYS = {
               title: 'How often do you exercise?',
               content: {
                 smallKey: 'Exercise Frequency',
-                items: ExerciseFrequency.map(exerciseFrequency => ({
-                  value: exerciseFrequency,
-                  text: exerciseFrequency,
+                items: Frequency.map(frequency => ({
+                  value: frequency,
+                  text: frequency,
                 })),
               },
               options: {
@@ -335,6 +339,64 @@ export const CHILDREN_KEYS = {
           },
         },
         },
+        7: {
+          type: types.formElements,
+          key: FORM_KEYS.form_8_meditationHabits,
+          content: {
+            text: 'Please answer the following questions about your meditation habits.',
+            smallKey: 'Meditation Habits',
+          },
+          options: {
+            required: true,
+            childTypes: {
+              0: {
+                type: types.select,
+                key: `${CHILDREN_KEYS.form_8_exercise_habits.meditationFrequency}`,
+                title: 'How often do you meditate?',
+                content: {
+                  smallKey: 'Meditation Frequency',
+                  items: Frequency.map(frequency => ({
+                    value: frequency,
+                    text: frequency,
+                  })),
+                },
+                options: {
+                  required: true,
+                },
+              },
+              1: {
+                type: types.select,
+                key: `${CHILDREN_KEYS.form_8_meditation_habits.meditationTypes}`,
+                title: 'What type of meditation do you do?',
+                content: {
+                  smallKey: 'Meditation Type',
+                  items: MeditationTypes.map(meditationTypes => ({
+                    value: meditationTypes,
+                    text: meditationTypes,
+                  })),
+                },
+                options: {
+                  required: true,
+                },
+              },
+              2: {
+                type: types.select,
+                key: `${CHILDREN_KEYS.form_8_meditation_habits.aloneOrOthers}`,
+                title: 'Alone Or With Others?',
+                content: {
+                  smallKey: 'Alone Or Others',
+                  items: AloneOrOthers.map(aloneOrOthers => ({
+                    value: aloneOrOthers,
+                    text: aloneOrOthers,
+                  })),
+                },
+                options: {
+                  required: true,
+                },
+              },
+            },
+          },
+          },
       }
   }
 

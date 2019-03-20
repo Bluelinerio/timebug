@@ -272,9 +272,20 @@ export const ExerciseTypes = [
   'Other',
 ]
 
+export const MeditationTypes = [
+  'Silent Meditation',
+  'Visualization',
+  'Yoga',
+  'Religious',
+  'Prayer',
+  'Guided Meditation',
+  'Integrative Breathing',
+  'Other',
+]
 
 
-export const ExerciseFrequency = [
+
+export const Frequency = [
   'Daily',
   '2-3 Times per week',
   '4-5 Times per week',
