@@ -200,3 +200,40 @@ export const LifeCategoriesArray = Object.keys(LifeCategories).map(key => {
     text: val.title,
   }
 })
+
+export const CommonGoalOutcomes = {
+  BenchWarmer: {
+    title: 'Bench Warmer',
+    key: 'BenchWarmer',
+  },
+  FastStarter: {
+    title: 'Fast Starter',
+    key: 'FastStarter',
+  },
+  BreezeThrough: {
+    title: 'Breeze Through',
+    key: 'BreezeThrough',
+  },
+  SelfSabotage: {
+    title: '(Self?) Sabotage',
+    key: 'SelfSabotage',
+  },
+  NFLOE: {
+    title: 'Not For Lack Of Effort',
+    key: 'NFLOE',
+  },
+  RightOnPoint: {
+    title: 'Right On Point',
+    key: 'RightOnPoint',
+  },
+}
+
+export const CommonGoalOutcomesArray = Object.keys(CommonGoalOutcomes).map(
+  key => {
+    const val = CommonGoalOutcomes[key]
+    return {
+      key,
+      text: val.title,
+    }
+  }
+)
