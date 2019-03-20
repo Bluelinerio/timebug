@@ -241,3 +241,52 @@ export const CommonGoalOutcomesArray = Object.keys(CommonGoalOutcomes).map(
     }
   }
 )
+
+export const EnergyLevels = {
+  PhysicalEnergy: {
+    title: 'Physical',
+    subtitle: '1 - Lowest, 10 - Highest',
+    key: 'PhysicalEnergy',
+  },
+  EmotionalEnergy: {
+    title: 'Emotional',
+    subtitle: '1 - Lowest, 10 - Highest',
+    key: 'EmotionalEnergy',
+  },
+  SpiritualEnergy: {
+    title: 'Spiritual',
+    subtitle: '1 - Lowest, 10 - Highest',
+    key: 'SpiritualEnergy',
+  },
+}
+
+export const ExerciseTypes = [
+  'Team Sports',
+  'Weights',
+  'Aerobics',
+  'Yoga',
+  'Martial Arts',
+  'Pilates',
+  'Running',
+  'Swimming',
+  'Other',
+]
+
+
+
+export const ExerciseFrequency = [
+  'Daily',
+  '2-3 Times per week',
+  '4-5 Times per week',
+  'Weekly',
+  'Bi-weekly',
+  'Rarely',
+  'Never'  
+]
+
+
+export const AloneOrOthers = [
+ 'Alone',
+ 'WithOthers',
+]
+
