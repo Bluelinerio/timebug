@@ -19,7 +19,7 @@ type Props = {
   formValue: any,
 }
 
-const SwitchComponent = ({ field, props }: { type: string }) => {
+const SwitchComponent = ({ field, props }: { type: string, props: any }) => {
   const { type } = field
   switch (type) {
   case types.label:
