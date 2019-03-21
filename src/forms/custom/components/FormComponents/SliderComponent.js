@@ -164,9 +164,11 @@ class SliderComponent extends React.PureComponent<Props> {
               />
             </View>
             <View style={styles.sliderValueTextContainer}>
-              <Text style={[styles.sliderValue, formStyles.textStyle]}>{`${
-                options.suffixOfValue
-              }`}</Text>
+              {options.suffixOfValue && (
+                <Text style={[styles.sliderValue, formStyles.textStyle]}>{`${
+                  options.suffixOfValue
+                }`}</Text>
+              )}
               {options._compareValue && (
                 <Text style={[styles.sliderValue, formStyles.textStyle]}>
                   ({this._buildCompare(

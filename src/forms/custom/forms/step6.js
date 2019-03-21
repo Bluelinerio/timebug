@@ -107,7 +107,7 @@ const form: Form = {
               
             },
           },
-          2: {
+          1: {
             type: types.string,
             key: `${CHILDREN_KEYS.form_6_plan_and_estimated_time.time}`,
             content: {

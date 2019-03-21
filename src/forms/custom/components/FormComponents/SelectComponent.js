@@ -104,6 +104,8 @@ const Select = ({
     filterFunction?: (Array<any>) => Array<any>,
   },
 }) => {
+  const { style: staticStyles = {} } = options
+
   const onValueChange = itemValue => {
     onChange(itemValue)
   }
@@ -121,8 +123,21 @@ const Select = ({
 
   return (
     <React.Fragment>
-      <FormElementHeader text={content.text} textStyle={formStyles.textStyle} />
-      <View style={styles.pickerContainer}>
+      <FormElementHeader
+        text={content.text}
+        textStyle={{
+          ...formStyles.textStyle,
+          ...(staticStyles.formHeaderText ? staticStyles.formHeaderText : {}),
+        }}
+      />
+      <View
+        style={[
+          styles.pickerContainer,
+          ...(staticStyles.pickerContentContainer
+            ? staticStyles.pickerContentContainer
+            : {}),
+        ]}
+      >
         {Platform.OS === 'ios' ? (
           <IOSPicker
             value={value}

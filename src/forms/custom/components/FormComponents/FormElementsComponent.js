@@ -19,9 +19,9 @@ type Props = {
 type State = {}
 
 class FormElementsComponent extends React.PureComponent<Props, State> {
-  componentDidUpdate = prevProps => {
-    const { field, value, onChange } = this.props
-    if (!value && field.key !== prevProps.key) {
+  componentDidUpdate = () => {
+    const { value, onChange } = this.props
+    if (!value) {
       const initialValue = this._buildInitialValue(this.props)
       onChange({ ...initialValue, _id: uuid() })
     }
