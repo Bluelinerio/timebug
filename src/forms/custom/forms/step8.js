@@ -356,7 +356,11 @@ const form: Form = {
               required: true,
               style: {
                 formHeaderText: {
+                  marginTop: 16,
                   fontSize: 14,
+                },
+                pickerContentContainer: {
+                  marginTop: 0,
                 },
               },
             },
@@ -376,7 +380,11 @@ const form: Form = {
               required: true,
               style: {
                 formHeaderText: {
+                  marginTop: 16,
                   fontSize: 14,
+                },
+                pickerContentContainer: {
+                  marginTop: 0,
                 },
               },
             },
@@ -396,7 +404,11 @@ const form: Form = {
               required: true,
               style: {
                 formHeaderText: {
+                  marginTop: 16,
                   fontSize: 14,
+                },
+                pickerContentContainer: {
+                  marginTop: 0,
                 },
               },
             },
@@ -430,7 +442,11 @@ const form: Form = {
               required: true,
               style: {
                 formHeaderText: {
+                  marginTop: 16,
                   fontSize: 14,
+                },
+                pickerContentContainer: {
+                  marginTop: 0,
                 },
               },
             },
@@ -450,7 +466,11 @@ const form: Form = {
               required: true,
               style: {
                 formHeaderText: {
+                  marginTop: 16,
                   fontSize: 14,
+                },
+                pickerContentContainer: {
+                  marginTop: 0,
                 },
               },
             },
@@ -470,7 +490,11 @@ const form: Form = {
               required: true,
               style: {
                 formHeaderText: {
+                  marginTop: 16,
                   fontSize: 14,
+                },
+                pickerContentContainer: {
+                  marginTop: 0,
                 },
               },
             },

@@ -130,7 +130,14 @@ const Select = ({
           ...(staticStyles.formHeaderText ? staticStyles.formHeaderText : {}),
         }}
       />
-      <View style={styles.pickerContainer}>
+      <View
+        style={[
+          styles.pickerContainer,
+          ...(staticStyles.pickerContentContainer
+            ? staticStyles.pickerContentContainer
+            : {}),
+        ]}
+      >
         {Platform.OS === 'ios' ? (
           <IOSPicker
             value={value}
