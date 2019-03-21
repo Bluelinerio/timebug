@@ -140,17 +140,20 @@ class SliderSet extends React.PureComponent<Props, State> {
       textStyle: { color },
     } = formStyles
 
-    const { subtypeOptions, children } = options
+    const { subtypeOptions, children, displayGlobal = true } = options
 
     return (
       <View style={styles.container}>
-        <View style={styles.sliderSetTotalContainer}>
-          <View style={styles.sliderSetTotal}>
-            <Text style={[styles.totalValue, formStyles.textStyle]}>
-              {globalMaxValue}
-            </Text>
+        {displayGlobal && (
+          <View style={styles.sliderSetTotalContainer}>
+            <View style={styles.sliderSetTotal}>
+              <Text style={[styles.totalValue, formStyles.textStyle]}>
+                {globalMaxValue}
+              </Text>
+            </View>
           </View>
-        </View>
+        )}
+
         {children &&
           Object.keys(children).map(index => {
             const child = children[index]
@@ -185,13 +188,15 @@ class SliderSet extends React.PureComponent<Props, State> {
               </View>
             )
           })}
-        <View style={styles.sliderSetTotalContainer}>
-          <View style={styles.sliderSetTotal}>
-            <Text style={[styles.totalValue, formStyles.textStyle]}>
-              {globalMaxValue}
-            </Text>
+        {displayGlobal && (
+          <View style={styles.sliderSetTotalContainer}>
+            <View style={styles.sliderSetTotal}>
+              <Text style={[styles.totalValue, formStyles.textStyle]}>
+                {globalMaxValue}
+              </Text>
+            </View>
           </View>
-        </View>
+        )}
       </View>
     )
   }
