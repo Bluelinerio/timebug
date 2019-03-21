@@ -66,11 +66,11 @@ class OptionButton extends React.PureComponent<OptionButtonProps> {
                 <CustomImage style={[styles.buttonImage]} source={source} />
               </View>
               <View style={[styles.buttonTextContainer]}>
-                <Text style={[styles.stepText, styles.buttonText, textStyle]}>
+                <Text style={[styles.stepTitleText, textStyle]}>
                   Step {step}:
                 </Text>
                 <Text
-                  style={[styles.stepTitleText, styles.buttonText, textStyle]}
+                  style={[styles.stepTitleText, textStyle]}
                 >
                   {title}
                 </Text>

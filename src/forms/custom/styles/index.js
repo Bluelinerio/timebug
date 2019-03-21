@@ -191,7 +191,7 @@ const formStyles = StyleSheet.create({
     fontFamily: 'Metropolis',
     fontWeight: '700',
     color: formTextColor,
-    fontSize: 18,
+    fontSize: 17,
   },
   textInputStyle: {
     color: gray900,
@@ -312,9 +312,9 @@ const formStyles = StyleSheet.create({
     fontSize: 16,
   },
   textElementText: {
-    ...iOSUIKit.subheadEmphasizedObject,
+    fontSize: 13,
     fontFamily: 'Metropolis',
-    fontWeight: '700',
+    fontWeight: '400',
     textAlign: 'justify',
     color: gray900,
     alignSelf: 'flex-start',

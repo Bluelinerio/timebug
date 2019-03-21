@@ -164,21 +164,33 @@ export default StyleSheet.create({
     }),
   },
   stepTitleText: {
-    ...iOSUIKit.footnoteEmphasizedObject,
+    ...Platform.select({
+      android: {
+        ...robotoWeights.bold,
+      },
+      ios: {
+        ...sanFranciscoWeights.bold,
+      },
+    }),
+    fontSize: 14,
+    color: fontColor,
+    fontFamily: 'Metropolis',
+    textAlign: 'justify',
   },
   buttonText: {
     color: fontColor,
     fontFamily: 'Metropolis',
     textAlign: 'justify',
+    fontSize: 12,
   },
   subtitle: {
     ...iOSUIKit.caption2Object,
     ...Platform.select({
       android: {
-        ...robotoWeights.normal,
+        ...robotoWeights.regular,
       },
       ios: {
-        ...sanFranciscoWeights.normal,
+        ...sanFranciscoWeights.semibold,
       },
     }),
   },
