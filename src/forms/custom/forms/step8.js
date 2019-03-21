@@ -354,6 +354,11 @@ const form: Form = {
             },
             options: {
               required: true,
+              style: {
+                formHeaderText: {
+                  fontSize: 14,
+                },
+              },
             },
           },
           1: {
@@ -369,6 +374,11 @@ const form: Form = {
             },
             options: {
               required: true,
+              style: {
+                formHeaderText: {
+                  fontSize: 14,
+                },
+              },
             },
           },
           2: {
@@ -384,6 +394,11 @@ const form: Form = {
             },
             options: {
               required: true,
+              style: {
+                formHeaderText: {
+                  fontSize: 14,
+                },
+              },
             },
           },
         },
@@ -413,6 +428,11 @@ const form: Form = {
             },
             options: {
               required: true,
+              style: {
+                formHeaderText: {
+                  fontSize: 14,
+                },
+              },
             },
           },
           1: {
@@ -428,6 +448,11 @@ const form: Form = {
             },
             options: {
               required: true,
+              style: {
+                formHeaderText: {
+                  fontSize: 14,
+                },
+              },
             },
           },
           2: {
@@ -443,6 +468,11 @@ const form: Form = {
             },
             options: {
               required: true,
+              style: {
+                formHeaderText: {
+                  fontSize: 14,
+                },
+              },
             },
           },
         },
