@@ -354,6 +354,7 @@ const form: Form = {
             },
             options: {
               required: true,
+              default: Frequency[0],
               style: {
                 formHeaderText: {
                   marginTop: 16,
@@ -378,6 +379,7 @@ const form: Form = {
             },
             options: {
               required: true,
+              default: ExerciseTypes[0],
               style: {
                 formHeaderText: {
                   marginTop: 16,
@@ -402,6 +404,7 @@ const form: Form = {
             },
             options: {
               required: true,
+              default: AloneOrOthers[0],
               style: {
                 formHeaderText: {
                   marginTop: 16,
@@ -440,6 +443,7 @@ const form: Form = {
             },
             options: {
               required: true,
+              default: Frequency[0],
               style: {
                 formHeaderText: {
                   marginTop: 16,
@@ -464,6 +468,7 @@ const form: Form = {
             },
             options: {
               required: true,
+              default: MeditationTypes[0],
               style: {
                 formHeaderText: {
                   marginTop: 16,
@@ -488,6 +493,7 @@ const form: Form = {
             },
             options: {
               required: true,
+              default: AloneOrOthers[0],
               style: {
                 formHeaderText: {
                   marginTop: 16,
