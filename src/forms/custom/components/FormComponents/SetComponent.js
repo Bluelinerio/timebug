@@ -26,7 +26,7 @@ class SetComponent extends React.PureComponent<Props> {
     const { subtype } = options
     return (
       <View style={styles.container}>
-        <View style={styles.container}>
+        <View style={styles.formElementHeaderContainer}>
           <FormElementHeader
             text={content.text}
             textStyle={formStyles.textStyle}

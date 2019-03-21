@@ -128,6 +128,9 @@ const formStyles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  formElementHeaderContainer: {
+    marginBottom:20, 
+  },
   helpButton: {
     width: 40,
     height: 40,

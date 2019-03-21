@@ -353,7 +353,7 @@ const form: Form = {
               })),
             },
             options: {
-              required: true,
+              required: false,
               default: Frequency[0],
               style: {
                 formHeaderText: {
@@ -378,7 +378,7 @@ const form: Form = {
               })),
             },
             options: {
-              required: true,
+              required: false,
               default: ExerciseTypes[0],
               style: {
                 formHeaderText: {
@@ -403,7 +403,7 @@ const form: Form = {
               })),
             },
             options: {
-              required: true,
+              required: false,
               default: AloneOrOthers[0],
               style: {
                 formHeaderText: {
