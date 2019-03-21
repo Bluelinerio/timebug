@@ -344,8 +344,8 @@ const form: Form = {
           0: {
             type: types.select,
             key: `${CHILDREN_KEYS.form_8_exercise_habits.exerciseFrequency}`,
-            text: 'How often do you exercise?',
             content: {
+              text: 'How often do you exercise?',
               smallKey: 'Exercise Frequency',
               items: Frequency.map(frequency => ({
                 value: frequency,
@@ -359,8 +359,8 @@ const form: Form = {
           1: {
             type: types.select,
             key: `${CHILDREN_KEYS.form_8_exercise_habits.exerciseTypes}`,
-            text: 'What type of exercise do you do?',
             content: {
+              text: 'What type of exercise do you do?',
               smallKey: 'Exercise Type',
               items: ExerciseTypes.map(exerciseTypes => ({
                 value: exerciseTypes,
@@ -374,8 +374,8 @@ const form: Form = {
           2: {
             type: types.select,
             key: `${CHILDREN_KEYS.form_8_exercise_habits.aloneOrOthers}`,
-            text: 'Alone Or With Others?',
             content: {
+              text: 'Alone Or With Others?',
               smallKey: 'Alone Or Others',
               items: AloneOrOthers.map(aloneOrOthers => ({
                 value: aloneOrOthers,
@@ -403,8 +403,8 @@ const form: Form = {
           0: {
             type: types.select,
             key: `${CHILDREN_KEYS.form_8_exercise_habits.meditationFrequency}`,
-            title: 'How often do you meditate?',
             content: {
+              text: 'How often do you meditate?',
               smallKey: 'Meditation Frequency',
               items: Frequency.map(frequency => ({
                 value: frequency,
@@ -418,8 +418,8 @@ const form: Form = {
           1: {
             type: types.select,
             key: `${CHILDREN_KEYS.form_8_meditation_habits.meditationTypes}`,
-            title: 'What type of meditation do you do?',
             content: {
+              text: 'What type of meditation do you do?',
               smallKey: 'Meditation Type',
               items: MeditationTypes.map(meditationTypes => ({
                 value: meditationTypes,
@@ -433,8 +433,8 @@ const form: Form = {
           2: {
             type: types.select,
             key: `${CHILDREN_KEYS.form_8_meditation_habits.aloneOrOthers}`,
-            title: 'Alone Or With Others?',
             content: {
+              text: 'Alone Or With Others?',
               smallKey: 'Alone Or Others',
               items: AloneOrOthers.map(aloneOrOthers => ({
                 value: aloneOrOthers,
