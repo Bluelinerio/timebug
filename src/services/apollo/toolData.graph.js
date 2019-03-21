@@ -1,7 +1,7 @@
 //@flow
-import gql        from 'gql'
+import gql from 'graphql-tag'
 import { client } from './client'
-import { parse }  from './utils'
+import { parse } from './utils'
 
 export const userSortedToolDataFragment = gql`
   fragment SortedTools on User {
@@ -87,3 +87,20 @@ export const createToolData = ({
     .then(parse('createToolData'))
     .catch(e => console.log(e))
 }
+
+export const deleteToolData = ({ id }): any =>
+  client
+    .mutate({
+      mutation: gql`
+        mutation deleteToolData($id: ID!) {
+          deleteToolData(id: $id) {
+            id
+          }
+        }
+      `,
+      variables: {
+        id,
+      },
+    })
+    .then(parse('deleteToolData'))
+    .catch(e => console.log(e))
