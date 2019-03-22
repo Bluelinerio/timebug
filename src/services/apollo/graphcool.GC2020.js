@@ -15,6 +15,7 @@ import type {
 }                 from './models'
 import { client } from './client'
 import { parse }  from './utils'
+import { userSortedToolDataFragment } from './toolData.graph'
 
 export const authenticateWithFBToken = (fbToken: string): Auth =>
   client
@@ -138,10 +139,12 @@ export const fetchUserWithId = (id: string): User =>
             ...UserAchievements
             ...SortedForms
             ...UserCheckin
+            ...SortedTools
           }
         }
         ${userFragments}
         ${userCheckinFragment}
+        ${userSortedToolDataFragment}
       `,
       fetchPolicy: 'network-only',
       variables: { id },
