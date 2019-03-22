@@ -4,7 +4,12 @@ import {
   RESET_AWARD_VALUE,
   SUBMIT_AWARD_VALUE_EXTENDED,
   EVALUATE_AWARD_DATA_EXTENDED,
+  INCREMENT_TOOL_DATA_QUEUE,
+  DECREMENT_TOOL_DATA_QUEUE,
+  RESTORE_TOOL_DATA,
+  EXECUTE_TOOL_SYNC,
 } from '../actionTypes'
+import type { Operation } from '../types/toolData.types'
 
 export type SubmitAwardValuePayload = {
   element: {
@@ -36,6 +41,10 @@ export type ExtendedSubmitAwardAnswerAction = {
   payload: SubmitAwardValuePayload,
 }
 
+export type ExecuteToolSyncPayload = {
+  operations: Array<Operation>,
+}
+
 export const submitAwardAnswers = (
   payload: SubmitAwardValuePayload
 ): SumbitAwardValueAction => ({
@@ -58,5 +67,22 @@ export const evaluateExtendedAward = (
   payload: ExtendedSubmitAwardAnswerPayload
 ): ExtendedSubmitAwardAnswerAction => ({
   type: EVALUATE_AWARD_DATA_EXTENDED,
+  payload,
+})
+
+export const incrementToolDataQueue = () => ({
+  type: INCREMENT_TOOL_DATA_QUEUE,
+})
+
+export const decrementToolDataQueue = () => ({
+  type: DECREMENT_TOOL_DATA_QUEUE,
+})
+
+export const restoreToolData = () => ({
+  type: RESTORE_TOOL_DATA,
+})
+
+export const executeToolSync = (payload: ExecuteToolSyncPayload) => ({
+  type: EXECUTE_TOOL_SYNC,
   payload,
 })

@@ -1,8 +1,13 @@
 // @flow
-import moment                                    from 'moment'
-import uuid                                      from 'uuid/v4'
-import { SUBMIT_AWARD_VALUE, RESET_AWARD_VALUE } from '../actionTypes'
-import type { SumbitAwardValueAction }           from '../actions/award.actions'
+import moment from 'moment'
+import uuid from 'uuid/v4'
+import {
+  SUBMIT_AWARD_VALUE,
+  RESET_AWARD_VALUE,
+  INCREMENT_TOOL_DATA_QUEUE,
+  DECREMENT_TOOL_DATA_QUEUE,
+} from '../actionTypes'
+import type { SumbitAwardValueAction } from '../actions/award.actions'
 
 /**
  * Types
@@ -23,6 +28,7 @@ export type AwardState = {
   data: {
     [key: string]: AwardData,
   },
+  requestCount: number,
 }
 
 /**
@@ -32,6 +38,7 @@ const initialAwardDataState = {}
 
 const initialState: AwardState = {
   data: initialAwardDataState,
+  requestCount: 0,
 }
 
 const populate = (
@@ -67,6 +74,16 @@ function toolDataReducer(
     return populate(action, state)
   case RESET_AWARD_VALUE:
     return initialState
+  case INCREMENT_TOOL_DATA_QUEUE:
+    return {
+      ...state,
+      requestCount: state.requestCount + 1,
+    }
+  case DECREMENT_TOOL_DATA_QUEUE:
+    return {
+      ...state,
+      requestCount: state.requestCount - 1,
+    }
   default:
     return state
   }
@@ -99,12 +116,16 @@ const migrations = {
   2: () => initialState,
   3: () => initialState,
   4: v4_migration,
+  5: state => ({
+    ...state,
+    requestCount: 0,
+  }),
 }
 
 const persistConfig = {
   key: 'awards',
   storage: storage,
-  blacklist: [],
+  blacklist: ['requestCount'],
   version: 4,
   migrate: createMigrate(migrations, { debug: true }),
 }
