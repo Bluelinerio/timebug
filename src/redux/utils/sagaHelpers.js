@@ -1,5 +1,5 @@
 import { call, select } from 'redux-saga/effects'
-import { delay }        from 'redux-saga'
+import { delay } from 'redux-saga'
 
 export function* timeoutNoError(duration = 5000) {
   yield call(delay, duration)
@@ -37,6 +37,17 @@ export const removeAllKeyButStepIds = (obj: {}): any =>
 export const removeAllKeysExceptValue = (obj: {}): any =>
   Object.keys(obj)
     .filter(k => k === 'value')
+    .reduce(
+      (sum, k) => ({
+        ...sum,
+        [k]: obj[k],
+      }),
+      {}
+    )
+
+export const removeServerKeys = (obj: {}): any =>
+  Object.keys(obj)
+    .filter(k => k !== '_server')
     .reduce(
       (sum, k) => ({
         ...sum,
