@@ -61,10 +61,12 @@ export const updateToolDataQuery = gql`
 `
 
 export const updateToolData = ({
+  id,
   userId,
   value,
   toolKey,
 }: {
+  id: string,
   userId: string,
   value: any,
   toolKey: string,
@@ -75,6 +77,7 @@ export const updateToolData = ({
     .mutate({
       mutation: query,
       variables: {
+        id,
         userId,
         value,
         toolKey,

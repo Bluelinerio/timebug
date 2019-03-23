@@ -144,6 +144,7 @@ export const fetchUserWithId = (id: string): User =>
         }
         ${userFragments}
         ${userCheckinFragment}
+        ${userSortedFormFragment}
         ${userSortedToolDataFragment}
       `,
       fetchPolicy: 'network-only',
