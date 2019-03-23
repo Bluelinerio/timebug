@@ -46,12 +46,13 @@ export const removeAllKeysExceptValue = (obj: {}): any =>
     )
 
 export const removeServerKeys = (obj: {}): any =>
-  Object.keys(obj)
-    .filter(k => k !== '_server')
-    .reduce(
-      (sum, k) => ({
-        ...sum,
-        [k]: obj[k],
-      }),
-      {}
-    )
+  Object.keys(obj).reduce((sum, k) => {
+    /* eslint-disable-next-line */
+    const { _server, ...rest } = obj[k]
+    return {
+      ...sum,
+      [k]: {
+        ...rest,
+      },
+    }
+  }, {})
