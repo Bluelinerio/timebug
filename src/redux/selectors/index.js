@@ -299,10 +299,11 @@ const awardDataForTool = (state: any) => ({ tool }: { tool: any }) => {
 
 const storedToolData = (state: any) => {
   const data = getUser(state).toolData
-  const toolData = data.reduce((allToolsData, toolData) => {
-    const { value, rest } = toolData
+  const toolData = data.reduce((allToolsData, td) => {
+    const { value, ...rest } = td
     return {
-      [toolData.key]: {
+      ...allToolsData,
+      [td.toolKey]: {
         ...value,
         _server: {
           ...rest,
