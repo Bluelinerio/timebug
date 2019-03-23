@@ -3,7 +3,7 @@ import React                                            from 'react'
 import { View, Text, TouchableOpacity }                 from 'react-native'
 import { FormInput }                                    from 'react-native-elements'
 import Slider                                           from 'react-native-slider'
-import styles, { minimumTrackColor, maximumTrackColor } from '../styles'
+import styles, { minimumTrackColor, maximumTrackColor } from '../../common/styles'
 import GoalSubstep                                      from './GoalSubstep'
 import OptionsDialog                                    from './OptionsDialog'
 

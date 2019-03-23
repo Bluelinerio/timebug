@@ -1,7 +1,7 @@
 // @flow
 import React          from 'react'
 import { View, Text } from 'react-native'
-import styles         from '../styles'
+import styles         from '../../common/styles'
 import GoalElement    from './GoalElement'
 
 type Props = {

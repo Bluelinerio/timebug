@@ -2,7 +2,7 @@
 import React                                   from 'react'
 import { View, Text, TouchableOpacity, Alert } from 'react-native'
 import SvgIcon                                 from '2020_components/SvgIcon'
-import styles, { iconStyle }                   from '../styles'
+import styles, { iconStyle }                   from '../../common/styles'
 
 type Props = {
   goals: Array<any>,

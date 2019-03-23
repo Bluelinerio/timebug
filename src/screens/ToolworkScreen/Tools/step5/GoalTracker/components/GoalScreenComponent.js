@@ -3,7 +3,7 @@ import React                             from 'react'
 import { View, ScrollView, BackHandler } from 'react-native'
 import GoalScreenContent                 from './GoalScreenContent'
 import SubHeader                         from './SubHeader'
-import styles                            from '../styles'
+import styles                            from '../../common/styles'
 
 type State = {
   selectedGoaltype: String | null,
@@ -18,6 +18,7 @@ type Props = {
   type?: string,
   goal?: any,
   goalId?: string,
+  openArchiveScreen: () => any,
 }
 
 class GoalScreenComponent extends React.PureComponent<Props, State> {

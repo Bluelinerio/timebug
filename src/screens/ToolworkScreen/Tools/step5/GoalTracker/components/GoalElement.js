@@ -2,7 +2,7 @@
 import React                                       from 'react'
 import { View, Text, TouchableOpacity }            from 'react-native'
 import Icon                                        from 'react-native-vector-icons/Ionicons'
-import styles, { completedColor, incompleteColor } from '../styles'
+import styles, { completedColor, incompleteColor } from '../../common/styles'
 
 type Props = {
   goal: any,

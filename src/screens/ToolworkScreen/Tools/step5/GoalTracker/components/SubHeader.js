@@ -2,7 +2,7 @@
 import React from 'react'
 import { View, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
-import styles, { iconColor } from '../styles'
+import styles, { iconColor } from '../../common/styles'
 
 type Props = {
   children: React.node<any>,
