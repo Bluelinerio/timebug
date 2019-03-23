@@ -19,6 +19,10 @@ export type SubmitAwardValuePayload = {
   },
 }
 
+export type RestoreToolPayload = {
+  tools: Array<any>,
+}
+
 export type SumbitAwardValueAction = {
   type: SUBMIT_AWARD_VALUE,
   payload: SubmitAwardValuePayload,
@@ -78,8 +82,9 @@ export const decrementToolDataQueue = () => ({
   type: DECREMENT_TOOL_DATA_QUEUE,
 })
 
-export const restoreToolData = () => ({
+export const restoreToolData = (payload: RestoreToolPayload) => ({
   type: RESTORE_TOOL_DATA,
+  payload,
 })
 
 export const executeToolSync = (payload: ExecuteToolSyncPayload) => ({
