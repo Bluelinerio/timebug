@@ -6,8 +6,9 @@ import {
   RESET_AWARD_VALUE,
   INCREMENT_TOOL_DATA_QUEUE,
   DECREMENT_TOOL_DATA_QUEUE,
+  RESTORE_TOOL_DATA,
 } from '../actionTypes'
-import type { SumbitAwardValueAction } from '../actions/award.actions'
+import type { SumbitAwardValueAction, RestoreFormDataPayload } from '../actions/award.actions'
 
 /**
  * Types
@@ -65,6 +66,34 @@ const populate = (
   }
 }
 
+const restore = (
+  { payload }: { payload: RestoreFormDataPayload },
+  state: AwardState
+) => {
+  const { tools } = payload
+  const { data } = state
+
+  const newData = Object.keys(tools).reduce((tmpState, key) => {
+    const toolData = tools[key]
+    const toolInState = data[key] || {}
+    return {
+      ...tmpState,
+      [key]: {
+        ...toolData,
+        ...toolInState,
+      },
+    }
+  }, {})
+
+  return {
+    ...state,
+    data: {
+      ...newData,
+      ...data,
+    },
+  }
+}
+
 function toolDataReducer(
   state: AwardState = initialState,
   action: SumbitAwardValueAction
@@ -74,6 +103,8 @@ function toolDataReducer(
     return populate(action, state)
   case RESET_AWARD_VALUE:
     return initialState
+  case RESTORE_TOOL_DATA:
+    return restore(action, state)
   case INCREMENT_TOOL_DATA_QUEUE:
     return {
       ...state,
