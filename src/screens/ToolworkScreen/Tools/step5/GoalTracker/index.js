@@ -1,3 +1,3 @@
-import GoalScreen from './containers/GoalScreenContainer'
+import ToolScreen from './components/GoalToolsParentComponent'
 
-export default GoalScreen
+export default ToolScreen

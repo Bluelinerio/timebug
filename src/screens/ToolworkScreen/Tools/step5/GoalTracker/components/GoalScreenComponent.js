@@ -3,6 +3,7 @@ import React                             from 'react'
 import { View, ScrollView, BackHandler } from 'react-native'
 import GoalScreenContent                 from './GoalScreenContent'
 import SubHeader                         from './SubHeader'
+import GoalArchiveLink                   from './GoalArchiveLink'
 import styles                            from '../../common/styles'
 
 type State = {
@@ -138,6 +139,10 @@ class GoalScreenComponent extends React.PureComponent<Props, State> {
             onBack={this._onSoftwareBackButtonPress}
           />
         </View>
+        <GoalArchiveLink
+          display={!selectedGoaltype && !selectedGoal}
+          openScreen={this.props.openArchiveScreen}
+        />
       </ScrollView>
     )
   }

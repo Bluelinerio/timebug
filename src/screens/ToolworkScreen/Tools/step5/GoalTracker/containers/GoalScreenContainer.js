@@ -9,6 +9,12 @@ import StepDataProvider         from '../../../../HOC/ToolStepDataProvider'
 import { getCurrentRouteState } from '2020_utils/currentRouteState'
 import GoalScreen               from '../components/GoalScreenComponent'
 
+type Props = {
+  navigationState: any,
+  stepData: any,
+  openArchiveScreen: () => any,
+}
+
 const mapStateToProps = (state: any) => {
   const navigationState = selectors.navigationState(state)
   return {
@@ -16,7 +22,7 @@ const mapStateToProps = (state: any) => {
   }
 }
 
-const merge = (props: any) => {
+const merge = (props: Props) => {
   const { navigationState, stepData, ...rest } = props
   const state = getCurrentRouteState(navigationState)
   const { params = {} } = state
