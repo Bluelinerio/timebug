@@ -1,0 +1,4 @@
+export const SECTIONS = {
+  COMPLETED: 'COMPLETED',
+  BACKLOG: 'BACKLOG',
+}

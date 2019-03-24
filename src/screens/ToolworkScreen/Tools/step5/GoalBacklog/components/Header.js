@@ -1,26 +1,61 @@
 // @flow
-import React from 'react'
-import { View, TouchableOpacity } from 'react-native'
-import Icon from 'react-native-vector-icons/Ionicons'
-import styles, { iconColor } from '../../common/styles'
+import React                            from 'react'
+import { View, TouchableOpacity, Text } from 'react-native'
+import Icon                             from 'react-native-vector-icons/Ionicons'
+import { SECTIONS }                     from '../constants'
+import commonStyles, { iconColor }      from '../../common/styles'
+import styles                           from '../styles'
 
 type Props = {
-  children: React.node<any>,
   onBack: () => any,
   display: boolean,
+  setCompletedSection: () => any,
+  setBacklogSection: () => any,
+  selectedSection: string,
 }
 
 class SubHeader extends React.PureComponent<Props> {
   render() {
-    const { onBack, display } = this.props
+    const {
+      onBack,
+      display,
+      selectedSection,
+      setCompletedSection,
+      setBacklogSection,
+    } = this.props
     return display ? (
-      <View style={[styles.container, styles.subHeader]}>
-        <View style={styles.buttonHeaderArea}>
-          <TouchableOpacity onPress={onBack}>
-            <Icon name={'ios-arrow-back'} size={24} color={iconColor} />
+      <View style={[commonStyles.container, styles.headerArea]}>
+        <View style={styles.tabBar}>
+          <TouchableOpacity style={styles.tab} onPress={setCompletedSection}>
+            <Text
+              style={
+                selectedSection === SECTIONS.COMPLETED
+                  ? styles.tabText
+                  : styles.tabTextUnselected
+              }
+            >
+              Completed
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.tab2} onPress={setBacklogSection}>
+            <Text
+              style={
+                selectedSection === SECTIONS.BACKLOG
+                  ? styles.tabText
+                  : styles.tabTextUnselected
+              }
+            >
+              Backlog
+            </Text>
           </TouchableOpacity>
         </View>
-        {this.props.children}
+        <View style={[commonStyles.container, styles.subHeader]}>
+          <View style={styles.buttonHeaderArea}>
+            <TouchableOpacity onPress={onBack}>
+              <Icon name={'ios-arrow-back'} size={24} color={iconColor} />
+            </TouchableOpacity>
+          </View>
+        </View>
       </View>
     ) : null
   }

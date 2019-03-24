@@ -1,9 +1,9 @@
 // @flow
-import { withNavigation } from 'react-navigation'
+import { withNavigation }    from 'react-navigation'
 import { compose, mapProps } from 'recompose'
-import { stepEnum } from '2020_services/cms'
-import StepDataProvider from '../../../../HOC/ToolStepDataProvider'
-import ArchiveScreen from '../components/ArchiveScreenComponent'
+import { stepEnum }          from '2020_services/cms'
+import StepDataProvider      from '../../../../HOC/ToolStepDataProvider'
+import ArchiveScreen         from '../components/ArchiveScreenComponent'
 
 type Props = {
   navigationState: any,
