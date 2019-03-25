@@ -1,9 +1,10 @@
 // @flow
-import React                      from 'react'
-import { View, ScrollView, Text } from 'react-native'
-import Header                     from './Header'
-import { SECTIONS }               from '../constants'
-import styles                     from '../../common/styles'
+import React                from 'react'
+import { View, ScrollView } from 'react-native'
+import Header               from './Header'
+import ArchiveContent       from './ArchiveContent'
+import { SECTIONS }         from '../constants'
+import styles               from '../../common/styles'
 
 type Props = {
   navigation: any,
@@ -54,6 +55,7 @@ class ArchiveScreenComponent extends React.PureComponent<Props> {
 
   render() {
     const { section } = this.state
+    const { goals } = this.props
     return (
       <ScrollView
         style={styles.scrollView}
@@ -74,7 +76,7 @@ class ArchiveScreenComponent extends React.PureComponent<Props> {
             styles.padded,
           ]}
         >
-          <Text>HIIIIIIIIIIIIIIIIIIIIIIII</Text>
+          <ArchiveContent selectedSection={section} goals={goals} />
         </View>
       </ScrollView>
     )

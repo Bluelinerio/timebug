@@ -13,12 +13,23 @@ type Props = {
 }
 
 const merge = (props: Props) => {
-  const { stepData, ...rest } = props
+  const { stepData, data, ...rest } = props
   const formDataStep5 = stepData[stepEnum.STEP_5] || { value: [] }
   const { value: goals } = formDataStep5
+  const mapGoalsWithToolData = goals.reduce((filteredGoals, goal) => {
+    const toolData =
+      data && data.value ? data.value.find(v => v.goalId === goal._id) : null
+    return [
+      ...filteredGoals,
+      {
+        ...goal,
+        toolData,
+      },
+    ]
+  }, [])
   return {
     ...rest,
-    goals,
+    goals: mapGoalsWithToolData,
   }
 }
 
