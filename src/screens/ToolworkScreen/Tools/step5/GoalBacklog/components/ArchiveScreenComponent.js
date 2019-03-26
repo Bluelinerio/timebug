@@ -1,10 +1,11 @@
 // @flow
-import React                from 'react'
-import { View, ScrollView } from 'react-native'
-import Header               from './Header'
-import ArchiveContent       from './ArchiveContent'
-import { SECTIONS }         from '../constants'
-import styles               from '../../common/styles'
+import React                     from 'react'
+import { View, ScrollView }      from 'react-native'
+import Header                    from './Header'
+import ArchiveContent            from './ArchiveContent'
+import { SECTIONS }              from '../constants'
+import type { GoalWithToolData } from '../../common/types'
+import styles                    from '../../common/styles'
 
 type Props = {
   navigation: any,
@@ -18,6 +19,7 @@ type Props = {
 class ArchiveScreenComponent extends React.PureComponent<Props> {
   state = {
     section: SECTIONS.COMPLETED,
+    goal: null,
   }
 
   // _backHandlerSubscription
@@ -53,8 +55,16 @@ class ArchiveScreenComponent extends React.PureComponent<Props> {
     this.setState(() => ({ section: SECTIONS.BACKLOG }))
   }
 
+  setGoal = (goal: GoalWithToolData) => {
+    this.setState(() => ({ goal }))
+  }
+
+  unsetGoal = () => {
+    this.setState(() => ({ goal: null }))
+  }
+
   render() {
-    const { section } = this.state
+    const { section, goal } = this.state
     const { goals } = this.props
     return (
       <ScrollView
@@ -76,7 +86,13 @@ class ArchiveScreenComponent extends React.PureComponent<Props> {
             styles.padded,
           ]}
         >
-          <ArchiveContent selectedSection={section} goals={goals} />
+          <ArchiveContent
+            selectedSection={section}
+            goals={goals}
+            setGoal={this.setGoal}
+            unsetGoal={this.unsetGoal}
+            selectedGoal={goal}
+          />
         </View>
       </ScrollView>
     )
