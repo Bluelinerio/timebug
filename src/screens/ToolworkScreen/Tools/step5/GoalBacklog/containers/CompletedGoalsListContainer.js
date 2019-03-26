@@ -1,12 +1,13 @@
 // @flow
 import { mapProps }       from 'recompose'
 import CompletedGoalsList from '../components/CompletedGoalsList'
+import type { GoalWithToolData } from '../../common/types'
 
 type Props = {
-  goals: any,
+  goals: Array<GoalWithToolData>,
 }
 
-const merge = (props: Props) => {
+const merge = (props: Props): Props => {
   const { goals } = props
 
   const filteredGoals =

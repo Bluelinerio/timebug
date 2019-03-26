@@ -1,12 +1,18 @@
-import React          from 'react'
-import { View, Text } from 'react-native'
+import React from 'react'
+import BackloggedGoalElement from '../containers/BackloggedGoalElementContainer'
+import type { GoalWithToolData } from '../../common/types'
 
-class BackloggedGoalsList extends React.PureComponent {
+type Props = {
+  goals: Array<GoalWithToolData>,
+}
+
+class BackloggedGoalsList extends React.PureComponent<Props> {
   render() {
+    const { goals } = this.props
     return (
-      <View>
-        <Text>Backlog</Text>
-      </View>
+      <React.Fragment>
+        {goals.map(goal => <BackloggedGoalElement key={goal.id} goal={goal} />)}
+      </React.Fragment>
     )
   }
 }

@@ -1,12 +1,18 @@
-import React          from 'react'
-import { View, Text } from 'react-native'
+import React from 'react'
+import CompletedGoalElement from '../containers/CompletedGoalElementContainer'
+import type { GoalWithToolData } from '../../common/types'
 
-class CompletedGoalsList extends React.PureComponent {
+type Props = {
+  goals: Array<GoalWithToolData>,
+}
+
+class CompletedGoalsList extends React.PureComponent<Props> {
   render() {
+    const { goals } = this.props
     return (
-      <View>
-        <Text>Completed</Text>
-      </View>
+      <React.Fragment>
+        {goals.map(goal => <CompletedGoalElement key={goal.id} goal={goal} />)}
+      </React.Fragment>
     )
   }
 }
