@@ -11,7 +11,8 @@ import {
   START_LOADING_FORMDATA,
   STOP_LOADING_FORMDATA,
   RESTORE_FORM_DATA,
-}                 from '../actionTypes'
+  DELETE_FORM_VALUE,
+} from '../actionTypes'
 
 export type SubmitActionPayload = {
   stepId: string,
@@ -22,6 +23,16 @@ export type RestoreFormDataPayload = {
   forms: {
     [x: string]: any,
   },
+}
+
+export type DeleteFormValuePayload = {
+  id: string,
+  stepId: string,
+}
+
+export type DeleteFormValueAction = {
+  type: DELETE_FORM_VALUE,
+  payload: DeleteFormValuePayload,
 }
 
 export const submitFormValue = (payload: SubmitActionPayload) => ({
@@ -45,5 +56,12 @@ export const setNotLoadingFormData = () => setLoadingFormData(false)
 
 export const restoreFormData = (payload: RestoreFormDataPayload) => ({
   type: RESTORE_FORM_DATA,
+  payload,
+})
+
+export const deleteSingleFormElement = (
+  payload: DeleteFormValuePayload
+): DeleteFormValueAction => ({
+  type: DELETE_FORM_VALUE.payload,
   payload,
 })

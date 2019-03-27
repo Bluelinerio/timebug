@@ -38,6 +38,7 @@ import {
   SYNC_FINISHED,
   UPDATE_AND_CREATE_FORMS,
   SYNC_SIDE_EFFECTS,
+  DELETE_FORM_VALUE,
 } from '../actionTypes'
 import {
   GET_USER,
@@ -52,8 +53,13 @@ import {
   stopLoadingFormData,
   startLoadingFormData,
   restoreFormData,
+  submitFormValue,
+  syncFormData,
 } from '../actions/formData.actions'
 import { initialNotifications } from '../actions/checkin.actions'
+import type {
+  DeleteFormValuePayload,
+} from '../actions/formData.actions'
 
 /**
  * Selectors and other utilities
@@ -193,6 +199,10 @@ function* watchForSynchronizationFinished() {
   yield takeLatest(SYNC_FINISHED, _handleSyncFinished)
 }
 
+function* watchForFormDataDeletion() {
+  yield takeLatest(DELETE_FORM_VALUE, _handleFormDataDeletion)
+}
+
 export function* watchSyncFormData() {
   // here the assumptions is that the formData reducer will always Hydrate before the GET_USER action return, becuase we never
   const requestChan = yield actionChannel([GET_USER.SUCCEEDED, SYNC_FORM_DATA])
@@ -200,6 +210,7 @@ export function* watchSyncFormData() {
   yield fork(watchForSynchronizationFinished) // Used to conciliate between GC forms and redux forms, could be removed if sync is refactored
   yield fork(watchForUpdateOrCreate) // Makes calls to GC to update each form, needs some hard refactoring
   yield fork(watchForLoadingForm) // Helper to know when the forms were updating to show UI changes
+  yield fork(watchForFormDataDeletion)
   while (true) {
     yield take(requestChan)
     yield fork(reviewCurrentUserFormsAndFormDataCompareAndUpdateToState) // Tries to determine if there are requests to be made to GC comparing data between user.steps and formData
@@ -464,6 +475,23 @@ function* syncRequests(payload) {
       info: 'Completed synching differences between form data and user forms.',
     })
   }
+}
+
+function* _handleFormDataDeletion({
+  payload,
+}: {
+  payload: DeleteFormValuePayload,
+}) {
+  const { id, stepId } = payload
+  const { completedForms } = yield call(mySelectors, {
+    completedForms: selectors.completedFormsData,
+  })
+  const currentFormData = completedForms[stepId] || {}
+  const { value } = currentFormData
+  const storableValue = value.filter(v => v._id === id)
+  yield put(submitFormValue({ value: storableValue, stepId }))
+  yield delay(5)
+  yield put(syncFormData())
 }
 
 // Restores formData with the state in graphcool, priorizing network state over local state
