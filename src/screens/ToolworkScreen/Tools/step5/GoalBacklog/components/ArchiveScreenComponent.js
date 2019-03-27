@@ -65,7 +65,7 @@ class ArchiveScreenComponent extends React.PureComponent<Props> {
 
   render() {
     const { section, goal } = this.state
-    const { goals } = this.props
+    const { goals, data, tool, storeAwardData } = this.props
     return (
       <ScrollView
         style={styles.scrollView}
@@ -92,6 +92,9 @@ class ArchiveScreenComponent extends React.PureComponent<Props> {
             setGoal={this.setGoal}
             unsetGoal={this.unsetGoal}
             selectedGoal={goal}
+            data={data}
+            tool={tool}
+            storeAwardData={storeAwardData}
           />
         </View>
       </ScrollView>
