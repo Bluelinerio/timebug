@@ -229,7 +229,7 @@ export const CommonGoalOutcomes = {
   LatencyEffect: {
     title: 'Latency Effect',
     key: 'LatencyEffect',
-  }
+  },
 }
 
 export const CommonGoalOutcomesArray = Object.keys(CommonGoalOutcomes).map(
@@ -283,8 +283,6 @@ export const MeditationTypes = [
   'Other',
 ]
 
-
-
 export const Frequency = [
   'Daily',
   '2-3 Times per week',
@@ -292,12 +290,7 @@ export const Frequency = [
   'Weekly',
   'Bi-weekly',
   'Rarely',
-  'Never'  
+  'Never',
 ]
 
-
-export const AloneOrOthers = [
- 'Alone',
- 'WithOthers',
-]
-
+export const AloneOrOthers = ['Alone', 'WithOthers']
