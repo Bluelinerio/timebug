@@ -1,14 +1,14 @@
 // @flow
-import moment                            from 'moment'
-import { connect }                       from 'react-redux'
-import { withNavigation }                from 'react-navigation'
-import { compose }                       from 'recompose'
-import selectors                         from '2020_redux/selectors'
-import { FORM_KEYS }                     from '2020_forms/forms/goals'
+import moment from 'moment'
+import { connect } from 'react-redux'
+import { withNavigation } from 'react-navigation'
+import { compose } from 'recompose'
+import selectors from '2020_redux/selectors'
+import { FORM_KEYS } from '2020_forms/forms/goals'
 import { DATE_FORMAT, TEXT_DATE_FORMAT } from '2020_constants/constants'
-import { timeToCompleteGoal }            from '2020_forms/forms/content'
-import GoalReview                        from '../components/GoalReview'
-import { getDueDate }                    from '../utils/getDueDateFromFrequency'
+import { timeToCompleteGoal } from '2020_forms/forms/content'
+import GoalReview from '../components/GoalReview'
+import { getDueDate } from '../utils/getDueDateFromFrequency'
 
 // TODO: Refactor methods that change goals award data to a single one
 
@@ -123,8 +123,9 @@ const textEvent = (goal, currentAwardData, tool, storeAwardData) => {
     const { _id } = goal
     const value = currentAwardData ? currentAwardData.value || [] : []
 
-    const oldData =
-      value.find(goalAwardData => goalAwardData.goalId === _id) || {
+    const oldData = value.find(
+      goalAwardData => goalAwardData.goalId === _id
+    ) || {
         createdAt: moment().format(DATE_FORMAT),
         goalId: _id,
       }
@@ -148,8 +149,9 @@ const switchGoal = (goal, currentAwardData, tool, storeAwardData) => {
     const { _id } = goal
     const value = currentAwardData ? currentAwardData.value || [] : []
 
-    const oldData =
-      value.find(goalAwardData => goalAwardData.goalId === _id) || {
+    const oldData = value.find(
+      goalAwardData => goalAwardData.goalId === _id
+    ) || {
         createdAt: moment().format(DATE_FORMAT),
         goalId: _id,
       }
@@ -182,8 +184,9 @@ const softDelete = (
     const { _id } = goal
     const value = currentAwardData ? currentAwardData.value || [] : []
 
-    const oldData =
-      value.find(goalAwardData => goalAwardData.goalId === _id) || {
+    const oldData = value.find(
+      goalAwardData => goalAwardData.goalId === _id
+    ) || {
         createdAt: moment().format(DATE_FORMAT),
         goalId: _id,
       }
@@ -192,6 +195,8 @@ const softDelete = (
       ...oldData,
       updatedAt: moment().format(DATE_FORMAT),
       deleted: !oldData.deleted,
+      deletionDate:
+        !oldData.deleted === true ? moment().format(TEXT_DATE_FORMAT) : null,
     }
 
     const newData = [
