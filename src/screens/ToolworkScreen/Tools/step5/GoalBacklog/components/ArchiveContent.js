@@ -3,7 +3,7 @@ import React                     from 'react'
 import CompletedGoalsList        from '../containers/CompletedGoalsListContainer'
 import BackloggedGoalsList       from '../containers/BackloggedGoalsListContainer'
 import CompletedGoalDetails      from '../containers/CompletedGoalDetailsContainer'
-import BackloggedGoalDetails     from '../container/BackloggedGoalDetailsContainer'
+import BackloggedGoalDetails     from '../containers/BackloggedGoalDetailsContainer'
 import type { GoalWithToolData } from '../../common/types'
 import { SECTIONS }              from '../constants'
 
