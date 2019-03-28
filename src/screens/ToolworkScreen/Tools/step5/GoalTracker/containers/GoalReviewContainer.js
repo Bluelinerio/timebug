@@ -144,7 +144,13 @@ const textEvent = (goal, currentAwardData, tool, storeAwardData) => {
   }
 }
 
-const switchGoal = (goal, currentAwardData, tool, storeAwardData) => {
+const switchGoal = (
+  goal,
+  currentAwardData,
+  tool,
+  storeAwardData,
+  unsetGoal
+) => {
   return () => {
     const { _id } = goal
     const value = currentAwardData ? currentAwardData.value || [] : []
@@ -170,6 +176,7 @@ const switchGoal = (goal, currentAwardData, tool, storeAwardData) => {
     ]
 
     storeAwardData(newData, tool)
+    unsetGoal()
   }
 }
 
@@ -241,7 +248,7 @@ const merge = (
   const onTextChange = textEvent(goal, data, tool, storeAwardData)
   const goalAwardData =
     data && data.value ? data.value.find(v => v.goalId === goal._id) : {}
-  const toggleGoal = switchGoal(goal, data, tool, storeAwardData)
+  const toggleGoal = switchGoal(goal, data, tool, storeAwardData, unsetGoal)
   const deleteGoal = softDelete(goal, data, tool, storeAwardData, unsetGoal)
   const dialogElements = timeToCompleteGoal[time].estimate
   const frequency = timeToCompleteGoal[time].frequency

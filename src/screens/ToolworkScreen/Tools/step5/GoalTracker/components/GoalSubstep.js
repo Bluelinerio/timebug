@@ -1,8 +1,8 @@
 //@flow
-import React                                       from 'react'
-import { View, TouchableOpacity, Text }            from 'react-native'
-import Icon                                        from 'react-native-vector-icons/Ionicons'
-import { CHILDREN_KEYS }                           from '2020_forms/forms/goals'
+import React from 'react'
+import { View, TouchableOpacity, Text } from 'react-native'
+import Icon from 'react-native-vector-icons/Ionicons'
+import { CHILDREN_KEYS } from '2020_forms/forms/goals'
 import styles, { completedColor, incompleteColor } from '../../common/styles'
 
 type Step = {
@@ -24,6 +24,7 @@ type Props = {
   disableETC: boolean,
 }
 
+// TODO: Fix Text displaying that substep is due today even though the goal already expired
 class GoalSubstep extends React.PureComponent<Props> {
   _onPress = () => {
     const { step, onPress } = this.props
