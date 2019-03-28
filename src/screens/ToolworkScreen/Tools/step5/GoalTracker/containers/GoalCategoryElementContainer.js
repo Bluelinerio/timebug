@@ -5,17 +5,7 @@ import selectors             from '2020_redux/selectors'
 import { stepEnum }          from '2020_services/cms'
 import { FORM_KEYS }         from '2020_forms/forms/goals'
 import GoalListElement       from '../components/GoalListElement'
-import { GoalTypesEnum }     from '2020_forms/forms/content'
-
-const GOAL_ICONS = {
-  [GoalTypesEnum.ENERGY_AND_TIME]: 'GoalTypesET',
-  [GoalTypesEnum.ACHIEVEMENTS_AND_SKILLS]: 'GoalTypesAS',
-  [GoalTypesEnum.HEALTH_INDICATORS]: 'GoalTypesHI',
-  [GoalTypesEnum.INTERNAL_QUALITIES]: 'GoalTypesIQ',
-  [GoalTypesEnum.ENVIRONMENT]: 'GoalTypesPE',
-  [GoalTypesEnum.MATERIAL_OUTCOMES]: 'GoalTypesMO',
-  [GoalTypesEnum.RELATIONSHIP_QUALITY]: 'GoalTypesRQ',
-}
+import { getIcon }           from '../utils/getIconFromArea'
 
 type StateProps = {
   formData: {
@@ -44,7 +34,7 @@ const mergeProps = (props): MergeProps => {
   const step5Data = formData[`${stepEnum.STEP_5}`] || { value: [] }
   const { value } = step5Data
 
-  const iconName = GOAL_ICONS[type] || ''
+  const iconName = getIcon(type)
 
   const goals = value
     .filter(goalData => {
