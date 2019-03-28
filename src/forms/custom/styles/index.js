@@ -155,6 +155,9 @@ const formStyles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
   },
+  progressBar: {
+    marginBottom: 10,
+  },
   formButtonContainer: {
     backgroundColor: 'transparent',
     flexDirection: 'row',

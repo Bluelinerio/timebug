@@ -15,7 +15,7 @@ import {
   getValueFromAnswerType,
 }                                                 from '../utils/formHelpers'
 import { isFormValueInvalid }                     from '../validation/Form'
-import * as Progress from 'react-native-progress';
+import ProgressBar                                from 'react-native-progress/Bar';
 
 
 
@@ -305,7 +305,10 @@ class Form extends React.PureComponent<Props, any> {
       <View style={styles.container}>
         {CloseButton ? <CloseButton /> : null}
         <View style={styles.formContainer}>
-        <Progress.Circle progress={this.state.formProgress} />
+        <ProgressBar progress={this.state.formProgress} 
+                     color={this.props.textAndButtonColor} 
+                     style={styles.progressBar}
+                      />
 
           <FormPicker
             key={currentField.key}
