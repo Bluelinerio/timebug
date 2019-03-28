@@ -15,6 +15,9 @@ import {
   getValueFromAnswerType,
 }                                                 from '../utils/formHelpers'
 import { isFormValueInvalid }                     from '../validation/Form'
+import * as Progress from 'react-native-progress';
+
+
 
 const DEBUG_DISPLAY = false
 
@@ -107,6 +110,7 @@ class Form extends React.PureComponent<Props, any> {
       disableAnswers: props.disableAnswers || false,
       numberOfFields: Object.keys(this.model.fields).length,
       indexesMap,
+      formProgress: 0
     }
   }
   _getNewValue = () => {
@@ -203,13 +207,14 @@ class Form extends React.PureComponent<Props, any> {
   }
 
   _onPress = () => {
-    const { fieldIndex, indexesMap, value } = this.state
+    const { fieldIndex, indexesMap, value, formProgress, numberOfFields } = this.state
     const currentField = this.model.fields[fieldIndex]
     let newState = {
       fieldIndex: fieldIndex + 1,
       currentElementValue: value[indexesMap[fieldIndex + 1]]
         ? value[indexesMap[fieldIndex + 1]].value
         : null,
+      formProgress:  (fieldIndex + 1) / numberOfFields,
     }
     if (!passiveTypes.find(el => el === currentField.type)) {
       const newValue = this._getNewValue()
@@ -290,6 +295,7 @@ class Form extends React.PureComponent<Props, any> {
       numberOfFields,
       value,
       disableAnswers,
+      formProgress
     } = this.state
     const { CloseButton = null, formStyles = {} } = this.props
     const currentField = this.model.fields[fieldIndex] || []
@@ -299,6 +305,8 @@ class Form extends React.PureComponent<Props, any> {
       <View style={styles.container}>
         {CloseButton ? <CloseButton /> : null}
         <View style={styles.formContainer}>
+        <Progress.Circle progress={this.state.formProgress} />
+
           <FormPicker
             key={currentField.key}
             field={currentField}
