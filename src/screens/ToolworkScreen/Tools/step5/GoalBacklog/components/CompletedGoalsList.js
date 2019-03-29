@@ -4,14 +4,17 @@ import type { GoalWithToolData } from '../../common/types'
 
 type Props = {
   goals: Array<GoalWithToolData>,
+  setGoal: (goal: GoalWithToolData) => any,
 }
 
 class CompletedGoalsList extends React.PureComponent<Props> {
   render() {
-    const { goals } = this.props
+    const { goals, setGoal } = this.props
     return (
       <React.Fragment>
-        {goals.map(goal => <CompletedGoalElement key={goal.id} goal={goal} />)}
+        {goals.map(goal => (
+          <CompletedGoalElement key={goal.id} goal={goal} onPress={setGoal} />
+        ))}
       </React.Fragment>
     )
   }
