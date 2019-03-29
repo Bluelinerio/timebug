@@ -5,7 +5,7 @@ import selectors             from '2020_redux/selectors'
 import { stepEnum }          from '2020_services/cms'
 import { FORM_KEYS }         from '2020_forms/forms/goals'
 import GoalListElement       from '../components/GoalListElement'
-import { getIcon }           from '../utils/getIconFromArea'
+import { getIcon }           from '../../common/utils'
 
 type StateProps = {
   formData: {

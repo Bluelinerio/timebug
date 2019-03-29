@@ -1,6 +1,6 @@
 import { mapProps, compose } from 'recompose'
 import GoalElement           from '../components/GoalElement'
-import { getIcon }           from '../utils/getIconFromArea'
+import { getIcon }           from '../../common/utils'
 
 type Props = {
   goal: any,
