@@ -13,7 +13,7 @@ class CompletedGoalsList extends React.PureComponent<Props> {
     return (
       <React.Fragment>
         {goals.map(goal => (
-          <CompletedGoalElement key={goal.id} goal={goal} onPress={setGoal} />
+          <CompletedGoalElement key={goal._id} goal={goal} onPress={setGoal} />
         ))}
       </React.Fragment>
     )

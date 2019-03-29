@@ -13,7 +13,7 @@ class BackloggedGoalsList extends React.PureComponent<Props> {
     return (
       <React.Fragment>
         {goals.map(goal => (
-          <BackloggedGoalElement key={goal.id} goal={goal} onPress={setGoal} />
+          <BackloggedGoalElement key={goal._id} goal={goal} onPress={setGoal} />
         ))}
       </React.Fragment>
     )
