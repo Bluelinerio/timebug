@@ -22,6 +22,16 @@ class ArchiveScreenComponent extends React.PureComponent<Props> {
     goal: null,
   }
 
+  componentDidMount() {
+    const { navigation } = this.props
+    navigation.setParams({ title: `Goal's Archive` })
+  }
+
+  componentWillUnmount() {
+    const { navigation } = this.props
+    navigation.setParams({ title: null })
+  }
+
   // _backHandlerSubscription
 
   // constructor(props) {
