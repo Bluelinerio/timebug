@@ -16,7 +16,7 @@ const merge = (props: Props): Props => {
   const types = goal ? goal[FORM_KEYS.form_5_areas_of_life].value || null : null
   const type = types ? types[0] : null
 
-  const icon = getIcon[type]
+  const icon = getIcon(type)
 
   return {
     goal,
