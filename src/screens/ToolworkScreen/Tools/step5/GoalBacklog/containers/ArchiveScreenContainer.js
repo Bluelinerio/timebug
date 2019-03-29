@@ -29,6 +29,7 @@ const merge = (props: Props) => {
   }, [])
   return {
     ...rest,
+    data,
     goals: mapGoalsWithToolData,
   }
 }
