@@ -22,6 +22,7 @@ type Props = {
   onPress: Step => {},
   onSubstepPress: Step => any,
   disableETC: boolean,
+  daysLeft: number,
 }
 
 // TODO: Fix Text displaying that substep is due today even though the goal already expired
@@ -37,7 +38,7 @@ class GoalSubstep extends React.PureComponent<Props> {
   }
 
   render() {
-    const { step, disableETC } = this.props
+    const { step, disableETC, daysLeft } = this.props
     return (
       <TouchableOpacity
         style={styles.elementContainer}
@@ -70,7 +71,8 @@ class GoalSubstep extends React.PureComponent<Props> {
                 step.award && step.award.estimate
                   ? step.award.estimate
                   : 'Not set'
-              }`}
+              }`}{' '}
+            {daysLeft < 0 ? `(Time exceeded)` : ''}
           </Text>
         </View>
       </TouchableOpacity>

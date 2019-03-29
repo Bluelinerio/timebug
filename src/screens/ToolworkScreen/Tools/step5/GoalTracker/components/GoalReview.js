@@ -202,6 +202,7 @@ class GoalReview extends React.PureComponent<Props> {
                   onPress={this._onSubstepCompletionPress}
                   onSubstepPress={this._onSubstepPress}
                   disableETC={this.props.disableETC}
+                  daysLeft={daysLeft}
                 />
               ))}
           </View>
