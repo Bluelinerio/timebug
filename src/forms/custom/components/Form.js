@@ -238,6 +238,7 @@ class Form extends React.PureComponent<Props, any> {
     const { value, storableValue, formIteration } = this.state
     this.setState({
       fieldIndex: payload,
+      formProgress: 0,
       storableValue: [
         ...storableValue,
         {
