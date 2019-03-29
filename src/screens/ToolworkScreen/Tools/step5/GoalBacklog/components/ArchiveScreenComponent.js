@@ -54,15 +54,21 @@ class ArchiveScreenComponent extends React.PureComponent<Props> {
 
   _onBackPress = () => {
     const { openGoalsScreen } = this.props
-    openGoalsScreen()
+    const { goal } = this.state
+    if (!goal) openGoalsScreen()
+    else this.unsetGoal()
   }
 
   setCompletedSection = () => {
-    this.setState(() => ({ section: SECTIONS.COMPLETED }))
+    const { section } = this.state
+    if (section === SECTIONS.COMPLETED) return
+    this.setState(() => ({ section: SECTIONS.COMPLETED, goal: null }))
   }
 
   setBacklogSection = () => {
-    this.setState(() => ({ section: SECTIONS.BACKLOG }))
+    const { section } = this.state
+    if (section === SECTIONS.BACKLOG) return
+    this.setState(() => ({ section: SECTIONS.BACKLOG, goal: null }))
   }
 
   setGoal = (goal: GoalWithToolData) => {
@@ -83,10 +89,10 @@ class ArchiveScreenComponent extends React.PureComponent<Props> {
       >
         <Header
           onBack={this._onBackPress}
-          display={true}
           setCompletedSection={this.setCompletedSection}
           setBacklogSection={this.setBacklogSection}
           selectedSection={section}
+          hideBar={!!goal}
         />
         <View
           style={[

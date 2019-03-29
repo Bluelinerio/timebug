@@ -8,6 +8,12 @@ export default StyleSheet.create({
     flexDirection: 'column',
     maxHeight: '20%',
   },
+  smallHeader: {
+    paddingTop: 4,
+    flex: 1,
+    flexDirection: 'column',
+    maxHeight: '10%',
+  },
   subHeader: {
     flex: 1,
     flexDirection: 'row',
