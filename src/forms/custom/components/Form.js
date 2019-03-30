@@ -24,6 +24,7 @@ type Props = {
   onFinish: any => any,
   disableAnswers?: boolean,
   CloseButton: () => React.node,
+  editIndex: boolean,
   formStyles: {
     headerTextStyle: any,
     textStyle: any,
@@ -89,10 +90,11 @@ class Form extends React.PureComponent<Props, any> {
   constructor(props) {
     super(props)
     this.model = props.model
+    const editionIndex = props.editIndex
     const indexesMap = mapIndexesToKeys(this.model)
     const storableValue = props.value || []
-    const formIteration = storableValue.length
-    const fieldIndex = 0 //start from the beginning of the model
+    const formIteration = editionIndex ? editionIndex : storableValue.length
+    const fieldIndex = 0
     const value = getValueFromAnswerType(props, props.model, formIteration)
     const currentElementValue = value[indexesMap[fieldIndex]]
       ? value[indexesMap[fieldIndex]].value
@@ -231,23 +233,41 @@ class Form extends React.PureComponent<Props, any> {
   }
 
   _handleGoTo = payload => {
-    const { value, storableValue, formIteration } = this.state
-    this.setState({
-      fieldIndex: payload,
-      storableValue: [
-        ...storableValue,
-        {
-          ...value,
-          _id: uuid(),
-          created_at: moment().format(),
-        },
-      ],
-      value:
-        this.props.value && this.props.value[formIteration + 1]
-          ? this.props.value[formIteration + 1]
-          : {},
-      formIteration: formIteration + 1,
-    })
+    const { value, storableValue, formIteration, editionIndex } = this.state
+    const newState = editionIndex
+      ? {
+        fieldIndex: payload,
+        storableValue: [
+          ...storableValue,
+          {
+            ...value,
+            _id: uuid(),
+            created_at: moment().format(),
+          },
+        ],
+        value:
+            this.props.value && this.props.value[storableValue.length + 1]
+              ? this.props.value[storableValue.length + 1]
+              : {},
+        formIteration: storableValue.length + 1,
+      }
+      : {
+        fieldIndex: payload,
+        storableValue: [
+          ...storableValue,
+          {
+            ...value,
+            _id: uuid(),
+            created_at: moment().format(),
+          },
+        ],
+        value:
+            this.props.value && this.props.value[formIteration + 1]
+              ? this.props.value[formIteration + 1]
+              : {},
+        formIteration: formIteration + 1,
+      }
+    this.setState(newState)
   }
 
   _buttonHandler = ({ action }: { action: { type: string, payload: any } }) => {
