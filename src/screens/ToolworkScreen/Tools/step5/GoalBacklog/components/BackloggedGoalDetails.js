@@ -1,10 +1,10 @@
 // @flow
-import React                            from 'react'
-import moment                           from 'moment'
-import { View, Text, TouchableOpacity } from 'react-native'
-import styles                           from '../../common/styles'
-import { DATE_FORMAT }                  from '2020_constants/constants'
-import type { GoalWithToolData }        from '../../common/types'
+import React                                   from 'react'
+import moment                                  from 'moment'
+import { View, Text, TouchableOpacity, Alert } from 'react-native'
+import styles                                  from '../../common/styles'
+import { DATE_FORMAT }                         from '2020_constants/constants'
+import type { GoalWithToolData }               from '../../common/types'
 
 type Props = {
   goal: GoalWithToolData,
@@ -24,15 +24,40 @@ class GoalReview extends React.PureComponent<Props> {
 
   _deleteGoal = () => {
     const { deleteGoal } = this.props
-    deleteGoal()
+    Alert.alert(
+      'Are you sure you want to delete this goal?',
+      '',
+      [
+        {
+          text: 'Ok',
+          onPress: () => deleteGoal(),
+        },
+        {
+          text: 'Cancel',
+          onPress: () => null,
+        },
+      ],
+      { cancelable: false }
+    )
   }
 
-  _onClose = () => {
-    this.setState({ openDialog: false })
-  }
-
-  _openDialog = () => {
-    this.setState({ openDialog: true })
+  _onReopen = () => {
+    const { deleteGoal } = this.props
+    Alert.alert(
+      'Do you want to edit this goal before reopening?',
+      '',
+      [
+        {
+          text: 'Ok',
+          onPress: () => deleteGoal(),
+        },
+        {
+          text: 'Cancel',
+          onPress: () => null,
+        },
+      ],
+      { cancelable: false }
+    )
   }
 
   render() {

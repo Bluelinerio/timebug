@@ -109,6 +109,7 @@ class Form extends React.PureComponent<Props, any> {
       indexesMap,
     }
   }
+
   _getNewValue = () => {
     const { value, indexesMap, currentElementValue, fieldIndex } = this.state
     const currentField = this.model.fields[fieldIndex]

@@ -42,7 +42,8 @@ const mapDispatchToProps = (dispatch: any) => ({
     dispatch(deleteSingleFormElement(payload)),
 })
 
-const toggleSoftDelete = (
+// Handle goal reopening
+const reopenGoal = (
   goal,
   currentAwardData,
   tool,
@@ -112,13 +113,7 @@ const merge = (
   const { deleteGoal: callDeleteGoal } = dispatchProps
   const completionDate = goal.toolData.completionDate
   const title = goal[FORM_KEYS.form_5_recent_life_goals].value || ''
-  const toggleGoal = toggleSoftDelete(
-    goal,
-    data,
-    tool,
-    storeAwardData,
-    unsetGoal
-  )
+  const toggleGoal = reopenGoal(goal, data, tool, storeAwardData, unsetGoal)
   const deleteGoal = fullyDeleteGoal(
     goal,
     data,

@@ -1,6 +1,6 @@
 // @flow
-import { mapProps }       from 'recompose'
-import CompletedGoalsList from '../components/CompletedGoalsList'
+import { mapProps }              from 'recompose'
+import CompletedGoalsList        from '../components/CompletedGoalsList'
 import type { GoalWithToolData } from '../../common/types'
 
 type Props = {
