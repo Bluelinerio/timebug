@@ -7,8 +7,13 @@ type Result = {
   label: string,
 }
 
+type Content = {
+  key: string,
+  text: string,
+}
+
 type Props = {
-  elements: Array<string>,
+  elements: Array<Content>,
   dialogVisible: boolean,
   onClose: () => any,
   onSelect: Result => any,
@@ -18,7 +23,7 @@ class OptionsDialog extends React.PureComponent<Props> {
   render() {
     const { elements, dialogVisible, onClose, onSelect } = this.props
     if (!elements || elements.length === 0 || elements.length === 1) return null
-    const items = elements.map(row => ({ value: row, label: row }))
+    const items = elements.map(row => ({ value: row.key, label: row.text }))
     return (
       items && (
         <SinglePickerMaterialDialog

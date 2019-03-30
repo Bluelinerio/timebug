@@ -1,14 +1,15 @@
 // @flow
-import moment from 'moment'
-import { connect } from 'react-redux'
-import { withNavigation } from 'react-navigation'
-import { compose } from 'recompose'
-import selectors from '2020_redux/selectors'
-import { FORM_KEYS } from '2020_forms/forms/goals'
+import moment                            from 'moment'
+import { connect }                       from 'react-redux'
+import { withNavigation }                from 'react-navigation'
+import { compose }                       from 'recompose'
+import selectors                         from '2020_redux/selectors'
+import { FORM_KEYS }                     from '2020_forms/forms/goals'
 import { DATE_FORMAT, TEXT_DATE_FORMAT } from '2020_constants/constants'
-import { timeToCompleteGoal } from '2020_forms/forms/content'
-import GoalReview from '../components/GoalReview'
-import { getDueDate } from '../utils/getDueDateFromFrequency'
+import { timeToCompleteGoal }            from '2020_forms/forms/content'
+import GoalReview                        from '../components/GoalReview'
+import { getDueDate }                    from '../utils/getDueDateFromFrequency'
+import { CommonGoalOutcomesArray }       from '2020_forms/forms/content'
 
 // TODO: Refactor methods that change goals award data to a single one
 
@@ -144,14 +145,14 @@ const textEvent = (goal, currentAwardData, tool, storeAwardData) => {
   }
 }
 
-const switchGoal = (
+const addGoalCGOAndCompleteGoal = (
   goal,
   currentAwardData,
   tool,
   storeAwardData,
   unsetGoal
 ) => {
-  return () => {
+  return (goalOutcome: string) => {
     const { _id } = goal
     const value = currentAwardData ? currentAwardData.value || [] : []
 
@@ -165,6 +166,7 @@ const switchGoal = (
     const newGoalAwardValue = {
       ...oldData,
       updatedAt: moment().format(DATE_FORMAT),
+      goalOutcome,
       completed: !oldData.completed,
       completionDate:
         !oldData.completed === true ? moment().format(TEXT_DATE_FORMAT) : null,
@@ -248,9 +250,20 @@ const merge = (
   const onTextChange = textEvent(goal, data, tool, storeAwardData)
   const goalAwardData =
     data && data.value ? data.value.find(v => v.goalId === goal._id) : {}
-  const toggleGoal = switchGoal(goal, data, tool, storeAwardData, unsetGoal)
+  const toggleGoal = addGoalCGOAndCompleteGoal(
+    goal,
+    data,
+    tool,
+    storeAwardData,
+    unsetGoal
+  )
   const deleteGoal = softDelete(goal, data, tool, storeAwardData, unsetGoal)
   const dialogElements = timeToCompleteGoal[time].estimate
+    ? timeToCompleteGoal[time].estimate.map(e => ({
+      key: e,
+      text: e,
+    }))
+    : null
   const frequency = timeToCompleteGoal[time].frequency
   const disableETC = time === timeToCompleteGoal.DAY.key
   const [daysLeft, completionDate] = getDueDate(
@@ -274,6 +287,7 @@ const merge = (
     disableETC,
     daysLeft,
     completionDate,
+    cgoElements: CommonGoalOutcomesArray,
   }
 }
 
