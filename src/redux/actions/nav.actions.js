@@ -1,8 +1,8 @@
 // @flow
-import { NavigationActions }   from 'react-navigation'
-import type { Step }           from '../../services/cms'
+import { NavigationActions } from 'react-navigation'
+import type { Step } from '../../services/cms'
 import routes, { protoRoutes } from '../../navigation/routes'
-import { LINK_NAVIGATION }     from '../actionTypes'
+import { LINK_NAVIGATION } from '../actionTypes'
 
 if (!routes || !routes.root || !routes.root.initialRouteName || !routes.step) {
   throw 'missing routes or nested fields ' + JSON.stringify(routes)
@@ -33,6 +33,12 @@ export type HelpParams = {
 export type GoToToolParams = {
   tool: any,
   params?: any,
+}
+
+export type GoToWorkbookParams = {
+  step: any,
+  phase: string,
+  editionIndex?: number,
 }
 
 export const linkNavigation = (payload: LinkedNavigationPayload) => ({
@@ -83,7 +89,7 @@ export const goToPrototypeWorkbookScreen = (params: any) =>
     params,
   })
 
-export const goToV2WorkbookScreen = (params: any) =>
+export const goToV2WorkbookScreen = (params: GoToWorkbookParams) =>
   NavigationActions.navigate({
     routeName: routes.root.V2Navigator_root,
     params,
