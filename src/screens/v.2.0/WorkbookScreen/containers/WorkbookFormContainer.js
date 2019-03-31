@@ -1,5 +1,6 @@
 import { connect }           from 'react-redux'
 import { compose, mapProps } from 'recompose'
+import { withNavigation }    from 'react-navigation'
 import WorkbookForm          from '../components/WorkbookForm'
 import selectors             from '../../../../redux/selectors'
 import models                from '../../../../forms/custom/forms'
@@ -26,8 +27,10 @@ const mapDispatchToProps = (dispatch: any) => {
   }
 }
 
-const merge = ({ submitForm, data, stepNumber, ...props }) => {
+const merge = ({ submitForm, data, stepNumber, navigation, ...props }) => {
   const model = models[stepNumber]
+  const { navigation: { state: { params } } } = navigation
+  const formIndexToEdit = params.editionIndex || null
   const formData = (data[stepNumber] && data[stepNumber].value) || null
   return {
     ...props,
@@ -35,10 +38,13 @@ const merge = ({ submitForm, data, stepNumber, ...props }) => {
     model,
     stepNumber,
     submitForm,
+    formIndexToEdit,
+    navigation,
   }
 }
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
+  withNavigation,
   mapProps(merge)
 )(WorkbookForm)

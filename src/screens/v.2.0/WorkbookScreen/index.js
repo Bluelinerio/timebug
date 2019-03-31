@@ -1,7 +1,7 @@
 // @flow
-import React from 'react';
-import WorkbookScreen from './containers/WorkbookScreenContainer';
+import React from 'react'
+import WorkbookScreen from './containers/WorkbookScreenContainer'
 
-const WorkbookScreenContainer = () => <WorkbookScreen />;
+const WorkbookScreenContainer = () => <WorkbookScreen />
 
-export default WorkbookScreenContainer;
+export default WorkbookScreenContainer

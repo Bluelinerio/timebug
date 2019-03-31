@@ -1,18 +1,12 @@
 // @flow
-import React                               from 'react'
-import {
-  View,
-  Text,
-  ScrollView,
-  Linking,
-  Image,
-}                                          from 'react-native'
-import Form                                from '../containers/FormWrapperContainer'
-import styles                              from '../styles'
-import type { Step }                       from '../../../../services/cms'
-import FormFinishedComponent               from '../containers/FormFinishedContainer'
-import type { SubmitAction }               from '../../../../redux/actions/formData.actions.js'
-import { headerBackgrounds }               from '../../../../resources/images'
+import React                                      from 'react'
+import { View, Text, ScrollView, Linking, Image } from 'react-native'
+import Form                                       from '../containers/FormWrapperContainer'
+import styles                                     from '../styles'
+import type { Step }                              from '../../../../services/cms'
+import FormFinishedComponent                      from '../containers/FormFinishedContainer'
+import type { SubmitAction }                      from '../../../../redux/actions/formData.actions.js'
+import { headerBackgrounds }                      from '../../../../resources/images'
 
 type Props = {
   stepNumber: string,
@@ -24,6 +18,8 @@ type Props = {
   step: Step,
   onSelectStep: Step => any,
   backgroundColor: any,
+  formIndexToEdit: number,
+  navigation: any,
 }
 
 type State = {
@@ -33,6 +29,12 @@ type State = {
 class WorkbookForm extends React.PureComponent<Props, State> {
   state = {
     formFinished: false,
+    formIndexToEdit: null,
+  }
+
+  componentDidMount() {
+    const { formIndexToEdit } = this.props
+    this.setState({ editionIndex: formIndexToEdit })
   }
 
   componentDidUpdate(prevProps) {
@@ -40,6 +42,13 @@ class WorkbookForm extends React.PureComponent<Props, State> {
       this.setState({
         formFinished: false,
       })
+  }
+
+  componentWillUnmount() {
+    const { formIndexToEdit, navigation } = this.props
+    // TODO: Check if this is valid
+    if (formIndexToEdit) navigation.setNavigationState({ editionIndex: null })
+    this.setState({ editionIndex: null })
   }
 
   _onFinish = (data: any) => {
@@ -54,8 +63,16 @@ class WorkbookForm extends React.PureComponent<Props, State> {
   }
 
   render() {
-    const { model, step, stepNumber, data, phase, onSelectStep, backgroundColor } = this.props
-    const { formFinished } = this.state
+    const {
+      model,
+      step,
+      stepNumber,
+      data,
+      phase,
+      onSelectStep,
+      backgroundColor,
+    } = this.props
+    const { formFinished, formIndexToEdit } = this.state
     return model ? (
       <ScrollView
         style={[styles.scrollView, styles.fullWidth, styles.fullHeight]}
@@ -71,6 +88,7 @@ class WorkbookForm extends React.PureComponent<Props, State> {
             key={stepNumber}
             phase={phase}
             disableAnswers
+            formIndexToEdit={formIndexToEdit}
             extra={{
               step,
             }}
@@ -84,7 +102,10 @@ class WorkbookForm extends React.PureComponent<Props, State> {
           />
         )}
         <View style={[styles.backgroundImageContainer]}>
-          <Image source={headerBackgrounds[step.number]} style={[styles.backgroundImage, { tintColor: backgroundColor }]}/>
+          <Image
+            source={headerBackgrounds[step.number]}
+            style={[styles.backgroundImage, { tintColor: backgroundColor }]}
+          />
         </View>
       </ScrollView>
     ) : (
