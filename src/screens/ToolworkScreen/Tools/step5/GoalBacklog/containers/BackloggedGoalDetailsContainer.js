@@ -4,15 +4,15 @@ import { connect }                       from 'react-redux'
 import { withNavigation }                from 'react-navigation'
 import { compose }                       from 'recompose'
 import selectors                         from '2020_redux/selectors'
-import { FORM_KEYS }                     from '2020_forms/forms/goals'
-import { DATE_FORMAT, TEXT_DATE_FORMAT } from '2020_constants/constants'
-import { CommonGoalOutcomesArray }       from '2020_forms/forms/content'
 import { deleteSingleFormElement }       from '2020_redux/actions/formData.actions'
 import type { DeleteFormValuePayload }   from '2020_redux/actions/formData.actions'
-import { stepEnum }                      from '2020_services/cms'
-import { translateCMSPhaseToStandard }   from '2020_services/cms'
 import { goToV2WorkbookScreen }          from '2020_redux/actions/nav.actions'
 import type { GoToWorkbookParams }       from '2020_redux/actions/nav.actions'
+import { CommonGoalOutcomesArray }       from '2020_forms/forms/content'
+import { FORM_KEYS }                     from '2020_forms/forms/goals'
+import { DATE_FORMAT, TEXT_DATE_FORMAT } from '2020_constants/constants'
+import { stepEnum }                      from '2020_services/cms'
+import { translateCMSPhaseToStandard }   from '2020_services/cms'
 import BackloggedGoalDetails             from '../components/BackloggedGoalDetails'
 
 type StateProps = {
@@ -25,7 +25,7 @@ type StateProps = {
 }
 
 type OwnProps = {
-  tool: { subtitle: string },
+  tool: any,
   storeAwardData: (any, any) => any,
   data: { value: Array<any>, _id?: string, date?: string },
   goal: any,
@@ -57,7 +57,7 @@ const reopenGoal = (
   unsetGoal,
   reopen
 ) => {
-  return () => {
+  return (shouldReopen: boolean) => {
     const { _id } = goal
     const value = currentAwardData ? currentAwardData.value || [] : []
 
@@ -83,7 +83,7 @@ const reopenGoal = (
 
     storeAwardData(newData, tool)
     unsetGoal()
-    reopen()
+    if (shouldReopen) reopen()
   }
 }
 
@@ -128,7 +128,7 @@ const merge = (
     return currentIndex
   }, -1)
   const reopen = reopenGoalScreen({ step, phase, editionIndex })
-  const completionDate = goal.toolData.completionDate
+  const deletionDate = goal.toolData.deletionDate
   const title = goal[FORM_KEYS.form_5_recent_life_goals].value || ''
   const toggleGoal = reopenGoal(
     goal,
@@ -155,7 +155,7 @@ const merge = (
     deleteGoal,
     title,
     dialogElements,
-    completionDate,
+    deletionDate,
     goalOutcome,
   }
 }

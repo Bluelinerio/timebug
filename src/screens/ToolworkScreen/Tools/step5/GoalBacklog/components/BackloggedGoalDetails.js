@@ -1,9 +1,8 @@
 // @flow
 import React                                   from 'react'
-import moment                                  from 'moment'
 import { View, Text, TouchableOpacity, Alert } from 'react-native'
-import styles                                  from '../../common/styles'
-import { DATE_FORMAT }                         from '2020_constants/constants'
+import globalStyles                            from '../../common/styles'
+import styles                                  from '../styles'
 import type { GoalWithToolData }               from '../../common/types'
 
 type Props = {
@@ -13,7 +12,7 @@ type Props = {
   unsetGoal: () => any,
   title: string,
   dialogElements: Array<any>,
-  completionDate: string,
+  deletionDate: string,
   goalOutcome: string,
 }
 
@@ -42,18 +41,18 @@ class GoalReview extends React.PureComponent<Props> {
   }
 
   _onReopen = () => {
-    const { deleteGoal } = this.props
+    const { toggleGoal } = this.props
     Alert.alert(
       'Do you want to edit this goal before reopening?',
       '',
       [
         {
           text: 'Ok',
-          onPress: () => deleteGoal(),
+          onPress: () => toggleGoal(true),
         },
         {
           text: 'Cancel',
-          onPress: () => null,
+          onPress: () => toggleGoal(false),
         },
       ],
       { cancelable: false }
@@ -61,54 +60,47 @@ class GoalReview extends React.PureComponent<Props> {
   }
 
   render() {
-    const {
-      toggleGoal,
-      title,
-      dialogElements,
-      completionDate,
-      goal,
-      goalOutcome,
-    } = this.props
+    const { title, deletionDate } = this.props
     return (
       <React.Fragment>
-        <View style={styles.titleContainer}>
-          <Text style={styles.goalScreenSubtitle}>{title}</Text>
+        <View style={[globalStyles.titleContainer, styles.titleContainer]}>
+          <Text style={[globalStyles.goalScreenSubtitle, styles.title]}>
+            {title}
+          </Text>
         </View>
-        <View style={styles.container}>
-          <View style={[styles.goalReviewTextBlock, styles.goalReviewIndent]}>
-            <Text style={styles.goalScreenContent}>
-              Completed at: {completionDate}
+        <View style={globalStyles.container}>
+          <View
+            style={[
+              globalStyles.goalReviewTextBlock,
+              globalStyles.goalReviewIndent,
+              styles.goalReviewTextBlock,
+              styles.goalReviewIndent,
+            ]}
+          >
+            <Text style={globalStyles.goalScreenContent}>
+              This goal was deleted at: {deletionDate}
             </Text>
           </View>
-          <View style={[styles.goalReviewTextBlock, styles.goalReviewIndent]}>
-            <Text style={styles.goalScreenContent}>
-              Created at: {moment(goal.created_at).format(DATE_FORMAT)}
-            </Text>
-          </View>
-          <TouchableOpacity onPress={this._openDialog}>
-            <Text>
-              Goal Outcome:{' '}
-              {goalOutcome
-                ? dialogElements.find(e => e.key === goalOutcome).text
-                : 'Not selected'}
-            </Text>
-          </TouchableOpacity>
-          <View style={styles.goalReviewTextWithMargin}>
-            <Text style={styles.goalTimeLeft}>
-              Congratulations completing this goal!
-            </Text>
-          </View>
-          <View style={styles.optionsContainer}>
-            <TouchableOpacity style={styles.optionButton} onPress={toggleGoal}>
-              <Text style={styles.optionButtonText}>Re open</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.optionsContainer}>
+          <View style={globalStyles.optionsContainer}>
             <TouchableOpacity
-              style={styles.optionButton}
+              style={[globalStyles.optionButton, styles.optionButton]}
+              onPress={this._onReopen}
+            >
+              <Text
+                style={[globalStyles.optionButtonText, styles.optionButtonText]}
+              >
+                Reopen
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[globalStyles.optionButton, styles.optionButton]}
               onPress={this._deleteGoal}
             >
-              <Text style={styles.optionButtonText}>Delete</Text>
+              <Text
+                style={[globalStyles.optionButtonText, styles.optionButtonText]}
+              >
+                Delete
+              </Text>
             </TouchableOpacity>
           </View>
         </View>
