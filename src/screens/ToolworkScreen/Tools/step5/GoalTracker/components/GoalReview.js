@@ -120,7 +120,6 @@ class GoalReview extends React.PureComponent<Props> {
 
   render() {
     const {
-      toggleGoal,
       deleteGoal,
       steps,
       title,
@@ -160,6 +159,7 @@ class GoalReview extends React.PureComponent<Props> {
           onClose={this._closeCompletionDialog}
           elements={cgoElements}
           onSelect={this._onSelectCGO}
+          text={'Please select a goal outcome for your goal'}
         />
         <View style={styles.titleContainer}>
           <Text style={styles.goalScreenSubtitle}>
@@ -247,7 +247,10 @@ class GoalReview extends React.PureComponent<Props> {
             />
           </View>
           <View style={styles.optionsContainer}>
-            <TouchableOpacity style={styles.optionButton} onPress={toggleGoal}>
+            <TouchableOpacity
+              style={styles.optionButton}
+              onPress={this._openCompletionDialog}
+            >
               <Text style={styles.optionButtonText}>
                 {goalAwardData && goalAwardData.completed
                   ? 'Not Complete'
