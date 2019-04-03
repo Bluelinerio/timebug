@@ -1,5 +1,6 @@
 // @flow
 import { takeLatest, fork, put, select, call }  from 'redux-saga/effects'
+import { delay }                                from 'redux-saga'
 import moment                                   from 'moment'
 
 import { stepEnum }                             from '2020_services/cms'
@@ -12,6 +13,7 @@ import { getDueDate }                           from '2020_utils/dateCalculation
 import { toHashCode }                           from '2020_utils/hashing'
 
 import selectors                                from '../selectors'
+
 import { GOAL_NOTIFICATION, GOALS_SIDE_EFFECT } from '../actionTypes'
 import type {
   GoalNotificationPayload,
@@ -62,10 +64,12 @@ function* _handleGoalNotification(action: {
   }
 }
 
+// Added a delay to deal with race conditions
 export function* _syncGoalsNotifications(action: {
   type: GOALS_SIDE_EFFECT,
   payload: GoalSideEffectPayload,
 }) {
+  yield delay(5000)
   const { payload = {} } = action
   const { value = [], awardData = [] } = payload
   const notifications = yield select(selectors.notifications)
@@ -99,6 +103,25 @@ export function* _syncGoalsNotifications(action: {
     []
   )
 
+  const notificationsActions = notifications
+    .filter(
+      notification => notification.type === notificationTypes.GOAL_NOTIFICATION
+    )
+    .reduce((removableNotifications, notification) => {
+      const { data } = notification
+      const { goalId } = data
+      const goalExists = value.find(goal => goal._id === goalId)
+      if (goalExists) return removableNotifications
+      else
+        return [
+          ...removableNotifications,
+          {
+            _action: DELETE,
+            notificationId: notification.id,
+          },
+        ]
+    }, [])
+
   const goalActions = mergedStep5Data.reduce((actions, goal) => {
     const hasNotification = !!goal.notification
     const hasFulfilledConditions = goal.award
@@ -110,7 +133,7 @@ export function* _syncGoalsNotifications(action: {
         ...actions,
         {
           _action: DELETE,
-          goal,
+          notificationId: goal.notification.id,
         },
       ]
     else if (!hasNotification && !hasFulfilledConditions && isValid)
@@ -124,9 +147,12 @@ export function* _syncGoalsNotifications(action: {
     return actions
   }, [])
 
-  for (const action of goalActions) {
-    const { _action, goal } = action
+  const actions = [...goalActions, notificationsActions]
+
+  for (const action of actions) {
+    const { _action } = action
     if (_action === CREATE) {
+      const { goal } = action
       const { id, title, frequency, due, areasOfLife } = goal
       const notificationId = `${toHashCode(id)}`
 
@@ -157,8 +183,8 @@ export function* _syncGoalsNotifications(action: {
         })
       )
     } else {
-      const { notification } = goal
-      yield put(removeNotification({ id: `${notification.id}` }))
+      const { notificationId } = action
+      yield put(removeNotification({ id: `${notificationId}` }))
     }
   }
 }
