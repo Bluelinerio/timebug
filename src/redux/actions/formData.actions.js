@@ -62,6 +62,6 @@ export const restoreFormData = (payload: RestoreFormDataPayload) => ({
 export const deleteSingleFormElement = (
   payload: DeleteFormValuePayload
 ): DeleteFormValueAction => ({
-  type: DELETE_FORM_VALUE.payload,
+  type: DELETE_FORM_VALUE,
   payload,
 })
