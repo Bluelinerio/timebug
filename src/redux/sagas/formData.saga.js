@@ -39,12 +39,12 @@ import {
   UPDATE_AND_CREATE_FORMS,
   SYNC_SIDE_EFFECTS,
   DELETE_FORM_VALUE,
-} from '../actionTypes'
+}                                      from '../actionTypes'
 import {
   GET_USER,
   updateUser,
   resetUserSteps as resetAction,
-} from '../actions/user.actions'
+}                                      from '../actions/user.actions'
 import {
   incrementFormDataQueue,
   decrementFormDataQueue,
@@ -55,16 +55,14 @@ import {
   restoreFormData,
   submitFormValue,
   syncFormData,
-} from '../actions/formData.actions'
-import { initialNotifications } from '../actions/checkin.actions'
-import type {
-  DeleteFormValuePayload,
-} from '../actions/formData.actions'
+}                                      from '../actions/formData.actions'
+import { initialNotifications }        from '../actions/checkin.actions'
+import type { DeleteFormValuePayload } from '../actions/formData.actions'
 
 /**
  * Selectors and other utilities
  */
-import selectors from '../selectors'
+import selectors    from '../selectors'
 import { diffObjs } from '../utils/diffObjs'
 
 import tron from 'reactotron-react-native'
@@ -483,12 +481,12 @@ function* _handleFormDataDeletion({
   payload: DeleteFormValuePayload,
 }) {
   const { id, stepId } = payload
-  const { completedForms } = yield call(mySelectors, {
-    completedForms: selectors.completedFormsData,
+  const { formData } = yield call(mySelectors, {
+    formData: selectors.formData,
   })
-  const currentFormData = completedForms[stepId] || {}
+  const currentFormData = formData[stepId] || {}
   const { value } = currentFormData
-  const storableValue = value.filter(v => v._id === id)
+  const storableValue = value.filter(v => v._id !== id)
   yield put(submitFormValue({ value: storableValue, stepId }))
   yield delay(5)
   yield put(syncFormData())
