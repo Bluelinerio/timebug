@@ -29,7 +29,8 @@ const mapDispatchToProps = (dispatch: any) => {
 
 const merge = ({ submitForm, data, stepNumber, navigation, ...props }) => {
   const model = models[stepNumber]
-  const { navigation: { state: { params } } } = navigation
+  const navigationState = navigation.state
+  const params = navigationState.params || {}
   const formIndexToEdit = params.editionIndex || null
   const formData = (data[stepNumber] && data[stepNumber].value) || null
   return {
