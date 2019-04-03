@@ -6,10 +6,11 @@ import {
   RESET_FORMS,
   SET_LOADING_FORMDATA,
   RESTORE_FORM_DATA,
-}                                      from '../actionTypes'
+} from '../actionTypes'
 import type { RestoreFormDataPayload } from '../actions/formData.actions'
-import { diffObjs }                    from '../utils/diffObjs'
-import R                               from 'ramda'
+import { diffObjs } from '../utils/diffObjs'
+import R from 'ramda'
+import tron from 'reactotron-react-native'
 
 export type FormDataState = {
   data: {
@@ -35,9 +36,6 @@ const initialState: FormDataState = {
   loadingFormData: false,
 }
 
-const filterWithKeys = (pred, obj) =>
-  R.pipe(R.toPairs, R.filter(R.apply(pred)), R.fromPairs)(obj)
-
 const populate = (
   action: PopulateFormAction,
   state: FormDataState
@@ -45,13 +43,11 @@ const populate = (
   const { stepId, value } = action.payload
   const data = state.data || {}
 
-  const oldValue = filterWithKeys(key => {
-    return Object.keys(value).includes(key)
-  }, R.view(R.lensPath([stepId, 'value']), data))
+  const oldValue = R.view(R.lensPath([stepId, 'value']), data)
 
-  const { difference, onlyOnRight } = diffObjs(oldValue, value)
+  const { difference, onlyOnRight, onlyOnLeft } = diffObjs(oldValue, value)
 
-  if (!difference && !onlyOnRight) return state
+  if (!difference && !onlyOnRight && !onlyOnLeft) return state
 
   return {
     ...state,
