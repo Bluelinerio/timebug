@@ -24,7 +24,7 @@ class ArchiveScreenComponent extends React.PureComponent<Props> {
 
   componentDidMount() {
     const { navigation } = this.props
-    navigation.setParams({ title: `Goal's Archive` })
+    navigation.setParams({ title: `Goal Archive` })
   }
 
   componentWillUnmount() {

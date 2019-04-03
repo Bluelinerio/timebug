@@ -18,6 +18,7 @@ type Props = {
   onClose: () => any,
   onSelect: Result => any,
   text?: string,
+  value?: string,
 }
 
 class OptionsDialog extends React.PureComponent<Props> {
@@ -28,9 +29,13 @@ class OptionsDialog extends React.PureComponent<Props> {
       onClose,
       onSelect,
       text = null,
+      value = null,
     } = this.props
     if (!elements || elements.length === 0 || elements.length === 1) return null
     const items = elements.map(row => ({ value: row.key, label: row.text }))
+    const selectedItem = value
+      ? items.find(item => item.value === value) || items[0]
+      : items[0]
     return (
       items && (
         <SinglePickerMaterialDialog
@@ -38,7 +43,7 @@ class OptionsDialog extends React.PureComponent<Props> {
           items={items}
           scrolled={true}
           visible={dialogVisible}
-          selectedItem={items[0]}
+          selectedItem={selectedItem}
           onCancel={onClose}
           onOk={result => {
             onSelect(result.selectedItem)

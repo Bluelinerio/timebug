@@ -59,6 +59,7 @@ const switchGoal = (
       ...oldData,
       updatedAt: moment().format(DATE_FORMAT),
       completed: !oldData.completed,
+      goalOutcome: null,
       completionDate:
         !oldData.completed === true ? moment().format(TEXT_DATE_FORMAT) : null,
     }

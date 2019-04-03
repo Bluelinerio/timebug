@@ -72,6 +72,7 @@ export default StyleSheet.create({
   },
   title: {
     fontSize: 30,
+    lineHeight: 30,
     textAlign: 'center',
   },
   goalDataCard: {
