@@ -18,7 +18,7 @@ type Props = {
   step: Step,
   onSelectStep: Step => any,
   backgroundColor: any,
-  formIndexToEdit: number,
+  editionIndex: number,
   navigation: any,
 }
 
@@ -29,12 +29,6 @@ type State = {
 class WorkbookForm extends React.PureComponent<Props, State> {
   state = {
     formFinished: false,
-    formIndexToEdit: null,
-  }
-
-  componentDidMount() {
-    const { formIndexToEdit } = this.props
-    this.setState({ editionIndex: formIndexToEdit })
   }
 
   componentDidUpdate(prevProps) {
@@ -42,13 +36,6 @@ class WorkbookForm extends React.PureComponent<Props, State> {
       this.setState({
         formFinished: false,
       })
-  }
-
-  componentWillUnmount() {
-    const { formIndexToEdit, navigation } = this.props
-    // TODO: Check if this is valid
-    if (formIndexToEdit) navigation.setNavigationState({ editionIndex: null })
-    this.setState({ editionIndex: null })
   }
 
   _onFinish = (data: any) => {
@@ -71,8 +58,9 @@ class WorkbookForm extends React.PureComponent<Props, State> {
       phase,
       onSelectStep,
       backgroundColor,
+      editionIndex,
     } = this.props
-    const { formFinished, formIndexToEdit } = this.state
+    const { formFinished } = this.state
     return model ? (
       <ScrollView
         style={[styles.scrollView, styles.fullWidth, styles.fullHeight]}
@@ -88,7 +76,7 @@ class WorkbookForm extends React.PureComponent<Props, State> {
             key={stepNumber}
             phase={phase}
             disableAnswers
-            formIndexToEdit={formIndexToEdit}
+            editionIndex={editionIndex}
             extra={{
               step,
             }}
