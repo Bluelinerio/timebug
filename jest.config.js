@@ -25,6 +25,6 @@ module.exports = {
     '!**/scripts/**',
     '!**/__test__/**',
   ],
-  verbose: true,
+  verbose: false,
   testPathIgnorePatterns: ['/node_modules/', '/ios/', '/android/'],
 }
