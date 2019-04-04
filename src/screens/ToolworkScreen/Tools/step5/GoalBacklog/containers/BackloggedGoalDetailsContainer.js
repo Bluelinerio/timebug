@@ -68,18 +68,19 @@ const reopenGoal = (
         goalId: _id,
       }
 
-    const newGoalAwardValue = {
-      ...oldData,
-      updatedAt: moment().format(DATE_FORMAT),
-      deleted: !oldData.deleted,
-      deletionDate:
-        !oldData.deleted === true ? moment().format(TEXT_DATE_FORMAT) : null,
-    }
+    const newData = [...value.filter(val => val.goalId !== _id)]
 
-    const newData = [
-      ...value.filter(val => val.goalId !== _id),
-      newGoalAwardValue,
-    ]
+    if (!shouldReopen) {
+      const newGoalAwardValue = {
+        ...oldData,
+        updatedAt: moment().format(DATE_FORMAT),
+        deleted: !oldData.deleted,
+        deletionDate:
+          !oldData.deleted === true ? moment().format(TEXT_DATE_FORMAT) : null,
+      }
+
+      newData.push(newGoalAwardValue)
+    }
 
     storeAwardData(newData, tool)
     unsetGoal()
@@ -121,7 +122,7 @@ const merge = (
   const { deleteGoal: callDeleteGoal, reopenGoalScreen } = dispatchProps
   const { steps, formData } = stateProps
   const step = steps[stepEnum.STEP_5]
-  const phase = translateCMSPhaseToStandard(step.phase)
+  const phase = translateCMSPhaseToStandard(step.type)
   const formDataForStep = formData[stepEnum.STEP_5].value
   const editionIndex = formDataForStep.reduce((currentIndex, f, index) => {
     if (f._id === goal._id) return index
