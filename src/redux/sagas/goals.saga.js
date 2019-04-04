@@ -109,7 +109,7 @@ export function* _syncGoalsNotifications(action: {
     )
     .reduce((removableNotifications, notification) => {
       const { data } = notification
-      const { goalId } = data
+      const { additionalProps: { data : { goalId } } } = data
       const goalExists = value.find(goal => goal._id === goalId)
       if (goalExists) return removableNotifications
       else
@@ -147,7 +147,7 @@ export function* _syncGoalsNotifications(action: {
     return actions
   }, [])
 
-  const actions = [...goalActions, notificationsActions]
+  const actions = [...goalActions, ...notificationsActions]
 
   for (const action of actions) {
     const { _action } = action
