@@ -71,7 +71,7 @@ const reopenGoal = (
     const newGoalAwardValue = {
       ...oldData,
       updatedAt: moment().format(DATE_FORMAT),
-      deleted: !oldData.completed,
+      deleted: !oldData.deleted,
       deletionDate:
         !oldData.deleted === true ? moment().format(TEXT_DATE_FORMAT) : null,
     }
