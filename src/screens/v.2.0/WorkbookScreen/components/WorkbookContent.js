@@ -42,6 +42,7 @@ class WorkbookContent extends React.PureComponent<Props> {
               phase={phase}
               onSelectStep={onSelectStep}
               backgroundColor={backgroundColor}
+              key={step.number}
             />
           ) : (
             <WorkbookSnippet
