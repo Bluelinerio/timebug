@@ -1,13 +1,13 @@
-import { connect }           from 'react-redux'
+import { connect } from 'react-redux'
 import { compose, mapProps } from 'recompose'
-import { withNavigation }    from 'react-navigation'
-import WorkbookForm          from '../components/WorkbookForm'
-import selectors             from '../../../../redux/selectors'
-import models                from '../../../../forms/custom/forms'
+import { withNavigation } from 'react-navigation'
+import WorkbookForm from '../components/WorkbookForm'
+import selectors from '../../../../redux/selectors'
+import models from '../../../../forms/custom/forms'
 import {
   submitFormValue,
   syncFormData,
-}                            from '../../../../redux/actions/formData.actions.js'
+} from '../../../../redux/actions/formData.actions.js'
 import type { SubmitAction } from '../../../../redux/actions/formData.actions.js'
 
 const mapStateToProps = (state: any) => {
@@ -27,11 +27,15 @@ const mapDispatchToProps = (dispatch: any) => {
   }
 }
 
-const merge = ({ submitForm, data, stepNumber, navigation, ...props }) => {
+const merge = ({
+  submitForm,
+  data,
+  stepNumber,
+  navigation,
+  editionIndex,
+  ...props
+}) => {
   const model = models[stepNumber]
-  const navigationState = navigation.state
-  const params = navigationState.params || {}
-  const editionIndex = params.editionIndex
   const formData = (data[stepNumber] && data[stepNumber].value) || null
   return {
     ...props,

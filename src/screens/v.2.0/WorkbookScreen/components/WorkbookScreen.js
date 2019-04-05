@@ -18,6 +18,7 @@ type Props = {
 
 type State = {
   selectedStep: Step | null,
+  editionIndex?: number | null,
 }
 
 class WorkbookScreen extends React.PureComponent<Props, State> {
@@ -34,6 +35,35 @@ class WorkbookScreen extends React.PureComponent<Props, State> {
         editionIndex || editionIndex === 0
           ? SectionValues.form
           : SectionValues.textContent,
+    }
+  }
+
+  componentDidUpdate = (prevProps, prevState) => {
+    const previousIndex = prevProps.navigation.getParam('editionIndex', null)
+    const currentIndex = this.props.navigation.getParam('editionIndex', null)
+    const newSentStep = this.props.navigation.getParam('step', null)
+    const currentStep = this.state.selectedStep
+    const previousStep = prevState.selectedStep
+    const currentSection = this.state.selectedSection
+    const previousSection = prevState.selectedSection
+    if (
+      (currentIndex || currentIndex === 0) &&
+      previousIndex !== currentIndex
+    ) {
+      this.setState(() => ({
+        editionIndex: currentIndex,
+        selectedSection: SectionValues.form,
+        selectedStep:
+          newSentStep.number !== currentStep.number ? newSentStep : currentStep,
+      }))
+      return
+    }
+    if (
+      ((currentIndex || currentIndex === 0) &&
+        currentSection !== previousSection) ||
+      previousStep.number !== currentStep.number
+    ) {
+      this.setState(() => ({ editionIndex: null }))
     }
   }
 
@@ -63,7 +93,7 @@ class WorkbookScreen extends React.PureComponent<Props, State> {
 
   render() {
     const { navigation: { state: { params: { phase } } } } = this.props
-    const { selectedStep, selectedSection } = this.state
+    const { selectedStep, selectedSection, editionIndex } = this.state
 
     const backgroundColor = this._getCurrentBackgroundColor(selectedStep)
 
@@ -95,6 +125,7 @@ class WorkbookScreen extends React.PureComponent<Props, State> {
               selectedSection={selectedSection}
               changeSection={this._changeSection}
               onFinish={this._onFinish}
+              editionIndex={editionIndex}
             />
           </View>
         </View>
