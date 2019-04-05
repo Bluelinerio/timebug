@@ -43,7 +43,7 @@ const populate = (
   const { stepId, value } = action.payload
   const data = state.data || {}
 
-  const oldValue = R.view(R.lensPath([stepId, 'value']), data)
+  const oldValue = data[stepId] ? data[stepId].value : {}
 
   const { difference, onlyOnRight, onlyOnLeft } = diffObjs(oldValue, value)
 
