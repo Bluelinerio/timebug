@@ -31,7 +31,7 @@ const merge = ({ submitForm, data, stepNumber, navigation, ...props }) => {
   const model = models[stepNumber]
   const navigationState = navigation.state
   const params = navigationState.params || {}
-  const formIndexToEdit = params.editionIndex || null
+  const editionIndex = params.editionIndex
   const formData = (data[stepNumber] && data[stepNumber].value) || null
   return {
     ...props,
@@ -39,7 +39,7 @@ const merge = ({ submitForm, data, stepNumber, navigation, ...props }) => {
     model,
     stepNumber,
     submitForm,
-    formIndexToEdit,
+    editionIndex,
     navigation,
   }
 }

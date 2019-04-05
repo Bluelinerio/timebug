@@ -20,6 +20,7 @@ type Props = {
   backgroundColor: any,
   editionIndex: number,
   navigation: any,
+  onFinish: () => any,
 }
 
 type State = {
@@ -39,10 +40,11 @@ class WorkbookForm extends React.PureComponent<Props, State> {
   }
 
   _onFinish = (data: any) => {
-    const { submitForm, stepNumber } = this.props
+    const { submitForm, stepNumber, onFinish } = this.props
     this.setState({ formFinished: true }, () => {
       submitForm({ stepId: stepNumber, value: data })
     })
+    onFinish()
   }
 
   _goToUrl = () => {
