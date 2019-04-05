@@ -86,6 +86,7 @@ const TextFormButton = ({
   </TouchableOpacity>
 )
 
+// TODO: Instead of index replace with id of object
 class Form extends React.PureComponent<Props, any> {
   constructor(props) {
     super(props)
@@ -94,8 +95,8 @@ class Form extends React.PureComponent<Props, any> {
     const indexesMap = mapIndexesToKeys(this.model)
     const storableValue = props.value || []
     const formIteration =
-      editionIndex !== null ? editionIndex : storableValue.length
-    const isEditing = editionIndex !== null ? true : false
+      editionIndex || editionIndex === 0 ? editionIndex : storableValue.length
+    const isEditing = editionIndex || editionIndex === 0 ? true : false
     const fieldIndex = 0
     const value = getValueFromAnswerType(props, props.model, formIteration)
     const currentElementValue = value[indexesMap[fieldIndex]]
