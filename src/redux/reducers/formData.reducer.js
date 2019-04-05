@@ -9,8 +9,6 @@ import {
 } from '../actionTypes'
 import type { RestoreFormDataPayload } from '../actions/formData.actions'
 import { diffObjs } from '../utils/diffObjs'
-import R from 'ramda'
-import tron from 'reactotron-react-native'
 
 export type FormDataState = {
   data: {
