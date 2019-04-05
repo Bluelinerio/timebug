@@ -116,6 +116,12 @@ class Form extends React.PureComponent<Props, any> {
     }
   }
 
+  componentDidUpdate = (prevProps, prevState) => {
+    if (prevState.formIteration !== this.state.formIteration) {
+      this.setState({ isEditing: false })
+    }
+  }
+
   _getNewValue = () => {
     const { value, indexesMap, currentElementValue, fieldIndex } = this.state
     const currentField = this.model.fields[fieldIndex]
@@ -218,7 +224,7 @@ class Form extends React.PureComponent<Props, any> {
         ...storableValue.filter(val => val._id !== value._id),
         {
           ...storableValue[formIteration],
-          value,
+          ...value,
         },
       ]
       return currValue
