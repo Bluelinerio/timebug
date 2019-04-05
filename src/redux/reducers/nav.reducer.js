@@ -4,68 +4,68 @@ import {
   assignmentFlowConfiguration,
   startConfiguration,
   StartNavigator,
-} from '../../navigation';
+} from '../../navigation'
 
 const initialRouteState = StartNavigator.router.getStateForAction(
   StartNavigator.router.getActionForPathAndParams(
     startConfiguration.routes.initialRouteName
   )
-);
+)
 
 const walkthroughState = StartNavigator.router.getStateForAction(
   StartNavigator.router.getActionForPathAndParams(
     startConfiguration.routes.Walkthrough
   ),
   initialRouteState
-);
+)
 
 if (!initialRouteState || !walkthroughState) {
-  throw 'nav reducer --expect state to be not nil';
+  throw 'nav reducer --expect state to be not nil'
 }
-const initialState = walkthroughState;
+const initialState = walkthroughState
 
 function navReducer(state = initialState, action) {
-  const newState = StartNavigator.router.getStateForAction(action, state);
-  return newState || state;
+  const newState = StartNavigator.router.getStateForAction(action, state)
+  return newState || state
 }
 
-import storage from 'redux-persist/lib/storage';
-import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage'
+import { persistReducer } from 'redux-persist'
 
-import routes from '../../navigation/routes';
+import routes from '../../navigation/routes'
 const requiredParamFieldsForRoute = (route: string) => {
   switch (route) {
   case routes.root.AssignmentFlow:
   case routes.step.StepScreen:
   case routes.step.WorkbookScreen:
   case routes.step.WorkbookDoneScreen: {
-    return ['stepId', 'stepColor'];
+    return ['stepId', 'stepColor']
   }
   default:
-    return [];
+    return []
   }
-};
+}
 
 const isRouteInvalid = route => {
-  if (!route.routeName) return true;
-  if (route.routes) return allRoutesAreValid(route.routes) === false;
-  const keys = requiredParamFieldsForRoute(route.routeName);
+  if (!route.routeName) return true
+  if (route.routes) return allRoutesAreValid(route.routes) === false
+  const keys = requiredParamFieldsForRoute(route.routeName)
   if (
     keys.length > 0 &&
     (!route.params ||
       keys.find(key => !Object.keys(route.params).includes(key)))
   )
-    return true;
-  return false;
-};
+    return true
+  return false
+}
 const allRoutesAreValid = routes => {
-  return routes.find(isRouteInvalid) ? false : true;
-};
+  return routes.find(isRouteInvalid) ? false : true
+}
 
 const findAssignmentFlow = state =>
   state.routes.find(
     route => route.routeName === rootConfiguration.routes.AssignmentFlow
-  );
+  )
 
 const isAssignmentFlowValid = assignmentFlow => {
   try {
@@ -75,18 +75,18 @@ const isAssignmentFlowValid = assignmentFlow => {
         Object.keys(assignmentFlowConfiguration.screens).includes(
           route.routeName
         ) === false
-    );
+    )
     if (unregisteredRouteNames) {
-      return false;
+      return false
     } else {
-      return true;
+      return true
     }
   } catch (e) {
-    return false;
+    return false
   }
-};
+}
 
-const thisVersion = 11;
+const thisVersion = 12
 const persistConfig = {
   key: 'nav',
   storage: storage,
@@ -94,7 +94,7 @@ const persistConfig = {
   migrate: (state, version) => {
     if (state) {
       //To enforce initial render of steps
-      return Promise.resolve(initialRouteState);
+      return Promise.resolve(initialRouteState)
       // if (!state.routes || !allRoutesAreValid(state.routes)) {
       //   console.warn('nav.reducer: resetting routes')
       //   return Promise.resolve(initialRouteState)
@@ -116,8 +116,8 @@ const persistConfig = {
       //   return Promise.resolve(initialRouteState)
       // }
     }
-    return Promise.resolve(state);
+    return Promise.resolve(state)
   },
-};
+}
 
-export default persistReducer(persistConfig, navReducer);
+export default persistReducer(persistConfig, navReducer)

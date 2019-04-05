@@ -32,7 +32,7 @@ import StartScreen        from '../screens/StartScreen'
 import GoalScreen         from '../screens/GoalScreen'
 import GoalStepScreen     from '../screens/GoalStepScreen'
 import AppVersionScreen   from '../screens/AppVersionSelectionScreen'
-import V2Navigator        from '../screens/v.2.0'
+import V2WorkbookScreen   from '../screens/v.2.0/WorkbookScreen'
 import HelpScreen         from '../screens/HelpScreen'
 import LoginScreen        from '../screens/LoginScreen'
 
@@ -98,8 +98,8 @@ export const rootConfiguration = {
     [routes.root.StartScreen]: {
       screen: StartScreen,
     },
-    [routes.root.V2Navigator_root]: {
-      screen: V2Navigator,
+    [routes.root.WorkbookScreen]: {
+      screen: V2WorkbookScreen,
     },
   },
   options: {

@@ -91,9 +91,9 @@ export const goToPrototypeWorkbookScreen = (params: any) =>
 
 export const goToV2WorkbookScreen = (params: GoToWorkbookParams) =>
   NavigationActions.navigate({
-    routeName: routes.root.V2Navigator_root,
+    routeName: routes.root.WorkbookScreen,
     params,
-    key: routes.root.V2Navigator_root,
+    key: routes.root.WorkbookScreen,
   })
 
 export const goToRootNavigatorV2 = () =>
