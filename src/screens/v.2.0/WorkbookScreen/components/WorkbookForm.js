@@ -33,7 +33,13 @@ class WorkbookForm extends React.PureComponent<Props, State> {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.stepNumber !== prevProps.stepNumber)
+    const isEditing = this.props.editionIndex || this.props.editionIndex === 0
+    if (
+      this.props.stepNumber !== prevProps.stepNumber ||
+      (isEditing &&
+        this.props.editionIndex !== prevProps.editionIndex &&
+        this.state.formFinished === true)
+    )
       this.setState({
         formFinished: false,
       })
