@@ -1,20 +1,20 @@
 // @flow
-import React                                      from 'react'
-import { View, TouchableOpacity, Text }           from 'react-native'
-import moment                                     from 'moment'
-import styles, { iconSize, iconColor }            from '../styles'
-import FormPicker                                 from './FormComponents/FormPicker'
+import React from 'react'
+import { View, TouchableOpacity, Text } from 'react-native'
+import moment from 'moment'
+import styles, { iconSize, iconColor } from '../styles'
+import FormPicker from './FormComponents/FormPicker'
 import { actionTypes, passiveTypes, answerTypes } from '../forms/types'
-import Icon                                       from 'react-native-vector-icons/Ionicons'
-import uuid                                       from 'uuid/v4'
-import Answers                                    from './FormAnswers'
-import Display                                    from './debug/DisplayComponent'
+import Icon from 'react-native-vector-icons/Ionicons'
+import uuid from 'uuid/v4'
+import Answers from './FormAnswers'
+import Display from './debug/DisplayComponent'
 import {
   getButtonText,
   mapIndexesToKeys,
   getValueFromAnswerType,
-}                                                 from '../utils/formHelpers'
-import { isFormValueInvalid }                     from '../validation/Form'
+} from '../utils/formHelpers'
+import { isFormValueInvalid } from '../validation/Form'
 
 const DEBUG_DISPLAY = false
 
@@ -24,7 +24,7 @@ type Props = {
   onFinish: any => any,
   disableAnswers?: boolean,
   CloseButton: () => React.node,
-  editIndex: boolean,
+  editionIndex: boolean,
   formStyles: {
     headerTextStyle: any,
     textStyle: any,
@@ -90,10 +90,12 @@ class Form extends React.PureComponent<Props, any> {
   constructor(props) {
     super(props)
     this.model = props.model
-    const editionIndex = props.editIndex
+    const editionIndex = props.editionIndex
     const indexesMap = mapIndexesToKeys(this.model)
     const storableValue = props.value || []
-    const formIteration = editionIndex ? editionIndex : storableValue.length
+    const formIteration =
+      editionIndex !== null ? editionIndex : storableValue.length
+    const isEditing = editionIndex !== null ? true : false
     const fieldIndex = 0
     const value = getValueFromAnswerType(props, props.model, formIteration)
     const currentElementValue = value[indexesMap[fieldIndex]]
@@ -109,6 +111,7 @@ class Form extends React.PureComponent<Props, any> {
       disableAnswers: props.disableAnswers || false,
       numberOfFields: Object.keys(this.model.fields).length,
       indexesMap,
+      isEditing,
     }
   }
 
@@ -152,7 +155,7 @@ class Form extends React.PureComponent<Props, any> {
   }
 
   _onFinishedForm = () => {
-    const { storableValue, value, fieldIndex } = this.state
+    const { value, fieldIndex } = this.state
     const { onFinish } = this.props
 
     const currentField = this.model.fields[fieldIndex]
@@ -164,14 +167,7 @@ class Form extends React.PureComponent<Props, any> {
     const newStorableValue =
       this.model.answer === answerTypes.single
         ? this._handleSingleAnswerStorage(newValue)
-        : [
-          ...storableValue,
-          {
-            ...newValue,
-            _id: uuid(),
-            created_at: moment().format(),
-          },
-        ]
+        : this._handleMultipleAnswerStorage(newValue)
 
     this.setState(
       {
@@ -205,6 +201,29 @@ class Form extends React.PureComponent<Props, any> {
       ]
   }
 
+  _handleMultipleAnswerStorage = value => {
+    const { storableValue, formIteration, isEditing } = this.state
+    if (!isEditing) {
+      return [
+        ...storableValue,
+        {
+          ...value,
+          _id: uuid(),
+          created_at: moment().format(),
+        },
+      ]
+    } else {
+      const currValue = [
+        ...storableValue.filter(val => val._id !== value._id),
+        {
+          ...storableValue[formIteration],
+          value,
+        },
+      ]
+      return currValue
+    }
+  }
+
   _onPress = () => {
     const { fieldIndex, indexesMap, value } = this.state
     const currentField = this.model.fields[fieldIndex]
@@ -233,25 +252,9 @@ class Form extends React.PureComponent<Props, any> {
   }
 
   _handleGoTo = payload => {
-    const { value, storableValue, formIteration, editionIndex } = this.state
-    const newState = editionIndex
+    const { value, storableValue, formIteration, isEditing } = this.state
+    const newState = !isEditing
       ? {
-        fieldIndex: payload,
-        storableValue: [
-          ...storableValue,
-          {
-            ...value,
-            _id: uuid(),
-            created_at: moment().format(),
-          },
-        ],
-        value:
-            this.props.value && this.props.value[storableValue.length + 1]
-              ? this.props.value[storableValue.length + 1]
-              : {},
-        formIteration: storableValue.length + 1,
-      }
-      : {
         fieldIndex: payload,
         storableValue: [
           ...storableValue,
@@ -266,6 +269,21 @@ class Form extends React.PureComponent<Props, any> {
               ? this.props.value[formIteration + 1]
               : {},
         formIteration: formIteration + 1,
+      }
+      : {
+        fieldIndex: payload,
+        storableValue: [
+          ...storableValue.filter(v => v._id !== value._id),
+          {
+            ...storableValue[formIteration],
+            ...value,
+          },
+        ],
+        value:
+            this.props.value && this.props.value[storableValue.length]
+              ? this.props.value[storableValue.length]
+              : {},
+        formIteration: storableValue.length,
       }
     this.setState(newState)
   }
