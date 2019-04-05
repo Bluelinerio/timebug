@@ -116,7 +116,7 @@ class Form extends React.PureComponent<Props, any> {
     }
   }
 
-  componentDidUpdate = (prevProps) => {
+  componentDidUpdate = prevProps => {
     const { editionIndex: previousEditionIndex } = prevProps
     const { editionIndex } = this.props
     const isEditing = editionIndex || editionIndex === 0 ? true : false
@@ -219,6 +219,9 @@ class Form extends React.PureComponent<Props, any> {
           ...value,
           _id: uuid(),
           created_at: moment().format(),
+          _meta: {
+            version: 1,
+          },
         },
       ]
       : [
@@ -226,6 +229,10 @@ class Form extends React.PureComponent<Props, any> {
           ...(storableValue[0] || {}),
           ...value,
           updated_at: moment().format(),
+          _meta: {
+            ...(storableValue[0]._meta || {}),
+            version: storableValue[0]._meta.version + 1,
+          },
         },
       ]
   }
@@ -239,6 +246,9 @@ class Form extends React.PureComponent<Props, any> {
           ...value,
           _id: uuid(),
           created_at: moment().format(),
+          _meta: {
+            version: 1,
+          },
         },
       ]
     } else {
@@ -247,6 +257,11 @@ class Form extends React.PureComponent<Props, any> {
         {
           ...storableValue[formIteration],
           ...value,
+          updated_at: moment().format(),
+          _meta: {
+            ...(storableValue[formIteration]._meta || {}),
+            version: storableValue[formIteration]._meta.version + 1,
+          },
         },
       ]
       return currValue
@@ -291,6 +306,9 @@ class Form extends React.PureComponent<Props, any> {
             ...value,
             _id: uuid(),
             created_at: moment().format(),
+            _meta: {
+              version: 1,
+            },
           },
         ],
         value:
@@ -307,6 +325,11 @@ class Form extends React.PureComponent<Props, any> {
           {
             ...storableValue[formIteration],
             ...value,
+            updated_at: moment().format(),
+            _meta: {
+              ...(storableValue[formIteration]._meta || {}),
+              version: storableValue[formIteration]._meta.version + 1,
+            },
           },
         ],
         value:
