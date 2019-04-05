@@ -116,15 +116,30 @@ class Form extends React.PureComponent<Props, any> {
     }
   }
 
-  componentDidUpdate = (prevProps, prevState) => {
+  componentDidUpdate = (prevProps) => {
     const { editionIndex: previousEditionIndex } = prevProps
     const { editionIndex } = this.props
     const isEditing = editionIndex || editionIndex === 0 ? true : false
     if (isEditing && previousEditionIndex !== editionIndex) {
-      this.setState({ isEditing: true, formIteration: editionIndex })
-    }
-    if (prevState.formIteration !== this.state.formIteration) {
-      this.setState({ isEditing: false })
+      const value = getValueFromAnswerType(
+        this.props,
+        this.props.model,
+        editionIndex
+      )
+      const { indexesMap } = this.state
+      const fieldIndex = 0
+      const currentElementValue = value[indexesMap[fieldIndex]]
+        ? value[indexesMap[fieldIndex]].value
+        : null
+      this.setState({
+        isEditing: true,
+        formIteration: editionIndex,
+        fieldIndex,
+        value,
+        currentElementValue,
+        isFormFinished: false,
+      })
+      return
     }
   }
 
@@ -187,6 +202,7 @@ class Form extends React.PureComponent<Props, any> {
         value: newValue,
         isFormFinished: true,
         storableValue: newStorableValue,
+        isEditing: false,
       },
       () => {
         onFinish(this.state.storableValue)
@@ -282,6 +298,7 @@ class Form extends React.PureComponent<Props, any> {
               ? this.props.value[formIteration + 1]
               : {},
         formIteration: formIteration + 1,
+        isEditing: false,
       }
       : {
         fieldIndex: payload,
@@ -297,6 +314,7 @@ class Form extends React.PureComponent<Props, any> {
               ? this.props.value[storableValue.length]
               : {},
         formIteration: storableValue.length,
+        isEditing: false,
       }
     this.setState(newState)
   }
