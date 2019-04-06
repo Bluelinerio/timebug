@@ -138,46 +138,30 @@ const migrations = {
     ...state,
     data: {},
   }),
-  3: state => {
-    const filterKeysExceptSteps = (obj: any) => {
-      const keys = Array(30)
-        .fill()
-        .map((num, index) => index + 1)
-      return Object.keys(obj)
-        .filter(key => keys.find(k => k === key))
-        .reduce((newObject, key) => {
-          const o = obj[key]
-          return {
-            ...newObject,
-            [key]: {
-              ...o,
-            },
-          }
-        }, {})
-    }
-    const stepData = filterKeysExceptSteps(state.data)
+  3: state => state,
+  4: state => {
+    const stepData = state.data
     const fixedStepData = Object.keys(stepData).reduce((newObject, key) => {
-      const stepData = stepData[key]
-      const { value } = stepData
+      const data = stepData[key]
+      const { value } = data
       const newValue = value.map(val => ({
         ...val,
         _meta: {
-          ...(val._meta || {}),
           version: 1,
         },
       }))
       return {
         ...newObject,
         [key]: {
-          ...stepData,
+          ...data,
           value: newValue,
         },
       }
-    })
+    }, {})
     return {
       ...state,
       data: {
-        ...state.data,
+        ...stepData,
         ...fixedStepData,
       },
     }
@@ -188,7 +172,7 @@ const persistConfig = {
   key: 'formData',
   storage: storage,
   blacklist: ['requestCount', 'loadingFormData'],
-  version: 3,
+  version: 4,
   migrate: createMigrate(migrations, { debug: true }),
 }
 
