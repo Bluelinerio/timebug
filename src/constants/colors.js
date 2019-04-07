@@ -1,5 +1,5 @@
 export const lightblue = '#48d0f1'
-export const seafoamBlue = '#6AC2ED' //(MEDITATION PGase)
+export const seafoamBlue = '#6AC2ED'
 export const deepBlue = '#00098A'
 export const lessSaturatedDeepBlue = '#21288A'
 export const white = 'white'
