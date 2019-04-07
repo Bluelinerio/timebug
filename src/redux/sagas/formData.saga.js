@@ -67,6 +67,12 @@ import { diffObjs } from '../utils/diffObjs'
 
 import tron from 'reactotron-react-native'
 
+import {
+  mySelectors,
+  removeAllKeyButStepIds,
+  removeAllKeysExceptValue,
+} from '../utils/sagaHelpers'
+
 /**
  * Helpers
  */
@@ -79,46 +85,6 @@ const log = payload =>
       value: payload,
     })
     : () => null
-
-const range = (start: number, end: number): Array<number> =>
-  Array(end - start)
-    .fill()
-    .map((v, i) => i + start)
-
-const stepIds: Array<string> = range(1, 31).map(v => v.toString())
-
-const removeAllKeyButStepIds = (obj: {}): any =>
-  Object.keys(obj)
-    .filter(k => stepIds.includes(k))
-    .reduce(
-      (sum, k) => ({
-        ...sum,
-        [k]: obj[k],
-      }),
-      {}
-    )
-
-const removeAllKeysExceptValue = (obj: {}): any =>
-  Object.keys(obj)
-    .filter(k => k === 'value')
-    .reduce(
-      (sum, k) => ({
-        ...sum,
-        [k]: obj[k],
-      }),
-      {}
-    )
-
-function* mySelectors(props: any): any {
-  const keys = Object.keys(props)
-  let result = {}
-  for (let index = 0; index < keys.length; index++) {
-    const key = keys[index]
-    const selector = props[key]
-    result[key] = yield select(selector)
-  }
-  return result
-}
 
 const findRepeatedForms = (formData: {}): {} => {
   return formData

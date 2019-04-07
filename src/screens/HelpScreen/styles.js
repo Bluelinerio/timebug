@@ -67,7 +67,7 @@ export default StyleSheet.create({
     }),
   },
   title: {
-    marginTop: -largeVerticalSpacing,
+    marginTop: -largeVerticalSpacing + 25,
     marginBottom: largeVerticalSpacing,
     color: 'white',
   },

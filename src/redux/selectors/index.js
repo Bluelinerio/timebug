@@ -289,10 +289,29 @@ const getTool = (key: string) => {
   return tool.tool
 }
 
+const allToolData = (state: any) => getAwards(state).data
+
 const awardDataForTool = (state: any) => ({ tool }: { tool: any }) => {
   const awardData = getAwards(state).data
   const dataForTool = awardData[`${tool.key}`] || null
   return dataForTool
+}
+
+const storedToolData = (state: any) => {
+  const data = getUser(state).toolData
+  const toolData = data.reduce((allToolsData, td) => {
+    const { value, ...rest } = td
+    return {
+      ...allToolsData,
+      [td.toolKey]: {
+        ...value,
+        _server: {
+          ...rest,
+        },
+      },
+    }
+  }, {})
+  return toolData
 }
 
 /**
@@ -449,6 +468,8 @@ const selectors = {
   notifications,
   navigationState,
   getCompletedSteps,
+  storedToolData,
+  allToolData,
 }
 
 export default selectors

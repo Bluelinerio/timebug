@@ -15,6 +15,7 @@ import {
   getValueFromAnswerType,
 }                                                 from '../utils/formHelpers'
 import { isFormValueInvalid }                     from '../validation/Form'
+import ProgressBar                                from 'react-native-progress/Bar'
 
 const DEBUG_DISPLAY = false
 
@@ -25,6 +26,7 @@ type Props = {
   disableAnswers?: boolean,
   CloseButton: () => React.node,
   editionIndex: boolean,
+  textAndButtonColor: string,
   formStyles: {
     headerTextStyle: any,
     textStyle: any,
@@ -113,6 +115,7 @@ class Form extends React.PureComponent<Props, any> {
       numberOfFields: Object.keys(this.model.fields).length,
       indexesMap,
       isEditing,
+      formProgress: 0,
     }
   }
 
@@ -269,13 +272,14 @@ class Form extends React.PureComponent<Props, any> {
   }
 
   _onPress = () => {
-    const { fieldIndex, indexesMap, value } = this.state
+    const { fieldIndex, indexesMap, value, numberOfFields } = this.state
     const currentField = this.model.fields[fieldIndex]
     let newState = {
       fieldIndex: fieldIndex + 1,
       currentElementValue: value[indexesMap[fieldIndex + 1]]
         ? value[indexesMap[fieldIndex + 1]].value
         : null,
+      formProgress: (fieldIndex + 1) / numberOfFields,
     }
     if (!passiveTypes.find(el => el === currentField.type)) {
       const newValue = this._getNewValue()
@@ -317,6 +321,7 @@ class Form extends React.PureComponent<Props, any> {
               : {},
         formIteration: formIteration + 1,
         isEditing: false,
+        formProgress: 0,
       }
       : {
         fieldIndex: payload,
@@ -338,6 +343,7 @@ class Form extends React.PureComponent<Props, any> {
               : {},
         formIteration: storableValue.length,
         isEditing: false,
+        formProgress: 0,
       }
     this.setState(newState)
   }
@@ -383,6 +389,7 @@ class Form extends React.PureComponent<Props, any> {
       numberOfFields,
       value,
       disableAnswers,
+      formProgress,
     } = this.state
     const { CloseButton = null, formStyles = {} } = this.props
     const currentField = this.model.fields[fieldIndex] || []
@@ -392,6 +399,12 @@ class Form extends React.PureComponent<Props, any> {
       <View style={styles.container}>
         {CloseButton ? <CloseButton /> : null}
         <View style={styles.formContainer}>
+          <ProgressBar
+            progress={formProgress}
+            color={this.props.textAndButtonColor}
+            style={styles.progressBar}
+          />
+
           <FormPicker
             key={currentField.key}
             field={currentField}
