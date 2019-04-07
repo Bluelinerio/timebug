@@ -39,7 +39,7 @@ class GoalReview extends React.PureComponent<Props> {
       '',
       [
         {
-          text: 'Ok',
+          text: 'Delete',
           onPress: () => deleteGoal(),
         },
         {
@@ -58,12 +58,16 @@ class GoalReview extends React.PureComponent<Props> {
       '',
       [
         {
-          text: 'Ok',
+          text: 'Edit',
           onPress: () => toggleGoal(true),
         },
         {
-          text: 'Cancel',
+          text: 'Do not edit',
           onPress: () => toggleGoal(false),
+        },
+        {
+          text: 'Cancel',
+          onPress: () => null,
         },
       ],
       { cancelable: false }
