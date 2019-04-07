@@ -1,6 +1,12 @@
-import { StyleSheet, Platform }               from 'react-native'
-import { iOSUIKit }                           from 'react-native-typography'
-import { darkBlue, gray50, gray400, gray200 } from '2020_constants/colors'
+import { StyleSheet, Platform } from 'react-native'
+import { iOSUIKit }             from 'react-native-typography'
+import {
+  darkBlue,
+  gray50,
+  gray400,
+  gray200,
+  VISION_CREATION,
+}                               from '2020_constants/colors'
 
 export default StyleSheet.create({
   headerArea: {
@@ -130,5 +136,25 @@ export default StyleSheet.create({
     ...iOSUIKit.subheadEmphasizedObject,
     textAlign: 'center',
     color: gray50,
+  },
+  goalScreenTypes: {
+    textAlign: 'center',
+  },
+  substepDataContainer: {
+    marginVertical: 3,
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+    paddingLeft: 12,
+  },
+  substepTitle: {
+    ...iOSUIKit.subheadEmphasizedObject,
+    color: darkBlue,
+  },
+  completedSubstep: {
+    color: VISION_CREATION,
+  },
+  incompleteSubstep: {
+    color: gray400,
   },
 })

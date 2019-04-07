@@ -8,12 +8,13 @@ import { deleteSingleFormElement }       from '2020_redux/actions/formData.actio
 import type { DeleteFormValuePayload }   from '2020_redux/actions/formData.actions'
 import { goToV2WorkbookScreen }          from '2020_redux/actions/nav.actions'
 import type { GoToWorkbookParams }       from '2020_redux/actions/nav.actions'
-import { CommonGoalOutcomesArray }       from '2020_forms/forms/content'
+import { timeToCompleteGoal }            from '2020_forms/forms/content'
 import { FORM_KEYS }                     from '2020_forms/forms/goals'
 import { DATE_FORMAT, TEXT_DATE_FORMAT } from '2020_constants/constants'
 import { stepEnum }                      from '2020_services/cms'
 import { translateCMSPhaseToStandard }   from '2020_services/cms'
 import BackloggedGoalDetails             from '../components/BackloggedGoalDetails'
+import { getDueDate }                    from '../../common/utils/getDueDateFromFrequency'
 
 type StateProps = {
   formData: {
@@ -22,6 +23,15 @@ type StateProps = {
       value: Array<any>,
     },
   },
+}
+
+const CLEARED = true
+
+const NOT_CLEARED = false
+
+export const STATUS = {
+  CLEARED,
+  NOT_CLEARED,
 }
 
 type OwnProps = {
@@ -113,15 +123,45 @@ const fullyDeleteGoal = (
   }
 }
 
+const mergeSubstepFormDataWithAwards = (substepFormData, goal, awardData) => {
+  const awardValue = awardData ? awardData.value || [] : []
+  const awardDataForGoal = awardValue.find(g => g.goalId === goal._id) || {}
+  const awardSubstepsForGoal = awardDataForGoal.substeps || []
+  const mergedSteps = substepFormData.map(substep => {
+    const awardDataForSubstep =
+      awardSubstepsForGoal.find(s => s.substepId === substep._id) || null
+    return {
+      ...substep,
+      award: awardDataForSubstep,
+    }
+  })
+  return mergedSteps
+}
+
 const merge = (
   stateProps: StateProps,
   dispatchProps: any,
   ownProps: OwnProps
 ) => {
   const { goal, data, storeAwardData, tool, unsetGoal } = ownProps
+  const title = goal[FORM_KEYS.form_5_recent_life_goals].value || ''
+  const types = goal[FORM_KEYS.form_5_areas_of_life].value || []
+  const steps = goal[FORM_KEYS.form_5_steps].value || []
+  const substepsMerged = mergeSubstepFormDataWithAwards(steps, goal, data)
+  const time = goal[FORM_KEYS.form_5_how_long].value
+  const timeText = timeToCompleteGoal[time].text
+  const goalAwardData =
+    data && data.value ? data.value.find(v => v.goalId === goal._id) : {}
+  const dialogElements = timeToCompleteGoal[time].estimate
+    ? timeToCompleteGoal[time].estimate.map(e => ({
+      key: e,
+      text: e,
+    }))
+    : null
+  const frequency = timeToCompleteGoal[time].frequency
   const { deleteGoal: callDeleteGoal, reopenGoalScreen } = dispatchProps
-  const { steps, formData } = stateProps
-  const step = steps[stepEnum.STEP_5]
+  const { steps: formSteps, formData } = stateProps
+  const step = formSteps[stepEnum.STEP_5]
   const phase = translateCMSPhaseToStandard(step.type)
   const formDataForStep = formData[stepEnum.STEP_5].value
   const editionIndex = formDataForStep.reduce((currentIndex, f, index) => {
@@ -130,7 +170,6 @@ const merge = (
   }, -1)
   const reopen = reopenGoalScreen({ step, phase, editionIndex })
   const deletionDate = goal.toolData.deletionDate
-  const title = goal[FORM_KEYS.form_5_recent_life_goals].value || ''
   const toggleGoal = reopenGoal(
     goal,
     data,
@@ -148,7 +187,8 @@ const merge = (
     unsetGoal
   )
   const goalOutcome = goal.toolData.goalOutcome
-  const dialogElements = CommonGoalOutcomesArray
+  /* eslint-disable-next-line no-unused-vars */
+  const [_, completionDate] = getDueDate(goal, timeToCompleteGoal[time].moment)
   return {
     goal,
     toggleGoal,
@@ -158,6 +198,13 @@ const merge = (
     dialogElements,
     deletionDate,
     goalOutcome,
+    goalAwardData,
+    types,
+    steps: substepsMerged,
+    frequency,
+    time: timeText,
+    status: STATUS,
+    completionDate,
   }
 }
 
