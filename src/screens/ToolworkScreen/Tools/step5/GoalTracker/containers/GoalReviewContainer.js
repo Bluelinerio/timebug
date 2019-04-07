@@ -7,9 +7,9 @@ import selectors                         from '2020_redux/selectors'
 import { FORM_KEYS }                     from '2020_forms/forms/goals'
 import { DATE_FORMAT, TEXT_DATE_FORMAT } from '2020_constants/constants'
 import { timeToCompleteGoal }            from '2020_forms/forms/content'
-import GoalReview                        from '../components/GoalReview'
-import { getDueDate }                    from '../utils/getDueDateFromFrequency'
 import { CommonGoalOutcomesArray }       from '2020_forms/forms/content'
+import GoalReview                        from '../components/GoalReview'
+import { getDueDate }                    from '../../common/utils/getDueDateFromFrequency'
 
 // TODO: Refactor methods that change goals award data to a single one
 
