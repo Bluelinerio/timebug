@@ -60,8 +60,11 @@ class SubHeader extends React.PureComponent<Props> {
         )}
         <View style={[commonStyles.container, styles.subHeader]}>
           <View style={styles.buttonHeaderArea}>
-            <TouchableOpacity onPress={onBack}>
+            <TouchableOpacity onPress={onBack} style={styles.buttonHeader}>
               <Icon name={'ios-arrow-back'} size={24} color={iconColor} />
+              <Text style={[styles.headerBacktext, { color: iconColor }]}>
+                Back
+              </Text>
             </TouchableOpacity>
           </View>
         </View>

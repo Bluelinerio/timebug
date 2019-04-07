@@ -31,6 +31,13 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  buttonHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  headerBacktext: {
+    paddingLeft: 12,
+  },
   tabBar: {
     flex: 2,
     flexDirection: 'row',

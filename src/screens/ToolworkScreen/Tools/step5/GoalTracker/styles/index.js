@@ -6,7 +6,8 @@ export default StyleSheet.create({
   goalArchiveLinkContainer: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginVertical: 10,
+    marginTop: 10,
+    marginBottom: 16,
   },
   goalArchiveLink: {
     ...iOSUIKit.bodyEmphasizedObject,
