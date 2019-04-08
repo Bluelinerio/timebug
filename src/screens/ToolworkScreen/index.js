@@ -5,7 +5,9 @@ import { headerColor }                         from './styles'
 
 ToolworkScreen.navigationOptions = ({ navigation: { dispatch, state } }) => {
   return {
-    title: `${state.params.tool.title}`,
+    title: state.params.title
+      ? state.params.title
+      : `${state.params.tool.title}`,
     headerStyle: {
       backgroundColor: headerColor,
     },

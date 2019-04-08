@@ -1,5 +1,5 @@
 //@ flow
-import moment                            from 'moment'
+import moment               from 'moment'
 import { TEXT_DATE_FORMAT } from '2020_constants/constants'
 
 export const getDueDate = (

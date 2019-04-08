@@ -46,6 +46,10 @@ export const RESTORE_FORM_DATA = 'RESTORE_FORM_DATA'
 
 export const SYNC_SIDE_EFFECTS = 'SYNC_SIDE_EFFECTS'
 
+export const DELETE_FORM_VALUE = 'DELETE_FORM_VALUE'
+
+export const EDIT_FORM_VALUE = 'EDIT_FORM_VALUE'
+
 /**
  * Awards / Tools
  */

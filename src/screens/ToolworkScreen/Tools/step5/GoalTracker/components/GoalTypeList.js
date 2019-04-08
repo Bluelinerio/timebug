@@ -3,7 +3,7 @@ import React                        from 'react'
 import { View, Text }               from 'react-native'
 import { GoalType }                 from '2020_forms/forms/content'
 import GoalCategoryElementContainer from '../containers/GoalCategoryElementContainer'
-import styles                       from '../styles'
+import styles                       from '../../common/styles'
 
 type Props = {
   onSelect: String => any,

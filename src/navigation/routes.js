@@ -7,7 +7,7 @@ export default {
     initialRouteName: 'StartScreen',
     MarkdownScreen: 'MarkdownScreen',
     EmojiPickerScreen: 'EmojiPickerScreen',
-    V2Navigator_root: 'V2Navigator_root',
+    WorkbookScreen: 'WorkbookScreen',
   },
   step: {
     StepScreen: 'StepScreen',

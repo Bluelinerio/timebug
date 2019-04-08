@@ -1,0 +1,1897 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Backlogged goals details component it should render the component 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <GoalReview
+    deletionDate="123456789"
+    dialogElements={
+      Array [
+        Object {
+          "key": "some_key",
+          "text": "some_text",
+        },
+        Object {
+          "key": "some_key2",
+          "text": "some_text2",
+        },
+      ]
+    }
+    goalOutcome="some_outcome"
+    title="Some goal title"
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "function",
+    "props": Object {
+      "children": Array [
+        <Component
+          style={
+            Array [
+              Object {
+                "marginBottom": 10,
+              },
+              Object {
+                "alignItems": "center",
+                "justifyContent": "center",
+              },
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "transparent",
+                  "color": "#0D47A1",
+                  "fontFamily": "System",
+                  "fontSize": 20,
+                  "fontWeight": "600",
+                  "letterSpacing": 0.75,
+                  "lineHeight": 25,
+                  "textAlign": "justify",
+                },
+                Object {
+                  "fontSize": 30,
+                  "lineHeight": 30,
+                  "textAlign": "center",
+                },
+              ]
+            }
+          >
+            Some goal title
+          </Text>
+        </Component>,
+        <Component
+          style={
+            Object {
+              "flex": 1,
+            }
+          }
+        >
+          <Component
+            style={
+              Array [
+                Object {},
+                Object {
+                  "paddingLeft": 16,
+                },
+                Object {
+                  "marginVertical": 4,
+                },
+                undefined,
+              ]
+            }
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                  "color": "#0D47A1",
+                  "fontFamily": "System",
+                  "fontSize": 17,
+                  "fontWeight": "600",
+                  "letterSpacing": -0.41,
+                  "lineHeight": 22,
+                  "textAlign": "justify",
+                }
+              }
+            >
+              This goal was deleted at: 
+              123456789
+            </Text>
+          </Component>
+          <Component
+            style={
+              Object {
+                "alignItems": "center",
+                "flex": 1,
+                "flexDirection": "row",
+                "justifyContent": "space-around",
+                "paddingHorizontal": 8,
+                "paddingVertical": 5,
+              }
+            }
+          >
+            <TouchableOpacity
+              activeOpacity={0.2}
+              onPress={[Function]}
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#4EADFF",
+                    "borderRadius": 12,
+                    "height": 50,
+                    "justifyContent": "center",
+                    "maxWidth": 80,
+                    "paddingHorizontal": 2,
+                    "paddingVertical": 4,
+                    "shadowColor": "black",
+                    "shadowOffset": Object {
+                      "height": 2,
+                      "width": 2,
+                    },
+                    "shadowOpacity": 0.3,
+                    "shadowRadius": 12,
+                    "width": 80,
+                  },
+                  Object {
+                    "backgroundColor": "#005587",
+                    "maxWidth": 100,
+                    "width": 100,
+                  },
+                ]
+              }
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "transparent",
+                      "color": "#FAFAFA",
+                      "fontFamily": "System",
+                      "fontSize": 13,
+                      "fontWeight": "400",
+                      "letterSpacing": -0.078,
+                      "lineHeight": 18,
+                      "textAlign": "center",
+                    },
+                    Object {
+                      "backgroundColor": "transparent",
+                      "color": "#FAFAFA",
+                      "fontFamily": "System",
+                      "fontSize": 15,
+                      "fontWeight": "600",
+                      "letterSpacing": -0.24,
+                      "lineHeight": 20,
+                      "textAlign": "center",
+                    },
+                  ]
+                }
+              >
+                Reopen
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              activeOpacity={0.2}
+              onPress={[Function]}
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#4EADFF",
+                    "borderRadius": 12,
+                    "height": 50,
+                    "justifyContent": "center",
+                    "maxWidth": 80,
+                    "paddingHorizontal": 2,
+                    "paddingVertical": 4,
+                    "shadowColor": "black",
+                    "shadowOffset": Object {
+                      "height": 2,
+                      "width": 2,
+                    },
+                    "shadowOpacity": 0.3,
+                    "shadowRadius": 12,
+                    "width": 80,
+                  },
+                  Object {
+                    "backgroundColor": "#005587",
+                    "maxWidth": 100,
+                    "width": 100,
+                  },
+                ]
+              }
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "transparent",
+                      "color": "#FAFAFA",
+                      "fontFamily": "System",
+                      "fontSize": 13,
+                      "fontWeight": "400",
+                      "letterSpacing": -0.078,
+                      "lineHeight": 18,
+                      "textAlign": "center",
+                    },
+                    Object {
+                      "backgroundColor": "transparent",
+                      "color": "#FAFAFA",
+                      "fontFamily": "System",
+                      "fontSize": 15,
+                      "fontWeight": "600",
+                      "letterSpacing": -0.24,
+                      "lineHeight": 20,
+                      "textAlign": "center",
+                    },
+                  ]
+                }
+              >
+                Delete
+              </Text>
+            </TouchableOpacity>
+          </Component>
+        </Component>,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "transparent",
+                  "color": "#0D47A1",
+                  "fontFamily": "System",
+                  "fontSize": 20,
+                  "fontWeight": "600",
+                  "letterSpacing": 0.75,
+                  "lineHeight": 25,
+                  "textAlign": "justify",
+                },
+                Object {
+                  "fontSize": 30,
+                  "lineHeight": 30,
+                  "textAlign": "center",
+                },
+              ]
+            }
+          >
+            Some goal title
+          </Text>,
+          "style": Array [
+            Object {
+              "marginBottom": 10,
+            },
+            Object {
+              "alignItems": "center",
+              "justifyContent": "center",
+            },
+          ],
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "accessible": true,
+            "allowFontScaling": true,
+            "children": "Some goal title",
+            "ellipsizeMode": "tail",
+            "style": Array [
+              Object {
+                "backgroundColor": "transparent",
+                "color": "#0D47A1",
+                "fontFamily": "System",
+                "fontSize": 20,
+                "fontWeight": "600",
+                "letterSpacing": 0.75,
+                "lineHeight": 25,
+                "textAlign": "justify",
+              },
+              Object {
+                "fontSize": 30,
+                "lineHeight": 30,
+                "textAlign": "center",
+              },
+            ],
+          },
+          "ref": null,
+          "rendered": "Some goal title",
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <Component
+              style={
+                Array [
+                  Object {},
+                  Object {
+                    "paddingLeft": 16,
+                  },
+                  Object {
+                    "marginVertical": 4,
+                  },
+                  undefined,
+                ]
+              }
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "backgroundColor": "transparent",
+                    "color": "#0D47A1",
+                    "fontFamily": "System",
+                    "fontSize": 17,
+                    "fontWeight": "600",
+                    "letterSpacing": -0.41,
+                    "lineHeight": 22,
+                    "textAlign": "justify",
+                  }
+                }
+              >
+                This goal was deleted at: 
+                123456789
+              </Text>
+            </Component>,
+            <Component
+              style={
+                Object {
+                  "alignItems": "center",
+                  "flex": 1,
+                  "flexDirection": "row",
+                  "justifyContent": "space-around",
+                  "paddingHorizontal": 8,
+                  "paddingVertical": 5,
+                }
+              }
+            >
+              <TouchableOpacity
+                activeOpacity={0.2}
+                onPress={[Function]}
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#4EADFF",
+                      "borderRadius": 12,
+                      "height": 50,
+                      "justifyContent": "center",
+                      "maxWidth": 80,
+                      "paddingHorizontal": 2,
+                      "paddingVertical": 4,
+                      "shadowColor": "black",
+                      "shadowOffset": Object {
+                        "height": 2,
+                        "width": 2,
+                      },
+                      "shadowOpacity": 0.3,
+                      "shadowRadius": 12,
+                      "width": 80,
+                    },
+                    Object {
+                      "backgroundColor": "#005587",
+                      "maxWidth": 100,
+                      "width": 100,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  ellipsizeMode="tail"
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "transparent",
+                        "color": "#FAFAFA",
+                        "fontFamily": "System",
+                        "fontSize": 13,
+                        "fontWeight": "400",
+                        "letterSpacing": -0.078,
+                        "lineHeight": 18,
+                        "textAlign": "center",
+                      },
+                      Object {
+                        "backgroundColor": "transparent",
+                        "color": "#FAFAFA",
+                        "fontFamily": "System",
+                        "fontSize": 15,
+                        "fontWeight": "600",
+                        "letterSpacing": -0.24,
+                        "lineHeight": 20,
+                        "textAlign": "center",
+                      },
+                    ]
+                  }
+                >
+                  Reopen
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                activeOpacity={0.2}
+                onPress={[Function]}
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#4EADFF",
+                      "borderRadius": 12,
+                      "height": 50,
+                      "justifyContent": "center",
+                      "maxWidth": 80,
+                      "paddingHorizontal": 2,
+                      "paddingVertical": 4,
+                      "shadowColor": "black",
+                      "shadowOffset": Object {
+                        "height": 2,
+                        "width": 2,
+                      },
+                      "shadowOpacity": 0.3,
+                      "shadowRadius": 12,
+                      "width": 80,
+                    },
+                    Object {
+                      "backgroundColor": "#005587",
+                      "maxWidth": 100,
+                      "width": 100,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  ellipsizeMode="tail"
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "transparent",
+                        "color": "#FAFAFA",
+                        "fontFamily": "System",
+                        "fontSize": 13,
+                        "fontWeight": "400",
+                        "letterSpacing": -0.078,
+                        "lineHeight": 18,
+                        "textAlign": "center",
+                      },
+                      Object {
+                        "backgroundColor": "transparent",
+                        "color": "#FAFAFA",
+                        "fontFamily": "System",
+                        "fontSize": 15,
+                        "fontWeight": "600",
+                        "letterSpacing": -0.24,
+                        "lineHeight": 20,
+                        "textAlign": "center",
+                      },
+                    ]
+                  }
+                >
+                  Delete
+                </Text>
+              </TouchableOpacity>
+            </Component>,
+          ],
+          "style": Object {
+            "flex": 1,
+          },
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "backgroundColor": "transparent",
+                    "color": "#0D47A1",
+                    "fontFamily": "System",
+                    "fontSize": 17,
+                    "fontWeight": "600",
+                    "letterSpacing": -0.41,
+                    "lineHeight": 22,
+                    "textAlign": "justify",
+                  }
+                }
+              >
+                This goal was deleted at: 
+                123456789
+              </Text>,
+              "style": Array [
+                Object {},
+                Object {
+                  "paddingLeft": 16,
+                },
+                Object {
+                  "marginVertical": 4,
+                },
+                undefined,
+              ],
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "accessible": true,
+                "allowFontScaling": true,
+                "children": Array [
+                  "This goal was deleted at: ",
+                  "123456789",
+                ],
+                "ellipsizeMode": "tail",
+                "style": Object {
+                  "backgroundColor": "transparent",
+                  "color": "#0D47A1",
+                  "fontFamily": "System",
+                  "fontSize": 17,
+                  "fontWeight": "600",
+                  "letterSpacing": -0.41,
+                  "lineHeight": 22,
+                  "textAlign": "justify",
+                },
+              },
+              "ref": null,
+              "rendered": Array [
+                "This goal was deleted at: ",
+                "123456789",
+              ],
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                <TouchableOpacity
+                  activeOpacity={0.2}
+                  onPress={[Function]}
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "#4EADFF",
+                        "borderRadius": 12,
+                        "height": 50,
+                        "justifyContent": "center",
+                        "maxWidth": 80,
+                        "paddingHorizontal": 2,
+                        "paddingVertical": 4,
+                        "shadowColor": "black",
+                        "shadowOffset": Object {
+                          "height": 2,
+                          "width": 2,
+                        },
+                        "shadowOpacity": 0.3,
+                        "shadowRadius": 12,
+                        "width": 80,
+                      },
+                      Object {
+                        "backgroundColor": "#005587",
+                        "maxWidth": 100,
+                        "width": 100,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    ellipsizeMode="tail"
+                    style={
+                      Array [
+                        Object {
+                          "backgroundColor": "transparent",
+                          "color": "#FAFAFA",
+                          "fontFamily": "System",
+                          "fontSize": 13,
+                          "fontWeight": "400",
+                          "letterSpacing": -0.078,
+                          "lineHeight": 18,
+                          "textAlign": "center",
+                        },
+                        Object {
+                          "backgroundColor": "transparent",
+                          "color": "#FAFAFA",
+                          "fontFamily": "System",
+                          "fontSize": 15,
+                          "fontWeight": "600",
+                          "letterSpacing": -0.24,
+                          "lineHeight": 20,
+                          "textAlign": "center",
+                        },
+                      ]
+                    }
+                  >
+                    Reopen
+                  </Text>
+                </TouchableOpacity>,
+                <TouchableOpacity
+                  activeOpacity={0.2}
+                  onPress={[Function]}
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "#4EADFF",
+                        "borderRadius": 12,
+                        "height": 50,
+                        "justifyContent": "center",
+                        "maxWidth": 80,
+                        "paddingHorizontal": 2,
+                        "paddingVertical": 4,
+                        "shadowColor": "black",
+                        "shadowOffset": Object {
+                          "height": 2,
+                          "width": 2,
+                        },
+                        "shadowOpacity": 0.3,
+                        "shadowRadius": 12,
+                        "width": 80,
+                      },
+                      Object {
+                        "backgroundColor": "#005587",
+                        "maxWidth": 100,
+                        "width": 100,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    ellipsizeMode="tail"
+                    style={
+                      Array [
+                        Object {
+                          "backgroundColor": "transparent",
+                          "color": "#FAFAFA",
+                          "fontFamily": "System",
+                          "fontSize": 13,
+                          "fontWeight": "400",
+                          "letterSpacing": -0.078,
+                          "lineHeight": 18,
+                          "textAlign": "center",
+                        },
+                        Object {
+                          "backgroundColor": "transparent",
+                          "color": "#FAFAFA",
+                          "fontFamily": "System",
+                          "fontSize": 15,
+                          "fontWeight": "600",
+                          "letterSpacing": -0.24,
+                          "lineHeight": 20,
+                          "textAlign": "center",
+                        },
+                      ]
+                    }
+                  >
+                    Delete
+                  </Text>
+                </TouchableOpacity>,
+              ],
+              "style": Object {
+                "alignItems": "center",
+                "flex": 1,
+                "flexDirection": "row",
+                "justifyContent": "space-around",
+                "paddingHorizontal": 8,
+                "paddingVertical": 5,
+              },
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "activeOpacity": 0.2,
+                  "children": <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    ellipsizeMode="tail"
+                    style={
+                      Array [
+                        Object {
+                          "backgroundColor": "transparent",
+                          "color": "#FAFAFA",
+                          "fontFamily": "System",
+                          "fontSize": 13,
+                          "fontWeight": "400",
+                          "letterSpacing": -0.078,
+                          "lineHeight": 18,
+                          "textAlign": "center",
+                        },
+                        Object {
+                          "backgroundColor": "transparent",
+                          "color": "#FAFAFA",
+                          "fontFamily": "System",
+                          "fontSize": 15,
+                          "fontWeight": "600",
+                          "letterSpacing": -0.24,
+                          "lineHeight": 20,
+                          "textAlign": "center",
+                        },
+                      ]
+                    }
+                  >
+                    Reopen
+                  </Text>,
+                  "onPress": [Function],
+                  "style": Array [
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#4EADFF",
+                      "borderRadius": 12,
+                      "height": 50,
+                      "justifyContent": "center",
+                      "maxWidth": 80,
+                      "paddingHorizontal": 2,
+                      "paddingVertical": 4,
+                      "shadowColor": "black",
+                      "shadowOffset": Object {
+                        "height": 2,
+                        "width": 2,
+                      },
+                      "shadowOpacity": 0.3,
+                      "shadowRadius": 12,
+                      "width": 80,
+                    },
+                    Object {
+                      "backgroundColor": "#005587",
+                      "maxWidth": 100,
+                      "width": 100,
+                    },
+                  ],
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "accessible": true,
+                    "allowFontScaling": true,
+                    "children": "Reopen",
+                    "ellipsizeMode": "tail",
+                    "style": Array [
+                      Object {
+                        "backgroundColor": "transparent",
+                        "color": "#FAFAFA",
+                        "fontFamily": "System",
+                        "fontSize": 13,
+                        "fontWeight": "400",
+                        "letterSpacing": -0.078,
+                        "lineHeight": 18,
+                        "textAlign": "center",
+                      },
+                      Object {
+                        "backgroundColor": "transparent",
+                        "color": "#FAFAFA",
+                        "fontFamily": "System",
+                        "fontSize": 15,
+                        "fontWeight": "600",
+                        "letterSpacing": -0.24,
+                        "lineHeight": 20,
+                        "textAlign": "center",
+                      },
+                    ],
+                  },
+                  "ref": null,
+                  "rendered": "Reopen",
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "activeOpacity": 0.2,
+                  "children": <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    ellipsizeMode="tail"
+                    style={
+                      Array [
+                        Object {
+                          "backgroundColor": "transparent",
+                          "color": "#FAFAFA",
+                          "fontFamily": "System",
+                          "fontSize": 13,
+                          "fontWeight": "400",
+                          "letterSpacing": -0.078,
+                          "lineHeight": 18,
+                          "textAlign": "center",
+                        },
+                        Object {
+                          "backgroundColor": "transparent",
+                          "color": "#FAFAFA",
+                          "fontFamily": "System",
+                          "fontSize": 15,
+                          "fontWeight": "600",
+                          "letterSpacing": -0.24,
+                          "lineHeight": 20,
+                          "textAlign": "center",
+                        },
+                      ]
+                    }
+                  >
+                    Delete
+                  </Text>,
+                  "onPress": [Function],
+                  "style": Array [
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#4EADFF",
+                      "borderRadius": 12,
+                      "height": 50,
+                      "justifyContent": "center",
+                      "maxWidth": 80,
+                      "paddingHorizontal": 2,
+                      "paddingVertical": 4,
+                      "shadowColor": "black",
+                      "shadowOffset": Object {
+                        "height": 2,
+                        "width": 2,
+                      },
+                      "shadowOpacity": 0.3,
+                      "shadowRadius": 12,
+                      "width": 80,
+                    },
+                    Object {
+                      "backgroundColor": "#005587",
+                      "maxWidth": 100,
+                      "width": 100,
+                    },
+                  ],
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "accessible": true,
+                    "allowFontScaling": true,
+                    "children": "Delete",
+                    "ellipsizeMode": "tail",
+                    "style": Array [
+                      Object {
+                        "backgroundColor": "transparent",
+                        "color": "#FAFAFA",
+                        "fontFamily": "System",
+                        "fontSize": 13,
+                        "fontWeight": "400",
+                        "letterSpacing": -0.078,
+                        "lineHeight": 18,
+                        "textAlign": "center",
+                      },
+                      Object {
+                        "backgroundColor": "transparent",
+                        "color": "#FAFAFA",
+                        "fontFamily": "System",
+                        "fontSize": 15,
+                        "fontWeight": "600",
+                        "letterSpacing": -0.24,
+                        "lineHeight": 20,
+                        "textAlign": "center",
+                      },
+                    ],
+                  },
+                  "ref": null,
+                  "rendered": "Delete",
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+    ],
+    "type": Symbol(react.fragment),
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": Array [
+          <Component
+            style={
+              Array [
+                Object {
+                  "marginBottom": 10,
+                },
+                Object {
+                  "alignItems": "center",
+                  "justifyContent": "center",
+                },
+              ]
+            }
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "transparent",
+                    "color": "#0D47A1",
+                    "fontFamily": "System",
+                    "fontSize": 20,
+                    "fontWeight": "600",
+                    "letterSpacing": 0.75,
+                    "lineHeight": 25,
+                    "textAlign": "justify",
+                  },
+                  Object {
+                    "fontSize": 30,
+                    "lineHeight": 30,
+                    "textAlign": "center",
+                  },
+                ]
+              }
+            >
+              Some goal title
+            </Text>
+          </Component>,
+          <Component
+            style={
+              Object {
+                "flex": 1,
+              }
+            }
+          >
+            <Component
+              style={
+                Array [
+                  Object {},
+                  Object {
+                    "paddingLeft": 16,
+                  },
+                  Object {
+                    "marginVertical": 4,
+                  },
+                  undefined,
+                ]
+              }
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "backgroundColor": "transparent",
+                    "color": "#0D47A1",
+                    "fontFamily": "System",
+                    "fontSize": 17,
+                    "fontWeight": "600",
+                    "letterSpacing": -0.41,
+                    "lineHeight": 22,
+                    "textAlign": "justify",
+                  }
+                }
+              >
+                This goal was deleted at: 
+                123456789
+              </Text>
+            </Component>
+            <Component
+              style={
+                Object {
+                  "alignItems": "center",
+                  "flex": 1,
+                  "flexDirection": "row",
+                  "justifyContent": "space-around",
+                  "paddingHorizontal": 8,
+                  "paddingVertical": 5,
+                }
+              }
+            >
+              <TouchableOpacity
+                activeOpacity={0.2}
+                onPress={[Function]}
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#4EADFF",
+                      "borderRadius": 12,
+                      "height": 50,
+                      "justifyContent": "center",
+                      "maxWidth": 80,
+                      "paddingHorizontal": 2,
+                      "paddingVertical": 4,
+                      "shadowColor": "black",
+                      "shadowOffset": Object {
+                        "height": 2,
+                        "width": 2,
+                      },
+                      "shadowOpacity": 0.3,
+                      "shadowRadius": 12,
+                      "width": 80,
+                    },
+                    Object {
+                      "backgroundColor": "#005587",
+                      "maxWidth": 100,
+                      "width": 100,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  ellipsizeMode="tail"
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "transparent",
+                        "color": "#FAFAFA",
+                        "fontFamily": "System",
+                        "fontSize": 13,
+                        "fontWeight": "400",
+                        "letterSpacing": -0.078,
+                        "lineHeight": 18,
+                        "textAlign": "center",
+                      },
+                      Object {
+                        "backgroundColor": "transparent",
+                        "color": "#FAFAFA",
+                        "fontFamily": "System",
+                        "fontSize": 15,
+                        "fontWeight": "600",
+                        "letterSpacing": -0.24,
+                        "lineHeight": 20,
+                        "textAlign": "center",
+                      },
+                    ]
+                  }
+                >
+                  Reopen
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                activeOpacity={0.2}
+                onPress={[Function]}
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#4EADFF",
+                      "borderRadius": 12,
+                      "height": 50,
+                      "justifyContent": "center",
+                      "maxWidth": 80,
+                      "paddingHorizontal": 2,
+                      "paddingVertical": 4,
+                      "shadowColor": "black",
+                      "shadowOffset": Object {
+                        "height": 2,
+                        "width": 2,
+                      },
+                      "shadowOpacity": 0.3,
+                      "shadowRadius": 12,
+                      "width": 80,
+                    },
+                    Object {
+                      "backgroundColor": "#005587",
+                      "maxWidth": 100,
+                      "width": 100,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  ellipsizeMode="tail"
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "transparent",
+                        "color": "#FAFAFA",
+                        "fontFamily": "System",
+                        "fontSize": 13,
+                        "fontWeight": "400",
+                        "letterSpacing": -0.078,
+                        "lineHeight": 18,
+                        "textAlign": "center",
+                      },
+                      Object {
+                        "backgroundColor": "transparent",
+                        "color": "#FAFAFA",
+                        "fontFamily": "System",
+                        "fontSize": 15,
+                        "fontWeight": "600",
+                        "letterSpacing": -0.24,
+                        "lineHeight": 20,
+                        "textAlign": "center",
+                      },
+                    ]
+                  }
+                >
+                  Delete
+                </Text>
+              </TouchableOpacity>
+            </Component>
+          </Component>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "transparent",
+                    "color": "#0D47A1",
+                    "fontFamily": "System",
+                    "fontSize": 20,
+                    "fontWeight": "600",
+                    "letterSpacing": 0.75,
+                    "lineHeight": 25,
+                    "textAlign": "justify",
+                  },
+                  Object {
+                    "fontSize": 30,
+                    "lineHeight": 30,
+                    "textAlign": "center",
+                  },
+                ]
+              }
+            >
+              Some goal title
+            </Text>,
+            "style": Array [
+              Object {
+                "marginBottom": 10,
+              },
+              Object {
+                "alignItems": "center",
+                "justifyContent": "center",
+              },
+            ],
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "accessible": true,
+              "allowFontScaling": true,
+              "children": "Some goal title",
+              "ellipsizeMode": "tail",
+              "style": Array [
+                Object {
+                  "backgroundColor": "transparent",
+                  "color": "#0D47A1",
+                  "fontFamily": "System",
+                  "fontSize": 20,
+                  "fontWeight": "600",
+                  "letterSpacing": 0.75,
+                  "lineHeight": 25,
+                  "textAlign": "justify",
+                },
+                Object {
+                  "fontSize": 30,
+                  "lineHeight": 30,
+                  "textAlign": "center",
+                },
+              ],
+            },
+            "ref": null,
+            "rendered": "Some goal title",
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <Component
+                style={
+                  Array [
+                    Object {},
+                    Object {
+                      "paddingLeft": 16,
+                    },
+                    Object {
+                      "marginVertical": 4,
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  ellipsizeMode="tail"
+                  style={
+                    Object {
+                      "backgroundColor": "transparent",
+                      "color": "#0D47A1",
+                      "fontFamily": "System",
+                      "fontSize": 17,
+                      "fontWeight": "600",
+                      "letterSpacing": -0.41,
+                      "lineHeight": 22,
+                      "textAlign": "justify",
+                    }
+                  }
+                >
+                  This goal was deleted at: 
+                  123456789
+                </Text>
+              </Component>,
+              <Component
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "flex": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "space-around",
+                    "paddingHorizontal": 8,
+                    "paddingVertical": 5,
+                  }
+                }
+              >
+                <TouchableOpacity
+                  activeOpacity={0.2}
+                  onPress={[Function]}
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "#4EADFF",
+                        "borderRadius": 12,
+                        "height": 50,
+                        "justifyContent": "center",
+                        "maxWidth": 80,
+                        "paddingHorizontal": 2,
+                        "paddingVertical": 4,
+                        "shadowColor": "black",
+                        "shadowOffset": Object {
+                          "height": 2,
+                          "width": 2,
+                        },
+                        "shadowOpacity": 0.3,
+                        "shadowRadius": 12,
+                        "width": 80,
+                      },
+                      Object {
+                        "backgroundColor": "#005587",
+                        "maxWidth": 100,
+                        "width": 100,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    ellipsizeMode="tail"
+                    style={
+                      Array [
+                        Object {
+                          "backgroundColor": "transparent",
+                          "color": "#FAFAFA",
+                          "fontFamily": "System",
+                          "fontSize": 13,
+                          "fontWeight": "400",
+                          "letterSpacing": -0.078,
+                          "lineHeight": 18,
+                          "textAlign": "center",
+                        },
+                        Object {
+                          "backgroundColor": "transparent",
+                          "color": "#FAFAFA",
+                          "fontFamily": "System",
+                          "fontSize": 15,
+                          "fontWeight": "600",
+                          "letterSpacing": -0.24,
+                          "lineHeight": 20,
+                          "textAlign": "center",
+                        },
+                      ]
+                    }
+                  >
+                    Reopen
+                  </Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  activeOpacity={0.2}
+                  onPress={[Function]}
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "#4EADFF",
+                        "borderRadius": 12,
+                        "height": 50,
+                        "justifyContent": "center",
+                        "maxWidth": 80,
+                        "paddingHorizontal": 2,
+                        "paddingVertical": 4,
+                        "shadowColor": "black",
+                        "shadowOffset": Object {
+                          "height": 2,
+                          "width": 2,
+                        },
+                        "shadowOpacity": 0.3,
+                        "shadowRadius": 12,
+                        "width": 80,
+                      },
+                      Object {
+                        "backgroundColor": "#005587",
+                        "maxWidth": 100,
+                        "width": 100,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    ellipsizeMode="tail"
+                    style={
+                      Array [
+                        Object {
+                          "backgroundColor": "transparent",
+                          "color": "#FAFAFA",
+                          "fontFamily": "System",
+                          "fontSize": 13,
+                          "fontWeight": "400",
+                          "letterSpacing": -0.078,
+                          "lineHeight": 18,
+                          "textAlign": "center",
+                        },
+                        Object {
+                          "backgroundColor": "transparent",
+                          "color": "#FAFAFA",
+                          "fontFamily": "System",
+                          "fontSize": 15,
+                          "fontWeight": "600",
+                          "letterSpacing": -0.24,
+                          "lineHeight": 20,
+                          "textAlign": "center",
+                        },
+                      ]
+                    }
+                  >
+                    Delete
+                  </Text>
+                </TouchableOpacity>
+              </Component>,
+            ],
+            "style": Object {
+              "flex": 1,
+            },
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  ellipsizeMode="tail"
+                  style={
+                    Object {
+                      "backgroundColor": "transparent",
+                      "color": "#0D47A1",
+                      "fontFamily": "System",
+                      "fontSize": 17,
+                      "fontWeight": "600",
+                      "letterSpacing": -0.41,
+                      "lineHeight": 22,
+                      "textAlign": "justify",
+                    }
+                  }
+                >
+                  This goal was deleted at: 
+                  123456789
+                </Text>,
+                "style": Array [
+                  Object {},
+                  Object {
+                    "paddingLeft": 16,
+                  },
+                  Object {
+                    "marginVertical": 4,
+                  },
+                  undefined,
+                ],
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "accessible": true,
+                  "allowFontScaling": true,
+                  "children": Array [
+                    "This goal was deleted at: ",
+                    "123456789",
+                  ],
+                  "ellipsizeMode": "tail",
+                  "style": Object {
+                    "backgroundColor": "transparent",
+                    "color": "#0D47A1",
+                    "fontFamily": "System",
+                    "fontSize": 17,
+                    "fontWeight": "600",
+                    "letterSpacing": -0.41,
+                    "lineHeight": 22,
+                    "textAlign": "justify",
+                  },
+                },
+                "ref": null,
+                "rendered": Array [
+                  "This goal was deleted at: ",
+                  "123456789",
+                ],
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  <TouchableOpacity
+                    activeOpacity={0.2}
+                    onPress={[Function]}
+                    style={
+                      Array [
+                        Object {
+                          "alignItems": "center",
+                          "backgroundColor": "#4EADFF",
+                          "borderRadius": 12,
+                          "height": 50,
+                          "justifyContent": "center",
+                          "maxWidth": 80,
+                          "paddingHorizontal": 2,
+                          "paddingVertical": 4,
+                          "shadowColor": "black",
+                          "shadowOffset": Object {
+                            "height": 2,
+                            "width": 2,
+                          },
+                          "shadowOpacity": 0.3,
+                          "shadowRadius": 12,
+                          "width": 80,
+                        },
+                        Object {
+                          "backgroundColor": "#005587",
+                          "maxWidth": 100,
+                          "width": 100,
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      accessible={true}
+                      allowFontScaling={true}
+                      ellipsizeMode="tail"
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "transparent",
+                            "color": "#FAFAFA",
+                            "fontFamily": "System",
+                            "fontSize": 13,
+                            "fontWeight": "400",
+                            "letterSpacing": -0.078,
+                            "lineHeight": 18,
+                            "textAlign": "center",
+                          },
+                          Object {
+                            "backgroundColor": "transparent",
+                            "color": "#FAFAFA",
+                            "fontFamily": "System",
+                            "fontSize": 15,
+                            "fontWeight": "600",
+                            "letterSpacing": -0.24,
+                            "lineHeight": 20,
+                            "textAlign": "center",
+                          },
+                        ]
+                      }
+                    >
+                      Reopen
+                    </Text>
+                  </TouchableOpacity>,
+                  <TouchableOpacity
+                    activeOpacity={0.2}
+                    onPress={[Function]}
+                    style={
+                      Array [
+                        Object {
+                          "alignItems": "center",
+                          "backgroundColor": "#4EADFF",
+                          "borderRadius": 12,
+                          "height": 50,
+                          "justifyContent": "center",
+                          "maxWidth": 80,
+                          "paddingHorizontal": 2,
+                          "paddingVertical": 4,
+                          "shadowColor": "black",
+                          "shadowOffset": Object {
+                            "height": 2,
+                            "width": 2,
+                          },
+                          "shadowOpacity": 0.3,
+                          "shadowRadius": 12,
+                          "width": 80,
+                        },
+                        Object {
+                          "backgroundColor": "#005587",
+                          "maxWidth": 100,
+                          "width": 100,
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      accessible={true}
+                      allowFontScaling={true}
+                      ellipsizeMode="tail"
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "transparent",
+                            "color": "#FAFAFA",
+                            "fontFamily": "System",
+                            "fontSize": 13,
+                            "fontWeight": "400",
+                            "letterSpacing": -0.078,
+                            "lineHeight": 18,
+                            "textAlign": "center",
+                          },
+                          Object {
+                            "backgroundColor": "transparent",
+                            "color": "#FAFAFA",
+                            "fontFamily": "System",
+                            "fontSize": 15,
+                            "fontWeight": "600",
+                            "letterSpacing": -0.24,
+                            "lineHeight": 20,
+                            "textAlign": "center",
+                          },
+                        ]
+                      }
+                    >
+                      Delete
+                    </Text>
+                  </TouchableOpacity>,
+                ],
+                "style": Object {
+                  "alignItems": "center",
+                  "flex": 1,
+                  "flexDirection": "row",
+                  "justifyContent": "space-around",
+                  "paddingHorizontal": 8,
+                  "paddingVertical": 5,
+                },
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "activeOpacity": 0.2,
+                    "children": <Text
+                      accessible={true}
+                      allowFontScaling={true}
+                      ellipsizeMode="tail"
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "transparent",
+                            "color": "#FAFAFA",
+                            "fontFamily": "System",
+                            "fontSize": 13,
+                            "fontWeight": "400",
+                            "letterSpacing": -0.078,
+                            "lineHeight": 18,
+                            "textAlign": "center",
+                          },
+                          Object {
+                            "backgroundColor": "transparent",
+                            "color": "#FAFAFA",
+                            "fontFamily": "System",
+                            "fontSize": 15,
+                            "fontWeight": "600",
+                            "letterSpacing": -0.24,
+                            "lineHeight": 20,
+                            "textAlign": "center",
+                          },
+                        ]
+                      }
+                    >
+                      Reopen
+                    </Text>,
+                    "onPress": [Function],
+                    "style": Array [
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "#4EADFF",
+                        "borderRadius": 12,
+                        "height": 50,
+                        "justifyContent": "center",
+                        "maxWidth": 80,
+                        "paddingHorizontal": 2,
+                        "paddingVertical": 4,
+                        "shadowColor": "black",
+                        "shadowOffset": Object {
+                          "height": 2,
+                          "width": 2,
+                        },
+                        "shadowOpacity": 0.3,
+                        "shadowRadius": 12,
+                        "width": 80,
+                      },
+                      Object {
+                        "backgroundColor": "#005587",
+                        "maxWidth": 100,
+                        "width": 100,
+                      },
+                    ],
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "accessible": true,
+                      "allowFontScaling": true,
+                      "children": "Reopen",
+                      "ellipsizeMode": "tail",
+                      "style": Array [
+                        Object {
+                          "backgroundColor": "transparent",
+                          "color": "#FAFAFA",
+                          "fontFamily": "System",
+                          "fontSize": 13,
+                          "fontWeight": "400",
+                          "letterSpacing": -0.078,
+                          "lineHeight": 18,
+                          "textAlign": "center",
+                        },
+                        Object {
+                          "backgroundColor": "transparent",
+                          "color": "#FAFAFA",
+                          "fontFamily": "System",
+                          "fontSize": 15,
+                          "fontWeight": "600",
+                          "letterSpacing": -0.24,
+                          "lineHeight": 20,
+                          "textAlign": "center",
+                        },
+                      ],
+                    },
+                    "ref": null,
+                    "rendered": "Reopen",
+                    "type": [Function],
+                  },
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "activeOpacity": 0.2,
+                    "children": <Text
+                      accessible={true}
+                      allowFontScaling={true}
+                      ellipsizeMode="tail"
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "transparent",
+                            "color": "#FAFAFA",
+                            "fontFamily": "System",
+                            "fontSize": 13,
+                            "fontWeight": "400",
+                            "letterSpacing": -0.078,
+                            "lineHeight": 18,
+                            "textAlign": "center",
+                          },
+                          Object {
+                            "backgroundColor": "transparent",
+                            "color": "#FAFAFA",
+                            "fontFamily": "System",
+                            "fontSize": 15,
+                            "fontWeight": "600",
+                            "letterSpacing": -0.24,
+                            "lineHeight": 20,
+                            "textAlign": "center",
+                          },
+                        ]
+                      }
+                    >
+                      Delete
+                    </Text>,
+                    "onPress": [Function],
+                    "style": Array [
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "#4EADFF",
+                        "borderRadius": 12,
+                        "height": 50,
+                        "justifyContent": "center",
+                        "maxWidth": 80,
+                        "paddingHorizontal": 2,
+                        "paddingVertical": 4,
+                        "shadowColor": "black",
+                        "shadowOffset": Object {
+                          "height": 2,
+                          "width": 2,
+                        },
+                        "shadowOpacity": 0.3,
+                        "shadowRadius": 12,
+                        "width": 80,
+                      },
+                      Object {
+                        "backgroundColor": "#005587",
+                        "maxWidth": 100,
+                        "width": 100,
+                      },
+                    ],
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "accessible": true,
+                      "allowFontScaling": true,
+                      "children": "Delete",
+                      "ellipsizeMode": "tail",
+                      "style": Array [
+                        Object {
+                          "backgroundColor": "transparent",
+                          "color": "#FAFAFA",
+                          "fontFamily": "System",
+                          "fontSize": 13,
+                          "fontWeight": "400",
+                          "letterSpacing": -0.078,
+                          "lineHeight": 18,
+                          "textAlign": "center",
+                        },
+                        Object {
+                          "backgroundColor": "transparent",
+                          "color": "#FAFAFA",
+                          "fontFamily": "System",
+                          "fontSize": 15,
+                          "fontWeight": "600",
+                          "letterSpacing": -0.24,
+                          "lineHeight": 20,
+                          "textAlign": "center",
+                        },
+                      ],
+                    },
+                    "ref": null,
+                    "rendered": "Delete",
+                    "type": [Function],
+                  },
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+      ],
+      "type": Symbol(react.fragment),
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    "attachTo": undefined,
+    "hydrateIn": undefined,
+  },
+}
+`;

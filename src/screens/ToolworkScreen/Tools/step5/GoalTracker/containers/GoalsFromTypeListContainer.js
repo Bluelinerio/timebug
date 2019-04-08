@@ -24,8 +24,9 @@ const mapStateToProps = (state: any): StateProps => {
 
 type MergeProps = {
   goals: Array<any>,
-  gtypeoal: String,
-  onSelect: String => any,
+  type: string,
+  onSelect: string => any,
+  titleKey: string,
 }
 
 const mergeProps = (props: any): MergeProps => {

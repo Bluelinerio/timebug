@@ -6,10 +6,9 @@ import {
   RESET_FORMS,
   SET_LOADING_FORMDATA,
   RESTORE_FORM_DATA,
-}                                      from '../actionTypes'
+} from '../actionTypes'
 import type { RestoreFormDataPayload } from '../actions/formData.actions'
-import { diffObjs }                    from '../utils/diffObjs'
-import R                               from 'ramda'
+import { diffObjs } from '../utils/diffObjs'
 
 export type FormDataState = {
   data: {
@@ -35,9 +34,6 @@ const initialState: FormDataState = {
   loadingFormData: false,
 }
 
-const filterWithKeys = (pred, obj) =>
-  R.pipe(R.toPairs, R.filter(R.apply(pred)), R.fromPairs)(obj)
-
 const populate = (
   action: PopulateFormAction,
   state: FormDataState
@@ -45,13 +41,11 @@ const populate = (
   const { stepId, value } = action.payload
   const data = state.data || {}
 
-  const oldValue = filterWithKeys(key => {
-    return Object.keys(value).includes(key)
-  }, R.view(R.lensPath([stepId, 'value']), data))
+  const oldValue = data[stepId] ? data[stepId].value : {}
 
-  const { difference, onlyOnRight } = diffObjs(oldValue, value)
+  const { difference, onlyOnRight, onlyOnLeft } = diffObjs(oldValue, value)
 
-  if (!difference && !onlyOnRight) return state
+  if (!difference && !onlyOnRight && !onlyOnLeft) return state
 
   return {
     ...state,
@@ -144,13 +138,41 @@ const migrations = {
     ...state,
     data: {},
   }),
+  3: state => state,
+  4: state => {
+    const stepData = state.data
+    const fixedStepData = Object.keys(stepData).reduce((newObject, key) => {
+      const data = stepData[key]
+      const { value } = data
+      const newValue = value.map(val => ({
+        ...val,
+        _meta: {
+          version: 1,
+        },
+      }))
+      return {
+        ...newObject,
+        [key]: {
+          ...data,
+          value: newValue,
+        },
+      }
+    }, {})
+    return {
+      ...state,
+      data: {
+        ...stepData,
+        ...fixedStepData,
+      },
+    }
+  },
 }
 
 const persistConfig = {
   key: 'formData',
   storage: storage,
   blacklist: ['requestCount', 'loadingFormData'],
-  version: 2,
+  version: 4,
   migrate: createMigrate(migrations, { debug: true }),
 }
 

@@ -1,12 +1,12 @@
-import React                            from 'react'
-import { View }                         from 'react-native'
-import { SafeAreaView }                 from 'react-navigation'
-import { SectionValues }                from '../context/SectionContext'
-import type { Sections }                from '../context/SectionContext'
-import WorkbookForm                     from '../containers/WorkbookFormContainer'
-import WorkbookSnippet                  from '../containers/WorkbookSnippetContainer'
-import type { Step }                    from '../../../../services/cms'
-import styles                           from '../styles'
+import React from 'react'
+import { View } from 'react-native'
+import { SafeAreaView } from 'react-navigation'
+import { SectionValues } from '../context/SectionContext'
+import type { Sections } from '../context/SectionContext'
+import WorkbookForm from '../containers/WorkbookFormContainer'
+import WorkbookSnippet from '../containers/WorkbookSnippetContainer'
+import type { Step } from '../../../../services/cms'
+import styles from '../styles'
 
 type Props = {
   selectedSection: string,
@@ -16,6 +16,8 @@ type Props = {
   phase: string,
   onSelectStep: Step => any,
   backgroundColor: any,
+  onFinish: () => null,
+  editionIndex?: number | null,
 }
 
 class WorkbookContent extends React.PureComponent<Props> {
@@ -27,6 +29,8 @@ class WorkbookContent extends React.PureComponent<Props> {
       onSelectStep,
       backgroundColor,
       changeSection,
+      editionIndex,
+      onFinish,
     } = this.props
 
     return (
@@ -42,6 +46,9 @@ class WorkbookContent extends React.PureComponent<Props> {
               phase={phase}
               onSelectStep={onSelectStep}
               backgroundColor={backgroundColor}
+              key={step.number}
+              onFinish={onFinish}
+              editionIndex={editionIndex}
             />
           ) : (
             <WorkbookSnippet

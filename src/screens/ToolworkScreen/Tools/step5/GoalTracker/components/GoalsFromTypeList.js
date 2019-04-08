@@ -1,8 +1,8 @@
 // @flow
 import React          from 'react'
 import { View, Text } from 'react-native'
-import styles         from '../styles'
-import GoalElement    from './GoalElement'
+import GoalElement    from '../containers/GoalElementContainer'
+import styles         from '../../common/styles'
 
 type Props = {
   onSelect: String => any,
@@ -27,6 +27,7 @@ class GoalsFromTypeList extends React.PureComponent<Props> {
               title={goal[titleKey].value}
               goal={goal}
               onSelect={onSelect}
+              type={type}
             />
           ))}
         </View>

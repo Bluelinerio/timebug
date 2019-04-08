@@ -1,9 +1,9 @@
 //@flow
-import React                                       from 'react'
-import { View, TouchableOpacity, Text }            from 'react-native'
-import Icon                                        from 'react-native-vector-icons/Ionicons'
-import { CHILDREN_KEYS }                           from '2020_forms/forms/goals'
-import styles, { completedColor, incompleteColor } from '../styles'
+import React from 'react'
+import { View, TouchableOpacity, Text } from 'react-native'
+import Icon from 'react-native-vector-icons/Ionicons'
+import { CHILDREN_KEYS } from '2020_forms/forms/goals'
+import styles, { completedColor, incompleteColor } from '../../common/styles'
 
 type Step = {
   [x: string]: {
@@ -22,8 +22,10 @@ type Props = {
   onPress: Step => {},
   onSubstepPress: Step => any,
   disableETC: boolean,
+  daysLeft: number,
 }
 
+// TODO: Fix Text displaying that substep is due today even though the goal already expired
 class GoalSubstep extends React.PureComponent<Props> {
   _onPress = () => {
     const { step, onPress } = this.props
@@ -36,7 +38,7 @@ class GoalSubstep extends React.PureComponent<Props> {
   }
 
   render() {
-    const { step, disableETC } = this.props
+    const { step, disableETC, daysLeft } = this.props
     return (
       <TouchableOpacity
         style={styles.elementContainer}
@@ -69,7 +71,8 @@ class GoalSubstep extends React.PureComponent<Props> {
                 step.award && step.award.estimate
                   ? step.award.estimate
                   : 'Not set'
-              }`}
+              }`}{' '}
+            {daysLeft < 0 ? `(Time exceeded)` : ''}
           </Text>
         </View>
       </TouchableOpacity>

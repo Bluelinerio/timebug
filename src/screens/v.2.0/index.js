@@ -1,14 +1,14 @@
 // @flow
-import { StackNavigator } from 'react-navigation';
-import StepSelectionScreen from './StepSelectionScreen';
-import WorkbookScreen from './WorkbookScreen';
-import { protoRoutes as routes } from '../../navigation/routes';
+import { StackNavigator }        from 'react-navigation'
+import StepSelectionScreen       from './StepSelectionScreen'
+import WorkbookScreen            from './WorkbookScreen'
+import { protoRoutes as routes } from '../../navigation/routes'
 
 /**
  * Ui reducer screen key
  */
 
-export const screenKey = 'V2';
+export const screenKey = 'V2'
 
 export const PrototypeNavigatorConfiguration = {
   routes: routes.proto,
@@ -24,11 +24,11 @@ export const PrototypeNavigatorConfiguration = {
     initialRouteName: routes.v2.initialRouteName,
     headerMode: 'none',
   },
-};
+}
 
 const Navigator = StackNavigator(
   PrototypeNavigatorConfiguration.screens,
   PrototypeNavigatorConfiguration.options
-);
+)
 
-export default Navigator;
+export default Navigator

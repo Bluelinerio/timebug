@@ -1,0 +1,1 @@
+This tool is meant to be used inside the `GoalTracker` tool

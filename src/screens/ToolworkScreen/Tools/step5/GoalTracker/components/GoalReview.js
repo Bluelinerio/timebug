@@ -1,11 +1,14 @@
 // @flow
-import React                                            from 'react'
-import { View, Text, TouchableOpacity }                 from 'react-native'
-import { FormInput }                                    from 'react-native-elements'
-import Slider                                           from 'react-native-slider'
-import styles, { minimumTrackColor, maximumTrackColor } from '../styles'
-import GoalSubstep                                      from './GoalSubstep'
-import OptionsDialog                                    from './OptionsDialog'
+import React                            from 'react'
+import { View, Text, TouchableOpacity } from 'react-native'
+import { FormInput }                    from 'react-native-elements'
+import Slider                           from 'react-native-slider'
+import styles, {
+  minimumTrackColor,
+  maximumTrackColor,
+}                                       from '../../common/styles'
+import GoalSubstep                      from './GoalSubstep'
+import OptionsDialog                    from './OptionsDialog'
 
 type Props = {
   goal: any,
@@ -32,6 +35,7 @@ type Props = {
   disableETC: boolean,
   daysLeft: string,
   completionDate: string,
+  cgoElements: Array<any>,
 }
 
 class GoalReview extends React.PureComponent<Props> {
@@ -42,6 +46,7 @@ class GoalReview extends React.PureComponent<Props> {
       notes: goalAwardData ? goalAwardData.text || '' : '',
       openDialog: false,
       selectedSubstep: null,
+      openCompletionDialog: false,
     }
   }
 
@@ -99,9 +104,22 @@ class GoalReview extends React.PureComponent<Props> {
     })
   }
 
+  _onSelectCGO = (result: { value: any }) => {
+    const { toggleGoal } = this.props
+    const { value } = result
+    toggleGoal(value)
+  }
+
+  _openCompletionDialog = () => {
+    this.setState({ openCompletionDialog: true })
+  }
+
+  _closeCompletionDialog = () => {
+    this.setState({ openCompletionDialog: false })
+  }
+
   render() {
     const {
-      toggleGoal,
       deleteGoal,
       steps,
       title,
@@ -112,8 +130,9 @@ class GoalReview extends React.PureComponent<Props> {
       goalAwardData,
       completionDate,
       daysLeft,
+      cgoElements,
     } = this.props
-    const { notes, openDialog } = this.state
+    const { notes, openDialog, openCompletionDialog } = this.state
     const completedSteps = steps.reduce((count, step) => {
       if (step.award && step.award.status) return count + 1
       return count
@@ -134,6 +153,13 @@ class GoalReview extends React.PureComponent<Props> {
           onClose={this._onClose}
           elements={dialogElements}
           onSelect={this._onSelectETC}
+        />
+        <OptionsDialog
+          dialogVisible={openCompletionDialog}
+          onClose={this._closeCompletionDialog}
+          elements={cgoElements}
+          onSelect={this._onSelectCGO}
+          text={'Please select a goal outcome for your goal'}
         />
         <View style={styles.titleContainer}>
           <Text style={styles.goalScreenSubtitle}>
@@ -202,6 +228,7 @@ class GoalReview extends React.PureComponent<Props> {
                   onPress={this._onSubstepCompletionPress}
                   onSubstepPress={this._onSubstepPress}
                   disableETC={this.props.disableETC}
+                  daysLeft={daysLeft}
                 />
               ))}
           </View>
@@ -220,7 +247,10 @@ class GoalReview extends React.PureComponent<Props> {
             />
           </View>
           <View style={styles.optionsContainer}>
-            <TouchableOpacity style={styles.optionButton} onPress={toggleGoal}>
+            <TouchableOpacity
+              style={styles.optionButton}
+              onPress={this._openCompletionDialog}
+            >
               <Text style={styles.optionButtonText}>
                 {goalAwardData && goalAwardData.completed
                   ? 'Not Complete'
@@ -228,7 +258,7 @@ class GoalReview extends React.PureComponent<Props> {
               </Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.optionButton} onPress={deleteGoal}>
-              <Text style={styles.optionButtonText}>Delete</Text>
+              <Text style={styles.optionButtonText}>Backlog</Text>
             </TouchableOpacity>
           </View>
         </View>
