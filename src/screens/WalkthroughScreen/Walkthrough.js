@@ -35,7 +35,7 @@ export default class Walkthrough extends React.Component<Props> {
             {slide.title}
           </Text>
           {slide.description && (
-            <Text type="header3" style={styles.description} theme={theme}>
+            <Text type="regular" style={styles.description} theme={theme}>
               {slide.description}
             </Text>
           )}

@@ -5,7 +5,7 @@ const height = Dimensions.get('window').height;
 const width = Dimensions.get('window').width;
 const baseSpacing = Math.floor(width * 0.06);
 const largeVerticalSpacing = Math.floor(height * 0.06);
-const imageHeight = height * 0.6;
+const imageHeight = height * 0.55;
 export const gradientColors = {
   start: '#008EBC',
   end: '#005587',
@@ -25,7 +25,7 @@ export default StyleSheet.create({
   },
   image: {
     position: 'absolute',
-    bottom: 0,
+    bottom: 30,
     left: 0,
     right: 0,
     height: imageHeight,
@@ -34,12 +34,16 @@ export default StyleSheet.create({
         paddingHorizontal: 10,
         borderRadius: 10,
         marginVertical: 0, // needed for shadow
-        width: width * 0.6,
-        marginLeft: width * 0.2,
+        width: width * 0.75,
+        marginLeft: width * 0.125,
+        marginRight: width * 0.125,
       },
       ios: {
         shadowColor: 'black',
         shadowOpacity: 0.5,
+        width: width * 0.75,
+        marginLeft: width * 0.125,
+        marginRight: width * 0.125,
       },
     }),
   },
@@ -69,7 +73,7 @@ export default StyleSheet.create({
     color: 'white',
   },
   description: {
-    marginTop: largeVerticalSpacing,
+    marginTop: largeVerticalSpacing/2,
     color: 'white',
   },
 });
@@ -88,23 +92,24 @@ export const theme = {
       fontFamily: 'Helvetica',
     },
     header2: {
-      fontSize: Math.ceil(height * 0.04),
-      fontFamily: 'Helvetica-Bold',
+      fontSize: Math.ceil(height * 0.03),
+      fontFamily: 'Metropolis',
+      fontWeight: 'bold',
     },
     header3: {
       fontSize: Math.ceil(height * 0.027),
-      fontFamily: 'HelveticaNeue',
+      fontFamily: 'Metropolis',
       fontWeight: 'bold',
     },
     large: {
-      fontSize: 14,
+      fontSize: 21,
       lineHeight: 21,
-      fontFamily: 'Helvetica',
+      fontFamily: 'Metropolis',
     },
     regular: {
-      fontSize: 14,
-      lineHeight: 21,
-      fontFamily: 'Helvetica',
+      fontSize: 18,
+      lineHeight: 18,
+      fontFamily: 'Metropolis',
     },
     small: {
       fontSize: 14,
@@ -114,7 +119,7 @@ export const theme = {
     micro: {
       fontSize: 8,
       lineHeight: 8,
-      fontFamily: 'Helvetica',
+      fontFamily: 'Metropolis',
     },
   },
   spacing: {
