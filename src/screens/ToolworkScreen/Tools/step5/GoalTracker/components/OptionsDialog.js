@@ -39,7 +39,7 @@ class OptionsDialog extends React.PureComponent<Props> {
     return (
       items && (
         <SinglePickerMaterialDialog
-          title={text ? text : 'Select one of the following'}
+          title={text ? text : 'When do you expect to complete this step?'}
           items={items}
           scrolled={true}
           visible={dialogVisible}
