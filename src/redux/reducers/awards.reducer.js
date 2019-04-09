@@ -8,7 +8,10 @@ import {
   DECREMENT_TOOL_DATA_QUEUE,
   RESTORE_TOOL_DATA,
 } from '../actionTypes'
-import type { SumbitAwardValueAction, RestoreFormDataPayload } from '../actions/award.actions'
+import type {
+  SumbitAwardValueAction,
+  RestoreFormDataPayload,
+} from '../actions/award.actions'
 
 /**
  * Types
@@ -18,7 +21,8 @@ export type AwardData = {
   [toolKey: string]: {
     value: any,
     model: any,
-    timeStamp: any,
+    timeStamp: string,
+    id: string,
   },
 }
 
@@ -26,9 +30,7 @@ export type AwardData = {
  * Each key in the award state will be the corresponding stepId
  */
 export type AwardState = {
-  data: {
-    [key: string]: AwardData,
-  },
+  data: AwardData,
   requestCount: number,
 }
 
