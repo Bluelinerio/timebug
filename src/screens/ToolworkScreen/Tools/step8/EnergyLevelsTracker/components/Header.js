@@ -1,8 +1,8 @@
 // @flow
-import React                      from 'react'
-import { View, TouchableOpacity } from 'react-native'
-import Icon                       from 'react-native-vector-icons/Ionicons'
-import styles, { iconColor }      from '../styles'
+import React                            from 'react'
+import { View, TouchableOpacity, Text } from 'react-native'
+import Icon                             from 'react-native-vector-icons/Ionicons'
+import styles, { iconColor }            from '../styles'
 
 type Props = {
   onBack: () => any,
@@ -15,8 +15,9 @@ class Header extends React.PureComponent<Props> {
     return display ? (
       <View style={[styles.container, styles.subHeader]}>
         <View style={styles.buttonHeaderArea}>
-          <TouchableOpacity onPress={onBack}>
+          <TouchableOpacity style={styles.headerBackButton} onPress={onBack}>
             <Icon name={'ios-arrow-back'} size={24} color={iconColor} />
+            <Text style={styles.headerBackText}>Back</Text>
           </TouchableOpacity>
         </View>
       </View>

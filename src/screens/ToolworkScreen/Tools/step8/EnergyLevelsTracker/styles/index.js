@@ -1,13 +1,14 @@
-import { StyleSheet, Platform } from 'react-native'
-import { iOSUIKit }             from 'react-native-typography'
-import { darkBlue, white2 }     from '2020_constants/colors'
+import { StyleSheet, Platform }    from 'react-native'
+import { iOSUIKit }                from 'react-native-typography'
+import { darkBlue, azure, white2 } from '2020_constants/colors'
 import {
   widthPercentage,
   heightPercentage,
-}                               from '2020_utils/viewportCalculation'
+}                                  from '2020_utils/viewportCalculation'
 
-const optionsWidth = widthPercentage(50)
-const optionsHeight = heightPercentage(20)
+const optionsWidth = widthPercentage(60)
+const optionsHeight = heightPercentage(15)
+
 export const iconColor = darkBlue
 
 export default StyleSheet.create({
@@ -25,10 +26,20 @@ export default StyleSheet.create({
     height: '12.5%',
     alignItems: 'flex-start',
     justifyContent: 'center',
+    paddingHorizontal: 12,
   },
   buttonHeaderArea: {
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  headerBackButton: {
+    padding: 2,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  headerBackText: {
+    color: darkBlue,
+    paddingHorizontal: 12,
   },
   toolContainer: {
     flex: 1,
@@ -48,7 +59,7 @@ export default StyleSheet.create({
     maxWidth: optionsWidth,
     height: optionsHeight,
     maxHeight: optionsHeight,
-    backgroundColor: darkBlue,
+    backgroundColor: azure,
     ...Platform.select({
       android: { elevation: 2 },
       ios: {

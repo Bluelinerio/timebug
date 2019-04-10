@@ -31,13 +31,13 @@ class EnergyLevelsScreen extends React.PureComponent<Props> {
   }
 
   render() {
-    const { selectedSection, setMenu } = this.props
+    const { selectedSection } = this.props
     return (
       <React.Fragment>
         <View style={styles.container}>
           <Header
             display={selectedSection === SECTIONS.MENU ? false : true}
-            onBack={setMenu}
+            onBack={this._setMenu}
           />
           <View style={styles.toolContainer}>
             <EnergyLevelsScreenContent
