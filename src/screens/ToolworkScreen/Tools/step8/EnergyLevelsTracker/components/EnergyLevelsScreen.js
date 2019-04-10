@@ -15,6 +15,21 @@ type Props = ToolProps & {
 }
 
 class EnergyLevelsScreen extends React.PureComponent<Props> {
+  _setMenu = () => {
+    const { changeSection } = this.props
+    changeSection(SECTIONS.MENU)
+  }
+
+  _setCheckin = () => {
+    const { changeSection } = this.props
+    changeSection(SECTIONS.CHECK_IN)
+  }
+
+  _setWeeklyLog = () => {
+    const { changeSection } = this.props
+    changeSection(SECTIONS.WEEKLY_LIST)
+  }
+
   render() {
     const { selectedSection, setMenu } = this.props
     return (
@@ -25,7 +40,12 @@ class EnergyLevelsScreen extends React.PureComponent<Props> {
             onBack={setMenu}
           />
           <View style={styles.toolContainer}>
-            <EnergyLevelsScreenContent {...this.props} />
+            <EnergyLevelsScreenContent
+              {...this.props}
+              setMenu={this._setMenu}
+              setCheckin={this._setCheckin}
+              setWeeklyLog={this._setWeeklyLog}
+            />
           </View>
         </View>
       </React.Fragment>

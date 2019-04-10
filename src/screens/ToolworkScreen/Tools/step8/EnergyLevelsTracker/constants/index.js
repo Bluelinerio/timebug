@@ -1,12 +1,18 @@
-export const SECTIONS = {
+// @flow
+import type { Sections, TimeElement } from '../types'
+
+export const SECTIONS: Sections = {
   MENU: 'MENU',
   CHECK_IN: 'CHECK_IN',
   WEEKLY_LIST: 'WEEKLY_LIST',
 }
 
 // TODO: figure format for military hours in moment
+export type TimeObject = {
+  [x: string]: TimeElement,
+}
 
-export const TIME = {
+export const TIME: TimeObject = {
   AM_8: {
     key: 'AM_8',
     time: '08:00',

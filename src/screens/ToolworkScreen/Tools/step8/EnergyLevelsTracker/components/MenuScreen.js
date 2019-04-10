@@ -12,7 +12,7 @@ class MenuScreen extends React.PureComponent<Props> {
   render() {
     const { goToCheckinSection, goToWeeklySection } = this.props
     return (
-      <View style={styles.container}>
+      <React.Fragment>
         <View style={styles.toolSectionContainer}>
           <TouchableOpacity
             style={styles.optionContainer}
@@ -33,7 +33,7 @@ class MenuScreen extends React.PureComponent<Props> {
             </Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </React.Fragment>
     )
   }
 }

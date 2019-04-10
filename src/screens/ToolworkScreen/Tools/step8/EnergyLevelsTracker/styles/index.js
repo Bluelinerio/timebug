@@ -6,13 +6,19 @@ import {
   heightPercentage,
 }                               from '2020_utils/viewportCalculation'
 
-const optionsWidth = widthPercentage(60)
-const optionsHeight = heightPercentage(30)
+const optionsWidth = widthPercentage(50)
+const optionsHeight = heightPercentage(20)
 export const iconColor = darkBlue
 
 export default StyleSheet.create({
   container: {
     flex: 1,
+  },
+  scrollView: {
+    flexGrow: 1,
+  },
+  fullWidth: {
+    width: '100%',
   },
   subHeader: {
     maxHeight: '12.5%',
@@ -25,8 +31,8 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
   toolContainer: {
+    flex: 1,
     flexDirection: 'column',
-    margin: 12,
   },
   toolSectionContainer: {
     flex: 1,
@@ -60,5 +66,8 @@ export default StyleSheet.create({
     ...iOSUIKit.bodyEmphasizedObject,
     color: white2,
     textAlign: 'center',
+  },
+  padded: {
+    padding: 16,
   },
 })
