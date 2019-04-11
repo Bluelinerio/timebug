@@ -1,7 +1,6 @@
 // @flow
 import React             from 'react'
 import { View }          from 'react-native'
-import CheckinList       from '../containers/CheckinListContainer'
 import CheckinFormScreen from '../containers/CheckinFormScreenContainer'
 import styles            from '../styles'
 
@@ -11,22 +10,12 @@ type Props = {
   storeAwardData: (value: any, tool: any) => any,
 }
 
-type State = {
-  selectedCheckin: string,
-}
-
-class CheckinScreen extends React.PureComponent<Props, State> {
-  state = {
-    selectedCheckin: null,
-  }
-
+class CheckinScreen extends React.PureComponent<Props> {
   render() {
-    const { selectedCheckin } = this.state
     return (
       <React.Fragment>
-        <CheckinList selectedCheckin={selectedCheckin} />
         <View style={[styles.container, styles.formContainer]}>
-          <CheckinFormScreen />
+          <CheckinFormScreen {...this.props} />
         </View>
       </React.Fragment>
     )

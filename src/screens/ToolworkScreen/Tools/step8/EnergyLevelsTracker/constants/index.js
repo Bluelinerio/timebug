@@ -7,7 +7,6 @@ export const SECTIONS: Sections = {
   WEEKLY_LIST: 'WEEKLY_LIST',
 }
 
-// TODO: figure format for military hours in moment
 export type TimeObject = {
   [x: string]: TimeElement,
 }
