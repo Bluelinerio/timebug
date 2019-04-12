@@ -234,7 +234,10 @@ class Form extends React.PureComponent<Props, any> {
           updated_at: moment().format(),
           _meta: {
             ...(storableValue[0]._meta || {}),
-            version: storableValue[0]._meta.version + 1,
+            version:
+                storableValue[0] && storableValue[0]._meta
+                  ? storableValue[0]._meta.version + 1
+                  : 1,
           },
         },
       ]
@@ -263,7 +266,10 @@ class Form extends React.PureComponent<Props, any> {
           updated_at: moment().format(),
           _meta: {
             ...(storableValue[formIteration]._meta || {}),
-            version: storableValue[formIteration]._meta.version + 1,
+            version:
+              storableValue[formIteration] && storableValue[formIteration]._meta
+                ? storableValue[formIteration]._meta.version + 1
+                : 1,
           },
         },
       ]
@@ -333,7 +339,11 @@ class Form extends React.PureComponent<Props, any> {
             updated_at: moment().format(),
             _meta: {
               ...(storableValue[formIteration]._meta || {}),
-              version: storableValue[formIteration]._meta.version + 1,
+              version:
+                  storableValue[formIteration] &&
+                  storableValue[formIteration]._meta
+                    ? storableValue[formIteration]._meta.version + 1
+                    : 1,
             },
           },
         ],

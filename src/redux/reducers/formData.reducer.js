@@ -139,7 +139,8 @@ const migrations = {
     data: {},
   }),
   3: state => state,
-  4: state => {
+  4: state => state,
+  5: state => {
     const stepData = state.data
     const fixedStepData = Object.keys(stepData).reduce((newObject, key) => {
       const data = stepData[key]
@@ -172,7 +173,7 @@ const persistConfig = {
   key: 'formData',
   storage: storage,
   blacklist: ['requestCount', 'loadingFormData'],
-  version: 4,
+  version: 5,
   migrate: createMigrate(migrations, { debug: true }),
 }
 
