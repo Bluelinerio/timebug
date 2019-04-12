@@ -1,9 +1,9 @@
 // @flow
-import moment                                from 'moment'
+import moment from 'moment'
 import { DATE_FORMAT, EXTENDED_DATE_FORMAT } from '2020_constants/constants'
-import { TIME }                              from '../constants'
-import type { TimeElement, TimeUnit }        from '../types'
-import type { Moment }                       from 'moment'
+import { TIME, MORNING, EVENING, AFTERNOON } from '../constants'
+import type { TimeElement, TimeUnit, PeriodPayload } from '../types'
+import type { Moment } from 'moment'
 
 const executeOperations = (time, operators): Moment => {
   const resultTime = operators
@@ -73,6 +73,38 @@ const evaluateAndApplyEffects = (props: TimeUnit): TimeUnit => {
   return [newStart, newEnd]
 }
 
+const getNextPeriod = (
+  timeSections: Array<TimeUnit>,
+  period: PeriodPayload
+) => {
+  const { selectedTime } = period
+  const { key } = selectedTime
+  switch (key) {
+  case MORNING:
+    return timeSections.find(t => t.key === AFTERNOON)
+  case AFTERNOON:
+    return timeSections.find(t => t.key === EVENING)
+  case EVENING:
+    return timeSections.find(t => t.key === MORNING)
+  }
+}
+
+const calculateTimeBetweenPeriods = (from, to) => {
+  const { end } = from
+  const { start } = to
+  const duration = moment.duration(start.diff(end))
+
+  const hours = duration.hours()
+  const minutes = duration.minutes()
+  return {
+    time: duration.asMilliseconds(),
+    hours,
+    minutes,
+    humanized: `${duration.humanize()}`,
+  }
+}
+
+// Figure out how to calculate time left before next period
 const pickTimePeriodForTime = (
   timeString: string
 ): { selectedTime: TimeElement, day: string, extra: any } => {
@@ -91,15 +123,34 @@ const pickTimePeriodForTime = (
       time.isSameOrAfter(operatedStart) && time.isSameOrBefore(operatedEnd)
     if (isBetween)
       return {
-        selectedTime: t,
+        selectedTime: {
+          ...t,
+          start: operatedStart,
+          end: operatedEnd,
+        },
         day: operatedStart.format(DATE_FORMAT),
         extra: {
           timeStamp: operatedStart.format(),
+          isSpecialPeriod: operatedStart.format() !== start.format(),
         },
       }
     return selectedTime
   }, null)
-  return enclosingPeriod
+  const nextPeriod = getNextPeriod(timeSections, enclosingPeriod.selectedTime)
+  const timeLeft = calculateTimeBetweenPeriods(
+    enclosingPeriod.selectedTime,
+    nextPeriod
+  )
+  const result = {
+    ...enclosingPeriod,
+    extra: {
+      ...enclosingPeriod.extra,
+      nextPeriod,
+      timeLeft,
+    },
+  }
+
+  return result
 }
 
 export const pickTimePeriodAndDayForTime = (

@@ -38,6 +38,15 @@ export type TimeElement = {
   },
 }
 
+export type PeriodPayload = {
+  selectedTime: TimeUnit,
+  day: string,
+  extra: {
+    timeStamp: string,
+    isSpecialPeriod: boolean, // true if it's period between 00:00 and 2:59 am that belongs to previous day
+  },
+}
+
 export type TimeUnit = {
   key: string,
   text: string,
