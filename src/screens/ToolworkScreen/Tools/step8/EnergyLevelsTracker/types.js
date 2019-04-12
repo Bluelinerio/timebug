@@ -1,4 +1,5 @@
 // @flow
+import type { Moment }                       from 'moment'
 
 export type CheckinElement = {
   key: string,
@@ -15,8 +16,44 @@ export type Sections = {
   WEEKLY: string,
 }
 
+type Operator = Array<string, string, number>
+
+type Condition = {
+  condition: string,
+  effect: Array<Operator>,
+}
+
 export type TimeElement = {
   key: string,
-  time: string,
+  text: string,
+  period: string,
   format: string,
+  operators?: {
+    end?: Array<Operator>,
+    start?: Array<Operator>,
+  },
+  effects: {
+    start: Array<Condition>,
+    end: Array<Condition>,
+  },
+}
+
+export type TimeUnit = {
+  key: string,
+  text: string,
+  format: string,
+  start: Moment,
+  end: Moment,
+  effects?: {
+    start: Array<Condition>,
+    end: Array<Condition>,
+  },
+}
+
+export type ToolValue = {
+  timeKey: string,
+  day: string, //Formatted as MM/DD/YYYY
+  extendedTime: string, // Formatted as MM/DD/YYYY HH:mm:ss
+  isoTime: string, // Iso stamp
+  value: any,
 }
