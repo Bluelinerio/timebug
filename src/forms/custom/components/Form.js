@@ -235,7 +235,9 @@ class Form extends React.PureComponent<Props, any> {
           _meta: {
             ...(storableValue[0]._meta || {}),
             version:
-                storableValue[0] && storableValue[0]._meta
+                storableValue[0] &&
+                storableValue[0]._meta &&
+                storableValue[0]._meta.version
                   ? storableValue[0]._meta.version + 1
                   : 1,
           },
@@ -267,7 +269,9 @@ class Form extends React.PureComponent<Props, any> {
           _meta: {
             ...(storableValue[formIteration]._meta || {}),
             version:
-              storableValue[formIteration] && storableValue[formIteration]._meta
+              storableValue[formIteration] &&
+              storableValue[formIteration]._meta &&
+              storableValue[formIteration]._meta.version
                 ? storableValue[formIteration]._meta.version + 1
                 : 1,
           },
@@ -341,7 +345,8 @@ class Form extends React.PureComponent<Props, any> {
               ...(storableValue[formIteration]._meta || {}),
               version:
                   storableValue[formIteration] &&
-                  storableValue[formIteration]._meta
+                  storableValue[formIteration]._meta &&
+                  storableValue[formIteration]._meta.version
                     ? storableValue[formIteration]._meta.version + 1
                     : 1,
             },
