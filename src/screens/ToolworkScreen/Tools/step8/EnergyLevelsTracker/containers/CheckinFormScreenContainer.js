@@ -28,8 +28,9 @@ const submitTimeSectionEnergyLevels = ({
         timeKey: key,
         day,
         value,
-        isoTime: extra.timeStamp,
-        extendedTime: moment(extra.timeStamp).format(EXTENDED_DATE_FORMAT),
+        isoTimeOfPeriod: extra.timeStamp,
+        extendedTime: moment().format(EXTENDED_DATE_FORMAT),
+        timeTaken: moment().format(),
         _meta: {
           timeStamp: moment()
             .toDate()
@@ -59,7 +60,7 @@ const merge = (props: ToolProps) => {
   const onFormFinish = submitTimeSectionEnergyLevels({
     data,
     tool,
-    storeAwardData,
+    storeData: storeAwardData,
   })
 
   const enableForm = valuesForThisSection.length < 2
