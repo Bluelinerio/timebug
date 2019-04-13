@@ -21,6 +21,18 @@ export default StyleSheet.create({
   fullWidth: {
     width: '100%',
   },
+  centered: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  centeredText: {
+    textAlign: 'center',
+  },
+  captionText: {
+    ...iOSUIKit.bodyEmphasizedObject,
+    color: darkBlue,
+    textAlign: 'center',
+  },
   subHeader: {
     maxHeight: '12.5%',
     height: '12.5%',

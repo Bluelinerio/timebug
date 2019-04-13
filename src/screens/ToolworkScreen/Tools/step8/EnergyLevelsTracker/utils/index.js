@@ -1,9 +1,9 @@
 // @flow
-import moment from 'moment'
+import moment                                from 'moment'
 import { DATE_FORMAT, EXTENDED_DATE_FORMAT } from '2020_constants/constants'
 import { TIME, MORNING, EVENING, AFTERNOON } from '../constants'
-import type { TimeElement, TimeUnit, PeriodPayload } from '../types'
-import type { Moment } from 'moment'
+import type { TimeElement, TimeUnit }        from '../types'
+import type { Moment }                       from 'moment'
 
 const executeOperations = (time, operators): Moment => {
   const resultTime = operators
@@ -73,12 +73,8 @@ const evaluateAndApplyEffects = (props: TimeUnit): TimeUnit => {
   return [newStart, newEnd]
 }
 
-const getNextPeriod = (
-  timeSections: Array<TimeUnit>,
-  period: PeriodPayload
-) => {
-  const { selectedTime } = period
-  const { key } = selectedTime
+const getNextPeriod = (timeSections: Array<TimeUnit>, period: TimeUnit) => {
+  const { key } = period
   switch (key) {
   case MORNING:
     return timeSections.find(t => t.key === AFTERNOON)
@@ -141,12 +137,21 @@ const pickTimePeriodForTime = (
     enclosingPeriod.selectedTime,
     nextPeriod
   )
+  const timeLeftString = `${
+    timeLeft.hours
+      ? `${timeLeft.hours} ${timeLeft.hours === 1 ? 'hour' : 'hours'} and `
+      : ''
+  } ${
+    timeLeft.minutes
+      ? `${timeLeft.minutes} ${timeLeft.minutes === 1 ? 'minute' : 'minutes'}`
+      : 'a bit'
+  }`
   const result = {
     ...enclosingPeriod,
     extra: {
       ...enclosingPeriod.extra,
       nextPeriod,
-      timeLeft,
+      timeLeft: timeLeftString,
     },
   }
 
@@ -155,7 +160,7 @@ const pickTimePeriodForTime = (
 
 export const pickTimePeriodAndDayForTime = (
   timeString: string
-): { period: TimeElement, day: string } => {
+): { period: TimeElement, day: string, extra: any } => {
   const { selectedTime: period, day, extra } = pickTimePeriodForTime(timeString)
   return { period, day, extra }
 }

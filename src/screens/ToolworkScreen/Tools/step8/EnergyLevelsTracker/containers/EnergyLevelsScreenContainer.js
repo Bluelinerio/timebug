@@ -21,7 +21,7 @@ class EnergyLevelsScreenContainer extends React.PureComponent<
     return (
       <React.Fragment>
         <SectionProvider>
-          <ConnectedEnergyLevelsScreen />
+          <ConnectedEnergyLevelsScreen {...this.props} />
         </SectionProvider>
       </React.Fragment>
     )

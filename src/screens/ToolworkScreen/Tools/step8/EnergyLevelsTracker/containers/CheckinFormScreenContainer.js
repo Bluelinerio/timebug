@@ -44,9 +44,11 @@ const submitTimeSectionEnergyLevels = ({
 const merge = (props: ToolProps) => {
   const { data, tool, storeAwardData } = props
   const value = (data && data.value) || []
-  const { period, day } = pickTimePeriodAndDayForTime(
+  const { period, day, extra } = pickTimePeriodAndDayForTime(
     moment().format(EXTENDED_DATE_FORMAT)
   )
+  const { timeLeft } = extra
+
   const valuesForThisSection = value.filter(val => {
     const { timeKey, day: valueOfDay } = val
     const { key } = period
@@ -66,6 +68,7 @@ const merge = (props: ToolProps) => {
     ...props,
     onFormFinish,
     enableForm,
+    timeLeft,
   }
 }
 
