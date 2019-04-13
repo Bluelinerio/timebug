@@ -61,8 +61,9 @@ export type TimeUnit = {
 
 export type ToolValue = {
   timeKey: string,
-  day: string, //Formatted as MM/DD/YYYY
-  extendedTime: string, // Formatted as MM/DD/YYYY HH:mm:ss
-  isoTime: string, // Iso stamp
+  day: string, // Day the answer belongs to
+  extendedTime: string, // The moment the value is stored formatted as MM/DD/YYYY HH:mm:ss
+  isoTimeOfPeriod: string, // Iso stamp of the beginning of the period defined by "key"
+  timeTaken: string, // The moment the value is stored as ISO
   value: any,
 }
