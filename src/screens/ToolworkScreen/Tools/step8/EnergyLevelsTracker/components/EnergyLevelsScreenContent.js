@@ -1,9 +1,9 @@
 // @flow
-import React from 'react'
-import MenuScreen from './MenuScreen'
-import CheckinScreen from '../containers/CheckinScreenContainer'
-import WeeklyLogScreen from '../containers/WeeklyLogScreenContainer'
-import { SECTIONS } from '../constants'
+import React              from 'react'
+import MenuScreen         from './MenuScreen'
+import CheckinScreen      from '../containers/CheckinScreenContainer'
+import WeeklyLogScreen    from '../containers/WeeklyLogScreenContainer'
+import { SECTIONS }       from '../constants'
 import type { ToolProps } from '../../../types'
 
 type Props = ToolProps & {
@@ -29,13 +29,11 @@ class EnergyLevelsScreenContent extends React.PureComponent<Props> {
             data={data}
             tool={tool}
             storeAwardData={storeAwardData}
+            goToMenu={this.props.setMenu}
           />
         )}
         {selectedSection === SECTIONS.WEEKLY_LIST && (
-          <WeeklyLogScreen
-            data={data}
-            tool={tool}
-          />
+          <WeeklyLogScreen data={data} tool={tool} />
         )}
       </React.Fragment>
     )

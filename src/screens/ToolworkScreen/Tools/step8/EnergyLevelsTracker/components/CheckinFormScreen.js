@@ -1,20 +1,22 @@
 // @flow
-import React from 'react'
+import React                      from 'react'
 import { View, Text, ScrollView } from 'react-native'
-import Form from '2020_forms/components/Form'
-import styles from '../styles'
+import Form                       from '2020_forms/components/Form'
+import styles                     from '../styles'
 
 type Props = {
   tool: any,
   enableForm: boolean,
-  onFinish: (value: any) => undefined,
+  onFormFinish: (value: any) => undefined,
   timeLeft: string,
+  goToMenu: () => any,
 }
 
 class CheckinScreen extends React.PureComponent<Props> {
   _onFinish = (value: any) => {
-    const { onFinish } = this.props
-    onFinish(value)
+    const { onFormFinish, goToMenu } = this.props
+    onFormFinish(value)
+    goToMenu()
   }
 
   render() {
