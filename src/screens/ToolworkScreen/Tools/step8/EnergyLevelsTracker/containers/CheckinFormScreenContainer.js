@@ -50,6 +50,8 @@ const merge = (props: ToolProps) => {
   )
   const { timeLeft } = extra
 
+  const { text } = period
+
   const valuesForThisSection = value.filter(val => {
     const { timeKey, day: valueOfDay } = val
     const { key } = period
@@ -70,6 +72,7 @@ const merge = (props: ToolProps) => {
     onFormFinish,
     enableForm,
     timeLeft,
+    text,
   }
 }
 

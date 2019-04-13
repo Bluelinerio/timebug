@@ -10,6 +10,7 @@ type Props = {
   onFormFinish: (value: any) => undefined,
   timeLeft: string,
   goToMenu: () => any,
+  text: string,
 }
 
 class CheckinScreen extends React.PureComponent<Props> {
@@ -20,7 +21,7 @@ class CheckinScreen extends React.PureComponent<Props> {
   }
 
   render() {
-    const { enableForm, tool, timeLeft } = this.props
+    const { enableForm, tool, timeLeft, text } = this.props
     return (
       <React.Fragment>
         {enableForm ? (
@@ -40,7 +41,9 @@ class CheckinScreen extends React.PureComponent<Props> {
         ) : (
           <View style={[styles.container, styles.centered]}>
             <Text style={[styles.centeredText, styles.captionText]}>
-              {' '}
+              You have already checked in twice this {text}
+            </Text>
+            <Text style={[styles.centeredText, styles.captionText]}>
               Please come back in {timeLeft}!
             </Text>
           </View>

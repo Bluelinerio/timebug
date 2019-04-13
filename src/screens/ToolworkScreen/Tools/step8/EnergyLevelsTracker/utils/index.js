@@ -138,7 +138,7 @@ const pickTimePeriodForTime = (
     timeLeft.hours
       ? `${timeLeft.hours} ${timeLeft.hours === 1 ? 'hour' : 'hours'} and `
       : ''
-  } ${
+  }${
     timeLeft.minutes
       ? `${timeLeft.minutes + 1} ${
         timeLeft.minutes + 1 === 1 ? 'minute' : 'minutes'

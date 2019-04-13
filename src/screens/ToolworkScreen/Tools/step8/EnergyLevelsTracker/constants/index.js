@@ -14,7 +14,7 @@ export const AFTERNOON = 'AFTERNOON'
 export const TIME: Array<TimeElement> = [
   {
     key: EVENING,
-    text: 'evening period',
+    text: 'evening',
     period: '17:00-02:59',
     format: 'HH:mm',
     operators: {
@@ -37,13 +37,13 @@ export const TIME: Array<TimeElement> = [
   },
   {
     key: MORNING,
-    text: 'morning period',
+    text: 'morning',
     period: '03:00-11:59',
     format: 'HH:mm',
   },
   {
     key: AFTERNOON,
-    text: 'afternoon period',
+    text: 'afternoon',
     period: '12:00-16:59',
     format: 'HH:mm',
   },
