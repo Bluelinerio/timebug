@@ -44,6 +44,7 @@ const form = {
       },
       options: {
         default: {},
+        displayGlobal: false,
         subtype: {
           type: setTypes.slider,
         },
