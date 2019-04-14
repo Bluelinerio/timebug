@@ -1,5 +1,6 @@
+// @flow
 import React from 'react'
-import { View } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import moment from 'moment'
 import { LineChart, Grid, YAxis, XAxis } from 'react-native-svg-charts'
 
@@ -7,7 +8,20 @@ import tron from 'reactotron-react-native'
 
 const FORMAT = 'HH:mm'
 
-class Chart extends React.PureComponent {
+type DataSet = Array<DataPoint> //Set of Datapoints ordered by the time they happened belonging to a single day
+
+type DataPoint = {
+  level: number, // Energy level for said data point
+  time: number, // Time unit in decimal value for said data point, it's the value from the minutes division of the day from 0 to 24
+}
+
+type Props = {
+  physicalData: DataSet,
+  emotionalData: DataSet,
+  spiritualData: DataSet,
+}
+
+class Chart extends React.PureComponent<Props> {
   render() {
     const yAxis = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     const xAxis = [
@@ -50,20 +64,65 @@ class Chart extends React.PureComponent {
         time: 9,
       },
       {
-        level: 6,
-        time: 18,
-      },
-      {
-        level: 6,
-        time: 19,
-      },
-      {
         level: 9,
         time: 14.3667,
       },
       {
         level: 10,
         time: 22.55,
+      },
+    ]
+    const data2 = [
+      {
+        level: 1,
+        time: 0.5,
+      },
+      {
+        level: 6,
+        time: 2.1,
+      },
+      {
+        level: 9,
+        time: 10.23,
+      },
+      {
+        level: 4,
+        time: 13.2,
+      },
+      {
+        level: 2,
+        time: 16.3667,
+      },
+      {
+        level: 10,
+        time: 22.55,
+      },
+    ]
+
+    const data3 = [
+      {
+        level: 1,
+        time: 4,
+      },
+      {
+        level: 6,
+        time: 6,
+      },
+      {
+        level: 2,
+        time: 10,
+      },
+      {
+        level: 1,
+        time: 12.1,
+      },
+      {
+        level: 2,
+        time: 16.3667,
+      },
+      {
+        level: 1,
+        time: 24,
       },
     ]
 
@@ -112,6 +171,32 @@ class Chart extends React.PureComponent {
           >
             <Grid />
           </LineChart>
+          <LineChart
+            style={{ ...StyleSheet.absoluteFillObject, marginLeft: yAxisWidth }}
+            data={data2}
+            contentInset={{
+              ...verticalContentInset,
+              ...horizontalContentInset,
+            }}
+            yAccessor={({ item }) => item.level}
+            xAccessor={({ item }) => item.time}
+            showGrid={false}
+            svg={{ stroke: 'rgb(21, 21, 21)' }}
+            numberOfTicks={yTicks}
+          />
+          <LineChart
+            style={{ ...StyleSheet.absoluteFillObject, marginLeft: yAxisWidth }}
+            data={data3}
+            contentInset={{
+              ...verticalContentInset,
+              ...horizontalContentInset,
+            }}
+            showGrid={false}
+            yAccessor={({ item }) => item.level}
+            xAccessor={({ item }) => item.time}
+            svg={{ stroke: 'red' }}
+            numberOfTicks={yTicks}
+          />
         </View>
         <XAxis
           style={{ marginLeft: yAxisWidth, height: xAxisHeight }}
