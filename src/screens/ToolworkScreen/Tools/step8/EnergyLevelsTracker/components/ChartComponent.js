@@ -3,23 +3,15 @@ import React from 'react'
 import { View, StyleSheet } from 'react-native'
 import moment from 'moment'
 import { LineChart, Grid, YAxis, XAxis } from 'react-native-svg-charts'
+import type { DataSet } from '../types'
 
-import tron from 'reactotron-react-native'
-
-const FORMAT = 'HH:mm'
-
-type DataSet = Array<DataPoint> //Set of Datapoints ordered by the time they happened belonging to a single day
-
-type DataPoint = {
-  level: number, // Energy level for said data point
-  time: number, // Time unit in decimal value for said data point, it's the value from the minutes division of the day from 0 to 24
-}
-
-type Props = {
+export type Props = {
   physicalData: DataSet,
   emotionalData: DataSet,
   spiritualData: DataSet,
 }
+
+const FORMAT = 'HH:mm'
 
 class Chart extends React.PureComponent<Props> {
   render() {
