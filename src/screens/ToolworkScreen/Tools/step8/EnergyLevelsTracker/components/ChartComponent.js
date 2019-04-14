@@ -50,6 +50,14 @@ class Chart extends React.PureComponent {
         time: 9,
       },
       {
+        level: 6,
+        time: 18,
+      },
+      {
+        level: 6,
+        time: 19,
+      },
+      {
         level: 9,
         time: 14.3667,
       },
@@ -76,18 +84,20 @@ class Chart extends React.PureComponent {
 
     const xAxisHeight = 30
 
+    const yAxisWidth = 15
+
     const yTicks = 11
 
     return (
-      <View style={{ height: 300, padding: 20, flexDirection: 'row' }}>
-        <YAxis
-          data={yAxis}
-          style={{ marginBottom: xAxisHeight }}
-          contentInset={verticalContentInset}
-          svg={yAxesSvg}
-          numberOfTicks={yTicks}
-        />
-        <View style={{ flex: 1, marginLeft: 10 }}>
+      <View style={{ height: 300, padding: 20, flexDirection: 'column' }}>
+        <View style={{ flex: 1, flexDirection: 'row' }}>
+          <YAxis
+            data={yAxis}
+            style={{ width: yAxisWidth }}
+            contentInset={verticalContentInset}
+            svg={yAxesSvg}
+            numberOfTicks={yTicks}
+          />
           <LineChart
             style={{ flex: 1 }}
             data={data}
@@ -102,22 +112,22 @@ class Chart extends React.PureComponent {
           >
             <Grid />
           </LineChart>
-          <XAxis
-            style={{ height: xAxisHeight }}
-            data={xAxis}
-            contentInset={horizontalContentInset}
-            xAccessor={({ item }) => item.value}
-            svg={xAxesSvg}
-            formatLabel={value =>
-              moment(
-                `${
-                  `${value}`.split('').length === 1 ? `0${value}` : `${value}`
-                }:00`,
-                FORMAT
-              ).format('ha')
-            }
-          />
         </View>
+        <XAxis
+          style={{ marginLeft: yAxisWidth, height: xAxisHeight }}
+          data={xAxis}
+          contentInset={horizontalContentInset}
+          xAccessor={({ item }) => item.value}
+          svg={xAxesSvg}
+          formatLabel={value =>
+            moment(
+              `${
+                `${value}`.split('').length === 1 ? `0${value}` : `${value}`
+              }:00`,
+              FORMAT
+            ).format('ha')
+          }
+        />
       </View>
     )
   }
