@@ -48,3 +48,54 @@ export const TIME: Array<TimeElement> = [
     format: 'HH:mm',
   },
 ]
+
+export const CHART_KEYS = {
+  MONDAY: 'MONDAY',
+  TUESDAY: 'TUESDAY',
+  WEDNESDAY: 'WEDNESDAY',
+  THURSDAY: 'THURSDAY',
+  FRIDAY: 'FRIDAY',
+  SATURDAY: 'SATURDAY',
+  SUNDAY: 'SUNDAY',
+  WEEKLY_AVG: 'WEEKLY_AVG',
+  MONTHLY_AVG: 'MONTHLY_AVG',
+}
+
+export const CHARTS = [
+  {
+    key: CHART_KEYS.MONDAY,
+    title: 'Monday',
+  },
+  {
+    key: CHART_KEYS.TUESDAY,
+    title: 'Tuesday',
+  },
+  {
+    key: CHART_KEYS.WEDNESDAY,
+    title: 'Wednesday',
+  },
+  {
+    key: CHART_KEYS.THURSDAY,
+    title: 'Thursday',
+  },
+  {
+    key: CHART_KEYS.FRIDAY,
+    title: 'Friday',
+  },
+  {
+    key: CHART_KEYS.SATURDAY,
+    title: 'Saturday',
+  },
+  {
+    key: CHART_KEYS.SUNDAY,
+    title: 'Sunday',
+  },
+  {
+    key: CHART_KEYS.WEEKLY_AVG,
+    title: 'Weekly Average',
+  },
+  {
+    key: CHART_KEYS.MONTHLY_AVG,
+    title: 'Monthly Average',
+  },
+]

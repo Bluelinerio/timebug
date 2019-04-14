@@ -9,6 +9,12 @@ import {
 const optionsWidth = widthPercentage(60)
 const optionsHeight = heightPercentage(15)
 
+const slideWidth = widthPercentage(85)
+const itemHorizontalMargin = widthPercentage(2)
+
+export const sliderWidth = widthPercentage(80)
+export const itemWidth = slideWidth + itemHorizontalMargin * 2
+
 export const iconColor = darkBlue
 
 export default StyleSheet.create({
@@ -20,6 +26,41 @@ export default StyleSheet.create({
   },
   fullWidth: {
     width: '100%',
+  },
+  carouselContainerTitleContainer: {
+    height: 30,
+  },
+  carouselContainerTitle: {
+    ...iOSUIKit.footnoteEmphasizedObject,
+    color: darkBlue,
+    textAlign: 'center',
+  },
+  chartContainer: {
+    flex: 1,
+    maxHeight: 500,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  entry: {
+    borderRadius: 6,
+    paddingVertical: 5,
+    backgroundColor: '#FAFAFA',
+    minHeight: 400,
+    ...Platform.select({
+      android: {
+        elevation: 2,
+        margin: 3,
+      },
+      ios: {
+        shadowColor: 'black',
+        shadowOffset: {
+          width: 0,
+          height: 2,
+        },
+        shadowOpacity: 0.2,
+        shadowRadius: 2,
+      },
+    }),
   },
   centered: {
     alignItems: 'center',

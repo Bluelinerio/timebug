@@ -1,5 +1,5 @@
 // @flow
-import type { Moment }                       from 'moment'
+import type { Moment } from 'moment'
 
 export type CheckinElement = {
   key: string,
@@ -66,4 +66,28 @@ export type ToolValue = {
   isoTimeOfPeriod: string, // Iso stamp of the beginning of the period defined by "key"
   timeTaken: string, // The moment the value is stored as ISO
   value: any,
+}
+
+export type DataSet = Array<DataPoint> //Set of Datapoints ordered by the time they happened belonging to a single day
+
+export type DataPoint = {
+  level: number, // Energy level for said data point
+  time: number, // Time unit in decimal value for said data point, it's the value from the minutes division of the day from 0 to 24
+}
+
+export type Data = {
+  physicalData: DataSet,
+  emotionalData: DataSet,
+  spiritualData: DataSet,
+}
+
+export type ChartSpec = {
+  title: string,
+  key: string,
+}
+
+export type CarouselEntryType = {
+  data: Data,
+  title: string,
+  key: string,
 }
