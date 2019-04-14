@@ -1,71 +1,68 @@
 import React from 'react'
 import { View } from 'react-native'
-import * as scale from 'd3-scale'
 import moment from 'moment'
 import { LineChart, Grid, YAxis, XAxis } from 'react-native-svg-charts'
+
 import tron from 'reactotron-react-native'
 
 const FORMAT = 'HH:mm'
 
 class Chart extends React.PureComponent {
   render() {
-    const yAxis = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    const yAxis = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     const xAxis = [
       {
         value: 0,
-        text: '12AM',
-        time: moment('00:00', FORMAT).toDate(),
-      },
-      {
-        value: 3,
-        text: '3AM',
-        time: moment('03:00', FORMAT).toDate(),
+        time: new Date(2019, 0, 0).setHours(0),
       },
       {
         value: 6,
-        text: '6AM',
-        time: moment('06:00', FORMAT).toDate(),
-      },
-      {
-        value: 9,
-        text: '9AM',
-        time: moment('09:00', FORMAT).toDate(),
+        time: new Date(2019, 0, 0).setHours(6),
       },
       {
         value: 12,
-        text: '12PM',
-        time: moment('12:00', FORMAT).toDate(),
-      },
-      {
-        value: 15,
-        text: '3PM',
-        time: moment('15:00', FORMAT).toDate(),
+        time: new Date(2019, 0, 0).setHours(12),
       },
       {
         value: 18,
-        text: '6PM',
-        time: moment('18:00', FORMAT).toDate(),
-      },
-      {
-        value: 21,
-        text: '9PM',
-        time: moment('21:00', FORMAT).toDate(),
+        time: new Date(2019, 0, 0).setHours(18),
       },
       {
         value: 24,
-        text: '12PM',
-        time: moment('24:00', FORMAT).toDate(),
+        time: new Date(2019, 0, 0).setHours(24),
       },
     ]
-    const data = [4, 5, 10, 3, 2, 6, 8, 1, 9]
+    const data = [
+      {
+        level: 10,
+        time: 0.1667,
+      },
+      {
+        level: 1,
+        time: 1,
+      },
+      {
+        level: 3,
+        time: 2,
+      },
+      {
+        level: 5,
+        time: 9,
+      },
+      {
+        level: 9,
+        time: 14.3667,
+      },
+      {
+        level: 10,
+        time: 22.55,
+      },
+    ]
 
     const xAxesSvg = {
       fill: 'gray',
       fontSize: 9,
       fontWeight: 'bold',
-      rotation: -20,
-      originY: 20,
-      y: 5,
     }
 
     const yAxesSvg = {
@@ -75,16 +72,20 @@ class Chart extends React.PureComponent {
 
     const verticalContentInset = { top: 10, bottom: 10 }
 
-    const horizontalContentInset = { left: 30, right: 10 }
+    const horizontalContentInset = { left: 10, right: 15 }
 
     const xAxisHeight = 30
+
+    const yTicks = 11
+
     return (
       <View style={{ height: 300, padding: 20, flexDirection: 'row' }}>
         <YAxis
-          data={data}
+          data={yAxis}
           style={{ marginBottom: xAxisHeight }}
           contentInset={verticalContentInset}
           svg={yAxesSvg}
+          numberOfTicks={yTicks}
         />
         <View style={{ flex: 1, marginLeft: 10 }}>
           <LineChart
@@ -94,8 +95,10 @@ class Chart extends React.PureComponent {
               ...verticalContentInset,
               ...horizontalContentInset,
             }}
+            yAccessor={({ item }) => item.level}
+            xAccessor={({ item }) => item.time}
             svg={{ stroke: 'rgb(134, 65, 244)' }}
-            numberOfTicks={10}
+            numberOfTicks={yTicks}
           >
             <Grid />
           </LineChart>
@@ -103,11 +106,16 @@ class Chart extends React.PureComponent {
             style={{ height: xAxisHeight }}
             data={xAxis}
             contentInset={horizontalContentInset}
-            xAccessor={({ item }) => item.time}
+            xAccessor={({ item }) => item.value}
             svg={xAxesSvg}
-            scale={scale.scaleTime}
-            numberOfTicks={9}
-            formatLabel={value => moment(value).format('h a')}
+            formatLabel={value =>
+              moment(
+                `${
+                  `${value}`.split('').length === 1 ? `0${value}` : `${value}`
+                }:00`,
+                FORMAT
+              ).format('ha')
+            }
           />
         </View>
       </View>
