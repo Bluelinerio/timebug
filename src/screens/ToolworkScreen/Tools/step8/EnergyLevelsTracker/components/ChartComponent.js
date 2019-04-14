@@ -41,33 +41,33 @@ class Chart extends React.PureComponent<Props> {
     const data = [
       {
         level: 10,
-        time: 0.1667,
+        time: 6,
       },
       {
         level: 1,
-        time: 1,
+        time: 12,
       },
       {
         level: 3,
-        time: 2,
+        time: 14,
       },
       {
         level: 5,
-        time: 9,
+        time: 15,
       },
       {
         level: 9,
-        time: 14.3667,
+        time: 18,
       },
       {
         level: 10,
-        time: 22.55,
+        time: 24,
       },
     ]
     const data2 = [
       {
-        level: 1,
-        time: 0.5,
+        level: 2,
+        time: 0,
       },
       {
         level: 6,
@@ -83,7 +83,7 @@ class Chart extends React.PureComponent<Props> {
       },
       {
         level: 2,
-        time: 16.3667,
+        time: 18,
       },
       {
         level: 10,
@@ -109,8 +109,8 @@ class Chart extends React.PureComponent<Props> {
         time: 12.1,
       },
       {
-        level: 2,
-        time: 16.3667,
+        level: 4,
+        time: 18,
       },
       {
         level: 1,
@@ -129,9 +129,9 @@ class Chart extends React.PureComponent<Props> {
       fontSize: 9,
     }
 
-    const verticalContentInset = { top: 10, bottom: 10 }
+    const verticalContentInset = { top: 5, bottom: 5 }
 
-    const horizontalContentInset = { left: 10, right: 15 }
+    const horizontalContentInset = { left: 15, right: 15 }
 
     const xAxisHeight = 30
 
@@ -160,6 +160,10 @@ class Chart extends React.PureComponent<Props> {
             xAccessor={({ item }) => item.time}
             svg={{ stroke: 'rgb(134, 65, 244)' }}
             numberOfTicks={yTicks}
+            yMin={0}
+            yMax={10}
+            xMin={0}
+            xMax={24}
           >
             <Grid />
           </LineChart>
@@ -175,6 +179,10 @@ class Chart extends React.PureComponent<Props> {
             showGrid={false}
             svg={{ stroke: 'rgb(21, 21, 21)' }}
             numberOfTicks={yTicks}
+            yMin={0}
+            yMax={10}
+            xMin={0}
+            xMax={24}
           />
           <LineChart
             style={{ ...StyleSheet.absoluteFillObject, marginLeft: yAxisWidth }}
@@ -188,6 +196,10 @@ class Chart extends React.PureComponent<Props> {
             xAccessor={({ item }) => item.time}
             svg={{ stroke: 'red' }}
             numberOfTicks={yTicks}
+            yMin={0}
+            yMax={10}
+            xMin={0}
+            xMax={24}
           />
         </View>
         <XAxis
@@ -204,6 +216,8 @@ class Chart extends React.PureComponent<Props> {
               FORMAT
             ).format('ha')
           }
+          xMin={0}
+          xMax={24}
         />
       </View>
     )
