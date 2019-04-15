@@ -41,11 +41,11 @@ class ChartCarousel extends React.PureComponent<Props, State> {
 
   _renderItem({ item }) {
     return (
-      <View style={styles.entry}>
-        <View style={styles.slideInnerContainer}>
-          <Text>{item.title}</Text>
+      <ChartContainerComponent title={item.title}>
+        <View style={{ flex: 1, backgroundColor: 'blue' }}>
+          <Text>hi Im cool</Text>
         </View>
-      </View>
+      </ChartContainerComponent>
     )
   }
 

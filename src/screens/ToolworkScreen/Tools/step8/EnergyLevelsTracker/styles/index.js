@@ -30,6 +30,8 @@ export default StyleSheet.create({
   },
   carouselContainerTitleContainer: {
     height: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   carouselContainerTitle: {
     ...iOSUIKit.footnoteEmphasizedObject,

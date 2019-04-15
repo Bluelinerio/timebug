@@ -12,11 +12,13 @@ class ChartContainerComponent extends React.PureComponent<Props> {
   render() {
     const { title } = this.props
     return (
-      <View style={styles.container}>
-        <View style={styles.carouselContainerTitleContainer}>
-          <Text style={styles.carouselContainerTitle}>{title}</Text>
+      <View style={styles.entry}>
+        <View style={styles.slideInnerContainer}>
+          <View style={styles.carouselContainerTitleContainer}>
+            <Text style={styles.carouselContainerTitle}>{title}</Text>
+          </View>
+          {this.props.children}
         </View>
-        <View>{this.props.children}</View>
       </View>
     )
   }
