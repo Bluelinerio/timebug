@@ -6,7 +6,6 @@ import ChartComponent from './ChartComponent'
 import ChartContainerComponent from './ChartContainerComponent'
 import type { CarouselEntryType } from '../types'
 import styles, { itemWidth, sliderWidth } from '../styles'
-import tron from 'reactotron-react-native'
 
 export type Props = {
   entries: Array<CarouselEntryType>,

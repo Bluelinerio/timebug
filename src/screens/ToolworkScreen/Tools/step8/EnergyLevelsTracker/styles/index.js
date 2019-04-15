@@ -1,6 +1,6 @@
 import { StyleSheet, Platform } from 'react-native'
 import { iOSUIKit } from 'react-native-typography'
-import { darkBlue, azure, white2 } from '2020_constants/colors'
+import { darkBlue, azure, white2, red500, cyan500, yellow500 } from '2020_constants/colors'
 import {
   widthPercentage,
   heightPercentage,
@@ -17,6 +17,12 @@ export const itemWidth = slideWidth
 export const itemHeight = 400
 
 export const iconColor = darkBlue
+
+export const physicalColor = red500
+
+export const spiritualColor = yellow500
+
+export const emotionalColor = cyan500
 
 export default StyleSheet.create({
   container: {

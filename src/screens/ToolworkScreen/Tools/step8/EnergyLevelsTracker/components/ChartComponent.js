@@ -1,6 +1,6 @@
 // @flow
 import React from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View } from 'react-native'
 import moment from 'moment'
 import { LineChart, Grid, YAxis, XAxis } from 'react-native-svg-charts'
 import type { DataSet } from '../types'
@@ -10,7 +10,9 @@ import {
   yAxesSvg,
   verticalContentInset,
   horizontalContentInset,
-  yAxisWidth,
+  physicalColor,
+  spiritualColor,
+  emotionalColor,
 } from '../styles'
 
 export type Props = {
@@ -50,85 +52,7 @@ const yTicks = 11
 
 class Chart extends React.PureComponent<Props> {
   render() {
-    const data = [
-      {
-        level: 10,
-        time: 6,
-      },
-      {
-        level: 1,
-        time: 12,
-      },
-      {
-        level: 3,
-        time: 14,
-      },
-      {
-        level: 5,
-        time: 15,
-      },
-      {
-        level: 9,
-        time: 18,
-      },
-      {
-        level: 10,
-        time: 24,
-      },
-    ]
-    const data2 = [
-      {
-        level: 2,
-        time: 0,
-      },
-      {
-        level: 6,
-        time: 2.1,
-      },
-      {
-        level: 9,
-        time: 10.23,
-      },
-      {
-        level: 4,
-        time: 13.2,
-      },
-      {
-        level: 2,
-        time: 18,
-      },
-      {
-        level: 10,
-        time: 22.55,
-      },
-    ]
-
-    const data3 = [
-      {
-        level: 1,
-        time: 4,
-      },
-      {
-        level: 6,
-        time: 6,
-      },
-      {
-        level: 2,
-        time: 10,
-      },
-      {
-        level: 1,
-        time: 12.1,
-      },
-      {
-        level: 4,
-        time: 18,
-      },
-      {
-        level: 1,
-        time: 24,
-      },
-    ]
+    const { physicalData, emotionalData, spiritualData } = this.props
 
     return (
       <View style={chartStyles.chartContainer}>
@@ -142,14 +66,14 @@ class Chart extends React.PureComponent<Props> {
           />
           <LineChart
             style={chartStyles.chart}
-            data={data}
+            data={physicalData}
             contentInset={{
               ...verticalContentInset,
               ...horizontalContentInset,
             }}
             yAccessor={({ item }) => item.level}
             xAccessor={({ item }) => item.time}
-            svg={{ stroke: 'rgb(134, 65, 244)' }}
+            svg={{ stroke: physicalColor }}
             numberOfTicks={yTicks}
             yMin={0}
             yMax={10}
@@ -160,7 +84,7 @@ class Chart extends React.PureComponent<Props> {
           </LineChart>
           <LineChart
             style={chartStyles.absoluteChart}
-            data={data2}
+            data={spiritualData}
             contentInset={{
               ...verticalContentInset,
               ...horizontalContentInset,
@@ -168,7 +92,7 @@ class Chart extends React.PureComponent<Props> {
             yAccessor={({ item }) => item.level}
             xAccessor={({ item }) => item.time}
             showGrid={false}
-            svg={{ stroke: 'rgb(21, 21, 21)' }}
+            svg={{ stroke: spiritualColor }}
             numberOfTicks={yTicks}
             yMin={0}
             yMax={10}
@@ -177,7 +101,7 @@ class Chart extends React.PureComponent<Props> {
           />
           <LineChart
             style={chartStyles.absoluteChart}
-            data={data3}
+            data={emotionalData}
             contentInset={{
               ...verticalContentInset,
               ...horizontalContentInset,
@@ -185,7 +109,7 @@ class Chart extends React.PureComponent<Props> {
             showGrid={false}
             yAccessor={({ item }) => item.level}
             xAccessor={({ item }) => item.time}
-            svg={{ stroke: 'red' }}
+            svg={{ stroke: emotionalColor }}
             numberOfTicks={yTicks}
             yMin={0}
             yMax={10}
