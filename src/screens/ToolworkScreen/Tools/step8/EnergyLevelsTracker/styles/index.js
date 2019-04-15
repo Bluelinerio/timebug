@@ -9,11 +9,12 @@ import {
 const optionsWidth = widthPercentage(60)
 const optionsHeight = heightPercentage(15)
 
-const slideWidth = widthPercentage(85)
-const itemHorizontalMargin = widthPercentage(2)
+export const sliderWidth = widthPercentage(100)
 
-export const sliderWidth = widthPercentage(80)
-export const itemWidth = slideWidth + itemHorizontalMargin * 2
+const slideWidth = widthPercentage(80, sliderWidth)
+export const itemWidth = slideWidth
+
+export const itemHeight = 400
 
 export const iconColor = darkBlue
 
@@ -35,6 +36,10 @@ export default StyleSheet.create({
     color: darkBlue,
     textAlign: 'center',
   },
+  carouselContainer: {
+    flex: 1,
+    paddingVertical: 8,
+  },
   chartContainer: {
     flex: 1,
     maxHeight: 500,
@@ -42,25 +47,29 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
   entry: {
+    flex: 1,
     borderRadius: 6,
-    paddingVertical: 5,
     backgroundColor: '#FAFAFA',
-    minHeight: 400,
+    width: itemWidth,
+    marginVertical: 2,
     ...Platform.select({
       android: {
         elevation: 2,
-        margin: 3,
       },
       ios: {
         shadowColor: 'black',
         shadowOffset: {
-          width: 0,
-          height: 2,
+          width: 4,
+          height: 4,
         },
         shadowOpacity: 0.2,
-        shadowRadius: 2,
+        shadowRadius: 4,
       },
     }),
+  },
+  slideInnerContainer: {
+    flex: 1,
+    width: slideWidth,
   },
   centered: {
     alignItems: 'center',
