@@ -1,9 +1,17 @@
 // @flow
-import React                             from 'react'
-import { View, StyleSheet }              from 'react-native'
-import moment                            from 'moment'
+import React from 'react'
+import { View, StyleSheet } from 'react-native'
+import moment from 'moment'
 import { LineChart, Grid, YAxis, XAxis } from 'react-native-svg-charts'
-import type { DataSet }                  from '../types'
+import type { DataSet } from '../types'
+import {
+  chartStyles,
+  xAxesSvg,
+  yAxesSvg,
+  verticalContentInset,
+  horizontalContentInset,
+  yAxisWidth,
+} from '../styles'
 
 export type Props = {
   physicalData: DataSet,
@@ -37,25 +45,6 @@ const xAxis = [
     time: new Date(2019, 0, 0).setHours(24),
   },
 ]
-
-const xAxesSvg = {
-  fill: 'gray',
-  fontSize: 9,
-  fontWeight: 'bold',
-}
-
-const yAxesSvg = {
-  fill: 'gray',
-  fontSize: 9,
-}
-
-const verticalContentInset = { top: 5, bottom: 5 }
-
-const horizontalContentInset = { left: 15, right: 15 }
-
-const xAxisHeight = 30
-
-const yAxisWidth = 15
 
 const yTicks = 11
 
@@ -142,17 +131,17 @@ class Chart extends React.PureComponent<Props> {
     ]
 
     return (
-      <View style={{ height: 300, padding: 20, flexDirection: 'column' }}>
-        <View style={{ flex: 1, flexDirection: 'row' }}>
+      <View style={chartStyles.chartContainer}>
+        <View style={chartStyles.yAxisContainer}>
           <YAxis
             data={yAxis}
-            style={{ width: yAxisWidth }}
+            style={chartStyles.yAxis}
             contentInset={verticalContentInset}
             svg={yAxesSvg}
             numberOfTicks={yTicks}
           />
           <LineChart
-            style={{ flex: 1 }}
+            style={chartStyles.chart}
             data={data}
             contentInset={{
               ...verticalContentInset,
@@ -170,7 +159,7 @@ class Chart extends React.PureComponent<Props> {
             <Grid />
           </LineChart>
           <LineChart
-            style={{ ...StyleSheet.absoluteFillObject, marginLeft: yAxisWidth }}
+            style={chartStyles.absoluteChart}
             data={data2}
             contentInset={{
               ...verticalContentInset,
@@ -187,7 +176,7 @@ class Chart extends React.PureComponent<Props> {
             xMax={24}
           />
           <LineChart
-            style={{ ...StyleSheet.absoluteFillObject, marginLeft: yAxisWidth }}
+            style={chartStyles.absoluteChart}
             data={data3}
             contentInset={{
               ...verticalContentInset,
@@ -205,7 +194,7 @@ class Chart extends React.PureComponent<Props> {
           />
         </View>
         <XAxis
-          style={{ marginLeft: yAxisWidth, height: xAxisHeight }}
+          style={chartStyles.xAxis}
           data={xAxis}
           contentInset={horizontalContentInset}
           xAccessor={({ item }) => item.value}

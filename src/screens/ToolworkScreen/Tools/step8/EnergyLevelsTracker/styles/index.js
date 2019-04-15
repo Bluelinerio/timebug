@@ -1,10 +1,10 @@
-import { StyleSheet, Platform }    from 'react-native'
-import { iOSUIKit }                from 'react-native-typography'
+import { StyleSheet, Platform } from 'react-native'
+import { iOSUIKit } from 'react-native-typography'
 import { darkBlue, azure, white2 } from '2020_constants/colors'
 import {
   widthPercentage,
   heightPercentage,
-}                                  from '2020_utils/viewportCalculation'
+} from '2020_utils/viewportCalculation'
 
 const optionsWidth = widthPercentage(60)
 const optionsHeight = heightPercentage(15)
@@ -145,4 +145,32 @@ export default StyleSheet.create({
   padded: {
     padding: 16,
   },
+})
+
+export const xAxesSvg = {
+  fill: 'gray',
+  fontSize: 9,
+  fontWeight: 'bold',
+}
+
+export const yAxesSvg = {
+  fill: 'gray',
+  fontSize: 9,
+}
+
+export const verticalContentInset = { top: 5, bottom: 5 }
+
+export const horizontalContentInset = { left: 15, right: 15 }
+
+export const xAxisHeight = 30
+
+export const yAxisWidth = 15
+
+export const chartStyles = StyleSheet.create({
+  chartContainer: { flex: 1, flexDirection: 'column', padding: 10 },
+  yAxisContainer: { flex: 1, flexDirection: 'row' },
+  chart: { flex: 1 },
+  absoluteChart: { ...StyleSheet.absoluteFillObject, marginLeft: yAxisWidth },
+  xAxis: { marginLeft: yAxisWidth, height: xAxisHeight },
+  yAxis: { width: yAxisWidth },
 })

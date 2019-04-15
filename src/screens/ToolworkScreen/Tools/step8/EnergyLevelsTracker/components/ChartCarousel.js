@@ -1,6 +1,6 @@
 // @flow
 import React from 'react'
-import { View, Platform, Text } from 'react-native'
+import { View } from 'react-native'
 import Carousel from 'react-native-snap-carousel'
 import ChartComponent from './ChartComponent'
 import ChartContainerComponent from './ChartContainerComponent'
@@ -42,9 +42,7 @@ class ChartCarousel extends React.PureComponent<Props, State> {
   _renderItem({ item }) {
     return (
       <ChartContainerComponent title={item.title}>
-        <View style={{ flex: 1, backgroundColor: 'blue' }}>
-          <Text>hi Im cool</Text>
-        </View>
+        <ChartComponent {...item.data} />
       </ChartContainerComponent>
     )
   }
@@ -60,6 +58,9 @@ class ChartCarousel extends React.PureComponent<Props, State> {
           renderItem={this._renderItem}
           sliderWidth={sliderWidth}
           itemWidth={itemWidth}
+          enableMomentum={false}
+          decelerationRate={'fast'}
+          scrollEndDragDebounceValue={0}
         />
       </View>
     )
