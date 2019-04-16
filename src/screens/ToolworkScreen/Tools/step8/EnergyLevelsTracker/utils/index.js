@@ -163,3 +163,16 @@ export const pickTimePeriodAndDayForTime = (
   const { selectedTime: period, day, extra } = pickTimePeriodForTime(timeString)
   return { period, day, extra }
 }
+
+export const getThisWeekDaysAndMonth = () => {
+  const beginningOfWeek = moment().startOf('isoweek')
+  const month = moment().startOf('month')
+  return {
+    week: beginningOfWeek,
+    month: {
+      text: month.format('MMMM YYYY'),
+      startDate: month.format(),
+      endDate: month.add(1, 'M').format(),
+    },
+  }
+}
