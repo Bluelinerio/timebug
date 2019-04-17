@@ -65,14 +65,14 @@ export const CHART_KEYS = {
 export const CHARTS = [
   {
     key: CHART_KEYS.TODAY,
-    title: `Today's Energy`,
+    title: `Today`,
   },
   {
     key: CHART_KEYS.WEEKLY_AVG,
-    title: `This week's average energy`,
+    title: `Weekly Average`,
   },
   {
     key: CHART_KEYS.MONTHLY_AVG,
-    title: 'Monthly average energy',
+    title: 'Monthly Average',
   },
 ]

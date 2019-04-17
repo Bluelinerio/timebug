@@ -81,10 +81,10 @@ export default {
   key,
   number: 8,
   phase: MEDITATION,
-  title: 'Energy levels tracker',
-  subtitle: 'Check your energy levels through the day',
+  title: 'My Energy Levels',
+  subtitle: 'How are you feeling right now?',
   content:
-    'Use this tool to keep track of how you feel through the day. Log your energy levels and make sure that you are making the progress you want to make',
+    'Take stock of your internal energy levels throughout the day, and observe the trends that develop over weeks and months.',
   form,
   config: {},
   formStyles: {
