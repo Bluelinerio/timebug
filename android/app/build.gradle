@@ -94,11 +94,11 @@ android {
         targetSdkVersion 27
         versionCode 37
 
-        testBuildType System.getProperty('testBuildType', 'debug')  //this will later be used to control the test apk build type
-        missingDimensionStrategy "minReactNative", "minReactNative46" //read note
+        // testBuildType System.getProperty('testBuildType', 'debug')  //this will later be used to control the test apk build type
+        // missingDimensionStrategy "minReactNative", "minReactNative46" //read note
         
         //REQUIRED FOR DETOX DO NOT REMOVE
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        // testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         
         versionName "2.0.0"
         ndk {
@@ -216,10 +216,10 @@ dependencies {
         force = true;
     }
 
-    androidTestImplementation(project(path: ":detox"))
-    androidTestImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test:rules:1.0.1'
+    // androidTestImplementation(project(path: ":detox"))
+    // androidTestImplementation 'junit:junit:4.12'
+    // androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    // androidTestImplementation 'com.android.support.test:rules:1.0.1'
 
     //Uncomment if some sort of incompatibility surges with jackson
 //     androidTestCompile(project(path: ":detox", configuration: "oldOkhttpDebug"), {
