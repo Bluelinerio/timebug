@@ -50,6 +50,7 @@ export const TIME: Array<TimeElement> = [
 ]
 
 export const CHART_KEYS = {
+  TODAY: 'TODAY',
   MONDAY: 'MONDAY',
   TUESDAY: 'TUESDAY',
   WEDNESDAY: 'WEDNESDAY',
@@ -63,39 +64,15 @@ export const CHART_KEYS = {
 
 export const CHARTS = [
   {
-    key: CHART_KEYS.MONDAY,
-    title: 'Monday',
-  },
-  {
-    key: CHART_KEYS.TUESDAY,
-    title: 'Tuesday',
-  },
-  {
-    key: CHART_KEYS.WEDNESDAY,
-    title: 'Wednesday',
-  },
-  {
-    key: CHART_KEYS.THURSDAY,
-    title: 'Thursday',
-  },
-  {
-    key: CHART_KEYS.FRIDAY,
-    title: 'Friday',
-  },
-  {
-    key: CHART_KEYS.SATURDAY,
-    title: 'Saturday',
-  },
-  {
-    key: CHART_KEYS.SUNDAY,
-    title: 'Sunday',
+    key: CHART_KEYS.TODAY,
+    title: `Today's Energy`,
   },
   {
     key: CHART_KEYS.WEEKLY_AVG,
-    title: 'Weekly Average',
+    title: `This week's average energy`,
   },
   {
     key: CHART_KEYS.MONTHLY_AVG,
-    title: 'Monthly Average',
+    title: 'Monthly average energy',
   },
 ]

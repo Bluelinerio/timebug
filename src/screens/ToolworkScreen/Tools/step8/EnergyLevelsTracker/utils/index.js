@@ -1,7 +1,7 @@
 // @flow
 import moment from 'moment'
 import { DATE_FORMAT, EXTENDED_DATE_FORMAT } from '2020_constants/constants'
-import { TIME, MORNING, EVENING, AFTERNOON } from '../constants'
+import { TIME, MORNING, EVENING, AFTERNOON, CHART_KEYS } from '../constants'
 import type { TimeElement, TimeUnit } from '../types'
 import type { Moment } from 'moment'
 
@@ -175,4 +175,47 @@ export const getThisWeekDaysAndMonth = () => {
       endDate: month.add(1, 'M').format(),
     },
   }
+}
+
+export const getDateOfWeekDay = (week: any, key: string) => {
+  switch (key) {
+  case CHART_KEYS.MONDAY:
+    return week.format(DATE_FORMAT)
+  case CHART_KEYS.TUESDAY:
+    return week
+      .clone()
+      .add(1, 'd')
+      .format(DATE_FORMAT)
+  case CHART_KEYS.WEDNESDAY:
+    return week
+      .clone()
+      .add(2, 'd')
+      .format(DATE_FORMAT)
+  case CHART_KEYS.THURSDAY:
+    return week
+      .clone()
+      .add(3, 'd')
+      .format(DATE_FORMAT)
+  case CHART_KEYS.FRIDAY:
+    return week
+      .clone()
+      .add(4, 'd')
+      .format(DATE_FORMAT)
+  case CHART_KEYS.SATURDAY:
+    return week
+      .clone()
+      .add(5, 'd')
+      .format(DATE_FORMAT)
+  case CHART_KEYS.SUNDAY:
+    return week
+      .clone()
+      .add(6, 'd')
+      .format(DATE_FORMAT)
+  }
+}
+
+export const getTimeValue = (time: any) => {
+  const hours = time.hour()
+  const minutes = time.minute()
+  return (hours * 60 + minutes) / 60
 }
