@@ -1,5 +1,6 @@
 // @flow
 import type { Sections, TimeElement } from '../types'
+import { red500, yellow500, cyan500 } from '2020_constants/colors'
 
 export const SECTIONS: Sections = {
   MENU: 'MENU',
@@ -74,5 +75,23 @@ export const CHARTS = [
   {
     key: CHART_KEYS.MONTHLY_AVG,
     title: 'Monthly Average',
+  },
+]
+
+export const chartLegendElements = [
+  {
+    key: 'physical',
+    color: red500,
+    text: 'Physical',
+  },
+  {
+    key: 'emotional',
+    color: cyan500,
+    text: 'Emotional',
+  },
+  {
+    key: 'spiritual',
+    color: yellow500,
+    text: 'Spiritual',
   },
 ]

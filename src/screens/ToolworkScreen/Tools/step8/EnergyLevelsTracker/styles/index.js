@@ -1,13 +1,26 @@
 import { StyleSheet, Platform } from 'react-native'
-import { iOSUIKit } from 'react-native-typography'
-import { darkBlue, azure, white2, red500, cyan500, yellow500 } from '2020_constants/colors'
+import { iOSUIKit }             from 'react-native-typography'
+import {
+  darkBlue,
+  azure,
+  white2,
+  red500,
+  cyan500,
+  yellow500,
+}                               from '2020_constants/colors'
 import {
   widthPercentage,
   heightPercentage,
-} from '2020_utils/viewportCalculation'
+}                               from '2020_utils/viewportCalculation'
 
 const optionsWidth = widthPercentage(60)
 const optionsHeight = heightPercentage(15)
+
+const legendHeight = heightPercentage(10)
+
+export const circleContainerDimensions = heightPercentage(25, legendHeight)
+export const circleRadius = heightPercentage(50, circleContainerDimensions)
+export const displacement = heightPercentage(50, circleContainerDimensions)
 
 export const sliderWidth = widthPercentage(100)
 
@@ -150,6 +163,27 @@ export default StyleSheet.create({
   },
   padded: {
     padding: 16,
+  },
+  legendContainer: {
+    flexDirection: 'row',
+    height: legendHeight,
+    maxHeight: legendHeight,
+    marginVertical: 8,
+    alignItems: 'center',
+    justifyContent: 'space-around',
+  },
+  legendElement: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  legendText: {
+    ...iOSUIKit.bodyEmphasizedObject,
+    fontSize: 9,
+    color: darkBlue,
+    textAlign: 'center',
+    marginRight: 8,
   },
 })
 
