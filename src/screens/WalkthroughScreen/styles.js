@@ -7,8 +7,8 @@ const baseSpacing = Math.floor(width * 0.06);
 const largeVerticalSpacing = Math.floor(height * 0.06);
 const imageHeight = height * 0.55;
 export const gradientColors = {
-  start: '#008EBC',
-  end: '#005587',
+  start: '#B3E5FC',
+  end: '#c6edff',
 };
 
 export default StyleSheet.create({
@@ -70,11 +70,11 @@ export default StyleSheet.create({
   },
   title: {
     marginTop: largeVerticalSpacing,
-    color: 'white',
+    color: '#00098A',
   },
   description: {
     marginTop: largeVerticalSpacing/2,
-    color: 'white',
+    color: '#00098A',
   },
 });
 

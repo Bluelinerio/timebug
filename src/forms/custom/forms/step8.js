@@ -15,7 +15,7 @@ export const FORM_KEYS = {
     'form_8_energy_levels_weekday_afternoon',
   form_8_energy_levels_weekday_evening: 'form_8_energy_levels_weekday_evening',
   form_8_energy_levels_weekend_morning:
-    'form_8_energy_levels_weekend_afternoon',
+    'form_8_energy_levels_weekend_morning',
   form_8_energy_levels_weekend_afternoon:
     'form_8_energy_levels_weekend_afternoon',
   form_8_energy_levels_weekend_evening: 'form_8_energy_levels_weekend_evening',
@@ -25,70 +25,70 @@ export const FORM_KEYS = {
 
 export const CHILDREN_KEYS = {
   form_8_energy_levels_weekday_morning: {
-    weekdayMorningPhysical: `${
+    PhysicalEnergy: `${
       FORM_KEYS.form_8_energy_levels_weekday_morning
-    }.weekdayMorningPhysical`,
-    weekdayMorningEmotional: `${
+    }.PhysicalEnergy`,
+    EmotionalEnergy: `${
       FORM_KEYS.form_8_energy_levels_weekday_morning
-    }.weekdayMorningEmotional`,
-    weekdayMorningSpiritual: `${
+    }.EmotionalEnergy`,
+    SpiritualEnergy: `${
       FORM_KEYS.form_8_energy_levels_weekday_morning
-    }.weekdayMorningSpiritual`,
+    }.SpiritualEnergy`,
   },
   form_8_energy_levels_weekday_afternoon: {
-    weekdayAfternoonPhysical: `${
+    PhysicalEnergy: `${
       FORM_KEYS.form_8_energy_levels_weekday_afternoon
-    }.weekdayAfternoonPhysical`,
-    weekdayAfternoonEmotional: `${
+    }.PhysicalEnergy`,
+    EmotionalEnergy: `${
       FORM_KEYS.form_8_energy_levels_weekday_afternoon
-    }.weekdayAfternoonEmotional`,
-    weekdayAfternoonSpiritual: `${
+    }.EmotionalEnergy`,
+    SpiritualEnergy: `${
       FORM_KEYS.form_8_energy_levels_weekday_afternoon
-    }.weekdayAfternoonSpiritual`,
+    }.SpiritualEnergy`,
   },
   form_8_energy_levels_weekday_evening: {
-    weekdayEveningPhysical: `${
+    PhysicalEnergy: `${
       FORM_KEYS.form_8_energy_levels_weekday_evening
-    }.weekdayEveningPhysical`,
-    weekdayEveningEmotional: `${
+    }.PhysicalEnergy`,
+    EmotionalEnergy: `${
       FORM_KEYS.form_8_energy_levels_weekday_evening
-    }.weekdayEveningEmotional`,
-    weekdayEveningSpiritual: `${
+    }.EmotionalEnergy`,
+    SpiritualEnergy: `${
       FORM_KEYS.form_8_energy_levels_weekday_evening
-    }.weekdayEveningSpiritual`,
+    }.SpiritualEnergy`,
   },
   form_8_energy_levels_weekend_morning: {
-    weekendMorningPhysical: `${
+    PhysicalEnergy: `${
       FORM_KEYS.form_8_energy_levels_weekend_morning
-    }.weekendMorningPhysical`,
-    weekendMorningEmotional: `${
+    }.PhysicalEnergy`,
+    EmotionalEnergy: `${
       FORM_KEYS.form_8_energy_levels_weekend_morning
-    }.weekendMorningEmotional`,
-    weekendMorningSpiritual: `${
+    }.EmotionalEnergy`,
+    SpiritualEnergy: `${
       FORM_KEYS.form_8_energy_levels_weekend_morning
-    }.weekendMorningSpiritual`,
+    }.SpiritualEnergy`,
   },
   form_8_energy_levels_weekend_afternoon: {
-    weekendAfternoonPhysical: `${
+    PhysicalEnergy: `${
       FORM_KEYS.form_8_energy_levels_weekend_afternoon
-    }.weekendAfternoonPhysical`,
-    weekendAfternoonEmotional: `${
+    }.PhysicalEnergy`,
+    EmotionalEnergy: `${
       FORM_KEYS.form_8_energy_levels_weekend_afternoon
-    }.weekendAfternoonEmotional`,
-    weekendAfternoonSpiritual: `${
+    }.EmotionalEnergy`,
+    SpiritualEnergy: `${
       FORM_KEYS.form_8_energy_levels_weekend_afternoon
-    }.weekendAfternoonSpiritual`,
+    }.SpiritualEnergy`,
   },
   form_8_energy_levels_weekend_evening: {
-    weekendEveningPhysical: `${
+    PhysicalEnergy: `${
       FORM_KEYS.form_8_energy_levels_weekend_evening
-    }.weekendEveningPhysical`,
-    weekendEveningEmotional: `${
+    }.PhysicalEnergy`,
+    EmotionalEnergy: `${
       FORM_KEYS.form_8_energy_levels_weekend_evening
-    }.weekendEveningEmotional`,
-    weekendEveningSpiritual: `${
+    }.EmotionalEnergy`,
+    SpiritualEnergy: `${
       FORM_KEYS.form_8_energy_levels_weekend_evening
-    }.weekendEveningSpiritual`,
+    }.SpiritualEnergy`,
   },
   form_8_exercise_habits: {
     exerciseFrequency: `${FORM_KEYS.form_8_exercise_habits}.exerciseFrequency`,
@@ -332,7 +332,7 @@ const form: Form = {
     },
     6: {
       type: types.formElements,
-      key: FORM_KEYS.form_8_exerciseHabits,
+      key: FORM_KEYS.form_8_exercise_habits,
       content: {
         text:
           'Please answer the following questions about your exercise habits.',
@@ -421,7 +421,7 @@ const form: Form = {
     },
     7: {
       type: types.formElements,
-      key: FORM_KEYS.form_8_meditationHabits,
+      key: FORM_KEYS.form_8_meditation_habits,
       content: {
         text:
           'Please answer the following questions about your meditation habits.',
@@ -432,7 +432,7 @@ const form: Form = {
         childTypes: {
           0: {
             type: types.select,
-            key: `${CHILDREN_KEYS.form_8_exercise_habits.meditationFrequency}`,
+            key: `${CHILDREN_KEYS.form_8_meditation_habits.meditationFrequency}`,
             content: {
               text: 'How often do you meditate?',
               smallKey: 'Meditation Frequency',
