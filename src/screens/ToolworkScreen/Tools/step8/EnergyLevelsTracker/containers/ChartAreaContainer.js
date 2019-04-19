@@ -141,21 +141,15 @@ const getRecap = (data: Array<any>) => {
       } = point_2
       return {
         ...recap,
-        physical_1: [...recap.physical_1, p1p],
-        physical_2: [...recap.physical_2, p2p],
-        emotional_1: [...recap.emotional_1, p1e],
-        emotional_2: [...recap.emotional_2, p2e],
-        spiritual_1: [...recap.spiritual_1, p1s],
-        spiritual_2: [...recap.spiritual_2, p2s],
+        physical_1: [...recap.physical_1, p1p, p2p],
+        emotional_1: [...recap.emotional_1, p1e, p2e],
+        spiritual_1: [...recap.spiritual_1, p1s, p2s],
       }
     },
     {
       physical_1: [],
-      physical_2: [],
       emotional_1: [],
-      emotional_2: [],
       spiritual_1: [],
-      spiritual_2: [],
     }
   )
 }
@@ -176,34 +170,30 @@ const reduceRecap = recap => {
           : key.indexOf('emotional') !== -1
             ? keys.EmotionalData
             : keys.SpiritualData
-      const storableValue =
-        value &&
-        value.filter(v => !!v).reduce(
-          (struct, val, index) => {
-            if (!val) return struct
-            const { level, time } = val
-            // TODO: Fix this, pushing the evening time to 12 am so it does not add weird data points
-            const realTime = time < 3 ? 24 : time
-            if (index === value.length - 1)
-              return {
-                ...struct,
-                level: (struct.level + level) / value.length,
-                time: (struct.time + realTime) / value.length,
-              }
-            return {
-              ...struct,
-              level: struct.level + level,
-              time: struct.time + realTime,
-            }
-          },
-          {
-            level: 0,
-            time: 0,
+      const processableValue = value ? value.filter(v => !!v) : []
+      const acumulativeValue = processableValue.reduce(
+        (struct, val) => {
+          const { level, time } = val
+          // TODO: Fix this, pushing the evening time to 12 am so it does not add weird data points
+          const realTime = time < 3 ? 24 : time
+          return {
+            ...struct,
+            level: struct.level + level,
+            time: struct.time + realTime,
           }
-        )
+        },
+        {
+          level: 0,
+          time: 0,
+        }
+      )
+      const averageValue = {
+        level: acumulativeValue.level / processableValue.length,
+        time: acumulativeValue.time / processableValue.length,
+      }
       return {
         ...red,
-        [storableKey]: [...red[storableKey], storableValue],
+        [storableKey]: [...red[storableKey], averageValue],
       }
     },
     {
@@ -217,6 +207,12 @@ const reduceRecap = recap => {
 }
 
 const processMultipleDataPoints = (values: any) => {
+  tron.display({
+    name: 'Raw data',
+    preview: 'Raw data',
+    value: values,
+  })
+
   const base = {
     [MORNING]: [],
     [AFTERNOON]: [],
@@ -258,11 +254,22 @@ const processMultipleDataPoints = (values: any) => {
 
   const eveningRecap = getRecap(data[EVENING])
 
+  tron.display({
+    name: 'Recap',
+    preview: 'recap',
+    value: [morningRecap, afternoonRecap, eveningRecap],
+  })
   const morningReduction = reduceRecap(morningRecap)
 
   const afternoonReduction = reduceRecap(afternoonRecap)
 
   const eveningReduction = reduceRecap(eveningRecap)
+
+  tron.display({
+    name: 'Reduction',
+    preview: 'Reduction',
+    value: [morningReduction, afternoonReduction, eveningReduction],
+  })
 
   const finalData = [
     morningReduction,
@@ -282,6 +289,12 @@ const processMultipleDataPoints = (values: any) => {
       spiritualData: [...currentSpiritual, ...SpiritualData],
     }
   }, finalDataBase)
+
+  tron.display({
+    name: 'Final',
+    preview: 'Final',
+    value: finalData,
+  })
 
   const fixBlank = Object.keys(finalData).reduce((obj, key) => {
     const data = finalData[key]
@@ -357,7 +370,11 @@ const merge = (props: Props) => {
   const entries: Array<CarouselEntryType> = CHARTS.map(chart =>
     handleKeyData(chart, data)
   )
-  tron.log(entries)
+  tron.display({
+    name: 'Entries',
+    preview: 'Entries',
+    value: entries,
+  })
   return {
     entries,
   }
