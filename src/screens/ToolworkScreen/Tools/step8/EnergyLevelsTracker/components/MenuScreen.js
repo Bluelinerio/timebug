@@ -19,7 +19,7 @@ class MenuScreen extends React.PureComponent<Props> {
             onPress={goToCheckinSection}
           >
             <Text style={styles.optionContainerText}>
-              Check in with the tool
+              How's your energy right now?
             </Text>
           </TouchableOpacity>
         </View>
@@ -29,7 +29,7 @@ class MenuScreen extends React.PureComponent<Props> {
             onPress={goToWeeklySection}
           >
             <Text style={styles.optionContainerText}>
-              Check your weekly levels
+              Your monthly energy distribution
             </Text>
           </TouchableOpacity>
         </View>
