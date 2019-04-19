@@ -54,6 +54,15 @@ class Chart extends React.PureComponent<Props> {
   render() {
     const { physicalData, emotionalData, spiritualData } = this.props
 
+    const disableChart =
+      physicalData.length === 0 ||
+      spiritualData.length === 0 ||
+      emotionalData.length === 0
+
+    const displayPhysicalData = !disableChart ? physicalData : []
+    const displayEmotionalData = !disableChart ? emotionalData : []
+    const displaySpiritualData = !disableChart ? spiritualData : []
+
     return (
       <View style={chartStyles.chartContainer}>
         <View style={chartStyles.yAxisContainer}>
@@ -66,7 +75,7 @@ class Chart extends React.PureComponent<Props> {
           />
           <LineChart
             style={chartStyles.chart}
-            data={physicalData}
+            data={displayPhysicalData}
             contentInset={{
               ...verticalContentInset,
               ...horizontalContentInset,
@@ -84,7 +93,7 @@ class Chart extends React.PureComponent<Props> {
           </LineChart>
           <LineChart
             style={chartStyles.absoluteChart}
-            data={spiritualData}
+            data={displaySpiritualData}
             contentInset={{
               ...verticalContentInset,
               ...horizontalContentInset,
@@ -101,7 +110,7 @@ class Chart extends React.PureComponent<Props> {
           />
           <LineChart
             style={chartStyles.absoluteChart}
-            data={emotionalData}
+            data={displayEmotionalData}
             contentInset={{
               ...verticalContentInset,
               ...horizontalContentInset,

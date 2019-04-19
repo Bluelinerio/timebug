@@ -1,0 +1,1280 @@
+{
+  "type": "SUBMIT_AWARD_VALUE",
+  "payload": {
+    "element": {
+      "value": [
+        {
+          "timeKey": "AFTERNOON",
+          "day": "04/13/2019",
+          "value": [
+            {
+              "energy_levels_tracker_tool_energy_levels": {
+                "type": "set",
+                "value": {
+                  "energy_levels_tracker_tool_energy_levels.PhysicalEnergy": {
+                    "_id": "2be29613-14b3-4183-83d6-ccd7610089d2",
+                    "_model": {
+                      "contentKey": "PhysicalEnergy",
+                      "key": "energy_levels_tracker_tool_energy_levels.PhysicalEnergy",
+                      "content": {
+                        "text": "Physical",
+                        "subtitle": "1 - Lowest, 10 - Highest"
+                      }
+                    },
+                    "value": 6,
+                    "key": "energy_levels_tracker_tool_energy_levels.PhysicalEnergy",
+                    "index": "0",
+                    "contentKey": "PhysicalEnergy"
+                  },
+                  "energy_levels_tracker_tool_energy_levels.EmotionalEnergy": {
+                    "_id": "7ffb6fcf-e4f3-4d99-96b2-602c0ff73217",
+                    "_model": {
+                      "contentKey": "EmotionalEnergy",
+                      "key": "energy_levels_tracker_tool_energy_levels.EmotionalEnergy",
+                      "content": {
+                        "text": "Emotional",
+                        "subtitle": "1 - Lowest, 10 - Highest"
+                      }
+                    },
+                    "value": 10,
+                    "key": "energy_levels_tracker_tool_energy_levels.EmotionalEnergy",
+                    "index": "1",
+                    "contentKey": "EmotionalEnergy"
+                  },
+                  "energy_levels_tracker_tool_energy_levels.SpiritualEnergy": {
+                    "_id": "f0d81e73-cc0d-4fc8-9970-1ac52dde01ed",
+                    "_model": {
+                      "contentKey": "SpiritualEnergy",
+                      "key": "energy_levels_tracker_tool_energy_levels.SpiritualEnergy",
+                      "content": {
+                        "text": "Spiritual",
+                        "subtitle": "1 - Lowest, 10 - Highest"
+                      }
+                    },
+                    "value": 10,
+                    "key": "energy_levels_tracker_tool_energy_levels.SpiritualEnergy",
+                    "index": "2",
+                    "contentKey": "SpiritualEnergy"
+                  }
+                },
+                "key": "energy_levels_tracker_tool_energy_levels",
+                "index": 0,
+                "timestamp": "2019-04-13T15:25:34-04:00",
+                "model": {
+                  "type": "set",
+                  "key": "energy_levels_tracker_tool_energy_levels",
+                  "content": {
+                    "text": "How are your energy levels right now?",
+                    "smallKey": "Energy levels"
+                  },
+                  "options": {
+                    "default": {},
+                    "displayGlobal": false,
+                    "subtype": {
+                      "type": "set.slider"
+                    },
+                    "subtypeOptions": {
+                      "min": 0,
+                      "max": 10,
+                      "step": 1
+                    },
+                    "children": {
+                      "0": {
+                        "contentKey": "PhysicalEnergy",
+                        "key": "energy_levels_tracker_tool_energy_levels.PhysicalEnergy",
+                        "content": {
+                          "text": "Physical",
+                          "subtitle": "1 - Lowest, 10 - Highest"
+                        }
+                      },
+                      "1": {
+                        "contentKey": "EmotionalEnergy",
+                        "key": "energy_levels_tracker_tool_energy_levels.EmotionalEnergy",
+                        "content": {
+                          "text": "Emotional",
+                          "subtitle": "1 - Lowest, 10 - Highest"
+                        }
+                      },
+                      "2": {
+                        "contentKey": "SpiritualEnergy",
+                        "key": "energy_levels_tracker_tool_energy_levels.SpiritualEnergy",
+                        "content": {
+                          "text": "Spiritual",
+                          "subtitle": "1 - Lowest, 10 - Highest"
+                        }
+                      }
+                    }
+                  }
+                },
+                "_id": "804ea0ea-ec24-4ea1-b600-68195679990e"
+              },
+              "_id": "dde7d295-f356-4d9a-81b2-70a3c56d2fa2",
+              "created_at": "2019-04-13T15:25:34-04:00",
+              "_meta": {
+                "version": 1
+              }
+            }
+          ],
+          "isoTime": "2019-04-13T12:00:00-04:00",
+          "extendedTime": "04/13/2019 12:00:00",
+          "_meta": {
+            "timeStamp": 1555183534889
+          }
+        },
+        {
+          "timeKey": "AFTERNOON",
+          "day": "04/13/2019",
+          "value": [
+            {
+              "energy_levels_tracker_tool_energy_levels": {
+                "type": "set",
+                "value": {
+                  "energy_levels_tracker_tool_energy_levels.PhysicalEnergy": {
+                    "_id": "8e1bcf74-200c-433f-b4e2-976e7cf483b3",
+                    "_model": {
+                      "contentKey": "PhysicalEnergy",
+                      "key": "energy_levels_tracker_tool_energy_levels.PhysicalEnergy",
+                      "content": {
+                        "text": "Physical",
+                        "subtitle": "1 - Lowest, 10 - Highest"
+                      }
+                    },
+                    "value": 10,
+                    "key": "energy_levels_tracker_tool_energy_levels.PhysicalEnergy",
+                    "index": "0",
+                    "contentKey": "PhysicalEnergy"
+                  },
+                  "energy_levels_tracker_tool_energy_levels.EmotionalEnergy": {
+                    "_id": "e42d1079-5521-482b-a2f5-804a3c09cf68",
+                    "_model": {
+                      "contentKey": "EmotionalEnergy",
+                      "key": "energy_levels_tracker_tool_energy_levels.EmotionalEnergy",
+                      "content": {
+                        "text": "Emotional",
+                        "subtitle": "1 - Lowest, 10 - Highest"
+                      }
+                    },
+                    "value": 10,
+                    "key": "energy_levels_tracker_tool_energy_levels.EmotionalEnergy",
+                    "index": "1",
+                    "contentKey": "EmotionalEnergy"
+                  },
+                  "energy_levels_tracker_tool_energy_levels.SpiritualEnergy": {
+                    "_id": "c730b8e5-77de-4bf2-b1ca-a7930e350913",
+                    "_model": {
+                      "contentKey": "SpiritualEnergy",
+                      "key": "energy_levels_tracker_tool_energy_levels.SpiritualEnergy",
+                      "content": {
+                        "text": "Spiritual",
+                        "subtitle": "1 - Lowest, 10 - Highest"
+                      }
+                    },
+                    "value": 10,
+                    "key": "energy_levels_tracker_tool_energy_levels.SpiritualEnergy",
+                    "index": "2",
+                    "contentKey": "SpiritualEnergy"
+                  }
+                },
+                "key": "energy_levels_tracker_tool_energy_levels",
+                "index": 0,
+                "timestamp": "2019-04-13T15:26:10-04:00",
+                "model": {
+                  "type": "set",
+                  "key": "energy_levels_tracker_tool_energy_levels",
+                  "content": {
+                    "text": "How are your energy levels right now?",
+                    "smallKey": "Energy levels"
+                  },
+                  "options": {
+                    "default": {},
+                    "displayGlobal": false,
+                    "subtype": {
+                      "type": "set.slider"
+                    },
+                    "subtypeOptions": {
+                      "min": 0,
+                      "max": 10,
+                      "step": 1
+                    },
+                    "children": {
+                      "0": {
+                        "contentKey": "PhysicalEnergy",
+                        "key": "energy_levels_tracker_tool_energy_levels.PhysicalEnergy",
+                        "content": {
+                          "text": "Physical",
+                          "subtitle": "1 - Lowest, 10 - Highest"
+                        }
+                      },
+                      "1": {
+                        "contentKey": "EmotionalEnergy",
+                        "key": "energy_levels_tracker_tool_energy_levels.EmotionalEnergy",
+                        "content": {
+                          "text": "Emotional",
+                          "subtitle": "1 - Lowest, 10 - Highest"
+                        }
+                      },
+                      "2": {
+                        "contentKey": "SpiritualEnergy",
+                        "key": "energy_levels_tracker_tool_energy_levels.SpiritualEnergy",
+                        "content": {
+                          "text": "Spiritual",
+                          "subtitle": "1 - Lowest, 10 - Highest"
+                        }
+                      }
+                    }
+                  }
+                },
+                "_id": "f50b40be-2bc2-43a1-a967-ddf85c26f996"
+              },
+              "_id": "d4eae4ec-932b-429e-8408-437d09f076d7",
+              "created_at": "2019-04-13T15:26:10-04:00",
+              "_meta": {
+                "version": 1
+              }
+            }
+          ],
+          "isoTime": "2019-04-13T12:00:00-04:00",
+          "extendedTime": "04/13/2019 12:00:00",
+          "_meta": {
+            "timeStamp": 1555183570911
+          }
+        },
+        {
+          "timeKey": "AFTERNOON",
+          "day": "04/15/2019",
+          "value": [
+            {
+              "energy_levels_tracker_tool_energy_levels": {
+                "type": "set",
+                "value": {
+                  "energy_levels_tracker_tool_energy_levels.PhysicalEnergy": {
+                    "_id": "8a15adad-7d0f-4f64-bcd5-d0c2d909e14b",
+                    "_model": {
+                      "contentKey": "PhysicalEnergy",
+                      "key": "energy_levels_tracker_tool_energy_levels.PhysicalEnergy",
+                      "content": {
+                        "text": "Physical",
+                        "subtitle": "1 - Lowest, 10 - Highest"
+                      }
+                    },
+                    "value": 7,
+                    "key": "energy_levels_tracker_tool_energy_levels.PhysicalEnergy",
+                    "index": "0",
+                    "contentKey": "PhysicalEnergy"
+                  },
+                  "energy_levels_tracker_tool_energy_levels.EmotionalEnergy": {
+                    "_id": "c39cdecb-83b9-472a-8fd1-0e7205eb69fc",
+                    "_model": {
+                      "contentKey": "EmotionalEnergy",
+                      "key": "energy_levels_tracker_tool_energy_levels.EmotionalEnergy",
+                      "content": {
+                        "text": "Emotional",
+                        "subtitle": "1 - Lowest, 10 - Highest"
+                      }
+                    },
+                    "value": 3,
+                    "key": "energy_levels_tracker_tool_energy_levels.EmotionalEnergy",
+                    "index": "1",
+                    "contentKey": "EmotionalEnergy"
+                  },
+                  "energy_levels_tracker_tool_energy_levels.SpiritualEnergy": {
+                    "_id": "65600a12-6bd6-4399-bf34-eea8f977b0af",
+                    "_model": {
+                      "contentKey": "SpiritualEnergy",
+                      "key": "energy_levels_tracker_tool_energy_levels.SpiritualEnergy",
+                      "content": {
+                        "text": "Spiritual",
+                        "subtitle": "1 - Lowest, 10 - Highest"
+                      }
+                    },
+                    "value": 9,
+                    "key": "energy_levels_tracker_tool_energy_levels.SpiritualEnergy",
+                    "index": "2",
+                    "contentKey": "SpiritualEnergy"
+                  }
+                },
+                "key": "energy_levels_tracker_tool_energy_levels",
+                "index": 0,
+                "timestamp": "2019-04-15T15:53:00-04:00",
+                "model": {
+                  "type": "set",
+                  "key": "energy_levels_tracker_tool_energy_levels",
+                  "content": {
+                    "text": "How are your energy levels right now?",
+                    "smallKey": "Energy levels"
+                  },
+                  "options": {
+                    "default": {},
+                    "displayGlobal": false,
+                    "subtype": {
+                      "type": "set.slider"
+                    },
+                    "subtypeOptions": {
+                      "min": 0,
+                      "max": 10,
+                      "step": 1
+                    },
+                    "children": {
+                      "0": {
+                        "contentKey": "PhysicalEnergy",
+                        "key": "energy_levels_tracker_tool_energy_levels.PhysicalEnergy",
+                        "content": {
+                          "text": "Physical",
+                          "subtitle": "1 - Lowest, 10 - Highest"
+                        }
+                      },
+                      "1": {
+                        "contentKey": "EmotionalEnergy",
+                        "key": "energy_levels_tracker_tool_energy_levels.EmotionalEnergy",
+                        "content": {
+                          "text": "Emotional",
+                          "subtitle": "1 - Lowest, 10 - Highest"
+                        }
+                      },
+                      "2": {
+                        "contentKey": "SpiritualEnergy",
+                        "key": "energy_levels_tracker_tool_energy_levels.SpiritualEnergy",
+                        "content": {
+                          "text": "Spiritual",
+                          "subtitle": "1 - Lowest, 10 - Highest"
+                        }
+                      }
+                    }
+                  }
+                },
+                "_id": "0376a7ea-ae62-4867-8d42-5bbc9dd99558"
+              },
+              "_id": "744f3b48-8e8e-4d06-aedb-b44bc3fb09e4",
+              "created_at": "2019-04-15T15:53:00-04:00",
+              "_meta": {
+                "version": 1
+              }
+            }
+          ],
+          "isoTimeOfPeriod": "2019-04-15T12:00:00-04:00",
+          "extendedTime": "04/15/2019 15:53:00",
+          "timeTaken": "2019-04-15T15:53:00-04:00",
+          "_meta": {
+            "timeStamp": 1555357980900
+          }
+        },
+        {
+          "timeKey": "AFTERNOON",
+          "day": "04/15/2019",
+          "value": [
+            {
+              "energy_levels_tracker_tool_energy_levels": {
+                "type": "set",
+                "value": {
+                  "energy_levels_tracker_tool_energy_levels.PhysicalEnergy": {
+                    "_id": "db8fa9e8-5624-4b65-aec5-505fc184b95f",
+                    "_model": {
+                      "contentKey": "PhysicalEnergy",
+                      "key": "energy_levels_tracker_tool_energy_levels.PhysicalEnergy",
+                      "content": {
+                        "text": "Physical",
+                        "subtitle": "1 - Lowest, 10 - Highest"
+                      }
+                    },
+                    "value": 10,
+                    "key": "energy_levels_tracker_tool_energy_levels.PhysicalEnergy",
+                    "index": "0",
+                    "contentKey": "PhysicalEnergy"
+                  },
+                  "energy_levels_tracker_tool_energy_levels.EmotionalEnergy": {
+                    "_id": "eb09c67e-e332-4682-b669-642e1a7f9b93",
+                    "_model": {
+                      "contentKey": "EmotionalEnergy",
+                      "key": "energy_levels_tracker_tool_energy_levels.EmotionalEnergy",
+                      "content": {
+                        "text": "Emotional",
+                        "subtitle": "1 - Lowest, 10 - Highest"
+                      }
+                    },
+                    "value": 10,
+                    "key": "energy_levels_tracker_tool_energy_levels.EmotionalEnergy",
+                    "index": "1",
+                    "contentKey": "EmotionalEnergy"
+                  },
+                  "energy_levels_tracker_tool_energy_levels.SpiritualEnergy": {
+                    "_id": "6b639b3c-d66f-475d-9800-7ac7236bb61f",
+                    "_model": {
+                      "contentKey": "SpiritualEnergy",
+                      "key": "energy_levels_tracker_tool_energy_levels.SpiritualEnergy",
+                      "content": {
+                        "text": "Spiritual",
+                        "subtitle": "1 - Lowest, 10 - Highest"
+                      }
+                    },
+                    "value": 9,
+                    "key": "energy_levels_tracker_tool_energy_levels.SpiritualEnergy",
+                    "index": "2",
+                    "contentKey": "SpiritualEnergy"
+                  }
+                },
+                "key": "energy_levels_tracker_tool_energy_levels",
+                "index": 0,
+                "timestamp": "2019-04-15T15:53:12-04:00",
+                "model": {
+                  "type": "set",
+                  "key": "energy_levels_tracker_tool_energy_levels",
+                  "content": {
+                    "text": "How are your energy levels right now?",
+                    "smallKey": "Energy levels"
+                  },
+                  "options": {
+                    "default": {},
+                    "displayGlobal": false,
+                    "subtype": {
+                      "type": "set.slider"
+                    },
+                    "subtypeOptions": {
+                      "min": 0,
+                      "max": 10,
+                      "step": 1
+                    },
+                    "children": {
+                      "0": {
+                        "contentKey": "PhysicalEnergy",
+                        "key": "energy_levels_tracker_tool_energy_levels.PhysicalEnergy",
+                        "content": {
+                          "text": "Physical",
+                          "subtitle": "1 - Lowest, 10 - Highest"
+                        }
+                      },
+                      "1": {
+                        "contentKey": "EmotionalEnergy",
+                        "key": "energy_levels_tracker_tool_energy_levels.EmotionalEnergy",
+                        "content": {
+                          "text": "Emotional",
+                          "subtitle": "1 - Lowest, 10 - Highest"
+                        }
+                      },
+                      "2": {
+                        "contentKey": "SpiritualEnergy",
+                        "key": "energy_levels_tracker_tool_energy_levels.SpiritualEnergy",
+                        "content": {
+                          "text": "Spiritual",
+                          "subtitle": "1 - Lowest, 10 - Highest"
+                        }
+                      }
+                    }
+                  }
+                },
+                "_id": "d1475823-9ccb-4052-80c6-0c296c63fd4c"
+              },
+              "_id": "c9eae636-7bbf-4af5-ba3d-08bf5244cffb",
+              "created_at": "2019-04-15T15:53:12-04:00",
+              "_meta": {
+                "version": 1
+              }
+            }
+          ],
+          "isoTimeOfPeriod": "2019-04-15T12:00:00-04:00",
+          "extendedTime": "04/15/2019 15:53:12",
+          "timeTaken": "2019-04-15T15:53:12-04:00",
+          "_meta": {
+            "timeStamp": 1555357992455
+          }
+        },
+        {
+          "timeKey": "EVENING",
+          "day": "04/15/2019",
+          "value": [
+            {
+              "energy_levels_tracker_tool_energy_levels": {
+                "type": "set",
+                "value": {
+                  "energy_levels_tracker_tool_energy_levels.PhysicalEnergy": {
+                    "_id": "93577cc9-9e46-4615-86d9-96195cb695c5",
+                    "_model": {
+                      "contentKey": "PhysicalEnergy",
+                      "key": "energy_levels_tracker_tool_energy_levels.PhysicalEnergy",
+                      "content": {
+                        "text": "Physical",
+                        "subtitle": "1 - Lowest, 10 - Highest"
+                      }
+                    },
+                    "value": 1,
+                    "key": "energy_levels_tracker_tool_energy_levels.PhysicalEnergy",
+                    "index": "0",
+                    "contentKey": "PhysicalEnergy"
+                  },
+                  "energy_levels_tracker_tool_energy_levels.EmotionalEnergy": {
+                    "_id": "b7188268-5bd4-4e33-9273-612227d6f9e3",
+                    "_model": {
+                      "contentKey": "EmotionalEnergy",
+                      "key": "energy_levels_tracker_tool_energy_levels.EmotionalEnergy",
+                      "content": {
+                        "text": "Emotional",
+                        "subtitle": "1 - Lowest, 10 - Highest"
+                      }
+                    },
+                    "value": 1,
+                    "key": "energy_levels_tracker_tool_energy_levels.EmotionalEnergy",
+                    "index": "1",
+                    "contentKey": "EmotionalEnergy"
+                  },
+                  "energy_levels_tracker_tool_energy_levels.SpiritualEnergy": {
+                    "_id": "e66d892a-5c22-41ec-8007-198e48afd500",
+                    "_model": {
+                      "contentKey": "SpiritualEnergy",
+                      "key": "energy_levels_tracker_tool_energy_levels.SpiritualEnergy",
+                      "content": {
+                        "text": "Spiritual",
+                        "subtitle": "1 - Lowest, 10 - Highest"
+                      }
+                    },
+                    "value": 2,
+                    "key": "energy_levels_tracker_tool_energy_levels.SpiritualEnergy",
+                    "index": "2",
+                    "contentKey": "SpiritualEnergy"
+                  }
+                },
+                "key": "energy_levels_tracker_tool_energy_levels",
+                "index": 0,
+                "timestamp": "2019-04-15T22:04:09-04:00",
+                "model": {
+                  "type": "set",
+                  "key": "energy_levels_tracker_tool_energy_levels",
+                  "content": {
+                    "text": "How are your energy levels right now?",
+                    "smallKey": "Energy levels"
+                  },
+                  "options": {
+                    "default": {},
+                    "displayGlobal": false,
+                    "subtype": {
+                      "type": "set.slider"
+                    },
+                    "subtypeOptions": {
+                      "min": 0,
+                      "max": 10,
+                      "step": 1
+                    },
+                    "children": {
+                      "0": {
+                        "contentKey": "PhysicalEnergy",
+                        "key": "energy_levels_tracker_tool_energy_levels.PhysicalEnergy",
+                        "content": {
+                          "text": "Physical",
+                          "subtitle": "1 - Lowest, 10 - Highest"
+                        }
+                      },
+                      "1": {
+                        "contentKey": "EmotionalEnergy",
+                        "key": "energy_levels_tracker_tool_energy_levels.EmotionalEnergy",
+                        "content": {
+                          "text": "Emotional",
+                          "subtitle": "1 - Lowest, 10 - Highest"
+                        }
+                      },
+                      "2": {
+                        "contentKey": "SpiritualEnergy",
+                        "key": "energy_levels_tracker_tool_energy_levels.SpiritualEnergy",
+                        "content": {
+                          "text": "Spiritual",
+                          "subtitle": "1 - Lowest, 10 - Highest"
+                        }
+                      }
+                    }
+                  }
+                },
+                "_id": "17b727e4-18ec-441c-8d10-0a6d207109fe"
+              },
+              "_id": "3f73265d-9b45-4bbc-bbea-324bbd63453b",
+              "created_at": "2019-04-15T22:04:09-04:00",
+              "_meta": {
+                "version": 1
+              }
+            }
+          ],
+          "isoTimeOfPeriod": "2019-04-15T17:00:00-04:00",
+          "extendedTime": "04/15/2019 22:04:09",
+          "timeTaken": "2019-04-15T22:04:09-04:00",
+          "_meta": {
+            "timeStamp": 1555380249653
+          }
+        },
+        {
+          "timeKey": "MORNING",
+          "day": "04/17/2019",
+          "value": [
+            {
+              "energy_levels_tracker_tool_energy_levels": {
+                "type": "set",
+                "value": {
+                  "energy_levels_tracker_tool_energy_levels.PhysicalEnergy": {
+                    "_id": "069f7fcb-c940-47c6-9a7c-512f3e62b39a",
+                    "_model": {
+                      "contentKey": "PhysicalEnergy",
+                      "key": "energy_levels_tracker_tool_energy_levels.PhysicalEnergy",
+                      "content": {
+                        "text": "Physical",
+                        "subtitle": "1 - Lowest, 10 - Highest"
+                      }
+                    },
+                    "value": 6,
+                    "key": "energy_levels_tracker_tool_energy_levels.PhysicalEnergy",
+                    "index": "0",
+                    "contentKey": "PhysicalEnergy"
+                  },
+                  "energy_levels_tracker_tool_energy_levels.EmotionalEnergy": {
+                    "_id": "de2fcb1a-d4df-4503-92a8-61b650030235",
+                    "_model": {
+                      "contentKey": "EmotionalEnergy",
+                      "key": "energy_levels_tracker_tool_energy_levels.EmotionalEnergy",
+                      "content": {
+                        "text": "Emotional",
+                        "subtitle": "1 - Lowest, 10 - Highest"
+                      }
+                    },
+                    "value": 8,
+                    "key": "energy_levels_tracker_tool_energy_levels.EmotionalEnergy",
+                    "index": "1",
+                    "contentKey": "EmotionalEnergy"
+                  },
+                  "energy_levels_tracker_tool_energy_levels.SpiritualEnergy": {
+                    "_id": "418541c5-c19a-440c-b57c-682e5e1bc53e",
+                    "_model": {
+                      "contentKey": "SpiritualEnergy",
+                      "key": "energy_levels_tracker_tool_energy_levels.SpiritualEnergy",
+                      "content": {
+                        "text": "Spiritual",
+                        "subtitle": "1 - Lowest, 10 - Highest"
+                      }
+                    },
+                    "value": 4,
+                    "key": "energy_levels_tracker_tool_energy_levels.SpiritualEnergy",
+                    "index": "2",
+                    "contentKey": "SpiritualEnergy"
+                  }
+                },
+                "key": "energy_levels_tracker_tool_energy_levels",
+                "index": 0,
+                "timestamp": "2019-04-17T10:04:19-04:00",
+                "model": {
+                  "type": "set",
+                  "key": "energy_levels_tracker_tool_energy_levels",
+                  "content": {
+                    "text": "How are your energy levels right now?",
+                    "smallKey": "Energy levels"
+                  },
+                  "options": {
+                    "default": {},
+                    "displayGlobal": false,
+                    "subtype": {
+                      "type": "set.slider"
+                    },
+                    "subtypeOptions": {
+                      "min": 0,
+                      "max": 10,
+                      "step": 1
+                    },
+                    "children": {
+                      "0": {
+                        "contentKey": "PhysicalEnergy",
+                        "key": "energy_levels_tracker_tool_energy_levels.PhysicalEnergy",
+                        "content": {
+                          "text": "Physical",
+                          "subtitle": "1 - Lowest, 10 - Highest"
+                        }
+                      },
+                      "1": {
+                        "contentKey": "EmotionalEnergy",
+                        "key": "energy_levels_tracker_tool_energy_levels.EmotionalEnergy",
+                        "content": {
+                          "text": "Emotional",
+                          "subtitle": "1 - Lowest, 10 - Highest"
+                        }
+                      },
+                      "2": {
+                        "contentKey": "SpiritualEnergy",
+                        "key": "energy_levels_tracker_tool_energy_levels.SpiritualEnergy",
+                        "content": {
+                          "text": "Spiritual",
+                          "subtitle": "1 - Lowest, 10 - Highest"
+                        }
+                      }
+                    }
+                  }
+                },
+                "_id": "05c7228d-622e-4cc2-be91-95ebf54c873a"
+              },
+              "_id": "dce84430-75c7-40fc-965b-7bd737919742",
+              "created_at": "2019-04-17T10:04:19-04:00",
+              "_meta": {
+                "version": 1
+              }
+            }
+          ],
+          "isoTimeOfPeriod": "2019-04-17T03:00:00-04:00",
+          "extendedTime": "04/17/2019 10:04:20",
+          "timeTaken": "2019-04-17T10:04:20-04:00",
+          "_meta": {
+            "timeStamp": 1555509860024
+          }
+        },
+        {
+          "timeKey": "MORNING",
+          "day": "04/17/2019",
+          "value": [
+            {
+              "energy_levels_tracker_tool_energy_levels": {
+                "type": "set",
+                "value": {
+                  "energy_levels_tracker_tool_energy_levels.PhysicalEnergy": {
+                    "_id": "8a8d4fbb-cc93-4272-bbdf-26ecaa37bd23",
+                    "_model": {
+                      "contentKey": "PhysicalEnergy",
+                      "key": "energy_levels_tracker_tool_energy_levels.PhysicalEnergy",
+                      "content": {
+                        "text": "Physical",
+                        "subtitle": "1 - Lowest, 10 - Highest"
+                      }
+                    },
+                    "value": 10,
+                    "key": "energy_levels_tracker_tool_energy_levels.PhysicalEnergy",
+                    "index": "0",
+                    "contentKey": "PhysicalEnergy"
+                  },
+                  "energy_levels_tracker_tool_energy_levels.EmotionalEnergy": {
+                    "_id": "eba6e89f-01ca-42af-aca3-3b818118a2db",
+                    "_model": {
+                      "contentKey": "EmotionalEnergy",
+                      "key": "energy_levels_tracker_tool_energy_levels.EmotionalEnergy",
+                      "content": {
+                        "text": "Emotional",
+                        "subtitle": "1 - Lowest, 10 - Highest"
+                      }
+                    },
+                    "value": 10,
+                    "key": "energy_levels_tracker_tool_energy_levels.EmotionalEnergy",
+                    "index": "1",
+                    "contentKey": "EmotionalEnergy"
+                  },
+                  "energy_levels_tracker_tool_energy_levels.SpiritualEnergy": {
+                    "_id": "698b992c-c967-4acc-936f-9574a18674f0",
+                    "_model": {
+                      "contentKey": "SpiritualEnergy",
+                      "key": "energy_levels_tracker_tool_energy_levels.SpiritualEnergy",
+                      "content": {
+                        "text": "Spiritual",
+                        "subtitle": "1 - Lowest, 10 - Highest"
+                      }
+                    },
+                    "value": 10,
+                    "key": "energy_levels_tracker_tool_energy_levels.SpiritualEnergy",
+                    "index": "2",
+                    "contentKey": "SpiritualEnergy"
+                  }
+                },
+                "key": "energy_levels_tracker_tool_energy_levels",
+                "index": 0,
+                "timestamp": "2019-04-17T10:04:55-04:00",
+                "model": {
+                  "type": "set",
+                  "key": "energy_levels_tracker_tool_energy_levels",
+                  "content": {
+                    "text": "How are your energy levels right now?",
+                    "smallKey": "Energy levels"
+                  },
+                  "options": {
+                    "default": {},
+                    "displayGlobal": false,
+                    "subtype": {
+                      "type": "set.slider"
+                    },
+                    "subtypeOptions": {
+                      "min": 0,
+                      "max": 10,
+                      "step": 1
+                    },
+                    "children": {
+                      "0": {
+                        "contentKey": "PhysicalEnergy",
+                        "key": "energy_levels_tracker_tool_energy_levels.PhysicalEnergy",
+                        "content": {
+                          "text": "Physical",
+                          "subtitle": "1 - Lowest, 10 - Highest"
+                        }
+                      },
+                      "1": {
+                        "contentKey": "EmotionalEnergy",
+                        "key": "energy_levels_tracker_tool_energy_levels.EmotionalEnergy",
+                        "content": {
+                          "text": "Emotional",
+                          "subtitle": "1 - Lowest, 10 - Highest"
+                        }
+                      },
+                      "2": {
+                        "contentKey": "SpiritualEnergy",
+                        "key": "energy_levels_tracker_tool_energy_levels.SpiritualEnergy",
+                        "content": {
+                          "text": "Spiritual",
+                          "subtitle": "1 - Lowest, 10 - Highest"
+                        }
+                      }
+                    }
+                  }
+                },
+                "_id": "97e34005-6c54-46be-ae62-02eec8f3c6e9"
+              },
+              "_id": "54e32765-0942-4bb9-86d8-6bd21cca943b",
+              "created_at": "2019-04-17T10:04:55-04:00",
+              "_meta": {
+                "version": 1
+              }
+            }
+          ],
+          "isoTimeOfPeriod": "2019-04-17T03:00:00-04:00",
+          "extendedTime": "04/17/2019 10:04:55",
+          "timeTaken": "2019-04-17T10:04:55-04:00",
+          "_meta": {
+            "timeStamp": 1555509895793
+          }
+        },
+        {
+          "timeKey": "EVENING",
+          "day": "04/18/2019",
+          "value": [
+            {
+              "energy_levels_tracker_tool_energy_levels": {
+                "type": "set",
+                "value": {
+                  "energy_levels_tracker_tool_energy_levels.PhysicalEnergy": {
+                    "_id": "61b6bf79-4393-485e-af0a-3399e95012aa",
+                    "_model": {
+                      "contentKey": "PhysicalEnergy",
+                      "key": "energy_levels_tracker_tool_energy_levels.PhysicalEnergy",
+                      "content": {
+                        "text": "Physical",
+                        "subtitle": "1 - Lowest, 10 - Highest"
+                      }
+                    },
+                    "value": 4,
+                    "key": "energy_levels_tracker_tool_energy_levels.PhysicalEnergy",
+                    "index": "0",
+                    "contentKey": "PhysicalEnergy"
+                  },
+                  "energy_levels_tracker_tool_energy_levels.EmotionalEnergy": {
+                    "_id": "b1b21e9a-6e55-4596-83a6-c7ce4886e4ee",
+                    "_model": {
+                      "contentKey": "EmotionalEnergy",
+                      "key": "energy_levels_tracker_tool_energy_levels.EmotionalEnergy",
+                      "content": {
+                        "text": "Emotional",
+                        "subtitle": "1 - Lowest, 10 - Highest"
+                      }
+                    },
+                    "value": 6,
+                    "key": "energy_levels_tracker_tool_energy_levels.EmotionalEnergy",
+                    "index": "1",
+                    "contentKey": "EmotionalEnergy"
+                  },
+                  "energy_levels_tracker_tool_energy_levels.SpiritualEnergy": {
+                    "_id": "ad2c4ebd-c427-4121-bbb3-183d8d82a805",
+                    "_model": {
+                      "contentKey": "SpiritualEnergy",
+                      "key": "energy_levels_tracker_tool_energy_levels.SpiritualEnergy",
+                      "content": {
+                        "text": "Spiritual",
+                        "subtitle": "1 - Lowest, 10 - Highest"
+                      }
+                    },
+                    "value": 2,
+                    "key": "energy_levels_tracker_tool_energy_levels.SpiritualEnergy",
+                    "index": "2",
+                    "contentKey": "SpiritualEnergy"
+                  }
+                },
+                "key": "energy_levels_tracker_tool_energy_levels",
+                "index": 0,
+                "timestamp": "2019-04-18T17:30:52-04:00",
+                "model": {
+                  "type": "set",
+                  "key": "energy_levels_tracker_tool_energy_levels",
+                  "content": {
+                    "text": "How are your energy levels right now?",
+                    "smallKey": "Energy levels"
+                  },
+                  "options": {
+                    "default": {},
+                    "displayGlobal": false,
+                    "subtype": {
+                      "type": "set.slider"
+                    },
+                    "subtypeOptions": {
+                      "min": 0,
+                      "max": 10,
+                      "step": 1
+                    },
+                    "children": {
+                      "0": {
+                        "contentKey": "PhysicalEnergy",
+                        "key": "energy_levels_tracker_tool_energy_levels.PhysicalEnergy",
+                        "content": {
+                          "text": "Physical",
+                          "subtitle": "1 - Lowest, 10 - Highest"
+                        }
+                      },
+                      "1": {
+                        "contentKey": "EmotionalEnergy",
+                        "key": "energy_levels_tracker_tool_energy_levels.EmotionalEnergy",
+                        "content": {
+                          "text": "Emotional",
+                          "subtitle": "1 - Lowest, 10 - Highest"
+                        }
+                      },
+                      "2": {
+                        "contentKey": "SpiritualEnergy",
+                        "key": "energy_levels_tracker_tool_energy_levels.SpiritualEnergy",
+                        "content": {
+                          "text": "Spiritual",
+                          "subtitle": "1 - Lowest, 10 - Highest"
+                        }
+                      }
+                    }
+                  }
+                },
+                "_id": "c1afe3dc-fb98-4b63-beb8-90afe1bc647e"
+              },
+              "_id": "96486c01-3414-4d8e-89b5-b8e83dc5c672",
+              "created_at": "2019-04-18T17:30:52-04:00",
+              "_meta": {
+                "version": 1
+              }
+            }
+          ],
+          "isoTimeOfPeriod": "2019-04-18T17:00:00-04:00",
+          "extendedTime": "04/18/2019 17:30:52",
+          "timeTaken": "2019-04-18T17:30:52-04:00",
+          "_meta": {
+            "timeStamp": 1555623052158
+          }
+        },
+        {
+          "timeKey": "EVENING",
+          "day": "04/18/2019",
+          "value": [
+            {
+              "energy_levels_tracker_tool_energy_levels": {
+                "type": "set",
+                "value": {
+                  "energy_levels_tracker_tool_energy_levels.PhysicalEnergy": {
+                    "_id": "180658bd-c4d1-484d-8833-dd65557f3e2d",
+                    "_model": {
+                      "contentKey": "PhysicalEnergy",
+                      "key": "energy_levels_tracker_tool_energy_levels.PhysicalEnergy",
+                      "content": {
+                        "text": "Physical",
+                        "subtitle": "1 - Lowest, 10 - Highest"
+                      }
+                    },
+                    "value": 10,
+                    "key": "energy_levels_tracker_tool_energy_levels.PhysicalEnergy",
+                    "index": "0",
+                    "contentKey": "PhysicalEnergy"
+                  },
+                  "energy_levels_tracker_tool_energy_levels.EmotionalEnergy": {
+                    "_id": "0bc689a6-6105-4a93-83f8-e96625c375c0",
+                    "_model": {
+                      "contentKey": "EmotionalEnergy",
+                      "key": "energy_levels_tracker_tool_energy_levels.EmotionalEnergy",
+                      "content": {
+                        "text": "Emotional",
+                        "subtitle": "1 - Lowest, 10 - Highest"
+                      }
+                    },
+                    "value": 2,
+                    "key": "energy_levels_tracker_tool_energy_levels.EmotionalEnergy",
+                    "index": "1",
+                    "contentKey": "EmotionalEnergy"
+                  },
+                  "energy_levels_tracker_tool_energy_levels.SpiritualEnergy": {
+                    "_id": "d6df0d4c-444b-4cb4-87ff-06d5c81e115e",
+                    "_model": {
+                      "contentKey": "SpiritualEnergy",
+                      "key": "energy_levels_tracker_tool_energy_levels.SpiritualEnergy",
+                      "content": {
+                        "text": "Spiritual",
+                        "subtitle": "1 - Lowest, 10 - Highest"
+                      }
+                    },
+                    "value": 1,
+                    "key": "energy_levels_tracker_tool_energy_levels.SpiritualEnergy",
+                    "index": "2",
+                    "contentKey": "SpiritualEnergy"
+                  }
+                },
+                "key": "energy_levels_tracker_tool_energy_levels",
+                "index": 0,
+                "timestamp": "2019-04-18T17:43:20-04:00",
+                "model": {
+                  "type": "set",
+                  "key": "energy_levels_tracker_tool_energy_levels",
+                  "content": {
+                    "text": "How are your energy levels right now?",
+                    "smallKey": "Energy levels"
+                  },
+                  "options": {
+                    "default": {},
+                    "displayGlobal": false,
+                    "subtype": {
+                      "type": "set.slider"
+                    },
+                    "subtypeOptions": {
+                      "min": 0,
+                      "max": 10,
+                      "step": 1
+                    },
+                    "children": {
+                      "0": {
+                        "contentKey": "PhysicalEnergy",
+                        "key": "energy_levels_tracker_tool_energy_levels.PhysicalEnergy",
+                        "content": {
+                          "text": "Physical",
+                          "subtitle": "1 - Lowest, 10 - Highest"
+                        }
+                      },
+                      "1": {
+                        "contentKey": "EmotionalEnergy",
+                        "key": "energy_levels_tracker_tool_energy_levels.EmotionalEnergy",
+                        "content": {
+                          "text": "Emotional",
+                          "subtitle": "1 - Lowest, 10 - Highest"
+                        }
+                      },
+                      "2": {
+                        "contentKey": "SpiritualEnergy",
+                        "key": "energy_levels_tracker_tool_energy_levels.SpiritualEnergy",
+                        "content": {
+                          "text": "Spiritual",
+                          "subtitle": "1 - Lowest, 10 - Highest"
+                        }
+                      }
+                    }
+                  }
+                },
+                "_id": "1c80cd95-37d2-4f7e-808d-da4ffbebfd5a"
+              },
+              "_id": "19e37614-ab7f-4b20-ab0a-a9dc74d29244",
+              "created_at": "2019-04-18T17:43:20-04:00",
+              "_meta": {
+                "version": 1
+              }
+            }
+          ],
+          "isoTimeOfPeriod": "2019-04-18T17:00:00-04:00",
+          "extendedTime": "04/18/2019 17:43:20",
+          "timeTaken": "2019-04-18T17:43:20-04:00",
+          "_meta": {
+            "timeStamp": 1555623800479
+          }
+        },
+        {
+          "timeKey": "MORNING",
+          "day": "04/19/2019",
+          "value": [
+            {
+              "energy_levels_tracker_tool_energy_levels": {
+                "type": "set",
+                "value": {
+                  "energy_levels_tracker_tool_energy_levels.PhysicalEnergy": {
+                    "_id": "c53e4666-95b2-437e-877d-177002eca0aa",
+                    "_model": {
+                      "contentKey": "PhysicalEnergy",
+                      "key": "energy_levels_tracker_tool_energy_levels.PhysicalEnergy",
+                      "content": {
+                        "text": "Physical",
+                        "subtitle": "1 - Lowest, 10 - Highest"
+                      }
+                    },
+                    "value": 8,
+                    "key": "energy_levels_tracker_tool_energy_levels.PhysicalEnergy",
+                    "index": "0",
+                    "contentKey": "PhysicalEnergy"
+                  },
+                  "energy_levels_tracker_tool_energy_levels.EmotionalEnergy": {
+                    "_id": "8d123dc4-b73e-45af-b668-348a9babe73d",
+                    "_model": {
+                      "contentKey": "EmotionalEnergy",
+                      "key": "energy_levels_tracker_tool_energy_levels.EmotionalEnergy",
+                      "content": {
+                        "text": "Emotional",
+                        "subtitle": "1 - Lowest, 10 - Highest"
+                      }
+                    },
+                    "value": 4,
+                    "key": "energy_levels_tracker_tool_energy_levels.EmotionalEnergy",
+                    "index": "1",
+                    "contentKey": "EmotionalEnergy"
+                  },
+                  "energy_levels_tracker_tool_energy_levels.SpiritualEnergy": {
+                    "_id": "e90a34bf-1f97-46dd-804c-a3476d03e744",
+                    "_model": {
+                      "contentKey": "SpiritualEnergy",
+                      "key": "energy_levels_tracker_tool_energy_levels.SpiritualEnergy",
+                      "content": {
+                        "text": "Spiritual",
+                        "subtitle": "1 - Lowest, 10 - Highest"
+                      }
+                    },
+                    "value": 9,
+                    "key": "energy_levels_tracker_tool_energy_levels.SpiritualEnergy",
+                    "index": "2",
+                    "contentKey": "SpiritualEnergy"
+                  }
+                },
+                "key": "energy_levels_tracker_tool_energy_levels",
+                "index": 0,
+                "timestamp": "2019-04-19T10:00:13-04:00",
+                "model": {
+                  "type": "set",
+                  "key": "energy_levels_tracker_tool_energy_levels",
+                  "content": {
+                    "text": "How are your energy levels right now?",
+                    "smallKey": "Energy levels"
+                  },
+                  "options": {
+                    "default": {},
+                    "displayGlobal": false,
+                    "subtype": {
+                      "type": "set.slider"
+                    },
+                    "subtypeOptions": {
+                      "min": 0,
+                      "max": 10,
+                      "step": 1
+                    },
+                    "children": {
+                      "0": {
+                        "contentKey": "PhysicalEnergy",
+                        "key": "energy_levels_tracker_tool_energy_levels.PhysicalEnergy",
+                        "content": {
+                          "text": "Physical",
+                          "subtitle": "1 - Lowest, 10 - Highest"
+                        }
+                      },
+                      "1": {
+                        "contentKey": "EmotionalEnergy",
+                        "key": "energy_levels_tracker_tool_energy_levels.EmotionalEnergy",
+                        "content": {
+                          "text": "Emotional",
+                          "subtitle": "1 - Lowest, 10 - Highest"
+                        }
+                      },
+                      "2": {
+                        "contentKey": "SpiritualEnergy",
+                        "key": "energy_levels_tracker_tool_energy_levels.SpiritualEnergy",
+                        "content": {
+                          "text": "Spiritual",
+                          "subtitle": "1 - Lowest, 10 - Highest"
+                        }
+                      }
+                    }
+                  }
+                },
+                "_id": "f112fc4a-de6d-4d60-9df0-271bc49c4eb9"
+              },
+              "_id": "afd7841e-9414-4477-9882-cd2c09ba9ec7",
+              "created_at": "2019-04-19T10:00:13-04:00",
+              "_meta": {
+                "version": 1
+              }
+            }
+          ],
+          "isoTimeOfPeriod": "2019-04-19T03:00:00-04:00",
+          "extendedTime": "04/19/2019 10:00:13",
+          "timeTaken": "2019-04-19T10:00:13-04:00",
+          "_meta": {
+            "timeStamp": 1555682413878
+          }
+        }
+      ],
+      "key": "energy_levels_tracker_tool",
+      "tool": {
+        "key": "energy_levels_tracker_tool",
+        "number": 8,
+        "phase": "MEDITATION",
+        "title": "My Energy Levels",
+        "subtitle": "How are you feeling right now?",
+        "content": "Take stock of your internal energy levels throughout the day, and observe the trends that develop over weeks and months.",
+        "form": {
+          "type": "form",
+          "answer": "single",
+          "fields": {
+            "0": {
+              "type": "set",
+              "key": "energy_levels_tracker_tool_energy_levels",
+              "content": {
+                "text": "How are your energy levels right now?",
+                "smallKey": "Energy levels"
+              },
+              "options": {
+                "default": {},
+                "displayGlobal": false,
+                "subtype": {
+                  "type": "set.slider"
+                },
+                "subtypeOptions": {
+                  "min": 0,
+                  "max": 10,
+                  "step": 1
+                },
+                "children": {
+                  "0": {
+                    "contentKey": "PhysicalEnergy",
+                    "key": "energy_levels_tracker_tool_energy_levels.PhysicalEnergy",
+                    "content": {
+                      "text": "Physical",
+                      "subtitle": "1 - Lowest, 10 - Highest"
+                    }
+                  },
+                  "1": {
+                    "contentKey": "EmotionalEnergy",
+                    "key": "energy_levels_tracker_tool_energy_levels.EmotionalEnergy",
+                    "content": {
+                      "text": "Emotional",
+                      "subtitle": "1 - Lowest, 10 - Highest"
+                    }
+                  },
+                  "2": {
+                    "contentKey": "SpiritualEnergy",
+                    "key": "energy_levels_tracker_tool_energy_levels.SpiritualEnergy",
+                    "content": {
+                      "text": "Spiritual",
+                      "subtitle": "1 - Lowest, 10 - Highest"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "config": {},
+        "formStyles": {
+          "headerTextStyle": {
+            "color": "#005587"
+          },
+          "textStyle": {
+            "color": "#005587"
+          },
+          "elementContainerStyle": {
+            "backgroundColor": "rgba(78, 173, 255, 0.1)"
+          },
+          "buttonContainerStyle": {
+            "backgroundColor": "#005587"
+          },
+          "buttonTextStyle": {
+            "color": "#f8f8f8"
+          },
+          "accentColor": "#4EADFF"
+        },
+        "require": {
+          "steps": ["8"]
+        }
+      }
+    }
+  }
+}

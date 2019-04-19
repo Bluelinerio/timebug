@@ -719,6 +719,13 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
+"@react-native-community/blur@^3.3.1":
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/@react-native-community/blur/-/blur-3.3.1.tgz#bc9ecd6d85d89739d8180138716535ac7cfa4680"
+  integrity sha512-UfH2ut/l4GpZHeq/TGx3BrmyXSCSBBwBCVx1DhPodP3k959zJ2ajgXa3PiU/qjutftTUw6KH9Frsh2U0ax9dMQ==
+  dependencies:
+    prop-types "^15.5.10"
+
 "@sentry/cli@^1.30.1":
   version "1.31.0"
   resolved "https://registry.yarnpkg.com/@sentry/cli/-/cli-1.31.0.tgz#fb4d956fbb0bd9d65cf4c557533d03e93c8772ce"

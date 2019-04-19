@@ -40,7 +40,7 @@ class ChartCarousel extends React.PureComponent<Props, State> {
 
   _renderItem({ item }) {
     return (
-      <ChartContainerComponent title={item.title}>
+      <ChartContainerComponent {...item.data} title={item.title}>
         <ChartComponent {...item.data} />
       </ChartContainerComponent>
     )
