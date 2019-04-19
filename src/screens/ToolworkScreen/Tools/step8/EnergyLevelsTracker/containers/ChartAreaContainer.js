@@ -178,7 +178,7 @@ const reduceRecap = recap => {
             : keys.SpiritualData
       const storableValue =
         value &&
-        value.reduce(
+        value.filter(v => !!v).reduce(
           (struct, val, index) => {
             if (!val) return struct
             const { level, time } = val
