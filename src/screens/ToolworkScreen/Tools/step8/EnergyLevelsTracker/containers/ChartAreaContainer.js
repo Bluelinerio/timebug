@@ -171,26 +171,26 @@ const reduceRecap = recap => {
             ? keys.EmotionalData
             : keys.SpiritualData
       const processableValue = value ? value.filter(v => !!v) : []
-      const acumulativeValue = processableValue.reduce(
-        (struct, val) => {
-          const { level, time } = val
-          // TODO: Fix this, pushing the evening time to 12 am so it does not add weird data points
-          const realTime = time < 3 ? 24 : time
+      const acumulativeValue = processableValue.reduce((struct, val) => {
+        const { level, time } = val
+        // TODO: Fix this, pushing the evening time to 12 am so it does not add weird data points
+        const realTime = time < 3 ? 24 : time
+        if (!struct)
           return {
-            ...struct,
-            level: struct.level + level,
-            time: struct.time + realTime,
+            level,
+            time: realTime,
           }
-        },
-        {
-          level: 0,
-          time: 0,
+        return {
+          ...struct,
+          level: struct.level + level,
+          time: struct.time + realTime,
         }
-      )
-      const averageValue = {
+      }, null)
+      const averageValue = acumulativeValue ? {
         level: acumulativeValue.level / processableValue.length,
         time: acumulativeValue.time / processableValue.length,
-      }
+      } : null
+      if(!averageValue) return red
       return {
         ...red,
         [storableKey]: [...red[storableKey], averageValue],
