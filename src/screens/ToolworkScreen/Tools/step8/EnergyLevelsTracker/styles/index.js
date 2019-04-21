@@ -70,7 +70,7 @@ export default StyleSheet.create({
   entry: {
     flex: 1,
     borderRadius: 6,
-    backgroundColor: '#FAFAFA',
+    backgroundColor: 'transparent',
     width: itemWidth,
     marginVertical: 2,
     ...Platform.select({
@@ -91,6 +91,8 @@ export default StyleSheet.create({
   slideInnerContainer: {
     flex: 1,
     width: slideWidth,
+    backgroundColor: '#FAFAFA',
+    borderRadius: 6,
   },
   centered: {
     alignItems: 'center',
@@ -184,6 +186,17 @@ export default StyleSheet.create({
     color: darkBlue,
     textAlign: 'center',
     marginRight: 8,
+  },
+  hidden: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+  },
+  hiddenText: {
+    ...iOSUIKit.bodyEmphasizedObject,
+    fontSize: 11,
   },
 })
 
