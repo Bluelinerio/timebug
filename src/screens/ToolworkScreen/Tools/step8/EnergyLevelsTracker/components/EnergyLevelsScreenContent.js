@@ -33,7 +33,7 @@ class EnergyLevelsScreenContent extends React.PureComponent<Props> {
           />
         )}
         {selectedSection === SECTIONS.WEEKLY_LIST && (
-          <WeeklyLogScreen data={data} tool={tool} />
+          <WeeklyLogScreen data={data} />
         )}
       </React.Fragment>
     )

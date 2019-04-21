@@ -1,10 +1,15 @@
 // @flow
-import { mapProps }                    from 'recompose'
-import moment                          from 'moment'
-import { EXTENDED_DATE_FORMAT }        from '2020_constants/constants'
-import { pickTimePeriodAndDayForTime } from '../utils'
-import type { ToolProps }              from '../../../types'
-import CheckinFormScreen               from '../components/CheckinFormScreen'
+import { mapProps }                     from 'recompose'
+import moment                           from 'moment'
+import { EXTENDED_DATE_FORMAT }         from '2020_constants/constants'
+import { pickTimePeriodAndDayForTime }  from '../utils'
+import CheckinFormScreen                from '../components/CheckinFormScreen'
+import type { ToolProps }               from '../../../types'
+import type { Props as ComponentProps } from '../components/CheckinFormScreen'
+
+type Props = ToolProps & {
+  goToMenu: () => null,
+}
 
 const submitTimeSectionEnergyLevels = ({
   data,
@@ -42,8 +47,8 @@ const submitTimeSectionEnergyLevels = ({
   }
 }
 
-const merge = (props: ToolProps) => {
-  const { data, tool, storeAwardData } = props
+const merge = (props: Props): ComponentProps => {
+  const { data, tool, storeAwardData, goToMenu } = props
   const value = (data && data.value) || []
   const { period, day, extra } = pickTimePeriodAndDayForTime(
     moment().format(EXTENDED_DATE_FORMAT)
@@ -68,11 +73,12 @@ const merge = (props: ToolProps) => {
   const enableForm = valuesForThisSection.length < 2
 
   return {
-    ...props,
+    tool,
     onFormFinish,
     enableForm,
     timeLeft,
     text,
+    goToMenu,
   }
 }
 

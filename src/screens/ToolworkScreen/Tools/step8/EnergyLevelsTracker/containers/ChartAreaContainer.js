@@ -5,15 +5,50 @@ import ChartArea                                           from '../components/C
 import { DATE_FORMAT }                                     from '2020_constants/constants'
 import { FORM_KEYS, CHILDREN_KEYS }                        from '2020_static/tools/EnergyLevelsTracker'
 import { CHARTS, CHART_KEYS, EVENING, MORNING, AFTERNOON } from '../constants'
-import type { CarouselEntryType, ChartSpec }               from '../types'
 import { getTimeValue }                                    from '../utils'
+import type {
+  CarouselEntryType,
+  ChartSpec,
+  ToolValue,
+  ChartData,
+  DataPoint,
+}                                                          from '../types'
+import type { ToolProps }                                  from '../../../types'
+import type { Props as CarouselProps }                     from '../components/ChartCarousel'
 
-type Props = {
-  data: any,
-  tool: any,
+type HigherOrderDataKeyData = {
+  physicalData: DataPoint,
+  emotionalData: DataPoint,
+  spiritualData: DataPoint,
 }
 
-const extractValues = (values: Array<any> = []) => {
+type HigherOrderData = {
+  [x: string]: {
+    MORNING?: Array<HigherOrderDataKeyData>,
+    AFTERNOON?: Array<HigherOrderDataKeyData>,
+    EVENING?: Array<HigherOrderDataKeyData>,
+  },
+}
+
+type RecapReduction = {
+  PhysicalData: Array<DataPoint>,
+  EmotionalData: Array<DataPoint>,
+  SpiritualData: Array<DataPoint>,
+}
+
+type Recap = {
+  physical_1: Array<HigherOrderDataKeyData>,
+  emotional_1: Array<HigherOrderDataKeyData>,
+  spiritual_1: Array<HigherOrderDataKeyData>,
+}
+
+type HigherDataReduction = {
+  MORNING: Array<Array<HigherOrderDataKeyData>>,
+  AFTERNOON: Array<Array<HigherOrderDataKeyData>>,
+  EVENING: Array<Array<HigherOrderDataKeyData>>,
+}
+
+const extractValues = (values: Array<ToolValue> = []): ChartData => {
   const data = {
     physicalData: [],
     emotionalData: [],
@@ -69,7 +104,9 @@ const extractValues = (values: Array<any> = []) => {
   return result
 }
 
-const extractValuesForHigherOrderTimeUnits = (values: Array<any> = []) => {
+const extractValuesForHigherOrderTimeUnits = (
+  values: Array<ToolValue> = []
+): HigherOrderData => {
   const data = {}
   const result = values
     ? values.reduce((result, val) => {
@@ -124,7 +161,7 @@ const extractValuesForHigherOrderTimeUnits = (values: Array<any> = []) => {
   return result
 }
 
-const getRecap = (data: Array<any>) => {
+const getRecap = (data: Array<HigherOrderDataKeyData>): Recap => {
   return data.reduce(
     (recap, value) => {
       const [point_1 = {}, point_2 = {}] = value
@@ -153,7 +190,7 @@ const getRecap = (data: Array<any>) => {
   )
 }
 
-const reduceRecap = recap => {
+const reduceRecap = (recap: Recap): RecapReduction => {
   const keys = {
     PhysicalData: 'PhysicalData',
     EmotionalData: 'EmotionalData',
@@ -207,8 +244,8 @@ const reduceRecap = recap => {
   return reduction
 }
 
-const processMultipleDataPoints = (values: any) => {
-  const base = {
+const processMultipleDataPoints = (values: HigherOrderData): ChartData => {
+  const base: HigherDataReduction = {
     [MORNING]: [],
     [AFTERNOON]: [],
     [EVENING]: [],
@@ -220,7 +257,7 @@ const processMultipleDataPoints = (values: any) => {
     spiritualData: [],
   }
 
-  const data = Object.values(values).reduce((obj, val) => {
+  const data: HigherDataReduction = Object.values(values).reduce((obj, val) => {
     const morningData = val[MORNING] || null
     const afternoonData = val[AFTERNOON] || null
     const eveningData = val[EVENING] || null
@@ -243,17 +280,17 @@ const processMultipleDataPoints = (values: any) => {
     }
   }, base)
 
-  const morningRecap = getRecap(data[MORNING])
+  const morningRecap: Recap = getRecap(data[MORNING])
 
-  const afternoonRecap = getRecap(data[AFTERNOON])
+  const afternoonRecap: Recap = getRecap(data[AFTERNOON])
 
-  const eveningRecap = getRecap(data[EVENING])
+  const eveningRecap: Recap = getRecap(data[EVENING])
 
-  const morningReduction = reduceRecap(morningRecap)
+  const morningReduction: RecapReduction = reduceRecap(morningRecap)
 
-  const afternoonReduction = reduceRecap(afternoonRecap)
+  const afternoonReduction: RecapReduction = reduceRecap(afternoonRecap)
 
-  const eveningReduction = reduceRecap(eveningRecap)
+  const eveningReduction: RecapReduction = reduceRecap(eveningRecap)
 
   const finalData = [
     morningReduction,
@@ -282,30 +319,35 @@ const processMultipleDataPoints = (values: any) => {
       [key]: newData,
     }
   }, finalData)
+
   return fixBlank
 }
 
-const getDataForWeek = (value: Array<any>) => {
+const getDataForWeek = (value: Array<ToolValue>) => {
   const dataForWeek =
     value
       .filter(val => val.timeTaken)
       .filter(val => moment(val.timeTaken).isSame(moment(), 'isoweek')) || []
-  const data = extractValuesForHigherOrderTimeUnits(dataForWeek)
+  const data: HigherOrderData = extractValuesForHigherOrderTimeUnits(
+    dataForWeek
+  )
   const datasetForWeek = processMultipleDataPoints(data)
   return datasetForWeek
 }
 
-const getDataForMonth = (value: Array<any>) => {
+const getDataForMonth = (value: Array<ToolValue>) => {
   const dataForWeek =
     value
       .filter(val => val.timeTaken)
       .filter(val => moment(val.timeTaken).isSame(moment(), 'month')) || []
-  const data = extractValuesForHigherOrderTimeUnits(dataForWeek)
+  const data: HigherOrderData = extractValuesForHigherOrderTimeUnits(
+    dataForWeek
+  )
   const datasetForWeek = processMultipleDataPoints(data)
   return datasetForWeek
 }
 
-const getDataForToday = (value: Array<any>) => {
+const getDataForToday = (value: Array<ToolValue>) => {
   const dataForWeek =
     value
       .filter(val => val.timeTaken)
@@ -316,7 +358,7 @@ const getDataForToday = (value: Array<any>) => {
 
 const handleKeyData = (
   { key, title }: ChartSpec,
-  data: any
+  data: { value: Array<ToolValue> }
 ): CarouselEntryType => {
   const { value = [] } = data
   const weekValue = getDataForWeek(value)
@@ -343,7 +385,7 @@ const handleKeyData = (
   }
 }
 
-const merge = (props: Props) => {
+const merge = (props: ToolProps): CarouselProps => {
   const { data } = props
   const entries: Array<CarouselEntryType> = CHARTS.map(chart =>
     handleKeyData(chart, data)

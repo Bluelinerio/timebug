@@ -19,7 +19,7 @@ class MenuScreen extends React.PureComponent<Props> {
             onPress={goToCheckinSection}
           >
             <Text style={styles.optionContainerText}>
-              How's your energy right now?
+              {`How's your energy right now?`}
             </Text>
           </TouchableOpacity>
         </View>

@@ -4,7 +4,7 @@ import { View, Text, ScrollView } from 'react-native'
 import Form                       from '2020_forms/components/Form'
 import styles                     from '../styles'
 
-type Props = {
+export type Props = {
   tool: any,
   enableForm: boolean,
   onFormFinish: (value: any) => undefined,

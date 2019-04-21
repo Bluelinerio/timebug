@@ -5,17 +5,12 @@ import EnergyLevelsScreen                   from '../components/EnergyLevelsScre
 import type { ToolProps }                   from '../../../types'
 import { SectionProvider, SectionConsumer } from '../context/ScreenContext'
 
-type State = {
-  selectedSection: string,
-}
-
 const ConnectedEnergyLevelsScreen = connectContext(SectionConsumer)(
   EnergyLevelsScreen
 )
 
 class EnergyLevelsScreenContainer extends React.PureComponent<
   ToolProps,
-  State
 > {
   render() {
     return (

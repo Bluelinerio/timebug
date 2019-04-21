@@ -1,9 +1,9 @@
 // @flow
-import moment from 'moment'
-import { DATE_FORMAT, EXTENDED_DATE_FORMAT } from '2020_constants/constants'
+import moment                                            from 'moment'
+import { DATE_FORMAT, EXTENDED_DATE_FORMAT }             from '2020_constants/constants'
 import { TIME, MORNING, EVENING, AFTERNOON, CHART_KEYS } from '../constants'
-import type { TimeElement, TimeUnit } from '../types'
-import type { Moment } from 'moment'
+import type { TimeElement, TimeUnit }                    from '../types'
+import type { Moment }                                   from 'moment'
 
 const executeOperations = (time, operators): Moment => {
   const resultTime = operators
