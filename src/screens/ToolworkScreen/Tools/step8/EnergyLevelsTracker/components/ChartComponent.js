@@ -55,9 +55,9 @@ class Chart extends React.PureComponent<Props> {
     const { physicalData, emotionalData, spiritualData } = this.props
 
     const disableChart =
-      physicalData.length === 0 ||
-      spiritualData.length === 0 ||
-      emotionalData.length === 0
+      physicalData.length < 2 ||
+      spiritualData.length < 2 ||
+      emotionalData.length < 2
 
     const displayPhysicalData = !disableChart ? physicalData : []
     const displayEmotionalData = !disableChart ? emotionalData : []
