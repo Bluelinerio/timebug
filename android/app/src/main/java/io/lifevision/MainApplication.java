@@ -3,6 +3,7 @@ package io.lifevision;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.cmcewen.blurview.BlurViewPackage;
 import com.rt2zz.reactnativecontacts.ReactNativeContacts;
 import com.corbt.keepawake.KCKeepAwakePackage;
 import com.microsoft.codepush.react.CodePush;
@@ -66,7 +67,9 @@ public class MainApplication extends Application implements ReactApplication {
           new SvgPackage(),
           new FBSDKPackage(mCallbackManager),
           new VectorIconsPackage(),
-          new LinearGradientPackage()
+          new LinearGradientPackage(),
+          new BlurViewPackage()
+
     );
   }
   };
