@@ -73,7 +73,7 @@ class ChartContainerComponent extends React.PureComponent<Props, State> {
               ]}
             >
               <Text style={styles.hiddenText}>
-                We need more data to display this graph
+                You have not logged enough check-ins to calculate this graph
               </Text>
             </View>
           )}

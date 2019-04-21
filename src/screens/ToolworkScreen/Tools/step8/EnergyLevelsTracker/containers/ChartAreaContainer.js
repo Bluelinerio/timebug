@@ -1,13 +1,12 @@
 // @flow
-import { mapProps } from 'recompose'
-import moment from 'moment'
-import ChartArea from '../components/ChartArea'
-import { DATE_FORMAT } from '2020_constants/constants'
-import { FORM_KEYS, CHILDREN_KEYS } from '2020_static/tools/EnergyLevelsTracker'
+import { mapProps }                                        from 'recompose'
+import moment                                              from 'moment'
+import ChartArea                                           from '../components/ChartArea'
+import { DATE_FORMAT }                                     from '2020_constants/constants'
+import { FORM_KEYS, CHILDREN_KEYS }                        from '2020_static/tools/EnergyLevelsTracker'
 import { CHARTS, CHART_KEYS, EVENING, MORNING, AFTERNOON } from '../constants'
-import type { CarouselEntryType, ChartSpec } from '../types'
-import { getTimeValue } from '../utils'
-import tron from 'reactotron-react-native'
+import type { CarouselEntryType, ChartSpec }               from '../types'
+import { getTimeValue }                                    from '../utils'
 
 type Props = {
   data: any,
@@ -186,11 +185,13 @@ const reduceRecap = recap => {
           time: struct.time + realTime,
         }
       }, null)
-      const averageValue = acumulativeValue ? {
-        level: acumulativeValue.level / processableValue.length,
-        time: acumulativeValue.time / processableValue.length,
-      } : null
-      if(!averageValue) return red
+      const averageValue = acumulativeValue
+        ? {
+          level: acumulativeValue.level / processableValue.length,
+          time: acumulativeValue.time / processableValue.length,
+        }
+        : null
+      if (!averageValue) return red
       return {
         ...red,
         [storableKey]: [...red[storableKey], averageValue],
@@ -207,12 +208,6 @@ const reduceRecap = recap => {
 }
 
 const processMultipleDataPoints = (values: any) => {
-  tron.display({
-    name: 'Raw data',
-    preview: 'Raw data',
-    value: values,
-  })
-
   const base = {
     [MORNING]: [],
     [AFTERNOON]: [],
@@ -254,22 +249,11 @@ const processMultipleDataPoints = (values: any) => {
 
   const eveningRecap = getRecap(data[EVENING])
 
-  tron.display({
-    name: 'Recap',
-    preview: 'recap',
-    value: [morningRecap, afternoonRecap, eveningRecap],
-  })
   const morningReduction = reduceRecap(morningRecap)
 
   const afternoonReduction = reduceRecap(afternoonRecap)
 
   const eveningReduction = reduceRecap(eveningRecap)
-
-  tron.display({
-    name: 'Reduction',
-    preview: 'Reduction',
-    value: [morningReduction, afternoonReduction, eveningReduction],
-  })
 
   const finalData = [
     morningReduction,
@@ -289,12 +273,6 @@ const processMultipleDataPoints = (values: any) => {
       spiritualData: [...currentSpiritual, ...SpiritualData],
     }
   }, finalDataBase)
-
-  tron.display({
-    name: 'Final',
-    preview: 'Final',
-    value: finalData,
-  })
 
   const fixBlank = Object.keys(finalData).reduce((obj, key) => {
     const data = finalData[key]
@@ -370,11 +348,6 @@ const merge = (props: Props) => {
   const entries: Array<CarouselEntryType> = CHARTS.map(chart =>
     handleKeyData(chart, data)
   )
-  tron.display({
-    name: 'Entries',
-    preview: 'Entries',
-    value: entries,
-  })
   return {
     entries,
   }

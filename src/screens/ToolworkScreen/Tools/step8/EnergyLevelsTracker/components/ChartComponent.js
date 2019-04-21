@@ -1,9 +1,9 @@
 // @flow
-import React from 'react'
-import { View } from 'react-native'
-import moment from 'moment'
+import React                             from 'react'
+import { View }                          from 'react-native'
+import moment                            from 'moment'
 import { LineChart, Grid, YAxis, XAxis } from 'react-native-svg-charts'
-import type { DataSet } from '../types'
+import type { DataSet }                  from '../types'
 import {
   chartStyles,
   xAxesSvg,
@@ -13,7 +13,7 @@ import {
   physicalColor,
   spiritualColor,
   emotionalColor,
-} from '../styles'
+}                                        from '../styles'
 
 export type Props = {
   physicalData: DataSet,
