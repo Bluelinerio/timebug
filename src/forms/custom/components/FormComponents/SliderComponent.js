@@ -48,6 +48,15 @@ class SliderComponent extends React.PureComponent<Props> {
     this.input = null
   }
 
+  componentDidUpdate = (prevProps) => {
+    const { value: currentPropValue } = this.props
+    const { value: oldValue } = prevProps
+    const { currentValue } = this.state
+    if(currentPropValue !== null && currentPropValue !== oldValue && currentPropValue !== currentValue) {
+      this.setState({ currentValue: currentPropValue, currentTextValue: `${currentPropValue}` })
+    }
+  }
+
   _onComplete = val => {
     const { onChange, maximumSharedValue, field: { options } } = this.props
     const { currentValue } = this.state

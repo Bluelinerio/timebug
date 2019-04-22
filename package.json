@@ -25,11 +25,13 @@
     "run:ios": "cp config.example.json config.json && node node_modules/react-native/local-cli/cli.js run-ios",
     "debug:android": "node node_modules/react-native/local-cli/cli.js log-android",
     "clean:android": "cd android && gradlew clean && cd ..",
+    "app:link": "node node_modules/react-native/local-cli/cli.js link @react-native-community/blur", 
     "fetch-cms-static": "babel-node scripts/contentful-fetch.js --output ../src/static/cms.json --presets es2015,stage-2,react-native",
     "migrate-db": "babel-node scripts/migrate-database --output step5.json --presets es2015,stage-2,react-native"
   },
   "dependencies": {
     "@babel/runtime": "^7.2.0",
+    "@react-native-community/blur": "^3.3.1",
     "apollo-client-preset": "^1.0.5",
     "autobind-decorator": "^2.1.0",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",

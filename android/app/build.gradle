@@ -101,6 +101,10 @@ android {
         // testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         
         versionName "2.0.0"
+
+        renderscriptTargetApi 21
+        renderscriptSupportModeEnabled true
+
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
@@ -209,6 +213,7 @@ dependencies {
     implementation "com.facebook.react:react-native:+"  // From node_modules
     implementation project(':react-native-linear-gradient')
     implementation project(':react-native-push-notification')
+    implementation project(':@react-native-community/blur')
     implementation 'com.google.android.gms:play-services-base:15.0.1'
     implementation 'com.google.android.gms:play-services-basement:15.0.1'
     implementation 'com.google.android.gms:play-services-tasks:15.0.1'

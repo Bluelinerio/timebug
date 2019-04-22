@@ -5,6 +5,8 @@ export const DATE_FORMAT = 'MM/DD/YYYY'
 
 export const SIMPLIFIED_DATE_FORMAT = 'MM/DD'
 
+export const EXTENDED_DATE_FORMAT = 'MM/DD/YYYY HH:mm:ss'
+
 export const TEXT_DATE_FORMAT = 'MMMM DD YYYY'
 
 export const UNDETERMINED = 'UNDETERMINED'

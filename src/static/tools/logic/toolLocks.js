@@ -1,33 +1,27 @@
 // @flow
 /* eslint-disable no-unused-vars */
-import { OPEN, STEPS, TOOL, ACHIEVEMENT, ALL, SOME } from './constants'
-
+import { OPEN, STEPS, TOOL, ACHIEVEMENT, ALL, SOME }  from './constants'
 import {
   MEDITATION,
   SELF_ASSESSMENT,
   VISION_CREATION,
   COMPLETE,
-} from '2020_services/cms'
-
+}                                                     from '2020_services/cms'
 import DailyTimebugPlanner, {
   key as DailyTimebugPlannerKey,
-} from '../DailyTimebugPlanner'
-
+}                                                     from '../DailyTimebugPlanner'
 import WeeklyTimebugPlanner, {
   key as WeeklyTimebugPlannerKey,
-} from '../WeeklyTimebugPlanner'
-
+}                                                     from '../WeeklyTimebugPlanner'
 import DailyMeditation, { key as DailyMeditationKey } from '../DailyMeditation'
-
 import BoardOfAdvisors, { key as BoardOfAdvisorsKey } from '../BoardOfAdvisors'
-
-import GoalTracker, { key as GoalTrackerKey } from '../GoalTracker'
-
-import GoalsOfOthersLog, { key as GoalsLogKey } from '../GoalsOfOthersLog'
-
-import DummyTool, { key as DummyKey } from '../Dummy'
-
-import type { ToolLock } from '../types'
+import GoalTracker, { key as GoalTrackerKey }         from '../GoalTracker'
+import GoalsOfOthersLog, { key as GoalsLogKey }       from '../GoalsOfOthersLog'
+import EnergyLevelsTracker, {
+  key as EnergyLevelsTrackerKey,
+}                                                     from '../EnergyLevelsTracker'
+import DummyTool, { key as DummyKey }                 from '../Dummy'
+import type { ToolLock }                              from '../types'
 
 export const TOOL_KEYS = {
   DailyMeditationKey,
@@ -36,6 +30,7 @@ export const TOOL_KEYS = {
   BoardOfAdvisorsKey,
   GoalTrackerKey,
   GoalsLogKey,
+  EnergyLevelsTrackerKey,
   DummyKey,
 }
 
@@ -111,6 +106,18 @@ const toolDefinitions: Array<ToolLock> = [
       },
     ],
     tool: GoalsOfOthersLog,
+  },
+  {
+    conditions: [
+      {
+        type: STEPS,
+        clause: {
+          type: ALL,
+          value: [8],
+        },
+      },
+    ],
+    tool: EnergyLevelsTracker,
   },
 ]
 
