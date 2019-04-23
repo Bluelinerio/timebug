@@ -1,10 +1,10 @@
 //@flow
-import React from 'react';
-import { View, TouchableOpacity } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import SeekBar from './SeekBar';
+import React                      from 'react'
+import { View, TouchableOpacity } from 'react-native'
+import Icon                       from 'react-native-vector-icons/Ionicons'
+import SeekBar                    from './SeekBar'
 
-import styles, { iconSize } from '../styles/components/AudioVideoComponent';
+import styles, { iconSize }       from '../styles/components/AudioVideoComponent'
 
 export type ControlBarProps = {
   iconName: string,
@@ -13,24 +13,33 @@ export type ControlBarProps = {
   trackLength: number,
   onSlidingStart: () => any,
   currentPosition: number,
-};
+}
 
-const ControlBar = (props: ControlBarProps) => {
-  return (
-    <View style={styles.controlBarContainer}>
-      <TouchableOpacity onPress={props.onButtonPress} style={styles.playButton}>
-        <Icon name={props.iconName} size={iconSize} style={styles.icon} />
-      </TouchableOpacity>
-      <View style={styles.seekBarParent}>
-        <SeekBar
-          onSeek={props.seek}
-          trackLength={props.trackLength}
-          onSlidingStart={props.onSlidingStart}
-          currentPosition={props.currentPosition}
-        />
+class ControlBar extends React.PureComponent<ControlBarProps> {
+  render() {
+    return (
+      <View style={styles.controlBarContainer}>
+        <TouchableOpacity
+          onPress={this.props.onButtonPress}
+          style={styles.playButton}
+        >
+          <Icon
+            name={this.props.iconName}
+            size={iconSize}
+            style={styles.icon}
+          />
+        </TouchableOpacity>
+        <View style={styles.seekBarParent}>
+          <SeekBar
+            onSeek={this.props.seek}
+            trackLength={this.props.trackLength}
+            onSlidingStart={this.props.onSlidingStart}
+            currentPosition={this.props.currentPosition}
+          />
+        </View>
       </View>
-    </View>
-  );
-};
+    )
+  }
+}
 
-export default ControlBar;
+export default ControlBar

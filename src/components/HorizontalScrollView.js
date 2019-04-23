@@ -1,11 +1,11 @@
 // @flow
-import * as React from 'react';
-import { ScrollView } from 'react-native';
+import * as React     from 'react'
+import { ScrollView } from 'react-native'
 
 type HorizontalScrollViewProps = {} & {
   horizontalPadding: number,
   marginTop: number,
-};
+}
 
 const HorizontalScrollView = ({
   horizontalPadding = 0,
@@ -30,6 +30,6 @@ const HorizontalScrollView = ({
     contentContainerStyle={{}}
     {...rest}
   />
-);
+)
 
-export default HorizontalScrollView;
+export default HorizontalScrollView

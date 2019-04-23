@@ -1,7 +1,7 @@
 //@flow
-import React from 'react';
-import SvgIcon from 'react-native-svg-icon';
-import svgs from '../resources/images/svgIcons';
+import React from 'react'
+import SvgIcon from 'react-native-svg-icon'
+import svgs from '../resources/images/svgIcons'
 
 export type IconProps = {
   name: string,
@@ -9,8 +9,12 @@ export type IconProps = {
   height: string | number,
   width: string | number,
   viewBox?: string,
-};
+}
 
-const Icon = (props: IconProps) => <SvgIcon {...props} svgs={svgs} />;
+class Icon extends React.PureComponent<IconProps> {
+  render() {
+    return <SvgIcon {...this.props} svgs={svgs} />
+  }
+}
 
-export default Icon;
+export default Icon

@@ -1,11 +1,11 @@
-import React from 'react';
-import { Text } from 'react-native';
+import React    from 'react'
+import { Text } from 'react-native'
 
 type InsightProps = {
   insightText: string,
   style: any,
   extraLines: number,
-};
+}
 
 const Insight = ({ insightText, style, extraLines = 0 }: InsightProps) => (
   <Text>
@@ -14,6 +14,6 @@ const Insight = ({ insightText, style, extraLines = 0 }: InsightProps) => (
       .fill()
       .reduce(lines => `${lines}\n`, '')}`}</Text>
   </Text>
-);
+)
 
-export default Insight;
+export default Insight

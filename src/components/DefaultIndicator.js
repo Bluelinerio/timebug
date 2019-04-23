@@ -10,25 +10,30 @@ type Props = {
   container?: boolean,
 }
 
-const DefaultIndicator = ({ size, color, container = true }: Props) => (
-  <View style={container ? styles.container : {}}>
-    {container && (
-      <Image
-        tintColor="ccc"
-        style={[
-          StyleSheet.absoluteFill,
-          {
-            opacity: 0.04,
-          },
-        ]}
-        source={lifevisionCollage}
-      />
-    )}
-    <ActivityIndicator
-      size={size || 'large'}
-      color={color || StyleSheet.flatten(styles.activityIndicator).color}
-    />
-  </View>
-)
+class DefaultIndicator extends React.PureComponent<Props> {
+  render() {
+    const { size, color, container = true } = this.props
+    return (
+      <View style={container ? styles.container : {}}>
+        {container && (
+          <Image
+            tintColor="ccc"
+            style={[
+              StyleSheet.absoluteFill,
+              {
+                opacity: 0.04,
+              },
+            ]}
+            source={lifevisionCollage}
+          />
+        )}
+        <ActivityIndicator
+          size={size || 'large'}
+          color={color || StyleSheet.flatten(styles.activityIndicator).color}
+        />
+      </View>
+    )
+  }
+}
 
 export default DefaultIndicator
