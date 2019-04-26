@@ -36,6 +36,7 @@ class CheckinScreen extends React.PureComponent<Props> {
               onFinish={this._onFinish}
               disableAnswers
               formStyles={tool.formStyles}
+              disableProgress={true}
             />
           </ScrollView>
         ) : (

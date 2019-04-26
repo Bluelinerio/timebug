@@ -1,21 +1,21 @@
 // @flow
-import React                                      from 'react'
-import { View, TouchableOpacity, Text }           from 'react-native'
-import moment                                     from 'moment'
-import styles, { iconSize, iconColor }            from '../styles'
-import FormPicker                                 from './FormComponents/FormPicker'
+import React from 'react'
+import { View, TouchableOpacity, Text } from 'react-native'
+import moment from 'moment'
+import styles, { iconSize, iconColor } from '../styles'
+import FormPicker from './FormComponents/FormPicker'
 import { actionTypes, passiveTypes, answerTypes } from '../forms/types'
-import Icon                                       from 'react-native-vector-icons/Ionicons'
-import uuid                                       from 'uuid/v4'
-import Answers                                    from './FormAnswers'
-import Display                                    from './debug/DisplayComponent'
+import Icon from 'react-native-vector-icons/Ionicons'
+import uuid from 'uuid/v4'
+import Answers from './FormAnswers'
+import Display from './debug/DisplayComponent'
 import {
   getButtonText,
   mapIndexesToKeys,
   getValueFromAnswerType,
-}                                                 from '../utils/formHelpers'
-import { isFormValueInvalid }                     from '../validation/Form'
-import ProgressBar                                from 'react-native-progress/Bar'
+} from '../utils/formHelpers'
+import { isFormValueInvalid } from '../validation/Form'
+import ProgressBar from 'react-native-progress/Bar'
 
 const DEBUG_DISPLAY = false
 
@@ -27,6 +27,7 @@ type Props = {
   CloseButton: () => React.node,
   editionIndex: boolean,
   textAndButtonColor: string,
+  disableProgress?: false,
   formStyles: {
     headerTextStyle: any,
     textStyle: any,
@@ -391,7 +392,11 @@ class Form extends React.PureComponent<Props, any> {
       disableAnswers,
       formProgress,
     } = this.state
-    const { CloseButton = null, formStyles = {} } = this.props
+    const {
+      CloseButton = null,
+      formStyles = {},
+      disableProgress = false,
+    } = this.props
     const currentField = this.model.fields[fieldIndex] || []
     const isFieldRequired =
       currentField && currentField.options && currentField.options.required
@@ -399,11 +404,13 @@ class Form extends React.PureComponent<Props, any> {
       <View style={styles.container}>
         {CloseButton ? <CloseButton /> : null}
         <View style={styles.formContainer}>
-          <ProgressBar
-            progress={formProgress}
-            color={this.props.textAndButtonColor}
-            style={styles.progressBar}
-          />
+          {!disableProgress && (
+            <ProgressBar
+              progress={formProgress}
+              color={this.props.textAndButtonColor}
+              style={styles.progressBar}
+            />
+          )}
 
           <FormPicker
             key={currentField.key}
