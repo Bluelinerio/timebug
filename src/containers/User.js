@@ -1,13 +1,13 @@
 // @flow
-import * as React from 'react';
-import { connect } from 'react-redux';
-import { getUserState } from '../redux/selectors/rootReducer.selectors';
+import * as React from 'react'
+import { connect } from 'react-redux'
+import { getUserState } from '../redux/selectors/rootReducer.selectors'
 import {
   UNDETERMINED,
   ANONYMOUS,
   AUTHENTICATING,
-} from '../services/apollo/models';
-import type { UserState } from '../services/apollo/models';
+} from '../services/apollo/models'
+import type { UserState } from '../services/apollo/models'
 
 type Props = {
   renderWithState?: (
@@ -24,11 +24,11 @@ type Props = {
     authenticating: boolean,
     anonymous: boolean,
   }) => React.Node,
-};
+}
 
 const mapStateToProps = state => ({
   userState: getUserState(state),
-});
+})
 
 export default connect(mapStateToProps)(
   ({
@@ -40,21 +40,21 @@ export default connect(mapStateToProps)(
     userState,
     children,
   }: Props) => {
-    const isLoggedIn = userState && typeof userState === 'object';
-    const undetermined = userState === UNDETERMINED;
-    const authenticating = userState === AUTHENTICATING;
-    const anonymous = userState === ANONYMOUS;
+    const isLoggedIn = userState && typeof userState === 'object'
+    const undetermined = userState === UNDETERMINED
+    const authenticating = userState === AUTHENTICATING
+    const anonymous = userState === ANONYMOUS
 
     if (typeof userState === 'string') {
-      if (renderWithState) return renderWithState(userState);
+      if (renderWithState) return renderWithState(userState)
       if (undetermined && renderWithUndetermined)
-        return renderWithUndetermined();
-      if (anonymous && renderWithAnonymous) return renderWithAnonymous();
+        return renderWithUndetermined()
+      if (anonymous && renderWithAnonymous) return renderWithAnonymous()
       if (authenticating && renderWithAuthenticating)
-        return renderWithAuthenticating();
+        return renderWithAuthenticating()
     }
 
-    if (isLoggedIn && renderWithUser) return renderWithUser(userState);
+    if (isLoggedIn && renderWithUser) return renderWithUser(userState)
 
     if (children)
       return children({
@@ -63,7 +63,7 @@ export default connect(mapStateToProps)(
         undetermined,
         authenticating,
         anonymous,
-      });
-    return null;
+      })
+    return null
   }
-);
+)

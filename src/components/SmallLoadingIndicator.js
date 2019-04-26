@@ -1,6 +1,6 @@
 //@flow
-import * as React from 'react';
-import { View, Text, ActivityIndicator } from 'react-native';
+import * as React                        from 'react'
+import { View, Text, ActivityIndicator } from 'react-native'
 
 const SmallLoadingIndicator = ({ message = '' }: { message: ?string }) => (
   <View
@@ -21,6 +21,6 @@ const SmallLoadingIndicator = ({ message = '' }: { message: ?string }) => (
     </Text>
     <ActivityIndicator />
   </View>
-);
+)
 
-export default SmallLoadingIndicator;
+export default SmallLoadingIndicator

@@ -1,21 +1,21 @@
 //@flow
-import React from 'react';
-import { Platform, StyleSheet } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import TouchableItem from './TouchableItem';
+import React                    from 'react'
+import { Platform, StyleSheet } from 'react-native'
+import Icon                     from 'react-native-vector-icons/Ionicons'
+import TouchableItem            from './TouchableItem'
 
 type Props = {
   onPress?: () => void,
   pressColorAndroid?: string,
   tintColor?: ?string,
-};
+}
 
 type DefaultProps = {
   pressColorAndroid: string,
   tintColor: ?string,
-};
+}
 
-type State = {};
+type State = {}
 
 class HeaderCloseButton extends React.PureComponent<
   DefaultProps,
@@ -28,12 +28,12 @@ class HeaderCloseButton extends React.PureComponent<
       ios: '#037aff',
       android: 'white',
     }),
-  };
+  }
 
-  state = {};
+  state = {}
 
   render() {
-    const { onPress, pressColorAndroid, tintColor } = this.props;
+    const { onPress, pressColorAndroid, tintColor } = this.props
 
     // eslint-disable-next-line global-require
     return (
@@ -55,7 +55,7 @@ class HeaderCloseButton extends React.PureComponent<
           color={tintColor}
         />
       </TouchableItem>
-    );
+    )
   }
 }
 
@@ -73,6 +73,6 @@ const styles = StyleSheet.create({
   icon: {
     marginHorizontal: 6,
   },
-});
+})
 
-export default HeaderCloseButton;
+export default HeaderCloseButton

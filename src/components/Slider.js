@@ -1,9 +1,5 @@
-import * as React from 'react';
-import { StyleSheet, Dimensions, Slider } from 'react-native';
-
-// react-native-slider is reall slow and buggy. probably not a good idea to use it right now.
-// import { StyleSheet, Dimensions }      from 'react-native'
-// import Slider                          from 'react-native-slider'
+import * as React from 'react'
+import { StyleSheet, Dimensions, Slider } from 'react-native'
 
 const StyledSlider = ({
   color,
@@ -37,9 +33,9 @@ const StyledSlider = ({
     ]}
     minimumTrackTintColor={color}
   />
-);
+)
 
-export default StyledSlider;
+export default StyledSlider
 
 const styles = StyleSheet.create({
   slider: {
@@ -66,4 +62,4 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.35,
   },
   emoji: { fontSize: 64, backgroundColor: 'transparent' },
-});
+})

@@ -1,17 +1,17 @@
 //@flow
-import React                   from 'react'
+import React                from 'react'
 import {
   View,
   Text,
   StatusBar,
   ScrollView,
   TouchableOpacity,
-}                              from 'react-native'
-import { HeaderBackButton }    from 'react-navigation'
-import styles, { bannerColor } from '../styles/components/Banner/phase'
-import type { Step }           from '../services/cms'
-import ModelHOC                from '../HOC/StepFormModelProvider'
-import { compose }             from 'recompose'
+}                           from 'react-native'
+import { HeaderBackButton } from 'react-navigation'
+import styles               from '../styles/components/Banner/phase'
+import type { Step }        from '../services/cms'
+import ModelHOC             from '../HOC/StepFormModelProvider'
+import { compose }          from 'recompose'
 
 type Props = {
   onBackPress: () => any,
@@ -24,19 +24,21 @@ type Props = {
   disabled: boolean,
 }
 
+type PhaseHeaderButtonProps = {
+  step: Step,
+  backgroundColor: string,
+  textColor: string,
+  onPress: any,
+  disabled: boolean,
+}
+
 const UnconnectedPhaseHeaderButton = ({
   step,
   backgroundColor,
   textColor,
   onPress,
   disabled = false,
-}: {
-  step: Step,
-  backgroundColor: string,
-  textColor: string,
-  onPress: any,
-  disabled: boolean,
-}) => {
+}: PhaseHeaderButtonProps) => {
   return (
     <TouchableOpacity
       style={[

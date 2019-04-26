@@ -1,13 +1,13 @@
 // @flow
-import React from 'react';
-import { View, Text } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import React          from 'react'
+import { View, Text } from 'react-native'
+import Icon           from 'react-native-vector-icons/Ionicons'
 
 type TabElementProps = {
   name: string,
   text: string,
   selected: boolean,
-};
+}
 
 const TabElement = ({ name, text, selected = false }: TabElementProps) => (
   <View style={{ flex: 1, padding: 4, alignItems: 'center' }}>
@@ -16,7 +16,7 @@ const TabElement = ({ name, text, selected = false }: TabElementProps) => (
       {text}
     </Text>
   </View>
-);
+)
 const TabBar = () => (
   <View
     style={{
@@ -33,6 +33,6 @@ const TabBar = () => (
     <TabElement name={'ios-hammer'} text={'My Tools'} />
     <TabElement name={'ios-settings'} text={'Settings'} />
   </View>
-);
+)
 
-export default TabBar;
+export default TabBar
