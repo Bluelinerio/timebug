@@ -5,8 +5,8 @@ import selectors                         from '2020_redux/selectors'
 import { stepEnum }                      from '2020_services/cms'
 import { FORM_KEYS, FORM_CHILDREN_KEYS } from '2020_forms/forms/step4'
 import { goToV2WorkbookScreen }          from '2020_redux/actions/nav.actions'
+import StepDataProvider                  from '2020_HOC/ToolStepDataProvider'
 import BoardScreen                       from '../../components/BoardScreen/BoardScreen'
-import StepDataProvider                  from '../../../../../HOC/ToolStepDataProvider'
 
 export type Props = {
   step: any,

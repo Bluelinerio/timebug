@@ -5,7 +5,7 @@ import { compose, mapProps }    from 'recompose'
 import { FORM_KEYS }            from '2020_forms/forms/goals'
 import selectors                from '2020_redux/selectors'
 import { stepEnum }             from '2020_services/cms'
-import StepDataProvider         from '../../../../HOC/ToolStepDataProvider'
+import StepDataProvider         from '2020_HOC/ToolStepDataProvider'
 import { getCurrentRouteState } from '2020_utils/currentRouteState'
 import GoalScreen               from '../components/GoalScreenComponent'
 

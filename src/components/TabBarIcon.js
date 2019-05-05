@@ -21,6 +21,8 @@ const mapRouteToIcon = routeName => {
     return `ios-compass`
   case routes.tab.GoalsNavigator:
     return `ios-checkmark`
+  case routes.tab.DashboardScreen:
+    return `ios-book`
   default:
     return
   }

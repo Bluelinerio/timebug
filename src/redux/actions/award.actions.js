@@ -49,6 +49,10 @@ export type ExecuteToolSyncPayload = {
   operations: Array<Operation>,
 }
 
+export type ClearToolDataPayload = {
+  key: string
+}
+
 export const submitAwardAnswers = (
   payload: SubmitAwardValuePayload
 ): SumbitAwardValueAction => ({

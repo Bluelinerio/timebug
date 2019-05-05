@@ -9,9 +9,7 @@ import {
   SELF_ASSESSMENT,
   VISION_CREATION,
 }                               from '../../services/cms'
-import PieChartCells, {
-  PieChartCellsProps,
-}                               from '../../components/PhaseProgress/PieChartCells'
+import { PieChartCellsProps }   from '../../components/PhaseProgress/PieChartCells'
 import { mediumGray }           from '../../constants/colors'
 import { buildCharts, LabelFn } from './charts'
 
@@ -154,4 +152,4 @@ const merge = (
   }
 }
 
-export default connect(mapStateToProps, null, merge)(PieChartCells)
+export default connect(mapStateToProps, null, merge)

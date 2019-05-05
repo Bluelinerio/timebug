@@ -23,7 +23,8 @@ import WorkbookDoneScreen from '../screens/WorkbookDoneScreen'
 import WorkbookScreen     from '../screens/WorkbookScreen'
 import WalkthroughScreen  from '../screens/WalkthroughScreen'
 import DashboardScreen    from '../screens/DashboardScreen'
-import CheckinScreen      from '../screens/CheckinScreen'
+// import CheckinScreen      from '../screens/CheckinScreen'
+import SettingsScreen     from '../screens/SettingsScreen'
 import MarkdownScreen     from '../screens/MarkdownScreen'
 import EmojiPickerScreen  from '../screens/EmojiPickerScreen'
 import ToolScreen         from '../screens/MyJourneyScreen'
@@ -84,10 +85,6 @@ export const rootConfiguration = {
     [routes.root.AssignmentFlow]: {
       screen: AssignmentFlowNavigator,
       path: 'step',
-    },
-    [routes.root.DashboardScreen]: {
-      screen: DashboardScreen,
-      path: 'dashboard',
     },
     [routes.root.MarkdownScreen]: {
       screen: MarkdownScreen,
@@ -174,11 +171,11 @@ type NavigationOptionsElementProps = {
 export const tabConfiguration = {
   routes: routes.tab,
   screens: {
+    [routes.tab.DashboardScreen]: {
+      screen: DashboardScreen,
+    },
     [routes.tab.RootNavigator]: {
       screen: RootNavigator,
-    },
-    [routes.tab.CheckinScreen]: {
-      screen: CheckinScreen,
     },
     [routes.tab.ToolFlow]: {
       screen: ToolFlow,
@@ -267,6 +264,9 @@ export const startConfiguration = {
     },
     [routes.start.LoginScreen]: {
       screen: LoginScreen,
+    },
+    [routes.start.SettingsScreen]: {
+      screen: SettingsScreen,
     },
   },
   options: {

@@ -13,6 +13,7 @@ import { SHARED } from '2020_forms/forms/constants'
 
 import {
   MEDITATION,
+  stepEnum,
 } from '2020_services/cms'
 
 export const key = 'daily_timebug_planner_tool'
@@ -92,5 +93,8 @@ export default {
     buttonContainerStyle: buttonStyles.phase1,
     buttonTextStyle: buttonTextStyles.phase1,
     accentColor: phaseColors.phase1,
+  },
+  require: {
+    steps: [stepEnum.STEP_2],
   },
 }

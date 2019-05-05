@@ -30,7 +30,7 @@ const insights = {
   '28': `You influence your environment just as much as it influences you.  Expand your horizons, literally.`,
   '29': `Those who show a proclivity for spiritual acceptance were shown to have a higher concentration of serotonin activity, a brain receptor linked to positive emotions.`,
   '30': `Dreaming about the future calms you down, measurably reducing systolic blood pressure, but it also can drain you of the energy you need to take action in pursuit of your goals. Be positive but realistic.`,
-};
+}
 
 export const dummyFormValue = {
   recentGoals: [
@@ -43,25 +43,25 @@ export const dummyFormValue = {
       goalTypes: 'Relationship Quality',
     },
   ],
-};
+}
 
-const getInsight = (stepId, value) => {
-  const insight = insights[stepId];
-  if (typeof insight === 'string') return insight;
+const getInsight = (stepId, value = dummyFormValue) => {
+  const insight = insights[stepId]
+  if (typeof insight === 'string') return insight
   if (typeof insight === 'function') {
-    if (!value) console.error(`Mising value for insight for step ${stepId}`);
+    if (!value) console.error(`Mising value for insight for step ${stepId}`)
     try {
-      const res = insight(value);
-      return res;
+      const res = insight(value)
+      return res
     } catch (e) {
       console.error(
         `Failed getting insight for step ${stepId} with value ${JSON.stringify(
           value
         )}`
-      );
+      )
     }
   }
-  return null;
-};
+  return null
+}
 
-export default getInsight;
+export default getInsight

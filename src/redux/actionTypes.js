@@ -75,6 +75,8 @@ export const DECREMENT_TOOL_DATA_QUEUE = 'DECREMENT_TOOL_DATA_QUEUE'
 
 export const RESTORE_TOOL_DATA = 'RESTORE_TOOL_DATA'
 
+export const CLEAR_TOOL_DATA = 'CLEAR_TOOL_DATA'
+
 /**
  * Modal
  */

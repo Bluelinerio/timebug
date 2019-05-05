@@ -102,6 +102,10 @@ export const goToRootNavigatorV2 = () =>
     params: { v2: true },
   })
 
+export const goToSettings = () =>
+  NavigationActions.navigate({
+    routeName: routes.start.SettingsScreen,
+  })
 /* End Prototype */
 
 export const popToTop = () => NavigationActions.popToTop()

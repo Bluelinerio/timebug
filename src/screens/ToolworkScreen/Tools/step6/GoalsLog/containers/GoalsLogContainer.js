@@ -4,7 +4,7 @@ import { mapProps, compose }            from 'recompose'
 import { stepEnum }                     from '2020_services/cms'
 import GoalsLog                         from '../components/GoalsLog'
 import type { Props as ComponentProps } from '../components/GoalsLog'
-import StepDataProvider                 from '../../../../HOC/ToolStepDataProvider'
+import StepDataProvider                 from '2020_HOC/ToolStepDataProvider'
 
 type Props = {
   tool: { subtitle: string },

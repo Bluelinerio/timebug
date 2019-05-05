@@ -1,10 +1,3 @@
-import * as React from 'react';
-import Profile from './Profile';
+import SettinsScreen from './containers/SettingsScreenContainer'
 
-const ProfileScreen = () => <Profile />;
-
-ProfileScreen.navigationOptions = () => ({
-  header: null,
-});
-
-export default ProfileScreen;
+export default SettinsScreen

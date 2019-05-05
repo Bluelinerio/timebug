@@ -7,10 +7,12 @@ import {
   INCREMENT_TOOL_DATA_QUEUE,
   DECREMENT_TOOL_DATA_QUEUE,
   RESTORE_TOOL_DATA,
+  CLEAR_TOOL_DATA,
 } from '../actionTypes'
 import type {
   SumbitAwardValueAction,
   RestoreFormDataPayload,
+  ClearToolDataPayload,
 } from '../actions/award.actions'
 
 /**
@@ -96,6 +98,27 @@ const restore = (
   }
 }
 
+const clear = (
+  { payload }: { payload: ClearToolDataPayload },
+  state: AwardState
+) => {
+  const { key } = payload
+  const data = state.data || {}
+
+  const newData = Object.keys(data)
+    .filter(k => k !== key)
+    .reduce((d, k) => {
+      return {
+        ...d,
+        [k]: data[k],
+      }
+    }, {})
+  return {
+    ...state,
+    data: newData,
+  }
+}
+
 function toolDataReducer(
   state: AwardState = initialState,
   action: SumbitAwardValueAction
@@ -107,6 +130,8 @@ function toolDataReducer(
     return initialState
   case RESTORE_TOOL_DATA:
     return restore(action, state)
+  case CLEAR_TOOL_DATA:
+    return clear(action, state)
   case INCREMENT_TOOL_DATA_QUEUE:
     return {
       ...state,
