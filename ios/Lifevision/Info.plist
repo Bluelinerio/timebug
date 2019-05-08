@@ -76,6 +76,7 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Location allows Life Vision to provide relevant notifications in local time zone.</string>
 	<string/>
 	<key>UIAppFonts</key>
 	<array>

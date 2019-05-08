@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -97,6 +98,7 @@
 		8FDE4C82046F4C748C59B584 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F013D1E12B514B159F21CD08 /* SimpleLineIcons.ttf */; };
 		933E29AA3BB2462CB0C1AD63 /* Metropolis-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5DD37A683C874E3188CA272F /* Metropolis-Thin.otf */; };
 		9CB2C3BA945A4B12985F3497 /* Metropolis-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3CBCE40F8D474CD7BE8A47E0 /* Metropolis-ExtraBold.otf */; };
+		A15D99EDCA44480EBFB049BE /* libRNBlur.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8964047F84CD413FAD058ACB /* libRNBlur.a */; };
 		A2E70CE3AEA94759805D7E2A /* 2020-diary-step-28.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D4E4BB5410047218E498399 /* 2020-diary-step-28.png */; };
 		A3BD64630F0744DD8B532104 /* 2020-diary-step-14.png in Resources */ = {isa = PBXBuildFile; fileRef = FA84FEEB7A1846368A6DB60E /* 2020-diary-step-14.png */; };
 		A4AA77785C3543CF96C20231 /* 2020-diary-step-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D04E1108AF244A5BA5A0029 /* 2020-diary-step-7.png */; };
@@ -107,10 +109,12 @@
 		AB28FFE77D884309A90B61FE /* 2020-diary-step-23.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A9AB815655E4C3BA4462D81 /* 2020-diary-step-23.png */; };
 		AC1D53243A994BDDB4874603 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6DAB8FA78EE74E369AC2DE80 /* FontAwesome.ttf */; };
 		ADBA1CF8AAB74FA0BBBD4FB5 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F39533AE076C4D8F911B0005 /* Ionicons.ttf */; };
+		AF000F255525417B8B98F0E4 /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9785337CBB824B52A3A77736 /* FontAwesome5_Brands.ttf */; };
 		AF816833E0914715BE78FB26 /* Metropolis-ExtraBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5324C2C862464F11BD043E1F /* Metropolis-ExtraBoldItalic.otf */; };
 		B028C5D6AE0E4A0D98A7EAF0 /* 2020-diary-step-9.png in Resources */ = {isa = PBXBuildFile; fileRef = 32500F77901B4817BCFB78B6 /* 2020-diary-step-9.png */; };
 		B07FBCC8AC03483094306ED9 /* 2020-diary-step-30.png in Resources */ = {isa = PBXBuildFile; fileRef = 06F72533ACF64BD495FF45F5 /* 2020-diary-step-30.png */; };
 		B360632F08A34A5E915D55E5 /* Metropolis-ExtraLightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 04E0CB5F6336405C893721DB /* Metropolis-ExtraLightItalic.otf */; };
+		B3DA7E180A1E4991A6C89F07 /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DE430F14CDBD496D94601614 /* FontAwesome5_Solid.ttf */; };
 		B428BBAB04AC4DC68AC008F1 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E339D4B84D64EC89A41463A /* Entypo.ttf */; };
 		B7B910C2EA7444E39DC10735 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 38D61F674FA741408EB0DB8D /* Octicons.ttf */; };
 		B8F4F4B4509F48E29C8EEA5A /* libKCKeepAwake.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 948A464D63744CE1844D684F /* libKCKeepAwake.a */; };
@@ -119,7 +123,9 @@
 		BFA5E945E088421BA72780E1 /* 2020-diary-step-6.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E367965BD8048BEB5196DFE /* 2020-diary-step-6.png */; };
 		BFE9266B1D244556BB054A90 /* 2020-diary-step-10.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BD983B2232C4C51B9C4A42A /* 2020-diary-step-10.png */; };
 		C37BCBBDE1C34425A279067A /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5E6468C8F154D4CAA950D5D /* EvilIcons.ttf */; };
+		C3FD0292A6784BD5968D1E8B /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E99D7AEC980042B78086059E /* AntDesign.ttf */; };
 		CC8A94A56B4B4FEAB80B0894 /* libRNSentry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C479C2B29EE440B98FBB08A8 /* libRNSentry.a */; };
+		D14D2B4E52824FE496831E7F /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E4DF1281C7EC413189AD28D7 /* FontAwesome5_Regular.ttf */; };
 		D15C06954183498E8B03CBBE /* Lifevision-Collage@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 464C449773C043B18E4DBDBB /* Lifevision-Collage@3x.png */; };
 		D29004A5F3E1491CB400E90A /* 2020-diary-step-24.png in Resources */ = {isa = PBXBuildFile; fileRef = C96B38CE91394249BCFB2067 /* 2020-diary-step-24.png */; };
 		D3248B9319EC4ABE839876CD /* Metropolis-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CBDD923749584DA3B431DAE6 /* Metropolis-SemiBold.otf */; };
@@ -132,11 +138,6 @@
 		F377E798A03A4A99A4FAAF42 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1DFB4CA015524870908EA08A /* Foundation.ttf */; };
 		F86758611FAA4C4C8C7731C3 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B805BC22CD3E43BCBC18D476 /* Octicons.ttf */; };
 		F9E73F1EECCA437A9DF1ECAF /* Metropolis-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 50B0CF0D3FB74E0EBF86974B /* Metropolis-Bold.otf */; };
-		A15D99EDCA44480EBFB049BE /* libRNBlur.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8964047F84CD413FAD058ACB /* libRNBlur.a */; };
-		C3FD0292A6784BD5968D1E8B /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E99D7AEC980042B78086059E /* AntDesign.ttf */; };
-		AF000F255525417B8B98F0E4 /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9785337CBB824B52A3A77736 /* FontAwesome5_Brands.ttf */; };
-		D14D2B4E52824FE496831E7F /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E4DF1281C7EC413189AD28D7 /* FontAwesome5_Regular.ttf */; };
-		B3DA7E180A1E4991A6C89F07 /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DE430F14CDBD496D94601614 /* FontAwesome5_Solid.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -328,6 +329,20 @@
 			proxyType = 2;
 			remoteGlobalIDString = 3D3CD9181DE5FBD800167DC4;
 			remoteInfo = "jschelpers-tvOS";
+		};
+		591291D02280860D0075AE7A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B723FFEBE3A44F2F84079B6F /* RNBlur.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A68BD7BC1BC31318005F02DF;
+			remoteInfo = RNBlur;
+		};
+		591291D22280860D0075AE7A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B723FFEBE3A44F2F84079B6F /* RNBlur.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 64D1BD361EEFE88700F3F219;
+			remoteInfo = "RNBlur-tvOS";
 		};
 		5924913C21513006008C4319 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -638,6 +653,7 @@
 		837C72A2439944F6A6D272F8 /* libRNGestureHandler.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNGestureHandler.a; sourceTree = "<group>"; };
 		85B8935F72F64C038664ED5B /* RCTContacts.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTContacts.xcodeproj; path = "../node_modules/react-native-contacts/ios/RCTContacts.xcodeproj"; sourceTree = "<group>"; };
 		86E8CA8065774F3C9882F20C /* 2020-diary-step-2.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-2.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-2.png"; sourceTree = "<group>"; };
+		8964047F84CD413FAD058ACB /* libRNBlur.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNBlur.a; sourceTree = "<group>"; };
 		8A9AB815655E4C3BA4462D81 /* 2020-diary-step-23.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-23.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-23.png"; sourceTree = "<group>"; };
 		8EA2659C3B484CB68F1CC4DA /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ./ios/Frameworks/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		8F01FDC441C44721AD15DC35 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
@@ -645,6 +661,7 @@
 		9279D43457CA417B82A913D0 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ./ios/Frameworks/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		9293B7C25ADB405FA12154C8 /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
 		948A464D63744CE1844D684F /* libKCKeepAwake.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libKCKeepAwake.a; sourceTree = "<group>"; };
+		9785337CBB824B52A3A77736 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
 		98905C02CDCF40399425FF6E /* CodePush.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = CodePush.xcodeproj; path = "../node_modules/react-native-code-push/ios/CodePush.xcodeproj"; sourceTree = "<group>"; };
 		98DB4E3F7A1F41E397CE3658 /* Metropolis-BlackItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-BlackItalic.otf"; path = "../src/resources/fonts/Metropolis/Metropolis-BlackItalic.otf"; sourceTree = "<group>"; };
 		9B4C222AC0C7480F9D05B796 /* Metropolis-RegularItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-RegularItalic.otf"; path = "../src/resources/fonts/Metropolis/Metropolis-RegularItalic.otf"; sourceTree = "<group>"; };
@@ -658,6 +675,7 @@
 		B02A9292ABB84AB29CBAF1B9 /* rubicon-icon-font.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "rubicon-icon-font.ttf"; path = "../node_modules/native-base/Fonts/rubicon-icon-font.ttf"; sourceTree = "<group>"; };
 		B0B0608A4FF6403EB0359CF8 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		B3C9922841564BA29F0B9037 /* 2020-diary-step-3.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-3.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-3.png"; sourceTree = "<group>"; };
+		B723FFEBE3A44F2F84079B6F /* RNBlur.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNBlur.xcodeproj; path = "../node_modules/@react-native-community/blur/ios/RNBlur.xcodeproj"; sourceTree = "<group>"; };
 		B805BC22CD3E43BCBC18D476 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/native-base/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		BF0B0FC18ECE4074B6671B84 /* libRCTContacts.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTContacts.a; sourceTree = "<group>"; };
 		BF30A88CDC124236A4774B99 /* Metropolis-Medium.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-Medium.otf"; path = "../src/resources/fonts/Metropolis/Metropolis-Medium.otf"; sourceTree = "<group>"; };
@@ -669,8 +687,11 @@
 		D542C96B49034D2BB567DA4E /* RNGestureHandler.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNGestureHandler.xcodeproj; path = "../node_modules/react-native-gesture-handler/ios/RNGestureHandler.xcodeproj"; sourceTree = "<group>"; };
 		D8004A0854F54A1EBF1F7386 /* 2020-diary-step-15.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-15.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-15.png"; sourceTree = "<group>"; };
 		D9BD99EBE4904734B80D682D /* RNDeviceInfo.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNDeviceInfo.xcodeproj; path = "../node_modules/react-native-device-info/RNDeviceInfo.xcodeproj"; sourceTree = "<group>"; };
+		DE430F14CDBD496D94601614 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
 		E2EBC692F42043FF8F12AEA6 /* Roboto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto.ttf; path = "../node_modules/native-base/Fonts/Roboto.ttf"; sourceTree = "<group>"; };
 		E4C2AFB475104A3982EAB221 /* libRNSVG-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNSVG-tvOS.a"; sourceTree = "<group>"; };
+		E4DF1281C7EC413189AD28D7 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
+		E99D7AEC980042B78086059E /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
 		EB7A9F0628F3499BB20FA071 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/native-base/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		EBC8883A8D874BC1AA38C7EA /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		ECE81ABF4D5C4BF7A3990573 /* 2020-diary-step-12.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-12.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-12.png"; sourceTree = "<group>"; };
@@ -686,12 +707,6 @@
 		FC1002986DAE4858AC9EFA4C /* Metropolis-ThinItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-ThinItalic.otf"; path = "../src/resources/fonts/Metropolis/Metropolis-ThinItalic.otf"; sourceTree = "<group>"; };
 		FC66B46687B9416582809756 /* 2020-diary-step-1.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-1.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-1.png"; sourceTree = "<group>"; };
 		FF18CA9A0CB24B5988C4F9D9 /* libRNDeviceInfo.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNDeviceInfo.a; sourceTree = "<group>"; };
-		B723FFEBE3A44F2F84079B6F /* RNBlur.xcodeproj */ = {isa = PBXFileReference; name = "RNBlur.xcodeproj"; path = "../node_modules/@react-native-community/blur/ios/RNBlur.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
-		8964047F84CD413FAD058ACB /* libRNBlur.a */ = {isa = PBXFileReference; name = "libRNBlur.a"; path = "libRNBlur.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
-		E99D7AEC980042B78086059E /* AntDesign.ttf */ = {isa = PBXFileReference; name = "AntDesign.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		9785337CBB824B52A3A77736 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; name = "FontAwesome5_Brands.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		E4DF1281C7EC413189AD28D7 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; name = "FontAwesome5_Regular.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		DE430F14CDBD496D94601614 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; name = "FontAwesome5_Solid.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -904,6 +919,7 @@
 				4ED6F842A92D4871AEEC8C42 /* libRCTVideo.a */,
 				948A464D63744CE1844D684F /* libKCKeepAwake.a */,
 				BF0B0FC18ECE4074B6671B84 /* libRCTContacts.a */,
+				8964047F84CD413FAD058ACB /* libRNBlur.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -930,6 +946,15 @@
 			isa = PBXGroup;
 			children = (
 				24F229C41F76C6FC0062C985 /* libRCTFBSDK.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		591291CA2280860D0075AE7A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				591291D12280860D0075AE7A /* libRNBlur.a */,
+				591291D32280860D0075AE7A /* libRNBlur.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1306,13 +1331,14 @@
 					};
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = 8RQ6236EC6;
+						LastSwiftMigration = "";
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.InterAppAudio = {
 								enabled = 0;
 							};
 							com.apple.Push = {
-								enabled = 0;
+								enabled = 1;
 							};
 							com.apple.SafariKeychain = {
 								enabled = 1;
@@ -1340,6 +1366,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -1418,6 +1445,10 @@
 				{
 					ProductGroup = 146834001AC3E56700842450 /* Products */;
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+				},
+				{
+					ProductGroup = 591291CA2280860D0075AE7A /* Products */;
+					ProjectRef = B723FFEBE3A44F2F84079B6F /* RNBlur.xcodeproj */;
 				},
 				{
 					ProductGroup = 6C7CA87820183A76009E848B /* Products */;
@@ -1628,6 +1659,20 @@
 			fileType = archive.ar;
 			path = libjschelpers.a;
 			remoteRef = 3DAD3EAE1DF850E9000B6D8A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		591291D12280860D0075AE7A /* libRNBlur.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNBlur.a;
+			remoteRef = 591291D02280860D0075AE7A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		591291D32280860D0075AE7A /* libRNBlur.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNBlur.a;
+			remoteRef = 591291D22280860D0075AE7A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		5924913D21513006008C4319 /* libRCTVideo.a */ = {
@@ -2099,7 +2144,7 @@
 					"$(SRCROOT)..\node_modules\neact-native-videoios",
 					"$(SRCROOT)..\node_modules\neact-native-keep-awakeios",
 					"$(SRCROOT)..\node_modules\neact-native-contactsiosRCTContacts",
-					"$(SRCROOT)\..\node_modules\@react-native-community\blur\ios",
+					"$(SRCROOT)..\node_modules@react-native-community\blurios",
 				);
 				INFOPLIST_FILE = LifevisionTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -2142,7 +2187,7 @@
 					"$(SRCROOT)..\node_modules\neact-native-videoios",
 					"$(SRCROOT)..\node_modules\neact-native-keep-awakeios",
 					"$(SRCROOT)..\node_modules\neact-native-contactsiosRCTContacts",
-					"$(SRCROOT)\..\node_modules\@react-native-community\blur\ios",
+					"$(SRCROOT)..\node_modules@react-native-community\blurios",
 				);
 				INFOPLIST_FILE = LifevisionTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -2189,7 +2234,7 @@
 					"$(SRCROOT)..\node_modules\neact-native-videoios",
 					"$(SRCROOT)..\node_modules\neact-native-keep-awakeios",
 					"$(SRCROOT)..\node_modules\neact-native-contactsiosRCTContacts",
-					"$(SRCROOT)\..\node_modules\@react-native-community\blur\ios",
+					"$(SRCROOT)..\node_modules@react-native-community\blurios",
 				);
 				"HEADER_SEARCH_PATHS[arch=*]" = (
 					"$(inherited)",
@@ -2220,7 +2265,7 @@
 				PRODUCT_NAME = Lifevision;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -2251,7 +2296,7 @@
 					"$(SRCROOT)..\node_modules\neact-native-videoios",
 					"$(SRCROOT)..\node_modules\neact-native-keep-awakeios",
 					"$(SRCROOT)..\node_modules\neact-native-contactsiosRCTContacts",
-					"$(SRCROOT)\..\node_modules\@react-native-community\blur\ios",
+					"$(SRCROOT)..\node_modules@react-native-community\blurios",
 				);
 				INFOPLIST_FILE = Lifevision/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2265,7 +2310,7 @@
 				PRODUCT_NAME = Lifevision;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -2299,7 +2344,7 @@
 					"$(SRCROOT)..\node_modules\neact-native-videoios",
 					"$(SRCROOT)..\node_modules\neact-native-keep-awakeios",
 					"$(SRCROOT)..\node_modules\neact-native-contactsiosRCTContacts",
-					"$(SRCROOT)\..\node_modules\@react-native-community\blur\ios",
+					"$(SRCROOT)..\node_modules@react-native-community\blurios",
 				);
 				INFOPLIST_FILE = "Lifevision-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2350,7 +2395,7 @@
 					"$(SRCROOT)..\node_modules\neact-native-videoios",
 					"$(SRCROOT)..\node_modules\neact-native-keep-awakeios",
 					"$(SRCROOT)..\node_modules\neact-native-contactsiosRCTContacts",
-					"$(SRCROOT)\..\node_modules\@react-native-community\blur\ios",
+					"$(SRCROOT)..\node_modules@react-native-community\blurios",
 				);
 				INFOPLIST_FILE = "Lifevision-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2390,7 +2435,7 @@
 					"$(SRCROOT)..\node_modules\neact-native-videoios",
 					"$(SRCROOT)..\node_modules\neact-native-keep-awakeios",
 					"$(SRCROOT)..\node_modules\neact-native-contactsiosRCTContacts",
-					"$(SRCROOT)\..\node_modules\@react-native-community\blur\ios",
+					"$(SRCROOT)..\node_modules@react-native-community\blurios",
 				);
 				INFOPLIST_FILE = "Lifevision-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -2431,7 +2476,7 @@
 					"$(SRCROOT)..\node_modules\neact-native-videoios",
 					"$(SRCROOT)..\node_modules\neact-native-keep-awakeios",
 					"$(SRCROOT)..\node_modules\neact-native-contactsiosRCTContacts",
-					"$(SRCROOT)\..\node_modules\@react-native-community\blur\ios",
+					"$(SRCROOT)..\node_modules@react-native-community\blurios",
 				);
 				INFOPLIST_FILE = "Lifevision-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -2524,7 +2569,7 @@
 					"$(SRCROOT)..\node_modules\neact-native-videoios",
 					"$(SRCROOT)..\node_modules\neact-native-keep-awakeios",
 					"$(SRCROOT)..\node_modules\neact-native-contactsiosRCTContacts",
-					"$(SRCROOT)\..\node_modules\@react-native-community\blur\ios",
+					"$(SRCROOT)..\node_modules@react-native-community\blurios",
 				);
 				INFOPLIST_FILE = Lifevision/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2538,7 +2583,7 @@
 				PRODUCT_NAME = "Lifevision Stage";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Staging;
@@ -2566,7 +2611,7 @@
 					"$(SRCROOT)..\node_modules\neact-native-videoios",
 					"$(SRCROOT)..\node_modules\neact-native-keep-awakeios",
 					"$(SRCROOT)..\node_modules\neact-native-contactsiosRCTContacts",
-					"$(SRCROOT)\..\node_modules\@react-native-community\blur\ios",
+					"$(SRCROOT)..\node_modules@react-native-community\blurios",
 				);
 				INFOPLIST_FILE = LifevisionTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -2615,7 +2660,7 @@
 					"$(SRCROOT)..\node_modules\neact-native-videoios",
 					"$(SRCROOT)..\node_modules\neact-native-keep-awakeios",
 					"$(SRCROOT)..\node_modules\neact-native-contactsiosRCTContacts",
-					"$(SRCROOT)\..\node_modules\@react-native-community\blur\ios",
+					"$(SRCROOT)..\node_modules@react-native-community\blurios",
 				);
 				INFOPLIST_FILE = "Lifevision-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
