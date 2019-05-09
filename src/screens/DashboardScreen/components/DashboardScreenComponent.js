@@ -36,8 +36,8 @@ class StartScreenComponent extends PureComponent<Props> {
               {isLogged ? (
                 <React.Fragment>
                   <GreetingComponent />
-                  <InsightComponent />
                   <CheckinAreaComponent />
+                  <InsightComponent />
                   <ProgressAreaComponent />
                 </React.Fragment>
               ) : (
