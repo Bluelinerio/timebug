@@ -241,6 +241,7 @@ class CheckinElement extends React.PureComponent<CheckinElementProps> {
                         checkin: {
                           message,
                           toolKey,
+                          action,
                           frequency: localFrequency,
                         },
                       })
