@@ -2,11 +2,11 @@
 import { connect }             from 'react-redux'
 import { linkNavigation }      from '../../../redux/actions/nav.actions'
 import {
-  changeCheckin,
+  updateOrCreateCheckin,
   toggleCheckin,
 }                              from '../../../redux/actions/checkin.actions'
 import type {
-  CheckinChangePayload,
+  NotificationUpdateOrCreatePayload,
   ToggleCheckinPayload,
 }                              from '../../../redux/actions/checkin.actions'
 import { cancelNotifications } from '../../../redux/actions/notifications.actions'
@@ -16,7 +16,7 @@ import CheckinListComponent, {
 }                              from '../components/CheckinListComponent'
 
 type CheckinListDispatchProps = {
-  updateCheckin: CheckinChangePayload => any,
+  updateCheckin: NotificationUpdateOrCreatePayload => any,
   linkNavigation: ({ link: string }) => any,
   cancelAllNotifications: () => any,
   toggleNotification: ToggleCheckinPayload => any,
@@ -46,7 +46,7 @@ const mapStateToProps = (state: any): CheckingListStateProps => {
 }
 
 const mapDispatchToProps = (dispatch: () => any): CheckinListDispatchProps => ({
-  updateCheckin: params => dispatch(changeCheckin(params)),
+  updateCheckin: params => dispatch(updateOrCreateCheckin(params)),
   linkNavigation: params => dispatch(linkNavigation(params)),
   cancelAllNotifications: () => dispatch(cancelNotifications()),
   toggleNotification: params => dispatch(toggleCheckin(params)),

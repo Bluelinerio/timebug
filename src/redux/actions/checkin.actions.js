@@ -8,6 +8,7 @@ import {
   TOGGLE_CHECKIN,
   EDIT_CHECKIN,
   CHECKIN_NOTIFICATION,
+  UPDATE_OR_CREATE_CHECKIN,
 }                              from '../actionTypes'
 import type { CheckinElement } from '../reducers/checkin.reducer'
 
@@ -22,6 +23,7 @@ export type CheckinChangePayload = {
   message: string,
   toolKey: string,
   revisionId: number,
+  action: any,
 }
 
 export type DeleteCheckinPayload = {
@@ -54,6 +56,7 @@ export type EditCheckinPayload = {
   notification?: Notification,
   number: number,
 }
+export type NotificationUpdateOrCreatePayload = CheckinChangePayload
 
 export const changeCheckin = (payload: CheckinChangePayload) => ({
   type: CHANGE_CHECKIN,
@@ -90,5 +93,12 @@ export const editCheckin = (payload: EditCheckinPayload) => ({
 
 export const checkinNotification = (payload: CheckinNotificationPayload) => ({
   type: CHECKIN_NOTIFICATION,
+  payload,
+})
+
+export const updateOrCreateCheckin = (
+  payload: NotificationUpdateOrCreatePayload
+) => ({
+  type: UPDATE_OR_CREATE_CHECKIN,
   payload,
 })
