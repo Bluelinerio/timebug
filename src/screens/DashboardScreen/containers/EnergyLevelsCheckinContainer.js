@@ -11,11 +11,15 @@ import { goToTool }                     from '2020_redux/actions/nav.actions'
 import type { GoToToolParams }          from '2020_redux/actions/nav.actions'
 import { DATE_FORMAT }                  from '2020_constants/constants'
 import { FORM_KEYS, CHILDREN_KEYS }     from '2020_static/tools/EnergyLevelsTracker'
+import { stepEnum }                     from '2020_services/cms'
+import type { Step }                    from '2020_services/cms'
+import selectors                        from '2020_redux/selectors'
 
 type Props = {
   tool: any,
   toolData: any,
   goToTool: () => void,
+  step: Step,
 }
 
 type Data = {
@@ -40,6 +44,14 @@ const mapKeysToText = (key: string) => {
     return 'spiritual energy'
   default:
     return ''
+  }
+}
+
+const mapStateToProps = (state: any) => {
+  const steps = selectors.steps(state)
+  const step = steps[stepEnum.STEP_8]
+  return {
+    step,
   }
 }
 
@@ -131,10 +143,12 @@ const reduceValues = (data: Data): Values => {
 }
 
 const merge = (props: Props): ComponentProps => {
-  const { tool, toolData, goToTool } = props
+  const { tool, toolData, goToTool, step } = props
 
   const value = toolData ? toolData.value : []
   const thisWeeksData = value.filter(filterOfThisWeek)
+
+  const { icon } = step
 
   const onLinkPress = goToTool({ tool })
 
@@ -144,6 +158,7 @@ const merge = (props: Props): ComponentProps => {
       link: 'How are you feeling now?',
       onLinkPress,
       fallback: true,
+      source: icon && icon.uri,
     }
   const values: Values = compose(reduceValues, extractValues)(
     thisWeeksData.map(mapValues)
@@ -155,6 +170,7 @@ const merge = (props: Props): ComponentProps => {
     link: 'How are you feeling now?',
     onLinkPress,
     fallback: false,
+    source: icon && icon.uri,
   }
 }
 
@@ -166,6 +182,7 @@ type ContainerProps = {
   physical: number,
   emotional: number,
   spiritual: number,
+  source: string,
 }
 
 type ContainerState = {
@@ -232,7 +249,7 @@ class EnergyLevelsCheckinContainer extends React.Component<
   }
 
   render() {
-    const { title, link } = this.props
+    const { title, link, source } = this.props
     const { text } = this.state
     return (
       <CheckinComponent
@@ -240,13 +257,14 @@ class EnergyLevelsCheckinContainer extends React.Component<
         link={link}
         onLinkPress={this.onLinkPress}
         text={text}
+        source={source}
       />
     )
   }
 }
 
 export default compose(
-  connect(null, mapDispatchToProps),
+  connect(mapStateToProps, mapDispatchToProps),
   toolDataProvider,
   mapProps(merge)
 )(EnergyLevelsCheckinContainer)

@@ -22,12 +22,16 @@ type Props = {
   toolData: any,
   stepData: any,
   goToTool: () => void,
+  step: any,
 }
 
 const mapStateToProps = (state: any) => {
   const getDataForStepAndTool = selectors.awardDataForTool(state)
+  const steps = selectors.steps(state)
+  const step = steps[stepEnum.STEP_2]
   return {
     getDataForStepAndTool,
+    step,
   }
 }
 
@@ -38,7 +42,7 @@ const mapDispatchToProps = (dispatch: any) => ({
 })
 
 const merge = (props: Props): ComponentProps => {
-  const { tool, stepData, goToTool, getDataForStepAndTool } = props
+  const { tool, stepData, goToTool, getDataForStepAndTool, step } = props
 
   const dailyToolData = getDataForStepAndTool({
     tool,
@@ -46,6 +50,9 @@ const merge = (props: Props): ComponentProps => {
   const weeklyToolData = getDataForStepAndTool({
     tool: { key },
   })
+
+  const { icon } = step
+  const source = icon && icon.uri
 
   const formDataStep2 = stepData[stepEnum.STEP_2]
 
@@ -81,6 +88,7 @@ const merge = (props: Props): ComponentProps => {
     idealTimestamp,
     idealWeek,
     value: comparableToolValue,
+    source,
   }
 }
 
@@ -92,6 +100,7 @@ type ContainerProps = {
   onLinkPress: () => void,
   value: any,
   idealWeek: any,
+  source: string,
 }
 
 type State = {
@@ -108,7 +117,7 @@ class TimebugCheckinContainer extends React.Component<ContainerProps, State> {
     const { text: nextText } = nextState
     if (text !== nextText) return true
     if (timestamp !== nextTimestamp) return true
-    if(idealTimestamp !== nextIdeal) return true
+    if (idealTimestamp !== nextIdeal) return true
     return false
   }
 
@@ -130,7 +139,8 @@ class TimebugCheckinContainer extends React.Component<ContainerProps, State> {
   componentDidUpdate(prevProps) {
     const { timestamp, idealTimestamp } = this.props
     const { timestamp: oldTimestamp, idealTimestamp: oldIdeal } = prevProps
-    if (timestamp !== oldTimestamp || idealTimestamp !== oldIdeal) this.setText()
+    if (timestamp !== oldTimestamp || idealTimestamp !== oldIdeal)
+      this.setText()
   }
 
   componentDidMount() {
@@ -143,7 +153,7 @@ class TimebugCheckinContainer extends React.Component<ContainerProps, State> {
   }
 
   render() {
-    const { title, link } = this.props
+    const { title, link, source } = this.props
     const { text } = this.state
     return (
       <CheckinComponent
@@ -151,6 +161,7 @@ class TimebugCheckinContainer extends React.Component<ContainerProps, State> {
         link={link}
         onLinkPress={this.onLinkPress}
         text={text}
+        source={source}
       />
     )
   }

@@ -74,6 +74,8 @@ const merge = (props: Props): ComponentProps => {
   const title = 'Your goals'
   const goToFormFun = goToForm(step)
 
+  const { icon } = step
+  const source = icon && icon.uri
   const goalsWithToolData = toolData
     ? goals.map(goal => {
       const toolValueForGoal =
@@ -115,6 +117,7 @@ const merge = (props: Props): ComponentProps => {
       text: 'You have no goals to display right now, try adding some!',
       link: 'Press here to create new goals',
       onLinkPress: goToFormFun,
+      source,
     }
 
   const goalTitle = goal[goalFormKeys.form_5_recent_life_goals].value || ''
@@ -145,6 +148,7 @@ const merge = (props: Props): ComponentProps => {
     text,
     link,
     onLinkPress,
+    source,
   }
 }
 
@@ -153,6 +157,7 @@ type ContainerProps = {
   link: string,
   title: string,
   text: string,
+  source: string,
 }
 
 class GoalsCheckinContainer extends React.PureComponent<ContainerProps> {
@@ -162,13 +167,14 @@ class GoalsCheckinContainer extends React.PureComponent<ContainerProps> {
   }
 
   render() {
-    const { link, title, text } = this.props
+    const { link, title, text, source } = this.props
     return (
       <CheckinComponent
         link={link}
         title={title}
         text={text}
         onLinkPress={this.onLinkPress}
+        source={source}
       />
     )
   }

@@ -1,6 +1,7 @@
 // @flow
 import React                            from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
+import CustomImage                      from '2020_components/CustomImage'
 import styles                           from '../styles'
 
 export type Props = {
@@ -8,20 +9,26 @@ export type Props = {
   text: string,
   link?: string,
   onLinkPress?: () => void,
+  source: string,
 }
 
 class CheckinComponent extends React.PureComponent<Props> {
   render() {
-    const { title, text, link } = this.props
+    const { title, text, link, source } = this.props
     return (
       <View style={styles.checkinContainer}>
-        <Text style={styles.checkinTitle}>{title}</Text>
-        <Text style={styles.checkinText}>{text}</Text>
-        {link && (
-          <TouchableOpacity onPress={this.props.onLinkPress}>
-            <Text style={styles.link}>{link}</Text>
-          </TouchableOpacity>
-        )}
+        <View style={styles.checkinTextContainer}>
+          <Text style={styles.checkinTitle}>{title}</Text>
+          <Text style={styles.checkinText}>{text}</Text>
+          {link && (
+            <TouchableOpacity onPress={this.props.onLinkPress}>
+              <Text style={styles.link}>{link}</Text>
+            </TouchableOpacity>
+          )}
+        </View>
+        <View style={styles.container}>
+          {source && <CustomImage style={styles.stepIcon} source={source} />}
+        </View>
       </View>
     )
   }

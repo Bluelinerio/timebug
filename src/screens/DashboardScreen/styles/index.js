@@ -75,10 +75,9 @@ export default StyleSheet.create({
   },
   checkinContainer: {
     minWidth: '100%',
-    flexDirection: 'column',
+    flexDirection: 'row',
     backgroundColor: transparentCyan,
     marginVertical: 10,
-    padding: 8,
   },
   checkinTitle: {
     ...iOSUIKit.subheadEmphasizedObject,
@@ -103,5 +102,13 @@ export default StyleSheet.create({
   },
   chartContainer: {
     marginHorizontal: 8,
+  },
+  stepIcon: {
+    height: 70,
+    width: 70,
+  },
+  checkinTextContainer: {
+    flex: 3,
+    padding: 8,
   },
 })
