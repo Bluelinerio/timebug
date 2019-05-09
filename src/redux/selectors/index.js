@@ -1,5 +1,6 @@
 // @flow
 import R                                         from 'ramda'
+import moment                                    from 'moment'
 import {
   getUserState,
   getCms,
@@ -117,6 +118,11 @@ const completedStepIds = (state: any): [string] =>
 
 const formWithStepId = (state: any) => (stepId: string): Form =>
   completedForms(state).find(f => f.stepId === stepId)
+
+const mostRecentlyCompletedStep = (state: any): Form =>
+  completedForms(state).sort(
+    (a, b) => -moment(a.createdAt).diff(b.createdAt)
+  )[0]
 
 // form data
 const formData = (state: any) => getFormData(state).data
@@ -470,6 +476,7 @@ const selectors = {
   getCompletedSteps,
   storedToolData,
   allToolData,
+  mostRecentlyCompletedStep,
 }
 
 export default selectors

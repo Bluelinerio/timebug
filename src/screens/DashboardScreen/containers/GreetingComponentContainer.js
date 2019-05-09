@@ -19,16 +19,19 @@ type Props = {
   completedStepIds: Array<string>,
   steps: any,
   onLink: Step => void,
+  mostRecent: Step,
 }
 
 const mapStateToProps = (state: any) => {
   const user = selectors.user(state)
   const completedStepIds = selectors.completedStepIds(state)
   const steps = selectors.steps(state)
+  const mostRecent = selectors.mostRecentlyCompletedStep(state)
   return {
     user,
     completedStepIds,
     steps,
+    mostRecent,
   }
 }
 
@@ -55,7 +58,7 @@ const firstName = user =>
   user ? (user.name ? user.name.split(' ')[0] : '') : ''
 
 const merge = (props: Props): GreetingComponentProps => {
-  const { user, completedStepIds, steps, onLink } = props
+  const { user, completedStepIds, steps, onLink, mostRecent } = props
   if (!user) return {}
   const missingStep = Object.values(steps).find(
     step => completedStepIds.indexOf(step.number) === -1
@@ -63,10 +66,11 @@ const merge = (props: Props): GreetingComponentProps => {
   const name = firstName(user)
   const onPress = () => onLink(missingStep)
   const greeting = getGreeting()
+  const mostRecentStep = mostRecent.stepId
   return {
     name,
     stepTitle: missingStep.title,
-    stepNumber: missingStep.number,
+    stepNumber: mostRecentStep,
     onPress,
     greeting,
   }

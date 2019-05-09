@@ -1,4 +1,5 @@
 // @flow
+import moment from 'moment'
 import {
   SUBMIT_FORM_VALUE,
   INCREMENT_FORM_DATA_QUEUE,
@@ -57,6 +58,11 @@ const populate = (
       [stepId]: {
         ...(data[stepId] || null),
         value,
+        createdAt:
+          data[stepId] && data[stepId].createdAt
+            ? data[stepId].createdAt
+            : moment().format(),
+        updatedAt: moment().format(),
         timeStamp: Date.now(),
       },
     },
@@ -166,13 +172,34 @@ const migrations = {
       },
     }
   },
+  5: state => {
+    const stepData = state.data
+    const fixedStepData = Object.keys(stepData).reduce((newObject, key) => {
+      const data = stepData[key]
+      return {
+        ...newObject,
+        [key]: {
+          ...data,
+          createdAt: moment().format(),
+          updatedAt: moment().format(),
+        },
+      }
+    }, {})
+    return {
+      ...state,
+      data: {
+        ...stepData,
+        ...fixedStepData,
+      },
+    }
+  },
 }
 
 const persistConfig = {
   key: 'formData',
   storage: storage,
   blacklist: ['requestCount', 'loadingFormData'],
-  version: 4,
+  version: 5,
   migrate: createMigrate(migrations, { debug: true }),
 }
 
