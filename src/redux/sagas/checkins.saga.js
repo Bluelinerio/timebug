@@ -19,6 +19,7 @@ import {
   TOGGLE_CHECKIN,
   CHECKIN_NOTIFICATION,
   EDIT_CHECKIN,
+  UPDATE_OR_CREATE_CHECKIN,
 }                                    from '../actionTypes'
 import { GET_USER }                  from '../actions/user.actions'
 import { FETCH_CMS }                 from '../actions/cms.actions'
@@ -39,6 +40,7 @@ import type {
   ToggleCheckinPayload,
   CheckinNotificationPayload,
   EditCheckinPayload,
+  NotificationUpdateOrCreatePayload,
 }                                    from '../actions/checkin.actions'
 import { linkNavigation }            from '../actions/nav.actions'
 import selectors                     from '../selectors'
@@ -106,6 +108,44 @@ function* setUpNotificationAndUpdateCheckin({
   )
 }
 
+function* _handleCheckinNotificationUpdateOrCreate({
+  payload,
+}: NotificationUpdateOrCreatePayload) {
+  const { step, toolKey, action, ...rest } = payload
+
+  const checkins = yield select(selectors.getCheckins)
+  const currentCheckin = checkins[`${step}`][`${toolKey}`]
+
+  const notificationId = `${toHashCode(toolKey)}`
+  const notifications = yield select(selectors.notifications)
+
+  const notification = notifications.find(n => n.id === notificationId)
+
+  if (notification) {
+    delete currentCheckin.id
+    delete currentCheckin.nextCheckin
+    yield put(
+      editCheckin({
+        number: step,
+        checkin: {
+          ...currentCheckin,
+          ...rest,
+        },
+        notification,
+      })
+    )
+  }
+  else
+    yield put(
+      changeCheckin({
+        step,
+        toolKey,
+        action,
+        ...rest,
+      })
+    )
+}
+
 function* handleRemoveCheckin({ payload }: DeleteCheckinPayload) {
   const { tool } = payload
   const id = `${toHashCode(tool)}`
@@ -128,30 +168,30 @@ function* toggleNotification({ payload }: ToggleCheckinPayload) {
     const id = `${toHashCode(toolKey)}`
     yield put(removeNotification({ id }))
   } else {
-    yield put(changeCheckin({ ...checkin, step: `${step}` }))
+    yield put(changeCheckin({ ...checkin, step: step }))
   }
 }
 
 function* _handleCheckinEdition({ payload }: { payload: EditCheckinPayload }) {
   const { checkin, number, notification } = payload
   const { toolKey, message, action, frequency, ...rest } = checkin
-  const { scheduledDate: notificationTime } = notification
-
+  let notificationTime = notification ? notification.scheduledDate : null
   const id = `${toHashCode(toolKey)}`
 
-  const oldFrequency = R.view(
+  const oldFrequency = notification ? R.view(
     R.lensPath(['data', 'additionalProps', 'data', 'frequency']),
     notification
-  )
+  ) : null
 
-  const oldRepeatTime = R.view(R.lensPath(['data', 'repeatTime']), notification)
+  const oldRepeatTime = notification ? R.view(R.lensPath(['data', 'repeatTime']), notification) : null
 
   let repeatTime = oldRepeatTime
 
-  if (frequency !== oldFrequency) {
+  if (!notification || frequency !== oldFrequency) {
     /* eslint-disable-next-line no-unused-vars */
-    const [_, newRepeatTime] = yield call(calculateNextCheckin, frequency)
+    const [time, newRepeatTime] = yield call(calculateNextCheckin, frequency)
     repeatTime = newRepeatTime
+    notificationTime = time
   }
   const additionalProps = {
     type: notificationTypes.CHECKIN_NOTIFICATION,
@@ -276,7 +316,7 @@ function* _setInitialNotifications() {
                       ]),
                       n
                     )
-                    return key || key === checkin.toolKey
+                    return key && key === checkin.toolKey
                   }) || null
               return [
                 ...checkinsToChange,
@@ -332,6 +372,14 @@ function* watchForCheckinsDeletion() {
   }
 }
 
+function* watchForCheckinsUpdateOrCreate() {
+  const channel = yield actionChannel(UPDATE_OR_CREATE_CHECKIN)
+  while (true) {
+    const action: { payload: NotificationUpdateOrCreatePayload } = yield take(channel)
+    yield call(_handleCheckinNotificationUpdateOrCreate, action)
+  }
+}
+
 export function* _handleCheckinNotification({
   payload,
 }: CheckinNotificationPayload) {
@@ -374,4 +422,5 @@ export function* watchForCheckinsSaga() {
   yield fork(watchForNotificationToggling)
   yield fork(watchForInitialNotifications)
   yield fork(watchForCheckinNotifications)
+  yield fork(watchForCheckinsUpdateOrCreate)
 }
