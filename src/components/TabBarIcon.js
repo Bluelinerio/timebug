@@ -1,6 +1,7 @@
 //@flow
 import React    from 'react'
 import Ionicons from 'react-native-vector-icons/Ionicons'
+import SvgIcon  from './SvgIcon'
 import routes   from '../navigation/routes'
 
 type TabBarIconProps = {
@@ -12,7 +13,7 @@ type TabBarIconProps = {
 const mapRouteToIcon = routeName => {
   switch (routeName) {
   case routes.tab.RootNavigator:
-    return `ios-pin`
+    return `ios-book`
   case routes.tab.MeditationScreen:
     return `ios-options`
   case routes.tab.ToolFlow:
@@ -22,7 +23,7 @@ const mapRouteToIcon = routeName => {
   case routes.tab.GoalsNavigator:
     return `ios-checkmark`
   case routes.tab.DashboardScreen:
-    return `ios-book`
+    return `ios-home`
   default:
     return
   }
@@ -30,6 +31,9 @@ const mapRouteToIcon = routeName => {
 
 const TabBarIcon = ({ routeName, focused, tintColor }: TabBarIconProps) => {
   const iconName = mapRouteToIcon(routeName, focused)
+  if (routeName === routes.tab.RootNavigator) {
+    return <SvgIcon name={'Book'} fill={tintColor} width={25} height={25} />
+  }
   return (
     <Ionicons
       name={iconName}

@@ -37,6 +37,7 @@ const merge = (props: Props): ComponentProps => {
     energyLevelsTool,
     goalsTool,
     timebugTool,
+    tools,
   }
 }
 
