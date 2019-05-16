@@ -1,11 +1,10 @@
 // @flow
-import React from 'react'
+import React                from 'react'
 import { View, ScrollView } from 'react-native'
-import { SafeAreaView } from 'react-navigation'
-
-import CheckinList from '../containers/CheckinList'
-import styles from '../styles'
-import Banner from '../../../components/MinifiedBanner'
+import { SafeAreaView }     from 'react-navigation'
+import CheckinList          from '../containers/CheckinList'
+import styles               from '../styles'
+import Banner               from '../../../components/MinifiedBanner'
 
 class CheckinScreenComponent extends React.PureComponent<any> {
   render() {
@@ -23,7 +22,7 @@ class CheckinScreenComponent extends React.PureComponent<any> {
           </ScrollView>
         </View>
       </SafeAreaView>
-    );
+    )
   }
 }
 

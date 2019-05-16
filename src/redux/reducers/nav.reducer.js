@@ -5,25 +5,20 @@ import {
   RootTabNavigator,
   tabConfiguration,
 } from '../../navigation'
+import { NavigationActions } from 'react-navigation'
+import tron from 'reactotron-react-native'
 
 const initialRouteState = StartNavigator.router.getStateForAction(
-  StartNavigator.router.getActionForPathAndParams(
-    startConfiguration.routes.initialRouteName
-  ),
-)
-
-const dashboardState = StartNavigator.router.getStateForAction(
-  RootTabNavigator.router.getActionForPathAndParams(
-    tabConfiguration.routes.initialRouteName
-  ),
-  initialRouteState
+  NavigationActions.navigate({
+    routeName: startConfiguration.routes.initialRouteName,
+  })
 )
 
 const walkthroughState = StartNavigator.router.getStateForAction(
   StartNavigator.router.getActionForPathAndParams(
     startConfiguration.routes.Walkthrough
   ),
-  dashboardState
+  initialRouteState
 )
 
 if (!initialRouteState || !walkthroughState) {
@@ -46,7 +41,7 @@ const persistConfig = {
   version: thisVersion,
   migrate: (state, version) => {
     if (state) {
-      return Promise.resolve(dashboardState)
+      return Promise.resolve(initialRouteState)
     }
     return Promise.resolve(state)
   },

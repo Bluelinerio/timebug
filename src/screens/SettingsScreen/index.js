@@ -1,3 +1,3 @@
-import SettinsScreen from './containers/SettingsScreenContainer'
+import SettingsScreen from './containers/SettingsScreenContainer'
 
-export default SettinsScreen
+export default SettingsScreen

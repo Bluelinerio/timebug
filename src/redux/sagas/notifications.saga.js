@@ -7,8 +7,8 @@ import {
   actionChannel,
   take,
   put,
-}                              from 'redux-saga/effects'
-import selectors               from '../selectors'
+} from 'redux-saga/effects'
+import selectors from '../selectors'
 import {
   CANCEL_ALL_NOTIFICATIONS,
   ON_NOTIFICATION,
@@ -16,21 +16,22 @@ import {
   UPDATE_NOTIFICATION,
   REMOVE_NOTIFICATION,
   STORE_LOADED,
-}                              from '../actionTypes'
+  TRIGGER_NOTIFICATION,
+} from '../actionTypes'
 import NotificationService, {
   notificationTypes,
-}                              from '../../services/notifications'
+} from '../../services/notifications'
 import {
   notificationScheduled,
   notificationRemoved,
-}                              from '../actions/notifications.actions'
+} from '../actions/notifications.actions'
 import type {
   CreateNotificationPayload,
   OnNotificationPayload,
   RemoveNotificationPayload,
-}                              from '../actions/notifications.actions'
+} from '../actions/notifications.actions'
 import { checkinNotification } from '../actions/checkin.actions'
-import { goalNotification }    from '../actions/goals.actions'
+import { goalNotification } from '../actions/goals.actions'
 
 function* clearNotifications() {
   yield call(NotificationService.cancelAll)
@@ -68,6 +69,21 @@ function* scheduleNotification({
       additionalProps,
       title,
     })
+  )
+}
+
+function* triggerNotification({ payload }: any) {
+  const { notificationId } = payload
+  const notifications = yield select(selectors.notifications)
+  const notification = notifications.find(n => n.id === notificationId)
+  const { data } = notification
+  const { message, additionalProps } = data
+  const title = 'Lifevision'
+  yield call(
+    NotificationService.showNotification,
+    message,
+    title,
+    additionalProps
   )
 }
 
@@ -120,6 +136,7 @@ function* watchForNotificationDeletion() {
 function* watchForNotificationHelpers() {
   yield takeLatest(CANCEL_ALL_NOTIFICATIONS, clearNotifications)
   yield takeLatest(ON_NOTIFICATION, onNotification)
+  yield takeLatest(TRIGGER_NOTIFICATION, triggerNotification)
   yield fork(watchForNotificationDeletion)
   yield fork(watchForNotificationScheduling)
 }

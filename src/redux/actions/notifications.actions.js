@@ -6,6 +6,7 @@ import {
   REMOVE_NOTIFICATION,
   SCHEDULED_NOTIFICATION,
   REMOVED_NOTIFICATION,
+  TRIGGER_NOTIFICATION,
 } from '../actionTypes'
 
 type OnNotificationPayload = {
@@ -57,12 +58,19 @@ export const removeNotification = (payload: RemoveNotificationPayload) => ({
   payload,
 })
 
-export const notificationScheduled = (payload: ScheduleNotificationPayload) => ({
+export const notificationScheduled = (
+  payload: ScheduleNotificationPayload
+) => ({
   type: SCHEDULED_NOTIFICATION,
   payload,
 })
 
 export const notificationRemoved = (payload: NotificationRemovedPayload) => ({
   type: REMOVED_NOTIFICATION,
+  payload,
+})
+
+export const triggerNotification = (payload: { notificationId: string }) => ({
+  type: TRIGGER_NOTIFICATION,
   payload,
 })

@@ -1,5 +1,5 @@
 //@flow
-import React         from 'react'
+import React from 'react'
 import {
   View,
   Text,
@@ -7,27 +7,27 @@ import {
   TouchableOpacity,
   Switch,
   StatusBar,
-}                    from 'react-native'
+} from 'react-native'
 import ModalSelector from 'react-native-modal-selector'
-import moment        from 'moment'
+import moment from 'moment'
 import {
   frequencies,
   DAILY,
   WEEKLY,
   BIWEEKLY,
   MONTHLY,
-}                    from '../../../services/checkins'
+} from '../../../services/checkins'
 import type {
   CheckinChangePayload,
   ToggleCheckinPayload,
-}                    from '../../../redux/actions/checkin.actions'
-import styles        from '../styles'
+} from '../../../redux/actions/checkin.actions'
+import styles from '../styles'
 import checkinStyles from '../styles/CheckinStyles'
-import CustomImage   from '../../../components/CustomImage'
+import CustomImage from '../../../components/CustomImage'
 import {
   getColorForStepAtIndex,
   getTextColorForStepAtIndex,
-}                    from '../../MyJourneyScreen/utils/colorsForStep'
+} from '../../MyJourneyScreen/utils/colorsForStep'
 
 export type CheckinElementProps = {
   checkin: {
@@ -46,6 +46,7 @@ export type CheckinElementProps = {
   },
   stepColors: any,
   user: any,
+  disableLink?: boolean,
 }
 
 const operateWithLastCheckin = (
@@ -173,7 +174,7 @@ class CheckinElement extends React.PureComponent<CheckinElementProps> {
   }
 
   render() {
-    const { checkin } = this.props
+    const { checkin, disableLink = true } = this.props
     const {
       text,
       title,
@@ -216,7 +217,7 @@ class CheckinElement extends React.PureComponent<CheckinElementProps> {
             <View style={checkinStyles.buttonTextContainer}>
               <View style={checkinStyles.titleWrapper}>
                 <TouchableOpacity
-                  onPress={onLink}
+                  onPress={disableLink ? () => null : onLink}
                   style={styles.pressableTitleWrapper}
                 >
                   <View>

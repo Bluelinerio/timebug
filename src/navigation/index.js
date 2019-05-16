@@ -2,40 +2,39 @@
 /* eslint-disable react/display-name */
 
 // @flow
-import React              from 'react'
-import { Platform }       from 'react-native'
+import React                 from 'react'
+import { Platform }          from 'react-native'
 import {
   StackNavigator,
   NavigationActions,
   TabNavigator,
   TabBarBottom,
-}                         from 'react-navigation'
+}                            from 'react-navigation'
 import {
   tabBarBackground,
   tabBarButtonColor,
   tabBarUnselected,
-}                         from '../constants/colors'
-import TabBarIcon         from '../components/TabBarIcon'
-import TabBarLabel        from '../components/TabBarLabel'
-import HomeScreen         from '../screens/HomeScreen'
-import StepScreen         from '../screens/StepScreen'
-import WorkbookDoneScreen from '../screens/WorkbookDoneScreen'
-import WorkbookScreen     from '../screens/WorkbookScreen'
-import WalkthroughScreen  from '../screens/WalkthroughScreen'
-import DashboardScreen    from '../screens/DashboardScreen'
-// import CheckinScreen      from '../screens/CheckinScreen'
-import SettingsScreen     from '../screens/SettingsScreen'
-import MarkdownScreen     from '../screens/MarkdownScreen'
-import EmojiPickerScreen  from '../screens/EmojiPickerScreen'
-import ToolScreen         from '../screens/MyJourneyScreen'
-import ToolworkScreen     from '../screens/ToolworkScreen'
-import StartScreen        from '../screens/StartScreen'
-import GoalScreen         from '../screens/GoalScreen'
-import GoalStepScreen     from '../screens/GoalStepScreen'
-import AppVersionScreen   from '../screens/AppVersionSelectionScreen'
-import V2WorkbookScreen   from '../screens/v.2.0/WorkbookScreen'
-import HelpScreen         from '../screens/HelpScreen'
-import LoginScreen        from '../screens/LoginScreen'
+}                            from '../constants/colors'
+import TabBarIcon            from '../components/TabBarIcon'
+import TabBarLabel           from '../components/TabBarLabel'
+import HomeScreen            from '../screens/HomeScreen'
+import StepScreen            from '../screens/StepScreen'
+import WorkbookDoneScreen    from '../screens/WorkbookDoneScreen'
+import WorkbookScreen        from '../screens/WorkbookScreen'
+import WalkthroughScreen     from '../screens/WalkthroughScreen'
+import DashboardScreen       from '../screens/DashboardScreen'
+import SettingsTabScreen     from '../screens/SettingsParentContainer'
+import MarkdownScreen        from '../screens/MarkdownScreen'
+import EmojiPickerScreen     from '../screens/EmojiPickerScreen'
+import ToolScreen            from '../screens/MyJourneyScreen'
+import ToolworkScreen        from '../screens/ToolworkScreen'
+import StartScreen           from '../screens/StartScreen'
+import GoalScreen            from '../screens/GoalScreen'
+import GoalStepScreen        from '../screens/GoalStepScreen'
+import AppVersionScreen      from '../screens/AppVersionSelectionScreen'
+import V2WorkbookScreen      from '../screens/v.2.0/WorkbookScreen'
+import HelpScreen            from '../screens/HelpScreen'
+import LoginScreen           from '../screens/LoginScreen'
 
 // TODO: Prototype to remove
 import PrototypeNavigator from '../screens/PrototypeScreen'
@@ -266,7 +265,7 @@ export const startConfiguration = {
       screen: LoginScreen,
     },
     [routes.start.SettingsScreen]: {
-      screen: SettingsScreen,
+      screen: SettingsTabScreen,
     },
   },
   options: {
