@@ -122,7 +122,7 @@ const formWithStepId = (state: any) => (stepId: string): Form =>
 const mostRecentlyCompletedStep = (state: any): Form =>
   completedForms(state).sort(
     (a, b) => -moment(a.createdAt).diff(b.createdAt)
-  )[0]
+  )[0] || {}
 
 // form data
 const formData = (state: any) => getFormData(state).data
