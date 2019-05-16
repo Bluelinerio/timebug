@@ -68,7 +68,17 @@ const mergeSubstepFormDataWithToolData = (
 const merge = (props: Props): ComponentProps => {
   const { tool, step, stepData, toolData, goToForm, goToTool } = props
 
-  const goals = stepData[stepEnum.STEP_5].value
+  const goals = stepData[stepEnum.STEP_5] ? stepData[stepEnum.STEP_5].value : []
+
+  if (goals.length === 0)
+    return {
+      title,
+      text: 'You have no goals to display right now, try adding some!',
+      link: 'Press here to create new goals',
+      onLinkPress: goToFormFun,
+      source,
+    }
+
   const toolValue = toolData && toolData.value ? toolData.value : []
 
   const title = 'Your goals'

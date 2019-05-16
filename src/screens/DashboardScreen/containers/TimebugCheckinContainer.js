@@ -55,6 +55,8 @@ const merge = (props: Props): ComponentProps => {
   const source = icon && icon.uri
 
   const formDataStep2 = stepData[stepEnum.STEP_2]
+    ? stepData[stepEnum.STEP_2]
+    : {}
 
   const dailyToolValue = dailyToolData ? dailyToolData.value : []
   const dailyToolTimeStamp = dailyToolData ? dailyToolData.timestamp : null
@@ -123,6 +125,11 @@ class TimebugCheckinContainer extends React.Component<ContainerProps, State> {
 
   setText = () => {
     const { idealWeek, value } = this.props
+    if (!idealWeek) {
+      const text = `It appears we do not have enough data yet, use the timebug tool to track your time and enhance your productivity!`
+      this.setState({ text })
+      return
+    }
     const randomIndex = Math.floor(
       Math.random() * Object.keys(idealWeek).length
     )

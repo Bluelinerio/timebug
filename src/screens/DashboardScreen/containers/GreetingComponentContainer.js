@@ -66,12 +66,10 @@ const merge = (props: Props): GreetingComponentProps => {
   const name = firstName(user)
   const onPress = () => onLink(missingStep)
   const greeting = getGreeting()
-  const mostRecentStep = mostRecent.stepId
+  const mostRecentStep = mostRecent ? mostRecent.stepId : null
   const text = mostRecentStep
-    ? `You last completed step #${mostRecentStep}. For your next step we
-  suggest: `
-    : `Welcome to the 2020 lifevision journe. For your first step we
-  suggest: `
+    ? `You last completed step #${mostRecentStep}. For your next step we suggest: `
+    : `Welcome to the 2020 lifevision journey. For your first step we suggest: `
   return {
     name,
     stepTitle: missingStep.title,

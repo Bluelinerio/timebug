@@ -184,6 +184,7 @@ const _getIdealWeek = (disable = false) => {
   let lastTimestamp = null
   let lastValue = null
   return (formData: { value: Array<any>, timeStamp: number }) => {
+    if(!formData) return null
     const { value, timeStamp } = formData
 
     const actualValue = value && value.length > 0 ? value[0] : null
