@@ -5,11 +5,15 @@ import {
   DENIED,
   UNDETERMINED,
   NEVER_ASK_AGAIN,
-} from '2020_constants/constants'
+}                                            from '2020_constants/constants'
+import {
+  SEND_EMAIL_NOTIFICATIONS,
+  SEND_PUSH_NOTIFICATIONS,
+}                                            from '2020_constants/permissions'
 import {
   AddPermissionPayload,
   RemovePermissionPayload,
-} from '../actions/permissions.actions'
+}                                            from '../actions/permissions.actions'
 
 export type Permission = {
   name: string,
@@ -21,7 +25,7 @@ export type PermissionsState = {
 }
 
 export const initialState = {
-  permissions: [],
+  permissions: [SEND_EMAIL_NOTIFICATIONS, SEND_PUSH_NOTIFICATIONS],
 }
 
 const addPermission = (
@@ -70,13 +74,14 @@ import { persistReducer, createMigrate } from 'redux-persist'
 
 const migrations = {
   0: state => state,
+  1: () => initialState,
 }
 
 const persistConfig = {
   key: 'permissions',
   storage: storage,
   blacklist: [],
-  version: 0,
+  version: 1,
   migrate: createMigrate(migrations, { debug: true }),
 }
 
