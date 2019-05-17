@@ -1,5 +1,5 @@
 // @flow
-import { StyleSheet }                          from 'react-native'
+import { StyleSheet, Platform }                          from 'react-native'
 import { iOSUIKit }                            from 'react-native-typography'
 import { paleBlue, darkBlue, transparentCyan } from '2020_constants/colors'
 import { widthPercentage }                     from '2020_utils/viewportCalculation'
@@ -9,6 +9,7 @@ export const cellsWidth = widthPercentage(90)
 export default StyleSheet.create({
   container: {
     flex: 1,
+    paddingTop: 20,
   },
   scroll: {
     flexGrow: 1,
@@ -37,6 +38,7 @@ export default StyleSheet.create({
     ...iOSUIKit.title3EmphasizedObject,
     fontSize: 18,
     color: darkBlue,
+    fontFamily: 'Metropolis',
   },
   greetingSub: {
     ...iOSUIKit.footnoteEmphasizedObject,
@@ -78,6 +80,18 @@ export default StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: transparentCyan,
     marginVertical: 10,
+    borderRadius: 4,
+    borderWidth: 1,
+    ...Platform.select({
+      android: { elevation: 3 },
+      ios: {
+        shadowOffset:{  width: 3,  height: 3,  },
+        shadowColor: darkBlue,
+       shadowOpacity: .3,
+      },
+    }),
+    borderColor: darkBlue,
+   
   },
   checkinTitle: {
     ...iOSUIKit.subheadEmphasizedObject,
