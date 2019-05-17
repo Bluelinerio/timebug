@@ -39,7 +39,7 @@ const mapDispatchToProps = (dispatch: any) => ({
 const merge = (props: Props) => {
   const { hasPermission, setPermission } = props
 
-  const text = 'Allow Email Notifications'
+  const text = 'Allow Push Notifications'
 
   const value = hasPermission
 

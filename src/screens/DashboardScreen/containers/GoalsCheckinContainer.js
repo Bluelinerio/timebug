@@ -15,8 +15,8 @@ import type { GoToToolParams }            from '2020_redux/actions/nav.actions'
 import { translateCMSPhaseToStandard }    from '2020_services/cms'
 import { stepEnum }                       from '2020_services/cms'
 import type { Step }                      from '2020_services/cms'
-import type { Props as ComponentProps }   from '../components/CheckinComponent'
-import CheckinComponent                   from '../components/CheckinComponent'
+import type { Props as ComponentProps }   from '../components/GoalCheckinComponent'
+import CheckinComponent                   from '../components/GoalCheckinComponent'
 
 type Props = {
   tool: any,
@@ -70,6 +70,12 @@ const merge = (props: Props): ComponentProps => {
 
   const goals = stepData[stepEnum.STEP_5] ? stepData[stepEnum.STEP_5].value : []
 
+  const title = 'Your goals'
+  const goToFormFun = goToForm(step)
+
+  const { icon } = step
+  const source = icon && icon.uri
+
   if (goals.length === 0)
     return {
       title,
@@ -81,11 +87,6 @@ const merge = (props: Props): ComponentProps => {
 
   const toolValue = toolData && toolData.value ? toolData.value : []
 
-  const title = 'Your goals'
-  const goToFormFun = goToForm(step)
-
-  const { icon } = step
-  const source = icon && icon.uri
   const goalsWithToolData = toolData
     ? goals.map(goal => {
       const toolValueForGoal =
@@ -153,12 +154,16 @@ const merge = (props: Props): ComponentProps => {
   const link = `Open this goal now`
   const onLinkPress = goToTool({ tool, payload: { goalId: goal._id } })
 
+  const formLink = `Press here to create a new goals!`
+
   return {
     title,
     text,
     link,
     onLinkPress,
     source,
+    formLink,
+    onFormLinkPress: goToFormFun,
   }
 }
 
