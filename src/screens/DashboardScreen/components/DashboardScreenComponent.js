@@ -31,7 +31,7 @@ class StartScreenComponent extends PureComponent<Props> {
           <View style={styles.header}>
             <Banner />
           </View>
-          <View style={[styles.container, styles.background]}>
+          <View style={[styles.container, styles.background, styles.mainDashboardContainer]}>
             <View style={[styles.container, styles.contentContainer]}>
               {isLogged ? (
                 <React.Fragment>

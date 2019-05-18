@@ -1,5 +1,5 @@
 // @flow
-import { StyleSheet, Platform }                          from 'react-native'
+import { StyleSheet, Platform }                from 'react-native'
 import { iOSUIKit }                            from 'react-native-typography'
 import { paleBlue, darkBlue, transparentCyan } from '2020_constants/colors'
 import { widthPercentage }                     from '2020_utils/viewportCalculation'
@@ -9,6 +9,8 @@ export const cellsWidth = widthPercentage(90)
 export default StyleSheet.create({
   container: {
     flex: 1,
+  },
+  mainDashboardContainer: {
     paddingTop: 20,
   },
   scroll: {
@@ -85,13 +87,12 @@ export default StyleSheet.create({
     ...Platform.select({
       android: { elevation: 3 },
       ios: {
-        shadowOffset:{  width: 3,  height: 3,  },
+        shadowOffset: { width: 3, height: 3 },
         shadowColor: darkBlue,
-       shadowOpacity: .3,
+        shadowOpacity: 0.3,
       },
     }),
     borderColor: darkBlue,
-   
   },
   checkinTitle: {
     ...iOSUIKit.subheadEmphasizedObject,
