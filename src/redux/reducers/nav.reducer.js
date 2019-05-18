@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+// TODO-RRN: Remove from redux react navigation
 import {
   startConfiguration,
   StartNavigator,

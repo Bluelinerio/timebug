@@ -2,8 +2,9 @@
 import { connect }                         from 'react-redux'
 import { compose }                         from 'recompose'
 import { withNavigation }                  from 'react-navigation'
-import OptionButton, { OptionButtonProps } from '../components/OptionButton'
+import mapNavigationDispatch               from '2020_HOC/NavigationServiceHOC'
 import { goToLogin }                       from '2020_redux/actions/nav.actions'
+import OptionButton, { OptionButtonProps } from '../components/OptionButton'
 import styles                              from '../styles'
 import {
   getColorForStepAtIndex,
@@ -84,8 +85,7 @@ const merge = (
   ownProps: OptionButtonContainerProps
 ): OptionButtonProps => {
   const { user, selected } = stateProps
-  const { stepColors, step, navigation, _version } = ownProps
-  const { login } = dispatchProps
+  const { stepColors, step, navigation, _version, login } = ownProps
 
   const { number, title, icon, snippet, audio } = step
 
@@ -143,5 +143,6 @@ export default compose(
   withNavigation,
   AppVersionHOC,
   ModelHOC,
-  connect(mapStateToProps, mapDispatchToProps, merge)
+  mapNavigationDispatch(mapDispatchToProps),
+  connect(mapStateToProps, null, merge)
 )(OptionButton)

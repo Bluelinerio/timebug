@@ -21,7 +21,6 @@ class ToolRedirect extends React.PureComponent<ToolRedirectProps> {
       'didFocus',
       () => this._onPress()
     )
-    this._onPress()
   }
 
   componentWillUnmount() {

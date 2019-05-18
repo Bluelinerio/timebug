@@ -1,5 +1,5 @@
 // @flow
-import { StackNavigator }        from 'react-navigation'
+import { createStackNavigator }        from 'react-navigation'
 import StepSelectionScreen       from './StepSelectionScreen'
 import WorkbookScreen            from './WorkbookScreen'
 import { protoRoutes as routes } from '../../navigation/routes'
@@ -26,7 +26,7 @@ export const PrototypeNavigatorConfiguration = {
   },
 }
 
-const Navigator = StackNavigator(
+const Navigator = createStackNavigator(
   PrototypeNavigatorConfiguration.screens,
   PrototypeNavigatorConfiguration.options
 )

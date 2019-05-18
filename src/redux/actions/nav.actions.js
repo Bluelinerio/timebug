@@ -1,5 +1,5 @@
 // @flow
-import { NavigationActions } from 'react-navigation'
+import { NavigationActions, StackActions } from 'react-navigation'
 import type { Step } from '../../services/cms'
 import routes, { protoRoutes } from '../../navigation/routes'
 import { LINK_NAVIGATION } from '../actionTypes'
@@ -111,7 +111,7 @@ export const goToSettings = () =>
 
 export const popToTop = () => NavigationActions.popToTop()
 
-export const pop = () => NavigationActions.pop()
+export const pop = () => StackActions.pop()
 
 export const navigateWith = ({
   routeName,
@@ -120,11 +120,6 @@ export const navigateWith = ({
   NavigationActions.navigate({
     routeName,
     params,
-  })
-
-const navigateToInitialRoute = () =>
-  NavigationActions.navigate({
-    routeName: routes.start.initialRouteName,
   })
 
 export const goToTool = (params: GoToToolParams) =>
@@ -161,33 +156,12 @@ export const goToStartScreen = (params?: any) =>
     params,
   })
 
-export const reset = () =>
-  NavigationActions.reset({
-    index: 0,
-    key: null,
-    actions: [navigateToInitialRoute()],
-  })
-
 export const goBackFrom = (key: string) =>
   NavigationActions.back({
     key,
   })
 
 export const goBack = () => NavigationActions.back()
-
-export const restartStepAction = (step: Step) =>
-  NavigationActions.reset({
-    index: 1,
-    key: null,
-    actions: [navigateToInitialRoute(), goToAssignmentFlow({ step })],
-  })
-
-export const restartStepActionSafe = (step: Step, key: string) =>
-  NavigationActions.reset({
-    index: 0,
-    key,
-    actions: [goToStepScreen(step)],
-  })
 
 export const goToStepScreen = (step: Step) =>
   NavigationActions.navigate({

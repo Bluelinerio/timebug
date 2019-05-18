@@ -1,19 +1,20 @@
 // @flow
 
-import React                            from 'react'
-import { compose, mapProps }            from 'recompose'
-import moment                           from 'moment'
-import { connect }                      from 'react-redux'
-import toolDataProvider                 from '2020_HOC/ToolDataProvider'
-import CheckinComponent                 from '../components/CheckinComponent'
+import React from 'react'
+import { compose, mapProps } from 'recompose'
+import moment from 'moment'
+import { connect } from 'react-redux'
+import toolDataProvider from '2020_HOC/ToolDataProvider'
+import CheckinComponent from '../components/CheckinComponent'
 import type { Props as ComponentProps } from '../components/CheckinComponent'
-import { goToTool }                     from '2020_redux/actions/nav.actions'
-import type { GoToToolParams }          from '2020_redux/actions/nav.actions'
-import { DATE_FORMAT }                  from '2020_constants/constants'
-import { FORM_KEYS, CHILDREN_KEYS }     from '2020_static/tools/EnergyLevelsTracker'
-import { stepEnum }                     from '2020_services/cms'
-import type { Step }                    from '2020_services/cms'
-import selectors                        from '2020_redux/selectors'
+import { goToTool } from '2020_redux/actions/nav.actions'
+import type { GoToToolParams } from '2020_redux/actions/nav.actions'
+import { DATE_FORMAT } from '2020_constants/constants'
+import { FORM_KEYS, CHILDREN_KEYS } from '2020_static/tools/EnergyLevelsTracker'
+import { stepEnum } from '2020_services/cms'
+import type { Step } from '2020_services/cms'
+import mapNavigationDispatch from '2020_HOC/NavigationServiceHOC'
+import selectors from '2020_redux/selectors'
 
 type Props = {
   tool: any,
@@ -264,7 +265,8 @@ class EnergyLevelsCheckinContainer extends React.Component<
 }
 
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
+  mapNavigationDispatch(mapDispatchToProps),
+  connect(mapStateToProps),
   toolDataProvider,
   mapProps(merge)
 )(EnergyLevelsCheckinContainer)

@@ -1,13 +1,10 @@
 // @flow
-import { connect }              from 'react-redux'
-import { withNavigation }       from 'react-navigation'
-import { compose, mapProps }    from 'recompose'
-import { FORM_KEYS }            from '2020_forms/forms/goals'
-import selectors                from '2020_redux/selectors'
-import { stepEnum }             from '2020_services/cms'
-import StepDataProvider         from '2020_HOC/ToolStepDataProvider'
-import { getCurrentRouteState } from '2020_utils/currentRouteState'
-import GoalScreen               from '../components/GoalScreenComponent'
+import { withNavigation }    from 'react-navigation'
+import { compose, mapProps } from 'recompose'
+import { FORM_KEYS }         from '2020_forms/forms/goals'
+import { stepEnum }          from '2020_services/cms'
+import StepDataProvider      from '2020_HOC/ToolStepDataProvider'
+import GoalScreen            from '../components/GoalScreenComponent'
 
 type Props = {
   navigationState: any,
@@ -15,17 +12,10 @@ type Props = {
   openArchiveScreen: () => any,
 }
 
-const mapStateToProps = (state: any) => {
-  const navigationState = selectors.navigationState(state)
-  return {
-    navigationState,
-  }
-}
-
 const merge = (props: Props) => {
-  const { navigationState, stepData, ...rest } = props
-  const state = getCurrentRouteState(navigationState)
-  const { params = {} } = state
+  const { navigation, stepData, ...rest } = props
+  const { state: navigationState } = navigation
+  const { params = {} } = navigationState
   const { payload = {} } = params
   const { goalId = null } = payload
   const formDataStep5 = stepData[stepEnum.STEP_5] || { value: [] }
@@ -38,12 +28,10 @@ const merge = (props: Props) => {
     goal,
     type,
     goalId,
+    navigation,
   }
 }
 
-export default compose(
-  connect(mapStateToProps),
-  withNavigation,
-  StepDataProvider,
-  mapProps(merge)
-)(GoalScreen)
+export default compose(withNavigation, StepDataProvider, mapProps(merge))(
+  GoalScreen
+)

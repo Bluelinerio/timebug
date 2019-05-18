@@ -11,6 +11,7 @@ import type { Props as ComponentProps } from '../components/CheckinComponent'
 import type { GoToToolParams }          from '2020_redux/actions/nav.actions'
 import { goToTool }                     from '2020_redux/actions/nav.actions'
 import { stepEnum }                     from '2020_services/cms'
+import mapNavigationDispatch            from '2020_HOC/NavigationServiceHOC'
 import {
   findWeeklyToolValue,
   getIdealWeek,
@@ -175,7 +176,8 @@ class TimebugCheckinContainer extends React.Component<ContainerProps, State> {
 }
 
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
+  connect(mapStateToProps),
+  mapNavigationDispatch(mapDispatchToProps),
   toolStepDataProvider,
   mapProps(merge)
 )(TimebugCheckinContainer)
