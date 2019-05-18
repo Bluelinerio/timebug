@@ -3,9 +3,8 @@ import React from 'react'
 import MeditationCheckin, {
   key as meditationKey,
 } from '../containers/MeditationCheckinContainer'
-import Dummy, { key as dummyKey } from '../containers/DummyCheckinContainer'
 
-const registeredTools = [meditationKey, dummyKey]
+const registeredTools = [meditationKey]
 
 type Tool = {
   key: string,
