@@ -1,6 +1,6 @@
 // @flow
 import { takeLatest, fork, call, put, select } from 'redux-saga/effects'
-import { UPDATE_USER }                         from '../actionTypes'
+import { UPDATE_USER, CHECK_CONTACT_PERMISSION }                         from '../actionTypes'
 import { GET_USER }                            from '../actions/user.actions'
 import selectors                               from '../selectors'
 import ContactService, { stepsWithContacts }   from '2020_services/contactService'
@@ -21,7 +21,7 @@ function* _checkPermissionsAndRequestContacts() {
   const permissionStatus = yield call(ContactService.requestPermissions)
   yield put(requestPermission(permissionStatus.permission))
   const permissionInState = permissions.find(
-    perm => permissionStatus.permission === perm.permission
+    perm => permissionStatus.permission === perm.name
   )
   if (
     !permissionInState ||
@@ -33,7 +33,7 @@ function* _checkPermissionsAndRequestContacts() {
 
 function* watchForContactsSetup() {
   yield takeLatest(
-    [GET_USER.SUCCEEDED, UPDATE_USER],
+    [GET_USER.SUCCEEDED, UPDATE_USER, CHECK_CONTACT_PERMISSION],
     _checkPermissionsAndRequestContacts
   )
 }

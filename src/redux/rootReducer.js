@@ -14,6 +14,7 @@ import persistState  from './reducers/persist.reducer'
 import goals         from './reducers/goals.reducer'
 import contacts      from './reducers/contacts.reducer'
 import notifications from './reducers/notifications.reducer'
+import permissions   from './reducers/permissions.reducer'
 
 export const rootReducer = {
   cms,
@@ -32,4 +33,5 @@ export const rootReducer = {
   goals,
   contacts,
   notifications,
+  permissions,
 }

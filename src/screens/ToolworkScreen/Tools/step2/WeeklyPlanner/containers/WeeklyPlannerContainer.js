@@ -5,7 +5,7 @@ import { withNavigation }    from 'react-navigation'
 import selectors             from '2020_redux/selectors'
 import { key }               from '2020_static/tools/DailyTimebugPlanner'
 import { stepEnum }          from '2020_services/cms'
-import StepDataProvider      from '../../../../HOC/ToolStepDataProvider'
+import StepDataProvider      from '2020_HOC/ToolStepDataProvider'
 import WeeklyPlanner         from '../components/WeeklyPlanner'
 import {
   getActionsData,
@@ -13,7 +13,7 @@ import {
   getIdealWeek,
   getCurrentWeekAndReduce,
   mapWeekData,
-}                            from '../utils'
+}                            from '2020_utils/timebugHelpers'
 
 const mapStateToProps = (state: any) => {
   const getDataForStepAndTool = selectors.awardDataForTool(state)

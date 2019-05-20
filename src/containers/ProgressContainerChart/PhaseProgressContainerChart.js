@@ -1,6 +1,6 @@
 // @flow
-import { connect } from 'react-redux';
-import selectors from '../../redux/selectors';
+import { connect }              from 'react-redux'
+import selectors                from '../../redux/selectors'
 import {
   phaseForStepAtIndex,
   NUMBER_OF_STEPS,
@@ -8,30 +8,31 @@ import {
   MEDITATION,
   SELF_ASSESSMENT,
   VISION_CREATION,
-} from '../../services/cms';
+}                               from '../../services/cms'
 import PieChartCells, {
   PieChartCellsProps,
-} from '../../components/PhaseProgress/PieChartCells';
-import { mediumGray } from '../../constants/colors';
-import { buildCharts, LabelFn } from './charts';
+}                               from '../../components/PhaseProgress/PieChartCells'
+import { mediumGray }           from '../../constants/colors'
+import { buildCharts, LabelFn } from './charts'
 
 type CompletedSteps = {
   MEDITATION: number,
   VISION_CREATION: number,
   SELF_ASSESSMENT: number,
-};
+}
 
 type PhaseProgressContainerChartProps = {
   maxColumns: number,
   width: number,
-};
+  hideOverall?: boolean,
+}
 
 export type PhaseColors = {
   MEDITATION: string,
   VISION_CREATION: string,
   SELF_ASSESSMENT: string,
   COMPLETE: string,
-};
+}
 
 type StepIndexesTo15 =
   | 0
@@ -50,7 +51,7 @@ type StepIndexesTo15 =
   | 12
   | 13
   | 14
-  | 15;
+  | 15
 type StepIndexesTo29 =
   | 16
   | 17
@@ -65,37 +66,37 @@ type StepIndexesTo29 =
   | 26
   | 27
   | 28
-  | 29;
+  | 29
 
-type StepIndexes = StepIndexesTo15 & StepIndexesTo29;
+type StepIndexes = StepIndexesTo15 & StepIndexesTo29
 
 type PhaseProgressContainerChartStateProps = {
   completedStepIndices: Array<StepIndexes>,
   phaseColors: PhaseColors,
-};
+}
 
 const chartProps: any = {
   spacing: 0,
   outerRadius: '95%',
   innerRadius: '50%',
-};
+}
 
 const mapStateToProps = (
   state: any
 ): PhaseProgressContainerChartStateProps => ({
   completedStepIndices: selectors.completedStepIds(state).map(i => i - 1),
   phaseColors: selectors.phaseColors(state),
-});
+})
 
-const recommendedMaxColumns = 3;
+const recommendedMaxColumns = 3
 
 const merge = (
   stateProps: PhaseProgressContainerChartStateProps,
   dispatchProps?: any,
   ownProps: PhaseProgressContainerChartProps
 ): PieChartCellsProps => {
-  const { phaseColors, completedStepIndices } = stateProps;
-  const { maxColumns = recommendedMaxColumns } = ownProps;
+  const { phaseColors, completedStepIndices } = stateProps
+  const { maxColumns = recommendedMaxColumns, hideOverall = false } = ownProps
 
   const completedStepsInPhase: CompletedSteps = {
     MEDITATION: completedStepIndices.filter(
@@ -107,15 +108,15 @@ const merge = (
     SELF_ASSESSMENT: completedStepIndices.filter(
       index => phaseForStepAtIndex(index) === SELF_ASSESSMENT
     ).length,
-  };
+  }
 
   const { overall: overallChart, phase: phaseChart } = buildCharts({
     missingFormsColor: mediumGray,
     phaseColors,
-  });
+  })
 
   const label: LabelFn = ({ total, completedSteps, labelKey }) =>
-    `${labelKey}: ${completedSteps} / ${total}`;
+    `${labelKey}: ${completedSteps} / ${total}`
 
   const elements = [
     phaseChart({
@@ -136,8 +137,12 @@ const merge = (
       total: NUMBER_OF_STEP_FOR_PHASES,
       label,
     }),
-    overallChart({ completedStepsInPhase, total: NUMBER_OF_STEPS, label }),
-  ];
+  ]
+
+  if (!hideOverall)
+    elements.push(
+      overallChart({ completedStepsInPhase, total: NUMBER_OF_STEPS, label })
+    )
 
   return {
     ...stateProps,
@@ -146,7 +151,7 @@ const merge = (
     maxColumns,
     elements,
     chartProps,
-  };
-};
+  }
+}
 
-export default connect(mapStateToProps, null, merge)(PieChartCells);
+export default connect(mapStateToProps, null, merge)(PieChartCells)

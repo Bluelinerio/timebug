@@ -7,6 +7,7 @@ import {
   REQUEST_PERMISSIONS_NEVER,
   ADD_CONTACT,
   REMOVE_CONTACT,
+  CHECK_CONTACT_PERMISSION,
 } from '../actionTypes'
 
 export type SubmitAction = {
@@ -43,6 +44,10 @@ export const removeContact = (payload: { advisorId: any }) => ({
 export const requestPermission = (permission: string): SubmitAction => ({
   type: REQUEST_PERMISSIONS,
   payload: { permission },
+})
+
+export const checkContactPermissions = () => ({
+  type: CHECK_CONTACT_PERMISSION,
 })
 
 export const updatePermission = (payload: {

@@ -4,24 +4,11 @@ import { View, Text, TouchableOpacity, Alert, ScrollView } from 'react-native'
 import { FormInput }                                       from 'react-native-elements'
 import moment                                              from 'moment'
 import uuid                                                from 'uuid/v4'
-import { DATE_FORMAT, SIMPLIFIED_DATE_FORMAT }             from '2020_constants/constants'
 import Icon                                                from 'react-native-vector-icons/Ionicons'
-import styles, { iconStyle }                               from '../styles'
+import { DATE_FORMAT, SIMPLIFIED_DATE_FORMAT }             from '2020_constants/constants'
 import { isNumber }                                        from '2020_utils/formatHelpers'
-
-type WeekDataElement = {
-  key: string,
-  ideal: {
-    text: string,
-    value: number,
-  },
-  current: {
-    text: string,
-    value: number,
-  },
-  difference: number,
-  storeAwardData: (any, any) => any,
-}
+import type { WeekDataElement }                            from '2020_types/types'
+import styles, { iconStyle }                               from '../styles'
 
 export type WeekDataArray = Array<WeekDataElement>
 

@@ -1,5 +1,6 @@
 // @flow
 import R                                         from 'ramda'
+import moment                                    from 'moment'
 import {
   getUserState,
   getCms,
@@ -13,6 +14,7 @@ import {
   getContactState,
   getNotifications,
   getNavigationState,
+  getPermissions
 }                                                from './rootReducer.selectors'
 import { ANONYMOUS, AUTHENTICATING }             from '../../services/apollo/models'
 // models
@@ -117,6 +119,11 @@ const completedStepIds = (state: any): [string] =>
 
 const formWithStepId = (state: any) => (stepId: string): Form =>
   completedForms(state).find(f => f.stepId === stepId)
+
+const mostRecentlyCompletedStep = (state: any): Form =>
+  completedForms(state).sort(
+    (a, b) => -moment(a.createdAt).diff(b.createdAt)
+  )[0] || {}
 
 // form data
 const formData = (state: any) => getFormData(state).data
@@ -409,6 +416,15 @@ const notifications = (state: any) => getNotifications(state).notifications
 
 const navigationState = (state: any) => getNavigationState(state)
 
+/**
+ * Permissions
+ */
+
+const permissions = (state: any) => getPermissions(state).permissions
+
+ /**
+  * End permissions
+  */
 const selectors = {
   getCms,
   sortedSteps,
@@ -470,6 +486,8 @@ const selectors = {
   getCompletedSteps,
   storedToolData,
   allToolData,
+  mostRecentlyCompletedStep,
+  permissions,
 }
 
 export default selectors

@@ -102,6 +102,11 @@ export const goToRootNavigatorV2 = () =>
     params: { v2: true },
   })
 
+export const goToSettings = () =>
+  NavigationActions.navigate({
+    routeName: routes.start.SettingsScreen,
+    key: routes.start.SettingsScreen,
+  })
 /* End Prototype */
 
 export const popToTop = () => NavigationActions.popToTop()
@@ -128,6 +133,21 @@ export const goToTool = (params: GoToToolParams) =>
     params,
     key: routes.toolFlow.ToolworkScreen,
   })
+
+// export const goToTool = (params: GoToToolParams) =>
+//   NavigationActions.navigate({
+//     routeName: routes.start.TabNavigator,
+//     key: routes.start.TabNavigator,
+//     action: NavigationActions.navigate({
+//       routeName: routes.tab.ToolFlow,
+//       key: routes.tab.ToolFlow,
+//       action: NavigationActions.navigate({
+//         routeName: routes.toolFlow.ToolworkScreen,
+//         params,
+//         key: routes.toolFlow.ToolworkScreen,
+//       }),
+//     }),
+//   })
 
 export const goToGoalStepScreen = (params: GoalStepScreenNavigationParams) =>
   NavigationActions.navigate({

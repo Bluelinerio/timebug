@@ -1,5 +1,5 @@
-import { StyleSheet }                          from 'react-native'
-import { iOSUIKit }                            from 'react-native-typography'
+import { StyleSheet } from 'react-native'
+import { iOSUIKit } from 'react-native-typography'
 import { gray900, darkBlue, gray400, gray100 } from '2020_constants/colors'
 
 export const placeholderColor = gray400
@@ -93,5 +93,16 @@ export default StyleSheet.create({
     backgroundColor: gray100,
     paddingVertical: 4,
     paddingHorizontal: 10,
+  },
+  warningContainer: {
+    marginVertical: 12,
+    padding: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  warningText: {
+    ...iOSUIKit.bodyEmphasizedObject,
+    color: gray900,
+    textAlign: 'center',
   },
 })

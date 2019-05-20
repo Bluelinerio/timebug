@@ -11,6 +11,7 @@ import type { PersistState }      from '../reducers/persist.reducer'
 import type { GoalState }         from '../reducers/goals.reducer'
 import type { ContactState }      from '../reducers/contacts.reducer'
 import type { NotificationState } from '../reducers/notifications.reducer'
+import type { PermissionsState }  from '../reducers/permissions.reducer'
 
 export const getUserState = (state: any): UserState => state.user
 export const getCms = (state: any): CMSState => state.cms
@@ -26,3 +27,4 @@ export const getGoals = (state: any): GoalState => state.goals
 export const getContactState = (state: any): ContactState => state.contacts
 export const getNotifications = (state: any): NotificationState => state.notifications
 export const getNavigationState = (state: any): any => state.nav
+export const getPermissions = (state: any): PermissionsState => state.permissions
