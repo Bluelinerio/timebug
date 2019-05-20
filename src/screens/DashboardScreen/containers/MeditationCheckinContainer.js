@@ -59,9 +59,9 @@ const merge = (props: Props): ComponentProps => {
 
   const title = 'Meditation'
   const text = value
-    ? `You have completed your daily meditation, congratulations!`
-    : `You haven't meditated today, would you like to do so now?`
-  const link = value ? null : `Start meditating`
+    ? `You've completed your daily meditation. Keep up the good work!`
+    : `You haven't meditated today.`
+  const link = value ? null : `Meditate now`
   const onLinkPress = value ? null : goToTool({ tool })
 
   return {

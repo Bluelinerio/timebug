@@ -80,8 +80,8 @@ const merge = (props: Props): ComponentProps => {
   if (goals.length === 0)
     return {
       title,
-      text: 'You have no goals to display right now, try adding some!',
-      link: 'Press here to create new goals',
+      text: 'You have no goals to display right now.',
+      link: 'Add a new goal',
       onLinkPress: goToFormFun,
       source,
     }
@@ -126,8 +126,8 @@ const merge = (props: Props): ComponentProps => {
   if (!goal)
     return {
       title,
-      text: 'You have no goals to display right now, try adding some!',
-      link: 'Press here to create new goals',
+      text: 'You have no goals to display right now.',
+      link: 'Add a new goal',
       onLinkPress: goToFormFun,
       source,
     }
@@ -155,7 +155,7 @@ const merge = (props: Props): ComponentProps => {
   const link = `Open this goal now`
   const onLinkPress = goToTool({ tool, payload: { goalId: goal._id } })
 
-  const formLink = `Press here to create a new goals!`
+  const formLink = `Add a new goal`
 
   return {
     title,
