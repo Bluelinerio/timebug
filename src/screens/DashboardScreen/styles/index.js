@@ -1,8 +1,8 @@
 // @flow
-import { StyleSheet, Platform }                from 'react-native'
-import { iOSUIKit }                            from 'react-native-typography'
+import { StyleSheet, Platform } from 'react-native'
+import { iOSUIKit } from 'react-native-typography'
 import { paleBlue, darkBlue, transparentCyan } from '2020_constants/colors'
-import { widthPercentage }                     from '2020_utils/viewportCalculation'
+import { widthPercentage } from '2020_utils/viewportCalculation'
 
 export const cellsWidth = widthPercentage(90)
 
@@ -125,5 +125,8 @@ export default StyleSheet.create({
   checkinTextContainer: {
     flex: 3,
     padding: 8,
+  },
+  goalFormLink: {
+    marginTop: 4,
   },
 })

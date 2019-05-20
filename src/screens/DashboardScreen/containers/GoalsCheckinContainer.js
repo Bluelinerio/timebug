@@ -16,7 +16,8 @@ import { translateCMSPhaseToStandard }    from '2020_services/cms'
 import { stepEnum }                       from '2020_services/cms'
 import type { Step }                      from '2020_services/cms'
 import type { Props as ComponentProps }   from '../components/GoalCheckinComponent'
-import CheckinComponent                   from '../components/GoalCheckinComponent'
+import GoalCheckinComponent                   from '../components/GoalCheckinComponent'
+import tron from 'reactotron-react-native'
 
 type Props = {
   tool: any,
@@ -173,6 +174,8 @@ type ContainerProps = {
   title: string,
   text: string,
   source: string,
+  formLink?: string,
+  onFormLinkPress: () => void,
 }
 
 class GoalsCheckinContainer extends React.PureComponent<ContainerProps> {
@@ -181,15 +184,23 @@ class GoalsCheckinContainer extends React.PureComponent<ContainerProps> {
     onLinkPress()
   }
 
+  onFormLinkPress = () => {
+    const { onFormLinkPress } = this.props
+    onFormLinkPress()
+  }
+
   render() {
-    const { link, title, text, source } = this.props
+    const { link, title, text, source, formLink } = this.props
+    tron.log(this.props)
     return (
-      <CheckinComponent
+      <GoalCheckinComponent
         link={link}
         title={title}
         text={text}
         onLinkPress={this.onLinkPress}
         source={source}
+        formLink={formLink}
+        onFormLinkPress={this.onFormLinkPress}
       />
     )
   }

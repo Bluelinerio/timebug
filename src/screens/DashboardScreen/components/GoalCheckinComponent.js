@@ -14,7 +14,7 @@ export type Props = {
   onFormLinkPress: () => void,
 }
 
-class CheckinComponent extends React.PureComponent<Props> {
+class GoalCheckinComponent extends React.PureComponent<Props> {
   render() {
     const { title, text, link, source, formLink } = this.props
     return (
@@ -28,7 +28,10 @@ class CheckinComponent extends React.PureComponent<Props> {
             </TouchableOpacity>
           )}
           {formLink && (
-            <TouchableOpacity onPress={this.props.onFormLinkPress}>
+            <TouchableOpacity
+              style={styles.goalFormLink}
+              onPress={this.props.onFormLinkPress}
+            >
               <Text style={styles.link}>{formLink}</Text>
             </TouchableOpacity>
           )}
@@ -41,4 +44,4 @@ class CheckinComponent extends React.PureComponent<Props> {
   }
 }
 
-export default CheckinComponent
+export default GoalCheckinComponent
