@@ -8,6 +8,7 @@ import GreetingComponent                     from '../containers/GreetingCompone
 import InsightComponent                      from '../containers/InsightContainer'
 import CheckinAreaComponent                  from '../containers/CheckinAreaContainer'
 import ProgressAreaComponent                 from './ProgressAreaComponent'
+import SignInButton                          from '../containers/SignInButtonContainer'
 import styles                                from '../styles'
 
 type Props = {
@@ -31,7 +32,13 @@ class StartScreenComponent extends PureComponent<Props> {
           <View style={styles.header}>
             <Banner />
           </View>
-          <View style={[styles.container, styles.background, styles.mainDashboardContainer]}>
+          <View
+            style={[
+              styles.container,
+              styles.background,
+              styles.mainDashboardContainer,
+            ]}
+          >
             <View style={[styles.container, styles.contentContainer]}>
               {isLogged ? (
                 <React.Fragment>
@@ -41,12 +48,15 @@ class StartScreenComponent extends PureComponent<Props> {
                   <ProgressAreaComponent />
                 </React.Fragment>
               ) : (
-                <View>
-                  <Text style={styles.greeting}>Good morning!</Text>
-                  <Text style={styles.greetingSub}>
-                    Please sign up to get the most out of the app
-                  </Text>
-                </View>
+                <React.Fragment>
+                  <GreetingComponent />
+                  <View style={styles.notLoggedContainer}>
+                    <Text style={styles.greetingSub}>
+                      Please sign up to get the most out of the app
+                    </Text>
+                    <SignInButton />
+                  </View>
+                </React.Fragment>
               )}
             </View>
             <Version />

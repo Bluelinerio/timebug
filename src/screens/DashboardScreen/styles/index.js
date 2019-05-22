@@ -1,8 +1,13 @@
 // @flow
 import { StyleSheet, Platform } from 'react-native'
-import { iOSUIKit } from 'react-native-typography'
-import { paleBlue, darkBlue, transparentCyan } from '2020_constants/colors'
-import { widthPercentage } from '2020_utils/viewportCalculation'
+import { iOSUIKit }             from 'react-native-typography'
+import {
+  paleBlue,
+  darkBlue,
+  transparentCyan,
+  white2,
+}                               from '2020_constants/colors'
+import { widthPercentage }      from '2020_utils/viewportCalculation'
 
 export const cellsWidth = widthPercentage(90)
 
@@ -43,9 +48,11 @@ export default StyleSheet.create({
     fontFamily: 'Metropolis',
   },
   greetingSub: {
-    ...iOSUIKit.footnoteEmphasizedObject,
+    ...iOSUIKit.bodyObject,
     textAlign: 'center',
+    fontSize: 15,
     color: darkBlue,
+    marginVertical: 8,
   },
   recommendation: {
     ...iOSUIKit.subheadObject,
@@ -128,5 +135,30 @@ export default StyleSheet.create({
   },
   goalFormLink: {
     marginTop: 4,
+  },
+  signInButton: {
+    padding: 12,
+    backgroundColor: darkBlue,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: 10,
+    borderRadius: 4,
+    ...Platform.select({
+      android: { elevation: 3 },
+      ios: {
+        shadowOffset: { width: 3, height: 3 },
+        shadowColor: darkBlue,
+        shadowOpacity: 0.3,
+      },
+    }),
+  },
+  signInText: {
+    ...iOSUIKit.subheadEmphasizedObject,
+    textAlign: 'center',
+    color: white2,
+  },
+  notLoggedContainer: {
+    flexDirection: 'column',
+    alignItems: 'center',
   },
 })
