@@ -1,9 +1,8 @@
 // @flow
-import * as React                   from 'react'
-import { StyleSheet }               from 'react-native'
-import { Button as NBButton, Text } from 'native-base'
-import { Theme }                    from './Theme'
-import type { BaseProps }           from './Types'
+import * as React                             from 'react'
+import { StyleSheet, TouchableOpacity, Text } from 'react-native'
+import { Theme }                              from './Theme'
+import type { BaseProps }                     from './Types'
 
 type ButtonProps = BaseProps & {
   label: string,
@@ -18,7 +17,6 @@ export default class Button extends React.Component<ButtonProps> {
   render(): React.Node {
     const {
       label,
-      full,
       primary,
       disabled,
       transparent,
@@ -29,16 +27,14 @@ export default class Button extends React.Component<ButtonProps> {
     if (primary && !transparent) {
       computedStyle.push(styles.primary)
     }
+    if(!primary || transparent)
+      computedStyle.push(styles.transparent)
     computedStyle.push(style)
     return (
-      <NBButton
+      <TouchableOpacity
         {...{
-          full,
-          primary,
           onPress,
           style: computedStyle,
-          rounded: true,
-          transparent: !primary || transparent,
           disabled,
         }}
       >
@@ -58,13 +54,21 @@ export default class Button extends React.Component<ButtonProps> {
         >
           {label}
         </Text>
-      </NBButton>
+      </TouchableOpacity>
     )
   }
 }
 
 const styles = StyleSheet.create({
-  base: {},
+  base: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 8,
+  },
+  transparent: {
+    opacity: 0.75,
+  },
   primary: {
     shadowColor: 'rgba(0, 170, 255, 0.29)',
     shadowOffset: { width: 0, height: 2 },
