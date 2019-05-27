@@ -213,10 +213,11 @@ dependencies {
     implementation "com.facebook.react:react-native:+"  // From node_modules
     implementation project(':react-native-linear-gradient')
     implementation project(':react-native-push-notification')
-    implementation project(':@react-native-community/blur')
+    implementation project(':@react-native-community_blur')
     implementation 'com.google.android.gms:play-services-base:15.0.1'
     implementation 'com.google.android.gms:play-services-basement:15.0.1'
     implementation 'com.google.android.gms:play-services-tasks:15.0.1'
+    implementation 'com.google.firebase:firebase-core:16.0.9'
     implementation ('com.google.android.gms:play-services-gcm:15.0.1') {
         force = true;
     }
@@ -242,3 +243,6 @@ task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
 }
+
+apply plugin: 'com.google.gms.google-services'
+com.google.gms.googleservices.GoogleServicesPlugin.config.disableVersionCheck = true

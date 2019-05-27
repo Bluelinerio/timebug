@@ -1,10 +1,6 @@
 {
   "presets": [
-    "react-native",
-    "flow"
-  ],
-  "plugins": [
-    ["transform-decorators-legacy","transform-react-jsx-source"]
-  ],
-  "retainLines": true
+    "module:metro-react-native-babel-preset",
+    "@babel/preset-flow"
+  ]
 }

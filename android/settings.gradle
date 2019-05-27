@@ -1,6 +1,6 @@
 rootProject.name = 'Lifevision'
-include ':@react-native-community/blur'
-project(':@react-native-community/blur').projectDir = new File(rootProject.projectDir, '../node_modules/@react-native-community/blur/android')
+include ':@react-native-community_blur'
+project(':@react-native-community_blur').projectDir = new File(rootProject.projectDir, '../node_modules/@react-native-community/blur/android')
 include ':react-native-unified-contacts'
 project(':react-native-unified-contacts').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-unified-contacts/android')
 include ':react-native-contacts'
