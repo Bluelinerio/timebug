@@ -32,13 +32,14 @@ allprojects {
         mavenLocal()
         mavenCentral()
         google()
+        maven {                                  // <-- Add this
+            url 'https://maven.google.com/'
+            name 'Google'
+        }
         jcenter()
         maven {
             // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
             url "$rootDir/../node_modules/react-native/android"
-        }
-        maven{
-            url "https://maven.google.com"
         }
         configurations.all {
                     resolutionStrategy {
@@ -51,7 +52,7 @@ allprojects {
 ext {
     googlePlayServicesVersion = "15.0.1" // default: "+"
     compileSdkVersion = 27
-    buildToolsVersion = "27.0.2"
+    buildToolsVersion = "27.0.3"
     targetSdkVersion = 27
-    supportLibVersion = "27.0.2"
+    supportLibVersion = "27.0.3"
 }
