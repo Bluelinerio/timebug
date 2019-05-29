@@ -52,7 +52,7 @@
     "react-apollo": "^2.0.4",
     "react-composer": "^5.0.0",
     "react-connect-context": "^1.1.0",
-    "react-native": "0.57.8",
+    "react-native": "0.58.6",
     "react-native-animatable": "^1.2.4",
     "react-native-code-push": "^5.4.2",
     "react-native-contacts": "^3.1.1",
