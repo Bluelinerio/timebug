@@ -3,6 +3,8 @@ package io.lifevision;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.reactnativecommunity.slider.ReactSliderPackage;
+import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
 import com.cmcewen.blurview.BlurViewPackage;
 import com.rt2zz.reactnativecontacts.ReactNativeContacts;
 import com.corbt.keepawake.KCKeepAwakePackage;
@@ -54,6 +56,8 @@ public class MainApplication extends Application implements ReactApplication {
   protected List<ReactPackage> getPackages() {
     return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+          new ReactSliderPackage(),
+          new AsyncStoragePackage(),
           new ReactNativeContacts(),
           new KCKeepAwakePackage(),
           new CodePush(BuildConfig.CODEPUSH_KEY, getApplicationContext(), BuildConfig.DEBUG),

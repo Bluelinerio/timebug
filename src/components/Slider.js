@@ -1,5 +1,6 @@
 import * as React from 'react'
-import { StyleSheet, Dimensions, Slider } from 'react-native'
+import { StyleSheet, Dimensions } from 'react-native'
+import Slider from '@react-native-community/slider';
 
 const StyledSlider = ({
   color,
