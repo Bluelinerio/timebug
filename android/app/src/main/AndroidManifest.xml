@@ -19,7 +19,6 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
 
-    <uses-sdk android:minSdkVersion="23" />
     <application
       android:name=".MainApplication"
       android:allowBackup="false"

@@ -45,7 +45,7 @@
     "graphql-tag": "^2.6.1",
     "invariant": "^2.2.3",
     "md5": "^2.2.1",
-    "metro-react-native-babel-preset": "0.45.0",
+    "metro-react-native-babel-preset": "0.51.0",
     "moment": "^2.20.1",
     "pluralize": "^7.0.0",
     "ramda": "^0.25.0",
