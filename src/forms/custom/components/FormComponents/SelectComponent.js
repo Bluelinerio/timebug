@@ -1,10 +1,10 @@
-import React                      from 'react'
+import React from 'react'
 import { Picker, Platform, View } from 'react-native'
-import ModalSelector              from 'react-native-modal-selector'
-import FormElementHeader          from './FormElementHeader'
-import styles                     from '../../styles'
-import { DISABLE }                from './../../forms/constants'
-import type { SelectStyle }       from './../../types/formTypes'
+import ModalSelector from 'react-native-modal-selector'
+import FormElementHeader from './FormElementHeader'
+import styles from '../../styles'
+import { DISABLE } from './../../forms/constants'
+import type { SelectStyle } from './../../types/formTypes'
 
 const AndroidPicker = (props: any) => {
   const { options = {}, items, onChange, formStyles, value } = props
@@ -121,21 +121,20 @@ const Select = ({
         : content.items
       : []
 
+  const textStyle = {
+    ...formStyles.textStyle,
+    ...(staticStyles.formHeaderText ? staticStyles.formHeaderText : {}),
+  }
+
   return (
     <React.Fragment>
-      <FormElementHeader
-        text={content.text}
-        textStyle={{
-          ...formStyles.textStyle,
-          ...(staticStyles.formHeaderText ? staticStyles.formHeaderText : {}),
-        }}
-      />
+      <FormElementHeader text={content.text} textStyle={textStyle} />
       <View
         style={[
           styles.pickerContainer,
-          ...(staticStyles.pickerContentContainer
+          staticStyles.pickerContentContainer
             ? staticStyles.pickerContentContainer
-            : {}),
+            : {},
         ]}
       >
         {Platform.OS === 'ios' ? (
