@@ -1,15 +1,15 @@
-import React                               from 'react'
-import { View }                            from 'react-native'
-import { SafeAreaView }                    from 'react-navigation'
-import Banner                              from '2020_containers/PhaseHeaderContainer'
-import styles                              from '../styles'
-import type { Step }                       from '../../../../services/cms'
-import StepBar                             from '../containers/StepBarContainer'
-import Sidebar                             from '../containers/SidebarContainer'
-import { SectionValues }                   from '../context/SectionContext'
-import WorkbookContent                     from '../containers/WorkbookContentContainer'
-import { mapBarStylesHelper }              from '../utils/colorsForStep'
-import { translateCMSPhaseToStandard }     from '2020_services/cms'
+import React from 'react'
+import { View } from 'react-native'
+import { SafeAreaView } from 'react-navigation'
+import Banner from '2020_containers/PhaseHeaderContainer'
+import styles from '../styles'
+import type { Step } from '../../../../services/cms'
+import StepBar from '../containers/StepBarContainer'
+import Sidebar from '../containers/SidebarContainer'
+import { SectionValues } from '../context/SectionContext'
+import WorkbookContent from '../containers/WorkbookContentContainer'
+import { mapBarStylesHelper } from '../utils/colorsForStep'
+import { translateCMSPhaseToStandard } from '2020_services/cms'
 
 type Props = {
   navigation: any,
@@ -20,20 +20,40 @@ type State = {
   editionIndex?: number | null,
 }
 
+const validateSelectedSection = (section: string) => {
+  switch (section) {
+  case 'f':
+  case 'form':
+  case 'FORM':
+  case SectionValues.form:
+    return SectionValues.form
+  case 't':
+  case 'text':
+  case 'content':
+  case SectionValues.textContent:
+    return SectionValues.textContent
+  default:
+    return SectionValues.textContent
+  }
+}
+
 class WorkbookScreen extends React.PureComponent<Props, State> {
   constructor(props) {
     super(props)
     const { navigation } = this.props
-    const { state: { params } } = navigation
-    const step = params.step || null
-    const editionIndex = params.editionIndex
+    const step = navigation.getParam('step', null)
+    const editionIndex = navigation.getParam('editionIndex', null)
+    const navSection = navigation.getParam('section', null)
+    const selectedSection =
+      editionIndex || editionIndex === 0
+        ? SectionValues.form
+        : navSection
+          ? validateSelectedSection(navSection)
+          : SectionValues.textContent
     this.state = {
       selectedStep: step,
       editionIndex,
-      selectedSection:
-        editionIndex || editionIndex === 0
-          ? SectionValues.form
-          : SectionValues.textContent,
+      selectedSection,
     }
   }
 
@@ -45,6 +65,9 @@ class WorkbookScreen extends React.PureComponent<Props, State> {
     const previousStep = prevState.selectedStep
     const currentSection = this.state.selectedSection
     const previousSection = prevState.selectedSection
+
+    const navSection = this.props.navigation.getParam('section', null)
+
     if (
       (currentIndex || currentIndex === 0) &&
       previousIndex !== currentIndex
@@ -53,7 +76,9 @@ class WorkbookScreen extends React.PureComponent<Props, State> {
         editionIndex: currentIndex,
         selectedSection: SectionValues.form,
         selectedStep:
-          newSentStep.number !== currentStep.number ? newSentStep : currentStep,
+          newSentStep && newSentStep.number !== currentStep.number
+            ? newSentStep
+            : currentStep,
       }))
       return
     }
@@ -63,11 +88,26 @@ class WorkbookScreen extends React.PureComponent<Props, State> {
       previousStep.number !== currentStep.number
     ) {
       this.setState(() => ({ editionIndex: null }))
+      return
+    }
+    if (newSentStep && newSentStep.number !== currentStep.number) {
+      const selectedSection = navSection
+        ? validateSelectedSection(navSection)
+        : SectionValues.textContent
+      this.setState(() => ({
+        selectedStep: newSentStep,
+        selectedSection,
+        editionIndex: null,
+      }))
+      return
     }
   }
 
   _changeSelectedStep = (step: Step) => {
-    this.setState({ selectedStep: step })
+    const { navigation } = this.props
+    this.setState({ selectedStep: step }, () => {
+      navigation.setParams({ step: null })
+    })
   }
 
   _changeSection = (section: String) => {
