@@ -66,7 +66,7 @@ const merge = (props: Props) => {
   const nextStep = hasNext ? steps[step.number + 1] : null
   const nextStepNumber = hasNext ? nextStep.number : 1
 
-  const tool = getTool(toolLink.tool)
+  const tool = toolLink ? getTool(toolLink.tool) : null
 
   const toolButton = toolLink
     ? {
