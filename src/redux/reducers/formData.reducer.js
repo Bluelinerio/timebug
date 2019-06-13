@@ -7,6 +7,7 @@ import {
   RESET_FORMS,
   SET_LOADING_FORMDATA,
   RESTORE_FORM_DATA,
+  LOGOUT,
 } from '../actionTypes'
 import type { RestoreFormDataPayload } from '../actions/formData.actions'
 import { diffObjs } from '../utils/diffObjs'
@@ -129,6 +130,8 @@ function formDataReducer(
     return restore(state, action.payload)
   case SET_LOADING_FORMDATA:
     return setLoadingFormData(state, action.payload)
+  case LOGOUT:
+    return initialState
   default:
     return state
   }
