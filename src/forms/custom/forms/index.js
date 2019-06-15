@@ -9,6 +9,7 @@ import Step8 from './step8'
 import Step9 from './step9'
 import Step10 from './step10'
 import Step11 from './step11'
+import Step12 from './step12'
 
 export * from './content'
 export * from './constants'
@@ -25,4 +26,5 @@ export default {
   '9': Step9,
   '10': Step10,
   '11': Step11,
+  '12': Step12,
 }
