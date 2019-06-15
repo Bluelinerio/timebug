@@ -293,4 +293,22 @@ export const Frequency = [
   'Never',
 ]
 
+export const SatisfactionLevels = [
+  'Not satisfied',
+  'Somewhat satisfied',
+  'Satisfied enough',
+  'Satisfied',
+  'Very satisfied',
+  'Absolutely satisfied'
+]
+
+export const TimeAndEffortInvestedInGoal = [
+  'None',
+  'Not much',
+  'A bit',
+  'Some time and effort',
+  'Quite some time and effort',
+  'A lot of time and effort'
+]
+
 export const AloneOrOthers = ['Alone', 'WithOthers']
