@@ -1,14 +1,14 @@
-import StepBar from '../components/StepBar';
-import { mapBarStylesHelper } from '../utils/colorsForStep';
-import { compose, mapProps } from 'recompose';
-import { translateCMSPhaseToStandard } from '../../../../services/cms';
-import type { Step } from '../../../../services/cms';
-import type { Props as StepBarProps } from '../components/StepBar';
+import StepBar                         from '../components/StepBar'
+import { mapBarStylesHelper }          from '../utils/colorsForStep'
+import { compose, mapProps }           from 'recompose'
+import { translateCMSPhaseToStandard } from '../../../../services/cms'
+import type { Step }                   from '../../../../services/cms'
+import type { Props as StepBarProps }  from '../components/StepBar'
 
 const merge = ({ step }: { step: Step }): StepBarProps => {
-  const { title, stepId, type, audio, icon } = step;
-  const phase = translateCMSPhaseToStandard(type);
-  const barStyle = mapBarStylesHelper(phase);
+  const { title, stepId, type, audio, icon } = step
+  const phase = translateCMSPhaseToStandard(type)
+  const barStyle = mapBarStylesHelper(phase)
   return {
     phase,
     title,
@@ -16,7 +16,7 @@ const merge = ({ step }: { step: Step }): StepBarProps => {
     audio: (audio && audio.uri) || undefined,
     source: icon && icon.uri,
     barStyle,
-  };
-};
+  }
+}
 
-export default compose(mapProps(merge))(StepBar);
+export default compose(mapProps(merge))(StepBar)
