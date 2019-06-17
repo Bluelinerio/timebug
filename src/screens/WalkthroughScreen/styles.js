@@ -20,7 +20,7 @@ export default StyleSheet.create({
   },
   container: {
     paddingHorizontal: baseSpacing,
-    marginTop: largeVerticalSpacing + StatusBar.currentHeight,
+    marginTop: largeVerticalSpacing,
     flexGrow: 1,
   },
   image: {
