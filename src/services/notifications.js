@@ -26,10 +26,10 @@ class NotificationService {
     NotificationService.callbacksSet = true
   }
 
-  static configure(gcm: string = '') {
+  static configure(gcm: string = '85136175680') {
     PushNotification.configure({
       // (optional) Called when Token is generated (iOS and Android)
-      onRegister: token => NotificationService.onRegister(token),
+      onRegister: token => NotificationService.onRegistration(token),
 
       // (required) Called when a remote or local notification is opened or received
       onNotification: notification =>

@@ -8,6 +8,7 @@ import {
   put,
   takeLatest,
   fork,
+  actionChannel,
 } from 'redux-saga/effects'
 import { requestSaga } from '../../Modules/redux-saga-request'
 import {
@@ -64,45 +65,45 @@ function* _fetchUserWithId(userId) {
   // if GET_USER.ERRORED it will be handled by _handleUserError
 }
 
-function* refreshUserOrLogout() {
-  function* refreshUser() {
-    const { token, userId, endpoint } = yield call(
-      AuthStorage.getTokenAndUserId
-    )
-    // customizatio point in case we change enpoints...
-    const fbToken: ?string = yield call(facebook.getToken)
-    if (userId && token && isClientEndpoint(endpoint)) {
-      return yield call(_fetchUserWithId, userId)
-    }
-    if (fbToken) {
-      yield fork(
-        requestSaga,
-        AUTHENTICATE_FB,
-        () => authenticateWithFBToken(fbToken),
-        { fbToken }
-      )
-      const result = yield take([
-        AUTHENTICATE_FB.ERRORED,
-        AUTHENTICATE_FB.SUCCEEDED,
-        AUTHENTICATE_FB.CANCELLED,
-      ])
-      if (result.type === AUTHENTICATE_FB.SUCCEEDED) {
-        const { token, user: { id }, endpoint } = result.payload
-        // FIXME: this call still doesn't work:
-        yield call(AuthStorage.setTokenAndUserId, {
-          token,
-          userId: id,
-          endpoint,
-        })
-        yield call(_fetchUserWithId, id)
-        return
-      }
-    }
-    yield put(actions.setUserAnonymous())
+function* refreshUserSaga() {
+  const { token, userId, endpoint } = yield call(
+    AuthStorage.getTokenAndUserId
+  )
+  const fbToken: ?string = yield call(facebook.getToken)
+  if (userId && token && isClientEndpoint(endpoint)) {
+    return yield call(_fetchUserWithId, userId)
   }
+  if (fbToken) {
+    yield fork(
+      requestSaga,
+      AUTHENTICATE_FB,
+      () => authenticateWithFBToken(fbToken),
+      { fbToken }
+    )
+    const result = yield take([
+      AUTHENTICATE_FB.ERRORED,
+      AUTHENTICATE_FB.SUCCEEDED,
+      AUTHENTICATE_FB.CANCELLED,
+    ])
+    if (result.type === AUTHENTICATE_FB.SUCCEEDED) {
+      const { token, user: { id }, endpoint } = result.payload
+      // FIXME: this call still doesn't work:
+      yield call(AuthStorage.setTokenAndUserId, {
+        token,
+        userId: id,
+        endpoint,
+      })
+      yield call(_fetchUserWithId, id)
+      return
+    }
+  }
+  yield put(actions.setUserAnonymous())
+}
+
+function* refreshUserOrLogout() {
   const winner = yield race({
     logout: take(LOGOUT),
-    refresh: call(refreshUser),
+    refresh: call(refreshUserSaga),
   })
   if (winner.logout) {
     const result = yield call(_logout)
@@ -134,8 +135,13 @@ function* _loginOrRegisterWithFacebook(payload) {
 }
 
 function* watchForRefreshUserOrLogout() {
-  yield takeLatest(REFRESH_USER, refreshUserOrLogout)
+  const requestChan = yield actionChannel([REFRESH_USER])
+  while (true) {
+    const action = yield take(requestChan)
+    yield fork(refreshUserOrLogout, action)
+  }
 }
+
 function* watchForUserErroredSaga() {
   yield takeLatest(GET_USER.ERRORED, _handleUserError)
 }
@@ -143,11 +149,11 @@ function* watchForUserErroredSaga() {
 export function* loginFlowSaga() {
   yield fork(watchForUserErroredSaga)
   yield fork(watchForRefreshUserOrLogout)
-  yield put(refreshUser())
   yield throttle(
     500,
     LOGIN_WITH_FB_BUTTON_PRESSED,
     _loginOrRegisterWithFacebook
   )
   yield throttle(500, LOGOUT, _logout)
+  yield put(refreshUser())
 }

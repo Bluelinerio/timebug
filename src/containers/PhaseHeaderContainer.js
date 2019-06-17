@@ -52,7 +52,7 @@ const mergeProps = (
 ): Props => {
   const { isStepCompleted, steps } = stateProps
   const { override, step, phase, ...rest } = ownProps
-  const { type, stepId } = step
+  const { type } = step
   const { goBack } = dispatchProps
 
   const title = formatPhaseTitle(type)
@@ -72,12 +72,16 @@ const mergeProps = (
       .filter(step => translateCMSPhaseToStandard(step.type) === phase)
       .map(step => {
         const isCompleted = isStepCompleted(step.number)
-        step._buttonBackgroundColor = backgroundColorFromStep(
+        const _buttonBackgroundColor = backgroundColorFromStep(
           step.type,
           isCompleted
         )
-        step._textColor = getTextColorFromStep(step.type, isCompleted)
-        return step
+        const _textColor = getTextColorFromStep(step.type, isCompleted)
+        return {
+          ...step,
+          _buttonBackgroundColor,
+          _textColor,
+        }
       }),
   }
 }

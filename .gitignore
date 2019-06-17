@@ -104,3 +104,9 @@ config.json
 */fastlane/screenshots
 localScripts/
 deprecatedCode/
+
+android/\.settings/
+
+android/app/\.classpath
+
+android/app/\.settings/

@@ -3,18 +3,17 @@
 
 // @flow
 
-import * as React from 'react';
-import { View, Text, Platform } from 'react-native';
-import glamorous from 'glamorous-native';
-import styles from '../../../styles/dashboard.styles';
-import HighlighRow from '../../../../components/HighlighRow';
+import * as React from 'react'
+import { View, Text, Platform } from 'react-native'
+import styles from '../../../styles/dashboard.styles'
+import HighlighRow from '../../../../components/HighlighRow'
 import {
   hotPink,
   deepBlue,
   lessSaturatedDeepBlue,
-} from '../../../../constants/colors';
-import Entypo from 'react-native-vector-icons/Entypo';
-import Ionicons from 'react-native-vector-icons//Ionicons';
+} from '../../../../constants/colors'
+import Entypo from 'react-native-vector-icons/Entypo'
+import Ionicons from 'react-native-vector-icons//Ionicons'
 
 export const Title = ({ title, ...rest }: { title: string }) => (
   <Text
@@ -30,19 +29,21 @@ export const Title = ({ title, ...rest }: { title: string }) => (
   >
     {title}
   </Text>
-);
+)
 
-export const Container = glamorous.view({
-  flexDirection: 'row',
-  justifyContent: 'center',
-  alignItems: 'center',
-});
+type ParentComponentProps = {
+  children: Array<React.ReactChild>,
+}
 
-export const ContainerHotizontal = glamorous.view({
-  flexDirection: 'column',
-  justifyContent: 'center',
-  alignItems: 'center',
-});
+export const Container = ({ children }: { children: ParentComponentProps }) => (
+  <View>{children}</View>
+)
+
+export const ContainerHotizontal = ({
+  children,
+}: {
+  children: ParentComponentProps,
+}) => <View>{children}</View>
 
 export const CellContainer = ({
   onClose,
@@ -55,7 +56,7 @@ export const CellContainer = ({
       <HighlighRow style={styles.bigSuggestionWithText} {...rest} />
     </View>
   </View>
-);
+)
 
 export const VectorEntypoButton = props => (
   <Entypo.Button
@@ -69,11 +70,11 @@ export const VectorEntypoButton = props => (
     }}
     {...props}
   />
-);
+)
 
 type VectorIoniconsButtonProps = {
   size: number,
-};
+}
 
 export const VectorIoniconsButton = (props: VectorIoniconsButtonProps) => (
   <Ionicons.Button
@@ -87,17 +88,17 @@ export const VectorIoniconsButton = (props: VectorIoniconsButtonProps) => (
     }}
     {...props}
   />
-);
+)
 
 //export const YesButton = props => <VectorEntypoButton name="check" {...props} />
 
 export const YesDisabled = props => (
   <VectorIoniconsButton name="ios-checkmark-outline" size={30} {...props} />
-);
+)
 
 export const YesButton = props => (
   <VectorIoniconsButton name="ios-checkmark-outline" {...props} />
-);
+)
 export const NoButton = props => (
   <VectorIoniconsButton name="ios-close-outline" {...props} />
-);
+)
