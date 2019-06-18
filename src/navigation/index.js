@@ -184,11 +184,7 @@ export const tabConfiguration = {
   options: {
     initialRouteName: routes.tab.initialRouteName,
     tabBarPosition: 'bottom',
-<<<<<<< HEAD
-    swipeEnabled: true,
-=======
     // swipeEnabled: true,
->>>>>>> 9ecc8766958c27e60777a5edbe8cec0507f56ff9
     animationEnabled: true,
     optimizationsEnabled: true,
     navigationOptions: ({ navigation }) => ({
