@@ -1,6 +1,6 @@
 import * as React from 'react';
 import EmojiPickerScreenComponent from './EmojiPickerScreenComponent';
-import { NavigationActions, StackNavigator } from 'react-navigation';
+import { NavigationActions, createStackNavigator } from 'react-navigation';
 import { withProps, compose } from 'recompose';
 import HeaderCloseButton from '../../components/HeaderCloseButton';
 import { submitCheckin } from '../../redux/actions/user.actions';
@@ -42,7 +42,7 @@ EmojiPickerScreenContainer.navigationOptions = ({
   ),
 });
 
-const EmojiPickerScreen = StackNavigator(
+const EmojiPickerScreen = createStackNavigator(
   {
     EmojiPicker: {
       screen: EmojiPickerScreenContainer,

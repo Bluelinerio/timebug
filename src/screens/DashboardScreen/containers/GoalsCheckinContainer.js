@@ -15,6 +15,7 @@ import type { GoToToolParams }            from '2020_redux/actions/nav.actions'
 import { translateCMSPhaseToStandard }    from '2020_services/cms'
 import { stepEnum }                       from '2020_services/cms'
 import type { Step }                      from '2020_services/cms'
+import mapNavigationDispatch              from '2020_HOC/NavigationServiceHOC'
 import type { Props as ComponentProps }   from '../components/GoalCheckinComponent'
 import GoalCheckinComponent                   from '../components/GoalCheckinComponent'
 import tron from 'reactotron-react-native'
@@ -209,6 +210,7 @@ class GoalsCheckinContainer extends React.PureComponent<ContainerProps> {
 export default compose(
   toolStepDataProvider,
   toolDataProvider,
-  connect(mapStateToProps, mapDispatchToProps),
+  mapNavigationDispatch(mapDispatchToProps),
+  connect(mapStateToProps),
   mapProps(merge)
 )(GoalsCheckinContainer)

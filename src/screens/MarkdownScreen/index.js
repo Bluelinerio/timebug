@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { NavigationActions, StackNavigator } from 'react-navigation';
+import { NavigationActions, createStackNavigator } from 'react-navigation';
 import { mapProps, compose } from 'recompose';
 import styles from '../styles';
 import MarkdownScreenComponent from './Components/MarkdownScreenComponent';
@@ -23,7 +23,7 @@ MarkdownScreenContainer.navigationOptions = ({ navigation: { dispatch } }) => ({
   ),
 });
 
-const MarkdownScreen = StackNavigator(
+const MarkdownScreen = createStackNavigator(
   {
     Markdown: {
       screen: MarkdownScreenContainer,

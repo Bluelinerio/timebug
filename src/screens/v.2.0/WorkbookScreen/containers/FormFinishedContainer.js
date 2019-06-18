@@ -2,8 +2,9 @@
 import { compose, mapProps }            from 'recompose'
 import { connect }                      from 'react-redux'
 import selectors                        from '2020_redux/selectors'
-import { linkNavigation }               from '2020_redux/actions/nav.actions'
-import type { LinkedNavigationPayload } from '2020_redux/actions/nav.actions'
+import { goToTool }                     from '2020_redux/actions/nav.actions'
+import type { goToToolParams }          from '2020_redux/actions/nav.actions'
+import mapNavigationDispatch            from '2020_HOC/NavigationServiceHOC'
 import type { Step }                    from '2020_services/cms'
 import FormFinishedContent              from '2020_static/workbookDone/index'
 import FormFinishedComponent            from '../components/FormFinishedComponent'
@@ -14,7 +15,7 @@ type StateProps = {
 }
 
 type DispatchProps = {
-  setupGoToTool: LinkedNavigationPayload => () => any,
+  setupGoToTool: goToToolParams => () => any,
 }
 
 type Props = StateProps &
@@ -23,22 +24,33 @@ type Props = StateProps &
     phase: string,
     stepNumber: string,
     onSelectStep: Step => any,
+    getTool: string => any,
   }
 
 const mapStateToProps = (state: any): StateProps => {
   const steps = selectors.steps(state)
+  const getTool = selectors.getTool
   return {
     steps,
+    getTool,
   }
 }
 
 const mapDispatchToProps = (dispatch: any): DispatchProps => ({
-  setupGoToTool: (params: LinkedNavigationPayload) => () =>
-    dispatch(linkNavigation(params)),
+  setupGoToTool: (params: goToToolParams) => () => dispatch(goToTool(params)),
 })
 
+//TODO: Replace deep link with regular nav
 const merge = (props: Props) => {
-  const { step, steps, phase, stepNumber, onSelectStep, setupGoToTool } = props
+  const {
+    step,
+    steps,
+    phase,
+    stepNumber,
+    onSelectStep,
+    setupGoToTool,
+    getTool,
+  } = props
 
   const totalSteps = Object.keys(steps).length
   const color = mapPhaseToTextAndButtonColor(phase)
@@ -54,10 +66,12 @@ const merge = (props: Props) => {
   const nextStep = hasNext ? steps[step.number + 1] : null
   const nextStepNumber = hasNext ? nextStep.number : 1
 
+  const tool = toolLink ? getTool(toolLink.tool) : null
+
   const toolButton = toolLink
     ? {
       onPress: setupGoToTool({
-        link: `tools/tool?key=${toolLink.tool}`,
+        tool,
       }),
       text: toolLink.text,
     }
@@ -80,6 +94,7 @@ const merge = (props: Props) => {
 }
 
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
+  connect(mapStateToProps),
+  mapNavigationDispatch(mapDispatchToProps),
   mapProps(merge)
 )(FormFinishedComponent)

@@ -1,7 +1,8 @@
-import React                from 'react'
+import React from 'react'
+
 import { TouchableOpacity } from 'react-native'
-import { connect }          from 'react-redux'
-import { goToLogin }        from '../redux/actions/nav.actions'
+import mapNavigationDispatch from '2020_HOC/NavigationServiceHOC'
+import { goToLogin } from '../redux/actions/nav.actions'
 
 type OpenLoginProps = {
   openLogin: () => any,
@@ -16,4 +17,4 @@ const OpenLoginContainer = ({ openLogin, children }: OpenLoginProps) => {
   return <TouchableOpacity onPress={openLogin}>{children}</TouchableOpacity>
 }
 
-export default connect(null, mapDispatchToProps)(OpenLoginContainer)
+export default mapNavigationDispatch(mapDispatchToProps)(OpenLoginContainer)
