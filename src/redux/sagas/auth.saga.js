@@ -16,24 +16,24 @@ import {
   FB_LOGIN_DIALOG_RESPONDED,
   LOGOUT,
   REFRESH_USER,
-} from '../actionTypes'
-import * as actions from '../actions'
-import { initialNotifications } from '../actions/checkin.actions'
+}                                     from '../actionTypes'
+import * as actions                   from '../actions'
+import { initialNotifications }       from '../actions/checkin.actions'
 import { GET_USER, AUTHENTICATE_FB, refreshUser } from '../actions/user.actions'
 import {
   goToV2WorkbookScreen,
   goToWorkbookSkippingStepScreen,
-} from '../actions/nav.actions'
+}                                     from '../actions/nav.actions'
 import {
   authenticateWithFBToken,
   fetchUserWithId,
   isClientEndpoint,
   resetStore,
-} from '../../services/apollo'
-import facebook from '../../services/facebook'
-import AuthStorage from '../../services/authStorage'
-
-import tron from 'reactotron-react-native'
+}                                     from '../../services/apollo'
+import facebook                       from '../../services/facebook'
+import AuthStorage                    from '../../services/authStorage'
+import NavigationService              from '2020_services/navigation'
+import tron                           from 'reactotron-react-native'
 
 function* wipeTokens() {
   yield all([call(AuthStorage.wipeStorage), call(facebook.logOut)])
@@ -120,9 +120,15 @@ function* _loginOrRegisterWithFacebook(payload) {
 
     if (step) {
       if (isV2) {
-        yield put(goToV2WorkbookScreen({ step, phase }))
+        yield call(
+          NavigationService.dispatch,
+          goToV2WorkbookScreen({ step, phase })
+        )
       } else {
-        yield put(goToWorkbookSkippingStepScreen({ step, incompleteFormsIds }))
+        yield call(
+          NavigationService.dispatch,
+          goToWorkbookSkippingStepScreen({ step, incompleteFormsIds })
+        )
       }
     }
   } catch (error) {

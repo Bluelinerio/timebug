@@ -4,13 +4,16 @@ import { mapProps, compose } from 'recompose'
 import { withNavigation }    from 'react-navigation'
 import screen                from './Help'
 import { pop }               from '../../redux/actions/nav.actions'
+import mapNavigationDispatch from '2020_HOC/NavigationServiceHOC'
 import selectors             from '../../redux/selectors'
 
 const mapStateToProps = state => ({
   slides: selectors.formHelpSlides(state),
 })
 
-const dismiss = pop
+const mapDispatchToProps = (dispatch: any) => ({
+  dismiss: () => dispatch(pop()),
+})
 
 const merge = ({ slides, dismiss, navigation }) => {
   const { state: { params: { step } } } = navigation
@@ -22,7 +25,8 @@ const merge = ({ slides, dismiss, navigation }) => {
 }
 
 export default compose(
-  connect(mapStateToProps, { dismiss }),
+  connect(mapStateToProps),
   withNavigation,
+  mapNavigationDispatch(mapDispatchToProps),
   mapProps(merge)
 )(screen)

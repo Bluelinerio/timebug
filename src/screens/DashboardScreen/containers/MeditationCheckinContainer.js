@@ -10,6 +10,7 @@ import { goToTool }                     from '2020_redux/actions/nav.actions'
 import type { GoToToolParams }          from '2020_redux/actions/nav.actions'
 import { stepEnum }                     from '2020_services/cms'
 import type { Step }                    from '2020_services/cms'
+import mapNavigationDispatch            from '2020_HOC/NavigationServiceHOC'
 import { DATE_FORMAT }                  from '2020_constants/constants'
 import { key as toolKey }               from '2020_static/tools/DailyMeditation'
 import CheckinComponent                 from '../components/CheckinComponent'
@@ -105,6 +106,7 @@ export const key = toolKey
 
 export default compose(
   toolDataProvider,
-  connect(mapStateToProps, mapDispatchToProps),
+  mapNavigationDispatch(mapDispatchToProps),
+  connect(mapStateToProps),
   mapProps(merge)
 )(GoalsCheckinContainer)

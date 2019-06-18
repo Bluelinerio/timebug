@@ -69,7 +69,6 @@ class GoalScreenComponent extends React.PureComponent<Props, State> {
 
   onBackButtonPressAndroid = () => {
     const { selectedGoaltype, selectedGoal } = this.state
-    const { navigation } = this.props
     if (selectedGoal) {
       this.setState({ selectedGoal: null })
       //Animate to the left
@@ -80,8 +79,7 @@ class GoalScreenComponent extends React.PureComponent<Props, State> {
       // Animate to the left
       return true
     }
-    navigation.goBack()
-    return true
+    return false
   }
 
   _onSoftwareBackButtonPress = () => {

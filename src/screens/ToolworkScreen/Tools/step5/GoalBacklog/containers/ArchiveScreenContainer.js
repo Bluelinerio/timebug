@@ -6,7 +6,7 @@ import StepDataProvider      from '2020_HOC/ToolStepDataProvider'
 import ArchiveScreen         from '../components/ArchiveScreenComponent'
 
 type Props = {
-  navigationState: any,
+  navigation: any,
   stepData: any,
   data: any, //Tool 5 data
   openGoalsScreen: () => any,

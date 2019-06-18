@@ -1,12 +1,12 @@
 //@flow
-import React from 'react'
+import React                      from 'react'
 import { View, Image, StatusBar } from 'react-native'
-import { HeaderBackButton } from 'react-navigation'
-import UserProfileImageConsumer from '../containers/UserProfileImageConsumer'
-import SettingsScreenIcon from '../containers/SettingsScreenButtonContainer'
-import UserProfileImage from '../containers/UserProfileImageContainer'
-import styles, { bannerColor } from '../styles/components/Banner/mini'
-import { icon } from '../resources/images'
+import { HeaderBackButton }       from 'react-navigation'
+import UserProfileImageConsumer   from '../containers/UserProfileImageConsumer'
+import SettingsScreenIcon         from '../containers/SettingsScreenButtonContainer'
+import UserProfileImage           from '../containers/UserProfileImageContainer'
+import styles, { bannerColor }    from '../styles/components/Banner/mini'
+import { icon }                   from '../resources/images'
 
 type Props = {
   onBackPress: () => any,

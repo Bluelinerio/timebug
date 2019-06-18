@@ -1,11 +1,13 @@
 // @flow
 import { NavigationActions }                             from 'react-navigation'
 import { connect }                                       from 'react-redux'
+import { compose }                                       from 'recompose'
 import PhaseHeader                                       from '../components/PhaseHeader'
 import type { Props }                                    from '../components/PhaseHeader'
 import selectors                                         from '../redux/selectors'
 import { formatPhaseTitle, translateCMSPhaseToStandard } from '../services/cms'
 import type { Step }                                     from '../services/cms'
+import mapNavigationDispatch                             from '2020_HOC/NavigationServiceHOC'
 import {
   getTextColorFromStep,
   backgroundColorFromStep,
@@ -51,9 +53,8 @@ const mergeProps = (
   ownProps: OwnProps
 ): Props => {
   const { isStepCompleted, steps } = stateProps
-  const { override, step, phase, ...rest } = ownProps
+  const { override, step, phase, goBack, ...rest } = ownProps
   const { type } = step
-  const { goBack } = dispatchProps
 
   const title = formatPhaseTitle(type)
   const onBackPress = override ? override : goBack
@@ -86,6 +87,7 @@ const mergeProps = (
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(
-  PhaseHeader
-)
+export default compose(
+  mapNavigationDispatch(mapDispatchToProps),
+  connect(mapStateToProps, null, mergeProps)
+)(PhaseHeader)

@@ -2,39 +2,37 @@
 /* eslint-disable react/display-name */
 
 // @flow
-import React                 from 'react'
-import { Platform }          from 'react-native'
+import React from 'react'
+import { Platform } from 'react-native'
 import {
-  StackNavigator,
-  NavigationActions,
-  TabNavigator,
-  TabBarBottom,
-}                            from 'react-navigation'
+  createStackNavigator,
+  createMaterialTopTabNavigator,
+} from 'react-navigation'
 import {
   tabBarBackground,
   tabBarButtonColor,
   tabBarUnselected,
-}                            from '../constants/colors'
-import TabBarIcon            from '../components/TabBarIcon'
-import TabBarLabel           from '../components/TabBarLabel'
-import HomeScreen            from '../screens/HomeScreen'
-import StepScreen            from '../screens/StepScreen'
-import WorkbookDoneScreen    from '../screens/WorkbookDoneScreen'
-import WorkbookScreen        from '../screens/WorkbookScreen'
-import WalkthroughScreen     from '../screens/WalkthroughScreen'
-import DashboardScreen       from '../screens/DashboardScreen'
-import SettingsTabScreen     from '../screens/SettingsParentContainer'
-import MarkdownScreen        from '../screens/MarkdownScreen'
-import EmojiPickerScreen     from '../screens/EmojiPickerScreen'
-import ToolScreen            from '../screens/MyJourneyScreen'
-import ToolworkScreen        from '../screens/ToolworkScreen'
-import StartScreen           from '../screens/StartScreen'
-import GoalScreen            from '../screens/GoalScreen'
-import GoalStepScreen        from '../screens/GoalStepScreen'
-import AppVersionScreen      from '../screens/AppVersionSelectionScreen'
-import V2WorkbookScreen      from '../screens/v.2.0/WorkbookScreen'
-import HelpScreen            from '../screens/HelpScreen'
-import LoginScreen           from '../screens/LoginScreen'
+} from '../constants/colors'
+import TabBarIcon from '../components/TabBarIcon'
+import TabBarLabel from '../components/TabBarLabel'
+import HomeScreen from '../screens/HomeScreen'
+import StepScreen from '../screens/StepScreen'
+import WorkbookDoneScreen from '../screens/WorkbookDoneScreen'
+import WorkbookScreen from '../screens/WorkbookScreen'
+import WalkthroughScreen from '../screens/WalkthroughScreen'
+import DashboardScreen from '../screens/DashboardScreen'
+import SettingsTabScreen from '../screens/SettingsParentContainer'
+import MarkdownScreen from '../screens/MarkdownScreen'
+import EmojiPickerScreen from '../screens/EmojiPickerScreen'
+import ToolScreen from '../screens/MyJourneyScreen'
+import ToolworkScreen from '../screens/ToolworkScreen'
+import StartScreen from '../screens/StartScreen'
+import GoalScreen from '../screens/GoalScreen'
+import GoalStepScreen from '../screens/GoalStepScreen'
+import AppVersionScreen from '../screens/AppVersionSelectionScreen'
+import V2WorkbookScreen from '../screens/v.2.0/WorkbookScreen'
+import HelpScreen from '../screens/HelpScreen'
+import LoginScreen from '../screens/LoginScreen'
 
 // TODO: Prototype to remove
 import PrototypeNavigator from '../screens/PrototypeScreen'
@@ -70,7 +68,7 @@ export const assignmentFlowConfiguration = {
   },
 }
 
-const AssignmentFlowNavigator = StackNavigator(
+const AssignmentFlowNavigator = createStackNavigator(
   assignmentFlowConfiguration.screens,
   assignmentFlowConfiguration.options
 )
@@ -109,7 +107,7 @@ export const rootConfiguration = {
   },
 }
 
-export const RootNavigator = StackNavigator(
+export const RootNavigator = createStackNavigator(
   rootConfiguration.screens,
   rootConfiguration.options
 )
@@ -136,7 +134,7 @@ export const goalsConfiguration = {
   },
 }
 
-export const goalsNavigator = StackNavigator(
+export const goalsNavigator = createStackNavigator(
   goalsConfiguration.screens,
   goalsConfiguration.options
 )
@@ -157,7 +155,7 @@ const ToolScreenConfiguration: any = {
   },
 }
 
-const ToolFlow = StackNavigator(
+const ToolFlow = createStackNavigator(
   ToolScreenConfiguration.screens,
   ToolScreenConfiguration.options
 )
@@ -185,6 +183,10 @@ export const tabConfiguration = {
   },
   options: {
     initialRouteName: routes.tab.initialRouteName,
+    tabBarPosition: 'bottom',
+    swipeEnabled: false,
+    animationEnabled: true,
+    optimizationsEnabled: true,
     navigationOptions: ({ navigation }) => ({
       tabBarIcon: ({ focused, tintColor }: NavigationOptionsElementProps) => {
         const { routeName } = navigation.state
@@ -207,13 +209,13 @@ export const tabConfiguration = {
       style: {
         backgroundColor: tabBarBackground,
       },
+      showIcon: true,
+      renderIndicator: () => null,
     },
-    tabBarComponent: TabBarBottom,
-    tabBarPosition: 'bottom',
   },
 }
 
-export const RootTabNavigator = TabNavigator(
+export const RootTabNavigator = createMaterialTopTabNavigator(
   tabConfiguration.screens,
   tabConfiguration.options
 )
@@ -244,7 +246,7 @@ export const versionConfiguration = {
   },
 }
 
-export const VersionNavigator = StackNavigator(
+export const VersionNavigator = createStackNavigator(
   versionConfiguration.screens,
   versionConfiguration.options
 )
@@ -279,7 +281,7 @@ export const startConfiguration = {
   },
 }
 
-export const StartNavigator = StackNavigator(
+export const StartNavigator = createStackNavigator(
   startConfiguration.screens,
   startConfiguration.options
 )
@@ -288,25 +290,3 @@ export const StartNavigator = StackNavigator(
 import { fixDebounce } from './util'
 fixDebounce(RootNavigator)
 fixDebounce(AssignmentFlowNavigator)
-// remove once fixed...
-
-const previousGetActionForPathAndParams =
-  RootTabNavigator.router.getActionForPathAndParams
-
-Object.assign(RootTabNavigator.router, {
-  getActionForPathAndParams(path, params) {
-    const key = path.split('/')[1]
-    if (key === 'step') {
-      return NavigationActions.navigate({
-        routeName: 'Profile',
-        action: NavigationActions.navigate({
-          // This child action will get passed to the child router
-          // ProfileScreen.router.getStateForAction to get the child
-          // navigation state.
-          routeName: 'Friends',
-        }),
-      })
-    }
-    return previousGetActionForPathAndParams(path, params)
-  },
-})

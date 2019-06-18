@@ -12,9 +12,11 @@ import { timeToCompleteGoal }            from '2020_forms/forms/content'
 import { FORM_KEYS }                     from '2020_forms/forms/goals'
 import { DATE_FORMAT, TEXT_DATE_FORMAT } from '2020_constants/constants'
 import { stepEnum }                      from '2020_services/cms'
+import mapNavigationDispatch             from '2020_HOC/NavigationServiceHOC'
 import { translateCMSPhaseToStandard }   from '2020_services/cms'
 import BackloggedGoalDetails             from '../components/BackloggedGoalDetails'
-import { getDueDate }                    from '../../common/utils/getDueDateFromFrequency'
+
+import { getDueDate } from '../../common/utils/getDueDateFromFrequency'
 
 type StateProps = {
   formData: {
@@ -55,6 +57,9 @@ const mapStateToProps = (state: any): StateProps => {
 const mapDispatchToProps = (dispatch: any) => ({
   deleteGoal: (payload: DeleteFormValuePayload) =>
     dispatch(deleteSingleFormElement(payload)),
+})
+
+const mapNavigationDispatchToProps = (dispatch: any) => ({
   reopenGoalScreen: (payload: GoToWorkbookParams) => () =>
     dispatch(goToV2WorkbookScreen(payload)),
 })
@@ -143,7 +148,14 @@ const merge = (
   dispatchProps: any,
   ownProps: OwnProps
 ) => {
-  const { goal, data, storeAwardData, tool, unsetGoal } = ownProps
+  const {
+    goal,
+    data,
+    storeAwardData,
+    tool,
+    unsetGoal,
+    reopenGoalScreen,
+  } = ownProps
   const title = goal[FORM_KEYS.form_5_recent_life_goals].value || ''
   const types = goal[FORM_KEYS.form_5_areas_of_life].value || []
   const steps = goal[FORM_KEYS.form_5_steps].value || []
@@ -159,7 +171,7 @@ const merge = (
     }))
     : null
   const frequency = timeToCompleteGoal[time].frequency
-  const { deleteGoal: callDeleteGoal, reopenGoalScreen } = dispatchProps
+  const { deleteGoal: callDeleteGoal } = dispatchProps
   const { steps: formSteps, formData } = stateProps
   const step = formSteps[stepEnum.STEP_5]
   const phase = translateCMSPhaseToStandard(step.type)
@@ -210,5 +222,6 @@ const merge = (
 
 export default compose(
   withNavigation,
+  mapNavigationDispatch(mapNavigationDispatchToProps),
   connect(mapStateToProps, mapDispatchToProps, merge)
 )(BackloggedGoalDetails)

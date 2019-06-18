@@ -2,7 +2,7 @@
 import React from 'react';
 import PrototypeScreen from './containers/PrototypeScreenContainer';
 import {
-  StackNavigator,
+  createStackNavigator,
   HeaderBackButton,
   NavigationActions,
 } from 'react-navigation';
@@ -59,7 +59,7 @@ export const PrototypeNavigatorConfiguration = {
   },
 };
 
-const Navigator = StackNavigator(
+const Navigator = createStackNavigator(
   PrototypeNavigatorConfiguration.screens,
   PrototypeNavigatorConfiguration.options
 );

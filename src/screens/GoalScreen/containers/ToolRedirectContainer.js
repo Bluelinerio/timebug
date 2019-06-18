@@ -7,6 +7,7 @@ import type { GoToToolParams } from '2020_redux/actions/nav.actions'
 import selectors               from '2020_redux/selectors'
 import tool                    from '2020_static/tools/GoalTracker'
 import ToolRedirect            from '../components/ToolRedirect'
+import mapNavigationDispatch   from '2020_HOC/NavigationServiceHOC'
 
 const STEP_NUMBER = '5'
 
@@ -36,7 +37,8 @@ const merge = (props: any) => {
 }
 
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
+  connect(mapStateToProps),
+  mapNavigationDispatch(mapDispatchToProps),
   mapProps(merge),
   withNavigation
 )(ToolRedirect)

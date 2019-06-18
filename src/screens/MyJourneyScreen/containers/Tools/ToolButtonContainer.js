@@ -1,6 +1,7 @@
 //@flow
 import { connect }                     from 'react-redux'
 import { compose }                     from 'recompose'
+import mapNavigationDispatch           from '2020_HOC/NavigationServiceHOC'
 import ToolButton, { ToolButtonProps } from '../../components/Tools/ToolButton'
 import {
   mapPhaseAndCompletionToKey,
@@ -29,8 +30,7 @@ const merge = (
   dispatchProps: ToolButtonDispatchProps,
   ownProps: ToolButtonContainerProps
 ): ToolButtonProps => {
-  const { stepColors, step, tool } = ownProps
-  const { goToTool } = dispatchProps
+  const { stepColors, step, tool, goToTool } = ownProps
 
   const { icon } = step
   const { title, subtitle, content, phase } = tool
@@ -48,6 +48,4 @@ const merge = (
   }
 }
 
-export default compose(connect(null, mapDispatchToProps, merge))(
-  ToolButton
-)
+export default compose(mapNavigationDispatch(mapDispatchToProps), connect(null, null, merge))(ToolButton)

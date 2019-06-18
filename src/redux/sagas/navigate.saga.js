@@ -1,15 +1,16 @@
 // @flow
-import { put, select, takeLatest, call } from 'redux-saga/effects'
-import { NavigationActions }             from 'react-navigation'
+import { select, takeLatest, call }     from 'redux-saga/effects'
+import { NavigationActions }            from 'react-navigation'
 import {
   GO_TO_HOME_SCREEN,
   SAGA_NAVIGATE,
   LINK_NAVIGATION,
-}                                        from '../actionTypes'
-import { goToStartScreen, goToTool }     from '../actions/nav.actions'
-import type { goToToolParams }           from '../actions/nav.actions'
-import type { LinkedNavigationPayload }  from '../actions/nav.actions'
-import selectors                         from '../selectors'
+}                                       from '../actionTypes'
+import { goToStartScreen, goToTool }    from '../actions/nav.actions'
+import type { goToToolParams }          from '../actions/nav.actions'
+import type { LinkedNavigationPayload } from '../actions/nav.actions'
+import NavigationService                from '2020_services/navigation'
+import selectors                        from '../selectors'
 
 const handleUrl = (
   link: string
@@ -58,7 +59,7 @@ function* deeplinkNavigation({
 }) {
   try {
     const action = yield call(handleLink, payload)
-    yield put(action)
+    yield call(NavigationService.dispatch, action)
   } catch (err) {
     console.log(err)
   }
@@ -67,7 +68,7 @@ function* deeplinkNavigation({
 function* onNavigate(action) {
   try {
     const to = yield select(action.createNavigationAction)
-    yield put(NavigationActions.navigate(to))
+    yield call(NavigationService.navigate, to)
   } catch (error) {
     console.log(error)
   }

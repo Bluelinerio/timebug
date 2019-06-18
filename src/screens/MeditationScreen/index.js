@@ -6,7 +6,7 @@
 import * as React from 'react';
 import { compose, mapProps } from 'recompose';
 import MeditationScreenComponent from './components/MeditationScreenComponent';
-import { StackNavigator, NavigationActions } from 'react-navigation';
+import { createStackNavigator, NavigationActions } from 'react-navigation';
 import styles from '../styles';
 import HeaderCloseButton from '../../components/HeaderCloseButton';
 import { withNavigationAndMeditation } from '../../HOC';
@@ -54,7 +54,7 @@ MeditationScreenContainer.navigationOptions = ({
   ),
 });
 
-const MeditationScreen = StackNavigator(
+const MeditationScreen = createStackNavigator(
   {
     Markdown: {
       screen: MeditationScreenContainer,
