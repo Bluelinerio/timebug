@@ -1,11 +1,12 @@
 //@flow
 import React                 from 'react'
-import { ScrollView }        from 'react-native'
+import { ScrollView, View }  from 'react-native'
 import { SafeAreaView }      from 'react-navigation'
 import User                  from '2020_containers/User'
 import Banner                from '2020_components/MinifiedBanner'
 import styles                from '../styles'
 import ToolScreenContent     from '../containers/ToolScreenContentContainer'
+import PhaseProgress         from '../containers/PhaseProgressContainer'
 import ScreenLockedComponent from './ScreenLockedComponent'
 
 const shouldShowUserProgressWithUser = (user: any): boolean =>
@@ -21,8 +22,12 @@ class MyJourneyScreenComponent extends React.PureComponent {
         <ScrollView
           ref={ref => (this._scrollView = ref)}
           style={[styles.container, styles.background]}
+          stickyHeaderIndices={[0]}
         >
-          <Banner />
+          <View style={styles.stickyHeader}>
+            <Banner />
+            <PhaseProgress />
+          </View>
           <User>
             {({ userState, isLoggedIn }) =>
               isLoggedIn ? (
