@@ -117,6 +117,7 @@ const _getUnlockedTools = () => {
       unlockedToolCache &&
       previouslyCompletedStepList &&
       areArraysEqual(stepNumberList, previouslyCompletedStepList)
+
     if (shouldUseCacheData) return unlockedToolCache
 
     const unlockedTools = ToolLocks.reduce((unlockedToolList, lockedTool) => {
@@ -129,8 +130,11 @@ const _getUnlockedTools = () => {
       if (areConditionsSatisfied) return [...unlockedToolList, lockedTool.tool]
       return unlockedToolList
     }, [])
+
     previouslyCompletedStepList = stepNumberList
+
     unlockedToolCache = unlockedTools
+
     return unlockedTools
   }
 }
