@@ -8,7 +8,7 @@ class SignInButton extends React.PureComponent {
     return (
       <OpenLoginContainer>
         <View style={styles.signInButton}>
-          <Text style={styles.signInText}>Press here to sign in!</Text>
+          <Text style={styles.signInText}>Log In</Text>
         </View>
       </OpenLoginContainer>
     )

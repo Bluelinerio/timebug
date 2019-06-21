@@ -52,7 +52,7 @@ class StartScreenComponent extends PureComponent<Props> {
                   <GreetingComponent />
                   <View style={styles.notLoggedContainer}>
                     <Text style={styles.greetingSub}>
-                      Please sign up to get the most out of the app
+                      Please log in with your Facebook account to begin using the app.
                     </Text>
                     <SignInButton />
                   </View>
