@@ -172,6 +172,7 @@ export default StyleSheet.create({
     flex: 1,
     height: '16%',
     maxHeight: '16%',
+    minHeight: '16%',
     flexDirection: 'row',
     backgroundColor: PHASE_1_BAR,
     paddingHorizontal: 2,
