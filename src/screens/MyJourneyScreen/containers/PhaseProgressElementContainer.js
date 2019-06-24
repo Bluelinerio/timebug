@@ -1,11 +1,11 @@
 //@flow
-import { connect }           from 'react-redux'
-import { connectContext }    from 'react-connect-context'
-import { compose }           from 'recompose'
-import selectors             from '../../../redux/selectors'
+import { connect } from 'react-redux'
+import { connectContext } from 'react-connect-context'
+import { compose } from 'recompose'
+import selectors from '../../../redux/selectors'
 import PhaseProgressComponent, {
   PhaseProgressComponentProps,
-}                            from '../components/Tools/PhaseProgressComponent'
+} from '../components/Tools/PhaseProgressComponent'
 import {
   phaseForUserForm,
   phaseNumberForPhase,
@@ -13,9 +13,18 @@ import {
   MEDITATION,
   SELF_ASSESSMENT,
   VISION_CREATION,
-}                            from '../../../services/cms'
+} from '../../../services/cms'
 import { progressFillColor } from '../styles'
-import { PhaseConsumer }     from '../context/PhaseContext'
+import { PhaseConsumer } from '../context/PhaseContext'
+import { getAmountOfTools, getUnlockedTools } from '2020_services/tools'
+
+const [meditation, self_assessment, vision_creation] = getAmountOfTools()
+
+const amountOfTools = {
+  [MEDITATION]: meditation,
+  [SELF_ASSESSMENT]: self_assessment,
+  [VISION_CREATION]: vision_creation,
+}
 
 /**
  * UI reducer param key
@@ -30,6 +39,7 @@ type PhaseProgressState = {
     original: any,
     override?: any,
   },
+  allTools: Array<any>,
 }
 
 type PhaseProgressContainerProps = {
@@ -58,6 +68,10 @@ const mapStateToProps = (state: any): PhaseProgressState => {
   const originalColors = selectors.phaseColors(state)
   const newColors = selectors.overridePhaseColors(state)
 
+  const completedSteps = selectors.getCompletedSteps(state)
+
+  const allTools = getUnlockedTools(completedSteps)
+
   return {
     sortedStepsWithForms,
     user,
@@ -66,6 +80,7 @@ const mapStateToProps = (state: any): PhaseProgressState => {
       original: originalColors,
       override: newColors,
     },
+    allTools,
   }
 }
 
@@ -74,7 +89,7 @@ const mergeProps = (
   dispatchProps: PhaseProgressDispatchProps,
   ownProps: PhaseProgressContainerProps
 ): PhaseProgressComponentProps => {
-  const { sortedStepsWithForms, user, isLoggedIn, colors } = stateProps
+  const { sortedStepsWithForms, user, isLoggedIn, colors, allTools } = stateProps
   const { phase, selectPhase, selectedPhase } = ownProps
 
   const phaseNumber = phaseNumberForPhase({ phase })
@@ -104,6 +119,10 @@ const mergeProps = (
       ? colors.override[phase].complete
       : colors.original[phase]
 
+  const amountOfToolsForPhase = amountOfTools[phase]
+
+  const unlockedToolsForPhase = allTools.filter(tool => tool.phase === phase).length
+
   return {
     phase: mapPhaseToName({ phase }),
     phaseNumber,
@@ -112,6 +131,8 @@ const mergeProps = (
     unfilledColor,
     onPhasePress,
     isSelected: selectedPhase === phase,
+    amountOfToolsForPhase,
+    unlockedToolsForPhase,
     ...stepsData,
   }
 }

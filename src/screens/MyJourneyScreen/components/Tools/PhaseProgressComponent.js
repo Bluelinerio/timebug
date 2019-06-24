@@ -1,9 +1,8 @@
 //@flow
-import React                             from 'react'
-import { View, Text, TouchableOpacity }  from 'react-native'
+import React                                        from 'react'
+import { View, Text, TouchableOpacity }             from 'react-native'
 import { iconColor, phaseProgressStyles as styles } from '../../styles'
-import Icon                              from 'react-native-vector-icons/dist/Ionicons'
-import ProgressBar                       from 'react-native-progress/Bar'
+import Icon                                         from 'react-native-vector-icons/dist/Ionicons'
 
 export type PhaseProgressComponentProps = {
   phase: string,
@@ -15,6 +14,8 @@ export type PhaseProgressComponentProps = {
   unfilledColor: string,
   phaseColor: string,
   isSelected: boolean,
+  amountOfToolsForPhase: number,
+  unlockedToolsForPhase: number,
 }
 
 class PhaseProgressComponent extends React.PureComponent<
@@ -32,6 +33,8 @@ class PhaseProgressComponent extends React.PureComponent<
       phaseColor,
       boolean,
       isSelected,
+      amountOfToolsForPhase,
+      unlockedToolsForPhase
     } = this.props
     return (
       <TouchableOpacity
@@ -44,12 +47,13 @@ class PhaseProgressComponent extends React.PureComponent<
           >{`Phase ${phaseNumber}:`}</Text>
           <Text style={[styles.phaseText, styles.strong]}>{`${phase}`}</Text>
         </View>
-        {
-          isSelected && 
-            <View style={styles.secondaryArea}>
-              <Icon name={'md-arrow-dropup'} color={iconColor} size={18} />
-            </View>
-        }
+        <View style={styles.secondaryArea}>
+          <Text style={styles.phaseProportion}>
+            {!!unlockedToolsForPhase && unlockedToolsForPhase > 0
+              ? `${unlockedToolsForPhase} out of ${amountOfToolsForPhase}`
+              : `${amountOfToolsForPhase} tools`}
+          </Text>
+        </View>
       </TouchableOpacity>
     )
   }

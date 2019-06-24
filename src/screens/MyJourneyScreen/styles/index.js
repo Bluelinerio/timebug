@@ -4,10 +4,12 @@ import {
   sanFranciscoWeights,
   robotoWeights,
 } from 'react-native-typography'
-import { azure, paleBlue, white2 } from '../../../constants/colors'
+import { azure, paleBlue, white2, gray300, gray500 } from '../../../constants/colors'
 
 const fontColor = white2
 export const iconColor = white2
+export const lockedColor = gray300
+export const lockedTextColor = gray500
 
 export const stylesStep1 = {
   formContainer: {
@@ -180,7 +182,7 @@ export const phaseProgressStyles = StyleSheet.create({
   },
   phaseProportion: {
     color: fontColor,
-    fontSize: 8,
+    fontSize: 11,
     fontFamily: 'Metropolis',
   },
   strong: {
