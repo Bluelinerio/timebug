@@ -1,11 +1,15 @@
 // @flow
-import * as React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import LoginWithFBButtonContainer from './LoginWithFbButtonContainer';
+
+/**
+ * Deprecated
+ */
+import * as React from 'react'
+import { View, Text, StyleSheet } from 'react-native'
+import LoginWithFBButtonContainer from './LoginWithFbButtonContainer'
 
 const UserAnonymousError = ({
-  title = 'OOOOUPS.....',
-  message = 'You need to be logged in to be user this screen.',
+  title = 'Whoops.....',
+  message = 'You need to be logged in to view this screen.',
 }: {
   title: string,
   message: string,
@@ -19,7 +23,7 @@ const UserAnonymousError = ({
     </Text>
     <LoginWithFBButtonContainer />
   </View>
-);
+)
 
 const styles = StyleSheet.create({
   container: {
@@ -28,6 +32,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-});
+})
 
-export default UserAnonymousError;
+export default UserAnonymousError

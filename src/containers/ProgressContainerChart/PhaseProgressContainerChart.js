@@ -1,4 +1,8 @@
 // @flow
+
+/**
+ * Parent component to display charts for the 3 main Phases
+ */
 import { connect }              from 'react-redux'
 import selectors                from '../../redux/selectors'
 import {

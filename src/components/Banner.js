@@ -1,14 +1,18 @@
 /* @flow */
 
-import React from 'react'
-import { Text, View } from 'react-native'
-import Icon from 'react-native-vector-icons/MaterialIcons'
-import moment from 'moment'
-import VerticalGradient from '../containers/VerticalGradient'
+/**
+ * This banner has been deprecated in favor of the minified banner
+ */
+
+import React                    from 'react'
+import { Text, View }           from 'react-native'
+import Icon                     from 'react-native-vector-icons/MaterialIcons'
+import moment                   from 'moment'
+import VerticalGradient         from '../containers/VerticalGradient'
 import UserProfileImageConsumer from '../containers/UserProfileImageConsumer'
-import styles from '../screens/styles/dashboard.styles'
-import User from '../containers/User'
-import UserProfileImage from '../containers/UserProfileImageContainer'
+import styles                   from '../screens/styles/dashboard.styles'
+import User                     from '../containers/User'
+import UserProfileImage         from '../containers/UserProfileImageContainer'
 
 type BannerProps = {
   goBack: any => any,
@@ -36,9 +40,6 @@ const BackButton = ({ onPress }: BackButtonProps) => {
   )
 }
 
-/**
- * This banner has been deprecated in favor of the minified banner
- */
 const Banner = ({ goBack, root = true }: BannerProps) => {
   return (
     <View>

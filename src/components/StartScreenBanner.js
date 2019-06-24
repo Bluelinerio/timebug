@@ -1,14 +1,20 @@
 //@flow
-import React from 'react';
-import { Text, View, Image, StatusBar } from 'react-native';
-import UserProfileImageConsumer from '../containers/UserProfileImageConsumer';
-import styles, { bannerColor } from '../styles/components/StartScreenBanner';
-import User from '../containers/User';
-import UserProfileImage from '../containers/UserProfileImageContainer';
-import { icon } from '../resources/images';
+
+/**
+ * Deprecated
+ */
+
+import React                            from 'react'
+import { Text, View, Image, StatusBar } from 'react-native'
+import UserProfileImageConsumer         from '../containers/UserProfileImageConsumer'
+import styles, { bannerColor }          from '../styles/components/StartScreenBanner'
+import User                             from '../containers/User'
+import UserProfileImage                 from '../containers/UserProfileImageContainer'
+import { icon }                         from '../resources/images'
 
 const firstName = (user: { name: string }): string =>
-  user ? (user.name ? user.name.split(' ')[0] : '') : '';
+  user ? (user.name ? user.name.split(' ')[0] : '') : ''
+
 
 const StartScreenBanner = () => {
   return (
@@ -37,7 +43,7 @@ const StartScreenBanner = () => {
                 <Text
                   style={[styles.bannerTitle, styles.strong, styles.headerText]}
                 >{`Welcome${userState ? `${firstName(userState)}` : ``}`}</Text>
-              );
+              )
             }}
           </User>
           <Text style={[styles.thin, styles.headerText]}>
@@ -46,7 +52,7 @@ const StartScreenBanner = () => {
         </View>
       </View>
     </View>
-  );
-};
+  )
+}
 
-export default StartScreenBanner;
+export default StartScreenBanner

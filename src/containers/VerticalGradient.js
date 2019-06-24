@@ -1,6 +1,6 @@
-import React from 'react'
+import React              from 'react'
 import styles, { colors } from '../styles/components/Gradient'
-import LinearGradient from 'react-native-linear-gradient'
+import LinearGradient     from 'react-native-linear-gradient'
 
 type Props = {
   colorStart?: string,

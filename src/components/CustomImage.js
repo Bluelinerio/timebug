@@ -8,6 +8,11 @@ type Props = {
   source: string,
 }
 
+
+/**
+ * @class CustomImage
+ * This class is used to render url SVG's, all step icons are built using this class
+ */
 class CustomImage extends React.PureComponent<Props> {
   render() {
     const { source, style, ...rest } = this.props

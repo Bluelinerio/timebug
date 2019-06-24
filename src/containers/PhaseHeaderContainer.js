@@ -1,4 +1,11 @@
 // @flow
+
+/**
+ *
+ * Container for The PhaseHeader component
+ *
+ */
+
 import { NavigationActions }                             from 'react-navigation'
 import { connect }                                       from 'react-redux'
 import { compose }                                       from 'recompose'

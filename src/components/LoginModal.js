@@ -1,3 +1,8 @@
+//@flow
+
+/**
+ * Deprecated
+ */
 import React from 'react';
 import {
   View,

@@ -68,6 +68,10 @@ const PhaseHeaderButton = compose(ModelHOC, mergeProps)(
   UnconnectedPhaseHeaderButton
 )
 
+/**
+ * @class PhaseHeader
+ * This Component is used on v2 Workbook, has a list of all the steps of a phase and allows navigation between them
+ */
 class PhaseHeader extends React.PureComponent<Props> {
   _onPressStep = step => {
     const { onSelectStep } = this.props

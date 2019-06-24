@@ -9,9 +9,7 @@ import styles                    from '../styles'
 
 type Props = ToolProps & {
   selectedSection: string,
-  setMenu: () => any,
-  setCheckin: () => any,
-  setWeeklyLog: () => any,
+  changeSection: (string) => null
 }
 
 class EnergyLevelsScreen extends React.PureComponent<Props> {

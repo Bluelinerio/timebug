@@ -3,7 +3,6 @@ import { View }         from 'react-native'
 import Video            from 'react-native-video'
 import DefaultIndicator from './DefaultIndicator'
 import ControlBar       from './ControlBar'
-
 import styles           from '../styles/components/AudioVideoComponent'
 
 export const PENDING = 'pending'

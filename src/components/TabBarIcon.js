@@ -29,6 +29,10 @@ const mapRouteToIcon = routeName => {
   }
 }
 
+/**
+ * @function TabBarIcon
+ * React navigation tab bar icons
+ */
 const TabBarIcon = ({ routeName, focused, tintColor }: TabBarIconProps) => {
   const iconName = mapRouteToIcon(routeName, focused)
   if (routeName === routes.tab.RootNavigator) {

@@ -1,8 +1,8 @@
-import React from 'react';
-import { View, ScrollView, Text } from 'react-native';
-import { SafeAreaView } from 'react-navigation';
-import styles from '../styles/components/MissingUserScreen';
-import Banner from './MinifiedBanner';
+import React from 'react'
+import { View, ScrollView, Text } from 'react-native'
+import { SafeAreaView } from 'react-navigation'
+import styles from '../styles/components/MissingUserScreen'
+import Banner from './MinifiedBanner'
 
 const MissingUserScreen = () => {
   return (
@@ -17,7 +17,7 @@ const MissingUserScreen = () => {
         </View>
       </ScrollView>
     </SafeAreaView>
-  );
-};
+  )
+}
 
-export default MissingUserScreen;
+export default MissingUserScreen

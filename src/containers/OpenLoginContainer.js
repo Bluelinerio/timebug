@@ -1,8 +1,8 @@
-import React from 'react'
-
-import { TouchableOpacity } from 'react-native'
+// @flow
+import React                 from 'react'
+import { TouchableOpacity }  from 'react-native'
 import mapNavigationDispatch from '2020_HOC/NavigationServiceHOC'
-import { goToLogin } from '../redux/actions/nav.actions'
+import { goToLogin }         from '../redux/actions/nav.actions'
 
 type OpenLoginProps = {
   openLogin: () => any,

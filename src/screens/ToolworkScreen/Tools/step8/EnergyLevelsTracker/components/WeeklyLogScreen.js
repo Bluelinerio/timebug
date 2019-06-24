@@ -1,11 +1,11 @@
 // @flow
 import React from 'react'
 import ChartArea from '../containers/ChartAreaContainer'
+import type { ToolProps } from '../../../types'
 
-type Props = {
-  data: any,
-  tool: any,
-  storeAwardData: (value: any, tool: any) => any,
+type Props = ToolProps & {
+  setAwardData: undefined,
+  tool: undefined,
 }
 
 class WeeklyLogScreen extends React.PureComponent<Props> {

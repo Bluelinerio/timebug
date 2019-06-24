@@ -1,7 +1,7 @@
 // @flow
-import * as React                                     from 'react'
+import * as React                            from 'react'
 import { View, Platform, ActivityIndicator } from 'react-native'
-import { WebView } from 'react-native-webview'
+import { WebView }                           from 'react-native-webview'
 
 type Props = {
   style: {},

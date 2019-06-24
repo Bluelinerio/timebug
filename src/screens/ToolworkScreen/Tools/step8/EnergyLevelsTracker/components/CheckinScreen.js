@@ -1,14 +1,11 @@
 // @flow
-import React             from 'react'
-import { View }          from 'react-native'
-import CheckinFormScreen from '../containers/CheckinFormScreenContainer'
-import styles            from '../styles'
+import React              from 'react'
+import { View }           from 'react-native'
+import CheckinFormScreen  from '../containers/CheckinFormScreenContainer'
+import styles             from '../styles'
+import type { ToolProps } from '../../../types'
 
-type Props = {
-  data: any,
-  tool: any,
-  storeAwardData: (value: any, tool: any) => any,
-}
+type Props = ToolProps
 
 class CheckinScreen extends React.PureComponent<Props> {
   render() {

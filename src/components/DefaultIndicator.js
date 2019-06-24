@@ -10,6 +10,10 @@ type Props = {
   container?: boolean,
 }
 
+/**
+ * @class DefaultIndicator
+ * This class is the default loader of the app, renders an ActivityIndicator with a timebug background
+ */
 class DefaultIndicator extends React.PureComponent<Props> {
   render() {
     const { size, color, container = true } = this.props

@@ -14,7 +14,6 @@ type Props = {
 
 const initialContextState: contextState = {
   selectedSection: SECTIONS.MENU,
-  sections: Object.keys(SECTIONS),
 }
 
 const { Consumer: SectionConsumer, Provider } = React.createContext(

@@ -11,6 +11,10 @@ export type IconProps = {
   viewBox?: string,
 }
 
+/**
+ * @class Icon
+ * Wrapper component for manually built icons in app
+ */
 class Icon extends React.PureComponent<IconProps> {
   render() {
     return <SvgIcon {...this.props} svgs={svgs} />

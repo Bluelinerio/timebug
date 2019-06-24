@@ -48,6 +48,10 @@ export type GridProps = {
 
 const defaulSpacingRatio = 0.1
 
+/**
+ * @function Grid
+ * Renders a grid with evenly sized children
+ */
 export default (props: GridProps) => {
   const containerWidth = props.width || Dimensions.get('window').width
 
