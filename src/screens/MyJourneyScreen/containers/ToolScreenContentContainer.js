@@ -1,18 +1,19 @@
 //@flow
-import invariant             from 'invariant'
-import { connect }           from 'react-redux'
-import { connectContext }    from 'react-connect-context'
-import { compose, mapProps } from 'recompose'
-import selectors             from '2020_redux/selectors'
-import { getUnlockedTools }  from '2020_services/tools'
-import { PhaseConsumer }     from '../context/PhaseContext'
-import type { ContextState } from '../context/PhaseContext'
-import ToolScreenContent     from '../components/ToolScreenContent'
+import invariant                         from 'invariant'
+import { connect }                       from 'react-redux'
+import { connectContext }                from 'react-connect-context'
+import { compose, mapProps }             from 'recompose'
+import selectors                         from '2020_redux/selectors'
+import { getUnlockedTools, getAllTools } from '2020_services/tools'
+import { PhaseConsumer }                 from '../context/PhaseContext'
+import type { ContextState }             from '../context/PhaseContext'
+import ToolScreenContent                 from '../components/ToolScreenContent'
 
 type MappedProps = {
   steps: Array<any>,
   stepColors: any,
   tools: Array<any>,
+  lockedTools: Array<any>,
 }
 
 const mapStateToProps = (state: any): MappedProps => {
@@ -38,14 +39,21 @@ const mapStateToProps = (state: any): MappedProps => {
 }
 
 const merge = (props: MappedProps & ContextState) => {
-  const { steps, stepColors, tools: allTools, selectedPhase } = props
+  const { steps, stepColors, tools: allUnlockedTools, selectedPhase } = props
 
-  const tools = allTools.filter(tool => tool.phase === selectedPhase)
+  const tools = allUnlockedTools.filter(tool => tool.phase === selectedPhase)
+
+  const allTools = getAllTools()
+
+  const lockedTools = allTools
+    .filter(tool => tool.phase === selectedPhase)
+    .filter(tool => !tools.find(t => t.key === tool.key))
 
   return {
     steps,
     stepColors,
     tools,
+    lockedTools,
   }
 }
 

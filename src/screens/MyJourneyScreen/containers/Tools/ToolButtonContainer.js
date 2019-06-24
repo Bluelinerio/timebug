@@ -19,6 +19,7 @@ type ToolButtonContainerProps = {
   user: any,
   stepColors: any,
   tool: any,
+  locked?: boolean,
 }
 const mapDispatchToProps = (dispatch: any): ToolButtonDispatchProps => ({
   goToTool: (params: GoToToolParams) => dispatch(goToTool(params)),
@@ -30,7 +31,7 @@ const merge = (
   dispatchProps: ToolButtonDispatchProps,
   ownProps: ToolButtonContainerProps
 ): ToolButtonProps => {
-  const { stepColors, step, tool, goToTool } = ownProps
+  const { stepColors, step, tool, goToTool, locked = false } = ownProps
 
   const { icon } = step
   const { title, subtitle, content, phase } = tool
@@ -45,6 +46,7 @@ const merge = (
     tool,
     containerBackgroundColor: stepColors[mapPhaseAndCompletionToKey(phase)],
     textStyle: getTextColorForPhase(phase),
+    locked,
   }
 }
 
