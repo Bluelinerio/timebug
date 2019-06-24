@@ -1,5 +1,5 @@
-import { connect } from 'react-redux';
-import { TouchableOpacity, Alert } from 'react-native';
+import { connect }                 from 'react-redux'
+import { TouchableOpacity, Alert } from 'react-native'
 
 const onPress = () => dispatch =>
   Alert.alert(
@@ -17,8 +17,8 @@ const onPress = () => dispatch =>
       },
     ],
     { cancelable: false }
-  );
+  )
 
-const LogoutButtonContainer = connect(null, { onPress })(TouchableOpacity);
+const LogoutButtonContainer = connect(null, { onPress })(TouchableOpacity)
 
-export default LogoutButtonContainer;
+export default LogoutButtonContainer

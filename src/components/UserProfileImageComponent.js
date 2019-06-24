@@ -1,3 +1,4 @@
+// @flow
 import React           from 'react'
 import { View, Image } from 'react-native'
 
@@ -6,6 +7,10 @@ type UserProfileImageProps = {
   source: string,
 }
 
+/**
+ * @function UserProfileImageComponent
+ * Component used as the avatar
+ */
 const UserProfileImageComponent = ({
   styles,
   source,

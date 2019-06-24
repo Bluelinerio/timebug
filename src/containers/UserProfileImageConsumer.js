@@ -1,13 +1,17 @@
 /* @flow */
-import React from 'react'
-import User from './User'
+import React                 from 'react'
+import User                  from './User'
 import LogoutButtonContainer from './LogoutButtonContainer'
-import OpenLoginContainer from './OpenLoginContainer'
+import OpenLoginContainer    from './OpenLoginContainer'
 
 type Props = {
   children: ({ uri: string }) => React.Node | [React.Node],
 }
 
+/**
+ * @class UserProfileImageConsumer 
+ * Renders the user avatar or the default avatar and makes them clickable to login or logout of the app
+ */
 class UserProfileImageConsumer extends React.PureComponent<Props> {
   render() {
     const { children } = this.props
@@ -25,7 +29,6 @@ class UserProfileImageConsumer extends React.PureComponent<Props> {
               </LogoutButtonContainer>
             )
           else
-            //TODO: REMOVE AND REPLACE WITH ACTUAL PLACEHOLDER
             return (
               <OpenLoginContainer>
                 {children({

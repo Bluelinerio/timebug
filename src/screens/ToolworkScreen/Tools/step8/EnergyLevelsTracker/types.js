@@ -68,18 +68,20 @@ export type ToolValue = {
   value: any,
 }
 
-export type DataSet = Array<DataPoint> //Set of Datapoints ordered by the time they happened belonging to a single day
-
 export type DataPoint = {
   level: number, // Energy level for said data point
   time: number, // Time unit in decimal value for said data point, it's the value from the minutes division of the day from 0 to 24
 }
+
+export type DataSet = Array<DataPoint> //Set of Datapoints ordered by the time they happened belonging to a single day
 
 export type Data = {
   physicalData: DataSet,
   emotionalData: DataSet,
   spiritualData: DataSet,
 }
+
+export type ChartData = Data
 
 export type ChartSpec = {
   title: string,

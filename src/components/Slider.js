@@ -1,7 +1,12 @@
+// @flow
 import * as React from 'react'
 import { StyleSheet, Dimensions } from 'react-native'
-import Slider from '@react-native-community/slider';
+import Slider from '@react-native-community/slider'
 
+/**
+ * @function StyledSlider
+ * Slider component Wrapper
+ */
 const StyledSlider = ({
   color,
   value,

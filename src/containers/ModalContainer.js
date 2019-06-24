@@ -1,6 +1,12 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import ModalComponent from '../components/ModalComponent'
+// @flow
+
+/**
+ * Deprecated
+ */
+
+import React                     from 'react'
+import { connect }               from 'react-redux'
+import ModalComponent            from '../components/ModalComponent'
 import { openModal, closeModal } from '../redux/actions/modal.actions'
 
 type ModalState = {

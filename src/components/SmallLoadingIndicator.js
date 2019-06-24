@@ -2,7 +2,13 @@
 import * as React                        from 'react'
 import { View, Text, ActivityIndicator } from 'react-native'
 
-const SmallLoadingIndicator = ({ message = '' }: { message: ?string }) => (
+type Props = { message: ?string }
+
+/**
+ * @function SmallLoadingIndicator
+ * @param {Props} param0
+ */
+const SmallLoadingIndicator = ({ message = '' }: Props) => (
   <View
     style={{
       flex: 1,

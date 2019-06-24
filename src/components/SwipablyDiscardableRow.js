@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
-import { RectButton } from 'react-native-gesture-handler';
-import Swipeable from 'react-native-gesture-handler/Swipeable';
+import React, { Component } from 'react'
+import { StyleSheet }       from 'react-native'
+import { RectButton }       from 'react-native-gesture-handler'
+import Swipeable            from 'react-native-gesture-handler/Swipeable'
 
 export default class SwipablyDiscardableRow extends Component<{
   children: React.Node,
   onClose: () => void,
 }> {
-  close = () => this._swipeableRow.close();
+  close = () => this._swipeableRow.close()
   render() {
-    const { children, onClose } = this.props;
+    const { children, onClose } = this.props
     return (
       <Swipeable
         ref={c => (this._swipeableRow = c)}
@@ -27,7 +27,7 @@ export default class SwipablyDiscardableRow extends Component<{
       >
         {children}
       </Swipeable>
-    );
+    )
   }
 }
 
@@ -38,4 +38,4 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
   },
-});
+})

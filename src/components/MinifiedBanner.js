@@ -13,6 +13,10 @@ type Props = {
   backButton: boolean,
 }
 
+/**
+ * @class MinifiedBanner
+ * Most common header type in app
+ */
 class MinifiedBanner extends React.PureComponent<Props> {
   render() {
     const { onBackPress = null, backButton = false } = this.props

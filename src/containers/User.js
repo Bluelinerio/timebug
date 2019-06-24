@@ -1,12 +1,19 @@
 // @flow
-import * as React from 'react'
-import { connect } from 'react-redux'
-import { getUserState } from '../redux/selectors/rootReducer.selectors'
+
+/**
+ * This Component basically allows the following things
+ * 1) Switch rendering components depending on the state of the user object in redux
+ * 2) Provide the user state to it's children
+ */
+
+import * as React         from 'react'
+import { connect }        from 'react-redux'
+import { getUserState }   from '../redux/selectors/rootReducer.selectors'
 import {
   UNDETERMINED,
   ANONYMOUS,
   AUTHENTICATING,
-} from '../services/apollo/models'
+}                         from '../services/apollo/models'
 import type { UserState } from '../services/apollo/models'
 
 type Props = {

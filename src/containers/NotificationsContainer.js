@@ -1,4 +1,13 @@
 // @flow
+
+/**
+ *
+ * This file is meant to expose a container to initialize the singleton notifications service and to assign it's callbacks,
+ * It's inherently async, until this class has initialized all notifications will fail. So far no problem has been found
+ * with this setup in normal conditions
+ *
+ */
+
 import React                    from 'react'
 import tron                     from 'reactotron-react-native'
 import { connect }              from 'react-redux'

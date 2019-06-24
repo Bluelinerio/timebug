@@ -10,6 +10,10 @@ export type Props = {
   advisoryText: string,
 }
 
+/**
+ * @class LoginWithFbButton
+ * Facebook compliant component to login with FB, do not use any other medium to login with FB as to not break the TOS
+ */
 class LoginWithFbButton extends React.PureComponent<Props> {
   render() {
     const {

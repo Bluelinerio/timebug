@@ -29,6 +29,10 @@ const mapRouteToName = routeName => {
   }
 }
 
+/**
+ * @function TabBarLabel
+ * React navigation tab bar labels
+ */
 const TabBarLabel = ({ routeName, tintColor }: TabBarLabelProps) => {
   return (
     <Text style={[styles.tabBarLabel, { color: tintColor }]}>

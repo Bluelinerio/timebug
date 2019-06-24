@@ -1,24 +1,27 @@
-import * as React from 'react';
-import { connect } from 'react-redux';
-import Svg, { Circle, G } from 'react-native-svg';
+/**
+ * Deprecated
+ */
+import * as React from 'react'
+import { connect } from 'react-redux'
+import Svg, { Circle, G } from 'react-native-svg'
 
-import selectors from '../redux/selectors';
-import { phaseForStepAtIndex } from '../services/cms';
-import { renderContainer } from '../components/PhaseProgress/defaults';
-import Grid from '../components/Grid';
-import type { GridProps } from '../components/Grid';
+import selectors from '../redux/selectors'
+import { phaseForStepAtIndex } from '../services/cms'
+import { renderContainer } from '../components/PhaseProgress/defaults'
+import Grid from '../components/Grid'
+import type { GridProps } from '../components/Grid'
 
-const circle = 0.3;
-const circleRatio = 0.4;
-const spaceXRatio = 0.2;
-const spaceYRatio = 0.1;
-const cornerRadiusRatio = 0.5;
+const circle = 0.3
+const circleRatio = 0.4
+const spaceXRatio = 0.2
+const spaceYRatio = 0.1
+const cornerRadiusRatio = 0.5
 
 const mapStateToProps = state => ({
   completedStepIndices: selectors.completedStepIds(state).map(i => i - 1),
   dummyCompletedStepIndices: [0, 1, 2, 3, 4, 9, 10, 23, 23],
   phaseColors: selectors.phaseColors(state),
-});
+})
 
 const Container = (props: any) => (
   <Svg width={props.width} height={props.height} style={props.style || {}}>
@@ -32,7 +35,7 @@ const Container = (props: any) => (
       {props.children}
     </G>
   </Svg>
-);
+)
 
 const ItemWrapper = (ownProps: any, stateProps: any) => {
   const Item = (props: any) => (
@@ -60,9 +63,9 @@ const ItemWrapper = (ownProps: any, stateProps: any) => {
           : '#E9E9E9'
       }
     />
-  );
-  return Item;
-};
+  )
+  return Item
+}
 
 const merge = (stateProps, dispatchProps, ownProps): GridProps => {
   return {
@@ -81,7 +84,7 @@ const merge = (stateProps, dispatchProps, ownProps): GridProps => {
     },
     renderContainer: Container ? Container : renderContainer,
     renderItem: ItemWrapper(ownProps, stateProps),
-  };
-};
+  }
+}
 
-export default connect(mapStateToProps, null, merge)(Grid);
+export default connect(mapStateToProps, null, merge)(Grid)

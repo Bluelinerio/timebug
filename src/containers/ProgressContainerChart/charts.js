@@ -1,4 +1,8 @@
 // @flow
+
+/**
+ * These are helper methods to build donut chart components, these build the props required for any of those components
+ */
 import {
   MEDITATION,
   SELF_ASSESSMENT,

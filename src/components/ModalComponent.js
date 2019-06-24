@@ -1,14 +1,20 @@
-import React from 'react';
-import LoginModal, { key as loginModalKey } from './LoginModal';
-import AudioModal, { key as audioModalKey } from './AudioModal';
+// @flow
+import React from 'react'
+import LoginModal, { key as loginModalKey } from './LoginModal'
+import AudioModal, { key as audioModalKey } from './AudioModal'
 
 export type ModalComponentProps = {
   openKeys: string,
   openModal: string => any,
   closeModal: string => any,
   params: any,
-};
+}
 
+/**
+ * @function ModalComponent
+ * Deprecated. Container component for modals
+ * @param {ModalComponentProps} param0
+ */
 const ModalComponent = ({
   openKeys,
   openModal,
@@ -30,7 +36,7 @@ const ModalComponent = ({
         {...(params && params[audioModalKey] ? params[audioModalKey] : {})}
       />
     </React.Fragment>
-  );
-};
+  )
+}
 
-export default ModalComponent;
+export default ModalComponent

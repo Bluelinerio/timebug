@@ -1,9 +1,9 @@
 // @flow
-import { connect } from 'react-redux'
-import { compose } from 'recompose'
+import { connect }           from 'react-redux'
+import { compose }           from 'recompose'
 import { NavigationActions } from 'react-navigation'
 import mapNavigationDispatch from '2020_HOC/NavigationServiceHOC'
-import Banner from '../components/MinifiedBanner'
+import Banner                from '../components/MinifiedBanner'
 
 type BannerProps = {
   goBack: () => any,
