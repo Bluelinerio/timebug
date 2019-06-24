@@ -1,6 +1,15 @@
-import { StyleSheet }      from 'react-native'
-import { iOSUIKit }        from 'react-native-typography'
-import { azure, paleBlue } from '../../../constants/colors'
+import { StyleSheet, Platform } from 'react-native'
+import {
+  iOSUIKit,
+  sanFranciscoWeights,
+  robotoWeights,
+} from 'react-native-typography'
+import { azure, paleBlue, white2, gray300, gray500 } from '../../../constants/colors'
+
+const fontColor = white2
+export const iconColor = white2
+export const lockedColor = gray300
+export const lockedTextColor = gray500
 
 export const stylesStep1 = {
   formContainer: {
@@ -43,6 +52,12 @@ export const stylesStep1 = {
 }
 
 export default StyleSheet.create({
+  stickyHeader: {
+    flex: 1,
+    height: 'auto',
+    flexDirection: 'row',
+    backgroundColor: paleBlue,
+  },
   header: {
     height: 64,
     backgroundColor: '#005587',
@@ -124,5 +139,60 @@ export default StyleSheet.create({
     paddingHorizontal: 20,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+})
+
+export const phaseProgressStyles = StyleSheet.create({
+  listContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    paddingVertical: 12,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  content: {
+    padding: 20,
+  },
+  phaseContainer: {
+    flex: 1,
+    marginHorizontal: 6,
+    borderRadius: 6,
+    padding: 8,
+  },
+  phaseNumber: {
+    ...iOSUIKit.caption2EmphasizedObject,
+    color: fontColor,
+    fontSize: 11,
+    fontFamily: 'Metropolis',
+  },
+  phaseText: {
+    ...iOSUIKit.caption2EmphasizedObject,
+    color: fontColor,
+    fontSize: 11,
+    fontFamily: 'Metropolis',
+  },
+  mainArea: {
+    flex: 1,
+  },
+  secondaryArea: {
+    marginTop: 4,
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
+  phaseProportion: {
+    color: fontColor,
+    fontSize: 11,
+    fontFamily: 'Metropolis',
+  },
+  strong: {
+    ...Platform.select({
+      android: {
+        ...robotoWeights.bold,
+      },
+      ios: {
+        ...sanFranciscoWeights.bold,
+      },
+    }),
   },
 })

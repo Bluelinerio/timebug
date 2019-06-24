@@ -1,9 +1,10 @@
 // @flow
-import React from 'react'
-import InteractionManager from '2020_utils/InteractionManager'
-import DefaultIndicator from '2020_components/DefaultIndicator'
-import User from '2020_containers/User'
+import React                    from 'react'
+import InteractionManager       from '2020_utils/InteractionManager'
+import DefaultIndicator         from '2020_components/DefaultIndicator'
+import User                     from '2020_containers/User'
 import MyJourneyScreenComponent from '../components/MyJourneyScreenComponent'
+import { PhaseProvider }        from '../context/PhaseContext'
 
 type State = {
   didFinishInitialAnimation: boolean,
@@ -25,12 +26,20 @@ class MyJourneyScreenContainer extends React.Component<any, State> {
     })
   }
 
+  renderWithContext() {
+    return (
+      <PhaseProvider>
+        <MyJourneyScreenComponent />
+      </PhaseProvider>
+    )
+  }
+
   render() {
     const { didFinishInitialAnimation } = this.state
     return didFinishInitialAnimation ? (
       <User
-        renderWithUser={() => <MyJourneyScreenComponent />}
-        renderWithAnonymous={() => <MyJourneyScreenComponent />}
+        renderWithUser={this.renderWithContext}
+        renderWithAnonymous={this.renderWithContext}
         renderWithAuthenticating={() => <DefaultIndicator size="large" />}
         renderWithUndetermined={() => <DefaultIndicator size="large" />}
       />

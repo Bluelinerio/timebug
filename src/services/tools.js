@@ -10,6 +10,7 @@ import {
   ALL,
   SOME,
 } from '2020_static/tools/logic/constants'
+import { MEDITATION, SELF_ASSESSMENT, VISION_CREATION } from '2020_services/cms'
 
 import type { ToolLock, Tool, Clause, Condition } from '2020_static/tools/types'
 import type { Step } from './cms'
@@ -117,6 +118,7 @@ const _getUnlockedTools = () => {
       unlockedToolCache &&
       previouslyCompletedStepList &&
       areArraysEqual(stepNumberList, previouslyCompletedStepList)
+
     if (shouldUseCacheData) return unlockedToolCache
 
     const unlockedTools = ToolLocks.reduce((unlockedToolList, lockedTool) => {
@@ -129,10 +131,29 @@ const _getUnlockedTools = () => {
       if (areConditionsSatisfied) return [...unlockedToolList, lockedTool.tool]
       return unlockedToolList
     }, [])
+
     previouslyCompletedStepList = stepNumberList
+
     unlockedToolCache = unlockedTools
+
     return unlockedTools
   }
 }
 
 export const getUnlockedTools = _getUnlockedTools()
+
+export const getAllTools = () => ToolLocks.map(lock => lock.tool)
+
+export const getAmountOfTools = () =>
+  ToolLocks.reduce(
+    (redux, lock) => {
+      const [m, sa, vc] = redux
+      const { tool } = lock
+      const { phase } = tool
+      if (phase === MEDITATION) return [m + 1, sa, vc]
+      if (phase === SELF_ASSESSMENT) return [m, sa + 1, vc]
+      if (phase === VISION_CREATION) return [m, sa, vc + 1]
+      return redux
+    },
+    [0, 0, 0]
+  )
