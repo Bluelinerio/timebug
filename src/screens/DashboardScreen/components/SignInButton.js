@@ -1,17 +1,9 @@
-import React              from 'react'
-import { View, Text }     from 'react-native'
-import OpenLoginContainer from '2020_containers/OpenLoginContainer'
-import styles             from '../styles'
+import React                from 'react'
+import LoginButtonContainer from '2020_containers/LoginButtonContainer'
 
 class SignInButton extends React.PureComponent {
   render() {
-    return (
-      <OpenLoginContainer>
-        <View style={styles.signInButton}>
-          <Text style={styles.signInText}>Log In</Text>
-        </View>
-      </OpenLoginContainer>
-    )
+    return <LoginButtonContainer />
   }
 }
 
