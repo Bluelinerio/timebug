@@ -1,6 +1,6 @@
 // @flow
 /* eslint-disable no-unused-vars */
-import { OPEN, STEPS, TOOL, ACHIEVEMENT, ALL, SOME }  from './constants'
+import { OPEN, STEPS, TOOL, ACHIEVEMENT, ALL, SOME, STEP }  from './constants'
 import {
   MEDITATION,
   SELF_ASSESSMENT,
@@ -118,6 +118,18 @@ const toolDefinitions: Array<ToolLock> = [
       },
     ],
     tool: EnergyLevelsTracker,
+  },
+  {
+    conditions: [
+      {
+        type: STEPS,
+        clause: {
+          type: ALL,
+          value: [15],
+        },
+      },
+    ],
+    tool: DummyTool,
   },
 ]
 
