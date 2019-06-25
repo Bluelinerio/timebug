@@ -6,6 +6,7 @@ import {
   UPDATE_PERMISSION,
   ADD_CONTACT,
   REMOVE_CONTACT,
+  LOGOUT,
 } from '../actionTypes'
 import {
   UNDETERMINED,
@@ -115,6 +116,8 @@ const contactsReducer = (
     return populateContacts(state, action)
   case REMOVE_CONTACT:
     return removeContact(state, action)
+  case LOGOUT:
+    return initialState
   default:
     return state
   }

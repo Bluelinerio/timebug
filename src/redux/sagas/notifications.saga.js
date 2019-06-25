@@ -17,6 +17,7 @@ import {
   REMOVE_NOTIFICATION,
   STORE_LOADED,
   TRIGGER_NOTIFICATION,
+  LOGOUT,
 } from '../actionTypes'
 import NotificationService, {
   notificationTypes,
@@ -24,6 +25,7 @@ import NotificationService, {
 import {
   notificationScheduled,
   notificationRemoved,
+  removeNotification as removeNotificationAction,
 } from '../actions/notifications.actions'
 import type {
   CreateNotificationPayload,
@@ -129,14 +131,30 @@ function* watchForNotificationDeletion() {
   const channel = yield actionChannel(REMOVE_NOTIFICATION)
   while (true) {
     const action: { payload: RemoveNotificationPayload } = yield take(channel)
-    yield call(removeNotification, action)
+    yield fork(removeNotification, action)
   }
+}
+
+function* _handleLogout() {
+  try{
+    const notifications = yield select(selectors.notifications)
+    for(const notification of notifications) {
+      const { id } = notification
+      yield put(removeNotificationAction({ id }))
+    }
+  } catch(err) {
+    // fail silently
+  }
+}
+function* watchForLogout() {
+  yield takeLatest(LOGOUT, _handleLogout)
 }
 
 function* watchForNotificationHelpers() {
   yield takeLatest(CANCEL_ALL_NOTIFICATIONS, clearNotifications)
   yield takeLatest(ON_NOTIFICATION, onNotification)
   yield takeLatest(TRIGGER_NOTIFICATION, triggerNotification)
+  yield fork(watchForLogout)
   yield fork(watchForNotificationDeletion)
   yield fork(watchForNotificationScheduling)
 }

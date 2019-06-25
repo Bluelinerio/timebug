@@ -8,6 +8,7 @@ import {
   DECREMENT_TOOL_DATA_QUEUE,
   RESTORE_TOOL_DATA,
   CLEAR_TOOL_DATA,
+  LOGOUT,
 } from '../actionTypes'
 import type {
   SumbitAwardValueAction,
@@ -132,6 +133,8 @@ function toolDataReducer(
     return restore(action, state)
   case CLEAR_TOOL_DATA:
     return clear(action, state)
+  case LOGOUT:
+    return initialState
   case INCREMENT_TOOL_DATA_QUEUE:
     return {
       ...state,

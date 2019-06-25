@@ -1,5 +1,5 @@
 // @flow
-import { ADD_PERMISSION, REMOVE_PERMISSION } from '../actionTypes'
+import { ADD_PERMISSION, REMOVE_PERMISSION, LOGOUT } from '../actionTypes'
 import {
   GRANTED,
   DENIED,
@@ -64,6 +64,8 @@ const contactsReducer = (
     return addPermission(state, action)
   case REMOVE_PERMISSION:
     return removePermission(state, action)
+  case LOGOUT:
+    return initialState
   default:
     return state
   }
