@@ -17,13 +17,12 @@ class GreetingComponent extends React.PureComponent<Props> {
     return (
       <View style={styles.greetingContainer}>
         <View style={styles.greetingHeader}>
-          {name && (
-            <View>
-              <Text style={styles.greeting}>
-                {greeting} {name}!
-              </Text>
-            </View>
-          )}
+          <View>
+            <Text style={styles.greeting}>
+              {greeting}
+              {name ? name : ''}!
+            </Text>
+          </View>
         </View>
         {stepTitle &&
           text && (

@@ -19,7 +19,7 @@ const mergeProps = (
   ownProps: LoginButtonProps
 ): LoginButtonComponentProps => {
   const { login } = dispatchProps
-  const { onPress } = ownProps
+  const { onPress = () => null } = ownProps
   return {
     onPress: () => {
       onPress()

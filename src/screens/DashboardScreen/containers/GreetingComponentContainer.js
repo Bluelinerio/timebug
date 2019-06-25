@@ -59,13 +59,16 @@ const firstName = user =>
 
 const merge = (props: Props): GreetingComponentProps => {
   const { user, completedStepIds, steps, onLink, mostRecent } = props
-  if (!user) return {}
+  const greeting = getGreeting()
+  if (!user)
+    return {
+      greeting,
+    }
   const missingStep = Object.values(steps).find(
     step => completedStepIds.indexOf(step.number) === -1
   )
   const name = firstName(user)
   const onPress = () => onLink(missingStep)
-  const greeting = getGreeting()
   const mostRecentStep = mostRecent ? mostRecent.stepId : null
   const text = mostRecentStep
     ? `You last completed step #${mostRecentStep}. For your next step we suggest: `
