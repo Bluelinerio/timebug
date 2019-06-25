@@ -15,10 +15,9 @@ import type { GoToToolParams }            from '2020_redux/actions/nav.actions'
 import { translateCMSPhaseToStandard }    from '2020_services/cms'
 import { stepEnum }                       from '2020_services/cms'
 import type { Step }                      from '2020_services/cms'
-import mapNavigationDispatch              from '2020_HOC/NavigationServiceHOC'
 import type { Props as ComponentProps }   from '../components/GoalCheckinComponent'
-import GoalCheckinComponent                   from '../components/GoalCheckinComponent'
-import tron from 'reactotron-react-native'
+import GoalCheckinComponent               from '../components/GoalCheckinComponent'
+import mapNavigationDispatch              from '2020_HOC/NavigationServiceHOC'
 
 type Props = {
   tool: any,
@@ -43,6 +42,7 @@ const mapDispatchToProps = (dispatch: any) => ({
       goToV2WorkbookScreen({
         step,
         phase: translateCMSPhaseToStandard(step.type),
+        section: 'form',
       })
     ),
   goToTool: (payload: GoToToolParams) => () => {
@@ -192,7 +192,6 @@ class GoalsCheckinContainer extends React.PureComponent<ContainerProps> {
 
   render() {
     const { link, title, text, source, formLink } = this.props
-    tron.log(this.props)
     return (
       <GoalCheckinComponent
         link={link}
