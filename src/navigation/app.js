@@ -4,6 +4,10 @@ import { uriPrefix }      from '../constants'
 import { StartNavigator } from './index'
 import NavigationService  from '2020_services/navigation'
 
+import AmplitudeService                            from '2020_services/amplitude'
+import MoengageService                             from '2020_services/moengage'
+/* eslint-disable-next-line */
+/* eslint-disable-next-line */
 type Props = {
   dispatch: () => any,
   nav: any,

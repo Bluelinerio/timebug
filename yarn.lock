@@ -4588,7 +4588,7 @@ fbjs-scripts@^1.0.0:
     semver "^5.1.0"
     through2 "^2.0.0"
 
-fbjs@^0.8.0, fbjs@^0.8.16, fbjs@^0.8.17, fbjs@^0.8.9:
+fbjs@^0.8.0, fbjs@^0.8.1, fbjs@^0.8.16, fbjs@^0.8.17, fbjs@^0.8.4, fbjs@^0.8.5, fbjs@^0.8.9:
   version "0.8.17"
   resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.17.tgz#c4d598ead6949112653d6588b01a5cdcd9f90fdd"
   integrity sha1-xNWY6taUkRJlPWWIsBpc3Nn5D90=
@@ -4600,19 +4600,6 @@ fbjs@^0.8.0, fbjs@^0.8.16, fbjs@^0.8.17, fbjs@^0.8.9:
     promise "^7.1.1"
     setimmediate "^1.0.5"
     ua-parser-js "^0.7.18"
-
-fbjs@^0.8.1, fbjs@^0.8.4:
-  version "0.8.16"
-  resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.16.tgz#5e67432f550dc41b572bf55847b8aca64e5337db"
-  integrity sha1-XmdDL1UNxBtXK/VYR7ispk5TN9s=
-  dependencies:
-    core-js "^1.0.0"
-    isomorphic-fetch "^2.1.1"
-    loose-envify "^1.0.0"
-    object-assign "^4.1.0"
-    promise "^7.1.1"
-    setimmediate "^1.0.5"
-    ua-parser-js "^0.7.9"
 
 fbjs@^1.0.0:
   version "1.0.0"
@@ -8028,6 +8015,11 @@ open@^0.0.5:
   resolved "https://registry.yarnpkg.com/open/-/open-0.0.5.tgz#42c3e18ec95466b6bf0dc42f3a2945c3f0cad8fc"
   integrity sha1-QsPhjslUZra/DcQvOilFw/DK2Pw=
 
+opencollective-postinstall@^2.0.0:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/opencollective-postinstall/-/opencollective-postinstall-2.0.2.tgz#5657f1bede69b6e33a45939b061eb53d3c6c3a89"
+  integrity sha512-pVOEP16TrAO2/fjej1IdOyupJY8KDUM1CvsaScRbw6oddvpQoOfGk4ywha0HKKVAD6RkW4x6Q+tNBwhf3Bgpuw==
+
 opencollective@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/opencollective/-/opencollective-1.0.3.tgz#aee6372bc28144583690c3ca8daecfc120dd0ef1"
@@ -8928,6 +8920,13 @@ react-lifecycles-compat@^3, react-lifecycles-compat@^3.0.4:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
+react-native-amplitude-analytics@^0.2.6:
+  version "0.2.6"
+  resolved "https://registry.yarnpkg.com/react-native-amplitude-analytics/-/react-native-amplitude-analytics-0.2.6.tgz#e603dba405d6a9b029cbcc7ef21f2fb378ab2768"
+  integrity sha512-BvBRdr3R8NE6eas6RPTloFoEe1YC1AT5Org9AlN4eGrZ9DHjUL6Z9pCXcMA1G9W7o+UjM3XrDYoSyPCRqVvWtg==
+  dependencies:
+    fbjs "^0.8.5"
+
 react-native-animatable@^1.2.4:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/react-native-animatable/-/react-native-animatable-1.2.4.tgz#b5fb7657e8f6edadbc26697057a327fb920b3039"
@@ -8956,6 +8955,11 @@ react-native-code-push@^5.4.2:
     inquirer "1.1.2"
     plist "3.0.1"
     xcode "1.0.0"
+
+react-native-config@^0.11.7:
+  version "0.11.7"
+  resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-0.11.7.tgz#a2b323f2ecd76a4df88cbb6bc86eaa2ef9febee7"
+  integrity sha512-dn5s+zhwLyE25vRT/vaEtLk/j8ZL1UZKvejORNDWakSwpOnLmFurFeaZV83IqkPlfWHXHFdsYe2IRYG1WN4WkQ==
 
 react-native-contacts@^3.1.1:
   version "3.1.1"
@@ -9018,6 +9022,14 @@ react-native-fbsdk@0.8.0:
     pump "^1.0.2"
     xcode "^0.9.3"
 
+react-native-firebase@^5.4.2:
+  version "5.4.2"
+  resolved "https://registry.yarnpkg.com/react-native-firebase/-/react-native-firebase-5.4.2.tgz#6a66fea38724a7e76d9486b87e02129fda266290"
+  integrity sha512-xeluQo/dDYGKPvPLL0CH51T+rPVkKmEoR/aYDTDgJXXgiDwqSGAq9v414uF4p6SALLCDcNeb4IA6HA8TcFKcrQ==
+  dependencies:
+    opencollective-postinstall "^2.0.0"
+    prop-types "^15.6.2"
+
 react-native-gesture-handler@1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.1.0.tgz#2a7d545ad2e0ca23adce22b2af441ad360ecccee"
@@ -9059,6 +9071,11 @@ react-native-modal-selector@^1.0.0:
   integrity sha512-0JJT+2kZld4Il/qXVLsIS7EuynyE60CPd54YdVSS2VE6n9SuGcbLeyIwhSyYYX4AaofNjfRo8W5rI6xsx7RzkA==
   dependencies:
     prop-types "^15.5.10"
+
+react-native-moengage@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-moengage/-/react-native-moengage-3.0.0.tgz#66251522c853f85660750cb1b1ac1bff29dfea1f"
+  integrity sha512-jPH8FFL3gR+8MzcW2ERasAD3bhyaWWrD7BrO+cNMIuuzlpAxuVx5jmTedMLpuaMMHATpNa+tmkrhCJMY/O+aqA==
 
 react-native-pages@^0.6.1:
   version "0.6.1"

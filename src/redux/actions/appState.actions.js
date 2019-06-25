@@ -1,7 +1,7 @@
 import { VERSION } from '../actionTypes'
 
 type ChangeVersionPayload = {
-    version: number
+  version: number,
 }
 
 export const changeVersion = (payload: ChangeVersionPayload) => ({
