@@ -1,14 +1,15 @@
-import React from 'react'
-import { View } from 'react-native'
-import { SafeAreaView } from 'react-navigation'
-import Banner from '2020_containers/PhaseHeaderContainer'
-import styles from '../styles'
-import type { Step } from '../../../../services/cms'
-import StepBar from '../containers/StepBarContainer'
-import Sidebar from '../containers/SidebarContainer'
-import { SectionValues } from '../context/SectionContext'
-import WorkbookContent from '../containers/WorkbookContentContainer'
-import { mapBarStylesHelper } from '../utils/colorsForStep'
+import React                           from 'react'
+import { View }                        from 'react-native'
+import { SafeAreaView }                from 'react-navigation'
+import Banner                          from '2020_containers/PhaseHeaderContainer'
+import styles                          from '../styles'
+import type { Step }                   from '../../../../services/cms'
+import { phaseForStep, MEDITATION }    from '2020_services/cms'
+import StepBar                         from '../containers/StepBarContainer'
+import Sidebar                         from '../containers/SidebarContainer'
+import { SectionValues }               from '../context/SectionContext'
+import WorkbookContent                 from '../containers/WorkbookContentContainer'
+import { mapBarStylesHelper }          from '../utils/colorsForStep'
 import { translateCMSPhaseToStandard } from '2020_services/cms'
 
 type Props = {
@@ -18,6 +19,7 @@ type Props = {
 type State = {
   selectedStep: Step | null,
   editionIndex?: number | null,
+  selectedSection: string,
 }
 
 const validateSelectedSection = (section: string) => {
@@ -103,6 +105,11 @@ class WorkbookScreen extends React.PureComponent<Props, State> {
     }
   }
 
+  _phaseForStep = (step: Step) => {
+    if (!step) return MEDITATION
+    return phaseForStep(step)
+  }
+
   _changeSelectedStep = (step: Step) => {
     const { navigation } = this.props
     this.setState({ selectedStep: step }, () => {
@@ -131,10 +138,10 @@ class WorkbookScreen extends React.PureComponent<Props, State> {
   }
 
   render() {
-    const { navigation: { state: { params: { phase } } } } = this.props
     const { selectedStep, selectedSection, editionIndex } = this.state
 
     const backgroundColor = this._getCurrentBackgroundColor(selectedStep)
+    const phase = this._phaseForStep(selectedStep)
 
     return (
       <SafeAreaView
