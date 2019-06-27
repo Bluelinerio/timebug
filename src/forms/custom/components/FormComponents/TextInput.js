@@ -1,10 +1,10 @@
-import React                                  from 'react'
-import { View, TextInput as TextInputNative } from 'react-native'
-import R                                      from 'ramda'
-import { FormInput }                          from 'react-native-elements'
-import FormElementHeader                      from './FormElementHeader'
-import type { TextStyle }                     from '../../types/formTypes'
-import styles                                 from '../../styles'
+import React                                        from 'react'
+import { View, Text, TextInput as TextInputNative } from 'react-native'
+import R                                            from 'ramda'
+import { FormInput }                                from 'react-native-elements'
+import FormElementHeader                            from './FormElementHeader'
+import type { TextStyle }                           from '../../types/formTypes'
+import styles                                       from '../../styles'
 
 const TextInput = ({
   value,
@@ -47,6 +47,12 @@ const TextInput = ({
     <View style={styles.textInputLabelContainer}>
       <FormElementHeader text={content.text} textStyle={formStyles.textStyle} />
     </View>
+    {options.label &&
+      options.label.length > 0 && (
+        <Text style={[styles.componentSubtitle, formStyles.textStyle]}>
+          {options.label}
+        </Text>
+      )}
     {options.multiline ? (
       <View
         style={[

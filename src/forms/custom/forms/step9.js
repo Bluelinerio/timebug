@@ -25,7 +25,7 @@ const form: Form = {
       key: FORM_KEYS.form_9_role_models,
       content: {
         text:
-          'List up to 10 people that are your role models. What life category does she or he primarily influence? How much do you personally know them?',
+          'List up to 10 people that are your role models. What life category does she or he primarily influence?',
         smallKey: 'Role Models',
         listText: 'Role Models ',
       },
@@ -55,28 +55,14 @@ const form: Form = {
               default: LifeCategoriesArray[0].key,
             },
           },
-          2: { // TODO: Turn into yes/no input
-            type: types.string,
+          2: {
+            // TODO: Turn into yes/no input
+            type: types.switch,
             key: FORM_CHILDREN_KEYS.form_9_role_models.how_well_known,
             options: {
-              placeHolder: 'Do you know this role model personally?',
-              default: '',
-              multiline: true,
-              required: true,
-              numberOfLines: 4,
-              style: {
-                textInputContainerStyle: Platform.select({
-                  android: {},
-                  ios: {
-                  }, //Fill with what's needed
-                }),
-                textInputStyle: Platform.select({
-                  android: {},
-                  ios: {  
-                    minHeight:80,
-                  }, //Fill with what's needed
-                }),
-              },
+              default: false,
+              label: 'Do you know this role model personally?',
+              listText: 'Personally known:',
             },
           },
         },
