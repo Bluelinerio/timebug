@@ -65,10 +65,10 @@ const form: Form = {
           },
         },
         constraints: {
-          min: 5,
+          min: 1,
           max: 10,
           errors: {
-            min: 'Please list at least 5 goals',
+            min: 'Please list at least 1 goal',
             max: 'The max input for this exercise is 10 goals',
           },
         },
