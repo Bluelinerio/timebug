@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "postversion": "react-native-version",
-    "postinstall": "rm -f ./node_modules/react-native/local-cli/core/__fixtures__/files/package.json",
+    "postinstall": "npx jetify",
     "codepush:production": "code-push release-react Lifevision-1 Android -d Production & code-push release-react Lifevision iOS -d Production",
     "codepush:staging": "code-push release-react Lifevision-1 Android -d Staging & code-push release-react Lifevision iOS -d Staging",
     "start": "node node_modules/react-native/local-cli/cli.js start",
@@ -135,6 +135,7 @@
     "jest": "^23.6.0",
     "jest-serializer-enzyme": "^1.0.0",
     "jest-static-stubs": "^0.0.1",
+    "jetifier": "^1.5.1",
     "mocha": "^3.5.3",
     "prettier-eslint": "^8.8.1",
     "prettier-eslint-cli": "^4.7.1",

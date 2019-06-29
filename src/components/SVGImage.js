@@ -69,6 +69,7 @@ export default class SVGImage extends React.PureComponent<Props> {
         scalesPageToFit={true}
         style={style}
         source={{ html }}
+        useWebKit={Platform.OS === 'android' ? true : false}
       />
     )
   }
