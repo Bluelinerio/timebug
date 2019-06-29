@@ -4,6 +4,7 @@ import {
   REMOVE_PERMISSION,
   FIREBASE_SETUP,
   SET_FIREBASE_MESSAGING_PERMISSION,
+  LOGOUT
 } from '../actionTypes'
 import {
   GRANTED,
