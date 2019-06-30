@@ -1,8 +1,13 @@
 // @flow
-import { Platform }                from 'react-native'
-import types, { answerTypes }      from './types'
-import type { Form }               from '../types/formTypes'
-import { CommonGoalOutcomesArray, SatisfactionLevels, TimeAndEffortInvestedInGoal } from './content'
+import { Platform }           from 'react-native'
+import types, { answerTypes } from './types'
+import type { Form }          from '../types/formTypes'
+import {
+  CommonGoalOutcomesArray,
+  SatisfactionLevels,
+  TimeAndEffortInvestedInGoal,
+  GoalType,
+}                             from './content'
 
 export const FORM_KEYS = {
   form_11_goal: 'form_11_goal',
@@ -14,13 +19,14 @@ export const CHILDREN_KEYS = {
   form_11_goal: {
     goalName: `${FORM_KEYS.form_11_goal}.goalName`,
     goalType: `${FORM_KEYS.form_11_goal}.goalType`,
+    type: `${FORM_KEYS.form_11_goal}.type`,
   },
   form_11_goal_satisfaction: {
-    satisfaction: `${FORM_KEYS.form_11_goal_satisfaction}.satisfaction`
+    satisfaction: `${FORM_KEYS.form_11_goal_satisfaction}.satisfaction`,
   },
   form_11_goal_time: {
-      time: `${FORM_KEYS.form_11_goal_time}.time`
-  }
+    time: `${FORM_KEYS.form_11_goal_time}.time`,
+  },
 }
 
 const form: Form = {
@@ -49,6 +55,22 @@ const form: Form = {
           },
           1: {
             type: types.select,
+            key: `${CHILDREN_KEYS.form_11_goal.type}`,
+            content: {
+              smallKey: 'Goal type',
+              items: GoalType.map(type => {
+                return {
+                  value: type,
+                  text: type,
+                }
+              }),
+            },
+            options: {
+              default: GoalType[0],
+            },
+          },
+          2: {
+            type: types.select,
             key: `${CHILDREN_KEYS.form_11_goal.goalType}`,
             content: {
               smallKey: 'CGO',
@@ -75,71 +97,76 @@ const form: Form = {
       },
     },
     1: {
-        type: types.connected,
-        key: `${FORM_KEYS.form_11_goal_satisfaction}`,
-        content: {
-          text: 'How satisfied are you with this outcome?',
-          smallKey: 'Area of life',
-        },
-        options: {
-          connect: {
-            withElements: {
-              text: 'Satisfaction',
-              key: `${FORM_KEYS.form_11_goal}`,
-              childrenKeys: [`${CHILDREN_KEYS.form_11_goal.goalName}`, `${CHILDREN_KEYS.form_11_goal.goalType}`],
+      type: types.connected,
+      key: `${FORM_KEYS.form_11_goal_satisfaction}`,
+      content: {
+        text: 'In what percentage did you complete these goals?',
+        smallKey: 'Percentage goals',
+      },
+      options: {
+        connect: {
+          withElements: {
+            text: 'Completion',
+            key: `${FORM_KEYS.form_11_goal}`,
+            childrenKeys: [
+              `${CHILDREN_KEYS.form_11_goal.goalName}`,
+              `${CHILDREN_KEYS.form_11_goal.goalType}`,
+            ],
+          },
+          using: {
+            type: types.string,
+            key: `${CHILDREN_KEYS.form_11_goal_satisfaction.satisfaction}`,
+            content: {
+              smallKey: 'completionLevel',
             },
-            using: {
-              type: types.select,
-              key: `${CHILDREN_KEYS.form_11_goal_satisfaction.satisfaction}`,
-              content: {
-                smallKey: 'satisfactionLevel',
-                items: SatisfactionLevels.map(satisfactionLevel => ({
-                  value: satisfactionLevel,
-                  text: satisfactionLevel,
-                })),
-              },
-              options: {
-                default: SatisfactionLevels[0],
-              },
+            options: {
+              default: '',
+              placeHolder: '50',
+              required: true,
+              type: 'numeric',
             },
           },
-          default: [],
-          required: true,
         },
+        default: [],
+        required: true,
       },
-      2: {
-        type: types.connected,
-        key: `${FORM_KEYS.form_11_goal_time}`,
-        content: {
-          text: 'How much time and effort did you invest in this goal?',
-          smallKey: 'Area of life',
-        },
-        options: {
-          connect: {
-            withElements: {
-              text: 'Time and effort',
-              key: `${FORM_KEYS.form_11_goal}`,
-              childrenKeys: [`${CHILDREN_KEYS.form_11_goal.goalName}`, `${CHILDREN_KEYS.form_11_goal.goalType}`],
+    },
+    2: {
+      type: types.connected,
+      key: `${FORM_KEYS.form_11_goal_time}`,
+      content: {
+        text: 'How much time and effort did you invest in this goal?',
+        smallKey: 'Area of life',
+      },
+      options: {
+        connect: {
+          withElements: {
+            text: 'Time and effort',
+            key: `${FORM_KEYS.form_11_goal}`,
+            childrenKeys: [
+              `${CHILDREN_KEYS.form_11_goal.goalName}`,
+              `${CHILDREN_KEYS.form_11_goal.goalType}`,
+            ],
+          },
+          using: {
+            type: types.select,
+            key: `${CHILDREN_KEYS.form_11_goal_time.time}`,
+            content: {
+              smallKey: 'timeAndEffortInvested',
+              items: TimeAndEffortInvestedInGoal.map(investment => ({
+                value: investment,
+                text: investment,
+              })),
             },
-            using: {
-              type: types.select,
-              key: `${CHILDREN_KEYS.form_11_goal_time.time}`,
-              content: {
-                smallKey: 'timeAndEffortInvested',
-                items: TimeAndEffortInvestedInGoal.map(investment => ({
-                  value: investment,
-                  text: investment,
-                })),
-              },
-              options: {
-                default: TimeAndEffortInvestedInGoal[0],
-              },
+            options: {
+              default: TimeAndEffortInvestedInGoal[0],
             },
           },
-          default: [],
-          required: true,
         },
+        default: [],
+        required: true,
       },
+    },
   },
 }
 
