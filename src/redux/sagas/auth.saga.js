@@ -33,6 +33,7 @@ import {
 import facebook                       from '../../services/facebook'
 import AuthStorage                    from '../../services/authStorage'
 import NavigationService              from '2020_services/navigation'
+import { log } from '2020_services/amplitude'
 import tron                           from 'reactotron-react-native'
 
 function* wipeTokens() {
@@ -66,9 +67,7 @@ function* _fetchUserWithId(userId) {
 }
 
 function* refreshUserSaga() {
-  const { token, userId, endpoint } = yield call(
-    AuthStorage.getTokenAndUserId
-  )
+  const { token, userId, endpoint } = yield call(AuthStorage.getTokenAndUserId)
   const fbToken: ?string = yield call(facebook.getToken)
   if (userId && token && isClientEndpoint(endpoint)) {
     return yield call(_fetchUserWithId, userId)
@@ -93,6 +92,9 @@ function* refreshUserSaga() {
         userId: id,
         endpoint,
       })
+
+      log('USER_FACEBOOK_LOGIN')
+
       yield call(_fetchUserWithId, id)
       return
     }

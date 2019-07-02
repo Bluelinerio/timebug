@@ -1,19 +1,25 @@
 // @flow
-import { ADD_PERMISSION, REMOVE_PERMISSION, LOGOUT } from '../actionTypes'
+import {
+  ADD_PERMISSION,
+  REMOVE_PERMISSION,
+  FIREBASE_SETUP,
+  SET_FIREBASE_MESSAGING_PERMISSION,
+  LOGOUT
+} from '../actionTypes'
 import {
   GRANTED,
   DENIED,
   UNDETERMINED,
   NEVER_ASK_AGAIN,
-}                                            from '2020_constants/constants'
+} from '2020_constants/constants'
 import {
   SEND_EMAIL_NOTIFICATIONS,
   SEND_PUSH_NOTIFICATIONS,
-}                                            from '2020_constants/permissions'
+} from '2020_constants/permissions'
 import {
   AddPermissionPayload,
   RemovePermissionPayload,
-}                                            from '../actions/permissions.actions'
+} from '../actions/permissions.actions'
 
 export type Permission = {
   name: string,
@@ -22,10 +28,18 @@ export type Permission = {
 
 export type PermissionsState = {
   permissions: Array<Permission>,
+  firebase: {
+    fcm: string,
+    allowed: boolean,
+  },
 }
 
 export const initialState = {
   permissions: [SEND_EMAIL_NOTIFICATIONS, SEND_PUSH_NOTIFICATIONS],
+  firebase: {
+    fcm: null,
+    allowed: false,
+  },
 }
 
 const addPermission = (
@@ -64,6 +78,22 @@ const contactsReducer = (
     return addPermission(state, action)
   case REMOVE_PERMISSION:
     return removePermission(state, action)
+  case FIREBASE_SETUP:
+    return {
+      ...state,
+      firebase: {
+        ...state.firebase,
+        fcm: action.payload.fcm,
+      },
+    }
+  case SET_FIREBASE_MESSAGING_PERMISSION:
+    return {
+      ...state,
+      firebase: {
+        ...state.firebase,
+        allowed: action.payload.status,
+      },
+    }
   case LOGOUT:
     return initialState
   default:
@@ -77,13 +107,14 @@ import { persistReducer, createMigrate } from 'redux-persist'
 const migrations = {
   0: state => state,
   1: () => initialState,
+  2: () => initialState,
 }
 
 const persistConfig = {
   key: 'permissions',
   storage: storage,
   blacklist: [],
-  version: 1,
+  version: 2,
   migrate: createMigrate(migrations, { debug: true }),
 }
 

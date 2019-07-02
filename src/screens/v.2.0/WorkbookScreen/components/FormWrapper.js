@@ -1,7 +1,8 @@
 import React                       from 'react'
 import { TouchableOpacity }        from 'react-native'
-import Form                        from '../../../../forms/custom/components/Form'
 import Icon                        from 'react-native-vector-icons/Ionicons'
+import Form                        from '../../../../forms/custom/components/Form'
+import { log }                     from '2020_services/amplitude'
 import styles, { backButtonColor } from '../styles'
 import FormElements                from './formExtras'
 
@@ -68,6 +69,11 @@ class FormWrapper extends React.PureComponent<Props> {
         {...this._mapRequiredPropsToComponent(requiredProps)}
       />
     )
+  }
+
+  componentDidMount() {
+    const { extra: { step } } = this.props
+    log('FORM_OPENED', { step })
   }
 
   render() {
