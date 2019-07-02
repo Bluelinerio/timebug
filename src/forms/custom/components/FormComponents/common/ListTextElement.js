@@ -17,6 +17,16 @@ type ValueElement = {
   },
 }
 
+const isBoolean = value => value.value === true || value.value === false
+
+const handleBoolean = v => {
+  const { _model, value } = v
+  const { options = {} } = _model
+  const { listText = '' } = options
+  const actual = value === true ? 'Yes' : 'No'
+  return `${listText} ${actual}`
+}
+
 const TextElement = ({
   element,
   index,
@@ -33,9 +43,10 @@ const TextElement = ({
   const strippedObject = stripKeys(element)
   const text = Object.values(strippedObject)
     .filter(value => value.value !== null && value.value !== undefined)
+    .map(value => (isBoolean(value) ? handleBoolean(value) : value.value))
     .map((value, ind) => {
-      if (ind === 0) return `${index + 1} ) ${value.value}`
-      return value.value
+      if (ind === 0) return `${index + 1} ) ${value}`
+      return `${value}`
     }, [])
   return (
     <React.Fragment>
@@ -72,15 +83,15 @@ const TextElement = ({
                 styles.listTextEditIcon,
                 editObjectId === element._id
                   ? {
-                    backgroundColor:
+                      backgroundColor:
                         formStyles.accentColor || TEMPORARY_COLOR_FOR_BUTTONS,
-                    borderColor:
+                      borderColor:
                         formStyles.accentColor || TEMPORARY_COLOR_FOR_BUTTONS,
-                  }
+                    }
                   : {
-                    borderColor:
+                      borderColor:
                         formStyles.accentColor || TEMPORARY_COLOR_FOR_BUTTONS,
-                  },
+                    },
               ]}
             >
               <SvgIcon

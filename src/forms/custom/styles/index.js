@@ -415,6 +415,10 @@ const formStyles = StyleSheet.create({
     ...iOSUIKit.caption2EmphasizedObject,
     fontFamily: 'Metropolis',
   },
+  componentSubtitle: {
+    ...iOSUIKit.caption2EmphasizedObject,
+    fontFamily: 'Metropolis',
+  },
   sliderValue: {
     ...iOSUIKit.caption2EmphasizedObject,
     flex: 1,
@@ -439,6 +443,10 @@ const formStyles = StyleSheet.create({
   iosSelectorText: {
     textAlign: 'left',
   },
+  switchContainer: {
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start'
+  }
 })
 
 export default formStyles
