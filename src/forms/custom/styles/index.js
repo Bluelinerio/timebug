@@ -150,7 +150,10 @@ const formStyles = StyleSheet.create({
   formContainer: {
     backgroundColor: 'transparent',
     flex: 5,
-    padding: 16,
+    ...Platform.select({
+      android: { padding: 16 },
+      ios: { padding: 10 },
+    }),    
     paddingTop: 10,
     justifyContent: 'flex-start',
     alignItems: 'center',

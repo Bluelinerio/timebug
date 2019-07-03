@@ -83,10 +83,10 @@ const form: Form = {
         default: [],
         required: true,
         constraints: {
-          min: 3,
+          min: 1,
           max: 10,
           errors: {
-            min: "Please list at least 3 I's",
+            min: "Please list at least 1 I",
             max: "The max input for this exercise is 10 I's",
           },
         },

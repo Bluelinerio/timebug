@@ -5,7 +5,7 @@ import type { Form }          from '../types/formTypes'
 import {
   CommonGoalOutcomesArray,
   SatisfactionLevels,
-  TimeAndEffortInvestedInGoal,
+  OneToTenScale,
   GoalType,
 }                             from './content'
 
@@ -100,7 +100,7 @@ const form: Form = {
       type: types.connected,
       key: `${FORM_KEYS.form_11_goal_satisfaction}`,
       content: {
-        text: 'In what percentage did you complete these goals?',
+        text: 'How far did you get with these goals(as a percentage)?',
         smallKey: 'Percentage goals',
       },
       options: {
@@ -135,8 +135,8 @@ const form: Form = {
       type: types.connected,
       key: `${FORM_KEYS.form_11_goal_time}`,
       content: {
-        text: 'How much time and effort did you invest in this goal?',
-        smallKey: 'Area of life',
+        text: 'On a scale of 1-10, how much time and effort did you invest in this goal?',
+        smallKey: 'Time and effort',
       },
       options: {
         connect: {
@@ -153,13 +153,13 @@ const form: Form = {
             key: `${CHILDREN_KEYS.form_11_goal_time.time}`,
             content: {
               smallKey: 'timeAndEffortInvested',
-              items: TimeAndEffortInvestedInGoal.map(investment => ({
-                value: investment,
-                text: investment,
+              items: OneToTenScale.map(value => ({
+                value: value,
+                text: value,
               })),
             },
             options: {
-              default: TimeAndEffortInvestedInGoal[0],
+              default: OneToTenScale[0],
             },
           },
         },
