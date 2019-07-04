@@ -299,21 +299,10 @@ export const SatisfactionLevels = [
   'Satisfied enough',
   'Satisfied',
   'Very satisfied',
-  'Absolutely satisfied'
+  'Absolutely satisfied',
 ]
 
-export const OneToTenScale = [
-  '1',
-  '2',
-  '3',
-  '4',
-  '5',
-  '6',
-  '7',
-  '8',
-  '9',
-  '10'
-]
+export const OneToTenScale = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
 
 export const TimeAndEffortInvestedInGoal = [
   'None',
@@ -321,7 +310,7 @@ export const TimeAndEffortInvestedInGoal = [
   'A bit',
   'Some time and effort',
   'Quite some time and effort',
-  'A lot of time and effort'
+  'A lot of time and effort',
 ]
 
 export const AloneOrOthers = ['Alone', 'WithOthers']

@@ -7,6 +7,7 @@ import {
   SatisfactionLevels,
   OneToTenScale,
   GoalType,
+  OneToTenScale,
 }                             from './content'
 
 export const FORM_KEYS = {
@@ -114,16 +115,19 @@ const form: Form = {
             ],
           },
           using: {
-            type: types.string,
+            type: types.select,
             key: `${CHILDREN_KEYS.form_11_goal_satisfaction.satisfaction}`,
             content: {
-              smallKey: 'completionLevel',
+              smallKey: 'satisfactionLevel',
+              items: OneToTenScale.map(value => {
+                return {
+                  value: value,
+                  text: value,
+                }
+              }),
             },
             options: {
-              default: '',
-              placeHolder: '50',
-              required: true,
-              type: 'numeric',
+              default: OneToTenScale[0],
             },
           },
         },
@@ -135,7 +139,8 @@ const form: Form = {
       type: types.connected,
       key: `${FORM_KEYS.form_11_goal_time}`,
       content: {
-        text: 'On a scale of 1-10, how much time and effort did you invest in this goal?',
+        text:
+          'On a scale of 1-10, how much time and effort did you invest in this goal?',
         smallKey: 'Time and effort',
       },
       options: {
