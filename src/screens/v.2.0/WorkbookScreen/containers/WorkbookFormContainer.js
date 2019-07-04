@@ -1,3 +1,4 @@
+// @flow
 import { connect } from 'react-redux'
 import { compose, mapProps } from 'recompose'
 import { withNavigation } from 'react-navigation'
@@ -37,6 +38,7 @@ const merge = ({
 }) => {
   const model = models[stepNumber]
   const formData = (data[stepNumber] && data[stepNumber].value) || null
+  const baseValues = navigation.getParam('valuesForForm', null)
   return {
     ...props,
     data: formData,
@@ -45,6 +47,7 @@ const merge = ({
     submitForm,
     editionIndex,
     navigation,
+    baseValues,
   }
 }
 

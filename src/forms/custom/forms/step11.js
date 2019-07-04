@@ -10,6 +10,10 @@ import {
   PercentageScale
 }                             from './content'
 
+// TODO: Rename satisfaction to completion
+// Rename in related tools as well
+
+//TODO: MAX MIN ON NUMERIC INPUT!!
 export const FORM_KEYS = {
   form_11_goal: 'form_11_goal',
   form_11_goal_satisfaction: 'form_11_goal_satisfaction',

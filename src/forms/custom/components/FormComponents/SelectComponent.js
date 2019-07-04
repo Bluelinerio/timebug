@@ -1,13 +1,13 @@
-import React from 'react'
+import React                      from 'react'
 import { Picker, Platform, View } from 'react-native'
-import ModalSelector from 'react-native-modal-selector'
-import FormElementHeader from './FormElementHeader'
-import styles from '../../styles'
-import { DISABLE } from './../../forms/constants'
-import type { SelectStyle } from './../../types/formTypes'
+import ModalSelector              from 'react-native-modal-selector'
+import FormElementHeader          from './FormElementHeader'
+import styles                     from '../../styles'
+import { DISABLE }                from './../../forms/constants'
+import type { SelectStyle }       from './../../types/formTypes'
 
 const AndroidPicker = (props: any) => {
-  const { options = {}, items, onChange, formStyles, value } = props
+  const { options = {}, items, onChange, formStyles, baseValue, value } = props
   const { style: staticStyles = {} } = options
   return (
     <View
@@ -18,7 +18,9 @@ const AndroidPicker = (props: any) => {
       ]}
     >
       <Picker
-        selectedValue={value ? value : options.default}
+        selectedValue={
+          value ? value : baseValue ? baseValue.value : options.default
+        }
         style={[
           styles.pickerStyle,
           staticStyles ? staticStyles.pickerContainerStyle : {},
@@ -39,21 +41,21 @@ const AndroidPicker = (props: any) => {
 }
 
 const IOSPicker = (props: any) => {
-  const { items, onChange, formStyles, value, options = {} } = props
+  const { items, onChange, formStyles, value, baseValue, options = {} } = props
   const { style: staticStyles = {} } = options
 
   const data =
     items && items.length > 0
       ? items.map(({ value, text }) => ({
-        key: value,
-        label: text,
-      }))
+          key: value,
+          label: text,
+        }))
       : [{ key: '', label: '-' }]
 
   const dataElement =
     value && data
       ? data.find(element => element.key === value) || data[0]
-      : data[0]
+      : baseValue ? baseValue.value : data[0]
 
   const textValue = dataElement.label
 
@@ -81,12 +83,16 @@ const Select = ({
   value,
   onChange,
   field: { content, options },
+  baseValue = null,
   formStyles = {},
   __extraProps = {},
 }: {
   value: string,
   onChange: string => any,
   formStyles: any,
+  baseValue: {
+    value: string,
+  },
   field: {
     content: {
       text: string,
@@ -144,6 +150,7 @@ const Select = ({
             items={filteredItems}
             options={options}
             onChange={onValueChange}
+            baseValue={baseValue}
           />
         ) : (
           <AndroidPicker
@@ -152,6 +159,7 @@ const Select = ({
             items={filteredItems}
             options={options}
             onChange={onValueChange}
+            baseValue={baseValue}
           />
         )}
       </View>

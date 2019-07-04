@@ -204,11 +204,11 @@ class GoalReview extends React.PureComponent<Props> {
           <View style={styles.goalReviewTextWithMargin}>
             <Text style={styles.goalTimeLeft}>
               {goalAwardData && goalAwardData.completed
-                ? 'Congratulations completing this goal!'
+                ? 'Congratulations on completing this goal!'
                 : daysLeft < 0
-                  ? 'Time for this goal has run out'
+                  ? 'This goal is past due.'
                   : daysLeft === 0
-                    ? `Today is the due day of your goal, press complete if you made it!`
+                    ? `Today is `
                     : `You have ${daysLeft} ${
                       daysLeft === 1 ? 'day' : 'days'
                     } to complete this goal!`}
