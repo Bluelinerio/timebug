@@ -293,4 +293,26 @@ export const Frequency = [
   'Never',
 ]
 
+export const SatisfactionLevels = [
+  'Not satisfied',
+  'Somewhat satisfied',
+  'Satisfied enough',
+  'Satisfied',
+  'Very satisfied',
+  'Absolutely satisfied',
+]
+
+export const PercentageScale = ['10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', '100%']
+
+export const OneToTenScale = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+
+export const TimeAndEffortInvestedInGoal = [
+  'None',
+  'Not much',
+  'A bit',
+  'Some time and effort',
+  'Quite some time and effort',
+  'A lot of time and effort',
+]
+
 export const AloneOrOthers = ['Alone', 'WithOthers']

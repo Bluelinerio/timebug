@@ -8,6 +8,7 @@ import STEP_7 from './step7'
 import STEP_8 from './step8'
 import STEP_9 from './step9'
 import STEP_10 from './step10'
+import STEP_11 from './step11'
 
 export default {
   '1': STEP_1,
@@ -20,4 +21,5 @@ export default {
   '8': STEP_8,
   '9': STEP_9,
   '10': STEP_10,
+  '11': STEP_11,
 }
