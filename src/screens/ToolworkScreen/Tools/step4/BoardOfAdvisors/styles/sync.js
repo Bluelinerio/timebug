@@ -105,4 +105,8 @@ export default StyleSheet.create({
     color: gray900,
     textAlign: 'center',
   },
+  link: {
+    color: darkBlue,
+    textDecorationLine: 'underline',
+  },
 })

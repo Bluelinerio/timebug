@@ -41,11 +41,6 @@ export const removeContact = (payload: { advisorId: any }) => ({
   payload,
 })
 
-export const requestPermission = (permission: string): SubmitAction => ({
-  type: REQUEST_PERMISSIONS,
-  payload: { permission },
-})
-
 export const checkContactPermissions = () => ({
   type: CHECK_CONTACT_PERMISSION,
 })

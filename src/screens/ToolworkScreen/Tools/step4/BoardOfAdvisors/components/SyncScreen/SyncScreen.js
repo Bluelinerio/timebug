@@ -1,8 +1,8 @@
 import React          from 'react'
 import { View, Text } from 'react-native'
-import styles         from '../../styles/sync'
 import SubHeader      from '../../components/SubHeader'
 import SyncList       from '../../containers/SyncScreen/SyncListContainer'
+import styles         from '../../styles/sync'
 
 export type Props = {
   advisor: {
@@ -11,13 +11,26 @@ export type Props = {
   },
   onBack: () => any,
   storeAwardData: (value: any, tool: any) => any,
+  requestPermission: () => void,
   addContactForAdvisor: any => any,
   canHandleContacts: boolean,
+  goToSettings: () => void,
+  isRequesting: boolean,
 }
 
 class SyncScreen extends React.PureComponent<Props> {
+  componentDidMount = () => {
+    const { requestPermission } = this.props
+    requestPermission()
+  }
+
+  _goToSettings = () => {
+    const { goToSettings } = this.props
+    goToSettings()
+  }
+
   render() {
-    const { advisor, onBack, canHandleContacts } = this.props
+    const { advisor, onBack, canHandleContacts, isRequesting } = this.props
     return (
       <View style={styles.container}>
         <SubHeader onBack={onBack}>
@@ -27,15 +40,18 @@ class SyncScreen extends React.PureComponent<Props> {
             </Text>
           </View>
         </SubHeader>
-        {canHandleContacts ? (
+        {isRequesting ? null : canHandleContacts ? (
           <View style={[styles.listArea, styles.bordered]}>
             <SyncList {...this.props} />
           </View>
         ) : (
           <View style={styles.warningContainer}>
             <Text style={styles.warningText}>
-              You have not enabled the use of your contacts, please go to
-              settings to enable it
+              You have not enabled the use of your contacts, please go to{' '}
+              <Text style={styles.link} onPress={this._goToSettings}>
+                settings
+              </Text>{' '}
+              to enable it
             </Text>
           </View>
         )}

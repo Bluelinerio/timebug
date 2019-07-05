@@ -14,7 +14,7 @@ import {
   getContactState,
   getNotifications,
   getNavigationState,
-  getPermissions
+  getPermissions,
 }                                                from './rootReducer.selectors'
 import { ANONYMOUS, AUTHENTICATING }             from '../../services/apollo/models'
 // models
@@ -422,9 +422,9 @@ const navigationState = (state: any) => getNavigationState(state)
 
 const permissions = (state: any) => getPermissions(state).permissions
 
- /**
-  * End permissions
-  */
+/**
+ * End permissions
+ */
 const selectors = {
   getCms,
   sortedSteps,
@@ -488,6 +488,7 @@ const selectors = {
   allToolData,
   mostRecentlyCompletedStep,
   permissions,
+  getPermissions,
 }
 
 export default selectors

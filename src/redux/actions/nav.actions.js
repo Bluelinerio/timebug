@@ -1,8 +1,8 @@
 // @flow
 import { NavigationActions, StackActions } from 'react-navigation'
-import type { Step } from '../../services/cms'
-import routes, { protoRoutes } from '../../navigation/routes'
-import { LINK_NAVIGATION } from '../actionTypes'
+import type { Step }                       from '../../services/cms'
+import routes, { protoRoutes }             from '../../navigation/routes'
+import { LINK_NAVIGATION }                 from '../actionTypes'
 
 if (!routes || !routes.root || !routes.root.initialRouteName || !routes.step) {
   throw 'missing routes or nested fields ' + JSON.stringify(routes)
