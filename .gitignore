@@ -110,3 +110,5 @@ android/\.settings/
 android/app/\.classpath
 
 android/app/\.settings/
+
+cache.json

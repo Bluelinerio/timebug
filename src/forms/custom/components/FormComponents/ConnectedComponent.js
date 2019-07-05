@@ -4,6 +4,7 @@ import { View }          from 'react-native'
 import styles            from '../../styles'
 import ConnectedSelect   from './Connected/ConnectedSelect'
 import ConnectedSet      from './Connected/ConnectedSetSwitch'
+import ConnectedText     from './Connected/ConnectedText'
 import FormElementHeader from './FormElementHeader'
 
 type Props = {
@@ -27,7 +28,7 @@ const SwitchComponent = (props: { component: any, props: any }) => {
   const { component: { type } } = props
   switch (type) {
   case types.string:
-    return null
+    return <ConnectedText {...props} />
   case types.select:
     return <ConnectedSelect {...props} />
   case types.set:
