@@ -7,7 +7,7 @@ import {
   SatisfactionLevels,
   OneToTenScale,
   GoalType,
-  OneToTenScale,
+  PercentageScale
 }                             from './content'
 
 export const FORM_KEYS = {
@@ -119,7 +119,7 @@ const form: Form = {
             key: `${CHILDREN_KEYS.form_11_goal_satisfaction.satisfaction}`,
             content: {
               smallKey: 'satisfactionLevel',
-              items: OneToTenScale.map(value => {
+              items: PercentageScale.map(value => {
                 return {
                   value: value,
                   text: value,
@@ -127,7 +127,7 @@ const form: Form = {
               }),
             },
             options: {
-              default: OneToTenScale[0],
+              default: PercentageScale[0],
             },
           },
         },
