@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "85136175680",
+    "firebase_url": "https://temp-2020.firebaseio.com",
+    "project_id": "temp-2020",
+    "storage_bucket": "temp-2020.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:85136175680:android:6fbbecb27b4cedd5",
+        "android_client_info": {
+          "package_name": "io.lifevision"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "85136175680-iqi1u0cgkf6mj521fdq18svc6kchanco.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFrL5jVjujH1S69so1_PopUTUzDV52lDo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "85136175680-iqi1u0cgkf6mj521fdq18svc6kchanco.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
