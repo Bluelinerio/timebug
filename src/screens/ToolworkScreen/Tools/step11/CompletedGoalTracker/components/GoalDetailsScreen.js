@@ -10,15 +10,16 @@ import tron                                             from 'reactotron-react-n
 
 type Props = {
   goal: Goal,
-  onBack: () => null,
+  onBack: () => null
 }
 
 class GoalDetailsScreen extends React.PureComponent<Props> {
   _parseCompletion = rawCompletion => {
+    const [completion] = rawCompletion.split('%')
     try {
-      return rawCompletion > 100
+      return completion > 100
         ? 100
-        : parseInt(rawCompletion) < 0 ? 0 : parseInt(rawCompletion)
+        : parseInt(completion) < 0 ? 0 : parseInt(completion)
     } catch (err) {
       return 0
     }
@@ -60,7 +61,7 @@ class GoalDetailsScreen extends React.PureComponent<Props> {
               thumbStyle={{
                 width: 0,
                 height: 0,
-                backgroundColor: 'transparent',
+                backgroundColor: 'transparent'
               }}
             />
           </View>
