@@ -1,7 +1,8 @@
+// @flow
 import { Platform } from 'react-native'
 import moment from 'moment'
-import RNAmplitude from 'react-native-amplitude-analytics'
-import { AMPLITUDE_KEY } from '2020_constants/constants'
+// import RNAmplitude from 'react-native-amplitude-analytics'
+// import { AMPLITUDE_KEY } from '2020_constants/constants'
 import DeviceInfo from 'react-native-device-info'
 import tron from 'reactotron-react-native'
 
@@ -21,11 +22,9 @@ class AmplitudeService {
     version,
   }
 
-  constructor(key: string, name = 'Amplitude Service', log = true) {
+  constructor(key: string = '', name = 'Amplitude Service', log = true) {
     this._shouldLog = log
-    this._name = 'name'
-    this._amplitude = new RNAmplitude(key, true, APP_PREFIX)
-    this.log(`${name} has been started`)
+    this._name = name
   }
 
   addDefaultParam(key: string, prop:any) {
@@ -39,9 +38,7 @@ class AmplitudeService {
     delete this._defaultParams[key]
   }
   
-  setUser(userId: string) {
-    this._amplitude.setUserId(userId)
-  }
+  setUser(userId: string) {}
 
   log = (message: string) => {
     tron.log(`${PREFIX}: ${message}`)
@@ -61,12 +58,11 @@ class AmplitudeService {
       ...this._defaultParams,
       ...data,
     }
-    this._amplitude.logEventWithTimestamp(event, timestamp, dataToLog)
     this.display(dataToLog, event)
   }
 }
 
-const instance = new AmplitudeService(AMPLITUDE_KEY)
+const instance = new AmplitudeService()
 
 export const log = (event: string, data?) => {
   instance.log(`LOGGING:${event}`)

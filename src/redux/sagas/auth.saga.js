@@ -33,7 +33,6 @@ import {
 import facebook                       from '../../services/facebook'
 import AuthStorage                    from '../../services/authStorage'
 import NavigationService              from '2020_services/navigation'
-import { log } from '2020_services/amplitude'
 import tron                           from 'reactotron-react-native'
 
 function* wipeTokens() {
@@ -92,8 +91,6 @@ function* refreshUserSaga() {
         userId: id,
         endpoint,
       })
-
-      log('USER_FACEBOOK_LOGIN')
 
       yield call(_fetchUserWithId, id)
       return
