@@ -40,6 +40,7 @@ export type GoToWorkbookParams = {
   phase: string,
   editionIndex?: number,
   section?: string,
+  valuesForForm?: any,
 }
 
 export const linkNavigation = (payload: LinkedNavigationPayload) => ({

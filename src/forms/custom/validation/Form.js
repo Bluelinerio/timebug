@@ -32,6 +32,12 @@ const _formElementsValidation = (val, options) => {
   return hasError
 }
 
+const isValidString = (value: any, type: strings, options?: any = {}) => {
+  const { type: inputType, max = 100, min = 0 } = options
+  if (inputType === 'numeric') return value >= min && value <= max
+  return value && value.trim() !== ''
+}
+
 // returns true if the value is as expected
 const _isValueValidForType = (value: any, type: string, options?: any = {}) => {
   switch (type) {

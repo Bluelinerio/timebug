@@ -1,8 +1,10 @@
+// @flow
 import React                      from 'react'
 import { BackHandler, StatusBar } from 'react-native'
 import { SafeAreaView }           from 'react-navigation'
-import styles, { headerColor }    from '../styles'
+import styles                     from '../styles'
 import WorkArea                   from '../containers/WorkAreaContainer'
+import { mapPhaseToColor }        from '../utils/phaseColors'
 
 type Props = {
   navigation: any,
@@ -50,12 +52,23 @@ class ToolworkScreen extends React.PureComponent<Props> {
   }
 
   render() {
+    const { navigation } = this.props
+    const { state } = navigation
+    const phase = state.params.tool.phase
+
     return (
       <SafeAreaView
         forceInset={{ top: 'always', bottom: 'never' }}
-        style={[styles.container, styles.screenBackground]}
+        style={[
+          styles.container,
+          styles.screenBackground,
+          { backgroundColor: mapPhaseToColor(phase).back },
+        ]}
       >
-        <StatusBar barStyle="light-content" backgroundColor={headerColor} />
+        <StatusBar
+          barStyle="light-content"
+          backgroundColor={mapPhaseToColor(phase).header}
+        />
         <WorkArea />
       </SafeAreaView>
     )

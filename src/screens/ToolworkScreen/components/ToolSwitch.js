@@ -1,13 +1,15 @@
-import React from 'react'
-import { TOOL_KEYS } from '2020_static/tools'
-import DailyPlanner from '../Tools/step2/DailyPlanner'
-import WeeklyPlanner from '../Tools/step2/WeeklyPlanner'
-import DailyMeditation from '../Tools/step1/MeditationTool'
-import BoardOfAdvisors from '../Tools/step4/BoardOfAdvisors'
-import GoalTracker from '../Tools/step5/GoalTracker'
-import GoalsLog from '../Tools/step6/GoalsLog'
-import EnergyLevelsTracker from '../Tools/step8/EnergyLevelsTracker'
-import Dummy from '../Tools/dummyTool'
+// @flow
+import React                 from 'react'
+import { TOOL_KEYS }         from '2020_static/tools'
+import DailyPlanner          from '../Tools/step2/DailyPlanner'
+import WeeklyPlanner         from '../Tools/step2/WeeklyPlanner'
+import DailyMeditation       from '../Tools/step1/MeditationTool'
+import BoardOfAdvisors       from '../Tools/step4/BoardOfAdvisors'
+import GoalTracker           from '../Tools/step5/GoalTracker'
+import GoalsLog              from '../Tools/step6/GoalsLog'
+import EnergyLevelsTracker   from '../Tools/step8/EnergyLevelsTracker'
+import CompletedGoalsTracker from '../Tools/step11/CompletedGoalTracker'
+import Dummy                 from '../Tools/dummyTool'
 
 type Props = {
   tool: any,
@@ -32,6 +34,8 @@ const ToolSwitch = (props: Props) => {
     return <GoalsLog {...props} />
   case TOOL_KEYS.EnergyLevelsTrackerKey:
     return <EnergyLevelsTracker {...props} />
+  case TOOL_KEYS.CompletedGoalsTrackerKey:
+    return <CompletedGoalsTracker {...props} />
   case TOOL_KEYS.DummyKey:
     return <Dummy {...props} />
   default:

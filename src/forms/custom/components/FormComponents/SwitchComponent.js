@@ -7,6 +7,7 @@ const SwitchComponent = ({
   value,
   onChange,
   formStyles = {},
+  baseValue = null,
   field: {
     content = {
       text: '',
@@ -23,6 +24,9 @@ const SwitchComponent = ({
   onChange: string => any,
   color: string,
   formStyles: any,
+  baseValue: {
+    value: boolean,
+  },
   field: {
     content?: {
       text: string,
@@ -48,7 +52,7 @@ const SwitchComponent = ({
         )}
       <View style={styles.switchContainer}>
         <Switch
-          value={value ? value : options.default}
+          value={value ? value : baseValue ? baseValue.value : options.default}
           onValueChange={onChange}
         />
       </View>

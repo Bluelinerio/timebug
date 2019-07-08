@@ -34,6 +34,7 @@ export const green50 = '#E8F5E9'
 export const red500 = '#F44336'
 export const yellow500 = '#FFEB3B'
 export const cyan500 = '#00BCD4'
+export const black = '#000000'
 
 export const MEDITATION = '#005587'
 export const SELF_ASSESSMENT = '#F78C00'

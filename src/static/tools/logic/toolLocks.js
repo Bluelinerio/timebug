@@ -20,6 +20,9 @@ import GoalsOfOthersLog, { key as GoalsLogKey }       from '../GoalsOfOthersLog'
 import EnergyLevelsTracker, {
   key as EnergyLevelsTrackerKey,
 }                                                     from '../EnergyLevelsTracker'
+import CompletedGoalsTracker, {
+  key as CompletedGoalsTrackerKey,
+}                                                     from '../CompletedGoalsTracker'
 import DummyTool, { key as DummyKey }                 from '../Dummy'
 import type { ToolLock }                              from '../types'
 
@@ -31,6 +34,7 @@ export const TOOL_KEYS = {
   GoalTrackerKey,
   GoalsLogKey,
   EnergyLevelsTrackerKey,
+  CompletedGoalsTrackerKey,
   DummyKey,
 }
 
@@ -118,6 +122,18 @@ const toolDefinitions: Array<ToolLock> = [
       },
     ],
     tool: EnergyLevelsTracker,
+  },
+  {
+    conditions: [
+      {
+        type: STEPS,
+        clause: {
+          type: ALL,
+          value: [11],
+        },
+      },
+    ],
+    tool: CompletedGoalsTracker,
   },
 ]
 
