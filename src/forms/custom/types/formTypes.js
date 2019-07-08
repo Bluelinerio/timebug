@@ -124,3 +124,14 @@ export type Form = {
     [x: number]: Field,
   },
 }
+
+export type Value = string | boolean | number | Array<FormValue> | FormValue
+
+export type FormValue = {
+  _id: string,
+  ket: string,
+  type: string,
+  index: number,
+  timestamp: string,
+  value: Value
+}

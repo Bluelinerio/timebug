@@ -1,12 +1,12 @@
 // @flow
-import React                                      from 'react'
+import React from 'react'
 import { View, Text, ScrollView, Linking, Image } from 'react-native'
-import Form                                       from '../containers/FormWrapperContainer'
-import styles                                     from '../styles'
-import type { Step }                              from '../../../../services/cms'
-import FormFinishedComponent                      from '../containers/FormFinishedContainer'
-import type { SubmitAction }                      from '../../../../redux/actions/formData.actions.js'
-import { headerBackgrounds }                      from '../../../../resources/images'
+import Form from '../containers/FormWrapperContainer'
+import styles from '../styles'
+import type { Step } from '../../../../services/cms'
+import FormFinishedComponent from '../containers/FormFinishedContainer'
+import type { SubmitAction } from '../../../../redux/actions/formData.actions.js'
+import { headerBackgrounds } from '../../../../resources/images'
 
 type Props = {
   stepNumber: string,
@@ -21,6 +21,7 @@ type Props = {
   editionIndex: number,
   navigation: any,
   onFinish: () => any,
+  baseValues?: any,
 }
 
 type State = {
@@ -34,6 +35,16 @@ class WorkbookForm extends React.PureComponent<Props, State> {
 
   componentDidUpdate(prevProps) {
     const isEditing = this.props.editionIndex || this.props.editionIndex === 0
+    const baseValues = this.props.navigation.getParam('valuesForForm', null)
+    const oldBaseValues = prevProps.navigation.getParam('valuesForForm', null)
+
+    if (baseValues !== oldBaseValues) {
+      this.setState({
+        formFinished: false,
+      })
+      return
+    }
+
     if (
       this.props.stepNumber !== prevProps.stepNumber ||
       (isEditing &&
@@ -67,6 +78,7 @@ class WorkbookForm extends React.PureComponent<Props, State> {
       onSelectStep,
       backgroundColor,
       editionIndex,
+      baseValues,
     } = this.props
     const { formFinished } = this.state
     return model ? (
@@ -85,6 +97,7 @@ class WorkbookForm extends React.PureComponent<Props, State> {
             phase={phase}
             disableAnswers
             editionIndex={editionIndex}
+            baseValues={baseValues ? baseValues : undefined}
             extra={{
               step,
             }}

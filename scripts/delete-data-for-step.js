@@ -6,15 +6,16 @@ const { InMemoryCache } = require('apollo-cache-inmemory')
 const gql = require('graphql-tag')
 const jsonfile = require('jsonfile')
 
-
 const argv = require('yargs').argv
 
 const endpoints = {
-  simple: 'https://api.graph.cool/simple/v1/cjdnw03hv8l6m01133d2ix1pb',
+  simple: 'https://api.graph.cool/simple/v1/cjdnw03hv8l6m01133d2ix1pb'
 }
 
-if(!argv.step && !argv.user) {
-  console.error("Please provide a step, you are about to delete all data from all users")
+if (!argv.step && !argv.user) {
+  console.error(
+    'Please provide a step, you are about to delete all data from all users'
+  )
   process.exit(1)
 }
 
@@ -53,14 +54,14 @@ const deleteForm = ({ id }) =>
         }
       `,
       variables: {
-        id,
-      },
+        id
+      }
     })
     .then(parse('deleteForm'))
 
 const client = new ApolloClient({
   link: new HttpLink({ uri: endpoints.simple, fetch: fetch }),
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache()
 })
 
 const filterV1 = d => {
@@ -77,8 +78,16 @@ const filterUser = d => {
 }
 
 const store = content =>
-  jsonfile.writeFile('./cache.json', content, err => {
-    console.error(err ? err : 'success writing CMS data into cache just in case. PLEASE TAKE CARE OF THIS DATA')
+  new Promise((resolve, reject) => {
+    jsonfile.writeFile('./cache.json', content, err => {
+      console.error(
+        err
+          ? err
+          : 'success writing CMS data into cache just in case. PLEASE TAKE CARE OF THIS DATA'
+      )
+      if (err) reject(err)
+      resolve(content)
+    })
   })
 
 const filterFormsForDeletion = gcData =>
@@ -86,7 +95,7 @@ const filterFormsForDeletion = gcData =>
 
 client
   .query({
-    query: getFormsQuery,
+    query: getFormsQuery
   })
   .then(parse('allForms'))
   .then(filterFormsForDeletion)

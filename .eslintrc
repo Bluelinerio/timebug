@@ -8,8 +8,8 @@
   "parserOptions": {
     "sourceType": "module",
   },
-  "plugins": ["react"],
-  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "plugins": ["react", "flowtype"],
+  "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:flowtype/recommended"],
   "rules": {
     "comma-dangle": ["error", "always-multiline"],
     "no-console": 0,

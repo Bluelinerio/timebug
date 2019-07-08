@@ -1,15 +1,16 @@
-import React                           from 'react'
-import { View }                        from 'react-native'
-import { SafeAreaView }                from 'react-navigation'
-import Banner                          from '2020_containers/PhaseHeaderContainer'
-import styles                          from '../styles'
-import type { Step }                   from '../../../../services/cms'
-import { phaseForStep, MEDITATION }    from '2020_services/cms'
-import StepBar                         from '../containers/StepBarContainer'
-import Sidebar                         from '../containers/SidebarContainer'
-import { SectionValues }               from '../context/SectionContext'
-import WorkbookContent                 from '../containers/WorkbookContentContainer'
-import { mapBarStylesHelper }          from '../utils/colorsForStep'
+// @flow
+import React from 'react'
+import { View } from 'react-native'
+import { SafeAreaView } from 'react-navigation'
+import Banner from '2020_containers/PhaseHeaderContainer'
+import styles from '../styles'
+import type { Step } from '../../../../services/cms'
+import { phaseForStep, MEDITATION } from '2020_services/cms'
+import StepBar from '../containers/StepBarContainer'
+import Sidebar from '../containers/SidebarContainer'
+import { SectionValues } from '../context/SectionContext'
+import WorkbookContent from '../containers/WorkbookContentContainer'
+import { mapBarStylesHelper } from '../utils/colorsForStep'
 import { translateCMSPhaseToStandard } from '2020_services/cms'
 
 type Props = {
@@ -59,49 +60,121 @@ class WorkbookScreen extends React.PureComponent<Props, State> {
     }
   }
 
+  componentDidMount() {
+    this.props.navigation.setParams({ step: null })
+  }
+
   componentDidUpdate = (prevProps, prevState) => {
     const previousIndex = prevProps.navigation.getParam('editionIndex', null)
     const currentIndex = this.props.navigation.getParam('editionIndex', null)
+
     const newSentStep = this.props.navigation.getParam('step', null)
+
+    const navSection = this.props.navigation.getParam('section', null)
+    const baseValues = this.props.navigation.getParam('valuesForForm', null)
+    // const previousBaseValues = prevProps.navigation.getParam(
+    //   'valuesForForm',
+    //   null
+    // )
     const currentStep = this.state.selectedStep
     const previousStep = prevState.selectedStep
+
     const currentSection = this.state.selectedSection
     const previousSection = prevState.selectedSection
 
-    const navSection = this.props.navigation.getParam('section', null)
-
+    //If I just requested a baseValues update, remove any existing edition sessions
+    // if (previousBaseValues === null && baseValues && (currentIndex || currentIndex === 0)) {
+    //   this.setState(
+    //     {
+    //       editionIndex: null,
+    //     },
+    //     () => {
+    //       this.props.navigation.setParams({
+    //         editionIndex: null,
+    //       })
+    //     }
+    //   )
+    // }
+    // If there is currently an item being edited and a new request to edit is sent
+    // update with the new element, open the form and update step if it changed
     if (
       (currentIndex || currentIndex === 0) &&
       previousIndex !== currentIndex
     ) {
-      this.setState(() => ({
-        editionIndex: currentIndex,
-        selectedSection: SectionValues.form,
-        selectedStep:
-          newSentStep && newSentStep.number !== currentStep.number
-            ? newSentStep
-            : currentStep,
-      }))
+      this.setState(
+        () => ({
+          editionIndex: currentIndex,
+          selectedSection: SectionValues.form,
+          selectedStep:
+            newSentStep && newSentStep.number !== currentStep.number
+              ? newSentStep
+              : currentStep,
+        }),
+        () => {
+          if (baseValues)
+            this.props.navigation.setParams({
+              valuesForForm: null,
+              editionIndex: null,
+              section: null,
+            })
+        }
+      )
       return
     }
+
+    // If step or section changes while editing or baseValues are set, disable editions and base data
     if (
-      ((currentIndex || currentIndex === 0) &&
-        currentSection !== previousSection) ||
-      previousStep.number !== currentStep.number
+      (previousStep.number !== currentStep.number ||
+        currentSection !== previousSection) &&
+      (baseValues || (currentIndex || currentIndex === 0))
     ) {
-      this.setState(() => ({ editionIndex: null }))
+      this.setState(
+        () => ({ editionIndex: null }),
+        () => {
+          if (baseValues)
+            this.props.navigation.setParams({
+              valuesForForm: null,
+              editionIndex: null,
+              section: null,
+            })
+        }
+      )
       return
     }
+
+    // if a new navigation to step request is sent and it's not the same as the current one restore everything
     if (newSentStep && newSentStep.number !== currentStep.number) {
       const selectedSection = navSection
         ? validateSelectedSection(navSection)
         : SectionValues.textContent
-      this.setState(() => ({
-        selectedStep: newSentStep,
-        selectedSection,
-        editionIndex: null,
-      }))
+      this.setState(
+        () => ({
+          selectedStep: newSentStep,
+          selectedSection,
+          editionIndex: null,
+        }),
+        () => {
+          if (baseValues)
+            this.props.navigation.setParams({
+              valuesForForm: null,
+              step: null,
+              section: null,
+            })
+        }
+      )
       return
+    }
+
+    // If a section change is requested execute it as long as it's not the same
+    if (navSection) {
+      if (navSection !== currentSection)
+        this.setState(
+          { selectedSection: validateSelectedSection(navSection) },
+          () => {
+            this.props.navigation.setParams({ section: null })
+          }
+        )
+      this.props.navigation.setParams({ section: null })
     }
   }
 
@@ -133,13 +206,15 @@ class WorkbookScreen extends React.PureComponent<Props, State> {
     const { editionIndex } = this.state
     if (editionIndex || editionIndex === 0) {
       this.setState({ editionIndex: null })
-      this.props.navigation.setParams({ editionIndex: null })
+      this.props.navigation.setParams({
+        editionIndex: null,
+        valuesForForm: null,
+      })
     }
   }
 
   render() {
     const { selectedStep, selectedSection, editionIndex } = this.state
-
     const backgroundColor = this._getCurrentBackgroundColor(selectedStep)
     const phase = this._phaseForStep(selectedStep)
 
