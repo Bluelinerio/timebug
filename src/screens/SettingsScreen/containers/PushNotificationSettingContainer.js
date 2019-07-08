@@ -8,6 +8,7 @@ import {
   removePermission,
 }                                  from '2020_redux/actions/permissions.actions'
 import { SEND_PUSH_NOTIFICATIONS } from '2020_constants/permissions'
+import { GRANTED }                 from '2020_constants/constants'
 
 type Props = {
   hasPermission: boolean,
@@ -16,9 +17,9 @@ type Props = {
 
 const mapStateToProps = (state: any) => {
   const permissions = selectors.permissions(state)
-  const permission = permissions.find(p => p === SEND_PUSH_NOTIFICATIONS)
+  const permission = permissions.find(p => p.value === SEND_PUSH_NOTIFICATIONS)
 
-  const hasPermission = !!permission
+  const hasPermission = permission && permission.status === GRANTED
 
   return {
     hasPermission,

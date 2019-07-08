@@ -1,0 +1,1 @@
+Had to rename blur package from `react-native-community/blur` to `react-native-community_blur`, do not know the effects of this but it was a positive intake in Android Studio

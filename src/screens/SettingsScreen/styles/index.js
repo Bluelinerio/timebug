@@ -1,6 +1,6 @@
 // @flow
-import { StyleSheet }                        from 'react-native'
-import { iOSUIKit }                          from 'react-native-typography'
+import { StyleSheet } from 'react-native'
+import { iOSUIKit } from 'react-native-typography'
 import { paleBlue, darkBlue, facebookColor } from '2020_constants/colors'
 
 export const headerColor = paleBlue
@@ -73,5 +73,16 @@ export default StyleSheet.create({
   },
   settingsList: {
     marginVertical: 4,
+  },
+  enableButton: {
+    paddingHorizontal: 6,
+    paddingVertical: 4,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  enableText: {
+    ...iOSUIKit.subheadObject,
+    color: darkBlue,
+    textDecorationLine: 'underline',
   },
 })

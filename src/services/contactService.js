@@ -1,12 +1,14 @@
 // @flow
-import { PermissionsAndroid, Platform } from 'react-native'
-import Contacts                         from 'react-native-unified-contacts'
+import { Platform } from 'react-native'
+import Permissions from 'react-native-permissions'
+import Contacts from 'react-native-unified-contacts'
 import {
   UNDETERMINED,
   GRANTED,
   DENIED,
   NEVER_ASK_AGAIN,
-}                                       from '2020_constants/constants'
+} from '2020_constants/constants'
+import { READ_CONTACTS } from '2020_constants/permissions'
 
 export type NativeContact = {
   recordID: string,
@@ -33,47 +35,83 @@ type PermissionResponse = {
   status: string,
 }
 
+const permissionName = 'contacts'
+
+const authorized = 'authorized'
+const denied = 'denied'
+const restricted = 'restricted'
+
 export const stepsWithContacts = ['4']
 
 class ContactService {
   contactCache = null
 
-  async requestPermissions(): PermissionResponse {
-    if (Platform.OS === 'android') {
-      try {
-        const result = await PermissionsAndroid.request(
-          PermissionsAndroid.PERMISSIONS.READ_CONTACTS,
-          {
-            title: 'Contacts',
-            message: 'This app would like to view your contacts.',
-          }
-        )
-        if (result === PermissionsAndroid.RESULTS.GRANTED) {
-          return {
-            permission: PermissionsAndroid.PERMISSIONS.READ_CONTACTS,
-            status: GRANTED,
-          }
-        } else if (result === PermissionsAndroid.RESULTS.DENIED) {
-          return {
-            permission: PermissionsAndroid.PERMISSIONS.READ_CONTACTS,
-            status: DENIED,
-          }
-        } else {
-          return {
-            permission: PermissionsAndroid.PERMISSIONS.READ_CONTACTS,
-            status: NEVER_ASK_AGAIN,
-          }
-        }
-      } catch (err) {
+  async checkPermission(): PermissionResponse {
+    try {
+      const result = await Permissions.check(permissionName)
+      if (result === authorized) {
         return {
-          permission: PermissionsAndroid.PERMISSIONS.READ_CONTACTS,
+          value: READ_CONTACTS,
+          status: GRANTED,
+        }
+      } else if (result === denied) {
+        return {
+          value: READ_CONTACTS,
+          status: Platform.OS === 'ios' ? NEVER_ASK_AGAIN : DENIED,
+        }
+      } else if (result === restricted) {
+        return {
+          value: READ_CONTACTS,
+          status: NEVER_ASK_AGAIN,
+        }
+      } else {
+        return {
+          value: READ_CONTACTS,
           status: UNDETERMINED,
         }
       }
-    } else {
+    } catch (err) {
       return {
-        permission: 'ios-read-contacts',
-        status: GRANTED,
+        value: READ_CONTACTS,
+        status: UNDETERMINED,
+      }
+    }
+  }
+
+  async requestPermissions(): PermissionResponse {
+    try {
+      const result = await Permissions.request(permissionName, {
+        rationale: {
+          title: 'Lifevision Contacts permission',
+          message:
+            'Lifevision would like to know your contacts so you can register them as trustworthy advisors and make it easy to contact them for support',
+        },
+      })
+      if (result === authorized) {
+        return {
+          value: READ_CONTACTS,
+          status: GRANTED,
+        }
+      } else if (result === denied) {
+        return {
+          value: READ_CONTACTS,
+          status: Platform.OS === 'ios' ? NEVER_ASK_AGAIN : DENIED,
+        }
+      } else if (result === restricted) {
+        return {
+          value: READ_CONTACTS,
+          status: NEVER_ASK_AGAIN,
+        }
+      } else {
+        return {
+          value: READ_CONTACTS,
+          status: UNDETERMINED,
+        }
+      }
+    } catch (err) {
+      return {
+        value: READ_CONTACTS,
+        status: UNDETERMINED,
       }
     }
   }
