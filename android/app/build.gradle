@@ -198,8 +198,6 @@ android {
 dependencies {
     implementation project(':react-native-config')
     implementation project(':react-native-firebase')
-    implementation 'com.amplitude:android-sdk:2.16.0'
-    implementation project(':react-native-amplitude-analytics')
     implementation project(':react-native-webview')
     implementation project(':@react-native-community_slider')
     implementation project(':@react-native-community_async-storage')
