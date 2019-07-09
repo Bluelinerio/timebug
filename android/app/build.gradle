@@ -1,6 +1,7 @@
 apply plugin: "com.android.application"
 
 import com.android.build.OutputFile
+import com.google.gms.googleservices.GoogleServicesPlugin
 
 /**
  * The react.gradle file registers a task for each build variant (e.g. bundleDebugJsAndAssets
@@ -198,8 +199,6 @@ android {
 dependencies {
     implementation project(':react-native-config')
     implementation project(':react-native-firebase')
-    implementation 'com.amplitude:android-sdk:2.16.0'
-    implementation project(':react-native-amplitude-analytics')
     implementation project(':react-native-webview')
     implementation project(':@react-native-community_slider')
     implementation project(':@react-native-community_async-storage')
@@ -260,4 +259,4 @@ task copyDownloadableDepsToLibs(type: Copy) {
 }
 
 apply plugin: 'com.google.gms.google-services'
-com.google.gms.googleservices.GoogleServicesPlugin.config.disableVersionCheck = true
+GoogleServicesPlugin.config.disableVersionCheck = true

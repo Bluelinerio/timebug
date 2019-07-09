@@ -11,7 +11,7 @@ import com.moengage.core.Logger;
 import com.moengage.react.MoEReactPackage;
 import com.moengage.core.MoEngage;
 import com.moe.pushlibrary.MoEHelper;
-import com.sudoplz.reactnativeamplitudeanalytics.RNAmplitudeSDKPackage;
+
 import com.reactnativecommunity.webview.RNCWebViewPackage;
 import com.reactnativecommunity.slider.ReactSliderPackage;
 import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
@@ -72,7 +72,6 @@ public class MainApplication extends Application implements ReactApplication {
           new RNFirebasePackage(),
           new RNFirebaseMessagingPackage(),
           new MoEReactPackage(),
-          new RNAmplitudeSDKPackage(MainApplication.this),
           new RNCWebViewPackage(),
           new ReactSliderPackage(),
           new AsyncStoragePackage(),

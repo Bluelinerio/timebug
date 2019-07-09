@@ -2,7 +2,6 @@
 import React                            from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import type { Step }                    from '2020_services/cms'
-import { log }                          from '2020_services/amplitude'
 import styles                           from '../styles'
 
 export type Props = {
@@ -34,7 +33,6 @@ class FormFinishedComponent extends React.PureComponent<Props> {
 
   componentDidMount() {
     const { step } = this.props
-    log('FORM_FINISHED', { step })
   }
 
   render() {

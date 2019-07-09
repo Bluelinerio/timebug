@@ -1,8 +1,6 @@
 import { Platform } from 'react-native'
 import moment from 'moment'
 import ReactMoE from 'react-native-moengage'
-import RNAmplitude from 'react-native-amplitude-analytics'
-import { AMPLITUDE_KEY } from '2020_constants/constants'
 import DeviceInfo from 'react-native-device-info'
 import tron from 'reactotron-react-native'
 
