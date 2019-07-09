@@ -19,7 +19,11 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #if RCT_DEV
 #import <React/RCTDevLoadingView.h>
+@import UIKit;
+#import <Firebase.h>
 #endif
+
+
 
 @implementation AppDelegate
 
@@ -27,7 +31,8 @@
 {
   NSURL *jsCodeLocation;
 
-  
+  [FIRApp configure];
+
     #ifdef DEBUG
         jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
     #else
