@@ -29,8 +29,10 @@
 		1684BC5795854F5BBAA00FA2 /* 2020-diary-step-16.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C888D8C237041F0BED9D855 /* 2020-diary-step-16.png */; };
 		1A424D370E424B0888EB4E02 /* Metropolis-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0B7E5DDC64B1454E90721654 /* Metropolis-Black.otf */; };
 		1C8BB1FA04844DB6BDC0D25D /* Metropolis-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7E949A2844AF48209ED74318 /* Metropolis-Regular.otf */; };
+		1CAFF30931B047CD90431A26 /* libRNFirebase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED5A75A3A8234F18B3769CE0 /* libRNFirebase.a */; };
 		207834E9B83E4273B1CB16C3 /* 2020-diary-step-18.png in Resources */ = {isa = PBXBuildFile; fileRef = 060751800068405D9D7304E8 /* 2020-diary-step-18.png */; };
 		21F9891CE54347828F75075D /* 2020-diary-step-4.png in Resources */ = {isa = PBXBuildFile; fileRef = F2B168944D894400B00FBDD0 /* 2020-diary-step-4.png */; };
+		22F65B7428374C671E88C5FD /* Pods_Lifevision.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7849C6BF8BE72FD428CC8FF7 /* Pods_Lifevision.framework */; };
 		242E33E72B3D44169DD04118 /* 2020-diary-step-11.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F8B322E03F54BF3910BD769 /* 2020-diary-step-11.png */; };
 		26A5DC7A3FCE464C90FDBE94 /* libRCTVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ED6F842A92D4871AEEC8C42 /* libRCTVideo.a */; };
 		275FFA3D7A0447399A5B22B3 /* 2020-diary-step-21.png in Resources */ = {isa = PBXBuildFile; fileRef = F195A117F48242A8A9C7F175 /* 2020-diary-step-21.png */; };
@@ -56,6 +58,7 @@
 		3CE0519D15A74E17A065FBF1 /* sandClockConfetti@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0961A63D63954C67AC22CF82 /* sandClockConfetti@3x.png */; };
 		3E75010D2BD24AE6B1F31809 /* Metropolis-SemiBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = FA98C67E343D4CC9B9C3BDCB /* Metropolis-SemiBoldItalic.otf */; };
 		3E854EAC298246DAA2452458 /* 2020-diary-step-19.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C733FD0975947D9BE2AB9A4 /* 2020-diary-step-19.png */; };
+		3F7721401E8F4C34AAAE9ABE /* libReactNativeConfig-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8575067B514F4BF7B09549C0 /* libReactNativeConfig-tvOS.a */; };
 		41395E0A325C4854ACDFB05F /* 2020-diary-step-26.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B3099E8E76494882B28BF3 /* 2020-diary-step-26.png */; };
 		427CF7DD055F416F99F52703 /* 2020-diary-step-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 206B1EAD0A554C0BB83B4016 /* 2020-diary-step-29.png */; };
 		431F97BA6B1C4CC2B1C116B6 /* Metropolis-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B4C222AC0C7480F9D05B796 /* Metropolis-RegularItalic.otf */; };
@@ -111,6 +114,7 @@
 		A63BDFBBA5AC4897B0AF5C47 /* Metropolis-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = F65148B3D7FC41D18F0DB7BE /* Metropolis-LightItalic.otf */; };
 		A802A4D50E3B4809B6918440 /* 2020-diary-step-3.png in Resources */ = {isa = PBXBuildFile; fileRef = B3C9922841564BA29F0B9037 /* 2020-diary-step-3.png */; };
 		AB28FFE77D884309A90B61FE /* 2020-diary-step-23.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A9AB815655E4C3BA4462D81 /* 2020-diary-step-23.png */; };
+		ABF4EDEF2BC048E094C12AD5 /* libMoEReactBridge.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EABD6220F57345879BB09B9E /* libMoEReactBridge.a */; };
 		AF816833E0914715BE78FB26 /* Metropolis-ExtraBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5324C2C862464F11BD043E1F /* Metropolis-ExtraBoldItalic.otf */; };
 		B028C5D6AE0E4A0D98A7EAF0 /* 2020-diary-step-9.png in Resources */ = {isa = PBXBuildFile; fileRef = 32500F77901B4817BCFB78B6 /* 2020-diary-step-9.png */; };
 		B07FBCC8AC03483094306ED9 /* 2020-diary-step-30.png in Resources */ = {isa = PBXBuildFile; fileRef = 06F72533ACF64BD495FF45F5 /* 2020-diary-step-30.png */; };
@@ -128,16 +132,14 @@
 		D15C06954183498E8B03CBBE /* Lifevision-Collage@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 464C449773C043B18E4DBDBB /* Lifevision-Collage@3x.png */; };
 		D29004A5F3E1491CB400E90A /* 2020-diary-step-24.png in Resources */ = {isa = PBXBuildFile; fileRef = C96B38CE91394249BCFB2067 /* 2020-diary-step-24.png */; };
 		D3248B9319EC4ABE839876CD /* Metropolis-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CBDD923749584DA3B431DAE6 /* Metropolis-SemiBold.otf */; };
+		D6616DD64990BC3509D11DA7 /* Pods_LifevisionTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDB382B4A4B1B1343ADE292E /* Pods_LifevisionTests.framework */; };
 		D8E8CAB258734FEBAD0CA23C /* libRNSound.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C326879D75BB4A608FF9BF08 /* libRNSound.a */; };
 		DE65CEDCDDFA4543A0E298D6 /* 2020-diary-step-22.png in Resources */ = {isa = PBXBuildFile; fileRef = 425BB1032BB2435FADA68412 /* 2020-diary-step-22.png */; };
 		EDA842A8A4B74A7493DD7CEF /* sandClockConfetti@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C09A70AE3A0C45DBAEABF078 /* sandClockConfetti@2x.png */; };
 		F1913A7C69124E24BD976F4F /* AppIcon-Web.png in Resources */ = {isa = PBXBuildFile; fileRef = 57EDAF94E3024BF994BDD27D /* AppIcon-Web.png */; };
 		F9E73F1EECCA437A9DF1ECAF /* Metropolis-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 50B0CF0D3FB74E0EBF86974B /* Metropolis-Bold.otf */; };
-		ABF4EDEF2BC048E094C12AD5 /* libMoEReactBridge.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EABD6220F57345879BB09B9E /* libMoEReactBridge.a */; };
-		1CAFF30931B047CD90431A26 /* libRNFirebase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED5A75A3A8234F18B3769CE0 /* libRNFirebase.a */; };
-		FF53D5CF14774291B90B9D8B /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0EBF3E0459142769A70609D /* libReactNativeConfig.a */; };
-		3F7721401E8F4C34AAAE9ABE /* libReactNativeConfig-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8575067B514F4BF7B09549C0 /* libReactNativeConfig-tvOS.a */; };
 		FE3C6928FEA1401F9C3E9C01 /* libReactNativePermissions.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F3AA8209762749419CAD7870 /* libReactNativePermissions.a */; };
+		FF53D5CF14774291B90B9D8B /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0EBF3E0459142769A70609D /* libReactNativeConfig.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -351,34 +353,6 @@
 			remoteGlobalIDString = 3D05745F1DE6004600184BB4;
 			remoteInfo = "RCTPushNotification-tvOS";
 		};
-		59525DC522AABCE1006BF7AC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EDEBC6D6214B3E7000DD5AC8;
-			remoteInfo = jsi;
-		};
-		59525DC722AABCE1006BF7AC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EDEBC73B214B45A300DD5AC8;
-			remoteInfo = jsiexecutor;
-		};
-		59525DC922AABCE1006BF7AC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = ED296FB6214C9A0900B7C4FE;
-			remoteInfo = "jsi-tvOS";
-		};
-		59525DCB22AABCE1006BF7AC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = ED296FEE214C9CF800B7C4FE;
-			remoteInfo = "jsiexecutor-tvOS";
-		};
 		59525DCE22AABCE1006BF7AC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FA865A1A3D004AE8A98CD460 /* RNCAsyncStorage.xcodeproj */;
@@ -400,13 +374,6 @@
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RNCWebView;
 		};
-		59525DD722AABCE1006BF7AC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D542C96B49034D2BB567DA4E /* RNGestureHandler.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B5C32A36220C603B000FFB8D;
-			remoteInfo = "RNGestureHandler-tvOS";
-		};
 		599BB65722B7E86900D35152 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 438C5B65F4444DCEB4A4B69F /* RNVectorIcons.xcodeproj */;
@@ -427,6 +394,41 @@
 			proxyType = 2;
 			remoteGlobalIDString = 1441618E1BD0A79300FA4F59;
 			remoteInfo = RCTContacts;
+		};
+		59B5D39322D634960050079E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 57C2FEDF651B456BB2040DD7 /* ReactNativeConfig.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EB2648DF1C7BE17A00B8F155;
+			remoteInfo = ReactNativeConfig;
+		};
+		59B5D39522D634960050079E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 57C2FEDF651B456BB2040DD7 /* ReactNativeConfig.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3DF7F6AC203AA09B00D0EAB7;
+			remoteInfo = "ReactNativeConfig-tvOS";
+		};
+		59B5D39822D634960050079E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E69D5E86A6E4893A0979661 /* ReactNativePermissions.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9D23B34F1C767B80008B4819;
+			remoteInfo = ReactNativePermissions;
+		};
+		59B5D39D22D634970050079E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 579CF706683F4CF494700DCD /* RNFirebase.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNFirebase;
+		};
+		59B5D3A222D634970050079E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9AE00FDBCD0847518B923F62 /* MoEReactBridge.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AFEF01DC1DD5D1D90017905F;
+			remoteInfo = MoEReactBridge;
 		};
 		59BF4C9B21F9D82200B1C0D3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -469,27 +471,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = B5C32A36220C603B000FFB8D;
 			remoteInfo = "RNGestureHandler-tvOS";
-		};
-		59CC88AD22B93866007D32D7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FA865A1A3D004AE8A98CD460 /* RNCAsyncStorage.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = RNCAsyncStorage;
-		};
-		59CC88B022B93866007D32D7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E6E57F8D33C8488D86C2C4B5 /* RNCSlider.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 28C79A09220DC4CC0061DE82;
-			remoteInfo = RNCSlider;
-		};
-		59CC88B322B93866007D32D7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B1CE22547D2941DA8091B355 /* RNCWebView.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = RNCWebView;
 		};
 		5E9157321DD0AC6500FF2AA8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -667,6 +648,7 @@
 		0B7E5DDC64B1454E90721654 /* Metropolis-Black.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-Black.otf"; path = "../src/resources/fonts/Metropolis/Metropolis-Black.otf"; sourceTree = "<group>"; };
 		0C95F8BCE28840A1AC88A7E6 /* libCodePush.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libCodePush.a; sourceTree = "<group>"; };
 		0D4E4BB5410047218E498399 /* 2020-diary-step-28.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-28.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-28.png"; sourceTree = "<group>"; };
+		0E69D5E86A6E4893A0979661 /* ReactNativePermissions.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = ReactNativePermissions.xcodeproj; path = "../node_modules/react-native-permissions/ios/ReactNativePermissions.xcodeproj"; sourceTree = "<group>"; };
 		0EE35559F2FD432FADBDAADF /* FBSDKShareKit.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ./ios/Frameworks/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		10F8FEC279B44771827FEC23 /* 2020-diary-step-5.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-5.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-5.png"; sourceTree = "<group>"; };
 		11942F39836E4CBA8F025BB4 /* ODRefreshControlDemo.app */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.application; path = ODRefreshControlDemo.app; sourceTree = "<group>"; };
@@ -685,12 +667,11 @@
 		177819889C724648B936B7B3 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		1A3F68756DCE4CC5B3C3C598 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
 		1C888D8C237041F0BED9D855 /* 2020-diary-step-16.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-16.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-16.png"; sourceTree = "<group>"; };
-		1CBB65F356B54A19994BBF53 /* libRNCSlider.a */ = {isa = PBXFileReference; name = "libRNCSlider.a"; path = "libRNCSlider.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
-		1DFB4CA015524870908EA08A /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/native-base/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
-		1E5F892BB82D49629C55D0A6 /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
+		1CBB65F356B54A19994BBF53 /* libRNCSlider.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNCSlider.a; sourceTree = "<group>"; };
 		206B1EAD0A554C0BB83B4016 /* 2020-diary-step-29.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-29.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-29.png"; sourceTree = "<group>"; };
 		20B1E51B08D14C75801BD4E7 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		2872989996D249388C8C0BA7 /* libz.tbd */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		29B2A6DADDDF50256C9358D7 /* Pods-LifevisionTests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LifevisionTests.staging.xcconfig"; path = "Target Support Files/Pods-LifevisionTests/Pods-LifevisionTests.staging.xcconfig"; sourceTree = "<group>"; };
 		2AB68320CE104706AC7E796A /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		2C733FD0975947D9BE2AB9A4 /* 2020-diary-step-19.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-19.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-19.png"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* Lifevision-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lifevision-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -711,6 +692,8 @@
 		5324C2C862464F11BD043E1F /* Metropolis-ExtraBoldItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-ExtraBoldItalic.otf"; path = "../src/resources/fonts/Metropolis/Metropolis-ExtraBoldItalic.otf"; sourceTree = "<group>"; };
 		56FDBAD7257D4E77A3E66AEE /* libBVLinearGradient.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libBVLinearGradient.a; sourceTree = "<group>"; };
 		573073BF8E7147C9AF6BF4BA /* libRCTFBSDK.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTFBSDK.a; sourceTree = "<group>"; };
+		579CF706683F4CF494700DCD /* RNFirebase.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNFirebase.xcodeproj; path = "../node_modules/react-native-firebase/ios/RNFirebase.xcodeproj"; sourceTree = "<group>"; };
+		57C2FEDF651B456BB2040DD7 /* ReactNativeConfig.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeConfig.xcodeproj; path = "../node_modules/react-native-config/ios/ReactNativeConfig.xcodeproj"; sourceTree = "<group>"; };
 		57EDAF94E3024BF994BDD27D /* AppIcon-Web.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "AppIcon-Web.png"; path = "../src/resources/images/AppIcon-Web.png"; sourceTree = "<group>"; };
 		5924914021514243008C4319 /* RCTPushNotification.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTPushNotification.xcodeproj; path = "../node_modules/react-native/Libraries/PushNotificationIOS/RCTPushNotification.xcodeproj"; sourceTree = "<group>"; };
 		59A08F962209D5CD00EF2F40 /* RNUnifiedContactsBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNUnifiedContactsBridge.m; sourceTree = "<group>"; };
@@ -722,7 +705,7 @@
 		59FB3D8F22B019BB00102ED0 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS11.4.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		5DD37A683C874E3188CA272F /* Metropolis-Thin.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-Thin.otf"; path = "../src/resources/fonts/Metropolis/Metropolis-Thin.otf"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
-		5FEB388A5AD743F7B4E2EFD6 /* libRNCAsyncStorage.a */ = {isa = PBXFileReference; name = "libRNCAsyncStorage.a"; path = "libRNCAsyncStorage.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		5FEB388A5AD743F7B4E2EFD6 /* libRNCAsyncStorage.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNCAsyncStorage.a; sourceTree = "<group>"; };
 		6232EC316E764FCEAFFE34E3 /* RNSound.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNSound.xcodeproj; path = "../node_modules/react-native-sound/RNSound.xcodeproj"; sourceTree = "<group>"; };
 		644E5E12DDD9493D981B4E07 /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
 		6A577BF6A1E04E6DB562A4F4 /* 2020-diary-step-17.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-17.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-17.png"; sourceTree = "<group>"; };
@@ -734,11 +717,14 @@
 		6DD9949CE9A24ABBAEAE4BA8 /* RCTFBSDK.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTFBSDK.xcodeproj; path = "../node_modules/react-native-fbsdk/ios/RCTFBSDK.xcodeproj"; sourceTree = "<group>"; };
 		721AC889AF434826A96D200C /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
 		735D2BCA86DE4A82B3C4C077 /* sandClockConfetti.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = sandClockConfetti.png; path = ../src/resources/images/sandClockConfetti.png; sourceTree = "<group>"; };
+		7849C6BF8BE72FD428CC8FF7 /* Pods_Lifevision.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lifevision.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		7941221E8EFE4498A93450C7 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
 		7E949A2844AF48209ED74318 /* Metropolis-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-Regular.otf"; path = "../src/resources/fonts/Metropolis/Metropolis-Regular.otf"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		837C72A2439944F6A6D272F8 /* libRNGestureHandler.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNGestureHandler.a; sourceTree = "<group>"; };
+		83C98CF16A6112EFD9B87B22 /* Pods-LifevisionTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LifevisionTests.release.xcconfig"; path = "Target Support Files/Pods-LifevisionTests/Pods-LifevisionTests.release.xcconfig"; sourceTree = "<group>"; };
+		8575067B514F4BF7B09549C0 /* libReactNativeConfig-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libReactNativeConfig-tvOS.a"; sourceTree = "<group>"; };
 		85B8935F72F64C038664ED5B /* RCTContacts.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTContacts.xcodeproj; path = "../node_modules/react-native-contacts/ios/RCTContacts.xcodeproj"; sourceTree = "<group>"; };
 		86E8CA8065774F3C9882F20C /* 2020-diary-step-2.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-2.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-2.png"; sourceTree = "<group>"; };
 		8964047F84CD413FAD058ACB /* libRNBlur.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNBlur.a; sourceTree = "<group>"; };
@@ -747,8 +733,10 @@
 		8F9075118CA04F0382E88C0E /* Roboto_medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto_medium.ttf; path = "../node_modules/native-base/Fonts/Roboto_medium.ttf"; sourceTree = "<group>"; };
 		9279D43457CA417B82A913D0 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ./ios/Frameworks/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		948A464D63744CE1844D684F /* libKCKeepAwake.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libKCKeepAwake.a; sourceTree = "<group>"; };
+		95A4E14D1853A041AC1CEAAA /* Pods-Lifevision.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lifevision.release.xcconfig"; path = "Target Support Files/Pods-Lifevision/Pods-Lifevision.release.xcconfig"; sourceTree = "<group>"; };
 		98905C02CDCF40399425FF6E /* CodePush.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = CodePush.xcodeproj; path = "../node_modules/react-native-code-push/ios/CodePush.xcodeproj"; sourceTree = "<group>"; };
 		98DB4E3F7A1F41E397CE3658 /* Metropolis-BlackItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-BlackItalic.otf"; path = "../src/resources/fonts/Metropolis/Metropolis-BlackItalic.otf"; sourceTree = "<group>"; };
+		9AE00FDBCD0847518B923F62 /* MoEReactBridge.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = MoEReactBridge.xcodeproj; path = "../node_modules/react-native-moengage/iOS/MoEReactBridge/MoEReactBridge.xcodeproj"; sourceTree = "<group>"; };
 		9B4C222AC0C7480F9D05B796 /* Metropolis-RegularItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-RegularItalic.otf"; path = "../src/resources/fonts/Metropolis/Metropolis-RegularItalic.otf"; sourceTree = "<group>"; };
 		9BD8EF15F41F48179CE5E71B /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		9ECBC182F77B49BAB3C9758F /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/native-base/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
@@ -760,12 +748,10 @@
 		AEB767E415824F88AB285AE3 /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
 		AED85DACAB2E4ED7A172D2FC /* 2020-diary-step-27.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-27.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-27.png"; sourceTree = "<group>"; };
 		B02A9292ABB84AB29CBAF1B9 /* rubicon-icon-font.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "rubicon-icon-font.ttf"; path = "../node_modules/native-base/Fonts/rubicon-icon-font.ttf"; sourceTree = "<group>"; };
-		B0B0608A4FF6403EB0359CF8 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
-		B1CE22547D2941DA8091B355 /* RNCWebView.xcodeproj */ = {isa = PBXFileReference; name = "RNCWebView.xcodeproj"; path = "../node_modules/react-native-webview/ios/RNCWebView.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		B1CE22547D2941DA8091B355 /* RNCWebView.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNCWebView.xcodeproj; path = "../node_modules/react-native-webview/ios/RNCWebView.xcodeproj"; sourceTree = "<group>"; };
 		B3C9922841564BA29F0B9037 /* 2020-diary-step-3.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-3.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-3.png"; sourceTree = "<group>"; };
 		B723FFEBE3A44F2F84079B6F /* RNBlur.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNBlur.xcodeproj; path = "../node_modules/@react-native-community/blur/ios/RNBlur.xcodeproj"; sourceTree = "<group>"; };
-		B805BC22CD3E43BCBC18D476 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/native-base/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
-		BA794A7614724A38B496D0A9 /* libRNCWebView.a */ = {isa = PBXFileReference; name = "libRNCWebView.a"; path = "libRNCWebView.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		BA794A7614724A38B496D0A9 /* libRNCWebView.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNCWebView.a; sourceTree = "<group>"; };
 		BF0B0FC18ECE4074B6671B84 /* libRCTContacts.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTContacts.a; sourceTree = "<group>"; };
 		BF30A88CDC124236A4774B99 /* Metropolis-Medium.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-Medium.otf"; path = "../src/resources/fonts/Metropolis/Metropolis-Medium.otf"; sourceTree = "<group>"; };
 		BFE0157236D64023B7AEC378 /* libRNVectorIcons-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNVectorIcons-tvOS.a"; sourceTree = "<group>"; };
@@ -774,42 +760,37 @@
 		C479C2B29EE440B98FBB08A8 /* libRNSentry.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSentry.a; sourceTree = "<group>"; };
 		C96B38CE91394249BCFB2067 /* 2020-diary-step-24.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-24.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-24.png"; sourceTree = "<group>"; };
 		CA79CAE61CF34861AAFEB7BC /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
+		CB763E383278777FB464B681 /* Pods-Lifevision.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lifevision.staging.xcconfig"; path = "Target Support Files/Pods-Lifevision/Pods-Lifevision.staging.xcconfig"; sourceTree = "<group>"; };
 		CBDD923749584DA3B431DAE6 /* Metropolis-SemiBold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-SemiBold.otf"; path = "../src/resources/fonts/Metropolis/Metropolis-SemiBold.otf"; sourceTree = "<group>"; };
 		D542C96B49034D2BB567DA4E /* RNGestureHandler.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNGestureHandler.xcodeproj; path = "../node_modules/react-native-gesture-handler/ios/RNGestureHandler.xcodeproj"; sourceTree = "<group>"; };
 		D8004A0854F54A1EBF1F7386 /* 2020-diary-step-15.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-15.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-15.png"; sourceTree = "<group>"; };
+		D950AAB2AE7D145D1EB69497 /* Pods-Lifevision.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lifevision.debug.xcconfig"; path = "Target Support Files/Pods-Lifevision/Pods-Lifevision.debug.xcconfig"; sourceTree = "<group>"; };
 		D9BD99EBE4904734B80D682D /* RNDeviceInfo.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNDeviceInfo.xcodeproj; path = "../node_modules/react-native-device-info/RNDeviceInfo.xcodeproj"; sourceTree = "<group>"; };
 		E06FFD2148A84434A9956FA7 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		E2EBC692F42043FF8F12AEA6 /* Roboto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto.ttf; path = "../node_modules/native-base/Fonts/Roboto.ttf"; sourceTree = "<group>"; };
 		E4C2AFB475104A3982EAB221 /* libRNSVG-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNSVG-tvOS.a"; sourceTree = "<group>"; };
-		E4DF1281C7EC413189AD28D7 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
-		E6E57F8D33C8488D86C2C4B5 /* RNCSlider.xcodeproj */ = {isa = PBXFileReference; name = "RNCSlider.xcodeproj"; path = "../node_modules/@react-native-community/slider/ios/RNCSlider.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
-		E99D7AEC980042B78086059E /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
-		EB7A9F0628F3499BB20FA071 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/native-base/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
-		EBC8883A8D874BC1AA38C7EA /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
+		E6E57F8D33C8488D86C2C4B5 /* RNCSlider.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNCSlider.xcodeproj; path = "../node_modules/@react-native-community/slider/ios/RNCSlider.xcodeproj"; sourceTree = "<group>"; };
+		EABD6220F57345879BB09B9E /* libMoEReactBridge.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libMoEReactBridge.a; sourceTree = "<group>"; };
 		ECE81ABF4D5C4BF7A3990573 /* 2020-diary-step-12.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-12.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-12.png"; sourceTree = "<group>"; };
+		ED5A75A3A8234F18B3769CE0 /* libRNFirebase.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNFirebase.a; sourceTree = "<group>"; };
+		EDB382B4A4B1B1343ADE292E /* Pods_LifevisionTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LifevisionTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F013D1E12B514B159F21CD08 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/native-base/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
+		F0EBF3E0459142769A70609D /* libReactNativeConfig.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libReactNativeConfig.a; sourceTree = "<group>"; };
 		F1048BC6444A4FCEBDF4C6F7 /* RCTVideo.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTVideo.xcodeproj; path = "../node_modules/react-native-video/ios/RCTVideo.xcodeproj"; sourceTree = "<group>"; };
 		F195A117F48242A8A9C7F175 /* 2020-diary-step-21.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-21.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-21.png"; sourceTree = "<group>"; };
 		F2B168944D894400B00FBDD0 /* 2020-diary-step-4.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-4.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-4.png"; sourceTree = "<group>"; };
+		F3AA8209762749419CAD7870 /* libReactNativePermissions.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libReactNativePermissions.a; sourceTree = "<group>"; };
 		F3DFD5E9EF794B99B7910CEF /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		F40AEF57130C411D8156A394 /* KCKeepAwake.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = KCKeepAwake.xcodeproj; path = "../node_modules/react-native-keep-awake/ios/KCKeepAwake.xcodeproj"; sourceTree = "<group>"; };
 		F65148B3D7FC41D18F0DB7BE /* Metropolis-LightItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-LightItalic.otf"; path = "../src/resources/fonts/Metropolis/Metropolis-LightItalic.otf"; sourceTree = "<group>"; };
 		FA84FEEB7A1846368A6DB60E /* 2020-diary-step-14.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-14.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-14.png"; sourceTree = "<group>"; };
-		FA865A1A3D004AE8A98CD460 /* RNCAsyncStorage.xcodeproj */ = {isa = PBXFileReference; name = "RNCAsyncStorage.xcodeproj"; path = "../node_modules/@react-native-community/async-storage/ios/RNCAsyncStorage.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		FA865A1A3D004AE8A98CD460 /* RNCAsyncStorage.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNCAsyncStorage.xcodeproj; path = "../node_modules/@react-native-community/async-storage/ios/RNCAsyncStorage.xcodeproj"; sourceTree = "<group>"; };
 		FA98C67E343D4CC9B9C3BDCB /* Metropolis-SemiBoldItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-SemiBoldItalic.otf"; path = "../src/resources/fonts/Metropolis/Metropolis-SemiBoldItalic.otf"; sourceTree = "<group>"; };
 		FC1002986DAE4858AC9EFA4C /* Metropolis-ThinItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-ThinItalic.otf"; path = "../src/resources/fonts/Metropolis/Metropolis-ThinItalic.otf"; sourceTree = "<group>"; };
 		FC66B46687B9416582809756 /* 2020-diary-step-1.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-1.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-1.png"; sourceTree = "<group>"; };
 		FE5AEBE22F9C46E994C14F42 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
+		FE6032586F6E2F0A03FAC154 /* Pods-LifevisionTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LifevisionTests.debug.xcconfig"; path = "Target Support Files/Pods-LifevisionTests/Pods-LifevisionTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FF18CA9A0CB24B5988C4F9D9 /* libRNDeviceInfo.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNDeviceInfo.a; sourceTree = "<group>"; };
-		9AE00FDBCD0847518B923F62 /* MoEReactBridge.xcodeproj */ = {isa = PBXFileReference; name = "MoEReactBridge.xcodeproj"; path = "../node_modules/react-native-moengage/iOS/MoEReactBridge/MoEReactBridge.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
-		EABD6220F57345879BB09B9E /* libMoEReactBridge.a */ = {isa = PBXFileReference; name = "libMoEReactBridge.a"; path = "libMoEReactBridge.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
-		579CF706683F4CF494700DCD /* RNFirebase.xcodeproj */ = {isa = PBXFileReference; name = "RNFirebase.xcodeproj"; path = "../node_modules/react-native-firebase/ios/RNFirebase.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
-		ED5A75A3A8234F18B3769CE0 /* libRNFirebase.a */ = {isa = PBXFileReference; name = "libRNFirebase.a"; path = "libRNFirebase.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
-		57C2FEDF651B456BB2040DD7 /* ReactNativeConfig.xcodeproj */ = {isa = PBXFileReference; name = "ReactNativeConfig.xcodeproj"; path = "../node_modules/react-native-config/ios/ReactNativeConfig.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
-		F0EBF3E0459142769A70609D /* libReactNativeConfig.a */ = {isa = PBXFileReference; name = "libReactNativeConfig.a"; path = "libReactNativeConfig.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
-		8575067B514F4BF7B09549C0 /* libReactNativeConfig-tvOS.a */ = {isa = PBXFileReference; name = "libReactNativeConfig-tvOS.a"; path = "libReactNativeConfig-tvOS.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
-		0E69D5E86A6E4893A0979661 /* ReactNativePermissions.xcodeproj */ = {isa = PBXFileReference; name = "ReactNativePermissions.xcodeproj"; path = "../node_modules/react-native-permissions/ios/ReactNativePermissions.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
-		F3AA8209762749419CAD7870 /* libReactNativePermissions.a */ = {isa = PBXFileReference; name = "libReactNativePermissions.a"; path = "libReactNativePermissions.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -819,6 +800,7 @@
 			files = (
 				59FB3D8E22B019AB00102ED0 /* JavaScriptCore.framework in Frameworks */,
 				140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */,
+				D6616DD64990BC3509D11DA7 /* Pods_LifevisionTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -864,6 +846,7 @@
 				1CAFF30931B047CD90431A26 /* libRNFirebase.a in Frameworks */,
 				FF53D5CF14774291B90B9D8B /* libReactNativeConfig.a in Frameworks */,
 				FE3C6928FEA1401F9C3E9C01 /* libReactNativePermissions.a in Frameworks */,
+				22F65B7428374C671E88C5FD /* Pods_Lifevision.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1010,10 +993,6 @@
 				59CC889222B93866007D32D7 /* libjsiexecutor.a */,
 				59CC889422B93866007D32D7 /* libjsi-tvOS.a */,
 				59CC889622B93866007D32D7 /* libjsiexecutor-tvOS.a */,
-				59525DC622AABCE1006BF7AC /* libjsi.a */,
-				59525DC822AABCE1006BF7AC /* libjsiexecutor.a */,
-				59525DCA22AABCE1006BF7AC /* libjsi-tvOS.a */,
-				59525DCC22AABCE1006BF7AC /* libjsiexecutor-tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1044,6 +1023,11 @@
 				BA794A7614724A38B496D0A9 /* libRNCWebView.a */,
 				644E5E12DDD9493D981B4E07 /* libRNVectorIcons.a */,
 				BFE0157236D64023B7AEC378 /* libRNVectorIcons-tvOS.a */,
+				EABD6220F57345879BB09B9E /* libMoEReactBridge.a */,
+				ED5A75A3A8234F18B3769CE0 /* libRNFirebase.a */,
+				F0EBF3E0459142769A70609D /* libReactNativeConfig.a */,
+				F3AA8209762749419CAD7870 /* libReactNativePermissions.a */,
+				8575067B514F4BF7B09549C0 /* libReactNativeConfig-tvOS.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -1144,34 +1128,43 @@
 			path = "../node_modules/react-native-unified-contacts/RNUnifiedContacts";
 			sourceTree = "<group>";
 		};
+		59B5D38D22D634960050079E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				59B5D39422D634960050079E /* libReactNativeConfig.a */,
+				59B5D39622D634960050079E /* libReactNativeConfig-tvOS.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		59B5D38F22D634960050079E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				59B5D39922D634960050079E /* libReactNativePermissions.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		59B5D39A22D634970050079E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				59B5D39E22D634970050079E /* libRNFirebase.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		59B5D39F22D634970050079E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				59B5D3A322D634970050079E /* libMoEReactBridge.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		59BF4C9421F9D82100B1C0D3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				59BF4C9C21F9D82200B1C0D3 /* libKCKeepAwake.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		59CC88A622B93866007D32D7 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				59CC88AE22B93866007D32D7 /* libRNCAsyncStorage.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		59CC88A822B93866007D32D7 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				59CC88B122B93866007D32D7 /* libRNCSlider.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		59CC88AA22B93866007D32D7 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				59CC88B422B93866007D32D7 /* libRNCWebView.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1217,6 +1210,8 @@
 				59FB3D8C22B0196E00102ED0 /* JavaScriptCore.framework */,
 				59FB3D8F22B019BB00102ED0 /* JavaScriptCore.framework */,
 				2872989996D249388C8C0BA7 /* libz.tbd */,
+				7849C6BF8BE72FD428CC8FF7 /* Pods_Lifevision.framework */,
+				EDB382B4A4B1B1343ADE292E /* Pods_LifevisionTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1235,7 +1230,6 @@
 			children = (
 				6C8EECE2208105E800F12E19 /* libRNGestureHandler.a */,
 				59CC889E22B93866007D32D7 /* libRNGestureHandler-tvOS.a */,
-				59525DD822AABCE1006BF7AC /* libRNGestureHandler-tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1398,6 +1392,7 @@
 				241FB5CE1F73DF5B00624AF6 /* Recovered References */,
 				78F4816BFB834E479578F701 /* Resources */,
 				6C61C0C4201574BD00FDC618 /* Frameworks */,
+				94725C2A57E9B439F8449EC7 /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -1414,6 +1409,20 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		94725C2A57E9B439F8449EC7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D950AAB2AE7D145D1EB69497 /* Pods-Lifevision.debug.xcconfig */,
+				95A4E14D1853A041AC1CEAAA /* Pods-Lifevision.release.xcconfig */,
+				CB763E383278777FB464B681 /* Pods-Lifevision.staging.xcconfig */,
+				FE6032586F6E2F0A03FAC154 /* Pods-LifevisionTests.debug.xcconfig */,
+				83C98CF16A6112EFD9B87B22 /* Pods-LifevisionTests.release.xcconfig */,
+				29B2A6DADDDF50256C9358D7 /* Pods-LifevisionTests.staging.xcconfig */,
+			);
+			name = Pods;
+			path = ../Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1421,6 +1430,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "LifevisionTests" */;
 			buildPhases = (
+				829DC2432A626ECC78092859 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
@@ -1439,11 +1449,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Lifevision" */;
 			buildPhases = (
+				73336D072206F3D025F96FE6 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				067994C1F53A4B729D181A46 /* Upload Debug Symbols to Sentry */,
+				1AF3D0D9A86D59F049C4AE3F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1563,6 +1575,10 @@
 					ProjectRef = F40AEF57130C411D8156A394 /* KCKeepAwake.xcodeproj */;
 				},
 				{
+					ProductGroup = 59B5D39F22D634970050079E /* Products */;
+					ProjectRef = 9AE00FDBCD0847518B923F62 /* MoEReactBridge.xcodeproj */;
+				},
+				{
 					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;
 					ProjectRef = 00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */;
 				},
@@ -1623,16 +1639,16 @@
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
 				{
+					ProductGroup = 59B5D38D22D634960050079E /* Products */;
+					ProjectRef = 57C2FEDF651B456BB2040DD7 /* ReactNativeConfig.xcodeproj */;
+				},
+				{
+					ProductGroup = 59B5D38F22D634960050079E /* Products */;
+					ProjectRef = 0E69D5E86A6E4893A0979661 /* ReactNativePermissions.xcodeproj */;
+				},
+				{
 					ProductGroup = 591291CA2280860D0075AE7A /* Products */;
 					ProjectRef = B723FFEBE3A44F2F84079B6F /* RNBlur.xcodeproj */;
-				},
-				{
-					ProductGroup = 59CC88A622B93866007D32D7 /* Products */;
-					ProjectRef = FA865A1A3D004AE8A98CD460 /* RNCAsyncStorage.xcodeproj */;
-				},
-				{
-					ProductGroup = 59CC88A822B93866007D32D7 /* Products */;
-					ProjectRef = E6E57F8D33C8488D86C2C4B5 /* RNCSlider.xcodeproj */;
 				},
 				{
 					ProductGroup = 59525DBB22AABCE1006BF7AC /* Products */;
@@ -1649,6 +1665,10 @@
 				{
 					ProductGroup = 6C7CA87820183A76009E848B /* Products */;
 					ProjectRef = D9BD99EBE4904734B80D682D /* RNDeviceInfo.xcodeproj */;
+				},
+				{
+					ProductGroup = 59B5D39A22D634970050079E /* Products */;
+					ProjectRef = 579CF706683F4CF494700DCD /* RNFirebase.xcodeproj */;
 				},
 				{
 					ProductGroup = 6C8EECDE208105E800F12E19 /* Products */;
@@ -1878,34 +1898,6 @@
 			remoteRef = 592491472151424E008C4319 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		59525DC622AABCE1006BF7AC /* libjsi.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libjsi.a;
-			remoteRef = 59525DC522AABCE1006BF7AC /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		59525DC822AABCE1006BF7AC /* libjsiexecutor.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libjsiexecutor.a;
-			remoteRef = 59525DC722AABCE1006BF7AC /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		59525DCA22AABCE1006BF7AC /* libjsi-tvOS.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libjsi-tvOS.a";
-			remoteRef = 59525DC922AABCE1006BF7AC /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		59525DCC22AABCE1006BF7AC /* libjsiexecutor-tvOS.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libjsiexecutor-tvOS.a";
-			remoteRef = 59525DCB22AABCE1006BF7AC /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		59525DCF22AABCE1006BF7AC /* libRNCAsyncStorage.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1927,13 +1919,6 @@
 			remoteRef = 59525DD422AABCE1006BF7AC /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		59525DD822AABCE1006BF7AC /* libRNGestureHandler-tvOS.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libRNGestureHandler-tvOS.a";
-			remoteRef = 59525DD722AABCE1006BF7AC /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		599BB65822B7E86900D35152 /* libRNVectorIcons.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1953,6 +1938,41 @@
 			fileType = archive.ar;
 			path = libRCTContacts.a;
 			remoteRef = 59A08F642209D1CB00EF2F40 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		59B5D39422D634960050079E /* libReactNativeConfig.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libReactNativeConfig.a;
+			remoteRef = 59B5D39322D634960050079E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		59B5D39622D634960050079E /* libReactNativeConfig-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libReactNativeConfig-tvOS.a";
+			remoteRef = 59B5D39522D634960050079E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		59B5D39922D634960050079E /* libReactNativePermissions.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libReactNativePermissions.a;
+			remoteRef = 59B5D39822D634960050079E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		59B5D39E22D634970050079E /* libRNFirebase.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNFirebase.a;
+			remoteRef = 59B5D39D22D634970050079E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		59B5D3A322D634970050079E /* libMoEReactBridge.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libMoEReactBridge.a;
+			remoteRef = 59B5D3A222D634970050079E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		59BF4C9C21F9D82200B1C0D3 /* libKCKeepAwake.a */ = {
@@ -1995,27 +2015,6 @@
 			fileType = archive.ar;
 			path = "libRNGestureHandler-tvOS.a";
 			remoteRef = 59CC889D22B93866007D32D7 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		59CC88AE22B93866007D32D7 /* libRNCAsyncStorage.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNCAsyncStorage.a;
-			remoteRef = 59CC88AD22B93866007D32D7 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		59CC88B122B93866007D32D7 /* libRNCSlider.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNCSlider.a;
-			remoteRef = 59CC88B022B93866007D32D7 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		59CC88B422B93866007D32D7 /* libRNCWebView.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNCWebView.a;
-			remoteRef = 59CC88B322B93866007D32D7 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */ = {
@@ -2306,6 +2305,24 @@
 			shellPath = /bin/sh;
 			shellScript = "export SENTRY_PROPERTIES=sentry.properties\n../node_modules/@sentry/cli/bin/sentry-cli upload-dsym";
 		};
+		1AF3D0D9A86D59F049C4AE3F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Lifevision/Pods-Lifevision-frameworks.sh",
+				"${PODS_ROOT}/MoEngage-iOS-SDK/MoEngage/MoEngage.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MoEngage.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Lifevision/Pods-Lifevision-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2319,6 +2336,50 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "export SENTRY_PROPERTIES=sentry.properties\nexport NODE_BINARY=node\n../node_modules/@sentry/cli/bin/sentry-cli react-native xcode ../node_modules/react-native/packager/react-native-xcode.sh";
+		};
+		73336D072206F3D025F96FE6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Lifevision-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		829DC2432A626ECC78092859 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LifevisionTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -2388,6 +2449,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FE6032586F6E2F0A03FAC154 /* Pods-LifevisionTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -2416,20 +2478,18 @@
 					"$(SRCROOT)..\node_modules@react-native-communitysliderios",
 					"$(SRCROOT)..\node_modules\neact-native-webviewios",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
-					"$(SRCROOT)\..\node_modules\@react-native-community\async-storage\ios",
-					"$(SRCROOT)\..\node_modules\@react-native-community\slider\ios",
-					"$(SRCROOT)\..\node_modules\react-native-webview\ios",
-					"$(SRCROOT)\..\node_modules\react-native-moengage\iOS\MoEReactBridge\MoEReactBridge",
-					"$(SRCROOT)\..\node_modules\react-native-firebase\ios\RNFirebase/**",
-					"$(SRCROOT)\..\node_modules\react-native-config\ios\ReactNativeConfig",
-					"$(SRCROOT)\..\node_modules\react-native-permissions\ios/**",
+					"$(SRCROOT)..\node_modules@react-native-community\async-storageios",
+					"$(SRCROOT)..\node_modules@react-native-communitysliderios",
+					"$(SRCROOT)..\node_modules\neact-native-webviewios",
+					"$(SRCROOT)..\node_modules\neact-native-moengageiOSMoEReactBridgeMoEReactBridge",
+					"$(SRCROOT)..\node_modules\neact-native-firebaseiosRNFirebase/**",
+					"$(SRCROOT)..\node_modules\neact-native-configiosReactNativeConfig",
+					"$(SRCROOT)..\node_modules\neact-native-permissionsios/**",
 				);
 				INFOPLIST_FILE = LifevisionTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -2441,6 +2501,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 83C98CF16A6112EFD9B87B22 /* Pods-LifevisionTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -2466,20 +2527,18 @@
 					"$(SRCROOT)..\node_modules@react-native-communitysliderios",
 					"$(SRCROOT)..\node_modules\neact-native-webviewios",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
-					"$(SRCROOT)\..\node_modules\@react-native-community\async-storage\ios",
-					"$(SRCROOT)\..\node_modules\@react-native-community\slider\ios",
-					"$(SRCROOT)\..\node_modules\react-native-webview\ios",
-					"$(SRCROOT)\..\node_modules\react-native-moengage\iOS\MoEReactBridge\MoEReactBridge",
-					"$(SRCROOT)\..\node_modules\react-native-firebase\ios\RNFirebase/**",
-					"$(SRCROOT)\..\node_modules\react-native-config\ios\ReactNativeConfig",
-					"$(SRCROOT)\..\node_modules\react-native-permissions\ios/**",
+					"$(SRCROOT)..\node_modules@react-native-community\async-storageios",
+					"$(SRCROOT)..\node_modules@react-native-communitysliderios",
+					"$(SRCROOT)..\node_modules\neact-native-webviewios",
+					"$(SRCROOT)..\node_modules\neact-native-moengageiOSMoEReactBridgeMoEReactBridge",
+					"$(SRCROOT)..\node_modules\neact-native-firebaseiosRNFirebase/**",
+					"$(SRCROOT)..\node_modules\neact-native-configiosReactNativeConfig",
+					"$(SRCROOT)..\node_modules\neact-native-permissionsios/**",
 				);
 				INFOPLIST_FILE = LifevisionTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -2491,6 +2550,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D950AAB2AE7D145D1EB69497 /* Pods-Lifevision.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODEPUSH_KEY = "";
@@ -2520,30 +2580,15 @@
 					"$(SRCROOT)..\node_modules@react-native-communitysliderios",
 					"$(SRCROOT)..\node_modules\neact-native-webviewios",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
-					"$(SRCROOT)\..\node_modules\@react-native-community\async-storage\ios",
-					"$(SRCROOT)\..\node_modules\@react-native-community\slider\ios",
-					"$(SRCROOT)\..\node_modules\react-native-webview\ios",
-					"$(SRCROOT)\..\node_modules\react-native-moengage\iOS\MoEReactBridge\MoEReactBridge",
-					"$(SRCROOT)\..\node_modules\react-native-firebase\ios\RNFirebase/**",
-					"$(SRCROOT)\..\node_modules\react-native-config\ios\ReactNativeConfig",
-					"$(SRCROOT)\..\node_modules\react-native-permissions\ios/**",
+					"$(SRCROOT)..\node_modules@react-native-community\async-storageios",
+					"$(SRCROOT)..\node_modules@react-native-communitysliderios",
+					"$(SRCROOT)..\node_modules\neact-native-webviewios",
+					"$(SRCROOT)..\node_modules\neact-native-moengageiOSMoEReactBridgeMoEReactBridge",
+					"$(SRCROOT)..\node_modules\neact-native-firebaseiosRNFirebase/**",
+					"$(SRCROOT)..\node_modules\neact-native-configiosReactNativeConfig",
+					"$(SRCROOT)..\node_modules\neact-native-permissionsios/**",
 				);
-				"HEADER_SEARCH_PATHS[arch=*]" = (
-					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-drop-refresh/**",
-					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
-					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
-					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
-					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
-					"$(SRCROOT)/../node_modules/react-native-code-push/ios/CodePush/**",
-					"$(SRCROOT)/../node_modules/react-native-sentry/ios/**",
-					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
-					"$(SRCROOT)/node_modules/react-native/Libraries/**",
-					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
-					"$(SRCROOT)..",
-					ode_modules,
-					"eact-native-videoios",
-				);
+				"HEADER_SEARCH_PATHS[arch=*]" = "$(inherited) $(SRCROOT)/../node_modules/react-native-drop-refresh/** $(SRCROOT)/../node_modules/react-native-splash-screen/ios $(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager $(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient $(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/** $(SRCROOT)/../node_modules/react-native-code-push/ios/CodePush/** $(SRCROOT)/../node_modules/react-native-sentry/ios/** $(SRCROOT)/../node_modules/react-native-sound/RNSound $(SRCROOT)/node_modules/react-native/Libraries/** $(SRCROOT)/../node_modules/react-native-gesture-handler/ios/** $(SRCROOT).. ode_modules eact-native-videoios";
 				INFOPLIST_FILE = Lifevision/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				NEW_SETTING = "";
@@ -2565,6 +2610,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 95A4E14D1853A041AC1CEAAA /* Pods-Lifevision.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODEPUSH_KEY = "zyrCNm8kdGTq6FS6gaIUE-DSNparH153TzmSz";
@@ -2593,13 +2639,13 @@
 					"$(SRCROOT)..\node_modules@react-native-communitysliderios",
 					"$(SRCROOT)..\node_modules\neact-native-webviewios",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
-					"$(SRCROOT)\..\node_modules\@react-native-community\async-storage\ios",
-					"$(SRCROOT)\..\node_modules\@react-native-community\slider\ios",
-					"$(SRCROOT)\..\node_modules\react-native-webview\ios",
-					"$(SRCROOT)\..\node_modules\react-native-moengage\iOS\MoEReactBridge\MoEReactBridge",
-					"$(SRCROOT)\..\node_modules\react-native-firebase\ios\RNFirebase/**",
-					"$(SRCROOT)\..\node_modules\react-native-config\ios\ReactNativeConfig",
-					"$(SRCROOT)\..\node_modules\react-native-permissions\ios/**",
+					"$(SRCROOT)..\node_modules@react-native-community\async-storageios",
+					"$(SRCROOT)..\node_modules@react-native-communitysliderios",
+					"$(SRCROOT)..\node_modules\neact-native-webviewios",
+					"$(SRCROOT)..\node_modules\neact-native-moengageiOSMoEReactBridgeMoEReactBridge",
+					"$(SRCROOT)..\node_modules\neact-native-firebaseiosRNFirebase/**",
+					"$(SRCROOT)..\node_modules\neact-native-configiosReactNativeConfig",
+					"$(SRCROOT)..\node_modules\neact-native-permissionsios/**",
 				);
 				INFOPLIST_FILE = Lifevision/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2652,19 +2698,17 @@
 					"$(SRCROOT)..\node_modules@react-native-communitysliderios",
 					"$(SRCROOT)..\node_modules\neact-native-webviewios",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
-					"$(SRCROOT)\..\node_modules\@react-native-community\async-storage\ios",
-					"$(SRCROOT)\..\node_modules\@react-native-community\slider\ios",
-					"$(SRCROOT)\..\node_modules\react-native-webview\ios",
-					"$(SRCROOT)\..\node_modules\react-native-moengage\iOS\MoEReactBridge\MoEReactBridge",
-					"$(SRCROOT)\..\node_modules\react-native-firebase\ios\RNFirebase/**",
-					"$(SRCROOT)\..\node_modules\react-native-config\ios\ReactNativeConfig",
-					"$(SRCROOT)\..\node_modules\react-native-permissions\ios/**",
+					"$(SRCROOT)..\node_modules@react-native-community\async-storageios",
+					"$(SRCROOT)..\node_modules@react-native-communitysliderios",
+					"$(SRCROOT)..\node_modules\neact-native-webviewios",
+					"$(SRCROOT)..\node_modules\neact-native-moengageiOSMoEReactBridgeMoEReactBridge",
+					"$(SRCROOT)..\node_modules\neact-native-firebaseiosRNFirebase/**",
+					"$(SRCROOT)..\node_modules\neact-native-configiosReactNativeConfig",
+					"$(SRCROOT)..\node_modules\neact-native-permissionsios/**",
 				);
 				INFOPLIST_FILE = "Lifevision-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -2710,19 +2754,17 @@
 					"$(SRCROOT)..\node_modules@react-native-communitysliderios",
 					"$(SRCROOT)..\node_modules\neact-native-webviewios",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
-					"$(SRCROOT)\..\node_modules\@react-native-community\async-storage\ios",
-					"$(SRCROOT)\..\node_modules\@react-native-community\slider\ios",
-					"$(SRCROOT)\..\node_modules\react-native-webview\ios",
-					"$(SRCROOT)\..\node_modules\react-native-moengage\iOS\MoEReactBridge\MoEReactBridge",
-					"$(SRCROOT)\..\node_modules\react-native-firebase\ios\RNFirebase/**",
-					"$(SRCROOT)\..\node_modules\react-native-config\ios\ReactNativeConfig",
-					"$(SRCROOT)\..\node_modules\react-native-permissions\ios/**",
+					"$(SRCROOT)..\node_modules@react-native-community\async-storageios",
+					"$(SRCROOT)..\node_modules@react-native-communitysliderios",
+					"$(SRCROOT)..\node_modules\neact-native-webviewios",
+					"$(SRCROOT)..\node_modules\neact-native-moengageiOSMoEReactBridgeMoEReactBridge",
+					"$(SRCROOT)..\node_modules\neact-native-firebaseiosRNFirebase/**",
+					"$(SRCROOT)..\node_modules\neact-native-configiosReactNativeConfig",
+					"$(SRCROOT)..\node_modules\neact-native-permissionsios/**",
 				);
 				INFOPLIST_FILE = "Lifevision-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -2758,19 +2800,17 @@
 					"$(SRCROOT)..\node_modules@react-native-communitysliderios",
 					"$(SRCROOT)..\node_modules\neact-native-webviewios",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
-					"$(SRCROOT)\..\node_modules\@react-native-community\async-storage\ios",
-					"$(SRCROOT)\..\node_modules\@react-native-community\slider\ios",
-					"$(SRCROOT)\..\node_modules\react-native-webview\ios",
-					"$(SRCROOT)\..\node_modules\react-native-moengage\iOS\MoEReactBridge\MoEReactBridge",
-					"$(SRCROOT)\..\node_modules\react-native-firebase\ios\RNFirebase/**",
-					"$(SRCROOT)\..\node_modules\react-native-config\ios\ReactNativeConfig",
-					"$(SRCROOT)\..\node_modules\react-native-permissions\ios/**",
+					"$(SRCROOT)..\node_modules@react-native-community\async-storageios",
+					"$(SRCROOT)..\node_modules@react-native-communitysliderios",
+					"$(SRCROOT)..\node_modules\neact-native-webviewios",
+					"$(SRCROOT)..\node_modules\neact-native-moengageiOSMoEReactBridgeMoEReactBridge",
+					"$(SRCROOT)..\node_modules\neact-native-firebaseiosRNFirebase/**",
+					"$(SRCROOT)..\node_modules\neact-native-configiosReactNativeConfig",
+					"$(SRCROOT)..\node_modules\neact-native-permissionsios/**",
 				);
 				INFOPLIST_FILE = "Lifevision-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -2807,19 +2847,17 @@
 					"$(SRCROOT)..\node_modules@react-native-communitysliderios",
 					"$(SRCROOT)..\node_modules\neact-native-webviewios",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
-					"$(SRCROOT)\..\node_modules\@react-native-community\async-storage\ios",
-					"$(SRCROOT)\..\node_modules\@react-native-community\slider\ios",
-					"$(SRCROOT)\..\node_modules\react-native-webview\ios",
-					"$(SRCROOT)\..\node_modules\react-native-moengage\iOS\MoEReactBridge\MoEReactBridge",
-					"$(SRCROOT)\..\node_modules\react-native-firebase\ios\RNFirebase/**",
-					"$(SRCROOT)\..\node_modules\react-native-config\ios\ReactNativeConfig",
-					"$(SRCROOT)\..\node_modules\react-native-permissions\ios/**",
+					"$(SRCROOT)..\node_modules@react-native-community\async-storageios",
+					"$(SRCROOT)..\node_modules@react-native-communitysliderios",
+					"$(SRCROOT)..\node_modules\neact-native-webviewios",
+					"$(SRCROOT)..\node_modules\neact-native-moengageiOSMoEReactBridgeMoEReactBridge",
+					"$(SRCROOT)..\node_modules\neact-native-firebaseiosRNFirebase/**",
+					"$(SRCROOT)..\node_modules\neact-native-configiosReactNativeConfig",
+					"$(SRCROOT)..\node_modules\neact-native-permissionsios/**",
 				);
 				INFOPLIST_FILE = "Lifevision-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -2877,6 +2915,7 @@
 		};
 		6C5CA10E201EFA53007A4AC5 /* Staging */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CB763E383278777FB464B681 /* Pods-Lifevision.staging.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODEPUSH_KEY = gyoby2vMifsc_791du3unnq0CfYJH15haMmBf;
@@ -2907,13 +2946,13 @@
 					"$(SRCROOT)..\node_modules@react-native-communitysliderios",
 					"$(SRCROOT)..\node_modules\neact-native-webviewios",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
-					"$(SRCROOT)\..\node_modules\@react-native-community\async-storage\ios",
-					"$(SRCROOT)\..\node_modules\@react-native-community\slider\ios",
-					"$(SRCROOT)\..\node_modules\react-native-webview\ios",
-					"$(SRCROOT)\..\node_modules\react-native-moengage\iOS\MoEReactBridge\MoEReactBridge",
-					"$(SRCROOT)\..\node_modules\react-native-firebase\ios\RNFirebase/**",
-					"$(SRCROOT)\..\node_modules\react-native-config\ios\ReactNativeConfig",
-					"$(SRCROOT)\..\node_modules\react-native-permissions\ios/**",
+					"$(SRCROOT)..\node_modules@react-native-community\async-storageios",
+					"$(SRCROOT)..\node_modules@react-native-communitysliderios",
+					"$(SRCROOT)..\node_modules\neact-native-webviewios",
+					"$(SRCROOT)..\node_modules\neact-native-moengageiOSMoEReactBridgeMoEReactBridge",
+					"$(SRCROOT)..\node_modules\neact-native-firebaseiosRNFirebase/**",
+					"$(SRCROOT)..\node_modules\neact-native-configiosReactNativeConfig",
+					"$(SRCROOT)..\node_modules\neact-native-permissionsios/**",
 				);
 				INFOPLIST_FILE = Lifevision/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2935,6 +2974,7 @@
 		};
 		6C5CA10F201EFA53007A4AC5 /* Staging */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 29B2A6DADDDF50256C9358D7 /* Pods-LifevisionTests.staging.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -2960,20 +3000,18 @@
 					"$(SRCROOT)..\node_modules@react-native-communitysliderios",
 					"$(SRCROOT)..\node_modules\neact-native-webviewios",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
-					"$(SRCROOT)\..\node_modules\@react-native-community\async-storage\ios",
-					"$(SRCROOT)\..\node_modules\@react-native-community\slider\ios",
-					"$(SRCROOT)\..\node_modules\react-native-webview\ios",
-					"$(SRCROOT)\..\node_modules\react-native-moengage\iOS\MoEReactBridge\MoEReactBridge",
-					"$(SRCROOT)\..\node_modules\react-native-firebase\ios\RNFirebase/**",
-					"$(SRCROOT)\..\node_modules\react-native-config\ios\ReactNativeConfig",
-					"$(SRCROOT)\..\node_modules\react-native-permissions\ios/**",
+					"$(SRCROOT)..\node_modules@react-native-community\async-storageios",
+					"$(SRCROOT)..\node_modules@react-native-communitysliderios",
+					"$(SRCROOT)..\node_modules\neact-native-webviewios",
+					"$(SRCROOT)..\node_modules\neact-native-moengageiOSMoEReactBridgeMoEReactBridge",
+					"$(SRCROOT)..\node_modules\neact-native-firebaseiosRNFirebase/**",
+					"$(SRCROOT)..\node_modules\neact-native-configiosReactNativeConfig",
+					"$(SRCROOT)..\node_modules\neact-native-permissionsios/**",
 				);
 				INFOPLIST_FILE = LifevisionTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -3016,19 +3054,17 @@
 					"$(SRCROOT)..\node_modules@react-native-communitysliderios",
 					"$(SRCROOT)..\node_modules\neact-native-webviewios",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
-					"$(SRCROOT)\..\node_modules\@react-native-community\async-storage\ios",
-					"$(SRCROOT)\..\node_modules\@react-native-community\slider\ios",
-					"$(SRCROOT)\..\node_modules\react-native-webview\ios",
-					"$(SRCROOT)\..\node_modules\react-native-moengage\iOS\MoEReactBridge\MoEReactBridge",
-					"$(SRCROOT)\..\node_modules\react-native-firebase\ios\RNFirebase/**",
-					"$(SRCROOT)\..\node_modules\react-native-config\ios\ReactNativeConfig",
-					"$(SRCROOT)\..\node_modules\react-native-permissions\ios/**",
+					"$(SRCROOT)..\node_modules@react-native-community\async-storageios",
+					"$(SRCROOT)..\node_modules@react-native-communitysliderios",
+					"$(SRCROOT)..\node_modules\neact-native-webviewios",
+					"$(SRCROOT)..\node_modules\neact-native-moengageiOSMoEReactBridgeMoEReactBridge",
+					"$(SRCROOT)..\node_modules\neact-native-firebaseiosRNFirebase/**",
+					"$(SRCROOT)..\node_modules\neact-native-configiosReactNativeConfig",
+					"$(SRCROOT)..\node_modules\neact-native-permissionsios/**",
 				);
 				INFOPLIST_FILE = "Lifevision-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -3056,9 +3092,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "Lifevision-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.Lifevision-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
