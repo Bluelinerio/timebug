@@ -20,9 +20,10 @@
     "eqeqeq": ["error", "always"],
     "no-trailing-spaces": "error",
     "no-multi-spaces": ["error", { "exceptions": { "ImportDeclaration": true } }],
-    "indent": ["error", 2],
     "no-loop-func": "error",
-    "no-case-declarations": "error"
+    "no-case-declarations": "error",
+    "template-curly-spacing" : "off",
+    "indent": "off"
   },
   "globals": {
     "__DEV__": true
