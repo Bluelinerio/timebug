@@ -1,8 +1,8 @@
 import AppNavigation         from '../navigation/app'
 import { compose }           from 'recompose'
 import { withNotifications } from './NotificationsContainer'
-import { withFirebase } from './FirebaseContainer'
+// import { withFirebase }      from './FirebaseContainer'
 
-export default compose(withNotifications, withFirebase)(
+export default compose(withNotifications)(
   AppNavigation
 )
