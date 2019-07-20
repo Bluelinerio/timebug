@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "postversion": "react-native-version",
-    "postinstall": "rm -f ./node_modules/react-native/local-cli/core/__fixtures__/files/package.json",
+    "postinstall": "npx jetify",
     "codepush:production": "code-push release-react Lifevision-1 Android -d Production & code-push release-react Lifevision iOS -d Production",
     "codepush:staging": "code-push release-react Lifevision-1 Android -d Staging & code-push release-react Lifevision iOS -d Staging",
     "start": "node node_modules/react-native/local-cli/cli.js start",
@@ -47,6 +47,7 @@
     "graphql": "^0.12.3",
     "graphql-tag": "^2.6.1",
     "invariant": "^2.2.3",
+    "jetifier": "^1.6.3",
     "md5": "^2.2.1",
     "metro-react-native-babel-preset": "0.51.0",
     "moment": "^2.20.1",
