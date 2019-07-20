@@ -4,6 +4,20 @@
 <dict>
 	<key>NSContactsUsageDescription</key>
 	<string>ntwrk accesses Contacts in order to quickly add Relationships and allow them to reach out via ntwrk through email, text, phone, etc.</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>This app does not request your access to your calendar</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>This app does not request your access to your bluetooth data</string>
+	<key>NSAppleMusicUsageDescription </key>
+	<string>This app does not request your access to your Apple music data</string>
+	<key>NSMotionUsageDescription </key>
+	<string>This app uses motion data to determine keep your phone awake when using the meditation timer</string>
+	<key>NSSpeechRecognitionUsageDescription </key>
+	<string>This app does not utilize speech recognition</string>
+	<key>NSLocationAlwaysUsageDescription </key>
+	<string>This app uses your location to deliver notifications based on local time</string>
+	<key>NSLocationWhenInUseUsageDescription </key>
+	<string>This app uses your location to deliver greetings based on local time</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -11,7 +25,7 @@
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleGetInfoString</key>
-	<string/>
+	<string></string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -21,7 +35,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.0.4</string>
+	<string>2.1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
@@ -44,7 +58,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>47</string>
+	<string>48</string>
 	<key>CodePushDeploymentKey</key>
 	<string>$(CODEPUSH_KEY)</string>
 	<key>FacebookAppID</key>
@@ -54,7 +68,7 @@
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSApplicationCategoryType</key>
-	<string/>
+	<string></string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
