@@ -15,6 +15,8 @@ import com.brentvatne.react.ReactVideoPackage;
 import com.joshuapinter.RNUnifiedContacts.RNUnifiedContactsPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.zmxv.RNSound.RNSoundPackage;
+
+import io.lifevision.settings.OpenSettingsPackage;
 import io.sentry.RNSentryPackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.horcrux.svg.SvgPackage;
@@ -74,8 +76,8 @@ public class MainApplication extends Application implements ReactApplication {
           new FBSDKPackage(mCallbackManager),
           new VectorIconsPackage(),
           new LinearGradientPackage(),
-          new BlurViewPackage()
-
+          new BlurViewPackage(),
+            new OpenSettingsPackage()
     );
   }
   };
