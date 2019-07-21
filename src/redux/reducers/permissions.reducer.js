@@ -1,5 +1,4 @@
 // @flow
-import { ADD_PERMISSION, REMOVE_PERMISSION, LOGOUT } from '../actionTypes'
 import {
   ADD_PERMISSION,
   REMOVE_PERMISSION,
