@@ -5,15 +5,15 @@
 	<key>NSContactsUsageDescription</key>
 	<string>ntwrk accesses Contacts in order to quickly add Relationships and allow them to reach out via ntwrk through email, text, phone, etc.</string>
 	<key>NSCalendarsUsageDescription</key>
-	<string>This app does not request your access to your calendar</string>
+	<string>This data is requested by a third party library, the app does not request your access to your calendar</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>This app does not request your access to your bluetooth data</string>
+	<string>This data is requested by a third party library, the app does not request your access to your bluetooth data</string>
 	<key>NSAppleMusicUsageDescription </key>
-	<string>This app does not request your access to your Apple music data</string>
+	<string>This data is requested by a third party library, the  app does not request your access to your Apple music data</string>
 	<key>NSMotionUsageDescription </key>
 	<string>This app uses motion data to determine keep your phone awake when using the meditation timer</string>
 	<key>NSSpeechRecognitionUsageDescription </key>
-	<string>This app does not utilize speech recognition</string>
+	<string>This data is requested by a third party library, the  app does not utilize speech recognition</string>
 	<key>NSLocationAlwaysUsageDescription </key>
 	<string>This app uses your location to deliver notifications based on local time</string>
 	<key>NSLocationWhenInUseUsageDescription </key>
@@ -35,7 +35,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.1.0</string>
+	<string>2.1.2</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
@@ -58,7 +58,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>48</string>
+	<string>50</string>
 	<key>CodePushDeploymentKey</key>
 	<string>$(CODEPUSH_KEY)</string>
 	<key>FacebookAppID</key>
