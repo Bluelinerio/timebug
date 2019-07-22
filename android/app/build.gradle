@@ -2,7 +2,6 @@ apply plugin: "com.android.application"
 
 import com.android.build.OutputFile
 import com.google.gms.googleservices.GoogleServicesPlugin
-
 /**
  * The react.gradle file registers a task for each build variant (e.g. bundleDebugJsAndAssets
  * and bundleReleaseJsAndAssets).
@@ -94,7 +93,6 @@ android {
         minSdkVersion 23
         targetSdkVersion 27
         versionCode 45
-        resValue "string", "build_config_package", "io.lifevision"
 
         // testBuildType System.getProperty('testBuildType', 'debug')  //this will later be used to control the test apk build type
         // missingDimensionStrategy "minReactNative", "minReactNative46" //read note
@@ -108,7 +106,7 @@ android {
         renderscriptSupportModeEnabled true
 
         ndk {
-            abiFilters "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
+            abiFilters "armeabi-v7a", "x86", "arm64-v8a", "x86_64"
         }
     }
     ext {
@@ -197,8 +195,6 @@ android {
 }
 
 dependencies {
-    implementation project(':react-native-config')
-    implementation project(':react-native-firebase')
     implementation project(':react-native-webview')
     implementation project(':@react-native-community_slider')
     implementation project(':@react-native-community_async-storage')
@@ -216,8 +212,6 @@ dependencies {
     implementation project(':react-native-contacts')
     implementation project(':react-native-unified-contacts')
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation project(':react-native-moengage')
-    implementation 'com.moengage:moe-android-sdk:+'
     implementation 'androidx.appcompat:appcompat:1.0.0'
     implementation 'androidx.vectordrawable:vectordrawable-animated:1.0.0'
     implementation 'androidx.cardview:cardview:1.0.0'
@@ -229,12 +223,9 @@ dependencies {
     implementation 'com.google.android.gms:play-services-basement:16.2.0'
     implementation 'com.google.android.gms:play-services-tasks:16.0.1'
     implementation 'com.google.firebase:firebase-core:16.0.9'
-    implementation "com.google.firebase:firebase-messaging:18.0.0"
     implementation ('com.google.android.gms:play-services-gcm:16.1.0') {
         force = true;
     }
-
-    apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 
     // androidTestImplementation(project(path: ":detox"))
     // androidTestImplementation 'junit:junit:4.12'

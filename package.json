@@ -78,7 +78,7 @@
     "react-native-progress": "^3.6.0",
     "react-native-push-notification": "^3.1.1",
     "react-native-select-input-ios": "^1.1.4",
-    "react-native-sentry": "0.36.0",
+    "react-native-sentry": "0.43.2",
     "react-native-slider": "^0.11.0",
     "react-native-snap-carousel": "3.6.0",
     "react-native-sound": "0.10.5",

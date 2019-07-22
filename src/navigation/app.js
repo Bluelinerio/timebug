@@ -6,9 +6,9 @@ import { StartNavigator } from './index'
 import NavigationService  from '2020_services/navigation'
 
 /* eslint-disable-next-line */
-import AmplitudeService                            from '2020_services/amplitude'
+// import AmplitudeService                            from '2020_services/amplitude'
 /* eslint-disable-next-line */
-import MoengageService                             from '2020_services/moengage'
+// import MoengageService                             from '2020_services/moengage'
 
 type Props = {
   dispatch: () => any,

@@ -3,15 +3,6 @@ package io.lifevision;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
-import io.invertase.firebase.RNFirebasePackage;
-import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;
-
-import com.moengage.core.Logger;
-import com.moengage.react.MoEReactPackage;
-import com.moengage.core.MoEngage;
-import com.moe.pushlibrary.MoEHelper;
-
 import com.reactnativecommunity.webview.RNCWebViewPackage;
 import com.reactnativecommunity.slider.ReactSliderPackage;
 import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
@@ -68,11 +59,7 @@ public class MainApplication extends Application implements ReactApplication {
   protected List<ReactPackage> getPackages() {
     return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-          new ReactNativeConfigPackage(),
-          new RNFirebasePackage(),
-          new RNFirebaseMessagingPackage(),
-          new MoEReactPackage(),
-          new RNCWebViewPackage(),
+            new RNCWebViewPackage(),
           new ReactSliderPackage(),
           new AsyncStoragePackage(),
           new ReactNativeContacts(),
@@ -83,7 +70,7 @@ public class MainApplication extends Application implements ReactApplication {
           new RNGestureHandlerPackage(),
           new RNUnifiedContactsPackage(),
           new RNSoundPackage(),
-          new RNSentryPackage(MainApplication.this),
+          new RNSentryPackage(),
           new RNDeviceInfo(),
           new SvgPackage(),
           new FBSDKPackage(mCallbackManager),
@@ -103,12 +90,6 @@ public class MainApplication extends Application implements ReactApplication {
   @Override
   public void onCreate() {
     super.onCreate();
-    MoEngage moEngage =
-        new MoEngage.Builder(this, BuildConfig.MOENGAGE_KEY)
-          .setLogLevel(Logger.VERBOSE)
-          .enableLogsForSignedBuild()
-  			  .build();
-    MoEngage.initialise(moEngage);
     SoLoader.init(this, /* native exopackage */ false);
   }
 
