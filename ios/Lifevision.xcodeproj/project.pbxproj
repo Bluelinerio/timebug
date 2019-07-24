@@ -13,6 +13,7 @@
 		00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */; };
 		00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
 		00E356F31AD99517003FC87E /* LifevisionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* LifevisionTests.m */; };
+		026BA14690505BE45830B21B /* libPods-Lifevision-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A2D55B25B17D1F2ADA740E2D /* libPods-Lifevision-tvOS.a */; };
 		03D5582275734B3DA0FD6187 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 644E5E12DDD9493D981B4E07 /* libRNVectorIcons.a */; };
 		04732F952E5B492190CD2487 /* libRCTContacts.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF0B0FC18ECE4074B6671B84 /* libRCTContacts.a */; };
 		121F674BABFF4A03A0792745 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 177819889C724648B936B7B3 /* EvilIcons.ttf */; };
@@ -35,6 +36,7 @@
 		242E33E72B3D44169DD04118 /* 2020-diary-step-11.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F8B322E03F54BF3910BD769 /* 2020-diary-step-11.png */; };
 		26A5DC7A3FCE464C90FDBE94 /* libRCTVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ED6F842A92D4871AEEC8C42 /* libRCTVideo.a */; };
 		275FFA3D7A0447399A5B22B3 /* 2020-diary-step-21.png in Resources */ = {isa = PBXBuildFile; fileRef = F195A117F48242A8A9C7F175 /* 2020-diary-step-21.png */; };
+		2C36095F76813A4F934F3C8A /* libPods-Lifevision.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FCF7C9E54B9A49810C9CE3CD /* libPods-Lifevision.a */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4C21E0B4AEC006451C7 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157351DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
@@ -77,12 +79,12 @@
 		59A08F992209D5CE00EF2F40 /* RNUnifiedContactsBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A08F962209D5CD00EF2F40 /* RNUnifiedContactsBridge.m */; };
 		59A08F9A2209D5CE00EF2F40 /* RNUnifiedContacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A08F972209D5CD00EF2F40 /* RNUnifiedContacts.swift */; };
 		59B48CCB21F9DDFD004F2113 /* bell.wav in Resources */ = {isa = PBXBuildFile; fileRef = 59B48CCA21F9DDFD004F2113 /* bell.wav */; };
+		59E57BD922E771450081BE02 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59E57BD822E771440081BE02 /* GoogleService-Info.plist */; };
 		59FB3D8D22B0196E00102ED0 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59FB3D8C22B0196E00102ED0 /* JavaScriptCore.framework */; };
 		59FB3D8E22B019AB00102ED0 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59FB3D8C22B0196E00102ED0 /* JavaScriptCore.framework */; };
 		59FB3D9022B019BB00102ED0 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59FB3D8F22B019BB00102ED0 /* JavaScriptCore.framework */; };
 		59FB3D9122B019C800102ED0 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59FB3D8F22B019BB00102ED0 /* JavaScriptCore.framework */; };
 		5A2A1B8E3EE0448AABA1DF46 /* 2020-diary-step-17.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A577BF6A1E04E6DB562A4F4 /* 2020-diary-step-17.png */; };
-		5ABDB1BE69CCAED20C4A8113 /* libPods-Lifevision-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D26F3373416E822AC7A6819 /* libPods-Lifevision-tvOS.a */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		648BA0D1032B42C785CFDC0A /* 2020-diary-step-12.png in Resources */ = {isa = PBXBuildFile; fileRef = ECE81ABF4D5C4BF7A3990573 /* 2020-diary-step-12.png */; };
 		6C5CA0B9201EF6C9007A4AC5 /* libRNDeviceInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C7CA87D20183A76009E848B /* libRNDeviceInfo.a */; };
@@ -118,11 +120,11 @@
 		AF816833E0914715BE78FB26 /* Metropolis-ExtraBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5324C2C862464F11BD043E1F /* Metropolis-ExtraBoldItalic.otf */; };
 		B028C5D6AE0E4A0D98A7EAF0 /* 2020-diary-step-9.png in Resources */ = {isa = PBXBuildFile; fileRef = 32500F77901B4817BCFB78B6 /* 2020-diary-step-9.png */; };
 		B07FBCC8AC03483094306ED9 /* 2020-diary-step-30.png in Resources */ = {isa = PBXBuildFile; fileRef = 06F72533ACF64BD495FF45F5 /* 2020-diary-step-30.png */; };
+		B1ACADFA13788DABE8FEEC77 /* libPods-Lifevision-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 23B47C57559193AF9464F939 /* libPods-Lifevision-tvOSTests.a */; };
 		B360632F08A34A5E915D55E5 /* Metropolis-ExtraLightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 04E0CB5F6336405C893721DB /* Metropolis-ExtraLightItalic.otf */; };
 		B68B3DE16A6D48E8A1D1A3DA /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2AB68320CE104706AC7E796A /* Ionicons.ttf */; };
 		B8F4F4B4509F48E29C8EEA5A /* libKCKeepAwake.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 948A464D63744CE1844D684F /* libKCKeepAwake.a */; };
 		B973BBFC1A454A35BE6D067A /* libRNCSlider.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CBB65F356B54A19994BBF53 /* libRNCSlider.a */; };
-		B99D17C48AA51163DC533DE2 /* Pods_Lifevision.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FBFD9617D1D19D2ECAA1114 /* Pods_Lifevision.framework */; };
 		BCB2A6B019084F50B39072C3 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EE35559F2FD432FADBDAADF /* FBSDKShareKit.framework */; };
 		BD11FA511759476F9D02E498 /* 2020-diary-step-27.png in Resources */ = {isa = PBXBuildFile; fileRef = AED85DACAB2E4ED7A172D2FC /* 2020-diary-step-27.png */; };
 		BFA5E945E088421BA72780E1 /* 2020-diary-step-6.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E367965BD8048BEB5196DFE /* 2020-diary-step-6.png */; };
@@ -131,15 +133,14 @@
 		CC7F5DE9904248A38C394344 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA79CAE61CF34861AAFEB7BC /* Foundation.ttf */; };
 		CC8A94A56B4B4FEAB80B0894 /* libRNSentry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C479C2B29EE440B98FBB08A8 /* libRNSentry.a */; };
 		D15C06954183498E8B03CBBE /* Lifevision-Collage@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 464C449773C043B18E4DBDBB /* Lifevision-Collage@3x.png */; };
-		D17747AABE3CA216500BA728 /* Pods_LifevisionTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0666DFE01D3514EC6CBCCD09 /* Pods_LifevisionTests.framework */; };
 		D29004A5F3E1491CB400E90A /* 2020-diary-step-24.png in Resources */ = {isa = PBXBuildFile; fileRef = C96B38CE91394249BCFB2067 /* 2020-diary-step-24.png */; };
 		D3248B9319EC4ABE839876CD /* Metropolis-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CBDD923749584DA3B431DAE6 /* Metropolis-SemiBold.otf */; };
 		D8E8CAB258734FEBAD0CA23C /* libRNSound.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C326879D75BB4A608FF9BF08 /* libRNSound.a */; };
 		DE65CEDCDDFA4543A0E298D6 /* 2020-diary-step-22.png in Resources */ = {isa = PBXBuildFile; fileRef = 425BB1032BB2435FADA68412 /* 2020-diary-step-22.png */; };
+		E97BFF4F1530C6B48D729BA9 /* libPods-LifevisionTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C48E402F23E59891F1B4CC45 /* libPods-LifevisionTests.a */; };
 		EDA842A8A4B74A7493DD7CEF /* sandClockConfetti@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C09A70AE3A0C45DBAEABF078 /* sandClockConfetti@2x.png */; };
 		F1913A7C69124E24BD976F4F /* AppIcon-Web.png in Resources */ = {isa = PBXBuildFile; fileRef = 57EDAF94E3024BF994BDD27D /* AppIcon-Web.png */; };
 		F9E73F1EECCA437A9DF1ECAF /* Metropolis-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 50B0CF0D3FB74E0EBF86974B /* Metropolis-Bold.otf */; };
-		FC7D4A4749AE6679E25D8A55 /* libPods-Lifevision-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C366CB5B524AC04D667CFEE5 /* libPods-Lifevision-tvOSTests.a */; };
 		FE3C6928FEA1401F9C3E9C01 /* libReactNativePermissions.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F3AA8209762749419CAD7870 /* libReactNativePermissions.a */; };
 		FF53D5CF14774291B90B9D8B /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0EBF3E0459142769A70609D /* libReactNativeConfig.a */; };
 /* End PBXBuildFile section */
@@ -467,6 +468,20 @@
 			remoteGlobalIDString = B5C32A36220C603B000FFB8D;
 			remoteInfo = "RNGestureHandler-tvOS";
 		};
+		59E5799C22E7521E0081BE02 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ABAFDCC71E6E4F14978C12F8 /* RNSentry.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 274692C321B4414400BF91A8;
+			remoteInfo = "RNSentry-tvOS";
+		};
+		59E57A2822E755370081BE02 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B4BB7C85D6A548A18CF9FB6B /* RNFirebase.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNFirebase;
+		};
 		5E9157321DD0AC6500FF2AA8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */;
@@ -633,10 +648,9 @@
 		00E356EE1AD99517003FC87E /* LifevisionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LifevisionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* LifevisionTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LifevisionTests.m; sourceTree = "<group>"; };
+		02F4051ED6495ECF3839EE19 /* Pods-Lifevision.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lifevision.staging.xcconfig"; path = "Target Support Files/Pods-Lifevision/Pods-Lifevision.staging.xcconfig"; sourceTree = "<group>"; };
 		04E0CB5F6336405C893721DB /* Metropolis-ExtraLightItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-ExtraLightItalic.otf"; path = "../src/resources/fonts/Metropolis/Metropolis-ExtraLightItalic.otf"; sourceTree = "<group>"; };
-		04E5A91CBCAF5B14C660B2C9 /* Pods-Lifevision.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lifevision.staging.xcconfig"; path = "Target Support Files/Pods-Lifevision/Pods-Lifevision.staging.xcconfig"; sourceTree = "<group>"; };
 		060751800068405D9D7304E8 /* 2020-diary-step-18.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-18.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-18.png"; sourceTree = "<group>"; };
-		0666DFE01D3514EC6CBCCD09 /* Pods_LifevisionTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LifevisionTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		06F72533ACF64BD495FF45F5 /* 2020-diary-step-30.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-30.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-30.png"; sourceTree = "<group>"; };
 		07B3099E8E76494882B28BF3 /* 2020-diary-step-26.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-26.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-26.png"; sourceTree = "<group>"; };
 		0961A63D63954C67AC22CF82 /* sandClockConfetti@3x.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "sandClockConfetti@3x.png"; path = "../src/resources/images/sandClockConfetti@3x.png"; sourceTree = "<group>"; };
@@ -662,31 +676,29 @@
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		16683B966FF14765ADE5534E /* 2020-diary-step-8.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-8.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-8.png"; sourceTree = "<group>"; };
 		177819889C724648B936B7B3 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
-		18220A6FDE407D24905EF3CB /* Pods-Lifevision-tvOS.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lifevision-tvOS.staging.xcconfig"; path = "Target Support Files/Pods-Lifevision-tvOS/Pods-Lifevision-tvOS.staging.xcconfig"; sourceTree = "<group>"; };
 		1A3F68756DCE4CC5B3C3C598 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
 		1C888D8C237041F0BED9D855 /* 2020-diary-step-16.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-16.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-16.png"; sourceTree = "<group>"; };
 		1CBB65F356B54A19994BBF53 /* libRNCSlider.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNCSlider.a; sourceTree = "<group>"; };
-		1F209DDD6A879548431214AD /* Pods-Lifevision.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lifevision.release.xcconfig"; path = "Target Support Files/Pods-Lifevision/Pods-Lifevision.release.xcconfig"; sourceTree = "<group>"; };
 		206B1EAD0A554C0BB83B4016 /* 2020-diary-step-29.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-29.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-29.png"; sourceTree = "<group>"; };
 		20B1E51B08D14C75801BD4E7 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
-		24A469528CE1DCC13B06CB1D /* Pods-LifevisionTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LifevisionTests.debug.xcconfig"; path = "Target Support Files/Pods-LifevisionTests/Pods-LifevisionTests.debug.xcconfig"; sourceTree = "<group>"; };
+		23B47C57559193AF9464F939 /* libPods-Lifevision-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Lifevision-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2872989996D249388C8C0BA7 /* libz.tbd */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		2AB68320CE104706AC7E796A /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		2C733FD0975947D9BE2AB9A4 /* 2020-diary-step-19.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-19.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-19.png"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* Lifevision-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lifevision-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* Lifevision-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Lifevision-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3236B15FA32E243E165F0EAD /* Pods-Lifevision-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lifevision-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-Lifevision-tvOSTests/Pods-Lifevision-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		32500F77901B4817BCFB78B6 /* 2020-diary-step-9.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-9.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-9.png"; sourceTree = "<group>"; };
 		345D64FD40244642864FEBA0 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		348A0D883531448FA8354E54 /* 2020-diary-step-25.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-25.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-25.png"; sourceTree = "<group>"; };
+		397C4B0D162236D4C67159B5 /* Pods-Lifevision.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lifevision.release.xcconfig"; path = "Target Support Files/Pods-Lifevision/Pods-Lifevision.release.xcconfig"; sourceTree = "<group>"; };
 		3B101239ACA743BC827C7412 /* Metropolis-MediumItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-MediumItalic.otf"; path = "../src/resources/fonts/Metropolis/Metropolis-MediumItalic.otf"; sourceTree = "<group>"; };
 		3CBCE40F8D474CD7BE8A47E0 /* Metropolis-ExtraBold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-ExtraBold.otf"; path = "../src/resources/fonts/Metropolis/Metropolis-ExtraBold.otf"; sourceTree = "<group>"; };
 		3E367965BD8048BEB5196DFE /* 2020-diary-step-6.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-6.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-6.png"; sourceTree = "<group>"; };
-		419E61A24B99C34EBC8EF654 /* Pods-Lifevision-tvOSTests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lifevision-tvOSTests.staging.xcconfig"; path = "Target Support Files/Pods-Lifevision-tvOSTests/Pods-Lifevision-tvOSTests.staging.xcconfig"; sourceTree = "<group>"; };
 		425BB1032BB2435FADA68412 /* 2020-diary-step-22.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-22.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-22.png"; sourceTree = "<group>"; };
 		438C5B65F4444DCEB4A4B69F /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
 		45C7FD8C56B74DD488C34A19 /* libRNDeviceInfo-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNDeviceInfo-tvOS.a"; sourceTree = "<group>"; };
 		464C449773C043B18E4DBDBB /* Lifevision-Collage@3x.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Lifevision-Collage@3x.png"; path = "../src/resources/images/Lifevision-Collage@3x.png"; sourceTree = "<group>"; };
-		4D26F3373416E822AC7A6819 /* libPods-Lifevision-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Lifevision-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ED6F842A92D4871AEEC8C42 /* libRCTVideo.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTVideo.a; sourceTree = "<group>"; };
 		4F8B322E03F54BF3910BD769 /* 2020-diary-step-11.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-11.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-11.png"; sourceTree = "<group>"; };
 		50B0CF0D3FB74E0EBF86974B /* Metropolis-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-Bold.otf"; path = "../src/resources/fonts/Metropolis/Metropolis-Bold.otf"; sourceTree = "<group>"; };
@@ -702,23 +714,25 @@
 		59A08F982209D5CD00EF2F40 /* RNUnifiedContacts-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RNUnifiedContacts-Bridging-Header.h"; sourceTree = "<group>"; };
 		59B48CCA21F9DDFD004F2113 /* bell.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = bell.wav; path = ../src/resources/sounds/bell.wav; sourceTree = "<group>"; };
 		59CDB4FE76144DDFB97FCF55 /* 2020-diary-step-13.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-13.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-13.png"; sourceTree = "<group>"; };
+		59E57BD822E771440081BE02 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		59FB3D8C22B0196E00102ED0 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		59FB3D8F22B019BB00102ED0 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS11.4.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		5DD37A683C874E3188CA272F /* Metropolis-Thin.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-Thin.otf"; path = "../src/resources/fonts/Metropolis/Metropolis-Thin.otf"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		5FEB388A5AD743F7B4E2EFD6 /* libRNCAsyncStorage.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNCAsyncStorage.a; sourceTree = "<group>"; };
+		61C05FD2251E0BAB1FC2DC57 /* Pods-LifevisionTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LifevisionTests.release.xcconfig"; path = "Target Support Files/Pods-LifevisionTests/Pods-LifevisionTests.release.xcconfig"; sourceTree = "<group>"; };
 		6232EC316E764FCEAFFE34E3 /* RNSound.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNSound.xcodeproj; path = "../node_modules/react-native-sound/RNSound.xcodeproj"; sourceTree = "<group>"; };
 		644E5E12DDD9493D981B4E07 /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
 		6A577BF6A1E04E6DB562A4F4 /* 2020-diary-step-17.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-17.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-17.png"; sourceTree = "<group>"; };
+		6ADF08934343843E60124008 /* Pods-Lifevision-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lifevision-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Lifevision-tvOSTests/Pods-Lifevision-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6BD983B2232C4C51B9C4A42A /* 2020-diary-step-10.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-10.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-10.png"; sourceTree = "<group>"; };
 		6C61C0BB2015746700FDC618 /* RNSVG.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNSVG.xcodeproj; path = "../node_modules/react-native-svg/ios/RNSVG.xcodeproj"; sourceTree = "<group>"; };
 		6C86D3AB201EE91E004BC578 /* Lifevision.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Lifevision.entitlements; path = Lifevision/Lifevision.entitlements; sourceTree = "<group>"; };
 		6CA6AF935DF7471D82EE3C8A /* 2020-diary-step-20.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-20.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-20.png"; sourceTree = "<group>"; };
 		6D04E1108AF244A5BA5A0029 /* 2020-diary-step-7.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-7.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-7.png"; sourceTree = "<group>"; };
 		6DD9949CE9A24ABBAEAE4BA8 /* RCTFBSDK.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTFBSDK.xcodeproj; path = "../node_modules/react-native-fbsdk/ios/RCTFBSDK.xcodeproj"; sourceTree = "<group>"; };
-		6F50FB54DB815DC2C98A2A46 /* Pods-LifevisionTests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LifevisionTests.staging.xcconfig"; path = "Target Support Files/Pods-LifevisionTests/Pods-LifevisionTests.staging.xcconfig"; sourceTree = "<group>"; };
-		6FBFD9617D1D19D2ECAA1114 /* Pods_Lifevision.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lifevision.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		721AC889AF434826A96D200C /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
+		7359B80B9B4857E3C192FDB3 /* Pods-Lifevision-tvOSTests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lifevision-tvOSTests.staging.xcconfig"; path = "Target Support Files/Pods-Lifevision-tvOSTests/Pods-Lifevision-tvOSTests.staging.xcconfig"; sourceTree = "<group>"; };
 		735D2BCA86DE4A82B3C4C077 /* sandClockConfetti.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = sandClockConfetti.png; path = ../src/resources/images/sandClockConfetti.png; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		7941221E8EFE4498A93450C7 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
@@ -739,18 +753,22 @@
 		9AE00FDBCD0847518B923F62 /* MoEReactBridge.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = MoEReactBridge.xcodeproj; path = "../node_modules/react-native-moengage/iOS/MoEReactBridge/MoEReactBridge.xcodeproj"; sourceTree = "<group>"; };
 		9B4C222AC0C7480F9D05B796 /* Metropolis-RegularItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-RegularItalic.otf"; path = "../src/resources/fonts/Metropolis/Metropolis-RegularItalic.otf"; sourceTree = "<group>"; };
 		9BD8EF15F41F48179CE5E71B /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
+		9E682DDA2E08C0327F9F3715 /* Pods-Lifevision-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lifevision-tvOS.release.xcconfig"; path = "Target Support Files/Pods-Lifevision-tvOS/Pods-Lifevision-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		9ECBC182F77B49BAB3C9758F /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/native-base/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
+		A2D55B25B17D1F2ADA740E2D /* libPods-Lifevision-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Lifevision-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A32E3EDF89B14BBD8662E4C8 /* Metropolis-Light.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-Light.otf"; path = "../src/resources/fonts/Metropolis/Metropolis-Light.otf"; sourceTree = "<group>"; };
-		A65E8A753C26C2FD8D63589B /* Pods-Lifevision.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lifevision.debug.xcconfig"; path = "Target Support Files/Pods-Lifevision/Pods-Lifevision.debug.xcconfig"; sourceTree = "<group>"; };
 		A84741DD967C4911A473EF91 /* Metropolis-BoldItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-BoldItalic.otf"; path = "../src/resources/fonts/Metropolis/Metropolis-BoldItalic.otf"; sourceTree = "<group>"; };
 		A84E5E60C59C48B2BB026465 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		A9362DDB404048D2823D26BC /* Metropolis-ExtraLight.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-ExtraLight.otf"; path = "../src/resources/fonts/Metropolis/Metropolis-ExtraLight.otf"; sourceTree = "<group>"; };
+		AA5FBB54422DC3317B569627 /* Pods-Lifevision-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lifevision-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-Lifevision-tvOS/Pods-Lifevision-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		ABAFDCC71E6E4F14978C12F8 /* RNSentry.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNSentry.xcodeproj; path = "../node_modules/react-native-sentry/ios/RNSentry.xcodeproj"; sourceTree = "<group>"; };
 		AEB767E415824F88AB285AE3 /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
 		AED85DACAB2E4ED7A172D2FC /* 2020-diary-step-27.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-27.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-27.png"; sourceTree = "<group>"; };
 		B02A9292ABB84AB29CBAF1B9 /* rubicon-icon-font.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "rubicon-icon-font.ttf"; path = "../node_modules/native-base/Fonts/rubicon-icon-font.ttf"; sourceTree = "<group>"; };
+		B02BA2A24D8DD9E80AE184D9 /* Pods-Lifevision-tvOS.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lifevision-tvOS.staging.xcconfig"; path = "Target Support Files/Pods-Lifevision-tvOS/Pods-Lifevision-tvOS.staging.xcconfig"; sourceTree = "<group>"; };
 		B1CE22547D2941DA8091B355 /* RNCWebView.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNCWebView.xcodeproj; path = "../node_modules/react-native-webview/ios/RNCWebView.xcodeproj"; sourceTree = "<group>"; };
 		B3C9922841564BA29F0B9037 /* 2020-diary-step-3.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-3.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-3.png"; sourceTree = "<group>"; };
+		B4BB7C85D6A548A18CF9FB6B /* RNFirebase.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNFirebase.xcodeproj; path = "../node_modules/react-native-firebase/ios/RNFirebase.xcodeproj"; sourceTree = "<group>"; };
 		B723FFEBE3A44F2F84079B6F /* RNBlur.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNBlur.xcodeproj; path = "../node_modules/@react-native-community/blur/ios/RNBlur.xcodeproj"; sourceTree = "<group>"; };
 		BA794A7614724A38B496D0A9 /* libRNCWebView.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNCWebView.a; sourceTree = "<group>"; };
 		BF0B0FC18ECE4074B6671B84 /* libRCTContacts.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTContacts.a; sourceTree = "<group>"; };
@@ -758,22 +776,20 @@
 		BFE0157236D64023B7AEC378 /* libRNVectorIcons-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNVectorIcons-tvOS.a"; sourceTree = "<group>"; };
 		C09A70AE3A0C45DBAEABF078 /* sandClockConfetti@2x.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "sandClockConfetti@2x.png"; path = "../src/resources/images/sandClockConfetti@2x.png"; sourceTree = "<group>"; };
 		C326879D75BB4A608FF9BF08 /* libRNSound.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSound.a; sourceTree = "<group>"; };
-		C366CB5B524AC04D667CFEE5 /* libPods-Lifevision-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Lifevision-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C479C2B29EE440B98FBB08A8 /* libRNSentry.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSentry.a; sourceTree = "<group>"; };
-		C6A178C70A3EFE44080C917F /* Pods-LifevisionTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LifevisionTests.release.xcconfig"; path = "Target Support Files/Pods-LifevisionTests/Pods-LifevisionTests.release.xcconfig"; sourceTree = "<group>"; };
+		C48E402F23E59891F1B4CC45 /* libPods-LifevisionTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LifevisionTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C96B38CE91394249BCFB2067 /* 2020-diary-step-24.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-24.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-24.png"; sourceTree = "<group>"; };
 		CA79CAE61CF34861AAFEB7BC /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
+		CB15C43E274B7C5B129720C6 /* Pods-LifevisionTests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LifevisionTests.staging.xcconfig"; path = "Target Support Files/Pods-LifevisionTests/Pods-LifevisionTests.staging.xcconfig"; sourceTree = "<group>"; };
 		CBDD923749584DA3B431DAE6 /* Metropolis-SemiBold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-SemiBold.otf"; path = "../src/resources/fonts/Metropolis/Metropolis-SemiBold.otf"; sourceTree = "<group>"; };
 		D542C96B49034D2BB567DA4E /* RNGestureHandler.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNGestureHandler.xcodeproj; path = "../node_modules/react-native-gesture-handler/ios/RNGestureHandler.xcodeproj"; sourceTree = "<group>"; };
 		D8004A0854F54A1EBF1F7386 /* 2020-diary-step-15.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-15.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-15.png"; sourceTree = "<group>"; };
 		D9BD99EBE4904734B80D682D /* RNDeviceInfo.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNDeviceInfo.xcodeproj; path = "../node_modules/react-native-device-info/RNDeviceInfo.xcodeproj"; sourceTree = "<group>"; };
-		DB56676603F1FD7AA14AD816 /* Pods-Lifevision-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lifevision-tvOS.release.xcconfig"; path = "Target Support Files/Pods-Lifevision-tvOS/Pods-Lifevision-tvOS.release.xcconfig"; sourceTree = "<group>"; };
-		DB75283C71F7F24B9FD1D207 /* Pods-Lifevision-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lifevision-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-Lifevision-tvOS/Pods-Lifevision-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		E06FFD2148A84434A9956FA7 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
+		E1BFC90075A2D91CFC2D2F53 /* Pods-Lifevision.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lifevision.debug.xcconfig"; path = "Target Support Files/Pods-Lifevision/Pods-Lifevision.debug.xcconfig"; sourceTree = "<group>"; };
 		E2EBC692F42043FF8F12AEA6 /* Roboto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto.ttf; path = "../node_modules/native-base/Fonts/Roboto.ttf"; sourceTree = "<group>"; };
 		E4C2AFB475104A3982EAB221 /* libRNSVG-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNSVG-tvOS.a"; sourceTree = "<group>"; };
 		E6E57F8D33C8488D86C2C4B5 /* RNCSlider.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNCSlider.xcodeproj; path = "../node_modules/@react-native-community/slider/ios/RNCSlider.xcodeproj"; sourceTree = "<group>"; };
-		E963E229C96B6DC516C39E9B /* Pods-Lifevision-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lifevision-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-Lifevision-tvOSTests/Pods-Lifevision-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		EABD6220F57345879BB09B9E /* libMoEReactBridge.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libMoEReactBridge.a; sourceTree = "<group>"; };
 		ECE81ABF4D5C4BF7A3990573 /* 2020-diary-step-12.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-12.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-12.png"; sourceTree = "<group>"; };
 		ED5A75A3A8234F18B3769CE0 /* libRNFirebase.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNFirebase.a; sourceTree = "<group>"; };
@@ -789,9 +805,10 @@
 		FA84FEEB7A1846368A6DB60E /* 2020-diary-step-14.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-14.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-14.png"; sourceTree = "<group>"; };
 		FA865A1A3D004AE8A98CD460 /* RNCAsyncStorage.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNCAsyncStorage.xcodeproj; path = "../node_modules/@react-native-community/async-storage/ios/RNCAsyncStorage.xcodeproj"; sourceTree = "<group>"; };
 		FA98C67E343D4CC9B9C3BDCB /* Metropolis-SemiBoldItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-SemiBoldItalic.otf"; path = "../src/resources/fonts/Metropolis/Metropolis-SemiBoldItalic.otf"; sourceTree = "<group>"; };
-		FC072DFE4E817753356EA5BA /* Pods-Lifevision-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lifevision-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Lifevision-tvOSTests/Pods-Lifevision-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FC1002986DAE4858AC9EFA4C /* Metropolis-ThinItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-ThinItalic.otf"; path = "../src/resources/fonts/Metropolis/Metropolis-ThinItalic.otf"; sourceTree = "<group>"; };
 		FC66B46687B9416582809756 /* 2020-diary-step-1.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-1.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-1.png"; sourceTree = "<group>"; };
+		FCA3A77138A7117203A9E001 /* Pods-LifevisionTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LifevisionTests.debug.xcconfig"; path = "Target Support Files/Pods-LifevisionTests/Pods-LifevisionTests.debug.xcconfig"; sourceTree = "<group>"; };
+		FCF7C9E54B9A49810C9CE3CD /* libPods-Lifevision.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Lifevision.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE5AEBE22F9C46E994C14F42 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
 		FF18CA9A0CB24B5988C4F9D9 /* libRNDeviceInfo.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNDeviceInfo.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -803,7 +820,7 @@
 			files = (
 				59FB3D8E22B019AB00102ED0 /* JavaScriptCore.framework in Frameworks */,
 				140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */,
-				D17747AABE3CA216500BA728 /* Pods_LifevisionTests.framework in Frameworks */,
+				E97BFF4F1530C6B48D729BA9 /* libPods-LifevisionTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -848,7 +865,7 @@
 				ABF4EDEF2BC048E094C12AD5 /* libMoEReactBridge.a in Frameworks */,
 				FF53D5CF14774291B90B9D8B /* libReactNativeConfig.a in Frameworks */,
 				FE3C6928FEA1401F9C3E9C01 /* libReactNativePermissions.a in Frameworks */,
-				B99D17C48AA51163DC533DE2 /* Pods_Lifevision.framework in Frameworks */,
+				2C36095F76813A4F934F3C8A /* libPods-Lifevision.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -867,7 +884,7 @@
 				2D02E4C81E0B4AEC006451C7 /* libRCTWebSocket-tvOS.a in Frameworks */,
 				516D8B9A20444608B77220A2 /* libRNVectorIcons-tvOS.a in Frameworks */,
 				3F7721401E8F4C34AAAE9ABE /* libReactNativeConfig-tvOS.a in Frameworks */,
-				5ABDB1BE69CCAED20C4A8113 /* libPods-Lifevision-tvOS.a in Frameworks */,
+				026BA14690505BE45830B21B /* libPods-Lifevision-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -877,7 +894,7 @@
 			files = (
 				59FB3D9122B019C800102ED0 /* JavaScriptCore.framework in Frameworks */,
 				2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */,
-				FC7D4A4749AE6679E25D8A55 /* libPods-Lifevision-tvOSTests.a in Frameworks */,
+				B1ACADFA13788DABE8FEEC77 /* libPods-Lifevision-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -966,6 +983,7 @@
 		13B07FAE1A68108700A75B9A /* Lifevision */ = {
 			isa = PBXGroup;
 			children = (
+				59E57BD822E771440081BE02 /* GoogleService-Info.plist */,
 				6C86D3AB201EE91E004BC578 /* Lifevision.entitlements */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
@@ -1056,18 +1074,18 @@
 		4359F1AFE9149F0FD7960793 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				A65E8A753C26C2FD8D63589B /* Pods-Lifevision.debug.xcconfig */,
-				1F209DDD6A879548431214AD /* Pods-Lifevision.release.xcconfig */,
-				04E5A91CBCAF5B14C660B2C9 /* Pods-Lifevision.staging.xcconfig */,
-				DB75283C71F7F24B9FD1D207 /* Pods-Lifevision-tvOS.debug.xcconfig */,
-				DB56676603F1FD7AA14AD816 /* Pods-Lifevision-tvOS.release.xcconfig */,
-				18220A6FDE407D24905EF3CB /* Pods-Lifevision-tvOS.staging.xcconfig */,
-				FC072DFE4E817753356EA5BA /* Pods-Lifevision-tvOSTests.debug.xcconfig */,
-				E963E229C96B6DC516C39E9B /* Pods-Lifevision-tvOSTests.release.xcconfig */,
-				419E61A24B99C34EBC8EF654 /* Pods-Lifevision-tvOSTests.staging.xcconfig */,
-				24A469528CE1DCC13B06CB1D /* Pods-LifevisionTests.debug.xcconfig */,
-				C6A178C70A3EFE44080C917F /* Pods-LifevisionTests.release.xcconfig */,
-				6F50FB54DB815DC2C98A2A46 /* Pods-LifevisionTests.staging.xcconfig */,
+				E1BFC90075A2D91CFC2D2F53 /* Pods-Lifevision.debug.xcconfig */,
+				397C4B0D162236D4C67159B5 /* Pods-Lifevision.release.xcconfig */,
+				02F4051ED6495ECF3839EE19 /* Pods-Lifevision.staging.xcconfig */,
+				AA5FBB54422DC3317B569627 /* Pods-Lifevision-tvOS.debug.xcconfig */,
+				9E682DDA2E08C0327F9F3715 /* Pods-Lifevision-tvOS.release.xcconfig */,
+				B02BA2A24D8DD9E80AE184D9 /* Pods-Lifevision-tvOS.staging.xcconfig */,
+				6ADF08934343843E60124008 /* Pods-Lifevision-tvOSTests.debug.xcconfig */,
+				3236B15FA32E243E165F0EAD /* Pods-Lifevision-tvOSTests.release.xcconfig */,
+				7359B80B9B4857E3C192FDB3 /* Pods-Lifevision-tvOSTests.staging.xcconfig */,
+				FCA3A77138A7117203A9E001 /* Pods-LifevisionTests.debug.xcconfig */,
+				61C05FD2251E0BAB1FC2DC57 /* Pods-LifevisionTests.release.xcconfig */,
+				CB15C43E274B7C5B129720C6 /* Pods-LifevisionTests.staging.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -1184,6 +1202,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		59E579EC22E755360081BE02 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				59E57A2922E755370081BE02 /* libRNFirebase.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		5E91572E1DD0AC6500FF2AA8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -1206,6 +1232,7 @@
 			isa = PBXGroup;
 			children = (
 				6C5D93292040828400C065B8 /* libRNSentry.a */,
+				59E5799D22E7521E0081BE02 /* libRNSentry-tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1225,10 +1252,10 @@
 				59FB3D8C22B0196E00102ED0 /* JavaScriptCore.framework */,
 				59FB3D8F22B019BB00102ED0 /* JavaScriptCore.framework */,
 				2872989996D249388C8C0BA7 /* libz.tbd */,
-				4D26F3373416E822AC7A6819 /* libPods-Lifevision-tvOS.a */,
-				C366CB5B524AC04D667CFEE5 /* libPods-Lifevision-tvOSTests.a */,
-				6FBFD9617D1D19D2ECAA1114 /* Pods_Lifevision.framework */,
-				0666DFE01D3514EC6CBCCD09 /* Pods_LifevisionTests.framework */,
+				FCF7C9E54B9A49810C9CE3CD /* libPods-Lifevision.a */,
+				A2D55B25B17D1F2ADA740E2D /* libPods-Lifevision-tvOS.a */,
+				23B47C57559193AF9464F939 /* libPods-Lifevision-tvOSTests.a */,
+				C48E402F23E59891F1B4CC45 /* libPods-LifevisionTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1383,6 +1410,7 @@
 				9AE00FDBCD0847518B923F62 /* MoEReactBridge.xcodeproj */,
 				57C2FEDF651B456BB2040DD7 /* ReactNativeConfig.xcodeproj */,
 				0E69D5E86A6E4893A0979661 /* ReactNativePermissions.xcodeproj */,
+				B4BB7C85D6A548A18CF9FB6B /* RNFirebase.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1433,7 +1461,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "LifevisionTests" */;
 			buildPhases = (
-				9D275B8D112D6F02FA78ECD7 /* [CP] Check Pods Manifest.lock */,
+				EF67A3739B38874BCB8932E1 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
@@ -1452,13 +1480,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Lifevision" */;
 			buildPhases = (
-				507F64BD6E1A3A87C1F7E7B0 /* [CP] Check Pods Manifest.lock */,
+				DBA667EFA203DC96D177AB5C /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				067994C1F53A4B729D181A46 /* Upload Debug Symbols to Sentry */,
-				FD1534CAAA942A0257F38264 /* [CP] Embed Pods Frameworks */,
+				7A36D99D048378DE9856CA60 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1473,7 +1501,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Lifevision-tvOS" */;
 			buildPhases = (
-				424B61F46C637944D0FC5C89 /* [CP] Check Pods Manifest.lock */,
+				E9234A6C0CB3373CE46AAF18 /* [CP] Check Pods Manifest.lock */,
 				2D02E4771E0B4A5D006451C7 /* Sources */,
 				2D02E4781E0B4A5D006451C7 /* Frameworks */,
 				2D02E4791E0B4A5D006451C7 /* Resources */,
@@ -1492,7 +1520,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Lifevision-tvOSTests" */;
 			buildPhases = (
-				9D4ED873BFF78DE07F3CADF3 /* [CP] Check Pods Manifest.lock */,
+				9AF605E1D54B47D6B5A8E1BF /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
 				2D02E48D1E0B4A5D006451C7 /* Frameworks */,
 				2D02E48E1E0B4A5D006451C7 /* Resources */,
@@ -1670,6 +1698,10 @@
 				{
 					ProductGroup = 6C7CA87820183A76009E848B /* Products */;
 					ProjectRef = D9BD99EBE4904734B80D682D /* RNDeviceInfo.xcodeproj */;
+				},
+				{
+					ProductGroup = 59E579EC22E755360081BE02 /* Products */;
+					ProjectRef = B4BB7C85D6A548A18CF9FB6B /* RNFirebase.xcodeproj */;
 				},
 				{
 					ProductGroup = 6C8EECDE208105E800F12E19 /* Products */;
@@ -2011,6 +2043,20 @@
 			remoteRef = 59CC889D22B93866007D32D7 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		59E5799D22E7521E0081BE02 /* libRNSentry-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libRNSentry-tvOS.a";
+			remoteRef = 59E5799C22E7521E0081BE02 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		59E57A2922E755370081BE02 /* libRNFirebase.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNFirebase.a;
+			remoteRef = 59E57A2822E755370081BE02 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -2244,6 +2290,7 @@
 				9FD74E504EFB471DBD0F27B9 /* FontAwesome5_Regular.ttf in Resources */,
 				39BA19388B4C43EA9E3EAE01 /* FontAwesome5_Solid.ttf in Resources */,
 				CC7F5DE9904248A38C394344 /* Foundation.ttf in Resources */,
+				59E57BD922E771450081BE02 /* GoogleService-Info.plist in Resources */,
 				B68B3DE16A6D48E8A1D1A3DA /* Ionicons.ttf in Resources */,
 				9699BE3AC9374811AC0F73F8 /* MaterialCommunityIcons.ttf in Resources */,
 				71A826215C2E4E22965D9A24 /* MaterialIcons.ttf in Resources */,
@@ -2313,73 +2360,25 @@
 			shellPath = /bin/sh;
 			shellScript = "export SENTRY_PROPERTIES=sentry.properties\nexport NODE_BINARY=node\n../node_modules/@sentry/cli/bin/sentry-cli react-native xcode ../node_modules/react-native/packager/react-native-xcode.sh";
 		};
-		424B61F46C637944D0FC5C89 /* [CP] Check Pods Manifest.lock */ = {
+		7A36D99D048378DE9856CA60 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
+				"${PODS_ROOT}/Target Support Files/Pods-Lifevision/Pods-Lifevision-frameworks.sh",
+				"${PODS_ROOT}/MoEngage-iOS-SDK/MoEngage/MoEngage.framework",
 			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Lifevision-tvOS-checkManifestLockResult.txt",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MoEngage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Lifevision/Pods-Lifevision-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		507F64BD6E1A3A87C1F7E7B0 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Lifevision-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9D275B8D112D6F02FA78ECD7 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-LifevisionTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9D4ED873BFF78DE07F3CADF3 /* [CP] Check Pods Manifest.lock */ = {
+		9AF605E1D54B47D6B5A8E1BF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2401,22 +2400,70 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FD1534CAAA942A0257F38264 /* [CP] Embed Pods Frameworks */ = {
+		DBA667EFA203DC96D177AB5C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Lifevision/Pods-Lifevision-frameworks.sh",
-				"${PODS_ROOT}/MoEngage-iOS-SDK/MoEngage/MoEngage.framework",
+			inputFileListPaths = (
 			);
-			name = "[CP] Embed Pods Frameworks";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MoEngage.framework",
+				"$(DERIVED_FILE_DIR)/Pods-Lifevision-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Lifevision/Pods-Lifevision-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E9234A6C0CB3373CE46AAF18 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Lifevision-tvOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EF67A3739B38874BCB8932E1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LifevisionTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -2487,12 +2534,15 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 24A469528CE1DCC13B06CB1D /* Pods-LifevisionTests.debug.xcconfig */;
+			baseConfigurationReference = FCA3A77138A7117203A9E001 /* Pods-LifevisionTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 8RQ6236EC6;
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Frameworks/";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks/",
+				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -2523,6 +2573,7 @@
 					"$(SRCROOT)..\node_modules\neact-native-firebaseiosRNFirebase/**",
 					"$(SRCROOT)..\node_modules\neact-native-configiosReactNativeConfig",
 					"$(SRCROOT)..\node_modules\neact-native-permissionsios/**",
+					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 				);
 				INFOPLIST_FILE = LifevisionTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -2539,13 +2590,16 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C6A178C70A3EFE44080C917F /* Pods-LifevisionTests.release.xcconfig */;
+			baseConfigurationReference = 61C05FD2251E0BAB1FC2DC57 /* Pods-LifevisionTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = 8RQ6236EC6;
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Frameworks/";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks/",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-drop-refresh/**",
@@ -2572,6 +2626,7 @@
 					"$(SRCROOT)..\node_modules\neact-native-firebaseiosRNFirebase/**",
 					"$(SRCROOT)..\node_modules\neact-native-configiosReactNativeConfig",
 					"$(SRCROOT)..\node_modules\neact-native-permissionsios/**",
+					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 				);
 				INFOPLIST_FILE = LifevisionTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -2588,7 +2643,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A65E8A753C26C2FD8D63589B /* Pods-Lifevision.debug.xcconfig */;
+			baseConfigurationReference = E1BFC90075A2D91CFC2D2F53 /* Pods-Lifevision.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODEPUSH_KEY = "";
@@ -2600,6 +2655,7 @@
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 8RQ6236EC6;
 				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks/",
 					"$(PROJECT_DIR)/Pods/MoEngage-iOS-SDK/MoEngage",
 				);
@@ -2628,6 +2684,7 @@
 					"$(SRCROOT)..\node_modules\neact-native-firebaseiosRNFirebase/**",
 					"$(SRCROOT)..\node_modules\neact-native-configiosReactNativeConfig",
 					"$(SRCROOT)..\node_modules\neact-native-permissionsios/**",
+					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 				);
 				"HEADER_SEARCH_PATHS[arch=*]" = (
 					"$(inherited)",
@@ -2654,6 +2711,7 @@
 					"-ObjC",
 					"-lc++",
 				);
+				"OTHER_SWIFT_FLAGS[arch=*]" = "-DDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.timebug.lifevisionApp;
 				PRODUCT_NAME = Lifevision;
 				PROVISIONING_PROFILE = "";
@@ -2666,7 +2724,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1F209DDD6A879548431214AD /* Pods-Lifevision.release.xcconfig */;
+			baseConfigurationReference = 397C4B0D162236D4C67159B5 /* Pods-Lifevision.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODEPUSH_KEY = "zyrCNm8kdGTq6FS6gaIUE-DSNparH153TzmSz";
@@ -2677,6 +2735,7 @@
 				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 8RQ6236EC6;
 				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks/",
 					"$(PROJECT_DIR)/Pods/MoEngage-iOS-SDK/MoEngage",
 				);
@@ -2705,6 +2764,7 @@
 					"$(SRCROOT)..\node_modules\neact-native-firebaseiosRNFirebase/**",
 					"$(SRCROOT)..\node_modules\neact-native-configiosReactNativeConfig",
 					"$(SRCROOT)..\node_modules\neact-native-permissionsios/**",
+					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 				);
 				INFOPLIST_FILE = Lifevision/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2726,7 +2786,7 @@
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DB75283C71F7F24B9FD1D207 /* Pods-Lifevision-tvOS.debug.xcconfig */;
+			baseConfigurationReference = AA5FBB54422DC3317B569627 /* Pods-Lifevision-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -2765,6 +2825,7 @@
 					"$(SRCROOT)..\node_modules\neact-native-firebaseiosRNFirebase/**",
 					"$(SRCROOT)..\node_modules\neact-native-configiosReactNativeConfig",
 					"$(SRCROOT)..\node_modules\neact-native-permissionsios/**",
+					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 				);
 				INFOPLIST_FILE = "Lifevision-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2783,7 +2844,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DB56676603F1FD7AA14AD816 /* Pods-Lifevision-tvOS.release.xcconfig */;
+			baseConfigurationReference = 9E682DDA2E08C0327F9F3715 /* Pods-Lifevision-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -2822,6 +2883,7 @@
 					"$(SRCROOT)..\node_modules\neact-native-firebaseiosRNFirebase/**",
 					"$(SRCROOT)..\node_modules\neact-native-configiosReactNativeConfig",
 					"$(SRCROOT)..\node_modules\neact-native-permissionsios/**",
+					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 				);
 				INFOPLIST_FILE = "Lifevision-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2840,7 +2902,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FC072DFE4E817753356EA5BA /* Pods-Lifevision-tvOSTests.debug.xcconfig */;
+			baseConfigurationReference = 6ADF08934343843E60124008 /* Pods-Lifevision-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -2869,6 +2931,7 @@
 					"$(SRCROOT)..\node_modules\neact-native-firebaseiosRNFirebase/**",
 					"$(SRCROOT)..\node_modules\neact-native-configiosReactNativeConfig",
 					"$(SRCROOT)..\node_modules\neact-native-permissionsios/**",
+					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 				);
 				INFOPLIST_FILE = "Lifevision-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -2888,7 +2951,7 @@
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E963E229C96B6DC516C39E9B /* Pods-Lifevision-tvOSTests.release.xcconfig */;
+			baseConfigurationReference = 3236B15FA32E243E165F0EAD /* Pods-Lifevision-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -2917,6 +2980,7 @@
 					"$(SRCROOT)..\node_modules\neact-native-firebaseiosRNFirebase/**",
 					"$(SRCROOT)..\node_modules\neact-native-configiosReactNativeConfig",
 					"$(SRCROOT)..\node_modules\neact-native-permissionsios/**",
+					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 				);
 				INFOPLIST_FILE = "Lifevision-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -2978,7 +3042,7 @@
 		};
 		6C5CA10E201EFA53007A4AC5 /* Staging */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 04E5A91CBCAF5B14C660B2C9 /* Pods-Lifevision.staging.xcconfig */;
+			baseConfigurationReference = 02F4051ED6495ECF3839EE19 /* Pods-Lifevision.staging.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODEPUSH_KEY = gyoby2vMifsc_791du3unnq0CfYJH15haMmBf;
@@ -2991,6 +3055,7 @@
 				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 8RQ6236EC6;
 				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks/",
 					"$(PROJECT_DIR)/Pods/MoEngage-iOS-SDK/MoEngage",
 				);
@@ -3019,6 +3084,7 @@
 					"$(SRCROOT)..\node_modules\neact-native-firebaseiosRNFirebase/**",
 					"$(SRCROOT)..\node_modules\neact-native-configiosReactNativeConfig",
 					"$(SRCROOT)..\node_modules\neact-native-permissionsios/**",
+					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 				);
 				INFOPLIST_FILE = Lifevision/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -3040,13 +3106,16 @@
 		};
 		6C5CA10F201EFA53007A4AC5 /* Staging */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6F50FB54DB815DC2C98A2A46 /* Pods-LifevisionTests.staging.xcconfig */;
+			baseConfigurationReference = CB15C43E274B7C5B129720C6 /* Pods-LifevisionTests.staging.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = 8RQ6236EC6;
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Frameworks/";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks/",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-drop-refresh/**",
@@ -3073,6 +3142,7 @@
 					"$(SRCROOT)..\node_modules\neact-native-firebaseiosRNFirebase/**",
 					"$(SRCROOT)..\node_modules\neact-native-configiosReactNativeConfig",
 					"$(SRCROOT)..\node_modules\neact-native-permissionsios/**",
+					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 				);
 				INFOPLIST_FILE = LifevisionTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -3089,7 +3159,7 @@
 		};
 		6C5CA110201EFA53007A4AC5 /* Staging */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 18220A6FDE407D24905EF3CB /* Pods-Lifevision-tvOS.staging.xcconfig */;
+			baseConfigurationReference = B02BA2A24D8DD9E80AE184D9 /* Pods-Lifevision-tvOS.staging.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -3128,6 +3198,7 @@
 					"$(SRCROOT)..\node_modules\neact-native-firebaseiosRNFirebase/**",
 					"$(SRCROOT)..\node_modules\neact-native-configiosReactNativeConfig",
 					"$(SRCROOT)..\node_modules\neact-native-permissionsios/**",
+					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 				);
 				INFOPLIST_FILE = "Lifevision-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -3146,7 +3217,7 @@
 		};
 		6C5CA111201EFA53007A4AC5 /* Staging */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 419E61A24B99C34EBC8EF654 /* Pods-Lifevision-tvOSTests.staging.xcconfig */;
+			baseConfigurationReference = 7359B80B9B4857E3C192FDB3 /* Pods-Lifevision-tvOSTests.staging.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;

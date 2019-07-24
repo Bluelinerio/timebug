@@ -6,6 +6,7 @@
  */
 
 #import "AppDelegate.h"
+#import <Firebase.h>
 #import <CodePush/CodePush.h>
 #import <React/RCTPushNotificationManager.h>
 #import <React/RCTBundleURLProvider.h>
@@ -25,9 +26,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+ 
   NSURL *jsCodeLocation;
 
-  
+
     #ifdef DEBUG
         jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
     #else
@@ -43,6 +45,7 @@
 //#if RCT_DEV
 //  [bridge moduleForClass:[RCTDevLoadingView class]];
 //#endif
+   [FIRApp configure];
 RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
                                                       moduleName:@"Lifevision"
                                                initialProperties:nil
