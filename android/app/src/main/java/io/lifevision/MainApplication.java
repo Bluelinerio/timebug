@@ -3,6 +3,8 @@ package io.lifevision;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import io.invertase.firebase.RNFirebasePackage;
+import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;
 import com.reactnativecommunity.webview.RNCWebViewPackage;
 import com.reactnativecommunity.slider.ReactSliderPackage;
 import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
@@ -59,7 +61,8 @@ public class MainApplication extends Application implements ReactApplication {
   protected List<ReactPackage> getPackages() {
     return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new RNCWebViewPackage(),
+          new RNFirebasePackage(),
+          new RNCWebViewPackage(),
           new ReactSliderPackage(),
           new AsyncStoragePackage(),
           new ReactNativeContacts(),
@@ -77,7 +80,8 @@ public class MainApplication extends Application implements ReactApplication {
           new VectorIconsPackage(),
           new LinearGradientPackage(),
           new BlurViewPackage(),
-            new OpenSettingsPackage()
+          new OpenSettingsPackage(),
+          new RNFirebaseMessagingPackage()
     );
   }
   };
