@@ -9,5 +9,6 @@
   "search.exclude": {
     "**/flow-typed": true,
   },
-  "eslint.enable": true
+  "eslint.enable": true,
+  "java.configuration.updateBuildConfiguration": "automatic"
 }
