@@ -9,7 +9,7 @@ const jsonfile = require('jsonfile')
 const argv = require('yargs').argv
 
 const endpoints = {
-  simple: 'https://api.graph.cool/simple/v1/cjdnw03hv8l6m01133d2ix1pb'
+  simple: 'https://api.graph.cool/simple/v1/cjdnw03hv8l6m01133d2ix1pb',
 }
 
 if (!argv.step && !argv.user) {
@@ -54,20 +54,24 @@ const deleteForm = ({ id }) =>
         }
       `,
       variables: {
-        id
-      }
+        id,
+      },
     })
     .then(parse('deleteForm'))
 
 const client = new ApolloClient({
   link: new HttpLink({ uri: endpoints.simple, fetch: fetch }),
-  cache: new InMemoryCache()
+  cache: new InMemoryCache(),
 })
 
 const filterV1 = d => {
-  const { data } = d
-  const { value } = data
-  if (!value) return false
+  const shouldFilterV1 = argv.x ? false : true
+  if(shouldFilterV1) {
+    const { data } = d
+    const { value } = data
+    if (!value) return false
+    return true
+  }
   return true
 }
 
@@ -95,7 +99,7 @@ const filterFormsForDeletion = gcData =>
 
 client
   .query({
-    query: getFormsQuery
+    query: getFormsQuery,
   })
   .then(parse('allForms'))
   .then(filterFormsForDeletion)
