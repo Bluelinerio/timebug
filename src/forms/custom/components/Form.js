@@ -26,10 +26,19 @@ import ProgressBar                                from 'react-native-progress/Ba
 
 const DEBUG_DISPLAY = false
 
+const CREATE = 'CREATE'
+const UPDATE = 'UPDATE'
+const FINISHED = 'FINISHED'
+
 type BaseValue = {
   [x: string]: {
     value: any,
   },
+}
+
+export type LogAction = {
+  type: CREATE | UPDATE | FINISHED,
+  data: any,
 }
 
 type Props = {
@@ -53,6 +62,7 @@ type Props = {
   extra: {
     step: string,
   },
+  log: LogAction => void,
 }
 
 /* eslint-disable-next-line */
@@ -167,23 +177,23 @@ class Form extends React.PureComponent<Props, any> {
     const defaultValue = currentField.options.default
     const newField = value[indexesMap[fieldIndex]]
       ? {
-          ...value[indexesMap[fieldIndex]],
-          value: currentElementValue || defaultValue,
-          key: currentField.key,
-          index: fieldIndex,
-          timestamp: moment().format(),
-          model: currentField,
-        }
+        ...value[indexesMap[fieldIndex]],
+        value: currentElementValue || defaultValue,
+        key: currentField.key,
+        index: fieldIndex,
+        timestamp: moment().format(),
+        model: currentField,
+      }
       : {
-          ...value[indexesMap[fieldIndex]],
-          type: currentField.type,
-          value: currentElementValue || defaultValue,
-          key: currentField.key,
-          index: fieldIndex,
-          timestamp: moment().format(),
-          model: currentField,
-          _id: uuid(),
-        }
+        ...value[indexesMap[fieldIndex]],
+        type: currentField.type,
+        value: currentElementValue || defaultValue,
+        key: currentField.key,
+        index: fieldIndex,
+        timestamp: moment().format(),
+        model: currentField,
+        _id: uuid(),
+      }
     const newValue = {
       ...value,
       [currentField.key]: newField,
@@ -200,6 +210,11 @@ class Form extends React.PureComponent<Props, any> {
     this._onPress()
   }
 
+  _log = (action: LogAction) => {
+    const { log } = this.props
+    if (log) log(action)
+  }
+
   _onFinishedForm = () => {
     const { value, fieldIndex } = this.state
     const { onFinish } = this.props
@@ -214,6 +229,8 @@ class Form extends React.PureComponent<Props, any> {
       this.model.answer === answerTypes.single
         ? this._handleSingleAnswerStorage(newValue)
         : this._handleMultipleAnswerStorage(newValue)
+
+    this._log({ type: FINISHED, data: { value: newStorableValue } })
 
     this.setState(
       {
@@ -233,26 +250,26 @@ class Form extends React.PureComponent<Props, any> {
 
     return !storableValue || storableValue.length === 0
       ? [
-          {
-            ...value,
-            _id: uuid(),
-            created_at: moment().format(),
-            _meta: {
-              version: 1,
-            },
+        {
+          ...value,
+          _id: uuid(),
+          created_at: moment().format(),
+          _meta: {
+            version: 1,
           },
-        ]
+        },
+      ]
       : [
-          {
-            ...(storableValue[0] || {}),
-            ...value,
-            updated_at: moment().format(),
-            _meta: {
-              ...(storableValue[0]._meta || {}),
-              version: storableValue[0]._meta.version + 1,
-            },
+        {
+          ...(storableValue[0] || {}),
+          ...value,
+          updated_at: moment().format(),
+          _meta: {
+            ...(storableValue[0]._meta || {}),
+            version: storableValue[0]._meta.version + 1,
           },
-        ]
+        },
+      ]
   }
 
   _handleMultipleAnswerStorage = value => {
@@ -287,7 +304,13 @@ class Form extends React.PureComponent<Props, any> {
   }
 
   _onPress = () => {
-    const { fieldIndex, indexesMap, value, numberOfFields } = this.state
+    const {
+      fieldIndex,
+      indexesMap,
+      value,
+      numberOfFields,
+      currentElementValue,
+    } = this.state
     const currentField = this.model.fields[fieldIndex]
     let newState = {
       fieldIndex: fieldIndex + 1,
@@ -302,7 +325,19 @@ class Form extends React.PureComponent<Props, any> {
         ...newState,
         value: newValue,
       }
+
+      const isUpdate = value[indexesMap[fieldIndex]] ? true : false
+
+      this._log({
+        type: isUpdate ? UPDATE : CREATE,
+        data: {
+          value: newValue,
+          page: fieldIndex + 1,
+          valueForPage: currentElementValue,
+        },
+      })
     }
+
     this.setState(newState)
   }
 
@@ -318,55 +353,55 @@ class Form extends React.PureComponent<Props, any> {
     const { value, storableValue, formIteration, isEditing } = this.state
     const newState = !isEditing
       ? {
-          fieldIndex: payload,
-          storableValue: [
-            ...storableValue,
-            {
-              ...value,
-              _id: uuid(),
-              created_at: moment().format(),
-              _meta: {
-                version: 1,
-              },
+        fieldIndex: payload,
+        storableValue: [
+          ...storableValue,
+          {
+            ...value,
+            _id: uuid(),
+            created_at: moment().format(),
+            _meta: {
+              version: 1,
             },
-          ],
-          value:
+          },
+        ],
+        value:
             this.props.value && this.props.value[formIteration + 1]
               ? this.props.value[formIteration + 1]
               : {},
-          formIteration: formIteration + 1,
-          isEditing: false,
-          formProgress: 0,
-        }
+        formIteration: formIteration + 1,
+        isEditing: false,
+        formProgress: 0,
+      }
       : {
-          fieldIndex: payload,
-          storableValue: [
-            ...storableValue.filter(v => v._id !== value._id),
-            {
-              ...storableValue[formIteration],
-              ...value,
-              updated_at: moment().format(),
-              _meta: {
-                ...(storableValue[formIteration]._meta || {}),
-                version: storableValue[formIteration]._meta.version + 1,
-              },
+        fieldIndex: payload,
+        storableValue: [
+          ...storableValue.filter(v => v._id !== value._id),
+          {
+            ...storableValue[formIteration],
+            ...value,
+            updated_at: moment().format(),
+            _meta: {
+              ...(storableValue[formIteration]._meta || {}),
+              version: storableValue[formIteration]._meta.version + 1,
             },
-          ],
-          value:
+          },
+        ],
+        value:
             this.props.value && this.props.value[storableValue.length]
               ? this.props.value[storableValue.length]
               : {},
-          formIteration: storableValue.length,
-          isEditing: false,
-          formProgress: 0,
-        }
+        formIteration: storableValue.length,
+        isEditing: false,
+        formProgress: 0,
+      }
     this.setState(newState)
   }
 
   _buttonHandler = ({ action }: { action: { type: string, payload: any } }) => {
     switch (action.type) {
-      case actionTypes.GO_TO:
-        this._handleGoTo(action.payload)
+    case actionTypes.GO_TO:
+      this._handleGoTo(action.payload)
     }
   }
 
@@ -464,22 +499,22 @@ class Form extends React.PureComponent<Props, any> {
             isFieldRequired &&
             isFormValueInvalid(currentField, currentElementValue)
           ) && (
-            <TextFormButton
-              onPress={
-                fieldIndex < numberOfFields - 1 ? this._onPress : this._onFinish
-              }
-              styles={{
-                button: [styles.formButton, formStyles.buttonContainerStyle],
-                text: styles.formButtonText,
-              }}
-              formStyles={formStyles}
-              disabled={
-                isFieldRequired &&
+              <TextFormButton
+                onPress={
+                  fieldIndex < numberOfFields - 1 ? this._onPress : this._onFinish
+                }
+                styles={{
+                  button: [styles.formButton, formStyles.buttonContainerStyle],
+                  text: styles.formButtonText,
+                }}
+                formStyles={formStyles}
+                disabled={
+                  isFieldRequired &&
                 isFormValueInvalid(currentField, currentElementValue)
-              }
-              text={getButtonText(fieldIndex, numberOfFields)}
-            />
-          )}
+                }
+                text={getButtonText(fieldIndex, numberOfFields)}
+              />
+            )}
         </View>
         {DEBUG_DISPLAY && (
           <Display storable={this.state.storableValue} model={this.model} />
