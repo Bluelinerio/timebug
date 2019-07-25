@@ -10,22 +10,22 @@ import {
   mapPhaseToTextAndButtonColor,
 }                     from '../utils/colorsForStep'
 import { log }        from '2020_services/moengage'
-import { LogAction }  from '2020_forms/form'
+import { LogAction }  from '2020_forms/components/Form'
 
 const formLogger = (event: LogAction) => {
   const { type, data } = event
   switch (type) {
   case 'CREATE':
-    log('PAGE ANSWERED', data)
+    log('PAGE_ANSWERED', data)
     break
   case 'UPDATE':
-    log('PAGE UPDATE', data)
+    log('PAGE_UPDATE', data)
     break
   case 'FINISHED':
-    log('FORM FINISHED', data)
+    log('FORM_FINISHED', data)
     break
   default:
-    log('UNKNOWN FORM EVENT', data)
+    log('UNKNOWN_FORM_EVENT', data)
   }
 }
 
