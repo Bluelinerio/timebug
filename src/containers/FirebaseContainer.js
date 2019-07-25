@@ -29,6 +29,7 @@ class FirebaseComponent extends React.PureComponent<Props> {
   }
 
   async requestPermission() {
+    console.log('Setting up firebase permissions')
     const { permission, changePermissions } = this.props
     try {
       await firebase.messaging().requestPermission()
@@ -41,6 +42,7 @@ class FirebaseComponent extends React.PureComponent<Props> {
 
   componentDidMount() {
     const { permission, changePermissions } = this.props
+    console.log('Setting up firebase component')    
     firebase
       .messaging()
       .getToken()

@@ -70,3 +70,6 @@
 -dontwarn okio.**
 
 -keep class io.lifevision.BuildConfig { *; }
+
+-keep class io.invertase.firebase.** { *; }
+-dontwarn io.invertase.firebase.**

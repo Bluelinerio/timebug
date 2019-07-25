@@ -9,7 +9,6 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" tools:node="remove" />
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-
     <permission
         android:name="${applicationId}.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
@@ -29,9 +28,9 @@
       <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
 
       <meta-data  android:name="com.dieam.reactnativepushnotification.notification_channel_name"
-                  android:value="2020_NOTIFICATIONS"/>
+                  android:value="YOUR NOTIFICATION CHANNEL NAME"/>
       <meta-data  android:name="com.dieam.reactnativepushnotification.notification_channel_description"
-                  android:value="Channel that handles push notifications for RNPushNotifications"/>
+                  android:value="YOUR NOTIFICATION CHANNEL DESCRIPTION"/>
       <meta-data  android:name="com.dieam.reactnativepushnotification.notification_color"
                   android:resource="@android:color/white"/>
       <receiver
@@ -43,7 +42,6 @@
               <category android:name="${applicationId}" />
           </intent-filter>
       </receiver>
-      
 
       <receiver android:name="com.dieam.reactnativepushnotification.modules.RNPushNotificationPublisher" />
       <receiver android:name="com.dieam.reactnativepushnotification.modules.RNPushNotificationBootEventReceiver">
@@ -53,14 +51,19 @@
       </receiver>
       <service android:name="com.dieam.reactnativepushnotification.modules.RNPushNotificationRegistrationService"/>
 
-      <service android:name="io.invertase.firebase.messaging.RNFirebaseBackgroundMessagingService" />
-
       <service android:name="io.invertase.firebase.messaging.RNFirebaseMessagingService">
         <intent-filter>
-        <action android:name="com.google.firebase.MESSAGING_EVENT" />
+          <action android:name="com.google.firebase.MESSAGING_EVENT" />
         </intent-filter>
       </service>
 
+      <service
+          android:name="com.dieam.reactnativepushnotification.modules.RNPushNotificationListenerServiceGcm"
+          android:exported="false" >
+          <intent-filter>
+              <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+          </intent-filter>
+      </service>
       <activity
     android:name=".SplashActivity"
     android:theme="@style/SplashTheme"
