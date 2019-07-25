@@ -3,6 +3,7 @@ import { Platform }           from 'react-native'
 import types, { answerTypes } from './types'
 import type { Form }          from '../types/formTypes'
 import { Emotions }           from './content'
+import { DISABLE }                          from './constants'
 
 export const FORM_KEYS = {
   form_14_financial_emotions: 'form_14_financial_emotions',
@@ -49,6 +50,7 @@ const form: Form = {
               },
               options: {
                 default: Emotions[0],
+                repeats: DISABLE,
               },
             },
           },
