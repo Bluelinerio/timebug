@@ -33,15 +33,15 @@ class MoengageService {
   }
   
   log = (message: string) => {
-    tron.log(`${PREFIX}: ${message}`)
+    __DEV__ ? tron.log(`${PREFIX}: ${message}`) : console.log(`${PREFIX}: ${message}`)
   }
 
   display = (value: any, event: string) => {
-    tron.display({
+    __DEV__ ? tron.display({
       value,
       title: `${PREFIX}: ${event}`,
       preview: `${PREFIX}: ${event}`,
-    })
+    }) : console.log(`${PREFIX}: ${event}`)
   }
 
   logEvent = (event: string, data = {}) => {
