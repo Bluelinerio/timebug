@@ -12,8 +12,12 @@ import {
 import { log }        from '2020_services/moengage'
 import { LogAction }  from '2020_forms/components/Form'
 
-const formLogger = (event: LogAction) => {
-  const { type, data } = event
+const logger = (step: number) => (event: LogAction) => {
+  const { type, data: formData } = event
+  const data = {
+    ...formData,
+    step,
+  }
   switch (type) {
   case 'CREATE':
     log('PAGE_ANSWERED', data)
@@ -30,12 +34,14 @@ const formLogger = (event: LogAction) => {
 }
 
 const merge = (props: Props) => {
-  const { phase } = props
+  const { phase, extra: { step } } = props  
   const textStyle = mapPhaseToTextStyles(phase)
   const buttonContainerStyle = mapPhaseToButtonStyles(phase)
   const elementContainerStyle = mapPhaseToElementBackground(phase)
   const color = mapPhaseToColor(phase)
   const textAndButtonColor = mapPhaseToTextAndButtonColor(phase)
+
+  const formLogger = logger(step.number)
 
   return {
     ...props,
