@@ -1,4 +1,5 @@
 // @flow
+import { CREATE, UPDATE, FINISHED } from '../forms/constants'
 
 type SimpleFormTypes =
   | 'form'
@@ -134,4 +135,9 @@ export type FormValue = {
   index: number,
   timestamp: string,
   value: Value
+}
+
+export type LogAction = {
+  type: CREATE | UPDATE | FINISHED,
+  data: any,
 }
