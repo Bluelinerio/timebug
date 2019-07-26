@@ -230,7 +230,7 @@ class Form extends React.PureComponent<Props, any> {
         ? this._handleSingleAnswerStorage(newValue)
         : this._handleMultipleAnswerStorage(newValue)
 
-    this._log({ type: FINISHED, data: { value: newStorableValue } })
+    this._log({ type: FINISHED, data: { page: fieldIndex + 1 } })
 
     this.setState(
       {
@@ -331,7 +331,6 @@ class Form extends React.PureComponent<Props, any> {
       this._log({
         type: isUpdate ? UPDATE : CREATE,
         data: {
-          value: newValue,
           page: fieldIndex + 1,
           valueForPage: currentElementValue,
         },
