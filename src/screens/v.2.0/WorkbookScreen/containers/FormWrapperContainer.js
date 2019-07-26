@@ -10,7 +10,7 @@ import {
   mapPhaseToTextAndButtonColor,
 }                     from '../utils/colorsForStep'
 import { log }        from '2020_services/moengage'
-import { LogAction }  from '2020_forms/components/Form'
+import { LogAction }  from '2020_forms/types/formTypes'
 
 const logger = (step: number) => (event: LogAction) => {
   const { type, data: formData } = event

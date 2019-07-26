@@ -23,22 +23,15 @@ import {
 }                                                 from '../utils/formHelpers'
 import { isFormValueInvalid }                     from '../validation/Form'
 import ProgressBar                                from 'react-native-progress/Bar'
+import { LogAction }                              from '../types/formTypes'
+import { CREATE, UPDATE, FINISHED }               from '../forms/constants'
 
 const DEBUG_DISPLAY = false
-
-const CREATE = 'CREATE'
-const UPDATE = 'UPDATE'
-const FINISHED = 'FINISHED'
 
 type BaseValue = {
   [x: string]: {
     value: any,
   },
-}
-
-export type LogAction = {
-  type: CREATE | UPDATE | FINISHED,
-  data: any,
 }
 
 type Props = {
