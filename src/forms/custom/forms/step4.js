@@ -1,7 +1,7 @@
 // @flow
-import types, { answerTypes }  from './types'
+import types, { answerTypes }  from 'react-native-forms/forms/types'
+import type { Form }           from 'react-native-forms/types/formTypes'
 import { LifeCategoriesArray } from './content'
-import type { Form }           from '../types/formTypes'
 
 export const FORM_KEYS = {
   form_4_board_of_advisors: 'form_4_board_of_advisors',

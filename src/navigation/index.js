@@ -34,9 +34,6 @@ import V2WorkbookScreen from '../screens/v.2.0/WorkbookScreen'
 import HelpScreen from '../screens/HelpScreen'
 import LoginScreen from '../screens/LoginScreen'
 
-// TODO: Prototype to remove
-import PrototypeNavigator from '../screens/PrototypeScreen'
-
 import routes from './routes'
 
 if (!routes || !routes.root || !routes.root.initialRouteName || !routes.step) {
@@ -225,11 +222,6 @@ export const versionConfiguration = {
   screens: {
     [routes.version.AppVersion]: {
       screen: AppVersionScreen,
-    },
-    // TODO: Prototype to remove
-    [routes.version.PrototypeNavigator]: {
-      screen: PrototypeNavigator,
-      path: 'prototype',
     },
     [routes.version.TabNavigator]: {
       screen: RootTabNavigator,

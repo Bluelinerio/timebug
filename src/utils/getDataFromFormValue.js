@@ -1,6 +1,6 @@
 // @flow
-import types from '2020_forms/forms/types'
-import type { Value, FormValue } from '2020_forms/types/formTypes'
+import types from 'react-native-forms/forms/types'
+import type { Value, FormValue } from 'react-native-forms/types/formTypes'
 
 export type ParseDataOptions = {
   meta?: boolean,

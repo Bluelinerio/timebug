@@ -2,7 +2,7 @@ import { StyleSheet }                  from 'react-native'
 import { connect }                     from 'react-redux'
 import { mapProps, compose }           from 'recompose'
 import selectors                       from '../../../src/redux/selectors'
-import Form                            from '../../../src/forms/custom/components/Form'
+import Form                            from 'react-native-forms/components/Form'
 import model                           from '../../../src/forms/custom/forms/goals'
 import { translateCMSPhaseToStandard } from '../../../src/services/cms'
 

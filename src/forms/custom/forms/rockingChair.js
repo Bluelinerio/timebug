@@ -1,8 +1,8 @@
 // @flow
-import types, { answerTypes }               from './types'
+import types, { answerTypes }               from 'react-native-forms/forms/types'
+import { DISABLE }                          from 'react-native-forms/forms/constants'
+import type { Form }                        from 'react-native-forms/types/formTypes'
 import { LifeStages, Emotions, AreaOfLife } from './content'
-import { DISABLE }                          from './constants'
-import type { Form }                        from '../types/formTypes'
 
 const form: Form = {
   type: types.form,

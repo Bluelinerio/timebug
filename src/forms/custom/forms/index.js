@@ -11,7 +11,6 @@ import Step10 from './step10'
 import Step11 from './step11'
 
 export * from './content'
-export * from './constants'
 
 export default {
   '1': Chair,
