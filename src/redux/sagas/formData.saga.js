@@ -39,12 +39,13 @@ import {
   UPDATE_AND_CREATE_FORMS,
   SYNC_SIDE_EFFECTS,
   DELETE_FORM_VALUE,
-}                                      from '../actionTypes'
+  DELETE_INNER_FORM_VALUE,
+} from '../actionTypes'
 import {
   GET_USER,
   updateUser,
   resetUserSteps as resetAction,
-}                                      from '../actions/user.actions'
+} from '../actions/user.actions'
 import {
   incrementFormDataQueue,
   decrementFormDataQueue,
@@ -55,14 +56,17 @@ import {
   restoreFormData,
   submitFormValue,
   syncFormData,
-}                                      from '../actions/formData.actions'
-import { initialNotifications }        from '../actions/checkin.actions'
-import type { DeleteFormValuePayload } from '../actions/formData.actions'
+} from '../actions/formData.actions'
+import { initialNotifications } from '../actions/checkin.actions'
+import type {
+  DeleteFormValuePayload,
+  DeleteInnerValuePayload,
+} from '../actions/formData.actions'
 
 /**
  * Selectors and other utilities
  */
-import selectors    from '../selectors'
+import selectors from '../selectors'
 import { diffObjs } from '../utils/diffObjs'
 
 import tron from 'reactotron-react-native'
@@ -167,6 +171,10 @@ function* watchForFormDataDeletion() {
   yield takeLatest(DELETE_FORM_VALUE, _handleFormDataDeletion)
 }
 
+function* watchForPartialFormDataDeletion() {
+  yield takeLatest(DELETE_INNER_FORM_VALUE, _handleInnerValueDeletion)
+}
+
 export function* watchSyncFormData() {
   // here the assumptions is that the formData reducer will always Hydrate before the GET_USER action return, becuase we never
   const requestChan = yield actionChannel([GET_USER.SUCCEEDED, SYNC_FORM_DATA])
@@ -175,6 +183,7 @@ export function* watchSyncFormData() {
   yield fork(watchForUpdateOrCreate) // Makes calls to GC to update each form, needs some hard refactoring
   yield fork(watchForLoadingForm) // Helper to know when the forms were updating to show UI changes
   yield fork(watchForFormDataDeletion)
+  yield fork(watchForPartialFormDataDeletion)
   while (true) {
     yield take(requestChan)
     yield fork(reviewCurrentUserFormsAndFormDataCompareAndUpdateToState) // Tries to determine if there are requests to be made to GC comparing data between user.steps and formData
@@ -456,6 +465,54 @@ function* _handleFormDataDeletion({
   yield put(submitFormValue({ value: storableValue, stepId }))
   yield delay(5)
   yield put(syncFormData())
+}
+
+function* _handleInnerValueDeletion({
+  payload,
+}: {
+  payload: DeleteInnerValuePayload,
+}) {
+  try {
+    const { stepId, valueId, innerElements } = payload
+
+    const { formData } = yield call(mySelectors, {
+      formData: selectors.formData,
+    })
+    const currentFormData = formData[stepId] || {}
+    const { value } = currentFormData
+    const selectedValue = value.find(v => v._id === valueId)
+
+    if (selectedValue) {
+      const newValue = innerElements.reduce(
+        (val, element) => {
+          const { id, key } = element
+          const innerValue = val[key]
+
+          return {
+            ...val,
+            [key]: {
+              ...innerValue,
+              value: innerValue.value.filter(v => v._id !== id),
+            },
+          }
+        },
+        { ...selectedValue }
+      )
+
+      const newStorableValue = value.filter(v => v._id !== valueId)
+
+      newStorableValue.push(newValue)
+
+      yield put(submitFormValue({ value: newStorableValue, stepId }))
+      yield delay(5)
+      yield put(syncFormData())
+    }
+  } catch (err) {
+    tron.log('An error has ocurred processing the following value deletion', {
+      err,
+      payload,
+    })
+  }
 }
 
 // Restores formData with the state in graphcool, priorizing network state over local state

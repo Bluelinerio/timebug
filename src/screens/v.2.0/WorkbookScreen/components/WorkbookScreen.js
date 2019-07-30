@@ -19,7 +19,7 @@ type Props = {
 
 type State = {
   selectedStep: Step | null,
-  editionIndex?: number | null,
+  editionId?: number | null,
   selectedSection: string,
 }
 
@@ -45,17 +45,15 @@ class WorkbookScreen extends React.PureComponent<Props, State> {
     super(props)
     const { navigation } = this.props
     const step = navigation.getParam('step', null)
-    const editionIndex = navigation.getParam('editionIndex', null)
+    const editionId = navigation.getParam('editionId', null)
     const navSection = navigation.getParam('section', null)
-    const selectedSection =
-      editionIndex || editionIndex === 0
-        ? SectionValues.form
-        : navSection
-          ? validateSelectedSection(navSection)
-          : SectionValues.textContent
+    const selectedSection = editionId
+      ? SectionValues.form
+      : navSection
+        ? validateSelectedSection(navSection)
+        : SectionValues.textContent
     this.state = {
       selectedStep: step,
-      editionIndex,
       selectedSection,
     }
   }
@@ -65,45 +63,34 @@ class WorkbookScreen extends React.PureComponent<Props, State> {
   }
 
   componentDidUpdate = (prevProps, prevState) => {
-    const previousIndex = prevProps.navigation.getParam('editionIndex', null)
-    const currentIndex = this.props.navigation.getParam('editionIndex', null)
+    const previousId = prevProps.navigation.getParam('editionId', null)
+    const currentId = this.props.navigation.getParam('editionId', null)
 
     const newSentStep = this.props.navigation.getParam('step', null)
 
     const navSection = this.props.navigation.getParam('section', null)
     const baseValues = this.props.navigation.getParam('valuesForForm', null)
-    // const previousBaseValues = prevProps.navigation.getParam(
-    //   'valuesForForm',
-    //   null
-    // )
+    const previousBaseValues = prevProps.navigation.getParam(
+      'valuesForForm',
+      null
+    )
     const currentStep = this.state.selectedStep
     const previousStep = prevState.selectedStep
 
     const currentSection = this.state.selectedSection
     const previousSection = prevState.selectedSection
 
-    //If I just requested a baseValues update, remove any existing edition sessions
-    // if (previousBaseValues === null && baseValues && (currentIndex || currentIndex === 0)) {
-    //   this.setState(
-    //     {
-    //       editionIndex: null,
-    //     },
-    //     () => {
-    //       this.props.navigation.setParams({
-    //         editionIndex: null,
-    //       })
-    //     }
-    //   )
-    // }
+    // If I just requested a baseValues update, remove any existing edition sessions
+    if (previousBaseValues === null && baseValues && currentId) {
+      this.props.navigation.setParams({
+        editionId: null,
+      })
+    }
     // If there is currently an item being edited and a new request to edit is sent
     // update with the new element, open the form and update step if it changed
-    if (
-      (currentIndex || currentIndex === 0) &&
-      previousIndex !== currentIndex
-    ) {
+    if (currentId && previousId !== currentId) {
       this.setState(
         () => ({
-          editionIndex: currentIndex,
           selectedSection: SectionValues.form,
           selectedStep:
             newSentStep && newSentStep.number !== currentStep.number
@@ -114,7 +101,6 @@ class WorkbookScreen extends React.PureComponent<Props, State> {
           if (baseValues)
             this.props.navigation.setParams({
               valuesForForm: null,
-              editionIndex: null,
               section: null,
             })
         }
@@ -126,19 +112,13 @@ class WorkbookScreen extends React.PureComponent<Props, State> {
     if (
       (previousStep.number !== currentStep.number ||
         currentSection !== previousSection) &&
-      (baseValues || (currentIndex || currentIndex === 0))
+      (baseValues || currentId)
     ) {
-      this.setState(
-        () => ({ editionIndex: null }),
-        () => {
-          if (baseValues)
-            this.props.navigation.setParams({
-              valuesForForm: null,
-              editionIndex: null,
-              section: null,
-            })
-        }
-      )
+      this.props.navigation.setParams({
+        valuesForForm: null,
+        editionId: null,
+        section: null,
+      })
       return
     }
 
@@ -151,15 +131,14 @@ class WorkbookScreen extends React.PureComponent<Props, State> {
         () => ({
           selectedStep: newSentStep,
           selectedSection,
-          editionIndex: null,
         }),
         () => {
-          if (baseValues)
-            this.props.navigation.setParams({
-              valuesForForm: null,
-              step: null,
-              section: null,
-            })
+          this.props.navigation.setParams({
+            valuesForForm: null,
+            step: null,
+            section: null,
+            editionId: currentId,
+          })
         }
       )
       return
@@ -203,18 +182,20 @@ class WorkbookScreen extends React.PureComponent<Props, State> {
   }
 
   _onFinish = () => {
-    const { editionIndex } = this.state
-    if (editionIndex || editionIndex === 0) {
-      this.setState({ editionIndex: null })
+    const { navigation } = this.props
+    const editionId = navigation.getParam('editionId', null)
+    if (editionId) {
       this.props.navigation.setParams({
-        editionIndex: null,
+        editionId: null,
         valuesForForm: null,
       })
     }
   }
 
   render() {
-    const { selectedStep, selectedSection, editionIndex } = this.state
+    const { selectedStep, selectedSection } = this.state
+    const { navigation } = this.props
+    const editionId = navigation.getParam('editionId', null)
     const backgroundColor = this._getCurrentBackgroundColor(selectedStep)
     const phase = this._phaseForStep(selectedStep)
 
@@ -246,7 +227,7 @@ class WorkbookScreen extends React.PureComponent<Props, State> {
               selectedSection={selectedSection}
               changeSection={this._changeSection}
               onFinish={this._onFinish}
-              editionIndex={editionIndex}
+              editionId={editionId}
             />
           </View>
         </View>

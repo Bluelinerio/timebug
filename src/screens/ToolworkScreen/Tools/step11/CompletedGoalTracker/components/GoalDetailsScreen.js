@@ -6,7 +6,6 @@ import type { Goal }                                    from '../types'
 import styles, { minimumTrackColor, maximumTrackColor } from '../styles'
 import Slider                                           from 'react-native-slider'
 import ReopenGoalButton                                 from '../containers/ReopenGoalButtonContainer'
-import tron                                             from 'reactotron-react-native'
 
 type Props = {
   goal: Goal,
@@ -27,7 +26,6 @@ class GoalDetailsScreen extends React.PureComponent<Props> {
 
   render() {
     const { goal = {}, onBack } = this.props
-    tron.log(goal)
     const { type, outcome, effort, completion: rawCompletion } = goal
     const completion = this._parseCompletion(rawCompletion)
     return (

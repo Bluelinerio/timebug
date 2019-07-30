@@ -38,7 +38,7 @@ export type GoToToolParams = {
 export type GoToWorkbookParams = {
   step: any,
   phase: string,
-  editionIndex?: number,
+  editionId?: string,
   section?: string,
   valuesForForm?: any,
 }

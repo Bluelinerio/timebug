@@ -1,4 +1,5 @@
 // @flow
+import type { InnerElementIdentificationPayload } from '2020_redux/actions/formData.actions'
 
 export type Goal = {
   id: string,
@@ -7,4 +8,5 @@ export type Goal = {
   outcome: string,
   completion: number,
   effort: string,
+  identificationPayload: Array<InnerElementIdentificationPayload>
 }

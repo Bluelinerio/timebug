@@ -17,7 +17,7 @@ type Props = {
   onSelectStep: Step => any,
   backgroundColor: any,
   onFinish: () => null,
-  editionIndex?: number | null,
+  editionId?: string | null,
 }
 
 class WorkbookContent extends React.PureComponent<Props> {
@@ -29,7 +29,7 @@ class WorkbookContent extends React.PureComponent<Props> {
       onSelectStep,
       backgroundColor,
       changeSection,
-      editionIndex,
+      editionId,
       onFinish,
     } = this.props
 
@@ -48,7 +48,7 @@ class WorkbookContent extends React.PureComponent<Props> {
               backgroundColor={backgroundColor}
               key={step.number}
               onFinish={onFinish}
-              editionIndex={editionIndex}
+              editionId={editionId}
             />
           ) : (
             <WorkbookSnippet

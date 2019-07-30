@@ -38,6 +38,7 @@ const getFormsQuery = gql`
       data
       user {
         id
+        name
       }
     }
   }

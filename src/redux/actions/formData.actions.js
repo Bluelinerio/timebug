@@ -12,6 +12,7 @@ import {
   STOP_LOADING_FORMDATA,
   RESTORE_FORM_DATA,
   DELETE_FORM_VALUE,
+  DELETE_INNER_FORM_VALUE,
 } from '../actionTypes'
 
 export type SubmitActionPayload = {
@@ -33,6 +34,22 @@ export type DeleteFormValuePayload = {
 export type DeleteFormValueAction = {
   type: DELETE_FORM_VALUE,
   payload: DeleteFormValuePayload,
+}
+
+export type InnerElementIdentificationPayload = {
+  key: string,
+  id: string,
+}
+
+export type DeleteInnerValuePayload = {
+  stepId: string,
+  valueId?: string,
+  innerElements: Array<InnerElementIdentificationPayload>
+}
+
+export type DeleteInnerValueAction = {
+  type: DELETE_INNER_FORM_VALUE,
+  payload: DeleteInnerValuePayload
 }
 
 export const submitFormValue = (payload: SubmitActionPayload) => ({
@@ -63,5 +80,12 @@ export const deleteSingleFormElement = (
   payload: DeleteFormValuePayload
 ): DeleteFormValueAction => ({
   type: DELETE_FORM_VALUE,
+  payload,
+})
+
+export const deleteInnerFormValue = (
+  payload: DeleteInnerValuePayload
+): DeleteInnerValueAction => ({
+  type: DELETE_INNER_FORM_VALUE,
   payload,
 })
