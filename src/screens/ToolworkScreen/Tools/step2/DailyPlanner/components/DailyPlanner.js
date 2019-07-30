@@ -2,7 +2,7 @@ import React                      from 'react'
 import { View, Text, ScrollView } from 'react-native'
 import moment                     from 'moment'
 import uuid                       from 'uuid/v4'
-import Form                       from '2020_forms/components/Form'
+import Form                       from 'react-native-forms/components/Form'
 import { DATE_FORMAT }            from '2020_constants/constants'
 import styles                     from '../styles'
 

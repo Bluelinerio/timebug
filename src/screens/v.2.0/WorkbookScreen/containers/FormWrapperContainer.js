@@ -10,7 +10,7 @@ import {
   mapPhaseToTextAndButtonColor,
 }                     from '../utils/colorsForStep'
 import { log }        from '2020_services/moengage'
-import { LogAction }  from '2020_forms/types/formTypes'
+import { LogAction }  from 'react-native-forms/types/formTypes'
 
 const logger = (step: number) => (event: LogAction) => {
   const { type, data: formData } = event
@@ -34,7 +34,7 @@ const logger = (step: number) => (event: LogAction) => {
 }
 
 const merge = (props: Props) => {
-  const { phase, extra: { step } } = props  
+  const { phase, extra: { step } } = props
   const textStyle = mapPhaseToTextStyles(phase)
   const buttonContainerStyle = mapPhaseToButtonStyles(phase)
   const elementContainerStyle = mapPhaseToElementBackground(phase)

@@ -1,7 +1,7 @@
 // @flow
-import types, { actionTypes, answerTypes } from './types'
+import types, { actionTypes, answerTypes } from 'react-native-forms/forms/types'
+import type { Form }                       from 'react-native-forms/types/formTypes'
 import { GoalType, timeToCompleteGoal }    from './content'
-import type { Form }                       from '../types/formTypes'
 
 export const STATUS = {
   PENDING: 'PENDING',

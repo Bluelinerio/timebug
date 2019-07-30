@@ -1,7 +1,7 @@
 // @flow
 import { Platform }                        from 'react-native'
-import types, { actionTypes, answerTypes } from './types'
-import type { Form }                       from '../types/formTypes'
+import types, { actionTypes, answerTypes } from 'react-native-forms/forms/types'
+import type { Form }                       from 'react-native-forms/types/formTypes'
 
 export const FORM_KEYS = {
   form_6_other_person_goal: 'form_6_other_person_goal',

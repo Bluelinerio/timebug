@@ -1,6 +1,6 @@
 // @flow
-import types, { answerTypes, setTypes } from './types'
-import type { Form } from '../types/formTypes'
+import types, { answerTypes, setTypes } from 'react-native-forms/forms/types'
+import type { Form } from 'react-native-forms/types/formTypes'
 import {
   EnergyLevels,
   ExerciseTypes,

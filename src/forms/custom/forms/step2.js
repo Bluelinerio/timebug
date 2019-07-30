@@ -1,8 +1,8 @@
 // @flow
-import types, { answerTypes, setTypes } from './types'
-import { SHARED }                       from './constants'
+import types, { answerTypes, setTypes } from 'react-native-forms/forms/types'
+import { SHARED }                       from 'react-native-forms/forms/constants'
+import type { Form }                    from 'react-native-forms/types/formTypes'
 import { AreaOfLife, LifeCategories }   from './content'
-import type { Form }                    from '../types/formTypes'
 
 export const FORM_KEYS = {
   form_2_current_week_time: 'form_2_current_week_time',
