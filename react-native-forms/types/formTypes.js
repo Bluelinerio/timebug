@@ -129,7 +129,7 @@ export type Value = string | boolean | number | Array<FormValue> | FormValue
 
 export type FormValue = {
   _id: string,
-  key: string,
+  ket: string,
   type: string,
   index: number,
   timestamp: string,
@@ -144,7 +144,7 @@ export type BaseValue = {
 
 export type FormProps = {
   model: any,
-  value: Array<any>,
+  value: any,
   onFinish: (any) => void,
   disableAnswers?: boolean,
   CloseButton: () => React.node,

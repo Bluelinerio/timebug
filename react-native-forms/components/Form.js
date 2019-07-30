@@ -6,41 +6,28 @@
  *
  */
 
-import React from 'react'
-import { View } from 'react-native'
-import moment from 'moment'
-import ProgressBar from 'react-native-progress/Bar'
-import uuid from 'uuid/v4'
-import FormPicker from './FormComponents/FormPicker'
+import React                                      from 'react'
+import { View }                                   from 'react-native'
+import moment                                     from 'moment'
+import ProgressBar                                from 'react-native-progress/Bar'
+import uuid                                       from 'uuid/v4'
+import FormPicker                                 from './FormComponents/FormPicker'
 import { actionTypes, passiveTypes, answerTypes } from '../forms/types'
-import Answers from './FormAnswers'
-import styles from '../styles'
+import Answers                                    from './FormAnswers'
+import Display                                    from './debug/DisplayComponent'
+import styles                                     from '../styles'
 import {
   getButtonText,
   mapIndexesToKeys,
   getValueFromAnswerType,
-} from '../utils/formHelpers'
-import { isFormValueInvalid } from '../validation/Form'
-import { FormProps } from '../types/formTypes'
-import TextFormButton from './components/TextFormButton'
+}                                                 from '../utils/formHelpers'
+import { isFormValueInvalid }                     from '../validation/Form'
+import { FormProps as Props }                     from '../types/formTypes'
 
 const DEBUG_DISPLAY = false
 
-type State = {
-  value: FormValue,
-  fieldIndex: number,
-  formIteration: number,
-  storableValue: Array<FormValue>,
-  currentElementValue: FormValue,
-  isFormFinished: boolean,
-  numberOfFields: number,
-  indexesMap: any,
-  isEditing: boolean,
-  formProgress: number,
-}
-
 // TODO: Instead of index replace with id of object
-class Form extends React.PureComponent<FormProps, State> {
+class Form extends React.PureComponent<Props, any> {
   constructor(props: Props) {
     super(props)
     this.model = props.model
@@ -62,6 +49,7 @@ class Form extends React.PureComponent<FormProps, State> {
       storableValue,
       currentElementValue,
       isFormFinished: false,
+      disableAnswers: props.disableAnswers || false,
       numberOfFields: Object.keys(this.model.fields).length,
       indexesMap,
       isEditing,
@@ -338,6 +326,7 @@ class Form extends React.PureComponent<FormProps, State> {
       currentElementValue,
       numberOfFields,
       value,
+      disableAnswers,
       formProgress,
     } = this.state
     const {
@@ -345,7 +334,6 @@ class Form extends React.PureComponent<FormProps, State> {
       formStyles = {},
       disableProgress = false,
       baseValues = {},
-      disableAnswers = false,
     } = this.props
     const currentField = this.model.fields[fieldIndex] || []
     const isFieldRequired =
@@ -416,6 +404,9 @@ class Form extends React.PureComponent<FormProps, State> {
               />
             )}
         </View>
+        {DEBUG_DISPLAY && (
+          <Display storable={this.state.storableValue} model={this.model} />
+        )}
       </View>
     )
   }
