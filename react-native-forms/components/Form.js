@@ -41,22 +41,33 @@ type State = {
   formProgress: number,
 }
 
-// TODO: Instead of index replace with id of object
 class Form extends React.PureComponent<FormProps, State> {
   constructor(props: Props) {
     super(props)
     this.model = props.model
-    const editionIndex = props.editionIndex
     const indexesMap = mapIndexesToKeys(this.model)
     const storableValue = props.value || []
+    const editionId = props.editionId || null
+
+    let editionElementIndex = editionId
+      ? storableValue.findIndex(el => el._id === editionId)
+      : null
+
     const formIteration =
-      editionIndex || editionIndex === 0 ? editionIndex : storableValue.length
-    const isEditing = editionIndex || editionIndex === 0 ? true : false
+      editionId && editionElementIndex !== -1
+        ? editionElementIndex
+        : storableValue.length
+
+    const isEditing = editionId && editionElementIndex !== -1 ? true : false
+
     const fieldIndex = 0
+
     const value = getValueFromAnswerType(props, props.model, formIteration)
+
     const currentElementValue = value[indexesMap[fieldIndex]]
       ? value[indexesMap[fieldIndex]].value
       : null
+
     this.state = {
       value,
       fieldIndex,
@@ -72,14 +83,20 @@ class Form extends React.PureComponent<FormProps, State> {
   }
 
   componentDidUpdate = prevProps => {
-    const { editionIndex: previousEditionIndex } = prevProps
-    const { editionIndex } = this.props
-    const isEditing = editionIndex || editionIndex === 0 ? true : false
-    if (isEditing && previousEditionIndex !== editionIndex) {
+    const { editionId: previousEditionId, baseValues: previousBase } = prevProps
+    const { editionId, baseValues } = this.props
+    const { storableValue } = this.state
+
+    let editionElementIndex = editionId
+    ? storableValue.findIndex(el => el._id === editionId)
+    : null
+
+  const isEditing = editionId && editionElementIndex !== -1 ? true : false
+  if (isEditing && previousEditionId !== editionId) {
       const value = getValueFromAnswerType(
         this.props,
         this.props.model,
-        editionIndex
+        editionElementIndex
       )
       const { indexesMap } = this.state
       const fieldIndex = 0
@@ -88,10 +105,26 @@ class Form extends React.PureComponent<FormProps, State> {
         : null
       this.setState({
         isEditing: true,
-        formIteration: editionIndex,
+        formIteration: editionElementIndex,
         fieldIndex,
         value,
         currentElementValue,
+        isFormFinished: false,
+      })
+      return
+    }
+
+    if (isEditing && baseValues && !previousBase) {
+      this.setState({
+        isEditing: false,
+        formIteration: storableValue.length,
+        fieldIndex: 0,
+        value: getValueFromAnswerType(
+          this.props,
+          this.props.model,
+          storableValue.length
+        ),
+        currentElementValue: null,
         isFormFinished: false,
       })
       return
