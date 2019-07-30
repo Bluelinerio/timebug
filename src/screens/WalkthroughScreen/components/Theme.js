@@ -66,7 +66,7 @@ const theme: ThemeProps = {
       fontFamily: 'Helvetica',
     },
     header2: {
-      fontSize: 36,
+      fontSize: 38,
       lineHeight: 43,
       fontFamily: 'Helvetica',
     },
