@@ -10,7 +10,7 @@ import tron                                             from 'reactotron-react-n
 
 type Props = {
   goal: Goal,
-  onBack: () => null
+  onBack: () => null,
 }
 
 class GoalDetailsScreen extends React.PureComponent<Props> {
@@ -61,13 +61,15 @@ class GoalDetailsScreen extends React.PureComponent<Props> {
               thumbStyle={{
                 width: 0,
                 height: 0,
-                backgroundColor: 'transparent'
+                backgroundColor: 'transparent',
               }}
             />
           </View>
-          <View style={styles.reopenButtonContainer}>
-            <ReopenGoalButton goal={goal} />
-          </View>
+          {completion !== 100 && (
+            <View style={styles.reopenButtonContainer}>
+              <ReopenGoalButton goal={goal} />
+            </View>
+          )}
         </View>
       </React.Fragment>
     )
