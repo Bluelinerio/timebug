@@ -2,7 +2,7 @@
 import React                                     from 'react'
 import { View }                                  from 'react-native'
 import { CheckBox }                              from 'react-native-elements'
-import FormElementHeader                         from './common/FormElementHeader'
+import FormElementHeader                         from './FormElementHeader'
 import styles, { checkboxColor, uncheckedColor } from '../../styles'
 import type { MultiSelectStyle }                 from '../../types/formTypes'
 

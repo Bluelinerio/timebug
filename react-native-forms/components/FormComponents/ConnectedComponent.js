@@ -5,7 +5,7 @@ import styles            from '../../styles'
 import ConnectedSelect   from './Connected/ConnectedSelect'
 import ConnectedSet      from './Connected/ConnectedSetSwitch'
 import ConnectedText     from './Connected/ConnectedText'
-import FormElementHeader from './common/FormElementHeader'
+import FormElementHeader from './FormElementHeader'
 
 type Props = {
   onChange: () => any,

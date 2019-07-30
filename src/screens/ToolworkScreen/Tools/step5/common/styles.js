@@ -9,7 +9,7 @@ import {
   gray400,
   VISION_CREATION,
 } from '2020_constants/colors'
-import { formTextColor } from '2020_forms/styles'
+import { formTextColor } from 'react-native-forms/styles'
 import { widthPercentage } from '2020_utils/viewportCalculation'
 
 export const headerBackgroundColor = paleBlue

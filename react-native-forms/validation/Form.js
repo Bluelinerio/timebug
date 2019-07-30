@@ -1,4 +1,3 @@
-// @flow
 import types from '../forms/types'
 
 const _listValidation = (value, options) => {
@@ -33,7 +32,6 @@ const _formElementsValidation = (val, options) => {
   return hasError
 }
 
-/* eslint-disable-next-line */
 const isValidString = (value: any, type: strings, options?: any = {}) => {
   const { type: inputType, max = 100, min = 0 } = options
   if (inputType === 'numeric') return value >= min && value <= max

@@ -1,6 +1,6 @@
 import React             from 'react'
 import { View }          from 'react-native'
-import FormElementHeader from './common/FormElementHeader'
+import FormElementHeader from './FormElementHeader'
 import styles            from '../../styles'
 import SetSwitch         from './Sets/SetSwitch'
 

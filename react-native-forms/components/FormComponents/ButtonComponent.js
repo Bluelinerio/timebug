@@ -3,7 +3,7 @@ import React                from 'react'
 import { View }             from 'react-native'
 import { Button }           from 'react-native-elements'
 import styles               from '../../styles'
-import FormElementHeader    from './common/FormElementHeader'
+import FormElementHeader    from './FormElementHeader'
 import type { ButtonStyle } from '../types/formTypes'
 
 const ButtonComponent = ({

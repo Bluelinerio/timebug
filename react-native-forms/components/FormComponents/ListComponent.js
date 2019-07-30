@@ -2,7 +2,7 @@ import React                                   from 'react'
 import { View, Text, Alert, TouchableOpacity } from 'react-native'
 import Icon                                    from 'react-native-vector-icons/Ionicons'
 import uuid                                    from 'uuid/v4'
-import FormElementHeader                       from './common/FormElementHeader'
+import FormElementHeader                       from './FormElementHeader'
 import TextElement                             from './common/ListTextElement'
 import styles, {
   TEMPORARY_COLOR_FOR_BUTTONS,

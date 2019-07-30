@@ -1,6 +1,6 @@
 import React                  from 'react'
 import { View, Switch, Text } from 'react-native'
-import FormElementHeader      from './common/FormElementHeader'
+import FormElementHeader      from './FormElementHeader'
 import styles                 from '../../styles'
 
 const SwitchComponent = ({

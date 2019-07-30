@@ -129,7 +129,7 @@ export type Value = string | boolean | number | Array<FormValue> | FormValue
 
 export type FormValue = {
   _id: string,
-  ket: string,
+  key: string,
   type: string,
   index: number,
   timestamp: string,
@@ -144,7 +144,7 @@ export type BaseValue = {
 
 export type FormProps = {
   model: any,
-  value: any,
+  value: Array<any>,
   onFinish: (any) => void,
   disableAnswers?: boolean,
   CloseButton: () => React.node,
@@ -152,6 +152,7 @@ export type FormProps = {
   textAndButtonColor: string,
   disableProgress?: false,
   baseValues?: BaseValue,
+  log: LogAction => void,
   textAndButtonColor?: any,
   formStyles: {
     headerTextStyle: any,
@@ -164,4 +165,9 @@ export type FormProps = {
   extra: {
     step: string,
   },
+}
+
+export type LogAction = {
+  type: CREATE | UPDATE | FINISHED,
+  data: any,
 }

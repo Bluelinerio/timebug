@@ -7,9 +7,9 @@ import {
   phaseTextAndButtonColors,
   formElementBackgroundStyles,
 } from '2020_styles/components/global'
-import types, { setTypes, answerTypes } from '2020_forms/forms/types'
+import types, { setTypes, answerTypes } from 'react-native-forms/forms/types'
 import { LifeCategories } from '2020_forms/forms/content'
-import { SHARED } from '2020_forms/forms/constants'
+import { SHARED } from 'react-native-forms/forms/constants'
 
 import {
   MEDITATION,

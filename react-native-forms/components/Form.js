@@ -14,7 +14,6 @@ import uuid                                       from 'uuid/v4'
 import FormPicker                                 from './FormComponents/FormPicker'
 import { actionTypes, passiveTypes, answerTypes } from '../forms/types'
 import Answers                                    from './FormAnswers'
-import Display                                    from './debug/DisplayComponent'
 import styles                                     from '../styles'
 import {
   getButtonText,
@@ -22,12 +21,28 @@ import {
   getValueFromAnswerType,
 }                                                 from '../utils/formHelpers'
 import { isFormValueInvalid }                     from '../validation/Form'
-import { FormProps as Props }                     from '../types/formTypes'
+import { FormProps }                              from '../types/formTypes'
+import TextFormButton                             from './components/TextFormButton'
+import { CREATE, UPDATE, FINISHED }               from '../forms/constants'
+import { LogAction }                              from '../types/formTypes'
 
 const DEBUG_DISPLAY = false
 
+type State = {
+  value: FormValue,
+  fieldIndex: number,
+  formIteration: number,
+  storableValue: Array<FormValue>,
+  currentElementValue: FormValue,
+  isFormFinished: boolean,
+  numberOfFields: number,
+  indexesMap: any,
+  isEditing: boolean,
+  formProgress: number,
+}
+
 // TODO: Instead of index replace with id of object
-class Form extends React.PureComponent<Props, any> {
+class Form extends React.PureComponent<FormProps, State> {
   constructor(props: Props) {
     super(props)
     this.model = props.model
@@ -49,7 +64,6 @@ class Form extends React.PureComponent<Props, any> {
       storableValue,
       currentElementValue,
       isFormFinished: false,
-      disableAnswers: props.disableAnswers || false,
       numberOfFields: Object.keys(this.model.fields).length,
       indexesMap,
       isEditing,
@@ -123,6 +137,11 @@ class Form extends React.PureComponent<Props, any> {
     this._onPress()
   }
 
+  _log = (action: LogAction) => {
+    const { log } = this.props
+    if (log) log(action)
+  }
+
   _onFinishedForm = () => {
     const { value, fieldIndex } = this.state
     const { onFinish } = this.props
@@ -137,6 +156,8 @@ class Form extends React.PureComponent<Props, any> {
       this.model.answer === answerTypes.single
         ? this._handleSingleAnswerStorage(newValue)
         : this._handleMultipleAnswerStorage(newValue)
+
+    this._log({ type: FINISHED, data: { page: fieldIndex + 1 } })
 
     this.setState(
       {
@@ -210,7 +231,13 @@ class Form extends React.PureComponent<Props, any> {
   }
 
   _onPress = () => {
-    const { fieldIndex, indexesMap, value, numberOfFields } = this.state
+    const {
+      fieldIndex,
+      indexesMap,
+      value,
+      numberOfFields,
+      currentElementValue,
+    } = this.state
     const currentField = this.model.fields[fieldIndex]
     let newState = {
       fieldIndex: fieldIndex + 1,
@@ -225,6 +252,16 @@ class Form extends React.PureComponent<Props, any> {
         ...newState,
         value: newValue,
       }
+
+      const isUpdate = value[indexesMap[fieldIndex]] ? true : false
+
+      this._log({
+        type: isUpdate ? UPDATE : CREATE,
+        data: {
+          page: fieldIndex + 1,
+          valueForPage: currentElementValue,
+        },
+      })
     }
     this.setState(newState)
   }
@@ -326,7 +363,6 @@ class Form extends React.PureComponent<Props, any> {
       currentElementValue,
       numberOfFields,
       value,
-      disableAnswers,
       formProgress,
     } = this.state
     const {
@@ -334,6 +370,7 @@ class Form extends React.PureComponent<Props, any> {
       formStyles = {},
       disableProgress = false,
       baseValues = {},
+      disableAnswers = false,
     } = this.props
     const currentField = this.model.fields[fieldIndex] || []
     const isFieldRequired =
@@ -404,9 +441,6 @@ class Form extends React.PureComponent<Props, any> {
               />
             )}
         </View>
-        {DEBUG_DISPLAY && (
-          <Display storable={this.state.storableValue} model={this.model} />
-        )}
       </View>
     )
   }

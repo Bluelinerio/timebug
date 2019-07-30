@@ -2,7 +2,7 @@ import React                 from 'react'
 import { View }              from 'react-native'
 import uuid                  from 'uuid/v4'
 import styles                from '../../styles'
-import FormElementHeader     from './common/FormElementHeader'
+import FormElementHeader     from './FormElementHeader'
 import FormPicker            from './FormPicker'
 import { buildInitialValue } from '../../utils/formHelpers'
 

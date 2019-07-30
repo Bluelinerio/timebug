@@ -1,6 +1,6 @@
 import React from 'react'
 import { View } from 'react-native'
-import FormElementHeader from './common/FormElementHeader'
+import FormElementHeader from './FormElementHeader'
 import Slider from './SliderComponent'
 import styles from '../../styles'
 

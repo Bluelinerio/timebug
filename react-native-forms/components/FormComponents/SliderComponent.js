@@ -3,7 +3,7 @@ import Slider from 'react-native-slider'
 import { View, Text } from 'react-native'
 import { FormInput } from 'react-native-elements'
 import styles, { minimumTrackColor, maximumTrackColor } from '../../styles'
-import { isNumber } from '2020_utils/formatHelpers'
+import { isNumber } from '../../utils/utils'
 
 type Props = {
   value: string | number,

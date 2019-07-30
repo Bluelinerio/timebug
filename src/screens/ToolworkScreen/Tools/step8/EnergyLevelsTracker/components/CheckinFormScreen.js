@@ -1,7 +1,7 @@
 // @flow
 import React                      from 'react'
 import { View, Text, ScrollView } from 'react-native'
-import Form                       from '2020_forms/components/Form'
+import Form                       from 'react-native-forms/components/Form'
 import styles                     from '../styles'
 
 export type Props = {

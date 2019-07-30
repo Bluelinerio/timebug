@@ -1,12 +1,13 @@
-import React                            from 'react'
+// @flow
+import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
-import SvgIcon                          from '2020_components/SvgIcon'
-import { stripKeys }                    from '2020_forms/utils/stripKeys'
+import SvgIcon from '../../components/SvgIcon'
+import { stripKeys } from '../../../utils/stripKeys'
 import styles, {
   TEMPORARY_COLOR_FOR_BUTTONS,
   iconStyle,
   helperIconColorIfSelected,
-}                                       from '2020_forms/styles'
+} from '../../../styles'
 
 type ValueElement = {
   _id: string,
@@ -83,15 +84,15 @@ const TextElement = ({
                 styles.listTextEditIcon,
                 editObjectId === element._id
                   ? {
-                      backgroundColor:
+                    backgroundColor:
                         formStyles.accentColor || TEMPORARY_COLOR_FOR_BUTTONS,
-                      borderColor:
+                    borderColor:
                         formStyles.accentColor || TEMPORARY_COLOR_FOR_BUTTONS,
-                    }
+                  }
                   : {
-                      borderColor:
+                    borderColor:
                         formStyles.accentColor || TEMPORARY_COLOR_FOR_BUTTONS,
-                    },
+                  },
               ]}
             >
               <SvgIcon

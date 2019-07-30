@@ -1,19 +1,15 @@
-import { StyleSheet, Platform } from 'react-native'
-import hexToRgba from '../../../utils/colorTransform'
-import {
-  azure,
-  gray50,
-  gray900,
-  blue900,
-  gray400,
-  greenA400,
-  white2,
-} from '../../../constants/colors'
-import {
-  widthPercentage,
-  heightPercentage,
-} from '../../../utils/viewportCalculation'
-import { iOSUIKit, systemWeights } from 'react-native-typography'
+import { StyleSheet, Platform }              from 'react-native'
+import hexToRgba                             from '../utils/colorTransform'
+import { widthPercentage, heightPercentage } from '../utils/viewportCalculation'
+import { iOSUIKit, systemWeights }           from 'react-native-typography'
+
+export const gray400 = '#BDBDBD'
+export const white2 = '#f8f8f8'
+export const greenA400 = '#00E676'
+export const gray50 = '#FAFAFA'
+export const gray900 = '#212121'
+export const azure = '#4EADFF'
+export const blue900 = '#0D47A1'
 
 export const TEMPORARY_COLOR_FOR_BUTTONS = azure
 
