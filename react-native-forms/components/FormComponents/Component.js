@@ -34,21 +34,19 @@ class Component<
 
   componentDidMount() {
     const {
-      onChange,
       value = null,
       baseValue = null,
       field: { options },
     } = this.props
     // If the component has no value, we have to report the initial value, either the default or the base value provided
     if (isValueUnset(value)) {
-      if (baseValue && !isValueUnset(baseValue.value)) onChange(baseValue.value)
-      else if (options && options.default) onChange(options.default)
+      if (baseValue && !isValueUnset(baseValue.value)) this.onBaseChange(baseValue.value)
+      else if (options && !isValueUnset(options.default)) this.onBaseChange(options.default)
     }
   }
 
   componentDidUpdate(prevProps: BaseProps) {
     const {
-      onChange,
       value = null,
       baseValue = null,
       field: { options },
@@ -56,8 +54,8 @@ class Component<
     const { previousBase = null } = prevProps
     // If the component has no value, we have to report the initial value, either the default or the base value provided
     if (isValueUnset(value)) {
-      if (baseValue && !isValueUnset(baseValue.value)) onChange(baseValue.value)
-      else if (options && options.default) onChange(options.default)
+      if (baseValue && !isValueUnset(baseValue.value)) this.onBaseChange(baseValue.value)
+      else if (options && !isValueUnset(options.default)) this.onBaseChange(options.default)
     } else if (
       value &&
       baseValue &&
@@ -66,13 +64,13 @@ class Component<
       !isValueUnset(previousBase.value)
     ) {
       // If the component does have a value but a base value has been inserted, update with the new base
-      onChange(baseValue.value)
+      this.onBaseChange(baseValue.value)
     }
   }
 
-  onChange = () => {
+  onBaseChange = (value) => {
     const { onChange } = this.props
-    if (onChange) onChange()
+    if (onChange) onChange(value)
   }
 
   render() {
