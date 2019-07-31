@@ -8,7 +8,6 @@ import {
   CompensationGoals,
   HoursPerWeek,
   PaidFairly,
-  CareerGoals,
 }                             from './content'
 
 export const FORM_KEYS = {
@@ -16,7 +15,6 @@ export const FORM_KEYS = {
   form_13_compensation_goals: 'form_13_compensation_goals',
   form_13_hours_of_work: 'form_13_hours_of_work',
   form_13_paid_fairly: 'form_13_paid_fairly',
-  form_13_career_goals: 'form_13_career_goals',
 }
 
 const form: Form = {
@@ -93,24 +91,6 @@ const form: Form = {
       },
       options: {
         default: PaidFairly[0],
-      },
-    },
-    4: {
-      type: types.select,
-      key: `${FORM_KEYS.form_13_career_goals}`,
-      content: {
-        text: `Would you like to set up a new goal based on your Career Assessment?`,
-        smallKey: 'Career goals',
-        listText: 'Career goals',
-        items: CareerGoals.map(opt => {
-          return {
-            value: opt,
-            text: opt,
-          }
-        }),
-      },
-      options: {
-        default: CareerGoals[0],
       },
     },
   },
