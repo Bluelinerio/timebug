@@ -65,7 +65,7 @@ class GoalDetailsScreen extends React.PureComponent<Props> {
           </View>
           {completion !== 100 && (
             <View style={styles.reopenButtonContainer}>
-              <ReopenGoalButton goal={goal} />
+              <ReopenGoalButton goal={goal} onBack={onBack} />
             </View>
           )}
         </View>
