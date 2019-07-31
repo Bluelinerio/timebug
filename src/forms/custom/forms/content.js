@@ -315,4 +315,31 @@ export const TimeAndEffortInvestedInGoal = [
   'A lot of time and effort',
 ]
 
+export const SalaryGrowth = ['Not at all', 'by $5,000 or less', 'between $5,000-$10,000', 'More than $10,000']
+
+export const CompensationGoals = [
+  'Yes, completely',
+  'I made alot of progress',
+  'I made some progress',
+  'Not at all',
+]
+
+export const HoursPerWeek = [
+  '0-10 hours',
+  '10-20 hours',
+  '20-30 hours',
+  '40-50 hours',
+  'More than 50',
+]
+
+export const PaidFairly = ['Yes', 'No']
+
+export const CareerGoals = [
+  'Get promoted at my current job',
+  'Find a new job',
+  'Learn a new skill to help advanced my career',
+  'I`ll create my own goal',
+  'Skip this for now and create a goal later',
+]
+
 export const AloneOrOthers = ['Alone', 'WithOthers']
