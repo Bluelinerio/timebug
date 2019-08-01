@@ -1,9 +1,20 @@
 import React from 'react'
+import { screens } from '../../context/ScreenContext'
+import { ProvidedProps } from '../../context/ScreenContext'
 import CategoryList from '../containers/CategoryListContainer'
 
-class ToolContent extends React.PureComponent {
+class ToolContent extends React.PureComponent<ProvidedProps> {
   render() {
-    return <CategoryList />
+    const { screen } = this.props
+    switch(screen) {
+      case screens.CATEGORIES:
+        return <CategoryList />
+      case screens.GOAL_LIST:
+      case screens.GOAL_DETAIL:
+      case screens.FORM:
+      default:
+        return null
+    }
   }
 }
 
