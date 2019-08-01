@@ -9,6 +9,8 @@ type State = {
   openForm: () => void,
 }
 
+export type ProvidedProps = State
+
 type Props = {
   children: Array<React.Node>,
 }
@@ -28,7 +30,7 @@ const initialState = {
   openForm: () => null,
 }
 
-const { Provider, Consumer: ScreenConsumer } = React.createConsumer(
+const { Provider, Consumer: ScreenConsumer } = React.createContext(
   initialState
 )
 
