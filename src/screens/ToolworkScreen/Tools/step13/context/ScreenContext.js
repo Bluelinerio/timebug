@@ -64,7 +64,7 @@ class ScreenProvider extends React.PureComponent<Props, State> {
           openForm: this.openForm,
         }}
       >
-        {...this.props.children}
+        {this.props.children}
       </Provider>
     )
   }
