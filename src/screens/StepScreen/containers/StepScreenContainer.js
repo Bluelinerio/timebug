@@ -1,7 +1,8 @@
-// @flow
-import StepScreenComponent from '../components/StepScreenComponent';
-import { compose, mapProps } from 'recompose';
-import { withNavigationAndStep } from '../../../HOC';
+// @
+import React from 'react'
+import StepScreenComponent from '../components/StepScreenComponent'
+import { compose, mapProps } from 'recompose'
+import { withNavigationAndStep } from '../../../HOC'
 
 const mapStepToStepScreenProps = ({ step }) => {
   return {
@@ -11,12 +12,16 @@ const mapStepToStepScreenProps = ({ step }) => {
     content: step.description,
     color: step.color,
     image: step.image,
-  };
-};
+  }
+}
 
 const StepScreenContainer = compose(
   withNavigationAndStep,
   mapProps(mapStepToStepScreenProps)
-)(StepScreenComponent);
+)(StepScreenComponent)
 
-export default StepScreenContainer;
+export default class StepScreenWrapper {
+  render() {
+    return <StepScreenContainer />
+  }
+}

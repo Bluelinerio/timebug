@@ -1,4 +1,5 @@
 // @flow
+import React from 'react'
 import { connect } from 'react-redux'
 import { compose, mapProps } from 'recompose'
 import selectors from '../../../redux/selectors'
@@ -50,7 +51,7 @@ const merge = ({
         textColor: nextStep.color,
       },
       isSynchingFormData,
-    };
+    }
   }
 
   return {
@@ -64,8 +65,8 @@ const merge = ({
       textColor: backgroundColor,
     },
     isSynchingFormData,
-  };
-};
+  }
+}
 
 const WorkbookDoneScreenContainer = compose(
   userRequired,
@@ -81,7 +82,11 @@ const WorkbookDoneScreenContainer = compose(
   mapProps(merge)
 )(WorkbookDoneScreen)
 
-export default WorkbookDoneScreenContainer
+export default class WorkbookDoneWrapper extends React.PureComponent {
+  render() {
+    return <WorkbookDoneScreenContainer />
+  }
+}
 
 // type FormMetaData = {
 //   uploading: boolean,
