@@ -4,7 +4,8 @@ import { TouchableOpacity, Text } from 'react-native'
 
 type Props = {
   onPress: () => void,
-  category: string
+  category: string,
+  categoryKey: string
 }
 
 class CategoryButton extends React.PureComponent<Props> {

@@ -30,9 +30,7 @@ const initialState = {
   openForm: () => null,
 }
 
-const { Provider, Consumer: ScreenConsumer } = React.createContext(
-  initialState
-)
+const ScreenContext = React.createContext(initialState)
 
 class ScreenProvider extends React.PureComponent<Props, State> {
   state = {
@@ -57,7 +55,7 @@ class ScreenProvider extends React.PureComponent<Props, State> {
 
   render() {
     return (
-      <Provider
+      <ScreenContext.Provider
         value={{
           ...this.state,
           openCategories: this.openCategories,
@@ -67,9 +65,9 @@ class ScreenProvider extends React.PureComponent<Props, State> {
         }}
       >
         {this.props.children}
-      </Provider>
+      </ScreenContext.Provider>
     )
   }
 }
 
-export { ScreenProvider, ScreenConsumer, screens }
+export { ScreenProvider, ScreenContext, screens }

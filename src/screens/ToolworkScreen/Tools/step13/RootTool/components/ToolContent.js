@@ -1,7 +1,7 @@
 import React from 'react'
 import { screens } from '../../context/ScreenContext'
 import { ProvidedProps } from '../../context/ScreenContext'
-import CategoryList from '../containers/CategoryListContainer'
+import CategoryList from '../containers/CategoryListContainer_H'
 
 class ToolContent extends React.PureComponent<ProvidedProps> {
   render() {
