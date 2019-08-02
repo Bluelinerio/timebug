@@ -1,11 +1,12 @@
 // @flow
 import React from 'react'
 import { TouchableOpacity, Text } from 'react-native'
+import styles from '../styles'
 
 type Props = {
   onPress: () => void,
   category: string,
-  categoryKey: string
+  categoryKey: string,
 }
 
 class CategoryButton extends React.PureComponent<Props> {
@@ -17,8 +18,8 @@ class CategoryButton extends React.PureComponent<Props> {
   render() {
     const { category } = this.props
     return (
-      <TouchableOpacity onPress={this._onPress}>
-        <Text>{category}</Text>
+      <TouchableOpacity style={styles.categoryButton} onPress={this._onPress}>
+        <Text style={styles.categoryButtonText}>{category}</Text>
       </TouchableOpacity>
     )
   }
