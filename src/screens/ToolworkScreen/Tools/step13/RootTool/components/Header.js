@@ -19,17 +19,18 @@ class Header extends React.PureComponent<Props> {
         <View style={styles.header}>
           {showBackButton && (
             <View style={styles.backButtonContainer}>
-              <TouchableOpacity onPress={this.props.onBack}>
-                <Icon name={'ios-arrow-back'} size={30} color={'black'} />
+              <TouchableOpacity style={styles.row} onPress={this.props.onBack}>
+                <Icon name={'md-arrow-back'} size={22} color={'black'} />
+                <Text style={styles.backButtonText}>Back</Text>
               </TouchableOpacity>
             </View>
           )}
           <View style={styles.headerContent}>
             <View style={styles.titleContainer}>
-              <Text>{title}</Text>
+              <Text style={styles.headerTitle}>{title}</Text>
             </View>
             <View style={styles.subtitleContainer}>
-              {!!subtitle && <Text>{subtitle}</Text>}
+              {!!subtitle && <Text style={styles.headerSubtitle}>{subtitle}</Text>}
             </View>
           </View>
         </View>
