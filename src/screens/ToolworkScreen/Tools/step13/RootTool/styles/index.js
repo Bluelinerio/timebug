@@ -32,6 +32,7 @@ export default StyleSheet.create({
     marginVertical: 10,
   },
   categoryButtonText: {
+    ...iOSUIKit.bodyEmphasizedObject,
     color: gray900,
   },
   header: {

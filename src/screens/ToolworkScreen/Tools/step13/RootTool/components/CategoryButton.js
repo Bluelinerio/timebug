@@ -7,12 +7,15 @@ type Props = {
   onPress: () => void,
   category: string,
   categoryKey: string,
+  setCategory: (string) => void,
+  openGoalList: () => void,
 }
 
 class CategoryButton extends React.PureComponent<Props> {
   _onPress = () => {
-    const { onPress } = this.props
-    onPress()
+    const { setCategory, openGoalList, categoryKey } = this.props
+    setCategory(categoryKey)
+    openGoalList()
   }
 
   render() {
