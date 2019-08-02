@@ -29,9 +29,11 @@ class Header extends React.PureComponent<Props> {
             <View style={styles.titleContainer}>
               <Text style={styles.headerTitle}>{title}</Text>
             </View>
-            <View style={styles.subtitleContainer}>
-              {!!subtitle && <Text style={styles.headerSubtitle}>{subtitle}</Text>}
-            </View>
+            {!!subtitle && (
+              <View style={styles.subtitleContainer}>
+                <Text style={styles.headerSubtitle}>{subtitle}</Text>
+              </View>
+            )}
           </View>
         </View>
       </Fragment>

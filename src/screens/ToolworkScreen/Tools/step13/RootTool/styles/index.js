@@ -42,7 +42,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
   },
   backButtonContainer: {
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     padding: 8,
   },
   backButtonText: {
@@ -58,7 +58,7 @@ export default StyleSheet.create({
   titleContainer: {
     flex: 1,
     alignItems: 'flex-start',
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     marginBottom: 4,
   },
   subtitleContainer: {
