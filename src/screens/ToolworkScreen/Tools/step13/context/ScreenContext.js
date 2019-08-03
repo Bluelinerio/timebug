@@ -6,6 +6,7 @@ type State = {
   openCategories: () => void,
   openGoalList: () => void,
   openGoalDetail: () => void,
+  openGoalRecommendations: () => void,
   openForm: () => void,
 }
 
@@ -19,6 +20,7 @@ const screens = {
   CATEGORIES: 'CATEGORIES',
   GOAL_LIST: 'GOAL_LIST',
   GOAL_DETAIL: 'GOAL_DETAIL',
+  GOAL_RECOMMENDATIONS: 'GOAL_RECOMMENDATIONS',
   FORM: 'FORM',
 }
 
@@ -27,6 +29,7 @@ const initialState = {
   openCategories: () => null,
   openGoalList: () => null,
   openGoalDetail: () => null,
+  openGoalRecommendations: () => null,
   openForm: () => null,
 }
 
@@ -53,6 +56,10 @@ class ScreenProvider extends React.PureComponent<Props, State> {
     this.setState({ screen: screens.FORM })
   }
 
+  openGoalRecommendations = () => {
+    this.setState({ screen: screens.GOAL_RECOMMENDATIONS })
+  }
+
   render() {
     return (
       <ScreenContext.Provider
@@ -62,6 +69,7 @@ class ScreenProvider extends React.PureComponent<Props, State> {
           openGoalDetail: this.openGoalDetails,
           openGoalList: this.openGoalList,
           openForm: this.openForm,
+          openGoalRecommendations: this.openGoalRecommendations,
         }}
       >
         {this.props.children}

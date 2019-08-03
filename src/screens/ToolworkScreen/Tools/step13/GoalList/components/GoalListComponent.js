@@ -3,6 +3,7 @@ import React from 'react'
 import { View } from 'react-native'
 import Header from '../../RootTool/containers/HeaderContainer'
 import List from '../containers/ListContainer'
+import NewGoalButton from '../containers/NewGoalButtonContainer'
 import styles from '../styles'
 
 type Props = {
@@ -14,7 +15,10 @@ class GoalListComponent extends React.PureComponent<Props> {
     return (
       <View style={styles.container}>
         <Header />
-        <List />
+        <View style={styles.content}>
+          <List />
+          <NewGoalButton />
+        </View>
       </View>
     )
   }

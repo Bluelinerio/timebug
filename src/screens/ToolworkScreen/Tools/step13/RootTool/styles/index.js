@@ -1,7 +1,8 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet, Platform } from 'react-native'
 import { iOSUIKit } from 'react-native-typography'
 import {
   gray900,
+  gray50,
 } from '2020_constants/colors'
 
 export default StyleSheet.create({
@@ -28,8 +29,20 @@ export default StyleSheet.create({
     borderRadius: 6,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'white',
+    backgroundColor: gray50,
     marginVertical: 10,
+    ...Platform.select({
+      android: { elevation: 8 },
+      ios: {
+        shadowColor: 'black',
+        shadowOffset: {
+          width: 0,
+          height: 8,
+        },
+        shadowOpacity: 0.6,
+        shadowRadius: 6,
+      },
+    }),
   },
   categoryButtonText: {
     ...iOSUIKit.bodyEmphasizedObject,

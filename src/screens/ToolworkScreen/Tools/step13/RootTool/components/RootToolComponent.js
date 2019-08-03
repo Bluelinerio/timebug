@@ -15,7 +15,7 @@ class RootToolComponent extends React.PureComponent<Props> {
       <ScrollView style={styles.scroll} contentContainerStyle={styles.scroll}>
         <ScreenProvider>
           <CategoryProvider>
-            <ToolDataProvider>
+            <ToolDataProvider {...this.props}>
               <ToolContent />
             </ToolDataProvider>
           </CategoryProvider>
