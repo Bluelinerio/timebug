@@ -31,7 +31,7 @@ class FormProvider extends React.PureComponent<Props, State> {
   }
 
   newFormMounted = () => {
-    this.setState({ isFinished: false, baseValues: null })
+    this.setState({ isFinished: false })
   }
 
   onFormFinished = () => {

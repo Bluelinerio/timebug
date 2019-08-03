@@ -16,6 +16,37 @@ export const categories = {
   SPIRITUALITY: 'SPIRITUALITY',
 }
 
+export const categoriesWithName = [
+  {
+    name: 'Career',
+    key: categories.CAREER,
+  },
+  {
+    name: 'Finances',
+    key: categories.FINANCES,
+  },
+  {
+    name: 'Aims and Hobbies',
+    key: categories.AIMS_AND_HOBBIES,
+  },
+  {
+    name: 'Health',
+    key: categories.HEALTH,
+  },
+  {
+    name: 'Relationships',
+    key: categories.RELATIONSHIPS,
+  },
+  {
+    name: 'Environment',
+    key: categories.ENVIRONMENT,
+  },
+  {
+    name: 'Spirituality',
+    key: categories.SPIRITUALITY,
+  },
+]
+
 const stepToCategoryMap: Array<Category> = {
   13: {
     name: 'Career',
