@@ -5,6 +5,7 @@ import ToolContent from '../containers/ToolContentContainer'
 import { ScreenProvider } from '../../context/ScreenContext'
 import { CategoryProvider } from '../../context/CategoryContext'
 import { ToolDataProvider } from '../../context/ToolDataProvider'
+import { FormProvider } from '../../context/FormContext'
 import styles from '../styles'
 
 type Props = any
@@ -15,9 +16,11 @@ class RootToolComponent extends React.PureComponent<Props> {
       <ScrollView style={styles.scroll} contentContainerStyle={styles.scroll}>
         <ScreenProvider>
           <CategoryProvider>
-            <ToolDataProvider {...this.props}>
-              <ToolContent />
-            </ToolDataProvider>
+            <FormProvider>
+              <ToolDataProvider {...this.props}>
+                <ToolContent />
+              </ToolDataProvider>
+            </FormProvider>
           </CategoryProvider>
         </ScreenProvider>
       </ScrollView>

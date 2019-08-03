@@ -14,7 +14,7 @@ class ListComponent extends React.PureComponent<Props> {
     return (
       <Fragment>
         {goals &&
-          goals.map(goal => <GoalComponent key={goal.key} goal={goal} />)}
+          goals.map(goal => <GoalComponent key={goal.id} goal={goal} />)}
       </Fragment>
     )
   }

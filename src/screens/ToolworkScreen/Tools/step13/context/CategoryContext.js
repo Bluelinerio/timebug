@@ -6,7 +6,7 @@ export type Category = {
   key: string
 }
 
-const categories = {
+export const categories = {
   CAREER: 'CAREER',
   FINANCES: 'FINANCES',
   AIMS_AND_HOBBIES: 'AIMS_AND_HOBBIES',
