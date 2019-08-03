@@ -54,45 +54,30 @@ export const useSubtitle = (screen: string, category?: string) => {
 
 export const useBackHandler = (
   screen: string,
-  { unsetCategory, openCategories, openGoalList }
 ) => {
-  const [handler, setHandler] = useState(() => null)
   const [showBackHandler, setShowBackHandler] = useState(false)
 
   useEffect(
     () => {
       switch (screen) {
         case screens.CATEGORIES:
-          setHandler(() => null)
           setShowBackHandler(false)
           break
         case screens.GOAL_LIST:
-          setHandler(() => {
-            unsetCategory()
-            openCategories()
-          })
           setShowBackHandler(true)
           break
         case screens.FORM:
-          setHandler(() => {
-            // fns.unsetGoalData()
-            openGoalList()
-          })
           setShowBackHandler(true)
           break
         case screens.GOAL_DETAIL:
-          setHandler(() => {
-            // fns.unsetGoal()
-            openGoalList()
-          })
           setShowBackHandler(true)
           break
         default:
-          setHandler(() => null)
+        setShowBackHandler(false)
       }
     },
     [screen]
   )
 
-  return [handler, showBackHandler]
+  return [showBackHandler]
 }

@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native'
 import { iOSUIKit } from 'react-native-typography'
 import {
-  gray900
+  gray900,
 } from '2020_constants/colors'
 
 export default StyleSheet.create({

@@ -1,6 +1,9 @@
 // @flow
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
+import Header from '../../RootTool/containers/HeaderContainer'
+import List from '../containers/ListContainer'
+import styles from '../styles'
 
 type Props = {
   category: string,
@@ -8,10 +11,10 @@ type Props = {
 
 class GoalListComponent extends React.PureComponent<Props> {
   render() {
-    const { category } = this.props
     return (
-      <View>
-        <Text>Goal list c: {category}</Text>
+      <View style={styles.container}>
+        <Header />
+        <List />
       </View>
     )
   }
