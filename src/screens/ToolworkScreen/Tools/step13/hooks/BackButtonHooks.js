@@ -10,6 +10,7 @@ export const useTitle = (screen: string, goal: any = null) => {
       switch (screen) {
         case screens.CATEGORIES:
         case screens.GOAL_LIST:
+        case screens.GOAL_RECOMMENDATIONS:
           setTitle('Phase 2 goals')
           break
         case screens.FORM:
@@ -19,7 +20,7 @@ export const useTitle = (screen: string, goal: any = null) => {
           setTitle(`Goal Details: ${goal}`)
           break
         default:
-          setTitle('')
+          setTitle('Phase 2 goals')
       }
     },
     [screen]
@@ -40,10 +41,11 @@ export const useSubtitle = (screen: string, category?: string) => {
         case screens.GOAL_LIST:
         case screens.FORM:
         case screens.GOAL_DETAIL:
+        case screens.GOAL_RECOMMENDATIONS:
           setSubtitle(`${category}`)
           break
         default:
-          setSubtitle('')
+          setSubtitle(`${category}`)
       }
     },
     [screen]
@@ -52,9 +54,7 @@ export const useSubtitle = (screen: string, category?: string) => {
   return subtitle
 }
 
-export const useBackHandler = (
-  screen: string,
-) => {
+export const useBackHandler = (screen: string) => {
   const [showBackHandler, setShowBackHandler] = useState(false)
 
   useEffect(
@@ -64,16 +64,13 @@ export const useBackHandler = (
           setShowBackHandler(false)
           break
         case screens.GOAL_LIST:
-          setShowBackHandler(true)
-          break
         case screens.FORM:
-          setShowBackHandler(true)
-          break
         case screens.GOAL_DETAIL:
+        case screens.GOAL_RECOMMENDATIONS:
           setShowBackHandler(true)
           break
         default:
-        setShowBackHandler(false)
+          setShowBackHandler(false)
       }
     },
     [screen]

@@ -28,6 +28,10 @@ const getBackButtonHandler = (
         // fns.unsetGoal()
         openGoalList()
       }
+    case screens.GOAL_RECOMMENDATIONS:
+      return () => {
+        openGoalList()
+      }
     default:
       return () => null
   }
