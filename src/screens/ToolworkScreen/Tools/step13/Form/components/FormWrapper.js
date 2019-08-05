@@ -1,9 +1,32 @@
 // @flow
 import React from 'react'
 import Form from 'react-native-forms/components/Form'
-import { SELF_ASSESSMENT } from '2020_services/cms'
 import model from '../../static/form'
 import styles from '../../styles'
+
+import {
+  mapPhaseToTextStyles,
+  mapPhaseToColor,
+  mapPhaseToButtonStyles,
+  mapPhaseToElementBackground,
+  mapPhaseToTextAndButtonColor,
+} from '2020_utils/colorsForStep'
+import { SELF_ASSESSMENT } from '2020_services/cms'
+
+const phase = SELF_ASSESSMENT
+
+const textStyle = mapPhaseToTextStyles(phase)
+const buttonContainerStyle = mapPhaseToButtonStyles(phase)
+const elementContainerStyle = mapPhaseToElementBackground(phase)
+const color = mapPhaseToColor(phase)
+const textAndButtonColor = mapPhaseToTextAndButtonColor(phase)
+
+const formStyles = {
+  textStyle,
+  buttonContainerStyle,
+  accentColor: color,
+  elementContainerStyle,
+}
 
 type Props = {
   value: any,
@@ -21,7 +44,7 @@ class FormWrapper extends React.PureComponent<Props> {
   }
 
   render() {
-    const { value, editionIndex = null, baseValues } = value
+    const { value, editionIndex = null, baseValues } = this.props
     return (
       <Form
         model={model}
@@ -30,10 +53,12 @@ class FormWrapper extends React.PureComponent<Props> {
         stepNumber={STEP_NUMBER}
         formContainerStyle={[styles.fullWidth, styles.fullHeight]}
         key={STEP_NUMBER}
-        phase={SELF_ASSESSMENT}
         disableAnswers
         editionIndex={editionIndex}
         baseValues={baseValues ? baseValues : undefined}
+        color={color}
+        textAndButtonColor={textAndButtonColor}
+        formStyles={formStyles}
       />
     )
   }

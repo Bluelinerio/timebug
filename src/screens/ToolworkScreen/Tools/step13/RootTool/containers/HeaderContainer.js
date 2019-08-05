@@ -11,7 +11,7 @@ import { CategoryContext } from '../../context/CategoryContext'
 
 const getBackButtonHandler = (
   screen: string,
-  { unsetCategory, openCategories, openGoalList }
+  { unsetCategory, openCategories, openGoalList, openGoalRecommendations }
 ) => {
   switch (screen) {
     case screens.GOAL_LIST:
@@ -21,7 +21,7 @@ const getBackButtonHandler = (
       }
     case screens.FORM:
       return () => {
-        openGoalList()
+        openGoalRecommendations()
       }
     case screens.GOAL_DETAIL:
       return () => {
@@ -38,7 +38,12 @@ const getBackButtonHandler = (
 }
 
 const HeaderContainer = () => {
-  const { screen, openCategories, openGoalList } = useContext(ScreenContext)
+  const {
+    screen,
+    openCategories,
+    openGoalList,
+    openGoalRecommendations,
+  } = useContext(ScreenContext)
   const { category, unsetCategory } = useContext(CategoryContext)
   const title = useTitle(screen, null) //TODO: ADD GOAL
   const subtitle = useSubtitle(screen, category)
@@ -47,6 +52,7 @@ const HeaderContainer = () => {
     unsetCategory,
     openCategories,
     openGoalList,
+    openGoalRecommendations,
   })
   return (
     <Header

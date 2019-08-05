@@ -51,10 +51,11 @@ function* _handleAwardEffects(action: {
   if (affectedSteps && affectedSteps.length > 0) {
     const formData = yield select(selectors.formData)
     for (const step of affectedSteps) {
-      const formDataForStep = formData[`${step}`].value
+      const formDataForStep = formData[`${step}`]
+      const formValueForStep = formDataForStep ? formDataForStep.value : null
       switch (`${step}`) {
       case stepEnum.STEP_5:
-        yield fork(_callGoalsSideEffect, formDataForStep, value)
+        yield fork(_callGoalsSideEffect, formValueForStep, value)
         break
       default:
         yield

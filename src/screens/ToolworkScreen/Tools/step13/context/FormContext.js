@@ -7,6 +7,7 @@ type State = {
   onFormFinished: () => void,
   setBaseValues: () => void,
   newFormMounted: () => void,
+  onFormClosed: () => void,
 }
 
 export type ProvidedProps = State
@@ -21,6 +22,7 @@ const initialState = {
   onFormFinished: () => null,
   setBaseValues: () => null,
   newFormMounted: () => null,
+  onFormClosed: () => null,
 }
 
 const FormContext = React.createContext(initialState)
@@ -42,6 +44,10 @@ class FormProvider extends React.PureComponent<Props, State> {
     this.setState({ baseValues: value })
   }
 
+  onFormClosed = () => {
+    this.setState({ isFinished: false, baseValues: null })   
+  }
+
   render() {
     return (
       <FormContext.Provider
@@ -49,6 +55,7 @@ class FormProvider extends React.PureComponent<Props, State> {
           ...this.state,
           setBaseValues: this.setBaseValues,
           onFormFinished: this.onFormFinished,
+          onFormClosed: this.onFormClosed,
         }}
       >
         {this.props.children}

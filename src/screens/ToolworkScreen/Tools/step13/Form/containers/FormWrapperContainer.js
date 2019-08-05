@@ -17,12 +17,17 @@ const FormWrapperContainer = () => {
 
   const value = data ? data.value : null
 
-  useEffect(() => newFormMounted(), [])
+  useEffect(() => {
+    newFormMounted()
+    return () => {
+      setBaseValues(null)
+    }
+  }, [])
 
-  const onFinish = (data: any) => {
+  const onFinish = (d: any) => {
     onFormFinished()
     setBaseValues(null)
-    storeData(data)
+    storeData(d)
     openGoalList()
   }
 
