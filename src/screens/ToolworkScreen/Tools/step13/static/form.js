@@ -1,7 +1,7 @@
 // @flow
 import types, { answerTypes } from 'react-native-forms/forms/types'
 import type { Form }                       from 'react-native-forms/types/formTypes'
-import { timeToCompleteGoal }    from '2020_forms/content'
+import { timeToCompleteGoal }    from '2020_forms/forms/content'
 import { categoriesWithName } from '../context/CategoryContext'
 
 export const FORM_KEYS = {

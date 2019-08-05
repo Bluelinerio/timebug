@@ -4,6 +4,7 @@ import { ProvidedProps } from '../../context/ScreenContext'
 import CategoryList from '../containers/CategoryListContainer_H'
 import GoalRecommendations from '../../GoalRecomendations'
 import GoalList from '../../GoalList'
+import Form from '../../Form'
 
 class ToolContent extends React.PureComponent<ProvidedProps> {
   render() {
@@ -15,8 +16,9 @@ class ToolContent extends React.PureComponent<ProvidedProps> {
         return <GoalList />
       case screens.GOAL_RECOMMENDATIONS:
         return <GoalRecommendations />
-      case screens.GOAL_DETAIL:
       case screens.FORM:
+        return <Form />
+      case screens.GOAL_DETAIL:
       default:
         return null
     }
