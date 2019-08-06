@@ -7,7 +7,7 @@ import {
   useBackHandler,
 } from '../../hooks/BackButtonHooks'
 import { ScreenContext, screens } from '../../context/ScreenContext'
-import { CategoryContext } from '../../context/CategoryContext'
+import { CategoryContext, getCategoryName } from '../../context/CategoryContext'
 
 const getBackButtonHandler = (
   screen: string,
@@ -44,7 +44,8 @@ const HeaderContainer = () => {
     openGoalList,
     openGoalRecommendations,
   } = useContext(ScreenContext)
-  const { category, unsetCategory } = useContext(CategoryContext)
+  const { category: categoryKey, unsetCategory } = useContext(CategoryContext)
+  const category = getCategoryName(categoryKey)
   const title = useTitle(screen, null) //TODO: ADD GOAL
   const subtitle = useSubtitle(screen, category)
   const [showBackButton] = useBackHandler(screen)

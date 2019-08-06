@@ -3,8 +3,6 @@ import React, { Fragment } from 'react'
 import GoalComponent from '../containers/GoalContainer'
 
 type Props = {
-  data: any,
-  tool: any,
   goals: Array<any>,
 }
 

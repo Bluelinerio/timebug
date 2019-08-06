@@ -87,6 +87,12 @@ export const getCategories = (completedSteps: Array<any> = []) => {
   return c
 }
 
+export const getCategoryName = (category: string) => {
+  if(!category) return null
+  const cat = categoriesWithName.find(cat => cat.key === category)
+  return cat ? cat.name : null
+}
+
 type State = {
   category: string,
   setCategory: string => void,

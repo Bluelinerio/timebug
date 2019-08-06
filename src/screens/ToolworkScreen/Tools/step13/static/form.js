@@ -4,11 +4,11 @@ import type { Form }                       from 'react-native-forms/types/formTy
 import { timeToCompleteGoal }    from '2020_forms/forms/content'
 import { categoriesWithName } from '../context/CategoryContext'
 
+// TODO: Rename second key from career to category
 export const FORM_KEYS = {
   career_goals_form_goal: 'career_goals_form_goal',
   career_goals_form_career: 'career_goals_form_career',
   career_goals_form_how_long: 'career_goals_form_how_long',
-  career_goals_form_checkin: 'career_goals_form_checkin',
   career_goals_form_steps: 'career_goals_form_steps',
 }
 
