@@ -19,15 +19,11 @@ const FormWrapperContainer = () => {
 
   useEffect(() => {
     newFormMounted()
-    return () => {
-      setBaseValues(null)
-    }
   }, [])
 
   const onFinish = (d: any) => {
-    onFormFinished()
-    setBaseValues(null)
     storeData(d)
+    setBaseValues(null)
     openGoalList()
   }
 
