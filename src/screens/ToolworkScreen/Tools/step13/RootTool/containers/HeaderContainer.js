@@ -8,10 +8,17 @@ import {
 } from '../../hooks/BackButtonHooks'
 import { ScreenContext, screens } from '../../context/ScreenContext'
 import { CategoryContext, getCategoryName } from '../../context/CategoryContext'
+import { GoalContext } from '../../context/GoalContext'
 
 const getBackButtonHandler = (
   screen: string,
-  { unsetCategory, openCategories, openGoalList, openGoalRecommendations }
+  {
+    unsetCategory,
+    openCategories,
+    openGoalList,
+    openGoalRecommendations,
+    unsetGoal,
+  }
 ) => {
   switch (screen) {
     case screens.GOAL_LIST:
@@ -25,7 +32,7 @@ const getBackButtonHandler = (
       }
     case screens.GOAL_DETAIL:
       return () => {
-        // fns.unsetGoal()
+        unsetGoal()
         openGoalList()
       }
     case screens.GOAL_RECOMMENDATIONS:
@@ -45,6 +52,7 @@ const HeaderContainer = () => {
     openGoalRecommendations,
   } = useContext(ScreenContext)
   const { category: categoryKey, unsetCategory } = useContext(CategoryContext)
+  const { unsetGoal } = useContext(GoalContext)
   const category = getCategoryName(categoryKey)
   const title = useTitle(screen, null) //TODO: ADD GOAL
   const subtitle = useSubtitle(screen, category)
@@ -54,6 +62,7 @@ const HeaderContainer = () => {
     openCategories,
     openGoalList,
     openGoalRecommendations,
+    unsetGoal,
   })
   return (
     <Header
