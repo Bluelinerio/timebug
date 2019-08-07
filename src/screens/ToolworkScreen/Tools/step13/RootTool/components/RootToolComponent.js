@@ -5,6 +5,7 @@ import ToolContent from '../containers/ToolContentContainer'
 import { ScreenProvider } from '../../context/ScreenContext'
 import { CategoryProvider } from '../../context/CategoryContext'
 import { ToolDataProvider } from '../../context/ToolDataProvider'
+import { GoalProvider } from '../../context/GoalContext'
 import { FormProvider } from '../../context/FormContext'
 import styles from '../styles'
 
@@ -17,9 +18,11 @@ class RootToolComponent extends React.PureComponent<Props> {
         <ScreenProvider>
           <CategoryProvider>
             <FormProvider>
-              <ToolDataProvider {...this.props}>
-                <ToolContent />
-              </ToolDataProvider>
+              <GoalProvider>
+                <ToolDataProvider {...this.props}>
+                  <ToolContent />
+                </ToolDataProvider>
+              </GoalProvider>
             </FormProvider>
           </CategoryProvider>
         </ScreenProvider>

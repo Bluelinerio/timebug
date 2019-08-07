@@ -49,9 +49,8 @@ export default StyleSheet.create({
     color: gray900,
   },
   header: {
-    flex: 1,
-    height: 64,
-    maxHeight: 64,
+    minHeight: 64,
+    flexGrow: 0,
     flexDirection: 'row',
   },
   backButtonContainer: {

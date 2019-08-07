@@ -52,9 +52,9 @@ const HeaderContainer = () => {
     openGoalRecommendations,
   } = useContext(ScreenContext)
   const { category: categoryKey, unsetCategory } = useContext(CategoryContext)
-  const { unsetGoal } = useContext(GoalContext)
+  const { unsetGoal, goal } = useContext(GoalContext)
   const category = getCategoryName(categoryKey)
-  const title = useTitle(screen, null) //TODO: ADD GOAL
+  const title = useTitle(screen, goal)
   const subtitle = useSubtitle(screen, category)
   const [showBackButton] = useBackHandler(screen)
   const onBack = getBackButtonHandler(screen, {

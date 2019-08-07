@@ -17,7 +17,7 @@ export const useTitle = (screen: string, goal: any = null) => {
           setTitle('Goal workbook')
           break
         case screens.GOAL_DETAIL:
-          setTitle(`Goal Details: ${goal}`)
+          setTitle(`Goal Details: ${goal ? goal.name : ''}`)
           break
         default:
           setTitle('Phase 2 goals')
