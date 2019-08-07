@@ -1,13 +1,15 @@
-import React                      from 'react'
+// @flow
+import React from 'react'
 import { Picker, Platform, View } from 'react-native'
-import ModalSelector              from 'react-native-modal-selector'
-import FormElementHeader          from './FormElementHeader'
-import styles                     from '../../styles'
-import { DISABLE }                from './../../forms/constants'
-import type { SelectStyle }       from './../../types/formTypes'
+import ModalSelector from 'react-native-modal-selector'
+import Component from './Component'
+import FormElementHeader from './FormElementHeader'
+import styles from '../../styles'
+import { DISABLE } from './../../forms/constants'
+import type { SelectStyle } from './../../types/formTypes'
 
 const AndroidPicker = (props: any) => {
-  const { options = {}, items, onChange, formStyles, baseValue, value } = props
+  const { options = {}, items, onChange, formStyles, value } = props
   const { style: staticStyles = {} } = options
   return (
     <View
@@ -18,9 +20,7 @@ const AndroidPicker = (props: any) => {
       ]}
     >
       <Picker
-        selectedValue={
-          value ? value : baseValue ? baseValue.value : options.default
-        }
+        selectedValue={value ? value : options.default}
         style={[
           styles.pickerStyle,
           staticStyles ? staticStyles.pickerContainerStyle : {},
@@ -41,7 +41,7 @@ const AndroidPicker = (props: any) => {
 }
 
 const IOSPicker = (props: any) => {
-  const { items, onChange, formStyles, value, baseValue, options = {} } = props
+  const { items, onChange, formStyles, value, options = {} } = props
   const { style: staticStyles = {} } = options
 
   const data =
@@ -55,7 +55,7 @@ const IOSPicker = (props: any) => {
   const dataElement =
     value && data
       ? data.find(element => element.key === value) || data[0]
-      : baseValue ? baseValue.value : data[0]
+      : data[0]
 
   const textValue = dataElement.label
 
@@ -79,20 +79,10 @@ const IOSPicker = (props: any) => {
   )
 }
 
-const Select = ({
-  value,
-  onChange,
-  field: { content, options },
-  baseValue = null,
-  formStyles = {},
-  __extraProps = {},
-}: {
+type Props = {
   value: string,
   onChange: string => any,
   formStyles: any,
-  baseValue: {
-    value: string,
-  },
   field: {
     content: {
       text: string,
@@ -109,62 +99,71 @@ const Select = ({
     editObjectId: string,
     filterFunction?: (Array<any>) => Array<any>,
   },
-}) => {
-  const { style: staticStyles = {} } = options
+}
 
-  const onValueChange = itemValue => {
-    onChange(itemValue)
+class Select extends Component<Props> {
+  _onValueChange = itemValue => {
+    this.onBaseChange(itemValue)
   }
 
-  const { filterFunction = null } = __extraProps
-  const filteredItems =
-    content && content.items
-      ? options &&
-        options.repeats &&
-        options.repeats === DISABLE &&
-        filterFunction !== null
-        ? filterFunction(content.items)
-        : content.items
-      : []
+  render() {
+    const {
+      value,
+      field: { content, options },
+      formStyles = {},
+      __extraProps = {},
+    } = this.props
 
-  const textStyle = {
-    ...formStyles.textStyle,
-    ...(staticStyles.formHeaderText ? staticStyles.formHeaderText : {}),
+    const { style: staticStyles = {} } = options
+
+    const { filterFunction = null } = __extraProps
+    const filteredItems =
+      content && content.items
+        ? options &&
+          options.repeats &&
+          options.repeats === DISABLE &&
+          filterFunction !== null
+          ? filterFunction(content.items)
+          : content.items
+        : []
+
+    const textStyle = {
+      ...formStyles.textStyle,
+      ...(staticStyles.formHeaderText ? staticStyles.formHeaderText : {}),
+    }
+
+    return (
+      <React.Fragment>
+        <FormElementHeader text={content.text} textStyle={textStyle} />
+        <View
+          style={[
+            styles.pickerContainer,
+            staticStyles.pickerContentContainer
+              ? staticStyles.pickerContentContainer
+              : {},
+          ]}
+        >
+          {Platform.OS === 'ios' ? (
+            <IOSPicker
+              value={value}
+              formStyles={formStyles}
+              items={filteredItems}
+              options={options}
+              onChange={this._onValueChange}
+            />
+          ) : (
+            <AndroidPicker
+              value={value}
+              formStyles={formStyles}
+              items={filteredItems}
+              options={options}
+              onChange={this._onValueChange}
+            />
+          )}
+        </View>
+      </React.Fragment>
+    )
   }
-
-  return (
-    <React.Fragment>
-      <FormElementHeader text={content.text} textStyle={textStyle} />
-      <View
-        style={[
-          styles.pickerContainer,
-          staticStyles.pickerContentContainer
-            ? staticStyles.pickerContentContainer
-            : {},
-        ]}
-      >
-        {Platform.OS === 'ios' ? (
-          <IOSPicker
-            value={value}
-            formStyles={formStyles}
-            items={filteredItems}
-            options={options}
-            onChange={onValueChange}
-            baseValue={baseValue}
-          />
-        ) : (
-          <AndroidPicker
-            value={value}
-            formStyles={formStyles}
-            items={filteredItems}
-            options={options}
-            onChange={onValueChange}
-            baseValue={baseValue}
-          />
-        )}
-      </View>
-    </React.Fragment>
-  )
 }
 
 export default Select
