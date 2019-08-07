@@ -9,26 +9,33 @@ const FormWrapperContainer = () => {
   const {
     baseValues,
     setBaseValues,
-    onFormFinished,
     newFormMounted,
   } = useContext(FormContext)
   const { data, storeData } = useContext(ToolDataContext)
   const { openGoalList } = useContext(ScreenContext)
 
-  const value = data ? data.value : null
+  const value = data ? data.value : {}
+  const formValue = value ? value.form : null
 
   useEffect(() => {
     newFormMounted()
   }, [])
 
   const onFinish = (d: any) => {
-    storeData(d)
+    storeData({
+      ...value,
+      form: d,
+    })
     setBaseValues(null)
     openGoalList()
   }
 
   return (
-    <FormWrapper value={value} onFinish={onFinish} baseValues={baseValues} />
+    <FormWrapper
+      value={formValue}
+      onFinish={onFinish}
+      baseValues={baseValues}
+    />
   )
 }
 

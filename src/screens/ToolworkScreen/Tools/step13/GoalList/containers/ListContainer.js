@@ -7,23 +7,7 @@ import {
 import { ToolDataContext } from '../../context/ToolDataProvider'
 import { timeToCompleteGoal } from '2020_forms/forms/content'
 import { FORM_KEYS, CHILDREN_KEYS } from '../../static/form'
-
 import List from '../components/ListComponent'
-
-const dummyGoals = [
-  {
-    name: 'dummyGoal1',
-    id: 1,
-  },
-  {
-    name: 'dummyGoal2',
-    id: 2,
-  },
-  {
-    name: 'dummyGoal3dummyGoal3dummyGoal3dummyGoal3dummyGoal3',
-    id: 3,
-  },
-]
 
 const parseSteps = (steps: Array<any>) => {
   const parsedSteps = steps.map(s => {
@@ -78,9 +62,10 @@ const ListContainer = () => {
   const { category } = useContext(CategoryContext)
   const { data } = useContext(ToolDataContext)
 
-  const value = data ? data.value : []
+  const value = data ? data.value : {}
+  const formValue = value ? value.form : []
 
-  const goals = parseValueAsGoals(category)(value)
+  const goals = parseValueAsGoals(category)(formValue)
 
   return <List category={category} goals={goals} />
 }
