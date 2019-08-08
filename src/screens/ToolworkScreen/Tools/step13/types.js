@@ -1,5 +1,10 @@
 // @flow
 
+export type ToolData = {
+  form: Array<any>,
+  toolData: Array<GoalToolData>
+}
+
 export type Goal = {
   id: string,
   name: string,

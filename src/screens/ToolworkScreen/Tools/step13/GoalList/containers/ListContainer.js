@@ -8,6 +8,7 @@ import { ToolDataContext } from '../../context/ToolDataProvider'
 import { timeToCompleteGoal } from '2020_forms/forms/content'
 import { FORM_KEYS, CHILDREN_KEYS } from '../../static/form'
 import List from '../components/ListComponent'
+import { GoalToolData } from '../../types'
 
 const parseSteps = (steps: Array<any>) => {
   const parsedSteps = steps.map(s => {
@@ -22,7 +23,10 @@ const parseSteps = (steps: Array<any>) => {
   return parsedSteps
 }
 
-const parseValueAsGoals = (category: string) => (value: Array<any>) => {
+const parseValueAsGoals = (category: string) => (
+  value: Array<any>,
+  toolDataValue: Array<GoalToolData> = []
+) => {
   if (!value) return []
 
   const actualValue = value.filter(val => {
@@ -32,6 +36,9 @@ const parseValueAsGoals = (category: string) => (value: Array<any>) => {
 
   const goals = actualValue.map(val => {
     const id = val._id
+
+    const toolDataForGoal = toolDataValue.find(t => t.goalId === id)
+
     const name = val[FORM_KEYS.career_goals_form_goal].value
     const categoryKey = val[FORM_KEYS.career_goals_form_career].value
     const howLongKey = val[FORM_KEYS.career_goals_form_how_long].value
@@ -65,8 +72,9 @@ const ListContainer = () => {
 
   const value = data ? data.value : {}
   const formValue = value ? value.form : []
+  const toolDataValue = value ? value.toolData : []
 
-  const goals = parseValueAsGoals(category)(formValue)
+  const goals = parseValueAsGoals(category)(formValue, toolDataValue)
 
   return <List category={category} goals={goals} />
 }
