@@ -20,7 +20,7 @@ export type ProvidedProps = {
   tool: Tool,
   storeData: () => void,
   storeFormData: () => void,
-  storeToolData: () => void
+  storeToolData: () => void,
 }
 
 const ToolDataContext = React.createContext(initialState)
@@ -59,7 +59,13 @@ class ToolDataProvider extends React.PureComponent<Props> {
     const { data, tool } = this.props
     return (
       <ToolDataContext.Provider
-        value={{ data, tool, storeData: this._storeData }}
+        value={{
+          data,
+          tool,
+          storeData: this._storeData,
+          storeFormData: this._storeFormData,
+          storeToolData: this.storeToolData,
+        }}
       >
         {this.props.children}
       </ToolDataContext.Provider>

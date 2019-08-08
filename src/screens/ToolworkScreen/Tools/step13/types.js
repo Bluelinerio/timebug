@@ -12,15 +12,17 @@ export type Goal = {
   timeToComplete: string,
   steps: string,
   creation: string,
+  toolData: GoalToolData
 }
 
 export type Substep = {
   id: string,
   name: string,
-  completed?: boolean,
+  toolData: SubstepToolData
 }
 
 export type SubstepToolData = {
+  substepId: string,
   completedAt?: string,
   due?: string,
   completed?: string,
