@@ -36,7 +36,7 @@ const parseValueAsGoals = (category: string) => (value: Array<any>) => {
     const categoryKey = val[FORM_KEYS.career_goals_form_career].value
     const howLongKey = val[FORM_KEYS.career_goals_form_how_long].value
     const stepsRaw = val[FORM_KEYS.career_goals_form_steps].value
-
+    const creation = val.created_at
     const category =
       categoriesWithName.find(cat => cat.key === categoryKey) ||
       categoriesWithName[0]
@@ -52,6 +52,7 @@ const parseValueAsGoals = (category: string) => (value: Array<any>) => {
       category,
       timeToComplete,
       steps,
+      creation,
     }
   })
 
