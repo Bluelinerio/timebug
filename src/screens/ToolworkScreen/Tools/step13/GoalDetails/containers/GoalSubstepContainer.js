@@ -4,11 +4,12 @@ import GoalSubstep from '../components/GoalSubstepComponent'
 import { Substep } from '../../types'
 
 type Props = {
-    substep: Substep
+    substep: Substep,
+    goal: Goal
 }
 
 const GoalSubstepContainer = (props: Props) => {
-    const { substep } = props
+    const { substep, goal } = props
     return <GoalSubstep substep={substep} />
 }
 

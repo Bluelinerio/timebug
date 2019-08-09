@@ -1,5 +1,5 @@
 // @flow
-import React, { useState, useEffect, useCallback, useMemo } from 'react'
+import React, { useState, useCallback, useMemo } from 'react'
 import moment from 'moment'
 import { View, Text } from 'react-native'
 import { FormInput } from 'react-native-elements'
@@ -55,7 +55,7 @@ const GoalDetailsContent = (props: Props) => {
         Steps to complete goal
       </Text>
       <View style={styles.stepsContainer}>
-        {goal.steps.map(s => <GoalSubstep key={s.id} substep={s} />)}
+        {goal.steps.map(s => <GoalSubstep key={s.id} goal={goal} substep={s} />)}
       </View>
       <Text style={[styles.text, styles.subsectionTitle]}>
         Additional notes

@@ -5,7 +5,7 @@ import { ToolDataContext } from '../context/ToolDataProvider'
 import { categoriesWithName } from '../context/CategoryContext'
 import { timeToCompleteGoal } from '2020_forms/forms/content'
 import { FORM_KEYS, CHILDREN_KEYS } from '../static/form'
-import { GoalToolData, Goal } from '../types'
+import { GoalToolData, Goal, Substep } from '../types'
 
 const _filterOpenGoals = (g: Goal) => {
   const hasTooLData = g.toolData
@@ -101,14 +101,9 @@ export const useGoals = (category?: string) => {
   return goals.filter(_filterOpenGoals)
 }
 
-export const useGoalModifiers = (goal: Goal) => {
+const useGoalStoreData = (goal: Goal) => {
   const { storeToolData, data } = useContext(ToolDataContext)
   const { id } = goal
-
-  const GoalToolData = goal.toolData ? goal.toolData : {
-    goalId: id,
-  }
-
   const storedToolData = data && data.value ? data.value.toolData || [] : []
 
   const storeGoalData = useCallback(
@@ -124,6 +119,17 @@ export const useGoalModifiers = (goal: Goal) => {
     },
     [id, storeToolData, storedToolData]
   )
+
+  return storeGoalData
+}
+
+export const useGoalModifiers = (goal: Goal) => {
+  const { id } = goal
+  const storeGoalData = useGoalStoreData(goal)
+
+  const GoalToolData = goal.toolData ? goal.toolData : {
+    goalId: id,
+  }
 
   const { notes, completed, deleted } = GoalToolData
 
@@ -167,4 +173,52 @@ export const useGoalModifiers = (goal: Goal) => {
   )
 
   return { notes, storeNotes, completed, toggleGoalCompletion, deleted, toggleGoalDeletion }
+}
+
+export const useGoalStepModifiers = (goal: Goal, substep: Substep) => {
+  const { id: goalId } = goal
+  const { id } = substep
+  const storeData = useGoalStoreData(goal)
+  const { storeToolData } = useContext(ToolDataContext)
+
+
+  const GoalToolData = goal.toolData ? goal.toolData : {
+    goalId: id,
+  }
+
+  const steps = GoalToolData.steps ? GoalToolData.steps : []  
+
+  const stepToolData = substep.toolData ? substep.toolData : {
+    substepId: id,
+  }
+
+  const storeStepData = useCallback((substepData) => {
+    const filteredData = steps.filter(td => {
+      const { id } = td
+      return id !== id
+    })
+
+    const newData = [...filteredData, substepData]
+
+    const data = {
+      ...GoalToolData,
+      steps: newData,
+    }
+
+    storeToolData(data)
+  }, [id, goalId, storeData, stepToolData])
+
+  const { completed } = stepToolData
+
+  const storeStepCompletion = useCallback(() => {
+    const newCompleted = !completed
+    const completedAt = newCompleted ? moment().format() : null
+    const data = {
+      ...stepToolData,
+      completed: newCompleted,
+      completedAt,
+    }
+    storeStepData(data)
+  }, [storeStepData, completed])
+
 }
