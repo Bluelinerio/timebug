@@ -1,4 +1,5 @@
 // @flow
+import moment from 'moment'
 import { useContext, useCallback } from 'react'
 import { ToolDataContext } from '../context/ToolDataProvider'
 import { categoriesWithName } from '../context/CategoryContext'
@@ -102,9 +103,13 @@ export const useGoals = (category?: string) => {
 
 export const useGoalModifiers = (goal: Goal) => {
   const { storeToolData, data } = useContext(ToolDataContext)
-  const { id, toolData = {} } = goal
+  const { id } = goal
 
-  const storedToolData = data.toolData
+  const GoalToolData = goal.toolData ? goal.toolData : {
+    goalId: id,
+  }
+
+  const storedToolData = data && data.value ? data.value.toolData || [] : []
 
   const storeGoalData = useCallback(
     data => {
@@ -117,21 +122,49 @@ export const useGoalModifiers = (goal: Goal) => {
 
       storeToolData(newData)
     },
-    [id, storeToolData]
+    [id, storeToolData, storedToolData]
   )
 
-  const { completed, deleted } = toolData
+  const { notes, completed, deleted } = GoalToolData
 
   const storeNotes = useCallback(
-    (notes: string) => {
+    (newNotes: string) => {
       const data = {
-        ...toolData,
-        notes,
+        ...GoalToolData,
+        notes: newNotes,
       }
       storeGoalData(data)
     },
     [id, storeGoalData]
   )
 
-  return { storeNotes }
+  const toggleGoalCompletion = useCallback(
+    () => {
+      const newCompleted = !completed
+      const completedAt = newCompleted ? moment().format() : null
+      const data = {
+        ...GoalToolData,
+        completed: newCompleted,
+        completedAt,
+      }
+      storeGoalData(data)
+    },
+    [id, storeGoalData, completed]
+  )
+
+  const toggleGoalDeletion = useCallback(
+    () => {
+      const newDeleted = !deleted
+      const deletedAt = newDeleted ? moment().format() : null
+      const data = {
+        ...GoalToolData,
+        deleted: newDeleted,
+        deletedAt,
+      }
+      storeGoalData(data)
+    },
+    [id, storeGoalData, deleted]
+  )
+
+  return { notes, storeNotes, completed, toggleGoalCompletion, deleted, toggleGoalDeletion }
 }

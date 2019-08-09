@@ -64,7 +64,7 @@ class ToolDataProvider extends React.PureComponent<Props> {
           tool,
           storeData: this._storeData,
           storeFormData: this._storeFormData,
-          storeToolData: this.storeToolData,
+          storeToolData: this._storeToolData,
         }}
       >
         {this.props.children}
