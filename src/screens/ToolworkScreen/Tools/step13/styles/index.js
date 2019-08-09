@@ -28,4 +28,17 @@ export default StyleSheet.create({
     ...iOSUIKit.bodyEmphasizedObject,
     color: gray900,
   },
+  textAreaContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 12,
+  },
+  textArea: {
+    backgroundColor: gray50,
+    padding: 8,
+  },
+  additionalInput: {
+    color: gray900,
+    fontSize: 16,
+  },
 })

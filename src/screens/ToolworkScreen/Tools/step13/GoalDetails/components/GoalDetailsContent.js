@@ -2,12 +2,15 @@
 import React from 'react'
 import moment from 'moment'
 import { View, Text } from 'react-native'
+import { FormInput } from 'react-native-elements'
 import GoalSubstep from '../containers/GoalSubstepContainer'
 import { Goal } from '../../types'
 import styles from '../styles'
 
 type Props = {
   goal: Goal,
+  storeNotes: string => void,
+  notes: string,
 }
 
 const calculateDueDate = (goal: Goal) => {
@@ -20,8 +23,23 @@ const calculateDueDate = (goal: Goal) => {
 }
 
 class GoalDetailsContent extends React.PureComponent<Props> {
+  _onInputTextChange = (text: String) => {
+    const { storeNotes } = this.props
+    storeNotes(text)
+  }
+
+  _inputTextChangeMechanic = (func, delay) => {
+    let inDebounce
+    return function(text: string) {
+      clearTimeout(inDebounce)
+      inDebounce = setTimeout(() => func(text), delay)
+    }
+  }
+
+  _inputTextEvent = this._inputTextChangeMechanic(this._onInputTextChange, 1500)
+
   render() {
-    const { goal } = this.props
+    const { goal, notes } = this.props
     const formattedDate = moment(goal.creation).format('MM/DD/YYYY')
     return (
       <View style={[styles.container, styles.detailsContainer]}>
@@ -47,6 +65,20 @@ class GoalDetailsContent extends React.PureComponent<Props> {
         </Text>
         <View style={styles.stepsContainer}>
           {goal.steps.map(s => <GoalSubstep key={s.id} substep={s} />)}
+        </View>
+        <Text style={[styles.text, styles.subsectionTitle]}>
+          Additional notes
+        </Text>
+        <View style={styles.textAreaContainer}>
+          <FormInput
+            containerStyle={styles.textArea}
+            inputStyle={styles.additionalInput}
+            underlineColorAndroid="transparent"
+            placeholder="Add any additional notes here..."
+            multiline={true}
+            value={notes}
+            onChangeText={this._handleInput}
+          />
         </View>
       </View>
     )

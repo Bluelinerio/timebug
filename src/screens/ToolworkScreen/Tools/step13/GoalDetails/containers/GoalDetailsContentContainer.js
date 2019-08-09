@@ -5,8 +5,8 @@ import GoalDetailsContent from '../components/GoalDetailsContent'
 
 const GoalDetailsContentContainer = () => {
   const { goal } = useContext(GoalContext)
-  const { storeNotes } = useGoalModifiers()
-  return <GoalDetailsContent storeNotes={storeNotes} goal={goal} />
+  const { storeNotes, notes } = useGoalModifiers()
+  return <GoalDetailsContent notes={notes} storeNotes={storeNotes} goal={goal} />
 }
 
 export default GoalDetailsContentContainer
