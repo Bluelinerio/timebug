@@ -34,5 +34,6 @@ export type GoalToolData = {
   deleted?: boolean,
   completedAt?: string,
   deletedAt?: string,
+  notes?: string,
   steps?: Array<SubstepToolData>,
 }

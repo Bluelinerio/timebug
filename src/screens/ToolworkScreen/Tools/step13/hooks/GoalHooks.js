@@ -1,5 +1,5 @@
 // @flow
-import { useContext } from 'react'
+import { useContext, useCallback } from 'react'
 import { ToolDataContext } from '../context/ToolDataProvider'
 import { categoriesWithName } from '../context/CategoryContext'
 import { timeToCompleteGoal } from '2020_forms/forms/content'
@@ -45,10 +45,12 @@ const parseValueAsGoals = (category?: string) => (
 ) => {
   if (!value) return []
 
-  const actualValue = category ? value.filter(val => {
-    const categoryKey = val[FORM_KEYS.career_goals_form_career].value
-    return categoryKey === category
-  }) : value
+  const actualValue = category
+    ? value.filter(val => {
+        const categoryKey = val[FORM_KEYS.career_goals_form_career].value
+        return categoryKey === category
+      })
+    : value
 
   const goals = actualValue.map(val => {
     const id = val._id
@@ -86,7 +88,7 @@ const parseValueAsGoals = (category?: string) => (
   return goals
 }
 
-export const useGoals = (category?: string ) => {
+export const useGoals = (category?: string) => {
   const { data } = useContext(ToolDataContext)
 
   const value = data ? data.value : {}
@@ -96,4 +98,40 @@ export const useGoals = (category?: string ) => {
   const goals = parseValueAsGoals(category)(formValue, toolDataValue)
 
   return goals.filter(_filterOpenGoals)
+}
+
+export const useGoalModifiers = (goal: Goal) => {
+  const { storeToolData, data } = useContext(ToolDataContext)
+  const { id, toolData = {} } = goal
+
+  const storedToolData = data.toolData
+
+  const storeGoalData = useCallback(
+    data => {
+      const filteredData = storedToolData.filter(td => {
+        const { goalId } = td
+        return goalId !== id
+      })
+
+      const newData = [...filteredData, data]
+
+      storeToolData(newData)
+    },
+    [id, storeToolData]
+  )
+
+  const { completed, deleted } = toolData
+
+  const storeNotes = useCallback(
+    (notes: string) => {
+      const data = {
+        ...toolData,
+        notes,
+      }
+      storeGoalData(data)
+    },
+    [id, storeGoalData]
+  )
+
+  return { storeNotes }
 }
