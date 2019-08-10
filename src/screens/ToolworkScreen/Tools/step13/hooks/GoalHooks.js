@@ -220,7 +220,7 @@ export const useGoalStepModifiers = (goal: Goal, substep: Substep) => {
   const GoalToolData = currentToolDataForGoal
     ? currentToolDataForGoal
     : {
-        goalId: id,
+        goalId,
       }
 
   const steps = GoalToolData.steps ? GoalToolData.steps : []
