@@ -89,12 +89,31 @@ const parseValueAsGoals = (category?: string) => (
   return goals
 }
 
+export const useStepTooldata = (goal: Goal, step: Substep) => {
+  const { data } = useContext(ToolDataContext)
+
+  const { id } = step
+  const value = data ? data.value : {}
+  const toolDataValue = value ? (value.toolData ? value.toolData : []) : []
+
+  const toolDataForGoal = toolDataValue.find(t => t.goalId === goal.id) || null
+
+  const toolDataForStep = toolDataForGoal ? toolDataForGoal.steps : []
+
+  const substepToolData = toolDataForStep.find(s => s.substepId === id) || null
+
+  const { completed = false } = substepToolData
+
+  return { completed }
+
+}
+
 export const useGoals = (category?: string) => {
   const { data } = useContext(ToolDataContext)
 
   const value = data ? data.value : {}
   const formValue = value ? value.form : []
-  const toolDataValue = value ? value.toolData : []
+  const toolDataValue = value ? (value.toolData ? value.toolData : []) : []
 
   const goals = parseValueAsGoals(category)(formValue, toolDataValue)
 
@@ -127,9 +146,11 @@ export const useGoalModifiers = (goal: Goal) => {
   const { id } = goal
   const storeGoalData = useGoalStoreData(goal)
 
-  const GoalToolData = goal.toolData ? goal.toolData : {
-    goalId: id,
-  }
+  const GoalToolData = goal.toolData
+    ? goal.toolData
+    : {
+        goalId: id,
+      }
 
   const { notes, completed, deleted } = GoalToolData
 
@@ -172,53 +193,69 @@ export const useGoalModifiers = (goal: Goal) => {
     [id, storeGoalData, deleted]
   )
 
-  return { notes, storeNotes, completed, toggleGoalCompletion, deleted, toggleGoalDeletion }
+  return {
+    notes,
+    storeNotes,
+    completed,
+    toggleGoalCompletion,
+    deleted,
+    toggleGoalDeletion,
+  }
 }
 
 export const useGoalStepModifiers = (goal: Goal, substep: Substep) => {
   const { id: goalId } = goal
   const { id } = substep
   const storeData = useGoalStoreData(goal)
-  const { storeToolData } = useContext(ToolDataContext)
 
+  const GoalToolData = goal.toolData
+    ? goal.toolData
+    : {
+        goalId: id,
+      }
 
-  const GoalToolData = goal.toolData ? goal.toolData : {
-    goalId: id,
-  }
+  const steps = GoalToolData.steps ? GoalToolData.steps : []
 
-  const steps = GoalToolData.steps ? GoalToolData.steps : []  
+  const stepToolData = substep.toolData
+    ? substep.toolData
+    : {
+        substepId: id,
+      }
 
-  const stepToolData = substep.toolData ? substep.toolData : {
-    substepId: id,
-  }
+  const storeStepData = useCallback(
+    substepData => {
+      const filteredData = steps.filter(td => {
+        const { id } = td
+        return id !== id
+      })
 
-  const storeStepData = useCallback((substepData) => {
-    const filteredData = steps.filter(td => {
-      const { id } = td
-      return id !== id
-    })
+      const newData = [...filteredData, substepData]
 
-    const newData = [...filteredData, substepData]
+      const data = {
+        ...GoalToolData,
+        steps: newData,
+      }
 
-    const data = {
-      ...GoalToolData,
-      steps: newData,
-    }
-
-    storeToolData(data)
-  }, [id, goalId, storeData, stepToolData])
+      storeData(data)
+    },
+    [id, goalId, storeData, stepToolData]
+  )
 
   const { completed } = stepToolData
 
-  const storeStepCompletion = useCallback(() => {
-    const newCompleted = !completed
-    const completedAt = newCompleted ? moment().format() : null
-    const data = {
-      ...stepToolData,
-      completed: newCompleted,
-      completedAt,
-    }
-    storeStepData(data)
-  }, [storeStepData, completed])
+  const storeStepCompletion = useCallback(
+    () => {
+      const newCompleted = !completed
+      const completedAt = newCompleted ? moment().format() : null
+      const data = {
+        ...stepToolData,
+        completed: newCompleted,
+        completedAt,
+      }
+      storeStepData(data)
+    },
+    [storeStepData, completed]
+  )
 
+  return { completed, storeStepCompletion }
 }

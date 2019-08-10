@@ -2,6 +2,7 @@
 import React from 'react'
 import GoalSubstep from '../components/GoalSubstepComponent'
 import { Substep } from '../../types'
+import { useGoalStepModifiers } from '../../hooks/GoalHooks'
 
 type Props = {
     substep: Substep,
@@ -10,7 +11,8 @@ type Props = {
 
 const GoalSubstepContainer = (props: Props) => {
     const { substep, goal } = props
-    return <GoalSubstep substep={substep} />
+    const { storeStepCompletion } = useGoalStepModifiers(goal, substep)
+    return <GoalSubstep storeStepCompletion={storeStepCompletion} substep={substep} />
 }
 
-export default GoalSubstepContainer
+export default React.memo(GoalSubstepContainer)
