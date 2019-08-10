@@ -105,7 +105,6 @@ export const useStepTooldata = (goal: Goal, step: Substep) => {
   const { completed = false } = substepToolData
 
   return { completed }
-
 }
 
 export const useGoals = (category?: string) => {
@@ -208,9 +207,7 @@ export const useGoalModifiers = (goal: Goal) => {
   }
 }
 
-export const useStepStoreData = (goal: Goal, substep: Substep) => {
-
-}
+export const useStepStoreData = (goal: Goal, substep: Substep) => {}
 
 export const useGoalStepModifiers = (goal: Goal, substep: Substep) => {
   const { id: goalId } = goal
@@ -251,7 +248,7 @@ export const useGoalStepModifiers = (goal: Goal, substep: Substep) => {
     [id, goalId, storeData, currentToolDataForStep]
   )
 
-  const { completed } = currentToolDataForStep
+  const { completed, due } = currentToolDataForStep
 
   const storeStepCompletion = useCallback(
     () => {
@@ -267,5 +264,13 @@ export const useGoalStepModifiers = (goal: Goal, substep: Substep) => {
     [storeStepData, completed]
   )
 
-  return { completed, storeStepCompletion }
+  const storeStepDue = useCallback((due: string) => {
+    const data = {
+      ...currentToolDataForStep,
+      due,
+    }
+    storeStepData(data)
+  }, [storeStepData, due])
+
+  return { completed, storeStepCompletion, due, storeStepDue }
 }

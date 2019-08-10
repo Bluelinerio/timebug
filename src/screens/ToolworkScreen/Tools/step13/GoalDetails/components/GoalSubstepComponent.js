@@ -9,6 +9,8 @@ type Props = {
   substep: Substep,
   storeStepCompletion: () => void,
   completed?: boolean,
+  due?: string,
+  onPress: () => void,
 }
 
 class GoalSubstepComponent extends React.PureComponent<Props> {
@@ -18,9 +20,9 @@ class GoalSubstepComponent extends React.PureComponent<Props> {
   }
 
   render() {
-    const { substep, completed = false } = this.props
+    const { substep, completed = false, onPress, due = null } = this.props
     return (
-      <View style={styles.substepContainer}>
+      <TouchableOpacity style={styles.substepContainer} onPress={onPress}>
         <TouchableOpacity style={styles.checkContainer} onPress={this.toggle}>
           <Icon
             name={
@@ -36,8 +38,9 @@ class GoalSubstepComponent extends React.PureComponent<Props> {
           <Text key={substep.id} style={[styles.text, styles.substepName]}>
             {substep.name}
           </Text>
+          {due && <Text>{due}</Text>}
         </View>
-      </View>
+      </TouchableOpacity>
     )
   }
 }

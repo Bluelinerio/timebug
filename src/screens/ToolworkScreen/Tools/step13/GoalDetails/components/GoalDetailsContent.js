@@ -3,7 +3,7 @@ import React, { useState, useCallback, useMemo } from 'react'
 import moment from 'moment'
 import { View, Text } from 'react-native'
 import { FormInput } from 'react-native-elements'
-import GoalSubstep from '../containers/GoalSubstepContainer'
+import SubstepList from '../containers/SubstepListContainer'
 import { Goal } from '../../types'
 import { debounce } from '2020_utils/debounce'
 import styles from '../styles'
@@ -26,7 +26,9 @@ const calculateDueDate = (goal: Goal) => {
 const GoalDetailsContent = (props: Props) => {
   const { goal, notes, storeNotes } = props
   const [stateNotes, setNotes] = useState(notes ? notes : '')
-  const debouncedStoreNotes = useMemo(() => debounce(storeNotes, 1500), [storeNotes])
+  const debouncedStoreNotes = useMemo(() => debounce(storeNotes, 1500), [
+    storeNotes,
+  ])
   const onTextChange = useCallback((notes: string) => {
     setNotes(notes)
     debouncedStoreNotes(notes)
@@ -48,15 +50,12 @@ const GoalDetailsContent = (props: Props) => {
         <Text style={styles.goalText}>{goal.timeToComplete.text}</Text>
       </Text>
       <Text style={[styles.text, styles.dueTime]}>
-        Due date:{' '}
-        <Text style={styles.goalText}>{calculateDueDate(goal)}</Text>
+        Due date: <Text style={styles.goalText}>{calculateDueDate(goal)}</Text>
       </Text>
       <Text style={[styles.text, styles.subsectionTitle]}>
         Steps to complete goal
       </Text>
-      <View style={styles.stepsContainer}>
-        {goal.steps.map(s => <GoalSubstep key={s.id} goal={goal} substep={s} />)}
-      </View>
+      <SubstepList goal={goal} />
       <Text style={[styles.text, styles.subsectionTitle]}>
         Additional notes
       </Text>
