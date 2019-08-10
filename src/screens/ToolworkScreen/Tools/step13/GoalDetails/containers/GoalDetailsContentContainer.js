@@ -12,9 +12,10 @@ const GoalDetailsContentContainer = () => {
     toggleGoalCompletion,
     deletion,
     toggleGoalDeletion,
+    steps,
   } = useGoalModifiers(goal)
   return (
-    <GoalDetailsContent notes={notes} storeNotes={storeNotes} goal={goal} completed={completed} />
+    <GoalDetailsContent notes={notes} storeNotes={storeNotes} goal={goal} completed={completed} steps={steps} />
   )
 }
 

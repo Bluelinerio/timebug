@@ -157,7 +157,7 @@ export const useGoalModifiers = (goal: Goal) => {
         goalId: id,
       }
 
-  const { notes, completed, deleted } = GoalToolData
+  const { notes, completed, deleted, steps } = GoalToolData
 
   const storeNotes = useCallback(
     (newNotes: string) => {
@@ -205,10 +205,9 @@ export const useGoalModifiers = (goal: Goal) => {
     toggleGoalCompletion,
     deleted,
     toggleGoalDeletion,
+    steps,
   }
 }
-
-export const useStepStoreData = (goal: Goal, substep: Substep) => {}
 
 export const useGoalStepModifiers = (goal: Goal, substep: Substep) => {
   const { id: goalId } = goal

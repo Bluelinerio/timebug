@@ -27,21 +27,52 @@ export default StyleSheet.create({
     color: gray900,
   },
   title: {
-    ...iOSUIKit.title3Emphasized,
+    ...iOSUIKit.title3EmphasizedObject,
     color: SELF_ASSESSMENT,
   },
   category: {
-    ...iOSUIKit.title3Emphasized,
+    ...iOSUIKit.title3EmphasizedObject,
     fontSize: 18,
     color: SELF_ASSESSMENT,
   },
-  dueTime: {
-    ...iOSUIKit.title3Emphasized,
+  detailsStandard: {
+    ...iOSUIKit.title3EmphasizedObject,
     fontSize: 18,
     color: SELF_ASSESSMENT,
+  },
+  completionProgress: {
+    ...iOSUIKit.title3EmphasizedObject,
+    fontSize: 20,
+    color: SELF_ASSESSMENT,
+  },
+  goalTimeLeft: {
+    ...iOSUIKit.subheadEmphasizedObject,
+    color: SELF_ASSESSMENT,
+    textAlign: 'center',
   },
   goalText: {
     color: gray900,
+  },
+  buttonContainer: {
+    marginTop: 8,
+    flexDirection: 'row',
+    width: '100%',
+    minHeight: 64,
+  },
+  goalButton: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: SELF_ASSESSMENT,
+  },
+  goalButtonText: {
+    ...iOSUIKit.bodyEmphasizedObject,
+    color: gray50,
+    textAlign: 'center',
+  },
+  borderedButton: {
+    borderRightWidth: 2,
+    borderRightColor: gray400,
   },
   subsectionTitle: {
     ...iOSUIKit.title3Emphasized,
@@ -69,6 +100,21 @@ export default StyleSheet.create({
         shadowRadius: 6,
       },
     }),
+  },
+  textAreaContainer: {
+    backgroundColor: gray50,
+    minHeight: 64,
+    width: '100%',
+    marginVertical: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  textArea: {
+    width: '80%',
+  },
+  additionalInput: {
+    color: gray900,
+    paddingHorizontal: 20,
   },
   checkContainer: {
     flex: 1,
