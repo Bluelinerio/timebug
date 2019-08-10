@@ -2,7 +2,6 @@
 import React, { useState, useCallback, useMemo } from 'react'
 import SubstepListComponent from '../components/SubstepListComponent'
 import { Substep } from '../../types'
-import { useGoalStepModifiers } from '../../hooks/GoalHooks'
 
 type Props = {
   goal: Goal,
