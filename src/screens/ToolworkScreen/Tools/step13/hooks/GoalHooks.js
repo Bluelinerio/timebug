@@ -125,6 +125,11 @@ const useGoalStoreData = (goal: Goal) => {
   const { id } = goal
   const storedToolData = data && data.value ? data.value.toolData || [] : []
 
+  const currentToolDataForGoal = storedToolData.find(td => {
+    const { goalId } = td
+    return goalId === id
+  })
+
   const storeGoalData = useCallback(
     data => {
       const filteredData = storedToolData.filter(td => {
@@ -139,15 +144,15 @@ const useGoalStoreData = (goal: Goal) => {
     [id, storeToolData, storedToolData]
   )
 
-  return storeGoalData
+  return [currentToolDataForGoal, storeGoalData]
 }
 
 export const useGoalModifiers = (goal: Goal) => {
   const { id } = goal
-  const storeGoalData = useGoalStoreData(goal)
+  const [currentToolDataForGoal, storeGoalData] = useGoalStoreData(goal)
 
-  const GoalToolData = goal.toolData
-    ? goal.toolData
+  const GoalToolData = currentToolDataForGoal
+    ? currentToolDataForGoal
     : {
         goalId: id,
       }
@@ -203,30 +208,35 @@ export const useGoalModifiers = (goal: Goal) => {
   }
 }
 
+export const useStepStoreData = (goal: Goal, substep: Substep) => {
+
+}
+
 export const useGoalStepModifiers = (goal: Goal, substep: Substep) => {
   const { id: goalId } = goal
   const { id } = substep
-  const storeData = useGoalStoreData(goal)
+  const [currentToolDataForGoal, storeData] = useGoalStoreData(goal)
 
-  const GoalToolData = goal.toolData
-    ? goal.toolData
+  const GoalToolData = currentToolDataForGoal
+    ? currentToolDataForGoal
     : {
         goalId: id,
       }
 
   const steps = GoalToolData.steps ? GoalToolData.steps : []
 
-  const stepToolData = substep.toolData
-    ? substep.toolData
-    : {
-        substepId: id,
-      }
+  const currentToolDataForStep = steps.find(td => {
+    const { substepId } = td
+    return substepId === id
+  }) || {
+    substepId: id,
+  }
 
   const storeStepData = useCallback(
     substepData => {
       const filteredData = steps.filter(td => {
-        const { id } = td
-        return id !== id
+        const { substepId } = td
+        return id !== substepId
       })
 
       const newData = [...filteredData, substepData]
@@ -238,17 +248,17 @@ export const useGoalStepModifiers = (goal: Goal, substep: Substep) => {
 
       storeData(data)
     },
-    [id, goalId, storeData, stepToolData]
+    [id, goalId, storeData, currentToolDataForStep]
   )
 
-  const { completed } = stepToolData
+  const { completed } = currentToolDataForStep
 
   const storeStepCompletion = useCallback(
     () => {
       const newCompleted = !completed
       const completedAt = newCompleted ? moment().format() : null
       const data = {
-        ...stepToolData,
+        ...currentToolDataForStep,
         completed: newCompleted,
         completedAt,
       }

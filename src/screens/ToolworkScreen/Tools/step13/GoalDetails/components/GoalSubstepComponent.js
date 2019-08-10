@@ -7,7 +7,8 @@ import { Substep } from '../../types'
 
 type Props = {
   substep: Substep,
-  storeStepCompletion: () => void
+  storeStepCompletion: () => void,
+  completed?: boolean,
 }
 
 class GoalSubstepComponent extends React.PureComponent<Props> {
@@ -17,23 +18,23 @@ class GoalSubstepComponent extends React.PureComponent<Props> {
   }
 
   render() {
-    const { substep } = this.props
+    const { substep, completed = false } = this.props
     return (
       <View style={styles.substepContainer}>
         <TouchableOpacity style={styles.checkContainer} onPress={this.toggle}>
           <Icon
             name={
-              substep.toolData && substep.toolData.completed
+              completed
                 ? 'ios-checkmark-circle'
                 : 'ios-checkmark-circle-outline'
             }
             size={32}
-            color={substep.toolData && substep.toolData.completed ? completedColor : incompleteColor}
+            color={completed ? completedColor : incompleteColor}
           />
         </TouchableOpacity>
         <View style={styles.substepTextContainer}>
           <Text key={substep.id} style={[styles.text, styles.substepName]}>
-            - {substep.name}
+            {substep.name}
           </Text>
         </View>
       </View>
