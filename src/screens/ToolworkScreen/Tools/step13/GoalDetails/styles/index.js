@@ -11,6 +11,9 @@ import {
 export const completedColor = VISION_CREATION
 export const incompleteColor = gray400
 
+export const minimumTrackColor = SELF_ASSESSMENT
+export const maximumTrackColor = gray400
+
 export default StyleSheet.create({
   container: {
     flex: 1,

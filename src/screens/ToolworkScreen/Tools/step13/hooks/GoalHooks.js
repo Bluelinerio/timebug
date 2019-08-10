@@ -82,6 +82,7 @@ const parseValueAsGoals = (category?: string) => (
       timeToComplete,
       steps,
       creation,
+      created_at: val.created_at,
       toolData: toolDataForGoal,
     }
   })
@@ -264,13 +265,16 @@ export const useGoalStepModifiers = (goal: Goal, substep: Substep) => {
     [storeStepData, completed]
   )
 
-  const storeStepDue = useCallback((due: string) => {
-    const data = {
-      ...currentToolDataForStep,
-      due,
-    }
-    storeStepData(data)
-  }, [storeStepData, due])
+  const storeStepDue = useCallback(
+    (due: string) => {
+      const data = {
+        ...currentToolDataForStep,
+        due,
+      }
+      storeStepData(data)
+    },
+    [storeStepData, due]
+  )
 
   return { completed, storeStepCompletion, due, storeStepDue }
 }
