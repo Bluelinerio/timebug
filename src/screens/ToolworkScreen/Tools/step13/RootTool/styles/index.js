@@ -1,9 +1,6 @@
 import { StyleSheet, Platform } from 'react-native'
 import { iOSUIKit } from 'react-native-typography'
-import {
-  gray900,
-  gray50,
-} from '2020_constants/colors'
+import { gray900, gray50, SELF_ASSESSMENT } from '2020_constants/colors'
 
 export default StyleSheet.create({
   container: {
@@ -86,5 +83,16 @@ export default StyleSheet.create({
   headerSubtitle: {
     ...iOSUIKit.subheadEmphasizedObject,
     color: gray900,
+  },
+  linkContainer: {
+    minHeight: 64,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  link: {
+    ...iOSUIKit.title3EmphasizedObject,
+    textAlign: 'center',
+    color: SELF_ASSESSMENT,
+    marginVertical: 15,
   },
 })

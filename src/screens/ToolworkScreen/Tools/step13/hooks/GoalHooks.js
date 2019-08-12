@@ -108,7 +108,7 @@ export const useStepTooldata = (goal: Goal, step: Substep) => {
   return { completed }
 }
 
-export const useGoals = (category?: string) => {
+export const useGoals = (category?: string, filter: string = 'open') => {
   const { data } = useContext(ToolDataContext)
 
   const value = data ? data.value : {}
@@ -117,7 +117,11 @@ export const useGoals = (category?: string) => {
 
   const goals = parseValueAsGoals(category)(formValue, toolDataValue)
 
-  return goals.filter(_filterOpenGoals)
+  return goals.filter(
+    filter === 'deleted'
+      ? _isGoalDeleted
+      : filter === 'completed' ? _isGoalCompleted : _filterOpenGoals
+  )
 }
 
 const useGoalStoreData = (goal: Goal) => {

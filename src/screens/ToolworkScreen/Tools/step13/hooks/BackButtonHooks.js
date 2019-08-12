@@ -48,6 +48,8 @@ export const useSubtitle = (screen: string, category?: string) => {
         case screens.CATEGORIES:
         case screens.BACKLOG_GOAL_DETAILS:
         case screens.DELETED_GOAL_BACKLOG_DETAILS:
+        case screens.BACKLOG:
+        case screens.DELETED_BACKLOG:
           setSubtitle('')
           break
         case screens.GOAL_LIST:
@@ -81,6 +83,8 @@ export const useBackHandler = (screen: string) => {
         case screens.GOAL_RECOMMENDATIONS:
         case screens.BACKLOG_GOAL_DETAILS:
         case screens.DELETED_GOAL_BACKLOG_DETAILS:
+        case screens.BACKLOG:
+        case screens.DELETED_BACKLOG:
           setShowBackHandler(true)
           break
         default:
