@@ -20,7 +20,6 @@ const getBackButtonHandler = (
     unsetGoal,
     openBacklog,
     openDeletedBacklog,
-    openBacklogGoalDetails,
   }
 ) => {
   switch (screen) {
@@ -43,16 +42,17 @@ const getBackButtonHandler = (
         openGoalList()
       }
     case screens.BACKLOG:
-      return () => {
-        openBacklog()
-      }
     case screens.DELETED_BACKLOG:
       return () => {
-        openDeletedBacklog()
+        openCategories()
       }
     case screens.BACKLOG_GOAL_DETAILS:
       return () => {
-        openBacklogGoalDetails()
+        openBacklog()
+      }
+    case screens.DELETED_GOAL_BACKLOG_DETAILS:
+      return () => {
+        openDeletedBacklog()
       }
     default:
       return () => null
@@ -67,7 +67,6 @@ const HeaderContainer = () => {
     openGoalRecommendations,
     openBacklog,
     openDeletedBacklog,
-    openBacklogGoalDetails,
   } = useContext(ScreenContext)
   const { category: categoryKey, unsetCategory } = useContext(CategoryContext)
   const { unsetGoal, goal } = useContext(GoalContext)
@@ -83,7 +82,6 @@ const HeaderContainer = () => {
     unsetGoal,
     openBacklog,
     openDeletedBacklog,
-    openBacklogGoalDetails,
   })
   return (
     <Header
