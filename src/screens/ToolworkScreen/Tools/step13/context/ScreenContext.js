@@ -7,6 +7,9 @@ type State = {
   openGoalList: () => void,
   openGoalDetail: () => void,
   openGoalRecommendations: () => void,
+  openBacklog: () => void,
+  openDeletedBacklog: () => void,
+  openBacklogGoalDetails: () => void,
   openForm: () => void,
 }
 
@@ -22,6 +25,9 @@ const screens = {
   GOAL_DETAIL: 'GOAL_DETAIL',
   GOAL_RECOMMENDATIONS: 'GOAL_RECOMMENDATIONS',
   FORM: 'FORM',
+  BACKLOG: 'BACKLOG',
+  DELETED_BACKLOG: 'DELETED_BACKLOG',
+  BACKLOG_GOAL_DETAILS: 'BACKLOG_GOAL_DETAILS',
 }
 
 const initialState = {
@@ -30,6 +36,9 @@ const initialState = {
   openGoalList: () => null,
   openGoalDetail: () => null,
   openGoalRecommendations: () => null,
+  openBacklog: () => null,
+  openDeletedBacklog: () => null,
+  openBacklogGoalDetails: () => null,
   openForm: () => null,
 }
 
@@ -60,6 +69,18 @@ class ScreenProvider extends React.PureComponent<Props, State> {
     this.setState({ screen: screens.GOAL_RECOMMENDATIONS })
   }
 
+  openBacklog = () => {
+    this.setState({ screen: screens.BACKLOG })
+  }
+
+  openDeletedBacklog = () => {
+    this.setState({ screen: screens.DELETED_BACKLOG })
+  }
+
+  openBacklogGoalDetails = () => {
+    this.setState({ screen: screens.BACKLOG_GOAL_DETAILS })
+  }
+
   render() {
     return (
       <ScreenContext.Provider
@@ -70,6 +91,9 @@ class ScreenProvider extends React.PureComponent<Props, State> {
           openGoalList: this.openGoalList,
           openForm: this.openForm,
           openGoalRecommendations: this.openGoalRecommendations,
+          openBacklog: this.openBacklog,
+          openDeletedBacklog: this.openDeletedBacklog,
+          openBacklogGoalDetails: this.openBacklogGoalDetails,
         }}
       >
         {this.props.children}
