@@ -17,7 +17,7 @@ const initialState = {
 
 const GoalContext = React.createContext(initialState)
 
-class GoalProvider extends React.PureComponent<Props> {
+class GoalProvider extends React.PureComponent<Props, ProvidedProps> {
   state = {
     ...initialState,
   }
