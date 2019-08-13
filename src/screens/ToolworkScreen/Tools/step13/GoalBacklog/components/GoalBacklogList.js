@@ -2,6 +2,7 @@
 import React, { Fragment } from 'react'
 import { View } from 'react-native'
 import GoalButton from '../containers/GoalButtonContainer'
+import styles from '../styles'
 import { Goal } from '../../types'
 
 type Props = {
@@ -13,7 +14,9 @@ class GoalBacklogList extends React.PureComponent<Props> {
     const { goals } = this.props
     return (
       <Fragment>
-        <View>{goals.map(g => <GoalButton key={g.id} goal={g} />)}</View>
+        <View style={styles.goalBacklogListContainer}>
+          {goals.map(g => <GoalButton key={g.id} goal={g} />)}
+        </View>
       </Fragment>
     )
   }
