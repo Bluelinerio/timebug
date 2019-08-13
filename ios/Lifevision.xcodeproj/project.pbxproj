@@ -75,7 +75,8 @@
 		54F05E03BB9D45DBB50A5179 /* Metropolis-ThinItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = FC1002986DAE4858AC9EFA4C /* Metropolis-ThinItalic.otf */; };
 		588FBD6AC5D8471997B72308 /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 573073BF8E7147C9AF6BF4BA /* libRCTFBSDK.a */; };
 		59051F5C22E24AE6000CDCAE /* MoEngage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59051F1922E24AE5000CDCAE /* MoEngage.framework */; };
-		59051FCD22E2893A000CDCAE /* libRCTPushNotification.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 59051FCA22E250AC000CDCAE /* libRCTPushNotification.a */; };
+		5946254123030A7200972E43 /* libRCTPushNotification.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 59051FCA22E250AC000CDCAE /* libRCTPushNotification.a */; };
+		596DD541230308500050B6BD /* libRNFirebase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E57A2922E755370081BE02 /* libRNFirebase.a */; };
 		59A08F992209D5CE00EF2F40 /* RNUnifiedContactsBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A08F962209D5CD00EF2F40 /* RNUnifiedContactsBridge.m */; };
 		59A08F9A2209D5CE00EF2F40 /* RNUnifiedContacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A08F972209D5CD00EF2F40 /* RNUnifiedContacts.swift */; };
 		59B48CCB21F9DDFD004F2113 /* bell.wav in Resources */ = {isa = PBXBuildFile; fileRef = 59B48CCA21F9DDFD004F2113 /* bell.wav */; };
@@ -828,7 +829,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				59051FCD22E2893A000CDCAE /* libRCTPushNotification.a in Frameworks */,
+				5946254123030A7200972E43 /* libRCTPushNotification.a in Frameworks */,
+				596DD541230308500050B6BD /* libRNFirebase.a in Frameworks */,
 				59FB3D8D22B0196E00102ED0 /* JavaScriptCore.framework in Frameworks */,
 				6C5CA0B9201EF6C9007A4AC5 /* libRNDeviceInfo.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
