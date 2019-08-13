@@ -15,6 +15,8 @@ type Props = {
   notes: string,
   completed?: boolean,
   steps: Array<SubstepToolData>,
+  onCompletePress: () => void,
+  onDeletePress: () => void,
 }
 
 const calculateDueDate = (goal: Goal) => {
@@ -28,7 +30,7 @@ const calculateDueDate = (goal: Goal) => {
 }
 
 const GoalDetailsContent = (props: Props) => {
-  const { goal, notes, storeNotes, completed, steps } = props
+  const { goal, notes, storeNotes, completed, steps, onCompletePress, onDeletePress } = props
   const [stateNotes, setNotes] = useState(notes ? notes : '')
   const totalSteps = goal.steps.length
   const completedSteps = steps ? steps.filter(s => s.completed).length : 0
@@ -116,10 +118,10 @@ const GoalDetailsContent = (props: Props) => {
         />
       </View>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={[styles.goalButton, styles.borderedButton]}>
+        <TouchableOpacity style={[styles.goalButton, styles.borderedButton]} onPress={onCompletePress}>
           <Text style={styles.goalButtonText}>Complete goal</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.goalButton}>
+        <TouchableOpacity style={styles.goalButton} onPress={onDeletePress}>
           <Text style={styles.goalButtonText}>Delete goal</Text>
         </TouchableOpacity>
       </View>

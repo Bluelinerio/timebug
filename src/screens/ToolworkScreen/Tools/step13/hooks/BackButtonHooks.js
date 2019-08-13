@@ -19,6 +19,16 @@ export const useTitle = (screen: string, goal: any = null) => {
         case screens.GOAL_DETAIL:
           setTitle(`Goal Details: ${goal ? goal.name : ''}`)
           break
+        case screens.BACKLOG:
+          setTitle(`Completed goals`)
+          break
+        case screens.DELETED_BACKLOG:
+          setTitle(`Deleted goals`)
+          break
+        case screens.BACKLOG_GOAL_DETAILS:
+        case screens.DELETED_GOAL_BACKLOG_DETAILS:
+          setTitle(`Goal backlog: ${goal ? goal.name : ''}`)
+          break
         default:
           setTitle('Phase 2 goals')
       }
@@ -36,6 +46,10 @@ export const useSubtitle = (screen: string, category?: string) => {
     () => {
       switch (screen) {
         case screens.CATEGORIES:
+        case screens.BACKLOG_GOAL_DETAILS:
+        case screens.DELETED_GOAL_BACKLOG_DETAILS:
+        case screens.BACKLOG:
+        case screens.DELETED_BACKLOG:
           setSubtitle('')
           break
         case screens.GOAL_LIST:
@@ -67,6 +81,10 @@ export const useBackHandler = (screen: string) => {
         case screens.FORM:
         case screens.GOAL_DETAIL:
         case screens.GOAL_RECOMMENDATIONS:
+        case screens.BACKLOG_GOAL_DETAILS:
+        case screens.DELETED_GOAL_BACKLOG_DETAILS:
+        case screens.BACKLOG:
+        case screens.DELETED_BACKLOG:
           setShowBackHandler(true)
           break
         default:

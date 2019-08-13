@@ -4,6 +4,7 @@ import { View } from 'react-native'
 import CategoryButton from '../containers/CategoryButtonContainer'
 import Header from '../containers/HeaderContainer'
 import { Category } from '../../context/CategoryContext'
+import BacklogLink from '../containers/BacklogLinkContainer'
 import styles from '../styles'
 
 type Props = {
@@ -21,6 +22,7 @@ class CategoryList extends React.PureComponent<Props> {
             <CategoryButton key={cat.key} category={cat} />
           ))}
         </View>
+        <BacklogLink />
       </Fragment>
     )
   }

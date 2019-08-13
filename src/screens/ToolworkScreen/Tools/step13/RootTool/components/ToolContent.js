@@ -6,6 +6,7 @@ import GoalRecommendations from '../../GoalRecomendations'
 import GoalList from '../../GoalList'
 import GoalDetails from '../../GoalDetails'
 import Form from '../../Form'
+import GoalBacklog from '../../GoalBacklog'
 
 class ToolContent extends React.PureComponent<ProvidedProps> {
   render() {
@@ -21,6 +22,9 @@ class ToolContent extends React.PureComponent<ProvidedProps> {
         return <Form />
       case screens.GOAL_DETAIL:
         return <GoalDetails />
+      case screens.BACKLOG:
+      case screens.DELETED_BACKLOG:
+        return <GoalBacklog />
       default:
         return null
     }
