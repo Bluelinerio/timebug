@@ -6,13 +6,14 @@ import styles from '../styles'
 
 type Props = {
   goal: Goal,
+  onPress: () => void,
 }
 
 class GoalButton extends React.PureComponent<Props> {
   render() {
-    const { goal } = this.props
+    const { goal, onPress } = this.props
     return (
-      <TouchableOpacity style={styles.goalButton}>
+      <TouchableOpacity style={styles.goalButton} onPress={onPress}>
         <Text style={styles.goal}>{goal.name}</Text>
       </TouchableOpacity>
     )
