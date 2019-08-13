@@ -122,7 +122,7 @@ const GoalDetailsContent = (props: Props) => {
           <Text style={styles.goalButtonText}>Complete goal</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.goalButton} onPress={onDeletePress}>
-          <Text style={styles.goalButtonText}>Delete goal</Text>
+          <Text style={styles.goalButtonText}>Backlog goal</Text>
         </TouchableOpacity>
       </View>
     </View>

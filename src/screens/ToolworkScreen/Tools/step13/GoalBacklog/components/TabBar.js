@@ -19,13 +19,13 @@ class TabBar extends React.PureComponent<Props> {
         <Tab
           onPress={onBacklogPress}
           selected={screen === screens.BACKLOG}
-          text={'Completed Goals'}
+          text={'Completed'}
           style={styles.leftTab}
         />
         <Tab
           onPress={onDeletedBacklogPress}
           selected={screen === screens.DELETED_BACKLOG}
-          text={'Deleted Goals'}
+          text={'Backlog'}
         />
       </View>
     )

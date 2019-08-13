@@ -23,11 +23,13 @@ export const useTitle = (screen: string, goal: any = null) => {
           setTitle(`Completed goals`)
           break
         case screens.DELETED_BACKLOG:
-          setTitle(`Deleted goals`)
+          setTitle(`Backlogged goals`)
           break
         case screens.BACKLOG_GOAL_DETAILS:
+          setTitle(`Completed goal: ${goal ? goal.name : ''}`)
+          break
         case screens.DELETED_GOAL_BACKLOG_DETAILS:
-          setTitle(`Goal backlog: ${goal ? goal.name : ''}`)
+          setTitle(`Backlogged goal: ${goal ? goal.name : ''}`)
           break
         default:
           setTitle('Phase 2 goals')

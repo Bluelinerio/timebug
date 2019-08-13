@@ -1,3 +1,3 @@
-import GoalsBacklog from '../components/GoalBacklogDetails'
+import GoalsBacklogDetails from '../components/GoalBacklogDetails'
 
-export default GoalsBacklog
+export default GoalsBacklogDetails

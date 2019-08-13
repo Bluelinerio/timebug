@@ -84,7 +84,7 @@ class ScreenProvider extends React.PureComponent<Props, State> {
     this.setState({ screen: screens.BACKLOG_GOAL_DETAILS })
   }
 
-  openDeletedGoalBacklogDetails = () => {
+  openDeletedBacklogGoalDetails = () => {
     this.setState({ screen: screens.DELETED_GOAL_BACKLOG_DETAILS })
   }
 
@@ -101,7 +101,7 @@ class ScreenProvider extends React.PureComponent<Props, State> {
           openBacklog: this.openBacklog,
           openDeletedBacklog: this.openDeletedBacklog,
           openBacklogGoalDetails: this.openBacklogGoalDetails,
-          openDeletedGoalBacklogDetails: this.openDeletedGoalBacklogDetails,
+          openDeletedBacklogGoalDetails: this.openDeletedBacklogGoalDetails,
         }}
       >
         {this.props.children}

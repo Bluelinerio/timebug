@@ -13,7 +13,7 @@ class BacklogLink extends React.PureComponent<Props> {
     return (
       <View styles={styles.linkContainer}>
         <TouchableOpacity onPress={onPress}>
-          <Text style={styles.link}>Open Goals backlog</Text>
+          <Text style={styles.link}>Open Goals Archive</Text>
         </TouchableOpacity>
       </View>
     )

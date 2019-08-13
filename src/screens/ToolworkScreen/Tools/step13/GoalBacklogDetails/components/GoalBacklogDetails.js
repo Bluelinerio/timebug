@@ -1,6 +1,8 @@
+// @flow
 import React from 'react'
 import { View } from 'react-native'
 import Header from '../../RootTool/containers/HeaderContainer'
+import Details from '../containers/DetailsContainer'
 import styles from '../styles'
 
 class GoalBacklogDetails extends React.PureComponent {
@@ -8,7 +10,7 @@ class GoalBacklogDetails extends React.PureComponent {
     return (
       <View style={styles.container}>
         <Header />
-        
+        <Details />
       </View>
     )
   }
