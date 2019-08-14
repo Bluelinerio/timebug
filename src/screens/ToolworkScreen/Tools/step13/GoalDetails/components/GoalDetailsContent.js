@@ -125,7 +125,7 @@ const GoalDetailsContent = (props: Props) => {
           : daysLeft < 0
             ? 'This goal is past due.'
             : daysLeft === 0
-              ? `Today is `
+              ? `Today is the last day to complete this goal`
               : `You have ${daysLeft} ${
                   daysLeft === 1 ? 'day' : 'days'
                 } left to complete this goal!`}
