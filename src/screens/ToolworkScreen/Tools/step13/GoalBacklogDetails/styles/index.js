@@ -62,6 +62,7 @@ export default StyleSheet.create({
     color: gray900,
   },
   actionsContainer: {
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
@@ -75,6 +76,12 @@ export default StyleSheet.create({
     padding: 8,
     width: '50%',
     borderRadius: 6,
+  },
+  multipleActionsContainer: {
+    justifyContent: 'space-around',
+  },
+  actionButtonSibling: {
+    width: '40%',
   },
   actionText: {
     ...iOSUIKit.title3EmphasizedObject,

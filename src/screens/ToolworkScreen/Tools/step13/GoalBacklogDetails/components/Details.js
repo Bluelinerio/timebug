@@ -9,16 +9,17 @@ import styles from '../styles'
 
 type Props = {
   goal: Goal,
-  screen: string,
   outcome: string,
   storeOutcome: string => void,
   onReopen: () => void,
+  completedAt: () => void,
 }
 
 const BackloggedGoalDetails = (props: Props) => {
   const [openDialog, setOpenDialog] = useState(false)
-  const { goal, outcome, storeOutcome, onReopen } = props
+  const { goal, outcome, storeOutcome, onReopen, completedAt } = props
   const formattedDate = moment(goal.creation).format('MM/DD/YYYY')
+  const formattedCompletion = moment(completedAt).format('MM/DD/YYYY')
 
   const onOpen = useCallback(() => {
     setOpenDialog(true)
@@ -67,6 +68,9 @@ const BackloggedGoalDetails = (props: Props) => {
       <Text style={[styles.text, styles.detailsStandard]}>
         Estimated duration:{' '}
         <Text style={styles.goalText}>{goal.timeToComplete.text}</Text>
+      </Text>
+      <Text style={[styles.text, styles.detailsStandard]}>
+        Completed on: <Text style={styles.goalText}>{formattedCompletion}</Text>
       </Text>
       <Text style={[styles.text, styles.detailsStandard]}>
         Outcome for this goal:{' '}

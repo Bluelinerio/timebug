@@ -7,7 +7,12 @@ import { useGoalModifiers } from '../../hooks/GoalHooks'
 const DetailsContainer = () => {
   const { goal, unsetGoal } = useContext(GoalContext)
   const { screen, openBacklog } = useContext(ScreenContext)
-  const { outcome, storeOutcome, toggleGoalCompletion } = useGoalModifiers(goal)
+  const {
+    outcome,
+    storeOutcome,
+    toggleGoalCompletion,
+    completedAt,
+  } = useGoalModifiers(goal)
 
   const onReopen = useCallback(() => {
     unsetGoal()
@@ -22,6 +27,7 @@ const DetailsContainer = () => {
       outcome={outcome}
       storeOutcome={storeOutcome}
       onReopen={onReopen}
+      completedAt={completedAt}
     />
   )
 }

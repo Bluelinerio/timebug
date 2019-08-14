@@ -124,6 +124,39 @@ export const useGoals = (category?: string, filter: string = 'open') => {
   )
 }
 
+export const useFullToolData = (goal: Goal) => {
+  const { storeAllData, data } = useContext(ToolDataContext)
+  const { id } = goal
+  const storedToolData = data && data.value ? data.value.toolData || [] : []
+  const storedFormData = data && data.value ? data.value.form || [] : []
+
+  const storeGoalData = useCallback(
+    (formData, toolData) => {
+      const filteredToolData = storedToolData.filter(td => {
+        const { goalId } = td
+        return goalId !== id
+      })
+
+      const filteredFormData = storedFormData.filter(td => {
+        const { _id } = td
+        return _id !== id
+      })
+
+      const newFormData = [...filteredFormData]
+
+      const newToolData = [...filteredToolData]
+
+      if (formData) newFormData.push(formData)
+      if (toolData) newToolData.push(toolData)
+
+      storeAllData(formData, toolData)
+    },
+    [id, storeAllData, storedToolData, storedFormData]
+  )
+
+  return storeGoalData
+}
+
 const useGoalStoreData = (goal: Goal) => {
   const { storeToolData, data } = useContext(ToolDataContext)
   const { id } = goal
@@ -141,7 +174,9 @@ const useGoalStoreData = (goal: Goal) => {
         return goalId !== id
       })
 
-      const newData = [...filteredData, data]
+      const newData = [...filteredData]
+
+      if (data) newData.push(data)
 
       storeToolData(newData)
     },
@@ -151,9 +186,52 @@ const useGoalStoreData = (goal: Goal) => {
   return [currentToolDataForGoal, storeGoalData]
 }
 
+const useFormDataForGoal = (goal: Goal) => {
+  const { storeFormData, data } = useContext(ToolDataContext)
+  const { id } = goal
+  const storedFormData = data && data.value ? data.value.form || [] : []
+
+  const currentFormDataForGoal = storedFormData.find(td => {
+    const { goalId } = td
+    return goalId === id
+  })
+
+  const storeGoalFormData = useCallback(
+    data => {
+      const filteredData = storedFormData.filter(td => {
+        const { _id } = td
+        return _id !== id
+      })
+
+      const newData = [...filteredData, data]
+
+      storeFormData(newData)
+    },
+    [id, storeFormData, storedFormData]
+  )
+
+  const deleteGoal = useCallback(
+    () => {
+      const filteredData = storedFormData.filter(td => {
+        const { _id } = td
+        return _id !== id
+      })
+
+      const newData = [...filteredData]
+
+      storeFormData(newData)
+    },
+    [id, storeFormData, storedFormData]
+  )
+
+  return { currentFormDataForGoal, storeGoalFormData, deleteGoal }
+}
+
 export const useGoalModifiers = (goal: Goal) => {
+  if (!goal) return {}
   const { id } = goal
   const [currentToolDataForGoal, storeGoalData] = useGoalStoreData(goal)
+  const { deleteGoal } = useFormDataForGoal(goal)
 
   const GoalToolData = currentToolDataForGoal
     ? currentToolDataForGoal
@@ -161,7 +239,15 @@ export const useGoalModifiers = (goal: Goal) => {
         goalId: id,
       }
 
-  const { notes, completed, deleted, steps, outcome } = GoalToolData
+  const {
+    notes,
+    completed,
+    deleted,
+    steps,
+    outcome,
+    deletedAt,
+    completedAt,
+  } = GoalToolData
 
   const storeNotes = useCallback(
     (newNotes: string) => {
@@ -214,6 +300,14 @@ export const useGoalModifiers = (goal: Goal) => {
     [id, storeGoalData, storeOutcome, GoalToolData]
   )
 
+  const hardDeleteGoal = useCallback(
+    () => {
+      storeGoalData()
+      deleteGoal()
+    },
+    [id, storeGoalData, deleteGoal]
+  )
+
   return {
     notes,
     storeNotes,
@@ -224,6 +318,9 @@ export const useGoalModifiers = (goal: Goal) => {
     steps,
     outcome,
     storeOutcome,
+    hardDeleteGoal,
+    deletedAt,
+    completedAt,
   }
 }
 
