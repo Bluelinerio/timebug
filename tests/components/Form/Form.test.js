@@ -29,14 +29,14 @@ describe('Form complex behavior tests', function() {
       .state()
     expect(childState.formIteration).toBe(2)
     expect(Object.keys(childState.value).length).toBe(0)
-    expect(props.editionIndex).toBe(null)
+    expect(props.editionId).toBe(null)
   })
 
   it('should render with edition index as it is', function() {
     const store = createMockStore(state)
     const onFinish = jest.fn(() => null)
     const component = shallowWithStore(
-      <FormTestContainer onFinish={onFinish} editionIndex={1} />,
+      <FormTestContainer onFinish={onFinish} editionId={1} />,
       store
     )
     const props = component.dive().props()
@@ -44,7 +44,7 @@ describe('Form complex behavior tests', function() {
       .dive()
       .shallow()
       .state()
-    expect(props.editionIndex).toBe(1)
+    expect(props.editionId).toBe(1)
     expect(childState.formIteration).toBe(1)
     expect(Object.keys(childState.value).length).toBeGreaterThan(0)
   })
@@ -53,7 +53,7 @@ describe('Form complex behavior tests', function() {
     const store = createMockStore(state)
     const onFinish = jest.fn(() => null)
     const component = shallowWithStore(
-      <FormTestContainer onFinish={onFinish} editionIndex={1} />,
+      <FormTestContainer onFinish={onFinish} editionId={1} />,
       store
     )
     const props = component.dive().props()
@@ -61,17 +61,17 @@ describe('Form complex behavior tests', function() {
       .dive()
       .shallow()
       .state()
-    expect(props.editionIndex).toBe(1)
+    expect(props.editionId).toBe(1)
     expect(childState.formIteration).toBe(1)
     expect(Object.keys(childState.value).length).toBeGreaterThan(0)
 
-    component.setProps({ editionIndex: undefined })
+    component.setProps({ editionId: undefined })
     const newProps = component.dive().props()
     const newChildState = component
       .dive()
       .shallow()
       .state()
-    expect(newProps.editionIndex).toBe(null)
+    expect(newProps.editionId).toBe(null)
     expect(Object.keys(newChildState.value).length).toBe(0)
   })
 })

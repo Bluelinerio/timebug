@@ -175,12 +175,8 @@ const merge = (
   const { steps: formSteps, formData } = stateProps
   const step = formSteps[stepEnum.STEP_5]
   const phase = translateCMSPhaseToStandard(step.type)
-  const formDataForStep = formData[stepEnum.STEP_5].value
-  const editionIndex = formDataForStep.reduce((currentIndex, f, index) => {
-    if (f._id === goal._id) return index
-    return currentIndex
-  }, -1)
-  const reopen = reopenGoalScreen({ step, phase, editionIndex })
+  const editionId = goal._id
+  const reopen = reopenGoalScreen({ step, phase, editionId })
   const deletionDate = goal.toolData.deletionDate
   const toggleGoal = reopenGoal(
     goal,

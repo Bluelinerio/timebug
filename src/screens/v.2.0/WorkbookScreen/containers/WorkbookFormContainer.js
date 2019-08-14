@@ -33,7 +33,7 @@ const merge = ({
   data,
   stepNumber,
   navigation,
-  editionIndex,
+  editionId,
   ...props
 }) => {
   const model = models[stepNumber]
@@ -45,7 +45,7 @@ const merge = ({
     model,
     stepNumber,
     submitForm,
-    editionIndex,
+    editionId,
     navigation,
     baseValues,
   }

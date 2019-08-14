@@ -1,15 +1,16 @@
 // @flow
-import { mapProps, compose }        from 'recompose'
-import GoalsFromTypeList            from '../components/GoalsFromTypeList'
-import StepDataHOC                  from '2020_HOC/ToolStepDataProvider'
-import { stepEnum }                 from '2020_services/cms'
+import { mapProps, compose } from 'recompose'
+import GoalsFromTypeList from '../components/GoalsFromTypeList'
+import StepDataHOC from '2020_HOC/ToolStepDataProvider'
+import { stepEnum } from '2020_services/cms'
 import { FORM_KEYS, CHILDREN_KEYS } from '2020_forms/forms/step11'
-import { GoalType }                 from '2020_forms/forms/content'
+import { GoalType } from '2020_forms/forms/content'
 import {
   getDataFromForm,
   parseDataFromType,
-}                                   from '2020_utils/getDataFromFormValue'
-import type { Goal }                from '../types'
+} from '2020_utils/getDataFromFormValue'
+import type { InnerElementIdentificationPayload } from '2020_redux/actions/formData.actions'
+import type { Goal } from '../types'
 
 type Props = {
   tool: { subtitle: string },
@@ -21,7 +22,8 @@ type Props = {
 const parseDataAsGoals = (
   goalData = [],
   completionData = [],
-  effortData = []
+  effortData = [],
+  valueId: string,
 ): Array<Goal> => {
   const mergeData: Array<Goal> = goalData.map(goal => {
     const { id } = goal
@@ -35,10 +37,26 @@ const parseDataAsGoals = (
         : GoalType[0]
     const goalOutcome = goal[CHILDREN_KEYS.form_11_goal.goalType].value
 
+    const identificationPayload: InnerElementIdentificationPayload = [
+      {
+        id,
+        key: FORM_KEYS.form_11_goal,
+      },
+      {
+        id: completionLevel.meta.id,
+        key: FORM_KEYS.form_11_goal_completion,
+      },
+      {
+        id: effortForThisGoal.meta.id,
+        key: FORM_KEYS.form_11_goal_time,
+      },
+    ]
+
     const completion =
       completionLevel && completionLevel.value !== ''
         ? completionLevel.value
         : 50
+
     return {
       id,
       name: goalName,
@@ -46,6 +64,8 @@ const parseDataAsGoals = (
       outcome: goalOutcome,
       completion,
       effort: effortForThisGoal ? effortForThisGoal.value : 'unspecified',
+      identificationPayload,
+      valueId,
     }
   })
 
@@ -62,10 +82,10 @@ const merge = (props: Props) => {
     childKeys: Object.values(CHILDREN_KEYS.form_11_goal),
   })
   const completionData = parseDataFromType(
-    parsedData[FORM_KEYS.form_11_goal_satisfaction]
+    parsedData[FORM_KEYS.form_11_goal_completion]
   )
   const effortData = parseDataFromType(parsedData[FORM_KEYS.form_11_goal_time])
-  const goals = parseDataAsGoals(goalData, completionData, effortData)
+  const goals = parseDataAsGoals(goalData, completionData, effortData, formValue._id)
   return {
     ...rest,
     onSelect,
