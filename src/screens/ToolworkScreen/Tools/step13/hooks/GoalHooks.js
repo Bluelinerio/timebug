@@ -161,7 +161,7 @@ export const useGoalModifiers = (goal: Goal) => {
         goalId: id,
       }
 
-  const { notes, completed, deleted, steps } = GoalToolData
+  const { notes, completed, deleted, steps, outcome } = GoalToolData
 
   const storeNotes = useCallback(
     (newNotes: string) => {
@@ -171,21 +171,22 @@ export const useGoalModifiers = (goal: Goal) => {
       }
       storeGoalData(data)
     },
-    [id, storeGoalData]
+    [id, storeGoalData, GoalToolData]
   )
 
   const toggleGoalCompletion = useCallback(
-    () => {
+    (outcome?: string) => {
       const newCompleted = !completed
       const completedAt = newCompleted ? moment().format() : null
       const data = {
         ...GoalToolData,
         completed: newCompleted,
         completedAt,
+        outcome: outcome ? outcome : null,
       }
       storeGoalData(data)
     },
-    [id, storeGoalData, completed]
+    [id, storeGoalData, completed, GoalToolData]
   )
 
   const toggleGoalDeletion = useCallback(
@@ -199,7 +200,18 @@ export const useGoalModifiers = (goal: Goal) => {
       }
       storeGoalData(data)
     },
-    [id, storeGoalData, deleted]
+    [id, storeGoalData, deleted, GoalToolData]
+  )
+
+  const storeOutcome = useCallback(
+    (outcome: string) => {
+      const data = {
+        ...GoalToolData,
+        outcome,
+      }
+      storeGoalData(data)
+    },
+    [id, storeGoalData, storeOutcome, GoalToolData]
   )
 
   return {
@@ -210,6 +222,8 @@ export const useGoalModifiers = (goal: Goal) => {
     deleted,
     toggleGoalDeletion,
     steps,
+    outcome,
+    storeOutcome,
   }
 }
 

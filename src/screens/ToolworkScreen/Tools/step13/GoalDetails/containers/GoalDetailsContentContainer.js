@@ -1,3 +1,4 @@
+// @flow
 import React, { useContext, useCallback } from 'react'
 import { GoalContext } from '../../context/GoalContext'
 import { useGoalModifiers } from '../../hooks/GoalHooks'
@@ -18,8 +19,8 @@ const GoalDetailsContentContainer = () => {
   const { openGoalList } = useContext(ScreenContext)
 
   const onCompletePress = useCallback(
-    () => {
-      toggleGoalCompletion()
+    (outcome: string) => {
+      toggleGoalCompletion(outcome)
       openGoalList()
       unsetGoal()
     },

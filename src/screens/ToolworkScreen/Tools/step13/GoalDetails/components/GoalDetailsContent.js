@@ -4,9 +4,11 @@ import moment from 'moment'
 import { View, Text, TouchableOpacity } from 'react-native'
 import { FormInput } from 'react-native-elements'
 import Slider from 'react-native-slider'
+import OptionsDialog from '2020_components/OptionsDialog'
+import { debounce } from '2020_utils/debounce'
+import { CommonGoalOutcomesArray }       from '2020_forms/forms/content'
 import SubstepList from '../containers/SubstepListContainer'
 import { Goal, SubstepToolData } from '../../types'
-import { debounce } from '2020_utils/debounce'
 import styles, { minimumTrackColor, maximumTrackColor } from '../styles'
 
 type Props = {
@@ -30,8 +32,17 @@ const calculateDueDate = (goal: Goal) => {
 }
 
 const GoalDetailsContent = (props: Props) => {
-  const { goal, notes, storeNotes, completed, steps, onCompletePress, onDeletePress } = props
+  const {
+    goal,
+    notes,
+    storeNotes,
+    completed,
+    steps,
+    onCompletePress: onComplete,
+    onDeletePress,
+  } = props
   const [stateNotes, setNotes] = useState(notes ? notes : '')
+  const [openDialog, setOpenDialog] = useState(false)
   const totalSteps = goal.steps.length
   const completedSteps = steps ? steps.filter(s => s.completed).length : 0
   const completion = completed
@@ -48,8 +59,27 @@ const GoalDetailsContent = (props: Props) => {
 
   const [daysLeft, dueDate] = useMemo(() => calculateDueDate(goal), [goal.id])
 
+  const onCompletePress = useCallback(() => {
+    setOpenDialog(true)
+  }, [setOpenDialog])
+
+  const onClose = useCallback(() => {
+    setOpenDialog(false)
+  }, [setOpenDialog])
+
+  const onSelect = useCallback(({ value }) => {
+    onComplete(value)
+  }, [onComplete])
+
   return (
     <View style={[styles.container, styles.detailsContainer]}>
+      <OptionsDialog
+        dialogVisible={openDialog}
+        onClose={onClose}
+        elements={CommonGoalOutcomesArray}
+        onSelect={onSelect}
+        text={'Please select a goal outcome for your goal'}
+      />
       <Text style={[styles.text, styles.title]}>
         Goal: <Text style={styles.goalText}>{goal.name}</Text>
       </Text>
@@ -118,7 +148,10 @@ const GoalDetailsContent = (props: Props) => {
         />
       </View>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={[styles.goalButton, styles.borderedButton]} onPress={onCompletePress}>
+        <TouchableOpacity
+          style={[styles.goalButton, styles.borderedButton]}
+          onPress={onCompletePress}
+        >
           <Text style={styles.goalButtonText}>Complete goal</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.goalButton} onPress={onDeletePress}>
