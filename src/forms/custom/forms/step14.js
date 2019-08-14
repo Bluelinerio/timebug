@@ -1,24 +1,25 @@
 // @flow
 import { Platform }           from 'react-native'
-import types, { answerTypes } from './types'
-import type { Form }          from '../types/formTypes'
+import types, { answerTypes } from 'react-native-forms/forms/types'
+import type { Form }          from 'react-native-forms/types/formTypes'
 import { Emotions }           from './content'
-import { DISABLE }                          from './constants'
+import { DISABLE }            from './constants'
 
 export const FORM_KEYS = {
   form_14_financial_emotions: 'form_14_financial_emotions',
   form_14_emotion_changes: 'form_14_emotion_changes',
-  form_14_achievements_dissappointments: 'form_14_achievements_dissappointments',
+  form_14_achievements_dissappointments:
+    'form_14_achievements_dissappointments',
   form_14_seen: 'form_14_seen',
 }
 
 export const CHILDREN_KEYS = {
-    form_14_financial_emotions: {
-        emotion: `${FORM_KEYS.form_14_financial_emotions}.emotion`
-    },
-    form_14_achievements_dissappointments: {
-        event: `${FORM_KEYS.form_14_achievements_dissappointments}.event`,
-    }
+  form_14_financial_emotions: {
+    emotion: `${FORM_KEYS.form_14_financial_emotions}.emotion`,
+  },
+  form_14_achievements_dissappointments: {
+    event: `${FORM_KEYS.form_14_achievements_dissappointments}.event`,
+  },
 }
 
 const form: Form = {
@@ -26,44 +27,44 @@ const form: Form = {
   answer: answerTypes.single,
   fields: {
     0: {
-        type: types.list,
-        key: `${FORM_KEYS.form_14_financial_emotions}`,
-        content: {
-          text: `What emotions pop up when you think about your relationship with money?`,
-          smallKey: 'Financial emotions',
-          listText: 'Financial emotions',
-        },
-        options: {
-          required: true,
-          childTypes: {
-            0: {
-              type: types.select,
-              key: `${CHILDREN_KEYS.form_14_financial_emotions.emotion}`,
-              content: {
-                smallKey: 'Emotion',
-                items: Emotions.map(emotion => {
-                  return {
-                    value: emotion,
-                    text: emotion,
-                  }
-                }),
-              },
-              options: {
-                default: Emotions[0],
-                repeats: DISABLE,
-              },
+      type: types.list,
+      key: `${FORM_KEYS.form_14_financial_emotions}`,
+      content: {
+        text: `What emotions pop up when you think about your relationship with money?`,
+        smallKey: 'Financial emotions',
+        listText: 'Financial emotions',
+      },
+      options: {
+        required: true,
+        childTypes: {
+          0: {
+            type: types.select,
+            key: `${CHILDREN_KEYS.form_14_financial_emotions.emotion}`,
+            content: {
+              smallKey: 'Emotion',
+              items: Emotions.map(emotion => {
+                return {
+                  value: emotion,
+                  text: emotion,
+                }
+              }),
+            },
+            options: {
+              default: Emotions[0],
+              repeats: DISABLE,
             },
           },
-          constraints: {
-            min: 1,
-            max: 10,
-            errors: {
-              min: 'Please list at least 1 emotion',
-              max: 'The max input for this exercise is 10 emotions',
-            },
+        },
+        constraints: {
+          min: 1,
+          max: 10,
+          errors: {
+            min: 'Please list at least 1 emotion',
+            max: 'The max input for this exercise is 10 emotions',
           },
         },
       },
+    },
     1: {
       type: types.string,
       key: `${FORM_KEYS.form_14_emotion_changes}`,
@@ -82,19 +83,19 @@ const form: Form = {
           textInputContainerStyle: Platform.select({
             android: {},
             ios: {
-              marginBottom:20,
+              marginBottom: 20,
             }, //Fill with what's needed
           }),
           textInputStyle: Platform.select({
             android: {},
-            ios: {  
-              minHeight:30,
+            ios: {
+              minHeight: 30,
             }, //Fill with what's needed
           }),
         },
       },
     },
-  2: {
+    2: {
       type: types.list,
       key: `${FORM_KEYS.form_14_achievements_dissappointments}`,
       content: {
@@ -130,7 +131,7 @@ const form: Form = {
         },
       },
     },
-  3: {
+    3: {
       type: types.string,
       key: `${FORM_KEYS.form_14_seen}`,
       content: {
@@ -148,13 +149,13 @@ const form: Form = {
           textInputContainerStyle: Platform.select({
             android: {},
             ios: {
-              marginBottom:20,
+              marginBottom: 20,
             }, //Fill with what's needed
           }),
           textInputStyle: Platform.select({
             android: {},
-            ios: {  
-              minHeight:30,
+            ios: {
+              minHeight: 30,
             }, //Fill with what's needed
           }),
         },
