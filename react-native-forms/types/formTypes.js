@@ -165,6 +165,9 @@ export type FormProps = {
   extra: {
     step: string,
   },
+  customProps?: {
+    [x: string]: any
+  }
 }
 
 export type LogAction = {

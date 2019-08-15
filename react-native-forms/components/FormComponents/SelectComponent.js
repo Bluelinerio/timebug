@@ -1,12 +1,12 @@
 // @flow
-import React from 'react'
-import { Picker, Platform, View } from 'react-native'
-import ModalSelector from 'react-native-modal-selector'
-import Component from './Component'
-import FormElementHeader from './FormElementHeader'
-import styles from '../../styles'
-import { DISABLE } from './../../forms/constants'
-import type { SelectStyle } from './../../types/formTypes'
+import React                          from 'react'
+import { Picker, Platform, View }     from 'react-native'
+import ModalSelector                  from 'react-native-modal-selector'
+import Component                      from './Component'
+import FormElementHeader              from './FormElementHeader'
+import styles                         from '../../styles'
+import { DISABLE }                    from './../../forms/constants'
+import type { SelectStyle, ItemType } from './../../types/formTypes'
 
 const AndroidPicker = (props: any) => {
   const { options = {}, items, onChange, formStyles, value } = props
@@ -83,6 +83,9 @@ type Props = {
   value: string,
   onChange: string => any,
   formStyles: any,
+  customProps: {
+    filter: (Array<ItemType>) => Array<ItemType>,
+  },
   field: {
     content: {
       text: string,
@@ -112,6 +115,7 @@ class Select extends Component<Props> {
       field: { content, options },
       formStyles = {},
       __extraProps = {},
+      customProps = {},
     } = this.props
 
     const { style: staticStyles = {} } = options
@@ -126,6 +130,10 @@ class Select extends Component<Props> {
           ? filterFunction(content.items)
           : content.items
         : []
+
+    const userFilter = customProps.filter || null
+
+    const selectItems = userFilter ? userFilter(filteredItems) : filteredItems
 
     const textStyle = {
       ...formStyles.textStyle,
@@ -147,7 +155,7 @@ class Select extends Component<Props> {
             <IOSPicker
               value={value}
               formStyles={formStyles}
-              items={filteredItems}
+              items={selectItems}
               options={options}
               onChange={this._onValueChange}
             />
@@ -155,7 +163,7 @@ class Select extends Component<Props> {
             <AndroidPicker
               value={value}
               formStyles={formStyles}
-              items={filteredItems}
+              items={selectItems}
               options={options}
               onChange={this._onValueChange}
             />
