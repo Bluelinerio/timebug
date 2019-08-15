@@ -8,8 +8,10 @@ import FormWrapper from '../components/FormWrapper'
 const FormWrapperContainer = () => {
   const {
     baseValues,
+    editionId,
     setBaseValues,
     newFormMounted,
+    setFormEdition,
   } = useContext(FormContext)
   const { data, storeData } = useContext(ToolDataContext)
   const { openGoalList } = useContext(ScreenContext)
@@ -19,6 +21,9 @@ const FormWrapperContainer = () => {
 
   useEffect(() => {
     newFormMounted()
+    return () => {
+      setFormEdition(null)
+    }
   }, [])
 
   const onFinish = (d: any) => {
@@ -35,6 +40,7 @@ const FormWrapperContainer = () => {
       value={formValue}
       onFinish={onFinish}
       baseValues={baseValues}
+      editionId={editionId}
     />
   )
 }

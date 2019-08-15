@@ -6,7 +6,7 @@ import { FormInput } from 'react-native-elements'
 import Slider from 'react-native-slider'
 import OptionsDialog from '2020_components/OptionsDialog'
 import { debounce } from '2020_utils/debounce'
-import { CommonGoalOutcomesArray }       from '2020_forms/forms/content'
+import { CommonGoalOutcomesArray } from '2020_forms/forms/content'
 import SubstepList from '../containers/SubstepListContainer'
 import { Goal, SubstepToolData } from '../../types'
 import styles, { minimumTrackColor, maximumTrackColor } from '../styles'
@@ -59,17 +59,26 @@ const GoalDetailsContent = (props: Props) => {
 
   const [daysLeft, dueDate] = useMemo(() => calculateDueDate(goal), [goal.id])
 
-  const onCompletePress = useCallback(() => {
-    setOpenDialog(true)
-  }, [setOpenDialog])
+  const onCompletePress = useCallback(
+    () => {
+      setOpenDialog(true)
+    },
+    [setOpenDialog]
+  )
 
-  const onClose = useCallback(() => {
-    setOpenDialog(false)
-  }, [setOpenDialog])
+  const onClose = useCallback(
+    () => {
+      setOpenDialog(false)
+    },
+    [setOpenDialog]
+  )
 
-  const onSelect = useCallback(({ value }) => {
-    onComplete(value)
-  }, [onComplete])
+  const onSelect = useCallback(
+    ({ value }) => {
+      onComplete(value)
+    },
+    [onComplete]
+  )
 
   return (
     <View style={[styles.container, styles.detailsContainer]}>

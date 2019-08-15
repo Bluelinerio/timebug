@@ -32,7 +32,7 @@ type Props = {
   value: any,
   onFinish: any => void,
   baseValues: any,
-  editionIndex: number,
+  editionId: number,
 }
 
 const STEP_NUMBER = 13
@@ -44,7 +44,7 @@ class FormWrapper extends React.PureComponent<Props> {
   }
 
   render() {
-    const { value, editionIndex = null, baseValues } = this.props
+    const { value, editionId = null, baseValues } = this.props
     return (
       <Form
         model={model}
@@ -54,7 +54,7 @@ class FormWrapper extends React.PureComponent<Props> {
         formContainerStyle={[styles.fullWidth, styles.fullHeight]}
         key={STEP_NUMBER}
         disableAnswers
-        editionIndex={editionIndex}
+        editionId={editionId}
         baseValues={baseValues ? baseValues : undefined}
         color={color}
         textAndButtonColor={textAndButtonColor}

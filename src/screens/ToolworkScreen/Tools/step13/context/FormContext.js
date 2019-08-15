@@ -4,6 +4,7 @@ import React from 'react'
 type State = {
   baseValues: any,
   isFinished: false,
+  editionId: string,
   onFormFinished: () => void,
   setBaseValues: () => void,
   newFormMounted: () => void,
@@ -18,6 +19,7 @@ type Props = {
 
 const initialState = {
   baseValues: null,
+  editionId: null,
   isFinished: false,
   onFormFinished: () => null,
   setBaseValues: () => null,
@@ -37,7 +39,7 @@ class FormProvider extends React.PureComponent<Props, State> {
   }
 
   onFormFinished = () => {
-    this.setState({ isFinished: true, baseValues: null })
+    this.setState({ isFinished: true, baseValues: null, editionId: null })
   }
 
   setBaseValues = (value: any) => {
@@ -45,7 +47,11 @@ class FormProvider extends React.PureComponent<Props, State> {
   }
 
   onFormClosed = () => {
-    this.setState({ isFinished: false, baseValues: null })   
+    this.setState({ editionId: null, isFinished: false, baseValues: null })
+  }
+
+  setFormEdition = (editionId: string) => {
+    this.setState({ editionId })
   }
 
   render() {
@@ -56,6 +62,7 @@ class FormProvider extends React.PureComponent<Props, State> {
           setBaseValues: this.setBaseValues,
           onFormFinished: this.onFormFinished,
           onFormClosed: this.onFormClosed,
+          setFormEdition: this.setFormEdition,
         }}
       >
         {this.props.children}

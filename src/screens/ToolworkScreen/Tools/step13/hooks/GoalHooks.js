@@ -308,6 +308,13 @@ export const useGoalModifiers = (goal: Goal) => {
     [id, storeGoalData, deleteGoal]
   )
 
+  const clearGoalData = useCallback(
+    () => {
+      storeGoalData()
+    },
+    [id, storeGoalData]
+  )
+
   return {
     notes,
     storeNotes,
@@ -321,6 +328,7 @@ export const useGoalModifiers = (goal: Goal) => {
     hardDeleteGoal,
     deletedAt,
     completedAt,
+    clearGoalData,
   }
 }
 
