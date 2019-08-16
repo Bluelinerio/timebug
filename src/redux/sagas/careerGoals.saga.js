@@ -21,6 +21,9 @@ import {
   createNotification,
   removeNotification,
 }                                              from '../actions/notifications.actions'
+import { stepEnum }                            from '2020_services/cms'
+import { TOOL_KEYS }                           from '2020_static/tools'
+import { linkNavigation }                      from '../actions/nav.actions'
 
 const CREATE = 'CREATE'
 const DELETE = 'DELETE'
@@ -123,8 +126,19 @@ function* _handleGoalNotification(action: {
   payload: GoalNotificationPayload,
 }) {
   try {
-    const a = 21
-    yield
+    const { payload } = action
+    const { due, notificationId, category, goalId } = payload
+    const stepId = stepEnum.STEP_13
+
+    const link = `tools/tool?step=${stepId}&key=${
+      TOOL_KEYS.CareerGoalsTrackerKey
+    }&goalId=${goalId}&category=${category}`
+
+    const dueMoment = moment(due).startOf('day')
+    const today = moment().startOf('day')
+    const hasPassed = today.add(15, 's').isAfter(dueMoment)
+    if (hasPassed) yield put(removeNotification({ id: notificationId }))
+    yield put(linkNavigation({ link }))
   } catch (err) {
     //fail Silently
   }
