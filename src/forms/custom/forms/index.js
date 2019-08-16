@@ -14,6 +14,7 @@ import Step13 from './step13'
 import Step14 from './step14'
 import Step15 from './step15'
 import Step16 from './step16'
+import Step17 from './step17'
 
 export * from './content'
 
@@ -34,4 +35,5 @@ export default {
   '14': Step14,
   '15': Step15,
   '16': Step16,
+  '17': Step17,
 }
