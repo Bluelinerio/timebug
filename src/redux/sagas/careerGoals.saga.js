@@ -1,29 +1,29 @@
 // @flow
-import moment                                  from 'moment'
+import moment from 'moment'
 import { takeLatest, fork, select, call, put } from 'redux-saga/effects'
 import {
   FORM_KEYS,
   CHILDREN_KEYS,
-}                                              from '../../screens/ToolworkScreen/Tools/step13/static/form'
-import selectors                               from '../selectors'
-import { notificationTypes }                   from '2020_services/notifications'
+} from '../../screens/ToolworkScreen/Tools/step13/static/form'
+import selectors from '../selectors'
+import { notificationTypes } from '2020_services/notifications'
 import {
   CAREER_GOAL_NOTIFICATION,
   CAREER_GOALS_SIDE_EFFECT,
-}                                              from '../actionTypes'
+} from '../actionTypes'
 import type {
   GoalNotificationPayload,
   GoalSideEffectPayload,
-}                                              from '../actions/goals.actions'
-import { timeToCompleteGoal }                  from '2020_forms/forms/content'
-import { calculateNextCheckin }                from '2020_services/checkins'
+} from '../actions/goals.actions'
+import { timeToCompleteGoal } from '2020_forms/forms/content'
+import { calculateNextCheckin } from '2020_services/checkins'
 import {
   createNotification,
   removeNotification,
-}                                              from '../actions/notifications.actions'
-import { stepEnum }                            from '2020_services/cms'
-import { TOOL_KEYS }                           from '2020_static/tools'
-import { linkNavigation }                      from '../actions/nav.actions'
+} from '../actions/notifications.actions'
+import { stepEnum } from '2020_services/cms'
+import { TOOL_KEYS } from '2020_static/tools'
+import { linkNavigation } from '../actions/nav.actions'
 
 const CREATE = 'CREATE'
 const DELETE = 'DELETE'
@@ -251,10 +251,10 @@ export function* _syncGoalsNotifications(action: {
 
   const actions = [...goalActions, ...notificationsActions]
 
-  for (const action of actions) {
-    const { _action } = action
+  for (const goalAction of actions) {
+    const { _action } = goalAction
     if (_action === CREATE) {
-      const { goal } = action
+      const { goal } = goalAction
       const {
         id,
         name,
@@ -297,10 +297,10 @@ export function* _syncGoalsNotifications(action: {
         })
       )
     } else if (_action === DELETE) {
-      const { notificationId } = action
+      const { notificationId } = goalAction
       yield put(removeNotification({ id: `${notificationId}` }))
     } else if (_action === UPDATE) {
-      const { notificationId, goal } = action
+      const { notificationId, goal } = goalAction
 
       yield put(removeNotification({ id: `${notificationId}` }))
 
@@ -334,14 +334,6 @@ export function* _syncGoalsNotifications(action: {
           toolData,
         },
       }
-
-      const action = createNotification({
-        message: `It's time to check up on your goal: ${name}`,
-        id: notificationId,
-        notificationTime,
-        repeatTime: notificationInterval,
-        additionalProps,
-      })
 
       yield put(
         createNotification({
