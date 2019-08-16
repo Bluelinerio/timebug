@@ -7,26 +7,29 @@ import {
   select,
   put,
   takeLatest,
-}                                       from 'redux-saga/effects'
+} from 'redux-saga/effects'
 
-import { TOOL_KEYS }                    from '2020_static/tools'
-import { stepEnum }                     from '2020_services/cms'
+import { TOOL_KEYS } from '2020_static/tools'
+import { stepEnum } from '2020_services/cms'
 
-import selectors                        from '../selectors'
+import selectors from '../selectors'
 import {
   SUBMIT_FORM_VALUE,
   SUBMIT_AWARD_VALUE,
   SYNC_SIDE_EFFECTS,
-}                                       from '../actionTypes'
-import type { SubmitActionPayload }     from '../actions/formData.actions'
+} from '../actionTypes'
+import type { SubmitActionPayload } from '../actions/formData.actions'
 import type { SubmitAwardValuePayload } from '../actions/award.actions'
-import type { GoalSideEffectPayload }   from '../actions/goals.actions'
-import { goalSideEffect }               from '../actions/goals.actions'
+import type { GoalSideEffectPayload } from '../actions/goals.actions'
+import { goalSideEffect } from '../actions/goals.actions'
+import { CareerGoalSideEffectPayload } from '../actions/careerGoals.actions'
+import { careerGoalSideEffect } from '../actions/careerGoals.actions'
 
 // TODO: Refactor into several sagas, extract constants to readable file
 
 const toolKeysForStepIds = {
   [stepEnum.STEP_5]: TOOL_KEYS.GoalTrackerKey,
+  [stepEnum.STEP_13]: TOOL_KEYS.CareerGoalsTrackerKey,
 }
 
 function* _callGoalsSideEffect(
@@ -38,6 +41,17 @@ function* _callGoalsSideEffect(
     awardData,
   }
   yield put(goalSideEffect(payload))
+}
+
+function* _callCareerGoalsSideEffect(
+  value: Array<any> = [],
+  awardData: Array<any> = []
+) {
+  const payload: CareerGoalSideEffectPayload = {
+    value,
+    awardData,
+  }
+  yield put(careerGoalSideEffect(payload))
 }
 
 function* _handleAwardEffects(action: {
@@ -54,11 +68,14 @@ function* _handleAwardEffects(action: {
       const formDataForStep = formData[`${step}`]
       const formValueForStep = formDataForStep ? formDataForStep.value : null
       switch (`${step}`) {
-      case stepEnum.STEP_5:
-        yield fork(_callGoalsSideEffect, formValueForStep, value)
-        break
-      default:
-        yield
+        case stepEnum.STEP_5:
+          yield fork(_callGoalsSideEffect, formValueForStep, value)
+          break
+        case stepEnum.STEP_13:
+          yield fork(_callCareerGoalsSideEffect, formValueForStep, value)
+          break
+        default:
+          yield
       }
     }
   }
@@ -75,19 +92,22 @@ function* _handleSideEffects(action: {
   const awardKey = toolKeysForStepIds[`${stepId}`]
   const awardDataForTool = awardKey
     ? yield call(getAwardDataForTool, {
-      tool: { key: awardKey },
-    })
+        tool: { key: awardKey },
+      })
     : null
   const awardDataValue =
     awardDataForTool && awardDataForTool.value
       ? awardDataForTool.value
       : undefined
   switch (stepId) {
-  case stepEnum.STEP_5:
-    yield call(_callGoalsSideEffect, value, awardDataValue)
-    break
-  default:
-    yield
+    case stepEnum.STEP_5:
+      yield call(_callGoalsSideEffect, value, awardDataValue)
+      break
+    case stepEnum.STEP_13:
+      yield fork(_callCareerGoalsSideEffect, value, awardDataValue)
+      break
+    default:
+      yield
   }
 }
 
@@ -124,11 +144,14 @@ function* _handleSyncSideEffects() {
         ? awardDataForTool.value
         : undefined
     switch (step) {
-    case stepEnum.STEP_5:
-      yield call(_callGoalsSideEffect, formDataForStep, awardDataValue)
-      break
-    default:
-      yield
+      case stepEnum.STEP_5:
+        yield call(_callGoalsSideEffect, formDataForStep, awardDataValue)
+        break
+      case stepEnum.STEP_13:
+        yield fork(_callCareerGoalsSideEffect, formDataForStep, awardDataValue)
+        break
+      default:
+        yield
     }
   }
 }

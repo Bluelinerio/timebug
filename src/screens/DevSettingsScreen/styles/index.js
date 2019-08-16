@@ -14,7 +14,6 @@ export default StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: 'gray',
     minHeight: 60,
-    height: 60,
   },
   disclaimer: {
     textAlign: 'center',
