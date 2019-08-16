@@ -1,6 +1,7 @@
-import { TOOL_KEYS } from '../tools'
+// @flow
+import { WorkbookDoneConfig } from '2020_types/types'
 
-export default {
+const workBookDoneConfig: WorkbookDoneConfig = {
   title: 'Congratulations!',
   text: 'You have completed Step 11!',
   toolLink: {
@@ -8,3 +9,5 @@ export default {
     text: 'My 5 years life report',
   },
 }
+
+export default workBookDoneConfig

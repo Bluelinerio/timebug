@@ -355,3 +355,28 @@ export const HoursPerMonth = [
   '121-160',
   'Over 160 hours',
 ]
+
+export const HoursOfSleep = [
+  "I don't sleep",
+  "1-2 hours",
+  '3-5 hours',
+  '6-8 hours',
+  '8 Hours always',
+  "More than 8 hours"
+]
+
+export const StressLevels = [
+  "Absolutely no stress",
+  "A bit of stress",
+  "Moderate stress",
+  "A lot of stress",
+  "Extreme stress",
+]
+
+export const HealthPriority = [
+  "I have not paid attention to it",
+  "Not a priority, but I stay healthy",
+  "Moderate focus on health",
+  "I always put my health ahead",
+  "Health is the utmost priority for me"
+]
