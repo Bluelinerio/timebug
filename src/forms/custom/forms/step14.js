@@ -2,8 +2,8 @@
 import { Platform }           from 'react-native'
 import types, { answerTypes } from 'react-native-forms/forms/types'
 import type { Form }          from 'react-native-forms/types/formTypes'
+import { DISABLE }            from 'react-native-forms/forms/constants'
 import { Emotions }           from './content'
-import { DISABLE }            from './constants'
 
 export const FORM_KEYS = {
   form_14_financial_emotions: 'form_14_financial_emotions',
