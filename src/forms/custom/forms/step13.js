@@ -6,7 +6,7 @@ import {
   CompensationGoals,
   HoursPerWeek,
   PaidFairly,
-}                             from './content'
+} from './content'
 
 export const FORM_KEYS = {
   form_13_salary_growth: 'form_13_salary_growth',
