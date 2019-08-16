@@ -1,19 +1,19 @@
 // @flow
 import React, { useEffect, useContext } from 'react'
-import { withNavigation }               from 'react-navigation'
-import { CategoryContext }              from '../../context/CategoryContext'
-import { useGoals }                     from '../../hooks/GoalHooks'
-import { GoalContext }                  from '../../context/GoalContext'
-import { ScreenContext }                from '../../context/ScreenContext'
+import { withNavigation } from 'react-navigation'
+import { CategoryContext } from '../../context/CategoryContext'
+import { useGoals } from '../../hooks/GoalHooks'
+import { GoalContext } from '../../context/GoalContext'
+import { ScreenContext } from '../../context/ScreenContext'
 
 const NavigatorContainer = ({ navigation }) => {
   const { setCategory } = useContext(CategoryContext)
   const { setGoal } = useContext(GoalContext)
-  const { openGoalDetail } = useContext(ScreenContext)
+  const { openGoalDetail, openGoalList } = useContext(ScreenContext)
   const goals = useGoals()
-  const payload = navigation.getParam('payload')
-  const goalId = payload.goalId || null
-  const category = payload.category || null
+  const payload = navigation.getParam('payload', null)
+  const goalId = (payload && payload.goalId) || null
+  const category = (payload && payload.category) || null
 
   useEffect(
     () => {
@@ -25,6 +25,10 @@ const NavigatorContainer = ({ navigation }) => {
           openGoalDetail()
         }
         navigation.setParams({ goalId: null })
+        navigation.setParams({ category: null })
+      } else if (category) {
+        openGoalList()
+        setCategory(category)
         navigation.setParams({ category: null })
       }
     },
