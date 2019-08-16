@@ -1,7 +1,7 @@
 // @flow
-import { Platform }                from 'react-native'
-import types, { answerTypes }      from './types'
-import type { Form }               from '../types/formTypes'
+import { Platform } from 'react-native'
+import types, { answerTypes } from 'react-native-forms/forms/types'
+import type { Form } from 'react-native-forms/types/formTypes'
 import { CommonGoalOutcomesArray } from './content'
 
 export const FORM_KEYS = {

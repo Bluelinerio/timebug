@@ -1,14 +1,14 @@
 // @flow
-import { Platform }           from 'react-native'
-import types, { answerTypes } from './types'
-import type { Form }          from '../types/formTypes'
+import { Platform } from 'react-native'
+import types, { answerTypes } from 'react-native-forms/forms/types'
+import type { Form } from 'react-native-forms/types/formTypes'
 import {
   CommonGoalOutcomesArray,
   SalaryGrowth,
   CompensationGoals,
   HoursPerWeek,
   PaidFairly,
-}                             from './content'
+} from './content'
 
 export const FORM_KEYS = {
   form_13_salary_growth: 'form_13_salary_growth',
