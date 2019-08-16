@@ -1,10 +1,11 @@
-import React                      from 'react'
-import { Picker, Platform, View } from 'react-native'
-import ModalSelector              from 'react-native-modal-selector'
-import FormElementHeader          from './FormElementHeader'
-import styles                     from '../../styles'
-import { DISABLE }                from './../../forms/constants'
-import type { SelectStyle }       from './../../types/formTypes'
+// @flow
+import React                            from 'react'
+import { Picker, Platform, View, Text } from 'react-native'
+import ModalSelector                    from 'react-native-modal-selector'
+import FormElementHeader                from './FormElementHeader'
+import styles                           from '../../styles'
+import { DISABLE }                      from './../../forms/constants'
+import type { SelectStyle }             from './../../types/formTypes'
 
 const AndroidPicker = (props: any) => {
   const { options = {}, items, onChange, formStyles, baseValue, value } = props
@@ -47,9 +48,9 @@ const IOSPicker = (props: any) => {
   const data =
     items && items.length > 0
       ? items.map(({ value, text }) => ({
-          key: value,
-          label: text,
-        }))
+        key: value,
+        label: text,
+      }))
       : [{ key: '', label: '-' }]
 
   const dataElement =
@@ -100,6 +101,7 @@ const Select = ({
     },
     options?: {
       default?: string,
+      label?: string,
       repeats?: string,
       style?: SelectStyle,
     },
@@ -135,6 +137,12 @@ const Select = ({
   return (
     <React.Fragment>
       <FormElementHeader text={content.text} textStyle={textStyle} />
+      {options.label &&
+        options.label.length > 0 && (
+          <Text style={[styles.componentSubtitle, formStyles.textStyle]}>
+            {options.label}
+          </Text>
+        )}
       <View
         style={[
           styles.pickerContainer,

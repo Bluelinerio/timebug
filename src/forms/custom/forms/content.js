@@ -343,3 +343,15 @@ export const CareerGoals = [
 ]
 
 export const AloneOrOthers = ['Alone', 'WithOthers']
+
+export const YesNo = ['Yes', 'No']
+
+export const HoursPerMonth = [
+  '1-10',
+  '11-20',
+  '21-40',
+  '41-60',
+  '61-120',
+  '121-160',
+  'Over 160 hours',
+]
