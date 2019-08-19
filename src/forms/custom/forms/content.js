@@ -389,3 +389,22 @@ export const EmotionalChanges = [
   'Slightly more negative',
   'Much more negative',
 ]
+
+export const ImprovementOrRegression = [
+  'Improved',
+  'Regressed',
+]
+
+export const RelationshipRating = [
+  '-',
+  '1',
+  '2',
+  '4',
+  '3',
+  '6',
+  '5',
+  '7',
+  '8',
+  '9',
+  '10',
+]
