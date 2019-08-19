@@ -408,3 +408,10 @@ export const RelationshipRating = [
   '9',
   '10',
 ]
+
+export const SpiritualViews = [
+  'Very spiritual/religious',
+  'Spiritual but not religious',
+  'I would like to be more spiritual',
+  'I am not interested in spirituality',
+]
