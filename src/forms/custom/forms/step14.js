@@ -161,7 +161,7 @@ const form: Form = {
         },
       },
     },
-  },
+},
 }
 
 export default form

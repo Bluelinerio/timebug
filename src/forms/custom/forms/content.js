@@ -342,4 +342,16 @@ export const CareerGoals = [
   'Skip this for now and create a goal later',
 ]
 
-export const AloneOrOthers = ['Alone', 'WithOthers']
+export const AloneOrOthers = ['Alone', 'With Others']
+
+export const YesNo = ['Yes', 'No']
+
+export const HoursPerMonth = [
+  '1-10',
+  '11-20',
+  '21-40',
+  '41-60',
+  '61-120',
+  '121-160',
+  'Over 160 hours',
+]
