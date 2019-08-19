@@ -326,6 +326,9 @@ export const TimeAndEffortInvestedInGoal = [
   'A lot of time and effort',
 ]
 
+export const DietTypes = [ 'Balanced', 'Paleo', 'Vegetarian', 'Vegan', 'Atkins', 'Low-carb', 'Fast food', 'Other']
+
+
 export const SalaryGrowth = [
   'Not at all',
   'by $5,000 or less',
@@ -360,14 +363,6 @@ export const CareerGoals = [
 
 export const AloneOrOthers = ['Alone', 'With Others']
 
-export const EmotionalChanges = [
-  'Much more positive',
-  'Slightly More positive',
-  'About the same',
-  'Slightly more negative',
-  'Much more negative',
-]
-
 export const YesNo = ['Yes', 'No']
 
 export const HoursPerMonth = [
@@ -378,4 +373,19 @@ export const HoursPerMonth = [
   '61-120',
   '121-160',
   'Over 160 hours',
+]
+
+export const HoursOfSleep = [
+  "Less than 4 hours",
+  '4-6 hours',
+  '6-8 hours',
+  "More than 8 hours"
+]
+
+export const EmotionalChanges = [
+  'Much more positive',
+  'About the same',
+  'Slightly More positive',
+  'Slightly more negative',
+  'Much more negative',
 ]
