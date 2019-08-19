@@ -48,10 +48,10 @@ const mapDispatchToProps = (dispatch: any) => ({
 const getGreeting = () => {
   const now = moment()
   if (now.isBetween(moment('04:00', 'HH:mm'), moment('11:59', 'HH:mm')))
-    return 'Good morning'
+    return 'Good morning '
   if (now.isBetween(moment('12:00', 'HH:mm'), moment('16:59', 'HH:mm')))
-    return 'Good afternoon'
-  return 'Good evening'
+    return 'Good afternoon '
+  return 'Good evening '
 }
 
 const firstName = user =>
