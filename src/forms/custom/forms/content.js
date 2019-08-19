@@ -382,21 +382,6 @@ export const HoursOfSleep = [
   "More than 8 hours"
 ]
 
-export const StressLevels = [
-  "Absolutely no stress",
-  "A bit of stress",
-  "Moderate stress",
-  "A lot of stress",
-  "Extreme stress",
-]
-
-export const HealthPriority = [
-  "I have not paid attention to it",
-  "Not a priority, but I stay healthy",
-  "Moderate focus on health",
-  "I always put my health ahead",
-  "Health is the utmost priority for me"
-]
 export const EmotionalChanges = [
   'Much more positive',
   'About the same',
