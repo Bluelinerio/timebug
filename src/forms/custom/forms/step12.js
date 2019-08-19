@@ -1,8 +1,7 @@
 // @flow
-import { Platform } from 'react-native'
-import types, { answerTypes } from 'react-native-forms/forms/types'
-import type { Form } from 'react-native-forms/types/formTypes'
-import { CommonGoalOutcomesArray } from './content'
+import { Platform }                from 'react-native'
+import types, { answerTypes }      from 'react-native-forms/forms/types'
+import type { Form }               from 'react-native-forms/types/formTypes'
 
 export const FORM_KEYS = {
   form_12_major_life_events: 'form_12_major_life_events',
