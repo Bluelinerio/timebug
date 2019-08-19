@@ -1,5 +1,7 @@
 // @flow
 import { WorkbookDoneConfig } from '2020_types/types'
+import { TOOL_KEYS } from '../tools'
+
 
 const workBookDoneConfig: WorkbookDoneConfig = {
   title: 'Congratulations!',

@@ -326,6 +326,9 @@ export const TimeAndEffortInvestedInGoal = [
   'A lot of time and effort',
 ]
 
+export const DietTypes = [ 'Balanced', 'Paleo', 'Vegetarian', 'Vegan', 'Atkins', 'Low-carb', 'Fast food', 'Other']
+
+
 export const SalaryGrowth = [
   'Not at all',
   'by $5,000 or less',
@@ -373,11 +376,9 @@ export const HoursPerMonth = [
 ]
 
 export const HoursOfSleep = [
-  "I don't sleep",
-  "1-2 hours",
-  '3-5 hours',
+  "Less than 4 hours",
+  '4-6 hours',
   '6-8 hours',
-  '8 Hours always',
   "More than 8 hours"
 ]
 

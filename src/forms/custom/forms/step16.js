@@ -2,7 +2,7 @@
 import { Platform }                                   from 'react-native'
 import types, { answerTypes }                         from 'react-native-forms/forms/types'
 import type { Form }                                  from 'react-native-forms/types/formTypes'
-import { HoursOfSleep, StressLevels, HealthPriority } from './content'
+import { DietTypes, OneToTenScale, HoursOfSleep  } from './content'
 
 export const FORM_KEYS = {
   form_16_sleep_hours: 'form_16_sleep_hours',
@@ -43,15 +43,15 @@ const form: Form = {
       type: types.select,
       key: `${FORM_KEYS.form_16_stress_levels}`,
       content: {
-        text: 'What is your typical stress level during the week?',
+        text: 'On a scale of 1-10, what is your typical stress level during the week?',
         smallKey: 'Stress levels',
-        items: StressLevels.map(level => ({
+        items: OneToTenScale.map(level => ({
           text: level,
           value: level,
         })),
       },
       options: {
-        default: StressLevels[0],
+        default: OneToTenScale[0],
         required: true,
       },
     },
@@ -59,108 +59,32 @@ const form: Form = {
       type: types.select,
       key: `${FORM_KEYS.form_16_health_priority_level}`,
       content: {
-        text: `Has you health been a priority for you over the past 5 years?`,
+        text: `On a scale of 1-10, how much of a priority has your health been over the past 5 years?`,
         smallKey: 'Health priority',
-        items: HealthPriority.map(hp => ({
+        items: OneToTenScale.map(hp => ({
           text: hp,
           value: hp,
         })),
       },
       options: {
         required: true,
-        default: HealthPriority[0],
+        default: OneToTenScale[0],
       },
     },
     3: {
-      type: types.formElements,
+      type: types.select,
       key: `${FORM_KEYS.form_16_typical_diet}`,
       content: {
         text: 'What does your typical diet look like?',
         smallKey: 'Typical diet',
+        items: DietTypes.map(dietType => ({
+          text: dietType,
+          value: dietType,
+        })),
       },
       options: {
         required: true,
-        childTypes: {
-          0: {
-            type: types.string,
-            key: `${CHILDREN_KEYS.form_16_typical_diet.morning}`,
-            options: {
-              required: true,
-              placeHolder: 'Protein bar with shake. . .',
-              label: 'Breakfast',
-              default: '',
-              multiline: true,
-              numberOfLines: 3,
-              style: {
-                textInputContainerStyle: Platform.select({
-                  android: {},
-                  ios: {
-                    marginBottom: 20,
-                  }, //Fill with what's needed
-                }),
-                textInputStyle: Platform.select({
-                  android: {},
-                  ios: {
-                    minHeight: 30,
-                  }, //Fill with what's needed
-                }),
-              },
-            },
-          },
-          1: {
-            type: types.string,
-            key: `${CHILDREN_KEYS.form_16_typical_diet.afternoon}`,
-            options: {
-              required: true,
-              placeHolder:
-                'Steak, steamed vegetables and mashed potatoes . . .',
-              default: '',
-              label: 'Lunch',
-              multiline: true,
-              numberOfLines: 3,
-              style: {
-                textInputContainerStyle: Platform.select({
-                  android: {},
-                  ios: {
-                    marginBottom: 20,
-                  }, //Fill with what's needed
-                }),
-                textInputStyle: Platform.select({
-                  android: {},
-                  ios: {
-                    minHeight: 30,
-                  }, //Fill with what's needed
-                }),
-              },
-            },
-          },
-          2: {
-            type: types.string,
-            key: `${CHILDREN_KEYS.form_16_typical_diet.evening}`,
-            options: {
-              required: true,
-              placeHolder: 'French toasts. . .',
-              label: 'Dinner',
-              default: '',
-              multiline: true,
-              numberOfLines: 3,
-              style: {
-                textInputContainerStyle: Platform.select({
-                  android: {},
-                  ios: {
-                    marginBottom: 20,
-                  }, //Fill with what's needed
-                }),
-                textInputStyle: Platform.select({
-                  android: {},
-                  ios: {
-                    minHeight: 30,
-                  }, //Fill with what's needed
-                }),
-              },
-            },
-          },
-        },
+        default: DietTypes[0],
       },
     },
   },
