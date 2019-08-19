@@ -27,7 +27,6 @@ export const CHILDREN_KEYS = {
     alone_or_with_others: `${
       FORM_KEYS.form_15_alone_or_with_others
     }.alone_or_with_others`,
-    companion: `${FORM_KEYS.form_15_alone_or_with_others}.companion`,
   },
 }
 
@@ -54,7 +53,7 @@ const form: Form = {
             },
             options: {
               required: true,
-              placeHolder: 'Building model boats. . .',
+              placeHolder: 'e.g. Playing the piano',
               default: '',
               multiline: true,
               numberOfLines: 3,
@@ -91,7 +90,25 @@ const form: Form = {
               label: 'Would you be willing to give this activity up?',
             },
           },
-        },
+          2: { 
+                  type: types.select,
+                  key: `${
+                    CHILDREN_KEYS.form_15_alone_or_with_others.alone_or_with_others
+                  }`,
+                  content: {
+                    smallKey: 'Alone or with others',
+                    items: AloneOrOthers.map(opt => ({
+                      value: opt,
+                      text: opt,
+                    })),
+                  },
+                  options: {
+                    default: AloneOrOthers[0],
+                    label: 'Do you do this activity alone or with others?',
+                  },
+                },
+              },
+            },
         constraints: {
           min: 1,
           max: 10,
@@ -101,7 +118,6 @@ const form: Form = {
           },
         },
       },
-    },
     1: {
       type: types.connected,
       key: `${FORM_KEYS.form_15_time_spent}`,
@@ -171,61 +187,6 @@ const form: Form = {
           errors: {
             min: 'Please list at least 1 feeling',
             max: 'The max input for this exercise is 10 feelings',
-          },
-        },
-      },
-    },
-    3: {
-      type: types.formElements,
-      key: `${FORM_KEYS.form_15_alone_or_with_others}`,
-      content: {
-        text:
-          'Do you do these activities alone or with others? And if so, with whom?',
-        smallKey: 'Alone or with others',
-      },
-      options: {
-        required: true,
-        childTypes: {
-          0: {
-            type: types.select,
-            key: `${
-              CHILDREN_KEYS.form_15_alone_or_with_others.alone_or_with_others
-            }`,
-            content: {
-              smallKey: 'Alone or with others',
-              items: AloneOrOthers.map(opt => ({
-                value: opt,
-                text: opt,
-              })),
-            },
-            options: {
-              default: AloneOrOthers[0],
-            },
-          },
-          1: {
-            type: types.string,
-            key: `${CHILDREN_KEYS.form_15_alone_or_with_others.companion}`,
-            options: {
-              required: true,
-              placeHolder: 'My best friend',
-              default: '',
-              multiline: true,
-              numberOfLines: 3,
-              style: {
-                textInputContainerStyle: Platform.select({
-                  android: {},
-                  ios: {
-                    marginBottom: 20,
-                  }, //Fill with what's needed
-                }),
-                textInputStyle: Platform.select({
-                  android: {},
-                  ios: {
-                    minHeight: 30,
-                  }, //Fill with what's needed
-                }),
-              },
-            },
           },
         },
       },

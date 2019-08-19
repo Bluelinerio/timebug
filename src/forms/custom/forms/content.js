@@ -302,7 +302,18 @@ export const SatisfactionLevels = [
   'Absolutely satisfied',
 ]
 
-export const PercentageScale = ['10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', '100%']
+export const PercentageScale = [
+  '10%',
+  '20%',
+  '30%',
+  '40%',
+  '50%',
+  '60%',
+  '70%',
+  '80%',
+  '90%',
+  '100%',
+]
 
 export const OneToTenScale = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
 
@@ -315,7 +326,12 @@ export const TimeAndEffortInvestedInGoal = [
   'A lot of time and effort',
 ]
 
-export const SalaryGrowth = ['Not at all', 'by $5,000 or less', 'between $5,000-$10,000', 'More than $10,000']
+export const SalaryGrowth = [
+  'Not at all',
+  'by $5,000 or less',
+  'between $5,000-$10,000',
+  'More than $10,000',
+]
 
 export const CompensationGoals = [
   'Yes, completely',
@@ -342,7 +358,7 @@ export const CareerGoals = [
   'Skip this for now and create a goal later',
 ]
 
-export const AloneOrOthers = ['Alone', 'WithOthers']
+export const AloneOrOthers = ['Alone', 'With Others']
 
 export const YesNo = ['Yes', 'No']
 
@@ -379,4 +395,11 @@ export const HealthPriority = [
   "Moderate focus on health",
   "I always put my health ahead",
   "Health is the utmost priority for me"
+]
+export const EmotionalChanges = [
+  'Much more positive',
+  'About the same',
+  'Slightly More positive',
+  'Slightly more negative',
+  'Much more negative',
 ]
