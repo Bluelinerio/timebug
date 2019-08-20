@@ -18,6 +18,7 @@ import Step17 from './step17'
 import Step18 from './step18'
 import Step19 from './step19'
 import Step20 from './step20'
+import Step21 from './step21'
 
 
 
@@ -44,5 +45,5 @@ export default {
   '18': Step18,
   '19': Step19,
   '20': Step20,
-
+  '21': Step21,
 }
