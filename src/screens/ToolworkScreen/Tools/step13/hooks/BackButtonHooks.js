@@ -35,7 +35,7 @@ export const useTitle = (screen: string, goal: any = null) => {
           setTitle('Phase 2 goals')
       }
     },
-    [screen]
+    [screen, goal]
   )
 
   return title
@@ -64,7 +64,7 @@ export const useSubtitle = (screen: string, category?: string) => {
           setSubtitle(`${category}`)
       }
     },
-    [screen]
+    [screen, category]
   )
 
   return subtitle
