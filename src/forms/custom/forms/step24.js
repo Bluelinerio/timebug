@@ -20,52 +20,33 @@ const form: Form = {
   type: types.form,
   answer: answerTypes.multiple,
   fields: {
-     0: {
-        type: types.formElements,
-        key: `${FORM_KEYS.form_24_five_year_plan}`,
-        content: {
-          smallKey: 'Five year plan',
-          text: 'Five years from now, how much money do you want to have in the bank? What do you need to do to make that happen?',
-        },
-        options: {
-          required: true,
-          childTypes: {
-              0: {
-                type: types.string,
-                key: `${CHILDREN_KEYS.form_24_five_year_plan.amount}`,
-                content: {
-                  smallKey: 'Amount',
-                },
-                options: {
-                    required: true,
-                  placeHolder: '$1,000,000',
-                },
+    0: {
+      type: types.string,
+      key: `${FORM_KEYS.form_24_five_year_amount}`,
+      content: {
+        smallKey: 'Amount',
+        text: 'Five years from now, how much money do you want to have in the bank? What do you need to do to make that happen?',
+      },
+      options: {
+        required: true,
+        placeHolder: '$1,000,000'
+      },
+    },
+            1: {
+              type: types.string,
+              key: `${FORM_KEYS.form_24_five_year_plan}`,
+              content: {
+              text: 'What steps are needed to get there?',
+              smallKey: 'Plan',
               },
-              1: {
-                type: types.list,
-                key: `${CHILDREN_KEYS.form_24_five_year_plan.plan}`,
-                content: {
-                label: 'What steps are needed to get there?',
-                smallKey: 'Plan',
-                listText: 'Plan',
-                },
-            options: {
-                childTypes: {
-                    0: {
-                     type: types.string,
-            options: {
-              placeHolder: 'I will need to invest in...',
-              required: true,
+              options: {
+                required: true,
+                multiline: true,
+                numberOfLines: 4,
+                placeHolder: 'e.g. I will need to increase my salary by 20k annually, and invest the extra money wisely...'
+              }
             },
-          },
-        },
-
-      },
-              },
-          },
-        },
-      },
-      1: {
+      2: {
         type: types.string,
         key: `${FORM_KEYS.form_24_difference}`,
         content: {
