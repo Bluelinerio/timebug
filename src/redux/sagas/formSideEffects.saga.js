@@ -44,8 +44,8 @@ function* _callGoalsSideEffect(
 }
 
 function* _callCareerGoalsSideEffect(
-  value: Array<any> = [],
-  awardData: Array<any> = []
+  value: any = [],
+  awardData: Array<any> = null
 ) {
   const payload: CareerGoalSideEffectPayload = {
     value,
