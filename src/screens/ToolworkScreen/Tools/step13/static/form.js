@@ -7,7 +7,7 @@ import { categoriesWithName } from '../context/CategoryContext'
 // TODO: Rename second key from career to category
 export const FORM_KEYS = {
   career_goals_form_goal: 'career_goals_form_goal',
-  career_goals_form_career: 'career_goals_form_career',
+  career_goals_form_category: 'career_goals_form_category',
   career_goals_form_how_long: 'career_goals_form_how_long',
   career_goals_form_steps: 'career_goals_form_steps',
 }
@@ -38,7 +38,7 @@ const form: Form = {
     },
     1: {
       type: types.select,
-      key: FORM_KEYS.career_goals_form_career,
+      key: FORM_KEYS.career_goals_form_category,
       content: {
         text: "Select this goal's category",
         smallKey: 'Type of goal',

@@ -90,7 +90,7 @@ const parseGoals = (value: Array<any>) => {
     const toolDataForGoal = toolDataValue.find(t => t.goalId === id) || null
 
     const name = val[FORM_KEYS.career_goals_form_goal].value
-    const categoryKey = val[FORM_KEYS.career_goals_form_career].value
+    const categoryKey = val[FORM_KEYS.career_goals_form_category].value
     const howLongKey = val[FORM_KEYS.career_goals_form_how_long].value
     const stepsRaw = val[FORM_KEYS.career_goals_form_steps].value
     const creation = val.created_at
