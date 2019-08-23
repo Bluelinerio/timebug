@@ -19,10 +19,10 @@ class OptionButton extends React.PureComponent<Props> {
   }
 
   render() {
-    const { text } = this.props
+    const { text, style = {} } = this.props
     return (
-      <TouchableOpacity style={styles.button} onPress={this.onPress}>
-        <Text style={styles.buttonText}>{text}</Text>
+      <TouchableOpacity style={[styles.button, style.button]} onPress={this.onPress}>
+        <Text style={[styles.buttonText, style.text]}>{text}</Text>
       </TouchableOpacity>
     )
   }

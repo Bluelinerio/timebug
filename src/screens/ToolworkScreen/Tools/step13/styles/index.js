@@ -6,8 +6,8 @@ export default StyleSheet.create({
   button: {
     alignItems: 'center',
     justifyContent: 'center',
-    width: '50%',
-    height: 64,
+    minWidth: '50%',
+    minHeight: 64,
     backgroundColor: gray50,
     borderRadius: 6,
     marginTop: 12,

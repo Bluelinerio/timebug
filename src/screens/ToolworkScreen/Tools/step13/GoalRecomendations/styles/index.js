@@ -14,5 +14,4 @@ export default StyleSheet.create({
   optionsButton: {
     width: '100%',
   },
-  optionsText: {},
 })
