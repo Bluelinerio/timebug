@@ -8,10 +8,10 @@ export default {
   number: 13,
   affectedSteps: [13, 14, 15, 16, 17, 18, 19],
   phase: SELF_ASSESSMENT,
-  title: 'Career roadmap',
-  subtitle: 'The top goals you want to attain on your career',
+  title: 'Phase 2 Goals',
+  subtitle: 'Your Self-Assessment',
   content:
-    'Use this tool to plan the milestones you want to reach on your professional life.',
+    'Use this tool to create and keep track of goals inspired by phase 2 of the workbook.',
   form: {},
   config: {},
   require: {
