@@ -1,10 +1,10 @@
 // @flow
-import React                             from 'react'
+import React from 'react'
 import { View, ScrollView, BackHandler } from 'react-native'
-import GoalScreenContent                 from './GoalScreenContent'
-import SubHeader                         from './SubHeader'
-import GoalArchiveLink                   from './GoalArchiveLink'
-import styles                            from '../../common/styles'
+import GoalScreenContent from './GoalScreenContent'
+import SubHeader from './SubHeader'
+import GoalArchiveLink from './GoalArchiveLink'
+import styles from '../../common/styles'
 
 type State = {
   selectedGoaltype: String | null,
@@ -47,6 +47,12 @@ class GoalScreenComponent extends React.PureComponent<Props, State> {
       this.setState({
         selectedGoaltype: type,
         selectedGoal: goal,
+      })
+    } else if (this.props.type && prevProps.type !== this.props.type) {
+      const { type } = this.props
+      this.setState({
+        selectedGoaltype: type,
+        selectedGoal: null,
       })
     }
   }

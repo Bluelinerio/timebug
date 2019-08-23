@@ -1,10 +1,11 @@
 //@flow
-import React               from 'react'
-import InteractionManager  from '../../utils/InteractionManager'
-import GoalScreenContainer from './containers/GoalScreenContainer'
-import User                from '../../containers/User'
-import DefaultIndicator    from '../../components/DefaultIndicator'
-import MissingUserScreen   from '../../components/MissingUserScreen'
+import React                  from 'react'
+import InteractionManager     from '../../utils/InteractionManager'
+// import GoalScreenContainer from './containers/GoalScreenContainer'
+import GoalScreenContainer    from './v2'
+import User                   from '../../containers/User'
+import DefaultIndicator       from '../../components/DefaultIndicator'
+import MissingUserScreen      from '../../components/MissingUserScreen'
 
 class GoalScreen extends React.PureComponent {
   static navigationOptions = {
