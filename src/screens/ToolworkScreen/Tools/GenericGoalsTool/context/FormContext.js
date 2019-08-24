@@ -1,5 +1,5 @@
 // @flow
-import React from 'react'
+import React, { useState, useCallback } from 'react'
 
 type State = {
   baseValues: any,
@@ -9,66 +9,91 @@ type State = {
   setBaseValues: () => void,
   newFormMounted: () => void,
   onFormClosed: () => void,
+  setFormEdition: () => void,
 }
 
 export type ProvidedProps = State
 
 type Props = {
   children: Array<React.Node>,
+  FORM_KEYS: any,
+  CHILDREN_KEYS: any,
+  model: any,
 }
 
-const initialState = {
+const initialState: State = {
   baseValues: null,
   editionId: null,
   isFinished: false,
+  FORM_KEYS: null,
+  CHILDREN_KEYS: null,
+  model: null,
   onFormFinished: () => null,
   setBaseValues: () => null,
   newFormMounted: () => null,
   onFormClosed: () => null,
+  setFormEdition: () => null,
 }
 
 const FormContext = React.createContext(initialState)
 
-class FormProvider extends React.PureComponent<Props, State> {
-  state = {
-    ...initialState,
-  }
+const FormProvider = (props: Props) => {
+  const { FORM_KEYS, CHILDREN_KEYS, model } = props
+  const [isFinished, setIsFinished] = useState(false)
+  const [baseValues, setBaseValues] = useState(null)
+  const [editionId, setEditionId] = useState(null)
 
-  newFormMounted = () => {
-    this.setState({ isFinished: false })
-  }
+  const newFormMounted = useCallback(
+    () => {
+      setIsFinished(false)
+    },
+    [setIsFinished]
+  )
 
-  onFormFinished = () => {
-    this.setState({ isFinished: true, baseValues: null, editionId: null })
-  }
+  const onFormFinished = useCallback(
+    () => {
+      setIsFinished(true)
+      setBaseValues(null)
+      setEditionId(null)
+    },
+    [setIsFinished, setBaseValues, setEditionId]
+  )
 
-  setBaseValues = (value: any) => {
-    this.setState({ baseValues: value })
-  }
+  const onFormClosed = useCallback(
+    () => {
+      setIsFinished(false)
+      setBaseValues(null)
+      setEditionId(null)
+    },
+    [setIsFinished, setBaseValues, setEditionId]
+  )
 
-  onFormClosed = () => {
-    this.setState({ editionId: null, isFinished: false, baseValues: null })
-  }
+  const setFormEdition = useCallback(
+    (editionId: string) => {
+      setEditionId(editionId)
+    },
+    [setEditionId]
+  )
 
-  setFormEdition = (editionId: string) => {
-    this.setState({ editionId })
-  }
-
-  render() {
-    return (
-      <FormContext.Provider
-        value={{
-          ...this.state,
-          setBaseValues: this.setBaseValues,
-          onFormFinished: this.onFormFinished,
-          onFormClosed: this.onFormClosed,
-          setFormEdition: this.setFormEdition,
-        }}
-      >
-        {this.props.children}
-      </FormContext.Provider>
-    )
-  }
+  return (
+    <FormContext.Provider
+      value={{
+        model,
+        FORM_KEYS,
+        CHILDREN_KEYS,
+        baseValues,
+        isFinished,
+        editionId,
+        setBaseValues,
+        onFormFinished,
+        onFormClosed,
+        setFormEdition,
+        newFormMounted,
+      }}
+    >
+      {this.props.children}
+    </FormContext.Provider>
+  )
 }
 
 export { FormProvider, FormContext }

@@ -2,9 +2,9 @@
 import moment from 'moment'
 import { useContext, useCallback } from 'react'
 import { ToolDataContext } from '../context/ToolDataProvider'
-import { categoriesWithName } from '../context/CategoryContext'
+import { FormContext } from '../context/FormContext'
+import { CategoryContext, CategoryLock } from '../context/CategoryContext'
 import { timeToCompleteGoal } from '2020_forms/forms/content'
-import { FORM_KEYS, CHILDREN_KEYS } from '../static/form'
 import { GoalToolData, Goal, Substep } from '../types'
 
 const _filterOpenGoals = (g: Goal) => {
@@ -25,7 +25,11 @@ const _isGoalCompleted = (g: Goal) => {
   return toolData && toolData.completed
 }
 
-const parseSteps = (steps: Array<any>, stepToolData: Array<any> = []) => {
+const parseSteps = (
+  steps: Array<any>,
+  stepToolData: Array<any> = [],
+  CHILDREN_KEYS
+) => {
   const parsedSteps = steps.map(s => {
     const id = s._id
     const name =
@@ -40,10 +44,11 @@ const parseSteps = (steps: Array<any>, stepToolData: Array<any> = []) => {
   return parsedSteps
 }
 
-const parseValueAsGoals = (category?: string) => (
-  value: Array<any>,
-  toolDataValue: Array<GoalToolData> = []
-) => {
+const parseValueAsGoals = (
+  category?: string,
+  categoriesWithName: Array<CategoryLock>,
+  { FORM_KEYS, CHILDREN_KEYS }: any
+) => (value: Array<any>, toolDataValue: Array<GoalToolData> = []) => {
   if (!value) return []
 
   const actualValue = category
@@ -72,7 +77,8 @@ const parseValueAsGoals = (category?: string) => (
 
     const steps = parseSteps(
       stepsRaw,
-      toolDataForGoal ? toolDataForGoal.steps : []
+      toolDataForGoal ? toolDataForGoal.steps : [],
+      CHILDREN_KEYS
     )
 
     return {
@@ -110,12 +116,17 @@ export const useStepTooldata = (goal: Goal, step: Substep) => {
 
 export const useGoals = (category?: string, filter: string = 'open') => {
   const { data } = useContext(ToolDataContext)
+  const { categories } = useContext(CategoryContext)
+  const { FORM_KEYS, CHILDREN_KEYS } = useContext(FormContext)
 
   const value = data ? data.value : {}
   const formValue = value ? value.form : []
   const toolDataValue = value ? (value.toolData ? value.toolData : []) : []
 
-  const goals = parseValueAsGoals(category)(formValue, toolDataValue)
+  const goals = parseValueAsGoals(category, categories, {
+    FORM_KEYS,
+    CHILDREN_KEYS,
+  })(formValue, toolDataValue)
 
   return goals.filter(
     filter === 'deleted'

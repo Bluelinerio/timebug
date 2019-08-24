@@ -4,7 +4,6 @@ import Button from '../../components/OptionButton'
 import { ScreenContext } from '../../context/ScreenContext'
 import { FormContext } from '../../context/FormContext'
 import { CategoryContext } from '../../context/CategoryContext'
-import { FORM_KEYS } from '../../static/form'
 
 type Props = {
   option?: string,
@@ -19,7 +18,7 @@ const OptionButtonContainer = (props: Props) => {
   const { option, newGoalButton = false, style = {} } = props
   const { openForm } = useContext(ScreenContext)
   const { category } = useContext(CategoryContext)
-  const { setBaseValues } = useContext(FormContext)
+  const { setBaseValues, FORM_KEYS } = useContext(FormContext)
 
   const onPress = () => {
 

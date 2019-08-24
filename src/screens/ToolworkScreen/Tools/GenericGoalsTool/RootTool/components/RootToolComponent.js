@@ -1,31 +1,55 @@
 // @flow
-import React                from 'react'
-import { ScrollView }       from 'react-native'
-import ToolContent          from '../containers/ToolContentContainer'
-import { ScreenProvider }   from '../../context/ScreenContext'
-import { CategoryProvider } from '../../context/CategoryContext'
+import React from 'react'
+import { ScrollView } from 'react-native'
+import ToolContent from '../containers/ToolContentContainer'
+import { ScreenProvider } from '../../context/ScreenContext'
+import { CategoryProvider, CategoryLock } from '../../context/CategoryContext'
 import { ToolDataProvider } from '../../context/ToolDataProvider'
-import { GoalProvider }     from '../../context/GoalContext'
-import { FormProvider }     from '../../context/FormContext'
-import Navigator            from '../containers/NavigatorContainer'
-import styles               from '../styles'
+import { GoalProvider } from '../../context/GoalContext'
+import { FormProvider } from '../../context/FormContext'
+import {
+  RecommendationsProvider,
+  Recommendation,
+} from '../../context/RecommendationsContext'
+import Navigator from '../containers/NavigatorContainer'
+import styles from '../styles'
 
-type Props = any
+type Props = {
+  recommendations: Array<Recommendation>,
+  categories: Array<CategoryLock>,
+  FORM_KEYS: any,
+  CHILDREN_KEYS: any,
+  form: any,
+}
 
 class RootToolComponent extends React.PureComponent<Props> {
   render() {
+    const {
+      recommendations,
+      categories,
+      FORM_KEYS,
+      CHILDREN_KEYS,
+      form,
+      ...rest
+    } = this.props
     return (
       <ScrollView style={styles.scroll} contentContainerStyle={styles.scroll}>
         <ScreenProvider>
-          <CategoryProvider>
-            <FormProvider>
-              <GoalProvider>
-                <ToolDataProvider {...this.props}>
-                  <Navigator />
-                  <ToolContent />
-                </ToolDataProvider>
-              </GoalProvider>
-            </FormProvider>
+          <CategoryProvider categories={categories}>
+            <RecommendationsProvider recommendations={recommendations}>
+              <FormProvider
+                FORM_KEYS={FORM_KEYS}
+                CHILDREN_KEYS={CHILDREN_KEYS}
+                form={form}
+              >
+                <GoalProvider>
+                  <ToolDataProvider {...rest}>
+                    <Navigator />
+                    <ToolContent />
+                  </ToolDataProvider>
+                </GoalProvider>
+              </FormProvider>
+            </RecommendationsProvider>
           </CategoryProvider>
         </ScreenProvider>
       </ScrollView>

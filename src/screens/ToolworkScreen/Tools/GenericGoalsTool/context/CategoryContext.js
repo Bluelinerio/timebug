@@ -65,7 +65,7 @@ export type ProvidedProps = {
   setCategory: string => void,
   unsetCategory: () => void,
   getCategories: (Array<any>) => Array<CategoryLock>,
-  getCategoryName: (string) => string,
+  getCategoryName: string => string,
 }
 
 type Props = {
@@ -73,7 +73,7 @@ type Props = {
   categories: Array<CategoryLock>,
 }
 
-const initialState = {
+const initialState: ProvidedProps = {
   category: null,
   categories: categoriesWithName,
   setCategory: () => null,
@@ -84,14 +84,16 @@ const initialState = {
 
 const CategoryContext = React.createContext(initialState)
 
-const CategoryProvider = (props: Props) => {
+const _CategoryProvider = (props: Props) => {
   const { categories: categoriesFromProps = null } = props
   const [storedCategories, setStoredCategories] = setState(categoriesWithName)
 
-  useEffect(() => {
-    if(categoriesFromProps)
-      setStoredCategories(categoriesFromProps)
-  }, [categoriesFromProps])
+  useEffect(
+    () => {
+      if (categoriesFromProps) setStoredCategories(categoriesFromProps)
+    },
+    [categoriesFromProps]
+  )
 
   const [category, setCategory] = setState(null)
 
@@ -101,7 +103,9 @@ const CategoryProvider = (props: Props) => {
 
   const getCategories = useCallback((completedSteps: Array<any> = []) => {
     const c = storedCategories.reduce((cats, lock) => {
-      const isUnlocked = lock.unlockStep.find(num => completedSteps.find(s => s.number === num))
+      const isUnlocked = lock.unlockStep.find(num =>
+        completedSteps.find(s => s.number === num)
+      )
       if (isUnlocked) return [...cats, lock]
       return cats
     }, [])
@@ -129,5 +133,7 @@ const CategoryProvider = (props: Props) => {
     </CategoryContext.Provider>
   )
 }
+
+const CategoryProvider = React.memo(_CategoryProvider)
 
 export { CategoryProvider, CategoryContext }

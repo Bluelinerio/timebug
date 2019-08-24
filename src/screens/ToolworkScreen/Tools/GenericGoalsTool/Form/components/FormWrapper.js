@@ -1,7 +1,6 @@
 // @flow
 import React               from 'react'
 import Form                from 'react-native-forms/components/Form'
-import model               from '../../static/form'
 import styles              from '../../styles'
 import {
   mapPhaseToTextStyles,
@@ -33,6 +32,7 @@ type Props = {
   baseValues: any,
   editionId: number,
   customProps: any,
+  model: any,
 }
 
 const STEP_NUMBER = 13
@@ -44,7 +44,7 @@ class FormWrapper extends React.PureComponent<Props> {
   }
 
   render() {
-    const { value, editionId = null, baseValues, customProps } = this.props
+    const { value, editionId = null, baseValues, customProps, model } = this.props
     return (
       <Form
         model={model}

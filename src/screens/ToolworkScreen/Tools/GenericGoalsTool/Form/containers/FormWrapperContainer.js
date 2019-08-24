@@ -6,8 +6,7 @@ import selectors                                              from '2020_redux/s
 import { ScreenContext }                                      from '../../context/ScreenContext'
 import { ToolDataContext }                                    from '../../context/ToolDataProvider'
 import { FormContext }                                        from '../../context/FormContext'
-import { CategoryContext }                                      from '../../context/CategoryContext'
-import { FORM_KEYS }                                          from '../../static/form'
+import { CategoryContext }                                    from '../../context/CategoryContext'
 import FormWrapper                                            from '../components/FormWrapper'
 
 const FormWrapperContainer = () => {
@@ -17,6 +16,8 @@ const FormWrapperContainer = () => {
     setBaseValues,
     newFormMounted,
     setFormEdition,
+    FORM_KEYS,
+    model,
   } = useContext(FormContext)
   const { data, storeData } = useContext(ToolDataContext)
   const { openGoalList } = useContext(ScreenContext)
@@ -69,6 +70,7 @@ const FormWrapperContainer = () => {
       baseValues={baseValues}
       editionId={editionId}
       customProps={customProps}
+      model={model}
     />
   )
 }
