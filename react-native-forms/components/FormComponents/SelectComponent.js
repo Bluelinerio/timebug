@@ -47,9 +47,9 @@ const IOSPicker = (props: any) => {
   const data =
     items && items.length > 0
       ? items.map(({ value, text }) => ({
-          key: value,
-          label: text,
-        }))
+        key: value,
+        label: text,
+      }))
       : [{ key: '', label: '-' }]
 
   const dataElement =
@@ -93,6 +93,7 @@ type Props = {
     },
     options?: {
       default?: string,
+      label?: string,
       repeats?: string,
       style?: SelectStyle,
     },

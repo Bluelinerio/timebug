@@ -1,6 +1,8 @@
+// @flow
 import { TOOL_KEYS } from '../tools'
+import { WorkbookDoneConfig } from '2020_types/types'
 
-export default {
+const workBookDoneConfig: WorkbookDoneConfig = {
   title: 'Congratulations!',
   text: `You have completed Step 1: What is my life story? \n 
     Your relections after meditating on your past will be used to help guide you to the 
@@ -10,3 +12,5 @@ export default {
     text: 'MEDITATION TOOL',
   },
 }
+
+export default workBookDoneConfig

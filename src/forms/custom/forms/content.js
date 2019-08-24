@@ -302,7 +302,18 @@ export const SatisfactionLevels = [
   'Absolutely satisfied',
 ]
 
-export const PercentageScale = ['10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', '100%']
+export const PercentageScale = [
+  '10%',
+  '20%',
+  '30%',
+  '40%',
+  '50%',
+  '60%',
+  '70%',
+  '80%',
+  '90%',
+  '100%',
+]
 
 export const OneToTenScale = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
 
@@ -315,4 +326,92 @@ export const TimeAndEffortInvestedInGoal = [
   'A lot of time and effort',
 ]
 
-export const AloneOrOthers = ['Alone', 'WithOthers']
+export const DietTypes = [ 'Balanced', 'Paleo', 'Vegetarian', 'Vegan', 'Atkins', 'Low-carb', 'Fast food', 'Other']
+
+
+export const SalaryGrowth = [
+  'Not at all',
+  'by $5,000 or less',
+  'between $5,000-$10,000',
+  'More than $10,000',
+]
+
+export const CompensationGoals = [
+  'Yes, completely',
+  'I made alot of progress',
+  'I made some progress',
+  'Not at all',
+]
+
+export const HoursPerWeek = [
+  '0-10 hours',
+  '10-20 hours',
+  '20-30 hours',
+  '40-50 hours',
+  'More than 50',
+]
+
+export const PaidFairly = ['Yes', 'No']
+
+export const CareerGoals = [
+  'Get promoted at my current job',
+  'Find a new job',
+  'Learn a new skill to help advanced my career',
+  'I`ll create my own goal',
+  'Skip this for now and create a goal later',
+]
+
+export const AloneOrOthers = ['Alone', 'With Others']
+
+export const YesNo = ['Yes', 'No']
+
+export const HoursPerMonth = [
+  '1-10',
+  '11-20',
+  '21-40',
+  '41-60',
+  '61-120',
+  '121-160',
+  'Over 160 hours',
+]
+
+export const HoursOfSleep = [
+  "Less than 4 hours",
+  '4-6 hours',
+  '6-8 hours',
+  "More than 8 hours"
+]
+
+export const EmotionalChanges = [
+  'Much more positive',
+  'About the same',
+  'Slightly More positive',
+  'Slightly more negative',
+  'Much more negative',
+]
+
+export const ImprovementOrRegression = [
+  'Improved',
+  'Regressed',
+]
+
+export const RelationshipRating = [
+  '-',
+  '1',
+  '2',
+  '4',
+  '3',
+  '6',
+  '5',
+  '7',
+  '8',
+  '9',
+  '10',
+]
+
+export const SpiritualViews = [
+  'Very spiritual/religious',
+  'Spiritual but not religious',
+  'I would like to be more spiritual',
+  'I am not interested in spirituality',
+]
