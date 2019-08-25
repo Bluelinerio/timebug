@@ -13,6 +13,7 @@ import {
 } from '../../context/RecommendationsContext'
 import Navigator from '../containers/NavigatorContainer'
 import styles from '../styles'
+import { StyleProvider } from '../../context/StyleContext'
 
 type Props = {
   recommendations: Array<Recommendation>,
@@ -20,6 +21,7 @@ type Props = {
   FORM_KEYS: any,
   CHILDREN_KEYS: any,
   model: any,
+  phase: string,
 }
 
 class RootToolComponent extends React.PureComponent<Props> {
@@ -30,8 +32,10 @@ class RootToolComponent extends React.PureComponent<Props> {
       FORM_KEYS,
       CHILDREN_KEYS,
       model,
+      phase,
       ...rest
     } = this.props
+
     return (
       <ScrollView style={styles.scroll} contentContainerStyle={styles.scroll}>
         <ScreenProvider>
@@ -44,8 +48,10 @@ class RootToolComponent extends React.PureComponent<Props> {
               >
                 <GoalProvider>
                   <ToolDataProvider {...rest}>
-                    <Navigator />
-                    <ToolContent />
+                    <StyleProvider phase={phase}>
+                      <Navigator />
+                      <ToolContent />
+                    </StyleProvider>
                   </ToolDataProvider>
                 </GoalProvider>
               </FormProvider>

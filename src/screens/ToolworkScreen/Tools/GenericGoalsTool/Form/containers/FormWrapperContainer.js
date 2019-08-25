@@ -1,13 +1,14 @@
 // @flow
 import React, { useContext, useEffect, useCallback, useMemo } from 'react'
-import { shallowEqual, useSelector }                          from 'react-redux'
-import { ItemType }                                           from 'react-native-forms/types/formTypes'
-import selectors                                              from '2020_redux/selectors'
-import { ScreenContext }                                      from '../../context/ScreenContext'
-import { ToolDataContext }                                    from '../../context/ToolDataProvider'
-import { FormContext }                                        from '../../context/FormContext'
-import { CategoryContext }                                    from '../../context/CategoryContext'
-import FormWrapper                                            from '../components/FormWrapper'
+import { shallowEqual, useSelector } from 'react-redux'
+import { ItemType } from 'react-native-forms/types/formTypes'
+import selectors from '2020_redux/selectors'
+import { ScreenContext } from '../../context/ScreenContext'
+import { ToolDataContext } from '../../context/ToolDataProvider'
+import { FormContext } from '../../context/FormContext'
+import { CategoryContext } from '../../context/CategoryContext'
+import FormWrapper from '../components/FormWrapper'
+import { StyleContext } from '../../context/StyleContext'
 
 const FormWrapperContainer = () => {
   const {
@@ -22,6 +23,7 @@ const FormWrapperContainer = () => {
   const { data, storeData } = useContext(ToolDataContext)
   const { openGoalList } = useContext(ScreenContext)
   const { getCategories } = useContext(CategoryContext)
+  const { color, formStyles, textAndButtonColor } = useContext(StyleContext)
 
   const completedSteps = useSelector(selectors.getCompletedSteps, shallowEqual)
   const categories = useMemo(() => getCategories(completedSteps), [
@@ -71,6 +73,9 @@ const FormWrapperContainer = () => {
       editionId={editionId}
       customProps={customProps}
       model={model}
+      color={color}
+      formStyles={formStyles}
+      textAndButtonColor={textAndButtonColor}
     />
   )
 }

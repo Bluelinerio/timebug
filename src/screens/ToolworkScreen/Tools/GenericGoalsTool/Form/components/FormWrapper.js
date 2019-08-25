@@ -1,30 +1,7 @@
 // @flow
-import React               from 'react'
-import Form                from 'react-native-forms/components/Form'
-import styles              from '../../styles'
-import {
-  mapPhaseToTextStyles,
-  mapPhaseToColor,
-  mapPhaseToButtonStyles,
-  mapPhaseToElementBackground,
-  mapPhaseToTextAndButtonColor,
-}                          from '2020_utils/colorsForStep'
-import { SELF_ASSESSMENT } from '2020_services/cms'
-
-const phase = SELF_ASSESSMENT
-
-const textStyle = mapPhaseToTextStyles(phase)
-const buttonContainerStyle = mapPhaseToButtonStyles(phase)
-const elementContainerStyle = mapPhaseToElementBackground(phase)
-const color = mapPhaseToColor(phase)
-const textAndButtonColor = mapPhaseToTextAndButtonColor(phase)
-
-const formStyles = {
-  textStyle,
-  buttonContainerStyle,
-  accentColor: color,
-  elementContainerStyle,
-}
+import React from 'react'
+import Form from 'react-native-forms/components/Form'
+import styles from '../../styles'
 
 type Props = {
   value: any,
@@ -33,9 +10,10 @@ type Props = {
   editionId: number,
   customProps: any,
   model: any,
+  formStyles: any,
+  color: any,
+  textAndButtonColor: any,
 }
-
-const STEP_NUMBER = 13
 
 class FormWrapper extends React.PureComponent<Props> {
   _onFinish = (data: any) => {
@@ -44,15 +22,22 @@ class FormWrapper extends React.PureComponent<Props> {
   }
 
   render() {
-    const { value, editionId = null, baseValues, customProps, model } = this.props
+    const {
+      value,
+      editionId = null,
+      baseValues,
+      customProps,
+      model,
+      formStyles,
+      color,
+      textAndButtonColor,
+    } = this.props
     return (
       <Form
         model={model}
         value={value}
         onFinish={this._onFinish}
-        stepNumber={STEP_NUMBER}
         formContainerStyle={[styles.fullWidth, styles.fullHeight]}
-        key={STEP_NUMBER}
         disableAnswers
         editionId={editionId}
         baseValues={baseValues ? baseValues : undefined}
