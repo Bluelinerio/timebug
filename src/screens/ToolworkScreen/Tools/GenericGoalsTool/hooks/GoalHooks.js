@@ -33,7 +33,7 @@ const parseSteps = (
   const parsedSteps = steps.map(s => {
     const id = s._id
     const name =
-      s[CHILDREN_KEYS.career_goals_form_steps.step_to_life_goal].value
+      s[CHILDREN_KEYS.steps.step].value
     const substepToolData = stepToolData.find(s => s.substepId === id) || null
     return {
       id,
@@ -53,7 +53,7 @@ const parseValueAsGoals = (
 
   const actualValue = category
     ? value.filter(val => {
-        const categoryKey = val[FORM_KEYS.career_goals_form_category].value
+        const categoryKey = val[FORM_KEYS.category].value
         return categoryKey === category
       })
     : value
@@ -63,10 +63,10 @@ const parseValueAsGoals = (
 
     const toolDataForGoal = toolDataValue.find(t => t.goalId === id) || null
 
-    const name = val[FORM_KEYS.career_goals_form_goal].value
-    const categoryKey = val[FORM_KEYS.career_goals_form_category].value
-    const howLongKey = val[FORM_KEYS.career_goals_form_how_long].value
-    const stepsRaw = val[FORM_KEYS.career_goals_form_steps].value
+    const name = val[FORM_KEYS.goal].value
+    const categoryKey = val[FORM_KEYS.category].value
+    const howLongKey = val[FORM_KEYS.length].value
+    const stepsRaw = val[FORM_KEYS.steps].value
     const creation = val.created_at
     const category =
       categoriesWithName.find(cat => cat.key === categoryKey) ||

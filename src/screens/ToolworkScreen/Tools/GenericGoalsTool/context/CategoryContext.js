@@ -1,5 +1,5 @@
 // @flow
-import React, { useCallback, setState, useEffect } from 'react'
+import React, { useCallback, useState, useEffect } from 'react'
 
 export type CategoryLock = {
   category: Category,
@@ -86,7 +86,7 @@ const CategoryContext = React.createContext(initialState)
 
 const _CategoryProvider = (props: Props) => {
   const { categories: categoriesFromProps = null } = props
-  const [storedCategories, setStoredCategories] = setState(categoriesWithName)
+  const [storedCategories, setStoredCategories] = useState(categoriesWithName)
 
   useEffect(
     () => {
@@ -95,7 +95,7 @@ const _CategoryProvider = (props: Props) => {
     [categoriesFromProps]
   )
 
-  const [category, setCategory] = setState(null)
+  const [category, setCategory] = useState(null)
 
   const unsetCategory = useCallback(() => {
     setCategory(null)
@@ -129,7 +129,7 @@ const _CategoryProvider = (props: Props) => {
         getCategoryName,
       }}
     >
-      {this.props.children}
+      {props.children}
     </CategoryContext.Provider>
   )
 }

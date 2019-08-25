@@ -19,7 +19,7 @@ type Props = {
   categories: Array<CategoryLock>,
   FORM_KEYS: any,
   CHILDREN_KEYS: any,
-  form: any,
+  model: any,
 }
 
 class RootToolComponent extends React.PureComponent<Props> {
@@ -29,7 +29,7 @@ class RootToolComponent extends React.PureComponent<Props> {
       categories,
       FORM_KEYS,
       CHILDREN_KEYS,
-      form,
+      model,
       ...rest
     } = this.props
     return (
@@ -40,7 +40,7 @@ class RootToolComponent extends React.PureComponent<Props> {
               <FormProvider
                 FORM_KEYS={FORM_KEYS}
                 CHILDREN_KEYS={CHILDREN_KEYS}
-                form={form}
+                model={model}
               >
                 <GoalProvider>
                   <ToolDataProvider {...rest}>

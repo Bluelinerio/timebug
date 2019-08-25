@@ -4,7 +4,6 @@ import type { Form } from 'react-native-forms/types/formTypes'
 import { timeToCompleteGoal } from '2020_forms/forms/content'
 import { categoriesWithName } from './categories'
 
-// TODO: Rename second key from career to category
 export const FORM_KEYS = {
   career_dreams_form_goal: 'career_dreams_form_goal',
   career_dreams_form_category: 'career_dreams_form_category',
@@ -12,9 +11,24 @@ export const FORM_KEYS = {
   career_dreams_form_steps: 'career_dreams_form_steps',
 }
 
+export const FORM_KEYS_PROXY = {
+  goal: FORM_KEYS.career_dreams_form_goal,
+  category: FORM_KEYS.career_dreams_form_category,
+  length: FORM_KEYS.career_dreams_form_how_long,
+  steps: FORM_KEYS.career_dreams_form_steps,
+}
+
 export const CHILDREN_KEYS = {
   career_dreams_form_steps: {
-    step_to_life_goal: `${FORM_KEYS.career_dreams_form_steps}.step_to_life_goal`,
+    step_to_life_goal: `${
+      FORM_KEYS.career_dreams_form_steps
+    }.step_to_life_goal`,
+  },
+}
+
+export const CHILDREN_KEYS_PROXY = {
+  steps : {
+    step: CHILDREN_KEYS.career_dreams_form_steps.step_to_life_goal,
   },
 }
 

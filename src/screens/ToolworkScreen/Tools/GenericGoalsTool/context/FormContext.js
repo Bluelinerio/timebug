@@ -91,7 +91,7 @@ const FormProvider = (props: Props) => {
         newFormMounted,
       }}
     >
-      {this.props.children}
+      {props.children}
     </FormContext.Provider>
   )
 }
