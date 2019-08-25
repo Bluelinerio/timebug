@@ -23,7 +23,7 @@ const OptionButtonContainer = (props: Props) => {
   const onPress = () => {
 
     const base = {
-      [FORM_KEYS.career_goals_form_category]: {
+      [FORM_KEYS.category]: {
         value: category,
       },
     }
@@ -37,7 +37,7 @@ const OptionButtonContainer = (props: Props) => {
 
       setBaseValues({
         ...base,
-        [FORM_KEYS.career_goals_form_goal]: {
+        [FORM_KEYS.goal]: {
           value: option,
         },
       })

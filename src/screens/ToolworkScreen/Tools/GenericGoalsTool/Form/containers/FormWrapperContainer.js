@@ -58,7 +58,7 @@ const FormWrapperContainer = () => {
   )
 
   const customProps = {
-    [FORM_KEYS.career_goals_form_category]: {
+    [FORM_KEYS.category]: {
       filter: selectFilter,
     },
   }
