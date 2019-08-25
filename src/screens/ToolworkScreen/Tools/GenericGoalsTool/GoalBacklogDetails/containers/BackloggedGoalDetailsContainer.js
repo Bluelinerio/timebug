@@ -6,6 +6,7 @@ import { ScreenContext } from '../../context/ScreenContext'
 import { useGoalModifiers } from '../../hooks/GoalHooks'
 import { FormContext } from '../../context/FormContext'
 import { CategoryContext } from '../../context/CategoryContext'
+import { StyleContext } from '../../context/StyleContext'
 
 const BackloggedGoalDetailsContainer = () => {
   const { goal, unsetGoal } = useContext(GoalContext)
@@ -18,6 +19,9 @@ const BackloggedGoalDetailsContainer = () => {
   } = useGoalModifiers(goal)
   const { setFormEdition } = useContext(FormContext)
   const { setCategory } = useContext(CategoryContext)
+  const { color, containerBackgroundColor, textContrastColor } = useContext(
+    StyleContext
+  )
 
   const onReopen = useCallback((reopen?: boolean) => {
     if (reopen) {
@@ -45,6 +49,9 @@ const BackloggedGoalDetailsContainer = () => {
       onReopen={onReopen}
       onDelete={onDelete}
       deletedAt={deletedAt}
+      color={color}
+      containerBackgroundColor={containerBackgroundColor}
+      textContrastColor={textContrastColor}
     />
   )
 }

@@ -19,6 +19,9 @@ type Props = {
   steps: Array<SubstepToolData>,
   onCompletePress: () => void,
   onDeletePress: () => void,
+  color: string,
+  containerBackgroundColor: string,
+  textContrastColor: string,
 }
 
 const calculateDueDate = (goal: Goal) => {
@@ -40,6 +43,9 @@ const GoalDetailsContent = (props: Props) => {
     steps,
     onCompletePress: onComplete,
     onDeletePress,
+    color,
+    textContrastColor,
+    containerBackgroundColor,
   } = props
   const [stateNotes, setNotes] = useState(notes ? notes : '')
   const [openDialog, setOpenDialog] = useState(false)
@@ -89,24 +95,29 @@ const GoalDetailsContent = (props: Props) => {
         onSelect={onSelect}
         text={'Please select a goal outcome for your goal'}
       />
-      <Text style={[styles.text, styles.title]}>
+      <Text style={[styles.text, styles.title, { color }]}>
         Goal: <Text style={styles.goalText}>{goal.name}</Text>
       </Text>
-      <Text style={[styles.text, styles.category]}>
+      <Text style={[styles.text, styles.category, { color }]}>
         Category: <Text style={styles.goalText}>{goal.category.name}</Text>
       </Text>
-      <Text style={[styles.text, styles.detailsStandard]}>
+      <Text style={[styles.text, styles.detailsStandard, { color }]}>
         Created on: <Text style={styles.goalText}>{formattedDate}</Text>
       </Text>
-      <Text style={[styles.text, styles.detailsStandard]}>
+      <Text style={[styles.text, styles.detailsStandard, { color }]}>
         Estimated duration:{' '}
         <Text style={styles.goalText}>{goal.timeToComplete.text}</Text>
       </Text>
-      <Text style={[styles.text, styles.detailsStandard]}>
+      <Text style={[styles.text, styles.detailsStandard, { color }]}>
         Due date: <Text style={styles.goalText}>{dueDate}</Text>
       </Text>
       <Text
-        style={[styles.text, styles.detailsStandard, styles.completionProgress]}
+        style={[
+          styles.text,
+          styles.detailsStandard,
+          styles.completionProgress,
+          { color },
+        ]}
       >
         Completion Progress: {completion.toFixed(2)}%
       </Text>
@@ -128,7 +139,7 @@ const GoalDetailsContent = (props: Props) => {
           />
         </View>
       </View>
-      <Text style={[styles.text, styles.goalTimeLeft]}>
+      <Text style={[styles.text, styles.goalTimeLeft, { color }]}>
         {completed
           ? 'Congratulations on completing this goal!'
           : daysLeft < 0
@@ -139,11 +150,11 @@ const GoalDetailsContent = (props: Props) => {
                   daysLeft === 1 ? 'day' : 'days'
                 } left to complete this goal!`}
       </Text>
-      <Text style={[styles.text, styles.subsectionTitle]}>
+      <Text style={[styles.text, styles.subsectionTitle, { color }]}>
         Steps to complete goal
       </Text>
       <SubstepList goal={goal} />
-      <Text style={[styles.text, styles.subsectionTitle]}>
+      <Text style={[styles.text, styles.subsectionTitle, { color }]}>
         Additional notes
       </Text>
       <View style={styles.textAreaContainer}>
@@ -158,13 +169,27 @@ const GoalDetailsContent = (props: Props) => {
       </View>
       <View style={styles.buttonContainer}>
         <TouchableOpacity
-          style={[styles.goalButton, styles.borderedButton]}
+          style={[
+            styles.goalButton,
+            styles.borderedButton,
+            { backgroundColor: containerBackgroundColor },
+          ]}
           onPress={onCompletePress}
         >
-          <Text style={styles.goalButtonText}>Complete goal</Text>
+          <Text style={[styles.goalButtonText, { color: textContrastColor }]}>
+            Complete goal
+          </Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.goalButton} onPress={onDeletePress}>
-          <Text style={styles.goalButtonText}>Backlog goal</Text>
+        <TouchableOpacity
+          style={[
+            styles.goalButton,
+            { backgroundColor: containerBackgroundColor },
+          ]}
+          onPress={onDeletePress}
+        >
+          <Text style={[styles.goalButtonText, { color: textContrastColor }]}>
+            Backlog goal
+          </Text>
         </TouchableOpacity>
       </View>
     </View>

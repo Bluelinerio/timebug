@@ -4,9 +4,13 @@ import { GoalContext } from '../../context/GoalContext'
 import { useGoalModifiers } from '../../hooks/GoalHooks'
 import GoalDetailsContent from '../components/GoalDetailsContent'
 import { ScreenContext } from '../../context/ScreenContext'
+import { StyleContext } from '../../context/StyleContext'
 
 const GoalDetailsContentContainer = () => {
   const { goal, unsetGoal } = useContext(GoalContext)
+  const { color, containerBackgroundColor, textContrastColor } = useContext(
+    StyleContext
+  )
   const {
     storeNotes,
     notes,
@@ -45,6 +49,9 @@ const GoalDetailsContentContainer = () => {
       goal={goal}
       completed={completed}
       steps={steps}
+      color={color}
+      containerBackgroundColor={containerBackgroundColor}
+      textContrastColor={textContrastColor}
     />
   )
 }
