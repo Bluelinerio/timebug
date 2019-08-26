@@ -31,6 +31,7 @@ const form: Form = {
         content: {
           text: `What personal hobbies and activities do you want to spend more time on?`,
           smallKey: 'Hobbies more',
+          listText: 'Hobbies',
         },
         options: {
           required: true,
@@ -55,6 +56,7 @@ const form: Form = {
         content: {
           text: `What personal hobbies and activities do you want to spend less time on?`,
           smallKey: 'Hobbies less',
+          listText: 'Hobbies',
         },
         options: {
           required: true,
@@ -66,7 +68,7 @@ const form: Form = {
                 smallKey: 'Hobby less',
               },
               options: {
-                placeHolder: 'Reality television',
+                placeHolder: 'Watching reality television',
                 required: true
               },
             },
