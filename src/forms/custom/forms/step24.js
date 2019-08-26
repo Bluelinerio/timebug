@@ -25,7 +25,7 @@ const form: Form = {
       key: `${FORM_KEYS.form_24_five_year_amount}`,
       content: {
         smallKey: 'Amount',
-        text: 'Five years from now, how much money do you want to have in the bank? What do you need to do to make that happen?',
+        text: 'Five years from now, how much money do you want to have in the bank?',
       },
       options: {
         required: true,
