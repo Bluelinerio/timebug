@@ -1,6 +1,6 @@
 // @flow
 
-export const key = 'career_goals_tracker_tool'
+export const key = 'assessment_goals'
 import { SELF_ASSESSMENT, stepEnum } from '2020_services/cms'
 
 export default {
