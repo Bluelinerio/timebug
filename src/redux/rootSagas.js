@@ -20,6 +20,7 @@ import { watchForFormSideEffectsSaga }              from './sagas/formSideEffect
 import { watchSyncToolData }                        from './sagas/toolData.saga'
 import { watchForAnalytics }                        from './sagas/analyticsSaga'
 import { watchForCareerGoalsSaga }                  from './sagas/careerGoals.saga'
+import { watchForCareerDreamsSaga }                 from './sagas/careerDreams.saga'
 
 function* appSaga() {
   yield all([
@@ -42,6 +43,7 @@ function* appSaga() {
     watchSyncToolData(),
     watchForAnalytics(),
     watchForCareerGoalsSaga(),
+    watchForCareerDreamsSaga(),
   ])
 }
 export default function* rootSaga() {

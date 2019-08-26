@@ -24,12 +24,17 @@ import type { GoalSideEffectPayload } from '../actions/goals.actions'
 import { goalSideEffect } from '../actions/goals.actions'
 import { CareerGoalSideEffectPayload } from '../actions/careerGoals.actions'
 import { careerGoalSideEffect } from '../actions/careerGoals.actions'
+import {
+  careerDreamSideEffect,
+  CareerDreamSideEffectPayload,
+} from '../actions/careerDreams.actions'
 
 // TODO: Refactor into several sagas, extract constants to readable file
 
 const toolKeysForStepIds = {
   [stepEnum.STEP_5]: TOOL_KEYS.GoalTrackerKey,
   [stepEnum.STEP_13]: TOOL_KEYS.CareerGoalsTrackerKey,
+  [stepEnum.STEP_23]: TOOL_KEYS.VisionCreationDreamsTrackerKey,
 }
 
 function* _callGoalsSideEffect(
@@ -54,6 +59,17 @@ function* _callCareerGoalsSideEffect(
   yield put(careerGoalSideEffect(payload))
 }
 
+function* _callCareerDreamsSideEffect(
+  value: any = [],
+  awardData: Array<any> = null
+) {
+  const payload: CareerDreamSideEffectPayload = {
+    value,
+    awardData,
+  }
+  yield put(careerDreamSideEffect(payload))
+}
+
 function* _handleAwardEffects(action: {
   type: SUBMIT_AWARD_VALUE,
   payload: SubmitAwardValuePayload,
@@ -73,6 +89,9 @@ function* _handleAwardEffects(action: {
           break
         case stepEnum.STEP_13:
           yield fork(_callCareerGoalsSideEffect, formValueForStep, value)
+          break
+        case stepEnum.STEP_23:
+          yield fork(_callCareerDreamsSideEffect, formValueForStep, value)
           break
         default:
           yield
@@ -105,6 +124,9 @@ function* _handleSideEffects(action: {
       break
     case stepEnum.STEP_13:
       yield fork(_callCareerGoalsSideEffect, value, awardDataValue)
+      break
+    case stepEnum.STEP_23:
+      yield fork(_callCareerDreamsSideEffect, value, awardDataValue)
       break
     default:
       yield
@@ -149,6 +171,9 @@ function* _handleSyncSideEffects() {
         break
       case stepEnum.STEP_13:
         yield fork(_callCareerGoalsSideEffect, formDataForStep, awardDataValue)
+        break
+      case stepEnum.STEP_23:
+        yield fork(_callCareerDreamsSideEffect, formDataForStep, awardDataValue)
         break
       default:
         yield

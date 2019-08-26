@@ -5,12 +5,14 @@ const CHECKIN_NOTIFICATION = 'CHECKIN_NOTIFICATION'
 const DATA_NOTIFICATION = 'DATA_NOTIFICATION'
 const GOAL_NOTIFICATION = 'GOAL_NOTIFICATION'
 const CAREER_GOAL_NOTIFICATION = 'CAREER_GOAL_NOTIFICATION'
+const CAREER_DREAM_NOTIFICATION = 'CAREER_DREAM_NOTIFICATION'
 
 export const notificationTypes = {
   CHECKIN_NOTIFICATION,
   DATA_NOTIFICATION,
   GOAL_NOTIFICATION,
   CAREER_GOAL_NOTIFICATION,
+  CAREER_DREAM_NOTIFICATION,
 }
 
 class NotificationService {
@@ -63,7 +65,7 @@ class NotificationService {
   static showNotification(
     msg: string,
     title: string,
-    additionalProps: any = {},
+    additionalProps: any = {}
   ) {
     PushNotification.localNotification({
       autoCancel: true, // (optional) default: true
@@ -95,7 +97,7 @@ class NotificationService {
     time: string,
     id: string,
     repeatTime: number,
-    additionalProps: any = {},
+    additionalProps: any = {}
   ) {
     PushNotification.localNotificationSchedule({
       repeatType: 'time',
