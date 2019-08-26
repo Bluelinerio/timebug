@@ -103,7 +103,6 @@ const BackloggedGoalDetails = (props: Props) => {
       <View
         style={[
           styles.actionsContainer,
-          { backgroundColor: containerBackgroundColor },
         ]}
       >
         <TouchableOpacity
