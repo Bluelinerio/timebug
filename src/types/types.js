@@ -1,3 +1,5 @@
+// @flow
+
 export type WeekDataElement = {
   key: string,
   ideal: {
@@ -10,4 +12,13 @@ export type WeekDataElement = {
   },
   difference: number,
   storeAwardData: (any, any) => any,
+}
+
+export type WorkbookDoneConfig = {
+  title: string,
+  text: string,
+  toolLink?: {
+    tool: string,
+    text: string,
+  },
 }
