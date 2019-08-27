@@ -4,16 +4,19 @@ import { withNavigation } from 'react-navigation'
 import { CategoryContext } from '../../context/CategoryContext'
 import { useGoals } from '../../hooks/GoalHooks'
 import { GoalContext } from '../../context/GoalContext'
-import { ScreenContext } from '../../context/ScreenContext'
+import { ScreenContext, screens } from '../../context/ScreenContext'
 
 const NavigatorContainer = ({ navigation }) => {
   const { setCategory } = useContext(CategoryContext)
   const { setGoal } = useContext(GoalContext)
-  const { openGoalDetail, openGoalList } = useContext(ScreenContext)
+  const { openGoalDetail, openGoalList, openBacklog } = useContext(
+    ScreenContext
+  )
   const goals = useGoals()
   const payload = navigation.getParam('payload', null)
   const goalId = (payload && payload.goalId) || null
   const category = (payload && payload.category) || null
+  const screen = (payload && payload.screen) || null
 
   useEffect(
     () => {
@@ -24,15 +27,20 @@ const NavigatorContainer = ({ navigation }) => {
           setGoal(goal)
           openGoalDetail()
         }
-        navigation.setParams({ goalId: null })
-        navigation.setParams({ category: null })
+        navigation.setParams({ payload: { ...payload, goalId: null } })
+        navigation.setParams({ payload: { ...payload, category: null } })
       } else if (category) {
         openGoalList()
         setCategory(category)
-        navigation.setParams({ category: null })
+        navigation.setParams({ payload: { ...payload, category: null } })
+      } else if (screen) {
+        if (screen === screens.BACKLOG) {
+          openBacklog()
+          navigation.setParams({ payload: { ...payload, screen: null } })
+        }
       }
     },
-    [goalId, category]
+    [goalId, category, screen]
   )
 
   return null
