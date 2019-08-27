@@ -128,7 +128,7 @@ function* _handleGoalNotification(action: {
   try {
     const { payload } = action
     const { due, notificationId, category, goalId } = payload
-    const stepId = stepEnum.STEP_13
+    const stepId = stepEnum.STEP_23
 
     const link = `tools/tool?step=${stepId}&key=${
       TOOL_KEYS.VisionCreationDreamsTrackerKey
@@ -292,7 +292,7 @@ export function* _syncGoalsNotifications(action: {
 
       yield put(
         createNotification({
-          message: `It's time to check up on your goal: ${name}`,
+          message: `Time to check up on your dream: ${name}`,
           id: notificationId,
           notificationTime,
           repeatTime: notificationInterval,
@@ -343,7 +343,7 @@ export function* _syncGoalsNotifications(action: {
 
       yield put(
         createNotification({
-          message: `It's time to check up on your goal: ${name}`,
+          message: `Time to check up on your dream: ${name}`,
           id: notificationId,
           notificationTime,
           repeatTime: notificationInterval,

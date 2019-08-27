@@ -35,6 +35,7 @@ import type {
 import { checkinNotification }    from '../actions/checkin.actions'
 import { goalNotification }       from '../actions/goals.actions'
 import { careerGoalNotification } from '../actions/careerGoals.actions'
+import { careerDreamNotification } from '../actions/careerDreams.actions'
 
 function* clearNotifications() {
   yield call(NotificationService.cancelAll)
@@ -103,6 +104,9 @@ function* onNotification({ payload }: { payload: OnNotificationPayload }) {
       break
     case notificationTypes.CAREER_GOAL_NOTIFICATION:
       yield put(careerGoalNotification(data))
+      break
+    case notificationTypes.CAREER_DREAM_NOTIFICATION:
+      yield put(careerDreamNotification(data))
       break
     default:
       break
