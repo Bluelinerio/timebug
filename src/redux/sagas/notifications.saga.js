@@ -7,8 +7,8 @@ import {
   actionChannel,
   take,
   put,
-} from 'redux-saga/effects'
-import selectors from '../selectors'
+}                                 from 'redux-saga/effects'
+import selectors                  from '../selectors'
 import {
   CANCEL_ALL_NOTIFICATIONS,
   ON_NOTIFICATION,
@@ -18,22 +18,23 @@ import {
   STORE_LOADED,
   TRIGGER_NOTIFICATION,
   LOGOUT,
-} from '../actionTypes'
+}                                 from '../actionTypes'
 import NotificationService, {
   notificationTypes,
-} from '../../services/notifications'
+}                                 from '../../services/notifications'
 import {
   notificationScheduled,
   notificationRemoved,
   removeNotification as removeNotificationAction,
-} from '../actions/notifications.actions'
+}                                 from '../actions/notifications.actions'
 import type {
   CreateNotificationPayload,
   OnNotificationPayload,
   RemoveNotificationPayload,
-} from '../actions/notifications.actions'
-import { checkinNotification } from '../actions/checkin.actions'
-import { goalNotification } from '../actions/goals.actions'
+}                                 from '../actions/notifications.actions'
+import { checkinNotification }    from '../actions/checkin.actions'
+import { goalNotification }       from '../actions/goals.actions'
+import { careerGoalNotification } from '../actions/careerGoals.actions'
 
 function* clearNotifications() {
   yield call(NotificationService.cancelAll)
@@ -94,14 +95,17 @@ function* onNotification({ payload }: { payload: OnNotificationPayload }) {
   const hasStoreLoaded = yield select(selectors.hasStoreLoaded)
   if (!hasStoreLoaded) yield take(STORE_LOADED)
   switch (type) {
-  case notificationTypes.CHECKIN_NOTIFICATION:
-    yield put(checkinNotification(data))
-    break
-  case notificationTypes.GOAL_NOTIFICATION:
-    yield put(goalNotification(data))
-    break
-  default:
-    break
+    case notificationTypes.CHECKIN_NOTIFICATION:
+      yield put(checkinNotification(data))
+      break
+    case notificationTypes.GOAL_NOTIFICATION:
+      yield put(goalNotification(data))
+      break
+    case notificationTypes.CAREER_GOAL_NOTIFICATION:
+      yield put(careerGoalNotification(data))
+      break
+    default:
+      break
   }
 }
 
@@ -136,13 +140,13 @@ function* watchForNotificationDeletion() {
 }
 
 function* _handleLogout() {
-  try{
+  try {
     const notifications = yield select(selectors.notifications)
-    for(const notification of notifications) {
+    for (const notification of notifications) {
       const { id } = notification
       yield put(removeNotificationAction({ id }))
     }
-  } catch(err) {
+  } catch (err) {
     // fail silently
   }
 }

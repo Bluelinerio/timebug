@@ -9,6 +9,7 @@ import GoalTracker           from '../Tools/step5/GoalTracker'
 import GoalsLog              from '../Tools/step6/GoalsLog'
 import EnergyLevelsTracker   from '../Tools/step8/EnergyLevelsTracker'
 import CompletedGoalsTracker from '../Tools/step11/CompletedGoalTracker'
+import CareerGoalsTracker    from '../Tools/step13/index'
 import Dummy                 from '../Tools/dummyTool'
 
 type Props = {
@@ -36,6 +37,8 @@ const ToolSwitch = (props: Props) => {
     return <EnergyLevelsTracker {...props} />
   case TOOL_KEYS.CompletedGoalsTrackerKey:
     return <CompletedGoalsTracker {...props} />
+  case TOOL_KEYS.CareerGoalsTrackerKey:
+    return <CareerGoalsTracker {...props} />
   case TOOL_KEYS.DummyKey:
     return <Dummy {...props} />
   default:

@@ -20,7 +20,7 @@ const mapStateToProps = state => {
 }
 
 const merge = props => {
-  const { data, onFinish, steps, editionIndex = null } = props
+  const { data, onFinish, steps, editionId = null } = props
   const step = steps['5']
   const stepNumber = step.number
   const formData = (data[stepNumber] && data[stepNumber].value) || null
@@ -35,7 +35,7 @@ const merge = props => {
     key: stepNumber,
     phase,
     disableAnswers,
-    editionIndex,
+    editionId,
     extra: {
       step,
     },

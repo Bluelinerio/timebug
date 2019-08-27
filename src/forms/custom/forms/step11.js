@@ -16,7 +16,7 @@ import {
 //TODO: MAX MIN ON NUMERIC INPUT!!
 export const FORM_KEYS = {
   form_11_goal: 'form_11_goal',
-  form_11_goal_satisfaction: 'form_11_goal_satisfaction',
+  form_11_goal_completion: 'form_11_goal_completion',
   form_11_goal_time: 'form_11_goal_time',
 }
 
@@ -26,8 +26,8 @@ export const CHILDREN_KEYS = {
     goalType: `${FORM_KEYS.form_11_goal}.goalType`,
     type: `${FORM_KEYS.form_11_goal}.type`,
   },
-  form_11_goal_satisfaction: {
-    satisfaction: `${FORM_KEYS.form_11_goal_satisfaction}.satisfaction`,
+  form_11_goal_completion: {
+    completion: `${FORM_KEYS.form_11_goal_completion}.completion`,
   },
   form_11_goal_time: {
     time: `${FORM_KEYS.form_11_goal_time}.time`,
@@ -103,7 +103,7 @@ const form: Form = {
     },
     1: {
       type: types.connected,
-      key: `${FORM_KEYS.form_11_goal_satisfaction}`,
+      key: `${FORM_KEYS.form_11_goal_completion}`,
       content: {
         text: 'How far did you get with these goals(as a percentage)?',
         smallKey: 'Percentage goals',
@@ -120,9 +120,9 @@ const form: Form = {
           },
           using: {
             type: types.select,
-            key: `${CHILDREN_KEYS.form_11_goal_satisfaction.satisfaction}`,
+            key: `${CHILDREN_KEYS.form_11_goal_completion.completion}`,
             content: {
-              smallKey: 'satisfactionLevel',
+              smallKey: 'CompletionLevel',
               items: PercentageScale.map(value => {
                 return {
                   value: value,

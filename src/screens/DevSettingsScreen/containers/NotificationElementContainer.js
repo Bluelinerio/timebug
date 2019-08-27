@@ -1,9 +1,9 @@
 // @flow
-import { connect } from 'react-redux'
-import { mapProps, compose } from 'recompose'
-import { notificationTypes } from '2020_services/notifications'
-import { triggerNotification } from '2020_redux/actions/notifications.actions'
-import NotificationsElement from '../components/NotificationElement'
+import { connect }                      from 'react-redux'
+import { mapProps, compose }            from 'recompose'
+import { notificationTypes }            from '2020_services/notifications'
+import { triggerNotification }          from '2020_redux/actions/notifications.actions'
+import NotificationsElement             from '../components/NotificationElement'
 import type { Props as ComponentProps } from '../components/NotificationElement'
 
 const mapDispatchToProps = (dispatch: any) => ({
@@ -33,25 +33,41 @@ const handleGoalNotification = (notification): ComponentProps => {
   }
 }
 
+const handleCareerGoalNotification = (notification): ComponentProps => {
+  const { data, id: notificationId } = notification
+  const { message } = data
+  const type = 'Career Goal Notifications'
+  return {
+    notificationId,
+    text: message,
+    type,
+  }
+}
+
 const handleNotification = (notification, trigger): ComponentProps => {
   const { type } = notification
   switch (type) {
-  case notificationTypes.CHECKIN_NOTIFICATION:
-    return {
-      ...handleCheckinNotification(notification),
-      trigger,
-    }
-  case notificationTypes.GOAL_NOTIFICATION:
-    return {
-      ...handleGoalNotification(notification),
-      trigger,
-    }
-  default:
-    return {
-      text: 'Unknown notification',
-      type: 'UNREGISTERED',
-      trigger: () => null,
-    }
+    case notificationTypes.CHECKIN_NOTIFICATION:
+      return {
+        ...handleCheckinNotification(notification),
+        trigger,
+      }
+    case notificationTypes.GOAL_NOTIFICATION:
+      return {
+        ...handleGoalNotification(notification),
+        trigger,
+      }
+    case notificationTypes.CAREER_GOAL_NOTIFICATION:
+      return {
+        ...handleCareerGoalNotification(notification),
+        trigger,
+      }
+    default:
+      return {
+        text: 'Unknown notification',
+        type: 'UNREGISTERED',
+        trigger: () => null,
+      }
   }
 }
 

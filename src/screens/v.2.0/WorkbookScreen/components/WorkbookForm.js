@@ -18,7 +18,7 @@ type Props = {
   step: Step,
   onSelectStep: Step => any,
   backgroundColor: any,
-  editionIndex: number,
+  editionId: string,
   navigation: any,
   onFinish: () => any,
   baseValues?: any,
@@ -34,7 +34,7 @@ class WorkbookForm extends React.PureComponent<Props, State> {
   }
 
   componentDidUpdate(prevProps) {
-    const isEditing = this.props.editionIndex || this.props.editionIndex === 0
+    const isEditing = this.props.editionId
     const baseValues = this.props.navigation.getParam('valuesForForm', null)
     const oldBaseValues = prevProps.navigation.getParam('valuesForForm', null)
 
@@ -48,7 +48,7 @@ class WorkbookForm extends React.PureComponent<Props, State> {
     if (
       this.props.stepNumber !== prevProps.stepNumber ||
       (isEditing &&
-        this.props.editionIndex !== prevProps.editionIndex &&
+        this.props.editionId !== prevProps.editionId &&
         this.state.formFinished === true)
     )
       this.setState({
@@ -77,7 +77,7 @@ class WorkbookForm extends React.PureComponent<Props, State> {
       phase,
       onSelectStep,
       backgroundColor,
-      editionIndex,
+      editionId,
       baseValues,
     } = this.props
     const { formFinished } = this.state
@@ -96,7 +96,7 @@ class WorkbookForm extends React.PureComponent<Props, State> {
             key={stepNumber}
             phase={phase}
             disableAnswers
-            editionIndex={editionIndex}
+            editionId={editionId}
             baseValues={baseValues ? baseValues : undefined}
             extra={{
               step,

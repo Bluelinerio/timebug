@@ -125,28 +125,28 @@ function toolDataReducer(
   action: SumbitAwardValueAction
 ) {
   switch (action.type) {
-  case SUBMIT_AWARD_VALUE:
-    return populate(action, state)
-  case RESET_AWARD_VALUE:
-    return initialState
-  case RESTORE_TOOL_DATA:
-    return restore(action, state)
-  case CLEAR_TOOL_DATA:
-    return clear(action, state)
-  case LOGOUT:
-    return initialState
-  case INCREMENT_TOOL_DATA_QUEUE:
-    return {
-      ...state,
-      requestCount: state.requestCount + 1,
-    }
-  case DECREMENT_TOOL_DATA_QUEUE:
-    return {
-      ...state,
-      requestCount: state.requestCount - 1,
-    }
-  default:
-    return state
+    case SUBMIT_AWARD_VALUE:
+      return populate(action, state)
+    case RESET_AWARD_VALUE:
+      return initialState
+    case RESTORE_TOOL_DATA:
+      return restore(action, state)
+    case CLEAR_TOOL_DATA:
+      return clear(action, state)
+    case LOGOUT:
+      return initialState
+    case INCREMENT_TOOL_DATA_QUEUE:
+      return {
+        ...state,
+        requestCount: state.requestCount + 1,
+      }
+    case DECREMENT_TOOL_DATA_QUEUE:
+      return {
+        ...state,
+        requestCount: state.requestCount - 1,
+      }
+    default:
+      return state
   }
 }
 
@@ -177,17 +177,14 @@ const migrations = {
   2: () => initialState,
   3: () => initialState,
   4: v4_migration,
-  5: state => ({
-    ...state,
-    requestCount: 0,
-  }),
+  5: () => initialState,
 }
 
 const persistConfig = {
   key: 'awards',
   storage: storage,
   blacklist: ['requestCount'],
-  version: 4,
+  version: 5,
   migrate: createMigrate(migrations, { debug: true }),
 }
 
