@@ -1,29 +1,29 @@
 // @flow
-import moment from 'moment'
+import moment                                  from 'moment'
 import { takeLatest, fork, select, call, put } from 'redux-saga/effects'
 import {
   FORM_KEYS,
   CHILDREN_KEYS,
-} from '../../screens/ToolworkScreen/Tools/step23/static/form'
-import selectors from '../selectors'
-import { notificationTypes } from '2020_services/notifications'
+}                                              from '../../screens/ToolworkScreen/Tools/step23/static/form'
+import selectors                               from '../selectors'
+import { notificationTypes }                   from '2020_services/notifications'
 import {
   CAREER_DREAM_NOTIFICATION,
   CAREER_DREAM_SIDE_EFFECT,
-} from '../actionTypes'
+}                                              from '../actionTypes'
 import type {
   CareerDreamNotificationPayload,
   CareerDreamSideEffectPayload,
-} from '../actions/careerDreams.actions'
-import { timeToCompleteGoal } from '2020_forms/forms/content'
-import { calculateNextCheckin } from '2020_services/checkins'
+}                                              from '../actions/careerDreams.actions'
+import { timeToCompleteGoal }                  from '2020_forms/forms/content'
+import { calculateNextCheckin }                from '2020_services/checkins'
 import {
   createNotification,
   removeNotification,
-} from '../actions/notifications.actions'
-import { stepEnum } from '2020_services/cms'
-import { TOOL_KEYS } from '2020_static/tools'
-import { linkNavigation } from '../actions/nav.actions'
+}                                              from '../actions/notifications.actions'
+import { stepEnum }                            from '2020_services/cms'
+import { TOOL_KEYS }                           from '2020_static/tools'
+import { linkNavigation }                      from '../actions/nav.actions'
 
 const CREATE = 'CREATE'
 const DELETE = 'DELETE'
