@@ -290,22 +290,22 @@ export function* _syncGoalsNotifications(action: {
         },
       }
 
-    //   yield put(
-    //     createNotification({
-    //       message: `It's time to check up on your goal: ${name}`,
-    //       id: notificationId,
-    //       notificationTime,
-    //       repeatTime: notificationInterval,
-    //       additionalProps,
-    //     })
-    //   )
+      yield put(
+        createNotification({
+          message: `It's time to check up on your goal: ${name}`,
+          id: notificationId,
+          notificationTime,
+          repeatTime: notificationInterval,
+          additionalProps,
+        })
+      )
     } else if (_action === DELETE) {
       const { notificationId } = goalAction
-    //   yield put(removeNotification({ id: `${notificationId}` }))
+      yield put(removeNotification({ id: `${notificationId}` }))
     } else if (_action === UPDATE) {
       const { notificationId, goal } = goalAction
 
-    //   yield put(removeNotification({ id: `${notificationId}` }))
+      yield put(removeNotification({ id: `${notificationId}` }))
 
       const {
         id,
@@ -341,15 +341,15 @@ export function* _syncGoalsNotifications(action: {
         },
       }
 
-    //   yield put(
-    //     createNotification({
-    //       message: `It's time to check up on your goal: ${name}`,
-    //       id: notificationId,
-    //       notificationTime,
-    //       repeatTime: notificationInterval,
-    //       additionalProps,
-    //     })
-    //   )
+      yield put(
+        createNotification({
+          message: `It's time to check up on your goal: ${name}`,
+          id: notificationId,
+          notificationTime,
+          repeatTime: notificationInterval,
+          additionalProps,
+        })
+      )
     }
   }
 
