@@ -7,6 +7,7 @@ type Props = {
   tool: Tool,
   storeAwardData: (value: any, tool: Tool) => void,
   children: React.Node,
+  phase: string,
 }
 
 const initialState = {
@@ -23,6 +24,7 @@ export type ProvidedProps = {
   storeFormData: () => void,
   storeToolData: () => void,
   storeAllData: (formData: any, toolData: any) => void,
+  phase: string,
 }
 
 const ToolDataContext = React.createContext(initialState)
@@ -71,7 +73,7 @@ class ToolDataProvider extends React.PureComponent<Props, any, ProvidedProps> {
   }
 
   render() {
-    const { data, tool } = this.props
+    const { data, tool, phase } = this.props
     return (
       <ToolDataContext.Provider
         value={{
@@ -81,6 +83,7 @@ class ToolDataProvider extends React.PureComponent<Props, any, ProvidedProps> {
           storeFormData: this._storeFormData,
           storeToolData: this._storeToolData,
           storeAllData: this._storeAllData,
+          phase: phase,
         }}
       >
         {this.props.children}

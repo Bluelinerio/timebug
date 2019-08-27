@@ -1,9 +1,23 @@
 // @flow
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { screens } from '../context/ScreenContext'
+import { ToolDataContext } from '../context/ToolDataProvider'
+import { MEDITATION, SELF_ASSESSMENT, VISION_CREATION } from '2020_services/cms'
+
+const titleForPhase = (phase: string) => {
+  switch (phase) {
+    case MEDITATION:
+      return 'Phase 1 goals'
+    case SELF_ASSESSMENT:
+      return 'Phase 2 goals'
+    case VISION_CREATION:
+      return 'Phase 3 dreams'
+  }
+}
 
 export const useTitle = (screen: string, goal: any = null) => {
   const [title, setTitle] = useState('')
+  const { phase } = useContext(ToolDataContext)
 
   useEffect(
     () => {
@@ -11,7 +25,7 @@ export const useTitle = (screen: string, goal: any = null) => {
         case screens.CATEGORIES:
         case screens.GOAL_LIST:
         case screens.GOAL_RECOMMENDATIONS:
-          setTitle('Phase 2 goals')
+          setTitle(titleForPhase(phase))
           break
         case screens.FORM:
           setTitle('Goal workbook')
@@ -32,7 +46,7 @@ export const useTitle = (screen: string, goal: any = null) => {
           setTitle(`Backlogged goal: ${goal ? goal.name : ''}`)
           break
         default:
-          setTitle('Phase 2 goals')
+          setTitle(titleForPhase(phase))
       }
     },
     [screen, goal]

@@ -47,7 +47,7 @@ class RootToolComponent extends React.PureComponent<Props> {
                 model={model}
               >
                 <GoalProvider>
-                  <ToolDataProvider {...rest}>
+                  <ToolDataProvider {...rest} phase={phase}>
                     <StyleProvider phase={phase}>
                       <Navigator />
                       <ToolContent />
