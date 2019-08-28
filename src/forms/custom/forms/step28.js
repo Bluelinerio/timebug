@@ -79,7 +79,7 @@ const form: Form = {
       },
     1: {
         type: types.list,
-        key: `${FORM_KEYS.peGoal}`,
+        key: `${FORM_KEYS.form_28_help_others}`,
         content: {
           text: `Who else in your life has place and environment goals? How will you help them make them happen over the coming years?`,
           smallKey: 'Help others',
@@ -90,7 +90,7 @@ const form: Form = {
           childTypes: {
               0: {
                   type: types.string,
-                  key: `${CHILDREN_KEYS.form_28_help_others.personToHelp}`,
+                  key: `${CHILDREN_KEYS.form_28_help_others.person}`,
                   content: {
                     smallKey: 'Person',
                   },
@@ -126,7 +126,21 @@ const form: Form = {
                   placeHolder: 'Initiate an honest conversation this week...',
                   label: 'How will you help?',
                   numberOfLines: 4,
-                  multiline: true
+                  multiline: true,
+                  style: {
+                    textInputContainerStyle: Platform.select({
+                      android: {},
+                      ios: {
+                        minHeight:80,
+                      },
+                    }),
+                    textInputStyle: Platform.select({
+                      android: {},
+                      ios: {  
+                        minHeight:80,
+                      },
+                    }),
+                  },
                 },
             },
           },
