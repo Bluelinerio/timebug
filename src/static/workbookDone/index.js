@@ -25,6 +25,8 @@ import STEP_24 from './step24'
 import STEP_25 from './step25'
 import STEP_26 from './step26'
 import STEP_27 from './step27'
+import STEP_28 from './step28'
+
 
 
 
@@ -58,4 +60,5 @@ export default {
   '25': STEP_25,
   '26': STEP_26,
   '27': STEP_27,
+  '28': STEP_28,
 }
