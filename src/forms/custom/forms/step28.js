@@ -51,7 +51,9 @@ const form: Form = {
                 },
                 options: {
                   required:true,
-                  placeHolder: 'To purchase a beach house to summer with my family...'
+                  placeHolder: 'To purchase a beach house to summer with my family...',
+                  numberOfLines: 3,
+                  multiline: true
                 },
             },
             1:{
@@ -108,7 +110,9 @@ const form: Form = {
                 options: {
                   required: true,
                   label: 'P & E Goal',
-                  placeHolder: 'Figure out how to live closer to each other'
+                  placeHolder: 'Figure out how to live closer to each other',
+                  numberOfLines: 4,
+                  multiline: true
                 },
             },
             2: {
@@ -121,6 +125,8 @@ const form: Form = {
                   required: true,
                   placeHolder: 'Initiate an honest conversation this week...',
                   label: 'How will you help?',
+                  numberOfLines: 4,
+                  multiline: true
                 },
             },
           },
