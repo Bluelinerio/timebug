@@ -415,3 +415,11 @@ export const SpiritualViews = [
   'I would like to be more spiritual',
   'I am not interested in spirituality',
 ]
+
+export const Priorities = [
+  'Urgent',
+  'High Priority',
+  'Medium Priority',
+  'Low Priority',
+  'Lowest Priority',
+  ]
