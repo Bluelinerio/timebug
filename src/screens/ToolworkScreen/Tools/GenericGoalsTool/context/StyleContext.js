@@ -10,6 +10,7 @@ import {
 import {
   mapPhaseToColor as localMapPhaseToColor,
   mapPhaseToContrastColor,
+  mapPhaseToSliderColor,
 } from '../utils'
 
 type Props = {
@@ -23,6 +24,8 @@ export type ProvidedProps = {
   textContrastColor: String,
   formStyles: any,
   textAndButtonColor: any,
+  minimumTrackColor: any,
+  maximumTrackColor: any,
 }
 
 const initialState = {
@@ -31,6 +34,8 @@ const initialState = {
   textContrastColor: null,
   formStyles: null,
   textAndButtonColor: null,
+  minimumTrackColor: null,
+  maximumTrackColor: null,
 }
 
 const StyleContext = React.createContext(initialState)
@@ -83,6 +88,13 @@ const _StyleProvider = (props: Props) => {
     [phase]
   )
 
+  const { minimumTrackColor, maximumTrackColor } = useMemo(
+    () => {
+      return mapPhaseToSliderColor(phase)
+    },
+    [phase]
+  )
+
   return (
     <StyleContext.Provider
       value={{
@@ -91,6 +103,8 @@ const _StyleProvider = (props: Props) => {
         containerBackgroundColor,
         textContrastColor,
         textAndButtonColor,
+        minimumTrackColor,
+        maximumTrackColor,
       }}
     >
       {props.children}

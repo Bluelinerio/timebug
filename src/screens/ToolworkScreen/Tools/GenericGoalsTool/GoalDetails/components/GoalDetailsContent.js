@@ -1,5 +1,5 @@
 // @flow
-import React, { useState, useCallback, useMemo } from 'react'
+import React, { useState, useCallback, useMemo, useContext } from 'react'
 import moment from 'moment'
 import { View, Text, TouchableOpacity } from 'react-native'
 import { FormInput } from 'react-native-elements'
@@ -9,7 +9,8 @@ import { debounce } from '2020_utils/debounce'
 import { CommonGoalOutcomesArray } from '2020_forms/forms/content'
 import SubstepList from '../containers/SubstepListContainer'
 import { Goal, SubstepToolData } from '../../types'
-import styles, { minimumTrackColor, maximumTrackColor } from '../styles'
+import { StyleContext } from '../../context/StyleContext'
+import styles from '../styles'
 
 type Props = {
   goal: Goal,
@@ -48,6 +49,7 @@ const GoalDetailsContent = (props: Props) => {
     containerBackgroundColor,
   } = props
   const [stateNotes, setNotes] = useState(notes ? notes : '')
+  const { minimumTrackColor, maximumTrackColor } = useContext(StyleContext)
   const [openDialog, setOpenDialog] = useState(false)
   const totalSteps = goal.steps.length
   const completedSteps = steps ? steps.filter(s => s.completed).length : 0

@@ -101,22 +101,28 @@ const _CategoryProvider = (props: Props) => {
     setCategory(null)
   }, [])
 
-  const getCategories = useCallback((completedSteps: Array<any> = []) => {
-    const c = storedCategories.reduce((cats, lock) => {
-      const isUnlocked = lock.unlockStep.find(num =>
-        completedSteps.find(s => s.number === num)
-      )
-      if (isUnlocked) return [...cats, lock]
-      return cats
-    }, [])
-    return c
-  }, [])
+  const getCategories = useCallback(
+    (completedSteps: Array<any> = []) => {
+      const c = storedCategories.reduce((cats, lock) => {
+        const isUnlocked = lock.unlockStep.find(num =>
+          completedSteps.find(s => s.number === num)
+        )
+        if (isUnlocked) return [...cats, lock]
+        return cats
+      }, [])
+      return c
+    },
+    [storedCategories]
+  )
 
-  const getCategoryName = useCallback((category: string) => {
-    if (!category) return null
-    const cat = storedCategories.find(cat => cat.key === category)
-    return cat ? cat.name : null
-  }, [])
+  const getCategoryName = useCallback(
+    (category: string) => {
+      if (!category) return null
+      const cat = storedCategories.find(cat => cat.key === category)
+      return cat ? cat.name : null
+    },
+    [storedCategories]
+  )
 
   return (
     <CategoryContext.Provider
