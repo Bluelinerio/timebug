@@ -130,4 +130,8 @@ export default StyleSheet.create({
     ...iOSUIKit.title3Emphasized,
     color: gray900,
   },
+  subscript: {
+    ...iOSUIKit.caption2Object,
+    marginLeft: 6,
+  },
 })

@@ -142,6 +142,9 @@ const GoalDetailsContent = (props: Props) => {
       <Text style={[styles.text, styles.subsectionTitle]}>
         Steps to complete goal
       </Text>
+      <Text style={[styles.text, styles.subscript]}>
+        Press a substep to add an estimated completion date
+      </Text>
       <SubstepList goal={goal} />
       <Text style={[styles.text, styles.subsectionTitle]}>
         Additional notes
