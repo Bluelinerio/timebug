@@ -1,6 +1,6 @@
 // @flow
 import React, { Fragment } from 'react'
-import { View } from 'react-native'
+import { View, Text } from 'react-native'
 import CategoryButton from '../containers/CategoryButtonContainer'
 import Header from './Header'
 import { Category } from '../static/Categories'
@@ -15,7 +15,7 @@ type Props = {
 class CategoryList extends React.PureComponent<Props> {
   render() {
     const { categories, tool } = this.props
-    return (
+    return tool ? (
       <Fragment>
         <Header title={'Phase 2 goals'} />
         <View style={styles.categoryList}>
@@ -25,6 +25,12 @@ class CategoryList extends React.PureComponent<Props> {
         </View>
         <BacklogLink tool={tool} />
       </Fragment>
+    ) : (
+      <View style={styles.container}>
+        <Text style={styles.lockedText}>
+          You have not unlocked this tool yet, complete step 13 to use it
+        </Text>
+      </View>
     )
   }
 }
