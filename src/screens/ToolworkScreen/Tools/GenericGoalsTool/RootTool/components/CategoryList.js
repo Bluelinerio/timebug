@@ -5,6 +5,7 @@ import CategoryButton from '../containers/CategoryButtonContainer'
 import Header from '../containers/HeaderContainer'
 import { Category } from '../../context/CategoryContext'
 import BacklogLink from '../containers/BacklogLinkContainer'
+import GoalNavigator from '../../GoalsToolNavigator'
 import styles from '../styles'
 
 type Props = {
@@ -16,6 +17,7 @@ class CategoryList extends React.PureComponent<Props> {
     const { categories } = this.props
     return (
       <Fragment>
+        <GoalNavigator />
         <Header />
         <View style={styles.categoryList}>
           {categories.map(cat => (
