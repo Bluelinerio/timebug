@@ -1,9 +1,9 @@
 // @flow
-import { connect }                      from 'react-redux'
-import { mapProps, compose }            from 'recompose'
-import { notificationTypes }            from '2020_services/notifications'
-import { triggerNotification }          from '2020_redux/actions/notifications.actions'
-import NotificationsElement             from '../components/NotificationElement'
+import { connect } from 'react-redux'
+import { mapProps, compose } from 'recompose'
+import { notificationTypes } from '2020_services/notifications'
+import { triggerNotification } from '2020_redux/actions/notifications.actions'
+import NotificationsElement from '../components/NotificationElement'
 import type { Props as ComponentProps } from '../components/NotificationElement'
 
 const mapDispatchToProps = (dispatch: any) => ({
@@ -44,6 +44,17 @@ const handleCareerGoalNotification = (notification): ComponentProps => {
   }
 }
 
+const handleDreamNotification = (notification): ComponentProps => {
+  const { data, id: notificationId } = notification
+  const { message } = data
+  const type = 'Dream Notifications'
+  return {
+    notificationId,
+    text: message,
+    type,
+  }
+}
+
 const handleNotification = (notification, trigger): ComponentProps => {
   const { type } = notification
   switch (type) {
@@ -60,6 +71,11 @@ const handleNotification = (notification, trigger): ComponentProps => {
     case notificationTypes.CAREER_GOAL_NOTIFICATION:
       return {
         ...handleCareerGoalNotification(notification),
+        trigger,
+      }
+    case notificationTypes.CAREER_DREAM_NOTIFICATION:
+      return {
+        ...handleDreamNotification(notification),
         trigger,
       }
     default:
