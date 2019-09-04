@@ -17,7 +17,7 @@ class CategoryList extends React.PureComponent<Props> {
     const { categories, tool } = this.props
     return tool ? (
       <Fragment>
-        <Header title={'Phase 2 goals'} />
+        <Header title={'Phase 3 goals'} />
         <View style={styles.categoryList}>
           {categories.map(cat => (
             <CategoryButton key={cat.key} category={cat} tool={tool} />
@@ -28,7 +28,7 @@ class CategoryList extends React.PureComponent<Props> {
     ) : (
       <View style={styles.container}>
         <Text style={styles.lockedText}>
-          You have not unlocked this tool yet, complete step 13 to use it
+          You have not unlocked this tool yet, complete step 23 to use it
         </Text>
       </View>
     )

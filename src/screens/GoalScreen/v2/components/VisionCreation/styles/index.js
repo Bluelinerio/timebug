@@ -1,6 +1,6 @@
 import { StyleSheet, Platform } from 'react-native'
 import { iOSUIKit } from 'react-native-typography'
-import { gray900, gray50, SELF_ASSESSMENT } from '2020_constants/colors'
+import { gray900, gray50, VISION_CREATION } from '2020_constants/colors'
 
 export default StyleSheet.create({
   container: {
@@ -92,7 +92,7 @@ export default StyleSheet.create({
   link: {
     ...iOSUIKit.title3EmphasizedObject,
     textAlign: 'center',
-    color: SELF_ASSESSMENT,
+    color: VISION_CREATION,
     marginVertical: 15,
   },
   lockedText: {
