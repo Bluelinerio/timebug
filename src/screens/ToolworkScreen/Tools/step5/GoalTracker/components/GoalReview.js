@@ -210,13 +210,16 @@ class GoalReview extends React.PureComponent<Props> {
                   : daysLeft === 0
                     ? `Today is `
                     : `You have ${daysLeft} ${
-                      daysLeft === 1 ? 'day' : 'days'
-                    } to complete this goal!`}
+                        daysLeft === 1 ? 'day' : 'days'
+                      } to complete this goal!`}
             </Text>
           </View>
           <View style={styles.goalReviewTextWithMargin}>
             <Text style={styles.goalScreenContent}>
               Steps to complete this goal
+            </Text>
+            <Text style={styles.subscript}>
+              Press a substep to add an estimated completion date
             </Text>
           </View>
           <View style={styles.goalReviewTextBlock}>

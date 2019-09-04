@@ -274,4 +274,8 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  subscript: {
+    ...iOSUIKit.caption2Object,
+    marginLeft: 6,
+  },
 })
