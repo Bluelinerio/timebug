@@ -1,10 +1,11 @@
 // @flow
-import React                      from 'react'
+import React from 'react'
 import { BackHandler, StatusBar } from 'react-native'
-import { SafeAreaView }           from 'react-navigation'
-import styles                     from '../styles'
-import WorkArea                   from '../containers/WorkAreaContainer'
-import { mapPhaseToColor }        from '../utils/phaseColors'
+import { SafeAreaView } from 'react-navigation'
+import styles from '../styles'
+import WorkArea from '../containers/WorkAreaContainer'
+import { mapPhaseToColor } from '../utils/phaseColors'
+import { ToolProvider } from '../context/ToolContext'
 
 type Props = {
   navigation: any,
@@ -69,7 +70,9 @@ class ToolworkScreen extends React.PureComponent<Props> {
           barStyle="light-content"
           backgroundColor={mapPhaseToColor(phase).header}
         />
-        <WorkArea />
+        <ToolProvider navigation={navigation}>
+          <WorkArea />
+        </ToolProvider>
       </SafeAreaView>
     )
   }
