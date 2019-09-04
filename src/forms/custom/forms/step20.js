@@ -44,9 +44,10 @@ const form: Form = {
                     value: num,
                     text: num,
                   })),
+                label: "Career",  
               },
               options: {
-                label: "Career",
+
                 default:OneToTenScale[0],
                 required: true,
               },
