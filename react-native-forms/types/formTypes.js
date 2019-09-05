@@ -166,6 +166,7 @@ export type FormProps = {
     buttonTextStyle: any,
     accentColor: string,
   },
+  onChange: (value: any, key: string) => void,
   extra: {
     step: string,
   },
