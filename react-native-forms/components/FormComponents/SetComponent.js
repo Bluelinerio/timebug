@@ -1,8 +1,9 @@
-import React             from 'react'
-import { View }          from 'react-native'
+// @flow
+import React from 'react'
+import { View } from 'react-native'
 import FormElementHeader from './FormElementHeader'
-import styles            from '../../styles'
-import SetSwitch         from './Sets/SetSwitch'
+import styles from '../../styles'
+import SetSwitch from './Sets/SetSwitch'
 
 type Props = {
   value: Array<any>,
@@ -12,6 +13,9 @@ type Props = {
     options?: any,
   },
   formStyles: any,
+  baseValue: {
+    value: any,
+  },
 }
 
 class SetComponent extends React.PureComponent<Props> {
@@ -21,9 +25,10 @@ class SetComponent extends React.PureComponent<Props> {
   }
 
   render() {
-    const { field, value = null, formStyles = {} } = this.props
+    const { field, value = null, formStyles = {}, baseValue = {} } = this.props
     const { content, options, key } = field
     const { subtype } = options
+    const base = baseValue ? baseValue.value : null
     return (
       <View style={styles.container}>
         <View style={styles.formElementHeaderContainer}>
@@ -42,6 +47,7 @@ class SetComponent extends React.PureComponent<Props> {
                 value={value}
                 formStyles={formStyles}
                 onChange={value => this._onChange(value)}
+                baseValues={base}
               />
             )}
           </View>

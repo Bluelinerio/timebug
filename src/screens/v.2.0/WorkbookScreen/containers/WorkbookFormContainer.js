@@ -1,15 +1,17 @@
 // @flow
-import { connect } from 'react-redux'
-import { compose, mapProps } from 'recompose'
-import { withNavigation } from 'react-navigation'
-import WorkbookForm from '../components/WorkbookForm'
-import selectors from '../../../../redux/selectors'
-import models from '../../../../forms/custom/forms'
+import { connect }                from 'react-redux'
+import { compose, mapProps }      from 'recompose'
+import { withNavigation }         from 'react-navigation'
+import WorkbookForm               from '../components/WorkbookForm'
+import selectors                  from '../../../../redux/selectors'
+import models                     from '../../../../forms/custom/forms'
 import {
   submitFormValue,
   syncFormData,
-} from '../../../../redux/actions/formData.actions.js'
-import type { SubmitAction } from '../../../../redux/actions/formData.actions.js'
+}                                 from '../../../../redux/actions/formData.actions.js'
+import { handleStep30BaseValues } from '../utils/baseValues/step30'
+import { stepEnum }               from '2020_services/cms'
+import type { SubmitAction }      from '../../../../redux/actions/formData.actions.js'
 
 const mapStateToProps = (state: any) => {
   const data = selectors.formData(state)
@@ -28,6 +30,19 @@ const mapDispatchToProps = (dispatch: any) => {
   }
 }
 
+const mapBaseValues = (
+  baseValues: any | null,
+  formData: any,
+  stepNumber: number
+) => {
+  switch (stepNumber) {
+    case stepEnum.STEP_30:
+      return handleStep30BaseValues(baseValues, formData)
+    default:
+      return baseValues
+  }
+}
+
 const merge = ({
   submitForm,
   data,
@@ -38,7 +53,8 @@ const merge = ({
 }) => {
   const model = models[stepNumber]
   const formData = (data[stepNumber] && data[stepNumber].value) || null
-  const baseValues = navigation.getParam('valuesForForm', null)
+  const base = navigation.getParam('valuesForForm', null)
+  const baseValues = mapBaseValues(base, data, stepNumber)
   return {
     ...props,
     data: formData,

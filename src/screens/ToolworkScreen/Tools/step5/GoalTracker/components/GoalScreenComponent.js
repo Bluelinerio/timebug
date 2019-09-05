@@ -4,6 +4,7 @@ import { View, ScrollView, BackHandler } from 'react-native'
 import GoalScreenContent from './GoalScreenContent'
 import SubHeader from './SubHeader'
 import GoalArchiveLink from './GoalArchiveLink'
+import GoalNavigator from '../GoalsToolNavigator'
 import styles from '../../common/styles'
 
 type State = {
@@ -119,6 +120,7 @@ class GoalScreenComponent extends React.PureComponent<Props, State> {
         style={styles.scrollView}
         contentContainerStyle={styles.scrollView}
       >
+        <GoalNavigator />
         <SubHeader
           display={!!selectedGoaltype}
           onBack={this._onSoftwareBackButtonPress}

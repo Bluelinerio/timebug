@@ -284,4 +284,10 @@ export default StyleSheet.create({
     ...iOSUIKit.bodyEmphasizedObject,
     color: azure,
   },
+  lockedText: {
+    ...iOSUIKit.title3EmphasizedObject,
+    textAlign: 'center',
+    color: gray900,
+    padding: 8,
+  },
 })
