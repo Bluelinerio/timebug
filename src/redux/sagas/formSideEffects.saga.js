@@ -28,7 +28,11 @@ import {
   careerDreamSideEffect,
   CareerDreamSideEffectPayload,
 } from '../actions/careerDreams.actions'
-import { Payload, step30SideEffect } from '../actions/idealHours.actions'
+import {
+  Payload,
+  step30SideEffect,
+  step2SideEffect,
+} from '../actions/idealHours.actions'
 
 // TODO: Refactor into several sagas, extract constants to readable file
 
@@ -65,6 +69,13 @@ function* _callStep30SideEffect(formData: any = []) {
     formData,
   }
   yield put(step30SideEffect(payload))
+}
+
+function* _callStep2SideEffect(formData: any = []) {
+  const payload: Payload = {
+    formData,
+  }
+  yield put(step2SideEffect(payload))
 }
 
 function* _callCareerDreamsSideEffect(
@@ -114,7 +125,8 @@ function* _handleSideEffects(action: {
   payload: SubmitActionPayload,
 }) {
   const { payload } = action
-  const { stepId, value } = payload
+  const { stepId, value, sideEffect = true } = payload
+  if (!sideEffect) return
   const getAwardDataForTool = yield select(selectors.awardDataForTool)
   const awardKey = toolKeysForStepIds[`${stepId}`]
   const awardDataForTool = awardKey
@@ -127,6 +139,9 @@ function* _handleSideEffects(action: {
       ? awardDataForTool.value
       : undefined
   switch (stepId) {
+    case stepEnum.STEP_2:
+      yield call(_callStep2SideEffect, value)
+      break
     case stepEnum.STEP_5:
       yield call(_callGoalsSideEffect, value, awardDataValue)
       break
@@ -137,7 +152,7 @@ function* _handleSideEffects(action: {
       yield fork(_callCareerDreamsSideEffect, value, awardDataValue)
       break
     case stepEnum.STEP_30:
-      yield fork(_callStep30SideEffect, value)
+      yield call(_callStep30SideEffect, value)
       break
     default:
       yield

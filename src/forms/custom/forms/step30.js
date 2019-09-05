@@ -71,7 +71,7 @@ const form: Form = {
         },
         subtypeOptions: {
           min: 0,
-          max: 8760,
+          max: 8736,
           data: SHARED,
           step: 52,
           suffixOfValue: 'hrs',

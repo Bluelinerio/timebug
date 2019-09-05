@@ -18,6 +18,7 @@ import {
 export type SubmitActionPayload = {
   stepId: string,
   value?: any,
+  sideEffect?: boolean
 }
 
 export type RestoreFormDataPayload = {
