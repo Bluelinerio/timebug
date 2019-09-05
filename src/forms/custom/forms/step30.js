@@ -56,7 +56,7 @@ const form: Form = {
       key: FORM_KEYS.form_30_next_year,
       content: {
         text:
-          'Map out the next year of your life - 8,760 hrs (365 days x 24 hrs) according to your Life Categories.',
+          'Map out the next year of your life - 8,760 hrs (365 days x 24 hrs) according to your Life Categories. To get you started, the form below contains the yearly value for each life category based on your answers in step 2.',
         smallKey: 'Next year',
       },
       options: {
