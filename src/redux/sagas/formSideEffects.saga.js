@@ -28,6 +28,7 @@ import {
   careerDreamSideEffect,
   CareerDreamSideEffectPayload,
 } from '../actions/careerDreams.actions'
+import { Payload, step30SideEffect } from '../actions/idealHours.actions'
 
 // TODO: Refactor into several sagas, extract constants to readable file
 
@@ -57,6 +58,13 @@ function* _callCareerGoalsSideEffect(
     awardData,
   }
   yield put(careerGoalSideEffect(payload))
+}
+
+function* _callStep30SideEffect(formData: any = []) {
+  const payload: Payload = {
+    formData,
+  }
+  yield put(step30SideEffect(payload))
 }
 
 function* _callCareerDreamsSideEffect(
@@ -127,6 +135,9 @@ function* _handleSideEffects(action: {
       break
     case stepEnum.STEP_23:
       yield fork(_callCareerDreamsSideEffect, value, awardDataValue)
+      break
+    case stepEnum.STEP_30:
+      yield fork(_callStep30SideEffect, value)
       break
     default:
       yield

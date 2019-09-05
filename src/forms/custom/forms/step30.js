@@ -2,7 +2,7 @@
 import types, { answerTypes, setTypes } from 'react-native-forms/forms/types'
 import { SHARED } from 'react-native-forms/forms/constants'
 import type { Form } from 'react-native-forms/types/formTypes'
-import { AreaOfLife, LifeCategories } from './content'
+import { LifeCategories } from './content'
 import { Platform } from 'react-native'
 
 export const FORM_KEYS = {
@@ -72,7 +72,7 @@ const form: Form = {
           min: 0,
           max: 8760,
           data: SHARED,
-          step: 50,
+          step: 52,
           suffixOfValue: 'hrs',
         },
         children: Object.keys(LifeCategories).reduce(
@@ -88,7 +88,7 @@ const form: Form = {
                   subtitle: category.subtitle,
                 },
                 options: {
-                  max: 8760,
+                  max: 3640,
                 },
               },
             }
