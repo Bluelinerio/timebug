@@ -65,6 +65,10 @@ export type ButtonStyle = Styles & {
   buttonStyle?: any,
 }
 
+export type SliderSetStyle = Styles & {
+  totalContainerStyle?: any,
+}
+
 export type Style = Styles | TextStyle | SelectStyle
 
 export type Options = {
