@@ -1,5 +1,5 @@
-import { StyleSheet, Platform } from 'react-native'
-import { iOSUIKit } from 'react-native-typography'
+import { StyleSheet, Platform }             from 'react-native'
+import { iOSUIKit }                         from 'react-native-typography'
 import { gray900, gray50, SELF_ASSESSMENT } from '2020_constants/colors'
 
 export default StyleSheet.create({
@@ -22,12 +22,13 @@ export default StyleSheet.create({
   categoryButton: {
     width: '100%',
     height: 64,
-    padding: 16,
+    padding: 10,
     borderRadius: 6,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: gray50,
     marginVertical: 10,
+    flexDirection: 'row',
     ...Platform.select({
       android: { elevation: 8 },
       ios: {
@@ -94,5 +95,15 @@ export default StyleSheet.create({
     textAlign: 'center',
     color: SELF_ASSESSMENT,
     marginVertical: 15,
+  },
+  leftBlock: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  rightBlock: {
+    flex: 4,
+    alignItems: 'flex-start',
+    justifyContent: 'center',
   },
 })

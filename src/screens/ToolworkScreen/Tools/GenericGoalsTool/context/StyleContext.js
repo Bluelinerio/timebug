@@ -6,12 +6,13 @@ import {
   mapPhaseToButtonStyles,
   mapPhaseToElementBackground,
   mapPhaseToTextAndButtonColor,
-} from '2020_utils/colorsForStep'
+}                         from '2020_utils/colorsForStep'
 import {
   mapPhaseToColor as localMapPhaseToColor,
   mapPhaseToContrastColor,
   mapPhaseToSliderColor,
-} from '../utils'
+  mapPhaseToIconStyle,
+}                         from '../utils'
 
 type Props = {
   phase: String,
@@ -26,9 +27,10 @@ export type ProvidedProps = {
   textAndButtonColor: any,
   minimumTrackColor: any,
   maximumTrackColor: any,
+  iconStyle: any,
 }
 
-const initialState = {
+const initialState: ProvidedProps = {
   color: null,
   containerBackgroundColor: null,
   textContrastColor: null,
@@ -36,6 +38,7 @@ const initialState = {
   textAndButtonColor: null,
   minimumTrackColor: null,
   maximumTrackColor: null,
+  iconStyle: null,
 }
 
 const StyleContext = React.createContext(initialState)
@@ -95,6 +98,13 @@ const _StyleProvider = (props: Props) => {
     [phase]
   )
 
+  const iconStyle = useMemo(
+    () => {
+      return mapPhaseToIconStyle(phase)
+    },
+    [phase]
+  )
+
   return (
     <StyleContext.Provider
       value={{
@@ -105,6 +115,7 @@ const _StyleProvider = (props: Props) => {
         textAndButtonColor,
         minimumTrackColor,
         maximumTrackColor,
+        iconStyle,
       }}
     >
       {props.children}
