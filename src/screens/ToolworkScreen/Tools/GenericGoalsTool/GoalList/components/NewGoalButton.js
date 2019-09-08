@@ -1,10 +1,11 @@
 // @flow
-import React from 'react'
+import React                      from 'react'
 import { TouchableOpacity, Text } from 'react-native'
-import styles from '../styles'
+import styles                     from '../styles'
 
 type Props = {
   openGoalRecommendations: () => void,
+  color: string,
 }
 
 class NewGoalButton extends React.PureComponent<Props> {
@@ -14,9 +15,10 @@ class NewGoalButton extends React.PureComponent<Props> {
   }
 
   render() {
+    const { color } = this.props
     return (
       <TouchableOpacity style={styles.newGoalButton} onPress={this._onPress}>
-        <Text style={styles.newGoalText}>New Goal</Text>
+        <Text style={[styles.newGoalText, { color }]}>New Goal</Text>
       </TouchableOpacity>
     )
   }

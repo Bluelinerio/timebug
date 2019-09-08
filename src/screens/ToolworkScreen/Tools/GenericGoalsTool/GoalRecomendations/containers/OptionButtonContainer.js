@@ -1,9 +1,10 @@
 // @flow
-import React, { useContext } from 'react'
-import Button from '../../components/OptionButton'
-import { ScreenContext } from '../../context/ScreenContext'
-import { FormContext } from '../../context/FormContext'
-import { CategoryContext } from '../../context/CategoryContext'
+import React, { useContext, useMemo } from 'react'
+import Button                         from '../../components/OptionButton'
+import { ScreenContext }              from '../../context/ScreenContext'
+import { FormContext }                from '../../context/FormContext'
+import { CategoryContext }            from '../../context/CategoryContext'
+import { StyleContext }               from '../../context/StyleContext'
 
 type Props = {
   option?: string,
@@ -19,9 +20,21 @@ const OptionButtonContainer = (props: Props) => {
   const { openForm } = useContext(ScreenContext)
   const { category } = useContext(CategoryContext)
   const { setBaseValues, FORM_KEYS } = useContext(FormContext)
+  const { color } = useContext(StyleContext)
+
+  const updatedStyle = useMemo(
+    () => {
+      return {
+        ...style,
+        text: {
+          color,
+        },
+      }
+    },
+    [style, color]
+  )
 
   const onPress = () => {
-
     const base = {
       [FORM_KEYS.category]: {
         value: category,
@@ -29,12 +42,9 @@ const OptionButtonContainer = (props: Props) => {
     }
 
     if (newGoalButton) {
-
       setBaseValues(base)
       openForm()
-
     } else {
-
       setBaseValues({
         ...base,
         [FORM_KEYS.goal]: {
@@ -42,12 +52,10 @@ const OptionButtonContainer = (props: Props) => {
         },
       })
       openForm()
-
     }
-
   }
 
-  return <Button onPress={onPress} text={option} style={style} />
+  return <Button onPress={onPress} text={option} style={updatedStyle} />
 }
 
 export default OptionButtonContainer

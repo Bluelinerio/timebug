@@ -39,7 +39,7 @@ export default StyleSheet.create({
   },
   goalContainer: {
     alignItems: 'center',
-    justifyContent: 'center',
+    flexDirection: 'row',
     width: '100%',
     height: 50,
     marginVertical: 10,
@@ -47,20 +47,30 @@ export default StyleSheet.create({
     backgroundColor: gray50,
     borderRadius: 6,
     ...Platform.select({
-      android: { elevation: 8 },
+      android: { elevation: 2 },
       ios: {
         shadowColor: 'black',
         shadowOffset: {
-          width: 0,
-          height: 8,
+          width: 2,
+          height: 2,
         },
-        shadowOpacity: 0.6,
-        shadowRadius: 6,
+        shadowOpacity: 0.3,
+        shadowRadius: 8,
       },
     }),
   },
   goalText: {
     ...iOSUIKit.bodyEmphasizedObject,
     color: gray900,
+  },
+  leftBlock: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  rightBlock: {
+    flex: 4,
+    alignItems: 'flex-start',
+    justifyContent: 'center',
   },
 })
