@@ -8,6 +8,7 @@ export default StyleSheet.create({
   },
   goalButton: {
     width: '100%',
+    flexDirection: 'row',
     height: 64,
     padding: 16,
     borderRadius: 6,
@@ -62,5 +63,15 @@ export default StyleSheet.create({
   },
   selectedTab: {
     backgroundColor: gray400,
+  },
+  leftBlock: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  rightBlock: {
+    flex: 4,
+    alignItems: 'flex-start',
+    justifyContent: 'center',
   },
 })
