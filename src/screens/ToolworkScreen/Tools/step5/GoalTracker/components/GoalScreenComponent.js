@@ -120,7 +120,7 @@ class GoalScreenComponent extends React.PureComponent<Props, State> {
         style={styles.scrollView}
         contentContainerStyle={styles.scrollView}
       >
-        <GoalNavigator />
+        {!selectedGoaltype && !selectedGoal && <GoalNavigator />}
         <SubHeader
           display={!!selectedGoaltype}
           onBack={this._onSoftwareBackButtonPress}
