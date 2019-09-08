@@ -1,14 +1,15 @@
 // @flow
-import React, { useContext } from 'react'
-import Header from '../components/Header'
+import React, { useContext }      from 'react'
+import Header                     from '../components/Header'
 import {
   useTitle,
   useSubtitle,
   useBackHandler,
-} from '../../hooks/BackButtonHooks'
+}                                 from '../../hooks/BackButtonHooks'
 import { ScreenContext, screens } from '../../context/ScreenContext'
-import { CategoryContext } from '../../context/CategoryContext'
-import { GoalContext } from '../../context/GoalContext'
+import { CategoryContext }        from '../../context/CategoryContext'
+import { GoalContext }            from '../../context/GoalContext'
+import { StyleContext }           from '../../context/StyleContext'
 
 const getBackButtonHandler = (
   screen: string,
@@ -68,7 +69,9 @@ const HeaderContainer = () => {
     openBacklog,
     openDeletedBacklog,
   } = useContext(ScreenContext)
-  const { category: categoryKey, unsetCategory, getCategoryName } = useContext(CategoryContext)
+  const { category: categoryKey, unsetCategory, getCategoryName } = useContext(
+    CategoryContext
+  )
   const { unsetGoal, goal } = useContext(GoalContext)
   const category = getCategoryName(categoryKey)
   const title = useTitle(screen, goal)
@@ -83,12 +86,14 @@ const HeaderContainer = () => {
     openBacklog,
     openDeletedBacklog,
   })
+  const { color } = useContext(StyleContext)
   return (
     <Header
       title={title}
       subtitle={subtitle}
       onBack={onBack}
       showBackButton={showBackButton}
+      color={color}
     />
   )
 }

@@ -1,5 +1,5 @@
-import { StyleSheet, Platform }             from 'react-native'
-import { iOSUIKit }                         from 'react-native-typography'
+import { StyleSheet, Platform } from 'react-native'
+import { iOSUIKit } from 'react-native-typography'
 import { gray900, gray50, SELF_ASSESSMENT } from '2020_constants/colors'
 
 export default StyleSheet.create({
@@ -16,7 +16,6 @@ export default StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     paddingHorizontal: 16,
-    paddingVertical: 4,
     justifyContent: 'space-around',
   },
   categoryButton: {
@@ -27,18 +26,18 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: gray50,
-    marginVertical: 10,
+    marginBottom: 10,
     flexDirection: 'row',
     ...Platform.select({
-      android: { elevation: 8 },
+      android: { elevation: 2 },
       ios: {
         shadowColor: 'black',
         shadowOffset: {
-          width: 0,
-          height: 8,
+          width: 2,
+          height: 2,
         },
-        shadowOpacity: 0.6,
-        shadowRadius: 6,
+        shadowOpacity: 0.3,
+        shadowRadius: 8,
       },
     }),
   },
@@ -50,6 +49,7 @@ export default StyleSheet.create({
     minHeight: 64,
     flexGrow: 0,
     flexDirection: 'row',
+    paddingHorizontal: 16,
   },
   backButtonContainer: {
     justifyContent: 'center',
@@ -63,7 +63,6 @@ export default StyleSheet.create({
   headerContent: {
     flex: 1,
     flexDirection: 'column',
-    padding: 8,
   },
   titleContainer: {
     flex: 1,
@@ -105,5 +104,10 @@ export default StyleSheet.create({
     flex: 4,
     alignItems: 'flex-start',
     justifyContent: 'center',
+  },
+  goalScreenTitle: {
+    ...iOSUIKit.largeTitleEmphasizedObject,
+    fontSize: 28,
+    textAlign: 'justify',
   },
 })

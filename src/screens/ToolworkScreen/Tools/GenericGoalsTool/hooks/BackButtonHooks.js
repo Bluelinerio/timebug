@@ -7,11 +7,11 @@ import { MEDITATION, SELF_ASSESSMENT, VISION_CREATION } from '2020_services/cms'
 const titleForPhase = (phase: string) => {
   switch (phase) {
     case MEDITATION:
-      return 'Phase 1 goals'
+      return 'GOALS'
     case SELF_ASSESSMENT:
-      return 'Phase 2 goals'
+      return 'CAREER GOALS'
     case VISION_CREATION:
-      return 'Phase 3 dreams'
+      return 'CAREER DREAMS'
   }
 }
 
@@ -28,10 +28,10 @@ export const useTitle = (screen: string, goal: any = null) => {
           setTitle(titleForPhase(phase))
           break
         case screens.FORM:
-          setTitle('Goal workbook')
+          setTitle('Goal Workbook')
           break
         case screens.GOAL_DETAIL:
-          setTitle(`Goal Details: ${goal ? goal.name : ''}`)
+          setTitle(`${goal ? goal.name : ''}`)
           break
         case screens.BACKLOG:
           setTitle(`Completed goals`)

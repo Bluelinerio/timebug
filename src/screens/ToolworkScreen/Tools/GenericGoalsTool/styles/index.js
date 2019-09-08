@@ -1,6 +1,6 @@
 import { StyleSheet, Platform } from 'react-native'
-import { iOSUIKit }             from 'react-native-typography'
-import { gray50, gray900 }      from '2020_constants/colors'
+import { iOSUIKit } from 'react-native-typography'
+import { gray50, gray900 } from '2020_constants/colors'
 
 const helperIconSize = 40
 
