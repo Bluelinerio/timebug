@@ -304,7 +304,14 @@ class Form extends React.PureComponent<FormProps, State> {
   }
 
   _onChange = value => {
-    this.setState({ currentElementValue: value })
+    const { onChange } = this.props
+    const { fieldIndex, indexesMap } = this.state
+    this.setState({ currentElementValue: value }, () => {
+      if (onChange) {
+        const key = indexesMap[fieldIndex]
+        onChange(value, key)
+      }
+    })
   }
 
   _handleGoTo = payload => {

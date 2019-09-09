@@ -65,6 +65,10 @@ export type ButtonStyle = Styles & {
   buttonStyle?: any,
 }
 
+export type SliderSetStyle = Styles & {
+  totalContainerStyle?: any,
+}
+
 export type Style = Styles | TextStyle | SelectStyle
 
 export type Options = {
@@ -162,6 +166,7 @@ export type FormProps = {
     buttonTextStyle: any,
     accentColor: string,
   },
+  onChange: (value: any, key: string) => void,
   extra: {
     step: string,
   },

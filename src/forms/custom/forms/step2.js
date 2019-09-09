@@ -21,6 +21,7 @@ export const FORM_CHILDREN_KEYS = {
     areaOfLife: 'form_2_less_time_activities.area_of_life',
   },
 }
+
 const form: Form = {
   type: types.form,
   answer: answerTypes.single,

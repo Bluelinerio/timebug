@@ -1,3 +1,4 @@
+// @flow
 import React        from 'react'
 import SliderSet    from './SliderSet'
 import { setTypes } from '../../../forms/types'

@@ -9,6 +9,8 @@ import {
   submitFormValue,
   syncFormData,
 } from '../../../../redux/actions/formData.actions.js'
+import { handleStep30BaseValues } from '../utils/baseValues/step30'
+import { stepEnum } from '2020_services/cms'
 import type { SubmitAction } from '../../../../redux/actions/formData.actions.js'
 
 const mapStateToProps = (state: any) => {
@@ -28,6 +30,19 @@ const mapDispatchToProps = (dispatch: any) => {
   }
 }
 
+const mapBaseValues = (
+  baseValues: any | null,
+  formData: any,
+  stepNumber: number
+) => {
+  switch (stepNumber) {
+    case stepEnum.STEP_30:
+      return handleStep30BaseValues(baseValues, formData)
+    default:
+      return baseValues
+  }
+}
+
 const merge = ({
   submitForm,
   data,
@@ -38,7 +53,10 @@ const merge = ({
 }) => {
   const model = models[stepNumber]
   const formData = (data[stepNumber] && data[stepNumber].value) || null
-  const baseValues = navigation.getParam('valuesForForm', null)
+  const base = navigation.getParam('valuesForForm', null)
+  const baseValues = mapBaseValues(base, data, stepNumber)
+  const step2Finished = data ? !!data[stepEnum.STEP_2] : false
+  const step30Finished = data ? !!data[stepEnum.STEP_30] : false
   return {
     ...props,
     data: formData,
@@ -48,6 +66,10 @@ const merge = ({
     editionId,
     navigation,
     baseValues,
+    extra: {
+      step2Finished,
+      step30Finished,
+    },
   }
 }
 

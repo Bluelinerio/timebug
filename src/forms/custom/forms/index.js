@@ -27,9 +27,7 @@ import Step26 from './step26'
 import Step27 from './step27'
 import Step28 from './step28'
 import Step29 from './step29'
-
-
-
+import Step30 from './step30'
 
 export * from './content'
 
@@ -63,6 +61,5 @@ export default {
   '27': Step27,
   '28': Step28,
   '29': Step29,
-
-
+  '30': Step30,
 }

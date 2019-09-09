@@ -1,9 +1,10 @@
-import React          from 'react'
+// @flow
+import React from 'react'
 import { View, Text } from 'react-native'
-import styles         from '../../../styles'
-import Slider         from '../SliderComponent'
-import { SHARED }     from '../../../forms/constants'
-import uuid           from 'uuid/v4'
+import styles from '../../../styles'
+import Slider from '../SliderComponent'
+import { SHARED } from '../../../forms/constants'
+import uuid from 'uuid/v4'
 
 type Props = {
   value: any,
@@ -13,6 +14,7 @@ type Props = {
     content?: any,
     options?: any,
   },
+  baseValues: any,
 }
 
 type ValueElement = {
@@ -60,7 +62,8 @@ class SliderSet extends React.PureComponent<Props, State> {
   }
 
   _buildInitialValue = (props: Props) => {
-    const { parentField } = props
+    const { parentField, baseValues } = props
+    const base = baseValues ? baseValues : {}
     const { subtypeOptions, children } = parentField.options
     const initialValue = Object.keys(children).reduce((currentValue, index) => {
       const child = children[index]
@@ -70,11 +73,13 @@ class SliderSet extends React.PureComponent<Props, State> {
         [key]: {
           _id: uuid(),
           _model: child,
-          value: options
-            ? options._compareValue
-              ? options._compareValue.value
-              : options.min ? options.min : subtypeOptions.min
-            : subtypeOptions.min,
+          value: base[key]
+            ? base[key].value
+            : options
+              ? options._compareValue
+                ? options._compareValue.value
+                : options.min ? options.min : subtypeOptions.min
+              : subtypeOptions.min,
           key,
           index,
           contentKey,
@@ -140,13 +145,18 @@ class SliderSet extends React.PureComponent<Props, State> {
       textStyle: { color },
     } = formStyles
 
-    const { subtypeOptions, children, displayGlobal = true } = options
+    const {
+      subtypeOptions,
+      children,
+      displayGlobal = true,
+      style = {},
+    } = options
 
     return (
       <View style={styles.container}>
         {displayGlobal && (
           <View style={styles.sliderSetTotalContainer}>
-            <View style={styles.sliderSetTotal}>
+            <View style={[styles.sliderSetTotal, style.totalContainerStyle]}>
               <Text style={[styles.totalValue, formStyles.textStyle]}>
                 {globalMaxValue}
               </Text>
