@@ -16,6 +16,62 @@ function* handleStep2SideEffect(action: {
   type: STEP_2_SIDE_EFFECT,
   payload: Payload,
 }) {
+  const { payload } = action
+  const { formData } = payload
+
+  const globalFormData = yield select(selectors.formData)
+
+  const step30Data = globalFormData[stepEnum.STEP_30] || null
+  if (!step30Data) return
+  // This is the value to be stored
+  const step30Value = step30Data.value[0]
+
+  const step30Year = step30Value[STEP_30_KEYS.form_30_next_year]
+
+  const yearValue = step30Year.value
+
+  const value = formData[0]
+
+  const idealValue = value[STEP_2_KEYS.form_2_ideal_week_time_].value
+
+  // Get the hours of step 30 divided by 52 and rounded up
+  const valuesOfHoursForCategories = Object.keys(LifeCategories).reduce(
+    (children, contentKey) => {
+      const key = `form_2_ideal_week_time.${contentKey}`
+      const step30Key = `form_30_next_year.${contentKey}`
+      const dataForKey = idealValue[key]
+      const value = dataForKey.value
+      const step30DataForKey = yearValue[step30Key]
+      return {
+        ...children,
+        [step30Key]: {
+          ...step30DataForKey,
+          value: value * 52,
+        },
+      }
+    },
+    { ...yearValue }
+  )
+
+  const storable = [
+    {
+      ...step30Value,
+      [STEP_30_KEYS.form_30_next_year]: {
+        ...step30Year,
+        value: valuesOfHoursForCategories,
+      },
+    },
+  ]
+
+  yield put(
+    submitFormValue({
+      stepId: stepEnum.STEP_30,
+      value: storable,
+      sideEffect: false,
+    })
+  )
+  yield put(syncFormData())
+
   yield
 }
 
@@ -57,7 +113,7 @@ function* handleStep30SideEffect(action: {
         },
       }
     },
-    {}
+    { ...idealValue }
   )
 
   const storable = [
@@ -70,7 +126,13 @@ function* handleStep30SideEffect(action: {
     },
   ]
 
-  yield put(submitFormValue({ stepId: stepEnum.STEP_2, value: storable }))
+  yield put(
+    submitFormValue({
+      stepId: stepEnum.STEP_2,
+      value: storable,
+      sideEffect: false,
+    })
+  )
   yield put(syncFormData())
 
   yield
