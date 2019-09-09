@@ -8,8 +8,8 @@ export const onChange = () => {
     if (!happened)
       if (key === FORM_KEYS.form_2_ideal_week_time_) {
         Alert.alert(
-          'Caution',
-          `Changing any of these values will affect your ideal next year created during step 30 if you have completed it before. \nTo undo these changes, close and reopen the form
+          'FYI',
+          `Changing these values will effect the values entered in your ideal week during Step 2(if you have completed this exercise.)
           `
         )
         happened = true
