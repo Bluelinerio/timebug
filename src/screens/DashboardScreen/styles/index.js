@@ -1,13 +1,13 @@
 // @flow
 import { StyleSheet, Platform } from 'react-native'
-import { iOSUIKit }             from 'react-native-typography'
+import { iOSUIKit } from 'react-native-typography'
 import {
   paleBlue,
   darkBlue,
   transparentCyan,
   white2,
-}                               from '2020_constants/colors'
-import { widthPercentage }      from '2020_utils/viewportCalculation'
+} from '2020_constants/colors'
+import { widthPercentage } from '2020_utils/viewportCalculation'
 
 export const cellsWidth = widthPercentage(90)
 
@@ -62,6 +62,7 @@ export default StyleSheet.create({
     ...iOSUIKit.subheadEmphasizedObject,
     color: darkBlue,
     fontStyle: 'italic',
+    textDecorationLine: 'underline',
   },
   insightContainer: {
     marginVertical: 12,
