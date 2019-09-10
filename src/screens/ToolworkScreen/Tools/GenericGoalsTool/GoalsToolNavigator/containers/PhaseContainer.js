@@ -1,11 +1,12 @@
 // @flow
-import React, { useCallback, useContext, useMemo }      from 'react'
-import { withNavigation }                               from 'react-navigation'
-import { getStyleForPhase }                             from '../utils/styleForPhase'
+import React, { useCallback, useContext, useMemo } from 'react'
+import { Alert } from 'react-native'
+import { withNavigation } from 'react-navigation'
+import { getStyleForPhase } from '../utils/styleForPhase'
 import { MEDITATION, SELF_ASSESSMENT, VISION_CREATION } from '2020_services/cms'
-import { TOOL_KEYS }                                    from '2020_static/tools'
-import PhaseComponent                                   from '../components/PhaseComponent'
-import { ToolDataContext }                              from '../../context/ToolDataProvider'
+import { TOOL_KEYS } from '2020_static/tools'
+import PhaseComponent from '../components/PhaseComponent'
+import { ToolDataContext } from '../../context/ToolDataProvider'
 
 type Props = {
   phase: string,
@@ -67,7 +68,12 @@ const PhaseContainer = (props: Props) => {
 
   const onPress = useCallback(
     () => {
-      if (!isSelected) navigation.setParams({ tool, phase })
+      if (!tool)
+        Alert.alert(
+          'Locked',
+          'You have not fulfilled the requirements to use this feature'
+        )
+      if (tool && !isSelected) navigation.setParams({ tool, phase })
     },
     [phase, isSelected]
   )
