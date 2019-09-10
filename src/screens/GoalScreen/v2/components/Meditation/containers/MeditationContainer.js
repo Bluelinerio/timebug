@@ -25,6 +25,7 @@ const MeditationContainer = () => {
 
   const toolData = useMemo(
     () => {
+      if (!tool) return null
       return getDataForTool({ tool })
     },
     [tool]
