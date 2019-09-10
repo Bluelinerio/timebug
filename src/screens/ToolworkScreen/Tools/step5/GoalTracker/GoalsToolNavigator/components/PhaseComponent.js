@@ -8,17 +8,19 @@ type Props = {
   onPress: () => void,
   textStyle: any,
   containerStyle: any,
+  goalCount: number,
 }
 
 class PhaseComponent extends React.PureComponent<Props> {
   render() {
-    const { phase, textStyle, containerStyle, onPress } = this.props
+    const { phase, textStyle, containerStyle, onPress, goalCount } = this.props
     return (
       <TouchableOpacity
         style={[styles.phaseComponent, containerStyle]}
         onPress={onPress}
       >
         <Text style={[styles.phaseText, textStyle]}>{phase}</Text>
+        <Text style={[styles.phaseText, textStyle]}>({goalCount})</Text>
       </TouchableOpacity>
     )
   }
