@@ -13,6 +13,7 @@ type Props = {
   iconStyle: any,
   iconName: string,
   color: string,
+  goalCount: number,
 }
 
 class CategoryButton extends React.PureComponent<Props> {
@@ -23,14 +24,14 @@ class CategoryButton extends React.PureComponent<Props> {
   }
 
   render() {
-    const { category, iconStyle, iconName, color } = this.props
+    const { category, iconStyle, iconName, color, goalCount } = this.props
     return (
       <TouchableOpacity style={styles.categoryButton} onPress={this._onPress}>
         <View style={styles.leftBlock}>
           <SvgIcon name={iconName} {...iconStyle} />
         </View>
         <View style={styles.rightBlock}>
-          <Text style={[styles.categoryButtonText, { color }]}>{category}</Text>
+          <Text style={[styles.categoryButtonText, { color }]}>{category} {`(${goalCount})`}</Text>
         </View>
       </TouchableOpacity>
     )

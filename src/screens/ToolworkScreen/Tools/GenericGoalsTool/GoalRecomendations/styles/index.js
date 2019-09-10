@@ -13,6 +13,8 @@ export default StyleSheet.create({
   },
   optionsButton: {
     width: '100%',
+    borderRadius: 8,
+    maxHeight: 60,
     ...Platform.select({
       android: { elevation: 2 },
       ios: {

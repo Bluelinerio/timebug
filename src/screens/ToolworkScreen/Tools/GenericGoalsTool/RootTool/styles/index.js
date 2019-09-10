@@ -15,14 +15,15 @@ export default StyleSheet.create({
   categoryList: {
     flex: 1,
     alignItems: 'center',
-    paddingHorizontal: 16,
+    paddingHorizontal: 20,
     justifyContent: 'space-around',
   },
   categoryButton: {
     width: '100%',
     height: 64,
     padding: 10,
-    borderRadius: 6,
+    borderRadius: 8,
+    maxHeight: 60,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: gray50,
@@ -46,10 +47,10 @@ export default StyleSheet.create({
     color: gray900,
   },
   header: {
-    minHeight: 64,
     flexGrow: 0,
     flexDirection: 'row',
     paddingHorizontal: 16,
+    marginVertical: 10,
   },
   backButtonContainer: {
     justifyContent: 'center',

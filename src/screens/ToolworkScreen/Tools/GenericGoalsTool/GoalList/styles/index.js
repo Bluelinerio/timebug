@@ -45,7 +45,8 @@ export default StyleSheet.create({
     marginVertical: 10,
     padding: 8,
     backgroundColor: gray50,
-    borderRadius: 6,
+    borderRadius: 8,
+    maxHeight: 60,
     ...Platform.select({
       android: { elevation: 2 },
       ios: {
