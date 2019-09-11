@@ -75,7 +75,7 @@ const PhaseContainer = (props: Props) => {
 
   const name = mapPhaseToName({ phase })
 
-  const goals = tool ? useGoalsForPhase(phase, tool) : []
+  const goals = useGoalsForPhase(phase, tool)
 
   const goalCount = goals.length
 

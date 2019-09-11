@@ -8,8 +8,7 @@ import {
   VISION_CREATION,
 } from '2020_services/cms'
 
-const _extractGoalsStep5 = toolData => {
-  const formData = useSelector(selectors.formData, shallowCompare)
+const _extractGoalsStep5 = (toolData, formData) => {
   const data = formData[stepEnum.STEP_5]
   const { value } = data
   const goals = value.filter(goal => {
@@ -59,12 +58,17 @@ export const useGoalsForPhase = (phase: string, tool: any) => {
     selectors.awardDataForTool,
     shallowCompare
   )
+  const formData = useSelector(selectors.formData, shallowCompare)
+
+  if (!tool) return []
 
   const toolData = awardDataForTool({ tool })
 
+  if (!toolData) return []
+
   switch (phase) {
     case MEDITATION:
-      return _extractGoalsStep5(toolData)
+      return _extractGoalsStep5(toolData, formData)
     case SELF_ASSESSMENT:
       return _extractGoalsStep13(toolData)
     case VISION_CREATION:
