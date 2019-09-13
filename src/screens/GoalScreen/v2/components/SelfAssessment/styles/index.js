@@ -1,6 +1,25 @@
 import { StyleSheet, Platform } from 'react-native'
 import { iOSUIKit } from 'react-native-typography'
-import { gray900, gray50, SELF_ASSESSMENT } from '2020_constants/colors'
+import {
+  gray900,
+  gray50,
+  SELF_ASSESSMENT,
+  PHASE_2_COMPLETE,
+} from '2020_constants/colors'
+
+const helperIconSize = 40
+
+export const baseIconStyle = {
+  height: helperIconSize,
+  width: helperIconSize,
+}
+
+export const iconStyle = {
+  ...baseIconStyle,
+  color: PHASE_2_COMPLETE,
+}
+
+export const color = PHASE_2_COMPLETE
 
 export default StyleSheet.create({
   container: {

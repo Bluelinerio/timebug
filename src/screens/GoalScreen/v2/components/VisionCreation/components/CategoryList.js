@@ -10,17 +10,23 @@ import styles from '../styles'
 type Props = {
   categories: Array<Category>,
   tool: any,
+  data: any,
 }
 
 class CategoryList extends React.PureComponent<Props> {
   render() {
-    const { categories, tool } = this.props
+    const { categories, tool, data } = this.props
     return tool ? (
       <Fragment>
         <Header title={'Phase 3 goals'} />
         <View style={styles.categoryList}>
           {categories.map(cat => (
-            <CategoryButton key={cat.key} category={cat} tool={tool} />
+            <CategoryButton
+              key={cat.key}
+              category={cat}
+              tool={tool}
+              data={data}
+            />
           ))}
         </View>
         <BacklogLink tool={tool} />

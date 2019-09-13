@@ -14,13 +14,18 @@ type Props = {
 
 class CategoryList extends React.PureComponent<Props> {
   render() {
-    const { categories, tool } = this.props
+    const { categories, tool, ...rest } = this.props
     return tool ? (
       <Fragment>
         <Header title={'Phase 2 goals'} />
         <View style={styles.categoryList}>
           {categories.map(cat => (
-            <CategoryButton key={cat.key} category={cat} tool={tool} />
+            <CategoryButton
+              key={cat.key}
+              category={cat}
+              tool={tool}
+              {...rest}
+            />
           ))}
         </View>
         <BacklogLink tool={tool} />
