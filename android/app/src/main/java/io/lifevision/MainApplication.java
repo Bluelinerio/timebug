@@ -3,6 +3,7 @@ package io.lifevision;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import io.sentry.RNSentryPackage;
 import com.moengage.core.MoEngage;
 import com.moengage.react.MoEReactPackage;
 import io.invertase.firebase.RNFirebasePackage;
@@ -21,7 +22,7 @@ import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.zmxv.RNSound.RNSoundPackage;
 
 import io.lifevision.settings.OpenSettingsPackage;
-import io.sentry.RNSentryPackage;
+
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.horcrux.svg.SvgPackage;
 import com.facebook.FacebookSdk;
@@ -63,6 +64,7 @@ public class MainApplication extends Application implements ReactApplication {
   protected List<ReactPackage> getPackages() {
     return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNSentryPackage(),
             new MoEReactPackage(),
           new RNFirebasePackage(),
           new RNCWebViewPackage(),
@@ -76,7 +78,6 @@ public class MainApplication extends Application implements ReactApplication {
           new RNGestureHandlerPackage(),
           new RNUnifiedContactsPackage(),
           new RNSoundPackage(),
-          new RNSentryPackage(),
           new RNDeviceInfo(),
           new SvgPackage(),
           new FBSDKPackage(mCallbackManager),
