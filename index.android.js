@@ -12,10 +12,9 @@ if (__DEV__) {
   }
 }
 
+import * as Sentry from '@sentry/react-native'
 import './src/App'
 
-import { Sentry } from 'react-native-sentry'
-
-Sentry.config(
-  'https://0de59c73057340d789df292efcbba25b:cbb27d7602214baa88ace02da408939a@sentry.io/293417'
-).install()
+Sentry.init({
+  dsn: 'https://0de59c73057340d789df292efcbba25b@sentry.io/293417',
+})
