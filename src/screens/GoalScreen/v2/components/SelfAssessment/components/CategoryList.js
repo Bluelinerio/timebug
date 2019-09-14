@@ -17,7 +17,7 @@ class CategoryList extends React.PureComponent<Props> {
     const { categories, tool, ...rest } = this.props
     return tool ? (
       <Fragment>
-        <Header title={'Phase 2 goals'} />
+        <Header title={'CAREER GOALS'} />
         <View style={styles.categoryList}>
           {categories.map(cat => (
             <CategoryButton
