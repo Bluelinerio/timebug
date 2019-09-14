@@ -26,8 +26,6 @@ const BacklogLinkContainer = (props: Props) => {
     [tool]
   )
 
-  console.log(onPress)
-
   return <BacklogLink onPress={onPress} />
 }
 

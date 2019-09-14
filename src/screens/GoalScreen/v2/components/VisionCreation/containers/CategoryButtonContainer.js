@@ -5,7 +5,8 @@ import { goToTool } from '2020_redux/actions/nav.actions'
 import type { GoToToolParams } from '2020_redux/actions/nav.actions'
 import mapNavigationDispatch from '2020_HOC/NavigationServiceHOC'
 import { iconStyle, color } from '../styles'
-import { useIcon, useGoals } from '../hooks/categoryHooks'
+import { useIcon } from '../hooks/categoryHooks'
+import { useGoals } from '../hooks/categoryHooks'
 
 type Props = {
   category: Category,

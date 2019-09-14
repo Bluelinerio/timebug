@@ -14,31 +14,31 @@ export const categories = rootCategories
 export const categoriesWithName = rootCategoriesWithName
 
 const stepToCategoryMap: Array<Category> = {
-  13: {
+  23: {
     name: 'Career',
     key: categories.CAREER,
   },
-  14: {
+  24: {
     name: 'Finances',
     key: categories.FINANCES,
   },
-  15: {
+  25: {
     name: 'Aims and Hobbies',
     key: categories.AIMS_AND_HOBBIES,
   },
-  16: {
+  26: {
     name: 'Health',
     key: categories.HEALTH,
   },
-  17: {
+  27: {
     name: 'Relationships',
     key: categories.RELATIONSHIPS,
   },
-  18: {
+  28: {
     name: 'Environment',
     key: categories.ENVIRONMENT,
   },
-  19: {
+  29: {
     name: 'Spirituality',
     key: categories.SPIRITUALITY,
   },
