@@ -1,0 +1,8 @@
+import React from 'react'
+import FavoritesList from '../components/FavoritesList'
+
+const FavoritesListContainer = () => {
+  return <FavoritesList />
+}
+
+export default FavoritesListContainer

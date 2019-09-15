@@ -11,6 +11,7 @@ import EnergyLevelsTracker from '../Tools/step8/EnergyLevelsTracker'
 import CompletedGoalsTracker from '../Tools/step11/CompletedGoalTracker'
 import CareerGoalsTracker from '../Tools/step13/index'
 import DreamsTracker from '../Tools/step23'
+import DreamBook from '../Tools/step22'
 import Dummy from '../Tools/dummyTool'
 
 type Props = {
@@ -42,6 +43,8 @@ const ToolSwitch = (props: Props) => {
       return <CareerGoalsTracker {...props} />
     case TOOL_KEYS.VisionCreationDreamsTrackerKey:
       return <DreamsTracker {...props} />
+    case TOOL_KEYS.DreamRecordKey:
+      return <DreamBook {...props} />
     case TOOL_KEYS.DummyKey:
       return <Dummy {...props} />
     default:
