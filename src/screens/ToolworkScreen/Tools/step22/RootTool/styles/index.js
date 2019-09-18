@@ -6,9 +6,12 @@ export default StyleSheet.create({
   container: {
     flex: 1,
   },
+  scroll: {
+    flexGrow: 1,
+  },
   tabBar: {
+    minHeight: 54,
     maxHeight: 54,
-    flex: 1,
     flexDirection: 'row',
     width: '100%',
   },

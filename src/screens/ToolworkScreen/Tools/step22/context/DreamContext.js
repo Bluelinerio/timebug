@@ -45,20 +45,17 @@ const DreamProvider = (props: Props) => {
   const storeDream = useCallback(
     (text: string) => {
       const storableData = {
-        ...data,
-        value: {
-          ...value,
-          dreams: [
-            ...dreams,
-            {
-              id: uuid(),
-              text,
-              date: moment().format(DATE_FORMAT),
-              timestamp: moment().format(),
-              bookmark: false,
-            },
-          ],
-        },
+        ...value,
+        dreams: [
+          ...dreams,
+          {
+            id: uuid(),
+            text,
+            date: moment().format(DATE_FORMAT),
+            timestamp: moment().format(),
+            bookmark: false,
+          },
+        ],
       }
 
       storeData(storableData)
