@@ -6,6 +6,7 @@ import { getStyleForPhase } from '../utils/styleForPhase'
 import { MEDITATION, SELF_ASSESSMENT, VISION_CREATION } from '2020_services/cms'
 import { TOOL_KEYS } from '2020_static/tools'
 import PhaseComponent from '../components/PhaseComponent'
+import { useGoalsForPhase } from '../../../../GenericGoalsTool/hooks/goalExtraction'
 
 type Props = {
   phase: string,
@@ -80,12 +81,17 @@ const PhaseContainer = (props: Props) => {
 
   const name = mapPhaseToName({ phase })
 
+  const goals = useGoalsForPhase(phase, tool)
+
+  const goalCount = goals.length
+
   return (
     <PhaseComponent
       onPress={onPress}
       textStyle={style.textStyle}
       containerStyle={style.containerStyle}
       phase={name}
+      goalCount={goalCount}
     />
   )
 }

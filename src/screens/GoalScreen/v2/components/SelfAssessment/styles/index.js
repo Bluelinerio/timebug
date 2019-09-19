@@ -1,6 +1,25 @@
 import { StyleSheet, Platform } from 'react-native'
 import { iOSUIKit } from 'react-native-typography'
-import { gray900, gray50, SELF_ASSESSMENT } from '2020_constants/colors'
+import {
+  gray900,
+  gray50,
+  SELF_ASSESSMENT,
+  PHASE_2_COMPLETE,
+} from '2020_constants/colors'
+
+const helperIconSize = 40
+
+export const baseIconStyle = {
+  height: helperIconSize,
+  width: helperIconSize,
+}
+
+export const iconStyle = {
+  ...baseIconStyle,
+  fill: PHASE_2_COMPLETE,
+}
+
+export const color = PHASE_2_COMPLETE
 
 export default StyleSheet.create({
   container: {
@@ -22,12 +41,14 @@ export default StyleSheet.create({
   categoryButton: {
     width: '100%',
     height: 64,
-    padding: 16,
-    borderRadius: 6,
+    padding: 10,
+    borderRadius: 8,
+    maxHeight: 60,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: gray50,
-    marginVertical: 10,
+    marginBottom: 10,
+    flexDirection: 'row',
     ...Platform.select({
       android: { elevation: 8 },
       ios: {
@@ -49,10 +70,10 @@ export default StyleSheet.create({
     minHeight: 64,
     flexGrow: 0,
     flexDirection: 'row',
+    paddingHorizontal: 16,
   },
   backButtonContainer: {
     justifyContent: 'center',
-    padding: 8,
   },
   backButtonText: {
     marginLeft: 6,
@@ -62,7 +83,6 @@ export default StyleSheet.create({
   headerContent: {
     flex: 1,
     flexDirection: 'column',
-    padding: 8,
   },
   titleContainer: {
     flex: 1,
@@ -74,7 +94,6 @@ export default StyleSheet.create({
     flex: 1,
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
-    marginTop: 4,
   },
   headerTitle: {
     ...iOSUIKit.title3EmphasizedObject,
@@ -100,5 +119,21 @@ export default StyleSheet.create({
     textAlign: 'center',
     color: gray900,
     padding: 8,
+  },
+  leftBlock: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  rightBlock: {
+    flex: 4,
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+  },
+  goalScreenTitle: {
+    ...iOSUIKit.largeTitleEmphasizedObject,
+    fontSize: 28,
+    textAlign: 'justify',
+    color: PHASE_2_COMPLETE,
   },
 })

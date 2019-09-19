@@ -1,49 +1,17 @@
 // @flow
+import {
+  categories as rootCategories,
+  categoriesWithName as rootCategoriesWithName,
+} from '../../../../../ToolworkScreen/Tools/step23/static/categories'
+
 export type Category = {
   name: string,
   key: string,
 }
 
-export const categories = {
-  CAREER: 'CAREER',
-  FINANCES: 'FINANCES',
-  AIMS_AND_HOBBIES: 'AIMS_AND_HOBBIES',
-  HEALTH: 'HEALTH',
-  RELATIONSHIPS: 'RELATIONSHIPS',
-  ENVIRONMENT: 'ENVIRONMENT',
-  SPIRITUALITY: 'SPIRITUALITY',
-}
+export const categories = rootCategories
 
-export const categoriesWithName = [
-  {
-    name: 'Career',
-    key: categories.CAREER,
-  },
-  {
-    name: 'Finances',
-    key: categories.FINANCES,
-  },
-  {
-    name: 'Aims and Hobbies',
-    key: categories.AIMS_AND_HOBBIES,
-  },
-  {
-    name: 'Health',
-    key: categories.HEALTH,
-  },
-  {
-    name: 'Relationships',
-    key: categories.RELATIONSHIPS,
-  },
-  {
-    name: 'Environment',
-    key: categories.ENVIRONMENT,
-  },
-  {
-    name: 'Spirituality',
-    key: categories.SPIRITUALITY,
-  },
-]
+export const categoriesWithName = rootCategoriesWithName
 
 const stepToCategoryMap: Array<Category> = {
   23: {

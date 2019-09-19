@@ -1,14 +1,19 @@
 // @flow
 import React from 'react'
-import { TouchableOpacity, Text } from 'react-native'
+import { TouchableOpacity, Text, View } from 'react-native'
+import SvgIcon from '2020_components/SvgIcon'
 import styles from '../styles'
 
 type Props = {
   onPress: () => void,
   category: string,
   categoryKey: string,
-  setCategory: (string) => void,
+  setCategory: string => void,
   openGoalList: () => void,
+  iconStyle: any,
+  iconName: string,
+  color: string,
+  goalCount: number,
 }
 
 class CategoryButton extends React.PureComponent<Props> {
@@ -19,10 +24,15 @@ class CategoryButton extends React.PureComponent<Props> {
   }
 
   render() {
-    const { category } = this.props
+    const { category, iconStyle, iconName, color, goalCount } = this.props
     return (
       <TouchableOpacity style={styles.categoryButton} onPress={this._onPress}>
-        <Text style={styles.categoryButtonText}>{category}</Text>
+        <View style={styles.leftBlock}>
+          <SvgIcon name={iconName} {...iconStyle} />
+        </View>
+        <View style={styles.rightBlock}>
+          <Text style={[styles.categoryButtonText, { color }]}>{category} {`(${goalCount})`}</Text>
+        </View>
       </TouchableOpacity>
     )
   }

@@ -2,6 +2,13 @@ import { StyleSheet, Platform } from 'react-native'
 import { iOSUIKit } from 'react-native-typography'
 import { gray50, gray900 } from '2020_constants/colors'
 
+const helperIconSize = 40
+
+export const baseIconStyle = {
+  height: helperIconSize,
+  width: helperIconSize,
+}
+
 export default StyleSheet.create({
   button: {
     alignItems: 'center',
@@ -12,15 +19,15 @@ export default StyleSheet.create({
     borderRadius: 6,
     marginTop: 12,
     ...Platform.select({
-      android: { elevation: 8 },
+      android: { elevation: 2 },
       ios: {
         shadowColor: 'black',
         shadowOffset: {
-          width: 0,
-          height: 8,
+          width: 2,
+          height: 2,
         },
-        shadowOpacity: 0.6,
-        shadowRadius: 6,
+        shadowOpacity: 0.3,
+        shadowRadius: 8,
       },
     }),
   },

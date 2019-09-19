@@ -51,6 +51,7 @@ export default StyleSheet.create({
     borderRadius: 6,
     padding: 8,
     minHeight: 60,
+    justifyContent: 'center',
   },
   phaseText: {
     ...iOSUIKit.caption2EmphasizedObject,
@@ -66,5 +67,10 @@ export default StyleSheet.create({
     ...iOSUIKit.title3EmphasizedObject,
     color: gray900,
     textAlign: 'center',
+  },
+  goalNumber: {
+    ...iOSUIKit.caption2EmphasizedObject,
+    color: white2,
+    fontSize: 11,
   },
 })

@@ -15,29 +15,30 @@ export default StyleSheet.create({
   categoryList: {
     flex: 1,
     alignItems: 'center',
-    paddingHorizontal: 16,
-    paddingVertical: 4,
+    paddingHorizontal: 20,
     justifyContent: 'space-around',
   },
   categoryButton: {
     width: '100%',
     height: 64,
-    padding: 16,
-    borderRadius: 6,
+    padding: 10,
+    borderRadius: 8,
+    maxHeight: 60,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: gray50,
-    marginVertical: 10,
+    marginBottom: 10,
+    flexDirection: 'row',
     ...Platform.select({
-      android: { elevation: 8 },
+      android: { elevation: 2 },
       ios: {
         shadowColor: 'black',
         shadowOffset: {
-          width: 0,
-          height: 8,
+          width: 2,
+          height: 2,
         },
-        shadowOpacity: 0.6,
-        shadowRadius: 6,
+        shadowOpacity: 0.3,
+        shadowRadius: 8,
       },
     }),
   },
@@ -46,9 +47,10 @@ export default StyleSheet.create({
     color: gray900,
   },
   header: {
-    minHeight: 64,
     flexGrow: 0,
     flexDirection: 'row',
+    paddingHorizontal: 16,
+    marginVertical: 10,
   },
   backButtonContainer: {
     justifyContent: 'center',
@@ -62,7 +64,6 @@ export default StyleSheet.create({
   headerContent: {
     flex: 1,
     flexDirection: 'column',
-    padding: 8,
   },
   titleContainer: {
     flex: 1,
@@ -94,5 +95,20 @@ export default StyleSheet.create({
     textAlign: 'center',
     color: SELF_ASSESSMENT,
     marginVertical: 15,
+  },
+  leftBlock: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  rightBlock: {
+    flex: 4,
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+  },
+  goalScreenTitle: {
+    ...iOSUIKit.largeTitleEmphasizedObject,
+    fontSize: 28,
+    textAlign: 'justify',
   },
 })

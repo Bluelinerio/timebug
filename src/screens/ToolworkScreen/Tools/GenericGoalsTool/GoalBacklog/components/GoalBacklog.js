@@ -9,8 +9,8 @@ class GoalBacklog extends React.PureComponent {
   render() {
     return (
       <View style={styles.container}>
-        <Header />
         <TabBar />
+        <Header />
         <GoalBacklogList />
       </View>
     )
