@@ -184,6 +184,14 @@ export const CAREER_DREAM_NOTIFICATION = 'CAREER_DREAM_NOTIFICATION'
 export const CAREER_DREAM_SIDE_EFFECT = 'CAREER_DREAM_SIDE_EFFECT'
 
 /**
+ * Ideal hours (Steps 2/30)
+ */
+
+export const STEP_2_SIDE_EFFECT = 'STEP_2_SIDE_EFFECT'
+
+export const STEP_30_SIDE_EFFECT = 'STEP_30_SIDE_EFFECT'
+
+/**
  * App state
  */
 

@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -132,7 +131,6 @@
 		BFE9266B1D244556BB054A90 /* 2020-diary-step-10.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BD983B2232C4C51B9C4A42A /* 2020-diary-step-10.png */; };
 		C91ABCAED17D42CFB45FABE4 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E06FFD2148A84434A9956FA7 /* SimpleLineIcons.ttf */; };
 		CC7F5DE9904248A38C394344 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA79CAE61CF34861AAFEB7BC /* Foundation.ttf */; };
-		CC8A94A56B4B4FEAB80B0894 /* libRNSentry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C479C2B29EE440B98FBB08A8 /* libRNSentry.a */; };
 		D15C06954183498E8B03CBBE /* Lifevision-Collage@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 464C449773C043B18E4DBDBB /* Lifevision-Collage@3x.png */; };
 		D29004A5F3E1491CB400E90A /* 2020-diary-step-24.png in Resources */ = {isa = PBXBuildFile; fileRef = C96B38CE91394249BCFB2067 /* 2020-diary-step-24.png */; };
 		D3248B9319EC4ABE839876CD /* Metropolis-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CBDD923749584DA3B431DAE6 /* Metropolis-SemiBold.otf */; };
@@ -469,13 +467,6 @@
 			remoteGlobalIDString = B5C32A36220C603B000FFB8D;
 			remoteInfo = "RNGestureHandler-tvOS";
 		};
-		59E5799C22E7521E0081BE02 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = ABAFDCC71E6E4F14978C12F8 /* RNSentry.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 274692C321B4414400BF91A8;
-			remoteInfo = "RNSentry-tvOS";
-		};
 		59E57A2822E755370081BE02 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B4BB7C85D6A548A18CF9FB6B /* RNFirebase.xcodeproj */;
@@ -510,13 +501,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = F886647B1F4ADB500036D01B;
 			remoteInfo = "CodePush-tvOS";
-		};
-		6C5D93282040828400C065B8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = ABAFDCC71E6E4F14978C12F8 /* RNSentry.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = RNSentry;
 		};
 		6C61C0C02015746700FDC618 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -762,7 +746,6 @@
 		A84E5E60C59C48B2BB026465 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		A9362DDB404048D2823D26BC /* Metropolis-ExtraLight.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-ExtraLight.otf"; path = "../src/resources/fonts/Metropolis/Metropolis-ExtraLight.otf"; sourceTree = "<group>"; };
 		AA5FBB54422DC3317B569627 /* Pods-Lifevision-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lifevision-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-Lifevision-tvOS/Pods-Lifevision-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
-		ABAFDCC71E6E4F14978C12F8 /* RNSentry.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNSentry.xcodeproj; path = "../node_modules/react-native-sentry/ios/RNSentry.xcodeproj"; sourceTree = "<group>"; };
 		AEB767E415824F88AB285AE3 /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
 		AED85DACAB2E4ED7A172D2FC /* 2020-diary-step-27.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-27.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-27.png"; sourceTree = "<group>"; };
 		B02A9292ABB84AB29CBAF1B9 /* rubicon-icon-font.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "rubicon-icon-font.ttf"; path = "../node_modules/native-base/Fonts/rubicon-icon-font.ttf"; sourceTree = "<group>"; };
@@ -777,7 +760,6 @@
 		BFE0157236D64023B7AEC378 /* libRNVectorIcons-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNVectorIcons-tvOS.a"; sourceTree = "<group>"; };
 		C09A70AE3A0C45DBAEABF078 /* sandClockConfetti@2x.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "sandClockConfetti@2x.png"; path = "../src/resources/images/sandClockConfetti@2x.png"; sourceTree = "<group>"; };
 		C326879D75BB4A608FF9BF08 /* libRNSound.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSound.a; sourceTree = "<group>"; };
-		C479C2B29EE440B98FBB08A8 /* libRNSentry.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSentry.a; sourceTree = "<group>"; };
 		C48E402F23E59891F1B4CC45 /* libPods-LifevisionTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LifevisionTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C96B38CE91394249BCFB2067 /* 2020-diary-step-24.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-24.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-24.png"; sourceTree = "<group>"; };
 		CA79CAE61CF34861AAFEB7BC /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
@@ -852,7 +834,6 @@
 				588FBD6AC5D8471997B72308 /* libRCTFBSDK.a in Frameworks */,
 				471443BBBABA4989A8AC9934 /* libCodePush.a in Frameworks */,
 				1657CF3E64824045B977B0E8 /* libz.tbd in Frameworks */,
-				CC8A94A56B4B4FEAB80B0894 /* libRNSentry.a in Frameworks */,
 				D8E8CAB258734FEBAD0CA23C /* libRNSound.a in Frameworks */,
 				59051F5C22E24AE6000CDCAE /* MoEngage.framework in Frameworks */,
 				54B7DBAC82DA43898AB720DF /* libRNGestureHandler.a in Frameworks */,
@@ -1230,15 +1211,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		6C5D93252040828400C065B8 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				6C5D93292040828400C065B8 /* libRNSentry.a */,
-				59E5799D22E7521E0081BE02 /* libRNSentry-tvOS.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		6C61C0BC2015746700FDC618 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -1398,7 +1370,6 @@
 				6DD9949CE9A24ABBAEAE4BA8 /* RCTFBSDK.xcodeproj */,
 				D9BD99EBE4904734B80D682D /* RNDeviceInfo.xcodeproj */,
 				98905C02CDCF40399425FF6E /* CodePush.xcodeproj */,
-				ABAFDCC71E6E4F14978C12F8 /* RNSentry.xcodeproj */,
 				6232EC316E764FCEAFFE34E3 /* RNSound.xcodeproj */,
 				D542C96B49034D2BB567DA4E /* RNGestureHandler.xcodeproj */,
 				F1048BC6444A4FCEBDF4C6F7 /* RCTVideo.xcodeproj */,
@@ -1456,6 +1427,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		A9A4E4EDA3B14A9D90441038 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			path = Application;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1487,8 +1466,8 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				067994C1F53A4B729D181A46 /* Upload Debug Symbols to Sentry */,
 				7A36D99D048378DE9856CA60 /* [CP] Embed Pods Frameworks */,
+				9958C0BA02B346B78186D198 /* Upload Debug Symbols to Sentry */,
 			);
 			buildRules = (
 			);
@@ -1708,10 +1687,6 @@
 				{
 					ProductGroup = 6C8EECDE208105E800F12E19 /* Products */;
 					ProjectRef = D542C96B49034D2BB567DA4E /* RNGestureHandler.xcodeproj */;
-				},
-				{
-					ProductGroup = 6C5D93252040828400C065B8 /* Products */;
-					ProjectRef = ABAFDCC71E6E4F14978C12F8 /* RNSentry.xcodeproj */;
 				},
 				{
 					ProductGroup = 6CE5ECD92044727100490034 /* Products */;
@@ -2087,13 +2062,6 @@
 			remoteRef = 6C5CA10B201EF933007A4AC5 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		6C5D93292040828400C065B8 /* libRNSentry.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNSentry.a;
-			remoteRef = 6C5D93282040828400C065B8 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		6C61C0C12015746700FDC618 /* libRNSVG.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -2334,20 +2302,6 @@
 			shellPath = /bin/sh;
 			shellScript = "export SENTRY_PROPERTIES=sentry.properties\nexport NODE_BINARY=node\n../node_modules/@sentry/cli/bin/sentry-cli react-native xcode ../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		067994C1F53A4B729D181A46 /* Upload Debug Symbols to Sentry */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Upload Debug Symbols to Sentry";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "export SENTRY_PROPERTIES=sentry.properties\n../node_modules/@sentry/cli/bin/sentry-cli upload-dsym";
-		};
 		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2467,6 +2421,20 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		9958C0BA02B346B78186D198 /* Upload Debug Symbols to Sentry */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			name = "Upload Debug Symbols to Sentry";
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			shellPath = /bin/sh;
+			shellScript = "export SENTRY_PROPERTIES=sentry.properties\n../node_modules/@sentry/cli/bin/sentry-cli upload-dsym";
 		};
 /* End PBXShellScriptBuildPhase section */
 

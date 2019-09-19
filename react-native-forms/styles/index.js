@@ -429,8 +429,8 @@ const formStyles = StyleSheet.create({
     padding: 8,
   },
   sliderSetTotal: {
-    height: 30,
-    width: 30,
+    minHeight: 30,
+    minWidth: 30,
     borderRadius: 6,
     backgroundColor: gray400,
     alignItems: 'center',

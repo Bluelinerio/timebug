@@ -12,6 +12,8 @@ target 'Lifevision' do
 
 
   
+  pod 'RNSentry', :path => '../node_modules/@sentry/react-native'
+
   target 'LifevisionTests' do
     inherit! :search_paths
     # Pods for testing

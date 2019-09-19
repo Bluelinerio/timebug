@@ -16,24 +16,25 @@ import {
   FB_LOGIN_DIALOG_RESPONDED,
   LOGOUT,
   REFRESH_USER,
-}                                     from '../actionTypes'
-import * as actions                   from '../actions'
-import { initialNotifications }       from '../actions/checkin.actions'
+} from '../actionTypes'
+import * as actions from '../actions'
+import { initialNotifications } from '../actions/checkin.actions'
 import { GET_USER, AUTHENTICATE_FB, refreshUser } from '../actions/user.actions'
 import {
   goToV2WorkbookScreen,
   goToWorkbookSkippingStepScreen,
-}                                     from '../actions/nav.actions'
+} from '../actions/nav.actions'
 import {
   authenticateWithFBToken,
   fetchUserWithId,
   isClientEndpoint,
   resetStore,
-}                                     from '../../services/apollo'
-import facebook                       from '../../services/facebook'
-import AuthStorage                    from '../../services/authStorage'
-import NavigationService              from '2020_services/navigation'
-import tron                           from 'reactotron-react-native'
+} from '../../services/apollo'
+import facebook from '../../services/facebook'
+import AuthStorage from '../../services/authStorage'
+import NavigationService from '2020_services/navigation'
+import SentryService from '2020_services/sentry'
+import tron from 'reactotron-react-native'
 
 function* wipeTokens() {
   yield all([call(AuthStorage.wipeStorage), call(facebook.logOut)])
@@ -60,8 +61,12 @@ function* _fetchUserWithId(userId) {
     () => fetchUserWithId(userId),
     { userId }
   )
+
   if (user.error) tron.log('There was an error with user authentication')
-  else yield put(initialNotifications())
+  else {
+    yield call(SentryService.setUser, user.id, user.email)
+    yield put(initialNotifications())
+  }
   // if GET_USER.ERRORED it will be handled by _handleUserError
 }
 
@@ -85,7 +90,7 @@ function* refreshUserSaga() {
     ])
     if (result.type === AUTHENTICATE_FB.SUCCEEDED) {
       const { token, user: { id }, endpoint } = result.payload
-      // FIXME: this call still doesn't work:
+
       yield call(AuthStorage.setTokenAndUserId, {
         token,
         userId: id,

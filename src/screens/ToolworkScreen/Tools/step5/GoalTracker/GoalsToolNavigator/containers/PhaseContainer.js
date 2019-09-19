@@ -1,5 +1,6 @@
 // @flow
 import React, { useCallback, useMemo } from 'react'
+import { Alert } from 'react-native'
 import { withNavigation } from 'react-navigation'
 import { getStyleForPhase } from '../utils/styleForPhase'
 import { MEDITATION, SELF_ASSESSMENT, VISION_CREATION } from '2020_services/cms'
@@ -68,7 +69,12 @@ const PhaseContainer = (props: Props) => {
 
   const onPress = useCallback(
     () => {
-      if (!isSelected) navigation.setParams({ tool, phase })
+      if (!tool)
+        Alert.alert(
+          'Locked',
+          'You have not fulfilled the requirements to use this feature'
+        )
+      if (tool && !isSelected) navigation.setParams({ tool, phase })
     },
     [phase, isSelected]
   )

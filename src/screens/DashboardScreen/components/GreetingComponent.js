@@ -24,17 +24,18 @@ class GreetingComponent extends React.PureComponent<Props> {
             </Text>
           </View>
         </View>
-        {stepTitle &&
-          text && (
-            <View>
-              <Text style={styles.recommendation}>
-                {text}
+        {text && (
+          <View>
+            <Text style={styles.recommendation}>
+              {text}
+              {stepTitle && (
                 <Text style={styles.recommendationEmphasized} onPress={onPress}>
                   {stepTitle}
                 </Text>
-              </Text>
-            </View>
-          )}
+              )}
+            </Text>
+          </View>
+        )}
       </View>
     )
   }

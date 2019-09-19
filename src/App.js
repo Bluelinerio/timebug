@@ -19,6 +19,7 @@ import AppNavigation from './containers/AppNavigationWithModal'
 import { APP_NAME } from './constants'
 import DefaultIndicator from './components/DefaultIndicator'
 import Error from './components/Error'
+import * as Sentry from '@sentry/react-native'
 
 if (__DEV__) {
   //Show network requests such as fetch, WebSocket etc. in chrome dev tools:
@@ -36,7 +37,9 @@ export default class App extends React.Component<{}, State> {
   state: State = {
     error: null,
   }
+
   async componentDidCatch(error: any) {
+    Sentry.captureException(error)
     if (this.state.error && error === this.state.error) {
       store.dispatch(resetStore)
       persistor.purge()
@@ -45,6 +48,7 @@ export default class App extends React.Component<{}, State> {
       error,
     })
   }
+
   render() {
     const { error } = this.state
     if (error) {

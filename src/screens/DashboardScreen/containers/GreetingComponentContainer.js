@@ -7,6 +7,7 @@ import selectors                                from '2020_redux/selectors'
 import GreetingComponent                        from '../components/GreetingComponent'
 import { goToV2WorkbookScreen }                 from '2020_redux/actions/nav.actions'
 import { translateCMSPhaseToStandard }          from '2020_services/cms'
+import mapNavigationDispatch                    from '2020_HOC/NavigationServiceHOC'
 import type { Step }                            from '2020_services/cms'
 import type { Props as GreetingComponentProps } from '../components/GreetingComponent'
 
@@ -68,14 +69,18 @@ const merge = (props: Props): GreetingComponentProps => {
     step => completedStepIds.indexOf(step.number) === -1
   )
   const name = firstName(user)
-  const onPress = () => onLink(missingStep)
+  const onPress = missingStep ? () => onLink(missingStep) : () => null
   const mostRecentStep = mostRecent ? mostRecent.stepId : null
-  const text = mostRecentStep
-    ? `You last completed step #${mostRecentStep}. For your next step we suggest: `
+  let text = mostRecentStep
+    ? `You last completed step #${mostRecentStep}.${
+        missingStep
+          ? ' For your next step we suggest: '
+          : ' You have completed your journey!'
+      }`
     : `Welcome to the 2020 lifevision journey. For your first step we suggest: `
   return {
     name,
-    stepTitle: missingStep.title,
+    stepTitle: missingStep ? missingStep.title : null,
     onPress,
     greeting,
     text,
@@ -83,6 +88,7 @@ const merge = (props: Props): GreetingComponentProps => {
 }
 
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
+  connect(mapStateToProps),
+  mapNavigationDispatch(mapDispatchToProps),
   mapProps(merge)
 )(GreetingComponent)

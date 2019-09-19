@@ -22,6 +22,7 @@ type Props = {
   navigation: any,
   onFinish: () => any,
   baseValues?: any,
+  extra?: any,
 }
 
 type State = {
@@ -79,6 +80,7 @@ class WorkbookForm extends React.PureComponent<Props, State> {
       backgroundColor,
       editionId,
       baseValues,
+      extra,
     } = this.props
     const { formFinished } = this.state
     return model ? (
@@ -99,6 +101,7 @@ class WorkbookForm extends React.PureComponent<Props, State> {
             editionId={editionId}
             baseValues={baseValues ? baseValues : undefined}
             extra={{
+              ...extra,
               step,
             }}
           />
