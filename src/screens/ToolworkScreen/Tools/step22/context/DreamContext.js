@@ -68,16 +68,13 @@ const DreamProvider = (props: Props) => {
       const dream = dreams.find(dream => dream.id === id)
 
       const newDreams = [
-        dreams.filter(dream => dream.id !== id),
+        ...dreams.filter(dream => dream.id !== id),
         { ...dream, bookmark: !dream.bookmark },
       ]
 
       const storableData = {
-        ...data,
-        value: {
-          ...value,
-          dreams: newDreams,
-        },
+        ...value,
+        dreams: newDreams,
       }
 
       storeData(storableData)

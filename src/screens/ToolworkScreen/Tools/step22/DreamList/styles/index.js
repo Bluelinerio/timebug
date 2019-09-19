@@ -1,0 +1,80 @@
+import { StyleSheet, Platform } from 'react-native'
+import { iOSUIKit } from 'react-native-typography'
+import { white2, PHASE_3_COMPLETE } from '2020_constants/colors'
+
+export const color = white2
+export const size = 25
+
+export default StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  padded: {
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+  },
+  dreamToggle: {
+    width: '100%',
+    flexDirection: 'row',
+    minHeight: 64,
+    borderRadius: 6,
+    padding: 4,
+    backgroundColor: PHASE_3_COMPLETE,
+    ...Platform.select({
+      android: { elevation: 8 },
+      ios: {
+        shadowColor: 'black',
+        shadowOffset: {
+          width: 0,
+          height: 8,
+        },
+        shadowOpacity: 0.6,
+        shadowRadius: 6,
+      },
+    }),
+  },
+  dreamDate: {
+    ...iOSUIKit.caption2Object,
+    fontFamily: 'Metropolis',
+    color: white2,
+  },
+  dreamMainContent: {
+    flex: 1,
+    marginTop: 5,
+  },
+  dreamChoppedText: {
+    ...iOSUIKit.bodyEmphasizedObject,
+    fontFamily: 'Metropolis',
+    color: white2,
+  },
+  dream: {
+    marginVertical: 10,
+  },
+  hiddenView: {
+    backgroundColor: white2,
+    padding: 12,
+    marginHorizontal: 8,
+    borderRadius: 6,
+    marginTop: -5,
+    ...Platform.select({
+      android: { elevation: 4 },
+      ios: {
+        shadowColor: 'black',
+        shadowOffset: {
+          width: 0,
+          height: 4,
+        },
+        shadowOpacity: 0.6,
+        shadowRadius: 6,
+      },
+    }),
+  },
+  leftBlock: {
+    flex: 4,
+  },
+  rightBlock: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+})

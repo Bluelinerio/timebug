@@ -1,11 +1,23 @@
+// @flow
 import React from 'react'
-import { ScrollView, Text } from 'react-native'
+import { View } from 'react-native'
+import { Dream } from '../../context/DreamContext'
+import DreamComponent from '../containers/DreamContainer'
+import styles from '../styles'
 
-const DreamList = () => {
+type Props = {
+  dreams: Array<Dream>,
+}
+
+const DreamList = (props: Props) => {
+  const { dreams } = props
   return (
-    <ScrollView>
-      <Text>DreamList</Text>
-    </ScrollView>
+    <View style={[styles.container, styles.padded]}>
+      {dreams &&
+        dreams.map(dream => {
+          return <DreamComponent dream={dream} key={dream.id} />
+        })}
+    </View>
   )
 }
 
