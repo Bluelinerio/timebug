@@ -47,6 +47,11 @@ const DreamComponent = (props: Props) => {
       {visible && (
         <View style={styles.hiddenView}>
           <Text style={styles.hiddenText}>{text}</Text>
+          <View style={styles.editButtonContainer}>
+            <TouchableOpacity style={styles.editButton}>
+              <Text style={styles.editButtonText}>Edit</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       )}
     </View>

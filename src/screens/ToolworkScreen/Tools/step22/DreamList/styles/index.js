@@ -69,6 +69,11 @@ export default StyleSheet.create({
       },
     }),
   },
+  hiddenText: {
+    ...iOSUIKit.bodyObject,
+    fontSize: 15,
+    fontFamily: 'Metropolis',
+  },
   leftBlock: {
     flex: 4,
   },
@@ -76,5 +81,39 @@ export default StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  editButtonContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+  },
+  editButton: {
+    width: '35%',
+    flexDirection: 'row',
+    minHeight: 32,
+    borderRadius: 6,
+    padding: 4,
+    marginTop: 4,
+    backgroundColor: PHASE_3_COMPLETE,
+    alignItems: 'center',
+    justifyContent: 'center',
+    ...Platform.select({
+      android: { elevation: 1 },
+      ios: {
+        shadowColor: 'black',
+        shadowOffset: {
+          width: 0,
+          height: 1,
+        },
+        shadowOpacity: 0.6,
+        shadowRadius: 2,
+      },
+    }),
+  },
+  editButtonText: {
+    ...iOSUIKit.bodyEmphasizedObject,
+    fontSize: 15,
+    fontFamily: 'Metropolis',
+    color: white2,
   },
 })
