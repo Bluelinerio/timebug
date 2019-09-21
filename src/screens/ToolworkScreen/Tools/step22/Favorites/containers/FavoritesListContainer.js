@@ -9,7 +9,7 @@ const FavoritesListContainer = () => {
     () =>
       dreams
         .filter(dream => dream.bookmark === true)
-        .sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp)),
+        .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp)),
     [dreams]
   )
 

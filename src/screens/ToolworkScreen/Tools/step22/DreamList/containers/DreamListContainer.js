@@ -6,7 +6,7 @@ const DreamListContainer = () => {
   const { dreams } = useContext(DreamContext)
 
   const sorted = useMemo(
-    () => dreams.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp)),
+    () => dreams.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp)),
     [dreams]
   )
 
