@@ -20,6 +20,10 @@ export type CheckinElement = {
   message: string,
   action: any,
   id: string,
+  notificationSchedule: {
+    default?: string, // Military hour HH:MM saying when to display the notification,
+    enabled?: boolean // Switch to enable hour level scheduling of notifications
+  },
   revisionId: number,
 }
 

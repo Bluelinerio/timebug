@@ -23,6 +23,7 @@ export type CheckinChangePayload = {
   message: string,
   toolKey: string,
   revisionId: number,
+  notificationSchedule: any,
   action: any,
 }
 
@@ -56,6 +57,7 @@ export type EditCheckinPayload = {
   notification?: Notification,
   number: number,
 }
+
 export type NotificationUpdateOrCreatePayload = CheckinChangePayload
 
 export const changeCheckin = (payload: CheckinChangePayload) => ({
