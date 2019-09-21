@@ -9,10 +9,11 @@ type Props = {
   text: string,
   date: string,
   bookmark: boolean,
+  onEdit: () => void,
 }
 
 const DreamComponent = (props: Props) => {
-  const { date, text, bookmark, onBookmark } = props
+  const { date, text, bookmark, onBookmark, onEdit } = props
   const chopped = text.length > 40 ? `${text.substr(0, 40)}...` : text
   const [visible, setVisibility] = useState(false)
 
@@ -48,7 +49,7 @@ const DreamComponent = (props: Props) => {
         <View style={styles.hiddenView}>
           <Text style={styles.hiddenText}>{text}</Text>
           <View style={styles.editButtonContainer}>
-            <TouchableOpacity style={styles.editButton}>
+            <TouchableOpacity style={styles.editButton} onPress={onEdit}>
               <Text style={styles.editButtonText}>Edit</Text>
             </TouchableOpacity>
           </View>

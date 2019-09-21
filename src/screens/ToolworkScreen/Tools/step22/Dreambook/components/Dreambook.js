@@ -8,12 +8,13 @@ import styles from '../styles'
 type Props = {
   text?: string,
   onPress: () => void,
+  buttonText?: string,
 }
 
 const Dreambook = (props: Props) => {
-  const { onPress } = props
+  const { onPress, text: parentText, buttonText } = props
 
-  const [text, setText] = useState(props.text ? props.text : '')
+  const [text, setText] = useState(parentText ? parentText : '')
 
   const date = useMemo(() => moment().format(DATE_FORMAT), [])
 
@@ -43,7 +44,7 @@ const Dreambook = (props: Props) => {
       </View>
       <View style={styles.saveButtonContainer}>
         <TouchableOpacity style={styles.saveButton} onPress={onSave}>
-          <Text style={styles.saveButtonText}>Save new dream</Text>
+          <Text style={styles.saveButtonText}>{buttonText}</Text>
         </TouchableOpacity>
       </View>
     </View>

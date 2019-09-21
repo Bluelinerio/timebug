@@ -1,5 +1,5 @@
 // @flow
-import React, { useContext, useCallback, useMemo } from 'react'
+import React, { useState, useContext, useCallback, useMemo } from 'react'
 import uuid from 'uuid/v4'
 import moment from 'moment'
 import { ToolDataContext } from './ToolDataContext'
@@ -21,18 +21,26 @@ type ProvidedProps = {
   dreams: Array<Dream>,
   storeDream: (text: string) => void,
   changeBookmark: (id: string) => void,
+  editDream: (text: string) => void,
+  setEditId: (id: string) => void,
+  editId: string | null,
 }
 
 const initialState: ProvidedProps = {
   dreams: null,
   storeDream: () => null,
   changeBookmark: () => null,
+  editDream: () => null,
+  setEditId: () => null,
+  editId: null,
 }
 
 const DreamContext = React.createContext(initialState)
 
 const DreamProvider = (props: Props) => {
   const { data, storeData } = useContext(ToolDataContext)
+  const [editId, setEditId] = useState(null)
+
   const value = data ? data.value : null
 
   const dreams = useMemo(
@@ -40,6 +48,26 @@ const DreamProvider = (props: Props) => {
       return value ? value.dreams : []
     },
     [value]
+  )
+
+  const editDream = useCallback(
+    (text: string) => {
+      const dream = dreams.find(dream => dream.id === editId)
+
+      const newDreams = [
+        ...dreams.filter(dream => dream.id !== editId),
+        { ...dream, text },
+      ]
+
+      const storableData = {
+        ...value,
+        dreams: newDreams,
+      }
+
+      setEditId(null)
+      storeData(storableData)
+    },
+    [editId, storeData, value, dreams]
   )
 
   const storeDream = useCallback(
@@ -84,7 +112,15 @@ const DreamProvider = (props: Props) => {
 
   return (
     <DreamContext.Provider
-      value={{ ...this.state, dreams, storeDream, changeBookmark }}
+      value={{
+        ...this.state,
+        dreams,
+        storeDream,
+        changeBookmark,
+        editDream,
+        setEditId,
+        editId,
+      }}
     >
       {props.children}
     </DreamContext.Provider>
