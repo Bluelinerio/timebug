@@ -4,6 +4,7 @@ import { ScreenContext, screens } from '../../context/ScreenContext'
 import Dreambook from '../../Dreambook'
 import DreamList from '../../DreamList'
 import Favorites from '../../Favorites'
+import Settings from '../../Settings'
 
 const SwitchScreen = ({ screen }: { screen: string }) => {
   switch (screen) {
@@ -13,6 +14,8 @@ const SwitchScreen = ({ screen }: { screen: string }) => {
       return <DreamList />
     case screens.DREAM_BOOKMARKS:
       return <Favorites />
+    case screens.DREAM_SETTINGS:
+      return <Settings />
     default:
       return null
   }

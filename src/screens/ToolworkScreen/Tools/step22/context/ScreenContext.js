@@ -10,11 +10,12 @@ export const screens = {
   DREAMBOOK: 'DREAMBOOK',
   DREAM_LIST: 'DREAM_LIST',
   DREAM_BOOKMARKS: 'DREAM_BOOKMARKS',
+  DREAM_SETTINGS: 'DREAM_SETTINGS',
 }
 
 export const screenListWithNames: Array<Screen> = [
   {
-    title: 'Dream Record',
+    title: 'Dream Book',
     key: screens.DREAMBOOK,
   },
   {
@@ -24,6 +25,10 @@ export const screenListWithNames: Array<Screen> = [
   {
     title: 'Favorites',
     key: screens.DREAM_BOOKMARKS,
+  },
+  {
+    title: 'Settings',
+    key: screens.DREAM_SETTINGS,
   },
 ]
 
@@ -37,6 +42,7 @@ type ProvidedProps = {
   openDreambook: () => void,
   openDreamBookmarks: () => void,
   openDreamList: () => void,
+  openSettings: () => void,
   children: React.ReactChildren,
 }
 
@@ -46,6 +52,7 @@ const initialState: ProvidedProps = {
   openDreambook: () => null,
   openDreamBookmarks: () => null,
   openDreamList: () => null,
+  openSettings: () => null,
 }
 
 const ScreenContext = React.createContext(initialState)
@@ -71,6 +78,12 @@ class ScreenProvider extends React.PureComponent<Props> {
     })
   }
 
+  openSettings = () => {
+    this.setState({
+      screen: screens.DREAM_SETTINGS,
+    })
+  }
+
   render() {
     return (
       <ScreenContext.Provider
@@ -79,6 +92,7 @@ class ScreenProvider extends React.PureComponent<Props> {
           openDreambook: this.openDreambook,
           openDreamBookmarks: this.openDreamBookmarks,
           openDreamList: this.openDreamList,
+          openSettings: this.openSettings,
         }}
       >
         {this.props.children}

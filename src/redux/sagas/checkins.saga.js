@@ -82,7 +82,11 @@ function* setUpNotificationAndUpdateCheckin({
   const [notificationTime, repeatTime] = yield call(
     calculateNextCheckin,
     frequency,
-    hourlyNotificationEnabled ? notificationSchedule.default : null
+    hourlyNotificationEnabled
+      ? notificationSchedule.value
+        ? notificationSchedule.value
+        : notificationSchedule.default
+      : null
   )
   const id = `${toHashCode(toolKey)}`
   const additionalProps = {
@@ -114,6 +118,7 @@ function* setUpNotificationAndUpdateCheckin({
         message,
         toolKey,
         action,
+        notificationSchedule,
         ...rest,
       },
     })

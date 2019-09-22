@@ -13,6 +13,7 @@ const TabBarContainer = () => {
     openDreambook,
     openDreamList,
     openDreamBookmarks,
+    openSettings,
   } = useContext(ScreenContext)
 
   const selectScreen = useCallback(
@@ -27,6 +28,9 @@ const TabBarContainer = () => {
           break
         case screens.DREAM_BOOKMARKS:
           openDreamBookmarks()
+          break
+        case screens.DREAM_SETTINGS:
+          openSettings()
           break
       }
     },

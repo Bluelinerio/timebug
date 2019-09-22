@@ -23,10 +23,12 @@ export default StyleSheet.create({
   },
   tabText: {
     ...iOSUIKit.bodyEmphasizedObject,
+    fontSize: 15,
     color: gray400,
   },
   selectedTabText: {
     ...iOSUIKit.bodyEmphasizedObject,
+    fontSize: 15,
     color: PHASE_3_COMPLETE,
   },
 })
