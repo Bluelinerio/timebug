@@ -37,10 +37,13 @@ const SettingsContainer = () => {
   const updateCheckin = useCallback(
     (hourValue: string) => {
       if (!checkin) return
+      const currentData = checkin.notificationSchedule
+        ? checkin.notificationSchedule
+        : {}
       const params = {
         ...checkin,
         notificationSchedule: {
-          ...(checkin.notificationSchedule || {}),
+          ...currentData,
           value: hourValue,
         },
         step: stepEnum.STEP_22,
@@ -60,6 +63,7 @@ const SettingsContainer = () => {
           : null
         return [!!checkin.id, h]
       }
+      return [false, null]
     },
     [checkin]
   )

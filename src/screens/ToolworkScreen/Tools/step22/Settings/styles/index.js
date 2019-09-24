@@ -1,6 +1,11 @@
 import { StyleSheet, Platform } from 'react-native'
 import { iOSUIKit } from 'react-native-typography'
-import { gray50, gray400, PHASE_3_COMPLETE } from '2020_constants/colors'
+import {
+  gray50,
+  gray400,
+  gray900,
+  PHASE_3_COMPLETE,
+} from '2020_constants/colors'
 
 export default StyleSheet.create({
   container: {
@@ -8,11 +13,18 @@ export default StyleSheet.create({
   },
   setting: {
     flexDirection: 'row',
+    marginVertical: 16,
+  },
+  settingsTitle: {
+    ...iOSUIKit.title3EmphasizedObject,
+    color: PHASE_3_COMPLETE,
+  },
+  settingsContainer: {
+    paddingHorizontal: 16,
+    paddingVertical: 8,
   },
   dreamNotificationTooltip: {
     flex: 3,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   dreamNotificationSwitch: {
     flex: 1,
@@ -59,11 +71,28 @@ export default StyleSheet.create({
   buttonText: {
     ...iOSUIKit.bodyEmphasizedObject,
     color: gray50,
-    fontSize: 'Metropolis',
+    fontFamily: 'Metropolis',
   },
   disabledButtonText: {
     ...iOSUIKit.bodyEmphasizedObject,
     color: gray50,
-    fontSize: 'Metropolis',
+    fontFamily: 'Metropolis',
+  },
+  textContainer: {},
+  pickerStyle: {
+    width: 120,
+    height: 60,
+  },
+  iosSelectorText: {
+    textAlign: 'left',
+  },
+  pickerItemStyle: {
+    color: gray900,
+    fontFamily: 'Metropolis',
+    fontWeight: '500',
+    fontSize: 12,
+    height: 100,
+    width: 200,
+    backgroundColor: gray50,
   },
 })

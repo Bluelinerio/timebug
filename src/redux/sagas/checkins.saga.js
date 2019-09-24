@@ -49,6 +49,7 @@ import { timeoutNoError as timeout } from '../utils/sagaHelpers'
 import { notificationTypes } from '2020_services/notifications'
 import { toHashCode } from '2020_utils/hashing'
 import R from 'ramda'
+import tron from 'reactotron-react-native'
 
 type StepWithUpdate = {
   __action__: string,
@@ -97,6 +98,7 @@ function* setUpNotificationAndUpdateCheckin({
       toolKey,
       action,
       frequency,
+      notificationSchedule,
     },
   }
   yield put(
@@ -190,7 +192,22 @@ function* toggleNotification({ payload }: ToggleCheckinPayload) {
 
 function* _handleCheckinEdition({ payload }: { payload: EditCheckinPayload }) {
   const { checkin, number, notification } = payload
-  const { toolKey, message, action, frequency, ...rest } = checkin
+  const {
+    toolKey,
+    message,
+    action,
+    frequency,
+    notificationSchedule,
+    ...rest
+  } = checkin
+
+  tron.log(notificationSchedule)
+
+  const hourlyNotificationEnabled = notificationSchedule
+    ? notificationSchedule.enabled
+    : false
+  tron.log(hourlyNotificationEnabled)
+
   let notificationTime = notification ? notification.scheduledDate : null
   const id = `${toHashCode(toolKey)}`
 
@@ -201,15 +218,43 @@ function* _handleCheckinEdition({ payload }: { payload: EditCheckinPayload }) {
       )
     : null
 
+  const oldNotificationSchedule =
+    notification && hourlyNotificationEnabled
+      ? R.view(
+          R.lensPath([
+            'data',
+            'additionalProps',
+            'data',
+            'notificationSchedule',
+          ]),
+          notification
+        )
+      : {}
+
+  tron.log(oldNotificationSchedule)
+
   const oldRepeatTime = notification
     ? R.view(R.lensPath(['data', 'repeatTime']), notification)
     : null
 
   let repeatTime = oldRepeatTime
 
-  if (!notification || frequency !== oldFrequency) {
+  if (
+    (hourlyNotificationEnabled &&
+      oldNotificationSchedule.value !== notificationSchedule.value) ||
+    (!notification || frequency !== oldFrequency)
+  ) {
     /* eslint-disable-next-line no-unused-vars */
-    const [time, newRepeatTime] = yield call(calculateNextCheckin, frequency)
+    const [time, newRepeatTime] = yield call(
+      calculateNextCheckin,
+      frequency,
+      hourlyNotificationEnabled
+        ? notificationSchedule.value
+          ? notificationSchedule.value
+          : notificationSchedule.default
+        : null
+    )
+
     repeatTime = newRepeatTime
     notificationTime = time
   }
@@ -221,6 +266,7 @@ function* _handleCheckinEdition({ payload }: { payload: EditCheckinPayload }) {
       toolKey,
       action,
       frequency,
+      notificationSchedule,
     },
   }
 
@@ -246,6 +292,7 @@ function* _handleCheckinEdition({ payload }: { payload: EditCheckinPayload }) {
         message,
         toolKey,
         action,
+        notificationSchedule,
         ...rest,
       },
     })
@@ -405,12 +452,27 @@ function* watchForCheckinsUpdateOrCreate() {
 export function* _handleCheckinNotification({
   payload,
 }: CheckinNotificationPayload) {
-  const { step, toolKey, action, frequency } = payload
+  const { step, toolKey, action, frequency, notificationSchedule } = payload
   const lastCheckin = moment()
-  const [nextCheckin] = yield call(calculateNextCheckin, frequency)
+
+  const hourlyNotificationEnabled = notificationSchedule
+    ? notificationSchedule.enabled
+    : false
+
+  const [nextCheckin] = yield call(
+    calculateNextCheckin,
+    frequency,
+    hourlyNotificationEnabled
+      ? notificationSchedule.value
+        ? notificationSchedule.value
+        : notificationSchedule.default
+      : null
+  )
+
   yield put(
     updateCheckin({ step, checkin: { lastCheckin, nextCheckin, toolKey } })
   )
+
   yield delay(1)
   if (action && action.type === 'link')
     yield put(linkNavigation({ link: action.payload.link }))

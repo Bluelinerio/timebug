@@ -76,7 +76,13 @@ const hours = Array(24)
 const Settings = (props: Props) => {
   const { enabled, toggleNotification, updateCheckin, value } = props
   const [hour, selectHour] = useState(value)
-  const [switchValue, setSwitchValue] = useState(enabled)
+
+  const onChangeSelector = useCallback(
+    (value: string) => {
+      selectHour(value)
+    },
+    [hour, selectHour]
+  )
 
   const update = useCallback(
     () => {
@@ -86,36 +92,46 @@ const Settings = (props: Props) => {
   )
 
   const onSwitchChange = useCallback(
-    (value: boolean) => {
+    () => {
       toggleNotification()
-      setSwitchValue(value)
     },
-    [switchValue, setSwitchValue]
+    [enabled]
   )
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, styles.settingsContainer]}>
+      <Text style={styles.settingsTitle}>Tool settings</Text>
       <View style={styles.setting}>
         <View style={styles.dreamNotificationTooltip}>
           <Text style={styles.settingText}>Enable dream notification</Text>
         </View>
         <View style={styles.dreamNotificationSwitch}>
-          <Switch onValueChange={onSwitchChange} value={switchValue} />
+          <Switch onValueChange={onSwitchChange} value={enabled} />
         </View>
       </View>
       {enabled ? (
-        <View style={[styles.setting]}>
-          <View style={styles.container}>
-            <Text style={styles.settingText}>
-              At what time would you like to be notified?
-            </Text>
-          </View>
-          <View style={styles.pickerContainer}>
-            {Platform.OS === 'ios' ? (
-              <IOSPicker value={hour} items={hours} onChange={selectHour} />
-            ) : (
-              <AndroidPicker value={hour} items={hours} onChange={selectHour} />
-            )}
+        <View style={[styles.setting, { flexDirection: 'column' }]}>
+          <View style={[styles.setting, { flexDirection: 'column' }]}>
+            <View style={[styles.container, styles.textContainer]}>
+              <Text style={[styles.settingText]}>
+                At what time would you like to be notified?
+              </Text>
+            </View>
+            <View style={styles.pickerContainer}>
+              {Platform.OS === 'ios' ? (
+                <IOSPicker
+                  value={hour}
+                  items={hours}
+                  onChange={onChangeSelector}
+                />
+              ) : (
+                <AndroidPicker
+                  value={hour}
+                  items={hours}
+                  onChange={onChangeSelector}
+                />
+              )}
+            </View>
           </View>
           <View style={styles.buttonContainer}>
             <TouchableOpacity
