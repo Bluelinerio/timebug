@@ -49,7 +49,6 @@ import { timeoutNoError as timeout } from '../utils/sagaHelpers'
 import { notificationTypes } from '2020_services/notifications'
 import { toHashCode } from '2020_utils/hashing'
 import R from 'ramda'
-import tron from 'reactotron-react-native'
 
 type StepWithUpdate = {
   __action__: string,
@@ -114,6 +113,7 @@ function* setUpNotificationAndUpdateCheckin({
     updateCheckin({
       step,
       checkin: {
+        ...rest,
         frequency,
         nextCheckin: notificationTime,
         id,
@@ -121,7 +121,6 @@ function* setUpNotificationAndUpdateCheckin({
         toolKey,
         action,
         notificationSchedule,
-        ...rest,
       },
     })
   )
@@ -201,12 +200,10 @@ function* _handleCheckinEdition({ payload }: { payload: EditCheckinPayload }) {
     ...rest
   } = checkin
 
-  tron.log(notificationSchedule)
 
   const hourlyNotificationEnabled = notificationSchedule
     ? notificationSchedule.enabled
     : false
-  tron.log(hourlyNotificationEnabled)
 
   let notificationTime = notification ? notification.scheduledDate : null
   const id = `${toHashCode(toolKey)}`
@@ -230,8 +227,6 @@ function* _handleCheckinEdition({ payload }: { payload: EditCheckinPayload }) {
           notification
         )
       : {}
-
-  tron.log(oldNotificationSchedule)
 
   const oldRepeatTime = notification
     ? R.view(R.lensPath(['data', 'repeatTime']), notification)
