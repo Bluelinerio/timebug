@@ -1,15 +1,16 @@
 // @flow
-import React, { PureComponent }              from 'react'
-import { StatusBar, ScrollView, View, Text } from 'react-native'
-import { SafeAreaView }                      from 'react-navigation'
-import Version                               from '2020_containers/Version'
-import Banner                                from '2020_components/MinifiedBanner'
-import GreetingComponent                     from '../containers/GreetingComponentContainer'
-import InsightComponent                      from '../containers/InsightContainer'
-import CheckinAreaComponent                  from '../containers/CheckinAreaContainer'
-import ProgressAreaComponent                 from './ProgressAreaComponent'
-import SignInButton                          from '../containers/SignInButtonContainer'
-import styles                                from '../styles'
+import React, { PureComponent } from 'react'
+import { StatusBar, ScrollView, View } from 'react-native'
+import Text from '2020_components/Text'
+import { SafeAreaView } from 'react-navigation'
+import Version from '2020_containers/Version'
+import Banner from '2020_components/MinifiedBanner'
+import GreetingComponent from '../containers/GreetingComponentContainer'
+import InsightComponent from '../containers/InsightContainer'
+import CheckinAreaComponent from '../containers/CheckinAreaContainer'
+import ProgressAreaComponent from './ProgressAreaComponent'
+import SignInButton from '../containers/SignInButtonContainer'
+import styles from '../styles'
 
 type Props = {
   isLogged: boolean,
@@ -52,7 +53,8 @@ class StartScreenComponent extends PureComponent<Props> {
                   <GreetingComponent />
                   <View style={styles.notLoggedContainer}>
                     <Text style={styles.greetingSub}>
-                      Please log in with your Facebook account to begin using the app.
+                      Please log in with your Facebook account to begin using
+                      the app.
                     </Text>
                     <SignInButton />
                   </View>
