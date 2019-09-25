@@ -63,11 +63,13 @@ export default StyleSheet.create({
   },
   protoText: {
     ...iOSUIKit.bodyEmphasizedObject,
+    fontFamily: 'Metropolis',
   },
   buttonText: {
     ...iOSUIKit.bodyEmphasizedObject,
     textAlign: 'center',
     color: gray50,
+    fontFamily: 'Metropolis',
   },
   viewContainer: {
     flex: 1,
@@ -104,38 +106,45 @@ export default StyleSheet.create({
     fontSize: 28,
     textAlign: 'justify',
     color: formTextColor,
+    fontFamily: 'Metropolis',
   },
   goalScreenSubtitle: {
     ...iOSUIKit.title3EmphasizedObject,
     textAlign: 'justify',
     color: formTextColor,
+    fontFamily: 'Metropolis',
   },
   goalReviewScreenSubtitle: {
     ...iOSUIKit.title3EmphasizedObject,
     fontSize: 26,
     textAlign: 'justify',
     color: formTextColor,
+    fontFamily: 'Metropolis',
   },
   goalTimeLeft: {
     ...iOSUIKit.subheadEmphasizedObject,
     textAlign: 'center',
     color: formTextColor,
+    fontFamily: 'Metropolis',
   },
   goalScreenTypes: {
     ...iOSUIKit.bodyEmphasizedObject,
     fontSize: 16,
     textAlign: 'justify',
     color: formTextColor,
+    fontFamily: 'Metropolis',
   },
   goalScreenContent: {
     ...iOSUIKit.bodyEmphasizedObject,
     textAlign: 'justify',
     color: formTextColor,
+    fontFamily: 'Metropolis',
   },
   goalScreenSmall: {
     ...iOSUIKit.subheadEmphasizedObject,
     textAlign: 'justify',
     color: formTextColor,
+    fontFamily: 'Metropolis',
   },
   elementContainer: {
     flex: 1,
@@ -177,11 +186,13 @@ export default StyleSheet.create({
     ...iOSUIKit.bodyEmphasizedObject,
     textAlign: 'justify',
     color: formTextColor,
+    fontFamily: 'Metropolis',
   },
   subtextFootnote: {
     ...iOSUIKit.footnoteEmphasizedObject,
     textAlign: 'justify',
     color: formTextColor,
+    fontFamily: 'Metropolis',
   },
   leftIcon: {
     alignItems: 'flex-start',
@@ -222,7 +233,7 @@ export default StyleSheet.create({
   additionalInput: {
     maxWidth: widthPercentage(95, widthPercentage(80)),
     color: gray900,
-    fontFamily: 'Helvetica',
+    fontFamily: 'Metropolis',
     fontSize: 16,
   },
   optionsContainer: {
@@ -283,11 +294,13 @@ export default StyleSheet.create({
   goalArchiveLink: {
     ...iOSUIKit.bodyEmphasizedObject,
     color: azure,
+    fontFamily: 'Metropolis',
   },
   lockedText: {
     ...iOSUIKit.title3EmphasizedObject,
     textAlign: 'center',
     color: gray900,
     padding: 8,
+    fontFamily: 'Metropolis',
   },
 })

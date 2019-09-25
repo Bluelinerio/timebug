@@ -29,6 +29,8 @@ export default StyleSheet.create({
         ...sanFranciscoWeights.bold,
       },
     }),
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   button: {
     flexDirection: 'row',
@@ -49,6 +51,8 @@ export default StyleSheet.create({
         ...sanFranciscoWeights.bold,
       },
     }),
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   subtitle: {
     ...iOSUIKit.caption2Object,
@@ -60,6 +64,7 @@ export default StyleSheet.create({
         ...sanFranciscoWeights.normal,
       },
     }),
+    fontFamily: 'Metropolis',
   },
   strong: {
     ...Platform.select({
@@ -70,6 +75,8 @@ export default StyleSheet.create({
         ...sanFranciscoWeights.semibold,
       },
     }),
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   buttonTextContainer: {
     flex: 2,

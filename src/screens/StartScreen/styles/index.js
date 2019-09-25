@@ -1,9 +1,9 @@
-import { StyleSheet, Platform }       from 'react-native'
+import { StyleSheet, Platform } from 'react-native'
 import {
   sanFranciscoWeights,
   robotoWeights,
   iOSUIKit,
-}                                     from 'react-native-typography'
+} from 'react-native-typography'
 import {
   white2,
   StartScreenButtonsColor,
@@ -15,9 +15,9 @@ import {
   PHASE_1_INCOMPLETE,
   gray400,
   paleBlue,
-}                                     from '../../../constants/colors'
+} from '../../../constants/colors'
 import Viewport, { heightPercentage } from '../../../utils/viewportCalculation'
-import { bannerHeight }               from '../../../styles/components/StartScreenBanner'
+import { bannerHeight } from '../../../styles/components/StartScreenBanner'
 
 const containerColor = StartScreenBackgroundColor
 const buttonColor = StartScreenButtonsColor
@@ -80,12 +80,14 @@ export const phaseProgressStyles = StyleSheet.create({
     color: fontColor,
     fontSize: 11,
     fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   phaseText: {
     ...iOSUIKit.caption2EmphasizedObject,
     color: fontColor,
     fontSize: 11,
     fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   mainArea: {
     flex: 1,
@@ -109,6 +111,8 @@ export const phaseProgressStyles = StyleSheet.create({
         ...sanFranciscoWeights.bold,
       },
     }),
+    fontWeight: '700',
+    fontFamily: 'Metropolis',
   },
 })
 
@@ -162,6 +166,8 @@ export default StyleSheet.create({
         ...sanFranciscoWeights.bold,
       },
     }),
+    fontWeight: '700',
+    fontFamily: 'Metropolis',
   },
   stepTitleText: {
     ...Platform.select({
@@ -175,6 +181,7 @@ export default StyleSheet.create({
     fontSize: 14,
     color: fontColor,
     fontFamily: 'Metropolis',
+    fontWeight: '700',
     textAlign: 'justify',
   },
   buttonText: {
@@ -193,6 +200,7 @@ export default StyleSheet.create({
         ...sanFranciscoWeights.semibold,
       },
     }),
+    fontFamily: 'Metropolis',
   },
   strong: {
     ...Platform.select({
@@ -203,6 +211,7 @@ export default StyleSheet.create({
         ...sanFranciscoWeights.semibold,
       },
     }),
+    fontFamily: 'Metropolis',
   },
   versionContainer: {
     flex: 1,

@@ -81,10 +81,10 @@ export const theme = {
   ...Theme,
   typography: {
     color: '#666666',
-    bold: 'Helvetica-Bold',
-    semibold: 'Helvetica',
-    normal: 'Helvetica-Medium',
-    light: 'Helvetica-Light',
+    bold: 'Metropolis',
+    semibold: 'Metropolis',
+    normal: 'Metropolis',
+    light: 'Metropolis',
     header1: {
       fontSize: 48,
       lineHeight: 58,
@@ -92,22 +92,22 @@ export const theme = {
     },
     header2: {
       fontSize: heightPercentage(4),
-      fontFamily: 'Helvetica-Bold',
+      fontFamily: 'Metropolis',
     },
     header3: {
       fontSize: heightPercentage(2.7),
-      fontFamily: 'HelveticaNeue',
+      fontFamily: 'Metropolis',
       fontWeight: 'bold',
     },
     large: {
       fontSize: 14,
       lineHeight: 21,
-      fontFamily: 'Helvetica',
+      fontFamily: 'Metropolis',
     },
     regular: {
       fontSize: 14,
       lineHeight: 21,
-      fontFamily: 'Helvetica',
+      fontFamily: 'Metropolis',
     },
     small: {
       fontSize: 14,
@@ -117,7 +117,7 @@ export const theme = {
     micro: {
       fontSize: 8,
       lineHeight: 8,
-      fontFamily: 'Helvetica',
+      fontFamily: 'Metropolis',
     },
   },
   spacing: {

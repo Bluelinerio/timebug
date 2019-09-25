@@ -4,7 +4,13 @@ import {
   sanFranciscoWeights,
   robotoWeights,
 } from 'react-native-typography'
-import { azure, paleBlue, white2, gray300, gray500 } from '../../../constants/colors'
+import {
+  azure,
+  paleBlue,
+  white2,
+  gray300,
+  gray500,
+} from '../../../constants/colors'
 
 const fontColor = white2
 export const iconColor = white2
@@ -95,6 +101,7 @@ export default StyleSheet.create({
   },
   headerRowText: {
     ...iOSUIKit.footnoteEmphasizedObject,
+    fontFamily: 'Metropolis',
   },
   element: {
     flex: 1,
@@ -105,6 +112,7 @@ export default StyleSheet.create({
   elementText: {
     ...iOSUIKit.caption2EmphasizedObject,
     textAlign: 'center',
+    fontFamily: 'Metropolis',
   },
   pillar: {
     flex: 2,
@@ -112,6 +120,7 @@ export default StyleSheet.create({
   pillarText: {
     ...iOSUIKit.caption2EmphasizedObject,
     textAlign: 'left',
+    fontFamily: 'Metropolis',
   },
   center: {
     alignItems: 'center',
@@ -194,5 +203,6 @@ export const phaseProgressStyles = StyleSheet.create({
         ...sanFranciscoWeights.bold,
       },
     }),
+    fontFamily: 'Metropolis',
   },
 })

@@ -57,6 +57,7 @@ export default StyleSheet.create({
     ...iOSUIKit.caption2EmphasizedObject,
     color: white2,
     fontSize: 11,
+    fontFamily: 'Metropolis',
   },
   lockedContainer: {
     flex: 1,
@@ -67,5 +68,6 @@ export default StyleSheet.create({
     ...iOSUIKit.title3EmphasizedObject,
     color: gray900,
     textAlign: 'center',
+    fontFamily: 'Metropolis',
   },
 })

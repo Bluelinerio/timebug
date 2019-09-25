@@ -1,10 +1,10 @@
-import { StyleSheet }                  from 'react-native'
+import { StyleSheet } from 'react-native'
 import { paleBlue, darkBlue, gray100 } from '2020_constants/colors'
 import {
   widthPercentage,
   heightPercentage,
-}                                      from '2020_utils/viewportCalculation'
-import { iOSUIKit }                    from 'react-native-typography'
+} from '2020_utils/viewportCalculation'
+import { iOSUIKit } from 'react-native-typography'
 
 const navBarHeight = heightPercentage(10)
 const tabBarHeight = heightPercentage(10)
@@ -37,6 +37,8 @@ export default StyleSheet.create({
     ...iOSUIKit.title3EmphasizedObject,
     color: darkBlue,
     marginLeft: 25,
+    fontWeight: '700',
+    fontFamily: 'Metropolis',
   },
   tabBar: {
     backgroundColor: paleBlue,
@@ -61,9 +63,12 @@ export default StyleSheet.create({
   tabBarText: {
     ...iOSUIKit.bodyObject,
     color: darkBlue,
+    fontFamily: 'Metropolis',
   },
   selected: {
     ...iOSUIKit.bodyEmphasizedObject,
     color: darkBlue,
+    fontWeight: '700',
+    fontFamily: 'Metropolis',
   },
 })

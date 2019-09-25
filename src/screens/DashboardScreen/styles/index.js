@@ -46,6 +46,7 @@ export default StyleSheet.create({
     fontSize: 18,
     color: darkBlue,
     fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   greetingSub: {
     ...iOSUIKit.bodyObject,
@@ -66,6 +67,7 @@ export default StyleSheet.create({
     fontStyle: 'italic',
     textDecorationLine: 'underline',
     fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   insightContainer: {
     marginVertical: 12,
@@ -76,6 +78,7 @@ export default StyleSheet.create({
     color: darkBlue,
     fontStyle: 'italic',
     fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   insightText: {
     ...iOSUIKit.footnoteObject,
@@ -111,6 +114,7 @@ export default StyleSheet.create({
     ...iOSUIKit.subheadEmphasizedObject,
     color: darkBlue,
     fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   checkinText: {
     ...iOSUIKit.subheadObject,
@@ -166,6 +170,7 @@ export default StyleSheet.create({
     textAlign: 'center',
     color: white2,
     fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   notLoggedContainer: {
     flexDirection: 'column',
