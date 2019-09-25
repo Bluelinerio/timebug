@@ -33,6 +33,8 @@ export default StyleSheet.create({
   goal: {
     ...iOSUIKit.bodyEmphasizedObject,
     color: gray900,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   goalBacklogListContainer: {
     paddingHorizontal: 16,
@@ -57,6 +59,8 @@ export default StyleSheet.create({
     ...iOSUIKit.bodyEmphasizedObject,
     fontSize: 15,
     color: gray400,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   leftBlock: {
     flex: 1,

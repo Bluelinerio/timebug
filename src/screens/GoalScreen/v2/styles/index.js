@@ -58,6 +58,7 @@ export default StyleSheet.create({
     color: white2,
     fontSize: 11,
     fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   lockedContainer: {
     flex: 1,
@@ -69,5 +70,6 @@ export default StyleSheet.create({
     color: gray900,
     textAlign: 'center',
     fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
 })

@@ -197,7 +197,7 @@ const formStyles = StyleSheet.create({
   },
   textInputStyle: {
     color: gray900,
-    fontFamily: 'Helvetica',
+    fontFamily: 'Metropolis',
     fontSize: 16,
     width: '100%',
   },
@@ -391,7 +391,7 @@ const formStyles = StyleSheet.create({
   },
   sliderValueInput: {
     color: gray900,
-    fontFamily: 'Helvetica',
+    fontFamily: 'Metropolis',
     fontSize: 16,
     width: '100%',
     minHeight: 32,
@@ -413,15 +413,18 @@ const formStyles = StyleSheet.create({
   sliderSubtitle: {
     ...iOSUIKit.caption2EmphasizedObject,
     fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   componentSubtitle: {
     ...iOSUIKit.caption2EmphasizedObject,
     fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   sliderValue: {
     ...iOSUIKit.caption2EmphasizedObject,
     flex: 1,
     textAlign: 'center',
+    fontWeight: '700',
   },
   sliderSetTotalContainer: {
     alignItems: 'flex-end',
@@ -438,6 +441,7 @@ const formStyles = StyleSheet.create({
   },
   totalValue: {
     ...iOSUIKit.subheadEmphasizedObject,
+    fontFamily: 'Metropolis',
   },
   iosSelectorText: {
     textAlign: 'left',

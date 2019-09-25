@@ -45,6 +45,8 @@ export default StyleSheet.create({
   categoryButtonText: {
     ...iOSUIKit.bodyEmphasizedObject,
     color: gray900,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   header: {
     flexGrow: 0,
@@ -60,6 +62,7 @@ export default StyleSheet.create({
     marginLeft: 6,
     color: gray900,
     fontSize: 16,
+    fontFamily: 'Metropolis',
   },
   headerContent: {
     flex: 1,
@@ -80,10 +83,14 @@ export default StyleSheet.create({
   headerTitle: {
     ...iOSUIKit.title3EmphasizedObject,
     color: gray900,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   headerSubtitle: {
     ...iOSUIKit.subheadEmphasizedObject,
     color: gray900,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   linkContainer: {
     minHeight: 64,
@@ -95,6 +102,8 @@ export default StyleSheet.create({
     textAlign: 'center',
     color: SELF_ASSESSMENT,
     marginVertical: 15,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   leftBlock: {
     flex: 1,
@@ -110,5 +119,7 @@ export default StyleSheet.create({
     ...iOSUIKit.largeTitleEmphasizedObject,
     fontSize: 28,
     textAlign: 'justify',
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
 })

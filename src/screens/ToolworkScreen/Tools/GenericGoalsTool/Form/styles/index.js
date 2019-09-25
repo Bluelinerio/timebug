@@ -13,9 +13,10 @@ export default StyleSheet.create({
   },
   buttonStyles: {
     width: '50%',
-
   },
   buttonTextStyles: {
     ...iOSUIKit.title3EmphasizedObject,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
 })

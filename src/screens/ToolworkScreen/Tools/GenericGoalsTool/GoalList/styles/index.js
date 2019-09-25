@@ -36,6 +36,8 @@ export default StyleSheet.create({
   newGoalText: {
     ...iOSUIKit.bodyEmphasizedObject,
     color: gray900,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   goalContainer: {
     alignItems: 'center',
@@ -63,6 +65,8 @@ export default StyleSheet.create({
   goalText: {
     ...iOSUIKit.bodyEmphasizedObject,
     color: gray900,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   leftBlock: {
     flex: 1,

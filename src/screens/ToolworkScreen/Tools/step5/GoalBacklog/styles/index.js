@@ -1,12 +1,12 @@
 import { StyleSheet, Platform } from 'react-native'
-import { iOSUIKit }             from 'react-native-typography'
+import { iOSUIKit } from 'react-native-typography'
 import {
   darkBlue,
   gray50,
   gray400,
   gray200,
   VISION_CREATION,
-}                               from '2020_constants/colors'
+} from '2020_constants/colors'
 
 export default StyleSheet.create({
   headerArea: {
@@ -37,6 +37,7 @@ export default StyleSheet.create({
   },
   headerBacktext: {
     paddingLeft: 12,
+    fontFamily: 'Metropolis',
   },
   tabBar: {
     flex: 2,
@@ -72,11 +73,15 @@ export default StyleSheet.create({
     ...iOSUIKit.subheadEmphasizedObject,
     textAlign: 'center',
     color: darkBlue,
+    fontWeight: '700',
+    fontFamily: 'Metropolis',
   },
   tabTextUnselected: {
     ...iOSUIKit.subheadEmphasizedObject,
     textAlign: 'center',
     color: gray400,
+    fontWeight: '700',
+    fontFamily: 'Metropolis',
   },
   // Goals details
   titleContainer: {
@@ -119,6 +124,8 @@ export default StyleSheet.create({
   goalOutcomeText: {
     ...iOSUIKit.bodyEmphasizedObject,
     color: darkBlue,
+    fontWeight: '700',
+    fontFamily: 'Metropolis',
     textAlign: 'center',
   },
   goalOutcomeSelectorContainer: {
@@ -133,6 +140,8 @@ export default StyleSheet.create({
   goalOutcomeSelector: {
     ...iOSUIKit.bodyEmphasizedObject,
     textAlign: 'center',
+    fontWeight: '700',
+    fontFamily: 'Metropolis',
   },
   optionButton: {
     backgroundColor: darkBlue,
@@ -143,6 +152,8 @@ export default StyleSheet.create({
     ...iOSUIKit.subheadEmphasizedObject,
     textAlign: 'center',
     color: gray50,
+    fontWeight: '700',
+    fontFamily: 'Metropolis',
   },
   goalScreenTypes: {
     textAlign: 'center',
@@ -157,6 +168,8 @@ export default StyleSheet.create({
   substepTitle: {
     ...iOSUIKit.subheadEmphasizedObject,
     color: darkBlue,
+    fontWeight: '700',
+    fontFamily: 'Metropolis',
   },
   completedSubstep: {
     color: VISION_CREATION,

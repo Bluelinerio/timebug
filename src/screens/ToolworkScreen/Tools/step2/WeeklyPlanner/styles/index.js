@@ -1,6 +1,6 @@
-import { StyleSheet, Platform }              from 'react-native'
-import { iOSUIKit }                          from 'react-native-typography'
-import { deepBlue, gray900, gray50 }         from '2020_constants/colors'
+import { StyleSheet, Platform } from 'react-native'
+import { iOSUIKit } from 'react-native-typography'
+import { deepBlue, gray900, gray50 } from '2020_constants/colors'
 
 export const iconColor = deepBlue
 export const textColor = deepBlue
@@ -98,12 +98,13 @@ export default StyleSheet.create({
     ...iOSUIKit.footnoteObject,
     fontFamily: 'Metropolis',
     textAlign: 'center',
-    fontWeight: '700',
     color: textColor,
   },
   buttonText: {
     ...iOSUIKit.footnoteEmphasizedObject,
     textAlign: 'center',
+    fontWeight: '700',
+    fontFamily: 'Metropolis',
     color: gray50,
   },
   categoryText: {
@@ -180,7 +181,7 @@ export default StyleSheet.create({
   },
   sliderValueInput: {
     color: gray900,
-    fontFamily: 'Helvetica',
+    fontFamily: 'Metropolis',
     fontSize: 12,
     width: '100%',
     minHeight: 32,

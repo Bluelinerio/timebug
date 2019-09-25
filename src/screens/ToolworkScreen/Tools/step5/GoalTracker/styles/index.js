@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
-import { iOSUIKit }   from 'react-native-typography'
-import { azure }      from '2020_constants/colors'
+import { iOSUIKit } from 'react-native-typography'
+import { azure } from '2020_constants/colors'
 
 export default StyleSheet.create({
   goalArchiveLinkContainer: {
@@ -12,5 +12,7 @@ export default StyleSheet.create({
   goalArchiveLink: {
     ...iOSUIKit.bodyEmphasizedObject,
     color: azure,
+    fontWeight: '700',
+    fontFamily: 'Metropolis',
   },
 })

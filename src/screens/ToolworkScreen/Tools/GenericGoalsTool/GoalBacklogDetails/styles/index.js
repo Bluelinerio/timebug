@@ -16,25 +16,35 @@ export default StyleSheet.create({
     ...iOSUIKit.title3EmphasizedObject,
     color: SELF_ASSESSMENT,
     textAlign: 'center',
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   text: {
     ...iOSUIKit.bodyEmphasizedObject,
     color: gray900,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   category: {
     ...iOSUIKit.title3EmphasizedObject,
     fontSize: 18,
     color: SELF_ASSESSMENT,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   detailsStandard: {
     ...iOSUIKit.title3EmphasizedObject,
     fontSize: 18,
     color: SELF_ASSESSMENT,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   completionProgress: {
     ...iOSUIKit.title3EmphasizedObject,
     fontSize: 20,
     color: SELF_ASSESSMENT,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   goalText: {
     color: gray900,
@@ -60,6 +70,8 @@ export default StyleSheet.create({
   goalOutcomeSelector: {
     ...iOSUIKit.title3EmphasizedObject,
     color: gray900,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   actionsContainer: {
     flexDirection: 'row',
@@ -86,5 +98,7 @@ export default StyleSheet.create({
   actionText: {
     ...iOSUIKit.title3EmphasizedObject,
     color: gray50,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
 })

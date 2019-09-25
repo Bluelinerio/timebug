@@ -66,6 +66,7 @@ export default StyleSheet.create({
     ...iOSUIKit.bodyEmphasizedObject,
     color: gray900,
     fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   header: {
     minHeight: 64,
@@ -101,11 +102,13 @@ export default StyleSheet.create({
     ...iOSUIKit.title3EmphasizedObject,
     color: gray900,
     fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   headerSubtitle: {
     ...iOSUIKit.subheadEmphasizedObject,
     color: gray900,
     fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   linkContainer: {
     minHeight: 64,
@@ -118,6 +121,7 @@ export default StyleSheet.create({
     color: VISION_CREATION,
     marginVertical: 15,
     fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   lockedText: {
     ...iOSUIKit.title3EmphasizedObject,
@@ -125,6 +129,7 @@ export default StyleSheet.create({
     color: gray900,
     padding: 8,
     fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   leftBlock: {
     flex: 1,
@@ -142,5 +147,6 @@ export default StyleSheet.create({
     textAlign: 'justify',
     color: PHASE_3_COMPLETE,
     fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
 })

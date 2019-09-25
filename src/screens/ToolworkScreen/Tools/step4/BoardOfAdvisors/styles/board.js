@@ -1,5 +1,5 @@
-import { StyleSheet, Platform }   from 'react-native'
-import { iOSUIKit }               from 'react-native-typography'
+import { StyleSheet, Platform } from 'react-native'
+import { iOSUIKit } from 'react-native-typography'
 import { darkBlue, gray50, cyan } from '2020_constants/colors'
 
 const imageWidth = 50
@@ -59,6 +59,8 @@ export default StyleSheet.create({
     ...iOSUIKit.calloutEmphasizedObject,
     color: gray50,
     textAlign: 'center',
+    fontWeight: '700',
+    fontFamily: 'Metropolis',
   },
   advisorTileContainer: {
     flex: 1,
@@ -106,19 +108,27 @@ export default StyleSheet.create({
   advisorName: {
     ...iOSUIKit.bodyEmphasizedObject,
     color: darkBlue,
+    fontWeight: '700',
+    fontFamily: 'Metropolis',
   },
   advisorCategory: {
     ...iOSUIKit.subheadEmphasizedObject,
     color: darkBlue,
+    fontWeight: '700',
+    fontFamily: 'Metropolis',
   },
   advisorSyncLink: {
     ...iOSUIKit.footnoteEmphasizedObject,
     color: darkBlue,
     textDecorationLine: 'underline',
+    fontWeight: '700',
+    fontFamily: 'Metropolis',
   },
   contactName: {
     ...iOSUIKit.footnoteEmphasizedObject,
     color: darkBlue,
+    fontWeight: '700',
+    fontFamily: 'Metropolis',
   },
   advisorSyncContainer: {
     flex: 1,

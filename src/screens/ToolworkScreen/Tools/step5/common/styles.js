@@ -63,11 +63,15 @@ export default StyleSheet.create({
   },
   protoText: {
     ...iOSUIKit.bodyEmphasizedObject,
+    fontWeight: '700',
+    fontFamily: 'Metropolis',
   },
   buttonText: {
     ...iOSUIKit.bodyEmphasizedObject,
     textAlign: 'center',
     color: gray50,
+    fontWeight: '700',
+    fontFamily: 'Metropolis',
   },
   viewContainer: {
     flex: 1,
@@ -104,38 +108,52 @@ export default StyleSheet.create({
     fontSize: 28,
     textAlign: 'justify',
     color: formTextColor,
+    fontWeight: '700',
+    fontFamily: 'Metropolis',
   },
   goalScreenSubtitle: {
     ...iOSUIKit.title3EmphasizedObject,
     textAlign: 'justify',
     color: formTextColor,
+    fontWeight: '700',
+    fontFamily: 'Metropolis',
   },
   goalReviewScreenSubtitle: {
     ...iOSUIKit.title3EmphasizedObject,
     fontSize: 26,
     textAlign: 'justify',
     color: formTextColor,
+    fontWeight: '700',
+    fontFamily: 'Metropolis',
   },
   goalTimeLeft: {
     ...iOSUIKit.subheadEmphasizedObject,
     textAlign: 'center',
     color: formTextColor,
+    fontWeight: '700',
+    fontFamily: 'Metropolis',
   },
   goalScreenTypes: {
     ...iOSUIKit.bodyEmphasizedObject,
     fontSize: 16,
     textAlign: 'justify',
     color: formTextColor,
+    fontWeight: '700',
+    fontFamily: 'Metropolis',
   },
   goalScreenContent: {
     ...iOSUIKit.bodyEmphasizedObject,
     textAlign: 'justify',
     color: formTextColor,
+    fontWeight: '700',
+    fontFamily: 'Metropolis',
   },
   goalScreenSmall: {
     ...iOSUIKit.subheadEmphasizedObject,
     textAlign: 'justify',
     color: formTextColor,
+    fontWeight: '700',
+    fontFamily: 'Metropolis',
   },
   elementContainer: {
     flex: 1,
@@ -177,11 +195,15 @@ export default StyleSheet.create({
     ...iOSUIKit.bodyEmphasizedObject,
     textAlign: 'justify',
     color: formTextColor,
+    fontWeight: '700',
+    fontFamily: 'Metropolis',
   },
   subtextFootnote: {
     ...iOSUIKit.footnoteEmphasizedObject,
     textAlign: 'justify',
     color: formTextColor,
+    fontWeight: '700',
+    fontFamily: 'Metropolis',
   },
   leftIcon: {
     alignItems: 'flex-start',
@@ -222,7 +244,7 @@ export default StyleSheet.create({
   additionalInput: {
     maxWidth: widthPercentage(95, widthPercentage(80)),
     color: gray900,
-    fontFamily: 'Helvetica',
+    fontFamily: 'Metropolis',
     fontSize: 16,
   },
   optionsContainer: {
@@ -277,5 +299,6 @@ export default StyleSheet.create({
   subscript: {
     ...iOSUIKit.caption2Object,
     marginLeft: 6,
+    fontFamily: 'Metropolis',
   },
 })
