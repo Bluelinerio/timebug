@@ -5,9 +5,10 @@
  */
 
 import React                    from 'react'
-import { Text, View }           from 'react-native'
+import { View }                 from 'react-native'
 import Icon                     from 'react-native-vector-icons/MaterialIcons'
 import moment                   from 'moment'
+import Text                     from '2020_components/Text'
 import VerticalGradient         from '../containers/VerticalGradient'
 import UserProfileImageConsumer from '../containers/UserProfileImageConsumer'
 import styles                   from '../screens/styles/dashboard.styles'

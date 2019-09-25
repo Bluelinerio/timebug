@@ -1,9 +1,10 @@
-import * as React from 'react';
-import Svg, { G, Path } from 'react-native-svg';
+// @flow
+import * as React from 'react'
+import Svg, { G, Path } from 'react-native-svg'
 
 const defaultStyle = {
   alignSelf: 'center',
-};
+}
 
 type Props = {
   width: number,
@@ -12,7 +13,7 @@ type Props = {
   shapeColor: string,
   deepBlue: string,
   hotPink: string,
-};
+}
 
 const Meditator = ({
   width = 75,
@@ -159,6 +160,6 @@ const Meditator = ({
       />
     </G>
   </Svg>
-);
+)
 
-export default Meditator;
+export default Meditator

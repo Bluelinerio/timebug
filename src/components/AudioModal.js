@@ -1,23 +1,23 @@
 /* Deprecated due to IOS issues with modals */
-
-import React                                              from 'react'
-import { View, Modal, TouchableOpacity, StatusBar, Text } from 'react-native'
-import Gradient                                           from '../components/Gradient'
+// @flow
+import React                                        from 'react'
+import { View, Modal, TouchableOpacity, StatusBar } from 'react-native'
+import Text                                         from '2020_components/Text'
+import Gradient                                     from '../components/Gradient'
 import styles, {
   statusBarColor,
   closeButtonColor,
   closeButtonSize,
   gradientColors,
-}                                                         from '../styles/components/AudioModal'
-import Icon                                               from 'react-native-vector-icons/dist/MaterialIcons'
-import AudioVideo                                         from './AudioVideoComponent'
+}                                                   from '../styles/components/AudioModal'
+import Icon                                         from 'react-native-vector-icons/dist/MaterialIcons'
+import AudioVideo                                   from './AudioVideoComponent'
 
 export type AudioModalProps = {
   isOpen: boolean,
   title: string,
   audio: string,
-  icon:
-    | string
+  icon: | string
     | {
         uri: string,
       },

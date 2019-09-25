@@ -1,8 +1,9 @@
 // @flow
-import React                              from 'react'
-import { Text, View, TouchableHighlight } from 'react-native'
-import Icon                               from 'react-native-vector-icons/Ionicons'
-import defaultStyle                       from '../styles/components/Button'
+import React                        from 'react'
+import { View, TouchableHighlight } from 'react-native'
+import Text                         from '2020_components/Text'
+import Icon                         from 'react-native-vector-icons/Ionicons'
+import defaultStyle                 from '../styles/components/Button'
 
 export type Side = 'left' | 'right' | null
 export type Props = {

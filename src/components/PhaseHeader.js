@@ -1,17 +1,12 @@
 //@flow
-import React                from 'react'
-import {
-  View,
-  Text,
-  StatusBar,
-  ScrollView,
-  TouchableOpacity,
-}                           from 'react-native'
-import { HeaderBackButton } from 'react-navigation'
-import styles               from '../styles/components/Banner/phase'
-import type { Step }        from '../services/cms'
-import ModelHOC             from '../HOC/StepFormModelProvider'
-import { compose }          from 'recompose'
+import React                                             from 'react'
+import { View, StatusBar, ScrollView, TouchableOpacity } from 'react-native'
+import { HeaderBackButton }                              from 'react-navigation'
+import Text                                              from '2020_components/Text'
+import styles                                            from '../styles/components/Banner/phase'
+import type { Step }                                     from '../services/cms'
+import ModelHOC                                          from '../HOC/StepFormModelProvider'
+import { compose }                                       from 'recompose'
 
 type Props = {
   onBackPress: () => any,

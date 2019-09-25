@@ -4,17 +4,17 @@
  * Deprecated
  */
 
-import React                            from 'react'
-import { Text, View, Image, StatusBar } from 'react-native'
-import UserProfileImageConsumer         from '../containers/UserProfileImageConsumer'
-import styles, { bannerColor }          from '../styles/components/StartScreenBanner'
-import User                             from '../containers/User'
-import UserProfileImage                 from '../containers/UserProfileImageContainer'
-import { icon }                         from '../resources/images'
+import React                      from 'react'
+import { View, Image, StatusBar } from 'react-native'
+import Text                       from '2020_components/Text'
+import UserProfileImageConsumer   from '../containers/UserProfileImageConsumer'
+import styles, { bannerColor }    from '../styles/components/StartScreenBanner'
+import User                       from '../containers/User'
+import UserProfileImage           from '../containers/UserProfileImageContainer'
+import { icon }                   from '../resources/images'
 
 const firstName = (user: { name: string }): string =>
   user ? (user.name ? user.name.split(' ')[0] : '') : ''
-
 
 const StartScreenBanner = () => {
   return (

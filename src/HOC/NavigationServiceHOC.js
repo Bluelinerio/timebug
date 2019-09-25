@@ -1,3 +1,4 @@
+// @flow
 import React from 'react'
 import NavigationService from '2020_services/navigation'
 

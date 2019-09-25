@@ -1,3 +1,4 @@
+// @flow
 import { mapProps }  from 'recompose'
 import type { Step } from '../services/cms'
 import models        from '../forms/custom/forms'

@@ -1,3 +1,4 @@
+// @flow
 import { connect } from 'react-redux'
 import { compose, mapProps } from 'recompose'
 import selectors from '2020_redux/selectors'

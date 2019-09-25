@@ -1,6 +1,7 @@
 /**
  * Deprecated
  */
+// @flow
 import * as React from 'react'
 import { connect } from 'react-redux'
 import Svg, { Circle, G } from 'react-native-svg'

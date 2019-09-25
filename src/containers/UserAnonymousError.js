@@ -3,8 +3,9 @@
 /**
  * Deprecated
  */
-import * as React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import * as React                 from 'react'
+import { View, StyleSheet }       from 'react-native'
+import Text                       from '2020_components/Text'
 import LoginWithFBButtonContainer from './LoginWithFbButtonContainer'
 
 const UserAnonymousError = ({

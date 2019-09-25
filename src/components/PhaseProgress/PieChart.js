@@ -1,8 +1,9 @@
 // @flow
-import React          from 'react'
-import { View, Text } from 'react-native'
-import { PieChart }   from 'react-native-svg-charts'
-import styles         from '../../styles/components/PieCharts'
+import React        from 'react'
+import { View }     from 'react-native'
+import Text         from '2020_components/Text'
+import { PieChart } from 'react-native-svg-charts'
+import styles       from '../../styles/components/PieCharts'
 
 export type Slice = {
   color: string,

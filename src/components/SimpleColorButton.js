@@ -1,6 +1,7 @@
-import * as React from 'react';
-import { View, Text, TouchableHighlight, StyleSheet } from 'react-native';
-import { deepBlue } from '../constants/colors';
+import * as React                               from 'react'
+import { View, TouchableHighlight, StyleSheet } from 'react-native'
+import Text                                     from '2020_components/Text'
+import { deepBlue }                             from '../constants/colors'
 
 export default class SimpleColorButton extends React.Component<{
   color: string,
@@ -9,12 +10,12 @@ export default class SimpleColorButton extends React.Component<{
 }> {
   static defaultProps = {
     color: deepBlue,
-  };
+  }
   state = {
     underlay: false,
-  };
-  _onHideUnderlay = () => this.setState({ underlay: false });
-  _onShowUnderlay = () => this.setState({ underlay: true });
+  }
+  _onHideUnderlay = () => this.setState({ underlay: false })
+  _onShowUnderlay = () => this.setState({ underlay: true })
 
   render() {
     return (
@@ -41,7 +42,7 @@ export default class SimpleColorButton extends React.Component<{
           </Text>
         </TouchableHighlight>
       </View>
-    );
+    )
   }
 }
 
@@ -62,4 +63,4 @@ const styles = StyleSheet.create({
   text: {
     fontWeight: 'bold',
   },
-});
+})

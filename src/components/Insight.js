@@ -1,5 +1,6 @@
-import React    from 'react'
-import { Text } from 'react-native'
+// @flow
+import React from 'react'
+import Text from '2020_components/Text'
 
 type InsightProps = {
   insightText: string,

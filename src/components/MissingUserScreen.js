@@ -1,5 +1,6 @@
 import React from 'react'
-import { View, ScrollView, Text } from 'react-native'
+import { View, ScrollView } from 'react-native'
+import Text from '2020_components/Text'
 import { SafeAreaView } from 'react-navigation'
 import styles from '../styles/components/MissingUserScreen'
 import Banner from './MinifiedBanner'

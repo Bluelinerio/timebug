@@ -1,5 +1,6 @@
-import * as React from 'react';
-import Svg, { Rect, G, Path } from 'react-native-svg';
+// @flow
+import * as React from 'react'
+import Svg, { Rect, G, Path } from 'react-native-svg'
 
 type Props = {
   width: number,
@@ -8,7 +9,7 @@ type Props = {
   backgroundColor: string,
   shapeColor: string,
   circleColor: string,
-};
+}
 const Logo = ({
   width,
   height,
@@ -50,6 +51,6 @@ const Logo = ({
       </G>
     </G>
   </Svg>
-);
+)
 
-export default Logo;
+export default Logo

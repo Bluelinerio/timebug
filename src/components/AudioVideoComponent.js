@@ -1,3 +1,4 @@
+// @flow
 import * as React       from 'react'
 import { View }         from 'react-native'
 import Video            from 'react-native-video'
