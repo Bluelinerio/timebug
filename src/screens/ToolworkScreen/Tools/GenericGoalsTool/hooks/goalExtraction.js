@@ -16,7 +16,7 @@ const _extractGoalsStep5 = (toolData, formData) => {
       toolData && toolData.value
         ? toolData.value.find(v => v.goalId === goal._id)
         : null
-    return !goalAwardData || !goalAwardData.completed || !goalAwardData.deleted
+    return !goalAwardData || (!goalAwardData.completed && !goalAwardData.deleted)
   })
   return goals
 }
