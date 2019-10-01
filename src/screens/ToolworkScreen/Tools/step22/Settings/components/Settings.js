@@ -103,7 +103,7 @@ const Settings = (props: Props) => {
       <Text style={styles.settingsTitle}>Tool settings</Text>
       <View style={styles.setting}>
         <View style={styles.dreamNotificationTooltip}>
-          <Text style={styles.settingText}>Enable dream notification</Text>
+          <Text style={styles.settingText}>Enable dream journal notification</Text>
         </View>
         <View style={styles.dreamNotificationSwitch}>
           <Switch onValueChange={onSwitchChange} value={enabled} />
@@ -114,7 +114,7 @@ const Settings = (props: Props) => {
           <View style={[styles.setting, { flexDirection: 'column' }]}>
             <View style={[styles.container, styles.textContainer]}>
               <Text style={[styles.settingText]}>
-                At what time would you like to be notified?
+                At what time would you like to be reminded?
               </Text>
             </View>
             <View style={styles.pickerContainer}>

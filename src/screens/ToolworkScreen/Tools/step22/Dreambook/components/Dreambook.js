@@ -29,7 +29,7 @@ const Dreambook = (props: Props) => {
   return (
     <View style={[styles.container, styles.padded]}>
       <Text style={styles.dreambookTopText}>
-        Today is {date}, did you have a dream? Take a moment to record it below!
+        Today is {date}. Write down anything significant from your dreams last night.
       </Text>
       <View style={styles.container}>
         <TextInput

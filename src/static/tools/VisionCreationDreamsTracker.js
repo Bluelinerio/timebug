@@ -8,9 +8,9 @@ export default {
   key,
   number: 23,
   phase: VISION_CREATION,
-  title: 'Dream tracker',
-  subtitle: 'What are my dreams?',
-  content: 'Use this tool to track your dreams so you can achieve them',
+  title: 'Phase 3 Goals',
+  subtitle: 'Vision Creation',
+  content: 'Use this tool to set up and track goals realted to the "Vision Creation" exercises you have done in phase 3 of the workbook.',
   require: {
     steps: [stepEnum.STEP_23],
   },

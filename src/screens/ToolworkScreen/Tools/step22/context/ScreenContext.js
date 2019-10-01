@@ -15,11 +15,11 @@ export const screens = {
 
 export const screenListWithNames: Array<Screen> = [
   {
-    title: 'Dream Book',
+    title: 'Dream Journal',
     key: screens.DREAMBOOK,
   },
   {
-    title: 'Dream list',
+    title: 'Past Dreams',
     key: screens.DREAM_LIST,
   },
   {

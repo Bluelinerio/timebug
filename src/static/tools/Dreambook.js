@@ -7,9 +7,9 @@ export default {
   key,
   number: 22,
   phase: VISION_CREATION,
-  title: 'Dream Record',
+  title: 'Dream Journal',
   subtitle:
-    'Store your dreams in a safe place, never forget what your inner self feels',
+    'A journal to store your dreams.',
   content:
-    'Use this tool to add and keep track of the dreams you have had, this will help you analyze what you really feel and want',
+    'Use this tool to log whatever you remember from your dreams when you wake up. Dreams often reveal the inner workings of our being and can provide great insight.',
 }
