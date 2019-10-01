@@ -29,6 +29,7 @@ import CareerGoalsTracker, {
 import VisionCreationDreamsTracker, {
   key as VisionCreationDreamsTrackerKey,
 } from '../VisionCreationDreamsTracker'
+import DreamRecord, { key as DreamRecordKey } from '../Dreambook'
 import DummyTool, { key as DummyKey } from '../Dummy'
 import type { ToolLock } from '../types'
 
@@ -43,6 +44,7 @@ export const TOOL_KEYS = {
   CompletedGoalsTrackerKey,
   CareerGoalsTrackerKey,
   VisionCreationDreamsTrackerKey,
+  DreamRecordKey,
   DummyKey,
 }
 
@@ -166,6 +168,18 @@ const toolDefinitions: Array<ToolLock> = [
       },
     ],
     tool: VisionCreationDreamsTracker,
+  },
+  {
+    conditions: [
+      {
+        type: STEPS,
+        clause: {
+          type: ALL,
+          value: [22],
+        },
+      },
+    ],
+    tool: DreamRecord,
   },
 ]
 

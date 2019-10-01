@@ -181,6 +181,7 @@ class CheckinElement extends React.PureComponent<CheckinElementProps> {
       toolKey,
       action,
       onToggle,
+      notificationSchedule,
       id,
     } = checkin
     const { frequency: localFrequency, isModalOpen } = this.state
@@ -238,6 +239,7 @@ class CheckinElement extends React.PureComponent<CheckinElementProps> {
                           message,
                           toolKey,
                           action,
+                          notificationSchedule,
                           frequency: localFrequency,
                         },
                       })

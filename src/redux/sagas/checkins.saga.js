@@ -8,10 +8,10 @@ import {
   put,
   select,
   race,
-}                                    from 'redux-saga/effects'
-import { delay }                     from 'redux-saga'
-import moment                        from 'moment'
-import { updateCheckin }             from '../actions/checkin.actions'
+} from 'redux-saga/effects'
+import { delay } from 'redux-saga'
+import moment from 'moment'
+import { updateCheckin } from '../actions/checkin.actions'
 import {
   CHANGE_CHECKIN,
   BUILD_NOTIFICATION_SET,
@@ -20,20 +20,20 @@ import {
   CHECKIN_NOTIFICATION,
   EDIT_CHECKIN,
   UPDATE_OR_CREATE_CHECKIN,
-}                                    from '../actionTypes'
-import { GET_USER }                  from '../actions/user.actions'
-import { FETCH_CMS }                 from '../actions/cms.actions'
-import { calculateNextCheckin }      from '../../services/checkins'
+} from '../actionTypes'
+import { GET_USER } from '../actions/user.actions'
+import { FETCH_CMS } from '../actions/cms.actions'
+import { calculateNextCheckin } from '../../services/checkins'
 import {
   createNotification,
   removeNotification,
-}                                    from '../actions/notifications.actions'
+} from '../actions/notifications.actions'
 import {
   changeCheckin,
   deleteCheckin,
   removeCheckin,
   editCheckin,
-}                                    from '../actions/checkin.actions'
+} from '../actions/checkin.actions'
 import type {
   DeleteCheckinPayload,
   CheckinChangePayload,
@@ -41,14 +41,14 @@ import type {
   CheckinNotificationPayload,
   EditCheckinPayload,
   NotificationUpdateOrCreatePayload,
-}                                    from '../actions/checkin.actions'
-import { linkNavigation }            from '../actions/nav.actions'
-import selectors                     from '../selectors'
-import { isStepCompleted }           from '../../services/cms'
+} from '../actions/checkin.actions'
+import { linkNavigation } from '../actions/nav.actions'
+import selectors from '../selectors'
+import { isStepCompleted } from '../../services/cms'
 import { timeoutNoError as timeout } from '../utils/sagaHelpers'
-import { notificationTypes }         from '2020_services/notifications'
-import { toHashCode }                from '2020_utils/hashing'
-import R                             from 'ramda'
+import { notificationTypes } from '2020_services/notifications'
+import { toHashCode } from '2020_utils/hashing'
+import R from 'ramda'
 
 type StepWithUpdate = {
   __action__: string,
@@ -67,10 +67,26 @@ function* setUpNotificationAndUpdateCheckin({
 }: {
   payload: CheckinChangePayload,
 }) {
-  const { step, frequency, message, toolKey, action, ...rest } = payload
+  const {
+    step,
+    frequency,
+    message,
+    toolKey,
+    action,
+    notificationSchedule,
+    ...rest
+  } = payload
+  const hourlyNotificationEnabled = notificationSchedule
+    ? notificationSchedule.enabled
+    : false
   const [notificationTime, repeatTime] = yield call(
     calculateNextCheckin,
-    frequency
+    frequency,
+    hourlyNotificationEnabled
+      ? notificationSchedule.value
+        ? notificationSchedule.value
+        : notificationSchedule.default
+      : null
   )
   const id = `${toHashCode(toolKey)}`
   const additionalProps = {
@@ -81,6 +97,7 @@ function* setUpNotificationAndUpdateCheckin({
       toolKey,
       action,
       frequency,
+      notificationSchedule,
     },
   }
   yield put(
@@ -96,13 +113,14 @@ function* setUpNotificationAndUpdateCheckin({
     updateCheckin({
       step,
       checkin: {
+        ...rest,
         frequency,
         nextCheckin: notificationTime,
         id,
         message,
         toolKey,
         action,
-        ...rest,
+        notificationSchedule,
       },
     })
   )
@@ -134,8 +152,7 @@ function* _handleCheckinNotificationUpdateOrCreate({
         notification,
       })
     )
-  }
-  else
+  } else
     yield put(
       changeCheckin({
         step,
@@ -174,22 +191,65 @@ function* toggleNotification({ payload }: ToggleCheckinPayload) {
 
 function* _handleCheckinEdition({ payload }: { payload: EditCheckinPayload }) {
   const { checkin, number, notification } = payload
-  const { toolKey, message, action, frequency, ...rest } = checkin
+  const {
+    toolKey,
+    message,
+    action,
+    frequency,
+    notificationSchedule,
+    ...rest
+  } = checkin
+
+
+  const hourlyNotificationEnabled = notificationSchedule
+    ? notificationSchedule.enabled
+    : false
+
   let notificationTime = notification ? notification.scheduledDate : null
   const id = `${toHashCode(toolKey)}`
 
-  const oldFrequency = notification ? R.view(
-    R.lensPath(['data', 'additionalProps', 'data', 'frequency']),
-    notification
-  ) : null
+  const oldFrequency = notification
+    ? R.view(
+        R.lensPath(['data', 'additionalProps', 'data', 'frequency']),
+        notification
+      )
+    : null
 
-  const oldRepeatTime = notification ? R.view(R.lensPath(['data', 'repeatTime']), notification) : null
+  const oldNotificationSchedule =
+    notification && hourlyNotificationEnabled
+      ? R.view(
+          R.lensPath([
+            'data',
+            'additionalProps',
+            'data',
+            'notificationSchedule',
+          ]),
+          notification
+        )
+      : {}
+
+  const oldRepeatTime = notification
+    ? R.view(R.lensPath(['data', 'repeatTime']), notification)
+    : null
 
   let repeatTime = oldRepeatTime
 
-  if (!notification || frequency !== oldFrequency) {
+  if (
+    (hourlyNotificationEnabled &&
+      oldNotificationSchedule.value !== notificationSchedule.value) ||
+    (!notification || frequency !== oldFrequency)
+  ) {
     /* eslint-disable-next-line no-unused-vars */
-    const [time, newRepeatTime] = yield call(calculateNextCheckin, frequency)
+    const [time, newRepeatTime] = yield call(
+      calculateNextCheckin,
+      frequency,
+      hourlyNotificationEnabled
+        ? notificationSchedule.value
+          ? notificationSchedule.value
+          : notificationSchedule.default
+        : null
+    )
+
     repeatTime = newRepeatTime
     notificationTime = time
   }
@@ -201,6 +261,7 @@ function* _handleCheckinEdition({ payload }: { payload: EditCheckinPayload }) {
       toolKey,
       action,
       frequency,
+      notificationSchedule,
     },
   }
 
@@ -226,6 +287,7 @@ function* _handleCheckinEdition({ payload }: { payload: EditCheckinPayload }) {
         message,
         toolKey,
         action,
+        notificationSchedule,
         ...rest,
       },
     })
@@ -375,7 +437,9 @@ function* watchForCheckinsDeletion() {
 function* watchForCheckinsUpdateOrCreate() {
   const channel = yield actionChannel(UPDATE_OR_CREATE_CHECKIN)
   while (true) {
-    const action: { payload: NotificationUpdateOrCreatePayload } = yield take(channel)
+    const action: { payload: NotificationUpdateOrCreatePayload } = yield take(
+      channel
+    )
     yield call(_handleCheckinNotificationUpdateOrCreate, action)
   }
 }
@@ -383,12 +447,27 @@ function* watchForCheckinsUpdateOrCreate() {
 export function* _handleCheckinNotification({
   payload,
 }: CheckinNotificationPayload) {
-  const { step, toolKey, action, frequency } = payload
+  const { step, toolKey, action, frequency, notificationSchedule } = payload
   const lastCheckin = moment()
-  const [nextCheckin] = yield call(calculateNextCheckin, frequency)
+
+  const hourlyNotificationEnabled = notificationSchedule
+    ? notificationSchedule.enabled
+    : false
+
+  const [nextCheckin] = yield call(
+    calculateNextCheckin,
+    frequency,
+    hourlyNotificationEnabled
+      ? notificationSchedule.value
+        ? notificationSchedule.value
+        : notificationSchedule.default
+      : null
+  )
+
   yield put(
     updateCheckin({ step, checkin: { lastCheckin, nextCheckin, toolKey } })
   )
+
   yield delay(1)
   if (action && action.type === 'link')
     yield put(linkNavigation({ link: action.payload.link }))
