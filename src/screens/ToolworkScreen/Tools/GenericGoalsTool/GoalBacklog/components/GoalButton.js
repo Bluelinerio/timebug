@@ -1,6 +1,7 @@
 // @flow
 import React from 'react'
-import { Text, TouchableOpacity, View } from 'react-native'
+import { TouchableOpacity, View } from 'react-native'
+import Text from '2020_components/Text'
 import SvgIcon from '2020_components/SvgIcon'
 import { Goal } from '../../types'
 import styles from '../styles'

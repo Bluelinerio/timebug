@@ -1,16 +1,16 @@
-import React from 'react';
-import { Text } from 'react-native';
-import DeviceInfo from 'react-native-device-info';
-import CodePush from 'react-native-code-push';
+import React      from 'react'
+import Text       from '2020_components/Text'
+import DeviceInfo from 'react-native-device-info'
+import CodePush   from 'react-native-code-push'
 
 class VersionComponent extends React.Component {
-  state = { version: __DEV__ ? 'debug' : 'release' };
+  state = { version: __DEV__ ? 'debug' : 'release' }
   componentDidMount = () =>
     CodePush.getUpdateMetadata().then(update => {
       if (update) {
-        this.setState({ version: update.appVersion, codepush: update.label });
+        this.setState({ version: update.appVersion, codepush: update.label })
       }
-    });
+    })
   render() {
     return (
       <Text
@@ -25,8 +25,8 @@ class VersionComponent extends React.Component {
           this.state.version
         }, Native:${DeviceInfo.getVersion()} build:${DeviceInfo.getBuildNumber()} `}
       </Text>
-    );
+    )
   }
 }
 
-export default VersionComponent;
+export default VersionComponent

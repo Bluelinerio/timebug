@@ -1,6 +1,7 @@
 // @flow
 import React, { memo, useContext } from 'react'
-import { TouchableOpacity, Text } from 'react-native'
+import { TouchableOpacity } from 'react-native'
+import Text from '2020_components/Text'
 import { StyleContext } from '../../context/StyleContext'
 import styles from '../styles'
 

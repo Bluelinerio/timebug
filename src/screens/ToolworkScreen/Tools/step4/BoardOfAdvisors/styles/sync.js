@@ -18,6 +18,8 @@ export default StyleSheet.create({
     ...iOSUIKit.footnoteEmphasizedObject,
     textAlign: 'center',
     color: gray900,
+    fontWeight: '700',
+    fontFamily: 'Metropolis',
   },
   indicatorContainer: {
     flex: 1,
@@ -61,6 +63,8 @@ export default StyleSheet.create({
   advisorSyncName: {
     ...iOSUIKit.subtitleEmphasizedObject,
     color: darkBlue,
+    fontWeight: '700',
+    fontFamily: 'Metropolis',
   },
   contactTile: {
     paddingVertical: 10,
@@ -88,6 +92,8 @@ export default StyleSheet.create({
   contactName: {
     ...iOSUIKit.bodyEmphasizedObject,
     color: gray900,
+    fontWeight: '700',
+    fontFamily: 'Metropolis',
   },
   searchBarContainer: {
     backgroundColor: gray100,
@@ -104,6 +110,8 @@ export default StyleSheet.create({
     ...iOSUIKit.bodyEmphasizedObject,
     color: gray900,
     textAlign: 'center',
+    fontWeight: '700',
+    fontFamily: 'Metropolis',
   },
   link: {
     color: darkBlue,

@@ -1,15 +1,16 @@
-import React from 'react'
+// @flow
+import React       from 'react'
 import { connect } from 'react-redux'
-import firebase from 'react-native-firebase'
+import firebase    from 'react-native-firebase'
 import {
   changeFirebaseKey,
   setFirebasePermission,
-} from '2020_redux/actions/permissions.actions'
+}                  from '2020_redux/actions/permissions.actions'
 import type {
   ChangeFirebaseKeyPayload,
   FirebasePermissionPayload,
-} from '2020_redux/actions/permissions.actions'
-import tron from 'reactotron-react-native'
+}                  from '2020_redux/actions/permissions.actions'
+import tron        from 'reactotron-react-native'
 
 type DispatchProps = {
   changeFcm: ChangeFirebaseKeyPayload => void,
@@ -33,16 +34,16 @@ class FirebaseComponent extends React.PureComponent<Props> {
     const { permission, changePermissions } = this.props
     try {
       await firebase.messaging().requestPermission()
-      if(permission !== true) changePermissions({ status: true })
+      if (permission !== true) changePermissions({ status: true })
     } catch (error) {
       tron.log(error)
-      if(permission !== false) changePermissions({ status: false })
+      if (permission !== false) changePermissions({ status: false })
     }
   }
 
   componentDidMount() {
     const { permission, changePermissions } = this.props
-    console.log('Setting up firebase component')    
+    console.log('Setting up firebase component')
     firebase
       .messaging()
       .getToken()
@@ -53,7 +54,7 @@ class FirebaseComponent extends React.PureComponent<Props> {
       .hasPermission()
       .then(async enabled => {
         if (enabled) {
-          if(permission !== enabled) changePermissions({ status: enabled })
+          if (permission !== enabled) changePermissions({ status: enabled })
           tron.log('User has provided permissions')
         } else {
           await this.requestPermission()

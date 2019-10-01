@@ -1,6 +1,7 @@
 //@flow
-import * as React                        from 'react'
-import { View, Text, ActivityIndicator } from 'react-native'
+import * as React from 'react'
+import { View, ActivityIndicator } from 'react-native'
+import Text from '2020_components/Text'
 
 type Props = { message: ?string }
 

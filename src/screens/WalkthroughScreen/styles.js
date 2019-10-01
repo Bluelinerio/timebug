@@ -1,15 +1,15 @@
-import { StyleSheet, Dimensions, StatusBar, Platform } from 'react-native';
-import Theme from './components/Theme';
+import { StyleSheet, Dimensions, Platform } from 'react-native'
+import Theme from './components/Theme'
 
-const height = Dimensions.get('window').height;
-const width = Dimensions.get('window').width;
-const baseSpacing = Math.floor(width * 0.06);
-const largeVerticalSpacing = Math.floor(height * 0.06);
-const imageHeight = height * 0.55;
+const height = Dimensions.get('window').height
+const width = Dimensions.get('window').width
+const baseSpacing = Math.floor(width * 0.06)
+const largeVerticalSpacing = Math.floor(height * 0.06)
+const imageHeight = height * 0.55
 export const gradientColors = {
   start: '#B3E5FC',
   end: '#c6edff',
-};
+}
 
 export default StyleSheet.create({
   screen: StyleSheet.absoluteFillObject,
@@ -73,10 +73,10 @@ export default StyleSheet.create({
     color: '#00098A',
   },
   description: {
-    marginTop: largeVerticalSpacing/2,
+    marginTop: largeVerticalSpacing / 2,
     color: '#00098A',
   },
-});
+})
 
 export const theme = {
   ...Theme,
@@ -89,7 +89,7 @@ export const theme = {
     header1: {
       fontSize: 48,
       lineHeight: 58,
-      fontFamily: 'Helvetica',
+      fontFamily: 'Metropolis',
     },
     header2: {
       fontSize: Math.ceil(height * 0.03),
@@ -129,4 +129,4 @@ export const theme = {
     large: 48,
     xLarge: 64,
   },
-};
+}

@@ -31,11 +31,14 @@ export default StyleSheet.create({
     fontSize: 28,
     marginBottom: 3,
     color: PHASE_2_COMPLETE,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   goalScreenSubtitle: {
     ...iOSUIKit.subheadObject,
     color: PHASE_2_COMPLETE,
     textAlign: 'center',
+    fontFamily: 'Metropolis',
   },
   goalListContainer: {
     paddingHorizontal: 12,
@@ -51,6 +54,8 @@ export default StyleSheet.create({
   goalLabel: {
     ...iOSUIKit.bodyEmphasizedObject,
     color: gray900,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   goalTitleContainer: {
     paddingHorizontal: 4,
@@ -68,6 +73,8 @@ export default StyleSheet.create({
     ...iOSUIKit.bodyEmphasizedObject,
     color: PHASE_2_COMPLETE,
     marginLeft: 8,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   goalDetailsContainer: {
     padding: 12,
@@ -78,6 +85,8 @@ export default StyleSheet.create({
     fontSize: 24,
     marginBottom: 3,
     color: PHASE_2_COMPLETE,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   subDataContainer: {
     marginVertical: 8,
@@ -93,6 +102,8 @@ export default StyleSheet.create({
   subData: {
     ...iOSUIKit.bodyEmphasizedObject,
     color: gray900,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   completionTitleContainer: {},
   completionLabel: {
@@ -100,6 +111,8 @@ export default StyleSheet.create({
     fontSize: 20,
     marginBottom: 3,
     color: PHASE_2_COMPLETE,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   reopenButtonContainer: {
     marginVertical: 8,
@@ -115,5 +128,7 @@ export default StyleSheet.create({
   reopenLabel: {
     ...iOSUIKit.bodyEmphasizedObject,
     color: white2,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
 })

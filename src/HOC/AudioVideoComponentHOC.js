@@ -1,8 +1,8 @@
+// @flow
 import * as React       from 'react'
 import Video            from 'react-native-video'
 import { Alert }        from 'react-native'
 import DefaultIndicator from '../components/DefaultIndicator'
-import tron             from 'reactotron-react-native'
 
 export const PENDING = 'pending'
 export const READY = 'ready'

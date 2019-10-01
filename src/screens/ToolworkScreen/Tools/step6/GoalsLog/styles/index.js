@@ -1,5 +1,5 @@
 import { StyleSheet, Platform } from 'react-native'
-import { iOSUIKit }             from 'react-native-typography'
+import { iOSUIKit } from 'react-native-typography'
 import {
   white2,
   gray200,
@@ -8,9 +8,8 @@ import {
   gray900,
   VISION_CREATION,
   deepBlue,
-  azure
-}                               from '2020_constants/colors'
-import { heightPercentage }     from '2020_utils/viewportCalculation'
+} from '2020_constants/colors'
+import { heightPercentage } from '2020_utils/viewportCalculation'
 
 export const iconSize = 24
 
@@ -96,6 +95,8 @@ export default StyleSheet.create({
   goalListTitle: {
     ...iOSUIKit.title3EmphasizedObject,
     color: deepBlue,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   goalListSubElement: {
     marginRight: 4,
@@ -111,6 +112,7 @@ export default StyleSheet.create({
     fontSize: 18,
     fontWeight: '700',
     textAlign: 'center',
+    fontFamily: 'Metropolis',
   },
   goalDataTile: {
     paddingHorizontal: 25,
@@ -133,10 +135,13 @@ export default StyleSheet.create({
     fontWeight: '700',
     textAlign: 'center',
     color: gray900,
+    fontFamily: 'Metropolis',
   },
   goalSubdata: {
     ...iOSUIKit.subheadEmphasizedObject,
     color: gray900,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   estimateContainer: {
     alignItems: 'center',
@@ -147,6 +152,7 @@ export default StyleSheet.create({
     ...iOSUIKit.caption2Object,
     textAlign: 'center',
     color: gray900,
+    fontFamily: 'Metropolis',
   },
   planContainer: {
     marginVertical: 8,
@@ -161,10 +167,12 @@ export default StyleSheet.create({
     ...iOSUIKit.subheadObject,
     textAlign: 'left',
     marginBottom: 8,
+    fontFamily: 'Metropolis',
   },
   plan: {
     ...iOSUIKit.subheadObject,
     textAlign: 'left',
+    fontFamily: 'Metropolis',
   },
   actionsContainer: {
     flexDirection: 'row',
@@ -176,9 +184,9 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 12,
-    maxWidth:360,
-    marginHorizontal:20,
-    marginBottom:20,
+    maxWidth: 360,
+    marginHorizontal: 20,
+    marginBottom: 20,
     ...Platform.select({
       android: { elevation: 2 },
       ios: {
@@ -196,5 +204,6 @@ export default StyleSheet.create({
     ...iOSUIKit.calloutObject,
     color: white2,
     textAlign: 'center',
+    fontFamily: 'Metropolis',
   },
 })

@@ -3,8 +3,8 @@ import {
   sanFranciscoWeights,
   robotoWeights,
   iOSUIKit,
-}                               from 'react-native-typography'
-import { white2, deepBlue }     from '../../../constants/colors'
+} from 'react-native-typography'
+import { white2, deepBlue } from '../../../constants/colors'
 
 const fontColor = white2
 
@@ -132,5 +132,8 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: 10,
+  },
+  metro: {
+    fontFamily: 'Metropolis',
   },
 })

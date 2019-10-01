@@ -1,12 +1,12 @@
 import { StyleSheet, Platform } from 'react-native'
-import { iOSUIKit }             from 'react-native-typography'
+import { iOSUIKit } from 'react-native-typography'
 import {
   gray900,
   darkBlue,
   gray400,
   gray50,
   white2,
-}                               from '2020_constants/colors'
+} from '2020_constants/colors'
 
 const imageWidth = 60
 const imageHeight = imageWidth
@@ -52,12 +52,16 @@ export default StyleSheet.create({
     paddingVertical: 4,
     textAlign: 'center',
     color: darkBlue,
+    fontWeight: '700',
+    fontFamily: 'Metropolis',
   },
   advisorCategory: {
     ...iOSUIKit.subheadEmphasizedObject,
     paddingVertical: 4,
     textAlign: 'center',
     color: darkBlue,
+    fontWeight: '700',
+    fontFamily: 'Metropolis',
   },
   iconWrapper: {
     marginHorizontal: 12,
@@ -73,11 +77,15 @@ export default StyleSheet.create({
     color: darkBlue,
     textAlign: 'center',
     textDecorationLine: 'underline',
+    fontWeight: '700',
+    fontFamily: 'Metropolis',
   },
   textAreaheader: {
     ...iOSUIKit.bodyEmphasizedObject,
     color: gray900,
     textAlign: 'center',
+    fontWeight: '700',
+    fontFamily: 'Metropolis',
   },
   logAreaContainer: {
     marginTop: 16,
@@ -129,6 +137,8 @@ export default StyleSheet.create({
     ...iOSUIKit.subheadEmphasizedObject,
     color: white2,
     textAlign: 'center',
+    fontWeight: '700',
+    fontFamily: 'Metropolis',
   },
   advisorLogTitleContainer: {
     flex: 1,
@@ -139,6 +149,8 @@ export default StyleSheet.create({
   advisorLogTitle: {
     ...iOSUIKit.title3EmphasizedObject,
     color: darkBlue,
+    fontWeight: '700',
+    fontFamily: 'Metropolis',
   },
   advisorLog: {
     flex: 1,
@@ -158,9 +170,12 @@ export default StyleSheet.create({
   logDate: {
     ...iOSUIKit.subheadEmphasizedObject,
     color: gray900,
+    fontWeight: '700',
+    fontFamily: 'Metropolis',
   },
   logText: {
     ...iOSUIKit.subheadObject,
     color: gray900,
+    fontFamily: 'Metropolis',
   },
 })

@@ -2,8 +2,9 @@
 /**
  * Unused component
  */
-import React from 'react'
-import { Text, View, StyleSheet } from 'react-native'
+import React                from 'react'
+import { View, StyleSheet } from 'react-native'
+import Text                 from '2020_components/Text'
 
 type Props = {
   message: string,

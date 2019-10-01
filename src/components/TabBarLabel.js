@@ -1,5 +1,6 @@
-import React from 'react'
-import { Text } from 'react-native'
+// @flow
+import React  from 'react'
+import Text   from '2020_components/Text'
 import routes from '../navigation/routes'
 import styles from '../styles/components/TabBar'
 
@@ -10,22 +11,22 @@ type TabBarLabelProps = {
 
 const mapRouteToName = routeName => {
   switch (routeName) {
-  case routes.tab.RootNavigator:
-    return 'Workbook'
-  case routes.tab.MeditationScreen:
-    return 'Meditation'
-  case routes.tab.MyJourneyScreen:
-    return 'Journey'
-  case routes.tab.CheckinScreen:
-    return 'Checkins'
-  case routes.tab.GoalsNavigator:
-    return 'Goals'
-  case routes.tab.ToolFlow:
-    return 'Tools'
-  case routes.tab.DashboardScreen:
-    return `Home`
-  default:
-    return ''
+    case routes.tab.RootNavigator:
+      return 'Workbook'
+    case routes.tab.MeditationScreen:
+      return 'Meditation'
+    case routes.tab.MyJourneyScreen:
+      return 'Journey'
+    case routes.tab.CheckinScreen:
+      return 'Checkins'
+    case routes.tab.GoalsNavigator:
+      return 'Goals'
+    case routes.tab.ToolFlow:
+      return 'Tools'
+    case routes.tab.DashboardScreen:
+      return `Home`
+    default:
+      return ''
   }
 }
 

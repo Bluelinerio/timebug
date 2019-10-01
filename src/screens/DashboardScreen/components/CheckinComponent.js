@@ -1,8 +1,9 @@
 // @flow
-import React                            from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
-import CustomImage                      from '2020_components/CustomImage'
-import styles                           from '../styles'
+import React                      from 'react'
+import { View, TouchableOpacity } from 'react-native'
+import Text                       from '2020_components/Text'
+import CustomImage                from '2020_components/CustomImage'
+import styles                     from '../styles'
 
 export type Props = {
   title: string,

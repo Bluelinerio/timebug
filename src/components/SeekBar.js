@@ -4,10 +4,11 @@
  * Deprecated
  */
 
-import React          from 'react'
-import { View, Text } from 'react-native'
-import Slider         from 'react-native-slider'
-import styles         from '../styles/components/AudioVideoComponent'
+import React    from 'react'
+import { View } from 'react-native'
+import Slider   from 'react-native-slider'
+import Text     from '2020_components/Text'
+import styles   from '../styles/components/AudioVideoComponent'
 
 const pad = (n, width, z = 0) => {
   n = n + ''

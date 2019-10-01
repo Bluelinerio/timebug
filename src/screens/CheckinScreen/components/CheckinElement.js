@@ -1,14 +1,8 @@
 //@flow
 import React from 'react'
-import {
-  View,
-  Text,
-  Picker,
-  TouchableOpacity,
-  Switch,
-  StatusBar,
-} from 'react-native'
+import { View, Picker, TouchableOpacity, Switch, StatusBar } from 'react-native'
 import ModalSelector from 'react-native-modal-selector'
+import Text from '2020_components/Text'
 import moment from 'moment'
 import {
   frequencies,
@@ -55,17 +49,17 @@ const operateWithLastCheckin = (
 ): string => {
   const lastCheckinMoment = moment(lastCheckin)
   switch (frequency) {
-  case frequencies[DAILY]:
-    return lastCheckinMoment.add(1, 'd').format('MM-DD-YY')
-  case frequencies[WEEKLY]:
-    return lastCheckinMoment.add(1, 'w').format('MM-DD-YY')
-  case frequencies[BIWEEKLY]:
-    return lastCheckinMoment
-      .add(3, 'd')
-      .add('12', 'h')
-      .format('MM-DD-YY')
-  case frequencies[MONTHLY]:
-    return lastCheckinMoment.add(1, 'M').format('MM-DD-YY')
+    case frequencies[DAILY]:
+      return lastCheckinMoment.add(1, 'd').format('MM-DD-YY')
+    case frequencies[WEEKLY]:
+      return lastCheckinMoment.add(1, 'w').format('MM-DD-YY')
+    case frequencies[BIWEEKLY]:
+      return lastCheckinMoment
+        .add(3, 'd')
+        .add('12', 'h')
+        .format('MM-DD-YY')
+    case frequencies[MONTHLY]:
+      return lastCheckinMoment.add(1, 'M').format('MM-DD-YY')
   }
 }
 
@@ -75,23 +69,23 @@ const operateCheckinDate = (
 ): string => {
   if (lastCheckin) return operateWithLastCheckin(frequency, lastCheckin)
   switch (frequency) {
-  case frequencies[DAILY]:
-    return moment()
-      .add(1, 'd')
-      .format('MM-DD-YY')
-  case frequencies[WEEKLY]:
-    return moment()
-      .add(1, 'w')
-      .format('MM-DD-YY')
-  case frequencies[BIWEEKLY]:
-    return moment()
-      .add(3, 'd')
-      .add('12', 'h')
-      .format('MM-DD-YY')
-  case frequencies[MONTHLY]:
-    return moment()
-      .add(1, 'M')
-      .format('MM-DD-YY')
+    case frequencies[DAILY]:
+      return moment()
+        .add(1, 'd')
+        .format('MM-DD-YY')
+    case frequencies[WEEKLY]:
+      return moment()
+        .add(1, 'w')
+        .format('MM-DD-YY')
+    case frequencies[BIWEEKLY]:
+      return moment()
+        .add(3, 'd')
+        .add('12', 'h')
+        .format('MM-DD-YY')
+    case frequencies[MONTHLY]:
+      return moment()
+        .add(1, 'M')
+        .format('MM-DD-YY')
   }
 }
 
@@ -226,6 +220,7 @@ class CheckinElement extends React.PureComponent<CheckinElementProps> {
                         checkinStyles.stepText,
                         checkinStyles.buttonText,
                         styles.title,
+                        styles.metro,
                         textStyle,
                       ]}
                     >
@@ -260,6 +255,7 @@ class CheckinElement extends React.PureComponent<CheckinElementProps> {
                     style={[
                       styles.date,
                       frequency !== localFrequency ? styles.changedDate : {},
+                      styles.metro,
                       textStyle,
                     ]}
                   >
@@ -285,6 +281,7 @@ class CheckinElement extends React.PureComponent<CheckinElementProps> {
                       frequency !== localFrequency
                         ? styles.saveText
                         : styles.saveTextDisabled,
+                      styles.metro,
                     ]}
                   >
                     Save
@@ -303,6 +300,7 @@ class CheckinElement extends React.PureComponent<CheckinElementProps> {
               style={[
                 checkinStyles.subtitle,
                 checkinStyles.buttonText,
+                styles.metro,
                 textStyle,
               ]}
             >

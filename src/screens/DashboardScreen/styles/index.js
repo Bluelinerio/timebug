@@ -46,10 +46,12 @@ export default StyleSheet.create({
     fontSize: 18,
     color: darkBlue,
     fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   greetingSub: {
     ...iOSUIKit.bodyObject,
     textAlign: 'center',
+    fontFamily: 'Metropolis',
     fontSize: 15,
     color: darkBlue,
     marginVertical: 8,
@@ -57,12 +59,15 @@ export default StyleSheet.create({
   recommendation: {
     ...iOSUIKit.subheadObject,
     color: darkBlue,
+    fontFamily: 'Metropolis',
   },
   recommendationEmphasized: {
     ...iOSUIKit.subheadEmphasizedObject,
     color: darkBlue,
     fontStyle: 'italic',
     textDecorationLine: 'underline',
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   insightContainer: {
     marginVertical: 12,
@@ -72,11 +77,14 @@ export default StyleSheet.create({
     ...iOSUIKit.subheadEmphasizedObject,
     color: darkBlue,
     fontStyle: 'italic',
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   insightText: {
     ...iOSUIKit.footnoteObject,
     color: darkBlue,
     fontStyle: 'italic',
+    fontFamily: 'Metropolis',
   },
   checkinAreaContainer: {
     flexDirection: 'column',
@@ -105,15 +113,19 @@ export default StyleSheet.create({
   checkinTitle: {
     ...iOSUIKit.subheadEmphasizedObject,
     color: darkBlue,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   checkinText: {
     ...iOSUIKit.subheadObject,
     color: darkBlue,
+    fontFamily: 'Metropolis',
   },
   link: {
     ...iOSUIKit.subheadObject,
     color: darkBlue,
     textDecorationLine: 'underline',
+    fontFamily: 'Metropolis',
   },
   progressContainer: {
     padding: 12,
@@ -157,6 +169,8 @@ export default StyleSheet.create({
     ...iOSUIKit.subheadEmphasizedObject,
     textAlign: 'center',
     color: white2,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   notLoggedContainer: {
     flexDirection: 'column',

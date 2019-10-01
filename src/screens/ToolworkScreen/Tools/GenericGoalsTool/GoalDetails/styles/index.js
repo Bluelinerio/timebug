@@ -25,30 +25,42 @@ export default StyleSheet.create({
   text: {
     ...iOSUIKit.bodyEmphasizedObject,
     color: gray900,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   title: {
     ...iOSUIKit.title3EmphasizedObject,
     color: SELF_ASSESSMENT,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   category: {
     ...iOSUIKit.title3EmphasizedObject,
     fontSize: 18,
     color: SELF_ASSESSMENT,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   detailsStandard: {
     ...iOSUIKit.title3EmphasizedObject,
     fontSize: 18,
     color: SELF_ASSESSMENT,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   completionProgress: {
     ...iOSUIKit.title3EmphasizedObject,
     fontSize: 20,
     color: SELF_ASSESSMENT,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   goalTimeLeft: {
     ...iOSUIKit.subheadEmphasizedObject,
     color: SELF_ASSESSMENT,
     textAlign: 'center',
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   goalText: {
     color: gray900,
@@ -69,6 +81,8 @@ export default StyleSheet.create({
     ...iOSUIKit.bodyEmphasizedObject,
     color: gray50,
     textAlign: 'center',
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   borderedButton: {
     borderRightWidth: 2,
@@ -79,6 +93,8 @@ export default StyleSheet.create({
     fontSize: 22,
     color: SELF_ASSESSMENT,
     marginVertical: 8,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   substepContainer: {
     paddingHorizontal: 8,
@@ -129,9 +145,13 @@ export default StyleSheet.create({
   substepName: {
     ...iOSUIKit.title3Emphasized,
     color: gray900,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   subscript: {
     ...iOSUIKit.caption2Object,
     marginLeft: 6,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
 })

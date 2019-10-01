@@ -1,6 +1,8 @@
-import * as React from 'react';
-import { StyleSheet, TouchableOpacity, Text } from 'react-native';
-import { iOSColors } from 'react-native-typography';
+// @flow
+import * as React                       from 'react'
+import { StyleSheet, TouchableOpacity } from 'react-native'
+import Text                             from '2020_components/Text'
+import { iOSColors }                    from 'react-native-typography'
 
 const styles = StyleSheet.create({
   reset: {
@@ -13,7 +15,7 @@ const styles = StyleSheet.create({
   resetText: {
     color: '#FAFAFA',
   },
-});
+})
 
 const SimpleButton = ({
   hide,
@@ -29,7 +31,7 @@ const SimpleButton = ({
         <Text style={styles.resetText}>{'DEV: Press to reset steps'}</Text>
       </TouchableOpacity>
     )
-  );
-};
+  )
+}
 
-export default SimpleButton;
+export default SimpleButton

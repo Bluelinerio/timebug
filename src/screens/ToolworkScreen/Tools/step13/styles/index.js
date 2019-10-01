@@ -27,6 +27,8 @@ export default StyleSheet.create({
   buttonText: {
     ...iOSUIKit.bodyEmphasizedObject,
     color: gray900,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   textAreaContainer: {
     alignItems: 'center',

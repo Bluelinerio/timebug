@@ -1,5 +1,5 @@
 import { StyleSheet, Platform } from 'react-native'
-import { iOSUIKit }             from 'react-native-typography'
+import { iOSUIKit } from 'react-native-typography'
 import {
   darkBlue,
   azure,
@@ -7,11 +7,11 @@ import {
   red500,
   cyan500,
   yellow500,
-}                               from '2020_constants/colors'
+} from '2020_constants/colors'
 import {
   widthPercentage,
   heightPercentage,
-}                               from '2020_utils/viewportCalculation'
+} from '2020_utils/viewportCalculation'
 
 const optionsWidth = widthPercentage(60)
 const optionsHeight = heightPercentage(15)
@@ -56,6 +56,8 @@ export default StyleSheet.create({
     ...iOSUIKit.footnoteEmphasizedObject,
     color: darkBlue,
     textAlign: 'center',
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   carouselContainer: {
     flex: 1,
@@ -105,6 +107,8 @@ export default StyleSheet.create({
     ...iOSUIKit.bodyEmphasizedObject,
     color: darkBlue,
     textAlign: 'center',
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   subHeader: {
     maxHeight: '12.5%',
@@ -162,6 +166,8 @@ export default StyleSheet.create({
     ...iOSUIKit.bodyEmphasizedObject,
     color: white2,
     textAlign: 'center',
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   padded: {
     padding: 16,
@@ -186,6 +192,8 @@ export default StyleSheet.create({
     color: darkBlue,
     textAlign: 'center',
     marginRight: 8,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
   hidden: {
     position: 'absolute',
@@ -197,6 +205,8 @@ export default StyleSheet.create({
   hiddenText: {
     ...iOSUIKit.bodyEmphasizedObject,
     fontSize: 11,
+    fontFamily: 'Metropolis',
+    fontWeight: '700',
   },
 })
 

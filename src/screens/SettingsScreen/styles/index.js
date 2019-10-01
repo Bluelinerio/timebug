@@ -20,10 +20,14 @@ export default StyleSheet.create({
   title: {
     ...iOSUIKit.title3EmphasizedObject,
     color: darkBlue,
+    fontWeight: '700',
+    fontFamily: 'Metropolis',
   },
   settingTitle: {
     ...iOSUIKit.bodyEmphasizedObject,
     color: darkBlue,
+    fontWeight: '700',
+    fontFamily: 'Metropolis',
   },
   genericRow: {
     flexDirection: 'row',
@@ -52,11 +56,13 @@ export default StyleSheet.create({
   text: {
     ...iOSUIKit.bodyObject,
     color: darkBlue,
+    fontFamily: 'Metropolis',
   },
   link: {
     ...iOSUIKit.subheadObject,
     color: darkBlue,
     textDecorationLine: 'underline',
+    fontFamily: 'Metropolis',
   },
   settingTextContainer: {
     flex: 3,
@@ -66,6 +72,7 @@ export default StyleSheet.create({
     ...iOSUIKit.bodyObject,
     marginLeft: 4,
     color: darkBlue,
+    fontFamily: 'Metropolis',
   },
   switchContainer: {
     alignItems: 'center',
@@ -84,5 +91,6 @@ export default StyleSheet.create({
     ...iOSUIKit.subheadObject,
     color: darkBlue,
     textDecorationLine: 'underline',
+    fontFamily: 'Metropolis',
   },
 })
