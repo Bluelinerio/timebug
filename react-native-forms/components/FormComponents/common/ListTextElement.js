@@ -53,11 +53,7 @@ const TextElement = ({
     <React.Fragment>
       {text && (
         <View
-          style={[
-            styles.indented,
-            styles.row,
-            styles.listTextAnswersContainer,
-          ]}
+          style={[styles.indented, styles.row, styles.listTextAnswersContainer]}
         >
           <View style={styles.listTextAnswerTextContainer}>
             {text &&
@@ -77,25 +73,14 @@ const TextElement = ({
               ))}
           </View>
           <TouchableOpacity style={styles.listTextAnswerIconContainer}>
-            <TouchableOpacity
-              onPress={onEditPress}
-              style={[
-                styles.listTextEditIcon,
-                editObjectId === element._id
-                  ? {
-                    backgroundColor:
-                        formStyles.accentColor || TEMPORARY_COLOR_FOR_BUTTONS,
-                  }
-                  : {},
-              ]}
-            >
+            <TouchableOpacity onPress={onEditPress}>
               <SvgIcon
                 name={'Edit'}
                 {...iconStyle}
                 fill={
                   editObjectId === element._id
-                    ? helperIconColorIfSelected
-                    : formStyles.accentColor || TEMPORARY_COLOR_FOR_BUTTONS
+                    ? formStyles.accentColor || TEMPORARY_COLOR_FOR_BUTTONS
+                    : helperIconColorIfSelected
                 }
               />
             </TouchableOpacity>
