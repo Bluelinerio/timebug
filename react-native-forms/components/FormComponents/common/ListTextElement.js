@@ -85,13 +85,8 @@ const TextElement = ({
                   ? {
                     backgroundColor:
                         formStyles.accentColor || TEMPORARY_COLOR_FOR_BUTTONS,
-                    borderColor:
-                        formStyles.accentColor || TEMPORARY_COLOR_FOR_BUTTONS,
                   }
-                  : {
-                    borderColor:
-                        formStyles.accentColor || TEMPORARY_COLOR_FOR_BUTTONS,
-                  },
+                  : {},
               ]}
             >
               <SvgIcon
