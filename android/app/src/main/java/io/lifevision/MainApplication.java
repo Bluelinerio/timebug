@@ -3,6 +3,7 @@ package io.lifevision;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.swmansion.reanimated.ReanimatedPackage;
 import io.sentry.RNSentryPackage;
 // import com.moengage.core.MoEngage;
 // import com.moengage.react.MoEReactPackage;
@@ -17,6 +18,8 @@ import com.corbt.keepawake.KCKeepAwakePackage;
 import com.microsoft.codepush.react.CodePush;
 import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
 import com.brentvatne.react.ReactVideoPackage;
+import android.content.Context;
+
 import com.joshuapinter.RNUnifiedContacts.RNUnifiedContactsPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.zmxv.RNSound.RNSoundPackage;
@@ -39,6 +42,7 @@ import android.content.Intent;
 import java.util.Arrays;
 import java.util.List;
 import com.BV.LinearGradient.LinearGradientPackage;
+import java.lang.reflect.InvocationTargetException;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -50,44 +54,50 @@ public class MainApplication extends Application implements ReactApplication {
 
   private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
 
-  @Override
-  protected String getJSBundleFile() {
-  return CodePush.getJSBundleFile();
-  }
+    @Override
+    protected String getJSBundleFile() {
+      return CodePush.getJSBundleFile();
+    }
     
-  @Override
-  public boolean getUseDeveloperSupport() {
-    return BuildConfig.DEBUG;
-  }
+    @Override
+    public boolean getUseDeveloperSupport() {
+      return BuildConfig.DEBUG;
+    }
 
-  @Override
-  protected List<ReactPackage> getPackages() {
-    return Arrays.<ReactPackage>asList(
-          new MainReactPackage(),
-            new RNSentryPackage(),
+    @Override
+    protected List<ReactPackage> getPackages() {
+      return Arrays.<ReactPackage>asList(
+        new MainReactPackage(),
+            new ReanimatedPackage(),
+        new RNSentryPackage(),
+        new RNFirebasePackage(),
+        new RNCWebViewPackage(),
+        new ReactSliderPackage(),
+        new AsyncStoragePackage(),
+        new ReactNativeContacts(),
+        new KCKeepAwakePackage(),
+        new CodePush(BuildConfig.CODEPUSH_KEY, getApplicationContext(), BuildConfig.DEBUG),
+        new ReactNativePushNotificationPackage(),
+        new ReactVideoPackage(),
+        new RNGestureHandlerPackage(),
+        new RNUnifiedContactsPackage(),
+        new RNSoundPackage(),
+        new RNDeviceInfo(),
+        new SvgPackage(),
+        new FBSDKPackage(),
+        new VectorIconsPackage(),
+        new LinearGradientPackage(),
+        new BlurViewPackage(),
+        new OpenSettingsPackage(),
             // new MoEReactPackage(),
-          new RNFirebasePackage(),
-          new RNCWebViewPackage(),
-          new ReactSliderPackage(),
-          new AsyncStoragePackage(),
-          new ReactNativeContacts(),
-          new KCKeepAwakePackage(),
-          new CodePush(BuildConfig.CODEPUSH_KEY, getApplicationContext(), BuildConfig.DEBUG),
-          new ReactNativePushNotificationPackage(),
-          new ReactVideoPackage(),
-          new RNGestureHandlerPackage(),
-          new RNUnifiedContactsPackage(),
-          new RNSoundPackage(),
-          new RNDeviceInfo(),
-          new SvgPackage(),
-          new FBSDKPackage(mCallbackManager),
-          new VectorIconsPackage(),
-          new LinearGradientPackage(),
-          new BlurViewPackage(),
-          new OpenSettingsPackage(),
-          new RNFirebaseMessagingPackage()
-    );
-  }
+        new RNFirebaseMessagingPackage()
+      );
+    }
+
+    // @Override
+    // protected String getJSMainModuleName() {
+    //   return "index";
+    // }
   };
 
   @Override
@@ -103,6 +113,32 @@ public class MainApplication extends Application implements ReactApplication {
     //         new MoEngage.Builder(this, "UZXYFJ0V2RQRUFJTMVHOAJKC")
     //                 .build();
     // MoEngage.initialise(moEngage);
+  }
+
+  /**
+   * Loads Flipper in React Native templates.
+   *
+   * @param context
+   */
+  private static void initializeFlipper(Context context) {
+    if (BuildConfig.DEBUG) {
+      try {
+        /*
+         We use reflection here to pick up the class that initializes Flipper,
+        since Flipper library is not available in release mode
+        */
+        Class<?> aClass = Class.forName("com.facebook.flipper.ReactNativeFlipper");
+        aClass.getMethod("initializeFlipper", Context.class).invoke(null, context);
+      } catch (ClassNotFoundException e) {
+        e.printStackTrace();
+      } catch (NoSuchMethodException e) {
+        e.printStackTrace();
+      } catch (IllegalAccessException e) {
+        e.printStackTrace();
+      } catch (InvocationTargetException e) {
+        e.printStackTrace();
+      }
+    }
   }
 
 }

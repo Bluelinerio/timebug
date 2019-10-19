@@ -11,6 +11,9 @@ import com.google.gms.googleservices.GoogleServicesPlugin
  * and their defaults. If you decide to add a configuration block, make sure to add it before the
  * `apply from: "../../node_modules/react-native/react.gradle"` line.
  *
+ *   // https://facebook.github.io/react-native/docs/performance#enable-the-ram-format
+ *   bundleCommand: "ram-bundle",
+ *
  * project.ext.react = [
  *   // the name of the generated asset file containing your JS bundle
  *   bundleAssetName: "index.android.bundle",
@@ -64,6 +67,33 @@ import com.google.gms.googleservices.GoogleServicesPlugin
  *   extraPackagerArgs: []
  * ]
  */
+
+/**
+ * The preferred build flavor of JavaScriptCore.
+ *
+ * For example, to use the international variant, you can use:
+ * `def jscFlavor = 'org.webkit:android-jsc-intl:+'`
+ *
+ * The international variant includes ICU i18n library and necessary data
+ * allowing to use e.g. `Date.toLocaleString` and `String.localeCompare` that
+ * give correct results when using with locales other than en-US.  Note that
+ * this variant is about 6MiB larger per architecture than default.
+ */
+def jscFlavor = 'org.webkit:android-jsc:+'
+
+project.ext.react = [
+    entryFile: "index.js",
+    enableHermes: false,  // clean and rebuild if changing
+]
+
+/**
+ * Whether to enable the Hermes VM.
+ *
+ * This should be set on project.ext.react and mirrored here.  If it is not set
+ * on project.ext.react, JavaScript will not be compiled to Hermes Bytecode
+ * and the benefits of using Hermes will therefore be sharply reduced.
+ */
+def enableHermes = project.ext.react.get("enableHermes", false);
 
 apply from: "../../node_modules/react-native/react.gradle"
 apply from: "../../node_modules/@sentry/react-native/sentry.gradle"
@@ -200,6 +230,7 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-reanimated')
     implementation project(':@sentry_react-native')
     // implementation "com.moengage:moe-android-sdk:+"
     implementation project(':react-native-firebase')
@@ -235,19 +266,14 @@ dependencies {
         force = true;
     }
 
-    // androidTestImplementation(project(path: ":detox"))
-    // androidTestImplementation 'junit:junit:4.12'
-    // androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    // androidTestImplementation 'com.android.support.test:rules:1.0.1'
+    if (enableHermes) {
+        def hermesPath = "../../node_modules/hermes-engine/android/";
+        debugImplementation files(hermesPath + "hermes-debug.aar")
+        releaseImplementation files(hermesPath + "hermes-release.aar")
+    } else {
+        implementation jscFlavor
+    }
 
-    //Uncomment if some sort of incompatibility surges with jackson
-//     androidTestCompile(project(path: ":detox", configuration: "oldOkhttpDebug"), {
-//      exclude group: 'com.android.support', module: 'support-annotations'
-//      exclude group: 'com.fasterxml.jackson.core', module: 'jackson-core'
-//      exclude group: 'com.fasterxml.jackson.core', module: 'jackson-databind'
-    // })
-    // androidTestCompile 'com.fasterxml.jackson.core:jackson-core:2.8.7'
-    // androidTestCompile 'com.fasterxml.jackson.core:jackson-databind:2.8.7'
 }
 
 // Run this once to be able to run the application with BUCK
@@ -257,5 +283,8 @@ task copyDownloadableDepsToLibs(type: Copy) {
     into 'libs'
 }
 
+apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle");
 apply plugin: 'com.google.gms.google-services'
+applyNativeModulesAppBuildGradle(project)
+
 GoogleServicesPlugin.config.disableVersionCheck = true

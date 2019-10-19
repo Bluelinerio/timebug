@@ -7,6 +7,7 @@ import { Platform } from 'react-native'
 import {
   createStackNavigator,
   createMaterialTopTabNavigator,
+  createAppContainer
 } from 'react-navigation'
 import {
   tabBarBackground,
@@ -273,12 +274,7 @@ export const startConfiguration = {
   },
 }
 
-export const StartNavigator = createStackNavigator(
+export const StartNavigator = createAppContainer(createStackNavigator(
   startConfiguration.screens,
   startConfiguration.options
-)
-
-// fix for debouncing
-import { fixDebounce } from './util'
-fixDebounce(RootNavigator)
-fixDebounce(AssignmentFlowNavigator)
+))

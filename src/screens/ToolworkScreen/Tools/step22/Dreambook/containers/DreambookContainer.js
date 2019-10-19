@@ -1,5 +1,5 @@
 // @flow
-import React, { useCallback, useContext, useMemo, useEffect } from 'React'
+import React, { useCallback, useContext, useMemo, useEffect } from 'react'
 import Dreambook from '../components/Dreambook'
 import { DreamContext } from '../../context/DreamContext'
 

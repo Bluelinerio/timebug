@@ -18,8 +18,6 @@ export const navigateOnce = getStateForAction => (action, state) => {
   // you might want to replace 'null' with 'state' if you're using redux (see comments below)
 };
 
-// Official (but not working...)
-import deepDiffer from 'react-native/lib/deepDiffer';
 
 export const getActiveRouteForState = navigationState =>
   navigationState.routes
@@ -31,7 +29,7 @@ export const isEqualRoute = (route1, route2) => {
     return false;
   }
 
-  return !deepDiffer(route1.params, route2.params);
+  return true
 };
 
 const PATTERN_DRAWER_ROUTE_KEY = /^Drawer(Open|Close|Toggle)$/;

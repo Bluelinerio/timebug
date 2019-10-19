@@ -20,3 +20,14 @@ If you don't see those settings, verify that "All" is selected at the top (inste
 
 ### PROGUARD
 Check every package for their proguard config, since it may screw up releases
+
+# 10/19/19
+## UPDATE TO 0.61
+- Followed [This diff](https://react-native-community.github.io/upgrade-helper/?from=0.59.8&to=0.61.2)
+- Updated `react-native-video` package
+- Updated `react-native-code-push`
+- Updated `react-native-fbsdk`
+- Removed mCallbackManager param from FBSDK constructor
+- Updated `react-native-gesture-handler`
+- Updated `react-navigation` to v3
+- Added `react-native-reanimated`

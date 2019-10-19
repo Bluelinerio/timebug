@@ -33,7 +33,6 @@
 		207834E9B83E4273B1CB16C3 /* 2020-diary-step-18.png in Resources */ = {isa = PBXBuildFile; fileRef = 060751800068405D9D7304E8 /* 2020-diary-step-18.png */; };
 		21F9891CE54347828F75075D /* 2020-diary-step-4.png in Resources */ = {isa = PBXBuildFile; fileRef = F2B168944D894400B00FBDD0 /* 2020-diary-step-4.png */; };
 		242E33E72B3D44169DD04118 /* 2020-diary-step-11.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F8B322E03F54BF3910BD769 /* 2020-diary-step-11.png */; };
-		26A5DC7A3FCE464C90FDBE94 /* libRCTVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ED6F842A92D4871AEEC8C42 /* libRCTVideo.a */; };
 		275FFA3D7A0447399A5B22B3 /* 2020-diary-step-21.png in Resources */ = {isa = PBXBuildFile; fileRef = F195A117F48242A8A9C7F175 /* 2020-diary-step-21.png */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -361,20 +360,6 @@
 			remoteGlobalIDString = 64D1BD361EEFE88700F3F219;
 			remoteInfo = "RNBlur-tvOS";
 		};
-		5924913C21513006008C4319 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F1048BC6444A4FCEBDF4C6F7 /* RCTVideo.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = RCTVideo;
-		};
-		5924913E21513006008C4319 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F1048BC6444A4FCEBDF4C6F7 /* RCTVideo.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 641E28441F0EEC8500443AF6;
-			remoteInfo = "RCTVideo-tvOS";
-		};
 		59525DCE22AABCE1006BF7AC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FA865A1A3D004AE8A98CD460 /* RNCAsyncStorage.xcodeproj */;
@@ -679,7 +664,6 @@
 		438C5B65F4444DCEB4A4B69F /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
 		45C7FD8C56B74DD488C34A19 /* libRNDeviceInfo-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNDeviceInfo-tvOS.a"; sourceTree = "<group>"; };
 		464C449773C043B18E4DBDBB /* Lifevision-Collage@3x.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Lifevision-Collage@3x.png"; path = "../src/resources/images/Lifevision-Collage@3x.png"; sourceTree = "<group>"; };
-		4ED6F842A92D4871AEEC8C42 /* libRCTVideo.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTVideo.a; sourceTree = "<group>"; };
 		4F8B322E03F54BF3910BD769 /* 2020-diary-step-11.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-11.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-11.png"; sourceTree = "<group>"; };
 		50B0CF0D3FB74E0EBF86974B /* Metropolis-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-Bold.otf"; path = "../src/resources/fonts/Metropolis/Metropolis-Bold.otf"; sourceTree = "<group>"; };
 		5324C2C862464F11BD043E1F /* Metropolis-ExtraBoldItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-ExtraBoldItalic.otf"; path = "../src/resources/fonts/Metropolis/Metropolis-ExtraBoldItalic.otf"; sourceTree = "<group>"; };
@@ -769,7 +753,6 @@
 		ED5A75A3A8234F18B3769CE0 /* libRNFirebase.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNFirebase.a; sourceTree = "<group>"; };
 		F013D1E12B514B159F21CD08 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/native-base/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		F0EBF3E0459142769A70609D /* libReactNativeConfig.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libReactNativeConfig.a; sourceTree = "<group>"; };
-		F1048BC6444A4FCEBDF4C6F7 /* RCTVideo.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTVideo.xcodeproj; path = "../node_modules/react-native-video/ios/RCTVideo.xcodeproj"; sourceTree = "<group>"; };
 		F195A117F48242A8A9C7F175 /* 2020-diary-step-21.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-21.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-21.png"; sourceTree = "<group>"; };
 		F2B168944D894400B00FBDD0 /* 2020-diary-step-4.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-4.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-4.png"; sourceTree = "<group>"; };
 		F3AA8209762749419CAD7870 /* libReactNativePermissions.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libReactNativePermissions.a; sourceTree = "<group>"; };
@@ -826,7 +809,6 @@
 				1657CF3E64824045B977B0E8 /* libz.tbd in Frameworks */,
 				D8E8CAB258734FEBAD0CA23C /* libRNSound.a in Frameworks */,
 				54B7DBAC82DA43898AB720DF /* libRNGestureHandler.a in Frameworks */,
-				26A5DC7A3FCE464C90FDBE94 /* libRCTVideo.a in Frameworks */,
 				B8F4F4B4509F48E29C8EEA5A /* libKCKeepAwake.a in Frameworks */,
 				04732F952E5B492190CD2487 /* libRCTContacts.a in Frameworks */,
 				A15D99EDCA44480EBFB049BE /* libRNBlur.a in Frameworks */,
@@ -1094,15 +1076,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5924913821513004008C4319 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				5924913D21513006008C4319 /* libRCTVideo.a */,
-				5924913F21513006008C4319 /* libRCTVideo.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		59525DBB22AABCE1006BF7AC /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -1350,7 +1323,6 @@
 				98905C02CDCF40399425FF6E /* CodePush.xcodeproj */,
 				6232EC316E764FCEAFFE34E3 /* RNSound.xcodeproj */,
 				D542C96B49034D2BB567DA4E /* RNGestureHandler.xcodeproj */,
-				F1048BC6444A4FCEBDF4C6F7 /* RCTVideo.xcodeproj */,
 				F40AEF57130C411D8156A394 /* KCKeepAwake.xcodeproj */,
 				85B8935F72F64C038664ED5B /* RCTContacts.xcodeproj */,
 				B723FFEBE3A44F2F84079B6F /* RNBlur.xcodeproj */,
@@ -1603,10 +1575,6 @@
 				{
 					ProductGroup = 00C302E01ABCB9EE00DB3ED1 /* Products */;
 					ProjectRef = 00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */;
-				},
-				{
-					ProductGroup = 5924913821513004008C4319 /* Products */;
-					ProjectRef = F1048BC6444A4FCEBDF4C6F7 /* RCTVideo.xcodeproj */;
 				},
 				{
 					ProductGroup = 139FDEE71B06529A00C62182 /* Products */;
@@ -1877,20 +1845,6 @@
 			fileType = archive.ar;
 			path = libRNBlur.a;
 			remoteRef = 591291D22280860D0075AE7A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		5924913D21513006008C4319 /* libRCTVideo.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRCTVideo.a;
-			remoteRef = 5924913C21513006008C4319 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		5924913F21513006008C4319 /* libRCTVideo.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRCTVideo.a;
-			remoteRef = 5924913E21513006008C4319 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		59525DCF22AABCE1006BF7AC /* libRNCAsyncStorage.a */ = {

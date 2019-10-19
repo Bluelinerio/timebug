@@ -19,7 +19,6 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
-project.xcworkspace
 
 # Gradle
 /build/
@@ -42,6 +41,7 @@ buck-out/
 local.properties
 *.iml
 *.keystore
+!debug.keystore
 /android/**/.project
 android/**/bin/
 android/app/build/
@@ -112,3 +112,6 @@ android/app/\.classpath
 android/app/\.settings/
 
 cache.json
+
+# CocoaPods
+/ios/Pods/

@@ -1,6 +1,7 @@
 // @flow
 import React              from 'react'
 import { Linking }        from 'react-native'
+import { createAppContainer } from 'react-navigation'
 import { uriPrefix }      from '../constants'
 import { StartNavigator } from './index'
 import NavigationService  from '2020_services/navigation'

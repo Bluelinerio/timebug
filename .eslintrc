@@ -1,4 +1,5 @@
 {
+  "root": true,
   "env": {
     "browser": true,
     "es6": true,
@@ -9,7 +10,7 @@
     "sourceType": "module",
   },
   "plugins": ["react", "flowtype"],
-  "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:flowtype/recommended"],
+  "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:flowtype/recommended", "'@react-native-community'"],
   "rules": {
     "comma-dangle": ["error", "always-multiline"],
     "no-console": 0,

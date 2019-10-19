@@ -1,5 +1,5 @@
 // @flow
-import { useContext }      from 'React'
+import { useContext }      from 'react'
 import { CategoryContext } from '../context/CategoryContext'
 
 export const useIcon = (category: string) => {
