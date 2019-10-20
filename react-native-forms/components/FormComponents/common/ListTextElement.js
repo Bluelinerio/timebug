@@ -6,7 +6,7 @@ import { stripKeys } from '../../../utils/stripKeys'
 import styles, {
   TEMPORARY_COLOR_FOR_BUTTONS,
   iconStyle,
-  helperIconColorIfSelected,
+  helperIconColorIfSelected
 } from '../../../styles'
 
 type ValueElement = {
@@ -14,8 +14,8 @@ type ValueElement = {
   _model: any,
   [x: string]: {
     value: any,
-    key: string,
-  },
+    key: string
+  }
 }
 
 const isBoolean = value => value.value === true || value.value === false
@@ -34,12 +34,13 @@ const TextElement = ({
   formStyles = {},
   onEditPress,
   editObjectId,
+  onDeletePress
 }: {
   index: number,
   element: ValueElement,
   formStyles: any,
   onEditPress: () => any,
-  editObjectId: string,
+  editObjectId: string
 }) => {
   const strippedObject = stripKeys(element)
   const text = Object.values(strippedObject)
@@ -53,11 +54,7 @@ const TextElement = ({
     <React.Fragment>
       {text && (
         <View
-          style={[
-            styles.indented,
-            styles.row,
-            styles.listTextAnswersContainer,
-          ]}
+          style={[styles.indented, styles.row, styles.listTextAnswersContainer]}
         >
           <View style={styles.listTextAnswerTextContainer}>
             {text &&
@@ -69,7 +66,7 @@ const TextElement = ({
                     index === 0
                       ? styles.textElementText
                       : styles.textElementSubText,
-                    formStyles.textStyle,
+                    formStyles.textStyle
                   ]}
                 >
                   {txt}
@@ -83,15 +80,15 @@ const TextElement = ({
                 styles.listTextEditIcon,
                 editObjectId === element._id
                   ? {
-                    backgroundColor:
+                      backgroundColor:
                         formStyles.accentColor || TEMPORARY_COLOR_FOR_BUTTONS,
-                    borderColor:
-                        formStyles.accentColor || TEMPORARY_COLOR_FOR_BUTTONS,
-                  }
+                      borderColor:
+                        formStyles.accentColor || TEMPORARY_COLOR_FOR_BUTTONS
+                    }
                   : {
-                    borderColor:
-                        formStyles.accentColor || TEMPORARY_COLOR_FOR_BUTTONS,
-                  },
+                      borderColor:
+                        formStyles.accentColor || TEMPORARY_COLOR_FOR_BUTTONS
+                    }
               ]}
             >
               <SvgIcon
@@ -102,6 +99,16 @@ const TextElement = ({
                     ? helperIconColorIfSelected
                     : formStyles.accentColor || TEMPORARY_COLOR_FOR_BUTTONS
                 }
+              />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={onDeletePress}
+              style={[styles.listTextEditIcon]}
+            >
+              <SvgIcon
+                name={'Edit'}
+                {...iconStyle}
+                fill={formStyles.accentColor || TEMPORARY_COLOR_FOR_BUTTONS}
               />
             </TouchableOpacity>
           </TouchableOpacity>

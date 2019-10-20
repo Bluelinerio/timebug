@@ -1,30 +1,28 @@
-import React                                   from 'react'
+import React from 'react'
 import { View, Text, Alert, TouchableOpacity } from 'react-native'
-import Icon                                    from 'react-native-vector-icons/Ionicons'
-import uuid                                    from 'uuid/v4'
-import FormElementHeader                       from './FormElementHeader'
-import TextElement                             from './common/ListTextElement'
-import styles, {
-  TEMPORARY_COLOR_FOR_BUTTONS,
-}                                              from '../../styles'
-import FormPicker                              from './FormPicker'
-import types                                   from '../../forms/types'
+import Icon from 'react-native-vector-icons/Ionicons'
+import uuid from 'uuid/v4'
+import FormElementHeader from './FormElementHeader'
+import TextElement from './common/ListTextElement'
+import styles, { TEMPORARY_COLOR_FOR_BUTTONS } from '../../styles'
+import FormPicker from './FormPicker'
+import types from '../../forms/types'
 import {
   mapChildtypeIndexesToKeys,
   buildInitialValue,
-  getFormItems,
-}                                              from '../../utils/formHelpers'
-import { stripKeys }                           from '../../utils/stripKeys'
+  getFormItems
+} from '../../utils/formHelpers'
+import { stripKeys } from '../../utils/stripKeys'
 
 type Props = {
   value: Array<any>,
   onChange: () => any,
   field: {
     content?: any,
-    options?: any,
+    options?: any
   },
   formStyles: any,
-  currentFormValue: Object,
+  currentFormValue: Object
 }
 
 type ValueElement = {
@@ -32,13 +30,13 @@ type ValueElement = {
   _model: any,
   [x: string]: {
     value: any,
-    key: string,
-  },
+    key: string
+  }
 }
 
 type State = {
   value: Array<ValueElement>,
-  currentValue: ValueElement,
+  currentValue: ValueElement
 }
 
 // TODO: Derive currentValue from props instead of using setState asynchronously
@@ -52,14 +50,14 @@ class ListComponent extends React.PureComponent<Props, State> {
       isEditing: false,
       currentValue,
       indexesMap,
-      editObjectId: null,
+      editObjectId: null
     }
   }
 
   componentDidUpdate = prevProps => {
     if (this.props.value !== prevProps.value) {
       this.setState({
-        currentValue: buildInitialValue(this.props),
+        currentValue: buildInitialValue(this.props)
       })
     }
   }
@@ -70,8 +68,8 @@ class ListComponent extends React.PureComponent<Props, State> {
     this.setState({
       currentValue: {
         ...currentValue,
-        [key]: { ...valueForKey, value, key, index },
-      },
+        [key]: { ...valueForKey, value, key, index }
+      }
     })
   }
 
@@ -82,12 +80,12 @@ class ListComponent extends React.PureComponent<Props, State> {
     const currentItems = getFormItems(value)
     const filtered = items
       ? items.filter(item => {
-        const filter = !isEditing
-          ? ci => ci.value === item.value
-          : ci => ci.value === item.value && ci._id !== inValue._id
-        const isSelected = currentItems && currentItems.find(filter)
-        return !isSelected
-      })
+          const filter = !isEditing
+            ? ci => ci.value === item.value
+            : ci => ci.value === item.value && ci._id !== inValue._id
+          const isSelected = currentItems && currentItems.find(filter)
+          return !isSelected
+        })
       : items
     return filtered
   }
@@ -101,7 +99,7 @@ class ListComponent extends React.PureComponent<Props, State> {
     if (hasError)
       return {
         error: 'The input text cannot be blank',
-        failed: true,
+        failed: true
       }
     if (!isEditing && constraints && constraints.max) {
       const { max } = constraints
@@ -113,11 +111,11 @@ class ListComponent extends React.PureComponent<Props, State> {
           error: maxError
             ? maxError
             : `The maximum number of elements is ${max}`,
-          failed: true,
+          failed: true
         }
     }
     return {
-      failed: false,
+      failed: false
     }
   }
 
@@ -126,13 +124,17 @@ class ListComponent extends React.PureComponent<Props, State> {
     this.setState({
       isEditing: true,
       currentValue: strippedObject,
-      editObjectId: element._id,
+      editObjectId: element._id
     })
   }
 
   _onEditDone = () => {
     const { currentValue, editObjectId } = this.state
-    const { value = [], onChange, field: { options } } = this.props
+    const {
+      value = [],
+      onChange,
+      field: { options }
+    } = this.props
     const { error, failed } = this._validate(options)
     if (failed) {
       Alert.alert('Input Error', error)
@@ -145,14 +147,14 @@ class ListComponent extends React.PureComponent<Props, State> {
           ...newValue,
           {
             ...val,
-            ...currentValue,
-          },
+            ...currentValue
+          }
         ]
     }, [])
     this.setState(
       {
         editObjectId: null,
-        isEditing: false,
+        isEditing: false
       },
       () => onChange(valueToSave)
     )
@@ -160,7 +162,11 @@ class ListComponent extends React.PureComponent<Props, State> {
 
   _onAddPress = () => {
     const { currentValue } = this.state
-    const { value = [], onChange, field: { options } } = this.props
+    const {
+      value = [],
+      onChange,
+      field: { options }
+    } = this.props
     const { childTypes } = options
     const { error, failed } = this._validate(options)
     if (failed) {
@@ -172,20 +178,24 @@ class ListComponent extends React.PureComponent<Props, State> {
         ...prev,
         [model.key]: {
           ...currentValue[model.key],
-          _id: uuid(),
-        },
+          _id: uuid()
+        }
       }
     }, {})
     onChange([
       ...(value ? value : []),
       {
         ...valueToSave,
-        _id: uuid(),
-      },
+        _id: uuid()
+      }
     ])
   }
 
-  _onDeletePress = () => {}
+  _onDeletePress = id => {
+    const { value = [], onChange } = this.props
+
+    onChange([...(value ? value.filter(v => v._id !== id) : [])])
+  }
 
   renderReferencedValue = referencedValue => {
     const { currentFormValue = {}, formStyles = {} } = this.props
@@ -202,7 +212,11 @@ class ListComponent extends React.PureComponent<Props, State> {
 
   render() {
     const { currentValue, indexesMap, isEditing, editObjectId } = this.state
-    const { field: { content, options }, value, formStyles = {} } = this.props
+    const {
+      field: { content, options },
+      value,
+      formStyles = {}
+    } = this.props
     const { childTypes, referencedValue } = options
 
     return (
@@ -235,16 +249,16 @@ class ListComponent extends React.PureComponent<Props, State> {
                     {...(type === types.select
                       ? isEditing
                         ? {
-                          __extraProps: {
-                            editObjectId,
-                            filterFunction: this._selectFilter(key),
-                          },
-                        }
+                            __extraProps: {
+                              editObjectId,
+                              filterFunction: this._selectFilter(key)
+                            }
+                          }
                         : {
-                          __extraProps: {
-                            filterFunction: this._selectFilter(key),
-                          },
-                        }
+                            __extraProps: {
+                              filterFunction: this._selectFilter(key)
+                            }
+                          }
                       : {})}
                   />
                 )
@@ -256,8 +270,8 @@ class ListComponent extends React.PureComponent<Props, State> {
                 styles.listAddButtonStyle,
                 {
                   borderColor:
-                    formStyles.accentColor || TEMPORARY_COLOR_FOR_BUTTONS,
-                },
+                    formStyles.accentColor || TEMPORARY_COLOR_FOR_BUTTONS
+                }
               ]}
               onPress={!isEditing ? this._onAddPress : this._onEditDone}
             >
@@ -268,8 +282,8 @@ class ListComponent extends React.PureComponent<Props, State> {
                       fontSize: 20,
                       marginBottom: 3,
                       color:
-                        formStyles.accentColor || TEMPORARY_COLOR_FOR_BUTTONS,
-                    },
+                        formStyles.accentColor || TEMPORARY_COLOR_FOR_BUTTONS
+                    }
                   ]}
                 >
                   +
@@ -302,6 +316,7 @@ class ListComponent extends React.PureComponent<Props, State> {
                 formStyles={formStyles}
                 onEditPress={() => this._onEditPress(val)}
                 editObjectId={editObjectId}
+                onDeletePress={this._onDeletePress}
               />
             ))}
         </View>
