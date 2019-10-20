@@ -20,3 +20,6 @@ If you don't see those settings, verify that "All" is selected at the top (inste
 
 ### PROGUARD
 Check every package for their proguard config, since it may screw up releases
+
+# 10/20/19
+Installed [react-native-datetimepicker](https://github.com/react-native-community/react-native-datetimepicker#getting-started), confim IOS installation and behavior

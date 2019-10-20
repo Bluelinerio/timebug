@@ -1,7 +1,7 @@
-import { StyleSheet, Platform }              from 'react-native'
-import hexToRgba                             from '../utils/colorTransform'
+import { StyleSheet, Platform } from 'react-native'
+import hexToRgba from '../utils/colorTransform'
 import { widthPercentage, heightPercentage } from '../utils/viewportCalculation'
-import { iOSUIKit, systemWeights }           from 'react-native-typography'
+import { iOSUIKit, systemWeights } from 'react-native-typography'
 
 export const gray400 = '#BDBDBD'
 export const white2 = '#f8f8f8'
@@ -34,7 +34,7 @@ export const maximumTrackColor = gray400
 export const iconStyle = {
   fill: gray900,
   height: helperIconSize,
-  width: helperIconSize,
+  width: helperIconSize
 }
 
 const buttonStyles = {
@@ -51,12 +51,12 @@ const buttonStyles = {
       shadowColor: 'black',
       shadowOffset: {
         width: 2,
-        height: 2,
+        height: 2
       },
       shadowOpacity: 0.3,
-      shadowRadius: 12,
-    },
-  }),
+      shadowRadius: 12
+    }
+  })
 }
 
 export const connectedComponentStyles = StyleSheet.create({
@@ -64,34 +64,34 @@ export const connectedComponentStyles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     marginVertical: 16,
-    minHeight: 50,
+    minHeight: 50
   },
   elementIdentifierContainer: {
     flex: 1,
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'flex-start',
+    justifyContent: 'flex-start'
   },
   contentContainer: {
     flex: 2,
     flexDirection: 'column',
     alignItems: 'flex-start',
-    justifyContent: 'flex-start',
+    justifyContent: 'flex-start'
   },
   pickerStyle: {
     width: '100%',
     backgroundColor: hexToRgba(azure, 0.1),
     minHeight: 25,
     maxHeight: 30,
-    flex: 1,
+    flex: 1
   },
   modalPicker: {
-    width: '100%',
+    width: '100%'
   },
   modalText: {
     ...iOSUIKit.footnoteObject,
     ...systemWeights.light,
-    fontFamily: 'Metropolis',
+    fontFamily: 'Metropolis'
   },
   pickerItemStyle: {
     color: gray900,
@@ -100,32 +100,32 @@ export const connectedComponentStyles = StyleSheet.create({
     fontSize: 12,
     height: 100,
     width: 200,
-    backgroundColor: gray50,
+    backgroundColor: gray50
   },
   pickerBackground: {
     backgroundColor: hexToRgba(azure, 0.1),
     paddingVertical: 0.5,
     borderWidth: 0.5,
     borderRadius: 4,
-    borderColor: '#cccccc',
+    borderColor: '#cccccc'
   },
   connectedElement: {
-    marginVertical: 4,
+    marginVertical: 4
   },
   text: {
-    fontFamily: 'Metropolis',
+    fontFamily: 'Metropolis'
   },
   identifierText: {
-    fontWeight: '700',
-  },
+    fontWeight: '700'
+  }
 })
 
 const formStyles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
   },
   formElementHeaderContainer: {
-    marginBottom: 20,
+    marginBottom: 20
   },
   helpButton: {
     width: 40,
@@ -133,7 +133,7 @@ const formStyles = StyleSheet.create({
     borderRadius: 20,
     backgroundColor: azure,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   helpButtonContainer: {
     flex: 1,
@@ -141,21 +141,21 @@ const formStyles = StyleSheet.create({
     alignItems: 'flex-end',
     justifyContent: 'flex-end',
     paddingRight: 20,
-    paddingTop: 10,
+    paddingTop: 10
   },
   formContainer: {
     backgroundColor: 'transparent',
     flex: 5,
     ...Platform.select({
       android: { padding: 16 },
-      ios: { padding: 10 },
+      ios: { padding: 10 }
     }),
     paddingTop: 10,
     justifyContent: 'flex-start',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   progressBar: {
-    marginBottom: 10,
+    marginBottom: 10
   },
   formButtonContainer: {
     backgroundColor: 'transparent',
@@ -164,7 +164,7 @@ const formStyles = StyleSheet.create({
     flexGrow: 0,
     padding: 8,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   formButtonContainerDual: {
     backgroundColor: 'transparent',
@@ -173,39 +173,39 @@ const formStyles = StyleSheet.create({
     flexGrow: 0,
     padding: 8,
     alignItems: 'center',
-    justifyContent: 'space-around',
+    justifyContent: 'space-around'
   },
   formButton: {
     backgroundColor: azure,
-    ...buttonStyles,
+    ...buttonStyles
   },
   formDisabledButton: {
     backgroundColor: '#606060',
-    ...buttonStyles,
+    ...buttonStyles
   },
   formButtonText: {
-    color: gray50,
+    color: gray50
   },
   labelComponent: {
-    fontFamily: 'Metropolis',
+    fontFamily: 'Metropolis'
   },
   textInputLabelStyle: {
     fontFamily: 'Metropolis',
     fontWeight: '700',
     color: formTextColor,
-    fontSize: 17,
+    fontSize: 17
   },
   textInputStyle: {
     color: gray900,
     fontFamily: 'Metropolis',
     fontSize: 16,
-    width: '100%',
+    width: '100%'
   },
   textInputLabelContainer: {
-    marginBottom: 16,
+    marginBottom: 16
   },
   formLabelContainer: {
-    marginBottom: 16,
+    marginBottom: 16
   },
   textInputContainerStyle: {
     margin: 0,
@@ -214,16 +214,16 @@ const formStyles = StyleSheet.create({
     borderWidth: 0.5,
     borderColor: '#cccccc',
     width: '80%',
-    borderRadius: 4,
+    borderRadius: 4
   },
   buttonComponentContainer: {
     flexDirection: 'row',
     paddingTop: 16,
     marginTop: 8,
-    justifyContent: 'space-around',
+    justifyContent: 'space-around'
   },
   centeredButton: {
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   buttonComponentStyle: {
     backgroundColor: azure,
@@ -235,27 +235,35 @@ const formStyles = StyleSheet.create({
         shadowColor: 'black',
         shadowOffset: {
           width: 1,
-          height: 2,
+          height: 2
         },
         shadowOpacity: 0.3,
-        shadowRadius: 1,
-      },
-    }),
+        shadowRadius: 1
+      }
+    })
   },
   listButtonContainer: {
     flex: 1,
-    alignSelf: 'center',
+    alignSelf: 'center'
   },
   pickerContainer: {
     width: '80%',
-    marginTop: 16,
+    marginTop: 16
   },
   pickerStyle: {},
+  datePickerContainer: {
+    width: '80%',
+    marginTop: 16,
+    padding: 8,
+    borderRadius: 6,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
   pickerItemStyle: {
     color: gray900,
     fontFamily: 'Metropolis',
     fontWeight: '700',
-    fontSize: 16,
+    fontSize: 16
   },
   pickerBackground: {
     width: '100%',
@@ -264,23 +272,23 @@ const formStyles = StyleSheet.create({
     paddingHorizontal: 2,
     borderWidth: 0.5,
     borderRadius: 4,
-    borderColor: '#cccccc',
+    borderColor: '#cccccc'
   },
   listFormContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 6,
-    width: '100%',
+    width: '100%'
   },
   listElementContainer: {
     marginBottom: 23,
     flex: 4,
     alignSelf: 'center',
-    width: '100%',
+    width: '100%'
   },
   listButtonStyle: {
-    maxWidth: 80,
+    maxWidth: 80
   },
   listAddButtonStyle: {
     width: buttonHeight,
@@ -294,10 +302,10 @@ const formStyles = StyleSheet.create({
     ...Platform.select({
       ios: {
         marginTop: 7,
-        marginRight: 40,
+        marginRight: 40
       },
-      android: {},
-    }),
+      android: {}
+    })
   },
   listContentContainer: {
     marginTop: 16,
@@ -306,12 +314,12 @@ const formStyles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignSelf: 'flex-start',
     alignContent: 'flex-start',
-    flex: 1,
+    flex: 1
   },
   listButtonTextStyle: {
     fontFamily: 'Metropolis',
     fontWeight: '700',
-    fontSize: 16,
+    fontSize: 16
   },
   textElementText: {
     fontSize: 13,
@@ -319,7 +327,7 @@ const formStyles = StyleSheet.create({
     fontWeight: '400',
     textAlign: 'justify',
     color: gray900,
-    alignSelf: 'flex-start',
+    alignSelf: 'flex-start'
   },
   textElementSubText: {
     ...iOSUIKit.footnoteEmphasizedObject,
@@ -327,37 +335,37 @@ const formStyles = StyleSheet.create({
     fontWeight: '700',
     textAlign: 'justify',
     alignSelf: 'flex-start',
-    color: gray900,
+    color: gray900
   },
   answersContainer: {
-    padding: 16,
+    padding: 16
   },
   answerText: {
     fontFamily: 'Metropolis',
     fontWeight: '700',
     textAlign: 'justify',
     color: gray900,
-    alignSelf: 'flex-start',
+    alignSelf: 'flex-start'
   },
   indented: {
-    paddingLeft: 16,
+    paddingLeft: 16
   },
   row: {
-    flexDirection: 'row',
+    flexDirection: 'row'
   },
   listTextAnswersContainer: {
     justifyContent: 'center',
-    paddingVertical: 8,
+    paddingVertical: 8
   },
   listTextAnswerTextContainer: {
     flex: 2,
     alignItems: 'flex-start',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   listTextAnswerIconContainer: {
     flex: 1,
     alignItems: 'flex-start',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   listTextEditIcon: {
     alignItems: 'center',
@@ -366,18 +374,18 @@ const formStyles = StyleSheet.create({
     width: 28,
     borderRadius: 14,
     borderColor: '#212121',
-    borderWidth: 1,
+    borderWidth: 1
   },
   sliderTextContainer: {
     flex: 1,
-    flexDirection: 'row',
+    flexDirection: 'row'
   },
   sliderTitleContainer: {
-    flex: 2,
+    flex: 2
   },
   sliderValueContainer: {
     flex: 1,
-    flexDirection: 'row',
+    flexDirection: 'row'
   },
   sliderValueInputContainer: {
     borderWidth: 0.5,
@@ -387,49 +395,49 @@ const formStyles = StyleSheet.create({
     maxHeight: 54,
     flexDirection: 'column',
     marginRight: 0,
-    marginLeft: 2,
+    marginLeft: 2
   },
   sliderValueInput: {
     color: gray900,
     fontFamily: 'Metropolis',
     fontSize: 16,
     width: '100%',
-    minHeight: 32,
+    minHeight: 32
   },
   sliderValueInputContainerParent: {
-    flex: 2.5,
+    flex: 2.5
   },
   sliderValueTextContainer: {
     flex: 2,
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   sliderTitle: {
     ...iOSUIKit.footnoteEmphasizedObject,
     fontFamily: 'Metropolis',
-    fontWeight: '700',
+    fontWeight: '700'
   },
   sliderSubtitle: {
     ...iOSUIKit.caption2EmphasizedObject,
     fontFamily: 'Metropolis',
-    fontWeight: '700',
+    fontWeight: '700'
   },
   componentSubtitle: {
     ...iOSUIKit.caption2EmphasizedObject,
     fontFamily: 'Metropolis',
-    fontWeight: '700',
+    fontWeight: '700'
   },
   sliderValue: {
     ...iOSUIKit.caption2EmphasizedObject,
     flex: 1,
     textAlign: 'center',
-    fontWeight: '700',
+    fontWeight: '700'
   },
   sliderSetTotalContainer: {
     alignItems: 'flex-end',
     justifyContent: 'center',
-    padding: 8,
+    padding: 8
   },
   sliderSetTotal: {
     minHeight: 30,
@@ -437,19 +445,19 @@ const formStyles = StyleSheet.create({
     borderRadius: 6,
     backgroundColor: gray400,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   totalValue: {
     ...iOSUIKit.subheadEmphasizedObject,
-    fontFamily: 'Metropolis',
+    fontFamily: 'Metropolis'
   },
   iosSelectorText: {
-    textAlign: 'left',
+    textAlign: 'left'
   },
   switchContainer: {
     alignItems: 'flex-start',
-    justifyContent: 'flex-start',
-  },
+    justifyContent: 'flex-start'
+  }
 })
 
 export default formStyles

@@ -12,6 +12,8 @@ target 'Lifevision' do
 
   
 
+  pod 'RNDateTimePicker', :path => '../node_modules/@react-native-community/datetimepicker'
+
   target 'LifevisionTests' do
     inherit! :search_paths
     # Pods for testing

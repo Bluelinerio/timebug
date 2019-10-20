@@ -1,22 +1,23 @@
 // @flow
-import { Platform }                        from 'react-native'
+import { Platform } from 'react-native'
 import types, { actionTypes, answerTypes } from 'react-native-forms/forms/types'
-import type { Form }                       from 'react-native-forms/types/formTypes'
+import type { Form } from 'react-native-forms/types/formTypes'
+import { PHASE_1_INCOMPLETE } from '2020_constants/colors'
 
 export const FORM_KEYS = {
   form_6_other_person_goal: 'form_6_other_person_goal',
-  form_6_plan_and_estimated_time: 'form_6_plan_and_estimated_time',
+  form_6_plan_and_estimated_time: 'form_6_plan_and_estimated_time'
 }
 
 export const CHILDREN_KEYS = {
   form_6_other_person_goal: {
     name: `${FORM_KEYS.form_6_other_person_goal}.name`,
-    goal: `${FORM_KEYS.form_6_other_person_goal}.goal`,
+    goal: `${FORM_KEYS.form_6_other_person_goal}.goal`
   },
   form_6_plan_and_estimated_time: {
     plan: `${FORM_KEYS.form_6_plan_and_estimated_time}.plan`,
-    time: `${FORM_KEYS.form_6_plan_and_estimated_time}.time`,
-  },
+    time: `${FORM_KEYS.form_6_plan_and_estimated_time}.time`
+  }
 }
 
 const form: Form = {
@@ -29,7 +30,7 @@ const form: Form = {
       content: {
         text:
           'Write down the name of someone you care about, and a goal you would like to help them achieve',
-        smallKey: "Person's Name",
+        smallKey: "Person's Name"
       },
       options: {
         required: true,
@@ -40,8 +41,8 @@ const form: Form = {
             options: {
               placeHolder: "Person's name",
               default: '',
-              required: true,
-            },
+              required: true
+            }
           },
           1: {
             type: types.string,
@@ -56,20 +57,20 @@ const form: Form = {
                 textInputContainerStyle: Platform.select({
                   android: {},
                   ios: {
-                    marginBottom:20,
-                  }, //Fill with what's needed
+                    marginBottom: 20
+                  } //Fill with what's needed
                 }),
                 textInputStyle: Platform.select({
                   android: {},
-                  ios: {  
-                    minHeight:30,
-                  }, //Fill with what's needed
-                }),
-              },
-            },
-          },
-        },
-      },
+                  ios: {
+                    minHeight: 30
+                  } //Fill with what's needed
+                })
+              }
+            }
+          }
+        }
+      }
     },
     1: {
       type: types.formElements,
@@ -77,7 +78,7 @@ const form: Form = {
       content: {
         text:
           'Write down a detailed plan for how you will help this person, and when you would like it to be complete.',
-        smallKey: 'Goal Plan',
+        smallKey: 'Goal Plan'
       },
       options: {
         required: true,
@@ -94,50 +95,40 @@ const form: Form = {
               style: {
                 textInputContainerStyle: Platform.select({
                   android: {},
-                  ios: {
-                  }, //Fill with what's needed
+                  ios: {} //Fill with what's needed
                 }),
                 textInputStyle: Platform.select({
                   android: {},
-                  ios: {  
-                    minHeight:80,
-                  }, //Fill with what's needed
-                }),
-              },
-              
-            },
+                  ios: {
+                    minHeight: 80
+                  } //Fill with what's needed
+                })
+              }
+            }
           },
           1: {
-            type: types.string,
+            type: types.date,
             key: `${CHILDREN_KEYS.form_6_plan_and_estimated_time.time}`,
             content: {
               smallKey: 'ETC',
+              label: 'To be completed by...'
             },
             options: {
-              placeHolder: 'Target completion date',
-              default: '',
-              multiline: true,
+              default: new Date(),
               style: {
-                textInputContainerStyle: Platform.select({
-                  android: {},
-                  ios: {
-                  }, //Fill with what's needed
-                }),
-                textInputStyle: Platform.select({
-                  android: {},
-                  ios: {  
-                  }, //Fill with what's needed
-                }),
-              },
-            },
-          },
-        },
-      },
+                pickerContentContainer: {
+                  backgroundColor: PHASE_1_INCOMPLETE
+                }
+              }
+            }
+          }
+        }
+      }
     },
     2: {
       type: types.button,
       content: {
-        text: 'Do you wish to add more goals?',
+        text: 'Do you wish to add more goals?'
       },
       actions: [
         {
@@ -145,12 +136,12 @@ const form: Form = {
           key: 'goal_yes',
           action: {
             type: actionTypes.GO_TO,
-            payload: 0,
-          },
-        },
-      ],
-    },
-  },
+            payload: 0
+          }
+        }
+      ]
+    }
+  }
 }
 
 export default form

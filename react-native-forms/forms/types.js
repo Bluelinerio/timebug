@@ -20,6 +20,7 @@ export default {
   set: 'set',
   slider: 'slider',
   formElements: 'formElements',
+  date: 'date'
 }
 
 export const answerTypes = {

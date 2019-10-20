@@ -1,9 +1,9 @@
 //@flow
-import React                            from 'react'
+import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
-import moment                           from 'moment'
-import { DATE_FORMAT }                  from '2020_constants/constants'
-import styles                           from '../styles'
+import moment from 'moment'
+import { DATE_FORMAT } from '2020_constants/constants'
+import styles from '../styles'
 
 type Props = {
   name: string,
@@ -15,8 +15,8 @@ type Props = {
   toggleGoalAction: string => any,
   actions: {
     DELETE: string,
-    COMPLETE: string,
-  },
+    COMPLETE: string
+  }
 }
 
 class GoalReview extends React.PureComponent<Props> {
@@ -37,7 +37,7 @@ class GoalReview extends React.PureComponent<Props> {
       estimate,
       plan,
       completed,
-      completedAt,
+      completedAt
     } = this.props
     return (
       <View style={styles.container}>
@@ -52,7 +52,11 @@ class GoalReview extends React.PureComponent<Props> {
             <Text style={styles.estimate}>
               {completed
                 ? `Completed at: ${moment(completedAt).format(DATE_FORMAT)}`
-                : `Estimated time to complete: ${estimate}`}
+                : `Estimated time to complete: ${
+                    estimate && moment(estimate).isValid()
+                      ? moment(estimate).format(DATE_FORMAT)
+                      : estimate
+                  }`}
             </Text>
           </View>
           <View style={styles.planContainer}>

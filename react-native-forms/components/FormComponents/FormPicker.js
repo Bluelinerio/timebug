@@ -11,6 +11,7 @@ import Set            from './SetComponent'
 import Slider         from './SingleSlider'
 import FormElements   from './FormElementsComponent'
 import BooleanSwitch  from './SwitchComponent'
+import DatePicker     from './DatePickerComponent'
 import { connect }    from './ConnectedComponentContainer'
 
 type Props = {
@@ -44,6 +45,8 @@ const SwitchComponent = ({ field, props }: { type: string, props: any }) => {
       return <FormElements {...props} />
     case types.switch:
       return <BooleanSwitch {...props} />
+    case types.date:
+      return <DatePicker {...props} />
     default:
       return null
   }

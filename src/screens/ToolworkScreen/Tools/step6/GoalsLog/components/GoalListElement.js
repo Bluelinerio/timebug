@@ -1,8 +1,10 @@
 // @flow
-import React                                       from 'react'
-import { View, TouchableOpacity, Text }            from 'react-native'
-import Icon                                        from 'react-native-vector-icons/Ionicons'
+import React from 'react'
+import moment from 'moment'
+import { View, TouchableOpacity, Text } from 'react-native'
+import Icon from 'react-native-vector-icons/Ionicons'
 import styles, { completedColor, incompleteColor } from '../styles'
+import { DATE_FORMAT } from '../../../../../../constants/constants'
 
 export type Props = {
   completed: boolean,
@@ -10,7 +12,7 @@ export type Props = {
   name: string,
   goalName: string,
   estimate: string,
-  onPress: () => any,
+  onPress: () => any
 }
 
 const chopString = (string: string, max = 40) => {
@@ -59,7 +61,9 @@ class GoalListElement extends React.PureComponent<Props> {
             <View style={[styles.goalListRow, styles.goalListBottomRow]}>
               <View>
                 <Text style={styles.goalListText}>
-                  {name && name.length >= 40 ? `${chopString(name, 40)}` : `${name ? name : 'No name'}`}
+                  {name && name.length >= 40
+                    ? `${chopString(name, 40)}`
+                    : `${name ? name : 'No name'}`}
                 </Text>
               </View>
               <View style={styles.goalListSubElement}>
@@ -67,10 +71,12 @@ class GoalListElement extends React.PureComponent<Props> {
                   {completed
                     ? 'Completed!'
                     : `Estimate: ${
-                      estimate && estimate.length >= 20
-                        ? `${chopString(estimate, 20)}`
-                        : `${estimate ? estimate : 'None set'}`
-                    }`}
+                        estimate && moment(estimate).isValid()
+                          ? moment(estimate).format(DATE_FORMAT)
+                          : estimate && estimate.length >= 20
+                          ? `${chopString(estimate, 20)}`
+                          : `${estimate ? estimate : 'None set'}`
+                      }`}
                 </Text>
               </View>
             </View>
