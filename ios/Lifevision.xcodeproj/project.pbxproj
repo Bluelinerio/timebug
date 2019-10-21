@@ -116,7 +116,6 @@
 		A63BDFBBA5AC4897B0AF5C47 /* Metropolis-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = F65148B3D7FC41D18F0DB7BE /* Metropolis-LightItalic.otf */; };
 		A802A4D50E3B4809B6918440 /* 2020-diary-step-3.png in Resources */ = {isa = PBXBuildFile; fileRef = B3C9922841564BA29F0B9037 /* 2020-diary-step-3.png */; };
 		AB28FFE77D884309A90B61FE /* 2020-diary-step-23.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A9AB815655E4C3BA4462D81 /* 2020-diary-step-23.png */; };
-		ABF4EDEF2BC048E094C12AD5 /* libMoEReactBridge.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EABD6220F57345879BB09B9E /* libMoEReactBridge.a */; };
 		AF816833E0914715BE78FB26 /* Metropolis-ExtraBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5324C2C862464F11BD043E1F /* Metropolis-ExtraBoldItalic.otf */; };
 		B028C5D6AE0E4A0D98A7EAF0 /* 2020-diary-step-9.png in Resources */ = {isa = PBXBuildFile; fileRef = 32500F77901B4817BCFB78B6 /* 2020-diary-step-9.png */; };
 		B07FBCC8AC03483094306ED9 /* 2020-diary-step-30.png in Resources */ = {isa = PBXBuildFile; fileRef = 06F72533ACF64BD495FF45F5 /* 2020-diary-step-30.png */; };
@@ -319,13 +318,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 9D23B34F1C767B80008B4819;
 			remoteInfo = ReactNativePermissions;
-		};
-		59051EC522E2414C000CDCAE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9AE00FDBCD0847518B923F62 /* MoEReactBridge.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = AFEF01DC1DD5D1D90017905F;
-			remoteInfo = MoEReactBridge;
 		};
 		59051ECB22E2414C000CDCAE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -735,7 +727,6 @@
 		948A464D63744CE1844D684F /* libKCKeepAwake.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libKCKeepAwake.a; sourceTree = "<group>"; };
 		98905C02CDCF40399425FF6E /* CodePush.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = CodePush.xcodeproj; path = "../node_modules/react-native-code-push/ios/CodePush.xcodeproj"; sourceTree = "<group>"; };
 		98DB4E3F7A1F41E397CE3658 /* Metropolis-BlackItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-BlackItalic.otf"; path = "../src/resources/fonts/Metropolis/Metropolis-BlackItalic.otf"; sourceTree = "<group>"; };
-		9AE00FDBCD0847518B923F62 /* MoEReactBridge.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = MoEReactBridge.xcodeproj; path = "../node_modules/react-native-moengage/iOS/MoEReactBridge/MoEReactBridge.xcodeproj"; sourceTree = "<group>"; };
 		9B4C222AC0C7480F9D05B796 /* Metropolis-RegularItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-RegularItalic.otf"; path = "../src/resources/fonts/Metropolis/Metropolis-RegularItalic.otf"; sourceTree = "<group>"; };
 		9BD8EF15F41F48179CE5E71B /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		9E682DDA2E08C0327F9F3715 /* Pods-Lifevision-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lifevision-tvOS.release.xcconfig"; path = "Target Support Files/Pods-Lifevision-tvOS/Pods-Lifevision-tvOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -773,7 +764,6 @@
 		E2EBC692F42043FF8F12AEA6 /* Roboto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto.ttf; path = "../node_modules/native-base/Fonts/Roboto.ttf"; sourceTree = "<group>"; };
 		E4C2AFB475104A3982EAB221 /* libRNSVG-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNSVG-tvOS.a"; sourceTree = "<group>"; };
 		E6E57F8D33C8488D86C2C4B5 /* RNCSlider.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNCSlider.xcodeproj; path = "../node_modules/@react-native-community/slider/ios/RNCSlider.xcodeproj"; sourceTree = "<group>"; };
-		EABD6220F57345879BB09B9E /* libMoEReactBridge.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libMoEReactBridge.a; sourceTree = "<group>"; };
 		ECE81ABF4D5C4BF7A3990573 /* 2020-diary-step-12.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "2020-diary-step-12.png"; path = "../src/resources/images/StepBackgroundsWhite/2020-diary-step-12.png"; sourceTree = "<group>"; };
 		ED5A75A3A8234F18B3769CE0 /* libRNFirebase.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNFirebase.a; sourceTree = "<group>"; };
 		F013D1E12B514B159F21CD08 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/native-base/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
@@ -845,7 +835,6 @@
 				B973BBFC1A454A35BE6D067A /* libRNCSlider.a in Frameworks */,
 				2D5B068C02334651998B3E71 /* libRNCWebView.a in Frameworks */,
 				03D5582275734B3DA0FD6187 /* libRNVectorIcons.a in Frameworks */,
-				ABF4EDEF2BC048E094C12AD5 /* libMoEReactBridge.a in Frameworks */,
 				FF53D5CF14774291B90B9D8B /* libReactNativeConfig.a in Frameworks */,
 				FE3C6928FEA1401F9C3E9C01 /* libReactNativePermissions.a in Frameworks */,
 				2C36095F76813A4F934F3C8A /* libPods-Lifevision.a in Frameworks */,
@@ -1077,14 +1066,6 @@
 			isa = PBXGroup;
 			children = (
 				59051EBC22E2414C000CDCAE /* libReactNativePermissions.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		59051EC222E2414C000CDCAE /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				59051EC622E2414C000CDCAE /* libMoEReactBridge.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1380,7 +1361,6 @@
 				E6E57F8D33C8488D86C2C4B5 /* RNCSlider.xcodeproj */,
 				B1CE22547D2941DA8091B355 /* RNCWebView.xcodeproj */,
 				438C5B65F4444DCEB4A4B69F /* RNVectorIcons.xcodeproj */,
-				9AE00FDBCD0847518B923F62 /* MoEReactBridge.xcodeproj */,
 				57C2FEDF651B456BB2040DD7 /* ReactNativeConfig.xcodeproj */,
 				0E69D5E86A6E4893A0979661 /* ReactNativePermissions.xcodeproj */,
 				B4BB7C85D6A548A18CF9FB6B /* RNFirebase.xcodeproj */,
@@ -1587,10 +1567,6 @@
 				{
 					ProductGroup = 59BF4C9421F9D82100B1C0D3 /* Products */;
 					ProjectRef = F40AEF57130C411D8156A394 /* KCKeepAwake.xcodeproj */;
-				},
-				{
-					ProductGroup = 59051EC222E2414C000CDCAE /* Products */;
-					ProjectRef = 9AE00FDBCD0847518B923F62 /* MoEReactBridge.xcodeproj */;
 				},
 				{
 					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;
@@ -1871,13 +1847,6 @@
 			fileType = archive.ar;
 			path = libReactNativePermissions.a;
 			remoteRef = 59051EBB22E2414C000CDCAE /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		59051EC622E2414C000CDCAE /* libMoEReactBridge.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libMoEReactBridge.a;
-			remoteRef = 59051EC522E2414C000CDCAE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		59051ECC22E2414C000CDCAE /* libReactNativeConfig.a */ = {

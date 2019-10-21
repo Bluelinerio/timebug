@@ -9,7 +9,7 @@ import {
   mapPhaseToElementBackground,
   mapPhaseToTextAndButtonColor,
 }                     from '../utils/colorsForStep'
-import { log }        from '2020_services/moengage'
+// import { log }        from '2020_services/moengage'
 import { LogAction }  from 'react-native-forms/types/formTypes'
 
 const logger = (step: number) => (event: LogAction) => {
@@ -20,16 +20,16 @@ const logger = (step: number) => (event: LogAction) => {
   }
   switch (type) {
   case 'CREATE':
-    log('PAGE_ANSWERED', data)
+    // log('PAGE_ANSWERED', data)
     break
   case 'UPDATE':
-    log('PAGE_UPDATE', data)
+    // log('PAGE_UPDATE', data)
     break
   case 'FINISHED':
-    log('FORM_FINISHED', data)
+    // log('FORM_FINISHED', data)
     break
   default:
-    log('UNKNOWN_FORM_EVENT', data)
+    // log('UNKNOWN_FORM_EVENT', data)
   }
 }
 

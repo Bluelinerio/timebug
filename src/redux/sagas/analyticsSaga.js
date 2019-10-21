@@ -4,23 +4,22 @@ import { GET_USER } from '../actions/user.actions'
 import {
   LOGOUT,
 } from '../actionTypes'
-import MoengageService from '2020_services/moengage'
+// import MoengageService from '2020_services/moengage'
 
 import tron from 'reactotron-react-native'
 
 function* _handleUserLogged() {
   const user = yield select(selectors.user)
   if (user) {
-    tron.log('LOOKIE')
     const { id, email, name } = user
-    yield call(MoengageService.setUser, id, email, name)
-    yield call(MoengageService.logEvent, 'USER_LOGIN', { id, email, name })
+    // yield call(MoengageService.setUser, id, email, name)
+    // yield call(MoengageService.logEvent, 'USER_LOGIN', { id, email, name })
   }
 }
 
 function* _handleUserLogout() {
-  yield call(MoengageService.unsetUser)
-  yield call(MoengageService.logEvent, 'USER_LOGOUT')
+  // yield call(MoengageService.unsetUser)
+  // yield call(MoengageService.logEvent, 'USER_LOGOUT')
 }
 
 function* watchForUserLogged() {

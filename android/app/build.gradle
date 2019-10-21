@@ -201,8 +201,7 @@ android {
 
 dependencies {
     implementation project(':@sentry_react-native')
-    implementation project(':react-native-moengage')
-    implementation "com.moengage:moe-android-sdk:+"
+    // implementation "com.moengage:moe-android-sdk:+"
     implementation project(':react-native-firebase')
     implementation project(':react-native-webview')
     implementation project(':@react-native-community_slider')
