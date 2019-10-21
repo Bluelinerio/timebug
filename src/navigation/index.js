@@ -185,7 +185,7 @@ export const tabConfiguration = {
     swipeEnabled: false,
     animationEnabled: true,
     optimizationsEnabled: true,
-    navigationOptions: ({ navigation }) => ({
+    defaultNavigationOptions: ({ navigation }) => ({
       tabBarIcon: ({ focused, tintColor }: NavigationOptionsElementProps) => {
         const { routeName } = navigation.state
         return (
