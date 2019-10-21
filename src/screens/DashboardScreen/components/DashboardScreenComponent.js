@@ -1,10 +1,10 @@
 // @flow
 import React, { PureComponent } from 'react'
-import { StatusBar, ScrollView, View } from 'react-native'
-import Text from '2020_components/Text'
+import { StatusBar, ScrollView, View, Text } from 'react-native'
 import { SafeAreaView } from 'react-navigation'
 import Version from '2020_containers/Version'
 import Banner from '2020_components/MinifiedBanner'
+import GoogleButton from '2020_components/GoogleLoginButton'
 import GreetingComponent from '../containers/GreetingComponentContainer'
 import InsightComponent from '../containers/InsightContainer'
 import CheckinAreaComponent from '../containers/CheckinAreaContainer'
@@ -53,10 +53,10 @@ class StartScreenComponent extends PureComponent<Props> {
                   <GreetingComponent />
                   <View style={styles.notLoggedContainer}>
                     <Text style={styles.greetingSub}>
-                      Please log in with your Facebook account to begin using
-                      the app.
+                      Please log in to begin using the app.
                     </Text>
                     <SignInButton />
+                    <GoogleButton />
                   </View>
                 </React.Fragment>
               )}

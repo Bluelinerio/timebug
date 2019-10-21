@@ -1,15 +1,17 @@
-import React                            from 'react'
+// @flow
+import React from 'react'
 import { View, Text, StatusBar, Image } from 'react-native'
-import { HeaderBackButton }             from 'react-navigation'
-import { SafeAreaView }                 from 'react-navigation'
-import LoginButtonContainer             from '2020_containers/LoginButtonContainer'
-import Gradient                         from '2020_components/Gradient'
-import { icon }                         from '2020_resources/images'
+import { HeaderBackButton } from 'react-navigation'
+import { SafeAreaView } from 'react-navigation'
+import LoginButtonContainer from '2020_containers/LoginButtonContainer'
+import GoogleButton from '2020_components/GoogleLoginButton'
+import Gradient from '2020_components/Gradient'
+import { icon } from '2020_resources/images'
 import styles, {
   closeButtonColor,
   statusBarColor,
   gradientColors,
-}                                       from '../styles'
+} from '../styles'
 
 const innerText = `Login to enjoy the app at it's fullest and live the journey through the seven pillars of life!`
 
@@ -50,6 +52,9 @@ class LoginScreen extends React.PureComponent<Props> {
             </View>
             <View style={styles.textBlock}>
               <Text style={styles.text}>{innerText}</Text>
+            </View>
+            <View style={{ alignItems: 'center' }}>
+              <GoogleButton />
             </View>
             <LoginButtonContainer onPress={this._onLogin} />
           </Gradient>

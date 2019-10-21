@@ -16,10 +16,18 @@ import {
   FB_LOGIN_DIALOG_RESPONDED,
   LOGOUT,
   REFRESH_USER,
+  REFRESH_FACEBOOK,
+  REFRESH_GOOGLE,
+  LOGIN_GOOGLE,
 } from '../actionTypes'
 import * as actions from '../actions'
 import { initialNotifications } from '../actions/checkin.actions'
-import { GET_USER, AUTHENTICATE_FB, refreshUser } from '../actions/user.actions'
+import {
+  GET_USER,
+  AUTHENTICATE_FB,
+  AUTHENTICATE_GOOGLE,
+  refreshUser,
+} from '../actions/user.actions'
 import {
   goToV2WorkbookScreen,
   goToWorkbookSkippingStepScreen,
@@ -29,11 +37,13 @@ import {
   fetchUserWithId,
   isClientEndpoint,
   resetStore,
+  authenticateWithGoogle,
 } from '../../services/apollo'
 import facebook from '../../services/facebook'
 import AuthStorage from '../../services/authStorage'
 import NavigationService from '2020_services/navigation'
 import SentryService from '2020_services/sentry'
+import GoogleService from '../../services/google'
 import tron from 'reactotron-react-native'
 
 function* wipeTokens() {
@@ -41,11 +51,25 @@ function* wipeTokens() {
 }
 
 function* _logout() {
-  yield all([
-    call(wipeTokens),
-    call(resetStore),
-    put(actions.setUserAnonymous()),
-  ])
+  try {
+    const { userId, source = 'facebook' } = yield call(
+      AuthStorage.getTokenAndUserId
+    )
+    if (userId) {
+      if (source === 'google') {
+        yield all([
+          call(AuthStorage.wipeStorage),
+          call(resetStore),
+        ])
+      } else {
+        yield all([call(wipeTokens), call(resetStore)])
+      }
+    }
+  } catch (err) {
+    tron.log(err)
+  } finally {
+    yield put(actions.setUserAnonymous())
+  }
 }
 
 function* _handleUserError() {
@@ -68,6 +92,99 @@ function* _fetchUserWithId(userId) {
     yield put(initialNotifications())
   }
   // if GET_USER.ERRORED it will be handled by _handleUserError
+}
+
+function* _fetchGoogleUser(
+  id: string,
+  email: string,
+  name: string,
+  photo: string
+) {
+  yield put({ type: 'AUTHENTICATE_GOOGLE', payload: id })
+
+  yield fork(
+    requestSaga,
+    AUTHENTICATE_GOOGLE,
+    async () => {
+      try {
+        const { token, user, endpoint } = await authenticateWithGoogle({
+          name,
+          id: `${id}`,
+          email,
+        })
+        return {
+          token,
+          user: {
+            ...user,
+            photo,
+          },
+          endpoint,
+        }
+      } catch (err) {
+        tron.log(err)
+        throw err
+      }
+    },
+    { userId: id }
+  )
+
+  const result = yield take([
+    AUTHENTICATE_GOOGLE.ERRORED,
+    AUTHENTICATE_GOOGLE.SUCCEEDED,
+    AUTHENTICATE_GOOGLE.CANCELLED,
+  ])
+
+  if (result.type === AUTHENTICATE_GOOGLE.SUCCEEDED) {
+    const { token, user: { id: userId }, endpoint } = result.payload
+
+    yield call(AuthStorage.setTokenAndUserId, {
+      token,
+      userId,
+      endpoint,
+      name,
+      email,
+      googleId: id,
+      source: 'google',
+    })
+
+    yield call(_fetchUserWithId, userId)
+    return
+  } else {
+    yield put(actions.setUserAnonymous())
+  }
+}
+
+function* _googleLogin() {
+  try {
+    const { id, name, email, photo } = yield call(GoogleService.login)
+    if (id) {
+      yield call(_fetchGoogleUser, id, email, name, photo)
+    }
+  } catch (err) {
+    tron.log(err)
+  }
+}
+
+function* _googleRefresh() {
+  try {
+    const { userId } = yield call(AuthStorage.getTokenAndUserId)
+    if (userId) return yield call(_fetchUserWithId, userId)
+    else yield put(actions.setUserAnonymous())
+  } catch (err) {
+    tron.log(err)
+    yield put(actions.setUserAnonymous())
+  }
+}
+
+function* genericRefresh() {
+  const { userId, source = 'facebook' } = yield call(
+    AuthStorage.getTokenAndUserId
+  )
+  if (userId) {
+    return yield call(_fetchUserWithId, userId)
+  }
+  if (source === 'google') yield put({ type: REFRESH_GOOGLE })
+  else yield put({ type: REFRESH_FACEBOOK }) // defaults to facebook
 }
 
 function* refreshUserSaga() {
@@ -95,6 +212,7 @@ function* refreshUserSaga() {
         token,
         userId: id,
         endpoint,
+        source: 'facebook',
       })
 
       yield call(_fetchUserWithId, id)
@@ -107,7 +225,7 @@ function* refreshUserSaga() {
 function* refreshUserOrLogout() {
   const winner = yield race({
     logout: take(LOGOUT),
-    refresh: call(refreshUserSaga),
+    refresh: call(genericRefresh),
   })
   if (winner.logout) {
     const result = yield call(_logout)
@@ -140,7 +258,7 @@ function* _loginOrRegisterWithFacebook(payload) {
     yield put({ type: GET_USER.ERRORED, error })
     return error
   } finally {
-    yield put(refreshUser())
+    yield put({ type: REFRESH_FACEBOOK })
   }
 }
 
@@ -156,14 +274,25 @@ function* watchForUserErroredSaga() {
   yield takeLatest(GET_USER.ERRORED, _handleUserError)
 }
 
+function* watchForFacebookRefreshSaga() {
+  yield takeLatest(REFRESH_FACEBOOK, refreshUserSaga)
+}
+
+function* watchForGoogleRefreshSaga() {
+  yield takeLatest(REFRESH_GOOGLE, _googleRefresh)
+}
+
 export function* loginFlowSaga() {
   yield fork(watchForUserErroredSaga)
   yield fork(watchForRefreshUserOrLogout)
+  yield fork(watchForFacebookRefreshSaga)
+  yield fork(watchForGoogleRefreshSaga)
   yield throttle(
     500,
     LOGIN_WITH_FB_BUTTON_PRESSED,
     _loginOrRegisterWithFacebook
   )
+  yield throttle(500, LOGIN_GOOGLE, _googleLogin)
   yield throttle(500, LOGOUT, _logout)
   yield put(refreshUser())
 }

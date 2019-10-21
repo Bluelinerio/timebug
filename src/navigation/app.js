@@ -1,9 +1,10 @@
 // @flow
-import React              from 'react'
-import { Linking }        from 'react-native'
-import { uriPrefix }      from '../constants'
+import React from 'react'
+import { Linking } from 'react-native'
+import { uriPrefix } from '../constants'
 import { StartNavigator } from './index'
-import NavigationService  from '2020_services/navigation'
+import NavigationService from '2020_services/navigation'
+import GoogleService from '2020_services/google'
 
 /* eslint-disable-next-line */
 // import AmplitudeService                            from '2020_services/amplitude'

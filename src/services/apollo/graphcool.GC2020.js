@@ -1,7 +1,7 @@
 // @flow
 
 // TODO: Refactor into several files
-import gql        from 'graphql-tag'
+import gql from 'graphql-tag'
 import type {
   Auth,
   User,
@@ -12,9 +12,9 @@ import type {
   createCheckinArgs,
   updateCheckinArgs,
   filterCheckinsByTemplateArgs,
-}                 from './models'
+} from './models'
 import { client } from './client'
-import { parse }  from './utils'
+import { parse } from './utils'
 import { userSortedToolDataFragment } from './toolData.graph'
 
 export const authenticateWithFBToken = (fbToken: string): Auth =>
@@ -32,6 +32,31 @@ export const authenticateWithFBToken = (fbToken: string): Auth =>
       variables: { token: fbToken },
     })
     .then(parse('authenticateFB'))
+
+export const authenticateWithGoogle = ({
+  name,
+  id,
+  email,
+}: {
+  name: string,
+  id: string,
+  email: string,
+}): Auth => {
+  return client
+    .query({
+      query: gql`
+        query authGoogle($name: String!, $email: String!, $id: String!) {
+          authenticateGoogle(name: $name, email: $email, id: $id) {
+            user
+            token
+          }
+        }
+      `,
+      fetchPolicy: 'network-only',
+      variables: { name, id, email },
+    })
+    .then(parse('authenticateGoogle'))
+}
 
 export const resetUserSteps = userId =>
   client
@@ -136,6 +161,8 @@ export const fetchUserWithId = (id: string): User =>
             facebookId
             name
             email
+            googleId
+            loginSource
             ...UserAchievements
             ...SortedForms
             ...UserCheckin

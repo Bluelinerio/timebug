@@ -1,5 +1,4 @@
 // @flow
-import { Platform } from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage'
 
 const TOKEN_KEY = 'lifevision-1'
@@ -8,12 +7,14 @@ export type TokenAndUserIdType = {
   token: string,
   userId: string,
   endpoint: string,
+  source: 'google' | 'facebook',
 }
 
 const emptyTokenAndUserId = {
   token: null,
   userId: null,
   endpoint: null,
+  source: null,
 }
 
 // TODO: This function isn't used, remove if not needed.
@@ -57,21 +58,8 @@ async function wipeStorage() {
   }
 }
 
-const android = {
+export default {
   getTokenAndUserId,
   setTokenAndUserId,
   wipeStorage,
 }
-
-const ios = {
-  getTokenAndUserId,
-  setTokenAndUserId,
-  wipeStorage,
-}
-
-export default Platform.select({
-  ios,
-  android,
-})
-
-// todo: this isn't working needs fixing:

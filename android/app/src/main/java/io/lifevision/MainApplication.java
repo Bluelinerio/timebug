@@ -3,6 +3,7 @@ package io.lifevision;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import co.apptailor.googlesignin.RNGoogleSigninPackage;
 import io.sentry.RNSentryPackage;
 // import com.moengage.core.MoEngage;
 // import com.moengage.react.MoEReactPackage;
@@ -64,6 +65,7 @@ public class MainApplication extends Application implements ReactApplication {
   protected List<ReactPackage> getPackages() {
     return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNGoogleSigninPackage(),
             new RNSentryPackage(),
             // new MoEReactPackage(),
           new RNFirebasePackage(),

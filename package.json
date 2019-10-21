@@ -68,6 +68,7 @@
     "react-native-fbsdk": "0.8.0",
     "react-native-firebase": "^5.5.6",
     "react-native-gesture-handler": "1.1.0",
+    "react-native-google-signin": "^2.0.0",
     "react-native-keep-awake": "^4.0.0",
     "react-native-linear-gradient": "^2.5.3",
     "react-native-markdown-syntax": "^0.1.0",

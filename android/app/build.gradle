@@ -200,6 +200,7 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-google-signin')
     implementation project(':@sentry_react-native')
     // implementation "com.moengage:moe-android-sdk:+"
     implementation project(':react-native-firebase')

@@ -1,15 +1,16 @@
 /* @flow */
-import React                 from 'react'
-import User                  from './User'
+import React from 'react'
+import User from './User'
 import LogoutButtonContainer from './LogoutButtonContainer'
-import OpenLoginContainer    from './OpenLoginContainer'
+import GoogleLogout from './GoogleLogout'
+import OpenLoginContainer from './OpenLoginContainer'
 
 type Props = {
   children: ({ uri: string }) => React.Node | [React.Node],
 }
 
 /**
- * @class UserProfileImageConsumer 
+ * @class UserProfileImageConsumer
  * Renders the user avatar or the default avatar and makes them clickable to login or logout of the app
  */
 class UserProfileImageConsumer extends React.PureComponent<Props> {
@@ -26,6 +27,14 @@ class UserProfileImageConsumer extends React.PureComponent<Props> {
                     userState.facebookId
                   }/picture?type=normal`,
                 })}
+              </LogoutButtonContainer>
+            )
+          else if (userState && userState.loginSource === 'google')
+            return (
+              <LogoutButtonContainer>
+                <GoogleLogout user={userState}>
+                  {({ uri }) => children({ uri })}
+                </GoogleLogout>
               </LogoutButtonContainer>
             )
           else

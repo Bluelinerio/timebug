@@ -1,3 +1,5 @@
+# If something related to google-signin fails check this https://github.com/react-native-community/react-native-google-signin/blob/master/docs/ios-guide.md
+
 # Uncomment the next line to define a global platform for your project
   platform :ios, '9.0'
 
@@ -11,6 +13,8 @@ target 'Lifevision' do
 
 
   
+
+  pod 'RNGoogleSignin', :path => '../node_modules/react-native-google-signin'
 
   target 'LifevisionTests' do
     inherit! :search_paths

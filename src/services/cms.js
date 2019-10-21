@@ -7,7 +7,10 @@ export const COMPLETE = 'COMPLETE'
 
 export const stepEnum = Array(30)
   .fill()
-  .reduce((en, _, index) => ({ ...en, [`STEP_${index + 1}`]: `${index + 1}` }), {})
+  .reduce(
+    (en, _, index) => ({ ...en, [`STEP_${index + 1}`]: `${index + 1}` }),
+    {}
+  )
 
 export const PHASES = {
   MEDITATION,
@@ -130,103 +133,109 @@ export const STEP_START_INDEX = 1
 
 export const phaseForStepAtIndex = (step: number) => {
   switch (true) {
-  case step >= 0 && step < 10:
-    return MEDITATION
-  case step >= 10 && step < 20:
-    return SELF_ASSESSMENT
-  case step >= 20 && step < 30:
-    return VISION_CREATION
-  default:
-    return COMPLETE
+    case step >= 0 && step < 10:
+      return MEDITATION
+    case step >= 10 && step < 20:
+      return SELF_ASSESSMENT
+    case step >= 20 && step < 30:
+      return VISION_CREATION
+    default:
+      return COMPLETE
   }
 }
 
 export const phaseNumberForPhase = ({ phase }) => {
   switch (phase) {
-  case MEDITATION:
-    return 1
-  case SELF_ASSESSMENT:
-    return 2
-  case VISION_CREATION:
-    return 3
-  default:
-    return 0
+    case MEDITATION:
+      return 1
+    case SELF_ASSESSMENT:
+      return 2
+    case VISION_CREATION:
+      return 3
+    default:
+      return 0
   }
 }
 
 export const phaseForUserForm = ({ stepId }) => {
   switch (true) {
-  case stepId > 0 && stepId <= 10:
-    return MEDITATION
-  case stepId > 10 && stepId <= 20:
-    return SELF_ASSESSMENT
-  case stepId > 20 && stepId <= 30:
-    return VISION_CREATION
-  default:
-    return COMPLETE
+    case stepId > 0 && stepId <= 10:
+      return MEDITATION
+    case stepId > 10 && stepId <= 20:
+      return SELF_ASSESSMENT
+    case stepId > 20 && stepId <= 30:
+      return VISION_CREATION
+    default:
+      return COMPLETE
   }
 }
 
 export const phaseForStep = ({ number }) => {
   switch (true) {
-  case number > 0 && number <= 10:
-    return MEDITATION
-  case number > 10 && number <= 20:
-    return SELF_ASSESSMENT
-  case number > 20 && number <= 30:
-    return VISION_CREATION
-  default:
-    return COMPLETE
+    case number > 0 && number <= 10:
+      return MEDITATION
+    case number > 10 && number <= 20:
+      return SELF_ASSESSMENT
+    case number > 20 && number <= 30:
+      return VISION_CREATION
+    default:
+      return COMPLETE
   }
 }
 
 export const translateCMSPhaseToStandard = (phase: string) => {
   switch (true) {
-  case wellKnownMeditation.includes(phase):
-    return MEDITATION
-  case wellKnownSelfAssessment.includes(phase):
-    return SELF_ASSESSMENT
-  case wellKnownVisionCreation.includes(phase):
-    return VISION_CREATION
-  default:
-    return COMPLETE
+    case wellKnownMeditation.includes(phase):
+      return MEDITATION
+    case wellKnownSelfAssessment.includes(phase):
+      return SELF_ASSESSMENT
+    case wellKnownVisionCreation.includes(phase):
+      return VISION_CREATION
+    default:
+      return COMPLETE
   }
 }
 
 export const translatePhaseAndFormat = (phase: String) => {
   const translatedPhase = translateCMSPhaseToStandard(phase)
   switch (translatedPhase) {
-  case MEDITATION:
-    return 'Meditation'
-  case SELF_ASSESSMENT:
-    return 'Self Assessment'
-  case VISION_CREATION:
-    return 'Vision Creation'
-  default:
-    return 'Completed'
+    case MEDITATION:
+      return 'Meditation'
+    case SELF_ASSESSMENT:
+      return 'Self Assessment'
+    case VISION_CREATION:
+      return 'Vision Creation'
+    default:
+      return 'Completed'
   }
 }
 
 export const formatPhaseTitle = (phase: String) => {
   const translatedPhase = translateCMSPhaseToStandard(phase)
   switch (translatedPhase) {
-  case MEDITATION:
-    return 'Phase 1 : Meditation'
-  case SELF_ASSESSMENT:
-    return 'Phase 2 : Self Assessment'
-  case VISION_CREATION:
-    return 'Phase 3 : Vision Creation'
-  default:
-    return 'Completed'
+    case MEDITATION:
+      return 'Phase 1 : Meditation'
+    case SELF_ASSESSMENT:
+      return 'Phase 2 : Self Assessment'
+    case VISION_CREATION:
+      return 'Phase 3 : Vision Creation'
+    default:
+      return 'Completed'
   }
 }
 
 const _isStepCompleted = () => {
-  const completionMap = {}
+  let completionMap = {}
   let lastLengthOfFormsChecked = 0
+  let oldUserId = null
   return (stepNumber: number, user: any): boolean => {
-    const { forms } = user
+    const { forms, id } = user
+    if (id !== oldUserId) {
+      oldUserId = null
+      completionMap = {}
+    }
     if (
+      oldUserId &&
       completionMap[`${stepNumber}`] &&
       (forms && forms.length === lastLengthOfFormsChecked)
     )
@@ -244,6 +253,7 @@ const _isStepCompleted = () => {
     if (!completionMap[`${stepNumber}`])
       completionMap[`${stepNumber}`] = completed
     lastLengthOfFormsChecked = forms.length
+    oldUserId = id
     return completed
   }
 }

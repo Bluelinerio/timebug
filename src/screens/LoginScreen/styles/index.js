@@ -1,7 +1,7 @@
 //@flow
-import { StyleSheet }                      from 'react-native'
+import { StyleSheet } from 'react-native'
 import { white2, blue100, azure, gray600 } from '../../../constants/colors'
-import { heightPercentage }                from '../../../utils/viewportCalculation'
+import { heightPercentage } from '../../../utils/viewportCalculation'
 
 export const statusBarColor = white2
 
@@ -69,5 +69,9 @@ export default StyleSheet.create({
     fontSize: 14,
     lineHeight: 15,
     fontFamily: 'Metropolis',
+  },
+  center: {
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 })
