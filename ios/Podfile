@@ -6,13 +6,11 @@ target 'Lifevision' do
   #use_frameworks!
 
   # Pods for Lifevision
-  pod 'MoEngage-iOS-SDK','~> 4.4.0'
   # Required by RNFirebase
   pod 'Firebase/Core', '~> 6.3.0'
 
 
   
-  pod 'RNSentry', :path => '../node_modules/@sentry/react-native'
 
   target 'LifevisionTests' do
     inherit! :search_paths

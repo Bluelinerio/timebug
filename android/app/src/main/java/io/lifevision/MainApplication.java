@@ -4,8 +4,8 @@ import android.app.Application;
 
 import com.facebook.react.ReactApplication;
 import io.sentry.RNSentryPackage;
-import com.moengage.core.MoEngage;
-import com.moengage.react.MoEReactPackage;
+// import com.moengage.core.MoEngage;
+// import com.moengage.react.MoEReactPackage;
 import io.invertase.firebase.RNFirebasePackage;
 import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;
 import com.reactnativecommunity.webview.RNCWebViewPackage;
@@ -65,7 +65,7 @@ public class MainApplication extends Application implements ReactApplication {
     return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
             new RNSentryPackage(),
-            new MoEReactPackage(),
+            // new MoEReactPackage(),
           new RNFirebasePackage(),
           new RNCWebViewPackage(),
           new ReactSliderPackage(),
@@ -99,10 +99,10 @@ public class MainApplication extends Application implements ReactApplication {
   public void onCreate() {
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
-    MoEngage moEngage =
-            new MoEngage.Builder(this, "UZXYFJ0V2RQRUFJTMVHOAJKC")
-                    .build();
-    MoEngage.initialise(moEngage);
+    // MoEngage moEngage =
+    //         new MoEngage.Builder(this, "UZXYFJ0V2RQRUFJTMVHOAJKC")
+    //                 .build();
+    // MoEngage.initialise(moEngage);
   }
 
 }
