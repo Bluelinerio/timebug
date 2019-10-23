@@ -70,6 +70,7 @@
     "react-native-gesture-handler": "1.1.0",
     "react-native-keep-awake": "^4.0.0",
     "react-native-linear-gradient": "^2.5.3",
+    "react-native-markdown-renderer": "^3.2.8",
     "react-native-markdown-syntax": "^0.1.0",
     "react-native-material-dialog": "^0.7.6",
     "react-native-modal-selector": "^1.0.0",
