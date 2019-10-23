@@ -26,7 +26,7 @@ export const helpButtonColor = azure
 
 const helperIconSize = 16
 
-export const helperIconColorIfSelected = white2
+export const helperIconColorIfSelected = gray900
 
 export const minimumTrackColor = blue900
 export const maximumTrackColor = gray400
@@ -347,7 +347,7 @@ const formStyles = StyleSheet.create({
   },
   listTextAnswersContainer: {
     justifyContent: 'center',
-    paddingVertical: 8,
+    marginVertical: 8,
   },
   listTextAnswerTextContainer: {
     flex: 2,
@@ -365,8 +365,6 @@ const formStyles = StyleSheet.create({
     height: 28,
     width: 28,
     borderRadius: 14,
-    borderColor: '#212121',
-    borderWidth: 1,
   },
   sliderTextContainer: {
     flex: 1,
