@@ -1,6 +1,6 @@
 // @flow
 import React                          from 'react'
-import { Picker, Platform, View }     from 'react-native'
+import { Picker, Platform, View, Text }     from 'react-native'
 import ModalSelector                  from 'react-native-modal-selector'
 import Component                      from './Component'
 import FormElementHeader              from './FormElementHeader'
@@ -144,6 +144,12 @@ class Select extends Component<Props> {
     return (
       <React.Fragment>
         <FormElementHeader text={content.text} textStyle={textStyle} />
+        {options.label &&
+        options.label.length > 0 && (
+          <Text style={[styles.componentSubtitle, formStyles.textStyle]}>
+            {options.label}
+          </Text>
+        )}
         <View
           style={[
             styles.pickerContainer,
