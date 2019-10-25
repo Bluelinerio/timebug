@@ -124,7 +124,7 @@ const form: Form = {
       type: types.string,
       key: `${FORM_KEYS.form_14_seen}`,
       content: {
-        text: `Did you see any of these events comming?`,
+        text: `Did you see any of these events coming?`,
         smallKey: 'Predictable events',
         listText: 'Predictable events',
       },

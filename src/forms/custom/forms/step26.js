@@ -32,7 +32,7 @@ const form: Form = {
         type: types.string,
         key: `${FORM_KEYS.form_26_others}`,
         content: {
-          text: ` How can you help valued others in your life to improve their health? How much time do you estimate this taking?`,
+          text: `How can you help people that you value in your life to improve their health? How much time do you estimate this taking?`,
           smallKey: 'Health Others'
         },
         options: {

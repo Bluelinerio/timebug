@@ -120,8 +120,8 @@ const form: Form = {
         type: types.list,
         key: `${FORM_KEYS.form_27_receive_from_others}`,
         content: {
-          text: `What do you want to give receive from others?`,
-          smallKey: 'Give',
+          text: `What do you want to receive from others?`,
+          smallKey: 'recieve',
           listText: 'What I want to receive:'
         },
         options: {
