@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "Lifevision",
+    "name": "Timebug",
     "version": "1.0.0",
-    "slug": "Lifevision",
+    "slug": "Timebug",
     "sdkVersion": "20.0.0",
     "ios": {
       "bundleIdentifier": "com.tunegov.Lifevision",

@@ -21,7 +21,7 @@ class VersionComponent extends React.Component {
           marginBottom: 2,
         }}
       >
-        {`20/20 Lifevision © blabsventures 2018\n Version:${
+        {`Timebug © blabsventures 2018\n Version:${
           this.state.version
         }, Native:${DeviceInfo.getVersion()} build:${DeviceInfo.getBuildNumber()} `}
       </Text>

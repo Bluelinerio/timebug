@@ -6,7 +6,7 @@ export const backgroundImage = sandClockConfetti;
 export const headerBackgroundImage = sandClockConfetti;
 
 //export const headerBackground = () => sandClockConfetti
-export const icon = require('./AppIcon-Web.png');
+export const icon = require('./TimebugIcon.png');
 
 export const headerBackgrounds = {
   '1': require('./StepBackgroundsWhite/2020-diary-step-1.png'),
