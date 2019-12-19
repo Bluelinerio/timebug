@@ -84,6 +84,10 @@
 		59FB3D8E22B019AB00102ED0 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59FB3D8C22B0196E00102ED0 /* JavaScriptCore.framework */; };
 		59FB3D9022B019BB00102ED0 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59FB3D8F22B019BB00102ED0 /* JavaScriptCore.framework */; };
 		59FB3D9122B019C800102ED0 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59FB3D8F22B019BB00102ED0 /* JavaScriptCore.framework */; };
+		59FC738123AC139B00EA5359 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59FC733C23AC139400EA5359 /* Bolts.framework */; };
+		59FC738223AC139B00EA5359 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59FC737E23AC139500EA5359 /* FBSDKLoginKit.framework */; };
+		59FC738323AC139B00EA5359 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59FC737F23AC139700EA5359 /* FBSDKShareKit.framework */; };
+		59FC738423AC139B00EA5359 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59FC738023AC139B00EA5359 /* FBSDKCoreKit.framework */; };
 		5A2A1B8E3EE0448AABA1DF46 /* 2020-diary-step-17.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A577BF6A1E04E6DB562A4F4 /* 2020-diary-step-17.png */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		648BA0D1032B42C785CFDC0A /* 2020-diary-step-12.png in Resources */ = {isa = PBXBuildFile; fileRef = ECE81ABF4D5C4BF7A3990573 /* 2020-diary-step-12.png */; };
@@ -697,6 +701,10 @@
 		59E57BD822E771440081BE02 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		59FB3D8C22B0196E00102ED0 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		59FB3D8F22B019BB00102ED0 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS11.4.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		59FC733C23AC139400EA5359 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		59FC737E23AC139500EA5359 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		59FC737F23AC139700EA5359 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		59FC738023AC139B00EA5359 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		5DD37A683C874E3188CA272F /* Metropolis-Thin.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Metropolis-Thin.otf"; path = "../src/resources/fonts/Metropolis/Metropolis-Thin.otf"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		5FEB388A5AD743F7B4E2EFD6 /* libRNCAsyncStorage.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNCAsyncStorage.a; sourceTree = "<group>"; };
@@ -802,9 +810,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				5946254123030A7200972E43 /* libRCTPushNotification.a in Frameworks */,
+				59FC738123AC139B00EA5359 /* Bolts.framework in Frameworks */,
 				596DD541230308500050B6BD /* libRNFirebase.a in Frameworks */,
 				59FB3D8D22B0196E00102ED0 /* JavaScriptCore.framework in Frameworks */,
 				6C5CA0B9201EF6C9007A4AC5 /* libRNDeviceInfo.a in Frameworks */,
+				59FC738423AC139B00EA5359 /* FBSDKCoreKit.framework in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
@@ -817,6 +827,7 @@
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				6C61C0C5201574BD00FDC618 /* libRNSVG.a in Frameworks */,
+				59FC738323AC139B00EA5359 /* FBSDKShareKit.framework in Frameworks */,
 				46D14DA937DF43C2A823CB5B /* libBVLinearGradient.a in Frameworks */,
 				8C1267ABE7914ACFB0BA3062 /* FBSDKCoreKit.framework in Frameworks */,
 				BCB2A6B019084F50B39072C3 /* FBSDKShareKit.framework in Frameworks */,
@@ -832,6 +843,7 @@
 				A15D99EDCA44480EBFB049BE /* libRNBlur.a in Frameworks */,
 				877C3EFEDC724809B1E11186 /* libRNCAsyncStorage.a in Frameworks */,
 				B973BBFC1A454A35BE6D067A /* libRNCSlider.a in Frameworks */,
+				59FC738223AC139B00EA5359 /* FBSDKLoginKit.framework in Frameworks */,
 				2D5B068C02334651998B3E71 /* libRNCWebView.a in Frameworks */,
 				03D5582275734B3DA0FD6187 /* libRNVectorIcons.a in Frameworks */,
 				FF53D5CF14774291B90B9D8B /* libReactNativeConfig.a in Frameworks */,
@@ -1201,6 +1213,10 @@
 		6C61C0C4201574BD00FDC618 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				59FC733C23AC139400EA5359 /* Bolts.framework */,
+				59FC738023AC139B00EA5359 /* FBSDKCoreKit.framework */,
+				59FC737E23AC139500EA5359 /* FBSDKLoginKit.framework */,
+				59FC737F23AC139700EA5359 /* FBSDKShareKit.framework */,
 				59FB3D8C22B0196E00102ED0 /* JavaScriptCore.framework */,
 				59FB3D8F22B019BB00102ED0 /* JavaScriptCore.framework */,
 				2872989996D249388C8C0BA7 /* libz.tbd */,
@@ -2560,6 +2576,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks/",
 					"$(PROJECT_DIR)/Pods/MoEngage-iOS-SDK/MoEngage",
+					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2640,6 +2657,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks/",
 					"$(PROJECT_DIR)/Pods/MoEngage-iOS-SDK/MoEngage",
+					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2960,6 +2978,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks/",
 					"$(PROJECT_DIR)/Pods/MoEngage-iOS-SDK/MoEngage",
+					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
