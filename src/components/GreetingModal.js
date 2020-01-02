@@ -1,7 +1,9 @@
 import React, { useState, useCallback } from 'react'
-import { View, Text, Modal, Image } from 'react-native'
-import styles from '../styles/components/GreetingModal'
+import { View, Text, Modal, Image, TouchableOpacity } from 'react-native'
+import styles, { gradientColors } from '../styles/components/GreetingModal'
 import src from '../resources/images/Timebug-hourglass-1.png'
+import Icon from 'react-native-vector-icons/Ionicons'
+import Gradient from './Gradient';
 
 const GreetingModal = () => {
   const [open, setOpen] = useState(true)
@@ -14,15 +16,13 @@ const GreetingModal = () => {
   )
 
   return (
-    <Modal
-      animationType="slide"
-      transparent={false}
-      visible={this.state.modalVisible}
-    >
-      <View style={styles.greetingModalContainer}>
-          <View>
-              
-          </View>
+    <Modal animationType="slide" transparent={false} visible={open}>
+      <Gradient colors={gradientColors} style={styles.greetingModalContainer}>
+        <View style={styles.backButtonRow}>
+          <TouchableOpacity onPress={requestClose}>
+            <Icon name={'ios-close-circle-outline'} size={40} color={'black'} />
+          </TouchableOpacity>
+        </View>
         <View style={styles.titleContainer}>
           <Text style={styles.title}>
             YOUR TIME IS YOUR ENERGY IS YOUR LIFE. USE IT WISELY
@@ -31,9 +31,9 @@ const GreetingModal = () => {
         <View style={styles.imageContainer}>
           <Image style={styles.image} source={src} />
         </View>
-      </View>
+      </Gradient>
     </Modal>
   )
 }
 
-export default GreetingModal
+export default React.memo(GreetingModal)

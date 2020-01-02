@@ -1,6 +1,8 @@
 import { StyleSheet } from 'react-native'
 import { deepBlue, white2 } from '../../../constants/colors'
 
+export const gradientColors = [deepBlue, white2]
+
 export default StyleSheet.create({
   greetingModalContainer: {
     flex: 1,
@@ -13,11 +15,13 @@ export default StyleSheet.create({
   titleContainer: {
     alignItems: 'center',
     justifyContent: 'center',
+    padding: 12,
   },
   title: {
     fontSize: 22,
     fontFamily: 'Metropolis',
     color: white2,
+    textAlign: 'center',
   },
   imageContainer: {
     width: '100%',
@@ -26,8 +30,15 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
   image: {
-    height: '60%',
-    width: '60%',
-    aspectRatio: 1,
+    height: 500,
+    width: 300,
+  },
+  backButtonRow: {
+    flexDirection: 'column',
+    alignItems: 'flex-end',
+    justifyContent: 'flex-end',
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    width: '100%',
   },
 })
