@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native'
 import { deepBlue, white2 } from '../../../constants/colors'
 
-export const gradientColors = [deepBlue, white2]
+export const gradientColors = ['#008EBC', '#005587']
 
 export default StyleSheet.create({
   greetingModalContainer: {
@@ -10,7 +10,6 @@ export default StyleSheet.create({
     height: '100%',
     flexDirection: 'column',
     alignItems: 'center',
-    backgroundColor: deepBlue,
   },
   titleContainer: {
     alignItems: 'center',
@@ -18,10 +17,11 @@ export default StyleSheet.create({
     padding: 12,
   },
   title: {
-    fontSize: 22,
     fontFamily: 'Metropolis',
+    fontSize: 22,
     color: white2,
     textAlign: 'center',
+    fontWeight: "700",
   },
   imageContainer: {
     width: '100%',
