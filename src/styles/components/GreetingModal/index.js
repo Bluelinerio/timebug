@@ -2,12 +2,13 @@ import { StyleSheet, Dimensions } from 'react-native'
 import { deepBlue, white2 } from '../../../constants/colors'
 
 export const gradientColors = ['#008EBC', '#005587']
-const screenWidth =  Dimensions.get('window').width
 
-const responsiveTitleTextSize = screenWidth < 800 ? 22 : 28
-const responsiveBodyTextSize = screenWidth < 800 ? 14 : 18
-const responsiveImageWidth = screenWidth < 800 ? 165 : 210
-const responsiveImageHeight = screenWidth < 800 ? 275 : 350
+const screenHeight =  Dimensions.get('window').height
+
+const responsiveTitleTextSize = screenHeight < 800 ? 22 : 28
+const responsiveBodyTextSize = screenHeight < 800 ? 14 : 18
+const responsiveImageWidth = screenHeight < 800 ? 165 : 210
+const responsiveImageHeight = screenHeight < 800 ? 275 : 350
 
 export default StyleSheet.create({
   greetingModalContainer: {
