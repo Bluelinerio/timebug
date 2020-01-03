@@ -25,7 +25,7 @@ const GreetingModal = () => {
         </View>
         <View style={styles.titleContainer}>
           <Text style={styles.title}>
-            YOUR TIME IS YOUR ENERGY IS YOUR LIFE. USE IT WISELY
+            YOUR TIME IS YOUR ENERGY IS YOUR LIFE. USE IT WISELY.
           </Text>
           <Text style={styles.body}>
             You are what you spend your time on. Optimize your 'Energetic Investments' in a way that is in sync with your vision. One of the keys here 
