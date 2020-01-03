@@ -2614,7 +2614,7 @@
 					"-lc++",
 				);
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-DDEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = com.timebug.lifevisionApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.timebug.debug.lifevisionApp;
 				PRODUCT_NAME = Lifevision;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
