@@ -26,7 +26,6 @@ const openFBLogin = (): Promise<OpenFBLoginResult> =>
   LoginManager.logInWithReadPermissions([
     'public_profile',
     'email',
-    'user_friends',
   ]).then(result => {
     if (result.isCancelled) {
       return {

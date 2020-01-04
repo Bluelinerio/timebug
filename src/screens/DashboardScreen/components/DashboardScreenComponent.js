@@ -11,6 +11,7 @@ import CheckinAreaComponent from '../containers/CheckinAreaContainer'
 import ProgressAreaComponent from './ProgressAreaComponent'
 import SignInButton from '../containers/SignInButtonContainer'
 import styles from '../styles'
+import GreetingModal from '../../../components/GreetingModal'
 
 type Props = {
   isLogged: boolean,
@@ -25,6 +26,7 @@ class StartScreenComponent extends PureComponent<Props> {
         style={styles.container}
       >
         <StatusBar barStyle="dark-content" backgroundColor={'white'} />
+        <GreetingModal />
         <ScrollView
           style={styles.container}
           contentContainerStyle={styles.scroll}

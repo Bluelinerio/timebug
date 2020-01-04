@@ -4,7 +4,6 @@
   "javascript.format.enable": false,
   "flow.useNPMPackagedFlow": true,
   "editor.snippetSuggestions": "top",
-  "prettier.eslintIntegration": true,
   "prettier.singleQuote": true,
   "search.exclude": {
     "**/flow-typed": true,
