@@ -92,7 +92,7 @@ android {
         applicationId "io.lifevision"
         minSdkVersion 23
         targetSdkVersion 27
-        versionCode 45
+        versionCode 59
 
         // testBuildType System.getProperty('testBuildType', 'debug')  //this will later be used to control the test apk build type
         // missingDimensionStrategy "minReactNative", "minReactNative46" //read note
