@@ -109,6 +109,7 @@ class WorkbookScreenComponent extends Component<Props, State> {
   };
 
   onPress = () => {
+    
     const { errors, value } = this.form.validate();
     if (errors && errors.length > 0) {
       this.setState(
@@ -121,9 +122,7 @@ class WorkbookScreenComponent extends Component<Props, State> {
       const { next } = this.props;
       next(value);
 
-Analytics.logEvent('select_content', {
- button: 'next'
-} );
+
     }
   };
 
