@@ -207,7 +207,8 @@ class Form extends React.PureComponent<FormProps, State> {
         onFinish(this.state.storableValue)
       }
     )
-    Analytics.logEvent('step_finished');
+    
+    Analytics.logEvent('step_finished', {step: stepNumber});
      
   }
 
