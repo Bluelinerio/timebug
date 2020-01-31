@@ -8,6 +8,7 @@ import io.sentry.RNSentryPackage;
 // import com.moengage.react.MoEReactPackage;
 import io.invertase.firebase.RNFirebasePackage;
 import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;
+import io.invertase.firebase.analytics.RNFirebaseAnalyticsPackage;
 import com.reactnativecommunity.webview.RNCWebViewPackage;
 import com.reactnativecommunity.slider.ReactSliderPackage;
 import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
@@ -85,7 +86,8 @@ public class MainApplication extends Application implements ReactApplication {
           new LinearGradientPackage(),
           new BlurViewPackage(),
           new OpenSettingsPackage(),
-          new RNFirebaseMessagingPackage()
+          new RNFirebaseMessagingPackage(),
+          new RNFirebaseAnalyticsPackage()
     );
   }
   };
