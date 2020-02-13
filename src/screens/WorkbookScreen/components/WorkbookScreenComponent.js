@@ -17,6 +17,8 @@ import hexToRgba from '../../../utils/colorTransform';
 
 const Form = t.form.Form;
 
+
+
 export type Model = {
   type: any,
   options: any,
@@ -105,6 +107,7 @@ class WorkbookScreenComponent extends Component<Props, State> {
   };
 
   onPress = () => {
+    
     const { errors, value } = this.form.validate();
     if (errors && errors.length > 0) {
       this.setState(
@@ -116,6 +119,8 @@ class WorkbookScreenComponent extends Component<Props, State> {
     } else {
       const { next } = this.props;
       next(value);
+
+
     }
   };
 

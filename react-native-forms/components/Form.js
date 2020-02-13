@@ -25,6 +25,7 @@ import { FormProps }                              from '../types/formTypes'
 import TextFormButton                             from './components/TextFormButton'
 import { CREATE, UPDATE, FINISHED }               from '../forms/constants'
 import { LogAction }                              from '../types/formTypes'
+import firebase from 'react-native-firebase';
 
 const DEBUG_DISPLAY = false
 
@@ -48,6 +49,7 @@ class Form extends React.PureComponent<FormProps, State> {
     const indexesMap = mapIndexesToKeys(this.model)
     const storableValue = props.value || []
     const editionId = props.editionId || null
+
 
     let editionElementIndex = editionId
       ? storableValue.findIndex(el => el._id === editionId)
@@ -177,7 +179,9 @@ class Form extends React.PureComponent<FormProps, State> {
 
   _onFinishedForm = () => {
     const { value, fieldIndex } = this.state
-    const { onFinish } = this.props
+    const { onFinish, stepNumber } = this.props
+    const Analytics = firebase.analytics();
+
 
     const currentField = this.model.fields[fieldIndex]
 
@@ -203,6 +207,9 @@ class Form extends React.PureComponent<FormProps, State> {
         onFinish(this.state.storableValue)
       }
     )
+    
+    Analytics.logEvent('step_finished', {step: stepNumber});
+     
   }
 
   _handleSingleAnswerStorage = value => {
@@ -280,6 +287,7 @@ class Form extends React.PureComponent<FormProps, State> {
       formProgress: (fieldIndex + 1) / numberOfFields,
     }
     if (!passiveTypes.find(el => el === currentField.type)) {
+
       const newValue = this._getNewValue()
       newState = {
         ...newState,
@@ -297,6 +305,7 @@ class Form extends React.PureComponent<FormProps, State> {
       })
     }
     this.setState(newState)
+          
   }
 
   _onFinish = () => {
