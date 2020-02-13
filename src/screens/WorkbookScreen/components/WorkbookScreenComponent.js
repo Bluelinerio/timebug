@@ -14,11 +14,9 @@ import DefaultIndicator from '../../../components/DefaultIndicator';
 import WorkbookNextButton from '../components/WorkbookNextButton';
 import styles from '../styles';
 import hexToRgba from '../../../utils/colorTransform';
-import firebase from 'react-native-firebase';
 
 const Form = t.form.Form;
 
-let Analytics = firebase.analytics();
 
 
 export type Model = {
